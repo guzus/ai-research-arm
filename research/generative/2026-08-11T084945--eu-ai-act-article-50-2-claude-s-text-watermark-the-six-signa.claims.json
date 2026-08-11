@@ -1,0 +1,379 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Anthropic states it signed the EU AI Act's Article 50(2) Code of Practice on Transparency of AI-Generated Content as a provider of both generative AI models and generative AI systems.",
+      "type": "regulatory",
+      "source_urls": ["https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Anthropic says Claude models launched on or after 2 August 2026 support machine-readable marking at launch, and that models launched before that date fall inside a transition period with retrofit still in progress.",
+      "type": "technical",
+      "source_urls": ["https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c3",
+      "claim": "Claude Opus 5, Anthropic's newest model, launched on 24 July 2026 — nine days before the 2 August 2026 marking cutoff.",
+      "type": "event",
+      "source_urls": ["https://www.anthropic.com/news/claude-opus-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "About 190 organisations signed the Code of Practice on Transparency of AI-generated Content, recorded as 82 Section 1 signatories and 152 Section 2 signatories.",
+      "type": "metric",
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c5",
+      "claim": "xAI does not appear on the Commission's published signatory list for the 2026 Transparency Code, and no public statement of refusal by xAI regarding that Code could be located.",
+      "type": "regulatory",
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "On the separate 2025 General-Purpose AI Code of Practice, the Commission records that xAI signed only the Safety and Security Chapter and must demonstrate transparency and copyright compliance by alternative means.",
+      "type": "regulatory",
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "The Code of Practice generally requires at least two layers of machine-readable marking, but treats a watermark alone as sufficient for free-form text because such text cannot transport metadata.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://www.gleisslutz.com/en/know-how/new-eu-code-practice-transparency-ai-generated-content-impact-and-options",
+        "https://alia.public.lu/wp-content/uploads/2026/06/European-Commission_Code-of-Practice-on-Transparency-of-AI-Generated-Content.pdf"
+      ],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-06-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "The Code of Practice sets 200 tokens as the pivot for free-form text watermarking, relaxing reliability expectations below that length rather than specifying a detection threshold.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://www.gleisslutz.com/en/know-how/new-eu-code-practice-transparency-ai-generated-content-impact-and-options",
+        "https://alia.public.lu/wp-content/uploads/2026/06/European-Commission_Code-of-Practice-on-Transparency-of-AI-Generated-Content.pdf"
+      ],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-06-10",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "400 tokens appears in the SynthID-Text Nature paper as a benchmark generation length for test texts, not as a detectability floor.",
+      "type": "technical",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC11499265/"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-10-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Anthropic's help page states no token count, no minimum length and no detection accuracy figure for the Claude text watermark, offering only the qualitative caveat that a very short passage leaves too little text for a reliable signal.",
+      "type": "technical",
+      "source_urls": ["https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "Breaches of Article 50 fall under Article 99(4) and attract fines of up to EUR 15,000,000 or 3% of total worldwide annual turnover, whichever is higher.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://artificialintelligenceact.eu/article/99/",
+        "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act"
+      ],
+      "source_tiers": ["legal", "primary"],
+      "as_of": "2024-07-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Article 50 applies from 2 August 2026, with a limited grace period to 2 December 2026 for the Article 50(2) marking duty on AI systems placed on the market before 2 August 2026.",
+      "type": "regulatory",
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "The Digital Omnibus on AI was adopted as Regulation (EU) 2026/1744 and entered into force on 27 July 2026, deferring Annex III high-risk obligations to 2 December 2027 while leaving Article 50's 2 August 2026 application date intact.",
+      "type": "regulatory",
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-27",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c14",
+      "claim": "Signing the Code of Practice creates no presumption of conformity; the Commission states that enforcement consequences attach to non-compliance with Article 50, not to the absence of adherence to the Code.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://digital-strategy.ec.europa.eu/en/faqs/signing-code-practice-transparency-ai-generated-content",
+        "https://www.gleisslutz.com/en/know-how/new-eu-code-practice-transparency-ai-generated-content-impact-and-options"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Kirchenbauer et al. report that after strong human paraphrasing a watermark is detectable after observing about 800 tokens on average at a 1e-5 false-positive rate.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2306.04634"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-06-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "A 2026 re-analysis reports SynthID-Text reaching a maximum true-positive rate of roughly 0.30 at a 1% false-positive rate when the text is only 50 tokens long, rising to about 85% at 400 tokens.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2603.03410v2"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-03-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "DIPPER paraphrasing drops DetectGPT's detection accuracy from 70.3% to 4.6% at a constant 1% false-positive rate, and degrades the Kirchenbauer watermark detector from 100.0% to 57.2% in the strongest paraphrase setting.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2303.13408"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-03-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Jovanovic et al. show that for under $50 an attacker can both spoof and scrub state-of-the-art watermarking schemes previously considered safe, with an average success rate over 80%.",
+      "type": "metric",
+      "source_urls": ["https://proceedings.mlr.press/v235/jovanovic24a.html"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-02-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "Zhang et al. prove that strong watermarking is impossible against an attacker with a quality oracle and a perturbation oracle, and empirically remove watermarks planted by three published schemes with only minor quality degradation.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2311.04378"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-11-07",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c20",
+      "claim": "A 2025 study of commercial humanizer tooling reports SynthID detection falling from 87.6% to 5.4% true-positive rate at a 5% false-positive rate after DIPPER paraphrase, and from 66.5% to 1.5% at 1%.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2501.03437"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-01-06",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c21",
+      "claim": "Seven GPT detectors misclassified human-written TOEFL essays by non-native English speakers as AI-generated at an average false-positive rate of 61.3%, against a near-zero rate for US eighth-grade essays.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC10382961/"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-07-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "Vanderbilt University disabled Turnitin's AI detector, calculating that a 1% false-positive rate applied to the 75,000 papers it submitted in 2022 would have incorrectly flagged around 750 student papers.",
+      "type": "event",
+      "source_urls": ["https://www.vanderbilt.edu/brightspace/2023/08/16/guidance-on-ai-detection-and-why-were-disabling-turnitins-ai-detector/"],
+      "source_tiers": ["primary"],
+      "as_of": "2023-08-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "The Commission's own list of national single points of contact under the AI Act names authorities for only 8 of 27 member states, three of them still pending final designation, and carries a last-update stamp of 26 September 2025.",
+      "type": "metric",
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/policies/market-surveillance-authorities-under-ai-act"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-09-26",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "The European AI Office employs more than 125 staff and was recruiting 40 contractual agents with an application deadline of 8 September 2026.",
+      "type": "metric",
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/policies/ai-office"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c25",
+      "claim": "No AI Act enforcement action, formal penalty or published investigation against any provider had been recorded as of 11 August 2026.",
+      "type": "regulatory",
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/policies/enforcement-ai-act"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-11",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c26",
+      "claim": "The CNIL fined Google LLC EUR 50 million on 21 January 2019, roughly eight months after the GDPR became applicable on 25 May 2018.",
+      "type": "event",
+      "source_urls": ["https://www.legifrance.gouv.fr/cnil/id/CNILTEXT000038032552/"],
+      "source_tiers": ["legal"],
+      "as_of": "2019-01-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "Current text watermarking schemes couple detection to injection, requiring the provider's secret key or a provider-side detector, which forecloses independent third-party verification.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2603.14968"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-03-16",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c28",
+      "claim": "The Code of Practice requires signatories to implement an interoperability solution for watermark detection by 2 February 2027.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://www.gleisslutz.com/en/know-how/new-eu-code-practice-transparency-ai-generated-content-impact-and-options",
+        "https://www.dlapiper.com/en-us/insights/publications/2026/07/what-the-eus-new-code-of-practice-means"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "Anthropic stated in May 2026 that its run-rate revenue had crossed $47 billion.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/news/series-h"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-28",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c30",
+      "claim": "A survey of 50 generative AI image systems found only 19 (38%) embedded any machine-readable marking and only 5 used the C2PA standard.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2503.18156v3"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-10-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "The Commission states that Article 50 will mainly be enforced by national market surveillance authorities, with the AI Office holding a limited role confined to systems where the same provider supplies both the general-purpose model and the system, or where the system is part of a designated VLOP or VLOSE.",
+      "type": "regulatory",
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "Shumailov et al. show that models trained recursively on generated data degrade, and state that it is unclear how content generated by LLMs can be tracked at scale.",
+      "type": "technical",
+      "source_urls": ["https://www.nature.com/articles/s41586-024-07566-y"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-07-24",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c33",
+      "claim": "Graphite's detector-based study estimates that primarily AI-generated articles accounted for 49.9% of new web articles in Q1 2026, near parity with human-written articles for five consecutive quarters.",
+      "type": "metric",
+      "source_urls": ["https://graphite.io/five-percent/research/ai-now-writes-as-many-online-articles-as-humans-do"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-01",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c34",
+      "claim": "Anthropic states that a detected mark provides a signal that content was processed by Claude but is not fully conclusive, and that lack of a detected mark does not mean the content was not AI-generated.",
+      "type": "quote",
+      "source_urls": ["https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c35",
+      "claim": "Google DeepMind states that SynthID watermarking is not built to directly stop motivated adversaries and is an important building block rather than a silver bullet.",
+      "type": "quote",
+      "source_urls": ["https://deepmind.google/blog/watermarking-ai-generated-text-and-video-with-synthid/"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-05-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c36",
+      "claim": "Turnitin disclosed a sentence-level false-positive rate of around 4%, against the sub-1% document-level rate it marketed at launch.",
+      "type": "metric",
+      "source_urls": ["https://www.turnitin.co.uk/blog/understanding-the-false-positive-rate-for-sentences-of-our-ai-writing-detection-capability"],
+      "source_tiers": ["secondary"],
+      "as_of": "2023-06-14",
+      "confidence": "medium",
+      "risk": "volatile"
+    }
+  ]
+}
