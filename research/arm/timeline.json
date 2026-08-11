@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T09:21:39.516Z",
+  "generatedAt": "2026-08-11T09:42:19.793Z",
   "windowStart": "2026-08-09T21:00:00.000Z",
   "windowEnd": "2026-08-12T22:00:00.000Z",
   "timezone": "UTC",
@@ -642,14 +642,43 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/b99565945114cfd0445f36cda37d69b9fdbd3f7c"
     },
     {
-      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-08-11T09-26-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-c76513010324",
+      "kind": "completed",
+      "lane": "Generative",
+      "title": "Article 50(2): what Claude's watermark actually is, and three numbers that are wrong (#2050)",
+      "status": "completed",
+      "start": "2026-08-11T08:01:00.000Z",
+      "end": "2026-08-11T08:52:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "research agent",
+      "commit": "c76513010324",
+      "url": "https://github.com/guzus/ai-research-arm/commit/c765130103247d0e94575e2812f670b4ec3ac7d3"
+    },
+    {
+      "id": "commit-3584f00381d0",
+      "kind": "completed",
       "lane": "Models",
-      "title": "Model Pricing (price vs. capability)",
-      "status": "scheduled",
-      "start": "2026-08-11T09:26:00.000Z",
-      "end": "2026-08-11T10:11:00.000Z",
-      "source": "cron 26 3,9,15,21 * * *"
+      "title": "Model release tickets",
+      "status": "completed",
+      "start": "2026-08-11T08:51:00.000Z",
+      "end": "2026-08-11T09:06:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "3584f00381d0",
+      "url": "https://github.com/guzus/ai-research-arm/commit/3584f00381d09f00033b20643542fcb18b43b13c"
+    },
+    {
+      "id": "commit-15e877b27723",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-08-11 09:21 UTC (#2054)",
+      "status": "completed",
+      "start": "2026-08-11T09:21:00.000Z",
+      "end": "2026-08-11T09:23:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "15e877b27723",
+      "url": "https://github.com/guzus/ai-research-arm/commit/15e877b277236e04f13a65d228f0efc5d6f8e46e"
     },
     {
       "id": "scheduled-market-quotes-yml-53---3-------2026-08-11T09-53-00-000Z",
@@ -1860,6 +1889,26 @@
       "start": "2026-08-12T21:07:00.000Z",
       "end": "2026-08-12T22:07:00.000Z",
       "source": "cron 7 */3 * * *"
+    },
+    {
+      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-08-12T21-26-00-000Z",
+      "kind": "scheduled",
+      "lane": "Models",
+      "title": "Model Pricing (price vs. capability)",
+      "status": "scheduled",
+      "start": "2026-08-12T21:26:00.000Z",
+      "end": "2026-08-12T22:11:00.000Z",
+      "source": "cron 26 3,9,15,21 * * *"
+    },
+    {
+      "id": "scheduled-twitter-model-ab-yml-40-21-------2026-08-12T21-40-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter Model A/B Eval",
+      "status": "scheduled",
+      "start": "2026-08-12T21:40:00.000Z",
+      "end": "2026-08-12T22:40:00.000Z",
+      "source": "cron 40 21 * * *"
     }
   ]
 }
