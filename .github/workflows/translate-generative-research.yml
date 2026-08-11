@@ -123,9 +123,10 @@ jobs:
           mode: editorial
           lane: generative-research-ko
           return-artifacts: ${{ steps.prepare.outputs.draft_path }}
-          # Translation needs two reads and one write. Explicit denies remain
-          # enforced under --auto, so prompt injection cannot gain shell,
-          # network, search, subagent, or broader repository access.
+          # Translation needs two reads and one fixed-destination chunk tool.
+          # Explicit denies remain enforced under --auto, so prompt injection
+          # cannot gain shell, network, search, subagent, edit/write, or
+          # broader repository access.
           opencode-config: .github/opencode/translation.json
           timeout-minutes: '80'
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -138,10 +139,14 @@ jobs:
 
             Read `.agent-input/translation.json` first. It gives the exact
             staged `source_path`, `source_type`, and `draft_path`. Read the
-            declared source in full, then write exactly one file at
-            `draft_path`. Tool permissions allow only those two reads and that
-            one write; shell, web, search, subagents, and all other tools are
-            intentionally unavailable.
+            declared source in full. Then call `translation_chunk` repeatedly
+            to build exactly one file at `draft_path`. The first call must use
+            `offset_bytes=0`; every later call must use the exact next offset
+            returned by the prior call. Keep each chunk below 16 KiB and split
+            between complete lines. Do not put the translation in your final
+            response. Tool permissions allow only those two reads and this
+            fixed-destination chunk tool; shell, web, search, subagents,
+            edit/write, and all other tools are intentionally unavailable.
 
             Preserve factual meaning and the complete artifact contract:
             - Keep YAML frontmatter keys, heading levels, ARA directive names,
