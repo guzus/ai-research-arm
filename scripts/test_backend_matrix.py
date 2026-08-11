@@ -135,6 +135,9 @@ class RoutingInvariants(unittest.TestCase):
                       "research/arxiv/${{ steps.date.outputs.date }}-papers.md\nresearch/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt", ""),
             "wiki-ingest": ("research/wiki/", "research/wiki/", ""),
             "bluesky": ("", "", ".tmp/bluesky-section.md"),
+            "generative-research-ko": (
+                "", "", "${{ steps.prepare.outputs.draft_path }}"
+            ),
         }
         seen = {}
         for obs in self.obs.values():
@@ -347,6 +350,7 @@ class RoutingInvariants(unittest.TestCase):
         "hourly-rss.yml",
         "hourly-twitter.yml",
         "opencode-kimi-canary.yml",
+        "translate-generative-research.yml",
         "wiki-ingest.yml",
     )
 
@@ -408,6 +412,7 @@ class RoutingInvariants(unittest.TestCase):
             {"2h-bluesky.yml", "4h-community.yml", "daily-arxiv.yml",
              "generative-research.yml", "hourly-rss.yml",
              "hourly-twitter.yml", "opencode-kimi-canary.yml",
+             "translate-generative-research.yml",
              "wiki-ingest.yml"},
             set(self.OPENCODE_WORKFLOWS))
         for name in self.OPENCODE_WORKFLOWS:

@@ -68,8 +68,31 @@ uv run python scripts/write_generative_research.py \
 
 The writer emits `research/generative/<timestamp>--<slug>.ko.html` and stores
 it under `translations.ko` in `research/generative/index.json`. The dashboard
-language switch will show Korean only after that file and index update have
-been pushed and deployed.
+runtime can load that variant; its visible language control is currently a
+separate UI rollout, so this workflow establishes the publishing contract
+without claiming the translation is already discoverable in the interface.
+
+For model-assisted backfills, dispatch **Korean Generative Research Backfill**
+from the default branch with one existing `slug`. The workflow resolves the
+canonical `.ara.md` source (falling back to legacy HTML), sends only that
+public article to the dedicated isolated `generative-translation` route, and
+imports one uncommitted Korean draft. Trusted host steps then enforce URL,
+citation, numeric, and component-topology parity before calling the writer.
+
+```bash
+gh workflow run translate-generative-research.yml \
+  -f slug="<existing-slug>" \
+  -f overwrite=false \
+  -f auto_merge=false
+```
+
+`overwrite=false` refuses an existing `translations.ko` pointer before model
+spend. `overwrite=true` publishes a new immutable artifact revision without
+deleting the prior files. Publication opens a review PR by default;
+`auto_merge=true` opts into the normal protected-branch squash-merge path.
+The lane deliberately disables `safe-push`'s append-oriented index merge:
+translation mutates an existing slug, so an index conflict fails for a clean
+rerun rather than risking a dropped nested translation.
 
 ## Article Audio
 

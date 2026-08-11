@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import difflib
 import fcntl
+import hashlib
 import html.parser
 import json
 import math
@@ -540,6 +541,8 @@ def update_translation_atomically(
     target_slug: str,
     language: str,
     row_builder,
+    *,
+    replace: bool = False,
 ) -> tuple[str, list]:
     """Attach a translated artifact to an existing generative article row.
 
@@ -563,10 +566,19 @@ def update_translation_atomically(
             if not isinstance(row, dict) or row.get("slug") != target_slug:
                 continue
             translations = row.get("translations")
-            if not isinstance(translations, dict):
+            if translations is not None and not isinstance(translations, dict):
+                raise ValueError(
+                    f"translation metadata for {target_slug!r} is malformed"
+                )
+            if translations is None:
                 translations = {}
                 row["translations"] = translations
-            translations[language] = row_builder(target_slug)
+            if language in translations and not replace:
+                raise ValueError(
+                    f"translation {language!r} already exists for {target_slug!r}; "
+                    "pass --replace-translation to publish a new immutable revision"
+                )
+            translations[language] = row_builder(target_slug, row)
             atomic_write_json(index_path, current)
             return target_slug, current
         raise ValueError(
@@ -614,6 +626,21 @@ def main(argv: list[str] | None = None) -> int:
         "--translation-of",
         default=None,
         help="existing article slug to attach this translated artifact to",
+    )
+    p.add_argument(
+        "--replace-translation",
+        action="store_true",
+        help="replace an existing language pointer while retaining old artifacts",
+    )
+    p.add_argument(
+        "--translation-source-file",
+        default=None,
+        help="repo-relative canonical source artifact recorded on a translation",
+    )
+    p.add_argument(
+        "--translation-source-sha256",
+        default=None,
+        help="lowercase SHA-256 of --translation-source-file",
     )
     p.add_argument(
         "--kind",
@@ -764,6 +791,51 @@ def main(argv: list[str] | None = None) -> int:
             f"{language!r} requires --translation-of <existing-slug> "
             "(or --slug set to that existing slug)"
         )
+    translation_source_file = (args.translation_source_file or "").strip()
+    translation_source_sha256 = (args.translation_source_sha256 or "").strip()
+    if bool(translation_source_file) != bool(translation_source_sha256):
+        raise SystemExit(
+            "write_generative_research: translation source file and SHA-256 "
+            "must be provided together"
+        )
+    if language == DEFAULT_LANGUAGE and translation_source_file:
+        raise SystemExit(
+            "write_generative_research: translation source metadata is only valid "
+            "with a non-English --language"
+        )
+    if language == DEFAULT_LANGUAGE and args.replace_translation:
+        raise SystemExit(
+            "write_generative_research: --replace-translation requires a non-English --language"
+        )
+    translation_source_path: Path | None = None
+    if translation_source_file:
+        source_path = Path(translation_source_file)
+        if (
+            source_path.is_absolute()
+            or source_path.parent.as_posix() != "research/generative"
+            or source_path.name in {"", ".", ".."}
+            or not re.fullmatch(r"[0-9a-f]{64}", translation_source_sha256)
+        ):
+            raise SystemExit(
+                "write_generative_research: unsafe translation source metadata"
+            )
+        canonical_source = repo / source_path
+        if (
+            not canonical_source.is_file()
+            or canonical_source.is_symlink()
+            or canonical_source.resolve().parent != gen_dir.resolve()
+        ):
+            raise SystemExit(
+                "write_generative_research: translation source file is missing or unsafe"
+            )
+        actual_source_sha256 = hashlib.sha256(
+            canonical_source.read_bytes()
+        ).hexdigest()
+        if actual_source_sha256 != translation_source_sha256:
+            raise SystemExit(
+                "write_generative_research: translation source SHA-256 does not match"
+            )
+        translation_source_path = source_path
     tags = [t.strip() for t in args.tags.split(",") if t.strip()]
     now = datetime.now(timezone.utc).replace(microsecond=0)
     stamp = now.strftime("%Y-%m-%dT%H%M%S")
@@ -824,9 +896,35 @@ def main(argv: list[str] | None = None) -> int:
                 "tags": tags,
             }
 
-        def _build_translation(final_slug: str) -> dict:
+        def _build_translation(final_slug: str, canonical_row: dict) -> dict:
+            canonical_kind = canonical_row.get("kind") or KIND_FRAGMENT
+            if args.kind != canonical_kind:
+                raise ValueError(
+                    f"translation kind {args.kind!r} does not match canonical kind {canonical_kind!r}"
+                )
+            if translation_source_path is not None:
+                canonical_file = canonical_row.get("file")
+                if (
+                    not isinstance(canonical_file, str)
+                    or Path(canonical_file).name != canonical_file
+                ):
+                    raise ValueError("canonical row has an unsafe source filename")
+                canonical_html = Path("research/generative") / canonical_file
+                canonical_ara = canonical_html.with_suffix(".ara.md")
+                expected_source = (
+                    canonical_ara
+                    if (repo / canonical_ara).is_file()
+                    else canonical_html
+                )
+                if translation_source_path != expected_source:
+                    raise ValueError(
+                        "translation source metadata does not match the canonical article source"
+                    )
             filename, _, _ = _write_artifacts(final_slug, language)
-            return {
+            translation_tags = tags
+            if not translation_tags and isinstance(canonical_row.get("tags"), list):
+                translation_tags = canonical_row["tags"]
+            translation_row = {
                 "file": filename,
                 "kind": args.kind,
                 "language": language,
@@ -835,8 +933,13 @@ def main(argv: list[str] | None = None) -> int:
                 "created_at": iso,
                 "source": args.source,
                 "prompt": args.prompt or args.topic,
-                "tags": tags,
+                "tags": translation_tags,
+                "translated_at": iso,
             }
+            if translation_source_file:
+                translation_row["source_file"] = translation_source_file
+                translation_row["source_sha256"] = translation_source_sha256
+            return translation_row
 
         if language == DEFAULT_LANGUAGE:
             slug, index = append_index_atomically(index_path, base_slug, _build_row)
@@ -846,6 +949,7 @@ def main(argv: list[str] | None = None) -> int:
                 translation_target,
                 language,
                 _build_translation,
+                replace=args.replace_translation,
             )
     except BaseException:
         # If the locked append failed AFTER we wrote the HTML / DSL source,
