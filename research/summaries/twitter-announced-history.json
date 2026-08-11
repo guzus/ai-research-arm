@@ -22417,5 +22417,54 @@
     "headline": "GROK 4.6 SLIPS \u2014 SAME-DAY RELEASE CALL WITHDRAWN AFTER MODEL LEAKED BRIEFLY INSIDE CURSOR",
     "source": "@mark_k",
     "url": "https://x.com/mark_k/status/2087135944843415921"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-11 16:08:22 UTC",
+    "headline": "NVIDIA BUILDING NEMOTRON 4 OPEN MODEL FAMILY \u2014 LARGEST VERSION AT LEAST 1 TRILLION PARAMETERS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2087184793066766426"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-11 16:08:22 UTC",
+    "headline": "OPENAI COMPLETES ~$7B EMPLOYEE TENDER AT $852B VALUATION \u2014 COMPANY ITSELF REPORTEDLY THE BUYER",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2087207418308723149"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-11 16:08:22 UTC",
+    "headline": "CURSOR ORIGIN WAITLIST GOES LIVE \u2014 AGENTIC GIT HOSTING AND CODE-REVIEW RIVAL TO GITHUB",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2087177021105267167"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-11 16:08:22 UTC",
+    "headline": "UNSLOTH SHIPS DESKTOP APP \u2014 OPEN-SOURCE LOCAL TRAINING, CLAIMS 2X SPEED AT 70% LESS VRAM",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2087177146662072546"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-11 16:08:22 UTC",
+    "headline": "META MUSE GLIMMER 30B TEARDOWN \u2014 52 KIB/TOKEN KV CACHE, BUT ARTIFICIAL ANALYSIS RANKS IT BEHIND QWEN3.6",
+    "source": "@rasbt",
+    "url": "https://x.com/rasbt/status/2087180773497421926"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-11 16:08:22 UTC",
+    "headline": "TORVALDS SAYS AI CODE REVIEW IS DRIVING LINUX 7.2-RC7 TO UNUSUAL SIZE \u2014 CALLS IT THE NEW NORMAL",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2087207330739900816"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-11 16:08:22 UTC",
+    "headline": "APPLIED COMPUTE IN TALKS AT ~$3B VALUATION \u2014 DOUBLE ITS MARK FROM FOUR MONTHS AGO",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2087199903407644803"
   }
 ]
