@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Three separate retrievals of NVIDIA's 10 August announcement — from the newsroom, from the investor-relations site, and through a raw-text proxy — return zero occurrences of \"residual,\" zero of \"backstop,\" and zero percentages other than the headline capital figure.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Where the debt fully amortises inside the contract, residual value is a recovery buffer, not a repayment source — and a residual guarantee is close to redundant.",
+      "contradicting_url": "https://www.julien.org/blog/industry-perspectives/2026-02-20_two-markets-one-asset-the-gpu-debt-market-is-building-the-architecture-of-its-own-crisis/index.html",
+      "contradicting_quote": "The residual value assumptions baked into every GPU-backed securitization — 50% at three years — have been invalidated by the B200 in nine months.",
+      "severity": "low",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "On 10 August — the same day as the NVIDIA announcement — a $2.6bn facility priced at SOFR+550, wider than talk, on a structure whose roughly five-year maturity runs past the roughly three-year average customer contract.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
