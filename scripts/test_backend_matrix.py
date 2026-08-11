@@ -844,6 +844,26 @@ class RoutingInvariants(unittest.TestCase):
         self.assertNotIn('"${trusted_git[@]}" reset --hard', action)
         self.assertIn('tree_mode" != "100644', action)
         self.assertIn("tree_type\" != \"blob", action)
+        # A provider-success/no-output retry is deliberately narrower than
+        # editorial mode: one exact KO lane, one exact draft, one shared
+        # deadline, and no retry after a tool call, artifact, or nonzero exit.
+        self.assertIn('--env AGENT_LANE', action)
+        self.assertIn('--env RETURN_ARTIFACTS', action)
+        self.assertIn(
+            'model_budget_seconds=$((AGENT_TIMEOUT_MINUTES * 60))',
+            action)
+        self.assertIn('model_started_seconds=$SECONDS', action)
+        self.assertIn('(SECONDS - model_started_seconds)', action)
+        self.assertIn('timeout "${remaining_seconds}s" opencode run', action)
+        self.assertIn('[ "$AGENT_LANE" = "generative-research-ko" ]', action)
+        self.assertIn(
+            '[ "$RETURN_ARTIFACTS" = ".tmp/generative-translation.ko.ara.md" ]',
+            action)
+        self.assertIn('[ "$agent_status" -eq 0 ]', action)
+        self.assertIn('[ "$artifact_count" -eq 0 ]', action)
+        self.assertIn('[ "$chunk_calls" -eq 0 ]', action)
+        self.assertIn('[ "$attempt_count" -eq 1 ]', action)
+        self.assertIn("opencode attempt telemetry is malformed", action)
         for name, expected_mode in {
                 "generative-research.yml": "generative",
                 "hourly-twitter.yml": "twitter",
@@ -925,6 +945,155 @@ class RoutingInvariants(unittest.TestCase):
             self.assertEqual(143, proc.wait(timeout=5))
             self.assertIn("rm-end", log.read_text(encoding="utf-8"))
 
+    def test_korean_zero_output_retry_is_bounded_and_fail_closed(self):
+        """Only the exact KO zero-output state gets one shared-budget retry."""
+        action_doc = yaml.safe_load(
+            (REPO_ROOT / ".github/actions/run-opencode-container/action.yml")
+            .read_text(encoding="utf-8")
+        )
+        run = action_doc["runs"]["steps"][0]["run"]
+        loop = run.split("# OPENCODE_ATTEMPT_LOOP_BEGIN", 1)[1].split(
+            "# OPENCODE_ATTEMPT_LOOP_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bin_dir = root / "bin"
+            bin_dir.mkdir()
+            prompt = root / "prompt.md"
+            prompt.write_text("translate\n", encoding="utf-8")
+            loop = loop.replace("/tmp/opencode-prompt.md", str(prompt))
+            loop = loop.replace(
+                'attempt_log="/tmp/opencode-attempt-${attempt_count}.log"',
+                'attempt_log="$PWD/opencode-attempt-${attempt_count}.log"')
+
+            timeout = bin_dir / "timeout"
+            timeout.write_text(
+                "#!/bin/bash\nset -eu\nshift\nexec \"$@\"\n",
+                encoding="utf-8")
+            timeout.chmod(0o755)
+            opencode = bin_dir / "opencode"
+            opencode.write_text(
+                "#!/bin/bash\n"
+                "set -eu\n"
+                "attempt=0\n"
+                "if [ -f \"$OPENCODE_ATTEMPT_FILE\" ]; then "
+                "attempt=$(tr -d '\\r\\n' < \"$OPENCODE_ATTEMPT_FILE\"); fi\n"
+                "attempt=$((attempt + 1))\n"
+                "printf '%s\\n' \"$attempt\" > \"$OPENCODE_ATTEMPT_FILE\"\n"
+                "case \"$OPENCODE_FAKE_BEHAVIOR\" in\n"
+                "  retry-success)\n"
+                "    if [ \"$attempt\" -eq 2 ]; then\n"
+                "      mkdir -p .tmp\n"
+                "      printf 'translated\\n' > .tmp/generative-translation.ko.ara.md\n"
+                "      echo 'translation_chunk {'\n"
+                "    fi\n"
+                "    ;;\n"
+                "  nonzero) exit 9 ;;\n"
+                "  partial)\n"
+                "    mkdir -p .tmp\n"
+                "    printf 'partial\\n' > .tmp/generative-translation.ko.ara.md\n"
+                "    ;;\n"
+                "  no-output) ;;\n"
+                "  *) exit 98 ;;\n"
+                "esac\n",
+                encoding="utf-8")
+            opencode.chmod(0o755)
+
+            def run_case(name: str, lane: str, behavior: str):
+                case_dir = root / name
+                case_dir.mkdir()
+                attempts = case_dir / "attempts"
+                env = {
+                    **os.environ,
+                    "PATH": f"{bin_dir}:/usr/bin:/bin",
+                    "AGENT_TIMEOUT_MINUTES": "1",
+                    "AGENT_LANE": lane,
+                    "RETURN_ARTIFACTS": ".tmp/generative-translation.ko.ara.md",
+                    "OPENCODE_MODEL_REF": "opencode-go/deepseek-v4-flash",
+                    "OPENCODE_ATTEMPT_FILE": str(attempts),
+                    "OPENCODE_FAKE_BEHAVIOR": behavior,
+                }
+                result = subprocess.run(
+                    ["bash", "-c", "set -euo pipefail\n" + loop],
+                    cwd=case_dir, env=env, text=True, capture_output=True,
+                    check=False)
+                return result, attempts.read_text(encoding="utf-8").strip(), (
+                    case_dir / ".opencode-attempt-telemetry").read_text(
+                        encoding="utf-8")
+
+            retry, attempts, telemetry = run_case(
+                "retry", "generative-research-ko", "retry-success")
+            self.assertEqual(0, retry.returncode, retry.stdout + retry.stderr)
+            self.assertEqual("2", attempts)
+            self.assertIn("attempt_count=2", telemetry)
+            self.assertIn("translation_chunk_calls=1", telemetry)
+            self.assertIn("artifact_count=1", telemetry)
+            self.assertIn(
+                "retry_reason=zero-artifact-zero-translation-chunk", telemetry)
+
+            other, attempts, telemetry = run_case(
+                "other-lane", "bluesky-watch", "no-output")
+            self.assertEqual(0, other.returncode, other.stdout + other.stderr)
+            self.assertEqual("1", attempts)
+            self.assertIn("attempt_count=1", telemetry)
+            self.assertIn("retry_reason=none", telemetry)
+
+            failed, attempts, telemetry = run_case(
+                "nonzero", "generative-research-ko", "nonzero")
+            self.assertEqual(0, failed.returncode, failed.stdout + failed.stderr)
+            self.assertEqual("1", attempts)
+            self.assertIn("last_agent_status=9", telemetry)
+            self.assertIn("retry_reason=none", telemetry)
+
+            partial, attempts, telemetry = run_case(
+                "partial", "generative-research-ko", "partial")
+            self.assertEqual(0, partial.returncode, partial.stdout + partial.stderr)
+            self.assertEqual("1", attempts)
+            self.assertIn("artifact_count=1", telemetry)
+            self.assertIn("retry_reason=none", telemetry)
+
+    def test_opencode_attempt_telemetry_is_strictly_validated(self):
+        """Only the fixed five-line numeric/enumerated record is logged."""
+        action_doc = yaml.safe_load(
+            (REPO_ROOT / ".github/actions/run-opencode-container/action.yml")
+            .read_text(encoding="utf-8")
+        )
+        run = action_doc["runs"]["steps"][0]["run"]
+        guard = run.split("# TRUSTED_ATTEMPT_TELEMETRY_BEGIN", 1)[1].split(
+            "# TRUSTED_ATTEMPT_TELEMETRY_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            isolated = Path(tmp) / "isolated"
+            isolated.mkdir()
+            telemetry = isolated / ".opencode-attempt-telemetry"
+            telemetry.write_text(
+                "attempt_count=2\n"
+                "last_agent_status=0\n"
+                "translation_chunk_calls=15\n"
+                "artifact_count=1\n"
+                "retry_reason=zero-artifact-zero-translation-chunk\n",
+                encoding="utf-8")
+            valid = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + guard],
+                env={**os.environ, "isolated_workspace": str(isolated),
+                     "agent_status": "0"},
+                text=True, capture_output=True, check=False)
+            self.assertEqual(0, valid.returncode, valid.stdout + valid.stderr)
+            self.assertIn("attempts=2 last_status=0 translation_chunk_calls=15",
+                          valid.stdout)
+
+            telemetry.write_text(
+                telemetry.read_text(encoding="utf-8") + "untrusted=field\n",
+                encoding="utf-8")
+            malformed = subprocess.run(
+                ["bash", "-c", "set -euo pipefail\n" + guard],
+                env={**os.environ, "isolated_workspace": str(isolated),
+                     "agent_status": "0"},
+                text=True, capture_output=True, check=False)
+            self.assertNotEqual(0, malformed.returncode)
+            self.assertIn("attempt telemetry is malformed",
+                          malformed.stdout + malformed.stderr)
+
     def test_editorial_mode_accepts_artifact_only_but_twitter_does_not(self):
         """Bluesky returns a temp section; Twitter still requires commit paths."""
         action_path = (REPO_ROOT / ".github" / "actions" /
@@ -940,6 +1109,7 @@ class RoutingInvariants(unittest.TestCase):
             "RETURN_ARTIFACTS": ".tmp/bluesky-section.md",
             "OPENCODE_CONFIG_REL": ".github/opencode/opencode.json",
             "OPENCODE_MODEL_REF": "opencode-go/deepseek-v4-flash",
+            "AGENT_TIMEOUT_MINUTES": "45",
             "BIRDY_TOOL_LOG_REL": "",
         }
         editorial = subprocess.run(
