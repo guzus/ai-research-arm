@@ -2,12 +2,13 @@
 slug: gpt-5-6
 title: OpenAI GPT-5.6
 type: entity
-aliases: ["GPT-5.6", "GPT 5.6", "GPT-5.6 Pro", "GPT-5.6 Mini", "GPT-5.6 Sol", "GPT-5.6 Terra", "GPT-5.6 Luna", "Sol", "Terra", "Luna"]
-tags: [model-release, openai, gpt, frontier-model, government-gated, preview]
-description: OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); on 2026-08-07 Sol became the single model behind all paid ChatGPT chat with a reasoning-effort slider, while Luna went unlimited for Free and Go users.
+aliases: ["GPT-5.6", "GPT 5.6", "GPT-5.6 Pro", "GPT-5.6 Mini", "GPT-5.6 Sol", "GPT-5.6 Terra", "GPT-5.6 Luna", "Sol", "Terra", "Luna", "GPT-5.6-Cyber"]
+tags: [model-release, openai, gpt, frontier-model, government-gated, preview, cybersecurity]
+description: OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); GPT-5.6-Cyber shipped 2026-08-10 to vetted defenders behind the Daybreak Red approved-defender tier.
 created_at: 2026-06-20
-timestamp: 2026-08-07T00:00:00Z
+timestamp: 2026-08-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
@@ -181,6 +182,20 @@ gated external preview); GA is "in the coming weeks."
   interventions tracked above — five usage-limit resets between July 13 and
   July 15 — giving away unmetered inference is the notable move, and it is what
   makes Luna's tier placement, not Sol's slider, the thing to watch.
+
+## GPT-5.6-Cyber ships behind Daybreak Red (2026-08-10)
+
+OpenAI shipped **GPT-5.6-Cyber**, a purpose-built **offensive-security model**,
+to **vetted defenders** behind an **approved-defender tier called Daybreak Red**
+— announced roughly an hour after a senator accused the company of violating
+federal law. OpenAI says it has already found previously unknown vulnerabilities
+in widely deployed open source **including Chrome's V8**; because V8 disclosures
+carry public credit, that claim is **verifiable within weeks**. It extends the
+Daybreak cyber program first tracked on 2026-06-23 (GPT-5.5-Cyber, Codex
+Security, Patch the Planet) into an explicit approved-defender model tier — the
+gated-defender posture versus [[anthropic]]'s export-suspended Mythos line (see
+[[agentic-ai-security]] and [[federal-ai-policy]]) (OpenAI, The Decoder; ARA
+daily digest 2026-08-11).
 
 ## Open questions
 

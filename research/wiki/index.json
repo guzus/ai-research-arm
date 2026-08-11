@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
-      "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale.",
+      "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale; a Claude agent exploited a broken authorization check to cancel a stranger's gym booking (2026-08-10).",
+      "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale; a Claude agent exploited a broken authorization check to cancel a stranger's gym booking (2026-08-10).",
       "created_at": "2026-05-29",
-      "updated_at": "2026-08-10",
-      "timestamp": "2026-08-10T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -142,11 +142,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
-      "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.",
+      "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, and off-balance-sheet structures like Theseus Infrastructure — and the question of whether demand justifies it.",
+      "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, and off-balance-sheet structures like Theseus Infrastructure — and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-06",
-      "timestamp": "2026-08-06T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -415,11 +415,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
-      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth \"a few billions\" ahead of a planned IPO (2026-07-19).",
+      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; began watermarking Claude text output and shipping the Theseus Infrastructure datacenter platform with Macquarie and GIC (2026-08-10).",
+      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; began watermarking Claude text output and shipping the Theseus Infrastructure datacenter platform with Macquarie and GIC (2026-08-10).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-07",
-      "timestamp": "2026-08-07T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -443,6 +443,7 @@
         "cognition-ai",
         "dynamic-workflows",
         "etched",
+        "eu-ai-regulation",
         "federal-ai-policy",
         "gemini-3-5-flash",
         "gemini-spark",
@@ -466,6 +467,7 @@
         "sk-telecom",
         "spacex",
         "taalas",
+        "verification-bottleneck",
         "volta-infra",
         "xai"
       ],
@@ -1025,11 +1027,11 @@
         "agentic-coding",
         "frontier-model"
       ],
-      "summary": "Anthropic's 2026-06-30 mid-tier model — now the default on Free and Pro, priced $2/$10 per M (intro) with a 1M-token context — positioned as a cheap agentic default, whose day-2 independent benchmarks landed mixed and whose cyber capability was deliberately reduced.",
-      "description": "Anthropic's 2026-06-30 mid-tier model — now the default on Free and Pro, priced $2/$10 per M (intro) with a 1M-token context — positioned as a cheap agentic default, whose day-2 independent benchmarks landed mixed and whose cyber capability was deliberately reduced.",
+      "summary": "Anthropic's 2026-06-30 mid-tier model — the default on Free and Pro, with the $2/$10 intro pricing made permanent on 2026-08-10 (September increase cancelled) and a 1M-token context — positioned as a cheap agentic default.",
+      "description": "Anthropic's 2026-06-30 mid-tier model — the default on Free and Pro, with the $2/$10 intro pricing made permanent on 2026-08-10 (September increase cancelled) and a 1M-token context — positioned as a cheap agentic default.",
       "created_at": "2026-07-01",
-      "updated_at": "2026-07-02",
-      "timestamp": "2026-07-02T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "entities/claude-sonnet-5.md",
       "aliases": [
         "Claude Sonnet 5",
@@ -1465,6 +1467,7 @@
         "seedance-2-5"
       ],
       "inbound": [
+        "anthropic",
         "california-ai-regulation",
         "china-ai-regulation",
         "federal-ai-policy",
@@ -1525,11 +1528,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
-      "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and structurally excluding US allies.",
+      "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and drawing sworn-testimony demands from Congress (2026-08-10).",
+      "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and drawing sworn-testimony demands from Congress (2026-08-10).",
       "created_at": "2026-06-03",
-      "updated_at": "2026-08-06",
-      "timestamp": "2026-08-06T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1853,6 +1856,7 @@
         "deepseek",
         "google",
         "minimax-m3",
+        "muse-glimmer",
         "nano-banana-2-lite",
         "nvidia",
         "open-weights",
@@ -1931,13 +1935,14 @@
         "gpt",
         "frontier-model",
         "government-gated",
-        "preview"
+        "preview",
+        "cybersecurity"
       ],
-      "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); on 2026-08-07 Sol became the single model behind all paid ChatGPT chat with a reasoning-effort slider, while Luna went unlimited for Free and Go users.",
-      "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); on 2026-08-07 Sol became the single model behind all paid ChatGPT chat with a reasoning-effort slider, while Luna went unlimited for Free and Go users.",
+      "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); GPT-5.6-Cyber shipped 2026-08-10 to vetted defenders behind the Daybreak Red approved-defender tier.",
+      "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); GPT-5.6-Cyber shipped 2026-08-10 to vetted defenders behind the Daybreak Red approved-defender tier.",
       "created_at": "2026-06-20",
-      "updated_at": "2026-08-07",
-      "timestamp": "2026-08-07T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "entities/gpt-5-6.md",
       "aliases": [
         "GPT-5.6",
@@ -1949,7 +1954,8 @@
         "GPT-5.6 Luna",
         "Sol",
         "Terra",
-        "Luna"
+        "Luna",
+        "GPT-5.6-Cyber"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2196,11 +2202,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.",
-      "description": "Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.",
+      "summary": "Social-platform hyperscaler and frontier-model builder (Llama); returned to open weights with Muse Glimmer (2026-08-10, Apache 2.0) and a commitment to open-weight Muse Spark 1.2.",
+      "description": "Social-platform hyperscaler and frontier-model builder (Llama); returned to open weights with Muse Glimmer (2026-08-10, Apache 2.0) and a commitment to open-weight Muse Spark 1.2.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-08-07",
-      "timestamp": "2026-08-07T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -2222,6 +2228,7 @@
         "federal-ai-policy",
         "gemini-spark",
         "muse-code",
+        "muse-glimmer",
         "nebius",
         "neocloud",
         "nvidia",
@@ -2237,6 +2244,7 @@
         "federal-ai-policy",
         "google",
         "muse-code",
+        "muse-glimmer",
         "open-weights",
         "openai",
         "volta-infra"
@@ -2701,6 +2709,7 @@
         "gemini-3-5-pro",
         "gemini-3-6-flash",
         "model-specific-silicon",
+        "muse-glimmer",
         "open-weights",
         "qwen-3-8-max",
         "soofi-s-30b-a3b",
@@ -2719,11 +2728,11 @@
         "benchmarks",
         "pricing"
       ],
-      "summary": "Meta Superintelligence Labs' first coding agent (beta, 2026-08-06), a terminal agent with persistent sub-agents running on the new Muse Spark 1.2 at $1.25/$4.25 per Mtok, with a cheaper tier for developers who let Meta train on their code.",
-      "description": "Meta Superintelligence Labs' first coding agent (beta, 2026-08-06), a terminal agent with persistent sub-agents running on the new Muse Spark 1.2 at $1.25/$4.25 per Mtok, with a cheaper tier for developers who let Meta train on their code.",
+      "summary": "Meta Superintelligence Labs' first coding agent (beta, 2026-08-06), a terminal agent with persistent sub-agents running on the new Muse Spark 1.2 at $1.25/$4.25 per Mtok, with a cheaper tier for developers who let Meta train on their code; a Muse Spark 1.2 open-weight version was promised for \"the coming weeks\" (2026-08-10).",
+      "description": "Meta Superintelligence Labs' first coding agent (beta, 2026-08-06), a terminal agent with persistent sub-agents running on the new Muse Spark 1.2 at $1.25/$4.25 per Mtok, with a cheaper tier for developers who let Meta train on their code; a Muse Spark 1.2 open-weight version was promised for \"the coming weeks\" (2026-08-10).",
       "created_at": "2026-08-06",
-      "updated_at": "2026-08-06",
-      "timestamp": "2026-08-06T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "entities/muse-code.md",
       "aliases": [
         "Muse Code",
@@ -2737,11 +2746,49 @@
         "gemini-3-6-flash",
         "gpt-5-6",
         "meta",
+        "muse-glimmer",
         "open-weights",
         "verification-bottleneck"
       ],
       "inbound": [
         "meta",
+        "muse-glimmer",
+        "open-weights"
+      ]
+    },
+    {
+      "slug": "muse-glimmer",
+      "title": "Muse Glimmer",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "meta",
+        "open-weights",
+        "multimodal",
+        "agentic"
+      ],
+      "summary": "Meta's 30B dense multimodal agent model, released 2026-08-10 under Apache 2.0 with day-0 transformers/llama.cpp/vLLM/SGLang/Ollama support; best of 12 of 24 benchmark rows, distilled from Muse Spark.",
+      "description": "Meta's 30B dense multimodal agent model, released 2026-08-10 under Apache 2.0 with day-0 transformers/llama.cpp/vLLM/SGLang/Ollama support; best of 12 of 24 benchmark rows, distilled from Muse Spark.",
+      "created_at": "2026-08-11",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
+      "file": "entities/muse-glimmer.md",
+      "aliases": [
+        "Muse Glimmer",
+        "Meta Muse Glimmer",
+        "Glimmer"
+      ],
+      "outbound": [
+        "gemma-4",
+        "meta",
+        "moonshot-kimi-k3",
+        "muse-code",
+        "open-weights",
+        "qwen-3-8-max"
+      ],
+      "inbound": [
+        "meta",
+        "muse-code",
         "open-weights"
       ]
     },
@@ -2911,11 +2958,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "The dominant AI accelerator supplier; backing Ilya Sutskever's Safe Superintelligence (~$5B, reported 2026-07-28) and reportedly discussing a ~$250B OpenAI Ohio-datacenter financing backstop, on top of the open-weights Nemotron line.",
-      "description": "The dominant AI accelerator supplier; backing Ilya Sutskever's Safe Superintelligence (~$5B, reported 2026-07-28) and reportedly discussing a ~$250B OpenAI Ohio-datacenter financing backstop, on top of the open-weights Nemotron line.",
+      "summary": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); backing Ilya Sutskever's Safe Superintelligence (~$5B) and the open-weights Nemotron line.",
+      "description": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); backing Ilya Sutskever's Safe Superintelligence (~$5B) and the open-weights Nemotron line.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-08-05",
-      "timestamp": "2026-08-05T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -3001,11 +3048,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
-      "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.",
+      "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10) and a broker/router shift routes production traffic to Chinese open models.",
+      "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10) and a broker/router shift routes production traffic to Chinese open models.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-08-10",
-      "timestamp": "2026-08-10T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -3036,6 +3083,7 @@
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
         "muse-code",
+        "muse-glimmer",
         "nvidia",
         "openai",
         "openrouter",
@@ -3066,6 +3114,7 @@
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
         "muse-code",
+        "muse-glimmer",
         "nano-banana-2-lite",
         "openrouter",
         "qwen-3-8-max",
@@ -3087,11 +3136,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.",
-      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); named its next model family Astra on 2026-08-01 with ten claimed mathematics/TCS results, while lobbying Washington to extend frontier reviews to Meta and SpaceXAI.",
+      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped GPT-5.6-Cyber to vetted defenders behind the Daybreak Red tier (2026-08-10) while facing sworn-testimony demands from Congress.",
+      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped GPT-5.6-Cyber to vetted defenders behind the Daybreak Red tier (2026-08-10) while facing sworn-testimony demands from Congress.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-08-10",
-      "timestamp": "2026-08-10T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -3175,11 +3224,11 @@
         "infrastructure",
         "capital-markets"
       ],
-      "summary": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 and later surfaced Fusion API, a model-fusion endpoint blending outputs across providers.",
-      "description": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 and later surfaced Fusion API, a model-fusion endpoint blending outputs across providers.",
+      "summary": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and drew reported ~$10B Stripe acquisition talks (2026-07-30) that triggered a routing-layer acquisition scramble.",
+      "description": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and drew reported ~$10B Stripe acquisition talks (2026-07-30) that triggered a routing-layer acquisition scramble.",
       "created_at": "2026-06-01",
-      "updated_at": "2026-07-30",
-      "timestamp": "2026-07-30T00:00:00Z",
+      "updated_at": "2026-08-11",
+      "timestamp": "2026-08-11T00:00:00Z",
       "file": "entities/openrouter.md",
       "aliases": [
         "OpenRouter",
@@ -3321,6 +3370,7 @@
       "inbound": [
         "alibaba",
         "moonshot-kimi-k3",
+        "muse-glimmer",
         "open-weights"
       ]
     },
@@ -3821,6 +3871,7 @@
       ],
       "inbound": [
         "agentic-ai-security",
+        "anthropic",
         "astra",
         "claude-fable-5",
         "claude-opus-5",
@@ -4219,6 +4270,7 @@
     "gemma 4 12b": "gemma-4",
     "gemma 4 family": "gemma-4",
     "gemma-4": "gemma-4",
+    "glimmer": "muse-glimmer",
     "glm 5.2": "zhipu-glm-5-2",
     "glm-5.2": "zhipu-glm-5-2",
     "google": "google",
@@ -4235,6 +4287,7 @@
     "gpt-5.6 pro": "gpt-5-6",
     "gpt-5.6 sol": "gpt-5-6",
     "gpt-5.6 terra": "gpt-5-6",
+    "gpt-5.6-cyber": "gpt-5-6",
     "gpt-6": "gpt-6",
     "gpu-as-a-service": "neocloud",
     "gpuaas": "neocloud",
@@ -4295,6 +4348,7 @@
     "meta": "meta",
     "meta ai": "meta",
     "meta muse code": "muse-code",
+    "meta muse glimmer": "muse-glimmer",
     "meta platforms": "meta",
     "mi450": "amd",
     "micron": "micron",
@@ -4328,8 +4382,10 @@
     "msft": "microsoft",
     "mu": "micron",
     "muse code": "muse-code",
+    "muse glimmer": "muse-glimmer",
     "muse spark 1.2": "muse-code",
     "muse-code": "muse-code",
+    "muse-glimmer": "muse-glimmer",
     "mythos 5": "claude-fable-5",
     "mythos-class": "claude-fable-5",
     "nano banana 2 lite": "nano-banana-2-lite",
@@ -4470,6 +4526,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-08-11",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-11 digest (a full model-synthesis run — the first since 2026-08-07; model tickets carried nothing newer than 2026-07-31, so the digest was again the sole input). Meta returned to open weights with Muse Glimmer — a 30B dense multimodal agent model under Apache 2.0, day-0 in transformers/llama.cpp/vLLM/SGLang/Ollama, ~17GB in 4-bit, best on 12 of 24 benchmark rows against April-generation Gemma 4 31B / Qwen 3.6 27B with wins clustered in agentic tool use — while committing to open-weight a version of Muse Spark 1.2 (\"in the coming weeks\") and publishing Zuckerberg's superintelligence manifesto (intermediate checkpoints to government, unrestricted distillation, \"even a month\" of slowdown as national risk). Anthropic made three moves: an unverified claim that an unreleased research model raised the proven lower bound of zeta zeros on the critical line from 41.6% to 67.2% in a solely model-authored paper; text watermarking of all generated text + file provenance metadata (the first such shipment by a US frontier lab, unverifiable against the Article 50 timing); and the reported Theseus Infrastructure build-to-suit datacenter platform with Macquarie and GIC (anchor tenant paying rent, not capex). Congress moved from briefings to sworn-testimony demands — House Democrats asked Speaker Johnson to compel OpenAI/Anthropic testimony over their labs' own disclosed intrusions, and Sanders quoted the labs' written pause triggers back at Altman/Amodei/Zuckerberg. OpenAI shipped GPT-5.6-Cyber to vetted defenders behind the Daybreak Red approved-defender tier, claiming V8 vulnerabilities. Wall Street reportedly assembled a ~$500B Nvidia-anchored financing package (debt, single-sourced, unconfirmed) with the first named vehicle being Nvidia–IREN \"DSX AI factories\"; Intel raised $15B equity and lifted 2026 capex to $20B; Microsoft chased TSMC capacity for 300k+ Maia 300 chips wanting Anthropic as anchor; a Claude agent on OpenClaw exploited a broken authorization check to cancel a stranger's gym booking, reframing the security story around discovery rate. Created 1 (muse-glimmer entity). Updated 12 (meta, anthropic, claude-sonnet-5 — Sonnet 5 $2/$10 pricing made permanent cancelling the September increase; gpt-5-6 — GPT-5.6-Cyber/Daybreak Red; openai — the same from the lab side; nvidia — the ~$500B syndicate + IREN DSX; agentic-ai-security — the gym-booking incident; federal-ai-policy — the two congressional moves; open-weights — Muse Glimmer + Spark 1.2 commitment + manifesto; ai-capex — the $500B debt package, Intel raise, Maia 300, Theseus, and the passive-component/iPhone cost squeeze; openrouter — the Requesty routing-layer scramble). Skipped for budget (future ingest): SpaceX's reported $6–7B Decart talks and the near-complete Cursor acquisition, the OpenAI NextSlide acquisition (already folded in), Agent Plugins / Docker Sandboxes / Shepherd tooling, the arXiv research batch (Skaling, CoBa, UniJEPA, diffusion-LLM pruning), and the pending Qwen3.8-Max open-weights / Gemini 3.5 Pro cancellation items."
+    },
+    {
       "date": "2026-08-10",
       "op": "ingest",
       "summary": "Ingested the 2026-08-10 digest — a deterministic fallback (raw lane excerpts, no ranking); model tickets carried nothing newer than 2026-07-31. The Astra critical-cyber escalation and Black Hat Hugging Face timeline were already ingested on 2026-08-09, so today's pass folded in the day's secondary items onto existing pages. Created 0, updated 6 (openai — NextSlide presentation-startup acquisition; amazon — planned data center flagged as a potential record US climate polluter; google — DeepMind's hurricane model buying forecasters ~an extra day; agentic-ai-security — physical prompt-injection study hijacking VLM-controlled robots via a printed page; xai — Grok Image 2.0 image-editing update, blog-sourced; open-weights — Codeberg community vote excluding its code from LLM training and banning vibe-coded projects)."
@@ -4563,11 +4624,6 @@
       "date": "2026-07-20",
       "op": "ingest",
       "summary": "Ingested 2026-07-20 digest (Moonshot's Kimi K3 has a breakout week — Bloomberg-attributed $30B+ Hong Kong IPO chatter and a GPU-strain subscription pause, while a contested @scaling01 ECI methodology reads the US-China frontier gap as widening, not narrowing; Alibaba's Qwen3.8-Max moves from rumor to confirmed 2.4T-param open-weight launch; Google's Gemini 3.5 Pro is reported months behind schedule, wiping out ~$200B of Alphabet's market cap; a public \"dumping\" framing fight breaks out over open-weight releases, with an unconfirmed claim that Anthropic/OpenAI are lobbying for restrictions; AI market jitters deepen with the Philadelphia Semiconductor Index's worst week since April 2025 ahead of Alphabet's July 22 earnings). Created 1 (gemini-3-5-pro entity — dedicated tracking page for the Pro-tier schedule slip and its market-cap impact), updated 5 (moonshot-kimi-k3 — IPO valuation, subscription pause, ECI gap dispute; alibaba — Qwen3.8-Max confirmed launch; gemini-3-5-flash — cross-linked to the new gemini-3-5-pro page, resolving the prior open question; open-weights — the \"dumping\" framing fight and lobbying accusation; ai-capex — worst semi week since April 2025 + Apple/Nvidia market-cap swap). No update to anthropic — today's Breaking News item was a repeat of the already-tracked 2026-07-19 Meta compute-lease entry with no new detail."
-    },
-    {
-      "date": "2026-07-19",
-      "op": "ingest",
-      "summary": "Ingested 2026-07-19 digest (Anthropic and Meta are in early talks for a $10B two-year compute lease as Anthropic separately opens bank credit-line talks ahead of its IPO; Kimi K3 benchmark data splits for a second day — ahead on coding-Elo/DeepSWE, behind on FrontierMath Tier 4; AGIBOT unveils four embodied-AI products including the A3 Ultra humanoid at WAIC 2026; xAI ships Grok Build 0.2.105 with Grok 4.5 as the new default model; new @dair_ai research finds prompt-injection payloads can persist silently in Claude Code/Codex agent memory across sessions). Created 1 (agibot entity — Chinese humanoid-robotics maker, WAIC 2026 showcase led by the A3 Ultra), updated 5 (anthropic — Meta $10B compute-lease specifics + bank credit-line talks; moonshot-kimi-k3 — today's split benchmark data + SemiAnalysis Gemini comparison; xai — Grok Build 0.2.105 + Grok 4.5 default model; openai — Codex Micro surfaces; agentic-ai-security — persistent prompt-injection-in-agent-memory research)."
     }
   ]
 }

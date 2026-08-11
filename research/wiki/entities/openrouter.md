@@ -4,10 +4,11 @@ title: OpenRouter
 type: entity
 aliases: ["OpenRouter", "openrouter.ai", "@OpenRouterAI", "OpenRouter Fusion", "Fusion API"]
 tags: [llm-router, inference, infrastructure, capital-markets]
-description: LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30 and later surfaced Fusion API, a model-fusion endpoint blending outputs across providers.
+description: LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and drew reported ~$10B Stripe acquisition talks (2026-07-30) that triggered a routing-layer acquisition scramble.
 created_at: 2026-06-01
-timestamp: 2026-07-30T00:00:00Z
+timestamp: 2026-08-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
@@ -48,6 +49,13 @@ funding signal of the cycle:
   payments company on owning the developer-facing routing chokepoint
   between applications and the frontier-model market this page tracks.
   Nothing is confirmed by either company (ARA daily digest 2026-07-30).
+- **The Stripe talks trigger a scramble across the routing layer (2026-08-10).**
+  The reported ~$10B Stripe talks have set off competition across the routing
+  layer: competitor **Requesty says at least 25 companies approached it in
+  recent weeks about investment, acquisition or partnership** — an
+  industry-wide consolidation signal on the developer-facing routing
+  chokepoint, independent of whether the Stripe deal closes. Treat the Requesty
+  count as a competitor's self-reported datapoint (ARA daily digest 2026-08-11).
 
 **Why the round matters.** OpenRouter sits between the application
 layer and the inference layer, capturing routing economics across
