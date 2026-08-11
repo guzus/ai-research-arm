@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-11 13:35:11 UTC
+
+CYCLE: The 30B always-on-agent tier gets contested, and a bank underwrites SpaceX's Cursor deal.
+
+TOP STORIES:
+• Nvidia open-weights Nemotron 3.5 Lightning (30B MoE, ~3B active, single GPU) plus NeMo Switchyard, a router that picks the cheapest model - 27h after Meta's 30B Muse Glimmer [✓]
+• Morgan Stanley: $300 SpaceX target, $600 bull case, resting on the pending $60B Cursor deal and ~$33B Cursor ARR by 2030 [⚠]
+• "Grok 4.6 ships today" withdrawn by the account that called it - delayed, no source beyond the Cursor leak [🚩]
+
+WATCH: An independent agentic benchmark putting Nemotron 3.5 Lightning against Muse Glimmer 30B and DeepSeek V4 Flash.
+
+Full update on GitHub.

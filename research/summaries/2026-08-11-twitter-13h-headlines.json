@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "NVIDIA OPEN-WEIGHTS NEMOTRON 3.5 LIGHTNING — 30B MoE, 3B ACTIVE, BUILT FOR ALWAYS-ON AGENTS",
+    "source": "@huggingface",
+    "url": "https://x.com/huggingface/status/2087168284919541798",
+    "category": "opensource"
+  },
+  {
+    "headline": "NVIDIA SHIPS NEMO SWITCHYARD — OPEN ROUTER THAT SENDS EACH AGENT STEP TO THE CHEAPEST CAPABLE MODEL",
+    "source": "@huggingface",
+    "url": "https://x.com/huggingface/status/2087168284919541798",
+    "category": "infra"
+  },
+  {
+    "headline": "MORGAN STANLEY PUTS $300 TARGET, $600 BULL CASE ON SPACEX — SEES CURSOR ARR AT ~$33B BY 2030",
+    "source": "@Teslarati",
+    "url": "https://x.com/Teslarati/status/2087170360101761071",
+    "category": "business"
+  },
+  {
+    "headline": "RIVER AI RAISES $1.1 BILLION FOR USER-OWNED PERSONAL AI BUILT ON OPEN MODELS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2087150467134410921",
+    "category": "business"
+  },
+  {
+    "headline": "PREFILL PROBE CLAIMS KIMI K3 OUTPUT SHIFTS ON CLAUDE OPUS REASONING TRACES; DEEPSEEK DOES NOT",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2087160241787949183",
+    "category": "research"
+  },
+  {
+    "headline": "GROK 4.6 SLIPS — SAME-DAY RELEASE CALL WITHDRAWN AFTER MODEL LEAKED BRIEFLY INSIDE CURSOR",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2087135944843415921",
+    "category": "model"
+  }
+]
