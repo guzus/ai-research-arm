@@ -157,6 +157,8 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual("./.github/actions/run-opencode-container", child["uses"])
         self.assertEqual("${{ inputs.opencode-api-key }}",
                          child["with"]["opencode-api-key"])
+        self.assertEqual("${{ inputs.opencode-config }}",
+                         child["with"]["opencode-config"])
         rendered_child = json.dumps(child, sort_keys=True)
         for secret_input in ("claude-code-oauth-token", "fireworks-api-key",
                              "zai-api-key"):
@@ -168,6 +170,46 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIs(adapter["editorial_contract"], True)
         self.assertEqual({"opencode-go": "opencode-api-key"},
                          adapter["provider_credentials"])
+
+    def test_korean_translation_dispatch_uses_capability_minimized_policy(self):
+        workflow = yaml.safe_load(
+            (REPO_ROOT / ".github/workflows/translate-generative-research.yml")
+            .read_text(encoding="utf-8")
+        )
+        dispatch = next(
+            step
+            for step in workflow["jobs"]["translate"]["steps"]
+            if step.get("uses") == "./.github/actions/agent-dispatch"
+        )
+        self.assertEqual(
+            ".github/opencode/translation.json",
+            dispatch["with"].get("opencode-config"),
+        )
+
+        policy = json.loads(
+            (REPO_ROOT / ".github/opencode/translation.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertIs(False, policy["formatter"])
+        self.assertIs(False, policy["lsp"])
+        policy = policy["permission"]
+        self.assertEqual("deny", policy["*"])
+        self.assertEqual(
+            {
+                "*": "deny",
+                ".agent-input/source.ara.md": "allow",
+                ".agent-input/translation.json": "allow",
+            },
+            policy["read"],
+        )
+        self.assertEqual(
+            {
+                "*": "deny",
+                ".tmp/generative-translation.ko.ara.md": "allow",
+            },
+            policy["edit"],
+        )
 
     def test_global_fallback_chain_shape(self):
         self.assertEqual(self.fallback["harness"], "agent-run")
@@ -643,14 +685,15 @@ class RoutingInvariants(unittest.TestCase):
                                 .read_text(encoding="utf-8"))
         self.assertNotIn("model", production)
         self.assertNotIn("provider", production)
-        for name in ("opencode.json", "opencode-canary.json"):
+        for name in ("opencode.json", "opencode-canary.json", "translation.json"):
             cfg = json.loads((REPO_ROOT / ".github" / "opencode" / name)
                              .read_text(encoding="utf-8"))
             # opencode REJECTS unknown top-level keys ("Unrecognized key:
             # $comment"), which breaks config injection for the whole lane.
             # Keep revert notes in the workflows and docs, never in here.
             self.assertLessEqual(set(cfg) - {"$schema", "model", "provider",
-                                             "permission", "agent", "mcp"}, set(),
+                                             "permission", "agent", "mcp",
+                                             "formatter", "lsp"}, set(),
                                  f"{name}: unknown top-level key rejected by opencode")
 
     def test_opencode_twitter_tier_labels_name_the_served_model(self):
@@ -754,6 +797,8 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn("scripts/build_opencode_config.py", action)
         self.assertIn('--volume "$generated_opencode_config:/tmp/opencode.generated.json:ro"', action)
         self.assertIn("--env OPENCODE_CONFIG=/tmp/opencode.generated.json", action)
+        self.assertIn('[ ! -f "$config_path" ] || [ -L "$config_path" ]', action)
+        self.assertIn('mkdir -- "$isolated_tmp"', action)
         self.assertIn('trap \'exit 143\' TERM', action)
         self.assertIn('trap \'exit 130\' INT', action)
         self.assertIn("trap '' TERM INT", action)

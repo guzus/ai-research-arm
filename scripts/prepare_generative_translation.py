@@ -14,11 +14,15 @@ import hashlib
 import json
 import os
 import re
+import tempfile
 import uuid
 from pathlib import Path
 
 
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,119}$")
+AGENT_INPUT_DIR = Path(".agent-input")
+AGENT_SOURCE_PATH = AGENT_INPUT_DIR / "source.ara.md"
+REQUEST_PATH = AGENT_INPUT_DIR / "translation.json"
 
 
 def _regular_file(path: Path, root: Path) -> bool:
@@ -96,6 +100,49 @@ def prepare(repo: Path, slug: str, *, force: bool) -> dict[str, str]:
     }
 
 
+def _atomic_write(path: Path, payload: bytes) -> None:
+    if path.is_symlink() or (path.exists() and not path.is_file()):
+        raise ValueError(f"refusing unsafe staged input path: {path}")
+    fd, temporary_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    temporary = Path(temporary_name)
+    try:
+        with os.fdopen(fd, "wb") as handle:
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
+def stage_agent_request(
+    repo: Path, values: dict[str, str], request_file: str
+) -> dict[str, str]:
+    """Stage the minimum model-visible input under one canonical directory."""
+    if Path(request_file) != REQUEST_PATH:
+        raise ValueError(f"request file must be exactly {REQUEST_PATH.as_posix()!r}")
+    input_dir = repo / AGENT_INPUT_DIR
+    if input_dir.is_symlink() or (input_dir.exists() and not input_dir.is_dir()):
+        raise ValueError(f"refusing unsafe agent input directory: {input_dir}")
+    input_dir.mkdir(exist_ok=True)
+    if input_dir.resolve() != repo.resolve() / AGENT_INPUT_DIR:
+        raise ValueError(f"agent input directory is noncanonical: {input_dir}")
+
+    canonical_source = repo / values["source_path"]
+    source_payload = canonical_source.read_bytes()
+    if hashlib.sha256(source_payload).hexdigest() != values["source_sha256"]:
+        raise ValueError("canonical translation source changed during preflight")
+    _atomic_write(repo / AGENT_SOURCE_PATH, source_payload)
+
+    request_values = dict(values)
+    request_values["source_path"] = AGENT_SOURCE_PATH.as_posix()
+    request_payload = (
+        json.dumps(request_values, ensure_ascii=False, indent=2) + "\n"
+    ).encode("utf-8")
+    _atomic_write(repo / REQUEST_PATH, request_payload)
+    return request_values
+
+
 def _write_github_output(path: Path, values: dict[str, str]) -> None:
     with path.open("a", encoding="utf-8") as out:
         for key, value in values.items():
@@ -117,11 +164,7 @@ def main(argv: list[str] | None = None) -> int:
 
     repo = Path(args.repo_root).resolve()
     values = prepare(repo, args.slug, force=args.force == "true")
-    request_path = repo / args.request_file
-    request_path.parent.mkdir(parents=True, exist_ok=True)
-    if request_path.is_symlink():
-        raise SystemExit(f"refusing linked request path: {request_path}")
-    request_path.write_text(json.dumps(values, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    stage_agent_request(repo, values, args.request_file)
     (repo / ".tmp").mkdir(exist_ok=True)
     output_path = Path(args.github_output or os.environ.get("GITHUB_OUTPUT", ""))
     if str(output_path):

@@ -322,7 +322,10 @@ runs:
           PROMPT_FILE="$staged_prompt"
           printf '%s' "$PROMPT_TEXT" > "$PROMPT_FILE"
         fi
-        if [ ! -f "$GITHUB_WORKSPACE/$OPENCODE_CONFIG_REL" ]; then
+        workspace_root_for_config=$(realpath -- "$GITHUB_WORKSPACE")
+        config_path="$workspace_root_for_config/$OPENCODE_CONFIG_REL"
+        if [ ! -f "$config_path" ] || [ -L "$config_path" ] \
+          || [ "$(realpath -- "$config_path")" != "$config_path" ]; then
           echo "::error::opencode config not found: $OPENCODE_CONFIG_REL"
           exit 1
         fi
@@ -542,6 +545,24 @@ runs:
         fi
         if [ -d "$GITHUB_WORKSPACE/.agent-input" ]; then
           cp -a "$GITHUB_WORKSPACE/.agent-input" "$isolated_workspace/.agent-input"
+        fi
+        # Return artifacts are untracked, so the no-checkout clone does not
+        # carry their parent. Establish the one trusted scratch root before
+        # the model runs; a translation policy can then deny bash entirely.
+        isolated_tmp="$isolated_workspace/.tmp"
+        if [ -e "$isolated_tmp" ] || [ -L "$isolated_tmp" ]; then
+          if [ ! -d "$isolated_tmp" ] || [ -L "$isolated_tmp" ]; then
+            echo "::error::Isolated opencode .tmp root is linked or malformed."
+            exit 1
+          fi
+        else
+          mkdir -- "$isolated_tmp"
+        fi
+        isolated_tmp_parent=$(realpath -- "$(dirname -- "$isolated_tmp")")
+        if [ "$(realpath -- "$isolated_tmp")" \
+          != "$isolated_tmp_parent/$(basename -- "$isolated_tmp")" ]; then
+          echo "::error::Isolated opencode .tmp root is noncanonical."
+          exit 1
         fi
         # TRUSTED_CLONE_SETUP_END
         # Everything the opencode lane families shell out to:

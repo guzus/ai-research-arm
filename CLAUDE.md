@@ -234,6 +234,15 @@ process still directly receives its billing key and, on research/Twitter lanes,
 the X cookies while retaining network access, so it is not a secret-exfiltration
 boundary for those credentials.
 
+The Korean backfill narrows that container again with
+`.github/opencode/translation.json`: model tools may read only the staged
+request and staged canonical ARA copy, and may write only the one named `.tmp`
+draft. The policy explicitly denies every other tool under `--auto` and
+disables LSP and formatters; trusted host validators, the canonical writer, and
+exact diff gates remain the only publication path. The OpenCode process still
+needs its own billing key to reach the provider, so this reduces prompt-level
+capabilities but does not make the provider process a secretless boundary.
+
 Until 2026-08-08 opencode had NEITHER: it ran bare on the host with
 `edit`/`bash`/`webfetch` all `allow` plus `--auto`, which auto-approves
 anything not explicitly denied. That mattered because `generative-research.yml`
