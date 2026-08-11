@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-11T20:58:17.494Z",
-  "windowStart": "2026-08-10T08:00:00.000Z",
-  "windowEnd": "2026-08-13T09:00:00.000Z",
+  "generatedAt": "2026-08-11T21:29:03.128Z",
+  "windowStart": "2026-08-10T09:00:00.000Z",
+  "windowEnd": "2026-08-13T10:00:00.000Z",
   "timezone": "UTC",
   "items": [
     {
@@ -681,24 +681,43 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/7bdd737679e31bee31910d20f80afce1e84e18fc"
     },
     {
-      "id": "scheduled-hourly-twitter-yml-7---3-------2026-08-11T21-07-00-000Z",
-      "kind": "scheduled",
-      "lane": "Twitter/X",
-      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-kimi-k3)",
-      "status": "scheduled",
-      "start": "2026-08-11T21:07:00.000Z",
-      "end": "2026-08-11T22:07:00.000Z",
-      "source": "cron 7 */3 * * *"
+      "id": "commit-d463ace0795e",
+      "kind": "completed",
+      "lane": "Generative",
+      "title": "Who actually holds the GPU residual (#2090)",
+      "status": "completed",
+      "start": "2026-08-11T19:59:00.000Z",
+      "end": "2026-08-11T20:50:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "research agent",
+      "commit": "d463ace0795e",
+      "url": "https://github.com/guzus/ai-research-arm/commit/d463ace0795e7d01c7c0fff0b55c8f36533bd205"
     },
     {
-      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-08-11T21-26-00-000Z",
-      "kind": "scheduled",
-      "lane": "Models",
-      "title": "Model Pricing (price vs. capability)",
-      "status": "scheduled",
-      "start": "2026-08-11T21:26:00.000Z",
-      "end": "2026-08-11T22:11:00.000Z",
-      "source": "cron 26 3,9,15,21 * * *"
+      "id": "commit-343e28d7fa09",
+      "kind": "completed",
+      "lane": "Blogs",
+      "title": "AI expert blog watch",
+      "status": "completed",
+      "start": "2026-08-11T20:49:00.000Z",
+      "end": "2026-08-11T20:51:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "343e28d7fa09",
+      "url": "https://github.com/guzus/ai-research-arm/commit/343e28d7fa0905b7a3a881f9f0351c41ead9aad3"
+    },
+    {
+      "id": "commit-ddf9d5b76807",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-08-11 20:58 UTC (#2094)",
+      "status": "completed",
+      "start": "2026-08-11T20:58:00.000Z",
+      "end": "2026-08-11T20:59:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "ddf9d5b76807",
+      "url": "https://github.com/guzus/ai-research-arm/commit/ddf9d5b768071d226c8e546d02d38bd5f0db30b3"
     },
     {
       "id": "scheduled-twitter-model-ab-yml-40-21-------2026-08-11T21-40-00-000Z",
@@ -1949,6 +1968,26 @@
       "start": "2026-08-13T08:47:00.000Z",
       "end": "2026-08-13T09:17:00.000Z",
       "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-7---3-------2026-08-13T09-07-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-kimi-k3)",
+      "status": "scheduled",
+      "start": "2026-08-13T09:07:00.000Z",
+      "end": "2026-08-13T10:07:00.000Z",
+      "source": "cron 7 */3 * * *"
+    },
+    {
+      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-08-13T09-26-00-000Z",
+      "kind": "scheduled",
+      "lane": "Models",
+      "title": "Model Pricing (price vs. capability)",
+      "status": "scheduled",
+      "start": "2026-08-13T09:26:00.000Z",
+      "end": "2026-08-13T10:11:00.000Z",
+      "source": "cron 26 3,9,15,21 * * *"
     }
   ]
 }
