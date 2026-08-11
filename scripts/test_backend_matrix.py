@@ -204,12 +204,25 @@ class RoutingInvariants(unittest.TestCase):
             policy["read"],
         )
         self.assertEqual(
-            {
-                "*": "deny",
-                ".tmp/generative-translation.ko.ara.md": "allow",
-            },
-            policy["edit"],
+            "allow",
+            policy["translation_chunk"],
         )
+        self.assertNotIn("edit", policy)
+
+        chunk_tool = (
+            REPO_ROOT / ".opencode/tools/translation_chunk.ts"
+        ).read_text(encoding="utf-8")
+        self.assertIn(
+            'const DRAFT_RELATIVE_PATH = ".tmp/generative-translation.ko.ara.md"',
+            chunk_tool,
+        )
+        self.assertIn("constants.O_NOFOLLOW", chunk_tool)
+        self.assertIn("withExclusiveWrite", chunk_tool)
+        self.assertIn("before.size !== args.offset_bytes", chunk_tool)
+        self.assertIn("MAX_CHUNK_BYTES = 16 * 1024", chunk_tool)
+        self.assertIn("MAX_DRAFT_BYTES = 1024 * 1024", chunk_tool)
+        self.assertNotIn("filePath:", chunk_tool)
+        self.assertNotIn("path:", chunk_tool)
 
     def test_global_fallback_chain_shape(self):
         self.assertEqual(self.fallback["harness"], "agent-run")
