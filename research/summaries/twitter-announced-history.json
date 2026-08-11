@@ -22375,5 +22375,47 @@
     "headline": "CURSOR TEASES SAME-DAY RELEASE \u2014 COMPOSER 3 (VEGA) OR GROK 4.6",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2087105588001906809"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-11 13:35:11 UTC",
+    "headline": "NVIDIA OPEN-WEIGHTS NEMOTRON 3.5 LIGHTNING \u2014 30B MoE, 3B ACTIVE, BUILT FOR ALWAYS-ON AGENTS",
+    "source": "@huggingface",
+    "url": "https://x.com/huggingface/status/2087168284919541798"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-11 13:35:11 UTC",
+    "headline": "NVIDIA SHIPS NEMO SWITCHYARD \u2014 OPEN ROUTER THAT SENDS EACH AGENT STEP TO THE CHEAPEST CAPABLE MODEL",
+    "source": "@huggingface",
+    "url": "https://x.com/huggingface/status/2087168284919541798"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-11 13:35:11 UTC",
+    "headline": "MORGAN STANLEY PUTS $300 TARGET, $600 BULL CASE ON SPACEX \u2014 SEES CURSOR ARR AT ~$33B BY 2030",
+    "source": "@Teslarati",
+    "url": "https://x.com/Teslarati/status/2087170360101761071"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-11 13:35:11 UTC",
+    "headline": "RIVER AI RAISES $1.1 BILLION FOR USER-OWNED PERSONAL AI BUILT ON OPEN MODELS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2087150467134410921"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-11 13:35:11 UTC",
+    "headline": "PREFILL PROBE CLAIMS KIMI K3 OUTPUT SHIFTS ON CLAUDE OPUS REASONING TRACES; DEEPSEEK DOES NOT",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2087160241787949183"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-11 13:35:11 UTC",
+    "headline": "GROK 4.6 SLIPS \u2014 SAME-DAY RELEASE CALL WITHDRAWN AFTER MODEL LEAKED BRIEFLY INSIDE CURSOR",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2087135944843415921"
   }
 ]
