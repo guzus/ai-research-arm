@@ -22298,5 +22298,54 @@
     "headline": "GEMINI 3.7 FLASH APPEARS IN GOOGLE'S OFFICIAL PYTHON GENAI SDK MODEL ENUM",
     "source": "@WesRoth",
     "url": "https://x.com/WesRoth/status/2086950725146300525"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-11 07:22:45 UTC",
+    "headline": "CLAUDE TEXT WATERMARK IS EU LAW, NOT STRATEGY \u2014 AI ACT ART. 50(2) IN FORCE SINCE AUG 2",
+    "source": "@deedydas",
+    "url": "https://x.com/deedydas/status/2087037735819460675"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-11 07:22:45 UTC",
+    "headline": "OPENAI, GOOGLE, META, MICROSOFT, MISTRAL BOUND BY EU TEXT-PROVENANCE PACT \u2014 XAI DID NOT SIGN",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2087040578630606884"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-11 07:22:45 UTC",
+    "headline": "ANTHROPIC TELLS PRE-IPO INVESTORS IT WILL PIVOT HARDER INTO BIOLOGY AND HEALTHCARE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2087025539114750168"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-11 07:22:45 UTC",
+    "headline": "CXMT 17NM DDR5 YIELD TOPS 90% \u2014 BUT DELL BANS THE CHIPS OUTRIGHT, HP LIMITS TO CHINA",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2087069621320917361"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-11 07:22:45 UTC",
+    "headline": "UBS: NVIDIA HBM SPEC CUT ON VERA RUBIN ULTRA LIFTS 2027 HBM DEMAND TO 61.5B GB FROM 58.7B",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2087064956760097167"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-11 07:22:45 UTC",
+    "headline": "SAMSUNG DELAYS HIGH-NA EUV TO 1NM A10 NODE, MASS PRODUCTION AROUND 2030",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2087062450608984103"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-11 07:22:45 UTC",
+    "headline": "CODING-PLAN PRICE WAR WIDENS \u2014 ZHIPU RESETS ALL GLM LIMITS AT 1M ZCODE USERS, GROK 4.5 GOES FREE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2087070098183819553"
   }
 ]
