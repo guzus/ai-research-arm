@@ -16,6 +16,8 @@ import { hydrateAgentsTimeline, renderAgentsStudioHtml } from './render/agents';
 import type { ArmTimeline } from './render/agents';
 import { hydratePricing, renderPricing } from './render/pricing';
 import type { ModelPricing } from './render/pricing';
+import { localizeStaticUi, uiText } from './i18n';
+import type { UiCopyKey } from './i18n';
 import { renderTodayHtml } from './render/today';
 import {
   buildTwitterCycleContent,
@@ -121,14 +123,14 @@ function snowflakeToDate(id: string): Date | null {
 function timeAgo(date: Date): string {
   const now = Date.now();
   const diff = now - date.getTime();
-  if (diff < 0) return 'just now';
+  if (diff < 0) return uiText(activeLanguage, 'time.now');
   const mins = Math.floor(diff / 60000);
-  if (mins < 1) return 'just now';
-  if (mins < 60) return mins + 'm ago';
+  if (mins < 1) return uiText(activeLanguage, 'time.now');
+  if (mins < 60) return uiText(activeLanguage, 'time.minutesAgo', { count: mins });
   const hours = Math.floor(mins / 60);
-  if (hours < 24) return hours + 'h ago';
+  if (hours < 24) return uiText(activeLanguage, 'time.hoursAgo', { count: hours });
   const days = Math.floor(hours / 24);
-  return days + 'd ago';
+  return uiText(activeLanguage, 'time.daysAgo', { count: days });
 }
 
 // ── State ─────────────────────────────────────────────
@@ -801,13 +803,14 @@ function hasResearchLanguage(row: GenResearchRow | null, language: ResearchLangu
 function syncLanguageUi(_row: GenResearchRow | null = null): void {
   if (!languageSwitch) return;
   document.documentElement.lang = activeLanguage;
+  localizeStaticUi(activeLanguage);
   languageSwitch.querySelectorAll<HTMLButtonElement>('[data-language]').forEach((btn) => {
     const language = btn.dataset.language as ResearchLanguage;
     btn.setAttribute('aria-checked', String(language === activeLanguage));
   });
   if (languageToggle) {
     const label = activeLanguage === 'ko' ? '한국어' : 'English';
-    languageToggle.setAttribute('aria-label', `Language: ${label}`);
+    languageToggle.setAttribute('aria-label', uiText(activeLanguage, 'language.current', { language: label }));
   }
 }
 
@@ -828,7 +831,7 @@ function languageMenuOptions(): HTMLButtonElement[] {
 
 function languageFallbackNote(row: GenResearchRow): string {
   if (activeLanguage !== 'ko' || hasResearchLanguage(row, 'ko')) return '';
-  return '<div class="gen-research-language-note">Korean version has not been published for this article yet.</div>';
+  return '<div class="gen-research-language-note">' + escapeHtml(uiText(activeLanguage, 'research.unavailableKo')) + '</div>';
 }
 
 function fmtDate(d: Date): string {
@@ -853,7 +856,7 @@ function isImmutableDate(dateStr: string): boolean {
 }
 
 function displayDate(d: Date): string {
-  return d.toLocaleDateString('en-US', {
+  return d.toLocaleDateString(activeLanguage === 'ko' ? 'ko-KR' : 'en-US', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -1060,8 +1063,9 @@ function buildCalendarHtml(): string {
   const todayStr = fmtDate(today);
   const selectedStr = fmtDate(currentDate);
 
-  const monthLabel = calendarMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-  const selectedLabel = currentDate.toLocaleDateString('en-US', {
+  const locale = activeLanguage === 'ko' ? 'ko-KR' : 'en-US';
+  const monthLabel = calendarMonth.toLocaleDateString(locale, { month: 'long', year: 'numeric' });
+  const selectedLabel = currentDate.toLocaleDateString(locale, {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
@@ -1071,23 +1075,25 @@ function buildCalendarHtml(): string {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const prevMonthDays = new Date(year, month, 0).getDate();
 
-  const dows = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+  const dows = activeLanguage === 'ko'
+    ? ['일', '월', '화', '수', '목', '금', '토']
+    : ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   const open = calendarEl.classList.contains('open');
   const isDayView = activeTab === 'today';
   const headerAttrs = isDayView
-    ? ' aria-expanded="' + open + '" aria-controls="calendar-popover" aria-label="Choose a date"'
-    : ' aria-label="Open ' + selectedLabel + ' day view"';
+    ? ' aria-expanded="' + open + '" aria-controls="calendar-popover" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.choose')) + '"'
+    : ' aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.openDay', { date: selectedLabel })) + '"';
   const headerIndicator = isDayView ? (open ? '&#9650;' : '&#9660;') : '&rsaquo;';
   let html = '<button class="cal-header" type="button" data-cal-toggle' + headerAttrs + '>';
   html += '<span class="cal-header-label"><span class="cal-selected-date">' + selectedLabel + '</span><span class="cal-chevron">' + headerIndicator + '</span></span>';
   html += '</button>';
 
   // Month nav + day grid live in a popover so the pill keeps a fixed size.
-  html += '<div class="cal-pop" id="calendar-popover" role="group" aria-label="' + monthLabel + ' calendar">';
+  html += '<div class="cal-pop" id="calendar-popover" role="group" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.group', { month: monthLabel })) + '">';
   html += '<div class="cal-header-nav">';
-  html += '<button class="cal-nav-btn" type="button" data-cal-nav="-1" aria-label="Previous month">&lsaquo;</button>';
+  html += '<button class="cal-nav-btn" type="button" data-cal-nav="-1" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.previousMonth')) + '">&lsaquo;</button>';
   html += '<span class="cal-pop-title" aria-live="polite">' + monthLabel + '</span>';
-  html += '<button class="cal-nav-btn" type="button" data-cal-nav="1" aria-label="Next month">&rsaquo;</button>';
+  html += '<button class="cal-nav-btn" type="button" data-cal-nav="1" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.nextMonth')) + '">&rsaquo;</button>';
   html += '</div>';
 
   html += '<div class="cal-grid">';
@@ -1100,7 +1106,7 @@ function buildCalendarHtml(): string {
     const pm = month === 0 ? 11 : month - 1;
     const py = month === 0 ? year - 1 : year;
     const dateStr = `${py}-${String(pm + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    const dateLabel = new Date(py, pm, d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const dateLabel = new Date(py, pm, d).toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     html += '<button class="cal-day other-month" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '">' + d + '</button>';
   }
 
@@ -1110,7 +1116,7 @@ function buildCalendarHtml(): string {
     if (dateStr === todayStr) cls += ' today';
     if (dateStr === selectedStr) cls += ' selected';
     if (available.has(dateStr)) cls += ' has-data';
-    const dateLabel = new Date(year, month, d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const dateLabel = new Date(year, month, d).toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     const ariaCurrent = dateStr === todayStr ? ' aria-current="date"' : '';
     const ariaSelected = dateStr === selectedStr ? ' aria-pressed="true"' : '';
     html += '<button class="' + cls + '" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '"' + ariaCurrent + ariaSelected + '>' + d + '</button>';
@@ -1122,12 +1128,12 @@ function buildCalendarHtml(): string {
     const nm = month === 11 ? 0 : month + 1;
     const ny = month === 11 ? year + 1 : year;
     const dateStr = `${ny}-${String(nm + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    const dateLabel = new Date(ny, nm, d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const dateLabel = new Date(ny, nm, d).toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     html += '<button class="cal-day other-month" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '">' + d + '</button>';
   }
 
   html += '</div>';
-  html += '<button class="cal-today-btn" type="button" data-cal-today>Go to today</button>';
+  html += '<button class="cal-today-btn" type="button" data-cal-today>' + escapeHtml(uiText(activeLanguage, 'calendar.today')) + '</button>';
   html += '</div>';
   return html;
 }
@@ -1310,11 +1316,11 @@ function researchAudioControlsHtml(row: GenResearchRow): string {
   const fileUrl = researchAudioUrl(row);
   if (fileUrl) {
     return [
-      '<span class="gen-research-audio-controls has-file" aria-label="Article audio controls">',
-      '  <audio class="gen-research-audio-file" preload="metadata" src="' + escapeHtml(fileUrl) + '">Your browser does not support the audio element.</audio>',
-      '  <button class="gen-research-file-audio" data-research-file-audio-toggle aria-pressed="false" title="Play article audio">',
+      '<span class="gen-research-audio-controls has-file" aria-label="' + escapeHtml(uiText(activeLanguage, 'audio.articleControls')) + '">',
+      '  <audio class="gen-research-audio-file" preload="metadata" src="' + escapeHtml(fileUrl) + '">' + escapeHtml(uiText(activeLanguage, 'audio.unsupportedElement')) + '</audio>',
+      '  <button class="gen-research-file-audio" data-research-file-audio-toggle aria-pressed="false" title="' + escapeHtml(uiText(activeLanguage, 'audio.playArticle')) + '">',
       '    <span class="gen-research-file-audio-icon" aria-hidden="true"></span>',
-      '    <span class="gen-research-file-audio-label" data-research-file-audio-label>Listen</span>',
+      '    <span class="gen-research-file-audio-label" data-research-file-audio-label>' + escapeHtml(uiText(activeLanguage, 'audio.listen')) + '</span>',
       '    <span class="gen-research-file-audio-progress" data-research-file-audio-progress aria-hidden="true"></span>',
       '    <span class="gen-research-file-audio-time" data-research-file-audio-time>--:--</span>',
       '  </button>',
@@ -1322,14 +1328,14 @@ function researchAudioControlsHtml(row: GenResearchRow): string {
     ].join('\n');
   }
   return [
-    '<span class="gen-research-audio-controls" aria-label="Article read-aloud controls">',
+    '<span class="gen-research-audio-controls" aria-label="' + escapeHtml(uiText(activeLanguage, 'audio.readAloudControls')) + '">',
     '  <button class="gen-research-audio" data-research-audio-toggle data-has-audio-file="' + (fileUrl ? 'true' : 'false') + '" aria-pressed="false"' +
-      (unsupported ? ' disabled title="Read-aloud is not supported in this browser"' : ' title="Play this article with browser read-aloud"') +
+      (unsupported ? ' disabled title="' + escapeHtml(uiText(activeLanguage, 'audio.unsupported')) + '"' : ' title="' + escapeHtml(uiText(activeLanguage, 'audio.playReadAloud')) + '"') +
       '>',
     '    <span class="gen-research-audio-icon" aria-hidden="true"></span>',
-    '    <span data-research-audio-label>' + (unsupported ? 'Audio unavailable' : 'Listen') + '</span>',
+    '    <span data-research-audio-label>' + escapeHtml(uiText(activeLanguage, unsupported ? 'audio.unavailable' : 'audio.listen')) + '</span>',
     '  </button>',
-    '  <button class="gen-research-audio-stop" data-research-audio-stop hidden title="Stop article audio">Stop</button>',
+    '  <button class="gen-research-audio-stop" data-research-audio-stop hidden title="' + escapeHtml(uiText(activeLanguage, 'audio.stopTitle')) + '">' + escapeHtml(uiText(activeLanguage, 'audio.stop')) + '</button>',
     '</span>',
   ].join('\n');
 }
@@ -1605,7 +1611,7 @@ function updateResearchFileAudioUi(): void {
   const pct = duration > 0 ? Math.min(100, Math.max(0, (audio.currentTime / duration) * 100)) : 0;
   toggle.classList.toggle('is-playing', !audio.paused && !audio.ended);
   toggle.setAttribute('aria-pressed', String(!audio.paused && !audio.ended));
-  if (label) label.textContent = audio.paused || audio.ended ? 'Listen' : 'Pause';
+  if (label) label.textContent = uiText(activeLanguage, audio.paused || audio.ended ? 'audio.listen' : 'audio.pause');
   if (time) time.textContent = duration > 0 ? `${formatAudioTime(audio.currentTime)} / ${formatAudioTime(duration)}` : '--:--';
   if (progress) progress.style.setProperty('--audio-progress', `${pct}%`);
 }
@@ -1621,7 +1627,7 @@ function bindResearchFileAudioUi(): void {
   audio.addEventListener('ended', updateResearchFileAudioUi);
   audio.addEventListener('error', () => {
     const label = content.querySelector<HTMLElement>('[data-research-file-audio-label]');
-    if (label) label.textContent = 'Unavailable';
+    if (label) label.textContent = uiText(activeLanguage, 'audio.unavailableShort');
   });
   updateResearchFileAudioUi();
 }
@@ -1638,7 +1644,7 @@ function updateResearchAudioUi(): void {
     toggle.disabled = true;
     toggle.classList.remove('is-playing', 'is-paused', 'is-loading');
     toggle.setAttribute('aria-pressed', 'false');
-    label.textContent = 'Audio unavailable';
+    label.textContent = uiText(activeLanguage, 'audio.unavailable');
     if (stop) stop.hidden = true;
     return;
   }
@@ -1651,10 +1657,10 @@ function updateResearchAudioUi(): void {
   toggle.classList.toggle('is-paused', status === 'paused');
   toggle.setAttribute('aria-pressed', String(status === 'playing'));
   label.textContent =
-    status === 'loading' ? 'Preparing' :
-    status === 'playing' ? 'Pause' :
-    status === 'paused' ? 'Resume' :
-    'Listen';
+    status === 'loading' ? uiText(activeLanguage, 'audio.preparing') :
+    status === 'playing' ? uiText(activeLanguage, 'audio.pause') :
+    status === 'paused' ? uiText(activeLanguage, 'audio.resume') :
+    uiText(activeLanguage, 'audio.listen');
   if (stop) stop.hidden = !(status === 'playing' || status === 'paused' || status === 'loading');
 }
 
@@ -1667,7 +1673,7 @@ async function toggleResearchFileAudio(): Promise<void> {
       await audio.play();
     } catch {
       const label = content.querySelector<HTMLElement>('[data-research-file-audio-label]');
-      if (label) label.textContent = 'Unavailable';
+      if (label) label.textContent = uiText(activeLanguage, 'audio.unavailableShort');
     }
   } else {
     audio.pause();
@@ -2015,21 +2021,22 @@ function withTimeout<T>(p: Promise<T>, ms: number, controller: AbortController):
 
 // ── Rendering ─────────────────────────────────────────
 function showLoading(): void {
-  const label = activeTab === 'frontpage'
-    ? 'Loading front page\u2026'
+  const key: UiCopyKey = activeTab === 'frontpage'
+    ? 'loading.frontpage'
     : activeTab === 'models'
-    ? 'Loading model timeline\u2026'
+    ? 'loading.models'
     : activeTab === 'focusReader'
-    ? 'Loading focus reader\u2026'
+    ? 'loading.focus'
     : activeTab === 'agents'
-    ? 'Loading Arm\u2026'
+    ? 'loading.arm'
     : activeTab === 'pricing'
-    ? 'Loading price vs. capability\u2026'
+    ? 'loading.pricing'
     : activeTab === 'research'
-    ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
+    ? (selectedSlug ? 'loading.article' : 'loading.research')
     : activeTab === 'wiki'
-    ? (selectedSlug ? 'Loading wiki page\u2026' : 'Loading wiki\u2026')
-    : 'Loading Twitter report\u2026';
+    ? (selectedSlug ? 'loading.wikiPage' : 'loading.wiki')
+    : 'loading.twitter';
+  const label = uiText(activeLanguage, key);
   setSafeContent(
     content,
     [
@@ -2046,20 +2053,20 @@ function showLoading(): void {
 
 function showEmpty(dateStr: string): void {
   const label = activeTab === 'today'
-    ? 'No digest yet for ' + escapeHtml(dateStr)
+    ? uiText(activeLanguage, 'empty.digest', { date: dateStr })
     : activeTab === 'frontpage'
-    ? 'No front page for ' + escapeHtml(dateStr)
+    ? uiText(activeLanguage, 'empty.frontpage', { date: dateStr })
     : activeTab === 'models'
-    ? 'No Jira for ' + escapeHtml(dateStr)
+    ? uiText(activeLanguage, 'empty.models', { date: dateStr })
     : activeTab === 'focusReader'
-    ? 'No focus reader data available'
+    ? uiText(activeLanguage, 'empty.focus')
     : activeTab === 'agents'
-    ? 'Arm view unavailable'
+    ? uiText(activeLanguage, 'empty.arm')
     : activeTab === 'pricing'
-    ? 'Price vs. capability data unavailable'
+    ? uiText(activeLanguage, 'empty.pricing')
     : activeTab === 'research'
-    ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
-    : 'No Twitter report for ' + escapeHtml(dateStr);
+    ? (selectedSlug ? uiText(activeLanguage, 'empty.article', { slug: selectedSlug }) : uiText(activeLanguage, 'empty.research'))
+    : uiText(activeLanguage, 'empty.twitter', { date: dateStr });
   setSafeContent(
     content,
     [
@@ -2074,14 +2081,22 @@ function showEmpty(dateStr: string): void {
 }
 
 function showError(message: string, hint?: string): void {
+  const knownCopy: Partial<Record<string, UiCopyKey>> = {
+    'Loading timed out': 'error.timeout',
+    'Network may be slow. Click to retry.': 'error.networkHint',
+    'Wiki unavailable': 'error.wikiUnavailable',
+    'Could not load the wiki index. Click to retry.': 'error.wikiHint',
+  };
+  const localizedMessage = knownCopy[message] ? uiText(activeLanguage, knownCopy[message]) : message;
+  const localizedHint = hint && knownCopy[hint] ? uiText(activeLanguage, knownCopy[hint]) : hint;
   setSafeContent(
     content,
     [
       '<div class="content-card">',
       '  <div class="error-state">',
-      '    <div class="error-state-text">' + escapeHtml(message) + '</div>',
-      hint ? '    <div class="error-state-hint">' + escapeHtml(hint) + '</div>' : '',
-      '    <button class="retry-btn" data-retry>Retry</button>',
+      '    <div class="error-state-text">' + escapeHtml(localizedMessage) + '</div>',
+      localizedHint ? '    <div class="error-state-hint">' + escapeHtml(localizedHint) + '</div>' : '',
+      '    <button class="retry-btn" data-retry>' + escapeHtml(uiText(activeLanguage, 'action.retry')) + '</button>',
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -3006,12 +3021,12 @@ function paginationHtml(page: number, totalItems: number, pageSize: number, labe
     return '<a class="index-pagination-link ' + className + '" href="' + href + '" data-index-page="' + target + '">' + text + '</a>';
   };
   return [
-    '<nav class="index-pagination" aria-label="' + escapeHtml(label) + ' pagination">',
-    '  <div class="index-pagination-summary">' + first + '\u2013' + last + ' of ' + totalItems + '</div>',
+    '<nav class="index-pagination" aria-label="' + escapeHtml(uiText(activeLanguage, 'pagination.label', { label })) + '">',
+    '  <div class="index-pagination-summary">' + escapeHtml(uiText(activeLanguage, 'pagination.summary', { first, last, total: totalItems })) + '</div>',
     '  <div class="index-pagination-controls">',
-    pageLink(safePage - 1, '&larr;<span> Previous</span>', 'index-pagination-prev'),
+    pageLink(safePage - 1, '&larr;<span> ' + escapeHtml(uiText(activeLanguage, 'pagination.previous')) + '</span>', 'index-pagination-prev'),
     '    <span class="index-pagination-status" aria-current="page">' + safePage + ' / ' + pageCount + '</span>',
-    pageLink(safePage + 1, '<span>Next </span>&rarr;', 'index-pagination-next'),
+    pageLink(safePage + 1, '<span>' + escapeHtml(uiText(activeLanguage, 'pagination.next')) + ' </span>&rarr;', 'index-pagination-next'),
     '  </div>',
     '</nav>',
   ].join('\n');
@@ -5370,7 +5385,8 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
   );
   const visible = term
     ? reversed.filter((r) => {
-        const hay = (r.title + ' ' + r.prompt + ' ' + (r.tags || []).join(' ')).toLowerCase();
+        const variant = researchVariant(r, activeLanguage);
+        const hay = (variant.title + ' ' + variant.prompt + ' ' + r.title + ' ' + (variant.tags || []).join(' ')).toLowerCase();
         return hay.indexOf(term) !== -1;
       })
     : reversed;
@@ -5390,13 +5406,14 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
   pageRows.forEach((r, i) => researchJacketBySlug.set(r.slug, jackets[i]));
   const items: string[] = [];
   pageRows.forEach((row, index) => {
-    let title = escapeHtml(decodeStoredEntities(row.title));
+    const displayRow = researchVariant(row, activeLanguage);
+    let title = escapeHtml(decodeStoredEntities(displayRow.title));
     if (searchTerm) {
       const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const re = new RegExp('(' + escaped + ')', 'gi');
       title = title.replace(re, '<mark>$1</mark>');
     }
-    const created = new Date(row.created_at);
+    const created = new Date(displayRow.created_at);
     const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
     const koHtml = hasResearchLanguage(row, 'ko')
       ? '    <span class="press-book-lang" lang="ko">한국어</span>'
@@ -5408,9 +5425,9 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
         // activates [data-slug] rows on Enter. The spine truncates long titles,
         // so title= carries the whole thing.
         '<li class="press-book" role="link" data-jacket="' + jackets[index] + '"' +
-          ' data-imprint="' + researchImprint(row.model) + '"' +
+          ' data-imprint="' + researchImprint(displayRow.model) + '"' +
           ' data-slug="' + escapeHtml(row.slug) + '" tabindex="0"' +
-          ' title="' + escapeHtml(decodeStoredEntities(row.title)) + '">',
+          ' title="' + escapeHtml(decodeStoredEntities(displayRow.title)) + '">',
         // The board is nested INSIDE the spine so it can hinge off the spine's
         // top edge (bottom: 100%) rather than a fixed offset — which is what
         // lets the spine grow when a long title wraps and keeps the board
@@ -5425,7 +5442,7 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
         '    </span>',
         // Author left, title centred, date right — the same three slots
         // press.stripe.com prints on a spine.
-        '    <span class="press-book-author">' + escapeHtml(row.model) + '</span>',
+        '    <span class="press-book-author">' + escapeHtml(displayRow.model) + '</span>',
         '    <span class="press-book-title">' + title + '</span>',
         '    <span class="press-book-imprint">',
         rel ? '      <span class="press-book-date">' + escapeHtml(rel) + '</span>' : '',
@@ -5438,7 +5455,7 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
   });
 
   const empty = visible.length === 0
-    ? '<p class="press-shelf-empty">No articles match the search.</p>'
+    ? '<p class="press-shelf-empty">' + escapeHtml(uiText(activeLanguage, 'research.noMatches')) + '</p>'
     : '';
 
   setSafeContent(
@@ -5450,7 +5467,7 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
       '  </ul>',
       empty,
       '  <div class="press-shelf-foot">',
-      paginationHtml(researchIndexPage, visible.length, RESEARCH_PAGE_SIZE, 'Research articles'),
+      paginationHtml(researchIndexPage, visible.length, RESEARCH_PAGE_SIZE, uiText(activeLanguage, 'research.paginationLabel')),
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -5481,12 +5498,12 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
       '    <div class="content-card-title">' + escapeHtml(row.title) + '</div>',
       '  </div>',
       '  <div class="gen-research-doc-meta">',
-      '    <button class="gen-research-back" data-research-back>&lsaquo; All articles</button>',
+      '    <button class="gen-research-back" data-research-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'research.allArticles')) + '</button>',
       '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
       rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
       languageFallbackNote(row),
       researchAudioControlsHtml(row),
-      '    <button class="gen-research-pdf" data-research-pdf title="Save this article as a PDF">Save as PDF</button>',
+      '    <button class="gen-research-pdf" data-research-pdf title="' + escapeHtml(uiText(activeLanguage, 'research.savePdfTitle')) + '">' + escapeHtml(uiText(activeLanguage, 'research.savePdf')) + '</button>',
       '  </div>',
       '  <div class="content-card-body">',
       docHtml,
@@ -5535,12 +5552,12 @@ function renderResearchStandalone(row: GenResearchRow): void {
       '    <div class="content-card-title">' + escapeHtml(row.title) + '</div>',
       '  </div>',
       '  <div class="gen-research-doc-meta">',
-      '    <button class="gen-research-back" data-research-back>&lsaquo; All articles</button>',
+      '    <button class="gen-research-back" data-research-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'research.allArticles')) + '</button>',
       '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
       rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
       languageFallbackNote(row),
       researchAudioControlsHtml(row),
-      '    <a class="gen-research-fullscreen" href="' + escapeHtml(src) + '" target="_blank" rel="noopener noreferrer">Open full ↗</a>',
+      '    <a class="gen-research-fullscreen" href="' + escapeHtml(src) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(uiText(activeLanguage, 'research.openFull')) + '</a>',
       '  </div>',
       '  <iframe class="gen-research-iframe" src="' + escapeHtml(src) + '" sandbox="allow-scripts" loading="lazy" title="' + escapeHtml(row.title) + '"></iframe>',
       '</div>',
@@ -6222,7 +6239,9 @@ function updateSearchCount(): void {
   }
   const matches = content.querySelectorAll('mark').length;
   const cards = getCards().length;
-  searchCountEl.textContent = matches === 0 ? '0 matches' : matches + ' in ' + cards;
+  searchCountEl.textContent = matches === 0
+    ? uiText(activeLanguage, 'search.zeroMatches')
+    : uiText(activeLanguage, 'search.matches', { matches, cards });
 }
 
 function scrollToSection(index: number): void {
@@ -6288,7 +6307,13 @@ type SearchHit = { type: 'research' | 'wiki' | 'model' | 'digest' | 'twitter'; t
 let searchCorpus: SearchHit[] | null = null;
 let searchHits: SearchHit[] = [];
 let searchSel = -1;
-const SEARCH_TYPE_LABEL: Record<SearchHit['type'], string> = { research: 'Research', wiki: 'Wiki', model: 'Model', digest: 'Digest', twitter: 'Twitter' };
+const SEARCH_TYPE_KEY: Record<SearchHit['type'], UiCopyKey> = {
+  research: 'search.type.research',
+  wiki: 'search.type.wiki',
+  model: 'search.type.model',
+  digest: 'search.type.digest',
+  twitter: 'search.type.twitter',
+};
 
 // Build-time content index (digest sections + twitter cycles) — see
 // scripts/prebuild.mjs:buildSearchIndex. Loaded once, cached, best-effort.
@@ -6328,8 +6353,9 @@ async function buildSearchCorpus(): Promise<SearchHit[]> {
       slug: p.slug, hay: (p.title + ' ' + (p.aliases || []).join(' ') + ' ' + (p.summary || '') + ' ' + (p.tags || []).join(' ')).toLowerCase() });
   }
   if (m) for (const r of (m.generative || [])) {
-    hits.push({ type: 'research', title: r.title, subtitle: (r.tags || []).filter(isResearchDisplayTag).slice(0, 4).join(', '),
-      slug: r.slug, hay: (r.title + ' ' + (r.tags || []).join(' ') + ' ' + (r.prompt || '')).toLowerCase() });
+    const variant = researchVariant(r, activeLanguage);
+    hits.push({ type: 'research', title: variant.title, subtitle: (variant.tags || []).filter(isResearchDisplayTag).slice(0, 4).join(', '),
+      slug: r.slug, hay: (variant.title + ' ' + r.title + ' ' + (variant.tags || []).join(' ') + ' ' + (variant.prompt || '')).toLowerCase() });
   }
   if (tickets) for (const t of tickets) {
     hits.push({ type: 'model', title: t.title, subtitle: t.company + (t.model ? ' · ' + t.model : ''),
@@ -6355,13 +6381,13 @@ async function buildSearchCorpus(): Promise<SearchHit[]> {
 function renderSearchHits(): void {
   if (!searchResultsEl) return;
   if (searchHits.length === 0) {
-    setSafeContent(searchResultsEl, '<div class="search-empty">No matches</div>');
+    setSafeContent(searchResultsEl, '<div class="search-empty">' + escapeHtml(uiText(activeLanguage, 'search.noMatches')) + '</div>');
     searchResultsEl.hidden = false;
     return;
   }
   const rows = searchHits.map((h, i) =>
     '<button class="search-result' + (i === searchSel ? ' is-sel' : '') + '" type="button" role="option" data-sr-index="' + i + '">' +
-    '<span class="search-result-type">' + SEARCH_TYPE_LABEL[h.type] + '</span>' +
+    '<span class="search-result-type">' + escapeHtml(uiText(activeLanguage, SEARCH_TYPE_KEY[h.type])) + '</span>' +
     '<span class="search-result-title">' + escapeHtml(h.title) + '</span>' +
     (h.subtitle ? '<span class="search-result-sub">' + escapeHtml(h.subtitle) + '</span>' : '') +
     '</button>',
@@ -6527,6 +6553,7 @@ languageMenu?.addEventListener('click', (e) => {
   activeLanguage = language;
   storeLanguage(activeLanguage);
   researchDocCache = null;
+  searchCorpus = null;
   syncLanguageUi(selectedSlug ? findResearchRow(selectedSlug) : null);
   void load();
 });
