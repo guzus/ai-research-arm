@@ -16,7 +16,7 @@ import { hydrateAgentsTimeline, renderAgentsStudioHtml } from './render/agents';
 import type { ArmTimeline } from './render/agents';
 import { hydratePricing, renderPricing } from './render/pricing';
 import type { ModelPricing } from './render/pricing';
-import { localizeStaticUi, uiText } from './i18n';
+import { localizeStaticUi, resolveUiLanguage, uiText } from './i18n';
 import type { UiCopyKey } from './i18n';
 import { renderTodayHtml } from './render/today';
 import {
@@ -759,11 +759,18 @@ function syncTabUi(): void {
 
 // ── Helpers ───────────────────────────────────────────
 function loadStoredLanguage(): ResearchLanguage {
+  let storedLanguage: string | null = null;
   try {
-    return localStorage.getItem('ara-language') === 'ko' ? 'ko' : 'en';
+    storedLanguage = localStorage.getItem('ara-language');
   } catch {
-    return 'en';
+    // Browser preference still works when storage is unavailable.
   }
+  const browserLanguages = navigator.languages.length
+    ? navigator.languages
+    : navigator.language
+      ? [navigator.language]
+      : [];
+  return resolveUiLanguage(storedLanguage, browserLanguages);
 }
 
 function storeLanguage(language: ResearchLanguage): void {

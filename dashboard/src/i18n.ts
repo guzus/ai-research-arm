@@ -214,6 +214,21 @@ const COPY = {
 export type UiCopyKey = keyof typeof COPY.en;
 type CopyParams = Record<string, string | number>;
 
+/** Resolve the initial UI language without overriding an explicit user choice.
+ * Browser languages are ordered by preference; unsupported locales are skipped
+ * until the first supported base language is found. */
+export function resolveUiLanguage(
+  storedLanguage: string | null,
+  browserLanguages: readonly string[],
+): UiLanguage {
+  if (storedLanguage === 'en' || storedLanguage === 'ko') return storedLanguage;
+  for (const locale of browserLanguages) {
+    const baseLanguage = locale.trim().toLowerCase().split(/[-_]/, 1)[0];
+    if (baseLanguage === 'en' || baseLanguage === 'ko') return baseLanguage;
+  }
+  return 'en';
+}
+
 export function uiText(language: UiLanguage, key: UiCopyKey, params: CopyParams = {}): string {
   const template: string = COPY[language][key];
   return template.replace(/\{(\w+)\}/g, (_, name: string) => String(params[name] ?? `{${name}}`));
