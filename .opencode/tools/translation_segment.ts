@@ -77,7 +77,7 @@ async function loadManifest(worktree: string): Promise<Manifest> {
 
 export default tool({
   description:
-    "Submit Korean translations for fixed text segment ids. Opaque ARA tokens must remain exact and ordered.",
+    "Submit Korean translations for fixed text segment ids. Opaque ARA tokens must remain exact and ordered; do not add digits outside them.",
   args: {
     segments: tool.schema
       .array(
@@ -109,6 +109,12 @@ export default tool({
         const actualTokens = segment.text.match(TOKEN_RE) ?? []
         if (JSON.stringify(actualTokens) !== JSON.stringify(expected.tokens)) {
           throw new Error(`immutable token mismatch for ${segment.id}`)
+        }
+        const proseWithoutTokens = segment.text.replace(TOKEN_RE, "")
+        if (/[0-9]/.test(proseWithoutTokens)) {
+          throw new Error(
+            `unprotected numeric digit in ${segment.id}; spell the quantity in Korean`,
+          )
         }
         if (expected.forbid_commas && segment.text.includes(",")) {
           throw new Error(`unprotected list separator in ${segment.id}`)

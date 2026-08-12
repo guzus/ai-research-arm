@@ -329,6 +329,11 @@ def render(source_path: Path, source_sha256: str, result_path: Path, draft_path:
                 f"translation segment {segment.id} changed immutable tokens; "
                 f"expected={segment.tokens}, got={found_tokens}"
             )
+        prose_without_tokens = TOKEN_RE.sub("", translated)
+        if re.search(r"[0-9]", prose_without_tokens):
+            raise ValueError(
+                f"translation segment {segment.id} added an unprotected numeric digit"
+            )
         if segment.forbid_commas and "," in translated:
             raise ValueError(
                 f"translation segment {segment.id} added an unprotected list separator"
