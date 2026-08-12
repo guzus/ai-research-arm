@@ -32,7 +32,9 @@
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
   --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
+  --font-korean: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Noto Sans KR', sans-serif;
   --font: var(--font-serif);
   --font-mono: var(--font-serif);
   --nav-font-size: 0.82rem;
@@ -45,6 +47,16 @@
   --page-gutter: clamp(18px, 4vw, 64px);
   --card-pad-x: clamp(18px, 3vw, 32px);
   --card-pad-y: clamp(18px, 2.5vw, 28px);
+}
+
+/* The language control keeps the root lang attribute in sync. Switching the
+ * shared tokens here gives Korean UI chrome and translated articles one
+ * consistent Hangul face without replacing monospace/code typography. */
+:root:lang(ko) {
+  --font-sans: var(--font-korean);
+  --font-serif: var(--font-korean);
+  --font: var(--font-korean);
+  --reading-font-family: var(--font-korean);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -3201,7 +3213,7 @@ body.has-toc .section-nav { display: none; }
 .ara-paper-index-title,
 .ara-paper-brief-tag,
 .ara-paper-story-meta {
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
 }
 
 .ara-paper-kicker {
@@ -3325,7 +3337,7 @@ body.has-toc .section-nav { display: none; }
   display: grid;
   place-items: center;
   border: 1px solid var(--border);
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
   transition: transform .18s ease;
 }
 
@@ -3411,7 +3423,7 @@ body.has-toc .section-nav { display: none; }
 }
 
 .ara-paper-brief-rank {
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-weight: 900;
   font-size: .78rem;
 }
@@ -3445,7 +3457,7 @@ body.has-toc .section-nav { display: none; }
   display: inline-block;
   margin-top: 8px;
   color: var(--paper-accent);
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: .78rem;
   font-weight: 750;
 }
@@ -3458,7 +3470,7 @@ body.has-toc .section-nav { display: none; }
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: .82rem;
   font-weight: 800;
 }
@@ -3903,14 +3915,14 @@ body.research-shelf .controls {
  * researchImprint() in main.ts, which keys on the FAMILY — every Claude
  * version shares a house face. Faces are requested in index.html; anything
  * unmapped lands on `house`. */
-.press-book { --imprint-face: 'Source Serif 4', Georgia, serif; }
+.press-book { --imprint-face: 'Source Serif 4', var(--font-serif); }
 
-[data-imprint="claude"]  { --imprint-face: 'Source Serif 4', Georgia, serif; }
-[data-imprint="kimi"]    { --imprint-face: 'Playfair Display', Georgia, serif; }
-[data-imprint="deepseek"]{ --imprint-face: 'Space Grotesk', 'Inter', sans-serif; }
-[data-imprint="glm"]     { --imprint-face: 'Libre Baskerville', Georgia, serif; }
-[data-imprint="codex"]   { --imprint-face: 'JetBrains Mono', ui-monospace, monospace; }
-[data-imprint="house"]   { --imprint-face: 'Inter', system-ui, sans-serif; }
+[data-imprint="claude"]  { --imprint-face: 'Source Serif 4', var(--font-serif); }
+[data-imprint="kimi"]    { --imprint-face: 'Playfair Display', var(--font-serif); }
+[data-imprint="deepseek"]{ --imprint-face: 'Space Grotesk', var(--font-sans); }
+[data-imprint="glm"]     { --imprint-face: 'Libre Baskerville', var(--font-serif); }
+[data-imprint="codex"]   { --imprint-face: 'JetBrains Mono', var(--font-sans); }
+[data-imprint="house"]   { --imprint-face: var(--font-sans); }
 
 .press-book-spine,
 .press-book-title,
