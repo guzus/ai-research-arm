@@ -114,6 +114,17 @@ jobs:
         id: base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
+      - name: Prepare protected translation segments
+        env:
+          SOURCE_PATH: ${{ steps.prepare.outputs.source_path }}
+          SOURCE_SHA256: ${{ steps.prepare.outputs.source_sha256 }}
+        run: |
+          set -euo pipefail
+          uv run python scripts/generative_translation_segments.py prepare \
+            --source "$SOURCE_PATH" \
+            --source-sha256 "$SOURCE_SHA256" \
+            --manifest .agent-input/translation-segments.json
+
       # The model receives a disposable clone and may return only the named
       # uncommitted .tmp artifact. Trusted host steps below own publication.
       - name: Translate canonical article in isolated adapter
@@ -122,8 +133,8 @@ jobs:
         with:
           mode: editorial
           lane: generative-research-ko
-          return-artifacts: ${{ steps.prepare.outputs.draft_path }}
-          # Translation needs two reads and one fixed-destination chunk tool.
+          return-artifacts: ${{ steps.prepare.outputs.result_path }}
+          # Translation needs two reads and one fixed-destination segment tool.
           # Explicit denies remain enforced under --auto, so prompt injection
           # cannot gain shell, network, search, subagent, edit/write, or
           # broader repository access.
@@ -137,30 +148,39 @@ jobs:
             Translate one existing ARA generative-research article into natural,
             professional Korean. This is translation, not new research.
 
-            Read `.agent-input/translation.json` first. It gives the exact
-            staged `source_path`, `source_type`, and `draft_path`. Read the
-            declared source in full. Then call `translation_chunk` repeatedly
-            to build exactly one file at `draft_path`. The first call must use
-            `offset_bytes=0`; every later call must use the exact next offset
-            returned by the prior call. Keep each chunk below 16 KiB and split
-            between complete lines. Do not put the translation in your final
+            Read `.agent-input/translation.json`, then read
+            `.agent-input/translation-segments.json` in full. Translate every
+            segment's `text` into Korean and submit batches with
+            `translation_segment`. Preserve every opaque token such as
+            `⟦ARA0000⟧` exactly once and in its original order. Submit each
+            segment id exactly once. Do not put translations in your final
             response. Tool permissions allow only those two reads and this
-            fixed-destination chunk tool; shell, web, search, subagents,
+            fixed-destination segment tool; shell, web, search, subagents,
             edit/write, and all other tools are intentionally unavailable.
 
-            Preserve factual meaning and the complete artifact contract:
-            - Keep YAML frontmatter keys, heading levels, ARA directive names,
-              directive topology, HTML tags/classes, and machine-readable fields.
-            - Keep every citation marker/reference id, URL, anchor id, number,
-              date, currency, percentage, ticker, model name, formula, chart
-              coordinate, and code identifier unchanged.
+            Trusted code owns the document structure and immutable literals:
+            - Never translate, remove, reorder, duplicate, or alter opaque tokens.
             - Translate reader-facing prose, headings, labels, captions,
               callouts, quotations, and reference titles into idiomatic Korean.
             - Do not browse, research, add claims, add sources, drop sections,
               edit the English source, or write any other file.
             - Do not run git, stage files, or commit. The trusted host publishes.
 
-            Finish only after the draft is complete at the exact requested path.
+            Finish only after the tool reports that all segments were submitted.
+
+      - name: Reconstruct trusted Korean artifact
+        env:
+          SOURCE_PATH: ${{ steps.prepare.outputs.source_path }}
+          SOURCE_SHA256: ${{ steps.prepare.outputs.source_sha256 }}
+          RESULT_PATH: ${{ steps.prepare.outputs.result_path }}
+          DRAFT_PATH: ${{ steps.prepare.outputs.draft_path }}
+        run: |
+          set -euo pipefail
+          uv run python scripts/generative_translation_segments.py render \
+            --source "$SOURCE_PATH" \
+            --source-sha256 "$SOURCE_SHA256" \
+            --result "$RESULT_PATH" \
+            --draft "$DRAFT_PATH"
 
       - name: Validate Korean draft and source parity
         env:
@@ -222,20 +242,16 @@ jobs:
             --source-file "$SOURCE_PATH" \
             --source-sha256 "$SOURCE_SHA256" \
             --model "$MODEL_ID" \
+            --translation-type "${{ steps.prepare.outputs.translation_type }}" \
             --github-output "$GITHUB_OUTPUT"
 
       - name: Revalidate published artifact against canonical source
         env:
           SOURCE_PATH: ${{ steps.prepare.outputs.source_path }}
-          SOURCE_TYPE: ${{ steps.prepare.outputs.source_type }}
           HTML_PATH: ${{ steps.verify.outputs.html_path }}
-          ARA_PATH: ${{ steps.verify.outputs.source_artifact_path }}
         run: |
           set -euo pipefail
           translation_path="$HTML_PATH"
-          if [ "$SOURCE_TYPE" = "ara" ]; then
-            translation_path="$ARA_PATH"
-          fi
           test -f "$translation_path"
           uv run python scripts/check_generative_research.py "$translation_path"
           uv run python scripts/check_generative_translation.py \

@@ -136,7 +136,7 @@ class RoutingInvariants(unittest.TestCase):
             "wiki-ingest": ("research/wiki/", "research/wiki/", ""),
             "bluesky": ("", "", ".tmp/bluesky-section.md"),
             "generative-research-ko": (
-                "", "", "${{ steps.prepare.outputs.draft_path }}"
+                "", "", "${{ steps.prepare.outputs.result_path }}"
             ),
         }
         seen = {}
@@ -198,31 +198,33 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(
             {
                 "*": "deny",
-                ".agent-input/source.ara.md": "allow",
                 ".agent-input/translation.json": "allow",
+                ".agent-input/translation-segments.json": "allow",
             },
             policy["read"],
         )
         self.assertEqual(
             "allow",
-            policy["translation_chunk"],
+            policy["translation_segment"],
         )
         self.assertNotIn("edit", policy)
 
-        chunk_tool = (
-            REPO_ROOT / ".opencode/tools/translation_chunk.ts"
+        segment_tool = (
+            REPO_ROOT / ".opencode/tools/translation_segment.ts"
         ).read_text(encoding="utf-8")
         self.assertIn(
-            'const DRAFT_RELATIVE_PATH = ".tmp/generative-translation.ko.ara.md"',
-            chunk_tool,
+            'const RESULT_RELATIVE_PATH = ".tmp/generative-translation.ko.segments.jsonl"',
+            segment_tool,
         )
-        self.assertIn("constants.O_NOFOLLOW", chunk_tool)
-        self.assertIn("withExclusiveWrite", chunk_tool)
-        self.assertIn("before.size !== args.offset_bytes", chunk_tool)
-        self.assertIn("MAX_CHUNK_BYTES = 16 * 1024", chunk_tool)
-        self.assertIn("MAX_DRAFT_BYTES = 1024 * 1024", chunk_tool)
-        self.assertNotIn("filePath:", chunk_tool)
-        self.assertNotIn("path:", chunk_tool)
+        self.assertIn("constants.O_NOFOLLOW", segment_tool)
+        self.assertIn("withExclusiveWrite", segment_tool)
+        self.assertIn("MAX_TEXT_BYTES = 16 * 1024", segment_tool)
+        self.assertIn("MAX_RESULT_BYTES = 1024 * 1024", segment_tool)
+        self.assertIn("immutable token mismatch", segment_tool)
+        self.assertIn("duplicate translation segment", segment_tool)
+        self.assertIn("unprotected list separator", segment_tool)
+        self.assertNotIn("filePath:", segment_tool)
+        self.assertNotIn("path:", segment_tool)
 
     def test_global_fallback_chain_shape(self):
         self.assertEqual(self.fallback["harness"], "agent-run")
@@ -857,11 +859,11 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('timeout "${remaining_seconds}s" opencode run', action)
         self.assertIn('[ "$AGENT_LANE" = "generative-research-ko" ]', action)
         self.assertIn(
-            '[ "$RETURN_ARTIFACTS" = ".tmp/generative-translation.ko.ara.md" ]',
+            '[ "$RETURN_ARTIFACTS" = ".tmp/generative-translation.ko.segments.jsonl" ]',
             action)
         self.assertIn('[ "$agent_status" -eq 0 ]', action)
         self.assertIn('[ "$artifact_count" -eq 0 ]', action)
-        self.assertIn('[ "$chunk_calls" -eq 0 ]', action)
+        self.assertIn('[ "$segment_calls" -eq 0 ]', action)
         self.assertIn('[ "$attempt_count" -eq 1 ]', action)
         self.assertIn("opencode attempt telemetry is malformed", action)
         for name, expected_mode in {
@@ -984,14 +986,14 @@ class RoutingInvariants(unittest.TestCase):
                 "  retry-success)\n"
                 "    if [ \"$attempt\" -eq 2 ]; then\n"
                 "      mkdir -p .tmp\n"
-                "      printf 'translated\\n' > .tmp/generative-translation.ko.ara.md\n"
-                "      echo 'translation_chunk {'\n"
+                "      printf 'translated\\n' > .tmp/generative-translation.ko.segments.jsonl\n"
+                "      echo 'translation_segment {'\n"
                 "    fi\n"
                 "    ;;\n"
                 "  nonzero) exit 9 ;;\n"
                 "  partial)\n"
                 "    mkdir -p .tmp\n"
-                "    printf 'partial\\n' > .tmp/generative-translation.ko.ara.md\n"
+                "    printf 'partial\\n' > .tmp/generative-translation.ko.segments.jsonl\n"
                 "    ;;\n"
                 "  no-output) ;;\n"
                 "  *) exit 98 ;;\n"
@@ -1008,7 +1010,7 @@ class RoutingInvariants(unittest.TestCase):
                     "PATH": f"{bin_dir}:/usr/bin:/bin",
                     "AGENT_TIMEOUT_MINUTES": "1",
                     "AGENT_LANE": lane,
-                    "RETURN_ARTIFACTS": ".tmp/generative-translation.ko.ara.md",
+                    "RETURN_ARTIFACTS": ".tmp/generative-translation.ko.segments.jsonl",
                     "OPENCODE_MODEL_REF": "opencode-go/deepseek-v4-flash",
                     "OPENCODE_ATTEMPT_FILE": str(attempts),
                     "OPENCODE_FAKE_BEHAVIOR": behavior,
@@ -1026,10 +1028,10 @@ class RoutingInvariants(unittest.TestCase):
             self.assertEqual(0, retry.returncode, retry.stdout + retry.stderr)
             self.assertEqual("2", attempts)
             self.assertIn("attempt_count=2", telemetry)
-            self.assertIn("translation_chunk_calls=1", telemetry)
+            self.assertIn("translation_segment_calls=1", telemetry)
             self.assertIn("artifact_count=1", telemetry)
             self.assertIn(
-                "retry_reason=zero-artifact-zero-translation-chunk", telemetry)
+                "retry_reason=zero-artifact-zero-translation-segment", telemetry)
 
             other, attempts, telemetry = run_case(
                 "other-lane", "bluesky-watch", "no-output")
@@ -1069,9 +1071,9 @@ class RoutingInvariants(unittest.TestCase):
             telemetry.write_text(
                 "attempt_count=2\n"
                 "last_agent_status=0\n"
-                "translation_chunk_calls=15\n"
+                "translation_segment_calls=15\n"
                 "artifact_count=1\n"
-                "retry_reason=zero-artifact-zero-translation-chunk\n",
+                "retry_reason=zero-artifact-zero-translation-segment\n",
                 encoding="utf-8")
             valid = subprocess.run(
                 ["bash", "-c", "set -euo pipefail\n" + guard],
@@ -1079,7 +1081,7 @@ class RoutingInvariants(unittest.TestCase):
                      "agent_status": "0"},
                 text=True, capture_output=True, check=False)
             self.assertEqual(0, valid.returncode, valid.stdout + valid.stderr)
-            self.assertIn("attempts=2 last_status=0 translation_chunk_calls=15",
+            self.assertIn("attempts=2 last_status=0 translation_segment_calls=15",
                           valid.stdout)
 
             telemetry.write_text(

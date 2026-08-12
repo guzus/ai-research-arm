@@ -21,7 +21,6 @@ from pathlib import Path
 
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,119}$")
 AGENT_INPUT_DIR = Path(".agent-input")
-AGENT_SOURCE_PATH = AGENT_INPUT_DIR / "source.ara.md"
 REQUEST_PATH = AGENT_INPUT_DIR / "translation.json"
 
 
@@ -83,7 +82,8 @@ def prepare(repo: Path, slug: str, *, force: bool) -> dict[str, str]:
         )
     source_path = ara_path
     source_type = "ara"
-    draft_path = Path(".tmp/generative-translation.ko.ara.md")
+    draft_path = Path(".tmp/generative-translation.ko.html")
+    result_path = Path(".tmp/generative-translation.ko.segments.jsonl")
 
     title = row.get("title")
     if not isinstance(title, str) or not title.strip():
@@ -97,6 +97,8 @@ def prepare(repo: Path, slug: str, *, force: bool) -> dict[str, str]:
         "source_type": source_type,
         "source_sha256": source_sha256,
         "draft_path": draft_path.as_posix(),
+        "result_path": result_path.as_posix(),
+        "translation_type": "html",
     }
 
 
@@ -128,14 +130,8 @@ def stage_agent_request(
     if input_dir.resolve() != repo.resolve() / AGENT_INPUT_DIR:
         raise ValueError(f"agent input directory is noncanonical: {input_dir}")
 
-    canonical_source = repo / values["source_path"]
-    source_payload = canonical_source.read_bytes()
-    if hashlib.sha256(source_payload).hexdigest() != values["source_sha256"]:
-        raise ValueError("canonical translation source changed during preflight")
-    _atomic_write(repo / AGENT_SOURCE_PATH, source_payload)
-
     request_values = dict(values)
-    request_values["source_path"] = AGENT_SOURCE_PATH.as_posix()
+    request_values.pop("source_path")
     request_payload = (
         json.dumps(request_values, ensure_ascii=False, indent=2) + "\n"
     ).encode("utf-8")

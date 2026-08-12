@@ -31,9 +31,14 @@ def verify(
     source_file: str,
     source_sha256: str,
     model: str,
+    translation_type: str = "ara",
 ) -> dict[str, str]:
     entries = _changed(repo, base_sha)
-    expected_count = 3 if source_type == "ara" else 2
+    if source_type not in {"ara", "html"}:
+        raise ValueError(f"unknown source type: {source_type!r}")
+    if translation_type not in {"ara", "html"}:
+        raise ValueError(f"unknown translation type: {translation_type!r}")
+    expected_count = 3 if translation_type == "ara" else 2
     if len(entries) != expected_count:
         raise ValueError(f"expected {expected_count} committed paths, got {entries}")
 
@@ -65,12 +70,10 @@ def verify(
         raise ValueError("translation has no translated_at timestamp")
 
     source_artifact_path = ""
-    if source_type == "ara":
+    if translation_type == "ara":
         source_artifact_path = html_path.removesuffix(".html") + ".ara.md"
         if source_artifact_path not in added:
             raise ValueError("translation commit lacks the matching Korean ARA source")
-    elif source_type != "html":
-        raise ValueError(f"unknown source type: {source_type!r}")
 
     return {
         "html_path": html_path,
@@ -98,6 +101,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--source-file", required=True)
     parser.add_argument("--source-sha256", required=True)
     parser.add_argument("--model", required=True)
+    parser.add_argument("--translation-type", choices=("ara", "html"), default="ara")
     parser.add_argument("--github-output")
     args = parser.parse_args(argv)
     values = verify(
@@ -108,6 +112,7 @@ def main(argv: list[str] | None = None) -> int:
         args.source_file,
         args.source_sha256,
         args.model,
+        args.translation_type,
     )
     output = args.github_output or os.environ.get("GITHUB_OUTPUT")
     if output:
