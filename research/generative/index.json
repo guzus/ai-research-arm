@@ -1293,7 +1293,23 @@
     "created_at": "2026-08-11T08:49:45Z",
     "source": "workflow_dispatch",
     "prompt": "EU AI Act Article 50(2): Claude's text watermark, the six signatories, xAI's refusal, and the 400-token detectability floor",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-12T154821--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "제50조(2): 클로드 워터마크의 실체와 잘못 알려진 세 가지 숫자",
+        "model": "deepseek-v4-flash",
+        "created_at": "2026-08-12T15:48:21Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa",
+        "tags": [],
+        "translated_at": "2026-08-12T15:48:21Z",
+        "source_file": "research/generative/2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa.ara.md",
+        "source_sha256": "747de455a1cf9cf39678d507e2b15f857dfca4fee34fa7cb57e379d67116f8ca"
+      }
+    }
   },
   {
     "slug": "nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba",
