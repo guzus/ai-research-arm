@@ -134,7 +134,7 @@ jobs:
           mode: editorial
           lane: generative-research-ko
           return-artifacts: ${{ steps.prepare.outputs.result_path }}
-          # Translation needs two reads and one fixed-destination segment tool.
+          # Translation needs one compact read and one fixed-destination segment tool.
           # Explicit denies remain enforced under --auto, so prompt injection
           # cannot gain shell, network, search, subagent, edit/write, or
           # broader repository access.
@@ -148,13 +148,17 @@ jobs:
             Translate one existing ARA generative-research article into natural,
             professional Korean. This is translation, not new research.
 
-            Read `.agent-input/translation.json`, then read
-            `.agent-input/translation-segments.json` in full. Translate every
-            segment's `text` into Korean and submit batches with
-            `translation_segment`. Preserve every opaque token such as
+            Read `.agent-input/translation-segments.json`. It is compact JSON
+            Lines: the first line is a header; every later line is
+            `[segment_id, source_text, internal_flag]`. Translate each
+            `source_text` into Korean and submit `{id, text}` batches with
+            `translation_segment` immediately after reading the rows. Do not
+            draft a full document or final-answer translation. If the read is
+            paginated, submit the current page before reading the next page.
+            Preserve every opaque token such as
             `⟦ARA0000⟧` exactly once and in its original order. Submit each
             segment id exactly once. Do not put translations in your final
-            response. Tool permissions allow only those two reads and this
+            response. Tool permissions allow only this read and the
             fixed-destination segment tool; shell, web, search, subagents,
             edit/write, and all other tools are intentionally unavailable.
 

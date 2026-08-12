@@ -198,7 +198,6 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(
             {
                 "*": "deny",
-                ".agent-input/translation.json": "allow",
                 ".agent-input/translation-segments.json": "allow",
             },
             policy["read"],

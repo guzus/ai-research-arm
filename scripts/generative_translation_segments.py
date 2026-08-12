@@ -263,10 +263,28 @@ def write_manifest(source_path: Path, source_sha256: str, manifest_path: Path) -
     if manifest_path != MANIFEST_PATH:
         raise ValueError(f"manifest path must be exactly {MANIFEST_PATH}")
     _, manifest = build_manifest(source_path, source_sha256)
-    _atomic_write(
-        manifest_path,
-        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+    lines = [
+        json.dumps(
+            {
+                "version": manifest["version"],
+                "segment_count": manifest["segment_count"],
+            },
+            separators=(",", ":"),
+        )
+    ]
+    lines.extend(
+        json.dumps(
+            [
+                segment["id"],
+                segment["text"],
+                1 if segment["forbid_commas"] else 0,
+            ],
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+        for segment in manifest["segments"]
     )
+    _atomic_write(manifest_path, "\n".join(lines) + "\n")
     return manifest
 
 

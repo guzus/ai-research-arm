@@ -32,7 +32,38 @@ type Manifest = { version: number; segment_count: number; segments: ManifestSegm
 
 async function loadManifest(worktree: string): Promise<Manifest> {
   const raw = await readFile(path.join(worktree, MANIFEST_RELATIVE_PATH), "utf8")
-  const manifest = JSON.parse(raw) as Manifest
+  const lines = raw.trimEnd().split("\n")
+  const header = JSON.parse(lines.shift() ?? "null") as {
+    version?: unknown
+    segment_count?: unknown
+  } | null
+  const segments: ManifestSegment[] = []
+  const ids = new Set<string>()
+  for (const line of lines) {
+    const row = JSON.parse(line) as unknown
+    if (
+      !Array.isArray(row) ||
+      row.length !== 3 ||
+      typeof row[0] !== "string" ||
+      !/^s\d{5}$/.test(row[0]) ||
+      typeof row[1] !== "string" ||
+      (row[2] !== 0 && row[2] !== 1) ||
+      ids.has(row[0])
+    ) {
+      throw new Error("translation segment manifest row is malformed")
+    }
+    ids.add(row[0])
+    segments.push({
+      id: row[0],
+      tokens: row[1].match(TOKEN_RE) ?? [],
+      forbid_commas: row[2] === 1,
+    })
+  }
+  const manifest: Manifest = {
+    version: Number(header?.version),
+    segment_count: Number(header?.segment_count),
+    segments,
+  }
   if (
     manifest.version !== 1 ||
     !Number.isInteger(manifest.segment_count) ||
