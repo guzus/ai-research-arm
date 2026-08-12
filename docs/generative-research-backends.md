@@ -11,9 +11,9 @@ research pipeline:
 | `glm-5p2` | `GLM 5.2` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Opt-in Fireworks route (was the default before `claude`, which was in turn replaced by `opus-5` on 2026-07-31). Routes through `accounts/fireworks/models/glm-5p2` and records `glm-5p2` in article metadata. Uses the same retry, quality-gate, verifier, methodology-artifact, and safe-push path as `deepseek-v4-flash`. |
 | `claude` | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit native Anthropic Claude Code path and default fallback when a Fireworks backend is unavailable. The workflow pins `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-sonnet-5`, so the Claude Code `opus` alias resolves to Sonnet 5 for this lane. |
 | `fable-5` | `claude-fable-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit premium native Anthropic path for deliberate one-off runs. It is never the default or a fallback target, and it gets one model-action attempt rather than Claude's automatic recovery retry. The workflow passes the literal model ID to Claude Code and resolves every alias/subagent pin plus article metadata from `claude-fable-5`, preventing a Fable-labeled article from silently running on Sonnet. |
-| `opus-5` | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | **The default** (SSOT lane `generative-research-default`, since 2026-07-31) — inherited by manual dispatch with no `backend` input, `gen-research`-labelled issues, and `hourly-twitter.yml`'s throttled auto-research dispatch. Native Anthropic on Opus 5 (released 2026-07-24). It is still **not** the Fireworks-unavailable fallback target: that stays `claude`, because a fallback should be the cheap reliable path. Because it bills against the same OAuth subscription as `claude`, it keeps Claude's single automatic recovery retry — the retry costs no more than the first attempt would have. Like `fable-5`, the workflow pins the literal model ID across every alias/subagent slot and article metadata, and additionally verifies the committed `index.json` row records `claude-opus-5` before pushing (mismatch = hard rollback). Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
+| `opus-5` | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit premium native Anthropic route. It is not the default and is not the Fireworks-unavailable fallback target. The workflow pins the literal model ID across every alias/subagent slot and article metadata, and verifies the committed `index.json` row records `claude-opus-5` before pushing. Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
 | `codex` | Codex CLI default model for ChatGPT auth | `CODEX_AUTH_JSON` seeded into file-backed `auth.json` | Optional Codex backend using ChatGPT-managed Codex auth rather than OpenAI API billing. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
-| `opencode-kimi-k3` | **TEMPORARY 2026-08-07:** `deepseek-v4-flash` (1M context, the 2026-07-31 build) via the opencode CLI — was `kimi-k3`; swapped to spare Claude Max quota | `OPENCODE_API_KEY` (OpenCode Go subscription), read directly from env by opencode's built-in `opencode-go` provider. `MOONSHOT_API_KEY` is NO LONGER a route — Moonshot serves Kimi only, so a Moonshot-only environment hard-fails at preflight rather than authoring with the wrong model | Optional comparison backend on a third harness (opencode, pinned `opencode-ai@1.18.3`). No interactive login and no auth-file seeding — the env var IS the auth. Strict: preflight failure fails the run (no Claude fallback). Same staged inputs, methodology artifacts, and writer contract; article metadata records `deepseek-v4-flash`. Validate the secret first with `opencode-kimi-canary.yml`. |
+| `opencode-deepseek-v4-flash` | `deepseek-v4-flash` (1M context, the 2026-07-31 build) via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription), read directly from env by opencode's built-in `opencode-go` provider. Moonshot serves Kimi only and is not a fallback. | **The default** (SSOT lane `generative-research-default`) for manual no-backend dispatches, `gen-research` issues, and throttled Twitter auto-research. Also the shared strict route for editorial and Korean translation lanes. No interactive login or auth-file seeding. Strict: preflight failure fails rather than substituting another author. Article metadata records `deepseek-v4-flash`. Validate with `opencode-deepseek-canary.yml`. |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 
 ## Local Oracle / GPT-5.5 Pro
@@ -221,41 +221,13 @@ tools. The writer script owns the commit.
 
 ## OpenCode + DeepSeek V4 Flash
 
-> **TEMPORARY (2026-08-07).** This backend ran **Kimi K3**
-> (`opencode-go/kimi-k3`, with a `moonshotai/kimi-k3` pay-per-token second
-> route). It is pinned to `opencode-go/deepseek-v4-flash` to take load off
-> the Claude Max subscription quota. The selector token
-> (`backend=opencode-kimi-k3`), the Twitter output dir
-> (`research/twitter-opencode-kimi/`) and the canary filename keep their
-> historical Kimi names so the swap stays a small, reversible diff — but
-> every *model-identifying* label (article `--model` metadata, dashboard
-> lane label, digest title suffix, commit prefix, Telegram title) names
-> DeepSeek, because a strict no-fallback lane must never ship an artifact
-> attributed to a model that did not write it. **The Moonshot route is
-> gone, not repointed** — Moonshot serves Kimi only.
+The canonical selector is `opencode-deepseek-v4-flash`; aliases are
+`opencode`, `opencode-deepseek`, and `deepseek-opencode`. The Twitter output
+directory remains `research/twitter-opencode-kimi/` solely as a legacy data
+namespace so historical URLs do not split. It does not indicate the active
+model. All current model-identifying metadata and labels name DeepSeek.
 
-### Reverting this swap
-
-This is the canonical checklist; the `REVERT` comments in the workflows point
-here. Files 1–6 are required for a working Kimi lane, 7 for correct history,
-8–9 for accurate docs. **Nothing in `scripts/` needs editing**: both
-`build_backend_matrix.py` and `test_backend_matrix.py` derive the model from
-the workflows, so a consistent revert regenerates and passes on its own — and
-an *inconsistent* one red-lights CI, which is the point.
-
-| # | File | What to restore |
-|---|---|---|
-| 1 | `.github/opencode/opencode.json` | `"model": "opencode-go/kimi-k3"`. Keep the key set minimal — opencode **rejects unknown top-level keys** (`Unrecognized key: $comment`), which breaks config injection for the whole lane. Put notes in the workflows, never here. |
-| 2 | `.github/opencode/opencode-canary.json` | Nothing required (it declares both models and has no `model` key). |
-| 3 | `.github/opencode/prompts/generative-research.md` | `--model kimi-k3` at **both** writer call sites (slug and no-slug). |
-| 4 | `.github/workflows/generative-research.yml` | The Go model id; the raw preflight probe body (`"model":"kimi-k3"`); the `moonshotai/kimi-k3` preflight branch replacing the hard-fail; **and `MOONSHOT_API_KEY` back into the agent step's `env:`** — the preflight can resolve a Moonshot route the agent step then has no credential for. |
-| 5 | `.github/workflows/hourly-twitter.yml` | The Go model id; the `moonshotai/kimi-k3` `elif` branch (deleted, not edited — reconstruct it); `MOONSHOT_API_KEY` back into the step `env:`; and the four labels `TITLE_SUFFIX` / `COMMIT_PREFIX` / `HARNESS_LABEL` / the Telegram title. |
-| 6 | `.github/workflows/opencode-kimi-canary.yml` | The Go model id; the probe payload; the Moonshot route branch; `MOONSHOT_API_KEY` in the harness step `env:`; the workflow `name:` (`OpenCode Canary` → `OpenCode Kimi Canary`). Several `go_route` else-branches are dead while the swap is active and come back to life here. |
-| 7 | `dashboard/src/main.ts` | Move the era bound in `TWITTER_AB_LANE_META_HISTORY['twitter-opencode-kimi']`: add a `{ before: '<revert date>' , … DeepSeek … }` entry and restore the Kimi entry as current. Reports keep the label of whatever actually wrote them. |
-| 8 | `docs/generative-research-backends.md`, `docs/backend-matrix.md` (hand-written harness table only) | This section and the harness row. Then run `uv run python scripts/build_backend_matrix.py` to regenerate the generated blocks + README diagram. |
-| 9 | `CLAUDE.md`, `README.md` | The backend row and the secrets rows. |
-
-The `opencode-kimi-k3` backend runs the [opencode CLI](https://opencode.ai)
+The `opencode-deepseek-v4-flash` backend runs the [opencode CLI](https://opencode.ai)
 (github.com/anomalyco/opencode) against DeepSeek V4 Flash on the **OpenCode
 Go** subscription. The 07-31 build is what `opencode-go/deepseek-v4-flash`
 resolves to — on this provider the bare id **is** the 2026-07-31 release
@@ -278,9 +250,8 @@ the supported path.
 `opencode-go/deepseek-v4-flash` (models.dev pins
 `env = ["OPENCODE_API_KEY"]`, `api = https://opencode.ai/zen/go/v1`).
 Go is opencode's $10/month plan ($5 first month). Usage is dollar-value
-capped — **$12/5h, $30/week, $60/month** — but at Flash pricing a deep
-research run is a small fraction of the weekly allowance, unlike K3 which
-billed at its full $3/$15 rate ("Kimi K3 (2x usage)"). The console's "Use
+capped — **$12/5h, $30/week, $60/month** — and at Flash pricing a deep
+research run is a small fraction of the weekly allowance. The console's "Use
 balance" toggle lets Go fall back to Zen pay-as-you-go credits instead of
 blocking when a cap is hit.
 
@@ -300,7 +271,7 @@ gh secret set OPENCODE_API_KEY
 Then prove the key + harness before spending a 90-minute research run:
 
 ```bash
-gh workflow run opencode-kimi-canary.yml
+gh workflow run opencode-deepseek-canary.yml
 ```
 
 The canary resolves the same Go route as the production lane, then
@@ -323,15 +294,14 @@ gh workflow run generative-research.yml \
   --ref main \
   -f topic="$TOPIC" \
   -f slug="qa-deepseek-v4-flash-power-bottlenecks" \
-  -f backend=opencode-kimi-k3 \
+  -f backend=opencode-deepseek-v4-flash \
   -f tags="qa,comparison,deepseek-v4-flash"
 ```
 
 Lane mechanics, mirroring the Codex path:
 
 - Version pinned: `npm install -g opencode-ai@1.18.3` (verified to resolve
-  `opencode-go/deepseek-v4-flash`; Moonshot's opencode guide required the
-  same >= 1.18.3 floor for kimi-k3) with `OPENCODE_DISABLE_AUTOUPDATE=1`
+  `opencode-go/deepseek-v4-flash`) with `OPENCODE_DISABLE_AUTOUPDATE=1`
   so the persistent self-hosted runner cannot drift.
 - Config at [`.github/opencode/opencode.json`](../.github/opencode/opencode.json)
   (injected via `OPENCODE_CONFIG`): grants headless
@@ -346,7 +316,7 @@ Lane mechanics, mirroring the Codex path:
   commit with `--model deepseek-v4-flash` metadata.
 - The workflow preflights the resolved route's API (missing secrets or a
   definitively dead key — HTTP 401/402 — fails in seconds, before
-  install/agent) and fails closed — an explicit `opencode-kimi-k3`
+  install/agent) and fails closed — an explicit `opencode-deepseek-v4-flash`
   request never falls back to Claude, matching the comparison-lane
   strictness of `fireworks_fallback=none`. Other statuses from the
   undocumented Go raw endpoint (including Cloudflare bot-filter 403s)
@@ -366,14 +336,6 @@ Lane mechanics, mirroring the Codex path:
   preflight step, which runs no agent, purely to emit a precise error when it
   is the only key configured. `scripts/test_backend_matrix.py` asserts that
   scoping.
-
-**No-new-harness alternative (not wired up):** Moonshot also runs an
-official Anthropic-compatible endpoint that works with the existing Claude
-Code harness pattern — `ANTHROPIC_BASE_URL=https://api.moonshot.ai/anthropic`,
-`ANTHROPIC_AUTH_TOKEN=$MOONSHOT_API_KEY`, model `kimi-k3[1m]` (the `[1m]`
-alias is endpoint-valid here, unlike Z.ai's rejection of `glm-5.2[1m]`).
-If a Kimi lane is ever wanted without the opencode harness, that is the
-Z.ai-style route to take.
 
 ## Fireworks Backends
 
@@ -455,7 +417,7 @@ gh workflow run generative-research.yml \
 gh workflow run generative-research.yml \
   -f topic="$TOPIC" \
   -f slug="qa-deepseek-v4-flash-power-bottlenecks" \
-  -f backend=opencode-kimi-k3 \
+  -f backend=opencode-deepseek-v4-flash \
   -f tags="qa,comparison,deepseek-v4-flash"
 
 gh workflow run generative-research.yml \

@@ -3280,11 +3280,6 @@ const TWITTER_AB_LANE_META: Record<string, TwitterAbLaneMeta> = {
   'twitter-fireworks-pi': { label: 'Kimi K2.7', model: 'kimi-k2p7 · Fireworks', harness: 'pi (container)' },
 };
 
-// REVERT (temporary 2026-08-07 DeepSeek swap): step 7 of
-// docs/generative-research-backends.md § "Reverting this swap" — this file is
-// invisible from the workflow REVERT comments, so it is the one most likely to
-// be missed.
-//
 // A lane outlives the model it runs, so the map above is only the CURRENT
 // answer. Reports already on disk were written by whatever ran that day, and
 // re-labelling them is the same defect as mislabelling a new one — just

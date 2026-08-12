@@ -346,11 +346,12 @@ class RoutingInvariants(unittest.TestCase):
         self.assertTrue(self.obs["generative-research.yml"].has_opus_dispatch)
         from build_backend_matrix import GEN_RESEARCH_BACKENDS
         self.assertIn("opus-5", GEN_RESEARCH_BACKENDS)
-        # opus-5 is the SSOT default: manual dispatch with no backend input,
+        # DeepSeek/OpenCode is the SSOT default: manual dispatch with no backend input,
         # gen-research issues, and hourly-twitter's auto-research all inherit
         # it. The workflow must keep resolving that default at runtime rather
         # than hard-coding a backend of its own.
-        self.assertEqual(self.lanes["generative-research-default"]["backend"], "opus-5")
+        self.assertEqual(self.lanes["generative-research-default"]["backend"],
+                         "opencode-deepseek-v4-flash")
         self.assertIn("generative-research-default",
                       self.obs["generative-research.yml"].resolver_lanes)
         # The Fireworks-unavailable fallback is deliberately NOT the default:
@@ -358,14 +359,14 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('backend="claude"', (REPO_ROOT / ".github" / "workflows" /
                       "generative-research.yml").read_text(encoding="utf-8"))
 
-    def test_gen_research_opencode_kimi_is_explicit_and_fail_closed(self):
+    def test_gen_research_opencode_deepseek_is_explicit_and_fail_closed(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
         # Dispatch option, both case-normalizations, and the runtime allowlist.
-        self.assertIn("- opencode-kimi-k3", workflow)
-        self.assertIn('opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) CANDIDATE="opencode-kimi-k3"', workflow)
-        self.assertIn('opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) BACKEND="opencode-kimi-k3"', workflow)
-        self.assertIn('[ "$BACKEND" != "opencode-kimi-k3" ]', workflow)
+        self.assertIn("- opencode-deepseek-v4-flash", workflow)
+        self.assertIn('opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) CANDIDATE="opencode-deepseek-v4-flash"', workflow)
+        self.assertIn('opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) BACKEND="opencode-deepseek-v4-flash"', workflow)
+        self.assertIn('[ "$BACKEND" != "opencode-deepseek-v4-flash" ]', workflow)
         # Fail-closed route preflight and the output guard stay in the
         # workflow; the version-pinned install and the env-var auth moved into
         # the container action and are asserted there (see the containment
@@ -394,9 +395,9 @@ class RoutingInvariants(unittest.TestCase):
         self.assertTrue(self.obs["generative-research.yml"].opencode)
         self.assertEqual(self.obs["generative-research.yml"].opencode_token,
                          "OPENCODE_API_KEY")
-        self.assertTrue(self.obs["opencode-kimi-canary.yml"].opencode)
+        self.assertTrue(self.obs["opencode-deepseek-canary.yml"].opencode)
         from build_backend_matrix import GEN_RESEARCH_BACKENDS
-        self.assertIn("opencode-kimi-k3", GEN_RESEARCH_BACKENDS)
+        self.assertIn("opencode-deepseek-v4-flash", GEN_RESEARCH_BACKENDS)
 
     # Every workflow that can run the opencode harness. hourly-twitter is the
     # one most easily forgotten in a model swap — it resolves its own model in
@@ -408,7 +409,7 @@ class RoutingInvariants(unittest.TestCase):
         "generative-research.yml",
         "hourly-rss.yml",
         "hourly-twitter.yml",
-        "opencode-kimi-canary.yml",
+        "opencode-deepseek-canary.yml",
         "translate-generative-research.yml",
         "wiki-ingest.yml",
     )
@@ -425,7 +426,7 @@ class RoutingInvariants(unittest.TestCase):
         seen: dict[str, set] = {}
         direct_workflows = (
             "generative-research.yml", "hourly-twitter.yml",
-            "opencode-kimi-canary.yml",
+            "opencode-deepseek-canary.yml",
         )
         for name in direct_workflows:
             doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
@@ -470,7 +471,7 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(
             {"2h-bluesky.yml", "4h-community.yml", "daily-arxiv.yml",
              "generative-research.yml", "hourly-rss.yml",
-             "hourly-twitter.yml", "opencode-kimi-canary.yml",
+             "hourly-twitter.yml", "opencode-deepseek-canary.yml",
              "translate-generative-research.yml",
              "wiki-ingest.yml"},
             set(self.OPENCODE_WORKFLOWS))
@@ -685,10 +686,10 @@ class RoutingInvariants(unittest.TestCase):
     def test_opencode_canary_probes_the_model_production_runs(self):
         # A canary that probes a different model than production runs is worse
         # than no canary: it goes green on an entitlement the real lane never
-        # uses. Pin them to the same id (2026-08-07 DeepSeek swap).
+        # uses. Pin them to the same id.
         model_id = self.assert_single_opencode_model()
         canary = (REPO_ROOT / ".github" / "workflows" /
-                  "opencode-kimi-canary.yml").read_text(encoding="utf-8")
+                  "opencode-deepseek-canary.yml").read_text(encoding="utf-8")
         gen = (REPO_ROOT / ".github" / "workflows" /
                "generative-research.yml").read_text(encoding="utf-8")
         # The RAW API probes bill the bare id; they must match the harness id
@@ -707,30 +708,31 @@ class RoutingInvariants(unittest.TestCase):
                              .read_text(encoding="utf-8"))
             # opencode REJECTS unknown top-level keys ("Unrecognized key:
             # $comment"), which breaks config injection for the whole lane.
-            # Keep revert notes in the workflows and docs, never in here.
+            # Keep prose notes in the workflows and docs, never in here.
             self.assertLessEqual(set(cfg) - {"$schema", "model", "provider",
                                              "permission", "agent", "mcp",
                                              "formatter", "lsp"}, set(),
                                  f"{name}: unknown top-level key rejected by opencode")
+        self.assertNotIn(
+            "kimi",
+            (REPO_ROOT / ".github" / "opencode" / "opencode-canary.json")
+            .read_text(encoding="utf-8").lower(),
+            "DeepSeek canary config must not retain a selectable Kimi model",
+        )
+        self.assertNotIn("OPENCODE-KIMI-CANARY-OK", canary)
 
     def test_opencode_twitter_tier_labels_name_the_served_model(self):
-        # The tier's selector token and output dir keep historical Kimi names
-        # for a cheap revert, so the human-facing labels are the ONLY thing
-        # telling a reader who wrote the artifact. They must name the served
-        # model — a committed report headed "Kimi K3" that DeepSeek wrote is
-        # the exact failure this strict, no-fallback tier exists to prevent.
+        # The output dir is a legacy namespace, so human-facing labels must
+        # name the served model rather than inheriting the directory label.
         model_id = self.assert_single_opencode_model()
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "hourly-twitter.yml").read_text(encoding="utf-8")
         # Pick the tier-CONFIG case arm by content: the workflow has an earlier
-        # `...|opencode-kimi-k3) ;;` validation arm that carries no labels.
+        # `...|opencode-deepseek-v4-flash) ;;` validation arm that carries no labels.
         arms = [chunk.split(";;", 1)[0]
-                for chunk in workflow.split("opencode-kimi-k3)")[1:]]
+                for chunk in workflow.split("opencode-deepseek-v4-flash)")[1:]]
         arm = next(a for a in arms if "OUTPUT_DIR=" in a)
-        # Symmetric, so this test survives the revert it documents: assert the
-        # served family IS named and every OTHER known family is not. Hard-
-        # coding "must not say kimi" would red-light the very revert the
-        # REVERT markers describe.
+        # Assert the served family IS named and every OTHER known family is not.
         family = model_id.split("-")[0].lower()          # e.g. "deepseek"
         others = {"deepseek", "kimi", "glm", "claude", "gpt", "qwen"} - {family}
         targets = [(f, next(ln for ln in arm.splitlines() if f"{f}=" in ln))
@@ -871,7 +873,7 @@ class RoutingInvariants(unittest.TestCase):
         for name, expected_mode in {
                 "generative-research.yml": "generative",
                 "hourly-twitter.yml": "twitter",
-                "opencode-kimi-canary.yml": "canary",
+                "opencode-deepseek-canary.yml": "canary",
         }.items():
             doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
                                  .read_text(encoding="utf-8"))

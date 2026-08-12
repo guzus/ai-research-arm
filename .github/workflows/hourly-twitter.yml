@@ -1,4 +1,4 @@
-name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-kimi-k3)
+name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash)
 
 # Unified Twitter/X pipeline that fans out across six backend tiers:
 #   - claude            (cron '7 */3 * * *', primary tier, model routed by data/agent-backends.json,
@@ -12,11 +12,9 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 #                        output → research/twitter-deepseek-pi/)
 #   - fireworks-pi      (manual only,        model: Kimi K2.6 via Fireworks + pi,
 #                        output → research/twitter-fireworks-pi/)
-#   - opencode-kimi-k3  (manual only,        model: deepseek-v4-flash via OpenCode Go
-#                        + opencode harness — TEMPORARY 2026-08-07 swap off
-#                        kimi-k3 to spare Claude Max quota; the selector token and
-#                        output dir keep their historical Kimi names, the model
-#                        labels do not. Output → research/twitter-opencode-kimi/)
+#   - opencode-deepseek-v4-flash  (manual only, model: deepseek-v4-flash via
+#                        OpenCode Go + isolated opencode harness. Output remains
+#                        in the legacy research/twitter-opencode-kimi/ namespace.)
 #
 # Routing rules:
 #   - schedule trigger → backend resolved from github.event.schedule by the
@@ -68,7 +66,7 @@ on:
           - deepseek-claude-code
           - deepseek-pi
           - fireworks-pi
-          - opencode-kimi-k3
+          - opencode-deepseek-v4-flash
       dry_run:
         description: Claude tier only — render fixture, skip push/deploy/alerts.
         required: false
@@ -170,7 +168,7 @@ jobs:
             BACKEND="$MATRIX_BACKEND"
           fi
           case "$BACKEND" in
-            claude|deepseek-claude-code|zai-glm-5p2|deepseek-pi|fireworks-pi|opencode-kimi-k3) ;;
+            claude|deepseek-claude-code|zai-glm-5p2|deepseek-pi|fireworks-pi|opencode-deepseek-v4-flash) ;;
             *) echo "::error::Unknown backend '$BACKEND'"; exit 1 ;;
           esac
           {
@@ -362,14 +360,10 @@ jobs:
               HARNESS_LABEL="on Kimi K2.6 through Fireworks under the pi coding agent harness"
               FEATURES="telegram"
               ;;
-            opencode-kimi-k3)
-              # REVERT (temporary 2026-08-07 DeepSeek swap): the tier SELECTOR
-              # and OUTPUT_DIR deliberately keep their historical names so the
-              # swap stays a one-file-per-workflow revert, but every
-              # model-IDENTIFYING label below names the model actually running.
-              # Never let these drift back to "Kimi K3" while the opencode
-              # default is DeepSeek — a mislabeled artifact is the exact
-              # failure the strict, no-fallback design exists to prevent.
+            opencode-deepseek-v4-flash)
+              # OUTPUT_DIR and SUMMARY_SLUG are retained as a legacy data
+              # namespace so existing report history and dashboard links do not
+              # split. Every model-identifying label names DeepSeek explicitly.
               OUTPUT_DIR="research/twitter-opencode-kimi"
               SUMMARY_SLUG="twitter-opencode-kimi"
               TITLE_SUFFIX=" (opencode + DeepSeek V4 Flash)"
@@ -443,7 +437,7 @@ jobs:
           birdy_accounts: ${{ secrets.BIRDY_ACCOUNTS }}
 
       - name: Configure git identity (pi/opencode tiers — no claude-code-action to do it)
-        if: contains(fromJSON('["deepseek-pi","fireworks-pi","opencode-kimi-k3"]'), steps.backend.outputs.name)
+        if: contains(fromJSON('["deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash"]'), steps.backend.outputs.name)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -845,7 +839,7 @@ jobs:
           bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
           bird-ct0: ${{ secrets.BIRD_CT0 }}
 
-      # opencode tier runs on the host like opencode-kimi-canary.yml (no
+      # opencode tier runs on the host like opencode-deepseek-canary.yml (no
       # claude-code-action, no pi container): pinned CLI, checked-in
       # OPENCODE_CONFIG, env-var auth only — no `opencode auth login`, no
       # auth.json. STRICT comparison tier: if the resolved route fails, this
@@ -854,20 +848,13 @@ jobs:
       # The Birdy daemon (started above) enforces read-only X access for
       # opencode's coarse bash tool, same as the pi tiers.
       #
-      # REVERT (temporary 2026-08-07 DeepSeek swap): this tier ran
-      # opencode-go/kimi-k3 with a moonshotai/kimi-k3 second route. It now runs
-      # opencode-go/deepseek-v4-flash (the 2026-07-31 release — on this
-      # provider the bare id IS that build; only Fireworks needs a -0731
-      # suffix) to take load off the Claude Max subscription quota. Moonshot
-      # serves Kimi ONLY and cannot serve DeepSeek, so that route is now a hard
-      # failure rather than a silent swap to a different model.
-      # FULL REVERT CHECKLIST (authoritative; covers the deleted Moonshot
-      # branch, the step env, the four labels above, and the dashboard):
-      #   docs/generative-research-backends.md § "Reverting this swap".
+      # This strict tier runs opencode-go/deepseek-v4-flash. Moonshot cannot
+      # serve DeepSeek, so a missing OpenCode Go key is a hard failure rather
+      # than a silent model substitution.
       # Strict fail-fast on auth BEFORE building the image: a dead key should
       # cost seconds, not a container build.
-      - name: Check opencode auth (opencode-kimi-k3 tier)
-        if: steps.backend.outputs.name == 'opencode-kimi-k3'
+      - name: Check opencode auth (opencode-deepseek-v4-flash tier)
+        if: steps.backend.outputs.name == 'opencode-deepseek-v4-flash'
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
         run: |
@@ -881,8 +868,8 @@ jobs:
       # run --auto` directly on the self-hosted host with edit/bash/webfetch
       # all "allow" — the only agent harness in the repo with no sandbox.
       # 45m budget inside the 60m job cap leaves room for guards + push.
-      - name: Process tweets with opencode + DeepSeek V4 Flash (opencode-kimi-k3 tier)
-        if: steps.backend.outputs.name == 'opencode-kimi-k3'
+      - name: Process tweets with opencode + DeepSeek V4 Flash (opencode-deepseek-v4-flash tier)
+        if: steps.backend.outputs.name == 'opencode-deepseek-v4-flash'
         uses: ./.github/actions/run-opencode-container
         with:
           mode: twitter
@@ -902,7 +889,7 @@ jobs:
 
       - name: Require Twitter producer diff scope
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-kimi-k3"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: ./.github/actions/require-diff-scope
         with:
@@ -916,7 +903,7 @@ jobs:
 
       - name: Require Twitter run heartbeat
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-kimi-k3"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: ./.github/actions/require-output
         with:
@@ -927,7 +914,7 @@ jobs:
 
       - name: Validate Twitter signal-only public output
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-kimi-k3"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         env:
           BACKEND: ${{ steps.backend.outputs.name }}
@@ -1575,7 +1562,7 @@ jobs:
         id: summary
         if: >-
           steps.push.outputs.pushed == 'true'
-          && contains(fromJSON('["deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-kimi-k3"]'), steps.backend.outputs.name)
+          && contains(fromJSON('["deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash"]'), steps.backend.outputs.name)
         env:
           SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
         run: |
@@ -1777,11 +1764,11 @@ jobs:
             -H "Idempotency-Key: twitter-fireworks-pi-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
             --data-binary "@/tmp/hooker-twitter-fireworks-pi.json"
 
-      - name: Send notification via hooker (opencode-kimi-k3)
+      - name: Send notification via hooker (opencode-deepseek-v4-flash)
         if: >-
           success()
           && steps.push.outputs.pushed == 'true'
-          && steps.backend.outputs.name == 'opencode-kimi-k3'
+          && steps.backend.outputs.name == 'opencode-deepseek-v4-flash'
           && steps.summary.outputs.content != ''
         continue-on-error: true
         env:

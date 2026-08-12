@@ -12,7 +12,7 @@ name: Generative Research
 # Backends, mutually exclusive at runtime. The DEFAULT is not named here —
 # it lives in data/agent-backends.json (lane generative-research-default) and
 # is resolved at runtime, so re-routing the default needs no workflow change:
-#   * opus-5   — CURRENT DEFAULT. Native Anthropic on claude-opus-5. Same OAuth
+#   * opus-5   — Explicit premium native Anthropic path on claude-opus-5. Same OAuth
 #                credential and billing surface as `claude`, so it keeps the
 #                recovery retry; unlike `claude` its provenance is verified
 #                against the committed index row before the push.
@@ -22,8 +22,8 @@ name: Generative Research
 #                fails preflight — a fallback stays on the cheap reliable path.
 #   * fable-5  — explicit, premium native Anthropic path (model claude-fable-5).
 #   * codex    — Codex CLI signed in with ChatGPT-managed auth.json.
-#   * opencode-kimi-k3 — opencode CLI running DeepSeek V4 Flash (TEMPORARY
-#                2026-08-07 swap off Kimi K3 to spare Claude Max quota),
+#   * opencode-deepseek-v4-flash — CURRENT DEFAULT. opencode CLI running
+#                DeepSeek V4 Flash through OpenCode Go,
 #                authenticated by the plain OPENCODE_API_KEY env var (no
 #                auth.json seeding). The Moonshot route is gone, not
 #                repointed — Moonshot serves Kimi only.
@@ -75,7 +75,7 @@ on:
           - glm-5p2
           - deepseek-v4-flash
           - codex
-          - opencode-kimi-k3
+          - opencode-deepseek-v4-flash
           - claude
           - fable-5
           - opus-5
@@ -316,12 +316,12 @@ jobs:
                 claude-fable-5|fable-5) CANDIDATE="fable-5" ;;
                 claude-opus-5|opus-5|opus5) CANDIDATE="opus-5" ;;
                 codex|openai-codex) CANDIDATE="codex" ;;
-                opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) CANDIDATE="opencode-kimi-k3" ;;
+                opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) CANDIDATE="opencode-deepseek-v4-flash" ;;
                 deepseek) CANDIDATE="deepseek-v4-flash" ;;
                 glm-5.2|glm5.2|glm52|glm-5p2) CANDIDATE="glm-5p2" ;;
               esac
               if [ -n "${CANDIDATE:-}" ]; then
-                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "opus-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-kimi-k3" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
+                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "opus-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-deepseek-v4-flash" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
                   echo "unsupported backend/model: $CANDIDATE" >&2
                   exit 1
                 fi
@@ -354,14 +354,14 @@ jobs:
           case "$BACKEND" in
             default) BACKEND="$DEFAULT_BACKEND" ;;
             codex|openai-codex) BACKEND="codex" ;;
-            opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) BACKEND="opencode-kimi-k3" ;;
+            opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) BACKEND="opencode-deepseek-v4-flash" ;;
             deepseek) BACKEND="deepseek-v4-flash" ;;
             glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
             claude-opus-4-8|claude-sonnet-5) BACKEND="claude" ;;
             claude-fable-5|fable-5) BACKEND="fable-5" ;;
             claude-opus-5|opus-5|opus5) BACKEND="opus-5" ;;
           esac
-          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "opus-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-kimi-k3" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
+          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "opus-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-deepseek-v4-flash" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
           fi
@@ -1964,23 +1964,14 @@ jobs:
       #   `opencode-go/deepseek-v4-flash` (models.dev pins
       #   env=OPENCODE_API_KEY, api=opencode.ai/zen/go/v1).
       #
-      # REVERT (temporary 2026-08-07 DeepSeek swap): this backend ran
-      # `opencode-go/kimi-k3`, with `moonshotai/kimi-k3` as a second
-      # pay-per-token route. It is pinned to `opencode-go/deepseek-v4-flash`
-      # (the 2026-07-31 release — on this provider the bare id IS that build;
-      # only Fireworks needs a -0731 suffix) to take load off the Claude Max
-      # subscription quota. Two consequences, both deliberate:
+      # This route is pinned to `opencode-go/deepseek-v4-flash` (the 2026-07-31
+      # release — on this provider the bare id IS that build; only Fireworks
+      # needs a -0731 suffix). Two consequences are deliberate:
       #   * The Moonshot route is GONE, not repointed — Moonshot serves Kimi
       #     only. The preflight hard-fails there rather than silently authoring
       #     with a model the article metadata does not name.
-      #   * Billing improves sharply: K3 billed at full $3/$15 value against the
-      #     Go caps ($12/5h, $30/week, $60/month), so one deep run ate a real
-      #     fraction of the weekly allowance. deepseek-v4-flash is $0.07/$0.14
-      #     per Mtok, ~40x cheaper on input.
-      # FULL REVERT CHECKLIST (the only authoritative one — it covers files
-      # this comment cannot see, including dashboard/src/main.ts and putting
-      # MOONSHOT_API_KEY back into the agent step env):
-      #   docs/generative-research-backends.md § "Reverting this swap".
+      #   * DeepSeek V4 Flash is the preferred low-cost OpenCode Go model;
+      #     attribution and the strict route stay coupled to that exact model.
       #
       # The install is version-pinned at 1.18.3 (verified to resolve
       # opencode-go/deepseek-v4-flash) and OPENCODE_DISABLE_AUTOUPDATE keeps the
@@ -1996,7 +1987,7 @@ jobs:
       # prohibitions, Actions log masking, and keys scoped to model billing
       # only. Keep this step's env to the minimum set.
       - name: Resolve and preflight OpenCode route
-        if: steps.effective.outputs.backend == 'opencode-kimi-k3'
+        if: steps.effective.outputs.backend == 'opencode-deepseek-v4-flash'
         id: opencode-route
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
@@ -2046,13 +2037,12 @@ jobs:
                 ;;
             esac
           elif [ -n "${MOONSHOT_API_KEY:-}" ]; then
-            # REVERT (temporary 2026-08-07 DeepSeek swap): this branch resolved
-            # route=moonshot on the `moonshotai/kimi-k3` id. Moonshot serves Kimi
-            # ONLY and cannot serve deepseek-v4-flash. This backend is strict —
+            # Moonshot serves Kimi only and cannot serve deepseek-v4-flash.
+            # This backend is strict —
             # it must never silently author with a model other than the one its
             # article metadata records — so an OPENCODE_API_KEY-less run now
             # fails here instead of quietly producing a Kimi article.
-            echo "::error::MOONSHOT_API_KEY is set but OPENCODE_API_KEY is not. The Moonshot provider serves Kimi only and cannot serve deepseek-v4-flash, which this backend is temporarily pinned to. Set OPENCODE_API_KEY (https://opencode.ai/auth), or revert the temporary DeepSeek swap to restore the moonshotai/kimi-k3 route."
+            echo "::error::MOONSHOT_API_KEY is set but OPENCODE_API_KEY is not. Moonshot cannot serve the required deepseek-v4-flash model. Set OPENCODE_API_KEY from https://opencode.ai/auth."
             exit 1
           else
             echo "::error::No opencode auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription key from https://opencode.ai/auth) with: gh secret set OPENCODE_API_KEY"
@@ -2079,7 +2069,7 @@ jobs:
       # of env entirely — the agent reads them from .gen-input/ inside the
       # mounted workspace.
       - name: Run Generative Research (OpenCode DeepSeek V4 Flash)
-        if: steps.effective.outputs.backend == 'opencode-kimi-k3'
+        if: steps.effective.outputs.backend == 'opencode-deepseek-v4-flash'
         id: gen-opencode
         continue-on-error: true
         timeout-minutes: 90
@@ -3951,7 +3941,7 @@ jobs:
           exit 1
 
       - name: Fail OpenCode run without article
-        if: always() && steps.effective.outputs.backend == 'opencode-kimi-k3' && steps.outfile.outputs.has_file != 'true'
+        if: always() && steps.effective.outputs.backend == 'opencode-deepseek-v4-flash' && steps.outfile.outputs.has_file != 'true'
         run: |
           echo "::error::OpenCode DeepSeek V4 Flash backend did not produce an article."
           echo "OpenCode outcome: ${{ steps.gen-opencode.outcome }}"
@@ -4076,10 +4066,8 @@ jobs:
             echo "::warning::Could not resolve article slug for ${TG_FILE}; linking to research index"
             ARTICLE_URL="${SITE_ORIGIN%/}/research"
           fi
-          # Announce the MODEL, not just the backend selector. Selector tokens
-          # are frozen for cheap reverts and outlive the model they route to
-          # (`opencode-kimi-k3` has served DeepSeek since 2026-08-07), so a
-          # selector-only line tells a reader the wrong author. The committed
+          # Announce the MODEL, not just the backend selector, so a routing
+          # change cannot make the notification misidentify the author. The committed
           # index row is written by the writer script from the model that
           # actually ran, so it cannot drift from a workflow literal.
           TG_MODEL=$(jq -r --arg f "${TG_FILE}" \

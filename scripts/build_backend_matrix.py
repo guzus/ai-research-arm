@@ -50,12 +50,12 @@ END_MARKER = "<!-- END GENERATED BACKEND MATRIX -->"
 BEGIN_DIAGRAM = "<!-- BEGIN GENERATED BACKEND DIAGRAM (scripts/build_backend_matrix.py — do not edit by hand) -->"
 END_DIAGRAM = "<!-- END GENERATED BACKEND DIAGRAM -->"
 
-# The opencode lane's SELECTOR token is frozen at its historical name so a
-# model swap stays a cheap revert, but the model it actually serves is read
-# out of the workflow. Hard-coding the model here once produced a green
+# The canonical selector names the provider/model route, while the model it
+# actually serves is still read out of the workflow. Hard-coding the model
+# here once produced a green
 # `--check` over a table that named the wrong author for every artifact in
 # the lane (generator and doc agreed with each other, both stale).
-OPENCODE_SELECTOR = "opencode-kimi-k3"
+OPENCODE_SELECTOR = "opencode-deepseek-v4-flash"
 OPENCODE_PROVIDER_LABEL = "OpenCode Go"
 OPENCODE_MODEL_RE = re.compile(r'model="opencode-go/([A-Za-z0-9._-]+)"')
 OPENCODE_ACTION_MODEL_RE = re.compile(r'^opencode-go/([A-Za-z0-9._-]+)$')
@@ -126,7 +126,7 @@ STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure
 # Backends generative-research.yml can actually execute (its params step
 # validates against this same set at runtime).
 GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "opus-5", "codex",
-                         "opencode-kimi-k3", "deepseek-v4-flash", "glm-5p2"}
+                         "opencode-deepseek-v4-flash", "deepseek-v4-flash", "glm-5p2"}
 
 REQUIRED_AGENT_RUN_SECRETS = {
     "claude-code-oauth-token": "CLAUDE_CODE_OAUTH_TOKEN",
@@ -984,8 +984,7 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             # The model and provider are read from the workflow, not hard-coded:
             # this table is the human view of routing, and a stale literal here
             # is a CI-blessed lie about which model authored an artifact. The
-            # selector token keeps its historical `-kimi-k3` name across the
-            # temporary 2026-08-07 DeepSeek swap; the Model column must not.
+            # selector and Model columns must both remain truthful.
             model_id = opencode_model_id(wf_name)
             if wf_name == "generative-research.yml":
                 label = f"(dispatch path) backend={OPENCODE_SELECTOR}"
