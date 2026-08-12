@@ -181,6 +181,31 @@ class TranslationSegmentsTest(unittest.TestCase):
             self.assertEqual(manifest["segment_count"], len(extracted))
             self.assertEqual(parity.check_pair(source, draft), [])
 
+    def test_model_manifest_is_compact_json_lines(self):
+        repo = Path(__file__).resolve().parent.parent
+        source = repo / (
+            "research/generative/2026-08-11T084945--"
+            "eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa.ara.md"
+        )
+        source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / ".agent-input").mkdir()
+            old_cwd = Path.cwd()
+            try:
+                os.chdir(root)
+                manifest = segments.write_manifest(
+                    source, source_sha, segments.MANIFEST_PATH
+                )
+            finally:
+                os.chdir(old_cwd)
+            payload = (root / segments.MANIFEST_PATH).read_text(encoding="utf-8")
+            lines = payload.splitlines()
+            self.assertEqual(len(lines), manifest["segment_count"] + 1)
+            self.assertEqual(json.loads(lines[0])["segment_count"], 438)
+            self.assertEqual(len(json.loads(lines[1])), 3)
+            self.assertLess(len(payload.encode("utf-8")), 65_000)
+
     def test_renderer_rejects_missing_or_changed_tokens(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
