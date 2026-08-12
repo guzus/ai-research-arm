@@ -157,7 +157,9 @@ jobs:
             paginated, submit the current page before reading the next page.
             Preserve every opaque token such as
             `⟦ARA0000⟧` exactly once and in its original order. Submit each
-            segment id exactly once. Do not put translations in your final
+            segment id exactly once. Do not introduce Arabic digits outside
+            opaque tokens; spell source quantities such as "nine" in Korean.
+            Do not put translations in your final
             response. Tool permissions allow only this read and the
             fixed-destination segment tool; shell, web, search, subagents,
             edit/write, and all other tools are intentionally unavailable.

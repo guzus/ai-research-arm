@@ -266,6 +266,40 @@ class TranslationSegmentsTest(unittest.TestCase):
                 os.chdir(old_cwd)
             self.assertEqual(parity.check_pair(source, root / segments.DRAFT_PATH), [])
 
+    def test_renderer_rejects_new_digits_outside_source_tokens(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "alpha.ara.md"
+            source.write_text(SOURCE, encoding="utf-8")
+            source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+            compiled, _ = segments.build_manifest(source, source_sha)
+            extracted = segments.extract_segments(compiled)
+            (root / ".tmp").mkdir()
+            (root / segments.RESULT_PATH).write_text(
+                "".join(
+                    json.dumps(
+                        {
+                            "id": segment.id,
+                            "text": self._korean_text(segment)
+                            + (" 9일" if segment.id == extracted[0].id else ""),
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
+                    for segment in extracted
+                ),
+                encoding="utf-8",
+            )
+            old_cwd = Path.cwd()
+            try:
+                os.chdir(root)
+                with self.assertRaisesRegex(ValueError, "unprotected numeric digit"):
+                    segments.render(
+                        source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH
+                    )
+            finally:
+                os.chdir(old_cwd)
+
     def test_renderer_rejects_unprotected_list_separator(self):
         source_raw = """---
 title: Allocation mix

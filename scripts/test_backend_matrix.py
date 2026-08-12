@@ -220,6 +220,7 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn("MAX_TEXT_BYTES = 16 * 1024", segment_tool)
         self.assertIn("MAX_RESULT_BYTES = 1024 * 1024", segment_tool)
         self.assertIn("immutable token mismatch", segment_tool)
+        self.assertIn("unprotected numeric digit", segment_tool)
         self.assertIn("duplicate translation segment", segment_tool)
         self.assertIn("unprotected list separator", segment_tool)
         self.assertNotIn("filePath:", segment_tool)
