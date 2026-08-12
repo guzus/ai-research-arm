@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "XAI SHIPS GROK 4.6 INTO CURSOR — CLAIMS GPT-5.6 SOL PARITY AT GROK 4.5 PRICING",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2087567672695275584",
+    "category": "model"
+  },
+  {
+    "headline": "ALIBABA OPEN-WEIGHTS QWEN3.8-2.4T — 2.4 TRILLION PARAMS, 95B ACTIVE, 512 EXPERTS, 4.89TB",
+    "source": "@vllm_project",
+    "url": "https://x.com/vllm_project/status/2087571359413281049",
+    "category": "opensource"
+  },
+  {
+    "headline": "DEEPSEEK V4 PRO HITS API DOCS AT $0.87 PER MILLION OUTPUT TOKENS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2087565280457461917",
+    "category": "model"
+  },
+  {
+    "headline": "LOVABLE RAISES $400M AT $13.3B VALUATION ON REPORTED $500M+ REVENUE RUN RATE",
+    "source": "@digg",
+    "url": "https://x.com/digg/status/2087569353575477752",
+    "category": "business"
+  },
+  {
+    "headline": "MICROSOFT BETS MAIA 300 CAN WIN ANTHROPIC AND CUT ITS NVIDIA DEPENDENCE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2087554807573717132",
+    "category": "infra"
+  },
+  {
+    "headline": "BANK OF AMERICA SETS $250B AI INFRASTRUCTURE FINANCING TARGET THROUGH JULY 2027",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2087569375687811498",
+    "category": "business"
+  }
+]
