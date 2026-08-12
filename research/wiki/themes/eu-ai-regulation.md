@@ -6,8 +6,9 @@ aliases: ["EU AI Act", "EU AI regulation", "European AI Act", "AI Act"]
 tags: [regulation, eu, ai-act, copyright, transparency]
 description: The 2026 storyline of Europe regulating AI through binding statute rather than agency discretion — the AI Act's obligations switching on by calendar date, and national courts applying EU copyright law to model training and output.
 created_at: 2026-08-02
-timestamp: 2026-08-03T00:00:00Z
+timestamp: 2026-08-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
@@ -74,6 +75,23 @@ training and output.
   with **1.10 comments per point** — the only AI item above 1.0 that day, i.e.
   being argued about faster than it was upvoted. Contested attention, not
   consensus.
+
+- **Article 50 becomes the forcing function on provenance (2026-08-12).** Nine
+  days after the obligation switched on, the first marquee compliance action
+  landed: **[[anthropic]] framed its global Claude text watermarking explicitly
+  as compliance with the Article 50 transparency obligations** that became
+  enforceable **2 August 2026** for newly launched systems, and Anthropic staff
+  assert **other labs are adding similar marking**. The commitment traces to the
+  **Code of Practice signed by [[anthropic]], [[openai]], [[google]], [[meta]],
+  [[microsoft]] and Mistral — but not [[xai]]**, leaving xAI the only major lab
+  outside the provenance regime. The same cycle produced platform-level and
+  device-level provenance moves: **Spotify will label "AI Persona" profiles and
+  exclude their music from recommendations**, and **[[apple]] is reportedly
+  building photo-provenance verification into iOS 27**, with beta code
+  suggesting a way to prove a photograph was captured by an iPhone camera — the
+  labelling duty propagating from AI outputs to AI-generated music and to
+  camera-captured media (TechCrunch, Euronews, The Register, The Verge; ARA
+  daily digest 2026-08-12).
 
 ## Open questions
 

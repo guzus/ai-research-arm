@@ -6,13 +6,14 @@ aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "N
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); backing Ilya Sutskever's Safe Superintelligence (~$5B) and the open-weights Nemotron line.
 created_at: 2026-06-05
-timestamp: 2026-08-11T00:00:00Z
+timestamp: 2026-08-12T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
@@ -144,6 +145,35 @@ Fink, Blackstone's Jon Gray); IREN nonetheless closed **down ~6.1%** on the
 session before the announcement landed. See [[ai-capex]] for how this extends the
 off-balance-sheet financing pattern this page has tracked since the OpenAI Ohio
 backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
+
+## The 25% backstop is named — and the Nemotron line pivots to agents (2026-08-11/12)
+
+- **The 25% per-project backstop, reported (2026-08-11/12).** *The Information*
+  reported NVIDIA can absorb **up to 25% of losses on individual projects** inside
+  the ~$500B package — including projects **its own GPUs are sold into** — the
+  precise circularity the "new asset class" framing was built to answer. **No
+  term sheet is public**; the "single anonymous CNBC source" and "debt, not
+  equity" caveats from the 2026-08-10 entry still govern (ARA daily digest
+  2026-08-12).
+- **Nemotron 3.5 Lightning + NeMo Switchyard — the agent-volume pitch
+  (2026-08-11/12).** NVIDIA released **Nemotron 3.5 Lightning**, an
+  **open-weight 30B mixture-of-experts** model with **~3B active parameters**
+  aimed at **always-on agents**, plus **NeMo Switchyard**, a routing library that
+  sends each step to the cheapest capable model. It shipped **27 hours after
+  [[meta|Meta]] open-weighted its own 30B agent model** ([[muse-glimmer]]), and
+  the accompanying pitch is **agent *volume*, not benchmark supremacy** —
+  [[openai|OpenAI]] and [[anthropic]] traffic is the target, not a leaderboard.
+  The most concrete public number yet on routing economics: **LangChain
+  benchmarked Switchyard on 145 agent tasks and found only 7% of turns needed a
+  frontier model**, with routing cutting cost **74% at a six-point accuracy
+  loss** — a public estimate of how much agent traffic is over-served
+  (The Information, The Decoder, LangChain; ARA daily digest 2026-08-12).
+- **Nemotron 4 reported in development (2026-08-11/12).** Per *The Information*,
+  NVIDIA is building an **open-weight family whose largest member carries at
+  least a trillion parameters**, positioned against Chinese open models — its
+  reporter frames the goal as **spurring Western open-source competition** rather
+  than winning a benchmark. Treat as reported; no artifact exists yet (ARA daily
+  digest 2026-08-12).
 
 ## Open questions
 - **The TSMC ceiling.** TSMC warned (2026-06-05) it **cannot meet AI-chip demand

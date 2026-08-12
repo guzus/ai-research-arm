@@ -6,13 +6,14 @@ aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "G
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
 description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.
 created_at: 2026-07-17
-timestamp: 2026-08-10T00:00:00Z
+timestamp: 2026-08-12T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
@@ -161,6 +162,21 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   the wiki since the leadership rewire tracked above. Details (model name,
   verification, agency adoption) are thin in the source; the lead-time gain
   itself is the headline (Ars Technica; ARA daily digest 2026-08-10).
+- **Gemini app crosses one billion monthly users — nominal ChatGPT parity
+  (2026-08-12).** Google's **Gemini app reached one billion monthly users**,
+  claiming nominal parity with **[[openai|ChatGPT]]**, which hit the same mark
+  in June — and **neither company has disclosed retention, session frequency,
+  or paid conversion**, so the parity claim measures monthly reach, not
+  engagement or revenue. It is the hard number behind the 2026-07-23 "nears a
+  billion-user milestone" entry and a consumer-scale validation of the
+  [[ai-capex]] thesis (TechCrunch, Ars Technica, The Verge; ARA daily digest
+  2026-08-12).
+- **AMIE (Video) reaches clinician-level ratings (2026-08-12).** Google
+  Research's **AMIE (Video)** — the medical-AI system extended to real-time
+  video consultations — was rated **at clinician level by evaluators in a
+  randomized OSCE study**, the video counterpart to the text-based AMIE
+  trajectory and a concrete read on where AI-for-medicine stands (Google
+  Research; ARA daily digest 2026-08-12).
 
 ## Open questions
 

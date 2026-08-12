@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped GPT-5.6-Cyber to vetted defenders behind the Daybreak Red tier (2026-08-10) while facing sworn-testimony demands from Congress.
 created_at: 2026-05-30
-timestamp: 2026-08-11T00:00:00Z
+timestamp: 2026-08-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
@@ -655,6 +656,33 @@ materially reshape how the lab is positioned heading into its IPO window:
   undisclosed) — folding slide-creation capability into the ChatGPT product
   surface, an incremental acquisition in the [[gpt-5-6|GPT-5.6]] consumer
   window rather than a strategic platform move (ARA daily digest 2026-08-10).
+
+## COO departure, a self-funded tender, a vacant ethics office (2026-08-12)
+
+- **COO Brad Lightcap leaves after eight years (2026-08-12).** OpenAI's **COO
+  Brad Lightcap announced his departure**, announced the same day Bloomberg
+  detailed a **~$7B employee tender at an $852B mark** — **funded by OpenAI
+  itself**, making it a **liquidity event rather than outside price discovery**
+  (Bloomberg, TechCrunch, The Verge; ARA daily digest 2026-08-12).
+- **The ethics function is now vacant (2026-08-12).** **Chloé Bakalar** —
+  OpenAI's **only dedicated ethicist** — **quit after less than a year with no
+  successor named**, reported the same day as the COO departure (FT via HN and
+  Twitter; ARA daily digest 2026-08-12).
+- **Daybreak splits into Blue and Red tiers (2026-08-12).** The Daybreak
+  defender program split into **Blue** (**GPT-5.6 Sol** without system-level
+  cyber guardrails) and **Red** (a purpose-trained **GPT-5.6-Cyber** for
+  vulnerability research and exploit-chain work), with access limited to vetted
+  partners including **Accenture, IBM, CrowdStrike and Cloudflare**. Daybreak
+  models also **went live on AWS Bedrock** — an enterprise distribution step for
+  the cyber line (OpenAI, Axios, Neowin; ARA daily digest 2026-08-12).
+- **ChatGPT desktop arrives on Linux (preview) (2026-08-12).** A **preview of
+  the ChatGPT desktop app for Linux** shipped for **Ubuntu 24.04/26.04 LTS,
+  Debian 13, Fedora 43/44** as **.deb and .rpm**, with **ChatGPT Work and Codex
+  included**; computer use is not yet available on Linux. OpenAI also enabled
+  **cross-application sync of projects, chats, skills and plugins**, and
+  introduced **$125 Premium Seats for ChatGPT Business** as agentic workloads
+  burn more tokens (@OpenAI, TechCrunch, The Decoder; ARA daily digest
+  2026-08-12).
 
 ## Open questions
 
