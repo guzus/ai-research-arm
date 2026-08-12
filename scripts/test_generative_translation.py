@@ -266,7 +266,7 @@ class TranslationSegmentsTest(unittest.TestCase):
                 os.chdir(old_cwd)
             self.assertEqual(parity.check_pair(source, root / segments.DRAFT_PATH), [])
 
-    def test_renderer_rejects_new_digits_outside_source_tokens(self):
+    def test_renderer_allows_korean_integer_forms_and_rejects_unsafe_numbers(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             source = root / "alpha.ara.md"
@@ -275,28 +275,43 @@ class TranslationSegmentsTest(unittest.TestCase):
             compiled, _ = segments.build_manifest(source, source_sha)
             extracted = segments.extract_segments(compiled)
             (root / ".tmp").mkdir()
-            (root / segments.RESULT_PATH).write_text(
-                "".join(
-                    json.dumps(
-                        {
-                            "id": segment.id,
-                            "text": self._korean_text(segment)
-                            + (" 9일" if segment.id == extracted[0].id else ""),
-                        },
-                        ensure_ascii=False,
-                    )
-                    + "\n"
-                    for segment in extracted
-                ),
-                encoding="utf-8",
-            )
+
+            def write_rows(extra: str) -> None:
+                (root / segments.RESULT_PATH).write_text(
+                    "".join(
+                        json.dumps(
+                            {
+                                "id": segment.id,
+                                "text": self._korean_text(segment)
+                                + (extra if segment.id == extracted[0].id else ""),
+                            },
+                            ensure_ascii=False,
+                        )
+                        + "\n"
+                        for segment in extracted
+                    ),
+                    encoding="utf-8",
+                )
+
             old_cwd = Path.cwd()
             try:
                 os.chdir(root)
-                with self.assertRaisesRegex(ValueError, "unprotected numeric digit"):
-                    segments.render(
-                        source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH
-                    )
+                write_rows(" 1차 9일 30배")
+                segments.render(
+                    source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH
+                )
+                for unsafe in (" $1,000", " -30%", " 2.5×", " 42"):
+                    with self.subTest(unsafe=unsafe):
+                        write_rows(unsafe)
+                        with self.assertRaisesRegex(
+                            ValueError, "unsafe localized numeric token"
+                        ):
+                            segments.render(
+                                source,
+                                source_sha,
+                                segments.RESULT_PATH,
+                                segments.DRAFT_PATH,
+                            )
             finally:
                 os.chdir(old_cwd)
 
@@ -379,6 +394,52 @@ class TranslationParityTest(unittest.TestCase):
             errors = parity.check_pair(source, target)
             self.assertIn("URL multiset changed", errors)
             self.assertIn("numeric-token multiset changed", errors)
+
+    def test_trusted_html_allows_localized_digits_but_preserves_source_literals(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "alpha.ara.md"
+            target = root / "alpha.ko.html"
+            source.write_text(SOURCE, encoding="utf-8")
+            localized = compile_source(KOREAN).replace(
+                "안정적인 수치를", "9일 전의 안정적인 수치를", 1
+            )
+            target.write_text(localized, encoding="utf-8")
+            self.assertIn("numeric-token multiset changed", parity.check_pair(source, target))
+            self.assertEqual(
+                parity.check_pair(
+                    source,
+                    target,
+                    allow_localized_number_rendering=True,
+                ),
+                [],
+            )
+
+            target.write_text(localized.replace("25%", "향상"), encoding="utf-8")
+            self.assertIn(
+                "source numeric-token multiset was not preserved or target added "
+                "a non-localized numeric token",
+                parity.check_pair(
+                    source,
+                    target,
+                    allow_localized_number_rendering=True,
+                ),
+            )
+
+            for unsafe in ("$1,000", "-30%", "2.5×", "42"):
+                target.write_text(
+                    localized.replace("안정적인", f"{unsafe} 안정적인", 1),
+                    encoding="utf-8",
+                )
+                self.assertIn(
+                    "source numeric-token multiset was not preserved or target added "
+                    "a non-localized numeric token",
+                    parity.check_pair(
+                        source,
+                        target,
+                        allow_localized_number_rendering=True,
+                    ),
+                )
 
     def test_changed_directive_topology_fails(self):
         with tempfile.TemporaryDirectory() as td:
