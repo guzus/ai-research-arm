@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-12 22:23:07 UTC
+
+CYCLE: Washington moves on open weights; Musk pre-announces Grok 4.7; engineering-task cost falls 4.6x in 90 days.
+
+TOP STORIES:
+• White House plans to pull frontier open-weight models into its AI oversight framework, incl. pre-release testing and labs as formal safety-test partners [WIRED-sourced] ⚠
+• Musk confirms Grok 4.7 in 3-4 weeks — initial training done, now adding SpaceX engineering data — 2h after 4.6 shipped ⚠
+• Parametric CAD Bench: Opus 5 first above 0.9 (0.906); cost to clear 0.8 fell $170.00 -> $36.59 in 90 days ⚠
+
+WATCH: Any named capability threshold defining a "covered" open-weight model — that number decides whether Muse Glimmer and DeepSeek V4 Pro fall inside.
+
+Full update on GitHub.
