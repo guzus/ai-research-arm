@@ -98,8 +98,8 @@ short pointer plus the few genuinely agent-specific notes.
   wiki currently share this one strict route, exhaustion can stale all five together.
   Moonshot is not a DeepSeek provider and is not a fallback. Store the key with
   `gh secret set OPENCODE_API_KEY`, then validate cheaply with
-  `opencode-kimi-canary.yml` before dispatching
-  `generative-research.yml backend=opencode-kimi-k3`.
+  `opencode-deepseek-canary.yml` before dispatching
+  `generative-research.yml backend=opencode-deepseek-v4-flash`.
 
 - **bird CLI** invocations must always pass `--json --plain` and fall
   back gracefully (`|| echo "[]"`); the X/Twitter cookies expire and a

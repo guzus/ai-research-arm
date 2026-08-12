@@ -171,11 +171,11 @@ flowchart LR
     strict1 -->|"deepseek-v4-flash"| FW
     strict2 -->|"deepseek-v4-flash"| OC
     strict3 -->|"glm-5.2"| ZAI
-    gendef -->|"claude-opus-5"| ANT
+    gendef -->|"deepseek-v4-flash"| OC
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
     gendef -.->|"backend=codex"| OAI
-    gendef -.->|"backend=opencode-kimi-k3"| OC
+    gendef -.->|"backend=opencode-deepseek-v4-flash"| OC
     ANT -. "provider outage → fallback #1" .-> ZAI
 ```
 _Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `claude` → `zai-glm-5p2`; regenerate with `uv run python scripts/build_backend_matrix.py`._
@@ -295,7 +295,7 @@ report to `research/issues/`, and posts the findings back on the issue.
 sources, writes in the [ARA DSL](ARA_DSL.md) (a validated component language
 — see [Component catalog](COMPONENTS.md)), and publishes through a single
 writer path that re-validates everything before commit. Defaults to GLM 5.2
-via Fireworks; `backend=claude|codex|opencode-kimi-k3|deepseek-v4-flash`
+via Fireworks; `backend=claude|codex|opencode-deepseek-v4-flash|deepseek-v4-flash`
 selects other providers ([details](docs/generative-research-backends.md)).
 
 **3. Tweet → verified article.** Give it just a tweet URL — it reads the

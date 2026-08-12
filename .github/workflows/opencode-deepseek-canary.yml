@@ -1,20 +1,14 @@
-name: OpenCode Canary
+name: OpenCode DeepSeek V4 Flash Canary
 
 # Diagnostics lane for the opencode backend used by
-# generative-research.yml and hourly-twitter.yml (backend=opencode-kimi-k3).
+# generative-research.yml and hourly-twitter.yml (backend=opencode-deepseek-v4-flash).
 #
 #   OPENCODE_API_KEY — OpenCode Go subscription (opencode.ai/auth),
 #   provider `opencode-go`, model `opencode-go/deepseek-v4-flash`, raw
 #   endpoint https://opencode.ai/zen/go/v1 (OpenAI-compatible).
 #
-# REVERT (temporary 2026-08-07 DeepSeek swap): this lane probed `kimi-k3`,
-# with a MOONSHOT_API_KEY pay-per-token second route. The production backend
-# is pinned to `opencode-go/deepseek-v4-flash` to spare Claude Max quota, and
-# Moonshot serves Kimi ONLY — so the Moonshot route is gone here too. A canary
-# that probes a different model than production runs is worse than no canary.
-# FULL REVERT CHECKLIST (authoritative; this lane must move in lockstep with
-# the production workflows or the canary certifies the wrong entitlement):
-#   docs/generative-research-backends.md § "Reverting this swap".
+# The canary probes the exact provider/model used by production. Moonshot is
+# not a DeepSeek provider and is intentionally not a fallback here.
 #
 # Two probes, cheap to expensive, so a dead key/plan fails in seconds
 # instead of mid-research:
@@ -38,7 +32,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: opencode-kimi-canary
+  group: opencode-deepseek-canary
   cancel-in-progress: false
 
 jobs:
@@ -119,7 +113,7 @@ jobs:
               models_url = "https://opencode.ai/zen/go/v1/models"
               billing_hint = "Go plan subscription/usage limits ($12/5h, $30/week, $60/month) at https://opencode.ai/auth"
           elif moonshot_key:
-              print("::error::MOONSHOT_API_KEY is set but OPENCODE_API_KEY is not. Moonshot serves Kimi only and cannot serve deepseek-v4-flash, which the production opencode backend is temporarily pinned to. Set OPENCODE_API_KEY (https://opencode.ai/auth), or revert the temporary DeepSeek swap.")
+              print("::error::MOONSHOT_API_KEY is set but OPENCODE_API_KEY is not. Moonshot cannot serve the required deepseek-v4-flash model. Set OPENCODE_API_KEY from https://opencode.ai/auth.")
               sys.exit(1)
           else:
               print("::error::No opencode auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription) with: gh secret set OPENCODE_API_KEY")
@@ -136,9 +130,7 @@ jobs:
               "User-Agent": "ai-research-arm-canary/1.0 (+https://github.com/guzus/ai-research-arm)",
           }
 
-          # Failure policy differs by route. Moonshot's API is a documented
-          # surface, so any probe failure there is definitive → fatal. The
-          # Go raw endpoint is undocumented (models.dev provider.toml
+          # The Go raw endpoint is undocumented (models.dev provider.toml
           # caveat) — verified facts: GET /zen/go/v1/models is live and
           # lists bare ids like "deepseek-v4-flash" — so on the Go route only
           # 401/402 (bad key / billing) are fatal. 403 is deliberately
@@ -146,13 +138,8 @@ jobs:
           # code: 1010" to clients it dislikes (observed live), so a Go
           # 403 is ambiguous and the harness stage below — the exact SDK
           # client production uses — is the authoritative gate.
-          # NOTE: while the temporary DeepSeek swap is active `route` can only
-          # ever be "opencode-go" (the Moonshot branch exits above), so
-          # go_route is always True and the non-Go arms below are DEAD CODE.
-          # They are kept, not deleted, because restoring the Moonshot route is
-          # step 6 of the revert checklist in
-          # docs/generative-research-backends.md — deleting them would turn a
-          # one-line revert into a rewrite.
+          # `route` is always opencode-go; the variable keeps request/error
+          # handling below explicit and aligned with the production probe.
           go_route = route == "opencode-go"
 
           # Informational listing probe (free; the Go listing is public).
@@ -274,18 +261,18 @@ jobs:
         uses: ./.github/actions/run-opencode-container
         with:
           mode: canary
-          prompt-text: 'Reply with exactly this token and nothing else: OPENCODE-KIMI-CANARY-OK'
+          prompt-text: 'Reply with exactly this token and nothing else: OPENCODE-DEEPSEEK-CANARY-OK'
           model: opencode-go/deepseek-v4-flash
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           opencode-config: .github/opencode/opencode-canary.json
           timeout-minutes: '10'
-          output-file: ${{ runner.temp }}/opencode-kimi-canary.out
+          output-file: ${{ runner.temp }}/opencode-deepseek-canary.out
 
       - name: Assert canary token
         run: |
           set -euo pipefail
-          out="${RUNNER_TEMP:-/tmp}/opencode-kimi-canary.out"
-          if ! grep -q "OPENCODE-KIMI-CANARY-OK" "$out"; then
+          out="${RUNNER_TEMP:-/tmp}/opencode-deepseek-canary.out"
+          if ! grep -q "OPENCODE-DEEPSEEK-CANARY-OK" "$out"; then
             echo "::error::opencode run completed but the canary token is missing from its output — env-var auth or model routing through opencode is broken even though the raw API probe passed."
             exit 1
           fi

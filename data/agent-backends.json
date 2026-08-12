@@ -71,7 +71,11 @@
       "provider": "opencode-go",
       "model": "deepseek-v4-flash",
       "display_name": "DeepSeek V4 Flash via OpenCode Go",
-      "aliases": [],
+      "aliases": [
+        "opencode-deepseek",
+        "deepseek-opencode",
+        "opencode"
+      ],
       "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to opencode-go/deepseek-v4-flash. Runtime-selectable by agent-dispatch; not selectable by agent-run."
     },
     "zai-glm-5p2": {
@@ -272,8 +276,8 @@
     "generative-research-default": {
       "workflow": "generative-research.yml",
       "harness": "dispatch-default",
-      "backend": "opus-5",
-      "notes": "Default backend when neither the dispatch input nor an issue-label form specifies one. Runtime-resolved by the workflow's backend-resolution step. Moved claude -> opus-5 on 2026-07-31: long-form research is the one lane where the model's reasoning IS the product, and opus-5 bills against the same OAuth subscription as claude, so the upgrade costs no extra credential or provider. Consumers that inherit this default: manual dispatch with no backend input, gen-research-labelled issues, and hourly-twitter.yml's auto-research dispatch (throttled to <=2 per rolling 24h). This is NOT the Fireworks-unavailable fallback target - that stays hard-coded to claude in the workflow's effective-backend step, because a fallback should be the cheap reliable path."
+      "backend": "opencode-deepseek-v4-flash",
+      "notes": "Default backend when neither the dispatch input nor an issue-label form specifies one. Runtime-resolved by the workflow's backend-resolution step. DeepSeek V4 Flash through OpenCode Go is the preferred isolated generative route; consumers are manual dispatch with no backend input, gen-research-labelled issues, and hourly-twitter.yml's auto-research dispatch (throttled to <=2 per rolling 24h). The route is strict and fails closed rather than substituting another author. Explicit native Claude, Codex, Fireworks, and evaluation selectors remain available. This dispatch default does not alter the separate agent-run fallback chain because opencode is not an agent-run adapter."
     },
     "generative-research-claude": {
       "workflow": "generative-research.yml",
