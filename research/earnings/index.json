@@ -1,8 +1,28 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 7,
+  "count": 9,
   "events": [
+    {
+      "file": "2026-08-11-SMCI-FY26Q4.md",
+      "date": "2026-08-11",
+      "ticker": "SMCI",
+      "period": "FY26Q4",
+      "issuer": "Super Micro Computer, Inc.",
+      "form": "8-K",
+      "accession": "0001375365-26-000021",
+      "transcript": false
+    },
+    {
+      "file": "2026-08-11-CRWV-FY26Q2.md",
+      "date": "2026-08-11",
+      "ticker": "CRWV",
+      "period": "FY26Q2",
+      "issuer": "CoreWeave, Inc.",
+      "form": "8-K",
+      "accession": "0001769628-26-000362",
+      "transcript": false
+    },
     {
       "file": "2026-08-04-AMD-FY26Q2.md",
       "date": "2026-08-04",
