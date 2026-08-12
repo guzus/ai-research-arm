@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "GlaSSEM is not the delayed program; it is a separate glass-core materials joint venture announced four weeks earlier.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The 2028 date is not a leaked delay; it is the first mass-production year SEMCO has ever put into a formal investor channel.",
+      "contradicting_url": "https://www.thelec.kr/news/articleView.html?idxno=60802",
+      "contradicting_quote": "삼성전기 반도체 유리기판 투자 일정이 미뤄지고 있다. 고객사 시제품 신뢰성 평가에서 병목이 나타나고 있기 때문이다. 양산 가동 시점은 2028년 이후로 늦춰진 것으로 파악된다.",
+      "severity": "medium",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The 2027-2029 AI accelerator roadmap is being built on organic ABF substrates, financed by far more committed capital than glass has attracted, and TSMC's own packaging executive names memory and ABF supply - not glass - as the binding constraints.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
