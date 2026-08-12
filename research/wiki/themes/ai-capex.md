@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, and off-balance-sheet structures like Theseus Infrastructure — and the question of whether demand justifies it.
 created_at: 2026-05-24
-timestamp: 2026-08-11T00:00:00Z
+timestamp: 2026-08-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
@@ -632,6 +633,41 @@ package cleared its chamber-of-origin crossover.
   everything around it"** — the buildout's cost is now showing up in passives,
   handsets and grid politics rather than GPUs alone (ARA daily digest
   2026-08-11).
+- **Three infrastructure suppliers beat in one afternoon — and the market shrugs
+  (2026-08-11/12).** The buildout printed its first hard quarterly numbers and
+  every layer beat: **[[coreweave|CoreWeave]]** posted **$2.58B quarterly revenue
+  (+112% Y/Y)** and a **~$104B contracted backlog (+246%)**; **Supermicro**
+  guided **FY2027 to $65–72B against ~$52.4B consensus**; **Lumentum**'s revenue
+  **doubled to $1.01B**. Yet the equity response was muted — Supermicro moved
+  just **+5.3%** on a guide **$16B above consensus** — the strongest instance yet
+  of the "beats but closes lower" tell this theme has tracked all cycle, and a
+  signal that the market is **pricing volume without margin** (SEC 8-K filings,
+  Twitter pulse; ARA daily digest 2026-08-12).
+- **Nvidia's 25% backstop inside its own $500B package — the circularity,
+  named (2026-08-11/12).** *The Information* reported that the **~$500B** package
+  assembled around [[nvidia]] carries a **25% per-project backstop**, under which
+  the chip vendor can absorb losses on projects **its own GPUs are sold into** —
+  the precise circularity the "new asset class" framing was built to answer.
+  **No term sheet is public**, and the earlier caveats (one anonymous CNBC
+  source; debt, not equity) still govern. This is the "circular financing"
+  critique from 2026-07-29 becoming a *documented structural feature* of the
+  package rather than an outside suspicion (ARA daily digest 2026-08-12).
+- **Texas pauses new data-center construction — the constraint shifts from
+  capital to interconnection (2026-08-11/12).** Texas, the state that marketed
+  itself as the buildout's epicenter, **paused new data-center construction**
+  while sitting on **more than 474 GW of pending grid-interconnection requests**
+  — roughly **five times ERCOT's all-time peak load**, so the queue is likely
+  inflated with speculative filings. The **binding constraint is shifting from
+  capital to interconnection** — the permitting/power gate this theme flagged as
+  an open question (2026-06-05) is now the operative bottleneck. Which authority
+  ordered it (ERCOT, the PUC, or the legislature) and whether it covers projects
+  already in the queue remains unreported (ARA daily digest 2026-08-12).
+- **TSMC's real-economy read keeps accelerating (2026-08-11/12).** TSMC's July
+  revenue rose **44.7% Y/Y to NT$467.58B (~$14.5B)** with **HPC at 66% of Q2
+  revenue** and full-year growth guided slightly above 40% in USD terms — a
+  foundry-level confirmation that the chip buildout is **accelerating rather than
+  plateauing**, the counterweight to the muted equity tape above (CNBC, Bloomberg;
+  ARA daily digest 2026-08-12).
 
 ## Open questions
 - **Does the permitting/power gate bind before the demand question resolves?**

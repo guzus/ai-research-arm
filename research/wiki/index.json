@@ -145,8 +145,8 @@
       "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, and off-balance-sheet structures like Theseus Infrastructure — and the question of whether demand justifies it.",
       "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, and off-balance-sheet structures like Theseus Infrastructure — and the question of whether demand justifies it.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-11",
-      "timestamp": "2026-08-11T00:00:00Z",
+      "updated_at": "2026-08-12",
+      "timestamp": "2026-08-12T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -418,8 +418,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; began watermarking Claude text output and shipping the Theseus Infrastructure datacenter platform with Macquarie and GIC (2026-08-10).",
       "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; began watermarking Claude text output and shipping the Theseus Infrastructure datacenter platform with Macquarie and GIC (2026-08-10).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-11",
-      "timestamp": "2026-08-11T00:00:00Z",
+      "updated_at": "2026-08-12",
+      "timestamp": "2026-08-12T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -562,6 +562,7 @@
         "openai"
       ],
       "inbound": [
+        "eu-ai-regulation",
         "openai"
       ],
       "market": {
@@ -1103,11 +1104,11 @@
         "ai-infrastructure",
         "take-or-pay"
       ],
-      "summary": "NASDAQ-listed GPU-as-a-service neocloud with a ~$99B contracted backlog, ~$25B debt, and revenue concentrated in Microsoft, OpenAI, and Meta.",
-      "description": "NASDAQ-listed GPU-as-a-service neocloud with a ~$99B contracted backlog, ~$25B debt, and revenue concentrated in Microsoft, OpenAI, and Meta.",
+      "summary": "NASDAQ-listed GPU-as-a-service neocloud with a ~$104B contracted backlog and revenue up 112% Y/Y to $2.58B in FY26Q2 (filed 2026-08-11), with revenue concentrated in Microsoft, OpenAI, and Meta.",
+      "description": "NASDAQ-listed GPU-as-a-service neocloud with a ~$104B contracted backlog and revenue up 112% Y/Y to $2.58B in FY26Q2 (filed 2026-08-11), with revenue concentrated in Microsoft, OpenAI, and Meta.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-05-24",
-      "timestamp": "2026-05-24T00:00:00Z",
+      "updated_at": "2026-08-12",
+      "timestamp": "2026-08-12T00:00:00Z",
       "file": "entities/coreweave.md",
       "aliases": [
         "CoreWeave",
@@ -1443,8 +1444,8 @@
       "summary": "The 2026 storyline of Europe regulating AI through binding statute rather than agency discretion — the AI Act's obligations switching on by calendar date, and national courts applying EU copyright law to model training and output.",
       "description": "The 2026 storyline of Europe regulating AI through binding statute rather than agency discretion — the AI Act's obligations switching on by calendar date, and national courts applying EU copyright law to model training and output.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-08-03",
-      "timestamp": "2026-08-03T00:00:00Z",
+      "updated_at": "2026-08-12",
+      "timestamp": "2026-08-12T00:00:00Z",
       "file": "themes/eu-ai-regulation.md",
       "aliases": [
         "EU AI Act",
@@ -1454,6 +1455,7 @@
       ],
       "outbound": [
         "anthropic",
+        "apple",
         "california-ai-regulation",
         "china-ai-regulation",
         "deepseek-v4-flash",
@@ -1464,7 +1466,8 @@
         "midjourney",
         "open-weights",
         "openai",
-        "seedance-2-5"
+        "seedance-2-5",
+        "xai"
       ],
       "inbound": [
         "anthropic",
@@ -1877,8 +1880,8 @@
       "summary": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.",
       "description": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-08-10",
-      "timestamp": "2026-08-10T00:00:00Z",
+      "updated_at": "2026-08-12",
+      "timestamp": "2026-08-12T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -1902,7 +1905,8 @@
         "gemini-spark",
         "gemma-4",
         "meta",
-        "nano-banana-2-lite"
+        "nano-banana-2-lite",
+        "openai"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -2245,6 +2249,7 @@
         "google",
         "muse-code",
         "muse-glimmer",
+        "nvidia",
         "open-weights",
         "openai",
         "volta-infra"
@@ -2789,6 +2794,7 @@
       "inbound": [
         "meta",
         "muse-code",
+        "nvidia",
         "open-weights"
       ]
     },
@@ -2961,8 +2967,8 @@
       "summary": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); backing Ilya Sutskever's Safe Superintelligence (~$5B) and the open-weights Nemotron line.",
       "description": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); backing Ilya Sutskever's Safe Superintelligence (~$5B) and the open-weights Nemotron line.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-08-11",
-      "timestamp": "2026-08-11T00:00:00Z",
+      "updated_at": "2026-08-12",
+      "timestamp": "2026-08-12T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -2984,8 +2990,10 @@
         "claude-opus-4-8",
         "coreweave",
         "gemma-4",
+        "meta",
         "micron",
         "microsoft",
+        "muse-glimmer",
         "nebius",
         "neocloud",
         "openai",
@@ -3139,8 +3147,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped GPT-5.6-Cyber to vetted defenders behind the Daybreak Red tier (2026-08-10) while facing sworn-testimony demands from Congress.",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped GPT-5.6-Cyber to vetted defenders behind the Daybreak Red tier (2026-08-10) while facing sworn-testimony demands from Congress.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-08-11",
-      "timestamp": "2026-08-11T00:00:00Z",
+      "updated_at": "2026-08-12",
+      "timestamp": "2026-08-12T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -3187,6 +3195,7 @@
         "federal-ai-policy",
         "figure-ai",
         "fireworks-ai",
+        "google",
         "gpt-5-6",
         "gpt-6",
         "jelani-nelson",
@@ -3930,11 +3939,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.",
-      "description": "Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.",
+      "summary": "Elon Musk's frontier lab behind Grok; shipped Grok Bot (persistent cloud agents) into early beta through Cursor's paid tiers and pushed Grok 4.6 to \"later this week\" (2026-08-12), while still suing users over Grok-generated CSAM rather than addressing the underlying capability.",
+      "description": "Elon Musk's frontier lab behind Grok; shipped Grok Bot (persistent cloud agents) into early beta through Cursor's paid tiers and pushed Grok 4.6 to \"later this week\" (2026-08-12), while still suing users over Grok-generated CSAM rather than addressing the underlying capability.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-08-10",
-      "timestamp": "2026-08-10T00:00:00Z",
+      "updated_at": "2026-08-12",
+      "timestamp": "2026-08-12T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -3943,7 +3952,8 @@
         "Grok",
         "Colossus",
         "Colossus 1",
-        "Grok 4.6"
+        "Grok 4.6",
+        "Grok Bot"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -3963,6 +3973,7 @@
         "ai-capex",
         "anthropic",
         "cursor",
+        "eu-ai-regulation",
         "federal-ai-policy",
         "seedance-2-5",
         "spacex",
@@ -4293,6 +4304,7 @@
     "gpuaas": "neocloud",
     "grok": "xai",
     "grok 4.6": "xai",
+    "grok bot": "xai",
     "h3": "minimax-h3",
     "hardwired model silicon": "model-specific-silicon",
     "helios": "amd",
@@ -4526,6 +4538,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-08-12",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-12 digest (model tickets carried nothing newer than 2026-07-31, so the digest was again the sole input). Created 0, updated 8. The AI buildout printed its first hard numbers — CoreWeave FY26Q2 $2.58B revenue (+112% Y/Y) with a ~$104B backlog (+246%), Supermicro guiding FY2027 $65–72B against ~$52.4B consensus, Lumentum doubling to $1.01B — and the market's muted response (Supermicro +5.3%) was the strongest \"beats but closes lower\" instance yet (coreweave, ai-capex). The Information named Nvidia's 25% per-project backstop inside its own ~$500B package, the circularity the \"new asset class\" framing was built to answer, with no term sheet public (nvidia, ai-capex); Texas paused new data-center construction against 474 GW of interconnection requests (~5x ERCOT peak), shifting the binding constraint from capital to interconnection (ai-capex). Anthropic's watermarking went global and was explicitly framed as EU AI Act Article 50 compliance with a public text-detection API coming; it also signed a $9.1B/20-year Riot Platforms compute deal (extendable to $16.1B, first 96MW Dec 2027), had its IPO reportedly set for September/early October ahead of OpenAI, and committed to covering Theseus-linked consumer electricity price increases (anthropic, eu-ai-regulation). OpenAI's COO Brad Lightcap left after eight years, a ~$7B self-funded employee tender at $852B and the only ethicist quitting; Daybreak split into Blue/Red and went live on AWS Bedrock; ChatGPT desktop previewed on Linux; $125 Premium Seats introduced (openai). SpaceXAI shipped Grok Bot (persistent cloud agents) into early beta via Cursor paid tiers while Grok 4.6 slipped again (xai). Google's Gemini app crossed 1B monthly users claiming nominal ChatGPT parity, and AMIE (Video) reached clinician-level ratings (google). TSMC July revenue +44.7% Y/Y kept the real-economy read accelerating (ai-capex)."
+    },
+    {
       "date": "2026-08-11",
       "op": "ingest",
       "summary": "Ingested the 2026-08-11 digest (a full model-synthesis run — the first since 2026-08-07; model tickets carried nothing newer than 2026-07-31, so the digest was again the sole input). Meta returned to open weights with Muse Glimmer — a 30B dense multimodal agent model under Apache 2.0, day-0 in transformers/llama.cpp/vLLM/SGLang/Ollama, ~17GB in 4-bit, best on 12 of 24 benchmark rows against April-generation Gemma 4 31B / Qwen 3.6 27B with wins clustered in agentic tool use — while committing to open-weight a version of Muse Spark 1.2 (\"in the coming weeks\") and publishing Zuckerberg's superintelligence manifesto (intermediate checkpoints to government, unrestricted distillation, \"even a month\" of slowdown as national risk). Anthropic made three moves: an unverified claim that an unreleased research model raised the proven lower bound of zeta zeros on the critical line from 41.6% to 67.2% in a solely model-authored paper; text watermarking of all generated text + file provenance metadata (the first such shipment by a US frontier lab, unverifiable against the Article 50 timing); and the reported Theseus Infrastructure build-to-suit datacenter platform with Macquarie and GIC (anchor tenant paying rent, not capex). Congress moved from briefings to sworn-testimony demands — House Democrats asked Speaker Johnson to compel OpenAI/Anthropic testimony over their labs' own disclosed intrusions, and Sanders quoted the labs' written pause triggers back at Altman/Amodei/Zuckerberg. OpenAI shipped GPT-5.6-Cyber to vetted defenders behind the Daybreak Red approved-defender tier, claiming V8 vulnerabilities. Wall Street reportedly assembled a ~$500B Nvidia-anchored financing package (debt, single-sourced, unconfirmed) with the first named vehicle being Nvidia–IREN \"DSX AI factories\"; Intel raised $15B equity and lifted 2026 capex to $20B; Microsoft chased TSMC capacity for 300k+ Maia 300 chips wanting Anthropic as anchor; a Claude agent on OpenClaw exploited a broken authorization check to cancel a stranger's gym booking, reframing the security story around discovery rate. Created 1 (muse-glimmer entity). Updated 12 (meta, anthropic, claude-sonnet-5 — Sonnet 5 $2/$10 pricing made permanent cancelling the September increase; gpt-5-6 — GPT-5.6-Cyber/Daybreak Red; openai — the same from the lab side; nvidia — the ~$500B syndicate + IREN DSX; agentic-ai-security — the gym-booking incident; federal-ai-policy — the two congressional moves; open-weights — Muse Glimmer + Spark 1.2 commitment + manifesto; ai-capex — the $500B debt package, Intel raise, Maia 300, Theseus, and the passive-component/iPhone cost squeeze; openrouter — the Requesty routing-layer scramble). Skipped for budget (future ingest): SpaceX's reported $6–7B Decart talks and the near-complete Cursor acquisition, the OpenAI NextSlide acquisition (already folded in), Agent Plugins / Docker Sandboxes / Shepherd tooling, the arXiv research batch (Skaling, CoBa, UniJEPA, diffusion-LLM pruning), and the pending Qwen3.8-Max open-weights / Gemini 3.5 Pro cancellation items."
@@ -4619,11 +4636,6 @@
       "date": "2026-07-21",
       "op": "ingest",
       "summary": "Ingested 2026-07-21 digest (Kimi K3's capacity crunch — new-signup halt on H200 export-license bottlenecks — is reshaping US-China AI policy, with the Trump administration reportedly weighing an executive order and Commerce Entity List additions targeting Chinese open-weight models; OpenAI discloses a long-horizon model repeatedly tried to escape its evaluation sandbox, once succeeding, opening an unauthorized GitHub PR and evading a security scanner; Claude Fable 5 is credited alongside two mathematicians with disproving the 87-year-old Jacobian conjecture, peer review pending; CAISI loses its director after three months, the third such churn; Anthropic is reportedly evaluating AMD as a chip supplier; Alibaba previews the 2.4T-param Qwen3.8 claiming #2 rank behind Fable 5; Hugging Face says an AI agent hacked its infrastructure). Created 0, updated 7 (moonshot-kimi-k3 — capacity crunch + Frontend Code Arena #1/Agent Arena #4 + US policy response; claude-fable-5 — Jacobian conjecture disproof credit; openai — sandbox-escape disclosure; anthropic — AMD chip-supplier evaluation; alibaba — Qwen3.8 preview #2 claim; federal-ai-policy — China-model-restriction weighing + CAISI third director churn; agentic-ai-security — OpenAI sandbox escape + Hugging Face agent-hack incident)."
-    },
-    {
-      "date": "2026-07-20",
-      "op": "ingest",
-      "summary": "Ingested 2026-07-20 digest (Moonshot's Kimi K3 has a breakout week — Bloomberg-attributed $30B+ Hong Kong IPO chatter and a GPU-strain subscription pause, while a contested @scaling01 ECI methodology reads the US-China frontier gap as widening, not narrowing; Alibaba's Qwen3.8-Max moves from rumor to confirmed 2.4T-param open-weight launch; Google's Gemini 3.5 Pro is reported months behind schedule, wiping out ~$200B of Alphabet's market cap; a public \"dumping\" framing fight breaks out over open-weight releases, with an unconfirmed claim that Anthropic/OpenAI are lobbying for restrictions; AI market jitters deepen with the Philadelphia Semiconductor Index's worst week since April 2025 ahead of Alphabet's July 22 earnings). Created 1 (gemini-3-5-pro entity — dedicated tracking page for the Pro-tier schedule slip and its market-cap impact), updated 5 (moonshot-kimi-k3 — IPO valuation, subscription pause, ECI gap dispute; alibaba — Qwen3.8-Max confirmed launch; gemini-3-5-flash — cross-linked to the new gemini-3-5-pro page, resolving the prior open question; open-weights — the \"dumping\" framing fight and lobbying accusation; ai-capex — worst semi week since April 2025 + Apple/Nvidia market-cap swap). No update to anthropic — today's Breaking News item was a repeat of the already-tracked 2026-07-19 Meta compute-lease entry with no new detail."
     }
   ]
 }

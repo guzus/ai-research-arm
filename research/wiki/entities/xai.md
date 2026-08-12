@@ -2,12 +2,13 @@
 slug: xai
 title: xAI
 type: entity
-aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6"]
+aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.
+description: Elon Musk's frontier lab behind Grok; shipped Grok Bot (persistent cloud agents) into early beta through Cursor's paid tiers and pushed Grok 4.6 to "later this week" (2026-08-12), while still suing users over Grok-generated CSAM rather than addressing the underlying capability.
 created_at: 2026-06-08
-timestamp: 2026-08-10T00:00:00Z
+timestamp: 2026-08-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
@@ -164,12 +165,22 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   priced **$0.08/minute** (ARA daily digest 2026-07-30).
 - **Grok Image 2.0 — xAI's image model takes editing seriously (2026-08-09,
   blog-sourced).** Coverage of a **Grok Image 2.0** release focused on
-  substantially improved **image editing** — positioning it against the
+  substantially improved **image editing** —   positioning it against the
   consumer image-editing front led by Google's [[nano-banana-2-lite|Nano
   Banana]] and [[midjourney]] — a modest capability update to xAI's image
   line rather than a new foundation model. Single-blog coverage in the
   digest; no official xAI announcement or model card was captured (ARA daily
   digest 2026-08-10).
+- **Grok Bot enters early beta — persistent cloud agents (2026-08-12).**
+  **SpaceXAI** (the xAI/SpaceX pairing) shipped **Grok Bot into early beta**:
+  persistent cloud agents that **keep working after the user disconnects**,
+  **delegate to one another**, and **sign into sites lacking APIs** —
+  distributed through **[[cursor|Cursor]]'s paid tiers**. It is xAI's
+  productized answer to the always-on agent wave and the first consumer-facing
+  persistent-agent surface from the Grok line. In the same window, Musk
+  pushed **Grok 4.6** to **"later this week"** after it **slipped twice** —
+  the model tracked since 2026-07-26 still has no shipped artifact
+  (@elonmusk, @AndrewCurran_, @testingcatalog; ARA daily digest 2026-08-12).
 
 ## Open questions
 

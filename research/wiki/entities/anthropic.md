@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; began watermarking Claude text output and shipping the Theseus Infrastructure datacenter platform with Macquarie and GIC (2026-08-10).
 created_at: 2026-05-24
-timestamp: 2026-08-11T00:00:00Z
+timestamp: 2026-08-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
@@ -942,6 +943,39 @@ Three developments landed together on 2026-08-10:
   2026-08-11). See [[ai-capex]] for how this sits in the off-balance-sheet
   financing pattern this theme has tracked since the ~$150bn Google-arranged
   chip vehicle.
+
+## Global watermarking, the Riot Platforms deal, and the IPO window (2026-08-12)
+
+- **Watermarking goes worldwide and Article 50 gets named as the driver.**
+  Anthropic will watermark **all Claude text output globally**, and staff
+  **confirmed a public text-detection API is coming**. The commitment is now
+  **explicitly framed as compliance with the [[eu-ai-regulation]] AI Act
+  Article 50 transparency obligations** that became enforceable **2 August
+  2026** for newly launched systems — and Anthropic staff assert **other labs
+  are adding similar marking**. The chosen demo case — checking whether a pull
+  request came from Claude Code — is **the low-entropy case the technique
+  handles worst**, per TechCrunch/The Register, a candid admission of the
+  watermark's limits (TechCrunch, The Verge, The Register; ARA daily digest
+  2026-08-12).
+- **A $9.1B, 20-year compute deal with Riot Platforms (2026-08-12).** Anthropic
+  signed a **$9.1B, 20-year compute agreement with Riot Platforms**, extendable
+  to **$16.1B** — though the **first 96MW does not land until December 2027**,
+  a long-dated, miner-backed counterparty consistent with the
+  [[volta-infra|Volta Infra]] and Theseus pattern of thin new entities (Bloomberg
+  via Twitter, The Decoder; ARA daily digest 2026-08-12).
+- **IPO reportedly set for September or early October — ahead of OpenAI
+  (2026-08-12).** Per the WSJ, Anthropic's **IPO is set for September or early
+  October**, ahead of [[openai|OpenAI]]'s, with investors pressing on **Chinese
+  model competition and datacenter opposition**. The pre-IPO pitch reportedly
+  **leans into biology and healthcare** — the [[claude-science]] / [[john-jumper]]
+  science thesis — to blunt worsening public sentiment (WSJ via Twitter, The
+  Decoder; ARA daily digest 2026-08-12).
+- **Theseus covers consumer electricity price increases (2026-08-12).**
+  Follow-on reporting on **Theseus Infrastructure** adds that Anthropic
+  **separately committed to covering consumer electricity price increases tied to
+  the facilities** — a direct answer to the rate-payer-protection politics that
+  has dogged data-center siting all cycle (see [[ai-capex]]) (Bloomberg,
+  Macquarie, Data Center Dynamics; ARA daily digest 2026-08-12).
 
 ## Open questions
 - **Does the eval-breach disclosure produce consequences?** Two of three
