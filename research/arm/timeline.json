@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T09:38:08.359Z",
+  "generatedAt": "2026-08-12T09:50:54.954Z",
   "windowStart": "2026-08-10T21:00:00.000Z",
   "windowEnd": "2026-08-13T22:00:00.000Z",
   "timezone": "UTC",
@@ -666,6 +666,58 @@
       "model": "hooker",
       "commit": "8f1860aa4bc1",
       "url": "https://github.com/guzus/ai-research-arm/commit/8f1860aa4bc14def1a6066bb790f56ff0d187ddb"
+    },
+    {
+      "id": "commit-f3e4d8c2e169",
+      "kind": "completed",
+      "lane": "Models",
+      "title": "Model release tickets",
+      "status": "completed",
+      "start": "2026-08-12T07:58:00.000Z",
+      "end": "2026-08-12T08:18:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "f3e4d8c2e169",
+      "url": "https://github.com/guzus/ai-research-arm/commit/f3e4d8c2e1693e0c85f8845ea13adb92e35fd7ae"
+    },
+    {
+      "id": "commit-f4f36e34da32",
+      "kind": "completed",
+      "lane": "Blogs",
+      "title": "AI expert blog watch",
+      "status": "completed",
+      "start": "2026-08-12T08:38:00.000Z",
+      "end": "2026-08-12T08:40:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "f4f36e34da32",
+      "url": "https://github.com/guzus/ai-research-arm/commit/f4f36e34da32ccecaf9d24aa7955ddc8d406d6e6"
+    },
+    {
+      "id": "commit-cb1c76a7fa4d",
+      "kind": "completed",
+      "lane": "Generative",
+      "title": "GlaSSEM and the 2028 date: what Samsung Electro-Mechanics actually said, and why a glass-substra",
+      "status": "completed",
+      "start": "2026-08-12T08:45:00.000Z",
+      "end": "2026-08-12T09:36:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "research agent",
+      "commit": "cb1c76a7fa4d",
+      "url": "https://github.com/guzus/ai-research-arm/commit/cb1c76a7fa4d85e2bf770e7e559bd56b4a13e1fe"
+    },
+    {
+      "id": "commit-a2b7f4e18833",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-08-12 09:38 UTC (#2137)",
+      "status": "completed",
+      "start": "2026-08-12T09:38:00.000Z",
+      "end": "2026-08-12T09:39:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "a2b7f4e18833",
+      "url": "https://github.com/guzus/ai-research-arm/commit/a2b7f4e1883331103f8504e4c4c9cac237211422"
     },
     {
       "id": "scheduled-market-quotes-yml-53---3-------2026-08-12T09-53-00-000Z",
@@ -1886,6 +1938,16 @@
       "start": "2026-08-13T21:26:00.000Z",
       "end": "2026-08-13T22:11:00.000Z",
       "source": "cron 26 3,9,15,21 * * *"
+    },
+    {
+      "id": "scheduled-twitter-model-ab-yml-40-21-------2026-08-13T21-40-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter Model A/B Eval",
+      "status": "scheduled",
+      "start": "2026-08-13T21:40:00.000Z",
+      "end": "2026-08-13T22:40:00.000Z",
+      "source": "cron 40 21 * * *"
     }
   ]
 }
