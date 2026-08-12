@@ -1,0 +1,141 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Grok 4.6 is priced at $2 per million input tokens and $6 per million output against Claude Fable 5 Max at $10/$50 — an 80% discount on input and 88% on output.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://x.com/rohanpaul_ai/status/2087594773389701616",
+        "https://x.com/testingcatalog/status/2087567672695275584",
+        "https://x.com/GavinSBaker/status/2087567239423676519"
+      ],
+      "source_tiers": ["secondary", "secondary", "opinion"],
+      "as_of": "2026-08-12"
+    },
+    {
+      "id": "c2",
+      "claim": "Artificial Analysis puts Grok 4.6 at 61 on its Intelligence Index against Fable 5 Max's 62 — approximately 98.4% of the composite score.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": [
+        "https://x.com/rohanpaul_ai/status/2087599380518097232",
+        "https://artificialanalysis.ai/leaderboards/models"
+      ],
+      "source_tiers": ["secondary", "market-data"],
+      "as_of": "2026-08-12"
+    },
+    {
+      "id": "c3",
+      "claim": "Grok 4.6 ranks #1 on Artificial Analysis' separate Agentic Index, a placement that entered circulation through a relayed reading rather than Artificial Analysis' own post.",
+      "type": "comparison",
+      "confidence": "medium",
+      "risk": "contested",
+      "source_urls": [
+        "https://x.com/rohanpaul_ai/status/2087599380518097232",
+        "https://x.com/elonmusk/status/2087584127042408907"
+      ],
+      "source_tiers": ["secondary", "opinion"],
+      "as_of": "2026-08-12"
+    },
+    {
+      "id": "c4",
+      "claim": "Parametric CAD Bench measured Grok 4.6 at 96.9% of Claude Opus 5's top score of 0.906 for 61% of the cost, on the same 100 tasks.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": ["https://x.com/gNucleusAI/status/2087656449493307617"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-12"
+    },
+    {
+      "id": "c5",
+      "claim": "On the same fixed 100 CAD tasks, the cost to exceed a 0.8 score fell from $170.00 to $36.59 in 90 days — a 4.6x deflation in the price of a fixed capability level.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "single-source",
+      "source_urls": ["https://x.com/gNucleusAI/status/2087656449493307617"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-12"
+    },
+    {
+      "id": "c6",
+      "claim": "Grok 4.6's GDPVal-AA v2 score of 1,753 places it ahead of Claude Fable 5 Max on real-world agentic knowledge work.",
+      "type": "comparison",
+      "confidence": "low",
+      "risk": "contested",
+      "source_urls": [
+        "https://x.com/rohanpaul_ai/status/2087599380518097232",
+        "https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-12"
+    },
+    {
+      "id": "c7",
+      "claim": "The only third-party leaderboard placement circulating on launch day put Grok 4.6 13th on Frontend Arena at 1,553 points.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": ["https://x.com/testingcatalog/status/2087567672695275584"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-12"
+    },
+    {
+      "id": "c8",
+      "claim": "A Grok-friendly account (@scaling01) said on launch day that on 'really long-running and autonomous workflows the best OpenAI and Anthropic models are much better in the tails.'",
+      "type": "quote",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": ["https://x.com/scaling01/status/2087608575631695899"],
+      "source_tiers": ["opinion"]
+    },
+    {
+      "id": "c9",
+      "claim": "Grok 4.6 ships with a seven-day double-token promotion running to roughly 19 August; whether the $2/$6 price survives the promotion is unconfirmed.",
+      "type": "forecast",
+      "confidence": "medium",
+      "risk": "volatile",
+      "source_urls": [
+        "https://x.com/testingcatalog/status/2087567672695275584",
+        "https://x.com/rohanpaul_ai/status/2087594773389701616"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-12"
+    },
+    {
+      "id": "c10",
+      "claim": "Grok 4.6 went live around 15:27 UTC on 12 August 2026, available same-day in Cursor and Grok Build with 2x usage included for the first week.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://x.com/testingcatalog/status/2087567672695275584"],
+      "source_tiers": ["secondary"]
+    },
+    {
+      "id": "c11",
+      "claim": "GLM-5.2 cost $982.90 to run the full Artificial Analysis Intelligence Index on 140M tokens against Opus 4.8's $4,012 — collapsing its advertised 5.7x output-price edge to a measured 4.1x.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index",
+        "https://artificialanalysis.ai/models/glm-5-2"
+      ],
+      "source_tiers": ["market-data", "market-data"],
+      "as_of": "2026-06-22"
+    },
+    {
+      "id": "c12",
+      "claim": "Qwen3.8-Max, priced identically to Grok 4.6 at $2/$6, cost $2,159.51 to complete the AA Intelligence Index on 150M output tokens against a 63M comparison median.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://artificialanalysis.ai/models/qwen3-8-max"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-04"
+    }
+  ]
+}

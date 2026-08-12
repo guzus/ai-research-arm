@@ -1334,5 +1334,17 @@
     "source": "workflow_dispatch",
     "prompt": "GlaSSEM slips to 2028: Samsung Electro-Mechanics' glass-core substrate delay and the AI packaging roadmap it postpones",
     "tags": []
+  },
+  {
+    "slug": "grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+    "file": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-12T22:22:13Z",
+    "source": "workflow_dispatch",
+    "prompt": "Grok 4.6 at $2/$6 vs Fable 5 Max $10/$50: does the frontier repricing survive non-vendor cost-aware benchmarks?",
+    "tags": []
   }
 ]
