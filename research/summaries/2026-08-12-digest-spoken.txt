@@ -1,0 +1,13 @@
+Speaker 1: Wednesday, August twelfth, twenty twenty-six.
+Speaker 2: [high_energy] The AI buildout finally printed hard numbers, and all three of them beat. CoreWeave, Supermicro and Lumentum came in strong after the close, and the market barely blinked.
+Speaker 1: Some quick numbers on that. CoreWeave did two point five eight billion dollars in second quarter revenue, sitting on a backlog of roughly [emphasis] one hundred four billion dollars [/emphasis], up two hundred forty-six percent.
+Speaker 2: Supermicro went further and guided fiscal twenty twenty-seven to sixty-five to seventy-two billion dollars, against a consensus near fifty-two point four billion. That is not a beat, that is a different map.
+Speaker 1: And the financing caught up to the hardware. Nvidia assembled a [emphasis] five hundred billion dollar [/emphasis] Wall Street package, with an option to backstop up to twenty-five percent of each project.
+Speaker 2: Worth noting what that option really is. The chip supplier is now partly underwriting the demand for its own chips, [dramatic_pause] which is a very different kind of risk than selling them.
+Speaker 1: On the policy front, Anthropic says it will watermark all Claude text worldwide under Article fifty of the E U A I Act.
+Speaker 2: Worldwide is the key word there. One region wrote the rule, and every user gets the behavior.
+Speaker 1: On distribution, the Gemini app crossed one billion monthly users, which puts it at parity with ChatGPT.
+Speaker 2: [high_energy] That is the first time anyone has actually drawn level on consumer scale, and it happened without much noise at all.
+Speaker 1: The physical limit is showing up in Texas, where the grid is holding four hundred seventy-four gigawatts of interconnection requests and some datacenter builds are already paused.
+Speaker 2: And the loudest thread on Hacker News, eight hundred thirty-one points, was not about any of that. It was about the internet's collective memory disappearing as A I eats the web.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
