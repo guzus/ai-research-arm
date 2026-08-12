@@ -323,6 +323,8 @@ const calendarEl = document.getElementById('calendar')!;
 const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 const searchCountEl = document.getElementById('searchCount')!;
 const languageSwitch = document.getElementById('languageSwitch');
+const languageToggle = document.getElementById('languageToggle') as HTMLButtonElement | null;
+const languageMenu = document.getElementById('languageMenu');
 
 // ── Path routing ─────────────────────────────────────
 // Format (history API, no hash):
@@ -796,18 +798,32 @@ function hasResearchLanguage(row: GenResearchRow | null, language: ResearchLangu
   return Boolean(row?.translations?.[language]?.file);
 }
 
-function syncLanguageUi(row: GenResearchRow | null = null): void {
-  if (!languageSwitch) return;  // language toggle removed (English-only for now)
+function syncLanguageUi(_row: GenResearchRow | null = null): void {
+  if (!languageSwitch) return;
+  document.documentElement.lang = activeLanguage;
   languageSwitch.querySelectorAll<HTMLButtonElement>('[data-language]').forEach((btn) => {
     const language = btn.dataset.language as ResearchLanguage;
-    const available = !row || hasResearchLanguage(row, language);
-    btn.classList.toggle('active', language === activeLanguage);
-    btn.classList.toggle('unavailable', !available);
-    btn.setAttribute('aria-pressed', String(language === activeLanguage));
-    btn.title = available
-      ? (language === 'ko' ? 'Show Korean' : 'Show English')
-      : 'Korean version has not been published for this article';
+    btn.setAttribute('aria-checked', String(language === activeLanguage));
   });
+  if (languageToggle) {
+    const label = activeLanguage === 'ko' ? '한국어' : 'English';
+    languageToggle.setAttribute('aria-label', `Language: ${label}`);
+  }
+}
+
+function setLanguageMenuOpen(open: boolean, focusSelected = false): void {
+  if (!languageMenu || !languageToggle) return;
+  languageMenu.hidden = !open;
+  languageToggle.setAttribute('aria-expanded', String(open));
+  if (open && focusSelected) {
+    languageMenu.querySelector<HTMLButtonElement>('[aria-checked="true"]')?.focus();
+  }
+}
+
+function languageMenuOptions(): HTMLButtonElement[] {
+  return languageMenu
+    ? Array.from(languageMenu.querySelectorAll<HTMLButtonElement>('[data-language]'))
+    : [];
 }
 
 function languageFallbackNote(row: GenResearchRow): string {
@@ -6490,16 +6506,51 @@ searchInput.addEventListener('input', () => {
   searchDebounceId = window.setTimeout(() => { void runGlobalSearch(searchInput.value); }, 120);
 });
 
-languageSwitch?.addEventListener('click', (e) => {
+languageToggle?.addEventListener('click', () => {
+  setLanguageMenuOpen(languageMenu?.hasAttribute('hidden') ?? true, true);
+});
+
+languageToggle?.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    setLanguageMenuOpen(true, true);
+  }
+});
+
+languageMenu?.addEventListener('click', (e) => {
   const btn = (e.target as HTMLElement).closest('[data-language]') as HTMLButtonElement | null;
   if (!btn) return;
   const language = btn.dataset.language === 'ko' ? 'ko' : 'en';
+  setLanguageMenuOpen(false);
+  languageToggle?.focus();
   if (language === activeLanguage) return;
   activeLanguage = language;
   storeLanguage(activeLanguage);
   researchDocCache = null;
   syncLanguageUi(selectedSlug ? findResearchRow(selectedSlug) : null);
-  load();
+  void load();
+});
+
+languageMenu?.addEventListener('keydown', (e) => {
+  const options = languageMenuOptions();
+  const current = options.indexOf(document.activeElement as HTMLButtonElement);
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    setLanguageMenuOpen(false);
+    languageToggle?.focus();
+  } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    const direction = e.key === 'ArrowDown' ? 1 : -1;
+    options[(current + direction + options.length) % options.length]?.focus();
+  } else if (e.key === 'Home' || e.key === 'End') {
+    e.preventDefault();
+    options[e.key === 'Home' ? 0 : options.length - 1]?.focus();
+  }
+});
+
+document.addEventListener('click', (e) => {
+  if (languageMenu?.hidden || languageSwitch?.contains(e.target as Node)) return;
+  setLanguageMenuOpen(false);
 });
 
 // Retry button + research index navigation (event delegation on content)
