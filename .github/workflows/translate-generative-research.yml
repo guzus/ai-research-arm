@@ -159,6 +159,8 @@ jobs:
             `⟦ARA0000⟧` exactly once and in its original order. Submit each
             segment id exactly once. Do not introduce Arabic digits outside
             opaque tokens; spell source quantities such as "nine" in Korean.
+            The tool may accept valid rows while listing rejected ids; correct
+            and resubmit only every rejected id before continuing.
             Do not put translations in your final
             response. Tool permissions allow only this read and the
             fixed-destination segment tool; shell, web, search, subagents,

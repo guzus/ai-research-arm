@@ -98,6 +98,8 @@ export default tool({
         ),
       )
       const batchIds = new Set<string>()
+      const acceptedIds = new Set<string>()
+      const rejected: string[] = []
       let batchBytes = 0
       const lines: string[] = []
       for (const segment of args.segments) {
@@ -108,43 +110,54 @@ export default tool({
         if (!expected) throw new Error(`unknown translation segment: ${segment.id}`)
         const actualTokens = segment.text.match(TOKEN_RE) ?? []
         if (JSON.stringify(actualTokens) !== JSON.stringify(expected.tokens)) {
-          throw new Error(`immutable token mismatch for ${segment.id}`)
+          rejected.push(
+            `${segment.id}: immutable tokens expected ${JSON.stringify(expected.tokens)}, got ${JSON.stringify(actualTokens)}`,
+          )
+          continue
         }
         const proseWithoutTokens = segment.text.replace(TOKEN_RE, "")
         if (/[0-9]/.test(proseWithoutTokens)) {
-          throw new Error(
-            `unprotected numeric digit in ${segment.id}; spell the quantity in Korean`,
+          rejected.push(
+            `${segment.id}: unprotected numeric digit; spell the quantity in Korean`,
           )
+          continue
         }
         if (expected.forbid_commas && segment.text.includes(",")) {
-          throw new Error(`unprotected list separator in ${segment.id}`)
+          rejected.push(`${segment.id}: unprotected list separator`)
+          continue
         }
         const line = JSON.stringify({ id: segment.id, text: segment.text }) + "\n"
         batchBytes += Buffer.byteLength(line, "utf8")
         if (batchBytes > MAX_TEXT_BYTES) throw new Error(`batch exceeds ${MAX_TEXT_BYTES} UTF-8 bytes`)
         batchIds.add(segment.id)
+        acceptedIds.add(segment.id)
         lines.push(line)
       }
 
-      const resultPath = path.join(context.worktree, RESULT_RELATIVE_PATH)
-      const first = submitted.size === 0
-      const flags = first
-        ? constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_NOFOLLOW
-        : constants.O_WRONLY | constants.O_APPEND | constants.O_NOFOLLOW
-      const handle = await open(resultPath, flags, 0o600)
-      try {
-        const before = await handle.stat()
-        if (!before.isFile()) throw new Error("translation result is not a regular file")
-        if (before.size + batchBytes > MAX_RESULT_BYTES) {
-          throw new Error(`translation result exceeds ${MAX_RESULT_BYTES} bytes`)
+      if (lines.length > 0) {
+        const resultPath = path.join(context.worktree, RESULT_RELATIVE_PATH)
+        const first = submitted.size === 0
+        const flags = first
+          ? constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_NOFOLLOW
+          : constants.O_WRONLY | constants.O_APPEND | constants.O_NOFOLLOW
+        const handle = await open(resultPath, flags, 0o600)
+        try {
+          const before = await handle.stat()
+          if (!before.isFile()) throw new Error("translation result is not a regular file")
+          if (before.size + batchBytes > MAX_RESULT_BYTES) {
+            throw new Error(`translation result exceeds ${MAX_RESULT_BYTES} bytes`)
+          }
+          await handle.writeFile(lines.join(""), { encoding: "utf8" })
+          await handle.sync()
+        } finally {
+          await handle.close()
         }
-        await handle.writeFile(lines.join(""), { encoding: "utf8" })
-        await handle.sync()
-      } finally {
-        await handle.close()
       }
-      for (const id of batchIds) submitted.add(id)
+      for (const id of acceptedIds) submitted.add(id)
       const remaining = manifest.segment_count - submitted.size
+      if (rejected.length > 0) {
+        return `Accepted ${acceptedIds.size} segment(s). Rejected ${rejected.length}: ${rejected.join("; ")}. Resubmit only the rejected ids. ${remaining} of ${manifest.segment_count} segments remain.`
+      }
       return remaining === 0
         ? `All ${manifest.segment_count} translation segments accepted.`
         : `Batch accepted. ${remaining} of ${manifest.segment_count} segments remain.`
