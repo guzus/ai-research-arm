@@ -42,6 +42,34 @@ def _numbers(text: str) -> collections.Counter[str]:
     return collections.Counter(NUMBER_RE.findall(text))
 
 
+def _localized_integer_additions_are_safe(
+    source_numbers: collections.Counter[str], target: str
+) -> bool:
+    """Allow only extra plain integers used as Korean counter/ordinal forms."""
+    target_matches: dict[str, list[re.Match[str]]] = collections.defaultdict(list)
+    for match in NUMBER_RE.finditer(target):
+        target_matches[match.group()].append(match)
+    target_numbers = collections.Counter(
+        {token: len(matches) for token, matches in target_matches.items()}
+    )
+    if source_numbers - target_numbers:
+        return False
+    for token, target_count in target_numbers.items():
+        extra_count = target_count - source_numbers[token]
+        if extra_count <= 0:
+            continue
+        localized_count = sum(
+            token.isascii()
+            and token.isdigit()
+            and match.end() < len(target)
+            and bool(HANGUL_RE.fullmatch(target[match.end()]))
+            for match in target_matches[token]
+        )
+        if localized_count < extra_count:
+            return False
+    return True
+
+
 class TopologyParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
@@ -159,7 +187,12 @@ def _lowercase_prose_ngrams(html: str, size: int = 5) -> collections.Counter[tup
     )
 
 
-def check_pair(source: Path, translation: Path) -> list[str]:
+def check_pair(
+    source: Path,
+    translation: Path,
+    *,
+    allow_localized_number_rendering: bool = False,
+) -> list[str]:
     source_raw = source.read_text(encoding="utf-8")
     target_raw = translation.read_text(encoding="utf-8")
     errors: list[str] = []
@@ -171,7 +204,19 @@ def check_pair(source: Path, translation: Path) -> list[str]:
     source_comparison = _as_html(source, source_raw) if cross_representation else source_raw
     if _urls(source_comparison) != _urls(target_raw):
         errors.append("URL multiset changed")
-    if _numbers(source_comparison) != _numbers(target_raw):
+    source_numbers = _numbers(source_comparison)
+    target_numbers = _numbers(target_raw)
+    if allow_localized_number_rendering:
+        if not cross_representation:
+            errors.append(
+                "localized number rendering is only valid for ARA-to-HTML comparisons"
+            )
+        elif not _localized_integer_additions_are_safe(source_numbers, target_raw):
+            errors.append(
+                "source numeric-token multiset was not preserved or target added "
+                "a non-localized numeric token"
+            )
+    elif source_numbers != target_numbers:
         errors.append("numeric-token multiset changed")
     if source.name.endswith(".ara.md") and translation.name.endswith(".ara.md"):
         if collections.Counter(FOOTNOTE_RE.findall(source_raw)) != collections.Counter(FOOTNOTE_RE.findall(target_raw)):
@@ -216,10 +261,22 @@ def check_pair(source: Path, translation: Path) -> list[str]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--allow-localized-number-rendering",
+        action="store_true",
+        help=(
+            "for trusted ARA-to-HTML segment rendering, require every source "
+            "numeric literal while allowing Korean prose to render spelled quantities as digits"
+        ),
+    )
     parser.add_argument("source", type=Path)
     parser.add_argument("translation", type=Path)
     args = parser.parse_args(argv)
-    errors = check_pair(args.source, args.translation)
+    errors = check_pair(
+        args.source,
+        args.translation,
+        allow_localized_number_rendering=args.allow_localized_number_rendering,
+    )
     if errors:
         for error in errors:
             print(f"ERROR: {error}")

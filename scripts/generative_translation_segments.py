@@ -31,6 +31,7 @@ ATTR_RE = re.compile(
 )
 WORD_RE = re.compile(r"[A-Za-z][A-Za-z'-]*")
 TOKEN_RE = re.compile(r"\u27e6ARA\d{4}\u27e7")
+LOCALIZED_INTEGER_RE = re.compile(r"(?<![0-9.,+\-−$€£₩¥])[0-9]+(?=[가-힣])")
 EXCLUDED_TAGS = frozenset({"code", "pre", "script", "style"})
 TRANSLATABLE_ATTRS = frozenset(
     {
@@ -330,9 +331,10 @@ def render(source_path: Path, source_sha256: str, result_path: Path, draft_path:
                 f"expected={segment.tokens}, got={found_tokens}"
             )
         prose_without_tokens = TOKEN_RE.sub("", translated)
-        if re.search(r"[0-9]", prose_without_tokens):
+        if re.search(r"[0-9]", LOCALIZED_INTEGER_RE.sub("", prose_without_tokens)):
             raise ValueError(
-                f"translation segment {segment.id} added an unprotected numeric digit"
+                f"translation segment {segment.id} added an unsafe localized "
+                "numeric token"
             )
         if segment.forbid_commas and "," in translated:
             raise ValueError(

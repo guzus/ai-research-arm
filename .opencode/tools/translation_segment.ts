@@ -1,12 +1,14 @@
 import { constants } from "node:fs"
-import { open, readFile } from "node:fs/promises"
+import { open, readFile, rename, unlink } from "node:fs/promises"
 import path from "node:path"
 
 import { tool } from "@opencode-ai/plugin"
 
 const MANIFEST_RELATIVE_PATH = ".agent-input/translation-segments.json"
 const RESULT_RELATIVE_PATH = ".tmp/generative-translation.ko.segments.jsonl"
+const PENDING_RELATIVE_PATH = ".tmp/.generative-translation.ko.segments.pending"
 const TOKEN_RE = /⟦ARA\d{4}⟧/g
+const LOCALIZED_INTEGER_RE = /(?<![0-9.,+\-−$€£₩¥])[0-9]+(?=[가-힣])/g
 const MAX_BATCH = 24
 const MAX_TEXT_BYTES = 16 * 1024
 const MAX_RESULT_BYTES = 1024 * 1024
@@ -77,7 +79,7 @@ async function loadManifest(worktree: string): Promise<Manifest> {
 
 export default tool({
   description:
-    "Submit Korean translations for fixed text segment ids. Opaque ARA tokens must remain exact and ordered; do not add digits outside them.",
+    "Submit Korean translations for fixed text segment ids. Opaque ARA tokens must remain exact and ordered.",
   args: {
     segments: tool.schema
       .array(
@@ -98,8 +100,6 @@ export default tool({
         ),
       )
       const batchIds = new Set<string>()
-      const acceptedIds = new Set<string>()
-      const rejected: string[] = []
       let batchBytes = 0
       const lines: string[] = []
       for (const segment of args.segments) {
@@ -110,54 +110,64 @@ export default tool({
         if (!expected) throw new Error(`unknown translation segment: ${segment.id}`)
         const actualTokens = segment.text.match(TOKEN_RE) ?? []
         if (JSON.stringify(actualTokens) !== JSON.stringify(expected.tokens)) {
-          rejected.push(
-            `${segment.id}: immutable tokens expected ${JSON.stringify(expected.tokens)}, got ${JSON.stringify(actualTokens)}`,
+          throw new Error(
+            `immutable tokens for ${segment.id}: expected ${JSON.stringify(expected.tokens)}, got ${JSON.stringify(actualTokens)}`,
           )
-          continue
         }
         const proseWithoutTokens = segment.text.replace(TOKEN_RE, "")
-        if (/[0-9]/.test(proseWithoutTokens)) {
-          rejected.push(
-            `${segment.id}: unprotected numeric digit; spell the quantity in Korean`,
+        if (/[0-9]/.test(proseWithoutTokens.replace(LOCALIZED_INTEGER_RE, ""))) {
+          throw new Error(
+            `unsafe localized numeric token in ${segment.id}; only plain integers followed by Hangul are allowed`,
           )
-          continue
         }
         if (expected.forbid_commas && segment.text.includes(",")) {
-          rejected.push(`${segment.id}: unprotected list separator`)
-          continue
+          throw new Error(`unprotected list separator in ${segment.id}`)
         }
         const line = JSON.stringify({ id: segment.id, text: segment.text }) + "\n"
         batchBytes += Buffer.byteLength(line, "utf8")
         if (batchBytes > MAX_TEXT_BYTES) throw new Error(`batch exceeds ${MAX_TEXT_BYTES} UTF-8 bytes`)
         batchIds.add(segment.id)
-        acceptedIds.add(segment.id)
         lines.push(line)
       }
 
-      if (lines.length > 0) {
-        const resultPath = path.join(context.worktree, RESULT_RELATIVE_PATH)
-        const first = submitted.size === 0
-        const flags = first
-          ? constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_NOFOLLOW
-          : constants.O_WRONLY | constants.O_APPEND | constants.O_NOFOLLOW
-        const handle = await open(resultPath, flags, 0o600)
+      const first = submitted.size === 0
+      const resultPath = path.join(context.worktree, RESULT_RELATIVE_PATH)
+      const pendingPath = path.join(context.worktree, PENDING_RELATIVE_PATH)
+      let existing = ""
+      if (!first) {
+        const current = await open(resultPath, constants.O_RDONLY | constants.O_NOFOLLOW)
         try {
-          const before = await handle.stat()
+          const before = await current.stat()
           if (!before.isFile()) throw new Error("translation result is not a regular file")
-          if (before.size + batchBytes > MAX_RESULT_BYTES) {
-            throw new Error(`translation result exceeds ${MAX_RESULT_BYTES} bytes`)
-          }
-          await handle.writeFile(lines.join(""), { encoding: "utf8" })
-          await handle.sync()
+          existing = await current.readFile({ encoding: "utf8" })
         } finally {
-          await handle.close()
+          await current.close()
         }
       }
-      for (const id of acceptedIds) submitted.add(id)
-      const remaining = manifest.segment_count - submitted.size
-      if (rejected.length > 0) {
-        return `Accepted ${acceptedIds.size} segment(s). Rejected ${rejected.length}: ${rejected.join("; ")}. Resubmit only the rejected ids. ${remaining} of ${manifest.segment_count} segments remain.`
+      if (Buffer.byteLength(existing, "utf8") + batchBytes > MAX_RESULT_BYTES) {
+        throw new Error(`translation result exceeds ${MAX_RESULT_BYTES} bytes`)
       }
+
+      let installed = false
+      const pending = await open(
+        pendingPath,
+        constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_NOFOLLOW,
+        0o600,
+      )
+      try {
+        await pending.writeFile(existing + lines.join(""), { encoding: "utf8" })
+        await pending.sync()
+        await pending.close()
+        await rename(pendingPath, resultPath)
+        installed = true
+      } finally {
+        if (!installed) {
+          await pending.close().catch(() => undefined)
+          await unlink(pendingPath).catch(() => undefined)
+        }
+      }
+      for (const id of batchIds) submitted.add(id)
+      const remaining = manifest.segment_count - submitted.size
       return remaining === 0
         ? `All ${manifest.segment_count} translation segments accepted.`
         : `Batch accepted. ${remaining} of ${manifest.segment_count} segments remain.`

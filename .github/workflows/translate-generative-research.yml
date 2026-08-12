@@ -157,10 +157,8 @@ jobs:
             paginated, submit the current page before reading the next page.
             Preserve every opaque token such as
             `⟦ARA0000⟧` exactly once and in its original order. Submit each
-            segment id exactly once. Do not introduce Arabic digits outside
-            opaque tokens; spell source quantities such as "nine" in Korean.
-            The tool may accept valid rows while listing rejected ids; correct
-            and resubmit only every rejected id before continuing.
+            segment id exactly once. Never invent an opaque token; a row may
+            contain only the tokens literally present in its source text.
             Do not put translations in your final
             response. Tool permissions allow only this read and the
             fixed-destination segment tool; shell, web, search, subagents,
@@ -198,7 +196,9 @@ jobs:
           set -euo pipefail
           test -f "$DRAFT_PATH"
           uv run python scripts/check_generative_research.py "$DRAFT_PATH"
-          uv run python scripts/check_generative_translation.py "$SOURCE_PATH" "$DRAFT_PATH"
+          uv run python scripts/check_generative_translation.py \
+            --allow-localized-number-rendering \
+            "$SOURCE_PATH" "$DRAFT_PATH"
 
       - name: Configure trusted writer identity
         run: |
@@ -263,6 +263,7 @@ jobs:
           test -f "$translation_path"
           uv run python scripts/check_generative_research.py "$translation_path"
           uv run python scripts/check_generative_translation.py \
+            --allow-localized-number-rendering \
             "$SOURCE_PATH" "$translation_path"
 
       - name: Require every translation artifact
