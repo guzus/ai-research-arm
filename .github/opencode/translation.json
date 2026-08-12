@@ -6,9 +6,9 @@
     "*": "deny",
     "read": {
       "*": "deny",
-      ".agent-input/source.ara.md": "allow",
-      ".agent-input/translation.json": "allow"
+      ".agent-input/translation.json": "allow",
+      ".agent-input/translation-segments.json": "allow"
     },
-    "translation_chunk": "allow"
+    "translation_segment": "allow"
   }
 }

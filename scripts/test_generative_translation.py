@@ -4,15 +4,18 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import subprocess
 import tempfile
 import unittest
 from pathlib import Path
 
 import check_generative_translation as parity
+import generative_translation_segments as segments
 import prepare_generative_translation as prepare
 import verify_generative_translation_commit as verifier
 import write_generative_research as writer
+from compile_ara import compile_source
 
 
 SOURCE = """---
@@ -90,7 +93,9 @@ class TranslationPreparationTest(unittest.TestCase):
             self.assertEqual(values["source_type"], "ara")
             self.assertEqual(values["source_path"], "research/generative/2026-01-01T000000--alpha.ara.md")
             self.assertEqual(values["source_sha256"], hashlib.sha256(source.read_bytes()).hexdigest())
-            self.assertTrue(values["draft_path"].endswith(".ko.ara.md"))
+            self.assertTrue(values["draft_path"].endswith(".ko.html"))
+            self.assertTrue(values["result_path"].endswith(".segments.jsonl"))
+            self.assertEqual(values["translation_type"], "html")
 
     def test_rejects_legacy_html_only_article(self):
         with tempfile.TemporaryDirectory() as td:
@@ -115,7 +120,7 @@ class TranslationPreparationTest(unittest.TestCase):
                 with self.subTest(slug=slug), self.assertRaises(ValueError):
                     prepare.prepare(root, slug, force=False)
 
-    def test_stages_only_a_copy_and_model_visible_paths(self):
+    def test_stages_only_metadata_without_untrusted_source_prose(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             gen, _ = seed_repo(root)
@@ -124,15 +129,159 @@ class TranslationPreparationTest(unittest.TestCase):
                 root, values, ".agent-input/translation.json"
             )
 
-            staged = root / request["source_path"]
-            canonical = gen / "2026-01-01T000000--alpha.ara.md"
-            self.assertEqual(".agent-input/source.ara.md", request["source_path"])
-            self.assertEqual(canonical.read_bytes(), staged.read_bytes())
+            self.assertNotIn("source_path", request)
             self.assertEqual(
                 request,
                 json.loads((root / ".agent-input/translation.json").read_text()),
             )
             self.assertNotIn(values["source_path"], json.dumps(request))
+
+
+class TranslationSegmentsTest(unittest.TestCase):
+    @staticmethod
+    def _korean_text(segment: segments.Segment) -> str:
+        pieces = segments.TOKEN_RE.split(segment.text)
+        tokens = segments.TOKEN_RE.findall(segment.text)
+        out: list[str] = []
+        for index, piece in enumerate(pieces):
+            if piece.strip():
+                out.append("안전한 한국어 번역문")
+            if index < len(tokens):
+                out.append(tokens[index])
+        return " ".join(out) or "한국어"
+
+    def test_renderer_preserves_structure_and_immutable_literals(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "alpha.ara.md"
+            source.write_text(SOURCE, encoding="utf-8")
+            source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+            compiled, manifest = segments.build_manifest(source, source_sha)
+            extracted = segments.extract_segments(compiled)
+            result = root / segments.RESULT_PATH
+            result.parent.mkdir()
+            result.write_text(
+                "".join(
+                    json.dumps(
+                        {"id": segment.id, "text": self._korean_text(segment)},
+                        ensure_ascii=False,
+                    )
+                    + "\n"
+                    for segment in extracted
+                ),
+                encoding="utf-8",
+            )
+            draft = root / segments.DRAFT_PATH
+            old_cwd = Path.cwd()
+            try:
+                os.chdir(root)
+                segments.render(source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH)
+            finally:
+                os.chdir(old_cwd)
+            self.assertEqual(manifest["segment_count"], len(extracted))
+            self.assertEqual(parity.check_pair(source, draft), [])
+
+    def test_renderer_rejects_missing_or_changed_tokens(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "alpha.ara.md"
+            source.write_text(SOURCE, encoding="utf-8")
+            source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+            compiled, _ = segments.build_manifest(source, source_sha)
+            extracted = segments.extract_segments(compiled)
+            result = root / segments.RESULT_PATH
+            result.parent.mkdir()
+            rows = [
+                {"id": segment.id, "text": self._korean_text(segment)}
+                for segment in extracted
+            ]
+            token_row = next(row for row in rows if segments.TOKEN_RE.search(row["text"]))
+            token_row["text"] = segments.TOKEN_RE.sub("", token_row["text"], count=1)
+            result.write_text(
+                "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows),
+                encoding="utf-8",
+            )
+            old_cwd = Path.cwd()
+            try:
+                os.chdir(root)
+                with self.assertRaisesRegex(ValueError, "changed immutable tokens"):
+                    segments.render(source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH)
+            finally:
+                os.chdir(old_cwd)
+
+    def test_live_failure_fixture_now_passes_structural_parity(self):
+        repo = Path(__file__).resolve().parent.parent
+        source = repo / (
+            "research/generative/2026-08-11T084945--"
+            "eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa.ara.md"
+        )
+        source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+        compiled, _ = segments.build_manifest(source, source_sha)
+        extracted = segments.extract_segments(compiled)
+        self.assertGreater(len(extracted), 400)
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / ".tmp").mkdir()
+            (root / segments.RESULT_PATH).write_text(
+                "".join(
+                    json.dumps(
+                        {"id": segment.id, "text": self._korean_text(segment)},
+                        ensure_ascii=False,
+                    )
+                    + "\n"
+                    for segment in extracted
+                ),
+                encoding="utf-8",
+            )
+            old_cwd = Path.cwd()
+            try:
+                os.chdir(root)
+                segments.render(source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH)
+            finally:
+                os.chdir(old_cwd)
+            self.assertEqual(parity.check_pair(source, root / segments.DRAFT_PATH), [])
+
+    def test_renderer_rejects_unprotected_list_separator(self):
+        source_raw = """---
+title: Allocation mix
+---
+
+:::donut
+- {label: "R&D, platform", value: 25}
+- {label: Cloud, value: 75}
+:::
+"""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "list.ara.md"
+            source.write_text(source_raw, encoding="utf-8")
+            source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+            compiled, _ = segments.build_manifest(source, source_sha)
+            extracted = segments.extract_segments(compiled)
+            protected = next(segment for segment in extracted if segment.forbid_commas)
+            (root / ".tmp").mkdir()
+            (root / segments.RESULT_PATH).write_text(
+                "".join(
+                    json.dumps(
+                        {
+                            "id": segment.id,
+                            "text": self._korean_text(segment)
+                            + (",추가" if segment.id == protected.id else ""),
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
+                    for segment in extracted
+                ),
+                encoding="utf-8",
+            )
+            old_cwd = Path.cwd()
+            try:
+                os.chdir(root)
+                with self.assertRaisesRegex(ValueError, "unprotected list separator"):
+                    segments.render(source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH)
+            finally:
+                os.chdir(old_cwd)
 
     def test_rejects_noncanonical_request_or_linked_input_directory(self):
         with tempfile.TemporaryDirectory() as td:
@@ -427,6 +576,46 @@ class TranslationCommitVerifierTest(unittest.TestCase):
                     source_sha,
                     "deepseek-v4-flash",
                 )
+
+    def test_accepts_trusted_html_translation_of_ara_source(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            gen, _ = seed_repo(root)
+            self._git(root, "init", "-q")
+            self._git(root, "config", "user.name", "Test Writer")
+            self._git(root, "config", "user.email", "writer@example.test")
+            self._git(root, "add", ".")
+            self._git(root, "commit", "-qm", "seed")
+            base_sha = self._git(root, "rev-parse", "HEAD")
+
+            body = root / "alpha.ko.html"
+            body.write_text(compile_source(KOREAN), encoding="utf-8")
+            writer_test = TranslationWriterTest()
+            self.assertEqual(writer_test._run_writer(root, body, replace=False), 0)
+            generated = sorted(gen.glob("*--alpha.ko.html"))
+            self.assertEqual(len(generated), 1)
+            self._git(
+                root,
+                "add",
+                "research/generative/index.json",
+                generated[0].relative_to(root).as_posix(),
+            )
+            self._git(root, "commit", "-qm", "publish protected html translation")
+
+            source_file = "research/generative/2026-01-01T000000--alpha.ara.md"
+            source_sha = hashlib.sha256((root / source_file).read_bytes()).hexdigest()
+            result = verifier.verify(
+                root,
+                base_sha,
+                "alpha",
+                "ara",
+                source_file,
+                source_sha,
+                "deepseek-v4-flash",
+                "html",
+            )
+            self.assertEqual(len(result["allowed_paths"].splitlines()), 2)
+            self.assertEqual(result["source_artifact_path"], "")
 
 
 if __name__ == "__main__":

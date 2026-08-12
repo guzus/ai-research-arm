@@ -164,14 +164,16 @@ def check_pair(source: Path, translation: Path) -> list[str]:
     target_raw = translation.read_text(encoding="utf-8")
     errors: list[str] = []
 
-    if source.name.endswith(".ara.md") != translation.name.endswith(".ara.md"):
-        errors.append("source and translation must use the same ARA/HTML representation")
+    if not source.name.endswith(".ara.md") and translation.name.endswith(".ara.md"):
+        errors.append("HTML sources cannot be compared with an ARA translation")
         return errors
-    if _urls(source_raw) != _urls(target_raw):
+    cross_representation = source.name.endswith(".ara.md") and not translation.name.endswith(".ara.md")
+    source_comparison = _as_html(source, source_raw) if cross_representation else source_raw
+    if _urls(source_comparison) != _urls(target_raw):
         errors.append("URL multiset changed")
-    if _numbers(source_raw) != _numbers(target_raw):
+    if _numbers(source_comparison) != _numbers(target_raw):
         errors.append("numeric-token multiset changed")
-    if source.name.endswith(".ara.md"):
+    if source.name.endswith(".ara.md") and translation.name.endswith(".ara.md"):
         if collections.Counter(FOOTNOTE_RE.findall(source_raw)) != collections.Counter(FOOTNOTE_RE.findall(target_raw)):
             errors.append("citation/reference-id multiset changed")
         source_directives = [(m.group(1) or "close") for m in BLOCK_DIRECTIVE_RE.finditer(source_raw)]
@@ -202,7 +204,7 @@ def check_pair(source: Path, translation: Path) -> list[str]:
             )
 
     hangul = len(HANGUL_RE.findall(re.sub(URL_RE, "", target_html)))
-    source_words = len(LATIN_WORD_RE.findall(re.sub(URL_RE, "", source_raw)))
+    source_words = len(LATIN_WORD_RE.findall(re.sub(URL_RE, "", source_comparison)))
     minimum_hangul = min(200, max(8, math.ceil(source_words * 0.10)))
     if hangul < minimum_hangul:
         errors.append(
