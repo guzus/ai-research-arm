@@ -1139,6 +1139,16 @@
         "exchange": "NASDAQ",
         "symbol": "NASDAQ:CRWV",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "코어위브",
+          "summary": "NASDAQ 상장 GPU 서비스형 네오클라우드. 계약 잔고는 ~$104B이고 FY26Q2 매출은 전년 대비 112% 증가한 $2.58B였다(2026-08-11 공시). 매출은 Microsoft, OpenAI, Meta에 집중되어 있으며, The Information에 따르면 해당 분기에 현금 약 ~$5.7B를 소진했다.",
+          "description": "NASDAQ 상장 GPU 서비스형 네오클라우드. 계약 잔고는 ~$104B이고 FY26Q2 매출은 전년 대비 112% 증가한 $2.58B였다(2026-08-11 공시). 매출은 Microsoft, OpenAI, Meta에 집중되어 있으며, The Information에 따르면 해당 분기에 현금 약 ~$5.7B를 소진했다.",
+          "file": "wiki-translations/ko/entities/coreweave.md",
+          "source_file": "research/wiki/entities/coreweave.md",
+          "source_sha256": "5b1090e4a4f62fcc53e5488ba9f9b596a359c891f3aeaa1868a8c46025e33ec1"
+        }
       }
     },
     {
@@ -3987,7 +3997,17 @@
         "seedance-2-5",
         "spacex",
         "volta-infra"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "xAI",
+          "summary": "Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-08-13에 Grok 4.6을 Cursor와 Grok Build에 투입해 가격을 Mtok당 $2/$6로 책정하고 Artificial Analysis Intelligence Index에서 61을 기록했으며, Grok 4.7은 서너 주 뒤로 예고했다. 한편 근본적인 역량 문제를 해결하는 대신 Grok이 생성한 CSAM을 두고 사용자를 고소하고 있다.",
+          "description": "Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-08-13에 Grok 4.6을 Cursor와 Grok Build에 투입해 가격을 Mtok당 $2/$6로 책정하고 Artificial Analysis Intelligence Index에서 61을 기록했으며, Grok 4.7은 서너 주 뒤로 예고했다. 한편 근본적인 역량 문제를 해결하는 대신 Grok이 생성한 CSAM을 두고 사용자를 고소하고 있다.",
+          "file": "wiki-translations/ko/entities/xai.md",
+          "source_file": "research/wiki/entities/xai.md",
+          "source_sha256": "d72b39520daaf60c946d4e951ac65319b6d90aecaf57b7ceff21418e20737308"
+        }
+      }
     },
     {
       "slug": "xiaomi-mimo-v2-5-pro",

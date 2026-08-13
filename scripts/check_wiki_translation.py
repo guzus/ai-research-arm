@@ -349,14 +349,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--wiki-root", default=str(WIKI_DIR))
     parser.add_argument("--root", default=str(TRANSLATION_ROOT))
     args = parser.parse_args(argv)
-    wiki_dir = Path(args.wiki_root)
-    root = Path(args.root)
+    wiki_dir = Path(args.wiki_root).resolve()
+    root = Path(args.root).resolve()
 
     if args.paths:
         failures: list[tuple[Path, str]] = []
         valid = 0
         for raw_path in args.paths:
-            path = Path(raw_path)
+            path = Path(raw_path).resolve()
             translation, errors = validate_file(
                 path, wiki_dir=wiki_dir, translation_root=root
             )

@@ -104,6 +104,24 @@ class WikiTranslationTest(unittest.TestCase):
             )
             self.assertTrue(any("copied unchanged" in error for error in errors))
 
+    def test_cli_accepts_repo_relative_translation_path(self):
+        with tempfile.TemporaryDirectory() as td:
+            wiki, translations = _fixture(Path(td))
+            target = translations / "entities" / "alpha.md"
+            _write(translations, "entities/alpha.md", _translation(wiki / "entities" / "alpha.md"))
+            self.assertEqual(
+                cwt.main(
+                    [
+                        "--wiki-root",
+                        str(wiki),
+                        "--root",
+                        str(translations),
+                        str(target),
+                    ]
+                ),
+                0,
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
