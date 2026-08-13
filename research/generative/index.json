@@ -242,7 +242,28 @@
       "healthcare",
       "diagnostics",
       "oncology"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051404--natera-inc.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Natera: cfDNA 플랫폼의 서사가 물량 성장에서 임상 운영 레버리지로 이동하고 있다",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:14:04Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill for natera-inc",
+        "tags": [
+          "company",
+          "healthcare",
+          "diagnostics",
+          "oncology"
+        ],
+        "translated_at": "2026-08-13T05:14:04Z",
+        "source_file": "research/generative/2026-05-16T182300--natera-inc.ara.md",
+        "source_sha256": "a4fe3380063594fadaa7484886ec0184bd5080a4433a4c8edd1d0530fa9b3712"
+      }
+    }
   },
   {
     "slug": "compare-claude-power-bottlenecks",
