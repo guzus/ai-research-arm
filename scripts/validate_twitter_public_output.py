@@ -149,13 +149,10 @@ def validate(
 
     state = status.get("status")
     public_items = status.get("public_items")
-    recovery = status.get("recovery", False)
     if state not in {"published", "no_update"}:
         raise ContractError("status must be 'published' or 'no_update'")
     if isinstance(public_items, bool) or not isinstance(public_items, int) or public_items < 0:
         raise ContractError("public_items must be a non-negative integer")
-    if not isinstance(recovery, bool):
-        raise ContractError("recovery must be a boolean when present")
     if not summary_file.exists():
         raise ContractError(f"missing summary artifact: {summary_file}")
 
@@ -174,8 +171,6 @@ def validate(
         headlines = None
 
     if state == "published":
-        if recovery:
-            raise ContractError("published status cannot be a recovery heartbeat")
         if public_items < 1:
             raise ContractError("published status requires public_items > 0")
         if len(sections) != 1:
@@ -204,7 +199,7 @@ def validate(
 
     if public_items != 0:
         raise ContractError("no_update status requires public_items == 0")
-    if sections and not recovery:
+    if sections:
         raise ContractError("no_update status must not leave a same-hour public section")
     if summary_file.stat().st_size != 0:
         raise ContractError("no_update status requires an empty notification summary")

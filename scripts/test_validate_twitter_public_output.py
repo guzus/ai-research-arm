@@ -22,28 +22,20 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
     def tearDown(self) -> None:
         self.tmp.cleanup()
 
-    def write_status(
-        self,
-        state: str,
-        public_items: int,
-        generated_at: str = "2026-07-10 10:07:09 UTC",
-        *,
-        recovery: bool | None = None,
-    ) -> None:
-        payload = {
-            "schema_version": 1,
-            "date": "2026-07-10",
-            "hour": "10:00 UTC",
-            "generated_at": generated_at,
-            "run_id": "1234",
-            "run_attempt": 2,
-            "status": state,
-            "public_items": public_items,
-        }
-        if recovery is not None:
-            payload["recovery"] = recovery
+    def write_status(self, state: str, public_items: int, generated_at: str = "2026-07-10 10:07:09 UTC") -> None:
         self.status.write_text(
-            json.dumps(payload),
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "date": "2026-07-10",
+                    "hour": "10:00 UTC",
+                    "generated_at": generated_at,
+                    "run_id": "1234",
+                    "run_attempt": 2,
+                    "status": state,
+                    "public_items": public_items,
+                }
+            ),
             encoding="utf-8",
         )
 
@@ -145,16 +137,6 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
         )
         with self.assertRaisesRegex(ContractError, "must not leave"):
             self.validate()
-
-    def test_recovery_no_update_accepts_baseline_same_hour_section(self) -> None:
-        self.write_status("no_update", 0, recovery=True)
-        self.summary.write_text("", encoding="utf-8")
-        self.digest.write_text(
-            "# Twitter/X AI Pulse\n\n## 10:00 UTC\n\n"
-            "**Cycle summary**: Previously committed valid update.\n",
-            encoding="utf-8",
-        )
-        self.validate()
 
     def test_rejects_stale_run_identity(self) -> None:
         self.write_status("no_update", 0, generated_at="2026-07-10 10:07:00 UTC")
