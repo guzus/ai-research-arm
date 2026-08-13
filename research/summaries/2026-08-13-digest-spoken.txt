@@ -1,0 +1,13 @@
+Speaker 1: Thursday, August thirteenth, twenty twenty-six.
+Speaker 2: [high_energy] Three frontier models shipped inside forty-five minutes, Grok four point six, Alibaba's open-weight Qwen three point eight, and DeepSeek V four Pro.
+Speaker 1: The pricing is the story. Grok four point six lands at two dollars in, six dollars out per million tokens, against Fable five Max at ten and fifty.
+Speaker 2: And it scores sixty-one on the index against sixty-two. Same tier, [emphasis] roughly a fifth of the price [/emphasis].
+Speaker 1: Some quick numbers on that curve. Frontier work is four point six times cheaper in ninety days, clearing zero point eight on Parametric CAD Bench fell from one hundred seventy dollars to [emphasis] thirty-six dollars and fifty-nine cents [/emphasis].
+Speaker 2: That is the first time we have seen a capability threshold repriced that fast inside a single quarter.
+Speaker 1: On the policy front, Nvidia's twenty-five percent backstop in the five hundred billion dollar package is residual value support.
+Speaker 2: Which means, [dramatic_pause] Nvidia is guaranteeing the resale floor on hardware Nvidia itself makes obsolete.
+Speaker 1: Nebius posted five hundred eighty-two point three million dollars in revenue, up four hundred fifty-four percent year over year, with five gigawatts of contracted power.
+Speaker 2: And server D D R five contract prices climbed fifteen to twenty-three percent in a single month, so the memory squeeze is real.
+Speaker 1: On the funding side, Lovable raised four hundred million dollars at thirteen point three billion, and Cognition is in talks north of forty billion.
+Speaker 2: Worth noting the loudest thread of the day asked whether AI is removing the middle class of software engineering.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
