@@ -4,10 +4,11 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.
+description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — pivoting to commercialization toward AGI, and listed V4-Pro-0813 on 2026-08-13.
 created_at: 2026-06-04
-timestamp: 2026-08-02T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA model ticket — DeepSeek V4 GA + surge pricing", path: research/models/tickets/deepseek-v4-ga-surge-pricing-2026-06.md}
@@ -172,6 +173,20 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   Same cycle, [[deepseek-v4-flash|V4-Flash]] kept clearing outside tests and
   was relayed as **105× cheaper per task than [[claude-fable-5|Fable 5]]**
   (ARA digest 2026-08-02).
+
+- **V4-Pro-0813 lands on the API — and the cheap sibling outperforms it on a
+  friendly test (2026-08-13).** DeepSeek listed **`DeepSeek-V4-Pro-0813`** on
+  its own API documentation page at **$0.435 input / $0.87 output per million
+  tokens** at **1M context** — roughly **4.5× the cost of the
+  [[deepseek-v4-flash|V4 Flash 0731]]** — confirmed across two independent
+  readings. SemiAnalysis put the parameter count at **1.5T**; a competing
+  relay says **1.6T with 49B active**. There is **no official model card**;
+  circulating benchmark tables come from **WeChat screenshots comparing
+  against [[claude-opus-4-8|Claude Opus 4.8]] rather than
+  [[claude-opus-5|Opus 5]]**. Within two hours, @teortaxesTex — a
+  consistently pro-DeepSeek analyst — reported the cheaper V4 Flash 0731
+  outperforming it on his own tasks, calling the release evidence that
+  **"they need more than scale"** (ARA digest 2026-08-13).
 
 ## Open questions
 

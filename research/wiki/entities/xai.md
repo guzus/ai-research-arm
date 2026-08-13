@@ -4,10 +4,11 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; shipped Grok Bot (persistent cloud agents) into early beta through Cursor's paid tiers and pushed Grok 4.6 to "later this week" (2026-08-12), while still suing users over Grok-generated CSAM rather than addressing the underlying capability.
+description: Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, dating Grok 4.7 three-to-four weeks out — while still suing users over Grok-generated CSAM rather than addressing the underlying capability.
 created_at: 2026-06-08
-timestamp: 2026-08-12T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
@@ -175,12 +176,30 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   **SpaceXAI** (the xAI/SpaceX pairing) shipped **Grok Bot into early beta**:
   persistent cloud agents that **keep working after the user disconnects**,
   **delegate to one another**, and **sign into sites lacking APIs** —
-  distributed through **[[cursor|Cursor]]'s paid tiers**. It is xAI's
+  distributed through   **[[cursor|Cursor]]'s paid tiers**. It is xAI's
   productized answer to the always-on agent wave and the first consumer-facing
   persistent-agent surface from the Grok line. In the same window, Musk
   pushed **Grok 4.6** to **"later this week"** after it **slipped twice** —
   the model tracked since 2026-07-26 still has no shipped artifact
   (@elonmusk, @AndrewCurran_, @testingcatalog; ARA daily digest 2026-08-12).
+- **Grok 4.6 ships — the 2T from-scratch model finally lands (2026-08-13).**
+  Live around **15:27 UTC** in **Cursor and Grok Build** same-day, at **$2 per
+  million input / $6 per million output** tokens (2× usage included for the
+  first week) — repricing the frontier tier against [[claude-fable-5|Claude
+  Fable 5 Max]]'s **$10/$50** (roughly 5×/8× cheaper). The vendor table puts it
+  at **61 on the Artificial Analysis Intelligence Index** (level with
+  [[gpt-5-6|GPT-5.6 Sol]]) and **first on the separate Agentic Index**, ahead
+  of Sol on **CursorBench (69.9% vs 67.2%)**, FrontierCode and AA-Briefcase,
+  behind on DeepSWE and Terminal-Bench. The "1753" figure Musk amplified at
+  launch resolved to a **GDPVal-AA v2 score**. The Decoder reports it
+  completes complex agentic workflows in **~53 steps where Opus 5 needs 103,
+  at 60%+ lower price**; on Parametric CAD Bench, Grok 4.6 hit **96.9% of
+  [[claude-opus-5|Claude Opus 5]]'s top score for 61% of the cost**. Caveats:
+  every capability claim at launch traces back to the vendor, and the
+  friendliest witness, @scaling01, wrote that on "really long-running and
+  autonomous workflows … the best OpenAI and Anthropic models are much better
+  in the tails." Musk dated **Grok 4.7 to three or four weeks out** at
+  18:34 UTC with initial training already complete (ARA digest 2026-08-13).
 
 ## Open questions
 

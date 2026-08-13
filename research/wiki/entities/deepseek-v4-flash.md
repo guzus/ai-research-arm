@@ -6,8 +6,9 @@ aliases: ["V4-Flash", "V4-Flash-0731", "DeepSeek-V4-Flash", "DeepSeek V4-Flash-0
 tags: [frontier-model, open-weights, chinese-llm, moe, agentic-coding, mit-license]
 description: DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.
 created_at: 2026-08-01
-timestamp: 2026-08-09T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
   - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
@@ -143,6 +144,15 @@ on Hugging Face hours later, with a technical report.
   cost-per-task adoption story this page has tracked since day two showing up
   as served-volume share in agent tooling (Latent.Space AINews; ARA daily
   digest 2026-08-09).
+- **The Pro sibling prices itself 4.5× higher — and Flash wins a friendly
+  head-to-head (2026-08-13).** [[deepseek]] listed **`DeepSeek-V4-Pro-0813`**
+  at **$0.435/$0.87 per Mtok** at 1M context — roughly **4.5× V4-Flash's
+  $0.28/$0.87 input price**. Within two hours, pro-DeepSeek analyst
+  @teortaxesTex reported the **cheaper V4-Flash 0731 outperforming the new
+  Pro on his own tasks**, calling the release evidence that "they need more
+  than scale" — the strongest public instance yet of this model beating its
+  lab's own larger flagship, the "cheap fast-tier model beating the flagship"
+  pattern flagged on day four (ARA digest 2026-08-13).
 
 ## Context
 

@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, and off-balance-sheet structures like Theseus Infrastructure — and the question of whether demand justifies it.
+description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, and off-balance-sheet structures like Theseus Infrastructure — and the question of whether demand justifies it, as DDR5 pricing and financing targets keep stacking in August 2026.
 created_at: 2026-05-24
-timestamp: 2026-08-12T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
@@ -668,6 +669,46 @@ package cleared its chamber-of-origin crossover.
   foundry-level confirmation that the chip buildout is **accelerating rather than
   plateauing**, the counterweight to the muted equity tape above (CNBC, Bloomberg;
   ARA daily digest 2026-08-12).
+- **DDR5 contract prices jump 15–23% in a month — and the premium sits at the
+  low-density tier (2026-08-13).** A single-source channel survey puts server
+  DDR5 RDIMM contract prices at **$900 / $1,590 / $2,650 for 32/64/96GB** — up
+  **15–23% month-over-month** — with the **same modules trading at roughly 2×
+  contract on spot**. The premium concentrates in the commodity tier: **2.00–2.33×
+  spot at 32GB versus 1.43–1.55× at 96GB** — the memory-squeeze continuation of
+  the thread tracked since [[micron]]/[[sk-hynix]] became the binding constraint
+  (2026-08-01/05) (ARA daily digest 2026-08-13).
+- **The financing targets get bigger — BofA $250B, Morgan Stanley ~$1.5T, and
+  a compute-token futures market (2026-08-13).** **Bank of America** set a
+  **$250B AI-infrastructure and power financing target through 4 July 2027**,
+  two days after **Morgan Stanley announced a roughly $1.5T ten-year program**.
+  Separately, **Compute Exchange** is launching **contracts that let companies
+  lock in AI token prices for up to six months** — token-derivative futures,
+  a financialisation of inference pricing that presumes a deep, liquid compute
+  market. And **Cerebras disclosed 600MW under contract for end-2027**, with
+  Gavin Baker applying [[nebius]]'s disclosed **$20–25M-per-megawatt** long-term
+  economics (haircut for the take-or-pay OpenAI structure) to derive roughly
+  **$10B of 2027 exit cloud ARR** — his arithmetic, not a company guide (ARA
+  daily digest 2026-08-13).
+- **The neocloud economics print and the cash-burn ledger (2026-08-13).**
+  **[[nebius]]** posted **$582.3M quarterly revenue (+454% YoY, +46% seq.)** at a
+  **~50% AI Cloud adjusted EBITDA margin**, raised **contracted power to 5GW**,
+  and said **~70% of the quarter's deals carried customer prepayments** — the
+  strongest prepayment evidence for the neocloud thesis yet. Against it,
+  **[[coreweave|CoreWeave]]** filed its FY26Q2 8-K: CEO Michael Intrator called
+  the quarter "an important inflection point … as our scale began to translate
+  into expanding operating leverage," while The Information separately reports
+  **$5.7B of cash burned in the quarter** and debt priced **above 9% yields**
+  this month. **Super Micro's FY26Q4 8-K** prints gross margin **17.5% vs 9.9%**
+  in Q3'26 with net income **$1,178M vs $483M** and diluted EPS **$1.62** — CEO
+  Charles Liang declining to attach a margin to the $65–72B FY2027 guide, the
+  "volume without margin" concern flagged when the guide first landed
+  (2026-08-12) (ARA daily digest 2026-08-13).
+- **Frontier-grade work got 4.6× cheaper in 90 days (2026-08-13).** Parametric
+  CAD Bench re-ran the same 100 tasks and found the cost to clear a 0.8 score
+  fell from **$170.00 to $36.59**, with [[claude-opus-5|Claude Opus 5]] taking
+  the top score at **0.906** and [[xai|Grok 4.6]] reaching 96.9% of it for 61%
+  of the cost — a concrete price-performance deflation data point for the
+  "does demand justify the buildout" question (ARA daily digest 2026-08-13).
 
 ## Open questions
 - **Does the permitting/power gate bind before the demand question resolves?**

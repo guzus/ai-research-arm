@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; began watermarking Claude text output and shipping the Theseus Infrastructure datacenter platform with Macquarie and GIC (2026-08-10).
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; watermarks all Claude text output globally (2026-08-12) amid first user backlash (2026-08-13), with the Theseus Infrastructure datacenter platform with Macquarie and GIC.
 created_at: 2026-05-24
-timestamp: 2026-08-12T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
@@ -957,6 +958,31 @@ Three developments landed together on 2026-08-10:
   handles worst**, per TechCrunch/The Register, a candid admission of the
   watermark's limits (TechCrunch, The Verge, The Register; ARA daily digest
   2026-08-12).
+
+## Watermarking backlash, Claude for Legal, and Claude in Chrome (2026-08-13)
+
+- **The watermarking backlash begins — users, not just researchers
+  (2026-08-13).** A day after the feature's global announcement, **TechCrunch
+  reports Claude users complaining publicly that the mark will expose their
+  use of the model at work and in classes**, and **Stratechery published a
+  same-day critique** arguing the implementation **reaches further than the
+  EU AI Act provision that prompted it** — the regulation exempts standard
+  editing that does not substantially change meaning, while a **model-level
+  mark also lands on human text Claude merely proofread or translated**.
+  The detector's **error rates remain unpublished**, the criticism this wiki
+  has tracked since the 2026-08-11 ship (TechCrunch, Stratechery,
+  @benthompson; ARA daily digest 2026-08-13).
+- **Robert Mahari named first Head of Claude for Legal (2026-08-13).**
+  Anthropic hired **Robert Mahari**, a legal-startup founder (Lex Machina
+  lineage, per reporting), as its **first Head of Claude for Legal** — a
+  vertical-specialist hire in the [[claude-science]] mold, aimed at the
+  legal-practice market (The Decoder; ARA daily digest 2026-08-13).
+- **Claude in Chrome converges on the Claude Cowork backend (2026-08-13).**
+  **Claude in Chrome** now runs on **the same infrastructure as Claude
+  Cowork**, syncing across clients with **Skills and Connectors** — available
+  on **Max and Team**, with **Pro in coming weeks** (ARA daily digest
+  2026-08-13).
+
 - **A $9.1B, 20-year compute deal with Riot Platforms (2026-08-12).** Anthropic
   signed a **$9.1B, 20-year compute agreement with Riot Platforms**, extendable
   to **$16.1B** — though the **first 96MW does not land until December 2027**,
