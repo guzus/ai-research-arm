@@ -633,7 +633,17 @@
       "inbound": [
         "ai-capex",
         "prometheus"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "범용 인공지능 엔지니어",
+          "summary": "AI 시스템이 복잡한 물리적 제품을 개념 단계부터 생산까지 이끌 수 있다는 논지. AI의 영역을 소프트웨어와 챗봇에서 하드웨어 설계와 제조로 확장한다.",
+          "description": "AI 시스템이 복잡한 물리적 제품을 개념 단계부터 생산까지 이끌 수 있다는 논지. AI의 영역을 소프트웨어와 챗봇에서 하드웨어 설계와 제조로 확장한다.",
+          "file": "wiki-translations/ko/concepts/artificial-general-engineer.md",
+          "source_file": "research/wiki/concepts/artificial-general-engineer.md",
+          "source_sha256": "8d114def5cc1ca9080549dd5287e5486a917a52596d3e8ced96fe4ce50a2efe0"
+        }
+      }
     },
     {
       "slug": "astra",
@@ -808,7 +818,17 @@
       ],
       "inbound": [
         "evo-genome-models"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "차이 디스커버리",
+          "summary": "Eli Lilly, Novartis, Pfizer가 이미 사용하는 AI 설계 분자를 개발하며 2026-07-15에 $3.8B 기업가치로 $400M Series C를 유치한 AI 신약 개발 스타트업. 기업가치는 지난해 말 대비 거의 3x가 됐다.",
+          "description": "Eli Lilly, Novartis, Pfizer가 이미 사용하는 AI 설계 분자를 개발하며 2026-07-15에 $3.8B 기업가치로 $400M Series C를 유치한 AI 신약 개발 스타트업. 기업가치는 지난해 말 대비 거의 3x가 됐다.",
+          "file": "wiki-translations/ko/entities/chai-discovery.md",
+          "source_file": "research/wiki/entities/chai-discovery.md",
+          "source_sha256": "d1c1738664440852e58bf8f092353dbaca58fa43e3713056d05d2e53c6ab1bfd"
+        }
+      }
     },
     {
       "slug": "china-ai-regulation",
@@ -1788,7 +1808,17 @@
         "openai",
         "openrouter"
       ],
-      "inbound": []
+      "inbound": [],
+      "translations": {
+        "ko": {
+          "title": "파이어웍스 AI",
+          "summary": "하루 40T+ 토큰을 처리한다고 밝히며 2026-07-18에 $17.5B 기업가치로 $1.505B Series D를 유치한 AI 추론 인프라 기업. 이번 주기 최대 규모의 추론 인프라 투자 라운드 중 하나다.",
+          "description": "하루 40T+ 토큰을 처리한다고 밝히며 2026-07-18에 $17.5B 기업가치로 $1.505B Series D를 유치한 AI 추론 인프라 기업. 이번 주기 최대 규모의 추론 인프라 투자 라운드 중 하나다.",
+          "file": "wiki-translations/ko/entities/fireworks-ai.md",
+          "source_file": "research/wiki/entities/fireworks-ai.md",
+          "source_sha256": "ae6f662801e1bc7b97fd08b2de58d81a2348e41bf24f976898384a28e716c419"
+        }
+      }
     },
     {
       "slug": "gemini-3-5-flash",
@@ -2684,7 +2714,17 @@
         "mistral-leanstral-1-5",
         "mistral-shieldstral",
         "tencent-hunyuan-hy3"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "미스트랄 로보스트랄 내비게이트",
+          "summary": "Mistral AI가 처음 선보인 체화형 내비게이션 모델. 8B 매개변수로 자연어로 지정된 작업을 로봇이 자율 수행하도록 안내하며, 2026-07-08에 발표됐다.",
+          "description": "Mistral AI가 처음 선보인 체화형 내비게이션 모델. 8B 매개변수로 자연어로 지정된 작업을 로봇이 자율 수행하도록 안내하며, 2026-07-08에 발표됐다.",
+          "file": "wiki-translations/ko/entities/mistral-robostral-navigate.md",
+          "source_file": "research/wiki/entities/mistral-robostral-navigate.md",
+          "source_sha256": "4cb1596aff77990985970dec076e2c9f65327cca542dc819116fcac06e856309"
+        }
+      }
     },
     {
       "slug": "mistral-shieldstral",
@@ -4057,7 +4097,17 @@
         "mistral-robostral-navigate",
         "seedance-2-5",
         "zhipu-glm-5-2"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "텐센트 훈위안 Hy3",
+          "summary": "Apache 2.0을 적용한 Tencent Hunyuan의 295B 매개변수 오픈 웨이트 MoE 모델. MCP-Atlas 벤치마크에서 새로운 오픈 모델 SOTA를 기록한 것으로 보도됐으며 2026-07-06에 출시됐다.",
+          "description": "Apache 2.0을 적용한 Tencent Hunyuan의 295B 매개변수 오픈 웨이트 MoE 모델. MCP-Atlas 벤치마크에서 새로운 오픈 모델 SOTA를 기록한 것으로 보도됐으며 2026-07-06에 출시됐다.",
+          "file": "wiki-translations/ko/entities/tencent-hunyuan-hy3.md",
+          "source_file": "research/wiki/entities/tencent-hunyuan-hy3.md",
+          "source_sha256": "425690b1d3085d1e4b457ab03ee0ceb94c95f8a04918d29d6a28f8a561a0494d"
+        }
+      }
     },
     {
       "slug": "thinking-machines",
