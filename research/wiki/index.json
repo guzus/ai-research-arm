@@ -303,6 +303,16 @@
         "exchange": "NYSE",
         "symbol": "NYSE:BABA",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "Alibaba",
+          "summary": "Alibaba Cloud와 Qwen 모델을 보유한 중국 기술 대기업. Anthropic으로부터 문서로 확인된 최대 규모의 Claude 증류 작전을 벌였다는 의혹을 받았으며, 2026-08-04에 2.4T 매개변수 Qwen3.8-Max를 출시하고 2026-08-13에는 Qwen3.8-2.4T-A95B라는 이름으로 가중치를 공개했다. 동시에 미 국방부의 PLA 연계 기업 지정에 계속 맞서고 있다.",
+          "description": "Alibaba Cloud와 Qwen 모델을 보유한 중국 기술 대기업. Anthropic으로부터 문서로 확인된 최대 규모의 Claude 증류 작전을 벌였다는 의혹을 받았으며, 2026-08-04에 2.4T 매개변수 Qwen3.8-Max를 출시하고 2026-08-13에는 Qwen3.8-2.4T-A95B라는 이름으로 가중치를 공개했다. 동시에 미 국방부의 PLA 연계 기업 지정에 계속 맞서고 있다.",
+          "file": "wiki-translations/ko/entities/alibaba.md",
+          "source_file": "research/wiki/entities/alibaba.md",
+          "source_sha256": "fc9284879e27b3b0fac47a7465d40d62dac0a6d22717814f16ea0c1a2bb49606"
+        }
       }
     },
     {
@@ -1097,7 +1107,17 @@
         "anthropic",
         "dynamic-workflows",
         "muse-code"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "Cognition AI",
+          "summary": "Devin 자율 코딩 에이전트를 만든 기업. 2026년 오월 $492M ARR(전년 대비 ~13×)을 기록하고 자체 코드의 89%를 Devin이 작성하는 가운데, $26B 포스트머니 기업가치로 $1B+를 조달했으며 현재 $1B를 넘을 수 있는 투자 라운드에서 $40B+ 기업가치를 논의 중이다(2026-08-13).",
+          "description": "Devin 자율 코딩 에이전트를 만든 기업. 2026년 오월 $492M ARR(전년 대비 ~13×)을 기록하고 자체 코드의 89%를 Devin이 작성하는 가운데, $26B 포스트머니 기업가치로 $1B+를 조달했으며 현재 $1B를 넘을 수 있는 투자 라운드에서 $40B+ 기업가치를 논의 중이다(2026-08-13).",
+          "file": "wiki-translations/ko/entities/cognition-ai.md",
+          "source_file": "research/wiki/entities/cognition-ai.md",
+          "source_sha256": "9b123dae24dcd7b6aa6a1ceb8d9a43e18493a6e37aed3d36d52d9537d717d6cf"
+        }
+      }
     },
     {
       "slug": "coreweave",
@@ -1250,7 +1270,17 @@
         "tencent-hunyuan-hy3",
         "thinking-machines",
         "zhipu-glm-5-2"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "DeepSeek",
+          "summary": "항저우에 기반을 둔 중국의 프런티어 연구소. 2026-06-18 중국 AI 역사상 최대 규모인 첫 외부 투자 라운드(~$7.4B / ~50B위안, $50B+ 기업가치)를 마감했다. Tencent와 CATL의 의결권 없는 자금 및 유일한 의결권 투자자인 국영 AI 펀드를 유치하면서 창업자 지배력을 유지한 채 AGI를 향한 상용화로 전환했으며, 2026-08-13 V4-Pro-0813을 등록했다.",
+          "description": "항저우에 기반을 둔 중국의 프런티어 연구소. 2026-06-18 중국 AI 역사상 최대 규모인 첫 외부 투자 라운드(~$7.4B / ~50B위안, $50B+ 기업가치)를 마감했다. Tencent와 CATL의 의결권 없는 자금 및 유일한 의결권 투자자인 국영 AI 펀드를 유치하면서 창업자 지배력을 유지한 채 AGI를 향한 상용화로 전환했으며, 2026-08-13 V4-Pro-0813을 등록했다.",
+          "file": "wiki-translations/ko/entities/deepseek.md",
+          "source_file": "research/wiki/entities/deepseek.md",
+          "source_sha256": "0ce457395ee4275378cd681c00c686cdf676ee8f2c91fb0ac8ef190595fb0084"
+        }
+      }
     },
     {
       "slug": "deepseek-v4-flash",
