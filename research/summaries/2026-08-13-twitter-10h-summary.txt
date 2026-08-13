@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-13 10:20:40 UTC
+
+CYCLE: A $2tn Anthropic IPO report meets its own flat flagship adoption; DeepSeek ships V4-Pro in silence.
+
+TOP STORIES:
+• FT: Anthropic backers expect an October IPO at $2tn+ on $100-120bn annualised revenue - but Ramp's July data shows Fable 5 stuck at 6% of Anthropic's own tokens [⚠]
+• DeepSeek V4-Pro reaches general availability as a silent API version bump - no weights, no model card, no announcement [✓]
+• IBM embeds GPT-5.6, Codex and ChatGPT Work into IBM Consulting Advantage under a new OpenAI partnership [✓]
+• WSJ: Hassabis pitched an industry-funded frontier-model standards body to Bessent and Kratsios [⚠]
+
+WATCH: Whether DeepSeek publishes V4-Pro weights or an English model card in the next 24h.
+
+Full update on GitHub.
