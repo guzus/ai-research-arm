@@ -6,6 +6,7 @@ import {
   splitSections,
   wrapTables,
 } from './shared';
+import { uiText, type UiLanguage } from '../i18n';
 
 export type TodayRenderOptions = {
   md: string;
@@ -14,6 +15,7 @@ export type TodayRenderOptions = {
   audioDates: string[];
   searchTerm: string;
   frontPageCardHtml: string | null;
+  language: UiLanguage;
 };
 
 /** Drop the first top-level list item from a markdown block, keeping any of
@@ -54,7 +56,7 @@ export function renderTodayHtml(options: TodayRenderOptions): string {
         '  <button class="today-audio-play" type="button" data-digest-audio-play data-audio-date="' + escapeHtml(options.dateStr) + '" aria-pressed="false">',
         '    <span class="today-audio-play-icon" aria-hidden="true"></span>',
         '    <span class="today-audio-play-copy">',
-        '      <span class="today-audio-play-label" data-digest-audio-label>Play digest audio</span>',
+        '      <span class="today-audio-play-label" data-digest-audio-label>' + uiText(options.language, 'today.playAudio') + '</span>',
         '      <span class="today-audio-play-date">' + escapeHtml(options.fallbackTitle) + '</span>',
         '    </span>',
         '  </button>',

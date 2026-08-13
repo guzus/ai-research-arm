@@ -52,7 +52,7 @@ export function isModelReleaseDigestSection(title: string): boolean {
 export function renderInfoTimeline(className: string, label: string, items: InfoTimelineItem[]): string {
   if (items.length === 0) return '';
   return [
-    '<nav class="info-timeline ' + className + '" aria-label="' + escapeHtml(label) + ' timeline">',
+    '<nav class="info-timeline ' + className + '" aria-label="' + escapeHtml(label) + '">',
     '  <div class="info-timeline-head">' + escapeHtml(label) + '</div>',
     '  <ol class="info-timeline-list">',
     items.map((item) => [

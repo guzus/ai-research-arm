@@ -440,21 +440,23 @@ function runtimeSeoState(target: string): RuntimeSeoState {
     };
   }
   if (activeTab === 'today') {
+    const pageTitle = uiText(activeLanguage, 'page.today', { date });
     return {
       canonicalPath: `/today/${date}`,
       description: `The ara daily AI digest for ${date}, covering model releases, research, funding, policy, and community signal.`,
-      documentTitle: `AI Daily Digest -- ${date} -- ara`,
-      heading: `AI Daily Digest -- ${date}`,
+      documentTitle: `${pageTitle} -- ara`,
+      heading: pageTitle,
       indexable: !isLatestAlias,
       type: 'article',
     };
   }
   if (activeTab === 'twitter') {
+    const pageTitle = uiText(activeLanguage, 'page.twitter', { date });
     return {
       canonicalPath: `/twitter/${date}`,
       description: `Source-attributed AI signals from Twitter/X for ${date}.`,
-      documentTitle: `Twitter/X AI signal report -- ${date} -- ara`,
-      heading: `Twitter/X AI signal report -- ${date}`,
+      documentTitle: `${pageTitle} -- ara`,
+      heading: pageTitle,
       indexable: !isLatestAlias,
       type: 'article',
     };
@@ -476,8 +478,8 @@ function runtimeSeoState(target: string): RuntimeSeoState {
       description: detail
         ? 'A verified AI model forecast with committed prediction-market context and supporting evidence.'
         : 'Verified AI model forecasts, release timelines, and prediction-market context.',
-      documentTitle: detail ? 'AI model forecast -- ara' : 'AI model forecasts and prediction markets -- ara',
-      heading: detail ? 'AI model forecast' : 'AI model forecasts and prediction markets',
+      documentTitle: `${uiText(activeLanguage, detail ? 'page.model' : 'page.models')} -- ara`,
+      heading: uiText(activeLanguage, detail ? 'page.model' : 'page.models'),
       indexable: true,
       type: detail ? 'article' : 'website',
     };
@@ -489,8 +491,8 @@ function runtimeSeoState(target: string): RuntimeSeoState {
       description: detail
         ? 'Source-cited, long-form AI research from ara.'
         : 'Source-cited, long-form research on AI models, companies, infrastructure, policy, and emerging technical claims.',
-      documentTitle: detail ? 'AI research -- ara' : 'AI research archive -- ara',
-      heading: detail ? 'AI research' : 'AI research archive',
+      documentTitle: `${uiText(activeLanguage, detail ? 'page.researchArticle' : 'page.research')} -- ara`,
+      heading: uiText(activeLanguage, detail ? 'page.researchArticle' : 'page.research'),
       indexable: true,
       type: detail ? 'article' : 'website',
     };
@@ -502,8 +504,8 @@ function runtimeSeoState(target: string): RuntimeSeoState {
       description: detail
         ? 'A maintained ara knowledge-base entry about AI models, labs, infrastructure, policy, or markets.'
         : 'A maintained knowledge base of AI labs, models, infrastructure concepts, policy themes, and market participants.',
-      documentTitle: 'LLM and AI wiki -- ara',
-      heading: detail ? 'LLM and AI wiki entry' : 'LLM and AI wiki',
+      documentTitle: `${uiText(activeLanguage, 'page.wiki')} -- ara`,
+      heading: uiText(activeLanguage, detail ? 'page.wikiEntry' : 'page.wiki'),
       indexable: true,
       type: detail ? 'article' : 'website',
     };
@@ -514,8 +516,8 @@ function runtimeSeoState(target: string): RuntimeSeoState {
       description:
         'Every frontier LLM plotted by output price against benchmark score, with the Pareto frontier — '
         + 'the models where nothing else is both cheaper and at least as capable.',
-      documentTitle: 'LLM price vs. capability -- ara',
-      heading: 'LLM price vs. capability',
+      documentTitle: `${uiText(activeLanguage, 'page.pricing')} -- ara`,
+      heading: uiText(activeLanguage, 'page.pricing'),
       indexable: true,
       type: 'website',
     };
@@ -524,8 +526,8 @@ function runtimeSeoState(target: string): RuntimeSeoState {
     return {
       canonicalPath: '/agents',
       description: 'Live operational timeline for the autonomous agents and scheduled workflows that maintain ara.',
-      documentTitle: 'ara agent operations -- ara',
-      heading: 'ara agent operations',
+      documentTitle: `${uiText(activeLanguage, 'page.agents')} -- ara`,
+      heading: uiText(activeLanguage, 'page.agents'),
       indexable: false,
       type: 'website',
     };
@@ -961,11 +963,11 @@ function paintPricing(data: ModelPricing): void {
   // The SAME benchmark value drives both calls. Letting hydrate re-derive it
   // from the DOM is what produced tooltips keyed to the wrong model array.
   const benchmark = pricingBenchmark ?? undefined;
-  setSafeContent(content, renderPricing(data, benchmark));
+  setSafeContent(content, renderPricing(data, benchmark, activeLanguage));
   hydratePricing(content, data, (next) => {
     pricingBenchmark = next;
     paintPricing(data);
-  }, benchmark);
+  }, benchmark, activeLanguage);
 }
 
 function hydrateAvailabilityFromManifest(m: Manifest): void {
@@ -1368,7 +1370,7 @@ function digestAudioUrl(dateStr: string): string {
 
 function digestAudioTitle(dateStr: string): string {
   const date = dateFromString(dateStr);
-  return `Daily Digest · ${date ? displayDate(date) : dateStr}`;
+  return `${uiText(activeLanguage, 'today.audioTitle')} · ${date ? displayDate(date) : dateStr}`;
 }
 
 function ensureDigestAudioPlayer(): HTMLAudioElement {
@@ -1378,17 +1380,17 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
   bar.id = 'digestAudioBar';
   bar.className = 'digest-audio-bar';
   bar.hidden = true;
-  bar.setAttribute('aria-label', 'Daily digest audio player');
+  bar.setAttribute('aria-label', uiText(activeLanguage, 'today.audioPlayer'));
   bar.innerHTML = [
     '<audio preload="metadata"></audio>',
     '<div class="digest-audio-shell">',
-    '  <button class="digest-audio-toggle" type="button" data-digest-audio-toggle aria-label="Play digest audio" aria-pressed="false">',
+    '  <button class="digest-audio-toggle" type="button" data-digest-audio-toggle aria-label="' + escapeHtml(uiText(activeLanguage, 'today.playAudio')) + '" aria-pressed="false">',
     '    <span class="digest-audio-toggle-icon" aria-hidden="true"></span>',
     '  </button>',
-    '  <button class="digest-audio-title" type="button" data-digest-audio-title>Daily Digest</button>',
+    '  <button class="digest-audio-title" type="button" data-digest-audio-title>' + escapeHtml(uiText(activeLanguage, 'today.audioTitle')) + '</button>',
     '  <span class="digest-audio-time" data-digest-audio-time aria-live="off">0:00 / --:--</span>',
-    '  <input class="digest-audio-progress" data-digest-audio-progress type="range" min="0" max="1000" value="0" step="1" aria-label="Seek digest audio">',
-    '  <button class="digest-audio-close" type="button" data-digest-audio-close aria-label="Close audio player">&times;</button>',
+    '  <input class="digest-audio-progress" data-digest-audio-progress type="range" min="0" max="1000" value="0" step="1" aria-label="' + escapeHtml(uiText(activeLanguage, 'today.seekAudio')) + '">',
+    '  <button class="digest-audio-close" type="button" data-digest-audio-close aria-label="' + escapeHtml(uiText(activeLanguage, 'today.closeAudio')) + '">&times;</button>',
     '</div>',
   ].join('\n');
   document.body.appendChild(bar);
@@ -1560,7 +1562,7 @@ function updateDigestAudioUi(): void {
   const duration = audio && Number.isFinite(audio.duration) ? audio.duration : 0;
   const current = audio ? audio.currentTime : 0;
   const pct = duration > 0 ? Math.round((current / duration) * 1000) : 0;
-  const label = isPlaying ? 'Pause digest audio' : 'Play digest audio';
+  const label = isPlaying ? uiText(activeLanguage, 'today.pauseAudio') : uiText(activeLanguage, 'today.playAudio');
 
   if (digestAudioPlayEl) {
     digestAudioPlayEl.setAttribute('aria-label', label);
@@ -1602,7 +1604,11 @@ function updateDigestAudioUi(): void {
     button.setAttribute('aria-pressed', String(buttonPlaying));
     const buttonLabel = button.querySelector<HTMLElement>('[data-digest-audio-label]');
     if (buttonLabel) {
-      buttonLabel.textContent = buttonPlaying ? 'Pause digest audio' : isCurrent && audio && audio.currentTime > 0 && !audio.ended ? 'Resume digest audio' : 'Play digest audio';
+      buttonLabel.textContent = buttonPlaying
+        ? uiText(activeLanguage, 'today.pauseAudio')
+        : isCurrent && audio && audio.currentTime > 0 && !audio.ended
+          ? uiText(activeLanguage, 'today.resumeAudio')
+          : uiText(activeLanguage, 'today.playAudio');
     }
   });
 }
@@ -2706,7 +2712,7 @@ function wikiHistoryLinkHtml(page: WikiPage): string {
   const href = `https://github.com/${WIKI_REPO}/commits/main/research/wiki/${page.file}`;
   return (
     '<a class="wiki-history-more" href="' + escapeHtml(href) +
-    '" target="_blank" rel="noopener noreferrer">Full history on GitHub &rsaquo;</a>'
+    '" target="_blank" rel="noopener noreferrer">' + escapeHtml(uiText(activeLanguage, 'wiki.fullHistory')) + '</a>'
   );
 }
 
@@ -2740,12 +2746,15 @@ async function hydrateWikiHistory(page: WikiPage, signal: AbortSignal): Promise<
 
   const rows = collapsed.map((c, i) => {
     const summary = c.text;
-    const label = i === collapsed.length - 1 ? 'created' : 'updated';
+    const operation = i === collapsed.length - 1 ? 'created' : 'updated';
+    const label = operation === 'created'
+      ? uiText(activeLanguage, 'wiki.created')
+      : uiText(activeLanguage, 'wiki.updated');
     const text = escapeHtml(summary);
     return (
       '<li class="wiki-history-item">' +
       '<time class="wiki-history-date" datetime="' + escapeHtml(c.date) + '">' + escapeHtml(c.date) + '</time>' +
-      '<span class="wiki-history-op wiki-history-op--' + label + '">' + label + '</span>' +
+      '<span class="wiki-history-op wiki-history-op--' + operation + '">' + escapeHtml(label) + '</span>' +
       (c.url
         ? '<a class="wiki-history-summary" href="' + escapeHtml(c.url) + '" target="_blank" rel="noopener noreferrer">' + text + '</a>'
         : '<span class="wiki-history-summary">' + text + '</span>') +
@@ -2893,10 +2902,15 @@ function setSafeWikiContent(el: HTMLElement, rawHtml: string): void {
 const WIKI_TYPE_ORDER: WikiType[] = ['entity', 'concept', 'theme'];
 const WIKI_PAGE_SIZE = 12;
 const WIKI_TYPE_LABEL: Record<string, string> = {
-  entity: 'Entities',
-  concept: 'Concepts',
-  theme: 'Themes',
+  entity: 'wiki.entities',
+  concept: 'wiki.concepts',
+  theme: 'wiki.themes',
 };
+
+function wikiTypeLabel(type: string): string {
+  const key = WIKI_TYPE_LABEL[type] as UiCopyKey | undefined;
+  return key ? uiText(activeLanguage, key) : type;
+}
 
 function wikiTagsHtml(tags: string[] | undefined): string {
   if (!tags || tags.length === 0) return '';
@@ -2934,7 +2948,8 @@ function wikiImagesHtml(images: WikiImage[] | undefined): string {
         ? '<a href="' + escapeHtml(img.source_url) + '" class="wiki-image-credit">' + escapeHtml(img.credit) + '</a>'
         : '<span class="wiki-image-credit">' + escapeHtml(img.credit) + '</span>'
       : img.source_url
-        ? '<a href="' + escapeHtml(img.source_url) + '" class="wiki-image-credit">Source</a>'
+        ? '<a href="' + escapeHtml(img.source_url) + '" class="wiki-image-credit">' +
+          escapeHtml(uiText(activeLanguage, 'wiki.source')) + '</a>'
         : '';
     const captionBits = [
       img.caption ? '<span class="wiki-image-caption-text">' + escapeHtml(img.caption) + '</span>' : '',
@@ -2956,14 +2971,17 @@ function wikiImagesHtml(images: WikiImage[] | undefined): string {
 // compact entity card.
 function wikiKvHtml(page: WikiPage): string {
   const rows = [
-    page.updated_at ? '<dt>Updated</dt><dd>' + escapeHtml(page.updated_at) + '</dd>' : '',
-    page.created_at ? '<dt>Created</dt><dd>' + escapeHtml(page.created_at) + '</dd>' : '',
-    '<dt>Links</dt><dd>' + (page.inbound || []).length + ' in · ' + (page.outbound || []).length + ' out</dd>',
+    page.updated_at ? '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.updated')) + '</dt><dd>' + escapeHtml(page.updated_at) + '</dd>' : '',
+    page.created_at ? '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.created')) + '</dt><dd>' + escapeHtml(page.created_at) + '</dd>' : '',
+    '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.links')) + '</dt><dd>' + escapeHtml(uiText(activeLanguage, 'wiki.linkCounts', {
+      inbound: (page.inbound || []).length,
+      outbound: (page.outbound || []).length,
+    })) + '</dd>',
     // Listed entities repeat the quote here, not only in the hover card.
     // A hover does not exist on touch: tapping a .wiki-mention navigates to
     // this page, so without this row the market data would be desktop-only.
     page.market
-      ? '<dt>Market</dt><dd class="wiki-kv-market" data-market-symbol="' +
+      ? '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.market')) + '</dt><dd class="wiki-kv-market" data-market-symbol="' +
         escapeHtml(page.market.symbol) + '">' + escapeHtml(page.market.symbol) + '</dd>'
       : '',
   ].filter(Boolean).join('');
@@ -3050,7 +3068,7 @@ function renderWikiIndex(index: WikiIndex): void {
         '<div class="content-card">',
         '  <div class="empty-state">',
         '    <div class="empty-state-icon">' + DOC_ICON + '</div>',
-        '    <div class="empty-state-text">No wiki pages yet</div>',
+        '    <div class="empty-state-text">' + escapeHtml(uiText(activeLanguage, 'wiki.noPages')) + '</div>',
         '  </div>',
         '</div>',
       ].join('\n'),
@@ -3103,7 +3121,9 @@ function renderWikiIndex(index: WikiIndex): void {
   const sections: string[] = [];
   for (const key of orderedKeys) {
     const rows = groups.get(key)!.slice().sort((a, b) => a.title.localeCompare(b.title));
-    const label = WIKI_TYPE_LABEL[key] || (key.charAt(0).toUpperCase() + key.slice(1));
+    const label = WIKI_TYPE_LABEL[key]
+      ? wikiTypeLabel(key)
+      : (key.charAt(0).toUpperCase() + key.slice(1));
     const items = rows
       .map((p) =>
         [
@@ -3111,7 +3131,7 @@ function renderWikiIndex(index: WikiIndex): void {
           '  <div class="wiki-item-head">',
           '    ' + wikiInternalLink(p.slug, p.title),
           '    <span class="wiki-type-chip wiki-type-' + escapeHtml(String(p.type)) + '">' +
-            escapeHtml(String(p.type)) + '</span>',
+            escapeHtml(wikiTypeLabel(String(p.type))) + '</span>',
           '  </div>',
           p.summary ? '  <div class="wiki-item-summary">' + escapeHtml(p.summary) + '</div>' : '',
           wikiTagsHtml(p.tags),
@@ -3134,7 +3154,7 @@ function renderWikiIndex(index: WikiIndex): void {
 
   const emptyNote =
     visible.length === 0
-      ? '<div class="empty-state-text wiki-empty">No wiki pages match the search.</div>'
+      ? '<div class="empty-state-text wiki-empty">' + escapeHtml(uiText(activeLanguage, 'wiki.noMatches')) + '</div>'
       : '';
 
   setSafeWikiContent(
@@ -3144,7 +3164,7 @@ function renderWikiIndex(index: WikiIndex): void {
       '  <div class="wiki-index-main">',
       emptyNote,
       sections.join('\n'),
-      paginationHtml(wikiIndexPage, visible.length, WIKI_PAGE_SIZE, 'Wiki pages'),
+      paginationHtml(wikiIndexPage, visible.length, WIKI_PAGE_SIZE, uiText(activeLanguage, 'wiki.pages')),
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -3161,7 +3181,7 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
   const backlinksHtml = inbound.length
     ? [
         '<section class="wiki-backlinks">',
-        '  <h2 class="wiki-section-title">Backlinks</h2>',
+        '  <h2 class="wiki-section-title">' + escapeHtml(uiText(activeLanguage, 'wiki.backlinks')) + '</h2>',
         '  <ul class="wiki-link-list">',
         inbound
           .map((s) => '<li class="wiki-link-item">' + wikiInternalLink(s) + '</li>')
@@ -3177,7 +3197,7 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
   const relatedHtml = related.length
     ? [
         '<section class="wiki-related">',
-        '  <h2 class="wiki-section-title">Related</h2>',
+        '  <h2 class="wiki-section-title">' + escapeHtml(uiText(activeLanguage, 'wiki.related')) + '</h2>',
         '  <ul class="wiki-link-list">',
         related
           .map((s) => '<li class="wiki-link-item">' + wikiInternalLink(s) + '</li>')
@@ -3199,13 +3219,13 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
     [
       '<div class="content-card wiki-page-card">',
       '  <div class="wiki-page-meta">',
-      '    <button class="gen-research-back" data-wiki-back>&lsaquo; All pages</button>',
+      '    <button class="gen-research-back" data-wiki-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'wiki.allPages')) + '</button>',
       '  </div>',
       '  <div class="wiki-page-header">',
-      '    <span class="ara-eyebrow">' + escapeHtml(String(page.type)) + '</span>',
+      '    <span class="ara-eyebrow">' + escapeHtml(wikiTypeLabel(String(page.type))) + '</span>',
       '    <h1 class="wiki-page-title">' + escapeHtml(page.title) + '</h1>',
       page.summary
-        ? '    <div class="ara-callout ara-callout--info"><span class="ara-callout-label">Summary</span><p>' + escapeHtml(page.summary) + '</p></div>'
+        ? '    <div class="ara-callout ara-callout--info"><span class="ara-callout-label">' + escapeHtml(uiText(activeLanguage, 'wiki.summary')) + '</span><p>' + escapeHtml(page.summary) + '</p></div>'
         : '',
       wikiImagesHtml(page.images),
       wikiKvHtml(page),
@@ -3225,8 +3245,8 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
       '</div>',
       '<aside class="wiki-page-rail">',
       '<section class="wiki-history">',
-      '  <h2 class="wiki-section-title">History</h2>',
-      '  <div class="wiki-history-body"><p class="wiki-history-empty">Loading history…</p></div>',
+      '  <h2 class="wiki-section-title">' + escapeHtml(uiText(activeLanguage, 'wiki.history')) + '</h2>',
+      '  <div class="wiki-history-body"><p class="wiki-history-empty">' + escapeHtml(uiText(activeLanguage, 'wiki.loadingHistory')) + '</p></div>',
       '</section>',
       '</aside>',
       '</div>',
@@ -3254,8 +3274,8 @@ function renderWikiNotFound(slug: string): void {
       '<div class="content-card">',
       '  <div class="empty-state">',
       '    <div class="empty-state-icon">' + DOC_ICON + '</div>',
-      '    <div class="empty-state-text">Wiki page not found: ' + escapeHtml(slug) + '</div>',
-      '    <button class="gen-research-back" data-wiki-back>&lsaquo; Back to wiki</button>',
+      '    <div class="empty-state-text">' + escapeHtml(uiText(activeLanguage, 'wiki.notFound', { slug })) + '</div>',
+      '    <button class="gen-research-back" data-wiki-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'wiki.back')) + '</button>',
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -3343,6 +3363,7 @@ async function fetchTwitterAbLaneMd(lane: string, dateStr: string, signal?: Abor
 function buildTwitterRenderOptions(fallbackDate: string | null, shownDate: string): TwitterReportRenderOptions {
   const dateStr = fmtDate(currentDate);
   return {
+    language: activeLanguage,
     fallbackDate,
     currentDateStr: dateStr,
     currentDateTitle: displayDate(currentDate),
@@ -3440,7 +3461,9 @@ async function hydrateTwitterAbRuntimes(panel: HTMLElement, dateStr: string): Pr
     const rt = await fetchTwitterAbRuntime(laneDir, dateStr, hour);
     const slot = el.querySelector<HTMLElement>('[data-ab-runtime]');
     if (!rt || !slot || !panel.isConnected) return;
-    const label = rt.seconds != null ? 'agent ' + formatAbDuration(rt.seconds) : 'run';
+    const label = rt.seconds != null
+      ? uiText(activeLanguage, 'twitter.agentRun', { duration: formatAbDuration(rt.seconds) })
+      : uiText(activeLanguage, 'twitter.run');
     setSafeContent(slot, '<a href="' + escapeHtml(rt.runUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>');
     slot.hidden = false;
   }));
@@ -3466,13 +3489,13 @@ function twitterAbPaneHtml(
 }
 
 async function buildTwitterAbPanel(panel: HTMLElement, hour: string, lanes: string[], activeLane: string): Promise<void> {
-  setSafeContent(panel, '<p class="twitter-ab-note">Loading comparison…</p>');
+  setSafeContent(panel, '<p class="twitter-ab-note">' + escapeHtml(uiText(activeLanguage, 'twitter.loadingComparison')) + '</p>');
   const dateStr = currentTwitterMdDate;
   const laneMd = await fetchTwitterAbLaneMd(activeLane, dateStr);
   const primaryBody = extractTwitterCycleBody(currentTwitterMd, hour);
   const laneBody = laneMd ? extractTwitterCycleBody(laneMd, hour) : null;
   if (!primaryBody || !laneBody || !panel.isConnected) {
-    setSafeContent(panel, '<p class="twitter-ab-note">Comparison data unavailable for this cycle.</p>');
+    setSafeContent(panel, '<p class="twitter-ab-note">' + escapeHtml(uiText(activeLanguage, 'twitter.comparisonUnavailable')) + '</p>');
     return;
   }
   const options = buildTwitterRenderOptions(null, dateStr);
@@ -3707,8 +3730,8 @@ function ticketForecastActionsHtml(ticket: Ticket): string {
   }).join('');
   return `<div class="ticket-forecast-actions">
     <div class="ticket-forecast-heading">
-      <h4 class="ticket-history-title">Linked forecasts</h4>
-      <button class="ticket-share-button" type="button" data-ticket-share="${escapeHtml(ticket.slug)}" aria-describedby="${escapeHtml(statusId)}">Share forecast</button>
+      <h4 class="ticket-history-title">${escapeHtml(uiText(activeLanguage, 'models.linkedForecasts'))}</h4>
+      <button class="ticket-share-button" type="button" data-ticket-share="${escapeHtml(ticket.slug)}" aria-describedby="${escapeHtml(statusId)}">${escapeHtml(uiText(activeLanguage, 'models.shareForecast'))}</button>
     </div>
     <ul class="ticket-forecast-links">${markets}</ul>
     <span class="ticket-share-status" id="${escapeHtml(statusId)}" role="status" aria-live="polite"></span>
@@ -3746,14 +3769,14 @@ function trackForecastShare(ticket: Ticket, method: 'native' | 'clipboard'): voi
 async function shareTicketForecast(ticket: Ticket, button: HTMLButtonElement): Promise<void> {
   const status = button.closest('.ticket-forecast-actions')?.querySelector<HTMLElement>('.ticket-share-status');
   const shareData = {
-    title: `${ticket.title} forecast — ara`,
-    text: `Verified model forecast with linked prediction-market context: ${ticket.title}`,
+    title: uiText(activeLanguage, 'models.shareTitle', { title: ticket.title }),
+    text: uiText(activeLanguage, 'models.shareText', { title: ticket.title }),
     url: forecastUrl(ticket),
   };
   if (typeof navigator.share === 'function') {
     try {
       await navigator.share(shareData);
-      if (status) status.textContent = 'Shared.';
+      if (status) status.textContent = uiText(activeLanguage, 'models.shared');
       trackForecastShare(ticket, 'native');
       return;
     } catch (error) {
@@ -3773,10 +3796,10 @@ async function shareTicketForecast(ticket: Ticket, button: HTMLButtonElement): P
     copied = copyTextFallback(shareData.url);
   }
   if (copied) {
-    if (status) status.textContent = 'Forecast link copied.';
+    if (status) status.textContent = uiText(activeLanguage, 'models.linkCopied');
     trackForecastShare(ticket, 'clipboard');
   } else if (status) {
-    status.textContent = `Copy this link: ${shareData.url}`;
+    status.textContent = uiText(activeLanguage, 'models.copyLink', { url: shareData.url });
   }
 }
 
@@ -3802,7 +3825,7 @@ function ticketOddsSectionHtml(ticket: Ticket): string {
       data-odds-question="${escapeHtml(m.question)}" data-odds-outcome="${escapeHtml(outcome)}"
       title="${escapeHtml(m.question)}"
       aria-haspopup="dialog"
-      aria-label="Polymarket odds: ${escapeHtml(m.question)} — open market details">
+      aria-label="${escapeHtml(uiText(activeLanguage, 'models.oddsAria', { question: m.question }))}">
       <span class="ticket-odds-label">${escapeHtml(m.question)}</span>
       <span class="ticket-odds-pct">—</span>
     </button>`;
@@ -3819,9 +3842,10 @@ function applyOddsToChip(chip: HTMLElement, price: number, closed: boolean): voi
   const question = chip.dataset.oddsQuestion || '';
   if (closed) {
     const yes = price >= 0.5;
+    const result = uiText(activeLanguage, yes ? 'models.yes' : 'models.no');
     chip.classList.add('is-resolved', yes ? 'is-resolved-yes' : 'is-resolved-no');
     pctEl.textContent = `${yes ? '✓' : '✗'} ${Math.round(price * 100)}%`;
-    chip.title = `${question} — resolved ${yes ? 'Yes' : 'No'}`;
+    chip.title = `${question} — ${uiText(activeLanguage, 'models.resolved', { result })}`;
   } else {
     pctEl.textContent = fmtOddsPct(price);
     chip.title = question; // restore after a transient unavailable pass
@@ -3832,11 +3856,11 @@ function markChipUnavailable(chip: HTMLElement): void {
   const pctEl = chip.querySelector<HTMLElement>('.ticket-odds-pct');
   if (pctEl) pctEl.textContent = '—';
   chip.classList.add('is-unavailable');
-  chip.title = 'odds unavailable';
+  chip.title = uiText(activeLanguage, 'models.oddsUnavailable');
 }
 
 function fmtOddsChartDate(unixSec: number): string {
-  return new Date(unixSec * 1000).toLocaleDateString('en-US', {
+  return new Date(unixSec * 1000).toLocaleDateString(activeLanguage === 'ko' ? 'ko-KR' : 'en-US', {
     month: 'short', day: 'numeric', year: 'numeric',
   });
 }
@@ -3882,9 +3906,13 @@ function buildOddsModalChart(points: OddsHistoryPoint[], width: number): SVGSVGE
   svg.setAttribute('class', 'ticket-odds-modal-chart-svg');
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   svg.setAttribute('role', 'img');
-  svg.setAttribute('aria-label',
-    `Price history from ${fmtOddsChartDate(t0)} to ${fmtOddsChartDate(t1)}, ` +
-    `between ${fmtOddsPct(actualMin)} and ${fmtOddsPct(actualMax)}, latest ${fmtOddsPct(series[series.length - 1].p)}`);
+  svg.setAttribute('aria-label', uiText(activeLanguage, 'models.priceHistory', {
+    start: fmtOddsChartDate(t0),
+    end: fmtOddsChartDate(t1),
+    min: fmtOddsPct(actualMin),
+    max: fmtOddsPct(actualMax),
+    latest: fmtOddsPct(series[series.length - 1].p),
+  }));
   const text = (tx: number, ty: number, content: string, opts: { anchor?: string; bold?: boolean; dim?: boolean } = {}) => {
     const el = document.createElementNS(SVG_NS, 'text');
     el.setAttribute('x', tx.toFixed(1));
@@ -4052,7 +4080,16 @@ let oddsModalToken: string | null = null;
 let oddsModalGeneration = 0;
 
 function ensureTicketOddsModal(): HTMLDivElement {
-  if (ticketOddsModalEl) return ticketOddsModalEl;
+  if (ticketOddsModalEl) {
+    const closeLabel = uiText(activeLanguage, 'models.closeMarket');
+    ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-backdrop')?.setAttribute('aria-label', closeLabel);
+    ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-close')?.setAttribute('aria-label', closeLabel);
+    const link = ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-link');
+    if (link) link.textContent = uiText(activeLanguage, 'models.openMarket');
+    const note = ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-note');
+    if (note) note.textContent = uiText(activeLanguage, 'models.oddsNote');
+    return ticketOddsModalEl;
+  }
   const modal = document.createElement('div');
   modal.id = 'ticketOddsModal';
   modal.className = 'ticket-odds-modal';
@@ -4065,7 +4102,7 @@ function ensureTicketOddsModal(): HTMLDivElement {
   backdrop.className = 'ticket-odds-modal-backdrop';
   backdrop.type = 'button';
   backdrop.dataset.oddsModalClose = '1';
-  backdrop.setAttribute('aria-label', 'Close market details');
+  backdrop.setAttribute('aria-label', uiText(activeLanguage, 'models.closeMarket'));
 
   const panel = document.createElement('div');
   panel.className = 'ticket-odds-modal-panel';
@@ -4075,7 +4112,7 @@ function ensureTicketOddsModal(): HTMLDivElement {
   close.className = 'ticket-odds-modal-close';
   close.type = 'button';
   close.dataset.oddsModalClose = '1';
-  close.setAttribute('aria-label', 'Close market details');
+  close.setAttribute('aria-label', uiText(activeLanguage, 'models.closeMarket'));
   close.textContent = '×';
 
   const title = document.createElement('h3');
@@ -4099,11 +4136,11 @@ function ensureTicketOddsModal(): HTMLDivElement {
   link.className = 'ticket-odds-modal-link';
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
-  link.textContent = 'Open on Polymarket ↗';
+  link.textContent = uiText(activeLanguage, 'models.openMarket');
 
   const note = document.createElement('p');
   note.className = 'ticket-odds-modal-note';
-  note.textContent = 'Polymarket midpoints, informational only — not investment advice.';
+  note.textContent = uiText(activeLanguage, 'models.oddsNote');
 
   panel.appendChild(close);
   panel.appendChild(title);
@@ -4136,19 +4173,20 @@ function setOddsModalStatus(state: OddsModalPriceState, outcome: string): void {
   const prefix = outcome ? `${outcome} · ` : '';
   if (state === 'pending') {
     pctEl.textContent = '—';
-    metaEl.textContent = `${prefix}loading odds…`;
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.loadingOdds')}`;
   } else if (state === 'unavailable') {
     status.classList.add('is-unavailable');
     pctEl.textContent = '—';
-    metaEl.textContent = `${prefix}odds unavailable`;
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.oddsUnavailable')}`;
   } else if (state.closed) {
     const yes = state.price >= 0.5;
+    const result = uiText(activeLanguage, yes ? 'models.yes' : 'models.no');
     status.classList.add(yes ? 'is-resolved-yes' : 'is-resolved-no');
     pctEl.textContent = `${yes ? '✓' : '✗'} ${Math.round(state.price * 100)}%`;
-    metaEl.textContent = `${prefix}resolved ${yes ? 'Yes' : 'No'}`;
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.resolved', { result })}`;
   } else {
     pctEl.textContent = fmtOddsPct(state.price);
-    metaEl.textContent = `${prefix}live odds · updates every minute`;
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.liveOdds')}`;
   }
 }
 
@@ -4158,7 +4196,7 @@ function renderOddsModalChart(points: OddsHistoryPoint[] | null): void {
   if (!points) {
     const empty = document.createElement('span');
     empty.className = 'ticket-odds-modal-chart-empty';
-    empty.textContent = 'chart unavailable';
+    empty.textContent = uiText(activeLanguage, 'models.chartUnavailable');
     chart.replaceChildren(empty);
     return;
   }
@@ -4169,7 +4207,7 @@ function openTicketOddsModal(chip: HTMLElement): void {
   const eventSlug = chip.dataset.oddsEvent || '';
   const marketId = chip.dataset.oddsMarket || '';
   const tokenId = chip.dataset.oddsToken || '';
-  const question = chip.dataset.oddsQuestion || 'Polymarket market';
+  const question = chip.dataset.oddsQuestion || uiText(activeLanguage, 'models.defaultMarket');
   const outcome = (chip.dataset.oddsOutcome || '').trim();
   if (!eventSlug || !tokenId) return;
   const modal = ensureTicketOddsModal();
@@ -4184,7 +4222,7 @@ function openTicketOddsModal(chip: HTMLElement): void {
   setOddsModalStatus('pending', outcome);
   const loading = document.createElement('span');
   loading.className = 'ticket-odds-modal-chart-empty';
-  loading.textContent = 'loading chart…';
+  loading.textContent = uiText(activeLanguage, 'models.loadingChart');
   chart.replaceChildren(loading);
   oddsModalLastFocus = chip;
   oddsModalToken = tokenId;
@@ -4232,16 +4270,21 @@ function closeTicketOddsModal(): void {
   if (focusTarget && focusTarget.isConnected) focusTarget.focus();
 }
 
+function ticketStatusLabel(status: TicketStatus): string {
+  const labels: Record<TicketStatus, string> = {
+    'rumored': uiText(activeLanguage, 'models.rumored'),
+    'in-testing': uiText(activeLanguage, 'models.inTesting'),
+    'confirmed': uiText(activeLanguage, 'models.confirmed'),
+    'released': uiText(activeLanguage, 'models.released'),
+    'closed': uiText(activeLanguage, 'models.closedStatus'),
+  };
+  return labels[status];
+}
+
 function ticketStatusPill(status: TicketStatus): string {
   // Color via class so dark/light mode and contrast stay consistent.
-  const labels: Record<TicketStatus, string> = {
-    'rumored': 'Rumored',
-    'in-testing': 'In Testing',
-    'confirmed': 'Confirmed',
-    'released': 'Released',
-    'closed': 'Closed',
-  };
-  return `<span class="ticket-pill ticket-pill-${status}">${escapeHtml(labels[status])}</span>`;
+  const label = ticketStatusLabel(status);
+  return `<span class="ticket-pill ticket-pill-${status}">${escapeHtml(label)}</span>`;
 }
 
 // Compact card — status + title + company + a few labels. Everything else
@@ -4268,27 +4311,27 @@ function ticketExpandedPanel(ticket: Ticket | null): string {
     'unverified': 'ara-flag--red',
   };
   const verifLabel: Record<TicketVerification, string> = {
-    'confirmed': 'Confirmed',
-    'partial': 'Partial corroboration',
-    'unverified': 'Unverified',
+    'confirmed': uiText(activeLanguage, 'models.confirmed'),
+    'partial': uiText(activeLanguage, 'models.partial'),
+    'unverified': uiText(activeLanguage, 'models.unverified'),
   };
   // Structured metadata as an ara-kv definition grid.
   const kvRows = [
-    `<dt>Company</dt><dd>${escapeHtml(ticket.company)}</dd>`,
-    ticket.model ? `<dt>Model</dt><dd>${escapeHtml(ticket.model)}</dd>` : '',
-    ticket.expected ? `<dt>Expected</dt><dd>${escapeHtml(ticket.expected)}</dd>` : '',
-    `<dt>Verification</dt><dd><span class="ara-flag ${verifFlag[ticket.verification]}"></span>${escapeHtml(verifLabel[ticket.verification])}</dd>`,
-    `<dt>Updated</dt><dd>${escapeHtml(ticket.updated_at)}</dd>`,
-    `<dt>Created</dt><dd>${escapeHtml(ticket.created_at)}</dd>`,
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.company'))}</dt><dd>${escapeHtml(ticket.company)}</dd>`,
+    ticket.model ? `<dt>${escapeHtml(uiText(activeLanguage, 'models.model'))}</dt><dd>${escapeHtml(ticket.model)}</dd>` : '',
+    ticket.expected ? `<dt>${escapeHtml(uiText(activeLanguage, 'models.expected'))}</dt><dd>${escapeHtml(ticket.expected)}</dd>` : '',
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.verification'))}</dt><dd><span class="ara-flag ${verifFlag[ticket.verification]}"></span>${escapeHtml(verifLabel[ticket.verification])}</dd>`,
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.updated'))}</dt><dd>${escapeHtml(ticket.updated_at)}</dd>`,
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.created'))}</dt><dd>${escapeHtml(ticket.created_at)}</dd>`,
     ticket.status === 'closed' && ticket.closed_reason
-      ? `<dt>Closed</dt><dd>${escapeHtml(ticket.closed_at || '')} — ${escapeHtml(ticket.closed_reason)}</dd>`
+      ? `<dt>${escapeHtml(uiText(activeLanguage, 'models.closed'))}</dt><dd>${escapeHtml(ticket.closed_at || '')} — ${escapeHtml(ticket.closed_reason)}</dd>`
       : '',
   ].filter(Boolean).join('\n');
   // History → ara-timeline (the canonical chronological-log component).
   const historyItems = ticket.history.map((h) =>
     `<li class="ara-timeline-item"><time class="ara-timeline-date">${escapeHtml(h.ts)}</time><div class="ara-timeline-event"><p>${escapeHtml(h.change)}</p></div></li>`,
   ).join('');
-  return `<section class="ticket-detail-panel" aria-label="${escapeHtml(ticket.title)} details">
+  return `<section class="ticket-detail-panel" aria-label="${escapeHtml(uiText(activeLanguage, 'models.details', { title: ticket.title }))}">
     <div class="ticket-detail-header">
       ${ticketStatusPill(ticket.status)}
       <h3 id="ticket-dialog-title-${escapeHtml(ticket.slug)}">${escapeHtml(ticket.title)}</h3>
@@ -4298,11 +4341,11 @@ function ticketExpandedPanel(ticket: Ticket | null): string {
       <dl class="ara-kv">${kvRows}</dl>
       <div class="ticket-body md-content">${DOMPurify.sanitize(renderReportMarkdown(ticket.body))}</div>
       <div class="ticket-history">
-        <h4 class="ticket-history-title">History</h4>
+        <h4 class="ticket-history-title">${escapeHtml(uiText(activeLanguage, 'models.history'))}</h4>
         <ol class="ara-timeline">${historyItems}</ol>
       </div>
       <div class="ticket-all-sources">
-        <h4 class="ticket-history-title">All sources (${ticket.sources.length})</h4>
+        <h4 class="ticket-history-title">${escapeHtml(uiText(activeLanguage, 'models.sources', { count: ticket.sources.length }))}</h4>
         <ul class="ticket-source-list">${ticket.sources.map((s) => s.startsWith('@')
           ? `<li><span class="ticket-source-handle">${escapeHtml(s)}</span></li>`
           : `<li><a href="${escapeHtml(s)}" target="_blank" rel="noopener">${escapeHtml(s)}</a></li>`).join('')}</ul>
@@ -4393,7 +4436,7 @@ function openTicketModal(ticket: Ticket): void {
   }
   setSafeContent(
     ticketModalEl,
-    '<div class="ticket-modal-card"><button class="ticket-modal-close" type="button" aria-label="Close">✕</button>' +
+    '<div class="ticket-modal-card"><button class="ticket-modal-close" type="button" aria-label="' + escapeHtml(uiText(activeLanguage, 'models.close')) + '">✕</button>' +
       ticketExpandedPanel(ticket) + '</div>',
   );
   ticketModalEl.setAttribute('aria-labelledby', `ticket-dialog-title-${ticket.slug}`);
@@ -4469,8 +4512,7 @@ function renderTickets(tickets: Ticket[] | null): void {
     setSafeContent(
       content,
       `<div class="content-card"><div class="content-card-body">
-        <p>No model tickets yet. The daily CRUD agent will seed this list on the next run, or run <code>workflow_dispatch</code> on
-        <a href="https://github.com/guzus/ai-research-arm/actions/workflows/24h-model-timeline.yml" target="_blank" rel="noopener">24h-model-timeline</a>.</p>
+        <p>${escapeHtml(uiText(activeLanguage, 'models.empty'))}</p>
       </div></div>`,
     );
     return;
@@ -4488,30 +4530,30 @@ function renderTickets(tickets: Ticket[] | null): void {
   for (const s of statusOptions) statusCounts[s] = tickets.filter((t) => t.status === s).length;
 
   const statusBar = [
-    `<button class="ticket-filter-pill${ticketFilters.status === 'all' ? ' active' : ''}" data-filter-status="all">All <span class="ticket-filter-count">${statusCounts.all}</span></button>`,
-    ...statusOptions.map((s) => `<button class="ticket-filter-pill ticket-filter-pill-${s}${ticketFilters.status === s ? ' active' : ''}" data-filter-status="${s}">${escapeHtml(s)} <span class="ticket-filter-count">${statusCounts[s]}</span></button>`),
+    `<button class="ticket-filter-pill${ticketFilters.status === 'all' ? ' active' : ''}" data-filter-status="all">${escapeHtml(uiText(activeLanguage, 'models.all'))} <span class="ticket-filter-count">${statusCounts.all}</span></button>`,
+    ...statusOptions.map((s) => `<button class="ticket-filter-pill ticket-filter-pill-${s}${ticketFilters.status === s ? ' active' : ''}" data-filter-status="${s}">${escapeHtml(ticketStatusLabel(s))} <span class="ticket-filter-count">${statusCounts[s]}</span></button>`),
   ].join('');
 
   const companyOptions = ['all', ...companyKeys].map((k) =>
-    `<option value="${escapeHtml(k)}"${ticketFilters.company === k ? ' selected' : ''}>${escapeHtml(k === 'all' ? 'All companies' : companyLabels[k] || k)}</option>`).join('');
+    `<option value="${escapeHtml(k)}"${ticketFilters.company === k ? ' selected' : ''}>${escapeHtml(k === 'all' ? uiText(activeLanguage, 'models.allCompanies') : companyLabels[k] || k)}</option>`).join('');
 
   const visibleStatuses = ticketFilters.status === 'all'
     ? statusOptions
     : statusOptions.filter((s) => s === ticketFilters.status);
   const statusLabels: Record<TicketStatus, string> = {
-    'rumored': 'Rumored',
-    'in-testing': 'In testing',
-    'confirmed': 'Confirmed',
-    'released': 'Released',
-    'closed': 'Closed',
+    'rumored': uiText(activeLanguage, 'models.rumored'),
+    'in-testing': uiText(activeLanguage, 'models.inTesting'),
+    'confirmed': uiText(activeLanguage, 'models.confirmed'),
+    'released': uiText(activeLanguage, 'models.released'),
+    'closed': uiText(activeLanguage, 'models.closedStatus'),
   };
   const board = visibleStatuses.map((status) => {
     const cards = filtered.filter((ticket) => ticket.status === status);
     const cardHtml = cards.length
       ? cards.map(ticketCard).join('\n')
-      : '<div class="ticket-column-empty">No tickets</div>';
+      : '<div class="ticket-column-empty">' + escapeHtml(uiText(activeLanguage, 'models.noTickets')) + '</div>';
     return [
-      `<section class="ticket-column ticket-column-${status}" aria-label="${escapeHtml(statusLabels[status])} tickets">`,
+      `<section class="ticket-column ticket-column-${status}" aria-label="${escapeHtml(uiText(activeLanguage, 'models.column', { status: statusLabels[status] }))}">`,
       `  <div class="ticket-column-header"><span>${escapeHtml(statusLabels[status])}</span><span class="ticket-column-count">${cards.length}</span></div>`,
       `  <div class="ticket-column-cards">${cardHtml}</div>`,
       `</section>`,
@@ -4519,11 +4561,11 @@ function renderTickets(tickets: Ticket[] | null): void {
   }).join('\n');
 
   const emptyNote = filtered.length === 0
-    ? `<div class="ticket-board-empty">No tickets match the current filters.</div>`
+    ? `<div class="ticket-board-empty">${escapeHtml(uiText(activeLanguage, 'models.noMatches'))}</div>`
     : '';
   // Disclaimer shown whenever any loaded ticket carries market mappings.
   const oddsNote = tickets.some((t) => ticketPolymarketMappings(t).length > 0)
-    ? `<p class="tickets-odds-note">Odds: Polymarket midpoints, informational only — not investment advice.</p>`
+    ? `<p class="tickets-odds-note">${escapeHtml(uiText(activeLanguage, 'models.oddsNote'))}</p>`
     : '';
   setSafeContent(
     content,
@@ -4615,6 +4657,7 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     audioDates: manifest?.audio || [],
     searchTerm,
     frontPageCardHtml,
+    language: activeLanguage,
   }));
   if (frontPage) enhanceNewspaper();
   syncDigestAudioForDate(dateStr);
@@ -5575,7 +5618,7 @@ function renderResearchStandalone(row: GenResearchRow): void {
 }
 
 function renderAgentsStudio(): void {
-  setSafeContent(content, renderAgentsStudioHtml());
+  setSafeContent(content, renderAgentsStudioHtml(activeLanguage));
   document.title = 'Arm — ara';
 }
 
@@ -5972,7 +6015,7 @@ async function load(): Promise<void> {
       renderAgentsStudio();
       loadArmTimeline(controller.signal).then((timeline) => {
         if (requestId !== loadRequestId || activeTab !== 'agents') return;
-        hydrateAgentsTimeline(content, timeline);
+        hydrateAgentsTimeline(content, timeline, activeLanguage);
       });
       renderCalendar();
       currentSection = 0;
