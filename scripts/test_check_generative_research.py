@@ -500,6 +500,154 @@ class VerifierFindingsAuditTest(unittest.TestCase):
                 "(false pass).",
             )
 
+    def test_quoted_claim_with_verifier_framing_fails(self):
+        """Regression: anthropic-vs-the-pentagon (2026-07-04), claim
+        c23. The ledger wrapped the quote in attribution framing
+        ("CFR\u2019s Kat Duffy poses: \u2018...\u2019") with curly glyphs and a
+        Unicode-ellipsis elision; the body renders the same quote with
+        different framing and different quote glyphs. The old 80-char
+        prefix probe never matched → the unsupported quote shipped."""
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            "<p>The more durable finding may be about who else is exposed. "
+            "CFR\u2019s Kat Duffy, in a separate interview, turned the "
+            "designation into an open question for the rest of the "
+            "industry: \u201cwill we also be declared supply chain risks? "
+            "\u2026 Google, OpenAI and Anthropic have all been\u201d on the "
+            "receiving end of some version of this pressure"
+            '<sup><a class="ara-cite" href="#ref-44">44</a></sup>.</p>'
+            "</article>"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c23",
+                "text": (
+                    "CFR\u2019s Kat Duffy poses: \u2018will we also be declared "
+                    "supply chain risks?\u2026 Google, OpenAI and Anthropic "
+                    "have all\u2019"
+                ),
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(
+                len(surviving), 1,
+                "Verbatim quote survived in the body behind ledger "
+                "framing — the probe set must catch it (old prefix "
+                "probe false-passed exactly this shape).",
+            )
+            self.assertEqual(surviving[0]["id"], "c23")
+
+    def test_entity_encoded_body_still_caught(self):
+        """Reviewer-confirmed bypass: ~10% of committed articles render
+        typographic glyphs as HTML entities (&rsquo; &ldquo; &hellip;
+        &mdash;) in visible text. Folding literal Unicode alone lets an
+        entity-encoded body ghost an unsupported claim through — the
+        audit must unescape before folding."""
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            "<p>CFR&rsquo;s Kat Duffy, in a separate interview, asked:"
+            " &ldquo;will we also be declared supply chain risks?"
+            " &hellip; Google, OpenAI and Anthropic have all"
+            " been&rdquo; &mdash; on the record.</p>"
+            "</article>"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c23",
+                "text": (
+                    "CFR\u2019s Kat Duffy poses: \u2018will we also be declared "
+                    "supply chain risks?\u2026 Google, OpenAI and Anthropic "
+                    "have all\u2019"
+                ),
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(
+                len(surviving), 1,
+                "Entity-encoded body must not evade the probe set.",
+            )
+
+    def test_paraphrased_revision_still_passes(self):
+        """The documented paraphrase-on-revision escape must survive
+        the probe-set tightening: a genuine rewrite shares no 5-word
+        segment or 8-word shingle with the ledger text."""
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            "<p>Duffy has separately argued that other AI vendors could "
+            "face comparable designations in future disputes.</p>"
+            "</article>"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c23",
+                "text": (
+                    "CFR\u2019s Kat Duffy poses: \u2018will we also be declared "
+                    "supply chain risks?\u2026 Google, OpenAI and Anthropic "
+                    "have all\u2019"
+                ),
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(surviving, [])
+
+    def test_demoted_quote_with_typography_variants_passes(self):
+        """A quote demoted inside <mark> must pass even when the body
+        uses curly glyphs and the ledger uses ASCII ones — the folding
+        has to apply to the mark regions too."""
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            '<p><mark class="ara-mark">\u201cwill we also be declared supply '
+            "chain risks? \u2026 Google, OpenAI and Anthropic have all "
+            "been\u201d</mark></p>"
+            "</article>"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c1",
+                "text": (
+                    "'will we also be declared supply chain risks?... "
+                    "Google, OpenAI and Anthropic have all been'"
+                ),
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(surviving, [])
+
+    def test_short_verbatim_fragment_survival_fails(self):
+        """A 5+ word verbatim run inside a framed claim is enough to
+        flag survival via the segment probe."""
+        import tempfile
+        body = (
+            '<article class="ara-doc">'
+            "<p>Analysts note the surge pricing doubles peak output rates "
+            "for all API tiers.</p></article>"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            findings = self._write_findings(Path(tmp), [{
+                "id": "c9",
+                "text": (
+                    "Per one report: \u2018surge pricing doubles peak output "
+                    "rates\u2019 \u2026 (unconfirmed)"
+                ),
+                "verdict": "unsupported",
+                "citation": None,
+            }])
+            total, surviving = chk.audit_verifier_findings(findings, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(len(surviving), 1)
+
     def test_duplicate_occurrences_partial_demotion_fails(self):
         """When the same unsupported claim appears N times and only 1
         copy is wrapped in <mark>, the OTHER copies still survive
