@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-13 16:37:54 UTC
+
+CYCLE: DeepSeek shipped V4-Pro, open-sourced its agent harness under MIT, then raised API prices 2-4x.
+
+TOP STORIES:
+• DeepSeek hiked V4-Pro API prices (~2x off-peak, ~4x peak: $3.96/Mtok vs $0.87) hours after open-sourcing Harness v0.1 under MIT [✓]
+• V4-Pro weights now live on Hugging Face under MIT — but only after being pulled at least once [✓ state / 🚩 intent]
+• OpenAI CRO Denise Dresser exits after under a year; the viral "COO also quit" add-on appears nowhere else in 2,341 tweets [⚠]
+• Gemini 3.7 Flash sighted on Vertex AI with no Google announcement, card or benchmark [⚠]
+
+WATCH: Whether DeepSeek's peak/off-peak tier holds through 14 Aug, and whether V4-Flash pricing moves with it.
+
+Full update on GitHub.
