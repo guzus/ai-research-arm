@@ -22977,5 +22977,54 @@
     "headline": "CODERABBIT RAISES $143M SERIES C AT $1.5B VALUATION, CO-LED BY ATOMICO AND SMASH CAPITAL",
     "source": "@WesRoth",
     "url": "https://x.com/WesRoth/status/2087841600445776080"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-13 16:37:54 UTC",
+    "headline": "DEEPSEEK HIKES V4-PRO API PRICES UP TO ~4X \u2014 $3.96/MTOK AT PEAK VS $0.87 AT LAUNCH",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2087909110083711313"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-13 16:37:54 UTC",
+    "headline": "DEEPSEEK OPEN-SOURCES AGENT HARNESS V0.1 UNDER MIT HOURS BEFORE RAISING MODEL PRICES",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2087889503520251964"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-13 16:37:54 UTC",
+    "headline": "DEEPSEEK V4-PRO WEIGHTS LIVE ON HUGGING FACE UNDER MIT AFTER BEING PULLED AT LEAST ONCE",
+    "source": "@huggingface",
+    "url": "https://x.com/huggingface/status/2087938527971426450"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-13 16:37:54 UTC",
+    "headline": "OPENAI CHIEF REVENUE OFFICER DENISE DRESSER EXITS AFTER LESS THAN A YEAR",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2087935835102650677"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-13 16:37:54 UTC",
+    "headline": "GEMINI 3.7 FLASH SURFACES ON VERTEX AI AND CLOUD CONSOLE WITH NO GOOGLE ANNOUNCEMENT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2087918471858274417"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-13 16:37:54 UTC",
+    "headline": "CURSOR LAUNCHES ORIGIN \u2014 ITS OWN GIT HOSTING PLATFORM BUILT FOR AGENTS, IMPORTS FROM GITHUB",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2087934627792945495"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-13 16:37:54 UTC",
+    "headline": "COGNITION IN TALKS TO RAISE $1B+ AT $40B \u2014 OVER 50% ABOVE ITS $26B MAY MARK",
+    "source": "@IPONewsroom_",
+    "url": "https://x.com/IPONewsroom_/status/2087939159029846396"
   }
 ]
