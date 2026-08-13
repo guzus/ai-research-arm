@@ -120,7 +120,27 @@
       "spacex",
       "ipo",
       "markets"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051825--spacex-ipo.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "자체 리테일 군단에 거는 SpaceX의 $1.75조 베팅",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:18:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [
+          "spacex",
+          "ipo",
+          "markets"
+        ],
+        "translated_at": "2026-08-13T05:18:25Z",
+        "source_file": "research/generative/2026-05-16T023126--spacex-ipo.ara.md",
+        "source_sha256": "9858d6cc92b5904d0944c44d398da58c7ed864d241998b3242787f3799b947b7"
+      }
+    }
   },
   {
     "slug": "cerebras",
@@ -135,7 +155,27 @@
       "cerebras",
       "ai-hardware",
       "semiconductors"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051825--cerebras.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "접시만 한 칩과 UAE 고객 장부를 들고 상장한 Cerebras",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:18:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [
+          "cerebras",
+          "ai-hardware",
+          "semiconductors"
+        ],
+        "translated_at": "2026-08-13T05:18:25Z",
+        "source_file": "research/generative/2026-05-16T023711--cerebras.ara.md",
+        "source_sha256": "1aea65a69469ab83b9430b07d0ccd53f6c5055ff40a34d74381881630c21e19b"
+      }
+    }
   },
   {
     "slug": "aschenbrenner-13f-name-by-name",
