@@ -104,6 +104,30 @@ class WikiTranslationTest(unittest.TestCase):
             )
             self.assertTrue(any("copied unchanged" in error for error in errors))
 
+    def test_dropped_list_item_fails_structure_gate(self):
+        with tempfile.TemporaryDirectory() as td:
+            wiki, translations = _fixture(Path(td))
+            source = wiki / "entities" / "alpha.md"
+            source.write_text(
+                ALPHA.replace(
+                    "Alpha links to [[beta]] and again via alias [[b-one|Beta]].",
+                    "## Details\n\n- First claim\n- Second claim\n"
+                    "\nAlpha links to [[beta]] and again via alias [[b-one|Beta]].",
+                ),
+                encoding="utf-8",
+            )
+            target = translations / "entities" / "alpha.md"
+            translated = _translation(source).replace(
+                "알파는 [[beta]]와 연결되며, 별칭 링크 [[b-one|베타]]로도 이어집니다.",
+                "## 세부 정보\n\n- 첫 번째 주장\n"
+                "\n알파는 [[beta]]와 연결되며, 별칭 링크 [[b-one|베타]]로도 이어집니다.",
+            )
+            _write(translations, "entities/alpha.md", translated)
+            _, errors = cwt.validate_file(
+                target, wiki_dir=wiki, translation_root=translations
+            )
+            self.assertTrue(any("heading/list structure changed" in error for error in errors))
+
     def test_cli_accepts_repo_relative_translation_path(self):
         with tempfile.TemporaryDirectory() as td:
             wiki, translations = _fixture(Path(td))

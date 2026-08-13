@@ -42,6 +42,8 @@ NUMBER_RE = re.compile(
 )
 LATIN_WORD_RE = re.compile(r"\b[A-Za-z][A-Za-z'-]*\b")
 FENCE_RE = re.compile(r"^(\s*)(`{3,}|~{3,})")
+HEADING_RE = re.compile(r"^(#{1,6})\s+")
+LIST_ITEM_RE = re.compile(r"^\s*(?:[-+*]|\d+[.)])\s+")
 
 
 @dataclass(frozen=True)
@@ -144,6 +146,20 @@ def _visible_text(text: str) -> str:
         ):
             fenced = False
     return "\n".join(lines)
+
+
+def _markdown_structure(text: str) -> tuple[tuple[int, ...], int]:
+    """Return translation-invariant heading order and list-item cardinality."""
+    visible = _visible_text(text)
+    headings: list[int] = []
+    list_items = 0
+    for line in visible.splitlines():
+        heading = HEADING_RE.match(line)
+        if heading:
+            headings.append(len(heading.group(1)))
+        if LIST_ITEM_RE.match(line):
+            list_items += 1
+    return tuple(headings), list_items
 
 
 def _english_ngrams(text: str, size: int = 5) -> collections.Counter[tuple[str, ...]]:
@@ -277,6 +293,8 @@ def validate_file(
         errors.append("body: wikilink target multiset changed")
     if _fenced_blocks(source_body) != _fenced_blocks(body):
         errors.append("body: fenced code blocks must remain byte-identical")
+    if _markdown_structure(source_body) != _markdown_structure(body):
+        errors.append("body: heading/list structure changed")
 
     source_ngrams = _english_ngrams(source_visible)
     if sum(source_ngrams.values()) >= 20:
