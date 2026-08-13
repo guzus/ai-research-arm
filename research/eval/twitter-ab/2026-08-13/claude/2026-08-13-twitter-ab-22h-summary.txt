@@ -1,0 +1,14 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-13 22:22:34 UTC
+
+CYCLE: Inference prices moved in opposite directions on the same afternoon.
+
+TOP STORIES:
+• Gemini 3.7 Flash ships 3 weeks after 3.6 at $0.75/$3.75 per Mtok, 50% off through Dec 31 [✓]
+• DeepSeek adds peak/off-peak pricing — cache-hit input reportedly up 1,114% to $0.044/Mtok [⚠]
+• OpenAI previews Ultrafast: GPT-5.6 Sol at 750 tok/s on Cerebras, select API customers [✓]
+• ChatGPT desktop ships Computer History — Mac activity memory; EEA/UK/CH deferred [✓]
+• X publishes "For You" ranking code under Apache 2.0 + visibility-label inspector [⚠]
+
+WATCH: Whether DeepSeek publishes peak windows in UTC and whether off-peak moved — that decides demand-shaping vs price hike.
+
+Full update on GitHub.
