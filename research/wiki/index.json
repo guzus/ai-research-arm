@@ -2414,6 +2414,16 @@
         "exchange": "NASDAQ",
         "symbol": "NASDAQ:MSFT",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "Microsoft",
+          "summary": "하이퍼스케일러이자 프런티어 모델 개발사. Build 2026에서 완전한 자사 MAI 모델 스택을 출시하고 Project Polaris를 GitHub Copilot의 기본 엔진으로 채택했다. CEO Satya Nadella는 Microsoft가 Anthropic에 $5B를 투자했음에도 Anthropic의 Fable을 공개적으로 \"편집 통제를 받는다\"고 평했으며(2026-07-18), MAI-Thinking-1은 최초로 \"처음부터 자체 개발한\" 추론 모델로서 Microsoft Foundry에 출시됐다(2026-08-13).",
+          "description": "하이퍼스케일러이자 프런티어 모델 개발사. Build 2026에서 완전한 자사 MAI 모델 스택을 출시하고 Project Polaris를 GitHub Copilot의 기본 엔진으로 채택했다. CEO Satya Nadella는 Microsoft가 Anthropic에 $5B를 투자했음에도 Anthropic의 Fable을 공개적으로 \"편집 통제를 받는다\"고 평했으며(2026-07-18), MAI-Thinking-1은 최초로 \"처음부터 자체 개발한\" 추론 모델로서 Microsoft Foundry에 출시됐다(2026-08-13).",
+          "file": "wiki-translations/ko/entities/microsoft.md",
+          "source_file": "research/wiki/entities/microsoft.md",
+          "source_sha256": "f2a4920a53aadb6c9c4e35ce1b8fcc35c8251ac739a29c7023222f67399f31bb"
+        }
       }
     },
     {
@@ -3343,7 +3353,17 @@
         "open-weights",
         "sakana-ai",
         "zhipu-glm-5-2"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "OpenRouter",
+          "summary": "모델 400+를 개발자 8M+에게 제공하는 LLM 라우팅 API. 2026-05-30에 포스트머니 기업가치 $1.3B로 $113M 규모의 시리즈 B 투자를 유치했고 Fusion API를 공개했으며, 2026-07-30에 보도된 Stripe의 약 $10B 인수 협상으로 라우팅 계층의 인수 경쟁을 촉발했다.",
+          "description": "모델 400+를 개발자 8M+에게 제공하는 LLM 라우팅 API. 2026-05-30에 포스트머니 기업가치 $1.3B로 $113M 규모의 시리즈 B 투자를 유치했고 Fusion API를 공개했으며, 2026-07-30에 보도된 Stripe의 약 $10B 인수 협상으로 라우팅 계층의 인수 경쟁을 촉발했다.",
+          "file": "wiki-translations/ko/entities/openrouter.md",
+          "source_file": "research/wiki/entities/openrouter.md",
+          "source_sha256": "2b44c3c1568b05bf3f7c0d21ea003b13a8fed18b2b0bf10a61c42e483b3f54de"
+        }
+      }
     },
     {
       "slug": "palantir",
