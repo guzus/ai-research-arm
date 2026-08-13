@@ -2888,6 +2888,16 @@
         "exchange": "NASDAQ",
         "symbol": "NASDAQ:NBIS",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "네비우스 그룹",
+          "summary": "얀덱스에서 분사한 암스테르담 기반 AI 클라우드(\"네오클라우드\") 제공업체. FY26Q2(2026-08-13)에 매출 $582.3M(+454% YoY), AI 클라우드 조정 EBITDA 마진 ~50%를 기록했으며, 계약 전력을 5GW로 늘렸고 거래의 ~70%에 고객 선결제가 포함됐다.",
+          "description": "얀덱스에서 분사한 암스테르담 기반 AI 클라우드(\"네오클라우드\") 제공업체. FY26Q2(2026-08-13)에 매출 $582.3M(+454% YoY), AI 클라우드 조정 EBITDA 마진 ~50%를 기록했으며, 계약 전력을 5GW로 늘렸고 거래의 ~70%에 고객 선결제가 포함됐다.",
+          "file": "wiki-translations/ko/entities/nebius.md",
+          "source_file": "research/wiki/entities/nebius.md",
+          "source_sha256": "3af30c30e3a442fb391b7de5791ac03a877caf230319a07377ab281f7cdaf173"
+        }
       }
     },
     {
