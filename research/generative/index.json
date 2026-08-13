@@ -11,7 +11,27 @@
       "meta",
       "architecture",
       "fixture"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051725--why-generative-research-belongs-next-to-scheduled-aggregatio.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "예약 집계 옆에 생성형 리서치 레인이 필요한 이유",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:17:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [
+          "meta",
+          "architecture",
+          "fixture"
+        ],
+        "translated_at": "2026-08-13T05:17:25Z",
+        "source_file": "research/generative/2026-05-15T050845--why-generative-research-belongs-next-to-scheduled-aggregatio.ara.md",
+        "source_sha256": "79b57834ad56672559f8c0860285b92c56e639242bb2a6784ef88abcd62757cc"
+      }
+    }
   },
   {
     "slug": "components",
@@ -69,7 +89,23 @@
     "created_at": "2026-05-16T02:24:49Z",
     "source": "issue",
     "prompt": "[Research] Situational Awareness LP",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051725--research-situational-awareness-lp.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Situational Awareness LP: AGI 선언문에 증권 계좌가 따라왔을 때",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:17:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [],
+        "translated_at": "2026-08-13T05:17:25Z",
+        "source_file": "research/generative/2026-05-16T022449--research-situational-awareness-lp.ara.md",
+        "source_sha256": "174d785421d7a077ea258c3b05b8ac98dd3c6173bbdbe03ece6736442df80f63"
+      }
+    }
   },
   {
     "slug": "spacex-ipo",
@@ -160,7 +196,23 @@
     "created_at": "2026-05-16T11:17:17Z",
     "source": "local",
     "prompt": "the crypto project XMAQUINA ($DEUS)",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051726--the-crypto-project-xmaquina-deus.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "XMAQUINA: TGE 11일 전, 휴머노이드 로봇 기업에 대한 토큰화 익스포저",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:17:26Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [],
+        "translated_at": "2026-08-13T05:17:26Z",
+        "source_file": "research/generative/2026-05-16T111717--the-crypto-project-xmaquina-deus.ara.md",
+        "source_sha256": "a7bff6bdc917e6fe19e7fe3adcaa951101c910eaf823439b07f3036bf48ae5c1"
+      }
+    }
   },
   {
     "slug": "about-the-crypto-project-xmaquina-deus",

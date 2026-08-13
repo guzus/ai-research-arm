@@ -1,0 +1,17 @@
+<article class="ara-doc">
+<header><div class="ara-eyebrow">아키텍처 · 메타</div><h2 class="ara-display">예약 집계 옆에 생성형 리서치 레인이 필요한 이유</h2><p class="ara-lede">이 대시보드는 이미 정해진 시간에 AI 뉴스를 집계한다. 트위터는 세 시간마다, RSS는 한 시간마다, arXiv와 다이제스트는 매일 수집한다. 이 주기는 무언가를 <em>놓치지 않는</em> 데는 훌륭하지만, 구조적으로 호기심을 발휘할 수 없다. 어떤 이야기가 <em>왜</em> 중요한지, 그 이차적 함의가 무엇인지 물을 수 없기 때문이다.</p></header>
+<p>생성형 레인은 이 문제를 해결한다. 질문을 지정하면 모델이 독립적으로 읽을 수 있는 글로 답을 작성하고, 그 결과는 예약 피드 옆에 놓인다. 같은 대시보드와 같은 달력 규칙을 쓰되 형태만 다르다.</p>
+<section class="ara-section">
+<h3 class="ara-h2"><span class="ara-h2-num">01</span>지켜야 할 세 가지 속성</h3>
+<ul><li><strong>날짜가 아니라 슬러그를 키로 삼는다.</strong> 하루에 여러 글을 발행하고 주제별로 정리한다. 비정기 리서치에는 달력이라는 비유가 맞지 않으며, 인덱스 목록이 더 적합하다.</li><li><strong>자유 형식 페이지가 아니라 조합 가능한 컴포넌트를 쓴다.</strong> 글은 작은 <code>ara-*</code> 어휘 집합을 사용한다. 외형은 대시보드 CSS가 담당한다. 파일 하나를 수정하면 모든 글의 스타일을 한꺼번에 바꿀 수 있다.</li><li><strong>작성기는 하나, 트리거는 셋이다.</strong> 로컬 슬래시 명령, GitHub 이슈 라벨, <code>workflow_dispatch</code>가 모두 같은 Python 스크립트를 거친다. 결과를 작성하는 곳이 하나뿐이므로 출력 형식이 어긋날 수 없다.</li></ul>
+</section>
+<section class="ara-section">
+<h3 class="ara-h2"><span class="ara-h2-num">02</span>이 픽스처가 입증하는 것</h3>
+<p>이 글을 대시보드에서 읽고 있다면 전체 경로가 처음부터 끝까지 작동한 것이다. 작성기가 본문을 받아 <code>ara-doc</code> 계약에 따라 검증했고(모든 클래스는 <code>ara-</code>로 시작하고 모든 태그는 허용 목록에 포함된다), <code>index.json</code>에 행을 추가했으며, 배포 파이프라인이 파일을 <code>dashboard/public/research/generative/</code>로 복사해 SPA가 가져올 수 있게 했다.</p>
+</section>
+<section class="ara-section">
+<h3 class="ara-h2"><span class="ara-h2-num">03</span>다음으로 할 일</h3>
+<ol><li>글에 새로운 형태가 필요할 때 어휘를 확장한다. 다만 새 컴포넌트는 하나하나가 유지보수 부담이므로 천천히 진행한다.</li><li>렌더링된 각 문서에 프롬프트 자체를 공개할지, 인덱스에만 보관할지 결정한다.</li><li>기존 독립형 보고서(XMAQUINA, Akamai)를 이 어휘 체계로 옮길지, 대시보드 스타일 변경을 따라가지 않는 레거시 iframe으로 남길지 검토한다.</li></ol>
+<p>그때까지 이 글 자체가 통합 테스트 역할을 한다.</p>
+</section>
+</article>
