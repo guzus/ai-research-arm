@@ -123,6 +123,9 @@ jobs:
       - name: Validate wiki pages
         run: uv run python scripts/check_wiki.py
 
+      - name: Validate Korean wiki mirrors
+        run: uv run python scripts/check_wiki_translation.py
+
       # research/wiki/index.json is a generated, committed artifact (the
       # dashboard reads it; prebuild only copies it). This gate fails if it
       # has drifted from the pages — i.e. a page was edited without rerunning

@@ -376,3 +376,49 @@ Flags:
 
 The maintenance agent must re-run the validator at the end of every run and fix
 any failure in place before the workflow commits.
+
+## Localized mirrors
+
+The canonical Wiki graph remains English and CRUD-owned under
+`research/wiki/`. Localized reader copies live separately so translation work
+cannot rename slugs, mutate aliases, change graph identity, or be overwritten
+by the next ingest run.
+
+Korean mirrors use the exact parallel path
+`research/wiki-translations/ko/{entities,concepts,themes}/<slug>.md` and this
+frontmatter:
+
+```yaml
+---
+slug: deepseek
+language: ko
+source_file: research/wiki/entities/deepseek.md
+source_sha256: <64 lowercase hex characters>
+title: 딥시크
+description: 한국어 한 줄 설명
+images:                         # only when the source has images
+  - url: <exact source URL>
+    alt: 한국어 대체 텍스트
+    caption: 한국어 캡션         # required when the source has a caption
+    credit: <exact source credit>
+    source_url: <exact source URL>
+---
+한국어 본문. [[openai|오픈AI]]처럼 대상 slug는 보존하고 표시 문구만 번역한다.
+```
+
+`scripts/check_wiki_translation.py` is a blocking validator. It enforces:
+
+- one exact mirror path and slug for one canonical source;
+- `source_sha256` equality, so an English edit makes stale Korean fail CI;
+- exact URL, numeric-token, wikilink-target, fenced-code, and image-identity
+  parity while allowing titles, descriptions, labels, alt text, and captions
+  to be translated;
+- meaningful Hangul and a copied-English-prose ceiling;
+- no unknown frontmatter fields.
+
+`scripts/build_wiki_index.py` validates these mirrors and attaches available
+locales under each page's `translations` map. The dashboard selects the Korean
+variant when its UI language is Korean and explicitly falls back to the English
+original when no reviewed mirror exists. Source history, aliases, tags, graph
+edges, market identity, and dates continue to come only from the canonical
+English page.

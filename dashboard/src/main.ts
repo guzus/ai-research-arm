@@ -2567,6 +2567,16 @@ type WikiMarket = {
   tradingview_symbol?: string;
 };
 
+type WikiTranslation = {
+  title: string;
+  summary: string;
+  description: string;
+  file: string;            // relative to research/, e.g. wiki-translations/ko/entities/deepseek.md
+  source_file: string;
+  source_sha256: string;
+  images?: WikiImage[];
+};
+
 type WikiPage = {
   slug: string;
   title: string;
@@ -2579,6 +2589,7 @@ type WikiPage = {
   aliases: string[];
   images?: WikiImage[];
   market?: WikiMarket;
+  translations?: { ko?: WikiTranslation };
   outbound: string[];      // slugs
   inbound: string[];       // slugs
 };
@@ -2772,7 +2783,8 @@ async function hydrateWikiHistory(page: WikiPage, signal: AbortSignal): Promise<
 // rendering is O(n) not O(n^2) (advisor note 5).
 let wikiIndexCache: WikiIndex | null = null;
 let wikiPageMap: Map<string, WikiPage> = new Map();
-// Body cache keyed by slug so re-visiting a page doesn't refetch.
+// Body cache is locale-aware: an English fallback must never occupy the
+// Korean slot after a translation is published during the same session.
 const wikiBodyCache = new Map<string, string>();
 
 async function loadWikiIndex(signal: AbortSignal): Promise<WikiIndex | null> {
@@ -2793,6 +2805,21 @@ async function loadWikiIndex(signal: AbortSignal): Promise<WikiIndex | null> {
     if (error instanceof DOMException && error.name === 'AbortError') return null;
     return null;
   }
+}
+
+function wikiTranslationFor(page: WikiPage): WikiTranslation | null {
+  return activeLanguage === 'ko' ? (page.translations?.ko || null) : null;
+}
+
+function localizedWikiPage(page: WikiPage): WikiPage {
+  const translation = wikiTranslationFor(page);
+  if (!translation) return page;
+  return {
+    ...page,
+    title: translation.title,
+    summary: translation.summary,
+    images: translation.images || page.images,
+  };
 }
 
 /** Strip leading YAML frontmatter, matching the validator/prebuild semantics
@@ -3024,7 +3051,8 @@ function hydrateWikiKvMarket(root: ParentNode = document): void {
 /** Internal link to another wiki page (used in lists/backlinks). Always an
  * <a data-wiki-slug> so the content click handler intercepts it for SPA nav. */
 function wikiInternalLink(slug: string, text?: string): string {
-  const label = text || wikiPageMap.get(slug)?.title || slug;
+  const indexed = wikiPageMap.get(slug);
+  const label = text || (indexed ? localizedWikiPage(indexed).title : '') || slug;
   return (
     '<a href="/wiki/' + escapeHtml(slug) + '" class="wikilink" ' +
     'data-wiki-slug="' + escapeHtml(slug) + '">' + escapeHtml(label) + '</a>'
@@ -3060,7 +3088,7 @@ function paginationHtml(page: number, totalItems: number, pageSize: number, labe
 // LIST view: catalog grouped by type + a recent-changes panel + a count.
 function renderWikiIndex(index: WikiIndex): void {
   setDocTitle(null);
-  const pages = index.pages.slice();
+  const pages = index.pages.map(localizedWikiPage);
   if (pages.length === 0) {
     setSafeWikiContent(
       content,
@@ -3172,7 +3200,12 @@ function renderWikiIndex(index: WikiIndex): void {
 }
 
 // PAGE view: title + type chip + tags + rendered body + backlinks + related.
-function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): void {
+function renderWikiPage(
+  page: WikiPage,
+  body: string,
+  signal?: AbortSignal,
+  translationMissing = false,
+): void {
   setDocTitle(page.title);
   const bodyHtml = wikiMarkdownToHtml(stripWikiFrontmatter(body));
 
@@ -3226,6 +3259,9 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
       '    <h1 class="wiki-page-title">' + escapeHtml(page.title) + '</h1>',
       page.summary
         ? '    <div class="ara-callout ara-callout--info"><span class="ara-callout-label">' + escapeHtml(uiText(activeLanguage, 'wiki.summary')) + '</span><p>' + escapeHtml(page.summary) + '</p></div>'
+        : '',
+      translationMissing
+        ? '    <div class="ara-callout ara-callout--warning"><p>' + escapeHtml(uiText(activeLanguage, 'wiki.translationUnavailable')) + '</p></div>'
         : '',
       wikiImagesHtml(page.images),
       wikiKvHtml(page),
@@ -6050,16 +6086,21 @@ async function load(): Promise<void> {
       } else if (!selectedSlug) {
         renderWikiIndex(idx);
       } else {
-        const page = wikiPageMap.get(selectedSlug);
-        if (!page) {
+        const canonicalPage = wikiPageMap.get(selectedSlug);
+        if (!canonicalPage) {
           renderWikiNotFound(selectedSlug);
         } else {
-          const cached = wikiBodyCache.get(selectedSlug);
+          const translation = wikiTranslationFor(canonicalPage);
+          const page = localizedWikiPage(canonicalPage);
+          const translationMissing = activeLanguage === 'ko' && !translation;
+          const bodyPath = translation?.file || `wiki/${canonicalPage.file}`;
+          const cacheKey = `${selectedSlug}:${translation ? 'ko' : 'en'}`;
+          const cached = wikiBodyCache.get(cacheKey);
           if (cached !== undefined) {
-            renderWikiPage(page, cached, controller.signal);
+            renderWikiPage(page, cached, controller.signal, translationMissing);
           } else {
             const body = await withTimeout(
-              fetchMarkdownReport(`${DATA_BASE}/wiki/${page.file}`, controller.signal),
+              fetchMarkdownReport(`${DATA_BASE}/${bodyPath}`, controller.signal),
               LOAD_TIMEOUT_MS,
               controller,
             );
@@ -6067,8 +6108,8 @@ async function load(): Promise<void> {
             if (body === 'timeout') {
               showError('Loading timed out', 'Network may be slow. Click to retry.');
             } else if (body) {
-              wikiBodyCache.set(selectedSlug, body);
-              renderWikiPage(page, body, controller.signal);
+              wikiBodyCache.set(cacheKey, body);
+              renderWikiPage(page, body, controller.signal, translationMissing);
             } else {
               renderWikiNotFound(selectedSlug);
             }

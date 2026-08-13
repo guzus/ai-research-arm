@@ -303,6 +303,16 @@
         "exchange": "NYSE",
         "symbol": "NYSE:BABA",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "Alibaba",
+          "summary": "Alibaba Cloud와 Qwen 모델을 보유한 중국 기술 대기업. Anthropic으로부터 문서로 확인된 최대 규모의 Claude 증류 작전을 벌였다는 의혹을 받았으며, 2026-08-04에 2.4T 매개변수 Qwen3.8-Max를 출시하고 2026-08-13에는 Qwen3.8-2.4T-A95B라는 이름으로 가중치를 공개했다. 동시에 미 국방부의 PLA 연계 기업 지정에 계속 맞서고 있다.",
+          "description": "Alibaba Cloud와 Qwen 모델을 보유한 중국 기술 대기업. Anthropic으로부터 문서로 확인된 최대 규모의 Claude 증류 작전을 벌였다는 의혹을 받았으며, 2026-08-04에 2.4T 매개변수 Qwen3.8-Max를 출시하고 2026-08-13에는 Qwen3.8-2.4T-A95B라는 이름으로 가중치를 공개했다. 동시에 미 국방부의 PLA 연계 기업 지정에 계속 맞서고 있다.",
+          "file": "wiki-translations/ko/entities/alibaba.md",
+          "source_file": "research/wiki/entities/alibaba.md",
+          "source_sha256": "fc9284879e27b3b0fac47a7465d40d62dac0a6d22717814f16ea0c1a2bb49606"
+        }
       }
     },
     {
@@ -348,6 +358,16 @@
         "exchange": "NASDAQ",
         "symbol": "NASDAQ:AMZN",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "Amazon",
+          "summary": "하이퍼스케일러이자 Anthropic의 단일 최대 투자자. WSJ/Axios 보도에 따르면 CEO Andy Jassy가 Amazon 연구진이 모델을 탈옥시켰다고 재무부에 설명한 뒤 June 2026 Fable 5 / Mythos 5 수출 단속을 촉발한 당사자다.",
+          "description": "하이퍼스케일러이자 Anthropic의 단일 최대 투자자. WSJ/Axios 보도에 따르면 CEO Andy Jassy가 Amazon 연구진이 모델을 탈옥시켰다고 재무부에 설명한 뒤 June 2026 Fable 5 / Mythos 5 수출 단속을 촉발한 당사자다.",
+          "file": "wiki-translations/ko/entities/amazon.md",
+          "source_file": "research/wiki/entities/amazon.md",
+          "source_sha256": "890b5ac71375a12c18f9b88cf7a31b710ca8129869d02bbfcfe161a48d9024c6"
+        }
       }
     },
     {
@@ -404,6 +424,16 @@
         "exchange": "NASDAQ",
         "symbol": "NASDAQ:AMD",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "AMD",
+          "summary": "신뢰할 만한 대안 공급원 AI 가속기 업체. Helios가 Anthropic의 2 GW MI450 약정을 향해 증산되는 가운데 FY26Q2 데이터센터 매출은 $6.7B로 두 배(+107% YoY)가 됐고, 2026-08-07에는 모델 특화 실리콘 스타트업 Taalas를 인수했다.",
+          "description": "신뢰할 만한 대안 공급원 AI 가속기 업체. Helios가 Anthropic의 2 GW MI450 약정을 향해 증산되는 가운데 FY26Q2 데이터센터 매출은 $6.7B로 두 배(+107% YoY)가 됐고, 2026-08-07에는 모델 특화 실리콘 스타트업 Taalas를 인수했다.",
+          "file": "wiki-translations/ko/entities/amd.md",
+          "source_file": "research/wiki/entities/amd.md",
+          "source_sha256": "49396fb33cf2a268c319551ca454efdb6e6b26437d3e0f1f313f5aef08c76686"
+        }
       }
     },
     {
@@ -603,7 +633,17 @@
       "inbound": [
         "ai-capex",
         "prometheus"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "범용 인공지능 엔지니어",
+          "summary": "AI 시스템이 복잡한 물리적 제품을 개념 단계부터 생산까지 이끌 수 있다는 논지. AI의 영역을 소프트웨어와 챗봇에서 하드웨어 설계와 제조로 확장한다.",
+          "description": "AI 시스템이 복잡한 물리적 제품을 개념 단계부터 생산까지 이끌 수 있다는 논지. AI의 영역을 소프트웨어와 챗봇에서 하드웨어 설계와 제조로 확장한다.",
+          "file": "wiki-translations/ko/concepts/artificial-general-engineer.md",
+          "source_file": "research/wiki/concepts/artificial-general-engineer.md",
+          "source_sha256": "8d114def5cc1ca9080549dd5287e5486a917a52596d3e8ced96fe4ce50a2efe0"
+        }
+      }
     },
     {
       "slug": "astra",
@@ -645,7 +685,17 @@
         "mistral-leanstral-1-5",
         "openai",
         "verification-bottleneck"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "Astra (OpenAI)",
+          "summary": "OpenAI가 2026-08-01에 249페이지 원고와 함께 공개한 이름 붙은 \"차세대 주요 모델 제품군\". 약 $2,000의 추론 비용으로 Lean 인증서가 딸린 수학·이론 컴퓨터과학 결과 ten건을 냈다고 주장하지만, 아직 전문가 검증은 없으며 그중 five건은 하루 안에 일반 제공 경쟁 모델이 재현한 것으로 알려졌다.",
+          "description": "OpenAI가 2026-08-01에 249페이지 원고와 함께 공개한 이름 붙은 \"차세대 주요 모델 제품군\". 약 $2,000의 추론 비용으로 Lean 인증서가 딸린 수학·이론 컴퓨터과학 결과 ten건을 냈다고 주장하지만, 아직 전문가 검증은 없으며 그중 five건은 하루 안에 일반 제공 경쟁 모델이 재현한 것으로 알려졌다.",
+          "file": "wiki-translations/ko/entities/astra.md",
+          "source_file": "research/wiki/entities/astra.md",
+          "source_sha256": "a56324436c9718ac356e89a8053dd6bdfe516f037aa14d83f18aedaf20fd5d26"
+        }
+      }
     },
     {
       "slug": "broadcom",
@@ -768,7 +818,17 @@
       ],
       "inbound": [
         "evo-genome-models"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "차이 디스커버리",
+          "summary": "Eli Lilly, Novartis, Pfizer가 이미 사용하는 AI 설계 분자를 개발하며 2026-07-15에 $3.8B 기업가치로 $400M Series C를 유치한 AI 신약 개발 스타트업. 기업가치는 지난해 말 대비 거의 3x가 됐다.",
+          "description": "Eli Lilly, Novartis, Pfizer가 이미 사용하는 AI 설계 분자를 개발하며 2026-07-15에 $3.8B 기업가치로 $400M Series C를 유치한 AI 신약 개발 스타트업. 기업가치는 지난해 말 대비 거의 3x가 됐다.",
+          "file": "wiki-translations/ko/entities/chai-discovery.md",
+          "source_file": "research/wiki/entities/chai-discovery.md",
+          "source_sha256": "d1c1738664440852e58bf8f092353dbaca58fa43e3713056d05d2e53c6ab1bfd"
+        }
+      }
     },
     {
       "slug": "china-ai-regulation",
@@ -1061,7 +1121,17 @@
         "claude-science",
         "federal-ai-policy",
         "open-weights"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "Claude Sonnet 5",
+          "summary": "Anthropic이 2026-06-30에 출시한 중간급 모델. Free와 Pro의 기본 모델이며, $2/$10의 출시 기념 가격은 2026-08-10에 영구화됐다(September 인상 취소). 1M 토큰 컨텍스트를 갖추고 저렴한 에이전트 기본 모델로 자리매김했다.",
+          "description": "Anthropic이 2026-06-30에 출시한 중간급 모델. Free와 Pro의 기본 모델이며, $2/$10의 출시 기념 가격은 2026-08-10에 영구화됐다(September 인상 취소). 1M 토큰 컨텍스트를 갖추고 저렴한 에이전트 기본 모델로 자리매김했다.",
+          "file": "wiki-translations/ko/entities/claude-sonnet-5.md",
+          "source_file": "research/wiki/entities/claude-sonnet-5.md",
+          "source_sha256": "1bdf76c575548b06a2bcfee9f67e6774af55672295c806b4c59bf58aa23501f0"
+        }
+      }
     },
     {
       "slug": "cognition-ai",
@@ -1097,7 +1167,17 @@
         "anthropic",
         "dynamic-workflows",
         "muse-code"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "Cognition AI",
+          "summary": "Devin 자율 코딩 에이전트를 만든 기업. 2026년 오월 $492M ARR(전년 대비 ~13×)을 기록하고 자체 코드의 89%를 Devin이 작성하는 가운데, $26B 포스트머니 기업가치로 $1B+를 조달했으며 현재 $1B를 넘을 수 있는 투자 라운드에서 $40B+ 기업가치를 논의 중이다(2026-08-13).",
+          "description": "Devin 자율 코딩 에이전트를 만든 기업. 2026년 오월 $492M ARR(전년 대비 ~13×)을 기록하고 자체 코드의 89%를 Devin이 작성하는 가운데, $26B 포스트머니 기업가치로 $1B+를 조달했으며 현재 $1B를 넘을 수 있는 투자 라운드에서 $40B+ 기업가치를 논의 중이다(2026-08-13).",
+          "file": "wiki-translations/ko/entities/cognition-ai.md",
+          "source_file": "research/wiki/entities/cognition-ai.md",
+          "source_sha256": "9b123dae24dcd7b6aa6a1ceb8d9a43e18493a6e37aed3d36d52d9537d717d6cf"
+        }
+      }
     },
     {
       "slug": "coreweave",
@@ -1139,6 +1219,16 @@
         "exchange": "NASDAQ",
         "symbol": "NASDAQ:CRWV",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "코어위브",
+          "summary": "NASDAQ 상장 GPU 서비스형 네오클라우드. 계약 잔고는 ~$104B이고 FY26Q2 매출은 전년 대비 112% 증가한 $2.58B였다(2026-08-11 공시). 매출은 Microsoft, OpenAI, Meta에 집중되어 있으며, The Information에 따르면 해당 분기에 현금 약 ~$5.7B를 소진했다.",
+          "description": "NASDAQ 상장 GPU 서비스형 네오클라우드. 계약 잔고는 ~$104B이고 FY26Q2 매출은 전년 대비 112% 증가한 $2.58B였다(2026-08-11 공시). 매출은 Microsoft, OpenAI, Meta에 집중되어 있으며, The Information에 따르면 해당 분기에 현금 약 ~$5.7B를 소진했다.",
+          "file": "wiki-translations/ko/entities/coreweave.md",
+          "source_file": "research/wiki/entities/coreweave.md",
+          "source_sha256": "5b1090e4a4f62fcc53e5488ba9f9b596a359c891f3aeaa1868a8c46025e33ec1"
+        }
       }
     },
     {
@@ -1240,7 +1330,17 @@
         "tencent-hunyuan-hy3",
         "thinking-machines",
         "zhipu-glm-5-2"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "DeepSeek",
+          "summary": "항저우에 기반을 둔 중국의 프런티어 연구소. 2026-06-18 중국 AI 역사상 최대 규모인 첫 외부 투자 라운드(~$7.4B / ~50B위안, $50B+ 기업가치)를 마감했다. Tencent와 CATL의 의결권 없는 자금 및 유일한 의결권 투자자인 국영 AI 펀드를 유치하면서 창업자 지배력을 유지한 채 AGI를 향한 상용화로 전환했으며, 2026-08-13 V4-Pro-0813을 등록했다.",
+          "description": "항저우에 기반을 둔 중국의 프런티어 연구소. 2026-06-18 중국 AI 역사상 최대 규모인 첫 외부 투자 라운드(~$7.4B / ~50B위안, $50B+ 기업가치)를 마감했다. Tencent와 CATL의 의결권 없는 자금 및 유일한 의결권 투자자인 국영 AI 펀드를 유치하면서 창업자 지배력을 유지한 채 AGI를 향한 상용화로 전환했으며, 2026-08-13 V4-Pro-0813을 등록했다.",
+          "file": "wiki-translations/ko/entities/deepseek.md",
+          "source_file": "research/wiki/entities/deepseek.md",
+          "source_sha256": "0ce457395ee4275378cd681c00c686cdf676ee8f2c91fb0ac8ef190595fb0084"
+        }
+      }
     },
     {
       "slug": "deepseek-v4-flash",
@@ -1288,7 +1388,17 @@
         "qwen-3-8-max",
         "thinking-machines",
         "verification-bottleneck"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "DeepSeek V4-Flash-0731",
+          "summary": "DeepSeek의 총 284B·활성 13B MoE 모델. 1M 컨텍스트를 지원하며 2026-07-31 Mtok당 $0.28/$0.87에 API 공개 베타를 시작했고, 몇 시간 뒤 MIT 라이선스 가중치를 공개했다. Artificial Analysis 점수는 50이며 작업당 비용에서 Claude Fable 5보다 105× 저렴하다고 전해졌다.",
+          "description": "DeepSeek의 총 284B·활성 13B MoE 모델. 1M 컨텍스트를 지원하며 2026-07-31 Mtok당 $0.28/$0.87에 API 공개 베타를 시작했고, 몇 시간 뒤 MIT 라이선스 가중치를 공개했다. Artificial Analysis 점수는 50이며 작업당 비용에서 Claude Fable 5보다 105× 저렴하다고 전해졌다.",
+          "file": "wiki-translations/ko/entities/deepseek-v4-flash.md",
+          "source_file": "research/wiki/entities/deepseek-v4-flash.md",
+          "source_sha256": "2654b023d226c83bbdaff7f2a63f33f598856bd14ca2a835017db0867e45376c"
+        }
+      }
     },
     {
       "slug": "dell",
@@ -1397,7 +1507,17 @@
         "sakana-ai",
         "xai",
         "zawinskis-law-of-multiagents"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "동적 워크플로",
+          "summary": "Anthropic이 2026-05-28에 공개한 Claude Code 기능. Claude가 한 세션을 실행당 최대 1,000개의 병렬 하위 에이전트로 분산하는 JavaScript 오케스트레이터를 작성한다. Enterprise / Team / Max 등급에만 제공되며 코드베이스 규모의 마이그레이션을 겨냥한다.",
+          "description": "Anthropic이 2026-05-28에 공개한 Claude Code 기능. Claude가 한 세션을 실행당 최대 1,000개의 병렬 하위 에이전트로 분산하는 JavaScript 오케스트레이터를 작성한다. Enterprise / Team / Max 등급에만 제공되며 코드베이스 규모의 마이그레이션을 겨냥한다.",
+          "file": "wiki-translations/ko/concepts/dynamic-workflows.md",
+          "source_file": "research/wiki/concepts/dynamic-workflows.md",
+          "source_sha256": "cc470847b87b615e0af09daa37f1e2c070e12eff39fc2873b025cf181bb4b131"
+        }
+      }
     },
     {
       "slug": "etched",
@@ -1484,7 +1604,17 @@
         "minimax-h3",
         "mistral-shieldstral",
         "seedance-2-5"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "유럽 AI 규제",
+          "summary": "기관의 재량이 아닌 구속력 있는 법률로 AI를 규제하는 유럽의 2026년 서사. AI 법의 의무는 달력에 정해진 날짜에 발효되고, 각국 법원은 모델 학습과 출력에 EU 저작권법을 적용한다.",
+          "description": "기관의 재량이 아닌 구속력 있는 법률로 AI를 규제하는 유럽의 2026년 서사. AI 법의 의무는 달력에 정해진 날짜에 발효되고, 각국 법원은 모델 학습과 출력에 EU 저작권법을 적용한다.",
+          "file": "wiki-translations/ko/themes/eu-ai-regulation.md",
+          "source_file": "research/wiki/themes/eu-ai-regulation.md",
+          "source_sha256": "b06f6b326b27dcc5362523b9132a0ff5eabb1089a20b30e349e08dc78088485c"
+        }
+      }
     },
     {
       "slug": "evo-genome-models",
@@ -1678,7 +1808,17 @@
         "openai",
         "openrouter"
       ],
-      "inbound": []
+      "inbound": [],
+      "translations": {
+        "ko": {
+          "title": "파이어웍스 AI",
+          "summary": "하루 40T+ 토큰을 처리한다고 밝히며 2026-07-18에 $17.5B 기업가치로 $1.505B Series D를 유치한 AI 추론 인프라 기업. 이번 주기 최대 규모의 추론 인프라 투자 라운드 중 하나다.",
+          "description": "하루 40T+ 토큰을 처리한다고 밝히며 2026-07-18에 $17.5B 기업가치로 $1.505B Series D를 유치한 AI 추론 인프라 기업. 이번 주기 최대 규모의 추론 인프라 투자 라운드 중 하나다.",
+          "file": "wiki-translations/ko/entities/fireworks-ai.md",
+          "source_file": "research/wiki/entities/fireworks-ai.md",
+          "source_sha256": "ae6f662801e1bc7b97fd08b2de58d81a2348e41bf24f976898384a28e716c419"
+        }
+      }
     },
     {
       "slug": "gemini-3-5-flash",
@@ -1994,7 +2134,17 @@
         "openai",
         "qwen-3-8-max",
         "xai"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "OpenAI GPT-5.6",
+          "summary": "OpenAI의 프런티어 제품군. Sol(플래그십) / Terra(균형형) / Luna(고속·저가형)로 구성되며, GPT-5.6-Cyber는 Daybreak Red 승인 방어자 등급을 통해 검증된 방어자에게 2026-08-10 출시됐다.",
+          "description": "OpenAI의 프런티어 제품군. Sol(플래그십) / Terra(균형형) / Luna(고속·저가형)로 구성되며, GPT-5.6-Cyber는 Daybreak Red 승인 방어자 등급을 통해 검증된 방어자에게 2026-08-10 출시됐다.",
+          "file": "wiki-translations/ko/entities/gpt-5-6.md",
+          "source_file": "research/wiki/entities/gpt-5-6.md",
+          "source_sha256": "4667244e1a5ad859f15c8e06ecdbae7288b4ee57998d2c215231089181e5fec6"
+        }
+      }
     },
     {
       "slug": "gpt-6",
@@ -2266,6 +2416,16 @@
         "exchange": "NASDAQ",
         "symbol": "NASDAQ:META",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "Meta",
+          "summary": "소셜 플랫폼 하이퍼스케일러이자 프런티어 모델(Llama) 개발사. Muse Glimmer(2026-08-10, Apache 2.0)와 Muse Spark 1.2를 오픈 웨이트로 공개하겠다는 약속을 통해 오픈 웨이트로 복귀했다.",
+          "description": "소셜 플랫폼 하이퍼스케일러이자 프런티어 모델(Llama) 개발사. Muse Glimmer(2026-08-10, Apache 2.0)와 Muse Spark 1.2를 오픈 웨이트로 공개하겠다는 약속을 통해 오픈 웨이트로 복귀했다.",
+          "file": "wiki-translations/ko/entities/meta.md",
+          "source_file": "research/wiki/entities/meta.md",
+          "source_sha256": "3c21cf5f1fd7386d788bc2dfbfad5d3cb69334bf3e6d92c11c0657a8fe405f63"
+        }
       }
     },
     {
@@ -2374,6 +2534,16 @@
         "exchange": "NASDAQ",
         "symbol": "NASDAQ:MSFT",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "Microsoft",
+          "summary": "하이퍼스케일러이자 프런티어 모델 개발사. Build 2026에서 완전한 자사 MAI 모델 스택을 출시하고 Project Polaris를 GitHub Copilot의 기본 엔진으로 채택했다. CEO Satya Nadella는 Microsoft가 Anthropic에 $5B를 투자했음에도 Anthropic의 Fable을 공개적으로 \"편집 통제를 받는다\"고 평했으며(2026-07-18), MAI-Thinking-1은 최초로 \"처음부터 자체 개발한\" 추론 모델로서 Microsoft Foundry에 출시됐다(2026-08-13).",
+          "description": "하이퍼스케일러이자 프런티어 모델 개발사. Build 2026에서 완전한 자사 MAI 모델 스택을 출시하고 Project Polaris를 GitHub Copilot의 기본 엔진으로 채택했다. CEO Satya Nadella는 Microsoft가 Anthropic에 $5B를 투자했음에도 Anthropic의 Fable을 공개적으로 \"편집 통제를 받는다\"고 평했으며(2026-07-18), MAI-Thinking-1은 최초로 \"처음부터 자체 개발한\" 추론 모델로서 Microsoft Foundry에 출시됐다(2026-08-13).",
+          "file": "wiki-translations/ko/entities/microsoft.md",
+          "source_file": "research/wiki/entities/microsoft.md",
+          "source_sha256": "f2a4920a53aadb6c9c4e35ce1b8fcc35c8251ac739a29c7023222f67399f31bb"
+        }
       }
     },
     {
@@ -2544,7 +2714,17 @@
         "mistral-leanstral-1-5",
         "mistral-shieldstral",
         "tencent-hunyuan-hy3"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "미스트랄 로보스트랄 내비게이트",
+          "summary": "Mistral AI가 처음 선보인 체화형 내비게이션 모델. 8B 매개변수로 자연어로 지정된 작업을 로봇이 자율 수행하도록 안내하며, 2026-07-08에 발표됐다.",
+          "description": "Mistral AI가 처음 선보인 체화형 내비게이션 모델. 8B 매개변수로 자연어로 지정된 작업을 로봇이 자율 수행하도록 안내하며, 2026-07-08에 발표됐다.",
+          "file": "wiki-translations/ko/entities/mistral-robostral-navigate.md",
+          "source_file": "research/wiki/entities/mistral-robostral-navigate.md",
+          "source_sha256": "4cb1596aff77990985970dec076e2c9f65327cca542dc819116fcac06e856309"
+        }
+      }
     },
     {
       "slug": "mistral-shieldstral",
@@ -2766,7 +2946,17 @@
         "meta",
         "muse-glimmer",
         "open-weights"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "Muse Code (Muse Spark 1.2)",
+          "summary": "Meta Superintelligence Labs가 처음 선보인 코딩 에이전트(베타, 2026-08-06). 새로운 Muse Spark 1.2에서 작동하는 영속적 하위 에이전트 기반의 터미널 에이전트로, 가격은 Mtok당 $1.25/$4.25이며 Meta가 개발자의 코드로 학습하도록 허용하면 더 저렴한 요금제를 이용할 수 있다. Muse Spark 1.2의 오픈 웨이트 버전은 \"수주 내\" 공개될 예정이라고 발표됐다(2026-08-10).",
+          "description": "Meta Superintelligence Labs가 처음 선보인 코딩 에이전트(베타, 2026-08-06). 새로운 Muse Spark 1.2에서 작동하는 영속적 하위 에이전트 기반의 터미널 에이전트로, 가격은 Mtok당 $1.25/$4.25이며 Meta가 개발자의 코드로 학습하도록 허용하면 더 저렴한 요금제를 이용할 수 있다. Muse Spark 1.2의 오픈 웨이트 버전은 \"수주 내\" 공개될 예정이라고 발표됐다(2026-08-10).",
+          "file": "wiki-translations/ko/entities/muse-code.md",
+          "source_file": "research/wiki/entities/muse-code.md",
+          "source_sha256": "97db5d63a5bc88281df78a6e8e9cf10e8bea5a063bf5b41c46ae6425ae33fab2"
+        }
+      }
     },
     {
       "slug": "muse-glimmer",
@@ -2803,7 +2993,17 @@
         "muse-code",
         "nvidia",
         "open-weights"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "Muse Glimmer",
+          "summary": "Meta가 Apache 2.0으로 2026-08-10 공개한 30B 고밀도 멀티모달 에이전트 모델. 출시 당일(day-0)부터 transformers/llama.cpp/vLLM/SGLang/Ollama를 지원하며, Muse Spark에서 증류되어 벤치마크 24개 항목 중 12개에서 최고 성능을 기록했다.",
+          "description": "Meta가 Apache 2.0으로 2026-08-10 공개한 30B 고밀도 멀티모달 에이전트 모델. 출시 당일(day-0)부터 transformers/llama.cpp/vLLM/SGLang/Ollama를 지원하며, Muse Spark에서 증류되어 벤치마크 24개 항목 중 12개에서 최고 성능을 기록했다.",
+          "file": "wiki-translations/ko/entities/muse-glimmer.md",
+          "source_file": "research/wiki/entities/muse-glimmer.md",
+          "source_sha256": "ef0c0ebaab198b1d399b9186dbdc63f3b5a848054e082da05ba9ed3469a75cd9"
+        }
+      }
     },
     {
       "slug": "nano-banana-2-lite",
@@ -2878,6 +3078,16 @@
         "exchange": "NASDAQ",
         "symbol": "NASDAQ:NBIS",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "네비우스 그룹",
+          "summary": "얀덱스에서 분사한 암스테르담 기반 AI 클라우드(\"네오클라우드\") 제공업체. FY26Q2(2026-08-13)에 매출 $582.3M(+454% YoY), AI 클라우드 조정 EBITDA 마진 ~50%를 기록했으며, 계약 전력을 5GW로 늘렸고 거래의 ~70%에 고객 선결제가 포함됐다.",
+          "description": "얀덱스에서 분사한 암스테르담 기반 AI 클라우드(\"네오클라우드\") 제공업체. FY26Q2(2026-08-13)에 매출 $582.3M(+454% YoY), AI 클라우드 조정 EBITDA 마진 ~50%를 기록했으며, 계약 전력을 5GW로 늘렸고 거래의 ~70%에 고객 선결제가 포함됐다.",
+          "file": "wiki-translations/ko/entities/nebius.md",
+          "source_file": "research/wiki/entities/nebius.md",
+          "source_sha256": "3af30c30e3a442fb391b7de5791ac03a877caf230319a07377ab281f7cdaf173"
+        }
       }
     },
     {
@@ -3050,6 +3260,32 @@
         "exchange": "NASDAQ",
         "symbol": "NASDAQ:NVDA",
         "provider": "yahoo"
+      },
+      "translations": {
+        "ko": {
+          "title": "NVIDIA",
+          "summary": "지배적인 AI 가속기 공급업체이자 2026-08-10 보도된 월가의 약 ~$500B AI 인프라 금융 패키지의 중심축. Ilya Sutskever의 Safe Superintelligence에 약 ~$5B을 지원하고, 1T 매개변수 Nemotron 4를 목표로 하는 오픈 웨이트 Nemotron 계열과 자체 ~$500B 패키지의 잔존가치 보증을 추진한다.",
+          "description": "지배적인 AI 가속기 공급업체이자 2026-08-10 보도된 월가의 약 ~$500B AI 인프라 금융 패키지의 중심축. Ilya Sutskever의 Safe Superintelligence에 약 ~$5B을 지원하고, 1T 매개변수 Nemotron 4를 목표로 하는 오픈 웨이트 Nemotron 계열과 자체 ~$500B 패키지의 잔존가치 보증을 추진한다.",
+          "file": "wiki-translations/ko/entities/nvidia.md",
+          "source_file": "research/wiki/entities/nvidia.md",
+          "source_sha256": "b55180c8d5b1961c1346de48a60812a40d74edab52e118b949838fdd941ef7a0",
+          "images": [
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/NVIDIA_H100_%28%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan%29_007.png/1280px-NVIDIA_H100_%28%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan%29_007.png",
+              "alt": "AI 학습과 추론에서 NVIDIA의 역할을 보여주는 NVIDIA H100 가속기 근접 사진.",
+              "caption": "AI 자본지출 확대의 중심에 있는 가속기 등급인 NVIDIA H100 하드웨어.",
+              "credit": "Geekerwan / Wikimedia Commons (CC BY 3.0)",
+              "source_url": "https://commons.wikimedia.org/wiki/File:NVIDIA_H100_(%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan)_007.png"
+            },
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Nvidia_DGX_Station%2C_world%27s_most_powerful_desktop%2C_a_Supercomputer_at_the_office.webm/1280px--Nvidia_DGX_Station%2C_world%27s_most_powerful_desktop%2C_a_Supercomputer_at_the_office.webm.jpg",
+              "alt": "NVIDIA의 로컬 및 데이터센터 AI 시스템 사례로 제시된 데스크사이드 AI 슈퍼컴퓨터 NVIDIA DGX Station.",
+              "caption": "이 문서의 데스크사이드 AI 슈퍼컴퓨터 논의에 맥락을 제공하는 DGX Station급 하드웨어.",
+              "credit": "Charbax / Wikimedia Commons (CC BY 3.0)",
+              "source_url": "https://commons.wikimedia.org/wiki/File:Nvidia_DGX_Station,_world%27s_most_powerful_desktop,_a_Supercomputer_at_the_office.webm"
+            }
+          ]
+        }
       }
     },
     {
@@ -3139,7 +3375,17 @@
         "thinking-machines",
         "xiaomi-mimo-v2-5-pro",
         "zhipu-glm-5-2"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "오픈 웨이트 물결",
+          "summary": "갈수록 프런티어 역량에 근접하는 오픈 웨이트 모델과 함께 토렌트 네트워크, 로컬 호스팅, \"API는 빌리는 것이고 가중치는 영원하다\"는 탈중앙화 반발이 힘을 얻는 2026년의 서사. Fable 5의 정부발 중단으로 급등했고, Meta의 Apache-2.0 공개 복귀(Muse Glimmer, 2026-08-10)와 Alibaba의 첫 Max급 Qwen 개방(2026-08-13)을 거치며 mid-2026에 굳어졌다.",
+          "description": "갈수록 프런티어 역량에 근접하는 오픈 웨이트 모델과 함께 토렌트 네트워크, 로컬 호스팅, \"API는 빌리는 것이고 가중치는 영원하다\"는 탈중앙화 반발이 힘을 얻는 2026년의 서사. Fable 5의 정부발 중단으로 급등했고, Meta의 Apache-2.0 공개 복귀(Muse Glimmer, 2026-08-10)와 Alibaba의 첫 Max급 Qwen 개방(2026-08-13)을 거치며 mid-2026에 굳어졌다.",
+          "file": "wiki-translations/ko/themes/open-weights.md",
+          "source_file": "research/wiki/themes/open-weights.md",
+          "source_sha256": "6e41fc7194d9c29499994ec50aed6e7b654193c37924787d3aaf80d1381da067"
+        }
+      }
     },
     {
       "slug": "openai",
@@ -3228,7 +3474,17 @@
         "verification-bottleneck",
         "xai",
         "zawinskis-law-of-multiagents"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "OpenAI",
+          "summary": "GPT 계열을 개발한 AI 연구소. March 2026 비공개 기업가치는 $852B로 현재 Anthropic의 $965B보다 낮다. 의회의 선서 증언 요구에 직면한 가운데 Daybreak Red 등급의 검증된 방어자에게 GPT-5.6-Cyber를 출시했다(2026-08-10).",
+          "description": "GPT 계열을 개발한 AI 연구소. March 2026 비공개 기업가치는 $852B로 현재 Anthropic의 $965B보다 낮다. 의회의 선서 증언 요구에 직면한 가운데 Daybreak Red 등급의 검증된 방어자에게 GPT-5.6-Cyber를 출시했다(2026-08-10).",
+          "file": "wiki-translations/ko/entities/openai.md",
+          "source_file": "research/wiki/entities/openai.md",
+          "source_sha256": "7c4827f56484e70ca606b3bd64e4f922db5e0a71379dcfe6d551702ac2190e03"
+        }
+      }
     },
     {
       "slug": "openrouter",
@@ -3273,7 +3529,17 @@
         "open-weights",
         "sakana-ai",
         "zhipu-glm-5-2"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "OpenRouter",
+          "summary": "모델 400+를 개발자 8M+에게 제공하는 LLM 라우팅 API. 2026-05-30에 포스트머니 기업가치 $1.3B로 $113M 규모의 시리즈 B 투자를 유치했고 Fusion API를 공개했으며, 2026-07-30에 보도된 Stripe의 약 $10B 인수 협상으로 라우팅 계층의 인수 경쟁을 촉발했다.",
+          "description": "모델 400+를 개발자 8M+에게 제공하는 LLM 라우팅 API. 2026-05-30에 포스트머니 기업가치 $1.3B로 $113M 규모의 시리즈 B 투자를 유치했고 Fusion API를 공개했으며, 2026-07-30에 보도된 Stripe의 약 $10B 인수 협상으로 라우팅 계층의 인수 경쟁을 촉발했다.",
+          "file": "wiki-translations/ko/entities/openrouter.md",
+          "source_file": "research/wiki/entities/openrouter.md",
+          "source_sha256": "2b44c3c1568b05bf3f7c0d21ea003b13a8fed18b2b0bf10a61c42e483b3f54de"
+        }
+      }
     },
     {
       "slug": "palantir",
@@ -3389,7 +3655,17 @@
         "moonshot-kimi-k3",
         "muse-glimmer",
         "open-weights"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "Qwen3.8-Max",
+          "summary": "Alibaba가 2026-08-04 Mtok당 $2/$6에 출시하고 2026-08-13 Qwen3.8-2.4T-A95B로 오픈 웨이트를 공개한 2.4T 매개변수 / 활성 95B MoE 주력 모델로, 공개된 최초의 Max급 Qwen이다.",
+          "description": "Alibaba가 2026-08-04 Mtok당 $2/$6에 출시하고 2026-08-13 Qwen3.8-2.4T-A95B로 오픈 웨이트를 공개한 2.4T 매개변수 / 활성 95B MoE 주력 모델로, 공개된 최초의 Max급 Qwen이다.",
+          "file": "wiki-translations/ko/entities/qwen-3-8-max.md",
+          "source_file": "research/wiki/entities/qwen-3-8-max.md",
+          "source_sha256": "1fcf5a263d70be432686cc077cc9306b56dcf2cc8f33851682359c6d76e3ef73"
+        }
+      }
     },
     {
       "slug": "remote-labor-index",
@@ -3776,7 +4052,17 @@
         "anthropic",
         "etched",
         "model-specific-silicon"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "Taalas",
+          "summary": "단일 모델을 실리콘에 직접 하드와이어하는 추론 칩 스타트업. 거래 조건이 공개되지 않은 채 2026-08-07 AMD에 인수됐으며, Nvidia–Groq에 이어 이번 사이클에서 두 번째로 이뤄진 모델 특화 실리콘 인수다.",
+          "description": "단일 모델을 실리콘에 직접 하드와이어하는 추론 칩 스타트업. 거래 조건이 공개되지 않은 채 2026-08-07 AMD에 인수됐으며, Nvidia–Groq에 이어 이번 사이클에서 두 번째로 이뤄진 모델 특화 실리콘 인수다.",
+          "file": "wiki-translations/ko/entities/taalas.md",
+          "source_file": "research/wiki/entities/taalas.md",
+          "source_sha256": "4c86376bc9af9ab3b6c77e92cc597594e69f1ffec16a88dd31648f295eb70640"
+        }
+      }
     },
     {
       "slug": "tencent-hunyuan-hy3",
@@ -3811,7 +4097,17 @@
         "mistral-robostral-navigate",
         "seedance-2-5",
         "zhipu-glm-5-2"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "텐센트 훈위안 Hy3",
+          "summary": "Apache 2.0을 적용한 Tencent Hunyuan의 295B 매개변수 오픈 웨이트 MoE 모델. MCP-Atlas 벤치마크에서 새로운 오픈 모델 SOTA를 기록한 것으로 보도됐으며 2026-07-06에 출시됐다.",
+          "description": "Apache 2.0을 적용한 Tencent Hunyuan의 295B 매개변수 오픈 웨이트 MoE 모델. MCP-Atlas 벤치마크에서 새로운 오픈 모델 SOTA를 기록한 것으로 보도됐으며 2026-07-06에 출시됐다.",
+          "file": "wiki-translations/ko/entities/tencent-hunyuan-hy3.md",
+          "source_file": "research/wiki/entities/tencent-hunyuan-hy3.md",
+          "source_sha256": "425690b1d3085d1e4b457ab03ee0ceb94c95f8a04918d29d6a28f8a561a0494d"
+        }
+      }
     },
     {
       "slug": "thinking-machines",
@@ -3987,7 +4283,17 @@
         "seedance-2-5",
         "spacex",
         "volta-infra"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "xAI",
+          "summary": "Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-08-13에 Grok 4.6을 Cursor와 Grok Build에 투입해 가격을 Mtok당 $2/$6로 책정하고 Artificial Analysis Intelligence Index에서 61을 기록했으며, Grok 4.7은 서너 주 뒤로 예고했다. 한편 근본적인 역량 문제를 해결하는 대신 Grok이 생성한 CSAM을 두고 사용자를 고소하고 있다.",
+          "description": "Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-08-13에 Grok 4.6을 Cursor와 Grok Build에 투입해 가격을 Mtok당 $2/$6로 책정하고 Artificial Analysis Intelligence Index에서 61을 기록했으며, Grok 4.7은 서너 주 뒤로 예고했다. 한편 근본적인 역량 문제를 해결하는 대신 Grok이 생성한 CSAM을 두고 사용자를 고소하고 있다.",
+          "file": "wiki-translations/ko/entities/xai.md",
+          "source_file": "research/wiki/entities/xai.md",
+          "source_sha256": "d72b39520daaf60c946d4e951ac65319b6d90aecaf57b7ceff21418e20737308"
+        }
+      }
     },
     {
       "slug": "xiaomi-mimo-v2-5-pro",
@@ -4052,7 +4358,17 @@
       "inbound": [
         "agentic-ai-security",
         "dynamic-workflows"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "멀티에이전트에 관한 자윈스키의 법칙",
+          "summary": "모든 에이전트는 다른 에이전트에게 메시지를 보낼 수 있을 때까지 확장하려 한다는 2026년의 경구. Latent Space가 OpenAI/Hugging Face 사건과 세션 간 에이전트 메시징의 제품화를 두고 만들었다.",
+          "description": "모든 에이전트는 다른 에이전트에게 메시지를 보낼 수 있을 때까지 확장하려 한다는 2026년의 경구. Latent Space가 OpenAI/Hugging Face 사건과 세션 간 에이전트 메시징의 제품화를 두고 만들었다.",
+          "file": "wiki-translations/ko/concepts/zawinskis-law-of-multiagents.md",
+          "source_file": "research/wiki/concepts/zawinskis-law-of-multiagents.md",
+          "source_sha256": "d32a335566dc001b814d075db894f1c97dc113c3e25afc8c101fbe9605ba6495"
+        }
+      }
     },
     {
       "slug": "zhipu-glm-5-2",

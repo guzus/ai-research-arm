@@ -26,12 +26,13 @@ const skipLfsPointers = process.env.SKIP_LFS_POINTERS === '1';
 // Subdirs to mirror into public/research/. Keys match how the dashboard
 // fetches them; the manifest builder below uses the same set.
 // `wiki` carries research/wiki/ (committed index.json + entities/concepts/themes
-// markdown). The index is built in Python (scripts/build_wiki_index.py) and
+// markdown). `wiki-translations` carries locale mirrors referenced by that
+// index. The index is built in Python (scripts/build_wiki_index.py) and
 // committed — we only copy it here; we never rebuild it in JS.
 // `market` carries research/market/quotes.json (market-quotes.yml). Like
 // `arm` it is a single JSON with no date-keyed files, so it stays out of
 // DATE_PATTERNS — it has no per-day artifacts for the freshness rows to key on.
-const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki', 'youtube', 'arm', 'market'];
+const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki', 'wiki-translations', 'youtube', 'arm', 'market'];
 
 // Twitter comparison-lane dirs (hourly-twitter.yml backend tiers). Copied for
 // the A/B side-by-side view but deliberately NOT in COPY_DIRS/DATE_PATTERNS:

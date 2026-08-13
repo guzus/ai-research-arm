@@ -42,6 +42,8 @@ research/*
 !research/generative/**
 !research/wiki
 !research/wiki/**
+!research/wiki-translations
+!research/wiki-translations/**
 !research/youtube
 !research/youtube/**
 !research/arm

@@ -11,7 +11,27 @@
       "meta",
       "architecture",
       "fixture"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051725--why-generative-research-belongs-next-to-scheduled-aggregatio.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "예약 집계 옆에 생성형 리서치 레인이 필요한 이유",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:17:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [
+          "meta",
+          "architecture",
+          "fixture"
+        ],
+        "translated_at": "2026-08-13T05:17:25Z",
+        "source_file": "research/generative/2026-05-15T050845--why-generative-research-belongs-next-to-scheduled-aggregatio.ara.md",
+        "source_sha256": "79b57834ad56672559f8c0860285b92c56e639242bb2a6784ef88abcd62757cc"
+      }
+    }
   },
   {
     "slug": "components",
@@ -69,7 +89,23 @@
     "created_at": "2026-05-16T02:24:49Z",
     "source": "issue",
     "prompt": "[Research] Situational Awareness LP",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051725--research-situational-awareness-lp.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Situational Awareness LP: AGI 선언문에 증권 계좌가 따라왔을 때",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:17:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [],
+        "translated_at": "2026-08-13T05:17:25Z",
+        "source_file": "research/generative/2026-05-16T022449--research-situational-awareness-lp.ara.md",
+        "source_sha256": "174d785421d7a077ea258c3b05b8ac98dd3c6173bbdbe03ece6736442df80f63"
+      }
+    }
   },
   {
     "slug": "spacex-ipo",
@@ -84,7 +120,27 @@
       "spacex",
       "ipo",
       "markets"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051825--spacex-ipo.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "자체 리테일 군단에 거는 SpaceX의 $1.75조 베팅",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:18:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [
+          "spacex",
+          "ipo",
+          "markets"
+        ],
+        "translated_at": "2026-08-13T05:18:25Z",
+        "source_file": "research/generative/2026-05-16T023126--spacex-ipo.ara.md",
+        "source_sha256": "9858d6cc92b5904d0944c44d398da58c7ed864d241998b3242787f3799b947b7"
+      }
+    }
   },
   {
     "slug": "cerebras",
@@ -99,7 +155,27 @@
       "cerebras",
       "ai-hardware",
       "semiconductors"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051825--cerebras.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "접시만 한 칩과 UAE 고객 장부를 들고 상장한 Cerebras",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:18:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [
+          "cerebras",
+          "ai-hardware",
+          "semiconductors"
+        ],
+        "translated_at": "2026-08-13T05:18:25Z",
+        "source_file": "research/generative/2026-05-16T023711--cerebras.ara.md",
+        "source_sha256": "1aea65a69469ab83b9430b07d0ccd53f6c5055ff40a34d74381881630c21e19b"
+      }
+    }
   },
   {
     "slug": "aschenbrenner-13f-name-by-name",
@@ -160,7 +236,23 @@
     "created_at": "2026-05-16T11:17:17Z",
     "source": "local",
     "prompt": "the crypto project XMAQUINA ($DEUS)",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051726--the-crypto-project-xmaquina-deus.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "XMAQUINA: TGE 11일 전, 휴머노이드 로봇 기업에 대한 토큰화 익스포저",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:17:26Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [],
+        "translated_at": "2026-08-13T05:17:26Z",
+        "source_file": "research/generative/2026-05-16T111717--the-crypto-project-xmaquina-deus.ara.md",
+        "source_sha256": "a7bff6bdc917e6fe19e7fe3adcaa951101c910eaf823439b07f3036bf48ae5c1"
+      }
+    }
   },
   {
     "slug": "about-the-crypto-project-xmaquina-deus",
@@ -242,7 +334,28 @@
       "healthcare",
       "diagnostics",
       "oncology"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051404--natera-inc.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Natera: cfDNA 플랫폼의 서사가 물량 성장에서 임상 운영 레버리지로 이동하고 있다",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:14:04Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill for natera-inc",
+        "tags": [
+          "company",
+          "healthcare",
+          "diagnostics",
+          "oncology"
+        ],
+        "translated_at": "2026-08-13T05:14:04Z",
+        "source_file": "research/generative/2026-05-16T182300--natera-inc.ara.md",
+        "source_sha256": "a4fe3380063594fadaa7484886ec0184bd5080a4433a4c8edd1d0530fa9b3712"
+      }
+    }
   },
   {
     "slug": "compare-claude-power-bottlenecks",
@@ -792,7 +905,23 @@
     "created_at": "2026-06-27T05:02:33Z",
     "source": "fireworks-deepseek-v4-flash",
     "prompt": "GPT-5.6 Sol/Terra/Luna: OpenAI's three-tier launch under federal limited-preview and the price war with Anthropic's Mythos 5",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051321--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "세 개 티어, 하나의 정부: OpenAI의 GPT-5.6 Sol/Terra/Luna 출시와 Anthropic Mythos 5와의 가격 전쟁",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:13:21Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill for gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede",
+        "tags": [],
+        "translated_at": "2026-08-13T05:13:21Z",
+        "source_file": "research/generative/2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede.ara.md",
+        "source_sha256": "1181d152796876042c7bd9bac3349db3e7ff79fe7cf11cb03db4ccbb0ee39374"
+      }
+    }
   },
   {
     "slug": "deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f",
@@ -1037,7 +1166,23 @@
     "created_at": "2026-07-23T17:31:42Z",
     "source": "workflow_dispatch",
     "prompt": "Why Hims & Hers Is Betting on Peptide Therapy—and What It Could Mean for Everyday Patients. Write for readers unfamiliar with pharmaceuticals and telehealth: explain what peptide therapies are, why they are becoming popular, what Hims & Hers is planning, what the FDA is deciding, the potential benefits and safety concerns, and whether Hims could make these treatments more legitimate and accessible—or simply commercialize an under-tested wellness trend. Clearly distinguish 503A compounded treatments from FDA-approved drugs, and treat the July 23–24, 2026 advisory meeting as a non-binding review rather than an FDA approval.",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T043426--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Hims &amp; Hers가 펩타이드 치료에 승부를 거는 이유—그리고 이것이 일반 환자에게 의미할 수 있는 것",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T04:34:26Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill for why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul",
+        "tags": [],
+        "translated_at": "2026-08-13T04:34:26Z",
+        "source_file": "research/generative/2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul.ara.md",
+        "source_sha256": "4ef6530a35eb1f25030fa490482b6ea369e22f24f02e4c9057d83465c8544203"
+      }
+    }
   },
   {
     "slug": "deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2",
