@@ -792,7 +792,23 @@
     "created_at": "2026-06-27T05:02:33Z",
     "source": "fireworks-deepseek-v4-flash",
     "prompt": "GPT-5.6 Sol/Terra/Luna: OpenAI's three-tier launch under federal limited-preview and the price war with Anthropic's Mythos 5",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051321--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "세 개 티어, 하나의 정부: OpenAI의 GPT-5.6 Sol/Terra/Luna 출시와 Anthropic Mythos 5와의 가격 전쟁",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:13:21Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill for gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede",
+        "tags": [],
+        "translated_at": "2026-08-13T05:13:21Z",
+        "source_file": "research/generative/2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede.ara.md",
+        "source_sha256": "1181d152796876042c7bd9bac3349db3e7ff79fe7cf11cb03db4ccbb0ee39374"
+      }
+    }
   },
   {
     "slug": "deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f",
