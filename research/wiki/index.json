@@ -2806,7 +2806,17 @@
         "meta",
         "muse-glimmer",
         "open-weights"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "Muse Code (Muse Spark 1.2)",
+          "summary": "Meta Superintelligence Labs가 처음 선보인 코딩 에이전트(베타, 2026-08-06). 새로운 Muse Spark 1.2에서 작동하는 영속적 하위 에이전트 기반의 터미널 에이전트로, 가격은 Mtok당 $1.25/$4.25이며 Meta가 개발자의 코드로 학습하도록 허용하면 더 저렴한 요금제를 이용할 수 있다. Muse Spark 1.2의 오픈 웨이트 버전은 \"수주 내\" 공개될 예정이라고 발표됐다(2026-08-10).",
+          "description": "Meta Superintelligence Labs가 처음 선보인 코딩 에이전트(베타, 2026-08-06). 새로운 Muse Spark 1.2에서 작동하는 영속적 하위 에이전트 기반의 터미널 에이전트로, 가격은 Mtok당 $1.25/$4.25이며 Meta가 개발자의 코드로 학습하도록 허용하면 더 저렴한 요금제를 이용할 수 있다. Muse Spark 1.2의 오픈 웨이트 버전은 \"수주 내\" 공개될 예정이라고 발표됐다(2026-08-10).",
+          "file": "wiki-translations/ko/entities/muse-code.md",
+          "source_file": "research/wiki/entities/muse-code.md",
+          "source_sha256": "97db5d63a5bc88281df78a6e8e9cf10e8bea5a063bf5b41c46ae6425ae33fab2"
+        }
+      }
     },
     {
       "slug": "muse-glimmer",
@@ -2843,7 +2853,17 @@
         "muse-code",
         "nvidia",
         "open-weights"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "Muse Glimmer",
+          "summary": "Meta가 Apache 2.0으로 2026-08-10 공개한 30B 고밀도 멀티모달 에이전트 모델. 출시 당일(day-0)부터 transformers/llama.cpp/vLLM/SGLang/Ollama를 지원하며, Muse Spark에서 증류되어 벤치마크 24개 항목 중 12개에서 최고 성능을 기록했다.",
+          "description": "Meta가 Apache 2.0으로 2026-08-10 공개한 30B 고밀도 멀티모달 에이전트 모델. 출시 당일(day-0)부터 transformers/llama.cpp/vLLM/SGLang/Ollama를 지원하며, Muse Spark에서 증류되어 벤치마크 24개 항목 중 12개에서 최고 성능을 기록했다.",
+          "file": "wiki-translations/ko/entities/muse-glimmer.md",
+          "source_file": "research/wiki/entities/muse-glimmer.md",
+          "source_sha256": "ef0c0ebaab198b1d399b9186dbdc63f3b5a848054e082da05ba9ed3469a75cd9"
+        }
+      }
     },
     {
       "slug": "nano-banana-2-lite",
@@ -3826,7 +3846,17 @@
         "anthropic",
         "etched",
         "model-specific-silicon"
-      ]
+      ],
+      "translations": {
+        "ko": {
+          "title": "Taalas",
+          "summary": "단일 모델을 실리콘에 직접 하드와이어하는 추론 칩 스타트업. 거래 조건이 공개되지 않은 채 2026-08-07 AMD에 인수됐으며, Nvidia–Groq에 이어 이번 사이클에서 두 번째로 이뤄진 모델 특화 실리콘 인수다.",
+          "description": "단일 모델을 실리콘에 직접 하드와이어하는 추론 칩 스타트업. 거래 조건이 공개되지 않은 채 2026-08-07 AMD에 인수됐으며, Nvidia–Groq에 이어 이번 사이클에서 두 번째로 이뤄진 모델 특화 실리콘 인수다.",
+          "file": "wiki-translations/ko/entities/taalas.md",
+          "source_file": "research/wiki/entities/taalas.md",
+          "source_sha256": "4c86376bc9af9ab3b6c77e92cc597594e69f1ffec16a88dd31648f295eb70640"
+        }
+      }
     },
     {
       "slug": "tencent-hunyuan-hy3",
