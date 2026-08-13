@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.
+description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), and the 2026 hardware line (Pixel 11, Pixel Watch 5) shipped with Gemini throughout plus the on-device SL2T sign-language model (2026-08-13).
 created_at: 2026-07-17
-timestamp: 2026-08-12T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
@@ -177,6 +178,15 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   randomized OSCE study**, the video counterpart to the text-based AMIE
   trajectory and a concrete read on where AI-for-medicine stands (Google
   Research; ARA daily digest 2026-08-12).
+- **Made by Google '26 — the hardware line ships Gemini throughout
+  (2026-08-13).** Google announced the **Pixel 11 series**, **Pixel Watch 5 at
+  $399**, a **Pixel Tag** AirTag rival, and a slate of **Gemini features** at
+  Made by Google '26. In the same window **DeepMind released SL2T**, an
+  **American Sign Language–to-English model** running **body-pose tracking
+  on-device** and shipping in **Gboard and Live Transcribe on Pixel 11** —
+  accessibility-model progress as a consumer-hardware feature rather than a
+  cloud API (TechCrunch, The Verge, @GoogleDeepMind; ARA daily digest
+  2026-08-13).
 
 ## Open questions
 

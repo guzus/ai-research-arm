@@ -2,12 +2,13 @@
 slug: qwen-3-8-max
 title: Qwen3.8-Max
 type: entity
-aliases: ["Qwen3.8-Max", "Qwen3.8", "Qwen 3.8 Max", "Qwen3.8 Max"]
+aliases: ["Qwen3.8-Max", "Qwen3.8", "Qwen 3.8 Max", "Qwen3.8 Max", "Qwen3.8-2.4T-A95B"]
 tags: [open-weights, model, moe, chinese-llm, long-context, alibaba]
-description: Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok with open weights promised the following week — which would be the first Max-class Qwen ever released open.
+description: Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open.
 created_at: 2026-08-04
-timestamp: 2026-08-09T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
   - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
@@ -17,11 +18,10 @@ sources:
 
 **Qwen3.8-Max** is [[alibaba]]'s flagship text model: a **2.4 trillion-parameter
 / 95 billion-active mixture-of-experts** with a **1M-token context**, launched
-2026-08-04 at **$2 per million input / $6 per million output** tokens. Alibaba
-says Max plus a **27B sibling** reach Hugging Face **next week** — which would
-make it the **first Max-class Qwen ever released open-weight**. As of this
-ingest the weights are still unpublished, so the load-bearing claim of the
-launch is a promise, not an artifact (ARA digest 2026-08-04).
+2026-08-04 at **$2 per million input / $6 per million output** tokens. The
+open-weight release landed on **2026-08-13 as `Qwen3.8-2.4T-A95B`** — the
+**first Max-class Qwen ever released open** — with **95B active parameters
+across 512 experts** and **4.89TB of weights** (ARA digest 2026-08-13).
 
 It is the shipped form of the model tracked since 2026-07-20 on the
 [[alibaba]] page as "going open-weight soon," and previewed 2026-07-21 with a
@@ -60,13 +60,31 @@ self-reported #2 overall rank behind [[claude-fable-5|Claude Fable 5]].
   launch-day "open weights next week" commitment into a concrete artifact
   target — though as of this ingest the weights remain unpublished
   (r/LocalLLaMA via Latent.Space AINews; ARA daily digest 2026-08-09).
+- **The open weights actually ship — `Qwen3.8-2.4T-A95B` lands (2026-08-13).**
+  Alibaba open-weighted the 2.4T/95B-active model: **4.89TB of weights, 512
+  experts**, **day-0 vLLM support**, and **pre-quantized 4-bit checkpoints
+  sized to a single 8×B300 or 8×MI355X node**. vLLM published
+  `Inferact/Qwen3.8-2.4T-A95B-NVFP4` at **1.32 TiB** and an **MXFP4 build at
+  1.45 TiB**; Unsloth published a **dynamic 1-bit build at 397GB** that still
+  needs 410GB+ of RAM or VRAM. **No quality measurement against the
+  quantizations was published.** The model card confirms it is the **base of
+  Alibaba's own commercial flagship**, with **vision, the 1M default context
+  and built-in tools withheld as the paid layer** — the open release is the
+  text-and-1M-context base, not the ranked commercial system. The **27B
+  sibling** (`Qwen3.8-27B`), "the size most people can actually run," is due
+  **Friday 14 August**. HN threads on the release converged on **MoE
+  active-parameter economics** — how ~95B-active models price against frontier
+  rivals (ARA digest 2026-08-13).
 
 ## Open questions
 
-- **Do the weights actually ship, and under what license?** "Next week" (from
-  2026-08-04) is the commitment. A Max-class open release would be a genuine
-  first; a slip or a restrictive license would make this a normal API launch.
+- **Do the open weights match the commercial model's behavior?** With vision,
+  the 1M default context and built-in tools withheld as the paid layer, the
+  ranked system and the downloadable base differ in components — the
+  component-withholding pattern this wiki tracks on [[open-weights]].
 - **Do the vendor wins replicate against the excluded models?** No independent
   head-to-head against Kimi K3 or Opus 5 exists yet.
 - **Is the 27B sibling the artifact most people actually run?** A 2.4T MoE is
-  out of reach for local inference; the small model may carry the real adoption.
+  out of reach for local inference; `Qwen3.8-27B` (due 2026-08-14) may carry
+  the real adoption, and no quality measurement against the quantizations has
+  been published.

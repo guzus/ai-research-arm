@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10) and a broker/router shift routes production traffic to Chinese open models.
+description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10) and Alibaba opens its first Max-class Qwen (2026-08-13).
 created_at: 2026-06-14
-timestamp: 2026-08-11T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
@@ -391,6 +392,19 @@ fragile and local weights look like insurance.
   American leadership."* Together they harden Meta as the loudest pro-open
   US voice against the [[anthropic]]/[[openai]] convergence this theme has
   tracked since the "dumping" framing fight (ARA daily digest 2026-08-11).
+- **China opens its first Max-class flagship — Alibaba's Qwen3.8-2.4T-A95B
+  (2026-08-13).** The promise tracked on [[qwen-3-8-max]] since launch day
+  landed: Alibaba open-weighted the **2.4T-param / 95B-active model across 512
+  experts (4.89TB of weights)** with day-0 vLLM and pre-quantized 4-bit
+  checkpoints sized to a single 8×B300 or 8×MI355X node — the **first
+  Max-class Qwen ever released open**. The day's HN threads on it and
+  [[deepseek|DeepSeek V4-Pro-0813]] converged on **MoE active-parameter
+  economics** (how ~95B-active models price against frontier rivals), the
+  cost story that has driven this theme all cycle. Two caveats keep the
+  component-withholding pattern alive: **vision, 1M default context and
+  built-in tools are withheld** on the open base (they stay the paid layer),
+  and **no quality measurement against the quantizations was published**
+  (ARA daily digest 2026-08-13).
 
 ## Open questions
 

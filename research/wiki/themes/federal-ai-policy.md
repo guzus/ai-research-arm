@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships and drawing sworn-testimony demands from Congress (2026-08-10).
+description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships, drawing sworn-testimony demands from Congress, and reportedly facing an update that could extend it to open models (2026-08-13).
 created_at: 2026-06-03
-timestamp: 2026-08-11T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
@@ -659,6 +660,20 @@ footing for the first time in the cycle.
     **converts voluntary safety-framework language from an asset into a
     liability**, changing the incentive to publish incident detail (ARA daily
     digest 2026-08-11).
+- **The oversight framework is expected to be updated — and possibly extended
+  to open models (2026-08-13).** Per WIRED reporting relayed on X, the Trump
+  administration is expected to update its AI oversight framework in the
+  coming weeks or months and — in a new development — **extend it to open
+  models that reach the frontier**. **Not independently confirmed in today's
+  collection**; if it lands it would reverse the finished framework's
+  open-weights carve-out tracked above (2026-08-06) and intersect directly
+  with the [[open-weights]] political fight (ARA daily digest 2026-08-13).
+- **OpenAI's ethics head resigns; Strategic Futures adds two policy hires
+  (2026-08-13).** [[openai|OpenAI]]'s **head of ethics resigned after less
+  than a year** with **no replacement reported** (FT via @rohanpaul_ai,
+  single relay) — while its **Strategic Futures team under Dean Ball added
+  two frontier-AI policy hires the same day**, the hiring and attrition
+  happening on the same policy team (ARA daily digest 2026-08-13).
 
 ## Open questions
 

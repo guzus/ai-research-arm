@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); backing Ilya Sutskever's Safe Superintelligence (~$5B) and the open-weights Nemotron line.
+description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); backing Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.
 created_at: 2026-06-05
-timestamp: 2026-08-12T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
@@ -153,8 +154,11 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   the ~$500B package — including projects **its own GPUs are sold into** — the
   precise circularity the "new asset class" framing was built to answer. **No
   term sheet is public**; the "single anonymous CNBC source" and "debt, not
-  equity" caveats from the 2026-08-10 entry still govern (ARA daily digest
-  2026-08-12).
+  equity" caveats from the 2026-08-10 entry still govern. On 2026-08-13 the WSJ
+  reported **Jensen Huang characterising that support as residual-value
+  guarantees** — NVIDIA **underwrites the resale floor of hardware whose
+  obsolescence it schedules**, the vendor-controlled-depreciation reading of the
+  backstop (ARA daily digest 2026-08-12/13).
 - **Nemotron 3.5 Lightning + NeMo Switchyard — the agent-volume pitch
   (2026-08-11/12).** NVIDIA released **Nemotron 3.5 Lightning**, an
   **open-weight 30B mixture-of-experts** model with **~3B active parameters**
@@ -166,14 +170,20 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   The most concrete public number yet on routing economics: **LangChain
   benchmarked Switchyard on 145 agent tasks and found only 7% of turns needed a
   frontier model**, with routing cutting cost **74% at a six-point accuracy
-  loss** — a public estimate of how much agent traffic is over-served
-  (The Information, The Decoder, LangChain; ARA daily digest 2026-08-12).
-- **Nemotron 4 reported in development (2026-08-11/12).** Per *The Information*,
-  NVIDIA is building an **open-weight family whose largest member carries at
-  least a trillion parameters**, positioned against Chinese open models — its
-  reporter frames the goal as **spurring Western open-source competition** rather
-  than winning a benchmark. Treat as reported; no artifact exists yet (ARA daily
-  digest 2026-08-12).
+  loss** — a public estimate of how much agent traffic is over-served.
+  On 2026-08-13 **Nemotron 3.5 Lightning went live on the Perplexity Agent API**
+  at **$0.0115/$0.17 per million tokens** — the cheapest widely-distributed
+  agent-model rate card of the cycle (The Information, The Decoder, LangChain;
+  ARA daily digest 2026-08-12/13).
+- **Nemotron 4 reported in development — now aimed at the leading edge
+  (2026-08-11/13).** Per *The Information* and The Decoder, NVIDIA is building
+  an **open-weight family targeting one trillion parameters** — a scale
+  **Chinese labs have already passed** — with the goal of **spurring Western
+  open-source competition**. The Information separately reports NVIDIA is aiming
+  to make **Nemotron 4 leading-edge**, which would put it **in competition with
+  the model labs that are its largest customers** — the Nemotron line's
+  cannibalization question (below) posed at its sharpest. Treat as reported; no
+  artifact exists yet (ARA daily digest 2026-08-12/13).
 
 ## Open questions
 - **The TSMC ceiling.** TSMC warned (2026-06-05) it **cannot meet AI-chip demand

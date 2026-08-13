@@ -4,10 +4,11 @@ title: Cognition AI
 type: entity
 aliases: ["Cognition", "Cognition AI", "Cognition Labs", "Devin"]
 tags: [agentic, coding-agent, startup, ai-engineering]
-description: Maker of the Devin autonomous coding agent; raised $1B+ at a $26B post-money valuation in May 2026 against $492M ARR (~13× YoY), with 89% of Cognition's own code now written by Devin.
+description: Maker of the Devin autonomous coding agent; raised $1B+ at a $26B post-money valuation in May 2026 against $492M ARR (~13× YoY), with 89% of Cognition's own code now written by Devin — and in talks at a $40B+ valuation on a round that could exceed $1B (2026-08-13).
 created_at: 2026-05-29
-timestamp: 2026-05-29T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
   - {title: "ARA daily digest 2026-05-27", path: research/digest/2026-05-27-digest.md}
 ---
@@ -39,6 +40,14 @@ client.
   customer repos, the [[agentic-ai-security]] failure modes — supply-chain
   CVEs, capability misuse — apply to the agent product directly, not just
   to the agent frameworks it competes with.
+- **A $40B+ valuation three months after $26B (2026-08-13).** Bloomberg and
+  TechCrunch report **Cognition in talks at a $40B+ valuation on a round that
+  could exceed $1B** — three months after closing at $26B — against an
+  annualised run rate approaching **$1B** (roughly **40× revenue**). The
+  compression of the valuation gap with its infrastructure-supercycle
+  backdrop is the point: an agent-product company is now being priced like
+  the labs and clouds around it (Bloomberg via @rohanpaul_ai, TechCrunch;
+  ARA daily digest 2026-08-13).
 
 ## Open questions
 - **Moat against Dynamic Workflows.** If [[anthropic]] turns Claude Code into
