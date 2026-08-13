@@ -23026,5 +23026,54 @@
     "headline": "COGNITION IN TALKS TO RAISE $1B+ AT $40B \u2014 OVER 50% ABOVE ITS $26B MAY MARK",
     "source": "@IPONewsroom_",
     "url": "https://x.com/IPONewsroom_/status/2087939159029846396"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-13 21:57:58 UTC",
+    "headline": "GOOGLE SHIPS GEMINI 3.7 FLASH AT $0.75/$3.75 \u2014 HALF-PRICE PROMO EXPIRES JAN 1 INTO 3.6 FLASH'S EXACT OLD RATE",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2087948481721962669"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-13 21:57:58 UTC",
+    "headline": "X OPEN-SOURCES FOR YOU RANKING CODE UNDER APACHE 2.0 \u2014 GROK PROMPTS AND ENFORCEMENT RULES WITHHELD",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2087966834519675053"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-13 21:57:58 UTC",
+    "headline": "OPENAI SHIPS CHATGPT COMPUTER HISTORY \u2014 DESKTOP MEMORY ACROSS APPS AND WEBSITES; EEA, UK, SWITZERLAND DEFERRED",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2087996496088297746"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-13 21:57:58 UTC",
+    "headline": "GPT-5.6 SOL HITS 750 TOKENS/SEC ON CEREBRAS AT 14X SPEED \u2014 SELECT CUSTOMERS ONLY, NO PRICE PUBLISHED",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2087947721936359705"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-13 21:57:58 UTC",
+    "headline": "GEMINI 3.7 FLASH CLAIMS DEEPSWE 65.3% VS 49.0% AND AUTOMATIONBENCH 30.4% VS 17.0% \u2014 ALL VENDOR NUMBERS, NO INDEPENDENT RUN",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2087986154260037817"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-13 21:57:58 UTC",
+    "headline": "H100 ONE-YEAR RENTAL CONTRACTS UP 50% IN SIX MONTHS; LARGE CLUSTERS NOW CARRY 12-18 MONTH WAITS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2087954865024536729"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-13 21:57:58 UTC",
+    "headline": "MICROSOFT TO SHARPLY RAISE HOMEGROWN AI CHIP PRODUCTION NEXT YEAR TO CUT NVIDIA RELIANCE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2088007770851192979"
   }
 ]
