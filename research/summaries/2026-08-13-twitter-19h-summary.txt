@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-13 19:16:30 UTC
+
+CYCLE: Google and OpenAI shipped price/speed moves 3 minutes apart; Cursor's GitHub rival leaked and was pulled.
+
+TOP STORIES:
+• Gemini 3.7 Flash GA at $0.75/$3.75 per Mtok — a 50% discount dated to expire Dec 31, three weeks after 3.6 Flash [✓]
+• OpenAI previews Ultrafast for GPT-5.6 Sol at 750 tok/s, powered by Cerebras — closed preview, no price published [✓]
+• Cursor Origin, an agentic Git hosting platform, reached users ~3h before Cursor closed access as unintended [⚠]
+• X published its For You ranking code; readers extracted the weight table (reply 5, report -234) [⚠]
+
+WATCH: Whether Cursor reopens Origin with a real announcement, and whether OpenAI publishes Ultrafast pricing.
+
+Full update on GitHub.
