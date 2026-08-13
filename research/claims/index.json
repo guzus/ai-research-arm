@@ -1,5 +1,5 @@
 {
-  "article_count": 57,
+  "article_count": 58,
   "articles": [
     {
       "claim_count": 18,
@@ -569,6 +569,14 @@
       "stem": "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s",
       "tags": [],
       "title": "GlaSSEM and the 2028 date: what Samsung Electro-Mechanics actually said, and why a glass-substrate delay postpones almost nothing"
+    },
+    {
+      "claim_count": 12,
+      "created_at": "2026-08-12T22:22:13Z",
+      "slug": "grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "stem": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "tags": [],
+      "title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?"
     }
   ],
   "by_host": {
@@ -869,7 +877,10 @@
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c19",
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c2",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10",
-      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c36"
+      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c36",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c11",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c12",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c2"
     ],
     "artificialintelligenceact.eu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c30",
@@ -4016,7 +4027,8 @@
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c31",
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c5",
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c23",
-      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c24"
+      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c24",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c6"
     ],
     "veracode.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c26"
@@ -4216,7 +4228,17 @@
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c24",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c43",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c8",
-      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c33"
+      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c33",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c1",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c10",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c2",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c3",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c4",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c5",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c6",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c7",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c8",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c9"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -4475,13 +4497,15 @@
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c12",
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c15",
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c4",
-      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c5"
+      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c5",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c11"
     ],
     "https://artificialanalysis.ai/articles/kimi-k2-thinking-everything-you-need-to-know": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c21"
     ],
     "https://artificialanalysis.ai/leaderboards/models": [
-      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c1"
+      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c1",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c2"
     ],
     "https://artificialanalysis.ai/models": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10"
@@ -4493,7 +4517,8 @@
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c19"
     ],
     "https://artificialanalysis.ai/models/glm-5-2": [
-      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c7"
+      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c7",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c11"
     ],
     "https://artificialanalysis.ai/models/gpt-5-5": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c7"
@@ -4513,7 +4538,8 @@
     ],
     "https://artificialanalysis.ai/models/qwen3-8-max": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c19",
-      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c2"
+      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c2",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c12"
     ],
     "https://artificialintelligenceact.eu/article/113": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c41"
@@ -7441,7 +7467,8 @@
     ],
     "https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c31",
-      "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c5"
+      "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c5",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c6"
     ],
     "https://venturebeat.com/technology/z-ais-open-weights-glm-5-2-beats-gpt-5-5-on-multiple-long-horizon-coding-benchmarks-for-1-6th-the-cost": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c9"
@@ -9916,6 +9943,9 @@
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c10",
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c11"
     ],
+    "https://x.com/GavinSBaker/status/2087567239423676519": [
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c1"
+    ],
     "https://x.com/GlobalWireLive/status/2062796857915346970": [
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c16",
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c23"
@@ -10086,6 +10116,9 @@
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c5",
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c6"
     ],
+    "https://x.com/elonmusk/status/2087584127042408907": [
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c3"
+    ],
     "https://x.com/finkd/status/2080733191237771648": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c18"
     ],
@@ -10093,6 +10126,10 @@
       "2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th#c10",
       "2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th#c11",
       "2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th#c15"
+    ],
+    "https://x.com/gNucleusAI/status/2087656449493307617": [
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c4",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c5"
     ],
     "https://x.com/harvey/status/2064757424540749879": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c1",
@@ -10164,11 +10201,23 @@
     "https://x.com/permaximum88/status/2070728427951575375": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c9"
     ],
+    "https://x.com/rohanpaul_ai/status/2087594773389701616": [
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c1",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c9"
+    ],
+    "https://x.com/rohanpaul_ai/status/2087599380518097232": [
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c2",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c3",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c6"
+    ],
     "https://x.com/sama/status/2080683363174945065": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c16"
     ],
     "https://x.com/satyanadella/status/1883753899255046301": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c3"
+    ],
+    "https://x.com/scaling01/status/2087608575631695899": [
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c8"
     ],
     "https://x.com/sitinme/status/2070728431323762707": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c4",
@@ -10186,6 +10235,12 @@
     ],
     "https://x.com/t_blom/status/2076580921398931788": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c22"
+    ],
+    "https://x.com/testingcatalog/status/2087567672695275584": [
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c1",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c10",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c7",
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c9"
     ],
     "https://x.com/trajectorylabs/status/2064756005507072339": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c7"
@@ -10223,7 +10278,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 1761,
+  "claim_count": 1773,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -52420,9 +52475,301 @@
         "https://www.thelec.net/news/articleView.html?idxno=12584"
       ],
       "type": "event"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "2026-08-12",
+      "claim": "Grok 4.6 is priced at $2 per million input tokens and $6 per million output against Claude Fable 5 Max at $10/$50 — an 80% discount on input and 88% on output.",
+      "confidence": "high",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary",
+        "opinion"
+      ],
+      "source_urls": [
+        "https://x.com/rohanpaul_ai/status/2087594773389701616",
+        "https://x.com/testingcatalog/status/2087567672695275584",
+        "https://x.com/GavinSBaker/status/2087567239423676519"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "",
+      "claim": "Grok 4.6 went live around 15:27 UTC on 12 August 2026, available same-day in Cursor and Grok Build with 2x usage included for the first week.",
+      "confidence": "high",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c10",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c10",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://x.com/testingcatalog/status/2087567672695275584"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "2026-06-22",
+      "claim": "GLM-5.2 cost $982.90 to run the full Artificial Analysis Intelligence Index on 140M tokens against Opus 4.8's $4,012 — collapsing its advertised 5.7x output-price edge to a measured 4.1x.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c11",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "market-data",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index",
+        "https://artificialanalysis.ai/models/glm-5-2"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "2026-08-04",
+      "claim": "Qwen3.8-Max, priced identically to Grok 4.6 at $2/$6, cost $2,159.51 to complete the AA Intelligence Index on 150M output tokens against a 63M comparison median.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c12",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/qwen3-8-max"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "2026-08-12",
+      "claim": "Artificial Analysis puts Grok 4.6 at 61 on its Intelligence Index against Fable 5 Max's 62 — approximately 98.4% of the composite score.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai",
+        "x.com"
+      ],
+      "id": "c2",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://x.com/rohanpaul_ai/status/2087599380518097232",
+        "https://artificialanalysis.ai/leaderboards/models"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "2026-08-12",
+      "claim": "Grok 4.6 ranks #1 on Artificial Analysis' separate Agentic Index, a placement that entered circulation through a relayed reading rather than Artificial Analysis' own post.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c3",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c3",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "opinion"
+      ],
+      "source_urls": [
+        "https://x.com/rohanpaul_ai/status/2087599380518097232",
+        "https://x.com/elonmusk/status/2087584127042408907"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "2026-08-12",
+      "claim": "Parametric CAD Bench measured Grok 4.6 at 96.9% of Claude Opus 5's top score of 0.906 for 61% of the cost, on the same 100 tasks.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c4",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c4",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://x.com/gNucleusAI/status/2087656449493307617"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "2026-08-12",
+      "claim": "On the same fixed 100 CAD tasks, the cost to exceed a 0.8 score fell from $170.00 to $36.59 in 90 days — a 4.6x deflation in the price of a fixed capability level.",
+      "confidence": "high",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c5",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c5",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://x.com/gNucleusAI/status/2087656449493307617"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "2026-08-12",
+      "claim": "Grok 4.6's GDPVal-AA v2 score of 1,753 places it ahead of Claude Fable 5 Max on real-world agentic knowledge work.",
+      "confidence": "low",
+      "hosts": [
+        "venturebeat.com",
+        "x.com"
+      ],
+      "id": "c6",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c6",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://x.com/rohanpaul_ai/status/2087599380518097232",
+        "https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "2026-08-12",
+      "claim": "The only third-party leaderboard placement circulating on launch day put Grok 4.6 13th on Frontend Arena at 1,553 points.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c7",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c7",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://x.com/testingcatalog/status/2087567672695275584"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "",
+      "claim": "A Grok-friendly account (@scaling01) said on launch day that on 'really long-running and autonomous workflows the best OpenAI and Anthropic models are much better in the tails.'",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c8",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c8",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://x.com/scaling01/status/2087608575631695899"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+      "article_created_at": "2026-08-12T22:22:13Z",
+      "article_title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+      "as_of": "2026-08-12",
+      "claim": "Grok 4.6 ships with a seven-day double-token promotion running to roughly 19 August; whether the $2/$6 price survives the promotion is unconfirmed.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c9",
+      "key": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://x.com/testingcatalog/status/2087567672695275584",
+        "https://x.com/rohanpaul_ai/status/2087594773389701616"
+      ],
+      "type": "forecast"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 866,
+  "reusable_count": 869,
   "schema_version": 1
 }

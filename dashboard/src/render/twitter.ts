@@ -10,6 +10,8 @@ import {
   truncateText,
 } from './shared';
 import type { InfoTimelineItem } from './shared';
+import { uiText } from '../i18n';
+import type { UiLanguage } from '../i18n';
 
 export type TwitterStory = {
   rank: string;
@@ -44,6 +46,7 @@ type TimeInfo = {
 };
 
 export type TwitterReportRenderOptions = {
+  language: UiLanguage;
   fallbackDate: string | null;
   currentDateStr: string;
   currentDateTitle: string;
@@ -277,19 +280,25 @@ function twitterMindshareSizeClass(index: number): string {
   return 'twitter-mindshare-tile--sm';
 }
 
-function renderTwitterMindshareMap(items: TwitterMindshareItem[]): string {
+function renderTwitterMindshareMap(items: TwitterMindshareItem[], language: UiLanguage): string {
   if (items.length === 0) return '';
   const tiles = items.map((item, index) => {
+    const tone = language === 'ko'
+      ? ({ rising: '상승세', steady: '보합세', fading: '하락세' } as const)[item.tone]
+      : item.tone;
+    const accessibleLabel = language === 'ko'
+      ? item.label + ' 관심도, ' + tone
+      : item.label + ' mindshare, ' + tone;
     return [
-      '<a class="twitter-mindshare-tile ' + twitterMindshareSizeClass(index) + ' twitter-mindshare-tile--' + item.tone + '" href="' + escapeHtml(item.href) + '" aria-label="' + escapeHtml(item.label + ' mindshare, ' + item.tone) + '">',
+      '<a class="twitter-mindshare-tile ' + twitterMindshareSizeClass(index) + ' twitter-mindshare-tile--' + item.tone + '" href="' + escapeHtml(item.href) + '" aria-label="' + escapeHtml(accessibleLabel) + '">',
       '  <strong>' + escapeHtml(item.label) + '</strong>',
       '</a>',
     ].filter(Boolean).join('\n');
   }).join('\n');
   return [
-    '<section class="twitter-mindshare" aria-label="Twitter mindshare map">',
+    '<section class="twitter-mindshare" aria-label="' + escapeHtml(language === 'ko' ? '트위터 관심도 지도' : 'Twitter mindshare map') + '">',
     '  <div class="twitter-mindshare-head">',
-    '    <h2>Mindshare</h2>',
+    '    <h2>' + escapeHtml(uiText(language, 'twitter.mindshare')) + '</h2>',
     '  </div>',
     '  <div class="twitter-mindshare-map">' + tiles + '</div>',
     '</section>',
@@ -335,7 +344,7 @@ function firstHtml(root: ParentNode, selector: string): string {
   return (root.querySelector(selector) as HTMLElement | null)?.innerHTML?.trim() || '';
 }
 
-function twitterSignalsToCallouts(story: Element, searchTerm: string): string {
+function twitterSignalsToCallouts(story: Element, searchTerm: string, language: UiLanguage): string {
   const sig = story.querySelector('.twitter-story-signals');
   if (!sig) return '';
   const rows = Array.from(sig.querySelectorAll(':scope > div'));
@@ -352,7 +361,12 @@ function twitterSignalsToCallouts(story: Element, searchTerm: string): string {
       else if (/✓/.test(text)) { variant = 'ara-callout--success'; flag = '<span class="ara-flag ara-flag--green"></span>'; }
       text = text.replace(/^[✓⚠✗]\s*/, '');
     }
-    const labelText = label || (isVerify ? 'Verify' : 'Watch');
+    const isWatch = /watch/i.test(label);
+    const labelText = isVerify
+      ? uiText(language, 'twitter.verify')
+      : isWatch || !label
+        ? uiText(language, 'twitter.watch')
+        : label;
     return '<div class="ara-callout ' + variant + '">'
       + '<span class="ara-callout-label">' + flag + escapeHtml(labelText) + '</span>'
       + '<p>' + highlightPlainText(text, searchTerm) + '</p></div>';
@@ -367,6 +381,7 @@ function extractSkepticCorner(body: string): string {
 function renderStructuredTwitterStories(
   body: string,
   searchTerm: string,
+  language: UiLanguage,
 ): string {
   if (!/\btwitter-story\b/.test(body)) return '';
   const doc = new DOMParser().parseFromString('<div>' + body + '</div>', 'text/html');
@@ -378,7 +393,7 @@ function renderStructuredTwitterStories(
     const title = firstText(story, '.twitter-story-title, h3');
     const lead = firstText(story, '.twitter-story-lead');
     const sources = firstHtml(story, '.twitter-story-sources');
-    const signalsHtml = twitterSignalsToCallouts(story, searchTerm);
+    const signalsHtml = twitterSignalsToCallouts(story, searchTerm, language);
     const bodyHtml = firstHtml(story, '.twitter-story-body') || firstHtml(story, '.twitter-story-details');
     const detailsBits = [
       sources ? '<div class="twitter-story-chips">' + sources + '</div>' : '',
@@ -395,7 +410,7 @@ function renderStructuredTwitterStories(
       detailsBits
         ? [
             '    <details class="twitter-story-details">',
-            '      <summary>Full analysis</summary>',
+            '      <summary>' + escapeHtml(uiText(language, 'twitter.fullAnalysis')) + '</summary>',
             detailsBits,
             '    </details>',
           ].join('\n')
@@ -451,25 +466,26 @@ export function sanitizePublicReportMarkdown(md: string): string {
 }
 
 function renderTwitterDateNav(options: TwitterReportRenderOptions): string {
+  const language = options.language;
   const link = (date: string | null, label: string, cls: string): string => {
     if (!date) {
       return '<span class="twitter-date-link twitter-date-link--disabled ' + cls + '">' + label + '</span>';
     }
     return [
-      '<a class="twitter-date-link ' + cls + '" href="/twitter/' + escapeHtml(date) + '" aria-label="' + escapeHtml(label + ' Twitter summary: ' + date) + '">',
+      '<a class="twitter-date-link ' + cls + '" href="/twitter/' + escapeHtml(date) + '" aria-label="' + escapeHtml(language === 'ko' ? label + ' 트위터 요약: ' + date : label + ' Twitter summary: ' + date) + '">',
       '  <span class="twitter-date-link-label">' + label + '</span>',
       '  <span class="twitter-date-link-date">' + escapeHtml(date) + '</span>',
       '</a>',
     ].join('');
   };
   return [
-    '<nav class="twitter-date-nav" aria-label="Twitter summary dates">',
-    '  ' + link(options.prevDate, 'Prev day', 'twitter-date-link--prev'),
+    '<nav class="twitter-date-nav" aria-label="' + escapeHtml(language === 'ko' ? '트위터 요약 날짜' : 'Twitter summary dates') + '">',
+    '  ' + link(options.prevDate, uiText(language, 'twitter.prevDay'), 'twitter-date-link--prev'),
     '  <div class="twitter-date-current">',
-    '    <div class="twitter-date-current-label">Twitter summaries</div>',
+    '    <div class="twitter-date-current-label">' + escapeHtml(uiText(language, 'twitter.summaries')) + '</div>',
     '    <div class="twitter-date-current-date">' + escapeHtml(options.shownDateTitle) + '</div>',
     '  </div>',
-    '  ' + link(options.nextDate, 'Next day', 'twitter-date-link--next'),
+    '  ' + link(options.nextDate, uiText(language, 'twitter.nextDay'), 'twitter-date-link--next'),
     '</nav>',
   ].filter(Boolean).join('\n');
 }
@@ -484,6 +500,7 @@ export type TwitterCycleContent = {
 };
 
 export function buildTwitterCycleContent(sectionBody: string, options: TwitterReportRenderOptions): TwitterCycleContent {
+  const language = options.language;
   const cycleSummary = stripEmptyCyclePlaceholderLines(extractCycleSummary(sectionBody));
   const stories = parseTwitterStories(sectionBody);
   const leadText = cycleSummary
@@ -496,7 +513,7 @@ export function buildTwitterCycleContent(sectionBody: string, options: TwitterRe
   const fallbackHtml = fallbackBody && !isEmptyCyclePlaceholderMarkdown(fallbackBody)
     ? '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + options.twitterMarkdownToHtml(fallbackBody) + '</div>'
     : '';
-  const structuredStoryCards = renderStructuredTwitterStories(sectionBody, options.searchTerm);
+  const structuredStoryCards = renderStructuredTwitterStories(sectionBody, options.searchTerm, language);
   const storyCards = structuredStoryCards || stories.map((story) => {
     const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
     const watch = truncateText(stripMarkdown(extractSectionText(story.body, 'Watch')), 210);
@@ -513,12 +530,12 @@ export function buildTwitterCycleContent(sectionBody: string, options: TwitterRe
       '    <h3 class="twitter-story-title">' + highlightPlainText(story.title, options.searchTerm) + '</h3>',
       storySummary ? '    <p class="twitter-story-summary">' + highlightPlainText(storySummary, options.searchTerm) + '</p>' : '',
       '    <details class="twitter-story-details">',
-      '      <summary>Full analysis</summary>',
+      '      <summary>' + escapeHtml(uiText(language, 'twitter.fullAnalysis')) + '</summary>',
       storyLinks || storyHandles ? '      <div class="twitter-story-chips">' + storyLinks + storyHandles + '</div>' : '',
       verification || watch
         ? '      <div class="twitter-story-signals">' +
-            (verification ? '<div><span>Verify</span>' + highlightPlainText(verification, options.searchTerm) + '</div>' : '') +
-            (watch ? '<div><span>Watch</span>' + highlightPlainText(watch, options.searchTerm) + '</div>' : '') +
+            (verification ? '<div><span>' + escapeHtml(uiText(language, 'twitter.verify')) + '</span>' + highlightPlainText(verification, options.searchTerm) + '</div>' : '') +
+            (watch ? '<div><span>' + escapeHtml(uiText(language, 'twitter.watch')) + '</span>' + highlightPlainText(watch, options.searchTerm) + '</div>' : '') +
           '</div>'
         : '',
       '      <div class="md-content twitter-story-body">' + options.twitterMarkdownToHtml(story.body) + '</div>',
@@ -590,7 +607,8 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
     const abLanes = hourMatch ? options.abHours?.[hourMatch[1]] : undefined;
     const abChip = abLanes?.length
       ? '<button class="twitter-ab-chip" type="button" aria-expanded="false" ' +
-        'title="Compare this cycle side-by-side with another model" ' +
+        'aria-label="' + escapeHtml(uiText(options.language, 'twitter.compare')) + '" ' +
+        'title="' + escapeHtml(uiText(options.language, 'twitter.compare')) + '" ' +
         'data-ab-hour="' + escapeHtml(hourMatch![1]) + '" ' +
         'data-ab-lanes="' + escapeHtml(abLanes.join(',')) + '">A/B</button>'
       : '';
@@ -611,6 +629,6 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
     );
   }
 
-  const mindshareMap = renderTwitterMindshareMap(buildTwitterMindshare(mindshareCycles));
-  return '<div class="twitter-report">' + mindshareMap + renderInfoTimeline('twitter-info-timeline', 'Timeline', timelineItems) + cards.join('\n') + '</div>';
+  const mindshareMap = renderTwitterMindshareMap(buildTwitterMindshare(mindshareCycles), options.language);
+  return '<div class="twitter-report">' + mindshareMap + renderInfoTimeline('twitter-info-timeline', uiText(options.language, 'twitter.timeline'), timelineItems) + cards.join('\n') + '</div>';
 }

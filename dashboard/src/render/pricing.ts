@@ -20,6 +20,8 @@
  * exist.
  */
 
+import { uiText, type UiLanguage } from '../i18n';
+
 export type PricedModel = {
   key: string;
   name: string;
@@ -144,14 +146,14 @@ function fmtPrice(value: number): string {
   return '$' + value.toFixed(3).replace(/0+$/, '').replace(/\.$/, '');
 }
 
-function fmtAge(iso: string): string {
+function fmtAge(iso: string, language: UiLanguage): string {
   const then = Date.parse(iso);
-  if (!Number.isFinite(then)) return 'unknown';
+  if (!Number.isFinite(then)) return language === 'ko' ? '알 수 없음' : 'unknown';
   const mins = Math.max(0, Math.round((Date.now() - then) / 60000));
-  if (mins < 60) return mins + 'm ago';
+  if (mins < 60) return language === 'ko' ? mins + '분 전' : mins + 'm ago';
   const hours = Math.round(mins / 60);
-  if (hours < 48) return hours + 'h ago';
-  return Math.round(hours / 24) + 'd ago';
+  if (hours < 48) return language === 'ko' ? hours + '시간 전' : hours + 'h ago';
+  return language === 'ko' ? Math.round(hours / 24) + '일 전' : Math.round(hours / 24) + 'd ago';
 }
 
 type Point = { x: number; y: number; model: AlternatePoint & Partial<PricedModel> };
@@ -193,9 +195,9 @@ function scoreTicks(y0: number, y1: number): number[] {
   return ticks;
 }
 
-function buildSvg(models: AlternatePoint[], benchmark: string): string {
+function buildSvg(models: AlternatePoint[], benchmark: string, language: UiLanguage): string {
   if (models.length === 0) {
-    return '<p class="pricing-empty">No model has both a published price and a score on this benchmark.</p>';
+    return '<p class="pricing-empty">' + uiText(language, 'pricing.noData') + '</p>';
   }
   const s = makeScales(models);
   const points: Point[] = models.map((m) => ({
@@ -243,7 +245,7 @@ function buildSvg(models: AlternatePoint[], benchmark: string): string {
       `<circle class="pricing-dot${on ? ' is-pareto' : ''}" data-i="${i}" ` +
       `cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${on ? 7 : 5}" ` +
       `fill="${vendorColor(m.vendor)}" tabindex="0" role="img" ` +
-      `aria-label="${esc(m.name)}, ${fmtPrice(m.output_usd_per_mtok)} per million output tokens, score ${m.score.toFixed(3)}"/>`
+      `aria-label="${esc(m.name)}, ${esc(uiText(language, 'pricing.perMtokOutput', { price: fmtPrice(m.output_usd_per_mtok) }))}, ${esc(uiText(language, 'pricing.score'))} ${m.score.toFixed(3)}"/>`
     );
   }).join('');
 
@@ -286,29 +288,29 @@ function buildSvg(models: AlternatePoint[], benchmark: string): string {
 
   return [
     `<svg class="pricing-svg" viewBox="0 0 ${VIEW_W} ${VIEW_H}" role="group"`,
-    ` aria-label="Price versus ${esc(benchmark)} score for ${models.length} models">`,
+    ` aria-label="${esc(uiText(language, 'pricing.title'))}: ${esc(benchmark)}, ${models.length}">`,
     gridX, gridY, frontierPath, dots, labels,
     `<text class="pricing-axis-title" x="${(M.left + (VIEW_W - M.right)) / 2}" y="${VIEW_H - 14}" text-anchor="middle">`,
-    'output price — USD per million tokens (log scale)</text>',
+    esc(uiText(language, 'pricing.axisPrice')) + '</text>',
     `<text class="pricing-axis-title" transform="translate(16 ${(M.top + VIEW_H - M.bottom) / 2}) rotate(-90)" text-anchor="middle">`,
-    `${esc(benchmark)} score</text>`,
+    esc(uiText(language, 'pricing.axisScore', { benchmark })) + '</text>',
     '</svg>',
   ].join('');
 }
 
-function buildLegend(models: AlternatePoint[]): string {
+function buildLegend(models: AlternatePoint[], language: UiLanguage): string {
   const vendors = Array.from(new Set(models.map((m) => m.vendor))).sort();
   return (
     '<ul class="pricing-legend">' +
     vendors.map((v) =>
       `<li><span class="pricing-swatch" style="background:${vendorColor(v)}"></span>${esc(v)}</li>`
     ).join('') +
-    '<li><span class="pricing-swatch pricing-swatch--frontier"></span>Pareto frontier</li>' +
+    '<li><span class="pricing-swatch pricing-swatch--frontier"></span>' + uiText(language, 'pricing.frontier') + '</li>' +
     '</ul>'
   );
 }
 
-function buildFrontierTable(models: AlternatePoint[]): string {
+function buildFrontierTable(models: AlternatePoint[], language: UiLanguage): string {
   const rows = models
     .filter((m) => m.pareto)
     .sort((a, b) => a.output_usd_per_mtok - b.output_usd_per_mtok)
@@ -326,14 +328,14 @@ function buildFrontierTable(models: AlternatePoint[]): string {
   if (!rows) return '';
   return (
     '<div class="pricing-table-wrap"><table class="pricing-table">' +
-    '<caption>On the frontier — nothing is both cheaper and at least as capable</caption>' +
-    '<thead><tr><th>Model</th><th class="pricing-num">Output $/Mtok</th><th class="pricing-num">Score</th></tr></thead>' +
+    '<caption>' + uiText(language, 'pricing.frontierCaption') + '</caption>' +
+    '<thead><tr><th>' + uiText(language, 'pricing.model') + '</th><th class="pricing-num">' + uiText(language, 'pricing.outputPrice') + '</th><th class="pricing-num">' + uiText(language, 'pricing.score') + '</th></tr></thead>' +
     `<tbody>${rows}</tbody></table></div>`
   );
 }
 
 /** Headline: the cheapest price that buys the highest tier anyone has reached. */
-function buildHeadline(data: ModelPricing, models: AlternatePoint[], isPrimary: boolean): string {
+function buildHeadline(data: ModelPricing, models: AlternatePoint[], isPrimary: boolean, language: UiLanguage): string {
   if (!isPrimary || models.length === 0) return '';
   const latest = data.history?.[data.history.length - 1]?.frontier_price_at;
   if (!latest) return '';
@@ -342,15 +344,14 @@ function buildHeadline(data: ModelPricing, models: AlternatePoint[], isPrimary: 
     .sort((a, b) => Number(b[0]) - Number(a[0]))[0];
   if (!reached) return '';
   const [tier, price] = reached;
-  return (
-    '<p class="pricing-headline">' +
-    `The cheapest way to score <strong>${esc(tier)}+</strong> on ${esc(data.benchmark)} is ` +
-    `<strong>${fmtPrice(price as number)}</strong> per million output tokens.` +
-    '</p>'
-  );
+  return '<p class="pricing-headline">' + esc(uiText(language, 'pricing.cheapest', {
+    tier,
+    benchmark: data.benchmark,
+    price: fmtPrice(price as number),
+  })) + '</p>';
 }
 
-export function renderPricing(data: ModelPricing, benchmark?: string): string {
+export function renderPricing(data: ModelPricing, benchmark?: string, language: UiLanguage = 'en'): string {
   const primary = data.benchmark;
   const active = benchmark || primary;
   const isPrimary = active === primary;
@@ -370,8 +371,8 @@ export function renderPricing(data: ModelPricing, benchmark?: string): string {
   // Freshness is disclosed per view, not buried in a footer — a chart of
   // prices that quietly went stale is worse than no chart.
   const staleFlags: string[] = [];
-  if (data.stale) staleFlags.push('prices stale');
-  if (data.capability_stale) staleFlags.push('scores stale');
+  if (data.stale) staleFlags.push(uiText(language, 'pricing.pricesStale'));
+  if (data.capability_stale) staleFlags.push(uiText(language, 'pricing.scoresStale'));
   const staleNote = staleFlags.length
     ? `<span class="pricing-stale">${esc(staleFlags.join(' · '))}</span>`
     : '';
@@ -380,26 +381,26 @@ export function renderPricing(data: ModelPricing, benchmark?: string): string {
     '<div class="pricing-view">',
     '  <header class="pricing-head">',
     '    <div>',
-    '      <h2 class="pricing-title">Price vs. capability</h2>',
+    '      <h2 class="pricing-title">' + uiText(language, 'pricing.title') + '</h2>',
     '      <p class="pricing-sub">',
-    `        ${models.length} models priced and scored · ${paretoCount} on the frontier`,
-    counts.priced ? ` · ${counts.priced} priced in total` : '',
+    '        ' + uiText(language, 'pricing.modelsSummary', { models: models.length, frontier: paretoCount }),
+    counts.priced ? ' · ' + uiText(language, 'pricing.pricedTotal', { count: counts.priced }) : '',
     '      </p>',
     '    </div>',
-    `    <div class="pricing-meta">last synced ${esc(fmtAge(data.generated_at))} ${staleNote}</div>`,
+    '    <div class="pricing-meta">' + uiText(language, 'pricing.lastSynced', { age: esc(fmtAge(data.generated_at, language)) }) + ' ' + staleNote + '</div>',
     '  </header>',
-    buildHeadline(data, models, isPrimary),
+    buildHeadline(data, models, isPrimary, language),
     available.length > 1 ? `<div class="pricing-chips" role="tablist">${chips}</div>` : '',
     '  <div class="pricing-chart" id="pricingChart">',
-    buildSvg(models, active),
+    buildSvg(models, active, language),
     '    <div class="pricing-tooltip" id="pricingTooltip" hidden></div>',
     '  </div>',
-    buildLegend(models),
-    buildFrontierTable(models),
+    buildLegend(models, language),
+    buildFrontierTable(models, language),
     '  <footer class="pricing-foot">',
-    data.price_basis ? `<p><strong>Price</strong> — ${esc(data.price_basis)}. Source: ` +
+    data.price_basis ? `<p><strong>${uiText(language, 'pricing.price')}</strong> — ${esc(data.price_basis)}. ${uiText(language, 'pricing.source')}: ` +
       `<a href="${safeHref(data.price_source_url)}" target="_blank" rel="noopener noreferrer">${esc(data.price_source ?? '')}</a>.</p>` : '',
-    data.score_basis ? `<p><strong>Score</strong> — ${esc(data.score_basis)}.</p>` : '',
+    data.score_basis ? `<p><strong>${uiText(language, 'pricing.score')}</strong> — ${esc(data.score_basis)}.</p>` : '',
     data.capability_attribution ? `<p class="pricing-attribution">${esc(data.capability_attribution)}</p>` : '',
     '  </footer>',
     '</div>',
@@ -416,6 +417,7 @@ export function hydratePricing(
   data: ModelPricing,
   onBenchmarkChange: (benchmark: string) => void,
   benchmark?: string,
+  language: UiLanguage = 'en',
 ): void {
   const chart = root.querySelector<HTMLElement>('#pricingChart');
   const tip = root.querySelector<HTMLElement>('#pricingTooltip');
@@ -438,15 +440,15 @@ export function hydratePricing(
       const m = models[index] as AlternatePoint & Partial<PricedModel>;
       if (!m) return;
       const bits: string[] = [`<strong>${esc(m.name)}</strong>`, `<span class="pricing-tip-vendor">${esc(m.vendor)}</span>`];
-      bits.push(`${fmtPrice(m.output_usd_per_mtok)} / Mtok output`);
+      bits.push(uiText(language, 'pricing.perMtokOutput', { price: fmtPrice(m.output_usd_per_mtok) }));
       if (typeof m.input_usd_per_mtok === 'number') {
-        bits.push(`${fmtPrice(m.input_usd_per_mtok)} / Mtok input`);
+        bits.push(uiText(language, 'pricing.perMtokInput', { price: fmtPrice(m.input_usd_per_mtok) }));
       }
       const err = typeof m.stderr === 'number' ? ` ± ${m.stderr.toFixed(3)}` : '';
-      bits.push(`score ${m.score.toFixed(3)}${err}`);
-      if (m.score_variant) bits.push(`run: ${esc(m.score_variant)}`);
-      if (m.price_variant) bits.push(`price tier: ${esc(m.price_variant)}`);
-      if (m.pareto) bits.push('<em>on the Pareto frontier</em>');
+      bits.push(`${uiText(language, 'pricing.score')} ${m.score.toFixed(3)}${err}`);
+      if (m.score_variant) bits.push(uiText(language, 'pricing.run', { value: esc(m.score_variant) }));
+      if (m.price_variant) bits.push(uiText(language, 'pricing.priceTier', { value: esc(m.price_variant) }));
+      if (m.pareto) bits.push('<em>' + uiText(language, 'pricing.onFrontier') + '</em>');
 
       tip.innerHTML = bits.join('<br>');
       tip.hidden = false;
