@@ -1,35 +1,9 @@
 {
-  "generatedAt": "2026-08-13T08:54:27.789Z",
-  "windowStart": "2026-08-11T20:00:00.000Z",
-  "windowEnd": "2026-08-14T21:00:00.000Z",
+  "generatedAt": "2026-08-13T10:00:22.445Z",
+  "windowStart": "2026-08-11T22:00:00.000Z",
+  "windowEnd": "2026-08-14T23:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-ddf9d5b76807",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-08-11 20:58 UTC (#2094)",
-      "status": "completed",
-      "start": "2026-08-11T20:58:00.000Z",
-      "end": "2026-08-11T20:59:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "ddf9d5b76807",
-      "url": "https://github.com/guzus/ai-research-arm/commit/ddf9d5b768071d226c8e546d02d38bd5f0db30b3"
-    },
-    {
-      "id": "commit-6b9d8265eb42",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-08-11 21:29 UTC (#2099)",
-      "status": "completed",
-      "start": "2026-08-11T21:29:00.000Z",
-      "end": "2026-08-11T21:30:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "6b9d8265eb42",
-      "url": "https://github.com/guzus/ai-research-arm/commit/6b9d8265eb42f19460e64496eefe002118ca78db"
-    },
     {
       "id": "commit-8448938c1cb1",
       "kind": "completed",
@@ -733,34 +707,30 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/affb95c5088f441c3712f5be46eea7f302c43f15"
     },
     {
-      "id": "scheduled-hourly-twitter-yml-7---3-------2026-08-13T09-07-00-000Z",
-      "kind": "scheduled",
-      "lane": "Twitter/X",
-      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash)",
-      "status": "scheduled",
-      "start": "2026-08-13T09:07:00.000Z",
-      "end": "2026-08-13T10:07:00.000Z",
-      "source": "cron 7 */3 * * *"
-    },
-    {
-      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-08-13T09-26-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-5cff7f9b3dd4",
+      "kind": "completed",
       "lane": "Models",
-      "title": "Model Pricing (price vs. capability)",
-      "status": "scheduled",
-      "start": "2026-08-13T09:26:00.000Z",
-      "end": "2026-08-13T10:11:00.000Z",
-      "source": "cron 26 3,9,15,21 * * *"
+      "title": "Model release tickets",
+      "status": "completed",
+      "start": "2026-08-13T08:23:00.000Z",
+      "end": "2026-08-13T08:37:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "5cff7f9b3dd4",
+      "url": "https://github.com/guzus/ai-research-arm/commit/5cff7f9b3dd4d0e3b88024496dc9dbd490981881"
     },
     {
-      "id": "scheduled-market-quotes-yml-53---3-------2026-08-13T09-53-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Market Quotes Refresh",
-      "status": "scheduled",
-      "start": "2026-08-13T09:53:00.000Z",
-      "end": "2026-08-13T10:23:00.000Z",
-      "source": "cron 53 */3 * * *"
+      "id": "commit-90a30a59c845",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-08-13 08:54 UTC (#2220)",
+      "status": "completed",
+      "start": "2026-08-13T08:54:00.000Z",
+      "end": "2026-08-13T08:55:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "90a30a59c845",
+      "url": "https://github.com/guzus/ai-research-arm/commit/90a30a59c8457988d2c145eebb41ad43f4042e7c"
     },
     {
       "id": "scheduled-2h-bluesky-yml-11-10-------2026-08-13T10-11-00-000Z",
@@ -1951,6 +1921,46 @@
       "start": "2026-08-14T20:47:00.000Z",
       "end": "2026-08-14T21:17:00.000Z",
       "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-7---3-------2026-08-14T21-07-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash)",
+      "status": "scheduled",
+      "start": "2026-08-14T21:07:00.000Z",
+      "end": "2026-08-14T22:07:00.000Z",
+      "source": "cron 7 */3 * * *"
+    },
+    {
+      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-08-14T21-26-00-000Z",
+      "kind": "scheduled",
+      "lane": "Models",
+      "title": "Model Pricing (price vs. capability)",
+      "status": "scheduled",
+      "start": "2026-08-14T21:26:00.000Z",
+      "end": "2026-08-14T22:11:00.000Z",
+      "source": "cron 26 3,9,15,21 * * *"
+    },
+    {
+      "id": "scheduled-twitter-model-ab-yml-40-21-------2026-08-14T21-40-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter Model A/B Eval",
+      "status": "scheduled",
+      "start": "2026-08-14T21:40:00.000Z",
+      "end": "2026-08-14T22:40:00.000Z",
+      "source": "cron 40 21 * * *"
+    },
+    {
+      "id": "scheduled-market-quotes-yml-53---3-------2026-08-14T21-53-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Market Quotes Refresh",
+      "status": "scheduled",
+      "start": "2026-08-14T21:53:00.000Z",
+      "end": "2026-08-14T22:23:00.000Z",
+      "source": "cron 53 */3 * * *"
     }
   ]
 }
