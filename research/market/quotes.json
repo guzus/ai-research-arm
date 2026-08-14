@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T20:19:17Z",
+  "generated_at": "2026-08-14T22:12:25Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-08-14T20:00:01Z",
@@ -146,12 +146,12 @@
       "ticker": "PLTR"
     },
     "NYSE:BABA": {
-      "asOf": "2026-08-14T20:00:00Z",
-      "change": 1.58,
-      "changePercent": 1.2934,
+      "asOf": "2026-08-14T20:04:38Z",
+      "change": 1.65,
+      "changePercent": 1.3507,
       "currency": "USD",
       "marketState": null,
-      "price": 123.74,
+      "price": 123.81,
       "source": "yahoo",
       "stale": false,
       "symbol": "NYSE:BABA",
