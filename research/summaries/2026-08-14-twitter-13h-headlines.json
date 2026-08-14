@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "SPACEX CLOSES $60B ALL-STOCK CURSOR DEAL — 389.3M CLASS A SHARES ISSUED, ANYSPHERE NOW WHOLLY OWNED",
+    "source": "@sec_filings_bot",
+    "url": "https://x.com/sec_filings_bot/status/2088256885824663571",
+    "category": "business"
+  },
+  {
+    "headline": "TAIWAN CONFIRMS AGENT-RUN INTRUSION — 8 AUTONOMOUS AGENTS MAPPED 21 GOVERNMENT SYSTEMS, 85 ACCOUNTS COMPROMISED",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2088249277881667955",
+    "category": "policy"
+  },
+  {
+    "headline": "CLAUDE CODE DROPS HUMAN APPROVAL AS DEFAULT — ANTHROPIC SAYS MANUAL REVIEW CAUGHT 14% OF DANGEROUS COMMANDS VS 89%",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2085794862608318627",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI NAMES EX-WIZ PRESIDENT DALI RAJIC CHIEF REVENUE OFFICER, REPLACING DENISE DRESSER AFTER NINE MONTHS",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2088234192026865740",
+    "category": "business"
+  },
+  {
+    "headline": "COREWEAVE BURNS $5.74B IN FREE CASH FLOW ON 112% REVENUE GROWTH; 2026 CAPEX GUIDANCE RAISED TO $35-39B",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2088238468292063665",
+    "category": "infra"
+  },
+  {
+    "headline": "NVIDIA AIMING TO MAKE NEMOTRON 4 A LEADING-EDGE MODEL, PUTTING IT IN COMPETITION WITH ITS OWN CUSTOMERS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2088249350023434316",
+    "category": "model"
+  }
+]
