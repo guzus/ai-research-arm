@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "Z.AI WITHHOLDS GLM-5.3 OPEN WEIGHTS, CITES EXPLOIT-CHAIN CAPABILITY NEEDING MORE SAFETY HARDENING",
+    "source": "@louszbd",
+    "url": "https://x.com/louszbd/status/2088152713846800702",
+    "category": "opensource"
+  },
+  {
+    "headline": "GLM-5.3 LIFTS TERMINAL-BENCH 3.0 FROM 4.6 TO 28.3 ON UNCHANGED 743B BASE — ALL GAINS FROM POST-TRAINING",
+    "source": "@louszbd",
+    "url": "https://x.com/louszbd/status/2088134329205760050",
+    "category": "model"
+  },
+  {
+    "headline": "ARC PRIZE VERIFIES GROK 4.6 AT 87.5% ON ARC-AGI-1 FOR $0.30/TASK, 67.1% ON ARC-AGI-2 FOR $0.76/TASK",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2088137563362013451",
+    "category": "research"
+  },
+  {
+    "headline": "REUTERS: APPLE TRAINED A CHINA-SPECIFIC LLM WITH ALIBABA, DROPPING ITS THIRD-PARTY MODEL STRATEGY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2088131953308717149",
+    "category": "business"
+  },
+  {
+    "headline": "GLM-5.3 SCORES 84.5 ON CYBERGYM, ABOVE MYTHOS 5 AND GPT-5.6 SOL; ACCESS TO BE STAGED AFTER SAFETY EVALS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2088138427455742009",
+    "category": "model"
+  },
+  {
+    "headline": "REDNOTE OPEN-SOURCES DOTS3-NOTE PREVIEW — 280B MULTIMODAL MOE, 16B ACTIVE, 512K CONTEXT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2088194805654323617",
+    "category": "opensource"
+  },
+  {
+    "headline": "GEMINI 3.7 FLASH ROLLS OUT TO GEMINI APPS AND POWERS SPARK IN 160+ COUNTRIES AT 1M CONTEXT",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2088192559566774423",
+    "category": "model"
+  }
+]
