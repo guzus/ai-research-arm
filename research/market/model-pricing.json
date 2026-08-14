@@ -33,7 +33,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-08-14T20:18:44Z",
+  "generated_at": "2026-08-14T21:48:23Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -61,7 +61,8 @@
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":88,"ts":"2026-08-13T22:09:41Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":8,"plotted":88,"ts":"2026-08-14T10:20:21Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":8,"plotted":88,"ts":"2026-08-14T10:35:46Z"},
-    {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":8,"plotted":88,"ts":"2026-08-14T20:18:44Z"}
+    {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":8,"plotted":88,"ts":"2026-08-14T20:18:44Z"},
+    {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":8,"plotted":88,"ts":"2026-08-14T21:48:23Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -623,7 +624,7 @@
         {
           "key": "glm5",
           "name": "GLM 5",
-          "output_usd_per_mtok": 2.55,
+          "output_usd_per_mtok": 1.92,
           "pareto": false,
           "score": 0.1,
           "stderr": 0.03015113445777636,
@@ -949,7 +950,7 @@
         {
           "key": "glm5",
           "name": "GLM 5",
-          "output_usd_per_mtok": 2.55,
+          "output_usd_per_mtok": 1.92,
           "pareto": false,
           "score": 0.16433566433566432,
           "stderr": 0.021951258107494095,
@@ -1979,7 +1980,7 @@
         {
           "key": "glm5",
           "name": "GLM 5",
-          "output_usd_per_mtok": 2.55,
+          "output_usd_per_mtok": 1.92,
           "pareto": false,
           "score": 0.8,
           "stderr": 0.06,
@@ -2745,7 +2746,7 @@
         }
       ]
     },
-    "as_of": "2026-08-14T20:18:44Z",
+    "as_of": "2026-08-14T21:48:23Z",
     "counts": {
       "pareto": 8,
       "plotted": 88,
@@ -3344,14 +3345,14 @@
         "vendor": "moonshotai"
       },
       {
-        "blended_usd_per_mtok": 1.35,
+        "blended_usd_per_mtok": 0.93,
         "context_length": 204800,
         "epoch_model": "GLM-5",
-        "input_usd_per_mtok": 0.95,
+        "input_usd_per_mtok": 0.6,
         "key": "glm5",
         "name": "GLM 5",
         "openrouter_id": "z-ai/glm-5",
-        "output_usd_per_mtok": 2.55,
+        "output_usd_per_mtok": 1.92,
         "pareto": false,
         "price_variant": null,
         "runs": 1,
