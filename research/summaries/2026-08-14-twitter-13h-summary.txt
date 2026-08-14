@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-14 13:34:37 UTC
+
+CYCLE: A $60B all-stock close, a state-target agent intrusion, and a coding agent dropping its human-approval default.
+
+TOP STORIES:
+• SpaceX closed the $60B all-stock Cursor deal — 389,289,254 Class A shares issued, Anysphere now a wholly owned subsidiary feeding SpaceXAI [✓]
+• Taiwan confirmed a 4-day July intrusion run by up to 8 autonomous agents on public frameworks: 21 govt systems mapped, 85 accounts compromised [⚠]
+• Claude Code's default flipped today to classifier-reviewed auto mode — Anthropic's testing had human approval catching 14% of dangerous commands vs 89% [✓]
+
+WATCH: Qwen3.8-27B open weights at roughly 15:20 UTC today, on Alibaba's own two-hour countdown.
+
+Full update on GitHub.
