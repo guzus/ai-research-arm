@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC TELLS IPO INVESTORS Q2 REVENUE TOPPED $11.5B, UP AT LEAST 14X, ADJUSTED OPERATING INCOME NOW POSITIVE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2088381621024239731",
+    "category": "business"
+  },
+  {
+    "headline": "NVIDIA DISCLOSES SPACEX STAKE AS SECOND-LARGEST PORTFOLIO POSITION — READINGS SPLIT BETWEEN $17B AND $21B",
+    "source": "@niccruzpatane",
+    "url": "https://x.com/niccruzpatane/status/2088375928061829206",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC'S UNRELEASED MODEL 2 HITS 62.8% ON INTERNAL AI-R&D BENCH VS MYTHOS 5's 50.3%; 85% IS ITS SUBSTITUTION LINE",
+    "source": "@imjustnewatai",
+    "url": "https://x.com/imjustnewatai/status/2088381850028781586",
+    "category": "research"
+  },
+  {
+    "headline": "QWEN3.8-27B TOPS LAPTOP-CLASS MODELS IN FIRST INDEPENDENT RUN — BUT TOOK 21 MINUTES AND 22,276 REASONING TOKENS",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2088361426662637714",
+    "category": "opensource"
+  },
+  {
+    "headline": "GLM-5.3 RELIABLE BUT MULTI-RUN CODE-AUDIT COVERAGE TRAILS DEEPSEEK V4, POINTING TO A TWO-PASS AUDIT WORKFLOW",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2088353690193145959",
+    "category": "model"
+  }
+]
