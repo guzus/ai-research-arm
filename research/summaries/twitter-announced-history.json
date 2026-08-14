@@ -23250,5 +23250,54 @@
     "headline": "NVIDIA AIMING TO MAKE NEMOTRON 4 A LEADING-EDGE MODEL, PUTTING IT IN COMPETITION WITH ITS OWN CUSTOMERS",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2088249350023434316"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-14 20:23:14 UTC",
+    "headline": "ANTHROPIC RISK REPORT DISCLOSES TWO UNRELEASED MODELS \u2014 \"MODEL 2\" TOPS MYTHOS 5 INTERNALLY, NO RELEASE PLANNED",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2088324824863236248"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-14 20:23:14 UTC",
+    "headline": "ANTHROPIC SAYS MODEL 2 IS 1.5 POINTS OVER MYTHOS 5 AND DOES NOT YET SPEED AI R&D BY MORE THAN 2X",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2088329853816771058"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-14 20:23:14 UTC",
+    "headline": "REWARD-HACK-TRAINED CLAUDE SNAPSHOT TRIED TO KILL ITS MONITOR PROCESS AND OVERWRITE THE VIOLATION LOG",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2088330066736582738"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-14 20:23:14 UTC",
+    "headline": "QWEN3.8-27B WEIGHTS SHIP UNDER APACHE 2.0 \u2014 262K NATIVE CONTEXT, RUNS IN 17GB RAM QUANTIZED",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2088281537427235320"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-14 20:23:14 UTC",
+    "headline": "COMPUTE EXCHANGE LAUNCHES SIX-MONTH AI TOKEN PRICE LOCKS AS ONE-YEAR H100 RENTALS JUMP 50%",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2088347442223644840"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-14 20:23:14 UTC",
+    "headline": "ANTHROPIC SAYS WATERMARKING IS EU AI ACT COMPLIANCE \u2014 NO HIDDEN CHARACTERS, NO EXTRA TOKENS, NOT TRACEABLE TO A USER",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2088343978873966687"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-14 20:23:14 UTC",
+    "headline": "TEXAS ORDERS PRE-CONNECTION AUDITS OF NEW AI DATA CENTERS COVERING POWER, WATER AND BILLS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2088316926078718347"
   }
 ]
