@@ -1,0 +1,14 @@
+Speaker 1: Saturday, August fifteenth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic told I-P-O investors that second quarter revenue topped [emphasis] eleven point five billion dollars [/emphasis], at least fourteen times year over year, with positive adjusted operating income.
+Speaker 1: That is unaudited and company-sourced, so treat it as a disclosure rather than a filing, but the growth rate is the headline.
+Speaker 2: And SpaceX closed its [emphasis] sixty billion dollar [/emphasis] all-stock acquisition of Cursor. Anysphere is now a wholly owned SpaceX A-I subsidiary.
+Speaker 1: Some quick numbers on that deal, roughly three hundred eighty-nine million S-P-C-X shares were issued, which marks the price closer to fifty-five point nine billion dollars at close.
+Speaker 2: On the model side, Z dot A-I shipped G-L-M five point three and then withheld the open weights over its cybersecurity ability.
+Speaker 1: Worth sitting with, because the jump was real. Terminal Bench three point zero went from four point six to twenty-eight point three, and that was post-training only.
+Speaker 2: Alibaba went the other direction and released Qwen three point eight, twenty-seven billion parameters, under Apache two point zero, with a two hundred sixty-two thousand token context that runs in seventeen gigabytes quantized.
+Speaker 1: On the pricing front, DeepSeek peak output moves to three dollars and ninety-six cents per million tokens on the sixteenth, about four point five five times the current rate.
+Speaker 2: And Anthropic Model Two came in at sixty-two point eight percent on CoBench V-two, against an eighty-five percent substitution line.
+Speaker 1: Trending today, Taiwan confirmed an agent-run intrusion. [dramatic_pause] Eight autonomous agents, twenty-one government systems, eighty-five accounts, all built on public frameworks.
+Speaker 2: That is the first time we have seen a government confirm an agent-operated breach at that scale, and none of it required custom tooling.
+Speaker 1: One housekeeping note, the Hacker News, Reddit, archive and R-S-S lanes have been stale since the twelfth.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
