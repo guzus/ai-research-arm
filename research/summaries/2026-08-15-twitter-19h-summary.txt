@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-15 19:55:53 UTC
+
+CYCLE: Nvidia moves up the ownership stack on Stargate; OpenAI puts a price on quota resets; a founding-era GPU engineer exits.
+
+TOP STORIES:
+• Nvidia in talks to take equity in SB Energy, the Stargate developer behind OpenAI's 10GW Ohio site it is already backstopping ~$100B [⚠]
+• OpenAI's pay-to-reset weekly quota priced at $80 on the $200 plan, per a circulating screenshot — no first-party confirmation [⚠]
+• Scott Gray, OpenAI's GPU systems engineer since 2016, has left — the 13th named senior departure of 2026 [⚠]
+• Gavin Baker publishes a case that Dario Amodei "has lost the argument" on AI regulation; Musk amplifies it [✓]
+
+WATCH: An OpenAI changelog or user receipt naming the $80 reset price.
+
+Full update on GitHub.
