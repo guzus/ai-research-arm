@@ -1,0 +1,19 @@
+Daily AI Digest - 2026-08-15
+
+TOP STORIES:
+• Anthropic told IPO investors Q2 revenue topped $11.5B, at least 14x YoY, with positive adjusted operating income (unaudited, company-sourced)
+• SpaceX closed its $60B all-stock Cursor acquisition; Anysphere now a wholly owned SpaceXAI subsidiary
+• Z.ai shipped GLM-5.3 then withheld the open weights over its cybersecurity ability
+• Alibaba released Qwen3.8-27B under Apache 2.0 — 262K context, runs in 17GB quantized
+
+KEY NUMBERS:
+• 389,289,254 SPCX shares issued for Cursor (marks ~$55.9B at close)
+• GLM-5.3 Terminal-Bench 3.0: 4.6 -> 28.3, post-training only
+• DeepSeek peak output to $3.96/Mtok on 16 Aug, 4.55x current
+• Anthropic Model 2: 62.8% CoBench V2 vs 85% substitution line
+
+TRENDING: Taiwan confirmed an agent-run intrusion — 8 autonomous agents, 21 government systems, 85 accounts, built on public frameworks.
+
+Note: HN/Reddit/arXiv/RSS lanes stale since 08-12.
+
+Full digest on GitHub.
