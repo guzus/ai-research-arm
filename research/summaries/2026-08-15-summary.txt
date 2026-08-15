@@ -1,0 +1,14 @@
+AI News - 2026-08-15
+
+TOP STORIES:
+• Anthropic investors reportedly targeting $2 trillion valuation for an October IPO, which would be the largest ever
+• Alibaba released Qwen3.8-27B, an open-weight (Apache 2.0) multimodal model runnable on consumer GPUs
+• DeepSeek is hiking V4 Flash/Pro API prices up to 14x, effective Aug 16, narrowing its cost edge over Western labs
+• IBM and OpenAI announced an enterprise AI + cybersecurity partnership, embedding GPT-5.6 into IBM Consulting
+
+KEY NUMBERS:
+• $2T: targeted Anthropic IPO valuation (vs. $47B annualized revenue reported in May)
+• $0.28 → $1.32/M tokens: DeepSeek V4 Flash output pricing at peak hours (4x+ increase)
+• 27B params, 262K context (to 1M): Qwen3.8-27B specs
+
+Full report on GitHub.
