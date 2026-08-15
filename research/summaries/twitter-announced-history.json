@@ -23376,5 +23376,33 @@
     "headline": "27B AGENT FARADAY BEATS OPUS 4.8 AND GPT-5.5 ON HELD-OUT PAPER REPLICATION, 0.791 VS 0.748 AND 0.729",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2088405028784779504"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-15 06:53:31 UTC",
+    "headline": "ANTHROPIC 10T-MODEL CASE RESTS ON RETIRED $125/MTOK PRICE CARD \u2014 SCALE HAWKS AND SKEPTICS SPLIT PUBLICLY",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2088502470112690521"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-15 06:53:31 UTC",
+    "headline": "DEEPSEEK V4-PRO DEFENDER CONCEDES MODEL IS OVERFIT TO BASH AND STRING EDITOR, TWO DAYS AFTER RELEASE",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2088519523070509092"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-15 06:53:31 UTC",
+    "headline": "QWEN3.8-27B PASSES CRUDBENCH 100% WITH THINKING OFF \u2014 FAILS A TASK AT XHIGH REASONING",
+    "source": "@LottoLabs",
+    "url": "https://x.com/LottoLabs/status/2088474706739695764"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-15 06:53:31 UTC",
+    "headline": "GROK 4.6 RAN 48 HOURS UNATTENDED TO BUILD A SHOOTER \u2014 MUSK AMPLIFIES GAUNTLET LOOP DEMO",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2088484972965298489"
   }
 ]
