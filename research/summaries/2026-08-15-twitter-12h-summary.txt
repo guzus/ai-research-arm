@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-15 12:54:59 UTC
+
+CYCLE: Qwen's distribution lead gets numbers, Google demotes visible watermarks, and a 38-year-old conjecture falls overnight.
+
+TOP STORIES:
+• Qwen past 3B downloads and 151,448 HF derivatives - 2.6x Meta's footprint; the derivative count is the number that holds up [⚠]
+• Google made visible watermarks optional across Gemini and Flow, SynthID stays - toggle geofenced off where law mandates marking [⚠]
+• Jacobson's 1988 p-defect zero conjecture refuted overnight via GPT-5.6 - named counterexample at PSU3(5), p=2 [⚠]
+
+WATCH: Whether the PSU3(5) counterexample is independently confirmed, and whether a counterexample appears at a prime other than p=2.
+
+Full update on GitHub.
