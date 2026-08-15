@@ -23481,5 +23481,47 @@
     "headline": "ANTHROPIC BUILDING DEDICATED BROWSER INTO CLAUDE DESKTOP, ALWAYS OPEN IN COWORK SESSIONS",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2088598175074377849"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-15 20:26:22 UTC",
+    "headline": "NVIDIA NEARS REWORKED DEAL TO FINANCE 10GW OPENAI CAMPUS IN OHIO \u2014 $3B INTO SB ENERGY, ~$100B OF FINANCING SUPPORT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2088720568229187748"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-15 20:26:22 UTC",
+    "headline": "OPENAI CHARGING $80 TO RESET A WEEKLY USAGE LIMIT ON THE $200 PLAN",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2088668338289352743"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-15 20:26:22 UTC",
+    "headline": "SCOTT GRAY LEAVES OPENAI AFTER TEN YEARS; CIRCULATING 2026 SENIOR-DEPARTURE LIST REACHES 13 NAMES",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2088647536684712289"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-15 20:26:22 UTC",
+    "headline": "QWEN3.8-27B GGUF HITS 1M DOWNLOADS AND #3 ON HUGGING FACE, RUNS IN 17GB",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2088627177655050362"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-15 20:26:22 UTC",
+    "headline": "TESTERS: QWEN3.8-27B EDGE OVER 3.6 VANISHES WITH THINKING DISABLED, MODEL STALLS IN CASCADING LOOPS",
+    "source": "@MikeBradleyAI",
+    "url": "https://x.com/MikeBradleyAI/status/2088674899401306312"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-15 20:26:22 UTC",
+    "headline": "OVER 500 LOCAL GOVERNMENTS NOW HAVE ACTIVE DATA CENTER BANS; TEXAS AND NEW YORK JOIN RESTRICTIONS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2088694720016883908"
   }
 ]
