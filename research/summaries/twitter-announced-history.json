@@ -23607,5 +23607,40 @@
     "headline": "LENDERS NOW TREAT GPUS AS RECOVERABLE COLLATERAL BEHIND NVIDIA'S $500B GUARANTEE",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2088797214873133358"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-16 11:46:47 UTC",
+    "headline": "OPENAI POLICY UPDATE: CHATGPT AD PERSONALISATION GOES OPT-IN; FREE USERS WHO DECLINE ADS FACE MESSAGE CAPS IN SOME REGIONS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2088919317257556359"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-16 11:46:47 UTC",
+    "headline": "AMODEI'S ASK ITEMISED \u2014 RULES WEIGHTED AGAINST BIGGEST LABS, TESTING THAT COVERS OPEN WEIGHTS, FINRA-STYLE OVERSIGHT BODY",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2088913258937762016"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-16 11:46:47 UTC",
+    "headline": "DEEPSEEK HARNESS REPORTED PAST 122K GITHUB STARS IN 3 DAYS \u2014 SAME WEEK CACHE-HIT INPUT REPRICED 6X TO 12X",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2088924161959927819"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-16 11:46:47 UTC",
+    "headline": "QWEN3.8-27B SHIPS AT XHIGH REASONING BY DEFAULT \u2014 MEDIUM REPORTED EQUIVALENT AT ROUGHLY A QUARTER OF THE TOKENS",
+    "source": "@MikeBradleyAI",
+    "url": "https://x.com/MikeBradleyAI/status/2088942090474414424"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-16 11:46:47 UTC",
+    "headline": "ANTHROPIC SAID TO HAVE ALLOCATED MAJOR COMPUTE TO BIO AND HEALTH, TARGETING HEALTHCARE CONTRIBUTIONS WITHIN MONTHS",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2088902853238604176"
   }
 ]
