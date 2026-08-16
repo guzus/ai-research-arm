@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-16 18:42:31 UTC
+
+CYCLE: Compute becomes a financed, hedged asset class; watermark removal gets organised.
+
+TOP STORIES:
+• Nvidia + 6 banks sign memorandums for $500B third-party capital (Nvidia backstops up to 25%); Compute Exchange plans six-month token forwards; H100 one-year rentals up 50% in six months [⚠]
+• AI watermark-removal toolkit hits ~11K GitHub stars days after Anthropic's provenance rollout; strips C2PA/Unicode marks, rewrites against text watermarks [⚠]
+• Qwen3.8-27B Terminal-Bench result carried at 11:00 withdrawn — that run was token-capped; uncapped XHigh beats non-thinking [🚩]
+
+WATCH: Whether Compute Exchange names a settlement index for its token forwards — no public spot benchmark for inference exists.
+
+Full update on GitHub.
