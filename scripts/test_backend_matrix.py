@@ -113,6 +113,54 @@ class RoutingInvariants(unittest.TestCase):
         for name, content in workflows_before.items():
             self.assertEqual(content, (REPO_ROOT / ".github/workflows" / name).read_bytes())
 
+    def test_synthetic_cursor_profile_needs_only_profile_and_route_data(self):
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        workflows_before = {
+            name: (REPO_ROOT / ".github/workflows" / name).read_bytes()
+            for name in ("hourly-rss.yml", "2h-bluesky.yml", "4h-community.yml",
+                         "daily-arxiv.yml", "wiki-ingest.yml")
+        }
+        config["backends"]["cursor-composer-novel"] = {
+            "adapter": "cursor", "provider": "cursor",
+            "model": "composer-novel",
+            "display_name": "Composer Novel via Cursor CLI",
+        }
+        config["routes"]["research-editorial"]["backend"] = "cursor-composer-novel"
+        profiles = copy.deepcopy(self.profiles)
+        profile = Profile("cursor-composer-novel", "cursor", "cursor",
+                          "composer-novel", "Composer Novel via Cursor CLI",
+                          ["cursor-composer-novel"])
+        profiles[profile.normalized] = profile
+        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest"):
+            selected = resolve_route(config, lane)
+            self.assertEqual("cursor", selected.adapter)
+            self.assertEqual("cursor/composer-novel", selected.model_ref)
+        self.assertEqual([], cross_check(
+            self.lanes, self.obs, profiles, config["routes"]
+        ))
+        rows = build_rows(
+            self.lanes, self.obs, profiles, self.fallback["native_model"],
+            "claude", self.fallback["chain"], config["routes"],
+        )
+        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest"):
+            row = next(row for row in rows if row[0].startswith(f"{lane} (route:"))
+            self.assertIn("composer-novel", row[4])
+            self.assertIn("Cursor CLI", row[2])
+        diagram = build_readme_diagram(
+            self.lanes, profiles, self.fallback["chain"],
+            self.fallback["native_model"], True, True, config["routes"], True,
+        )
+        group_node = next(line.split("[", 1)[0].strip() for line in diagram.splitlines()
+                          if "arxiv" in line and "bluesky" in line and "rss" in line)
+        self.assertIn(f'{group_node} -->|"composer-novel"| CUR', diagram)
+        production_config = json.loads(
+            (REPO_ROOT / ".github/cursor/cli-config.json").read_text()
+        )
+        self.assertNotIn("model", production_config)
+        self.assertNotIn("provider", production_config)
+        for name, content in workflows_before.items():
+            self.assertEqual(content, (REPO_ROOT / ".github/workflows" / name).read_bytes())
+
     def test_route_contract_and_provider_credential_binding_fail_closed(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
         config["routes"]["research-editorial"]["contract"] = "other"
@@ -123,6 +171,14 @@ class RoutingInvariants(unittest.TestCase):
         config["adapters"]["opencode"]["provider_credentials"]["opencode-go"] = \
             "claude-code-oauth-token"
         with self.assertRaisesRegex(ValueError, "opencode-api-key"):
+            resolve_route(config, "rss")
+
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        config["backends"]["cursor-composer-2p5"]["adapter"] = "cursor"
+        config["routes"]["research-editorial"]["backend"] = "cursor-composer-2p5"
+        config["adapters"]["cursor"]["provider_credentials"]["cursor"] = \
+            "opencode-api-key"
+        with self.assertRaisesRegex(ValueError, "cursor-api-key"):
             resolve_route(config, "rss")
 
     def test_dispatched_lane_io_contracts_are_exact_and_route_neutral(self):
@@ -152,24 +208,41 @@ class RoutingInvariants(unittest.TestCase):
         )
         steps = action["runs"]["steps"]
         local_children = [step for step in steps if "uses" in step]
-        self.assertEqual(1, len(local_children))
-        child = local_children[0]
-        self.assertEqual("./.github/actions/run-opencode-container", child["uses"])
+        self.assertEqual(2, len(local_children))
+        by_uses = {child["uses"]: child for child in local_children}
+        opencode = by_uses["./.github/actions/run-opencode-container"]
+        cursor = by_uses["./.github/actions/run-cursor-container"]
         self.assertEqual("${{ inputs.opencode-api-key }}",
-                         child["with"]["opencode-api-key"])
+                         opencode["with"]["opencode-api-key"])
         self.assertEqual("${{ inputs.opencode-config }}",
-                         child["with"]["opencode-config"])
-        rendered_child = json.dumps(child, sort_keys=True)
-        for secret_input in ("claude-code-oauth-token", "fireworks-api-key",
-                             "zai-api-key"):
-            self.assertNotIn(secret_input, rendered_child)
+                         opencode["with"]["opencode-config"])
+        self.assertEqual("${{ inputs.cursor-api-key }}",
+                         cursor["with"]["cursor-api-key"])
+        self.assertEqual("${{ inputs.cursor-config }}",
+                         cursor["with"]["cursor-config"])
+        self.assertEqual("steps.route.outputs.adapter == 'opencode'",
+                         opencode.get("if"))
+        self.assertEqual("steps.route.outputs.adapter == 'cursor'",
+                         cursor.get("if"))
+        for child, foreign in (
+                (opencode, ("claude-code-oauth-token", "fireworks-api-key",
+                            "zai-api-key", "cursor-api-key")),
+                (cursor, ("claude-code-oauth-token", "fireworks-api-key",
+                          "zai-api-key", "opencode-api-key")),
+        ):
+            rendered_child = json.dumps(child, sort_keys=True)
+            for secret_input in foreign:
+                self.assertNotIn(secret_input, rendered_child)
 
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
-        adapter = config["adapters"]["opencode"]
-        self.assertIs(adapter["isolated_workspace"], True)
-        self.assertIs(adapter["editorial_contract"], True)
-        self.assertEqual({"opencode-go": "opencode-api-key"},
-                         adapter["provider_credentials"])
+        for name, credential in (
+                ("opencode", {"opencode-go": "opencode-api-key"}),
+                ("cursor", {"cursor": "cursor-api-key"}),
+        ):
+            adapter = config["adapters"][name]
+            self.assertIs(adapter["isolated_workspace"], True)
+            self.assertIs(adapter["editorial_contract"], True)
+            self.assertEqual(credential, adapter["provider_credentials"])
 
     def test_korean_translation_dispatch_uses_capability_minimized_policy(self):
         workflow = yaml.safe_load(
@@ -184,6 +257,19 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(
             ".github/opencode/translation.json",
             dispatch["with"].get("opencode-config"),
+        )
+        self.assertEqual(
+            ".github/cursor/translation.json",
+            dispatch["with"].get("cursor-config"),
+        )
+        cursor_policy = json.loads(
+            (REPO_ROOT / ".github/cursor/translation.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(
+            ["Shell(*)", "Write(*)", "WebFetch(*)", "Mcp(*)"],
+            cursor_policy["permissions"]["deny"],
         )
 
         policy = json.loads(
@@ -399,6 +485,34 @@ class RoutingInvariants(unittest.TestCase):
         from build_backend_matrix import GEN_RESEARCH_BACKENDS
         self.assertIn("opencode-deepseek-v4-flash", GEN_RESEARCH_BACKENDS)
 
+    def test_gen_research_cursor_is_explicit_and_fail_closed(self):
+        workflow = (REPO_ROOT / ".github" / "workflows" /
+                    "generative-research.yml").read_text(encoding="utf-8")
+        self.assertIn("- cursor-composer-2p5", workflow)
+        self.assertIn(
+            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5) CANDIDATE="cursor-composer-2p5"',
+            workflow)
+        self.assertIn(
+            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5) BACKEND="cursor-composer-2p5"',
+            workflow)
+        self.assertIn('[ "$BACKEND" != "cursor-composer-2p5" ]', workflow)
+        self.assertIn("Resolve and preflight Cursor CLI route", workflow)
+        self.assertIn("Fail Cursor run without article", workflow)
+        self.assertIn("uses: ./.github/actions/run-cursor-container", workflow)
+        self.assertIn('model="cursor/composer-2.5"', workflow)
+        model_id = self.assert_single_cursor_model()
+        prompt = (REPO_ROOT / ".github" / "cursor" / "prompts" /
+                  "generative-research.md").read_text(encoding="utf-8")
+        self.assertEqual([model_id, model_id], re.findall(r"--model (\S+)", prompt))
+        self.assertTrue(self.obs["generative-research.yml"].cursor)
+        self.assertEqual(self.obs["generative-research.yml"].cursor_token,
+                         "CURSOR_API_KEY")
+        self.assertTrue(self.obs["cursor-cli-canary.yml"].cursor)
+        from build_backend_matrix import GEN_RESEARCH_BACKENDS
+        self.assertIn("cursor-composer-2p5", GEN_RESEARCH_BACKENDS)
+        self.assertNotEqual(self.lanes["generative-research-default"]["backend"],
+                            "cursor-composer-2p5")
+
     # Every workflow that can run the opencode harness. hourly-twitter is the
     # one most easily forgotten in a model swap — it resolves its own model in
     # its own step rather than sharing gen-research's preflight.
@@ -465,6 +579,41 @@ class RoutingInvariants(unittest.TestCase):
             self.assertEqual({model_ref}, found,
                              f"{name} does not route to {model_ref}")
         return model_ref.split("/", 1)[1]
+
+    CURSOR_WORKFLOWS = (
+        "cursor-cli-canary.yml",
+        "generative-research.yml",
+        "hourly-twitter.yml",
+    )
+
+    def assert_single_cursor_model(self) -> str:
+        """Exactly one Cursor model id across every Cursor workflow."""
+        from build_backend_matrix import CURSOR_ACTION_MODEL_RE, CURSOR_MODEL_RE
+        seen: dict[str, set[str]] = {}
+        for name in self.CURSOR_WORKFLOWS:
+            doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
+                                 .read_text(encoding="utf-8"))
+            found: set[str] = set()
+            for job in (doc.get("jobs") or {}).values():
+                for step in job.get("steps") or []:
+                    for line in (step.get("run") or "").splitlines():
+                        if line.lstrip().startswith("#"):
+                            continue
+                        found.update(CURSOR_MODEL_RE.findall(line))
+                    if "run-cursor-container" in str(step.get("uses") or ""):
+                        model = str((step.get("with") or {}).get("model") or "")
+                        if model and "${{" not in model:
+                            found.update(CURSOR_ACTION_MODEL_RE.findall(model))
+            seen[name] = found
+        union = set().union(*seen.values()) if seen else set()
+        self.assertEqual(
+            1, len(union),
+            f"Cursor workflows must route to exactly one model; found {seen}")
+        model_id = union.pop()
+        for name, found in seen.items():
+            self.assertEqual({model_id}, found,
+                             f"{name} does not route to {model_id}")
+        return model_id
 
     def test_all_opencode_callers_disable_checkout_credentials(self):
         """Every known caller removes checkout auth before metadata cleanup."""
@@ -887,6 +1036,124 @@ class RoutingInvariants(unittest.TestCase):
         # the workspace and the prompt, nothing else by default.
         self.assertNotIn('--volume "$HOME', action)
         self.assertNotIn("--privileged", action)
+
+    def test_cursor_never_runs_unsandboxed(self):
+        action_path = (REPO_ROOT / ".github" / "actions" /
+                       "run-cursor-container" / "action.yml")
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        action = "\n".join(
+            line for line in
+            "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"]).splitlines()
+            if not line.lstrip().startswith("#"))
+        workflow_paths = sorted((REPO_ROOT / ".github" / "workflows").glob("*.yml"))
+        workflow_paths += sorted((REPO_ROOT / ".github" / "workflows").glob("*.yaml"))
+        for workflow_path in workflow_paths:
+            name = workflow_path.name
+            doc = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
+            for job in (doc.get("jobs") or {}).values():
+                steps = job.get("steps") or []
+                for step in steps:
+                    for line in (step.get("run") or "").splitlines():
+                        code = line.split("#", 1)[0]
+                        self.assertNotRegex(
+                            code, r"(^|[;&|]|\s)agent\s+-p\b",
+                            f"{name}: `agent -p` outside the container "
+                            f"action reintroduces the unsandboxed posture")
+                if any("run-cursor-container" in str(step.get("uses") or "")
+                       for step in steps):
+                    checkouts = [step for step in steps
+                                 if str(step.get("uses") or "").startswith(
+                                     "actions/checkout@")]
+                    self.assertTrue(
+                        checkouts,
+                        f"{name}: Cursor job must check out the contained workspace")
+                    for checkout in checkouts:
+                        self.assertIs(
+                            False,
+                            (checkout.get("with") or {}).get("persist-credentials"),
+                            f"{name}: Cursor checkout must remove credential "
+                            "wiring as least privilege")
+        for flag in ("--cap-drop ALL", "--security-opt no-new-privileges",
+                     "--pids-limit", '--user "$(id -u):$(id -g)"',
+                     "HOME=/tmp/cursor-home"):
+            self.assertIn(flag, action, f"container lost {flag}")
+        self.assertIn("Docker is required for sandboxed Cursor CLI runs", action)
+        self.assertIn("trap cleanup EXIT", action)
+        self.assertIn('docker image rm -f "$image"', action)
+        self.assertIn('rm -rf -- "$build_dir"', action)
+        self.assertIn('rm -rf -- "$isolated_workspace"', action)
+        self.assertIn("scripts/copy_cursor_config.py", action)
+        self.assertIn('--volume "$generated_cursor_config:/tmp/cursor-config/cli-config.json:ro"', action)
+        self.assertIn("--env CURSOR_CONFIG_DIR=/tmp/cursor-config", action)
+        self.assertIn("HOME=/tmp/cursor-home", action)
+        self.assertIn('--sandbox disabled', action)
+        self.assertIn('timeout "${remaining_seconds}s" agent -p --force --trust', action)
+        self.assertIn('timeout "${remaining_seconds}s" agent -p --mode ask --trust', action)
+        self.assertIn("git bundle create .cursor-export.bundle", action)
+        self.assertIn("Cursor attempt telemetry is malformed", action)
+        self.assertIn("curl https://cursor.com/install -fsS | bash", action)
+        self.assertIn("agent --version", action)
+        for name, expected_mode in {
+                "generative-research.yml": "generative",
+                "hourly-twitter.yml": "twitter",
+                "cursor-cli-canary.yml": "canary",
+        }.items():
+            doc = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / name)
+                                 .read_text(encoding="utf-8"))
+            calls = [step for job in (doc.get("jobs") or {}).values()
+                     for step in (job.get("steps") or [])
+                     if "run-cursor-container" in str(step.get("uses") or "")]
+            self.assertTrue(calls, name)
+            self.assertTrue(all((step.get("with") or {}).get("mode") == expected_mode
+                                for step in calls), name)
+        self.assertNotIn('--volume "$HOME', action)
+        self.assertNotIn("--privileged", action)
+
+    def test_cursor_canary_probes_the_model_production_runs(self):
+        model_id = self.assert_single_cursor_model()
+        canary = (REPO_ROOT / ".github" / "workflows" /
+                  "cursor-cli-canary.yml").read_text(encoding="utf-8")
+        self.assertIn(f"model: cursor/{model_id}", canary)
+        self.assertIn("CURSOR-CLI-CANARY-OK", canary)
+        self.assertIn("persist-credentials: false", canary)
+        self.assertIn("set-safe-directory: false", canary)
+        self.assertIn(".cursor-precheckout.", canary)
+        self.assertIn("quarantine_workspace", canary)
+        production = json.loads(
+            (REPO_ROOT / ".github" / "cursor" / "cli-config.json")
+            .read_text(encoding="utf-8"))
+        self.assertNotIn("model", production)
+        self.assertNotIn("provider", production)
+        for name in ("cli-config.json", "cli-config-canary.json", "translation.json"):
+            cfg = json.loads((REPO_ROOT / ".github" / "cursor" / name)
+                             .read_text(encoding="utf-8"))
+            self.assertIn("permissions", cfg, name)
+
+    def test_cursor_twitter_tier_labels_name_the_served_model(self):
+        model_id = self.assert_single_cursor_model()
+        workflow = (REPO_ROOT / ".github" / "workflows" /
+                    "hourly-twitter.yml").read_text(encoding="utf-8")
+        arms = [chunk.split(";;", 1)[0]
+                for chunk in workflow.split("cursor-composer-2p5)")[1:]]
+        arm = next(a for a in arms if "OUTPUT_DIR=" in a)
+        family = model_id.split("-")[0].lower()
+        others = {"deepseek", "kimi", "glm", "claude", "gpt", "qwen"} - {family}
+        targets = [(f, next(ln for ln in arm.splitlines() if f"{f}=" in ln))
+                   for f in ("TITLE_SUFFIX", "COMMIT_PREFIX", "HARNESS_LABEL")]
+        targets.append(("notification title",
+                        next(ln for ln in workflow.splitlines()
+                             if "Twitter/X AI Pulse — Cursor CLI" in ln)))
+        for field, line in targets:
+            self.assertIn(family, line.lower(), f"{field} must name {family}")
+            for other in others:
+                self.assertNotIn(other, line.lower(),
+                                 f"{field} names {other} but the tier serves {family}")
+
+    def test_all_dispatch_callers_prewire_cursor_credential(self):
+        for obs in self.obs.values():
+            for step in obs.dispatch_steps:
+                self.assertEqual(
+                    step.secrets.get("cursor-api-key"), "CURSOR_API_KEY", step)
 
     def test_opencode_cleanup_survives_cancellation_escalation(self):
         action_doc = yaml.safe_load(

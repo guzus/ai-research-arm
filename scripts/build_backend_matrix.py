@@ -92,6 +92,32 @@ def opencode_model_id(workflow_name: str) -> str:
     return found.pop()
 
 
+CURSOR_MODEL_RE = re.compile(r'model="cursor/([A-Za-z0-9._-]+)"')
+
+
+def cursor_model_id(workflow_name: str) -> str:
+    """The model id a Cursor workflow actually passes to `agent --model`."""
+    doc = yaml.safe_load((WORKFLOWS_DIR / workflow_name).read_text(encoding="utf-8"))
+    found = set()
+    for job in (doc.get("jobs") or {}).values():
+        for step in job.get("steps") or []:
+            for line in (step.get("run") or "").splitlines():
+                if line.lstrip().startswith("#"):
+                    continue
+                found.update(CURSOR_MODEL_RE.findall(line))
+            if step.get("uses") == "./.github/actions/run-cursor-container":
+                model = str((step.get("with") or {}).get("model") or "")
+                if model and "${{" not in model:
+                    found.update(CURSOR_ACTION_MODEL_RE.findall(model))
+    if len(found) != 1:
+        raise SystemExit(
+            f"{workflow_name}: expected exactly one Cursor model id, "
+            f"found {sorted(found)}. The matrix cannot name an author it "
+            "cannot resolve."
+        )
+    return found.pop()
+
+
 def opencode_display_name(model_id: str) -> str:
     """Human label for the diagram node, derived from the served model id."""
     words = {"v4": "V4", "k3": "K3", "k2": "K2", "deepseek": "DeepSeek", "glm": "GLM"}
@@ -119,6 +145,10 @@ OPENCODE_RUN_RE = re.compile(r"^\s*opencode run\b", re.M)
 # action usage too, or the matrix rows and the README diagram edge silently
 # vanish the moment a lane is containerised.
 OPENCODE_ACTION = "run-opencode-container"
+CURSOR_ACTION = "run-cursor-container"
+CURSOR_SELECTOR = "cursor-composer-2p5"
+CURSOR_PROVIDER_LABEL = "Cursor CLI"
+CURSOR_ACTION_MODEL_RE = re.compile(r'^cursor/([A-Za-z0-9._-]+)$')
 AGENT_DISPATCH = "agent-dispatch"
 RESOLVER_CALL_RE = re.compile(r"resolve_backend_lane\.py\s+([a-z0-9\-]+)")
 STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure'")
@@ -126,7 +156,8 @@ STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure
 # Backends generative-research.yml can actually execute (its params step
 # validates against this same set at runtime).
 GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "opus-5", "codex",
-                         "opencode-deepseek-v4-flash", "deepseek-v4-flash", "glm-5p2"}
+                         "opencode-deepseek-v4-flash", "deepseek-v4-flash", "glm-5p2",
+                         "cursor-composer-2p5"}
 
 REQUIRED_AGENT_RUN_SECRETS = {
     "claude-code-oauth-token": "CLAUDE_CODE_OAUTH_TOKEN",
@@ -136,6 +167,7 @@ REQUIRED_AGENT_RUN_SECRETS = {
 REQUIRED_DISPATCH_SECRETS = {
     **REQUIRED_AGENT_RUN_SECRETS,
     "opencode-api-key": "OPENCODE_API_KEY",
+    "cursor-api-key": "CURSOR_API_KEY",
 }
 
 
@@ -186,6 +218,15 @@ class OpencodeStep:
 
 
 @dataclass
+class CursorStep:
+    workflow: str
+    lane: str
+    model: str
+    token: str
+    step_name: str
+
+
+@dataclass
 class DispatchStep:
     workflow: str
     lane: str
@@ -215,11 +256,14 @@ class Observation:
     agent_run: list[AgentRunStep] = field(default_factory=list)
     pi: list[PiStep] = field(default_factory=list)
     opencode_steps: list[OpencodeStep] = field(default_factory=list)
+    cursor_steps: list[CursorStep] = field(default_factory=list)
     native: list[NativeStep] = field(default_factory=list)
     codex: bool = False
     codex_token: str = ""
     opencode: bool = False
     opencode_token: str = ""
+    cursor: bool = False
+    cursor_token: str = ""
     resolver_lanes: set[str] = field(default_factory=set)
     det_by_lane: dict[str, str] = field(default_factory=dict)
     det_by_tier: dict[str, str] = field(default_factory=dict)
@@ -526,6 +570,18 @@ def observe_workflow(wf_path: Path) -> Observation:
                         step_name=step_name,
                     ))
 
+            elif uses == "./.github/actions/run-cursor-container":
+                obs.cursor = True
+                wf_text = wf_path.read_text(encoding="utf-8")
+                obs.cursor_token = "CURSOR_API_KEY" if "CURSOR_API_KEY" in wf_text else "(unknown)"
+                obs.cursor_steps.append(CursorStep(
+                    workflow=wf_path.name,
+                    lane=str(with_block.get("lane", "")).strip(),
+                    model=str(with_block.get("model", "")).strip(),
+                    token=first_secret(with_block.get("cursor-api-key")),
+                    step_name=step_name,
+                ))
+
     return obs
 
 
@@ -584,6 +640,16 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
             if credential != "opencode-api-key":
                 errors.append(f"route '{route_key}': opencode provider must bind exactly "
                               "to dispatcher input opencode-api-key")
+        elif profile.adapter == "cursor":
+            if fallback != "none":
+                errors.append(f"route '{route_key}': cursor routes must use fallback "
+                              "'none' because cross-adapter fallback is not implemented")
+            if profile.provider != "cursor" or not profile.model_id:
+                errors.append(f"route '{route_key}': cursor backend '{backend}' must "
+                              "declare provider=cursor and a non-empty model")
+            if credential != "cursor-api-key":
+                errors.append(f"route '{route_key}': cursor provider must bind exactly "
+                              "to dispatcher input cursor-api-key")
         else:
             errors.append(f"route '{route_key}': backend '{backend}' adapter "
                           f"'{profile.adapter}' is not implemented by agent-dispatch")
@@ -855,7 +921,8 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
 
     TOKEN_BY_PROVIDER = {"fireworks": "FIREWORKS_API_KEY", "zai": "ZAI_API_KEY",
                          "claude": "CLAUDE_CODE_OAUTH_TOKEN",
-                         "opencode-go": "OPENCODE_API_KEY"}
+                         "opencode-go": "OPENCODE_API_KEY",
+                         "cursor": "CURSOR_API_KEY"}
 
     for key in sorted(lanes):
         lane = lanes[key]
@@ -877,6 +944,9 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             if profile and profile.adapter == "opencode":
                 token = "OPENCODE_API_KEY"
                 harness_label = "agent-dispatch → opencode CLI (runtime SSOT)"
+            elif profile and profile.adapter == "cursor":
+                token = "CURSOR_API_KEY"
+                harness_label = "agent-dispatch → Cursor CLI (runtime SSOT)"
             else:
                 harness_label = "agent-dispatch → Claude Code · agent-run (runtime SSOT)"
             if route.get("fallback") == "none":
@@ -1013,6 +1083,20 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
                          "Anthropic (native)", "`claude-opus-5`",
                          "`CLAUDE_CODE_OAUTH_TOKEN`",
                          "hard fail (one recovery retry, same as `claude`)"])
+        if obs.cursor and any(not step.lane for step in obs.cursor_steps):
+            model_id = cursor_model_id(wf_name)
+            if wf_name == "generative-research.yml":
+                label = f"(dispatch path) backend={CURSOR_SELECTOR}"
+                note = "hard fail (strict comparison backend)"
+            elif "canary" in wf_name:
+                label = f"(canary) cursor + {model_id}"
+                note = "hard fail (diagnostics lane)"
+            else:
+                label = f"(tier) backend={CURSOR_SELECTOR}"
+                note = "hard fail (strict comparison tier)"
+            rows.append([label, f"`{wf_name}`", "Cursor CLI (containerised)",
+                         CURSOR_PROVIDER_LABEL, f"`{model_id}`",
+                         f"`{obs.cursor_token}`", note])
 
     return rows
 
@@ -1022,6 +1106,7 @@ PROVIDER_NODES = {
     "zai": ("ZAI", "⚡ Z.ai"),
     "claude": ("ANT", "🅰️ Anthropic<br/><i>native Claude</i>"),
     "opencode-go": ("OC", "🚀 OpenCode Go<br/><i>opencode CLI</i>"),
+    "cursor": ("CUR", "🖱️ Cursor CLI<br/><i>agent</i>"),
 }
 
 
@@ -1033,7 +1118,8 @@ def _wrap(items: list[str], per_line: int = 3) -> str:
 def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
                          chain: list[str], native_fallback: str,
                          has_codex: bool, has_opencode: bool,
-                         routes: dict[str, dict] | None = None) -> str:
+                         routes: dict[str, dict] | None = None,
+                         has_cursor: bool = False) -> str:
     """Mermaid routing diagram for the README, derived from the SSOT. Lanes
     are grouped per backend (strict lanes separately) so a re-route in the
     JSON changes the picture on the next regeneration."""
@@ -1119,6 +1205,8 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
         out.append('    gendef -.->|"backend=codex"| OAI')
     if gen_default and has_opencode:
         out.append(f'    gendef -.->|"backend={OPENCODE_SELECTOR}"| OC')
+    if gen_default and has_cursor:
+        out.append(f'    gendef -.->|"backend={CURSOR_SELECTOR}"| CUR')
 
     # ordered chain arrows between providers: primary-heaviest provider first,
     # then each chain hop
@@ -1174,7 +1262,8 @@ def build_generated_blocks() -> tuple[str, str]:
                 and not any([observations[p.name].dispatch_steps,
                              observations[p.name].agent_run, observations[p.name].pi,
                              observations[p.name].native, observations[p.name].codex,
-                             observations[p.name].opencode])]
+                             observations[p.name].opencode,
+                             observations[p.name].cursor])]
 
     lines = [BEGIN_MARKER, ""]
     lines.append("### Lanes")
@@ -1201,8 +1290,11 @@ def build_generated_blocks() -> tuple[str, str]:
     has_opencode = any(o.opencode for o in observations.values()) \
         or any(profiles[str(route["backend"])].adapter == "opencode"
                for route in routes.values())
+    has_cursor = any(o.cursor for o in observations.values()) \
+        or any(profiles[str(route["backend"])].adapter == "cursor"
+               for route in routes.values())
     diagram = build_readme_diagram(lanes, profiles, chain, native_fallback,
-                                   has_codex, has_opencode, routes)
+                                   has_codex, has_opencode, routes, has_cursor)
     diagram_block = "\n".join([
         BEGIN_DIAGRAM,
         "```mermaid",

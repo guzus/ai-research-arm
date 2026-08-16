@@ -217,6 +217,7 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
           timeout-minutes: '12'
           prompt-text: |
             You are an RSS feed processor for AI news. Extract NEW articles from official sources.

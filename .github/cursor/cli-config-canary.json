@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "deny": [
+      "Shell(*)",
+      "Write(*)",
+      "WebFetch(*)",
+      "Mcp(*)"
+    ]
+  }
+}

@@ -27,6 +27,9 @@ name: Generative Research
 #                authenticated by the plain OPENCODE_API_KEY env var (no
 #                auth.json seeding). The Moonshot route is gone, not
 #                repointed — Moonshot serves Kimi only.
+#   * cursor-composer-2p5 — Composer 2.5 via the Cursor CLI (`agent`),
+#                authenticated by CURSOR_API_KEY inside run-cursor-container.
+#                Selectable comparison backend; not the production default.
 #   * deepseek — comparison/fallback route through Fireworks'
 #                Anthropic-compatible endpoint via ANTHROPIC_BASE_URL /
 #                ANTHROPIC_AUTH_TOKEN.
@@ -76,6 +79,7 @@ on:
           - deepseek-v4-flash
           - codex
           - opencode-deepseek-v4-flash
+          - cursor-composer-2p5
           - claude
           - fable-5
           - opus-5
@@ -317,11 +321,12 @@ jobs:
                 claude-opus-5|opus-5|opus5) CANDIDATE="opus-5" ;;
                 codex|openai-codex) CANDIDATE="codex" ;;
                 opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) CANDIDATE="opencode-deepseek-v4-flash" ;;
+                cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5) CANDIDATE="cursor-composer-2p5" ;;
                 deepseek) CANDIDATE="deepseek-v4-flash" ;;
                 glm-5.2|glm5.2|glm52|glm-5p2) CANDIDATE="glm-5p2" ;;
               esac
               if [ -n "${CANDIDATE:-}" ]; then
-                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "opus-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-deepseek-v4-flash" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
+                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "opus-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-deepseek-v4-flash" ] && [ "$CANDIDATE" != "cursor-composer-2p5" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
                   echo "unsupported backend/model: $CANDIDATE" >&2
                   exit 1
                 fi
@@ -355,13 +360,14 @@ jobs:
             default) BACKEND="$DEFAULT_BACKEND" ;;
             codex|openai-codex) BACKEND="codex" ;;
             opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) BACKEND="opencode-deepseek-v4-flash" ;;
+            cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5) BACKEND="cursor-composer-2p5" ;;
             deepseek) BACKEND="deepseek-v4-flash" ;;
             glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
             claude-opus-4-8|claude-sonnet-5) BACKEND="claude" ;;
             claude-fable-5|fable-5) BACKEND="fable-5" ;;
             claude-opus-5|opus-5|opus5) BACKEND="opus-5" ;;
           esac
-          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "opus-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-deepseek-v4-flash" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
+          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "opus-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-deepseek-v4-flash" ] && [ "$BACKEND" != "cursor-composer-2p5" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
           fi
@@ -2095,6 +2101,47 @@ jobs:
           gen-source: ${{ steps.params.outputs.source }}
           gen-draft: ${{ steps.draft.outputs.path }}
 
+      - name: Resolve and preflight Cursor CLI route
+        if: steps.effective.outputs.backend == 'cursor-composer-2p5'
+        id: cursor-route
+        timeout-minutes: 5
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+        run: |
+          set -euo pipefail
+          # Fail fast on a missing key before the 90-minute container build.
+          # This backend is an explicit comparison choice, so there is no
+          # Claude fallback. The harness itself is the authoritative auth
+          # check; agent is not on the host PATH.
+          if [ -z "${CURSOR_API_KEY:-}" ]; then
+            echo "::error::No Cursor CLI auth configured. Set CURSOR_API_KEY (Cursor dashboard API key) with: gh secret set CURSOR_API_KEY"
+            exit 1
+          fi
+          model="cursor/composer-2.5"
+          {
+            echo "route=cursor"
+            echo "model=$model"
+          } >> "$GITHUB_OUTPUT"
+          echo "Resolved Cursor route: cursor ($model)"
+
+      - name: Run Generative Research (Cursor CLI Composer 2.5)
+        if: steps.effective.outputs.backend == 'cursor-composer-2p5'
+        id: gen-cursor
+        continue-on-error: true
+        timeout-minutes: 90
+        uses: ./.github/actions/run-cursor-container
+        with:
+          mode: generative
+          prompt-file: ${{ github.workspace }}/.github/cursor/prompts/generative-research.md
+          model: ${{ steps.cursor-route.outputs.model }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          timeout-minutes: '85'
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
+          gen-slug: ${{ steps.params.outputs.slug }}
+          gen-source: ${{ steps.params.outputs.source }}
+          gen-draft: ${{ steps.draft.outputs.path }}
+
       # ---- Fireworks backends ----------------------------------------------
       # claude-code-action redirected to Fireworks' Anthropic-compatible
       # endpoint. The OAuth input is required by the action schema but ignored
@@ -3778,6 +3825,7 @@ jobs:
           CLAUDE_RETRY_1_OUTCOME: ${{ steps.gen-claude-retry.outcome }}
           CODEX_OUTCOME: ${{ steps.gen-codex.outcome }}
           OPENCODE_OUTCOME: ${{ steps.gen-opencode.outcome }}
+          CURSOR_OUTCOME: ${{ steps.gen-cursor.outcome }}
           DEEPSEEK_ATTEMPT_1_OUTCOME: ${{ steps.gen-deepseek.outcome }}
           DEEPSEEK_RETRY_1_OUTCOME: ${{ steps.gen-deepseek-retry.outcome }}
           DEEPSEEK_RETRY_2_OUTCOME: ${{ steps.gen-deepseek-retry-2.outcome }}
@@ -3867,6 +3915,7 @@ jobs:
                   "claude_retry_1": env("CLAUDE_RETRY_1_OUTCOME"),
                   "codex": env("CODEX_OUTCOME"),
                   "opencode": env("OPENCODE_OUTCOME"),
+                  "cursor": env("CURSOR_OUTCOME"),
                   "deepseek_attempt_1": env("DEEPSEEK_ATTEMPT_1_OUTCOME"),
                   "deepseek_retry_1": env("DEEPSEEK_RETRY_1_OUTCOME"),
                   "deepseek_retry_2": env("DEEPSEEK_RETRY_2_OUTCOME"),
@@ -3952,6 +4001,13 @@ jobs:
         run: |
           echo "::error::OpenCode DeepSeek V4 Flash backend did not produce an article."
           echo "OpenCode outcome: ${{ steps.gen-opencode.outcome }}"
+          exit 1
+
+      - name: Fail Cursor run without article
+        if: always() && steps.effective.outputs.backend == 'cursor-composer-2p5' && steps.outfile.outputs.has_file != 'true'
+        run: |
+          echo "::error::Cursor CLI Composer 2.5 backend did not produce an article."
+          echo "Cursor outcome: ${{ steps.gen-cursor.outcome }}"
           exit 1
 
       # claude-code-action reports success when the model session completes,

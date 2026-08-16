@@ -139,11 +139,13 @@ jobs:
           # cannot gain shell, network, search, subagent, edit/write, or
           # broader repository access.
           opencode-config: .github/opencode/translation.json
+          cursor-config: .github/cursor/translation.json
           timeout-minutes: '80'
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
           prompt-text: |
             Translate one existing ARA generative-research article into natural,
             professional Korean. This is translation, not new research.

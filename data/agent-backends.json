@@ -9,6 +9,14 @@
       },
       "implementation": ".github/actions/run-opencode-container"
     },
+    "cursor": {
+      "isolated_workspace": true,
+      "editorial_contract": true,
+      "provider_credentials": {
+        "cursor": "cursor-api-key"
+      },
+      "implementation": ".github/actions/run-cursor-container"
+    },
     "agent-run": {
       "isolated_workspace": false,
       "editorial_contract": true,
@@ -88,6 +96,19 @@
         "zai-glm52",
         "zai"
       ]
+    },
+    "cursor-composer-2p5": {
+      "adapter": "cursor",
+      "provider": "cursor",
+      "model": "composer-2.5",
+      "display_name": "Composer 2.5 via Cursor CLI",
+      "aliases": [
+        "cursor",
+        "cursor-cli",
+        "cursor-agent",
+        "composer-2.5"
+      ],
+      "notes": "Cursor Agent CLI inside run-cursor-container, authenticated by CURSOR_API_KEY and pinned to composer-2.5. Runtime-selectable by agent-dispatch; not selectable by agent-run. Production editorial defaults stay on OpenCode until this profile is chosen in a route."
     }
   },
   "routes": {
