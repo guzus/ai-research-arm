@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-08-16
+
+TOP STORIES:
+• Nvidia moved from selling OpenAI compute to financing it: reported $3B into SB Energy plus support for ~$100B behind a 10GW Ohio campus
+• OpenAI hit a $40B annualized run rate, with enterprise now ahead of consumer and July growth at 20% MoM
+• H100 one-year contract rentals rose 50% in six months, with 12-18 month waits, while spot pricing barely moved
+
+KEY NUMBERS:
+• Qwen: 3B+ downloads, 151,448 HF derivatives (2.6x Meta's footprint)
+• H100 spot median held $1.73-$2.93/GPU-hour, +1.7% drift
+• $80 to reset a weekly usage limit on OpenAI's $200 plan
+• 500+ local governments now ban new data centers
+
+TRENDING: DeepSeek V4-Pro-0813's harness overfitting reproduced on a third-party endpoint
+
+Full digest on GitHub.
