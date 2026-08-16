@@ -1989,6 +1989,13 @@ jobs:
       - name: Resolve and preflight OpenCode route
         if: steps.effective.outputs.backend == 'opencode-deepseek-v4-flash'
         id: opencode-route
+        # The curl below is bounded (--max-time 60 --retry 2 --retry-delay 5,
+        # so ~190s worst case), but a bounded curl is not a bounded STEP: on
+        # 2026-08-16 this step wedged for 3h and, because this repo has a
+        # single self-hosted runner, head-of-line blocked 10 queued runs —
+        # including gpu-spot/model-pricing/blogs, which never touch OpenCode.
+        # Every sibling agent step carries timeout-minutes; this one must too.
+        timeout-minutes: 5
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
