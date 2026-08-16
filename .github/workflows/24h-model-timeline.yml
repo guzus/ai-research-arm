@@ -134,8 +134,17 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          # max-turns raised 60 -> 100 on 2026-08-16. The ticket store is
+          # persistent and append-only (rule 9), so the per-run read cost
+          # grows with it: at ~186 tickets the CRUD agent started dying on
+          # "Reached maximum number of turns (60)" (run 31871011485) rather
+          # than on any model or credential fault. This is a scope problem,
+          # so it will recur as the store grows -- the durable fix is a
+          # bounded working set, not a bigger number. Wall-clock headroom is
+          # fine: that run burned 60 turns in ~12 min, so 100 lands near
+          # ~20 min against the 90-min timeout above.
           claude-args: |
-            --model opus --max-turns 60 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),Bash(curl:*),Task,TodoWrite"
+            --model opus --max-turns 100 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),Bash(curl:*),Task,TodoWrite"
           expected-paths: |
             research/models/
           label: Model-ticket Claude CRUD
