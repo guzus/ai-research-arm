@@ -723,6 +723,23 @@ runs:
             # timeout budget; partial output, nonzero exits, and every other
             # lane remain single-attempt and fail closed.
             # OPENCODE_ATTEMPT_LOOP_BEGIN
+            #
+            # Provider errors that can NEVER recover inside a single run.
+            # Anchored on `level=ERROR` so this only ever matches opencode's
+            # own structured log line, never article prose that happens to
+            # quote one of these phrases.
+            #
+            # Why this exists: on 2026-08-13 the OpenCode workspace hit its
+            # monthly usage cap. opencode reports that clearly, but it keeps
+            # stream-retrying instead of exiting, and without --print-logs the
+            # message stayed in its internal log file. The lane therefore
+            # emitted ZERO bytes between its banner and `timeout` firing at
+            # 25-80 min, so a billing limit was indistinguishable from a long
+            # healthy run. Five editorial lanes stayed dark for four days and
+            # the cause was only found by reproducing the CLI by hand. Each
+            # hang also pinned this repo's single self-hosted runner for the
+            # full timeout, head-of-line blocking unrelated lanes.
+            opencode_fatal_pattern='level=ERROR.*(Monthly usage limit reached|usage limit reached|Insufficient balance|Insufficient credits|Invalid API key|API key is invalid)'
             model_budget_seconds=$((AGENT_TIMEOUT_MINUTES * 60))
             model_started_seconds=$SECONDS
             attempt_count=0
@@ -741,11 +758,47 @@ runs:
               attempt_log="/tmp/opencode-attempt-${attempt_count}.log"
               rm -f -- "$attempt_log"
               set +e
+              # --print-logs puts opencode's provider errors on stderr so a
+              # dead route is visible in the job log instead of silent. The
+              # run is backgrounded (rather than piped through tee) purely so
+              # we hold its PID and can abort early; `tail --pid` reproduces
+              # the old live-streaming behaviour and exits with the run.
               timeout "${remaining_seconds}s" opencode run \
                 -m "$OPENCODE_MODEL_REF" \
                 --auto \
-                "$(cat /tmp/opencode-prompt.md)" 2>&1 | tee "$attempt_log"
-              agent_status=${PIPESTATUS[0]}
+                --print-logs --log-level ERROR \
+                "$(cat /tmp/opencode-prompt.md)" > "$attempt_log" 2>&1 &
+              opencode_pid=$!
+              tail -n +1 -f "$attempt_log" --pid "$opencode_pid" 2>/dev/null &
+              tail_pid=$!
+              # Poll for an unrecoverable provider error and cut the run short.
+              # GNU timeout forwards SIGTERM to the command it manages, so
+              # terminating it stops opencode too. procps (pgrep/pkill) is not
+              # installed in the slim image, hence the PID-based approach.
+              while kill -0 "$opencode_pid" 2>/dev/null; do
+                sleep 5
+                fatal=$(grep -m1 -oiE "$opencode_fatal_pattern" "$attempt_log" 2>/dev/null | cut -c1-300)
+                if [ -n "$fatal" ]; then
+                  echo "::error::OpenCode provider returned an unrecoverable error; aborting this attempt instead of waiting out the ${remaining_seconds}s timeout: ${fatal}"
+                  kill -TERM "$opencode_pid" 2>/dev/null
+                  # Escalate if it does not go down promptly, so a wedged
+                  # provider client can never outlive its own abort and keep
+                  # holding the runner.
+                  for _ in 1 2 3 4 5 6 7 8 9 10; do
+                    kill -0 "$opencode_pid" 2>/dev/null || break
+                    sleep 1
+                  done
+                  kill -KILL "$opencode_pid" 2>/dev/null
+                  break
+                fi
+              done
+              wait "$opencode_pid"
+              agent_status=$?
+              # Tear the streamer down explicitly rather than trusting
+              # `tail --pid` to notice; an unreaped tail keeps this step's
+              # stdout open and would hang the job it was meant to shorten.
+              kill -TERM "$tail_pid" 2>/dev/null
+              wait "$tail_pid" 2>/dev/null
               set -e
 
               segment_calls=$(grep -cF "translation_segment {" "$attempt_log" || true)
