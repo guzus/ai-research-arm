@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "LECUN AMPLIFIES OPEN LETTER CALLING ANTHROPIC SAFETY POLICY SELF-SERVING",
+    "source": "@ylecun",
+    "url": "https://x.com/ylecun/status/2089008091639484777",
+    "category": "policy"
+  },
+  {
+    "headline": "AMODEI-BACKED CALIFORNIA AI BILL EXEMPTS EVERY COMPANY UNDER $500M REVENUE",
+    "source": "@argofowl",
+    "url": "https://x.com/argofowl/status/2089011802927452300",
+    "category": "policy"
+  },
+  {
+    "headline": "AI STARTUPS PUSHED INTO FIVE-YEAR CLOUD GPU CONTRACTS EXCEEDING TOTAL CAPITAL RAISED",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2088974132679430312",
+    "category": "infra"
+  },
+  {
+    "headline": "FT: THREE-QUARTERS OF UTILITIES SERVING 60 BIGGEST US AI DATA CENTERS BUILDING NEW GAS PLANTS",
+    "source": "@EnergyAlphaCo",
+    "url": "https://x.com/EnergyAlphaCo/status/2089011980593942621",
+    "category": "infra"
+  },
+  {
+    "headline": "ANTHROPIC BUILDING COLLABORATIVE CLAUDE CODE PROJECTS INTO CLAUDE DESKTOP",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2088999252559024420",
+    "category": "business"
+  },
+  {
+    "headline": "PAPER: RL FOR REASONING EDITS ONLY 1-3% OF TOKENS, TEACHES NO NEW STRATEGIES",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2089007687719620700",
+    "category": "research"
+  }
+]
