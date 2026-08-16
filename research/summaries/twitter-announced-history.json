@@ -23642,5 +23642,26 @@
     "headline": "ANTHROPIC SAID TO HAVE ALLOCATED MAJOR COMPUTE TO BIO AND HEALTH, TARGETING HEALTHCARE CONTRIBUTIONS WITHIN MONTHS",
     "source": "@ns123abc",
     "url": "https://x.com/ns123abc/status/2088902853238604176"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-16 12:57:33 UTC",
+    "headline": "FT: OPENAI'S LAST DEDICATED AI ETHICIST LEFT IN JULY UNANNOUNCED \u2014 NO REPLACEMENT LINED UP",
+    "source": "@OwenGregorian",
+    "url": "https://x.com/OwenGregorian/status/2088973564862939280"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-16 12:57:33 UTC",
+    "headline": "POLITICO REPORTED TO TRACE $100,000 ISRAELI STATE-FUNDED CAMPAIGN BUILT TO SHAPE HOW LLMS ANSWER ON GAZA",
+    "source": "@rbg4lif",
+    "url": "https://x.com/rbg4lif/status/2088972120810308089"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-16 12:57:33 UTC",
+    "headline": "QWEN3.8-27B REPORTED LOOPING MORE THAN PREDECESSOR 3.6 IN NON-THINKING MODE \u2014 FIRST REGRESSION CLAIM",
+    "source": "@MikeBradleyAI",
+    "url": "https://x.com/MikeBradleyAI/status/2088966977276535216"
   }
 ]
