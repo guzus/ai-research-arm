@@ -1,0 +1,13 @@
+Speaker 1: Sunday, August sixteenth, twenty twenty-six.
+Speaker 2: [high_energy] Nvidia just stopped being OpenAI's supplier and started being its banker, three billion dollars into SB Energy plus support for roughly [emphasis] one hundred billion dollars [/emphasis] behind a ten gigawatt campus in Ohio.
+Speaker 1: That is a chip vendor underwriting the power bill of its own customer, which changes what a compute deal even means.
+Speaker 2: And the customer is growing into it, OpenAI hit a [emphasis] forty billion dollar [/emphasis] annualized run rate with enterprise now ahead of consumer.
+Speaker 1: July growth came in at twenty percent month over month, so that mix shift is not a rounding error.
+Speaker 2: Worth noting that the squeeze is showing up in rental markets, H one hundred one-year contracts are up fifty percent in six months with twelve to eighteen month waits.
+Speaker 1: Spot barely moved though, the median held between one dollar seventy-three and two dollars ninety-three per GPU hour, drifting up one point seven percent.
+Speaker 2: [dramatic_pause] Which tells you the scarcity is in the long-term commitment, not the hourly market.
+Speaker 1: Some quick numbers on the open model side, Qwen has passed three billion downloads and one hundred fifty-one thousand, four hundred forty-eight derivatives on Hugging Face, about two point six times Meta's footprint.
+Speaker 2: That's the first time we've seen a challenger clear that margin, and on the consumer end, eighty dollars now resets a weekly usage limit on the two hundred dollar plan.
+Speaker 1: On the policy front, more than five hundred local governments now ban new data centers, which is the physical constraint catching up to the capital.
+Speaker 2: And in trending, DeepSeek V four Pro zero eight one three's harness overfitting was reproduced on a third-party endpoint, so that one is no longer a lab-only artifact.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
