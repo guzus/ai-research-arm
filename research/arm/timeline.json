@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T03:11:14.435Z",
+  "generatedAt": "2026-08-16T03:39:36.683Z",
   "windowStart": "2026-08-14T15:00:00.000Z",
   "windowEnd": "2026-08-17T16:00:00.000Z",
   "timezone": "UTC",
@@ -525,14 +525,56 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/4684c1aef7d33645003ddc6adbf30ff3e0a35071"
     },
     {
-      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-08-16T03-26-00-000Z",
-      "kind": "scheduled",
-      "lane": "Models",
-      "title": "Model Pricing (price vs. capability)",
-      "status": "scheduled",
-      "start": "2026-08-16T03:26:00.000Z",
-      "end": "2026-08-16T04:11:00.000Z",
-      "source": "cron 26 3,9,15,21 * * *"
+      "id": "commit-0966f198027a",
+      "kind": "completed",
+      "lane": "Twitter/X",
+      "title": "Twitter/X brief",
+      "status": "completed",
+      "start": "2026-08-16T02:15:00.000Z",
+      "end": "2026-08-16T02:24:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "deepseek-v4-flash",
+      "commit": "0966f198027a",
+      "url": "https://github.com/guzus/ai-research-arm/commit/0966f198027a800ac40030893aeb48afc3524a59"
+    },
+    {
+      "id": "commit-f96493046d97",
+      "kind": "completed",
+      "lane": "Delivery",
+      "title": "Twitter alert delivery",
+      "status": "completed",
+      "start": "2026-08-16T02:16:00.000Z",
+      "end": "2026-08-16T02:25:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "hooker",
+      "commit": "f96493046d97",
+      "url": "https://github.com/guzus/ai-research-arm/commit/f96493046d97240b4a57314b9f4fa03633a8296f"
+    },
+    {
+      "id": "commit-e40cc1165aba",
+      "kind": "completed",
+      "lane": "Blogs",
+      "title": "AI expert blog watch",
+      "status": "completed",
+      "start": "2026-08-16T03:06:00.000Z",
+      "end": "2026-08-16T03:07:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "e40cc1165aba",
+      "url": "https://github.com/guzus/ai-research-arm/commit/e40cc1165aba5fb9cd6b3a8bcfb212b1e99b805d"
+    },
+    {
+      "id": "commit-1c10c41e75df",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-08-16 03:11 UTC (#2351)",
+      "status": "completed",
+      "start": "2026-08-16T03:11:00.000Z",
+      "end": "2026-08-16T03:12:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "1c10c41e75df",
+      "url": "https://github.com/guzus/ai-research-arm/commit/1c10c41e75dffeb701ca52e0c36203c9b2fdb4f2"
     },
     {
       "id": "scheduled-market-quotes-yml-53---3-------2026-08-16T03-53-00-000Z",
@@ -1763,6 +1805,16 @@
       "start": "2026-08-17T15:07:00.000Z",
       "end": "2026-08-17T16:07:00.000Z",
       "source": "cron 7 */3 * * *"
+    },
+    {
+      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-08-17T15-26-00-000Z",
+      "kind": "scheduled",
+      "lane": "Models",
+      "title": "Model Pricing (price vs. capability)",
+      "status": "scheduled",
+      "start": "2026-08-17T15:26:00.000Z",
+      "end": "2026-08-17T16:11:00.000Z",
+      "source": "cron 26 3,9,15,21 * * *"
     }
   ]
 }
