@@ -23558,5 +23558,54 @@
     "headline": "CRAFT VENTURES TARGETS $1B FUND, FIRST SINCE SACKS LEFT WHITE HOUSE AI ROLE",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2088732491364307440"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-16 02:15:11 UTC",
+    "headline": "AMODEI PUTS ANTHROPIC'S INTERNAL AI ACCELERATION UNDER 2X IN RARE LONG POST",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2088797773336305958"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-16 02:15:11 UTC",
+    "headline": "ANTHROPIC RAMPING BIOLOGY AND MEDICINE, EARLY GLIMMERS IN COMING MONTHS \u2014 AMODEI",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2088796308257886242"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-16 02:15:11 UTC",
+    "headline": "PRIME INTELLECT: AI CLOSES 81.7% OF GAP TO HUMAN NANOGPT RECORD \u2014 2,726 STEPS VS 2,600",
+    "source": "@MaxForAI",
+    "url": "https://x.com/MaxForAI/status/2088805593276690731"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-16 02:15:11 UTC",
+    "headline": "AUTOMATED-RESEARCH STUDY FINDS NO NOVELTY \u2014 MODELS WIN ON EXPERIMENT DISCIPLINE, NOT IDEAS",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2088737519844159746"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-16 02:15:11 UTC",
+    "headline": "EU AI ACT ARTICLE 50(2): MODELS RELEASED AFTER AUG 2 MUST SHIP DETECTABLE TEXT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2088786973385445809"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-16 02:15:11 UTC",
+    "headline": "DEEPSEEK HARNESS-OVERFITTING CLAIM EXTENDS TO SECOND CHECKPOINT, FLASH-0731",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2088783046925254807"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-16 02:15:11 UTC",
+    "headline": "LENDERS NOW TREAT GPUS AS RECOVERABLE COLLATERAL BEHIND NVIDIA'S $500B GUARANTEE",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2088797214873133358"
   }
 ]
