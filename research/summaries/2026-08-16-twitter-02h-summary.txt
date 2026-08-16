@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-16 02:15:11 UTC
+
+CYCLE: Dario breaks silence with a number on Anthropic's self-improvement; Prime Intellect publishes its automated-research leaderboard.
+
+TOP STORIES:
+• Dario Amodei puts Anthropic's internal AI acceleration at "under 2x" while teasing biology "glimmers in the coming months" [✓]
+• Prime Intellect: best model closes 81.7% of the gap to the human nanoGPT record (3,290 → 2,726 steps vs 2,600) — but wins on experimental discipline, not novel ideas [⚠]
+• EU AI Act Article 50(2) reaches OpenAI: models released after Aug 2 2026 must ship detectable text [⚠]
+
+WATCH: Whether Anthropic attaches a baseline and metric to the sub-2x claim — it is currently unfalsifiable in either direction.
+
+Full update on GitHub.
