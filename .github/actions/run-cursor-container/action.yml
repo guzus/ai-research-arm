@@ -50,7 +50,7 @@ inputs:
     required: false
     default: ''
   model:
-    description: Fully-qualified Cursor model ref, e.g. cursor/grok-4.6-fast.
+    description: Fully-qualified Cursor model ref, e.g. cursor/cursor-grok-4.6-high-fast.
     required: true
   cursor-api-key:
     description: CURSOR_API_KEY (Cursor user or service-account API key).

@@ -2118,7 +2118,7 @@ jobs:
             echo "::error::No Cursor CLI auth configured. Set CURSOR_API_KEY (Cursor dashboard API key) with: gh secret set CURSOR_API_KEY"
             exit 1
           fi
-          model="cursor/grok-4.6-fast"
+          model="cursor/cursor-grok-4.6-high-fast"
           {
             echo "route=cursor"
             echo "model=$model"

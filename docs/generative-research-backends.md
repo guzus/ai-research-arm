@@ -14,7 +14,7 @@ research pipeline:
 | `opus-5` | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit premium native Anthropic route. It is not the default and is not the Fireworks-unavailable fallback target. The workflow pins the literal model ID across every alias/subagent slot and article metadata, and verifies the committed `index.json` row records `claude-opus-5` before pushing. Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
 | `codex` | Codex CLI default model for ChatGPT auth | `CODEX_AUTH_JSON` seeded into file-backed `auth.json` | Optional Codex backend using ChatGPT-managed Codex auth rather than OpenAI API billing. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
 | `opencode-deepseek-v4-flash` | `deepseek-v4-flash` (1M context, the 2026-07-31 build) via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription), read directly from env by opencode's built-in `opencode-go` provider. Moonshot serves Kimi only and is not a fallback. | **The default** (SSOT lane `generative-research-default`) for manual no-backend dispatches, `gen-research` issues, and throttled Twitter auto-research. Also the shared strict route for editorial lanes. No interactive login or auth-file seeding. Strict: preflight failure fails rather than substituting another author. Article metadata records `deepseek-v4-flash`. Validate with `opencode-deepseek-canary.yml`. |
-| `cursor-grok-4p6-fast` | `grok-4.6-fast` via the Cursor CLI (`agent`) | `CURSOR_API_KEY` (Cursor dashboard API key), read from env by the official CLI. | Selectable isolated comparison backend. Same disposable-clone / `--cap-drop ALL` contract as OpenCode (`run-cursor-container`). Not the production default and not on `fallback.chain`. Article metadata records `grok-4.6-fast`. Selectors: `cursor`, `cursor-cli`, `cursor-agent`, `grok-4.6-fast`, `grok`. `cursor-composer-2p5` remains a compatibility alias. Validate with `cursor-cli-canary.yml`. Current `generative-translation` route. |
+| `cursor-grok-4p6-fast` | `cursor-grok-4.6-high-fast` via the Cursor CLI (`agent`) | `CURSOR_API_KEY` (Cursor dashboard API key), read from env by the official CLI. | Selectable isolated comparison backend. Same disposable-clone / `--cap-drop ALL` contract as OpenCode (`run-cursor-container`). Not the production default and not on `fallback.chain`. Article metadata records `cursor-grok-4.6-high-fast`. Selectors: `cursor`, `cursor-cli`, `cursor-agent`, `grok-4.6-fast`, `grok`. `cursor-composer-2p5` remains a compatibility alias. Validate with `cursor-cli-canary.yml`. Current `generative-translation` route. |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 
 ## Local Oracle / GPT-5.5 Pro
@@ -375,7 +375,7 @@ gh workflow run cursor-cli-canary.yml
 ```
 
 The canary runs one tool-denied headless `agent -p --mode ask` turn
-against `cursor/grok-4.6-fast` and asserts the token
+against `cursor/cursor-grok-4.6-high-fast` and asserts the token
 `CURSOR-CLI-CANARY-OK`.
 
 Dispatch a research run:
@@ -398,8 +398,8 @@ Lane mechanics:
   [`.github/cursor/cli-config-canary.json`](../.github/cursor/cli-config-canary.json)
   which denies Shell/Write/WebFetch/Mcp.
 - Prompt at [`.github/cursor/prompts/generative-research.md`](../.github/cursor/prompts/generative-research.md):
-  same data boundary, same methodology artifacts, writer `--model grok-4.6-fast`.
-- Headless argv: `agent -p --force --trust --sandbox disabled --workspace /workspace --model grok-4.6-fast --output-format text --disable-auto-update`.
+  same data boundary, same methodology artifacts, writer `--model cursor-grok-4.6-high-fast`.
+- Headless argv: `agent -p --force --trust --sandbox disabled --workspace /workspace --model cursor-grok-4.6-high-fast --output-format text --disable-auto-update`.
 - Strict: a missing `CURSOR_API_KEY` fails in seconds; an explicit
   `cursor-grok-4p6-fast` request never falls back to Claude.
 
@@ -519,7 +519,7 @@ The expected difference is the model backend:
   in `research/generative/index.json`, and the prompt file at
   `.github/codex/prompts/generative-research.md`.
 - Cursor (`cursor-grok-4p6-fast`): official Cursor CLI (`agent`) inside
-  `run-cursor-container`, `CURSOR_API_KEY`, `grok-4.6-fast` metadata in
+  `run-cursor-container`, `CURSOR_API_KEY`, `cursor-grok-4.6-high-fast` metadata in
   `research/generative/index.json`, and the prompt file at
   `.github/cursor/prompts/generative-research.md`. Strict: no Claude
   fallback. Not the production default.

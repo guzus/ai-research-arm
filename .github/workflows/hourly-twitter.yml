@@ -15,7 +15,7 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 #   - opencode-deepseek-v4-flash  (manual only, model: deepseek-v4-flash via
 #                        OpenCode Go + isolated opencode harness. Output remains
 #                        in the legacy research/twitter-opencode-kimi/ namespace.)
-#   - cursor-grok-4p6-fast (manual only, model: grok-4.6-fast via Cursor CLI
+#   - cursor-grok-4p6-fast (manual only, model: cursor-grok-4.6-high-fast via Cursor CLI
 #                        (`agent`) inside run-cursor-container. Output stays
 #                        in the legacy research/twitter-cursor/ namespace.)
 #
@@ -931,7 +931,7 @@ jobs:
             ${{ steps.const.outputs.summary_file }}
             ${{ steps.const.outputs.headlines_file }}
           prompt-file: ${{ steps.render.outputs.rendered_path }}
-          model: cursor/grok-4.6-fast
+          model: cursor/cursor-grok-4.6-high-fast
           cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
           timeout-minutes: '45'
           mount-bird-snapshot: 'true'
@@ -1043,7 +1043,7 @@ jobs:
             ${{ steps.const.outputs.summary_file }}
             ${{ steps.const.outputs.headlines_file }}
           prompt-file: ${{ runner.temp }}/cursor-twitter-repair.md
-          model: cursor/grok-4.6-fast
+          model: cursor/cursor-grok-4.6-high-fast
           cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
           timeout-minutes: '20'
           mount-bird-snapshot: 'true'

@@ -170,7 +170,7 @@ flowchart LR
     end
     lanes0 -->|"claude-opus-5"| ANT
     strict0 -->|"claude-opus-5"| ANT
-    strict1 -->|"grok-4.6-fast"| CUR
+    strict1 -->|"cursor-grok-4.6-high-fast"| CUR
     strict2 -->|"deepseek-v4-flash"| FW
     strict3 -->|"deepseek-v4-flash"| OC
     strict4 -->|"glm-5.2"| ZAI
