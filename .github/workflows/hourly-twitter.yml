@@ -919,6 +919,7 @@ jobs:
           fi
 
       - name: Process tweets with Cursor CLI + Composer 2.5 (cursor-composer-2p5 tier)
+        id: twitter-cursor-agent
         if: steps.backend.outputs.name == 'cursor-composer-2p5'
         uses: ./.github/actions/run-cursor-container
         with:
@@ -932,6 +933,118 @@ jobs:
           model: cursor/composer-2.5
           cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
           timeout-minutes: '45'
+          mount-bird-snapshot: 'true'
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
+          birdy-tool-log-path: .twitter-input/birdy-tool-log.jsonl
+
+      # One repair turn, same model, fail-closed. Comparison lanes do not get
+      # a deterministic composer (PR #303). The blocking Validate step below
+      # still gates push if this repair also misses the contract.
+      - name: Repair Cursor Twitter contract once
+        id: repair_cursor_twitter
+        if: steps.backend.outputs.name == 'cursor-composer-2p5'
+        env:
+          BACKEND: ${{ steps.backend.outputs.name }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          DIGEST_FILE: ${{ steps.const.outputs.digest_file }}
+          STATUS_FILE: ${{ steps.const.outputs.status_file }}
+          SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
+          HEADLINES_FILE: ${{ steps.const.outputs.headlines_file }}
+          OUTPUT_DIR: ${{ steps.const.outputs.output_dir }}
+          COMMIT_PREFIX: ${{ steps.const.outputs.commit_prefix }}
+          REPAIR_PROMPT: ${{ runner.temp }}/cursor-twitter-repair.md
+        run: |
+          set -euo pipefail
+          needed=false
+          if uv run python scripts/validate_twitter_public_output.py \
+            --backend "$BACKEND" \
+            --status-file "$STATUS_FILE" \
+            --digest-file "$DIGEST_FILE" \
+            --summary-file "$SUMMARY_FILE" \
+            --headlines-file "$HEADLINES_FILE" \
+            --date "$DATE" \
+            --hour "$HOUR" \
+            --generated-at "$TIMESTAMP" \
+            --run-id "$RUN_ID" \
+            --run-attempt "$RUN_ATTEMPT" \
+            > /tmp/cursor-twitter-validate.out 2>&1; then
+            cat /tmp/cursor-twitter-validate.out
+          else
+            needed=true
+            echo "::warning::Cursor Twitter contract failed; one repair turn will run"
+            cat /tmp/cursor-twitter-validate.out
+            python3 - <<'PY'
+          import os
+          from pathlib import Path
+
+          err = Path("/tmp/cursor-twitter-validate.out").read_text(encoding="utf-8")
+          hour = os.environ["HOUR"]
+          digest = os.environ["DIGEST_FILE"]
+          status = os.environ["STATUS_FILE"]
+          summary = os.environ["SUMMARY_FILE"]
+          headlines = os.environ["HEADLINES_FILE"]
+          output_dir = os.environ["OUTPUT_DIR"]
+          prefix = os.environ["COMMIT_PREFIX"]
+          ts = os.environ["TIMESTAMP"]
+          backend = os.environ["BACKEND"]
+          date = os.environ["DATE"]
+          run_id = os.environ["RUN_ID"]
+          run_attempt = os.environ["RUN_ATTEMPT"]
+          # Concatenate the validator dump so braces in the section preview
+          # cannot break an f-string.
+          text = (
+              "The previous Cursor Twitter turn wrote artifacts that failed\n"
+              "scripts/validate_twitter_public_output.py.\n\n"
+              "Validator output:\n"
+              + err
+              + "\n\n"
+              "Repair ONLY the existing files. Do not start a new brief from scratch unless\n"
+              "a required file is missing.\n\n"
+              f"If status is published, the same-hour section under `## {hour}:00 UTC` MUST\n"
+              "contain this exact line on its own line (lowercase s in summary):\n\n"
+              "**Cycle summary**: <1-2 sentences naming the concrete developments>\n\n"
+              "`**Cycle Summary**:` (capital S), `Cycle summary:` without bold, HTML\n"
+              "<strong>, or a blank value all fail.\n\n"
+              "Then run this exact command and fix until it exits 0:\n\n"
+              "uv run python scripts/validate_twitter_public_output.py \\\n"
+              f"  --backend {backend} \\\n"
+              f"  --status-file {status} \\\n"
+              f"  --digest-file {digest} \\\n"
+              f"  --summary-file {summary} \\\n"
+              f"  --headlines-file {headlines} \\\n"
+              f"  --date {date} \\\n"
+              f"  --hour {hour} \\\n"
+              f"  --generated-at \"{ts}\" \\\n"
+              f"  --run-id {run_id} \\\n"
+              f"  --run-attempt {run_attempt}\n\n"
+              "Commit only the allowed paths:\n\n"
+              f"git add {output_dir}/ research/summaries/\n"
+              f"git commit -m \"{prefix} {ts}\" || echo \"No changes\"\n"
+          )
+          Path(os.environ["REPAIR_PROMPT"]).write_text(text, encoding="utf-8")
+          PY
+          fi
+          echo "needed=${needed}" >> "$GITHUB_OUTPUT"
+
+      - name: Re-run Cursor CLI to repair Twitter contract
+        if: steps.repair_cursor_twitter.outputs.needed == 'true'
+        uses: ./.github/actions/run-cursor-container
+        with:
+          mode: twitter
+          allowed-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
+          prompt-file: ${{ runner.temp }}/cursor-twitter-repair.md
+          model: cursor/composer-2.5
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          timeout-minutes: '20'
           mount-bird-snapshot: 'true'
           bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
           bird-ct0: ${{ secrets.BIRD_CT0 }}

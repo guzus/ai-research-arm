@@ -262,12 +262,27 @@ runs:
             headlines_section = ""
 
         # final_step — what to verify and how to commit.
+        validate_cmd = (
+            "Then run and fix until exit 0:\n"
+            f"uv run python scripts/validate_twitter_public_output.py "
+            f"--backend {backend} --status-file {status_file} "
+            f"--digest-file {output_dir}/{date}.md "
+            f"--summary-file {summaries_dir}/{date}-{summary_slug}-{hour}h-summary.txt "
+            f"--headlines-file {summaries_dir}/{date}-{summary_slug}-{hour}h-headlines.json "
+            f"--date {date} --hour {hour} --generated-at \"{ts}\" "
+            f"--run-id {run_id} --run-attempt {run_attempt}\n"
+            "A published section must contain this exact line:\n"
+            "**Cycle summary**: <1-2 sentences>\n"
+            "`**Cycle Summary**:` (capital S) or a missing line fails the host validator."
+        )
         if "headlines" in features:
             final_step = (
                 "STEP 4 — Verify status, summary, and headlines files exist before committing.\n"
                 "When status is `published`, also verify the same-hour digest section exists.\n"
                 "When status is `no_update`, verify that public section is absent and headlines\n"
-                "is `[]`. Then commit:\n"
+                "is `[]`.\n"
+                f"{validate_cmd}\n"
+                "Then commit:\n"
                 f"git add {output_dir}/ {summaries_dir}/\n"
                 f"git commit -m \"{commit_prefix} {ts}\" || echo \"No changes\"\n"
                 "\n"
@@ -277,7 +292,9 @@ runs:
             final_step = (
                 "STEP 3 — Verify status and summary files exist before committing. When status\n"
                 "is `published`, also verify the digest section exists; for `no_update`, verify\n"
-                "the public same-hour section is absent. Then commit:\n"
+                "the public same-hour section is absent.\n"
+                f"{validate_cmd}\n"
+                "Then commit:\n"
                 f"git add {output_dir}/ {summaries_dir}/\n"
                 f"git commit -m \"{commit_prefix} {ts}\" || echo \"No changes\""
             )

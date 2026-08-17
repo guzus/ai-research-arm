@@ -91,6 +91,11 @@ section. Otherwise append the new section at the end. Start a new file with:
 
 **Cycle summary**: [1-2 sentences naming the concrete developments in this cycle.]
 
+The Cycle summary line is load-bearing and exact. The host validator
+requires this regex on its own line: `**Cycle summary**: <non-empty text>`.
+`**Cycle Summary**:` (capital S), unbolded `Cycle summary:`, HTML
+`<strong>`, or a blank value all fail the run and discard the brief.
+
 ### Top stories
 
 Use this Twitter component shape for every Top Story. The folded card is

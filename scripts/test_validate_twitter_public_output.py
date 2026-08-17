@@ -89,6 +89,40 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
         with self.assertRaisesRegex(ContractError, "no story card"):
             self.validate()
 
+    def test_rejects_missing_cycle_summary_includes_section_preview(self) -> None:
+        self.write_status("published", 1)
+        self.summary.write_text("Meta released Muse Spark 1.1.\n", encoding="utf-8")
+        self.digest.write_text(
+            "## 10:00 UTC\n\n"
+            "### Top stories\n"
+            "<article class=\"twitter-story\">"
+            "<h3 class=\"twitter-story-title\">Muse Spark 1.1</h3>"
+            "<p class=\"twitter-story-lead\">Meta released the model.</p>"
+            "<a class=\"twitter-source-chip\" href=\"https://x.com/AIatMeta/status/122\">@AIatMeta</a>"
+            "</article>\n",
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(ContractError, r"section preview:\n## 10:00 UTC") as ctx:
+            self.validate()
+        self.assertIn("exact line: **Cycle summary**: <text>", str(ctx.exception))
+        self.assertIn("twitter-story-title", str(ctx.exception))
+
+    def test_rejects_capital_s_cycle_summary(self) -> None:
+        self.write_status("published", 1)
+        self.summary.write_text("Meta released Muse Spark 1.1.\n", encoding="utf-8")
+        self.digest.write_text(
+            "## 10:00 UTC\n\n"
+            "**Cycle Summary**: Meta released Muse Spark 1.1.\n\n"
+            "<article class=\"twitter-story\">"
+            "<h3 class=\"twitter-story-title\">Muse Spark 1.1</h3>"
+            "<p class=\"twitter-story-lead\">Meta released the model.</p>"
+            "<a class=\"twitter-source-chip\" href=\"https://x.com/AIatMeta/status/122\">@AIatMeta</a>"
+            "</article>\n",
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(ContractError, r"\*\*Cycle Summary\*\*"):
+            self.validate()
+
     def test_rejects_empty_story_shell(self) -> None:
         self.write_status("published", 1)
         self.summary.write_text("Meta released Muse Spark 1.1.\n", encoding="utf-8")

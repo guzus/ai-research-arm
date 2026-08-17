@@ -80,6 +80,19 @@ def cycle_sections(text: str, hour: str) -> list[str]:
     return sections
 
 
+def _section_preview(section: str, *, max_lines: int = 12, max_chars: int = 800) -> str:
+    """Keep just enough of a failing section for the next operator to see the miss."""
+    lines = section.splitlines()
+    preview = "\n".join(lines[:max_lines])
+    truncated = len(lines) > max_lines
+    if len(preview) > max_chars:
+        preview = preview[:max_chars]
+        truncated = True
+    if truncated:
+        preview += "\n..."
+    return preview
+
+
 def public_item_count(section: str) -> int:
     section = HTML_COMMENT_RE.sub("", section)
 
@@ -187,7 +200,11 @@ def validate(
             re.MULTILINE,
         )
         if summary_match is None:
-            raise ContractError("published section requires a non-empty Cycle summary")
+            raise ContractError(
+                "published section requires a non-empty Cycle summary "
+                "(exact line: **Cycle summary**: <text>)\n"
+                f"section preview:\n{_section_preview(section)}"
+            )
         filler = FILLER_RE.search(section)
         if filler is not None:
             raise ContractError(f"public section contains operational/no-news filler: {filler.group(0)!r}")
