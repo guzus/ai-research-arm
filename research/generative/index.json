@@ -1490,6 +1490,22 @@
     "created_at": "2026-08-12T22:22:13Z",
     "source": "workflow_dispatch",
     "prompt": "Grok 4.6 at $2/$6 vs Fable 5 Max $10/$50: does the frontier repricing survive non-vendor cost-aware benchmarks?",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-17T090312--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "$2 프런티어: Grok 4.6의 Fable 5 Max 재가격 책정이 판매자에게 유리하지 않은 벤치마크에서도 살아남는가?",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-17T09:03:12Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+        "tags": [],
+        "translated_at": "2026-08-17T09:03:12Z",
+        "source_file": "research/generative/2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri.ara.md",
+        "source_sha256": "552fe706b156586e6350ee66e0808148a18eb2a6ede7f6aab5729248ce8206a3"
+      }
+    }
   }
 ]
