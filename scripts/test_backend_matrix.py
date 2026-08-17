@@ -1089,7 +1089,10 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn(
             'cp -- "$CURSOR_CONFIG_DIR/cli-config.json" "$HOME/.cursor/cli-config.json"',
             action)
-        self.assertIn("replaying attempt log", action)
+        self.assertIn(
+            'if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ]; then',
+            action)
+        self.assertIn('cat -- "$attempt_log"', action)
         self.assertIn("HOME=/tmp/cursor-home", action)
         self.assertIn('--sandbox disabled', action)
         self.assertIn('timeout "${remaining_seconds}s" agent -p --force --trust', action)

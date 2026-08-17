@@ -798,13 +798,15 @@ runs:
               done
               wait "$agent_pid"
               agent_status=$?
-              # Replay a failed attempt log after the child exits. tail
-              # --pid can miss a fully-buffered flush that lands as the
-              # process dies, which hid the status=1 cause on canary
-              # 31997748051. Successful long runs stay single-streamed.
-              if [ "$agent_status" -ne 0 ]; then
-                echo "Cursor attempt ${attempt_count} failed; replaying attempt log:" >&2
-                cat -- "$attempt_log" >&2 || true
+              # Flush the attempt log after the child exits. tail --pid
+              # can miss a fully-buffered write that lands as the process
+              # dies (canary 31998429963: status=0 but the token never
+              # reached OUTPUT_FILE). Canary needs that text on stdout
+              # for the token assert; failures need it for diagnosis.
+              # Production successes stay single-streamed.
+              if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ]; then
+                echo "Cursor attempt ${attempt_count} log (status=${agent_status}):"
+                cat -- "$attempt_log" || true
               fi
               # Tear the streamer down explicitly rather than trusting
               # `tail --pid` to notice; an unreaped tail keeps this step
