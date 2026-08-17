@@ -294,6 +294,8 @@ def _read_results(path: Path) -> dict[str, str]:
         raise ValueError(f"translation result must be the regular file {RESULT_PATH}")
     translations: dict[str, str] = {}
     for line_no, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
         try:
             value = json.loads(line)
         except json.JSONDecodeError as exc:
