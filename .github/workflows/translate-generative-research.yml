@@ -176,6 +176,10 @@ jobs:
 
             Trusted code owns the document structure and immutable literals:
             - Never translate, remove, reorder, duplicate, or alter opaque tokens.
+            - Do not invent raw digits. Source numbers are already opaque
+              tokens. The only allowed untokenized digits are an integer
+              glued to Hangul (`9일`, `3배`). Never write `$1,000`, `2.5`,
+              `30%`, `2026`, or any other bare number.
             - Translate reader-facing prose, headings, labels, captions,
               callouts, quotations, and reference titles into idiomatic Korean.
             - Do not browse, research, add claims, add sources, drop sections,
