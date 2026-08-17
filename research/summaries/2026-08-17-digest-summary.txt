@@ -1,0 +1,11 @@
+Daily AI Digest - 2026-08-17 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Twitter/X] Nvidia + 6 banks sign memorandums for $500B third-party capital (Nvidia backstops up to 25%); Compu…
+• [RSS / Official Announcements] _No new items. google_ai.xml remains a dead 2024 Blogger feed (newest: 2024-03-29); deepmind.xml ne…
+• [Expert Blogs] Quoting Dario Amodei
+• [YouTube] OpenAI's 14 Ultrafast Mode: What the Demo Actually Proves
+
+SOURCES: 4/8 lanes had data; missing: Hacker News, Reddit, Bluesky, arXiv Papers
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
