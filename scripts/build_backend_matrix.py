@@ -146,7 +146,7 @@ OPENCODE_RUN_RE = re.compile(r"^\s*opencode run\b", re.M)
 # vanish the moment a lane is containerised.
 OPENCODE_ACTION = "run-opencode-container"
 CURSOR_ACTION = "run-cursor-container"
-CURSOR_SELECTOR = "cursor-composer-2p5"
+CURSOR_SELECTOR = "cursor-grok-4p6-fast"
 CURSOR_PROVIDER_LABEL = "Cursor CLI"
 CURSOR_ACTION_MODEL_RE = re.compile(r'^cursor/([A-Za-z0-9._-]+)$')
 AGENT_DISPATCH = "agent-dispatch"
@@ -157,7 +157,7 @@ STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure
 # validates against this same set at runtime).
 GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "opus-5", "codex",
                          "opencode-deepseek-v4-flash", "deepseek-v4-flash", "glm-5p2",
-                         "cursor-composer-2p5"}
+                         "cursor-grok-4p6-fast"}
 
 REQUIRED_AGENT_RUN_SECRETS = {
     "claude-code-oauth-token": "CLAUDE_CODE_OAUTH_TOKEN",

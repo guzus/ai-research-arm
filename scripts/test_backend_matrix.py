@@ -174,8 +174,8 @@ class RoutingInvariants(unittest.TestCase):
             resolve_route(config, "rss")
 
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
-        config["backends"]["cursor-composer-2p5"]["adapter"] = "cursor"
-        config["routes"]["research-editorial"]["backend"] = "cursor-composer-2p5"
+        config["backends"]["cursor-grok-4p6-fast"]["adapter"] = "cursor"
+        config["routes"]["research-editorial"]["backend"] = "cursor-grok-4p6-fast"
         config["adapters"]["cursor"]["provider_credentials"]["cursor"] = \
             "opencode-api-key"
         with self.assertRaisesRegex(ValueError, "cursor-api-key"):
@@ -488,18 +488,18 @@ class RoutingInvariants(unittest.TestCase):
     def test_gen_research_cursor_is_explicit_and_fail_closed(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
-        self.assertIn("- cursor-composer-2p5", workflow)
+        self.assertIn("- cursor-grok-4p6-fast", workflow)
         self.assertIn(
-            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5) CANDIDATE="cursor-composer-2p5"',
+            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) CANDIDATE="cursor-grok-4p6-fast"',
             workflow)
         self.assertIn(
-            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5) BACKEND="cursor-composer-2p5"',
+            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) BACKEND="cursor-grok-4p6-fast"',
             workflow)
-        self.assertIn('[ "$BACKEND" != "cursor-composer-2p5" ]', workflow)
+        self.assertIn('[ "$BACKEND" != "cursor-grok-4p6-fast" ]', workflow)
         self.assertIn("Resolve and preflight Cursor CLI route", workflow)
         self.assertIn("Fail Cursor run without article", workflow)
         self.assertIn("uses: ./.github/actions/run-cursor-container", workflow)
-        self.assertIn('model="cursor/composer-2.5"', workflow)
+        self.assertIn('model="cursor/grok-4.6-fast"', workflow)
         model_id = self.assert_single_cursor_model()
         prompt = (REPO_ROOT / ".github" / "cursor" / "prompts" /
                   "generative-research.md").read_text(encoding="utf-8")
@@ -509,9 +509,9 @@ class RoutingInvariants(unittest.TestCase):
                          "CURSOR_API_KEY")
         self.assertTrue(self.obs["cursor-cli-canary.yml"].cursor)
         from build_backend_matrix import GEN_RESEARCH_BACKENDS
-        self.assertIn("cursor-composer-2p5", GEN_RESEARCH_BACKENDS)
+        self.assertIn("cursor-grok-4p6-fast", GEN_RESEARCH_BACKENDS)
         self.assertNotEqual(self.lanes["generative-research-default"]["backend"],
-                            "cursor-composer-2p5")
+                            "cursor-grok-4p6-fast")
 
     # Every workflow that can run the opencode harness. hourly-twitter is the
     # one most easily forgotten in a model swap — it resolves its own model in
@@ -1196,10 +1196,10 @@ class RoutingInvariants(unittest.TestCase):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "hourly-twitter.yml").read_text(encoding="utf-8")
         arms = [chunk.split(";;", 1)[0]
-                for chunk in workflow.split("cursor-composer-2p5)")[1:]]
+                for chunk in workflow.split("cursor-grok-4p6-fast)")[1:]]
         arm = next(a for a in arms if "OUTPUT_DIR=" in a)
         family = model_id.split("-")[0].lower()
-        others = {"deepseek", "kimi", "glm", "claude", "gpt", "qwen"} - {family}
+        others = {"deepseek", "kimi", "glm", "claude", "gpt", "qwen", "composer"} - {family}
         targets = [(f, next(ln for ln in arm.splitlines() if f"{f}=" in ln))
                    for f in ("TITLE_SUFFIX", "COMMIT_PREFIX", "HARNESS_LABEL")]
         targets.append(("notification title",
@@ -1219,8 +1219,8 @@ class RoutingInvariants(unittest.TestCase):
         steps = doc["jobs"]["twitter"]["steps"]
         names = [step.get("name") for step in steps]
         process = next(i for i, name in enumerate(names)
-                       if name == "Process tweets with Cursor CLI + Composer 2.5 "
-                       "(cursor-composer-2p5 tier)")
+                       if name == "Process tweets with Cursor CLI + Grok 4.6 Fast "
+                       "(cursor-grok-4p6-fast tier)")
         repair = next(i for i, name in enumerate(names)
                       if name == "Repair Cursor Twitter contract once")
         rerun = next(i for i, name in enumerate(names)

@@ -97,18 +97,22 @@
         "zai"
       ]
     },
-    "cursor-composer-2p5": {
+    "cursor-grok-4p6-fast": {
       "adapter": "cursor",
       "provider": "cursor",
-      "model": "composer-2.5",
-      "display_name": "Composer 2.5 via Cursor CLI",
+      "model": "grok-4.6-fast",
+      "display_name": "Grok 4.6 Fast via Cursor CLI",
       "aliases": [
         "cursor",
         "cursor-cli",
         "cursor-agent",
+        "grok-4.6-fast",
+        "grok-4.6",
+        "grok",
+        "cursor-composer-2p5",
         "composer-2.5"
       ],
-      "notes": "Cursor Agent CLI inside run-cursor-container, authenticated by CURSOR_API_KEY and pinned to composer-2.5. Runtime-selectable by agent-dispatch; not selectable by agent-run. Production editorial defaults stay on OpenCode until this profile is chosen in a route."
+      "notes": "Cursor Agent CLI inside run-cursor-container, authenticated by CURSOR_API_KEY and pinned to grok-4.6-fast (replaces composer-2.5). Runtime-selectable by agent-dispatch; not selectable by agent-run. Production editorial defaults stay on OpenCode until this profile is chosen in a route. cursor-composer-2p5 remains a compatibility alias."
     }
   },
   "routes": {
