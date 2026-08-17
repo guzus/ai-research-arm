@@ -1,6 +1,6 @@
-name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash)
+name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash / cursor-composer-2p5)
 
-# Unified Twitter/X pipeline that fans out across six backend tiers:
+# Unified Twitter/X pipeline that fans out across seven backend tiers:
 #   - claude            (cron '7 */3 * * *', primary tier, model routed by data/agent-backends.json,
 #                        output → research/twitter/)
 #   - deepseek-claude-code (manual only since 2026-08-01 — cron dropped while the
@@ -15,6 +15,9 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 #   - opencode-deepseek-v4-flash  (manual only, model: deepseek-v4-flash via
 #                        OpenCode Go + isolated opencode harness. Output remains
 #                        in the legacy research/twitter-opencode-kimi/ namespace.)
+#   - cursor-composer-2p5 (manual only, model: composer-2.5 via Cursor CLI
+#                        (`agent`) inside run-cursor-container. Output →
+#                        research/twitter-cursor/)
 #
 # Routing rules:
 #   - schedule trigger → backend resolved from github.event.schedule by the
@@ -67,6 +70,7 @@ on:
           - deepseek-pi
           - fireworks-pi
           - opencode-deepseek-v4-flash
+          - cursor-composer-2p5
       dry_run:
         description: Claude tier only — render fixture, skip push/deploy/alerts.
         required: false
@@ -168,7 +172,8 @@ jobs:
             BACKEND="$MATRIX_BACKEND"
           fi
           case "$BACKEND" in
-            claude|deepseek-claude-code|zai-glm-5p2|deepseek-pi|fireworks-pi|opencode-deepseek-v4-flash) ;;
+            cursor|cursor-cli|cursor-agent|composer-2.5) BACKEND="cursor-composer-2p5" ;;
+            claude|deepseek-claude-code|zai-glm-5p2|deepseek-pi|fireworks-pi|opencode-deepseek-v4-flash|cursor-composer-2p5) ;;
             *) echo "::error::Unknown backend '$BACKEND'"; exit 1 ;;
           esac
           {
@@ -378,6 +383,21 @@ jobs:
               HARNESS_LABEL="on DeepSeek V4 Flash under the opencode agent harness"
               FEATURES="telegram"
               ;;
+            cursor-composer-2p5)
+              OUTPUT_DIR="research/twitter-cursor"
+              SUMMARY_SLUG="twitter-cursor"
+              TITLE_SUFFIX=" (Cursor CLI + Composer 2.5)"
+              CYCLE_HOURS=6
+              COMMIT_PREFIX="Twitter (Cursor CLI+Composer 2.5) update"
+              FETCH_CONCURRENCY=6
+              PRE_FILTER=false
+              AGGREGATE=false
+              ENABLE_DAEMON=true
+              BIRD_BUDGET=5
+              CURL_BUDGET=3
+              HARNESS_LABEL="on Composer 2.5 under the Cursor CLI agent harness"
+              FEATURES="telegram"
+              ;;
           esac
           {
             echo "output_dir=${OUTPUT_DIR}"
@@ -437,7 +457,7 @@ jobs:
           birdy_accounts: ${{ secrets.BIRDY_ACCOUNTS }}
 
       - name: Configure git identity (pi/opencode tiers — no claude-code-action to do it)
-        if: contains(fromJSON('["deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash"]'), steps.backend.outputs.name)
+        if: contains(fromJSON('["deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-composer-2p5"]'), steps.backend.outputs.name)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -887,9 +907,39 @@ jobs:
           bird-ct0: ${{ secrets.BIRD_CT0 }}
           birdy-tool-log-path: .twitter-input/birdy-tool-log.jsonl
 
+      - name: Check Cursor CLI auth (cursor-composer-2p5 tier)
+        if: steps.backend.outputs.name == 'cursor-composer-2p5'
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${CURSOR_API_KEY:-}" ]; then
+            echo "::error::No Cursor CLI auth configured. Set CURSOR_API_KEY (Cursor dashboard API key) with: gh secret set CURSOR_API_KEY"
+            exit 1
+          fi
+
+      - name: Process tweets with Cursor CLI + Composer 2.5 (cursor-composer-2p5 tier)
+        if: steps.backend.outputs.name == 'cursor-composer-2p5'
+        uses: ./.github/actions/run-cursor-container
+        with:
+          mode: twitter
+          allowed-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
+          prompt-file: ${{ steps.render.outputs.rendered_path }}
+          model: cursor/composer-2.5
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          timeout-minutes: '45'
+          mount-bird-snapshot: 'true'
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
+          birdy-tool-log-path: .twitter-input/birdy-tool-log.jsonl
+
       - name: Require Twitter producer diff scope
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-composer-2p5"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: ./.github/actions/require-diff-scope
         with:
@@ -903,7 +953,7 @@ jobs:
 
       - name: Require Twitter run heartbeat
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-composer-2p5"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: ./.github/actions/require-output
         with:
@@ -914,7 +964,7 @@ jobs:
 
       - name: Validate Twitter signal-only public output
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-composer-2p5"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         env:
           BACKEND: ${{ steps.backend.outputs.name }}
@@ -1562,7 +1612,7 @@ jobs:
         id: summary
         if: >-
           steps.push.outputs.pushed == 'true'
-          && contains(fromJSON('["deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash"]'), steps.backend.outputs.name)
+          && contains(fromJSON('["deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-composer-2p5"]'), steps.backend.outputs.name)
         env:
           SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
         run: |
@@ -1808,6 +1858,49 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Idempotency-Key: twitter-opencode-kimi-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
             --data-binary "@/tmp/hooker-twitter-opencode-kimi.json"
+
+      - name: Send notification via hooker (cursor-composer-2p5)
+        if: >-
+          success()
+          && steps.push.outputs.pushed == 'true'
+          && steps.backend.outputs.name == 'cursor-composer-2p5'
+          && steps.summary.outputs.content != ''
+        continue-on-error: true
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          SUMMARY: ${{ steps.summary.outputs.content }}
+          REPO: ${{ github.repository }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          GH_RUN_ID: ${{ github.run_id }}
+          GH_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+            echo "Hooker credentials missing — skipping notification"
+            exit 0
+          fi
+          SAFE=$(printf '%s' "$SUMMARY" \
+            | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
+          REPORT_URL="https://github.com/${REPO}/blob/main/research/twitter-cursor/${DATE}.md"
+          jq -n \
+            --arg title "🐦🖱️ Twitter/X AI Pulse — Cursor CLI + Composer 2.5" \
+            --arg text "$SAFE" \
+            --arg btn "Full Update on GitHub" \
+            --arg url "$REPORT_URL" \
+            '{
+              title: $title,
+              text: $text,
+              priority: 3,
+              tags: ["ara", "twitter"],
+              parse_mode: "HTML",
+              reply_markup: { inline_keyboard: [[{ text: $btn, url: $url }]] }
+            }' > /tmp/hooker-twitter-cursor.json
+          curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/ara-research" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: twitter-cursor-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
+            --data-binary "@/tmp/hooker-twitter-cursor.json"
 
       # ── claude-tier auto-research throttle + topic select + dispatch ─
       # Picks ONE high-signal topic from today's twitter pulse and

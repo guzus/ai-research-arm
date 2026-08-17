@@ -14,9 +14,10 @@ continues to own its prompt, dated paths, staged inputs, timeout, and trusted
 post-processing because those are lane I/O, not provider routing.
 
 Only isolated adapters implemented by agent-dispatch are accepted here.
-OpenCode routes fail closed: cross-adapter fallback would require a second
-containment boundary and is not silently inferred from the global agent-run
-chain.  The host-checkout agent-run adapter is deliberately incompatible.
+OpenCode and Cursor CLI routes fail closed: cross-adapter fallback would
+require a second containment boundary and is not silently inferred from the
+global agent-run chain.  The host-checkout agent-run adapter is deliberately
+incompatible.
 """
 
 from __future__ import annotations
@@ -30,7 +31,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_FILE = REPO_ROOT / "data" / "agent-backends.json"
-SUPPORTED_ADAPTERS = {"opencode"}
+SUPPORTED_ADAPTERS = {"opencode", "cursor"}
 SUPPORTED_FALLBACKS = {"global", "none"}
 
 
@@ -151,6 +152,21 @@ def resolve_route(data: dict, lane_key: str) -> RouteSelection:
         if credential != "opencode-api-key":
             raise RouteError(
                 "opencode-go must bind exactly to dispatcher input opencode-api-key"
+            )
+    if adapter == "cursor":
+        if not strict:
+            raise RouteError(
+                f"route '{route_key}' uses cursor but fallback is '{fallback}'; "
+                "cross-adapter fallback is unsupported, so cursor routes must use 'none'"
+            )
+        if provider != "cursor" or not model:
+            raise RouteError(
+                f"backend '{backend_key}' must declare provider 'cursor' and a "
+                "non-empty model; model_ref is derived as provider/model"
+            )
+        if credential != "cursor-api-key":
+            raise RouteError(
+                "cursor must bind exactly to dispatcher input cursor-api-key"
             )
     return RouteSelection(
         lane=lane_key,

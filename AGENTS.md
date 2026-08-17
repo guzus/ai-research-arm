@@ -15,8 +15,9 @@ short pointer plus the few genuinely agent-specific notes.
   directly or, for RSS, community, arXiv, Bluesky, and wiki, the trusted
   `.github/actions/agent-dispatch`. Those five reference the shared
   `research-editorial` route, so its backend profile can select a registered
-  isolated editorial adapter without workflow edits. The current—and only
-  registered compatible—adapter is strict OpenCode Go. Host-checkout
+  isolated editorial adapter without workflow edits. Two registered
+  compatible adapters exist: strict OpenCode Go (the current production
+  default) and Cursor CLI (`cursor-composer-2p5`, Composer 2.5). Host-checkout
   `agent-run` is deliberately capability-incompatible and rejected. While the
   OpenCode profile is selected, one key/cap failure can stale all five together. Direct
   Claude workflows may still use
@@ -100,6 +101,15 @@ short pointer plus the few genuinely agent-specific notes.
   `gh secret set OPENCODE_API_KEY`, then validate cheaply with
   `opencode-deepseek-canary.yml` before dispatching
   `generative-research.yml backend=opencode-deepseek-v4-flash`.
+
+- **Cursor CLI + Composer 2.5** is a second isolated editorial adapter
+  (`run-cursor-container`, official `agent` binary, `CURSOR_API_KEY`).
+  It is selectable via SSOT / `generative-research.yml
+  backend=cursor-composer-2p5` / `hourly-twitter.yml
+  backend=cursor-composer-2p5` and is **not** the production default.
+  Store the key with `gh secret set CURSOR_API_KEY`, then validate
+  cheaply with `cursor-cli-canary.yml`. Korean translation stays on
+  OpenCode (no Cursor `translation_segment` tool).
 
 - **bird CLI** invocations must always pass `--json --plain` and fall
   back gracefully (`|| echo "[]"`); the X/Twitter cookies expire and a

@@ -14,6 +14,7 @@ research pipeline:
 | `opus-5` | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit premium native Anthropic route. It is not the default and is not the Fireworks-unavailable fallback target. The workflow pins the literal model ID across every alias/subagent slot and article metadata, and verifies the committed `index.json` row records `claude-opus-5` before pushing. Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
 | `codex` | Codex CLI default model for ChatGPT auth | `CODEX_AUTH_JSON` seeded into file-backed `auth.json` | Optional Codex backend using ChatGPT-managed Codex auth rather than OpenAI API billing. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
 | `opencode-deepseek-v4-flash` | `deepseek-v4-flash` (1M context, the 2026-07-31 build) via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription), read directly from env by opencode's built-in `opencode-go` provider. Moonshot serves Kimi only and is not a fallback. | **The default** (SSOT lane `generative-research-default`) for manual no-backend dispatches, `gen-research` issues, and throttled Twitter auto-research. Also the shared strict route for editorial and Korean translation lanes. No interactive login or auth-file seeding. Strict: preflight failure fails rather than substituting another author. Article metadata records `deepseek-v4-flash`. Validate with `opencode-deepseek-canary.yml`. |
+| `cursor-composer-2p5` | `composer-2.5` via the Cursor CLI (`agent`) | `CURSOR_API_KEY` (Cursor dashboard API key), read from env by the official CLI. | Selectable isolated comparison backend. Same disposable-clone / `--cap-drop ALL` contract as OpenCode (`run-cursor-container`). Not the production default and not on `fallback.chain`. Article metadata records `composer-2.5`. Selectors: `cursor`, `cursor-cli`, `cursor-agent`, `composer-2.5`. Validate with `cursor-cli-canary.yml`. Korean translation stays on OpenCode (no `translation_segment` tool on this adapter). |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 
 ## Local Oracle / GPT-5.5 Pro
@@ -337,6 +338,69 @@ Lane mechanics, mirroring the Codex path:
   is the only key configured. `scripts/test_backend_matrix.py` asserts that
   scoping.
 
+## Cursor CLI + Composer 2.5
+
+The canonical selector is `cursor-composer-2p5`; aliases are `cursor`,
+`cursor-cli`, `cursor-agent`, and `composer-2.5`. Twitter comparison
+output lands in `research/twitter-cursor/`.
+
+The backend runs the official Cursor Agent CLI (`agent`) against
+**Composer 2.5** inside `.github/actions/run-cursor-container`. Auth is
+the plain `CURSOR_API_KEY` env var from the Cursor dashboard — there is
+no `agent login` step and no auth-file seeding. The container is the
+isolation boundary (`--sandbox disabled` on the CLI; bubblewrap is not
+assumed in the slim image). Missing Docker is a hard failure; never fall
+back to host-level `agent -p`.
+
+Production editorial defaults stay on OpenCode. Switching the five
+scheduled lanes is an SSOT edit (`routes.research-editorial.backend:
+cursor-composer-2p5`) plus `uv run python scripts/build_backend_matrix.py`.
+Korean translation stays on OpenCode until a Cursor-native segment tool
+exists; `.github/cursor/translation.json` is prewired so that route
+switch does not need a workflow edit.
+
+Seed the secret once:
+
+```bash
+# Cursor dashboard API key
+gh secret set CURSOR_API_KEY
+```
+
+Then prove the key + harness before spending a 90-minute research run:
+
+```bash
+gh workflow run cursor-cli-canary.yml
+```
+
+The canary runs one tool-denied headless `agent -p --mode ask` turn
+against `cursor/composer-2.5` and asserts the token
+`CURSOR-CLI-CANARY-OK`.
+
+Dispatch a research run:
+
+```bash
+gh workflow run generative-research.yml \
+  --ref main \
+  -f topic="$TOPIC" \
+  -f slug="qa-composer-2-5-power-bottlenecks" \
+  -f backend=cursor-composer-2p5 \
+  -f tags="qa,comparison,composer-2.5"
+```
+
+Lane mechanics:
+
+- Official install `curl https://cursor.com/install -fsS | bash` inside
+  the image; binary copied to `/usr/local/bin/agent`.
+- Permission config at [`.github/cursor/cli-config.json`](../.github/cursor/cli-config.json)
+  (injected via `CURSOR_CONFIG_DIR`); the canary uses
+  [`.github/cursor/cli-config-canary.json`](../.github/cursor/cli-config-canary.json)
+  which denies Shell/Write/WebFetch/Mcp.
+- Prompt at [`.github/cursor/prompts/generative-research.md`](../.github/cursor/prompts/generative-research.md):
+  same data boundary, same methodology artifacts, writer `--model composer-2.5`.
+- Headless argv: `agent -p --force --trust --sandbox disabled --workspace /workspace --model composer-2.5 --output-format text --disable-auto-update`.
+- Strict: a missing `CURSOR_API_KEY` fails in seconds; an explicit
+  `cursor-composer-2p5` request never falls back to Claude.
+
 ## Fireworks Backends
 
 The Fireworks paths route through Fireworks' Anthropic-compatible endpoint
@@ -422,6 +486,12 @@ gh workflow run generative-research.yml \
 
 gh workflow run generative-research.yml \
   -f topic="$TOPIC" \
+  -f slug="qa-composer-2-5-power-bottlenecks" \
+  -f backend=cursor-composer-2p5 \
+  -f tags="qa,comparison,composer-2.5"
+
+gh workflow run generative-research.yml \
+  -f topic="$TOPIC" \
   -f slug="qa-claude-power-bottlenecks" \
   -f backend=claude \
   -f tags="qa,comparison,claude"
@@ -446,6 +516,11 @@ The expected difference is the model backend:
 - Codex: Codex CLI with ChatGPT-managed `CODEX_AUTH_JSON`, `codex` metadata
   in `research/generative/index.json`, and the prompt file at
   `.github/codex/prompts/generative-research.md`.
+- Cursor (`cursor-composer-2p5`): official Cursor CLI (`agent`) inside
+  `run-cursor-container`, `CURSOR_API_KEY`, `composer-2.5` metadata in
+  `research/generative/index.json`, and the prompt file at
+  `.github/cursor/prompts/generative-research.md`. Strict: no Claude
+  fallback. Not the production default.
 - Fireworks (`deepseek-v4-flash` or `glm-5p2`): Anthropic-compatible
   Fireworks endpoint, backend-specific metadata in
   `research/generative/index.json`. This path has a longer action timeout

@@ -53,6 +53,17 @@ inputs:
     description: OpenCode Go key, passed only to the OpenCode adapter.
     required: false
     default: ''
+  cursor-api-key:
+    description: Cursor CLI key, passed only to the Cursor adapter.
+    required: false
+    default: ''
+  cursor-config:
+    description: >-
+      Trusted workspace-relative Cursor CLI permission config. Callers may
+      narrow the default tool surface for a specific lane; the selected
+      model cannot modify this read-only mount.
+    required: false
+    default: .github/cursor/cli-config.json
   opencode-config:
     description: >-
       Trusted workspace-relative OpenCode policy. Callers may narrow the
@@ -111,16 +122,31 @@ runs:
           --github-output "$GITHUB_OUTPUT"
 
     - name: Verify selected adapter credential binding
-      if: steps.route.outputs.adapter == 'opencode'
+      if: steps.route.outputs.adapter == 'opencode' || steps.route.outputs.adapter == 'cursor'
       shell: bash
       env:
+        ADAPTER: ${{ steps.route.outputs.adapter }}
         CREDENTIAL: ${{ steps.route.outputs.credential }}
       run: |
         set -euo pipefail
-        if [ "$CREDENTIAL" != "opencode-api-key" ]; then
-          echo "::error::OpenCode route selected an unsupported credential binding."
-          exit 1
-        fi
+        case "$ADAPTER" in
+          opencode)
+            if [ "$CREDENTIAL" != "opencode-api-key" ]; then
+              echo "::error::OpenCode route selected an unsupported credential binding."
+              exit 1
+            fi
+            ;;
+          cursor)
+            if [ "$CREDENTIAL" != "cursor-api-key" ]; then
+              echo "::error::Cursor route selected an unsupported credential binding."
+              exit 1
+            fi
+            ;;
+          *)
+            echo "::error::Unsupported isolated adapter: $ADAPTER"
+            exit 1
+            ;;
+        esac
 
     - name: Run selected OpenCode adapter
       id: opencode
@@ -134,5 +160,20 @@ runs:
         model: ${{ steps.route.outputs.model_ref }}
         opencode-api-key: ${{ inputs.opencode-api-key }}
         opencode-config: ${{ inputs.opencode-config }}
+        timeout-minutes: ${{ inputs.timeout-minutes }}
+        prompt-text: ${{ inputs.prompt-text }}
+
+    - name: Run selected Cursor CLI adapter
+      id: cursor
+      if: steps.route.outputs.adapter == 'cursor'
+      uses: ./.github/actions/run-cursor-container
+      with:
+        mode: editorial
+        lane: ${{ inputs.lane }}
+        allowed-paths: ${{ inputs.allowed-paths }}
+        return-artifacts: ${{ inputs.return-artifacts }}
+        model: ${{ steps.route.outputs.model_ref }}
+        cursor-api-key: ${{ inputs.cursor-api-key }}
+        cursor-config: ${{ inputs.cursor-config }}
         timeout-minutes: ${{ inputs.timeout-minutes }}
         prompt-text: ${{ inputs.prompt-text }}

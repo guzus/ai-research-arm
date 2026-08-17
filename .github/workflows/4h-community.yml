@@ -175,6 +175,7 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
           timeout-minutes: '25'
           prompt-text: |
             You are a community AI news curator. Process REAL-TIME data from HN and Reddit.
