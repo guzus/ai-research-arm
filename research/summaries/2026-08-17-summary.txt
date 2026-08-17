@@ -2,10 +2,13 @@ AI News - 2026-08-17
 
 TOP STORIES:
 • Stripe finalizes $7B+ acquisition of AI gateway startup OpenRouter, ~5x its May valuation
-• Deal gives Stripe a direct foothold in AI model-routing infrastructure economics
-• Quiet news day otherwise beyond ongoing stories already covered in prior reports
+• Nvidia scales back OpenAI Ohio data-center financing guarantee from ~$250B to ~$100-120B
+• OpenAI reportedly disbanded its Preparedness team assessing catastrophic AI risks
+• AI video startup Higgsfield raises $400M Series B at $5.4B valuation (4x in 8 months)
 
 KEY NUMBERS:
 • OpenRouter acquisition: $7B+ (vs. $1.3B Series B valuation in May 2026)
+• Nvidia-OpenAI Ohio guarantee: ~$100-105B (down from ~$250B)
+• Higgsfield: $400M raised, $5.4B valuation, $700M annualized revenue
 
 Full report on GitHub.
