@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-17 09:54:13 UTC
+
+CYCLE: DeepSeek's flagship price increase lands exactly as published, and its "peak" hours turn out to be the Chinese working day.
+
+TOP STORIES:
+• DeepSeek V4 Pro live at $1.32/$3.96 per Mtok peak, half off-peak; peak = 01:00-04:00 + 06:00-10:00 UTC, so US hours pay off-peak by default, and the off-peak floor is still 2.28x last week's output price [✓]
+• Unitree launches "Superman" humanoid on claims of a 45.5 km/h run and 2m high jump after ~3 months of development - manufacturer figures, no measured run [⚠]
+• Phison CEO: 2027 NAND capacity constraints worse than 2026, shortage likely to last years [⚠]
+
+WATCH: Whether DeepSeek reprices V4 Flash - the "abandoning the low end" thesis needs Flash to move, not just Pro.
+
+Full update on GitHub.
