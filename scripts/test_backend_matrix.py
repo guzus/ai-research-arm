@@ -1085,6 +1085,14 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn("scripts/copy_cursor_config.py", action)
         self.assertIn('--volume "$generated_cursor_config:/tmp/cursor-config/cli-config.json:ro"', action)
         self.assertIn("--env CURSOR_CONFIG_DIR=/tmp/cursor-config", action)
+        self.assertIn('export CURSOR_CONFIG_DIR="$HOME/.cursor"', action)
+        self.assertIn(
+            'cp -- "$CURSOR_CONFIG_DIR/cli-config.json" "$HOME/.cursor/cli-config.json"',
+            action)
+        self.assertIn(
+            'if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ]; then',
+            action)
+        self.assertIn('cat -- "$attempt_log"', action)
         self.assertIn("HOME=/tmp/cursor-home", action)
         self.assertIn('--sandbox disabled', action)
         self.assertIn('timeout "${remaining_seconds}s" agent -p --force --trust', action)
@@ -1116,6 +1124,49 @@ class RoutingInvariants(unittest.TestCase):
         self.assertNotIn('--volume "$HOME', action)
         self.assertNotIn("--privileged", action)
 
+    def test_container_action_host_scripts_parse_under_bash(self):
+        # Regression for Cursor CLI Canary run 31993098610 / RSS 31991149151:
+        # the container body is wrapped in bash -lc '...', so a single quote
+        # anywhere in that body (pattern literals OR comment apostrophes)
+        # ends the outer string early and turns the rest into a host-shell
+        # syntax error before docker ever starts.
+        actions = (
+            REPO_ROOT / ".github" / "actions" / "run-cursor-container" / "action.yml",
+            REPO_ROOT / ".github" / "actions" / "run-opencode-container" / "action.yml",
+        )
+        for action_path in actions:
+            with self.subTest(action=action_path.parent.name):
+                action_doc = yaml.safe_load(
+                    action_path.read_text(encoding="utf-8"))
+                run = "\n".join(
+                    step.get("run") or ""
+                    for step in action_doc["runs"]["steps"])
+                self.assertIn("bash -lc '", run, action_path)
+                start = run.index("bash -lc '") + len("bash -lc '")
+                end = run.index("\n  ')", start)
+                body = run[start:end]
+                self.assertNotIn(
+                    "'", body,
+                    f"{action_path}: apostrophe inside bash -lc body "
+                    f"(use double quotes for regexes; reword comments)")
+                self.assertRegex(
+                    body,
+                    r'(cursor|opencode)_fatal_pattern="[^"]+"',
+                    f"{action_path}: fatal_pattern must be double-quoted")
+                with tempfile.NamedTemporaryFile(
+                        "w", suffix=".sh", delete=False) as fh:
+                    fh.write(run)
+                    script_path = fh.name
+                try:
+                    checked = subprocess.run(
+                        ["bash", "-n", script_path],
+                        capture_output=True, text=True, check=False)
+                finally:
+                    Path(script_path).unlink(missing_ok=True)
+                self.assertEqual(
+                    0, checked.returncode,
+                    f"{action_path}: bash -n failed:\n{checked.stderr}")
+
     def test_cursor_canary_probes_the_model_production_runs(self):
         model_id = self.assert_single_cursor_model()
         canary = (REPO_ROOT / ".github" / "workflows" /
@@ -1134,7 +1185,11 @@ class RoutingInvariants(unittest.TestCase):
         for name in ("cli-config.json", "cli-config-canary.json", "translation.json"):
             cfg = json.loads((REPO_ROOT / ".github" / "cursor" / name)
                              .read_text(encoding="utf-8"))
+            self.assertEqual(1, cfg.get("version"), name)
+            self.assertEqual(False, (cfg.get("editor") or {}).get("vimMode"), name)
             self.assertIn("permissions", cfg, name)
+            self.assertIsInstance((cfg["permissions"]).get("allow", []), list, name)
+            self.assertIsInstance((cfg["permissions"]).get("deny", []), list, name)
 
     def test_cursor_twitter_tier_labels_name_the_served_model(self):
         model_id = self.assert_single_cursor_model()

@@ -716,11 +716,27 @@ runs:
             fi
 
             mkdir -p "$CURSOR_CONFIG_DIR"
+            # The host mounts the trusted policy at 0400/:ro. Copy it into
+            # writable HOME paths and retarget CURSOR_CONFIG_DIR there so
+            # the CLI can self-repair schema fields without EACCES on the
+            # mount (canary 31997748051 exited 1 with an empty attempt log).
+            mkdir -p "$HOME/.cursor" "$XDG_CONFIG_HOME/cursor"
+            cp -- "$CURSOR_CONFIG_DIR/cli-config.json" "$HOME/.cursor/cli-config.json"
+            chmod 600 "$HOME/.cursor/cli-config.json"
+            cp -- "$HOME/.cursor/cli-config.json" "$XDG_CONFIG_HOME/cursor/cli-config.json"
+            chmod 600 "$XDG_CONFIG_HOME/cursor/cli-config.json"
+            export CURSOR_CONFIG_DIR="$HOME/.cursor"
             # CURSOR_ATTEMPT_LOOP_BEGIN
             #
             # Abort early on unrecoverable auth/billing errors so a dead key
             # cannot pin the single self-hosted runner for the full timeout.
-            cursor_fatal_pattern='(Invalid API key|API key is invalid|Unauthorized|authentication failed|usage limit|Insufficient (balance|credits)|402 Payment)'
+            # Double quotes required: this body runs inside an outer
+            # single-quoted bash -lc script, so a single-quoted pattern ends
+            # that outer string early and the regex open-paren becomes a
+            # host-shell syntax error (Cursor CLI Canary run 31993098610).
+            # Inside the outer singles these doubles stay literal and
+            # re-quote correctly for the container.
+            cursor_fatal_pattern="(Invalid API key|API key is invalid|Unauthorized|authentication failed|usage limit|Insufficient (balance|credits)|402 Payment)"
             model_budget_seconds=$((AGENT_TIMEOUT_MINUTES * 60))
             model_started_seconds=$SECONDS
             attempt_count=0
@@ -782,8 +798,18 @@ runs:
               done
               wait "$agent_pid"
               agent_status=$?
+              # Flush the attempt log after the child exits. tail --pid
+              # can miss a fully-buffered write that lands as the process
+              # dies (canary 31998429963: status=0 but the token never
+              # reached OUTPUT_FILE). Canary needs that text on stdout
+              # for the token assert; failures need it for diagnosis.
+              # Production successes stay single-streamed.
+              if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ]; then
+                echo "Cursor attempt ${attempt_count} log (status=${agent_status}):"
+                cat -- "$attempt_log" || true
+              fi
               # Tear the streamer down explicitly rather than trusting
-              # `tail --pid` to notice; an unreaped tail keeps this step's
+              # `tail --pid` to notice; an unreaped tail keeps this step
               # stdout open and would hang the job it was meant to shorten.
               kill -TERM "$tail_pid" 2>/dev/null
               wait "$tail_pid" 2>/dev/null
