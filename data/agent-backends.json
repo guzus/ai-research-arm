@@ -100,7 +100,7 @@
     "cursor-grok-4p6-fast": {
       "adapter": "cursor",
       "provider": "cursor",
-      "model": "grok-4.6-fast",
+      "model": "cursor-grok-4.6-high-fast",
       "display_name": "Grok 4.6 Fast via Cursor CLI",
       "aliases": [
         "cursor",
@@ -112,7 +112,7 @@
         "cursor-composer-2p5",
         "composer-2.5"
       ],
-      "notes": "Cursor Agent CLI inside run-cursor-container, authenticated by CURSOR_API_KEY and pinned to grok-4.6-fast (replaces composer-2.5). Runtime-selectable by agent-dispatch; not selectable by agent-run. Production editorial defaults stay on OpenCode until this profile is chosen in a route. cursor-composer-2p5 remains a compatibility alias."
+      "notes": "Cursor Agent CLI inside run-cursor-container, authenticated by CURSOR_API_KEY and pinned to cursor-grok-4.6-high-fast (the CLI id for Grok 4.6 Fast; grok-4.6-fast is not a valid --model). Replaces composer-2.5. Runtime-selectable by agent-dispatch; not selectable by agent-run. Production editorial defaults stay on OpenCode until this profile is chosen in a route. cursor-composer-2p5 remains a compatibility alias."
     }
   },
   "routes": {

@@ -507,7 +507,7 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn("Resolve and preflight Cursor CLI route", workflow)
         self.assertIn("Fail Cursor run without article", workflow)
         self.assertIn("uses: ./.github/actions/run-cursor-container", workflow)
-        self.assertIn('model="cursor/grok-4.6-fast"', workflow)
+        self.assertIn('model="cursor/cursor-grok-4.6-high-fast"', workflow)
         model_id = self.assert_single_cursor_model()
         prompt = (REPO_ROOT / ".github" / "cursor" / "prompts" /
                   "generative-research.md").read_text(encoding="utf-8")
@@ -1207,6 +1207,8 @@ class RoutingInvariants(unittest.TestCase):
                 for chunk in workflow.split("cursor-grok-4p6-fast)")[1:]]
         arm = next(a for a in arms if "OUTPUT_DIR=" in a)
         family = model_id.split("-")[0].lower()
+        if family == "cursor" and "-" in model_id:
+            family = model_id.split("-", 1)[1].split("-")[0].lower()
         others = {"deepseek", "kimi", "glm", "claude", "gpt", "qwen", "composer"} - {family}
         targets = [(f, next(ln for ln in arm.splitlines() if f"{f}=" in ln))
                    for f in ("TITLE_SUFFIX", "COMMIT_PREFIX", "HARNESS_LABEL")]

@@ -16,7 +16,7 @@ slots, endpoints, selector tokens) live in `CLAUDE.md` → "Backends" and
 | pi · run-pi-container | The pi coding-agent harness in a container with pi's own provider config. Twitter comparison tiers only. |
 | Codex CLI | `codex exec` with ChatGPT-managed file auth (subscription entitlement, not API billing). |
 | opencode CLI | `opencode run` **inside a Docker container** (`.github/actions/run-opencode-container`: `--cap-drop ALL`, `no-new-privileges`, non-root, throwaway HOME, disposable clone). The trusted action injects the selected profile's validated `provider/model` into an ephemeral read-only config. Missing Docker is a hard failure. The five editorial lanes currently share a strict OpenCode route, so its key/caps are a correlated risk while selected; a route edit can move the group to another registered compatible isolated adapter. Host-checkout agent-run is explicitly incompatible. |
-| Cursor CLI | `agent -p` **inside a Docker container** (`.github/actions/run-cursor-container`: same isolation contract as OpenCode). Authenticated by `CURSOR_API_KEY`; model selected by `agent --model` (canonical `grok-4.6-fast`). Nested sandbox is disabled because the container is the boundary. Missing Docker is a hard failure. Registered as a second isolated editorial adapter; production defaults stay on OpenCode until a route selects `cursor-grok-4p6-fast`. Validate with `cursor-cli-canary.yml`. |
+| Cursor CLI | `agent -p` **inside a Docker container** (`.github/actions/run-cursor-container`: same isolation contract as OpenCode). Authenticated by `CURSOR_API_KEY`; model selected by `agent --model` (canonical `cursor-grok-4.6-high-fast`). Nested sandbox is disabled because the container is the boundary. Missing Docker is a hard failure. Registered as a second isolated editorial adapter; production defaults stay on OpenCode until a route selects `cursor-grok-4p6-fast`. Validate with `cursor-cli-canary.yml`. |
 | dispatch default | Not an agent itself: the SSOT-resolved default backend a dispatch/issue run uses when none is specified. |
 
 ## How routing consumption works
@@ -87,7 +87,7 @@ Reading notes:
 | digest-synthesis-fallback | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
 | generative-research-claude (+1 retry step) | `generative-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | generative-research-default | `generative-research.yml` | dispatch default (runtime SSOT) | (per chosen backend) | default: `opencode-deepseek-v4-flash` | (per chosen backend) | workflow-level `fireworks_fallback` input (default `claude`) |
-| generative-research-ko (route:generative-translation) | `translate-generative-research.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `grok-4.6-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
+| generative-research-ko (route:generative-translation) | `translate-generative-research.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | model-timeline | `24h-model-timeline.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | research-issue (×2 step variants) | `research-issue.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | rss (route:research-editorial) | `hourly-rss.yml` | agent-dispatch → opencode CLI (runtime SSOT) | DeepSeek V4 Flash via OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (route fallback=none) |
@@ -106,15 +106,15 @@ Reading notes:
 | twitter-zai (tier:zai-glm-5p2) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
 | wiki-ingest (route:research-editorial) | `wiki-ingest.yml` | agent-dispatch → opencode CLI (runtime SSOT) | DeepSeek V4 Flash via OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (route fallback=none) |
 | zai-canary · PINNED | `zai-claude-code-canary.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
-| (canary) cursor + grok-4.6-fast | `cursor-cli-canary.yml` | Cursor CLI (containerised) | Cursor CLI | `grok-4.6-fast` | `CURSOR_API_KEY` | hard fail (diagnostics lane) |
+| (canary) cursor + cursor-grok-4.6-high-fast | `cursor-cli-canary.yml` | Cursor CLI (containerised) | Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (diagnostics lane) |
 | (dispatch path) backend=fireworks (+2 retry steps) | `generative-research.yml` | Claude Code · claude-code-action (env-rerouted) | Fireworks (Anthropic-compatible endpoint) | dynamic: per fireworks profile step | `FIREWORKS_API_KEY` | workflow-level `fireworks_fallback` input (default `claude`) |
 | (dispatch path) backend=codex | `generative-research.yml` | Codex CLI | OpenAI (ChatGPT subscription auth) | codex CLI default | `CODEX_AUTH_JSON` | — |
 | (dispatch path) backend=opencode-deepseek-v4-flash | `generative-research.yml` | opencode CLI (containerised) | OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (strict comparison backend) |
 | (dispatch path) backend=fable-5 | `generative-research.yml` | Claude Code · claude-code-action (explicit premium selector) | Anthropic (native) | `claude-fable-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (no model-action retry) |
 | (dispatch path) backend=opus-5 | `generative-research.yml` | Claude Code · claude-code-action (explicit model selector) | Anthropic (native) | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (one recovery retry, same as `claude`) |
-| (dispatch path) backend=cursor-grok-4p6-fast | `generative-research.yml` | Cursor CLI (containerised) | Cursor CLI | `grok-4.6-fast` | `CURSOR_API_KEY` | hard fail (strict comparison backend) |
+| (dispatch path) backend=cursor-grok-4p6-fast | `generative-research.yml` | Cursor CLI (containerised) | Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (strict comparison backend) |
 | (tier) backend=opencode-deepseek-v4-flash | `hourly-twitter.yml` | opencode CLI (containerised) | OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (strict comparison tier) |
-| (tier) backend=cursor-grok-4p6-fast | `hourly-twitter.yml` | Cursor CLI (containerised) | Cursor CLI | `grok-4.6-fast` | `CURSOR_API_KEY` | hard fail (strict comparison tier) |
+| (tier) backend=cursor-grok-4p6-fast | `hourly-twitter.yml` | Cursor CLI (containerised) | Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (strict comparison tier) |
 | (canary) opencode + deepseek-v4-flash | `opencode-deepseek-canary.yml` | opencode CLI (containerised) | OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (diagnostics lane) |
 
 ### Workflows with no model lane (deterministic / infra)
