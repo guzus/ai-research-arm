@@ -1466,7 +1466,23 @@
     "created_at": "2026-08-11T20:48:17Z",
     "source": "workflow_dispatch",
     "prompt": "Nvidia's $500B AI-factory financing MOU and the 25% project backstop: who actually holds GPU residual-value risk",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-17T122035--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "GPU 잔존가치를 실제로 누가 보유하는가",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-17T12:20:35Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba",
+        "tags": [],
+        "translated_at": "2026-08-17T12:20:35Z",
+        "source_file": "research/generative/2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba.ara.md",
+        "source_sha256": "c771e205c65c2796fc3cbf7adbde7e931f48f8bdbb8adaafc1195c866f31ab72"
+      }
+    }
   },
   {
     "slug": "glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s",
