@@ -33,7 +33,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-08-17T04:10:24Z",
+  "generated_at": "2026-08-17T10:07:10Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -71,7 +71,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":7,"plotted":90,"ts":"2026-08-16T11:13:57Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":7,"plotted":90,"ts":"2026-08-16T15:45:23Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":7,"plotted":89,"ts":"2026-08-16T21:48:49Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":89,"ts":"2026-08-17T04:10:24Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":89,"ts":"2026-08-17T04:10:24Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":89,"ts":"2026-08-17T10:07:10Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -2782,7 +2783,7 @@
         }
       ]
     },
-    "as_of": "2026-08-17T04:10:24Z",
+    "as_of": "2026-08-17T10:07:10Z",
     "counts": {
       "pareto": 6,
       "plotted": 89,
@@ -3116,7 +3117,7 @@
       },
       {
         "blended_usd_per_mtok": 0.175,
-        "context_length": 1048576,
+        "context_length": 1310720,
         "epoch_model": "DeepSeek V4 Flash 0731",
         "input_usd_per_mtok": 0.14,
         "key": "deepseekv4flash0731",
@@ -4583,13 +4584,6 @@
         "vendor": "google"
       },
       {
-        "input_usd_per_mtok": 0.0603,
-        "key": "deepseekv4flashlatest",
-        "name": "DeepSeek V4 Flash Latest",
-        "output_usd_per_mtok": 0.1206,
-        "vendor": "~deepseek"
-      },
-      {
         "input_usd_per_mtok": 0.035,
         "key": "novamicro1.0",
         "name": "Nova Micro 1.0",
@@ -4625,10 +4619,17 @@
         "vendor": "cohere"
       },
       {
-        "input_usd_per_mtok": 0.08386,
+        "input_usd_per_mtok": 0.078596,
+        "key": "deepseekv4flashlatest",
+        "name": "DeepSeek V4 Flash Latest",
+        "output_usd_per_mtok": 0.157192,
+        "vendor": "~deepseek"
+      },
+      {
+        "input_usd_per_mtok": 0.0826,
         "key": "deepseekv4flash0423",
         "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.16772,
+        "output_usd_per_mtok": 0.1652,
         "vendor": "deepseek"
       },
       {
@@ -5416,20 +5417,6 @@
         "vendor": "morph"
       },
       {
-        "input_usd_per_mtok": 0.66,
-        "key": "deepseekv4pro0813",
-        "name": "DeepSeek V4 Pro 0813",
-        "output_usd_per_mtok": 1.98,
-        "vendor": "deepseek"
-      },
-      {
-        "input_usd_per_mtok": 0.66,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 1.98,
-        "vendor": "deepseek"
-      },
-      {
         "input_usd_per_mtok": 1.0,
         "key": "grokbuild0.1",
         "name": "Grok Build 0.1",
@@ -5687,6 +5674,20 @@
         "name": "Qwen3 Max Thinking",
         "output_usd_per_mtok": 3.9,
         "vendor": "qwen"
+      },
+      {
+        "input_usd_per_mtok": 1.32,
+        "key": "deepseekv4pro0813",
+        "name": "DeepSeek V4 Pro 0813",
+        "output_usd_per_mtok": 3.96,
+        "vendor": "deepseek"
+      },
+      {
+        "input_usd_per_mtok": 1.32,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 3.96,
+        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.95,
