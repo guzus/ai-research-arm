@@ -108,8 +108,8 @@ short pointer plus the few genuinely agent-specific notes.
   backend=cursor-grok-4p6-fast` / `hourly-twitter.yml
   backend=cursor-grok-4p6-fast` and is **not** the production default.
   Store the key with `gh secret set CURSOR_API_KEY`, then validate
-  cheaply with `cursor-cli-canary.yml`. Korean translation stays on
-  OpenCode (no Cursor `translation_segment` tool).
+  cheaply with `cursor-cli-canary.yml`. Korean translation currently
+  selects this profile via `routes.generative-translation`.
 
 - **bird CLI** invocations must always pass `--json --plain` and fall
   back gracefully (`|| echo "[]"`); the X/Twitter cookies expire and a

@@ -234,17 +234,17 @@ process still directly receives its billing key and, on research/Twitter lanes,
 the X cookies while retaining network access, so it is not a secret-exfiltration
 boundary for those credentials.
 
-The Korean backfill narrows that container again with
-`.github/opencode/translation.json`: model tools may read only the staged
-request and staged canonical ARA copy. Long translations cross the output-token
-limit through `.opencode/tools/translation_chunk.ts`, which accepts no path,
-writes only the one named `.tmp` draft, caps each chunk and the total file, and
-requires an exact monotonic byte offset. Built-in edit/write remain denied. The
-policy explicitly denies every other tool under `--auto` and disables LSP and
-formatters; trusted host validators, the canonical writer, and exact diff gates
-remain the only publication path. The OpenCode process still needs its own
-billing key to reach the provider, so this reduces prompt-level capabilities
-but does not make the provider process a secretless boundary.
+The Korean backfill currently selects Cursor Grok 4.6 Fast
+(`routes.generative-translation`). `.github/cursor/translation.json` may
+read only the staged segment manifest and write only the fixed JSONL
+under `.tmp/`; Shell, WebFetch, MCP, and every other write stay denied.
+Pointing the route back to OpenCode still uses
+`.github/opencode/translation.json` plus `.opencode/tools/translation_segment.ts`
+(no path argument, exclusive write, token/size caps). Trusted host
+validators, the canonical writer, and exact diff gates remain the only
+publication path. The provider process still receives its own billing
+key, so this reduces prompt-level capabilities but is not a secretless
+boundary.
 
 Until 2026-08-08 opencode had NEITHER: it ran bare on the host with
 `edit`/`bash`/`webfetch` all `allow` plus `--auto`, which auto-approves
@@ -354,8 +354,8 @@ derivable from the SSOT.
 | **GLM 5.2 (via Z.ai Coding Plan)** | Second link in the fallback chain; `agent-run backend=zai-glm-5p2`; default manual `hourly-twitter.yml` backend; `zai-claude-code-canary.yml` | `ZAI_API_KEY` | Anthropic-compatible Claude Code endpoint `https://api.z.ai/api/anthropic`, model `glm-5.2`, `CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000`. The `glm-5.2[1m]` alias was rejected as `Unknown Model` (canary run `28751367808`) — keep the endpoint-valid id unless a raw probe proves otherwise. Because it shares the harness and sandbox but not the credential, **the canary is the fastest way to tell a dead Claude token from a broken runner**. Selectors: `zai-glm-5p2`, `zai-glm-5.2`, `zai-glm52`, `zai`. |
 | **GLM 5.2 (via Fireworks)** | `generative-research backend=glm-5p2` | `FIREWORKS_API_KEY` | Model `accounts/fireworks/models/glm-5p2`. Selectors: `fireworks-glm-5p2`, `glm-5p2`, `glm`. In `generative-research.yml` the workflow-level `fireworks_fallback` input falls back to native Claude by default. |
 | **DeepSeek V4 Flash (via Fireworks)** | Low-cost/comparison: `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek tiers | `FIREWORKS_API_KEY` | Endpoint `https://api.fireworks.ai/inference` (base URL omits `/v1`; the client appends `/v1/messages`), model `accounts/fireworks/models/deepseek-v4-flash`. Overrides `ANTHROPIC_BASE_URL`/`AUTH_TOKEN`/`MODEL` so the Claude action transparently calls Fireworks. The direct DeepSeek API is retired (billing). Scheduled DeepSeek lanes are STRICT comparison tiers that never fall back. |
-| **DeepSeek V4 Flash (via opencode)** | **The `generative-research` default** plus current `research-editorial` route for RSS, community, arXiv, Bluesky, and wiki; Korean translation; explicit `hourly-twitter` selector; and `opencode-deepseek-canary.yml` | `OPENCODE_API_KEY` (Go plan) | opencode CLI pinned `opencode-ai@1.18.3` against `opencode-go/deepseek-v4-flash` — the **2026-07-31** release. 1M ctx, $0.07/$0.14 per Mtok on the $10/mo Go plan (caps $12/5h, $30/wk, $60/mo). The trusted action injects the selected SSOT `provider/model` into an ephemeral read-only config. Strict OpenCode routes fail closed; one key/cap failure can stale the shared lanes, so use the canary. Moonshot serves Kimi only and is not a fallback. |
-| **Grok 4.6 Fast (via Cursor CLI)** | Explicit `generative-research backend=cursor-grok-4p6-fast`; `hourly-twitter.yml backend=cursor-grok-4p6-fast`; `cursor-cli-canary.yml`; selectable `research-editorial` adapter | `CURSOR_API_KEY` | Official Cursor Agent CLI (`agent`) inside `run-cursor-container`, same isolation contract as OpenCode. Model **`grok-4.6-fast`** (replaced `composer-2.5`). Nested sandbox disabled (container is the boundary). Not on `fallback.chain` and not the production default. Selectors: `cursor`, `cursor-cli`, `cursor-agent`, `grok-4.6-fast`, `grok`. `cursor-composer-2p5` remains a compatibility alias. Validate with `cursor-cli-canary.yml`. Korean translation stays on OpenCode. |
+| **DeepSeek V4 Flash (via opencode)** | **The `generative-research` default** plus current `research-editorial` route for RSS, community, arXiv, Bluesky, and wiki; explicit `hourly-twitter` selector; and `opencode-deepseek-canary.yml` | `OPENCODE_API_KEY` (Go plan) | opencode CLI pinned `opencode-ai@1.18.3` against `opencode-go/deepseek-v4-flash` — the **2026-07-31** release. 1M ctx, $0.07/$0.14 per Mtok on the $10/mo Go plan (caps $12/5h, $30/wk, $60/mo). The trusted action injects the selected SSOT `provider/model` into an ephemeral read-only config. Strict OpenCode routes fail closed; one key/cap failure can stale the shared lanes, so use the canary. Moonshot serves Kimi only and is not a fallback. |
+| **Grok 4.6 Fast (via Cursor CLI)** | Explicit `generative-research backend=cursor-grok-4p6-fast`; `hourly-twitter.yml backend=cursor-grok-4p6-fast`; `cursor-cli-canary.yml`; current `generative-translation` route; selectable `research-editorial` adapter | `CURSOR_API_KEY` | Official Cursor Agent CLI (`agent`) inside `run-cursor-container`, same isolation contract as OpenCode. Model **`grok-4.6-fast`** (replaced `composer-2.5`). Nested sandbox disabled (container is the boundary). Not on `fallback.chain` and not the production default. Selectors: `cursor`, `cursor-cli`, `cursor-agent`, `grok-4.6-fast`, `grok`. `cursor-composer-2p5` remains a compatibility alias. Validate with `cursor-cli-canary.yml`. |
 | **Opus 5 (native)** | Explicit `generative-research` `backend=opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic on **`claude-opus-5`**. Not the OpenCode default or the Fireworks-unavailable fallback target. The resolved model pins `--model`, every `ANTHROPIC_DEFAULT_*` alias, and `CLAUDE_CODE_SUBAGENT_MODEL`; a pre-push gate verifies provenance. Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
 | **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage bills against the ChatGPT/Codex subscription, not the API. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p7`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |

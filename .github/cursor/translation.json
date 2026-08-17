@@ -5,6 +5,7 @@
   },
   "permissions": {
     "allow": [
+      "Read(.agent-input/translation-segments.json)",
       "Read(.tmp/**/*)",
       "Read(.github/cursor/**/*)",
       "Write(.tmp/generative-translation.ko.ara.md)",
