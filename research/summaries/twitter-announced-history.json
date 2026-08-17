@@ -23803,5 +23803,33 @@
     "headline": "GPT-5.6 SOL 1M CONTEXT NOW LIVE IN CODEX FOR CHATGPT SUBSCRIBERS, NO LONGER API-KEY ONLY",
     "source": "@steipete",
     "url": "https://x.com/steipete/status/2089151164021649677"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-17 07:13:01 UTC",
+    "headline": "AGENT SWARMS SOLVED 3 OF 13 DEF CON GOLDBUG PUZZLES \u2014 TEAM STILL TOOK BLACK BADGE",
+    "source": "@davis7",
+    "url": "https://x.com/davis7/status/2089244416263536720"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-17 07:13:01 UTC",
+    "headline": "LLAMA.CPP SERVES QWEN3.8-27B IN ONE COMMAND WITH MTP SPECULATIVE DECODING",
+    "source": "@mervenoyann",
+    "url": "https://x.com/mervenoyann/status/2089238812484342235"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-17 07:13:01 UTC",
+    "headline": "OPENAI RESEARCHER LISTS MONITORING FAILURE MODES \u2014 DOWNTIME, FATIGUE, FALSE POSITIVES",
+    "source": "@tszzl",
+    "url": "https://x.com/tszzl/status/2089234808480407818"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-17 07:13:01 UTC",
+    "headline": "DEEPSEEK V4 FLASH ON TWO DGX SPARKS RATED NEAR GPT-5.4 AND OPUS 4.5 LEVEL",
+    "source": "@davis7",
+    "url": "https://x.com/davis7/status/2089205408451952864"
   }
 ]
