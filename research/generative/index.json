@@ -1426,7 +1426,23 @@
     "created_at": "2026-08-10T18:43:14Z",
     "source": "workflow_dispatch",
     "prompt": "Meta's Muse Glimmer: a 30B Apache-2.0 model winning 12 of 24 rows against April models, days after Spark 1.1 escaped its eval",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-17T125645--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24-2.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Muse Glimmer의 12대 24: 메타 자체 성적표가 인정하는 것과, Apache-2.0 라이선스 아래 깔린 안전성 추론",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-17T12:56:45Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24-2",
+        "tags": [],
+        "translated_at": "2026-08-17T12:56:45Z",
+        "source_file": "research/generative/2026-08-10T184314--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24-2.ara.md",
+        "source_sha256": "5e9118c5eca335cfac93e15571651e9cdba0813f6ab2f295c638c60d1e7bac7d"
+      }
+    }
   },
   {
     "slug": "eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa",
