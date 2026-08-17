@@ -1116,7 +1116,7 @@ class RoutingInvariants(unittest.TestCase):
             action)
         self.assertIn(
             'if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ] \\',
-        )
+            action)
         self.assertIn(
             '[ "$artifact_count" -eq 0 ]; then',
             action)
