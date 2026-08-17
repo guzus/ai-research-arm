@@ -23866,5 +23866,54 @@
     "headline": "META PAPER: SMALL MODELS UNDER-PREDICT SCALING BECAUSE THEY ARE UNDER-TUNED",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2089286210627747927"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-17 13:09:52 UTC",
+    "headline": "NVIDIA TAKES $1.5B STAKE IN SB ENERGY, BECOMES EXCLUSIVE COMPUTE SUPPLIER TO OPENAI'S OHIO CAMPUS",
+    "source": "@MentoviaX",
+    "url": "https://x.com/MentoviaX/status/2089339152760279059"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-17 13:09:52 UTC",
+    "headline": "OHIO DEAL SPLITS 8 GW FOR OPENAI \u2014 4.25 GW CONTRACTED, 3.75 GW AN OPTION NVIDIA HOLDS, PHASED FROM 2028",
+    "source": "@Stock_Jabber",
+    "url": "https://x.com/Stock_Jabber/status/2089339130467745838"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-17 13:09:52 UTC",
+    "headline": "HUANG PUTS OPENAI COMMITMENT AT ~12 GW BY 2030, EXPANDABLE TO 16 GW \u2014 NVIDIA FRAMES IT AS $600B REVENUE",
+    "source": "@AlphaWireNewsAi",
+    "url": "https://x.com/AlphaWireNewsAi/status/2089338075688116674"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-17 13:09:52 UTC",
+    "headline": "DEEPSEEK V4 PRO 0813 SCORES 66.2% ON WEIRDML \u2014 JUST 3.2 POINTS OVER ITS OWN CHEAPER FLASH TIER AT 63.0%",
+    "source": "@htihle",
+    "url": "https://x.com/htihle/status/2089315680696860958"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-17 13:09:52 UTC",
+    "headline": "UNITREE PRICES SHANGHAI STAR LISTING AT 150.8 YUAN, ~$9B VALUATION, TRADING OPENS 19 AUGUST",
+    "source": "@EmmanuelInvest",
+    "url": "https://x.com/EmmanuelInvest/status/2089339038519967853"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-17 13:09:52 UTC",
+    "headline": "QWEN 3.8 2.4T A95B HITS 75.2% ON WEIRDML \u2014 SECOND-BEST OPEN MODEL BEHIND KIMI-K3, AT HEAVY TOKEN COST",
+    "source": "@htihle",
+    "url": "https://x.com/htihle/status/2089314243405299733"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-17 13:09:52 UTC",
+    "headline": "GOOGLE PULLS AI IMAGE GENERATOR FROM GOOGLE EARTH UNDER 24H AFTER LAUNCH OVER FAKE SATELLITE IMAGERY",
+    "source": "@TecheconomyNG",
+    "url": "https://x.com/TecheconomyNG/status/2089337873736610234"
   }
 ]
