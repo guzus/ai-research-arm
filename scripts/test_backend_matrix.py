@@ -268,15 +268,32 @@ class RoutingInvariants(unittest.TestCase):
             )
         )
         self.assertEqual(
-            ["Shell(*)", "Write(*)", "WebFetch(*)", "Mcp(*)"],
+            [
+                "Shell(*)",
+                "Write(.env*)",
+                "Write(.git/**/*)",
+                "Write(.github/**/*)",
+                "Write(research/**/*)",
+                "Write(data/**/*)",
+                "Write(scripts/**/*)",
+                "Write(dashboard/**/*)",
+                "Write(docs/**/*)",
+                "WebFetch(*)",
+                "Mcp(*)",
+            ],
             cursor_policy["permissions"]["deny"],
         )
+        self.assertNotIn("Write(*)", cursor_policy["permissions"]["deny"])
         self.assertIn(
             "Read(.agent-input/translation-segments.json)",
             cursor_policy["permissions"]["allow"],
         )
         self.assertIn(
             "Write(.tmp/generative-translation.ko.segments.jsonl)",
+            cursor_policy["permissions"]["allow"],
+        )
+        self.assertIn(
+            "Write(.tmp/**/*)",
             cursor_policy["permissions"]["allow"],
         )
 
@@ -1098,7 +1115,10 @@ class RoutingInvariants(unittest.TestCase):
             'cp -- "$CURSOR_CONFIG_DIR/cli-config.json" "$HOME/.cursor/cli-config.json"',
             action)
         self.assertIn(
-            'if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ]; then',
+            'if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ] \\',
+            action)
+        self.assertIn(
+            '[ "$artifact_count" -eq 0 ]; then',
             action)
         self.assertIn('cat -- "$attempt_log"', action)
         self.assertIn("HOME=/tmp/cursor-home", action)

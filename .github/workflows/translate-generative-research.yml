@@ -150,16 +150,21 @@ jobs:
             Translate one existing ARA generative-research article into natural,
             professional Korean. This is translation, not new research.
 
+            The run fails unless
+            `.tmp/generative-translation.ko.segments.jsonl` exists as a
+            regular file before you stop. A chat-only translation is a
+            failed run. Use the Write tool on that exact path.
+
             Read `.agent-input/translation-segments.json`. It is compact JSON
             Lines: the first line is a header; every later line is
             `[segment_id, source_text, internal_flag]`. Translate each
             `source_text` into Korean. Submit `{id, text}` objects only.
             If `translation_segment` exists, submit batches with that tool
-            immediately after reading the rows. Otherwise append one JSON
+            immediately after reading the rows. Otherwise Write one JSON
             object per line to exactly
             `.tmp/generative-translation.ko.segments.jsonl`. Do not
             draft a full document or final-answer translation. If the read is
-            paginated, submit the current page before reading the next page.
+            paginated, Write the current page before reading the next page.
             Preserve every opaque token such as
             `⟦ARA0000⟧` exactly once and in its original order. Submit each
             segment id exactly once. Never invent an opaque token; a row may

@@ -798,16 +798,6 @@ runs:
               done
               wait "$agent_pid"
               agent_status=$?
-              # Flush the attempt log after the child exits. tail --pid
-              # can miss a fully-buffered write that lands as the process
-              # dies (canary 31998429963: status=0 but the token never
-              # reached OUTPUT_FILE). Canary needs that text on stdout
-              # for the token assert; failures need it for diagnosis.
-              # Production successes stay single-streamed.
-              if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ]; then
-                echo "Cursor attempt ${attempt_count} log (status=${agent_status}):"
-                cat -- "$attempt_log" || true
-              fi
               # Tear the streamer down explicitly rather than trusting
               # `tail --pid` to notice; an unreaped tail keeps this step
               # stdout open and would hang the job it was meant to shorten.
@@ -828,6 +818,18 @@ runs:
                   artifact_count=$((artifact_count + 1))
                 fi
               done <<< "$RETURN_ARTIFACTS"
+              # Flush the attempt log after the child exits. tail --pid
+              # can miss a fully-buffered write that lands as the process
+              # dies (canary 31998429963: status=0 but the token never
+              # reached OUTPUT_FILE). Canary needs that text on stdout
+              # for the token assert; failures and zero-artifact exits
+              # need it for diagnosis. Production successes stay
+              # single-streamed.
+              if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ] \
+                || [ "$artifact_count" -eq 0 ]; then
+                echo "Cursor attempt ${attempt_count} log (status=${agent_status}):"
+                cat -- "$attempt_log" || true
+              fi
               echo "Cursor attempt ${attempt_count}: status=${agent_status} translation_segment_calls=${segment_calls} artifacts=${artifact_count} remaining_seconds=${remaining_seconds}"
 
               if [ "$AGENT_LANE" = "generative-research-ko" ] \
