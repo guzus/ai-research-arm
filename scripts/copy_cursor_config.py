@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Copy a trusted Cursor CLI permission config into the run-scoped mount.
 
-The model is selected by `agent --model`, not by this file. The helper only
-validates that the committed policy is a JSON object and materializes an
-owner-read-only copy the container can mount without giving the agent a
-writable path back to the real checkout.
+The model is selected by `agent --model`, not by this file. The helper
+validates the committed policy is a JSON object, fills the CLI schema
+fields the official client self-repairs (`version`, `editor.vimMode`,
+`permissions.allow`/`deny`), and materializes an owner-read-only copy
+the container can mount without giving the agent a writable path back
+to the real checkout.
 """
 
 from __future__ import annotations
@@ -25,6 +27,20 @@ def copy_config(source: Path, destination: Path, model_ref: str) -> None:
     config = json.loads(source.read_text(encoding="utf-8"))
     if not isinstance(config, dict):
         raise ValueError("base Cursor CLI config must be a JSON object")
+    # The CLI self-repairs missing required fields by rewriting the file.
+    # The host mount is mode 0400 and :ro, so that rewrite EACCES-exits
+    # before the model runs (Cursor CLI Canary 31997748051). Fill them
+    # here so the mounted policy is already valid.
+    config.setdefault("version", 1)
+    editor = config.setdefault("editor", {})
+    if not isinstance(editor, dict):
+        raise ValueError("editor must be a JSON object")
+    editor.setdefault("vimMode", False)
+    permissions = config.setdefault("permissions", {})
+    if not isinstance(permissions, dict):
+        raise ValueError("permissions must be a JSON object")
+    permissions.setdefault("allow", [])
+    permissions.setdefault("deny", [])
 
     temporary = destination.with_name(destination.name + ".tmp")
     fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o400)

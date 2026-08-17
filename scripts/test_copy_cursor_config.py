@@ -18,9 +18,24 @@ class CopyCursorConfigTest(unittest.TestCase):
             copy_config(source, destination, "cursor/composer-2.5")
             generated = json.loads(destination.read_text())
             self.assertEqual(["Read(**/*)"], generated["permissions"]["allow"])
+            self.assertEqual(["Mcp(*)"], generated["permissions"]["deny"])
+            self.assertEqual(1, generated["version"])
+            self.assertEqual({"vimMode": False}, generated["editor"])
             self.assertNotIn("model", generated)
             self.assertNotIn("provider", generated)
             self.assertEqual(0o400, destination.stat().st_mode & 0o777)
+
+    def test_fills_required_cli_schema_fields(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "cli-config.json"
+            destination = Path(tmp) / "copied.json"
+            source.write_text("{}")
+            copy_config(source, destination, "cursor/composer-2.5")
+            generated = json.loads(destination.read_text())
+            self.assertEqual(1, generated["version"])
+            self.assertEqual({"vimMode": False}, generated["editor"])
+            self.assertEqual([], generated["permissions"]["allow"])
+            self.assertEqual([], generated["permissions"]["deny"])
 
     def test_rejects_noncanonical_or_injectable_refs(self):
         with tempfile.TemporaryDirectory() as tmp:

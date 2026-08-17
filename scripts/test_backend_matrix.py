@@ -1085,6 +1085,11 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn("scripts/copy_cursor_config.py", action)
         self.assertIn('--volume "$generated_cursor_config:/tmp/cursor-config/cli-config.json:ro"', action)
         self.assertIn("--env CURSOR_CONFIG_DIR=/tmp/cursor-config", action)
+        self.assertIn('export CURSOR_CONFIG_DIR="$HOME/.cursor"', action)
+        self.assertIn(
+            'cp -- "$CURSOR_CONFIG_DIR/cli-config.json" "$HOME/.cursor/cli-config.json"',
+            action)
+        self.assertIn("replaying attempt log", action)
         self.assertIn("HOME=/tmp/cursor-home", action)
         self.assertIn('--sandbox disabled', action)
         self.assertIn('timeout "${remaining_seconds}s" agent -p --force --trust', action)
@@ -1177,7 +1182,11 @@ class RoutingInvariants(unittest.TestCase):
         for name in ("cli-config.json", "cli-config-canary.json", "translation.json"):
             cfg = json.loads((REPO_ROOT / ".github" / "cursor" / name)
                              .read_text(encoding="utf-8"))
+            self.assertEqual(1, cfg.get("version"), name)
+            self.assertEqual(False, (cfg.get("editor") or {}).get("vimMode"), name)
             self.assertIn("permissions", cfg, name)
+            self.assertIsInstance((cfg["permissions"]).get("allow", []), list, name)
+            self.assertIsInstance((cfg["permissions"]).get("deny", []), list, name)
 
     def test_cursor_twitter_tier_labels_name_the_served_model(self):
         model_id = self.assert_single_cursor_model()

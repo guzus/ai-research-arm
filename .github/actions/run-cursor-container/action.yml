@@ -716,6 +716,16 @@ runs:
             fi
 
             mkdir -p "$CURSOR_CONFIG_DIR"
+            # The host mounts the trusted policy at 0400/:ro. Copy it into
+            # writable HOME paths and retarget CURSOR_CONFIG_DIR there so
+            # the CLI can self-repair schema fields without EACCES on the
+            # mount (canary 31997748051 exited 1 with an empty attempt log).
+            mkdir -p "$HOME/.cursor" "$XDG_CONFIG_HOME/cursor"
+            cp -- "$CURSOR_CONFIG_DIR/cli-config.json" "$HOME/.cursor/cli-config.json"
+            chmod 600 "$HOME/.cursor/cli-config.json"
+            cp -- "$HOME/.cursor/cli-config.json" "$XDG_CONFIG_HOME/cursor/cli-config.json"
+            chmod 600 "$XDG_CONFIG_HOME/cursor/cli-config.json"
+            export CURSOR_CONFIG_DIR="$HOME/.cursor"
             # CURSOR_ATTEMPT_LOOP_BEGIN
             #
             # Abort early on unrecoverable auth/billing errors so a dead key
@@ -788,6 +798,14 @@ runs:
               done
               wait "$agent_pid"
               agent_status=$?
+              # Replay a failed attempt log after the child exits. tail
+              # --pid can miss a fully-buffered flush that lands as the
+              # process dies, which hid the status=1 cause on canary
+              # 31997748051. Successful long runs stay single-streamed.
+              if [ "$agent_status" -ne 0 ]; then
+                echo "Cursor attempt ${attempt_count} failed; replaying attempt log:" >&2
+                cat -- "$attempt_log" >&2 || true
+              fi
               # Tear the streamer down explicitly rather than trusting
               # `tail --pid` to notice; an unreaped tail keeps this step
               # stdout open and would hang the job it was meant to shorten.
