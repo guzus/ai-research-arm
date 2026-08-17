@@ -571,18 +571,30 @@ runs:
           && apt-get install -y --no-install-recommends \
                ca-certificates curl git jq poppler-utils \
           && rm -rf /var/lib/apt/lists/*
-        # Official Cursor Agent CLI. The binary name is `agent`.
-        # Install as root at image-build time, then copy to /usr/local/bin
-        # so the non-root container user can run it without $HOME/.cursor.
+        # Official Cursor Agent CLI. `~/.local/bin/agent` is a symlink into a
+        # versioned Node package (cursor-agent + index.js + bundled node).
+        # Copying only the wrapper to /usr/local/bin makes the script resolve
+        # siblings from /usr/local/bin and fail with MODULE_NOT_FOUND
+        # index.js (canary run 31992463836). Relocate the whole package so
+        # the non-root runtime user can exec it without $HOME/.cursor.
         RUN curl https://cursor.com/install -fsS | bash \
-          && if [ -x /root/.cursor/bin/agent ]; then \
-               install -m 755 /root/.cursor/bin/agent /usr/local/bin/agent; \
-             elif [ -x /root/.local/bin/agent ]; then \
-               install -m 755 /root/.local/bin/agent /usr/local/bin/agent; \
-             else \
+          && wrapper="" \
+          && for candidate in /root/.local/bin/agent /root/.cursor/bin/agent; do \
+               if [ -e "$candidate" ]; then wrapper="$candidate"; break; fi; \
+             done \
+          && if [ -z "$wrapper" ]; then \
                echo "Cursor CLI installer did not produce an agent binary" >&2; \
                exit 1; \
-             fi
+             fi \
+          && resolved="$(readlink -f "$wrapper")" \
+          && pkg="$(dirname "$resolved")" \
+          && test -x "$pkg/cursor-agent" && test -f "$pkg/index.js" && test -x "$pkg/node" \
+          && rm -rf /opt/cursor-agent \
+          && mkdir -p /opt/cursor-agent \
+          && cp -a "$pkg"/. /opt/cursor-agent/ \
+          && chmod -R a+rX /opt/cursor-agent \
+          && ln -sfn /opt/cursor-agent/cursor-agent /usr/local/bin/agent \
+          && ln -sfn /opt/cursor-agent/cursor-agent /usr/local/bin/cursor-agent
         # birdy: single static Go binary since v1.0.0, no Node runtime.
         RUN set -eux; \
           arch="$(dpkg --print-architecture)"; \

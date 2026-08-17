@@ -1093,6 +1093,13 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn("Cursor attempt telemetry is malformed", action)
         self.assertIn("curl https://cursor.com/install -fsS | bash", action)
         self.assertIn("agent --version", action)
+        # The published `agent` name is a symlink into a Node package.
+        # Copying only the wrapper regresses to MODULE_NOT_FOUND index.js.
+        self.assertIn("/opt/cursor-agent", action)
+        self.assertIn('test -f "$pkg/index.js"', action)
+        self.assertIn('ln -sfn /opt/cursor-agent/cursor-agent /usr/local/bin/agent', action)
+        self.assertNotIn(
+            "install -m 755 /root/.local/bin/agent /usr/local/bin/agent", action)
         for name, expected_mode in {
                 "generative-research.yml": "generative",
                 "hourly-twitter.yml": "twitter",
