@@ -271,6 +271,14 @@ class RoutingInvariants(unittest.TestCase):
             ["Shell(*)", "Write(*)", "WebFetch(*)", "Mcp(*)"],
             cursor_policy["permissions"]["deny"],
         )
+        self.assertIn(
+            "Read(.agent-input/translation-segments.json)",
+            cursor_policy["permissions"]["allow"],
+        )
+        self.assertIn(
+            "Write(.tmp/generative-translation.ko.segments.jsonl)",
+            cursor_policy["permissions"]["allow"],
+        )
 
         policy = json.loads(
             (REPO_ROOT / ".github/opencode/translation.json").read_text(

@@ -153,8 +153,11 @@ jobs:
             Read `.agent-input/translation-segments.json`. It is compact JSON
             Lines: the first line is a header; every later line is
             `[segment_id, source_text, internal_flag]`. Translate each
-            `source_text` into Korean and submit `{id, text}` batches with
-            `translation_segment` immediately after reading the rows. Do not
+            `source_text` into Korean. Submit `{id, text}` objects only.
+            If `translation_segment` exists, submit batches with that tool
+            immediately after reading the rows. Otherwise append one JSON
+            object per line to exactly
+            `.tmp/generative-translation.ko.segments.jsonl`. Do not
             draft a full document or final-answer translation. If the read is
             paginated, submit the current page before reading the next page.
             Preserve every opaque token such as
@@ -163,8 +166,8 @@ jobs:
             contain only the tokens literally present in its source text.
             Do not put translations in your final
             response. Tool permissions allow only this read and the
-            fixed-destination segment tool; shell, web, search, subagents,
-            edit/write, and all other tools are intentionally unavailable.
+            fixed-destination segment file or tool; shell, web, search,
+            subagents, and all other writes are intentionally unavailable.
 
             Trusted code owns the document structure and immutable literals:
             - Never translate, remove, reorder, duplicate, or alter opaque tokens.

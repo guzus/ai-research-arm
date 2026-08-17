@@ -87,7 +87,7 @@ Reading notes:
 | digest-synthesis-fallback | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
 | generative-research-claude (+1 retry step) | `generative-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | generative-research-default | `generative-research.yml` | dispatch default (runtime SSOT) | (per chosen backend) | default: `opencode-deepseek-v4-flash` | (per chosen backend) | workflow-level `fireworks_fallback` input (default `claude`) |
-| generative-research-ko (route:generative-translation) | `translate-generative-research.yml` | agent-dispatch → opencode CLI (runtime SSOT) | DeepSeek V4 Flash via OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (route fallback=none) |
+| generative-research-ko (route:generative-translation) | `translate-generative-research.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `grok-4.6-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | model-timeline | `24h-model-timeline.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | research-issue (×2 step variants) | `research-issue.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | rss (route:research-editorial) | `hourly-rss.yml` | agent-dispatch → opencode CLI (runtime SSOT) | DeepSeek V4 Flash via OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (route fallback=none) |

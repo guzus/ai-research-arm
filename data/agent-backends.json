@@ -124,9 +124,9 @@
     },
     "generative-translation": {
       "contract": "research-editorial",
-      "backend": "opencode-deepseek-v4-flash",
+      "backend": "cursor-grok-4p6-fast",
       "fallback": "none",
-      "notes": "Dedicated isolated route for Korean generative-research translation. It is separate from scheduled editorial traffic so translation quality/cost can be rerouted independently; publication stays host-owned and the route fails closed."
+      "notes": "Dedicated isolated route for Korean generative-research translation. It is separate from scheduled editorial traffic so translation quality/cost can be rerouted independently; publication stays host-owned and the route fails closed. Cursor Grok 4.6 Fast writes the fixed segment JSONL; OpenCode remains a compatible adapter if this route is pointed back."
     }
   },
   "fallback": {
