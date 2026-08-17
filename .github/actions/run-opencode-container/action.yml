@@ -725,8 +725,8 @@ runs:
             # OPENCODE_ATTEMPT_LOOP_BEGIN
             #
             # Provider errors that can NEVER recover inside a single run.
-            # Anchored on `level=ERROR` so this only ever matches opencode's
-            # own structured log line, never article prose that happens to
+            # Anchored on `level=ERROR` so this only ever matches opencode
+            # structured log lines, never article prose that happens to
             # quote one of these phrases.
             #
             # Why this exists: on 2026-08-13 the OpenCode workspace hit its
@@ -737,9 +737,15 @@ runs:
             # 25-80 min, so a billing limit was indistinguishable from a long
             # healthy run. Five editorial lanes stayed dark for four days and
             # the cause was only found by reproducing the CLI by hand. Each
-            # hang also pinned this repo's single self-hosted runner for the
+            # hang also pinned this repo single self-hosted runner for the
             # full timeout, head-of-line blocking unrelated lanes.
-            opencode_fatal_pattern='level=ERROR.*(Monthly usage limit reached|usage limit reached|Insufficient balance|Insufficient credits|Invalid API key|API key is invalid)'
+            # Double quotes required: this body runs inside an outer
+            # single-quoted bash -lc script, so a single-quoted pattern ends
+            # that outer string early and leaves regex metacharacters as a
+            # host-shell syntax error (RSS run 31991149151; same class as
+            # Cursor canary 31993098610). Inside the outer singles these
+            # doubles stay literal and re-quote correctly for the container.
+            opencode_fatal_pattern="level=ERROR.*(Monthly usage limit reached|usage limit reached|Insufficient balance|Insufficient credits|Invalid API key|API key is invalid)"
             model_budget_seconds=$((AGENT_TIMEOUT_MINUTES * 60))
             model_started_seconds=$SECONDS
             attempt_count=0
@@ -758,7 +764,7 @@ runs:
               attempt_log="/tmp/opencode-attempt-${attempt_count}.log"
               rm -f -- "$attempt_log"
               set +e
-              # --print-logs puts opencode's provider errors on stderr so a
+              # --print-logs puts opencode provider errors on stderr so a
               # dead route is visible in the job log instead of silent. The
               # run is backgrounded (rather than piped through tee) purely so
               # we hold its PID and can abort early; `tail --pid` reproduces
@@ -795,7 +801,7 @@ runs:
               wait "$opencode_pid"
               agent_status=$?
               # Tear the streamer down explicitly rather than trusting
-              # `tail --pid` to notice; an unreaped tail keeps this step's
+              # `tail --pid` to notice; an unreaped tail keeps this step
               # stdout open and would hang the job it was meant to shorten.
               kill -TERM "$tail_pid" 2>/dev/null
               wait "$tail_pid" 2>/dev/null

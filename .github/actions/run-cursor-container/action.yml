@@ -720,7 +720,13 @@ runs:
             #
             # Abort early on unrecoverable auth/billing errors so a dead key
             # cannot pin the single self-hosted runner for the full timeout.
-            cursor_fatal_pattern='(Invalid API key|API key is invalid|Unauthorized|authentication failed|usage limit|Insufficient (balance|credits)|402 Payment)'
+            # Double quotes required: this body runs inside an outer
+            # single-quoted bash -lc script, so a single-quoted pattern ends
+            # that outer string early and the regex open-paren becomes a
+            # host-shell syntax error (Cursor CLI Canary run 31993098610).
+            # Inside the outer singles these doubles stay literal and
+            # re-quote correctly for the container.
+            cursor_fatal_pattern="(Invalid API key|API key is invalid|Unauthorized|authentication failed|usage limit|Insufficient (balance|credits)|402 Payment)"
             model_budget_seconds=$((AGENT_TIMEOUT_MINUTES * 60))
             model_started_seconds=$SECONDS
             attempt_count=0
@@ -783,7 +789,7 @@ runs:
               wait "$agent_pid"
               agent_status=$?
               # Tear the streamer down explicitly rather than trusting
-              # `tail --pid` to notice; an unreaped tail keeps this step's
+              # `tail --pid` to notice; an unreaped tail keeps this step
               # stdout open and would hang the job it was meant to shorten.
               kill -TERM "$tail_pid" 2>/dev/null
               wait "$tail_pid" 2>/dev/null
