@@ -1478,7 +1478,23 @@
     "created_at": "2026-08-12T09:34:31Z",
     "source": "workflow_dispatch",
     "prompt": "GlaSSEM slips to 2028: Samsung Electro-Mechanics' glass-core substrate delay and the AI packaging roadmap it postpones",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-17T120519--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "GlaSSEM과 2028 일정: 삼성전기가 실제로 말한 내용, 그리고 유리기판 연기가 거의 아무것도 미루지 않는 이유",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-17T12:05:19Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s",
+        "tags": [],
+        "translated_at": "2026-08-17T12:05:19Z",
+        "source_file": "research/generative/2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s.ara.md",
+        "source_sha256": "9d4e91a4f4485de71850f71110a873228d4e16f62b2c1e8e44567d6a67b7b329"
+      }
+    }
   },
   {
     "slug": "grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
