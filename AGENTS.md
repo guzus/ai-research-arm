@@ -17,7 +17,7 @@ short pointer plus the few genuinely agent-specific notes.
   `research-editorial` route, so its backend profile can select a registered
   isolated editorial adapter without workflow edits. Two registered
   compatible adapters exist: strict OpenCode Go (the current production
-  default) and Cursor CLI (`cursor-composer-2p5`, Composer 2.5). Host-checkout
+  default) and Cursor CLI (`cursor-grok-4p6-fast`, Grok 4.6 Fast). Host-checkout
   `agent-run` is deliberately capability-incompatible and rejected. While the
   OpenCode profile is selected, one key/cap failure can stale all five together. Direct
   Claude workflows may still use
@@ -102,11 +102,11 @@ short pointer plus the few genuinely agent-specific notes.
   `opencode-deepseek-canary.yml` before dispatching
   `generative-research.yml backend=opencode-deepseek-v4-flash`.
 
-- **Cursor CLI + Composer 2.5** is a second isolated editorial adapter
+- **Cursor CLI + Grok 4.6 Fast** is a second isolated editorial adapter
   (`run-cursor-container`, official `agent` binary, `CURSOR_API_KEY`).
   It is selectable via SSOT / `generative-research.yml
-  backend=cursor-composer-2p5` / `hourly-twitter.yml
-  backend=cursor-composer-2p5` and is **not** the production default.
+  backend=cursor-grok-4p6-fast` / `hourly-twitter.yml
+  backend=cursor-grok-4p6-fast` and is **not** the production default.
   Store the key with `gh secret set CURSOR_API_KEY`, then validate
   cheaply with `cursor-cli-canary.yml`. Korean translation stays on
   OpenCode (no Cursor `translation_segment` tool).

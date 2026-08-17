@@ -1,14 +1,14 @@
 name: Cursor CLI Canary
 
-# Diagnostics lane for the Cursor CLI backend (composer-2.5 via `agent`).
+# Diagnostics lane for the Cursor CLI backend (grok-4.6-fast via `agent`).
 #
 #   CURSOR_API_KEY — Cursor dashboard API key
-#   provider `cursor`, model `cursor/composer-2.5`
+#   provider `cursor`, model `cursor/grok-4.6-fast`
 #
 # STRICT like opencode-deepseek-canary.yml: this lane exists to test the
 # Cursor path — an outage must fail this run, never re-route. Production
 # editorial defaults stay on OpenCode until a route explicitly selects
-# cursor-composer-2p5.
+# cursor-grok-4p6-fast.
 #
 # One harness probe: the containerised Cursor CLI runs one headless
 # `agent -p --mode ask` turn with the production model id and a
@@ -91,7 +91,7 @@ jobs:
         with:
           mode: canary
           prompt-text: 'Reply with exactly this token and nothing else: CURSOR-CLI-CANARY-OK'
-          model: cursor/composer-2.5
+          model: cursor/grok-4.6-fast
           cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
           cursor-config: .github/cursor/cli-config-canary.json
           timeout-minutes: '10'

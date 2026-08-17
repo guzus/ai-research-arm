@@ -177,7 +177,7 @@ flowchart LR
     native -->|"claude-sonnet-5"| ANT
     gendef -.->|"backend=codex"| OAI
     gendef -.->|"backend=opencode-deepseek-v4-flash"| OC
-    gendef -.->|"backend=cursor-composer-2p5"| CUR
+    gendef -.->|"backend=cursor-grok-4p6-fast"| CUR
     ANT -. "provider outage → fallback #1" .-> ZAI
 ```
 _Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `claude` → `zai-glm-5p2`; regenerate with `uv run python scripts/build_backend_matrix.py`._
@@ -392,7 +392,7 @@ annotated list. None are needed for the
 | `ZAI_API_KEY` | Z.ai GLM 5.2 lanes, reserved dispatcher plumbing | Z.ai Coding Plan; prewired for a future isolated adapter |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
 | `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. The five editorial lanes use it while their shared route selects the current strict OpenCode profile; then they share its plan caps. |
-| `CURSOR_API_KEY` | Cursor CLI profiles, direct comparison/canary paths, dispatcher route plumbing | Cursor dashboard API key. Prewired so an SSOT-only switch to `cursor-composer-2p5` needs no workflow edit. Production defaults stay on OpenCode. |
+| `CURSOR_API_KEY` | Cursor CLI profiles, direct comparison/canary paths, dispatcher route plumbing | Cursor dashboard API key. Prewired so an SSOT-only switch to `cursor-grok-4p6-fast` needs no workflow edit. Production defaults stay on OpenCode. |
 | `BIRD_AUTH_TOKEN` / `BIRD_CT0` | Twitter/X lanes | X cookies (read-only use; expire often) |
 | `BIRDY_ACCOUNTS` | optional | multi-account rotation JSON; every account forced read-only |
 | `GEMINI_API_KEY` | digest/article audio | price-performant TTS |
