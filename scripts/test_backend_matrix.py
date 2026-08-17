@@ -1211,6 +1211,44 @@ class RoutingInvariants(unittest.TestCase):
                 self.assertNotIn(other, line.lower(),
                                  f"{field} names {other} but the tier serves {family}")
 
+    def test_cursor_twitter_repairs_contract_once(self):
+        workflow_path = (REPO_ROOT / ".github" / "workflows" /
+                         "hourly-twitter.yml")
+        workflow = workflow_path.read_text(encoding="utf-8")
+        doc = yaml.safe_load(workflow)
+        steps = doc["jobs"]["twitter"]["steps"]
+        names = [step.get("name") for step in steps]
+        process = next(i for i, name in enumerate(names)
+                       if name == "Process tweets with Cursor CLI + Composer 2.5 "
+                       "(cursor-composer-2p5 tier)")
+        repair = next(i for i, name in enumerate(names)
+                      if name == "Repair Cursor Twitter contract once")
+        rerun = next(i for i, name in enumerate(names)
+                     if name == "Re-run Cursor CLI to repair Twitter contract")
+        validate = next(i for i, name in enumerate(names)
+                        if name == "Validate Twitter signal-only public output")
+        self.assertLess(process, repair)
+        self.assertLess(repair, rerun)
+        self.assertLess(rerun, validate)
+        self.assertIn("validate_twitter_public_output.py", steps[repair]["run"])
+        self.assertNotIn("deterministic_twitter_digest.py", steps[repair]["run"])
+        self.assertEqual(
+            steps[rerun].get("uses"),
+            "./.github/actions/run-cursor-container",
+        )
+        self.assertEqual((steps[rerun].get("with") or {}).get("mode"), "twitter")
+        self.assertIn("validate_twitter_public_output.py",
+                      (REPO_ROOT / ".github" / "actions" /
+                       "render-twitter-prompt" / "action.yml")
+                      .read_text(encoding="utf-8"))
+        self.assertIn("**Cycle summary**:",
+                      (REPO_ROOT / "prompts" / "twitter-analyst.md")
+                      .read_text(encoding="utf-8"))
+        self.assertNotIn("deterministic_twitter_digest.py",
+                         workflow[workflow.index("Repair Cursor Twitter"):
+                                  workflow.index(
+                                      "Validate Twitter signal-only public output")])
+
     def test_all_dispatch_callers_prewire_cursor_credential(self):
         for obs in self.obs.values():
             for step in obs.dispatch_steps:
