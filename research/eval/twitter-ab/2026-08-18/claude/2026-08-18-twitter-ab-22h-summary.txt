@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-18 22:24:45 UTC
+
+CYCLE: Altman narrows OpenAI's RL pause; Anthropic flags tight capacity; Pennsylvania slows AI data centers.
+
+TOP STORIES:
+• OpenAI's RL pause is narrower than the headline - the 2-week stop is past tense, only the largest run is still held; Altman cites "misalignment" but says near-term models ship [✓]
+• Anthropic extends the 50% Claude Code weekly-limit increase to Aug 31, warns capacity may be tight [✓]
+• Gov. Shapiro pulls AI data centers out of PA Fast Track permitting, bars agency NDAs [⚠]
+
+WATCH: Whether OpenAI restarts its largest planned frontier RL run - the one item still in present tense.
+
+Full update on GitHub.
