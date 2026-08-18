@@ -181,7 +181,7 @@ class TranslationSegmentsTest(unittest.TestCase):
             self.assertEqual(manifest["segment_count"], len(extracted))
             self.assertEqual(parity.check_pair(source, draft), [])
 
-    def test_renderer_skips_blank_jsonl_lines(self):
+    def test_renderer_skips_blank_and_non_object_jsonl_lines(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             source = root / "alpha.ara.md"
@@ -198,7 +198,10 @@ class TranslationSegmentsTest(unittest.TestCase):
                 )
                 for segment in extracted
             ]
-            result.write_text("\n\n".join(rows) + "\n\n", encoding="utf-8")
+            result.write_text(
+                "\n---\n".join(rows) + "\n\n// trailing note\n",
+                encoding="utf-8",
+            )
             old_cwd = Path.cwd()
             try:
                 os.chdir(root)
