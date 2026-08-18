@@ -24013,5 +24013,40 @@
     "headline": "SAKANA NAMAZU, BUILT ON KIMI K2.6, GOES LIVE ON OPENROUTER",
     "source": "@hardmaru",
     "url": "https://x.com/hardmaru/status/2089523613510914118"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-18 04:01:45 UTC",
+    "headline": "ANTHROPIC Q2 ADJUSTED OPERATING PROFIT TURNED POSITIVE ON $11.5B REVENUE VS $787M A YEAR EARLIER \u2014 REPORT",
+    "source": "@AlphaWireNewsAi",
+    "url": "https://x.com/AlphaWireNewsAi/status/2089559030163448236"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-18 04:01:45 UTC",
+    "headline": "ANTHROPIC ANNUALIZED RUN RATE $65B AT END-JULY, UP FROM $47B IN MAY, AHEAD OF SEPTEMBER-OCTOBER IPO WINDOW",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2089480422547698061"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-18 04:01:45 UTC",
+    "headline": "OPENROUTER TOKEN THROUGHPUT UP 20X IN A YEAR \u2014 3.73 TRILLION TO OVER 75 TRILLION",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2089546721231614034"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-18 04:01:45 UTC",
+    "headline": "CLAUDE CODE SHIPS /DESIGN IN RESEARCH PREVIEW \u2014 ARTBOARDS IN CLI AND DESKTOP ON PRO, MAX, TEAM, ENTERPRISE",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2089471692762673408"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-18 04:01:45 UTC",
+    "headline": "QWEN3.8-27B UNSLOTH GGUF PASSES 2.7M DOWNLOADS, #2 TRENDING ON HUGGING FACE",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2089541444466090064"
   }
 ]
