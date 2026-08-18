@@ -1,0 +1,384 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "OpenRouter's default provider load-balancer weights selection by the inverse square of price (r=2), documented in OpenRouter's own routing docs.",
+      "type": "technical",
+      "source_urls": ["https://openrouter.ai/docs/guides/routing/provider-selection", "https://openrouter.ai/blog/insights/model-routing/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "An X.com long-form article by Tarun Chitra fits an empirical decisiveness parameter r ≈ 1.968 (95% CI 1.82-2.11) from 1,648 observed provider-selection events across 6 models and 35 providers.",
+      "type": "metric",
+      "source_urls": ["https://x.com/tarunchitra/status/2089395679227441409"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-08-17",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c3",
+      "claim": "Bloomberg reported Stripe finalized an agreement to acquire OpenRouter for more than $7 billion, three months after OpenRouter's $1.3B Series B.",
+      "type": "event",
+      "source_urls": ["https://www.bloomberg.com/news/articles/2026-08-16/stripe-nears-deal-to-buy-ai-firm-openrouter-for-over-7-billion", "https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-16",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c4",
+      "claim": "WSJ reported Stripe-OpenRouter acquisition talks around 2026-07-24 at approximately $10 billion, roughly 30% higher than the final ~$7B figure reported three weeks later.",
+      "type": "event",
+      "source_urls": ["https://finance.yahoo.com/technology/ai/articles/stripe-talks-acquire-openrouter-potential-215104525.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c5",
+      "claim": "OpenRouter's $113M Series B (2026-05-28), led by CapitalG with NVentures participating, valued the company at approximately $1.3B post-money.",
+      "type": "event",
+      "source_urls": ["https://openrouter.ai/blog/announcements/series-b/", "https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-05-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "The Information's single-sourced 2026-07-29 exclusive reported OpenRouter's annualized revenue at approximately $140M, implying a ~70x multiple on the then-discussed $10B price; no independent second outlet has corroborated the $140M figure with its own reporting.",
+      "type": "metric",
+      "source_urls": ["https://www.pymnts.com/news/artificial-intelligence/2026/stripe-openrouter-bid-70-times-annual-revenue/", "https://sacra.com/c/openrouter/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-29",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c7",
+      "claim": "Anthropic prices Claude prompt-cache reads at 0.1x base input token price, and cache writes at 1.25x (5-min TTL) or 2x (1-hour TTL).",
+      "type": "technical",
+      "source_urls": ["https://platform.claude.com/docs/en/build-with-claude/prompt-caching"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "DeepSeek's context caching discounts cache-hit tokens roughly 10x versus cache-miss tokens, requiring an exact prefix match from token 0.",
+      "type": "technical",
+      "source_urls": ["https://api-docs.deepseek.com/news/news0802/"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-08-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "OpenRouter's own documentation concedes that across its 70+ backend providers, a cache lives only where it was written, so a follow-up turn landing on a different provider instance pays full price with no fraud required — a routing-architecture limit, not necessarily deliberate misreporting.",
+      "type": "technical",
+      "source_urls": ["https://openrouter.ai/blog/tutorials/prompt-caching-sticky-routing/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "An academic audit of prompt caching in LLM APIs found that outside auditors have no visibility into provider-internal caching and must infer cache behavior via timing side-channels, detecting caching in 8 of 17 tested providers this way.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2502.07776v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-02-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "Tullock's 1980 contest-success function models win probability as effort^r divided by the sum of all efforts^r; Baye, Kovenock and de Vries (1994) show a symmetric mixed-strategy Nash equilibrium with full rent dissipation exists specifically for r>2, making r=2 the model's structural knife-edge.",
+      "type": "definition",
+      "source_urls": ["https://digitalcommons.chapman.edu/cgi/viewcontent.cgi?article=1123&context=esi_working_papers", "https://link.springer.com/chapter/10.1007/978-1-4757-5055-3_27"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "1994-01-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Academic literature applying Tullock-contest theory to real infrastructure (blockchain block-building, procurement auctions) proves standard Tullock contests are Sybil-proof — splitting one bid into sub-identities yields no higher payoff than one consolidated bid — the opposite of a claimed multi-entry vulnerability.",
+      "type": "technical",
+      "source_urls": ["https://timroughgarden.org/papers/tullock.pdf", "https://arxiv.org/pdf/2603.27779"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-03-01",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c13",
+      "claim": "StreamLake is a cloud/AI brand created and operated by Kuaishou Technology, not an independently owned company, per corroborating 2022 reporting from Caixin and China Daily on its launch.",
+      "type": "market-structure",
+      "source_urls": ["https://www.caixinglobal.com/2022-08-11/kuaishou-dives-into-cloud-services-and-chipmaking-101924698.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2022-08-11",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "Wafer (wafer.ai), which the original article groups with Cerebras as a hardware 'Specialist' charging a premium, describes itself as a software inference-optimization layer running on commodity NVIDIA/AMD/cloud GPUs and raised only an $800K seed round — inconsistent with owning proprietary chip hardware.",
+      "type": "market-structure",
+      "source_urls": ["https://www.wafer.ai/", "https://www.wafer.ai/blog/seed-round"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-19",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c15",
+      "claim": "Cerebras genuinely serves gpt-oss-120B at roughly 3,000 tokens/second versus roughly 56 tokens/second for the same-class model on Anthropic's own serving, a real ~55x hardware-driven speed differential.",
+      "type": "metric",
+      "source_urls": ["https://siliconangle.com/2025/08/05/cerebras-delivers-blazing-speed-openais-new-open-model-3000-tokens-s/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-08-05",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "Novita AI's specific figures cited in the critique (repriced roughly 500 times in July; quoting 5-10% of model-builder list price) could not be independently corroborated by any source outside the original article itself; third-party trackers give inconsistent, low-quality data on Novita's basic corporate facts.",
+      "type": "metric",
+      "source_urls": ["https://tracxn.com/d/companies/novita/__2cSG608pfPQbitFHSPaP7S2UJnBf5z_uMjyq5L_yGqk"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-08-19",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "OpenRouter's own rankings page explicitly disclaims that its data represents 'the whole market' and shows only rank/raw token counts for its top app, Hermes Agent, never a percentage of platform-wide traffic.",
+      "type": "technical",
+      "source_urls": ["https://openrouter.ai/rankings", "https://openrouter.ai/apps/hermes-agent"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Robot Ventures (co-founded by Tarun Chitra) is confirmed by TechCrunch as both a prior investor in, and the lead of a new $75M round valuing at $1.5B, Nous Research — maker of Hermes Agent, which Chitra's critique names favorably as OpenRouter's largest app.",
+      "type": "market-structure",
+      "source_urls": ["https://techcrunch.com/2026/07/13/hermes-agent-maker-nous-research-in-talks-for-new-funding-at-1-5b-valuation/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "Paradigm's 2020 'Ethereum is a Dark Forest' essay's core mechanism is the generalized frontrunner: a bot that scans a shared, transparent, pre-settlement mempool for profitable pending transactions and copies them — a structural precondition (public pending state) that has no analogue in OpenRouter's private request/response billing.",
+      "type": "definition",
+      "source_urls": ["https://www.paradigm.xyz/2020/08/ethereum-is-a-dark-forest"],
+      "source_tiers": ["primary"],
+      "as_of": "2020-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "Flashbots' own documentation describes MEV-Boost/Proposer-Builder Separation as redistributing who captures MEV via a competitive builder auction, not eliminating extraction — a redistribution fix, not an extraction-elimination fix, weakening its use as precedent for 'fixing' a billing-verification gap.",
+      "type": "technical",
+      "source_urls": ["https://docs.flashbots.net/flashbots-mev-boost/introduction"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "Edelman, Ostrovsky and Schwarz's foundational 2007 ad-auction paper establishes generalized-second-price equilibrium properties, not a finding about advertiser or platform gaming/misrepresentation as cited.",
+      "type": "definition",
+      "source_urls": ["https://www.nber.org/papers/w11765"],
+      "source_tiers": ["academic"],
+      "as_of": "2007-03-01",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c22",
+      "claim": "U.S. v. Google LLC (2023/2025) centered on monopolization and illegal tying of the publisher ad-server and ad-exchange markets; ad-quality misrepresentation was not a pleaded theory in the case.",
+      "type": "regulatory",
+      "source_urls": ["https://en.wikipedia.org/wiki/United_States_v._Google_LLC_(2023)", "https://justice.gov/atr/media/1412561/dl?inline="],
+      "source_tiers": ["secondary", "legal"],
+      "as_of": "2025-04-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "'Spoofing' under the Commodity Exchange Act (7 U.S.C. § 6c(a)(5)(C)) is a narrow, scienter-requiring doctrine governing regulated futures/derivatives order books, with no jurisdictional hook over a private SaaS marketplace's billing terms.",
+      "type": "regulatory",
+      "source_urls": ["https://www.law.cornell.edu/uscode/text/7/6c"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-08-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "Gabaix and Laibson's 2006 'shrouded attributes' model shows firms can profitably hide costly attributes from consumers even in fully competitive markets — a closer theoretical fit than antitrust or spoofing law for a headline price that obscures true billed cost.",
+      "type": "definition",
+      "source_urls": ["https://academic.oup.com/qje/article-abstract/121/2/505/1884013"],
+      "source_tiers": ["academic"],
+      "as_of": "2006-01-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "NVIDIA's H100/H200/Blackwell confidential-computing attestation verifies GPU hardware identity, firmware, and model/runtime integrity — it makes no assertion about workload-level metrics such as KV-cache hit counts or tokens billed.",
+      "type": "technical",
+      "source_urls": ["https://docs.nvidia.com/attestation/attestation-client-tools-sdk/latest/gpu_and_switch_attestation.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "A 2026 confidential-GPU-inference benchmark under Intel TDX found substantially higher real-world overhead than earlier 2024 studies — up to 21.8-27.8% time-to-first-token increase and 17.7-21.1% throughput loss under load — versus below-7% overhead reported in a 2024 study, showing overhead is highly configuration-dependent.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2607.19353", "https://arxiv.org/abs/2409.03992"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-05-20",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c27",
+      "claim": "Zero-knowledge 'verifiable inference' (zkLLM), a lighter-weight cryptographic alternative to full TEE attestation, remains computationally impractical at LLM scale, requiring roughly 800-1,000 seconds to generate and validate a single proof for a 13B-parameter model.",
+      "type": "technical",
+      "source_urls": ["https://www.researchgate.net/publication/386599067_zkLLM_Zero_Knowledge_Proofs_for_Large_Language_Models"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-08-19",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "No production confidential-computing deployment attests to cache-hit counts specifically; the one real production GPU-TEE deployment on OpenRouter's marketplace (Phala, serving DeepSeek R1 since February 2025) attests to hardware and model integrity only, not billing reconciliation.",
+      "type": "technical",
+      "source_urls": ["https://phala.com/posts/GPU-TEEs-is-Alive-on-OpenRouter"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-02-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "In March 2025, Gauntlet proposed a Compound-Morpho vault arrangement and was itself the largest voter approving its own proposal; The Block's reporting explicitly ties the episode to Robot Ventures (Chitra's fund, co-founded with Compound founder Robert Leshner) holding a stake in Morpho, the party favored by the proposal.",
+      "type": "event",
+      "source_urls": ["https://www.theblock.co/post/346161/compound-launches-new-vaults-rival-morpho-controversial-gauntlet-proposal"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-03-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "In September 2025, Compound DAO governance faced public backlash over renewing Gauntlet's $2.3M risk-management contract, with critics — including Aave delegate Marc Zeller — explicitly citing conflicts of interest.",
+      "type": "event",
+      "source_urls": ["https://protos.com/gauntlets-2-3m-contract-renewal-with-compound-faces-backlash/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-09-05",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "Gauntlet terminated its four-year, $1.6M Aave risk-steward relationship in February 2024 amid community criticism, then joined rival protocol Morpho as a risk curator days later.",
+      "type": "event",
+      "source_urls": ["https://www.coindesk.com/tech/2024/02/22/risk-manager-gauntlet-terminates-relationship-with-aave-citing-dao-dysfunction"],
+      "source_tiers": ["secondary"],
+      "as_of": "2024-02-22",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "Unlike a16z, which publishes a standing disclosure that it 'is acting in its own financial interest, not necessarily in the interests of other token holders,' Gauntlet has no discoverable public conflict-of-interest disclosure policy.",
+      "type": "comparison",
+      "source_urls": ["https://a16z.com/disclosures/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-19",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c33",
+      "claim": "Tarun Chitra is founder and CEO of Gauntlet (founded 2018, closed a $125M Series C from SBI Holdings in June 2026) and co-founder/partner of Robot Ventures alongside Compound founder Robert Leshner.",
+      "type": "market-structure",
+      "source_urls": ["https://fortune.com/2026/07/09/gauntlet-defi-vault-risk-curation-tarun-chitra-sbi-holdings-fundraise/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c34",
+      "claim": "Stripe's relationship with OpenRouter began as a payments vendor (invoicing, tax, fraud detection via Radar) in January 2026, seven months before acquisition talks were reported.",
+      "type": "event",
+      "source_urls": ["https://stripe.com/newsroom/news/openrouter-and-stripe"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c35",
+      "claim": "OpenRouter's own Series B announcement reports weekly token volume grew from 5 trillion to 25 trillion tokens over six months, on pace to process over a quadrillion tokens in 2026, serving 8M+ developers across 400+ models.",
+      "type": "metric",
+      "source_urls": ["https://openrouter.ai/blog/announcements/series-b/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c36",
+      "claim": "Sacra's research identifies OpenRouter's routing-margin durability risks as provider concentration, low barriers to entry enabling commoditization, self-hosted alternatives like LiteLLM, and hyperscaler bundling (AWS Bedrock, Google Vertex, Azure OpenAI).",
+      "type": "market-structure",
+      "source_urls": ["https://sacra.com/c/openrouter/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-17",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c37",
+      "claim": "A July 2026 independent researcher post argues OpenRouter cannot guarantee that a request billed against a named model is actually served at the claimed quantization/quality, calling its automated 'Auto Exacto' quality check insufficient for reliable verification — a distinct but adjacent serving-fidelity gap from the cache-billing allegation.",
+      "type": "technical",
+      "source_urls": ["https://www.lesswrong.com/posts/KsyoSAyBRXtwzSugg/not-pinning-your-openrouter-provider-might-invalidate-your"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-07-23",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c38",
+      "claim": "No public response addressing cache-manipulation allegations was found from OpenRouter, Novita, or StreamLake, and no Hacker News or press pickup of the specific 'Caching Cheaters on OpenRouter' claims was found as of 2026-08-19, two days after publication.",
+      "type": "event",
+      "source_urls": ["https://openrouter.ai/blog/announcements/"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-08-19",
+      "confidence": "low",
+      "risk": "single-source"
+    }
+  ]
+}
