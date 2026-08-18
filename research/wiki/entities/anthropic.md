@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; watermarks all Claude text output globally (2026-08-12) amid first user backlash (2026-08-13), with the Theseus Infrastructure datacenter platform with Macquarie and GIC.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), and watermarks all Claude text output globally (2026-08-12) amid first user backlash, with the Theseus Infrastructure datacenter platform with Macquarie and GIC.
 created_at: 2026-05-24
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-08-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
@@ -1002,6 +1003,23 @@ Three developments landed together on 2026-08-10:
   the facilities** — a direct answer to the rate-payer-protection politics that
   has dogged data-center siting all cycle (see [[ai-capex]]) (Bloomberg,
   Macquarie, Data Center Dynamics; ARA daily digest 2026-08-12).
+
+## $65B run rate disclosed ahead of the IPO window (2026-08-18)
+
+- **Anthropic reports a $65B annualized run rate with positive adjusted
+  operating income (2026-08-18).** The company told investors over the weekend
+  that **annualized revenue reached $65B at end-July**, on **preliminary Q2
+  revenue of $11.5B** — up **14x year over year** from $787M a year earlier —
+  with **positive adjusted operating income**. All figures are
+  **company-supplied and unaudited** ahead of a reported **September or early
+  October IPO window** (see 2026-08-12 IPO entry above). Worth holding the
+  arithmetic: $11.5B of Q2 revenue annualizes to only ~$46B, so the $65B
+  headline asserts roughly **41% growth in the two months after the quarter
+  closed** — company-supplied and unaudited, consistent with the investor-facing
+  pre-IPO cadence this page has tracked (2026-08-05 run-rate to $47B, 2026-08-06
+  ~$50B). Nothing in the disclosure **breaks revenue out by product**, leaving
+  the **Claude Code concentration question open** (Bloomberg; ARA daily digest
+  2026-08-18).
 
 ## Open questions
 - **Does the eval-breach disclosure produce consequences?** Two of three

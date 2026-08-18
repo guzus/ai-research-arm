@@ -2,12 +2,13 @@
 slug: cursor
 title: Cursor (Anysphere)
 type: entity
-aliases: [Cursor, Anysphere, "@cursor_ai", "Cursor AI", "SpaceXAI"]
+aliases: [Cursor, Anysphere, "@cursor_ai", "Cursor AI", "SpaceXAI", "Cursor Origin", "Origin"]
 tags: [ai-coding, ide, acquisition, agentic-coding, capital-markets]
-description: AI coding tool / IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close); the two had been jointly training a from-scratch "SpaceXAI" model.
+description: AI coding tool / IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close); launched Cursor Origin, a Git-repo host built around agent actions rather than human pull requests (2026-08-18).
 created_at: 2026-06-17
-timestamp: 2026-07-27T00:00:00Z
+timestamp: 2026-08-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
 ---
@@ -50,6 +51,17 @@ the cycle's largest AI-coding M&A: a **$60B all-stock acquisition by
   planner/worker-split approach to long-horizon coding tasks, distinct
   from the [[xai|SpaceXAI]] captive-model thread tracked above (ARA digest
   2026-07-27).
+- **Cursor launches Origin — a Git host built around agent actions
+  (2026-08-18).** Cursor shipped **Origin**, a **code-hosting product built
+  around agent actions rather than human pull requests** — a direct challenge to
+  GitHub in the repo-hosting layer. Vercel's CEO says **deploys already run
+  off it** and Origin itself is hosted on Vercel. **Pricing, CI, packages and
+  identity are all still unpublished** — which is what actually holds repositories
+  in place, so the missing defaults (not just the headline design) are the
+  adoption question. It reads as Cursor extending its agentic-IDE facture into
+  the collaboration/codebase surface its planner/worker agent swarm and the
+  [[xai|SpaceXAI]] captive model thread point toward (ARA daily digest
+  2026-08-18).
 
 ## Open questions
 

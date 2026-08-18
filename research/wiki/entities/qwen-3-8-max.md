@@ -6,8 +6,9 @@ aliases: ["Qwen3.8-Max", "Qwen3.8", "Qwen 3.8 Max", "Qwen3.8 Max", "Qwen3.8-2.4T
 tags: [open-weights, model, moe, chinese-llm, long-context, alibaba]
 description: Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open.
 created_at: 2026-08-04
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-08-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
   - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
@@ -75,6 +76,25 @@ self-reported #2 overall rank behind [[claude-fable-5|Claude Fable 5]].
   **Friday 14 August**. HN threads on the release converged on **MoE
   active-parameter economics** — how ~95B-active models price against frontier
   rivals (ARA digest 2026-08-13).
+
+- **The 27B sibling gets a canonical serving path and a strong open-model
+  WeirdML score (2026-08-18).** `Qwen3.8-27B` now has a reproducible serve
+  path: llama.cpp's Georgi Gerganov showed `llama serve -hf
+  ggml-org/Qwen3.8-27B-GGUF --spec-type draft-mtp`, pairing an official
+  ggml-org conversion with **speculative decoding through the model's own
+  multi-token-prediction head**, so **no separate draft model is needed** —
+  the first shared artifact a week of contradictory hands-on results can be
+  pinned to (though it does not pin quantization, reasoning budget, or token
+  accounting). On **WeirdML**, the **2.4T A95B scored 75.2% at extra-high
+  reasoning — second-best open model behind Kimi-K3** — with the caveat that
+  it uses a lot of reasoning tokens and writes very long code. Separately, a
+  claim that **Qwen3.8-27B reached DeepSeek V4-Pro level on the Artificial
+  Analysis index remains unsettled** (HN discussed a score of 52; the only
+  Twitter mention was a bare integer with no screenshot, index version or
+  quantization). Read against the 27B open-question below — the size most
+  people can actually run now has a single canonical command and a credible
+  open-model score, while the "matches V4-Pro" claim stays unverified (ARA
+  daily digest 2026-08-18).
 
 ## Open questions
 

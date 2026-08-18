@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); backing Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.
+description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.
 created_at: 2026-06-05
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-08-18T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
@@ -184,6 +185,23 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   the model labs that are its largest customers** — the Nemotron line's
   cannibalization question (below) posed at its sharpest. Treat as reported; no
   artifact exists yet (ARA daily digest 2026-08-12/13).
+- **NVIDIA guarantees $105B of OpenAI's Ohio lease — the backstop gets a number
+  and a campus (2026-08-18).** The OpenAI Ohio lease backstop tracked since
+  the 2026-07-28 ~$250B talk hardened into a specific, capped commitment:
+  NVIDIA agreed to **backstop up to $105 billion of OpenAI's 20-year lease**
+  at the **PORTS-Pike campus**, triggering on **OpenAI default or insolvency**
+  and covering **rent, power, and the buildings' residual value**. The
+  Information's reporter states the reason plainly: **lenders will underwrite
+  NVIDIA's balance sheet, not OpenAI's** — NVIDIA cannot fund that volume of
+  borrowing itself, so it guarantees the paper. That guarantee, **not** the
+  separately-reported **$1.5B equity stake in developer SB Energy**, is the real
+  exposure. Separately, the SB Energy stake gives NVIDIA **exclusive AI compute
+  supply to PORTS-Pike** (4.25 GW initial IT load plus a 3.75 GW option block,
+  phased from 2028); Jensen Huang puts OpenAI's **total commitment at ~12 GW by
+  2030, expandable to ~16 GW**, framed as **roughly $600B of NVIDIA revenue** —
+  NVIDIA's own projection off its own capacity assumption, not a booking. See
+  [[ai-capex]] and [[openai]] for how this sits inside the $500B debt package
+  (The Decoder, TechCrunch, The Information; ARA daily digest 2026-08-18).
 
 ## Open questions
 - **The TSMC ceiling.** TSMC warned (2026-06-05) it **cannot meet AI-chip demand

@@ -4,10 +4,11 @@ title: OpenRouter
 type: entity
 aliases: ["OpenRouter", "openrouter.ai", "@OpenRouterAI", "OpenRouter Fusion", "Fusion API"]
 tags: [llm-router, inference, infrastructure, capital-markets]
-description: LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and drew reported ~$10B Stripe acquisition talks (2026-07-30) that triggered a routing-layer acquisition scramble.
+description: LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and was reportedly acquired by Stripe for over $7B (2026-08-18).
 created_at: 2026-06-01
-timestamp: 2026-08-11T00:00:00Z
+timestamp: 2026-08-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
@@ -49,6 +50,20 @@ funding signal of the cycle:
   payments company on owning the developer-facing routing chokepoint
   between applications and the frontier-model market this page tracks.
   Nothing is confirmed by either company (ARA daily digest 2026-07-30).
+- **Stripe acquires OpenRouter for over $7B (2026-08-18).** Bloomberg reports
+  the payments company is buying the model-routing gateway at **more than 5x**
+  its **$1.3B May 2026** valuation — the reported figure **over $7B** (a WSJ
+  figure was ~$10B; a ~30% gap between two outlets looks more like a live
+  negotiation than a signed deal, with **no Stripe or OpenRouter statement**
+  yet). The mechanism that surfaced the deal this cycle: **Stripe already runs
+  OpenRouter's billing** and has an **LLM-token billing product in beta** that
+  needs a router underneath it. Stratechery framed it as an implicit bet on a
+  future market of models and a shot at Aggregation — a payments company
+  owning the developer-facing routing chokepoint between applications and the
+  frontier-model market this page tracks. It resolves the earlier 2026-07-30
+  talks into a concrete print and confirms the routing-layer consolidation
+  scramble that began 2026-08-10 (Bloomberg via TechCrunch, The Decoder,
+  Stratechery; ARA daily digest 2026-08-18).
 - **The Stripe talks trigger a scramble across the routing layer (2026-08-10).**
   The reported ~$10B Stripe talks have set off competition across the routing
   layer: competitor **Requesty says at least 25 companies approached it in

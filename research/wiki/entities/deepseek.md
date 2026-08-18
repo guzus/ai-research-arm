@@ -4,10 +4,11 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — pivoting to commercialization toward AGI, and listed V4-Pro-0813 on 2026-08-13.
+description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — pivoting to commercialization toward AGI, and shipped V4 Pro's repriced card on 2026-08-18.
 created_at: 2026-06-04
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-08-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
@@ -187,6 +188,25 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   consistently pro-DeepSeek analyst — reported the cheaper V4 Flash 0731
   outperforming it on his own tasks, calling the release evidence that
   **"they need more than scale"** (ARA digest 2026-08-13).
+
+- **V4 Pro's repriced card goes live — peak/off-peak tiering (2026-08-18).**
+  DeepSeek's V4 Pro now charges **$1.32/M input and $3.96/M output at peak,
+  exactly half off-peak**, with **cached input as low as $0.022/M**. The peak
+  windows are **01:00–04:00 and 06:00–10:00 UTC** — the Chinese working day
+  with the lunch break cut out — so **US-hours developers pay off-peak by
+  default**. V4 Pro also ships **native Responses API support**, **1M-token
+  context with up to 384K output**, and **reasoning-effort controls currently
+  exposing only high and max**. Independent **WeirdML** scoring (benchmark
+  author @htihle) puts **V4 Pro 0813 at maximum reasoning at 66.2% against
+  63.0% for the cheaper [[deepseek-v4-flash|V4 Flash 0731]]** — the premium
+  tier buys about **3.2 points** — with @teortaxesTex, a consistently
+  DeepSeek-favorable analyst, calling it **"functionally Flash."** VentureBeat
+  framed the API change as prices "up to **1,100%**" higher, a figure nobody
+  has tied to a named line item and which is **inconsistent with the
+  published per-Mtok rates** (which make even the cheapest output rate 2.28x
+  last week's). Treat the surge-style peak/off-peak scheme as the long-flagged
+  pricing lever finally going live; see the earlier June surge-pricing entry
+  above (ARA digest 2026-08-18).
 
 ## Open questions
 
