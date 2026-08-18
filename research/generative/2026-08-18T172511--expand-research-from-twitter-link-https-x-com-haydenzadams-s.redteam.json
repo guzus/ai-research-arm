@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "CoinGecko's own DEX-versus-CEX spot-volume tracker — a primary dataset, not a critic's cherry-pick — shows DEX share rising from 6.9% in January 2024 to a peak of 24.5% in June 2025, then falling back to 13.6% by January 2026 [^3].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "NVDA's rolling 30-day correlation with the S&P 500 has ranged between 0.35 and 0.87 over the past year (averaging roughly 0.66) — a real but loose and time-varying relationship, not the tight peg that makes stablecoin or liquid-staking pools work [^18].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Independent reporting confirms Adams's numbers: Citadel Securities posted $12.2 billion in net trading revenue in 2025, a 25% increase over 2024's $9.7 billion record, ending the year with $21 billion in trading capital and $6.5 billion in EBITDA [^11].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
