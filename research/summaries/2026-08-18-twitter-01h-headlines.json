@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "BYTEDANCE-TSINGHUA CUDA AGENT HITS 96.8% FASTER-THAN-TORCH.COMPILE ON KERNELBENCH, UP FROM 27.2% BASE",
+    "source": "@Marktechpost",
+    "url": "https://x.com/Marktechpost/status/2089521268391334278",
+    "category": "research"
+  },
+  {
+    "headline": "QWEN3.8-27B SCORES 51 ON ARTIFICIAL ANALYSIS AGENTIC INDEX — AHEAD OF GLM 5.2 AND DEEPSEEK V4 PRO 0813",
+    "source": "@TheAhmadOsman",
+    "url": "https://x.com/TheAhmadOsman/status/2089516284660580614",
+    "category": "model"
+  },
+  {
+    "headline": "CLAUDE CODE ADDS /DESIGN ARTBOARD COMMAND IN RESEARCH PREVIEW",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2089499940963643567",
+    "category": "model"
+  },
+  {
+    "headline": "CLAUDE CODE CLI HALVES P99 CPU AFTER RETIMING BUN GARBAGE COLLECTOR TO PROCESS IDLE",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2089509659090780193",
+    "category": "infra"
+  },
+  {
+    "headline": "SAKANA NAMAZU, BUILT ON KIMI K2.6, GOES LIVE ON OPENROUTER",
+    "source": "@hardmaru",
+    "url": "https://x.com/hardmaru/status/2089523613510914118",
+    "category": "model"
+  }
+]
