@@ -181,6 +181,49 @@ class TranslationSegmentsTest(unittest.TestCase):
             self.assertEqual(manifest["segment_count"], len(extracted))
             self.assertEqual(parity.check_pair(source, draft), [])
 
+    def test_renderer_recovers_concatenated_and_leaky_jsonl_rows(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "alpha.ara.md"
+            source.write_text(SOURCE, encoding="utf-8")
+            source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+            compiled, _ = segments.build_manifest(source, source_sha)
+            extracted = segments.extract_segments(compiled)
+            result = root / segments.RESULT_PATH
+            result.parent.mkdir()
+            rows = [
+                json.dumps(
+                    {"id": segment.id, "text": self._korean_text(segment)},
+                    ensure_ascii=False,
+                )
+                for segment in extracted
+            ]
+            leaked = rows[0][:-1] + ' extra quote"} trailing'
+            glued = rows[1] + rows[2]
+            inner = json.loads(rows[3])
+            quoted = (
+                '{"id":"'
+                + inner["id"]
+                + '","text":"'
+                + inner["text"][:8]
+                + ' "중간" '
+                + inner["text"][8:]
+                + '"}'
+            )
+            body = [leaked, glued, quoted, *rows[4:]]
+            result.write_text("\n".join(body) + "\n", encoding="utf-8")
+            old_cwd = Path.cwd()
+            try:
+                os.chdir(root)
+                segments.render(
+                    source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH
+                )
+            finally:
+                os.chdir(old_cwd)
+            self.assertEqual(
+                parity.check_pair(source, root / segments.DRAFT_PATH), []
+            )
+
     def test_renderer_skips_blank_and_non_object_jsonl_lines(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
