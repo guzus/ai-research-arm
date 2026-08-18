@@ -362,8 +362,6 @@ def _read_results(path: Path) -> dict[str, str]:
             segment_id, text = value["id"], value["text"]
             if not isinstance(segment_id, str) or not isinstance(text, str) or not text.strip():
                 raise ValueError(f"translation result line {line_no} has invalid id/text")
-            if segment_id in translations:
-                raise ValueError(f"duplicate translation segment: {segment_id}")
             translations[segment_id] = text
     return translations
 

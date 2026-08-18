@@ -210,7 +210,7 @@ class TranslationSegmentsTest(unittest.TestCase):
                 + inner["text"][8:]
                 + '"}'
             )
-            body = [leaked, glued, quoted, *rows[4:]]
+            body = [leaked, glued, quoted, rows[3], *rows[4:]]
             result.write_text("\n".join(body) + "\n", encoding="utf-8")
             old_cwd = Path.cwd()
             try:
