@@ -1366,7 +1366,23 @@
     "created_at": "2026-08-04T17:12:06Z",
     "source": "workflow_dispatch",
     "prompt": "comfyui company",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T103131--comfyui-company.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Comfy Org: 기반층은 장악하고 통행료 창구는 잊은 $500M 기업",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T10:31:31Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for comfyui-company",
+        "tags": [],
+        "translated_at": "2026-08-18T10:31:31Z",
+        "source_file": "research/generative/2026-08-04T171206--comfyui-company.ara.md",
+        "source_sha256": "8d1d107d145128b2b8b44426a6e84edd25c1998796e0c8d3017a79f0c775ed52"
+      }
+    }
   },
   {
     "slug": "google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to",
