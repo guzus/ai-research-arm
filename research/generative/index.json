@@ -1628,6 +1628,24 @@
     "prompt": "Seed Twitter/X URL: https://x.com/banodoco/status/2089384727094431796\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T110715--expand-research-from-twitter-link-https-x-com-banodoco-statu.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "트윗 하나, 새 모델, 그리고 오픈소스 릴레이: \"끊김 없는\" MiniMax H3 이어붙이기가 실제로 의미하는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T11:07:15Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-banodoco-statu",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-18T11:07:15Z",
+        "source_file": "research/generative/2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu.ara.md",
+        "source_sha256": "1a318014a94f4a344b1effa426f694a78eda4f0de9fc81fdb643218c7d83ffa6"
+      }
+    }
   }
 ]
