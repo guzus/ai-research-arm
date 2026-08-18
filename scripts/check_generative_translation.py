@@ -212,10 +212,13 @@ def check_pair(
                 "localized number rendering is only valid for ARA-to-HTML comparisons"
             )
         elif not _localized_integer_additions_are_safe(source_numbers, target_raw):
+            missing = sorted((source_numbers - target_numbers).elements())
+            extra = sorted((target_numbers - source_numbers).elements())
             errors.append(
                 "source numeric-token multiset was not preserved or target added "
                 "a non-localized numeric token"
             )
+            errors.append(f"numeric-token diff missing={missing} extra={extra}")
     elif source_numbers != target_numbers:
         errors.append("numeric-token multiset changed")
     if source.name.endswith(".ara.md") and translation.name.endswith(".ara.md"):

@@ -300,8 +300,13 @@ class TranslationSegmentsTest(unittest.TestCase):
         token = "⟦ARA0007⟧"
         self.assertEqual(
             segments.strip_unsafe_digits(f"{token} 1차 9일 $1,000 30% 2.5 42"),
-            f"{token} 1차 9일 $, % . ",
+            f"{token} 1차 9일    ",
         )
+        # Leftover currency/percent/dot must not remain to glue onto the
+        # restored token and change 2.5 into $2.5 or 25 into 25%.
+        self.assertEqual(segments.strip_unsafe_digits(f"${token}"), token)
+        self.assertEqual(segments.strip_unsafe_digits(f"{token}%"), token)
+        self.assertEqual(segments.strip_unsafe_digits(f"$2.5{token}"), token)
 
     def test_renderer_allows_korean_integer_forms_and_strips_unsafe_numbers(self):
         with tempfile.TemporaryDirectory() as td:
@@ -337,7 +342,7 @@ class TranslationSegmentsTest(unittest.TestCase):
                 segments.render(
                     source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH
                 )
-                for leftover in (" $1,000", " -30%", " 2.5×", " 42"):
+                for leftover in (" $1,000", " -30%", " 2.5×", " 42", "$2.5", "$", "%"):
                     with self.subTest(leftover=leftover):
                         write_rows(leftover)
                         segments.render(
@@ -346,10 +351,17 @@ class TranslationSegmentsTest(unittest.TestCase):
                             segments.RESULT_PATH,
                             segments.DRAFT_PATH,
                         )
+                        draft = (root / segments.DRAFT_PATH).read_text(encoding="utf-8")
                         self.assertEqual(
-                            parity.check_pair(source, root / segments.DRAFT_PATH),
+                            parity.check_pair(
+                                source,
+                                root / segments.DRAFT_PATH,
+                                allow_localized_number_rendering=True,
+                            ),
                             [],
                         )
+                        self.assertNotIn("$$", draft)
+                        self.assertNotIn("$12%", draft)
             finally:
                 os.chdir(old_cwd)
 
