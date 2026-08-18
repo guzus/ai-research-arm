@@ -1599,5 +1599,19 @@
     "source": "workflow_dispatch",
     "prompt": "OpenAI's 50% GPT-5.6 Sol cut on OpenRouter and Vercel only: pricing against the token-share scoreboard, not the demand curve",
     "tags": []
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-banodoco-statu",
+    "file": "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "A Tweet, a New Model, and an Open-Source Relay: What \"Seamless\" MiniMax H3 Continuation Actually Means",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-18T10:16:37Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/banodoco/status/2089384727094431796\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

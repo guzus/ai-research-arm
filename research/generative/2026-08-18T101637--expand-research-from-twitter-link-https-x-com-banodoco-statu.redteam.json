@@ -1,0 +1,19 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "On Artificial Analysis's Text-to-Video (With Audio) leaderboard — the closest thing the category has to a common scoreboard — H3 ranks #2 overall with an Elo of 1,237, three points behind Gemini Omni Flash's 1,239, and comfortably ahead of Dreamina Seedance 2.0 (720p) at 1,222, Kling 3.0 Pro at 1,107, and Veo 3.1 at 1,089 [^5].",
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "H3's open-weight license excludes the US, EU, UK, and South Korea — MiniMax's own stated reason is regulatory and litigation risk management, not government-directed export control [^8,9,12].",
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "MiniMax published H3's open weights on Hugging Face on 2026-08-03 [^2]. Four days later, on 2026-08-07, GitHub user NikoDemon80 shipped `ComfyUI-H3-Motion-Context`, the first ComfyUI extension to wire latent-masked continuation into a usable node graph [^23].",
+      "no_contradiction_found": true
+    }
+  ]
+}
