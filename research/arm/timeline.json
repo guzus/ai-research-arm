@@ -1,48 +1,9 @@
 {
-  "generatedAt": "2026-08-18T19:03:45.425Z",
+  "generatedAt": "2026-08-18T19:49:09.543Z",
   "windowStart": "2026-08-17T07:00:00.000Z",
   "windowEnd": "2026-08-20T08:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-a6a36286c3b7",
-      "kind": "completed",
-      "lane": "Delivery",
-      "title": "Twitter alert delivery",
-      "status": "completed",
-      "start": "2026-08-17T07:16:00.000Z",
-      "end": "2026-08-17T07:25:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "hooker",
-      "commit": "a6a36286c3b7",
-      "url": "https://github.com/guzus/ai-research-arm/commit/a6a36286c3b7334fb47a8e961bfc3fc22f8d7732"
-    },
-    {
-      "id": "commit-02d18358ef3a",
-      "kind": "completed",
-      "lane": "Twitter/X",
-      "title": "Twitter/X brief",
-      "status": "completed",
-      "start": "2026-08-17T07:16:00.000Z",
-      "end": "2026-08-17T07:25:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "deepseek-v4-flash",
-      "commit": "02d18358ef3a",
-      "url": "https://github.com/guzus/ai-research-arm/commit/02d18358ef3a37904b6fdebd54381b748cf574be"
-    },
-    {
-      "id": "commit-da715f52033b",
-      "kind": "completed",
-      "lane": "Blogs",
-      "title": "AI expert blog watch",
-      "status": "completed",
-      "start": "2026-08-17T07:29:00.000Z",
-      "end": "2026-08-17T07:30:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "da715f52033b",
-      "url": "https://github.com/guzus/ai-research-arm/commit/da715f52033b2ce50ed7375b4316d3019ce02fbb"
-    },
     {
       "id": "commit-774c89b1f1c5",
       "kind": "completed",
@@ -627,6 +588,45 @@
       "model": "deepseek-v4-flash",
       "commit": "bd25299e96b7",
       "url": "https://github.com/guzus/ai-research-arm/commit/bd25299e96b76314850ffbfbd804a7628beaa39e"
+    },
+    {
+      "id": "commit-0282ac4c4a1b",
+      "kind": "completed",
+      "lane": "Generative",
+      "title": "Hayden Adams Says AMMs Will Eat Global Finance. The Data Says: Not Like This. (#2553)",
+      "status": "completed",
+      "start": "2026-08-18T16:35:00.000Z",
+      "end": "2026-08-18T17:26:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "research agent",
+      "commit": "0282ac4c4a1b",
+      "url": "https://github.com/guzus/ai-research-arm/commit/0282ac4c4a1b016c3ded12b8268923c2554f9e29"
+    },
+    {
+      "id": "commit-1a2174ec1a67",
+      "kind": "completed",
+      "lane": "Generative",
+      "title": "OpenRouter's Pricing Engine Was Called Rigged the Same Week Stripe Paid $7 Billion For It (#2554",
+      "status": "completed",
+      "start": "2026-08-18T17:54:00.000Z",
+      "end": "2026-08-18T18:45:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "research agent",
+      "commit": "1a2174ec1a67",
+      "url": "https://github.com/guzus/ai-research-arm/commit/1a2174ec1a672e38eca093436cefae3f834feb2d"
+    },
+    {
+      "id": "commit-77b1d2901cbd",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-08-18 19:04 UTC (#2556)",
+      "status": "completed",
+      "start": "2026-08-18T19:04:00.000Z",
+      "end": "2026-08-18T19:05:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "77b1d2901cbd",
+      "url": "https://github.com/guzus/ai-research-arm/commit/77b1d2901cbd77cde27465701f96264af7b69184"
     },
     {
       "id": "scheduled-4h-community-yml-19---4-------2026-08-18T20-19-00-000Z",
