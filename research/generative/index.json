@@ -1330,7 +1330,23 @@
     "created_at": "2026-08-02T10:10:15Z",
     "source": "workflow_dispatch",
     "prompt": "Google's consciousness-vector paper (arXiv 2607.28607): refusal-direction ablation and how narrowly safety training generalizes",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T125414--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "10도의 얽힘: 구글의 의식 벡터 논문이 안전 학습의 일반화에 대해 실제로 보여주는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T12:54:14Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+        "tags": [],
+        "translated_at": "2026-08-18T12:54:14Z",
+        "source_file": "research/generative/2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal.ara.md",
+        "source_sha256": "14a43ed3745003261c6edf670d575acc45d9c911de6f2070b542595511504fac"
+      }
+    }
   },
   {
     "slug": "qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max",
