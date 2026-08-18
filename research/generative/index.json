@@ -1194,7 +1194,23 @@
     "created_at": "2026-07-25T04:03:43Z",
     "source": "workflow_dispatch",
     "prompt": "DeepSeek's Wenfeng details Huawei chip access and TileLang as ~200 firms lobby against a China open-weight ban",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T213244--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "48시간 동안의 다섯 가지 공방",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T21:32:44Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2",
+        "tags": [],
+        "translated_at": "2026-08-18T21:32:44Z",
+        "source_file": "research/generative/2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2.ara.md",
+        "source_sha256": "25aacda13314d5da68cabd4aec013e5bb1a3a42aab2c76f8d47a2d2c6c4439a4"
+      }
+    }
   },
   {
     "slug": "claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal",
