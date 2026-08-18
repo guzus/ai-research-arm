@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-08-18 01:47:35 UTC
+
+CYCLE: Capability keeps showing up in the harness, not the weights.
+
+TOP STORIES:
+• ByteDance Seed + Tsinghua AIR's CUDA Agent: RL inside a profiling loop takes KernelBench faster-than-torch.compile from 27.2% to 96.8%, 2.11x geomean [⚠]
+• Qwen3.8-27B reported at 51 on the Artificial Analysis Agentic Index, above GLM 5.2 and DeepSeek V4 Pro 0813 [⚠]
+• Claude Code adds a /design artboard command in research preview; independent users running it within two hours [✓]
+
+SKEPTIC: Unattributed "J-Space" harness credited with pushing DeepSeek V4 Pro past Fable 5 and Opus 4.8 - model-plus-harness scores ranked against bare-model baselines.
+
+WATCH: An Artificial Analysis post confirming the Qwen3.8-27B agentic score with sub-scores and serving config.
+
+Full update on GitHub.
