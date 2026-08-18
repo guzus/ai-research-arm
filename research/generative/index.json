@@ -1318,7 +1318,23 @@
     "created_at": "2026-08-01T19:54:37Z",
     "source": "workflow_dispatch",
     "prompt": "Alphabet's $43.8B TPU lease backstops: the off-balance-sheet layer hyperscaler capex guides don't capture",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T130846--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "모두가 부외라고 부르는 $43.8십억 달러가, 사실은 알파벳이 대차대조표에 올린 바로 그 숫자다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T13:08:46Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l",
+        "tags": [],
+        "translated_at": "2026-08-18T13:08:46Z",
+        "source_file": "research/generative/2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l.ara.md",
+        "source_sha256": "7cd7a925b57a3531d42bcd655fd27fdca857bf037655bf5a2931e07ee98002d4"
+      }
+    }
   },
   {
     "slug": "google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
