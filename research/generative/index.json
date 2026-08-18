@@ -1807,5 +1807,19 @@
         "source_sha256": "1a318014a94f4a344b1effa426f694a78eda4f0de9fc81fdb643218c7d83ffa6"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-haydenzadams-s",
+    "file": "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Hayden Adams Says AMMs Will Eat Global Finance. The Data Says: Not Like This.",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-18T17:25:11Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/haydenzadams/status/2089531754004554215\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

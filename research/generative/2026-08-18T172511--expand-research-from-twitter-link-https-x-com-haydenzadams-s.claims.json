@@ -1,0 +1,304 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Hayden Adams's essay (2026-08-18) claims Uniswap has settled more than $4.6 trillion in cumulative volume and DEX share of centralized spot volume grew from under 1% to over 20%.",
+      "type": "quote",
+      "source_urls": ["https://x.com/haydenzadams/status/2089531754004554215"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Uniswap Labs announced the protocol surpassed $4 trillion cumulative volume on 2025-12-02, reaching each trillion-dollar mark faster than the last.",
+      "type": "metric",
+      "source_urls": ["https://phemex.com/news/article/uniswap-protocol-surpasses-4-trillion-in-total-trading-volume-41375"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-12-02",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c3",
+      "claim": "CoinGecko's DEX-spot-share series shows DEX share of spot volume rising from 6.9% (Jan 2024) to a peak of 24.5% (Jun 2025), then falling back to 13.6% (Jan 2026) — a swing, not a durable plateau above 20%.",
+      "type": "metric",
+      "source_urls": ["https://www.coingecko.com/research/publications/cex-dex-trading-activity-report-2026"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-03-03",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c4",
+      "claim": "The Block's DEX/CEX spot-volume ratio hit a record 24.14% in July 2026, up from 17% a year earlier, coinciding with falling CEX volume and the Robinhood Chain launch.",
+      "type": "metric",
+      "source_urls": ["https://www.theblock.co/news/defi/2026-08-03-dexs-capture-record-spot-crypto-trading-as-cex-volumes-sink-410476"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-03",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c5",
+      "claim": "Uniswap's DEX market-share lead is volatile: it briefly ceded the top spot to PancakeSwap (19.4% vs 64.5%) in June 2025 after Binance routed retail flow via 'Binance Alpha 2.0' into PancakeSwap, before the spike fully reversed within 7 months.",
+      "type": "comparison",
+      "source_urls": ["https://www.coingecko.com/research/publications/decentralized-crypto-exchanges-market-share", "https://www.coingecko.com/research/publications/cex-dex-trading-activity-report-2026"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-08-01",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c6",
+      "claim": "Jack Bogle's 1976 Vanguard First Index Investment Trust was nicknamed 'Bogle's Folly' and raised only ~$11.3 million against a $50-150 million target.",
+      "type": "event",
+      "source_urls": ["https://corporate.vanguard.com/content/corporatesite/us/en/corp/articles/50-years-50-facts-indexing-since-1976.html"],
+      "source_tiers": ["primary"],
+      "as_of": "1976",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Index funds' share of US long-term fund assets rose from roughly 9% (2000) to roughly 52-54% (2025), per ICI Fact Book data.",
+      "type": "metric",
+      "source_urls": ["https://finance.biggo.com/news/7c39a4f7-f301-483c-aa82-8b5d5e7d1827"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "The active-to-passive shift was driven by a persistent, quantified fee gap (index funds ~0.11% vs active funds ~0.59% asset-weighted average fee) and ~88% of active US mutual funds underperforming their benchmark over 10 years (SPIVA) — a mechanical, EMH-consistent driver distinct from crowd sentiment reversal.",
+      "type": "causal",
+      "source_urls": ["https://www.morningstar.com"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "Loss-versus-rebalancing (LVR) theory (Milionis, Moallemi, Roughgarden, Zhang, 2022) formalizes AMM LP losses as an adverse-selection cost from stale on-chain prices, with required break-even trading volume scaling with the square of volatility — a structural drag with no analog for a passive index-fund holder.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2208.06046"],
+      "source_tiers": ["academic"],
+      "as_of": "2022-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "A 2021 study of 17 Uniswap v3 pools (43% of v3 TVL) found LPs collectively earned $199.3M in fees but suffered $260.1M in impermanent/divergence loss — a net -$60.8M versus simply holding, with 49.5% of LPs individually net-negative.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2111.09192"],
+      "source_tiers": ["academic"],
+      "as_of": "2021-11-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "Citadel Securities posted a record $12.2 billion in net trading revenue in 2025, a 25% increase over 2024's $9.7 billion, ending the year with $21 billion in trading capital and $6.5 billion in EBITDA.",
+      "type": "metric",
+      "source_urls": ["https://www.bloomberg.com/news/articles/2026-03-24/citadel-securities-nets-record-12-billion-trading-haul-in-2025"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-03-24",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c12",
+      "claim": "Citadel Securities' revenue-to-capital ratio held roughly flat (2024: ~0.61x; 2025: ~0.58x) rather than expanding, and 2023 revenue fell 35% in a low-volatility period — evidence the business is cyclical/volatility-dependent rather than a static toll.",
+      "type": "comparison",
+      "source_urls": ["https://www.hedgeweek.com/griffins-citadel-securities-reports-record-9-7bn-trading-revenue/", "https://www.bloomberg.com/news/articles/2023-07-24/citadel-securities-trading-revenue-slides-35-on-muted-market"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2025-03",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c13",
+      "claim": "Citadel Securities executes more than 35% of total US retail equity market volume and holds ~30% of US listed options market share (self-reported); independent estimates put overall equity market-making share closer to 22%, with Jane Street and Hudson River Trading actively gaining share.",
+      "type": "market-structure",
+      "source_urls": ["https://www.citadelsecurities.com/what-we-do/options/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c14",
+      "claim": "A Wharton study found execution quality under payment-for-order-flow varies entirely by broker: 75%+ of TD Ameritrade orders executed at mid-price-or-better versus only 25% of Robinhood orders, despite routing to the same wholesalers.",
+      "type": "causal",
+      "source_urls": ["https://wffi.wharton.upenn.edu/uncategorized/research-spotlight-payment-for-order-flow-and-price-improvement/"],
+      "source_tiers": ["academic"],
+      "as_of": "2023",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c15",
+      "claim": "Curve's stETH/ETH pool depegged in June 2022 after Three Arrows Capital and Celsius withdrew a combined ~$780M same-day, pool TVL fell from $4.6B to ~$621M, and stETH traded as low as 0.9671 ETH.",
+      "type": "event",
+      "source_urls": ["https://beincrypto.com/steth-depegs-whale-pulls-101m-eth-curve-finance/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2022-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "UST/LUNA, designed around a correlated-pair peg mechanism, collapsed in May 2022, wiping out roughly $18B of UST and $40B of LUNA market value within days.",
+      "type": "event",
+      "source_urls": ["https://www.richmondfed.org/publications/research/economic_brief/2022/eb_22-24"],
+      "source_tiers": ["primary"],
+      "as_of": "2022-05-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "NVDA's rolling 30-day correlation with SPY has ranged 0.35-0.87 (average ~0.66-0.67), and NVDA's beta versus the market is reported in the 1.88-2.24 range across vendors — meaningfully above 1.0, indicating substantial idiosyncratic risk a NVDA/SPY pool would not hedge away.",
+      "type": "technical",
+      "source_urls": ["https://www.gale.finance/compare/nvda-vs-spy/", "https://www.gurufocus.com/term/beta/NVDA"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-14",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c18",
+      "claim": "Uniswap's DualPool hook (live 2026-07-22, Spark-built) parks idle pool capital in ERC-4626 yield vaults between swaps and pulls only the needed shortfall atomically into concentrated liquidity for the swap's duration — a yield-capture mechanism, not the cross-correlated-pair liquidity concentration the essay implies.",
+      "type": "technical",
+      "source_urls": ["https://blog.uniswap.org/dualpool-hook-is-now-live"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "Robinhood Chain, an Arbitrum-tech-stack Ethereum L2, went live 2026-07-01; its tokenized 'Stock Tokens' are structured as 1:1-backed tokenized debt securities issued by a Jersey SPV (Robinhood Assets (Jersey) Limited), carrying no voting or shareholder rights, and are excluded from the US and US persons.",
+      "type": "regulatory",
+      "source_urls": ["https://www.theblock.co/news/business/2026-07-01-robinhood-chain-goes-live-mainnet-alongside-24-7-tokenized-stocks-lighter-perps-planned-crypto-agentic-trading-406918", "https://ryder.id/blogs/post/robinhood-tokenized-stocks-the-on-chain-custody-catch"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "A material share of Robinhood Chain's tokenized-stock DEX volume is mechanically generated by memecoins using stock tokens as liquidity-pool collateral rather than by investors seeking equity exposure; Uniswap V3+V4 control roughly 99% of that DEX liquidity, leaving no independent venue to corroborate the figures.",
+      "type": "market-structure",
+      "source_urls": ["https://thedefiant.io/news/blockchains/robinhood-chain-tops-solana-in-tokenized-stock-volume-via-memecoin-pairs", "https://cryptobriefing.com/uniswap-v4-dominates-robinhood-chain-tokenized-stocks/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-28",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c21",
+      "claim": "Uniswap Labs reports more than $9.1 billion swapped across real-world-asset pools on the protocol, across 2.6 million transactions and 140,000+ wallets.",
+      "type": "metric",
+      "source_urls": ["https://blog.uniswap.org/tokenized-securities-are-live"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-12",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c22",
+      "claim": "The broader tokenized real-world-asset market (ex-stablecoins) totals roughly $34.7B (2026), but a BeInCrypto/RWA survey found 55% of a $60B tokenized-asset universe by value shows zero weekly transfer activity, with only 62 of 1,289 surveyed assets holding 88% of total value.",
+      "type": "metric",
+      "source_urls": ["https://www.kucoin.com/news/flash/tokenized-treasuries-dip-to-34-67-billion-as-rwa-sector-expands", "https://www.forbes.com/sites/astanley/2026/07/02/the-tokenized-asset-market-is-60-billion-most-of-it-isnt-moving/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-02",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "DTCC — custodian of $114T in securities — is building its own tokenization/settlement platform under an SEC No-Action Letter, running production pilot trades from July 2026 with 50+ firms including BlackRock, Goldman Sachs, and JPMorgan, targeting commercial launch in October 2026.",
+      "type": "event",
+      "source_urls": ["https://www.dtcc.com/news/2026/may/04/dtcc-advances-development-of-new-tokenization-service"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "The SEC approved Nasdaq's tokenized-securities rule change (2026-03-18) on the condition that tokenized shares remain fungible with, share the same CUSIP/ticker as, and carry identical shareholder rights to the underlying share, with DTC (not an AMM) handling settlement.",
+      "type": "regulatory",
+      "source_urls": ["https://www.coindesk.com/policy/2026/03/18/sec-approves-nasdaq-s-move-to-allow-tokenized-securities-trading"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-03-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "ICE (NYSE's parent) formed a 50-50 joint venture with OKX (announced 2026-06-23) to put NYSE-listed stocks on-chain for roughly 120 million crypto traders, pending SEC/CFTC approval.",
+      "type": "event",
+      "source_urls": ["https://www.techtimes.com/articles/318915/20260623/nyse-parent-ice-okx-form-joint-venture-put-tokenized-stocks-blockchain.htm"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-23",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "The SEC's January 2026 joint staff statement holds that federal securities laws apply to tokenized securities 'to the same extent' as traditional securities and creates no new exemption; Chair Atkins' anticipated 'innovation exemption' remains narrow, time-limited, and reportedly would exclude voting/dividend rights.",
+      "type": "regulatory",
+      "source_urls": ["https://www.morganlewis.com/pubs/2026/02/sec-clarifies-federal-securities-law-treatment-of-tokenized-securities", "https://www.theblock.co/post/390544/secs-peirce-atkins-incremental-path-tokenized-securities-agency-readies-innovation-exemption"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-01-28",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c27",
+      "claim": "US equities have settled T+1 (one business day) since May 2024; a May 2026 DTCC-run consortium demonstration achieved atomic settlement of tokenized US Treasuries in under 5 seconds, but only as a pilot, not the production standard.",
+      "type": "comparison",
+      "source_urls": ["https://www.dtcc.com/accelerated-settlement"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "Uniswap's DAO activated a long-dormant fee switch in a December 2025 'UNIfication' vote, redirecting 1/4 to 1/6 of LP fees plus Unichain sequencer/MEV proceeds into a UNI burn ('token jar'), including a one-time retroactive burn of 100 million UNI (~$600M at vote-time prices) and a 20M UNI/year Labs budget starting January 2026.",
+      "type": "event",
+      "source_urls": ["https://blog.uniswap.org/unification", "https://www.dlnews.com/articles/defi/uniswap-dao-to-activate-fee-switch-and-burn-100m-uni-tokens/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2025-12-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "Uniswap's total value locked fell from a ~$6.3B record (Aug 2025) to ~$3.31B (Mar 2026) and ~$3.42B (May 2026), tracking a broader DeFi-wide TVL contraction, even as combined V2/V3/V4 volume held up at $1.94B/24h (27.0% of DEX volume) by mid-June 2026.",
+      "type": "metric",
+      "source_urls": ["https://defillama.com/protocol/uniswap", "https://coinlaw.io/uniswap-statistics/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-06",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c30",
+      "claim": "UNI traded near $3.25 (market cap ~$2.03B) as of Adams's essay date, down roughly 42% from ~$5.60 in January 2026; the SEC closed its multi-year Uniswap Labs investigation with no enforcement action in February 2025, while Uniswap Labs separately settled with the CFTC for $175,000 in September 2024.",
+      "type": "metric",
+      "source_urls": ["https://www.cryptopolitan.com/uniswap-hayden-adams-amm-tokenized-markets/", "https://blog.uniswap.org/a-win-for-defi", "https://www.cftc.gov/PressRoom/PressReleases/8961-24"],
+      "source_tiers": ["secondary", "primary", "primary"],
+      "as_of": "2026-08-18",
+      "confidence": "medium",
+      "risk": "volatile"
+    }
+  ]
+}
