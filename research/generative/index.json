@@ -1263,7 +1263,23 @@
     "created_at": "2026-07-29T23:23:06Z",
     "source": "workflow_dispatch",
     "prompt": "GPT-5.6 Sol rewriting its own production GPU kernels: what OpenAI's 20% self-optimization claim reveals about recursive self-improvement",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T150418--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "GPT-5.6 Sol과 확인할 수 없는 20%: 오픈AI의 커널 자기최적화 주장이 실제로 드러내는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T15:04:18Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op",
+        "tags": [],
+        "translated_at": "2026-08-18T15:04:18Z",
+        "source_file": "research/generative/2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op.ara.md",
+        "source_sha256": "5d7286ca1601c48995ccfd0c5355713e8cf11712309d2cb35cf1b7e78e94e748"
+      }
+    }
   },
   {
     "slug": "gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2",
