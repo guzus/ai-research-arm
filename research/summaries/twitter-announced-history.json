@@ -23978,5 +23978,40 @@
     "headline": "PENN PAPER: CONTEXT COMPACTION KEEPS ONLY 17% OF STANDING AGENT RULES",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2089441634597450156"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-18 01:47:35 UTC",
+    "headline": "BYTEDANCE-TSINGHUA CUDA AGENT HITS 96.8% FASTER-THAN-TORCH.COMPILE ON KERNELBENCH, UP FROM 27.2% BASE",
+    "source": "@Marktechpost",
+    "url": "https://x.com/Marktechpost/status/2089521268391334278"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-18 01:47:35 UTC",
+    "headline": "QWEN3.8-27B SCORES 51 ON ARTIFICIAL ANALYSIS AGENTIC INDEX \u2014 AHEAD OF GLM 5.2 AND DEEPSEEK V4 PRO 0813",
+    "source": "@TheAhmadOsman",
+    "url": "https://x.com/TheAhmadOsman/status/2089516284660580614"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-18 01:47:35 UTC",
+    "headline": "CLAUDE CODE ADDS /DESIGN ARTBOARD COMMAND IN RESEARCH PREVIEW",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2089499940963643567"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-18 01:47:35 UTC",
+    "headline": "CLAUDE CODE CLI HALVES P99 CPU AFTER RETIMING BUN GARBAGE COLLECTOR TO PROCESS IDLE",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2089509659090780193"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-18 01:47:35 UTC",
+    "headline": "SAKANA NAMAZU, BUILT ON KIMI K2.6, GOES LIVE ON OPENROUTER",
+    "source": "@hardmaru",
+    "url": "https://x.com/hardmaru/status/2089523613510914118"
   }
 ]
