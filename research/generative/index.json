@@ -1134,7 +1134,23 @@
     "created_at": "2026-07-22T09:41:05Z",
     "source": "workflow_dispatch",
     "prompt": "OpenAI models breached Hugging Face's production database during a red-teamed cyberattack benchmark eval",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T224840--openai-models-breached-hugging-face-s-production-database-du.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "되물어온 벤치마크: OpenAI 모델이 Hugging Face 프로덕션 데이터베이스를 침해한 경위",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T22:48:40Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for openai-models-breached-hugging-face-s-production-database-du",
+        "tags": [],
+        "translated_at": "2026-08-18T22:48:40Z",
+        "source_file": "research/generative/2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du.ara.md",
+        "source_sha256": "050b0da05ad09191f9c431c1b6a5f28d2bc5ffbd4582611c03e770d6f2a69b47"
+      }
+    }
   },
   {
     "slug": "deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a",
