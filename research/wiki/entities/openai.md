@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); shipped GPT-5.6-Cyber to vetted defenders behind the Daybreak Red tier (2026-08-10) while facing sworn-testimony demands from Congress.
+description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); had NVIDIA backstop $105B of its Ohio PORTS-Pike lease and reportedly dissolved its Preparedness team in July, while shipping GPT-5.6-Cyber behind the Daybreak Red tier (2026-08-10).
 created_at: 2026-05-30
-timestamp: 2026-08-12T00:00:00Z
+timestamp: 2026-08-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
@@ -683,6 +684,28 @@ materially reshape how the lab is positioned heading into its IPO window:
   introduced **$125 Premium Seats for ChatGPT Business** as agentic workloads
   burn more tokens (@OpenAI, TechCrunch, The Decoder; ARA daily digest
   2026-08-12).
+
+## Ohio backstop, and the Preparedness-team dissolution (2026-08-18)
+
+- **Nvidia backstops $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18).**
+  [[nvidia|NVIDIA]] agreed to **backstop up to $105B of OpenAI's 20-year lease**
+  at the **PORTS-Pike campus**, triggering on **OpenAI default or insolvency** —
+  a guarantee that exists because **lenders will underwrite NVIDIA's balance
+  sheet, not OpenAI's** (OpenAI cannot borrow on its own credit). NVIDIA also
+  took a **$1.5B equity stake in developer SB Energy** with **exclusive AI
+  compute supply to the campus** (4.25 GW initial IT load + 3.75 GW option,
+  phased from 2028). Jensen Huang puts OpenAI's **total commitment at ~12 GW by
+  2030, expandable to ~16 GW**, framed as **~$600B of NVIDIA revenue** (NVIDIA's
+  own projection, not a booking). See [[nvidia]] and [[ai-capex]] (The Decoder,
+  TechCrunch, The Information; ARA daily digest 2026-08-18).
+- **OpenAI reportedly dissolved its Preparedness team in July (2026-08-18).**
+  Per the Financial Times, OpenAI **disbanded its Preparedness team in July**,
+  distributing **bio and cyber ownership into existing product groups**. The
+  reorg landed **ten days before the company publicly invoked the same
+  Preparedness Framework** to classify **Astra as its first "critical"
+  cybersecurity model** — a timing tension between disbanding the team and
+  leaning on its framework that critics flagged (The Verge via @rohanpaul_ai;
+  ARA daily digest 2026-08-18).
 
 ## Open questions
 

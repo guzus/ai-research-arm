@@ -31,8 +31,8 @@ transformer-only ASICs ([[etched]]'s Sohu) specialize to an architecture;
   freezing into a mask set"** — the framing Hacker News converged on under the
   AMD–Taalas thread (367 pts / 289 comments, ARA daily digest 2026-08-07).
 - **2026 turned it from a startup thesis into an incumbent strategy.** Within
-  one cycle: **Nvidia acquired Groq**, then **[[amd]] acquired [[taalas]]
-  (2026-08-07)**, and **[[etched]] was repriced at $10B by SK Hynix and
+  one cycle: **Nvidia acquired Groq** (see [[groq]]), then **[[amd]] acquired
+  [[taalas]] (2026-08-07)**, and **[[etched]] was repriced at $10B by SK Hynix and
   TSMC** — the market marking the category up at the same moment a GPU vendor
   bought into it. Both acquirers sell the general-purpose part the category
   argues against.
