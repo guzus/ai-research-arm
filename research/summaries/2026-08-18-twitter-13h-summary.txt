@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-18 13:10:48 UTC
+
+CYCLE: The AI supply squeeze spreads past memory into passive components; two papers put numbers on agent swarms and AI radiology.
+
+TOP STORIES:
+• Server-grade MLCC lead times 20-40wks vs 14-18 standard; new capacity slipped Q4 2026 to 2027 ⚠
+• Science Advances: per-model ceiling on LLM agent consensus - ~30 agents (Llama 3 70B), ~80 (GPT-4o), ~1,000 (GPT-4 Turbo) ⚠
+• Mayo Clinic REDMOD in Gut: 73.0% sensitivity / 81.1% specificity, median 475 days before pancreatic cancer diagnosis ⚠
+
+WATCH: Whether Murata or Samsung Electro-Mechanics confirms an MLCC price rise or 2027 capacity line, moving the shortage from channel data to supplier disclosure.
+
+Full update on GitHub.
