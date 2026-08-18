@@ -295,12 +295,19 @@ def _read_results(path: Path) -> dict[str, str]:
         raise ValueError(f"translation result must be the regular file {RESULT_PATH}")
     translations: dict[str, str] = {}
     for line_no, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-        if not line.strip():
+        stripped = line.strip()
+        # Cursor Write sometimes inserts blank lines or a non-object
+        # separator between valid {"id","text"} rows. Coverage is still
+        # checked after parse, so skipping junk cannot invent a segment.
+        if not stripped or not stripped.startswith("{"):
             continue
         try:
-            value = json.loads(line)
+            value = json.loads(stripped)
         except json.JSONDecodeError as exc:
-            raise ValueError(f"invalid translation result JSON on line {line_no}: {exc}") from exc
+            preview = stripped[:80]
+            raise ValueError(
+                f"invalid translation result JSON on line {line_no}: {exc}; preview={preview!r}"
+            ) from exc
         if not isinstance(value, dict) or set(value) != {"id", "text"}:
             raise ValueError(f"translation result line {line_no} has invalid fields")
         segment_id, text = value["id"], value["text"]
