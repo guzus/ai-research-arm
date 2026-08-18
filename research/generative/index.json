@@ -1614,7 +1614,23 @@
     "created_at": "2026-08-18T08:55:49Z",
     "source": "workflow_dispatch",
     "prompt": "OpenAI's 50% GPT-5.6 Sol cut on OpenRouter and Vercel only: pricing against the token-share scoreboard, not the demand curve",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T111709--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "$2.50 플래그십: OpenAI의 채널 한정 50% 인하, 대상 GPT-5.6 Sol",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T11:17:09Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr",
+        "tags": [],
+        "translated_at": "2026-08-18T11:17:09Z",
+        "source_file": "research/generative/2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr.ara.md",
+        "source_sha256": "b4a216a897182d67a611b9c3e9d5ee6afe60026ec58373fa30103931d82c5d56"
+      }
+    }
   },
   {
     "slug": "expand-research-from-twitter-link-https-x-com-banodoco-statu",
