@@ -32,6 +32,7 @@ ATTR_RE = re.compile(
 WORD_RE = re.compile(r"[A-Za-z][A-Za-z'-]*")
 TOKEN_RE = re.compile(r"\u27e6ARA\d{4}\u27e7")
 LOCALIZED_INTEGER_RE = re.compile(r"(?<![0-9.,+\-−$€£₩¥])[0-9]+(?=[가-힣])")
+NUMBER_DEBRIS_RE = re.compile(r"[$€£₩¥%×]+")
 EXCLUDED_TAGS = frozenset({"code", "pre", "script", "style"})
 TRANSLATABLE_ATTRS = frozenset(
     {
@@ -312,12 +313,14 @@ def _read_results(path: Path) -> dict[str, str]:
 
 
 def strip_unsafe_digits(text: str) -> str:
-    """Drop invented digits while keeping opaque tokens and 9일/3배 forms.
+    """Drop leftover numeric literals while keeping tokens and 9일/3배 forms.
 
     Cursor writes a finished JSONL; unlike the OpenCode segment tool it does
     not reject leftover $2.5 / 30% / 2026 copies mid-flight. Those leftovers
-    are not source literals (those are already ⟦ARA####⟧ tokens), so stripping
-    them is safer than failing a finished translation.
+    are not source literals (those are already ⟦ARA####⟧ tokens). Strip the
+    whole NUMBER_RE match — not just the digits — so leftover `$` / `%` / `.`
+    cannot glue onto a restored token and change the numeric-token multiset
+    (`2.5` becoming `$2.5`).
     """
     pieces = TOKEN_RE.split(text)
     tokens = TOKEN_RE.findall(text)
@@ -326,13 +329,18 @@ def strip_unsafe_digits(text: str) -> str:
         out: list[str] = []
         cursor = 0
         while cursor < len(piece):
-            match = LOCALIZED_INTEGER_RE.match(piece, cursor)
-            if match:
-                out.append(match.group(0))
-                cursor = match.end()
+            localized = LOCALIZED_INTEGER_RE.match(piece, cursor)
+            if localized:
+                out.append(localized.group(0))
+                cursor = localized.end()
                 continue
-            if piece[cursor].isdigit():
-                cursor += 1
+            leftover = NUMBER_RE.match(piece, cursor)
+            if leftover:
+                cursor = leftover.end()
+                continue
+            debris = NUMBER_DEBRIS_RE.match(piece, cursor)
+            if debris:
+                cursor = debris.end()
                 continue
             out.append(piece[cursor])
             cursor += 1
