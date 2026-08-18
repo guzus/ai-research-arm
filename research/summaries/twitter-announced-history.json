@@ -24146,5 +24146,54 @@
     "headline": "NOUS RESEARCH SHIPS BOT MODE FOR MIT-LICENSED HERMES AGENT \u2014 NAMED BOTS WITH OWN MEMORY, SKILLS AND TOOLS",
     "source": "@Teknium",
     "url": "https://x.com/Teknium/status/2089430781668303090"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-18 19:09:29 UTC",
+    "headline": "OPENAI PAUSED TWO WEEKS OF FRONTIER RL TRAINING; LARGEST PLANNED RUN REMAINS ON HOLD",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2089777845187031262"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-18 19:09:29 UTC",
+    "headline": "ALTMAN: CONFIDENCE IN SAFETY WILL INCREASINGLY SET THE PACE OF AI PROGRESS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2089787807611195475"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-18 19:09:29 UTC",
+    "headline": "ETCHED RAISES $700M AT $21B VALUATION, SHIPS FIRST RACK TO ROUND LEADER JANE STREET",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2089744681479680033"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-18 19:09:29 UTC",
+    "headline": "VERCEL PUTS $1M ON OPEN SANDBOX-ESCAPE TESTING \u2014 ANY FRONTIER MODEL WELCOME",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2089747453004468339"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-18 19:09:29 UTC",
+    "headline": "THE INFORMATION: OPENAI LUNA NOW OUTPACES CLAUDE OPUS 5 AND SONNET 5 COMBINED ON OPENROUTER",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2089774411758838226"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-18 19:09:29 UTC",
+    "headline": "ANTHROPIC STATUS PAGE: DEGRADED PERFORMANCE ACROSS ALL MODELS, APP, API, CLAUDE CODE",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2089765933577351323"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-18 19:09:29 UTC",
+    "headline": "SYNTHEFY SHIPS NORI V1 APACHE-2.0 TABULAR FOUNDATION MODEL ON $6.5M SEED",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2089778537305944345"
   }
 ]
