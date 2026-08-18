@@ -24111,5 +24111,40 @@
     "headline": "NETEASE YOUDAO PUTS CONFUCIUS4-TTS PAPER ON ARXIV, SHIPS MAJOR OPEN-SOURCE MODEL UPGRADE",
     "source": "@_akhaliq",
     "url": "https://x.com/_akhaliq/status/2089636316275253292"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-18 13:10:48 UTC",
+    "headline": "AI SHORTAGE SPREADS TO CAPACITORS \u2014 SERVER-GRADE MLCC LEAD TIMES HIT 20-40 WEEKS VS 14-18 FOR STANDARD PARTS",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2089667491387818361"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-18 13:10:48 UTC",
+    "headline": "MLCC CAPACITY EXPANSIONS SLIP FROM Q4 2026 INTO 2027; AI SERVERS NEED 5-13X MORE HIGH-CAP PARTS THAN CONVENTIONAL",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2089667491387818361"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-18 13:10:48 UTC",
+    "headline": "SCIENCE ADVANCES PAPER FINDS AGENT-CONSENSUS CEILING \u2014 ~30 AGENTS FOR LLAMA 3 70B, ~80 GPT-4O, ~1,000 GPT-4 TURBO",
+    "source": "@bravo_abad",
+    "url": "https://x.com/bravo_abad/status/2089699333239152903"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-18 13:10:48 UTC",
+    "headline": "MAYO CLINIC REDMOD FLAGS PANCREATIC CANCER ON CT READ AS NORMAL \u2014 73.0% SENSITIVITY, MEDIAN 475 DAYS EARLY",
+    "source": "@OwenGregorian",
+    "url": "https://x.com/OwenGregorian/status/2089699810521575799"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-18 13:10:48 UTC",
+    "headline": "NOUS RESEARCH SHIPS BOT MODE FOR MIT-LICENSED HERMES AGENT \u2014 NAMED BOTS WITH OWN MEMORY, SKILLS AND TOOLS",
+    "source": "@Teknium",
+    "url": "https://x.com/Teknium/status/2089430781668303090"
   }
 ]
