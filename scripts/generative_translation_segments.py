@@ -311,6 +311,37 @@ def _read_results(path: Path) -> dict[str, str]:
     return translations
 
 
+def strip_unsafe_digits(text: str) -> str:
+    """Drop invented digits while keeping opaque tokens and 9일/3배 forms.
+
+    Cursor writes a finished JSONL; unlike the OpenCode segment tool it does
+    not reject leftover $2.5 / 30% / 2026 copies mid-flight. Those leftovers
+    are not source literals (those are already ⟦ARA####⟧ tokens), so stripping
+    them is safer than failing a finished translation.
+    """
+    pieces = TOKEN_RE.split(text)
+    tokens = TOKEN_RE.findall(text)
+    cleaned: list[str] = []
+    for index, piece in enumerate(pieces):
+        out: list[str] = []
+        cursor = 0
+        while cursor < len(piece):
+            match = LOCALIZED_INTEGER_RE.match(piece, cursor)
+            if match:
+                out.append(match.group(0))
+                cursor = match.end()
+                continue
+            if piece[cursor].isdigit():
+                cursor += 1
+                continue
+            out.append(piece[cursor])
+            cursor += 1
+        cleaned.append("".join(out))
+        if index < len(tokens):
+            cleaned.append(tokens[index])
+    return "".join(cleaned)
+
+
 def render(source_path: Path, source_sha256: str, result_path: Path, draft_path: Path) -> None:
     if result_path != RESULT_PATH or draft_path != DRAFT_PATH:
         raise ValueError("translation result/draft paths do not match the fixed contract")
@@ -332,6 +363,7 @@ def render(source_path: Path, source_sha256: str, result_path: Path, draft_path:
                 f"translation segment {segment.id} changed immutable tokens; "
                 f"expected={segment.tokens}, got={found_tokens}"
             )
+        translated = strip_unsafe_digits(translated)
         prose_without_tokens = TOKEN_RE.sub("", translated)
         if re.search(r"[0-9]", LOCALIZED_INTEGER_RE.sub("", prose_without_tokens)):
             raise ValueError(

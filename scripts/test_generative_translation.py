@@ -296,7 +296,14 @@ class TranslationSegmentsTest(unittest.TestCase):
                 os.chdir(old_cwd)
             self.assertEqual(parity.check_pair(source, root / segments.DRAFT_PATH), [])
 
-    def test_renderer_allows_korean_integer_forms_and_rejects_unsafe_numbers(self):
+    def test_strip_unsafe_digits_keeps_tokens_and_korean_integer_forms(self):
+        token = "⟦ARA0007⟧"
+        self.assertEqual(
+            segments.strip_unsafe_digits(f"{token} 1차 9일 $1,000 30% 2.5 42"),
+            f"{token} 1차 9일 $, % . ",
+        )
+
+    def test_renderer_allows_korean_integer_forms_and_strips_unsafe_numbers(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             source = root / "alpha.ara.md"
@@ -330,18 +337,19 @@ class TranslationSegmentsTest(unittest.TestCase):
                 segments.render(
                     source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH
                 )
-                for unsafe in (" $1,000", " -30%", " 2.5×", " 42"):
-                    with self.subTest(unsafe=unsafe):
-                        write_rows(unsafe)
-                        with self.assertRaisesRegex(
-                            ValueError, "unsafe localized numeric token"
-                        ):
-                            segments.render(
-                                source,
-                                source_sha,
-                                segments.RESULT_PATH,
-                                segments.DRAFT_PATH,
-                            )
+                for leftover in (" $1,000", " -30%", " 2.5×", " 42"):
+                    with self.subTest(leftover=leftover):
+                        write_rows(leftover)
+                        segments.render(
+                            source,
+                            source_sha,
+                            segments.RESULT_PATH,
+                            segments.DRAFT_PATH,
+                        )
+                        self.assertEqual(
+                            parity.check_pair(source, root / segments.DRAFT_PATH),
+                            [],
+                        )
             finally:
                 os.chdir(old_cwd)
 
