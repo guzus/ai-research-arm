@@ -1821,5 +1821,19 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-gakonst-status",
+    "file": "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "OpenRouter's Pricing Engine Was Called Rigged the Same Week Stripe Paid $7 Billion For It",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-18T18:44:17Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/gakonst/status/2089410233496203335\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
