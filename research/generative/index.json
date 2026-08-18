@@ -1342,7 +1342,23 @@
     "created_at": "2026-08-03T21:24:25Z",
     "source": "workflow_dispatch",
     "prompt": "Qwen3.8-Max: Alibaba's 2.4T/95B flagship at $2/$6, the first Max-tier open-weight promise, and the unverified 16-day autonomy claim",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T120627--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Qwen3.8-Max: 세 가지 주장, 그리고 검증 후에도 남는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T12:06:27Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max",
+        "tags": [],
+        "translated_at": "2026-08-18T12:06:27Z",
+        "source_file": "research/generative/2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max.ara.md",
+        "source_sha256": "a523bd1e35e8c7af998df8c88c3f9ea590adfabd53ec2f558da2d26b2163d225"
+      }
+    }
   },
   {
     "slug": "apple-v-openai-the-post-departure-emails-openai-filed-and-wh",
