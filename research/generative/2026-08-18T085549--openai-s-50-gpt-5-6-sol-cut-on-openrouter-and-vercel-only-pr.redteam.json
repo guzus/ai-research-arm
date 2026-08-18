@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c02",
+      "claim_text": "GPT-5.6 Sol is listed at $2.50/$15 (50% off) on OpenRouter's OpenAI provider endpoint as of Aug 18, 2026.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "c01",
+      "claim_text": "GPT-5.6 Sol Standard on OpenAI's own API is $5.00/$30.00 per million tokens as of Aug 18, 2026.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "c20",
+      "claim_text": "The channel-locked 50% discount on GPT-5.6 Sol (OpenRouter and Vercel only, direct API unchanged) indicates OpenAI is pricing to win token share in third-party routing channels rather than responding to a demand curve on its own API.",
+      "no_contradiction_found": false,
+      "severity": "medium",
+      "contradicting_url": "https://www.businessinsider.com/openai-slashed-ai-prices-usage-soared-revenue-jumped-2026-8",
+      "contradicting_quote": "OpenAI recently slashed the price of its GPT-5.6 Luna model by 80%... Then something striking happened: Customers started using dramatically more AI... usage rose faster than prices fell."
+    }
+  ]
+}

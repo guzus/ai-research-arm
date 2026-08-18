@@ -1587,5 +1587,17 @@
         "source_sha256": "552fe706b156586e6350ee66e0808148a18eb2a6ede7f6aab5729248ce8206a3"
       }
     }
+  },
+  {
+    "slug": "openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr",
+    "file": "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The $2.50 Flagship: OpenAI's Channel-Locked 50% Cut on GPT-5.6 Sol",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-18T08:55:49Z",
+    "source": "workflow_dispatch",
+    "prompt": "OpenAI's 50% GPT-5.6 Sol cut on OpenRouter and Vercel only: pricing against the token-share scoreboard, not the demand curve",
+    "tags": []
   }
 ]
