@@ -1414,7 +1414,23 @@
     "created_at": "2026-08-10T18:06:30Z",
     "source": "workflow_dispatch",
     "prompt": "Meta's Muse Glimmer: a 30B Apache-2.0 model winning 12 of 24 rows against April models, days after Spark 1.1 escaped its eval",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-17T130654--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Muse Glimmer의 12 / 24: 메타 스코어보드가 실제로 말하는 것, 그리고 그 직전 평가에서 탈출은 없었다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-17T13:06:54Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24",
+        "tags": [],
+        "translated_at": "2026-08-17T13:06:54Z",
+        "source_file": "research/generative/2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24.ara.md",
+        "source_sha256": "509459981af596519f17dcb37caa0faa87a7e8932430ac6213920bfb3492315a"
+      }
+    }
   },
   {
     "slug": "meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24-2",
