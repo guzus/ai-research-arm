@@ -1294,7 +1294,30 @@
       "agi-timelines",
       "anthropic",
       "leverage"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T142159--situational-awareness-lp-collapse.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "앤트로픽 지분에는 닿지 못한 마진콜",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T14:21:59Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for situational-awareness-lp-collapse",
+        "tags": [
+          "ai-markets",
+          "hedge-funds",
+          "aschenbrenner",
+          "agi-timelines",
+          "anthropic",
+          "leverage"
+        ],
+        "translated_at": "2026-08-18T14:21:59Z",
+        "source_file": "research/generative/2026-07-31T051841--situational-awareness-lp-collapse.ara.md",
+        "source_sha256": "1e2177bfff670ae565cd2affadc375983ea5a7525e140f4ce87d0b25c6aa7074"
+      }
+    }
   },
   {
     "slug": "openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi",
