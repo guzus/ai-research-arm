@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-08-18
+
+TOP STORIES:
+• Nvidia guarantees up to $105B of OpenAI's 20-year Ohio data center lease
+• Anthropic tells investors run rate hit $65B on $11.5B preliminary Q2 revenue
+• Stripe acquiring OpenRouter for $7B+; DeepSeek's V4 Pro repricing goes live
+
+KEY NUMBERS:
+• Anthropic Q2 revenue $11.5B, up 14x from $787M a year ago
+• DeepSeek V4 Pro: $1.32/$3.96 per Mtok peak, half off-peak
+• WeirdML: V4 Pro 66.2% vs its own cheaper Flash tier at 63.0%
+• Groq raised $350M at $3.5B, about half its Sept-2025 mark
+
+TRENDING: HN debates GPT-5.6 Sol's vision results and an AI Copilot autofix that
+enabled a Snowflake Jira compromise.
+
+Full digest on GitHub.
