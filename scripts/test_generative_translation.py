@@ -267,6 +267,55 @@ class TranslationSegmentsTest(unittest.TestCase):
             finally:
                 os.chdir(old_cwd)
 
+    def test_renderer_allows_swapped_token_order(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "alpha.ara.md"
+            source.write_text(SOURCE, encoding="utf-8")
+            source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+            compiled, _ = segments.build_manifest(source, source_sha)
+            extracted = segments.extract_segments(compiled)
+            swapped = next(
+                segment for segment in extracted if len(segment.tokens) >= 2
+            )
+            (root / ".tmp").mkdir()
+            (root / segments.RESULT_PATH).write_text(
+                "".join(
+                    json.dumps(
+                        {
+                            "id": segment.id,
+                            "text": (
+                                " ".join(
+                                    reversed(segments.TOKEN_RE.findall(self._korean_text(segment)))
+                                )
+                                if segment.id == swapped.id
+                                else self._korean_text(segment)
+                            ),
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
+                    for segment in extracted
+                ),
+                encoding="utf-8",
+            )
+            old_cwd = Path.cwd()
+            try:
+                os.chdir(root)
+                segments.render(
+                    source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH
+                )
+            finally:
+                os.chdir(old_cwd)
+            self.assertEqual(
+                parity.check_pair(
+                    source,
+                    root / segments.DRAFT_PATH,
+                    allow_localized_number_rendering=True,
+                ),
+                [],
+            )
+
     def test_live_failure_fixture_now_passes_structural_parity(self):
         repo = Path(__file__).resolve().parent.parent
         source = repo / (
