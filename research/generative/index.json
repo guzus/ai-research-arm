@@ -1251,7 +1251,32 @@
       "aes",
       "nist",
       "cybersecurity"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T152833--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Claude Mythos 대 HAWK — 실제로 깨진 것과, \"자율\"이 정말로 의미하는 바",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T15:28:33Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan",
+        "tags": [
+          "anthropic",
+          "claude-mythos",
+          "cryptography",
+          "post-quantum",
+          "hawk",
+          "aes",
+          "nist",
+          "cybersecurity"
+        ],
+        "translated_at": "2026-08-18T15:28:33Z",
+        "source_file": "research/generative/2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan.ara.md",
+        "source_sha256": "da7bea1ee03e5b43805613dca5984086d5b861ce38d30c553a830efa49c34afe"
+      }
+    }
   },
   {
     "slug": "gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op",
