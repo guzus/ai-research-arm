@@ -1354,7 +1354,23 @@
     "created_at": "2026-08-04T10:22:07Z",
     "source": "workflow_dispatch",
     "prompt": "Apple v. OpenAI: the post-departure emails OpenAI filed, and whether Apple's own offboarding defeats its trade-secret claim",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T112716--apple-v-openai-the-post-departure-emails-openai-filed-and-wh.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "애플 스스로의 정문: OpenAI가 공개한 퇴사 후 증빙이 실제로 입증하는 것 — 그리고 오프보딩 항변이 그들이 가진 가장 약한 카드인 이유",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T11:27:16Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for apple-v-openai-the-post-departure-emails-openai-filed-and-wh",
+        "tags": [],
+        "translated_at": "2026-08-18T11:27:16Z",
+        "source_file": "research/generative/2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh.ara.md",
+        "source_sha256": "c66482eaf4acbbf26ad70bb3ad3942621c74e573ec5f55c0bcef44e130dc2994"
+      }
+    }
   },
   {
     "slug": "comfyui-company",
