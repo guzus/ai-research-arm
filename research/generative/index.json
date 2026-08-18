@@ -1390,7 +1390,23 @@
     "created_at": "2026-08-06T12:54:46Z",
     "source": "workflow_dispatch",
     "prompt": "GlobalWafers flags a 300mm silicon shortage: spot prices turning and wafer LTAs stretching from three years to eight",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T063812--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "청구서에는 아직 닿지 않은 부족 — GlobalWafers, 300mm 실리콘, 그리고 새롭지 않았던 8년 계약",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T06:38:12Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+        "tags": [],
+        "translated_at": "2026-08-18T06:38:12Z",
+        "source_file": "research/generative/2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn.ara.md",
+        "source_sha256": "94bf773a26a95ff0af92e3e823a2ab7a42886f95e082a7432a5f9293a06ee881"
+      }
+    }
   },
   {
     "slug": "turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m",
