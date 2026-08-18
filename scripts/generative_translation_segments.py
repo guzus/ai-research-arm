@@ -291,6 +291,54 @@ def write_manifest(source_path: Path, source_sha256: str, manifest_path: Path) -
     return manifest
 
 
+_RESULT_LINE_RE = re.compile(
+    r'\{"id"\s*:\s*"(?P<id>[^"]+)"\s*,\s*"text"\s*:\s*"(?P<text>.*)"\s*\}',
+    re.DOTALL,
+)
+
+
+def _parse_result_objects(line: str) -> list[object]:
+    """Parse one JSONL row, recovering Cursor Write leftovers.
+
+    Accept a strict object, concatenated objects on one line, or a greedy
+    {"id","text"} salvage when an unescaped quote makes json.loads see
+    Extra data.
+    """
+    stripped = line.strip()
+    if not stripped or not stripped.startswith("{"):
+        return []
+    try:
+        return [json.loads(stripped)]
+    except json.JSONDecodeError:
+        pass
+    decoder = json.JSONDecoder()
+    objects: list[object] = []
+    index = 0
+    while index < len(stripped):
+        while index < len(stripped) and stripped[index].isspace():
+            index += 1
+        if index >= len(stripped) or stripped[index] != "{":
+            break
+        try:
+            value, end = decoder.raw_decode(stripped, index)
+        except json.JSONDecodeError:
+            break
+        objects.append(value)
+        index = end
+    leftover = stripped[index:].strip() if objects else stripped
+    if objects and leftover and not leftover.startswith("{"):
+        # Unescaped quote closed the text early; take the greedy salvage.
+        match = _RESULT_LINE_RE.search(stripped)
+        if match:
+            return [{"id": match.group("id"), "text": match.group("text")}]
+    if objects:
+        return objects
+    match = _RESULT_LINE_RE.search(stripped)
+    if match:
+        return [{"id": match.group("id"), "text": match.group("text")}]
+    return []
+
+
 def _read_results(path: Path) -> dict[str, str]:
     if not path.is_file() or path.is_symlink() or path != RESULT_PATH:
         raise ValueError(f"translation result must be the regular file {RESULT_PATH}")
@@ -302,21 +350,21 @@ def _read_results(path: Path) -> dict[str, str]:
         # checked after parse, so skipping junk cannot invent a segment.
         if not stripped or not stripped.startswith("{"):
             continue
-        try:
-            value = json.loads(stripped)
-        except json.JSONDecodeError as exc:
+        values = _parse_result_objects(stripped)
+        if not values:
             preview = stripped[:80]
             raise ValueError(
-                f"invalid translation result JSON on line {line_no}: {exc}; preview={preview!r}"
-            ) from exc
-        if not isinstance(value, dict) or set(value) != {"id", "text"}:
-            raise ValueError(f"translation result line {line_no} has invalid fields")
-        segment_id, text = value["id"], value["text"]
-        if not isinstance(segment_id, str) or not isinstance(text, str) or not text.strip():
-            raise ValueError(f"translation result line {line_no} has invalid id/text")
-        if segment_id in translations:
-            raise ValueError(f"duplicate translation segment: {segment_id}")
-        translations[segment_id] = text
+                f"invalid translation result JSON on line {line_no}; preview={preview!r}"
+            )
+        for value in values:
+            if not isinstance(value, dict) or set(value) != {"id", "text"}:
+                raise ValueError(f"translation result line {line_no} has invalid fields")
+            segment_id, text = value["id"], value["text"]
+            if not isinstance(segment_id, str) or not isinstance(text, str) or not text.strip():
+                raise ValueError(f"translation result line {line_no} has invalid id/text")
+            if segment_id in translations:
+                raise ValueError(f"duplicate translation segment: {segment_id}")
+            translations[segment_id] = text
     return translations
 
 
