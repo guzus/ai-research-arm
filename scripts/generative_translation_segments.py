@@ -9,6 +9,7 @@ by opaque tokens, and reconstructs HTML after validating complete model output.
 from __future__ import annotations
 
 import argparse
+import collections
 import hashlib
 import html
 import json
@@ -373,7 +374,9 @@ def render(source_path: Path, source_sha256: str, result_path: Path, draft_path:
     for segment in reversed(segments):
         translated = translations[segment.id]
         found_tokens = TOKEN_RE.findall(translated)
-        if found_tokens != segment.tokens:
+        # Korean word order may swap two numbers in one clause. Identity
+        # replacement below still maps each token to its source literal.
+        if collections.Counter(found_tokens) != collections.Counter(segment.tokens):
             raise ValueError(
                 f"translation segment {segment.id} changed immutable tokens; "
                 f"expected={segment.tokens}, got={found_tokens}"
