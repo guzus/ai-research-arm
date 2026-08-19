@@ -975,7 +975,26 @@
     "tags": [
       "fireworks-fallback",
       "requested-deepseek-v4-flash"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T035537--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "앤트로픽 대 펜타곤: 전례 없는 공급망 위험 지정, 그리고 그것이 드러내는 AI 벤더의 협상력",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T03:55:37Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris",
+        "tags": [
+          "fireworks-fallback",
+          "requested-deepseek-v4-flash"
+        ],
+        "translated_at": "2026-08-19T03:55:37Z",
+        "source_file": "research/generative/2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris.ara.md",
+        "source_sha256": "8330feb89baca62f9542808c58e1152a2b912f4c3d6bfcebea26ba87f9539eea"
+      }
+    }
   },
   {
     "slug": "cxmt",
