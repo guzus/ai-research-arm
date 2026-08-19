@@ -724,7 +724,31 @@
       "frontier-ai",
       "regulatory",
       "policy"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T112316--us-export-controls-reach-a-frontier-model-anthropic-s-forced.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "최초의 모델 단위 수출 통제: 페이블 5 중단이 최전선 AI에 갖는 의미",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T11:23:16Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for us-export-controls-reach-a-frontier-model-anthropic-s-forced",
+        "tags": [
+          "export-controls",
+          "anthropic",
+          "fable-5",
+          "mythos-5",
+          "frontier-ai",
+          "regulatory",
+          "policy"
+        ],
+        "translated_at": "2026-08-19T11:23:16Z",
+        "source_file": "research/generative/2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced.ara.md",
+        "source_sha256": "ff7f50c9466257c780865d7be5aa91b96f97b7531533cb2f3bd3f1a6aed7f649"
+      }
+    }
   },
   {
     "slug": "openai-42-state-ag-subpoena",
