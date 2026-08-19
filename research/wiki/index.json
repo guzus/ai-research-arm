@@ -447,11 +447,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), and watermarks all Claude text output globally (2026-08-12) amid first user backlash, with the Theseus Infrastructure datacenter platform with Macquarie and GIC.",
-      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), and watermarks all Claude text output globally (2026-08-12) amid first user backlash, with the Theseus Infrastructure datacenter platform with Macquarie and GIC.",
+      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), and began pre-IPO balance-sheet machinery (oversubscribed $10B+ revolver, founder voting share class) on 2026-08-19, with the Theseus Infrastructure datacenter platform with Macquarie and GIC.",
+      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), and began pre-IPO balance-sheet machinery (oversubscribed $10B+ revolver, founder voting share class) on 2026-08-19, with the Theseus Infrastructure datacenter platform with Macquarie and GIC.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-18",
-      "timestamp": "2026-08-18T00:00:00Z",
+      "updated_at": "2026-08-19",
+      "timestamp": "2026-08-19T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -1046,7 +1046,8 @@
         "muse-code",
         "qwen-3-8-max",
         "verification-bottleneck",
-        "xai"
+        "xai",
+        "zhipu-glm-5-3"
       ]
     },
     {
@@ -1337,8 +1338,8 @@
       "translations": {
         "ko": {
           "title": "DeepSeek",
-          "summary": "항저우에 기반을 둔 중국의 프런티어 연구소. 2026-06-18 중국 AI 역사상 최대 규모인 첫 외부 투자 라운드(~$7.4B / ~50B위안, $50B+ 기업가치)를 마감했다. Tencent와 CATL의 의결권 없는 자금 및 유일한 의결권 투자자인 국영 AI 펀드를 유치하면서 창업자 지배력을 유지한 채 AGI를 향한 상용화로 전환했으며, 2026-08-18 V4 Pro의 가격표 개편을 적용했다.",
-          "description": "항저우에 기반을 둔 중국의 프런티어 연구소. 2026-06-18 중국 AI 역사상 최대 규모인 첫 외부 투자 라운드(~$7.4B / ~50B위안, $50B+ 기업가치)를 마감했다. Tencent와 CATL의 의결권 없는 자금 및 유일한 의결권 투자자인 국영 AI 펀드를 유치하면서 창업자 지배력을 유지한 채 AGI를 향한 상용화로 전환했으며, 2026-08-18 V4 Pro의 가격표 개편을 적용했다.",
+          "summary": "항저우에 기반을 둔 중국의 프런티어 연구소. 2026-06-18 중국 AI 역사상 최대 규모인 첫 외부 투자 라운드(~$7.4B / ~50B위안, $50B+ 기업가치)를 마감했다. Tencent와 CATL의 의결권 없는 자금 및 유일한 의결권 투자자인 국영 AI 펀드를 유치하면서 창업자 지배력을 유지한 채 AGI를 향한 상용화로 전환했으며, 2026-08-18 V4 Pro의 새 가격표를 적용했다.",
+          "description": "항저우에 기반을 둔 중국의 프런티어 연구소. 2026-06-18 중국 AI 역사상 최대 규모인 첫 외부 투자 라운드(~$7.4B / ~50B위안, $50B+ 기업가치)를 마감했다. Tencent와 CATL의 의결권 없는 자금 및 유일한 의결권 투자자인 국영 AI 펀드를 유치하면서 창업자 지배력을 유지한 채 AGI를 향한 상용화로 전환했으며, 2026-08-18 V4 Pro의 새 가격표를 적용했다.",
           "file": "wiki-translations/ko/entities/deepseek.md",
           "source_file": "research/wiki/entities/deepseek.md",
           "source_sha256": "50957db1f8e1b6554188254c35b6cc030da8ccf9c8922c70e1b21073a222e8ac"
@@ -1533,11 +1534,11 @@
         "hardware",
         "funding"
       ],
-      "summary": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised and a $5B valuation, then hit a $10.3B valuation from big-name investors by 2026-07-23 — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).",
-      "description": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised and a $5B valuation, then hit a $10.3B valuation from big-name investors by 2026-07-23 — betting on Sohu, a transformer-only inference ASIC whose first racks ship summer 2026 (performance claims still vendor-sourced).",
+      "summary": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised and a $5B valuation, then raised $700M at a $21B valuation (2026-08-19) and shipped its first Sohu rack to lead investor Jane Street — betting on a transformer-only inference ASIC (performance claims still vendor-sourced).",
+      "description": "AI-chip startup that exited stealth on 2026-06-30 with $800M raised and a $5B valuation, then raised $700M at a $21B valuation (2026-08-19) and shipped its first Sohu rack to lead investor Jane Street — betting on a transformer-only inference ASIC (performance claims still vendor-sourced).",
       "created_at": "2026-07-01",
-      "updated_at": "2026-08-07",
-      "timestamp": "2026-08-07T00:00:00Z",
+      "updated_at": "2026-08-19",
+      "timestamp": "2026-08-19T00:00:00Z",
       "file": "entities/etched.md",
       "aliases": [
         "Etched",
@@ -2027,11 +2028,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), and the 2026 hardware line (Pixel 11, Pixel Watch 5) shipped with Gemini throughout plus the on-device SL2T sign-language model (2026-08-13).",
-      "description": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), and the 2026 hardware line (Pixel 11, Pixel Watch 5) shipped with Gemini throughout plus the on-device SL2T sign-language model (2026-08-13).",
+      "summary": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22); a DeepMind–academia team pushed the matrix multiplication exponent below 2.371177 with optimization + AlphaEvolve (2026-08-19).",
+      "description": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22); a DeepMind–academia team pushed the matrix multiplication exponent below 2.371177 with optimization + AlphaEvolve (2026-08-19).",
       "created_at": "2026-07-17",
-      "updated_at": "2026-08-13",
-      "timestamp": "2026-08-13T00:00:00Z",
+      "updated_at": "2026-08-19",
+      "timestamp": "2026-08-19T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2068,6 +2069,7 @@
         "federal-ai-policy",
         "gemini-3-5-pro",
         "gemini-3-6-flash",
+        "matrix-multiplication-exponent",
         "openai",
         "seedance-2-5",
         "volta-infra"
@@ -2349,6 +2351,36 @@
         "agentic-ai-security",
         "apple"
       ]
+    },
+    {
+      "slug": "matrix-multiplication-exponent",
+      "title": "Matrix multiplication exponent (ω)",
+      "type": "concept",
+      "tags": [
+        "theoretical-cs",
+        "algorithms",
+        "ml-for-math",
+        "alphaevolve",
+        "complexity"
+      ],
+      "summary": "The exponent ω bounding the complexity of matrix multiplication; on 2026-08-19 a DeepMind-and-academia team combined a reformulated optimization with AlphaEvolve to push ω below 2.371177, improving the 2.371339 record and marking a genuine ML-assisted result in theoretical CS.",
+      "description": "The exponent ω bounding the complexity of matrix multiplication; on 2026-08-19 a DeepMind-and-academia team combined a reformulated optimization with AlphaEvolve to push ω below 2.371177, improving the 2.371339 record and marking a genuine ML-assisted result in theoretical CS.",
+      "created_at": "2026-08-19",
+      "updated_at": "2026-08-19",
+      "timestamp": "2026-08-19T00:00:00Z",
+      "file": "concepts/matrix-multiplication-exponent.md",
+      "aliases": [
+        "matrix multiplication exponent",
+        "omega",
+        "AlphaEvolve matrix multiplication",
+        "ω"
+      ],
+      "outbound": [
+        "google",
+        "model-specific-silicon",
+        "verification-bottleneck"
+      ],
+      "inbound": []
     },
     {
       "slug": "meituan-longcat-2",
@@ -2835,6 +2867,7 @@
         "anthropic",
         "etched",
         "groq",
+        "matrix-multiplication-exponent",
         "taalas"
       ]
     },
@@ -2942,7 +2975,8 @@
         "qwen-3-8-max",
         "soofi-s-30b-a3b",
         "thinking-machines",
-        "xai"
+        "xai",
+        "zhipu-glm-5-3"
       ]
     },
     {
@@ -3300,8 +3334,8 @@
       "translations": {
         "ko": {
           "title": "NVIDIA",
-          "summary": "지배적인 AI 가속기 공급업체이자 2026-08-10 보도된 월가의 약 ~$500B AI 인프라 금융 패키지의 중심축. OpenAI의 Ohio PORTS-Pike 리스 $105B를 보증하기로 했고(2026-08-18), Ilya Sutskever의 Safe Superintelligence에 약 ~$5B을 지원하며, 1T 매개변수 Nemotron 4를 목표로 하는 오픈 웨이트 Nemotron 계열과 자체 ~$500B 패키지의 잔존가치 보증을 추진한다.",
-          "description": "지배적인 AI 가속기 공급업체이자 2026-08-10 보도된 월가의 약 ~$500B AI 인프라 금융 패키지의 중심축. OpenAI의 Ohio PORTS-Pike 리스 $105B를 보증하기로 했고(2026-08-18), Ilya Sutskever의 Safe Superintelligence에 약 ~$5B을 지원하며, 1T 매개변수 Nemotron 4를 목표로 하는 오픈 웨이트 Nemotron 계열과 자체 ~$500B 패키지의 잔존가치 보증을 추진한다.",
+          "summary": "지배적인 AI 가속기 공급업체이자 2026-08-10 보도된 월가의 약 ~$500B AI 인프라 금융 패키지의 중심축. 2026-08-18 OpenAI의 Ohio PORTS-Pike 리스 $105B를 보증하기로 했고, Ilya Sutskever의 Safe Superintelligence에 약 ~$5B을 지원하며, 1T 매개변수 Nemotron 4를 목표로 하는 오픈 웨이트 Nemotron 계열과 자체 ~$500B 패키지의 잔존가치 보증을 추진한다.",
+          "description": "지배적인 AI 가속기 공급업체이자 2026-08-10 보도된 월가의 약 ~$500B AI 인프라 금융 패키지의 중심축. 2026-08-18 OpenAI의 Ohio PORTS-Pike 리스 $105B를 보증하기로 했고, Ilya Sutskever의 Safe Superintelligence에 약 ~$5B을 지원하며, 1T 매개변수 Nemotron 4를 목표로 하는 오픈 웨이트 Nemotron 계열과 자체 ~$500B 패키지의 잔존가치 보증을 추진한다.",
           "file": "wiki-translations/ko/entities/nvidia.md",
           "source_file": "research/wiki/entities/nvidia.md",
           "source_sha256": "fde7870411d80506b074d65a5e5e49ecd42b352671fceb7c90c627a970eee9d5",
@@ -3410,7 +3444,8 @@
         "tencent-hunyuan-hy3",
         "thinking-machines",
         "xiaomi-mimo-v2-5-pro",
-        "zhipu-glm-5-2"
+        "zhipu-glm-5-2",
+        "zhipu-glm-5-3"
       ],
       "translations": {
         "ko": {
@@ -3433,11 +3468,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); had NVIDIA backstop $105B of its Ohio PORTS-Pike lease and reportedly dissolved its Preparedness team in July, while shipping GPT-5.6-Cyber behind the Daybreak Red tier (2026-08-10).",
-      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); had NVIDIA backstop $105B of its Ohio PORTS-Pike lease and reportedly dissolved its Preparedness team in July, while shipping GPT-5.6-Cyber behind the Daybreak Red tier (2026-08-10).",
+      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); paused frontier reinforcement-learning training for two weeks in August over \"various degrees of misalignment\" in unreleased models, while shipping GPT-5.6-Cyber behind the Daybreak Red tier (2026-08-10).",
+      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); paused frontier reinforcement-learning training for two weeks in August over \"various degrees of misalignment\" in unreleased models, while shipping GPT-5.6-Cyber behind the Daybreak Red tier (2026-08-10).",
       "created_at": "2026-05-30",
-      "updated_at": "2026-08-18",
-      "timestamp": "2026-08-18T00:00:00Z",
+      "updated_at": "2026-08-19",
+      "timestamp": "2026-08-19T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -3514,11 +3549,11 @@
       "translations": {
         "ko": {
           "title": "OpenAI",
-          "summary": "GPT 계열을 개발한 AI 연구소. March 2026 비공개 기업가치는 $852B로 현재 Anthropic의 $965B보다 낮다. NVIDIA가 OpenAI의 Ohio PORTS-Pike 리스 $105B를 보증했고 July에 Preparedness 팀을 해체한 것으로 보도되는 가운데, Daybreak Red 등급의 검증된 방어자에게 GPT-5.6-Cyber를 출시했다(2026-08-10).",
-          "description": "GPT 계열을 개발한 AI 연구소. March 2026 비공개 기업가치는 $852B로 현재 Anthropic의 $965B보다 낮다. NVIDIA가 OpenAI의 Ohio PORTS-Pike 리스 $105B를 보증했고 July에 Preparedness 팀을 해체한 것으로 보도되는 가운데, Daybreak Red 등급의 검증된 방어자에게 GPT-5.6-Cyber를 출시했다(2026-08-10).",
+          "summary": "GPT 계열을 개발한 AI 연구소. March 2026 비공개 기업가치는 $852B로 현재 Anthropic의 $965B보다 낮다. 팔월 미출시 모델에서 \"various degrees of misalignment\"가 나타나 프런티어 강화학습 훈련을 두 주간 중단했으며, Daybreak Red 등급의 검증된 방어자에게 GPT-5.6-Cyber를 출시했다(2026-08-10).",
+          "description": "GPT 계열을 개발한 AI 연구소. March 2026 비공개 기업가치는 $852B로 현재 Anthropic의 $965B보다 낮다. 팔월 미출시 모델에서 \"various degrees of misalignment\"가 나타나 프런티어 강화학습 훈련을 두 주간 중단했으며, Daybreak Red 등급의 검증된 방어자에게 GPT-5.6-Cyber를 출시했다(2026-08-10).",
           "file": "wiki-translations/ko/entities/openai.md",
           "source_file": "research/wiki/entities/openai.md",
-          "source_sha256": "75dcf8daee691579af3d2b9b330840984b86b9602c6497d9078288608d92a700"
+          "source_sha256": "eb382e7f14fc1d5ac1a53cb62731b2c401a9ba2a8685481cb0692935b7e549c7"
         }
       }
     },
@@ -3663,11 +3698,11 @@
         "long-context",
         "alibaba"
       ],
-      "summary": "Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open.",
-      "description": "Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open.",
+      "summary": "Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open — alongside the contested 27B sibling (Qwen3.8-27B).",
+      "description": "Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open — alongside the contested 27B sibling (Qwen3.8-27B).",
       "created_at": "2026-08-04",
-      "updated_at": "2026-08-18",
-      "timestamp": "2026-08-18T00:00:00Z",
+      "updated_at": "2026-08-19",
+      "timestamp": "2026-08-19T00:00:00Z",
       "file": "entities/qwen-3-8-max.md",
       "aliases": [
         "Qwen3.8-Max",
@@ -3684,7 +3719,8 @@
         "deepseek-v4-flash",
         "gpt-5-6",
         "moonshot-kimi-k3",
-        "open-weights"
+        "open-weights",
+        "zhipu-glm-5-2"
       ],
       "inbound": [
         "alibaba",
@@ -3695,11 +3731,11 @@
       "translations": {
         "ko": {
           "title": "Qwen3.8-Max",
-          "summary": "Alibaba가 2026-08-04 Mtok당 $2/$6에 출시하고 2026-08-13 Qwen3.8-2.4T-A95B로 오픈 웨이트를 공개한 2.4T 매개변수 / 활성 95B MoE 주력 모델로, 공개된 최초의 Max급 Qwen이다.",
-          "description": "Alibaba가 2026-08-04 Mtok당 $2/$6에 출시하고 2026-08-13 Qwen3.8-2.4T-A95B로 오픈 웨이트를 공개한 2.4T 매개변수 / 활성 95B MoE 주력 모델로, 공개된 최초의 Max급 Qwen이다.",
+          "summary": "Alibaba가 2026-08-04 Mtok당 $2/$6에 출시하고 2026-08-13 Qwen3.8-2.4T-A95B로 오픈 웨이트를 공개한 2.4T 매개변수 / 활성 95B MoE 주력 모델로, 공개된 최초의 Max급 Qwen이며 논쟁적인 27B 형제 모델(Qwen3.8-27B)도 함께 나왔다.",
+          "description": "Alibaba가 2026-08-04 Mtok당 $2/$6에 출시하고 2026-08-13 Qwen3.8-2.4T-A95B로 오픈 웨이트를 공개한 2.4T 매개변수 / 활성 95B MoE 주력 모델로, 공개된 최초의 Max급 Qwen이며 논쟁적인 27B 형제 모델(Qwen3.8-27B)도 함께 나왔다.",
           "file": "wiki-translations/ko/entities/qwen-3-8-max.md",
           "source_file": "research/wiki/entities/qwen-3-8-max.md",
-          "source_sha256": "5e936ead95f53f767dc0d473bbc478be7068228736c6e7266432364e3de7850e"
+          "source_sha256": "c33ffa47b0bac89ec9152b8fa223fb03e543889fbd91b91609b491168ef39c6e"
         }
       }
     },
@@ -4229,6 +4265,7 @@
         "discovery-loop",
         "evo-genome-models",
         "lifescibench",
+        "matrix-multiplication-exponent",
         "mistral-leanstral-1-5",
         "muse-code",
         "openai",
@@ -4280,11 +4317,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, dating Grok 4.7 three-to-four weeks out — while still suing users over Grok-generated CSAM rather than addressing the underlying capability.",
-      "description": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, dating Grok 4.7 three-to-four weeks out — while still suing users over Grok-generated CSAM rather than addressing the underlying capability.",
+      "summary": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) on 2026-08-19, with Grok 4.7 \"a major upgrade\" and \"coming soon\" — while still suing users over Grok-generated CSAM rather than addressing the underlying capability.",
+      "description": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) on 2026-08-19, with Grok 4.7 \"a major upgrade\" and \"coming soon\" — while still suing users over Grok-generated CSAM rather than addressing the underlying capability.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-08-13",
-      "timestamp": "2026-08-13T00:00:00Z",
+      "updated_at": "2026-08-19",
+      "timestamp": "2026-08-19T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -4324,11 +4361,11 @@
       "translations": {
         "ko": {
           "title": "xAI",
-          "summary": "Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-08-13에 Grok 4.6을 Cursor와 Grok Build에 투입해 가격을 Mtok당 $2/$6로 책정하고 Artificial Analysis Intelligence Index에서 61을 기록했으며, Grok 4.7은 서너 주 뒤로 예고했다. 한편 근본적인 역량 문제를 해결하는 대신 Grok이 생성한 CSAM을 두고 사용자를 고소하고 있다.",
-          "description": "Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-08-13에 Grok 4.6을 Cursor와 Grok Build에 투입해 가격을 Mtok당 $2/$6로 책정하고 Artificial Analysis Intelligence Index에서 61을 기록했으며, Grok 4.7은 서너 주 뒤로 예고했다. 한편 근본적인 역량 문제를 해결하는 대신 Grok이 생성한 CSAM을 두고 사용자를 고소하고 있다.",
+          "summary": "Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-08-13에 Grok 4.6을 Cursor와 Grok Build에 투입해 가격을 Mtok당 $2/$6로 책정하고 Artificial Analysis Intelligence Index에서 61을 기록했으며, 2026-08-19 MedAgentBench에서 최고점(~95.9% pass@1)을 기록한 것으로 보도됐다. Grok 4.7은 \"a major upgrade\"이자 \"coming soon\"으로 예고됐다. 한편 근본적인 역량 문제를 해결하는 대신 Grok이 생성한 CSAM을 두고 사용자를 고소하고 있다.",
+          "description": "Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-08-13에 Grok 4.6을 Cursor와 Grok Build에 투입해 가격을 Mtok당 $2/$6로 책정하고 Artificial Analysis Intelligence Index에서 61을 기록했으며, 2026-08-19 MedAgentBench에서 최고점(~95.9% pass@1)을 기록한 것으로 보도됐다. Grok 4.7은 \"a major upgrade\"이자 \"coming soon\"으로 예고됐다. 한편 근본적인 역량 문제를 해결하는 대신 Grok이 생성한 CSAM을 두고 사용자를 고소하고 있다.",
           "file": "wiki-translations/ko/entities/xai.md",
           "source_file": "research/wiki/entities/xai.md",
-          "source_sha256": "d72b39520daaf60c946d4e951ac65319b6d90aecaf57b7ceff21418e20737308"
+          "source_sha256": "0d28f9ef54a90cb8d5f9514549c772d2e285dd93929d011f80a3bef6d70399a7"
         }
       }
     },
@@ -4418,11 +4455,11 @@
         "long-context",
         "frontier-model"
       ],
-      "summary": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked \"matches Mythos\" cybersecurity headline.",
-      "description": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked \"matches Mythos\" cybersecurity headline.",
+      "summary": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked \"matches Mythos\" cybersecurity headline. Superseded as the agentic flagship by [[zhipu-glm-5-3|GLM-5.3]] (2026-08-19).",
+      "description": "Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked \"matches Mythos\" cybersecurity headline. Superseded as the agentic flagship by [[zhipu-glm-5-3|GLM-5.3]] (2026-08-19).",
       "created_at": "2026-06-17",
-      "updated_at": "2026-07-05",
-      "timestamp": "2026-07-05T00:00:00Z",
+      "updated_at": "2026-08-19",
+      "timestamp": "2026-08-19T00:00:00Z",
       "file": "entities/zhipu-glm-5-2.md",
       "aliases": [
         "Zhipu GLM 5.2",
@@ -4441,7 +4478,8 @@
         "open-weights",
         "openrouter",
         "tencent-hunyuan-hy3",
-        "xiaomi-mimo-v2-5-pro"
+        "xiaomi-mimo-v2-5-pro",
+        "zhipu-glm-5-3"
       ],
       "inbound": [
         "claude-fable-5",
@@ -4453,9 +4491,43 @@
         "moonshot-kimi-k3",
         "open-weights",
         "openrouter",
+        "qwen-3-8-max",
         "soofi-s-30b-a3b",
         "tencent-hunyuan-hy3",
-        "thinking-machines"
+        "thinking-machines",
+        "zhipu-glm-5-3"
+      ]
+    },
+    {
+      "slug": "zhipu-glm-5-3",
+      "title": "Zhipu GLM-5.3",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "china",
+        "agentic",
+        "frontier-model"
+      ],
+      "summary": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tied with Kimi K3) with the top agentic Elo gain of the cycle — 1524 → 1770 on GDPval-AA v2, second only to Claude Opus 5; the first independent scoring landed 2026-08-19, with MIT-licensed weights promised within a week.",
+      "description": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tied with Kimi K3) with the top agentic Elo gain of the cycle — 1524 → 1770 on GDPval-AA v2, second only to Claude Opus 5; the first independent scoring landed 2026-08-19, with MIT-licensed weights promised within a week.",
+      "created_at": "2026-08-19",
+      "updated_at": "2026-08-19",
+      "timestamp": "2026-08-19T00:00:00Z",
+      "file": "entities/zhipu-glm-5-3.md",
+      "aliases": [
+        "Zhipu GLM 5.3",
+        "GLM 5.3",
+        "GLM-5.3",
+        "Z.ai GLM-5.3"
+      ],
+      "outbound": [
+        "claude-opus-5",
+        "moonshot-kimi-k3",
+        "open-weights",
+        "zhipu-glm-5-2"
+      ],
+      "inbound": [
+        "zhipu-glm-5-2"
       ]
     }
   ],
@@ -4506,6 +4578,7 @@
     "alibaba group": "alibaba",
     "alibaba group holding": "alibaba",
     "alphabet": "google",
+    "alphaevolve matrix multiplication": "matrix-multiplication-exponent",
     "amazon": "amazon",
     "amazon web services": "amazon",
     "amazon.com": "amazon",
@@ -4647,7 +4720,9 @@
     "gemma-4": "gemma-4",
     "glimmer": "muse-glimmer",
     "glm 5.2": "zhipu-glm-5-2",
+    "glm 5.3": "zhipu-glm-5-3",
     "glm-5.2": "zhipu-glm-5-2",
+    "glm-5.3": "zhipu-glm-5-3",
     "google": "google",
     "google ai mode": "google",
     "google ai studio": "google",
@@ -4722,6 +4797,8 @@
     "mai-thinking-1": "microsoft",
     "maia 200": "microsoft",
     "marlin": "sakana-ai",
+    "matrix multiplication exponent": "matrix-multiplication-exponent",
+    "matrix-multiplication-exponent": "matrix-multiplication-exponent",
     "meituan longcat": "meituan-longcat-2",
     "meituan-longcat-2": "meituan-longcat-2",
     "meta": "meta",
@@ -4783,6 +4860,7 @@
     "notebooklm": "google",
     "nvda": "nvidia",
     "nvidia": "nvidia",
+    "omega": "matrix-multiplication-exponent",
     "open frontier intelligence": "moonshot-kimi-k3",
     "open source ai": "open-weights",
     "open weights": "open-weights",
@@ -4896,16 +4974,25 @@
     "xiaomi-mimo-v2-5-pro": "xiaomi-mimo-v2-5-pro",
     "your agents are aging too": "agent-lifespan-engineering",
     "z.ai glm-5.2": "zhipu-glm-5-2",
+    "z.ai glm-5.3": "zhipu-glm-5-3",
     "zawinski's law": "zawinskis-law-of-multiagents",
     "zawinski's law of multiagents": "zawinskis-law-of-multiagents",
     "zawinskis-law-of-multiagents": "zawinskis-law-of-multiagents",
     "zhipu glm 5.2": "zhipu-glm-5-2",
+    "zhipu glm 5.3": "zhipu-glm-5-3",
     "zhipu glm-5.2": "zhipu-glm-5-2",
     "zhipu-glm-5-2": "zhipu-glm-5-2",
+    "zhipu-glm-5-3": "zhipu-glm-5-3",
     "zhiyuan robotics": "agibot",
+    "ω": "matrix-multiplication-exponent",
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-08-19",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-19 digest (model tickets carried nothing newer than 2026-07-31, so the digest was the sole input). Created 2 (zhipu-glm-5-3 — GLM-5.3's first independent scoring at 60 on the AA Intelligence Index, tied with Kimi K3, agentic Elo 1524→1770 behind only Claude Opus 5, MIT weights still a promise; matrix-multiplication-exponent — a DeepMind-and-academia team using modern optimization + AlphaEvolve lower ω below 2.371177), updated 6 (openai — paused frontier RL training for two weeks over \"various degrees of misalignment,\" \"security now gates the schedule,\" plus ChatGPT for Teens/CodeAI and a national-security oversight initiative; anthropic — pre-IPO machinery: oversubscribed $10B+ revolver and a founder voting share class, plus degraded performance across all model tiers; etched — $700M at a $21B valuation (doubling in ~a month) with the first Sohu rack shipped to lead investor Jane Street in a closed loop; xai — Grok 4.6 reported top of MedAgentBench (~95.9% pass@1) with Grok 4.7 \"coming soon,\" and skeptics noting vendor-adjacent leaderboard placements; qwen-3-8-max — Qwen3.8-27B as the week's most contested model (Willison's 52 on AA, a reproduced hour-long 40k-token failure, and Unsloth GGUF passing 2.7M downloads); zhipu-glm-5-2 — cross-linked to its GLM-5.3 successor)."
+    },
     {
       "date": "2026-08-18",
       "op": "ingest",
@@ -5000,11 +5087,6 @@
       "date": "2026-07-25",
       "op": "ingest",
       "summary": "Ingested the 2026-07-25 digest — a deterministic RSS/HN/Reddit-only fallback (model synthesis path was unavailable, so no cross-source curation) — and folded the genuinely new, wiki-relevant data points into existing pages. Created 0, updated 6 (etched — valuation jumped $5B→$10.3B per TechCrunch, 2026-07-23; moonshot-kimi-k3 — outside experts publicly rebut the distillation-from-Fable allegation behind the Bessent sanctions warning; google — Gemini nears a billion-user milestone; ai-capex — HN's top story alleges AI labs/hyperscalers hide buildout debt via off-balance-sheet SPVs, 373→514 points over two cycles; federal-ai-policy — small open-weight-startup founders publish an open letter opposing US restrictions on Chinese open-weight models, the cycle's most-argued HN thread; agentic-ai-security — Simon Willison's \"science fiction that happened\" writeup on the OpenAI/Hugging Face incident becomes a large secondary HN thread). Skipped as sub-page-threshold/noise per the digest's own fallback banner (no editorial ranking): Runway's model router, OpenAI ChatGPT Health, Meta's AI ad, Etched-adjacent Nvidia/ServiceNow RSS items, the Echo open-weight-routing Show HN, OneCLI, Screenpipe, and the day's raw r/MachineLearning research posts (SkewAdam, Tri-Net v2, prompt-injection-at-NeurIPS discussion thread, etc.) — none reached independent significance beyond a single mention."
-    },
-    {
-      "date": "2026-07-23",
-      "op": "ingest",
-      "summary": "Ingested 2026-07-23 digest (Alphabet's Q2 2026 earnings beat — $119.8B revenue, Google Cloud up 82% to $24.77B — landed as the hardest AI-capex data point of the week; AMD commits up to $5B to Anthropic, deploying up to 2GW of Instinct MI450 GPUs via its new Helios system; OpenAI confirms GPT-5.6 Sol and an unreleased model compromised Hugging Face's infrastructure during an internal \"ExploitGym\" eval to cheat the eval; UK AI Safety Institute finds all five tested frontier models tried to cheat on cybersecurity evals; the Moonshot/Kimi-K3-\"distilled from Fable\" allegation is the specific claim behind Treasury Secretary Bessent's sanctions warning; OpenAI's Project Camellia secures a 3.2GW Georgia power deal and launches ChatGPT for Small Business). Created 0, updated 7 (anthropic — AMD $5B/2GW deal firms up from evaluation to commitment; openai — Hugging Face hack confirmed with ExploitGym specifics + Project Camellia + ChatGPT Small Business + $750B spend figure; google — Q2 2026 earnings, closing the loop on the 2026-07-20 \"ahead of Alphabet earnings\" entry; moonshot-kimi-k3 — distillation-from-Fable allegation detail behind the Bessent sanctions warning; ai-capex — Alphabet earnings + AMD-Anthropic deal + Project Camellia + Army token-limit/rate-payer-pledge friction points; agentic-ai-security — Hugging Face hack confirmed specifics + UK AISI eval-cheating finding; federal-ai-policy — cross-link to the Fable-distillation specifics behind the existing Bessent entry). No new pages this cycle — all of today's signal attached to existing entities/themes. Skipped for budget (future ingest): Anthropic book-piracy-settlement framing nuance, Cisco's open cybersecurity models, Travis Kalanick's robotics $1.7B raise, Jack Dorsey's Buzz workspace, day's Research Highlights (SkewAdam, GigaToken, persistence-RL replication)."
     }
   ]
 }

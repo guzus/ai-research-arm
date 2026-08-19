@@ -2,9 +2,9 @@
 slug: qwen-3-8-max
 language: ko
 source_file: research/wiki/entities/qwen-3-8-max.md
-source_sha256: 1fcf5a263d70be432686cc077cc9306b56dcf2cc8f33851682359c6d76e3ef73
+source_sha256: c33ffa47b0bac89ec9152b8fa223fb03e543889fbd91b91609b491168ef39c6e
 title: Qwen3.8-Max
-description: Alibaba가 2026-08-04 Mtok당 $2/$6에 출시하고 2026-08-13 Qwen3.8-2.4T-A95B로 오픈 웨이트를 공개한 2.4T 매개변수 / 활성 95B MoE 주력 모델로, 공개된 최초의 Max급 Qwen이다.
+description: Alibaba가 2026-08-04 Mtok당 $2/$6에 출시하고 2026-08-13 Qwen3.8-2.4T-A95B로 오픈 웨이트를 공개한 2.4T 매개변수 / 활성 95B MoE 주력 모델로, 공개된 최초의 Max급 Qwen이며 논쟁적인 27B 형제 모델(Qwen3.8-27B)도 함께 나왔다.
 ---
 
 **Qwen3.8-Max**는 [[alibaba|Alibaba]]의 주력 텍스트 모델이다. **2.4 trillion-parameter
@@ -66,6 +66,36 @@ description: Alibaba가 2026-08-04 Mtok당 $2/$6에 출시하고 2026-08-13 Qwen
   출시 관련 HN 스레드는 **MoE active-parameter economics**, 즉 ~95B-active
   모델이 프런티어 경쟁 모델 대비 어떻게 가격을 책정하는지에 주목했다
   (ARA 다이제스트 2026-08-13).
+
+- **27B 형제 모델에 표준 실행 경로가 생기고 강한 오픈 모델 WeirdML
+  점수를 기록했다(2026-08-18).** `Qwen3.8-27B`에는 이제 재현 가능한 실행 경로가
+  있다. llama.cpp의 Georgi Gerganov는 `llama serve -hf
+  ggml-org/Qwen3.8-27B-GGUF --spec-type draft-mtp`를 제시했다. 공식 ggml-org
+  변환본에 모델 자체의 **multi-token-prediction head를 통한 speculative
+  decoding**을 결합하므로 **별도 draft model이 필요 없다**. 상충하는 사용기만
+  이어진 일주일 뒤 처음으로 공유된 기준점이다. 다만 양자화, 추론 예산,
+  토큰 집계 방식까지 고정하지는 않는다. **WeirdML**에서 **2.4T A95B는
+  extra-high reasoning으로 75.2%**를 기록해 **Kimi-K3에 이어 오픈 모델 두 번째**에
+  올랐다. 추론 토큰을 많이 쓰고 매우 긴 코드를 작성한다는 단서가 붙는다. 한편
+  **Qwen3.8-27B가 Artificial Analysis index에서 DeepSeek V4-Pro 수준에
+  도달했다는 주장은 여전히 미해결**이다. HN에서는 52점이 거론됐지만 Twitter의
+  유일한 언급은 screenshot, index version, quantization 정보가 없는 숫자 하나뿐이었다.
+  아래 27B 미해결 질문과 함께 읽어야 한다. 대부분의 사용자가 실제로 실행할 수 있는
+  크기에 canonical command와 신뢰할 만한 open-model score가 생겼지만
+  "V4-Pro와 동급"이라는 주장은 검증되지 않았다(ARA daily digest 2026-08-18).
+
+- **27B 형제 모델은 이번 주 가장 논쟁적인 모델이다(2026-08-19).** Simon Willison은
+  **Artificial Analysis Intelligence Index 52점**으로 **[[gpt-5-6|GPT-5.6 Luna]]
+  (max)와 동급이고 훨씬 큰 모델보다 한 점 낮다**고 전했다. 그는 그날 Bluesky에서
+  가장 많은 반응을 얻은 게시물(210 likes)에서 이를 "지금까지 써 본 local model 중
+  가장 재미있다"고 평가했다. 별도 스크린샷 주장은 **Agentic Index 51점으로
+  [[zhipu-glm-5-2|GLM-5.2]]와 DeepSeek V4 Pro보다 높다**고 하지만 benchmark
+  publisher가 확인하지 않았다. 반대로 한 **재현 가능한 hands-on test**에서는
+  **2D fluid-simulation prompt를 약 ~an hour 동안 40,000 tokens 추론**하고도
+  **작동하지 않는 페이지**를 반환했다. Opus 4.5는 같은 공개 프롬프트를 약 ~a minute에
+  one-shot으로 해결했다. **Unsloth GGUF는 2.7M downloads를 넘었고 Hugging Face
+  trending #2**에 올랐다. 논쟁적인 벤치마크 뒤의 실제 채택 신호다
+  (ARA daily digest 2026-08-19).
 
 ## 미해결 질문
 

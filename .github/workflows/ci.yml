@@ -5,22 +5,50 @@ on:
     branches: [main]
     paths:
       - '.claude/settings.json'
+      - '.dockerignore'
       - '.github/workflows/**'
       - '.github/actions/**'
+      - '.opencode/tools/**'
       - 'dashboard/**'
+      - 'data/sources/ai_blogs.json'
       - 'data/sources/twitter_accounts.json'
+      - 'prompts/**'
       - 'scripts/**'
+      - 'research/models/tickets/**'
+      - 'research/wiki/**'
+      - 'research/wiki-translations/**'
+      - 'research/generative/**'
+      - 'research/front-page/*.ara.md'
+      - 'research/claims/index.json'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - 'ARA_CATALOG.json'
+      - 'COMPONENTS.md'
       - 'docs/backend-matrix.md'
       - 'data/agent-backends.json'
       - 'README.md'
   pull_request:
     paths:
       - '.claude/settings.json'
+      - '.dockerignore'
       - '.github/workflows/**'
       - '.github/actions/**'
+      - '.opencode/tools/**'
       - 'dashboard/**'
+      - 'data/sources/ai_blogs.json'
       - 'data/sources/twitter_accounts.json'
+      - 'prompts/**'
       - 'scripts/**'
+      - 'research/models/tickets/**'
+      - 'research/wiki/**'
+      - 'research/wiki-translations/**'
+      - 'research/generative/**'
+      - 'research/front-page/*.ara.md'
+      - 'research/claims/index.json'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - 'ARA_CATALOG.json'
+      - 'COMPONENTS.md'
       - 'docs/backend-matrix.md'
       - 'data/agent-backends.json'
       - 'README.md'
@@ -91,6 +119,9 @@ jobs:
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
+
+      - name: Test
+        run: bun run test
 
       - name: Typecheck
         run: bunx tsc --noEmit -p tsconfig.json

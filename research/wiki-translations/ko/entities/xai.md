@@ -2,9 +2,9 @@
 slug: xai
 language: ko
 source_file: research/wiki/entities/xai.md
-source_sha256: d72b39520daaf60c946d4e951ac65319b6d90aecaf57b7ceff21418e20737308
+source_sha256: 0d28f9ef54a90cb8d5f9514549c772d2e285dd93929d011f80a3bef6d70399a7
 title: xAI
-description: Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-08-13에 Grok 4.6을 Cursor와 Grok Build에 투입해 가격을 Mtok당 $2/$6로 책정하고 Artificial Analysis Intelligence Index에서 61을 기록했으며, Grok 4.7은 서너 주 뒤로 예고했다. 한편 근본적인 역량 문제를 해결하는 대신 Grok이 생성한 CSAM을 두고 사용자를 고소하고 있다.
+description: Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-08-13에 Grok 4.6을 Cursor와 Grok Build에 투입해 가격을 Mtok당 $2/$6로 책정하고 Artificial Analysis Intelligence Index에서 61을 기록했으며, 2026-08-19 MedAgentBench에서 최고점(~95.9% pass@1)을 기록한 것으로 보도됐다. Grok 4.7은 "a major upgrade"이자 "coming soon"으로 예고됐다. 한편 근본적인 역량 문제를 해결하는 대신 Grok이 생성한 CSAM을 두고 사용자를 고소하고 있다.
 ---
 
 **xAI**는 일론 머스크가 설립한 프런티어 AI 연구소이자 **Grok** 모델군의
@@ -159,6 +159,17 @@ description: Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-
   실행되는 자율 워크플로에서는 … 최상위 OpenAI와 Anthropic 모델의 꼬리 성능이 훨씬
   낫다"고 썼다. 머스크는 **18:34 UTC**에 초기 학습이 이미 끝난 **Grok 4.7을 서너 주
   뒤**로 예고했다(ARA 다이제스트 2026-08-13).
+
+- **Grok 4.6이 MedAgentBench 최고점으로 보도되고 Grok 4.7은 "coming soon"
+  (2026-08-19).** Grok 4.6은 MedAgentBench에서 **~95.9% pass@1**을 기록해
+  최고점에 오른 것으로 보도됐다. 이는 세 차례 실행 평균이며 범위는
+  95.3–96.3%다. 종전 최고점은 [[gpt-5-6|GPT-5.6 Sol]]의 **~94.7%**였고,
+  Elon Musk가 결과를 확산했다. 이는 엿새 동안 나온 **최소 네 번째 우호적인
+  리더보드 순위**이며 그중 여러 개가 **공급업체와 인접한 평가**이므로, 이 페이지가
+  xAI의 대담한 벤치마크 주장에 적용해 온 것과 같은 회의적인 태도로 최상급 표현을
+  다뤄야 한다. Musk는 별도로 **Grok 4.7이 "a major upgrade"이며 "coming soon"**이라고
+  말했지만 **날짜는 제시하지 않았다**. 2026-08-13 Grok 4.6 출시 때 제시한 약
+  ~3–4-week cadence와는 일치한다(ARA daily digest 2026-08-19).
 
 ## 열린 질문
 
