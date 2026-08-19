@@ -847,7 +847,26 @@
     "tags": [
       "glm-5p2",
       "rerun"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T071538--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "브로드컴, AI의 은행이 되다: 아폴로-블랙스톤의 칩 금융 기계와 그 아래의 순환 질문",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T07:15:38Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th",
+        "tags": [
+          "glm-5p2",
+          "rerun"
+        ],
+        "translated_at": "2026-08-19T07:15:38Z",
+        "source_file": "research/generative/2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th.ara.md",
+        "source_sha256": "bb0b108542ef1ab95708bd58a20816c72a2e2e4a6bec9c7939e3bc00d1c3bd35"
+      }
+    }
   },
   {
     "slug": "test-ornn-com-codex-2",
