@@ -3,7 +3,7 @@ slug: xai-grok-for-excel-2026-07
 title: Grok for Excel launch
 company: xAI
 model: Grok for Excel
-status: released
+status: closed
 status_note: |
   Official @grok launch: build financial models, analyze data, and
   generate charts/graphs with Grok 4.5 directly inside Excel.
@@ -15,12 +15,14 @@ verification: confirmed
 sources:
   - https://x.com/grok/status/2079233333893185876
 created_at: 2026-07-21
-updated_at: 2026-07-21
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-07-21
     change: Created — xAI officially launched Grok for Excel, letting users build financial models and analyze data with Grok 4.5 inside Excel.
+  - ts: 2026-08-19
+    change: "Closed — released-and-aged. Grok for Excel launched 2026-07-21, 29 days ago (>=4 weeks), with no follow-on signal since. Normal coverage from here."
 ---
 
 xAI's official account announced the general launch of "Grok for Excel,"

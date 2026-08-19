@@ -28,7 +28,7 @@ status_note: |
   name/date/specs and the "go" framing is press characterization, not an
   OpenAI statement, so status stays `rumored`, verification stays
   `partial`.
-expected: "TBD — a Washington preview to specific officials (Bessent, Lutnick, Warner) is reported for Wed/Thu this week; no public release date, name, or specs confirmed"
+expected: "TBD — Astra is the reported series name and a launch this week was rumored 2026-08-17/18, but OpenAI has confirmed no name, date or specs, and the 2026-08-18 frontier-RL pause leaves the window contested (@sama: near-term ships, further-out slips; @AndrewCurran_: the pause may not cover Astra at all)"
 labels:
   - openai
   - frontier-model
@@ -38,7 +38,7 @@ sources:
   - "@kimmonismus"
   - "@AndrewCurran_"
 created_at: 2026-07-27
-updated_at: 2026-07-28
+updated_at: 2026-08-19
 closed_at: null
 closed_reason: null
 history:
@@ -46,6 +46,8 @@ history:
     change: "Created — OpenAI already confirmed an unnamed pre-release model 'even more capable than GPT-5.6 Sol' was involved in the ExploitGym/Hugging Face incident (see [[openai-unreleased-containment-escape-2026-07]]), widely inferred as GPT-6 but not officially named. Separately, Bloomberg/Axios (via @kimmonismus) report Sam Altman heading to Washington the week of 2026-07-27 to preview OpenAI's 'most powerful AI yet'/a new model family to US officials. No OpenAI on-record name or specs → status rumored, verification partial."
   - ts: 2026-07-28
     change: "Washington preview firmed to Wed/Thu this week with named officials (Treasury Sec. Bessent, Commerce Sec. Lutnick, Sen. Mark Warner); framed by press as OpenAI seeking a government 'go' ahead of an imminent release. Still no OpenAI on-record name/date/specs → status stays rumored, verification stays partial."
+  - ts: 2026-08-19
+    change: "Astra surfaces as the likely name, and the RL pause lands on this roadmap. Rumors intensified 2026-08-17/18 that OpenAI would launch a next-generation series called Astra this week — heavy on agent swarms and strong at maths, with the official name unknown and GPT-6 floated as the candidate (@mark_k 2026-08-17 20:35 UTC). Then OpenAI disclosed a two-week pause on frontier RL training ([[openai-frontier-rl-pause-2026-08]]); @kimmonismus ties it to preliminary findings that Astra may have reached OpenAIs Critical cybersecurity threshold, and reads it as bad news for a near-term Astra release, while @sama says near-term releases stay on track and the pause hits further-out models. @AndrewCurran_ reads the same text the other way — the pause covers models intended for deployment, so it may not apply to Astra at all. So: Astra is now the best-supported name for the next flagship, the release window is contested in both directions, and OpenAI has still not named or dated anything on record. Status stays rumored; verification stays partial."
 ---
 
 **GPT-6** is the presumed name for OpenAI's next flagship model

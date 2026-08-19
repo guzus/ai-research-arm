@@ -3,7 +3,7 @@ slug: mistral-leanstral-1-5
 title: Mistral ships Leanstral 1.5 — open-weight formal-verification model for Lean 4
 company: Mistral AI
 model: Leanstral 1.5
-status: released
+status: closed
 status_note: |
   Mistral shipped **Leanstral 1.5** ("Proof Abundance for All"), an
   **open-weight (Apache 2.0), 119B-A6B MoE** formal-verification model for
@@ -30,12 +30,14 @@ sources:
   - https://docs.mistral.ai/models/model-cards/leanstral-1-5-26-06
   - https://huggingface.co/mistralai/Leanstral-1.5-119B-A6B
 created_at: 2026-07-05
-updated_at: 2026-07-05
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-07-05
     change: "Created — Mistral shipped Leanstral 1.5, an Apache-2.0, 119B-A6B MoE formal-verification model for Lean 4 (primary blog + dated model card + live Hugging Face weights). Saturates miniF2F, SOTA on FATE-H/FATE-X, and found 5 previously-unknown bugs across 57 scanned repos. Two independent Hacker News waves (06-30 309pts, 07-03 364pts) plus The Decoder corroborate. Primary source + live artifact + multi-wave third-party pickup → status released, verification confirmed."
+  - ts: 2026-08-19
+    change: "Closed — released-and-aged. Leanstral 1.5 shipped 2026-07-05, 45 days ago (>=4 weeks), primary blog + model card + live weights, with no follow-on signal since. Normal coverage from here."
 ---
 
 Mistral released **Leanstral 1.5** ("Proof Abundance for All"), an

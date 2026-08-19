@@ -3,7 +3,7 @@ slug: anthropic-physical-intelligence-rumor-2026-07
 title: Weekend rumor of Anthropic acquiring robotics startup Physical Intelligence
 company: Anthropic / Physical Intelligence
 model: null
-status: rumored
+status: closed
 status_note: |
   A single account (@0xConsolelog) reports a weekend rumor circulating on
   AI Twitter that **Anthropic is in talks to acquire (or has acquired)
@@ -23,12 +23,14 @@ verification: unverified
 sources:
   - "@0xConsolelog"
 created_at: 2026-07-22
-updated_at: 2026-07-22
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "stale-rumor-unverified"
 history:
   - ts: 2026-07-22
     change: "Created — single-account weekend rumor (@0xConsolelog) that Anthropic is acquiring robotics startup Physical Intelligence; no official confirmation from either party → status rumored, verification unverified."
+  - ts: 2026-08-19
+    change: "Closed — stale-rumor-unverified. Single-account weekend rumor from 2026-07-22; 28 days with no second source, no deal terms, and no statement from Anthropic or Physical Intelligence, including in the 2026-08-19 window. Per the >=15-cycle unverified trigger."
 ---
 
 A single account, **@0xConsolelog**, reports that a weekend rumor about

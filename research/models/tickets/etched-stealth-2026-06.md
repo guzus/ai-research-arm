@@ -29,12 +29,14 @@ sources:
   - "@asteris_ai"
   - https://x.com/asteris_ai/status/2071986725253976434
 created_at: 2026-07-01
-updated_at: 2026-07-01
+updated_at: 2026-08-19
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-07-01
     change: "Created — AI-chip startup Etched exited stealth on 2026-06-30 with $800M raised, $1B+ in signed customer contracts, and a ~$5B valuation; first racks of its transformer-only Sohu inference ASIC ship this summer, with vendor claims of SOTA throughput/latency/power (@kimmonismus 15:17 UTC ~84 likes; independently @asteris_ai, @qamcintyre, @MillionInt). Fresh disclosure atop the ~$500M Jan-2026 Stripes/Thiel round (Harvard dropouts Gavin Uberti + Chris Zhu, founded 2022). Status confirmed for the event; verification partial — financing is multi-source social relay with no primary press release surfaced, and the performance superlatives are Etched's own with no independent Sohu teardown. Sits alongside the compute-sovereignty / Nvidia-alternative arc ([[meituan-longcat-2-2026-06]], [[zhipu-glm-5-2]])."
+  - ts: 2026-08-19
+    change: "New funding round — successor ticket opened. Etched announced on 2026-08-18 that it raised $700M at a $21B valuation from Jane Street, Kleiner Perkins, Sequoia, a16z, Peter Thiel, BCV and Blackstone (Etched own account, relayed by @jukan05 and @jxnlco). That is a ~4.2x mark-up from the ~$5B valuation recorded at the 2026-06-30 stealth exit this ticket tracks. Because it is a distinct funding event, it gets its own ticket: [[etched-funding-round-2026-08]]. This ticket stays scoped to the stealth exit and the Sohu ASIC ship timeline; status stays confirmed, verification stays partial (the summer shipping claim and the named customers behind the $1B contracts are still unconfirmed)."
 ---
 
 **Etched** exited stealth on **2026-06-30**, disclosing **$800M raised**,

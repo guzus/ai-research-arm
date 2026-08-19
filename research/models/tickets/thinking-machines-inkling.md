@@ -3,7 +3,7 @@ slug: thinking-machines-inkling
 title: Thinking Machines ships Inkling, a 975B-parameter open-weights multimodal model
 company: Thinking Machines
 model: Inkling
-status: released
+status: closed
 status_note: |
   Released **2026-07-15** via a Thinking Machines team member's own
   account (**@soumithchintala**) plus **Tinker's** official account,
@@ -38,12 +38,14 @@ sources:
   - "@JJitsev"
   - https://x.com/JJitsev/status/2077670736462750106
 created_at: 2026-07-16
-updated_at: 2026-07-16
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-07-16
     change: "Created — Thinking Machines released Inkling, a 975B-total/41B-active MoE, natively multimodal (text/image/audio) model with up to 1M context, trained from scratch on GB300s (~45T tokens), open-weighted on Tinker + Hugging Face. Announced 2026-07-15 by @soumithchintala and Tinker's official account, corroborated within 15 minutes by @ns123abc and @kimmonismus → status released, verification confirmed. Within 24h, @emollick and @JJitsev independently reported it underperforming on basic reasoning tests and lagging GLM 5.2 on TB 2.1, even as HuggingFace/Unsloth/Modal shipped fast ecosystem support."
+  - ts: 2026-08-19
+    change: "Closed — released-and-aged. Inkling released 2026-07-16, 34 days ago (>=4 weeks). Its successor sibling Inkling-Small ([[thinking-machines-inkling-small-2026-07]]) carries the live Thinking Machines storyline; this ticket is normal coverage."
 ---
 
 On **2026-07-15**, **Thinking Machines** shipped **Inkling**, a
