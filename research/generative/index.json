@@ -684,7 +684,32 @@
       "hbm",
       "sk-hynix",
       "kospi"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T123617--naver-nvidia-sovereign-ai-gigawatt-bet.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "메가와트로 본 주권",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T12:36:17Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for naver-nvidia-sovereign-ai-gigawatt-bet",
+        "tags": [
+          "korea",
+          "nvidia",
+          "naver",
+          "sovereign-ai",
+          "data-center",
+          "hbm",
+          "sk-hynix",
+          "kospi"
+        ],
+        "translated_at": "2026-08-19T12:36:17Z",
+        "source_file": "research/generative/2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet.ara.md",
+        "source_sha256": "133ad112602b2849bd7855d5908c87e8609f01abb876ad38001a9724123819cd"
+      }
+    }
   },
   {
     "slug": "unitree-humanoid-dominance-thesis-audit",
