@@ -771,7 +771,32 @@
       "open-weights",
       "export-controls",
       "ipo"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T094715--zhipu-ai-glm.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Zhipu AI (z.ai): 중국 최초 상장 대형 모델 기업이 된 칭화대 연구실",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T09:47:15Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for zhipu-ai-glm",
+        "tags": [
+          "zhipu",
+          "z.ai",
+          "glm",
+          "china-ai",
+          "llm",
+          "open-weights",
+          "export-controls",
+          "ipo"
+        ],
+        "translated_at": "2026-08-19T09:47:15Z",
+        "source_file": "research/generative/2026-06-22T052035--zhipu-ai-glm.ara.md",
+        "source_sha256": "5d4004c1f3aae8f1c8d38d149e0c575f9d508aa05d9193a4b7033f1fbae03f7e"
+      }
+    }
   },
   {
     "slug": "frontier-ai-data-supply-chain",
