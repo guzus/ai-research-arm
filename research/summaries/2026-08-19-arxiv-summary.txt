@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-19
+
+TOP 5 PAPERS:
+• Recirculation - training-free recurrence in frozen LLMs: -23% perplexity, +21% GSM8k
+• Debate Training Reduces Reward Hacking in RLAIF - recovers 45% gap vs judge-hacking baseline
+• The IOL-AI Challenge - LLMs scored on unseen Linguistics Olympiad puzzles by the official jury
+• GenRec - multi-view flow matching that splits reconstruction vs generation by observation mask
+• Chain-of-Experience - test-time experience loop: +5.6% accuracy, 19% lower API cost
+
+CATEGORIES: NLP 8, CV/Multimodal 10, Agents 9, Safety 5, Other 6
+
+Full report on GitHub.
