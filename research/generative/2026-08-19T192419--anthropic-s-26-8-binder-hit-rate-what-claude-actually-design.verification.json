@@ -1,0 +1,94 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Claude autonomously designed protein binders against 16 targets, with binders confirmed for 14 of the 15 targets with interpretable data.",
+      "verdict": "supported",
+      "citation": "Anthropic technical report: 'Claude obtained binders against 14 of the 15 targets'"
+    },
+    {
+      "id": "c2",
+      "text": "354 of 1,320 designs bound their targets, a hit rate of 26.8% by the integrated call.",
+      "verdict": "supported",
+      "citation": "Anthropic technical report: '354 of the 1,320 designs bound their targets, a hit rate of 26.8%'; Adaptyv: '354 of all designs (1,320) bound their target, an overall hit rate of 26.8%'"
+    },
+    {
+      "id": "c3",
+      "text": "Per-target hit rates ranged from 0% (MBP, 0/90) to 80% (TREM2, 72/90).",
+      "verdict": "supported",
+      "citation": "Anthropic technical report: '72 binders out of 90 designs on TREM2 ... 0 of 90 on MBP'"
+    },
+    {
+      "id": "c4",
+      "text": "The 26.8% figure is an orchestration result from ten open-source structure-generation methods, not a single-model design.",
+      "verdict": "supported",
+      "citation": "Anthropic technical report Methods: released per-design provenance lists PXDesign, RFdiffusion3, Genie 3, FreeBindCraft, BindCraft, BoltzGen, RFdiffusion, Proteina-Complexa, FoldCraft, BoltzDesign1, Protein Hunter"
+    },
+    {
+      "id": "c5",
+      "text": "RFdiffusion (Nature 2023) reported a 19% overall experimental binder success rate, roughly two orders of magnitude above prior Rosetta methods.",
+      "verdict": "supported",
+      "citation": "Watson et al. Nature 2023: 'The overall experimental success rate ... was 19%'; Fig 6b caption: prior estimated success rates 0%–5.5%"
+    },
+    {
+      "id": "c6",
+      "text": "Anthropic's blog compares against a '10-15% typical' figure and Adaptyv competitions, not RFdiffusion's 19%.",
+      "verdict": "supported",
+      "citation": "Anthropic blog: 'compared to the 10-15% that is typical in protein design campaigns today'; competition comparisons in the technical report"
+    },
+    {
+      "id": "c7",
+      "text": "A direct 26.8% versus 19% comparison is not a controlled benchmark due to differing targets, assays, budgets and generator eras.",
+      "verdict": "weak",
+      "citation": "Inference from RFdiffusion Nature 2023 methods (10 uM single-point BLI) vs Anthropic technical report (two-CRO integrated call)"
+    },
+    {
+      "id": "c8",
+      "text": "Mythos Preview hit 26.7% (104/390) and Opus 4.8 22.6% (88/390) in multi-target mode; Mythos single-target 35.1% (158/450); top-ranked design bound 49% of the time.",
+      "verdict": "supported",
+      "citation": "Anthropic technical report Results: 'Opus 4.8 produced 88 binders from 390 designs (22.6%) and Mythos Preview produced 104 from 390 (26.7%)'; 'Mythos Preview produced 158 binders from 450 designs (35.1%)'; 'the hit rate was 49% for the top-ranked design alone'"
+    },
+    {
+      "id": "c9",
+      "text": "On RBX1, 28 of 90 Claude designs bound versus 9 of 245 in the open competition; tightest 3.9 nM vs winner's 45 nM re-measured on the same plate.",
+      "verdict": "supported",
+      "citation": "Anthropic technical report: 'RBX1 (28/90 against 9/245)'; 'bound free RBX1 at 3.9 nM ... the competition winner bound at 45 nM'"
+    },
+    {
+      "id": "c10",
+      "text": "Claude designed 12 TNFalpha binders (8%), all from Opus 4.8, on a target where other de novo efforts reported none.",
+      "verdict": "supported",
+      "citation": "Anthropic technical report: 'Twelve of Claude's 150 TNFalpha designs bound (8.0% hit rate), all of them designed by Opus 4.8'; discussion notes prior reports of none [5,7,14]"
+    },
+    {
+      "id": "c11",
+      "text": "On novel targets 15-PGDH and latent GDF-8, Claude scored 1/30 and 14/60, comparable to or better than competition fields (1/106 and 6/100).",
+      "verdict": "supported",
+      "citation": "Anthropic technical report: '15-PGDH (1/30 against 1/106)'; 'latent GDF-8 (14/60 against 6/100)'"
+    },
+    {
+      "id": "c12",
+      "text": "The integrated-call binder definition broadened the count above Adaptyv's own classification (roughly 336 of 1,296).",
+      "verdict": "supported",
+      "citation": "Anthropic technical report Methods: 'Adaptyv Bio returned a result for 1,296 ... (336 binders ...)'; 'added 19 that it had not'"
+    },
+    {
+      "id": "c13",
+      "text": "The report disclaims that Claude's designs are better than an expert with the same tools and budget, and describes campaigns rather than models.",
+      "verdict": "supported",
+      "citation": "Anthropic technical report Discussion: 'we do not claim that Claude's designs are better than an expert would obtain with the same tools and budget'; 'we have described campaigns rather than models'"
+    },
+    {
+      "id": "c14",
+      "text": "ProteinBase and Overath corpus: roughly 770 binders out of 5,700 designs against 40 targets; Overath analyzed 3,766 binders across 15 targets.",
+      "verdict": "supported",
+      "citation": "Anthropic blog: 'approximately 770 binders out of 5,700 designs against 40 targets'; Overath et al. bioRxiv abstract: '3,766 experimentally tested binders across 15 structurally diverse targets'"
+    },
+    {
+      "id": "c15",
+      "text": "Every model Claude used was open-source; Anthropic releases prompts, models and both CROs' data under CC BY 4.0.",
+      "verdict": "supported",
+      "citation": "Anthropic technical report: 'Every design and prediction model available to Claude was open-source'; 'released ... under CC BY 4.0'"
+    }
+  ]
+}
