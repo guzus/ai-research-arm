@@ -945,7 +945,23 @@
     "created_at": "2026-06-29T04:57:39Z",
     "source": "fireworks-deepseek-v4-flash",
     "prompt": "Grok 4.5: SpaceX's monthly from-scratch 1.5T V9 cadence and the regulatory asymmetry under the de facto frontier licensing regime",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T052024--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Grok 4.5과 하드웨어로 방패 친 프론티어: 사실상 라이선스 체제 아래 SpaceX의 월간 1.5T V9 주기",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T05:20:24Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t",
+        "tags": [],
+        "translated_at": "2026-08-19T05:20:24Z",
+        "source_file": "research/generative/2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t.ara.md",
+        "source_sha256": "52e1a65505813949be67e976e82bb4b96669257d66445857b81854dfcd0e5283"
+      }
+    }
   },
   {
     "slug": "meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo",
