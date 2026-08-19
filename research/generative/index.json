@@ -881,7 +881,29 @@
       "agentic-ai",
       "safety",
       "google"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T061325--native-computer-use-gemini-3-5-flash.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Gemini 3.5 Flash의 네이티브 컴퓨터 사용: 구글의 저가 티어 에이전틱 제어 승부수",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T06:13:25Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for native-computer-use-gemini-3-5-flash",
+        "tags": [
+          "gemini",
+          "computer-use",
+          "agentic-ai",
+          "safety",
+          "google"
+        ],
+        "translated_at": "2026-08-19T06:13:25Z",
+        "source_file": "research/generative/2026-06-25T170208--native-computer-use-gemini-3-5-flash.ara.md",
+        "source_sha256": "37ea053917b0b5d9b56243deb7fedbb47cbd008f6bd98221266bc66a016bcd99"
+      }
+    }
   },
   {
     "slug": "cursor-eval-integrity-research-opus-4-8-and-composer-2-5",
