@@ -1081,7 +1081,25 @@
     "prompt": "Seed Twitter/X URL: https://x.com/cerebras/status/2077822555159945507. Start by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T002954--expand-research-from-twitter-link-https-x-com-cerebras-statu.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Cerebras가 회사의 두뇌를 열다 — 그리고 엔터프라이즈 AI 검색을 잠식하는 자체 구축 대 구매 전쟁을 드러내다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T00:29:54Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-cerebras-statu",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-19T00:29:54Z",
+        "source_file": "research/generative/2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu.ara.md",
+        "source_sha256": "4c7ea6435c573ffef8f650f1cd18edc9b6f726d392f60e142ffe76cc418ebea3"
+      }
+    }
   },
   {
     "slug": "databricks-mid-2026",
