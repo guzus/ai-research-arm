@@ -750,7 +750,25 @@
     "prompt": "Seed Twitter/X URL: https://x.com/harvey/status/2064757424540749879 — Read the tweet and thread, infer the underlying research question, treat the tweet as a seed primary source, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T101211--harvey-nemotron-open-weight-legal-post-training.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "하루, 오픈 모델 하나, 프론티어 대역 — Harvey  Nemotron 실험이 실제로 증명하는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T10:12:11Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for harvey-nemotron-open-weight-legal-post-training",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-19T10:12:11Z",
+        "source_file": "research/generative/2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training.ara.md",
+        "source_sha256": "ea1fafe5f58679395425919cca47cc2c667956ab1fee4b42d7a5720c46599283"
+      }
+    }
   },
   {
     "slug": "zhipu-ai-glm",
