@@ -1098,7 +1098,28 @@
       "kimi-k3",
       "opencode-go",
       "databricks"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T001711--databricks-mid-2026.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "-2026년 중반의 Databricks: $188B 사모 밸류에이션, 80% 재가속, 개방 표준 위에 세운 해자",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T00:17:11Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for databricks-mid-2026",
+        "tags": [
+          "demo",
+          "kimi-k3",
+          "opencode-go",
+          "databricks"
+        ],
+        "translated_at": "2026-08-19T00:17:11Z",
+        "source_file": "research/generative/2026-07-20T050016--databricks-mid-2026.ara.md",
+        "source_sha256": "0a16bf1c320f415348245b955a6fe08159cf8970654adc546f911efd4ef2fed7"
+      }
+    }
   },
   {
     "slug": "empirical-cost-of-building-an-opus-level-llm-time-compute-an",
