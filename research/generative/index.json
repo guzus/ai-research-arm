@@ -987,7 +987,23 @@
     "created_at": "2026-07-13T18:19:48Z",
     "source": "workflow_dispatch",
     "prompt": "CXMT",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T033828--cxmt.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "CXMT, 이번 주 2026 최대 IPO 공모가 확정 — DRAM 사이클이 일찍이 지불한 최고 분기 위에서",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T03:38:28Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for cxmt",
+        "tags": [],
+        "translated_at": "2026-08-19T03:38:28Z",
+        "source_file": "research/generative/2026-07-13T181948--cxmt.ara.md",
+        "source_sha256": "9cd138170cda42213e5c2746aac42b9ef31eb3168a1e8def642cd20fd2149fc9"
+      }
+    }
   },
   {
     "slug": "expand-research-from-twitter-link-https-x-com-guilleflorvs-s",
