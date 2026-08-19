@@ -621,7 +621,23 @@
     "created_at": "2026-05-25T05:36:54Z",
     "source": "workflow_dispatch",
     "prompt": "AI adoption in bio industry",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T140437--ai-adoption-in-bio-industry.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "바이오 산업의 AI — 도입은 실재하고, 변혁은 (아직) 아니다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T14:04:37Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for ai-adoption-in-bio-industry",
+        "tags": [],
+        "translated_at": "2026-08-19T14:04:37Z",
+        "source_file": "research/generative/2026-05-25T053654--ai-adoption-in-bio-industry.ara.md",
+        "source_sha256": "d39a162686337ef42752a2cfeab683792b3cb0bbae811b01ef4805809cc0395a"
+      }
+    }
   },
   {
     "slug": "800-vdc-architecture",
