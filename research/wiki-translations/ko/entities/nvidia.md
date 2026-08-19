@@ -2,9 +2,9 @@
 slug: nvidia
 language: ko
 source_file: research/wiki/entities/nvidia.md
-source_sha256: b55180c8d5b1961c1346de48a60812a40d74edab52e118b949838fdd941ef7a0
+source_sha256: fde7870411d80506b074d65a5e5e49ecd42b352671fceb7c90c627a970eee9d5
 title: NVIDIA
-description: 지배적인 AI 가속기 공급업체이자 2026-08-10 보도된 월가의 약 ~$500B AI 인프라 금융 패키지의 중심축. Ilya Sutskever의 Safe Superintelligence에 약 ~$5B을 지원하고, 1T 매개변수 Nemotron 4를 목표로 하는 오픈 웨이트 Nemotron 계열과 자체 ~$500B 패키지의 잔존가치 보증을 추진한다.
+description: 지배적인 AI 가속기 공급업체이자 2026-08-10 보도된 월가의 약 ~$500B AI 인프라 금융 패키지의 중심축. 2026-08-18 OpenAI의 Ohio PORTS-Pike 리스 $105B를 보증하기로 했고, Ilya Sutskever의 Safe Superintelligence에 약 ~$5B을 지원하며, 1T 매개변수 Nemotron 4를 목표로 하는 오픈 웨이트 Nemotron 계열과 자체 ~$500B 패키지의 잔존가치 보증을 추진한다.
 images:
   - url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/NVIDIA_H100_%28%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan%29_007.png/1280px-NVIDIA_H100_%28%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan%29_007.png"
     alt: AI 학습과 추론에서 NVIDIA의 역할을 보여주는 NVIDIA H100 가속기 근접 사진.
@@ -47,6 +47,23 @@ images:
 - **프로젝트별 25% 안전망 보도(2026-08-11/12).** *The Information*에 따르면 NVIDIA는 ~$500B 패키지 안에서 개별 프로젝트 손실의 **최대 25%**를 흡수할 수 있다. **자사 GPU가 판매된 프로젝트**도 포함된다. "새 자산군" 틀이 답하려던 순환성이 정확히 드러난다. **공개된 조건표는 없다.** 2026-08-10 항목의 "CNBC 익명 단일 출처"와 "지분이 아닌 부채"라는 단서가 여전히 적용된다. 2026-08-13 WSJ는 **Jensen Huang이 이 지원을 잔존가치 보증으로 규정했다**고 보도했다. NVIDIA는 **자신이 노후화 일정을 정하는 하드웨어의 재판매 하한을 보증**한다. 안전망을 공급업체가 통제하는 감가상각으로 읽는 근거다(ARA daily digest 2026-08-12/13).
 - **Nemotron 3.5 Lightning + NeMo Switchyard, 에이전트 물량 제안(2026-08-11/12).** NVIDIA는 **항시 가동 에이전트**를 겨냥한 **오픈 웨이트 30B mixture-of-experts**, 활성 매개변수 **약 ~3B**인 **Nemotron 3.5 Lightning**과 각 단계를 수행 가능한 가장 저렴한 모델로 보내는 라우팅 라이브러리 **NeMo Switchyard**를 출시했다. [[meta]]가 자체 30B 에이전트 모델([[muse-glimmer]])을 오픈 웨이트로 공개한 지 **27시간 뒤**였다. 제안의 핵심은 벤치마크 우위가 아니라 **에이전트 *물량***이다. 순위표가 아니라 [[openai]]와 [[anthropic]] 트래픽을 겨냥한다. 라우팅 경제성에 관한 가장 구체적인 공개 수치도 나왔다. **LangChain이 에이전트 작업 145개로 Switchyard를 벤치마크한 결과, 프런티어 모델이 필요했던 턴은 7%뿐이었고 라우팅은 정확도 여섯 점을 희생해 비용을 74% 줄였다.** 에이전트 트래픽이 얼마나 과잉 서비스되는지 보여주는 공개 추정치다. 2026-08-13 **Nemotron 3.5 Lightning은 Perplexity Agent API에서 백만 토큰당 $0.0115/$0.17**에 제공되기 시작했다. 이 주기에 널리 유통된 에이전트 모델 중 가장 저렴한 요금표다(The Information, The Decoder, LangChain; ARA daily digest 2026-08-12/13).
 - **Nemotron 4 개발 보도, 이제 최첨단을 겨냥하다(2026-08-11/13).** *The Information*과 The Decoder에 따르면 NVIDIA는 **일조 매개변수를 목표로 하는 오픈 웨이트 계열**을 개발 중이다. **중국 연구소들은 이미 넘어선 규모**이며 **서구 오픈소스 경쟁을 촉진**하는 것이 목표다. The Information은 NVIDIA가 **Nemotron 4를 최첨단으로 만들려 한다**고 별도 보도했다. 그렇게 되면 **최대 고객인 모델 연구소들과 경쟁**하게 된다. 아래의 Nemotron 계열 잠식 질문이 가장 날카로운 형태로 제기된다. 보도 단계로 취급해야 하며 아직 산출물은 없다(ARA daily digest 2026-08-12/13).
+- **NVIDIA가 OpenAI의 Ohio 리스 $105B를 보증 — 안전망에 금액과 캠퍼스가
+  붙었다(2026-08-18).** 2026-07-28부터 추적한 OpenAI의 약 ~$250B Ohio 리스
+  안전망은 이제 구체적인 상한이 있는 약정이 됐다. NVIDIA는
+  **PORTS-Pike 캠퍼스에서 OpenAI의 20년 리스 중 최대 $105 billion을
+  보증**하기로 했다. 보증은 **OpenAI의 채무불이행 또는 지급불능** 때 발동하며
+  **임대료, 전력비, 건물 잔존가치**를 포괄한다. The Information 기자는
+  이유를 명확히 설명한다. **대출자는 OpenAI가 아니라 NVIDIA의 대차대조표를
+  바탕으로 심사한다.** NVIDIA도 이 규모의 차입을 직접 조달할 수 없으므로 채무를
+  보증하는 구조다. 실질적인 위험 노출은 별도로 보도된 개발사 SB Energy의
+  **$1.5B 지분**이 아니라 이 보증이다. SB Energy 지분 투자와 별개로
+  NVIDIA는 **PORTS-Pike에 AI 컴퓨트를 독점 공급**한다. 초기 IT 부하는 4.25 GW,
+  옵션 물량은 3.75 GW이며 2028년부터 단계적으로 가동된다. Jensen Huang은
+  OpenAI의 **총 약정을 2030년까지 ~12 GW, 확장 시 ~16 GW**로 제시하고 이를
+  **NVIDIA 매출 roughly $600B**로 표현했다. 이는 예약 매출이 아니라 NVIDIA가
+  자체 용량 가정에서 산출한 전망이다. 이 구조가 $500B 부채 패키지 안에서 어떤
+  위치를 차지하는지는 [[ai-capex]]와 [[openai]]를 참고하라(The Decoder,
+  TechCrunch, The Information; ARA daily digest 2026-08-18).
 
 ## 미해결 질문
 

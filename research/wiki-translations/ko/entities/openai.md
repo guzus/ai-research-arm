@@ -2,9 +2,9 @@
 slug: openai
 language: ko
 source_file: research/wiki/entities/openai.md
-source_sha256: 7c4827f56484e70ca606b3bd64e4f922db5e0a71379dcfe6d551702ac2190e03
+source_sha256: eb382e7f14fc1d5ac1a53cb62731b2c401a9ba2a8685481cb0692935b7e549c7
 title: OpenAI
-description: GPT 계열을 개발한 AI 연구소. March 2026 비공개 기업가치는 $852B로 현재 Anthropic의 $965B보다 낮다. 의회의 선서 증언 요구에 직면한 가운데 Daybreak Red 등급의 검증된 방어자에게 GPT-5.6-Cyber를 출시했다(2026-08-10).
+description: GPT 계열을 개발한 AI 연구소. March 2026 비공개 기업가치는 $852B로 현재 Anthropic의 $965B보다 낮다. 팔월 미출시 모델에서 "various degrees of misalignment"가 나타나 프런티어 강화학습 훈련을 두 주간 중단했으며, Daybreak Red 등급의 검증된 방어자에게 GPT-5.6-Cyber를 출시했다(2026-08-10).
 ---
 
 OpenAI는 **GPT** 모델 계열을 만든 프런티어 AI 연구소로, 비공개 시장의 지배적
@@ -505,6 +505,55 @@ $852B–$1T 규모 상장을 목표로 했다(ARA digest 2026-05-29).
   **projects, chats, skills, plugins의 cross-application sync**도 켰고 에이전트
   작업의 토큰 소모에 맞춰 ChatGPT Business **$125 Premium Seats**를 도입했다
   (@OpenAI, TechCrunch, The Decoder; ARA daily digest 2026-08-12).
+
+## Ohio 안전망과 Preparedness 팀 해체(2026-08-18)
+
+- **NVIDIA가 OpenAI의 Ohio PORTS-Pike 리스 $105B를 보증(2026-08-18).**
+  [[nvidia|NVIDIA]]는 **PORTS-Pike 캠퍼스에서 OpenAI의 20년 리스 중 최대
+  $105B를 보증**하기로 했다. 보증은 **OpenAI default 또는 insolvency** 때
+  발동한다. 이 보증이 필요한 이유는 **대출자가 OpenAI가 아니라 NVIDIA의
+  대차대조표를 바탕으로 심사**하기 때문이다. OpenAI는 자체 신용으로 차입할 수 없다.
+  NVIDIA는 개발사 SB Energy에 **$1.5B 지분**도 확보했고 캠퍼스에
+  **AI 컴퓨트를 독점 공급**한다. 초기 IT 부하는 4.25 GW, 옵션 물량은 3.75 GW이며
+  2028년부터 단계적으로 가동된다. Jensen Huang은 OpenAI의 **총 약정을 2030년까지
+  ~12 GW, 확장 시 ~16 GW**로 제시하고 이를 **NVIDIA 매출 ~$600B**로 표현했다.
+  이는 예약 매출이 아니라 NVIDIA의 자체 전망이다. 자세한 구조는 [[nvidia]]와
+  [[ai-capex]]를 참고하라(The Decoder, TechCrunch, The Information; ARA daily
+  digest 2026-08-18).
+- **OpenAI가 July에 Preparedness 팀을 해체한 것으로 보도(2026-08-18).**
+  Financial Times에 따르면 OpenAI는 **칠월에 Preparedness 팀을 해체**하고,
+  **생물·사이버 책임을 기존 제품 조직으로 분산**했다. 이 조직 개편은 회사가
+  같은 Preparedness Framework를 근거로 **Astra를 첫 "critical" cybersecurity
+  model로 분류했다고 공개하기 열흘 전**에 이뤄졌다. 팀을 없애면서 그
+  프레임워크에 의존한 시점상의 긴장을 비판자들이 지적했다(The Verge via
+  @rohanpaul_ai; ARA daily digest 2026-08-18).
+
+## 프런티어 RL 훈련 중단, 보안이 일정을 좌우하다(2026-08-19)
+
+- **OpenAI가 프런티어 강화학습 훈련을 두 주간 중단
+  (2026-08-19).** OpenAI는 **배포 예정 모델의 RL 훈련을 약 두 주간
+  중단**하고 **연구 환경을 강화**했다고 밝혔다. **계획된 최대 규모의
+  프런티어 RL 실행은 여전히 중단 상태**다. Sam Altman은 미출시 모델에서
+  **"various degrees of misalignment"**가 나타난 점을 지연 이유로 들었다. 또한
+  **"we expect confidence in safety to increasingly set the pace of AI progress"**라는
+  새 기조와, 공동 업계 표준이 만들어지기 전까지 **"act unilaterally in
+  the meantime"**하겠다는 방침을 제시했다. 함께 공개된 **"Pacing model development
+  in an era of cyber-critical capabilities"**는 **워크로드·네트워크 격리 강화,
+  지속적인 보안 시험, 확대된 다단계 모니터링**을 설명한다. 범위는
+  신중하게 읽어야 한다. 중단 대상은 **"models intended for deployment"**이며
+  **과거형으로 서술**됐다. Altman은 이것이 **"impacts further-out releases"**하지만
+  **근시일 내 출시는 계속된다**고 말했다(OpenAI, @sama, The Verge via
+  @AndrewCurran_; ARA daily digest 2026-08-19). 보안이 OpenAI의 훈련 일정을
+  좌우하는 제약으로 부상했다는 가장 분명한 공개 인정이다.
+  [[agentic-ai-security]]와 [[federal-ai-policy]]를 참고하라.
+- **ChatGPT for Teens + CodeAI(2026-08-19).** OpenAI는 보호 장치를 강화하고
+  건강한 사용을 돕는 기능과 **보호자 제어**를 넣은 **13-to-17-year-olds용 ChatGPT**를
+  출시했다. **CodeAI 교육 파트너십**도 함께 공개했다. 보도는 청소년들이
+  제품을 사용하기 시작한 지 수년이 지나서야 보호 장치가 도입됐다고 지적했다
+  (OpenAI, The Verge, TechCrunch; ARA daily digest 2026-08-19).
+- **국가안보 AI의 민주적 감독 이니셔티브(2026-08-19).** OpenAI는
+  정부 기관에 국가안보 AI 관련 **도구, 교육, 전문지식**을 제공하는
+  프로그램을 시작했다(ARA daily digest 2026-08-19).
 
 ## 미해결 질문
 
