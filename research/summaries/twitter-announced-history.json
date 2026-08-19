@@ -24517,5 +24517,47 @@
     "headline": "UNSLOTH SHIPS QWEN3.8-27B 1-BIT QUANTS RETAINING 77% ACCURACY \u2014 RUNS IN 8GB OF RAM",
     "source": "@UnslothAI",
     "url": "https://x.com/UnslothAI/status/2090103470015828184"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-19 21:36:13 UTC",
+    "headline": "BLOOMBERG: FRACTILE HAS DEAL TO SUPPLY ANTHROPIC, IN ADVANCED TALKS AT OVER 6X ITS MAY VALUATION",
+    "source": "@business",
+    "url": "https://x.com/business/status/2090188320936546452"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-19 21:36:13 UTC",
+    "headline": "OPENAI PREVIEWS PRIVATE SAFETY PROCESSING \u2014 ZERO DATA RETENTION STAYS ON FRONTIER MODELS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2090165328290701800"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-19 21:36:13 UTC",
+    "headline": "SPACEX APPROACHED CODING-AGENT MAKER COGNITION ABOUT ACQUISITION \u2014 BLOOMBERG",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2090157127084196330"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-19 21:36:13 UTC",
+    "headline": "OPENAI ON PAUSED TRAINING: 'IF WE SEE SOMETHING SPOOKY... THAT IF HAS BEEN TRIGGERED'",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2090188169492705619"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-19 21:36:13 UTC",
+    "headline": "OPENAI CODEX HITS 20M WEEKLY ACTIVE USERS, PER CNBC",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2090181733584961841"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-19 21:36:13 UTC",
+    "headline": "GOOGLE AI STUDIO ADDS GITHUB REPO IMPORT AND BI-DIRECTIONAL PUSH/PULL SYNC",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2090156520843657488"
   }
 ]
