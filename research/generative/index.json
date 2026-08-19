@@ -863,7 +863,27 @@
       "test",
       "codex",
       "ornn"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T062758--test-ornn-com-codex-2.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Ornn.com과 GPU 시간을 금융 시장으로 바꾸려는 시도",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T06:27:58Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for test-ornn-com-codex-2",
+        "tags": [
+          "test",
+          "codex",
+          "ornn"
+        ],
+        "translated_at": "2026-08-19T06:27:58Z",
+        "source_file": "research/generative/2026-06-24T160453--test-ornn-com-codex-2.ara.md",
+        "source_sha256": "9915f9ec63978280eacdcbfb4418d6296f00f99f287809e15db7a22943eb7be9"
+      }
+    }
   },
   {
     "slug": "native-computer-use-gemini-3-5-flash",
