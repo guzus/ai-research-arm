@@ -1067,7 +1067,25 @@
     "prompt": "Seed Twitter/X URL: https://x.com/TheStalwart/status/2078168665766109224\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T005028--expand-research-from-twitter-link-https-x-com-thestalwart-st.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "완전히는 아니었던 문샷 모멘트: Kimi K3가 월스트리트를 만났을 때 실제로 일어난 일",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T00:50:28Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-thestalwart-st",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-19T00:50:28Z",
+        "source_file": "research/generative/2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st.ara.md",
+        "source_sha256": "3b63d99e84a7202a3af6c8c5db713ea727298beba670a2cae788103c67a84849"
+      }
+    }
   },
   {
     "slug": "expand-research-from-twitter-link-https-x-com-cerebras-statu",
