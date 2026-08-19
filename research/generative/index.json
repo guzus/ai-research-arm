@@ -933,7 +933,23 @@
     "created_at": "2026-06-28T19:29:53Z",
     "source": "workflow_dispatch",
     "prompt": "DeepSeek's $7.4B round at $50B: cap-table asymmetry, the state fund's voting-rights override, and the valuation benchmark vs OpenAI/Anthropic",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T053835--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "캡 테이블을 가른 $7.4B: 딥시크의 국가 황금주 모델과 AI 밸류에이션이 의미하는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T05:38:35Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f",
+        "tags": [],
+        "translated_at": "2026-08-19T05:38:35Z",
+        "source_file": "research/generative/2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f.ara.md",
+        "source_sha256": "81ae612242faeb2cf3e9889893ecdc8f49134891bdba979428862ea2fb455143"
+      }
+    }
   },
   {
     "slug": "grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t",
