@@ -801,7 +801,23 @@
     "created_at": "2026-06-22T08:42:12Z",
     "source": "local",
     "prompt": "GLM-5.2 vs the closed frontier: on which axes Zhipu's open-weight model actually matches Opus 4.8/GPT-5.5 — and where it fails",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T085601--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "GLM-5.2 대 클로즈드 프론티어: 즈푸의 오픈 모델이 실제로 Opus 4.8·GPT-5.5와 맞서는 좁은 구간 — 그리고 그렇지 않은 곳",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T08:56:01Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we",
+        "tags": [],
+        "translated_at": "2026-08-19T08:56:01Z",
+        "source_file": "research/generative/2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we.ara.md",
+        "source_sha256": "536bf38abb0c106c28af5956432aefb3095435e991c0fdab36c5e773936a80bb"
+      }
+    }
   },
   {
     "slug": "john-jumper-deepmind-anthropic-science-bet",
