@@ -960,7 +960,26 @@
     "tags": [
       "fireworks-fallback",
       "requested-deepseek-v4-flash"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T044751--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Meta Compute: 네오클라우드를 재평가하는 잉여",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T04:47:51Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo",
+        "tags": [
+          "fireworks-fallback",
+          "requested-deepseek-v4-flash"
+        ],
+        "translated_at": "2026-08-19T04:47:51Z",
+        "source_file": "research/generative/2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo.ara.md",
+        "source_sha256": "300252647d9361749977285ffc526a8c0cf81f05f0731746b0ff6eb1680e32f0"
+      }
+    }
   },
   {
     "slug": "anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris",
