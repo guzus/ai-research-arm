@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-19 21:36:13 UTC
+
+CYCLE: Anthropic's startup chip supplier gets named-outlet confirmation; OpenAI sells privacy while pausing training.
+
+TOP STORIES:
+• Bloomberg confirms Fractile has a deal to supply Anthropic and is raising at >6x its May valuation [⚠]
+• OpenAI previews Private Safety Processing — cross-session abuse detection atop Zero Data Retention, mechanism unexplained [✓]
+• SpaceX approached coding-agent maker Cognition about an acquisition, per Bloomberg [⚠]
+
+WATCH: Whether OpenAI publishes what actually persists between interactions under Private Safety Processing.
+
+Full update on GitHub.

@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "BLOOMBERG: FRACTILE HAS DEAL TO SUPPLY ANTHROPIC, IN ADVANCED TALKS AT OVER 6X ITS MAY VALUATION",
+    "source": "@business",
+    "url": "https://x.com/business/status/2090188320936546452",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI PREVIEWS PRIVATE SAFETY PROCESSING — ZERO DATA RETENTION STAYS ON FRONTIER MODELS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2090165328290701800",
+    "category": "policy"
+  },
+  {
+    "headline": "SPACEX APPROACHED CODING-AGENT MAKER COGNITION ABOUT ACQUISITION — BLOOMBERG",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2090157127084196330",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI ON PAUSED TRAINING: 'IF WE SEE SOMETHING SPOOKY... THAT IF HAS BEEN TRIGGERED'",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2090188169492705619",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI CODEX HITS 20M WEEKLY ACTIVE USERS, PER CNBC",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2090181733584961841",
+    "category": "business"
+  },
+  {
+    "headline": "GOOGLE AI STUDIO ADDS GITHUB REPO IMPORT AND BI-DIRECTIONAL PUSH/PULL SYNC",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2090156520843657488",
+    "category": "infra"
+  }
+]
