@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-08-19
+
+TOP STORIES:
+• OpenAI paused frontier RL training two weeks; largest run still on hold. Altman cites "various degrees of misalignment."
+• Anthropic hits $65B annualized revenue (from $47B in May), plus a $10B+ revolver and reported extra-vote founder stock.
+• GLM-5.3 scores 60 on Artificial Analysis, 2nd worldwide on agentic work behind Claude Opus 5.
+
+KEY NUMBERS:
+• Etched: $700M at $21B; first rack shipped to Jane Street, which led the round
+• GLM-5.3 agentic Elo 1524 -> 1770 vs Opus 5's 1855
+• AlphaEvolve pushes matrix-mult exponent to w < 2.371177
+• Pew: 55% of US under-30s now more concerned than excited about AI
+
+TRENDING: HN on Google buying bankrupt Spirit Airlines' data at auction for AI value (536 pts).
+
+Full digest on GitHub.
