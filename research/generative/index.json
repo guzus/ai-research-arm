@@ -789,7 +789,29 @@
       "rlhf",
       "data-labeling",
       "frontier-labs"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T092444--frontier-ai-data-supply-chain.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "모델 뒤의 데이터: 인간의 인지 능력을 프론티어 AI 랩에 판매하는 산업의 내부",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T09:24:44Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for frontier-ai-data-supply-chain",
+        "tags": [
+          "ai",
+          "data",
+          "rlhf",
+          "data-labeling",
+          "frontier-labs"
+        ],
+        "translated_at": "2026-08-19T09:24:44Z",
+        "source_file": "research/generative/2026-06-22T061332--frontier-ai-data-supply-chain.ara.md",
+        "source_sha256": "f32245f8b010f55e8da7bd91bb8d220d698accee2c1e9a26882adbff1f5fd005"
+      }
+    }
   },
   {
     "slug": "glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we",
