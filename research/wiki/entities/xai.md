@@ -4,10 +4,11 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, dating Grok 4.7 three-to-four weeks out — while still suing users over Grok-generated CSAM rather than addressing the underlying capability.
+description: Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) on 2026-08-19, with Grok 4.7 "a major upgrade" and "coming soon" — while still suing users over Grok-generated CSAM rather than addressing the underlying capability.
 created_at: 2026-06-08
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-08-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
@@ -200,6 +201,17 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   autonomous workflows … the best OpenAI and Anthropic models are much better
   in the tails." Musk dated **Grok 4.7 to three or four weeks out** at
   18:34 UTC with initial training already complete (ARA digest 2026-08-13).
+
+- **Grok 4.6 reported top of MedAgentBench; Grok 4.7 "coming soon" (2026-08-19).**
+  Grok 4.6 was reported **top of MedAgentBench at ~95.9% pass@1** (three-run
+  average, range 95.3–96.3%) against a **prior best of ~94.7% for
+  [[gpt-5-6|GPT-5.6 Sol]]**, amplified by Elon Musk — **at least the fourth
+  favourable leaderboard placement in six days**, several of them
+  **vendor-adjacent**, so treat the superlative with the same skepticism this
+  page applies to xAI's bold benchmark claims. Musk separately said **Grok 4.7
+  is "a major upgrade" and "coming soon,"** with **no date** — consistent with
+  the ~3–4-week cadence dated at the 2026-08-13 Grok 4.6 ship (ARA daily digest
+  2026-08-19).
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: Qwen3.8-Max
 type: entity
 aliases: ["Qwen3.8-Max", "Qwen3.8", "Qwen 3.8 Max", "Qwen3.8 Max", "Qwen3.8-2.4T-A95B"]
 tags: [open-weights, model, moe, chinese-llm, long-context, alibaba]
-description: Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open.
+description: Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open — alongside the contested 27B sibling (Qwen3.8-27B).
 created_at: 2026-08-04
-timestamp: 2026-08-18T00:00:00Z
+timestamp: 2026-08-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
@@ -95,6 +96,19 @@ self-reported #2 overall rank behind [[claude-fable-5|Claude Fable 5]].
   people can actually run now has a single canonical command and a credible
   open-model score, while the "matches V4-Pro" claim stays unverified (ARA
   daily digest 2026-08-18).
+
+- **The 27B sibling is the week's most contested model (2026-08-19).** Simon
+  Willison reports **52 on the Artificial Analysis Intelligence Index — level
+  with [[gpt-5-6|GPT-5.6 Luna]] (max) and one point behind far larger models** —
+  calling it "the most fun he's had with a local model," in the day's
+  most-engaged Bluesky post (210 likes). A separate screenshot claim puts it at
+  **51 on the Agentic Index, above [[zhipu-glm-5-2|GLM-5.2]] and DeepSeek V4
+  Pro**, unconfirmed by the benchmark publisher. Against that, a **reproducible
+  hands-on test** had it **think 40,000 tokens for ~an hour on a 2D
+  fluid-simulation prompt** and return a **non-working page, where Opus 4.5
+  one-shot it in ~a minute** (prompt published). **Unsloth's GGUF passed 2.7M
+  downloads and sat #2 trending on Hugging Face** — the raw adoption signal
+  behind the contested benchmarks (ARA daily digest 2026-08-19).
 
 ## Open questions
 

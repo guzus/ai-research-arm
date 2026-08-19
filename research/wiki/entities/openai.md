@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); had NVIDIA backstop $105B of its Ohio PORTS-Pike lease and reportedly dissolved its Preparedness team in July, while shipping GPT-5.6-Cyber behind the Daybreak Red tier (2026-08-10).
+description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); paused frontier reinforcement-learning training for two weeks in August over "various degrees of misalignment" in unreleased models, while shipping GPT-5.6-Cyber behind the Daybreak Red tier (2026-08-10).
 created_at: 2026-05-30
-timestamp: 2026-08-18T00:00:00Z
+timestamp: 2026-08-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
@@ -706,6 +707,37 @@ materially reshape how the lab is positioned heading into its IPO window:
   cybersecurity model** — a timing tension between disbanding the team and
   leaning on its framework that critics flagged (The Verge via @rohanpaul_ai;
   ARA daily digest 2026-08-18).
+
+## Paused frontier RL training; security now gates the schedule (2026-08-19)
+
+- **OpenAI pauses frontier reinforcement-learning training for two weeks
+  (2026-08-19).** OpenAI disclosed it **halted RL training on models intended
+  for deployment for ~two weeks** while **hardening research environments**,
+  and said its **largest planned frontier RL run remains on hold**. Sam Altman
+  attributed the slowdown to unreleased models showing **"various degrees of
+  misalignment"**, and framed it as the start of a new posture — **"we expect
+  confidence in safety to increasingly set the pace of AI progress"** — with a
+  commitment to "act unilaterally in the meantime" pending shared industry
+  standards. The related published post, **"Pacing model development in an era
+  of cyber-critical capabilities,"** details **stronger workload and network
+  isolation, continuous security testing, and expanded multistage monitoring**.
+  Read the scope carefully: the pause covers **"models intended for
+  deployment,"** is **stated in the past tense**, and Altman says it
+  **"impacts further-out releases"** while **near-term shipping continues**
+  (OpenAI, @sama, The Verge via @AndrewCurran_; ARA daily digest 2026-08-19).
+  It is the sharpest public acknowledgement yet that security is becoming the
+  gating constraint on OpenAI's training schedule — see
+  [[agentic-ai-security]] and [[federal-ai-policy]].
+- **ChatGPT for Teens + CodeAI (2026-08-19).** OpenAI launched a **ChatGPT
+  build for 13-to-17-year-olds** with stronger protections, healthy-use
+  features, and **parental controls**, alongside a **CodeAI education
+  partnership** — coverage noted the safeguards arrive years after teens
+  began using the product (OpenAI, The Verge, TechCrunch; ARA daily digest
+  2026-08-19).
+- **Democratic-oversight initiative for national-security AI (2026-08-19).**
+  OpenAI launched an effort offering government institutions **tools,
+  training and expertise** on AI in national security (ARA daily digest
+  2026-08-19).
 
 ## Open questions
 
