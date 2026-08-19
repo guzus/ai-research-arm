@@ -4,10 +4,11 @@ title: Zhipu GLM-5.2
 type: entity
 aliases: ["Zhipu GLM 5.2", "Zhipu GLM-5.2", "GLM 5.2", "GLM-5.2", "Z.ai GLM-5.2"]
 tags: [open-weights, china, coding, long-context, frontier-model]
-description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked "matches Mythos" cybersecurity headline.
+description: Zhipu AI / Z.ai flagship model shipped under an MIT license with 1M context and two reasoning-effort levels; the marquee long-context Chinese open-weight release in the Fable 5 shutdown window — and, late June, the subject of a debunked "matches Mythos" cybersecurity headline. Superseded as the agentic flagship by [[zhipu-glm-5-3|GLM-5.3]] (2026-08-19).
 created_at: 2026-06-17
-timestamp: 2026-07-05T00:00:00Z
+timestamp: 2026-08-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
@@ -163,12 +164,19 @@ max/high "thinking" modes.
   sources agree on the claim; no official Tencent primary yet captured
   (ARA digest 2026-07-12).
 
+- **Succeeded on agentic benchmarks by [[zhipu-glm-5-3|GLM-5.3]] (2026-08-19).**
+  The 2026-08-19 first independent scoring of the successor model
+  **[[zhipu-glm-5-3|GLM-5.3]]** — on the **same 753B-total / 40B-active**
+  architecture — put GLM-5.3 at **60 on the Artificial Analysis Intelligence
+  Index with an agentic GDPval-AA v2 Elo of 1770**, above the GLM-5.2's 1524
+  baseline tracked on this page, cementing Z.ai's agentic-tier claim for the
+  family (ARA daily digest 2026-08-19).
+
 ## Open questions
 
 - **Weights actually landing.** The decisive transition is public MIT weights
   plus a primary model card. Until then, the open-weight claim is directionally
-  important but not complete.
-- **Neutral evals.** Does GLM-5.2 hold up on contamination-aware coding,
+  important but not complete.- **Neutral evals.** Does GLM-5.2 hold up on contamination-aware coding,
   long-context, and agentic tasks, or is the current signal mostly community
   excitement and vendor-adjacent benchmarking?
 - **Router adoption.** If GLM-5.2 becomes a default open coding backend, does it

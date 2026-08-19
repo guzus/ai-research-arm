@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), and watermarks all Claude text output globally (2026-08-12) amid first user backlash, with the Theseus Infrastructure datacenter platform with Macquarie and GIC.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), and began pre-IPO balance-sheet machinery (oversubscribed $10B+ revolver, founder voting share class) on 2026-08-19, with the Theseus Infrastructure datacenter platform with Macquarie and GIC.
 created_at: 2026-05-24
-timestamp: 2026-08-18T00:00:00Z
+timestamp: 2026-08-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
@@ -1020,6 +1021,23 @@ Three developments landed together on 2026-08-10:
   ~$50B). Nothing in the disclosure **breaks revenue out by product**, leaving
   the **Claude Code concentration question open** (Bloomberg; ARA daily digest
   2026-08-18).
+
+## Pre-IPO balance-sheet machinery; degraded performance across tiers (2026-08-19)
+
+- **An oversubscribed $10B+ revolver (2026-08-19).** Two separate
+  anonymously-sourced pre-IPO reports landed the same evening. Per Bloomberg,
+  Anthropic drew commitments **above a ~$10B revolver target** — **at least 4×
+  the $2.5B facility closed in 2025** — with **Morgan Stanley, Goldman Sachs
+  and JPMorgan** working the listing. A second report (The Information) says a
+  **share class gives Dario Amodei and co-founders extra voting power**. Both
+  are single-anonymous-source and **neither confirms the other**; together
+  they sketch the balance-sheet scaffolding ahead of the reported
+  September-or-early-October IPO window (ARA daily digest 2026-08-19).
+- **Degraded performance reported across every model tier (2026-08-19).** The
+  Anthropic status page listed **Mythos 5, Fable 5, Opus 5, Sonnet 5 and Haiku
+  4.5** as affected across the **Claude app, API, Claude Code and Cowork**, with
+  users still reporting problems **100 minutes later** (@ns123abc; ARA daily
+  digest 2026-08-19).
 
 ## Open questions
 - **Does the eval-breach disclosure produce consequences?** Two of three
