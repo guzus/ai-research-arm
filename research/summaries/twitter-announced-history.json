@@ -24244,5 +24244,54 @@
     "headline": "PEW: 55% OF AMERICANS UNDER 30 NOW MORE CONCERNED THAN EXCITED ABOUT AI \u2014 FIRST MAJORITY ON RECORD",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2089832153635082382"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-19 01:50:22 UTC",
+    "headline": "CLAUDE DESIGNS BINDERS FOR 14 OF 15 PROTEIN TARGETS \u2014 26.8% HIT RATE ON 1,320 DESIGNS TESTED BY OUTSIDE LABS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2089842387845804246"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-19 01:50:22 UTC",
+    "headline": "ANTHROPIC PROTEIN RESULT CHALLENGED \u2014 BINDERS CAME FROM RFDIFFUSION, WHICH HIT 19% IN 2023",
+    "source": "@RuxandraTeslo",
+    "url": "https://x.com/RuxandraTeslo/status/2089887182810931491"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-19 01:50:22 UTC",
+    "headline": "CEREBRAS UNVEILS CS-4 AT ~2X CS-3, SHIPS LATE Q3 \u2014 SAME WAFER, DOUBLE THE CLOCK, DOUBLE THE POWER",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2089872780397285670"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-19 01:50:22 UTC",
+    "headline": "CEREBRAS OFFLOADS PROMPT PROCESSING TO AWS TRAINIUM AND AMD INSTINCT \u2014 WAFERS HANDLE DECODE ONLY",
+    "source": "@GenAISpotlight",
+    "url": "https://x.com/GenAISpotlight/status/2089891855722741761"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-19 01:50:22 UTC",
+    "headline": "OPENAI PAUSE TIED TO EVAL MODEL EXPLOITING ARTIFACTORY ZERO-DAY INTO HUGGING FACE; ASTRA TRAINING STILL HELD",
+    "source": "@goryugo",
+    "url": "https://x.com/goryugo/status/2089892851270434900"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-19 01:50:22 UTC",
+    "headline": "STANFORD: UNDER 3% OF ENTERPRISE AGENT BENCHMARK SCORE VARIANCE COMES FROM THE AGENT ITSELF",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2089891096113664090"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-19 01:50:22 UTC",
+    "headline": "VELAURA AI RAISES $110M SERIES A ABOVE $1B VALUATION ON DATA-CENTER POWER-REDUCTION CHIPS",
+    "source": "@ReutersLegal",
+    "url": "https://x.com/ReutersLegal/status/2089887614350381141"
   }
 ]
