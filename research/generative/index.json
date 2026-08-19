@@ -736,7 +736,23 @@
     "created_at": "2026-06-14T22:14:24Z",
     "source": "workflow_dispatch",
     "prompt": "OpenAI's 42-state AG subpoena: how state consumer-protection enforcement became AI's real regulatory front ahead of its IPO",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T103406--openai-42-state-ag-subpoena.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "42개 주의 승부수: 주 소비자보호 집행이 어떻게 AI의 실질적 규제 전선이 되었는가 — 그리고 그것이 OpenAI의 조 달러 IPO를 위협하는 이유",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T10:34:06Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for openai-42-state-ag-subpoena",
+        "tags": [],
+        "translated_at": "2026-08-19T10:34:06Z",
+        "source_file": "research/generative/2026-06-14T221424--openai-42-state-ag-subpoena.ara.md",
+        "source_sha256": "12b30c1e69c4297f1c29a3a7d35d16094f5a7691a2a36abf96694c5dd5f02918"
+      }
+    }
   },
   {
     "slug": "harvey-nemotron-open-weight-legal-post-training",
