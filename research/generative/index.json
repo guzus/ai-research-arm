@@ -1029,7 +1029,25 @@
     "prompt": "Seed Twitter/X URL: https://x.com/kubimensah/status/2077388130676584829\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T023647--expand-research-from-twitter-link-https-x-com-kubimensah-sta.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "대체 누구의 블록스페이스인가?",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T02:36:47Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-kubimensah-sta",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-19T02:36:47Z",
+        "source_file": "research/generative/2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta.ara.md",
+        "source_sha256": "5365c243dac292bcda44c4d35045ba93d0f7cc5d8281585716d0cdf94c9d55c8"
+      }
+    }
   },
   {
     "slug": "kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend",
