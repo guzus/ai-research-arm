@@ -633,7 +633,23 @@
     "created_at": "2026-05-27T03:55:57Z",
     "source": "claude",
     "prompt": "800 VDC Architecture",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T131246--800-vdc-architecture.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "800 VDC: 54볼트 버스를 무너뜨린 랙, 그리고 포르쉐에서 물려받은 공급망",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T13:12:46Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for 800-vdc-architecture",
+        "tags": [],
+        "translated_at": "2026-08-19T13:12:46Z",
+        "source_file": "research/generative/2026-05-27T035557--800-vdc-architecture.ara.md",
+        "source_sha256": "ea56fed9c8ae2703351605d62a2ec5a0028d27ac6b27b08201e5fc18287b1085"
+      }
+    }
   },
   {
     "slug": "ramp-multi-agent-security-pipeline-ai-vulnerability-discovery",
