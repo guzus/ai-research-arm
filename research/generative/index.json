@@ -663,7 +663,23 @@
     "created_at": "2026-06-07T17:06:06Z",
     "source": "local",
     "prompt": "3d printer stocks",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T124345--3d-printer-stocks.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "3D 프린팅 주식: 산업은 성장했는데, 주식은 그렇지 않았다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T12:43:45Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for 3d-printer-stocks",
+        "tags": [],
+        "translated_at": "2026-08-19T12:43:45Z",
+        "source_file": "research/generative/2026-06-07T170606--3d-printer-stocks.ara.md",
+        "source_sha256": "83ee69a6ff5165236b967b6a1ea9833a1c8eabfaf2e2a1d8e4dffbe42bbc6fbe"
+      }
+    }
   },
   {
     "slug": "naver-nvidia-sovereign-ai-gigawatt-bet",
