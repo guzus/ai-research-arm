@@ -2472,5 +2472,17 @@
         "source_sha256": "25303ccc0f245142c6e7ce784ceb589fcc005ac7bb5cd57dc9ef416d225b9487"
       }
     }
+  },
+  {
+    "slug": "anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+    "file": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-19T19:24:19Z",
+    "source": "workflow_dispatch",
+    "prompt": "Anthropic's 26.8% binder hit rate: what Claude actually designed, and whether the RFdiffusion 19% baseline settles it",
+    "tags": []
   }
 ]
