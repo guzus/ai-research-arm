@@ -1001,7 +1001,25 @@
     "prompt": "Seed Twitter/X URL: https://x.com/guilleflorvs/status/2076708631408464202\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T031147--expand-research-from-twitter-link-https-x-com-guilleflorvs-s.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Anthropic 플라이휠 — 열 주 동안의 여덟 건 영입이 실제로 드러내는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T03:11:47Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-guilleflorvs-s",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-19T03:11:47Z",
+        "source_file": "research/generative/2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s.ara.md",
+        "source_sha256": "e4d75216f6b43f2c2f4fb3f3d9ca39749b4d18432371874af6ab70b628eb55c1"
+      }
+    }
   },
   {
     "slug": "expand-research-from-twitter-link-https-x-com-lukas-m-ziegle",
