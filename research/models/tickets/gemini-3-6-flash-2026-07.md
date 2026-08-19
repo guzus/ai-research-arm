@@ -3,7 +3,7 @@ slug: gemini-3-6-flash-2026-07
 title: Gemini 3.6 Flash & Gemini 3.5 Flash-Lite — GA release
 company: Google / DeepMind
 model: Gemini 3.6 Flash / Gemini 3.5 Flash-Lite
-status: released
+status: closed
 status_note: |
   On **2026-07-21** Google shipped **Gemini 3.6 Flash** and **Gemini 3.5
   Flash-Lite** in GA, announced officially by @GoogleDeepMind, @GoogleAI,
@@ -47,12 +47,14 @@ sources:
   - "@kimmonismus"
   - "@testingcatalog"
 created_at: 2026-07-22
-updated_at: 2026-07-22
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-07-22
     change: "Created — Google officially shipped Gemini 3.6 Flash and Gemini 3.5 Flash-Lite in GA on 2026-07-21 (@GoogleDeepMind, @GoogleAI, @OfficialLoganK, @_philschmid), available via Gemini API/AI Studio/App/Android Studio/Antigravity. 3.6 Flash: ~17-20% more token-efficient than 3.5 Flash, $1.50/$7.50 per 1M in/out, powers Managed Agents. 3.5 Flash-Lite: $0.30/$2.50 per 1M in/out, 350 tok/s, beats Gemini 3 Flash on coding/computer use. Mixed independent reception (kimmonismus positive-but-modest, mark_k/Conor_D_Dart/theo see it losing to Grok 4.5/GPT-5.6 on coding). Official multi-account primary sourcing → status released, verification confirmed."
+  - ts: 2026-08-19
+    change: "Closed — released-and-aged. Gemini 3.6 Flash and Gemini 3.5 Flash-Lite went GA 2026-07-21, 29 days ago (>=4 weeks), with no follow-on signal in the 2026-08-19 window. Live Gemini roadmap signal now sits on the Spark computer-use ticket ([[google-gemini-spark-computer-use-2026-08]])."
 ---
 
 On **2026-07-21**, Google shipped two new members of the Gemini 3.x family

@@ -3,7 +3,7 @@ slug: prismml-bonsai-27b
 title: PrismML releases Bonsai 27B, a 1-bit-quantized model claimed to run on a phone
 company: PrismML
 model: Bonsai 27B
-status: released
+status: closed
 status_note: |
   Technical-report release, trending on **Papers with Code** and
   **Hugging Face**. Claimed to be the first 27B-class model able to run
@@ -23,12 +23,14 @@ sources:
   - https://x.com/HuggingFace/status/2077164993989017668
   - "@NielsRogge"
 created_at: 2026-07-16
-updated_at: 2026-07-16
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-07-16
     change: "Created — PrismML released Bonsai 27B, a 1-bit-quantized 27B-class model claimed to run on a phone, shrinking footprint from 54GB to 3.8GB at ~90% retained quality per the reported technical evaluation. Technical-report release, trending on Papers with Code and Hugging Face; corroborated by @HuggingFace and ML researcher @NielsRogge → status released. No primary PrismML statement/blog located in this pass → verification partial."
+  - ts: 2026-08-19
+    change: "Closed — released-and-aged. Bonsai 27B released 2026-07-16, 34 days ago (>=4 weeks), with no follow-on signal and no independent verification of the 1-bit retention claim since. The on-device open-weights storyline has moved to Qwen3.8-27B ([[alibaba-qwen-3-8-27b-2026-08]])."
 ---
 
 **PrismML** released **Bonsai 27B**, claimed to be the first **27B-class

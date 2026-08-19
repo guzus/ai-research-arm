@@ -3,7 +3,7 @@ slug: openai-codex-hardware-2026-06
 title: OpenAI teases its first Codex hardware — a Work Louder macro pad, reveal July 15
 company: OpenAI
 model: null
-status: released
+status: closed
 status_note: |
   Teased **2026-06-30** (The Verge via Techmeme; OpenAI's own teaser video):
   OpenAI launched a **Codex-focused physical device** built with
@@ -35,14 +35,16 @@ sources:
   - "@kimmonismus"
   - "@rohanpaul_ai"
 created_at: 2026-06-30
-updated_at: 2026-07-16
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-06-30
     change: "Created — OpenAI teased its first Codex hardware (2026-06-30, The Verge via Techmeme + OpenAI teaser video): a physical device built with keyboard maker Work Louder, reveal July 15, 'your favorite Codex shortcuts are getting an upgrade.' Silhouette matches Work Louder's Creator Micro 2 (13 switches, joystick, touch sensor) — a macro pad for binding Codex actions to physical keys; explicitly not the Jony Ive device. Status confirmed (official teaser, The Verge/Techmeme); verification confirmed; spec/price/ambitions unknown until July 15 (teased, not shipped). Links to the Codex platform lane ([[openai-codex-platform-2026-05]])."
   - ts: 2026-07-16
     change: "Reveal happened on schedule 2026-07-15: the product is Codex Micro, $230, live on the OpenAI Supply site (product id kbd-1.0-codex-micro), built with Work Louder — 6 RGB agent-status keys, a reasoning-level dial, Bluetooth/USB-C. Reported by @testingcatalog and @kimmonismus, independently corroborated by @rohanpaul_ai on 2026-07-16 → status advances confirmed → released; expected set to null (nothing pending, it shipped)."
+  - ts: 2026-08-19
+    change: "Closed — released-and-aged. The reveal landed on schedule and Codex Micro went on sale 2026-07-15, 35 days ago (>=4 weeks), with no follow-on signal since. The ticket resolved its own open question (what the teased hardware was) and is now normal coverage."
 ---
 
 On **2026-06-30**, OpenAI teased its **first Codex hardware** — a physical

@@ -17,7 +17,7 @@ status_note: |
   actual IPO following from there. WSJ broke the story (@KateClarkTweets,
   @cdriebusch); confirmed across The Register, US News, Fox Business,
   Spokesman, Ground News in the 2026-06-01 → 2026-06-02 window.
-expected: "Public S-1 ~early-mid July 2026; IPO follow-on per SEC feedback timeline"
+expected: "Public S-1 ~mid-2026; roadshow reported as possibly September/October 2026 (@GavinSBaker). Investor-relayed figures as of 2026-08-17: ~$65B ARR at end-July, ~$11.5B 2Q26 revenue, >40% of ARR indirect — pending an actual filing or on-record confirmation"
 labels:
   - corporate-action
   - ipo
@@ -40,7 +40,7 @@ polymarket:
     question: "Anthropic IPO by Dec 31, 2026?"
     outcome: "Dec 31 2026"
 created_at: 2026-06-02
-updated_at: 2026-07-27
+updated_at: 2026-08-19
 closed_at: null
 closed_reason: null
 history:
@@ -50,6 +50,8 @@ history:
     change: "Linked Polymarket odds (metadata-only, no status change): 'Will Anthropic IPO by December 31, 2026?' (event anthropic-ipo-by, market 2413330, ~66% Yes at link time) — the market prices this ticket's central open question, the IPO completing in 2026 after the 2026-06-01 confidential S-1. IDs read from the gamma API."
   - ts: 2026-07-27
     change: "IPO-prep detail (The Information, Jul 25-26, two posts): Anthropic is exploring 'one of the most restrictive employee stock-sale policies in Silicon Valley' ahead of its IPO. Named outlet, not yet an Anthropic on-record confirmation of the specific policy terms. Status stays confirmed; verification stays confirmed (consistent with the company's own confidential-S1 disclosure track), noting the stock-sale-policy specifics themselves are secondary-sourced."
+  - ts: 2026-08-19
+    change: "Pre-roadshow revenue disclosure. Anthropic told investors over the weekend of 2026-08-16/17 that its annualized revenue run rate hit ~$65B at the end of July, with preliminary 2Q26 revenue of ~$11.5B — up ~14x from $787M in 2Q25 (@AndrewCurran_ 2026-08-17 21:25 UTC; @ns123abc relays $47B at end-May vs $65B end-July, i.e. +$18B in two months, and puts OpenAI at ~$40B in July). It was the days largest AI story (~15K posts on the trending item). @GavinSBaker, on the All-In podcast, reads the leak as deliberate IPO-roadshow positioning ahead of a possible September/October roadshow while arguing Anthropic is losing share at the margin to OpenAI, open source and Grok; @SemiAnalysis_ adds that Anthropic crossed 40% of ARR from indirect channels (Bedrock, Foundry, Gemini Agent Enterprise) in 2Q26. Numbers are investor-relayed via journalists, not an Anthropic filing or on-record statement, so treat the decimals as reported rather than audited. Status stays confirmed (the S-1 filing is the confirmed artifact); verification stays confirmed."
 ---
 
 Anthropic **confidentially filed an S-1 registration statement with

@@ -178,7 +178,7 @@ sources:
   - https://openai.com/index/previewing-gpt-5-6-sol/
   - https://simonwillison.net/2026/Jun/26/openai/
 created_at: 2026-06-09
-updated_at: 2026-07-31
+updated_at: 2026-08-19
 closed_at: null
 closed_reason: null
 history:
@@ -212,6 +212,8 @@ history:
     change: "Post-GA quality regression reported. @theo, @kimmonismus, testingcatalog, and @jxnlco (relaying @thsottiaux) say OpenAI quietly reduced GPT-5.6's reasoning-effort budget and discussed a context-window rollback (372k→272k), then compensated with 'banked resets' to ChatGPT Work/Codex usage limits for an estimated 500k-7M users. @theo partially walked back the precise mechanism in his own thread, so the exact technical cause is contested even though the regression-and-compensation event itself is well-corroborated. No official OpenAI statement on the regression. Status stays released; verification stays confirmed."
   - ts: 2026-07-31
     change: "API pricing cuts: GPT-5.6 Luna -80% (to $0.20/$1.20 per Mtok), Terra -20% (to $2/$12 per Mtok), plus a new ~2.5x-speed/~2x-price 'Fast' mode for Sol. Official @OpenAI account, exact figures via @sama/@gdb; corroborated by @kimmonismus, @scaling01, @testingcatalog, @AndrewCurran_. Status stays released; verification stays confirmed."
+  - ts: 2026-08-19
+    change: "Distribution-side pricing move plus a new inference host. @SemiAnalysis_ (2026-08-18 05:36 UTC) reports OpenAI announced a 50% price cut for GPT-5.6 Sol exclusively on OpenRouter and Vercel AI Gateway, and reads it as a market-share optic rather than a volume play: those two gateways are a small share of OpenAI token volume but are the datasources most analysts use to estimate lab/model share, so a >2x volume response would be naively scored as a share win. Separately, Cerebras new CS-4 accelerator is quoted at ~1300 tok/s serving GPT-5.6-Sol (@scaling01 2026-08-19, see [[cerebras-cs-4-2026-08]]) — the fastest published serving rate for the model. Not closing on the >=4-week released-and-aged trigger while the pricing and distribution storyline is still producing signal. Status stays released, verification stays confirmed."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely

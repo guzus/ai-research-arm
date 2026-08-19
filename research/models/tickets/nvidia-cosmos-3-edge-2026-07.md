@@ -3,7 +3,7 @@ slug: nvidia-cosmos-3-edge-2026-07
 title: NVIDIA Cosmos 3 Edge open on-device world model
 company: NVIDIA
 model: Cosmos 3 Edge
-status: released
+status: closed
 status_note: |
   Fully open release — weights, post-training recipes, and code all
   published on Hugging Face at launch.
@@ -18,12 +18,14 @@ sources:
   - https://x.com/marcopapa99/status/2079488178894053844
   - "@NVIDIAAI"
 created_at: 2026-07-21
-updated_at: 2026-07-21
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-07-21
     change: Created — NVIDIA released Cosmos 3 Edge, a 4B-parameter open on-device world model for robots/vehicles/live-video agents, with full weights, recipes, and code.
+  - ts: 2026-08-19
+    change: "Closed — released-and-aged. Cosmos 3 Edge shipped with full weights 2026-07-21, 29 days ago (>=4 weeks), with no follow-on signal since. Normal coverage from here."
 ---
 
 NVIDIA introduced Cosmos 3 Edge, an open frontier world model built to run

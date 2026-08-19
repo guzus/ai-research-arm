@@ -3,7 +3,7 @@ slug: mistral-robostral-navigate-2026-07
 title: Mistral ships Robostral Navigate — first embodied-navigation model
 company: Mistral AI
 model: Robostral Navigate
-status: released
+status: closed
 status_note: |
   Mistral AI officially announced **Robostral Navigate**, its first model
   for embodied navigation: an **8B-parameter robotics navigation model**
@@ -18,12 +18,14 @@ verification: confirmed
 sources:
   - "@MistralAI"
 created_at: 2026-07-12
-updated_at: 2026-07-12
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-07-12
     change: "Created — Mistral AI's own account announced Robostral Navigate (2026-07-08), an 8B-parameter robotics navigation model guiding robots to autonomously perform natural-language-specified tasks, in a 3-tweet thread. Official primary, real shipping artifact → status released, verification confirmed. First-sighting: the model shipped 2026-07-08 but surfaced in this ingest cycle."
+  - ts: 2026-08-19
+    change: "Closed — released-and-aged. Robostral Navigate was announced by Mistral 2026-07-08, 42 days ago (>=4 weeks), with no follow-on signal since. Mistral roadmap attention has shifted to the reported infrastructure pivot ([[mistral-frontier-exit-2026-08]])."
 ---
 
 **Robostral Navigate** is Mistral AI's first model for **embodied

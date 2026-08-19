@@ -3,7 +3,7 @@ slug: us-caisi-director-resignation-2026-07
 title: CAISI director resigns — third director search in three months
 company: US Government
 model: null
-status: rumored
+status: closed
 status_note: |
   Single-account claim (citing Axios) that Chris Fall, director of the
   Center for AI Standards and Innovation (CAISI), resigned after roughly
@@ -17,12 +17,14 @@ verification: unverified
 sources:
   - https://x.com/ns123abc/status/2079243011184066753
 created_at: 2026-07-21
-updated_at: 2026-07-21
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "stale-rumor-unverified"
 history:
   - ts: 2026-07-21
     change: Created — reported resignation of CAISI director Chris Fall after ~3 months, described as the third director search in three months.
+  - ts: 2026-08-19
+    change: "Closed — stale-rumor-unverified. Created 2026-07-21 on a reported CAISI director resignation; 29 days with no primary confirmation (no NIST/Commerce statement, no named-outlet follow-up) and nothing in the 2026-08-19 window. Per the >=15-cycle unverified trigger."
 ---
 
 A single account, citing Axios, reported that Chris Fall — director of
