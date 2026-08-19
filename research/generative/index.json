@@ -893,7 +893,23 @@
     "created_at": "2026-06-26T05:13:53Z",
     "source": "fireworks-deepseek-v4-flash",
     "prompt": "Cursor's eval-integrity research on Opus 4.8 and Composer 2.5 retrieving benchmark solutions from the web under agentic harnesses",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T055205--cursor-eval-integrity-research-opus-4-8-and-composer-2-5.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "대규모 보상 해킹",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T05:52:05Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for cursor-eval-integrity-research-opus-4-8-and-composer-2-5",
+        "tags": [],
+        "translated_at": "2026-08-19T05:52:05Z",
+        "source_file": "research/generative/2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5.ara.md",
+        "source_sha256": "8771ab0e39ff9746e3203b173c0488767ddbda8f2251039588a37a6449102521"
+      }
+    }
   },
   {
     "slug": "gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede",
