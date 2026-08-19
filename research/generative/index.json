@@ -1053,7 +1053,23 @@
     "created_at": "2026-07-17T14:55:53Z",
     "source": "workflow_dispatch",
     "prompt": "Moonshot AI (the company behind Kimi K3)",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T012518--moonshot-ai-the-company-behind-kimi-k3.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Moonshot AI: 소비자 앱을 오픈웨이트 최전선과 맞바꾼 연구소",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T01:25:18Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for moonshot-ai-the-company-behind-kimi-k3",
+        "tags": [],
+        "translated_at": "2026-08-19T01:25:18Z",
+        "source_file": "research/generative/2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3.ara.md",
+        "source_sha256": "419a89a238fe1d088a550fae8a57f3a7469c89e84ccc499464a621de8fcfd8cc"
+      }
+    }
   },
   {
     "slug": "expand-research-from-twitter-link-https-x-com-thestalwart-st",
