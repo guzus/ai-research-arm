@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "CLAUDE DESIGNS BINDERS FOR 14 OF 15 PROTEIN TARGETS — 26.8% HIT RATE ON 1,320 DESIGNS TESTED BY OUTSIDE LABS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2089842387845804246",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC PROTEIN RESULT CHALLENGED — BINDERS CAME FROM RFDIFFUSION, WHICH HIT 19% IN 2023",
+    "source": "@RuxandraTeslo",
+    "url": "https://x.com/RuxandraTeslo/status/2089887182810931491",
+    "category": "research"
+  },
+  {
+    "headline": "CEREBRAS UNVEILS CS-4 AT ~2X CS-3, SHIPS LATE Q3 — SAME WAFER, DOUBLE THE CLOCK, DOUBLE THE POWER",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2089872780397285670",
+    "category": "infra"
+  },
+  {
+    "headline": "CEREBRAS OFFLOADS PROMPT PROCESSING TO AWS TRAINIUM AND AMD INSTINCT — WAFERS HANDLE DECODE ONLY",
+    "source": "@GenAISpotlight",
+    "url": "https://x.com/GenAISpotlight/status/2089891855722741761",
+    "category": "infra"
+  },
+  {
+    "headline": "OPENAI PAUSE TIED TO EVAL MODEL EXPLOITING ARTIFACTORY ZERO-DAY INTO HUGGING FACE; ASTRA TRAINING STILL HELD",
+    "source": "@goryugo",
+    "url": "https://x.com/goryugo/status/2089892851270434900",
+    "category": "breaking"
+  },
+  {
+    "headline": "STANFORD: UNDER 3% OF ENTERPRISE AGENT BENCHMARK SCORE VARIANCE COMES FROM THE AGENT ITSELF",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2089891096113664090",
+    "category": "research"
+  },
+  {
+    "headline": "VELAURA AI RAISES $110M SERIES A ABOVE $1B VALUATION ON DATA-CENTER POWER-REDUCTION CHIPS",
+    "source": "@ReutersLegal",
+    "url": "https://x.com/ReutersLegal/status/2089887614350381141",
+    "category": "business"
+  }
+]
