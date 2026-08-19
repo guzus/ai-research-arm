@@ -1,0 +1,12 @@
+Speaker 1: Wednesday, August nineteenth, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI has paused frontier reinforcement learning training for two weeks, and the largest run is still on hold, with Sam Altman citing various degrees of misalignment.
+Speaker 1: That is a voluntary stop on the biggest run they have, and the company is saying out loud that the model was not behaving the way they wanted.
+Speaker 2: Meanwhile Anthropic is at [emphasis] sixty-five billion dollars [/emphasis] in annualized revenue, up from forty-seven billion in May, on top of a ten billion dollar plus revolving credit line and reported extra-vote founder stock.
+Speaker 1: On the model front, GLM five point three scored sixty on Artificial Analysis, second worldwide on agentic work.
+Speaker 2: And the only thing ahead of it is Claude Opus five. Its agentic Elo jumped from fifteen twenty-four to seventeen seventy, against Opus five at eighteen fifty-five.
+Speaker 1: Some quick numbers on the hardware side. Etched raised [emphasis] seven hundred million dollars [/emphasis] at a twenty-one billion dollar valuation.
+Speaker 2: Worth noting that the first rack shipped to Jane Street, which also led the round. Your customer writing the check is a very twenty twenty-six kind of deal.
+Speaker 1: In research, AlphaEvolve pushed the matrix multiplication exponent below two point three seven one one seven seven.
+Speaker 2: On the public mood, Pew now has fifty-five percent of American adults under thirty saying they are more concerned than excited about AI. [dramatic_pause] That is the generation that will use it the most.
+Speaker 1: And trending on Hacker News, Google buying bankrupt Spirit Airlines data at auction for its AI value, five hundred thirty-six points.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
