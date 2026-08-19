@@ -820,7 +820,30 @@
       "alphafold",
       "ai-for-science",
       "talent-war"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T084007--john-jumper-deepmind-anthropic-science-bet.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "존 점퍼, 딥마인드를 떠나 앤트로픽으로: 노벨상 수상자의 이적이 실제로 보내는 신호",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T08:40:07Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for john-jumper-deepmind-anthropic-science-bet",
+        "tags": [
+          "anthropic",
+          "deepmind",
+          "john-jumper",
+          "alphafold",
+          "ai-for-science",
+          "talent-war"
+        ],
+        "translated_at": "2026-08-19T08:40:07Z",
+        "source_file": "research/generative/2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet.ara.md",
+        "source_sha256": "3dfe749ccda4d0636d1789ba10701e0f4dacc12046a0813f2b7eea7dbf14a82e"
+      }
+    }
   },
   {
     "slug": "shazeer-google-openai-talent-moat",
