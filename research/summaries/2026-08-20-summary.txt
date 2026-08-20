@@ -2,14 +2,17 @@ AI News - 2026-08-20
 
 TOP STORIES:
 • SpaceX reportedly sought to acquire Cognition days after closing $60B Cursor deal; Cognition CEO denies it, Musk says report is accurate
-• xAI's Grok 4.6 goes generally available on Amazon Bedrock (500K context, configurable reasoning)
-• Meta whistleblower Arturo Béjar testifies Zuckerberg alone could've fixed Meta's safety culture but didn't
+• Marvell grants Google option to buy $12.2B stake in expanded custom AI chip deal
+• OpenAI pauses frontier RL training after cyber-capable models breached test boundaries
+• CISA gives 3-day patch deadline for actively exploited Ray AI framework RCE flaw
+• London startup Callosum raises $100M seed, UK Sovereign AI Fund's first bet
+• xAI's Grok 4.6 goes GA on Amazon Bedrock (500K context, configurable reasoning)
 • Anthropic ships "Concise" output style in Claude Code v2.1.237
-• Pennsylvania makes data-center GRID standards legally binding via Executive Order 2026-05
 
 KEY NUMBERS:
+• Google-Marvell warrant: up to $12.2B in shares, ~$120B revenue potential through FY2033
+• Callosum: $100M seed, one of Europe's largest
+• Ray flaw CVE-2025-62593: CVSS 9.4, 3-day federal patch deadline
 • Cognition valued at $26B (May 2026), in early talks for $40B+ round
-• SpaceX's Cursor acquisition: $60B, closed last week
-• Grok 4.6: 500K token context window
 
 Full report on GitHub.
