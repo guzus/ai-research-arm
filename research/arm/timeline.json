@@ -1,48 +1,9 @@
 {
-  "generatedAt": "2026-08-20T10:35:34.045Z",
-  "windowStart": "2026-08-18T22:00:00.000Z",
-  "windowEnd": "2026-08-21T23:00:00.000Z",
+  "generatedAt": "2026-08-20T11:03:46.829Z",
+  "windowStart": "2026-08-18T23:00:00.000Z",
+  "windowEnd": "2026-08-22T00:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-b55208489338",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-08-18 23:11 UTC (#2579)",
-      "status": "completed",
-      "start": "2026-08-18T23:11:00.000Z",
-      "end": "2026-08-18T23:12:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "b55208489338",
-      "url": "https://github.com/guzus/ai-research-arm/commit/b55208489338430a78bec59afcd25ac191e080bd"
-    },
-    {
-      "id": "commit-70cd207eecc8",
-      "kind": "completed",
-      "lane": "YouTube",
-      "title": "YouTube signal",
-      "status": "completed",
-      "start": "2026-08-18T23:40:00.000Z",
-      "end": "2026-08-18T23:42:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "70cd207eecc8",
-      "url": "https://github.com/guzus/ai-research-arm/commit/70cd207eecc8bef92d43cd282d729fa0a5e17edd"
-    },
-    {
-      "id": "commit-9a49508ffa75",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Generative research translation (ko): -2026년 중반의 Databricks: $188B 사모 밸류에이션, 80% 재가속, 개방 표준 위에 세",
-      "status": "completed",
-      "start": "2026-08-18T23:57:00.000Z",
-      "end": "2026-08-19T00:18:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "9a49508ffa75",
-      "url": "https://github.com/guzus/ai-research-arm/commit/9a49508ffa757a39ce013e4c159abe7eb8817375"
-    },
     {
       "id": "commit-b7177b0a7843",
       "kind": "completed",
@@ -694,24 +655,69 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/13d4d66212d8b6baef2f7181124105f6854b1006"
     },
     {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-08-20T10-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-08-20T10:45:00.000Z",
-      "end": "2026-08-20T11:15:00.000Z",
-      "source": "cron 45 */2 * * *"
+      "id": "commit-81e4210f7aac",
+      "kind": "completed",
+      "lane": "Generative",
+      "title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable (#2718)",
+      "status": "completed",
+      "start": "2026-08-20T09:44:00.000Z",
+      "end": "2026-08-20T10:35:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "research agent",
+      "commit": "81e4210f7aac",
+      "url": "https://github.com/guzus/ai-research-arm/commit/81e4210f7aacf245de9f51a201a710fdc8bf707d"
     },
     {
-      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-08-20T10-47-00-000Z",
-      "kind": "scheduled",
-      "lane": "Blogs",
-      "title": "Naver Blog Subscriptions",
-      "status": "scheduled",
-      "start": "2026-08-20T10:47:00.000Z",
-      "end": "2026-08-20T11:17:00.000Z",
-      "source": "cron 47 */2 * * *"
+      "id": "commit-c8237e7d2e56",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-08-20 10:35 UTC (#2719)",
+      "status": "completed",
+      "start": "2026-08-20T10:35:00.000Z",
+      "end": "2026-08-20T10:37:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "c8237e7d2e56",
+      "url": "https://github.com/guzus/ai-research-arm/commit/c8237e7d2e5666942755145f19fa515fdfc6c7e8"
+    },
+    {
+      "id": "commit-1cb1e271cd44",
+      "kind": "completed",
+      "lane": "Delivery",
+      "title": "Twitter alert delivery",
+      "status": "completed",
+      "start": "2026-08-20T10:42:00.000Z",
+      "end": "2026-08-20T10:51:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "hooker",
+      "commit": "1cb1e271cd44",
+      "url": "https://github.com/guzus/ai-research-arm/commit/1cb1e271cd4430da416758e051f97cf3faefe1d3"
+    },
+    {
+      "id": "commit-1f344c2c4701",
+      "kind": "completed",
+      "lane": "Twitter/X",
+      "title": "Twitter/X brief",
+      "status": "completed",
+      "start": "2026-08-20T10:42:00.000Z",
+      "end": "2026-08-20T10:51:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "deepseek-v4-flash",
+      "commit": "1f344c2c4701",
+      "url": "https://github.com/guzus/ai-research-arm/commit/1f344c2c4701d888d479f31350416edf45776070"
+    },
+    {
+      "id": "commit-749dbed755b1",
+      "kind": "completed",
+      "lane": "Bluesky",
+      "title": "Bluesky commentary",
+      "status": "completed",
+      "start": "2026-08-20T10:52:00.000Z",
+      "end": "2026-08-20T10:55:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "749dbed755b1",
+      "url": "https://github.com/guzus/ai-research-arm/commit/749dbed755b1d5aec54448af00ffb9a3941caaad"
     },
     {
       "id": "scheduled-liveness-check-yml-0---6-------2026-08-20T12-00-00-000Z",
@@ -1912,6 +1918,26 @@
       "start": "2026-08-21T22:30:00.000Z",
       "end": "2026-08-21T22:45:00.000Z",
       "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-08-21T22-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-08-21T22:45:00.000Z",
+      "end": "2026-08-21T23:15:00.000Z",
+      "source": "cron 45 */2 * * *"
+    },
+    {
+      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-08-21T22-47-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Naver Blog Subscriptions",
+      "status": "scheduled",
+      "start": "2026-08-21T22:47:00.000Z",
+      "end": "2026-08-21T23:17:00.000Z",
+      "source": "cron 47 */2 * * *"
     }
   ]
 }
