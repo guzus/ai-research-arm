@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-20 21:38:05 UTC
+
+CYCLE: Nvidia takes the coding-model layer via licence-and-hire, denies the China chip story, and Anthropic ships computer use to GA.
+
+TOP STORIES:
+• Nvidia to pay Poolside $6B for a non-exclusive licence, invest $1B at $12B pre-money, hire 109 staff; investors cashed out at $76.20/share by end-2027 [⚠]
+• Nvidia spokesperson reported denying the China inference chip: "no LPU sales in China and no China-specific LPU in our product plans" [⚠]
+• Anthropic moves computer use, browser tool, Skills API and Files API to general availability on the Claude Platform [✓]
+
+WATCH: Whether Nvidia books the $6B Poolside licence in a filing and names the technology actually licensed.
+
+Full update on GitHub.
