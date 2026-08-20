@@ -1,0 +1,15 @@
+AI News - 2026-08-20
+
+TOP STORIES:
+• SpaceX reportedly sought to acquire Cognition days after closing $60B Cursor deal; Cognition CEO denies it, Musk says report is accurate
+• xAI's Grok 4.6 goes generally available on Amazon Bedrock (500K context, configurable reasoning)
+• Meta whistleblower Arturo Béjar testifies Zuckerberg alone could've fixed Meta's safety culture but didn't
+• Anthropic ships "Concise" output style in Claude Code v2.1.237
+• Pennsylvania makes data-center GRID standards legally binding via Executive Order 2026-05
+
+KEY NUMBERS:
+• Cognition valued at $26B (May 2026), in early talks for $40B+ round
+• SpaceX's Cursor acquisition: $60B, closed last week
+• Grok 4.6: 500K token context window
+
+Full report on GitHub.
