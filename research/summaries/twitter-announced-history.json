@@ -24769,5 +24769,40 @@
     "headline": "BLACKBURN, BLUMENTHAL DEMAND TIKTOK ANSWERS ON SAFETY ALGORITHM DISABLED FOR 10% OF US USERS",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2090476695266754817"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-20 18:55:34 UTC",
+    "headline": "ANTHROPIC TO FILE PUBLIC IPO PROSPECTUS AS SOON AS END OF AUGUST; CONFIDENTIAL S-1 SUBMITTED IN JUNE",
+    "source": "@VikramIndolia",
+    "url": "https://x.com/VikramIndolia/status/2090513368281166010"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-20 18:55:34 UTC",
+    "headline": "XAI QUIETLY REVISED GROK 4.6 MODEL CARD \u2014 HARMFUL-CYBER COMPLIANCE CUT 16.7% TO 6.9%, VALS INDEX DELETED",
+    "source": "@SafetyChanges",
+    "url": "https://x.com/SafetyChanges/status/2090512759456981174"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-20 18:55:34 UTC",
+    "headline": "TEXAS FREEZES ALL DATACENTER ENERGIZATION APPROVALS \u2014 ERCOT QUEUE HITS 474 GW, FIVE TIMES RECORD PEAK",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2090484500102852855"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-20 18:55:34 UTC",
+    "headline": "OPENAI OPENS COMPUTER HISTORY ON MAC TO EEA, UK AND SWITZERLAND \u2014 PRO, BUSINESS AND ENTERPRISE ONLY",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2090488285198250017"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-20 18:55:34 UTC",
+    "headline": "SENSENOVA RELEASES U1.5-LITE \u2014 8B OPEN-SOURCE UNIFIED MULTIMODAL MODEL WITH NATIVE 4K AND LOCAL EDITS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2090486590510674284"
   }
 ]
