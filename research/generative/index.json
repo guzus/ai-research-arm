@@ -2530,5 +2530,19 @@
       "china",
       "unitree"
     ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-crypto-mckenna",
+    "file": "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Arete Capital's CHIP thesis, checked against the chain",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-20T16:18:10Z",
+    "source": "generative-research",
+    "prompt": "Seed Twitter/X URL: https://x.com/Crypto_McKenna/status/2090078188752060628\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
