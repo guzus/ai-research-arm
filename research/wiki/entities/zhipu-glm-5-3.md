@@ -4,10 +4,11 @@ title: Zhipu GLM-5.3
 type: entity
 aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3"]
 tags: [open-weights, china, agentic, frontier-model]
-description: Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tied with Kimi K3) with the top agentic Elo gain of the cycle — 1524 → 1770 on GDPval-AA v2, second only to Claude Opus 5; the first independent scoring landed 2026-08-19, with MIT-licensed weights promised within a week.
+description: Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5; weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.
 created_at: 2026-08-19
-timestamp: 2026-08-19T00:00:00Z
+timestamp: 2026-08-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
 ---
 
@@ -30,10 +31,19 @@ open-weight agentic development.
   open-weight price-pressure context).
 - **Caveats to hold.** Z.ai claimed **~22% *fewer*** output tokens than
   GLM-5.2, but the independent harness measured **~18,700 tokens per task —
-  about 20% *more***. The **hallucination rate also regressed 26% → 30%**.
-  And the **MIT-licensed weights remain a promise, not a download** — "within
+  about 20% *more***. The **hallucination rate also regressed 26% → 30%**. And
+  the **MIT-licensed weights remain a promise, not a download** — "within
   a week" is still unfulfilled, the same verification gap that marked the
   GLM-5.2 arc (ARA daily digest 2026-08-19).
+- **The post-training thesis and the parameter discrepancy harden (2026-08-20).**
+  The day-two read sharpens the story the page opened with: founder **Jie Tang**
+  frames GLM-5.3 explicitly as a **controlled experiment that capability now
+  comes from post-training depth, not parameter count** — a relayed claim says
+  it **reuses GLM-5.2's base and architecture with roughly one extra month of
+  RL** — and the **743B-vs-753B base-parameter discrepancy is still unresolved**.
+  The 60-on-the-Intelligence-Index score now reads as **tying Kimi K3 top of the
+  open-model rankings and seven points ahead of GLM-5.2**, with the **weights
+  release delayed** past the initial promise (ARA daily digest 2026-08-20).
 
 ## Open questions
 

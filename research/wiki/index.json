@@ -125,11 +125,13 @@
       "outbound": [
         "china-ai-regulation",
         "figure-ai",
-        "mistral-robostral-navigate"
+        "mistral-robostral-navigate",
+        "unitree"
       ],
       "inbound": [
         "figure-ai",
-        "google"
+        "google",
+        "unitree"
       ]
     },
     {
@@ -231,6 +233,7 @@
         "sk-hynix",
         "spacex",
         "taalas",
+        "unitree",
         "volta-infra",
         "xai"
       ],
@@ -415,6 +418,7 @@
         "ai-capex",
         "anthropic",
         "etched",
+        "fractile",
         "groq",
         "model-specific-silicon",
         "nvidia",
@@ -447,11 +451,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), and began pre-IPO balance-sheet machinery (oversubscribed $10B+ revolver, founder voting share class) on 2026-08-19, with the Theseus Infrastructure datacenter platform with Macquarie and GIC.",
-      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), and began pre-IPO balance-sheet machinery (oversubscribed $10B+ revolver, founder voting share class) on 2026-08-19, with the Theseus Infrastructure datacenter platform with Macquarie and GIC.",
+      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO, and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.",
+      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO, and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-19",
-      "timestamp": "2026-08-19T00:00:00Z",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -477,6 +481,7 @@
         "etched",
         "eu-ai-regulation",
         "federal-ai-policy",
+        "fractile",
         "gemini-3-5-flash",
         "gemini-spark",
         "google",
@@ -529,6 +534,7 @@
         "federal-ai-policy",
         "figure-ai",
         "fireworks-ai",
+        "fractile",
         "gemini-3-5-flash",
         "gemini-spark",
         "gpt-5-6",
@@ -731,6 +737,7 @@
         "ai-capex",
         "anthropic",
         "etched",
+        "google",
         "gpt-5-6",
         "micron",
         "model-specific-silicon",
@@ -996,6 +1003,7 @@
         "moonshot-kimi-k3",
         "nvidia",
         "open-weights",
+        "ornith-1-5",
         "qwen-3-8-max",
         "remote-labor-index",
         "sakana-ai",
@@ -1389,6 +1397,7 @@
         "eu-ai-regulation",
         "moonshot-kimi-k3",
         "open-weights",
+        "ornith-1-5",
         "qwen-3-8-max",
         "thinking-machines",
         "verification-bottleneck"
@@ -1556,6 +1565,7 @@
       "inbound": [
         "amd",
         "anthropic",
+        "fractile",
         "meituan-longcat-2",
         "model-specific-silicon",
         "taalas"
@@ -1672,11 +1682,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships, drawing sworn-testimony demands from Congress, and reportedly facing an update that could extend it to open models (2026-08-13).",
-      "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships, drawing sworn-testimony demands from Congress, and reportedly facing an update that could extend it to open models (2026-08-13).",
+      "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now surfaced as a White House ask for voluntary 30-day pre-release model testing two weeks after a private briefing, drawing sworn-testimony demands from Congress, and reportedly facing an update that could extend it to open models (2026-08-20).",
+      "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now surfaced as a White House ask for voluntary 30-day pre-release model testing two weeks after a private briefing, drawing sworn-testimony demands from Congress, and reportedly facing an update that could extend it to open models (2026-08-20).",
       "created_at": "2026-06-03",
-      "updated_at": "2026-08-13",
-      "timestamp": "2026-08-13T00:00:00Z",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1737,7 +1747,8 @@
         "openai",
         "palantir",
         "sk-telecom",
-        "soofi-s-30b-a3b"
+        "soofi-s-30b-a3b",
+        "unitree"
       ]
     },
     {
@@ -1771,7 +1782,8 @@
         "agibot",
         "ai-capex",
         "anthropic",
-        "openai"
+        "openai",
+        "unitree"
       ],
       "inbound": [
         "agibot",
@@ -1779,7 +1791,8 @@
         "artificial-general-engineer",
         "google",
         "mistral-robostral-navigate",
-        "prometheus"
+        "prometheus",
+        "unitree"
       ]
     },
     {
@@ -1823,6 +1836,40 @@
           "source_sha256": "ae6f662801e1bc7b97fd08b2de58d81a2348e41bf24f976898384a28e716c419"
         }
       }
+    },
+    {
+      "slug": "fractile",
+      "title": "Fractile",
+      "type": "entity",
+      "tags": [
+        "ai-chips",
+        "inference",
+        "hardware",
+        "anthropic-supplier",
+        "in-memory-compute"
+      ],
+      "summary": "UK inference-chip startup that Bloomberg reports will supply Anthropic with chips (2026-08-20) — the first named-outlet confirmation that Anthropic is buying inference silicon from a startup — in advanced talks at more than six times its May valuation (~$6.5B target) on ~$250M of chip supply.",
+      "description": "UK inference-chip startup that Bloomberg reports will supply Anthropic with chips (2026-08-20) — the first named-outlet confirmation that Anthropic is buying inference silicon from a startup — in advanced talks at more than six times its May valuation (~$6.5B target) on ~$250M of chip supply.",
+      "created_at": "2026-08-20",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
+      "file": "entities/fractile.md",
+      "aliases": [
+        "Fractile Systems"
+      ],
+      "outbound": [
+        "amd",
+        "anthropic",
+        "etched",
+        "groq",
+        "model-specific-silicon",
+        "nvidia",
+        "taalas"
+      ],
+      "inbound": [
+        "anthropic",
+        "model-specific-silicon"
+      ]
     },
     {
       "slug": "gemini-3-5-flash",
@@ -2028,11 +2075,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22); a DeepMind–academia team pushed the matrix multiplication exponent below 2.371177 with optimization + AlphaEvolve (2026-08-19).",
-      "description": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22); a DeepMind–academia team pushed the matrix multiplication exponent below 2.371177 with optimization + AlphaEvolve (2026-08-19).",
+      "summary": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22); a DeepMind–academia team pushed the matrix multiplication exponent below 2.371177 with optimization + AlphaEvolve (2026-08-19) and Google took a revenue-linked equity claim on Marvell (2026-08-20).",
+      "description": "Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22); a DeepMind–academia team pushed the matrix multiplication exponent below 2.371177 with optimization + AlphaEvolve (2026-08-19) and Google took a revenue-linked equity claim on Marvell (2026-08-20).",
       "created_at": "2026-07-17",
-      "updated_at": "2026-08-19",
-      "timestamp": "2026-08-19T00:00:00Z",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2048,6 +2095,7 @@
       "outbound": [
         "agibot",
         "ai-capex",
+        "broadcom",
         "discovery-loop",
         "figure-ai",
         "gemini-3-5-flash",
@@ -2055,6 +2103,7 @@
         "gemini-3-6-flash",
         "gemini-spark",
         "gemma-4",
+        "matrix-multiplication-exponent",
         "meta",
         "nano-banana-2-lite",
         "openai"
@@ -2213,6 +2262,7 @@
         "taalas"
       ],
       "inbound": [
+        "fractile",
         "model-specific-silicon"
       ]
     },
@@ -2380,7 +2430,9 @@
         "model-specific-silicon",
         "verification-bottleneck"
       ],
-      "inbound": []
+      "inbound": [
+        "google"
+      ]
     },
     {
       "slug": "meituan-longcat-2",
@@ -2835,11 +2887,11 @@
         "chip-design",
         "cost-per-token"
       ],
-      "summary": "Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token — the design bet behind Taalas, Etched, Groq and the 2026 custom-inference-silicon wave.",
-      "description": "Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token — the design bet behind Taalas, Etched, Groq and the 2026 custom-inference-silicon wave.",
+      "summary": "Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token — the design bet behind Taalas, Etched, Groq, Fractile and the 2026 custom-inference-silicon wave.",
+      "description": "Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token — the design bet behind Taalas, Etched, Groq, Fractile and the 2026 custom-inference-silicon wave.",
       "created_at": "2026-08-07",
-      "updated_at": "2026-08-07",
-      "timestamp": "2026-08-07T00:00:00Z",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
       "file": "concepts/model-specific-silicon.md",
       "aliases": [
         "model-specific ASIC",
@@ -2854,6 +2906,7 @@
         "broadcom",
         "claude-opus-5",
         "etched",
+        "fractile",
         "gpt-5-6",
         "groq",
         "moonshot-kimi-k3",
@@ -2866,6 +2919,7 @@
         "amd",
         "anthropic",
         "etched",
+        "fractile",
         "groq",
         "matrix-multiplication-exponent",
         "taalas"
@@ -3297,6 +3351,7 @@
         "etched",
         "federal-ai-policy",
         "fireworks-ai",
+        "fractile",
         "gemma-4",
         "gpt-6",
         "meta",
@@ -3369,11 +3424,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10) and Alibaba opens its first Max-class Qwen (2026-08-13).",
-      "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10) and Alibaba opens its first Max-class Qwen (2026-08-13).",
+      "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), and Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20).",
+      "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), and Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20).",
       "created_at": "2026-06-14",
-      "updated_at": "2026-08-13",
-      "timestamp": "2026-08-13T00:00:00Z",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -3408,6 +3463,7 @@
         "nvidia",
         "openai",
         "openrouter",
+        "ornith-1-5",
         "qwen-3-8-max",
         "sakana-ai",
         "soofi-s-30b-a3b",
@@ -3438,6 +3494,7 @@
         "muse-glimmer",
         "nano-banana-2-lite",
         "openrouter",
+        "ornith-1-5",
         "qwen-3-8-max",
         "sakana-ai",
         "soofi-s-30b-a3b",
@@ -3454,7 +3511,8 @@
           "description": "갈수록 프런티어 역량에 근접하는 오픈 웨이트 모델과 함께 토렌트 네트워크, 로컬 호스팅, \"API는 빌리는 것이고 가중치는 영원하다\"는 탈중앙화 반발이 힘을 얻는 2026년의 서사. Fable 5의 정부발 중단으로 급등했고, Meta의 Apache-2.0 공개 복귀(Muse Glimmer, 2026-08-10)와 Alibaba의 첫 Max급 Qwen 개방(2026-08-13)을 거치며 mid-2026에 굳어졌다.",
           "file": "wiki-translations/ko/themes/open-weights.md",
           "source_file": "research/wiki/themes/open-weights.md",
-          "source_sha256": "6e41fc7194d9c29499994ec50aed6e7b654193c37924787d3aaf80d1381da067"
+          "source_sha256": "6e41fc7194d9c29499994ec50aed6e7b654193c37924787d3aaf80d1381da067",
+          "stale": true
         }
       }
     },
@@ -3468,11 +3526,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); paused frontier reinforcement-learning training for two weeks in August over \"various degrees of misalignment\" in unreleased models, while shipping GPT-5.6-Cyber behind the Daybreak Red tier (2026-08-10).",
-      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); paused frontier reinforcement-learning training for two weeks in August over \"various degrees of misalignment\" in unreleased models, while shipping GPT-5.6-Cyber behind the Daybreak Red tier (2026-08-10).",
+      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; paused frontier RL training over \"various degrees of misalignment\" while shipping GPT-5.6-Cyber behind Daybreak Red.",
+      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; paused frontier RL training over \"various degrees of misalignment\" while shipping GPT-5.6-Cyber behind Daybreak Red.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-08-19",
-      "timestamp": "2026-08-19T00:00:00Z",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -3553,7 +3611,8 @@
           "description": "GPT 계열을 개발한 AI 연구소. March 2026 비공개 기업가치는 $852B로 현재 Anthropic의 $965B보다 낮다. 팔월 미출시 모델에서 \"various degrees of misalignment\"가 나타나 프런티어 강화학습 훈련을 두 주간 중단했으며, Daybreak Red 등급의 검증된 방어자에게 GPT-5.6-Cyber를 출시했다(2026-08-10).",
           "file": "wiki-translations/ko/entities/openai.md",
           "source_file": "research/wiki/entities/openai.md",
-          "source_sha256": "eb382e7f14fc1d5ac1a53cb62731b2c401a9ba2a8685481cb0692935b7e549c7"
+          "source_sha256": "eb382e7f14fc1d5ac1a53cb62731b2c401a9ba2a8685481cb0692935b7e549c7",
+          "stale": true
         }
       }
     },
@@ -3567,11 +3626,11 @@
         "infrastructure",
         "capital-markets"
       ],
-      "summary": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and was reportedly acquired by Stripe for over $7B (2026-08-18).",
-      "description": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and was reportedly acquired by Stripe for over $7B (2026-08-18).",
+      "summary": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and is being acquired by Stripe — confirmed by an OpenRouter board member and the company's own blog at a reported $7.5B–$8B+ (2026-08-19/20).",
+      "description": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and is being acquired by Stripe — confirmed by an OpenRouter board member and the company's own blog at a reported $7.5B–$8B+ (2026-08-19/20).",
       "created_at": "2026-06-01",
-      "updated_at": "2026-08-18",
-      "timestamp": "2026-08-18T00:00:00Z",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
       "file": "entities/openrouter.md",
       "aliases": [
         "OpenRouter",
@@ -3608,9 +3667,41 @@
           "description": "모델 400+를 개발자 8M+에게 제공하는 LLM 라우팅 API. 2026-05-30에 포스트머니 기업가치 $1.3B로 $113M 규모의 시리즈 B 투자를 유치했고 Fusion API를 공개했으며, 2026-08-18 Stripe가 $7B 이상에 인수한 것으로 보도됐다.",
           "file": "wiki-translations/ko/entities/openrouter.md",
           "source_file": "research/wiki/entities/openrouter.md",
-          "source_sha256": "611b0a1a138bf77730ac5a78905682db6a1a5353380c6d0ef0915799769134f8"
+          "source_sha256": "611b0a1a138bf77730ac5a78905682db6a1a5353380c6d0ef0915799769134f8",
+          "stale": true
         }
       }
+    },
+    {
+      "slug": "ornith-1-5",
+      "title": "Ornith-1.5",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "mit",
+        "self-improving",
+        "local-inference"
+      ],
+      "summary": "Open-weights 9B dense / 35B MoE / 397B MoE model family shipped under MIT on 2026-08-20 by the lab Ornith, claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks — every number self-reported with no independent eval landed yet.",
+      "description": "Open-weights 9B dense / 35B MoE / 397B MoE model family shipped under MIT on 2026-08-20 by the lab Ornith, claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks — every number self-reported with no independent eval landed yet.",
+      "created_at": "2026-08-20",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
+      "file": "entities/ornith-1-5.md",
+      "aliases": [
+        "Ornith 1.5",
+        "Ornith",
+        "Ornith-1.5 family"
+      ],
+      "outbound": [
+        "claude-opus-4-8",
+        "deepseek-v4-flash",
+        "open-weights",
+        "zhipu-glm-5-2"
+      ],
+      "inbound": [
+        "open-weights"
+      ]
     },
     {
       "slug": "palantir",
@@ -3701,8 +3792,8 @@
       "summary": "Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open — alongside the contested 27B sibling (Qwen3.8-27B).",
       "description": "Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open — alongside the contested 27B sibling (Qwen3.8-27B).",
       "created_at": "2026-08-04",
-      "updated_at": "2026-08-19",
-      "timestamp": "2026-08-19T00:00:00Z",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
       "file": "entities/qwen-3-8-max.md",
       "aliases": [
         "Qwen3.8-Max",
@@ -3735,7 +3826,8 @@
           "description": "Alibaba가 2026-08-04 Mtok당 $2/$6에 출시하고 2026-08-13 Qwen3.8-2.4T-A95B로 오픈 웨이트를 공개한 2.4T 매개변수 / 활성 95B MoE 주력 모델로, 공개된 최초의 Max급 Qwen이며 논쟁적인 27B 형제 모델(Qwen3.8-27B)도 함께 나왔다.",
           "file": "wiki-translations/ko/entities/qwen-3-8-max.md",
           "source_file": "research/wiki/entities/qwen-3-8-max.md",
-          "source_sha256": "c33ffa47b0bac89ec9152b8fa223fb03e543889fbd91b91609b491168ef39c6e"
+          "source_sha256": "c33ffa47b0bac89ec9152b8fa223fb03e543889fbd91b91609b491168ef39c6e",
+          "stale": true
         }
       }
     },
@@ -3768,6 +3860,7 @@
       "inbound": [
         "anthropic",
         "claude-fable-5",
+        "unitree",
         "verification-bottleneck"
       ]
     },
@@ -3938,11 +4031,11 @@
         "ipo",
         "ai-infrastructure"
       ],
-      "summary": "South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company.",
-      "description": "South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company.",
+      "summary": "South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company, and approved a KRW 40 trillion buyback-and-cancellation on 2026-08-19 — the largest cancellation ever by a Korean-listed company.",
+      "description": "South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company, and approved a KRW 40 trillion buyback-and-cancellation on 2026-08-19 — the largest cancellation ever by a Korean-listed company.",
       "created_at": "2026-07-12",
-      "updated_at": "2026-07-29",
-      "timestamp": "2026-07-29T00:00:00Z",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
       "file": "entities/sk-hynix.md",
       "aliases": [
         "SK hynix",
@@ -4123,6 +4216,7 @@
         "amd",
         "anthropic",
         "etched",
+        "fractile",
         "groq",
         "model-specific-silicon"
       ],
@@ -4219,6 +4313,38 @@
         "deepseek-v4-flash",
         "moonshot-kimi-k3",
         "open-weights"
+      ]
+    },
+    {
+      "slug": "unitree",
+      "title": "Unitree",
+      "type": "entity",
+      "tags": [
+        "humanoid-robotics",
+        "china",
+        "robotics",
+        "robotics-ipo"
+      ],
+      "summary": "Chinese humanoid-robotics maker whose Shanghai listing debuted +629% on 2026-08-20 — the first mainland humanoid-robot listing, pricing the category near $54B even as 73.6% of humanoid revenue remains research and education rather than deployed labor.",
+      "description": "Chinese humanoid-robotics maker whose Shanghai listing debuted +629% on 2026-08-20 — the first mainland humanoid-robot listing, pricing the category near $54B even as 73.6% of humanoid revenue remains research and education rather than deployed labor.",
+      "created_at": "2026-08-20",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
+      "file": "entities/unitree.md",
+      "aliases": [
+        "Unitree Robotics",
+        "Unitree Robotics Co."
+      ],
+      "outbound": [
+        "agibot",
+        "ai-capex",
+        "federal-ai-policy",
+        "figure-ai",
+        "remote-labor-index"
+      ],
+      "inbound": [
+        "agibot",
+        "figure-ai"
       ]
     },
     {
@@ -4491,6 +4617,7 @@
         "moonshot-kimi-k3",
         "open-weights",
         "openrouter",
+        "ornith-1-5",
         "qwen-3-8-max",
         "soofi-s-30b-a3b",
         "tencent-hunyuan-hy3",
@@ -4508,11 +4635,11 @@
         "agentic",
         "frontier-model"
       ],
-      "summary": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tied with Kimi K3) with the top agentic Elo gain of the cycle — 1524 → 1770 on GDPval-AA v2, second only to Claude Opus 5; the first independent scoring landed 2026-08-19, with MIT-licensed weights promised within a week.",
-      "description": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tied with Kimi K3) with the top agentic Elo gain of the cycle — 1524 → 1770 on GDPval-AA v2, second only to Claude Opus 5; the first independent scoring landed 2026-08-19, with MIT-licensed weights promised within a week.",
+      "summary": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5; weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.",
+      "description": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5; weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.",
       "created_at": "2026-08-19",
-      "updated_at": "2026-08-19",
-      "timestamp": "2026-08-19T00:00:00Z",
+      "updated_at": "2026-08-20",
+      "timestamp": "2026-08-20T00:00:00Z",
       "file": "entities/zhipu-glm-5-3.md",
       "aliases": [
         "Zhipu GLM 5.3",
@@ -4689,6 +4816,8 @@
     "fireworks-ai": "fireworks-ai",
     "fireworks.ai": "fireworks-ai",
     "flash cyber": "gemini-3-6-flash",
+    "fractile": "fractile",
+    "fractile systems": "fractile",
     "fugu": "sakana-ai",
     "fugu ultra": "sakana-ai",
     "fugu-ultra v1.1": "sakana-ai",
@@ -4879,6 +5008,10 @@
     "opus 4.8": "claude-opus-4-8",
     "opus 5": "claude-opus-5",
     "origin": "cursor",
+    "ornith": "ornith-1-5",
+    "ornith 1.5": "ornith-1-5",
+    "ornith-1-5": "ornith-1-5",
+    "ornith-1.5 family": "ornith-1-5",
     "owl alpha": "meituan-longcat-2",
     "palantir": "palantir",
     "palantir technologies inc.": "palantir",
@@ -4957,6 +5090,9 @@
     "thinking-machines": "thinking-machines",
     "tinker": "thinking-machines",
     "trump ai executive order": "federal-ai-policy",
+    "unitree": "unitree",
+    "unitree robotics": "unitree",
+    "unitree robotics co.": "unitree",
     "v4-flash": "deepseek-v4-flash",
     "v4-flash-0731": "deepseek-v4-flash",
     "verification bottleneck": "verification-bottleneck",
@@ -4988,6 +5124,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-08-20",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-20 digest + 2026-08-19-updated model tickets (protein binders, cerebras cs-4, GLM-5.3, qwen3.8-27b, etched funding, claude code /design, claude fable 5.1, anthropic IPO, openai RL-pause). Created 3 (fractile — Bloomberg-confirmed Anthropic inference-chip supplier, first named-outlet confirmation that Anthropic buys startup silicon, in talks >6× its May valuation; unitree — Shanghai debut +629%, the first mainland humanoid-robot listing pricing the category near $54B on 73.6% research/education revenue; ornith-1-5 — MIT open 9B/35B/397B family claiming Opus 4.8-class scores from self-writing-RL training, every number self-reported with no independent eval and an amplification-cluster caveat), updated 9 (openrouter — Stripe acquisition first-party confirmed by a board member and company blog at $7.5B–$8B+ with a 4.5-quadrillion-token run-rate claim; anthropic — Claude-designed protein binders (14/15 targets, 26.8% across 1,320 designs) with the orchestration-rather-than-design rebuttal, Fractile chip supply, and supervoting shares for co-founders ahead of a possible September IPO; openai — Q2 $6.7B revenue (+18%) against a widening $12.3B operating loss, Private Safety Processing preview for enterprise, ChatGPT for Teens going global, ads to 31 EU countries; qwen-3-8-max — 27B sibling consolidating as the cycle's dominant open-weights release with Unsloth Dynamic V3 GGUFs and Mollick disputing placement; google — revenue-linked equity warrant on Marvell ($206.58 strike, 240 tranches vs $500M custom-silicon purchases), MRVL +13%; federal-ai-policy — White House formally asks labs for voluntary 30-day pre-release model testing, labs still unsure which models qualify or how open weights are treated; open-weights — Ornith-1.5 family ship + the self-improving-agents fragility paper pairing + Lambert's recipe-is-the-Linux-analogue frame; sk-hynix — KRW 40T buyback-and-cancellation, the largest in Korean corporate history, funded from KRW 69T net cash; zhipu-glm-5-3 — post-training-depth thesis hardened, weights release delayed and the 743B-vs-753B base discrepancy unresolved; matrix-multiplication-exponent — reciprocal link from google fixed, delivering its first inbound link)."
+    },
     {
       "date": "2026-08-19",
       "op": "ingest",
@@ -5082,11 +5223,6 @@
       "date": "2026-07-26",
       "op": "ingest",
       "summary": "Ingested the 2026-07-26 digest — a thin cycle (RSS-only; no Twitter/HN/Reddit/arXiv/Bluesky artifacts had landed by digest time) dominated by continued Claude Opus 5 coverage. Created 1 (claude-opus-5 entity — Anthropic's 2026-07-25 frontier flagship, first wiki page for it since the digest that originally covered the launch was ingested from a stale fallback version without the story; pitched as near-Fable-5 performance at half the price, system card cites markedly improved prompt-injection resistance). Updated 4 (anthropic — Opus 5 launch + today's pricing/benchmark and prompt-injection follow-on coverage; claude-opus-4-8 — cross-linked to Opus 5 as the Opus line's continuation, open question on safeguard-reroute-floor succession; agentic-ai-security — further Decoder reporting on the OpenAI/Hugging Face incident's extent + Opus 5's prompt-injection defenses as a rare capability-side counterpoint; ai-capex — fallen-power-line TechCrunch story continuing the grid-strain thread tracked since 2026-07-23). Skipped: today's digest carried no other RSS items with independent wiki significance beyond the three stories above."
-    },
-    {
-      "date": "2026-07-25",
-      "op": "ingest",
-      "summary": "Ingested the 2026-07-25 digest — a deterministic RSS/HN/Reddit-only fallback (model synthesis path was unavailable, so no cross-source curation) — and folded the genuinely new, wiki-relevant data points into existing pages. Created 0, updated 6 (etched — valuation jumped $5B→$10.3B per TechCrunch, 2026-07-23; moonshot-kimi-k3 — outside experts publicly rebut the distillation-from-Fable allegation behind the Bessent sanctions warning; google — Gemini nears a billion-user milestone; ai-capex — HN's top story alleges AI labs/hyperscalers hide buildout debt via off-balance-sheet SPVs, 373→514 points over two cycles; federal-ai-policy — small open-weight-startup founders publish an open letter opposing US restrictions on Chinese open-weight models, the cycle's most-argued HN thread; agentic-ai-security — Simon Willison's \"science fiction that happened\" writeup on the OpenAI/Hugging Face incident becomes a large secondary HN thread). Skipped as sub-page-threshold/noise per the digest's own fallback banner (no editorial ranking): Runway's model router, OpenAI ChatGPT Health, Meta's AI ad, Etched-adjacent Nvidia/ServiceNow RSS items, the Echo open-weight-routing Show HN, OneCLI, Screenpipe, and the day's raw r/MachineLearning research posts (SkewAdam, Tri-Net v2, prompt-injection-at-NeurIPS discussion thread, etc.) — none reached independent significance beyond a single mention."
     }
   ]
 }

@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now visibly gating both US frontier flagships, drawing sworn-testimony demands from Congress, and reportedly facing an update that could extend it to open models (2026-08-13).
+description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now surfaced as a White House ask for voluntary 30-day pre-release model testing two weeks after a private briefing, drawing sworn-testimony demands from Congress, and reportedly facing an update that could extend it to open models (2026-08-20).
 created_at: 2026-06-03
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-08-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
@@ -674,6 +675,17 @@ footing for the first time in the cycle.
   single relay) — while its **Strategic Futures team under Dean Ball added
   two frontier-AI policy hires the same day**, the hiring and attrition
   happening on the same policy team (ARA daily digest 2026-08-13).
+- **The White House formally asks labs for 30-day pre-release model testing
+  (2026-08-20).** The voluntary submission regime this theme has tracked
+  since the finished framework surfaced (2026-08-04/05) is now a public
+  White House ask: the administration is asking labs for **voluntary
+  submission of frontier models for government evaluation up to 30 days
+  before launch**. More than two weeks after the private briefing, **labs
+  still do not know which models qualify or how open-weights releases are
+  treated** — the exact structural ambiguity this page has flagged since the
+  classified-threshold and covered-model-trigger debates (2026-08-02,
+  2026-08-04): for open weights, "before release" has no operational
+  meaning (The Information via Twitter; ARA daily digest 2026-08-20).
 
 ## Open questions
 
