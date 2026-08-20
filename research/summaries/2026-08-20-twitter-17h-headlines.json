@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "NVIDIA PLANS CHINA-TAILORED INFERENCE LPU, SMALL-BATCH SHIPMENTS BY YEAR-END — CUSTOMERS ALREADY ORDERING",
+    "source": "@wallstengine",
+    "url": "https://x.com/wallstengine/status/2090484256816628152",
+    "category": "infra"
+  },
+  {
+    "headline": "OPENAI TOLD STAFF ASTRA SHIPS 'IN A COUPLE OF WEEKS' — THE MODEL HELD BACK OVER CYBER CAPABILITY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2090439379424866327",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC PREPARING SUPERVOTING SHARES FOR AMODEI AND CO-FOUNDERS AHEAD OF POSSIBLE SEPTEMBER IPO",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2090431183494529516",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC-BLACKSTONE JOINT VENTURE MAKES FIRST ACQUISITION SINCE JULY LAUNCH TO PUSH CLAUDE INTO ENTERPRISES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2090439979038105700",
+    "category": "business"
+  },
+  {
+    "headline": "GLM-5.3 NEAR FABLE 5 ON TERMINAL-BENCH 3.0 — FOURTH FRONTIER-RANGE LEADERBOARD SINCE ITS AUG 14 RELEASE",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2090436220488745457",
+    "category": "opensource"
+  },
+  {
+    "headline": "DEEPSEEK V4 PRO HITS 9.35% OF ROOFLINE ON KERNELBENCH-HARD VS OPUS 5 AT 9.46% — UP FROM 1.40% IN JUNE",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2090458795172360257",
+    "category": "research"
+  },
+  {
+    "headline": "BLACKBURN, BLUMENTHAL DEMAND TIKTOK ANSWERS ON SAFETY ALGORITHM DISABLED FOR 10% OF US USERS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2090476695266754817",
+    "category": "policy"
+  }
+]
