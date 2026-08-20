@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-20 10:38:25 UTC
+
+CYCLE: Capital and product both moved toward the agent layer within the same hour.
+
+TOP STORIES:
+• CrowdStrike global CTO Elia Zaitsev exits after 13 years to raise a $170M agentic-AI security fund (Axios exclusive) [✓]
+• Binance reported to have launched "Agent OS," letting ChatGPT/Claude/Cursor connect to accounts and place orders, with user-set sub-account limits as the only safety layer [⚠]
+• Asana's Codex migration gets its cost line: ~$12,000 and ~1.5 weeks against a job scoped at 5 years and $6M — the 5-year estimate is the weak number, not the $12k [⚠]
+• Alibaba reported: AI Cloud & Compute +45% YoY, free cash flow -RMB 44.67B on AI capex [⚠]
+
+WATCH: Whether Binance documents Agent OS and whether agent order scope is enforced exchange-side or only client-side.
+
+Full update on GitHub.
