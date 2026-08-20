@@ -4,10 +4,11 @@ title: SK Hynix
 type: entity
 aliases: ["SK hynix", "SK Hynix Inc.", "SKHynix"]
 tags: [hbm, memory, semiconductors, ipo, ai-infrastructure]
-description: South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company.
+description: South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company, and approved a KRW 40 trillion buyback-and-cancellation on 2026-08-19 — the largest cancellation ever by a Korean-listed company.
 created_at: 2026-07-12
-timestamp: 2026-07-29T00:00:00Z
+timestamp: 2026-08-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA model ticket — SK Hynix Nasdaq IPO", path: research/models/tickets/sk-hynix-nasdaq-ipo-2026-07.md}
@@ -42,6 +43,16 @@ specific, but no primary financial-press corroboration yet captured —
   doubts about AI-capex durability — a sharp reversal from the bullish
   Nasdaq-listing narrative that opened this page. See [[ai-capex]] (ARA
   daily digest 2026-07-29).
+- **A KRW 40 trillion buyback-and-cancellation — the largest in Korean
+  corporate history (2026-08-19/20).** SK Hynix's board approved a
+  **KRW 40 trillion (~$29B) buyback-and-cancellation** covering about
+  **3.3% of shares** — the **largest cancellation ever by a Korean-listed
+  company**, funded from **KRW 69 trillion of net cash** — and raised its
+  **2025–27 shareholder-return floor from "up to 50%" to "at least 50%"**
+  of free cash flow. It is a capital-returns pivot for the memory supplier
+  that raised $26.5B in the Nasdaq listing less than six weeks earlier,
+  and a counterweight to the July KOSPI selloff that erased nearly $600B
+  of its value (Twitter; ARA daily digest 2026-08-20). See [[ai-capex]]
 
 ## Open questions
 

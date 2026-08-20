@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22); a DeepMind–academia team pushed the matrix multiplication exponent below 2.371177 with optimization + AlphaEvolve (2026-08-19).
+description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22); a DeepMind–academia team pushed the matrix multiplication exponent below 2.371177 with optimization + AlphaEvolve (2026-08-19) and Google took a revenue-linked equity claim on Marvell (2026-08-20).
 created_at: 2026-07-17
-timestamp: 2026-08-19T00:00:00Z
+timestamp: 2026-08-20T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
@@ -188,12 +189,20 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   accessibility-model progress as a consumer-hardware feature rather than a
   cloud API (TechCrunch, The Verge, @GoogleDeepMind; ARA daily digest
   2026-08-13).
-- **DeepMind helps push the [[matrix-multiplication-exponent|matrix
-  multiplication exponent]] below 2.371177 (2026-08-19).** A DeepMind-and-
+- **DeepMind helps push the [[matrix-multiplication-exponent]] below 2.371177 (2026-08-19).** A DeepMind-and-
   academia team combined a reformulated optimization with AlphaEvolve to
   tighten the matrix multiplication exponent ω below **2.371177**, improving
   the prior 2.371339 record — a genuine ML-assisted result in theoretical CS
   in the AlphaTensor lineage (ARA daily digest 2026-08-19).
+- **Google takes a revenue-linked equity claim on Marvell (2026-08-20).** Google
+  secured a **warrant for up to 58,970,907 Marvell shares at a $206.58 strike**,
+  vesting in 240 tranches against **$500M each of custom-silicon purchases** —
+  full vesting requires **$120B of Google revenue through fiscal 2033** — a
+  supplier-financing structure that converts Google's custom-silicon spending
+  into a potential equity claim on the merchant-chip maker. **MRVL rose over
+  13% and Broadcom fell about 2%** on the print, a market read that the
+  revenue-rebate structure shifts custom-ASIC economics toward [[broadcom]]'s
+  merchant rival (ARA daily digest 2026-08-20).
 
 ## Open questions
 

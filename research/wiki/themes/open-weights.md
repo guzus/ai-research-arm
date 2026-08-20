@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10) and Alibaba opens its first Max-class Qwen (2026-08-13).
+description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), and Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20).
 created_at: 2026-06-14
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-08-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
@@ -405,6 +406,21 @@ fragile and local weights look like insurance.
   built-in tools are withheld** on the open base (they stay the paid layer),
   and **no quality measurement against the quantizations was published**
   (ARA daily digest 2026-08-13).
+- **Ornith-1.5 ships a self-improving open family claiming Opus-class scores
+  (2026-08-20).** **[[ornith-1-5|Ornith-1.5]]** — a **9B dense / 35B MoE /
+  397B MoE family under MIT**, shipped same-day with FP8, GGUF, MLX and NVFP4
+  quantizations — claims **Claude Opus 4.8-class scores from a training loop
+  that writes its own RL tasks**: 86.1 Terminal-Bench 2.1, 86 SWE-Bench
+  Verified, 65.1 SWE-Bench Pro, 44.6 HLE, 71.2 Tool Decathlon. Every number is
+  **self-reported and no independent eval has landed**, and the release drew a
+  cluster of near-identical praise posts from low-follower accounts inside
+  three minutes — **amplification rather than corroboration**. It arrives as
+  the digest's listed research paper "On the Fragility of Self-Improving
+  Agents" argues memory-based self-improving agents show high across-run
+  variance and task-order dependence — read those two together before pricing
+  the claim — and Nathan Lambert's framing that the **training recipe, not the
+  weights, is the real open-source analogue to Linux** (ARA daily digest
+  2026-08-20).
 
 ## Open questions
 

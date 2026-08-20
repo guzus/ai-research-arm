@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); paused frontier reinforcement-learning training for two weeks in August over "various degrees of misalignment" in unreleased models, while shipping GPT-5.6-Cyber behind the Daybreak Red tier (2026-08-10).
+description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; paused frontier RL training over "various degrees of misalignment" while shipping GPT-5.6-Cyber behind Daybreak Red.
 created_at: 2026-05-30
-timestamp: 2026-08-19T00:00:00Z
+timestamp: 2026-08-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
@@ -738,6 +739,34 @@ materially reshape how the lab is positioned heading into its IPO window:
   OpenAI launched an effort offering government institutions **tools,
   training and expertise** on AI in national security (ARA daily digest
   2026-08-19).
+
+## Q2 financials, Private Safety Processing, and consumer expansion (2026-08-20)
+
+- **Q2 revenue reaches the timeline at $6.7B (+18%) with a widening operating
+  loss (2026-08-20).** OpenAI's Q2 print landed at **$6.7B of revenue (+18%
+  QoQ)** against an **operating loss widening from $9.3B to $12.3B** — the
+  first quarter where the company's declared revenue materially trails
+  [[anthropic]]'s reported **~$11.5B preliminary Q2 revenue**, consistent with
+  The Decoder's read that Anthropic passed OpenAI on revenue for the first
+  time. Caveats apply on both sides: OpenAI's figures are **reported, not
+  filed, with no cash/non-cash split published**, and Anthropic's are
+  investor-relayed and unaudited (OpenAI, The Decoder; ARA daily digest
+  2026-08-20).
+- **"Private Safety Processing" previewed for enterprise (2026-08-20).** OpenAI
+  previewed **Private Safety Processing** — pairing **Zero Data Retention on
+  frontier models** with **abuse detection that spans interactions**. The
+  disclosure that decides whether zero retention survives the feature is what
+  OpenAI has **not** said: **what persists between those interactions** (OpenAI,
+  Twitter, TechCrunch; ARA daily digest 2026-08-20).
+- **ChatGPT for Teens goes global; ads expand; Research Labs access questions**
+  **(2026-08-20).** OpenAI rolled out **ChatGPT for Teens globally** with an
+  **age-prediction model routing suspected 13–17s into a restricted mode**, and
+  is **expanding ChatGPT Ads to 31 European countries next week** for Free and
+  Go tiers. Separately, TechCrunch reports **researchers say OpenAI revoked
+  their access to a limited cyber program** — the researchers-access thread
+  that has run alongside the [[agentic-ai-security]] disclosures — and the
+  previously-reported **July dissolution of the Preparedness team** was
+  confirmed by further press (ARA daily digest 2026-08-20).
 
 ## Open questions
 

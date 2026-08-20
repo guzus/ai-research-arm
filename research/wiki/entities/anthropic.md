@@ -4,10 +4,13 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), and began pre-IPO balance-sheet machinery (oversubscribed $10B+ revolver, founder voting share class) on 2026-08-19, with the Theseus Infrastructure datacenter platform with Macquarie and GIC.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO, and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.
 created_at: 2026-05-24
-timestamp: 2026-08-19T00:00:00Z
+timestamp: 2026-08-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
+  - {title: "ARA model ticket — Anthropic protein-binder design", path: research/models/tickets/anthropic-protein-binder-design-2026-08.md}
+  - {title: "ARA model ticket — Anthropic IPO", path: research/models/tickets/anthropic-ipo-2026-06.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -1038,6 +1041,44 @@ Three developments landed together on 2026-08-10:
   4.5** as affected across the **Claude app, API, Claude Code and Cowork**, with
   users still reporting problems **100 minutes later** (@ns123abc; ARA daily
   digest 2026-08-19).
+
+## Protein binders, a Fractile chip supply, and supervoting shares (2026-08-20)
+
+- **Claude designs working protein binders — 14 of 15 targets (2026-08-20).**
+  Anthropic published an experiment in which **Claude designed novel protein
+  binders from scratch** given a single expert-written protocol — hitting
+  **14 of 15 measurable targets at a 26.8% hit rate across 1,320 designs built
+  and tested by Adaptyv Bio and Twist Bioscience**, against a field-typical
+  10–15%. It is one of the few capability claims this cycle with a **wet-lab
+  readout** — designs either bound or they did not, and third-party labs did
+  the measuring. The same-day rebuttal is load-bearing: critics read the
+  result as **Claude orchestration existing open-source protein-design tools
+  (PXDesign, Protenix, Baker-lab tools)** rather than the LLM inventing
+  protein design — a different-but-real finding ("an LLM competently drives a
+  toolchain of specialist models") that is compatible with every number.
+  Anthropic itself bounds the claim: binder design is "an easier process than
+  designing a drug, but it's a useful proxy" (Anthropic, Twitter, The Decoder,
+  model timeline; ARA daily digest 2026-08-20).
+- **Bloomberg confirms Fractile will supply Anthropic chips (2026-08-20).** The
+  first named-outlet confirmation that **Anthropic is buying inference silicon
+  from a startup**: [[fractile|Fractile]] will supply Anthropic chips, with the
+  startup in **advanced talks at more than six times its May valuation** on
+  reports of ~$250M of chips and a ~$6.5B target valuation. It landed three
+  hours after this pipeline declined to publish the same claim from an
+  unattributed account — a named-outlet confirmation upgrading a relaying-only
+  story. It pairs with Anthropic's in-house silicon team and the
+  [[model-specific-silicon]] category (see [[fractile]] for the startup side;
+  ARA daily digest 2026-08-20).
+- **Supervoting shares prepared ahead of a possible September IPO; Decoder says
+  Anthropic passed OpenAI on revenue (2026-08-20).** Per The Information,
+  Anthropic is preparing **supervoting shares for Dario Amodei and other
+  co-founders** ahead of a **possible September IPO**, against investor-relayed
+  figures of **~$65B ARR at end-July and ~$11.5B 2Q26 revenue (14× YoY)** with
+  **SemiAnalysis putting >40% of ARR in indirect channels** (Bedrock, Foundry,
+  Gemini Agent Enterprise). The Decoder separately reports Anthropic **passing
+  [[openai]] on revenue for the first time** — the revenue-side counterpart to
+  the valuation flip already tracked since the $965B Series H (ARA daily digest
+  2026-08-20).
 
 ## Open questions
 - **Does the eval-breach disclosure produce consequences?** Two of three

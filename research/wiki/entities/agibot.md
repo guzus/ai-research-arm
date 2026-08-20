@@ -29,7 +29,8 @@ to US humanoid players like [[figure-ai]].
   *(The ~39% global-market-share figure is AGIBOT's own claim, not
   independently audited.)* (ARA digest 2026-07-19).
 - **Positioning against the field.** AGIBOT's WAIC push lands in the same
-  embodied-AI wave as [[figure-ai]]'s 200-hour autonomous Helix-02 shift and
+  embodied-AI wave as [[figure-ai]]'s 200-hour autonomous Helix-02 shift,
+  [[unitree|Unitree]]'s Shanghai listing debut and
   [[mistral-robostral-navigate]]'s natural-language robot navigation model —
   a 2026 cycle where humanoid/embodied deployments are moving from
   demo-stage to sustained multi-unit operation, with China and the US

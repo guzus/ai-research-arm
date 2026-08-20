@@ -6,8 +6,9 @@ aliases: ["Qwen3.8-Max", "Qwen3.8", "Qwen 3.8 Max", "Qwen3.8 Max", "Qwen3.8-2.4T
 tags: [open-weights, model, moe, chinese-llm, long-context, alibaba]
 description: Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open — alongside the contested 27B sibling (Qwen3.8-27B).
 created_at: 2026-08-04
-timestamp: 2026-08-19T00:00:00Z
+timestamp: 2026-08-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -109,6 +110,15 @@ self-reported #2 overall rank behind [[claude-fable-5|Claude Fable 5]].
   one-shot it in ~a minute** (prompt published). **Unsloth's GGUF passed 2.7M
   downloads and sat #2 trending on Hugging Face** — the raw adoption signal
   behind the contested benchmarks (ARA daily digest 2026-08-19).
+- **The 27B consolidates as the cycle's dominant open-weights release
+  (2026-08-20).** The digest's model-releases rank names `Qwen3.8-27B` the
+  cycle's dominant open-weights story: **#2 trending on Hugging Face (~2.7M
+  downloads), ~51 on the AA Agentic Index, running on a single consumer GPU**.
+  **Unsloth's Dynamic V3 GGUFs** claim **10% higher accuracy**, including
+  **1-bit quants retaining 77% accuracy in 8GB of RAM**; **Ethan Mollick
+  publicly disputes benchmark placements that put it alongside frontier
+  models** — keeping the index-versus-hands-on split from 2026-08-19 live
+  (ARA daily digest 2026-08-20).
 
 ## Open questions
 
