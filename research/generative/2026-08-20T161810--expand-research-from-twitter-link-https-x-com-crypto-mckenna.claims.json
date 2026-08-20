@@ -1,0 +1,184 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Morgan Stanley projects $2.9T of cumulative global data-center capex 2025-2028 ($1.3T infrastructure + $1.6T IT hardware), with a $1.5T external financing gap after ~$1.4T of hyperscaler self-funding",
+      "type": "metric",
+      "source_urls": ["https://www.morganstanley.com/content/dam/msdotcom/en/assets/pdfs/Research_Bridging-Data-Center-Gap.pdf", "https://www.morganstanley.com/insights/podcasts/thoughts-on-the-market/credit-markets-ai-financing-gap-vishy-tirupattur-vishwas-patkar", "https://cryptobriefing.com/morgan-stanley-data-center-capex-2028/"],
+      "source_tiers": ["primary", "primary", "secondary"],
+      "as_of": "2026-06-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "McKinsey's most commonly cited figure is $6.7T (or $7T) of global data-center capex by 2030; $8T appears only as the upper bound of a $3-8T AI-capacity demand scenario range, not a standalone McKinsey headline estimate",
+      "type": "comparison",
+      "source_urls": ["https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-21",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c3",
+      "claim": "USD.AI protocol TVL peaked at $686.9M on 2026-01-01 and stood at $177.1M on 2026-08-16 per DefiLlama's API, a 74% decline -- roughly double the 37% decline Arete Capital cites",
+      "type": "metric",
+      "source_urls": ["https://api.llama.fi/protocol/usd-ai"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-16",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c4",
+      "claim": "USD.AI's own app dashboard (app.usd.ai/chip) shows TVL of $432.4M as of 2026-08-21, closely matching Arete Capital's cited $430M -- while Stablewatch's independent sUSDai tracker shows $299.8M, illustrating that three trackers using different methodologies produce three materially different TVL figures for the same protocol",
+      "type": "comparison",
+      "source_urls": ["https://app.usd.ai/chip", "https://www.stablewatch.io/analytics/assets/sUSDai-USD.AI", "https://api.llama.fi/protocol/usd-ai"],
+      "source_tiers": ["primary", "primary", "primary"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c5",
+      "claim": "USD.AI's own H1 2026 Lighthouse report discloses $202-205M of deployed/closed loans and $283M of total collateral across 13 active loans, well short of the 'approaching $500M' loan book Arete Capital cites",
+      "type": "metric",
+      "source_urls": ["https://usd.ai/insights/usdai-2026-ytd-report-lighthouse"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-08",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c6",
+      "claim": "QumulusAI's SEC S-1/A filing shows only $4.3M drawn against its $500M USD.AI facility as of February 2026, despite the company announcing delivery of 1,144 Nvidia Blackwell GPUs under that facility",
+      "type": "metric",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/2084026/000143774926017093/quma20260513_s1a.htm", "https://www.qumulusai.com/articles/qumulusai-deploys-1144-nvidia-blackwell-gpus-through-drawdown-under-500m-usdai-facility"],
+      "source_tiers": ["legal", "primary"],
+      "as_of": "2026-02-19",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c7",
+      "claim": "Loan-book growth since May 2026 traces mainly to new borrowers -- Duos Edge AI ($98.1M, the protocol's single largest loan), NexGen Cloud ($34M) and Crucible Capital ($26.8M) -- rather than Sharon AI or QumulusAI scaling their original facilities",
+      "type": "event",
+      "source_urls": ["https://www.prnewswire.com/news-releases/usdai-provides-98-1m-debt-financing-to-support-duos-edge-ai-gpu-deployment-managed-by-hydra-host-302792700.html", "https://usd.ai/insights/usdai-june-recap-new-highs-across-markets", "https://usd.ai/insights/crucible-capital-26m-gpu-backed-loan"],
+      "source_tiers": ["primary", "primary", "primary"],
+      "as_of": "2026-06-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "Bleecker Street Research's April 30, 2026 short report on SharonAI (SHAZ) alleges its $1.25B ESDS contract requires ~$250M/year in payments against ESDS's FY25 revenue of $39.9M (6.3x) and requires a $140M letter of credit against ESDS's total assets of $69.5M, and that ESDS's Indian data-sovereignty obligations may bar it from using Australian-based compute",
+      "type": "event",
+      "source_urls": ["https://www.bleeckerstreetresearch.com/research/shaz"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-04-30",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "Sharon AI reported 212MW of secured AI Factory capacity as of its August 13, 2026 Q2 earnings call (up from 132MW guidance), plus new $373M and ~$950M customer cloud-service agreements, none of which is a disclosed incremental drawdown on the USD.AI facility beyond its initial ~$65M tranche",
+      "type": "metric",
+      "source_urls": ["https://www.fool.com/earnings/call-transcripts/2026/08/13/sharonai-shaz-q2-2026-earnings-call-transcript/", "https://www.stocktitan.net/news/SHAZ/sharon-ai-successfully-delivers-ai-cloud-deployment-for-global-1phs2xslrwpj.html"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-20",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "USD.AI's Q2 2026 annualized DAO ARR reached $30M per its own Lighthouse report (up from $4.0M in Q1 2026 and $1.1M in 2025), while DefiLlama's independently tracked trailing-twelve-month fee total is only about $7.0M annualized -- roughly a 4x gap between the self-reported forward run-rate and the independently tracked trailing actual",
+      "type": "comparison",
+      "source_urls": ["https://usd.ai/insights/usdai-2026-ytd-report-lighthouse", "https://api.llama.fi/summary/fees/usd-ai?dataType=dailyRevenue"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-16",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c11",
+      "claim": "CHIP hit a fresh all-time low of $0.02163 on 2026-08-09 (78% below its April 23, 2026 all-time high of $0.1402) before bouncing to roughly $0.028-0.031 by August 21, 2026; market cap is roughly $56-62M and FDV roughly $293-310M, both down from May 2026 levels ($108.6M market cap / $542.8M FDV)",
+      "type": "metric",
+      "source_urls": ["https://www.coingecko.com/en/coins/usd-ai", "https://coinmarketcap.com/currencies/usd-ai/"],
+      "source_tiers": ["market-data", "market-data"],
+      "as_of": "2026-08-21",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "No governance proposal addressing the April 21, 2027 CHIP unlock cliff (extension, buyback, or OTC clearing facility) was found as of August 21, 2026",
+      "type": "regulatory",
+      "source_urls": ["https://docs.usd.ai/governance/chip"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-21",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c13",
+      "claim": "The specialist GPU-collateralized private-credit market is independently sized at roughly $20-30B in 2025-2026, with institutional lenders (Blackstone, Ares) pricing at SOFR+450-700bps -- about 100x smaller than the '$2T GPU debt middle market' framing implies",
+      "type": "market-structure",
+      "source_urls": ["https://altstreet.investments/reference/structures/gpu-collateralization", "https://newsletter.semianalysis.com/p/nvidia-gpu-debt-backstop-unleashes"],
+      "source_tiers": ["unknown", "unknown"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c14",
+      "claim": "Traditional private-credit lenders already serve mid-sized/growth-stage neocloud operators at comparable or larger deal sizes: Upper90 ($225M to Crusoe), Victory Park Capital ($175M to Crusoe), and Macquarie (up to $10B facility for FluidStack, backstopped by a $6.7B Google contract)",
+      "type": "comparison",
+      "source_urls": ["https://www.crusoe.ai/resources/newsroom/upper90-closes-usd225m-credit-facility-to-crusoe-to-expand-ai-cloud"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Barker (product-branded 'Barkr') is a single AI hardware-valuation company -- not two conflated entities -- that launched its USD.AI GPU-loan coverage backed by Munich Re's Great Lakes Insurance SE on 2026-02-06, structured so an 80%-of-valuation warranty equals full outstanding principal at USD.AI's 80% max LTV cap",
+      "type": "definition",
+      "source_urls": ["https://usd.ai/insights/usdai-barker-insured-gpu-loan-coverage", "https://www.reinsurancene.ws/usd-ai-barker-launch-insured-gpu-loan-coverage-backed-by-munich-re/", "https://www.businesswire.com/news/home/20251118349552/en/Barker-Secures-$3.5-Million-to-Scale-Warrantied-AI-Valuations-for-Asset-Backed-Lending"],
+      "source_tiers": ["primary", "unknown", "unknown"],
+      "as_of": "2026-02-06",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "Arete Capital launched in April 2024 targeting a $20M first fund split 50/50 between venture and liquid token investments; both the CHIP thesis's named authors (McKenna and Daveeemor) are Arete Capital personnel, not an independent outside co-author, and no CHIP/USDai/sUSDai position disclosure was located in any indexed source",
+      "type": "other",
+      "source_urls": ["https://www.theblock.co/post/286286/crypto-anon-mckenna-launches-arete-capital-with-first-fund-targeting-20-million", "https://api.fxtwitter.com/Daveeemor"],
+      "source_tiers": ["secondary", "unknown"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "McKenna has a documented pattern of publishing a bullish public token thesis and later disclosing he personally bought the token off the back of it: an October 2025 HYPE thesis preceded a disclosed purchase at $33; HYPE later peaked near $76-77 in June 2026 before pulling back to about $59, short of McKenna's stated $100 target",
+      "type": "other",
+      "source_urls": ["https://x.com/Crypto_McKenna/status/1978095055366676731"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-08-01",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "Independent analyst Pine Analytics valued CHIP's launch FDV at 1.2x Ethena's FDV/TVL multiple and 2.9x Maple Finance's despite far lower loan utilization (~10% of TVL deployed at the time), implying compression scenarios of roughly $250M FDV (Ethena-comparable) or $105M FDV (Maple-comparable)",
+      "type": "comparison",
+      "source_urls": ["https://pineanalytics.substack.com/p/the-bear-case-for-chip"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "contested"
+    }
+  ]
+}
