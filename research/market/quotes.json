@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T02:09:54Z",
+  "generated_at": "2026-08-20T04:21:59Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-08-19T20:00:01Z",
@@ -99,11 +99,11 @@
     },
     "NASDAQ:MU": {
       "asOf": "2026-08-19T20:00:01Z",
-      "change": -3.655,
-      "changePercent": -0.3885,
+      "change": -3.65,
+      "changePercent": -0.388,
       "currency": "USD",
       "marketState": null,
-      "price": 937.105,
+      "price": 937.11,
       "source": "yahoo",
       "stale": false,
       "symbol": "NASDAQ:MU",
