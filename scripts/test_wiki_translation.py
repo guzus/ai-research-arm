@@ -59,17 +59,53 @@ class WikiTranslationTest(unittest.TestCase):
             self.assertEqual(ko["title"], "알파 코퍼레이션")
             self.assertEqual(ko["file"], "wiki-translations/ko/entities/alpha.md")
             self.assertEqual(ko["source_file"], "research/wiki/entities/alpha.md")
+            self.assertNotIn("stale", ko)
 
-    def test_source_change_invalidates_translation(self):
+    def test_source_change_marks_translation_stale_not_invalid(self):
+        # An English edit to a mirrored page is the daily ingest lane's normal
+        # output. It must degrade the mirror to STALE — never fail validation,
+        # or build_wiki_index dies inside a workflow whose allowed-paths
+        # forbid touching the mirror (the 2026-08-20 wiki-lane deadlock).
         with tempfile.TemporaryDirectory() as td:
             wiki, translations = _fixture(Path(td))
             target = translations / "entities" / "alpha.md"
             _write(translations, "entities/alpha.md", _translation(wiki / "entities" / "alpha.md"))
             _write(wiki, "entities/alpha.md", ALPHA.replace("Alpha description.", "Changed description."))
-            _, errors = cwt.validate_file(
+            translation, errors = cwt.validate_file(
                 target, wiki_dir=wiki, translation_root=translations
             )
-            self.assertTrue(any("canonical source changed" in error for error in errors))
+            self.assertEqual(errors, [])
+            self.assertIsNotNone(translation)
+            self.assertTrue(translation.stale)
+
+            # The index still attaches the mirror, flagged for the dashboard.
+            index = bwi.build_index(wiki, translations)
+            alpha = next(page for page in index["pages"] if page["slug"] == "alpha")
+            self.assertIs(alpha["translations"]["ko"]["stale"], True)
+
+    def test_stale_translation_fails_only_under_strict(self):
+        with tempfile.TemporaryDirectory() as td:
+            wiki, translations = _fixture(Path(td))
+            _write(translations, "entities/alpha.md", _translation(wiki / "entities" / "alpha.md"))
+            _write(wiki, "entities/alpha.md", ALPHA.replace("Alpha description.", "Changed description."))
+            common = ["--wiki-root", str(wiki), "--root", str(translations)]
+            self.assertEqual(cwt.main(common), 0)
+            self.assertEqual(cwt.main(common + ["--strict"]), 1)
+
+    def test_structural_defect_fails_even_when_stale(self):
+        with tempfile.TemporaryDirectory() as td:
+            wiki, translations = _fixture(Path(td))
+            target = translations / "entities" / "alpha.md"
+            broken = _translation(wiki / "entities" / "alpha.md").replace(
+                "language: ko", "language: ja"
+            )
+            _write(translations, "entities/alpha.md", broken)
+            _write(wiki, "entities/alpha.md", ALPHA.replace("Alpha description.", "Changed description."))
+            translation, errors = cwt.validate_file(
+                target, wiki_dir=wiki, translation_root=translations
+            )
+            self.assertIsNone(translation)
+            self.assertTrue(any("language: must be 'ko'" in error for error in errors))
 
     def test_wikilinks_urls_and_numbers_are_immutable(self):
         with tempfile.TemporaryDirectory() as td:

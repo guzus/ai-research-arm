@@ -2,9 +2,24 @@
 """Validate localized Wiki mirrors without mutating the English CRUD graph.
 
 Korean Wiki pages live under ``research/wiki-translations/ko/``.  Each file
-points at one canonical English page and records its SHA-256.  That makes a
-source edit fail CI until the translation is reviewed, instead of silently
-serving stale Korean copy.
+points at one canonical English page and records its SHA-256.
+
+A SHA mismatch means the English source moved on after the translation was
+written.  That is an expected, recurring state — the English wiki is CRUD'd
+daily by the ingest lane while the Korean mirror is refreshed manually — so by
+default it is reported as STALE (advisory, exit 0) and flagged ``stale: true``
+in the index rather than failing.  Treating it as fatal deadlocked the ingest
+lane: any English edit to a mirrored page broke ``build_wiki_index.py`` inside
+a workflow whose allowed-paths forbid touching the mirror (run 32318722152).
+Pass ``--strict`` to make staleness fatal — that is the mode for translation
+refresh work, where "behind the source" is exactly the defect being fixed.
+
+Every structural check (frontmatter shape, slug identity, path mirroring)
+still fails hard regardless of staleness.  Source-parity checks (URLs,
+numbers, wikilinks, fenced code, structure, copied-prose ceiling) are only
+meaningful against the source revision the translation was written from, so
+they are skipped for stale mirrors — they were enforced when the translation
+last matched, and will be re-enforced when it is refreshed.
 """
 
 from __future__ import annotations
@@ -57,6 +72,10 @@ class WikiTranslation:
     source_file: str
     source_sha256: str
     images: list[dict[str, str]]
+    # The English source has moved on since this translation was written
+    # (recorded source_sha256 no longer matches). Structurally valid, but
+    # behind — flagged in the index so the dashboard can badge it.
+    stale: bool = False
 
     def index_doc(self, translation_root: Path) -> dict[str, Any]:
         doc: dict[str, Any] = {
@@ -69,6 +88,8 @@ class WikiTranslation:
         }
         if self.images:
             doc["images"] = self.images
+        if self.stale:
+            doc["stale"] = True
         return doc
 
 
@@ -258,11 +279,10 @@ def validate_file(
 
     source_raw = source_path.read_bytes()
     actual_sha = hashlib.sha256(source_raw).hexdigest()
-    if source_sha256 and actual_sha != source_sha256:
-        errors.append(
-            "source_sha256: canonical source changed; refresh the translation "
-            f"({source_sha256} != {actual_sha})"
-        )
+    # Stale ≠ invalid: the English wiki is CRUD'd daily, the mirror is
+    # refreshed manually, so "source moved on" is an expected state. It is
+    # flagged (not failed) here; --strict promotes it back to a failure.
+    stale = bool(source_sha256) and actual_sha != source_sha256
 
     source_report = cw.Report()
     source_data, source_body = cw._split_frontmatter(
@@ -274,45 +294,58 @@ def validate_file(
     if source_data.get("slug") != slug:
         errors.append("slug: does not match canonical source")
 
-    source_images = cw.normalize_images(source_data.get("images"))
-    images = _validate_images(source_images, data.get("images"), errors)
-    if source_images and data.get("images") is None:
-        errors.append("images: translated metadata is required when the source has images")
+    # Source-parity checks compare the translation against the CURRENT source
+    # revision, so they only carry meaning when the recorded SHA still
+    # matches. For a stale mirror they would report the source's drift as
+    # translation defects; they were enforced when the translation last
+    # matched and are re-enforced on refresh. Structural checks above (and
+    # the basic image-shape check below) still apply either way.
+    if stale:
+        images = cw.normalize_images(data.get("images"))
+        if data.get("images") is not None and (
+            not isinstance(data.get("images"), list) or len(images) != len(data["images"])
+        ):
+            errors.append("images: every item requires valid url and alt strings")
+    else:
+        source_images = cw.normalize_images(source_data.get("images"))
+        images = _validate_images(source_images, data.get("images"), errors)
+        if source_images and data.get("images") is None:
+            errors.append("images: translated metadata is required when the source has images")
 
-    source_visible = "\n".join(
-        [str(source_data.get("title") or ""), str(source_data.get("description") or ""), source_body]
-    )
-    target_visible = "\n".join([title, description, body])
-    if _counter(URL_RE, source_visible) != _counter(URL_RE, target_visible):
-        errors.append("content: URL multiset changed")
-    if _counter(NUMBER_RE, source_visible) != _counter(NUMBER_RE, target_visible):
-        errors.append("content: numeric-token multiset changed")
-    if collections.Counter(cw.extract_wikilinks(source_body)) != collections.Counter(
-        cw.extract_wikilinks(body)
-    ):
-        errors.append("body: wikilink target multiset changed")
-    if _fenced_blocks(source_body) != _fenced_blocks(body):
-        errors.append("body: fenced code blocks must remain byte-identical")
-    if _markdown_structure(source_body) != _markdown_structure(body):
-        errors.append("body: heading/list structure changed")
-
-    source_ngrams = _english_ngrams(source_visible)
-    if sum(source_ngrams.values()) >= 20:
-        target_ngrams = _english_ngrams(target_visible)
-        reused = sum((source_ngrams & target_ngrams).values())
-        reuse_share = reused / sum(source_ngrams.values())
-        if reuse_share > 0.35:
-            errors.append(
-                "content: too much visible English prose was copied unchanged "
-                f"({reuse_share:.0%} of source lowercase 5-grams)"
-            )
-    source_words = len(LATIN_WORD_RE.findall(_visible_text(source_visible)))
-    hangul = len(HANGUL_RE.findall(target_visible))
-    minimum_hangul = min(200, max(8, (source_words + 9) // 10))
-    if hangul < minimum_hangul:
-        errors.append(
-            f"content: too little Korean prose ({hangul} syllables; need {minimum_hangul})"
+        source_visible = "\n".join(
+            [str(source_data.get("title") or ""), str(source_data.get("description") or ""), source_body]
         )
+        target_visible = "\n".join([title, description, body])
+        if _counter(URL_RE, source_visible) != _counter(URL_RE, target_visible):
+            errors.append("content: URL multiset changed")
+        if _counter(NUMBER_RE, source_visible) != _counter(NUMBER_RE, target_visible):
+            errors.append("content: numeric-token multiset changed")
+        if collections.Counter(cw.extract_wikilinks(source_body)) != collections.Counter(
+            cw.extract_wikilinks(body)
+        ):
+            errors.append("body: wikilink target multiset changed")
+        if _fenced_blocks(source_body) != _fenced_blocks(body):
+            errors.append("body: fenced code blocks must remain byte-identical")
+        if _markdown_structure(source_body) != _markdown_structure(body):
+            errors.append("body: heading/list structure changed")
+
+        source_ngrams = _english_ngrams(source_visible)
+        if sum(source_ngrams.values()) >= 20:
+            target_ngrams = _english_ngrams(target_visible)
+            reused = sum((source_ngrams & target_ngrams).values())
+            reuse_share = reused / sum(source_ngrams.values())
+            if reuse_share > 0.35:
+                errors.append(
+                    "content: too much visible English prose was copied unchanged "
+                    f"({reuse_share:.0%} of source lowercase 5-grams)"
+                )
+        source_words = len(LATIN_WORD_RE.findall(_visible_text(source_visible)))
+        hangul = len(HANGUL_RE.findall(target_visible))
+        minimum_hangul = min(200, max(8, (source_words + 9) // 10))
+        if hangul < minimum_hangul:
+            errors.append(
+                f"content: too little Korean prose ({hangul} syllables; need {minimum_hangul})"
+            )
 
     if errors:
         return None, errors
@@ -327,6 +360,7 @@ def validate_file(
             source_file=source_file,
             source_sha256=source_sha256,
             images=images,
+            stale=stale,
         ),
         [],
     )
@@ -366,30 +400,52 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("paths", nargs="*")
     parser.add_argument("--wiki-root", default=str(WIKI_DIR))
     parser.add_argument("--root", default=str(TRANSLATION_ROOT))
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help=(
+            "fail on stale mirrors (recorded source_sha256 behind the current "
+            "English source). Default reports them as STALE and exits 0, so "
+            "English-side edits never block the ingest lane."
+        ),
+    )
     args = parser.parse_args(argv)
     wiki_dir = Path(args.wiki_root).resolve()
     root = Path(args.root).resolve()
 
+    loaded: list[WikiTranslation] = []
     if args.paths:
         failures: list[tuple[Path, str]] = []
-        valid = 0
         for raw_path in args.paths:
             path = Path(raw_path).resolve()
             translation, errors = validate_file(
                 path, wiki_dir=wiki_dir, translation_root=root
             )
             failures.extend((path, error) for error in errors)
-            valid += int(translation is not None)
+            if translation:
+                loaded.append(translation)
     else:
         translations, failures = load_all(wiki_dir=wiki_dir, translation_root=root)
-        valid = len(translations)
+        loaded = list(translations.values())
 
+    stale = [t for t in loaded if t.stale]
     for path, error in failures:
         print(f"FAIL {path}: {error}", file=sys.stderr)
+    for translation in stale:
+        print(
+            f"STALE {translation.path}: canonical source changed; refresh the "
+            "translation (recorded source_sha256 is behind "
+            f"{translation.source_file})",
+            file=sys.stderr,
+        )
     if failures:
         print(f"\n{len(failures)} failure(s)", file=sys.stderr)
         return 1
-    print(f"OK — {valid} Korean wiki translation(s) validated")
+    if stale and args.strict:
+        print(f"\n{len(stale)} stale mirror(s) (--strict)", file=sys.stderr)
+        return 1
+    suffix = f", {len(stale)} stale" if stale else ""
+    print(f"OK — {len(loaded)} Korean wiki translation(s) validated{suffix}")
     return 0
 
 

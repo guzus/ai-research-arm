@@ -406,19 +406,34 @@ images:                         # only when the source has images
 한국어 본문. [[openai|오픈AI]]처럼 대상 slug는 보존하고 표시 문구만 번역한다.
 ```
 
-`scripts/check_wiki_translation.py` is a blocking validator. It enforces:
+`scripts/check_wiki_translation.py` is a blocking validator for structural
+defects. It enforces:
 
 - one exact mirror path and slug for one canonical source;
-- `source_sha256` equality, so an English edit makes stale Korean fail CI;
 - exact URL, numeric-token, wikilink-target, fenced-code, and image-identity
   parity while allowing titles, descriptions, labels, alt text, and captions
   to be translated;
 - meaningful Hangul and a copied-English-prose ceiling;
 - no unknown frontmatter fields.
 
+`source_sha256` inequality — the English source moved on after the
+translation was written — is a **stale** state, not a structural failure.
+The English wiki is CRUD'd daily by the ingest lane while the mirror is
+refreshed manually, so staleness recurs by design; making it fatal deadlocked
+the ingest lane (`build_wiki_index.py` failed inside a workflow whose
+allowed-paths forbid touching `research/wiki-translations/`, run
+32318722152). By default the validator reports stale mirrors as `STALE`
+warnings and exits 0; `--strict` promotes staleness to a failure — that is
+the mode for translation-refresh work, where being behind the source is
+exactly the defect under review. The source-parity checks above are skipped
+for a stale mirror (they only carry meaning against the source revision the
+translation was written from) and are re-enforced when the mirror is
+refreshed to the current SHA.
+
 `scripts/build_wiki_index.py` validates these mirrors and attaches available
-locales under each page's `translations` map. The dashboard selects the Korean
-variant when its UI language is Korean and explicitly falls back to the English
-original when no reviewed mirror exists. Source history, aliases, tags, graph
-edges, market identity, and dates continue to come only from the canonical
-English page.
+locales under each page's `translations` map; a stale mirror is attached with
+`"stale": true` so the dashboard can label it. The dashboard selects the
+Korean variant when its UI language is Korean and explicitly falls back to
+the English original when no reviewed mirror exists. Source history, aliases,
+tags, graph edges, market identity, and dates continue to come only from the
+canonical English page.

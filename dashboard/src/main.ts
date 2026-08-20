@@ -2575,6 +2575,9 @@ type WikiTranslation = {
   source_file: string;
   source_sha256: string;
   images?: WikiImage[];
+  // The English source moved on after this translation was written (recorded
+  // source_sha256 is behind). Still served, but badged as stale.
+  stale?: boolean;
 };
 
 type WikiPage = {
@@ -3205,6 +3208,7 @@ function renderWikiPage(
   body: string,
   signal?: AbortSignal,
   translationMissing = false,
+  translationStale = false,
 ): void {
   setDocTitle(page.title);
   const bodyHtml = wikiMarkdownToHtml(stripWikiFrontmatter(body));
@@ -3262,6 +3266,9 @@ function renderWikiPage(
         : '',
       translationMissing
         ? '    <div class="ara-callout ara-callout--warning"><p>' + escapeHtml(uiText(activeLanguage, 'wiki.translationUnavailable')) + '</p></div>'
+        : '',
+      translationStale
+        ? '    <div class="ara-callout ara-callout--warning"><p>' + escapeHtml(uiText(activeLanguage, 'wiki.translationStale')) + '</p></div>'
         : '',
       wikiImagesHtml(page.images),
       wikiKvHtml(page),
@@ -6093,11 +6100,12 @@ async function load(): Promise<void> {
           const translation = wikiTranslationFor(canonicalPage);
           const page = localizedWikiPage(canonicalPage);
           const translationMissing = activeLanguage === 'ko' && !translation;
+          const translationStale = Boolean(translation?.stale);
           const bodyPath = translation?.file || `wiki/${canonicalPage.file}`;
           const cacheKey = `${selectedSlug}:${translation ? 'ko' : 'en'}`;
           const cached = wikiBodyCache.get(cacheKey);
           if (cached !== undefined) {
-            renderWikiPage(page, cached, controller.signal, translationMissing);
+            renderWikiPage(page, cached, controller.signal, translationMissing, translationStale);
           } else {
             const body = await withTimeout(
               fetchMarkdownReport(`${DATA_BASE}/${bodyPath}`, controller.signal),
@@ -6109,7 +6117,7 @@ async function load(): Promise<void> {
               showError('Loading timed out', 'Network may be slow. Click to retry.');
             } else if (body) {
               wikiBodyCache.set(cacheKey, body);
-              renderWikiPage(page, body, controller.signal, translationMissing);
+              renderWikiPage(page, body, controller.signal, translationMissing, translationStale);
             } else {
               renderWikiNotFound(selectedSlug);
             }
