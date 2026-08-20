@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-08-20
+
+TOP STORIES:
+• Stripe is acquiring model gateway OpenRouter; price reported $7.5B-$8B+, mostly stock, not first-party confirmed
+• Bloomberg confirms chip startup Fractile has a deal to supply Anthropic, raising at >6x its May valuation
+• Anthropic's Claude designed protein binders at a 26.8% hit rate (14/15 targets) - attribution contested same day
+• Ornith-1.5 ships open-weights under MIT at 9B/35B/397B, claiming Opus 4.8-class scores (all self-reported)
+
+KEY NUMBERS:
+• Unitree opened +629% in Shanghai, ~$54B; 73.6% of humanoid revenue is research/education
+• Etched: $700M at $21B, doubled in a month
+• SK hynix: KRW 40T buyback-and-cancellation, 3.3% of shares
+• Google/Marvell warrant: 58.97M shares, vests against $120B of purchases
+
+TRENDING: HN debating OpenAI's own post on pacing model releases as capabilities turn cyber-critical (84 comments)
+
+Full digest on GitHub.
