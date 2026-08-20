@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "on August 13, 2026 — five days before Cua's Computer History thread went up — OpenAI shipped a feature in the ChatGPT Mac desktop app with the *identical name*, \"Computer History,\" replacing an earlier screenshot-based preview called Chronicle... it \"temporarily stores interaction events on the Mac for up to 48 hours,\" then those events \"are processed on its servers to generate memories,\" and the resulting output is saved back to disk as \"plain-text memory files,\" unencrypted, held locally until the user deletes them",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "OpenAdapt.AI, an MIT-licensed open-source project with copyright coverage dating to 2023, is explicitly \"local-first\"... It offers optional AES-256-GCM authenticated encryption at rest — but only for compiled bundles and durable checkpoints, not the raw recordings themselves, which the project's own security page states plainly \"are not encrypted for you\" by default",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "each event is authenticated-encrypted individually as a COSE_Encrypt0 record, sealed with ChaCha20-Poly1305, and the records are framed as a CBOR Sequence... Cua's docs describe per-chunk keys derived via HKDF (RFC 5869)... off a namespace root key... The single hardest constraint Cua imposed on itself — no network I/O, ever, in the capture path",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
