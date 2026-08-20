@@ -24727,5 +24727,47 @@
     "headline": "JPMORGAN MODELS $56B BROADCOM AI REVENUE IN FY26, 2-2.5X IN FY27; GOOGLE DEAL LOCKS TPU v8-v11",
     "source": "@StockSavvyShay",
     "url": "https://x.com/StockSavvyShay/status/2090425435524133179"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-20 17:00:49 UTC",
+    "headline": "NVIDIA PLANS CHINA-TAILORED INFERENCE LPU, SMALL-BATCH SHIPMENTS BY YEAR-END \u2014 CUSTOMERS ALREADY ORDERING",
+    "source": "@wallstengine",
+    "url": "https://x.com/wallstengine/status/2090484256816628152"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-20 17:00:49 UTC",
+    "headline": "OPENAI TOLD STAFF ASTRA SHIPS 'IN A COUPLE OF WEEKS' \u2014 THE MODEL HELD BACK OVER CYBER CAPABILITY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2090439379424866327"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-20 17:00:49 UTC",
+    "headline": "ANTHROPIC-BLACKSTONE JOINT VENTURE MAKES FIRST ACQUISITION SINCE JULY LAUNCH TO PUSH CLAUDE INTO ENTERPRISES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2090439979038105700"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-20 17:00:49 UTC",
+    "headline": "GLM-5.3 NEAR FABLE 5 ON TERMINAL-BENCH 3.0 \u2014 FOURTH FRONTIER-RANGE LEADERBOARD SINCE ITS AUG 14 RELEASE",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2090436220488745457"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-20 17:00:49 UTC",
+    "headline": "DEEPSEEK V4 PRO HITS 9.35% OF ROOFLINE ON KERNELBENCH-HARD VS OPUS 5 AT 9.46% \u2014 UP FROM 1.40% IN JUNE",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2090458795172360257"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-20 17:00:49 UTC",
+    "headline": "BLACKBURN, BLUMENTHAL DEMAND TIKTOK ANSWERS ON SAFETY ALGORITHM DISABLED FOR 10% OF US USERS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2090476695266754817"
   }
 ]
