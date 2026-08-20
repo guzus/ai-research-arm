@@ -33,7 +33,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-08-20T16:19:17Z",
+  "generated_at": "2026-08-20T21:52:29Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -84,7 +84,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":90,"ts":"2026-08-19T21:46:52Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":90,"ts":"2026-08-20T04:04:13Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":90,"ts":"2026-08-20T10:36:25Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":90,"ts":"2026-08-20T16:19:17Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":90,"ts":"2026-08-20T16:19:17Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-20T21:52:29Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -367,7 +368,7 @@
         {
           "key": "kimik2.6",
           "name": "Kimi K2.6",
-          "output_usd_per_mtok": 2.44,
+          "output_usd_per_mtok": 2.28,
           "pareto": false,
           "score": 0.26,
           "stderr": 0.0440844002276808,
@@ -846,7 +847,7 @@
         {
           "key": "kimik2.6",
           "name": "Kimi K2.6",
-          "output_usd_per_mtok": 2.44,
+          "output_usd_per_mtok": 2.28,
           "pareto": true,
           "score": 0.3896551724137931,
           "stderr": 0.028686590614000477,
@@ -1512,6 +1513,15 @@
           "vendor": "openai"
         },
         {
+          "key": "ministral8b",
+          "name": "Ministral 8B",
+          "output_usd_per_mtok": 0.11,
+          "pareto": false,
+          "score": 0.14935800604229607,
+          "stderr": 0.007454534670584494,
+          "vendor": "mistralai"
+        },
+        {
           "key": "claude3haiku",
           "name": "Claude 3 Haiku",
           "output_usd_per_mtok": 1.25,
@@ -1678,7 +1688,7 @@
         {
           "key": "kimik2.6",
           "name": "Kimi K2.6",
-          "output_usd_per_mtok": 2.44,
+          "output_usd_per_mtok": 2.28,
           "pareto": false,
           "score": 0.9611111111111111,
           "stderr": 0.023777636174410793,
@@ -2616,7 +2626,7 @@
         {
           "key": "kimik2.6",
           "name": "Kimi K2.6",
-          "output_usd_per_mtok": 2.44,
+          "output_usd_per_mtok": 2.28,
           "pareto": false,
           "score": 0.387,
           "stderr": 0.015410011955494015,
@@ -2822,11 +2832,11 @@
         }
       ]
     },
-    "as_of": "2026-08-20T16:19:17Z",
+    "as_of": "2026-08-20T21:52:29Z",
     "counts": {
       "pareto": 6,
-      "plotted": 90,
-      "priced": 319,
+      "plotted": 91,
+      "priced": 320,
       "scored": 157,
       "unscored": 229
     },
@@ -3250,14 +3260,14 @@
         "vendor": "qwen"
       },
       {
-        "blended_usd_per_mtok": 1.044625,
+        "blended_usd_per_mtok": 0.976125,
         "context_length": 262144,
         "epoch_model": "Kimi K2.6",
-        "input_usd_per_mtok": 0.5795,
+        "input_usd_per_mtok": 0.5415,
         "key": "kimik2.6",
         "name": "Kimi K2.6",
         "openrouter_id": "moonshotai/kimi-k2.6",
-        "output_usd_per_mtok": 2.44,
+        "output_usd_per_mtok": 2.28,
         "pareto": false,
         "price_variant": null,
         "runs": 1,
@@ -3365,7 +3375,7 @@
       },
       {
         "blended_usd_per_mtok": 0.6375,
-        "context_length": 524288,
+        "context_length": 1048576,
         "epoch_model": "Inkling-Small",
         "input_usd_per_mtok": 0.45,
         "key": "inklingsmall",
@@ -4540,6 +4550,25 @@
         "stderr": 0.018720372561004013,
         "variants_seen": 3,
         "vendor": "openai"
+      },
+      {
+        "blended_usd_per_mtok": 0.11,
+        "context_length": 128000,
+        "epoch_model": "Ministral 8B",
+        "input_usd_per_mtok": 0.11,
+        "key": "ministral8b",
+        "name": "Ministral 8B",
+        "openrouter_id": "mistralai/ministral-8b",
+        "output_usd_per_mtok": 0.11,
+        "pareto": false,
+        "price_variant": null,
+        "runs": 1,
+        "score": 0.27146464646464646,
+        "score_as_of": "2024-10-16",
+        "score_variant": "ministral-8b-2410",
+        "stderr": 0.020863706671553732,
+        "variants_seen": 1,
+        "vendor": "mistralai"
       }
     ],
     "unscored": [
@@ -4684,10 +4713,10 @@
         "vendor": "cohere"
       },
       {
-        "input_usd_per_mtok": 0.084,
+        "input_usd_per_mtok": 0.0784,
         "key": "deepseekv4flash0423",
         "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.168,
+        "output_usd_per_mtok": 0.1568,
         "vendor": "deepseek"
       },
       {
