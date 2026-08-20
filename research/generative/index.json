@@ -2498,5 +2498,19 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-trycua-status",
+    "file": "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Cua's local, encrypted memory for computer-use agents: the crypto holds up, the 'first' claim doesn't quite",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-20T14:28:51Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/trycua/status/2089770780053643397\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
