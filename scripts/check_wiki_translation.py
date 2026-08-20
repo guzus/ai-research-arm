@@ -298,14 +298,28 @@ def validate_file(
     # revision, so they only carry meaning when the recorded SHA still
     # matches. For a stale mirror they would report the source's drift as
     # translation defects; they were enforced when the translation last
-    # matched and are re-enforced on refresh. Structural checks above (and
-    # the basic image-shape check below) still apply either way.
+    # matched and are re-enforced on refresh. Target-only checks — the ones
+    # that validate the translation itself — still apply either way, and
+    # deliberately use only SOURCE-INDEPENDENT thresholds: the source-scaled
+    # Hangul floor could rise when the English page grows, which would flip a
+    # legitimately stale mirror to failing on an English-only edit and
+    # recreate the exact deadlock this mode exists to prevent.
     if stale:
         images = cw.normalize_images(data.get("images"))
         if data.get("images") is not None and (
             not isinstance(data.get("images"), list) or len(images) != len(data["images"])
         ):
             errors.append("images: every item requires valid url and alt strings")
+        for index, target in enumerate(images):
+            if not HANGUL_RE.search(target.get("alt", "")):
+                errors.append(f"images[{index}].alt: Korean alt text is required")
+            if target.get("caption") and not HANGUL_RE.search(target.get("caption", "")):
+                errors.append(f"images[{index}].caption: Korean caption is required")
+        hangul = len(HANGUL_RE.findall("\n".join([title, description, body])))
+        if hangul < 8:
+            errors.append(
+                f"content: too little Korean prose ({hangul} syllables; need 8)"
+            )
     else:
         source_images = cw.normalize_images(source_data.get("images"))
         images = _validate_images(source_images, data.get("images"), errors)

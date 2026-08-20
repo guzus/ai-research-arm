@@ -92,6 +92,51 @@ class WikiTranslationTest(unittest.TestCase):
             self.assertEqual(cwt.main(common), 0)
             self.assertEqual(cwt.main(common + ["--strict"]), 1)
 
+    def test_stale_mirror_still_requires_korean_content(self):
+        # Target-only checks must not be skippable via staleness: a stale
+        # mirror whose body was replaced with English (or emptied) fails.
+        with tempfile.TemporaryDirectory() as td:
+            wiki, translations = _fixture(Path(td))
+            target = translations / "entities" / "alpha.md"
+            anglicized = _translation(wiki / "entities" / "alpha.md").replace(
+                "알파는 [[beta]]와 연결되며, 별칭 링크 [[b-one|베타]]로도 이어집니다.",
+                "Alpha links to beta.",
+            ).replace("title: 알파 코퍼레이션", "title: Alpha Corp").replace(
+                "description: 알파 인프라 기업을 설명하는 한국어 위키 페이지입니다.",
+                "description: An English description.",
+            ).replace('alt: "알파 데이터센터의 인프라 랙"', 'alt: "Alpha datacenter racks"').replace(
+                'caption: "알파 인프라를 보여 주는 사진"', 'caption: "Alpha infra photo"'
+            )
+            _write(translations, "entities/alpha.md", anglicized)
+            _write(wiki, "entities/alpha.md", ALPHA.replace("Alpha description.", "Changed description."))
+            translation, errors = cwt.validate_file(
+                target, wiki_dir=wiki, translation_root=translations
+            )
+            self.assertIsNone(translation)
+            self.assertTrue(any("too little Korean prose" in error for error in errors))
+            self.assertTrue(any("Korean alt text is required" in error for error in errors))
+
+    def test_growing_source_never_fails_a_stale_mirror(self):
+        # The stale-branch Hangul floor must be source-independent: a large
+        # English expansion (which raises the fresh-mode floor) must not flip
+        # a legitimately stale mirror to failing — that would recreate the
+        # ingest-lane deadlock.
+        with tempfile.TemporaryDirectory() as td:
+            wiki, translations = _fixture(Path(td))
+            target = translations / "entities" / "alpha.md"
+            _write(translations, "entities/alpha.md", _translation(wiki / "entities" / "alpha.md"))
+            grown = ALPHA.replace(
+                "Alpha description.",
+                "Changed. " + " ".join(["expanded english prose"] * 800),
+            )
+            _write(wiki, "entities/alpha.md", grown)
+            translation, errors = cwt.validate_file(
+                target, wiki_dir=wiki, translation_root=translations
+            )
+            self.assertEqual(errors, [])
+            self.assertIsNotNone(translation)
+            self.assertTrue(translation.stale)
+
     def test_structural_defect_fails_even_when_stale(self):
         with tempfile.TemporaryDirectory() as td:
             wiki, translations = _fixture(Path(td))

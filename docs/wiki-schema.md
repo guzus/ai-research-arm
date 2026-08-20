@@ -423,12 +423,19 @@ refreshed manually, so staleness recurs by design; making it fatal deadlocked
 the ingest lane (`build_wiki_index.py` failed inside a workflow whose
 allowed-paths forbid touching `research/wiki-translations/`, run
 32318722152). By default the validator reports stale mirrors as `STALE`
-warnings and exits 0; `--strict` promotes staleness to a failure — that is
-the mode for translation-refresh work, where being behind the source is
-exactly the defect under review. The source-parity checks above are skipped
-for a stale mirror (they only carry meaning against the source revision the
-translation was written from) and are re-enforced when the mirror is
-refreshed to the current SHA.
+warnings and exits 0; `--strict` promotes staleness to a failure — the mode
+for manual translation-refresh work (no workflow runs it today; the refresh
+procedure should), where being behind the source is exactly the defect under
+review. Until a mirror is refreshed, staleness surfaces in two places: the
+STALE lines in CI's "Validate Korean wiki mirrors" step output, and the
+dashboard's stale-translation callout. The source-parity checks above are
+skipped for a stale mirror (they only carry meaning against the source
+revision the translation was written from) and are re-enforced when the
+mirror is refreshed to the current SHA. Target-only checks still apply to
+stale mirrors with source-independent thresholds — Korean image alt/caption
+text and a fixed 8-syllable Hangul floor — so a broken edit to a stale
+mirror cannot hide behind staleness, while an English-only edit that grows
+the source can never flip a stale mirror to failing.
 
 `scripts/build_wiki_index.py` validates these mirrors and attaches available
 locales under each page's `translations` map; a stale mirror is attached with
