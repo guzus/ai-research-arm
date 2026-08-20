@@ -24643,5 +24643,54 @@
     "headline": "SEMIANALYSIS OFFERS $200 BOUNTY FOR TINYGRAD SUPPORT AND A 100% PYTHON USERSPACE DRIVER FOR ETCHED",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2090287730605355069"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-20 10:38:25 UTC",
+    "headline": "CROWDSTRIKE GLOBAL CTO ELIA ZAITSEV EXITS AFTER 13 YEARS TO RAISE $170M AGENTIC-AI CYBER FUND",
+    "source": "@axios",
+    "url": "https://x.com/axios/status/2090385894121382022"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-20 10:38:25 UTC",
+    "headline": "BINANCE SAID TO OPEN ORDER PLACEMENT TO AI AGENTS \u2014 CHATGPT, CLAUDE, CURSOR CONNECT VIA AGENT OS",
+    "source": "@Robertl83909710",
+    "url": "https://x.com/Robertl83909710/status/2090386240390537613"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-20 10:38:25 UTC",
+    "headline": "ASANA: CODEX AGENTS DID A 5-YEAR, $6M-SCOPED MIGRATION IN 1.5 WEEKS FOR ~$12,000 IN COMPUTE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2090385462238077162"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-20 10:38:25 UTC",
+    "headline": "ALIBABA REPORTED: AI CLOUD AND COMPUTE +45% YOY, FREE CASH FLOW SWINGS TO -RMB 44.67B ON AI CAPEX",
+    "source": "@Cbk19881",
+    "url": "https://x.com/Cbk19881/status/2090388160828105075"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-20 10:38:25 UTC",
+    "headline": "CISA ADDS MLFLOW SSRF CVE-2026-64849 TO KEV \u2014 CVSS 9.3, ACTIVE EXPLOITATION, FIX IN 3.15.0",
+    "source": "@XQOPTRX",
+    "url": "https://x.com/XQOPTRX/status/2090386818793345298"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-20 10:38:25 UTC",
+    "headline": "Z.AI SHIPS ZCODE 3.8.1 \u2014 GLM CODING PLAN USERS CAN RESET THE 5-HOUR LIMIT DURING OFF-PEAK HOURS",
+    "source": "@louszbd",
+    "url": "https://x.com/louszbd/status/2090343081212346575"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-20 10:38:25 UTC",
+    "headline": "CURSOR MOVES SUBAGENTS ONTO SEPARATE VMS WITH ISOLATED PROJECT COPIES, ADDS /GOAL COMMAND",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2090382027195326603"
   }
 ]
