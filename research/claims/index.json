@@ -1,5 +1,5 @@
 {
-  "article_count": 62,
+  "article_count": 64,
   "articles": [
     {
       "claim_count": 18,
@@ -615,6 +615,24 @@
         "twitter-seed"
       ],
       "title": "OpenRouter's Pricing Engine Was Called Rigged the Same Week Stripe Paid $7 Billion For It"
+    },
+    {
+      "claim_count": 15,
+      "created_at": "2026-08-19T19:24:19Z",
+      "slug": "anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "stem": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "tags": [],
+      "title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems"
+    },
+    {
+      "claim_count": 30,
+      "created_at": "2026-08-20T10:34:07Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-fin465-status",
+      "stem": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable"
     }
   ],
   "by_host": {
@@ -676,6 +694,9 @@
     ],
     "adam.holter.com": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c16"
+    ],
+    "adaptyvbio.com": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c2"
     ],
     "adaptyvbio.substack.com": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c9"
@@ -846,7 +867,10 @@
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c30",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c17",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c29",
-      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c3"
+      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c3",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c1",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c14",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c6"
     ],
     "aol.com": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c5"
@@ -879,6 +903,9 @@
     ],
     "apollo.com": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c1"
+    ],
+    "apollo.io": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c26"
     ],
     "apolloresearch.ai": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c19"
@@ -1105,10 +1132,14 @@
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c9",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c10",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c12",
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c26"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c26",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c10"
     ],
     "assets.anthropic.com": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c23"
+    ],
+    "autobound.ai": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c25"
     ],
     "aws.amazon.com": [
       "2026-07-20T050016--databricks-mid-2026#c28"
@@ -1143,6 +1174,9 @@
     "beincrypto.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c15"
     ],
+    "belkins.io": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c21"
+    ],
     "benchlm.ai": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c15"
     ],
@@ -1159,6 +1193,9 @@
     "biometricupdate.com": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c20"
     ],
+    "biorxiv.org": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c14"
+    ],
     "bis.gov": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c24"
     ],
@@ -1166,7 +1203,8 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c15"
     ],
     "bleepingcomputer.com": [
-      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c12"
+      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c12",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c6"
     ],
     "blog.ansi.org": [
       "2026-05-27T035557--800-vdc-architecture#c38"
@@ -1335,7 +1373,8 @@
     ],
     "cdn.ca9.uscourts.gov": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c15",
-      "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c23"
+      "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c23",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c2"
     ],
     "cdn.openai.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c33",
@@ -1526,6 +1565,9 @@
     "coderabbit.ai": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c7"
     ],
+    "codes.findlaw.com": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c29"
+    ],
     "codingfleet.com": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c19",
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c24"
@@ -1580,6 +1622,9 @@
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c22",
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c27",
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c26"
+    ],
+    "consumerreports.org": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c30"
     ],
     "contrastsecurity.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c22"
@@ -1921,6 +1966,9 @@
     ],
     "economicshelp.org": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c8"
+    ],
+    "edpb.europa.eu": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c13"
     ],
     "efts.sec.gov": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c5"
@@ -2284,7 +2332,8 @@
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c32",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c33",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c51",
-      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c52"
+      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c52",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c14"
     ],
     "futurism.com": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c26",
@@ -2298,6 +2347,12 @@
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c20",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c21",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c22"
+    ],
+    "gartner.com": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c28"
+    ],
+    "gdpr-info.eu": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c15"
     ],
     "geminicli.com": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c25"
@@ -2502,7 +2557,8 @@
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c3",
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c37",
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c4",
-      "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c5"
+      "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c5",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c15"
     ],
     "humanoid.guide": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c11"
@@ -2519,6 +2575,9 @@
     ],
     "ibiden.com": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c13"
+    ],
+    "ibj.com": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c8"
     ],
     "ibtimes.co.uk": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c37"
@@ -2560,6 +2619,9 @@
     ],
     "info.arxiv.org": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c41"
+    ],
+    "instantly.ai": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c21"
     ],
     "insurancebusinessmag.com": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c24"
@@ -2760,6 +2822,9 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c44"
     ],
+    "lagrowthmachine.com": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c9"
+    ],
     "latent.space": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c18",
       "2026-08-04T171206--comfyui-company#c48",
@@ -2771,6 +2836,9 @@
     "latitudemedia.com": [
       "2026-05-27T035557--800-vdc-architecture#c26",
       "2026-05-27T035557--800-vdc-architecture#c30"
+    ],
+    "law.com": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c4"
     ],
     "law.cornell.edu": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c12",
@@ -2822,7 +2890,12 @@
     ],
     "linkedin.com": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c3",
-      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c4"
+      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c4",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c1",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c10",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c11",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c12",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c9"
     ],
     "littletech.org": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c24",
@@ -2877,6 +2950,9 @@
     "marktechpost.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c14",
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c22"
+    ],
+    "martech.org": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c7"
     ],
     "math.columbia.edu": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c16"
@@ -2974,6 +3050,9 @@
     "money.finance.sina.com.cn": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c34"
     ],
+    "mordorintelligence.com": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c24"
+    ],
     "morganlewis.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c26"
     ],
@@ -3000,7 +3079,9 @@
       "2026-06-22T061332--frontier-ai-data-supply-chain#c19",
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c34",
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c21",
-      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c32"
+      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c32",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c5",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c7"
     ],
     "navercorp.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c15"
@@ -3132,6 +3213,10 @@
     "ntia.gov": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c25"
     ],
+    "nubela.co": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c4",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c5"
+    ],
     "nudgesecurity.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c30"
     ],
@@ -3249,8 +3334,14 @@
     "operatorportal.lido.fi": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c16"
     ],
+    "optif.ai": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c22"
+    ],
     "optimusk.blog": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c10"
+    ],
+    "origami.chat": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c18"
     ],
     "ornn.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C1",
@@ -3286,6 +3377,9 @@
     ],
     "paradigm.xyz": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c19"
+    ],
+    "paulgraham.com": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c30"
     ],
     "pdf.dfcfw.com": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c35"
@@ -3381,6 +3475,9 @@
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c31",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c23"
     ],
+    "privacyworld.blog": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c3"
+    ],
     "privateequityinternational.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c44"
     ],
@@ -3410,6 +3507,10 @@
       "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul#c15",
       "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul#c18",
       "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul#c4"
+    ],
+    "proteinbase.com": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c11",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9"
     ],
     "protos.com": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c30"
@@ -3697,6 +3798,9 @@
     "securitycompass.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
     ],
+    "sell.g2.com": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c25"
+    ],
     "semafor.com": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c46"
     ],
@@ -3880,6 +3984,9 @@
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c2",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c34"
     ],
+    "support.google.com": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c23"
+    ],
     "support.sonatype.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c35"
     ],
@@ -3960,7 +4067,8 @@
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c39",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c18",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c3",
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c5"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c5",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c27"
     ],
     "techflowpost.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20"
@@ -4156,6 +4264,9 @@
     "ti.com": [
       "2026-05-27T035557--800-vdc-architecture#c16"
     ],
+    "tienmphan.github.io": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c5"
+    ],
     "time-weekly.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c25"
     ],
@@ -4306,7 +4417,8 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c24",
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c6",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c05",
-      "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c06"
+      "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c06",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c17"
     ],
     "veracode.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c26"
@@ -4393,7 +4505,20 @@
     "www-cdn.anthropic.com": [
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c16",
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c6",
-      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c19"
+      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c19",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c1",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c10",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c11",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c12",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c13",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c15",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c2",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c3",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c4",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c6",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c7",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c8",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9"
     ],
     "x.ai": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c11"
@@ -4533,7 +4658,9 @@
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c8",
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c9",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c1",
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c2"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c2",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c19",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c20"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -4545,6 +4672,9 @@
     ],
     "xlab.tencent.com": [
       "2026-08-04T171206--comfyui-company#c30"
+    ],
+    "ycombinator.com": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c16"
     ],
     "yicaiglobal.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c22"
@@ -4573,6 +4703,9 @@
     ],
     "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=688126&id=12466657": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c34"
+    ],
+    "http://paulgraham.com/ds.html": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c30"
     ],
     "http://pdf.dfcfw.com/pdf/H2_AN202509241749809284_1.pdf": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c35"
@@ -5013,6 +5146,9 @@
     "https://arxiv.org/abs/2409.03992": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c26"
     ],
+    "https://arxiv.org/abs/2409.08022": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c10"
+    ],
     "https://arxiv.org/abs/2410.06992": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c11"
     ],
@@ -5362,6 +5498,9 @@
     "https://beincrypto.com/steth-depegs-whale-pulls-101m-eth-curve-finance": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c15"
     ],
+    "https://belkins.io/blog/cold-email-response-rates": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c21"
+    ],
     "https://benchlm.ai/models/kimi-3": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c15"
     ],
@@ -5497,6 +5636,9 @@
     "https://cdn.ca9.uscourts.gov/datastore/opinions/2020/10/15/19-55862.pdf": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c15"
     ],
+    "https://cdn.ca9.uscourts.gov/datastore/opinions/2022/04/18/17-16783.pdf": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c2"
+    ],
     "https://cdn.ca9.uscourts.gov/datastore/opinions/2025/08/12/23-16093.pdf": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c23"
     ],
@@ -5531,6 +5673,9 @@
     "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c23",
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c36"
+    ],
+    "https://codes.findlaw.com/ca/penal-code/pen-sect-502": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c29"
     ],
     "https://codingfleet.com/blog/claude-opus-4-8-vs-glm-5-2": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c24"
@@ -6280,6 +6425,12 @@
     "https://gamma-api.polymarket.com/events?slug=openai-ipo-by": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c35"
     ],
+    "https://gdpr-info.eu/art-21-gdpr": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c15"
+    ],
+    "https://gdpr-info.eu/art-6-gdpr": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c15"
+    ],
     "https://geminicli.com/docs/cli/model-routing": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c25"
     ],
@@ -6468,6 +6619,9 @@
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c14",
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c2"
     ],
+    "https://huggingface.co/datasets/Anthropic/claude-protein-binder-design": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c15"
+    ],
     "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c21"
     ],
@@ -6538,6 +6692,9 @@
     ],
     "https://info.arxiv.org/help/moderation/index.html": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c41"
+    ],
+    "https://instantly.ai/cold-email-benchmark-report-2026": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c21"
     ],
     "https://intuitionlabs.ai/articles/h100-rental-prices-cloud-comparison": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c39"
@@ -6645,6 +6802,9 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c44"
     ],
+    "https://lagrowthmachine.com/best-linkedin-automation-tools": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c9"
+    ],
     "https://law.justia.com/cases/california/court-of-appeal/2020/h044395.html": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c24"
     ],
@@ -6712,6 +6872,9 @@
     ],
     "https://marketwise.com/investing/asml-earnings-china-export-restrictions-ai-chip-demand": [
       "2026-07-13T181948--cxmt#c28"
+    ],
+    "https://martech.org/a-pair-of-lead-gen-providers-have-disappeared-from-linkedin": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c7"
     ],
     "https://mathlib-initiative.org/roadmap": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c35"
@@ -6901,6 +7064,10 @@
     "https://northeasttimes.com/2026/07/24/silicon-valley-startups-fight-to-keep-chinese-ai-models-trump-wants-to-restrict": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c16"
     ],
+    "https://nubela.co/blog/goodbye-proxycurl": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c4",
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c5"
+    ],
     "https://nvidianews.nvidia.com/news/dsx-infrastructure-ai-factory": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c13"
     ],
@@ -7087,8 +7254,17 @@
     "https://operatorportal.lido.fi/public/relay-maintenance-committee/rmc-relay-assessments/add-titan-relays": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c16"
     ],
+    "https://optif.ai/learn/questions/sales-cycle-length-benchmark": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c22"
+    ],
     "https://optimusk.blog/blog/tesla-optimus-hardware-specs": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c10"
+    ],
+    "https://origami.chat": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c18"
+    ],
+    "https://origami.chat/terms": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c18"
     ],
     "https://ornn.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C1"
@@ -7242,6 +7418,15 @@
     ],
     "https://projecteuclid.org/journals/bulletin-of-the-american-mathematical-society-new-series/volume-7/issue-2/The-Jacobian-conjecture--Reduction-of-degree-and-formal-expansion/bams/1183549636.pdf": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c15"
+    ],
+    "https://proteinbase.com/collections/berlin-bio-x-adaptyv-15-pgdh-binder-design-competition": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c11"
+    ],
+    "https://proteinbase.com/collections/gdf-8-challenge-results": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c11"
+    ],
+    "https://proteinbase.com/collections/gem-x-adaptyv-rbx1-binder-design-competition-results": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9"
     ],
     "https://protos.com/gauntlets-2-3m-contract-renewal-with-compound-faces-backlash": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c30"
@@ -7462,6 +7647,9 @@
     "https://scholar.google.com/citations?user=lkA9f4gAAAAJ&hl=en": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c21"
     ],
+    "https://sell.g2.com/buyer-intent-data-g2": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c25"
+    ],
     "https://semgrep.dev/blog/2025/finding-vulnerabilities-in-modern-web-apps-using-claude-code-and-openai-codex": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c18"
     ],
@@ -7665,6 +7853,9 @@
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c2",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c34"
     ],
+    "https://support.google.com/a/answer/81126?hl=en": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c23"
+    ],
     "https://support.sonatype.com/hc/en-us/articles/53165019641363": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c35"
     ],
@@ -7713,6 +7904,9 @@
     "https://techcrunch.com/2025/03/06/turing-a-key-coding-provider-for-openai-and-other-llm-producers-raises-111m-at-a-2-2b-valuation": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c26"
     ],
+    "https://techcrunch.com/2025/03/24/a16z-and-benchmark-backed-11x-has-been-claiming-customers-it-doesnt-have": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c27"
+    ],
     "https://techcrunch.com/2025/04/12/openai-co-founder-ilya-sutskevers-safe-superintelligence-reportedly-valued-at-32b": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c3"
     ],
@@ -7733,6 +7927,9 @@
     ],
     "https://techcrunch.com/2025/07/11/windsurfs-ceo-goes-to-google-openais-acquisition-falls-apart": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c15"
+    ],
+    "https://techcrunch.com/2025/08/05/clay-confirms-it-closed-100m-round-at-3-1b-valuation": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c27"
     ],
     "https://techcrunch.com/2025/08/08/sam-altman-addresses-bumpy-gpt-5-rollout-bringing-4o-back-and-the-chart-crime": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c20"
@@ -7975,6 +8172,9 @@
     "https://theteardown.co/kimi": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c22"
     ],
+    "https://tienmphan.github.io/blog/2025/RFDiffusion": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c5"
+    ],
     "https://time.com/6247678/openai-chatgpt-kenya-workers": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c10"
     ],
@@ -8045,6 +8245,9 @@
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c05",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c06"
     ],
+    "https://venturebeat.com/ai/y-combinators-hottest-startup-origami-agents-secures-2m-seed-round-to-supercharge-sales-teams-with-ai": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c17"
+    ],
     "https://venturebeat.com/orchestration/anthropic-launches-claude-opus-5-a-cheaper-ai-model-for-coding-agents-and-enterprise-workflows": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c24"
     ],
@@ -8093,6 +8296,21 @@
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c16",
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c6"
     ],
+    "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c1",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c10",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c11",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c12",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c13",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c15",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c2",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c3",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c4",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c6",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c7",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c8",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9"
+    ],
     "https://www-cdn.anthropic.com/c5fbac3f0b1280a933ebd26d3cb8bb9f5bdeaf48/Claude%20Opus%205%20System%20Card.pdf": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c19"
     ],
@@ -8116,6 +8334,9 @@
     ],
     "https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/graid-technology-achieves-industry-first-100-million-iops-on-a-pr-1191189": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c7"
+    ],
+    "https://www.adaptyvbio.com/blog/anthropic-1": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c2"
     ],
     "https://www.agilityrobotics.com/content/digit-moves-over-100k-totes": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c23"
@@ -8280,6 +8501,11 @@
     "https://www.anthropic.com/news/statement-department-of-war": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c6"
     ],
+    "https://www.anthropic.com/research/Claude-accelerates-protein-design": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c1",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c14",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c6"
+    ],
     "https://www.anthropic.com/research/Evaluating-Claude-For-Bioinformatics-With-BioMysteryBench": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c28"
     ],
@@ -8299,11 +8525,17 @@
     "https://www.apollo.com/insights-news/pressreleases/2026/08/nvidia-partners-with-apollo": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c1"
     ],
+    "https://www.apollo.io/product/prospect": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c26"
+    ],
     "https://www.apolloresearch.ai/press": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c19"
     ],
     "https://www.aptible.com/blog/annual-pentest-continuous-security": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c21"
+    ],
+    "https://www.autobound.ai/blog/top-15-intent-data-providers-compared-2026": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c25"
     ],
     "https://www.axios.com/2026/04/08/anthropic-loses-bid-to-block-pentagon-blacklisting": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c11"
@@ -8355,11 +8587,17 @@
     "https://www.biometricupdate.com/202601/south-korea-law-targeting-deepfakes-disinformation-gets-frosty-reception-from-us": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c20"
     ],
+    "https://www.biorxiv.org/content/10.1101/2025.08.14.670059v2": [
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c14"
+    ],
     "https://www.bis.gov/press-release/department-commerce-revises-license-review-policy-semiconductors-exported-china": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c24"
     ],
     "https://www.bisnow.com/national/news/data-center-capital-markets/tech-giants-hiding-662b-data-center-leasing-possibly-far-more-133408": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c15"
+    ],
+    "https://www.bleepingcomputer.com/news/legal/linkedin-sues-proapis-for-using-1m-fake-accounts-to-scrape-user-data": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c6"
     ],
     "https://www.bleepingcomputer.com/news/security/teefail-attack-breaks-confidential-computing-on-intel-amd-nvidia-cpus": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c12"
@@ -8856,6 +9094,9 @@
     "https://www.congress.gov/crs-product/LSB10895": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c3"
     ],
+    "https://www.consumerreports.org/money/questionable-business-practices/instacart-ai-pricing-experiment-inflating-grocery-bills-a1142182490": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c30"
+    ],
     "https://www.contrastsecurity.com/security-influencers/the-hidden-cost-of-ai-security-scanners": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c22"
     ],
@@ -9075,6 +9316,9 @@
     "https://www.economicshelp.org/blog/220917/economics/jevons-paradox-definition-and-explanation": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c8"
     ],
+    "https://www.edpb.europa.eu/news/news/2025/data-scraping-french-sa-fined-kaspr-eu200-000_en": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c13"
+    ],
     "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_5_03": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c9"
     ],
@@ -9249,6 +9493,9 @@
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c1",
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c2"
     ],
+    "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c14"
+    ],
     "https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-launches-inquiry-generative-ai-investments-partnerships": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c18"
     ],
@@ -9269,6 +9516,9 @@
     ],
     "https://www.gale.finance/compare/nvda-vs-spy": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c17"
+    ],
+    "https://www.gartner.com/en/newsroom/press-releases/2026-05-19-gartner-survey-shows-thirty-one-percent-of-chief-sales-officers-cited-difficulty-proving-roi-of-ai-driven-tools-as-a-top-challenge-for-sales-objectives-in-two-thousand-twenty-si": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c28"
     ],
     "https://www.gingerriver.com/p/zhipu-ceo-zhang-peng-on-taking-chinas": [
       "2026-06-22T052035--zhipu-ai-glm#c2"
@@ -9395,6 +9645,9 @@
     ],
     "https://www.ibiden.com/company/2026/02/notice-regarding-capital-investment-plan-for-high-performance-ic-package-substrates.html": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c13"
+    ],
+    "https://www.ibj.com/articles/indianapolis-based-kennected-hit-with-cease-and-desist-letter-from-linkedin": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c8"
     ],
     "https://www.ibtimes.co.uk/openai-ai-model-breach-cybersecurity-challenges-1809942": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c37"
@@ -9599,6 +9852,9 @@
     "https://www.latitudemedia.com/news/power-is-aws-single-biggest-constraint": [
       "2026-05-27T035557--800-vdc-architecture#c26"
     ],
+    "https://www.law.com/therecorder/2025/01/27/linkedin-suit-says-millions-of-profiles-scraped-by-singapore-firms-fake-accounts": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c4"
+    ],
     "https://www.law.cornell.edu/uscode/text/18/1836": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c22"
     ],
@@ -9632,6 +9888,21 @@
     ],
     "https://www.lila.ai/news/announcing-the-close-of-our-series-a": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c42"
+    ],
+    "https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c12"
+    ],
+    "https://www.linkedin.com/help/linkedin/answer/a1341387": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c9"
+    ],
+    "https://www.linkedin.com/help/sales-navigator/answer/a507435": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c10"
+    ],
+    "https://www.linkedin.com/legal/l/api-terms-of-use": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c11"
+    ],
+    "https://www.linkedin.com/legal/user-agreement": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c1"
     ],
     "https://www.linkedin.com/pulse/nvidia-ai-factory-compute-becoming-investable-asset-class-huang-4ju6c": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c3",
@@ -9706,6 +9977,9 @@
     "https://www.modlabupenn.org/wp-content/uploads/2017/10/spinos2017vttdesign.pdf": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c17"
     ],
+    "https://www.mordorintelligence.com/industry-reports/sales-intelligence-market": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c24"
+    ],
     "https://www.morganlewis.com/pubs/2026/02/sec-clarifies-federal-securities-law-treatment-of-tokenized-securities": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c26"
     ],
@@ -9729,7 +10003,9 @@
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c34"
     ],
     "https://www.nature.com/articles/s41586-023-06415-8": [
-      "2026-05-25T053654--ai-adoption-in-bio-industry#c9"
+      "2026-05-25T053654--ai-adoption-in-bio-industry#c9",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c5",
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c7"
     ],
     "https://www.nature.com/articles/s41586-024-07566-y": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c18",
@@ -9859,6 +10135,9 @@
     ],
     "https://www.powermag.com/talen-amazon-launch-18b-nuclear-ppa-a-grid-connected-ipp-model-for-the-data-center-era": [
       "2026-05-27T035557--800-vdc-architecture#c33"
+    ],
+    "https://www.privacyworld.blog/2022/12/linkedins-data-scraping-battle-with-hiq-labs-ends-with-proposed-judgment": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c3"
     ],
     "https://www.privateequityinternational.com/side-letter-navs-surprising-stats": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c44"
@@ -10638,6 +10917,9 @@
     "https://www.wsj.com/tech/ai/meta-ai-recruiting-mark-zuckerberg-5c231f75": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c13"
     ],
+    "https://www.ycombinator.com/companies/origami-2": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c16"
+    ],
     "https://www.yicaiglobal.com/news/kimi-k2-thinkings-reported-usd46-million-training-cost-isnt-official-moonshot-ceo-says": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c22"
     ],
@@ -10858,6 +11140,12 @@
     "https://x.com/elonmusk/status/2087584127042408907": [
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c3"
     ],
+    "https://x.com/fin465/status/2039021693050691596": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c20"
+    ],
+    "https://x.com/fin465/status/2090272639839576492": [
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c19"
+    ],
     "https://x.com/finkd/status/2080733191237771648": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c18"
     ],
@@ -11023,7 +11311,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 1901,
+  "claim_count": 1946,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -56577,9 +56865,1097 @@
         "https://openrouter.ai/blog/tutorials/prompt-caching-sticky-routing"
       ],
       "type": "technical"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "Claude (Mythos Preview and Opus 4.8) autonomously designed protein binders against 16 targets, with binders confirmed for 14 of the 15 targets with interpretable data.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com",
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c1",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/Claude-accelerates-protein-design",
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "Claude designed 12 TNFalpha binders (12/150, 8%), all from Opus 4.8, on a target where AlphaProteo and other de novo efforts reported none.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c10",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "academic"
+      ],
+      "source_urls": [
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf",
+        "https://arxiv.org/abs/2409.08022"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "On the novel targets 15-PGDH and latent GDF-8, Claude scored 1/30 and 14/60 respectively, comparable to or better than Adaptyv competition fields (1/106 and 6/100).",
+      "confidence": "high",
+      "hosts": [
+        "proteinbase.com",
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c11",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf",
+        "https://proteinbase.com/collections/berlin-bio-x-adaptyv-15-pgdh-binder-design-competition",
+        "https://proteinbase.com/collections/gdf-8-challenge-results"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "The integrated-call binder definition broadened the count above Adaptyv Bio's own classification (roughly 336 of 1,296), adding 19 binders.",
+      "confidence": "high",
+      "hosts": [
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c12",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "The report explicitly disclaims that Claude's designs are better than an expert would obtain with the same tools and budget, and describes 'campaigns rather than models'.",
+      "confidence": "high",
+      "hosts": [
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c13",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-19",
+      "claim": "ProteinBase and the Overath et al. corpus consist of roughly 770 binders out of 5,700 designs against 40 targets; Overath et al. analyzed 3,766 characterized binders across 15 targets.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com",
+        "biorxiv.org"
+      ],
+      "id": "c14",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "academic"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/Claude-accelerates-protein-design",
+        "https://www.biorxiv.org/content/10.1101/2025.08.14.670059v2"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "Every model Claude used was open-source; Anthropic releases prompts, models and both CROs' binding data under CC BY 4.0.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co",
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c15",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf",
+        "https://huggingface.co/datasets/Anthropic/claude-protein-binder-design"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "354 of 1,320 designs bound their targets, a hit rate of 26.8% by the integrated call.",
+      "confidence": "high",
+      "hosts": [
+        "adaptyvbio.com",
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c2",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf",
+        "https://www.adaptyvbio.com/blog/anthropic-1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "Per-target hit rates ranged from 0% (MBP, 0/90) to 80% (TREM2, 72/90), i.e. extreme dispersion around the pooled 26.8%.",
+      "confidence": "high",
+      "hosts": [
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c3",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "The 26.8% figure is an orchestration result: Claude assembled pipelines from ten open-source structure-generation methods (including RFdiffusion and RFdiffusion3), not a single-model design.",
+      "confidence": "high",
+      "hosts": [
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c4",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2023-07-11",
+      "claim": "RFdiffusion (Watson et al., Nature 2023) reported an overall experimental binder success rate of 19%, across five targets testing fewer than 100 designs each, roughly two orders of magnitude above prior Rosetta-based methods.",
+      "confidence": "high",
+      "hosts": [
+        "nature.com",
+        "tienmphan.github.io"
+      ],
+      "id": "c5",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "opinion"
+      ],
+      "source_urls": [
+        "https://www.nature.com/articles/s41586-023-06415-8",
+        "https://tienmphan.github.io/blog/2025/RFDiffusion"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "Anthropic's blog post does not cite RFdiffusion's 19% as its baseline; it compares against a '10-15% typical' figure from ProteinBase and against Adaptyv's open competitions.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com",
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c6",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/Claude-accelerates-protein-design",
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "A direct 26.8% versus 19% comparison is not a controlled benchmark because targets, CRO/assay methodology, design budgets and the era of the underlying generators differ.",
+      "confidence": "medium",
+      "hosts": [
+        "nature.com",
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c7",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c7",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.nature.com/articles/s41586-023-06415-8",
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "Mythos Preview hit 26.7% (104/390) and Opus 4.8 hit 22.6% (88/390) in multi-target mode; Mythos Preview hit 35.1% (158/450) in single-target mode; the top-ranked design bound 49% of the time.",
+      "confidence": "high",
+      "hosts": [
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c8",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+      "article_created_at": "2026-08-19T19:24:19Z",
+      "article_title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+      "as_of": "2026-08-18",
+      "claim": "On RBX1, 28 of 90 Claude designs bound versus 9 of 245 in the open competition (3.7%), and the tightest reached 3.9 nM against the competition winner's 45 nM re-measured on the same plate.",
+      "confidence": "high",
+      "hosts": [
+        "proteinbase.com",
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c9",
+      "key": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf",
+        "https://proteinbase.com/collections/gem-x-adaptyv-rbx1-binder-design-competition-results"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "LinkedIn's User Agreement Section 8.2 explicitly bans using scripts/bots/software to scrape or copy LinkedIn data, redistribute data obtained from the platform, or use bots for automated messaging.",
+      "confidence": "high",
+      "hosts": [
+        "linkedin.com"
+      ],
+      "id": "c1",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.linkedin.com/legal/user-agreement"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "LinkedIn Sales Navigator's native 'Buyer Intent' feature surfaces 180+ engagement signals but only for accounts engaging with the user's OWN company page/website; it does not expose who liked or reacted to an arbitrary third-party post.",
+      "confidence": "high",
+      "hosts": [
+        "linkedin.com"
+      ],
+      "id": "c10",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.linkedin.com/help/sales-navigator/answer/a507435"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "LinkedIn's official API Terms of Use explicitly prohibit aggregating LinkedIn content with third-party data in ways that break attributability, and separately prohibit using API-sourced content to generate mass/automated messaging.",
+      "confidence": "high",
+      "hosts": [
+        "linkedin.com"
+      ],
+      "id": "c11",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.linkedin.com/legal/l/api-terms-of-use"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2018-09-01",
+      "claim": "LinkedIn's Engineering blog documents that the first production use case of its deep-learning anti-abuse sequence model (since at least 2018) was detecting logged-in accounts scraping member profile/post data, with detection systems continuously retrained since.",
+      "confidence": "medium",
+      "hosts": [
+        "linkedin.com"
+      ],
+      "id": "c12",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2024-12-05",
+      "claim": "The French data protection authority (CNIL) fined LinkedIn-scraping sales-prospecting tool Kaspr EUR200,000 in a December 2024 decision over a database of roughly 160 million contacts, citing lawfulness of processing, data retention, and transparency violations under GDPR.",
+      "confidence": "high",
+      "hosts": [
+        "edpb.europa.eu"
+      ],
+      "id": "c13",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.edpb.europa.eu/news/news/2025/data-scraping-french-sa-fined-kaspr-eu200-000_en"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2025-01-17",
+      "claim": "US CAN-SPAM does not require prior consent (opt-in) for commercial email, including B2B email, but does require accurate headers, an advertisement disclosure, a valid physical address and a working opt-out honored within 10 business days; the maximum civil penalty is $53,088 per violating email as of the 2025 inflation adjustment.",
+      "confidence": "medium",
+      "hosts": [
+        "ftc.gov"
+      ],
+      "id": "c14",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "GDPR Article 6(1)(f) permits 'legitimate interest' as a lawful basis for direct marketing (Recital 47), but requires a documented three-part balancing test weighing the data subject's reasonable expectations, and the data subject's right to object under Article 21(2)-(3) is absolute once invoked.",
+      "confidence": "high",
+      "hosts": [
+        "gdpr-info.eu"
+      ],
+      "id": "c15",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://gdpr-info.eu/art-6-gdpr",
+        "https://gdpr-info.eu/art-21-gdpr"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "Origami AI (origami.chat) is a Y Combinator F24 company co-founded by Finn Mallery and Kenson Chung, based in San Francisco.",
+      "confidence": "high",
+      "hosts": [
+        "ycombinator.com"
+      ],
+      "id": "c16",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.ycombinator.com/companies/origami-2"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2025-01-01",
+      "claim": "VentureBeat reported Origami Agents raised a $2M seed round and reached $50K MRR during an 8-week beta, with founders quoted calling it the fastest-growing startup in its YC batch; these growth figures are founder-supplied, not independently audited.",
+      "confidence": "low",
+      "hosts": [
+        "venturebeat.com"
+      ],
+      "id": "c17",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c17",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://venturebeat.com/ai/y-combinators-hottest-startup-origami-agents-secures-2m-seed-round-to-supercharge-sales-teams-with-ai"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "Origami AI's own homepage and product pages describe searching '50+ sources in real time' without naming LinkedIn, while its Terms of Service require the customer (not Origami) to represent that their use of LinkedIn and other connected platforms complies with those platforms' terms of service.",
+      "confidence": "medium",
+      "hosts": [
+        "origami.chat"
+      ],
+      "id": "c18",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c18",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://origami.chat",
+        "https://origami.chat/terms"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "No independent corroboration was found anywhere on the web for the tweet's central anecdote (a YC founder reaching $25k/month via this tactic, closing a deal 7 hours after a public LinkedIn post); the claim traces to the single 2026-08-20 tweet with no named company, no third-party account, and no earlier mention.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c19",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c19",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "unknown"
+      ],
+      "source_urls": [
+        "https://x.com/fin465/status/2090272639839576492"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2022-04-18",
+      "claim": "The Ninth Circuit held in hiQ Labs v. LinkedIn (2019, reaffirmed 2022 on remand) that scraping publicly accessible data does not violate the CFAA's 'without authorization' clause.",
+      "confidence": "high",
+      "hosts": [
+        "cdn.ca9.uscourts.gov"
+      ],
+      "id": "c2",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://cdn.ca9.uscourts.gov/datastore/opinions/2022/04/18/17-16783.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "Finn Mallery has a documented multi-year pattern of posting precise, high-specificity, self-reported growth figures across many separate viral tweets (e.g., '3,119 emails, 5.3% response rate... ~$22k new MRR' in 40 days; '0-to-$10k MRR in 30 days'), none independently audited.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c20",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c20",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "unknown"
+      ],
+      "source_urls": [
+        "https://x.com/fin465/status/2039021693050691596"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-06-26",
+      "claim": "A rigorous, disclosed-sample cold-email study (Belkins, 7,530,489 emails sent in 2025) found an average reply rate of 0.45%, versus vendor-marketing figures (Instantly) claiming 3.43% average and 10.7%+ for elite senders on an undisclosed sample.",
+      "confidence": "medium",
+      "hosts": [
+        "belkins.io",
+        "instantly.ai"
+      ],
+      "id": "c21",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c21",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://belkins.io/blog/cold-email-response-rates",
+        "https://instantly.ai/cold-email-benchmark-report-2026"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-01-01",
+      "claim": "A disclosed-panel study of 939 companies found the median B2B SaaS sales cycle is roughly 84 days; even the fastest quartile of SMB deals (under $15K ACV) runs 14-30 days from first contact to close, implying a same-day, few-hour close sits far outside the normal distribution rather than at its fast end.",
+      "confidence": "medium",
+      "hosts": [
+        "optif.ai"
+      ],
+      "id": "c22",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c22",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://optif.ai/learn/questions/sales-cycle-length-benchmark"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2024-02-01",
+      "claim": "Google requires SPF/DKIM/DMARC for domains sending over 5,000 messages/day to Gmail and caps spam-complaint rate at 0.3% (0.1% recommended); deliverability practitioners report a fresh, unwarmed sending domain can be flagged within about 48 hours at scaled volume, and sudden volume spikes (not message content) are the most common trigger.",
+      "confidence": "high",
+      "hosts": [
+        "support.google.com"
+      ],
+      "id": "c23",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c23",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://support.google.com/a/answer/81126?hl=en"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-01-22",
+      "claim": "The global sales-intelligence software market is estimated at $4.99B in 2026, forecast to reach $9.15B by 2031 (12.89% CAGR per one estimate); independent market-research firms' estimates for the category vary widely, from roughly $0.5B to over $12B depending on scope.",
+      "confidence": "medium",
+      "hosts": [
+        "mordorintelligence.com"
+      ],
+      "id": "c24",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c24",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.mordorintelligence.com/industry-reports/sales-intelligence-market"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "'Signal-based selling' / LinkedIn social listening for buying-intent language is an already-named, populated sub-category with multiple funded vendors predating the viral tweet (e.g., LeadSift since roughly 2016 as part of the Terminus ABM stack; newer entrants Buska, OutX, Cleed, Trigify, Gojiberry AI); the same scrape-for-intent mechanic also exists on Reddit (F5Bot, since 2017) and is officially sold as a first-party product by G2 (sell.g2.com/buyer-intent-data), unlike LinkedIn which prohibits it.",
+      "confidence": "medium",
+      "hosts": [
+        "autobound.ai",
+        "sell.g2.com"
+      ],
+      "id": "c25",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c25",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.autobound.ai/blog/top-15-intent-data-providers-compared-2026",
+        "https://sell.g2.com/buyer-intent-data-g2"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "Apollo.io's own current site simultaneously cites different database-size figures (210 million contacts / 35 million companies in its API docs; 240M+ contacts on its flagship product page; 275M+ contacts / 73 million accounts in its support knowledge base), and competitors claim materially different, non-overlapping scale (ZoomInfo ~500M or 265-321M by third-party estimate, Lusha 280M, Cognism 400-440M, Seamless.ai 1.3-1.7B).",
+      "confidence": "medium",
+      "hosts": [
+        "apollo.io"
+      ],
+      "id": "c26",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c26",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.apollo.io/product/prospect"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2025-08-05",
+      "claim": "AI-SDR/agentic-sales category peers: Clay raised a $100M Series C at a $3.1B valuation (Aug 2025); Artisan AI raised a $25M Series A (Apr 2025) and ran a widely-criticized 'Stop Hiring Humans' billboard campaign in San Francisco that first went viral in November-December 2024; 11x.ai raised a $50M Series B at ~$350M valuation (Nov 2024) and was the subject of a March 2025 TechCrunch investigation finding it displayed customer logos without permission and faced allegations of inflated ARR, with its CEO departing two months later.",
+      "confidence": "high",
+      "hosts": [
+        "techcrunch.com"
+      ],
+      "id": "c27",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c27",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://techcrunch.com/2025/08/05/clay-confirms-it-closed-100m-round-at-3-1b-valuation",
+        "https://techcrunch.com/2025/03/24/a16z-and-benchmark-backed-11x-has-been-claiming-customers-it-doesnt-have"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-05-19",
+      "claim": "A Gartner survey of 227 Chief Sales Officers (fielded Aug-Sep 2025, published May 2026) found 31% cited difficulty proving ROI of AI-driven sales tools as a top 2026 challenge; a separate Gartner survey of 645 B2B buyers found human sales reps were 28 percentage points more likely than generative-AI tools to be credited with advancing a deal.",
+      "confidence": "high",
+      "hosts": [
+        "gartner.com"
+      ],
+      "id": "c28",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c28",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.gartner.com/en/newsroom/press-releases/2026-05-19-gartner-survey-shows-thirty-one-percent-of-chief-sales-officers-cited-difficulty-proving-roi-of-ai-driven-tools-as-a-top-challenge-for-sales-objectives-in-two-thousand-twenty-si"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "California Penal Code Section 502(c)(2) independently criminalizes knowingly accessing a computer/network without permission to take, copy, or use data, separate from and broader than the federal CFAA; LinkedIn asserted this statute (among others) against hiQ Labs, though courts have not definitively resolved whether it reaches purely public-post data the way it reaches private systems.",
+      "confidence": "medium",
+      "hosts": [
+        "codes.findlaw.com"
+      ],
+      "id": "c29",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c29",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://codes.findlaw.com/ca/penal-code/pen-sect-502"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2022-12-07",
+      "claim": "Despite winning the CFAA question, hiQ Labs lost on breach-of-contract grounds and settled in December 2022 for a $500,000 judgment plus a permanent injunction to destroy all scraped-derived data and code; the company was already defunct by settlement.",
+      "confidence": "high",
+      "hosts": [
+        "privacyworld.blog"
+      ],
+      "id": "c3",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.privacyworld.blog/2022/12/linkedins-data-scraping-battle-with-hiq-labs-ends-with-proposed-judgment"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2025-12-01",
+      "claim": "Y Combinator's own canonical 'Do Things That Don't Scale' essay (2013) does not mention Craigslist, scraping, or terms-of-service anywhere in its text; the narrative linking Airbnb's unauthorized Craigslist cross-posting bot to that doctrine was constructed by outside growth-hacking commentators, not by YC itself. Separately, Instacart (YC S12) built its early product catalog by buying and photographing items without retailer authorization, and as of a December 2025 Consumer Reports investigation acknowledged it still scrapes Target's public prices without a formal partnership.",
+      "confidence": "medium",
+      "hosts": [
+        "consumerreports.org",
+        "paulgraham.com"
+      ],
+      "id": "c30",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c30",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "http://paulgraham.com/ds.html",
+        "https://www.consumerreports.org/money/questionable-business-practices/instacart-ai-pricing-experiment-inflating-grocery-bills-a1142182490"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2025-07-04",
+      "claim": "LinkedIn sued Proxycurl (Nubela Pte Ltd) in January 2025 for using hundreds of thousands of fake accounts to scrape millions of profiles; Proxycurl settled and permanently shut down its product in July 2025 despite having grown to roughly $10M in annual revenue.",
+      "confidence": "high",
+      "hosts": [
+        "law.com",
+        "nubela.co"
+      ],
+      "id": "c4",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://nubela.co/blog/goodbye-proxycurl",
+        "https://www.law.com/therecorder/2025/01/27/linkedin-suit-says-millions-of-profiles-scraped-by-singapore-firms-fake-accounts"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2025-07-04",
+      "claim": "Proxycurl's founder chose to shut down rather than litigate, citing the American Rule on legal fees and LinkedIn/Microsoft's effectively unlimited litigation budget as the deciding factor, not a concession that the underlying scraping was illegal.",
+      "confidence": "high",
+      "hosts": [
+        "nubela.co"
+      ],
+      "id": "c5",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://nubela.co/blog/goodbye-proxycurl"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2025-10-02",
+      "claim": "In October 2025 LinkedIn sued ProAPIs Inc. (the 'iScraper API' service) alleging use of over 1 million fake accounts to scrape data at industrial scale, sold for up to $15,000/month at 150 requests/second; LinkedIn's VP of Legal cited the Proxycurl settlement as precedent.",
+      "confidence": "medium",
+      "hosts": [
+        "bleepingcomputer.com"
+      ],
+      "id": "c6",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c6",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.bleepingcomputer.com/news/legal/linkedin-sues-proapis-for-using-1m-fake-accounts-to-scrape-user-data"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2025-05-06",
+      "claim": "Beginning around March 2025, LinkedIn removed the company search-visibility/pages of lead-gen vendors Apollo.io, Seamless.ai, Evaboot and LGM; Apollo said the removal did not disrupt its core platform functionality, while smaller vendors were reported to disappear from LinkedIn search entirely.",
+      "confidence": "medium",
+      "hosts": [
+        "martech.org"
+      ],
+      "id": "c7",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c7",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://martech.org/a-pair-of-lead-gen-providers-have-disappeared-from-linkedin"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2025-01-01",
+      "claim": "LinkedIn issued a cease-and-desist to automation vendor Kennected in December 2022; the company was forced into a 2024 sale/rebrand (SalesAi), and its LinkedIn-automation product line was fully discontinued only in 2025 -- a multi-year decay rather than an instant shutdown.",
+      "confidence": "medium",
+      "hosts": [
+        "ibj.com"
+      ],
+      "id": "c8",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c8",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.ibj.com/articles/indianapolis-based-kennected-hit-with-cease-and-desist-letter-from-linkedin"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status",
+      "article_created_at": "2026-08-20T10:34:07Z",
+      "article_title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+      "as_of": "2026-08-20",
+      "claim": "Multiple LinkedIn automation/outreach vendors (PhantomBuster, Dux-Soup, Waalaxy, Expandi, Dripify, MeetAlfred, HeyReach) remain actively operating with live 2026 pricing pages despite LinkedIn's User Agreement categorically banning third-party automation with no stated scale threshold; enforcement in practice looks selective toward the largest/loudest offenders.",
+      "confidence": "medium",
+      "hosts": [
+        "lagrowthmachine.com",
+        "linkedin.com"
+      ],
+      "id": "c9",
+      "key": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.linkedin.com/help/linkedin/answer/a1341387",
+        "https://lagrowthmachine.com/best-linkedin-automation-tools"
+      ],
+      "type": "market-structure"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 932,
+  "reusable_count": 962,
   "schema_version": 1
 }

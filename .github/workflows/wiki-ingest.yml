@@ -336,6 +336,14 @@ jobs:
               - Update-in-place is the default; creation is the exception.
               - Write ONLY under research/wiki/. Do not touch the digest,
                 the tickets, the dashboard, or any other research subdir.
+              - research/wiki-translations/ is OFF-LIMITS in particular.
+                Editing an English page that has a Korean mirror leaves that
+                mirror stale — expected and tolerated: check_wiki.py and
+                build_wiki_index.py still exit 0 (the index just marks the
+                mirror "stale": true), and a separate manual lane refreshes
+                translations later. No action is needed from you. NEVER edit
+                a mirror file: the workflow rejects any commit touching that
+                path and the whole run fails.
 
       - name: Require wiki output
         uses: ./.github/actions/require-output
