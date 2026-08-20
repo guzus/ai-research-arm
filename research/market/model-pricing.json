@@ -33,7 +33,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-08-20T10:36:25Z",
+  "generated_at": "2026-08-20T16:19:17Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -83,7 +83,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":89,"ts":"2026-08-19T15:52:23Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":90,"ts":"2026-08-19T21:46:52Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":90,"ts":"2026-08-20T04:04:13Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":90,"ts":"2026-08-20T10:36:25Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":90,"ts":"2026-08-20T10:36:25Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":90,"ts":"2026-08-20T16:19:17Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -366,7 +367,7 @@
         {
           "key": "kimik2.6",
           "name": "Kimi K2.6",
-          "output_usd_per_mtok": 4.0,
+          "output_usd_per_mtok": 2.44,
           "pareto": false,
           "score": 0.26,
           "stderr": 0.0440844002276808,
@@ -845,7 +846,7 @@
         {
           "key": "kimik2.6",
           "name": "Kimi K2.6",
-          "output_usd_per_mtok": 4.0,
+          "output_usd_per_mtok": 2.44,
           "pareto": true,
           "score": 0.3896551724137931,
           "stderr": 0.028686590614000477,
@@ -864,7 +865,7 @@
           "key": "glm5.1",
           "name": "GLM 5.1",
           "output_usd_per_mtok": 3.036,
-          "pareto": true,
+          "pareto": false,
           "score": 0.33448275862068966,
           "stderr": 0.027753489933368777,
           "vendor": "z-ai"
@@ -1677,7 +1678,7 @@
         {
           "key": "kimik2.6",
           "name": "Kimi K2.6",
-          "output_usd_per_mtok": 4.0,
+          "output_usd_per_mtok": 2.44,
           "pareto": false,
           "score": 0.9611111111111111,
           "stderr": 0.023777636174410793,
@@ -2615,7 +2616,7 @@
         {
           "key": "kimik2.6",
           "name": "Kimi K2.6",
-          "output_usd_per_mtok": 4.0,
+          "output_usd_per_mtok": 2.44,
           "pareto": false,
           "score": 0.387,
           "stderr": 0.015410011955494015,
@@ -2821,13 +2822,13 @@
         }
       ]
     },
-    "as_of": "2026-08-20T10:36:25Z",
+    "as_of": "2026-08-20T16:19:17Z",
     "counts": {
       "pareto": 6,
       "plotted": 90,
-      "priced": 317,
+      "priced": 319,
       "scored": 157,
-      "unscored": 227
+      "unscored": 229
     },
     "models": [
       {
@@ -3249,14 +3250,14 @@
         "vendor": "qwen"
       },
       {
-        "blended_usd_per_mtok": 1.7125,
+        "blended_usd_per_mtok": 1.044625,
         "context_length": 262144,
         "epoch_model": "Kimi K2.6",
-        "input_usd_per_mtok": 0.95,
+        "input_usd_per_mtok": 0.5795,
         "key": "kimik2.6",
         "name": "Kimi K2.6",
         "openrouter_id": "moonshotai/kimi-k2.6",
-        "output_usd_per_mtok": 4.0,
+        "output_usd_per_mtok": 2.44,
         "pareto": false,
         "price_variant": null,
         "runs": 1,
@@ -4683,11 +4684,18 @@
         "vendor": "cohere"
       },
       {
-        "input_usd_per_mtok": 0.088606,
+        "input_usd_per_mtok": 0.084,
         "key": "deepseekv4flash0423",
         "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.177212,
+        "output_usd_per_mtok": 0.168,
         "vendor": "deepseek"
+      },
+      {
+        "input_usd_per_mtok": 0.044,
+        "key": "hymt21.8b",
+        "name": "Hy-MT2-1.8B",
+        "output_usd_per_mtok": 0.177,
+        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.09,
@@ -4800,6 +4808,13 @@
         "name": "Qwen3 32B",
         "output_usd_per_mtok": 0.28,
         "vendor": "qwen"
+      },
+      {
+        "input_usd_per_mtok": 0.074,
+        "key": "hymt230ba3b",
+        "name": "Hy-MT2-30B-A3B",
+        "output_usd_per_mtok": 0.295,
+        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.1,
