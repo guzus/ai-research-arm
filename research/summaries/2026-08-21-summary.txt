@@ -1,0 +1,12 @@
+AI News - 2026-08-21
+
+TOP STORIES:
+• Nvidia denies report it plans a China-specific AI inference chip (LPU) by year-end, after The Information said shipments were already being ordered
+• OpenAI previews "Private Safety Processing" — misuse detection without storing customer data, answering Anthropic's zero-retention pitch
+• Microsoft patches "CoSnitch": a one-click Copilot Personal flaw chain (CVE-2026-24301) that could exfiltrate connected-account data
+
+KEY NUMBERS:
+• Nvidia Q2 FY27 earnings due Aug 26, guided ~$91B revenue
+• CoSnitch: 3 chained flaws, patched Aug 18, no known exploitation
+
+Full report on GitHub.
