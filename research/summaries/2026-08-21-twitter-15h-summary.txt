@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-21 15:44:47 UTC
+
+CYCLE: The harness beats the model, the stealth-model hype turns, and the AI forced-unwind gets a name.
+
+TOP STORIES:
+• NVIDIA's AVO agent sweeps ARC-AGI-3 public set 183/183 - a scaffold score, with Opus 5 near 30% solo and no ARC Prize verification [⚠]
+• Ox Alpha's flagship demo retracted by its own author as "a copy of an existing github repo"; attribution drops to GLM 5.3 Flash [⚠]
+• Griffin: Citadel has shed 80%+ of the Situational Awareness AI book it bought in the selloff, ~100 block trades, ~$4B [✓]
+• Starcloud raises $250M at $2.3B for orbital compute; NVIDIA and Cisco Investments join [✓]
+
+WATCH: Whether ARC Prize publishes an AVO row in its Verified format, with per-task cost, or says a public-set sweep is not a leaderboard result.
+
+Full update on GitHub.
