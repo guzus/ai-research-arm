@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-21
+
+TOP 5 PAPERS:
+• EchoCoT - Extracts hidden chain-of-thought from black-box reasoning models via a tool-call "reasoning replay" surface.
+• Manifold Drift in Flow Preference Optimization - Root-cause proof of reward hacking in flow generators; ThermoDPO anchors updates to the data manifold.
+• Learning When to Think - Model picks NoThink/Short/Long per-problem in GRPO to adaptively allocate test-time compute.
+• Let's Scale Step by Step - Compute-efficient learning-rate transfer for large MoE models across widths and trillion-token horizons.
+• Orthogonal JEPA - Factorized orthogonal predictive states for latent world models, freeing capacity from monolithic JEPA targets.
+
+CATEGORIES: ~24 NLP, ~16 CV, ~14 Agents, ~8 Safety, ~10 Other
+
+Full report on GitHub.
