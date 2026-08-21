@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-21 03:56:50 UTC
+
+CYCLE: An unclaimed frontier-grade model goes public for free; memory prices keep climbing.
+
+TOP STORIES:
+• Stealth model "Ox Alpha" tests as frontier-class with free 1M-token access and full visible chain-of-thought — no lab claims it, and the top evaluator named three different authors in 70 minutes [⚠]
+• Korea's preliminary DRAM export unit price for Aug 1-20 rose again, with an unexplained NAND move alongside it [⚠]
+• Codex kept consuming tokens after the usage meter hit 0% — one dev logged "at least $800" worth in a single long-running goal [⚠]
+
+WATCH: Whether any lab claims Ox Alpha, or weights / a public-eval score appear for it in the next 24h.
+
+Full update on GitHub.
