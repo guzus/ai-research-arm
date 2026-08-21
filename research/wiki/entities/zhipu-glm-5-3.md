@@ -4,10 +4,11 @@ title: Zhipu GLM-5.3
 type: entity
 aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3"]
 tags: [open-weights, china, agentic, frontier-model]
-description: Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5; weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.
+description: Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — and now scoring near Fable 5 on Terminal-Bench 3.0 as a fourth independent frontier placement (2026-08-21); weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.
 created_at: 2026-08-19
-timestamp: 2026-08-20T00:00:00Z
+timestamp: 2026-08-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
 ---
@@ -44,6 +45,14 @@ open-weight agentic development.
   The 60-on-the-Intelligence-Index score now reads as **tying Kimi K3 top of the
   open-model rankings and seven points ahead of GLM-5.2**, with the **weights
   release delayed** past the initial promise (ARA daily digest 2026-08-20).
+- **Fourth independent frontier placement — Terminal-Bench 3.0 near Fable 5
+  (2026-08-21).** A posted chart has GLM-5.3 **scoring near
+  [[claude-fable-5|Fable 5]] on Terminal-Bench 3.0** — the **fourth independent
+  leaderboard** placing the open-weights model **in frontier range** since its
+  14 August release, reinforcing the agentic-coding claim. Separately, Z.ai
+  shipped **ZCode v3.8.1**, letting **Coding Plan subscribers reset five-hour
+  usage limits off-peak** — a **load-shifting mechanism rather than a quota
+  increase** (ARA daily digest 2026-08-21).
 
 ## Open questions
 

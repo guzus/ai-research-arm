@@ -4,15 +4,16 @@ title: Microsoft
 type: entity
 aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable "editorially controlled" (2026-07-18) despite Microsoft's $5B stake in Anthropic, and MAI-Thinking-1 reached Microsoft Foundry as the first "built from scratch" reasoning model (2026-08-13).
+description: Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable "editorially controlled" (2026-07-18) despite Microsoft's $5B stake in Anthropic, MAI-Thinking-1 reached Microsoft Foundry as the first "built from scratch" reasoning model (2026-08-13), and Meta's Azure AI spend surfaced at hundreds of millions a year (2026-08-21).
 created_at: 2026-06-03
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-08-21T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
@@ -142,6 +143,14 @@ Build 2026 (tracked above) restated as a Suleyman talking point. **No
 benchmarks or model card accompanied the announcement**, so the frontier-parity
 question this page has carried since Build 2026 remains open (ARA daily digest
 2026-08-13).
+
+**Meta's Azure AI spend surfaces — a rival paying the same cloud that hosts
+OpenAI (2026-08-21).** Bloomberg reporting relayed into the timeline puts
+**[[meta|Meta]]'s Azure AI spend at hundreds of millions of dollars a year**,
+with **trillions of tokens weekly flowing through Azure Foundry**, including
+**OpenAI models used to grade Meta's own outputs**; Meta is separately said to be
+**building a competing multi-model API service** (Bloomberg via relay; ARA daily
+digest 2026-08-21). See [[ai-capex]] and [[openai]].
 
 ## Open questions
 

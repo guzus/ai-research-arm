@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.
+description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.
 created_at: 2026-06-05
-timestamp: 2026-08-18T00:00:00Z
+timestamp: 2026-08-21T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
@@ -200,8 +201,19 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   phased from 2028); Jensen Huang puts OpenAI's **total commitment at ~12 GW by
   2030, expandable to ~16 GW**, framed as **roughly $600B of NVIDIA revenue** —
   NVIDIA's own projection off its own capacity assumption, not a booking. See
-  [[ai-capex]] and [[openai]] for how this sits inside the $500B debt package
-  (The Decoder, TechCrunch, The Information; ARA daily digest 2026-08-18).
+   [[ai-capex]] and [[openai]] for how this sits inside the $500B debt package
+   (The Decoder, TechCrunch, The Information; ARA daily digest 2026-08-18).
+- **NVIDIA licenses Poolside's technology for $6B — a talent-plus-technology
+  licence structured to avoid a change of control (2026-08-21).** NVIDIA agreed to
+  a **non-exclusive licence to [[poolside|Poolside]]'s model-development
+  technology**, plus a **$1B investment at a $12B pre-money valuation** and **job
+  offers to 109 Poolside employees**. Both companies insist it is **not an
+  acquisition**; the disclosed terms — a **fixed $76.20-per-share investor payout
+  by end-2027** — read like one. Template-wise it **resembles Microsoft/Inflection,
+  Amazon/Adept and Google/Character.AI** — structures that avoid a reviewable
+  change of control while effectively absorbing a team. The licensed technology
+  was not disclosed, and the licence is **non-exclusive** (Newcomer via relays,
+  investor letter; ARA daily digest 2026-08-21). See [[ai-capex]].
 
 ## Open questions
 - **The TSMC ceiling.** TSMC warned (2026-06-05) it **cannot meet AI-chip demand

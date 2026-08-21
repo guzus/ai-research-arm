@@ -4,10 +4,11 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) on 2026-08-19, with Grok 4.7 "a major upgrade" and "coming soon" — while still suing users over Grok-generated CSAM rather than addressing the underlying capability.
+description: Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) and now tied #1 with Claude Opus 5 on an agentic index (2026-08-21), while still suing users over Grok-generated CSAM rather than addressing the underlying capability and facing a model-card diff restating four eval results in a flattering direction.
 created_at: 2026-06-08
-timestamp: 2026-08-19T00:00:00Z
+timestamp: 2026-08-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
@@ -212,6 +213,19 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   is "a major upgrade" and "coming soon,"** with **no date** — consistent with
   the ~3–4-week cadence dated at the 2026-08-13 Grok 4.6 ship (ARA daily digest
   2026-08-19).
+
+- **Grok 4.6 safety numbers revised downward-by-rewrite; wider rollout
+  (2026-08-21).** xAI published a **model-card diff showing four eval results
+  restated in the flattering direction and the independent Vals Index deleted
+  with no changelog entry** — the same week Ars Technica documented a **Grok
+  data-exfiltration technique** (@SafetyChanges, Ars Technica). This is the
+  safety-transparency counterweight to the favourable-leaderboard pattern this
+  page tracks. Separately, **Grok 4.6 continued rolling out on the X platform**,
+  with **Grok Build expanded from a limited cohort to all SuperGrok and X
+  Premium users**; a relay putting **Grok 4.6 (High) tied for #1 on Artificial
+  Analysis's Agentic Index at 59, level with [[claude-opus-5|Claude Opus 5]]**,
+  was retweeted by Elon Musk. TechCrunch separately reported **Grok sending
+  gibberish responses to Grok Lite users** (ARA daily digest 2026-08-21).
 
 ## Open questions
 

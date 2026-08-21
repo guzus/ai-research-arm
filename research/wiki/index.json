@@ -144,11 +144,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, and off-balance-sheet structures like Theseus Infrastructure — and the question of whether demand justifies it, as DDR5 pricing and financing targets keep stacking in August 2026.",
-      "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, and off-balance-sheet structures like Theseus Infrastructure — and the question of whether demand justifies it, as DDR5 pricing and financing targets keep stacking in August 2026.",
+      "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, and Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds.",
+      "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, and Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-13",
-      "timestamp": "2026-08-13T00:00:00Z",
+      "updated_at": "2026-08-21",
+      "timestamp": "2026-08-21T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -192,6 +192,7 @@
         "xai"
       ],
       "inbound": [
+        "alibaba",
         "amazon",
         "amd",
         "anthropic",
@@ -265,11 +266,11 @@
         "export-control",
         "hyperscaler-china"
       ],
-      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, even as it continues fighting a US DoD PLA-linked designation.",
-      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, even as it continues fighting a US DoD PLA-linked designation.",
+      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), even as it continues fighting a US DoD PLA-linked designation.",
+      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), even as it continues fighting a US DoD PLA-linked designation.",
       "created_at": "2026-07-05",
-      "updated_at": "2026-08-13",
-      "timestamp": "2026-08-13T00:00:00Z",
+      "updated_at": "2026-08-21",
+      "timestamp": "2026-08-21T00:00:00Z",
       "file": "entities/alibaba.md",
       "aliases": [
         "Alibaba Group",
@@ -280,6 +281,7 @@
         "Qoder"
       ],
       "outbound": [
+        "ai-capex",
         "anthropic",
         "china-ai-regulation",
         "claude-fable-5",
@@ -314,7 +316,8 @@
           "description": "Alibaba Cloud와 Qwen 모델을 보유한 중국 기술 대기업. Anthropic으로부터 문서로 확인된 최대 규모의 Claude 증류 작전을 벌였다는 의혹을 받았으며, 2026-08-04에 2.4T 매개변수 Qwen3.8-Max를 출시하고 2026-08-13에는 Qwen3.8-2.4T-A95B라는 이름으로 가중치를 공개했다. 동시에 미 국방부의 PLA 연계 기업 지정에 계속 맞서고 있다.",
           "file": "wiki-translations/ko/entities/alibaba.md",
           "source_file": "research/wiki/entities/alibaba.md",
-          "source_sha256": "fc9284879e27b3b0fac47a7465d40d62dac0a6d22717814f16ea0c1a2bb49606"
+          "source_sha256": "fc9284879e27b3b0fac47a7465d40d62dac0a6d22717814f16ea0c1a2bb49606",
+          "stale": true
         }
       }
     },
@@ -451,11 +454,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO, and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.",
-      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO, and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.",
+      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.",
+      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-20",
-      "timestamp": "2026-08-20T00:00:00Z",
+      "updated_at": "2026-08-21",
+      "timestamp": "2026-08-21T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -955,7 +958,8 @@
         "sk-telecom",
         "verification-bottleneck",
         "xai",
-        "zhipu-glm-5-2"
+        "zhipu-glm-5-2",
+        "zhipu-glm-5-3"
       ]
     },
     {
@@ -2481,11 +2485,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and frontier-model builder (Llama); returned to open weights with Muse Glimmer (2026-08-10, Apache 2.0) and a commitment to open-weight Muse Spark 1.2.",
-      "description": "Social-platform hyperscaler and frontier-model builder (Llama); returned to open weights with Muse Glimmer (2026-08-10, Apache 2.0) and a commitment to open-weight Muse Spark 1.2.",
+      "summary": "Social-platform hyperscaler and frontier-model builder (Llama); returned to open weights with Muse Glimmer (2026-08-10, Apache 2.0) and a commitment to open-weight Muse Spark 1.2, with a reported hundreds-of-millions-a-year Azure AI spend and a competing multi-model API service under construction (2026-08-21).",
+      "description": "Social-platform hyperscaler and frontier-model builder (Llama); returned to open weights with Muse Glimmer (2026-08-10, Apache 2.0) and a commitment to open-weight Muse Spark 1.2, with a reported hundreds-of-millions-a-year Azure AI spend and a competing multi-model API service under construction (2026-08-21).",
       "created_at": "2026-06-16",
-      "updated_at": "2026-08-11",
-      "timestamp": "2026-08-11T00:00:00Z",
+      "updated_at": "2026-08-21",
+      "timestamp": "2026-08-21T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -2506,13 +2510,15 @@
         "coreweave",
         "federal-ai-policy",
         "gemini-spark",
+        "microsoft",
         "muse-code",
         "muse-glimmer",
         "nebius",
         "neocloud",
         "nvidia",
         "open-weights",
-        "openai"
+        "openai",
+        "openrouter"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -2522,6 +2528,7 @@
         "eu-ai-regulation",
         "federal-ai-policy",
         "google",
+        "microsoft",
         "muse-code",
         "muse-glimmer",
         "nvidia",
@@ -2542,7 +2549,8 @@
           "description": "소셜 플랫폼 하이퍼스케일러이자 프런티어 모델(Llama) 개발사. Muse Glimmer(2026-08-10, Apache 2.0)와 Muse Spark 1.2를 오픈 웨이트로 공개하겠다는 약속을 통해 오픈 웨이트로 복귀했다.",
           "file": "wiki-translations/ko/entities/meta.md",
           "source_file": "research/wiki/entities/meta.md",
-          "source_sha256": "3c21cf5f1fd7386d788bc2dfbfad5d3cb69334bf3e6d92c11c0657a8fe405f63"
+          "source_sha256": "3c21cf5f1fd7386d788bc2dfbfad5d3cb69334bf3e6d92c11c0657a8fe405f63",
+          "stale": true
         }
       }
     },
@@ -2558,11 +2566,11 @@
         "supply-chain",
         "anthropic"
       ],
-      "summary": "US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round.",
-      "description": "US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round.",
+      "summary": "US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round — and trailed a $250B+ US advanced-memory manufacturing and R&D commitment (2026-08-21).",
+      "description": "US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round — and trailed a $250B+ US advanced-memory manufacturing and R&D commitment (2026-08-21).",
       "created_at": "2026-06-23",
-      "updated_at": "2026-07-12",
-      "timestamp": "2026-07-12T00:00:00Z",
+      "updated_at": "2026-08-21",
+      "timestamp": "2026-08-21T00:00:00Z",
       "file": "entities/micron.md",
       "aliases": [
         "Micron",
@@ -2605,11 +2613,11 @@
         "foundation-models",
         "custom-silicon"
       ],
-      "summary": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable \"editorially controlled\" (2026-07-18) despite Microsoft's $5B stake in Anthropic, and MAI-Thinking-1 reached Microsoft Foundry as the first \"built from scratch\" reasoning model (2026-08-13).",
-      "description": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable \"editorially controlled\" (2026-07-18) despite Microsoft's $5B stake in Anthropic, and MAI-Thinking-1 reached Microsoft Foundry as the first \"built from scratch\" reasoning model (2026-08-13).",
+      "summary": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable \"editorially controlled\" (2026-07-18) despite Microsoft's $5B stake in Anthropic, MAI-Thinking-1 reached Microsoft Foundry as the first \"built from scratch\" reasoning model (2026-08-13), and Meta's Azure AI spend surfaced at hundreds of millions a year (2026-08-21).",
+      "description": "Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable \"editorially controlled\" (2026-07-18) despite Microsoft's $5B stake in Anthropic, MAI-Thinking-1 reached Microsoft Foundry as the first \"built from scratch\" reasoning model (2026-08-13), and Meta's Azure AI spend surfaced at hundreds of millions a year (2026-08-21).",
       "created_at": "2026-06-03",
-      "updated_at": "2026-08-13",
-      "timestamp": "2026-08-13T00:00:00Z",
+      "updated_at": "2026-08-21",
+      "timestamp": "2026-08-21T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -2629,6 +2637,7 @@
         "claude-fable-5",
         "claude-opus-4-8",
         "deepseek",
+        "meta",
         "minimax-m3",
         "nvidia",
         "open-weights",
@@ -2642,6 +2651,7 @@
         "deepseek",
         "eu-ai-regulation",
         "federal-ai-policy",
+        "meta",
         "minimax-m3",
         "nvidia",
         "open-weights",
@@ -2660,7 +2670,8 @@
           "description": "하이퍼스케일러이자 프런티어 모델 개발사. Build 2026에서 완전한 자사 MAI 모델 스택을 출시하고 Project Polaris를 GitHub Copilot의 기본 엔진으로 채택했다. CEO Satya Nadella는 Microsoft가 Anthropic에 $5B를 투자했음에도 Anthropic의 Fable을 공개적으로 \"편집 통제를 받는다\"고 평했으며(2026-07-18), MAI-Thinking-1은 최초로 \"처음부터 자체 개발한\" 추론 모델로서 Microsoft Foundry에 출시됐다(2026-08-13).",
           "file": "wiki-translations/ko/entities/microsoft.md",
           "source_file": "research/wiki/entities/microsoft.md",
-          "source_sha256": "f2a4920a53aadb6c9c4e35ce1b8fcc35c8251ac739a29c7023222f67399f31bb"
+          "source_sha256": "f2a4920a53aadb6c9c4e35ce1b8fcc35c8251ac739a29c7023222f67399f31bb",
+          "stale": true
         }
       }
     },
@@ -3305,11 +3316,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.",
-      "description": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.",
+      "summary": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.",
+      "description": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-08-18",
-      "timestamp": "2026-08-18T00:00:00Z",
+      "updated_at": "2026-08-21",
+      "timestamp": "2026-08-21T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -3338,6 +3349,7 @@
         "nebius",
         "neocloud",
         "openai",
+        "poolside",
         "safe-superintelligence",
         "salesforce"
       ],
@@ -3359,6 +3371,7 @@
         "model-specific-silicon",
         "open-weights",
         "openai",
+        "poolside",
         "safe-superintelligence",
         "sk-hynix",
         "taalas",
@@ -3409,7 +3422,8 @@
               "credit": "Charbax / Wikimedia Commons (CC BY 3.0)",
               "source_url": "https://commons.wikimedia.org/wiki/File:Nvidia_DGX_Station,_world%27s_most_powerful_desktop,_a_Supercomputer_at_the_office.webm"
             }
-          ]
+          ],
+          "stale": true
         }
       }
     },
@@ -3653,6 +3667,7 @@
         "ai-capex",
         "deepseek",
         "fireworks-ai",
+        "meta",
         "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
@@ -3741,6 +3756,33 @@
         "symbol": "NASDAQ:PLTR",
         "provider": "yahoo"
       }
+    },
+    {
+      "slug": "poolside",
+      "title": "Poolside",
+      "type": "entity",
+      "tags": [
+        "model-development",
+        "ai-software",
+        "frontier-lab",
+        "nvidia"
+      ],
+      "summary": "AI software company focused on model-development technology that NVIDIA licensed for $6B (non-exclusive) alongside a $1B investment at a $12B pre-money valuation and job offers to 109 staff on 2026-08-21 — structured to avoid a reviewable change of control.",
+      "description": "AI software company focused on model-development technology that NVIDIA licensed for $6B (non-exclusive) alongside a $1B investment at a $12B pre-money valuation and job offers to 109 staff on 2026-08-21 — structured to avoid a reviewable change of control.",
+      "created_at": "2026-08-21",
+      "updated_at": "2026-08-21",
+      "timestamp": "2026-08-21T00:00:00Z",
+      "file": "entities/poolside.md",
+      "aliases": [
+        "Poolside",
+        "@poolside"
+      ],
+      "outbound": [
+        "nvidia"
+      ],
+      "inbound": [
+        "nvidia"
+      ]
     },
     {
       "slug": "prometheus",
@@ -4443,11 +4485,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) on 2026-08-19, with Grok 4.7 \"a major upgrade\" and \"coming soon\" — while still suing users over Grok-generated CSAM rather than addressing the underlying capability.",
-      "description": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) on 2026-08-19, with Grok 4.7 \"a major upgrade\" and \"coming soon\" — while still suing users over Grok-generated CSAM rather than addressing the underlying capability.",
+      "summary": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) and now tied",
+      "description": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) and now tied",
       "created_at": "2026-06-08",
-      "updated_at": "2026-08-19",
-      "timestamp": "2026-08-19T00:00:00Z",
+      "updated_at": "2026-08-21",
+      "timestamp": "2026-08-21T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -4491,7 +4533,8 @@
           "description": "Grok을 개발한 일론 머스크의 프런티어 연구소. 2026-08-13에 Grok 4.6을 Cursor와 Grok Build에 투입해 가격을 Mtok당 $2/$6로 책정하고 Artificial Analysis Intelligence Index에서 61을 기록했으며, 2026-08-19 MedAgentBench에서 최고점(~95.9% pass@1)을 기록한 것으로 보도됐다. Grok 4.7은 \"a major upgrade\"이자 \"coming soon\"으로 예고됐다. 한편 근본적인 역량 문제를 해결하는 대신 Grok이 생성한 CSAM을 두고 사용자를 고소하고 있다.",
           "file": "wiki-translations/ko/entities/xai.md",
           "source_file": "research/wiki/entities/xai.md",
-          "source_sha256": "0d28f9ef54a90cb8d5f9514549c772d2e285dd93929d011f80a3bef6d70399a7"
+          "source_sha256": "0d28f9ef54a90cb8d5f9514549c772d2e285dd93929d011f80a3bef6d70399a7",
+          "stale": true
         }
       }
     },
@@ -4635,11 +4678,11 @@
         "agentic",
         "frontier-model"
       ],
-      "summary": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5; weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.",
-      "description": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5; weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.",
+      "summary": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — and now scoring near Fable 5 on Terminal-Bench 3.0 as a fourth independent frontier placement (2026-08-21); weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.",
+      "description": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — and now scoring near Fable 5 on Terminal-Bench 3.0 as a fourth independent frontier placement (2026-08-21); weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.",
       "created_at": "2026-08-19",
-      "updated_at": "2026-08-20",
-      "timestamp": "2026-08-20T00:00:00Z",
+      "updated_at": "2026-08-21",
+      "timestamp": "2026-08-21T00:00:00Z",
       "file": "entities/zhipu-glm-5-3.md",
       "aliases": [
         "Zhipu GLM 5.3",
@@ -4648,6 +4691,7 @@
         "Z.ai GLM-5.3"
       ],
       "outbound": [
+        "claude-fable-5",
         "claude-opus-5",
         "moonshot-kimi-k3",
         "open-weights",
@@ -4671,6 +4715,7 @@
     "@nvidianewsroom": "nvidia",
     "@openai": "openai",
     "@openrouterai": "openrouter",
+    "@poolside": "poolside",
     "@spacex": "spacex",
     "@xai": "xai",
     "a 9317": "california-ai-regulation",
@@ -5018,6 +5063,7 @@
     "parallel subagents": "dynamic-workflows",
     "pcc": "apple",
     "pltr": "palantir",
+    "poolside": "poolside",
     "private cloud compute": "apple",
     "project polaris": "microsoft",
     "prometheus": "prometheus",
@@ -5125,6 +5171,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-08-21",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-21 digest (a full model-synthesis run; model timeline recorded no ticket changes on 2026-08-20, so the digest was the sole major input). Created 1 (poolside — AI-software company whose model-development technology NVIDIA licensed for $6B alongside a $1B investment at a $12B pre-money valuation, structured to avoid a reviewable change of control). Updated 8 (nvidia — the Poolside licence/investment; anthropic — IPO prospectus preparation (public filing reported as early as end-August, confidential S-1 in June) + computer use/browser tool/Skills API/Files API to GA on the Claude Platform; xai — Grok 4.6 model-card diff restating four evals and deleting the Vals Index, wider Grok Build rollout and a Grok 4.6 (High) Agentic Index tie with Claude Opus 5; zhipu-glm-5-3 — a fourth independent frontier placement, near Fable 5 on Terminal-Bench 3.0 + ZCode v3.8.1 load-shifting; ai-capex — Texas halting ALL datacenter energization approvals against a ~474 GW ERCOT queue + Pennsylvania GRID EO, Alibaba's AI-capex-signature quarter, Micron's $250B+ US memory commitment, and Meta's hundreds-of-millions Azure AI spend; micron — $250B+ US advanced-memory manufacturing/R&D trailed; alibaba — the reported quarter (AI Cloud +45%, negative FCF); microsoft — Meta's Azure AI spend; meta — the same Azure spend + a competing multi-model API). Also cross-linked poolside ↔ nvidia and updated index.md."
+    },
+    {
       "date": "2026-08-20",
       "op": "ingest",
       "summary": "Ingested the 2026-08-20 digest + 2026-08-19-updated model tickets (protein binders, cerebras cs-4, GLM-5.3, qwen3.8-27b, etched funding, claude code /design, claude fable 5.1, anthropic IPO, openai RL-pause). Created 3 (fractile — Bloomberg-confirmed Anthropic inference-chip supplier, first named-outlet confirmation that Anthropic buys startup silicon, in talks >6× its May valuation; unitree — Shanghai debut +629%, the first mainland humanoid-robot listing pricing the category near $54B on 73.6% research/education revenue; ornith-1-5 — MIT open 9B/35B/397B family claiming Opus 4.8-class scores from self-writing-RL training, every number self-reported with no independent eval and an amplification-cluster caveat), updated 9 (openrouter — Stripe acquisition first-party confirmed by a board member and company blog at $7.5B–$8B+ with a 4.5-quadrillion-token run-rate claim; anthropic — Claude-designed protein binders (14/15 targets, 26.8% across 1,320 designs) with the orchestration-rather-than-design rebuttal, Fractile chip supply, and supervoting shares for co-founders ahead of a possible September IPO; openai — Q2 $6.7B revenue (+18%) against a widening $12.3B operating loss, Private Safety Processing preview for enterprise, ChatGPT for Teens going global, ads to 31 EU countries; qwen-3-8-max — 27B sibling consolidating as the cycle's dominant open-weights release with Unsloth Dynamic V3 GGUFs and Mollick disputing placement; google — revenue-linked equity warrant on Marvell ($206.58 strike, 240 tranches vs $500M custom-silicon purchases), MRVL +13%; federal-ai-policy — White House formally asks labs for voluntary 30-day pre-release model testing, labs still unsure which models qualify or how open weights are treated; open-weights — Ornith-1.5 family ship + the self-improving-agents fragility paper pairing + Lambert's recipe-is-the-Linux-analogue frame; sk-hynix — KRW 40T buyback-and-cancellation, the largest in Korean corporate history, funded from KRW 69T net cash; zhipu-glm-5-3 — post-training-depth thesis hardened, weights release delayed and the 743B-vs-753B base discrepancy unresolved; matrix-multiplication-exponent — reciprocal link from google fixed, delivering its first inbound link)."
@@ -5218,11 +5269,6 @@
       "date": "2026-07-27",
       "op": "ingest",
       "summary": "Ingested the 2026-07-27 digest (Anthropic isolated as the sole holdout on a cross-industry \"Open Weights and American AI Leadership\" letter after Google/AMD signed, drawing a \"gaslighting\" jab from David Sacks; DeepSeek pauses its second funding round after a leaked transcript has Liang Wenfeng acknowledging a real US compute/capability gap; Opus 5 tops a new intelligence benchmark; Altman reportedly plans a DC trip tied to the still-unresolved Hugging Face hack; Grok 4.6 (~2T) and a Cursor agent-swarm SQLite rebuild round out the cycle). Created 0, updated 8 (anthropic — sole open-weights-letter holdout + Sacks \"gaslighting\" + restrictive pre-IPO stock-sale policy weighed; open-weights theme — the letter as the \"dumping\"-fight's concrete escalation, near-total industry alignment minus Anthropic; claude-opus-5 — tops a new intelligence benchmark per The Decoder, surpassing Fable 5/GPT-5.6 Sol; deepseek — second funding round (~$74B target) detailed and paused after the leaked compute-gap admission; xai — Grok 4.6 (~2T, vs 1.5T Grok 4.5) named with a ~2-week timeline, expected to surpass Kimi K3; openai — Altman's reported DC trip to preview the next model, tied to the Hugging Face breach; cursor — agent swarm rebuilds SQLite in Rust from docs alone, 100% test-suite pass; sakana-ai — Claude Code-compatible interface for Fugu-Ultra v1.1). Skipped for budget (future ingest): individual arXiv Research Highlights (SANA-Video 2.0, OpenForgeRL, Beyond Sycophancy, Same Dangerous Objective), CXMT going public, the Debian AI-disclosure governance resolution, Etched's reconfirmed $10.3B valuation (already on the etched page)."
-    },
-    {
-      "date": "2026-07-26",
-      "op": "ingest",
-      "summary": "Ingested the 2026-07-26 digest — a thin cycle (RSS-only; no Twitter/HN/Reddit/arXiv/Bluesky artifacts had landed by digest time) dominated by continued Claude Opus 5 coverage. Created 1 (claude-opus-5 entity — Anthropic's 2026-07-25 frontier flagship, first wiki page for it since the digest that originally covered the launch was ingested from a stale fallback version without the story; pitched as near-Fable-5 performance at half the price, system card cites markedly improved prompt-injection resistance). Updated 4 (anthropic — Opus 5 launch + today's pricing/benchmark and prompt-injection follow-on coverage; claude-opus-4-8 — cross-linked to Opus 5 as the Opus line's continuation, open question on safeguard-reroute-floor succession; agentic-ai-security — further Decoder reporting on the OpenAI/Hugging Face incident's extent + Opus 5's prompt-injection defenses as a rare capability-side counterpoint; ai-capex — fallen-power-line TechCrunch story continuing the grid-strain thread tracked since 2026-07-23). Skipped: today's digest carried no other RSS items with independent wiki significance beyond the three stories above."
     }
   ]
 }
