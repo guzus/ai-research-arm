@@ -24902,5 +24902,33 @@
     "headline": "CODEX KEPT BURNING TOKENS PAST ZERO QUOTA \u2014 DEV LOGS AT LEAST $800 IN ONE LONG-RUNNING GOAL",
     "source": "@theo",
     "url": "https://x.com/theo/status/2090621019476427174"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-21 07:02:55 UTC",
+    "headline": "OX ALPHA HITS 80% ON 10-TASK DEEPSWE SUBSET \u2014 ABOVE FABLE AT 65% AND GPT-5.6 SOL AT 52%",
+    "source": "@davis7",
+    "url": "https://x.com/davis7/status/2090655207831298095"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-21 07:02:55 UTC",
+    "headline": "STEALTH MODEL OX ALPHA FINGERPRINTED AS Z.AI GLM \u2014 SAME TOKENIZER, VIDEO ENCODER AND AUDIO REJECTION",
+    "source": "@davis7",
+    "url": "https://x.com/davis7/status/2090669483740279155"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-21 07:02:55 UTC",
+    "headline": "OX ALPHA NOW ROUTABLE FREE IN HERMES AGENT VIA OPENCODE AND OPENROUTER AS 'STEALTH/OX-ALPHA'",
+    "source": "@Teknium",
+    "url": "https://x.com/Teknium/status/2090674052058984513"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-21 07:02:55 UTC",
+    "headline": "OX ALPHA OPERATOR'S 100T TOKENS/DAY CLAIM WOULD NEED ~580K GPU-EQUIVALENTS AT GLM-SCALE SERVING RATES",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2090657803002052786"
   }
 ]
