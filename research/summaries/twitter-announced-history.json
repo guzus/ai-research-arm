@@ -25007,5 +25007,40 @@
     "headline": "GOOGLE DEEPMIND PARTNERS WITH FENRIS CREATIONS ON PERSISTENT GAME WORLD AS AGENT TESTBED",
     "source": "@GoogleDeepMind",
     "url": "https://x.com/GoogleDeepMind/status/2090772922818286080"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-21 15:44:47 UTC",
+    "headline": "NVIDIA AVO AGENT SCORES 100% ON ARC-AGI-3 PUBLIC SET \u2014 ALL 183 LEVELS, 25 ENVIRONMENTS, NO INSTRUCTIONS",
+    "source": "@NVIDIAAI",
+    "url": "https://x.com/NVIDIAAI/status/2090786258981466231"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-21 15:44:47 UTC",
+    "headline": "ARC-AGI-3 SWEEP IS A HARNESS, NOT A MODEL \u2014 OPUS 5 SCORES ~30% ALONE, AVO SCAFFOLD NOT OPEN SOURCED",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2090813286853873957"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-21 15:44:47 UTC",
+    "headline": "OX ALPHA'S TOP DEMO RETRACTED BY ITS OWN AUTHOR \u2014 \"LITERALLY JUST A COPY OF AN EXISTING GITHUB REPO\"",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2090815757198246201"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-21 15:44:47 UTC",
+    "headline": "GRIFFIN: CITADEL HAS SHED 80% OF SITUATIONAL AWARENESS AI BOOK \u2014 ~100 BLOCK TRADES, ROUGHLY $4B",
+    "source": "@GavinSBaker",
+    "url": "https://x.com/GavinSBaker/status/2090817261476983199"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-21 15:44:47 UTC",
+    "headline": "STARCLOUD RAISES $250M AT $2.3B FOR ORBITAL COMPUTE \u2014 NVIDIA AND CISCO INVESTMENTS JOIN THE ROUND",
+    "source": "@PhilipJohnston",
+    "url": "https://x.com/PhilipJohnston/status/2090816398973178041"
   }
 ]
