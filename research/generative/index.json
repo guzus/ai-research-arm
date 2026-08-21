@@ -2544,5 +2544,23 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-layerggofficia",
+    "file": "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "GIWA Chain, Checked: What Upbit's New L2 Actually Opens",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-21T14:09:36Z",
+    "source": "workflow_dispatch",
+    "prompt": "Seed Twitter/X URL: https://x.com/layerggofficial/status/2090707595606794586. Start by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed",
+      "crypto",
+      "layer2",
+      "korea",
+      "upbit"
+    ]
   }
 ]
