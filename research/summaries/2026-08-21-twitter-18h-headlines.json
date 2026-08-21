@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "ANTHROPIC PUTS MYTHOS 5 BEHIND CLAUDE SECURITY — ENTERPRISE REPO SCANS WITH NO DIRECT PROMPT ACCESS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2090857159198474487",
+    "category": "model"
+  },
+  {
+    "headline": "NVIDIA IN TALKS TO BACK MERCOR AT $20B VALUATION TO BUY DATA FOR ITS OPEN MODELS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2090869060493856971",
+    "category": "business"
+  },
+  {
+    "headline": "NVIDIA CONFIRMS CLOVERLEAF MINORITY STAKE AND DSX PARTNERSHIP FOR US DATA CENTER BUILDOUT",
+    "source": "@StocksWithJP",
+    "url": "https://x.com/StocksWithJP/status/2090867908037472416",
+    "category": "infra"
+  },
+  {
+    "headline": "MUSK OPENS GROK BOT TO WIDER ACCESS AS CHANNELS FEATURE SHIPS SAME DAY",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2090853842552578523",
+    "category": "model"
+  },
+  {
+    "headline": "OX ALPHA DASHBOARD: 93% OF INPUT TOKENS SERVED FROM CACHE ACROSS 2.6 TRILLION TOKENS, $0 SPEND",
+    "source": "@zeeshan_utd",
+    "url": "https://x.com/zeeshan_utd/status/2090874003942756716",
+    "category": "infra"
+  },
+  {
+    "headline": "LINUS TORVALDS USED AI TO CHASE INTEL XE KERNEL BUG — 24 DEBUG PATCHES, 18 BOOTS, ONE-LINE FIX",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2090842540870074806",
+    "category": "opensource"
+  }
+]
