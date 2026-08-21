@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-21 18:53:45 UTC
+
+CYCLE: Frontier capability ships as a product surface, and Nvidia's capital sweep reaches the data layer.
+
+TOP STORIES:
+• Anthropic reported to put Mythos 5 behind Claude Security — repo scans, no free prompting [⚠]
+• Nvidia in talks to back Mercor at $20B for training data; Cloverleaf stake confirmed [⚠]
+• Musk opens Grok Bot to wider access; channels feature ships same day [✓]
+• Ox Alpha reframed as a cache-economics trial: 93% of input tokens served from cache [⚠]
+
+WATCH: Whether @AnthropicAI posts first-party on Claude Security and names the model tier it calls.
+
+Full update on GitHub.
