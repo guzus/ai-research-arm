@@ -24930,5 +24930,40 @@
     "headline": "OX ALPHA OPERATOR'S 100T TOKENS/DAY CLAIM WOULD NEED ~580K GPU-EQUIVALENTS AT GLM-SCALE SERVING RATES",
     "source": "@teortaxesTex",
     "url": "https://x.com/teortaxesTex/status/2090657803002052786"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-21 09:48:40 UTC",
+    "headline": "DEEPSEEK SHIPS FIRST VISION MODEL: V4-FLASH-VISION-EXP LIVE ON API, MATCHES V4-FLASH ON TEXT",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2090738074724471203"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-21 09:48:40 UTC",
+    "headline": "DEEPSEEK VISION PRICED AT V4-FLASH TOKEN RATES \u2014 117-384 TOKENS PER IMAGE",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2090731115061317798"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-21 09:48:40 UTC",
+    "headline": "NVIDIA IN PRELIMINARY TALKS WITH KOREAN CHIPMAKER REBELLIONS; HUANG MET CEO AT SANTA CLARA HQ",
+    "source": "@AlphaWireNewsAi",
+    "url": "https://x.com/AlphaWireNewsAi/status/2090736776193437916"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-21 09:48:40 UTC",
+    "headline": "OX ALPHA AUTHORSHIP WOBBLES \u2014 LEAD EVALUATOR SAYS GROK IS POSSIBLE AFTER GLM CONSENSUS",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2090728716829671667"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-21 09:48:40 UTC",
+    "headline": "SLACK LAUNCHES SLACK CODE \u2014 CLAUDE CODE AND OTHER AI AGENTS IN SHARED CHANNELS, ALL PLANS",
+    "source": "@techpp",
+    "url": "https://x.com/techpp/status/2090733185994760209"
   }
 ]
