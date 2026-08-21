@@ -2,7 +2,7 @@
   "benchmark": "GPQA diamond",
   "benchmarks_available": {
     "Chess Puzzles": 85,
-    "EBR-bench": 18,
+    "EBR-bench": 19,
     "FrontierMath-2025-02-28-Private": 69,
     "FrontierMath-2025-02-28-Public": 64,
     "FrontierMath-Tier-4-2025-07-01-Private": 55,
@@ -33,7 +33,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-08-21T15:57:57Z",
+  "generated_at": "2026-08-21T21:45:55Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -88,7 +88,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-20T21:52:29Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-21T04:08:55Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-21T10:03:16Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-21T15:57:57Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-21T15:57:57Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-21T21:45:55Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -110,7 +111,7 @@
         {
           "key": "gpt5.6sol",
           "name": "GPT-5.6 Sol",
-          "output_usd_per_mtok": 15.0,
+          "output_usd_per_mtok": 10.0,
           "pareto": true,
           "score": 0.64,
           "stderr": 0.048241815132442176,
@@ -138,7 +139,7 @@
           "key": "gpt5.6terra",
           "name": "GPT-5.6 Terra",
           "output_usd_per_mtok": 12.0,
-          "pareto": true,
+          "pareto": false,
           "score": 0.54,
           "stderr": 0.05009082659620331,
           "vendor": "openai"
@@ -1547,7 +1548,7 @@
         {
           "key": "gpt5.6sol",
           "name": "GPT-5.6 Sol",
-          "output_usd_per_mtok": 15.0,
+          "output_usd_per_mtok": 10.0,
           "pareto": true,
           "score": 1.0,
           "stderr": 0.0,
@@ -1584,7 +1585,7 @@
           "key": "gpt5.6terra",
           "name": "GPT-5.6 Terra",
           "output_usd_per_mtok": 12.0,
-          "pareto": true,
+          "pareto": false,
           "score": 0.9972222222222222,
           "stderr": 0.002777777777777778,
           "vendor": "openai"
@@ -2341,7 +2342,7 @@
         {
           "key": "gpt5.6sol",
           "name": "GPT-5.6 Sol",
-          "output_usd_per_mtok": 15.0,
+          "output_usd_per_mtok": 10.0,
           "pareto": true,
           "score": 0.716,
           "stderr": 0.01426700906103124,
@@ -2835,7 +2836,7 @@
         }
       ]
     },
-    "as_of": "2026-08-21T15:57:57Z",
+    "as_of": "2026-08-21T21:45:55Z",
     "counts": {
       "pareto": 6,
       "plotted": 91,
@@ -2978,14 +2979,14 @@
         "vendor": "anthropic"
       },
       {
-        "blended_usd_per_mtok": 5.625,
+        "blended_usd_per_mtok": 4.0,
         "context_length": 1050000,
         "epoch_model": "GPT-5.6 Sol",
-        "input_usd_per_mtok": 2.5,
+        "input_usd_per_mtok": 2.0,
         "key": "gpt5.6sol",
         "name": "GPT-5.6 Sol",
         "openrouter_id": "openai/gpt-5.6-sol",
-        "output_usd_per_mtok": 15.0,
+        "output_usd_per_mtok": 10.0,
         "pareto": false,
         "price_variant": null,
         "runs": 3,
@@ -4779,6 +4780,13 @@
         "vendor": "bytedance"
       },
       {
+        "input_usd_per_mtok": 0.075,
+        "key": "mistralsmall3.224b",
+        "name": "Mistral Small 3.2 24B",
+        "output_usd_per_mtok": 0.2,
+        "vendor": "mistralai"
+      },
+      {
         "input_usd_per_mtok": 0.1,
         "key": "rekaflash3",
         "name": "Reka Flash 3",
@@ -4812,13 +4820,6 @@
         "name": "Nova Lite 1.0",
         "output_usd_per_mtok": 0.24,
         "vendor": "amazon"
-      },
-      {
-        "input_usd_per_mtok": 0.09375,
-        "key": "mistralsmall3.224b",
-        "name": "Mistral Small 3.2 24B",
-        "output_usd_per_mtok": 0.25,
-        "vendor": "mistralai"
       },
       {
         "input_usd_per_mtok": 0.14,
@@ -5970,10 +5971,24 @@
       },
       {
         "input_usd_per_mtok": 2.0,
+        "key": "gpt5.6solpro",
+        "name": "GPT-5.6 Sol Pro",
+        "output_usd_per_mtok": 10.0,
+        "vendor": "openai"
+      },
+      {
+        "input_usd_per_mtok": 2.0,
         "key": "anthropicclaudesonnetlatest",
         "name": "Anthropic Claude Sonnet Latest",
         "output_usd_per_mtok": 10.0,
         "vendor": "~anthropic"
+      },
+      {
+        "input_usd_per_mtok": 2.0,
+        "key": "openaigptlatest",
+        "name": "OpenAI GPT Latest",
+        "output_usd_per_mtok": 10.0,
+        "vendor": "~openai"
       },
       {
         "input_usd_per_mtok": 2.5,
@@ -6093,20 +6108,6 @@
         "name": "GPT-5.2 Chat",
         "output_usd_per_mtok": 14.0,
         "vendor": "openai"
-      },
-      {
-        "input_usd_per_mtok": 2.5,
-        "key": "gpt5.6solpro",
-        "name": "GPT-5.6 Sol Pro",
-        "output_usd_per_mtok": 15.0,
-        "vendor": "openai"
-      },
-      {
-        "input_usd_per_mtok": 2.5,
-        "key": "openaigptlatest",
-        "name": "OpenAI GPT Latest",
-        "output_usd_per_mtok": 15.0,
-        "vendor": "~openai"
       },
       {
         "input_usd_per_mtok": 8.0,
