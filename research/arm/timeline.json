@@ -1,22 +1,9 @@
 {
-  "generatedAt": "2026-08-21T07:39:06.014Z",
-  "windowStart": "2026-08-19T19:00:00.000Z",
-  "windowEnd": "2026-08-22T20:00:00.000Z",
+  "generatedAt": "2026-08-21T09:19:17.213Z",
+  "windowStart": "2026-08-19T21:00:00.000Z",
+  "windowEnd": "2026-08-22T22:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-0874039eea20",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-08-19 21:03 UTC (#2677)",
-      "status": "completed",
-      "start": "2026-08-19T21:03:00.000Z",
-      "end": "2026-08-19T21:04:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "0874039eea20",
-      "url": "https://github.com/guzus/ai-research-arm/commit/0874039eea20b8134856aba16218b3d387183b5e"
-    },
     {
       "id": "commit-e4bc9f7d3729",
       "kind": "completed",
@@ -746,64 +733,30 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/36601776431728a33e0613b2065bd10153053f4f"
     },
     {
-      "id": "scheduled-4h-community-yml-19---4-------2026-08-21T08-19-00-000Z",
-      "kind": "scheduled",
-      "lane": "Community",
-      "title": "Community AI Digest (HN + Reddit)",
-      "status": "scheduled",
-      "start": "2026-08-21T08:19:00.000Z",
-      "end": "2026-08-21T09:19:00.000Z",
-      "source": "cron 19 */4 * * *"
+      "id": "commit-efb4270b5618",
+      "kind": "completed",
+      "lane": "Models",
+      "title": "Model release tickets",
+      "status": "completed",
+      "start": "2026-08-21T07:19:00.000Z",
+      "end": "2026-08-21T07:34:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "efb4270b5618",
+      "url": "https://github.com/guzus/ai-research-arm/commit/efb4270b5618b74b44919dd4fafd5c4abd4144b1"
     },
     {
-      "id": "scheduled-ai-news-research-yml-23-8-20-------2026-08-21T08-23-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "AI News Research Agent",
-      "status": "scheduled",
-      "start": "2026-08-21T08:23:00.000Z",
-      "end": "2026-08-21T08:53:00.000Z",
-      "source": "cron 23 8,20 * * *"
-    },
-    {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-08-21T08-30-00-000Z",
-      "kind": "scheduled",
-      "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-08-21T08:30:00.000Z",
-      "end": "2026-08-21T08:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-08-21T08-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-08-21T08:45:00.000Z",
-      "end": "2026-08-21T09:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-08-21T08-47-00-000Z",
-      "kind": "scheduled",
-      "lane": "Blogs",
-      "title": "Naver Blog Subscriptions",
-      "status": "scheduled",
-      "start": "2026-08-21T08:47:00.000Z",
-      "end": "2026-08-21T09:17:00.000Z",
-      "source": "cron 47 */2 * * *"
-    },
-    {
-      "id": "scheduled-hourly-twitter-yml-7---3-------2026-08-21T09-07-00-000Z",
-      "kind": "scheduled",
-      "lane": "Twitter/X",
-      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash / cursor-grok-4p6-fast)",
-      "status": "scheduled",
-      "start": "2026-08-21T09:07:00.000Z",
-      "end": "2026-08-21T10:07:00.000Z",
-      "source": "cron 7 */3 * * *"
+      "id": "commit-95366f887b7a",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-08-21 07:39 UTC (#2797)",
+      "status": "completed",
+      "start": "2026-08-21T07:39:00.000Z",
+      "end": "2026-08-21T07:40:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "95366f887b7a",
+      "url": "https://github.com/guzus/ai-research-arm/commit/95366f887b7a4d2d278c985c7c4ece8c8cf24470"
     },
     {
       "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-08-21T09-26-00-000Z",
@@ -1964,6 +1917,66 @@
       "start": "2026-08-22T18:53:00.000Z",
       "end": "2026-08-22T19:23:00.000Z",
       "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-4h-community-yml-19---4-------2026-08-22T20-19-00-000Z",
+      "kind": "scheduled",
+      "lane": "Community",
+      "title": "Community AI Digest (HN + Reddit)",
+      "status": "scheduled",
+      "start": "2026-08-22T20:19:00.000Z",
+      "end": "2026-08-22T21:19:00.000Z",
+      "source": "cron 19 */4 * * *"
+    },
+    {
+      "id": "scheduled-ai-news-research-yml-23-8-20-------2026-08-22T20-23-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "AI News Research Agent",
+      "status": "scheduled",
+      "start": "2026-08-22T20:23:00.000Z",
+      "end": "2026-08-22T20:53:00.000Z",
+      "source": "cron 23 8,20 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-08-22T20-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-08-22T20:30:00.000Z",
+      "end": "2026-08-22T20:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-08-22T20-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-08-22T20:45:00.000Z",
+      "end": "2026-08-22T21:15:00.000Z",
+      "source": "cron 45 */2 * * *"
+    },
+    {
+      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-08-22T20-47-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Naver Blog Subscriptions",
+      "status": "scheduled",
+      "start": "2026-08-22T20:47:00.000Z",
+      "end": "2026-08-22T21:17:00.000Z",
+      "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-7---3-------2026-08-22T21-07-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash / cursor-grok-4p6-fast)",
+      "status": "scheduled",
+      "start": "2026-08-22T21:07:00.000Z",
+      "end": "2026-08-22T22:07:00.000Z",
+      "source": "cron 7 */3 * * *"
     }
   ]
 }
