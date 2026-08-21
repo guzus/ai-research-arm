@@ -1,12 +1,15 @@
 AI News - 2026-08-21
 
 TOP STORIES:
-• Nvidia denies report it plans a China-specific AI inference chip (LPU) by year-end, after The Information said shipments were already being ordered
-• OpenAI previews "Private Safety Processing" — misuse detection without storing customer data, answering Anthropic's zero-retention pitch
-• Microsoft patches "CoSnitch": a one-click Copilot Personal flaw chain (CVE-2026-24301) that could exfiltrate connected-account data
+• Nvidia denies report of a China-specific AI inference chip by year-end
+• Binance launches "Agent OS," letting AI agents trade directly on the exchange via isolated sub-accounts
+• Bloomberg: Meta quietly became one of Microsoft Azure's largest AI customers
+• OpenAI previews "Private Safety Processing" for misuse detection w/o storing customer data
+• Microsoft patches "CoSnitch" one-click Copilot data-theft flaw (CVE-2026-24301)
 
 KEY NUMBERS:
-• Nvidia Q2 FY27 earnings due Aug 26, guided ~$91B revenue
+• Nvidia Q2 FY27 earnings due Aug 26
 • CoSnitch: 3 chained flaws, patched Aug 18, no known exploitation
+• Meta: reportedly trillions of AI tokens/week via Microsoft Foundry
 
 Full report on GitHub.
