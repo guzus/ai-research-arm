@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO, and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.
 created_at: 2026-05-24
-timestamp: 2026-08-20T00:00:00Z
+timestamp: 2026-08-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA model ticket — Anthropic protein-binder design", path: research/models/tickets/anthropic-protein-binder-design-2026-08.md}
   - {title: "ARA model ticket — Anthropic IPO", path: research/models/tickets/anthropic-ipo-2026-06.md}
@@ -1079,6 +1080,31 @@ Three developments landed together on 2026-08-10:
   [[openai]] on revenue for the first time** — the revenue-side counterpart to
   the valuation flip already tracked since the $965B Series H (ARA daily digest
   2026-08-20).
+
+## IPO prospectus preparation and computer use GA (2026-08-21)
+
+- **Anthropic prepares a public IPO prospectus; supervoting shares confirmed
+  (2026-08-21).** Reports attributed to Bloomberg (via relays) say a **public
+  IPO filing could come as soon as end-August 2026**, and that a **confidential
+  S-1 went in during June** — consistent with the confidential June 1 S-1 and the
+  September/early-October window this page already tracks. The Information
+  separately reported the **supervoting shares for Dario Amodei and co-founders**
+  first surfaced on 2026-08-19/20. Treat the end-August filing date as reported,
+  not established (Bloomberg via relays, The Information; ARA daily digest
+  2026-08-21).
+- **Computer use, the browser tool, the Skills API and the Files API go GA
+  (2026-08-21).** Anthropic moved **computer use**, the **browser tool**, the
+  **Skills API** and the **Files API** to GA on the Claude Platform. The **Skills
+  API versions a team procedure and pins requests to a `version_id`**; the
+  **Files API adds expiring uploads, 500 requests/minute (5×), and 1 TB per
+  organisation**. An **AG-UI adapter** shipped two hours earlier, and earlier the
+  same day Anthropic added **domain allowlists/blocklists for `web_search` and
+  `web_fetch`**, **memory persistence from Self-Hosted Sandboxes**, a rebuilt
+  **Console session viewer with per-thread dollar costs**, and a **"Concise"
+  output style for Claude Code v2.1.237**. Notable open question: the **perimeter
+  for a tool that drives arbitrary GUI software was not stated** (@ClaudeDevs;
+  ARA daily digest 2026-08-21). See [[dynamic-workflows]] and
+  [[agentic-ai-security]].
 
 ## Open questions
 - **Does the eval-breach disclosure produce consequences?** Two of three

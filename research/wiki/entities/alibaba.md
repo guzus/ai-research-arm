@@ -4,15 +4,16 @@ title: Alibaba
 type: entity
 aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, even as it continues fighting a US DoD PLA-linked designation.
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), even as it continues fighting a US DoD PLA-linked designation.
 created_at: 2026-07-05
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-08-21T00:00:00Z
 market:
   ticker: BABA
   exchange: NYSE
   symbol: NYSE:BABA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
@@ -139,8 +140,16 @@ friction point distinct from Qwen's own model-release cadence.
   sized to a single 8×B300 or 8×MI355X node, and a **27B sibling due Friday
   14 August** — the first Max-class Qwen ever released open. The model card
   confirms the open release is the **base of Alibaba's commercial flagship**,
-  with **vision, 1M default context and built-in tools withheld as the paid
-  layer**. See [[qwen-3-8-max]] and [[open-weights]] (ARA digest 2026-08-13).
+   with **vision, 1M default context and built-in tools withheld as the paid
+   layer**. See [[qwen-3-8-max]] and [[open-weights]] (ARA digest 2026-08-13).
+- **The reported quarter prints the AI-capex signature (2026-08-21).** Reported
+  results put **revenue at RMB 268.95B (+9% YoY)** with **AI Cloud and Compute
+  +45%**, **operating income −57%**, and **free cash flow negative RMB 44.67B**.
+  On the call, management said it **recoups AI investments within three years**,
+  trending toward 2.5 and targeting two, and cited **2018 V100s and 2020 A100s
+  still at full utilization** — an explicit bet that its AI capex pays back
+  faster than the market assumes — though **"payback" was never defined** (ARA
+  daily digest 2026-08-21). See [[ai-capex]].
 
 ## Open questions
 

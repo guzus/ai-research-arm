@@ -4,15 +4,16 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and frontier-model builder (Llama); returned to open weights with Muse Glimmer (2026-08-10, Apache 2.0) and a commitment to open-weight Muse Spark 1.2.
+description: Social-platform hyperscaler and frontier-model builder (Llama); returned to open weights with Muse Glimmer (2026-08-10, Apache 2.0) and a commitment to open-weight Muse Spark 1.2, with a reported hundreds-of-millions-a-year Azure AI spend and a competing multi-model API service under construction (2026-08-21).
 created_at: 2026-06-16
-timestamp: 2026-08-11T00:00:00Z
+timestamp: 2026-08-21T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
@@ -192,3 +193,16 @@ Two things matter for Meta specifically:
   [[open-weights]] letter fights, the manifesto hardens Meta's position as the
   loudest pro-open-weights US frontier voice, at odds with [[openai]] and
   [[anthropic]] (ARA daily digest 2026-08-11).
+
+## Meta's Azure AI spend, and a competing multi-model API (2026-08-21)
+
+Bloomberg reporting relayed into the timeline puts **Meta's Azure AI spend at
+hundreds of millions of dollars a year**, with **trillions of tokens weekly
+flowing through Azure Foundry — including OpenAI models used to grade Meta's
+own outputs**. Meta is separately said to be **building a competing multi-model
+API service** — the same multi-model routing posture as [[openrouter]]. The
+portrait is striking: a frontier rival ([[openai]]'s largest customer base via
+Azure) paying [[microsoft]] to host the [[openai|OpenAI]] models that grade
+Meta's own work, even as Meta builds the aggregation layer that could
+eventually route around OpenAI (Bloomberg via relay; ARA daily digest
+2026-08-21). See [[ai-capex]].
