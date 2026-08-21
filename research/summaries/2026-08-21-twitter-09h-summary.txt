@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-21 09:48:40 UTC
+
+CYCLE: DeepSeek gains vision at text-model prices; Nvidia circles Korean inference silicon; the Ox Alpha author call wobbles.
+
+TOP STORIES:
+- DeepSeek-V4-Flash-Vision-Exp live on the API: matches V4-Flash on text, 117-384 tokens per image at V4-Flash token prices, "close to Opus 4.8" multimodal [OK multi-source]
+- Nvidia reported in preliminary talks with Rebellions ($2.3B Korean inference chipmaker, backed by SK hynix/Samsung/Arm); Huang met CEO in Santa Clara [single-source]
+- Ox Alpha: lead evaluator concedes Grok is possible after the GLM consensus, then narrows to GLM 5.3-vision; still unclaimed at ~5,500 posts [single-source]
+
+WATCH: Whether DeepSeek says anything about open weights for V4-Flash-Vision-Exp, or a Hugging Face drop appears.
+
+Full update on GitHub.
