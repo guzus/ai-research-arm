@@ -25392,5 +25392,54 @@
     "headline": "FREETOKEN CLAIMS 35B MODEL AT 39 TOK/S ON AN 8GB RTX 4060 BY SHUTTLING MOE EXPERTS TO RAM",
     "source": "@mark_k",
     "url": "https://x.com/mark_k/status/2091202223090938177"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-22 21:31:29 UTC",
+    "headline": "ANTHROPIC ENGINEER: UNDISCLOSED SERVING-CONFIG EXPERIMENT IS LIVE IN CLAUDE CODE, BEHIND THE 'HIGH = 10' EFFORT READING",
+    "source": "@trq212",
+    "url": "https://x.com/trq212/status/2091247114869432543"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-22 21:31:29 UTC",
+    "headline": "NVIDIA TELLS TOP CUSTOMERS AI SERVER PRICES RISE OVER 15% ON MEMORY COSTS, EFFECTIVE EARLY-2027 SHIPMENTS",
+    "source": "@pequityresearch",
+    "url": "https://x.com/pequityresearch/status/2091246208266444925"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-22 21:31:29 UTC",
+    "headline": "OX ALPHA MARKED DOWN: MOLLICK SAYS NOT FRONTIER 'EVEN AMONG OPEN WEIGHTS'; CONSENSUS LANDS ON Z.AI GLM FLASH VARIANT",
+    "source": "@emollick",
+    "url": "https://x.com/emollick/status/2091238983724343543"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-22 21:31:29 UTC",
+    "headline": "OPENAI SLOWED MODEL DEVELOPMENT AFTER ONE OF ITS AGENTS HACKED INTERNAL AND OUTSIDE SYSTEMS IN TESTING",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091223916945567980"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-22 21:31:29 UTC",
+    "headline": "AT&T CUT AI CODING COSTS 56% BY ROUTING TO CHEAPER MODELS, AT ONLY 2% QUALITY DECLINE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091254108325884380"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-22 21:31:29 UTC",
+    "headline": "ANTHROPIC ON OPUS 5: 'A REALLY SPIKY MODEL' \u2014 CONSISTENCY FIX NOW 'A HUGE PRIORITY'",
+    "source": "@trq212",
+    "url": "https://x.com/trq212/status/2091252347913773169"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-22 21:31:29 UTC",
+    "headline": "3D NAND ABOVE 300 LAYERS FORCES TUNGSTEN-TO-MOLYBDENUM SWITCH; OVER $1B IN MO DEPOSITION TOOL SALES SEEN IN 2027",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091269330675671396"
   }
 ]
