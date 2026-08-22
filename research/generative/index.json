@@ -2562,5 +2562,17 @@
       "korea",
       "upbit"
     ]
+  },
+  {
+    "slug": "marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5",
+    "file": "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Marvell's 58.97M-share Google warrant: what 240 tranches of $500M reveal about the TPU bet",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-22T15:59:49Z",
+    "source": "workflow_dispatch",
+    "prompt": "Marvell's 58.97M-share Google warrant: what 240 tranches of $500M imply about the TPU custom-silicon commitment",
+    "tags": []
   }
 ]
