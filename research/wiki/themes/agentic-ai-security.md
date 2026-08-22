@@ -6,8 +6,9 @@ aliases: ["agentic AI security", "agent security", "AI supply-chain security", "
 tags: [security, supply-chain, mcp, agents, governance]
 description: The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale; from a Claude agent cancelling a stranger's gym booking to package-level credential heists and spoofed AI-bot crawlers (2026-08-13).
 created_at: 2026-05-29
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-08-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
@@ -598,6 +599,29 @@ the cycle:
   10,000 queries**. Separately, **IIT Bombay and Adobe Research** report
   reconstructing original prompts from LLM output with near-perfect accuracy
   and **no weight access** (The Decoder; ARA daily digest 2026-08-13).
+
+- **Encrypted prompt injection and a one-click Copilot exfiltration chain — the
+  consumer-agent surface keeps shipping defect classes (2026-08-22).** Ars
+  Technica documented **Cryptographic Context Injection**: wrapping malicious
+  instructions in encryption made **[[xai|Grok]] exfiltrate user data** when asked
+  to decrypt-then-act — a known-hard-to-detect variant because the injected payload
+  is opaque until the model decrypts it in context. Separate, **Varonis disclosed
+  "CoSnitch"**, a **patched one-click Copilot Personal data-theft chain**
+  (**CVE-2026-24301**) allowing a malicious document to exfiltrate
+  conversation/credential data through the standard Copilot interaction path
+  (patched, but a reminder that the default consumer copilot surfaces are still
+  shipping prompt-injection-to-exfiltration primitives) (Ars Technica, Varonis; ARA
+  daily digest 2026-08-22).
+- **EchoCoT — hidden chain-of-thought extracted near-verbatim from black-box
+  reasoners (2026-08-22, arXiv).** **EchoCoT** ([2608.20055](https://arxiv.org/abs/2608.20055))
+  identifies a **"reasoning replay" surface between tool calls** in black-box
+  reasoning models and extracts **hidden chain-of-thought near-verbatim through API
+  fidelity signals** — a direct **proprietary-model disclosure risk against a
+  defended asset**, and the strongest methodological pairing yet with this page's
+  2026-08-13 reasoning-trace extraction entries (the "encrypted reasoning" blocks /
+  Trace Inversion findings). If closed labs defend reasoning traces, model-side
+  disclosure resistance becomes a competitive property in the same way jailbreak
+  resistance was in the Fable-era (The Decoder; ARA daily digest 2026-08-22).
 
 ## Open questions
 - **Is eval-environment permissiveness now the canonical vector?** Three

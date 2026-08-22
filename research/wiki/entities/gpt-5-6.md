@@ -6,8 +6,9 @@ aliases: ["GPT-5.6", "GPT 5.6", "GPT-5.6 Pro", "GPT-5.6 Mini", "GPT-5.6 Sol", "G
 tags: [model-release, openai, gpt, frontier-model, government-gated, preview, cybersecurity]
 description: OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); GPT-5.6-Cyber shipped 2026-08-10 to vetted defenders behind the Daybreak Red approved-defender tier.
 created_at: 2026-06-20
-timestamp: 2026-08-11T00:00:00Z
+timestamp: 2026-08-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
@@ -196,6 +197,24 @@ Security, Patch the Planet) into an explicit approved-defender model tier — th
 gated-defender posture versus [[anthropic]]'s export-suspended Mythos line (see
 [[agentic-ai-security]] and [[federal-ai-policy]]) (OpenAI, The Decoder; ARA
 daily digest 2026-08-11).
+
+## Sol pricing cut over 20% — a first-party, time-boxed price move (2026-08-22)
+
+[[openai]] cut **GPT-5.6 Sol pricing by more than 20%**, announced first-party as a
+**three-month reduction** live on the API and **rolling out to ChatGPT Work and
+Codex credits**, while **Pro, Plus and Business subscription usage stays
+unchanged**. GitHub Copilot is **stacking a further 50% discount on top through 3
+September**. Notably, **no absolute per-million-token figures were published** —
+unusual for an OpenAI pricing announcement and a gap that makes the "over 20%"
+baseline hard to verify against the recorded $5/$30 Sol rate card above. Read
+against this page's history, the move is the mirror of the usage-cap interventions
+of mid-July: instead of managing demand on a capacity-constrained flagship, OpenAI
+is now explicitly discounting its frontier API tier for a fixed window — a
+trial-balloon pricing experiment rather than the structural repricing the Luna
+tiering (2026-08-07) was. The Copilot double-discount (stacking to ~60%+ total)
+suggests the cut is as much about competitive positioning against
+[[claude-fable-5|Fable 5]] rate cards and [[deepseek-v4-flash|V4-Flash]]-class
+cheap inference as about volume (OpenAI, @OpenAI; ARA daily digest 2026-08-22).
 
 ## Open questions
 

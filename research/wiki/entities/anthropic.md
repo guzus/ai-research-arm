@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.
 created_at: 2026-05-24
-timestamp: 2026-08-21T00:00:00Z
+timestamp: 2026-08-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA model ticket — Anthropic protein-binder design", path: research/models/tickets/anthropic-protein-binder-design-2026-08.md}
@@ -1105,6 +1106,36 @@ Three developments landed together on 2026-08-10:
   for a tool that drives arbitrary GUI software was not stated** (@ClaudeDevs;
   ARA daily digest 2026-08-21). See [[dynamic-workflows]] and
   [[agentic-ai-security]].
+
+## Claude Security behind an enterprise scanner; a TPU-executive hire; Ode's first acquisition (2026-08-22)
+
+- **Claude Security — Mythos 5's most cyber-capable build shipped behind an
+  enterprise scanner (2026-08-22).** Anthropic put **Claude Mythos 5** — its most
+  cyber-capable model — behind **Claude Security**, a scanner that **takes a
+  GitHub repository and returns findings with CWE severity, confidence, and
+  suggested patches**. Customers **cannot freely prompt the model from that
+  surface**, which is a deliberate capability-guardrail: the model's cyber reach is
+  exposed only through the scanner's structured output. It extends the gated-defender
+  lineage tracked since the [[claude-fable-5|Fable 5 / Mythos 5]] export-restoration
+  and parallels [[openai|OpenAI's]] [[gpt-5-6|GPT-5.6-Cyber]] Daybreak Red tier — the
+  two labs converging on the same "defenders-only, mediated surface" posture (The
+  Decoder, Anthropic via HN; ARA daily digest 2026-08-22). See [[agentic-ai-security]].
+- **Google's former TPU business chief joins the compute team — the own-silicon
+  push (2026-08-22).** Anthropic hired **Amir Salek**, **Google's former TPU
+  business chief**, into its compute team, which two accounts describe as a move
+  toward **its own silicon**. It is the highest-profile hire yet on the compute-hardware
+  axis this page has tracked (Samsung chip talks July 3, AMD evaluation July 21,
+  Fractile supply August 20) and matters because **Anthropic is the frontier lab most
+  exposed to other companies' accelerator roadmaps** — the direct logic for why it keeps
+  hedging across vendors and now insources them. Neither Anthropic nor Salek has
+  confirmed first-party; treat as reported (The Decoder, @AndrewCurran_, @techsnif; ARA
+  daily digest 2026-08-22).
+- **Ode makes its first acquisition — Casper Studios (2026-08-22).** Anthropic's
+  **Ode** (its enterprise agentic-solutions arm) bought **Casper Studios** to
+  build enterprise AI solutions faster for client-specific workflows — the first
+  acquisition for the unit since its launch. Small by disclosed terms, but a signal
+  that Ode is consolidating delivery capability rather than only reselling Claude
+  (The Information; ARA daily digest 2026-08-22).
 
 ## Open questions
 - **Does the eval-breach disclosure produce consequences?** Two of three

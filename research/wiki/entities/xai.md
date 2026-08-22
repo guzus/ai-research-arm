@@ -6,8 +6,9 @@ aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok B
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
 description: Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) and now tied #1 with Claude Opus 5 on an agentic index (2026-08-21), while still suing users over Grok-generated CSAM rather than addressing the underlying capability and facing a model-card diff restating four eval results in a flattering direction.
 created_at: 2026-06-08
-timestamp: 2026-08-21T00:00:00Z
+timestamp: 2026-08-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -226,6 +227,17 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   Analysis's Agentic Index at 59, level with [[claude-opus-5|Claude Opus 5]]**,
   was retweeted by Elon Musk. TechCrunch separately reported **Grok sending
   gibberish responses to Grok Lite users** (ARA daily digest 2026-08-21).
+
+- **Grok Bot widens, Grok Build 1.0.8, and Grok 4.6 lands on Google Vertex
+  (2026-08-22).** Three incremental distribution moves over one day: **Grok Bot**
+  (the persistent cloud-agent product) moved to **wider access — later clarified as
+  SuperGrok Plus, Cursor Pro+ and Cursor Teams, not general availability**; **Grok
+  Build 1.0.8** shipped with **faster non-blocking subagents**; and **Grok 4.6
+  landed on Google Vertex AI**, its first hyperscaler-cloud presence since the
+  Cursor/Grok Build launch surfaces of 2026-08-13. Vertex availability is the
+  distribution-relevant part: it puts the 2T model in front of enterprise/regulated
+  buyers without going through Google's own Gemini branding (ARA daily digest
+  2026-08-22).
 
 ## Open questions
 

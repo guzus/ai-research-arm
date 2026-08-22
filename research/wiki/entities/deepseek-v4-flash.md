@@ -6,8 +6,9 @@ aliases: ["V4-Flash", "V4-Flash-0731", "DeepSeek-V4-Flash", "DeepSeek V4-Flash-0
 tags: [frontier-model, open-weights, chinese-llm, moe, agentic-coding, mit-license]
 description: DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.
 created_at: 2026-08-01
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-08-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
   - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
@@ -154,6 +155,24 @@ on Hugging Face hours later, with a technical report.
   lab's own larger flagship, the "cheap fast-tier model beating the flagship"
   pattern flagged on day four (ARA digest 2026-08-13).
 
+## V4-Flash-Vision-Exp — DeepSeek's first image-capable model (2026-08-22)
+
+[[deepseek|DeepSeek]] shipped **`V4-Flash-Vision-Exp`**, its **first image-capable
+model**, live on its API with **mixed text-plus-image input** across Chat
+Completions, Messages and Responses — at **V4-Flash token prices** (reported **CNY
+3/9 per million input/output at peak, halved off-peak**), with **images billed at
+117–384 tokens each**, an **unchanged 2,500 request concurrency**, and a **free
+Files API for image reuse**. Three qualifications matter for how this reads. First,
+**the vendor's own wording is performance "close to Opus 4.8"** — amplifiers
+escalated that to "outperforms" within the hour, and **no independent benchmark run
+exists**. Second, **nothing has been said about open weights** — the load-bearing
+omission for this lab, whose MIT release of the base V4-Flash was what made it a
+frontier event. Third, the **"exp" suffix historically marks a pipeline validation
+rather than a flagship** on DeepSeek's release ladder. It was the day's top Hacker
+News AI thread (414 points, 136 comments), weighing pricing and capability against
+the family's cost-performance reputation (The Decoder, DeepSeek API announcement,
+@teortaxesTex hands-on; ARA daily digest 2026-08-22).
+
 ## Context
 
 The release lands days after [[moonshot-kimi-k3|Kimi K3]] open-sourced 2.8T
@@ -172,4 +191,7 @@ prices that assume enormous served volume.
 - **Do the vendor benchmarks reproduce?** Terminal-Bench 2.1 82.7 and Cybergym
   76.7 are vendor-cited; independent reproduction has not landed.
 - **When does vision ship?** Deferred to 4.1, leaving V4-Flash text-only while
-  competing open models are multimodal.
+  competing open models are multimodal — **partially answered on 2026-08-22 by
+  V4-Flash-Vision-Exp**, DeepSeek's first image-capable model, but the "exp"
+  experimental suffix and its silent open-weights posture keep the question open
+  for the GA line.

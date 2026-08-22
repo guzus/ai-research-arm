@@ -6,8 +6,9 @@ aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 P
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
 description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — pivoting to commercialization toward AGI, and shipped V4 Pro's repriced card on 2026-08-18.
 created_at: 2026-06-04
-timestamp: 2026-08-18T00:00:00Z
+timestamp: 2026-08-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
@@ -207,6 +208,17 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   last week's). Treat the surge-style peak/off-peak scheme as the long-flagged
   pricing lever finally going live; see the earlier June surge-pricing entry
   above (ARA digest 2026-08-18).
+
+- **DeepSeek ships its first image-capable model — V4-Flash-Vision-Exp
+  (2026-08-22).** An experimental **vision-capable variant of
+  [[deepseek-v4-flash|V4-Flash]]** went live on the API at V4-Flash token prices
+  with mixed text-plus-image input, image billing of 117–384 tokens each, and a
+  free Files API for image reuse — the lab's **first multimodal model**, extending
+  the 2026-06-19 Vision launch (then V4-app only, image *understanding*) into the
+  V4-Flash line and the API surface. Nothing has been said about open weights, the
+  load-bearing omission for this lab; the vendor's "close to Opus 4.8" framing has
+  not been independently benchmarked. See [[deepseek-v4-flash]] (The Decoder; ARA
+  daily digest 2026-08-22).
 
 ## Open questions
 

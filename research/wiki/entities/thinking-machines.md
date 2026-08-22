@@ -6,8 +6,9 @@ aliases: ["Thinking Machines", "Thinking Machines Lab", Inkling, "Inkling-Small"
 tags: [frontier-lab, open-weights, multimodal, mira-murati]
 description: Mira Murati's AI lab; shipped Inkling on 2026-07-15, its first public model release — a 975B-parameter (41B active) open-weights multimodal MoE positioned against both Chinese open labs and closed US frontier players.
 created_at: 2026-07-17
-timestamp: 2026-08-01T00:00:00Z
+timestamp: 2026-08-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA model ticket — Thinking Machines Inkling-Small", path: research/models/tickets/thinking-machines-inkling-small-2026-07.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
@@ -52,6 +53,16 @@ account, corroborated within 15 minutes by @ns123abc and @kimmonismus.
   K3 claim is being measured. See [[open-weights]] and the
   [Inkling-Small ticket](../../models/tickets/thinking-machines-inkling-small-2026-07.md)
   (ARA daily digest 2026-08-01).
+
+- **Inkling and Inkling Small served free on OpenRouter — as a data-collection
+  exercise, not a price move (2026-08-22).** Both models are being served **free
+  on [[openrouter|OpenRouter]] inside agentic harnesses**, with the lab stating the
+  arrangement is **data collection on real-world agentic behaviour**, not a
+  promotional price cut. It is a notable play on the [[open-weights]] axis: rather
+  than charging for the strongest open multimodal model it has shipped, Thinking
+  Machines is transparently paying in free inference for telemetry on how open
+  models behave inside harnesses — and it doubles as a live-lab dataset play ahead
+  of follow-on releases (ARA daily digest 2026-08-22).
 
 ## Open questions
 
