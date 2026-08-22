@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-22 12:56:14 UTC
+
+CYCLE: Independent measurement finally reaches the Ox Alpha hype, and GLM-5.3 posts a hard kernel number.
+
+TOP STORIES:
+• Ox Alpha's first published controlled eval lands it mid-pack - below GPT-5.6 Luna and DeepSeek v4 Pro, and 551 API calls were needed for 87 answers [⚠]
+• GLM-5.3 hits 21.4x PyTorch baseline on KernelBench-Mega vs 11.1x for GLM-5.2, second only to Fable 5 [⚠]
+• Pichai says Gemini 3.7 Flash is Google's fastest-growing launch ever - with no number attached, nine days after a 50% price cut [⚠]
+
+WATCH: Whether a second evaluator publishes an Ox Alpha completion rate, separating an OpenRouter fault from the model itself.
+
+Full update on GitHub.
