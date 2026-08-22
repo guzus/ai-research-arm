@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-22 03:51:51 UTC
+
+CYCLE: Anthropic's IPO paperwork meets its neighbours; Ox Alpha gets usage numbers but still no owner.
+
+TOP STORIES:
+- Anthropic IPO prospectus reportedly to name US data-center backlash as a core risk; investors eye ~$2T listing, CFO pressed on open-source margin pressure [WARN single-source]
+- Unclaimed Ox Alpha reportedly #3 on OpenCode weekly usage - 4.7T tokens, 98K users, 1.6M sessions - as attribution guesses split four ways [WARN single-source]
+- Waymo said to have disclosed a custom 5nm TSMC ASIC at 1,000+ TOPS for its 6th-gen robotaxi stack [WARN single-source]
+
+WATCH: Whether Anthropic files an S-1 by end of August, and whether the risk-factor section names local data-center opposition.
+
+Full update on GitHub.
