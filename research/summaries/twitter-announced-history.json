@@ -25273,5 +25273,54 @@
     "headline": "SINCH STUDY: 74% OF FIRMS THAT DEPLOYED AI CUSTOMER-SERVICE AGENTS HAVE ROLLED BACK AT LEAST ONE",
     "source": "@ignatovichxbt",
     "url": "https://x.com/ignatovichxbt/status/2091096844092748037"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-22 12:56:14 UTC",
+    "headline": "OX ALPHA RANKS MID-PACK IN FIRST CONTROLLED EVAL \u2014 BELOW GPT-5.6 LUNA AND DEEPSEEK V4 PRO ON ICML REASONING BENCHMARK",
+    "source": "@s_batzoglou",
+    "url": "https://x.com/s_batzoglou/status/2091147248197406978"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-22 12:56:14 UTC",
+    "headline": "OX ALPHA EVAL NEEDED 551 API CALLS TO COLLECT 87 ANSWERS \u2014 EMPTY RESPONSES AND ERRORS THROUGHOUT",
+    "source": "@s_batzoglou",
+    "url": "https://x.com/s_batzoglou/status/2091147248197406978"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-22 12:56:14 UTC",
+    "headline": "GLM-5.3 HITS 21.4X PYTORCH BASELINE ON KERNELBENCH-MEGA VS 11.1X FOR GLM-5.2 \u2014 SECOND ONLY TO FABLE 5",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2091125950243033209"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-22 12:56:14 UTC",
+    "headline": "PICHAI: GEMINI 3.7 FLASH IS GOOGLE'S FASTEST-GROWING MODEL LAUNCH EVER \u2014 NO ADOPTION FIGURE DISCLOSED",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2091112833689805214"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-22 12:56:14 UTC",
+    "headline": "OPENAI AMERICAS SALES CHIEF KAYLIN VOSS RESIGNS FIVE MONTHS IN, ONE WEEK AFTER DENISE DRESSER",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2091130063366594687"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-22 12:56:14 UTC",
+    "headline": "UK CHIP STARTUP FRACTILE RAISING $600M AT $6.5B \u2014 6.5X STEP-UP FROM $1B MONTHS AGO",
+    "source": "@xampata",
+    "url": "https://x.com/xampata/status/2091144634588098783"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-22 12:56:14 UTC",
+    "headline": "HARVARD-STANFORD PAPER: LLM RETRIEVAL COSTS 1,431X AN EMBEDDING MODEL OF EQUAL QUALITY \u2014 $154.14 VS $0.11",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2091132022047830212"
   }
 ]
