@@ -33,7 +33,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-08-22T09:47:49Z",
+  "generated_at": "2026-08-22T15:41:32Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -91,7 +91,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-21T15:57:57Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-21T21:45:55Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-22T04:03:48Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-22T09:47:49Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-22T09:47:49Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-22T15:41:32Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -2838,7 +2839,7 @@
         }
       ]
     },
-    "as_of": "2026-08-22T09:47:49Z",
+    "as_of": "2026-08-22T15:41:32Z",
     "counts": {
       "pareto": 6,
       "plotted": 91,
@@ -4677,10 +4678,10 @@
         "vendor": "google"
       },
       {
-        "input_usd_per_mtok": 0.06846,
+        "input_usd_per_mtok": 0.06006,
         "key": "deepseekv4flash0423",
         "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.13692,
+        "output_usd_per_mtok": 0.12012,
         "vendor": "deepseek"
       },
       {
@@ -5125,6 +5126,13 @@
         "vendor": "undi95"
       },
       {
+        "input_usd_per_mtok": 0.22,
+        "key": "deepseekv4flashvisionexp",
+        "name": "DeepSeek V4 Flash Vision Exp",
+        "output_usd_per_mtok": 0.66,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.7,
         "key": "hermes370binstruct",
         "name": "Hermes 3 70B Instruct",
@@ -5181,6 +5189,13 @@
         "vendor": "deepseek"
       },
       {
+        "input_usd_per_mtok": 0.413772,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 0.827544,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.22,
         "key": "trinitylargethinking",
         "name": "Trinity Large Thinking",
@@ -5200,13 +5215,6 @@
         "name": "Llama 3.1 Euryale 70B v2.2",
         "output_usd_per_mtok": 0.85,
         "vendor": "sao10k"
-      },
-      {
-        "input_usd_per_mtok": 0.43065,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 0.8613,
-        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.435,
@@ -5424,13 +5432,6 @@
         "name": "ERNIE 4.5 VL 424B A47B",
         "output_usd_per_mtok": 1.25,
         "vendor": "baidu"
-      },
-      {
-        "input_usd_per_mtok": 0.44,
-        "key": "deepseekv4flashvisionexp",
-        "name": "DeepSeek V4 Flash Vision Exp",
-        "output_usd_per_mtok": 1.32,
-        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.7,
