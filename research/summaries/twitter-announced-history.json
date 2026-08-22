@@ -25350,5 +25350,47 @@
     "headline": "GLM 5.5 'BIG BOI' MODEL SAID TO DROP SEPTEMBER-OCTOBER AS OX ALPHA ATTRIBUTION STAYS ON Z.AI",
     "source": "@teortaxesTex",
     "url": "https://x.com/teortaxesTex/status/2091140638284603393"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-22 18:44:59 UTC",
+    "headline": "OPEN WEIGHTS TAKE 62% OF VERCEL AI GATEWAY TOKENS TODAY \u2014 UP FROM 28.4% ON JUNE 24",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2091234105702887879"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-22 18:44:59 UTC",
+    "headline": "SEMIANALYSIS PEGS B300 AT 7,368 OUTPUT TOKENS/SEC PER PROVISIONED MEGAWATT ON DEEPSEEK V4",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091208991271420076"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-22 18:44:59 UTC",
+    "headline": "HUMAN BRAIN STILL BEATS A B300 ON ENERGY \u2014 690 OUTPUT TOKENS PER KILOCALORIE VERSUS 30.8",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091208995407114595"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-22 18:44:59 UTC",
+    "headline": "META REPORTED TO HIRE LUKE METZ OUT OF OPENAI \u2014 HIS SECOND EXIT IN EIGHT MONTHS",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2091187232400900295"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-22 18:44:59 UTC",
+    "headline": "TWO UNRELEASED OPENAI IMAGE MODELS SURFACE AS 'MONA-LISA-1' AND 'LUNA-LISA-ALPHA'",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2091212198722822347"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-22 18:44:59 UTC",
+    "headline": "FREETOKEN CLAIMS 35B MODEL AT 39 TOK/S ON AN 8GB RTX 4060 BY SHUTTLING MOE EXPERTS TO RAM",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2091202223090938177"
   }
 ]
