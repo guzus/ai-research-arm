@@ -49,8 +49,8 @@
       "summary": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale; from a Claude agent cancelling a stranger's gym booking to package-level credential heists and spoofed AI-bot crawlers (2026-08-13).",
       "description": "The 2026 storyline of agentic AI systems — MCP servers, agent frameworks, and integrated runtimes — surfacing a new class of supply-chain and capability-misuse vulnerabilities at scale; from a Claude agent cancelling a stranger's gym booking to package-level credential heists and spoofed AI-bot crawlers (2026-08-13).",
       "created_at": "2026-05-29",
-      "updated_at": "2026-08-13",
-      "timestamp": "2026-08-13T00:00:00Z",
+      "updated_at": "2026-08-22",
+      "timestamp": "2026-08-22T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -95,6 +95,7 @@
         "gpt-6",
         "liquid-ai",
         "meta",
+        "nvidia",
         "open-weights",
         "openai",
         "sakana-ai",
@@ -457,8 +458,8 @@
       "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.",
       "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-21",
-      "timestamp": "2026-08-21T00:00:00Z",
+      "updated_at": "2026-08-22",
+      "timestamp": "2026-08-22T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -1299,8 +1300,8 @@
       "summary": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — pivoting to commercialization toward AGI, and shipped V4 Pro's repriced card on 2026-08-18.",
       "description": "Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — pivoting to commercialization toward AGI, and shipped V4 Pro's repriced card on 2026-08-18.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-08-18",
-      "timestamp": "2026-08-18T00:00:00Z",
+      "updated_at": "2026-08-22",
+      "timestamp": "2026-08-22T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -1354,7 +1355,8 @@
           "description": "항저우에 기반을 둔 중국의 프런티어 연구소. 2026-06-18 중국 AI 역사상 최대 규모인 첫 외부 투자 라운드(~$7.4B / ~50B위안, $50B+ 기업가치)를 마감했다. Tencent와 CATL의 의결권 없는 자금 및 유일한 의결권 투자자인 국영 AI 펀드를 유치하면서 창업자 지배력을 유지한 채 AGI를 향한 상용화로 전환했으며, 2026-08-18 V4 Pro의 새 가격표를 적용했다.",
           "file": "wiki-translations/ko/entities/deepseek.md",
           "source_file": "research/wiki/entities/deepseek.md",
-          "source_sha256": "50957db1f8e1b6554188254c35b6cc030da8ccf9c8922c70e1b21073a222e8ac"
+          "source_sha256": "50957db1f8e1b6554188254c35b6cc030da8ccf9c8922c70e1b21073a222e8ac",
+          "stale": true
         }
       }
     },
@@ -1373,8 +1375,8 @@
       "summary": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.",
       "description": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.",
       "created_at": "2026-08-01",
-      "updated_at": "2026-08-13",
-      "timestamp": "2026-08-13T00:00:00Z",
+      "updated_at": "2026-08-22",
+      "timestamp": "2026-08-22T00:00:00Z",
       "file": "entities/deepseek-v4-flash.md",
       "aliases": [
         "V4-Flash",
@@ -1399,6 +1401,7 @@
         "astra",
         "deepseek",
         "eu-ai-regulation",
+        "gpt-5-6",
         "moonshot-kimi-k3",
         "open-weights",
         "ornith-1-5",
@@ -1413,7 +1416,8 @@
           "description": "DeepSeek의 총 284B·활성 13B MoE 모델. 1M 컨텍스트를 지원하며 2026-07-31 Mtok당 $0.28/$0.87에 API 공개 베타를 시작했고, 몇 시간 뒤 MIT 라이선스 가중치를 공개했다. Artificial Analysis 점수는 50이며 작업당 비용에서 Claude Fable 5보다 105× 저렴하다고 전해졌다.",
           "file": "wiki-translations/ko/entities/deepseek-v4-flash.md",
           "source_file": "research/wiki/entities/deepseek-v4-flash.md",
-          "source_sha256": "2654b023d226c83bbdaff7f2a63f33f598856bd14ca2a835017db0867e45376c"
+          "source_sha256": "2654b023d226c83bbdaff7f2a63f33f598856bd14ca2a835017db0867e45376c",
+          "stale": true
         }
       }
     },
@@ -2150,8 +2154,8 @@
       "summary": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); GPT-5.6-Cyber shipped 2026-08-10 to vetted defenders behind the Daybreak Red approved-defender tier.",
       "description": "OpenAI frontier family — Sol (flagship) / Terra (balanced) / Luna (fast/cheap); GPT-5.6-Cyber shipped 2026-08-10 to vetted defenders behind the Daybreak Red approved-defender tier.",
       "created_at": "2026-06-20",
-      "updated_at": "2026-08-11",
-      "timestamp": "2026-08-11T00:00:00Z",
+      "updated_at": "2026-08-22",
+      "timestamp": "2026-08-22T00:00:00Z",
       "file": "entities/gpt-5-6.md",
       "aliases": [
         "GPT-5.6",
@@ -2171,6 +2175,7 @@
         "anthropic",
         "broadcom",
         "claude-fable-5",
+        "deepseek-v4-flash",
         "federal-ai-policy",
         "openai",
         "zhipu-glm-5-2"
@@ -2200,7 +2205,8 @@
           "description": "OpenAI의 프런티어 제품군. Sol(플래그십) / Terra(균형형) / Luna(고속·저가형)로 구성되며, GPT-5.6-Cyber는 Daybreak Red 승인 방어자 등급을 통해 검증된 방어자에게 2026-08-10 출시됐다.",
           "file": "wiki-translations/ko/entities/gpt-5-6.md",
           "source_file": "research/wiki/entities/gpt-5-6.md",
-          "source_sha256": "4667244e1a5ad859f15c8e06ecdbae7288b4ee57998d2c215231089181e5fec6"
+          "source_sha256": "4667244e1a5ad859f15c8e06ecdbae7288b4ee57998d2c215231089181e5fec6",
+          "stale": true
         }
       }
     },
@@ -3319,8 +3325,8 @@
       "summary": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.",
       "description": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-08-21",
-      "timestamp": "2026-08-21T00:00:00Z",
+      "updated_at": "2026-08-22",
+      "timestamp": "2026-08-22T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -3335,6 +3341,7 @@
         "Nemotron 3 Ultra"
       ],
       "outbound": [
+        "agentic-ai-security",
         "ai-capex",
         "amd",
         "anthropic",
@@ -3351,7 +3358,8 @@
         "openai",
         "poolside",
         "safe-superintelligence",
-        "salesforce"
+        "salesforce",
+        "verification-bottleneck"
       ],
       "inbound": [
         "ai-capex",
@@ -3543,8 +3551,8 @@
       "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; paused frontier RL training over \"various degrees of misalignment\" while shipping GPT-5.6-Cyber behind Daybreak Red.",
       "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; paused frontier RL training over \"various degrees of misalignment\" while shipping GPT-5.6-Cyber behind Daybreak Red.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-08-20",
-      "timestamp": "2026-08-20T00:00:00Z",
+      "updated_at": "2026-08-22",
+      "timestamp": "2026-08-22T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -3673,6 +3681,7 @@
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "sakana-ai",
+        "thinking-machines",
         "zhipu-glm-5-2"
       ],
       "translations": {
@@ -4331,8 +4340,8 @@
       "summary": "Mira Murati's AI lab; shipped Inkling on 2026-07-15, its first public model release — a 975B-parameter (41B active) open-weights multimodal MoE positioned against both Chinese open labs and closed US frontier players.",
       "description": "Mira Murati's AI lab; shipped Inkling on 2026-07-15, its first public model release — a 975B-parameter (41B active) open-weights multimodal MoE positioned against both Chinese open labs and closed US frontier players.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-08-01",
-      "timestamp": "2026-08-01T00:00:00Z",
+      "updated_at": "2026-08-22",
+      "timestamp": "2026-08-22T00:00:00Z",
       "file": "entities/thinking-machines.md",
       "aliases": [
         "Thinking Machines",
@@ -4349,6 +4358,7 @@
         "moonshot-kimi-k3",
         "open-weights",
         "openai",
+        "openrouter",
         "zhipu-glm-5-2"
       ],
       "inbound": [
@@ -4436,6 +4446,7 @@
         "matrix-multiplication-exponent",
         "mistral-leanstral-1-5",
         "muse-code",
+        "nvidia",
         "openai",
         "seedance-2-5"
       ]
@@ -4488,8 +4499,8 @@
       "summary": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) and now tied",
       "description": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) and now tied",
       "created_at": "2026-06-08",
-      "updated_at": "2026-08-21",
-      "timestamp": "2026-08-21T00:00:00Z",
+      "updated_at": "2026-08-22",
+      "timestamp": "2026-08-22T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -5171,6 +5182,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-08-22",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-22 digest (model timeline recorded no ticket changes on 2026-08-21, so the digest was the sole input). Created 0; updated 9 (gpt-5-6 — Sol pricing cut over 20%, first-party, time-boxed to three months, live on the API and rolling out to ChatGPT Work/Codex credits with GitHub Copilot stacking 50% until 3 Sep and no per-M figures published; deepseek-v4-flash — V4-Flash-Vision-Exp, DeepSeek's first image-capable model at V4-Flash token prices with 117–384-token image billing, free Files API, no open-weights statement, partially answering the vision open question; deepseek — the same Vision-Exp milestone at lab level; nvidia — the AVO harness clearing all 183 ARC-AGI-3 levels (harness-as-unit-of-capability) + equity positions in Cloverleaf Infrastructure, Starcloud's $250M orbital-compute round at $2.3B, reported Mercor talks at $20B, and preliminary Rebellions talks; anthropic — Claude Security putting Mythos 5 behind an enterprise GitHub-repo scanner, Amir Salek (Google's former TPU business chief) into the compute team for the own-silicon push, and Ode's first acquisition (Casper Studios); agentic-ai-security — Cryptographic Context Injection on Grok, the CoSnitch/CVE-2026-24301 one-click Copilot Personal exfiltration chain, and EchoCoT hidden-CoT extraction; xai — Grok Bot access widened (SuperGrok Plus / Cursor Pro+ / Cursor Teams), Grok Build 1.0.8, and Grok 4.6 on Google Vertex AI; thinking-machines — Inkling/Inkling Small served free on OpenRouter as a stated data-collection exercise; openai — Americas sales chief Kaylin Voss resigned five months in, a week after CRO Denise Dresser)."
+    },
+    {
       "date": "2026-08-21",
       "op": "ingest",
       "summary": "Ingested the 2026-08-21 digest (a full model-synthesis run; model timeline recorded no ticket changes on 2026-08-20, so the digest was the sole major input). Created 1 (poolside — AI-software company whose model-development technology NVIDIA licensed for $6B alongside a $1B investment at a $12B pre-money valuation, structured to avoid a reviewable change of control). Updated 8 (nvidia — the Poolside licence/investment; anthropic — IPO prospectus preparation (public filing reported as early as end-August, confidential S-1 in June) + computer use/browser tool/Skills API/Files API to GA on the Claude Platform; xai — Grok 4.6 model-card diff restating four evals and deleting the Vals Index, wider Grok Build rollout and a Grok 4.6 (High) Agentic Index tie with Claude Opus 5; zhipu-glm-5-3 — a fourth independent frontier placement, near Fable 5 on Terminal-Bench 3.0 + ZCode v3.8.1 load-shifting; ai-capex — Texas halting ALL datacenter energization approvals against a ~474 GW ERCOT queue + Pennsylvania GRID EO, Alibaba's AI-capex-signature quarter, Micron's $250B+ US memory commitment, and Meta's hundreds-of-millions Azure AI spend; micron — $250B+ US advanced-memory manufacturing/R&D trailed; alibaba — the reported quarter (AI Cloud +45%, negative FCF); microsoft — Meta's Azure AI spend; meta — the same Azure spend + a competing multi-model API). Also cross-linked poolside ↔ nvidia and updated index.md."
@@ -5264,11 +5280,6 @@
       "date": "2026-07-28",
       "op": "ingest",
       "summary": "Ingested the 2026-07-28 digest (Anthropic CEO Dario Amodei breaks silence on the open-weights standoff, rejecting a ban but asking for chip-export controls/anti-distillation rules/mandatory pre-release safety testing; Moonshot fully open-sources Kimi K3's weights on Hugging Face, dominating Hacker News, with The Decoder flagging cyber/math gaps \"possibly pointing to distillation\"; NVIDIA backs Ilya Sutskever's Safe Superintelligence at ~$5B/$32B post-money and is separately reported discussing a ~$250B OpenAI Ohio-datacenter financing backstop; NVIDIA's new Open Secure AI Alliance ships with OpenAI conspicuously absent; Grok 4.6/4.7 timeline extends one model further out). Created 2 (safe-superintelligence entity — Ilya Sutskever's stealth lab, NVIDIA's ~$5B backing + compute-partnership tenfold scale-up; gpt-6 entity — OpenAI's anticipated next flagship, reportedly previewed to US officials this week). Updated 6 (anthropic — Amodei's open-weights policy post, three conditions; moonshot-kimi-k3 — full open-weight release on Hugging Face, HN dominance, distillation-gap finding, resolves the \"hits July 27 date\" open question; nvidia — SSI investment + Ohio financing talks + Open Secure AI Alliance; openai — GPT-6 DC preview confirmed + Ohio financing talks + Open Secure AI Alliance snub; xai — Grok 4.7 now projected two weeks after Grok 4.6; open-weights theme — Amodei's conditional-support reframing landing directly against Kimi K3's full release). Skipped for budget (future ingest): CXMT's ~$487B Shanghai STAR Market IPO debut, the \"Do Agent Benchmarks Measure Capability?\" Mislead-gap research paper, METR's expenditure-horizon metric, AMD's warrant-deal SemiAnalysis analysis (compute-rebate framing)."
-    },
-    {
-      "date": "2026-07-27",
-      "op": "ingest",
-      "summary": "Ingested the 2026-07-27 digest (Anthropic isolated as the sole holdout on a cross-industry \"Open Weights and American AI Leadership\" letter after Google/AMD signed, drawing a \"gaslighting\" jab from David Sacks; DeepSeek pauses its second funding round after a leaked transcript has Liang Wenfeng acknowledging a real US compute/capability gap; Opus 5 tops a new intelligence benchmark; Altman reportedly plans a DC trip tied to the still-unresolved Hugging Face hack; Grok 4.6 (~2T) and a Cursor agent-swarm SQLite rebuild round out the cycle). Created 0, updated 8 (anthropic — sole open-weights-letter holdout + Sacks \"gaslighting\" + restrictive pre-IPO stock-sale policy weighed; open-weights theme — the letter as the \"dumping\"-fight's concrete escalation, near-total industry alignment minus Anthropic; claude-opus-5 — tops a new intelligence benchmark per The Decoder, surpassing Fable 5/GPT-5.6 Sol; deepseek — second funding round (~$74B target) detailed and paused after the leaked compute-gap admission; xai — Grok 4.6 (~2T, vs 1.5T Grok 4.5) named with a ~2-week timeline, expected to surpass Kimi K3; openai — Altman's reported DC trip to preview the next model, tied to the Hugging Face breach; cursor — agent swarm rebuilds SQLite in Rust from docs alone, 100% test-suite pass; sakana-ai — Claude Code-compatible interface for Fugu-Ultra v1.1). Skipped for budget (future ingest): individual arXiv Research Highlights (SANA-Video 2.0, OpenForgeRL, Beyond Sycophancy, Same Dangerous Objective), CXMT going public, the Debian AI-disclosure governance resolution, Etched's reconfirmed $10.3B valuation (already on the etched page)."
     }
   ]
 }

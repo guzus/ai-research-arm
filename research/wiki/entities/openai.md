@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; paused frontier RL training over "various degrees of misalignment" while shipping GPT-5.6-Cyber behind Daybreak Red.
 created_at: 2026-05-30
-timestamp: 2026-08-20T00:00:00Z
+timestamp: 2026-08-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
@@ -767,6 +768,20 @@ materially reshape how the lab is positioned heading into its IPO window:
   that has run alongside the [[agentic-ai-security]] disclosures — and the
   previously-reported **July dissolution of the Preparedness team** was
   confirmed by further press (ARA daily digest 2026-08-20).
+
+## Enterprise sales leadership empties out (2026-08-22)
+
+- **Americas sales chief out five months in; a week after the CRO (2026-08-22).**
+  The Information reports **Americas sales chief Kaylin Voss resigned about five
+  months into the role**, one week after **chief revenue officer Denise Dresser**
+  — an emptying of the enterprise-sales leadership layer inside a single week.
+  **(a)** it lands days after the Sol price cut (see [[gpt-5-6]]) that changes
+  the commercial terms the sales org is selling against; **(b)** it continues the
+  pre-IPO leadership churn this page has tracked (COO Brad Lightcap's departure on
+  2026-08-12, chief ethicist Chloé Bakalar's resignation the same day); and
+  **(c)** neither OpenAI, Voss nor Dresser has issued a first-party statement, so
+  the cause is unstated — treat the resignations as reported fact and the
+  interpretation as open (The Information via relays; ARA daily digest 2026-08-22).
 
 ## Open questions
 

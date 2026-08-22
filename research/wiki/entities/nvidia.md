@@ -6,13 +6,14 @@ aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "N
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.
 created_at: 2026-06-05
-timestamp: 2026-08-21T00:00:00Z
+timestamp: 2026-08-22T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -214,6 +215,42 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   change of control while effectively absorbing a team. The licensed technology
   was not disclosed, and the licence is **non-exclusive** (Newcomer via relays,
   investor letter; ARA daily digest 2026-08-21). See [[ai-capex]].
+
+## ARC-AGI-3 swept by a closed harness; three equity positions in one day (2026-08-22)
+
+- **The harness, not the model, becomes the unit of capability.** NVIDIA's **AVO
+  agent harness cleared 183 of 183 ARC-AGI-3 levels** across 25 public
+  environments, with **no instructions, rules or stated goals** — while the
+  frontier model inside is reported at **roughly 30% unaided**, and amplifiers put
+  comparable models near 30% on the same set. The result carries **no ARC Prize
+  verification, no per-task cost line and no released harness**, and the day's
+  Quote of the Day captured the structural read: *"looks inside: its a harness / is
+  it open source? no."* TechCrunch reached the same conclusion independently —
+  "the harness, not the AI model, is now the real hero" — the strongest public
+  argument yet that **scaffolding is what converts a model into a capability**, and
+  that a closed harness is a proprietary asset on the same axis as a model
+  (see [[verification-bottleneck]] and [[agentic-ai-security]] for the eval-integrity
+  stakes) (NVIDIA, TechCrunch; ARA daily digest 2026-08-22).
+- **The capital sweep reaches datacenter, orbital and data-layer companies.** NVIDIA
+  disclosed **three equity positions in one day**: a **minority stake in Cloverleaf
+  Infrastructure** (confirmed, TechCrunch — a strategic partnership in which
+  Cloverleaf adopts NVIDIA's **DSX platform** for power, cooling and capacity
+  coordination), a seat in **Starcloud's $250M round at a $2.3B valuation** (orbital
+  compute, led by Manhattan West; NVIDIA, Cisco Investments, Cedar Capital, Goanna
+  Capital and Standard Capital joined; total funding ~$450M), and — per The
+  Information, verb "**has discussed**," not agreed — talks to **back data
+  marketplace Mercor at a $20B valuation** to feed NVIDIA's own open models. The
+  pattern extends the capital-allocation arc tracked since the ~$500B financing
+  package (2026-08-10) and the Poolside licence (2026-08-21): NVIDIA is now buying
+  position in the physical, orbital and data layers its models and silicon run on.
+- **Rebellions talks — a political question before a corporate one (2026-08-22).**
+  Preliminary talks are reported with **Rebellions**, the Korean inference-chip
+  designer, over a partnership, investment or acquisition, with **Jensen Huang
+  meeting CEO Sunghyun Park in Santa Clara**. Rebellions is backed by **SK hynix,
+  Samsung Venture, Arm and the Korean state directly**, which makes any deal a
+  technology-export and US-Korea-policy question more than a corporate one —
+  single-source reported, no first-party echo (TechCrunch, @PhilipJohnston, The
+  Information; ARA daily digest 2026-08-22).
 
 ## Open questions
 - **The TSMC ceiling.** TSMC warned (2026-06-05) it **cannot meet AI-chip demand
