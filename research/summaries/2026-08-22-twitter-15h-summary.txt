@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-22 15:31:20 UTC
+
+CYCLE: Labs buy the plumbing layer, and the "my model got dumber" complaint finally gets a number.
+
+TOP STORIES:
+• OpenAI absorbs the Instant team — database, auth, permissions and storage for AI-built apps [⚠]
+• Claude Code's "high" reasoning effort reportedly running at 10/100, the old "low" — unsourced [⚠]
+• Google Antigravity ships phone-to-desktop Remote Control, 14h after Claude Code, via mobile web only [⚠]
+
+WATCH: Whether anyone produces the actual Claude Code effort setting — a config value or release-note diff — instead of restating 10/100.
+
+Full update on GitHub.
