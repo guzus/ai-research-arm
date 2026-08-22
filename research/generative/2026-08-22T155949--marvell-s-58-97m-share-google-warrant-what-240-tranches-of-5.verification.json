@@ -1,0 +1,70 @@
+{
+  "claims": [
+    {
+      "id": "mrvl-1",
+      "text": "On August 18, 2026, Marvell issued Google LLC a warrant to purchase up to 58,970,907 shares at $206.58 per share, exercisable until August 18, 2033.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696d8k.htm"
+    },
+    {
+      "id": "mrvl-2",
+      "text": "1,360,867 shares vest on a quarterly time schedule over year one; 57,610,040 vest in 240 equal tranches of 240,042 shares for each cumulative $500M of Qualifying Revenue through fiscal 2033.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696dex41.htm"
+    },
+    {
+      "id": "mrvl-3",
+      "text": "Full vesting requires $120 billion cumulative Qualifying Revenue (240 x $500M).",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696dex41.htm"
+    },
+    {
+      "id": "mrvl-4",
+      "text": "Aggregate exercise price of the full warrant is approximately $12.18 billion.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696d8k.htm"
+    },
+    {
+      "id": "mrvl-5",
+      "text": "Marvell fiscal 2026 (ended Jan 31, 2026) net revenue was $8.2 billion, up 42% from $5.8 billion; top-ten customers were 82% of revenue.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000011/mrvl-20260131.htm"
+    },
+    {
+      "id": "mrvl-6",
+      "text": "Marvell books customer warrants as a reduction of revenue as the tied revenue vests; fiscal 2025 warrant fair value was $227.6M (Black-Scholes $54.44/share).",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000019/mrvl-20260502.htm"
+    },
+    {
+      "id": "mrvl-7",
+      "text": "Qualifying Revenue excludes contra-revenue impacts from warrant value allocation, so hurdles are measured on gross product revenue.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696dex41.htm"
+    },
+    {
+      "id": "mrvl-8",
+      "text": "Marvell shares rose about 10% on August 19, 2026 (close $237.27 from $216.00) while Broadcom fell about 5%.",
+      "verdict": "supported",
+      "citation": "https://query1.finance.yahoo.com/v8/finance/chart/MRVL"
+    },
+    {
+      "id": "mrvl-15",
+      "text": "Marvell's fiscal 2025 customer warrant has been reported by the press as issued to Amazon Web Services for AI procurement; the Google warrant is roughly 14x its share count.",
+      "verdict": "weak",
+      "citation": "https://edgen.dev.edgen.tech/news/post/marvell-grants-google-7-warrant-in-122-billion-custom-chip-deal"
+    },
+    {
+      "id": "mrvl-16",
+      "text": "In October 2025 AMD issued OpenAI a warrant for up to 160 million shares (~10% of AMD) at one cent per share alongside a 6-gigawatt GPU supply pact.",
+      "verdict": "supported",
+      "citation": "https://www.fool.com/investing/2026/08/21/google-is-getting-paid-in-marvell-stock-warrants-for-buying-marvell-s-chips/"
+    },
+    {
+      "id": "mrvl-17",
+      "text": "Morningstar analyst William Kerwin said Google's chip budget is expanding to accommodate new suppliers rather than displacing Broadcom.",
+      "verdict": "supported",
+      "citation": "https://edgen.dev.edgen.tech/news/post/marvell-grants-google-7-warrant-in-122-billion-custom-chip-deal"
+    }
+  ]
+}

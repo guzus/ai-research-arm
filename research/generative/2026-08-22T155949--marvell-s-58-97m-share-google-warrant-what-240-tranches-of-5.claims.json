@@ -1,0 +1,256 @@
+{
+  "claims": [
+    {
+      "id": "mrvl-1",
+      "claim": "On August 18, 2026, Marvell issued Google LLC a warrant to purchase up to 58,970,907 shares of Marvell common stock at an exercise price of $206.58 per share, exercisable until August 18, 2033.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696d8k.htm",
+        "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696dex41.htm"
+      ],
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "mrvl-2",
+      "claim": "Of the warrant shares, 1,360,867 vest in equal quarterly installments (340,216 per quarter) over the first year following the July 29, 2026 commercial agreement; the remaining 57,610,040 vest in 240 equal tranches, one tranche of 240,042 shares (240,002 in the 240th instance) vesting for each cumulative $500 million of Qualifying Revenue from August 1, 2026 through January 29, 2033.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696dex41.htm",
+        "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696d8k.htm"
+      ],
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "mrvl-3",
+      "claim": "Full vesting of the performance-based warrant shares requires cumulative Qualifying Revenue of $120 billion (240 tranches x $500 million), an implied average of roughly $18.5 billion per year over the 6.5-year measuring window.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696dex41.htm"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "mrvl-4",
+      "claim": "The aggregate exercise price of the full warrant is approximately $12.18 billion (58,970,907 shares x $206.58).",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696d8k.htm"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "mrvl-5",
+      "claim": "Marvell reported $8.2 billion of total net revenue for fiscal 2026 (year ended January 31, 2026), up 42% from $5.8 billion in fiscal 2025; ten largest customers represented 82% of net revenue.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000011/mrvl-20260131.htm"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-01-31"
+    },
+    {
+      "id": "mrvl-6",
+      "claim": "Marvell recognizes customer warrants as a reduction to revenue (contra-revenue) as qualifying revenues are recognized; the fiscal 2025 customer warrant (4.2M shares, $87.77 strike) had a Black-Scholes grant-date fair value of $54.44/share, $227.6 million total.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000019/mrvl-20260502.htm"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-05-02"
+    },
+    {
+      "id": "mrvl-7",
+      "claim": "The Google warrant's Qualifying Revenue definition measures revenue under Marvell's GAAP policies 'adjusted to exclude any contra revenue impact resulting from any allocation of the value of this Warrant,' so tranche hurdles are calculated on gross product revenue before the warrant accounting haircut.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696dex41.htm"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "mrvl-8",
+      "claim": "Google's beneficial ownership is initially capped at 4.999% of Marvell shares outstanding immediately after exercise, a limit Google may waive or amend with 61 days written notice.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696dex41.htm"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "mrvl-9",
+      "claim": "Marvell shares rose about 10% on August 19, 2026 (close $237.27, from $216.00 on August 18) after the 8-K disclosure, while Broadcom slid about 5% on the same day; MRVL later pulled back to $237.04 on August 21.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": [
+        "https://query1.finance.yahoo.com/v8/finance/chart/MRVL",
+        "https://finance.yahoo.com/technology/articles/marvell-shares-surge-google-warrant-132458296.html"
+      ],
+      "source_tiers": [
+        "market-data",
+        "secondary"
+      ],
+      "as_of": "2026-08-22"
+    },
+    {
+      "id": "mrvl-10",
+      "claim": "Broadcom disclosed in an April 6, 2026 8-K a long-term agreement to develop and supply Google's future-generation TPUs and a supply-assurance agreement for networking/components for Google's next-generation AI racks through up to 2031, and that Anthropic will access ~3.5GW of next-generation TPU compute capacity through Broadcom beginning 2027.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/d87999d8k.htm"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-04-06"
+    },
+    {
+      "id": "mrvl-11",
+      "claim": "Google announced its eighth-generation TPUs (TPU 8t for training, TPU 8i for inference) on April 22, 2026 with general availability in the second half of 2026; TPU 8i has 288GB HBM and 384MB on-chip SRAM and moves to Axion Arm-based CPUs, at roughly 2x performance-per-watt versus the prior-generation Ironwood.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-04-22"
+    },
+    {
+      "id": "mrvl-12",
+      "claim": "Alphabet spent $44.9 billion on capital expenditures in calendar Q2 2026 and $132 billion over the trailing twelve months, and recorded a $98 billion net other-income gain in Q2 2026 primarily from unrealized gains on equity securities.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "volatile",
+      "source_urls": [
+        "https://www.fool.com/investing/2026/08/21/google-is-getting-paid-in-marvell-stock-warrants-for-buying-marvell-s-chips/"
+      ],
+      "source_tiers": [
+        "secondary"
+      ],
+      "as_of": "2026-08-21"
+    },
+    {
+      "id": "mrvl-13",
+      "claim": "With Marvell stock near $237 in late August 2026, the full warrant's intrinsic value was approximately $1.8 billion (~$30.46 of spread per share over the $206.58 strike).",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": [
+        "https://query1.finance.yahoo.com/v8/finance/chart/MRVL",
+        "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696dex41.htm"
+      ],
+      "source_tiers": [
+        "market-data",
+        "primary"
+      ],
+      "as_of": "2026-08-22"
+    },
+    {
+      "id": "mrvl-14",
+      "claim": "The Marvell-Google commercial agreement covers custom silicon attached to the TPU ecosystem including AI inference accelerators, storage controllers, network interface controllers, memory interface controllers, and near-memory compute; the warrant defines 'Kestrel Product Launch' as the qualification date of a custom product codenamed Kestrel, and Google cannot transfer non-affiliate warrant interests before the earlier of November 10, 2027 or that launch.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696d8k.htm",
+        "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696dex41.htm"
+      ],
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "mrvl-15",
+      "claim": "Press accounts identify Marvell's fiscal 2025 customer warrant (December 2024, 4.2M shares at $87.77) as tied to Amazon Web Services custom AI procurement (Trainium/Inferentia-related silicon), making the Google warrant economically comparable but roughly 14x the share count.",
+      "type": "comparison",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": [
+        "https://edgen.dev.edgen.tech/news/post/marvell-grants-google-7-warrant-in-122-billion-custom-chip-deal",
+        "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000011/mrvl-20260131.htm"
+      ],
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "as_of": "2026-08-22"
+    },
+    {
+      "id": "mrvl-16",
+      "claim": "In October 2025 AMD issued OpenAI a warrant for up to 160 million AMD shares (about 10% of AMD) at an exercise price of one cent per share, vesting with GPU deployment scaling and AMD stock price targets, alongside a 6-gigawatt GPU supply agreement.",
+      "type": "event",
+      "confidence": "medium",
+      "risk": "contested",
+      "source_urls": [
+        "https://www.fool.com/investing/2026/08/21/google-is-getting-paid-in-marvell-stock-warrants-for-buying-marvell-s-chips/",
+        "https://www.trendforce.com/news/2026/08/20/news-marvell-amd-reportedly-shake-up-google-tpu-race-putting-broadcom-mediatek-under-pressure/"
+      ],
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "as_of": "2026-08-21"
+    },
+    {
+      "id": "mrvl-17",
+      "claim": "Morningstar analyst William Kerwin characterized Google's supplier strategy as expanding its chip budget to accommodate new suppliers rather than displacing Broadcom as an incumbent.",
+      "type": "quote",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": [
+        "https://edgen.dev.edgen.tech/news/post/marvell-grants-google-7-warrant-in-122-billion-custom-chip-deal"
+      ],
+      "source_tiers": [
+        "secondary"
+      ],
+      "as_of": "2026-08-22"
+    }
+  ]
+}
