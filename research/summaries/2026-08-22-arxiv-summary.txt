@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-22
+
+TOP 5 PAPERS:
+• AI4AI-Bench - Benchmarks whether LLM agents can redesign training algorithms (recursive self-improvement); best system closes <1/5 of the gap to optimum.
+• Swift-Image - Compact 6B unified image generation/editing model beats open-source with 243K GPU-hours; 3B variant loses almost nothing.
+• 4DAnyone - Lifts casual monocular video into 4D humans via O(1) reference packing + target-context routing in video diffusion.
+• WithEveryone - Up to 10-identity group image generation via layout-grounded ID loss; cuts copy-paste artifacts ~3x.
+• Phantom Gains - Audit shows 7 measurement failures can invert self-improvement claims; proposes FDR-controlled null methodology.
+
+CATEGORIES: ~7 NLP, ~10 CV/Multimodal, ~9 Agents, ~7 Safety, ~6 Other
+
+Full report on GitHub.
