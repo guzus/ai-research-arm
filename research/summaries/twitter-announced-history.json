@@ -25119,5 +25119,40 @@
     "headline": "SEMIANALYSIS: FOUNDRY REVENUE HITS RECORD $54.5B IN 2Q26, UP 28% ON JUST 6% SUPPLY GROWTH",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2090907000469070332"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-22 01:46:09 UTC",
+    "headline": "GROK BOT NOW FREE TO TRY \u2014 XAI DROPS PAYWALL UNDER FOUR HOURS AFTER ENDING INVITE QUEUE",
+    "source": "@grok",
+    "url": "https://x.com/ns123abc/status/2090953121723830369"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-22 01:46:09 UTC",
+    "headline": "ANTHROPIC SHIPS CLAUDE CODE REMOTE CONTROL FIXES \u2014 PHONE-STARTED SESSIONS, AUTO-RECONNECT, LIVE CLI SYNC",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2090933155847143498"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-22 01:46:09 UTC",
+    "headline": "OX ALPHA PEGGED AS GLM-5.3 FLASH DISTILL \u2014 BANKROLLED NOT SERVED, GPUS OVERSEAS, STILL UNCLAIMED",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2090950719901679794"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-22 01:46:09 UTC",
+    "headline": "THINKING MACHINES SERVES INKLING FREE ON OPENROUTER TO HARVEST REAL-WORLD AGENTIC BEHAVIOR",
+    "source": "@thinkymachines",
+    "url": "https://x.com/soumithchintala/status/2090897419403718747"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-22 01:46:09 UTC",
+    "headline": "FX AGENT CLI ADDS GROK AND CODEX SUBSCRIPTION AUTH \u2014 NO PER-TOKEN BILLING FOR EXISTING SUBSCRIBERS",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2090953806624489501"
   }
 ]
