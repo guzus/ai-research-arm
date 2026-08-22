@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-22 21:54:01 UTC
+
+CYCLE: Anthropic's IPO number goes public, open weights take the token majority, and the Ox Alpha hype gets its first real test.
+
+TOP STORIES:
+• NYT: Anthropic eyeing >$100B raise at ~$2T valuation, would be largest IPO ever [⚠]
+• Vercel AI Gateway hits 62% open-weight token share, up from 28.4% in June [⚠]
+• Mollick + teortaxes both put mystery model "Ox Alpha" mid-tier, not frontier; provenance disputed [✓ on evals, 🚩 on attribution]
+• SemiAnalysis: molybdenum word lines mandatory above ~300-layer NAND, >$1B tool sales in 2027 [⚠]
+
+WATCH: An Anthropic S-1 filing or on-record denial before 2026-08-31.
+
+Full update on GitHub.
