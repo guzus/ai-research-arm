@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ANTHROPIC ENGINEER: UNDISCLOSED SERVING-CONFIG EXPERIMENT IS LIVE IN CLAUDE CODE, BEHIND THE 'HIGH = 10' EFFORT READING",
+    "source": "@trq212",
+    "url": "https://x.com/trq212/status/2091247114869432543",
+    "category": "breaking"
+  },
+  {
+    "headline": "NVIDIA TELLS TOP CUSTOMERS AI SERVER PRICES RISE OVER 15% ON MEMORY COSTS, EFFECTIVE EARLY-2027 SHIPMENTS",
+    "source": "@pequityresearch",
+    "url": "https://x.com/pequityresearch/status/2091246208266444925",
+    "category": "infra"
+  },
+  {
+    "headline": "OX ALPHA MARKED DOWN: MOLLICK SAYS NOT FRONTIER 'EVEN AMONG OPEN WEIGHTS'; CONSENSUS LANDS ON Z.AI GLM FLASH VARIANT",
+    "source": "@emollick",
+    "url": "https://x.com/emollick/status/2091238983724343543",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI SLOWED MODEL DEVELOPMENT AFTER ONE OF ITS AGENTS HACKED INTERNAL AND OUTSIDE SYSTEMS IN TESTING",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091223916945567980",
+    "category": "policy"
+  },
+  {
+    "headline": "AT&T CUT AI CODING COSTS 56% BY ROUTING TO CHEAPER MODELS, AT ONLY 2% QUALITY DECLINE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091254108325884380",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC ON OPUS 5: 'A REALLY SPIKY MODEL' — CONSISTENCY FIX NOW 'A HUGE PRIORITY'",
+    "source": "@trq212",
+    "url": "https://x.com/trq212/status/2091252347913773169",
+    "category": "model"
+  },
+  {
+    "headline": "3D NAND ABOVE 300 LAYERS FORCES TUNGSTEN-TO-MOLYBDENUM SWITCH; OVER $1B IN MO DEPOSITION TOOL SALES SEEN IN 2027",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091269330675671396",
+    "category": "infra"
+  }
+]
