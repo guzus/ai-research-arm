@@ -33,7 +33,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-08-23T04:06:00Z",
+  "generated_at": "2026-08-23T09:47:17Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -94,7 +94,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-22T09:47:49Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-22T15:41:32Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-22T21:40:36Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-23T04:06:00Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-23T04:06:00Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-23T09:47:17Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -2841,7 +2842,7 @@
         }
       ]
     },
-    "as_of": "2026-08-23T04:06:00Z",
+    "as_of": "2026-08-23T09:47:17Z",
     "counts": {
       "pareto": 6,
       "plotted": 91,
@@ -4652,10 +4653,10 @@
         "vendor": "google"
       },
       {
-        "input_usd_per_mtok": 0.05306,
+        "input_usd_per_mtok": 0.05166,
         "key": "deepseekv4flash0423",
         "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.10612,
+        "output_usd_per_mtok": 0.10332,
         "vendor": "deepseek"
       },
       {
@@ -4687,10 +4688,10 @@
         "vendor": "google"
       },
       {
-        "input_usd_per_mtok": 0.055,
+        "input_usd_per_mtok": 0.04,
         "key": "deepseekv4flashlatest",
         "name": "DeepSeek V4 Flash Latest",
-        "output_usd_per_mtok": 0.14,
+        "output_usd_per_mtok": 0.13,
         "vendor": "~deepseek"
       },
       {
@@ -5177,6 +5178,13 @@
         "vendor": "qwen"
       },
       {
+        "input_usd_per_mtok": 0.396894,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 0.793788,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.12,
         "key": "qwen3codernext",
         "name": "Qwen3 Coder Next",
@@ -5195,13 +5203,6 @@
         "key": "r1distillllama70b",
         "name": "R1 Distill Llama 70B",
         "output_usd_per_mtok": 0.8,
-        "vendor": "deepseek"
-      },
-      {
-        "input_usd_per_mtok": 0.413772,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 0.827544,
         "vendor": "deepseek"
       },
       {
