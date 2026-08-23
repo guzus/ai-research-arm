@@ -1,0 +1,166 @@
+{
+  "claims": [
+    {
+      "id": "ox-1",
+      "claim": "OpenRouter listed the anonymous reasoning model stealth/ox-alpha on August 20, 2026 with a 1M-token context, image/video input, and a free one-week preview; opencode promoted a free week and 'capacity for 100T tokens per day'.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://openrouter.ai/stealth/ox-alpha",
+        "https://x.com/opencode/status/2090544355824038300",
+        "https://x.com/OpenRouter/status/2090544970923184269",
+        "https://www.ai-primer.com/engineer/stories/ox-alpha-openrouter-release",
+        "https://officechai.com/ai/stealth-model-ox-alpha-available-for-free-for-a-week-on-openrouter-and-opencode/"
+      ],
+      "source_tiers": ["primary", "primary", "primary", "secondary", "secondary"]
+    },
+    {
+      "id": "ox-2",
+      "claim": "Developer Ben Davis (davis7) ran Ox Alpha through a 10-task DeepSWE subset on August 21, 2026, reported 8/10 (which he described as '80%, was a near miss on the x's so actually over 80%'), and flagged that a subset could carry 'a ton of variance'. Sol scored 52% and Fable 65% on the same tasks.",
+      "type": "quote",
+      "confidence": "high",
+      "risk": "contested",
+      "as_of": "2026-08-21",
+      "source_urls": [
+        "https://x.com/davis7/status/2090655207831298095",
+        "https://www.ai-primer.com/engineer/stories/ox-alpha-openrouter-release",
+        "https://ox-alpha-evidence-production.up.railway.app/"
+      ],
+      "source_tiers": ["primary", "secondary", "secondary"]
+    },
+    {
+      "id": "ox-3",
+      "claim": "winkey_h reported on August 21, 2026: 'I'm getting around 63% at 47K avg output tokens on a DeepSWE subset. This is pareto optimal amongst open models and just shy of Grok 4.6 compared to closed models!'",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "single-source",
+      "as_of": "2026-08-21",
+      "source_urls": [
+        "https://x.com/winkey_h/status/2090814178810306874",
+        "https://www.techtwitter.com/tweet/67b60f16-4348-469f-9b04-25f6b91f6d32"
+      ],
+      "source_tiers": ["primary", "secondary"]
+    },
+    {
+      "id": "ox-4",
+      "claim": "davis7's full 113-task DeepSWE run on Ox Alpha (August 22, 2026) ended at roughly 63%, which he explicitly positioned as 'NOT the 80% my first subset test got', adding that 'being on around Sol medium feels about right'.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "contested",
+      "as_of": "2026-08-22",
+      "source_urls": [
+        "https://x.com/davis7/status/2091285712566140986",
+        "https://www.techtwitter.com/tweet/67b60f16-4348-469f-9b04-25f6b91f6d32"
+      ],
+      "source_tiers": ["primary", "secondary"]
+    },
+    {
+      "id": "ox-5",
+      "claim": "Aggregators reported a separate full 113-task figure of 58.4%, 'almost identical to Claude Opus 4.8 (59%)', while a community poster said 'The Rumored ~80% pass rate is completely incorrect'; HuggingNews replaced its 80% headline with a 58.4% correction.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "contested",
+      "as_of": "2026-08-22",
+      "source_urls": [
+        "https://huggingnews.com/ai/ox-alpha-scores-584percent-on-deepswe-matching-claude-opus-48-performanc-4992e222",
+        "https://huggingnews.com/ai/update-ox-alpha-hits-80percent-on-full-deepswe-benchmark-first-run-of-al-18a12436",
+        "https://x.com/Ananth7e/status/2091165181976174701"
+      ],
+      "source_tiers": ["secondary", "secondary", "primary"]
+    },
+    {
+      "id": "ox-6",
+      "claim": "The two surviving full-suite figures — 58.4% (66/113) and ~63% (about 71/113) — are statistically compatible with a true rate near 60-62% given their binomial confidence intervals, so they should be read as a band rather than contradictory estimates.",
+      "type": "comparison",
+      "confidence": "medium",
+      "risk": "contested",
+      "as_of": "2026-08-22",
+      "source_urls": [
+        "https://huggingnews.com/ai/ox-alpha-scores-584percent-on-deepswe-matching-claude-opus-48-performanc-4992e222",
+        "https://x.com/davis7/status/2091285712566140986"
+      ],
+      "source_tiers": ["secondary", "primary"]
+    },
+    {
+      "id": "ox-7",
+      "claim": "Eight successes in ten trials yields a point estimate of 80% but a two-sided 95% Clopper-Pearson confidence interval of roughly 44% to 98%, so the sample cannot distinguish a mediocre from an excellent model.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://x.com/davis7/status/2090655207831298095",
+        "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+      ],
+      "source_tiers": ["primary", "market-data"]
+    },
+    {
+      "id": "ox-8",
+      "claim": "On the official DeepSWE v1.1 leaderboard (generated 2026-08-20), pass@1 is 73.6% for Claude Opus 5 max, 69.0% for GLM-5.3 max, 67.5% for Grok 4.6 medium, 62.8% for DeepSeek V4 Pro max (106K mean output tokens, $0.24), 61.1% for GPT-5.6 Sol medium, and 59.0% for Claude Opus 4.8 max; the table lists no Ox Alpha configuration.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-08-20",
+      "source_urls": [
+        "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json",
+        "https://deepswe.datacurve.ai/changelog"
+      ],
+      "source_tiers": ["market-data", "primary"]
+    },
+    {
+      "id": "ox-9",
+      "claim": "DeepSWE contains 113 tasks across 91 repositories and 5 languages; mean prompt length is 2,158 characters (about half of SWE-bench Pro's 4,614), and reference solutions add a mean 668 lines across 7 files versus Pro's 120 lines across 5.",
+      "type": "definition",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://deepswe.datacurve.ai/blog/deepswe",
+        "https://deepswe.datacurve.ai/artifacts/v1.1/tasks.json"
+      ],
+      "source_tiers": ["primary", "market-data"]
+    },
+    {
+      "id": "ox-10",
+      "claim": "On the task meriyah-explicit-resource-declarations most frontier configurations scored 0-of-4 passes (GLM-5.3 max, Grok 4.6 medium, GPT-5.6 Sol max, Claude Opus 5 max, Claude Opus 4.8 max), while a forensic dossier reported Ox Alpha solved it single-shot and a separate community full-suite run left it unsolved at 46/49 feature tests.",
+      "type": "comparison",
+      "confidence": "medium",
+      "risk": "contested",
+      "as_of": "2026-08-22",
+      "source_urls": [
+        "https://deepswe.datacurve.ai/artifacts/v1.1/trials.json",
+        "https://ox-alpha-evidence-production.up.railway.app/",
+        "https://github.com/bmarti44/ox-alpha-deepswe"
+      ],
+      "source_tiers": ["market-data", "secondary", "primary"]
+    },
+    {
+      "id": "ox-11",
+      "claim": "Forensic analysis of Ox Alpha (tokenizer identical to GLM-5.3 with a +75-token wrapper, video-encoder token budgets matching GLM-5V-Turbo, GLM-5V-style audio rejection, ~40B-active decode speed, and ~117 avg DeepSWE steps versus GLM-5.3's ~124) concludes with roughly 90% confidence that it is a Zhipu next-gen multimodal GLM checkpoint (e.g. GLM-5.3 flash/V); independent coverage put the attribution at '99 percent certain', though a Gemini-succesor hypothesis also circulated.",
+      "type": "technical",
+      "confidence": "medium",
+      "risk": "contested",
+      "as_of": "2026-08-21",
+      "source_urls": [
+        "https://ox-alpha-evidence-production.up.railway.app/",
+        "https://caimpare.ai/articles/anonymous-ox-alpha-model-beats-gpt-and-claude-on-coding-benchmark-forensic-clues-point-to-china-s-zhipu",
+        "https://x.com/Ananth7e/status/2091165181976174701"
+      ],
+      "source_tiers": ["secondary", "secondary", "primary"]
+    },
+    {
+      "id": "ox-12",
+      "claim": "The DeepSWE official leaderboard refreshed August 20, 2026 contains no Ox Alpha configuration and the benchmark's changelog (latest entries August 13-14) does not mention it; a community full-suite run was still in progress as of August 21-22, with a live status gist and a Pier-based run visible on GitHub.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-08-23",
+      "source_urls": [
+        "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json",
+        "https://deepswe.datacurve.ai/changelog",
+        "https://gist.github.com/nassimkhatiba-ai/d3da24d5b1a9287a7dcaf460c4e6d98d",
+        "https://github.com/bmarti44/ox-alpha-deepswe"
+      ],
+      "source_tiers": ["market-data", "primary", "primary", "primary"]
+    }
+  ]
+}
