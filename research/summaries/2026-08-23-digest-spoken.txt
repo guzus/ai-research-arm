@@ -1,0 +1,14 @@
+Speaker 1: Sunday, August twenty-third, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic has confirmed an undisclosed serving configuration experiment running live inside Claude Code, remapping the effort value, and the company is calling Opus five spikiness a huge priority.
+Speaker 1: That is a rare admission that what you are running today may not be the same thing you ran yesterday.
+Speaker 2: Meanwhile the open weights story just crossed a line, [emphasis] sixty two percent [/emphasis] of all tokens through the Vercel AI Gateway are now open models.
+Speaker 1: That is up from twenty eight point four percent in June, so a sixty two, thirty eight split flipped in roughly two months.
+Speaker 2: That is the first time open weights have taken the majority on that gateway, and it happened faster than almost anyone modeled.
+Speaker 1: Some quick numbers on the money side. Starcloud raised two hundred fifty million dollars at a two point three billion dollar valuation for orbital data centers.
+Speaker 2: And NVIDIA is paying [emphasis] six billion dollars [/emphasis] to license Poolside's Model Factory, plus one hundred nine hires that come with it.
+Speaker 1: On the hardware front, NVIDIA has told top customers that AI server prices are going up more than fifteen percent, driven by memory costs, according to Bloomberg.
+Speaker 2: Worth noting that memory, not compute, is now the line item setting the price of the rack.
+Speaker 1: And the stealth model Ox Alpha got deflated this week. Independent testers put it at Flash tier, not frontier.
+Speaker 2: [dramatic_pause] It took five hundred fifty one API calls to pull eighty seven usable answers out of it.
+Speaker 1: Trending on Hacker News, Felony Bench at eight hundred thirteen points, scoring labs by real world agent incidents rather than benchmarks.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
