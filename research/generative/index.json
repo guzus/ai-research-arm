@@ -2574,5 +2574,17 @@
     "source": "workflow_dispatch",
     "prompt": "Marvell's 58.97M-share Google warrant: what 240 tranches of $500M imply about the TPU custom-silicon commitment",
     "tags": []
+  },
+  {
+    "slug": "ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur",
+    "file": "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Ox Alpha's retracted 80%: what a 10-task DeepSWE sample measured, and what the ~63% at ~47K output tokens actually settles",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-23T02:23:40Z",
+    "source": "workflow_dispatch",
+    "prompt": "Ox Alpha's retracted 80%: what a 10-task DeepSWE subset measured, and what the 63% at 47K output tokens actually settles",
+    "tags": []
   }
 ]

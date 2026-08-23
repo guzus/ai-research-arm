@@ -1,0 +1,76 @@
+{
+  "claims": [
+    {
+      "id": "ox-1",
+      "text": "OpenRouter listed the anonymous reasoning model stealth/ox-alpha on August 20, 2026 with a 1M-token context, image/video input, and a free one-week preview; opencode promoted a free week and 'capacity for 100T tokens per day'.",
+      "verdict": "supported",
+      "citation": "https://openrouter.ai/stealth/ox-alpha"
+    },
+    {
+      "id": "ox-2",
+      "text": "Developer Ben Davis (davis7) ran Ox Alpha through a 10-task DeepSWE subset on August 21, 2026, reported 8/10 which he described as 80%, and flagged that a subset could carry a ton of variance; Sol scored 52% and Fable 65% on the same tasks.",
+      "verdict": "supported",
+      "citation": "https://x.com/davis7/status/2090655207831298095"
+    },
+    {
+      "id": "ox-3",
+      "text": "winkey_h reported on August 21, 2026 that Ox Alpha reached around 63% at 47K average output tokens on a DeepSWE subset, calling it pareto optimal amongst open models and just shy of Grok 4.6 compared to closed models.",
+      "verdict": "supported",
+      "citation": "https://x.com/winkey_h/status/2090814178810306874"
+    },
+    {
+      "id": "ox-4",
+      "text": "davis7's full 113-task DeepSWE run on Ox Alpha ended at roughly 63%, which he explicitly positioned as NOT the 80% his first subset test got, adding that being on around Sol medium feels about right.",
+      "verdict": "supported",
+      "citation": "https://x.com/davis7/status/2091285712566140986"
+    },
+    {
+      "id": "ox-5",
+      "text": "Aggregators reported a separate full 113-task figure of 58.4% for Ox Alpha, nearly identical to Claude Opus 4.8 at 59%, while a community poster said the rumored ~80% pass rate is completely incorrect; HuggingNews replaced its 80% headline with a 58.4% correction.",
+      "verdict": "supported",
+      "citation": "https://huggingnews.com/ai/ox-alpha-scores-584percent-on-deepswe-matching-claude-opus-48-performanc-4992e222"
+    },
+    {
+      "id": "ox-6",
+      "text": "The two surviving full-suite figures of 58.4% and roughly 63% are statistically compatible with a true rate near 60-62% given their binomial confidence intervals, so they should be read as a band rather than as contradicting estimates.",
+      "verdict": "weak",
+      "citation": null
+    },
+    {
+      "id": "ox-7",
+      "text": "Eight successes in ten trials yields a point estimate of 80% but a two-sided 95% Clopper-Pearson confidence interval of roughly 44% to 98%, so that sample cannot distinguish a mediocre from an excellent model.",
+      "verdict": "supported",
+      "citation": "https://x.com/davis7/status/2090655207831298095"
+    },
+    {
+      "id": "ox-8",
+      "text": "On the official DeepSWE v1.1 leaderboard, pass@1 is 73.6% for Claude Opus 5 max, 69.0% for GLM-5.3 max, 67.5% for Grok 4.6 medium, 62.8% for DeepSeek V4 Pro max, 61.1% for GPT-5.6 Sol medium, and 59.0% for Claude Opus 4.8 max, with no Ox Alpha configuration listed.",
+      "verdict": "supported",
+      "citation": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "id": "ox-9",
+      "text": "DeepSWE contains 113 tasks across 91 repositories and 5 languages, with a mean prompt length of 2,158 characters, about half of SWE-bench Pro's 4,614, and reference solutions adding a mean 668 lines across 7 files versus Pro's 120 lines across 5.",
+      "verdict": "supported",
+      "citation": "https://deepswe.datacurve.ai/blog/deepswe"
+    },
+    {
+      "id": "ox-10",
+      "text": "On the task meriyah-explicit-resource-declarations most frontier configurations scored 0-of-4 passes, while a forensic dossier reported Ox Alpha solved it single-shot and a separate community full-suite run left it unsolved at 46 of 49 feature tests.",
+      "verdict": "weak",
+      "citation": "https://deepswe.datacurve.ai/artifacts/v1.1/trials.json"
+    },
+    {
+      "id": "ox-11",
+      "text": "Forensic analysis concludes with roughly 90% confidence that Ox Alpha is a Zhipu next-gen multimodal GLM checkpoint, based on a GLM-5.3-identical tokenizer with a +75-token wrapper, video-encoder budgets matching GLM-5V-Turbo, GLM-5V-style audio rejection, ~40B-active decode speed, and ~117 average DeepSWE steps versus GLM-5.3's 124.",
+      "verdict": "weak",
+      "citation": "https://ox-alpha-evidence-production.up.railway.app/"
+    },
+    {
+      "id": "ox-12",
+      "text": "The DeepSWE official leaderboard refreshed August 20, 2026 contains no Ox Alpha configuration and the benchmark's changelog does not mention it, while a community full-suite run remained in progress as of August 21-22.",
+      "verdict": "supported",
+      "citation": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    }
+  ]
+}
