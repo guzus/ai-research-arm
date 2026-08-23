@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-23
+
+TOP 5 PAPERS:
+• HealMed - 9-language expert-reviewed medical benchmark; low-resource languages drop hardest, translation quality shifts rankings
+• V-REX - vet-radiology VLM trained from scratch beats much larger open foundation models on far less compute
+• RuleMaze/DMP - benchmark + disentangled perception/execution/verification planning for rule-constrained MLLM spatial planning
+• DECOWAM - decoupled whole-body world-action model for legged manipulation; ARMDOG dataset, -21.7% action MSE
+• EAFG - evidence-gated VLM+TAMP: acquire visual evidence, feasibility-gate plans, halt safely when goals absent
+
+CATEGORIES: NLP 3 · CV/Multimodal 6 · Agents/Reasoning 4 · Safety/Alignment 3 · Other 6
+
+Full report on GitHub.
