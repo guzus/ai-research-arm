@@ -17,7 +17,7 @@ status_note: |
   actual IPO following from there. WSJ broke the story (@KateClarkTweets,
   @cdriebusch); confirmed across The Register, US News, Fox Business,
   Spokesman, Ground News in the 2026-06-01 → 2026-06-02 window.
-expected: "Public S-1 ~mid-2026; roadshow reported as possibly September/October 2026 (@GavinSBaker). Investor-relayed figures as of 2026-08-17: ~$65B ARR at end-July, ~$11.5B 2Q26 revenue, >40% of ARR indirect — pending an actual filing or on-record confirmation"
+expected: "Bankers are telling potential investors (2026-08-22, @AndrewCurran_) it may raise >$100B at a ~$2T valuation — the largest IPO of all time — with the latest rumors pointing to a September listing. Investor-relayed figures as of 2026-08-17: ~$65B ARR at end-July, ~$11.5B 2Q26 revenue, >40% of ARR indirect. All of it pending an actual public S-1 or on-record confirmation"
 labels:
   - corporate-action
   - ipo
@@ -33,6 +33,9 @@ sources:
   - "@KateClarkTweets"
   - "@cdriebusch"
   - "@SpirosMargaris"
+  - "@AndrewCurran_"
+  - "@GavinSBaker"
+  - "@scaling01"
 polymarket:
   - event_slug: anthropic-ipo-by
     market_id: "2413330"
@@ -40,7 +43,7 @@ polymarket:
     question: "Anthropic IPO by Dec 31, 2026?"
     outcome: "Dec 31 2026"
 created_at: 2026-06-02
-updated_at: 2026-08-19
+updated_at: 2026-08-23
 closed_at: null
 closed_reason: null
 history:
@@ -52,6 +55,8 @@ history:
     change: "IPO-prep detail (The Information, Jul 25-26, two posts): Anthropic is exploring 'one of the most restrictive employee stock-sale policies in Silicon Valley' ahead of its IPO. Named outlet, not yet an Anthropic on-record confirmation of the specific policy terms. Status stays confirmed; verification stays confirmed (consistent with the company's own confidential-S1 disclosure track), noting the stock-sale-policy specifics themselves are secondary-sourced."
   - ts: 2026-08-19
     change: "Pre-roadshow revenue disclosure. Anthropic told investors over the weekend of 2026-08-16/17 that its annualized revenue run rate hit ~$65B at the end of July, with preliminary 2Q26 revenue of ~$11.5B — up ~14x from $787M in 2Q25 (@AndrewCurran_ 2026-08-17 21:25 UTC; @ns123abc relays $47B at end-May vs $65B end-July, i.e. +$18B in two months, and puts OpenAI at ~$40B in July). It was the days largest AI story (~15K posts on the trending item). @GavinSBaker, on the All-In podcast, reads the leak as deliberate IPO-roadshow positioning ahead of a possible September/October roadshow while arguing Anthropic is losing share at the margin to OpenAI, open source and Grok; @SemiAnalysis_ adds that Anthropic crossed 40% of ARR from indirect channels (Bedrock, Foundry, Gemini Agent Enterprise) in 2Q26. Numbers are investor-relayed via journalists, not an Anthropic filing or on-record statement, so treat the decimals as reported rather than audited. Status stays confirmed (the S-1 filing is the confirmed artifact); verification stays confirmed."
+  - ts: 2026-08-23
+    change: "Size and valuation land, from the banks. @AndrewCurran_ (2026-08-22 22:39 UTC, ~530 likes / 28 RT): 'Anthropic's bankers are telling potential investors that it may raise over $100 billion in its initial public offering at a valuation of $2 trillion, exceeding SpaceX and making it the largest IPO of all time.' @scaling01 reacts to the same figure ('2 trillion hurts so much if you have been following Anthropic for that long but had no opportunity to invest'). @AndrewCurran_ separately reports 'the latest rumors now have them listing in September' and lays out a testable thesis for why the timing may be deliberate: the 2026-08-10 WSJ report that Anthropic is telling IPO investors it is focusing on healthcare and biology; Dario Amodei's rare 2026-08-15 post promising 'early glimmers in the coming months' and conceding 'the most accurate criticism of AI companies including Anthropic is that we haven't yet delivered on our big promises'; the 2026-08-18 Claude protein-design research ([[anthropic-protein-binder-design-2026-08]]); and President Trump's 2026-08-19 remark that he had been shown something that morning involving a 'pretty unstoppable disease.' Curran's inference — that Anthropic will announce a medical result just ahead of the IPO — is explicitly his own reading, not a sourced claim, and is recorded here as a thesis to test, not a fact. The $2T / >$100B figures are banker-to-investor talk relayed by a journalist, one step further from the record than the July revenue leak; there is still no public S-1. Status stays confirmed; verification stays confirmed on the filing itself, with the valuation and size explicitly reported rather than filed."
 ---
 
 Anthropic **confidentially filed an S-1 registration statement with
