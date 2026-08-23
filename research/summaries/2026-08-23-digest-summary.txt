@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-08-23
+
+TOP STORIES:
+• Anthropic confirms an undisclosed serving-config experiment is live in Claude Code, remapping the "effort" value; Opus 5 spikiness called "a huge priority"
+• Open weights hit 62% of Vercel AI Gateway tokens, up from 28.4% in June
+• NVIDIA tells top customers AI server prices rise 15%+ on memory costs (Bloomberg)
+• Independent testers deflate stealth model Ox Alpha to Flash tier, not frontier
+
+KEY NUMBERS:
+• 62% / 38% open-vs-closed token split; 28.4% in June
+• $250M at $2.3B for Starcloud orbital datacenters
+• $6B: NVIDIA licensing Poolside's Model Factory + 109 hires
+• 551 API calls to get 87 answers from Ox Alpha
+
+TRENDING: Felony Bench on HN (813 pts) scoring labs by real-world agent incidents
+
+Full digest on GitHub.
