@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-23 21:31:21 UTC
+
+CYCLE: The open-weight stack gets repriced while Anthropic concedes Opus 5's flaws.
+
+TOP STORIES:
+• Hugging Face working with a bank to explore a sale at $13B+, ~3x its 2023 $4.5B valuation (Business Insider scoop) [⚠]
+• Claude Code creator Boris Cherny on the record: "Opus is not perfect, and it is a big priority for the team to fix it" — 50 min after two unreleased checkpoints, claude-marshmallow-eap and claude-melon-eap, were spotted [✓/🚩]
+• Gavin Baker: Atreides' internal AI spend ~100x higher in Aug vs Mar 2026, still doubling monthly; open weights now 62% of Vercel's routed tokens [⚠]
+
+WATCH: Whether Hugging Face or a second outlet confirms the bank engagement and the $13B figure, and whether any bidder is named.
+
+Full update on GitHub.
