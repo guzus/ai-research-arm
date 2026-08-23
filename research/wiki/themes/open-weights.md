@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), and Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20).
+description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20), and Vercel's gateway data puts open weights at 62% of token volume (2026-08-22).
 created_at: 2026-06-14
-timestamp: 2026-08-20T00:00:00Z
+timestamp: 2026-08-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
@@ -421,6 +422,27 @@ fragile and local weights look like insurance.
   the claim — and Nathan Lambert's framing that the **training recipe, not the
   weights, is the real open-source analogue to Linux** (ARA daily digest
   2026-08-20).
+
+- **The open share of routed traffic crosses the majority — Vercel's gateway at
+  62% open (2026-08-23).** **Guillermo Rauch** published the **22 August split
+  of Vercel AI Gateway token volume at 62% open against 38% closed** — **up
+  from 28.4% open on 24 June** — the **first operator-level number** behind a
+  week of vendor benchmarks, and a major step past the "29% in July" data
+  point this theme tracked on 2026-08-14. Two caveats: it is one gateway
+  operator's routed mix (see [[openrouter]] for the broker-layer read), and the
+  June→August jump partly reflects open flagships ([[zhipu-glm-5-3|GLM-5.3]],
+  [[moonshot-kimi-k3|Kimi K3]], [[deepseek-v4-flash|V4-Flash]]) entering
+  production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
+  2026-08-23).
+- **The smarter read of the Ox Alpha arc — a "not frontier" open-weight
+  benchmark reality-check (2026-08-23).** The [[ox-alpha]] mystery-model hype
+  deflated over five cycles in a way that matters for this theme: the
+  community consensus converged on **a Z.ai GLM Flash variant**, and Ethan
+  Mollick's calibrated read was blunt — **"not at the frontier even among open
+  weights,"** below [[moonshot-kimi-k3|Kimi K3]] on every test he ran. It is a
+  useful counterpoint to the release-hype entries on this page: the open tier
+  is closing on the frontier, but an unattributed "frontier" claim still fails
+  against independent benchmarks (ARA daily digest 2026-08-23).
 
 ## Open questions
 

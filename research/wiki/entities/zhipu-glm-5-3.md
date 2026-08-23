@@ -4,10 +4,11 @@ title: Zhipu GLM-5.3
 type: entity
 aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3"]
 tags: [open-weights, china, agentic, frontier-model]
-description: Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — and now scoring near Fable 5 on Terminal-Bench 3.0 as a fourth independent frontier placement (2026-08-21); weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.
+description: Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — and now scoring near Fable 5 on Terminal-Bench 3.0 as a fourth independent frontier placement (2026-08-21) and posting 21.4× the optimized PyTorch baseline on KernelBench-Mega (2026-08-23); weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.
 created_at: 2026-08-19
-timestamp: 2026-08-21T00:00:00Z
+timestamp: 2026-08-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
@@ -53,6 +54,16 @@ open-weight agentic development.
   shipped **ZCode v3.8.1**, letting **Coding Plan subscribers reset five-hour
   usage limits off-peak** — a **load-shifting mechanism rather than a quota
   increase** (ARA daily digest 2026-08-21).
+- **KernelBench-Mega: 21.4× the optimized baseline — and GLM-5.2 fails the same
+  gate (2026-08-23).** A private-harness benchmark (@elliotarledge) has **GLM-5.3
+  posting 21.4× the optimized PyTorch baseline on KernelBench-Mega**
+  (Kimi-Linear Decode, RTX PRO 6000), against **11.1× for GLM-5.2 — which also
+  failed the single-launch gate GLM-5.3 clears**. On the same evaluator's ladder
+  GLM-5.3 **ranks second, behind [[claude-fable-5|Fable 5]] at 24.6× and ahead
+  of [[moonshot-kimi-k3|Kimi K3]] at 18.1× and [[claude-opus-4-8|Opus 4.8]] at
+  14.4×** — an efficiency read consistent with the post-training-depth thesis on
+  this page. Single private harness, **unreproduced** (ARA daily digest
+  2026-08-23).
 
 ## Open questions
 

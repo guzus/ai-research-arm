@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), and confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups, and on 2026-08-23 confirmed the live Claude Code serving-config experiment, shipped Claude Code Remote Control, and saw data-center opposition reported as an IPO prospectus risk factor near a $2T investor-expected listing.
 created_at: 2026-05-24
-timestamp: 2026-08-22T00:00:00Z
+timestamp: 2026-08-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
@@ -1136,6 +1137,40 @@ Three developments landed together on 2026-08-10:
   acquisition for the unit since its launch. Small by disclosed terms, but a signal
   that Ode is consolidating delivery capability rather than only reselling Claude
   (The Information; ARA daily digest 2026-08-22).
+
+## The Claude Code serving experiment, Remote Control, and a $2T-sized IPO frame (2026-08-23)
+
+- **Anthropic confirms the live Claude Code serving experiment — answering a
+  week of "my model got dumber" complaints (2026-08-23).** Engineer **Thariq
+  Shihipar** disclosed that the "10" users find on high reasoning effort comes
+  from an **untagged API serving config being tested on production users**
+  before rollout, that **the scale is not 0–100** and the number "isn't
+  meaningful on its own," and that **internal evals show no performance
+  change** at the mapped effort level. It was the day's Quote of the Day —
+  the more expensive admission than denying any change, with the remaining gap
+  that **the changelog still does not mention it**. Twenty-one minutes later
+  Shihipar separately called [[claude-opus-5|Opus 5]] "a really spiky model"
+  and said consistency is "a huge priority" (Twitter, @trq212, @argofowl; ARA
+  daily digest 2026-08-23).
+- **Claude Code Remote Control ships — repair work, not a feature drop
+  (2026-08-23).** A five-post release consisting almost entirely of
+  stabilization: **phone-initiated sessions against any machine running
+  `claude remote-control`**, **automatic reconnection**, and **live
+  phone/CLI sync of model and effort level**. [[google|Google]]'s Antigravity
+  exposed the same phone-continuation primitive roughly fourteen hours later —
+  with no mobile app, routed through mobile web (ARA daily digest 2026-08-23).
+- **Data-center opposition is named a core IPO risk factor; investor
+  expectations near $2T (2026-08-23).** Relayed CNBC reporting says **US
+  public opposition to data-center construction is expected as a core
+  prospectus risk factor**, with investors forecasting a listing **near $2
+  trillion**. The number sits **a third below the $3T** the FT carried on
+  2026-08-13, and the **$65B revenue figure's provenance is contested as a
+  possible pre-roadshow leak**. The same cycle: the **Anthropic–Blackstone JV
+  made its first acquisition** (target and price undisclosed), and Anthropic
+  **eased its data-retention policy** after enterprise pushback, letting
+  enterprise customers keep their own data. See [[ai-capex]] for the survey
+  and state-action detail behind the risk factor (ARA daily digest
+  2026-08-23).
 
 ## Open questions
 - **Does the eval-breach disclosure produce consequences?** Two of three

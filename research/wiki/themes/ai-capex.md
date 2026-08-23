@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, and Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds.
+description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, and data-center opposition hardening into a first-order political input and an Anthropic IPO risk factor (2026-08-23).
 created_at: 2026-05-24
-timestamp: 2026-08-21T00:00:00Z
+timestamp: 2026-08-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
@@ -746,8 +747,27 @@ package cleared its chamber-of-origin crossover.
   with **trillions of tokens weekly through Azure Foundry**, including **OpenAI
   models used to grade Meta's own outputs**, and Meta building a **competing
   multi-model API service** — a striking portrait of a rival paying [[microsoft]]
-  and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
-  2026-08-21).
+and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
+   2026-08-21).
+
+- **NVIDIA pushes AI server prices up >15%; data-center opposition hardens into
+  a first-order political input (2026-08-23).** Three 2026-08-23 data points
+  compound the buildout's cost-and-politics ledger. **(1)** Bloomberg reports
+  [[nvidia|NVIDIA]] communicated a **>15% AI-server price increase to its
+  largest customers, effective on early-2027 shipments**, blaming **soaring
+  memory costs** — no first-party statement, and memory is only a minority of a
+  rack-scale BOM, so treat size and attribution as report-grade (see
+  [[nvidia]]). **(2)** A **Heatmap News survey** finds **three in four Americans
+  oppose a data center near them** (up from an even split a year ago), with
+  **61% "strongly opposed"** — and reporting says the number is **headed into
+  [[anthropic|Anthropic's]] IPO risk factors**, with investor listing
+  expectations near **$2T**, down from the $3T the FT carried on 2026-08-13.
+  **(3)** Same-week concrete actions: Florida gubernatorial primary winner
+  **Byron Donalds** proposed **in-state data-center restrictions**, and
+  Pennsylvania Governor **Josh Shapiro** signed an executive order imposing
+  **stringent development standards** — building on the Texas interconnection
+  gate and the PA GRID EO already tracked on this page (ARA daily digest
+  2026-08-23).
 
 ## Open questions
 - **Does the permitting/power gate bind before the demand question resolves?**

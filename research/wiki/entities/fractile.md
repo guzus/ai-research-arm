@@ -4,10 +4,11 @@ title: Fractile
 type: entity
 aliases: [Fractile Systems]
 tags: [ai-chips, inference, hardware, anthropic-supplier, in-memory-compute]
-description: UK inference-chip startup that Bloomberg reports will supply Anthropic with chips (2026-08-20) — the first named-outlet confirmation that Anthropic is buying inference silicon from a startup — in advanced talks at more than six times its May valuation (~$6.5B target) on ~$250M of chip supply.
+description: UK inference-chip startup that Bloomberg reports will supply Anthropic with chips (2026-08-20) — the first named-outlet confirmation that Anthropic is buying inference silicon from a startup — with the ~$6.5B valuation target landing as a reported $600M raise at $6.5B, roughly a 6.5× step-up (2026-08-23).
 created_at: 2026-08-20
-timestamp: 2026-08-20T00:00:00Z
+timestamp: 2026-08-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
 ---
 
@@ -37,6 +38,12 @@ relays attaching roughly **$250M of chips** to the supply arrangement
 - **Neither party has commented** — no first-party statement from
   Anthropic or Fractile on the supply deal or the valuation talks, so the
   ~$250M chip figure and ~$6.5B mark are relayed, not confirmed.
+- **The ~$6.5B round reports as closed — a $600M raise at a $6.5B valuation
+  (2026-08-23).** The "advanced talks at more than six times its May
+  valuation" from 2026-08-20 landed as a reported **$600M raise at $6.5B** —
+  roughly a **6.5× step-up** from the **$220M round at $1B months ago**.
+  Single relay of a trade report; treat the exact terms as reported, not
+  first-party (ARA daily digest 2026-08-23).
 
 ## Open questions
 

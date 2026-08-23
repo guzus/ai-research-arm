@@ -6,13 +6,14 @@ aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "N
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.
 created_at: 2026-06-05
-timestamp: 2026-08-22T00:00:00Z
+timestamp: 2026-08-23T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
@@ -251,6 +252,18 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   technology-export and US-Korea-policy question more than a corporate one —
   single-source reported, no first-party echo (TechCrunch, @PhilipJohnston, The
   Information; ARA daily digest 2026-08-22).
+
+## AI server prices rise >15% on memory costs (2026-08-23)
+
+- **NVIDIA lifts AI server prices more than 15% (2026-08-23).** Per Bloomberg,
+  NVIDIA **communicated the increase to its largest customers**, **blamed
+  soaring memory costs**, and it **applies to systems shipped early next year
+  (early-2027)**. Two caveats govern the read: **no NVIDIA first-party
+  statement** appeared in the monitored set, and **memory is only a minority
+  of a rack-scale bill of materials** — so the framing is plausible but the
+  attribution is single-outlet (Bloomberg via @pequityresearch; ARA daily
+  digest 2026-08-23). This is the price-side counterpart to the HBM/DRAM
+  squeeze tracked all cycle on [[ai-capex]], [[micron]] and [[sk-hynix]].
 
 ## Open questions
 - **The TSMC ceiling.** TSMC warned (2026-06-05) it **cannot meet AI-chip demand
