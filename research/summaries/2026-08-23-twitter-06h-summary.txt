@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-23 06:56:38 UTC
+
+CYCLE: Alibaba funds its AI build from the equity market; the Ox Alpha attribution swings back to Zhipu.
+
+TOP STORIES:
+• Alibaba places HK$80bn (~$10.2B) in Hong Kong, its first since 2019, with 100% of proceeds earmarked for AI infrastructure [⚠]
+• The Cursor theory for Ox Alpha is argued down — a code-only shop has no reason to post-train vision — pointing back at a Zhipu multimodal GLM-5.3 [⚠]
+• Google reportedly widens custom silicon with Marvell; Marvell grants Google warrants on 58.97M shares at $206.58 (~$12.2B) [⚠]
+
+WATCH: An HKEX filing or Alibaba IR release confirming the placement's size, discount and use of proceeds.
+
+Full update on GitHub.
