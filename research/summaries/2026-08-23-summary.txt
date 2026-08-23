@@ -1,0 +1,15 @@
+AI News - 2026-08-23
+
+TOP STORIES:
+• OpenAI cuts GPT-5.6 "Sol" API pricing 20%+ ($4/$20 per Mtok)
+• Z.ai delays GLM-5.3 open weights after model found 1,000+ real security bugs
+• Nvidia: agent "harness" design beats raw model quality on long-horizon tasks
+• Firecrawl launches Developer Index for coding agents (70M+ repos)
+• OpenAI closing enterprise-adoption gap with Anthropic, new data shows
+
+KEY NUMBERS:
+• GPT-5.6 Sol: $4/Mtok input, $20/Mtok output (promo through Nov 21, 2026)
+• GLM-5.3: 1,000+ real security bugs found in widely used software
+• Firecrawl Developer Index: 70M+ repos, docs, issues indexed
+
+Full report on GitHub.
