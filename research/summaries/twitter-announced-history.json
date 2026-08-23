@@ -25504,5 +25504,33 @@
     "headline": "OVER 85% OF OPENROUTER AGENT TOKENS ARE CACHED REUSES \u2014 AGENT USAGE UP ~14X SINCE FEBRUARY",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2091326423596404871"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-23 06:56:38 UTC",
+    "headline": "ALIBABA PLACES HK$80B (~$10.2B) IN HONG KONG \u2014 ALL PROCEEDS EARMARKED FOR AI INFRASTRUCTURE, FIRST PLACEMENT SINCE 2019",
+    "source": "@deepseek_re",
+    "url": "https://x.com/deepseek_re/status/2091418297409618310"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-23 06:56:38 UTC",
+    "headline": "OX ALPHA: CURSOR THEORY REJECTED \u2014 \"WHY WOULD CURSOR POST-TRAIN VISION?\" \u2014 ATTRIBUTION SWINGS BACK TO ZHIPU",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2091389611251568741"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-23 06:56:38 UTC",
+    "headline": "GOOGLE WIDENS CUSTOM SILICON WITH MARVELL \u2014 WARRANTS ON 58.97M SHARES AT $206.58, ~$12.2B IF FULLY EXERCISED",
+    "source": "@ramyafathy",
+    "url": "https://x.com/ramyafathy/status/2091418008308625725"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-23 06:56:38 UTC",
+    "headline": "OX ALPHA CALLED TOO CLOSE TO GLM-5.3 TO USE AS A SUBAGENT \u2014 \"JUST RUN OX @4 INSTEAD\"",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2091408735952314518"
   }
 ]
