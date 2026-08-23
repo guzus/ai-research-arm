@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-27 16:00 UTC",
-    "headline": "GPT-5.5 GOES GA IN MICROSOFT FOUNDRY \u2014 LONGER CONTEXT, SMARTER AGENTS, LOWER COST",
-    "source": "@Azure",
-    "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/Azure/status/2048803892960694724"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-27 16:00 UTC",
-    "headline": "CLAUDE OPUS 4.7 NOW LIVE IN MICROSOFT FOUNDRY \u2014 FIRST ANTHROPIC FRONTIER MODEL ON ENTERPRISE STACK",
-    "source": "@Azure",
-    "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/Azure/status/2048804250101231839"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-27 16:00 UTC",
-    "headline": "MICROSOFT AI SHIPS MAI-IMAGE-2-EFFICIENT \u2014 22% FASTER, 4X MORE EFFICIENT, 41% LOWER PRICED THAN MAI-IMAGE-2",
-    "source": "@mustafasuleyman",
-    "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/mustafasuleyman/status/2048801300976750891"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-04-27 16:00 UTC",
-    "headline": "BING'S HARRIER OPEN-SOURCE EMBEDDING MODEL TAKES #1 ON MTEB-V2 MULTILINGUAL \u2014 100+ LANGUAGES",
-    "source": "@mustafasuleyman",
-    "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/mustafasuleyman/status/2048800842535890948"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-04-27 16:00 UTC",
-    "headline": "SULEYMAN: 1,000X MORE EFFECTIVE COMPUTE BY 2028 \u2014 'WE'RE NOT HITTING AN AI CEILING'",
-    "source": "@mustafasuleyman",
-    "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/mustafasuleyman/status/2048801126510346434"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 16:00 UTC",
-    "headline": "MICROSOFT FAIRWATER WISCONSIN AI DATACENTER GOES LIVE AHEAD OF SCHEDULE \u2014 PITCHED AS WORLD'S MOST POWERFUL",
-    "source": "@mustafasuleyman",
-    "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/mustafasuleyman/status/2048801014849351954"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-27 16:00 UTC",
-    "headline": "MICROSOFT FOUNDRY AGENTS PREVIEW OPENS \u2014 HOSTED AGENTS GET DEDICATED ENTERPRISE COMPUTERS",
-    "source": "@Azure",
-    "source_file": "research/summaries/2026-04-27-twitter-16h-headlines.json",
-    "url": "https://x.com/Azure/status/2048804186398314721"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-04-27 17:00 UTC",
     "headline": "CHINA ORDERS META TO UNWIND $2B MANUS AI DEAL \u2014 ~100 STAFF ALREADY INSIDE META SINGAPORE",
@@ -25532,5 +25469,54 @@
     "headline": "OX ALPHA CALLED TOO CLOSE TO GLM-5.3 TO USE AS A SUBAGENT \u2014 \"JUST RUN OX @4 INSTEAD\"",
     "source": "@teortaxesTex",
     "url": "https://x.com/teortaxesTex/status/2091408735952314518"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-23 21:31:21 UTC",
+    "headline": "HUGGING FACE EXPLORES SALE AT $13B OR MORE \u2014 NEARLY 3X ITS 2023 VALUATION, NO BIDDER NAMED",
+    "source": "@Katie_Roof",
+    "url": "https://x.com/Katie_Roof/status/2091602285701034425"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-23 21:31:21 UTC",
+    "headline": "ANTHROPIC'S CLAUDE CODE CREATOR: \"OPUS IS NOT PERFECT, AND IT IS A BIG PRIORITY FOR THE TEAM TO FIX IT\"",
+    "source": "@bcherny",
+    "url": "https://x.com/bcherny/status/2091591570982371454"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-23 21:31:21 UTC",
+    "headline": "TWO UNRELEASED CLAUDE CHECKPOINTS SPOTTED \u2014 CLAUDE-MARSHMALLOW-EAP AND CLAUDE-MELON-EAP",
+    "source": "@notjazii",
+    "url": "https://x.com/notjazii/status/2091578924639871451"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-23 21:31:21 UTC",
+    "headline": "BAKER: ATREIDES INTERNAL AI SPEND 100X HIGHER IN AUGUST VS MARCH, STILL DOUBLING MONTHLY",
+    "source": "@GavinSBaker",
+    "url": "https://x.com/GavinSBaker/status/2091590204486451277"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-23 21:31:21 UTC",
+    "headline": "SEMIANALYSIS: $200/MO CLAUDE PLAN YIELDS UP TO $8,000 IN TOKENS, OPENAI'S UP TO $14,000",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091631658973671900"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-23 21:31:21 UTC",
+    "headline": "NVIDIA PLANS SMALL-BATCH SHIPMENTS OF NEW AI CHIP TO CHINA BY YEAR-END",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091601388279083139"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-23 21:31:21 UTC",
+    "headline": "NVIDIA IN TALKS TO BACK DATA COMPANY MERCOR AT $20B VALUATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091571204410810744"
   }
 ]
