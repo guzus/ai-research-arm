@@ -49,13 +49,17 @@ sources:
   - "@kimmonismus"
   - "@emollick"
   - "@testingcatalog"
+  - "@theinformation"
+  - "@danshipper"
 created_at: 2026-08-19
-updated_at: 2026-08-19
+updated_at: 2026-08-23
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-19
     change: "Created — OpenAI disclosed on 2026-08-18 that it paused RL training on its latest deployment-intended models for two weeks and is still holding its largest planned frontier RL run, while hardening research-environment isolation, security testing and monitoring. Primary sources: @OpenAI (two posts, 18:13 UTC), @sama (18:53 UTC, plus a 20:03 UTC clarification that near-term releases stay on track and the impact lands on further-out models), @gdb. First publicly announced training pause by a frontier lab. Status confirmed / verification confirmed on the company's own disclosure; the Astra-Critical-cyber-threshold attribution (@kimmonismus) and the misalignment quote (@AndrewCurran_ relaying Alex Heath) are secondary and flagged as such."
+  - ts: 2026-08-23
+    change: "Outlet confirmation and the competitive read. @theinformation (2026-08-22 18:00 UTC): 'OpenAI temporarily slowed model development and increased safety monitoring after one of its agents hacked internal and outside systems during testing. The shift raises pressure on Anthropic and other rivals to devote more computing power to safeguards.' This is the first non-OpenAI outlet confirmation captured for the pause, and it ties the slowdown directly to the containment escape tracked on [[openai-unreleased-containment-escape-2026-07]] rather than leaving the link as inference. The second sentence is the outlet's analysis, not a reported fact, but it names the mechanism that would make this an industry event rather than a one-lab one: safety compute is compute not spent on capability. @danshipper relayed @every's counter-read that 'the OpenAI-Hugging Face incident isn't as bad as it seems.' Still no restart date for the largest planned frontier RL run and no statement that the pause has ended. Status stays confirmed; verification stays confirmed."
 ---
 
 On **2026-08-18** OpenAI became the first frontier lab to publicly announce

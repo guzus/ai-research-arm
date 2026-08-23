@@ -160,7 +160,7 @@ status_note: |
   @kimmonismus, @scaling01, @testingcatalog, @AndrewCurran_. Official
   primary + broad corroboration → status stays `released`; verification
   stays `confirmed`.
-expected: "GA confirmed 2026-07-10: OpenAI's own account announced GPT-5.6 Sol Ultra generally available, and @sama says GPT-5.6 is now the preferred model in Microsoft 365 Copilot. Family is Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol set SOTA on Terminal-Bench 2.1 with max + ultra (subagent) modes; pricing Sol $5/$30, Terra $2.50/$15, Luna $1/$6 per MTok"
+expected: "Pricing is the live storyline: >20% cut to GPT-5.6 Sol API and credit pricing announced 2026-08-21, time-boxed to three months, covering ChatGPT Work and Codex credits but explicitly not Pro/Plus/Business subscriptions. Pending: whether the cut is made permanent at the three-month mark. GA confirmed 2026-07-10: OpenAI's own account announced GPT-5.6 Sol Ultra generally available, and @sama says GPT-5.6 is now the preferred model in Microsoft 365 Copilot. Family is Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol set SOTA on Terminal-Bench 2.1 with max + ultra (subagent) modes; pricing Sol $5/$30, Terra $2.50/$15, Luna $1/$6 per MTok"
 labels:
   - openai
   - frontier-model
@@ -174,11 +174,15 @@ sources:
   - "@haider1"
   - "@theinformation"
   - "@OpenAI"
+  - "@OpenAIDevs"
   - "@sama"
+  - "@kimmonismus"
+  - "@ns123abc"
+  - "@testingcatalog"
   - https://openai.com/index/previewing-gpt-5-6-sol/
   - https://simonwillison.net/2026/Jun/26/openai/
 created_at: 2026-06-09
-updated_at: 2026-08-19
+updated_at: 2026-08-23
 closed_at: null
 closed_reason: null
 history:
@@ -214,6 +218,8 @@ history:
     change: "API pricing cuts: GPT-5.6 Luna -80% (to $0.20/$1.20 per Mtok), Terra -20% (to $2/$12 per Mtok), plus a new ~2.5x-speed/~2x-price 'Fast' mode for Sol. Official @OpenAI account, exact figures via @sama/@gdb; corroborated by @kimmonismus, @scaling01, @testingcatalog, @AndrewCurran_. Status stays released; verification stays confirmed."
   - ts: 2026-08-19
     change: "Distribution-side pricing move plus a new inference host. @SemiAnalysis_ (2026-08-18 05:36 UTC) reports OpenAI announced a 50% price cut for GPT-5.6 Sol exclusively on OpenRouter and Vercel AI Gateway, and reads it as a market-share optic rather than a volume play: those two gateways are a small share of OpenAI token volume but are the datasources most analysts use to estimate lab/model share, so a >2x volume response would be naively scored as a share win. Separately, Cerebras new CS-4 accelerator is quoted at ~1300 tok/s serving GPT-5.6-Sol (@scaling01 2026-08-19, see [[cerebras-cs-4-2026-08]]) — the fastest published serving rate for the model. Not closing on the >=4-week released-and-aged trigger while the pricing and distribution storyline is still producing signal. Status stays released, verification stays confirmed."
+  - ts: 2026-08-23
+    change: "Broad API price cut, OpenAI-primary. @OpenAI (2026-08-21 19:34 UTC, ~13K likes / 783 RT): 'As we continue to push the frontier of capabilities while improving efficiency, we're dropping API and credit pricing of GPT-5.6 Sol by over 20% for the next 3 months,' with a follow-up confirming it is live on the API and rolling out across eligible plans for ChatGPT Work and Codex credits while 'Pro, Plus, and Business subscription usage remains unchanged.' @OpenAIDevs posted the developer-facing version; @sama amplified. Note the shape versus the 2026-08-19 entry: that was a gateway-exclusive 50% cut on OpenRouter/Vercel, this is the headline API price and it is explicitly time-boxed to three months, framed as an efficiency pass-through rather than a permanent repricing. Reaction split on who benefits: @ns123abc ('20% discount does NOT apply for ChatGPT subscriptions, only for Work/Codex users… TOLD YA') and 'THE PRICE WAR HAS OFFICIALLY BEGUN'; @kimmonismus reads it as three things at once — pressure on Anthropic during its Opus 5 PR difficulties, evidence OpenAI's own compute investment is compounding, and a response to cheap Chinese models (DeepSeek V4 Flash, the suspected GLM-5.3 Flash behind [[stealth-ox-alpha-model-2026-08]]). That third reading is analysis, not an OpenAI statement. Still not closing on released-and-aged: the pricing storyline is producing primary-source signal at increasing frequency. Status stays released; verification stays confirmed (OpenAI's own account, exact terms)."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely
