@@ -4,10 +4,11 @@ title: California AI Regulation
 type: theme
 aliases: ["California AI regulation", "California AI bills", "Sacramento AI policy", "California Transparency in Frontier AI Act", "AB 1609", "AB 1159", "A 9317", "SB 942", "AB 853", "California AI Transparency Act"]
 tags: [policy, regulation, california, ai-governance, frontier-ai]
-description: The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover.
+description: The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover, and now marking OpenAI's reversal on SB 53 from opposition to asking for it to be strengthened (2026-08-23).
 created_at: 2026-05-30
-timestamp: 2026-08-03T00:00:00Z
+timestamp: 2026-08-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
@@ -98,6 +99,15 @@ a California legislature carrying a **~30-bill AI package** through the
   (single Chinese-language relay; Google has said nothing on the record).
   Watermark-based provenance is being mandated at the moment its robustness is
   in dispute.
+
+- **OpenAI reverses on SB 53 — from opposition to asking for a stronger bill
+  (2026-08-23).** [[openai]] is now **calling for California to strengthen SB
+  53**, the AI safety bill it previously opposed — TechCrunch carried the
+  reversal first-party at 16:30 UTC. A frontier lab reversing toward *more*
+  regulation on a bill it fought is a signal worth flagging on this page: as
+  the consumer-facing disclosure package (AB 1609, SB 942) and the frontier
+  safety track separate, a lab's regulatory position is no longer a fixed
+  stance but a moving, negotiation-shaped one (ARA daily digest 2026-08-23).
 
 ## Open questions
 

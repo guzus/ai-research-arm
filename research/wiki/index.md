@@ -36,6 +36,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-3-5-flash]] — Google's fast, low-cost frontier model shipped at I/O 2026.
 - [[gemini-3-5-pro]] — Google's Pro-tier follow-on to Gemini 3.5 Flash; reported months behind schedule, wiping out ~$200B of Alphabet's market cap.
 - [[gemini-3-6-flash]] — Google's next Flash-tier trio (3.6 Flash, 3.5 Flash-Lite, Flash "Cyber"), shipped 2026-07-21 while 3.5 Pro stays delayed and Gemini 4 is already training.
+- [[gemini-3-7-flash]] — Google's Flash-tier follow-on (2026-08-13) at 50% below 3.6 Flash pricing through year end; claimed Google's fastest-growing launch ever, ARC-AGI-2 at 84.6% for $0.25/task.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; encoder-free 12B variant runs on 16 GB RAM, 150M+ cumulative downloads.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
 - [[google]] — Hyperscaler behind Gemini; ordered by the EU to open Android and Search to rivals under the DMA (2026-07-17); shipped the 2026 hardware line with Gemini throughout (2026-08-13) and took a revenue-linked equity claim on Marvell against custom-silicon purchases (2026-08-20).
@@ -67,6 +68,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[openrouter]] — LLM-routing API serving 400+ models to 8M+ developers; closed $113M Series B at $1.3B on 2026-05-30, then acquired by Stripe at a reported $7.5B–$8B+ confirmed by a board member and the company's blog (2026-08-19/20).
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
+- [[ox-alpha]] — Unattributed free model whose hype arc closed downward over five Twitter cycles (2026-08-22/23); community consensus reads it as a Z.ai GLM Flash variant, no lab has claimed it, free window closing near 2026-08-27.
 - [[palantir]] — US enterprise/government data-analytics company; FY26Q2 revenue $1.935B (+93% YoY) on AI demand, with a CEO arguing enterprises cannot trust frontier labs directly.
 - [[prometheus]] — Jeff Bezos's industrial-AI startup building an "artificial general engineer"; $12B Series B at ~$41B on 2026-06-11, industrial AI's first megaround.
 - [[poolside]] — AI-software company whose model-development technology NVIDIA licensed for $6B alongside a $1B investment at a $12B pre-money valuation (2026-08-21), structured to avoid a reviewable change of control.
