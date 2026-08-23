@@ -1,48 +1,9 @@
 {
-  "generatedAt": "2026-08-23T09:03:30.012Z",
-  "windowStart": "2026-08-21T21:00:00.000Z",
-  "windowEnd": "2026-08-24T22:00:00.000Z",
+  "generatedAt": "2026-08-23T10:59:56.150Z",
+  "windowStart": "2026-08-21T22:00:00.000Z",
+  "windowEnd": "2026-08-24T23:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-a606d8332218",
-      "kind": "completed",
-      "lane": "Twitter/X",
-      "title": "Twitter/X brief",
-      "status": "completed",
-      "start": "2026-08-21T21:36:00.000Z",
-      "end": "2026-08-21T21:45:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "deepseek-v4-flash",
-      "commit": "a606d8332218",
-      "url": "https://github.com/guzus/ai-research-arm/commit/a606d83322182a8e28b43d5e7d5a452d72dbf0e6"
-    },
-    {
-      "id": "commit-3e7d79c6a88e",
-      "kind": "completed",
-      "lane": "Delivery",
-      "title": "Twitter alert delivery",
-      "status": "completed",
-      "start": "2026-08-21T21:37:00.000Z",
-      "end": "2026-08-21T21:46:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "hooker",
-      "commit": "3e7d79c6a88e",
-      "url": "https://github.com/guzus/ai-research-arm/commit/3e7d79c6a88ee83c34ce2ef94bad7661c843c555"
-    },
-    {
-      "id": "commit-4f9b41827bb8",
-      "kind": "completed",
-      "lane": "Twitter/X",
-      "title": "Twitter/X brief",
-      "status": "completed",
-      "start": "2026-08-21T21:56:00.000Z",
-      "end": "2026-08-21T22:05:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "deepseek-v4-flash",
-      "commit": "4f9b41827bb8",
-      "url": "https://github.com/guzus/ai-research-arm/commit/4f9b41827bb855c45c879f92e020d5270489e725"
-    },
     {
       "id": "commit-c046c5a12b79",
       "kind": "completed",
@@ -707,74 +668,43 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/2b533f5aa638bfc53a4caeb8844716a2f210139b"
     },
     {
-      "id": "scheduled-hourly-twitter-yml-7---3-------2026-08-23T09-07-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-2df09b160758",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-08-23 09:03 UTC (#2962)",
+      "status": "completed",
+      "start": "2026-08-23T09:03:00.000Z",
+      "end": "2026-08-23T09:04:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "2df09b160758",
+      "url": "https://github.com/guzus/ai-research-arm/commit/2df09b160758aa3f3ce6bbf849b7e4ad71335386"
+    },
+    {
+      "id": "commit-bd880361591c",
+      "kind": "completed",
       "lane": "Twitter/X",
-      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash / cursor-grok-4p6-fast)",
-      "status": "scheduled",
-      "start": "2026-08-23T09:07:00.000Z",
-      "end": "2026-08-23T10:07:00.000Z",
-      "source": "cron 7 */3 * * *"
+      "title": "Twitter/X brief",
+      "status": "completed",
+      "start": "2026-08-23T09:30:00.000Z",
+      "end": "2026-08-23T09:39:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "deepseek-v4-flash",
+      "commit": "bd880361591c",
+      "url": "https://github.com/guzus/ai-research-arm/commit/bd880361591cb84390575b121a1d2456b1d46926"
     },
     {
-      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-08-23T09-26-00-000Z",
-      "kind": "scheduled",
-      "lane": "Models",
-      "title": "Model Pricing (price vs. capability)",
-      "status": "scheduled",
-      "start": "2026-08-23T09:26:00.000Z",
-      "end": "2026-08-23T10:11:00.000Z",
-      "source": "cron 26 3,9,15,21 * * *"
-    },
-    {
-      "id": "scheduled-market-quotes-yml-53---3-------2026-08-23T09-53-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Market Quotes Refresh",
-      "status": "scheduled",
-      "start": "2026-08-23T09:53:00.000Z",
-      "end": "2026-08-23T10:23:00.000Z",
-      "source": "cron 53 */3 * * *"
-    },
-    {
-      "id": "scheduled-2h-bluesky-yml-11-10-------2026-08-23T10-11-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-ac01a721738f",
+      "kind": "completed",
       "lane": "Bluesky",
-      "title": "Bluesky AI Researcher Commentary (Daily)",
-      "status": "scheduled",
-      "start": "2026-08-23T10:11:00.000Z",
-      "end": "2026-08-23T10:36:00.000Z",
-      "source": "cron 11 10 * * *"
-    },
-    {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-08-23T10-30-00-000Z",
-      "kind": "scheduled",
-      "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-08-23T10:30:00.000Z",
-      "end": "2026-08-23T10:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-08-23T10-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-08-23T10:45:00.000Z",
-      "end": "2026-08-23T11:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-08-23T10-47-00-000Z",
-      "kind": "scheduled",
-      "lane": "Blogs",
-      "title": "Naver Blog Subscriptions",
-      "status": "scheduled",
-      "start": "2026-08-23T10:47:00.000Z",
-      "end": "2026-08-23T11:17:00.000Z",
-      "source": "cron 47 */2 * * *"
+      "title": "Bluesky commentary",
+      "status": "completed",
+      "start": "2026-08-23T10:34:00.000Z",
+      "end": "2026-08-23T10:37:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "ac01a721738f",
+      "url": "https://github.com/guzus/ai-research-arm/commit/ac01a721738fc9d031b1dc3a737f0afea1ffa492"
     },
     {
       "id": "scheduled-liveness-check-yml-0---6-------2026-08-23T12-00-00-000Z",
@@ -1924,6 +1854,76 @@
       "status": "scheduled",
       "start": "2026-08-24T20:47:00.000Z",
       "end": "2026-08-24T21:17:00.000Z",
+      "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-7---3-------2026-08-24T21-07-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash / cursor-grok-4p6-fast)",
+      "status": "scheduled",
+      "start": "2026-08-24T21:07:00.000Z",
+      "end": "2026-08-24T22:07:00.000Z",
+      "source": "cron 7 */3 * * *"
+    },
+    {
+      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-08-24T21-26-00-000Z",
+      "kind": "scheduled",
+      "lane": "Models",
+      "title": "Model Pricing (price vs. capability)",
+      "status": "scheduled",
+      "start": "2026-08-24T21:26:00.000Z",
+      "end": "2026-08-24T22:11:00.000Z",
+      "source": "cron 26 3,9,15,21 * * *"
+    },
+    {
+      "id": "scheduled-twitter-model-ab-yml-40-21-------2026-08-24T21-40-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter Model A/B Eval",
+      "status": "scheduled",
+      "start": "2026-08-24T21:40:00.000Z",
+      "end": "2026-08-24T22:40:00.000Z",
+      "source": "cron 40 21 * * *"
+    },
+    {
+      "id": "scheduled-market-quotes-yml-53---3-------2026-08-24T21-53-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Market Quotes Refresh",
+      "status": "scheduled",
+      "start": "2026-08-24T21:53:00.000Z",
+      "end": "2026-08-24T22:23:00.000Z",
+      "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-08-24T22-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-08-24T22:30:00.000Z",
+      "end": "2026-08-24T22:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-08-24T22-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-08-24T22:45:00.000Z",
+      "end": "2026-08-24T23:15:00.000Z",
+      "source": "cron 45 */2 * * *"
+    },
+    {
+      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-08-24T22-47-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Naver Blog Subscriptions",
+      "status": "scheduled",
+      "start": "2026-08-24T22:47:00.000Z",
+      "end": "2026-08-24T23:17:00.000Z",
       "source": "cron 47 */2 * * *"
     }
   ]
