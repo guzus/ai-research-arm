@@ -1,48 +1,9 @@
 {
-  "generatedAt": "2026-08-24T19:17:18.421Z",
-  "windowStart": "2026-08-23T07:00:00.000Z",
-  "windowEnd": "2026-08-26T08:00:00.000Z",
+  "generatedAt": "2026-08-24T21:05:28.649Z",
+  "windowStart": "2026-08-23T09:00:00.000Z",
+  "windowEnd": "2026-08-26T10:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-9b2892b62a67",
-      "kind": "completed",
-      "lane": "Models",
-      "title": "Model release tickets",
-      "status": "completed",
-      "start": "2026-08-23T07:10:00.000Z",
-      "end": "2026-08-23T07:30:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "9b2892b62a67",
-      "url": "https://github.com/guzus/ai-research-arm/commit/9b2892b62a6792ac1ae30d946e85e8417ca93bfc"
-    },
-    {
-      "id": "commit-2b533f5aa638",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-08-23 07:35 UTC (#2959)",
-      "status": "completed",
-      "start": "2026-08-23T07:35:00.000Z",
-      "end": "2026-08-23T07:36:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "2b533f5aa638",
-      "url": "https://github.com/guzus/ai-research-arm/commit/2b533f5aa638bfc53a4caeb8844716a2f210139b"
-    },
-    {
-      "id": "commit-2df09b160758",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-08-23 09:03 UTC (#2962)",
-      "status": "completed",
-      "start": "2026-08-23T09:03:00.000Z",
-      "end": "2026-08-23T09:04:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "2df09b160758",
-      "url": "https://github.com/guzus/ai-research-arm/commit/2df09b160758aa3f3ce6bbf849b7e4ad71335386"
-    },
     {
       "id": "commit-bd880361591c",
       "kind": "completed",
@@ -655,54 +616,17 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/0ca6683090798e813be65292cd05c875b0b82117"
     },
     {
-      "id": "scheduled-4h-community-yml-19---4-------2026-08-24T20-19-00-000Z",
-      "kind": "scheduled",
-      "lane": "Community",
-      "title": "Community AI Digest (HN + Reddit)",
-      "status": "scheduled",
-      "start": "2026-08-24T20:19:00.000Z",
-      "end": "2026-08-24T21:19:00.000Z",
-      "source": "cron 19 */4 * * *"
-    },
-    {
-      "id": "scheduled-ai-news-research-yml-23-8-20-------2026-08-24T20-23-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "AI News Research Agent",
-      "status": "scheduled",
-      "start": "2026-08-24T20:23:00.000Z",
-      "end": "2026-08-24T20:53:00.000Z",
-      "source": "cron 23 8,20 * * *"
-    },
-    {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-08-24T20-30-00-000Z",
-      "kind": "scheduled",
-      "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-08-24T20:30:00.000Z",
-      "end": "2026-08-24T20:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-08-24T20-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-08-24T20:45:00.000Z",
-      "end": "2026-08-24T21:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-08-24T20-47-00-000Z",
-      "kind": "scheduled",
-      "lane": "Blogs",
-      "title": "Naver Blog Subscriptions",
-      "status": "scheduled",
-      "start": "2026-08-24T20:47:00.000Z",
-      "end": "2026-08-24T21:17:00.000Z",
-      "source": "cron 47 */2 * * *"
+      "id": "commit-96b4c1965321",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-08-24 19:17 UTC (#3069)",
+      "status": "completed",
+      "start": "2026-08-24T19:17:00.000Z",
+      "end": "2026-08-24T19:18:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "96b4c1965321",
+      "url": "https://github.com/guzus/ai-research-arm/commit/96b4c196532142ff954a6983fed6af68ab093d56"
     },
     {
       "id": "scheduled-hourly-twitter-yml-7---3-------2026-08-24T21-07-00-000Z",
@@ -1933,6 +1857,56 @@
       "start": "2026-08-26T06:53:00.000Z",
       "end": "2026-08-26T07:23:00.000Z",
       "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-4h-community-yml-19---4-------2026-08-26T08-19-00-000Z",
+      "kind": "scheduled",
+      "lane": "Community",
+      "title": "Community AI Digest (HN + Reddit)",
+      "status": "scheduled",
+      "start": "2026-08-26T08:19:00.000Z",
+      "end": "2026-08-26T09:19:00.000Z",
+      "source": "cron 19 */4 * * *"
+    },
+    {
+      "id": "scheduled-ai-news-research-yml-23-8-20-------2026-08-26T08-23-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "AI News Research Agent",
+      "status": "scheduled",
+      "start": "2026-08-26T08:23:00.000Z",
+      "end": "2026-08-26T08:53:00.000Z",
+      "source": "cron 23 8,20 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-08-26T08-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-08-26T08:30:00.000Z",
+      "end": "2026-08-26T08:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-08-26T08-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-08-26T08:45:00.000Z",
+      "end": "2026-08-26T09:15:00.000Z",
+      "source": "cron 45 */2 * * *"
+    },
+    {
+      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-08-26T08-47-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Naver Blog Subscriptions",
+      "status": "scheduled",
+      "start": "2026-08-26T08:47:00.000Z",
+      "end": "2026-08-26T09:17:00.000Z",
+      "source": "cron 47 */2 * * *"
     }
   ]
 }
