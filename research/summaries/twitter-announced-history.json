@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "COGNITION RAISING AT $25B \u2014 UP FROM $10.2B IN SEPT, $4B LAST MARCH",
-    "source": "search:business",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/search?q=Cognition%20%2425B"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "AI STARTUPS HIT WITH HIGHER PRICES, MONTHS-LONG NVIDIA GPU WAIT TIMES AS CLOUDS RESERVE SUPPLY FOR OPENAI, ANTHROPIC",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048862265017815180"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "XIAOMI MIMO-V2.5 LANDS ON HUGGING FACE",
-    "source": "@_akhaliq",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/_akhaliq/status/2048861462991360155"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "INTEL ISSCC 2026 \u2014 UCIE-S OVER 22NM ORGANIC SUBSTRATE HITS 48 GB/S/LANE AT 30MM, BEATS 3NM EMIB BY 3X DATA RATE",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048870022685081886"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "MUSK LIVE-TWEETS PERJURY CLAIM FROM COURTHOUSE \u2014 SAYS ALTMAN HID OWNERSHIP OF OPENAI STARTUP FUND IN CONGRESSIONAL TESTIMONY",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2048833679791641057"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "SILVER LAKE'S HUTCHINS \u2014 AI IS A TSUNAMI, LEVERAGED SOFTWARE COMPANIES ARE MELTING ICE CUBES",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048875869997760764"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-04-28 01:00 UTC",
     "headline": "MICROSOFT-OPENAI EXCLUSIVITY ENDS \u2014 OPENAI CLEARED TO SELL ON AWS AND GOOGLE CLOUD",
@@ -25488,5 +25434,47 @@
     "headline": "RL-TRAINED CODING MODEL PAINTS BY WRITING JAVASCRIPT \u2014 OUTPUT IS EDITABLE CODE, NOT PIXELS",
     "source": "@mervenoyann",
     "url": "https://x.com/mervenoyann/status/2091801467053072488"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "XIAOMI XRING O100 SPEC'D AT 1.22 TB/S NEAR-MEMORY BANDWIDTH \u2014 WAFER-ON-WAFER NPU-DRAM AT 1.4 MICRON PITCH",
+    "source": "@neil_shah",
+    "url": "https://x.com/neil_shah/status/2091874398756278472"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "XIAOMI DATES O100 AND D100 TO 2027 COMMERCIAL USE \u2014 AI CUBE RUNS 120B PARAMS LOCALLY AT 150W, STILL A PROTOTYPE",
+    "source": "@Nando_G_AI",
+    "url": "https://x.com/Nando_G_AI/status/2091875256663261478"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "STUDY CLAIMS CROSS-CUSTOMER PROMPT-CACHE READS ON LLM API RELAYS \u2014 ALL 5 GATEWAYS TESTED, OPENAI AND ANTHROPIC BOTH",
+    "source": "@Bell_QuoLu",
+    "url": "https://x.com/Bell_QuoLu/status/2091873947868705075"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "NVIDIA SAID TO RAISE AI SERVER PRICES OVER 15% ON VERA RUBIN AND GRACE BLACKWELL \u2014 MEMORY COSTS CITED",
+    "source": "@n5s_ai",
+    "url": "https://x.com/n5s_ai/status/2091875110533677111"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "TCS BUYS PORSCHE IT ARM MHP FOR 320 MILLION EUROS, SIGNS 1.25 BILLION EURO FIVE-YEAR AI MOBILITY DEAL",
+    "source": "@TCS",
+    "url": "https://x.com/TCS/status/2091874793553584211"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "AGENT SKILL LIBRARIES FAIL TO BEAT PLAIN CONTEXT \u2014 0.605 VS 0.602 ON GPT-5.3-CODEX IN CONTINUALSKILLBENCH ABLATION",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2091855138483032462"
   }
 ]
