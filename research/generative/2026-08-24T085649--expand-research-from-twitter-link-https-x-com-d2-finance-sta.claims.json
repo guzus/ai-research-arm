@@ -1,0 +1,224 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Term Finance's vault layer (Term Vaults, built on Yearn v3 infrastructure) suffered a ~$8.5M governance-takeover exploit on 2026-08-23.",
+      "type": "event",
+      "source_urls": ["https://www.theblock.co/news/defi/2026-08-23-defi-lending-protocol-term-finance-loses-an-estimated-8-5-million-to-governance-exploit-412543", "https://cointelegraph.com/news/term-finance-8-5m-vault-governance-exploit"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Attacker acquired majority voting power over Term's sparsely-held DAO governance token using ~2 ETH routed through Tornado Cash, then passed malicious proposals: 100% control of 4 of 5 USDC strategy vaults and ~91% of the ETH Meta Vault.",
+      "type": "event",
+      "source_urls": ["https://www.thecoinrepublic.com/2026/08/23/crypto-scams-watch-term-labs-hit-by-8-5m-governance-exploit/", "https://www.coindesk.com/markets/2026/08/24/ethereum-lending-app-term-finance-loses-usd8-5-million-after-attacker-buys-voting-power"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-08-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Roughly 2,843 ETH (~$6.87-6.94M) and 1.68M USDC (swapped to ~1.68M DAI) were drained to consolidation wallet 0xD5183d8BfC65a50863C62aF2538198A8288FFc13.",
+      "type": "metric",
+      "source_urls": ["https://etherscan.io/address/0xD5183d8BfC65a50863C62aF2538198A8288FFc13", "https://www.theblock.co/news/defi/2026-08-23-defi-lending-protocol-term-finance-loses-an-estimated-8-5-million-to-governance-exploit-412543"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "The exploit's first identified attacker on-chain transaction landed at block 25816049, approximately 06:25 UTC on 2026-08-23.",
+      "type": "event",
+      "source_urls": ["https://www.cryptotimes.io/2026/08/23/term-finance-loses-8-5m-after-attacker-hijacks-dao-governance-vote/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-23",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c5",
+      "claim": "Term Labs stated its core lending/borrowing markets were unaffected; Yearn confirmed the exploit used a custom governance wrapper and did not touch standard Yearn v3 vaults.",
+      "type": "quote",
+      "source_urls": ["https://cointelegraph.com/news/term-finance-8-5m-vault-governance-exploit"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Tori Finance (@tori_finance) publicly stated at 11:03:05 UTC on 2026-08-23: 'Term Finance was exploited earlier today. Tori is not affected. trUSD and strUSD had zero exposure, Ecosystem Vault participants are fully covered, and all operations continue as normal. No action is required from anyone.'",
+      "type": "quote",
+      "source_urls": ["https://x.com/tori_finance"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-23",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c7",
+      "claim": "D2 Finance (@D2_Finance) publicly posted at 23:33:27 UTC on 2026-08-23, quote-tweeting Tori's statement: 'Five questions for @tori_finance on the Aug 23 cover and the attestation behind it... 1) The 250,500 trUSD that covered half the shortfall was minted at 09:48 UTC, an hour before the announcement. Why print fresh trUSD instead [of...]'",
+      "type": "quote",
+      "source_urls": ["https://x.com/D2_Finance/status/2091670181890162715"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-23",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "D2 Finance's questions 2 through 5, and the remainder of Tori Finance's statement past 'Whether you hold trUSD, strUSD, or an Ecosystem Vault...', could not be independently recovered through search, mirrors, or direct fetch in this research pass.",
+      "type": "other",
+      "source_urls": ["https://x.com/D2_Finance/status/2091670181890162715", "https://x.com/tori_finance"],
+      "source_tiers": ["unknown", "unknown"],
+      "as_of": "2026-08-24",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c9",
+      "claim": "The specific 250,500 trUSD mint transaction, its exact block timestamp, and its minter/recipient addresses could not be independently confirmed on-chain (Etherscan's transaction-list API required a key not available in this research pass, and the token page's rendered view did not surface a mint event for that date).",
+      "type": "other",
+      "source_urls": ["https://etherscan.io/token/0xd0580192e98ea6ceb9c7b6191ed2e27560911697"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-24",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c10",
+      "claim": "trUSD is Tori Finance's synthetic dollar, described by Tori as backed by delta-neutral/market-neutral trading positions plus a buffer, not literal 1:1 fiat reserves; direct minting is gated to KYC/AML-verified participants at NAV (10bps fee), while retail access is via secondary-market swaps.",
+      "type": "definition",
+      "source_urls": ["https://docs.tori.finance/products/trusd", "https://docs.tori.finance/resources/institutional"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-24",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "trUSD's ERC-20 contract (0xd0580192E98eA6CEB9c7b6191Ed2E27560911697) is an upgradeable proxy with max total supply of 65,507,554.35 trUSD and 427 holders as of the research date; CoinGecko lists circulating market cap near $54.4M.",
+      "type": "metric",
+      "source_urls": ["https://etherscan.io/token/0xd0580192e98ea6ceb9c7b6191ed2e27560911697", "https://www.coingecko.com/en/coins/tori-trusd"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-24",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "RockawayX's own risk disclosure for the Tori Ecosystem Vault states that off-chain custodian/counterparty failure risk is borne by the underlying reserves and therefore by every holder of trUSD and strUSD, and that trUSD trades on a soft peg that can deviate during periods of stress.",
+      "type": "quote",
+      "source_urls": ["https://www.rockawayx.com/insights/rockawayx-tori-ecosystem-vault-investment-thesis-risk-disclosure"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-24",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "Tori Finance publicly described a 'Tori USDC Ecosystem Vault' as 'Now on Term,' curated by RockawayX, generating yield by lending USDC against trUSD/strUSD/PT collateral — a lending market that accepts Tori's tokens as collateral, which is structurally distinct from depositing capital as a strategy inside one of Term's own exploited Meta/strategy vaults.",
+      "type": "definition",
+      "source_urls": ["https://x.com/tori_finance"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-24",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c14",
+      "claim": "No source found in this research names Tori Finance as an integration partner or Risk Curator in Term Labs' own 'Introducing Term Vaults' product materials, and no independent source could confirm or deny whether Tori's vault capital was inside one of the four drained USDC strategy vaults.",
+      "type": "other",
+      "source_urls": ["https://www.term.finance/post/vaults"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-24",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c15",
+      "claim": "Tori's proof-of-solvency dashboard, run by third party Accountable, is marketed as real-time reserve verification but returned no accessible body content or blocked-fetch errors in every retrieval attempt in this research pass, and Tori's own homepage showed 'N/A' for TVL and Total Backing Assets fields at the time of access.",
+      "type": "other",
+      "source_urls": ["https://accountable.tori.finance/", "https://www.tori.finance/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-24",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c16",
+      "claim": "MakerDAO's 2020 'Black Thursday' bad debt (~$4-8M) was resolved by minting and auctioning over 20,000 new MKR (a governance/equity-like token, not the stablecoin DAI itself) to recapitalize the system, and the peg held.",
+      "type": "event",
+      "source_urls": ["https://blockonomi.com/makerdao-emergency-5-million-dai-raised/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2020-03-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "Iron Finance's TITAN collapsed in June 2021 after its redemption mechanism minted new TITAN supply as panicked users redeemed IRON, expanding TITAN's supply toward 33 trillion tokens and driving its price to near zero in a self-reinforcing bank run.",
+      "type": "event",
+      "source_urls": ["https://ironfinance.medium.com/iron-finance-post-mortem-17-june-2021-6a4e9ccf23f5", "https://en.wikipedia.org/wiki/Iron_Finance"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2021-06-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Beanstalk Farms lost ~$77M in April 2022 when an attacker used a $1B flash loan to briefly seize 67% of DAO governance voting power and pass a malicious proposal in a single transaction; Tornado Cash's DAO was similarly seized in May 2023 when an attacker self-granted 1.2M fraudulent votes versus ~700K legitimate votes via a disguised proposal.",
+      "type": "event",
+      "source_urls": ["https://bean.money/blog/beanstalk-governance-exploit", "https://www.theblock.co/post/231637/attacker-uses-malicious-proposal-to-take-over-tornado-cash-governance"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2023-05-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "DefiLlama-derived tracking shows DeFi/crypto hack losses were highly non-monotonic through 2026: April ~$644.9M (dominated by Drift Protocol and Kelp DAO/LayerZero mega-hacks), May ~$84.2M, June roughly $50-80M, July ~$247.4M (of which ~$116M was the Coldcard hardware-wallet exploit, a distinct non-DeFi category), and August ~$18.8M across 17 incidents before the Term Finance drain.",
+      "type": "metric",
+      "source_urls": ["https://thedefiant.io/news/hacks/q2-2026-most-hacked-quarter-defi-70-exploits-746m", "https://www.trmlabs.com/resources/blog/the-largest-hardware-wallet-exploit-of-2026-inside-the-usd-116-million-coldcard-hack"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-08-23",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "DefiLlama classifies governance-takeover attacks as a distinct category: 5 incidents worth $25.1M combined in 2026 before Term Finance, led by BonkDAO's $20M July 2026 treasury drain (attacker spent $4.4M buying tokens for voting power, no timelock or quorum minimum); Term Finance becomes a 6th at ~$33.6M category total.",
+      "type": "metric",
+      "source_urls": ["https://en.cryptonomist.ch/2026/08/23/term-labs-governance-exploit/", "https://www.halborn.com/blog/post/explained-the-bonkdao-hack-july-2026"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-08-23",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c21",
+      "claim": "D2 Finance is a DeFi protocol (live since December 2023) offering institutional-grade actively-managed strategies including a stablecoin/RWA/BTC-backed structured-strategies line and a USDH yield strategy on Hyperliquid — an adjacent product category to Tori's synthetic-dollar business, though D2 does not itself issue a competing stablecoin token.",
+      "type": "definition",
+      "source_urls": ["https://gitbook.d2.finance/", "https://x.com/D2_Finance/status/2036647236122423331"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-24",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "D2 Finance previously published forensic on-chain analysis of the April 2026 Kelp DAO/LayerZero ~$292M bridge exploit that was cited alongside independent researcher findings in mainstream coverage, and has previously argued publicly (pre-dating this dispute) that synthetic-dollar protocols like Tori and Ethena should not market themselves using the term 'stablecoin.'",
+      "type": "event",
+      "source_urls": ["https://innora.ai/blog/kelp-dao-layerzero-292m-exploit-forensic-analysis"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-04-20",
+      "confidence": "low",
+      "risk": "single-source"
+    }
+  ]
+}

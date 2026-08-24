@@ -2586,5 +2586,19 @@
     "source": "workflow_dispatch",
     "prompt": "Ox Alpha's retracted 80%: what a 10-task DeepSWE subset measured, and what the 63% at 47K output tokens actually settles",
     "tags": []
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-d2-finance-sta",
+    "file": "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Tori Finance Said It Was Untouched by the Term Finance Hack. An On-Chain Mint Complicates That.",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-24T08:56:49Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/D2_Finance/status/2091670181890162715\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
