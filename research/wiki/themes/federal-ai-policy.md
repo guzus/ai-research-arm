@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now surfaced as a White House ask for voluntary 30-day pre-release model testing two weeks after a private briefing, drawing sworn-testimony demands from Congress, and reportedly facing an update that could extend it to open models (2026-08-20).
+description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now surfaced as a White House ask for voluntary 30-day pre-release model testing two weeks after a private briefing, drawing sworn-testimony demands from Congress, reportedly facing an update that could extend it to open models, and facing gray-market resale of Anthropic tokens that undercuts both export controls and lab safety systems (2026-08-24).
 created_at: 2026-06-03
-timestamp: 2026-08-20T00:00:00Z
+timestamp: 2026-08-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
@@ -686,6 +687,19 @@ footing for the first time in the cycle.
   classified-threshold and covered-model-trigger debates (2026-08-02,
   2026-08-04): for open weights, "before release" has no operational
   meaning (The Information via Twitter; ARA daily digest 2026-08-20).
+- **China's gray market resells Claude tokens at up to 90% off — a leak in the
+   access regime itself (2026-08-24).** The Decoder reports Chinese resellers
+   moving **Claude tokens at as little as 10% of list price** through
+   **"transfer stations" that bypass geoblocking and selfie verification** —
+   the exact control surfaces the export-restoration regime adopted. Analyst
+   **Zilan Qian** warns the circumvention infrastructure **weakens both export
+   controls and [[anthropic|Anthropic]]'s own safety systems**: a user behind a
+   transfer station is exactly the population the ID-verification model was
+   built to gate (see the restoration mechanics tracked on [[claude-fable-5]]
+   and [[anthropic]]). It is the enforcement gap in the "de facto licensing
+   regime with no rules" this page has tracked since June, now measured in
+   price rather than argued in policy (The Decoder; ARA daily digest
+   2026-08-24).
 
 ## Open questions
 

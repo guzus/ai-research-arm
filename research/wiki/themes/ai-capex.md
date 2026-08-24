@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, and data-center opposition hardening into a first-order political input and an Anthropic IPO risk factor (2026-08-23).
+description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24).
 created_at: 2026-05-24
-timestamp: 2026-08-23T00:00:00Z
+timestamp: 2026-08-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -765,9 +766,22 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   **(3)** Same-week concrete actions: Florida gubernatorial primary winner
   **Byron Donalds** proposed **in-state data-center restrictions**, and
   Pennsylvania Governor **Josh Shapiro** signed an executive order imposing
-  **stringent development standards** — building on the Texas interconnection
-  gate and the PA GRID EO already tracked on this page (ARA daily digest
-  2026-08-23).
+**stringent development standards** — building on the Texas interconnection
+   gate and the PA GRID EO already tracked on this page (ARA daily digest
+   2026-08-23).
+- **The capital markets keep printing AI raise — Alibaba's placement and a $2T
+   IPO pitch (2026-08-24).** Two 2026-08-24 financing data points expand the
+   buildout's funding ledger. **(1)** [[alibaba]] placed **HK$80B (~$10.2B) of
+   new Hong Kong shares — its first placement since 2019 — with 100% of
+   proceeds earmarked for full-stack AI infrastructure**, an equity-funded
+   Chinese capex line that lands days after management's "recoup within three
+   years" claim (see [[alibaba]]). **(2)** [[anthropic|Anthropic's]] bankers are
+   said to be pitching a **raise of more than $100B at a $2 trillion valuation** —
+   alongside **[[hugging-face|Hugging Face]] exploring a sale above $13B** —
+   marking the [[openrouter]]/Stripe anchor (~$7-8B) as the new valuation
+   comparable. Read together with the NVIDIA 17% server-price increase (see
+   [[nvidia]]), the funding side and the cost side of the buildout are both
+   printing larger numbers in the same week (ARA daily digest 2026-08-24).
 
 ## Open questions
 - **Does the permitting/power gate bind before the demand question resolves?**

@@ -4,15 +4,17 @@ title: Alibaba
 type: entity
 aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), even as it continues fighting a US DoD PLA-linked designation.
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), and raised HK$80B (~$10.2B) via its first Hong Kong placement since 2019 with 100% of proceeds earmarked for AI infrastructure (2026-08-24).
 created_at: 2026-07-05
-timestamp: 2026-08-21T00:00:00Z
+timestamp: 2026-08-24T00:00:00Z
 market:
   ticker: BABA
   exchange: NYSE
   symbol: NYSE:BABA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
+  - {title: "ARA model ticket — Alibaba AI share placement", path: research/models/tickets/alibaba-ai-share-placement-2026-08.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -143,13 +145,27 @@ friction point distinct from Qwen's own model-release cadence.
    with **vision, 1M default context and built-in tools withheld as the paid
    layer**. See [[qwen-3-8-max]] and [[open-weights]] (ARA digest 2026-08-13).
 - **The reported quarter prints the AI-capex signature (2026-08-21).** Reported
-  results put **revenue at RMB 268.95B (+9% YoY)** with **AI Cloud and Compute
-  +45%**, **operating income −57%**, and **free cash flow negative RMB 44.67B**.
-  On the call, management said it **recoups AI investments within three years**,
-  trending toward 2.5 and targeting two, and cited **2018 V100s and 2020 A100s
-  still at full utilization** — an explicit bet that its AI capex pays back
-  faster than the market assumes — though **"payback" was never defined** (ARA
-  daily digest 2026-08-21). See [[ai-capex]].
+   results put **revenue at RMB 268.95B (+9% YoY)** with **AI Cloud and Compute
+   +45%**, **operating income −57%**, and **free cash flow negative RMB 44.67B**.
+   On the call, management said it **recoups AI investments within three years**,
+   trending toward 2.5 and targeting two, and cited **2018 V100s and 2020 A100s
+   still at full utilization** — an explicit bet that its AI capex pays back
+   faster than the market assumes — though **"payback" was never defined** (ARA
+   daily digest 2026-08-21). See [[ai-capex]].
+- **HK$80B placement funds the AI buildout from public equity (2026-08-24).**
+   Alibaba placed **HK$80 billion (~$10.2B) of new Hong Kong shares** — its
+   **first placement since the 2019 secondary listing** and reported as the
+   **largest-ever primary follow-on by a Hong Kong-listed company** — with
+   **100% of net proceeds earmarked for full-stack AI infrastructure**. The
+   binding-constraint read: management said **three days earlier** it recoups AI
+   investments within three years, so **issuing dilutive equity anyway signals
+   capital availability — not conviction — is the binding constraint**. A raise
+   of this size is roughly the scale of a serious multi-gigawatt buildout, and
+   the domestic-vs-imported accelerator split of the spend remains undisclosed.
+   *(Single-aggregator sourcing in-window with no HKEX filing yet — the figures
+   are internally consistent, which checks the relay, not the event.)* See
+   [[ai-capex]] and the [share-placement ticket](../../models/tickets/alibaba-ai-share-placement-2026-08.md)
+   (ARA daily digest and model ticket 2026-08-24).
 
 ## Open questions
 

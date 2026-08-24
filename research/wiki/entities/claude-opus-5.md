@@ -4,10 +4,11 @@ title: Claude Opus 5
 type: entity
 aliases: ["Claude Opus 5", "Opus 5", "claude-opus-5"]
 tags: [model-release, anthropic, claude, frontier-model, security]
-description: Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance; the model Karpathy retired his own pelican benchmark over on 2026-08-02.
+description: Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance; the model Karpathy retired his own pelican benchmark over on 2026-08-02, and whose quality/verbosity complaints Claude Code creator Boris Cherny publicly conceded, pointing users to an outputStyle=concise stopgap while the real fix waits (2026-08-24).
 created_at: 2026-07-26
-timestamp: 2026-08-03T00:00:00Z
+timestamp: 2026-08-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA daily digest 2026-07-26", path: research/digest/2026-07-26-digest.md}
@@ -77,9 +78,26 @@ CRUD lag between the ticket lane and the digest, not a factual dispute.
 - **Prompt-to-game capability documented (2026-08-03).** The Decoder reports
   Opus 5 generating **complete 3D games from a single prompt** — an FPS, a kart
   racer, a Minecraft clone — with geometry, textures, physics and sometimes
-  music emitted **as code**, run in-browser using **no external assets**. Side by
-  side against [[gpt-5-6|GPT-5.6 Sol]] and [[moonshot-kimi-k3|Kimi K3]], Opus 5
-  is described as noticeably more detailed (ARA daily digest 2026-08-03).
+music emitted **as code**, run in-browser using **no external assets**. Side by
+   side against [[gpt-5-6|GPT-5.6 Sol]] and [[moonshot-kimi-k3|Kimi K3]], Opus 5
+   is described as noticeably more detailed (ARA daily digest 2026-08-03).
+
+## The verbosity concessions — "We know Opus is not perfect" (2026-08-24)
+
+- **Boris Cherny concedes the quality complaints on the record (2026-08-24).**
+  Claude Code creator **Boris Cherny** addressed the cycle-long Opus 5
+  quality/verbosity complaints directly: **"We know Opus is not perfect, and it
+  is a big priority for the team to fix it"**, pointing users to the
+  **`outputStyle=concise`** stopgap while the real fix waits. The
+  `claude /config outputStyle=concise` preference had shipped **2026-08-20** as
+  an ordinary output-style option; Anthropic's own team now **describes it as
+  triage for a known verbosity defect**. It lands two days after the
+  [[anthropic]] serving-config experiment admission (2026-08-23), in which
+  engineer Thariq Shihipar called Opus 5 "a really spiky model" and said
+  consistency is "a huge priority" — the two statements together read as the
+  lab publicly acknowledging the "spikiness" the premature-conversation-ending
+  complaints have tracked since [[claude-opus-4-8|Opus 4.8]] (ARA daily digest
+  2026-08-24).
 
 ## Open questions
 - **Does the model-ticket tracker reconcile?** The ticket lane still shows
