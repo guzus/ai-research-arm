@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "THE INFORMATION: AI STARTUPS HIT MONTHS-LONG NVIDIA GPU WAITS AS CLOUDS RESERVE SUPPLY FOR OPENAI, ANTHROPIC AND INTERNAL USE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048862265017815180"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-28 07:00 UTC",
-    "headline": "CHINA NDRC ORDERS META TO UNWIND $2B MANUS ACQUISITION \u2014 FIRST FORCED UNWINDING OF A FOREIGN AI DEAL",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048809612304949303"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 07:00 UTC",
-    "headline": "RUMOR: GOOGLE TPU V9 SHIFTS TO DIRECT-TO-TSMC WAFER ORDERS, AWS-ANNAPURNA-STYLE \u2014 BROADCOM, MEDIATEK DOWNGRADED",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/jukan05/status/2048992506851868780"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-04-28 07:00 UTC",
-    "headline": "OPENCLAW PERF RELEASE \u2014 FIRST-OUTPUT LATENCY 1S \u2192 43MS, PLUGIN BOOTSTRAP 265MS \u2192 8MS",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/steipete/status/2049012392869138842"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-04-28 07:00 UTC",
-    "headline": "OPENCLAW CONFIRMED IN 300-USER ENTERPRISE DEPLOYMENT ON GCP/GKE BEHIND GVISOR SANDBOX",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/steipete/status/2049015421236384185"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 07:00 UTC",
-    "headline": "MOLLICK: MICROSOFT'S OUTLOOK AGENT MODE A 'WASTED OPPORTUNITY' \u2014 SILENTLY COMMITS USERS TO OBLIGATIONS",
-    "source": "@emollick",
-    "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/emollick/status/2048976454654820789"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "OPENAI CODEX GOES FULL COMPUTER-USE \u2014 OPENS BROWSER, CLICKS THROUGH GITHUB AND CLOSES ISSUE WHEN RATE-LIMITED",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/steipete/status/2049035044702843053"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-28 09:00 UTC",
     "headline": "WSJ \u2014 OPENAI MISSED 1B WEEKLY-ACTIVE-USER TARGET; $1.5B OF CAPACITY SITTING UNUSED",
@@ -25450,5 +25387,54 @@
     "headline": "THOMSON REUTERS SHIPS IN-HOUSE LEGAL MODEL THOMSON 1 \u2014 $40M PROGRAM, $450K FINAL TRAINING RUN",
     "source": "@ConorBronsdon",
     "url": "https://x.com/ConorBronsdon/status/2091961489460715824"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "NVIDIA RUBIN ULTRA HBM SLASHED TO 192GB \u2014 ONE-FIFTH OF PREVIEWED 1TB, BELOW REGULAR RUBIN'S 288GB",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091994110911557679"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "MUSK TELLS CURSOR STAFF GROK HAS FALLEN BEHIND RIVALS; SPACEX $60B ACQUISITION NAMED BY THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091994016048890246"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "GPT-5.6 SOL API CUT TO $4 INPUT / $20 OUTPUT PER MTOK, REPORTED VALID THROUGH NOV 21",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2091969946846708120"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "NVIDIA WEIGHS MULTIBILLION PERPLEXITY FINANCING \u2014 VALUATION UP MORE THAN 50% FROM LAST ROUND",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091986418448892196"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "MISTRAL SIGNS SAUDI STATE AI FIRM HUMAIN FOR LOCALIZED FRONTIER MODELS IN CYBERSECURITY, VOICE, ARABIC",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2091964930715013224"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "SEMIANALYSIS: NVIDIA UP TO 5X MORE COST-EFFICIENT THAN AMD AT 150 TOK/S/USER \u2014 EVEN IF AMD SILICON WERE FREE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2091968131061387530"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "SAMSUNG, SK HYNIX STEP UP CHINA NAND CAPEX INTO 2027 ON AI-SERVER DEMAND; XI'AN X2 MOVES TO 280-LAYER V9",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2091999562340643274"
   }
 ]
