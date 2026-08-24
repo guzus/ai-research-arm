@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-24 09:58:06 UTC
+
+CYCLE: Accelerator silicon moved in three places at once.
+
+TOP STORIES:
+• Nvidia in talks to invest in, partner with or acquire Rebellions, the Aramco-backed Korean AI chipmaker — its first move at the rival-silicon layer [⚠]
+• UBS cuts Broadcom FY27 AI revenue ~$5bn to ~$130bn on a lower Google TPU forecast of ~6.4M units in CY27; keeps Buy, PT $485→$470 [⚠]
+• Xiaomi ships a Local AI Host on in-house XRING silicon; the O100 is 6nm with wafer-on-wafer NPU-DRAM bonding at 1.4µm pitch [⚠]
+• An RL-trained coding model paints by writing JavaScript — output is editable code, not pixels [⚠]
+
+WATCH: Nvidia or Rebellions confirming/denying the talks before Nvidia's 2026-08-26 results.
+
+Full update on GitHub.
