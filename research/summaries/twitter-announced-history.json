@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-27 17:00 UTC",
-    "headline": "KINETIX AI TEASES KAI HUMANOID ROBOT \u2014 36 DEGREES OF FREEDOM, 18,000 SENSORS, HYBRID DEXTEROUS HAND",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2048675280235999494"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-27 18:00 UTC",
-    "headline": "MUSK V. ALTMAN TRIAL OPENS IN OAKLAND \u2014 MUSK ALLEGES ALTMAN PERJURED CONGRESS OVER OPENAI STARTUP FUND OWNERSHIP",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2048840488244437001"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-27 18:00 UTC",
-    "headline": "MSFT\u2013OPENAI REVENUE SHARE NOW LOCKED THROUGH 2030 \"INDEPENDENT OF TECHNOLOGY PROGRESS\" \u2014 AGI CLAUSE APPEARS DEAD",
-    "source": "@simonw",
-    "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/simonw/status/2048840776665399429"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-27 18:00 UTC",
-    "headline": "INEFFABLE INTELLIGENCE \u2014 DAVID SILVER'S NEW LAB \u2014 CLOSES $1.1B SEED ROUND ON RL-FROM-EXPERIENCE THESIS",
-    "source": "@vitrupo",
-    "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/vitrupo/status/2048837894669332938"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-27 18:00 UTC",
     "headline": "GOOGLE NOW CONTROLS ~25% OF GLOBAL AI COMPUTE \u2014 3.8M TPUS, 1.3M GPUS",
@@ -25506,5 +25470,33 @@
     "headline": "OPENAI PATCHES CODEX USAGE-LIMIT GLITCH AND RESETS QUOTAS",
     "source": "@ns123abc",
     "url": "https://x.com/ns123abc/status/2091639651480043809"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 04:01:18 UTC",
+    "headline": "NVIDIA IN TALKS TO JOIN PERPLEXITY EQUITY ROUND ABOVE $30B \u2014 50% OVER LAST MARK, PER THE INFORMATION",
+    "source": "@katzspx",
+    "url": "https://x.com/katzspx/status/2091731915787370809"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 04:01:18 UTC",
+    "headline": "ALIBABA DOWN ~10% AFTER PRICING $10.2B AI-CAPEX PLACEMENT AT 8.4% DISCOUNT; HANG SENG OFF 2.1%",
+    "source": "@macropaperr",
+    "url": "https://x.com/macropaperr/status/2091734099929313497"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-24 04:01:18 UTC",
+    "headline": "SAKANA AI SIGNS JAPAN DEFENSE MINISTRY CONTRACT FOR AI IN MILITARY INTELLIGENCE ANALYSIS",
+    "source": "@hardmaru",
+    "url": "https://x.com/hardmaru/status/2091661690349986243"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 04:01:18 UTC",
+    "headline": "SOFTBANK PLANS RECORD 1 TRILLION YEN ($6.3B) RETAIL BOND SALE IN JAPAN TO FUND AI COMMITMENTS",
+    "source": "@tszzl",
+    "url": "https://x.com/tszzl/status/2091708331023007995"
   }
 ]
