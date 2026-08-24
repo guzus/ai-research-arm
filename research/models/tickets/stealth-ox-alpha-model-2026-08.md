@@ -42,7 +42,29 @@ status_note: |
   not sure why there has been so much buzz as if it is") and
   @iruletheworldmo ("don't fall for this ox alpha campaign") both tested
   it and came away unimpressed.
-expected: "Live and free via OpenRouter/opencode/Hermes/Cursor as of 2026-08-23, vendor unclaimed. Pending: a lab claiming it, a model card, pricing, weights (Z.ai's GLM line has shipped open weights), and whether it resolves into [[zhipu-glm-5-3-2026-08]]'s family or something else"
+
+  **2026-08-24 — a full day later, still nobody has claimed it, and the
+  speculation has turned into a joke about itself.** The signal moved
+  from testing to meta-commentary: @iruletheworldmo — who two days ago
+  said "don't fall for this ox alpha campaign" — posted an elaborate
+  pseudo-architecture ("recursively updates a persistent latent state
+  instead of reasoning entirely through tokens... attractors generate
+  shards... metaparameters that dynamically alter the residual geometry
+  without changing its weights"), and @teortaxesTex answered with open
+  parody of the guessing game ("a Sarvam-Google colab, on a GLM base,
+  with Google helping on vision, Nvidia providing hardware and safety
+  finetuning from SSI. duh"). **Neither is evidence and neither is
+  recorded here as a capability claim.** Two genuinely new hypotheses
+  did appear, both unsupported: @simonepaciaroni suspects an
+  **Anthropic** experiment on a "telltale marker," and @Norwakar claims
+  it is **xAI's unreleased Grok 4.7** being pre-release tested. Both are
+  single low-engagement accounts with no artifact; the GLM-family
+  reading from firsthand testers on 2026-08-23 remains the
+  best-supported one. Coverage did widen — trade aggregators are now
+  writing it up as "a mysterious new AI model... no maker attached."
+  Status stays `in-testing`, verification stays `partial`: another cycle
+  with **no lab claim, no model card, no pricing, no weights**.
+expected: "Live and free via OpenRouter/opencode/Hermes/Cursor as of 2026-08-24, vendor still unclaimed after 4+ days. Pending: a lab claiming it, a model card, pricing, weights (Z.ai's GLM line has shipped open weights), and whether it resolves into [[zhipu-glm-5-3-2026-08]]'s family or something else"
 labels:
   - stealth-model
   - frontier-model
@@ -60,13 +82,17 @@ sources:
   - "@emollick"
   - "@iruletheworldmo"
   - "@scaling01"
+  - "@simonepaciaroni"
+  - "@Norwakar"
 created_at: 2026-08-23
-updated_at: 2026-08-23
+updated_at: 2026-08-24
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-23
     change: "Created — an unattributed stealth model shipping as stealth/ox-alpha on OpenRouter since ~2026-08-20, free via OpenRouter, opencode, Hermes Agent (@Teknium, @NousResearch) and Cursor. Established by firsthand testers: long-horizon multimodal, 1M context (@AndrewCurran_); ~63% on the full 113-task DeepSWE run (@davis7, who publicly retracted his own earlier ~80% subset number), 58.4 read independently by @teortaxesTex, roughly GPT-5.6 Sol mid class. Attribution unresolved: @davis7 99% GLM-5.x on encoder/tokenizer/style evidence, @kimmonismus and @synthwavedd say GLM-5.3 Flash, @AndrewCurran_ canvass lands on a Z.ai GLM Flash variant, but @mark_k claims Google DeepMind and @teortaxesTex argues against Cursor. Capability claim itself is contested — @emollick and @iruletheworldmo both tested it and rate it non-frontier. Status in-testing (real, publicly usable artifact under a stealth alias, no vendor claim); verification partial (many independent firsthand runs establish the artifact; no primary source establishes who made it)."
+  - ts: 2026-08-24
+    change: "Another cycle with no attribution progress: still no lab claim, model card, pricing, or weights. Speculation turned reflexive — @iruletheworldmo posted an elaborate pseudo-architecture (persistent latent state, attractors, shards, metaparameters) and @teortaxesTex answered with open parody of the guessing game; neither is recorded as evidence. Two new unsupported hypotheses appeared from single low-engagement accounts: an Anthropic experiment (@simonepaciaroni, on a claimed telltale marker) and xAI's unreleased Grok 4.7 in pre-release testing (@Norwakar). The GLM-family reading from 2026-08-23 firsthand testers remains best-supported. Trade aggregators began covering it as an unclaimed mystery model. Status stays in-testing; verification stays partial."
 ---
 
 A stealth alias on a router is not normally worth a ticket. This one is,

@@ -35,7 +35,22 @@ status_note: |
   independent angles. Verification `partial`: **no Nvidia statement, no
   named customer, no document** — the 17% is a single-account relay of a
   private notice.
-expected: "Reported 2026-08-23 as customer notices of ~17% higher prices on Grace Blackwell and Vera Rubin systems, driven by HBM4/LPDDR5X cost. Pending: Nvidia or hyperscaler confirmation, whether it shows up in reported gross margin or capex guidance, and whether cloud providers absorb it or pass it through to compute rental prices"
+
+  **2026-08-24 — two named outlets now behind it, plus an absolute rack
+  price.** @jukan05 relays **The Information**: "Nvidia plans to raise GPU
+  prices by 17%, which would bring the price of a **Rubin NVL72 rack to
+  $8 million**." Separately @akshoydasss relays **Bloomberg**: Nvidia
+  "told its biggest clients this week to expect **15%+ price hikes on AI
+  servers** as memory chip costs surge," in a pre-earnings roundup that
+  also carries $91B guided quarterly revenue (ex-China datacenter) and a
+  Bank of America figure of $2.3T in customer AI backlog. The 17% figure
+  now has two independent named-outlet relays rather than one, and for
+  the first time an absolute per-rack number to check against future
+  disclosure. Nvidia reports earnings **Wednesday 2026-08-26**, which is
+  the near-term test of whether this reaches reported margin or guidance.
+  Status stays `confirmed`; verification stays `partial` — still no
+  Nvidia statement, no named customer, no document.
+expected: "Reported 2026-08-23/24 as customer notices of 15-17% higher prices on Grace Blackwell and Vera Rubin systems, driven by HBM4/LPDDR5X cost; The Information puts a Rubin NVL72 rack at ~$8M. Pending: Nvidia's 2026-08-26 earnings call, whether it shows up in reported gross margin or capex guidance, and whether cloud providers absorb it or pass it through to compute rental prices"
 labels:
   - nvidia
   - compute
@@ -47,13 +62,17 @@ sources:
   - "@rohanpaul_ai"
   - "@jukan05"
   - "@SemiAnalysis_"
+  - https://x.com/jukan05/status/2091422117841752209
+  - https://x.com/akshoydasss/status/2091782749388779738
 created_at: 2026-08-23
-updated_at: 2026-08-23
+updated_at: 2026-08-24
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-23
     change: "Created — Nvidia has told some major customers that AI-chip servers are getting ~17% pricier in many cases, with memory inflation driving Grace Blackwell and Vera Rubin system prices sharply higher (@rohanpaul_ai 2026-08-23 02:19 UTC). Mechanism is specific: a Vera Rubin NVL72 rack carries 20.7TB HBM4 + 54TB LPDDR5X, TrendForce expects DRAM tight through 2027, and a 17% increase adds >=$5B to a 1GW build before power/cooling/networking/financing. Corroborated indirectly across the same window by rising South Korean DRAM export unit prices and NAND moves (@jukan05), the mandatory tungsten-to-molybdenum NAND conversion above ~300 layers (@SemiAnalysis_), and a SanDisk IR readout describing customers requesting higher volumes and longer contracts. Status confirmed on the specificity and the corroborated supply mechanism; verification partial — no Nvidia statement, no named customer, no document behind the 17%."
+  - ts: 2026-08-24
+    change: "The Information (via @jukan05) puts the increase at 17% and prices a Rubin NVL72 rack at ~$8M; Bloomberg (via @akshoydasss) says Nvidia told its biggest clients this week to expect 15%+ AI-server price hikes as memory costs surge. Two independent named-outlet relays plus a first absolute per-rack figure. Status stays confirmed, verification stays partial — still no Nvidia statement or document. Nvidia's 2026-08-26 earnings call is the near-term test."
 ---
 
 This is a **model-lane** ticket because compute price is an input to
