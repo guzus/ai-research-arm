@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 18:00 UTC",
-    "headline": "GOOGLE NOW CONTROLS ~25% OF GLOBAL AI COMPUTE \u2014 3.8M TPUS, 1.3M GPUS",
-    "source": "@tszzl",
-    "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/tszzl/status/2048816421434228946"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-27 18:00 UTC",
-    "headline": "GPT-5.5 HIGH DEBUTS AT #9 ON LMARENA CODE ARENA WITH SCORE 1500 \u2014 SOLID BUT NOT DOMINANT",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/mark_k/status/2048816876860457453"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 18:00 UTC",
-    "headline": "SEMIANALYSIS CORRECTS GOOGLE TPU 8T SPEC \u2014 HBM3E IS 12-HI NOT 8-HI; 6 STACKS NEEDED FOR 216GB",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048817567783030796"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 18:00 UTC",
-    "headline": "INFERENCEX SHIPS DEEPSEEK-V4 MTP ON SGLANG/B300 \u2014 7X THROUGHPUT AT ISO-INTERACTIVITY ON BLACKWELL",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048768824345510259"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "OPENAI'S 2019 MISSION GUARDRAILS ALL GONE \u2014 100X CAP, AGI CLAUSE, MS EXCLUSIVITY REMOVED ON DAY ONE OF MUSK TRIAL",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2048860619693084727"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-04-27 21:00 UTC",
     "headline": "COGNITION RAISING AT $25B \u2014 UP FROM $10.2B IN SEPT, $4B LAST MARCH",
@@ -25498,5 +25453,40 @@
     "headline": "SOFTBANK PLANS RECORD 1 TRILLION YEN ($6.3B) RETAIL BOND SALE IN JAPAN TO FUND AI COMMITMENTS",
     "source": "@tszzl",
     "url": "https://x.com/tszzl/status/2091708331023007995"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 09:58:06 UTC",
+    "headline": "NVIDIA IN TALKS TO INVEST IN, PARTNER WITH OR ACQUIRE ARAMCO-BACKED AI CHIPMAKER REBELLIONS",
+    "source": "@tahawultech",
+    "url": "https://x.com/tahawultech/status/2091822288828309630"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 09:58:06 UTC",
+    "headline": "UBS CUTS BROADCOM FY27 AI REVENUE ~$5B TO ~$130B ON LOWER GOOGLE TPU VOLUMES \u2014 SEES 6.4M TPUS IN 2027",
+    "source": "@naklongpoong",
+    "url": "https://x.com/naklongpoong/status/2091826921416118749"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 09:58:06 UTC",
+    "headline": "XIAOMI SHIPS LOCAL AI HOST ON IN-HOUSE XRING SILICON \u2014 O100 IS 6NM WITH WAFER-ON-WAFER NPU-DRAM BONDING",
+    "source": "@That_Kartikey",
+    "url": "https://x.com/That_Kartikey/status/2091788207679779198"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 09:58:06 UTC",
+    "headline": "XPENG ROBOTICS CLOSES $900M+ SERIES A AT $6.3B POST \u2014 IRON HUMANOID TO MASS PRODUCTION BY END-2026",
+    "source": "@thinkercar",
+    "url": "https://x.com/thinkercar/status/2091825844671123707"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-24 09:58:06 UTC",
+    "headline": "RL-TRAINED CODING MODEL PAINTS BY WRITING JAVASCRIPT \u2014 OUTPUT IS EDITABLE CODE, NOT PIXELS",
+    "source": "@mervenoyann",
+    "url": "https://x.com/mervenoyann/status/2091801467053072488"
   }
 ]
