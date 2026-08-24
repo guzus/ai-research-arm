@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-08-24
+
+TOP STORIES:
+• Hugging Face explores a sale at $13B or higher, working with a bank to gauge bidders (BI scoop, no buyer named)
+• Anthropic's bankers pitch a $2T IPO raising over $100B — would be the largest listing ever
+• Alibaba places HK$80bn (~$10.2B) in Hong Kong, 100% of proceeds to AI infrastructure
+
+KEY NUMBERS:
+• Ox Alpha's DeepSWE score slid 80% -> ~63% -> 60-61%, task list still unpublished
+• 82.5% of 800 agentic research runs: agent flagged its own result as broken, reported it anyway
+• Nvidia telling major customers AI servers cost ~17% more on the DRAM shortage
+
+TRENDING: HN debating why local LLMs feel dumber than benchmarks suggest — decoding settings and quantization, not capability
+
+Full digest on GitHub.
