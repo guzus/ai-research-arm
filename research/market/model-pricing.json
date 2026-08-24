@@ -33,7 +33,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-08-24T04:12:35Z",
+  "generated_at": "2026-08-24T10:13:29Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -98,7 +98,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-23T09:47:17Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-23T15:41:20Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-23T21:41:09Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-24T04:12:35Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-24T04:12:35Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-24T10:13:29Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -2845,13 +2846,13 @@
         }
       ]
     },
-    "as_of": "2026-08-24T04:12:35Z",
+    "as_of": "2026-08-24T10:13:29Z",
     "counts": {
       "pareto": 6,
       "plotted": 91,
-      "priced": 323,
+      "priced": 320,
       "scored": 157,
-      "unscored": 232
+      "unscored": 229
     },
     "models": [
       {
@@ -4586,13 +4587,6 @@
     ],
     "unscored": [
       {
-        "input_usd_per_mtok": 0.01,
-        "key": "ling2.6flash",
-        "name": "Ling-2.6-flash",
-        "output_usd_per_mtok": 0.03,
-        "vendor": "inclusionai"
-      },
-      {
         "input_usd_per_mtok": 0.04,
         "key": "llama38blunaris",
         "name": "Llama 3 8B Lunaris",
@@ -5116,20 +5110,6 @@
         "name": "Command R",
         "output_usd_per_mtok": 0.6,
         "vendor": "cohere"
-      },
-      {
-        "input_usd_per_mtok": 0.075,
-        "key": "ring2.61t",
-        "name": "Ring-2.6-1T",
-        "output_usd_per_mtok": 0.625,
-        "vendor": "inclusionai"
-      },
-      {
-        "input_usd_per_mtok": 0.075,
-        "key": "ling2.61t",
-        "name": "Ling-2.6-1T",
-        "output_usd_per_mtok": 0.625,
-        "vendor": "inclusionai"
       },
       {
         "input_usd_per_mtok": 0.45,
