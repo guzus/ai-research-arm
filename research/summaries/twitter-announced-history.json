@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-27 17:00 UTC",
-    "headline": "CHINA ORDERS META TO UNWIND $2B MANUS AI DEAL \u2014 ~100 STAFF ALREADY INSIDE META SINGAPORE",
-    "source": "@Stock_Opine",
-    "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/Stock_Opine/status/2048813359168946264"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 17:00 UTC",
-    "headline": "AWS TO ADD OPENAI MODELS TO BEDROCK 'IN COMING WEEKS' \u2014 JASSY UNVEILS NEW STATEFUL RUNTIME FOR AGENTIC AI",
-    "source": "@enes1050392",
-    "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/enes1050392/status/2048813465431588945"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-27 17:00 UTC",
-    "headline": "REUTERS: DEEPSEEK 'AGGRESSIVELY PITCHING LOW-PRICED PLANS' FOR V4 \u2014 CHINESE AI PRICE WAR GOES MAINSTREAM",
-    "source": "@Reuters",
-    "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/Reuters/status/2048681120116433145"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-27 17:00 UTC",
-    "headline": "COHERE TO ACQUIRE GERMANY'S ALEPH ALPHA \u2014 FRAMED AS PIVOTAL 'SOVEREIGN AI' MOMENT",
-    "source": "@HRD_Canada",
-    "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/HRD_Canada/status/2048811660651954360"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-27 17:00 UTC",
-    "headline": "COMFYUI RAISES $30M AT $500M VALUATION LED BY CRAFT VENTURES \u2014 NETFLIX, APPLE, UBISOFT NAMED USERS",
-    "source": "@Nestedbiz",
-    "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/Nestedbiz/status/2048811084497187240"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-04-27 17:00 UTC",
-    "headline": "CHROME PROMPT API ROLLS OUT \u2014 ANY WEB PAGE CAN CALL ON-DEVICE MODEL, NO API KEY, NO BACKEND",
-    "source": "@lbki34064963",
-    "source_file": "research/summaries/2026-04-27-twitter-17h-headlines.json",
-    "url": "https://x.com/lbki34064963/status/2048812450024435780"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-04-27 17:00 UTC",
     "headline": "KINETIX AI TEASES KAI HUMANOID ROBOT \u2014 36 DEGREES OF FREEDOM, 18,000 SENSORS, HYBRID DEXTEROUS HAND",
@@ -25518,5 +25464,47 @@
     "headline": "NVIDIA IN TALKS TO BACK DATA COMPANY MERCOR AT $20B VALUATION",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2091571204410810744"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-24 01:53:32 UTC",
+    "headline": "MATHEMATICIAN SAYS CLAUDE HELPED CONSTRUCT COMPLEX STRUCTURE ON 6-SPHERE \u2014 PROBLEM OPEN SINCE 1948",
+    "source": "@__alpoge__",
+    "url": "https://x.com/__alpoge__/status/2091639597193368014"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-24 01:53:32 UTC",
+    "headline": "MATH PROFESSOR ON S^6 CLAIM: 'QUITE BIG IF IT HOLDS UP' \u2014 NO CHECKED VERIFICATION YET ON RECORD",
+    "source": "@littmath",
+    "url": "https://x.com/littmath/status/2091651534324920658"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 01:53:32 UTC",
+    "headline": "VERCEL CEO: OPENAI SOL PRICE CUTS MAKE IT THE GATEWAY'S FASTEST-GROWING FRONTIER MODEL",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2091671326897713424"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-24 01:53:32 UTC",
+    "headline": "FIRST PUBLIC OUTPUTS SURFACE FROM UNRELEASED CLAUDE-MELON-EAP AND CLAUDE-MARSHMALLOW-EAP",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2091704961604444588"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 01:53:32 UTC",
+    "headline": "SEMIANALYSIS OPEN-SOURCES $3M AGENTIC INFERENCE DATASET SPANNING GB300 NVL72, MI355 AND B200",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091687226291708116"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 01:53:32 UTC",
+    "headline": "OPENAI PATCHES CODEX USAGE-LIMIT GLITCH AND RESETS QUOTAS",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2091639651480043809"
   }
 ]
