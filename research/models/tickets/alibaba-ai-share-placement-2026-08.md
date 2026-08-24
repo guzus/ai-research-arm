@@ -27,7 +27,21 @@ status_note: |
   @davis7 named **Qwen 3.8 27B** the best dense local model that fits on
   a 5090 this week. An AI-infrastructure raise of this size funds the
   compute behind the next Qwen generation.
-expected: "Announced 2026-08-23 as an HK$80B (~$10.2B) primary follow-on with proceeds earmarked for AI infrastructure. Pending: the HKEX filing / Alibaba primary announcement, pricing and discount, the buyer base, and a breakdown of domestic-versus-imported accelerator spend"
+
+  **2026-08-24 — it priced, and the market marked it.** The single-relay
+  problem flagged yesterday is now partly resolved by independent
+  accounts carrying **a price and a market reaction**, which a fabricated
+  relay does not produce: @AI_AgentFL reports the placement printed at
+  **HK$112.70**, calls it **Hong Kong's biggest secondary**, and notes
+  Alibaba stock opened **-8% to -10%**, with proceeds going to
+  "full-stack AI." @lokichoggi78213 independently repeats the $10.2B
+  figure and pairs it with **Qwen passing 3B cumulative downloads**;
+  @search-model-release frames the HK$80B as expanding Alibaba's AI
+  infrastructure. Three independent relays plus an observable
+  share-price consequence. Still **no HKEX filing or Alibaba primary
+  post captured**, so verification stays `partial`; status stays
+  `confirmed`.
+expected: "Priced 2026-08-24 at HK$112.70; HK$80B (~$10.2B) primary follow-on with proceeds earmarked for AI infrastructure, shares opened -8% to -10%. Pending: the HKEX filing / Alibaba primary announcement, the buyer base, and a breakdown of domestic-versus-imported accelerator spend"
 labels:
   - alibaba
   - china
@@ -37,13 +51,17 @@ labels:
 verification: partial
 sources:
   - "@paisatools"
+  - https://x.com/AI_AgentFL/status/2091782291643150804
+  - https://x.com/lokichoggi78213/status/2091785579356922306
 created_at: 2026-08-23
-updated_at: 2026-08-23
+updated_at: 2026-08-24
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-23
     change: "Created — Alibaba announced an HK$80 billion (~$10.2B) share placement with proceeds described as 100% allocated to AI infrastructure, reported as the largest-ever primary follow-on by a Hong Kong-listed company (@paisatools, 2026-08-23 06:53 UTC). Status confirmed on the specificity of the figures and stated use of proceeds; verification partial — single low-engagement aggregator account, no HKEX filing, Alibaba primary post, or major-outlet report captured, which a raise of this size would normally carry. Material to the model lane because Alibaba develops the Qwen frontier line ([[alibaba-qwen-3-8-max-2026-07]], [[alibaba-qwen-3-8-27b-2026-08]]) and this funds the compute behind its next generation."
+  - ts: 2026-08-24
+    change: "Placement priced and the market marked it, partly resolving yesterday's single-relay sourcing gap. @AI_AgentFL reports it printed at HK$112.70, calls it Hong Kong's biggest secondary, and notes Alibaba shares opened -8% to -10% with proceeds going to full-stack AI; @lokichoggi78213 independently repeats $10.2B and pairs it with Qwen passing 3B cumulative downloads; @search-model-release frames the HK$80B as AI-infrastructure expansion. Three independent relays plus an observable share-price consequence. Still no HKEX filing or Alibaba primary post captured — status stays confirmed, verification stays partial."
 ---
 
 An equity raise earns a ticket here when it is explicitly a **compute

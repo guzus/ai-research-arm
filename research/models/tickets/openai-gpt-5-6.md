@@ -160,7 +160,26 @@ status_note: |
   @kimmonismus, @scaling01, @testingcatalog, @AndrewCurran_. Official
   primary + broad corroboration → status stays `released`; verification
   stays `confirmed`.
-expected: "Pricing is the live storyline: >20% cut to GPT-5.6 Sol API and credit pricing announced 2026-08-21, time-boxed to three months, covering ChatGPT Work and Codex credits but explicitly not Pro/Plus/Business subscriptions. Pending: whether the cut is made permanent at the three-month mark. GA confirmed 2026-07-10: OpenAI's own account announced GPT-5.6 Sol Ultra generally available, and @sama says GPT-5.6 is now the preferred model in Microsoft 365 Copilot. Family is Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol set SOTA on Terminal-Bench 2.1 with max + ultra (subagent) modes; pricing Sol $5/$30, Terra $2.50/$15, Luna $1/$6 per MTok"
+
+  **2026-08-24 — the price cut has a measured demand response, and exact
+  figures.** @rauchg (Vercel CEO): "@OpenAI Sol's price reductions &
+  discounts on Vercel AI Gateway have made Sol **our fastest-growing
+  frontier model**," which he reads as evidence that "demand for
+  intelligence is highly elastic: as inference costs fall, usage grows
+  rapidly." A Japanese weekly AI roundup (@masahirochaen) supplies the
+  exact terms behind the 2026-08-21 headline: **input $5 → $4, output
+  $30 → $20 per Mtok**, running until **2026-11-21**, and notes it is the
+  **second repricing of the 5.6 family inside one month**. Read the
+  elasticity claim carefully: it is a first-party statement from the
+  gateway that received an *exclusive* 50% Sol discount on 2026-08-19,
+  so "fastest-growing on Vercel" measures the discount's effect on that
+  venue, not GPT-5.6's overall share. The counterweight in the same
+  window is @GavinSBaker's Vercel-sourced chart: open-weight models went
+  from **28% to 62% of token share on Vercel over two months** even as
+  OpenAI and Anthropic volumes accelerated — the pool is growing faster
+  than the frontier's slice of it. Status stays `released`; verification
+  stays `confirmed`.
+expected: "Pricing is the live storyline: >20% cut to GPT-5.6 Sol API and credit pricing announced 2026-08-21 ($5 -> $4 in, $30 -> $20 out per Mtok), time-boxed to 2026-11-21, covering ChatGPT Work and Codex credits but explicitly not Pro/Plus/Business subscriptions. Pending: whether the cut is made permanent at the three-month mark, and whether the elasticity Vercel reports holds outside discounted gateways. GA confirmed 2026-07-10: OpenAI's own account announced GPT-5.6 Sol Ultra generally available, and @sama says GPT-5.6 is now the preferred model in Microsoft 365 Copilot. Family is Sol (flagship) / Terra (balanced) / Luna (fast/cheap); Sol set SOTA on Terminal-Bench 2.1 with max + ultra (subagent) modes; pricing Sol $5/$30, Terra $2.50/$15, Luna $1/$6 per MTok"
 labels:
   - openai
   - frontier-model
@@ -179,10 +198,12 @@ sources:
   - "@kimmonismus"
   - "@ns123abc"
   - "@testingcatalog"
+  - "@rauchg"
+  - "@GavinSBaker"
   - https://openai.com/index/previewing-gpt-5-6-sol/
   - https://simonwillison.net/2026/Jun/26/openai/
 created_at: 2026-06-09
-updated_at: 2026-08-23
+updated_at: 2026-08-24
 closed_at: null
 closed_reason: null
 history:
@@ -220,6 +241,8 @@ history:
     change: "Distribution-side pricing move plus a new inference host. @SemiAnalysis_ (2026-08-18 05:36 UTC) reports OpenAI announced a 50% price cut for GPT-5.6 Sol exclusively on OpenRouter and Vercel AI Gateway, and reads it as a market-share optic rather than a volume play: those two gateways are a small share of OpenAI token volume but are the datasources most analysts use to estimate lab/model share, so a >2x volume response would be naively scored as a share win. Separately, Cerebras new CS-4 accelerator is quoted at ~1300 tok/s serving GPT-5.6-Sol (@scaling01 2026-08-19, see [[cerebras-cs-4-2026-08]]) — the fastest published serving rate for the model. Not closing on the >=4-week released-and-aged trigger while the pricing and distribution storyline is still producing signal. Status stays released, verification stays confirmed."
   - ts: 2026-08-23
     change: "Broad API price cut, OpenAI-primary. @OpenAI (2026-08-21 19:34 UTC, ~13K likes / 783 RT): 'As we continue to push the frontier of capabilities while improving efficiency, we're dropping API and credit pricing of GPT-5.6 Sol by over 20% for the next 3 months,' with a follow-up confirming it is live on the API and rolling out across eligible plans for ChatGPT Work and Codex credits while 'Pro, Plus, and Business subscription usage remains unchanged.' @OpenAIDevs posted the developer-facing version; @sama amplified. Note the shape versus the 2026-08-19 entry: that was a gateway-exclusive 50% cut on OpenRouter/Vercel, this is the headline API price and it is explicitly time-boxed to three months, framed as an efficiency pass-through rather than a permanent repricing. Reaction split on who benefits: @ns123abc ('20% discount does NOT apply for ChatGPT subscriptions, only for Work/Codex users… TOLD YA') and 'THE PRICE WAR HAS OFFICIALLY BEGUN'; @kimmonismus reads it as three things at once — pressure on Anthropic during its Opus 5 PR difficulties, evidence OpenAI's own compute investment is compounding, and a response to cheap Chinese models (DeepSeek V4 Flash, the suspected GLM-5.3 Flash behind [[stealth-ox-alpha-model-2026-08]]). That third reading is analysis, not an OpenAI statement. Still not closing on released-and-aged: the pricing storyline is producing primary-source signal at increasing frequency. Status stays released; verification stays confirmed (OpenAI's own account, exact terms)."
+  - ts: 2026-08-24
+    change: "Demand response to the 2026-08-21 Sol price cut, plus exact terms. @rauchg (Vercel CEO) says Sol is now Vercel AI Gateway's fastest-growing frontier model and reads it as evidence of highly elastic demand for intelligence; a Japanese weekly roundup (@masahirochaen) supplies the exact figures behind the >20% headline (input $5 -> $4, output $30 -> $20 per Mtok, running to 2026-11-21) and notes it is the second 5.6-family repricing inside one month. Caveat recorded on the ticket: Vercel is the venue that received the exclusive 50% Sol discount on 2026-08-19, so its growth measures the discount at that venue, not overall share; @GavinSBaker's Vercel-sourced chart shows open-weight token share going 28% -> 62% over two months even as OpenAI and Anthropic volumes accelerated. Status stays released; verification stays confirmed."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely
