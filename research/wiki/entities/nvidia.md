@@ -4,15 +4,17 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package.
+description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package; told major customers AI servers cost ~17% more on the DRAM/HBM squeeze, adding at least $5B to a 1 GW build (2026-08-24).
 created_at: 2026-06-05
-timestamp: 2026-08-23T00:00:00Z
+timestamp: 2026-08-24T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
+  - {title: "ARA model ticket — NVIDIA server price increase", path: research/models/tickets/nvidia-server-price-increase-2026-08.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
@@ -264,6 +266,17 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   attribution is single-outlet (Bloomberg via @pequityresearch; ARA daily
   digest 2026-08-23). This is the price-side counterpart to the HBM/DRAM
   squeeze tracked all cycle on [[ai-capex]], [[micron]] and [[sk-hynix]].
+- **"More than 15%" refines to ~17%, and the derived scale lands (2026-08-24).**
+  The figure firms from "more than 15%" to **~17% in many cases**, attributed
+  to the **DRAM shortage across Samsung, SK Hynix and Micron**, with the
+  mechanism carrying real weight: a **Vera Rubin NVL72 rack holds 20.7 TB of
+  HBM4 and 54 TB of LPDDR5X**, making memory the dominant swing cost, and
+  **TrendForce expects DRAM supply to stay tight through 2027**. The
+  quantifiable consequence: **a 17% increase adds at least $5B to a 1 GW
+  build** before power, cooling, networking and financing — a direct Cost
+  input to the [[ai-capex]] economics every [[neocloud]] and frontier-lab
+  training run sits on (The Decoder, @rohanpaul_ai; ARA daily digest
+  2026-08-24).
 
 ## Open questions
 - **The TSMC ceiling.** TSMC warned (2026-06-05) it **cannot meet AI-chip demand

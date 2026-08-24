@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups, and on 2026-08-23 confirmed the live Claude Code serving-config experiment, shipped Claude Code Remote Control, and saw data-center opposition reported as an IPO prospectus risk factor near a $2T investor-expected listing.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups, and now priced by its own bankers at $2 trillion with a >$100B raise pitch that would make it the largest IPO on record (2026-08-24).
 created_at: 2026-05-24
-timestamp: 2026-08-23T00:00:00Z
+timestamp: 2026-08-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
@@ -1168,9 +1169,25 @@ Three developments landed together on 2026-08-10:
   possible pre-roadshow leak**. The same cycle: the **Anthropic–Blackstone JV
   made its first acquisition** (target and price undisclosed), and Anthropic
   **eased its data-retention policy** after enterprise pushback, letting
-  enterprise customers keep their own data. See [[ai-capex]] for the survey
-  and state-action detail behind the risk factor (ARA daily digest
-  2026-08-23).
+enterprise customers keep their own data. See [[ai-capex]] for the survey
+   and state-action detail behind the risk factor (ARA digest
+   2026-08-23).
+
+## The bankers pitch a >$100B raise at a $2 trillion valuation (2026-08-24)
+
+- **The valuation shifts from "investors forecasting" to "bankers telling
+  investors" (2026-08-24).** Per @AndrewCurran_, Anthropic's bankers are
+  pitching potential investors on a **raise of over $100 billion** at a **$2
+  trillion valuation** — described as exceeding [[spacex|SpaceX]]'s record IPO
+  and ranking as **the largest listing on record**. **Nothing first-party from
+  Anthropic appears in the window**: the figure moves from the 2026-08-13
+  "$3T" the FT carried to "near $2T" investor expectations (2026-08-23) to a
+  fixed $2T banker pitch, still **roughly double the ~$1T private mark** and
+  unanchored by any public S-1. The latest rumors put the **listing in
+  September** ([anthropic-ipo-2026-06](../../models/tickets/anthropic-ipo-2026-06.md)
+  ticket update). Treat the $2T / >$100B figures as banker-to-investor talk
+  relayed by a journalist — one step further from the record than the July
+  revenue leak (ARA daily digest 2026-08-24).
 
 ## Open questions
 - **Does the eval-breach disclosure produce consequences?** Two of three

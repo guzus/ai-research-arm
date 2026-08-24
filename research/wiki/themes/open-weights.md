@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20), and Vercel's gateway data puts open weights at 62% of token volume (2026-08-22).
+description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20), Vercel's gateway data puts open weights at 62% of token volume (2026-08-22), and Stanford CRFM begins fully-open pretraining of a 535B Marin model (2026-08-24).
 created_at: 2026-06-14
-timestamp: 2026-08-23T00:00:00Z
+timestamp: 2026-08-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -432,8 +433,19 @@ fragile and local weights look like insurance.
   operator's routed mix (see [[openrouter]] for the broker-layer read), and the
   June→August jump partly reflects open flagships ([[zhipu-glm-5-3|GLM-5.3]],
   [[moonshot-kimi-k3|Kimi K3]], [[deepseek-v4-flash|V4-Flash]]) entering
-  production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
-  2026-08-23).
+production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
+   2026-08-23).
+- **The open-local field sizes itself, and Stanford begins a fully-open 535B
+   pre-train (2026-08-24).** Two 2026-08-24 data points continue the
+   capability-at-commodity-price thread. **(1)** The local-model field ranking
+   read: best **dense** model fitting a single RTX 5090 is **Qwen 3.8 27B**;
+   best **MoE** for a 2× DGX Spark is **[[deepseek-v4-flash|V4-Flash-0731]]**,
+   with one user reporting sustained local inference above **200 tokens/sec**.
+   **(2)** **Stanford CRFM's Marin 535B-A23B** pretraining run began: **18.75T
+   tokens on 11 × GB200 NVL72, roughly three months, fully open** — a
+   university-scale open-weight pre-train at frontier-challenging scale that
+   will compound over its ~90-day runway (model timeline; ARA daily digest
+   2026-08-24).
 - **The smarter read of the Ox Alpha arc — a "not frontier" open-weight
   benchmark reality-check (2026-08-23).** The [[ox-alpha]] mystery-model hype
   deflated over five cycles in a way that matters for this theme: the
