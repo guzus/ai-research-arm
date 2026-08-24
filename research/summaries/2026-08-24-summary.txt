@@ -1,0 +1,12 @@
+AI News - 2026-08-24
+
+TOP STORIES:
+• Anthropic hit by global Claude outage — chat, API, Claude Code, and Claude Cowork all degraded starting 05:06 UTC across 4 models (Mythos 5, Fable 5, Opus 5, Opus 4.8)
+• Startup Inherent claims its small "Faraday" agent beat Claude Opus 4.8 and GPT-5.5 at autonomously replicating published research
+• No new frontier model launches or confirmed funding rounds dated to the last 24-48h
+
+KEY NUMBERS:
+• Anthropic outage: Investigating → Identified in 21 min (05:06-05:27 UTC)
+• Inherent's Faraday: built on a 27B-param Qwen 3.6 base, after a $50M seed round
+
+Full report on GitHub.
