@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "GROK CONFIRMS: CURSOR AGENT ON CLAUDE OPUS 4.6 WIPED POCKETOS PROD DB AND BACKUPS IN 9 SECONDS",
-    "source": "@grok",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/grok/status/2048930431756636403"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "OPENAI STRIPS AGI CLAUSE FROM MICROSOFT DEAL DURING MUSK V. ALTMAN JURY SELECTION \u2014 REV-SHARE NOW RUNS THROUGH 2030 INDEPENDENT OF AGI",
-    "source": "@simonw",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/simonw/status/2048834476323823983"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "MUSK V. ALTMAN: 9 JURORS SEATED \u2014 VERDICT WILL BE ADVISORY ONLY, JUDGE GONZALEZ ROGERS DECIDES THE CASE",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2048886982449733974"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "XIAOMI OPEN-SOURCES MIMO-V2.5 ON HUGGING FACE UNDER MIT LICENSE \u2014 COMMERCIAL DEPLOYMENT, FINE-TUNING PERMITTED",
-    "source": "@_akhaliq",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/_akhaliq/status/2048861462991360155"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "SAKANA AI LAUNCHES FUGU BETA \u2014 MULTI-AGENT ORCHESTRATION SYSTEM WITH RL-TRAINED 'CONDUCTOR' PAPER",
-    "source": "@hardmaru",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/hardmaru/status/2048954720761635041"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "SEMIANALYSIS: INFERENCEX SHIPS DEEPSEEK V4 PRO ON VLLM \u2014 B300 UP TO 8X FASTER THAN H200 IN DISAGGREGATED INFERENCE",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048957715955765284"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "OPENAI MODELS COMING TO AWS BEDROCK \u2014 AMAZON HOSTS APRIL 28 LIVESTREAM WITH MATT GARMAN AND OPENAI LEADERS",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2048913264013197748"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-04-28 04:00 UTC",
     "headline": "THE INFORMATION: AI STARTUPS HIT MONTHS-LONG NVIDIA GPU WAITS AS CLOUDS RESERVE SUPPLY FOR OPENAI, ANTHROPIC AND INTERNAL USE",
@@ -25464,5 +25401,54 @@
     "headline": "ANALYST JEFF PU SEES GOOGLE TPU SHIPMENTS SURPASSING NVIDIA BY 2028",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2091896616353677773"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "SPACEX AND NVIDIA DESIGN SPACE-OPTIMIZED VERA RUBIN NVL72 \u2014 ORBIT LAUNCH Q4 2027, SCALE IN 2028",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2091939113008238838"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "NVIDIA $500B FINANCING PITCH HINGES ON GPUS HOLDING VALUE AS BANKABLE ASSETS \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091948741041279140"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "SEMIANALYSIS: AI CAPEX NEARS $3T THIS YEAR, AI DEBT TO TOP $7T \u2014 SECOND-LARGEST ASSET DEBT MARKET AFTER US MORTGAGES",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091934010318471562"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "ANTHROPIC ASKS JOB CANDIDATES HOW THEY'D FEEL IF THE STOCK WENT TO ZERO, PER AXIOS",
+    "source": "@MTSlive",
+    "url": "https://x.com/MTSlive/status/2091908034838868144"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "NVIDIA GROQ 3 LPX HITS 3,400 OUTPUT TOKENS/SEC ON GEMMA 4 31B AT 100K CONTEXT IN ARTIFICIAL ANALYSIS TESTING",
+    "source": "@nvidianewsroom",
+    "url": "https://x.com/nvidianewsroom/status/2091904293343252534"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "TAIWAN CHARGES NINE OVER ALLEGED SMUGGLING OF NVIDIA CHIPS INTO CHINA",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2091926963065876958"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "THOMSON REUTERS SHIPS IN-HOUSE LEGAL MODEL THOMSON 1 \u2014 $40M PROGRAM, $450K FINAL TRAINING RUN",
+    "source": "@ConorBronsdon",
+    "url": "https://x.com/ConorBronsdon/status/2091961489460715824"
   }
 ]
