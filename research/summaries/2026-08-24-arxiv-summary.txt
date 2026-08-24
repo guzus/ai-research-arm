@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-24
+
+TOP 5 PAPERS:
+• WA-JEPA - V-JEPA-native world-action model; flow-matching latent futures, 91.7 EPDMS on NAVSIM-v2 for driving
+• E2-TTT - Closed-form chunk transition mirrors per-token TTT; >90% accuracy at 8x context length
+• Scaling Muon for DiTs - Periodic Row-wise Muon keeps 12.9-19.1% quality gain, cuts step time 15-24%
+• CLEAR - Latent-gate safety adapter: HarmBench ASR 32.3->0.5% while preserving utility
+• OmniAssistBench - Interactive benchmark for omni-LLM assistants; Gemini-3-Pro 66.4/100
+
+CATEGORIES: 7 NLP, 8 Vision/Multimodal, 7 Agents/Reasoning, 7 Safety, 7 Architecture/Other
+
+Full report on GitHub.
