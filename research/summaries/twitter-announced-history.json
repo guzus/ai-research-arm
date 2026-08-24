@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "MICROSOFT-OPENAI EXCLUSIVITY ENDS \u2014 OPENAI CLEARED TO SELL ON AWS AND GOOGLE CLOUD",
-    "source": "Trending on X",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://twitter.com/i/trending/2048754063697744070"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "OPENAI MODELS ARRIVING ON AWS BEDROCK IN COMING WEEKS \u2014 AMAZON HOSTING APRIL 28 LIVESTREAM WITH GARMAN AND OPENAI LEADS",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2048913264013197748"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "MUSK V. ALTMAN TRIAL: 9 JURORS SEATED, VERDICT ADVISORY ONLY \u2014 JUDGE GONZALEZ ROGERS DECIDES",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2048886982449733974"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "OPENAI QUIETLY REMOVED AGI CLAUSE FROM CHARTER MID-JURY-SELECTION \u2014 MUSK: 'THEY STOLE A NONPROFIT'",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2048894730340384830"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "NVIDIA TOPS $5 TRILLION MARKET CAP ON RECORD $216.61 CLOSE \u2014 SEMICONDUCTOR RALLY HITS 18 STRAIGHT SESSIONS",
-    "source": "Trending on X",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://twitter.com/i/trending/2048811178273710563"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "POWER-SEMI LEAD TIMES STRETCH TO 30 WEEKS ON AI SERVER DEMAND \u2014 INFINEON, TI, ONSEMI HIT FIRST",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2048911765279584366"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-04-28 01:00 UTC",
     "headline": "GROK CONFIRMS: CURSOR AGENT ON CLAUDE OPUS 4.6 WIPED POCKETOS PROD DB AND BACKUPS IN 9 SECONDS",
@@ -25476,5 +25422,47 @@
     "headline": "AGENT SKILL LIBRARIES FAIL TO BEAT PLAIN CONTEXT \u2014 0.605 VS 0.602 ON GPT-5.3-CODEX IN CONTINUALSKILLBENCH ABLATION",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2091855138483032462"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "NVIDIA GROQ 3 LPX RACKS ENTER FULL PRODUCTION \u2014 NEBIUS FIRST CLOUD ADOPTER, PAIRED WITH VERA RUBIN NVL72",
+    "source": "@JonathanRoss321",
+    "url": "https://x.com/JonathanRoss321/status/2091914710325289435"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "NVIDIA AI SERVER SYSTEMS TO COST ABOUT 17% MORE \u2014 ADDS AT LEAST $5B TO A ONE-GIGAWATT DATA CENTER",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091903479434396010"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "75% OF AMERICANS NOW OPPOSE DATA CENTERS, UP FROM 42% A YEAR AGO \u2014 BOTH PARTIES MOVING TO RESTRICT",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091890001877323805"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "REDNOTE DOTS STUDIO SHIPS DOTS3-NOTE PREVIEW \u2014 OPEN-WEIGHT 280B TOTAL / 16B ACTIVE, 512K CONTEXT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2091886743171813732"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "PERPLEXITY HIRES ANDREW GORDON WILSON TO LEAD CONTINUAL LEARNING AND LONG-HORIZON RL RESEARCH",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2091909869796520394"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "ANALYST JEFF PU SEES GOOGLE TPU SHIPMENTS SURPASSING NVIDIA BY 2028",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2091896616353677773"
   }
 ]
