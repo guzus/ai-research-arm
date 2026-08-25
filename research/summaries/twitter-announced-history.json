@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "KOREA APRIL CHIP EXPORTS \u2014 DRAM +83% QoQ, SSD +181% QoQ; DRAM CONTRACT PRICES UP 26% VS MARCH",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050025480225788287"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "HUAWEI GUIDES AI-CHIP REVENUE +60% TO ~$12B THIS YEAR; MAJORITY OF ORDERS FOR LATEST ASCEND 950PR",
-    "source": "@egarciagarcia",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/egarciagarcia/status/2050069370689171930"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "GROK 4.3 RANKS #1 ON VALS AI CORPFIN v2 BENCHMARK, AHEAD OF GPT-5.5 AND CLAUDE ON 200+ PAGE CREDIT AGREEMENTS",
-    "source": "@XFreeze",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/XFreeze/status/2050056011084411376"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "MISTRAL AI NAMED TO TIME100 MOST INFLUENTIAL COMPANIES 2026 AND TOP 10 FOR AI",
-    "source": "@MistralAI",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/MistralAI/status/2049988769928056852"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-01 07:00 UTC",
     "headline": "GROK 4.3 GOES LIVE ON XAI API \u2014 ~500M PARAMS, 40-60% CHEAPER THAN 4.20, +321 ELO ON AGENTIC TASKS",
@@ -25390,5 +25354,33 @@
     "headline": "PHISHING CAMPAIGN SENT THROUGH OPENAI'S OWN DOMAIN CARRIES GMAIL OFFICIAL-SENDER BADGE",
     "source": "@mark_k",
     "url": "https://x.com/mark_k/status/2092159763479953768"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 13:06:17 UTC",
+    "headline": "APPLE LAUNCHES FIRST 2NM CHIP \u2014 M6 IN NEW MAC MINI, QUAD-DIE M5 ULTRA IN MAC STUDIO PITCHED AT FRONTIER AI",
+    "source": "@FirstSquawk",
+    "url": "https://x.com/FirstSquawk/status/2092236880234557623"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-25 13:06:17 UTC",
+    "headline": "APPLE CALLS M5 ULTRA ITS MOST POWERFUL CHIP EVER, BUILT FOR RUNNING FRONTIER AI MODELS ON-DEVICE",
+    "source": "@Polymarket",
+    "url": "https://x.com/Polymarket/status/2092237169217728682"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 13:06:17 UTC",
+    "headline": "OX ALPHA MATCHES OPUS 5 ON KERNELBENCH TOP-K AT 7.17% OF ROOFLINE, PLACES LAST ON SPARSE ATTENTION",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2092206366853148695"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-25 13:06:17 UTC",
+    "headline": "MODELSCOPE TEASES OPEN RELEASE OF QWEN3.8-FLASH-NEXT \u2014 THE ARCHITECTURE BEHIND QWEN4",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2092210590114553941"
   }
 ]
