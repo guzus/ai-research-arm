@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 15:00 UTC",
-    "headline": "EX-NVIDIA AND DEEPMIND RESEARCHERS LAUNCHING WORLD-MODEL STARTUPS WITH NINE-FIGURE ROUNDS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-28-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2049149179180568943"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 15:00 UTC",
-    "headline": "SPACEX SEC FILING \u2014 MUSK COULD GET 200M SHARES TIED TO MILESTONES AHEAD OF PLANNED JUNE IPO",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-04-28-twitter-15h-headlines.json",
-    "url": "https://x.com/mark_k/status/2049144256699249039"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "OPENAI CODEX UPDATE ADDS /SIDE COMMAND; GPT-5.5 NOW KEEPS CODEX RUNNING FOR DAYS TO BUILD OS KERNELS",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/steipete/status/2050016270574080188"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "SEMIANALYSIS \u2014 WAFER-MAKER ASPs TURN; LEADING-EDGE LOGIC DEMAND INFLECTS 2027, 2028+ EPI DEALS LOCKING ~20% HIGHER",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2050032500399841527"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "APPLE EARNINGS READ-THROUGH \u2014 TSMC LEADING-EDGE SoC CAPACITY, NOT MEMORY, IS THE BINDING SHIPMENT CONSTRAINT",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050024550176522452"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-01 04:00 UTC",
     "headline": "KOREA APRIL CHIP EXPORTS \u2014 DRAM +83% QoQ, SSD +181% QoQ; DRAM CONTRACT PRICES UP 26% VS MARCH",
@@ -25400,5 +25355,40 @@
     "headline": "CHINESE MEDIA: CXMT EXPECTED AS KEY LPDDR6 SUPPLIER FOR XIAOMI XRING O3",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2092144063902613878"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 09:47:10 UTC",
+    "headline": "AJINOMOTO RATIONS ABF FILM TO AI CUSTOMERS \u2014 LINES AT FULL CAPACITY, NEW CAPACITY FAR OUT, PER MERITZ CHECKS",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092157094271324610"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 09:47:10 UTC",
+    "headline": "OX ALPHA ATTRIBUTION FLIPS TO ZHIPU \u2014 GLM-5.3 AT 3X COST WHILE STEALTH MODEL UNREACHABLE FROM BEIJING",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2092158475333775420"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-25 09:47:10 UTC",
+    "headline": "GLM-5.2 BEATS GLM-5.3 ON KERNELBENCH-HARD PAGED ATTENTION \u2014 NEWER CHECKPOINT SKIPPED TRITON FOR RAW CUDA",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2092171758237351958"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 09:47:10 UTC",
+    "headline": "GROK BUILD 1.0.9 ADDS CHILD-AGENT BUDGETS, WORKFLOW DISCOVERY BY NAME, BACKGROUNDED SHELL COMMANDS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2092178491630387570"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-25 09:47:10 UTC",
+    "headline": "PHISHING CAMPAIGN SENT THROUGH OPENAI'S OWN DOMAIN CARRIES GMAIL OFFICIAL-SENDER BADGE",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2092159763479953768"
   }
 ]
