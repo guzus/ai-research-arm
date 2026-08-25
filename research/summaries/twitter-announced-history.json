@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "CHINA BLOCKS META'S $2B MANUS AI ACQUISITION \u2014 META PREPARING TO UNWIND THE DEAL",
-    "source": "@enes1050392",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/enes1050392/status/2049108348432249012"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "GOOGLE SIGNS PENTAGON DEAL FOR CLASSIFIED AI WORK \u2014 REVERSES 2018 PROJECT MAVEN EXIT",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2049081961222955403"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "MICROSOFT\u2013OPENAI PARTNERSHIP REWRITTEN THROUGH 2032 \u2014 AGI TRIGGER CLAUSE QUIETLY DROPPED",
-    "source": "@monkfromearth",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/monkfromearth/status/2049107595538084271"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "MICROSOFT OPEN-SOURCES TRELLIS.2 \u2014 4B-PARAM IMAGE-TO-3D MODEL, 1536\u00b3 PBR ASSETS",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2049099376476459372"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "ADANI TO BUILD ~1GW AI DATA CENTER HUB IN VIZAG \u2014 AMONG INDIA'S LARGEST DIGITAL INFRA PROJECTS",
-    "source": "@IndianIndex",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/IndianIndex/status/2049108234838147359"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "PALANTIR LANDS MULTI-YEAR AI DEPLOYMENT WITH CLEVELAND-CLIFFS (NYSE: CLF)",
-    "source": "@PalantirOg",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/PalantirOg/status/2049109137213050956"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-04-28 15:00 UTC",
     "headline": "GOOGLE SIGNS PENTAGON DOD DEAL \u2014 GEMINI CLEARED FOR CLASSIFIED WORK DESPITE 600+ STAFF REVOLT",
@@ -25422,5 +25368,47 @@
     "headline": "SEMIANALYSIS RELEASES AGENTX 1.0, OPEN-SOURCE MULTI-TURN AGENTIC CODING BENCHMARK ACROSS GB300, MI355, B200",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2092039363852902480"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "OPENAI RESTORES 5-HOUR RATE LIMIT ON PLUS FOR CHATGPT WORK AND CODEX; $100 AND $200 PRO TIERS EXEMPT",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2092058556707344708"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "ALABAMA AG STEVE MARSHALL SUBPOENAS OPENAI OVER 'COMPLETE LACK OF OVERSIGHT' IN HUGGING FACE BREACH",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092076635545801137"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "SWE-BENCH SCIENCE: TOP AGENT CLEARS 96.64% OF VISIBLE TESTS, JUST 47.90% PASS@1 ON HIDDEN ONES",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092088072624386209"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "DEEPMIND 'RECIRCULATION' CUTS GEMMA3 12B PERPLEXITY UP TO 35% WITH FROZEN WEIGHTS, COST MOVES TO PREFILL",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092071211480322435"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "CXMT NAMED LPDDR6 SUPPLIER FOR XIAOMI XRING-03 AT 10,667 MBPS AND 113.8 GB/S",
+    "source": "@tphuang",
+    "url": "https://x.com/tphuang/status/2092086800592609655"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "TCS BUYS PORSCHE IT ARM MHP AT EUR320M, SIGNS FIVE-YEAR EUR1.25BN AI MOBILITY DEAL",
+    "source": "@ETNOWlive",
+    "url": "https://x.com/ETNOWlive/status/2092094476026106365"
   }
 ]
