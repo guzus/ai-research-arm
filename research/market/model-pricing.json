@@ -33,7 +33,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-08-25T04:04:58Z",
+  "generated_at": "2026-08-25T09:59:19Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -102,7 +102,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-24T10:13:29Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.1316,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-24T16:13:59Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.1316,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-24T21:50:04Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-25T04:04:58Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-25T04:04:58Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.28,"0.95":null},"pareto":6,"plotted":91,"ts":"2026-08-25T09:59:19Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -538,7 +539,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 3.036,
+          "output_usd_per_mtok": 3.96,
           "pareto": false,
           "score": 0.19,
           "stderr": 0.039427724440366255,
@@ -882,7 +883,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 3.036,
+          "output_usd_per_mtok": 3.96,
           "pareto": true,
           "score": 0.33448275862068966,
           "stderr": 0.027753489933368777,
@@ -1804,7 +1805,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 3.036,
+          "output_usd_per_mtok": 3.96,
           "pareto": false,
           "score": 0.9333333333333333,
           "stderr": 0.03760507165451774,
@@ -2661,7 +2662,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 3.036,
+          "output_usd_per_mtok": 3.96,
           "pareto": false,
           "score": 0.37286432160804023,
           "stderr": 0.015337796690651453,
@@ -2849,7 +2850,7 @@
         }
       ]
     },
-    "as_of": "2026-08-25T04:04:58Z",
+    "as_of": "2026-08-25T09:59:19Z",
     "counts": {
       "pareto": 6,
       "plotted": 91,
@@ -3353,14 +3354,14 @@
         "vendor": "anthropic"
       },
       {
-        "blended_usd_per_mtok": 1.4835,
+        "blended_usd_per_mtok": 1.935,
         "context_length": 204800,
         "epoch_model": "GLM-5.1",
-        "input_usd_per_mtok": 0.966,
+        "input_usd_per_mtok": 1.26,
         "key": "glm5.1",
         "name": "GLM 5.1",
         "openrouter_id": "z-ai/glm-5.1",
-        "output_usd_per_mtok": 3.036,
+        "output_usd_per_mtok": 3.96,
         "pareto": false,
         "price_variant": null,
         "runs": 1,
@@ -4611,18 +4612,18 @@
         "vendor": "inclusionai"
       },
       {
-        "input_usd_per_mtok": 0.035,
-        "key": "deepseekv4flashlatest",
-        "name": "DeepSeek V4 Flash Latest",
-        "output_usd_per_mtok": 0.075,
-        "vendor": "~deepseek"
-      },
-      {
         "input_usd_per_mtok": 0.05,
         "key": "llama3.18binstruct",
         "name": "Llama 3.1 8B Instruct",
         "output_usd_per_mtok": 0.08,
         "vendor": "meta-llama"
+      },
+      {
+        "input_usd_per_mtok": 0.035,
+        "key": "deepseekv4flashlatest",
+        "name": "DeepSeek V4 Flash Latest",
+        "output_usd_per_mtok": 0.1,
+        "vendor": "~deepseek"
       },
       {
         "input_usd_per_mtok": 0.025,
@@ -4723,18 +4724,18 @@
         "vendor": "cohere"
       },
       {
+        "input_usd_per_mtok": 0.0854,
+        "key": "deepseekv4flash0423",
+        "name": "DeepSeek V4 Flash 0423",
+        "output_usd_per_mtok": 0.1708,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.044,
         "key": "hymt21.8b",
         "name": "Hy-MT2-1.8B",
         "output_usd_per_mtok": 0.177,
         "vendor": "tencent"
-      },
-      {
-        "input_usd_per_mtok": 0.088606,
-        "key": "deepseekv4flash0423",
-        "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.177212,
-        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.09,
@@ -5325,6 +5326,13 @@
         "vendor": "stepfun"
       },
       {
+        "input_usd_per_mtok": 0.579072,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 1.158144,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.3,
         "key": "longcat2.0",
         "name": "LongCat 2.0",
@@ -5470,13 +5478,6 @@
         "name": "Qwen3.5 Plus 2026-02-15",
         "output_usd_per_mtok": 1.56,
         "vendor": "qwen"
-      },
-      {
-        "input_usd_per_mtok": 0.790308,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 1.580616,
-        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.8,
@@ -5724,18 +5725,18 @@
         "vendor": "deepseek"
       },
       {
+        "input_usd_per_mtok": 0.425,
+        "key": "qwen3.827b",
+        "name": "Qwen3.8 27B",
+        "output_usd_per_mtok": 2.55,
+        "vendor": "qwen"
+      },
+      {
         "input_usd_per_mtok": 0.74,
         "key": "katcoderprov2.5",
         "name": "KAT-Coder-Pro V2.5",
         "output_usd_per_mtok": 2.96,
         "vendor": "kwaipilot"
-      },
-      {
-        "input_usd_per_mtok": 0.4,
-        "key": "qwen3.827b",
-        "name": "Qwen3.8 27B",
-        "output_usd_per_mtok": 3.0,
-        "vendor": "qwen"
       },
       {
         "input_usd_per_mtok": 0.5,
