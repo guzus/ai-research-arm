@@ -4,15 +4,16 @@ title: Alibaba
 type: entity
 aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), and raised HK$80B (~$10.2B) via its first Hong Kong placement since 2019 with 100% of proceeds earmarked for AI infrastructure (2026-08-24).
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), and saw its HK$80B (~$10.2B) placement — the first Hong Kong placement since 2019, 100% of proceeds earmarked for AI infrastructure — price at an 8.4% discount with shares opening ~10% lower (2026-08-25).
 created_at: 2026-07-05
-timestamp: 2026-08-24T00:00:00Z
+timestamp: 2026-08-25T00:00:00Z
 market:
   ticker: BABA
   exchange: NYSE
   symbol: NYSE:BABA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA model ticket — Alibaba AI share placement", path: research/models/tickets/alibaba-ai-share-placement-2026-08.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
@@ -166,6 +167,16 @@ friction point distinct from Qwen's own model-release cadence.
    are internally consistent, which checks the relay, not the event.)* See
    [[ai-capex]] and the [share-placement ticket](../../models/tickets/alibaba-ai-share-placement-2026-08.md)
    (ARA daily digest and model ticket 2026-08-24).
+- **The placement prices — the first market verdict on equity-funded AI capex
+  (2026-08-25).** The HK$80B placement **priced at HK$112.70, an 8.4% discount to
+  the prior close**, and Alibaba's shares **opened roughly 10% lower in Hong
+  Kong** against a Hang Seng down 2.1% — the **first market verdict on financing
+  AI capex with equity**, and a harsh one. It arrived alongside a reported
+  **75% year-over-year drop in quarterly profit**, and a separate datapoint that
+  **Qwen has passed 3B cumulative downloads**. Three independent relays plus an
+  observable share-price consequence now corroborate the event, though **still no
+  HKEX filing or Alibaba primary post** was captured (ARA daily digest and model
+  ticket 2026-08-25). See [[ai-capex]].
 
 ## Open questions
 

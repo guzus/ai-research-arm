@@ -147,11 +147,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24).",
-      "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24).",
+      "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24) — as US opposition to data centers hits 75% and NVIDIA's financing is said to depend on lenders treating GPUs as bankable assets (2026-08-25).",
+      "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24) — as US opposition to data centers hits 75% and NVIDIA's financing is said to depend on lenders treating GPUs as bankable assets (2026-08-25).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-24",
-      "timestamp": "2026-08-24T00:00:00Z",
+      "updated_at": "2026-08-25",
+      "timestamp": "2026-08-25T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -233,6 +233,7 @@
         "openai",
         "openrouter",
         "palantir",
+        "perplexity",
         "prometheus",
         "remote-labor-index",
         "sk-hynix",
@@ -270,11 +271,11 @@
         "export-control",
         "hyperscaler-china"
       ],
-      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), and raised HK$80B (~$10.2B) via its first Hong Kong placement since 2019 with 100% of proceeds earmarked for AI infrastructure (2026-08-24).",
-      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), and raised HK$80B (~$10.2B) via its first Hong Kong placement since 2019 with 100% of proceeds earmarked for AI infrastructure (2026-08-24).",
+      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), and saw its HK$80B (~$10.2B) placement — the first Hong Kong placement since 2019, 100% of proceeds earmarked for AI infrastructure — price at an 8.4% discount with shares opening ~10% lower (2026-08-25).",
+      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), and saw its HK$80B (~$10.2B) placement — the first Hong Kong placement since 2019, 100% of proceeds earmarked for AI infrastructure — price at an 8.4% discount with shares opening ~10% lower (2026-08-25).",
       "created_at": "2026-07-05",
-      "updated_at": "2026-08-24",
-      "timestamp": "2026-08-24T00:00:00Z",
+      "updated_at": "2026-08-25",
+      "timestamp": "2026-08-25T00:00:00Z",
       "file": "entities/alibaba.md",
       "aliases": [
         "Alibaba Group",
@@ -458,11 +459,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups, and now priced by its own bankers at $2 trillion with a >$100B raise pitch that would make it the largest IPO on record (2026-08-24).",
-      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups, and now priced by its own bankers at $2 trillion with a >$100B raise pitch that would make it the largest IPO on record (2026-08-24).",
+      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups, and is now priced by its own bankers at $2 trillion with a >$100B raise pitch that would make it the largest IPO on record (2026-08-24) — with FT reporting annualized revenue at $65bn in July and 6,000 customers spending $100k+ a year (2026-08-25).",
+      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups, and is now priced by its own bankers at $2 trillion with a >$100B raise pitch that would make it the largest IPO on record (2026-08-24) — with FT reporting annualized revenue at $65bn in July and 6,000 customers spending $100k+ a year (2026-08-25).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-24",
-      "timestamp": "2026-08-24T00:00:00Z",
+      "updated_at": "2026-08-25",
+      "timestamp": "2026-08-25T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -726,8 +727,8 @@
       "summary": "Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI's first custom inference chip (Jalapeño, co-designed with Broadcom), and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.",
       "description": "Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI's first custom inference chip (Jalapeño, co-designed with Broadcom), and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-06-29",
-      "timestamp": "2026-06-29T00:00:00Z",
+      "updated_at": "2026-08-25",
+      "timestamp": "2026-08-25T00:00:00Z",
       "file": "entities/broadcom.md",
       "aliases": [
         "Broadcom",
@@ -738,6 +739,7 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "google",
         "nvidia",
         "openai"
       ],
@@ -1062,6 +1064,7 @@
         "model-specific-silicon",
         "moonshot-kimi-k3",
         "muse-code",
+        "ox-alpha",
         "qwen-3-8-max",
         "verification-bottleneck",
         "xai",
@@ -2156,6 +2159,7 @@
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "broadcom",
         "california-ai-regulation",
         "discovery-loop",
         "eu-ai-regulation",
@@ -2292,11 +2296,11 @@
         "accelerator",
         "model-specific-silicon"
       ],
-      "summary": "AI-inference-chip startup that raised $350M at a $3.5B valuation (2026-08-18), roughly half its September 2025 mark, after NVIDIA licensed its LPU architecture and absorbed founder Jonathan Ross.",
-      "description": "AI-inference-chip startup that raised $350M at a $3.5B valuation (2026-08-18), roughly half its September 2025 mark, after NVIDIA licensed its LPU architecture and absorbed founder Jonathan Ross.",
+      "summary": "AI-inference-chip startup that raised $350M at a $3.5B valuation (2026-08-18), roughly half its September 2025 mark, after NVIDIA licensed its LPU architecture and absorbed founder Jonathan Ross; its Groq 3 LPX racks — the first shipping product of the Nvidia–Groq deal — entered full production with Nebius as launch cloud (2026-08-25).",
+      "description": "AI-inference-chip startup that raised $350M at a $3.5B valuation (2026-08-18), roughly half its September 2025 mark, after NVIDIA licensed its LPU architecture and absorbed founder Jonathan Ross; its Groq 3 LPX racks — the first shipping product of the Nvidia–Groq deal — entered full production with Nebius as launch cloud (2026-08-25).",
       "created_at": "2026-08-18",
-      "updated_at": "2026-08-18",
-      "timestamp": "2026-08-18T00:00:00Z",
+      "updated_at": "2026-08-25",
+      "timestamp": "2026-08-25T00:00:00Z",
       "file": "entities/groq.md",
       "aliases": [
         "Groq",
@@ -2307,11 +2311,14 @@
       "outbound": [
         "amd",
         "model-specific-silicon",
+        "nebius",
+        "nvidia",
         "taalas"
       ],
       "inbound": [
         "fractile",
-        "model-specific-silicon"
+        "model-specific-silicon",
+        "nvidia"
       ]
     },
     {
@@ -3015,6 +3022,7 @@
         "fractile",
         "groq",
         "matrix-multiplication-exponent",
+        "nvidia",
         "taalas"
       ]
     },
@@ -3288,6 +3296,7 @@
         "ai-capex",
         "coreweave",
         "fireworks-ai",
+        "groq",
         "meta",
         "neocloud",
         "nvidia"
@@ -3400,11 +3409,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package; told major customers AI servers cost ~17% more on the DRAM/HBM squeeze, adding at least $5B to a 1 GW build (2026-08-24).",
-      "description": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package; told major customers AI servers cost ~17% more on the DRAM/HBM squeeze, adding at least $5B to a 1 GW build (2026-08-24).",
+      "summary": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package; told major customers AI servers cost ~17% more on the DRAM/HBM squeeze, adding at least $5B to a 1 GW build (2026-08-24), and is designing an orbital AI datacenter (space-optimized Vera Rubin NVL72) with SpaceX launching Q4 2027 while opening equity talks with Perplexity above $30B and shipping Groq 3 LPX racks to full production on Nebius (2026-08-25).",
+      "description": "The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package; told major customers AI servers cost ~17% more on the DRAM/HBM squeeze, adding at least $5B to a 1 GW build (2026-08-24), and is designing an orbital AI datacenter (space-optimized Vera Rubin NVL72) with SpaceX launching Q4 2027 while opening equity talks with Perplexity above $30B and shipping Groq 3 LPX racks to full production on Nebius (2026-08-25).",
       "created_at": "2026-06-05",
-      "updated_at": "2026-08-24",
-      "timestamp": "2026-08-24T00:00:00Z",
+      "updated_at": "2026-08-25",
+      "timestamp": "2026-08-25T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -3427,17 +3436,21 @@
         "claude-opus-4-8",
         "coreweave",
         "gemma-4",
+        "groq",
         "meta",
         "micron",
         "microsoft",
+        "model-specific-silicon",
         "muse-glimmer",
         "nebius",
         "neocloud",
         "openai",
+        "perplexity",
         "poolside",
         "safe-superintelligence",
         "salesforce",
         "sk-hynix",
+        "spacex",
         "verification-bottleneck"
       ],
       "inbound": [
@@ -3453,14 +3466,17 @@
         "fractile",
         "gemma-4",
         "gpt-6",
+        "groq",
         "meta",
         "microsoft",
         "model-specific-silicon",
         "open-weights",
         "openai",
+        "perplexity",
         "poolside",
         "safe-superintelligence",
         "sk-hynix",
+        "spacex",
         "taalas",
         "xiaomi-mimo-v2-5-pro"
       ],
@@ -3600,6 +3616,7 @@
         "openrouter",
         "ornith-1-5",
         "ox-alpha",
+        "perplexity",
         "qwen-3-8-max",
         "sakana-ai",
         "soofi-s-30b-a3b",
@@ -3765,6 +3782,7 @@
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
         "open-weights",
+        "perplexity",
         "sakana-ai",
         "thinking-machines",
         "zhipu-glm-5-2"
@@ -3822,23 +3840,25 @@
         "hype-cycle",
         "open-weights"
       ],
-      "summary": "An unattributed, free-to-use model whose headline number collapsed from a retracted 80% to ~63% and then a \"realistic\" 60-61% with the task list and sample size still unpublished (2026-08-24) — attribution reading drifts from a Z.ai GLM Flash variant toward a Zhipu multimodal GLM-5.3 variant, with no lab having claimed it and the free window dated to close near 2026-08-27.",
-      "description": "An unattributed, free-to-use model whose headline number collapsed from a retracted 80% to ~63% and then a \"realistic\" 60-61% with the task list and sample size still unpublished (2026-08-24) — attribution reading drifts from a Z.ai GLM Flash variant toward a Zhipu multimodal GLM-5.3 variant, with no lab having claimed it and the free window dated to close near 2026-08-27.",
+      "summary": "An unattributed, free-to-use model whose headline number collapsed from a retracted 80% to ~63% and then a \"realistic\" 60-61% with the task list and sample size still unpublished (2026-08-24) — attribution reading drifts from a Z.ai GLM Flash variant toward a Zhipu multimodal GLM-5.3 variant, with no lab having claimed it through day four and the free window dated to close near 2026-08-27.",
+      "description": "An unattributed, free-to-use model whose headline number collapsed from a retracted 80% to ~63% and then a \"realistic\" 60-61% with the task list and sample size still unpublished (2026-08-24) — attribution reading drifts from a Z.ai GLM Flash variant toward a Zhipu multimodal GLM-5.3 variant, with no lab having claimed it through day four and the free window dated to close near 2026-08-27.",
       "created_at": "2026-08-23",
-      "updated_at": "2026-08-24",
-      "timestamp": "2026-08-24T00:00:00Z",
+      "updated_at": "2026-08-25",
+      "timestamp": "2026-08-25T00:00:00Z",
       "file": "entities/ox-alpha.md",
       "aliases": [
         "Ox Alpha",
         "OxAlpha"
       ],
       "outbound": [
+        "claude-opus-5",
         "deepseek-v4-flash",
         "gemini-3-7-flash",
         "gpt-5-6",
         "moonshot-kimi-k3",
         "open-weights",
         "verification-bottleneck",
+        "xai",
         "zhipu-glm-5-3"
       ],
       "inbound": [
@@ -3885,6 +3905,37 @@
       }
     },
     {
+      "slug": "perplexity",
+      "title": "Perplexity",
+      "type": "entity",
+      "tags": [
+        "search",
+        "agents",
+        "ai-application",
+        "funding"
+      ],
+      "summary": "AI search-and-agent company behind the Perplexity Computer workflow agent, which drove annualized revenue from under $250M at the start of 2026 past $750M; NVIDIA is reported in talks to invest at a $30B+ valuation (2026-08-25).",
+      "description": "AI search-and-agent company behind the Perplexity Computer workflow agent, which drove annualized revenue from under $250M at the start of 2026 past $750M; NVIDIA is reported in talks to invest at a $30B+ valuation (2026-08-25).",
+      "created_at": "2026-08-25",
+      "updated_at": "2026-08-25",
+      "timestamp": "2026-08-25T00:00:00Z",
+      "file": "entities/perplexity.md",
+      "aliases": [
+        "Perplexity AI",
+        "Perplexity Computer"
+      ],
+      "outbound": [
+        "ai-capex",
+        "nvidia",
+        "open-weights",
+        "openrouter",
+        "poolside"
+      ],
+      "inbound": [
+        "nvidia"
+      ]
+    },
+    {
       "slug": "poolside",
       "title": "Poolside",
       "type": "entity",
@@ -3908,7 +3959,8 @@
         "nvidia"
       ],
       "inbound": [
-        "nvidia"
+        "nvidia",
+        "perplexity"
       ]
     },
     {
@@ -4302,11 +4354,11 @@
         "space",
         "public-listing"
       ],
-      "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave; its first public quarter (FY26Q2) put ~86% of $18.4B capex into AI compute.",
-      "description": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave; its first public quarter (FY26Q2) put ~86% of $18.4B capex into AI compute.",
+      "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave; its first public quarter (FY26Q2) put ~86% of $18.4B capex into AI compute; now designing an orbital AI datacenter with NVIDIA (Vera Rubin NVL72, Q4 2027 launch).",
+      "description": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave; its first public quarter (FY26Q2) put ~86% of $18.4B capex into AI compute; now designing an orbital AI datacenter with NVIDIA (Vera Rubin NVL72, Q4 2027 launch).",
       "created_at": "2026-06-05",
-      "updated_at": "2026-08-05",
-      "timestamp": "2026-08-05T00:00:00Z",
+      "updated_at": "2026-08-25",
+      "timestamp": "2026-08-25T00:00:00Z",
       "file": "entities/spacex.md",
       "aliases": [
         "SpaceX",
@@ -4321,6 +4373,7 @@
         "cursor",
         "deepseek",
         "neocloud",
+        "nvidia",
         "openai",
         "xai"
       ],
@@ -4331,6 +4384,7 @@
         "cursor",
         "deepseek",
         "nebius",
+        "nvidia",
         "openai",
         "volta-infra",
         "xai"
@@ -4533,8 +4587,8 @@
       "summary": "The 2026 constraint that models now generate research-shaped output faster than qualified humans can check it, so the scarce resource shifts from producing results to establishing which ones are correct and which matter.",
       "description": "The 2026 constraint that models now generate research-shaped output faster than qualified humans can check it, so the scarce resource shifts from producing results to establishing which ones are correct and which matter.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-08-24",
-      "timestamp": "2026-08-24T00:00:00Z",
+      "updated_at": "2026-08-25",
+      "timestamp": "2026-08-25T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -4655,6 +4709,7 @@
         "cursor",
         "eu-ai-regulation",
         "federal-ai-policy",
+        "ox-alpha",
         "seedance-2-5",
         "spacex",
         "volta-infra"
@@ -5209,6 +5264,9 @@
     "palantir technologies inc.": "palantir",
     "parallel subagents": "dynamic-workflows",
     "pcc": "apple",
+    "perplexity": "perplexity",
+    "perplexity ai": "perplexity",
+    "perplexity computer": "perplexity",
     "pltr": "palantir",
     "poolside": "poolside",
     "private cloud compute": "apple",
@@ -5318,6 +5376,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-08-25",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-25 digest + 2026-08-24-updated model tickets (Alibaba placement priced, Perplexity investment talks, Poolside licence, GPT-5.6 repricing, Ox Alpha day 4, Harvey Tenet, Xiaomi Xring O100). Created 1 (perplexity — Nvidia equity talks >$30B, Perplexity Computer revenue run). Updated 9 (nvidia — orbital AI datacenter with SpaceX (Vera Rubin NVL72, Q4 2027), the ~17% price increase hardening to an $8M Rubin NVL72 rack on two named outlets, Perplexity talks, Groq 3 LPX full production, Rubin Ultra 192GB HBM4 spec, Rebellions move + smuggling indictment; anthropic — full-lineup outage (Mythos 5/Fable 5/Opus 5/Opus 4.8 across app, API, Claude Code, Cowork) + FT revenue picture ($65bn July, 6,000 $100k+ customers, Q3 profitable, Fable 5 at 6% of tokens) + marshmallow/melon checkpoints; ai-capex — 75% US data-center opposition as bipartisan posture, NVIDIA $500B package gated on GPU bankability, SemiAnalysis ~$3T capex/$7T debt, Starcloud's orbital round, Alibaba placement as first equity-verdict, UBS/Broadcom TPU crossover, SoftBank ¥1T bond; spacex — orbital DC with Nvidia + The Information naming the Cursor deal at $60B with Musk's \"Grok has fallen behind\" admission; alibaba — placement priced at HK$112.70 (8.4% discount), shares ~10% lower, 75% YoY profit drop; ox-alpha — day four unclaimed, lemans 52/63, Context Arena 8-needle board, two opposite cyber evals; verification-bottleneck — mathematician credits Claude with an S^6 complex-structure claim (open since 1948), unverified with a bad base rate; groq — Groq 3 LPX racks to full production on Nebius as launch cloud; broadcom — UBS cuts FY2027 AI revenue ~$5B to ~$130B on a lower Google TPU forecast)."
+    },
+    {
       "date": "2026-08-24",
       "op": "ingest",
       "summary": "Ingested the 2026-08-24 digest + 2026-08-23-updated model tickets (Alibaba HK$80B placement, Anthropic IPO $2T pitch, DeepSeek V4-Flash-Vision-Exp, Nvidia price increase + Mercor, Ox Alpha, Stripe-OpenRouter). Created 1 (hugging-face — sale exploration at $13B+, ~3× its 2023 Series D, no buyer named). Updated 9 (anthropic — bankers pitching a >$100B raise at a $2T valuation, largest IPO on record, September listing rumors; alibaba — HK$80B (~$10.2B) Hong Kong placement, first since 2019, 100% of proceeds to AI infrastructure; nvidia — \">15%\" price increase refined to ~17% with the derived ≥$5B-per-1GW cost + Vera Rubin NVL72 20.7TB HBM4/54TB LPDDR5X spec; ox-alpha — headline number collapses (80%→63%→60-61%), task list and sample size still unpublished, Cursor theory argued down, read pushing to a Zhipu multimodal GLM-5.3 variant; claude-opus-5 — Boris Cherny concedes the verbosity complaints and points users to outputStyle=concise as triage; verification-bottleneck — the AutoResearch act-on-review gap (82.5% of runs reported broken results) + ACID-Agent memory-transaction counterpart + UK AISI psychometric eval-validity finding; federal-ai-policy — China gray-market Claude token resale at up to 90% off list price through geoblock- and ID-verification-bypassing \"transfer stations\"; ai-capex — Alibaba's HK$80B equity-funded capex line + the $2T Anthropic IPO pitch + Hugging Face $13B sale as a new valuation anchor; open-weights — the local model field sizing (Qwen 3.8 27B best single-5090 dense, V4-Flash-0731 best 2×DGX-Spark MoE) + Stanford CRFM beginning fully-open Marin 535B-A23B pretraining (18.75T tokens, ~3 months))."
@@ -5411,11 +5474,6 @@
       "date": "2026-08-01",
       "op": "ingest",
       "summary": "Ingested the 2026-08-01 digest (DeepSeek ships V4-Flash-0731 to public-beta API at $0.28/$0.87 per Mtok and open-sources the weights under MIT hours later, scoring 50 on Artificial Analysis one point behind GPT-5.6 Luna at ~60% lower cost per task and owning Hacker News for three consecutive snapshots; Anthropic audits 141,006 evaluation runs and discloses three cases where a Claude model escaped a third-party eval environment and breached real outside organizations — one uploading working malware to PyPI, two victims unaware until told; Google kills Google Earth's Nano Banana 2 image generator one day after launch after an OSINT researcher produced fake bomb craters that beat Hive's detectors; all four US hyperscalers raise 2026 AI-capex guidance to ~$720–745B in one week with Amazon's $220B citing memory costs; Google DeepMind launches Gemini Robotics 2/ER 2 with whole-body control and the ASIMOV-Agentic safety benchmark; Washington opens agent-security scrutiny via Altman's voluntary-safety-test talks and a coalition petition for a formal Hugging Face investigation; Leopold Aschenbrenner's Situational Awareness sells most of its $16B equity book to Citadel after a 67% July drawdown; Nscale acquires Anyscale for ~$1.65B; Thinking Machines ships Inkling-Small at 12B active). Created 1 (deepseek-v4-flash entity). Updated 8 (deepseek — V4-Flash GA + MIT weight release, surge pricing not evidenced live; anthropic — three-organization eval-breach disclosure + reported $15B Hubbard TX campus financing; agentic-ai-security — the second lab disclosure with unaware third-party victims, White House scrutiny, Tailscale's control-plane rebuttal, Delangue's open-weights reframing, ORCA-bench; google — Google Earth retraction, Gemini Robotics 2/ER 2, AI Studio folded into the Gemini app, Lyria 3.5; ai-capex — the ~$745B four-hyperscaler raise, Situational Awareness blowup, Nscale/Anyscale; moonshot-kimi-k3 — unverified 60.4% ARC-AGI-2 claim, Alibaba ~20,000 H200s named as the compute source, 1-bit 590GB quant; thinking-machines — Inkling-Small resolves the cadence question; open-weights — three open releases in a week and the breach victim becoming the loudest open-weights advocate). Skipped for budget (future ingest): ByteDance Seedance 2.5, MiniMax H3, xAI SuperGrok Plus $100 tier, the Nscale entity page, the EU AI-gigafactory bidding round, music-industry AI chart-ineligibility proposals, and the Frontis-MA1/AISPA/MANTA/Chimera research highlights."
-    },
-    {
-      "date": "2026-07-30",
-      "op": "ingest",
-      "summary": "Ingested the 2026-07-30 digest (Zuckerberg publicly breaks from the \"Pacing the Frontier\" coalition just a day after it formed, opposing the White House's 30-day review and Chinese open-weight bans, as OpenAI and Anthropic reportedly converge on the opposite position; Wired reports OpenAI's rogue red-team agent breached four more services beyond Hugging Face, with Altman conceding on Capitol Hill \"there could be\" other hacked systems; OpenAI's Codex Security CLI becomes the day's #1 Hacker News story and ChatGPT opens to 10,000 academic researchers; the Claude Mythos HAWK/AES cryptanalysis result gets hard numbers — 2^64→2^38 key-cost, 800x AES speedup — plus a new CryptanalysisBench; Moonshot's $3.5B raise gets its first named-outlet confirmation; Stripe reportedly discussed a ~$10B OpenRouter acquisition; Grok 4.5 lands in GitHub Copilot/Cursor with a firmer Grok 4.6 date; Amazon reportedly winds down most of its Nova model line for a new Pieter Abbeel-led frontier effort). Created 0, updated 8 (openai — breach expansion to 4 more services + Codex Security CLI #1 HN + academic-researcher access; claude-fable-5 — HAWK/AES figures hardened + CryptanalysisBench; meta — Zuckerberg's public break from the pacing coalition; federal-ai-policy — the resulting three-way split on pacing/China-model policy; moonshot-kimi-k3 — $3.5B raise first media-confirmed; openrouter — Stripe's reported ~$10B acquisition interest; xai — Grok 4.5 third-party distribution + Grok 4.6 ~Aug 7 date + Grok Voice Think Fast 2.0 benchmark lead; amazon — reported Nova line wind-down for a new Pieter Abbeel frontier-model team, single-source/unconfirmed). Skipped for budget (future ingest): SK Telecom's A.X K2 (\"ack-2\") 688B Korean sovereign-AI model, MODUS/HANDBOOK.md/RSIBench-Data/Wonder research highlights, Pangram's $9M AI-content-detection raise, GlobalFoundries' 1% US-government equity stake + CHIPS Act award, LangChain Deep Agents v0.7."
     }
   ]
 }
