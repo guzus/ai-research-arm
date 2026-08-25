@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "APPLE SHIPS INTERNAL CLAUDE.MD FILES TO PRODUCTION IN APPLE SUPPORT APP V5.13 \u2014 CONFIRMS CLAUDE CODE USE FOR IOS APP DEV",
-    "source": "@aaronp613",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/aaronp613/status/2049986504617820551"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "CLAUDE SECURITY ENTERS PUBLIC BETA \u2014 AUTONOMOUS CODEBASE VULN SCANNER FOR EVERY CLAUDE ENTERPRISE CUSTOMER",
-    "source": "@claudeai",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/claudeai/status/2049898739783897537"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "CURSOR LAUNCHES SECURITY REVIEW FOR TEAMS/ENTERPRISE \u2014 TWO ALWAYS-ON AGENTS BLOCK PRS AND POST FINDINGS TO SLACK",
-    "source": "@cursor_ai",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/cursor_ai/status/2049926283061035254"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "MICROSOFT LAUNCHES WORD LEGAL AGENT INSIDE $30 COPILOT BUNDLE \u2014 UNDERCUTS HARVEY'S $11B LEGAL-AI MOAT BY ~40X",
-    "source": "@BradSmi",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/BradSmi/status/2049993319800066119"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "FORMER TSMC PACKAGING VP DOUGLAS YU JOINS MEDIATEK \u2014 INDUSTRY SOURCE: 'TSMC ASSUMED CUSTOMERS WOULD NOT LEAVE BUT THEY DID'",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050136199621456079"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "GOOGLE CLOUD GROWS 70% IN Q1 VS AZURE 40% / AWS 28% \u2014 Q1 CLOUD BACKLOG +400% YOY, ADDED $219B SEQUENTIALLY",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/theinformation/status/2049938192455889380"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-01 09:00 UTC",
     "headline": "ANTHROPIC USED 1M-CONVERSATION SYCOPHANCY STUDY TO RETRAIN OPUS 4.7 AND MYTHOS PREVIEW",
@@ -25368,5 +25314,47 @@
     "headline": "GATIK RAISES $200M SERIES D AT $1B LED BY QIA AND KOCH; 100,000+ DRIVER-OUT FREIGHT DELIVERIES",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2092262211737542938"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "OPENAI JALAPENO BEATS NVIDIA VERA RUBIN NVL72 ON OUTPUT THROUGHPUT PER MEGAWATT \u2014 SEMIANALYSIS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092314842396828077"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "OPENAI BLOG NAMES UNANNOUNCED MODEL GPT-ASTRA \u2014 AI-WRITTEN KERNELS BEAT HUMAN EXPERTS BY 1.5-1.8X",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2092282443147497613"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "ANTHROPIC PITCHING $30 TRILLION ADDRESSABLE MARKET \u2014 ABOVE SPACEX'S $26.5T MAY FIGURE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092285615274705087"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "PHISHING MAIL SENT FROM OPENAI'S OWN VERIFIED DOMAIN VIA CHATGPT TRUSTED-CONTACT INVITE",
+    "source": "@altryne",
+    "url": "https://x.com/altryne/status/2092304565559607390"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "JALAPENO HITS 700 TOKENS/SEC/USER ON DEEPSEEK R1 VS 169 ON NVIDIA GB300",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2092302299213549757"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "TAIWAN CHARGES NINE INCLUDING NVIDIA EMPLOYEE OVER SMUGGLING AI SERVERS TO CHINA",
+    "source": "@AEIfdp",
+    "url": "https://x.com/AEIfdp/status/2092322839118447045"
   }
 ]
