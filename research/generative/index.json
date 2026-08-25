@@ -2600,5 +2600,17 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests",
+    "file": "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The 49-Point Gap: What SWE-bench Science's Visible-Test Scores Hide",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-25T10:08:46Z",
+    "source": "workflow_dispatch",
+    "prompt": "SWE-bench Science's 49-point gap: what 96.64% on visible tests vs 47.90% Pass@1 on hidden ones says about agent benchmarks",
+    "tags": []
   }
 ]
