@@ -1,0 +1,13 @@
+AI News - 2026-08-25
+
+TOP STORIES:
+• SoftBank plans record $6.3B retail bond sale to fund its OpenAI commitments
+• Nvidia's Groq 3 LPX inference chip hits full production; SpaceXAI adopts Vera CPUs for Grok
+• "Instinct" AI personal assistant draws privacy/security backlash from early testers
+
+KEY NUMBERS:
+• $6.3B (¥1 trillion) — SoftBank's planned retail bond, biggest ever in Japan
+• $60B+ — SoftBank's total pledged commitment to OpenAI
+• 3,400 tokens/sec at 100K context — Groq 3 LPX inference speed
+
+Full report on GitHub.
