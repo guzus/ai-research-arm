@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "APPLE LAUNCHES FIRST 2NM CHIP — M6 IN NEW MAC MINI, QUAD-DIE M5 ULTRA IN MAC STUDIO PITCHED AT FRONTIER AI",
+    "source": "@FirstSquawk",
+    "url": "https://x.com/FirstSquawk/status/2092236880234557623",
+    "category": "infra"
+  },
+  {
+    "headline": "APPLE CALLS M5 ULTRA ITS MOST POWERFUL CHIP EVER, BUILT FOR RUNNING FRONTIER AI MODELS ON-DEVICE",
+    "source": "@Polymarket",
+    "url": "https://x.com/Polymarket/status/2092237169217728682",
+    "category": "breaking"
+  },
+  {
+    "headline": "OX ALPHA MATCHES OPUS 5 ON KERNELBENCH TOP-K AT 7.17% OF ROOFLINE, PLACES LAST ON SPARSE ATTENTION",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2092206366853148695",
+    "category": "model"
+  },
+  {
+    "headline": "MODELSCOPE TEASES OPEN RELEASE OF QWEN3.8-FLASH-NEXT — THE ARCHITECTURE BEHIND QWEN4",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2092210590114553941",
+    "category": "opensource"
+  }
+]
