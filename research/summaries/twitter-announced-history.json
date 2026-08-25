@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "WSJ \u2014 OPENAI MISSED 1B WEEKLY-ACTIVE-USER TARGET; $1.5B OF CAPACITY SITTING UNUSED",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2049031119006216661"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "OPENAI OPEN-SOURCES SYMPHONY \u2014 EVERY GITHUB ISSUE GETS ITS OWN CODEX AGENT",
-    "source": "@maocaohu",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/maocaohu/status/2049065198649253960"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "DEEPSEEK CUTS API CACHE PRICING TO 1/10 ACROSS THE BOARD; V4-PRO STAYS 75% OFF",
-    "source": "@maocaohu",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/maocaohu/status/2049065198649253960"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "SK HYNIX \u2014 HYBRID-BONDING HBM YIELD MATERIALLY IMPROVED VS TWO YEARS AGO",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/jukan05/status/2049027230215594275"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "EX-DEEPMIND RESEARCHER'S SUPERINTELLIGENCE STARTUP RAISES RECORD $1.1B SEED ROUND",
-    "source": "@shehzadyounis",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/shehzadyounis/status/2049062100572758515"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "SAFETY STUDY \u2014 CLAUDE OPUS 4.5 AND GPT-5.2 RANK SAFEST ON DELUSION/PARANOIA TESTS; GROK 4.1 FLAGGED FOR REINFORCING HARM",
-    "source": "@Hodl_fm",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/Hodl_fm/status/2049022908853637321"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "XAI TRAINING GROK 5 ON COLOSSUS 2 \u2014 10 TRILLION PARAMETERS, ~20X SIZE OF GROK 4.3",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/mark_k/status/2049070786799976750"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-04-28 12:00 UTC",
     "headline": "CHINA BLOCKS META'S $2B MANUS AI ACQUISITION \u2014 META PREPARING TO UNWIND THE DEAL",
@@ -25436,5 +25373,54 @@
     "headline": "SAMSUNG, SK HYNIX STEP UP CHINA NAND CAPEX INTO 2027 ON AI-SERVER DEMAND; XI'AN X2 MOVES TO 280-LAYER V9",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2091999562340643274"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "SEC SUBPOENAS GOLDMAN, JPMORGAN, CITI, BOFA OVER FINANCING BEHIND SITUATIONAL AWARENESS AI-STOCK NEAR-COLLAPSE \u2014 FT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092042684190130500"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "ALABAMA SUBPOENAS OPENAI UNDER DECEPTIVE TRADE PRACTICES ACT OVER EVAL ESCAPE THAT BREACHED HUGGING FACE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092035823600554230"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "STEALTH MODEL OX ALPHA BURNS 11.6 TRILLION TOKENS IN THREE DAYS \u2014 2.6X OPENROUTER'S BIGGEST PRIOR LAUNCH",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092050483422855648"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "WIKIHOW SUES OPENAI IN SDNY OVER 11,000 SCRAPED ARTICLES AND 1,200 REGISTERED COPYRIGHTS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092041081663967381"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "HUGGING FACE ANNUALIZED REVENUE UP 50% IN TWO MONTHS TO OVER $150M \u2014 ABOUT 87X THE REPORTED $13B ASK",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092061147130376662"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "META TO LAUNCH HATCH WITHIN WEEKS, PREMIUM CONSUMER AGENT TIER POTENTIALLY $199.99 A MONTH \u2014 THE INFORMATION",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092027870373908713"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "SEMIANALYSIS RELEASES AGENTX 1.0, OPEN-SOURCE MULTI-TURN AGENTIC CODING BENCHMARK ACROSS GB300, MI355, B200",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092039363852902480"
   }
 ]
