@@ -64,7 +64,44 @@ status_note: |
   writing it up as "a mysterious new AI model... no maker attached."
   Status stays `in-testing`, verification stays `partial`: another cycle
   with **no lab claim, no model card, no pricing, no weights**.
-expected: "Live and free via OpenRouter/opencode/Hermes/Cursor as of 2026-08-24, vendor still unclaimed after 4+ days. Pending: a lab claiming it, a model card, pricing, weights (Z.ai's GLM line has shipped open weights), and whether it resolves into [[zhipu-glm-5-3-2026-08]]'s family or something else"
+
+  **2026-08-25 — the usage data arrived, and it is the largest number on
+  this ticket.** @OpenRouter: "**Ox Alpha is on track to hit nearly 6
+  trillion tokens today**," and @rohanpaul_ai reports the cumulative
+  figure — **11.6T tokens in three days, 2.6x OpenRouter's previous
+  biggest model launch** — with context now stated precisely as
+  **1.05M tokens**. A trending item ("Ox Alpha Tops OpenRouter Rankings in
+  Record Debut," ~760 posts) confirms the ranking independently of the
+  router's own post. **This is the first hard, third-party-measured fact
+  on the ticket**: unlike capability impressions, token throughput is
+  metered by the venue serving it. The caveat is that the model is
+  **free**, so volume measures demand at zero price, and @rohanpaul_ai's
+  own framing is that agentic loops (long contexts, retries, repeated tool
+  calls) multiply consumption per task.
+
+  **A first quantitative negative also landed.** @patience_cave's
+  MazeBench run scores **ox-alpha 0%**, alongside **grok 4.6 0%,
+  glm-5.3 0%, qwen 3.8-max 0%**, with **gemini 3.7 flash at 1%** the only
+  non-zero. Read narrowly: a benchmark on which nearly every frontier
+  model scores zero discriminates almost nothing, and its main use here is
+  that it does **not** separate ox-alpha from GLM-5.3 — consistent with,
+  but not evidence for, the GLM-family hypothesis.
+
+  **Attribution moved from vibes to a priced market, weakly.**
+  @nicbstme reports the model is from **@Zai_org per a current prediction
+  market** while flagging **low volume**, and @teortaxesTex adds the
+  adversarial read that insiders have an incentive to *misdirect* before
+  betting ("convince everyone else it's not GLM but
+  Gemini/Cursor/Sarvam/SSI before making a bet"). A thin market is not a
+  source; recorded as the state of speculation. Separately @teortaxesTex,
+  reading @sam_paech's slop-profile comparison, argues DeepSeek has fallen
+  behind on internal RL and that "**the gap between 0731 and ox-alpha is
+  Opus-shaped**" — an inference from output-style clustering, not an
+  attribution.
+
+  Six days in: **still no lab claim, no model card, no pricing, no
+  weights.** Status stays `in-testing`; verification stays `partial`.
+expected: "Live and free via OpenRouter/opencode/Hermes/Cursor as of 2026-08-25, vendor still unclaimed after 6 days, with 11.6T tokens served in three days (2.6x OpenRouter's previous record launch) and a 1.05M context window. Pending: a lab claiming it, a model card, pricing, weights (Z.ai's GLM line has shipped open weights), what happens to that volume when the free tier ends, and whether it resolves into [[zhipu-glm-5-3-2026-08]]'s family or something else"
 labels:
   - stealth-model
   - frontier-model
@@ -84,8 +121,12 @@ sources:
   - "@scaling01"
   - "@simonepaciaroni"
   - "@Norwakar"
+  - "@OpenRouter"
+  - "@rohanpaul_ai"
+  - "@patience_cave"
+  - "@nicbstme"
 created_at: 2026-08-23
-updated_at: 2026-08-24
+updated_at: 2026-08-25
 closed_at: null
 closed_reason: null
 history:
@@ -93,6 +134,8 @@ history:
     change: "Created — an unattributed stealth model shipping as stealth/ox-alpha on OpenRouter since ~2026-08-20, free via OpenRouter, opencode, Hermes Agent (@Teknium, @NousResearch) and Cursor. Established by firsthand testers: long-horizon multimodal, 1M context (@AndrewCurran_); ~63% on the full 113-task DeepSWE run (@davis7, who publicly retracted his own earlier ~80% subset number), 58.4 read independently by @teortaxesTex, roughly GPT-5.6 Sol mid class. Attribution unresolved: @davis7 99% GLM-5.x on encoder/tokenizer/style evidence, @kimmonismus and @synthwavedd say GLM-5.3 Flash, @AndrewCurran_ canvass lands on a Z.ai GLM Flash variant, but @mark_k claims Google DeepMind and @teortaxesTex argues against Cursor. Capability claim itself is contested — @emollick and @iruletheworldmo both tested it and rate it non-frontier. Status in-testing (real, publicly usable artifact under a stealth alias, no vendor claim); verification partial (many independent firsthand runs establish the artifact; no primary source establishes who made it)."
   - ts: 2026-08-24
     change: "Another cycle with no attribution progress: still no lab claim, model card, pricing, or weights. Speculation turned reflexive — @iruletheworldmo posted an elaborate pseudo-architecture (persistent latent state, attractors, shards, metaparameters) and @teortaxesTex answered with open parody of the guessing game; neither is recorded as evidence. Two new unsupported hypotheses appeared from single low-engagement accounts: an Anthropic experiment (@simonepaciaroni, on a claimed telltale marker) and xAI's unreleased Grok 4.7 in pre-release testing (@Norwakar). The GLM-family reading from 2026-08-23 firsthand testers remains best-supported. Trade aggregators began covering it as an unclaimed mystery model. Status stays in-testing; verification stays partial."
+  - ts: 2026-08-25
+    change: "First hard third-party-measured fact lands, and it is large: @OpenRouter says Ox Alpha was on track for nearly 6T tokens in a single day, and @rohanpaul_ai reports 11.6T tokens across three days — 2.6x OpenRouter's previous biggest model launch — with context now stated as 1.05M. A trending item ('Ox Alpha Tops OpenRouter Rankings in Record Debut', ~760 posts) confirms the ranking independently of the router. Caveat recorded: the model is free, so the volume measures demand at zero price, and agentic loops multiply per-task consumption. First quantitative negative also landed — @patience_cave's MazeBench scores ox-alpha 0%, alongside grok 4.6, glm-5.3 and qwen 3.8-max all at 0%, with gemini 3.7 flash at 1%; a benchmark where nearly everything scores zero discriminates almost nothing, and its only bearing here is that it does not separate ox-alpha from GLM-5.3. Attribution moved to a thin prediction market: @nicbstme reports it prices Z.ai as the source while flagging low volume, and @teortaxesTex notes insiders have an incentive to misdirect before betting; he separately reads @sam_paech's slop-profile comparison as showing 'the gap between 0731 and ox-alpha is Opus-shaped', an output-style inference rather than an attribution. Six days in: still no lab claim, model card, pricing or weights. Status stays in-testing; verification stays partial."
 ---
 
 A stealth alias on a router is not normally worth a ticket. This one is,
