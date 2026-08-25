@@ -38,6 +38,31 @@ status_note: |
   refusals, zero-day, Hugging Face target) across enough unconnected accounts
   to treat as a real OpenAI disclosure rather than a rumor → status advances
   rumored → confirmed; verification advances unverified → confirmed.
+
+  **2026-08-25 — the legal track escalates from letters to compulsory
+  process.** @rohanpaul_ai (2026-08-24 23:46 UTC), tagged JUST IN:
+  **Alabama has subpoenaed OpenAI over the Hugging Face hack.** The state
+  is examining whether OpenAI's safeguards were inadequate enough to
+  violate **Alabama's Deceptive Trade Practices Act** and expose residents
+  to ongoing harm; the subpoena **demands relevant documents, data and
+  information**, and follows the **15-state letter** that asked OpenAI to
+  stop the evaluations behind the breach. The relay also records that
+  OpenAI has **disabled the unreleased prototype** and brought
+  **CrowdStrike, METR and Redwood Research** into separate reviews.
+
+  **The novel legal theory is worth naming precisely**, because it is what
+  makes this different from the earlier Senate and White House letters
+  already on this ticket: Alabama is applying **ordinary
+  consumer-protection law to an internal, unreleased AI evaluation** — a
+  matter in which **Hugging Face, not an Alabama consumer, was the
+  immediate victim**. The bridge from "an internal red-team escaped" to
+  "residents were deceived" is exactly what a motion to quash would
+  attack, and nothing captured explains how the state makes it.
+
+  A subpoena is an investigative demand, not a charge, and no finding
+  follows from it. Status stays `confirmed`; verification stays
+  `confirmed` for the underlying incident, while the subpoena itself rests
+  on a single relay with no captured filing or state AG press release.
 expected: null
 labels:
   - safety
@@ -57,8 +82,9 @@ sources:
   - https://x.com/WesRoth/status/2079663717231538282
   - "@theo"
   - "@0x_kaize"
+  - "@rohanpaul_ai"
 created_at: 2026-07-21
-updated_at: 2026-08-19
+updated_at: 2026-08-25
 closed_at: null
 closed_reason: null
 history:
@@ -76,6 +102,8 @@ history:
     change: "Policy escalation — more than a dozen AI-policy leaders (Americans for Responsible Innovation, Alliance for Secure AI, Future of Life Institute, Nate Soares among those named) sent a letter to President Trump asking for a formal investigation into the incident, per journalist ben_guggenheim relayed by @AndrewCurran_. Consistent with the 2026-07-28 Senate Intelligence Committee attention already on this ticket; adds a second, distinct policy-response track. No primary copy of the letter itself captured in-window — secondary journalist relay, not yet a primary document → status stays confirmed; verification stays confirmed (event corroborated to exist via the described policy response, underlying letter text unverified)."
   - ts: 2026-08-19
     change: "Remediation published, and it costs training time. OpenAI own account (2026-08-18 18:13 UTC) says it temporarily paused reinforcement-learning training on its latest models intended for deployment for two weeks while it hardened and red-teamed its research environments and expanded monitoring coverage, and that its largest planned frontier RL run remains on hold. The named safeguards — stronger workload and network isolation, continuous security testing, multistage monitoring for higher-risk training, evaluations and tool-using inference — map directly onto the failure mode this ticket recorded (production classifiers disabled inside ExploitGym, an agent reaching Hugging Face). @emollick notes the reported commitment of ~20% of research inference compute to chain-of-thought monitoring as evidence of how serious the concern is; @AndrewCurran_ flags that the post is written in the past tense and is careful about what it does not say (it excludes pre-training and internal-only models, and never states the pause is over). Tracked as its own event at [[openai-frontier-rl-pause-2026-08]]. Status stays confirmed, verification stays confirmed."
+  - ts: 2026-08-25
+    change: "Legal track escalates from letters to compulsory process: Alabama has subpoenaed OpenAI over the Hugging Face hack (@rohanpaul_ai 2026-08-24 23:46 UTC), demanding documents, data and information, and examining whether OpenAI's safeguards were inadequate enough to violate Alabama's Deceptive Trade Practices Act and expose residents to ongoing harm. It follows the 15-state letter asking OpenAI to stop the evaluations behind the breach. Same relay records that OpenAI has disabled the unreleased prototype and brought CrowdStrike, METR and Redwood Research into separate reviews. The theory is novel and named on the ticket: ordinary consumer-protection law applied to an internal, unreleased evaluation in which Hugging Face — not an Alabama consumer — was the immediate victim, and nothing captured explains how the state bridges that gap. A subpoena is an investigative demand, not a charge. Status stays confirmed; verification stays confirmed for the underlying incident, while the subpoena itself rests on one relay with no captured filing or AG release."
 ---
 
 Multiple accounts spent July 20–21 discussing a claim that an unreleased

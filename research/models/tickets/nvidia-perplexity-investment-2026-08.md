@@ -25,6 +25,32 @@ status_note: |
   consistent with all three working from one upstream report that was not
   itself captured. Verification `partial` on that basis: multiple
   secondary echoes, zero primary.
+
+  **2026-08-25 — circulation widened well beyond aggregators; the
+  substance did not move.** @ns123abc (2026-08-24 04:55 UTC, ~809 likes)
+  posted it as BREAKING with the same numbers plus a mechanism for why
+  NVIDIA specifically: "**pplx computer (their agent) is the driver…
+  computer agents run code and tools on the CPU… nvidia built Vera CPU
+  for exactly that… perplexity runs on nvidia chips end-to-end via
+  coreweave**." Taiwanese trade media (@insideCyberbuzz, in Chinese) and
+  an independent thread (@K_Y_D_A_A_L) carry the $30B+ valuation, the
+  prior **$20B** mark, and annualized revenue above **$750M** up from
+  under **$250M** at the start of the year.
+
+  **Nothing here upgrades the ticket.** These are wider relays of the same
+  uncaptured upstream report: still **no NVIDIA or Perplexity statement,
+  no named reporter or outlet, no term sheet**. The Vera-CPU rationale is
+  a commentator's inference, not a stated deal rationale, and is recorded
+  as such.
+
+  **One genuinely new adjacent fact:** Perplexity announced a **named
+  research lead** the same day — Andrew Gordon Wilson, reporting to CTO
+  Denis Yarats, covering continual learning, synthetic data and
+  long-horizon RL ([[perplexity-wilson-hire-2026-08]]). A research
+  build-out is the use-of-proceeds story that usually accompanies a round
+  at this step-up, and a licensing arrangement plus in-house research is
+  the coherent path from reseller to builder. Status stays `rumored`;
+  verification stays `partial`.
 expected: "Reported 2026-08-24 as talks to invest at a $30B+ valuation, possibly bundled with a technology licensing agreement; Perplexity annualized revenue relayed at >$750M, up from <$250M in January. Pending: the upstream report, an NVIDIA or Perplexity statement, whether the round closes and at what valuation, and what the licensing half actually covers"
 labels:
   - nvidia
@@ -34,17 +60,22 @@ labels:
   - rumored
 verification: partial
 sources:
+  - "@ns123abc"
+  - "@insideCyberbuzz"
+  - "@K_Y_D_A_A_L"
   - "@Hardwire_news"
   - https://x.com/Hardwire_news/status/2091786043196686759
   - "@kalyso13"
   - "@AI_AgentFL"
 created_at: 2026-08-24
-updated_at: 2026-08-24
+updated_at: 2026-08-25
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-24
     change: "Created — NVIDIA reportedly in talks to invest billions in Perplexity at a $30B+ valuation, a >50-60% step-up, possibly bundled with a technology licensing agreement (@Hardwire_news 2026-08-24 07:13 UTC; echoed by @kalyso13 and @AI_AgentFL). Justification relayed is revenue: annualized ~$250M in January to >$750M now, credited to the Perplexity Computer workflow agent. Status rumored — every account says talks, none says signed. Verification partial: three aggregator relays inside a 15-minute window, no named outlet, no NVIDIA or Perplexity statement, no term sheet. Lands the same week as [[nvidia-poolside-license-2026-08]] and [[nvidia-server-price-increase-2026-08]], ahead of NVIDIA's 2026-08-26 earnings."
+  - ts: 2026-08-25
+    change: "Circulation widened well past aggregators without the substance moving. @ns123abc (2026-08-24 04:55 UTC, ~809 likes) posted it as BREAKING with the same $30B+ figure plus a mechanism for why NVIDIA specifically — Perplexity Computer is the revenue driver, computer agents run code and tools on the CPU, NVIDIA built Vera CPU for exactly that, and Perplexity runs on NVIDIA chips end-to-end via CoreWeave. Taiwanese trade media (@insideCyberbuzz) and @K_Y_D_A_A_L independently carry the $30B+ valuation, the prior $20B mark and annualized revenue above $750M up from under $250M in January. None of it upgrades the ticket: these are wider relays of the same uncaptured upstream report, with still no NVIDIA or Perplexity statement, no named outlet and no term sheet, and the Vera-CPU rationale is a commentator's inference rather than a stated deal rationale. One genuinely new adjacent fact: Perplexity named Andrew Gordon Wilson research lead the same day ([[perplexity-wilson-hire-2026-08]]), the use-of-proceeds story that usually accompanies a round at this step-up. Status stays rumored; verification stays partial."
 ---
 
 NVIDIA is reported to be negotiating an equity investment in
