@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-08-25 13:06:17 UTC
+
+CYCLE: Apple splits its silicon story - newest node in the cheap Mac, biggest package in the AI one - while Ox Alpha finally gets measured.
+
+TOP STORIES:
+• Apple ships first 2nm chip (M6) in new Mac mini; quad-die M5 Ultra headlines new Mac Studio, pitched at running frontier models locally [✓]
+• Ox Alpha's first per-kernel read: matches Opus 5 on a KernelBench top-k cell at 7.17% of roofline, last place on sparse attention - it never emits tensor-core tiling [⚠]
+
+WATCH: Apple's published unified-memory ceiling and bandwidth for M5 Ultra - the numbers that decide if it is a real local-inference box.
+
+Full update on GitHub.
