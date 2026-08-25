@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24).
+description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24) — as US opposition to data centers hits 75% and NVIDIA's financing is said to depend on lenders treating GPUs as bankable assets (2026-08-25).
 created_at: 2026-05-24
-timestamp: 2026-08-24T00:00:00Z
+timestamp: 2026-08-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
@@ -798,3 +799,50 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
 - **How much of the reported AI earnings is cash?** If mark-to-market gains on
   private-lab stakes carry the beat, the hyperscalers' apparent capacity to fund
   capex from operations is overstated. The 10-Qs, not the relays, resolve it.
+
+## 75% opposition, a bankability test for GPUs, and the orbital datacenter (2026-08-25)
+
+- **US opposition to data centers hits 75% — bipartisan now (2026-08-25).** Per
+  The Information, US opposition to data centers reached **75%, up from 42% a
+  year earlier**, with **Republican and Democratic leaders both moving to
+  restrict growth over power and water use** — the policy hardening this theme
+  has tracked since the Heatmap survey and the Texas/PA actions (2026-08-23)
+  now arriving as a named bipartisan number. The stated grievances are **power,
+  water and siting — not job loss or catastrophic risk** — which cuts against
+  attributing the backlash to AI-safety messaging. *No pollster, sample or
+  question wording has been published, so treat the bipartisan legislative
+  movement as the corroborated fact and the 75% figure as awaiting its
+  methodology* (The Information via Twitter/X; ARA daily digest 2026-08-25).
+- **The financing question underneath it all: GPUs as bankable assets
+  (2026-08-25).** The Information reports NVIDIA's **~$500B financing pitch
+  depends on lenders treating GPUs as bankable assets**, while SemiAnalysis
+  sizes **cumulative AI capex near $3T by year-end and outstanding AI debt past
+  $7T** — and names **market-driven GPU residual-value pricing as the tool
+  capital providers most urgently lack**. Both carriers have a position; there
+  is still **no observable market price for a used Blackwell** (The
+  Information, SemiAnalysis; ARA daily digest 2026-08-25). See [[nvidia]] for
+  the 17% server-price increase and the ~$8M Rubin NVL72 rack this runs
+  against.
+- **Orbital compute goes two-track: the Nvidia–SpaceX datacenter and Starcloud
+  (2026-08-25).** The same day [[nvidia]] and [[spacex]] unveiled their
+  space-optimized Vera Rubin NVL72 orbital datacenter (Q4 2027 launch), the
+  independent orbital-datacenter venture **Starcloud** raised **$250M at a
+  $2.3B valuation** on the identical thesis — the pattern (see 2026-08-22)
+  funding two tracks at once. Treat orbital compute as a live sub-theme of the
+  capex buildout rather than a stunt (The Information; ARA daily digest
+  2026-08-25).
+- **Equity becomes the capex channel's test front (2026-08-25).**
+  [[alibaba|Alibaba's]] HK$80B placement **priced at an 8.4% discount and its
+  shares opened roughly 10% lower in Hong Kong** — the **first market verdict
+  on financing AI capex with equity**, arriving alongside a reported 75% YoY
+  drop in quarterly profit (see [[alibaba]]). SoftBank separately plans a record
+  **¥1 trillion (~$6.3bn) retail bond sale** to fund AI commitments — the size
+  is what is new, not the instrument (Twitter/X, The Decoder; ARA daily digest
+  2026-08-25).
+- **UBS cuts Broadcom's FY2027 AI revenue; the TPU-vs-NVIDIA forecast flips
+  (2026-08-25).** UBS trimmed **[[broadcom|Broadcom's]] FY2027 AI revenue by
+  roughly $5bn to about $130bn** on a **lower Google TPU forecast (~6.4M units
+  for calendar 2027)**, keeping its Buy and cutting the target from $485 to
+  $470 — while analyst **Jeff Pu expects Google TPU shipments to surpass
+  NVIDIA's by 2028**. The TPU-vs-GPU competitive read inside the buildout keeps
+  firming (UBS, Jeff Pu; ARA daily digest 2026-08-25). See [[broadcom]].

@@ -6,13 +6,14 @@ aliases: [Broadcom, "Broadcom Inc.", AVGO, "Broadcom custom ASICs"]
 tags: [ai-infrastructure, semiconductors, custom-asic, private-credit, ai-capex]
 description: Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI's first custom inference chip (Jalapeño, co-designed with Broadcom), and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.
 created_at: 2026-06-17
-timestamp: 2026-06-29T00:00:00Z
+timestamp: 2026-08-25T00:00:00Z
 market:
   ticker: AVGO
   exchange: NASDAQ
   symbol: NASDAQ:AVGO
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA model ticket — OpenAI Jalapeño chip", path: research/models/tickets/openai-jalapeno-chip-2026-06.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
@@ -91,3 +92,15 @@ the clearest named entities inside the [[ai-capex]] supercycle's move from
 - **Sentiment transmission.** Broadcom's June 5 reaction showed that custom
   AI-chip guidance can move the whole AI trade. Does AVGO become the capex
   cycle's second sentiment pin after NVDA?
+
+## UBS trims the FY2027 AI revenue estimate on a lower Google TPU forecast (2026-08-25)
+
+- **The TPU forecast is the driver, not the chip vendor (2026-08-25).** UBS cut
+  Broadcom's **FY2027 AI revenue estimate by roughly $5bn to about $130bn** on a
+  **lower [[google|Google]] TPU forecast (~6.4M units for calendar 2027)** —
+  keeping its **Buy** and trimming the target from **$485 to $470**. Analysts
+  following the same supply chain, notably **Jeff Pu**, now expect **Google TPU
+  shipments to surpass [[nvidia|NVIDIA]]'s by 2028** — the TPU-vs-GPU read inside
+  the buildout firming to an outright crossover call (UBS, Jeff Pu; ARA daily
+  digest 2026-08-25). See [[ai-capex]] for the theme-level placement and the
+  [[google]] page for the custom-silicon direction this cuts against NVIDIA.

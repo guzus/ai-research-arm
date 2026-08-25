@@ -4,10 +4,12 @@ title: Ox Alpha
 type: entity
 aliases: ["Ox Alpha", "OxAlpha"]
 tags: [stealth-model, mystery-model, hype-cycle, open-weights]
-description: An unattributed, free-to-use model whose headline number collapsed from a retracted 80% to ~63% and then a "realistic" 60-61% with the task list and sample size still unpublished (2026-08-24) — attribution reading drifts from a Z.ai GLM Flash variant toward a Zhipu multimodal GLM-5.3 variant, with no lab having claimed it and the free window dated to close near 2026-08-27.
+description: An unattributed, free-to-use model whose headline number collapsed from a retracted 80% to ~63% and then a "realistic" 60-61% with the task list and sample size still unpublished (2026-08-24) — attribution reading drifts from a Z.ai GLM Flash variant toward a Zhipu multimodal GLM-5.3 variant, with no lab having claimed it through day four and the free window dated to close near 2026-08-27.
 created_at: 2026-08-23
-timestamp: 2026-08-24T00:00:00Z
+timestamp: 2026-08-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
+  - {title: "ARA model ticket — Ox Alpha stealth model", path: research/models/tickets/stealth-ox-alpha-model-2026-08.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
 ---
@@ -59,3 +61,27 @@ attribution and then deflates on the first controlled measurements.
 - **Does the deflation feed the attribution-skepticism norm?** The
   unrepeatable-eval + no-attribution pattern is a test of how the community
   prices unreleased-model claims going forward.
+
+## Day four unclaimed — the benchmark footprints keep landing (2026-08-25)
+
+- **Still nobody has claimed it, and the spec table quietly grows.** On day
+  four the model still carries **no lab claim, no model card, no pricing and no
+  weights**, and both a "mysterious AI model" write-up in trade aggregators and
+  the guessing-game-as-parody dynamic (see the ticket's pseudo-architecture
+  episode) have become coverage in themselves. Two unsupported hypotheses
+  surfaced — an **Anthropic experiment** (on a claimed "telltale marker") and
+  **xAI's unreleased [[xai|Grok 4.7]]** in pre-release testing — both
+  single-account; the **GLM-family reading from firsthand testers remains
+  best-supported** (ARA model ticket, 2026-08-24/25).
+- **The agentic-benchmark footprints are the day's real new datapoints
+  (2026-08-25).** Agents on Rails added Ox Alpha to its **`lemans` agentic
+  benchmark at 52/63 — tied 5th with Grok 4.6**, behind the most-accurate
+  [[claude-opus-5|Opus 5]] (58/63) and ahead of OpenAI's Terra (49/63); and the
+  model joined **Context Arena's 8-needle long-context board**. It also drew
+  **two cybersecurity evaluations with opposite readings**. The picture is now
+  the same mid-pack, Flash-class, Sol-adjacent profile the controlled evals on
+  this page already established — consistent, but consistent mid, never
+  frontier (ARA daily digest 2026-08-25).
+- **The free window is the clock to watch.** The free access period is dated to
+  close **near 2026-08-27** — the natural forcing function for either a
+  [[zhipu-glm-5-3|Zhipu]] claim or a silent de-listing, whichever comes first.
