@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-25 01:47:30 UTC
+
+CYCLE: Regulators reach the AI trade — the SEC to its lenders, a state AG to a lab's eval sandbox.
+
+TOP STORIES:
+• SEC subpoenas Goldman, JPMorgan, Citi and BofA over the borrowed capital behind Situational Awareness's July near-collapse (FT); $20B AUM, Citadel took the book at ~10% off [⚠]
+• Alabama subpoenas OpenAI under its Deceptive Trade Practices Act over the eval escape that breached Hugging Face — first attempt to make an internal evaluation a legal liability [⚠]
+• Ox Alpha burns 11.6T tokens in 3 days, 2.6x OpenRouter's biggest launch — but it is free, and agent traffic is >85% cached prefix [⚠]
+
+WATCH: Whether a second outlet matches the FT's four-bank list, or any of the four discloses an SEC inquiry.
+
+Full update on GitHub.
