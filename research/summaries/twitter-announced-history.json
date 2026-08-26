@@ -2,69 +2,6 @@
   {
     "backfilled": true,
     "category": "business",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "CEREBRAS BACKLOG: $24.6B RPO / $510M 2025 REVENUE (+76%) / $87.9M NET INCOME / OPENAI ~$10B CONTRACT ANCHOR",
-    "source": "@realarmaansidhu",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/realarmaansidhu/status/2048246142819835953"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "KOREA INDUSTRY SOURCES: AI CPUS TARGETING 300-400GB DRAM ON-PACKAGE \u2014 4X TYPICAL CPU CONFIGS",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050393594499150332"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "DRAM ASPS UP 100%+ \u2014 'MEMORY SHORTAGE TO LAST ANOTHER YEAR' AS AI CPUS DEVOUR COMMODITY DRAM",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050393020340765133"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "OPENAI CODEX SHIPS 'PETS' FEATURE \u2014 /HATCH-PET SKILL, CLIPPY REANIMATION, ~58% OF 5H CREDITS PER HATCH",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/sama/status/2050402088266694689"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "FOUNDERS FUND ADDS $624M TO ANDURIL AT $60B VALUATION \u2014 TOTAL BET NOW $2.6B DESPITE >$1B/YR LOSSES EXPECTED",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050296726649544904"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 06:00 UTC",
-    "headline": "GOOGLE GEMINI 3.1 FLASH LITE GA IMMINENT \u2014 VERTEX AI EMAILS FLASH 2 CUSTOMERS ON MIGRATION",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-02-twitter-06h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2050449347137937437"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 06:00 UTC",
-    "headline": "NEW GEMINI 3 FLASH CHECKPOINT ON LM ARENA \u2014 REVIEWERS SAY OUTPUT QUALITY CLOSER TO 3.1 PRO THAN CURRENT FLASH",
-    "source": "@marmaduke091",
-    "source_file": "research/summaries/2026-05-02-twitter-06h-headlines.json",
-    "url": "https://x.com/marmaduke091/status/2050430054056767994"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
     "delivered_at": "2026-05-02 06:00 UTC",
     "headline": "NEBIUS ACQUIRES EIGEN AI FOR $643M CASH AND SHARES \u2014 FOLDS OPEN-SOURCE INFERENCE STACK INTO NEBIUS TOKEN FACTORY",
     "source": "@jiahanjimliu",
@@ -25288,5 +25225,54 @@
     "headline": "M5 ULTRA MAC STUDIO 256GB LEAD TIMES STRETCH TO 10-12 WEEKS",
     "source": "@alexocheema",
     "url": "https://x.com/alexocheema/status/2092567601188577358"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "OX ALPHA UNMASKED \u2014 Z.AI SHIPS GLM-5.3-FLASH, 320B-A18B UNDER MIT AT $0.15/$0.50 PER MTOK",
+    "source": "@Zai_org",
+    "url": "https://x.com/Zai_org/status/2092616204787626030"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "Z.AI SAYS OX ALPHA PREVIEW RAN ENTIRELY ON CHINESE AI CHIPS \u2014 NO ACCELERATOR VENDOR NAMED",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092623833630998556"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "ALTMAN TELLS TIME OPENAI WILL HAVE AN INTERNAL SYSTEM HE WOULD CALL AGI BY END OF 2026",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092618789737353434"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "PACHOCKI SAYS OPENAI HAS ALREADY MET ITS AUTOMATED AI RESEARCH INTERN BENCHMARK \u2014 THE SYSTEM IS ASTRA",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092642707353010228"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "QWEN3.8-FLASH-NEXT NOW RUNS LOCALLY ON 75GB OF RAM VIA DAY-ZERO UNSLOTH GGUFS",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2092639558815060281"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "GLM-5.3-FLASH SCORES 84.3 ON TERMINAL-BENCH 2.1 VS OPUS 4.8 AT 85.0, AT ONE-TENTH GLM-5.2 PRICE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092619561505865866"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "ANTHROPIC APPEARS TO BE STEALTH-ROUTING USERS TO FABLE 5.1 \u2014 KNOWLEDGE CUTOFF UPDATED",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2092645689951981758"
   }
 ]
