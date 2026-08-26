@@ -6,8 +6,9 @@ aliases: ["Hugging Face", "HuggingFace", "@huggingface"]
 tags: [open-weights, model-hub, infrastructure, platform, m&a]
 description: The open-source model repository and platform hub that hosts most of the world's open-weight releases; reported exploring a sale at $13B+ (2026-08-24), roughly triple its 2023 Series D mark, and the victim-turned-open-weights-advocate of the July 2026 agent hack.
 created_at: 2026-08-24
-timestamp: 2026-08-24T00:00:00Z
+timestamp: 2026-08-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
@@ -53,6 +54,20 @@ land on its Hub before anywhere else.
 - **Who would buy at $13B?** The bank engagement and the $4.5B Series D
   anchor are reported, but no bidder has surfaced and the company has not
   confirmed the process.
+
+## Revenue jumps 50% — the first number behind the $13B ask (2026-08-26)
+
+- **Annualized revenue now above $150M, up ~50% (2026-08-26).** The
+  Information puts Hugging Face's annualized revenue **above $150M on paid
+  compute, storage and hub subscriptions** — a **~50% jump** — against the
+  reported **$13B ask**, a roughly **85–87× multiple**. **Both figures are
+  press reports, not company disclosures**, and the multiple is derived, not
+  claimed; treat the revenue growth as the signal, the multiple as context.
+  It is the first concrete revenue datapoint on this page's sale-exploration
+  story, and it makes the open-ownership question on this page more pointed:
+  a hub that centralizes [[open-weights]] distribution carrying an 85× revenue
+  multiple is an even larger ownership-transfer bet (The Information; ARA
+  daily digest 2026-08-26).
 - **Does an exit change the open-weights trust surface?** Hugging Face's
   centrality to [[open-weights]] distribution means a change of ownership —
   not just of a price — would be the structural signal to watch.

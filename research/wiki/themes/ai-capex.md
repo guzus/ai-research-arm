@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24) — as US opposition to data centers hits 75% and NVIDIA's financing is said to depend on lenders treating GPUs as bankable assets (2026-08-25).
 created_at: 2026-05-24
-timestamp: 2026-08-25T00:00:00Z
+timestamp: 2026-08-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
@@ -846,3 +847,36 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   $470 — while analyst **Jeff Pu expects Google TPU shipments to surpass
   NVIDIA's by 2028**. The TPU-vs-GPU competitive read inside the buildout keeps
   firming (UBS, Jeff Pu; ARA daily digest 2026-08-25). See [[broadcom]].
+
+## SEC subpoenas the prime brokers; ABF rationing and the Jalapeño per-MW claim (2026-08-26)
+
+- **The SEC moves the leverage question from the fund to its prime brokers
+  (2026-08-26).** The **SEC subpoenaed Goldman Sachs, JPMorgan, Citigroup and
+  Bank of America** for documents on the **borrowed capital behind
+  Situational Awareness** — the AI hedge fund that reached **$20B+ in assets
+  in under two years and nearly imploded in July**. Moving the leverage
+  question from the fund to its **prime brokers** is the first regulator
+  action to chase the financing side of the AI-investment buildout, not the
+  models it buys compute for. *Caveats:* TechCrunch independently confirms a
+  **federal probe**, but the **specific four-bank list rests on one relay of
+  FT reporting** (TechCrunch; ARA daily digest 2026-08-26). This is the
+  financier-side echo of the GPU-bankability / ~$500B package question on this
+  page — leverage on AI assets is now a securities-regulator question.
+- **ABF substrate supply starts being rationed to AI customers
+  (2026-08-26).** Per a Meritz Securities channel check, **Ajinomoto — the
+  sole meaningful supplier of ABF film**, the dielectric substrate behind
+  advanced packaging — told customers **lines are at full 2Q26 capacity and
+  volumes will be allocated to AI and high-end orders first**. **Single-source,
+  no Ajinomoto statement or second broker confirmation** — but consistent with
+  the substrate/memory squeeze narrative alongside the Rubin Ultra HBM4
+  downgrade (see [[nvidia]]) and DDR5 price rises tracked on this page (ARA
+  daily digest 2026-08-26).
+- **OpenAI's Jalapeño Hot Chips numbers force the per-MW comparison
+  (2026-08-26).** OpenAI's in-house inference ASIC (co-designed with
+  [[broadcom]]) reports **1.5–1.9× work-per-watt and 1.7–3.6× lower latency
+  than GB200/GB300**, with SemiAnalysis claiming it **clears Vera Rubin
+  NVL72's per-MW output** — the strongest external challenge yet to the
+  merchant-GPU economics this theme's take-or-pay contracts are priced on.
+  The runs are **OpenAI-submitted and unaudited**, so treat it as the custom-
+  vs-merchant-silicon debate's latest data point, not a settled result (OpenAI
+  blog, SemiAnalysis; ARA daily digest 2026-08-26). See [[model-specific-silicon]].

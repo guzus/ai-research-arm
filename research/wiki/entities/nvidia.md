@@ -6,13 +6,14 @@ aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "N
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package; told major customers AI servers cost ~17% more on the DRAM/HBM squeeze, adding at least $5B to a 1 GW build (2026-08-24), and is designing an orbital AI datacenter (space-optimized Vera Rubin NVL72) with SpaceX launching Q4 2027 while opening equity talks with Perplexity above $30B and shipping Groq 3 LPX racks to full production on Nebius (2026-08-25).
 created_at: 2026-06-05
-timestamp: 2026-08-25T00:00:00Z
+timestamp: 2026-08-26T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA model ticket — NVIDIA/Perplexity investment talks", path: research/models/tickets/nvidia-perplexity-investment-2026-08.md}
   - {title: "ARA model ticket — NVIDIA/Poolside licence-and-hire", path: research/models/tickets/nvidia-poolside-license-2026-08.md}
@@ -347,3 +348,27 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   China probe, and Ars Technica reports a **senior NVIDIA manager was indicted**
   over a Supermicro-linked scheme to move AI servers to China (@tahawultech,
   @ICTDailyBrief, Ars Technica; ARA daily digest 2026-08-25).
+
+## OpenAI's Hot Chips numbers and the Groq/Cerebras frame (2026-08-26)
+
+- **OpenAI's Jalapeño claims clearance of Vera Rubin per-MW figures — unaudited,
+  but the strongest challenge yet (2026-08-26).** OpenAI's Hot Chips results
+  put its in-house inference ASIC at **1.5–1.9× work-per-watt and 1.7–3.6×
+  lower latency than GB200/GB300**, with SemiAnalysis reporting it **clears
+  Vera Rubin NVL72's July output-throughput-per-MW figures**. NVIDIA's
+  position: the OpenAI chip **ran without MTP, PD disaggregation or
+  speculative decoding** while NVIDIA's entry used the optimised path — a
+  methodological caveat practitioners flagged that cuts both ways. The runs
+  are **OpenAI-submitted and unaudited**, and deployment is inside OpenAI's
+  own fleet from year-end; treat it as the strongest per-watt challenge from a
+  custom [[model-specific-silicon]] part to date, not a settled result (ARA
+  daily digest 2026-08-26). See [[openai]].
+- **Groq 3 LPX is marketed as "4× Cerebras" — but the comparison needs 64
+  NVIDIA accelerators against one or two for Cerebras (2026-08-26).** The
+  full-production **Groq 3 LPX** rack (3,400 tok/s on Gemma 4 31B at 100K
+  context) carries an explicit **"4× Cerebras"** marketing frame that The
+  Register scopes hard: **NVIDIA needs at least 64 accelerators to reach the
+  number against one or two for Cerebras**. Cerebras separately unveiled
+  **CS-4**, claiming **double the performance on the same chip**. The caveat
+  matters for the Nvidia–Groq licensing-vs-acquisition read on [[groq]] (ARA
+  daily digest 2026-08-26).

@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO with a public prospectus preparation and computer-use/Files/Skills APIs to GA reported (2026-08-21), confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply as it buys inference silicon from startups, and is now priced by its own bankers at $2 trillion with a >$100B raise pitch that would make it the largest IPO on record (2026-08-24) — with FT reporting annualized revenue at $65bn in July and 6,000 customers spending $100k+ a year (2026-08-25).
 created_at: 2026-05-24
-timestamp: 2026-08-25T00:00:00Z
+timestamp: 2026-08-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
@@ -1235,3 +1236,18 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   "They're really pushing **3D RL** a lot." Still unreleased and still
   uncorroborated by the company — the checkpoint-telegraph pattern this wiki
   tracks (ARA daily digest 2026-08-25).
+
+## A $30 trillion TAM pitch to investors (2026-08-26)
+
+- **Anthropic pitches investors a >$30T total addressable market
+  (2026-08-26).** The WSJ reports Anthropic's investor story now puts its
+  **TAM above $30 trillion** — positioned against **SpaceX's $28.5T** from its
+  IPO filing — roughly **the global knowledge-work wage bill recast as
+  software revenue**, against **cited quarterly revenue of $11.6B**. Read
+  against this page's IPO thread: the >$30T TAM is the scale argument
+  underneath the >$100B raise / $2T valuation banker pitch (2026-08-24), and
+  the $11.6B cited quarter is consistent with the ~$11.5B preliminary Q2
+  revenue already tracked (2026-08-18). The number is an **investor pitch, not
+  a filing** — the "$2 trillion valuation, up to $100B raised" figures that
+  accompany it appear only in relays with no named outlet (WSJ, HN; ARA daily
+  digest 2026-08-26).

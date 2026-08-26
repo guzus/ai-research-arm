@@ -6,8 +6,9 @@ aliases: ["Ox Alpha", "OxAlpha"]
 tags: [stealth-model, mystery-model, hype-cycle, open-weights]
 description: An unattributed, free-to-use model whose headline number collapsed from a retracted 80% to ~63% and then a "realistic" 60-61% with the task list and sample size still unpublished (2026-08-24) — attribution reading drifts from a Z.ai GLM Flash variant toward a Zhipu multimodal GLM-5.3 variant, with no lab having claimed it through day four and the free window dated to close near 2026-08-27.
 created_at: 2026-08-23
-timestamp: 2026-08-25T00:00:00Z
+timestamp: 2026-08-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA model ticket — Ox Alpha stealth model", path: research/models/tickets/stealth-ox-alpha-model-2026-08.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
@@ -85,3 +86,26 @@ attribution and then deflates on the first controlled measurements.
 - **The free window is the clock to watch.** The free access period is dated to
   close **near 2026-08-27** — the natural forcing function for either a
   [[zhipu-glm-5-3|Zhipu]] claim or a silent de-listing, whichever comes first.
+
+## Day six unclaimed — consumption numbers that can't be reconciled, and a first per-kernel read (2026-08-26)
+
+- **Six days cloaked, with mutually inconsistent consumption figures
+  (2026-08-26).** The model **still carries no lab claim**, and the running
+  token-consumption estimates now contradict each other outright —
+  **11.6T/3 days, 26T/4 days, 16.6T/5 days** — so none of them separates
+  organic demand from a **zero-price promo** (the model has been **free
+  throughout**). The free-window deadline (~2026-08-27) remains the forcing
+  function (ARA daily digest 2026-08-26).
+- **The first per-kernel KernelBench read lands it mid-pack on kernels —
+  behind Opus 5, ahead of the pack on none of the headline rows
+  (2026-08-26).** An independent **KernelBench** run gave Ox Alpha its
+  **first per-kernel read: 7.17% of roofline on a top-k bitonic kernel, just
+  behind Opus 5**, but **last place on sparse attention because it never
+  emitted tensor-core tiling**. That profile is consistent with the existing
+  mid-pack, Flash-class consensus — competent on familiar shapes, poor on
+  specialized kernels (ARA daily digest 2026-08-26).
+- **Attribution arguments now point at Zhipu/Z.ai on capacity-contention
+  grounds (2026-08-26).** The day's attribution case is **capacity, not
+  artifact**: a Zhipu/**Z.ai** run is argued on **capacity-contention grounds**
+  — explicitly an **inference, not a disclosure** (ARA daily digest
+  2026-08-26). The claim remains uncorroborated by any lab.
