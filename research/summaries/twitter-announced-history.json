@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 12:00 UTC",
-    "headline": "GROK 4.3 LIVE ON XAI API WITH 1M-TOKEN CONTEXT; HITS #7 ON ARTIFICIAL ANALYSIS INDEX, EDGES META MUSE SPARK",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-01-twitter-12h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2050119051892986164"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "PENTAGON SIGNS CLASSIFIED-NETWORK AI DEALS WITH 7 LABS \u2014 SPACEX, OPENAI, GOOGLE, NVIDIA, REFLECTION, MICROSOFT, AWS \u2014 ANTHROPIC EXCLUDED",
-    "source": "@JerryDunleavy",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/JerryDunleavy/status/2050204126437404896"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "ALTMAN: 'WE WANT TO BUILD TOOLS TO AUGMENT AND ELEVATE PEOPLE, NOT ENTITIES TO REPLACE THEM' \u2014 READ AS DIRECT SHOT AT DARIO/MYTHOS",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/sama/status/2050229058425045178"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "MICROSOFT\u2013OPENAI PARTNERSHIP REWRITE \u2014 NADELLA AND ALTMAN TRADE EXCLUSIVITY FOR LOCKED-IN REVENUE SHARE; OPENAI CAN NOW SHIP ON AWS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050221224156901847"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "NEBIUS CRO: 'DEMAND FAR EXCEEDS OUR SUPPLY' \u2014 CAPITAL, NOT CHIP SUPPLY, IS NOW THE BIGGEST AI INFRASTRUCTURE BOTTLENECK",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050228889817911595"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "ALIBABA QWEN INKS STRATEGIC PARTNERSHIP WITH FIREWORKS AI FOR PRODUCTION DEPLOYMENT OF CLOSED-WEIGHTS QWEN MODELS",
-    "source": "@Alibaba_Qwen",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/Alibaba_Qwen/status/2050232280082522505"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-01 15:00 UTC",
     "headline": "OPENAI MISSED INTERNAL Q1 REVENUE TARGET; ADVERTISING GROWTH NOW PARAMOUNT AS CONSUMER DEPENDENCE DEEPENS",
@@ -25342,5 +25288,47 @@
     "headline": "WSJ CONFIRMS ANTHROPIC IPO PITCH ABOVE $30T, TOPPING SPACEX'S $28.5T FILING ESTIMATE",
     "source": "@WSJ",
     "url": "https://x.com/WSJ/status/2092286402423660714"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "OPENAI SHIPS AGENT SIGN-IN \u2014 CHATGPT WORK BROWSER LOGS INTO WEBSITES WITHOUT MODEL SEEING USERNAME OR PASSWORD",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092418732215713898"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "SEMIANALYSIS: OPENAI JALAPENO UP TO 2X BETTER PERF-PER-WATT THAN JULY RUBIN NVL72 \u2014 AND WON WITH SPEC DECODING OFF",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092420526241108467"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "OPENAI'S ROON: BOTH INCUMBENTS NOW HAVE AN INTEREST IN SAYING RECURSIVE SELF-IMPROVEMENT IS AT HAND",
+    "source": "@tszzl",
+    "url": "https://x.com/tszzl/status/2092420937505546261"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "DYLAN PATEL: OPENAI WILL TURN PROFITABLE IN Q3",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092398551670345950"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "NEBIUS RAISES $5.75B IN CONVERTIBLE DEBT \u2014 ALL OF IT INTO DATA CENTERS AND GPU CAPACITY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092371627094716620"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "GOOGLE STUDY OF 15M GEMINI CONVERSATIONS: OVER 86% OF CONSUMER CHATS ARE NON-WORK, 26.4% COMPANIONSHIP AND LEISURE",
+    "source": "@cat_meety",
+    "url": "https://x.com/cat_meety/status/2092428905445781973"
   }
 ]
