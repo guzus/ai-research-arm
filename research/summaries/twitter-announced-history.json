@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "HANGZHOU COURT RULES AI-ONLY FIRINGS ILLEGAL \u2014 SET AS GUIDING PRECEDENT; FIRMS MUST REASSIGN, RETRAIN, OR FOLLOW FORMAL REDUNDANCY",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2050250164645007770"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 01:00 UTC",
-    "headline": "OPENAI OPENS CHATGPT-SUBSCRIPTION SIGN-IN ON OPENCLAW \u2014 STEIPETE'S OPEN AGENT PLATFORM NOW ON OAI SEAT QUOTAS",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-02-twitter-01h-headlines.json",
-    "url": "https://x.com/sama/status/2050357911915028689"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 01:00 UTC",
-    "headline": "XAI SHIPS GROK IMAGINE AGENT MODE PUBLIC BETA \u2014 UNIFIED TEXT/IMAGE/VIDEO CANVAS, PREMIUM + DESKTOP ONLY",
-    "source": "@imagine",
-    "source_file": "research/summaries/2026-05-02-twitter-01h-headlines.json",
-    "url": "https://x.com/imagine/status/2050327174629228889"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 01:00 UTC",
-    "headline": "APPLE HIKES MAC MINI BASE PRICE $599 \u2192 $799 \u2014 AI-DRIVEN NAND SHORTAGE KILLS THE 256GB ENTRY SKU",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-02-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050374333848322448"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 01:00 UTC",
-    "headline": "META DAUS DIP FOR FIRST TIME SINCE 2021 IN Q1 26 \u2014 A16Z CHART CIRCULATING ON DEVELOPER X",
-    "source": "@tszzl",
-    "source_file": "research/summaries/2026-05-02-twitter-01h-headlines.json",
-    "url": "https://x.com/tszzl/status/2050366962581295429"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 01:00 UTC",
-    "headline": "GOOGLE SEARCH AI MODE ENTERS WIDER A/B TESTING \u2014 FIRST COMMUNITY-OBSERVED ROLLOUT",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-02-twitter-01h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2050380316817395839"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "CEREBRAS UPSIZES IPO TO ~$40B TARGET / ~$4B RAISE \u2014 MONDAY ROADSHOW START, ~60-80% ABOVE APRIL PRIVATE MARK",
-    "source": "@Tickerwire",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/Tickerwire/status/2050412002510856197"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-02 04:00 UTC",
     "headline": "CEREBRAS BACKLOG: $24.6B RPO / $510M 2025 REVENUE (+76%) / $87.9M NET INCOME / OPENAI ~$10B CONTRACT ANCHOR",
@@ -25302,5 +25239,54 @@
     "headline": "SWE REFACTOR BENCH: ONLY 28 OF 520 AGENT RUNS SURVIVE FULL THREE-STAGE WHOLE-REPO REFACTOR EVAL",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2092531505952166165"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "QWEN SHIPS QWEN3.8-FLASH-NEXT OPEN-WEIGHT \u2014 125B MoE PLUS 51B N-GRAM BANK, ONLY 6B ACTIVE PER TOKEN",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092593917543780735"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "ZHIPU CONFIRMS TO BLOOMBERG: STEALTH MODEL 'OX ALPHA' IS A NEW GLM ITERATION, WEIGHTS OPEN TONIGHT",
+    "source": "@business",
+    "url": "https://x.com/business/status/2092541346724679687"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "QWEN CLAIMS QWEN3.8-FLASH-NEXT TRAINED AT ONE-NINTH THE COST OF QWEN3.7-PLUS, CALLS IT A QWEN4 PREVIEW",
+    "source": "@vepsi__",
+    "url": "https://x.com/vepsi__/status/2092600110102270271"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "ANTHROPIC REPORTED PITCHING $30T ADDRESSABLE MARKET, UP TO $100B RAISE AT $2T VALUATION",
+    "source": "@anadoluagency",
+    "url": "https://x.com/anadoluagency/status/2092599207412609514"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "META SETTLES 29-STATE TEEN HARM CASE FOR UP TO $16.68B; COMPLAINT ALLEGED CHILD DATA USED TO TRAIN AI",
+    "source": "@WOLF_Financial",
+    "url": "https://x.com/WOLF_Financial/status/2092599515845190062"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "SKILD AI RELEASES S1 ROBOT FOUNDATION MODEL \u2014 66% ON UNSEEN TASKS FROM ONE VIDEO VS 9% FOR LANGUAGE-PROMPTED BASELINE",
+    "source": "@autonomousevent",
+    "url": "https://x.com/autonomousevent/status/2092600494132764722"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "M5 ULTRA MAC STUDIO 256GB LEAD TIMES STRETCH TO 10-12 WEEKS",
+    "source": "@alexocheema",
+    "url": "https://x.com/alexocheema/status/2092567601188577358"
   }
 ]
