@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 06:00 UTC",
-    "headline": "NEBIUS ACQUIRES EIGEN AI FOR $643M CASH AND SHARES \u2014 FOLDS OPEN-SOURCE INFERENCE STACK INTO NEBIUS TOKEN FACTORY",
-    "source": "@jiahanjimliu",
-    "source_file": "research/summaries/2026-05-02-twitter-06h-headlines.json",
-    "url": "https://x.com/jiahanjimliu/status/2050454445310521626"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 06:00 UTC",
-    "headline": "EIGEN AI #1 ACROSS 25 OPEN-SOURCE MODELS ON ARTIFICIAL ANALYSIS \u2014 QWEN3 CODER 480B AT 255.8 T/S, ~51% FASTER THAN GOOGLE VERTEX",
-    "source": "@HyperTechInvest",
-    "source_file": "research/summaries/2026-05-02-twitter-06h-headlines.json",
-    "url": "https://x.com/HyperTechInvest/status/2050443561951269104"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 06:00 UTC",
-    "headline": "SAMSUNG NAND LTA FLOOR PRICE FLIPS ABOVE Q3 SPOT \u2014 LONG-TERM-AGREEMENT eSSD CONTRACTS NOW PRICED AT PREMIUM TO SPOT",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-02-twitter-06h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050439372126986554"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 09:00 UTC",
-    "headline": "XAI CONSOLE SHIPS VOICE CLONING \u2014 $4.20 PER 1M CHARS TTS, 89 VOICES, 28 LANGUAGES, US-ONLY API",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-02-twitter-09h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2050472651919863885"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 09:00 UTC",
-    "headline": "MUSK: GROK VOICE IS USED BY STARLINK RIGHT NOW \u2014 FIRST EXPLICIT IN-HOUSE ENTERPRISE DEPLOYMENT CALL-OUT",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-02-twitter-09h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2050475355258151330"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 09:00 UTC",
-    "headline": "XAI TTS PRICED AT ROUGHLY 1/50TH OF ELEVENLABS REFERENCE ON 20-MIN SCRIPT \u2014 $0.08 VS $6",
-    "source": "@Sashadnx",
-    "source_file": "research/summaries/2026-05-02-twitter-09h-headlines.json",
-    "url": "https://x.com/Sashadnx/status/2050505944216928319"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 09:00 UTC",
-    "headline": "DEMIS HASSABIS AMPLIFIES GOOGLE I/O 2026 COUNTDOWN \u2014 KEYNOTE MAY 19-20, NEW GEMINI MODELS EXPECTED",
-    "source": "@demishassabis",
-    "source_file": "research/summaries/2026-05-02-twitter-09h-headlines.json",
-    "url": "https://x.com/demishassabis/status/2050493397928988783"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-02 09:00 UTC",
     "headline": "VIRAL AGENTS OF CHAOS PAPER IS RECYCLED \u2014 ARXIV 2602.20021 FROM FEB 2026, IN CIRCULATION SINCE MARCH",
@@ -25274,5 +25211,54 @@
     "headline": "ANTHROPIC APPEARS TO BE STEALTH-ROUTING USERS TO FABLE 5.1 \u2014 KNOWLEDGE CUTOFF UPDATED",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2092645689951981758"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "OPENAI CALLS HUGGING FACE INCIDENT A 'WARNING SHOT' FOR LOSS OF CONTROL, PUBLISHES FULL TECHNICAL REPORT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092691861773160673"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "OPENAI: INTERNAL-ONLY MODEL AT GPT-5.6 SOL SCALE HAD BROADEST CONFIRMED ROLE IN AGENT SWARM INCIDENT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092700504447131813"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "METR AND REDWOOD RESEARCH PUBLISH INDEPENDENT ASSESSMENT OF OPENAI AGENT BEHAVIOR IN HUGGING FACE BREACH",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092691863505346634"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "ANTHROPIC TO PAY NSCALE $45B OVER SIX YEARS FOR ~460MW ON NVIDIA VERA RUBIN \u2014 BLOOMBERG",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2092670115531706582"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "ANTHROPIC OPENS PRIVACY-PRESERVED CLAUDE USAGE DATA TO OUTSIDE RESEARCHERS \u2014 A FRONTIER-LAB FIRST",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2092661573223657834"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "GOOGLE SHIPS GEMINI 3.5 TRANSCRIBE: 2.6% WER, 85+ LANGUAGES, SUB-SECOND STREAMING, PUBLIC PREVIEW",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2092660925509890397"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "AI ASSISTANT STARTUP INSTINCT RAISES $250M SERIES B AT $2.5B, CO-LED BY INDEX AND BENCHMARK \u2014 WSJ",
+    "source": "@IPONewsroom_",
+    "url": "https://x.com/IPONewsroom_/status/2092697619449713010"
   }
 ]
