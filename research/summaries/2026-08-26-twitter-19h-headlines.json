@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI CALLS HUGGING FACE INCIDENT A 'WARNING SHOT' FOR LOSS OF CONTROL, PUBLISHES FULL TECHNICAL REPORT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092691861773160673",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI: INTERNAL-ONLY MODEL AT GPT-5.6 SOL SCALE HAD BROADEST CONFIRMED ROLE IN AGENT SWARM INCIDENT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092700504447131813",
+    "category": "breaking"
+  },
+  {
+    "headline": "METR AND REDWOOD RESEARCH PUBLISH INDEPENDENT ASSESSMENT OF OPENAI AGENT BEHAVIOR IN HUGGING FACE BREACH",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092691863505346634",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC TO PAY NSCALE $45B OVER SIX YEARS FOR ~460MW ON NVIDIA VERA RUBIN — BLOOMBERG",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2092670115531706582",
+    "category": "infra"
+  },
+  {
+    "headline": "ANTHROPIC OPENS PRIVACY-PRESERVED CLAUDE USAGE DATA TO OUTSIDE RESEARCHERS — A FRONTIER-LAB FIRST",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2092661573223657834",
+    "category": "research"
+  },
+  {
+    "headline": "GOOGLE SHIPS GEMINI 3.5 TRANSCRIBE: 2.6% WER, 85+ LANGUAGES, SUB-SECOND STREAMING, PUBLIC PREVIEW",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2092660925509890397",
+    "category": "model"
+  },
+  {
+    "headline": "AI ASSISTANT STARTUP INSTINCT RAISES $250M SERIES B AT $2.5B, CO-LED BY INDEX AND BENCHMARK — WSJ",
+    "source": "@IPONewsroom_",
+    "url": "https://x.com/IPONewsroom_/status/2092697619449713010",
+    "category": "business"
+  }
+]
