@@ -267,6 +267,24 @@ jobs:
           # (lane generative-research-default), not in this file.
           DEFAULT_BACKEND="$(python3 scripts/resolve_backend_lane.py generative-research-default)"
 
+          normalize_backend() {
+            local selector="$1"
+            if [ "$selector" = "default" ]; then
+              selector="$DEFAULT_BACKEND"
+            fi
+            case "$selector" in
+              codex|openai-codex) selector="codex" ;;
+              opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) selector="opencode-deepseek-v4-flash" ;;
+              cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) selector="cursor-grok-4p6-fast" ;;
+              deepseek) selector="deepseek-v4-flash" ;;
+              glm-5.2|glm5.2|glm52|glm-5p2) selector="glm-5p2" ;;
+              claude-opus-4-8|claude-sonnet-5) selector="claude" ;;
+              claude-fable-5|fable-5) selector="fable-5" ;;
+              claude-opus-5|opus-5|opus5) selector="opus-5" ;;
+            esac
+            printf '%s\n' "$selector"
+          }
+
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             TOPIC="$INPUT_TOPIC"
             TWITTER_URL="$INPUT_TWITTER_URL"
@@ -315,17 +333,7 @@ jobs:
                 | sed -E 's/^[[:space:]]*[Bb][Aa][Cc][Kk][Ee][Nn][Dd][[:space:]]*:[[:space:]]*//' \
                 | tr -d '[:space:]' \
                 | tr '[:upper:]' '[:lower:]' || true)
-              case "$CANDIDATE" in
-                default) CANDIDATE="$DEFAULT_BACKEND" ;;
-                claude-opus-4-8|claude-sonnet-5) CANDIDATE="claude" ;;
-                claude-fable-5|fable-5) CANDIDATE="fable-5" ;;
-                claude-opus-5|opus-5|opus5) CANDIDATE="opus-5" ;;
-                codex|openai-codex) CANDIDATE="codex" ;;
-                opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) CANDIDATE="opencode-deepseek-v4-flash" ;;
-                cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) CANDIDATE="cursor-grok-4p6-fast" ;;
-                deepseek) CANDIDATE="deepseek-v4-flash" ;;
-                glm-5.2|glm5.2|glm52|glm-5p2) CANDIDATE="glm-5p2" ;;
-              esac
+              CANDIDATE="$(normalize_backend "$CANDIDATE")"
               if [ -n "${CANDIDATE:-}" ]; then
                 if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "opus-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-deepseek-v4-flash" ] && [ "$CANDIDATE" != "cursor-grok-4p6-fast" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
                   echo "unsupported backend/model: $CANDIDATE" >&2
@@ -357,17 +365,7 @@ jobs:
             exit 1
           fi
 
-          case "$BACKEND" in
-            default) BACKEND="$DEFAULT_BACKEND" ;;
-            codex|openai-codex) BACKEND="codex" ;;
-            opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) BACKEND="opencode-deepseek-v4-flash" ;;
-            cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) BACKEND="cursor-grok-4p6-fast" ;;
-            deepseek) BACKEND="deepseek-v4-flash" ;;
-            glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
-            claude-opus-4-8|claude-sonnet-5) BACKEND="claude" ;;
-            claude-fable-5|fable-5) BACKEND="fable-5" ;;
-            claude-opus-5|opus-5|opus5) BACKEND="opus-5" ;;
-          esac
+          BACKEND="$(normalize_backend "$BACKEND")"
           if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "opus-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-deepseek-v4-flash" ] && [ "$BACKEND" != "cursor-grok-4p6-fast" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
