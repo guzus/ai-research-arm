@@ -51,7 +51,7 @@ status_note: |
   at this step-up, and a licensing arrangement plus in-house research is
   the coherent path from reseller to builder. Status stays `rumored`;
   verification stays `partial`.
-expected: "Reported 2026-08-24 as talks to invest at a $30B+ valuation, possibly bundled with a technology licensing agreement; Perplexity annualized revenue relayed at >$750M, up from <$250M in January. Pending: the upstream report, an NVIDIA or Perplexity statement, whether the round closes and at what valuation, and what the licensing half actually covers"
+expected: "Reported 2026-08-24 as talks to invest at a $30B+ valuation, possibly bundled with a technology licensing agreement; The Information carried both the $30B+ figure and >$750M annualized revenue directly on 2026-08-25. Pending: an NVIDIA or Perplexity statement, whether the round closes and at what valuation, and what the licensing half actually covers"
 labels:
   - nvidia
   - perplexity
@@ -67,8 +67,9 @@ sources:
   - https://x.com/Hardwire_news/status/2091786043196686759
   - "@kalyso13"
   - "@AI_AgentFL"
+  - "@theinformation"
 created_at: 2026-08-24
-updated_at: 2026-08-25
+updated_at: 2026-08-26
 closed_at: null
 closed_reason: null
 history:
@@ -76,6 +77,8 @@ history:
     change: "Created — NVIDIA reportedly in talks to invest billions in Perplexity at a $30B+ valuation, a >50-60% step-up, possibly bundled with a technology licensing agreement (@Hardwire_news 2026-08-24 07:13 UTC; echoed by @kalyso13 and @AI_AgentFL). Justification relayed is revenue: annualized ~$250M in January to >$750M now, credited to the Perplexity Computer workflow agent. Status rumored — every account says talks, none says signed. Verification partial: three aggregator relays inside a 15-minute window, no named outlet, no NVIDIA or Perplexity statement, no term sheet. Lands the same week as [[nvidia-poolside-license-2026-08]] and [[nvidia-server-price-increase-2026-08]], ahead of NVIDIA's 2026-08-26 earnings."
   - ts: 2026-08-25
     change: "Circulation widened well past aggregators without the substance moving. @ns123abc (2026-08-24 04:55 UTC, ~809 likes) posted it as BREAKING with the same $30B+ figure plus a mechanism for why NVIDIA specifically — Perplexity Computer is the revenue driver, computer agents run code and tools on the CPU, NVIDIA built Vera CPU for exactly that, and Perplexity runs on NVIDIA chips end-to-end via CoreWeave. Taiwanese trade media (@insideCyberbuzz) and @K_Y_D_A_A_L independently carry the $30B+ valuation, the prior $20B mark and annualized revenue above $750M up from under $250M in January. None of it upgrades the ticket: these are wider relays of the same uncaptured upstream report, with still no NVIDIA or Perplexity statement, no named outlet and no term sheet, and the Vera-CPU rationale is a commentator's inference rather than a stated deal rationale. One genuinely new adjacent fact: Perplexity named Andrew Gordon Wilson research lead the same day ([[perplexity-wilson-hire-2026-08]]), the use-of-proceeds story that usually accompanies a round at this step-up. Status stays rumored; verification stays partial."
+  - ts: 2026-08-26
+    change: "The report reaches a primary business outlet. @theinformation (2026-08-25 19:30 UTC): 'Perplexity's annualized revenue has topped $750 million as Nvidia considers backing the startup at a valuation of more than $30 billion.' Until now this ticket carried the $30B+ valuation and the >$750M ARR only through aggregators relaying an uncaptured upstream report; The Information now carries both directly, which is the named-outlet sourcing the ticket was waiting for. Verification stays partial - a report, however well sourced, is not a signed round - but the sourcing floor rises from aggregator relay to named outlet, and the revenue figure is no longer second-hand. Nothing else moves: no NVIDIA or Perplexity statement, no confirmed close, and the technology-licensing half of the reported deal remains uncharacterised. Commercial context from the same day, which is the relationship an investment would formalise: Perplexity shipped Portable Computer on NVIDIA DGX Spark ([[perplexity-portable-computer-2026-08]]), @nvidia's own account promoted the launch, and @AravSrinivas says that after an early demo Jensen Huang gifted the team a DGX Station. Status stays rumored."
 ---
 
 NVIDIA is reported to be negotiating an equity investment in

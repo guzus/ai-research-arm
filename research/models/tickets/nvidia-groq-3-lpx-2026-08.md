@@ -34,7 +34,7 @@ status_note: |
   NVIDIA silicon and Groq the cloud operator is a customer of it. This
   ticket records the product entering production; the acquisition itself
   predates this ticket and is not established here beyond that relay.
-expected: "Entered full production per NVIDIA, announced 2026-08-24, with Groq named among the first adopters deploying it alongside Vera Rubin. Pending: an NVIDIA first-party post, the Artificial Analysis test page behind the 3,400 tok/s Gemma 4 31B figure, pricing, availability outside launch partners, and how it is positioned against Cerebras CS-4"
+expected: "Entered full production per NVIDIA, announced 2026-08-24, with Groq named among the first adopters deploying it alongside Vera Rubin and Nebius reported 2026-08-25 as the first named external adopter. Pending: an NVIDIA first-party post, the Artificial Analysis test page behind the 3,400 tok/s Gemma 4 31B figure, pricing, availability outside launch partners, and how it is positioned against Cerebras CS-4"
 labels:
   - nvidia
   - groq
@@ -47,13 +47,17 @@ sources:
   - "@GroqInc"
   - "@JonathanRoss321"
   - "@AlphaWireNewsAi"
+  - "@theinformation"
+  - "@rohanpaul_ai"
 created_at: 2026-08-25
-updated_at: 2026-08-25
+updated_at: 2026-08-26
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-25
     change: "Created — NVIDIA says Groq 3 LPX, a low-latency inference accelerator designed to extend Vera Rubin NVL72, has entered full production (@wallstengine via @jukan05 2026-08-24 15:21 UTC; @AlphaWireNewsAi frames it as the commercial rollout of technology from NVIDIA's largest-ever acquisition). Quoted figure: 3,400 output tok/s on Gemma 4 31B at 100K context in Artificial Analysis testing. @GroqInc, RT'd by founder @JonathanRoss321, says Groq will be among the first adopters, deploying it alongside Vera Rubin. Status released on a full-production claim plus a named first adopter plus a published throughput number; verification partial — no NVIDIA newsroom post or Artificial Analysis page captured, and the only first-party voice is the customer's. Lands two days before NVIDIA's 2026-08-26 earnings, alongside [[nvidia-server-price-increase-2026-08]] and [[nvidia-rubin-ultra-hbm-downgrade-2026-08]]."
+  - ts: 2026-08-26
+    change: "First named external customer, plus a mechanism-level description of why the part exists. @theinformation's TITV rundown (2026-08-25 16:30 UTC) leads with 'Nebius signs deal to adopt Nvidia Groq chip,' interviewing Nebius CRO Marc Boroditsky - the first adopter outside Groq itself, and it lands the same day Nebius disclosed a $5.75B convertible debt offering explicitly to 'build more data centers, and fill them with more GPU capacity.' The same segment carries a sell-side skeptic on the other side of the question ('Will Nvidia's Groq chip live up to the hype?', @gilluria of D.A. Davidson), so the item is not one-sided promotion. @rohanpaul_ai relays WSJ on the design rationale: 'Agentic AI creates two distinct computing challenges: efficiently processing enormous amounts of context and generating tokens with extremely low latency' - one agent task can require hundreds of sequential inference steps, so decoding delay compounds in a way it does not for ordinary chat. Groq 3 LPX attacks that with deterministic compiler scheduling, 128GB of SRAM across the rack, and preplanned chip-to-chip transfers that reduce small-batch coordination overhead. That is the first architectural detail on this ticket beyond the headline 3,400 tok/s figure, and it explains the positioning against both Vera Rubin (which it extends rather than replaces) and SRAM-heavy rivals like [[cerebras-cs-4-2026-08]]. Status stays released; verification stays partial - still no NVIDIA newsroom post captured, and Nebius's adoption comes via an interview segment rather than either company's own release."
 ---
 
 **Groq 3 LPX**, NVIDIA's low-latency inference part, is in **full

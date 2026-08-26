@@ -3,7 +3,7 @@ slug: openai-codex-security-cli-2026-07
 title: OpenAI open-sources the Codex Security CLI
 company: OpenAI
 model: Codex Security CLI
-status: released
+status: closed
 status_note: |
   OpenAI announced (2026-07-29 00:35 UTC, official @OpenAI) that it
   "quietly released the open-source Codex Security CLI, but Hacker News
@@ -17,7 +17,7 @@ status_note: |
   is a standalone open-source security-scanning tool under the Codex
   brand. Primary company account, concrete public artifact (npm package)
   → status `released`, verification `confirmed`.
-expected: null
+expected: "Closed 2026-08-26 as released-and-aged: shipped publicly 2026-07-29 as an npm package and settled into normal coverage with no follow-on signal in four weeks"
 labels:
   - openai
   - codex
@@ -32,12 +32,14 @@ sources:
   - https://x.com/OpenAI/status/2082263719460094127
   - https://x.com/OpenAI/status/2082263720777101505
 created_at: 2026-07-29
-updated_at: 2026-07-29
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-26
+closed_at: 2026-08-26
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-07-29
     change: "Created — OpenAI open-sourced the Codex Security CLI (npm install @OpenAI/codex-security), announced via its official account after Hacker News discovered it first. Scans repos, tracks findings across runs, verifies fixes, adds CI/CD security checks. Framed as an early release still being iterated on. Primary source, concrete public npm package → status released, verification confirmed."
+  - ts: 2026-08-26
+    change: "Closed - released-and-aged. The Codex Security CLI shipped publicly on 2026-07-29 (official @OpenAI, npm package @OpenAI/codex-security) and has now been out four weeks with no captured follow-on signal in the intervening cycles: no version bump with material new capability, no security-research evaluation of its effectiveness, and no adoption datapoint. That is precisely the transition trigger this ticket set at creation ('>=4 weeks settled into normal coverage with no further developments -> closed: released-and-aged'), and it is the ordinary end state for a shipped tool rather than a judgement about the product. Closing preserves the full record; a future material development - a major release, a vulnerability in the tool itself, or deprecation - would open a successor ticket referencing this slug rather than reopening it. Broader Codex platform news continues on [[openai-codex-platform-2026-05]]."
 ---
 
 **OpenAI** open-sourced the **Codex Security CLI**, a standalone
