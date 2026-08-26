@@ -12,7 +12,7 @@ name: Generative Research
 # Backends, mutually exclusive at runtime. The DEFAULT is not named here —
 # it lives in data/agent-backends.json (lane generative-research-default) and
 # is resolved at runtime, so re-routing the default needs no workflow change:
-#   * opus-5   — Explicit premium native Anthropic path on claude-opus-5. Same OAuth
+#   * opus-5   — CURRENT DEFAULT. Premium native Anthropic path on claude-opus-5. Same OAuth
 #                credential and billing surface as `claude`, so it keeps the
 #                recovery retry; unlike `claude` its provenance is verified
 #                against the committed index row before the push.
@@ -22,7 +22,7 @@ name: Generative Research
 #                fails preflight — a fallback stays on the cheap reliable path.
 #   * fable-5  — explicit, premium native Anthropic path (model claude-fable-5).
 #   * codex    — Codex CLI signed in with ChatGPT-managed auth.json.
-#   * opencode-deepseek-v4-flash — CURRENT DEFAULT. opencode CLI running
+#   * opencode-deepseek-v4-flash — opencode CLI running
 #                DeepSeek V4 Flash through OpenCode Go,
 #                authenticated by the plain OPENCODE_API_KEY env var (no
 #                auth.json seeding). The Moonshot route is gone, not

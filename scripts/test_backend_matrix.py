@@ -457,12 +457,13 @@ class RoutingInvariants(unittest.TestCase):
         self.assertTrue(self.obs["generative-research.yml"].has_opus_dispatch)
         from build_backend_matrix import GEN_RESEARCH_BACKENDS
         self.assertIn("opus-5", GEN_RESEARCH_BACKENDS)
-        # DeepSeek/OpenCode is the SSOT default: manual dispatch with no backend input,
+        self.assertIn("claude-opus-5", GEN_RESEARCH_BACKENDS)
+        # Opus 5 is the SSOT default: manual dispatch with no backend input,
         # gen-research issues, and hourly-twitter's auto-research all inherit
         # it. The workflow must keep resolving that default at runtime rather
         # than hard-coding a backend of its own.
         self.assertEqual(self.lanes["generative-research-default"]["backend"],
-                         "opencode-deepseek-v4-flash")
+                         "claude-opus-5")
         self.assertIn("generative-research-default",
                       self.obs["generative-research.yml"].resolver_lanes)
         # The Fireworks-unavailable fallback is deliberately NOT the default:

@@ -155,7 +155,7 @@ STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure
 
 # Backends generative-research.yml can actually execute (its params step
 # validates against this same set at runtime).
-GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "opus-5", "codex",
+GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "opus-5", "claude-opus-5", "codex",
                          "opencode-deepseek-v4-flash", "deepseek-v4-flash", "glm-5p2",
                          "cursor-grok-4p6-fast"}
 
