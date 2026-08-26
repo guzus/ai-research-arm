@@ -440,10 +440,9 @@ class RoutingInvariants(unittest.TestCase):
     def test_gen_research_opus_5_is_explicit_and_provenance_checked(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
-        # Dispatch option, both case-normalizations, and the runtime allowlist.
+        # Dispatch option, canonical normalization, and the runtime allowlist.
         self.assertIn('- opus-5', workflow)
-        self.assertIn('claude-opus-5|opus-5|opus5) CANDIDATE="opus-5"', workflow)
-        self.assertIn('claude-opus-5|opus-5|opus5) BACKEND="opus-5"', workflow)
+        self.assertIn('claude-opus-5|opus-5|opus5) selector="opus-5"', workflow)
         self.assertIn('[ "$BACKEND" != "opus-5" ]', workflow)
         # Served model is pinned from the single resolver output, so an
         # opus-5-labelled article can never be authored by Sonnet.
@@ -471,13 +470,52 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('backend="claude"', (REPO_ROOT / ".github" / "workflows" /
                       "generative-research.yml").read_text(encoding="utf-8"))
 
+    def test_gen_research_default_backend_normalizes_for_every_trigger(self):
+        workflow_path = REPO_ROOT / ".github" / "workflows" / "generative-research.yml"
+        workflow = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
+        steps = workflow["jobs"]["generative-research"]["steps"]
+        derive_script = next(step["run"] for step in steps
+                             if step.get("name") == "Derive parameters")
+
+        base_env = {
+            "INPUT_TOPIC": "Uniswap CCA",
+            "INPUT_TWITTER_URL": "",
+            "INPUT_SLUG": "",
+            "INPUT_BACKEND": "default",
+            "INPUT_TAGS": "",
+            "ISSUE_TITLE": "Uniswap CCA",
+            "ISSUE_BODY": "",
+        }
+        cases = (
+            ("workflow_dispatch", ""),
+            ("issues", "backend: default"),
+        )
+        for event_name, issue_body in cases:
+            with self.subTest(event_name=event_name), tempfile.NamedTemporaryFile() as output:
+                env = os.environ.copy()
+                env.update(base_env)
+                env.update({
+                    "EVENT_NAME": event_name,
+                    "ISSUE_BODY": issue_body,
+                    "GITHUB_OUTPUT": output.name,
+                })
+                result = subprocess.run(
+                    ["bash", "-c", derive_script],
+                    cwd=REPO_ROOT,
+                    env=env,
+                    text=True,
+                    capture_output=True,
+                )
+                self.assertEqual(result.returncode, 0, result.stderr)
+                output.seek(0)
+                self.assertIn("backend=opus-5", output.read().decode("utf-8"))
+
     def test_gen_research_opencode_deepseek_is_explicit_and_fail_closed(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
-        # Dispatch option, both case-normalizations, and the runtime allowlist.
+        # Dispatch option, canonical normalization, and the runtime allowlist.
         self.assertIn("- opencode-deepseek-v4-flash", workflow)
-        self.assertIn('opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) CANDIDATE="opencode-deepseek-v4-flash"', workflow)
-        self.assertIn('opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) BACKEND="opencode-deepseek-v4-flash"', workflow)
+        self.assertIn('opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) selector="opencode-deepseek-v4-flash"', workflow)
         self.assertIn('[ "$BACKEND" != "opencode-deepseek-v4-flash" ]', workflow)
         # Fail-closed route preflight and the output guard stay in the
         # workflow; the version-pinned install and the env-var auth moved into
@@ -516,10 +554,7 @@ class RoutingInvariants(unittest.TestCase):
                     "generative-research.yml").read_text(encoding="utf-8")
         self.assertIn("- cursor-grok-4p6-fast", workflow)
         self.assertIn(
-            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) CANDIDATE="cursor-grok-4p6-fast"',
-            workflow)
-        self.assertIn(
-            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) BACKEND="cursor-grok-4p6-fast"',
+            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) selector="cursor-grok-4p6-fast"',
             workflow)
         self.assertIn('[ "$BACKEND" != "cursor-grok-4p6-fast" ]', workflow)
         self.assertIn("Resolve and preflight Cursor CLI route", workflow)
