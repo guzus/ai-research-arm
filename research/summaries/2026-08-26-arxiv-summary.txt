@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-26
+
+TOP 5 PAPERS:
+• ELR Governs Loss Dynamics in LM Pretraining — LR & param norm act via their ratio; matched ELR collapses loss curves across scales.
+• Meta^n: Recursive Self-Improvement through Emergent Depth — fixed meta-op recursed on its products; only method above zero on ARC-AGI-2.
+• LAION-BVD: 10-Million-Hour Open Video Dataset — 80M videos, captioned, for video-audio-image pre-training.
+• Recuris: Recursive Experiential-Working Memory for Long-Horizon Agents — evolutions lift agents to SOTA (tau-bench 87.9%).
+• TurboT2VA: Fast Text-to-Video-Audio Generation — consistency distillation + inference stack: 20-54x speedup for a 19B model.
+
+CATEGORIES: NLP 5; CV/Multimodal 6; Agents/Reasoning 6; Safety 5; Other 6.
+
+Full report on GitHub.
