@@ -1456,6 +1456,183 @@ class RoutingInvariants(unittest.TestCase):
             self.assertIn("artifact_count=1", telemetry)
             self.assertIn("retry_reason=none", telemetry)
 
+    def test_editorial_zero_commit_retry_is_clean_bounded_and_fail_closed(self):
+        """Commit editorials retry one clean-workspace no-op, then fail."""
+        action_doc = yaml.safe_load(
+            (REPO_ROOT / ".github/actions/run-opencode-container/action.yml")
+            .read_text(encoding="utf-8")
+        )
+        run = action_doc["runs"]["steps"][0]["run"]
+        self.assertEqual(2, run.count('exit "$agent_status"'))
+        loop = run.split("# OPENCODE_ATTEMPT_LOOP_BEGIN", 1)[1].split(
+            "# OPENCODE_ATTEMPT_LOOP_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bin_dir = root / "bin"
+            bin_dir.mkdir()
+            prompt = root / "prompt.md"
+            prompt.write_text("curate arxiv\n", encoding="utf-8")
+            loop = loop.replace("/tmp/opencode-prompt.md", str(prompt))
+            loop = loop.replace(
+                'attempt_log="/tmp/opencode-attempt-${attempt_count}.log"',
+                'attempt_log="$PWD/opencode-attempt-${attempt_count}.log"')
+
+            timeout = bin_dir / "timeout"
+            timeout.write_text(
+                "#!/bin/bash\nset -eu\nshift\nexec \"$@\"\n",
+                encoding="utf-8")
+            timeout.chmod(0o755)
+            opencode = bin_dir / "opencode"
+            opencode.write_text(
+                "#!/bin/bash\n"
+                "set -eu\n"
+                "attempt=0\n"
+                "if [ -f \"$OPENCODE_ATTEMPT_FILE\" ]; then "
+                "attempt=$(tr -d '\\r\\n' < \"$OPENCODE_ATTEMPT_FILE\"); fi\n"
+                "attempt=$((attempt + 1))\n"
+                "printf '%s\\n' \"$attempt\" > \"$OPENCODE_ATTEMPT_FILE\"\n"
+                "write_commit() {\n"
+                "  mkdir -p research/arxiv\n"
+                "  printf 'papers\\n' > research/arxiv/2026-08-26-papers.md\n"
+                "  git add research/arxiv/2026-08-26-papers.md\n"
+                "  git commit -qm 'arXiv papers'\n"
+                "}\n"
+                "case \"$OPENCODE_FAKE_BEHAVIOR\" in\n"
+                "  retry-commit) [ \"$attempt\" -eq 2 ] && write_commit || : ;;\n"
+                "  dirty-retry)\n"
+                "    if [ \"$attempt\" -eq 1 ]; then\n"
+                "      mkdir -p research/arxiv\n"
+                "      printf 'partial\\n' > research/arxiv/2026-08-26-papers.md\n"
+                "    else\n"
+                "      [ ! -e research/arxiv/2026-08-26-papers.md ] || exit 97\n"
+                "      write_commit\n"
+                "    fi\n"
+                "    ;;\n"
+                "  first-commit) write_commit ;;\n"
+                "  mutate-input)\n"
+                "    if [ \"$attempt\" -eq 1 ]; then\n"
+                "      printf 'changed\\n' > .agent-input/source.txt\n"
+                "    else\n"
+                "      grep -qx 'source' .agent-input/source.txt || exit 96\n"
+                "      write_commit\n"
+                "    fi\n"
+                "    ;;\n"
+                "  nonzero) exit 9 ;;\n"
+                "  no-output) ;;\n"
+                "  *) exit 98 ;;\n"
+                "esac\n",
+                encoding="utf-8")
+            opencode.chmod(0o755)
+
+            def run_case(name: str, behavior: str, *, mode: str = "editorial",
+                         allowed_paths: str = (
+                             "research/arxiv/2026-08-26-papers.md"),
+                         return_artifacts: str = ""):
+                case_dir = root / name
+                case_dir.mkdir()
+                subprocess.run(["git", "init", "-q"], cwd=case_dir,
+                               check=True)
+                subprocess.run(["git", "config", "user.name", "Test"],
+                               cwd=case_dir, check=True)
+                subprocess.run(["git", "config", "user.email", "test@example.com"],
+                               cwd=case_dir, check=True)
+                (case_dir / "seed.txt").write_text("seed\n", encoding="utf-8")
+                agent_input = case_dir / ".agent-input"
+                agent_input.mkdir()
+                (agent_input / "source.txt").write_text(
+                    "source\n", encoding="utf-8")
+                subprocess.run(["git", "add", "seed.txt"], cwd=case_dir,
+                               check=True)
+                subprocess.run(["git", "commit", "-qm", "seed"],
+                               cwd=case_dir, check=True)
+                pre_sha = subprocess.check_output(
+                    ["git", "rev-parse", "HEAD"], cwd=case_dir,
+                    text=True).strip()
+                attempts = root / f"{name}-attempts"
+                env = {
+                    **os.environ,
+                    "PATH": f"{bin_dir}:/usr/bin:/bin",
+                    "AGENT_TIMEOUT_MINUTES": "1",
+                    "AGENT_LANE": "arxiv",
+                    "RUN_MODE": mode,
+                    "ALLOWED_PATHS": allowed_paths,
+                    "RETURN_ARTIFACTS": return_artifacts,
+                    "PRE_SHA": pre_sha,
+                    "OPENCODE_MODEL_REF": "opencode-go/deepseek-v4-flash",
+                    "OPENCODE_ATTEMPT_FILE": str(attempts),
+                    "OPENCODE_FAKE_BEHAVIOR": behavior,
+                }
+                result = subprocess.run(
+                    ["bash", "-c", (
+                        "set -euo pipefail\n" + loop
+                        + '\nexit "$agent_status"\n')],
+                    cwd=case_dir, env=env, text=True, capture_output=True,
+                    check=False)
+                telemetry = (case_dir / ".opencode-attempt-telemetry").read_text(
+                    encoding="utf-8")
+                count = attempts.read_text(encoding="utf-8").strip()
+                return result, count, telemetry
+
+            retried, attempts, telemetry = run_case("retry", "retry-commit")
+            self.assertEqual(0, retried.returncode,
+                             retried.stdout + retried.stderr)
+            self.assertEqual("2", attempts)
+            self.assertIn("attempt_count=2", telemetry)
+            self.assertIn("last_agent_status=0", telemetry)
+            self.assertIn("retry_reason=zero-commit-editorial", telemetry)
+
+            cleaned, attempts, telemetry = run_case("clean", "dirty-retry")
+            self.assertEqual(0, cleaned.returncode,
+                             cleaned.stdout + cleaned.stderr)
+            self.assertEqual("2", attempts)
+            self.assertIn("last_agent_status=0", telemetry)
+
+            exhausted, attempts, telemetry = run_case("exhausted", "no-output")
+            self.assertEqual(86, exhausted.returncode,
+                             exhausted.stdout + exhausted.stderr)
+            self.assertEqual("2", attempts)
+            self.assertIn("last_agent_status=86", telemetry)
+            self.assertIn("retry_reason=zero-commit-editorial", telemetry)
+            self.assertIn("exited successfully twice without committing output",
+                          exhausted.stdout)
+
+            committed, attempts, telemetry = run_case(
+                "first-commit", "first-commit")
+            self.assertEqual(0, committed.returncode,
+                             committed.stdout + committed.stderr)
+            self.assertEqual("1", attempts)
+            self.assertIn("retry_reason=none", telemetry)
+
+            failed, attempts, telemetry = run_case("nonzero", "nonzero")
+            self.assertEqual(9, failed.returncode, failed.stdout + failed.stderr)
+            self.assertEqual("1", attempts)
+            self.assertIn("last_agent_status=9", telemetry)
+            self.assertIn("retry_reason=none", telemetry)
+
+            artifact_only, attempts, telemetry = run_case(
+                "artifact-only", "no-output", allowed_paths="",
+                return_artifacts=".tmp/bluesky-section.md")
+            self.assertEqual(0, artifact_only.returncode,
+                             artifact_only.stdout + artifact_only.stderr)
+            self.assertEqual("1", attempts)
+            self.assertIn("retry_reason=none", telemetry)
+
+            generative, attempts, telemetry = run_case(
+                "generative", "no-output", mode="generative")
+            self.assertEqual(0, generative.returncode,
+                             generative.stdout + generative.stderr)
+            self.assertEqual("1", attempts)
+            self.assertIn("retry_reason=none", telemetry)
+
+            restored, attempts, telemetry = run_case(
+                "mutated-input", "mutate-input")
+            self.assertEqual(0, restored.returncode,
+                             restored.stdout + restored.stderr)
+            self.assertEqual("2", attempts)
+            self.assertIn("last_agent_status=0", telemetry)
+            self.assertIn("retry_reason=zero-commit-editorial", telemetry)
+
     def test_opencode_attempt_telemetry_is_strictly_validated(self):
         """Only the fixed five-line numeric/enumerated record is logged."""
         action_doc = yaml.safe_load(
