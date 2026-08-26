@@ -1,0 +1,13 @@
+AI News - 2026-08-26
+
+TOP STORIES:
+• Nvidia reports Q2 FY27 earnings today after market close — the quarter's biggest AI catalyst
+• OpenAI expands ChatGPT Ads to 31 European markets, its largest ad rollout yet
+• Prime Intellect open-sources "Prime Agent," a self-improving agent harness
+
+KEY NUMBERS:
+• Nvidia: consensus $92.2B revenue (+97% YoY), $85.4B Data Center est.
+• ChatGPT Ads now live in 35 countries total
+• Prime Agent: ARC-AGI-3 Best@1 up from 30% to 95.5%
+
+Full report on GitHub.
