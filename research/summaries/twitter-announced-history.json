@@ -2,42 +2,6 @@
   {
     "backfilled": true,
     "category": "business",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "OPENAI MISSED INTERNAL Q1 REVENUE TARGET; ADVERTISING GROWTH NOW PARAMOUNT AS CONSUMER DEPENDENCE DEEPENS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050206131570491875"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "EX-WAYMO LEAD SHIMON WHITESON LEAVES AFTER 6 YEARS TO RUN NEW MULTI-AGENT LEARNING TEAM AT GOOGLE DEEPMIND",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2050226734109471047"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "ALTMAN WALKS BACK 'AUGMENT NOT ENTITIES' DIG \u2014 'USE CODEX OR CLAUDE CODE, WHATEVER WORKS BEST' POST PULLS 4.4K LIKES IN 30 MIN",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/sama/status/2050274547061129577"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "PENTAGON CTO ON CNBC: ANTHROPIC STILL 'SUPPLY CHAIN RISK' BUT MYTHOS IS 'SEPARATE NATIONAL SECURITY MOMENT' HANDLED GOVT-WIDE",
-    "source": "@CNBC",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/CNBC/status/2050205857145659685"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
     "delivered_at": "2026-05-01 18:00 UTC",
     "headline": "ANTHROPIC ANNOUNCES CODE WITH CLAUDE DEVELOPER CONFERENCE RETURNS MAY 19 \u2014 SF MAIN STAGE + LONDON EXTENDED MAY 20",
     "source": "@claudeai",
@@ -25330,5 +25294,33 @@
     "headline": "GOOGLE STUDY OF 15M GEMINI CONVERSATIONS: OVER 86% OF CONSUMER CHATS ARE NON-WORK, 26.4% COMPANIONSHIP AND LEISURE",
     "source": "@cat_meety",
     "url": "https://x.com/cat_meety/status/2092428905445781973"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 03:59:18 UTC",
+    "headline": "EMERALD AI CLOSES $150M SERIES A AT $1.05B \u2014 NVIDIA, SIEMENS, GE VERNOVA, JERA, ARAMCO BACK DATA-CENTER POWER FLEXIBILITY",
+    "source": "@AiFinnews",
+    "url": "https://x.com/AiFinnews/status/2092455224975962361"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 03:59:18 UTC",
+    "headline": "TESLA CONFIRMS SUMMER RELEASE RUNS GROK THINK FAST 2.0 \u2014 AN XAI MODEL TIER WITH NO PUBLIC DOCUMENTATION",
+    "source": "@Tesla",
+    "url": "https://x.com/Tesla/status/2092460375132586350"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 03:59:18 UTC",
+    "headline": "GOOGLE SHIPS GEMINI ENTERPRISE VERTICALS FOR LEGAL AND FINANCIAL SERVICES \u2014 CONNECTS TO HARVEY AND LEGORA",
+    "source": "@ThomasOrTK",
+    "url": "https://x.com/ThomasOrTK/status/2092269235863208128"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-26 03:59:18 UTC",
+    "headline": "ACCIO OPEN-SOURCES COMMERCEAGENTBENCH \u2014 107 TASKS SCORED ON EXECUTION TRACES, NOT AGENT SELF-REPORT",
+    "source": "@MrOnsase",
+    "url": "https://x.com/MrOnsase/status/2092459453048299953"
   }
 ]
