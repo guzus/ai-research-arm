@@ -101,7 +101,7 @@ status_note: |
 
   Six days in: **still no lab claim, no model card, no pricing, no
   weights.** Status stays `in-testing`; verification stays `partial`.
-expected: "Live and free via OpenRouter/opencode/Hermes/Cursor as of 2026-08-25, vendor still unclaimed after 6 days, with 11.6T tokens served in three days (2.6x OpenRouter's previous record launch) and a 1.05M context window. Pending: a lab claiming it, a model card, pricing, weights (Z.ai's GLM line has shipped open weights), what happens to that volume when the free tier ends, and whether it resolves into [[zhipu-glm-5-3-2026-08]]'s family or something else"
+expected: "Live and free via OpenRouter/opencode/Hermes/Cursor as of 2026-08-25, vendor still formally unclaimed after a week, with 11.6T tokens served in three days (2.6x OpenRouter's previous record launch) and a 1.05M context window. A single-source claim (2026-08-25) identifies it as Zhipu's GLM 5.3 Flash. Pending: a lab claiming it on the record, a model card, pricing, weights (Z.ai's GLM line has shipped open weights), what happens to that volume when the free tier ends, and whether it formally resolves into [[zhipu-glm-5-3-2026-08]]'s family"
 labels:
   - stealth-model
   - frontier-model
@@ -125,8 +125,11 @@ sources:
   - "@rohanpaul_ai"
   - "@patience_cave"
   - "@nicbstme"
+  - "@spark_arena"
+  - "@elliotarledge"
+  - "@LottoLabs"
 created_at: 2026-08-23
-updated_at: 2026-08-25
+updated_at: 2026-08-26
 closed_at: null
 closed_reason: null
 history:
@@ -136,6 +139,8 @@ history:
     change: "Another cycle with no attribution progress: still no lab claim, model card, pricing, or weights. Speculation turned reflexive — @iruletheworldmo posted an elaborate pseudo-architecture (persistent latent state, attractors, shards, metaparameters) and @teortaxesTex answered with open parody of the guessing game; neither is recorded as evidence. Two new unsupported hypotheses appeared from single low-engagement accounts: an Anthropic experiment (@simonepaciaroni, on a claimed telltale marker) and xAI's unreleased Grok 4.7 in pre-release testing (@Norwakar). The GLM-family reading from 2026-08-23 firsthand testers remains best-supported. Trade aggregators began covering it as an unclaimed mystery model. Status stays in-testing; verification stays partial."
   - ts: 2026-08-25
     change: "First hard third-party-measured fact lands, and it is large: @OpenRouter says Ox Alpha was on track for nearly 6T tokens in a single day, and @rohanpaul_ai reports 11.6T tokens across three days — 2.6x OpenRouter's previous biggest model launch — with context now stated as 1.05M. A trending item ('Ox Alpha Tops OpenRouter Rankings in Record Debut', ~760 posts) confirms the ranking independently of the router. Caveat recorded: the model is free, so the volume measures demand at zero price, and agentic loops multiply per-task consumption. First quantitative negative also landed — @patience_cave's MazeBench scores ox-alpha 0%, alongside grok 4.6, glm-5.3 and qwen 3.8-max all at 0%, with gemini 3.7 flash at 1%; a benchmark where nearly everything scores zero discriminates almost nothing, and its only bearing here is that it does not separate ox-alpha from GLM-5.3. Attribution moved to a thin prediction market: @nicbstme reports it prices Z.ai as the source while flagging low volume, and @teortaxesTex notes insiders have an incentive to misdirect before betting; he separately reads @sam_paech's slop-profile comparison as showing 'the gap between 0731 and ox-alpha is Opus-shaped', an output-style inference rather than an attribution. Six days in: still no lab claim, model card, pricing or weights. Status stays in-testing; verification stays partial."
+  - ts: 2026-08-26
+    change: "First concrete vendor identification, plus the first head-to-head kernel numbers. @spark_arena (relayed by @LottoLabs, 2026-08-25 20:59 UTC): 'GLM 5.3 Flash is 0x Alpha for those that are curious. Tomorrow it's going to be a great day for Local AI with Qwen and GLM.' That is a direct claim that Ox Alpha is Zhipu's GLM 5.3 Flash, which would place it inside [[zhipu-glm-5-3-2026-08]]'s family exactly as this ticket's Zhipu suspicion predicted - but it is one unattributed account with no lab confirmation and no model card, so verification stays partial and the company field keeps its 'suspected' hedge. @teortaxesTex separately jokes at the same Zhipu/'Ox' association without adding evidence. The substantive news is capability data from @elliotarledge's KernelBench runs (2026-08-25), the first evidence on this ticket that is neither volume nor vibes. On KernelBench-Hard's Top-K Bitonic kernel for RTX PRO 6000, Ox Alpha reaches 7.17% of roofline, 'just behind Opus 5', writing one raw CUDA kernel with order-preserving value and index keys, per-thread top-R filtering and warp-shuffle bitonic sorting - and he explicitly certifies 'No reward hacking/cheating here!', which matters given @ArtificialAnlys's same-day introduction of reward-hacking score corrections to Terminal-Bench v2.1. On KernelBench-CUDA's DeepSeek Native Sparse Attention kernel it came LAST: it nailed the CUDA-core-specific parts (TopK, softmax) but 'completely missed tensor core tiling of QK and PV' and mapped one query per warp with serial loops, adding shuffle and latency overhead. So the picture is a genuinely competent frontier-adjacent kernel writer with a specific tensor-core blind spot. Status stays in-testing; verification stays partial."
 ---
 
 A stealth alias on a router is not normally worth a ticket. This one is,
