@@ -3,51 +3,6 @@
     "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "PENTAGON CTO CONFIRMS DOW DEAL IS 8 LABS, NOT 7 \u2014 ORACLE ADDED, ANTHROPIC STILL EXCLUDED FROM CLASSIFIED-NETWORK ROLLOUT",
-    "source": "@USWREMichael",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/USWREMichael/status/2050325961212649627"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "META ACQUIRES ASSURED ROBOT INTELLIGENCE FOR 'METABOT' HUMANOID PUSH \u2014 REALITY LABS BETS ANDROID-STYLE LICENSING",
-    "source": "@alexandr_wang",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/alexandr_wang/status/2050305805455700378"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "OPENAI CLAIMS GPT-5.5 API REVENUE GROWING 2X FASTER THAN ANY PRIOR LAUNCH; CODEX REVENUE DOUBLED IN UNDER 7 DAYS",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2050250926888468929"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "LEGORA HITS $5.6B VALUATION ON $50M EXTENSION LED BY NVIDIA NVENTURES \u2014 FIRST LEGAL-TECH BET; HARVEY AT $11B",
-    "source": "@credx_club",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/credx_club/status/2050182697159622980"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "MICROSOFT Q1: AI USAGE DRAGGING DOWN AZURE CLOUD MARGINS \u2014 COMPANY EFFECTIVELY BOOSTING PRICES",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050304304599191601"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-01 21:00 UTC",
     "headline": "HANGZHOU COURT RULES AI-ONLY FIRINGS ILLEGAL \u2014 SET AS GUIDING PRECEDENT; FIRMS MUST REASSIGN, RETRAIN, OR FOLLOW FORMAL REDUNDANCY",
     "source": "@kimmonismus",
     "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
@@ -25312,5 +25267,40 @@
     "headline": "SWYX WARNS OFF CODEX \"LOCKED USE\" \u2014 TWO MACOS KEYCHAIN LOCKOUTS IN A WEEK, APPLE FORUMS CALL IT A KNOWN BUG",
     "source": "@swyx",
     "url": "https://x.com/swyx/status/2092492963435946494"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 09:53:09 UTC",
+    "headline": "DEEPSEEK SEEKS RMB 50B AT RMB 500B VALUATION AFTER 10X REVENUE GROWTH; BANKS HIRED FOR SHANGHAI IPO NEXT YEAR",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092510606763180513"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 09:53:09 UTC",
+    "headline": "DEEPSEEK BOOKS RMB 475M ($70.7M) JAN-JUL REVENUE, 82.9% API GROSS MARGIN, LOSS NARROWS TO RMB 715M",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092510606763180513"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 09:53:09 UTC",
+    "headline": "DEEPSEEK RAISES V4-PRO PEAK OUTPUT PRICE 4.6X TO $3.96/MTOK, STILL UNDER KIMI K3 AT $15 AND CLAUDE OPUS 5 AT $25",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092510606763180513"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-26 09:53:09 UTC",
+    "headline": "PULLED MODELSCOPE PAGE PUTS QWEN3.8-FLASH-NEXT AT 125B MOE PLUS 51B N-GRAM EMBEDDINGS, 6B ACTIVE PER TOKEN",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092541014183461369"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 09:53:09 UTC",
+    "headline": "SWE REFACTOR BENCH: ONLY 28 OF 520 AGENT RUNS SURVIVE FULL THREE-STAGE WHOLE-REPO REFACTOR EVAL",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092531505952166165"
   }
 ]
