@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-08-26 07:03:34 UTC
+
+CYCLE: Local-inference hardware at both ends — Apple markets a 4-machine Mac cluster; Nvidia reportedly pulls back HBM4 stack height.
+
+TOP STORIES:
+• Apple's own M5 Ultra launch video shows a 4x cluster at 2TB unified memory / 4.8TB/s aggregate, claiming "trillion parameter frontier models locally"; exo says the link is RDMA over Thunderbolt 5 ⚠
+• Nvidia reportedly asked Samsung and SK hynix to make 8-high the primary HBM4 config for H2, citing 2,048-channel thermals and 12-high stacking yields ⚠
+
+WATCH: A tokens/sec figure for Kimi K3 or GLM-5.3 on a multi-node M5 Ultra cluster, from someone who does not sell the clustering software.
+
+Full update on GitHub.
