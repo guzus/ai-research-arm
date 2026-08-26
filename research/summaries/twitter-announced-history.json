@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "ANTHROPIC ANNOUNCES CODE WITH CLAUDE DEVELOPER CONFERENCE RETURNS MAY 19 \u2014 SF MAIN STAGE + LONDON EXTENDED MAY 20",
-    "source": "@claudeai",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/claudeai/status/2050252933866930339"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "DEMIS HASSABIS WELCOMES SHIMON WHITESON FROM WAYMO TO LEAD DEEPMIND'S NEW MULTI-AGENT LEARNING TEAM",
-    "source": "@demishassabis",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/demishassabis/status/2050239954765185345"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "STARCLOUD IN TALKS FOR $200M RAISE ONE MONTH AFTER LAST ROUND \u2014 SPACE DATA-CENTER STARTUP HEATING UP",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050274138976047569"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "MANUS ACQUISITION FALLOUT FORCING CHINESE AI STARTUPS TO RETHINK CAPITAL-RAISE PLAYBOOK",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050266539018825783"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "OPENAI SHIPS CLAUDE CODE \u2192 CODEX AUTO-MIGRATION 64 MIN AFTER ALTMAN'S 'USE CODEX OR CLAUDE CODE' CLIMBDOWN \u2014 'YOUR MOVE'",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2050290618187055175"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-01 21:00 UTC",
     "headline": "PENTAGON CTO CONFIRMS DOW DEAL IS 8 LABS, NOT 7 \u2014 ORACLE ADDED, ANTHROPIC STILL EXCLUDED FROM CLASSIFIED-NETWORK ROLLOUT",
@@ -25322,5 +25277,40 @@
     "headline": "ACCIO OPEN-SOURCES COMMERCEAGENTBENCH \u2014 107 TASKS SCORED ON EXECUTION TRACES, NOT AGENT SELF-REPORT",
     "source": "@MrOnsase",
     "url": "https://x.com/MrOnsase/status/2092459453048299953"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 07:03:34 UTC",
+    "headline": "APPLE MARKETS 4-WAY M5 ULTRA CLUSTER \u2014 2TB UNIFIED MEMORY, 4.8TB/S AGGREGATE, \"RUN TRILLION PARAMETER MODELS LOCALLY\"",
+    "source": "@alexocheema",
+    "url": "https://x.com/alexocheema/status/2092467109708107989"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 07:03:34 UTC",
+    "headline": "NVIDIA ASKS SAMSUNG, SK HYNIX TO MAKE 8-HIGH THE PRIMARY HBM4 STACK FOR H2 \u2014 THERMALS AND 12-HIGH YIELDS CITED",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092484503080206760"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 07:03:34 UTC",
+    "headline": "EXO SAYS IT CO-BUILT RDMA-OVER-THUNDERBOLT-5 WITH APPLE OVER PAST YEAR TO CLUSTER MACS FOR KIMI K3, GLM-5.3",
+    "source": "@alexocheema",
+    "url": "https://x.com/alexocheema/status/2092472092759363812"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 07:03:34 UTC",
+    "headline": "HBM4E EXPECTED PREDOMINANTLY 8-HIGH NEXT YEAR; WHETHER RUBIN ULTRA USES HBM4E OR HBM4 STILL UNRESOLVED",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092484503080206760"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 07:03:34 UTC",
+    "headline": "SWYX WARNS OFF CODEX \"LOCKED USE\" \u2014 TWO MACOS KEYCHAIN LOCKOUTS IN A WEEK, APPLE FORUMS CALL IT A KNOWN BUG",
+    "source": "@swyx",
+    "url": "https://x.com/swyx/status/2092492963435946494"
   }
 ]
