@@ -6,13 +6,14 @@ aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qw
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
 description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), and saw its HK$80B (~$10.2B) placement — the first Hong Kong placement since 2019, 100% of proceeds earmarked for AI infrastructure — price at an 8.4% discount with shares opening ~10% lower (2026-08-25).
 created_at: 2026-07-05
-timestamp: 2026-08-25T00:00:00Z
+timestamp: 2026-08-26T00:00:00Z
 market:
   ticker: BABA
   exchange: NYSE
   symbol: NYSE:BABA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA model ticket — Alibaba AI share placement", path: research/models/tickets/alibaba-ai-share-placement-2026-08.md}
@@ -177,6 +178,16 @@ friction point distinct from Qwen's own model-release cadence.
   observable share-price consequence now corroborate the event, though **still no
   HKEX filing or Alibaba primary post** was captured (ARA daily digest and model
   ticket 2026-08-25). See [[ai-capex]].
+- **The next line is teased: Qwen4 architecture preview + Qwen3.8-Flash-Next
+  (2026-08-26).** Alibaba set a **countdown for "A Preview of the Qwen4
+  Architecture"** and separately surfaced **Qwen3.8-Flash-Next** on ModelScope
+  (reported **125B total / 6B active** MoE, drawing 203 HN points on its
+  open-weight positioning) — with **DeepSeek's Engram technique named as a key
+  method**, a rare cross-lab on-record acknowledgment. **No weights, licence or
+  date yet** for either. Pair with Thomson Reuters spending **~$40M over two
+  years building its own model on Qwen** rather than renting GPT/Claude —
+  Qwen's economics keep pulling build-vs-rent decisions Alibaba's way (ModelScope,
+  HN, r/LocalLLaMA; ARA daily digest 2026-08-26). See [[qwen-3-8-max]].
 
 ## Open questions
 

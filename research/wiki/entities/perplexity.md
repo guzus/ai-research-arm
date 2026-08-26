@@ -6,8 +6,9 @@ aliases: ["Perplexity AI", "Perplexity Computer"]
 tags: [search, agents, ai-application, funding]
 description: AI search-and-agent company behind the Perplexity Computer workflow agent, which drove annualized revenue from under $250M at the start of 2026 past $750M; NVIDIA is reported in talks to invest at a $30B+ valuation (2026-08-25).
 created_at: 2026-08-25
-timestamp: 2026-08-25T00:00:00Z
+timestamp: 2026-08-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA model ticket — NVIDIA/Perplexity investment talks", path: research/models/tickets/nvidia-perplexity-investment-2026-08.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -54,3 +55,21 @@ investment target.
   conversation "moved off a license-and-hire and onto a check" — whether the
   equity stake carries a licensing component (as in the Poolside structure)
   is unresolved.
+
+## NVIDIA co-launches the local agent runtime — and gifts a DGX Station (2026-08-26)
+
+- **"Portable Computer" ships: orchestrator, subagents and harness all local on
+  DGX Spark (2026-08-26).** Perplexity and [[nvidia|NVIDIA]] shipped
+  **Portable Computer**, an agent stack running **entirely locally on DGX
+  Spark** — orchestrator, subagents and harness — with the shipping model list
+  in the **27B-class tier (PPLX 27B, Qwen 3.8 27B, Nemotron 3.5 Lightning
+  "coming soon")**. The commercial read is explicit: this is **"the good-enough
+  local tier as a supported product, not frontier capability leaving the
+  cloud"** — the local-inference answer to the data-residency demand side of
+  [[ai-capex]], and the same distribution logic as the Nemotron-on-Agent-API
+  precedent on this page (ARA daily digest 2026-08-26).
+- **NVIDIA gifted Perplexity a DGX Station (2026-08-26).** Per Perplexity's
+  CEO, **NVIDIA gifted the company a DGX Station** the same day — a gesture
+  datapoint on the equity-talk relationship (see the 2026-08-25 >$30B entry
+  above), consistent with NVIDIA deepening the customer relationship beyond a
+  check (ARA daily digest 2026-08-26).
