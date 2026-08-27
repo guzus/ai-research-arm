@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); agreed to backstop $105B of OpenAI's Ohio PORTS-Pike lease (2026-08-18), licensed Poolside's model-development technology for $6B alongside a $1B investment (2026-08-21), backs Ilya Sutskever's Safe Superintelligence (~$5B), the open-weights Nemotron line now targeting a 1T-parameter Nemotron 4, and the residual-value guarantees inside its own ~$500B package; told major customers AI servers cost ~17% more on the DRAM/HBM squeeze, adding at least $5B to a 1 GW build (2026-08-24), and is designing an orbital AI datacenter (space-optimized Vera Rubin NVL72) with SpaceX launching Q4 2027 while opening equity talks with Perplexity above $30B and shipping Groq 3 LPX racks to full production on Nebius (2026-08-25).
+description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); posted Q2 FY27 revenue of $96.2B (+106% YoY) with Data Center at $89.0B and guided to ~70% growth in fiscal 2028 on a $279B purchase-commitment book (2026-08-26), while holding acquisition talks to buy Hugging Face at $13B+ and fielding Amazon's order for 2M more GPUs over two years; previously backstopped $105B of OpenAI's Ohio lease (2026-08-18), licensed Poolside's technology for $6B (2026-08-21), shipped Groq 3 LPX racks to full production on Nebius, and is designing an orbital AI datacenter with SpaceX.
 created_at: 2026-06-05
-timestamp: 2026-08-26T00:00:00Z
+timestamp: 2026-08-27T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA model ticket — NVIDIA/Perplexity investment talks", path: research/models/tickets/nvidia-perplexity-investment-2026-08.md}
@@ -372,3 +373,43 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   **CS-4**, claiming **double the performance on the same chip**. The caveat
   matters for the Nvidia–Groq licensing-vs-acquisition read on [[groq]] (ARA
   daily digest 2026-08-26).
+
+## Q2 FY27 print — $96.2B, a 70% FY28 guide, and a $279B purchase-commitment book (2026-08-26/27)
+
+- **The quarter and the guide (2026-08-26).** NVIDIA posted **Q2 FY27 revenue of
+  $96.2B (+106% YoY)** with **Data Center at $89.0B**, and guided **Q3 to
+  $108.0B ±2%** — a guide that **explicitly assumes zero Data Center compute
+  revenue from China**. Jensen Huang framed the quarter as a threshold: "AI has
+  reached its inflection point. It's doing useful work. Its tokens are
+  productive and profitable. Now, compute is revenue." The headline forward
+  call: **roughly 70% revenue growth in fiscal 2028**, described on the call as
+  **"supply constrained"** (SEC 8-K 0001045810-26-000073; @aleabitoreddit,
+  @kimmonismus).
+- **Purchase commitments jump $119B → $279B — supply reserved, not demand hoped
+  (2026-08-26).** The quarter-on-quarter leap is **primarily multi-year memory
+  procurement**, which several analysts read as evidence the 70% guide reflects
+  **capacity already reserved rather than demand merely forecast**. The
+  counterweight in the same disclosures: **$99B in equity investments** and a
+  **private-company portfolio that doubled to $47.9B in six months** — the
+  capital-deployment arc this page has tracked opened even wider (@rohanpaul_ai,
+  @jukan05; ARA daily digest 2026-08-27).
+- **Held talks to acquire Hugging Face at $13B+ (2026-08-27).** Financial
+  newsfeeds reported **serious discussions to buy [[hugging-face]]** valuing the
+  model hub **above $13 billion** — **three years after NVIDIA invested in it at
+  a $4.5B mark**. **No agreement has been reached** and neither company has
+  commented on the record; per the digest's coverage caveat, this reached the
+  cycle through near-identical newsfeed relays, i.e. one underlying report rather
+  than three confirmations (ARA daily digest 2026-08-27).
+- **[[amazon|Amazon]] triples its chip order — 2M more GPUs over two years
+  (2026-08-27).** AWS is adding another **2 million NVIDIA GPUs over the next
+  two years** on surging demand, roughly **tripling its order**, in an
+  extended partnership that goes beyond chip purchasing. The same cycle saw
+  **[[anthropic]] sign a $45B compute deal with Nscale** — the demand-side
+  counterpart to NVIDIA's own 70% supply-constrained guide (TechCrunch; ARA
+  daily digest 2026-08-27). See [[ai-capex]].
+
+## Open questions
+- **Is the 70% guide a demand signal or a pricing signal?** The $279B
+  commitment book and the ~17% price increases tracked on this page both cut
+  the same way — but a guide that "assumes zero China DC revenue" is an
+  explicitly conservative base that flatters the upside if China reopens.

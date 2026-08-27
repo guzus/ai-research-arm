@@ -4,15 +4,16 @@ title: Alibaba
 type: entity
 aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 and open-weighted it as Qwen3.8-2.4T-A95B on 2026-08-13, reported an AI-capex-signature quarter with AI Cloud +45% and negative FCF (2026-08-21), and saw its HK$80B (~$10.2B) placement — the first Hong Kong placement since 2019, 100% of proceeds earmarked for AI infrastructure — price at an 8.4% discount with shares opening ~10% lower (2026-08-25).
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max and open-weighted it as Qwen3.8-2.4T-A95B, reported an AI-capex-signature quarter, priced an HK$80B (~$10.2B) AI-infrastructure placement (2026-08-25), and shipped the Qwen4-architecture Qwen3.8-Flash-Next MoE preview (2026-08-27).
 created_at: 2026-07-05
-timestamp: 2026-08-26T00:00:00Z
+timestamp: 2026-08-27T00:00:00Z
 market:
   ticker: BABA
   exchange: NYSE
   symbol: NYSE:BABA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
@@ -188,6 +189,16 @@ friction point distinct from Qwen's own model-release cadence.
   years building its own model on Qwen** rather than renting GPT/Claude —
   Qwen's economics keep pulling build-vs-rent decisions Alibaba's way (ModelScope,
   HN, r/LocalLLaMA; ARA daily digest 2026-08-26). See [[qwen-3-8-max]].
+- **Qwen3.8-Flash-Next ships as a Qwen4-architecture MoE preview (2026-08-27).**
+  Alibaba released **Qwen3.8-Flash-Next**, a **mixture-of-experts preview of
+  the Qwen4 architecture** activating roughly **6B of 125B parameters per
+  token**, claiming to **beat much larger rivals on coding and office
+  benchmarks at one-ninth the training cost**. At **1-bit quantization
+  (79GB)** it reportedly runs at **30 tok/s on a 64GB M5 MacBook Pro Max** — a
+  local-first headline that pairs with the earlier Qwen4 countdown and
+  positions the Flash-Next against the day's other open-release,
+  [[zhipu-glm-5-3|GLM-5.3-Flash]] (The Decoder, @Hikari_07_jp; ARA daily digest
+  2026-08-27). See [[open-weights]] and [[qwen-3-8-max]].
 
 ## Open questions
 

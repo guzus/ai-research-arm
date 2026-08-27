@@ -4,10 +4,11 @@ title: Hugging Face
 type: entity
 aliases: ["Hugging Face", "HuggingFace", "@huggingface"]
 tags: [open-weights, model-hub, infrastructure, platform, m&a]
-description: The open-source model repository and platform hub that hosts most of the world's open-weight releases; reported exploring a sale at $13B+ (2026-08-24), roughly triple its 2023 Series D mark, and the victim-turned-open-weights-advocate of the July 2026 agent hack.
+description: The open-source model repository and platform hub that hosts most of the world's open-weight releases; reported exploring a sale at $13B+ (2026-08-24), rough triple its 2023 Series D mark — with NVIDIA now reported in serious acquisition talks valuing it above $13B (2026-08-27) — and the victim-turned-open-weights-advocate of the July 2026 agent hack.
 created_at: 2026-08-24
-timestamp: 2026-08-26T00:00:00Z
+timestamp: 2026-08-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
@@ -71,3 +72,17 @@ land on its Hub before anywhere else.
 - **Does an exit change the open-weights trust surface?** Hugging Face's
   centrality to [[open-weights]] distribution means a change of ownership —
   not just of a price — would be the structural signal to watch.
+
+## NVIDIA emerges as a named bidder above $13B (2026-08-27)
+
+- **Serious acquisition talks with NVIDIA, valued above $13B (2026-08-27).**
+  Financial newsfeeds reported **serious discussions valuing Hugging Face
+  above $13 billion**, with **[[nvidia]] the buyer** — **three years after
+  NVIDIA invested at a $4.5B mark**. **No agreement has been reached** and
+  neither company has commented on the record. The digest's coverage caveat
+  applies: the report reached the cycle through **near-identical newsfeed
+  relays — one underlying report rather than three confirmations** (ARA daily
+  digest 2026-08-27). This converts this page's "Who would buy at $13B?" open
+  question from anonymous to a named, strategic suitor — an NVIDIA tie-up
+  would make the model hub's centrality to [[open-weights]] distribution sit
+  inside the hardware vendor that anchors the [[ai-capex]] buildout.

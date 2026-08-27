@@ -4,10 +4,11 @@ title: Zhipu GLM-5.3
 type: entity
 aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3"]
 tags: [open-weights, china, agentic, frontier-model]
-description: Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — and now scoring near Fable 5 on Terminal-Bench 3.0 as a fourth independent frontier placement (2026-08-21) and posting 21.4× the optimized PyTorch baseline on KernelBench-Mega (2026-08-23); weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.
+description: Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — now confirmed as the lab behind the formerly-stealth Ox Alpha (2026-08-27) and accompanied by the fast GLM-5.3-Flash (2026-08-27, the day's top Hacker News item, $0.25/Mtok output).
 created_at: 2026-08-19
-timestamp: 2026-08-23T00:00:00Z
+timestamp: 2026-08-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
@@ -76,3 +77,22 @@ open-weight agentic development.
 - **Where does it sit in Z.ai's product ladder?** A distinct model from
   [[zhipu-glm-5-2]] — does it replace it as the flagship, or coexist as the
   agentic tier?
+
+## GLM-5.3-Flash ships, and Z.ai confirms Ox Alpha (2026-08-27)
+
+- **GLM-5.3-Flash is the day's top Hacker News item (2026-08-27).** Z.ai shipped
+  **GLM-5.3-Flash** at **$0.25 per million output tokens** — the day's runaway
+  HN thread (824 points / 414 comments) debating its speed, distillation from
+  GLM-5.2, and pricing. An independent test reports **881 tok/s at 64-way
+  concurrency, untuned on 2×DGX Station**, and **232 tok/s single-stream, with
+  vision support** (@theo, @alecqfong; ARA daily digest 2026-08-27). The
+  flash-tier speed/pricing echo of the flagship's post-training-depth thesis
+  keeps the agentic positioning consistent across the family.
+- **Z.ai confirms it is behind Ox Alpha — the stealth line resolves (2026-08-27).**
+  Z.ai stated it is the **lab behind [[ox-alpha]]**, the unattributed model that
+  topped leaderboards while unclaimed, with **weights said to be released soon**.
+  This converts what this page's earlier ticket read as the "open question" of
+  whether Ox Alpha is a GLM-5.3-Flash variant into a confirmed family launch —
+  the unattributed model is a **Z.ai GLM variant**, and the flagship/Flash pair
+  is now on the record (TechCrunch; ARA daily digest 2026-08-27). See
+  [[ox-alpha]] and [[open-weights]].
