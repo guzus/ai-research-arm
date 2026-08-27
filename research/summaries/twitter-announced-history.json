@@ -2,69 +2,6 @@
   {
     "backfilled": true,
     "category": "model",
-    "delivered_at": "2026-05-02 15:00 UTC",
-    "headline": "STANDARD INTELLIGENCE RAISES $75M FROM SEQUOIA + SPARK; KARPATHY ANGEL \u2014 VIDEO-TRAINED FDM-1 MODEL",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050591205633745241"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 18:00 UTC",
-    "headline": "THE INFORMATION: XAI'S GPU FLEET RUNNING AT ~11% UTILIZATION \u2014 3-6X BELOW PRIOR PUBLIC MFU BASELINES",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050606311440531809"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 18:00 UTC",
-    "headline": "BEDROCK-OPENAI LAUNCHES BUT AWS CUSTOMERS TELL THE INFORMATION: \"CLAUDE IS BETTER FOR CODING\"",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050621385467113870"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 18:00 UTC",
-    "headline": "STARCLOUD IN TALKS TO RAISE $200M ONE MONTH AFTER $170M SERIES A \u2014 POTENTIAL SUB-30-DAY DOUBLE-UP",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050636485938778120"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-02 18:00 UTC",
-    "headline": "MUSK VS OPENAI: CROSS-EXAMINATION RAISES DOUBTS ABOUT MUSK NARRATIVE PER THE INFORMATION POST-TRIAL WRAP",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050598702964695448"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-02 18:00 UTC",
-    "headline": "ALLEN AI RELEASES OLMPOOL: 26 7B-PARAM CHECKPOINTS WITH VARYING ARCHITECTURES TO STUDY LONG-CONTEXT EXTENSION",
-    "source": "@_akhaliq",
-    "source_file": "research/summaries/2026-05-02-twitter-18h-headlines.json",
-    "url": "https://x.com/_akhaliq/status/2050624406063800381"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "ALTMAN ENDORSES GPT-5.5 XHIGH IN FAST MODE \u2014 \"GOT PSYOPED BY TWITTER ON MEDIUM\" 3 DAYS BEFORE MAY 5 LAUNCH PARTY",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/sama/status/2050658558174437701"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
     "delivered_at": "2026-05-02 21:00 UTC",
     "headline": "ALTMAN: \"SMARTER STILL THE MOST IMPORTANT THING\" \u2014 DROPS CHEAPER/FASTER PUSH AS OPENAI Q1 API REVENUE 2X PRIOR LAUNCH",
     "source": "@sama",
@@ -25246,5 +25183,54 @@
     "headline": "OPENROUTER DREW NINE BIDDERS BEFORE STRIPE DEAL AT MORE THAN $7B \u2014 THE INFORMATION",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2092711199855059338"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "NVIDIA AGREES TO BUY HUGGING FACE FOR $12.9B, THE INFORMATION REPORTS \u2014 NEITHER COMPANY CONFIRMS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092970324836937827"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "HUGGING FACE PRICE IS ~80X FORWARD REVENUE ON ~$150M ANNUALIZED \u2014 AND 2.9X ITS 2023 MARK",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092890272979919181"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "GOOGLE DEEPMIND PILOTS DOUBLE-BLIND FRONTIER EVALS \u2014 NEITHER TEST PROMPTS NOR MODEL WEIGHTS REVEALED",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2092961763553677387"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "TECHINSIGHTS: CHINA'S CXMT PUTS HIGH-K METAL GATE INTO DRAM MASS PRODUCTION ON 16NM-CLASS G4 NODE",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092870742400811129"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "HUGGING FACE SHIPS MICRODUCK \u2014 $399 OPEN-SOURCE BIPED ROBOT WITH OPEN SIMULATOR",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2092959363992326236"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "SEMIANALYSIS ALLEGES AMD BURNING 20+ ENGINEERS ON 'ATOM' INFERENCE ENGINE WITH ONE PROD CUSTOMER",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092960615048360180"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "ANTHROPIC ADDS BUILT-IN WEB BROWSER TO CLAUDE COWORK \u2014 PRO, MAX AND TEAM DESKTOP BETA",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2092867859034640790"
   }
 ]
