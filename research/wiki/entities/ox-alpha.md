@@ -4,10 +4,11 @@ title: Ox Alpha
 type: entity
 aliases: ["Ox Alpha", "OxAlpha"]
 tags: [stealth-model, mystery-model, hype-cycle, open-weights]
-description: An unattributed, free-to-use model whose headline number collapsed from a retracted 80% to ~63% and then a "realistic" 60-61% with the task list and sample size still unpublished (2026-08-24) — attribution reading drifts from a Z.ai GLM Flash variant toward a Zhipu multimodal GLM-5.3 variant, with no lab having claimed it through day four and the free window dated to close near 2026-08-27.
+description: Z.ai confirmed on 2026-08-27 that it is the lab behind the formerly unattributed, free-to-use stealth model Ox Alpha — with weights said to be released soon — resolving weeks of speculation that had drifted among GLM-flash, DeepSeek and Google metrics after the model's headline number collapsed.
 created_at: 2026-08-23
-timestamp: 2026-08-26T00:00:00Z
+timestamp: 2026-08-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA model ticket — Ox Alpha stealth model", path: research/models/tickets/stealth-ox-alpha-model-2026-08.md}
@@ -105,7 +106,27 @@ attribution and then deflates on the first controlled measurements.
   mid-pack, Flash-class consensus — competent on familiar shapes, poor on
   specialized kernels (ARA daily digest 2026-08-26).
 - **Attribution arguments now point at Zhipu/Z.ai on capacity-contention
-  grounds (2026-08-26).** The day's attribution case is **capacity, not
-  artifact**: a Zhipu/**Z.ai** run is argued on **capacity-contention grounds**
-  — explicitly an **inference, not a disclosure** (ARA daily digest
-  2026-08-26). The claim remains uncorroborated by any lab.
+   grounds (2026-08-26).** The day's attribution case is **capacity, not
+   artifact**: a Zhipu/**Z.ai** run is argued on **capacity-contention grounds**
+   — explicitly an **inference, not a disclosure** (ARA daily digest
+   2026-08-26). The claim remains uncorroborated by any lab.
+
+## Z.ai confirms it is the lab behind Ox Alpha (2026-08-27)
+
+- **The mystery resolves: Z.ai owns it, weights soon (2026-08-27).** Z.ai
+  **confirmed it is the lab behind Ox Alpha**, the model that had topped
+  leaderboards while unattributed, with **weights said to be released soon** —
+  ending weeks of speculation about the stealth entrant that this page's "open
+  questions" had been tracking since day one. The confirmation lands the same
+  window as the day's **top Hacker News item, [[zhipu-glm-5-3|GLM-5.3-Flash]]**
+  (824 points / 414 comments), and effectively makes the Ox Alpha arc a
+  **family launch** rather than a single flagship: the unattributed flash-class
+  model resolves to a Z.ai GLM variant (TechCrunch; ARA daily digest
+  2026-08-27). See [[open-weights]] and [[zhipu-glm-5-3]].
+- **The deflation story now reads as a launch mechanic, not a riddle.** The
+  hype-then-deflation arc this page documented in detail — the retracted 80% → a
+  "realistic" 60-61%, the mid-pack benchmark footprints, the free window dating
+  to ~2026-08-27 — closes with an attribution that was always at the top of the
+  candidate list. The load-bearing remainder is the open-weights transition: the
+  prompt says weights release soon, which the wiki will track on
+  [[zhipu-glm-5-3]].
