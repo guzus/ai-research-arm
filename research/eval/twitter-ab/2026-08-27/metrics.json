@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-metrics",
+  "date": "2026-08-27",
+  "hour": "01:00 UTC",
+  "generated_at": "2026-08-27 01:02:13 UTC",
+  "run_id": "33028781551",
+  "run_attempt": 1,
+  "input": {
+    "all_json_sha256": "ce044e829bcb4ebc31ec65dc85644c6c5b46b774e34a8534b2c0fdee717f6011",
+    "manifest_sha256": "95a30bd8c1bbe08d8aee86b6116429032def244be1352516f8930abd57008882",
+    "total_tweets": 2089
+  },
+  "parity": {
+    "normalized_prompt_sha256": "bca93001991be04900751caeae03ed92338c67e116b66c63ded883f9672ae27d",
+    "allowed_asymmetries": [
+      "API_TIMEOUT_MS=3000000 on the Z.ai route (provider-latency accommodation)",
+      "CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000 on the Z.ai route",
+      "CLAUDE_CODE_EFFORT_LEVEL=max on the non-native routes (pre-existing agent-run provider env)",
+      "CLAUDE_CODE_SUBAGENT_MODEL pinned on the Z.ai route (moot \u2014 the eval toolset has no Task tool)"
+    ]
+  },
+  "legs": {
+    "claude": {
+      "lane": "twitter-ab-claude",
+      "leg_dir": "research/eval/twitter-ab/2026-08-27/claude",
+      "outcome": "success",
+      "backend": {
+        "requested": "claude",
+        "effective": "claude",
+        "used_fallback": false,
+        "model_id": "",
+        "native_model": "claude-opus-5",
+        "expected_provider": "claude",
+        "expected_model": "claude-opus-5",
+        "served_model": "claude-opus-5",
+        "observed_models": [
+          "claude-opus-5"
+        ]
+      },
+      "agent": {
+        "result_found": true,
+        "is_error": false,
+        "subtype": "success",
+        "num_turns": 29,
+        "duration_ms": 302571,
+        "duration_api_ms": 277828,
+        "total_cost_usd": 3.184434999999999,
+        "permission_denials_count": 4,
+        "usage": {
+          "input_tokens": 58,
+          "cache_creation_input_tokens": 117398,
+          "cache_read_input_tokens": 2994230,
+          "output_tokens": 20522,
+          "output_tokens_details": {
+            "thinking_tokens": 4076
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 117398,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 860,
+              "cache_read_input_tokens": 133020,
+              "cache_creation_input_tokens": 397,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 397
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        }
+      },
+      "wall_time_seconds": 319,
+      "artifacts": {
+        "digest": true,
+        "status": true,
+        "summary": true,
+        "headlines": true,
+        "required_written": "3/3"
+      },
+      "format": {
+        "valid": true,
+        "error": null,
+        "status": "published",
+        "public_items": 13,
+        "headline_count": 7,
+        "section_present": true,
+        "counted_public_items": 13,
+        "story_cards": 4
+      },
+      "input_integrity": {
+        "sha_pre": "ce044e829bcb4ebc31ec65dc85644c6c5b46b774e34a8534b2c0fdee717f6011",
+        "sha_post": "ce044e829bcb4ebc31ec65dc85644c6c5b46b774e34a8534b2c0fdee717f6011",
+        "matches_snapshot": true,
+        "unchanged_during_leg": true
+      },
+      "prompt_sha256": "ce6f9177d3ce917ee8614045645d56876d24b03d0f2dc20e58b00498788923f1",
+      "commits": {
+        "base_sha": "abf610242f1c28e527f947a4581535b05229400b",
+        "post_sha": "7bfaa17c348b62e95b59d8daa28cd2886de7205f",
+        "committed": true
+      },
+      "flags": [
+        "sandbox-suspect"
+      ]
+    },
+    "zai-glm-5p2": {
+      "lane": "twitter-ab-zai",
+      "leg_dir": "research/eval/twitter-ab/2026-08-27/zai-glm-5p2",
+      "outcome": "failure",
+      "backend": {
+        "requested": "",
+        "effective": "",
+        "used_fallback": false,
+        "model_id": "",
+        "native_model": "",
+        "expected_provider": "zai",
+        "expected_model": "glm-5.2",
+        "served_model": "",
+        "observed_models": []
+      },
+      "agent": {
+        "result_found": false,
+        "is_error": null,
+        "subtype": null,
+        "num_turns": null,
+        "duration_ms": null,
+        "duration_api_ms": null,
+        "total_cost_usd": null,
+        "permission_denials_count": null,
+        "usage": null
+      },
+      "wall_time_seconds": 3,
+      "artifacts": {
+        "digest": false,
+        "status": false,
+        "summary": false,
+        "headlines": false,
+        "required_written": "0/3"
+      },
+      "format": {
+        "valid": false,
+        "error": "missing JSON artifact: research/eval/twitter-ab/2026-08-27/zai-glm-5p2/status/2026-08-27-01h.json",
+        "status": null,
+        "public_items": null,
+        "headline_count": null,
+        "section_present": false,
+        "counted_public_items": null,
+        "story_cards": null
+      },
+      "input_integrity": {
+        "sha_pre": "ce044e829bcb4ebc31ec65dc85644c6c5b46b774e34a8534b2c0fdee717f6011",
+        "sha_post": "ce044e829bcb4ebc31ec65dc85644c6c5b46b774e34a8534b2c0fdee717f6011",
+        "matches_snapshot": true,
+        "unchanged_during_leg": true
+      },
+      "prompt_sha256": "673f2164a8187b3309d5ce597a150ab7374edfe8661c7bef6044f24148f610f8",
+      "commits": {
+        "base_sha": "abf610242f1c28e527f947a4581535b05229400b",
+        "post_sha": "abf610242f1c28e527f947a4581535b05229400b",
+        "committed": false
+      },
+      "flags": [
+        "leg-failed",
+        "no-result-json",
+        "backend-mismatch",
+        "model-mismatch",
+        "format-invalid",
+        "no-commit"
+      ]
+    }
+  },
+  "blinding": null,
+  "judge_staged": false,
+  "judge_skip_reason": "leg 'zai-glm-5p2' produced no main digest .md",
+  "judge": null,
+  "contamination": {
+    "contaminated": true,
+    "reasons": [
+      "zai-glm-5p2:backend-mismatch",
+      "zai-glm-5p2:model-mismatch"
+    ],
+    "sandbox_suspect": true
+  }
+}
