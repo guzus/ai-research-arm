@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-02 09:00 UTC",
-    "headline": "VIRAL AGENTS OF CHAOS PAPER IS RECYCLED \u2014 ARXIV 2602.20021 FROM FEB 2026, IN CIRCULATION SINCE MARCH",
-    "source": "@Arcane_Aii",
-    "source_file": "research/summaries/2026-05-02-twitter-09h-headlines.json",
-    "url": "https://x.com/Arcane_Aii/status/2050495389300842995"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 12:00 UTC",
-    "headline": "MARK_K CLAIMS OPENAI CODEX ENGINEER CONFIRMED CHATGPT-INTO-CODEX SUPER-APP MERGER \u2014 NO PRIMARY OPENAI CORROBORATION",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-05-02-twitter-12h-headlines.json",
-    "url": "https://x.com/mark_k/status/2050514062862106930"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-02 12:00 UTC",
-    "headline": "DEMIS HASSABIS LOGS SEQUOIA AI ASCENT FIRESIDE CHAT WITH KONSTANTINE BUHLER \u2014 DEEPMIND, AGI, ALPHAFOLD; NO CONCRETE NEWS",
-    "source": "@demishassabis",
-    "source_file": "research/summaries/2026-05-02-twitter-12h-headlines.json",
-    "url": "https://x.com/demishassabis/status/2050539386475786708"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-02 12:00 UTC",
-    "headline": "MICROSOFT RELEASES DELULU FILL-IN-THE-MIDDLE CODE-COMPLETION BENCHMARK ON HUGGING FACE",
-    "source": "@HuggingPapers",
-    "source_file": "research/summaries/2026-05-02-twitter-12h-headlines.json",
-    "url": "https://x.com/HuggingPapers/status/2050550142948757823"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 15:00 UTC",
-    "headline": "ANTHROPIC ARR HITS ~$44B PER SEMIANALYSIS \u2014 UP FROM $9B END-2025, RECEIPT BEHIND RUMORED $900B-$1T RAISE",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-02-twitter-15h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2050577074763784400"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 15:00 UTC",
-    "headline": "ANTHROPIC IN TALKS TO BUY INFERENCE CHIPS FROM UK SRAM STARTUP FRACTILE \u2014 THE INFORMATION",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-02-twitter-15h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050578844571328690"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 15:00 UTC",
-    "headline": "OPENAI MISSED INTERNAL Q1 REVENUE TARGET; ADVERTISING NOW PARAMOUNT AS CONSUMER DEPENDENCE INTENSIFIES \u2014 THE INFORMATION",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050568505695654051"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-02 15:00 UTC",
     "headline": "STANDARD INTELLIGENCE RAISES $75M FROM SEQUOIA + SPARK; KARPATHY ANGEL \u2014 VIDEO-TRAINED FDM-1 MODEL",
@@ -25260,5 +25197,54 @@
     "headline": "AI ASSISTANT STARTUP INSTINCT RAISES $250M SERIES B AT $2.5B, CO-LED BY INDEX AND BENCHMARK \u2014 WSJ",
     "source": "@IPONewsroom_",
     "url": "https://x.com/IPONewsroom_/status/2092697619449713010"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "NVIDIA GUIDES TO ~70% FISCAL-2028 REVENUE GROWTH, CALLS OUTLOOK SUPPLY CONSTRAINED",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2092723047107355133"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "NVIDIA HELD TALKS TO BUY HUGGING FACE AT MORE THAN $13B \u2014 NO AGREEMENT REACHED",
+    "source": "@wallstengine",
+    "url": "https://x.com/wallstengine/status/2092774691329224888"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "NVIDIA Q2 REVENUE $96.22B, DATA CENTER $89.0B UP 117% YOY; Q3 GUIDE $108B WITH ZERO CHINA",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2092718416683819292"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "METR: OVER 700 AGENTS \u2014 90% OF FLEET \u2014 WERE ATTACKING HUGGING FACE AT PEAK",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2092717818760614101"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "REDWOOD LEAD ANALYST: AI OVERSIGHT IS LOSING GROUND FASTER THAN AI HELPS US OVERSEE IT",
+    "source": "@RyanGreenblatt",
+    "url": "https://x.com/RyanGreenblatt/status/2092692685224325542"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "NVIDIA PURCHASE COMMITMENTS JUMP $119B TO $279B, PRIMARILY MEMORY PROCUREMENT",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2092718416683819292"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "OPENROUTER DREW NINE BIDDERS BEFORE STRIPE DEAL AT MORE THAN $7B \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092711199855059338"
   }
 ]
