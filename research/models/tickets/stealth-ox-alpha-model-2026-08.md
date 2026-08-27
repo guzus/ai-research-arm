@@ -1,9 +1,9 @@
 ---
 slug: stealth-ox-alpha-model-2026-08
-title: "\"Ox Alpha\" — unattributed stealth frontier model on OpenRouter"
-company: Unattributed (stealth; Zhipu AI / Z.ai suspected)
-model: Ox Alpha
-status: in-testing
+title: "\"Ox Alpha\" — stealth frontier model on OpenRouter, revealed as Zhipu GLM-5.3-Flash"
+company: Zhipu AI / Z.ai (revealed 2026-08-26; opened as unattributed)
+model: Ox Alpha (= GLM-5.3-Flash)
+status: closed
 status_note: |
   A stealth model shipped as **`stealth/ox-alpha`** on **OpenRouter**
   around **2026-08-20** and is free to use through OpenRouter, opencode,
@@ -101,14 +101,57 @@ status_note: |
 
   Six days in: **still no lab claim, no model card, no pricing, no
   weights.** Status stays `in-testing`; verification stays `partial`.
-expected: "Live and free via OpenRouter/opencode/Hermes/Cursor as of 2026-08-25, vendor still formally unclaimed after a week, with 11.6T tokens served in three days (2.6x OpenRouter's previous record launch) and a 1.05M context window. A single-source claim (2026-08-25) identifies it as Zhipu's GLM 5.3 Flash. Pending: a lab claiming it on the record, a model card, pricing, weights (Z.ai's GLM line has shipped open weights), what happens to that volume when the free tier ends, and whether it formally resolves into [[zhipu-glm-5-3-2026-08]]'s family"
+
+  **2026-08-26/27 — RESOLVED, and the ticket closes.** Z.ai claimed it on
+  the record. **@Zai_org**: "Introducing **GLM-5.3-Flash** — Leading
+  capabilities at a highly competitive price — Natively multimodal with a
+  **1M-token context window** — A **320B-A18B** model released under the
+  **MIT License** — **Previously previewed as Ox Alpha**, running entirely
+  on Chinese AI chips." **@OpenRouter** confirmed from the venue side:
+  "**Ox Alpha revealed: @Zai_org's GLM-5.3-Flash**… Ox Alpha was **the
+  biggest model ever on OpenRouter, processing over 20 trillion tokens in
+  6 days**," and @Teknium noted "Ox Alpha free period is over, but GLM-5.3
+  Flash is now available." @louszbd (Zhipu-side) made the framing
+  explicit: "**Ox Alpha put GLM-5.3-Flash in more people's hands.** We've
+  read every piece of feedback. The model you're using now is better."
+
+  That settles every open question this ticket was carrying. The
+  attribution the firsthand testers reached on 2026-08-23 — @davis7's
+  shared video encoder, tokenizer, output style and audio-rejection
+  evidence, @kimmonismus's and @synthwavedd's specific "GLM-5.3 Flash"
+  call, @AndrewCurran_'s "a Z.ai GLM Flash variant, possibly a smaller
+  variant of the new flagship" — **was correct in full, including the
+  Flash sizing**. @mark_k's Google DeepMind attribution, and the
+  Anthropic / Grok 4.7 / Cursor / Sarvam hypotheses, were **wrong**.
+  @rasbt's teardown supplies the architecture the guessing game never
+  got at: a **Kimi Linear-style 3:1 hybrid attention** (34 Kimi Delta
+  Attention layers + 11 MLA/DeepSeek-Sparse-Attention layers), a
+  scaled-down GLM-5.2 sparse MoE backbone (744B-A40B → **320B-A18B**), a
+  **DeepSeek-V4-style mHC residual path with four parallel streams**, and
+  a native vision encoder.
+
+  **The one fact nobody predicted is the serving substrate, and it is the
+  real story.** @SemiAnalysis_: "Ox Alpha has been unveiled as
+  GLM-5.3-Flash, but **what's shocking is that the 100T tokens per day is
+  served on Chinese chips**… **ALL traffic was served on Chinese chips,
+  attaining hardware efficiency and per-token cost comparable to Nvidia
+  GPUs.** The CUDA moat is being tested once again." @teortaxesTex adds
+  the sharpening detail that this was **not even the current generation**
+  of domestic silicon in mass production.
+
+  Closing `superseded-by: zhipu-glm-5-3-2026-08`. This ticket's entire
+  premise — an artifact with **no vendor** — is contradicted by a
+  first-party vendor claim, and the successor already tracks the GLM-5.3
+  family. All further GLM-5.3-Flash signal (weights, pricing, benchmarks,
+  the domestic-silicon serving thread) belongs there.
+expected: "Resolved 2026-08-26: Ox Alpha is Zhipu/Z.ai's GLM-5.3-Flash — 320B-A18B, natively multimodal, 1M context, MIT license, first-party claimed by @Zai_org and independently confirmed by @OpenRouter, which recorded it as the biggest model ever on the router at 20T+ tokens in 6 days. Nothing further is pending on this ticket; it closes into [[zhipu-glm-5-3-2026-08]]"
 labels:
   - stealth-model
   - frontier-model
   - openrouter
-  - unattributed
-  - in-testing
-verification: partial
+  - resolved
+  - closed
+verification: confirmed
 sources:
   - "@davis7"
   - "@teortaxesTex"
@@ -128,10 +171,17 @@ sources:
   - "@spark_arena"
   - "@elliotarledge"
   - "@LottoLabs"
+  - "@Zai_org"
+  - "@OpenRouter"
+  - "@louszbd"
+  - "@rasbt"
+  - "@SemiAnalysis_"
+  - "@Teknium"
+  - https://x.com/SemiAnalysis_/status/2092623833630998556
 created_at: 2026-08-23
-updated_at: 2026-08-26
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-27
+closed_at: 2026-08-27
+closed_reason: superseded-by:zhipu-glm-5-3-2026-08
 history:
   - ts: 2026-08-23
     change: "Created — an unattributed stealth model shipping as stealth/ox-alpha on OpenRouter since ~2026-08-20, free via OpenRouter, opencode, Hermes Agent (@Teknium, @NousResearch) and Cursor. Established by firsthand testers: long-horizon multimodal, 1M context (@AndrewCurran_); ~63% on the full 113-task DeepSWE run (@davis7, who publicly retracted his own earlier ~80% subset number), 58.4 read independently by @teortaxesTex, roughly GPT-5.6 Sol mid class. Attribution unresolved: @davis7 99% GLM-5.x on encoder/tokenizer/style evidence, @kimmonismus and @synthwavedd say GLM-5.3 Flash, @AndrewCurran_ canvass lands on a Z.ai GLM Flash variant, but @mark_k claims Google DeepMind and @teortaxesTex argues against Cursor. Capability claim itself is contested — @emollick and @iruletheworldmo both tested it and rate it non-frontier. Status in-testing (real, publicly usable artifact under a stealth alias, no vendor claim); verification partial (many independent firsthand runs establish the artifact; no primary source establishes who made it)."
@@ -141,6 +191,8 @@ history:
     change: "First hard third-party-measured fact lands, and it is large: @OpenRouter says Ox Alpha was on track for nearly 6T tokens in a single day, and @rohanpaul_ai reports 11.6T tokens across three days — 2.6x OpenRouter's previous biggest model launch — with context now stated as 1.05M. A trending item ('Ox Alpha Tops OpenRouter Rankings in Record Debut', ~760 posts) confirms the ranking independently of the router. Caveat recorded: the model is free, so the volume measures demand at zero price, and agentic loops multiply per-task consumption. First quantitative negative also landed — @patience_cave's MazeBench scores ox-alpha 0%, alongside grok 4.6, glm-5.3 and qwen 3.8-max all at 0%, with gemini 3.7 flash at 1%; a benchmark where nearly everything scores zero discriminates almost nothing, and its only bearing here is that it does not separate ox-alpha from GLM-5.3. Attribution moved to a thin prediction market: @nicbstme reports it prices Z.ai as the source while flagging low volume, and @teortaxesTex notes insiders have an incentive to misdirect before betting; he separately reads @sam_paech's slop-profile comparison as showing 'the gap between 0731 and ox-alpha is Opus-shaped', an output-style inference rather than an attribution. Six days in: still no lab claim, model card, pricing or weights. Status stays in-testing; verification stays partial."
   - ts: 2026-08-26
     change: "First concrete vendor identification, plus the first head-to-head kernel numbers. @spark_arena (relayed by @LottoLabs, 2026-08-25 20:59 UTC): 'GLM 5.3 Flash is 0x Alpha for those that are curious. Tomorrow it's going to be a great day for Local AI with Qwen and GLM.' That is a direct claim that Ox Alpha is Zhipu's GLM 5.3 Flash, which would place it inside [[zhipu-glm-5-3-2026-08]]'s family exactly as this ticket's Zhipu suspicion predicted - but it is one unattributed account with no lab confirmation and no model card, so verification stays partial and the company field keeps its 'suspected' hedge. @teortaxesTex separately jokes at the same Zhipu/'Ox' association without adding evidence. The substantive news is capability data from @elliotarledge's KernelBench runs (2026-08-25), the first evidence on this ticket that is neither volume nor vibes. On KernelBench-Hard's Top-K Bitonic kernel for RTX PRO 6000, Ox Alpha reaches 7.17% of roofline, 'just behind Opus 5', writing one raw CUDA kernel with order-preserving value and index keys, per-thread top-R filtering and warp-shuffle bitonic sorting - and he explicitly certifies 'No reward hacking/cheating here!', which matters given @ArtificialAnlys's same-day introduction of reward-hacking score corrections to Terminal-Bench v2.1. On KernelBench-CUDA's DeepSeek Native Sparse Attention kernel it came LAST: it nailed the CUDA-core-specific parts (TopK, softmax) but 'completely missed tensor core tiling of QK and PV' and mapped one query per warp with serial loops, adding shuffle and latency overhead. So the picture is a genuinely competent frontier-adjacent kernel writer with a specific tensor-core blind spot. Status stays in-testing; verification stays partial."
+  - ts: 2026-08-27
+    change: "CLOSED — superseded-by:zhipu-glm-5-3-2026-08. Z.ai claimed the model on the record and the ticket's premise (an artifact with no vendor) no longer holds. @Zai_org: 'Introducing GLM-5.3-Flash - Leading capabilities at a highly competitive price - Natively multimodal with a 1M-token context window - A 320B-A18B model released under the MIT License - Previously previewed as Ox Alpha, running entirely on Chinese AI chips.' @OpenRouter confirmed independently from the venue side: 'Ox Alpha revealed: @Zai_org's GLM-5.3-Flash... Ox Alpha was the biggest model ever on OpenRouter, processing over 20 trillion tokens in 6 days', and @Teknium noted the free period ended with GLM-5.3-Flash taking its place. @louszbd (Zhipu-side) framed the stealth run as deliberate feedback collection: 'Ox Alpha put GLM-5.3-Flash in more people's hands. We've read every piece of feedback. The model you're using now is better.' Scoring the ticket's own attribution record honestly: the 2026-08-23 firsthand-tester reading (@davis7 on shared video encoder/tokenizer/style/audio-rejection, @kimmonismus and @synthwavedd naming GLM-5.3 Flash specifically, @AndrewCurran_ reading it as a Z.ai GLM Flash variant of a larger flagship) was correct in full including the Flash sizing; @mark_k's Google DeepMind call and the Anthropic, Grok 4.7, Cursor and Sarvam hypotheses were wrong. @rasbt's teardown supplies the architecture: Kimi Linear-style 3:1 hybrid attention (34 Kimi Delta Attention + 11 MLA/DSA layers), a scaled-down GLM-5.2 sparse MoE backbone (744B-A40B -> 320B-A18B), a DeepSeek-V4-style mHC residual path with four parallel streams, and a native vision encoder. The genuinely unanticipated fact is the serving substrate: @SemiAnalysis_ reports ALL of that traffic — 100T tokens/day of capacity — was served on domestic Chinese chips 'attaining hardware efficiency and per-token cost comparable to Nvidia GPUs', with @teortaxesTex adding it was not even the current generation in mass production. Verification advances partial -> confirmed on the first-party vendor claim plus independent venue confirmation. All further GLM-5.3-Flash signal (weights, pricing, benchmarks, domestic-silicon serving) goes to [[zhipu-glm-5-3-2026-08]]; this ticket is read-only from here."
 ---
 
 A stealth alias on a router is not normally worth a ticket. This one is,
