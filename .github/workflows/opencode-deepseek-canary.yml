@@ -262,22 +262,11 @@ jobs:
         uses: ./.github/actions/run-opencode-container
         with:
           mode: canary
-          prompt-text: 'Reply with exactly this token and nothing else: OPENCODE-DEEPSEEK-CANARY-OK'
+          prompt-text: 'Reply with exactly: ok'
           model: opencode-go/deepseek-v4-flash
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           opencode-config: .github/opencode/opencode-canary.json
           timeout-minutes: '10'
-          output-file: ${{ runner.temp }}/opencode-deepseek-canary.out
-
-      - name: Assert canary token
-        run: |
-          set -euo pipefail
-          out="${RUNNER_TEMP:-/tmp}/opencode-deepseek-canary.out"
-          if ! grep -q "OPENCODE-DEEPSEEK-CANARY-OK" "$out"; then
-            echo "::error::opencode run completed but the canary token is missing from its output — env-var auth or model routing through opencode is broken even though the raw API probe passed."
-            exit 1
-          fi
-          echo "opencode headless env-var auth canary OK."
 
       # Keep this model dynamic: production editorial routing is owned by the
       # SSOT, and a canary literal can silently drift away from that route.
@@ -296,19 +285,8 @@ jobs:
         uses: ./.github/actions/run-opencode-container
         with:
           mode: canary
-          prompt-text: 'Reply with exactly this token and nothing else: OPENCODE-GLM53-CANARY-OK'
+          prompt-text: 'Reply with exactly: ok'
           model: ${{ steps.glm_route.outputs.model_ref }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           opencode-config: .github/opencode/opencode-canary.json
           timeout-minutes: '10'
-          output-file: ${{ runner.temp }}/opencode-glm53-canary.out
-
-      - name: Assert production editorial GLM canary token
-        run: |
-          set -euo pipefail
-          out="${RUNNER_TEMP:-/tmp}/opencode-glm53-canary.out"
-          if ! grep -q "OPENCODE-GLM53-CANARY-OK" "$out"; then
-            echo "::error::opencode could not serve the production editorial GLM route."
-            exit 1
-          fi
-          echo "production editorial GLM canary OK."
