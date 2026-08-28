@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "ALTMAN: \"SMARTER STILL THE MOST IMPORTANT THING\" \u2014 DROPS CHEAPER/FASTER PUSH AS OPENAI Q1 API REVENUE 2X PRIOR LAUNCH",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/sama/status/2050671161915371998"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "MICROSOFT Q1: AI USAGE DRAGS CLOUD MARGINS, MSFT \"EFFECTIVELY BOOSTING PRICES\" VIA USAGE-BASED PIVOT",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050666663259812001"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "SEMIANALYSIS: ABB ELECTRIFICATION Q1'26 ORDERS HIT RECORD +$6B \u2014 DATACENTER DEMAND EXTENDS Q4'25 +17% QOQ INVERSION",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2050681826226606387"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "STARLINK IPO DOCS: 8.9M SUBS (4X), ARPU DOWN 18% TO $81/MO AHEAD OF POTENTIAL $1T LISTING",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050674193629356040"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "KIMMONISMUS: \"I HOPE SONNET 4.8 WILL BE THE MODEL I HOPED OPUS 4.7 WOULD BE\" \u2014 OPUS 4.7 USER-DISSATISFACTION TAIL GROWS",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2050673775109177796"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-03 01:00 UTC",
-    "headline": "GEMINI \"POWERED BY OMNI\" STRING LEAKS IN VIDEO-GEN TAB \u2014 FIRST PRE-I/O HINT OF GOOGLE OMNI MODEL WITH NATIVE VIDEO OUTPUT",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-03-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2050705594458292496"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-03 01:00 UTC",
-    "headline": "ABB ELECTRIFICATION Q1'26 ORDERS HIT RECORD +$6B AS DATACENTER DEMAND INVERTS SEASONAL PATTERN \u2014 SEMIANALYSIS",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-03-twitter-01h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2050681826226606387"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-03 01:00 UTC",
     "headline": "ALTMAN: \"I KEEP THINKING I WANT MODELS CHEAPER/FASTER, BUT BEING SMARTER IS STILL THE MOST IMPORTANT THING\"",
@@ -25232,5 +25169,54 @@
     "headline": "ANTHROPIC ADDS BUILT-IN WEB BROWSER TO CLAUDE COWORK \u2014 PRO, MAX AND TEAM DESKTOP BETA",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2092867859034640790"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "OPENAI, ANTHROPIC AND 100+ ORGS SIGN OPEN LETTER DEMANDING URGENT GLOBAL AI CYBER-DEFENSE SURGE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2093074192636018977"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "ANTHROPIC IPO SAID TO TARGET RAISE ABOVE SPACEX'S $86B, WITH INSIDER SHARE SALES AT ~$1.5T VALUATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2093118890284872106"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "ANTHROPIC OPENS MODEL HARDWARE STANDARD PREVIEW \u2014 AGENTS DRIVE LAB AND FACTORY EQUIPMENT VIA ONE INTERFACE",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2093038426140651791"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "SK HYNIX CEO: MEMORY SHORTAGE TO PERSIST THROUGH END OF 2030",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2093083595774849089"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "WSJ: NVIDIA PAUSES SOME AI-CLOUD REVENUE-SHARING DEALS AFTER PUSHBACK OVER CONTROL, ANTITRUST CONCERNS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2093099775990386725"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "X SAFETY FINDS 200,000-ACCOUNT BOT FARM; 200 ACCOUNTS PUSHED AI DATA-CENTER ELECTRICITY-PRICE CLAIMS",
+    "source": "@GlobalAffairs",
+    "url": "https://x.com/GlobalAffairs/status/2093130747796148634"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "SALESFORCE CLOSES UP 22% ON RAISED GUIDANCE AND NEW ANTHROPIC 'CLAUDEFORCE' PARTNERSHIP",
+    "source": "@Kalshi_Finance",
+    "url": "https://x.com/Kalshi_Finance/status/2093129938878484494"
   }
 ]
