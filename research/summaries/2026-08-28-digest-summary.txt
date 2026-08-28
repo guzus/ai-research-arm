@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-08-28 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Twitter/X] OpenAI, Anthropic + 100 orgs sign open letter urging urgent global AI cyber defense [✓]
+• [RSS / Official Announcements] Anthropic and OpenAI are joining the AI stage at TechCrunch Disrupt 2026 - 2026-08-27 23:16 UTC
+• [Hacker News] [Nvidia agrees to acquire Hugging Face for $13B]: The blockbuster acquisition dominates the front p…
+• [Reddit] NeurIPS 2026 Acceptance Calculator [P] — https://www.reddit.com/r/MachineLearning/comments/1vzzw38/…
+• [Expert Blogs] [[AINews] NVIDIA buys HuggingFace for $13B, as OpenAI publishes their HF incident retro](https://ww…
+
+SOURCES: 8/8 lanes had data
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
