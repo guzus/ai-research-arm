@@ -6,8 +6,9 @@ aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok B
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
 description: Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) and now tied #1 with Claude Opus 5 on an agentic index (2026-08-21), while still suing users over Grok-generated CSAM rather than addressing the underlying capability and facing a model-card diff restating four eval results in a flattering direction.
 created_at: 2026-06-08
-timestamp: 2026-08-22T00:00:00Z
+timestamp: 2026-08-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-28", path: research/digest/2026-08-28-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
@@ -251,3 +252,14 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   GPT/Claude/Gemini frontier; Grok 4.5 (the 1.5T V9 in private beta) is the test
   of whether the compute advantage converts into model capability — but with
   no independent benchmarks yet, the Opus-level claim is unaudited.
+
+## A lawsuit alleges xAI used child porn to train Grok (2026-08-28)
+
+- **A new lawsuit alleges Grok models were trained on child pornography
+  (2026-08-28).** Ars Technica reports **a lawsuit claims Elton Musk's xAI used
+  child porn to train Grok models** — the reverse direction of the CSAM issue
+  this page has tracked since the "xAI sues users over Grok-generated CSAM"
+  entry (2026-07-17). Where the prior story was about **Grok generating** CSAM,
+  this allegation concerns **the training data** — a distinct, and graver,
+  liability vector for xAI's capability-misuse record (Ars Technica; ARA daily
+  digest 2026-08-28). Treat as a lawsuit allegation, not a finding.
