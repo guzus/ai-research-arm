@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO, confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply, signed a $45B compute deal with Nscale (2026-08-27), and is now priced by its own bankers at $2 trillion with a >$100B raise pitch and a >$30T TAM investor story.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO (now reported seeking a raise above SpaceX's $86B with an insider secondary), confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply, signed a $45B compute deal with Nscale (2026-08-27), and is now priced by its own bankers at $2 trillion with a >$100B raise pitch and a >$30T TAM investor story.
 created_at: 2026-05-24
-timestamp: 2026-08-27T00:00:00Z
+timestamp: 2026-08-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-28", path: research/digest/2026-08-28-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
@@ -1266,3 +1267,37 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   commitments rather than replacing it — a frontier lab signing an even larger
   take-or-pay-style capacity line, day after pitching a >$30T TAM to investors
   (TechCrunch, The Decoder; ARA daily digest 2026-08-27). See [[ai-capex]].
+
+## A Model Hardware Standard preview, a blacklist-ruling, and an IPO raise above SpaceX (2026-08-28)
+
+- **Anthropic opens a Model Hardware Standard preview — agents driving physical
+  lab/factory gear (2026-08-28).** Anthropic shared a **research preview of a
+  Model Hardware Standard** letting AI agents **control physical lab and factory
+  hardware** — the first concrete move of the cycle extending Claude from
+  software/API surfaces into **direct control of equipment**. Read alongside
+  [[figure-ai]] and the [[artificial-general-engineer]] thread, it is the
+  hardware-control half of Anthropic's physical-work ambition, and it layered a
+  hardware-model co-design conversation onto the existing custom-silicon story
+  (Ars Technica, HN; ARA daily digest 2026-08-28). See
+  [[model-hardware-standard]].
+- **A federal court rules the Trump administration illegally blacklisted
+  Anthropic (2026-08-28).** The Verge reports a court **ruled Anthropic was
+  illegally blacklisted by the Trump administration** — the "supply-chain
+  risk" designation the [[anthropic]] page has tracked since the July
+  Pentagon fight (2026-07-03) — marking a first legal defeat for that label
+  as applied to a US frontier lab (The Verge; ARA daily digest 2026-08-28).
+  See [[federal-ai-policy]].
+- **IPO reported seeking a raise above SpaceX's record $86B — with an insider
+  secondary (2026-08-28).** The reported September IPO is now said to be
+  **seeking a raise above [[spacex|SpaceX]]'s $86B**, with an **insider
+  secondary** component — the largest primary-plus-secondary listing framing
+  yet for Anthropic, consistent with the >$100B raise / $2T valuation banker
+  pitch already tracked (2026-08-24) but now sized against SpaceX's actual
+  record (Twitter/X summary; ARA daily digest 2026-08-28).
+- **OpenAI, Anthropic + 100 orgs sign an open letter urging urgent global AI
+  cyber defense (2026-08-28).** The two frontier labs joined **100+ other
+  organizations** in an **open letter calling for urgent global AI
+  cyber-defense cooperation** — a rare joint-policy move from the two
+  historically divergent labs on the cyber axis this wiki tracks across
+  [[openai]] and [[agentic-ai-security]] (Twitter/X; ARA daily digest
+  2026-08-28).
