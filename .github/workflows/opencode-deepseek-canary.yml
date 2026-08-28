@@ -7,23 +7,26 @@ name: OpenCode DeepSeek V4 Flash Canary
 #   provider `opencode-go`, model `opencode-go/deepseek-v4-flash`, raw
 #   endpoint https://opencode.ai/zen/go/v1 (OpenAI-compatible).
 #
-# The canary probes the exact provider/model used by production. Moonshot is
-# not a DeepSeek provider and is intentionally not a fallback here.
+# The first probe certifies the explicit DeepSeek comparison paths. A second
+# harness probe resolves `research-editorial` from the SSOT and certifies the
+# exact production GLM model. Moonshot is intentionally not a fallback here.
 #
-# Two probes, cheap to expensive, so a dead key/plan fails in seconds
+# Three probes, cheap to expensive, so a dead key/plan fails in seconds
 # instead of mid-research:
 #
 #   1. Raw API probe — stdlib-only one-shot deepseek-v4-flash completion
 #      against the Go route, proving the secret authenticates AND the account
 #      can actually bill usage (Go usage caps are the realistic failure
 #      mode).
-#   2. opencode harness probe — the pinned opencode CLI runs one headless
-#      `opencode run` turn with the EXACT production argv (`-m <route
+#   2. DeepSeek harness probe — the pinned opencode CLI runs one headless
+#      `opencode run` turn with the exact direct-comparison argv (`-m <route
 #      model>` + `--auto` + OPENCODE_CONFIG file injection) authenticated
 #      purely by the env var — no interactive `opencode auth login`, no
 #      auth.json — with all tool permissions denied so the canary cannot
 #      touch the repository (deny survives --auto, which only auto-approves
 #      what is not explicitly denied).
+#   3. Production-route harness probe — resolves `research-editorial` from
+#      the SSOT and runs the same pinned container against that exact model.
 #
 # STRICT like zai-claude-code-canary.yml: this lane exists to test the
 # opencode path — an outage must fail this run, never re-route.
@@ -253,27 +256,37 @@ jobs:
             exit 1
           fi
 
-      # Containerised, matching production. A canary that certifies a
-      # DIFFERENT environment than the real lane runs in is worth little — the
-      # same reasoning that pins it to production's model id. Tools stay denied
+      # Containerised, matching the direct comparison paths. Tools stay denied
       # by opencode-canary.json, so containment here is belt AND braces.
       - name: Run opencode file-free canary
         uses: ./.github/actions/run-opencode-container
         with:
           mode: canary
-          prompt-text: 'Reply with exactly this token and nothing else: OPENCODE-DEEPSEEK-CANARY-OK'
+          prompt-text: 'Reply with exactly: ok'
           model: opencode-go/deepseek-v4-flash
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           opencode-config: .github/opencode/opencode-canary.json
           timeout-minutes: '10'
-          output-file: ${{ runner.temp }}/opencode-deepseek-canary.out
 
-      - name: Assert canary token
+      # Keep this model dynamic: production editorial routing is owned by the
+      # SSOT, and a canary literal can silently drift away from that route.
+      - name: Resolve production editorial OpenCode model
+        id: glm_route
         run: |
           set -euo pipefail
-          out="${RUNNER_TEMP:-/tmp}/opencode-deepseek-canary.out"
-          if ! grep -q "OPENCODE-DEEPSEEK-CANARY-OK" "$out"; then
-            echo "::error::opencode run completed but the canary token is missing from its output — env-var auth or model routing through opencode is broken even though the raw API probe passed."
+          python3 scripts/resolve_agent_route.py rss --github-output "$GITHUB_OUTPUT"
+          if [ "$(python3 scripts/resolve_agent_route.py rss --field backend)" \
+            != "opencode-glm-5p3-flash" ]; then
+            echo "::error::research-editorial is not routed to the expected GLM 5.3 Flash profile."
             exit 1
           fi
-          echo "opencode headless env-var auth canary OK."
+
+      - name: Run production editorial GLM canary
+        uses: ./.github/actions/run-opencode-container
+        with:
+          mode: canary
+          prompt-text: 'Reply with exactly: ok'
+          model: ${{ steps.glm_route.outputs.model_ref }}
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          opencode-config: .github/opencode/opencode-canary.json
+          timeout-minutes: '10'

@@ -37,7 +37,7 @@ short pointer plus the few genuinely agent-specific notes.
 
 - **GLM-5.2 is the preferred fallback for Claude-harness content lanes.** The
   five editorial lanes are routed as a group; their current strict profile runs
-  the containerized OpenCode CLI at `opencode-go/deepseek-v4-flash`. Known
+  the containerized OpenCode CLI at `opencode-go/glm-5.3-flash`. Known
   credential slots are prewired for a future isolated adapter, but the current
   host-checkout `agent-run` profiles cannot be selected by this route. `agent-run`
   probes the requested provider and walks the ordered `fallback.chain` from
@@ -89,17 +89,19 @@ short pointer plus the few genuinely agent-specific notes.
   `openai-api-key` unless the intent is API billing instead of the
   ChatGPT/Codex subscription.
 
-- **OpenCode + DeepSeek V4 Flash runs** use the opencode CLI
-  (pinned `opencode-ai@1.18.3`) driving `deepseek-v4-flash` with plain env-var
-  auth — a single secret is the whole login; there is no `opencode auth
-  login` step and no auth-file seeding. The workflow resolves the route
-  exclusively through `OPENCODE_API_KEY` (OpenCode Go subscription — sign in
+- **OpenCode Go runs** use the opencode CLI (pinned `opencode-ai@1.18.3`)
+  with plain env-var auth. The production editorial route prioritizes
+  `glm-5.3-flash`; explicit generative-research, Twitter comparison, and canary
+  paths remain pinned to `deepseek-v4-flash`. A single secret is the whole login;
+  there is no `opencode auth login` step and no auth-file seeding. The workflow
+  resolves the route exclusively through `OPENCODE_API_KEY` (OpenCode Go subscription — sign in
   at https://opencode.ai/auth, subscribe, copy the key). The Go plan caps are
   $12/5h, $30/week, and $60/month; because RSS, community, arXiv, Bluesky, and
-  wiki currently share this one strict route, exhaustion can stale all five together.
-  Moonshot is not a DeepSeek provider and is not a fallback. Store the key with
-  `gh secret set OPENCODE_API_KEY`, then validate cheaply with
-  `opencode-deepseek-canary.yml` before dispatching
+  wiki share this one strict route, exhaustion can stale all five together.
+  Moonshot is not a provider for either pinned model and is not a fallback.
+  Store the key with `gh secret set OPENCODE_API_KEY`; the retained
+  `opencode-deepseek-canary.yml` validates both the explicit DeepSeek path and
+  the dynamically resolved production GLM route before dispatching
   `generative-research.yml backend=opencode-deepseek-v4-flash`.
 
 - **Cursor CLI + Grok 4.6 Fast** is a second isolated editorial adapter

@@ -1,5 +1,5 @@
 {
-  "article_count": 73,
+  "article_count": 74,
   "articles": [
     {
       "claim_count": 18,
@@ -723,6 +723,14 @@
       "stem": "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw",
       "tags": [],
       "title": "The Jalapeño count: what an A0-stepping, unoptimized, Samsung-HBM4-bound ASIC actually settles against Vera Rubin"
+    },
+    {
+      "claim_count": 38,
+      "created_at": "2026-08-26T06:11:24Z",
+      "slug": "uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "stem": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "tags": [],
+      "title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page"
     }
   ],
   "by_host": {
@@ -1010,7 +1018,11 @@
     "api.llama.fi": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c10",
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c3",
-      "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c4"
+      "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c4",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c11",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c12",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c13",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c34"
     ],
     "api.semanticscholar.org": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c21"
@@ -1274,7 +1286,8 @@
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c4",
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c5",
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c6",
-      "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c9"
+      "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c9",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c35"
     ],
     "assets.anthropic.com": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c23"
@@ -1291,6 +1304,10 @@
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c32",
       "2026-07-31T051841--situational-awareness-lp-collapse#c1",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c7"
+    ],
+    "aztec.network": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c16",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c17"
     ],
     "bain.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c22"
@@ -1414,7 +1431,9 @@
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c18",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c21",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c28",
-      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30"
+      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c14",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c15"
     ],
     "blogs.microsoft.com": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c50"
@@ -1575,7 +1594,8 @@
     ],
     "cftc.gov": [
       "2026-06-24T160453--test-ornn-com-codex-2#C15",
-      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30"
+      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c28"
     ],
     "chaincatcher.com": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c20"
@@ -1782,7 +1802,9 @@
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c3",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c5",
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c11",
-      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c11"
+      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c11",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c18",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c19"
     ],
     "coinlaw.io": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c29"
@@ -1791,7 +1813,8 @@
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c11"
     ],
     "coinmetrics.substack.com": [
-      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c2"
+      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c2",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c29"
     ],
     "cointelegraph.com": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c20",
@@ -1882,12 +1905,17 @@
     "cryptopolitan.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30"
     ],
+    "cryptorank.io": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c20",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c21"
+    ],
     "cryptoslate.com": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c13"
     ],
     "cryptotimes.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c23",
-      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c4"
+      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c4",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c38"
     ],
     "cs.stanford.edu": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c12"
@@ -2083,6 +2111,14 @@
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c01",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c05",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c20"
+    ],
+    "developers.uniswap.org": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c1",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c2",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c3",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c36",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c4",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c5"
     ],
     "developersdigest.tech": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c18"
@@ -2698,7 +2734,11 @@
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c9",
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-10",
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-12",
-      "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c3"
+      "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c3",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c10",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c23",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c24",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c31"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -2752,7 +2792,9 @@
     ],
     "govinfo.gov": [
       "2026-06-22T052035--zhipu-ai-glm#c11",
-      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c31"
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c31",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c26",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c27"
     ],
     "grandviewresearch.com": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c21"
@@ -2773,6 +2815,9 @@
     ],
     "gurutrade.com": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c12"
+    ],
+    "hackmd.io": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c37"
     ],
     "hai.stanford.edu": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c3"
@@ -2902,6 +2947,14 @@
     ],
     "ibtimes.co.uk": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c37"
+    ],
+    "icodrops.com": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c19",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c21"
+    ],
+    "ideas.repec.org": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c32",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c6"
     ],
     "iea.org": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c14"
@@ -3748,6 +3801,9 @@
     "pandaily.com": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c17"
     ],
+    "panewslab.com": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c22"
+    ],
     "paper.cnstock.com": [
       "2026-07-13T181948--cxmt#c3",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c3",
@@ -3991,7 +4047,10 @@
       "2026-08-04T171206--comfyui-company#c49",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c24",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c25",
-      "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c30"
+      "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c30",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c7",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c8",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c9"
     ],
     "rdi.berkeley.edu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
@@ -4076,6 +4135,9 @@
     ],
     "rzlt.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c20"
+    ],
+    "s-puller.github.io": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c33"
     ],
     "s205.q4cdn.com": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c8",
@@ -4457,6 +4519,9 @@
     ],
     "support.sonatype.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c35"
+    ],
+    "support.uniswap.org": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c25"
     ],
     "swe-rebench.com": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c12"
@@ -4886,6 +4951,9 @@
     "uktechnews.co.uk": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c24"
     ],
+    "unchainedcrypto.com": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c17"
+    ],
     "understandingai.org": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c32",
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c37"
@@ -4956,6 +5024,9 @@
     ],
     "viewpoint.pwc.com": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c31"
+    ],
+    "vitalik.eth.limo": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c30"
     ],
     "vllm.ai": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c9"
@@ -5477,8 +5548,17 @@
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c3",
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c4"
     ],
+    "https://api.llama.fi/summary/dexs/uniswap-auctions?dataType=dailyVolume": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c11",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c12",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c13",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c34"
+    ],
     "https://api.llama.fi/summary/fees/usd-ai?dataType=dailyRevenue": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c10"
+    ],
+    "https://api.llama.fi/tvl/uniswap-v4": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c34"
     ],
     "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1126/sciadv.adu6897": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c21"
@@ -6039,6 +6119,9 @@
     "https://arxiv.org/html/2606.30560v2": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c27"
     ],
+    "https://arxiv.org/html/2607.02823": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c35"
+    ],
     "https://arxiv.org/html/2607.18186": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c30"
     ],
@@ -6106,6 +6189,12 @@
     ],
     "https://aws.amazon.com/blogs/aws/amazon-s3-tables-integration-with-amazon-sagemaker-lakehouse-is-now-generally-available": [
       "2026-07-20T050016--databricks-mid-2026#c28"
+    ],
+    "https://aztec.network/auction-terms-conditions": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c16"
+    ],
+    "https://aztec.network/blog/aztec-tge-next-steps": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c17"
     ],
     "https://bam.brookfield.com/press-releases/nvidia-partners-apollo-blackrock-blackstone-brookfield-goldman-sachs-and-kkr": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c26"
@@ -6207,6 +6296,10 @@
     ],
     "https://blog.uniswap.org/a-win-for-defi": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30"
+    ],
+    "https://blog.uniswap.org/aztec-cca": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c14",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c15"
     ],
     "https://blog.uniswap.org/dualpool-hook-is-now-live": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c18"
@@ -6348,7 +6441,8 @@
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c11"
     ],
     "https://coinmetrics.substack.com/p/state-of-the-network-issue-356": [
-      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c2"
+      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c2",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c29"
     ],
     "https://cointelegraph.com/news/term-finance-8-5m-vault-governance-exploit": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c1",
@@ -6411,6 +6505,12 @@
     ],
     "https://cryptobriefing.com/uniswap-v4-dominates-robinhood-chain-tokenized-stocks": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c20"
+    ],
+    "https://cryptorank.io/fundraising-platforms/uniswap-cca": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c20"
+    ],
+    "https://cryptorank.io/price/cap": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c21"
     ],
     "https://cryptoslate.com/south-korea-blocks-17-overseas-crypto-exchange-apps-in-registration-crackdown": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c13"
@@ -6582,6 +6682,19 @@
     ],
     "https://developers.openai.com/api/docs/pricing": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6"
+    ],
+    "https://developers.uniswap.org/docs/liquidity/liquidity-launchpad/concepts/cca": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c1",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c3"
+    ],
+    "https://developers.uniswap.org/docs/liquidity/liquidity-launchpad/deployments": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c36"
+    ],
+    "https://developers.uniswap.org/whitepaper_cca.pdf": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c2",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c3",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c4",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c5"
     ],
     "https://dig.watch/updates/ncsc-ai-vulnerabilities-guidance": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c39"
@@ -7235,6 +7348,18 @@
     "https://github.com/QwenLM/Qwen-Image": [
       "2026-08-04T171206--comfyui-company#c21"
     ],
+    "https://github.com/Uniswap/continuous-clearing-auction": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c23"
+    ],
+    "https://github.com/Uniswap/continuous-clearing-auction/blob/main/docs/audits/README.md": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c10"
+    ],
+    "https://github.com/Uniswap/continuous-clearing-auction/blob/main/docs/audits/Spearbit_v2.0.0.pdf": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c10"
+    ],
+    "https://github.com/Uniswap/liquidity-launcher/blob/main/src/periphery/ProtocolFeeController.sol": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c24"
+    ],
     "https://github.com/banodoco": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c38"
     ],
@@ -7262,6 +7387,9 @@
     ],
     "https://github.com/flashbots/suave-geth": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c10"
+    ],
+    "https://github.com/gnosis/ido-contracts": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c31"
     ],
     "https://github.com/google-deepmind/formal-conjectures/pull/4474": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c5",
@@ -7348,6 +7476,9 @@
     ],
     "https://graphite.io/five-percent/research/ai-now-writes-as-many-online-articles-as-humans-do": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c33"
+    ],
+    "https://hackmd.io/SCfjYNHQTmuRl2adnFi2oA": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c37"
     ],
     "https://hai.stanford.edu/assets/files/hai_ai-index-report-2024-smaller2.pdf": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c3"
@@ -7481,6 +7612,18 @@
     ],
     "https://iaeimagazine.org/electrical-fundamentals/modern-data-centers-electrical-trends-risks-and-nec-2026-implications": [
       "2026-05-27T035557--800-vdc-architecture#c36"
+    ],
+    "https://icodrops.com/aztec": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c19"
+    ],
+    "https://icodrops.com/cap-3": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c21"
+    ],
+    "https://ideas.repec.org/a/oup/restud/v81y2014i4p1366-1400.html": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c6"
+    ],
+    "https://ideas.repec.org/a/ucp/jpolec/doi10.1086-657948.html": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c32"
     ],
     "https://ieeexplore.ieee.org/document/10619984": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c11"
@@ -8380,6 +8523,11 @@
     "https://raw.githubusercontent.com/NikoDemon80/ComfyUI-H3-Motion-Context/main/README.md": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c30"
     ],
+    "https://raw.githubusercontent.com/Uniswap/continuous-clearing-auction/main/docs/TechnicalDocumentation.md": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c7",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c8",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c9"
+    ],
     "https://raw.githubusercontent.com/black-forest-labs/flux/main/model_licenses/LICENSE-FLUX1-dev": [
       "2026-08-04T171206--comfyui-company#c41"
     ],
@@ -8476,6 +8624,9 @@
     ],
     "https://ryder.id/blogs/post/robinhood-tokenized-stocks-the-on-chain-custody-catch": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c19"
+    ],
+    "https://s-puller.github.io/MyWebsite/Kang_Puller_JIE.pdf": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c33"
     ],
     "https://s205.q4cdn.com/133937190/files/doc_financials/2025/q4/CoreWeave-Inc-FY25-10-K-7.pdf": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c8",
@@ -8776,6 +8927,9 @@
     ],
     "https://support.sonatype.com/hc/en-us/articles/53165019641363": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c35"
+    ],
+    "https://support.uniswap.org/hc/en-us/articles/30935100859661": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c25"
     ],
     "https://swe-rebench.com/about": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c12"
@@ -9177,6 +9331,9 @@
     "https://uktechnews.co.uk/2026/05/29/check-point-deploys-ai-agents-to-prove-real-world-exploitability-as-cyberattacks-reach-unprecedented-speed": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c24"
     ],
+    "https://unchainedcrypto.com/aztec-raises-59-million-in-token-sale-with-uniswaps-cca": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c17"
+    ],
     "https://usd.ai/insights/crucible-capital-26m-gpu-backed-loan": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c7"
     ],
@@ -9234,6 +9391,9 @@
     ],
     "https://viewpoint.pwc.com/dt/us/en/pwc/accounting_guides/financial_statement_/financial_statement___18_US/chapter_23_commitmen_US/236_guarantees_US.html": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c31"
+    ],
+    "https://vitalik.eth.limo/general/2017/06/09/sales.html": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c30"
     ],
     "https://vllm.ai/blog/2026-01-08-kv-offloading-connector": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c9"
@@ -9754,7 +9914,8 @@
       "2026-06-24T160453--test-ornn-com-codex-2#C15"
     ],
     "https://www.cftc.gov/PressRoom/PressReleases/8961-24": [
-      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30"
+      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c28"
     ],
     "https://www.chaincatcher.com/en/article/2148842": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c20"
@@ -10068,6 +10229,10 @@
     "https://www.coindesk.com/web3/2025/09/09/upbit-parent-dunamu-unveils-layer-2-blockchain-giwa": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c1"
     ],
+    "https://www.coingecko.com/en/coins/aztec": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c18",
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c19"
+    ],
     "https://www.coingecko.com/en/coins/tori-trusd": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c11"
     ],
@@ -10163,6 +10328,9 @@
     ],
     "https://www.cryptotimes.io/2026/03/04/south-korea-sets-ownership-cap-for-upbit-and-bithumb": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c23"
+    ],
+    "https://www.cryptotimes.io/2026/08/11/ethereum-leads-2026-public-token-sales-race-with-334m": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c38"
     ],
     "https://www.cryptotimes.io/2026/08/23/term-finance-loses-8-5m-after-attacker-hijacks-dao-governance-vote": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c4"
@@ -10631,11 +10799,17 @@
     "https://www.govconwire.com/articles/teresa-carlson-anthropic-public-sector-global-head": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c12"
     ],
+    "https://www.govinfo.gov/app/details/BILLS-119hr3633rs": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c26"
+    ],
     "https://www.govinfo.gov/content/pkg/FR-2024-10-23/html/2024-23857.htm": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c31"
     ],
     "https://www.govinfo.gov/content/pkg/FR-2025-01-16/html/2025-00704.htm": [
       "2026-06-22T052035--zhipu-ai-glm#c11"
+    ],
+    "https://www.govinfo.gov/content/pkg/FR-2026-08-21/html/2026-17183.htm": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c27"
     ],
     "https://www.grandviewresearch.com/industry-analysis/enterprise-search-market": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c21"
@@ -11211,6 +11385,9 @@
     ],
     "https://www.pacingthefrontier.com": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c24"
+    ],
+    "https://www.panewslab.com/en/articles/e21d9785-6cff-4ae6-9991-ad564c45c1f9": [
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c22"
     ],
     "https://www.paradigm.xyz/2020/08/ethereum-is-a-dark-forest": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c19"
@@ -12601,7 +12778,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2130,
+  "claim_count": 2168,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -63828,9 +64005,898 @@
         "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia"
       ],
       "type": "market-structure"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "Uniswap's CCA developer documentation describes the mechanism as generalizing the uniform-price auction into continuous time while 'eliminating timing games and encouraging early participation'.",
+      "confidence": "high",
+      "hosts": [
+        "developers.uniswap.org"
+      ],
+      "id": "c1",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://developers.uniswap.org/docs/liquidity/liquidity-launchpad/concepts/cca"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-06-16",
+      "claim": "The Spearbit/Cantina v2.0.0 review of the CCA contracts reported 10 issues with 0 Critical, 0 High, 2 Medium, 1 Low and 7 Informational, including a finding that a bidder could use force iteration to exclude other bidders' final-block bids; both Mediums were fixed.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c10",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/Uniswap/continuous-clearing-auction/blob/main/docs/audits/Spearbit_v2.0.0.pdf",
+        "https://github.com/Uniswap/continuous-clearing-auction/blob/main/docs/audits/README.md"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "DefiLlama's on-chain adapter reports $68,584,270 in cumulative realized Uniswap Auctions proceeds all-time, with $543,076 in the trailing 30 days and $0 in the trailing 24 hours.",
+      "confidence": "high",
+      "hosts": [
+        "api.llama.fi"
+      ],
+      "id": "c11",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://api.llama.fi/summary/dexs/uniswap-auctions?dataType=dailyVolume"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "DefiLlama attributes $59,240,697 of realized CCA proceeds to a single datapoint on 2025-12-06 flagged 'AZTEC Sale Completed', meaning roughly $9.3M of realized proceeds came from every other CCA combined.",
+      "confidence": "high",
+      "hosts": [
+        "api.llama.fi"
+      ],
+      "id": "c12",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c12",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://api.llama.fi/summary/dexs/uniswap-auctions?dataType=dailyVolume"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "Realized CCA proceeds by chain are Ethereum $67.72M, Arbitrum $465,451, Base $336,010 and Unichain $60,498, so Ethereum accounts for roughly 98.7% of the total.",
+      "confidence": "high",
+      "hosts": [
+        "api.llama.fi"
+      ],
+      "id": "c13",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://api.llama.fi/summary/dexs/uniswap-auctions?dataType=dailyVolume"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-02-10",
+      "claim": "Uniswap reports that roughly 17,000 participants verified identities and bid in the Aztec CCA, across 191 countries, with 96% of bidders contributing under $10,000 and a mean contribution of approximately $4,000.",
+      "confidence": "high",
+      "hosts": [
+        "blog.uniswap.org"
+      ],
+      "id": "c14",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c14",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://blog.uniswap.org/aztec-cca"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-02-10",
+      "claim": "Uniswap states the Aztec sale 'cleared at a price 60% above Aztec's floor price' and that 'no clear instances of sniping or automated price manipulation were detected based on onchain data'.",
+      "confidence": "high",
+      "hosts": [
+        "blog.uniswap.org"
+      ],
+      "id": "c15",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c15",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://blog.uniswap.org/aztec-cca"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2025-11-12",
+      "claim": "The Aztec auction offered 1,547,000,000 AZTEC, about 14.95% of a 10,350,000,000 genesis supply, and set a per-account maximum of 250 ETH.",
+      "confidence": "medium",
+      "hosts": [
+        "aztec.network"
+      ],
+      "id": "c16",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c16",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aztec.network/auction-terms-conditions"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2025-12-08",
+      "claim": "The Aztec auction collected 19,476 ETH from 16,741 participants, clearing at approximately $0.047 per token.",
+      "confidence": "medium",
+      "hosts": [
+        "aztec.network",
+        "unchainedcrypto.com"
+      ],
+      "id": "c17",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c17",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://aztec.network/blog/aztec-tge-next-steps",
+        "https://unchainedcrypto.com/aztec-raises-59-million-in-token-sale-with-uniswaps-cca"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "As of 2026-08-26 AZTEC trades at $0.01468 with a market cap of $43.99M and a fully diluted valuation of $151.94M, against roughly $0.047 at auction clearing.",
+      "confidence": "high",
+      "hosts": [
+        "coingecko.com"
+      ],
+      "id": "c18",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://www.coingecko.com/en/coins/aztec"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "AZTEC's all-time high of $0.03990 on 2026-02-20 is below its approximately $0.047 auction clearing price, meaning the token has never traded at or above the price the auction discovered.",
+      "confidence": "high",
+      "hosts": [
+        "coingecko.com",
+        "icodrops.com"
+      ],
+      "id": "c19",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c19",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.coingecko.com/en/coins/aztec",
+        "https://icodrops.com/aztec"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2025-11-30",
+      "claim": "The CCA whitepaper's Risks and Limitations section concedes that 'uniform-price formats are not strategy-proof in general and may still admit residual bid shading'.",
+      "confidence": "high",
+      "hosts": [
+        "developers.uniswap.org"
+      ],
+      "id": "c2",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://developers.uniswap.org/whitepaper_cca.pdf"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "CryptoRank's Uniswap CCA launchpad page reports 9 total launches and $45.30M raised, a figure smaller than Aztec's single sale, indicating aggregator data on CCA totals is internally inconsistent.",
+      "confidence": "medium",
+      "hosts": [
+        "cryptorank.io"
+      ],
+      "id": "c20",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c20",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://cryptorank.io/fundraising-platforms/uniswap-cca"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "Cap Labs' CAP is the clearest positive CCA outcome, trading at about $0.0712 with a fully diluted valuation near $712M as of 2026-08-26 against a reported clearing price near $0.011.",
+      "confidence": "low",
+      "hosts": [
+        "cryptorank.io",
+        "icodrops.com"
+      ],
+      "id": "c21",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c21",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://cryptorank.io/price/cap",
+        "https://icodrops.com/cap-3"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2025-12-31",
+      "claim": "Of 533 public token sales held in 2025, only 63 (11.82%) were trading above their offering price at year end.",
+      "confidence": "medium",
+      "hosts": [
+        "panewslab.com"
+      ],
+      "id": "c22",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c22",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.panewslab.com/en/articles/e21d9785-6cff-4ae6-9991-ad564c45c1f9"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "The CCA factory and auction contracts have no owner, pauser or proxy, and auction parameters are immutable after creation.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c23",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c23",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/Uniswap/continuous-clearing-auction"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "The protocol fee for CCAs is set by an external ProtocolFeeController owned by a single Ownable owner, expressed in pips against a 1,000,000 denominator, and read at fee-application time rather than at auction creation.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c24",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c24",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/Uniswap/liquidity-launcher/blob/main/src/periphery/ProtocolFeeController.sol"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-07-28",
+      "claim": "Uniswap Labs' Terms of Service state that 'Uniswap Labs is not the seller, underwriter, or issuer of any tokens distributed through a CCA'.",
+      "confidence": "high",
+      "hosts": [
+        "support.uniswap.org"
+      ],
+      "id": "c25",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c25",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://support.uniswap.org/hc/en-us/articles/30935100859661"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "The Digital Asset Market Clarity Act (H.R. 3633) was reported in the Senate on 2026-06-01 and has not been enacted.",
+      "confidence": "high",
+      "hosts": [
+        "govinfo.gov"
+      ],
+      "id": "c26",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c26",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.govinfo.gov/app/details/BILLS-119hr3633rs"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-21",
+      "claim": "The SEC's 'Regulation Crypto Assets' release (Nos. 33-11434; 34-106150, File S7-2026-27) was published in the Federal Register on 2026-08-21 as a proposed rule with comments due 2026-10-20, proposing exemptions of up to $5 million over four years and up to $75 million per 12-month period.",
+      "confidence": "high",
+      "hosts": [
+        "govinfo.gov"
+      ],
+      "id": "c27",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c27",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.govinfo.gov/content/pkg/FR-2026-08-21/html/2026-17183.htm"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2024-09-04",
+      "claim": "The CFTC settled with Uniswap Labs on 2024-09-04 for a $175,000 civil monetary penalty over leveraged retail commodity transactions offered through its interface.",
+      "confidence": "high",
+      "hosts": [
+        "cftc.gov"
+      ],
+      "id": "c28",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c28",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.cftc.gov/PressRoom/PressReleases/8961-24"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-03-24",
+      "claim": "Ethereum block building is concentrated, with Titan Builder at 47.6% and BuilderNet at 26.0% of blocks per Coin Metrics.",
+      "confidence": "medium",
+      "hosts": [
+        "coinmetrics.substack.com"
+      ],
+      "id": "c29",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c29",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://coinmetrics.substack.com/p/state-of-the-network-issue-356"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "The CCA whitepaper states that careful parameterization 'mitigates but does not eliminate' timing games, contradicting the docs page claim that timing games are eliminated.",
+      "confidence": "high",
+      "hosts": [
+        "developers.uniswap.org"
+      ],
+      "id": "c3",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://developers.uniswap.org/whitepaper_cca.pdf",
+        "https://developers.uniswap.org/docs/liquidity/liquidity-launchpad/concepts/cca"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2017-06-09",
+      "claim": "Basic Attention Token's fixed-price sale raised roughly $35 million in about 30 seconds, with 185 purchases succeeding and over 10,000 failing.",
+      "confidence": "high",
+      "hosts": [
+        "vitalik.eth.limo"
+      ],
+      "id": "c30",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c30",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://vitalik.eth.limo/general/2017/06/09/sales.html"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2021-01-01",
+      "claim": "Gnosis publicly abandoned the Dutch auction format it used in 2017 in favour of batch auctions, writing in its own IDO contracts repository that 'the proposed batch auction system has a number of advantages over dutch auction'.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c31",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c31",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/gnosis/ido-contracts"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2010-10-01",
+      "claim": "Hortacsu and McAdams find that switching from a discriminatory auction to a uniform-price or Vickrey auction would not significantly increase revenue, with bidder surplus gains bounded near 0.02%.",
+      "confidence": "high",
+      "hosts": [
+        "ideas.repec.org"
+      ],
+      "id": "c32",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c32",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://ideas.repec.org/a/ucp/jpolec/doi10.1086-657948.html"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2008-03-01",
+      "claim": "Kang and Puller find that in Korean treasury auctions the discriminatory format yielded statistically higher revenue and better allocative efficiency than the uniform-price format.",
+      "confidence": "high",
+      "hosts": [
+        "s-puller.github.io"
+      ],
+      "id": "c33",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c33",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://s-puller.github.io/MyWebsite/Kang_Puller_JIE.pdf"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "Uniswap v4 held approximately $952.5M in TVL against $23.96B of 30-day volume, so CCA's entire all-time realized proceeds are a small fraction of a single day of Uniswap swap volume.",
+      "confidence": "medium",
+      "hosts": [
+        "api.llama.fi"
+      ],
+      "id": "c34",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c34",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://api.llama.fi/tvl/uniswap-v4",
+        "https://api.llama.fi/summary/dexs/uniswap-auctions?dataType=dailyVolume"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2025-10-01",
+      "claim": "A study of 655,770 pump.fun tokens found only 4,338 graduated, a rate of 0.63%.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c35",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c35",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2607.02823"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "The Uniswap CCA factory v2.1.0 is deployed at the same address 0x000000001F26a0044BaA66024e7b6599c61963F8 across Ethereum, Unichain, Base, Arbitrum, Robinhood Chain and Sepolia.",
+      "confidence": "medium",
+      "hosts": [
+        "developers.uniswap.org"
+      ],
+      "id": "c36",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c36",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://developers.uniswap.org/docs/liquidity/liquidity-launchpad/deployments"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2025-12-02",
+      "claim": "The Aztec auction's graduation threshold was set to 0 ETH, meaning graduation was guaranteed regardless of demand.",
+      "confidence": "low",
+      "hosts": [
+        "hackmd.io"
+      ],
+      "id": "c37",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c37",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://hackmd.io/SCfjYNHQTmuRl2adnFi2oA"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-06-30",
+      "claim": "Public crypto token sales raised approximately $58M in Q2 2026, the weakest quarter in five years and down sharply from the Q1 2025 peak.",
+      "confidence": "low",
+      "hosts": [
+        "cryptotimes.io"
+      ],
+      "id": "c38",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c38",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.cryptotimes.io/2026/08/11/ethereum-leads-2026-public-token-sales-race-with-334m"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2025-11-30",
+      "claim": "The CCA whitepaper acknowledges that 'onchain execution inherits network frictions (e.g., MEV, L2/L1 sequencing latency)'.",
+      "confidence": "high",
+      "hosts": [
+        "developers.uniswap.org"
+      ],
+      "id": "c4",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://developers.uniswap.org/whitepaper_cca.pdf"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "The CCA whitepaper carries 10 references, of which the only classical auction-theory citation is Milgrom and Weber (1982); it cites no work on demand reduction in multi-unit uniform-price auctions.",
+      "confidence": "high",
+      "hosts": [
+        "developers.uniswap.org"
+      ],
+      "id": "c5",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://developers.uniswap.org/whitepaper_cca.pdf"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2014-10-01",
+      "claim": "Ausubel, Cramton, Pycia, Rostek and Weretka establish that differential bid shading in multi-unit auctions 'results generically in ex post inefficient allocations', covering the entire equilibrium set.",
+      "confidence": "high",
+      "hosts": [
+        "ideas.repec.org"
+      ],
+      "id": "c6",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://ideas.repec.org/a/oup/restud/v81y2014i4p1366-1400.html"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "Uniswap's own technical documentation warns that 'the last block of the auction MUST sell a significant amount of tokens' because otherwise 'the final price will be easy to manipulate'.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c7",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/Uniswap/continuous-clearing-auction/main/docs/TechnicalDocumentation.md"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "The CCA technical documentation states that too-small tick spacing 'can result in a DoS attack where the auction cannot finish', and the permissionless factory does not enforce a safe tick spacing.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c8",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/Uniswap/continuous-clearing-auction/main/docs/TechnicalDocumentation.md"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+      "article_created_at": "2026-08-26T06:11:24Z",
+      "article_title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+      "as_of": "2026-08-26",
+      "claim": "A core invariant of the CCA is that no bids can be exited before the auction has graduated, so committed capital is locked for the auction's duration.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c9",
+      "key": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/Uniswap/continuous-clearing-auction/main/docs/TechnicalDocumentation.md"
+      ],
+      "type": "technical"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1032,
+  "reusable_count": 1051,
   "schema_version": 1
 }
