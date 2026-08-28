@@ -66,6 +66,16 @@ class RoutingInvariants(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "isolated_workspace"):
                 resolve_route(config, lane)
 
+    def test_research_editorial_prioritizes_opencode_glm_5p3_flash(self):
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        route = config["routes"]["research-editorial"]
+        self.assertEqual("opencode-glm-5p3-flash", route["backend"])
+        self.assertIn("opencode-deepseek-v4-flash", config["backends"])
+        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest"):
+            selected = resolve_route(config, lane)
+            self.assertEqual("opencode", selected.adapter)
+            self.assertEqual("opencode-go/glm-5.3-flash", selected.model_ref)
+
     def test_synthetic_opencode_profile_needs_only_profile_and_route_data(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
         workflows_before = {

@@ -176,7 +176,7 @@ flowchart LR
     strict0 -->|"claude-opus-5"| ANT
     strict1 -->|"cursor-grok-4.6-high-fast"| CUR
     strict2 -->|"deepseek-v4-flash"| FW
-    strict3 -->|"deepseek-v4-flash"| OC
+    strict3 -->|"glm-5.3-flash"| OC
     strict4 -->|"glm-5.2"| ZAI
     gendef -->|"claude-opus-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
@@ -276,9 +276,10 @@ and posts the findings back on the issue.
 a `topic`. The agent researches primary sources, writes in the
 [ARA DSL](ARA_DSL.md) (a validated component language — see
 [Component catalog](COMPONENTS.md)), and publishes through a single writer
-path that re-validates everything before commit. The SSOT default is DeepSeek
-V4 Flash via OpenCode Go; explicit selectors also expose native Claude, Codex,
-Cursor, and Fireworks routes
+path that re-validates everything before commit. The SSOT generative default is
+native Claude Opus 5; explicit selectors also expose Codex, OpenCode DeepSeek,
+Cursor, and Fireworks routes. Separately, the five scheduled editorial lanes
+prioritize GLM 5.3 Flash through the strict OpenCode Go route
 ([details](docs/generative-research-backends.md)).
 
 **3. Tweet → verified article.** Give it just a tweet URL — it reads the
@@ -379,7 +380,7 @@ settings and service overrides. None are needed for the
 | `FIREWORKS_API_KEY` | Fireworks generative and comparison routes | Anthropic-compatible Fireworks endpoint for explicit model routes and comparison lanes |
 | `ZAI_API_KEY` | Z.ai GLM 5.2 lanes and fallback chain | Z.ai Coding Plan key; current second provider in the global fallback chain and used by Z.ai canaries/comparison lanes |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
-| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. The five editorial lanes use it while their shared route selects the current strict OpenCode profile; then they share its plan caps. |
+| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. The five editorial lanes use it for the strict `glm-5.3-flash` profile and share its plan caps; the direct DeepSeek canary does not validate that production model route. |
 | `CURSOR_API_KEY` | Cursor CLI profiles, direct comparison/canary paths, dispatcher route plumbing | Cursor dashboard API key. Prewired so an SSOT-only switch to `cursor-grok-4p6-fast` needs no workflow edit. Production defaults stay on OpenCode. |
 | `BIRD_AUTH_TOKEN` / `BIRD_CT0` | Twitter/X lanes | X cookies (read-only use; expire often) |
 | `BIRDY_ACCOUNTS` | alternative to cookie pair | multi-account rotation JSON; every account forced read-only |

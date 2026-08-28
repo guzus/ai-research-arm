@@ -86,6 +86,18 @@
       ],
       "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to opencode-go/deepseek-v4-flash. Runtime-selectable by agent-dispatch; not selectable by agent-run."
     },
+    "opencode-glm-5p3-flash": {
+      "adapter": "opencode",
+      "provider": "opencode-go",
+      "model": "glm-5.3-flash",
+      "display_name": "GLM 5.3 Flash via OpenCode Go",
+      "aliases": [
+        "opencode-glm-5.3-flash",
+        "opencode-glm",
+        "glm-5.3-flash-opencode"
+      ],
+      "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to the official opencode-go/glm-5.3-flash model id. Primary strict profile for the shared research-editorial route; not selectable by agent-run."
+    },
     "zai-glm-5p2": {
       "adapter": "agent-run",
       "provider": "zai",
@@ -118,7 +130,7 @@
   "routes": {
     "research-editorial": {
       "contract": "research-editorial",
-      "backend": "opencode-deepseek-v4-flash",
+      "backend": "opencode-glm-5p3-flash",
       "fallback": "none",
       "notes": "Shared runtime route for RSS, Bluesky, community, arXiv, and wiki. One backend edit switches all five to a profile whose adapter registry declares both isolated_workspace and editorial_contract. Incompatible host-checkout adapters are rejected before execution; this route is fail-closed with no cross-adapter fallback."
     },
