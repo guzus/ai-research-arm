@@ -100,8 +100,8 @@ short pointer plus the few genuinely agent-specific notes.
   wiki share this one strict route, exhaustion can stale all five together.
   Moonshot is not a provider for either pinned model and is not a fallback.
   Store the key with `gh secret set OPENCODE_API_KEY`; the retained
-  `opencode-deepseek-canary.yml` validates only the explicit DeepSeek path—not
-  the production GLM route—before dispatching
+  `opencode-deepseek-canary.yml` validates both the explicit DeepSeek path and
+  the dynamically resolved production GLM route before dispatching
   `generative-research.yml backend=opencode-deepseek-v4-flash`.
 
 - **Cursor CLI + Grok 4.6 Fast** is a second isolated editorial adapter

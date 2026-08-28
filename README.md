@@ -380,7 +380,7 @@ settings and service overrides. None are needed for the
 | `FIREWORKS_API_KEY` | Fireworks generative and comparison routes | Anthropic-compatible Fireworks endpoint for explicit model routes and comparison lanes |
 | `ZAI_API_KEY` | Z.ai GLM 5.2 lanes and fallback chain | Z.ai Coding Plan key; current second provider in the global fallback chain and used by Z.ai canaries/comparison lanes |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
-| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. The five editorial lanes use it for the strict `glm-5.3-flash` profile and share its plan caps; the direct DeepSeek canary does not validate that production model route. |
+| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. The five editorial lanes use it for the strict `glm-5.3-flash` profile and share its plan caps; the OpenCode canary validates both direct DeepSeek and the dynamically resolved production GLM route. |
 | `CURSOR_API_KEY` | Cursor CLI profiles, direct comparison/canary paths, dispatcher route plumbing | Cursor dashboard API key. Prewired so an SSOT-only switch to `cursor-grok-4p6-fast` needs no workflow edit. Production defaults stay on OpenCode. |
 | `BIRD_AUTH_TOKEN` / `BIRD_CT0` | Twitter/X lanes | X cookies (read-only use; expire often) |
 | `BIRDY_ACCOUNTS` | alternative to cookie pair | multi-account rotation JSON; every account forced read-only |

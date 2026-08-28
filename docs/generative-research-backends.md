@@ -285,11 +285,13 @@ Then prove the key + harness before spending a 90-minute research run:
 gh workflow run opencode-deepseek-canary.yml
 ```
 
-This canary validates only the retained explicit DeepSeek route; it does not
-validate the production `opencode-go/glm-5.3-flash` editorial route. It
-runs two probes: a stdlib-only raw API check (a models listing plus one
+This canary validates both the retained explicit DeepSeek route and the
+production `opencode-go/glm-5.3-flash` editorial route. It runs a stdlib-only
+raw API check (a models listing plus one
 tiny `deepseek-v4-flash` completion against the endpoint), followed by a
-tool-denied headless `opencode run` using the exact direct-DeepSeek argv. On
+tool-denied headless `opencode run` using the exact direct-DeepSeek argv, then
+resolves `research-editorial` from the SSOT and runs a second tool-denied
+harness probe against that exact model ref. On
 the Go route the raw probe is **auth-fatal only** — 401/402 (bad key /
 billing) fail the run, while any other status merely warns: the raw
 `/zen/go/v1` surface is undocumented, and Cloudflare's bot filter in

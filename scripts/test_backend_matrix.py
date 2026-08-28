@@ -903,10 +903,10 @@ class RoutingInvariants(unittest.TestCase):
             self.assertEqual(
                 "keep\n", (unrelated / "sentinel").read_text(encoding="utf-8"))
 
-    def test_opencode_canary_probes_the_model_production_runs(self):
-        # A canary that probes a different model than production runs is worse
-        # than no canary: it goes green on an entitlement the real lane never
-        # uses. Pin them to the same id.
+    def test_opencode_canary_covers_direct_deepseek_and_editorial_glm(self):
+        # The raw + first harness probes cover the direct DeepSeek comparison
+        # paths. The second harness probe resolves the production editorial
+        # model dynamically so a route edit cannot leave its canary stale.
         model_id = self.assert_single_opencode_model()
         canary = (REPO_ROOT / ".github" / "workflows" /
                   "opencode-deepseek-canary.yml").read_text(encoding="utf-8")
@@ -916,6 +916,15 @@ class RoutingInvariants(unittest.TestCase):
         # or the cheap preflight certifies an entitlement the run never uses.
         self.assertIn(f'"model": "{model_id}"', canary)
         self.assertIn(f'{{"model":"{model_id}"', gen)
+        self.assertIn(
+            'python3 scripts/resolve_agent_route.py rss --github-output "$GITHUB_OUTPUT"',
+            canary,
+        )
+        self.assertIn('model: ${{ steps.glm_route.outputs.model_ref }}', canary)
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        editorial = resolve_route(config, "rss")
+        self.assertEqual("opencode-glm-5p3-flash", editorial.backend)
+        self.assertEqual("opencode-go/glm-5.3-flash", editorial.model_ref)
         # The production config deliberately carries no static model/default:
         # every action call is authoritative through `opencode run -m`, so a
         # newly registered SSOT profile does not require a config edit.
