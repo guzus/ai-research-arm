@@ -70,6 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pull-requests: read
     steps:
       - name: Checkout (full history, no LFS blobs)
         uses: actions/checkout@v7
@@ -100,6 +101,14 @@ jobs:
           telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
 
+      - name: Detect stranded scheduled publications
+        uses: ./.github/actions/publication-health-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
+          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+
       # Freshness check + dual-channel alert; its final step fails on staleness.
       - name: Check freshness + alert on staleness
         id: freshness
@@ -124,6 +133,7 @@ jobs:
     runs-on: [self-hosted, Linux]
     permissions:
       contents: read
+      pull-requests: read
     steps:
       - name: Checkout (full history, no LFS blobs)
         uses: actions/checkout@v7
@@ -142,6 +152,14 @@ jobs:
       - name: Deploy health (advisory) + alert if prod is stale
         continue-on-error: true
         uses: ./.github/actions/deploy-health-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
+          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Detect stranded scheduled publications
+        uses: ./.github/actions/publication-health-alert
         with:
           hooker_url: ${{ secrets.HOOKER_URL }}
           hooker_token: ${{ secrets.HOOKER_TOKEN }}

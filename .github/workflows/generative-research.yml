@@ -3609,7 +3609,6 @@ jobs:
         run: |
           set -euo pipefail
           article="research/generative/$FILE"
-          stem="${FILE%.html}"
           claims="$GITHUB_WORKSPACE/.gen-claims-ledger.json"
           verifier="$GITHUB_WORKSPACE/.gen-verifier-findings.json"
           redteam="$GITHUB_WORKSPACE/.gen-redteam-findings.json"
@@ -3633,16 +3632,20 @@ jobs:
             exit 1
           fi
 
-          cp "$claims"   "research/generative/${stem}.claims.json"
-          cp "$verifier" "research/generative/${stem}.verification.json"
-          cp "$redteam"  "research/generative/${stem}.redteam.json"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            "research/generative/${stem}.claims.json" \
-            "research/generative/${stem}.verification.json" \
-            "research/generative/${stem}.redteam.json"
-          git commit --amend --no-edit
+          if ! uv run python scripts/finalize_generative_publication.py \
+              --repo "$GITHUB_WORKSPACE" \
+              --article-file "$FILE" \
+              --ledger "$claims" \
+              --verification "$verifier" \
+              --redteam "$redteam"; then
+            echo "::error::Transactional methodology + claim-index finalization failed"
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative research/claims
+            exit 1
+          fi
+          uv run python scripts/build_claim_index.py --check
           echo "passed=true" >> "$GITHUB_OUTPUT"
 
       # Per-run quality report — corpus-audit metrics on the article

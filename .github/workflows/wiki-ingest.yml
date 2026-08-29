@@ -398,6 +398,8 @@ jobs:
         uses: ./.github/actions/safe-push
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          # workflow_run publishers are outside safe-push's schedule auto-mode.
+          strict-publication: 'true'
 
       # Vercel's GitHub App webhook should fire on bot pushes too, but if the
       # VERCEL_DEPLOY_HOOK secret is present we belt-and-suspenders it.
