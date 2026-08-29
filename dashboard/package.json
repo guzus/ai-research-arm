@@ -17,13 +17,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "js-yaml": "^5.2.2",
+    "js-yaml": "^5.3.0",
     "typescript": "^7.0.2",
     "vite": "^8.2.0"
   },
   "dependencies": {
     "@resvg/resvg-js": "^2.6.2",
-    "dompurify": "^3.4.12",
+    "dompurify": "^3.4.14",
     "marked": "^18.0.9"
   }
 }
