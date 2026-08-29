@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24) — as US opposition to data centers hits 75% and NVIDIA's financing is said to depend on lenders treating GPUs as bankable assets (2026-08-25).
 created_at: 2026-05-24
-timestamp: 2026-08-26T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
@@ -127,7 +128,7 @@ skepticism in one window:
   with **weekly volume 5×'d to 25T tokens** and a run rate of **>1
   quadrillion tokens in 2026**. The first major routing-layer round
   of the cycle — the demand-side counterpart to the supply-side
-  inference startups (Fireworks at $800M ARR; Baseten, Modal, Together
+  inference startups ([[fireworks-ai]] at $800M ARR; Baseten, Modal, Together
   facing NVIDIA-rental margin pressure on the supply side per
   The Information) (ARA digest 2026-06-01).
 - **Adjacent demand signal — humanoid autonomy.** [[figure-ai]]'s
@@ -880,3 +881,19 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   The runs are **OpenAI-submitted and unaudited**, so treat it as the custom-
   vs-merchant-silicon debate's latest data point, not a settled result (OpenAI
   blog, SemiAnalysis; ARA daily digest 2026-08-26). See [[model-specific-silicon]].
+
+## Memory horizon extends to end-2030; the neocloud debt engine keeps borrowing (2026-08-28)
+
+- **SK hynix's CEO puts the memory shortage at end-2030 (2026-08-28).** The
+  [[sk-hynix]] chief executive named **end-2030** as the shortage horizon, with
+  Marvell's capacity call echoing the same squeeze — the longest named horizon
+  yet in the memory thread this theme has tracked from DDR5 contract-price
+  jumps (2026-08-13) through NVIDIA's ~17% server-price increase (2026-08-23).
+  Single-source Twitter/X relay; treat it as executive commentary, not company
+  guidance (ARA daily digest 2026-08-29). See [[micron]].
+- **Neocloud Lambda secures $1B in debt to buy more chips (2026-08-28).**
+  TechCrunch reports Lambda — one of the older independent neoclouds — closed
+  **$1B in debt financing explicitly to purchase more GPUs**, a fresh instance
+  of the [[neocloud]] model's defining mechanic (debt-financed acquisition
+  underwritten by a forward contract book) continuing to print at scale
+  (ARA daily digest 2026-08-29).

@@ -91,7 +91,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[xai]] — Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build at $2/$6 per Mtok (2026-08-13), dating Grok 4.7 ~3–4 weeks out, and runs a compute-landlord business renting Colossus capacity to rival labs at $2B+/month.
 - [[xiaomi-mimo-v2-5-pro]] — Xiaomi MiMo UltraSpeed model tied to the 1,000+ tok/s on 1T MoE claim using a standard 8-GPU server; high-signal but still partially verified.
 - [[zhipu-glm-5-2]] — Zhipu / Z.ai's 1M-context GLM-5.2, deployed in the GLM Coding Plan with MIT open weights promised; marquee Chinese open-weight release.
-- [[zhipu-glm-5-3]] — Zhipu / Z.ai's GLM-5.3, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 top of open-model rankings); confirmed 2026-08-27 as the lab behind the stealth Ox Alpha, with the fast GLM-5.3-Flash ($0.25/Mtok output) the day's top Hacker News item.
+- [[zhipu-glm-5-3]] — Zhipu / Z.ai's GLM-5.3, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 top of open-model rankings); confirmed 2026-08-27 as the lab behind the stealth Ox Alpha, shipped the fast GLM-5.3-Flash ($0.25/Mtok output), and released as open weights on Hugging Face (2026-08-28) — the day's top Hacker News item.
 
 ## Concepts
 

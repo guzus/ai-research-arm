@@ -4,10 +4,11 @@ title: Zhipu GLM-5.3
 type: entity
 aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3"]
 tags: [open-weights, china, agentic, frontier-model]
-description: Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — now confirmed as the lab behind the formerly-stealth Ox Alpha (2026-08-27) and accompanied by the fast GLM-5.3-Flash (2026-08-27, the day's top Hacker News item, $0.25/Mtok output).
+description: Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — released as open weights on Hugging Face on 2026-08-28 (the day's top Hacker News item) after weeks of promise, confirmed as the lab behind the formerly-stealth Ox Alpha (2026-08-27) and accompanied by the fast GLM-5.3-Flash ($0.25/Mtok output).
 created_at: 2026-08-19
-timestamp: 2026-08-27T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
@@ -68,9 +69,10 @@ open-weight agentic development.
 
 ## Open questions
 
-- **Do the MIT weights actually land, and when?** As with GLM-5.2, the decisive
-  open-weights transition is a primary model card plus a download; until then
-  the class-leading agentic claim is backed only by a vendor-framed eval.
+- **RESOLVED (2026-08-28): the weights landed.** GLM-5.3 was released as open
+  weights on Hugging Face with the announcement on the z.ai blog — but the HN
+  thread actively contested the benchmark claims, so the open question shifts
+  from *whether* the weights ship to *whether the independent numbers hold*.
 - **Does the agentic Elo transfer outside the harness?** The +246 Elo swing is
   on one benchmark; whether it holds on contamination-aware agentic and coding
   tasks is unverified.
@@ -96,3 +98,23 @@ open-weight agentic development.
   the unattributed model is a **Z.ai GLM variant**, and the flagship/Flash pair
   is now on the record (TechCrunch; ARA daily digest 2026-08-27). See
   [[ox-alpha]] and [[open-weights]].
+
+## GLM-5.3 goes open-weight (2026-08-28)
+
+- **The weights promise finally lands.** Z.ai released **GLM-5.3 as open
+  weights on Hugging Face**, with the announcement on the z.ai blog — and the
+  release was **the day's top Hacker News item**, the thread debating its
+  benchmark claims, its pricing impact, and **what another open flagship means
+  for the frontier race**. This resolves the page's central open question (the
+  "MIT weights remain a promise" caveat that had held since the 2026-08-19
+  scoring) and makes GLM-5.3 the third Chinese flagship-family open release of
+  the window, after [[moonshot-kimi-k3|Kimi K3]] and Alibaba's
+  [[qwen-3-8-max|Qwen3.8-2.4T-A95B]] (HN; ARA daily digest 2026-08-29). See
+  [[open-weights]].
+- **The capability-misuse caveat arrives with the download.** Ethan Mollick
+  flagged the release directly: **"a very good open weights model with
+  considerable offensive cyber capability"**, noting that **open-weights models
+  have effectively no guardrails and provide only minimal risk testing —
+  "though what they do test is eye opening."** The open release converts the
+  eval-environment containment question tracked on [[agentic-ai-security]]
+  into a consumer-downloadable one (Bluesky; ARA daily digest 2026-08-29).
