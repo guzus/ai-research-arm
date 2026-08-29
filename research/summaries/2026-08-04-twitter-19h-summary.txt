@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-04 19:50:48 UTC
+
+CYCLE: Compute goes to orbit and to a bitcoin miner; video models split on who gets the weights.
+
+TOP STORIES:
+• SpaceX + NVIDIA reported to co-design Starmind AI-1: 250 kW of Rubin/Vera compute per satellite, hours before SpaceX's first public earnings [⚠]
+• Anthropic $10B compute deal gets named sources (SemiAnalysis, TechCrunch) and a 2nd counterparty: listed miner Bitdeer [⚠]
+• Black Forest Labs ships FLUX 3 video to all - 20s 1080p, native audio, credit-gated not open weights [✓]
+• Local video's real cost: MiniMax H3 on an M5 Pro Mac is 115GB and ~45 min per clip [✓]
+
+WATCH: Whether Bitdeer (NASDAQ: BTDR) discloses the Anthropic contract in a filing.
+
+Full update on GitHub.

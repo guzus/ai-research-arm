@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-17 21:55:54 UTC
+
+CYCLE: Anthropic's pre-IPO numbers and model-withholding report dominate; two papers puncture agent-guardrail assumptions.
+
+TOP STORIES:
+• Anthropic tells investors $65B annualized run rate at end-July on preliminary $11.5B Q2 (vs $787M yr-ago) [⚠]
+• Report: Anthropic finished training Mythos 2 and won't release it; Mythos 3 loop still running [⚠]
+• New papers: context compaction keeps only 17% of standing user rules; all 12 frontier models degrade on against-prior instructions [⚠]
+
+WATCH: Any Anthropic or Bloomberg detail reconciling the $11.5B quarter with the $65B end-July exit run rate.
+
+Full update on GitHub.

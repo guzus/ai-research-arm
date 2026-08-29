@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-21 21:35:47 UTC
+
+CYCLE: OpenAI moves on price while its sales bench empties; the stealth model's second benchmark undercuts its first.
+
+TOP STORIES:
+- OpenAI cuts GPT-5.6 Sol API + Work/Codex credit pricing >20% for 3 months; Pro/Plus/Business subs unchanged [OK]
+- Ox Alpha's 2nd DeepSWE run lands at 63% vs this morning's 80%, while the label hardens to "GLM-5.3 Flash" [!]
+- OpenAI Americas sales chief Kaylin Voss resigns 5 months in, a week after CRO Denise Dresser [!]
+- Anthropic reported to hire ex-Google TPU chief Amir Salek for an in-house chip push [!]
+
+WATCH: Whether either Ox Alpha evaluator publishes task list and n - the only thing reconciling 63% with 80%.
+
+Full update on GitHub.

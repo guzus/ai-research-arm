@@ -7,12 +7,27 @@ fallback chain), probes each candidate's provider for availability, and
 emits the first available candidate to $GITHUB_OUTPUT. Called by
 `.github/actions/agent-run` as the single backend-selection step.
 
-Candidate order: [requested backend] + fallback.chain, deduplicated (a
-zai-primary lane whose chain starts with the same zai backend skips it).
+Candidate order: [requested backend] + either lane.fallback_chain (when
+declared) OR fallback.chain, deduplicated. A lane-local chain overrides the
+global chain because it is the explicit compatibility boundary for a
+cross-adapter fallback; the global chain remains agent-run-native.
 Probes: fireworks → tiny /v1/messages preflight (reuses
 check_fireworks_backend); zai → same-shape probe against the Z.ai
-Anthropic-compatible endpoint; claude → always available (the OAuth token
-is a hard requirement of the action schema).
+Anthropic-compatible endpoint; claude → OAuth-token preflight against
+api.anthropic.com that is UNAVAILABLE on an explicit credential rejection
+(401/403) or a run-scoped rate limit (429), and available on anything else;
+opencode-go is available when its isolated-adapter credential is configured.
+
+Why the claude probe is auth-only (2026-07-24 incident): this probe used
+to hardcode "always available", so when CLAUDE_CODE_OAUTH_TOKEN expired
+every agent lane in the fleet died instantly (is_error, 1 turn, $0) with
+no route out — the chain could not move past a backend it always believed
+was up. A 429 proves the credential is alive but also proves Claude cannot
+serve this run, so the compatible local-source digest lane first continues to
+isolated OpenCode GLM 5.3 Flash. Other lanes retain the global Z.ai chain. The probe remains
+deliberately narrow for 400, 5xx, and network faults: those inconclusive
+responses keep the existing fail-open behavior rather than broadening the
+reroute policy.
 
 Strictness: `--fallback-policy none` or a lane with `"strict": true`
 disables the chain — the requested backend is the only candidate and its
@@ -29,6 +44,8 @@ import argparse
 import json
 import os
 import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -39,6 +56,40 @@ DEFAULT_FILE = REPO_ROOT / "data" / "agent-backends.json"
 
 FIREWORKS_ENDPOINT = "https://api.fireworks.ai/inference"
 ZAI_ENDPOINT = "https://api.z.ai/api/anthropic"
+ANTHROPIC_ENDPOINT = "https://api.anthropic.com"
+# Beta header the Claude Code OAuth flow sends; without it a Bearer OAuth
+# token is not guaranteed to be accepted on /v1/messages.
+ANTHROPIC_OAUTH_BETA = "oauth-2025-04-20"
+
+
+def request_oauth_preflight(token: str, model: str) -> tuple[int, str]:
+    """1-token ping that authenticates the way claude-code-action does.
+
+    Deliberately does NOT send x-api-key (see probe_claude).
+    """
+    payload = json.dumps(
+        {
+            "model": model,
+            "max_tokens": 1,
+            "messages": [{"role": "user", "content": "ping"}],
+        }
+    ).encode()
+    request = urllib.request.Request(
+        ANTHROPIC_ENDPOINT.rstrip("/") + "/v1/messages",
+        data=payload,
+        method="POST",
+        headers={
+            "anthropic-version": "2023-06-01",
+            "anthropic-beta": ANTHROPIC_OAUTH_BETA,
+            "authorization": f"Bearer {token}",
+            "content-type": "application/json",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            return response.status, response.read().decode("utf-8", errors="replace")
+    except urllib.error.HTTPError as error:
+        return error.code, error.read().decode("utf-8", errors="replace")
 
 
 def config_error(msg: str) -> int:
@@ -73,13 +124,58 @@ def probe_zai(model: str) -> tuple[bool, str]:
 
 
 def probe_claude(model: str) -> tuple[bool, str]:
-    return True, "native path (claude-code-action OAuth)"
+    """Report Claude down on auth rejection or a run-scoped rate limit.
+
+    The Claude Code OAuth token authenticates with `authorization: Bearer`
+    plus the oauth beta header. It must NOT be sent as `x-api-key` — the
+    Anthropic API answers a perfectly healthy OAuth token with
+    `401 invalid x-api-key` when that header is present, which is exactly
+    how a naive reuse of request_preflight() would strand the whole fleet
+    on the fallback backend. Hence a dedicated request here.
+
+    A 429 means the credential is alive, but availability is the ability to
+    serve this run, not merely authenticate. Non-strict callers should walk
+    to Z.ai instead of selecting a Claude path known to be throttled. Only
+    401/403 and 429 are classified unavailable; 400, 5xx, and network faults
+    retain the existing fail-open behavior because this narrow preflight does
+    not prove the full Claude Code path is unavailable in those cases.
+    """
+    token = os.environ.get("CLAUDE_CODE_OAUTH_TOKEN", "").strip()
+    if not token:
+        return False, "CLAUDE_CODE_OAUTH_TOKEN is not configured"
+    try:
+        status, body = request_oauth_preflight(token, model or "claude-sonnet-5")
+    except Exception as exc:  # noqa: BLE001 - a probe must not crash selection
+        # Fail OPEN: a transient network fault is not evidence the
+        # credential is dead, and rerouting the fleet on a blip is worse
+        # than letting the agent step surface the real error.
+        return True, f"native path (OAuth probe inconclusive: {redact(str(exc))})"
+    if status in (401, 403):
+        return False, f"HTTP {status}: {extract_message(status, body)}"
+    if status == 429:
+        return False, f"HTTP 429: rate limited for this run: {extract_message(status, body)}"
+    return True, f"native path (claude-code-action OAuth; probe HTTP {status})"
+
+
+def probe_opencode(model: str) -> tuple[bool, str]:
+    """Check only whether the isolated OpenCode adapter can authenticate.
+
+    OpenCode Go does not expose a stable provider preflight endpoint here.
+    The isolated container owns runtime/provider error handling, including
+    fatal usage-limit detection. Selection therefore treats a configured key
+    as available and never exposes it to any non-OpenCode child action.
+    """
+    api_key = os.environ.get("OPENCODE_API_KEY", "").strip()
+    if not api_key:
+        return False, "OPENCODE_API_KEY is not configured"
+    return True, "isolated OpenCode credential configured"
 
 
 PROBES = {
     "fireworks": probe_fireworks,
     "zai": probe_zai,
     "claude": probe_claude,
+    "opencode-go": probe_opencode,
 }
 
 
@@ -128,10 +224,17 @@ def main_with_args(argv: list[str] | None = None) -> int:
         return config_error(f"{args.file} has no 'backends' profile table")
 
     strict = args.fallback_policy == "none"
+    lane_fallback_chain: list[str] = []
     if args.backend:
         requested = normalize(args.backend, backends)
         if requested is None:
             return config_error(f"unknown backend selector '{args.backend}'")
+        adapter = str(backends[requested].get("adapter", "agent-run"))
+        if adapter != "agent-run":
+            return config_error(
+                f"explicit backend '{requested}' uses adapter '{adapter}'; "
+                "cross-adapter execution requires a lane fallback_chain contract"
+            )
     elif args.lane:
         lane = lanes.get(args.lane)
         if lane is None:
@@ -147,10 +250,23 @@ def main_with_args(argv: list[str] | None = None) -> int:
                                 "in the backends table")
         if lane.get("strict"):
             strict = True
+        raw_lane_chain = lane.get("fallback_chain", [])
+        if not isinstance(raw_lane_chain, list):
+            return config_error(f"lane '{args.lane}' fallback_chain must be a list")
+        lane_fallback_chain = [str(entry) for entry in raw_lane_chain]
     else:
         return config_error("one of --lane or --backend is required")
 
-    chain: list[str] = [] if strict else list(fallback.get("chain") or [])
+    # An explicit lane chain is an OVERRIDE, not a prefix. Compatibility was
+    # proven for that lane's prompt/input/output boundary only; silently
+    # continuing into the host-checkout global chain after it fails would
+    # change provenance again and hide the isolated-adapter failure.
+    if strict:
+        chain: list[str] = []
+    elif lane_fallback_chain:
+        chain = lane_fallback_chain
+    else:
+        chain = list(fallback.get("chain") or [])
     candidates: list[str] = []
     for selector in [requested, *chain]:
         key = normalize(str(selector), backends)
@@ -176,7 +292,8 @@ def main_with_args(argv: list[str] | None = None) -> int:
     if chosen is None:
         print(f"::error::no available backend: walked {len(candidates)} candidate(s) "
               f"({', '.join(candidates)}) and every provider probe failed. "
-              "Fix the providers or extend fallback.chain in data/agent-backends.json.",
+              "Fix the providers or the selected lane/global fallback chain in "
+              "data/agent-backends.json.",
               file=sys.stderr)
         return 1
 

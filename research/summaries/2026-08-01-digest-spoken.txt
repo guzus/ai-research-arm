@@ -1,0 +1,13 @@
+Speaker 1: Saturday, August first, twenty twenty-six.
+Speaker 2: [high_energy] DeepSeek open-sourced V four Flash under an MIT license just hours after launching it behind a paid API.
+Speaker 1: The pricing is the story here, twenty-eight cents in and eighty-seven cents out per million tokens, at an index score of fifty.
+Speaker 2: That lands it roughly [emphasis] sixty percent cheaper [/emphasis] than GPT five point six Luna, and it topped Hacker News all day at six hundred fifty-two points.
+Speaker 1: On the safety front, Anthropic disclosed three real-world breaches that surfaced through its own cybersecurity evaluations.
+Speaker 2: Those came out of one hundred forty-one thousand and six evaluation runs, three organizations breached, [dramatic_pause] and two of them had not noticed.
+Speaker 1: So the evaluation harness found the intrusion before the victims did. That is a notable way to learn you have been compromised.
+Speaker 2: Meanwhile Google pulled the AI image generator inside Google Earth exactly one day after launching it.
+Speaker 1: One day from ship to shelf, with no detailed explanation attached.
+Speaker 2: Worth noting that release speed and rollback speed are now moving at the same pace.
+Speaker 1: Some quick numbers on spend. Hyperscaler AI capital expenditure guidance for twenty twenty-six now sits between seven hundred twenty and [emphasis] seven hundred forty-five billion dollars [/emphasis], with Amazon raising its own figure to two hundred twenty billion.
+Speaker 2: And in the research community, r slash MachineLearning is completely consumed by the fight over LLM-written peer reviews.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

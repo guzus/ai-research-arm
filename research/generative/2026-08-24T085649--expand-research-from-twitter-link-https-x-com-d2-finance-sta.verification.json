@@ -1,0 +1,166 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "An attacker who spent roughly 2 ETH drain $8.5M from Term Finance's Yearn-v3-based strategy vaults on August 23, 2026, while Term's core lending markets stayed untouched.",
+      "verdict": "supported",
+      "citation": "https://www.theblock.co/news/defi/2026-08-23-defi-lending-protocol-term-finance-loses-an-estimated-8-5-million-to-governance-exploit-412543"
+    },
+    {
+      "id": "c2",
+      "text": "the attacker pulled approximately 2,843 ETH and 1.68M USDC — the latter swapped to DAI — into a consolidation wallet, a haul of roughly $8.5M representing about 68% of the vault product's pre-exploit TVL",
+      "verdict": "supported",
+      "citation": "https://cointelegraph.com/news/term-finance-8-5m-vault-governance-exploit"
+    },
+    {
+      "id": "c3",
+      "text": "route roughly 2 ETH through Tornado Cash, use it to acquire majority voting power over Term's thinly-held DAO governance token (TERM), then pass malicious proposals through that captured vote",
+      "verdict": "weak",
+      "citation": "https://www.cryptotimes.io/2026/08/23/term-finance-loses-8-5m-after-attacker-hijacks-dao-governance-vote/"
+    },
+    {
+      "id": "c4",
+      "text": "The captured votes bought the attacker 100% voting control of 4 of Term's 5 USDC strategy vaults and roughly 91% control of the ETH Meta Vault",
+      "verdict": "supported",
+      "citation": "https://www.cryptotimes.io/2026/08/23/term-finance-loses-8-5m-after-attacker-hijacks-dao-governance-vote/"
+    },
+    {
+      "id": "c5",
+      "text": "the attacker converting 44.37 WETH, apparently to fund gas or working capital — at block 25816049, roughly 06:25 UTC on August 23",
+      "verdict": "supported",
+      "citation": "https://www.cryptotimes.io/2026/08/23/term-finance-loses-8-5m-after-attacker-hijacks-dao-governance-vote/"
+    },
+    {
+      "id": "c6",
+      "text": "I independently verified this on-chain: a live Etherscan fetch of wallet 0xD5183d8BfC65a50863C62aF2538198A8288FFc13 shows a balance of 2,843.2021 ETH (~$6.94M) and 1,679,642.45 DAI, and the address carries Etherscan's own \"Funded By: Term Finance Exploiter 1\" label",
+      "verdict": "supported",
+      "citation": "https://etherscan.io/address/0xD5183d8BfC65a50863C62aF2538198A8288FFc13"
+    },
+    {
+      "id": "c7",
+      "text": "the trUSD contract itself was also locatable and identifiable: the ERC-20 ... is an upgradeable proxy with a max supply of 65,507,554.35 trUSD and 427 holders",
+      "verdict": "supported",
+      "citation": "https://etherscan.io/token/0xd0580192e98ea6ceb9c7b6191ed2e27560911697"
+    },
+    {
+      "id": "c8",
+      "text": "Tori Finance's own documentation describes it as a synthetic dollar collateralized by delta-neutral trading positions that counterparty institutions run off-chain, plus an unspecified \"additional buffer for adverse conditions\"",
+      "verdict": "unsupported",
+      "citation": "https://docs.tori.finance/products/trusd"
+    },
+    {
+      "id": "c9",
+      "text": "KYC/AML-verified institutional participants can mint trUSD directly from the protocol at net asset value for a 10 basis point (0.1%) fee, while everyone else — retail users, unverified counterparties — can only acquire trUSD on the secondary market, swapping USDC or USDT for it on a DEX rather than minting it into existence",
+      "verdict": "weak",
+      "citation": "https://docs.tori.finance/resources/institutional"
+    },
+    {
+      "id": "c10",
+      "text": "RockawayX's own \"Tori Ecosystem Vault: Investment Thesis & Risk Disclosure\" ... contains zero mentions of Term Finance, Term Labs, Term Vaults, or Yearn anywhere in its text. What it describes instead is infrastructure built on Upshift, an ERC-4626 vault framework ... plus a \"Phase 2\" allocation into Curve and Pendle",
+      "verdict": "supported",
+      "citation": "https://www.rockawayx.com/insights/rockawayx-tori-ecosystem-vault-investment-thesis-risk-disclosure"
+    },
+    {
+      "id": "c11",
+      "text": "D2 Finance's own TVL sits at roughly $23.7M per DefiLlama — meaningfully smaller than Tori Finance, whose $50M Ecosystem Vault pre-deposit cap filled within seven days of launch",
+      "verdict": "weak",
+      "citation": "https://www.rockawayx.com/insights/rockawayx-tori-ecosystem-vault-investment-thesis-risk-disclosure"
+    },
+    {
+      "id": "c12",
+      "text": "Its \"Introducing Term Vaults\" post describes Term Vaults as ERC-4626 tokenized vaults allocating capital between Term's own fixed-rate lending markets and variable-rate lending protocols elsewhere — Aave is the cited example integration",
+      "verdict": "unsupported",
+      "citation": "https://www.term.finance/post/vaults"
+    },
+    {
+      "id": "c13",
+      "text": "No search conducted for this research surfaced Tori Finance named as an integration partner or Risk Curator in that post",
+      "verdict": "supported",
+      "citation": "https://www.term.finance/post/vaults"
+    },
+    {
+      "id": "c14",
+      "text": "Maker's governance response was to mint and auction more than 20,000 new MKR ... The auction diluted MKR holders, DAI's peg held, and the protocol kept operating",
+      "verdict": "weak",
+      "citation": "https://blockonomi.com/makerdao-emergency-5-million-dai-raised/"
+    },
+    {
+      "id": "c15",
+      "text": "Supply exploded toward 33 trillion tokens and the price collapsed to near zero within hours",
+      "verdict": "weak",
+      "citation": "https://ironfinance.medium.com/iron-finance-post-mortem-17-june-2021-6a4e9ccf23f5"
+    },
+    {
+      "id": "c16",
+      "text": "the attacker who had manufactured roughly $116M in bad debt via price manipulation then used Mango's own on-chain governance to propose that the debt be paid out of the protocol's insurance and treasury funds — explicitly framing the theft as a \"bug bounty.\" Roughly $70M of treasury was ultimately paid out in the settlement",
+      "verdict": "weak",
+      "citation": "https://www.coindesk.com/markets/2022/10/12/mango-markets-hacker-provides-ultimatum-repay-bad-debt"
+    },
+    {
+      "id": "c17",
+      "text": "Aave's January 2023 resolution of roughly 2.6-2.7M CRV in bad debt (left over from a failed exploit attempt against a CRV short) went further in the conservative direction: a governance-approved treasury buyback, no AAVE minted, no dilution, no exposure to GHO's peg",
+      "verdict": "supported",
+      "citation": "https://www.coindesk.com/markets/2023/01/26/defi-protocol-aave-clears-bad-crv-token-debt-from-exploit-attempt"
+    },
+    {
+      "id": "c18",
+      "text": "An attacker spent $4.4M buying BONK tokens purely for voting power, then passed a proposal authorizing a $20M payout to itself — a proposal that sailed through because the protocol had no timelock and no quorum minimum at all",
+      "verdict": "weak",
+      "citation": "https://www.halborn.com/blog/post/explained-the-bonkdao-hack-july-2026"
+    },
+    {
+      "id": "c19",
+      "text": "Roughly $116M of that month's $247.4M is commonly attributed to a \"Coldcard exploit\" ... the underlying flaw was a firmware/RNG defect: a build flag had been zeroing a random-number-generator macro since March 2021, letting attackers brute-force weak seed phrases offline",
+      "verdict": "supported",
+      "citation": "https://www.trmlabs.com/resources/blog/the-largest-hardware-wallet-exploit-of-2026-inside-the-usd-116-million-coldcard-hack"
+    },
+    {
+      "id": "c20",
+      "text": "By its own GitBook, D2 has operated live since December 2023, offering \"institutional-grade Stablecoin, RWA, and BTC-backed structured strategies\" through a DeFi-native protocol entity paired with an Approved Asset Manager entity registered in the BVI",
+      "verdict": "weak",
+      "citation": "https://gitbook.d2.finance/"
+    },
+    {
+      "id": "c21",
+      "text": "The team is described only through background claims — \"3 multi-billion dollar hedge funds,\" \"ex-PAG quants\" — that are not independently verifiable from public materials",
+      "verdict": "weak",
+      "citation": "https://gitbook.d2.finance/"
+    },
+    {
+      "id": "c22",
+      "text": "It published on-chain forensic analysis of the April 2026 Kelp DAO/LayerZero exploit — roughly $292M — that was cited alongside independent researchers' findings in mainstream coverage of that incident",
+      "verdict": "unsupported",
+      "citation": "https://innora.ai/blog/kelp-dao-layerzero-292m-exploit-forensic-analysis"
+    },
+    {
+      "id": "c23",
+      "text": "DefiLlama lists \"Term Finance Vaults\" as a protocol page distinct from the combined \"Term Finance\" listing, with the Vaults-only TVL layer sitting around $16.8M across four chains after the exploit",
+      "verdict": "weak",
+      "citation": "https://defillama.com/protocol/termfinance-vaults"
+    },
+    {
+      "id": "c24",
+      "text": "an April 2025 oracle decimal-mismatch bug caused unintended liquidations (~918 ETH, later a ~362 ETH net loss after recovery and reimbursement)",
+      "verdict": "weak",
+      "citation": "https://www.theblock.co/news/defi/2026-08-23-defi-lending-protocol-term-finance-loses-an-estimated-8-5-million-to-governance-exploit-412543"
+    },
+    {
+      "id": "c25",
+      "text": "DefiLlama's classification puts 5 incidents in 2026 worth $25.1M combined before Term Finance, led by BonkDAO's $20M treasury drain in July. Term becomes the sixth incident in the category, bringing the year's governance-attack total to roughly $33.6M",
+      "verdict": "supported",
+      "citation": "https://www.halborn.com/blog/post/explained-the-bonkdao-hack-july-2026"
+    },
+    {
+      "id": "c26",
+      "text": "Q2 2026 logged roughly 70-99 incidents totaling $746M — the most-hacked quarter in DeFi history by incident count",
+      "verdict": "weak",
+      "citation": "https://thedefiant.io/news/hacks/q2-2026-most-hacked-quarter-defi-70-exploits-746m"
+    },
+    {
+      "id": "c27",
+      "text": "against a max supply of 65,507,554.35 trUSD across 427 holders, that mint is roughly 0.4% of supply",
+      "verdict": "weak",
+      "citation": null
+    }
+  ]
+}

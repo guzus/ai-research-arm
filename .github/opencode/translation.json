@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "formatter": false,
+  "lsp": false,
+  "permission": {
+    "*": "deny",
+    "read": {
+      "*": "deny",
+      ".agent-input/translation-segments.json": "allow"
+    },
+    "translation_segment": "allow"
+  }
+}

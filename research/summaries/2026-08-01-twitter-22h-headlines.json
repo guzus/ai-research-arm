@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ASTRA PROOFS HIT BASELINE PROBLEM — RESEARCHER SAYS OPENAI WRITEUP NEVER STATES PRIOR STATE OF THE ART",
+    "source": "@DimitrisPapail",
+    "url": "https://x.com/DimitrisPapail/status/2083648781304709540",
+    "category": "research"
+  },
+  {
+    "headline": "DEEPSEEK V4-FLASH COMPLETES SAME BENCHMARK TASKS AS ANTHROPIC FABLE 5 AT 105X LOWER TOTAL COST",
+    "source": "@cline",
+    "url": "https://x.com/cline/status/2083638204037820734",
+    "category": "model"
+  },
+  {
+    "headline": "DEADLINE PASSES FOR CLASSIFIED US BENCHMARK THAT DECIDES WHICH SYSTEMS COUNT AS FRONTIER MODELS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2083665036854329394",
+    "category": "policy"
+  },
+  {
+    "headline": "REFLECTION AI STILL HAS NO MODEL A YEAR AFTER NVIDIA'S $800M BET ON A US OPEN-SOURCE CHAMPION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2083628878585577748",
+    "category": "business"
+  },
+  {
+    "headline": "DEEPSEEK OPENS CLOSED BETA OF ITS OWN AGENT HARNESS, RECRUITING OPEN-SOURCE HARNESS MAINTAINERS",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2083630221580791991",
+    "category": "opensource"
+  }
+]

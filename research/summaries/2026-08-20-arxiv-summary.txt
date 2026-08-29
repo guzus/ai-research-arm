@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-20
+
+TOP 5 PAPERS:
+• SPADE - self-play RL where one LLM writes executable training environments and learns in them; +5.3 avg across 8 benchmarks
+• Test-Time Scaling in the Wild - candidate pools scale with compute but selection breaks; reward models correlate ~0.12 with quality
+• What is Missing from AI Post-Training AI - LLM agents lock their training strategy early and never re-evaluate it
+• SkillGate - fixes skill-selection credit starvation; 9B policy from 40.8% to 53.2% trial success
+• GC-OPD - group-calibrated distillation for long-context reasoning; +11 points on Qwen3-8B
+
+CATEGORIES: NLP 5, CV/Multimodal 7, Agents 8, Safety 4, Other 7
+
+Full report on GitHub.

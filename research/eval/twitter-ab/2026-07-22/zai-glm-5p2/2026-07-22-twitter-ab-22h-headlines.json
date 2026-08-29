@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "OPENAI RAISES PROJECTED AI COMPUTE SPEND TO ~$750B THROUGH 2030, WSJ REPORTS",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2080055548725338146",
+    "category": "infra"
+  },
+  {
+    "headline": "WSJ: OPENAI TO LEAD-DESIGN PROJECT CAMELIA, $20B GEORGIA CAMPUS AT 3.2 GIGAWATTS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2079975422855430513",
+    "category": "infra"
+  },
+  {
+    "headline": "WIRED: TRUMP WHITE HOUSE SPLIT OVER CHINESE OPEN-SOURCE AI MODELS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2080057640219296109",
+    "category": "policy"
+  },
+  {
+    "headline": "ZHIPU SHIPS GLM-5.2 WITH VISION ON NVIDIA B300S",
+    "source": "@_akhaliq",
+    "url": "https://x.com/_akhaliq/status/2080049496541524429",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC LAUNCHES ECONOMIC INDEX CONNECTOR LETTING CLAUDE QUERY PUBLIC USAGE DATA",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2080048592056725532",
+    "category": "business"
+  }
+]

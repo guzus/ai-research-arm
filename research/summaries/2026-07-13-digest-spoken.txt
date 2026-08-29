@@ -1,0 +1,11 @@
+Speaker 1: Monday, July thirteenth, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI just ripped out Codex's five hour usage cap, the third capacity fix in forty eight hours, and it's quietly undercutting their own claim of having halved inference costs.
+Speaker 1: Anthropic, meanwhile, confirmed that Fable five and Claude Code rate limits are extended through July nineteenth, and Claude Code is shipping a built in browser.
+Speaker 2: Big legal story too. Apple versus OpenAI is escalating. OpenAI's comms chief publicly rebutted the lawsuit, and S and P actually cut Oracle's credit rating over its OpenAI exposure.
+Speaker 1: On the policy front, the White House is reportedly weighing an executive order on open weight models, with one source calling the current approach six months to live.
+Speaker 2: And Germany just got its own sovereign model. Soofi S released a thirty billion parameter model with three billion active parameters, built entirely at home.
+Speaker 1: Some quick numbers. Claude Opus four point eight is now the new state of the art on the G S O benchmark.
+Speaker 2: [emphasis] Twenty two professors [/emphasis] left academia this year alone for OpenAI, Anthropic, Google, or Meta.
+Speaker 1: [dramatic_pause] And in safety research, mixed model chain of thought monitors cut harmful action approvals from forty five percent down to just [emphasis] six percent [/emphasis].
+Speaker 2: On Hacker News, there's a wave of scrutiny over coding agent telemetry, including a teardown of the Grok CLI and its token overhead.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

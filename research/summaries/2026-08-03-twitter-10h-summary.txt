@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-03 10:03:06 UTC
+
+CYCLE: China's AI capital markets and video models both move — while Qwen's autonomy numbers wobble.
+
+TOP STORIES:
+• Moonshot AI reported filing HK IPO this month at ~$3B, after $35B Series F and a Series G pulled forward at $50B pre-money [⚠]
+• Qwen3.8-Max pitch shifts to a claimed 16-day unattended run (265 commits/127 PRs) — retellings already disagree (16d vs 10+d), no log released [⚠]
+• ByteDance launches Seedance 2.5 (30s single-pass, 50 refs, $0.097/sec) to 5 regions, US excluded for ~1 week [⚠]
+
+WATCH: An actual HKEX filing from Moonshot AI, or a company statement on the $3B/$50B figures.
+
+Full update on GitHub.

@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-12
+
+TOP 5 PAPERS:
+• Long-Horizon AI Research for Grothendieck Constant - agentic AI research tightened best-known bounds on the Grothendieck constant, with insights judged novel by experts
+• Cracks in the Foundation - four minor transformer choices compound to cut long-context performance up to 47%; releases OlmPool (26 comparable 7B models)
+• Surgical WAM - action-free endoscopic video pretraining lifts surgical manipulation success 63.5% to 77.8% under fixed action-label budgets
+• Once Poisoned, Arbitrarily Controlled - single poisoning implants a programmable VLM backdoor with any-to-any caption control at inference
+• Flex-pi - frozen video VAE encodes 3D pointmaps almost losslessly; 6B world-action model beats baselines 2-7x on bimanual manipulation
+
+CATEGORIES: NLP 5 | CV/Multimodal 8 | Agents/Reasoning 8 | Safety 7 | Other 8
+
+Full report on GitHub.

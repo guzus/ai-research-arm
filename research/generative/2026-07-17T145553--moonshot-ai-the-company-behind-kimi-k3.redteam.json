@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "A round opened around June 30, 2026 at $31.5 billion pre-money — still unclosed as of July 17 — is Moonshot's third raise in six months",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "On July 16, 2026, Moonshot shipped Kimi K3 — 2.8 trillion parameters, a 1-million-token context window, weights promised by July 27, and a new Kimi Enterprise tier — priced at $0.30 per million tokens on cache hits, $3.00 on misses, and $15.00 for output, deliberately parked at Anthropic's mid-tier rather than undercutting it",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "QuestMobile counted the Kimi app's China MAU at 21.65 million in Q1 2025 and 9.03 million by Q4 2025 — a 58.3% collapse",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

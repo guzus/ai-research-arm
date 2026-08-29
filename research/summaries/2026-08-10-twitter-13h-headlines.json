@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "META MUSE GLIMMER TAKES 12 OF 24 BENCHMARK ROWS — BUT ITS RIVALS GEMMA 4 31B AND QWEN 3.6 27B BOTH DATE TO APRIL",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2086764019478647147",
+    "category": "model"
+  },
+  {
+    "headline": "MICROSOFT TARGETING ~1M MAIA 300 CHIPS, CONSTRAINED BY TSMC CAPACITY; WANTS ANTHROPIC AS EXTERNAL TENANT",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2086802893609586876",
+    "category": "infra"
+  },
+  {
+    "headline": "ANTHROPIC SAID TO FORM THESEUS INFRASTRUCTURE WITH MACQUARIE AND GIC — INVESTORS FUND EQUITY, ANTHROPIC PAYS RENT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2086807334643515459",
+    "category": "business"
+  },
+  {
+    "headline": "INTEL RAISES CAPITAL WEEKS AFTER SEMIANALYSIS SAID IT MUST — FIRM CALLS FOR EVEN MORE TO FUND FOUNDRY",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2086806145172410849",
+    "category": "business"
+  },
+  {
+    "headline": "HUGGING FACE SHIPS DAY-0 MUSE GLIMMER SUPPORT; DFLASH DRAFTER TAKES RTX 5090 FROM 74.9 TO 233.4 TOKENS/SEC",
+    "source": "@mervenoyann",
+    "url": "https://x.com/mervenoyann/status/2086768482926957055",
+    "category": "opensource"
+  },
+  {
+    "headline": "ZUCKERBERG ASKS FRONTIER LABS TO SHARE INTERMEDIATE TRAINING CHECKPOINTS WITH GOVERNMENT, LEAVE DISTILLATION UNRESTRICTED",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2086775315888849096",
+    "category": "policy"
+  }
+]

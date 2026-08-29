@@ -13,6 +13,15 @@ status_note: |
   (KOSPI/Samsung/SK Hynix declines), but added no new facts beyond the
   original Information report. Single-outlet exclusive, no Anthropic or
   Samsung on-record confirmation → `rumored` / `partial`.
+
+  **2026-07-14:** Korean media (relayed by @jukan05, a semiconductor
+  supply-chain-focused reporter) says an anonymous industry source close
+  to Samsung Electronics claims Samsung Foundry has secured Anthropic as a
+  foundry customer and agreed to manufacture Anthropic's custom AI chips.
+  Specific and consistent with the existing talks, but still
+  anonymous-sourced with no Samsung or Anthropic on-record statement —
+  reinforces rather than advances the ticket. Status stays `rumored`;
+  verification stays `partial`.
 expected: "No confirmed terms, timeline, or chip specification; watching for an Anthropic/Samsung on-record statement or a follow-on outlet corroborating The Information's report"
 labels:
   - anthropic
@@ -23,13 +32,16 @@ labels:
 verification: partial
 sources:
   - "@theinformation"
+  - "@jukan05"
 created_at: 2026-07-03
-updated_at: 2026-07-03
+updated_at: 2026-07-14
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-07-03
     change: "Created — The Information's exclusive (first reported ~2026-07-02, recirculating in this cycle's signal) says Anthropic is exploring custom chip manufacturing with Samsung, while Anthropic publicly maintains Nvidia 'still matters.' Single-outlet, no Anthropic/Samsung primary or independent corroboration → status rumored, verification partial. Distinct from the existing Micron primary-supplier + co-design pact ([[anthropic-micron-supply-2026-06]]), which is a signed, primary-sourced deal for HBM/DRAM/SSDs — this ticket tracks unconfirmed custom-silicon talks with a different partner."
+  - ts: 2026-07-14
+    change: "Korean local media (relayed @jukan05) reports an anonymous industry source says Samsung Foundry has secured Anthropic as a foundry customer for custom AI chips. Anonymous-sourced, no Samsung/Anthropic on-record statement → status stays rumored; verification stays partial."
 ---
 
 **The Information** first reported (~2026-07-02) that **Anthropic is

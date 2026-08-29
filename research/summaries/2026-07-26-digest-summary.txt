@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-07-26
+
+TOP STORIES:
+• Anthropic details Claude Opus 5's prompt-injection defenses (least prompt-injectable model yet, per Boris Cherny)
+• Opus 5 benchmark coverage continues: matching/beating Fable 5 at well below its token price
+• New reporting deepens scrutiny of OpenAI's Hugging Face autonomous-hack incident
+• Fallen power line spotlights AI data center grid strain
+
+KEY NUMBERS:
+• YouTube lane: 8 of 10 sources hit fetch errors, 0 high-signal videos
+• RSS: 6 articles collected today
+
+TRENDING: No HN/Reddit/arXiv/Twitter artifacts landed yet today (lanes run later in cycle); coverage thin, dominated by Opus 5 follow-up.
+
+Full digest on GitHub.

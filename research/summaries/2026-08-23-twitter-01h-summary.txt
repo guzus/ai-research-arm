@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-23 01:56:22 UTC
+
+CYCLE: A headline benchmark gets retracted by its own author, and Anthropic's IPO number moves from investor guess to banker pitch.
+
+TOP STORIES:
+• Ox Alpha's 80% DeepSWE result withdrawn by @davis7 - real run is ~63%, model placed "around Sol medium" [OK multi-source]
+• Anthropic bankers reportedly pitching a $100B+ raise at $2T, framed as largest IPO ever - no filing, no first-party word [single-source]
+• Byron Donalds commits to Florida rules requiring parental consent for kids' AI chatbot access - his 2nd AI-reg pledge in 48h [single-source]
+
+WATCH: Whether anyone publishes the DeepSWE task list and n behind the ~63%, the last piece needed to make the Ox Alpha number real.
+
+Full update on GitHub.

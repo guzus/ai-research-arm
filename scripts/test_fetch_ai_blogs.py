@@ -232,5 +232,53 @@ class MainTest(unittest.TestCase):
             self.assertIn("[Agent evals in production](https://example.com/post)", text)
 
 
+class ShippedRegistryTest(unittest.TestCase):
+    """Offline structural checks on the registry the workflow actually ships.
+
+    ``load_sources`` already rejects unknown types/priorities and duplicate
+    ids; these assert the conventions a bad hand-edit would otherwise break
+    silently (feeds are never fetched here — no network in CI).
+    """
+
+    def setUp(self):
+        self.sources = blogs.load_sources(blogs.DEFAULT_REGISTRY)
+
+    def test_registry_loads_and_is_non_trivial(self):
+        self.assertGreaterEqual(len(self.sources), 25)
+        self.assertNotIn("bair", {source.id for source in self.sources})
+
+    def test_feed_urls_are_https_and_unique(self):
+        feeds = [s.feed_url for s in self.sources]
+        self.assertEqual(len(feeds), len(set(feeds)), "duplicate feed_url in registry")
+        for source in self.sources:
+            self.assertTrue(
+                source.feed_url.startswith("https://"), f"{source.id}: feed_url must be https"
+            )
+            self.assertTrue(source.url.startswith("https://"), f"{source.id}: url must be https")
+
+    def test_digest_inclusion_tracks_priority(self):
+        # P0/P1 feed the daily digest; P2 is a watch-list tier only. Keeping
+        # this coupled means priority alone decides digest exposure.
+        for source in self.sources:
+            expected = source.priority in ("P0", "P1")
+            self.assertEqual(
+                source.include_in_digest,
+                expected,
+                f"{source.id}: {source.priority} must have include_in_digest={expected}",
+            )
+
+    def test_every_tag_and_cadence_is_known(self):
+        for source in self.sources:
+            self.assertIn(source.cadence, {"daily", "weekly", "monthly"}, source.id)
+            self.assertTrue(source.tags, f"{source.id}: at least one tag required")
+
+    def test_vc_firm_blogs_stay_out_of_the_digest(self):
+        # VC firm feeds are majority portfolio marketing and the firm is
+        # talking its own book; they are a watch list, not digest input.
+        for source in self.sources:
+            if source.type == "vc_blog":
+                self.assertFalse(source.include_in_digest, f"{source.id}: vc_blog must be P2")
+
+
 if __name__ == "__main__":
     unittest.main()

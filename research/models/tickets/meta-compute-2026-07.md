@@ -31,12 +31,14 @@ sources:
   - "@amitisinvesting"
   - "@kimmonismus"
 created_at: 2026-07-02
-updated_at: 2026-07-02
+updated_at: 2026-07-21
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-07-02
     change: "Created — Bloomberg reports (broke ~22:22 UTC July 1) Meta is building a business, internally styled 'Meta Compute,' to rent out excess AI capacity to other companies — the first concrete 'hyperscaler has spare compute to sell' signal. Market reaction: $META +~8–9%, CoreWeave/Nebius −12–17%, semis red, read as a possible crack in the infinite-capex thesis. Single underlying outlet (Bloomberg) relayed across many independent finance accounts with matching $META/CRWV/NBIS figures; Meta has not confirmed or denied → status confirmed (a material, multi-relayed news event) / verification partial (single primary outlet, no Meta on-record confirmation, no launch date/pricing/capacity). Tracked because a hyperscaler monetizing spare inference capacity reshapes AI compute-market economics, adjacent to the week's Karp 'tokenmaxxing' and OpenAI–US-govt-stake ([[openai-us-govt-stake-2026-06]]) 'who controls the stack' threads"
+  - ts: 2026-07-21
+    change: "Concrete financing detail (@AndrewCurran_): BlackRock is reportedly leading a debt sale of at least $12 billion for a 1GW datacenter project in El Paso, Texas, with BlackRock owning 80% and Meta owning 20% (Meta will use the capacity). This is the first specific dollar figure and site tied to Meta's excess-capacity buildout since the original Bloomberg scoop. Single-account sourcing, no primary BlackRock/Meta statement — status stays confirmed, verification stays partial."
 ---
 
 **Bloomberg** reported late on **2026-07-01** (~22:22 UTC) that **Meta** is

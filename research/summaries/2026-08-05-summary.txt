@@ -1,0 +1,17 @@
+AI News - 2026-08-05
+
+TOP STORIES:
+• 9th Circuit vacates Amazon's injunction against Perplexity's Comet shopping agent, ruling users (not Perplexity) "access" Amazon under the CFAA
+• Anthropic hires ex-CA Supreme Court Justice Tino Cuéllar as its first Chief Global Affairs Officer
+• Anthropic confirms in-house chip design team to co-design custom silicon with Claude, targeting ~50% lower inference costs
+• Extended Claude outage (Mythos 5/Fable 5/Opus 5/Sonnet 5) disrupts API and web access for up to 7.5 hours
+• Microsoft Research open-sources Orchard, an agent-training framework hitting 67.5% on SWE-bench Verified with ~3B active params
+• Anaconda acquires AI-security startup Enkrypt AI, folding in MCP-server red-teaming and compliance tooling
+
+KEY NUMBERS:
+• Anthropic targets ~50% cut in per-token Claude inference costs via chip co-design; postings up to $485,000
+• Claude outage lasted ~4-7.5 hours across 4 models; one tracker counts 164 documented outages since January 2026
+• Enkrypt AI found 143,000+ vulnerabilities across 25,000 scanned MCP servers (73% affected)
+• Orchard-SWE: 67.5% SWE-bench Verified with only ~3B active parameters
+
+Full report on GitHub.

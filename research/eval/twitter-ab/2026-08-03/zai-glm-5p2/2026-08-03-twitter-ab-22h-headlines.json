@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "WHITE HOUSE TO MEET OPENAI, ANTHROPIC, GOOGLE, META TUESDAY ON FRONTIER-MODEL REVIEW",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2084338602494787905",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI SHIPS GPT-LIVE: FULL-DUPLEX VOICE THAT LISTENS WHILE IT SPEAKS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2084378415818579975",
+    "category": "model"
+  },
+  {
+    "headline": "PUBLIC GPT-5.6 AND FABLE 5 REPRODUCE MUCH OF OPENAI ASTRA'S OPEN-MATH SWEEP",
+    "source": "@danshipper",
+    "url": "https://x.com/danshipper/status/2083992847091372362",
+    "category": "research"
+  },
+  {
+    "headline": "QWEN3.8-MAX OPEN WEIGHTS CONFIRMED FOR NEXT WEEK — FIRST OPEN QWEN-MAX CLASS",
+    "source": "@Alibaba_Qwen",
+    "url": "https://x.com/jeremyphoward/status/2084374840010850493",
+    "category": "opensource"
+  },
+  {
+    "headline": "DEEPSEEK V4 FLASH 14 COMMUNITY QUANTS RELEASED ON HUGGINGFACE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2084391415103058394",
+    "category": "model"
+  },
+  {
+    "headline": "KIMI K3 GOES US-HOSTED ON PERPLEXITY FOR PRO AND MAX TIERS",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2082189982786277652",
+    "category": "business"
+  }
+]

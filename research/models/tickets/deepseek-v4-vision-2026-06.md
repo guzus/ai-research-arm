@@ -3,7 +3,7 @@ slug: deepseek-v4-vision-2026-06
 title: DeepSeek ships Vision (image understanding) for V4
 company: DeepSeek
 model: DeepSeek V4 (Vision)
-status: released
+status: closed
 status_note: |
   DeepSeek turned on **image understanding for its V4 model** — a team
   researcher (**@PKUCXK / Xiaokang Chen**, 2026-06-18) announced "**Vision is now
@@ -24,12 +24,14 @@ sources:
   - "@PKUCXK"
   - "@ns123abc"
 created_at: 2026-06-18
-updated_at: 2026-06-18
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-16
+closed_at: 2026-07-16
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-18
     change: "Created — DeepSeek shipped Vision (image understanding) for V4: researcher @PKUCXK announced 'Vision is now live on web and app' (2026-06-18), a capability turn-on for the existing V4 line. Live + widely relayed → status released; announced from a team member's personal account (not official @deepseek_ai / model card) with no independent benchmarks → verification partial. API/open-weights reach and quality vs. frontier multimodal models still open."
+  - ts: 2026-07-16
+    change: "Closed — ≥4 weeks past release with no unresolved transition triggers; settled into normal coverage. closed_reason: released-and-aged."
 ---
 
 On **2026-06-18**, **DeepSeek** turned on **image understanding for its

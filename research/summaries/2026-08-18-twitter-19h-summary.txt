@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-18 19:09:29 UTC
+
+CYCLE: Security gating training schedules, and custom inference silicon shipping.
+
+TOP STORIES:
+• OpenAI paused two weeks of deployment-track RL training; largest planned frontier RL run still on hold [✓]
+• Etched raised $700M at $21B and shipped its first rack to Jane Street, which also led the round [✓]
+• Vercel committed $1M to open testing of Vercel Sandbox escapes, any model [⚠]
+• The Information: OpenAI's Luna now outpaces Claude Opus 5 and Sonnet 5 combined on OpenRouter [⚠]
+
+WATCH: Whether OpenAI says on the record that its largest frontier RL run has resumed, and names Astra.
+
+Full update on GitHub.

@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-21 01:54:07 UTC
+
+CYCLE: Data-center politics gets a number, ARC-AGI-2 gets a 84.6%, and SK hynix looks at Japan.
+
+TOP STORIES:
+• Heatmap polling: 75% of Americans oppose a data center near them, vs a 43-42 split a year ago on identical wording [⚠]
+• Gemini 3.7 Flash hits 84.6% on ARC-AGI-2 at $0.25/task in ARC Prize's own verified testing [✓]
+• SK hynix reported to be pursuing its first Japanese fab, in Miyagi, at tens of trillions of won [⚠]
+
+WATCH: Whether a second pollster reproduces a 70%+ data-center opposition level, and what Heatmap's party-ID crosstabs show.
+
+Full update on GitHub.

@@ -1,0 +1,16 @@
+AI News - 2026-07-28
+
+TOP STORIES:
+• Nvidia to invest $5B in Ilya Sutskever's Safe Superintelligence, giving it Vera Rubin compute access
+• 30+ firms (Nvidia, Microsoft, IBM, Hugging Face...) launch Open Secure AI Alliance after OpenAI-HF breach
+• Microsoft ships MAI-Cyber-1-Flash, a cybersecurity model scoring 96% on CyberGym
+• China's CXMT surges 466% on Shanghai IPO debut, becomes China's most valuable listed company
+• Sam Altman heads to DC to brief officials on new models, cybersecurity, open-weight stance
+• Apple delays smart glasses to WWDC 2027; Meta AI now live in Threads DMs
+
+KEY NUMBERS:
+• $5B - Nvidia's SSI investment
+• $488B - CXMT market cap after debut (up 466%)
+• 96% - MAI-Cyber-1-Flash's CyberGym benchmark score
+
+Full report on GitHub.

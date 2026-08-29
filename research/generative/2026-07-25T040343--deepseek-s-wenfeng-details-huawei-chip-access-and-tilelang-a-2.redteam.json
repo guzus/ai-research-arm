@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Moonshot's own API pricing for Kimi K3 is $3 per million input tokens and $15 per million output tokens ... it lands exactly on Claude Sonnet 5's published rate.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "DeepSeek has not confirmed the recording is authentic, and the publisher's own release carries a disclaimer that the text was auto-transcribed from speech recognition.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Neither expert had access to Kratsios's underlying evidence, which — as of this writing — has not been disclosed publicly: no query logs, no procurement paper trail for the alleged GB300 servers.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

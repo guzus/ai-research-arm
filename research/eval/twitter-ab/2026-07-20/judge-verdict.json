@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-judge-verdict",
+  "date": "2026-07-20",
+  "run_id": "29784312189",
+  "run_attempt": 1,
+  "judge_model": "claude-opus-4-8",
+  "position_swap": true,
+  "staging_key_ok": true,
+  "blinding": {
+    "run_key": "29784312189-1",
+    "pass1": {
+      "A": "zai-glm-5p2",
+      "B": "claude"
+    },
+    "pass2": {
+      "A": "claude",
+      "B": "zai-glm-5p2"
+    }
+  },
+  "passes": [
+    {
+      "pass": 1,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "zai-glm-5p2",
+        "B": "claude"
+      },
+      "raw_preferred_letter": "A",
+      "preferred_leg": "zai-glm-5p2",
+      "scores_by_leg": {
+        "zai-glm-5p2": {
+          "coverage": 7.0,
+          "faithfulness": 9.0,
+          "headline_quality": 8.0,
+          "skepticism": 9.0,
+          "format": 9.0,
+          "overall": 8.0
+        },
+        "claude": {
+          "coverage": 7.0,
+          "faithfulness": 7.0,
+          "headline_quality": 8.0,
+          "skepticism": 7.0,
+          "format": 8.0,
+          "overall": 7.0
+        }
+      },
+      "rationale_by_leg": {
+        "zai-glm-5p2": "Leads with the two huge math stories and correctly disaggregates them: the Jacobian counterexample (Fable 5 + Alpoge; kimmonismus 2.7k likes, tszzl, emollick) vs the separate OpenAI-model Erdos/containment-escape thread. Every granular detail traces to the snapshot (NanoGPT, PR #287, token split/obfuscation, Axios sourcing on the China-model curbs, Kirin 32.5nm). Verify tags match the evidence; counter-hypotheses are real (tool-not-autonomous, safety-pipeline-working-as-designed, distillation debunk). Main weakness: it omits the day's biggest engagement cluster entirely \u2014 the Hugging Face autonomous breach / open-vs-closed guardrails debate (DavidSacks 18k, callebtc 12k, Roemmele 5.9k). Clean format, signal-only, consistent headlines/telegram.",
+        "claude": "Builds a coherent front page around the day's dominant China/open-weight theme (HF breach -> Chinese-model curbs -> zero-Nvidia 1GW datacenter), all well-hedged, and captures Frozen v2 and the Kimi-K3 date. But it drops the Jacobian 'AI solves 87-year problem' story completely. Faithfulness slips: it labels the curbs a 'Politico report' when the dominant sourcing is Axios (A got this right), and its skeptic entry on the OpenAI escape invents '@WesRoth's elaboration' (WesRoth is absent from the snapshot) while claiming 'no OpenAI statement' despite a detailed kimmonismus tweet explicitly quoting OpenAI. Solid writing and format, but weaker source hygiene."
+      }
+    },
+    {
+      "pass": 2,
+      "parsed": false,
+      "reason": "verdict missing/unparseable"
+    }
+  ],
+  "per_leg": {
+    "claude": {
+      "overall_avg": 7.0,
+      "criteria_avg": {
+        "coverage": 7.0,
+        "faithfulness": 7.0,
+        "format": 8.0,
+        "headline_quality": 8.0,
+        "skepticism": 7.0
+      },
+      "passes_scored": 1
+    },
+    "zai-glm-5p2": {
+      "overall_avg": 8.0,
+      "criteria_avg": {
+        "coverage": 7.0,
+        "faithfulness": 9.0,
+        "format": 9.0,
+        "headline_quality": 8.0,
+        "skepticism": 9.0
+      },
+      "passes_scored": 1
+    }
+  },
+  "passes_parsed": 1,
+  "final_preference": "zai-glm-5p2"
+}

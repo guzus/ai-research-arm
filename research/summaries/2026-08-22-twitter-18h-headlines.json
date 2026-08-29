@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPEN WEIGHTS TAKE 62% OF VERCEL AI GATEWAY TOKENS TODAY — UP FROM 28.4% ON JUNE 24",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2091234105702887879",
+    "category": "opensource"
+  },
+  {
+    "headline": "SEMIANALYSIS PEGS B300 AT 7,368 OUTPUT TOKENS/SEC PER PROVISIONED MEGAWATT ON DEEPSEEK V4",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091208991271420076",
+    "category": "infra"
+  },
+  {
+    "headline": "HUMAN BRAIN STILL BEATS A B300 ON ENERGY — 690 OUTPUT TOKENS PER KILOCALORIE VERSUS 30.8",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091208995407114595",
+    "category": "research"
+  },
+  {
+    "headline": "META REPORTED TO HIRE LUKE METZ OUT OF OPENAI — HIS SECOND EXIT IN EIGHT MONTHS",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2091187232400900295",
+    "category": "business"
+  },
+  {
+    "headline": "TWO UNRELEASED OPENAI IMAGE MODELS SURFACE AS 'MONA-LISA-1' AND 'LUNA-LISA-ALPHA'",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2091212198722822347",
+    "category": "model"
+  },
+  {
+    "headline": "FREETOKEN CLAIMS 35B MODEL AT 39 TOK/S ON AN 8GB RTX 4060 BY SHUTTLING MOE EXPERTS TO RAM",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2091202223090938177",
+    "category": "research"
+  }
+]

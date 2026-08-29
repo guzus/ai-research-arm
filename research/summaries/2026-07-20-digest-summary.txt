@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-07-20
+
+TOP STORIES:
+• Moonshot AI (Kimi K3) pauses new subscriptions on GPU capacity strain, while reportedly closing a funding round above $30B ahead of a Hong Kong IPO
+• Alibaba confirms Qwen3.8-Max (2.4T params) is launching open-weight; early tester claims it beats Opus models, though Qwen Max-Previews have a history of underdelivering
+• Analyst @scaling01 puts Kimi K3 4.4-5.3 months behind the US frontier, calling the gap "widening" - sparking an open-weight "dumping" policy feud (LeCun/Casado vs. Sacks)
+
+KEY NUMBERS:
+• Moonshot valuation: ~$30B (from $4B in Dec 2025); ARR $300M in June, up from $200M in April
+• Philly Semiconductor Index: -10% for the week, -17% for the month
+• Kimi K3: 2.8x more cost-efficient than Claude Fable 5 on DeepSWE tasks per dollar
+
+TRENDING: Qwen 3.8 release (HN top story, 673 pts/489 comments); "Claude Code uses Bun written in Rust" close behind
+
+Full digest on GitHub.

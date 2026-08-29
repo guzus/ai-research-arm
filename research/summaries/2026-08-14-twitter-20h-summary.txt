@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-14 20:23:14 UTC
+
+CYCLE: Anthropic admits two unreleased models, Qwen's 27B goes local, token-price forwards go on sale.
+
+TOP STORIES:
+• Anthropic Risk Report names unreleased "Model 1"/"Model 2" — Model 2 +1.5 pts over Mythos 5, no release planned, but the trendline puts it ~1 month ahead of public, not a generation [✓]
+• Qwen3.8-27B ships Apache 2.0, 262K ctx, 17GB RAM — "Opus 4.6 Max locally" rests on Qwen's own table, a 201-day-old target, and agentic runs truncating 6/15 turns [⚠]
+• Compute Exchange sells 6-month token price locks as 1-yr H100 rentals rise 50% — but AlphaSense finds token efficiency, not price, drives real cost [⚠]
+
+WATCH: Whether an independent eval reproduces Qwen3.8-27B's multi-turn truncation.
+
+Full update on GitHub.

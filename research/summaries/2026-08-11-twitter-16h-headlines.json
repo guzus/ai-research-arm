@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "NVIDIA BUILDING NEMOTRON 4 OPEN MODEL FAMILY — LARGEST VERSION AT LEAST 1 TRILLION PARAMETERS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2087184793066766426",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI COMPLETES ~$7B EMPLOYEE TENDER AT $852B VALUATION — COMPANY ITSELF REPORTEDLY THE BUYER",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2087207418308723149",
+    "category": "business"
+  },
+  {
+    "headline": "CURSOR ORIGIN WAITLIST GOES LIVE — AGENTIC GIT HOSTING AND CODE-REVIEW RIVAL TO GITHUB",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2087177021105267167",
+    "category": "business"
+  },
+  {
+    "headline": "UNSLOTH SHIPS DESKTOP APP — OPEN-SOURCE LOCAL TRAINING, CLAIMS 2X SPEED AT 70% LESS VRAM",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2087177146662072546",
+    "category": "opensource"
+  },
+  {
+    "headline": "META MUSE GLIMMER 30B TEARDOWN — 52 KIB/TOKEN KV CACHE, BUT ARTIFICIAL ANALYSIS RANKS IT BEHIND QWEN3.6",
+    "source": "@rasbt",
+    "url": "https://x.com/rasbt/status/2087180773497421926",
+    "category": "research"
+  },
+  {
+    "headline": "TORVALDS SAYS AI CODE REVIEW IS DRIVING LINUX 7.2-RC7 TO UNUSUAL SIZE — CALLS IT THE NEW NORMAL",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2087207330739900816",
+    "category": "opensource"
+  },
+  {
+    "headline": "APPLIED COMPUTE IN TALKS AT ~$3B VALUATION — DOUBLE ITS MARK FROM FOUR MONTHS AGO",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2087199903407644803",
+    "category": "business"
+  }
+]

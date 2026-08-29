@@ -1,0 +1,15 @@
+AI News - 2026-08-26
+
+TOP STORIES:
+• Nvidia Q2 FY27 crushes estimates: $96.2B revenue, Huang forecasts ~70% FY28 growth
+• OpenAI's Jalapeño chip beats Nvidia Blackwell 1.5-1.9x perf/watt at Hot Chips
+• Meta settles teen-safety suit for up to $16.68B; new use caps for teens
+• SoftBank weighs $10-20B bond sale to refinance its OpenAI investment
+• AWS & Nvidia: 2M more GPUs + new Vera CPU through 2027-2028
+
+KEY NUMBERS:
+• Nvidia: $96.2B rev (+106% YoY), $89B Data Center, EPS $2.22 non-GAAP
+• Meta settlement: up to $16.68B across 29 states
+• SoftBank bond: $10-20B, part of $65B planned OpenAI investment
+
+Full report on GitHub.

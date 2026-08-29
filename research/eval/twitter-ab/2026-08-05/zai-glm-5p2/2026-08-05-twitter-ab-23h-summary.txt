@@ -1,0 +1,14 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-05 23:57:58 UTC
+
+CYCLE: Google's top AI leadership reshuffles; Meta enters coding agents at cut-rate pricing.
+
+TOP STORIES:
+• Jeff Dean exits Google after 27 yrs to found Discovery Loop; Hassabis steps back from DeepMind to Alphabet Chief Scientist [✓]
+• Meta ships Muse Code agent on new Muse Spark 1.2 ($1.25/$4.25/Mtok), MSL's first [✓]
+• ByteDance founder bans distilling US frontier models, per The Information [⚠]
+• Also: Anthropic confirms custom Claude silicon; Google in talks to buy Mechanize ~$1.5B [⚠]
+• 🚩 "MSFT 70% AI revenue from OpenAI" (single-source, 10.9K likes) — unverified
+
+WATCH: Google Chief Scientist successor; independent Muse Spark 1.2 benchmarks; MSFT FY26 OpenAI-revenue filing.
+
+Full update on GitHub.

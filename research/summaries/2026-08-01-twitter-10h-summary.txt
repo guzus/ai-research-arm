@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-01 10:46:27 UTC
+
+CYCLE: Astra's math claim becomes a document, DeepSeek buys its own gigawatt, and a controlled test says agents still can't pick the question.
+
+TOP STORIES:
+• OpenAI publishes the Astra proofs: 249-page manuscript, Lean certificates, 10 named results, ~$2,000 total inference (~$200/result); GPT-6 vs GPT-5.7 undecided [✓ document / ⚠ math unchecked]
+• Bloomberg: DeepSeek building first self-owned ~1GW campus in Inner Mongolia, part live late 2027 [⚠]
+• arXiv study: agents given 6 days and $3K wrote two papers, both rejected — failure was judgment, not execution [⚠]
+
+WATCH: Whether any specialist independently typechecks one Astra Lean certificate, or finds prior literature for a result claimed as new.
+
+Full update on GitHub.

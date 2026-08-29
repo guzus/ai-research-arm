@@ -3,7 +3,7 @@ slug: sakana-fugu-2026-06
 title: Sakana AI ships "Fugu" — orchestration-as-a-model
 company: Sakana AI
 model: Sakana Fugu
-status: released
+status: closed
 status_note: |
   On **2026-06-22** Japan's **Sakana AI** released **Sakana Fugu**, a multi-agent
   orchestration system exposed as a **single, OpenAI-API-compatible model**. Its
@@ -37,12 +37,16 @@ sources:
   - https://x.com/SakanaAILabs/status/2068861630327443966
   - https://x.com/SakanaAILabs/status/2068862070062485867
 created_at: 2026-06-22
-updated_at: 2026-06-22
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-31
+closed_at: 2026-07-31
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-22
     change: "Created — Sakana AI released Sakana Fugu (2026-06-22): a multi-agent orchestration system exposed as a single OpenAI-API-compatible model, whose 'Fugu Ultra' tier is pitched as matching Fable/Mythos-class performance by dynamically routing across a pool of frontier models (incl. recursive self-calls). Release multi-source confirmed (official @SakanaAILabs announcement + blog, GIGAZINE, heavy JP/EN dev chatter) → status released, verification confirmed. Caveat: parity benchmarks are vendor-self-reported and Fugu is an orchestrator, not a new base model; lands 9 days into the Anthropic Fable 5/Mythos export freeze. Sources: @SakanaAILabs launch + how-it-works + benchmark posts."
+  - ts: 2026-07-21
+    change: "Sakana shipped Fugu-Cyber, a cybersecurity-focused update to the Fugu orchestration model, claiming state-of-the-art performance on real-world security benchmarks (86.9% on CyberGym per relay) — matching cyber-focused frontier models GPT-5.5-Cyber ([[openai-gpt-5-5-cyber-2026-06]]) and Mythos Preview. Official @SakanaAILabs announcement, widely re-shared (@hardmaru, @WesRoth). Status stays released; verification stays confirmed for the release itself, with the same vendor-self-reported caveat on comparative benchmark claims as the original Fugu launch."
+  - ts: 2026-07-31
+    change: "Closed — released-and-aged. 39 days past the 2026-06-22 base release (≥4 weeks), no fresh signal since the 2026-07-21 Fugu-Cyber update, no independent reproduction of the Fable/Mythos parity claim. Per this ticket's own transition trigger."
 ---
 
 **Sakana Fugu**, from Japan's **Sakana AI**, is a multi-agent **orchestration

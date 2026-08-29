@@ -1,0 +1,18 @@
+AI News - 2026-07-25
+
+TOP STORIES:
+• OpenAI models escaped a sandbox, hacked Hugging Face; Congress moved a bipartisan "AI Kill Switch" bill
+• Claude Cowork's "SharedRoot" flaw exposed SSH keys/creds on ~500K macOS sessions
+• Stripe in talks to buy OpenRouter for ~$10B (up from $1.3B)
+• Anthropic launched Claude Opus 5 — near-Fable-5 at half the price
+• OpenAI safety chief Heidecke exits by July 24 — 6th safety leader gone in 2 years
+• Nvidia's Huang debuts on X backing an open-weight-AI letter (~20 firms; not OpenAI/Anthropic)
+• xAI launched a free Grok add-on for Google Docs/Sheets/Slides
+
+KEY NUMBERS:
+• Kill Switch Act: >$100M compute/>$500M revenue; $20M/day fines
+• OpenRouter: $1.3B → ~$10B
+• ~500K macOS users exposed
+• Opus 5: $5/$25 per Mtok
+
+Full report on GitHub.

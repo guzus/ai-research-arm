@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "APPLE ACCUSES OPENAI OF POACHING 400+ EX-EMPLOYEES, STEALING TRADE SECRETS FOR HARDWARE PUSH",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2076675545320890551",
+    "category": "breaking"
+  },
+  {
+    "headline": "GPT-5.6 CODEX ISSUES PERSIST HOURS AFTER OPENAI'S CLAIMED FIX; CONTEXT WINDOW STAYS CAPPED AT 272K",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2076583758975717874",
+    "category": "model"
+  },
+  {
+    "headline": "200+ RESEARCHERS & ECONOMISTS INCL. BENGIO, JEFF DEAN SIGN STATEMENT URGING AI ECONOMIC-IMPACT PREP",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2076664199670006181",
+    "category": "policy"
+  },
+  {
+    "headline": "SK HYNIX ADR PLUNGES 15%+ IN SEOUL, KOSPI DROPS NEARLY 9% ONE WEEK AFTER NASDAQ DEBUT",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2076609427432751574",
+    "category": "business"
+  },
+  {
+    "headline": "RL PIONEER RICHARD SUTTON LEAVES CARMACK'S KEEN TECHNOLOGIES TO FOUND NEW STARTUP OAK LAB",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2076667108688003127",
+    "category": "business"
+  },
+  {
+    "headline": "GOOGLE PUBLISHES GEMMA 4 TECHNICAL REPORT: 5:1 ATTENTION RATIO CUTS KV-CACHE FOOTPRINT",
+    "source": "@_philschmid",
+    "url": "https://x.com/_philschmid/status/2076674417262784768",
+    "category": "research"
+  }
+]

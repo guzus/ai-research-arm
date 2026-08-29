@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-metrics",
+  "date": "2026-07-20",
+  "hour": "22:00 UTC",
+  "generated_at": "2026-07-20 22:33:39 UTC",
+  "run_id": "29784312189",
+  "run_attempt": 1,
+  "input": {
+    "all_json_sha256": "7fb649cea35117013503263e8c1b13a67090552a276a55b1366c193cd661628b",
+    "manifest_sha256": "e333f002f8d42f2db2490aa378117459bbe81f210f26cc75fb7648db6fb68dc9",
+    "total_tweets": 1918
+  },
+  "parity": {
+    "normalized_prompt_sha256": "f9062f1dc4a88efee54c031bcc9e5354fe27ffbd56b5738db1d099d6b1bea8fc",
+    "allowed_asymmetries": [
+      "API_TIMEOUT_MS=3000000 on the Z.ai route (provider-latency accommodation)",
+      "CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000 on the Z.ai route",
+      "CLAUDE_CODE_EFFORT_LEVEL=max on the non-native routes (pre-existing agent-run provider env)",
+      "CLAUDE_CODE_SUBAGENT_MODEL pinned on the Z.ai route (moot \u2014 the eval toolset has no Task tool)"
+    ]
+  },
+  "legs": {
+    "claude": {
+      "lane": "twitter-ab-claude",
+      "leg_dir": "research/eval/twitter-ab/2026-07-20/claude",
+      "outcome": "success",
+      "backend": {
+        "requested": "claude",
+        "effective": "claude",
+        "used_fallback": false,
+        "model_id": "",
+        "native_model": "claude-sonnet-5",
+        "expected_provider": "claude",
+        "expected_model": "claude-sonnet-5",
+        "served_model": "claude-sonnet-5",
+        "observed_models": [
+          "claude-sonnet-5"
+        ]
+      },
+      "agent": {
+        "result_found": true,
+        "is_error": false,
+        "subtype": "success",
+        "num_turns": 52,
+        "duration_ms": 358883,
+        "duration_api_ms": 345169,
+        "total_cost_usd": 2.6183289000000007,
+        "permission_denials_count": 4,
+        "usage": {
+          "input_tokens": 97,
+          "cache_creation_input_tokens": 171118,
+          "cache_read_input_tokens": 3802383,
+          "output_tokens": 30041,
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 171118,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 436,
+              "cache_read_input_tokens": 170178,
+              "cache_creation_input_tokens": 940,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 940
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        }
+      },
+      "wall_time_seconds": 378,
+      "artifacts": {
+        "digest": true,
+        "status": true,
+        "summary": true,
+        "headlines": true,
+        "required_written": "3/3"
+      },
+      "format": {
+        "valid": true,
+        "error": null,
+        "status": "published",
+        "public_items": 9,
+        "headline_count": 5,
+        "section_present": true,
+        "counted_public_items": 9,
+        "story_cards": 3
+      },
+      "input_integrity": {
+        "sha_pre": "7fb649cea35117013503263e8c1b13a67090552a276a55b1366c193cd661628b",
+        "sha_post": "7fb649cea35117013503263e8c1b13a67090552a276a55b1366c193cd661628b",
+        "matches_snapshot": true,
+        "unchanged_during_leg": true
+      },
+      "prompt_sha256": "1915f35d91d0ef218eff493609717ed0d59cb2e341d5eac6e05b32b8844d01e6",
+      "commits": {
+        "base_sha": "560ef12bd0a476ddbe0179832328a639e892fa22",
+        "post_sha": "179c3d19a9acfc4a93f89c7820b1de96f87da2ae",
+        "committed": true
+      },
+      "flags": [
+        "sandbox-suspect"
+      ]
+    },
+    "zai-glm-5p2": {
+      "lane": "twitter-ab-zai",
+      "leg_dir": "research/eval/twitter-ab/2026-07-20/zai-glm-5p2",
+      "outcome": "success",
+      "backend": {
+        "requested": "zai-glm-5p2",
+        "effective": "zai-glm-5p2",
+        "used_fallback": false,
+        "model_id": "glm-5.2",
+        "native_model": "claude-sonnet-5",
+        "expected_provider": "zai",
+        "expected_model": "glm-5.2",
+        "served_model": "glm-5.2",
+        "observed_models": [
+          "glm-5.2"
+        ]
+      },
+      "agent": {
+        "result_found": true,
+        "is_error": false,
+        "subtype": "success",
+        "num_turns": 41,
+        "duration_ms": 561938,
+        "duration_api_ms": 548944,
+        "total_cost_usd": 2.213204,
+        "permission_denials_count": 14,
+        "usage": {
+          "input_tokens": 93326,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 2085248,
+          "output_tokens": 28158,
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "",
+          "iterations": [],
+          "speed": "standard"
+        }
+      },
+      "wall_time_seconds": 580,
+      "artifacts": {
+        "digest": true,
+        "status": true,
+        "summary": true,
+        "headlines": true,
+        "required_written": "3/3"
+      },
+      "format": {
+        "valid": true,
+        "error": null,
+        "status": "published",
+        "public_items": 10,
+        "headline_count": 6,
+        "section_present": true,
+        "counted_public_items": 10,
+        "story_cards": 3
+      },
+      "input_integrity": {
+        "sha_pre": "7fb649cea35117013503263e8c1b13a67090552a276a55b1366c193cd661628b",
+        "sha_post": "7fb649cea35117013503263e8c1b13a67090552a276a55b1366c193cd661628b",
+        "matches_snapshot": true,
+        "unchanged_during_leg": true
+      },
+      "prompt_sha256": "e6478555d3a619f0e675033ccae7fdefcf8cb9b434298652f04b6b0226dfc38b",
+      "commits": {
+        "base_sha": "560ef12bd0a476ddbe0179832328a639e892fa22",
+        "post_sha": "4ebb4c7c66aaf676c90fa3a2fbd6e371cb6cc065",
+        "committed": true
+      },
+      "flags": [
+        "sandbox-suspect"
+      ]
+    }
+  },
+  "blinding": {
+    "run_key": "29784312189-1",
+    "pass1": {
+      "A": "zai-glm-5p2",
+      "B": "claude"
+    },
+    "pass2": {
+      "A": "claude",
+      "B": "zai-glm-5p2"
+    },
+    "scrub_hits": {
+      "zai-glm-5p2": 45,
+      "claude": 24
+    },
+    "snapshot_staged": true
+  },
+  "judge_staged": true,
+  "judge_skip_reason": null,
+  "judge": {
+    "judge_model": "claude-opus-4-8",
+    "passes_parsed": 1,
+    "staging_key_ok": true,
+    "per_leg": {
+      "claude": {
+        "overall_avg": 7.0,
+        "criteria_avg": {
+          "coverage": 7.0,
+          "faithfulness": 7.0,
+          "format": 8.0,
+          "headline_quality": 8.0,
+          "skepticism": 7.0
+        },
+        "passes_scored": 1
+      },
+      "zai-glm-5p2": {
+        "overall_avg": 8.0,
+        "criteria_avg": {
+          "coverage": 7.0,
+          "faithfulness": 9.0,
+          "format": 9.0,
+          "headline_quality": 8.0,
+          "skepticism": 9.0
+        },
+        "passes_scored": 1
+      }
+    },
+    "final_preference": "zai-glm-5p2",
+    "verdict_file": "research/eval/twitter-ab/2026-07-20/judge-verdict.json"
+  },
+  "contamination": {
+    "contaminated": false,
+    "reasons": [],
+    "sandbox_suspect": true
+  }
+}

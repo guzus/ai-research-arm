@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Axios filed at 16:00:19 UTC — nineteen seconds after Google's post went live.[^8] Nineteen seconds is not writeable from scratch: it is not enough time to read a two-memo post, confirm that a 27-year Chief Scientist is leaving, and publish. It is exactly enough time to press publish on copy already written, edited and lawyered against an embargo.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "From `gemini-3.1-pro-preview` on 19 February 2026 to reorg day is 167 days with no successor at the tier that sets the frontier.[^19]",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The reorganization is not even the largest AI-driven drawdown of the preceding three weeks.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

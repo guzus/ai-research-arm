@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "GOOGLE BACKSTOPS $15B ANTHROPIC DATA CENTER IN HUBBARD, TEXAS — TPUs, MORGAN STANLEY LOAN",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2082910104316493873",
+    "category": "infra"
+  },
+  {
+    "headline": "ANTHROPIC: TWO SEPARATE NETWORK FAILURES CUT CLAUDE CAPACITY OVER LAST 24 HOURS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2082937616941695241",
+    "category": "infra"
+  },
+  {
+    "headline": "OPENAI SLASHES GPT-5.6 LUNA PRICE 80%, TERRA 20%, AS CHATGPT NEARS 1B WEEKLY USERS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2082878156483219672",
+    "category": "business"
+  },
+  {
+    "headline": "THINKING MACHINES SHIPS INKLING-SMALL: 276B MOE BEATS ITS OWN LARGER SIBLING MODEL",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2082921171897504235",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI: HARNESS SETTINGS, NOT MODEL CAPABILITY, TRIPLED GPT-5.6 SOL'S ARC-AGI-3 SCORE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2082616636989952217",
+    "category": "research"
+  }
+]

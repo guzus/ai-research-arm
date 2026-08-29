@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ASTRA PROOFS STILL UNVERIFIED — NO SPECIALIST REVIEW OF ANY OF THE TEN, OPENAI REPO LABELS PACKAGE 'AGENT-REVIEWED'",
+    "source": "@khanukov",
+    "url": "https://x.com/khanukov/status/2083632597566210219",
+    "category": "research"
+  },
+  {
+    "headline": "ASTRA SPHERE-PACKING EXPONENT WAS CONJECTURED IN 2020 — NEW PART IS THE PROOF AND A MATCHING LOWER BOUND",
+    "source": "@khanukov",
+    "url": "https://x.com/khanukov/status/2083632766919254026",
+    "category": "research"
+  },
+  {
+    "headline": "AMD MI355X BEATS NVIDIA B200 ON UPSTREAM vLLM FOR KIMI K2.5 — ON COMMUNITY-WRITTEN KERNELS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2083598748018454726",
+    "category": "infra"
+  },
+  {
+    "headline": "ALPHABET LEASE BACKSTOPS FOR TPU CAPACITY HIT $43.8B, UP FROM $6.5B IN UNDER A YEAR",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2083591098975326288",
+    "category": "business"
+  },
+  {
+    "headline": "MICROSOFT COPILOT CAN BE TRICKED INTO LEAKING DATA ACROSS M365 — ATTACK LEAVES NO SUSPICIOUS LOG TRAIL",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2083598694260105260",
+    "category": "policy"
+  }
+]

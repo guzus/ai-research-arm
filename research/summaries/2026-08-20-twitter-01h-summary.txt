@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-20 01:47:33 UTC
+
+CYCLE: Denials and disclosures — Cognition rebuts the SpaceX report, OpenAI's CFO reportedly gives staff an IPO date.
+
+TOP STORIES:
+• Scott Wu denies Bloomberg: "Cognition is not for sale and we haven't been talking" — but the compute-deal half of the report goes unaddressed [⚠]
+• OpenAI CFO reportedly told an all-hands: Q3 enterprise ARR +50%, IPO targeted by 2027, both OpenAI and Anthropic said to have filed confidentially [⚠]
+• Anthropic ships domain allowlists for agent web_search/web_fetch, plus sandbox memory and per-thread cost in Console [✓]
+
+WATCH: Whether Bloomberg stands by the SpaceX-Cognition story, and whether anyone addresses the compute-capacity talks the denial skips.
+
+Full update on GitHub.

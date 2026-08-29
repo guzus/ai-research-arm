@@ -1,0 +1,76 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The Truss Links were operator controlled in all physical Truss Link experiments using a custom keyboard interface.",
+      "verdict": "supported",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"
+    },
+    {
+      "id": "c2",
+      "text": "the claim that the ratchet-jointed Truss Link walks 66.5% faster than its plain hinged counterpart ... the ratchet joint's one-way locking mechanism reportedly reverses the ordering entirely",
+      "verdict": "weak",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"
+    },
+    {
+      "id": "c3",
+      "text": "Material cost exceeds $200/unit; the authors say it is neither cheap nor built for mass production",
+      "verdict": "supported",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"
+    },
+    {
+      "id": "c4",
+      "text": "DARPA TRADES: TRAnsformative DESign — a Defense Sciences Office program that ran ~2017-2021 and is now archived; funded computational design tools for exploiting new materials and additive manufacturing, not robotics or military hardware specifically",
+      "verdict": "supported",
+      "citation": "https://www.darpa.mil/research/programs/transformative-design"
+    },
+    {
+      "id": "c5",
+      "text": "the VTT relies on a spherical linkage connector that requires careful alignment... the Truss Link uses a free-form magnetic attachment mechanism ... the VTT forms stronger structures than the Truss Link, but lacks the ease of self-assembly of Truss Links (13.7 N pull-away vs. 530 N Spiral Zipper compressive load)",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2508.01829v1"
+    },
+    {
+      "id": "c6",
+      "text": "Citations (Semantic Scholar), value: ~5, note: ~1 year post-publication",
+      "verdict": "supported",
+      "citation": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1126/sciadv.adu6897"
+    },
+    {
+      "id": "c7",
+      "text": "Citations (Google Scholar), value: ~7, note: ~1 year post-publication",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c8",
+      "text": "2024-06-24 IEEE ReMAR conference paper; 2024-11-17 arXiv preprint posted; 2025-05-22 accepted at Science Advances; 2025-07-16 published + press embargo lifts",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2411.11192"
+    },
+    {
+      "id": "c9",
+      "text": "Three tetrahedrons were successfully formed across ten robot-assisted attempts. Getting to the first successful physical tetrahedron self-assembly took 37 manual-tuning attempts before the robot succeeded on its 6th subsequent try",
+      "verdict": "supported",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"
+    },
+    {
+      "id": "c10",
+      "text": "the field still hasn't delivered on two of its three founding promises — robustness and low cost — and that working systems remain capped at roughly 50 modules in practice",
+      "verdict": "supported",
+      "citation": "https://en.wikipedia.org/wiki/Self-reconfigurable_robot"
+    },
+    {
+      "id": "c11",
+      "text": "physical (motor-driven) experiments in the source paper operated topologies with up to four simultaneous connections per junction, and manually assembled (non-actuated) topologies reached up to six",
+      "verdict": "supported",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"
+    },
+    {
+      "id": "c12",
+      "text": "the same account has separately referenced having written roughly 30 posts on a recurring topic over the preceding year",
+      "verdict": "weak",
+      "citation": "https://x.com/lukas_m_ziegler/status/1876972833240125819"
+    }
+  ]
+}

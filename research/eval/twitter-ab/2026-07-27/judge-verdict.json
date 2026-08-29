@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-judge-verdict",
+  "date": "2026-07-27",
+  "run_id": "30311456011",
+  "run_attempt": 1,
+  "judge_model": "claude-opus-4-8",
+  "position_swap": true,
+  "staging_key_ok": true,
+  "blinding": {
+    "run_key": "30311456011-1",
+    "pass1": {
+      "A": "zai-glm-5p2",
+      "B": "claude"
+    },
+    "pass2": {
+      "A": "claude",
+      "B": "zai-glm-5p2"
+    }
+  },
+  "passes": [
+    {
+      "pass": 1,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "zai-glm-5p2",
+        "B": "claude"
+      },
+      "raw_preferred_letter": "A",
+      "preferred_leg": "zai-glm-5p2",
+      "scores_by_leg": {
+        "zai-glm-5p2": {
+          "coverage": 7.0,
+          "faithfulness": 6.0,
+          "headline_quality": 8.0,
+          "skepticism": 8.0,
+          "format": 8.0,
+          "overall": 7.0
+        },
+        "claude": {
+          "coverage": 8.0,
+          "faithfulness": 5.0,
+          "headline_quality": 7.0,
+          "skepticism": 5.0,
+          "format": 7.0,
+          "overall": 6.0
+        }
+      },
+      "rationale_by_leg": {
+        "zai-glm-5p2": "Two strongest stories nailed and meticulously sourced: repeatedly flags single-primary-source and unfetched primaries, treats the 30-day framework as single-source/unconfirmed, and offers a real counter-reading (the asks 'function like a ban'). Verify chips match the evidence. Misses the major Microsoft/CyberGym story and Google $44B. One clear fabrication: the Skeptic's-corner 'Anthropic-5.5 leak' cites @Amank1412 with a URL that actually belongs to @rauchg's Kimi K3 tweet; no such account or leak exists in the snapshot, though it is hedged 'unverified rumor.' Overall the most trustworthy brief to ship.",
+        "claude": "Broader, punchy coverage \u2014 captures Microsoft/CyberGym (all numbers accurate), Google $44B, and Kimi K3 arena. But more and worse faithfulness failures: Story 3 attributes the announcement to @satyanadella/@mustafasuleyman tweet IDs that don't exist (real sources: WesRoth/rohanpaul/testingcatalog), and the headline reuses the fake @satyanadella URL. Story 2 launders a single-source (The Information) item into '\u2713 multi-source confirmed' via a fabricated 'Fortune via @leomschwartz' citation, and asserts an 'Aug 1 deadline / June executive order' with zero snapshot support. Distorted verification status undercuts a news brief's core value."
+      }
+    },
+    {
+      "pass": 2,
+      "parsed": false,
+      "reason": "verdict missing/unparseable"
+    }
+  ],
+  "per_leg": {
+    "claude": {
+      "overall_avg": 6.0,
+      "criteria_avg": {
+        "coverage": 8.0,
+        "faithfulness": 5.0,
+        "format": 7.0,
+        "headline_quality": 7.0,
+        "skepticism": 5.0
+      },
+      "passes_scored": 1
+    },
+    "zai-glm-5p2": {
+      "overall_avg": 7.0,
+      "criteria_avg": {
+        "coverage": 7.0,
+        "faithfulness": 6.0,
+        "format": 8.0,
+        "headline_quality": 8.0,
+        "skepticism": 8.0
+      },
+      "passes_scored": 1
+    }
+  },
+  "passes_parsed": 1,
+  "final_preference": "zai-glm-5p2"
+}

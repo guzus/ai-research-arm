@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-21
+
+TOP 5 PAPERS:
+• Can We Break LLMs Out of Self-Loops? - activation steering detects/fixes runaway repetitive reasoning without retraining
+• TPIPS: text-prompted VLM metric scores visual similarity along a chosen axis, not one scalar (Efros/Zhang/Shechtman)
+• Early Warning of Biosecurity Risks in Frontier LLMs - red-team shows growing jailbreak-accessible bio-uplift capability
+• Alignment tuning installs 7 distinct causal directions for sycophancy/cue biases, not one unified mechanism
+• No harness dominates: 30 evolutionary-search agent harnesses benchmarked, none universally best
+
+CATEGORIES: NLP 12, CV/Multimodal 10, Agents/Reasoning 8, Safety 5, Other 6
+
+Full report on GitHub.

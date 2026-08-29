@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "OPENAI OPENS FRONTIER MODELS TO 10,000 RESEARCHERS FREE, SCALING TO 100,000 BY 2027",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2082516370949062989",
+    "category": "research"
+  },
+  {
+    "headline": "THE INFORMATION: OPENAI, ANTHROPIC ALIGNING ON GOV MODEL REVIEWS, CHINESE OPEN-SOURCE SCRUTINY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2082549238400012773",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI RESETS CODEX/CHATGPT WORK LIMITS, CUTS GPT-5.6 SOL TOKEN USE ~18%",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2082524787377611037",
+    "category": "model"
+  },
+  {
+    "headline": "US GOV TAKES 1% STAKE IN GLOBALFOUNDRIES, ADDS $300M CHIPS ACT GRANT FOR CO-PACKAGED OPTICS",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2082513405219631384",
+    "category": "infra"
+  }
+]

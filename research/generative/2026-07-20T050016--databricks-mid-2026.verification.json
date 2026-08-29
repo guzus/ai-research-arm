@@ -1,0 +1,136 @@
+{
+  "claims": [
+    {
+      "id": "v1",
+      "text": "Databricks signed a term sheet July 16, 2026 for a strategic round at a $188B valuation, led by Coatue, closing later this summer.",
+      "verdict": "supported",
+      "citation": "Databricks press release (2026-07-16) and Reuters (2026-07-17) both confirm the term sheet, valuation, lead investor, and expected close timing."
+    },
+    {
+      "id": "v2",
+      "text": "The round size is reportedly ~$3B; Databricks did not disclose the amount.",
+      "verdict": "supported",
+      "citation": "TechCrunch (2026-07-17) states Databricks did not disclose the size and cites WSJ reporting of roughly $3B."
+    },
+    {
+      "id": "v3",
+      "text": "Annualized revenue hit $6.9B in June 2026, up >80% YoY, up from $5.4B in fiscal Q4.",
+      "verdict": "supported",
+      "citation": "CNBC (2026-06-16), confirmed against Databricks' own Feb 2026 release for the $5.4B Q4 figure."
+    },
+    {
+      "id": "v4",
+      "text": "Run-rate series: $4B (Sep 2025, +50%) → $4.8B (Dec 2025, +55%) → $5.4B (Feb 2026, +65%).",
+      "verdict": "supported",
+      "citation": "Three consecutive Databricks press releases (2025-09-08, 2025-12-16, 2026-02-09) give each figure and growth rate."
+    },
+    {
+      "id": "v5",
+      "text": "AI products run rate: $1B (Sep 2025) → $1.4B (Feb 2026) → $1.7B (Jun 2026), about a quarter of the total.",
+      "verdict": "supported",
+      "citation": "Databricks releases for $1B/$1.4B; CNBC (2026-06-16) for $1.7B. 1.7/6.9 ≈ 25%. Definition flagged as company-drawn in a callout."
+    },
+    {
+      "id": "v6",
+      "text": "NRR sustained >140% across three disclosures; >800 customers at $1M+ and >70 at $10M+ run rate (Feb 2026); 650+ at $1M in Sep 2025.",
+      "verdict": "supported",
+      "citation": "Databricks press releases 2025-09-08, 2025-12-16, 2026-02-09."
+    },
+    {
+      "id": "v7",
+      "text": "Positive free cash flow over trailing 12 months reported in Sep 2025, Dec 2025, and Feb 2026.",
+      "verdict": "supported",
+      "citation": "All three Databricks releases state positive FCF over the last 12 months."
+    },
+    {
+      "id": "v8",
+      "text": "Funding ladder: $10B at $62B (Dec 2024); $1B at >$100B (Sep 2025); >$4B at $134B (Dec 2025); ~$5B equity + ~$2B debt (Feb 2026); $188B term sheet (Jul 2026).",
+      "verdict": "supported",
+      "citation": "TechCrunch (2024-12-17), Databricks releases (2025-09-08, 2025-12-16, 2026-02-09, 2026-07-16)."
+    },
+    {
+      "id": "v9",
+      "text": "Ghodsi told investors Databricks could IPO as early as 2027 and called 2026 the 'worst year' to list.",
+      "verdict": "weak",
+      "citation": "Tech Funding News (2026-06-09) reports the comment; it traces to investor conversations and is not in a primary interview transcript. Article attributes it as reported ('has told investors') rather than as direct verified quote."
+    },
+    {
+      "id": "v10",
+      "text": "Ghodsi said gross margin 'will go lower' and attributed compression to agentic AI query volume under the consumption model.",
+      "verdict": "supported",
+      "citation": "CNBC (2026-06-16) direct interview quotes."
+    },
+    {
+      "id": "v11",
+      "text": "Implied multiples: ~27x annualized revenue for Databricks vs ~15x for Snowflake (~$83B market cap on ~$5.6B annualized revenue).",
+      "verdict": "supported",
+      "citation": "Arithmetic on sourced figures: 188/6.9 = 27.2; 83/5.6 = 14.8 (CNBC 2026-06-16 for Snowflake figures; Databricks PR for $188B)."
+    },
+    {
+      "id": "v12",
+      "text": "Data warehousing passed $1B run rate in under four years from GA; Lakebase had thousands of customers in six months growing at twice the warehousing pace.",
+      "verdict": "supported",
+      "citation": "Databricks press release (2025-12-16)."
+    },
+    {
+      "id": "v13",
+      "text": "Neon acquired for about $1B (May 2025); Tabular acquired June 2024 at a reported ~$2B (confirmed >$1B); Anthropic deal is five years, $100M (March 2025).",
+      "verdict": "supported",
+      "citation": "CNBC (2025-05-14), TechCrunch/Bloomberg (2024-08-14), Forbes (2025-03-26)."
+    },
+    {
+      "id": "v14",
+      "text": "Unity Catalog added managed Iceberg tables and an Iceberg REST catalog API (public preview, June 2025); Databricks called it the most complete catalog for Iceberg and Delta Lake.",
+      "verdict": "supported",
+      "citation": "Databricks blog (2025-06-12) and press release (2025-06-11)."
+    },
+    {
+      "id": "v15",
+      "text": "Snowflake Q1 FY27: product revenue $1.334B +34%, total $1.391B +33%, NRR 126%, 779 $1M+ customers, RPO $9.21B +38%, FY27 product guidance $5.84B +31%, 13,600+ AI accounts, $6B AWS agreement, Natoma acquisition.",
+      "verdict": "supported",
+      "citation": "Snowflake IR press release (2026-05-27), all figures read directly."
+    },
+    {
+      "id": "v16",
+      "text": "Snowflake FY2026 full-year product revenue was $4.472B, up 29%; Q4 product revenue $1.227B, up 30%; RPO $9.77B, up 42%.",
+      "verdict": "supported",
+      "citation": "Snowflake Q4/FY2026 press release (2026-02-25)."
+    },
+    {
+      "id": "v17",
+      "text": "SNOW fell ~50% from $274.88 (Oct 2025 close) to $136.47 (Apr 2026 close) and recovered to $268.90 by Jul 20, 2026.",
+      "verdict": "supported",
+      "citation": "yfinance monthly closes retrieved via scripts/stock_prices.py on 2026-07-20; arithmetic: 136.47/274.88 = -50.4%; 268.90/136.47 = +97%."
+    },
+    {
+      "id": "v18",
+      "text": "Naveen Rao left Databricks (Sep 2025) to found Unconventional AI, reportedly raising $1B at a $5B valuation with a16z; Databricks invested.",
+      "verdict": "supported",
+      "citation": "Bloomberg (2025-09-12) for the exit; TechCrunch (2025-10-03) for the raise terms."
+    },
+    {
+      "id": "v19",
+      "text": "Databricks benchmark found GLM 5.2 and open models handle hardest coding tasks at lower cost than proprietary models; harness choice also matters.",
+      "verdict": "supported",
+      "citation": "Databricks engineering blog (July 2026) as described by TechCrunch (2026-07-17); vendor-authored benchmark, framed as internal in the article."
+    },
+    {
+      "id": "v20",
+      "text": "Genie One GA, Lakehouse//RT beta (sub-100ms at 12k QPS, up to 16x better), CustomerLake CDP, Panther acquisition agreement, Lakewatch launched March 2026.",
+      "verdict": "supported",
+      "citation": "Databricks press releases (2026-06-16) and CNBC (2026-06-16). Performance figures are vendor benchmarks, presented as vendor claims."
+    },
+    {
+      "id": "v21",
+      "text": "SpaceX held the largest IPO on record in June 2026 topping $2T market cap; OpenAI and Anthropic filed confidentially.",
+      "verdict": "supported",
+      "citation": "CNBC (2026-06-16) main article plus linked CNBC coverage (2026-06-15, 2026-06-08)."
+    },
+    {
+      "id": "v22",
+      "text": "20,000+ customer organizations and 70% of the Fortune 500 as of July 2026.",
+      "verdict": "supported",
+      "citation": "Databricks press release (2026-07-16)."
+    }
+  ]
+}

@@ -44,8 +44,10 @@ CONTENT_NS = {"content": "http://purl.org/rss/1.0/modules/content/"}
 PRIORITY_WEIGHT = {"P0": 100, "P1": 70, "P2": 40}
 TYPE_WEIGHT = {
     "expert_blog": 15,
+    "investor_blog": 12,
     "kol_substack": 10,
     "research_lab": 10,
+    "vc_blog": 0,
     "vendor_blog": 0,
 }
 TAG_WEIGHT = {
@@ -61,14 +63,26 @@ TAG_WEIGHT = {
     "production-ai": 8,
     "ai-security": 8,
     "frontier-research": 8,
+    # Capital-side signal: compute economics and semis drive most AI-cycle
+    # analysis worth reading; generic "we invested in X" tags stay near zero
+    # so portfolio marketing cannot outrank a thesis post.
+    "compute-economics": 10,
+    "semiconductors": 10,
+    "enterprise-adoption": 6,
+    "market-analysis": 6,
+    "china": 6,
     "policy": 5,
     "safety": 5,
+    "valuation": 4,
+    "venture-capital": 3,
+    "funding": 3,
 }
 TITLE_BONUS_PATTERNS = (
     (re.compile(r"\b(agent|agents|agentic|coding agent)\b", re.I), 12),
     (re.compile(r"\b(eval|evaluation|benchmark|reliability)\b", re.I), 10),
     (re.compile(r"\b(open[- ]?model|post[- ]?training|inference)\b", re.I), 10),
     (re.compile(r"\b(architecture|reasoning|alignment|hallucination)\b", re.I), 8),
+    (re.compile(r"\b(capex|compute|datacenter|data ?cent(?:er|re)|gpu|hbm|fab)\b", re.I), 8),
     (re.compile(r"\b(release|launched|announced|introducing)\b", re.I), 5),
 )
 TITLE_PENALTY_PATTERNS = (
@@ -76,6 +90,23 @@ TITLE_PENALTY_PATTERNS = (
     (re.compile(r"\b(podcast|transcript|video)\b", re.I), -8),
     (re.compile(r"\b(partner|partnership|customer story)\b", re.I), -10),
     (re.compile(r"\b(webinar|event|join us|hiring)\b", re.I), -15),
+    # VC firm feeds are majority portfolio marketing. Without this the
+    # "Investing in <startup>" / "Welcoming <partner>" stream would crowd out
+    # the thesis posts that made the source worth subscribing to.
+    (
+        re.compile(
+            r"(\b(?:why\s+)?we(?:'re| are)?\s+invest(?:ed|ing)\b"
+            r"|\binvesting in\b"
+            r"|\bbehind the investment\b"
+            r"|\bour investment in\b"
+            r"|\bwelcom(?:e|ing)\b"
+            r"|\bjoins?\s+(?:us|the team)\b"
+            r"|\bseries\s+[a-e]\b"
+            r"|\bportfolio\b)",
+            re.I,
+        ),
+        -20,
+    ),
 )
 ROUNDUP_WORDS = {"roundup", "radar", "recap", "podcast", "transcript"}
 
@@ -92,6 +123,7 @@ class Source:
     tags: tuple[str, ...]
     include_in_digest: bool
     notes: str = ""
+    enabled: bool = True
 
 
 @dataclasses.dataclass(frozen=True)
@@ -193,6 +225,7 @@ def load_sources(path: Path) -> list[Source]:
             tags=tuple(row.get("tags", [])),
             include_in_digest=bool(row.get("include_in_digest", True)),
             notes=row.get("notes", ""),
+            enabled=row.get("enabled", True),
         )
         if src.id in seen_ids:
             raise ValueError(f"duplicate source id: {src.id}")
@@ -200,8 +233,11 @@ def load_sources(path: Path) -> list[Source]:
             raise ValueError(f"{src.id}: invalid priority {src.priority!r}")
         if src.type not in TYPE_WEIGHT:
             raise ValueError(f"{src.id}: invalid type {src.type!r}")
+        if not isinstance(src.enabled, bool):
+            raise ValueError(f"{src.id}: enabled must be boolean")
         seen_ids.add(src.id)
-        sources.append(src)
+        if src.enabled:
+            sources.append(src)
     return sources
 
 
@@ -329,8 +365,18 @@ def signal_label(item: FeedItem) -> str:
     title_words = {w.lower() for w in re.findall(r"[A-Za-z]+", item.title)}
     if item.source.type == "vendor_blog":
         return "vendor/operator signal; require concrete release, benchmark, or implementation detail"
+    if item.source.type == "vc_blog":
+        return (
+            "VC firm signal; treat as a market/thesis view, never as a primary source — "
+            "the firm is talking its own book. Drop pure portfolio announcements"
+        )
     if title_words & ROUNDUP_WORDS:
         return "roundup/discovery signal; dedupe before promoting to digest"
+    if item.source.type == "investor_blog":
+        return (
+            "investor/analyst analysis; numbers are the author's estimates unless a "
+            "filing or primary source is cited — verify before quoting"
+        )
     if item.source.type == "research_lab":
         return "primary research context"
     if item.source.type in {"expert_blog", "kol_substack"}:

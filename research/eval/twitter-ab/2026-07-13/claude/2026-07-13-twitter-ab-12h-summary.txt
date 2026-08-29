@@ -1,0 +1,10 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-13 12:49:30 UTC
+
+CYCLE: OpenAI confirms and partially reverses GPT-5.6 Sol's silent nerf
+
+TOP STORIES:
+• OpenAI confirms it throttled GPT-5.6 Sol, then rolled back context window 372k→272k ✓
+
+WATCH: Whether Codex/ChatGPT Work usage burn actually normalizes in the next 24h after the rollback.
+
+Full update on GitHub.

@@ -25,8 +25,8 @@ description: >
   did land on the target branch. If the merge fails (e.g. a same-file
   conflict with a concurrent writer), the PR is left open for manual review
   with `publication-mode=pull-request`. If repository settings block
-  Actions-created pull requests, the generated branch still publishes and
-  the action exits successfully with `publication-mode=branch`.
+  Actions-created pull requests, the generated branch is still retained as
+  `publication-mode=branch`; strict publishers fail because it did not land.
 
 inputs:
   branch:
@@ -39,10 +39,10 @@ inputs:
     default: '5'
   index-merge:
     description: >
-      If 'true', attempt union-by-slug JSON merge on conflicts limited to
-      research/generative/index.json. Any other conflicted path still hard-
-      fails. Defaults to 'false' — only generative-research.yml should
-      enable this.
+      If 'true', union-merge research/generative/index.json and rebuild the
+      derived research/claims/index.json when either conflicts. Any other
+      conflicted path still hard-fails. Defaults to 'false' — only
+      generative-research.yml should enable this.
     required: false
     default: 'false'
   allow-divergent-ref:
@@ -85,6 +85,13 @@ inputs:
       to leave fallback PRs open for manual review.
     required: false
     default: 'true'
+  strict-publication:
+    description: >-
+      auto (default) requires scheduled runs to land content on the target
+      branch; true requires it for every invocation; false preserves advisory
+      branch/open-PR fallback. A genuine no-op remains successful.
+    required: false
+    default: 'auto'
 
 outputs:
   pushed:
@@ -123,6 +130,8 @@ runs:
         SAFE_PUSH_PROTECTED_BRANCH_FALLBACK: ${{ inputs.protected-branch-fallback }}
         SAFE_PUSH_PR_BRANCH_PREFIX: ${{ inputs.pr-branch-prefix }}
         SAFE_PUSH_PR_MERGE: ${{ inputs.pr-merge }}
+        SAFE_PUSH_STRICT_PUBLICATION: ${{ inputs.strict-publication }}
+        SAFE_PUSH_EVENT_NAME: ${{ github.event_name }}
       run: |
         set -euo pipefail
 
@@ -132,6 +141,12 @@ runs:
         PROTECTED_BRANCH_FALLBACK="${SAFE_PUSH_PROTECTED_BRANCH_FALLBACK}"
         PR_BRANCH_PREFIX="${SAFE_PUSH_PR_BRANCH_PREFIX}"
         PR_MERGE="${SAFE_PUSH_PR_MERGE}"
+        case "${SAFE_PUSH_STRICT_PUBLICATION}" in
+          true) STRICT_PUBLICATION=true ;;
+          false) STRICT_PUBLICATION=false ;;
+          auto) [ "${SAFE_PUSH_EVENT_NAME}" = "schedule" ] && STRICT_PUBLICATION=true || STRICT_PUBLICATION=false ;;
+          *) echo "::error::strict-publication must be auto, true, or false"; exit 1 ;;
+        esac
 
         # Safety: refuse to push if the workflow's trigger ref doesn't match
         # the target branch. Without this check, a workflow_dispatch run
@@ -177,10 +192,33 @@ runs:
             return 1
           fi
 
-          local workflow_part run_part pr_branch title body pr_url
+          local workflow_part run_part step_part pr_branch title body pr_url
           workflow_part="$(sanitize_branch_part "${GITHUB_WORKFLOW:-workflow}")"
           run_part="${GITHUB_RUN_ID:-manual}-${GITHUB_RUN_ATTEMPT:-1}"
-          pr_branch="$(sanitize_branch_part "${PR_BRANCH_PREFIX}/${BRANCH}/${workflow_part}-${run_part}")"
+          # Discriminate by step instance. Run id + attempt alone are IDENTICAL
+          # for two safe-push calls in the same job, and the consequence is
+          # silent data loss, not a visible clash: the second call pushes the
+          # same branch name, `gh pr view <branch>` then resolves the FIRST
+          # call's already-merged PR, so this function reports
+          # pushed=true/pull-request-merged while its own commit never lands.
+          # That is what froze research/summaries/twitter-announced-history.json
+          # and stopped research/audio/ stubs, both since the 2026-07-06
+          # ruleset made this fallback the normal path. GITHUB_ACTION is a
+          # per-step-instance id (e.g. __self_7), fixed across retries within a
+          # call and different between calls, which is exactly the property
+          # needed here.
+          # GITHUB_ACTION should always be set for an action step, but a silent
+          # no-op is precisely the failure this fix exists to kill, so fall
+          # back to a per-job counter rather than trusting it. This function is
+          # called at most once per invocation (it exits immediately after), so
+          # the counter cannot drift across retries of one call.
+          step_part="$(sanitize_branch_part "${GITHUB_ACTION:-}")"
+          if [ -z "$step_part" ]; then
+            local seq_file="${RUNNER_TEMP:-/tmp}/safe-push-call-seq"
+            step_part="call$(( $(cat "$seq_file" 2>/dev/null || echo 0) + 1 ))"
+            printf '%s' "${step_part#call}" > "$seq_file"
+          fi
+          pr_branch="$(sanitize_branch_part "${PR_BRANCH_PREFIX}/${BRANCH}/${workflow_part}-${run_part}-${step_part}")"
           title="$(git log -1 --pretty=%s)"
           body="$(printf '%s\n\n%s\n\n- Run: %s\n- Source ref: %s\n- Target branch: %s\n- Commit: %s' \
             "Automated publish fallback for \`${GITHUB_WORKFLOW:-workflow}\`." \
@@ -191,7 +229,10 @@ runs:
             "$(git rev-parse HEAD)")"
 
           echo "Direct push to ${BRANCH} is blocked by repository rules; publishing fallback PR branch ${pr_branch}."
-          git_auth push origin "HEAD:refs/heads/${pr_branch}"
+          if ! git_auth push origin "HEAD:refs/heads/${pr_branch}"; then
+            echo "::error::Failed to publish fallback branch ${pr_branch}."
+            return 1
+          fi
 
           if ! command -v gh >/dev/null 2>&1; then
             echo "::warning::Published fallback branch ${pr_branch}, but gh is unavailable so no pull request was opened."
@@ -201,6 +242,10 @@ runs:
               echo "pull-request-url="
               echo "pull-request-branch=${pr_branch}"
             } >> "$GITHUB_OUTPUT"
+            if [ "$STRICT_PUBLICATION" = "true" ]; then
+              echo "::error::Strict publication: generated branch ${pr_branch} did not land on ${BRANCH}."
+              return 1
+            fi
             return 0
           fi
 
@@ -223,6 +268,10 @@ runs:
                 echo "pull-request-url="
                 echo "pull-request-branch=${pr_branch}"
               } >> "$GITHUB_OUTPUT"
+              if [ "$STRICT_PUBLICATION" = "true" ]; then
+                echo "::error::Strict publication: fallback branch ${pr_branch} did not become a pull request on ${BRANCH}."
+                return 1
+              fi
               return 0
             fi
             echo "Created fallback PR: ${pr_url}"
@@ -263,6 +312,10 @@ runs:
             echo "pull-request-url=${pr_url}"
             echo "pull-request-branch=${pr_branch}"
           } >> "$GITHUB_OUTPUT"
+          if [ "$STRICT_PUBLICATION" = "true" ]; then
+            echo "::error::Strict publication: ${pr_url} remains open, so output is stranded off ${BRANCH}."
+            return 1
+          fi
           return 0
         }
 
@@ -289,6 +342,20 @@ runs:
           ' "$ours" "$theirs" > "$path"
           rm -f "$ours" "$theirs"
           git add "$path"
+        }
+
+        rebuild_claim_index() {
+          python3 scripts/build_claim_index.py
+          git add research/claims/index.json
+        }
+
+        amend_rebased_claim_index_if_needed() {
+          [ "$INDEX_MERGE" = "true" ] || return 0
+          rebuild_claim_index
+          if ! git diff --cached --quiet -- research/claims/index.json; then
+            echo "Rebuilt claim index after incorporating concurrent ledgers"
+            git -c core.editor=true commit --amend --no-edit
+          fi
         }
 
         ATTEMPTS=0
@@ -358,12 +425,13 @@ runs:
             # the working tree matches what the writer intended. If
             # pop conflicts we hard-fail rather than push a commit
             # that excludes potentially-meaningful stashed state.
+            amend_rebased_claim_index_if_needed
             pop_stash_or_fail
           elif [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
             # Rebase actually started and paused on conflicts. The only
-            # path we know how to safely auto-resolve is the JSON-array
-            # index file research/generative/index.json, and only when
-            # INDEX_MERGE is opted in.
+            # With INDEX_MERGE opted in, the generative index is merged by
+            # slug and the claim index is rebuilt from the union of ledgers.
+            # No other conflicted path is safe to infer automatically.
             CONFLICTED=$(git diff --name-only --diff-filter=U | sort -u)
             echo "Conflicted paths:"
             echo "$CONFLICTED"
@@ -384,15 +452,26 @@ runs:
               sleep $((2 * ATTEMPTS))
               continue
             fi
-            if [ "$INDEX_MERGE" = "true" ] \
-                && [ "$CONFLICTED" = "research/generative/index.json" ]; then
-              merge_index_json "research/generative/index.json"
+            ALLOWED_CONFLICTS=$(printf '%s\n' \
+              "research/generative/index.json" \
+              "research/claims/index.json" | sort -u)
+            UNHANDLEABLE=$(comm -23 \
+              <(printf '%s\n' "$CONFLICTED" | sed '/^$/d' | sort -u) \
+              <(printf '%s\n' "$ALLOWED_CONFLICTS"))
+            if [ "$INDEX_MERGE" = "true" ] && [ -z "$UNHANDLEABLE" ]; then
+              if printf '%s\n' "$CONFLICTED" | grep -qx 'research/generative/index.json'; then
+                merge_index_json "research/generative/index.json"
+              fi
+              # Never select either side of a derived claim-index conflict:
+              # rebuild it from the now-combined ledger set.
+              rebuild_claim_index
               if ! git -c core.editor=true rebase --continue; then
                 echo "::error::rebase --continue failed even after JSON merge"
                 git rebase --abort 2>/dev/null || true
                 drop_stash_if_any
                 exit 1
               fi
+              amend_rebased_claim_index_if_needed
               pop_stash_or_fail
             else
               echo "::error::Unhandleable conflict on path(s) above"

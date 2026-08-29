@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-08-17 07:13:01 UTC
+
+CYCLE: Two hard numbers on agent limits and local serving, against a demand narrative with none.
+
+TOP STORIES:
+• DEF CON Black Badge winner reports agent swarms solved 3 of 13 GoldBug puzzles, independent swarms converging on the same wrong answers ⚠
+• llama.cpp maintainer shows a one-command Qwen3.8-27B serve using the model's own MTP head as draft model — first shared artifact in a seven-cycle reproducibility thread ⚠
+
+WATCH: Whether the next Qwen3.8-27B hands-on result cites the ggml-org GGUF and draft-mtp path with a stated reasoning budget and token count.
+
+Full update on GitHub.

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "editor": {
+    "vimMode": false
+  },
+  "permissions": {
+    "allow": [
+      "Read(.agent-input/translation-segments.json)",
+      "Read(.tmp/**/*)",
+      "Read(.github/cursor/**/*)",
+      "Write(.tmp/generative-translation.ko.ara.md)",
+      "Write(.tmp/generative-translation.ko.segments.jsonl)",
+      "Write(.tmp/**/*)"
+    ],
+    "deny": [
+      "Shell(*)",
+      "Write(.env*)",
+      "Write(.git/**/*)",
+      "Write(.github/**/*)",
+      "Write(research/**/*)",
+      "Write(data/**/*)",
+      "Write(scripts/**/*)",
+      "Write(dashboard/**/*)",
+      "Write(docs/**/*)",
+      "WebFetch(*)",
+      "Mcp(*)"
+    ]
+  }
+}

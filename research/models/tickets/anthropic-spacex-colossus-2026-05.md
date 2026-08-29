@@ -29,12 +29,14 @@ sources:
   - "@ainews_24_7"
   - "@iisanidhya"
 created_at: 2026-05-26
-updated_at: 2026-05-26
+updated_at: 2026-07-21
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-05-26
     change: "Created — The Information reporting on SpaceX's IPO filing (2026-05-25 14:00 / 16:00 UTC) disclosed Anthropic's $1.25B/month Colossus 1 lease through May 2029 (~$15B/year, ~$40B cumulative) with a 90-day mutual-termination right; SpaceX Q1 $4.7B revenue / $4.3B loss; AI capex reshaping the pre-IPO story. Anthropic compute web now spans SpaceX/Colossus + Google TPU + AWS Trainium / NVIDIA + Microsoft Maia 200 talks"
+  - ts: 2026-07-21
+    change: "Colossus expansion signal (@ns123abc): SpaceX reportedly ordered ~1 million new GB300 GPUs (~$52B) with Foxconn named as manufacturing partner, pushing Colossus compute toward 2GW. This is expansion of the same compute facility Anthropic leases capacity from, not a new Anthropic-specific commitment — logged here as infrastructure-scale context for the lease. Single-account sourcing; no primary SpaceX/Foxconn statement seen. Status stays confirmed; verification stays confirmed for the underlying lease facts, partial for this specific expansion detail."
 ---
 
 **The Information's reporting on 2026-05-25** put concrete numbers on

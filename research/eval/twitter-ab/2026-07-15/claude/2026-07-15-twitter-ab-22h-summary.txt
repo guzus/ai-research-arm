@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-15 22:41:08 UTC
+
+CYCLE: Anthropic safety research, Thinking Machines' Inkling launch, OpenAI's GPT-Red, and Grok Build going open source
+
+TOP STORIES:
+• Anthropic publishes new "agentic misalignment" research, finds 4 new agent misbehavior patterns ✓
+• Thinking Machines Lab ships Inkling, a 975B/41B-active open-weight multimodal model ✓
+• OpenAI's GPT-Red cuts GPT-5.6 Sol prompt-injection failures 6x via adversarial training ✓
+• @SpaceXAI open-sources the Grok Build CLI, resets usage limits ✓/⚠ (license unconfirmed)
+
+WATCH: Kimi K3 official tease from Moonshot AI — watch for confirmed model card/release in next 24h.
+
+Full update on GitHub.

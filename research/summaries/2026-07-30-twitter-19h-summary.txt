@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-07-30 19:45:51 UTC
+
+CYCLE: OpenAI price cuts, a leaner Thinking Machines model, and a WSJ scoop on Google-backed Anthropic datacenter financing
+
+TOP STORIES:
+• OpenAI cuts GPT-5.6 Luna 80% and Terra 20% on API pricing [✓]
+• Thinking Machines ships Inkling-Small, claims Inkling-level results at 1/4 the size [✓ release / ⚠ perf claim]
+• WSJ: Google backing $15B Nexus Data Centers build tied to 4 Anthropic leases [⚠]
+
+WATCH: Whether Google or Anthropic answer OpenAI's price cuts within 48h.
+
+Full update on GitHub.

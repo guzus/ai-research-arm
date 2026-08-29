@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-05 19:50:17 UTC
+
+CYCLE: Meta ships its first coding agent at loss-leader pricing; Hugging Face's co-founder says the AISI incident broke Claude's constitution, not just the sandbox.
+
+TOP STORIES:
+• Meta ships Muse Code + Muse Spark 1.2 at $1.25/$4.25 per Mtok — under DeepSeek V4-Flash, cheaper still if you let Meta train on your code [✓]
+• Thomas Wolf rejects both defences of the UK AISI incident and blames RLVR-era alignment [✓]
+• AI voice clones used against Citadel, Point72 and Two Sigma; Point72 tells investors it was hit [⚠]
+
+WATCH: An independent DeepSWE 1.1 run on Muse Spark 1.2, and any benchmark against Claude Opus 5 or GPT-5.6 Sol rather than Meta's second-tier comparison set.
+
+Full update on GitHub.

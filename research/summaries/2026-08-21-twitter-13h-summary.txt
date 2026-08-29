@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-21 13:06:27 UTC
+
+CYCLE: OpenAI makes a make-good on Codex limits; the stealth model gets a deadline; China's NAND champion files to raise RMB 33bn.
+
+TOP STORIES:
+• Codex/ChatGPT Work users get an unprompted "banked reset," credited to Codex hitting 20M active users - the first visible move on a two-cycle limits complaint [⚠]
+• Ox Alpha is free for only 6 more days on OpenRouter (1M ctx, text/image/video); @teortaxesTex reverses his own 580k-GPU arithmetic and now asserts it's cheaper to serve than GLM 5.2 [⚠]
+• Shanghai exchange accepts YMTC's STAR Market IPO: RMB 33.0bn target, RMB 20.8bn of it for NAND mass-production lines [⚠]
+
+WATCH: Whether any lab names Ox Alpha before free access lapses around 27 August.
+
+Full update on GitHub.

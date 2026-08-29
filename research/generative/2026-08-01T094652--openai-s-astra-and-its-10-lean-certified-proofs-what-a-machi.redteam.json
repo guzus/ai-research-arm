@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Dropping a hypothesis and strengthening a conclusion both make a universally quantified statement easier to refute, so `connesRigidityAssertion_false` is formally weaker than a refutation of Connes's conjecture as operator-algebraists state it.",
+      "contradicting_url": "https://arxiv.org/html/2503.12742",
+      "contradicting_quote": "Any ICC property (T) group G is W*-superrigid; that is, whenever H is an arbitrary group such that L(G) is isomorphic to L(H) then G is isomorphic to H.",
+      "severity": "high",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "As of roughly five hours after the announcement, no named mathematician or proof-assistant expert had publicly inspected the artifacts: Terence Tao's Mathstodon carried nothing on Astra, no Lean Zulip, r/math, or Mathstodon thread had been indexed, and in the first Hacker News thread no commenter claimed to have compiled the repository or reproduced anything.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "It is also numerically inert: with `e^38` ≈ 3.19×10^16 in the denominator, the new base does not overtake 3.2806 until k is of order 10^59.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

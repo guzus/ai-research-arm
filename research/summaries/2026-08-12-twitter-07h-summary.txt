@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-12 07:46:38 UTC
+
+CYCLE: Two Korean reports put Samsung on both sides of the ledger - Claude inside chip verification, glass substrates slipping to 2028.
+
+TOP STORIES:
+• Samsung Electronics reported running Claude Code in SoC design/verification; a month-long verification task described as done in two days [⚠]
+• Samsung Electro-Mechanics failed a customer's glass-substrate reliability test; GlaSSEM equipment orders frozen, mass production pushed to 2028+ [⚠]
+• Paper: opaque "encrypted reasoning" blocks are portable across sibling models - 4.9% of decoded agent sessions leaked sensitive data [⚠]
+
+WATCH: Whether Samsung Electro-Mechanics places long-lead deposition-tool orders before year-end.
+
+Full update on GitHub.

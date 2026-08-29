@@ -1,0 +1,304 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "LinkedIn's User Agreement Section 8.2 explicitly bans using scripts/bots/software to scrape or copy LinkedIn data, redistribute data obtained from the platform, or use bots for automated messaging.",
+      "type": "regulatory",
+      "source_urls": ["https://www.linkedin.com/legal/user-agreement"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "The Ninth Circuit held in hiQ Labs v. LinkedIn (2019, reaffirmed 2022 on remand) that scraping publicly accessible data does not violate the CFAA's 'without authorization' clause.",
+      "type": "regulatory",
+      "source_urls": ["https://cdn.ca9.uscourts.gov/datastore/opinions/2022/04/18/17-16783.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2022-04-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Despite winning the CFAA question, hiQ Labs lost on breach-of-contract grounds and settled in December 2022 for a $500,000 judgment plus a permanent injunction to destroy all scraped-derived data and code; the company was already defunct by settlement.",
+      "type": "event",
+      "source_urls": ["https://www.privacyworld.blog/2022/12/linkedins-data-scraping-battle-with-hiq-labs-ends-with-proposed-judgment/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2022-12-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "LinkedIn sued Proxycurl (Nubela Pte Ltd) in January 2025 for using hundreds of thousands of fake accounts to scrape millions of profiles; Proxycurl settled and permanently shut down its product in July 2025 despite having grown to roughly $10M in annual revenue.",
+      "type": "event",
+      "source_urls": ["https://nubela.co/blog/goodbye-proxycurl/", "https://www.law.com/therecorder/2025/01/27/linkedin-suit-says-millions-of-profiles-scraped-by-singapore-firms-fake-accounts/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2025-07-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Proxycurl's founder chose to shut down rather than litigate, citing the American Rule on legal fees and LinkedIn/Microsoft's effectively unlimited litigation budget as the deciding factor, not a concession that the underlying scraping was illegal.",
+      "type": "quote",
+      "source_urls": ["https://nubela.co/blog/goodbye-proxycurl/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "In October 2025 LinkedIn sued ProAPIs Inc. (the 'iScraper API' service) alleging use of over 1 million fake accounts to scrape data at industrial scale, sold for up to $15,000/month at 150 requests/second; LinkedIn's VP of Legal cited the Proxycurl settlement as precedent.",
+      "type": "event",
+      "source_urls": ["https://www.bleepingcomputer.com/news/legal/linkedin-sues-proapis-for-using-1m-fake-accounts-to-scrape-user-data/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-10-02",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c7",
+      "claim": "Beginning around March 2025, LinkedIn removed the company search-visibility/pages of lead-gen vendors Apollo.io, Seamless.ai, Evaboot and LGM; Apollo said the removal did not disrupt its core platform functionality, while smaller vendors were reported to disappear from LinkedIn search entirely.",
+      "type": "event",
+      "source_urls": ["https://martech.org/a-pair-of-lead-gen-providers-have-disappeared-from-linkedin/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-05-06",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c8",
+      "claim": "LinkedIn issued a cease-and-desist to automation vendor Kennected in December 2022; the company was forced into a 2024 sale/rebrand (SalesAi), and its LinkedIn-automation product line was fully discontinued only in 2025 -- a multi-year decay rather than an instant shutdown.",
+      "type": "event",
+      "source_urls": ["https://www.ibj.com/articles/indianapolis-based-kennected-hit-with-cease-and-desist-letter-from-linkedin"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-01-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "Multiple LinkedIn automation/outreach vendors (PhantomBuster, Dux-Soup, Waalaxy, Expandi, Dripify, MeetAlfred, HeyReach) remain actively operating with live 2026 pricing pages despite LinkedIn's User Agreement categorically banning third-party automation with no stated scale threshold; enforcement in practice looks selective toward the largest/loudest offenders.",
+      "type": "market-structure",
+      "source_urls": ["https://www.linkedin.com/help/linkedin/answer/a1341387", "https://lagrowthmachine.com/best-linkedin-automation-tools/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-20",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "LinkedIn Sales Navigator's native 'Buyer Intent' feature surfaces 180+ engagement signals but only for accounts engaging with the user's OWN company page/website; it does not expose who liked or reacted to an arbitrary third-party post.",
+      "type": "technical",
+      "source_urls": ["https://www.linkedin.com/help/sales-navigator/answer/a507435"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "LinkedIn's official API Terms of Use explicitly prohibit aggregating LinkedIn content with third-party data in ways that break attributability, and separately prohibit using API-sourced content to generate mass/automated messaging.",
+      "type": "regulatory",
+      "source_urls": ["https://www.linkedin.com/legal/l/api-terms-of-use"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "LinkedIn's Engineering blog documents that the first production use case of its deep-learning anti-abuse sequence model (since at least 2018) was detecting logged-in accounts scraping member profile/post data, with detection systems continuously retrained since.",
+      "type": "technical",
+      "source_urls": ["https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi"],
+      "source_tiers": ["primary"],
+      "as_of": "2018-09-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "The French data protection authority (CNIL) fined LinkedIn-scraping sales-prospecting tool Kaspr EUR200,000 in a December 2024 decision over a database of roughly 160 million contacts, citing lawfulness of processing, data retention, and transparency violations under GDPR.",
+      "type": "regulatory",
+      "source_urls": ["https://www.edpb.europa.eu/news/news/2025/data-scraping-french-sa-fined-kaspr-eu200-000_en"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-12-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "US CAN-SPAM does not require prior consent (opt-in) for commercial email, including B2B email, but does require accurate headers, an advertisement disclosure, a valid physical address and a working opt-out honored within 10 business days; the maximum civil penalty is $53,088 per violating email as of the 2025 inflation adjustment.",
+      "type": "regulatory",
+      "source_urls": ["https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-01-17",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "GDPR Article 6(1)(f) permits 'legitimate interest' as a lawful basis for direct marketing (Recital 47), but requires a documented three-part balancing test weighing the data subject's reasonable expectations, and the data subject's right to object under Article 21(2)-(3) is absolute once invoked.",
+      "type": "regulatory",
+      "source_urls": ["https://gdpr-info.eu/art-6-gdpr/", "https://gdpr-info.eu/art-21-gdpr/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "Origami AI (origami.chat) is a Y Combinator F24 company co-founded by Finn Mallery and Kenson Chung, based in San Francisco.",
+      "type": "definition",
+      "source_urls": ["https://www.ycombinator.com/companies/origami-2"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "VentureBeat reported Origami Agents raised a $2M seed round and reached $50K MRR during an 8-week beta, with founders quoted calling it the fastest-growing startup in its YC batch; these growth figures are founder-supplied, not independently audited.",
+      "type": "metric",
+      "source_urls": ["https://venturebeat.com/ai/y-combinators-hottest-startup-origami-agents-secures-2m-seed-round-to-supercharge-sales-teams-with-ai"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-01-01",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "Origami AI's own homepage and product pages describe searching '50+ sources in real time' without naming LinkedIn, while its Terms of Service require the customer (not Origami) to represent that their use of LinkedIn and other connected platforms complies with those platforms' terms of service.",
+      "type": "definition",
+      "source_urls": ["https://origami.chat", "https://origami.chat/terms"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-20",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "No independent corroboration was found anywhere on the web for the tweet's central anecdote (a YC founder reaching $25k/month via this tactic, closing a deal 7 hours after a public LinkedIn post); the claim traces to the single 2026-08-20 tweet with no named company, no third-party account, and no earlier mention.",
+      "type": "other",
+      "source_urls": ["https://x.com/fin465/status/2090272639839576492"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-08-20",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c20",
+      "claim": "Finn Mallery has a documented multi-year pattern of posting precise, high-specificity, self-reported growth figures across many separate viral tweets (e.g., '3,119 emails, 5.3% response rate... ~$22k new MRR' in 40 days; '0-to-$10k MRR in 30 days'), none independently audited.",
+      "type": "other",
+      "source_urls": ["https://x.com/fin465/status/2039021693050691596"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-08-20",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c21",
+      "claim": "A rigorous, disclosed-sample cold-email study (Belkins, 7,530,489 emails sent in 2025) found an average reply rate of 0.45%, versus vendor-marketing figures (Instantly) claiming 3.43% average and 10.7%+ for elite senders on an undisclosed sample.",
+      "type": "metric",
+      "source_urls": ["https://belkins.io/blog/cold-email-response-rates", "https://instantly.ai/cold-email-benchmark-report-2026"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-26",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c22",
+      "claim": "A disclosed-panel study of 939 companies found the median B2B SaaS sales cycle is roughly 84 days; even the fastest quartile of SMB deals (under $15K ACV) runs 14-30 days from first contact to close, implying a same-day, few-hour close sits far outside the normal distribution rather than at its fast end.",
+      "type": "metric",
+      "source_urls": ["https://optif.ai/learn/questions/sales-cycle-length-benchmark/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-01-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c23",
+      "claim": "Google requires SPF/DKIM/DMARC for domains sending over 5,000 messages/day to Gmail and caps spam-complaint rate at 0.3% (0.1% recommended); deliverability practitioners report a fresh, unwarmed sending domain can be flagged within about 48 hours at scaled volume, and sudden volume spikes (not message content) are the most common trigger.",
+      "type": "technical",
+      "source_urls": ["https://support.google.com/a/answer/81126?hl=en"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-02-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "The global sales-intelligence software market is estimated at $4.99B in 2026, forecast to reach $9.15B by 2031 (12.89% CAGR per one estimate); independent market-research firms' estimates for the category vary widely, from roughly $0.5B to over $12B depending on scope.",
+      "type": "market-structure",
+      "source_urls": ["https://www.mordorintelligence.com/industry-reports/sales-intelligence-market"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-01-22",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c25",
+      "claim": "'Signal-based selling' / LinkedIn social listening for buying-intent language is an already-named, populated sub-category with multiple funded vendors predating the viral tweet (e.g., LeadSift since roughly 2016 as part of the Terminus ABM stack; newer entrants Buska, OutX, Cleed, Trigify, Gojiberry AI); the same scrape-for-intent mechanic also exists on Reddit (F5Bot, since 2017) and is officially sold as a first-party product by G2 (sell.g2.com/buyer-intent-data), unlike LinkedIn which prohibits it.",
+      "type": "market-structure",
+      "source_urls": ["https://www.autobound.ai/blog/top-15-intent-data-providers-compared-2026", "https://sell.g2.com/buyer-intent-data-g2"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-08-20",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c26",
+      "claim": "Apollo.io's own current site simultaneously cites different database-size figures (210 million contacts / 35 million companies in its API docs; 240M+ contacts on its flagship product page; 275M+ contacts / 73 million accounts in its support knowledge base), and competitors claim materially different, non-overlapping scale (ZoomInfo ~500M or 265-321M by third-party estimate, Lusha 280M, Cognism 400-440M, Seamless.ai 1.3-1.7B).",
+      "type": "comparison",
+      "source_urls": ["https://www.apollo.io/product/prospect"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-20",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c27",
+      "claim": "AI-SDR/agentic-sales category peers: Clay raised a $100M Series C at a $3.1B valuation (Aug 2025); Artisan AI raised a $25M Series A (Apr 2025) and ran a widely-criticized 'Stop Hiring Humans' billboard campaign in San Francisco that first went viral in November-December 2024; 11x.ai raised a $50M Series B at ~$350M valuation (Nov 2024) and was the subject of a March 2025 TechCrunch investigation finding it displayed customer logos without permission and faced allegations of inflated ARR, with its CEO departing two months later.",
+      "type": "event",
+      "source_urls": ["https://techcrunch.com/2025/08/05/clay-confirms-it-closed-100m-round-at-3-1b-valuation", "https://techcrunch.com/2025/03/24/a16z-and-benchmark-backed-11x-has-been-claiming-customers-it-doesnt-have"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2025-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "A Gartner survey of 227 Chief Sales Officers (fielded Aug-Sep 2025, published May 2026) found 31% cited difficulty proving ROI of AI-driven sales tools as a top 2026 challenge; a separate Gartner survey of 645 B2B buyers found human sales reps were 28 percentage points more likely than generative-AI tools to be credited with advancing a deal.",
+      "type": "metric",
+      "source_urls": ["https://www.gartner.com/en/newsroom/press-releases/2026-05-19-gartner-survey-shows-thirty-one-percent-of-chief-sales-officers-cited-difficulty-proving-roi-of-ai-driven-tools-as-a-top-challenge-for-sales-objectives-in-two-thousand-twenty-si"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "California Penal Code Section 502(c)(2) independently criminalizes knowingly accessing a computer/network without permission to take, copy, or use data, separate from and broader than the federal CFAA; LinkedIn asserted this statute (among others) against hiQ Labs, though courts have not definitively resolved whether it reaches purely public-post data the way it reaches private systems.",
+      "type": "regulatory",
+      "source_urls": ["https://codes.findlaw.com/ca/penal-code/pen-sect-502/"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-08-20",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c30",
+      "claim": "Y Combinator's own canonical 'Do Things That Don't Scale' essay (2013) does not mention Craigslist, scraping, or terms-of-service anywhere in its text; the narrative linking Airbnb's unauthorized Craigslist cross-posting bot to that doctrine was constructed by outside growth-hacking commentators, not by YC itself. Separately, Instacart (YC S12) built its early product catalog by buying and photographing items without retailer authorization, and as of a December 2025 Consumer Reports investigation acknowledged it still scrapes Target's public prices without a formal partnership.",
+      "type": "other",
+      "source_urls": ["http://paulgraham.com/ds.html", "https://www.consumerreports.org/money/questionable-business-practices/instacart-ai-pricing-experiment-inflating-grocery-bills-a1142182490/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2025-12-01",
+      "confidence": "medium",
+      "risk": "stable"
+    }
+  ]
+}

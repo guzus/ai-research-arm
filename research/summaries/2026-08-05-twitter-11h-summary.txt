@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-05 11:26:23 UTC
+
+CYCLE: The memory shortage and the foundry shortage turn out to be the same shortage.
+
+TOP STORIES:
+• Samsung Foundry's 4nm line is booked out by Samsung's own memory division building HBM4; Chinese/Indian fabless steered onto 5nm as a claimed sanctions workaround [⚠]
+• A roadmap bullet claims AMD's MI500 beats NVIDIA's Rubin Ultra — a day after AMD's record 100%+ data-center growth got sold off and SpaceX went NVIDIA-exclusive [⚠]
+• SK hynix and SanDisk publish the first HBF open standard via OCP: 512GB per stack, ~0.4-3.0 TB/s, UCIe host link [⚠]
+
+WATCH: An OCP or first-party HBF v1 spec publication before FMS 2026 closes 6 August.
+
+Full update on GitHub.

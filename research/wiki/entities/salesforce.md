@@ -4,10 +4,16 @@ title: Salesforce
 type: entity
 aliases: [Salesforce, "Salesforce Inc", CRM, Agentforce]
 tags: [enterprise-software, agentic-ai, crm, m-and-a, claude-code]
-description: Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 — the day's largest confirmed AI M&A.
+description: Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 and reported FY27Q2 revenue of $11.3B with Agentforce + Data 360 ARR near $3.9B, up over 210% YoY (2026-08-26).
 created_at: 2026-06-16
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-08-27T00:00:00Z
+market:
+  ticker: CRM
+  exchange: NYSE
+  symbol: NYSE:CRM
+  provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "Salesforce acquires Fin for $3.6B (CNBC)", url: "https://www.cnbc.com/amp/2026/06/15/salesforce-ai-customer-service-fin-acquistion.html", date: 2026-06-15}
 ---
@@ -48,3 +54,17 @@ and an aggressive consolidator of agentic-AI capability.
 - **Does specialist-beats-generalist hold?** Fin's claim that a support-tuned model
   beats frontier labs on resolution rate, if it survives neutral evaluation, is a
   template for vertical AI M&A across enterprise SaaS.
+
+## FY27Q2: Agentforce/Data 360 ARR nears $3.9B, AI revenue near $4B annualized (2026-08-26)
+
+- **The AI number is now a reportable line (2026-08-26).** Salesforce reported
+  **FY27Q2 revenue of $11.3B (+11% YoY, including $456M from Informatica)**,
+  non-GAAP operating margin of **34.1%**, and non-GAAP EPS of **$5.90 (+103%)**.
+  The agentic story follows: **Agentforce and Data 360 annual recurring revenue
+  reached nearly $3.9B — up over 210% year over year** — which the digest frames
+  as **Salesforce AI revenue nearing $4 billion annualized**. CFO Robin
+  Washington: "NNAOV growth is the strongest it's been in four years, keeping
+  us on track for second-half organic revenue reacceleration" (SEC 8-K
+  0001108524-26-000187; ARA daily digest 2026-08-27). Landed the same window as
+  the [[nvidia]] and [[anthropic]] print/capex news, giving the agentic-software
+  demand side its own number for the [[ai-capex]] cycle.

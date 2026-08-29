@@ -1,0 +1,20 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-26 22:37:46 UTC
+
+CYCLE: Open-weight policy war isolates Anthropic as xAI ships Grok Build and undercuts on price.
+
+TOP STORIES:
+• Anthropic cast as holdout vs OpenAI-backed open-weight letter; The Information says its push to restrict Chinese AI models isolates it from Silicon Valley [⚠]
+• xAI ships Grok Build agent CLI and pitches Grok 4.5 as value leader — $100 SuperGrok Heavy ~2x the rate limits of Codex/Claude 200-max [⚠]
+
+QUICK HITS:
+• Anthropic preps IPO under unusually restrictive employee stock-sale terms
+• CXMT lists Jul 27; Nomura target implies ~RMB 7.76T cap, ~2x Micron's P/E
+• Micron/Meta paper: 38x slowdown when training data spills DRAM→SSD
+• AMD Helios in full production; MI455X w/ Anthropic, 6GW w/ OpenAI
+• Meta AI app: scheduled actions + Artefacts + Google Drive
+• Poolside Laguna S 2.1 (118B MoE/8B active/1M ctx) heads open-weight batch
+• Opus 5 + Codex voice mode added to practitioner guides
+
+WATCH: CXMT IPO debut Jul 27 — does it hold near Nomura's implied RMB 7.76T cap?
+
+Full update on GitHub.

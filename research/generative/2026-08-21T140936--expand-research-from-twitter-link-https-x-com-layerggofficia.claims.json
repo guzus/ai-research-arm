@@ -1,0 +1,254 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "GIWA Chain is an Ethereum L2 on Optimism's OP Stack targeting ~1-second block times, unveiled by Dunamu at UDC 2025 in Seoul",
+      "type": "event",
+      "source_urls": ["https://www.coindesk.com/web3/2025/09/09/upbit-parent-dunamu-unveils-layer-2-blockchain-giwa"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-09-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "GIWA is the first project on Optimism's OP Enterprise 'Self-Managed' tier: Dunamu runs the primary sequencer and controls configuration; the Optimism Foundation provides assurance, monitoring and a backup sequencer",
+      "type": "definition",
+      "source_urls": ["https://optimism.io/blog/dunamu-just-signed-an-mou-on-giwa-chain.-korea-s-largest-exchange-is-picking-a-side-on-infrastructure", "https://www.optimism.io/blog/introducing-op-enterprise"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-05-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Standard Superchain-member OP Stack chains owe the Optimism Collective the greater of 2.5% of net sequencer revenue or 15% of sequencer profit ('Law of Chains'); OP Enterprise tiers including Self-Managed are structured so the operator keeps sequencer economics instead",
+      "type": "definition",
+      "source_urls": ["https://tokeninsight.com/en/news/optimism-announced-the-law-of-chains-to-provide-guiding-principle-for-superchain", "https://www.optimism.io/blog/introducing-op-enterprise"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c4",
+      "claim": "Dunamu and the Optimism Foundation signed a non-binding MoU on GIWA Chain at Consensus Miami on May 4, 2026; no mainnet date was given",
+      "type": "event",
+      "source_urls": ["https://optimism.io/blog/dunamu-just-signed-an-mou-on-giwa-chain.-korea-s-largest-exchange-is-picking-a-side-on-infrastructure"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "GIWA testnet had processed nearly 100 million transactions as of May 3, 2026",
+      "type": "metric",
+      "source_urls": ["https://coincentral.com/upbit-operator-dunamu-taps-optimism-foundation-to-build-giwa-chain/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-03",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "As of August 21, 2026, GIWA's own documentation states mainnet is 'currently under development' and only testnet (chain ID 91342) is live",
+      "type": "event",
+      "source_urls": ["https://docs.giwa.io/giwa-chain/en/get-started/connect-to-giwa"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-21",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c7",
+      "claim": "GIWA is architected as tokenless (ETH is the gas/native token), consistent with statements at launch and GIWA's current docs; no reversal found through August 2026",
+      "type": "definition",
+      "source_urls": ["https://docs.giwa.io/giwa-chain/en", "https://beincrypto.com/dunamu-unveils-giwa-blockchain-with-global-ambitions/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "Upbit's share of Korea's won-based crypto trading volume was 71.6% in H1 2025 per Financial Supervisory Service data, falling to roughly 65.0% by Q4 2025 and to a 57-59% range by mid-2026",
+      "type": "metric",
+      "source_urls": ["https://finance.yahoo.com/news/upbit-corners-72-korean-crypto-233000204.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-28",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c9",
+      "claim": "Dunamu's FY2025 consolidated revenue fell 10.0% YoY to KRW 1.5578 trillion (~$1.03B); operating profit fell 26.7% to KRW 869.3B",
+      "type": "metric",
+      "source_urls": ["https://www.theblock.co/post/395643/upbit-operator-dunamu-sees-10-revenue-drop-to-1-billion-in-2025-as-crypto-trading-cools"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-03-30",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Naver Financial will acquire 100% of Dunamu via share swap (1 Dunamu share : 2.5422618 Naver Financial shares, ~$10.28B deal value); the shareholder vote and closing have been delayed twice, most recently to a Nov 19, 2026 vote / Dec 31, 2026 close",
+      "type": "event",
+      "source_urls": ["https://bloomingbit.io/en/feed/news/101415", "https://finance.biggo.com/news/008b8951-ba3f-4f03-aaa6-1251f97d6d94"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-06",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "The legal mechanism restricting Upbit's KRW markets to Korean users is the real-name-verified bank account requirement under Korea's Act on Reporting and Using Specified Financial Transaction Information (Article 7(3)2); K-Bank, Upbit's partner bank, generally only opens accounts for Korean citizens",
+      "type": "regulatory",
+      "source_urls": ["https://elaw.klri.re.kr/eng_service/lawTwoView.do?hseq=28979", "https://krinsider.com/blog/korea-stock-crypto-account-foreigner-2026"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-01-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "No Dunamu/GIWA official source claims GIWA Chain changes who can open a real-name Upbit KRW trading account; a permissionless L2 dApp layer and a KYC-gated fiat exchange are separate systems that a blockchain cannot bypass",
+      "type": "causal",
+      "source_urls": ["https://en.bloomingbit.io/feed/news/99879", "https://docs.giwa.io/giwa-chain/en"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-08-21",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c13",
+      "claim": "South Korea has actively blocked unregistered foreign exchange apps serving Korean users (17 apps blocked in one 2025 enforcement round), showing regulatory enforcement targets the fiat/KYC rail regardless of underlying technology",
+      "type": "regulatory",
+      "source_urls": ["https://cryptoslate.com/south-korea-blocks-17-overseas-crypto-exchange-apps-in-registration-crackdown/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-03-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "GASOK (GIWA's accelerator) offers up to $100,000 per team ($20,000 base grant plus up to $80,000 in KPI-based milestone bonuses); confirmed on GIWA's own program page and independently by Bloomingbit",
+      "type": "metric",
+      "source_urls": ["https://giwa.io/gasok"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "GASOK's Demoday is scheduled for Korea Blockchain Week (KBW) 2026; as of August 21, 2026, no winner cohort has been publicly announced",
+      "type": "event",
+      "source_urls": ["https://giwa.io/gasok"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c16",
+      "claim": "KBW 2026 is organized independently by FactBlock, running September 29-October 1, 2026 in Seoul, with Upbit joining as a paid Main Sponsor (Dunamu's first year skipping its own UDC conference in favor of KBW sponsorship)",
+      "type": "event",
+      "source_urls": ["https://chainwire.org/2026/01/13/kbw-2026-returns-to-seoul-september-29-october-1-upbit-joins-as-main-sponsor/", "https://bitcoinworld.co.in/dunamu-pauses-upbit-d-conference-2026-kbw-sponsorship/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-01-13",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "Comparable exchange-run accelerators: Coinbase's Base Batches offers $100,000/team investment (Fall 2026 cohort, subject to diligence); Binance Labs' 2022 MVB season 5 drew 700+ applicants for just 7 slots",
+      "type": "comparison",
+      "source_urls": ["https://cryptobriefing.com/base-batches-004-investing-1m-startups/", "https://www.binance.com/en/blog/ecosystem/binance-labs-to-invest-in-seven-projects-from-the-mvb-accelerator-program-coled-by-bnb-chain-9156786679786782462"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Of six smaller GIWA-ecosystem project names spot-checked from the seed tweet's list (GiwaterFinance, CheomaYield, OsigeExchange, PunkOnGiwa, Gaejuki_Giwa, GIWAForge), three had live websites with product descriptions and three returned zero independent evidence of existence",
+      "type": "market-structure",
+      "source_urls": ["https://www.cheomayield.xyz/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "Established multi-chain infrastructure providers (TokenPocket wallet, Relay Protocol, gas.zip, Superbridge, Owlto Finance) predate any GIWA association and are independently funded/adopted, but bridge/wallet integration with a new OP Stack chain is typically a low-cost, near-automatic action rather than evidence of deep committed usage; Relay's own live testnet chains API did not list GIWA as of the research date",
+      "type": "causal",
+      "source_urls": ["https://relay.link/", "https://api.testnets.relay.link/chains"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c20",
+      "claim": "Coinbase's Base grew TVL from roughly $2.1B (Oct 2024) to $11.2-11.5B (2026), leading L2s in daily transactions and active users, but disclosed sequencer revenue fell from $53M (Q2 2024) to an estimated ~$19M gross (Q4 2025)",
+      "type": "metric",
+      "source_urls": ["https://www.rzlt.io/blog/top-5-layer-2-solutions-for-ethereum-in-2026", "https://www.chaincatcher.com/en/article/2148842"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-02-01",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c21",
+      "claim": "Kraken's Ink chain launched Dec 16, 2024; its TVL was ~$7M mid-2025, surged to ~$503M by Jan 6, 2026 (driven largely by one lending protocol), then fell roughly 33% in one week in April 2026 amid a related-protocol exploit contagion",
+      "type": "metric",
+      "source_urls": ["https://blog.kraken.com/news/ink-mainnet-launch", "https://thedefiant.io/news/blockchains/kraken-s-ink-layer-2-surpasses-usd500-million-in-tvl"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-01-06",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c22",
+      "claim": "Optimism's OP Stack powers 50+ chains including Base, Ink, Soneium and GIWA; mid-2026 L2Beat-style figures show Base (~$11.49B) and Arbitrum One (~$10.12B) in a near-duopoly of total value secured among ~73 tracked rollups",
+      "type": "market-structure",
+      "source_urls": ["https://optimism.io/op-stack", "https://www.spotedcrypto.com/ethereum-l2-consolidation-2026-arbitrum-base-tvl/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-06-01",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "South Korea's Digital Asset Basic Act (DABA) is not yet passed as of August 2026; a proposed provision would cap major-shareholder ownership of crypto exchanges around 20% (tiered, up to 34% via FSC exception, 3-year grace period), directly affecting Dunamu/Upbit; DABA uncertainty is one of three cited factors ('triple wall') delaying the Naver-Dunamu merger",
+      "type": "regulatory",
+      "source_urls": ["https://www.cryptotimes.io/2026/03/04/south-korea-sets-ownership-cap-for-upbit-and-bithumb/", "https://newsway.co.kr/news/view?ud=2026050816181950457"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c24",
+      "claim": "Robinhood's core innovation was commission-free mobile equities trading funded by payment-for-order-flow, which grew funded accounts to roughly 28.5 million by mid-2026 but also drew a $65M SEC settlement in 2020 for misleading customers about execution quality; GIWA's own documentation frames its access mission around developer tooling and general Web3 accessibility, not a specific previously fee-locked-out retail population",
+      "type": "comparison",
+      "source_urls": ["https://docs.giwa.io/giwa-chain/en", "https://www.nbcnews.com/business/business-news/sec-charges-investment-app-robinhood-misleading-customers-rcna205"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c25",
+      "claim": "The seed tweet's author, @layerggofficial (Layergg), has roughly 124,000 followers and a mid-tier third-party influence score, with no evidence found of citation by institutional crypto-research outlets (CoinDesk, The Block, Messari); the tweet itself hedges its own ecosystem list as 'uncurated' and 'for fun,' and its central framing ('opens the doors to Upbit') has no located official corroboration from Dunamu or GIWA",
+      "type": "other",
+      "source_urls": ["https://twitterscore.io/twitter/layerggofficial/"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-08-21",
+      "confidence": "medium",
+      "risk": "single-source"
+    }
+  ]
+}

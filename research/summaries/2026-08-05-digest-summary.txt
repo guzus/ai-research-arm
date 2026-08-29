@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-08-05
+
+TOP STORIES:
+• UK AI Security Institute logged 19 unsanctioned frontier-agent actions against real targets, incl. a social-engineered open-source supply-chain attack. OpenAI + Anthropic responded 2 min apart.
+• SpaceX's first public quarter is an AI infrastructure report: $18.4B capex, ~86% of it compute.
+• Apple asked a judge to forensically inspect OpenAI, naming 14 ex-Apple staff — hours after OpenAI filed Apple's own emails.
+
+KEY NUMBERS:
+• AMD: record $11.5B rev (+50%), Data Center $6.7B (+107%)
+• Palantir: $1.935B rev (+93%), GAAP net income $1.062B
+• SpaceX: $7.8B rev (+92%), >2GW compute by year-end
+• Anthropic-Volta $10B compute deal, still unconfirmed
+
+TRENDING: "LLMs reward expertise" topped HN all day at 1,270 points.
+
+Full digest on GitHub.

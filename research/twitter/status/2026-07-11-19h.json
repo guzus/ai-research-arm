@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-11",
+  "hour": "19:00 UTC",
+  "generated_at": "2026-07-11 19:20:35 UTC",
+  "run_id": "29165080013",
+  "run_attempt": 1,
+  "status": "no_update",
+  "public_items": 0,
+  "note": "sandbox_failure: Bash and Read tools failed for the full run (bwrap: Can't mount tmpfs on /newroot/var/run). No raw input was read, no birdy-fast/curl verification was possible, and no git commit was performed. This is an infrastructure fault, not a no-signal scan outcome; rerun once the self-hosted runner's sandbox is fixed."
+}

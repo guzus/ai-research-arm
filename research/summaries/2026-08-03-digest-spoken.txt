@@ -1,0 +1,13 @@
+Speaker 1: Monday, August third, twenty twenty-six.
+Speaker 2: [high_energy] Claude Fable is reported to have reproduced five of Astra's ten proofs in twenty-four hours, and that flips the whole conversation.
+Speaker 1: The capability question is basically settled, so the moat question replaces it. Frontier results are starting to look reproducible on a weekly cadence.
+Speaker 2: On the policy front, the EU AI Act's enforcement powers actually went live this week.
+Speaker 1: Article fifty transparency obligations are in force, and the AI Office can now levy penalties up to [emphasis] fifteen million euros [/emphasis] or three percent of global turnover.
+Speaker 2: And Karpathy retired his own pelican benchmark, swapping it for a two-hour, roughly ten dollar Opus five world-building run.
+Speaker 1: Some quick numbers. Amazon booked [emphasis] fifty-three point four billion dollars [/emphasis] in non-operating income, mostly from revaluing its Anthropic stake.
+Speaker 2: [dramatic_pause] Strip out Amazon and Google, and the S and P earnings beat collapses from thirty-one point four percent to nine point two percent.
+Speaker 1: On security, one thousand sixty-one AI-discovered vulnerabilities in the first half of twenty twenty-six, and only one point three percent were ever exploited.
+Speaker 2: Worth noting that time to exploit still compressed, from one hundred twenty days down to eighty.
+Speaker 1: Elsewhere, seventy-seven papers on arXiv, thirteen AI stories on Hacker News, and Seedance two point five peaked at four hundred thirteen points.
+Speaker 2: And the tell of the day, Hacker News ran out of technique posts. Two of the top five AI items were informal SVG eyeball benchmarks.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

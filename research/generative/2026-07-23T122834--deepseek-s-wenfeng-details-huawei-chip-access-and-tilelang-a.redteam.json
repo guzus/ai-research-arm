@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Then, in June 2026, DeepSeek closed its first-ever external funding round — roughly 50 billion yuan (~$7.4B) at a post-money valuation near 350.88 billion yuan (~$52B), traced through a chain of minor indirect LPs in a Chinese regulatory filing [^16].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The number behind the quote is stark: Nvidia's China data-center revenue fell to $0 that quarter, down from $4.6B a year earlier [^47].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "On raw performance, TileLang's own paper reports up to 5x speedup over Triton on Nvidia H100 and up to 6x on AMD GPUs, plus up to 90% code-size reduction for fused attention kernels [^8].",
+      "contradicting_url": "https://github.com/tile-ai/tilelang/issues/892",
+      "contradicting_quote": "I found that TileLang is much slower than the Triton baseline... Average time: 8.59 ms, 16.01 TFLOPs for TileLang versus 1.78 ms / 77.08 TFLOPs for Triton",
+      "severity": "medium",
+      "no_contradiction_found": false
+    }
+  ]
+}

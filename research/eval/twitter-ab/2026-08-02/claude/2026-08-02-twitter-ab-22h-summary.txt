@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-02 22:34:17 UTC
+
+CYCLE: Astra's math results face same-week replication pressure; AI-found wallet bug hits crypto custody; EU AI Act transparency duties go live.
+
+TOP STORIES:
+• Anthropic researcher says shipped Claude Fable reproduced 5 of OpenAI Astra's 10 open-problem results; public GPT-5.6 re-derived the Erdos unit-distance proof from a hint [⚠]
+• Claude Code reportedly rediscovered the exploited Coldcard wallet bug in ~8 min; a GPT-5.6 pass on BitBox was halted by a safety filter [⚠]
+• EU AI Act transparency duties apply today — open-weight release exempt, deployment not [✓]
+
+WATCH: Whether Anthropic publishes the Fable transcripts and a mathematician certifies the four claimed-independent proofs.
+
+Full update on GitHub.

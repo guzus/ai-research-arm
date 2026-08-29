@@ -22,24 +22,32 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
     def tearDown(self) -> None:
         self.tmp.cleanup()
 
-    def write_status(self, state: str, public_items: int, generated_at: str = "2026-07-10 10:07:09 UTC") -> None:
+    def write_status(
+        self,
+        state: str,
+        public_items: int,
+        generated_at: str = "2026-07-10 10:07:09 UTC",
+        *,
+        recovery: bool | None = None,
+    ) -> None:
+        payload = {
+            "schema_version": 1,
+            "date": "2026-07-10",
+            "hour": "10:00 UTC",
+            "generated_at": generated_at,
+            "run_id": "1234",
+            "run_attempt": 2,
+            "status": state,
+            "public_items": public_items,
+        }
+        if recovery is not None:
+            payload["recovery"] = recovery
         self.status.write_text(
-            json.dumps(
-                {
-                    "schema_version": 1,
-                    "date": "2026-07-10",
-                    "hour": "10:00 UTC",
-                    "generated_at": generated_at,
-                    "run_id": "1234",
-                    "run_attempt": 2,
-                    "status": state,
-                    "public_items": public_items,
-                }
-            ),
+            json.dumps(payload),
             encoding="utf-8",
         )
 
-    def validate(self) -> None:
+    def validate(self, *, reject_recovery: bool = False) -> None:
         validate(
             backend="claude",
             status_file=self.status,
@@ -51,6 +59,7 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
             generated_at="2026-07-10 10:07:09 UTC",
             run_id="1234",
             run_attempt=2,
+            reject_recovery=reject_recovery,
         )
 
     def test_accepts_concrete_published_section(self) -> None:
@@ -79,6 +88,40 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
             encoding="utf-8",
         )
         with self.assertRaisesRegex(ContractError, "no story card"):
+            self.validate()
+
+    def test_rejects_missing_cycle_summary_includes_section_preview(self) -> None:
+        self.write_status("published", 1)
+        self.summary.write_text("Meta released Muse Spark 1.1.\n", encoding="utf-8")
+        self.digest.write_text(
+            "## 10:00 UTC\n\n"
+            "### Top stories\n"
+            "<article class=\"twitter-story\">"
+            "<h3 class=\"twitter-story-title\">Muse Spark 1.1</h3>"
+            "<p class=\"twitter-story-lead\">Meta released the model.</p>"
+            "<a class=\"twitter-source-chip\" href=\"https://x.com/AIatMeta/status/122\">@AIatMeta</a>"
+            "</article>\n",
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(ContractError, r"section preview:\n## 10:00 UTC") as ctx:
+            self.validate()
+        self.assertIn("exact line: **Cycle summary**: <text>", str(ctx.exception))
+        self.assertIn("twitter-story-title", str(ctx.exception))
+
+    def test_rejects_capital_s_cycle_summary(self) -> None:
+        self.write_status("published", 1)
+        self.summary.write_text("Meta released Muse Spark 1.1.\n", encoding="utf-8")
+        self.digest.write_text(
+            "## 10:00 UTC\n\n"
+            "**Cycle Summary**: Meta released Muse Spark 1.1.\n\n"
+            "<article class=\"twitter-story\">"
+            "<h3 class=\"twitter-story-title\">Muse Spark 1.1</h3>"
+            "<p class=\"twitter-story-lead\">Meta released the model.</p>"
+            "<a class=\"twitter-source-chip\" href=\"https://x.com/AIatMeta/status/122\">@AIatMeta</a>"
+            "</article>\n",
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(ContractError, r"\*\*Cycle Summary\*\*"):
             self.validate()
 
     def test_rejects_empty_story_shell(self) -> None:
@@ -137,6 +180,22 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
         )
         with self.assertRaisesRegex(ContractError, "must not leave"):
             self.validate()
+
+    def test_recovery_no_update_accepts_baseline_same_hour_section(self) -> None:
+        self.write_status("no_update", 0, recovery=True)
+        self.summary.write_text("", encoding="utf-8")
+        self.digest.write_text(
+            "# Twitter/X AI Pulse\n\n## 10:00 UTC\n\n"
+            "**Cycle summary**: Previously committed valid update.\n",
+            encoding="utf-8",
+        )
+        self.validate()
+
+    def test_model_validation_rejects_recovery_heartbeat(self) -> None:
+        self.write_status("no_update", 0, recovery=True)
+        self.summary.write_text("", encoding="utf-8")
+        with self.assertRaisesRegex(ContractError, "must not be a recovery heartbeat"):
+            self.validate(reject_recovery=True)
 
     def test_rejects_stale_run_identity(self) -> None:
         self.write_status("no_update", 0, generated_at="2026-07-10 10:07:00 UTC")

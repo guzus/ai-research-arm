@@ -3,7 +3,7 @@
 	encode zstd gzip
 
 	@html {
-		path / /index.html /today /today/ /twitter /models /frontpage /research /research/* /wiki /wiki/*
+		path / /index.html /today /today/* /twitter /twitter/* /models /models/* /frontpage /frontpage/* /research /research/* /wiki /wiki/* /agents /agents/ /design/*
 		not path *.js *.css *.json *.xml *.txt *.png *.jpg *.jpeg *.webp *.gif *.svg *.ico *.avif *.woff *.woff2
 	}
 	header @html Cache-Control "public, max-age=0, must-revalidate"
@@ -15,6 +15,15 @@
 
 	@data path /research/manifest.json /research/*.json /research/*/*.json /research/*/*/*.json
 	header @data Cache-Control "public, max-age=0, must-revalidate"
+
+	# Raw research/data artifacts feed the canonical HTML routes. Keep them
+	# fetchable by the app while preventing duplicate Markdown/HTML/JSON URLs
+	# from competing with /today, /twitter, /models, /research, and /wiki pages.
+	@rawResearchArtifacts {
+		path /research/*
+		path_regexp rawResearchFile \.(?:html|json|jsonl|m4a|md|mp3|tmp|txt|wav)$
+	}
+	header @rawResearchArtifacts X-Robots-Tag "noindex, nofollow"
 
 	@seo path /sitemap.xml /robots.txt /feed.xml /llms.txt
 	header @seo Cache-Control "public, max-age=300, stale-while-revalidate=3600"
@@ -29,6 +38,8 @@
 		Referrer-Policy "strict-origin-when-cross-origin"
 	}
 
-	try_files {path} {path}/index.html /index.html
+	# Every legitimate public SPA route has a generated HTML entry point. Return
+	# a real 404 for unknown/missing routes instead of a homepage soft-404.
+	try_files {path} {path}/index.html =404
 	file_server
 }

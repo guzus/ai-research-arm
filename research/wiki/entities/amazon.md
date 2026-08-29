@@ -6,8 +6,16 @@ aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy"]
 tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
 description: Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.
 created_at: 2026-06-14
-timestamp: 2026-06-15T00:00:00Z
+timestamp: 2026-08-10T00:00:00Z
+market:
+  ticker: AMZN
+  exchange: NASDAQ
+  symbol: NASDAQ:AMZN
+  provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
+  - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
+  - {title: "ARA model ticket — Amazon Nova frontier reorg", path: research/models/tickets/amazon-nova-frontier-reorg-2026-07.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
   - {title: "Amazon CEO's talks with U.S. officials triggered crackdown on Anthropic models (WSJ)", url: "https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578", date: 2026-06-13}
@@ -55,8 +63,34 @@ largest investee banned.
   "Anthropic refused to fix it" account on record — see [[federal-ai-policy]] (ARA
   digest 2026-06-15).
 
+- **Amazon reportedly winds down most of its Nova model line (2026-07-30,
+  single-source, unconfirmed).** Amazon is reportedly moving **Nova
+  Premier, Nova Omni, Nova Reel, and Nova Canvas** to support-only mode,
+  redirecting engineering and compute to a **new Frontier Model Research
+  team led by Pieter Abbeel** (the Berkeley AI/robotics researcher),
+  targeting a **re:Invent-style flagship debut later in 2026** — possibly
+  still under the Nova name. **Nova 2 Lite, Nova 2 Sonic, Nova Act, and
+  Nova Forge** are reported to remain active. This is a strategic pivot
+  away from Amazon's earlier multi-model Nova family toward a single
+  from-scratch frontier effort, mirroring the "hire a name researcher,
+  build one flagship" pattern seen at other hyperscalers — but as of
+  2026-07-30 it rests on a single account with no Amazon statement
+  (status `rumored` on the linked model ticket) (ARA daily digest
+  2026-07-30).
+- **A planned Amazon data center draws scrutiny as a potential record
+  climate polluter (2026-08-08).** TechCrunch and The Verge both reported
+  on a **planned Amazon data center whose on-site power plant could make
+  it the biggest climate polluter in the U.S.** — the sharpest single
+  instance yet of the [[ai-capex]] buildout's emissions externalities
+  landing on one hyperscaler's named project, feeding the same
+  rate-payer-pledge / permitting-gate thread tracked on [[ai-capex]]
+  (TechCrunch, The Verge; ARA daily digest 2026-08-10).
+
 ## Open questions
 
+- **Does the Nova wind-down report hold up?** No Amazon statement backs
+  the Pieter Abbeel Frontier Model Research team claim yet — watch for a
+  re:Invent 2026 announcement or an on-record Amazon confirmation/denial.
 - **Does the briefing damage the Amazon–Anthropic relationship?** A largest
   investor helping ban its investee's flagship is unprecedented; whether it
   reflects a genuine security judgment or competitive maneuvering is the open

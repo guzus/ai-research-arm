@@ -4,16 +4,11 @@ on:
   schedule:
     # Run daily at 00:00 UTC
     - cron: '0 0 * * *'
+  # No inputs: the deterministic fallback below is always-on (it fires
+  # whenever the agent leaves today's digest missing or sub-floor, on
+  # schedule and dispatch alike), so the old emergency-only
+  # allow_deterministic_fallback opt-in is gone.
   workflow_dispatch:
-    inputs:
-      allow_deterministic_fallback:
-        description: "Emergency only: publish a model-free deterministic digest if Claude produces no usable digest."
-        required: false
-        default: "false"
-        type: choice
-        options:
-          - "false"
-          - "true"
 
 concurrency:
   group: daily-digest
@@ -44,7 +39,7 @@ jobs:
           git lfs version
 
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
           # lfs: false because mp3s no longer live in LFS (moved to S3 in
@@ -65,20 +60,45 @@ jobs:
       - name: Pull latest changes
         run: git pull origin main || true
 
+      # The digest is named for the day it was SCHEDULED for, in UTC — not
+      # for whatever the runner's wall clock reads when the job finally
+      # starts. Two bugs converged here on 2026-07-24: a runner outage held
+      # the 00:00Z run queued until 16:13Z, and this step called bare `date`
+      # (runner-local, KST=UTC+9) while every label in the pipeline says UTC.
+      # By start time local had rolled over, so the run published a
+      # 2026-07-25 digest and 2026-07-24 got no digest at all. Anchoring to
+      # the run's creation timestamp keeps a late run on its own day; `date
+      # -u` is the fallback if the API call fails. For an on-time run both
+      # agree, so this is a no-op on the happy path.
       - name: Get current date
         id: date
-        run: echo "date=$(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          CREATED="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            --jq .created_at 2>/dev/null || true)"
+          DATE=""
+          if [ -n "$CREATED" ]; then
+            DATE="$(date -u -d "$CREATED" +'%Y-%m-%d' 2>/dev/null || true)"
+          fi
+          if [ -z "$DATE" ]; then
+            DATE="$(date -u +'%Y-%m-%d')"
+            echo "::warning::Could not resolve run creation time; falling back to current UTC date ${DATE}."
+          fi
+          echo "Digest date: ${DATE} (run created: ${CREATED:-unknown}, wall clock: $(date -u +'%Y-%m-%dT%H:%M:%SZ') UTC)"
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
 
       # Base SHA for the standalone output guard below — captured AFTER the
       # pull and BEFORE the synthesis agents, so the guard proves a fresh
-      # digest commit came from Claude or an explicitly allowed emergency
+      # digest commit came from the agent path or the deterministic
       # fallback.
       - name: Capture digest output base
         id: digest-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '22'
 
@@ -154,9 +174,11 @@ jobs:
       # continue-on-error on both synthesis paths: a failed agent (provider
       # outage, turn-1 API error, nothing committed — the composite's internal
       # expected-paths guard fails the step in that case) hands off to the
-      # content-floor check and final output guard below. Scheduled runs fail
-      # closed rather than publishing a model-free digest; deterministic
-      # fallback is manual emergency-only.
+      # content-floor check, the ALWAYS-ON deterministic fallback, and the
+      # final output guard below. The fallback keeps a rescued run green on
+      # purpose (wiki-ingest + front-page trigger on workflow_run SUCCESS)
+      # and its Telegram alert step announces every actual rescue, so a
+      # model-free digest never ships silently.
       - name: Synthesize Daily Digest (with MCP tools)
         id: digest-agent-mcp
         if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
@@ -169,7 +191,7 @@ jobs:
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
             --model opus --mcp-config /tmp/mcp-config.json
-            --allowedTools "Glob,Read,Write,Edit,Bash(git:*),mcp__exa__*,mcp__perplexity__*"
+            --allowedTools "Glob,Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(rg:*),Bash(printf:*),Bash(touch:*),mcp__exa__*,mcp__perplexity__*"
           expected-paths: |
             research/digest/
             research/summaries/
@@ -181,7 +203,13 @@ jobs:
 
             STEP 1: Find and read today's source files
             Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
-            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, blogs/, youtube/, and any others.
+            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, blogs/, youtube/, earnings/, and any others.
+            earnings/ is event-cadence, one file per issuer earnings event named
+            <filing-date>-<TICKER>-<FYxxQx>.md. Use ONLY files whose filing date is
+            within the last 2 days; if there are none, omit the earnings coverage
+            entirely. Issuers report in ~3-week bursts each quarter, so older files
+            sitting in that directory are NOT current news - never surface them as
+            such. Quote only what those files already quote.
             Read all relevant files you find.
 
             STEP 2: Use MCP search tools to fill gaps
@@ -197,10 +225,27 @@ jobs:
             # AI Daily Digest - ${{ steps.date.outputs.date }}
 
             ## Executive Summary
-            [3-5 bullet points of the day's most important developments]
+            [3-5 bullets. Each MUST begin with a bold headline of 4-10 words,
+            then a comma or colon, then 1-2 sentences of detail. Example:
+            "- **Anthropic launched Claude Opus 5**, positioned as near-flagship
+            performance at roughly half the token price (TechCrunch, The Verge)."
+
+            The bold span is lifted verbatim onto the front page as the masthead
+            headline, so write it AS a headline: a concrete subject and verb, no
+            subordinate clauses, no em-dash asides, no citations, never over 10
+            words. "**Anthropic launched Claude Opus 5**" — good.
+            "**Anthropic launched Claude Opus 5, positioned as delivering
+            performance close to flagship Fable 5 at roughly half the token
+            price — the dominant story of the cycle**" — far too long; that
+            detail belongs after the bold span, not inside it.
+
+            Put sourcing in parentheses at the END of the bullet.]
 
             ## Breaking News
-            [Major announcements from companies]
+            [Major announcements from companies. Same shape: each bullet opens
+            with a bold 4-10 word headline, then the detail. Keep each bullet to
+            2 sentences — these are rendered as short newspaper story cards, and
+            anything longer is truncated mid-thought.]
 
             ## Model Releases & Updates
             [New models, versions, capabilities]
@@ -233,6 +278,7 @@ jobs:
             - RSS: [count] articles
             - Expert Blogs: [count] posts
             - YouTube: [count] videos
+            - Earnings: [count] issuer earnings reports
             - MCP Search: [results from Exa/Perplexity tools]
 
             *Generated at ${{ steps.date.outputs.date }} 00:00 UTC*
@@ -265,6 +311,20 @@ jobs:
             git add research/digest/${{ steps.date.outputs.date }}-digest.md research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
+            HARD RULES
+            - Use tool calls to write the files. Do NOT merely respond in
+              chat — a digest that exists only in your reply is a failed run.
+            - If a tool call is denied, retry with an allowed tool
+              immediately. The allowed local read/parse path includes Read,
+              Glob, cat, ls, head, jq, python3, and rg.
+            - Before finishing, run `git status --short` and confirm
+              research/digest/${{ steps.date.outputs.date }}-digest.md is
+              committed. If it is not committed, commit it before your final
+              response.
+            - Commit ONLY today's digest and summary files — never
+              `git add research/` (the LFS clean filter would rewrite
+              historical media into pointers).
+
       - name: Synthesize Daily Digest (local-source fallback)
         id: digest-agent-local
         if: steps.check-keys.outputs.has_exa != 'true' && steps.check-keys.outputs.has_perplexity != 'true'
@@ -275,12 +335,18 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          # Lane-scoped authorization: only this compatibility-tested digest
+          # call can select the isolated OpenCode fallback.
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           claude-args: |
-            --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*)"
+            --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
-            research/digest/
-            research/summaries/
-          label: Daily digest Claude local-source synthesizer
+            research/digest/${{ steps.date.outputs.date }}-digest.md
+            research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
+          allowed-paths: |
+            research/digest/${{ steps.date.outputs.date }}-digest.md
+            research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
+          label: Daily digest local-source synthesizer
           prompt: |
             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
 
@@ -288,7 +354,13 @@ jobs:
 
             STEP 1: Find and read today's source files
             Look in the research/ directory for any reports from today's date (${{ steps.date.outputs.date }}).
-            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, blogs/, youtube/, perplexity/, and any others.
+            Check subdirectories: twitter/, community/, arxiv/, rss/, bluesky/, blogs/, youtube/, earnings/, perplexity/, and any others.
+            earnings/ is event-cadence, one file per issuer earnings event named
+            <filing-date>-<TICKER>-<FYxxQx>.md. Use ONLY files whose filing date is
+            within the last 2 days; if there are none, omit the earnings coverage
+            entirely. Issuers report in ~3-week bursts each quarter, so older files
+            sitting in that directory are NOT current news - never surface them as
+            such. Quote only what those files already quote.
             Read all relevant files you find.
 
             STEP 2: Identify gaps from local sources
@@ -304,10 +376,27 @@ jobs:
             # AI Daily Digest - ${{ steps.date.outputs.date }}
 
             ## Executive Summary
-            [3-5 bullet points of the day's most important developments]
+            [3-5 bullets. Each MUST begin with a bold headline of 4-10 words,
+            then a comma or colon, then 1-2 sentences of detail. Example:
+            "- **Anthropic launched Claude Opus 5**, positioned as near-flagship
+            performance at roughly half the token price (TechCrunch, The Verge)."
+
+            The bold span is lifted verbatim onto the front page as the masthead
+            headline, so write it AS a headline: a concrete subject and verb, no
+            subordinate clauses, no em-dash asides, no citations, never over 10
+            words. "**Anthropic launched Claude Opus 5**" — good.
+            "**Anthropic launched Claude Opus 5, positioned as delivering
+            performance close to flagship Fable 5 at roughly half the token
+            price — the dominant story of the cycle**" — far too long; that
+            detail belongs after the bold span, not inside it.
+
+            Put sourcing in parentheses at the END of the bullet.]
 
             ## Breaking News
-            [Major announcements from companies]
+            [Major announcements from companies. Same shape: each bullet opens
+            with a bold 4-10 word headline, then the detail. Keep each bullet to
+            2 sentences — these are rendered as short newspaper story cards, and
+            anything longer is truncated mid-thought.]
 
             ## Model Releases & Updates
             [New models, versions, capabilities]
@@ -340,6 +429,7 @@ jobs:
             - RSS: [count] articles
             - Expert Blogs: [count] posts
             - YouTube: [count] videos
+            - Earnings: [count] issuer earnings reports
             - MCP Search: [results from Exa/Perplexity tools]
 
             *Generated at ${{ steps.date.outputs.date }} 00:00 UTC*
@@ -372,12 +462,26 @@ jobs:
             git add research/digest/${{ steps.date.outputs.date }}-digest.md research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
             git commit -m "Daily digest ${{ steps.date.outputs.date }}"
 
+            HARD RULES
+            - Use tool calls to write the files. Do NOT merely respond in
+              chat — a digest that exists only in your reply is a failed run.
+            - If a tool call is denied, retry with an allowed tool
+              immediately. The allowed local read/parse path includes Read,
+              Glob, cat, ls, head, jq, python3, and rg.
+            - Before finishing, run `git status --short` and confirm
+              research/digest/${{ steps.date.outputs.date }}-digest.md is
+              committed. If it is not committed, commit it before your final
+              response.
+            - Commit ONLY today's digest and summary files — never
+              `git add research/` (the LFS clean filter would rewrite
+              historical media into pointers).
+
       # Content floor on the AGENT's digest. Catches both "agent failed /
       # committed nothing" (file missing) and "agent committed a template
       # shell" (sub-floor bytes/sections, unexpanded placeholders) — the
-      # latter previously stayed green. The verdict routes recovery and, only
-      # on explicitly opted-in manual runs, the emergency deterministic
-      # fallback; it never fails the job itself.
+      # latter previously stayed green. The verdict routes recovery and the
+      # always-on deterministic fallback below; it never fails the job
+      # itself.
       - name: Check digest content floor
         id: digest-floor
         run: |
@@ -396,8 +500,7 @@ jobs:
       # commit (mid-run tool/API error) would otherwise strand the content:
       # floor ok → fallback skipped → require-output red → wiki-ingest/
       # front-page starve. Commit exactly this workflow's expected output
-      # paths (research/digest/ + research/summaries/ — both are .md/.txt/
-      # .json only, no LFS-filtered media). On a clean tree (re-dispatch on
+      # files only. On a clean tree (re-dispatch on
       # a healthy day) this is a no-op, so the fallback's overwrite
       # protection and honest-red semantics are unchanged.
       - name: Commit recovered agent digest output
@@ -406,12 +509,14 @@ jobs:
           DATE: ${{ steps.date.outputs.date }}
         run: |
           set -euo pipefail
-          if [ -z "$(git status --porcelain -- research/digest/ research/summaries/)" ]; then
+          DIGEST_FILE="research/digest/${DATE}-digest.md"
+          SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
+          if [ -z "$(git status --porcelain -- "$DIGEST_FILE" "$SUMMARY_FILE")" ]; then
             echo "No uncommitted digest-lane changes — nothing to recover."
             exit 0
           fi
           echo "::notice::Floor-passing digest output found uncommitted in the working tree (agent likely died before its commit step); committing it."
-          git add research/digest/ research/summaries/
+          git add "$DIGEST_FILE" "$SUMMARY_FILE"
           git commit -m "Daily digest ${DATE} (recovered uncommitted agent output)" || echo "No recovered digest changes"
 
       - name: Check for fresh digest output
@@ -424,27 +529,77 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # Emergency-only model-free fallback. Scheduled runs must fail closed if
-      # Claude produces no fresh, floor-passing digest: publishing an unranked
-      # lane dump is worse than a red run. A human may still dispatch with
-      # allow_deterministic_fallback=true to keep downstream consumers alive
-      # during a known Claude outage.
-      - name: Emergency deterministic digest fallback
+      # ALWAYS-ON model-free fallback (mirrors the twitter lane's recovery
+      # chain). A red digest run starves the workflow_run dependents
+      # (wiki-ingest and front-page trigger only on SUCCESS) — gating this
+      # step behind a manual opt-in (PR #302) cost four straight scheduled
+      # runs 07-09..07-12 while the agent path was broken. It now fires
+      # whenever the agent left today's digest missing or sub-floor, on
+      # schedule and dispatch alike; the alert step below announces every
+      # actual rescue on Telegram, so a model-free digest can never ship
+      # silently (the concern #302 addressed by staying red). Overwrite
+      # protection lives inside: when the floor PASSED (a good digest is
+      # already committed and this run merely added nothing new — e.g. a
+      # re-dispatch or worker-loss re-run on an already-published day) it
+      # declines to compose rather than replace agent prose with the
+      # mechanical dump, and the require-output gate below still calls that
+      # run honestly red.
+      - name: Deterministic digest fallback
         id: digest-fallback
-        if: ${{ (steps.digest-floor.outputs.ok != 'true' || steps.digest-output-diff.outputs.changed != 'true') && github.event_name == 'workflow_dispatch' && inputs.allow_deterministic_fallback == 'true' }}
+        if: ${{ steps.digest-floor.outputs.ok != 'true' || steps.digest-output-diff.outputs.changed != 'true' }}
+        env:
+          DATE: ${{ steps.date.outputs.date }}
+          FLOOR_OK: ${{ steps.digest-floor.outputs.ok }}
         run: |
           set -euo pipefail
-          echo "::warning::Manual emergency fallback enabled: digest agent path failed or produced stale/sub-floor output; composing deterministic digest from committed lane artifacts."
+          DIGEST_FILE="research/digest/${DATE}-digest.md"
+          SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
+          if [ "$FLOOR_OK" = "true" ]; then
+            # Floor passed → today's digest content is fine and already
+            # committed (the recovery step above commits floor-passing tree
+            # output); we are only here because no FRESH commit landed since
+            # the base SHA. Never clobber agent prose with the dump.
+            echo "::notice::Floor-passing digest for ${DATE} is already committed — declining deterministic overwrite; the require-output gate decides the run verdict."
+            echo "used=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "::warning::Digest agent produced no usable digest for ${DATE} (missing or sub-floor) — composing deterministic model-free digest from committed lane artifacts."
           python3 scripts/deterministic_daily_digest.py \
             --research-dir research \
-            --date "${{ steps.date.outputs.date }}" \
-            --out "research/digest/${{ steps.date.outputs.date }}-digest.md" \
-            --summary-out "research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt"
-          git add "research/digest/${{ steps.date.outputs.date }}-digest.md" "research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt"
-          git commit -m "Daily digest emergency deterministic fallback ${{ steps.date.outputs.date }}" || echo "No deterministic digest changes"
+            --date "$DATE" \
+            --out "$DIGEST_FILE" \
+            --summary-out "$SUMMARY_FILE"
+          git add "$DIGEST_FILE" "$SUMMARY_FILE"
+          git commit -m "Daily digest deterministic fallback ${DATE}" || echo "No deterministic digest changes"
+          echo "used=true" >> "$GITHUB_OUTPUT"
 
-      # Final hard gate: Claude (or an explicitly allowed emergency fallback)
-      # must have committed the digest since the pre-agent base SHA.
+      # Loud pairing for the always-on fallback: a fallback-rescued run stays
+      # GREEN on purpose (the workflow_run dependents must fire), which makes
+      # it silent by default — silence is how the broken agent path hid for
+      # six days (07-02 → 07-08). Announce every actual rescue. Alerts must
+      # never fail the job (Load-bearing rule 4 style).
+      - name: Alert deterministic fallback retention via Telegram
+        if: steps.digest-fallback.outcome == 'success' && steps.digest-fallback.outputs.used == 'true'
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DATE: ${{ steps.date.outputs.date }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "Telegram credentials missing — skipping fallback-used alert"
+            exit 0
+          fi
+          TEXT="⚠️ Daily digest ${DATE} retained a DETERMINISTIC fallback for operational diagnosis because the agent produced no usable digest. Public brief, front page, feeds, and audio are suppressed for this date. Investigate the agent path: ${RUN_URL}"
+          curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${TEXT}" \
+            -d "disable_web_page_preview=true" >/dev/null \
+            || echo "Telegram fallback-used alert send failed"
+
+      # Final hard gate: the agent path (or the deterministic fallback) must
+      # have committed the digest since the pre-agent base SHA.
       # research/digest/ only — a summary-only commit must not count.
       - name: Require digest output
         uses: ./.github/actions/require-output
@@ -454,8 +609,51 @@ jobs:
             research/digest/
           label: Daily digest workflow output
 
+      # The synthesis composite is intentionally continue-on-error so the
+      # deterministic recovery can run. Independently prove that every commit
+      # since the pre-agent base stayed inside today's two publication files
+      # before any later safe-push step can publish it.
+      - name: Require digest diff scope
+        uses: ./.github/actions/require-diff-scope
+        with:
+          base-sha: ${{ steps.digest-output-base.outputs.sha }}
+          allowed-paths: |
+            research/digest/${{ steps.date.outputs.date }}-digest.md
+            research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
+          label: Daily digest workflow output
+
+      - name: Classify digest publication state
+        id: digest-publication
+        env:
+          DATE: ${{ steps.date.outputs.date }}
+        run: |
+          set -euo pipefail
+          DIGEST="research/digest/${DATE}-digest.md"
+          if python3 scripts/digest_publication_state.py "$DIGEST"; then
+            echo "editorial=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Operational fallback detected; skipping all public and audio derivatives."
+          else
+            echo "editorial=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Revoke fallback audio objects from S3
+        if: always()
+        continue-on-error: true
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
+          S3_ENDPOINT_URL: ${{ secrets.S3_ENDPOINT_URL }}
+          S3_BUCKET: ${{ secrets.S3_BUCKET }}
+        run: |
+          if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$S3_ENDPOINT_URL" ] || [ -z "$S3_BUCKET" ]; then
+            echo "S3 credentials missing — skipping fallback-audio revocation"
+            exit 0
+          fi
+          bash scripts/delete_fallback_audio.sh
+
       - name: Rewrite summary as ARA spoken script (Claude)
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
@@ -464,7 +662,7 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           claude-args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*)"
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
             research/summaries/
           label: Digest spoken-script Claude rewrite
@@ -539,7 +737,7 @@ jobs:
             git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA two-host Claude rewrite)" || echo "No changes"
 
       - name: Generate audio digest with Gemini 3.1 Flash TTS
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -671,7 +869,7 @@ jobs:
           # + truncate to 0-byte stub + commit happen in later steps.
 
       - name: Upload audio digest to S3
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         env:
           DATE: ${{ steps.date.outputs.date }}
@@ -708,7 +906,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Send Telegram notification (audio + caption)
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -786,7 +984,7 @@ jobs:
           fi
 
       - name: Send audio to Hooker (parallel delivery channel)
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -839,7 +1037,7 @@ jobs:
           echo ""
 
       - name: Truncate audio mp3 to 0-byte stub + commit
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         env:
           DATE: ${{ steps.date.outputs.date }}
@@ -855,7 +1053,7 @@ jobs:
           fi
 
       - name: Push audio stub
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         uses: ./.github/actions/safe-push
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -888,7 +1086,7 @@ jobs:
         uses: ./.github/actions/hooker-telemetry
         with:
           status: ${{ job.status }}
-          text: "search-providers exa=${{ steps.check-keys.outputs.has_exa }} perplexity=${{ steps.check-keys.outputs.has_perplexity }}; digest-floor ok=${{ steps.digest-floor.outputs.ok }}; deterministic-fallback=${{ steps.digest-fallback.outcome }}"
+          text: "search-providers exa=${{ steps.check-keys.outputs.has_exa }} perplexity=${{ steps.check-keys.outputs.has_perplexity }}; digest-floor ok=${{ steps.digest-floor.outputs.ok }}; deterministic-fallback=${{ steps.digest-fallback.outcome }} used=${{ steps.digest-fallback.outputs.used || 'false' }}"
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

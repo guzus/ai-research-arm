@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-23
+
+TOP 5 PAPERS:
+• Solar Open 2 - 250B-A15B MoE model with 1M-token context, built for long-horizon agentic tasks
+• PoTRE - 4 heterogeneous reasoning agents hit 49.92% on Humanity's Last Exam, a new best
+• Sound Probabilistic Safety Bounds for LLMs - formally proven bounds on harmful-output probability
+• SLAI T-Rex - full-parameter post-training of trillion-param MoE at 34% MFU on Ascend hardware
+• Self Gradient Forcing - non-frozen KV cache fixes drift in long autoregressive video generation
+
+CATEGORIES: LLM/NLP 8, CV/Multimodal 7, Agents/Reasoning 4, Safety/Alignment 4, Other 5
+
+Full report on GitHub.

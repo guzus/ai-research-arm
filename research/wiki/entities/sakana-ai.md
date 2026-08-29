@@ -2,12 +2,13 @@
 slug: sakana-ai
 title: Sakana AI
 type: entity
-aliases: ["Sakana AI", Sakana, Marlin, "Sakana Marlin", "Sakana Fugu", Fugu, "Fugu Ultra"]
+aliases: ["Sakana AI", Sakana, Marlin, "Sakana Marlin", "Sakana Fugu", Fugu, "Fugu Ultra", "Fugu-Ultra v1.1"]
 tags: [ai-lab, japan, deep-research, agents, ab-mcts, orchestration]
 description: Tokyo-based AI lab whose multi-model-orchestration thesis ships as Marlin (an autonomous "Ultra Deep Research" agent) and Sakana Fugu (an LLM-as-router that calls a swappable pool of frontier models) — a non-US entrant pitching orchestration as a workaround to the Fable 5 export freeze.
 created_at: 2026-06-16
-timestamp: 2026-06-23T00:00:00Z
+timestamp: 2026-07-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA model ticket — Sakana Fugu", path: research/models/tickets/sakana-fugu-2026-06.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
@@ -56,6 +57,15 @@ the increasingly crowded "deep research" agent category.
   parity claim. This is the cleanest validation yet of the lab's AB-MCTS bet — that
   routing across many models beats scaling one — see [[openrouter]] and
   [[open-weights]] (ARA digest 2026-06-23).
+
+- **Claude Code-compatible interface for Fugu-Ultra v1.1 (2026-07-27).**
+  Sakana shipped a **Claude Code-compatible interface** for **Fugu-Ultra
+  v1.1**, letting the multi-agent orchestration model — which combines
+  frontier and open models behind a single API — plug into the Claude Code
+  developer surface. Extends the orchestration-as-workaround thesis
+  ([[open-weights]]) from a standalone API into direct compatibility with
+  the incumbent agentic-coding tool it competes with (ARA digest
+  2026-07-27).
 
 ## Open questions
 

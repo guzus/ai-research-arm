@@ -1,0 +1,11 @@
+Speaker 1: Wednesday, July fifteenth, twenty twenty-six.
+Speaker 2: [high_energy] China's new AI companion law just kicked in, and it's forcing Doubao, that's three hundred forty five million monthly users, and Qwen to shut down their agent features overnight.
+Speaker 1: Bloomberg is reporting Apple's OpenAI lawsuit is real, alleging trade secret theft tied to OpenAI's screenless AI speaker device.
+Speaker 2: Meanwhile Demis Hassabis is pushing for a US Frontier AI Standards Body, and Sam Altman actually called it a thoughtful proposal.
+Speaker 1: On the safety front, xAI's Grok Build was confirmed uploading full user codebases to Google Cloud before it got disabled.
+Speaker 2: That is a rough one for anyone who trusted it with private repos.
+Speaker 1: Some quick numbers now. Chai Discovery raised [emphasis] four hundred million dollars [/emphasis] in a Series C, pushing its valuation to [emphasis] three point eight billion dollars [/emphasis], nearly three times where it stood back in December.
+Speaker 2: And GPT five point six Sol hit its usage limits for a reported fifth time, even as eight million active Codex and ChatGPT Work users keep pushing the platform.
+Speaker 1: [dramatic_pause] There is also word that Nous Research is raising seventy five million dollars or more at a one point five billion dollar valuation.
+Speaker 2: Over on Hacker News, the top thread right now is literally about how to stop Claude from saying load-bearing, three hundred forty four points and counting.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

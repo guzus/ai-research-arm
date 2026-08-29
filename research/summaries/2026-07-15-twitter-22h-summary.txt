@@ -1,0 +1,10 @@
+Twitter/X AI Pulse - 2026-07-15 22:33:22 UTC
+
+CYCLE: xAI open-sources Grok Build mid-dispute over its data handling
+
+TOP STORIES:
+• xAI open-sources Grok Build's CLI/harness, resets usage limits — lands inside the multi-day secrets-upload dispute [✓]
+
+WATCH: Whether developers inspecting the newly-public Grok Build repo confirm or refute the July 12 "uploads unredacted .env secrets" claim.
+
+Full update on GitHub.

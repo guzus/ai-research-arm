@@ -31,61 +31,101 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <!-- Playfair Display / Space Grotesk / Libre Baskerville are the research
+         shelf's imprint faces: each model family gets its own typeface on its
+         book, the way a publishing house has a house face. Only the weights the
+         spines actually set are requested. See researchImprint() in main.ts. -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Space+Grotesk:wght@500;700&family=Libre+Baskerville:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Pretendard's dynamic subset keeps Korean glyph payloads demand-driven.
+         The locale token in style.css activates it only when html[lang=ko]. -->
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
   </head>
   <body>
     <div class="app">
       <header class="header">
         <div class="header-top">
           <div class="brand">
-            <h1 class="brand-title" id="brandHome" role="button" tabindex="0" title="Home">ai-research-arm</h1>
+            <a class="brand-title" id="brandHome" href="/" title="Home">ai-research-arm</a>
           </div>
           <div class="header-actions">
-            <a class="header-link" href="https://github.com/guzus/ai-research-arm" target="_blank" rel="noopener">
+            <a class="header-link" href="https://github.com/guzus/ai-research-arm" target="_blank" rel="noopener" aria-label="View ai-research-arm on GitHub" data-i18n-aria-label="github.open">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               <span class="header-link-label">guzus/ai-research-arm</span>
             </a>
+            <div class="language-switch" id="languageSwitch">
+              <button
+                class="language-toggle"
+                id="languageToggle"
+                type="button"
+                aria-label="Language: English"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                aria-controls="languageMenu"
+                title="Language / 언어"
+                data-i18n-title="language.title"
+              >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M3 12h18M12 3a14.6 14.6 0 010 18"/>
+                </svg>
+              </button>
+              <div class="language-menu" id="languageMenu" role="menu" aria-label="Language selection" data-i18n-aria-label="language.menu" hidden>
+                <div class="language-menu-label" data-i18n="language.label">Language</div>
+                <button class="language-option" type="button" role="menuitemradio" data-language="en" aria-checked="true">
+                  <span><strong data-i18n="language.english">English</strong><small data-i18n="language.englishHint">Original</small></span>
+                  <svg class="language-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                </button>
+                <button class="language-option" type="button" role="menuitemradio" data-language="ko" aria-checked="false">
+                  <span><strong lang="ko" data-i18n="language.korean">한국어</strong><small data-i18n="language.koreanHint">Translation</small></span>
+                  <svg class="language-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-        <nav class="tabs" id="tabs">
-          <div class="calendar" id="calendar"></div>
-          <button class="tab" data-tab="twitter">Twitter</button>
-          <button class="tab" data-tab="models">Jira</button>
-          <button class="tab" data-tab="research">Research</button>
-          <button class="tab" data-tab="wiki">Wiki</button>
-          <button class="tab" data-tab="agents">Arm</button>
-          <button class="brand-search" id="searchToggle" type="button" aria-label="Search" title="Search (⌘F or /)">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          </button>
-        </nav>
-        <div class="search-overlay" id="searchOverlay" hidden>
-          <div class="search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search this view…" autocomplete="off" spellcheck="false">
-            <span class="search-count" id="searchCount" aria-live="polite"></span>
-            <button class="search-clear" id="searchClear" type="button" aria-label="Clear search" hidden>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-            </button>
-          </div>
-          <div class="search-results" id="searchResults" role="listbox" hidden></div>
-        </div>
-        <div class="controls">
-          <a
-            class="request-btn"
-            href="https://github.com/guzus/ai-research-arm/issues/new?labels=gen-research&title=%5BResearch%5D%20&body=%23%23%20Research%20request%0A%0ATopic%3A%20%0A%0AContext%3A%20%0A%0ATags%3A%20%0A%0Abackend%3A%20claude"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Submit a research request on GitHub"
-            title="Submit a research request on GitHub"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-            <span>Request research</span>
-          </a>
-          <button class="icon-btn refresh-btn" id="refreshBtn" title="Refresh (R)" aria-label="Refresh">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
-          </button>
         </div>
       </header>
+      <div class="nav-shell">
+        <nav class="tabs" id="tabs">
+          <div class="calendar" id="calendar"></div>
+          <a class="tab" data-tab="twitter" href="/twitter" data-i18n="nav.twitter">Twitter</a>
+          <a class="tab" data-tab="models" href="/models" data-i18n="nav.models">Jira</a>
+          <a class="tab" data-tab="research" href="/research" data-i18n="nav.research">Research</a>
+          <a class="tab" data-tab="wiki" href="/wiki" data-i18n="nav.wiki">Wiki</a>
+          <a class="tab" data-tab="pricing" href="/pricing" data-i18n="nav.pricing">Pricing</a>
+          <a class="tab" data-tab="agents" href="/agents" data-i18n="nav.agents">Arm</a>
+          <!-- Search + Request research ride at the end of the tab rail. They
+               live in their own wrapper so they are not <a>/<div> siblings of
+               the sections: the phone grid below keys its full-width span off
+               `.tabs a.tab:last-of-type`, which another bare <a> here would
+               silently break. -->
+          <div class="tabs-actions">
+            <button class="brand-search" id="searchToggle" type="button" aria-label="Search" title="Search (⌘K or /)" data-i18n-aria-label="search.label" data-i18n-title="search.title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+            <a
+              class="request-btn"
+              href="https://github.com/guzus/ai-research-arm/issues/new?labels=gen-research&title=%5BResearch%5D%20&body=%23%23%20Research%20request%0A%0ATopic%3A%20%0A%0AContext%3A%20%0A%0ATags%3A%20%0A%0Abackend%3A%20claude"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Submit a research request on GitHub"
+              title="Submit a research request on GitHub"
+              data-i18n-aria-label="request.label"
+              data-i18n-title="request.label"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              <span data-i18n="request.text">Request research</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+      <!-- The refresh button is chrome-cut (display:none) but keeps its node:
+           the R shortcut and the click handler both resolve #refreshBtn. -->
+      <div class="controls">
+          <button class="icon-btn refresh-btn" id="refreshBtn" title="Refresh (R)" aria-label="Refresh" data-i18n-title="refresh.title" data-i18n-aria-label="refresh.label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+          </button>
+      </div>
       <div id="content"></div>
       <footer class="site-footer">
         <a class="footer-link" href="https://x.com/uncanny_guzus" target="_blank" rel="noopener noreferrer">
@@ -96,31 +136,59 @@
         </a>
       </footer>
     </div>
-    <aside class="ara-toc" id="researchToc" hidden aria-label="Article contents">
-      <h2 class="ara-toc-title">Contents</h2>
+    <!-- Global search — a centered command-palette dialog over a dimmed
+         backdrop (Mintlify/GitBook style), so it never overlaps the nav rail
+         or the content behind it. Opened by ⌘K / ⌘F / "/" or the magnifier. -->
+    <div class="search-overlay" id="searchOverlay" hidden>
+      <div class="search-backdrop" id="searchBackdrop"></div>
+      <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search" data-i18n-aria-label="search.label">
+        <div class="search-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" class="search-input" id="searchInput" placeholder="Search articles, wiki, models, digests…" data-i18n-placeholder="search.placeholder" autocomplete="off" spellcheck="false">
+          <span class="search-count" id="searchCount" aria-live="polite"></span>
+          <button class="search-clear" id="searchClear" type="button" aria-label="Clear search" data-i18n-aria-label="search.clear" hidden>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div class="search-filters" aria-label="Search filters">
+          <label><span data-i18n="search.filterType">Type</span><select id="searchTypeFilter"><option value="">All</option><option value="research">Research</option><option value="wiki">Wiki</option><option value="model">Models</option><option value="claim">Claims</option><option value="digest">Digests</option><option value="twitter">Twitter</option></select></label>
+          <label><span>Confidence</span><select id="searchConfidenceFilter"><option value="">All</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></label>
+          <label><span>Source tier</span><select id="searchTierFilter"><option value="">All</option><option value="primary">Primary</option><option value="academic">Academic</option><option value="official">Official</option><option value="secondary">Secondary</option></select></label>
+          <label><span>Language</span><select id="searchLanguageFilter"><option value="">All</option><option value="en">English</option><option value="ko">한국어</option></select></label>
+        </div>
+        <div class="search-results" id="searchResults" role="listbox" hidden></div>
+        <div class="search-footer">
+          <span><kbd>↑</kbd><kbd>↓</kbd> <span data-i18n="search.navigate">navigate</span></span>
+          <span><kbd>↵</kbd> <span data-i18n="search.open">open</span></span>
+          <span><kbd>esc</kbd> <span data-i18n="search.close">close</span></span>
+        </div>
+      </div>
+    </div>
+    <aside class="ara-toc" id="researchToc" hidden aria-label="Article contents" data-i18n-aria-label="toc.label">
+      <h2 class="ara-toc-title" data-i18n="toc.title">Contents</h2>
       <ol class="ara-toc-list" id="researchTocList"></ol>
     </aside>
     <div class="section-nav" id="sectionNav">
-      <button class="section-nav-btn" id="navUp" title="Previous section (↑)">
+      <button class="section-nav-btn" id="navUp" title="Previous section (↑)" aria-label="Previous section" data-i18n-title="section.previous" data-i18n-aria-label="section.previous">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
       </button>
       <span class="section-nav-counter" id="navCounter"></span>
-      <button class="section-nav-btn" id="navDown" title="Next section (↓)">
+      <button class="section-nav-btn" id="navDown" title="Next section (↓)" aria-label="Next section" data-i18n-title="section.next" data-i18n-aria-label="section.next">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
     </div>
     <div class="shortcut-guide" id="shortcutGuide">
-      <button class="shortcut-toggle" id="shortcutToggle" title="Keyboard shortcuts (?)">
+      <button class="shortcut-toggle" id="shortcutToggle" title="Keyboard shortcuts (?)" aria-label="Keyboard shortcuts" data-i18n-title="shortcuts.toggle" data-i18n-aria-label="shortcuts.toggle">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg>
       </button>
       <div class="shortcut-panel" id="shortcutPanel">
-        <div class="shortcut-title">Keyboard Shortcuts</div>
-        <div class="shortcut-row"><kbd>↑</kbd><kbd>↓</kbd><span>Navigate sections</span></div>
-        <div class="shortcut-row"><kbd>[</kbd><kbd>]</kbd><span>Previous / next day</span></div>
-        <div class="shortcut-row"><kbd>T</kbd><span>Jump to today</span></div>
-        <div class="shortcut-row"><kbd>/</kbd><span>Focus search</span></div>
-        <div class="shortcut-row"><kbd>R</kbd><span>Refresh</span></div>
-        <div class="shortcut-row"><kbd>?</kbd><span>Toggle this guide</span></div>
+        <div class="shortcut-title" data-i18n="shortcuts.title">Keyboard Shortcuts</div>
+        <div class="shortcut-row"><kbd>↑</kbd><kbd>↓</kbd><span data-i18n="shortcuts.sections">Navigate sections</span></div>
+        <div class="shortcut-row"><kbd>[</kbd><kbd>]</kbd><span data-i18n="shortcuts.days">Previous / next day</span></div>
+        <div class="shortcut-row"><kbd>T</kbd><span data-i18n="shortcuts.today">Jump to today</span></div>
+        <div class="shortcut-row"><kbd>⌘K</kbd><kbd>/</kbd><span data-i18n="shortcuts.search">Open search</span></div>
+        <div class="shortcut-row"><kbd>R</kbd><span data-i18n="shortcuts.refresh">Refresh</span></div>
+        <div class="shortcut-row"><kbd>?</kbd><span data-i18n="shortcuts.guide">Toggle this guide</span></div>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>

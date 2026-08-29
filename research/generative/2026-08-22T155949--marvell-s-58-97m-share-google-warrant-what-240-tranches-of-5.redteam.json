@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "mrvl-1",
+      "claim_text": "On August 18, 2026, Marvell issued Google LLC a warrant to purchase up to 58,970,907 shares at $206.58, exercisable until August 18, 2033.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "mrvl-3",
+      "claim_text": "Full vesting of the performance warrant requires $120 billion of cumulative Qualifying Revenue (240 x $500M) — this is a vesting cap, not a purchase commitment or revenue forecast.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "mrvl-9",
+      "claim_text": "Marvell shares rose about 10% on August 19, 2026 following the 8-K disclosure while Broadcom fell about 5%.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    }
+  ]
+}

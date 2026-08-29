@@ -130,6 +130,12 @@ DEFAULT_DEPLOY_RELEVANT_PATHS = (
     "research/wiki",
     "research/youtube",
     "research/arm",
+    # Added when the Pricing tab shipped. research/market/ was already in
+    # prebuild's COPY_DIRS (for the wiki hover quote row), but it only became
+    # deploy-RELEVANT once a whole view rendered from it: a build that misses a
+    # model-pricing refresh now ships a visibly stale chart, not just an
+    # out-of-date number in a hover card.
+    "research/market",
 )
 
 DEFAULT_TIMEOUT_SECONDS = 15.0

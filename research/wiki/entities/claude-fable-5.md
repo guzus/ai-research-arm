@@ -6,8 +6,14 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.
 created_at: 2026-06-10
-timestamp: 2026-07-03T00:00:00Z
+timestamp: 2026-08-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
+  - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
+  - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
+  - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
+  - {title: "ARA daily digest 2026-07-14", path: research/digest/2026-07-14-digest.md}
+  - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
   - {title: "ARA daily digest 2026-07-03", path: research/digest/2026-07-03-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
@@ -275,6 +281,84 @@ every feed on launch day.
   argument some (e.g. @kimmonismus) read as retroactive justification for the
   tightened classifiers; Epoch itself hedges on causation. See
   [[agentic-ai-security]] and [[federal-ai-policy]] (ARA digest 2026-07-03).
+
+- **Third rate-limit extension confirmed; Claude Code ships a built-in browser
+  (2026-07-13).** [[anthropic]] officially confirmed **Fable 5 access and a
+  50%-higher Claude Code rate limit extended through July 19** via its
+  **@claudeai** account, multi-source corroborated (@mark_k, @testingcatalog)
+  — converting three cycles of user speculation into a sourced announcement.
+  Skeptics note this is the **third such extension** and may reflect
+  competitive pressure from [[gpt-5-6|GPT-5.6]]'s usage-cap turmoil (see
+  [[gpt-5-6]]) rather than confidence in Fable 5's underlying capacity.
+  Separately, **Claude Code shipped a built-in browser** letting the agent
+  read, click, and type on external websites — extending the tool-use surface
+  well past the file-and-terminal sandbox (The Decoder) (ARA digest
+  2026-07-13).
+
+- **Second free-access extension in one week (2026-07-14).** [[anthropic]]
+  extended Fable 5's free access and boosted Claude Code rate limits **again**,
+  through **Sunday July 19** — the second extension inside a single week,
+  coming directly after [[gpt-5-6|GPT-5.6]]'s continued rollout. Paid
+  subscribers can spend up to **50% of weekly limits** on Fable 5 during the
+  extension; usage **reverts to prepaid credits ($10/M input, $50/M output)**
+  starting **July 20**. Read alongside the repeated OpenAI capacity
+  interventions (see [[gpt-5-6]]), the two labs are now trading rate-limit
+  concessions in near-real-time rather than settling into stable usage caps
+  (ARA digest 2026-07-14).
+
+- **Credited (with two mathematicians) disproving the 87-year-old Jacobian
+  conjecture (2026-07-21).** Claude Fable 5 is credited alongside two
+  mathematicians with disproving the long-standing **Jacobian conjecture**
+  via a hand-checkable counterexample, independently confirmed across
+  multiple mathematician accounts on social media — though **formal peer
+  review is still pending**. If it holds, this is the highest-profile
+  pure-mathematics result yet attributed in part to a Mythos-class model
+  (ARA digest 2026-07-21).
+
+- **Claude Mythos finds real cryptographic flaws in a 60-hour, ~$100K run
+  (2026-07-29).** [[anthropic]] ran **Claude Mythos** for **60 hours (~$100K
+  in API cost)** and surfaced genuine **mathematical weaknesses in HAWK and a
+  deliberately weakened AES variant** — a concrete cryptanalysis result, not
+  a benchmark score, that per Simon Willison's writeup needed **human
+  prompting to keep pushing past "impossible."** The Hacker News thread
+  covering it ("Discovering Cryptographic Weaknesses with Claude") was the
+  day's fastest riser (17→119 points). Separately, Mythos **scored 96%+12pp
+  above Microsoft's new MAI-Cyber-1-Flash** on the **CyberGym** benchmark —
+  a direct head-to-head cyber-capability data point against a rival lab's
+  purpose-built model, reinforcing the "too powerful to ship generally"
+  framing that has defined Mythos's restricted-access posture since launch
+  (see [[agentic-ai-security]]) (ARA daily digest 2026-07-29).
+
+- **The HAWK/AES cryptanalysis result gets hard numbers and an official
+  writeup; CryptanalysisBench ships (2026-07-30).** The 2026-07-29 HAWK/AES
+  result hardened with concrete figures now corroborated by [[anthropic]]'s
+  own post, Ars Technica, and Simon Willison: Mythos autonomously found a
+  **lattice symmetry in NIST post-quantum finalist HAWK**, cutting its
+  effective key-cost estimate from **2^64 to 2^38 operations**, plus an
+  **800x speedup on a 7-round AES-128 attack** — still inside the same
+  **~60-hour autonomous run**. Anthropic separately released
+  **CryptanalysisBench**, built with **ETH Zurich, Tel Aviv University, and
+  the University of Haifa**, to benchmark LLM cryptanalytic capability going
+  forward — turning a single headline result into a repeatable evaluation
+  track (a cryptographer also posted a critical follow-up on Hacker News
+  questioning parts of the claims). See [[agentic-ai-security]] (ARA daily
+  digest 2026-07-30).
+
+- **Reported to have reproduced five of [[astra|Astra]]'s ten proofs
+  (2026-08-03).** [[anthropic]] researcher **Levent Alpöge** is reported to have
+  put **generally-available Fable 5** — the shipping product, not a restricted
+  Mythos build — on the **ten open problems** [[openai]]'s unreleased
+  [[astra|Astra]] model solved, running it **autonomously with no internet access**
+  and with safeguards against OpenAI's published solutions leaking into context,
+  and obtained **five results**. Only **one** is described as using essentially
+  the same argument, leaving four as possibly independent derivations. The claim
+  matters because it targets the *moat*, not the correctness: if a GA model
+  reproduces half the package in a day, Astra's headline shifts from raw
+  capability to research workflow and write-up. **It is single-source**
+  (@kimmonismus, 16:18 UTC) with **no transcripts, proofs, or Anthropic
+  statement** — the same evidentiary weakness as the ten-proof manuscript it
+  contests, which is itself the point of the [[verification-bottleneck]] (ARA
+  daily digest 2026-08-03).
 
 ## Open questions
 

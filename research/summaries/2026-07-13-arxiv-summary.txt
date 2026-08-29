@@ -1,0 +1,14 @@
+arXiv Papers - 2026-07-13
+
+TOP 5 PAPERS:
+• Scalable Visual Pretraining for Language Intelligence - visual pretraining on page images beats text-only pretraining for foundation LMs
+• Statistically Undetectable Backdoors in DNNs - proves backdoors that no white-box statistical test can catch
+• Agora - auction mechanism lets expert models bid on LLM reasoning steps, beats static routing
+• Failure as a Process - study of 1,794 CLI coding-agent trajectories: failures are epistemic, start early, stay hidden
+• What VGGT Knows About Overlap - geometric foundation model implicitly learns co-visibility, LLM-like layer structure
+
+CATEGORIES: NLP (4), CV/Multimodal (6), Agents (4), Safety (4), Other (4)
+
+Note: newest batch is 2026-07-10 (weekend gap).
+
+Full report on GitHub.

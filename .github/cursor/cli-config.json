@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "editor": {
+    "vimMode": false
+  },
+  "permissions": {
+    "allow": [
+      "Read(**/*)",
+      "Write(research/**/*)",
+      "Write(.tmp/**/*)",
+      "Write(.gen-claims-ledger.json)",
+      "Write(.gen-verifier-findings.json)",
+      "Write(.gen-redteam-findings.json)",
+      "Shell(uv)",
+      "Shell(python)",
+      "Shell(python3)",
+      "Shell(birdy)",
+      "Shell(birdy-fast)",
+      "Shell(curl)",
+      "Shell(jq)",
+      "Shell(pdftotext)",
+      "Shell(git)",
+      "WebFetch(*)"
+    ],
+    "deny": [
+      "Write(.env*)",
+      "Write(.git/**/*)",
+      "Write(.github/**/*)",
+      "Write(data/agent-backends.json)",
+      "Shell(gh)",
+      "Mcp(*)"
+    ]
+  }
+}

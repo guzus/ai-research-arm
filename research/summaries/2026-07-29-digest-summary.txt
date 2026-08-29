@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-07-29
+
+TOP STORIES:
+• OpenAI backs a plea to slow AI itself — 1,132-signatory "Pacing the Frontier" letter
+• Taiwan's Nvidia smuggling probe turns criminal — court approves detention on forgery charges
+• Hugging Face details the "first autonomous agent cyberattack" — Modal Labs sandbox named as staging ground
+
+KEY NUMBERS:
+• KOSPI down 10.7%, Samsung & SK Hynix each -12%+, ~$600B wiped off SK Hynix value in a month
+• Kimi K3: #1 open-weight model (Intelligence Index 57), #1 LMArena full-stack coding
+• Claude Mythos: 60-hour, ~$100K cryptanalysis run found real HAWK/AES weaknesses
+
+TRENDING: Kimi K3 architecture deep-dives dominate Hacker News after the open-weights mega-thread rolled off
+
+Full digest on GitHub.

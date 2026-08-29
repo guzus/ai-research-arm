@@ -1,0 +1,442 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "On the Q2 2026 call Doris Hsu, GlobalWafers' chairperson, described the *previous* cycle: \"Last cycle, most of the LTAs are around three years… The longest will be 5 to 8 years, this time seems that more, is a bit longer than last time.\"",
+      "verdict": "supported",
+      "citation": "https://uk.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4807263"
+    },
+    {
+      "id": "c2",
+      "text": "More damaging to the novelty claim, GlobalWafers itself told the Taipei Times in December 2021 that its agreements had lengthened from five years in 2007 to \"eight years now,\" alongside a backlog above NT$100 billion.",
+      "verdict": "supported",
+      "citation": "https://www.taipeitimes.com/News/biz/archives/2021/12/16/2003769652"
+    },
+    {
+      "id": "c3",
+      "text": "In the same December 2021 interview Hsu said: \"We have clear order visibility for 2023 and it should be okay into 2024… We do not see any signs of things slowing down in 2023 or 2024.\"",
+      "verdict": "supported",
+      "citation": "https://www.taipeitimes.com/News/biz/archives/2021/12/16/2003769652"
+    },
+    {
+      "id": "c4",
+      "text": "TrendForce described the standard silicon-wafer LTA duration as \"three to 8 years,\" specifying annual supply and demand quantities, in an article written in August 2023 — from the depths of a *downturn*.",
+      "verdict": "supported",
+      "citation": "https://www.trendforce.com/news/2023/08/14/news-silicon-wafer-long-term-contracts-unstable-major-foundry-seeks-price-cut-from-japanese-suppliers/"
+    },
+    {
+      "id": "c5",
+      "text": "By November 2023 GlobalWafers was reporting small-diameter utilization of 60–65% and sequentially falling revenue as customers digested inventory.",
+      "verdict": "supported",
+      "citation": "https://www.taipeitimes.com/News/biz/archives/2023/11/09/2003808889"
+    },
+    {
+      "id": "c6",
+      "text": "Siltronic's chief executive Michael Heckmeier gave the sharpest counter-signal of the three, on 30 July: \"What we see today in spot pricing, it's still below LTA level, and it's clearly below reinvest level.\"",
+      "verdict": "supported",
+      "citation": "https://www.investing.com/news/transcripts/earnings-call-transcript-siltronic-posts-q2-2026-sales-gain-as-demand-improves-93CH-4822904"
+    },
+    {
+      "id": "c7",
+      "text": "SUMCO's Q1 disclosure was blunter: \"300mm wafer shipments decreased due to customer inventory adjustments, but long-term contract prices were maintained.\"",
+      "verdict": "unsupported",
+      "citation": "https://japanir.jp/company/company-3436/ir/3436-20260512-01_wp_financial_summary/"
+    },
+    {
+      "id": "c8",
+      "text": "SUMCO's CFO explained in May 2026 that \"because the customers have not fully taken the volume stipulated in the LTAs, the endpoint of the LTAs is being extended,\" adding that \"generally speaking, the LTA periods are still getting longer.\"",
+      "verdict": "supported",
+      "citation": "https://www.investing.com/news/transcripts/earnings-call-transcript-sumco-misses-q1-2026-expectations-stock-dips-93CH-4698631"
+    },
+    {
+      "id": "c9",
+      "text": "SEMI reported worldwide silicon area shipments of 3,573 million square inches in Q2 2026.",
+      "verdict": "supported",
+      "citation": "https://www.semi.org/en/semi-press-release/semi-reports-worldwide-silicon-wafer-shipments-increase-7.4-percent-year-on-year-in-q2-2026"
+    },
+    {
+      "id": "c10",
+      "text": "In 2025 area shipments rose 5.8% to 12,973 million square inches while wafer revenue *fell* 1.2% to $11.4 billion.",
+      "verdict": "supported",
+      "citation": "https://www.semi.org/en/semi-press-release/semi-reports-2025-annual-worldwide-silicon-wafer-shipments-and-revenue-results"
+    },
+    {
+      "id": "c11",
+      "text": "Dividing revenue by area gives a blended $0.879 per square inch, down from $0.976 in 2023 — a 9.9% decline to the lowest level since 2018.",
+      "verdict": "weak",
+      "citation": "https://www.semi.org/en/semi-press-release/semi-reports-2025-annual-worldwide-silicon-wafer-shipments-and-revenue-results"
+    },
+    {
+      "id": "c12",
+      "text": "The cleanest primary statement comes from Micron's chief executive: \"Industrywide, HBM3E consumes approximately three times the wafer supply as D5 to produce a given number of bits,\" and \"we expect the trade ratio for HBM4 to be even higher.\"",
+      "verdict": "supported",
+      "citation": "https://investors.micron.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5"
+    },
+    {
+      "id": "c13",
+      "text": "Micron announced up to $3 billion of US supply-chain investment on 9 July 2026, of which $500 million is \"strategic financing support\" to advance GlobalWafers America's Sherman facility, with the two companies to \"enter into a 10-year supply agreement\"",
+      "verdict": "supported",
+      "citation": "https://www.globenewswire.com/news-release/2026/07/09/3324795/14450/en/Micron-Announces-Up-to-3-Billion-Strategic-Investment-to-Strengthen-U-S-Semiconductor-Ecosystem.html"
+    },
+    {
+      "id": "c14",
+      "text": "GlobalWafers went limit-up to a record NT$1,485 on 13 July 2026 on the Micron announcement,",
+      "verdict": "weak",
+      "citation": "https://news.cnyes.com/news/id/6555421"
+    },
+    {
+      "id": "c15",
+      "text": "and closed at NT$872 on 6 August 2026 — roughly 41% lower — after a fire at Novara and a half-year report showing margin compression.",
+      "verdict": "supported",
+      "citation": "https://tw.stock.yahoo.com/quote/6488.TWO"
+    },
+    {
+      "id": "c16",
+      "text": "GlobalWafers' Q2 revenue was NT$15.21 billion, up 8.8% sequentially but down 5.0% year on year, with gross margin of 20.6% against 25.8% a year earlier.",
+      "verdict": "weak",
+      "citation": "https://www.chinatimes.com/realtimenews/20260805001068-260410"
+    },
+    {
+      "id": "c17",
+      "text": "Half-year revenue fell 7.6% and gross margin 5.5 points, which management attributed to \"pricing agreed during a weak market in 2025, higher qualification and ramp-up costs at new sites, depreciation at the Texas facility.\"",
+      "verdict": "weak",
+      "citation": "https://www.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4833281"
+    },
+    {
+      "id": "c18",
+      "text": "But the credit does not apply to property whose construction *begins* after 31 December 2026.",
+      "verdict": "supported",
+      "citation": "https://www.law.cornell.edu/uscode/text/26/48D"
+    },
+    {
+      "id": "c19",
+      "text": "Siltronic reported Q2 EBITDA of €69.4 million on sales of €321.6 million — but EBIT of −€51.9 million and a net loss of €63.2 million, because half-year depreciation nearly doubled to €238.8 million from €126.1 million.",
+      "verdict": "supported",
+      "citation": "https://www.siltronic.com/fileadmin/investorrelations/2026/Q2/20260730_Press_release_Wafer_demand_supports_2026_sales_outlook.pdf"
+    },
+    {
+      "id": "c20",
+      "text": "Siltronic guides full-year depreciation of €490–520 million against capex of €180–220 million.",
+      "verdict": "unsupported",
+      "citation": "https://www.siltronic.com/fileadmin/investorrelations/2026/Q2/20260730_Press_release_Wafer_demand_supports_2026_sales_outlook.pdf"
+    },
+    {
+      "id": "c21",
+      "text": "The one genuine exception is Shin-Etsu, the largest supplier, whose Electronic Materials segment grew operating profit roughly 23% year on year in the April–June quarter",
+      "verdict": "unsupported",
+      "citation": "https://finance.biggo.com/quote/4063.T/earnings-call/JP_4063.T_2026-07-24"
+    },
+    {
+      "id": "c22",
+      "text": "and which told its July briefing that it is receiving supply requests exceeding production capacity for many items.",
+      "verdict": "supported",
+      "citation": "https://finance.biggo.com/quote/4063.T/earnings-call/JP_4063.T_2026-07-24"
+    },
+    {
+      "id": "c23",
+      "text": "Micron disclosed in June 2026 that it holds sixteen take-or-pay strategic customer agreements carrying roughly $100 billion of cumulative minimum revenue",
+      "verdict": "weak",
+      "citation": "https://investors.micron.com/static-files/631b1a32-5537-46ae-8f40-82e42fc79dfe"
+    },
+    {
+      "id": "c24",
+      "text": "and about $22 billion of customer commitments, of which roughly $18 billion is cash deposits — which Micron's CFO classifies as *financing* cash flows, returned to customers in the back half of the term, explicitly not affecting free cash flow.",
+      "verdict": "supported",
+      "citation": "https://investors.micron.com/static-files/631b1a32-5537-46ae-8f40-82e42fc79dfe"
+    },
+    {
+      "id": "c25",
+      "text": "Micron now lists \"declining bits per wafer growth from node migrations\" as one of four named constraints on DRAM bit supply, alongside cleanroom constraints, construction lead times and the HBM trade ratio.",
+      "verdict": "supported",
+      "citation": "https://investors.micron.com/static-files/e089f8c0-065d-47b8-9d02-bfa863cdb357"
+    },
+    {
+      "id": "c26",
+      "text": "TrendForce's projection puts the same mechanism in allocation terms: HBM takes 18%, 22% and 30% of total DRAM wafer input at the end of 2025, 2026 and 2027 while supplying 8%, 9% and 13% of DRAM bit supply.",
+      "verdict": "supported",
+      "citation": "https://www.trendforce.com/presscenter/news/20260602-13074.html"
+    },
+    {
+      "id": "c27",
+      "text": "TSMC confirmed in April 2026 that it is \"now producing 5.5-reticle size CoWoS\" and planning a 14-reticle version integrating roughly ten large compute dies and 20 HBM stacks.",
+      "verdict": "supported",
+      "citation": "https://pr.tsmc.com/english/news/3302"
+    },
+    {
+      "id": "c28",
+      "text": "NVIDIA has never published an exact die area, stating only that Blackwell uses \"two-reticle limit GPU dies\" on TSMC 4NP,",
+      "verdict": "supported",
+      "citation": "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing"
+    },
+    {
+      "id": "c29",
+      "text": "Run the die-per-wafer arithmetic and a 4,719 mm² unit yields roughly five gross per wafer, against roughly 65 gross dies for an 800 mm² compute die.",
+      "verdict": "weak",
+      "citation": "https://pr.tsmc.com/english/news/3302"
+    },
+    {
+      "id": "c30",
+      "text": "SK hynix's D1z DDR4 runs about 0.296 gigabits per square millimetre against roughly 0.16 for HBM3, an area penalty of about 1.85 times,",
+      "verdict": "supported",
+      "citation": "https://newsletter.semianalysis.com/p/scaling-the-memory-wall-the-rise-and-roadmap-of-hbm"
+    },
+    {
+      "id": "c31",
+      "text": "in March 2026, into a supposedly tightening market, it descoped its state-backed expansion, cutting project cost from ¥225.0 billion to ¥58.0 billion and its maximum METI subsidy from ¥75.0 billion to ¥19.3 billion, deferring the Yoshinogari greenfield in favour of upgrading existing Imari lines for leading-edge AI wafers.",
+      "verdict": "supported",
+      "citation": "https://www.nikkei.com/article/DGXZQOUC3018E0Q6A330C2000000/"
+    },
+    {
+      "id": "c32",
+      "text": "Saga Prefecture's land handover slipped a year.",
+      "verdict": "weak",
+      "citation": "https://www.saga-s.co.jp/articles/-/1678191"
+    },
+    {
+      "id": "c33",
+      "text": "GlobalWafers' CHIPS award is up to $406 million — $380 million for Sherman, $20 million for St. Peters, Missouri and $6 million in workforce funding — disbursed against construction, technology, production and commercial milestones.",
+      "verdict": "supported",
+      "citation": "https://www.nist.gov/chips/globalwafers-texas-sherman"
+    },
+    {
+      "id": "c34",
+      "text": "Its parent disclosed receipt of just over $200 million in June 2025, roughly half, and no second tranche has been publicly documented since.",
+      "verdict": "supported",
+      "citation": "https://finance.yahoo.com/news/globalwafers-received-200-million-chips-103105553.html"
+    },
+    {
+      "id": "c35",
+      "text": "GlobalWafers reported approximately $317.8 million received as of Q1 2026 under AMIC and other incentive programmes, which is separate from and larger than its CHIPS grant receipts.",
+      "verdict": "weak",
+      "citation": "https://www.sas-globalwafers.com/en/gwc_news_en_20260505/"
+    },
+    {
+      "id": "c36",
+      "text": "ESWIN — mainland China's largest 300mm maker and the world's sixth — told the Shanghai Stock Exchange that \"as of the signing date of this prospectus, the company's products have not yet been applied to the world's most advanced chip process nodes,\" and that its epitaxial wafers reach mass production only at 28nm and above.",
+      "verdict": "weak",
+      "citation": "https://static.sse.com.cn/stock/disclosure/announcement/c/202508/002043_20250804_NH02.pdf"
+    },
+    {
+      "id": "c37",
+      "text": "And ESWIN's own prospectus carries the risk factor that if planned capacity ramps on schedule, \"global 12-inch silicon wafers may enter a phase of oversupply in 2026.\"",
+      "verdict": "weak",
+      "citation": "http://pdf.dfcfw.com/pdf/H2_AN202509241749809284_1.pdf"
+    },
+    {
+      "id": "c38",
+      "text": "NSIG grew 300mm volume 27.0% in 2025 to 6.42 million wafers while its 300mm average selling price fell 8.83% and the segment ran a gross margin of **minus 14.99%**.",
+      "verdict": "unsupported",
+      "citation": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=688126"
+    },
+    {
+      "id": "c39",
+      "text": "Actual shipments are far lower: ESWIN shipped about 673,000 wafers a month in 2025 against 850,000 of nameplate, and National Silicon Industry Group about 535,000 against 850,000.",
+      "verdict": "weak",
+      "citation": "http://pdf.dfcfw.com/pdf/H2_AN202509241749809284_1.pdf"
+    },
+    {
+      "id": "c40",
+      "text": "The widely cited Beijing target of over 70% domestic sourcing of advanced silicon wafers by 2026 traces to a single Nikkei exclusive citing unnamed sources, with no ministry document or published Chinese text behind it.",
+      "verdict": "supported",
+      "citation": "https://asia.nikkei.com/business/china-tech/exclusive-china-targets-70-advanced-domestic-silicon-wafer-use-by-2026"
+    },
+    {
+      "id": "c41",
+      "text": "The 2027 figure of 13 million exceeds SEMI's own forecast of installed 300mm fab capacity for 2028.",
+      "verdict": "supported",
+      "citation": "https://www.semi.org/en/semi-press-release/semi-forecasts-69-percent-growth-in-advanced-chipmaking-capacity-through-2028-due-to-ai"
+    },
+    {
+      "id": "c42",
+      "text": "On the same date, Taiwan's Commercial Times reported that 12-inch pricing was still under negotiation, and that \"the increase customers accept still falls short of the company's expectations.\"",
+      "verdict": "supported",
+      "citation": "https://www.ctee.com.tw/news/20260626700235-439901"
+    },
+    {
+      "id": "c43",
+      "text": "One ownership change closes the picture: Doosan agreed on 31 July 2026 to buy 70.61% of SK Siltron from SK Inc. for ₩2.3 trillion, closing targeted for January 2027.",
+      "verdict": "supported",
+      "citation": "https://www.thelec.net/news/articleView.html?idxno=12743"
+    },
+    {
+      "id": "c44",
+      "text": "SUMCO's operating margin fell every year through the AI boom — 24.9% in FY2022, 17.2%, 9.3%, 0.3% in FY2025 — while its customer SK hynix reported a 76.3% operating margin in calendar Q2 2026.",
+      "verdict": "weak",
+      "citation": "https://news.skhynix.com/en/q2-2026-business-results/"
+    },
+    {
+      "id": "c45",
+      "text": "TrendForce reports conventional DRAM contract prices rising 93–98% quarter on quarter in 1Q26, 58–63% in 2Q26, and a forecast 13–18% in 3Q26 — roughly a sixfold deceleration in three quarters.",
+      "verdict": "weak",
+      "citation": "https://www.trendforce.com/presscenter/news/20260703-13134.html"
+    },
+    {
+      "id": "c46",
+      "text": "Its Q2 results, released at 15:30 JST on 6 August 2026 — hours before this article's cut-off — show sales of ¥113.6 billion against ¥112.0 billion guided and an operating loss of ¥1.1 billion against ¥2.5 billion guided: a beat on volume and cost, with no evidence of a realised price increase.",
+      "verdict": "weak",
+      "citation": "https://finance.yahoo.co.jp/news/detail/8d2059fbfd2c1eb16ead9b3528f6af7f45f97be1"
+    },
+    {
+      "id": "c47",
+      "text": "SUMCO is running roughly ¥33.6 billion of quarterly depreciation against ¥19.4 billion of half-year capex.",
+      "verdict": "weak",
+      "citation": "https://finance.yahoo.co.jp/news/detail/8d2059fbfd2c1eb16ead9b3528f6af7f45f97be1"
+    },
+    {
+      "id": "c48",
+      "text": "SUMCO's own Q2 materials describe spot as at the stage where \"renegotiation talks have started,\" not concluded.",
+      "verdict": "unsupported",
+      "citation": "https://finance.yahoo.co.jp/news/detail/8d2059fbfd2c1eb16ead9b3528f6af7f45f97be1"
+    },
+    {
+      "id": "c49",
+      "text": "Site announced June 2022, groundbreaking December 2022, grand opening May 2025, phase-one line complete late 2025, and qualification \"completed with multiple customers\" only in Q2 2026.",
+      "verdict": "weak",
+      "citation": "https://www.taipeitimes.com/News/biz/archives/2026/07/11/2003860549"
+    },
+    {
+      "id": "c50",
+      "text": "and the plant was still loss-making at that point, on what reporting attributes to \"a slower-than-expected product qualification process, a longer learning curve, heavy depreciation costs and lower utilization.\"",
+      "verdict": "supported",
+      "citation": "https://www.taipeitimes.com/News/biz/archives/2026/07/11/2003860549"
+    },
+    {
+      "id": "c51",
+      "text": "Hsu: \"We believe the supply-demand tightening in the semiconductor wafer industry is already underway and is already happening… supply for certain advanced 12-inch products and applications already become noticeably constrained.\"",
+      "verdict": "weak",
+      "citation": "https://www.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4833281"
+    },
+    {
+      "id": "c52",
+      "text": "GlobalWafers' reported customer prepayment balance was NT$20.8 billion at the end of Q2, down from NT$23.5 billion in Q1, with Hsu calling the current level the bottom.",
+      "verdict": "weak",
+      "citation": "https://ph.investing.com/news/company-news/globalwafers-q2-2026-slides-ai-demand-drives-growth-amid-margin-pressure-93CH-2527748"
+    },
+    {
+      "id": "c53",
+      "text": "GlobalWafers' spokesperson stated flatly: \"we are unable to disclose LTA specific coverage ratio,\" while noting that H2 2026 and possibly H1 2027 revenue is basically LTA-covered.",
+      "verdict": "weak",
+      "citation": "https://www.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4833281"
+    },
+    {
+      "id": "c54",
+      "text": "Siltronic confirms roughly two-thirds of sales sit under LTAs, mostly 300mm, with durations \"far above three years\" and some running to 2030; asked point-blank by an analyst what portion expires in 2027 and 2028, management disclosed only the two-thirds figure and said \"We do not see an LTA cliff or major LTA changes.\"",
+      "verdict": "supported",
+      "citation": "https://www.investing.com/news/transcripts/earnings-call-transcript-siltronic-posts-q2-2026-sales-gain-as-demand-improves-93CH-4822904"
+    },
+    {
+      "id": "c55",
+      "text": "Four customers — SanDisk, Solidigm, Kioxia and Cisco — took a combined 10.19% of Nanya Technology in a NT$78.72 billion private placement paired with long-term DRAM supply agreements, which is functionally a supply-allocation contract dressed as equity.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c56",
+      "text": "SUMCO's management has since said publicly that excessively long LTAs were a mistake — they kept customers bound to purchases and thereby delayed market recovery — and that in the 2024 downturn customers obtained delivery push-outs while SUMCO collected no penalty payments.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c57",
+      "text": "When memory rolled over in 2019, wafer suppliers resolved LTA stress by cutting contracted *volumes* to defend contracted *prices*; the agreements were renegotiated on quantity rather than written off.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c58",
+      "text": "Meta's CFO declined to guide 2027 capex and said \"near-term capacity is more valuable than long-term capacity,\" which is a caution about timing rather than about level.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c59",
+      "text": "Nomura raised its SUMCO target from ¥2,270 to ¥4,100 in May 2026 and to ¥6,200 in July on precisely this expectation",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c60",
+      "text": "2027 LTA price negotiations reportedly open in September–October 2026.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c61",
+      "text": "crucibles are consumables destroyed on a roughly hundred-hour cycle, drawn from a high-purity-quartz supply chain concentrated in two mines in Spruce Pine, North Carolina.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c62",
+      "text": "The 450mm transition died with the collapse of the G450C consortium in 2017, when the expected per-die cost saving was revised down from the historical 30% to roughly 10% as lithography cost came to dominate.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c63",
+      "text": "No US, Japanese or Dutch export control restricts bare polished or epitaxial 300mm silicon wafers; the regimes bind device-fabrication equipment, advanced logic and memory chips, and compound or engineered substrates such as silicon carbide and gallium nitride.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c64",
+      "text": "Advanced wafers require roughly six to nine months of qualification per customer and per device family, running in series with the fab's own device requalification.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c65",
+      "text": "The figures attached to a supposed July 2026 round of price-increase letters from Shin-Etsu, SUMCO and GlobalWafers — 5–8% on standard 12-inch logic wafers, 18–22% on AI/HPC grades, 10–25% on HBM-adjacent high-resistivity substrates — trace to a single Chinese-language trade aggregation dated 26 June 2026 that attributes none of those numbers to a named company, filing or research house.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c66",
+      "text": "Some of that round trip is a genuine operating shock: the 20 July fire damaged part of the 8-inch back-end area, left the separate 12-inch line untouched, and led Hsu to guide 2026 revenue to \"flat or slightly higher than last year… because of the fire.",
+      "verdict": "weak",
+      "citation": "https://www.taipeitimes.com/News/biz/archives/2026/08/06/2003862000"
+    },
+    {
+      "id": "c67",
+      "text": "which is exactly the 2017–18 shape, when volume rose 18.6% and revenue rose 58%.",
+      "verdict": "weak",
+      "citation": "https://www.semi.org/en/semi-press-release/semi-reports-2025-annual-worldwide-silicon-wafer-shipments-and-revenue-results"
+    },
+    {
+      "id": "c68",
+      "text": "Area (MSI): 12732,11810,12407,14165,14713,12602,12266,12973",
+      "verdict": "weak",
+      "citation": "https://www.semi.org/en/semi-press-release/semi-reports-2025-annual-worldwide-silicon-wafer-shipments-and-revenue-results"
+    },
+    {
+      "id": "c69",
+      "text": "GlobalWafers has said new contracts will price above current levels to reflect inflation, depreciation, energy and tighter specifications.",
+      "verdict": "supported",
+      "citation": "https://uk.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4807263"
+    },
+    {
+      "id": "c70",
+      "text": "Asked about the $500 million, she emphasised it should not be viewed simply as a prepayment but as a multi-function strategic arrangement that also serves as a performance-assurance mechanism.",
+      "verdict": "supported",
+      "citation": "https://www.gvm.com.tw/article/131454"
+    },
+    {
+      "id": "c71",
+      "text": "On the 4 August call, GlobalWafers confirmed it had not yet received the funds.",
+      "verdict": "supported",
+      "citation": "https://www.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4833281"
+    },
+    {
+      "id": "c72",
+      "text": "Focus Taiwan characterised the July announcement as a mutual intent to work toward an agreement.",
+      "verdict": "supported",
+      "citation": "https://focustaiwan.tw/business/202607110006"
+    },
+    {
+      "id": "c73",
+      "text": "Year-on-year area growth fell from 13.1% in Q1 2026 to 7.4% in Q2, and SEMI's own SMG chairman paired the AI-demand commentary with a warning that \"memory price pressures are contributing to constrained PC and smartphone demand.\"",
+      "verdict": "supported",
+      "citation": "https://www.semi.org/en/semi-press-release/semi-reports-worldwide-silicon-wafer-shipments-increase-7.4-percent-year-on-year-in-q2-2026"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-16 12:57:33 UTC
+
+CYCLE: Governance gaps surface — an unfilled ethics role at OpenAI, and a state-funded campaign aimed at model outputs.
+
+TOP STORIES:
+• FT: OpenAI's last dedicated AI ethicist left in July, unannounced, no replacement lined up [⚠]
+• Politico reported to trace a $100K Israeli state-funded campaign built to shape LLM answers on Gaza, via a FARA-registered PR chain [⚠]
+• Qwen3.8-27B reported looping more than the 3.6 it replaces in non-thinking mode — first regression claim in five cycles [🚩]
+
+WATCH: Whether OpenAI names a replacement ethics lead or disputes the "only remaining ethicist" characterisation.
+
+Full update on GitHub.

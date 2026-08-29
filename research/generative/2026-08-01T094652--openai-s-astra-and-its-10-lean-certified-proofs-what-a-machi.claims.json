@@ -1,0 +1,484 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "OpenAI announced ten mathematical and TCS results on 2026-08-01, attributed to an internal version of an unreleased model called Astra, each shipped with a Lean certificate.",
+      "type": "event",
+      "source_urls": ["https://openai.com/index/ten-advances-in-mathematics/", "https://github.com/openai/ten-proofs"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "OpenAI states the tokens needed to find the solutions would cost roughly $2,000 at Sol API rates.",
+      "type": "metric",
+      "source_urls": ["https://openai.com/index/ten-advances-in-mathematics/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c3",
+      "claim": "OpenAI's page says humans helped prepare the manuscripts and formalize the proofs in Lean and takes responsibility for correctness, while elsewhere saying the model formalized each argument.",
+      "type": "quote",
+      "source_urls": ["https://openai.com/index/ten-advances-in-mathematics/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "The openai/ten-proofs repository's formalization.yaml records the review status as 'agent-reviewed' and permits exactly three axioms: propext, Classical.choice, Quot.sound.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/openai/ten-proofs/main/formalization.yaml"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "formalization.yaml lists twelve main results, not ten; the 'ten' is an editorial grouping that splits binary vs spherical codes and compactness vs two-degenerate graphs.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/openai/ten-proofs/main/formalization.yaml"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "The repo was created 2026-08-01 with a single commit, has GitHub Issues disabled, and ships no CI workflow, so nothing automatically demonstrates the certificates compile.",
+      "type": "technical",
+      "source_urls": ["https://github.com/openai/ten-proofs", "https://api.github.com/repos/openai/ten-proofs"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-01",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c7",
+      "claim": "Comparator, the checker OpenAI's configs invoke, was developed by the Lean FRO with the AIMO team for trustworthy LLM Lean evaluation on Kaggle.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/leanprover/comparator/master/README.md"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "Comparator runs six steps and provides exactly three guarantees: the solution proves the same statement as the challenge, uses no axioms beyond the permitted list, and is accepted by the Lean kernel.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/leanprover/comparator/master/README.md"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Comparator's README states that many definition-hole challenges can be gamed and that such solutions must always be checked with an additional, potentially human, verifier.",
+      "type": "quote",
+      "source_urls": ["https://raw.githubusercontent.com/leanprover/comparator/master/README.md"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "The sorry statements in openai/ten-proofs ComparatorChallenges files are the protocol's intended design — the challenge file states the theorem with sorry and the solution module discharges it — not evidence of incomplete proofs.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/leanprover/comparator/master/README.md", "https://raw.githubusercontent.com/openai/ten-proofs/main/ComparatorChallenges/A_SpherePacking.lean"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "Lean's own reference manual lists 'no human error or misleading presentation of the theorem statement' as a residual risk that remains after all mechanical checks pass.",
+      "type": "quote",
+      "source_urls": ["https://lean-lang.org/doc/reference/latest/ValidatingProofs/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "The load-bearing mathematical definitions in the Astra certificates — SpherePackingConstant, groupVonNeumannAlgebra, HasKazhdanPropertyT, ConnesRigidityAssertion — are declared locally in the challenge files rather than imported from mathlib.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/openai/ten-proofs/main/ComparatorChallenges/A_SpherePacking.lean", "https://raw.githubusercontent.com/openai/ten-proofs/main/ComparatorChallenges/E_ConnesRigidity.lean"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "The Comparator-checked ConnesRigidityAssertion imposes ICC and property (T) only on the first group, making it formally easier to refute than Connes's conjecture as usually stated; the gap-closing counterexample witness sits outside the checked theorem list.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/openai/ten-proofs/main/ComparatorChallenges/E_ConnesRigidity.lean", "https://raw.githubusercontent.com/openai/ten-proofs/main/ConnesRigidity/Main.lean"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c14",
+      "claim": "The Kabatiansky-Levenshtein sphere-packing exponent of 0.59905576, unimproved since 1978, is raised by the new result to 0.6044787 — a gain of about 0.9% of the exponent.",
+      "type": "comparison",
+      "source_urls": ["https://cdn.openai.com/pdf/ten-proofs-oai.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "The sphere-packing exponent the theorem reaches was already numerically conjectured in 2020 by Afkhami-Jeddi, Cohn, Hartman, de Laat and Tajdini via the modular bootstrap.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/abs/2006.02560"],
+      "source_tiers": ["academic"],
+      "as_of": "2020-12-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "The kissing-number exponent improves from a classical optimized 0.400944 to 0.39661 at hierarchy level 2, about 1.08% of the exponent.",
+      "type": "metric",
+      "source_urls": ["https://cdn.openai.com/pdf/ten-proofs-oai.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "The best known sphere-packing lower bound remains of order d^2 * 2^-d (Klartag 2025), so an exponential gap of roughly 2^0.3956d survives the new upper bound.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/abs/2504.05042"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-04-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "The claimed permanent formula-size lower bound of order n^4/log n improves on Kalorkoti's Omega(n^3) from 1985 but lands exactly on the known ceiling of the Nechiporuk-Kalorkoti technique in the variable count.",
+      "type": "comparison",
+      "source_urls": ["https://openai.com/index/ten-advances-in-mathematics/", "https://arxiv.org/pdf/1911.11793"],
+      "source_tiers": ["primary", "academic"],
+      "as_of": "2026-08-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "The prior best parallel-repetition bound for general two-player entangled games was Yuen's polynomial decay of order n^-1/4 log n; exponential decay was known only for anchored or free games.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/abs/1604.04340", "https://arxiv.org/pdf/1509.07466"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2016-04-15",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "Prior best NP-hardness of approximation for the Closest Vector Problem was the sub-polynomial n^(c/log log n) of Dinur-Kindler-Raz-Safra, and Aharonov-Regev place approximating CVP within sqrt(n) in NP intersect coNP, capping any polynomial-factor hardness below exponent 1/2.",
+      "type": "comparison",
+      "source_urls": ["https://link.springer.com/article/10.1007/s00493-003-0019-y", "https://cims.nyu.edu/~regev/papers/cvpconp.pdf"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2005-09-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "The multicolour triangle Ramsey lower bound is asymptotic: its base k^(1/3)/(6e^38 log k) does not exceed the classical constructive base of about 3.28 until k is of order 10^59.",
+      "type": "comparison",
+      "source_urls": ["https://raw.githubusercontent.com/openai/ten-proofs/main/ComparatorChallenges/I_MulticolorTriangleRamsey.lean", "https://www.erdosproblems.com/183"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c22",
+      "claim": "erdosproblems.com still listed problems 146, 180 and 183 as OPEN with no OpenAI or AI attribution, last edited 2026-04-10 (183) and 2026-01-18 (146, 180).",
+      "type": "regulatory",
+      "source_urls": ["https://www.erdosproblems.com/183", "https://www.erdosproblems.com/146", "https://www.erdosproblems.com/180"],
+      "source_tiers": ["primary", "primary", "primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "Erdos problems 146 and 180 are resolved negatively — the Lean theorems are literally named not_erdos_146 and not_erdos_180 — so 'resolving' means disproof, not proof.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/openai/ten-proofs/main/ComparatorChallenges/J_TwoDegenerateGraphs.lean", "https://raw.githubusercontent.com/openai/ten-proofs/main/ComparatorChallenges/J_CompactnessConjecture.lean"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "In October 2025 OpenAI staff claimed GPT-5 had solved ten open Erdos problems; the model had retrieved existing literature, Thomas Bloom called it a dramatic misrepresentation, and the posts were deleted.",
+      "type": "event",
+      "source_urls": ["https://x.com/MarkSellke/status/1979226538059931886", "https://futurism.com/artificial-intelligence/openai-researcher-deletes-tweet", "https://the-decoder.com/leading-openai-researcher-announced-a-gpt-5-math-breakthrough-that-never-happened/"],
+      "source_tiers": ["primary", "secondary", "secondary"],
+      "as_of": "2025-10-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "DeepMind's AlphaProof Nexus autonomously resolved 9 of 353 open Erdos problems with Lean-verified proofs at a per-problem cost of a few hundred dollars, and a simpler baseline matched the same nine.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2605.22763"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-05-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "OpenAI's May 2026 disproof of the unit distance conjecture required nine named mathematicians to digest and simplify it before it was accepted.",
+      "type": "event",
+      "source_urls": ["https://arxiv.org/abs/2605.20695"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-05-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "A LeanMarathon run attempting to formalize OpenAI's unit-distance disproof modelled a number field as a dummy record and discharged the key step with placeholder values, producing a development that type-checks and passes CI but proves nothing real.",
+      "type": "event",
+      "source_urls": ["https://arxiv.org/html/2606.05400v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-06-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "A corpus audit of five Lean benchmarks reported 4,833 findings including 398 mechanically certified issues such as counterexamples, vacuous theorems and unsound axioms.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2606.29493v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-06-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "A manual audit of Lean proofs auto-generated for MATH-500 found only about 43% of successfully proved statements actually encoded the intended problem, against a 73.6% automated pass rate.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2605.28365"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-05-27",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c30",
+      "claim": "A review of miniF2F found formal/informal statement discrepancies in more than half of its problems, collapsing end-to-end accuracy to about 36% against component scores of 97% and 69%.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2511.03108"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-11-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "An LLM-judge audit of reference formalizations found correctness rates of 76.64% for miniF2F Isabelle, 82.79% for miniF2F Lean 4 and 64.84% for ProofNet.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/pdf/2506.10903"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-06-12",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c32",
+      "claim": "On the Verina Lean 4 benchmark OpenAI's o3 achieved 72.6% code correctness but only 4.9% end-to-end proof success.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2505.23135"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-05-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c33",
+      "claim": "A Lean 4 kernel bug filed 2026-07-28 allowed a user to prove False through the ordinary checked path with no axioms, and #print axioms reported no dependencies at all.",
+      "type": "technical",
+      "source_urls": ["https://github.com/leanprover/lean4/issues/14576"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-28",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c34",
+      "claim": "Lean's native_decide pulls the compiler and interpreter — roughly 30,000 additional lines — into the trusted computing base.",
+      "type": "technical",
+      "source_urls": ["https://github.com/leanprover/lean4/blob/master/src/Init/Core.lean"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c35",
+      "claim": "mathlib contains roughly 283,758 theorems and 134,872 definitions from 772 contributors, and its review queue backlog of about 300 pull requests is described as the primary constraint on growth.",
+      "type": "metric",
+      "source_urls": ["https://leanprover-community.github.io/mathlib_stats.html", "https://mathlib-initiative.org/roadmap/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-01",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c36",
+      "claim": "Terence Tao's Erdos problems database maintains a status category 'open (Lean)' for problems with a verifiable formal solution but no human digestion of that solution.",
+      "type": "definition",
+      "source_urls": ["https://mathstodon.xyz/@tao"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-31",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c37",
+      "claim": "Tao's Erdos problems wiki names the two exploits a Lean certificate does not rule out: introduction of unproved axioms, and misformalization of the problem statement.",
+      "type": "quote",
+      "source_urls": ["https://github.com/teorth/erdosproblems/wiki/Disclaimers-and-caveats"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c38",
+      "claim": "Kevin Buzzard reports checking a 1,076-line AI-generated Lean counterexample in under five minutes, by confirming the statement used only mathlib concepts, that it asserted a counterexample, and that the proof compiled.",
+      "type": "quote",
+      "source_urls": ["https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c39",
+      "claim": "Buzzard reports OpenAI's Sol produced 1.2 million lines of Lean in three weeks on one project, against mathlib's 2.3 million lines written over nine years.",
+      "type": "comparison",
+      "source_urls": ["https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c40",
+      "claim": "The Leiden Declaration, published 2026-06-02 with 3,340 verified signatories and endorsed by the International Mathematical Union, states that credit and responsibility should not be given to automated systems and warns against announcing results via press release or blog post without a paper.",
+      "type": "regulatory",
+      "source_urls": ["https://leidendeclaration.ai/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-02",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c41",
+      "claim": "arXiv policy forbids listing generative AI as an author and requires human signatories to take full responsibility for all contents; COPE's position, adopted by the AMS, is that AI tools cannot be authors because they cannot take responsibility.",
+      "type": "regulatory",
+      "source_urls": ["https://info.arxiv.org/help/moderation/index.html", "https://publicationethics.org/guidance/cope-position/authorship-and-ai-tools"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c42",
+      "claim": "Hales's Kepler conjecture proof took about seven years from submission to acceptance at Annals, its twelve-member referee panel declared itself only 99% certain, and the resulting Flyspeck formalization took a further eleven and a half years.",
+      "type": "event",
+      "source_urls": ["https://www.cambridge.org/core/journals/forum-of-mathematics-pi/article/formal-proof-of-the-kepler-conjecture/78FBD5E1A3D1BCCB8E0D5B0C463C9FBC", "https://arxiv.org/abs/2402.08032"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2014-08-10",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c43",
+      "claim": "As of roughly five hours after the announcement, no named mathematician or proof-assistant expert had publicly inspected the Astra artifacts, and no Lean Zulip, r/math or Mathstodon thread on them was indexed.",
+      "type": "event",
+      "source_urls": ["https://mathstodon.xyz/@tao", "https://news.ycombinator.com/item?id=49132058"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-01",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c44",
+      "claim": "OpenAI's published Sol API rates are $5.00 per million input tokens and $30.00 per million output tokens, bounding the $2,000 claim at roughly 67 million to 400 million tokens.",
+      "type": "metric",
+      "source_urls": ["https://platform.openai.com/docs/pricing"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c45",
+      "claim": "An independent First Proof consortium running four harnesses on the same ten problems recorded totals from $117 to $4,799, a roughly 40-fold spread.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2606.18119v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-06-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c46",
+      "claim": "Comparator's guarantee is conditional on six enumerated assumptions including that landrun does not permit a sandbox escape and that the Lean kernel is correct.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/leanprover/comparator/master/README.md"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c47",
+      "claim": "Astra remains a tentative internal codename; OpenAI has not decided whether to ship it as GPT-6, GPT-5.7 or a separate class alongside Sol, Terra and Luna.",
+      "type": "forecast",
+      "source_urls": ["https://www.theinformation.com/briefings/exclusive-openai-previews-astra-ai-model-dc"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-31",
+      "confidence": "low",
+      "risk": "volatile"
+    },
+    {
+      "id": "c48",
+      "claim": "Ehrhart's volume conjecture asserts a sharp bound of (n+1)^n/n!, previously proved only in dimension 2 and for simplices, with the best general bound of order 4^d — an exponential gap of about 1.47^d that the new result closes.",
+      "type": "comparison",
+      "source_urls": ["https://cdn.openai.com/pdf/ten-proofs-oai.pdf", "https://en.wikipedia.org/wiki/Ehrhart%27s_volume_conjecture"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-14 09:55:03 UTC
+
+CYCLE: An open lab withheld its own weights on cyber grounds, while verified benchmarks and a Reuters China scoop landed.
+
+TOP STORIES:
+• Z.ai shipped GLM-5.3 on the unchanged 743B base (Terminal-Bench 4.6 -> 28.3, ExploitBench 24.4% -> 54.4%) then delayed open weights for safety hardening [✓]
+• ARC Prize verified Grok 4.6 at 87.5% ARC-AGI-1 / 67.1% ARC-AGI-2; the separate "#1 on CursorBench" claim has zero corroboration [⚠]
+• Reuters: Apple trained a China-specific LLM with Alibaba rather than licensing one [⚠]
+
+WATCH: Whether GLM-5.3 weights ship inside the reported two-week window, and whether the released checkpoint is the benchmarked one.
+
+Full update on GitHub.

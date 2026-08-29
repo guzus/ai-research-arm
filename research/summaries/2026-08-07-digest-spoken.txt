@@ -1,0 +1,14 @@
+Speaker 1: Friday, August seventh, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI just gave free ChatGPT users unlimited text chats, and every paid conversation now runs on GPT five point six Sol.
+Speaker 1: The headline claim is [emphasis] sixty-eight percent [/emphasis] fewer factual errors, though that is measured against GPT five point five Instant, a non-reasoning baseline.
+Speaker 2: So, a real gain, just not the apples-to-apples one the number implies.
+Speaker 1: In the lab, researchers at Arc and Stanford used the Evo models to design viral genomes, [dramatic_pause] and sixteen of them worked.
+Speaker 2: Sixteen functional viruses, designed by a model, published in Science. That is the first time we have seen AI-generated genomes clear that bar.
+Speaker 1: On silicon, AMD is acquiring the inference-chip startup Taalas, and Anthropic confirmed it has an in-house chip team.
+Speaker 2: That was the day's biggest thread, two hundred eighty-nine comments, and it says everyone expects the inference cost curve to be won in hardware.
+Speaker 1: Some quick numbers. Microsoft booked [emphasis] twenty-four point one billion dollars [/emphasis] in AI revenue through OpenAI, roughly seventy percent of its entire AI business.
+Speaker 2: And there is a doughnut-shaped OpenAI speaker coming in twenty twenty-seven, three hundred to four hundred dollars.
+Speaker 1: On the safety front, across forty thousand runs, humans approving agent commands missed one in three threats.
+Speaker 2: Worth noting that human-in-the-loop is the exact control most agent deployments are leaning on.
+Speaker 1: And in leadership, Demis Hassabis steps back to chairman as Google recenters DeepMind in Mountain View.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.

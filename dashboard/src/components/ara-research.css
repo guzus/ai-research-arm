@@ -117,6 +117,7 @@
 .ara-doc > .ara-h3,
 .ara-doc > .ara-h4,
 .ara-doc > .ara-callout,
+.ara-doc > .ara-position,
 .ara-doc > .ara-quote {
   max-width: 760px;
   margin-left: 0;
@@ -178,6 +179,7 @@
 .ara-section > .ara-h3,
 .ara-section > .ara-h4,
 .ara-section > .ara-callout,
+.ara-section > .ara-position,
 .ara-section > .ara-quote,
 .ara-section > .ara-statement,
 .ara-section > .ara-kv,
@@ -1912,6 +1914,123 @@ body.ara-figure-modal-open {
   color: var(--ara-navy);
 }
 
+/* ── Analyst position (labeled non-consensus call) ── */
+/* Deliberately NOT a callout. A callout frames a sourced aside; this
+ * frames the author's JUDGMENT, so it has to read as a different KIND of
+ * object from across the page. Three signals do that work, and none of
+ * them is shared with .ara-callout:
+ *   1. a filled periwinkle panel   (callouts are transparent)
+ *   2. a heavy rule along the TOP  (callouts accent the LEFT edge)
+ *   3. a solid inverted label chip (callout labels are bare colored text)
+ * The chip stays royal-on-background in every variant — it is the
+ * disclosure, so it must never trade contrast for decoration. Confidence
+ * is carried by the top rule instead, and echoed as text in the meta
+ * line so it survives print and colorblind reading. */
+.ara-position {
+  margin: 32px 0;
+  padding: 18px 22px 20px;
+  background: var(--ara-periwinkle);
+  border: 1px solid var(--ara-rule);
+  border-top: 4px solid var(--ara-royal);
+  border-radius: 0;
+  font-family: var(--font);
+  color: var(--text);
+}
+
+.ara-position-label {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 3px 9px;
+  background: var(--ara-royal);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Descendant selectors (0,2,0) so the stance and meta paragraphs beat
+ * `.ara-doc p` (0,1,1) — the same reason .ara-callout p / .ara-statement p
+ * exist. A bare .ara-position-stance (0,1,0) would silently lose.
+ *
+ * Ink is var(--text), NOT var(--ara-navy). Navy is a FILL token: it maps
+ * to #0a2740 in dark, which on this panel's dark periwinkle wash is
+ * dark-on-dark and unreadable (caught in a forced-dark render before
+ * ship). --text is the semantic ink token and is contrast-mapped for
+ * both themes, so the stance stays legible either way. */
+.ara-position .ara-position-stance {
+  font-family: var(--font-serif);
+  font-size: clamp(1.12rem, 1.35vw, 1.34rem);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.012em;
+  color: var(--text);
+  margin: 0 0 4px;
+}
+
+.ara-position-row {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 4px 14px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-top: 1px solid var(--ara-rule);
+}
+
+.ara-position-row:first-of-type { margin-top: 12px; }
+
+.ara-position-key {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ara-royal);
+}
+
+.ara-position-val {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.ara-position .ara-position-meta {
+  margin: 14px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--ara-rule);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--text-tertiary);
+}
+
+/* Confidence variants. High thickens the rule, low goes dashed and
+ * neutral — a non-color signal, so the three states stay separable
+ * without relying on hue alone. */
+.ara-position--high {
+  border-top-width: 6px;
+  border-top-color: var(--ara-royal);
+}
+
+.ara-position--medium { border-top-color: var(--ara-royal); }
+
+.ara-position--low {
+  border-top-style: dashed;
+  border-top-color: var(--ara-sec3);
+  background: var(--ara-panel-gray);
+}
+
+.ara-position--low .ara-position-key { color: var(--ara-sec2); }
+
+@media (max-width: 520px) {
+  .ara-position { padding: 16px 16px 18px; }
+  .ara-position-row { grid-template-columns: 1fr; gap: 2px; }
+}
+
 /* ── Two-column body (dense prose) ───────────────── */
 /* For dense prose sections that benefit from a newspaper-style two-up
  * measure. Collapses to one column on narrow screens. Authored via
@@ -2311,7 +2430,7 @@ body.ara-figure-modal-open {
 
 .ara-toc-link {
   display: block;
-  padding: 5px 0 5px 14px;
+  padding: 6px 0 6px 14px;
   margin-left: -2px;
   border-left: 2px solid transparent;
   font-size: 0.82rem;
@@ -2320,12 +2439,26 @@ body.ara-figure-modal-open {
   line-height: 1.35;
   transition: color 0.15s, border-color 0.15s;
   cursor: pointer;
-  /* Long subheading titles like "Bloom Energy (BE) — 16.5% combined, the
-   * keystone" would otherwise wrap to 3 lines and dominate the rail. Clip
-   * with ellipsis; full text is restored via the title= tooltip set in JS. */
+}
+
+/* Two lines, not one. The rail does have to be bounded — an unclamped
+ * "Bloom Energy (BE) — 16.5% combined, the keystone" runs to three lines and
+ * dominates it — but clipping at ONE line cut almost every real section head
+ * mid-word, so the rail read as a column of fragments. Two lines hold ~60
+ * characters at this width, which is most heads whole, and anything longer
+ * breaks at a word and ellipses at the end of the second line. Full text
+ * stays on the title= tooltip set in renderResearchTOC.
+ *
+ * This lives on the label span, not the padded <a>: -webkit-line-clamp keeps
+ * the overflowing lines in the box and relies on overflow to hide them, and
+ * overflow clips at the padding edge — so a clamped <a> with vertical padding
+ * shows the top sliver of line three below the ellipsis. */
+.ara-toc-label {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: break-word;
 }
 
 .ara-toc-link:hover {
@@ -2354,6 +2487,7 @@ body.ara-figure-modal-open {
   }
 
   .ara-callout,
+  .ara-position,
   .ara-quote,
   .ara-stat,
   .ara-stat-unit,

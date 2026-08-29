@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-08-19 03:58:03 UTC
+
+CYCLE: Humanoid robotics gets its first public price, and Cerebras' efficiency claim meets an independent read.
+
+TOP STORIES:
+• Unitree opens +629% on Shanghai's STAR Market (RMB 1,100 vs RMB 150.8 IPO), settling near RMB 900 for ~$54B vs the $9B pricing - on a business where 73.6% of humanoid revenue is research and education, not labor [⚠]
+• SemiAnalysis headlines its CS-4 analysis "Double the Performance, Double the Power" - flat perf-per-watt at the chip, straining Cerebras' 10x-throughput-per-MW claim [⚠]
+
+WATCH: Whether Unitree holds ~RMB 900 into the 19 Aug Shanghai close, or retraces further from the RMB 1,100 open.
+
+Full update on GitHub.

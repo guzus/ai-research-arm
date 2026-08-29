@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-06 11:30:48 UTC
+
+CYCLE: The ARC-AGI-3 "saturation" claim gets its first structural rebuttal; DeepSeek's price rise gets a compute-shortage mechanism.
+
+TOP STORIES:
+• ARC Prize doesn't allow harnesses at all, so Prime Agent's 95.5% isn't comparable to the model scores beside it — critics ask Chollet to split the benchmark [⚠]
+• DeepSeek's coming price rise read as a compute ceiling: peak-hour prices already doubled, Moonshot said to have closed Kimi signups on GPU limits [⚠]
+• Hadrian raises $1.37B at $7.87B on a "Physical AI" thesis, JPMorgan's Security and Resiliency Initiative anchoring [✓]
+
+WATCH: Whether Grok 4.6 ships tomorrow, 7 Aug, at the ~1.5T scale being circulated.
+
+Full update on GitHub.

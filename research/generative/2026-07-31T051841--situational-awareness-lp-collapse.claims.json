@@ -1,0 +1,557 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Situational Awareness LP sold its entire public equity book, longs and shorts, to Citadel in a single block around the 30 July 2026 US open, after margin calls from Goldman Sachs, JPMorgan and Bank of America.",
+      "type": "event",
+      "source_urls": [
+        "https://www.cnbc.com/2026/07/30/leopold-aschenbrenners-hedge-fund-is-facing-steep-ai-losses.html",
+        "https://www.axios.com/2026/07/30/ai-hedge-fund-situational-awareness-citadel"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Situational Awareness LP (CIK 0002045724) has filed six consecutive 13F-HRs; the Q1 2026 filing, filed 18 May 2026, reported $13,676,657 thousand across 42 holdings, up from $254,813 thousand across 6 holdings at Q4 2024.",
+      "type": "metric",
+      "source_urls": ["https://13f.info/manager/0002045724-situational-awareness-lp"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Roughly $8.46 billion, or 62%, of the Q1 2026 13F value was put-option exposure measured at underlying value, chiefly SMH, NVDA, ORCL and AVGO puts, leaving disclosed long equity near $5.2 billion.",
+      "type": "metric",
+      "source_urls": ["https://finance.yahoo.com/markets/stocks/articles/situational-awareness-sells-public-equities-140824582.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-03-31",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c4",
+      "claim": "Reported start-of-July fund size ranges from ~$45 billion (CNBC, single anonymous source) to $20-24 billion (WSJ, Faber), with the public equity book put at ~$16 billion by the FT and post-sale assets near $10 billion.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.citybiz.co/article/882039/citadel-buys-most-of-ai-hedge-fund-situational-awareness-public-portfolio-after-tech-selloff/",
+        "https://www.barchart.com/story/news/2370002/leopold-aschenbrenners-situational-awareness-surpasses-20-billion-as-ai-focused-hedge-fund-gains-270-in-2026"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-30",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c5",
+      "claim": "The fund returned +439% net in the first half of 2026, a figure sourced solely to a 24 July 2026 investor letter reviewed by the Financial Times.",
+      "type": "metric",
+      "source_urls": ["https://www.disruptionbanking.com/2026/07/30/can-the-situational-awareness-hedge-fund-raise-capital-after-its-439-h1-gain/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "The circulating 'up 2,000% in 2025' figure is arithmetically inconsistent with the WSJ's June 2026 reporting of >1,000% since inception and ~270% in 2026 through May, which together imply a 2025 calendar return closer to +200%.",
+      "type": "comparison",
+      "source_urls": ["https://www.barchart.com/story/news/2370002/leopold-aschenbrenners-situational-awareness-surpasses-20-billion-as-ai-focused-hedge-fund-gains-270-in-2026"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-09",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c7",
+      "claim": "Regulation T caps initial margin at 50%, permitting only 2x long exposure; FINRA Rule 4210(c) sets maintenance at 25% of long market value and 30% of short, so a 4x gross book sits at the maintenance floor with no buffer at inception.",
+      "type": "regulatory",
+      "source_urls": ["https://www.finra.org/rules-guidance/rulebooks/finra-rules/4210"],
+      "source_tiers": ["legal"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "At 4x gross leverage split 2.6x long and 1.4x short, a 35% long decline combined with a 10% adverse move in the shorts exhausts 105% of equity; the wipeout threshold on the longs alone is roughly a 33% decline.",
+      "type": "technical",
+      "source_urls": ["https://www.finra.org/rules-guidance/rulebooks/finra-rules/4210"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-07-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "July 2026 peak-to-trough declines from the 30 June close to the 29 July trough close reached -55.3% for SanDisk, -50.1% for SK hynix, -46.3% for Nebius, -45.9% for Bloom Energy, -38.9% for CoreWeave and -36.0% for Micron.",
+      "type": "metric",
+      "source_urls": [
+        "https://stockanalysis.com/stocks/sndk/history/",
+        "https://stockanalysis.com/quote/krx/000660/history/"
+      ],
+      "source_tiers": ["market-data", "market-data"],
+      "as_of": "2026-07-29",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "The S&P 500 was roughly flat in July 2026 at -0.7% month-to-date while SOXX fell 21.3% and the Philadelphia Semiconductor Index fell 28.6% from its 22 June peak, establishing the drawdown as idiosyncratic rather than market beta.",
+      "type": "metric",
+      "source_urls": [
+        "https://stockanalysis.com/etf/spy/history/",
+        "https://stockanalysis.com/etf/soxx/history/"
+      ],
+      "source_tiers": ["market-data", "market-data"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "On 30 July 2026, after the liquidation was reported, the affected names rebounded 18-31% in a single session -- IREN +30.5%, Nebius +27.1%, Bloom Energy +26.5%, SanDisk +26.0%, CoreWeave +21.5% -- against SOXX +8.5% and SPY +1.7%.",
+      "type": "metric",
+      "source_urls": ["https://stockanalysis.com/stocks/iren/history/"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-07-30",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "Bloom Energy reported record Q2 2026 results on 28 July 2026 -- revenue $1,065.4M, +165.5% year over year, with full-year guidance raised -- and the stock still fell to its July low the following session.",
+      "type": "event",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/0001664703/000162828026050150/ex992q226supplementalfin.htm"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "UBS's AI-capex basket trailed its AI-disruption-risk basket by a record 42 percentage points in July 2026.",
+      "type": "metric",
+      "source_urls": ["https://www.bloomberg.com/news/articles/2026-07-29/dramatic-reversal-in-the-ai-trade-looks-overdone-taking-stock"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-29",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c14",
+      "claim": "Goldman Sachs' US high-beta momentum basket fell roughly 37% in July 2026, its worst month in the series' history back to 1999, and the Morgan Stanley Momentum TMT Index fell 53.5%.",
+      "type": "metric",
+      "source_urls": ["https://app.hedgeye.com/insights/185196-goldman-s-high-beta-momentum-basket-on-track-for-worst-monthly-perform?type=macro"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-07-28",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c15",
+      "claim": "Adobe rose 20.9% in July 2026 without reporting earnings, after a Morgan Stanley downgrade to Underweight on 21 July took its price target to $240; Workday rose 29.2%, Salesforce 15.4% and ServiceNow 10.9% over the same month.",
+      "type": "metric",
+      "source_urls": [
+        "https://stockanalysis.com/stocks/adbe/history/",
+        "https://www.investing.com/news/analyst-ratings/morgan-stanley-cuts-adobe-stock-rating-on-ai-risks-slashes-target-to-240-93CH-4801949"
+      ],
+      "source_tiers": ["market-data", "secondary"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c16",
+      "claim": "Goldman Sachs prime brokerage recorded information technology as the most net-sold US sector for a fourth consecutive week in the week to 3 July 2026, and separately reported hedge funds cutting US tech exposure roughly 10% over eight weeks, the largest sector retreat in the series' history.",
+      "type": "metric",
+      "source_urls": [
+        "https://finance.yahoo.com/markets/stocks/articles/hedge-funds-dumped-chip-stocks-111514085.html",
+        "https://www.bloomberg.com/news/articles/2026-07-20/goldman-says-hedge-funds-sell-us-tech-stocks-at-record-pace"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-20",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c17",
+      "claim": "Asia fundamental long/short hedge funds tracked by Goldman fell 18.6% month-to-date through 28 July 2026 after peaking at +40% year-to-date on 22 July, with the largest five-day cumulative de-grossing on Goldman's record.",
+      "type": "metric",
+      "source_urls": ["https://finance.yahoo.com/markets/stocks/articles/asia-stock-picking-hedge-funds-082032839.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-28",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c18",
+      "claim": "Five-year CDS on AI-levered borrowers widened sharply into late July 2026, with CoreWeave near 855bp and Oracle near 215bp against roughly 145bp at the end of 2023.",
+      "type": "metric",
+      "source_urls": ["https://www.briefs.co/news/surging-borrowing-costs-signal-ai-debt-risks/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-29",
+      "confidence": "low",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "Bloomberg reported on 1 July 2026 that Meta was preparing to rent out excess AI compute under an internal programme called Meta Compute; semiconductor and neocloud equities fell sharply that session, with SOX down 6.3%.",
+      "type": "event",
+      "source_urls": ["https://techcrunch.com/2026/07/01/meta-like-spacex-looks-to-turn-excess-ai-compute-into-cash/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "Archegos Capital Management grew from ~$1.5B of capital and $10B of exposure in March 2020 to more than $36B of capital and $160B of exposure at peak, roughly 4.4x gross leverage.",
+      "type": "metric",
+      "source_urls": ["https://www.sec.gov/newsroom/press-releases/2022-70"],
+      "source_tiers": ["legal"],
+      "as_of": "2022-04-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "Archegos produced more than $10 billion of counterparty losses, disclosed within one business day: Credit Suisse ~$5.5B, Nomura $2.85B, Morgan Stanley $911M, UBS ~$861M, MUFG ~$300M.",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2021/04/27/ubs-nomura-push-global-banks-archegos-losses-over-10-billion.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2021-04-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "No prime broker has disclosed any loss arising from the Situational Awareness liquidation as of 31 July 2026, and no fraud, misrepresentation or manipulation has been alleged against the fund.",
+      "type": "event",
+      "source_urls": ["https://www.cnbc.com/2026/07/30/leopold-aschenbrenners-hedge-fund-is-facing-steep-ai-losses.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-31",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "Bill Hwang was convicted on ten counts in July 2024 and sentenced to 18 years in November 2024 for deliberately misleading counterparties about Archegos's exposure, concentration and liquidity.",
+      "type": "regulatory",
+      "source_urls": ["https://www.justice.gov/usao-sdny/pr/founder-and-head-archegos-capital-management-bill-hwang-sentenced-18-years-prison"],
+      "source_tiers": ["legal"],
+      "as_of": "2024-11-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "The SEC formally withdrew proposed Rule 10B-1, the security-based swap position disclosure rule written in direct response to Archegos, in June 2025, leaving the swap-opacity gap open.",
+      "type": "regulatory",
+      "source_urls": ["https://www.federalregister.gov/documents/2025/06/17/2025-11110/withdrawal-of-proposed-regulatory-actions"],
+      "source_tiers": ["legal"],
+      "as_of": "2025-06-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "Citadel has absorbed distressed books before: Amaranth's energy portfolio in September 2006 with a reported concession near $1.85-2.15 billion at roughly 50 cents on the dollar, and Sowood's credit book in July 2007, on which it is reported to have made large profits.",
+      "type": "event",
+      "source_urls": [
+        "https://www.naturalgasintel.com/news/amaranth-turns-the-tables-sues-former-bankers-for-1b-2/",
+        "https://en.wikipedia.org/wiki/Sowood_Capital"
+      ],
+      "source_tiers": ["legal", "secondary"],
+      "as_of": "2007-07-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "The price and discount at which Citadel acquired the Situational Awareness book have not been disclosed by any party.",
+      "type": "event",
+      "source_urls": ["https://spotgamma.com/situational-awareness-unwind-margin-call-ai/"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-07-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "Aschenbrenner's June 2024 essay forecast a ladder of ~1M GPUs, tens of billions of dollars and ~1GW for a 2026 cluster, ~10GW by 2028 and ~100GW by 2030, with AI reaching roughly 5% of US electricity production by 2026 and 20% by 2028.",
+      "type": "forecast",
+      "source_urls": ["https://situational-awareness.ai/racing-to-the-trillion-dollar-cluster/"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "METR's measured 50% task-completion time horizon rose from 3.99 minutes for GPT-4 in March 2023 to 718.8 minutes for Claude Opus 4.6 in February 2026 and 1,044.8 minutes for an April 2026 Claude preview, with the 2023-onward doubling time at roughly 129 days rather than the originally reported seven months.",
+      "type": "metric",
+      "source_urls": ["https://metr.org/time-horizons", "https://metr.org/blog/2026-1-29-time-horizon-1-1/"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-05-08",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c29",
+      "claim": "METR states that measurements above 16 hours are unreliable with its current task suite, and its Frontier Risk Report found at least 16% of successful runs on tasks over eight hours were illegitimate on review.",
+      "type": "technical",
+      "source_urls": ["https://metr.org/blog/2026-05-19-frontier-risk-report/"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-05-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "Big-four hyperscaler 2026 capital expenditure guidance as of late July 2026 totals roughly $720-745 billion -- Amazon ~$220B, Alphabet $195-205B, Microsoft ~$175B, Meta $130-145B -- against roughly $382 billion in 2025.",
+      "type": "metric",
+      "source_urls": [
+        "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+        "https://fortune.com/2026/07/30/andy-jassy-amazon-capex-demand-aws-pga-tour/"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-30",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c31",
+      "claim": "Every one of the big four hyperscalers raised or held 2026 capex guidance in the last week of July 2026; Microsoft's apparent $15 billion reduction was an accounting reclassification following an extension of datacenter useful life from 15 to 25 years.",
+      "type": "event",
+      "source_urls": ["https://www.benzinga.com/markets/tech/26/07/60808802/microsofts-15-billion-capex-cut-isnt-a-cut-at-all"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-29",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "Alphabet reported negative free cash flow of $5.9 billion in Q2 2026, its first negative quarter as a public company, while raising 2026 capex guidance and guiding that free cash flow will remain under pressure.",
+      "type": "metric",
+      "source_urls": ["https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-22",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c33",
+      "claim": "LBNL's 2025 update put US datacenters at 192 TWh, or 4.7% of US electricity consumption, in 2024, and projects 649 TWh or 11.8% by 2030 in its reference case, with a full range of 9.5-15.3%.",
+      "type": "metric",
+      "source_urls": ["https://www.osti.gov/biblio/3374245"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c34",
+      "claim": "US net electricity generation grew 2.8% in 2025 to 4,430 billion kWh, and EIA cut its 2026 growth forecast in December 2025 explicitly because large loads had not materialised as expected.",
+      "type": "metric",
+      "source_urls": ["https://www.eia.gov/todayinenergy/detail.php?id=67284"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-03-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c35",
+      "claim": "As of April 2026 only about 0.3 GW of the 9-plus GW of planned OpenAI Stargate US capacity was energized, with six of seven sites at zero.",
+      "type": "metric",
+      "source_urls": ["https://epochai.substack.com/p/openai-stargate-where-the-us-sites"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-04-20",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c36",
+      "claim": "LBNL's Queued Up 2026 edition reports a median interconnection-request-to-commercial-operation duration of over five years for projects built in 2025, with only 13% of 2000-2020 capacity reaching commercial operation and 75% withdrawn.",
+      "type": "metric",
+      "source_urls": ["https://emp.lbl.gov/queues"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c37",
+      "claim": "Realized all-in cost per gigawatt of AI datacenter capacity runs roughly $35-40 billion, three to four times the roughly $10 billion per gigawatt implied by Aschenbrenner's 2026 rung, so the dollar milestones arrive far earlier than the power milestones.",
+      "type": "comparison",
+      "source_urls": ["https://epoch.ai/data/ai-data-centers", "https://situational-awareness.ai/racing-to-the-trillion-dollar-cluster/"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-07-30",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c38",
+      "claim": "Anthropic's post-money valuation ladder ran $4.6B (Series C, May 2023), $18.4B (Series D, Dec 2023), $61.5B (Series E, March 2025), $183B (Series F, Sept 2025), $380B (Series G, Feb 2026) and $965B (Series H, 28 May 2026, $65B raised).",
+      "type": "metric",
+      "source_urls": [
+        "https://www.anthropic.com/news/series-h",
+        "https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-05-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c39",
+      "claim": "Situational Awareness LP is named by Anthropic itself as a participating investor in the Series H round.",
+      "type": "event",
+      "source_urls": ["https://www.anthropic.com/news/series-h"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c40",
+      "claim": "The ~$5 billion Anthropic mark reported on 30 July 2026 references a primary round priced on 28 May 2026, a 63-day staleness gap that by construction excludes July's public-market repricing.",
+      "type": "comparison",
+      "source_urls": [
+        "https://techcrunch.com/2026/07/30/ai-hedge-fund-situational-awareness-may-have-sold-its-public-portfolio-but-it-still-has-its-anthropic-shares/",
+        "https://www.anthropic.com/news/series-h"
+      ],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-07-30",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c41",
+      "claim": "Anthropic secondaries were reported trading at an implied $1.2 trillion in early-to-mid July 2026, a roughly 24% premium to the $965 billion primary round, inverting the usual illiquidity discount.",
+      "type": "metric",
+      "source_urls": ["https://enterprisedna.co/resources/news/anthropic-1-2-trillion-secondary-market-openai-july-2026/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-13",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c42",
+      "claim": "No public secondary-market price observation for Anthropic, OpenAI, xAI or SpaceX exists for the 20-30 July 2026 selloff window; the latest located print is dated 13 July 2026.",
+      "type": "other",
+      "source_urls": ["https://enterprisedna.co/resources/news/anthropic-1-2-trillion-secondary-market-openai-july-2026/"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-07-31",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c43",
+      "claim": "ASC 820-10-35-24C requires valuation techniques to be calibrated so they reflect observable market data at the measurement date; there is no accounting exemption permitting a Level 3 holding to be frozen at the last round price.",
+      "type": "regulatory",
+      "source_urls": ["https://dart.deloitte.com/USDART/home/codification/broad-transactions/asc820-10/roadmap-fair-value-measurements-disclosures/chapter-9-initial-measurement/9-3-model-calibration"],
+      "source_tiers": ["legal"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c44",
+      "claim": "NAV lending against fund portfolios reached a record $23 billion across 38 KBRA-rated transactions in 2025, but 84% of surveyed loans carried loan-to-value ratios of 20% or lower, versus 50%-plus advance rates typical on listed equity.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.kbra.com/publications/WzjcnGdM",
+        "https://www.privateequityinternational.com/side-letter-navs-surprising-stats/"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-13",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c45",
+      "claim": "Fundrise Innovation Fund (VCX) reported an SEC-filed NAV of $18.97 per share as of 31 March 2026 with Anthropic marked at a $350 billion valuation, while its market premium to NAV compressed from roughly 356% in June 2026 to roughly 202% in late July 2026.",
+      "type": "metric",
+      "source_urls": ["https://www.stocktitan.net/sec-filings/VCX/n-csr-fundrise-innovation-fund-llc-sec-filing-61cad3265338.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-03-31",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c46",
+      "claim": "Destiny Tech100 (DXYZ), which holds Anthropic, OpenAI and SpaceX, closed at $23.50 on 30 July 2026 against a 52-week high of $72.87, with its last publicly reported NAV of $19.97 per share struck on 31 December 2025.",
+      "type": "metric",
+      "source_urls": ["https://stockanalysis.com/stocks/dxyz/"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-07-30",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c47",
+      "claim": "Tiger Global's hedge fund fell 52% in 2022 and wrote down its venture private marks by about 33% across that year, establishing that private marks do move but with a two-to-four-quarter lag.",
+      "type": "metric",
+      "source_urls": ["https://www.wsj.com/articles/tiger-global-writes-down-venture-funds-bets-by-33-in-2022-3f9f6ade"],
+      "source_tiers": ["secondary"],
+      "as_of": "2022-12-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c48",
+      "claim": "Liquidating the public book roughly doubles the Anthropic stake's share of fund NAV, from about 25% of a ~$20 billion fund to about 50% of a ~$10 billion residual, with no change in the private asset itself.",
+      "type": "comparison",
+      "source_urls": ["https://techcrunch.com/2026/07/30/ai-hedge-fund-situational-awareness-may-have-sold-its-public-portfolio-but-it-still-has-its-anthropic-shares/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-30",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c49",
+      "claim": "Hedge funds made roughly $24 billion shorting software stocks in the first weeks of 2026 and increased the position, making it the most crowded and most profitable short of the first half.",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2026/02/04/hedge-funds-made-24-billion-shorting-software-stocks-so-far-in-2026-and-they-are-increasing-the-bet.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-02-04",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c50",
+      "claim": "A single Wall Street Journal headline dated 31 July 2026 reports the fund down 67% in July; compounded against the reported +439% first half it would imply the fund is still positive year to date, but no outlet has published a post-unwind year-to-date or since-inception return.",
+      "type": "metric",
+      "source_urls": ["https://www.disruptionbanking.com/2026/07/30/can-the-situational-awareness-hedge-fund-raise-capital-after-its-439-h1-gain/"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-07-31",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c51",
+      "claim": "SK hynix listed ADRs on Nasdaq in July 2026 in a roughly $26.5 billion offering, with newly issued underlying common shares additionally listed on KOSPI on 29 July Korea time, coinciding with the trough of the Korean leveraged unwind.",
+      "type": "event",
+      "source_urls": ["https://news.skhynix.com/en/skhynix-lists-adrs-on-nasdaq/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-29",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c52",
+      "claim": "Ken Griffin said publicly at Davos in January 2026 that AI is hype -- 'How else are you getting people to write 500 billion dollars worth of checks?' -- while separately calling the technology real, a posture consistent with buying a discount rather than a thesis.",
+      "type": "quote",
+      "source_urls": ["https://fortune.com/2026/05/18/billionaire-ken-griffin-ai-garbage-depressed-dramatic-impact-society/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-01-22",
+      "confidence": "low",
+      "risk": "contested"
+    }
+  ]
+}

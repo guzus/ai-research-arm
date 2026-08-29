@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-01 22:33:25 UTC
+
+CYCLE: Cost-per-task numbers hit DeepSeek V4-Flash as Astra's proofs clear their toughest reviewer.
+
+TOP STORIES:
+• DeepSeek V4-Flash finishes the same benchmark tasks at 105x lower total cost than Claude Fable 5, per Artificial Analysis ⚠
+• OpenAI's Astra math package passes the "Litt-test"; objection moves to sizing the results vs prior state of the art ⚠
+• Today was the deadline for the classified US benchmark deciding which systems count as frontier models ⚠
+
+WATCH: An Artificial Analysis cost-per-task table naming V4-Flash's reasoning-effort setting - that variable decides whether 105x survives.
+
+Full update on GitHub.

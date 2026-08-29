@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-07-27
+
+TOP STORIES:
+• Anthropic stands alone on open-weights letter after Google + AMD sign; David Sacks calls it "gaslighting"
+• DeepSeek pauses second funding round after leaked Liang Wenfeng compute-gap remarks
+• Altman reportedly plans DC trip to preview OpenAI's next model (single-source)
+• Opus 5 tops new intelligence benchmark; system card shows big prompt-injection gains
+
+KEY NUMBERS:
+• DeepSeek 2nd round targeted ~$74B valuation, now paused
+• Etched reportedly raised $300M Series C at $10.3B valuation
+• 300+ US communities have banned/paused data centers since 2023 (275 this year)
+• HN's Claude 5 context-engineering post hit 426 points/325 comments
+
+TRENDING: Anthropic's isolation on open weights + Opus 5 benchmark wins (HN, Twitter/X)
+
+Full digest on GitHub.

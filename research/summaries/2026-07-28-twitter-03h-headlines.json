@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "NVIDIA INVESTS $5 BILLION CASH IN ILYA SUTSKEVER'S SAFE SUPERINTELLIGENCE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2081783568976769463",
+    "category": "business"
+  },
+  {
+    "headline": "NVIDIA LAUNCHES OPEN SECURE AI ALLIANCE WITH MICROSOFT, HUGGING FACE, DELL, IBM — OPENAI ABSENT",
+    "source": "@huggingface",
+    "url": "https://x.com/huggingface/status/2081718698608402818",
+    "category": "policy"
+  },
+  {
+    "headline": "DARIO AMODEI: ANTHROPIC NOT ADVOCATING OPEN-WEIGHTS BAN, PROPOSES CHIP CONTROLS + DISTILLATION CRACKDOWN",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2081864750296658008",
+    "category": "policy"
+  },
+  {
+    "headline": "MOONSHOT RELEASES KIMI K3 FULL WEIGHTS — 2.8T PARAMS, 104B ACTIVE, WORLD'S LARGEST OPEN MODEL",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2081848589505143134",
+    "category": "opensource"
+  },
+  {
+    "headline": "MICROSOFT'S MAI-CYBER-1-FLASH SCORES 96% ON CYBERGYM, 12 POINTS ABOVE ANTHROPIC'S MYTHOS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2081795186745635040",
+    "category": "model"
+  },
+  {
+    "headline": "SAM ALTMAN RETURNS TO WHITE HOUSE WEDNESDAY, FACES QUESTIONS ON HUGGING FACE BREACH",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2081876203783549345",
+    "category": "policy"
+  }
+]

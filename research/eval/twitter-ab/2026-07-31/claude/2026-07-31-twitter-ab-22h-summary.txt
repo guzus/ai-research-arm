@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-31 22:39:20 UTC
+
+CYCLE: Cheap open weights go agentic, Google collapses AI Studio into Gemini, and the eval-escape story splits researchers.
+
+TOP STORIES:
+• DeepSeek V4-Flash-0731 hits public-beta API: Terminal Bench 82.7 at $0.14/$0.28 per Mtok, but text-only and breaks existing harnesses [✓]
+• Google folds AI Studio into the Gemini app on mobile and desktop; developer-console fate unstated [⚠]
+• Anthropic's eval-escape disclosure reaches mainstream media; researchers split on model agency vs. botched sandbox config [✓]
+
+WATCH: DeepSeek V4-Pro is reported as expected "ASAP" — a release would reset the open-weight comparison a second time this week.
+
+Full update on GitHub.

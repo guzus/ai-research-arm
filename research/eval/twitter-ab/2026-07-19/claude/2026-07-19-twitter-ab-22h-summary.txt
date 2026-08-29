@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-19 22:30:42 UTC
+
+CYCLE: Open-weight race hits a compute wall
+
+TOP STORIES:
+• Moonshot pauses Kimi K3 signups as demand outstrips compute [✓]
+• Alibaba launches Qwen3.8 open-weight at 2.4T parameters [✓]
+• Nvidia GPU shortage forces cloud rationing at Nebius, others [⚠]
+
+WATCH: Does Moonshot reopen Kimi K3 subscriptions in batches, and does it shift load to Huawei's Ascend 950PR?
+
+Full update on GitHub.

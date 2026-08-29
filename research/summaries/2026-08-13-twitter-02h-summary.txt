@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-13 02:41:32 UTC
+
+CYCLE: Anthropic's largest-ever acquisition talks leak, its red team publishes on agent coordination failure, and DeepSeek V4-Pro gets downgraded by its own fan base.
+
+TOP STORIES:
+• Anthropic in talks to buy Decart for ~$6B per Bloomberg — 50% above the $4B Nvidia marked it at 3 months ago; cross-silicon inference stack is the real asset [⚠]
+• Anthropic Frontier Red Team: agents know consensus isn't evidence but won't act on it unprompted; coordination doesn't emerge from intelligence or individual alignment [⚠]
+• DeepSeek V4-Pro is "basically V4-Flash-0731 + pass@2" per its most sympathetic analyst; scaling01 independently calls it disappointing [⚠]
+
+WATCH: V4-Pro weights / official English release expected ~09:00-11:00 UTC today — the first thing that can falsify the "Flash + pass@2" read.
+
+Full update on GitHub.

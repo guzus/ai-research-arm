@@ -3,7 +3,7 @@ slug: gemini-omni-api-2026-06
 title: Gemini Omni Flash — API general availability
 company: Google / DeepMind
 model: Gemini Omni Flash
-status: released
+status: closed
 status_note: |
   **2026-06-30/07-01**: Google brought **Gemini Omni Flash** — text-prompt
   **video generation/editing — to the API for the first time** (reported in
@@ -26,12 +26,14 @@ sources:
   - "@testingcatalog"
   - "@GoogleDeepMind"
 created_at: 2026-07-01
-updated_at: 2026-07-01
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-29
+closed_at: 2026-07-29
+closed_reason: released-and-aged
 history:
   - ts: 2026-07-01
     change: "Created — Google brought Gemini Omni Flash (text-prompt video generation/editing) to the API for the first time, reported in the 2026-07-01 daily digest (@testingcatalog, Ars Technica, The Decoder) alongside the Nano Banana 2 Lite image launch. Fulfills the 'API coming soon' promise from the Omni I/O 2026 launch (2026-05-19). Successor-event ticket to the closed [[gemini-omni]], whose transition trigger explicitly invited a new ticket for the Gemini API GA rather than reopening. Status released; verification partial — secondary trade-press only, thin detail (no official Google post text, pricing, quota, or model id surfaced this cycle)."
+  - ts: 2026-07-29
+    change: "Closed — released-and-aged. 28 days since the 2026-06-30/07-01 API GA with no further developments (no official Google post, pricing, or quota detail ever surfaced). Settled into normal coverage."
 ---
 
 **Gemini Omni Flash** reached **API general availability** around

@@ -1,0 +1,304 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "A contracted Truss Link module is 28 cm long and weighs 280 g; fully expanded it grows over 53% to 43 cm.",
+      "type": "technical",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/", "https://robotmetabolism.github.io/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Two Truss Link magnetic connectors require approximately 13.7 N of pull-away force to separate.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Each Truss Link costs more than $200 in material alone and the authors state it is 'neither cheap nor designed for mass production.'",
+      "type": "quote",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "The paper states: 'The Truss Links were operator controlled in all physical Truss Link experiments using a custom keyboard interface.'",
+      "type": "quote",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "A ratchet-tetrahedron configuration walked over 66.5% faster than a plain tetrahedron on a 10-degree downhill slope, in a single reported comparison.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/", "https://www.engineering.columbia.edu/about/news/robots-grow-consuming-other-robots"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-07-16",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "On flat ground, the paper's own Table 1 shows the ratchet tetrahedron moving slower on average (0.1979 +/- 0.1494 body-lengths/cycle) than the plain tetrahedron (0.2674 +/- 0.0063), the opposite ordering from the downhill-slope headline claim.",
+      "type": "comparison",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-16",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c7",
+      "claim": "In simulation (2,000 randomized 20-minute runs), the target 'diamond-with-tail' topology self-assembled in only 44.3% of runs, and a combined star+triangle topology in just 9.2%.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "In physical hardware trials, three tetrahedrons were successfully formed over 10 robot-assisted attempts (about 30%), after 37 prior manual-tuning attempts and 61 total setup trials.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "The Science Advances paper 'Robot metabolism: Toward machines that can grow by consuming other machines' was received 2024-11-18, accepted 2025-05-22, and published 2025-07-16 (Sci Adv 11(29):eadu6897).",
+      "type": "event",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/", "https://www.science.org/doi/10.1126/sciadv.adu6897"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "An arXiv preprint of the same work was first posted 2024-11-17 and revised to match the journal version on 2025-07-16.",
+      "type": "event",
+      "source_urls": ["https://arxiv.org/abs/2411.11192"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "A predecessor IEEE conference paper, 'Robot Links: Towards Self-Assembling Truss Robots' (ReMAR 2024), described the same hardware lineage without the free-form magnetic attach/detach mechanism that defines the 2025 Truss Link.",
+      "type": "comparison",
+      "source_urls": ["https://ieeexplore.ieee.org/document/10619984", "https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2024-06-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Self-reconfigurable modular robotics as a field dates to Toshio Fukuda's CEBOT (prototype ~1985, core IEEE papers 1988), roughly 37 years before the Truss Link paper.",
+      "type": "event",
+      "source_urls": ["https://en.wikipedia.org/wiki/Self-reconfigurable_robot"],
+      "source_tiers": ["secondary"],
+      "as_of": "1988-01-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "USC/ISI's CONRO project (early-to-mid 2000s) already demonstrated a robot autonomously replacing/repairing modules of a similar robot, predating Truss Link's self-repair claim by roughly two decades.",
+      "type": "comparison",
+      "source_urls": ["https://robots.isi.edu/conro/projinfo.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2003-01-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c14",
+      "claim": "Hod Lipson's own earlier lab (Cornell) demonstrated physical self-reproduction of modular robots ('Molecubes') in a 2005 Nature paper, two decades before Truss Link, within the same PI's research lineage.",
+      "type": "event",
+      "source_urls": ["https://news.cornell.edu/stories/2005/05/researchers-build-robot-can-reproduce"],
+      "source_tiers": ["secondary"],
+      "as_of": "2005-05-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "The Truss Link paper itself stakes a narrow novelty claim -- 'the first truss-style modular robot capable of self-assembly and self-reconfiguration' -- not a claim to have invented self-repair or modular robotics broadly.",
+      "type": "quote",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "The University of Pennsylvania's Variable Topology Truss (VTT), developed under PI Mark Yim (first published IROS 2017), forms stronger structures than Truss Link but lacks its ease of self-assembly, per a 2025 comparison paper co-authored by Yim.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/html/2508.01829v1"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-08-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "VTT's Spiral Zipper actuator tubes (1.5 m, acetal plastic) have been shown to support 530 N of compression, using a different connector mechanism (spherical linkage requiring careful alignment) than Truss Link's free-form magnetic connector.",
+      "type": "metric",
+      "source_urls": ["https://www.modlabupenn.org/wp-content/uploads/2017/10/spinos2017vttdesign.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2017-01-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "The paper's funding acknowledgment names three grants: NSF AI Institute in Dynamic Systems, NSF National Robotics Initiative, and DARPA TRADES.",
+      "type": "event",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "DARPA TRADES (TRAnsformative DESign) was a Defense Sciences Office program that ran roughly 2017-2021 and is now archived; its stated mission was computational design tools for exploiting new materials and additive manufacturing -- not robotics, space, or disaster response.",
+      "type": "regulatory",
+      "source_urls": ["https://www.darpa.mil/research/programs/transformative-design"],
+      "source_tiers": ["primary"],
+      "as_of": "2021-01-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "No DARPA solicitation, program document, NASA program, FEMA/NIST disaster-robotics pilot, or other funded roadmap was found tying Truss Link specifically to a space or disaster-response deployment; the application language in the paper and press materials is explicitly speculative ('initially,' 'distant but inevitable').",
+      "type": "forecast",
+      "source_urls": ["https://www.creativemachineslab.com/truss-reconfiguration.html", "https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-07-16",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c21",
+      "claim": "As of mid-2026, Semantic Scholar records roughly 5 citations and Google Scholar roughly 7 citations for the Science Advances paper, about one year post-publication.",
+      "type": "metric",
+      "source_urls": ["https://api.semanticscholar.org/graph/v1/paper/DOI:10.1126/sciadv.adu6897", "https://scholar.google.com/citations?user=lkA9f4gAAAAJ&hl=en"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-14",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c22",
+      "claim": "No commercial company or funded startup was found directly commercializing Truss Link-style self-repairing modular robots; Hod Lipson's prior startups (Tri-logical Technologies, AIO Robotics, 3DBio) are unrelated to this work.",
+      "type": "market-structure",
+      "source_urls": ["https://en.wikipedia.org/wiki/Hod_Lipson"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-14",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "US robotics-hardware venture funding totaled roughly $14-15 billion in 2025, a record year, but capital consolidated into fewer, larger rounds rather than funding niche early-stage modular-robotics bets.",
+      "type": "market-structure",
+      "source_urls": ["https://www.amtonline.org/article/the-hype-cycle-for-robotics"],
+      "source_tiers": ["opinion"],
+      "as_of": "2025-12-31",
+      "confidence": "low",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "No robotics researcher independent of Columbia's Creative Machines Lab was found publicly commenting technically on this specific paper across roughly 15 outlets searched; every quoted source in press coverage is Wyder or Lipson.",
+      "type": "other",
+      "source_urls": ["https://thedebrief.org/darpa-funded-tech-unleashes-robots-that-feed-on-robots-to-heal-grow-and-evolve/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-07-16",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c25",
+      "claim": "Press headlines used alarmist/autonomous-sounding language ('unleashes,' 'feed on,' 'terrifying,' 'evolve') despite the underlying demonstrations being operator-controlled per the paper's own methods section.",
+      "type": "comparison",
+      "source_urls": ["https://thedebrief.org/darpa-funded-tech-unleashes-robots-that-feed-on-robots-to-heal-grow-and-evolve/", "https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2025-07-16",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c26",
+      "claim": "No dated evidence of a 2026 follow-up paper, award, or new demonstration specific to Truss Link/Robot Metabolism was found; the project site (robotmetabolism.github.io) contains zero 2026 content, and the 2026-07-13 tweet appears to recirculate roughly one-year-old research.",
+      "type": "event",
+      "source_urls": ["https://robotmetabolism.github.io/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-14",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c27",
+      "claim": "The account that posted the seed tweet (@lukas_m_ziegler) runs a recurring robotics-digest format and has separately referenced writing roughly 30 posts on a recurring topic 'last year,' indicating a general pattern of topic recycling.",
+      "type": "other",
+      "source_urls": ["https://x.com/lukas_m_ziegler/status/1876972833240125819"],
+      "source_tiers": ["unknown"],
+      "as_of": "2026-01-05",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c28",
+      "claim": "Truss Link's free-form magnetic connector allows continuous-angle attachment versus the discrete face-angle attachment of cubic/spherical systems like MIT's M-Blocks, but the paper concedes junctions with more than four simultaneous connectors are more failure-prone.",
+      "type": "comparison",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12266095/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "A 2025 field survey (Wikipedia, aggregating primary literature) concludes that even after decades of prototypes, self-reconfigurable robots have not demonstrated two of their three core promised advantages -- robustness and low cost -- and remain capped around roughly 50 modules in practice.",
+      "type": "other",
+      "source_urls": ["https://en.wikipedia.org/wiki/Self-reconfigurable_robot"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-14",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c30",
+      "claim": "Lead author Philippe Martin Wyder completed his Columbia PhD under Hod Lipson at the Creative Machines Lab and has separately co-authored a 2025 follow-on comparison paper with VTT's own PI, Mark Yim.",
+      "type": "other",
+      "source_urls": ["https://www.creativemachineslab.com/people.html", "https://arxiv.org/html/2508.01829v1"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-08-01",
+      "confidence": "medium",
+      "risk": "stable"
+    }
+  ]
+}

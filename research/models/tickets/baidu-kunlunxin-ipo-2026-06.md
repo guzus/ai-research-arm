@@ -3,7 +3,7 @@ slug: baidu-kunlunxin-ipo-2026-06
 title: Baidu Kunlunxin targeting ~$50B Hong Kong IPO
 company: Baidu / Kunlunxin
 model: null
-status: rumored
+status: closed
 status_note: |
   Per a **The Information** relay surfaced in the 2026-06-29 digest (Funding &
   Business), **Baidu's AI-chip unit Kunlunxin is targeting a ~$50B Hong Kong
@@ -24,12 +24,14 @@ verification: unverified
 sources:
   - "@theinformation"
 created_at: 2026-06-29
-updated_at: 2026-06-29
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-14
+closed_at: 2026-07-14
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-06-29
     change: "Created — The Information relay (via 2026-06-29 digest, Funding & Business) reports Baidu's AI-chip unit Kunlunxin targeting a ~$50B Hong Kong IPO, which would be one of the largest Chinese AI-chip public offerings. A reported listing target, not a filed/priced deal — no confirmed valuation, timeline, or Baidu/Kunlunxin primary → status rumored, verification unverified (single-source relay). Tracks alongside the AI IPO clock ([[openai-ipo-2026-06]], [[anthropic-ipo-2026-06]], [[spacex-ipo-2026-06]])."
+  - ts: 2026-07-14
+    change: "Closed — 15 daily cycles since creation (2026-06-29) with no fresh corroboration. An explicit sweep of today's signal (all /tmp/bird sources) found zero mentions of Baidu Kunlunxin or a Hong Kong IPO. Closing per stale-rumor-unverified; a filing or primary confirmation would open a new/successor ticket."
 ---
 
 A **The Information** relay surfaced in the 2026-06-29 digest reports that

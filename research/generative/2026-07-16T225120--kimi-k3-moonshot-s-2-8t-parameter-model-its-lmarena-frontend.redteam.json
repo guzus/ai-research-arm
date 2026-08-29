@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Kimi K3 (2.8T total parameters) launched July 16, 2026 and topped LMArena's Frontend Code leaderboard the same day at 1679 points — on just 1,757 votes, the fewest of any top-10 model, tagged \"Preliminary.\"",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "On execution-graded benchmarks (SWE-bench Verified, LiveCodeBench), Kimi K3 has zero independently-verified scores as of launch; Moonshot's own self-reported numbers admit it still trails Claude Fable 5 and GPT-5.6 Sol.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The win lands the same week Moonshot is reportedly seeking a $31.5B valuation (up from $20B two months earlier), while its consumer app's monthly active users have fallen roughly 57% since early 2025.",
+      "contradicting_url": "https://finance.biggo.com/news/1463f539-2df9-479f-9d17-d6c3a1990722",
+      "contradicting_quote": "Moonshot AI recently closed a funding round at a $20 billion valuation, with the pre-money valuation for this round reaching $31.5 billion.",
+      "severity": "medium",
+      "no_contradiction_found": false
+    }
+  ]
+}

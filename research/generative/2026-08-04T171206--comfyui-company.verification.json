@@ -1,0 +1,118 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "- **The money**: $47 million raised in total, most recently $30 million at a $500 million valuation announced 2026-04-24, led by Craft.[^1]",
+      "verdict": "supported",
+      "citation": "https://blog.comfy.org/p/comfyui-raises-30m-to-scale-open"
+    },
+    {
+      "id": "c2",
+      "text": "The company's GlobeNewswire release disagrees with its own blog twice on the same day: the release subheadline says \"50K daily downloads\" where the blog says \"150,000+ daily downloads\" — a 3x gap — and the release reports total funding of $48 million against the blog's $47 million.[^2] [^1]",
+      "verdict": "supported",
+      "citation": "https://www.globenewswire.com/news-release/2026/04/24/3281014/0/en/comfyui-raises-30m-at-500m-valuation-to-scale-open-source-ai-for-creative-production.html"
+    },
+    {
+      "id": "c13",
+      "text": "The official Comfy Registry API reports a `total` of 4,993 published node packs as of 2026-08-05, roughly one-twelfth of the advertised \"60,000+ nodes.\"[^9]",
+      "verdict": "weak",
+      "citation": "https://api.comfy.org/nodes"
+    },
+    {
+      "id": "c23",
+      "text": "The bot's PR-comment template tells contributors the CLA \"would enable us to relicense the project under a more permissive license in the future, giving the project and its community greater flexibility\" — framed as the most important benefit.[^21]",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/Comfy-Org/ComfyUI/master/.github/workflows/cla.yml"
+    },
+    {
+      "id": "c25",
+      "text": "Everything is now in natural language. No nodes, no download, no GPU, no node graphs if you don't want them.",
+      "verdict": "supported",
+      "citation": "https://blog.comfy.org/p/comfy-mcp-turn-your-agent-into-a"
+    },
+    {
+      "id": "c15",
+      "text": "Credit prices reproduce the underlying providers' public list prices to the cent — Google Veo 3.1 with audio bills at 84.4 credits/sec, or $0.40/sec, Google's list price; GPT-5 bills at 263.75 credits per million tokens, or $1.25/1M, OpenAI's list price — and the docs state \"Actual usage from the API is authoritative.\"[^16]",
+      "verdict": "supported",
+      "citation": "https://docs.comfy.org/tutorials/partner-nodes/pricing"
+    },
+    {
+      "id": "c14",
+      "text": "As of 2026-08-05 the published tiers run Standard $20/month for 4,200 credits, Creator $35 for 7,400, Pro $100 for 21,100 and Team $700 for 147,700, with an unpriced Enterprise tier and annual pricing at $16/$28/$80/$630 per month",
+      "verdict": "supported",
+      "citation": "https://comfy.org/cloud/pricing/"
+    },
+    {
+      "id": "c10",
+      "text": "AUTOMATIC1111's stable-diffusion-webui carries 164,387 stars and 30,545 forks, more than ComfyUI on both counts — while its `master` branch has received no commit since 2024-07-27, and its final release v1.10.1 points at that same July 2024 commit.[^7] [^8]",
+      "verdict": "supported",
+      "citation": "https://api.github.com/repos/AUTOMATIC1111/stable-diffusion-webui"
+    },
+    {
+      "id": "c19",
+      "text": "The CHORD nodes ship under the Ubisoft Machine Learning License, research-only, with commercial use strictly prohibited — and Ubisoft's own La Forge blog says the results are \"not production-ready yet, but a solid first step,\" and that \"the quality isn't where it needs to be for AAA video games material.\"[^39] [^40]",
+      "verdict": "supported",
+      "citation": "https://github.com/ubisoft/ComfyUI-Chord"
+    },
+    {
+      "id": "c41",
+      "text": "First, licensing: FLUX.1 [dev] version 1.1.1 permits commercial use of outputs in section 2(d) while conditioning the entire grant in section 1(c) on receiving no direct or indirect payment — so the default local FLUX workflow is a gray zone for revenue-generating work.[^64]",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/black-forest-labs/flux/main/model_licenses/LICENSE-FLUX1-dev"
+    },
+    {
+      "id": "c31",
+      "text": "On 2025-05-01 the Department of Justice announced that Ryan Mitchell Kramer of Santa Clarita, a/k/a NullBulge, agreed to plead guilty to two counts",
+      "verdict": "supported",
+      "citation": "https://www.justice.gov/usao-cdca/pr/santa-clarita-man-agrees-plead-guilty-hacking-disney-employees-computer-downloading"
+    },
+    {
+      "id": "c43",
+      "text": "Meanwhile EU AI Act Article 50 transparency obligations became applicable on 2026-08-02, and deployers cannot discharge their disclosure duty by relying on a provider's marking.[^66]",
+      "verdict": "supported",
+      "citation": "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act"
+    },
+    {
+      "id": "c50",
+      "text": "Applying the same unit to compute: 0.27 credits/sec for the RTX PRO 6000 is 972 credits/hour, or about $4.61 per GPU-hour, against roughly $1.07/hour for the same card on Vast.ai and a market median on-demand price near $2.20/hour as of 2026-08-05.[^15] [^78]",
+      "verdict": "unsupported",
+      "citation": "https://comfy.org/cloud/pricing/"
+    },
+    {
+      "id": "c51",
+      "text": "Comfy Cloud MCP shipped in public beta on metered GPUs; Comfy Local MCP is in private test and not publicly available; the in-app agent is private alpha, waitlist-only.[^19]",
+      "verdict": "unsupported",
+      "citation": "https://blog.comfy.org/p/comfy-mcp-turn-your-agent-into-a"
+    },
+    {
+      "id": "c52",
+      "text": "The comparison set is itself thinning — Invoke's hosted platform shut down when its founding team joined Adobe, and invoke.ai now publishes no pricing tiers at all, so its 27,767 stars measure a historical position rather than a live one.[^56] [^7]",
+      "verdict": "weak",
+      "citation": "https://www.invoke.ai/pricing"
+    },
+    {
+      "id": "c53",
+      "text": "The one exception is OpenRouter, priced roughly 2.4x the equivalent direct-API rows.[^16]",
+      "verdict": "weak",
+      "citation": "https://docs.comfy.org/tutorials/partner-nodes/pricing"
+    },
+    {
+      "id": "c54",
+      "text": "The repository's root commit is `220afe3`, and GitHub records the project as created at 2023-01-17T03:15:56Z.[^6]",
+      "verdict": "weak",
+      "citation": "https://api.github.com/repos/Comfy-Org/ComfyUI"
+    },
+    {
+      "id": "c55",
+      "text": "An independent audit of all eleven found genuine artifacts naming ComfyUI for four of them and nothing at all for HP, Harman and Lucid",
+      "verdict": "weak",
+      "citation": "https://comfy.org/cloud/enterprise/"
+    },
+    {
+      "id": "c56",
+      "text": "- {date: 2024-04, headline: \"Comfy-Org GitHub organization created\", body: \"Org container appears on 2024-04-10.\"}",
+      "verdict": "unsupported",
+      "citation": null
+    }
+  ]
+}

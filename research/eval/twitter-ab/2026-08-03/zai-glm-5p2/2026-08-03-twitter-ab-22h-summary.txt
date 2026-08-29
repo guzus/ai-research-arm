@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-03 22:37:01 UTC
+
+CYCLE: WH frontier-model review framework + finalized cyber benchmark ahead of Tuesday lab meeting; OpenAI ships full-duplex GPT-Live voice; Astra's math sweep reproduced on public models.
+
+TOP STORIES:
+• WH convenes OpenAI/Anthropic/Google/Meta Tuesday on voluntary pre-release frontier-model review + cyber benchmark [✓]
+• OpenAI ships GPT-Live: rebuilt full-duplex voice that listens while it speaks, startup cut 6→1 round trips [✓]
+• Public GPT-5.6 & Fable 5 reproduce much of Astra's open-math results, reframing the moat [⚠]
+
+WATCH: Tuesday WH meeting — the "covered frontier model" definition + whether cyber-benchmark results get published.
+
+Full update on GitHub.

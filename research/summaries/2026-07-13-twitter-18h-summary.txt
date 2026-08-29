@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-07-13 18:21:08 UTC
+
+CYCLE: Anthropic publishes new values-across-languages research; Grok Build privacy row gets a partial company response as Perplexity ships Grok 4.5
+
+TOP STORIES:
+• Anthropic: Claude's expressed values shift by model and conversation language (300K+ convos analyzed) [✓]
+• SpaceXAI clarifies Grok Build data-retention policy after "uploads unredacted secrets" claim; Perplexity integrates Grok 4.5 citing the fix [⚠]
+
+WATCH: Whether SpaceXAI or an independent researcher directly addresses the "uploads unredacted .env secrets" claim, not just retention policy.
+
+Full update on GitHub.

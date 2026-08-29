@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-04
+
+TOP 5 PAPERS:
+• Qwen-CUA - 397B-A17B MoE computer-use agent hits 86.2% on OSWorld-Verified from screenshots alone
+• AURORA-LM - continuous-latent diffusion LM keeps a high-capacity decodable latent, scales to 1B
+• Condition-Number Barrier - sparse-regression lower bound whose proof came from a Gemini agentic system at Google
+• WorldExam - 4-level world-model benchmark over 20 models; control fidelity and reactivity trade off sharply
+• CMuon - chunked momentum orthogonalization takes a 675M DiT to FID 1.18 in 200 epochs, 2x faster than AdamW
+
+CATEGORIES: Agents/Reasoning 17, CV/Multimodal 11, LM/NLP 9, Safety 7, Other 8
+
+Full report on GitHub.

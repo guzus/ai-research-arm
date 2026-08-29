@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "HUGGING FACE DISCLOSES AUTONOMOUS AI-AGENT BREACH, USED CHINESE MODEL AFTER GUARDRAILS BLOCKED FORENSICS",
+    "source": "@jeffboudier",
+    "url": "https://x.com/_akhaliq/status/2079284113350013273",
+    "category": "breaking"
+  },
+  {
+    "headline": "TRUMP ADMIN REPORTEDLY WEIGHS RESTRICTING CHINESE FRONTIER AI MODELS AFTER KIMI K3 ALARM",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2079206473297809893",
+    "category": "policy"
+  },
+  {
+    "headline": "BLOOMBERG: CHINA'S ZAI RUNS 1-GIGAWATT AI DATA CENTER WITH ZERO NVIDIA CHIPS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2079283578735640886",
+    "category": "infra"
+  },
+  {
+    "headline": "GOOGLE'S \"FROZEN V2\" CHIP HARDWIRES GEMINI INTO SILICON FOR 6-10X TOKENS-PER-WATT VS TPU",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2079231077340917836",
+    "category": "infra"
+  },
+  {
+    "headline": "NVIDIA DISCLOSES 9.3% STAKE IN NEBIUS VIA SEC FILING AFTER STOCK'S DROP FROM $300 TO $170",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2079319999915925938",
+    "category": "business"
+  }
+]

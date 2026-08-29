@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "STRIPE-OPENROUTER OFFICIALLY SIGNED — BOARD MEMBER CONFIRMS, PRICE REPORTED $7.5B TO OVER $8B",
+    "source": "@deedydas",
+    "url": "https://x.com/deedydas/status/2090129029777224033",
+    "category": "business"
+  },
+  {
+    "headline": "STRIPE TELLS INVESTORS THE SINGULARITY BEGAN JAN 1 2026 — H1 REVENUE UP 41%, FREE CASH FLOW UP 43%",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2090136694750339347",
+    "category": "business"
+  },
+  {
+    "headline": "NVIDIA IN TALKS TO INVEST IN TRAINING-DATA SUPPLIER MERCOR AT $20B VALUATION",
+    "source": "@StockStormX",
+    "url": "https://x.com/StockStormX/status/2090146423727653135",
+    "category": "business"
+  },
+  {
+    "headline": "WHITE HOUSE ASKS LABS TO SUBMIT FRONTIER MODELS FOR GOVERNMENT TESTING 30 DAYS BEFORE RELEASE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2090106678473629715",
+    "category": "policy"
+  },
+  {
+    "headline": "CEREBRAS CS-4 SPEC NAMES THREE WSE-3 TURBO WAFERS — NO NEW WAFER-SCALE SILICON IN THE RACK",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2090129166700077554",
+    "category": "infra"
+  },
+  {
+    "headline": "NVIDIA ACCEPTS AMD PULL REQUESTS INTO NIXL AFTER A DECADE — AMD DEPRECATES ITS RIXL FORK",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2090122133036806468",
+    "category": "infra"
+  },
+  {
+    "headline": "UNSLOTH SHIPS QWEN3.8-27B 1-BIT QUANTS RETAINING 77% ACCURACY — RUNS IN 8GB OF RAM",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2090103470015828184",
+    "category": "opensource"
+  }
+]

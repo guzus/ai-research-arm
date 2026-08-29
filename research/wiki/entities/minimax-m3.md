@@ -6,8 +6,9 @@ aliases: ["MiniMax M3", "M3", "MiniMax-M3", MiniMax]
 tags: [open-weights, model, agentic-coding, chinese-llm, long-context]
 description: MiniMax's open-weights model with 1M context and 59% SWE-Bench Pro — the strongest open-weights agentic-coding model of the cycle.
 created_at: 2026-06-03
-timestamp: 2026-06-04T00:00:00Z
+timestamp: 2026-08-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-06-03", path: research/digest/2026-06-03-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
 ---
@@ -43,6 +44,13 @@ This release sits inside the broader open-weights wave — alongside Google's
 frontier labs' pricing, and feeds the [[ai-capex]] inference-demand story:
 cheaper capable open models expand the addressable inference base routed through
 layers like [[openrouter]].
+
+**Successor note (2026-08-04).** MiniMax's next open release,
+[[minimax-h3|H3]], is a different bet: a 33B unified text/image/video/audio
+model aimed at consumer-GPU video generation rather than at long-context
+agentic coding — and a **partial** open release, with 2K regeneration, context
+orchestration and sparse attention withheld server-side. M3's 1M-context MSA
+architecture remains the lab's long-context line; H3 is not its replacement.
 
 ## Open questions
 

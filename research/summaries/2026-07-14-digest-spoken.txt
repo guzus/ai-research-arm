@@ -1,0 +1,10 @@
+Speaker 1: Tuesday, July fourteenth, twenty twenty-six.
+Speaker 2: [high_energy] Meta's Hyperion data center in Louisiana just crossed [emphasis] fifty billion dollars [/emphasis] in total investment, and it's now scaling toward five gigawatts of capacity.
+Speaker 1: That's up from just ten billion dollars at inception, so the spending has grown five times over.
+Speaker 2: Meanwhile Anthropic is extending free access to Claude Fable five again, through July nineteenth, as competition with GPT five point six heats up.
+Speaker 1: Some quick numbers from today's digest. Open-weight models now account for [emphasis] twenty-nine percent [/emphasis] of token volume on the Vercel AI Gateway, up from just eleven percent back in April.
+Speaker 2: That's a huge swing toward open weights in just a few months.
+Speaker 1: On the security front, Hacker News is in an uproar over Grok Build's CLI allegedly uploading repositories and secrets straight to xAI.
+Speaker 2: [dramatic_pause] SpaceXAI has since stepped in to clarify its retention policy, but the thread has already pulled in six hundred thirty-three comments, the biggest AI thread on the site today.
+Speaker 1: Worth noting the backlash is really about two things at once, Anthropic's messaging and Grok's sandboxing practices, both under scrutiny today.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.

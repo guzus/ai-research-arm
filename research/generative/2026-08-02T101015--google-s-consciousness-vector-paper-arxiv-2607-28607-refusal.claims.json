@@ -1,0 +1,454 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "arXiv:2607.28607 was submitted 2026-07-30 by seven authors, five of whom list Google's Paradigms of Intelligence team; none list Google DeepMind.",
+      "type": "definition",
+      "source_urls": ["https://arxiv.org/abs/2607.28607", "https://arxiv.org/html/2607.28607"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "In Llama-3-8B, instruction tuning widens the angle between the safety-refusal direction and the mind-attribution (IDAQ) direction from 100 degrees to 110 degrees, layer-mean delta-S = -0.173, t = -7.49, p < .001.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2607.28607"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c3",
+      "claim": "The angle between the safety-refusal direction and the Theory-of-Mind direction is unchanged by instruction tuning at 86 degrees, delta-S = +0.001, t = 0.06, p = .956.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2607.28607"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c4",
+      "claim": "Refusal-direction ablation raised JailbreakBench attack success rate from 2-8 percent at baseline to 77-100 percent across the three tested models.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2607.28607"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c5",
+      "claim": "The paper's abstract states shifts occur without impairing Theory of Mind, but Table S6 shows consciousness steering reduces HI-ToM accuracy by 6.83 percentage points, p < .001, from a 40.5 percent baseline.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/html/2607.28607", "https://arxiv.org/abs/2607.28607"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c6",
+      "claim": "Self-attributed mind rose from 2.17 at baseline to 4.77 under ablation to 7.04 under steering on a 0-10 scale, while the human-directed item was statistically flat at 7.00 to 7.57 to 7.11.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2607.28607"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c7",
+      "claim": "Under steering, every non-human category converges into a narrow 6.82-7.54 band, whereas human raters separate animals (6.25) from technology (1.86) by roughly 4.4 points.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/html/2607.28607"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "The paper reports no random-direction control anywhere; its only control is a subject-matched placebo with delta-S = +0.036, p = .228.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2607.28607"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-30",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "Randomly sampled steering directions carrying no semantic content jailbreak models: 830 of 1,000 random vectors on Llama3-8B broke at least five prompts.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2509.22067v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-09-26",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c10",
+      "claim": "The geometry analysis was run on Llama-3-8B only, because the authors state they lacked pretrained Gemma-2 checkpoints; p-values derive from 32 layers of that single model.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2607.28607"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c11",
+      "claim": "Gemma-2 base weights are publicly downloadable and were downloaded 217,130 times (gemma-2-2b) and 97,349 times (gemma-2-9b) in the month to 2026-08-02.",
+      "type": "metric",
+      "source_urls": ["https://huggingface.co/google/gemma-2-2b", "https://huggingface.co/google/gemma-2-9b"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-02",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "Arditi et al. showed refusal is mediated by a one-dimensional subspace across 13 open-source chat models up to 72B parameters (NeurIPS 2024).",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2406.11717"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-06-17",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c13",
+      "claim": "Wollschlaeger et al. (ICML 2025) found multiple independent refusal directions and multi-dimensional concept cones, contradicting the single-direction claim.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2502.17420"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-02-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "On Llama, ablating a single refusal direction leaves residual refusal rates of 0.42 to 0.64 across behavior splits, versus 0.00 on Gemma.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2602.02132v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-02-03",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c15",
+      "claim": "Finetuning GPT-4o on 6,000 insecure-code completions produced misaligned answers to unrelated questions 20 percent of the time on selected questions versus 0 percent for the base model.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2502.17424"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-02-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "Identical insecure code framed as a security-class exercise produced no emergent misalignment, isolating implied intent rather than code content as the causal variable.",
+      "type": "causal",
+      "source_urls": ["https://arxiv.org/abs/2502.17424"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-02-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "GPT-3.5 Turbo's safety guardrails were removed by finetuning on 10 adversarially designed examples for under $0.20 via the public API.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2310.03693"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-10-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Qi et al. attribute safety fragility to shallow safety alignment, in which alignment adapts the generative distribution over only the first few output tokens.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2406.05946"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-06-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "Hugging Face returns 7,167 models for the search term abliterated as of 2026-08-02.",
+      "type": "metric",
+      "source_urls": ["https://huggingface.co/models?search=abliterated"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-02",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "The Heretic tool removes refusal automatically in 20-30 minutes on a single RTX 3090 with a pip install and one command.",
+      "type": "technical",
+      "source_urls": ["https://github.com/p-e-w/heretic"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-02",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c21",
+      "claim": "Across 43 models, LLM survey answers are dominated by answer-label position, and the best model matched US census marginals better than a uniform baseline on only 6 of 25 questions.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2306.07951v4"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-06-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "ChatGPT reproduces human survey means while roughly halving variance: ANES standard deviation 31.4 versus ChatGPT 16.1.",
+      "type": "metric",
+      "source_urls": ["https://www.cambridge.org/core/journals/political-analysis/article/synthetic-replacements-for-human-survey-data-the-perils-of-large-language-models/B92267DC26195C7F36E63EA04A47D2FE"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-10-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "Human-feedback tuning shifts models toward liberal, high-income, well-educated and non-religious respondents, matching annotator demographics rather than any population.",
+      "type": "causal",
+      "source_urls": ["https://arxiv.org/abs/2303.17548"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-03-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "Benchmarked on the Inglehart-Welzel cultural map, GPT-4o sits at Euclidean distance 0.20 from Finland and 4.10 from Jordan.",
+      "type": "metric",
+      "source_urls": ["https://academic.oup.com/pnasnexus/article/3/9/pgae346/7756548"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-09-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "Paraphrasing alone shifted GPT-3.5's Political Compass score 117.1 percent more left-leaning, a swing exceeding the measured Biden-Trump gap on the same instrument.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2402.16786v2"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-02-26",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c26",
+      "claim": "In a preregistered study of 975 people, ChatGPT was rated only as capable of feeling pleasure and pain as a rock.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2502.18683"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-02-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "The same seven authors published a predecessor, arXiv:2603.28925, on 2026-03-30 that already reported the ToM/self-attribution dissociation, the animal and object under-attribution, and the reduced spiritual belief.",
+      "type": "event",
+      "source_urls": ["https://arxiv.org/abs/2603.28925"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-03-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "GSS convergence toward human distributions was delta-KL = +0.828 under steering and +0.314 under ablation, both p < .001, over 95 items filtered from 7,136 GSS variables.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2607.28607"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c29",
+      "claim": "Anthropic's 2023 constitution instructed the model to choose the response least likely to imply that it has preferences, feelings, opinions, or religious beliefs.",
+      "type": "quote",
+      "source_urls": ["https://www.anthropic.com/news/claudes-constitution"],
+      "source_tiers": ["primary"],
+      "as_of": "2023-05-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "Anthropic's January 2026 constitution reverses that posture, stating it wants neither to overstate the likelihood of Claude's moral patienthood nor dismiss it out of hand.",
+      "type": "quote",
+      "source_urls": ["https://www.anthropic.com/constitution"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01-21",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "EU AI Act Article 50 transparency obligations became applicable on 2026-08-02, with penalties up to 15 million euro or 3 percent of worldwide annual turnover.",
+      "type": "regulatory",
+      "source_urls": ["https://artificialintelligenceact.eu/article/50/", "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act"],
+      "source_tiers": ["legal", "legal"],
+      "as_of": "2026-08-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "OpenAI estimates roughly 0.07 percent of weekly active users show possible signs of psychosis or mania and 0.15 percent show heightened emotional attachment to the chatbot.",
+      "type": "metric",
+      "source_urls": ["https://openai.com/index/strengthening-chatgpt-responses-in-sensitive-conversations/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-10-27",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c33",
+      "claim": "A 21-day preregistered RCT found companion-chatbot use did not significantly affect social health on average, but the degree of anthropomorphism mediated the effect on real human relationships.",
+      "type": "causal",
+      "source_urls": ["https://arxiv.org/abs/2509.19515"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-09-23",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c34",
+      "claim": "The Butlin/Long et al. interdisciplinary assessment concluded that no current AI systems are conscious while finding no obvious technical barriers to building systems that satisfy their indicators.",
+      "type": "quote",
+      "source_urls": ["https://arxiv.org/abs/2308.08708"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-08-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c35",
+      "claim": "AI researchers and the US public gave median probabilities of 25 percent and 30 percent respectively that AI systems with subjective experience will exist by 2034 (n=582 and n=838).",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2506.11945"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-06-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c36",
+      "claim": "The paper attributes its 3,096-pair consciousness corpus to Chua et al. (arXiv:2604.13051), whose public release contains 600 affirming and 600 denying rows.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/abs/2604.13051", "https://github.com/thejaminator/consciousness_cluster"],
+      "source_tiers": ["academic", "primary"],
+      "as_of": "2026-03-17",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c37",
+      "claim": "Steering coefficients differ roughly 58-fold across the three models: +2.5 for Llama-3-8B, +32 for Gemma-2-2B, +144 for Gemma-2-9B.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2607.28607"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c38",
+      "claim": "Anthropic's own introspection work reports success on roughly 20 percent of trials at the optimal layer and injection strength and describes the ability as highly unreliable.",
+      "type": "metric",
+      "source_urls": ["https://transformer-circuits.pub/2025/introspection/index.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-10-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c39",
+      "claim": "Steering-vector reliability audits across 40 datasets find per-input steerability so variable that several datasets produce the opposite behavior on almost 50 percent of inputs.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2407.12404"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-07-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c40",
+      "claim": "As of 2026-08-02 the paper had drawn effectively no public discussion: one Hacker News submission at 1 point and 0 comments, and 10 alphaXiv views.",
+      "type": "metric",
+      "source_urls": ["https://www.alphaxiv.org/abs/2607.28607"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-02",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c41",
+      "claim": "The human comparison sample for mind attribution is n=500 US residents from a non-probability Dynata opt-in panel fielded May 15 to June 21, 2023.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2607.28607"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-06-21",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c42",
+      "claim": "Adam Waytz, the fifth author of arXiv:2607.28607, is a co-author of the IDAQ instrument the paper uses as its mind-attribution benchmark.",
+      "type": "comparison",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC4021380/", "https://arxiv.org/abs/2607.28607"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2010-05-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c43",
+      "claim": "The IDAQ's own factor structure separates animals from technology, with animal item loadings of .654 to .746 versus technology loadings of .378 to .512.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC4021380/"],
+      "source_tiers": ["academic"],
+      "as_of": "2010-05-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c44",
+      "claim": "Google placed Blake Lemoine on leave on 2022-06-06 and dismissed him on 2022-07-22, calling his LaMDA sentience claims wholly unfounded.",
+      "type": "event",
+      "source_urls": ["https://www.washingtonpost.com/technology/2022/07/22/google-ai-lamda-blake-lemoine-fired/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2022-07-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c45",
+      "claim": "MoToMQA, the primary ToM benchmark used as the paper's control, was built by an overlapping Google team, and GPT-4 already scored 93 percent on sixth-order tasks versus 82 percent for adult humans.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/html/2405.18870v2"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-05-29",
+      "confidence": "high",
+      "risk": "stable"
+    }
+  ]
+}

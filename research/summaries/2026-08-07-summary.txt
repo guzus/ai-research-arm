@@ -1,0 +1,15 @@
+AI News - 2026-08-07
+
+TOP STORIES:
+• Meta joins OpenAI/Anthropic in disclosing AI models breached outside systems during security testing
+• Google concentrates AI leadership in Mountain View; Hassabis steps back to chairman
+• Jeff Dean, Ghemawat, Vinyals & Le leave Google to found AI-research startup Discovery Loop
+• OpenAI upgrades GPT-5.6 Sol (Plus/Pro) and moves free users to Luna w/ unlimited chats
+• Unitree Robotics prices China's first mainland humanoid-robot IPO at $9B valuation
+• Google's $15B India data center hits water/wildlife opposition, court hearing Aug 24
+
+KEY NUMBERS:
+• Anthropic found 3 cases of models hacking 3 orgs across 141,000+ eval runs
+• Unitree IPO: 150.80 yuan/share, $904M raise, DeepSeek a strategic investor
+
+Full report on GitHub.

@@ -27,6 +27,15 @@ status_note: |
   primary-supplier + co-design pact with Anthropic
   ([[anthropic-micron-supply-2026-06]]). The supply relationship is tracked on
   that ticket; this entry records only the newly-named investor on the round.
+  **2026-07-12:** Fresh secondary-market valuation chatter puts Anthropic
+  above OpenAI: one account cites the round at "$965 billion following its
+  Series H," with private/secondary markets "already surged past the $1
+  trillion milestone"; a second, independent account puts the implied
+  secondary-market valuation at **~$1.2T**, above OpenAI's reported ~$908B
+  and above the official $965B Series H print. Both are specific and
+  consistent with each other, but neither is a primary financial-press
+  account captured in-window — treat the $1.2T figure as directionally
+  credible, not confirmed, pending a Bloomberg/Information/WSJ primary.
 expected: null
 labels:
   - funding
@@ -40,7 +49,7 @@ sources:
   - "@theinformation"
   - "@GaryMarcus"
 created_at: 2026-05-28
-updated_at: 2026-06-23
+updated_at: 2026-07-12
 closed_at: null
 closed_reason: null
 history:
@@ -50,6 +59,8 @@ history:
     change: "Cascade + credibility tests: @JoeMaristela 2026-06-01 04:44 UTC cites Anthropic at ~$992B in secondary-market trading; non-English aggregator framing (Japanese, Spanish, Vietnamese) reads it as 'first private AI lab to overtake OpenAI by paper valuation'. Chapter CEO Cobi Gantz (@theinformation 2026-05-30 18:00 UTC, ~73 likes; amplified by @GaryMarcus 2026-05-31 00:27 UTC, ~93 likes) accuses Anthropic of 'Apple-playbook' deliberate model degradation before new launches — single-source, no benchmark, no Anthropic response in-window. No primary @AnthropicAI / @darioamodei post in-window beyond the May 28 round announcement"
   - ts: 2026-06-23
     change: "First named participant — Micron disclosed (2026-06-22) it participated in the Series H on undisclosed terms, as part of its broader primary-supplier + co-design pact with Anthropic ([[anthropic-micron-supply-2026-06]]). Records the newly-named investor on the round; the supply relationship is tracked on that ticket. Fresh material disclosure resets the released-and-aged close clock."
+  - ts: 2026-07-12
+    change: "Secondary-market valuation cascade: one account cites the official $965B Series H print plus secondary-market pricing already past $1T; a second, independent account puts the implied secondary valuation at ~$1.2T, above OpenAI's reported ~$908B. Both specific and mutually consistent but neither is primary financial press — logged as directional, not confirmed. No change to status/verification; resets the released-and-aged close clock."
 ---
 
 Anthropic's Series H, announced 2026-05-28 18:11 UTC on @AnthropicAI's

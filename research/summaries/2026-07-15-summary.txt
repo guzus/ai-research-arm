@@ -1,0 +1,14 @@
+AI News - 2026-07-15
+
+TOP STORIES:
+• China's new AI companion law takes effect today, forcing Doubao (345M MAU) and Qwen to shut down agent features
+• Anthropic launches Claude for Teachers, free premium Claude access for verified US K-12 educators
+• Chai Discovery raises $400M Series C for AI molecular design at a $3.8B valuation
+• Cloudflare launches Precursor, a continuous behavioral system built to detect AI agentic bot traffic
+
+KEY NUMBERS:
+• 345M monthly active users affected by Doubao's agent shutdown
+• $400M Series C, $3.8B valuation for Chai Discovery (nearly 3x its Dec. valuation)
+• Claude for Teachers: free access to $20/mo Claude Opus 4.6 tier for verified K-12 teachers
+
+Full report on GitHub.

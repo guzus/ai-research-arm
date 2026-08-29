@@ -1,3 +1,5 @@
+import { uiText, type UiLanguage } from '../i18n';
+
 export type ArmTimelineItemKind = 'completed' | 'scheduled';
 
 export type ArmTimelineItem = {
@@ -38,8 +40,8 @@ function parseTime(value: string): number | null {
   return Number.isFinite(ms) ? ms : null;
 }
 
-function formatUtcTime(ms: number): string {
-  return new Intl.DateTimeFormat('en-US', {
+function formatUtcTime(ms: number, language: UiLanguage): string {
+  return new Intl.DateTimeFormat(language === 'ko' ? 'ko-KR' : 'en-US', {
     hour: '2-digit',
     minute: '2-digit',
     hour12: false,
@@ -47,8 +49,8 @@ function formatUtcTime(ms: number): string {
   }).format(new Date(ms));
 }
 
-function formatUtcDateTime(ms: number): string {
-  return new Intl.DateTimeFormat('en-US', {
+function formatUtcDateTime(ms: number, language: UiLanguage): string {
+  return new Intl.DateTimeFormat(language === 'ko' ? 'ko-KR' : 'en-US', {
     month: 'short',
     day: '2-digit',
     hour: '2-digit',
@@ -58,11 +60,12 @@ function formatUtcDateTime(ms: number): string {
   }).format(new Date(ms)) + ' UTC';
 }
 
-function formatDuration(startMs: number, endMs: number): string {
+function formatDuration(startMs: number, endMs: number, language: UiLanguage): string {
   const mins = Math.max(1, Math.round((endMs - startMs) / MINUTE_MS));
-  if (mins < 60) return mins + 'm';
+  if (mins < 60) return language === 'ko' ? mins + '분' : mins + 'm';
   const hours = Math.floor(mins / 60);
   const rest = mins % 60;
+  if (language === 'ko') return rest === 0 ? hours + '시간' : hours + '시간 ' + rest + '분';
   return rest === 0 ? hours + 'h' : hours + 'h ' + rest + 'm';
 }
 
@@ -103,28 +106,28 @@ function appendDetailRow(list: HTMLElement, label: string, value: string): void 
   list.appendChild(row);
 }
 
-function makeItemDetails(item: ParsedArmTimelineItem, profile: LaneDetailProfile): HTMLElement {
+function makeItemDetails(item: ParsedArmTimelineItem, profile: LaneDetailProfile, language: UiLanguage): HTMLElement {
   const details = document.createElement('dl');
   details.className = 'agents-work-details';
 
   const failed = isFailureStatus(item.status);
-  const primaryLabel = failed ? 'Failed' : item.kind === 'scheduled' ? 'Scheduled' : 'Updated';
+  const primaryLabel = failed ? uiText(language, 'agents.failed') : item.kind === 'scheduled' ? uiText(language, 'agents.scheduled') : uiText(language, 'agents.updated');
   const primaryMs = item.kind === 'scheduled' ? item.startMs : item.endMs;
-  appendDetailRow(details, primaryLabel, formatUtcDateTime(primaryMs));
-  appendDetailRow(details, 'Time', formatUtcTime(item.startMs) + '-' + formatUtcTime(item.endMs) + ' UTC');
-  appendDetailRow(details, 'Duration', formatDuration(item.startMs, item.endMs));
+  appendDetailRow(details, primaryLabel, formatUtcDateTime(primaryMs, language));
+  appendDetailRow(details, uiText(language, 'agents.time'), formatUtcTime(item.startMs, language) + '-' + formatUtcTime(item.endMs, language) + ' UTC');
+  appendDetailRow(details, uiText(language, 'agents.duration'), formatDuration(item.startMs, item.endMs, language));
 
   const showStatus = failed || profile.statuses.size > 1 || statusValue(item) !== item.kind;
-  if (showStatus) appendDetailRow(details, 'Status', normalizedValue(item.status || item.kind));
+  if (showStatus) appendDetailRow(details, uiText(language, 'agents.status'), normalizedValue(item.status || item.kind));
 
   const model = normalizedValue(item.model);
   if (model && (profile.models.size > 1 || profile.hasMissingModel)) {
-    appendDetailRow(details, 'Model', model);
+    appendDetailRow(details, uiText(language, 'agents.model'), model);
   }
 
   const source = normalizedValue(item.source);
-  if (source && profile.sources.size > 1) appendDetailRow(details, 'Source', source);
-  if (item.commit) appendDetailRow(details, 'Commit', item.commit);
+  if (source && profile.sources.size > 1) appendDetailRow(details, uiText(language, 'agents.source'), source);
+  if (item.commit) appendDetailRow(details, uiText(language, 'agents.commit'), item.commit);
 
   return details;
 }
@@ -133,44 +136,38 @@ function itemSort(a: ArmTimelineItem, b: ArmTimelineItem): number {
   return String(a.start).localeCompare(String(b.start)) || a.title.localeCompare(b.title);
 }
 
-export function renderAgentsStudioHtml(): string {
+export function renderAgentsStudioHtml(language: UiLanguage): string {
   return [
-    '<section class="agents-lite-page" aria-label="Arm work timeline">',
+    '<section class="agents-lite-page" aria-label="' + uiText(language, 'agents.label') + '">',
     '  <div class="content-card agents-lite-card">',
     '    <div class="content-card-header agents-lite-header">',
     '      <div>',
-    '        <div class="content-card-title">Agent workers</div>',
-    '        <p>Real completed and scheduled pipeline work, shown by UTC start and end time.</p>',
-    '      </div>',
-    '      <div class="agents-lite-metrics" id="armMetrics">',
-    '        <div class="agents-lite-metric"><span>completed</span><strong>--</strong></div>',
-    '        <div class="agents-lite-metric"><span>scheduled</span><strong>--</strong></div>',
-    '        <div class="agents-lite-metric"><span>window</span><strong>--</strong></div>',
+    '        <div class="content-card-title">' + uiText(language, 'agents.title') + '</div>',
+    '        <p>' + uiText(language, 'agents.description', { blog: '<a href="https://guzus.substack.com/p/open-sourcing-ai-research-arm-ara" target="_blank" rel="noopener noreferrer">' + uiText(language, 'agents.blog') + '</a>' }) + '</p>',
     '      </div>',
     '    </div>',
     '    <div class="content-card-body agents-lite-body" id="armTimeline">',
-    '      <div class="agents-lite-status">Loading real work timeline...</div>',
+    '      <div class="agents-lite-status">' + uiText(language, 'agents.loading') + '</div>',
     '    </div>',
     '  </div>',
     '</section>',
   ].join('\n');
 }
 
-export function hydrateAgentsTimeline(root: ParentNode, timeline: ArmTimeline | null): void {
+export function hydrateAgentsTimeline(root: ParentNode, timeline: ArmTimeline | null, language: UiLanguage): void {
   const mount = root.querySelector<HTMLElement>('#armTimeline');
-  const metrics = root.querySelector<HTMLElement>('#armMetrics');
   if (!mount) return;
   mount.replaceChildren();
 
   if (!timeline || !Array.isArray(timeline.items) || timeline.items.length === 0) {
-    mount.appendChild(makeText('div', 'agents-lite-status', 'No completed or scheduled work found.'));
+    mount.appendChild(makeText('div', 'agents-lite-status', uiText(language, 'agents.none')));
     return;
   }
 
   const windowStartMs = parseTime(timeline.windowStart);
   const windowEndMs = parseTime(timeline.windowEnd);
   if (windowStartMs === null || windowEndMs === null || windowEndMs <= windowStartMs) {
-    mount.appendChild(makeText('div', 'agents-lite-status', 'Timeline data is malformed.'));
+    mount.appendChild(makeText('div', 'agents-lite-status', uiText(language, 'agents.malformed')));
     return;
   }
 
@@ -186,31 +183,14 @@ export function hydrateAgentsTimeline(root: ParentNode, timeline: ArmTimeline | 
     .sort(itemSort);
 
   if (items.length === 0) {
-    mount.appendChild(makeText('div', 'agents-lite-status', 'No completed or scheduled work found in this window.'));
+    mount.appendChild(makeText('div', 'agents-lite-status', uiText(language, 'agents.noneWindow')));
     return;
-  }
-
-  const completed = items.filter((item) => item.kind === 'completed').length;
-  const scheduled = items.filter((item) => item.kind === 'scheduled').length;
-  if (metrics) {
-    metrics.replaceChildren();
-    for (const [label, value] of [
-      ['completed', String(completed)],
-      ['scheduled', String(scheduled)],
-      ['window', formatDuration(windowStartMs, windowEndMs)],
-    ]) {
-      const card = document.createElement('div');
-      card.className = 'agents-lite-metric';
-      card.appendChild(makeText('span', '', label));
-      card.appendChild(makeText('strong', '', value));
-      metrics.appendChild(card);
-    }
   }
 
   const header = document.createElement('div');
   header.className = 'agents-work-summary';
-  header.appendChild(makeText('div', 'agents-work-summary-title', 'UTC work ledger'));
-  header.appendChild(makeText('div', 'agents-work-summary-meta', formatUtcDateTime(windowStartMs) + ' - ' + formatUtcDateTime(windowEndMs)));
+  header.appendChild(makeText('div', 'agents-work-summary-title', 'GitHub Actions'));
+  header.appendChild(makeText('div', 'agents-work-summary-meta', formatUtcDateTime(windowStartMs, language) + ' - ' + formatUtcDateTime(windowEndMs, language)));
   mount.appendChild(header);
 
   const ledger = document.createElement('div');
@@ -231,7 +211,7 @@ export function hydrateAgentsTimeline(root: ParentNode, timeline: ArmTimeline | 
   ruler.style.width = timelineWidth + 'px';
   for (let i = 0; i <= totalHours; i += 1) {
     const tick = document.createElement('span');
-    tick.textContent = formatUtcTime(windowStartMs + (i * HOUR_MS));
+    tick.textContent = formatUtcTime(windowStartMs + (i * HOUR_MS), language);
     tick.style.left = ((i / totalHours) * 100) + '%';
     ruler.appendChild(tick);
   }
@@ -243,7 +223,7 @@ export function hydrateAgentsTimeline(root: ParentNode, timeline: ArmTimeline | 
     const head = document.createElement('header');
     head.className = 'agents-work-row-head';
     head.appendChild(makeText('strong', '', lane));
-    head.appendChild(makeText('span', '', laneItems.length + ' items'));
+    head.appendChild(makeText('span', '', uiText(language, 'agents.items', { count: laneItems.length })));
     labels.appendChild(head);
 
     const track = document.createElement('div');
@@ -267,10 +247,10 @@ export function hydrateAgentsTimeline(root: ParentNode, timeline: ArmTimeline | 
       card.dataset.status = normalizedValue(item.status || item.kind);
       card.style.left = left.toFixed(3) + '%';
       card.style.width = width.toFixed(3) + '%';
-      card.setAttribute('aria-label', item.title + ', ' + formatUtcDateTime(item.startMs) + ' to ' + formatUtcDateTime(item.endMs));
+      card.setAttribute('aria-label', item.title + ', ' + formatUtcDateTime(item.startMs, language) + ' - ' + formatUtcDateTime(item.endMs, language));
       card.appendChild(makeText('strong', '', item.title));
-      if (failed) card.appendChild(makeText('span', 'agents-work-fail-badge', 'FAILED'));
-      card.appendChild(makeItemDetails(item, detailProfile));
+      if (failed) card.appendChild(makeText('span', 'agents-work-fail-badge', uiText(language, 'agents.failedBadge')));
+      card.appendChild(makeItemDetails(item, detailProfile, language));
       track.appendChild(card);
     }
     scroll.appendChild(track);

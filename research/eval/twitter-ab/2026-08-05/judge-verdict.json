@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-judge-verdict",
+  "date": "2026-08-05",
+  "run_id": "31053565370",
+  "run_attempt": 1,
+  "judge_model": "claude-opus-4-8",
+  "position_swap": true,
+  "staging_key_ok": true,
+  "blinding": {
+    "run_key": "31053565370-1",
+    "pass1": {
+      "A": "claude",
+      "B": "zai-glm-5p2"
+    },
+    "pass2": {
+      "A": "zai-glm-5p2",
+      "B": "claude"
+    }
+  },
+  "passes": [
+    {
+      "pass": 1,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "claude",
+        "B": "zai-glm-5p2"
+      },
+      "raw_preferred_letter": "A",
+      "preferred_leg": "claude",
+      "scores_by_leg": {
+        "claude": {
+          "coverage": 9.0,
+          "faithfulness": 9.0,
+          "headline_quality": 9.0,
+          "skepticism": 9.0,
+          "format": 9.0,
+          "overall": 9.0
+        },
+        "zai-glm-5p2": {
+          "coverage": 7.0,
+          "faithfulness": 9.0,
+          "headline_quality": 8.0,
+          "skepticism": 8.0,
+          "format": 9.0,
+          "overall": 7.0
+        }
+      },
+      "rationale_by_leg": {
+        "claude": "Every spot-checked claim traces to the snapshot with unusual precision: Muse Code 82.9%/59.3% vs Opus 5, Mechanize $8k/task and Dean's cap-table disclosed ~15min prior, GlobalWafers 12-inch, UK AISI 19 actions. Covers all majors, notably the Muse Spark 1.1 eval breach and Prime Intellect ARC-AGI-3 as full stories with the strongest, best-attributed skepticism (harness-not-model, contamination signature, 'AI broke out' correction, Hassabis scope-change fix). Headlines are specific and benchmark-dense. Clean card format, signal-only. No hallucinations found.",
+        "zai-glm-5p2": "Also faithful \u2014 ByteDance no-distill, custom silicon salaries, voice-clone hedge funds, Muse Code pricing all verified, with solid single-source flags and a sharp 'managed spinout' counter-thesis. But it omits the Muse Spark 1.1 breach entirely (a top viral breaking story and part of a documented eval-safety pattern) and demotes ARC-AGI-3 to one quick-hit line, so emphasis is off on two major items. Skepticism is good but shallower than A. Format and consistency are clean. Strong brief, thinner coverage and analysis."
+      }
+    },
+    {
+      "pass": 2,
+      "parsed": false,
+      "reason": "verdict missing/unparseable"
+    }
+  ],
+  "per_leg": {
+    "claude": {
+      "overall_avg": 9.0,
+      "criteria_avg": {
+        "coverage": 9.0,
+        "faithfulness": 9.0,
+        "format": 9.0,
+        "headline_quality": 9.0,
+        "skepticism": 9.0
+      },
+      "passes_scored": 1
+    },
+    "zai-glm-5p2": {
+      "overall_avg": 7.0,
+      "criteria_avg": {
+        "coverage": 7.0,
+        "faithfulness": 9.0,
+        "format": 9.0,
+        "headline_quality": 8.0,
+        "skepticism": 8.0
+      },
+      "passes_scored": 1
+    }
+  },
+  "passes_parsed": 1,
+  "final_preference": "claude"
+}

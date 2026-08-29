@@ -13,24 +13,69 @@ concurrency:
 jobs:
   rss-feed:
     runs-on: [self-hosted, Linux]
-    timeout-minutes: 15
+    timeout-minutes: 30
     permissions:
       contents: write
       pull-requests: write
       id-token: write
 
     steps:
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           fetch-depth: 0
+          persist-credentials: false
+          set-safe-directory: false
 
       - name: Get current datetime
         id: datetime
         run: |
-          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-          echo "hour=$(date +'%H')" >> $GITHUB_OUTPUT
-          echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+          {
+            echo "date=$(date -u +'%Y-%m-%d')"
+            echo "hour=$(date -u +'%H')"
+            echo "timestamp=$(date -u +'%Y-%m-%d %H:%M UTC')"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Fetch RSS Feeds
         id: rss
@@ -146,25 +191,35 @@ jobs:
           echo "RSS feeds fetched successfully"
           ls -la /tmp/rss/
 
+      - name: Stage RSS input for isolated agent
+        run: |
+          set -euo pipefail
+          rm -rf .agent-input/rss
+          mkdir -p .agent-input/rss
+          cp /tmp/rss/*.xml .agent-input/rss/
+
       - name: Capture RSS output base
         id: rss-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      - name: Process RSS Feeds with GLM-5.2 via Fireworks
+      - name: Process RSS feeds with SSOT-routed agent
         id: rss-agent
         continue-on-error: true
-        uses: ./.github/actions/agent-run
+        uses: ./.github/actions/agent-dispatch
         with:
+          mode: editorial
           lane: rss
+          expected-paths: |
+            research/rss/${{ steps.datetime.outputs.date }}.md
+          allowed-paths: |
+            research/rss/${{ steps.datetime.outputs.date }}.md
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
-          claude-args: |
-            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(ls:*),Bash(cat:*)"
-          expected-paths: |
-            research/rss/
-          label: RSS GLM-5.2 Fireworks processor
-          prompt: |
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          timeout-minutes: '12'
+          prompt-text: |
             You are an RSS feed processor for AI news. Extract NEW articles from official sources.
 
             TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
@@ -172,7 +227,7 @@ jobs:
 
             ## SOURCE FILES
 
-            Read these RSS/XML files from /tmp/rss/:
+            Read these RSS/XML files from `.agent-input/rss/`:
 
             **Official Company Blogs:**
             - openai.xml (OpenAI Blog)
@@ -304,8 +359,17 @@ jobs:
         with:
           base-sha: ${{ steps.rss-output-base.outputs.sha }}
           expected-paths: |
-            research/rss/
+            research/rss/${{ steps.datetime.outputs.date }}.md
           label: RSS workflow output
+
+      # `continue-on-error` above lets the final output guard explain missing
+      # artifacts. Do not let it hide an agent-run scope/policy failure when
+      # the agent also happened to commit the expected dated file.
+      - name: Propagate RSS agent contract failure
+        if: always() && steps.rss-agent.outcome != 'success'
+        run: |
+          echo "::error::RSS routed agent failed its containment or output contract."
+          exit 1
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the

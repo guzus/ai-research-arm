@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-06 08:50:36 UTC
+
+CYCLE: Memory scarcity gets a number, and independent evals move the model fight from capability to cost.
+
+TOP STORIES:
+• NVIDIA cut Rubin's SOCAMM2 spec (192GB to 64GB) because memory makers could fill only 60-70% of the order; lost bandwidth bought back via NVL576 + NPO optics [WARN]
+• Muse Spark 1.2 lands top-5 on the Vals Index at $0.69/test and 43 to 54 on Artificial Analysis in 4 months - but burns above-median output tokens [WARN]
+• Open weights now a tie: Kimi K3 57 vs Qwen3.8-Max 56, Alibaba wins GDPval-AA 1739 to 1685; weights slip to next week [WARN]
+
+WATCH: A published spec sheet showing a 64GB Vera SOCAMM SKU or an HBM4E 12-Hi Rubin Ultra SKU - now contested between two research houses.
+
+Full update on GitHub.

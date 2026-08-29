@@ -14,14 +14,41 @@ import {
 } from './render/shared';
 import { hydrateAgentsTimeline, renderAgentsStudioHtml } from './render/agents';
 import type { ArmTimeline } from './render/agents';
-import { renderTodayHtml } from './render/today';
+import { hydratePricing, renderPricing } from './render/pricing';
+import type { ModelPricing } from './render/pricing';
 import {
+  renderDossierRelated,
+  renderEvidenceDrawer,
+  renderMarketTrends,
+  renderWhatChanged,
+} from './render/product';
+import type { BriefItem } from './render/product';
+import {
+  claimsForArticle,
+  claimsForTopic,
+  evidenceEnumLabel,
+  excerptAround,
+  normalizeTopic,
+  readWatchlist,
+  searchEvidence,
+  textMatchesTopic,
+  watchlistFromUrl,
+  watchlistSharePath,
+  writeWatchlist,
+} from './product-intelligence';
+import type { EvidenceSearchEntry, PublicClaim, WatchlistState } from './product-intelligence';
+import { localizeStaticUi, resolveUiLanguage, uiText } from './i18n';
+import type { UiCopyKey } from './i18n';
+import { isDeterministicFallbackDigest, renderTodayHtml } from './render/today';
+import {
+  buildTwitterCycleContent,
+  extractTwitterCycleBody,
   parseTwitterStories,
   renderTwitterReportHtml,
   sanitizePublicReportMarkdown,
   storyCurrentLead,
 } from './render/twitter';
-import type { TwitterStory } from './render/twitter';
+import type { TwitterReportRenderOptions, TwitterStory } from './render/twitter';
 import {
   closeAraFigureModal,
   enhanceAraArticle,
@@ -30,6 +57,23 @@ import {
   openAraFigureModal,
   scrollToHashIfPresent,
 } from './ara-enhance';
+
+// Sanitizer-level guarantee: any sanitized anchor keeping target="_blank"
+// MUST carry rel="noopener noreferrer". Sanitized content is adversarial /
+// model-authored (digest/twitter/wiki/ticket markdown flows raw HTML
+// anchors through marked verbatim), and DOMPurify keeps `target` (it's in
+// setSafeContent's ADD_ATTR) without adding any rel — a bare target="_blank"
+// from model output would be a reverse-tabnabbing vector. App-emitted links
+// already set rel="noopener" by hand; they harmlessly gain noreferrer here.
+// Registered ONCE at module init; keys on `target`, so the sandboxed
+// standalone-doc iframe path (no target attr) is untouched. Covers every
+// sanitize call site: setSafeContent, setSafeWikiContent, and the bare
+// ticket-body sanitize.
+DOMPurify.addHook('afterSanitizeAttributes', (node) => {
+  if (node instanceof Element && node.getAttribute('target') === '_blank') {
+    node.setAttribute('rel', 'noopener noreferrer');
+  }
+});
 
 const DATA_BASE: string = import.meta.env.BASE_URL + 'research';
 
@@ -100,21 +144,21 @@ function snowflakeToDate(id: string): Date | null {
 function timeAgo(date: Date): string {
   const now = Date.now();
   const diff = now - date.getTime();
-  if (diff < 0) return 'just now';
+  if (diff < 0) return uiText(activeLanguage, 'time.now');
   const mins = Math.floor(diff / 60000);
-  if (mins < 1) return 'just now';
-  if (mins < 60) return mins + 'm ago';
+  if (mins < 1) return uiText(activeLanguage, 'time.now');
+  if (mins < 60) return uiText(activeLanguage, 'time.minutesAgo', { count: mins });
   const hours = Math.floor(mins / 60);
-  if (hours < 24) return hours + 'h ago';
+  if (hours < 24) return uiText(activeLanguage, 'time.hoursAgo', { count: hours });
   const days = Math.floor(hours / 24);
-  return days + 'd ago';
+  return uiText(activeLanguage, 'time.daysAgo', { count: days });
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader' | 'agents';
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader' | 'agents' | 'pricing';
 // Tabs that route by date (calendar-driven). research + wiki are slug-driven
 // (or index views) and are excluded — mirror the research precedent.
-type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader' | 'agents'>;
+type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader' | 'agents' | 'pricing'>;
 type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
@@ -183,6 +227,17 @@ type FocusReaderData = {
 type TicketStatus = 'rumored' | 'in-testing' | 'confirmed' | 'released' | 'closed';
 type TicketVerification = 'confirmed' | 'partial' | 'unverified';
 type TicketHistoryEntry = { ts: string; change: string };
+// Optional Polymarket market binding — the ticket tracks a real-world
+// event; the market is the crowd's live probability for it. Contract in
+// docs/model-tickets.md ("Polymarket market mappings"); prebuild.mjs
+// shape-checks entries before they reach index.json.
+type TicketPolymarketMapping = {
+  event_slug: string;
+  market_id: string;
+  token_id: string;
+  question: string;
+  outcome?: string | null;
+};
 type Ticket = {
   slug: string;
   title: string;
@@ -199,6 +254,7 @@ type Ticket = {
   closed_at: string | null;
   closed_reason: string | null;
   history: TicketHistoryEntry[];
+  polymarket?: TicketPolymarketMapping[] | null;
   body: string;
 };
 type TicketIndex = { tickets: Ticket[] };
@@ -215,9 +271,18 @@ type DesignFrontendData = {
 
 let currentDate = new Date();
 let searchTerm = '';
+let watchlist: WatchlistState = readWatchlist();
+const sharedWatchTopics = watchlistFromUrl(location.search);
+if (sharedWatchTopics.length) {
+  watchlist = { ...watchlist, topics: Array.from(new Set([...watchlist.topics, ...sharedWatchTopics])) };
+  writeWatchlist(watchlist);
+}
 let activeTab: Tab = 'today';
 let selectedSlug: string | null = null;
-let activeLanguage: ResearchLanguage = loadStoredLanguage();
+let researchIndexPage = 1;
+let wikiIndexPage = 1;
+const sharedLanguage = new URLSearchParams(location.search).get('lang');
+let activeLanguage: ResearchLanguage = sharedLanguage === 'ko' || sharedLanguage === 'en' ? sharedLanguage : loadStoredLanguage();
 let calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 const availabilityCache = new Map<string, Set<string>>();
 let loadRequestId = 0;
@@ -279,6 +344,7 @@ let digestAudioPlayEl: HTMLButtonElement | null = null;
 let digestAudioTitleEl: HTMLButtonElement | null = null;
 let digestAudioTimeEl: HTMLElement | null = null;
 let digestAudioProgressEl: HTMLInputElement | null = null;
+let digestUnavailableForCurrentView = false;
 let lastDigestAudioBarActivation = 0;
 let lastInlineDigestAudioActivation = 0;
 
@@ -288,6 +354,8 @@ const calendarEl = document.getElementById('calendar')!;
 const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 const searchCountEl = document.getElementById('searchCount')!;
 const languageSwitch = document.getElementById('languageSwitch');
+const languageToggle = document.getElementById('languageToggle') as HTMLButtonElement | null;
+const languageMenu = document.getElementById('languageMenu');
 
 // ── Path routing ─────────────────────────────────────
 // Format (history API, no hash):
@@ -298,19 +366,51 @@ const languageSwitch = document.getElementById('languageSwitch');
 // are disambiguated from routes by the file extension; Vercel rewrites only
 // extensionless paths to /index.html.
 function routeFromState(): string {
+  if (homeRouteRequested && activeTab === 'today') {
+    return '/';
+  }
+  if (latestAliasRequested === activeTab) {
+    return `/${activeTab}`;
+  }
   if (activeTab === 'focusReader') {
     return '/design/focus-reader';
   }
   if (activeTab === 'agents') {
     return '/agents';
   }
+  if (activeTab === 'pricing') {
+    return '/pricing';
+  }
   if (activeTab === 'research') {
-    return selectedSlug ? '/research/' + selectedSlug : '/research';
+    return selectedSlug ? '/research/' + selectedSlug : paginationRoute('/research', researchIndexPage);
   }
   if (activeTab === 'wiki') {
-    return selectedSlug ? '/wiki/' + selectedSlug : '/wiki';
+    return selectedSlug ? '/wiki/' + selectedSlug : paginationRoute('/wiki', wikiIndexPage);
   }
+  if (activeTab === 'models' && selectedSlug) {
+    return '/models/forecast/' + selectedSlug;
+  }
+  if (activeTab === 'models') return '/models';
   return '/' + activeTab + '/' + fmtDate(currentDate);
+}
+
+function paginationRoute(path: string, page: number): string {
+  return page > 1 ? path + '?page=' + page : path;
+}
+
+function pageFromSearch(): number {
+  const raw = new URLSearchParams(location.search).get('page');
+  if (!raw || !/^\d+$/.test(raw)) return 1;
+  const page = Number(raw);
+  return Number.isSafeInteger(page) && page > 0 ? page : 1;
+}
+
+function canonicalizeIndexPage(): void {
+  const target = routeFromState();
+  if (location.pathname + location.search === target) return;
+  history.replaceState(history.state, '', target);
+  lastAppliedPathname = target;
+  applyRuntimeSeo(target);
 }
 
 // Tracks whether the SPA has rendered at least once. The first call
@@ -319,12 +419,205 @@ function routeFromState(): string {
 // of the stack). Every subsequent call is a user navigation and gets
 // pushState so browser back/forward walks through the visited views.
 let routeInitialized = false;
+// Set by parsing `/` so initial hydration and Back/Forward can render the
+// latest Today view without rewriting the self-canonical homepage URL. It is
+// consumed by the next updateRoute call; subsequent user navigation gets the
+// normal dated route.
+let homeRouteRequested = false;
+type LatestAliasTab = 'today' | 'twitter' | 'frontpage';
+let latestAliasRequested: LatestAliasTab | null = null;
+
+// The public canonical must remain stable across local previews, alternate
+// hostnames, and future CDN aliases. Share actions use this origin rather than
+// location.origin so a QA session never leaks a localhost/preview URL.
+const PUBLIC_SITE_ORIGIN = 'https://ara.guzus.xyz';
+let pendingRouteState: Record<string, unknown> | null = null;
+
+type RuntimeSeoState = {
+  canonicalPath: string;
+  description: string;
+  documentTitle: string;
+  heading: string;
+  indexable: boolean;
+  type: 'article' | 'website';
+};
+
+const runtimePageHeading = document.createElement('h1');
+runtimePageHeading.className = 'runtime-page-heading';
+
+function latestAliasDate(tab: LatestAliasTab, fallback: string): string {
+  const dates = manifest?.[tab];
+  if (!Array.isArray(dates) || dates.length === 0) return fallback;
+  const sorted = dates.filter(isIsoCalendarDate).slice().sort();
+  return sorted[sorted.length - 1] || fallback;
+}
+
+function runtimeSeoState(target: string): RuntimeSeoState {
+  const fallbackDate = fmtDate(currentDate);
+  const isLatestAlias = latestAliasRequested === activeTab;
+  const date = isLatestAlias
+    ? latestAliasDate(latestAliasRequested as LatestAliasTab, fallbackDate)
+    : fallbackDate;
+  if (target === '/') {
+    return {
+      canonicalPath: '/',
+      description: 'Independent AI intelligence: daily news synthesis, model forecasts, prediction-market context, long-form research, and a maintained LLM wiki.',
+      documentTitle: 'ara -- AI research arm',
+      heading: 'AI news, model forecasts, and research',
+      indexable: true,
+      type: 'website',
+    };
+  }
+  if (activeTab === 'today') {
+    const pageTitle = uiText(activeLanguage, 'page.today', { date });
+    return {
+      canonicalPath: `/today/${date}`,
+      description: `The ara daily AI digest for ${date}, covering model releases, research, funding, policy, and community signal.`,
+      documentTitle: `${pageTitle} -- ara`,
+      heading: pageTitle,
+      indexable: !isLatestAlias,
+      type: 'article',
+    };
+  }
+  if (activeTab === 'twitter') {
+    const pageTitle = uiText(activeLanguage, 'page.twitter', { date });
+    return {
+      canonicalPath: `/twitter/${date}`,
+      description: `Source-attributed AI signals from Twitter/X for ${date}.`,
+      documentTitle: `${pageTitle} -- ara`,
+      heading: pageTitle,
+      indexable: !isLatestAlias,
+      type: 'article',
+    };
+  }
+  if (activeTab === 'frontpage') {
+    return {
+      canonicalPath: `/today/${date}`,
+      description: `The ara daily AI newspaper front page for ${date}, generated from the canonical daily digest.`,
+      documentTitle: `Daily AI newspaper -- ${date} -- ara`,
+      heading: `Daily AI newspaper -- ${date}`,
+      indexable: false,
+      type: 'article',
+    };
+  }
+  if (activeTab === 'models') {
+    const detail = Boolean(selectedSlug);
+    return {
+      canonicalPath: target,
+      description: detail
+        ? 'A verified AI model forecast with committed prediction-market context and supporting evidence.'
+        : 'Verified AI model forecasts, release timelines, and prediction-market context.',
+      documentTitle: `${uiText(activeLanguage, detail ? 'page.model' : 'page.models')} -- ara`,
+      heading: uiText(activeLanguage, detail ? 'page.model' : 'page.models'),
+      indexable: true,
+      type: detail ? 'article' : 'website',
+    };
+  }
+  if (activeTab === 'research') {
+    const detail = Boolean(selectedSlug);
+    return {
+      canonicalPath: target,
+      description: detail
+        ? 'Source-cited, long-form AI research from ara.'
+        : 'Source-cited, long-form research on AI models, companies, infrastructure, policy, and emerging technical claims.',
+      documentTitle: `${uiText(activeLanguage, detail ? 'page.researchArticle' : 'page.research')} -- ara`,
+      heading: uiText(activeLanguage, detail ? 'page.researchArticle' : 'page.research'),
+      indexable: true,
+      type: detail ? 'article' : 'website',
+    };
+  }
+  if (activeTab === 'wiki') {
+    const detail = Boolean(selectedSlug);
+    return {
+      canonicalPath: target,
+      description: detail
+        ? 'A maintained ara knowledge-base entry about AI models, labs, infrastructure, policy, or markets.'
+        : 'A maintained knowledge base of AI labs, models, infrastructure concepts, policy themes, and market participants.',
+      documentTitle: `${uiText(activeLanguage, 'page.wiki')} -- ara`,
+      heading: uiText(activeLanguage, detail ? 'page.wikiEntry' : 'page.wiki'),
+      indexable: true,
+      type: detail ? 'article' : 'website',
+    };
+  }
+  if (activeTab === 'pricing') {
+    return {
+      canonicalPath: '/pricing',
+      description:
+        'Every frontier LLM plotted by output price against benchmark score, with the Pareto frontier — '
+        + 'the models where nothing else is both cheaper and at least as capable.',
+      documentTitle: `${uiText(activeLanguage, 'page.pricing')} -- ara`,
+      heading: uiText(activeLanguage, 'page.pricing'),
+      indexable: true,
+      type: 'website',
+    };
+  }
+  if (activeTab === 'agents') {
+    return {
+      canonicalPath: '/agents',
+      description: 'Live operational timeline for the autonomous agents and scheduled workflows that maintain ara.',
+      documentTitle: `${uiText(activeLanguage, 'page.agents')} -- ara`,
+      heading: uiText(activeLanguage, 'page.agents'),
+      indexable: false,
+      type: 'website',
+    };
+  }
+  return {
+    canonicalPath: '/design/focus-reader',
+    description: 'An internal design preview for ara reading experiences.',
+    documentTitle: 'Focus reader design preview -- ara',
+    heading: 'Focus reader design preview',
+    indexable: false,
+    type: 'website',
+  };
+}
+
+function setMetaContent(selector: string, value: string): void {
+  document.head.querySelector<HTMLMetaElement>(selector)?.setAttribute('content', value);
+}
+
+function setRuntimeIndexable(indexable: boolean): void {
+  setMetaContent(
+    'meta[name="robots"]',
+    indexable ? 'index,follow,max-image-preview:large,max-snippet:-1' : 'noindex,follow',
+  );
+}
+
+function syncRuntimePageHeading(): void {
+  if (content.querySelector('h1')) {
+    runtimePageHeading.remove();
+    return;
+  }
+  if (!runtimePageHeading.isConnected) content.before(runtimePageHeading);
+}
+
+function setRuntimePageHeading(value: string): void {
+  runtimePageHeading.textContent = value;
+  syncRuntimePageHeading();
+}
+
+new MutationObserver(syncRuntimePageHeading).observe(content, { childList: true, subtree: true });
+
+function applyRuntimeSeo(target: string): void {
+  const seo = runtimeSeoState(target);
+  const canonicalUrl = new URL(seo.canonicalPath, PUBLIC_SITE_ORIGIN).href;
+  document.title = seo.documentTitle;
+  document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute('href', canonicalUrl);
+  setMetaContent('meta[name="description"]', seo.description);
+  setRuntimeIndexable(seo.indexable);
+  setMetaContent('meta[property="og:type"]', seo.type);
+  setMetaContent('meta[property="og:title"]', seo.heading);
+  setMetaContent('meta[property="og:description"]', seo.description);
+  setMetaContent('meta[property="og:url"]', canonicalUrl);
+  setMetaContent('meta[name="twitter:title"]', seo.heading);
+  setMetaContent('meta[name="twitter:description"]', seo.description);
+  setRuntimePageHeading(seo.heading);
+}
 
 // Tracks the last pathname we routed to. Lets popstate distinguish a
 // real route change from a hash-only navigation (anchor click between
 // sections in the same article). Maintained from both updateRoute and
 // the popstate handler.
-let lastAppliedPathname = location.pathname;
+let lastAppliedPathname = location.pathname + location.search;
 
 // gtag is loaded by the <script> in index.html. Type as optional so the
 // dashboard still works when GA is blocked (adblockers, privacy modes).
@@ -351,22 +644,45 @@ function trackPageView(): void {
 function updateRoute(): void {
   const target = routeFromState();
   const current = location.pathname + location.search;
+  const shouldSyncSeo = routeInitialized || current !== target;
   if (current !== target) {
     if (routeInitialized) {
-      history.pushState(null, '', target);
+      history.pushState(pendingRouteState, '', target);
       trackPageView();
     } else {
       history.replaceState(null, '', target);
     }
   }
+  pendingRouteState = null;
+  if (shouldSyncSeo) applyRuntimeSeo(target);
   routeInitialized = true;
-  lastAppliedPathname = location.pathname;
+  lastAppliedPathname = location.pathname + location.search;
+  homeRouteRequested = false;
+}
+
+function isIsoCalendarDate(value: string): boolean {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!match) return false;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  return date.getUTCFullYear() === year &&
+    date.getUTCMonth() === month - 1 &&
+    date.getUTCDate() === day;
 }
 
 function parseRoute(path: string): boolean {
   // Strip the trailing slash but keep the leading one
   const clean = path.replace(/\/+$/, '') || '/';
-  if (clean === '/') return false;
+  latestAliasRequested = null;
+  if (clean === '/') {
+    activeTab = 'today';
+    selectedSlug = null;
+    homeRouteRequested = true;
+    syncTabUi();
+    return true;
+  }
   const trimmed = clean.replace(/^\/+/, '');
   if (trimmed === 'design/focus-reader') {
     activeTab = 'focusReader';
@@ -380,10 +696,32 @@ function parseRoute(path: string): boolean {
     syncTabUi();
     return true;
   }
+  if (trimmed === 'pricing') {
+    activeTab = 'pricing';
+    selectedSlug = null;
+    // Reset the benchmark selection on every entry to the route. It is session
+    // state with no URL segment, so leaving it set means navigating away and
+    // back shows an alternate benchmark while routeFromState() and the SEO
+    // description both still describe the primary one.
+    pricingBenchmark = null;
+    syncTabUi();
+    return true;
+  }
+  const forecastMatch = trimmed.match(/^models\/forecast\/([a-z0-9][a-z0-9._-]*[a-z0-9]|[a-z0-9])$/);
+  if (forecastMatch) {
+    activeTab = 'models';
+    selectedSlug = forecastMatch[1];
+    syncTabUi();
+    return true;
+  }
   const dateMatch = trimmed.match(/^(today|twitter|models|frontpage)(?:\/(\d{4}-\d{2}-\d{2}))?$/);
   if (dateMatch) {
+    if (dateMatch[2] && !isIsoCalendarDate(dateMatch[2])) return false;
     activeTab = dateMatch[1] as Tab;
     selectedSlug = null;
+    if (!dateMatch[2] && activeTab !== 'models') {
+      latestAliasRequested = activeTab as LatestAliasTab;
+    }
     if (dateMatch[2]) {
       const parts = dateMatch[2].split('-');
       currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
@@ -396,6 +734,7 @@ function parseRoute(path: string): boolean {
   if (researchMatch) {
     activeTab = 'research';
     selectedSlug = researchMatch[1] || null;
+    researchIndexPage = selectedSlug ? 1 : pageFromSearch();
     syncTabUi();
     return true;
   }
@@ -406,6 +745,7 @@ function parseRoute(path: string): boolean {
   if (wikiMatch) {
     activeTab = 'wiki';
     selectedSlug = wikiMatch[1] || null;
+    wikiIndexPage = selectedSlug ? 1 : pageFromSearch();
     syncTabUi();
     return true;
   }
@@ -426,24 +766,14 @@ function applyRoute(): boolean {
 }
 
 function syncTabUi(): void {
+  // The picker itself belongs to the day view. Other tabs keep the date pill
+  // as a shortcut back to that date, so never leave its popover hanging open.
+  if (activeTab !== 'today') calendarEl.classList.remove('open');
   document.querySelectorAll('.tab').forEach((b) => {
     const tabButton = b as HTMLElement;
     const isActive = tabButton.dataset.tab === activeTab;
     tabButton.classList.toggle('active', isActive);
   });
-  const activeTabButton = document.querySelector<HTMLElement>('.tab.active');
-  if (activeTabButton) {
-    const activeButton = activeTabButton;
-    const revealActiveTab = () => {
-      const tabs = document.getElementById('tabs');
-      if (!tabs) return;
-      const target =
-        activeButton.offsetLeft - (tabs.clientWidth - activeButton.offsetWidth) / 2;
-      tabs.scrollLeft = Math.max(0, target);
-    };
-    requestAnimationFrame(revealActiveTab);
-    window.setTimeout(revealActiveTab, 120);
-  }
   document.body.classList.toggle('tab-today', activeTab === 'today');
   document.body.classList.toggle('tab-research', activeTab === 'research');
   document.body.classList.toggle('tab-frontpage', activeTab === 'frontpage');
@@ -455,15 +785,23 @@ function syncTabUi(): void {
   document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
   document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
   document.body.classList.toggle('tab-agents', activeTab === 'agents');
+  document.body.classList.toggle('tab-pricing', activeTab === 'pricing');
 }
 
 // ── Helpers ───────────────────────────────────────────
 function loadStoredLanguage(): ResearchLanguage {
+  let storedLanguage: string | null = null;
   try {
-    return localStorage.getItem('ara-language') === 'ko' ? 'ko' : 'en';
+    storedLanguage = localStorage.getItem('ara-language');
   } catch {
-    return 'en';
+    // Browser preference still works when storage is unavailable.
   }
+  const browserLanguages = navigator.languages.length
+    ? navigator.languages
+    : navigator.language
+      ? [navigator.language]
+      : [];
+  return resolveUiLanguage(storedLanguage, browserLanguages);
 }
 
 function storeLanguage(language: ResearchLanguage): void {
@@ -500,23 +838,38 @@ function hasResearchLanguage(row: GenResearchRow | null, language: ResearchLangu
   return Boolean(row?.translations?.[language]?.file);
 }
 
-function syncLanguageUi(row: GenResearchRow | null = null): void {
-  if (!languageSwitch) return;  // language toggle removed (English-only for now)
+function syncLanguageUi(_row: GenResearchRow | null = null): void {
+  if (!languageSwitch) return;
+  document.documentElement.lang = activeLanguage;
+  localizeStaticUi(activeLanguage);
   languageSwitch.querySelectorAll<HTMLButtonElement>('[data-language]').forEach((btn) => {
     const language = btn.dataset.language as ResearchLanguage;
-    const available = !row || hasResearchLanguage(row, language);
-    btn.classList.toggle('active', language === activeLanguage);
-    btn.classList.toggle('unavailable', !available);
-    btn.setAttribute('aria-pressed', String(language === activeLanguage));
-    btn.title = available
-      ? (language === 'ko' ? 'Show Korean' : 'Show English')
-      : 'Korean version has not been published for this article';
+    btn.setAttribute('aria-checked', String(language === activeLanguage));
   });
+  if (languageToggle) {
+    const label = activeLanguage === 'ko' ? '한국어' : 'English';
+    languageToggle.setAttribute('aria-label', uiText(activeLanguage, 'language.current', { language: label }));
+  }
+}
+
+function setLanguageMenuOpen(open: boolean, focusSelected = false): void {
+  if (!languageMenu || !languageToggle) return;
+  languageMenu.hidden = !open;
+  languageToggle.setAttribute('aria-expanded', String(open));
+  if (open && focusSelected) {
+    languageMenu.querySelector<HTMLButtonElement>('[aria-checked="true"]')?.focus();
+  }
+}
+
+function languageMenuOptions(): HTMLButtonElement[] {
+  return languageMenu
+    ? Array.from(languageMenu.querySelectorAll<HTMLButtonElement>('[data-language]'))
+    : [];
 }
 
 function languageFallbackNote(row: GenResearchRow): string {
   if (activeLanguage !== 'ko' || hasResearchLanguage(row, 'ko')) return '';
-  return '<div class="gen-research-language-note">Korean version has not been published for this article yet.</div>';
+  return '<div class="gen-research-language-note">' + escapeHtml(uiText(activeLanguage, 'research.unavailableKo')) + '</div>';
 }
 
 function fmtDate(d: Date): string {
@@ -541,7 +894,7 @@ function isImmutableDate(dateStr: string): boolean {
 }
 
 function displayDate(d: Date): string {
-  return d.toLocaleDateString('en-US', {
+  return d.toLocaleDateString(activeLanguage === 'ko' ? 'ko-KR' : 'en-US', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -550,6 +903,7 @@ function displayDate(d: Date): string {
 }
 
 function shiftDate(days: number): void {
+  latestAliasRequested = null;
   currentDate.setDate(currentDate.getDate() + days);
   const newMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
   if (newMonth.getTime() !== calendarMonth.getTime()) {
@@ -609,6 +963,103 @@ async function loadArmTimeline(signal?: AbortSignal): Promise<ArmTimeline | null
   return armTimelinePromise;
 }
 
+// research/market/model-pricing.json — refreshed by model-pricing.yml. Cached
+// for the session like the Arm timeline; the artifact only moves every 6h.
+let modelPricingPromise: Promise<ModelPricing | null> | null = null;
+type GpuSpotData = {
+  generated_at?: string;
+  stale?: boolean;
+  method_version?: number;
+  snapshot?: { models?: Record<string, { median?: number; min?: number; samples?: number; stale?: boolean; truncated?: boolean }> };
+  history?: Array<Record<string, unknown>>;
+};
+let gpuSpotPromise: Promise<GpuSpotData | null> | null = null;
+let publicClaimsPromise: Promise<PublicClaim[]> | null = null;
+let evidenceSearchPromise: Promise<EvidenceSearchEntry[]> | null = null;
+// Which benchmark the chart is currently plotting. Session state only: the
+// price axis is identical across benchmarks, so a reload landing on the
+// primary is not a loss of context worth a URL segment.
+let pricingBenchmark: string | null = null;
+
+async function loadModelPricing(signal?: AbortSignal): Promise<ModelPricing | null> {
+  if (modelPricingPromise) return modelPricingPromise;
+  modelPricingPromise = (async () => {
+    try {
+      const resp = await fetch(`${DATA_BASE}/market/model-pricing.json`, { cache: 'no-cache', signal });
+      if (!resp.ok) return null;
+      const data = await resp.json();
+      if (!data?.snapshot || !Array.isArray(data.snapshot.models)) return null;
+      return data as ModelPricing;
+    } catch {
+      if (signal?.aborted) modelPricingPromise = null;
+      return null;
+    }
+  })();
+  return modelPricingPromise;
+}
+
+async function loadGpuSpot(signal?: AbortSignal): Promise<GpuSpotData | null> {
+  if (gpuSpotPromise) return gpuSpotPromise;
+  gpuSpotPromise = (async () => {
+    try {
+      const response = await fetch(`${DATA_BASE}/market/gpu-spot.json`, { cache: 'no-cache', signal });
+      if (!response.ok) return null;
+      const data = await response.json() as GpuSpotData;
+      return data?.snapshot?.models ? data : null;
+    } catch {
+      if (signal?.aborted) gpuSpotPromise = null;
+      return null;
+    }
+  })();
+  return gpuSpotPromise;
+}
+
+async function loadPublicClaims(signal?: AbortSignal): Promise<PublicClaim[]> {
+  if (publicClaimsPromise) return publicClaimsPromise;
+  publicClaimsPromise = (async () => {
+    try {
+      const response = await fetch(`${DATA_BASE}/claims/public.json`, { cache: 'no-cache', signal });
+      if (!response.ok) return [];
+      const data = await response.json() as { claims?: PublicClaim[] };
+      return Array.isArray(data.claims) ? data.claims : [];
+    } catch {
+      if (signal?.aborted) publicClaimsPromise = null;
+      return [];
+    }
+  })();
+  return publicClaimsPromise;
+}
+
+async function loadEvidenceSearch(signal?: AbortSignal): Promise<EvidenceSearchEntry[]> {
+  if (evidenceSearchPromise) return evidenceSearchPromise;
+  evidenceSearchPromise = (async () => {
+    try {
+      // Revalidate across deployments so a browser cannot keep the older
+      // schema that omitted claim reuse warnings. The in-session promise
+      // still prevents duplicate downloads of this large artifact.
+      const response = await fetch(`${DATA_BASE}/evidence-search.json`, { cache: 'no-cache', signal });
+      if (!response.ok) return [];
+      const data = await response.json() as { entries?: EvidenceSearchEntry[] };
+      return Array.isArray(data.entries) ? data.entries : [];
+    } catch {
+      if (signal?.aborted) evidenceSearchPromise = null;
+      return [];
+    }
+  })();
+  return evidenceSearchPromise;
+}
+
+function paintPricing(data: ModelPricing, gpu: GpuSpotData | null = null): void {
+  // The SAME benchmark value drives both calls. Letting hydrate re-derive it
+  // from the DOM is what produced tooltips keyed to the wrong model array.
+  const benchmark = pricingBenchmark ?? undefined;
+  setSafeContent(content, renderPricing(data, benchmark, activeLanguage) + renderMarketTrends(data.history || [], gpu, activeLanguage));
+  hydratePricing(content, data, (next) => {
+    pricingBenchmark = next;
+    paintPricing(data, gpu);
+  }, benchmark, activeLanguage);
+}
+
 function hydrateAvailabilityFromManifest(m: Manifest): void {
   // Calendar/availability is date-keyed; the research tab is slug-keyed and
   // skipped on purpose.
@@ -643,26 +1094,20 @@ function findResearchRow(slug: string): GenResearchRow | null {
 
 // ── Calendar ──────────────────────────────────────────
 function dataUrlForDate(dateStr: string): string {
-  if (activeTab === 'today') {
-    return `${DATA_BASE}/digest/${dateStr}-digest.md`;
-  }
-  if (activeTab === 'models') {
-    return `${DATA_BASE}/models/${dateStr}-timeline.md`;
-  }
-  if (activeTab === 'frontpage') {
-    return `${DATA_BASE}/front-page/${dateStr}-front-page.png`;
-  }
-  return `${DATA_BASE}/twitter/${dateStr}.md`;
+  // Picking a date always opens the day view, regardless of the current tab.
+  // Availability therefore describes the destination (digest), not whichever
+  // route happened to be active when the calendar opened.
+  return `${DATA_BASE}/digest/${dateStr}-digest.md`;
 }
 
 function cacheKey(year: number, month: number): string {
-  return `${activeTab}-${year}-${String(month + 1).padStart(2, '0')}`;
+  return `today-${year}-${String(month + 1).padStart(2, '0')}`;
 }
 
-function probeAvailability(year: number, month: number): void {
+function probeAvailability(year: number, month: number, focusSelector?: string): void {
   const key = cacheKey(year, month);
   if (availabilityCache.has(key)) {
-    renderCalendar();
+    renderCalendar(focusSelector);
     return;
   }
 
@@ -671,20 +1116,20 @@ function probeAvailability(year: number, month: number): void {
     if (!availabilityCache.has(key)) {
       availabilityCache.set(key, new Set<string>());
     }
-    renderCalendar();
+    renderCalendar(focusSelector);
     return;
   }
 
   // No manifest yet — wait for it, then render. Avoids the 404 storm entirely.
   const available = new Set<string>();
   availabilityCache.set(key, available);
-  renderCalendar();
+  renderCalendar(focusSelector);
 
   loadManifest().then((m) => {
     if (m) {
       // Hydrate already filled the cache; just re-render if still relevant.
       if (calendarMonth.getFullYear() === year && calendarMonth.getMonth() === month) {
-        renderCalendar();
+        renderCalendar(focusSelector);
       }
       return;
     }
@@ -702,7 +1147,7 @@ function probeAvailability(year: number, month: number): void {
     }
     Promise.all(promises).then(() => {
       if (calendarMonth.getFullYear() === year && calendarMonth.getMonth() === month) {
-        renderCalendar();
+        renderCalendar(focusSelector);
       }
     });
   });
@@ -717,24 +1162,37 @@ function buildCalendarHtml(): string {
   const todayStr = fmtDate(today);
   const selectedStr = fmtDate(currentDate);
 
-  const monthLabel = calendarMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  const locale = activeLanguage === 'ko' ? 'ko-KR' : 'en-US';
+  const monthLabel = calendarMonth.toLocaleDateString(locale, { month: 'long', year: 'numeric' });
+  const selectedLabel = currentDate.toLocaleDateString(locale, {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
 
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const prevMonthDays = new Date(year, month, 0).getDate();
 
-  const dows = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+  const dows = activeLanguage === 'ko'
+    ? ['일', '월', '화', '수', '목', '금', '토']
+    : ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   const open = calendarEl.classList.contains('open');
-  let html = '<div class="cal-header" data-cal-toggle>';
-  html += '<span class="cal-header-label">' + monthLabel + '<span class="cal-chevron">' + (open ? '&#9650;' : '&#9660;') + '</span></span>';
-  html += '</div>';
+  const isDayView = activeTab === 'today';
+  const headerAttrs = isDayView
+    ? ' aria-expanded="' + open + '" aria-controls="calendar-popover" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.choose')) + '"'
+    : ' aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.openDay', { date: selectedLabel })) + '"';
+  const headerIndicator = isDayView ? (open ? '&#9650;' : '&#9660;') : '&rsaquo;';
+  let html = '<button class="cal-header" type="button" data-cal-toggle' + headerAttrs + '>';
+  html += '<span class="cal-header-label"><span class="cal-selected-date">' + selectedLabel + '</span><span class="cal-chevron">' + headerIndicator + '</span></span>';
+  html += '</button>';
 
   // Month nav + day grid live in a popover so the pill keeps a fixed size.
-  html += '<div class="cal-pop">';
+  html += '<div class="cal-pop" id="calendar-popover" role="group" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.group', { month: monthLabel })) + '">';
   html += '<div class="cal-header-nav">';
-  html += '<button class="cal-nav-btn" data-cal-nav="-1">&lsaquo;</button>';
-  html += '<button class="cal-today-btn" data-cal-today>Today</button>';
-  html += '<button class="cal-nav-btn" data-cal-nav="1">&rsaquo;</button>';
+  html += '<button class="cal-nav-btn" type="button" data-cal-nav="-1" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.previousMonth')) + '">&lsaquo;</button>';
+  html += '<span class="cal-pop-title" aria-live="polite">' + monthLabel + '</span>';
+  html += '<button class="cal-nav-btn" type="button" data-cal-nav="1" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.nextMonth')) + '">&rsaquo;</button>';
   html += '</div>';
 
   html += '<div class="cal-grid">';
@@ -747,7 +1205,8 @@ function buildCalendarHtml(): string {
     const pm = month === 0 ? 11 : month - 1;
     const py = month === 0 ? year - 1 : year;
     const dateStr = `${py}-${String(pm + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    html += '<div class="cal-day other-month" data-date="' + dateStr + '">' + d + '</div>';
+    const dateLabel = new Date(py, pm, d).toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    html += '<button class="cal-day other-month" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '">' + d + '</button>';
   }
 
   for (let d = 1; d <= daysInMonth; d++) {
@@ -756,7 +1215,10 @@ function buildCalendarHtml(): string {
     if (dateStr === todayStr) cls += ' today';
     if (dateStr === selectedStr) cls += ' selected';
     if (available.has(dateStr)) cls += ' has-data';
-    html += '<div class="' + cls + '" data-date="' + dateStr + '">' + d + '</div>';
+    const dateLabel = new Date(year, month, d).toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const ariaCurrent = dateStr === todayStr ? ' aria-current="date"' : '';
+    const ariaSelected = dateStr === selectedStr ? ' aria-pressed="true"' : '';
+    html += '<button class="' + cls + '" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '"' + ariaCurrent + ariaSelected + '>' + d + '</button>';
   }
 
   const totalCells = firstDay + daysInMonth;
@@ -765,10 +1227,12 @@ function buildCalendarHtml(): string {
     const nm = month === 11 ? 0 : month + 1;
     const ny = month === 11 ? year + 1 : year;
     const dateStr = `${ny}-${String(nm + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    html += '<div class="cal-day other-month" data-date="' + dateStr + '">' + d + '</div>';
+    const dateLabel = new Date(ny, nm, d).toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    html += '<button class="cal-day other-month" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '">' + d + '</button>';
   }
 
   html += '</div>';
+  html += '<button class="cal-today-btn" type="button" data-cal-today>' + escapeHtml(uiText(activeLanguage, 'calendar.today')) + '</button>';
   html += '</div>';
   return html;
 }
@@ -781,16 +1245,19 @@ function positionCalPop(): void {
   if (!pop || !header) return;
   const r = header.getBoundingClientRect();
   pop.style.top = (r.bottom + 8) + 'px';
-  pop.style.left = Math.max(8, Math.min(r.left, window.innerWidth - 296)) + 'px';
+  pop.style.left = Math.max(8, Math.min(r.left, window.innerWidth - pop.offsetWidth - 8)) + 'px';
 }
 
-function renderCalendar(): void {
+function renderCalendar(focusSelector?: string): void {
   setSafeCalendar(calendarEl, buildCalendarHtml());
   if (calendarEl.classList.contains('open')) positionCalPop();
+  if (focusSelector) {
+    calendarEl.querySelector<HTMLElement>(focusSelector)?.focus();
+  }
 }
 
-// Close the picker on scroll — the pill isn't sticky, so a fixed popover would
-// otherwise detach from it.
+// Close the picker on scroll so a fixed popover never lags behind its anchor
+// while the sticky navigation changes position.
 window.addEventListener('scroll', () => {
   if (calendarEl.classList.contains('open')) {
     calendarEl.classList.remove('open');
@@ -803,7 +1270,11 @@ function setSafeCalendar(el: HTMLElement, rawHtml: string): void {
   while (el.firstChild) el.removeChild(el.firstChild);
   const clean = DOMPurify.sanitize(rawHtml, {
     USE_PROFILES: { html: true },
-    ADD_ATTR: ['data-date', 'data-cal-nav', 'data-cal-today', 'data-cal-toggle'],
+    ADD_ATTR: [
+      'data-date', 'data-cal-nav', 'data-cal-today', 'data-cal-toggle',
+      'aria-controls', 'aria-current', 'aria-expanded', 'aria-label',
+      'aria-live', 'aria-pressed',
+    ],
   });
   el.insertAdjacentHTML('beforeend', clean);
 }
@@ -814,10 +1285,22 @@ function handleCalendarClick(e: Event): void {
   // Toggle fold/unfold when clicking the header (but not nav buttons)
   const toggleEl = target.closest('[data-cal-toggle]') as HTMLElement | null;
   if (toggleEl && !target.closest('[data-cal-nav]') && !target.closest('[data-cal-today]')) {
-    // The pill is a date picker: clicking it opens the calendar from any tab;
-    // picking a day (cal-day handler) then opens that day's digest/newspaper.
-    calendarEl.classList.toggle('open');
-    renderCalendar();
+    // Outside the day view, the date pill is a shortcut back to the same date.
+    // Once there, clicking it opens the picker for choosing another day.
+    if (activeTab !== 'today') {
+      latestAliasRequested = null;
+      activeTab = 'today';
+      selectedSlug = null;
+      calendarEl.classList.remove('open');
+      syncTabUi();
+      calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+      probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+      load();
+      return;
+    }
+
+    const opened = calendarEl.classList.toggle('open');
+    renderCalendar(opened ? '.cal-day.selected, [data-cal-today]' : undefined);
     return;
   }
 
@@ -825,14 +1308,20 @@ function handleCalendarClick(e: Event): void {
   if (navBtn) {
     const dir = parseInt(navBtn.dataset.calNav!, 10);
     calendarMonth.setMonth(calendarMonth.getMonth() + dir);
-    probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
+    probeAvailability(
+      calendarMonth.getFullYear(),
+      calendarMonth.getMonth(),
+      `[data-cal-nav="${dir}"]`,
+    );
     return;
   }
 
   if (target.closest('[data-cal-today]')) {
+    latestAliasRequested = null;
     const now = new Date();
     currentDate = now;
     activeTab = 'today';
+    calendarEl.classList.remove('open');
     syncTabUi();
     calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
@@ -842,6 +1331,7 @@ function handleCalendarClick(e: Event): void {
 
   const dayEl = target.closest('.cal-day') as HTMLElement | null;
   if (dayEl && dayEl.dataset.date) {
+    latestAliasRequested = null;
     const parts = dayEl.dataset.date.split('-');
     currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
     activeTab = 'today';                 // picking a date opens that day's view
@@ -883,7 +1373,15 @@ function setSafeContent(
   // audio players), so they stay in the default allowlist; they are NOT
   // iframe-only.
   const addTags = ['mark', 'article', 'figure', 'figcaption', 'audio', 'nav', 'section', 'details', 'summary'];
-  const addAttr = ['id', 'href', 'type', 'data-slug', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'aria-label', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
+  // `target` is NOT in DOMPurify's default allowlist; every external link
+  // this app emits pairs target="_blank" with rel="noopener", so allowing
+  // it restores the intended new-tab behavior (ticket sources, tweet links).
+  // `data-imprint` sits beside `data-jacket` on every shelf book and picks its
+  // typeface. Both survive today only because DOMPurify's ALLOW_DATA_ATTR
+  // defaults to true — but jacket is listed here and imprint was not, so
+  // tightening that default would silently drop every book's imprint face with
+  // nothing failing. Listed explicitly for the same reason jacket is.
+  const addAttr = ['id', 'href', 'type', 'target', 'data-slug', 'data-jacket', 'data-imprint', 'data-ticket-share', 'data-focus-index', 'data-pct', 'data-paper-date', 'data-columns', 'data-filter-status', 'data-filter-company', 'data-has-audio-file', 'data-digest-audio-play', 'data-digest-audio-label', 'data-audio-date', 'data-odds-event', 'data-odds-market', 'data-odds-token', 'data-odds-question', 'data-odds-outcome', 'aria-label', 'aria-describedby', 'aria-current', 'aria-expanded', 'aria-controls', 'aria-pressed', 'aria-haspopup', 'aria-live', 'loading', 'decoding', 'controls', 'preload', 'src', 'max', 'value'];
   if (opts.allowIframe) {
     // iframe + its iframe-only attributes are re-enabled exclusively for the
     // trusted, self-constructed sandboxed standalone-doc iframe.
@@ -917,11 +1415,11 @@ function researchAudioControlsHtml(row: GenResearchRow): string {
   const fileUrl = researchAudioUrl(row);
   if (fileUrl) {
     return [
-      '<span class="gen-research-audio-controls has-file" aria-label="Article audio controls">',
-      '  <audio class="gen-research-audio-file" preload="metadata" src="' + escapeHtml(fileUrl) + '">Your browser does not support the audio element.</audio>',
-      '  <button class="gen-research-file-audio" data-research-file-audio-toggle aria-pressed="false" title="Play article audio">',
+      '<span class="gen-research-audio-controls has-file" aria-label="' + escapeHtml(uiText(activeLanguage, 'audio.articleControls')) + '">',
+      '  <audio class="gen-research-audio-file" preload="metadata" src="' + escapeHtml(fileUrl) + '">' + escapeHtml(uiText(activeLanguage, 'audio.unsupportedElement')) + '</audio>',
+      '  <button class="gen-research-file-audio" data-research-file-audio-toggle aria-pressed="false" title="' + escapeHtml(uiText(activeLanguage, 'audio.playArticle')) + '">',
       '    <span class="gen-research-file-audio-icon" aria-hidden="true"></span>',
-      '    <span class="gen-research-file-audio-label" data-research-file-audio-label>Listen</span>',
+      '    <span class="gen-research-file-audio-label" data-research-file-audio-label>' + escapeHtml(uiText(activeLanguage, 'audio.listen')) + '</span>',
       '    <span class="gen-research-file-audio-progress" data-research-file-audio-progress aria-hidden="true"></span>',
       '    <span class="gen-research-file-audio-time" data-research-file-audio-time>--:--</span>',
       '  </button>',
@@ -929,14 +1427,14 @@ function researchAudioControlsHtml(row: GenResearchRow): string {
     ].join('\n');
   }
   return [
-    '<span class="gen-research-audio-controls" aria-label="Article read-aloud controls">',
+    '<span class="gen-research-audio-controls" aria-label="' + escapeHtml(uiText(activeLanguage, 'audio.readAloudControls')) + '">',
     '  <button class="gen-research-audio" data-research-audio-toggle data-has-audio-file="' + (fileUrl ? 'true' : 'false') + '" aria-pressed="false"' +
-      (unsupported ? ' disabled title="Read-aloud is not supported in this browser"' : ' title="Play this article with browser read-aloud"') +
+      (unsupported ? ' disabled title="' + escapeHtml(uiText(activeLanguage, 'audio.unsupported')) + '"' : ' title="' + escapeHtml(uiText(activeLanguage, 'audio.playReadAloud')) + '"') +
       '>',
     '    <span class="gen-research-audio-icon" aria-hidden="true"></span>',
-    '    <span data-research-audio-label>' + (unsupported ? 'Audio unavailable' : 'Listen') + '</span>',
+    '    <span data-research-audio-label>' + escapeHtml(uiText(activeLanguage, unsupported ? 'audio.unavailable' : 'audio.listen')) + '</span>',
     '  </button>',
-    '  <button class="gen-research-audio-stop" data-research-audio-stop hidden title="Stop article audio">Stop</button>',
+    '  <button class="gen-research-audio-stop" data-research-audio-stop hidden title="' + escapeHtml(uiText(activeLanguage, 'audio.stopTitle')) + '">' + escapeHtml(uiText(activeLanguage, 'audio.stop')) + '</button>',
     '</span>',
   ].join('\n');
 }
@@ -962,7 +1460,7 @@ function digestAudioUrl(dateStr: string): string {
 
 function digestAudioTitle(dateStr: string): string {
   const date = dateFromString(dateStr);
-  return `Daily Digest · ${date ? displayDate(date) : dateStr}`;
+  return `${uiText(activeLanguage, 'today.audioTitle')} · ${date ? displayDate(date) : dateStr}`;
 }
 
 function ensureDigestAudioPlayer(): HTMLAudioElement {
@@ -972,17 +1470,17 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
   bar.id = 'digestAudioBar';
   bar.className = 'digest-audio-bar';
   bar.hidden = true;
-  bar.setAttribute('aria-label', 'Daily digest audio player');
+  bar.setAttribute('aria-label', uiText(activeLanguage, 'today.audioPlayer'));
   bar.innerHTML = [
     '<audio preload="metadata"></audio>',
     '<div class="digest-audio-shell">',
-    '  <button class="digest-audio-toggle" type="button" data-digest-audio-toggle aria-label="Play digest audio" aria-pressed="false">',
+    '  <button class="digest-audio-toggle" type="button" data-digest-audio-toggle aria-label="' + escapeHtml(uiText(activeLanguage, 'today.playAudio')) + '" aria-pressed="false">',
     '    <span class="digest-audio-toggle-icon" aria-hidden="true"></span>',
     '  </button>',
-    '  <button class="digest-audio-title" type="button" data-digest-audio-title>Daily Digest</button>',
+    '  <button class="digest-audio-title" type="button" data-digest-audio-title>' + escapeHtml(uiText(activeLanguage, 'today.audioTitle')) + '</button>',
     '  <span class="digest-audio-time" data-digest-audio-time aria-live="off">0:00 / --:--</span>',
-    '  <input class="digest-audio-progress" data-digest-audio-progress type="range" min="0" max="1000" value="0" step="1" aria-label="Seek digest audio">',
-    '  <button class="digest-audio-close" type="button" data-digest-audio-close aria-label="Close audio player">&times;</button>',
+    '  <input class="digest-audio-progress" data-digest-audio-progress type="range" min="0" max="1000" value="0" step="1" aria-label="' + escapeHtml(uiText(activeLanguage, 'today.seekAudio')) + '">',
+    '  <button class="digest-audio-close" type="button" data-digest-audio-close aria-label="' + escapeHtml(uiText(activeLanguage, 'today.closeAudio')) + '">&times;</button>',
     '</div>',
   ].join('\n');
   document.body.appendChild(bar);
@@ -1137,6 +1635,7 @@ function navigateToDigestAudioDate(): void {
   if (!digestAudioState.date) return;
   const date = dateFromString(digestAudioState.date);
   if (!date) return;
+  latestAliasRequested = null;
   currentDate = date;
   activeTab = 'today';
   selectedSlug = null;
@@ -1153,7 +1652,7 @@ function updateDigestAudioUi(): void {
   const duration = audio && Number.isFinite(audio.duration) ? audio.duration : 0;
   const current = audio ? audio.currentTime : 0;
   const pct = duration > 0 ? Math.round((current / duration) * 1000) : 0;
-  const label = isPlaying ? 'Pause digest audio' : 'Play digest audio';
+  const label = isPlaying ? uiText(activeLanguage, 'today.pauseAudio') : uiText(activeLanguage, 'today.playAudio');
 
   if (digestAudioPlayEl) {
     digestAudioPlayEl.setAttribute('aria-label', label);
@@ -1195,7 +1694,11 @@ function updateDigestAudioUi(): void {
     button.setAttribute('aria-pressed', String(buttonPlaying));
     const buttonLabel = button.querySelector<HTMLElement>('[data-digest-audio-label]');
     if (buttonLabel) {
-      buttonLabel.textContent = buttonPlaying ? 'Pause digest audio' : isCurrent && audio && audio.currentTime > 0 && !audio.ended ? 'Resume digest audio' : 'Play digest audio';
+      buttonLabel.textContent = buttonPlaying
+        ? uiText(activeLanguage, 'today.pauseAudio')
+        : isCurrent && audio && audio.currentTime > 0 && !audio.ended
+          ? uiText(activeLanguage, 'today.resumeAudio')
+          : uiText(activeLanguage, 'today.playAudio');
     }
   });
 }
@@ -1211,7 +1714,7 @@ function updateResearchFileAudioUi(): void {
   const pct = duration > 0 ? Math.min(100, Math.max(0, (audio.currentTime / duration) * 100)) : 0;
   toggle.classList.toggle('is-playing', !audio.paused && !audio.ended);
   toggle.setAttribute('aria-pressed', String(!audio.paused && !audio.ended));
-  if (label) label.textContent = audio.paused || audio.ended ? 'Listen' : 'Pause';
+  if (label) label.textContent = uiText(activeLanguage, audio.paused || audio.ended ? 'audio.listen' : 'audio.pause');
   if (time) time.textContent = duration > 0 ? `${formatAudioTime(audio.currentTime)} / ${formatAudioTime(duration)}` : '--:--';
   if (progress) progress.style.setProperty('--audio-progress', `${pct}%`);
 }
@@ -1227,7 +1730,7 @@ function bindResearchFileAudioUi(): void {
   audio.addEventListener('ended', updateResearchFileAudioUi);
   audio.addEventListener('error', () => {
     const label = content.querySelector<HTMLElement>('[data-research-file-audio-label]');
-    if (label) label.textContent = 'Unavailable';
+    if (label) label.textContent = uiText(activeLanguage, 'audio.unavailableShort');
   });
   updateResearchFileAudioUi();
 }
@@ -1244,7 +1747,7 @@ function updateResearchAudioUi(): void {
     toggle.disabled = true;
     toggle.classList.remove('is-playing', 'is-paused', 'is-loading');
     toggle.setAttribute('aria-pressed', 'false');
-    label.textContent = 'Audio unavailable';
+    label.textContent = uiText(activeLanguage, 'audio.unavailable');
     if (stop) stop.hidden = true;
     return;
   }
@@ -1257,10 +1760,10 @@ function updateResearchAudioUi(): void {
   toggle.classList.toggle('is-paused', status === 'paused');
   toggle.setAttribute('aria-pressed', String(status === 'playing'));
   label.textContent =
-    status === 'loading' ? 'Preparing' :
-    status === 'playing' ? 'Pause' :
-    status === 'paused' ? 'Resume' :
-    'Listen';
+    status === 'loading' ? uiText(activeLanguage, 'audio.preparing') :
+    status === 'playing' ? uiText(activeLanguage, 'audio.pause') :
+    status === 'paused' ? uiText(activeLanguage, 'audio.resume') :
+    uiText(activeLanguage, 'audio.listen');
   if (stop) stop.hidden = !(status === 'playing' || status === 'paused' || status === 'loading');
 }
 
@@ -1273,7 +1776,7 @@ async function toggleResearchFileAudio(): Promise<void> {
       await audio.play();
     } catch {
       const label = content.querySelector<HTMLElement>('[data-research-file-audio-label]');
-      if (label) label.textContent = 'Unavailable';
+      if (label) label.textContent = uiText(activeLanguage, 'audio.unavailableShort');
     }
   } else {
     audio.pause();
@@ -1621,19 +2124,22 @@ function withTimeout<T>(p: Promise<T>, ms: number, controller: AbortController):
 
 // ── Rendering ─────────────────────────────────────────
 function showLoading(): void {
-  const label = activeTab === 'frontpage'
-    ? 'Loading front page\u2026'
+  const key: UiCopyKey = activeTab === 'frontpage'
+    ? 'loading.frontpage'
     : activeTab === 'models'
-    ? 'Loading model timeline\u2026'
+    ? 'loading.models'
     : activeTab === 'focusReader'
-    ? 'Loading focus reader\u2026'
+    ? 'loading.focus'
     : activeTab === 'agents'
-    ? 'Loading Arm\u2026'
+    ? 'loading.arm'
+    : activeTab === 'pricing'
+    ? 'loading.pricing'
     : activeTab === 'research'
-    ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
+    ? (selectedSlug ? 'loading.article' : 'loading.research')
     : activeTab === 'wiki'
-    ? (selectedSlug ? 'Loading wiki page\u2026' : 'Loading wiki\u2026')
-    : 'Loading Twitter report\u2026';
+    ? (selectedSlug ? 'loading.wikiPage' : 'loading.wiki')
+    : 'loading.twitter';
+  const label = uiText(activeLanguage, key);
   setSafeContent(
     content,
     [
@@ -1645,22 +2151,25 @@ function showLoading(): void {
       '</div>',
     ].join('\n'),
   );
+  setRuntimePageHeading(runtimeSeoState(routeFromState()).heading);
 }
 
 function showEmpty(dateStr: string): void {
   const label = activeTab === 'today'
-    ? 'No digest yet for ' + escapeHtml(dateStr)
+    ? uiText(activeLanguage, 'empty.digest', { date: dateStr })
     : activeTab === 'frontpage'
-    ? 'No front page for ' + escapeHtml(dateStr)
+    ? uiText(activeLanguage, 'empty.frontpage', { date: dateStr })
     : activeTab === 'models'
-    ? 'No Jira for ' + escapeHtml(dateStr)
+    ? uiText(activeLanguage, 'empty.models', { date: dateStr })
     : activeTab === 'focusReader'
-    ? 'No focus reader data available'
+    ? uiText(activeLanguage, 'empty.focus')
     : activeTab === 'agents'
-    ? 'Arm view unavailable'
+    ? uiText(activeLanguage, 'empty.arm')
+    : activeTab === 'pricing'
+    ? uiText(activeLanguage, 'empty.pricing')
     : activeTab === 'research'
-    ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
-    : 'No Twitter report for ' + escapeHtml(dateStr);
+    ? (selectedSlug ? uiText(activeLanguage, 'empty.article', { slug: selectedSlug }) : uiText(activeLanguage, 'empty.research'))
+    : uiText(activeLanguage, 'empty.twitter', { date: dateStr });
   setSafeContent(
     content,
     [
@@ -1675,14 +2184,22 @@ function showEmpty(dateStr: string): void {
 }
 
 function showError(message: string, hint?: string): void {
+  const knownCopy: Partial<Record<string, UiCopyKey>> = {
+    'Loading timed out': 'error.timeout',
+    'Network may be slow. Click to retry.': 'error.networkHint',
+    'Wiki unavailable': 'error.wikiUnavailable',
+    'Could not load the wiki index. Click to retry.': 'error.wikiHint',
+  };
+  const localizedMessage = knownCopy[message] ? uiText(activeLanguage, knownCopy[message]) : message;
+  const localizedHint = hint && knownCopy[hint] ? uiText(activeLanguage, knownCopy[hint]) : hint;
   setSafeContent(
     content,
     [
       '<div class="content-card">',
       '  <div class="error-state">',
-      '    <div class="error-state-text">' + escapeHtml(message) + '</div>',
-      hint ? '    <div class="error-state-hint">' + escapeHtml(hint) + '</div>' : '',
-      '    <button class="retry-btn" data-retry>Retry</button>',
+      '    <div class="error-state-text">' + escapeHtml(localizedMessage) + '</div>',
+      localizedHint ? '    <div class="error-state-hint">' + escapeHtml(localizedHint) + '</div>' : '',
+      '    <button class="retry-btn" data-retry>' + escapeHtml(uiText(activeLanguage, 'action.retry')) + '</button>',
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -1983,6 +2500,100 @@ function ensureWikiHover(): void {
   });
   window.addEventListener('scroll', hideWikiHover, true);
 }
+// ── Market quotes for the wiki hover ──────────────────
+//
+// research/market/quotes.json is refreshed by market-quotes.yml and keyed by
+// the wiki's `market.symbol`. Loaded LAZILY: the first hover over a page that
+// actually carries `market` triggers it, so a reader who never hovers a listed
+// company never pays for the request. One load per session, and a failure
+// resolves to an empty map so the hover silently falls back to type/title/
+// summary rather than throwing.
+let marketQuotes: Map<string, MarketQuote> | null = null;
+let marketQuotesPromise: Promise<Map<string, MarketQuote>> | null = null;
+
+function loadMarketQuotes(): Promise<Map<string, MarketQuote>> {
+  if (marketQuotes) return Promise.resolve(marketQuotes);
+  if (!marketQuotesPromise) {
+    marketQuotesPromise = fetch(`${DATA_BASE}/market/quotes.json`, { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        const map = new Map<string, MarketQuote>();
+        const quotes = data && typeof data === 'object' ? (data as any).quotes : null;
+        if (quotes && typeof quotes === 'object') {
+          for (const [symbol, q] of Object.entries(quotes as Record<string, any>)) {
+            if (q && typeof q.price === 'number') map.set(symbol, q as MarketQuote);
+          }
+        }
+        marketQuotes = map;
+        return map;
+      })
+      .catch(() => {
+        marketQuotes = new Map();
+        return marketQuotes;
+      });
+  }
+  return marketQuotesPromise;
+}
+
+function formatQuoteAsOf(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  // The pipeline writes UTC; readers think in their own timezone.
+  return d.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+
+function marketRowHtml(market: WikiMarket, quote: MarketQuote | undefined): string {
+  const label = escapeHtml(market.symbol);
+  if (!quote) {
+    // Known-listed but unquoted: name the security rather than render an empty
+    // shell or, worse, a fake 0.00. The row still occupies its reserved height,
+    // so filling it in later cannot shift the card.
+    return (
+      '<span class="wiki-hover-market wiki-hover-market--empty">' +
+      '<span class="wiki-hover-market-symbol">' + label + '</span>' +
+      '<span class="wiki-hover-market-note">quote unavailable</span>' +
+      '</span>'
+    );
+  }
+  const hasChange = typeof quote.change === 'number' && typeof quote.changePercent === 'number';
+  const dir = !hasChange ? 'flat' : (quote.change as number) > 0 ? 'up' : (quote.change as number) < 0 ? 'down' : 'flat';
+  const sign = hasChange && (quote.change as number) > 0 ? '+' : '';
+  const price = quote.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const changeBit = hasChange
+    ? '<span class="wiki-hover-market-change">' +
+      escapeHtml(sign + (quote.change as number).toFixed(2)) +
+      ' (' + escapeHtml(sign + (quote.changePercent as number).toFixed(2)) + '%)' +
+      '</span>'
+    : '';
+  const asOf = formatQuoteAsOf(quote.asOf);
+  const meta = [
+    quote.stale ? 'stale' : '',
+    asOf ? `as of ${asOf}` : '',
+    quote.source,
+  ].filter(Boolean).join(' · ');
+  return (
+    '<span class="wiki-hover-market wiki-hover-market--' + dir + (quote.stale ? ' is-stale' : '') + '">' +
+    '<span class="wiki-hover-market-symbol">' + label + '</span>' +
+    '<span class="wiki-hover-market-price">' + escapeHtml(price) + ' ' + escapeHtml(quote.currency) + '</span>' +
+    changeBit +
+    '<span class="wiki-hover-market-note">' + escapeHtml(meta) + '</span>' +
+    '</span>'
+  );
+}
+
+// Which slug the hover is currently showing. An async quote fill must not
+// repaint a card the pointer has already left or moved on from.
+let wikiHoverSlug: string | null = null;
+
+function wikiHoverHtml(page: WikiPage, quote: MarketQuote | undefined): string {
+  return (
+    '<span class="wiki-hover-type">' + escapeHtml(String(page.type)) + '</span>' +
+    '<span class="wiki-hover-title">' + escapeHtml(page.title) + '</span>' +
+    '<span class="wiki-hover-summary">' + escapeHtml(page.summary || '') + '</span>' +
+    (page.market ? marketRowHtml(page.market, quote) : '')
+  );
+}
+
 function showWikiHover(el: HTMLElement): void {
   const slug = el.getAttribute('data-wiki-slug');
   const page = slug ? wikiPageMap.get(slug) : null;
@@ -1992,12 +2603,19 @@ function showWikiHover(el: HTMLElement): void {
     wikiHoverEl.className = 'wiki-hover';
     document.body.appendChild(wikiHoverEl);
   }
-  setSafeContent(
-    wikiHoverEl,
-    '<span class="wiki-hover-type">' + escapeHtml(String(page.type)) + '</span>' +
-    '<span class="wiki-hover-title">' + escapeHtml(page.title) + '</span>' +
-    '<span class="wiki-hover-summary">' + escapeHtml(page.summary || '') + '</span>',
-  );
+  wikiHoverSlug = page.slug;
+  setSafeContent(wikiHoverEl, wikiHoverHtml(page, marketQuotes?.get(page.market?.symbol || '')));
+
+  // Only listed entities trigger the quote load, and only when it isn't
+  // already resolved — the acceptance criterion is that a page without
+  // `market` causes no quote fetch at all.
+  if (page.market && !marketQuotes) {
+    void loadMarketQuotes().then((map) => {
+      if (wikiHoverSlug !== page.slug || !wikiHoverEl) return;
+      if (wikiHoverEl.style.display === 'none') return;
+      setSafeContent(wikiHoverEl, wikiHoverHtml(page, map.get(page.market!.symbol)));
+    });
+  }
   const r = el.getBoundingClientRect();
   const left = Math.max(12, Math.min(r.left, window.innerWidth - 320 - 12));
   wikiHoverEl.style.display = 'block';
@@ -2006,6 +2624,7 @@ function showWikiHover(el: HTMLElement): void {
 }
 function hideWikiHover(): void {
   if (wikiHoverEl) wikiHoverEl.style.display = 'none';
+  wikiHoverSlug = null;
 }
 
 // ── Wiki (LLM Wiki) ───────────────────────────────────
@@ -2027,6 +2646,30 @@ type WikiImage = {
   source_url?: string;
 };
 
+// Public-market IDENTITY only — never a price. Present on entity pages that
+// check_wiki.py validated as listed securities; absent everywhere else, which
+// is what keeps private companies from rendering an empty stock shell.
+type WikiMarket = {
+  ticker: string;
+  exchange: string;
+  symbol: string;          // "EXCHANGE:TICKER" — the join key into quotes.json
+  provider?: string;
+  tradingview_symbol?: string;
+};
+
+type WikiTranslation = {
+  title: string;
+  summary: string;
+  description: string;
+  file: string;            // relative to research/, e.g. wiki-translations/ko/entities/deepseek.md
+  source_file: string;
+  source_sha256: string;
+  images?: WikiImage[];
+  // The English source moved on after this translation was written (recorded
+  // source_sha256 is behind). Still served, but badged as stale.
+  stale?: boolean;
+};
+
 type WikiPage = {
   slug: string;
   title: string;
@@ -2038,8 +2681,24 @@ type WikiPage = {
   file: string;            // relative to research/wiki/, e.g. "entities/nebius.md"
   aliases: string[];
   images?: WikiImage[];
+  market?: WikiMarket;
+  translations?: { ko?: WikiTranslation };
   outbound: string[];      // slugs
   inbound: string[];       // slugs
+};
+
+// research/market/quotes.json, refreshed by market-quotes.yml.
+type MarketQuote = {
+  symbol: string;
+  ticker: string;
+  price: number;
+  change: number | null;
+  changePercent: number | null;
+  currency: string;
+  marketState: string | null;
+  asOf: string;
+  source: string;
+  stale: boolean;
 };
 
 type WikiLogEntry = { date: string; op: string; summary: string };
@@ -2050,11 +2709,175 @@ type WikiIndex = {
   recent_log: WikiLogEntry[];        // newest first
 };
 
+// --- Per-page history -------------------------------------------------------
+// A wiki page's history is its git history: nothing is baked into the markdown.
+// We read it live from the GitHub commits API for that one file, and recover a
+// human summary by pairing each commit's date with research/wiki/log.md, whose
+// run summaries already name the pages they touched
+// ("updated 8 (deepseek — first external round CLOSED ...; ...)").
+//
+// Unauthenticated GitHub API is 60 req/hour PER IP, so: one request per page
+// the reader actually opens, cached in sessionStorage, and every failure mode
+// degrades to a plain "history on GitHub" link rather than an error.
+const WIKI_REPO = 'guzus/ai-research-arm';
+const WIKI_HISTORY_TTL_MS = 60 * 60 * 1000;
+const WIKI_HISTORY_MAX = 40;
+
+type WikiCommit = { date: string; summary: string; url: string };
+
+let wikiLogFragmentsCache: Map<string, string[]> | null = null;
+
+/** Parse log.md into date → run summaries (mirrors check_wiki's LOG_LINE_RE). */
+async function loadWikiLogFragments(signal: AbortSignal): Promise<Map<string, string[]>> {
+  if (wikiLogFragmentsCache) return wikiLogFragmentsCache;
+  const byDate = new Map<string, string[]>();
+  try {
+    const resp = await fetch(`${DATA_BASE}/wiki/log.md`, { signal });
+    if (resp.ok) {
+      const text = await resp.text();
+      for (const line of text.split('\n')) {
+        const m = line.match(/^## \[(\d{4}-\d{2}-\d{2})\] \S+ \| (.+)$/);
+        if (m) byDate.set(m[1], [...(byDate.get(m[1]) || []), m[2]]);
+      }
+    }
+  } catch {
+    /* history still renders from commit subjects alone */
+  }
+  wikiLogFragmentsCache = byDate;
+  return byDate;
+}
+
+/** Pull `slug`'s own detail out of a run summary, if it names the page. */
+function wikiLogFragmentFor(slug: string, summaries: string[]): string | null {
+  const esc = slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Fragment ends at the next `; slug —` sibling, at a group transition like
+  // `), updated 5 (`, at the closing `).`/`);` of the last group, or at EOL.
+  const re = new RegExp(
+    `\\b${esc}\\b(?:\\s+(?:entity|concept|theme))?\\s*—\\s*(.+?)(?=;\\s*[a-z0-9][a-z0-9-]*(?:\\s+\\w+)?\\s*—|\\)\\s*,\\s*\\w+\\s+\\d+\\s*\\(|\\)\\s*[.;]|\\)\\s*$|$)`,
+  );
+  for (const summary of summaries) {
+    const m = summary.match(re);
+    if (m && m[1].trim()) {
+      const text = m[1].replace(/\[\[([^\[\]|]+)(?:\|([^\[\]]+))?\]\]/g, (_s, a, b) => b || a);
+      return text.replace(/\s+/g, ' ').replace(/[\s.;,]+$/, '');
+    }
+  }
+  return null;
+}
+
+/** Commits that touched this page, newest first. Null = unavailable. */
+async function fetchWikiHistory(page: WikiPage, signal: AbortSignal): Promise<WikiCommit[] | null> {
+  const cacheKey = `ara-wiki-history:${page.slug}`;
+  try {
+    const raw = sessionStorage.getItem(cacheKey);
+    if (raw) {
+      const cached = JSON.parse(raw) as { at: number; commits: WikiCommit[] };
+      if (Date.now() - cached.at < WIKI_HISTORY_TTL_MS) return cached.commits;
+    }
+  } catch {
+    /* unparseable/absent cache — refetch */
+  }
+
+  const path = `research/wiki/${page.file}`;
+  let commits: WikiCommit[];
+  try {
+    const resp = await fetch(
+      `https://api.github.com/repos/${WIKI_REPO}/commits?path=${encodeURIComponent(path)}&per_page=${WIKI_HISTORY_MAX}`,
+      { signal, headers: { Accept: 'application/vnd.github+json' } },
+    );
+    if (!resp.ok) return null;  // 403 = rate-limited; caller shows the GitHub link
+    const data = (await resp.json()) as Array<{
+      html_url?: string;
+      commit?: { message?: string; author?: { date?: string } };
+    }>;
+    if (!Array.isArray(data)) return null;
+    commits = data
+      .map((c) => ({
+        date: (c.commit?.author?.date || '').slice(0, 10),
+        // First line only (drop Co-authored-by trailers), minus the PR suffix
+        // that the publish-time squash merge appends.
+        summary: (c.commit?.message || '').split('\n')[0].replace(/\s*\(#\d+\)\s*$/, ''),
+        url: c.html_url || '',
+      }))
+      .filter((c) => c.date);
+  } catch {
+    return null;
+  }
+
+  try {
+    sessionStorage.setItem(cacheKey, JSON.stringify({ at: Date.now(), commits }));
+  } catch {
+    /* storage full or disabled — the fetch still succeeded */
+  }
+  return commits;
+}
+
+function wikiHistoryLinkHtml(page: WikiPage): string {
+  const href = `https://github.com/${WIKI_REPO}/commits/main/research/wiki/${page.file}`;
+  return (
+    '<a class="wiki-history-more" href="' + escapeHtml(href) +
+    '" target="_blank" rel="noopener noreferrer">' + escapeHtml(uiText(activeLanguage, 'wiki.fullHistory')) + '</a>'
+  );
+}
+
+/** Fill the history slot in place; called after the page scaffold renders. */
+async function hydrateWikiHistory(page: WikiPage, signal: AbortSignal): Promise<void> {
+  const host = content.querySelector('.wiki-history-body') as HTMLElement | null;
+  if (!host) return;
+  const [commits, fragments] = await Promise.all([
+    fetchWikiHistory(page, signal),
+    loadWikiLogFragments(signal),
+  ]);
+  if (signal.aborted || !content.contains(host)) return;
+
+  if (!commits || !commits.length) {
+    setSafeContent(host, '<p class="wiki-history-empty">' + wikiHistoryLinkHtml(page) + '</p>');
+    return;
+  }
+
+  // Resolve each commit to its display summary, then collapse consecutive
+  // entries that say the same thing on the same day. Several commits can land
+  // on one date (an ingest plus a follow-up), and they all match that date's
+  // single log.md fragment — rendering them as N identical rows reads like a
+  // bug. The oldest entry keeps its "created" label after collapsing.
+  const resolved = commits.map((c) => ({
+    ...c,
+    text: wikiLogFragmentFor(page.slug, fragments.get(c.date) || []) || c.summary,
+  }));
+  const collapsed = resolved.filter(
+    (c, i) => i === 0 || !(c.date === resolved[i - 1].date && c.text === resolved[i - 1].text),
+  );
+
+  const rows = collapsed.map((c, i) => {
+    const summary = c.text;
+    const operation = i === collapsed.length - 1 ? 'created' : 'updated';
+    const label = operation === 'created'
+      ? uiText(activeLanguage, 'wiki.created')
+      : uiText(activeLanguage, 'wiki.updated');
+    const text = escapeHtml(summary);
+    return (
+      '<li class="wiki-history-item">' +
+      '<time class="wiki-history-date" datetime="' + escapeHtml(c.date) + '">' + escapeHtml(c.date) + '</time>' +
+      '<span class="wiki-history-op wiki-history-op--' + operation + '">' + escapeHtml(label) + '</span>' +
+      (c.url
+        ? '<a class="wiki-history-summary" href="' + escapeHtml(c.url) + '" target="_blank" rel="noopener noreferrer">' + text + '</a>'
+        : '<span class="wiki-history-summary">' + text + '</span>') +
+      '</li>'
+    );
+  });
+
+  setSafeContent(
+    host,
+    '<ul class="wiki-history-list">' + rows.join('\n') + '</ul>' + wikiHistoryLinkHtml(page),
+  );
+}
+
 // One-time fetch cache for the index, plus a derived slug→page Map so backlink
 // rendering is O(n) not O(n^2) (advisor note 5).
 let wikiIndexCache: WikiIndex | null = null;
 let wikiPageMap: Map<string, WikiPage> = new Map();
-// Body cache keyed by slug so re-visiting a page doesn't refetch.
+// Body cache is locale-aware: an English fallback must never occupy the
+// Korean slot after a translation is published during the same session.
 const wikiBodyCache = new Map<string, string>();
 
 async function loadWikiIndex(signal: AbortSignal): Promise<WikiIndex | null> {
@@ -2075,6 +2898,21 @@ async function loadWikiIndex(signal: AbortSignal): Promise<WikiIndex | null> {
     if (error instanceof DOMException && error.name === 'AbortError') return null;
     return null;
   }
+}
+
+function wikiTranslationFor(page: WikiPage): WikiTranslation | null {
+  return activeLanguage === 'ko' ? (page.translations?.ko || null) : null;
+}
+
+function localizedWikiPage(page: WikiPage): WikiPage {
+  const translation = wikiTranslationFor(page);
+  if (!translation) return page;
+  return {
+    ...page,
+    title: translation.title,
+    summary: translation.summary,
+    images: translation.images || page.images,
+  };
 }
 
 /** Strip leading YAML frontmatter, matching the validator/prebuild semantics
@@ -2182,11 +3020,17 @@ function setSafeWikiContent(el: HTMLElement, rawHtml: string): void {
 }
 
 const WIKI_TYPE_ORDER: WikiType[] = ['entity', 'concept', 'theme'];
+const WIKI_PAGE_SIZE = 12;
 const WIKI_TYPE_LABEL: Record<string, string> = {
-  entity: 'Entities',
-  concept: 'Concepts',
-  theme: 'Themes',
+  entity: 'wiki.entities',
+  concept: 'wiki.concepts',
+  theme: 'wiki.themes',
 };
+
+function wikiTypeLabel(type: string): string {
+  const key = WIKI_TYPE_LABEL[type] as UiCopyKey | undefined;
+  return key ? uiText(activeLanguage, key) : type;
+}
 
 function wikiTagsHtml(tags: string[] | undefined): string {
   if (!tags || tags.length === 0) return '';
@@ -2224,7 +3068,8 @@ function wikiImagesHtml(images: WikiImage[] | undefined): string {
         ? '<a href="' + escapeHtml(img.source_url) + '" class="wiki-image-credit">' + escapeHtml(img.credit) + '</a>'
         : '<span class="wiki-image-credit">' + escapeHtml(img.credit) + '</span>'
       : img.source_url
-        ? '<a href="' + escapeHtml(img.source_url) + '" class="wiki-image-credit">Source</a>'
+        ? '<a href="' + escapeHtml(img.source_url) + '" class="wiki-image-credit">' +
+          escapeHtml(uiText(activeLanguage, 'wiki.source')) + '</a>'
         : '';
     const captionBits = [
       img.caption ? '<span class="wiki-image-caption-text">' + escapeHtml(img.caption) + '</span>' : '',
@@ -2246,27 +3091,97 @@ function wikiImagesHtml(images: WikiImage[] | undefined): string {
 // compact entity card.
 function wikiKvHtml(page: WikiPage): string {
   const rows = [
-    page.updated_at ? '<dt>Updated</dt><dd>' + escapeHtml(page.updated_at) + '</dd>' : '',
-    page.created_at ? '<dt>Created</dt><dd>' + escapeHtml(page.created_at) + '</dd>' : '',
-    '<dt>Links</dt><dd>' + (page.inbound || []).length + ' in · ' + (page.outbound || []).length + ' out</dd>',
+    page.updated_at ? '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.updated')) + '</dt><dd>' + escapeHtml(page.updated_at) + '</dd>' : '',
+    page.created_at ? '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.created')) + '</dt><dd>' + escapeHtml(page.created_at) + '</dd>' : '',
+    '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.links')) + '</dt><dd>' + escapeHtml(uiText(activeLanguage, 'wiki.linkCounts', {
+      inbound: (page.inbound || []).length,
+      outbound: (page.outbound || []).length,
+    })) + '</dd>',
+    // Listed entities repeat the quote here, not only in the hover card.
+    // A hover does not exist on touch: tapping a .wiki-mention navigates to
+    // this page, so without this row the market data would be desktop-only.
+    page.market
+      ? '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.market')) + '</dt><dd class="wiki-kv-market" data-market-symbol="' +
+        escapeHtml(page.market.symbol) + '">' + escapeHtml(page.market.symbol) + '</dd>'
+      : '',
   ].filter(Boolean).join('');
   return '<dl class="ara-kv">' + rows + '</dl>';
+}
+
+/** Fill any rendered `Market` cells with a quote once quotes.json resolves.
+ * Separate from render so the page paints immediately and a slow or failed
+ * quote leaves the symbol visible rather than an empty cell. */
+function hydrateWikiKvMarket(root: ParentNode = document): void {
+  const cells = [...root.querySelectorAll<HTMLElement>('.wiki-kv-market[data-market-symbol]')];
+  if (!cells.length) return;
+  void loadMarketQuotes().then((map) => {
+    for (const cell of cells) {
+      const symbol = cell.getAttribute('data-market-symbol') || '';
+      const q = map.get(symbol);
+      if (!q) continue;
+      const hasChange = typeof q.change === 'number' && typeof q.changePercent === 'number';
+      const sign = hasChange && (q.change as number) > 0 ? '+' : '';
+      const dir = !hasChange ? 'flat' : (q.change as number) > 0 ? 'up' : (q.change as number) < 0 ? 'down' : 'flat';
+      const price = q.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const change = hasChange
+        ? ' <span class="wiki-kv-market-change wiki-kv-market-change--' + dir + '">' +
+          escapeHtml(sign + (q.change as number).toFixed(2)) + ' (' +
+          escapeHtml(sign + (q.changePercent as number).toFixed(2)) + '%)</span>'
+        : '';
+      const asOf = formatQuoteAsOf(q.asOf);
+      setSafeContent(
+        cell,
+        escapeHtml(symbol) + ' · <strong>' + escapeHtml(price) + ' ' + escapeHtml(q.currency) + '</strong>' +
+        change +
+        '<span class="wiki-kv-market-note">' +
+        escapeHtml([q.stale ? 'stale' : '', asOf ? 'as of ' + asOf : '', q.source].filter(Boolean).join(' · ')) +
+        '</span>',
+      );
+    }
+  });
 }
 
 /** Internal link to another wiki page (used in lists/backlinks). Always an
  * <a data-wiki-slug> so the content click handler intercepts it for SPA nav. */
 function wikiInternalLink(slug: string, text?: string): string {
-  const label = text || wikiPageMap.get(slug)?.title || slug;
+  const indexed = wikiPageMap.get(slug);
+  const label = text || (indexed ? localizedWikiPage(indexed).title : '') || slug;
   return (
     '<a href="/wiki/' + escapeHtml(slug) + '" class="wikilink" ' +
     'data-wiki-slug="' + escapeHtml(slug) + '">' + escapeHtml(label) + '</a>'
   );
 }
 
+function paginationHtml(page: number, totalItems: number, pageSize: number, label: string): string {
+  const pageCount = Math.max(1, Math.ceil(totalItems / pageSize));
+  if (pageCount <= 1) return '';
+  const safePage = Math.min(Math.max(1, page), pageCount);
+  const first = (safePage - 1) * pageSize + 1;
+  const last = Math.min(safePage * pageSize, totalItems);
+  const pageLink = (target: number, text: string, className: string): string => {
+    const disabled = target < 1 || target > pageCount;
+    if (disabled) {
+      return '<span class="index-pagination-link ' + className + ' is-disabled" aria-disabled="true">' + text + '</span>';
+    }
+    const href = paginationRoute(activeTab === 'wiki' ? '/wiki' : '/research', target);
+    return '<a class="index-pagination-link ' + className + '" href="' + href + '" data-index-page="' + target + '">' + text + '</a>';
+  };
+  return [
+    '<nav class="index-pagination" aria-label="' + escapeHtml(uiText(activeLanguage, 'pagination.label', { label })) + '">',
+    '  <div class="index-pagination-summary">' + escapeHtml(uiText(activeLanguage, 'pagination.summary', { first, last, total: totalItems })) + '</div>',
+    '  <div class="index-pagination-controls">',
+    pageLink(safePage - 1, '&larr;<span> ' + escapeHtml(uiText(activeLanguage, 'pagination.previous')) + '</span>', 'index-pagination-prev'),
+    '    <span class="index-pagination-status" aria-current="page">' + safePage + ' / ' + pageCount + '</span>',
+    pageLink(safePage + 1, '<span>' + escapeHtml(uiText(activeLanguage, 'pagination.next')) + ' </span>&rarr;', 'index-pagination-next'),
+    '  </div>',
+    '</nav>',
+  ].join('\n');
+}
+
 // LIST view: catalog grouped by type + a recent-changes panel + a count.
 function renderWikiIndex(index: WikiIndex): void {
-  setDocTitle('Wiki');
-  const pages = index.pages.slice();
+  setDocTitle(null);
+  const pages = index.pages.map(localizedWikiPage);
   if (pages.length === 0) {
     setSafeWikiContent(
       content,
@@ -2274,7 +3189,7 @@ function renderWikiIndex(index: WikiIndex): void {
         '<div class="content-card">',
         '  <div class="empty-state">',
         '    <div class="empty-state-icon">' + DOC_ICON + '</div>',
-        '    <div class="empty-state-text">No wiki pages yet</div>',
+        '    <div class="empty-state-text">' + escapeHtml(uiText(activeLanguage, 'wiki.noPages')) + '</div>',
         '  </div>',
         '</div>',
       ].join('\n'),
@@ -2294,9 +3209,27 @@ function renderWikiIndex(index: WikiIndex): void {
       })
     : pages;
 
-  // Group by type, with the known types first then any unknown types.
+  // Sort before slicing so pagination stays deterministic when the committed
+  // index order changes. Known types retain the catalog's semantic order.
+  const typeRank = (type: string): number => {
+    const rank = WIKI_TYPE_ORDER.indexOf(type as WikiType);
+    return rank === -1 ? WIKI_TYPE_ORDER.length : rank;
+  };
+  visible.sort((a, b) =>
+    typeRank(String(a.type)) - typeRank(String(b.type)) ||
+    String(a.type).localeCompare(String(b.type)) ||
+    a.title.localeCompare(b.title) ||
+    a.slug.localeCompare(b.slug),
+  );
+  const pageCount = Math.max(1, Math.ceil(visible.length / WIKI_PAGE_SIZE));
+  const requestedPage = wikiIndexPage;
+  wikiIndexPage = Math.min(wikiIndexPage, pageCount);
+  if (wikiIndexPage !== requestedPage) canonicalizeIndexPage();
+  const pageRows = visible.slice((wikiIndexPage - 1) * WIKI_PAGE_SIZE, wikiIndexPage * WIKI_PAGE_SIZE);
+
+  // Group the current page by type, with the known types first then any unknown types.
   const groups = new Map<string, WikiPage[]>();
-  for (const p of visible) {
+  for (const p of pageRows) {
     const key = String(p.type || 'other');
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key)!.push(p);
@@ -2309,7 +3242,9 @@ function renderWikiIndex(index: WikiIndex): void {
   const sections: string[] = [];
   for (const key of orderedKeys) {
     const rows = groups.get(key)!.slice().sort((a, b) => a.title.localeCompare(b.title));
-    const label = WIKI_TYPE_LABEL[key] || (key.charAt(0).toUpperCase() + key.slice(1));
+    const label = WIKI_TYPE_LABEL[key]
+      ? wikiTypeLabel(key)
+      : (key.charAt(0).toUpperCase() + key.slice(1));
     const items = rows
       .map((p) =>
         [
@@ -2317,7 +3252,7 @@ function renderWikiIndex(index: WikiIndex): void {
           '  <div class="wiki-item-head">',
           '    ' + wikiInternalLink(p.slug, p.title),
           '    <span class="wiki-type-chip wiki-type-' + escapeHtml(String(p.type)) + '">' +
-            escapeHtml(String(p.type)) + '</span>',
+            escapeHtml(wikiTypeLabel(String(p.type))) + '</span>',
           '  </div>',
           p.summary ? '  <div class="wiki-item-summary">' + escapeHtml(p.summary) + '</div>' : '',
           wikiTagsHtml(p.tags),
@@ -2340,7 +3275,7 @@ function renderWikiIndex(index: WikiIndex): void {
 
   const emptyNote =
     visible.length === 0
-      ? '<div class="empty-state-text wiki-empty">No wiki pages match the search.</div>'
+      ? '<div class="empty-state-text wiki-empty">' + escapeHtml(uiText(activeLanguage, 'wiki.noMatches')) + '</div>'
       : '';
 
   setSafeWikiContent(
@@ -2350,6 +3285,7 @@ function renderWikiIndex(index: WikiIndex): void {
       '  <div class="wiki-index-main">',
       emptyNote,
       sections.join('\n'),
+      paginationHtml(wikiIndexPage, visible.length, WIKI_PAGE_SIZE, uiText(activeLanguage, 'wiki.pages')),
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -2357,7 +3293,13 @@ function renderWikiIndex(index: WikiIndex): void {
 }
 
 // PAGE view: title + type chip + tags + rendered body + backlinks + related.
-function renderWikiPage(page: WikiPage, body: string): void {
+function renderWikiPage(
+  page: WikiPage,
+  body: string,
+  signal?: AbortSignal,
+  translationMissing = false,
+  translationStale = false,
+): void {
   setDocTitle(page.title);
   const bodyHtml = wikiMarkdownToHtml(stripWikiFrontmatter(body));
 
@@ -2366,7 +3308,7 @@ function renderWikiPage(page: WikiPage, body: string): void {
   const backlinksHtml = inbound.length
     ? [
         '<section class="wiki-backlinks">',
-        '  <h2 class="wiki-section-title">Backlinks</h2>',
+        '  <h2 class="wiki-section-title">' + escapeHtml(uiText(activeLanguage, 'wiki.backlinks')) + '</h2>',
         '  <ul class="wiki-link-list">',
         inbound
           .map((s) => '<li class="wiki-link-item">' + wikiInternalLink(s) + '</li>')
@@ -2382,7 +3324,7 @@ function renderWikiPage(page: WikiPage, body: string): void {
   const relatedHtml = related.length
     ? [
         '<section class="wiki-related">',
-        '  <h2 class="wiki-section-title">Related</h2>',
+        '  <h2 class="wiki-section-title">' + escapeHtml(uiText(activeLanguage, 'wiki.related')) + '</h2>',
         '  <ul class="wiki-link-list">',
         related
           .map((s) => '<li class="wiki-link-item">' + wikiInternalLink(s) + '</li>')
@@ -2404,21 +3346,43 @@ function renderWikiPage(page: WikiPage, body: string): void {
     [
       '<div class="content-card wiki-page-card">',
       '  <div class="wiki-page-meta">',
-      '    <button class="gen-research-back" data-wiki-back>&lsaquo; All pages</button>',
+      '    <button class="gen-research-back" data-wiki-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'wiki.allPages')) + '</button>',
       '  </div>',
       '  <div class="wiki-page-header">',
-      '    <span class="ara-eyebrow">' + escapeHtml(String(page.type)) + '</span>',
+      '    <span class="ara-eyebrow">' + escapeHtml(wikiTypeLabel(String(page.type))) + '</span>',
       '    <h1 class="wiki-page-title">' + escapeHtml(page.title) + '</h1>',
       page.summary
-        ? '    <div class="ara-callout ara-callout--info"><span class="ara-callout-label">Summary</span><p>' + escapeHtml(page.summary) + '</p></div>'
+        ? '    <div class="ara-callout ara-callout--info"><span class="ara-callout-label">' + escapeHtml(uiText(activeLanguage, 'wiki.summary')) + '</span><p>' + escapeHtml(page.summary) + '</p></div>'
+        : '',
+      translationMissing
+        ? '    <div class="ara-callout ara-callout--warning"><p>' + escapeHtml(uiText(activeLanguage, 'wiki.translationUnavailable')) + '</p></div>'
+        : '',
+      translationStale
+        ? '    <div class="ara-callout ara-callout--warning"><p>' + escapeHtml(uiText(activeLanguage, 'wiki.translationStale')) + '</p></div>'
         : '',
       wikiImagesHtml(page.images),
       wikiKvHtml(page),
       wikiTagsHtml(page.tags),
       '  </div>',
+      // Body + backlinks/related on the left; History in an <aside> rail that
+      // the CSS floats right on wide viewports and stacks after the main
+      // column otherwise. History is this file's git history, read live from
+      // the GitHub API — never stored in the page. Filled by
+      // hydrateWikiHistory below; if that fails (offline, rate-limited) the
+      // slot degrades to a GitHub link.
+      '<div class="wiki-page-columns">',
+      '<div class="wiki-page-main">',
       '  <div class="wiki-page-body md-content"></div>',
       backlinksHtml,
       relatedHtml,
+      '</div>',
+      '<aside class="wiki-page-rail">',
+      '<section class="wiki-history">',
+      '  <h2 class="wiki-section-title">' + escapeHtml(uiText(activeLanguage, 'wiki.history')) + '</h2>',
+      '  <div class="wiki-history-body"><p class="wiki-history-empty">' + escapeHtml(uiText(activeLanguage, 'wiki.loadingHistory')) + '</p></div>',
+      '</section>',
+      '</aside>',
+      '</div>',
       '</div>',
     ].join('\n'),
   );
@@ -2428,10 +3392,37 @@ function renderWikiPage(page: WikiPage, body: string): void {
   // style), keeping only data-wiki-slug anchors/spans for click-routing.
   const bodyEl = content.querySelector('.wiki-page-body') as HTMLElement | null;
   if (bodyEl) setSafeWikiContent(bodyEl, bodyHtml);
+
+  void hydrateWikiHistory(page, signal ?? new AbortController().signal);
+  hydrateWikiKvMarket();
+  void hydrateWikiDossier(page, signal ?? new AbortController().signal);
+}
+
+async function hydrateWikiDossier(page: WikiPage, signal: AbortSignal): Promise<void> {
+  const [claims, tickets, currentManifest] = await Promise.all([
+    loadPublicClaims(signal),
+    loadTickets(),
+    loadManifest(),
+  ]);
+  if (signal.aborted || activeTab !== 'wiki' || selectedSlug !== page.slug) return;
+  const aliases = [page.title, page.slug, ...(page.aliases || [])];
+  const relatedResearch = (currentManifest?.generative || [])
+    .filter((row) => textMatchesTopic(`${row.title} ${row.prompt} ${(row.tags || []).join(' ')}`, page.title) || aliases.some((alias) => textMatchesTopic(`${row.title} ${row.prompt} ${(row.tags || []).join(' ')}`, alias)))
+    .sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const relatedTickets = (tickets || [])
+    .filter((ticket) => aliases.some((alias) => textMatchesTopic(`${ticket.title} ${ticket.company} ${ticket.model || ''} ${(ticket.labels || []).join(' ')}`, alias)))
+    .sort((a, b) => b.updated_at.localeCompare(a.updated_at));
+  const relatedClaims = claimsForTopic(claims, page.title, aliases).sort((a, b) => (b.as_of || '').localeCompare(a.as_of || ''));
+  const slot = content.querySelector('.wiki-page-main');
+  if (!slot) return;
+  const host = document.createElement('div');
+  setSafeContent(host, renderDossierRelated({ slug: page.slug, language: activeLanguage, research: relatedResearch, tickets: relatedTickets, claims: relatedClaims, watchlisted: watchlist.topics.includes(page.slug) }));
+  slot.appendChild(host);
+  bindWatchlistActions(slot);
 }
 
 function renderWikiNotFound(slug: string): void {
-  setDocTitle('Wiki');
+  setDocTitle(null);
   // All trusted dashboard chrome (including the back <button>) — use the
   // standard sanitizer so the button + data-wiki-back survive. No LLM body here.
   setSafeContent(
@@ -2440,18 +3431,96 @@ function renderWikiNotFound(slug: string): void {
       '<div class="content-card">',
       '  <div class="empty-state">',
       '    <div class="empty-state-icon">' + DOC_ICON + '</div>',
-      '    <div class="empty-state-text">Wiki page not found: ' + escapeHtml(slug) + '</div>',
-      '    <button class="gen-research-back" data-wiki-back>&lsaquo; Back to wiki</button>',
+      '    <div class="empty-state-text">' + escapeHtml(uiText(activeLanguage, 'wiki.notFound', { slug })) + '</div>',
+      '    <button class="gen-research-back" data-wiki-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'wiki.back')) + '</button>',
       '  </div>',
       '</div>',
     ].join('\n'),
   );
 }
 
-function renderTwitterReport(md: string, fallbackDate: string | null = null): void {
+// ── Twitter A/B side-by-side (comparison lanes) ─────────────────────────────
+// twitter-ab.json (prebuild-generated) maps date → hour → comparison-lane
+// slugs where a same-hour cycle exists in both the primary digest and the
+// lane. It only gates the quiet A/B chip; everything below is lazy — nothing
+// is fetched until a reader clicks the chip.
+type TwitterAbIndex = Record<string, Record<string, string[]>>;
+let twitterAbIndexCache: TwitterAbIndex | undefined;
+let currentTwitterMd = '';
+let currentTwitterMdDate = '';
+const twitterAbMdCache = new Map<string, string | null>();
+
+type TwitterAbLaneMeta = { label: string; model: string; harness: string };
+
+const TWITTER_AB_LANE_META: Record<string, TwitterAbLaneMeta> = {
+  // The lane key keeps its historical "-kimi" name so the temporary
+  // 2026-08-07 DeepSeek swap stays a label-only change (renaming it would move
+  // the research dir, the .dockerignore allowlist and the prebuild COPY_DIRS).
+  // The displayed model must always name what actually authored the artifact.
+  'twitter-opencode-kimi': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · OpenCode Go', harness: 'opencode CLI' },
+  'twitter-zai': { label: 'GLM-5.2', model: 'glm-5.2 · Z.ai', harness: 'Claude Code' },
+  'twitter-deepseek': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · Fireworks', harness: 'Claude Code' },
+  'twitter-deepseek-pi': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · Fireworks', harness: 'pi (container)' },
+  'twitter-fireworks-pi': { label: 'Kimi K2.7', model: 'kimi-k2p7 · Fireworks', harness: 'pi (container)' },
+};
+
+// A lane outlives the model it runs, so the map above is only the CURRENT
+// answer. Reports already on disk were written by whatever ran that day, and
+// re-labelling them is the same defect as mislabelling a new one — just
+// pointed backwards. Each entry applies to reports dated STRICTLY BEFORE
+// `before` (ISO YYYY-MM-DD, lexicographically comparable), newest bound last.
+const TWITTER_AB_LANE_META_HISTORY: Record<string, Array<{ before: string } & TwitterAbLaneMeta>> = {
+  'twitter-opencode-kimi': [
+    // Ran Kimi K3 until the 2026-08-07 swap to DeepSeek V4 Flash.
+    { before: '2026-08-07', label: 'Kimi K3', model: 'kimi-k3 · OpenCode Go / Moonshot', harness: 'opencode CLI' },
+  ],
+};
+
+function twitterAbLaneMeta(lane: string, dateStr: string): TwitterAbLaneMeta | undefined {
+  for (const era of TWITTER_AB_LANE_META_HISTORY[lane] || []) {
+    if (dateStr && dateStr < era.before) {
+      return { label: era.label, model: era.model, harness: era.harness };
+    }
+  }
+  return TWITTER_AB_LANE_META[lane];
+}
+// The primary tier's model is resolved at run time by agent-run
+// (Fireworks GLM → Z.ai → native Claude), so label the chain, not one model.
+const TWITTER_AB_PRIMARY_META = {
+  label: 'Primary lane',
+  model: 'agent-run chain: GLM-5.2 → Z.ai → claude-sonnet-5',
+  harness: 'Claude Code',
+};
+
+async function ensureTwitterAbIndex(signal?: AbortSignal): Promise<TwitterAbIndex> {
+  if (twitterAbIndexCache) return twitterAbIndexCache;
+  try {
+    const resp = await fetch(`${DATA_BASE}/twitter-ab.json`, { signal });
+    twitterAbIndexCache = resp.ok ? ((await resp.json()) as TwitterAbIndex) : {};
+  } catch {
+    twitterAbIndexCache = {}; // no chips; the news view is unaffected
+  }
+  return twitterAbIndexCache;
+}
+
+async function fetchTwitterAbLaneMd(lane: string, dateStr: string, signal?: AbortSignal): Promise<string | null> {
+  const key = `${lane}:${dateStr}`;
+  if (twitterAbMdCache.has(key)) return twitterAbMdCache.get(key) ?? null;
+  let md: string | null = null;
+  try {
+    const resp = await fetch(`${DATA_BASE}/${lane}/${dateStr}.md`, { signal });
+    if (resp.ok) md = await resp.text();
+  } catch {
+    md = null;
+  }
+  twitterAbMdCache.set(key, md);
+  return md;
+}
+
+function buildTwitterRenderOptions(fallbackDate: string | null, shownDate: string): TwitterReportRenderOptions {
   const dateStr = fmtDate(currentDate);
-  const shownDate = fallbackDate || dateStr;
-  setSafeContent(content, renderTwitterReportHtml(md, {
+  return {
+    language: activeLanguage,
     fallbackDate,
     currentDateStr: dateStr,
     currentDateTitle: displayDate(currentDate),
@@ -2464,9 +3533,165 @@ function renderTwitterReport(md: string, fallbackDate: string | null = null): vo
     twitterMarkdownToHtml,
     renderSourceChips,
     renderHandleChips,
-  }));
+    abHours: twitterAbIndexCache?.[shownDate],
+  };
+}
+
+function renderTwitterReport(md: string, fallbackDate: string | null = null): void {
+  const dateStr = fmtDate(currentDate);
+  const shownDate = fallbackDate || dateStr;
+  currentTwitterMd = md;
+  currentTwitterMdDate = shownDate;
+  setSafeContent(content, renderTwitterReportHtml(md, buildTwitterRenderOptions(fallbackDate, shownDate)));
+  if (latestAliasRequested !== 'twitter') {
+    setRuntimeIndexable(stripMarkdown(md).split(/\s+/).filter(Boolean).length >= 300);
+  }
   void hydrateTweetCards(content);
   void wikifyContent(content);
+}
+
+function formatAbDuration(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = Math.round(seconds % 60);
+  return m > 0 ? `${m}m ${String(s).padStart(2, '0')}s` : `${s}s`;
+}
+
+type TwitterAbRuntime = { seconds: number | null; runUrl: string };
+
+// Agent-step runtime for a lane's cycle: status heartbeat → run_id → public
+// Actions jobs API (unauthenticated, 60 req/hr — hence the sessionStorage
+// cache; completed runs are immutable so entries never need to expire).
+// Every failure returns null and the meta strip simply shows no runtime.
+async function fetchTwitterAbRuntime(laneDir: string, dateStr: string, hour: string): Promise<TwitterAbRuntime | null> {
+  const cacheKey = `ara-ab-rt:${laneDir}:${dateStr}-${hour}`;
+  try {
+    const raw = sessionStorage.getItem(cacheKey);
+    if (raw) return JSON.parse(raw) as TwitterAbRuntime;
+  } catch {
+    /* unparseable — refetch */
+  }
+  try {
+    const statusResp = await fetch(`${DATA_BASE}/${laneDir}/status/${dateStr}-${hour}h.json`);
+    if (!statusResp.ok) return null;
+    const status = (await statusResp.json()) as { run_id?: string | number };
+    const runId = String(status.run_id ?? '');
+    if (!/^\d+$/.test(runId)) return null;
+    const runUrl = `https://github.com/${WIKI_REPO}/actions/runs/${runId}`;
+    let seconds: number | null = null;
+    const jobsResp = await fetch(
+      `https://api.github.com/repos/${WIKI_REPO}/actions/runs/${runId}/jobs?per_page=50`,
+      { headers: { Accept: 'application/vnd.github+json' } },
+    );
+    if (jobsResp.ok) {
+      const data = (await jobsResp.json()) as {
+        jobs?: Array<{ steps?: Array<{ name?: string; conclusion?: string; started_at?: string; completed_at?: string }> }>;
+      };
+      // Matrix legs echo the step as skipped/instant; the real agent step is
+      // the longest successful "Process tweets with …" across all jobs.
+      for (const job of data.jobs || []) {
+        for (const step of job.steps || []) {
+          if (step.conclusion !== 'success' || !/^Process tweets with /.test(step.name || '')) continue;
+          if (!step.started_at || !step.completed_at) continue;
+          const d = (Date.parse(step.completed_at) - Date.parse(step.started_at)) / 1000;
+          if (Number.isFinite(d) && d > (seconds ?? 1)) seconds = d;
+        }
+      }
+    }
+    const out: TwitterAbRuntime = { seconds, runUrl };
+    try {
+      sessionStorage.setItem(cacheKey, JSON.stringify(out));
+    } catch {
+      /* storage full — still return */
+    }
+    return out;
+  } catch {
+    return null;
+  }
+}
+
+async function hydrateTwitterAbRuntimes(panel: HTMLElement, dateStr: string): Promise<void> {
+  const metas = Array.from(panel.querySelectorAll<HTMLElement>('.twitter-ab-meta'));
+  await Promise.all(metas.map(async (el) => {
+    const laneDir = el.dataset.abRt || '';
+    const hour = el.dataset.abHour || '';
+    if (!laneDir || !hour) return;
+    const rt = await fetchTwitterAbRuntime(laneDir, dateStr, hour);
+    const slot = el.querySelector<HTMLElement>('[data-ab-runtime]');
+    if (!rt || !slot || !panel.isConnected) return;
+    const label = rt.seconds != null
+      ? uiText(activeLanguage, 'twitter.agentRun', { duration: formatAbDuration(rt.seconds) })
+      : uiText(activeLanguage, 'twitter.run');
+    setSafeContent(slot, '<a href="' + escapeHtml(rt.runUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>');
+    slot.hidden = false;
+  }));
+}
+
+function twitterAbPaneHtml(
+  laneDir: string,
+  meta: { label: string; model: string; harness: string },
+  body: string,
+  options: TwitterReportRenderOptions,
+  hour: string,
+): string {
+  return [
+    '<div class="twitter-ab-pane">',
+    '  <div class="twitter-ab-meta" data-ab-rt="' + escapeHtml(laneDir) + '" data-ab-hour="' + escapeHtml(hour) + '">',
+    '    <span class="twitter-ab-lane">' + escapeHtml(meta.label) + '</span>',
+    '    <span class="twitter-ab-model">' + escapeHtml(meta.model) + ' · ' + escapeHtml(meta.harness) + '</span>',
+    '    <span class="twitter-ab-runtime" data-ab-runtime hidden></span>',
+    '  </div>',
+    buildTwitterCycleContent(body, options).contentHtml,
+    '</div>',
+  ].join('\n');
+}
+
+async function buildTwitterAbPanel(panel: HTMLElement, hour: string, lanes: string[], activeLane: string): Promise<void> {
+  setSafeContent(panel, '<p class="twitter-ab-note">' + escapeHtml(uiText(activeLanguage, 'twitter.loadingComparison')) + '</p>');
+  const dateStr = currentTwitterMdDate;
+  const laneMd = await fetchTwitterAbLaneMd(activeLane, dateStr);
+  const primaryBody = extractTwitterCycleBody(currentTwitterMd, hour);
+  const laneBody = laneMd ? extractTwitterCycleBody(laneMd, hour) : null;
+  if (!primaryBody || !laneBody || !panel.isConnected) {
+    setSafeContent(panel, '<p class="twitter-ab-note">' + escapeHtml(uiText(activeLanguage, 'twitter.comparisonUnavailable')) + '</p>');
+    return;
+  }
+  const options = buildTwitterRenderOptions(null, dateStr);
+  const meta = twitterAbLaneMeta(activeLane, dateStr) || { label: activeLane, model: activeLane, harness: '' };
+  const laneTabs = lanes.length > 1
+    ? '<div class="twitter-ab-lanes" role="tablist">' + lanes.map((l) => {
+        const m = twitterAbLaneMeta(l, dateStr);
+        return '<button type="button" class="twitter-ab-lane-tab' + (l === activeLane ? ' is-active' : '') + '" data-ab-pick="' + escapeHtml(l) + '">' + escapeHtml(m?.label || l) + '</button>';
+      }).join('') + '</div>'
+    : '';
+  setSafeContent(panel, [
+    laneTabs,
+    '<div class="twitter-ab-grid">',
+    twitterAbPaneHtml('twitter', TWITTER_AB_PRIMARY_META, primaryBody, options, hour),
+    twitterAbPaneHtml(activeLane, meta, laneBody, options, hour),
+    '</div>',
+  ].filter(Boolean).join('\n'));
+  panel.dataset.loaded = activeLane;
+  void hydrateTweetCards(panel);
+  void hydrateTwitterAbRuntimes(panel, dateStr);
+}
+
+async function toggleTwitterAbPanel(chip: HTMLButtonElement): Promise<void> {
+  const card = chip.closest('.twitter-cycle-card') as HTMLElement | null;
+  const panel = card?.querySelector('.twitter-ab-panel') as HTMLElement | null;
+  if (!card || !panel) return;
+  if (chip.getAttribute('aria-expanded') === 'true') {
+    chip.setAttribute('aria-expanded', 'false');
+    panel.hidden = true;
+    card.classList.remove('twitter-cycle-card--ab');
+    return;
+  }
+  chip.setAttribute('aria-expanded', 'true');
+  card.classList.add('twitter-cycle-card--ab');
+  panel.hidden = false;
+  const lanes = (chip.dataset.abLanes || '').split(',').filter(Boolean);
+  if (!panel.dataset.loaded && lanes.length) {
+    await buildTwitterAbPanel(panel, chip.dataset.abHour || '', lanes, lanes[0]);
+  }
 }
 
 function loadTickets(): Promise<Ticket[] | null> {
@@ -2487,28 +3712,750 @@ function loadTickets(): Promise<Ticket[] | null> {
   return ticketsPromise;
 }
 
+// ── Polymarket odds (models tab) ─────────────────────
+// Ticket cards with `polymarket` mappings show live market odds: one chip
+// per mapping, name-first — the market question plus its probability
+// (gamma event snapshot, then a 60s CLOB midpoint poll while the tab is
+// visible). The chip is a button: the price-history chart and the
+// Polymarket link are detail-on-demand in the modal it opens, and history
+// is fetched lazily on first modal open per token. Everything degrades
+// gracefully: any fetch failure leaves an em-dash chip titled "odds
+// unavailable", the modal still opens (question + "chart unavailable" +
+// the API-free Polymarket link), and the tab renders fully with
+// Polymarket unreachable.
+//
+// API notes (verified against the live services):
+// - GET gamma-api.polymarket.com/events?slug=<event_slug> → [event]; each
+//   markets[] item carries stringified-JSON `outcomes`/`outcomePrices`/
+//   `clobTokenIds` arrays (index-aligned; prices are "0".."1" strings).
+// - GET clob.polymarket.com/midpoint?token_id=<t> → {"mid":"0.455"}. On
+//   closed markets it 200s with an error body — never poll closed markets;
+//   render their final price from the gamma outcomePrices instead.
+// - GET clob.polymarket.com/prices-history?market=<TOKEN_ID>&interval=max
+//   &fidelity=180 → {"history":[{t,p},...]} (param is named `market` but
+//   takes the CLOB token id; works on resolved tokens too).
+// - Both hosts send ACAO:* — use plain fetch with NO credentials option
+//   (credentials would make the browser reject the CORS response).
+// - Trust market-level active/closed, not event-level (observed drift).
+const POLYMARKET_GAMMA_BASE = 'https://gamma-api.polymarket.com';
+const POLYMARKET_CLOB_BASE = 'https://clob.polymarket.com';
+const ODDS_POLL_INTERVAL_MS = 60_000;
+const ODDS_FETCH_TIMEOUT_MS = 10_000;
+
+type PolymarketMarketState = {
+  closed: boolean;
+  // token id → last gamma price (0..1). Index-aligned parse of
+  // clobTokenIds ↔ outcomePrices, so it works for Yes or No tokens.
+  prices: Map<string, number>;
+};
+type PolymarketEventSnapshot = { markets: Map<string, PolymarketMarketState> };
+type OddsHistoryPoint = { t: number; p: number };
+
+// Session caches: one gamma snapshot per event slug, one history series per
+// token. A resolved-null (failed) fetch is evicted so a later models-tab
+// render may retry once — never more than one in-flight request per key.
+const polymarketEventPromises = new Map<string, Promise<PolymarketEventSnapshot | null>>();
+const polymarketHistoryPromises = new Map<string, Promise<OddsHistoryPoint[] | null>>();
+// Latest CLOB midpoint per token — overrides the (session-old) gamma price
+// on re-renders so filter/tab churn doesn't flash stale numbers.
+const polymarketMidpointPrices = new Map<string, number>();
+let oddsPollTimer: number | null = null;
+let oddsPollTokens = new Set<string>();
+
+async function fetchPolymarketJson(url: string): Promise<unknown | null> {
+  // Plain fetch, no credentials option (see API notes above).
+  const controller = new AbortController();
+  const timer = window.setTimeout(() => controller.abort(), ODDS_FETCH_TIMEOUT_MS);
+  try {
+    const resp = await fetch(url, { signal: controller.signal });
+    if (!resp.ok) return null;
+    return (await resp.json()) as unknown;
+  } catch {
+    return null;
+  } finally {
+    window.clearTimeout(timer);
+  }
+}
+
+// gamma stringifies nested arrays ("[\"Yes\",\"No\"]") — parse defensively.
+function parseStringifiedArray(raw: unknown): unknown[] | null {
+  if (Array.isArray(raw)) return raw;
+  if (typeof raw !== 'string') return null;
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    return Array.isArray(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function loadPolymarketEvent(eventSlug: string): Promise<PolymarketEventSnapshot | null> {
+  const cached = polymarketEventPromises.get(eventSlug);
+  if (cached) return cached;
+  const promise = (async (): Promise<PolymarketEventSnapshot | null> => {
+    const data = await fetchPolymarketJson(
+      `${POLYMARKET_GAMMA_BASE}/events?slug=${encodeURIComponent(eventSlug)}`,
+    );
+    if (!Array.isArray(data) || !data.length) return null;
+    const event = data[0] as { markets?: unknown };
+    if (!event || !Array.isArray(event.markets)) return null;
+    const markets = new Map<string, PolymarketMarketState>();
+    for (const raw of event.markets as Array<Record<string, unknown>>) {
+      if (!raw || typeof raw !== 'object') continue;
+      const id = raw.id == null ? '' : String(raw.id);
+      if (!id) continue;
+      const tokens = parseStringifiedArray(raw.clobTokenIds);
+      const priceStrs = parseStringifiedArray(raw.outcomePrices);
+      const prices = new Map<string, number>();
+      if (tokens && priceStrs) {
+        for (let i = 0; i < tokens.length && i < priceStrs.length; i++) {
+          const token = typeof tokens[i] === 'string' ? (tokens[i] as string) : '';
+          const price = Number(priceStrs[i]);
+          if (token && Number.isFinite(price) && price >= 0 && price <= 1) prices.set(token, price);
+        }
+      }
+      markets.set(id, { closed: raw.closed === true, prices });
+    }
+    return markets.size ? { markets } : null;
+  })().then((snapshot) => {
+    // Evict failures so a later visit can retry; keep successes for the session.
+    if (snapshot === null) polymarketEventPromises.delete(eventSlug);
+    return snapshot;
+  });
+  polymarketEventPromises.set(eventSlug, promise);
+  return promise;
+}
+
+function loadPolymarketHistory(tokenId: string): Promise<OddsHistoryPoint[] | null> {
+  const cached = polymarketHistoryPromises.get(tokenId);
+  if (cached) return cached;
+  const promise = (async (): Promise<OddsHistoryPoint[] | null> => {
+    const data = await fetchPolymarketJson(
+      `${POLYMARKET_CLOB_BASE}/prices-history?market=${encodeURIComponent(tokenId)}&interval=max&fidelity=180`,
+    );
+    const history = (data as { history?: unknown } | null)?.history;
+    if (!Array.isArray(history)) return null;
+    const points: OddsHistoryPoint[] = [];
+    for (const entry of history as Array<Record<string, unknown>>) {
+      const t = Number(entry?.t);
+      const p = Number(entry?.p);
+      if (Number.isFinite(t) && Number.isFinite(p) && p >= 0 && p <= 1) points.push({ t, p });
+    }
+    return points.length >= 2 ? points : null;
+  })().then((points) => {
+    if (points === null) polymarketHistoryPromises.delete(tokenId);
+    return points;
+  });
+  polymarketHistoryPromises.set(tokenId, promise);
+  return promise;
+}
+
+// Belt-and-braces over prebuild's sanitizer: only well-shaped mappings, max 3.
+function ticketPolymarketMappings(ticket: Ticket): TicketPolymarketMapping[] {
+  if (!Array.isArray(ticket.polymarket)) return [];
+  return ticket.polymarket
+    .filter((m): m is TicketPolymarketMapping =>
+      !!m && typeof m === 'object' &&
+      typeof m.event_slug === 'string' && m.event_slug.trim() !== '' &&
+      typeof m.market_id === 'string' && m.market_id.trim() !== '' &&
+      typeof m.token_id === 'string' && m.token_id.trim() !== '' &&
+      typeof m.question === 'string' && m.question.trim() !== '')
+    .slice(0, 3);
+}
+
+function isShareableForecastTicket(ticket: Ticket): boolean {
+  // SEO postbuild uses the same threshold: a market mapping plus the ticket's
+  // strongest evidence state. Partial/unverified tickets remain board-only.
+  return ticket.verification === 'confirmed' && ticketPolymarketMappings(ticket).length > 0;
+}
+
+function forecastPath(ticket: Ticket): string {
+  return `/models/forecast/${encodeURIComponent(ticket.slug)}`;
+}
+
+function forecastUrl(ticket: Ticket): string {
+  return new URL(forecastPath(ticket), PUBLIC_SITE_ORIGIN).href;
+}
+
+function ticketForecastActionsHtml(ticket: Ticket): string {
+  if (!isShareableForecastTicket(ticket)) return '';
+  const statusId = `ticket-share-status-${ticket.slug}`;
+  const markets = ticketPolymarketMappings(ticket).map(mapping => {
+    const href = `https://polymarket.com/event/${encodeURIComponent(mapping.event_slug)}`;
+    const outcome = mapping.outcome?.trim() ? ` · ${escapeHtml(mapping.outcome.trim())}` : '';
+    return `<li><a href="${href}" target="_blank" rel="noopener noreferrer">${escapeHtml(mapping.question)}${outcome} ↗</a></li>`;
+  }).join('');
+  return `<div class="ticket-forecast-actions">
+    <div class="ticket-forecast-heading">
+      <h4 class="ticket-history-title">${escapeHtml(uiText(activeLanguage, 'models.linkedForecasts'))}</h4>
+      <button class="ticket-share-button" type="button" data-ticket-share="${escapeHtml(ticket.slug)}" aria-describedby="${escapeHtml(statusId)}">${escapeHtml(uiText(activeLanguage, 'models.shareForecast'))}</button>
+    </div>
+    <ul class="ticket-forecast-links">${markets}</ul>
+    <span class="ticket-share-status" id="${escapeHtml(statusId)}" role="status" aria-live="polite"></span>
+  </div>`;
+}
+
+function copyTextFallback(text: string): boolean {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  let copied = false;
+  try {
+    copied = document.execCommand('copy');
+  } catch {
+    copied = false;
+  }
+  textarea.remove();
+  return copied;
+}
+
+function trackForecastShare(ticket: Ticket, method: 'native' | 'clipboard'): void {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', 'share', {
+    method,
+    content_type: 'model_forecast',
+    item_id: ticket.slug,
+    content_id: forecastUrl(ticket),
+  });
+}
+
+async function shareTicketForecast(ticket: Ticket, button: HTMLButtonElement): Promise<void> {
+  const status = button.closest('.ticket-forecast-actions')?.querySelector<HTMLElement>('.ticket-share-status');
+  const shareData = {
+    title: uiText(activeLanguage, 'models.shareTitle', { title: ticket.title }),
+    text: uiText(activeLanguage, 'models.shareText', { title: ticket.title }),
+    url: forecastUrl(ticket),
+  };
+  if (typeof navigator.share === 'function') {
+    try {
+      await navigator.share(shareData);
+      if (status) status.textContent = uiText(activeLanguage, 'models.shared');
+      trackForecastShare(ticket, 'native');
+      return;
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') {
+        if (status) status.textContent = '';
+        return;
+      }
+      // A platform can expose navigator.share but reject a payload. Fall
+      // through to copy so the control still works in partial implementations.
+    }
+  }
+  let copied = false;
+  try {
+    await navigator.clipboard.writeText(shareData.url);
+    copied = true;
+  } catch {
+    copied = copyTextFallback(shareData.url);
+  }
+  if (copied) {
+    if (status) status.textContent = uiText(activeLanguage, 'models.linkCopied');
+    trackForecastShare(ticket, 'clipboard');
+  } else if (status) {
+    status.textContent = uiText(activeLanguage, 'models.copyLink', { url: shareData.url });
+  }
+}
+
+function fmtOddsPct(price: number): string {
+  const pct = price * 100;
+  if (pct > 0 && pct < 1) return '<1%';
+  if (pct > 99 && pct < 100) return '>99%';
+  return `${Math.round(pct)}%`;
+}
+
+// Static chip skeleton (em-dash placeholder); hydrateTicketOdds fills prices
+// in after the grid paints. The market NAME is what tells a user which event
+// is priced, so the chip shows the question (CSS-ellipsized; full text in
+// title) + the probability. It's a button — clicking opens the odds modal
+// (chart + Polymarket link), an in-app action rather than an external link.
+function ticketOddsSectionHtml(ticket: Ticket): string {
+  const mappings = ticketPolymarketMappings(ticket);
+  if (!mappings.length) return '';
+  const chips = mappings.map((m) => {
+    const outcome = (m.outcome && m.outcome.trim()) || '';
+    return `<button class="ticket-odds-chip" type="button"
+      data-odds-event="${escapeHtml(m.event_slug)}" data-odds-market="${escapeHtml(m.market_id)}" data-odds-token="${escapeHtml(m.token_id)}"
+      data-odds-question="${escapeHtml(m.question)}" data-odds-outcome="${escapeHtml(outcome)}"
+      title="${escapeHtml(m.question)}"
+      aria-haspopup="dialog"
+      aria-label="${escapeHtml(uiText(activeLanguage, 'models.oddsAria', { question: m.question }))}">
+      <span class="ticket-odds-label">${escapeHtml(m.question)}</span>
+      <span class="ticket-odds-pct">—</span>
+    </button>`;
+  }).join('');
+  return `<div class="ticket-odds">${chips}</div>`;
+}
+
+function applyOddsToChip(chip: HTMLElement, price: number, closed: boolean): void {
+  const pctEl = chip.querySelector<HTMLElement>('.ticket-odds-pct');
+  if (!pctEl) return;
+  chip.classList.remove('is-unavailable');
+  // Compose the title from the stored question (never regex the live title —
+  // questions can legally contain " — ") so repeated applies stay stable.
+  const question = chip.dataset.oddsQuestion || '';
+  if (closed) {
+    const yes = price >= 0.5;
+    const result = uiText(activeLanguage, yes ? 'models.yes' : 'models.no');
+    chip.classList.add('is-resolved', yes ? 'is-resolved-yes' : 'is-resolved-no');
+    pctEl.textContent = `${yes ? '✓' : '✗'} ${Math.round(price * 100)}%`;
+    chip.title = `${question} — ${uiText(activeLanguage, 'models.resolved', { result })}`;
+  } else {
+    pctEl.textContent = fmtOddsPct(price);
+    chip.title = question; // restore after a transient unavailable pass
+  }
+}
+
+function markChipUnavailable(chip: HTMLElement): void {
+  const pctEl = chip.querySelector<HTMLElement>('.ticket-odds-pct');
+  if (pctEl) pctEl.textContent = '—';
+  chip.classList.add('is-unavailable');
+  chip.title = uiText(activeLanguage, 'models.oddsUnavailable');
+}
+
+function fmtOddsChartDate(unixSec: number): string {
+  return new Date(unixSec * 1000).toLocaleDateString(activeLanguage === 'ko' ? 'ko-KR' : 'en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+  });
+}
+
+// Price-history line chart for the odds modal (~panel width x 180px).
+// Built via DOM APIs (no sanitizer round-trip, no chart libraries); stroke
+// and labels use currentColor so the CSS theme decides the color in light
+// and dark mode. `width` is the measured container width so text renders at
+// natural pixel size (no preserveAspectRatio="none" glyph distortion).
+function buildOddsModalChart(points: OddsHistoryPoint[], width: number): SVGSVGElement {
+  const W = Math.max(280, Math.min(900, Math.round(width)));
+  const H = 180;
+  const PAD_L = 12;
+  const PAD_R = 64; // gutter for the latest-% label
+  const PAD_T = 18;
+  const PAD_B = 32; // room for the start/end date labels
+  // Downsample long series but always keep the final point.
+  let series = points;
+  if (series.length > 320) {
+    const stride = Math.ceil(series.length / 320);
+    const sampled = series.filter((_, i) => i % stride === 0);
+    if (sampled[sampled.length - 1] !== series[series.length - 1]) sampled.push(series[series.length - 1]);
+    series = sampled;
+  }
+  const t0 = series[0].t;
+  const t1 = series[series.length - 1].t;
+  const tSpan = Math.max(1, t1 - t0);
+  const actualMin = Math.min(...series.map((pt) => pt.p));
+  const actualMax = Math.max(...series.map((pt) => pt.p));
+  let pMin = actualMin;
+  let pMax = actualMax;
+  if (pMax - pMin < 0.05) {
+    // Flat series: pad the band so the line doesn't hug an edge.
+    const mid = (pMax + pMin) / 2;
+    pMin = Math.max(0, mid - 0.025);
+    pMax = Math.min(1, mid + 0.025);
+  }
+  const pSpan = Math.max(1e-6, pMax - pMin);
+  const x = (t: number) => PAD_L + ((t - t0) / tSpan) * (W - PAD_L - PAD_R);
+  const y = (p: number) => H - PAD_B - ((p - pMin) / pSpan) * (H - PAD_T - PAD_B);
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(SVG_NS, 'svg');
+  svg.setAttribute('class', 'ticket-odds-modal-chart-svg');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('role', 'img');
+  svg.setAttribute('aria-label', uiText(activeLanguage, 'models.priceHistory', {
+    start: fmtOddsChartDate(t0),
+    end: fmtOddsChartDate(t1),
+    min: fmtOddsPct(actualMin),
+    max: fmtOddsPct(actualMax),
+    latest: fmtOddsPct(series[series.length - 1].p),
+  }));
+  const text = (tx: number, ty: number, content: string, opts: { anchor?: string; bold?: boolean; dim?: boolean } = {}) => {
+    const el = document.createElementNS(SVG_NS, 'text');
+    el.setAttribute('x', tx.toFixed(1));
+    el.setAttribute('y', ty.toFixed(1));
+    el.setAttribute('font-size', opts.bold ? '12' : '11');
+    el.setAttribute('fill', 'currentColor');
+    if (opts.anchor) el.setAttribute('text-anchor', opts.anchor);
+    if (opts.bold) el.setAttribute('font-weight', '700');
+    el.setAttribute('opacity', opts.dim ? '0.6' : opts.bold ? '1' : '0.75');
+    svg.appendChild(el);
+    el.textContent = content;
+    return el;
+  };
+  // Dashed gridlines + labels at the series min/max (actual values, placed at
+  // their true y positions so the labels stay honest even on padded bands).
+  const yMaxPos = y(actualMax); // max price → top
+  const yMinPos = y(actualMin); // min price → bottom
+  for (const gy of yMinPos - yMaxPos > 2 ? [yMaxPos, yMinPos] : [yMaxPos]) {
+    const line = document.createElementNS(SVG_NS, 'line');
+    line.setAttribute('x1', String(PAD_L));
+    line.setAttribute('x2', String(W - PAD_R));
+    line.setAttribute('y1', gy.toFixed(1));
+    line.setAttribute('y2', gy.toFixed(1));
+    line.setAttribute('stroke', 'currentColor');
+    line.setAttribute('stroke-dasharray', '3 4');
+    line.setAttribute('opacity', '0.18');
+    svg.appendChild(line);
+  }
+  text(PAD_L + 2, yMaxPos - 5, fmtOddsPct(actualMax));
+  if (yMinPos - yMaxPos >= 26) text(PAD_L + 2, yMinPos + 13, fmtOddsPct(actualMin)); // skip when it would collide
+  // The line itself.
+  const d = series
+    .map((pt, i) => `${i === 0 ? 'M' : 'L'}${x(pt.t).toFixed(1)} ${y(pt.p).toFixed(1)}`)
+    .join(' ');
+  const path = document.createElementNS(SVG_NS, 'path');
+  path.setAttribute('d', d);
+  path.setAttribute('fill', 'none');
+  path.setAttribute('stroke', 'currentColor');
+  path.setAttribute('stroke-width', '2');
+  path.setAttribute('stroke-linejoin', 'round');
+  path.setAttribute('stroke-linecap', 'round');
+  svg.appendChild(path);
+  // Endpoint dot + latest-% label in the right gutter.
+  const last = series[series.length - 1];
+  const dot = document.createElementNS(SVG_NS, 'circle');
+  dot.setAttribute('cx', x(last.t).toFixed(1));
+  dot.setAttribute('cy', y(last.p).toFixed(1));
+  dot.setAttribute('r', '3');
+  dot.setAttribute('fill', 'currentColor');
+  svg.appendChild(dot);
+  const yLatest = Math.max(PAD_T + 10, Math.min(H - PAD_B - 2, y(last.p) + 4));
+  text(x(last.t) + 8, yLatest, fmtOddsPct(last.p), { bold: true });
+  // Start/end date labels along the bottom (clear of the min-% label).
+  text(PAD_L, H - 6, fmtOddsChartDate(t0), { dim: true });
+  text(W - 12, H - 6, fmtOddsChartDate(t1), { anchor: 'end', dim: true });
+  return svg;
+}
+
+function stopTicketOddsPolling(): void {
+  if (oddsPollTimer !== null) {
+    window.clearInterval(oddsPollTimer);
+    oddsPollTimer = null;
+  }
+  oddsPollTokens = new Set();
+}
+
+async function pollOddsMidpoints(): Promise<void> {
+  if (activeTab !== 'models') {
+    stopTicketOddsPolling();
+    return;
+  }
+  if (document.hidden || oddsPollTokens.size === 0) return;
+  await Promise.all(Array.from(oddsPollTokens).map(async (tokenId) => {
+    const data = await fetchPolymarketJson(
+      `${POLYMARKET_CLOB_BASE}/midpoint?token_id=${encodeURIComponent(tokenId)}`,
+    );
+    const mid = Number((data as { mid?: unknown } | null)?.mid);
+    if (!Number.isFinite(mid) || mid < 0 || mid > 1) return; // closed/error bodies land here
+    polymarketMidpointPrices.set(tokenId, mid);
+    // CSS.escape: token ids are digit strings in practice, but the validator
+    // only requires a non-empty string — a hostile-but-legal value must not
+    // throw a selector SyntaxError inside the poll loop.
+    for (const chip of content.querySelectorAll<HTMLElement>(
+      `.ticket-odds-chip[data-odds-token="${CSS.escape(tokenId)}"]`,
+    )) {
+      applyOddsToChip(chip, mid, false);
+    }
+    // Same update path feeds the modal: only open markets are ever polled,
+    // so an open modal on this token gets the fresh live %.
+    if (tokenId === oddsModalToken && ticketOddsModalEl && !ticketOddsModalEl.hidden) {
+      setOddsModalStatus({ price: mid, closed: false }, ticketOddsModalEl.dataset.oddsOutcome || '');
+    }
+  }));
+}
+
+function startTicketOddsPolling(openTokens: Set<string>): void {
+  oddsPollTokens = openTokens;
+  if (openTokens.size === 0) {
+    stopTicketOddsPolling();
+    return;
+  }
+  if (oddsPollTimer === null) {
+    oddsPollTimer = window.setInterval(() => { void pollOddsMidpoints(); }, ODDS_POLL_INTERVAL_MS);
+  }
+}
+
+// Fill the odds chips after the grid paints. One gamma snapshot per event
+// slug per session; stale/detached elements are skipped via isConnected
+// checks. Price HISTORY is not touched here — it's fetched lazily on first
+// modal open per token (openTicketOddsModal), keeping card render cheap.
+async function hydrateTicketOdds(): Promise<void> {
+  const chips = Array.from(content.querySelectorAll<HTMLElement>('.ticket-odds-chip'));
+  if (!chips.length) {
+    stopTicketOddsPolling();
+    return;
+  }
+  const bySlug = new Map<string, HTMLElement[]>();
+  for (const chip of chips) {
+    const slug = chip.dataset.oddsEvent || '';
+    if (!slug) continue;
+    const group = bySlug.get(slug);
+    if (group) group.push(chip);
+    else bySlug.set(slug, [chip]);
+  }
+  const openTokens = new Set<string>();
+  await Promise.all(Array.from(bySlug.entries()).map(async ([slug, group]) => {
+    const snapshot = await loadPolymarketEvent(slug);
+    for (const chip of group) {
+      if (!chip.isConnected) continue;
+      const marketId = chip.dataset.oddsMarket || '';
+      const tokenId = chip.dataset.oddsToken || '';
+      const market = snapshot?.markets.get(marketId);
+      const gammaPrice = market?.prices.get(tokenId);
+      if (!market || gammaPrice === undefined) {
+        markChipUnavailable(chip);
+        continue;
+      }
+      if (market.closed) {
+        applyOddsToChip(chip, gammaPrice, true);
+      } else {
+        // Prefer a fresher midpoint from a previous poll over the
+        // session-cached gamma snapshot price.
+        applyOddsToChip(chip, polymarketMidpointPrices.get(tokenId) ?? gammaPrice, false);
+        openTokens.add(tokenId);
+      }
+    }
+  }));
+  if (activeTab !== 'models') return; // user navigated away mid-hydration
+  startTicketOddsPolling(openTokens);
+}
+
+// ── Polymarket odds modal ─────────────────────
+// Detail-on-demand for a chip: full market question, outcome + live/resolved
+// status, the price-history chart, and a prominent Polymarket link. DOM,
+// open/close, focus, and Esc behavior mirror the ara-figure lightbox
+// (ensureAraFigureModal in ara-enhance.ts): backdrop button + close button
+// share a data-close attribute, `hidden` toggles visibility, a body class
+// locks scroll, focus moves to the close button and returns to the chip.
+let ticketOddsModalEl: HTMLDivElement | null = null;
+let oddsModalLastFocus: HTMLElement | null = null;
+// Token the open modal is showing (poll pushes live % onto it) and a
+// generation counter so async status/history fills from a previous open
+// never paint over a newer one (the modal element is reused).
+let oddsModalToken: string | null = null;
+let oddsModalGeneration = 0;
+
+function ensureTicketOddsModal(): HTMLDivElement {
+  if (ticketOddsModalEl) {
+    const closeLabel = uiText(activeLanguage, 'models.closeMarket');
+    ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-backdrop')?.setAttribute('aria-label', closeLabel);
+    ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-close')?.setAttribute('aria-label', closeLabel);
+    const link = ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-link');
+    if (link) link.textContent = uiText(activeLanguage, 'models.openMarket');
+    const note = ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-note');
+    if (note) note.textContent = uiText(activeLanguage, 'models.oddsNote');
+    return ticketOddsModalEl;
+  }
+  const modal = document.createElement('div');
+  modal.id = 'ticketOddsModal';
+  modal.className = 'ticket-odds-modal';
+  modal.hidden = true;
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-labelledby', 'ticketOddsModalTitle');
+
+  const backdrop = document.createElement('button');
+  backdrop.className = 'ticket-odds-modal-backdrop';
+  backdrop.type = 'button';
+  backdrop.dataset.oddsModalClose = '1';
+  backdrop.setAttribute('aria-label', uiText(activeLanguage, 'models.closeMarket'));
+
+  const panel = document.createElement('div');
+  panel.className = 'ticket-odds-modal-panel';
+  panel.setAttribute('role', 'document');
+
+  const close = document.createElement('button');
+  close.className = 'ticket-odds-modal-close';
+  close.type = 'button';
+  close.dataset.oddsModalClose = '1';
+  close.setAttribute('aria-label', uiText(activeLanguage, 'models.closeMarket'));
+  close.textContent = '×';
+
+  const title = document.createElement('h3');
+  title.className = 'ticket-odds-modal-title';
+  title.id = 'ticketOddsModalTitle';
+
+  const status = document.createElement('div');
+  status.className = 'ticket-odds-modal-status';
+  const pct = document.createElement('span');
+  pct.className = 'ticket-odds-modal-pct';
+  const meta = document.createElement('span');
+  meta.className = 'ticket-odds-modal-meta';
+  status.appendChild(pct);
+  status.appendChild(meta);
+
+  const chart = document.createElement('div');
+  chart.className = 'ticket-odds-modal-chart';
+
+  // The link needs no API — it must keep working with Polymarket fully down.
+  const link = document.createElement('a');
+  link.className = 'ticket-odds-modal-link';
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.textContent = uiText(activeLanguage, 'models.openMarket');
+
+  const note = document.createElement('p');
+  note.className = 'ticket-odds-modal-note';
+  note.textContent = uiText(activeLanguage, 'models.oddsNote');
+
+  panel.appendChild(close);
+  panel.appendChild(title);
+  panel.appendChild(status);
+  panel.appendChild(chart);
+  panel.appendChild(link);
+  panel.appendChild(note);
+  modal.appendChild(backdrop);
+  modal.appendChild(panel);
+  modal.addEventListener('click', (event) => {
+    if (event.target instanceof Element && event.target.closest('[data-odds-modal-close]')) {
+      closeTicketOddsModal();
+    }
+  });
+  document.body.appendChild(modal);
+  ticketOddsModalEl = modal;
+  return modal;
+}
+
+type OddsModalPriceState = { price: number; closed: boolean } | 'pending' | 'unavailable';
+
+function setOddsModalStatus(state: OddsModalPriceState, outcome: string): void {
+  const modal = ticketOddsModalEl;
+  if (!modal) return;
+  const status = modal.querySelector<HTMLElement>('.ticket-odds-modal-status');
+  const pctEl = modal.querySelector<HTMLElement>('.ticket-odds-modal-pct');
+  const metaEl = modal.querySelector<HTMLElement>('.ticket-odds-modal-meta');
+  if (!status || !pctEl || !metaEl) return;
+  status.classList.remove('is-resolved-yes', 'is-resolved-no', 'is-unavailable');
+  const prefix = outcome ? `${outcome} · ` : '';
+  if (state === 'pending') {
+    pctEl.textContent = '—';
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.loadingOdds')}`;
+  } else if (state === 'unavailable') {
+    status.classList.add('is-unavailable');
+    pctEl.textContent = '—';
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.oddsUnavailable')}`;
+  } else if (state.closed) {
+    const yes = state.price >= 0.5;
+    const result = uiText(activeLanguage, yes ? 'models.yes' : 'models.no');
+    status.classList.add(yes ? 'is-resolved-yes' : 'is-resolved-no');
+    pctEl.textContent = `${yes ? '✓' : '✗'} ${Math.round(state.price * 100)}%`;
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.resolved', { result })}`;
+  } else {
+    pctEl.textContent = fmtOddsPct(state.price);
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.liveOdds')}`;
+  }
+}
+
+function renderOddsModalChart(points: OddsHistoryPoint[] | null): void {
+  const chart = ticketOddsModalEl?.querySelector<HTMLElement>('.ticket-odds-modal-chart');
+  if (!chart) return;
+  if (!points) {
+    const empty = document.createElement('span');
+    empty.className = 'ticket-odds-modal-chart-empty';
+    empty.textContent = uiText(activeLanguage, 'models.chartUnavailable');
+    chart.replaceChildren(empty);
+    return;
+  }
+  chart.replaceChildren(buildOddsModalChart(points, chart.clientWidth || 600));
+}
+
+function openTicketOddsModal(chip: HTMLElement): void {
+  const eventSlug = chip.dataset.oddsEvent || '';
+  const marketId = chip.dataset.oddsMarket || '';
+  const tokenId = chip.dataset.oddsToken || '';
+  const question = chip.dataset.oddsQuestion || uiText(activeLanguage, 'models.defaultMarket');
+  const outcome = (chip.dataset.oddsOutcome || '').trim();
+  if (!eventSlug || !tokenId) return;
+  const modal = ensureTicketOddsModal();
+  const title = modal.querySelector<HTMLElement>('.ticket-odds-modal-title');
+  const link = modal.querySelector<HTMLAnchorElement>('.ticket-odds-modal-link');
+  const close = modal.querySelector<HTMLButtonElement>('.ticket-odds-modal-close');
+  const chart = modal.querySelector<HTMLElement>('.ticket-odds-modal-chart');
+  if (!title || !link || !close || !chart) return;
+  title.textContent = question;
+  link.href = `https://polymarket.com/event/${encodeURIComponent(eventSlug)}`;
+  modal.dataset.oddsOutcome = outcome; // poll re-reads it for live updates
+  setOddsModalStatus('pending', outcome);
+  const loading = document.createElement('span');
+  loading.className = 'ticket-odds-modal-chart-empty';
+  loading.textContent = uiText(activeLanguage, 'models.loadingChart');
+  chart.replaceChildren(loading);
+  oddsModalLastFocus = chip;
+  oddsModalToken = tokenId;
+  const generation = ++oddsModalGeneration;
+  modal.hidden = false;
+  document.body.classList.add('ticket-odds-modal-open');
+  close.focus();
+  // Status from the session-cached gamma snapshot (fresh midpoints win for
+  // open markets). Usually resolved already; also covers a modal opened
+  // before chip hydration finished.
+  void (async () => {
+    const snapshot = await loadPolymarketEvent(eventSlug);
+    if (generation !== oddsModalGeneration) return; // closed/reopened since
+    const market = snapshot?.markets.get(marketId);
+    const gammaPrice = market?.prices.get(tokenId);
+    if (!market || gammaPrice === undefined) {
+      setOddsModalStatus('unavailable', outcome);
+      return;
+    }
+    if (market.closed) {
+      setOddsModalStatus({ price: gammaPrice, closed: true }, outcome);
+    } else {
+      setOddsModalStatus({ price: polymarketMidpointPrices.get(tokenId) ?? gammaPrice, closed: false }, outcome);
+    }
+  })();
+  // History is fetched lazily HERE — first open per token hits the network,
+  // later opens hit the session cache; a failed fetch was evicted so the
+  // next open retries. Failure keeps the status + link fully functional.
+  void (async () => {
+    const points = await loadPolymarketHistory(tokenId);
+    if (generation !== oddsModalGeneration) return;
+    renderOddsModalChart(points);
+  })();
+}
+
+function closeTicketOddsModal(): void {
+  const modal = ticketOddsModalEl;
+  if (!modal || modal.hidden) return;
+  modal.hidden = true;
+  document.body.classList.remove('ticket-odds-modal-open');
+  oddsModalToken = null;
+  oddsModalGeneration++; // invalidate in-flight status/history fills
+  const focusTarget = oddsModalLastFocus;
+  oddsModalLastFocus = null;
+  if (focusTarget && focusTarget.isConnected) focusTarget.focus();
+}
+
+function ticketStatusLabel(status: TicketStatus): string {
+  const labels: Record<TicketStatus, string> = {
+    'rumored': uiText(activeLanguage, 'models.rumored'),
+    'in-testing': uiText(activeLanguage, 'models.inTesting'),
+    'confirmed': uiText(activeLanguage, 'models.confirmed'),
+    'released': uiText(activeLanguage, 'models.released'),
+    'closed': uiText(activeLanguage, 'models.closedStatus'),
+  };
+  return labels[status];
+}
+
 function ticketStatusPill(status: TicketStatus): string {
   // Color via class so dark/light mode and contrast stay consistent.
-  const labels: Record<TicketStatus, string> = {
-    'rumored': 'Rumored',
-    'in-testing': 'In Testing',
-    'confirmed': 'Confirmed',
-    'released': 'Released',
-    'closed': 'Closed',
-  };
-  return `<span class="ticket-pill ticket-pill-${status}">${escapeHtml(labels[status])}</span>`;
+  const label = ticketStatusLabel(status);
+  return `<span class="ticket-pill ticket-pill-${status}">${escapeHtml(label)}</span>`;
 }
 
 // Compact card — status + title + company + a few labels. Everything else
 // (note, expected, model, verification, sources, history) lives in the modal
 // that opens on click, so the board stays short and scannable.
 function ticketCard(ticket: Ticket): string {
-  // Bird's-eye board = company + title only; labels/details live in the modal.
+  // Bird's-eye board = company + title (+ live Polymarket odds chips when
+  // the ticket has market mappings); labels/details live in the modal.
   return `<article class="ticket-card ticket-card-${ticket.status}" data-slug="${escapeHtml(ticket.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(ticket.title)}">
     <div class="ticket-card-top">
       <span class="ticket-company">${escapeHtml(ticket.company)}</span>
     </div>
     <h3 class="ticket-title">${escapeHtml(ticket.title)}</h3>
+    ${ticketOddsSectionHtml(ticket)}
   </article>`;
 }
 
@@ -2521,40 +4468,41 @@ function ticketExpandedPanel(ticket: Ticket | null): string {
     'unverified': 'ara-flag--red',
   };
   const verifLabel: Record<TicketVerification, string> = {
-    'confirmed': 'Confirmed',
-    'partial': 'Partial corroboration',
-    'unverified': 'Unverified',
+    'confirmed': uiText(activeLanguage, 'models.confirmed'),
+    'partial': uiText(activeLanguage, 'models.partial'),
+    'unverified': uiText(activeLanguage, 'models.unverified'),
   };
   // Structured metadata as an ara-kv definition grid.
   const kvRows = [
-    `<dt>Company</dt><dd>${escapeHtml(ticket.company)}</dd>`,
-    ticket.model ? `<dt>Model</dt><dd>${escapeHtml(ticket.model)}</dd>` : '',
-    ticket.expected ? `<dt>Expected</dt><dd>${escapeHtml(ticket.expected)}</dd>` : '',
-    `<dt>Verification</dt><dd><span class="ara-flag ${verifFlag[ticket.verification]}"></span>${escapeHtml(verifLabel[ticket.verification])}</dd>`,
-    `<dt>Updated</dt><dd>${escapeHtml(ticket.updated_at)}</dd>`,
-    `<dt>Created</dt><dd>${escapeHtml(ticket.created_at)}</dd>`,
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.company'))}</dt><dd>${escapeHtml(ticket.company)}</dd>`,
+    ticket.model ? `<dt>${escapeHtml(uiText(activeLanguage, 'models.model'))}</dt><dd>${escapeHtml(ticket.model)}</dd>` : '',
+    ticket.expected ? `<dt>${escapeHtml(uiText(activeLanguage, 'models.expected'))}</dt><dd>${escapeHtml(ticket.expected)}</dd>` : '',
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.verification'))}</dt><dd><span class="ara-flag ${verifFlag[ticket.verification]}"></span>${escapeHtml(verifLabel[ticket.verification])}</dd>`,
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.updated'))}</dt><dd>${escapeHtml(ticket.updated_at)}</dd>`,
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.created'))}</dt><dd>${escapeHtml(ticket.created_at)}</dd>`,
     ticket.status === 'closed' && ticket.closed_reason
-      ? `<dt>Closed</dt><dd>${escapeHtml(ticket.closed_at || '')} — ${escapeHtml(ticket.closed_reason)}</dd>`
+      ? `<dt>${escapeHtml(uiText(activeLanguage, 'models.closed'))}</dt><dd>${escapeHtml(ticket.closed_at || '')} — ${escapeHtml(ticket.closed_reason)}</dd>`
       : '',
   ].filter(Boolean).join('\n');
   // History → ara-timeline (the canonical chronological-log component).
   const historyItems = ticket.history.map((h) =>
     `<li class="ara-timeline-item"><time class="ara-timeline-date">${escapeHtml(h.ts)}</time><div class="ara-timeline-event"><p>${escapeHtml(h.change)}</p></div></li>`,
   ).join('');
-  return `<section class="ticket-detail-panel" aria-label="${escapeHtml(ticket.title)} details">
+  return `<section class="ticket-detail-panel" aria-label="${escapeHtml(uiText(activeLanguage, 'models.details', { title: ticket.title }))}">
     <div class="ticket-detail-header">
       ${ticketStatusPill(ticket.status)}
-      <h3>${escapeHtml(ticket.title)}</h3>
+      <h3 id="ticket-dialog-title-${escapeHtml(ticket.slug)}">${escapeHtml(ticket.title)}</h3>
     </div>
     <div class="ticket-expanded">
+      ${ticketForecastActionsHtml(ticket)}
       <dl class="ara-kv">${kvRows}</dl>
       <div class="ticket-body md-content">${DOMPurify.sanitize(renderReportMarkdown(ticket.body))}</div>
       <div class="ticket-history">
-        <h4 class="ticket-history-title">History</h4>
+        <h4 class="ticket-history-title">${escapeHtml(uiText(activeLanguage, 'models.history'))}</h4>
         <ol class="ara-timeline">${historyItems}</ol>
       </div>
       <div class="ticket-all-sources">
-        <h4 class="ticket-history-title">All sources (${ticket.sources.length})</h4>
+        <h4 class="ticket-history-title">${escapeHtml(uiText(activeLanguage, 'models.sources', { count: ticket.sources.length }))}</h4>
         <ul class="ticket-source-list">${ticket.sources.map((s) => s.startsWith('@')
           ? `<li><span class="ticket-source-handle">${escapeHtml(s)}</span></li>`
           : `<li><a href="${escapeHtml(s)}" target="_blank" rel="noopener">${escapeHtml(s)}</a></li>`).join('')}</ul>
@@ -2608,49 +4556,120 @@ function companyKey(company: string): string {
 // Ticket detail modal — clicking a card opens a larger overlay with the full
 // ticket (metadata grid, body, history timeline, sources).
 let ticketModalEl: HTMLElement | null = null;
+let ticketModalReturnFocusSlug: string | null = null;
+
+function rememberTicketModalOrigin(ticket: Ticket): void {
+  ticketModalReturnFocusSlug = ticket.slug;
+}
+
+function restoreTicketModalFocus(): void {
+  if (!ticketModalReturnFocusSlug || selectedSlug) return;
+  const slug = ticketModalReturnFocusSlug;
+  const card = Array.from(content.querySelectorAll<HTMLElement>('.ticket-card'))
+    .find(candidate => candidate.dataset.slug === slug);
+  if (!card) return;
+  ticketModalReturnFocusSlug = null;
+  card.focus();
+}
+
 function openTicketModal(ticket: Ticket): void {
   if (!ticketModalEl) {
     ticketModalEl = document.createElement('div');
     ticketModalEl.className = 'ticket-modal';
+    ticketModalEl.setAttribute('role', 'dialog');
+    ticketModalEl.setAttribute('aria-modal', 'true');
     ticketModalEl.addEventListener('click', (e) => {
       const tgt = e.target as HTMLElement;
+      const shareButton = tgt.closest('[data-ticket-share]') as HTMLButtonElement | null;
+      if (shareButton) {
+        const slug = shareButton.dataset.ticketShare;
+        const shareTicket = slug && ticketsCache ? ticketsCache.find((candidate) => candidate.slug === slug) : null;
+        if (shareTicket && isShareableForecastTicket(shareTicket)) void shareTicketForecast(shareTicket, shareButton);
+        return;
+      }
       if (tgt === ticketModalEl || tgt.closest('.ticket-modal-close')) closeTicketModal();
     });
     document.body.appendChild(ticketModalEl);
   }
   setSafeContent(
     ticketModalEl,
-    '<div class="ticket-modal-card"><button class="ticket-modal-close" type="button" aria-label="Close">✕</button>' +
+    '<div class="ticket-modal-card"><button class="ticket-modal-close" type="button" aria-label="' + escapeHtml(uiText(activeLanguage, 'models.close')) + '">✕</button>' +
       ticketExpandedPanel(ticket) + '</div>',
   );
+  ticketModalEl.setAttribute('aria-labelledby', `ticket-dialog-title-${ticket.slug}`);
   ticketModalEl.style.display = 'flex';
   document.body.classList.add('modal-open');
+  ticketModalEl.querySelector<HTMLButtonElement>('.ticket-modal-close')?.focus();
 }
 function closeTicketModal(): void {
   if (ticketModalEl) ticketModalEl.style.display = 'none';
   document.body.classList.remove('modal-open');
+  if (activeTab === 'models' && selectedSlug) {
+    selectedSlug = null;
+    if (history.state?.araForecastFromBoard === true) {
+      history.back();
+      return;
+    }
+    history.replaceState(null, '', routeFromState());
+    lastAppliedPathname = location.pathname + location.search;
+    trackPageView();
+  }
+  restoreTicketModalFocus();
 }
 document.addEventListener('keydown', (e) => {
-  if (!ticketModalEl) return;
-  if (e.key === 'Escape' && ticketModalEl.style.display === 'flex') {
+  if (e.key === 'Tab' && ticketModalEl?.style.display === 'flex') {
+    const focusable = Array.from(ticketModalEl.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    )).filter(element => !element.hasAttribute('hidden'));
+    if (focusable.length === 0) {
+      e.preventDefault();
+      return;
+    }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+    if (e.shiftKey && (active === first || !ticketModalEl.contains(active))) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && active === last) {
+      e.preventDefault();
+      first.focus();
+    }
+    return;
+  }
+  if (e.key === 'Escape' && ticketModalEl?.style.display === 'flex') {
     closeTicketModal();
     return;
   }
   if ((e.key === 'Enter' || e.key === ' ') && document.body.classList.contains('tab-models')) {
-    const card = (document.activeElement as HTMLElement | null)?.closest?.('.ticket-card') as HTMLElement | null;
+    const active = document.activeElement as HTMLElement | null;
+    // Interactive elements inside the card (odds chips, links) handle their
+    // own activation — don't ALSO open the ticket modal over them.
+    if (active?.closest?.('a, button')) return;
+    const card = active?.closest?.('.ticket-card') as HTMLElement | null;
     const slug = card?.dataset.slug;
     const ticket = slug && ticketsCache ? ticketsCache.find((t) => t.slug === slug) : null;
-    if (ticket) { e.preventDefault(); openTicketModal(ticket); }
+    if (ticket) {
+      e.preventDefault();
+      rememberTicketModalOrigin(ticket);
+      if (isShareableForecastTicket(ticket)) {
+        pendingRouteState = { araForecastFromBoard: true };
+        selectedSlug = ticket.slug;
+        load();
+      } else {
+        openTicketModal(ticket);
+      }
+    }
   }
 });
 
 function renderTickets(tickets: Ticket[] | null): void {
   if (!tickets || tickets.length === 0) {
+    stopTicketOddsPolling();
     setSafeContent(
       content,
       `<div class="content-card"><div class="content-card-body">
-        <p>No model tickets yet. The daily CRUD agent will seed this list on the next run, or run <code>workflow_dispatch</code> on
-        <a href="https://github.com/guzus/ai-research-arm/actions/workflows/24h-model-timeline.yml" target="_blank" rel="noopener">24h-model-timeline</a>.</p>
+        <p>${escapeHtml(uiText(activeLanguage, 'models.empty'))}</p>
       </div></div>`,
     );
     return;
@@ -2668,30 +4687,30 @@ function renderTickets(tickets: Ticket[] | null): void {
   for (const s of statusOptions) statusCounts[s] = tickets.filter((t) => t.status === s).length;
 
   const statusBar = [
-    `<button class="ticket-filter-pill${ticketFilters.status === 'all' ? ' active' : ''}" data-filter-status="all">All <span class="ticket-filter-count">${statusCounts.all}</span></button>`,
-    ...statusOptions.map((s) => `<button class="ticket-filter-pill ticket-filter-pill-${s}${ticketFilters.status === s ? ' active' : ''}" data-filter-status="${s}">${escapeHtml(s)} <span class="ticket-filter-count">${statusCounts[s]}</span></button>`),
+    `<button class="ticket-filter-pill${ticketFilters.status === 'all' ? ' active' : ''}" data-filter-status="all">${escapeHtml(uiText(activeLanguage, 'models.all'))} <span class="ticket-filter-count">${statusCounts.all}</span></button>`,
+    ...statusOptions.map((s) => `<button class="ticket-filter-pill ticket-filter-pill-${s}${ticketFilters.status === s ? ' active' : ''}" data-filter-status="${s}">${escapeHtml(ticketStatusLabel(s))} <span class="ticket-filter-count">${statusCounts[s]}</span></button>`),
   ].join('');
 
   const companyOptions = ['all', ...companyKeys].map((k) =>
-    `<option value="${escapeHtml(k)}"${ticketFilters.company === k ? ' selected' : ''}>${escapeHtml(k === 'all' ? 'All companies' : companyLabels[k] || k)}</option>`).join('');
+    `<option value="${escapeHtml(k)}"${ticketFilters.company === k ? ' selected' : ''}>${escapeHtml(k === 'all' ? uiText(activeLanguage, 'models.allCompanies') : companyLabels[k] || k)}</option>`).join('');
 
   const visibleStatuses = ticketFilters.status === 'all'
     ? statusOptions
     : statusOptions.filter((s) => s === ticketFilters.status);
   const statusLabels: Record<TicketStatus, string> = {
-    'rumored': 'Rumored',
-    'in-testing': 'In testing',
-    'confirmed': 'Confirmed',
-    'released': 'Released',
-    'closed': 'Closed',
+    'rumored': uiText(activeLanguage, 'models.rumored'),
+    'in-testing': uiText(activeLanguage, 'models.inTesting'),
+    'confirmed': uiText(activeLanguage, 'models.confirmed'),
+    'released': uiText(activeLanguage, 'models.released'),
+    'closed': uiText(activeLanguage, 'models.closedStatus'),
   };
   const board = visibleStatuses.map((status) => {
     const cards = filtered.filter((ticket) => ticket.status === status);
     const cardHtml = cards.length
       ? cards.map(ticketCard).join('\n')
-      : '<div class="ticket-column-empty">No tickets</div>';
+      : '<div class="ticket-column-empty">' + escapeHtml(uiText(activeLanguage, 'models.noTickets')) + '</div>';
     return [
-      `<section class="ticket-column ticket-column-${status}" aria-label="${escapeHtml(statusLabels[status])} tickets">`,
+      `<section class="ticket-column ticket-column-${status}" aria-label="${escapeHtml(uiText(activeLanguage, 'models.column', { status: statusLabels[status] }))}">`,
       `  <div class="ticket-column-header"><span>${escapeHtml(statusLabels[status])}</span><span class="ticket-column-count">${cards.length}</span></div>`,
       `  <div class="ticket-column-cards">${cardHtml}</div>`,
       `</section>`,
@@ -2699,7 +4718,11 @@ function renderTickets(tickets: Ticket[] | null): void {
   }).join('\n');
 
   const emptyNote = filtered.length === 0
-    ? `<div class="ticket-board-empty">No tickets match the current filters.</div>`
+    ? `<div class="ticket-board-empty">${escapeHtml(uiText(activeLanguage, 'models.noMatches'))}</div>`
+    : '';
+  // Disclaimer shown whenever any loaded ticket carries market mappings.
+  const oddsNote = tickets.some((t) => ticketPolymarketMappings(t).length > 0)
+    ? `<p class="tickets-odds-note">${escapeHtml(uiText(activeLanguage, 'models.oddsNote'))}</p>`
     : '';
   setSafeContent(
     content,
@@ -2712,8 +4735,15 @@ function renderTickets(tickets: Ticket[] | null): void {
         ${board}
       </div>
       ${emptyNote}
+      ${oddsNote}
     </div>`,
   );
+  // Hydrate odds lazily so the grid paints first; failures leave em-dash
+  // chips and never block or break the tab.
+  window.setTimeout(() => { void hydrateTicketOdds(); }, 0);
+  if (!selectedSlug && ticketModalReturnFocusSlug) {
+    window.requestAnimationFrame(restoreTicketModalFocus);
+  }
 }
 
  function frontPageBodyHtml(frontPage: FrontPageAsset): string {
@@ -2768,8 +4798,10 @@ function renderFrontPage(frontPage: FrontPageAsset): void {
 
 function renderToday(md: string, frontPage: FrontPageAsset | null = null): void {
   const dateStr = fmtDate(currentDate);
+  const digestUnavailable = isDeterministicFallbackDigest(md);
+  digestUnavailableForCurrentView = digestUnavailable;
   let frontPageCardHtml: string | null = null;
-  if (frontPage) {
+  if (frontPage && !digestUnavailable) {
     frontPageCardHtml = [
       '<div class="content-card frontpage-card today-frontpage-card">',
       frontPageBodyHtml(frontPage),
@@ -2784,24 +4816,871 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     audioDates: manifest?.audio || [],
     searchTerm,
     frontPageCardHtml,
+    language: activeLanguage,
   }));
+  if (digestUnavailable) {
+    digestAudioEl?.pause();
+    hideDigestAudioPlayer();
+    return;
+  }
   if (frontPage) enhanceNewspaper();
   syncDigestAudioForDate(dateStr);
   void wikifyContent(content);
+  void hydrateWhatChanged(md, dateStr);
+}
+
+function topicSlugs(text: string): string[] {
+  const lowered = text.toLowerCase();
+  const indexed = Array.from(wikiPageMap.values())
+    .filter((page) => [page.title, page.slug, ...(page.aliases || [])].some((label) => label.length > 2 && lowered.includes(label.toLowerCase())))
+    .slice(0, 4)
+    .map((page) => page.slug);
+  return indexed.length ? indexed : [normalizeTopic(text.split(/\s+[—:-]\s+/)[0] || text)].filter(Boolean);
+}
+
+async function hydrateWhatChanged(md: string, dateStr: string): Promise<void> {
+  const [tickets, wiki, pricing, gpu] = await Promise.all([
+    loadTickets(),
+    loadWikiIndexCached(),
+    loadModelPricing(),
+    loadGpuSpot(),
+  ]);
+  if (activeTab !== 'today' || fmtDate(currentDate) !== dateStr) return;
+  const items: BriefItem[] = [];
+  // Defense in depth: operational fallback artifacts are never eligible for
+  // a public Decision brief, even if this hydrator is called independently.
+  if (isDeterministicFallbackDigest(md)) return;
+  const sections = splitSections(md).filter((section) =>
+    Boolean(section.title) &&
+    section.body &&
+    !/executive summary/i.test(section.title) &&
+    !/^AI Daily Digest\b/i.test(section.title),
+  );
+  for (const [index, section] of sections.slice(0, 3).entries()) {
+    const summary = truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 230);
+    const sourceCount = new Set(extractUrls(section.body)).size;
+    items.push({
+      id: `digest:${dateStr}:${index}`,
+      kind: 'digest',
+      title: section.title || uiText(activeLanguage, 'page.today', { date: dateStr }),
+      summary,
+      why: activeLanguage === 'ko' ? `오늘의 종합 브리프에서 상위 신호로 선정됐습니다. ${sourceCount}개의 링크된 소스가 있습니다.` : `It ranked near the top of today's synthesis and carries ${sourceCount} linked source${sourceCount === 1 ? '' : 's'}.`,
+      watch: activeLanguage === 'ko' ? '차기 소스 사이클에서 독립적 확인과 수치 변화를 확인하세요.' : 'Look for independent confirmation and a measurable follow-through in the next source cycle.',
+      // A link count describes sourcing volume, not corroboration quality.
+      // Digest sections remain context until backed by structured claim evidence.
+      confidence: 'context',
+      freshness: dateStr,
+      href: `/today/${dateStr}`,
+      topics: topicSlugs(`${section.title} ${summary}`),
+      changedAt: `${dateStr}T00:00:00Z`,
+    });
+  }
+
+  for (const ticket of (tickets || []).filter((row) => row.updated_at === dateStr).sort((a, b) => b.verification.localeCompare(a.verification)).slice(0, 2)) {
+    items.push({
+      id: `model:${ticket.slug}`,
+      kind: 'model',
+      title: ticket.title,
+      summary: ticket.status_note || ticket.expected || truncateText(stripMarkdown(ticket.body), 220),
+      why: activeLanguage === 'ko' ? `상태가 ${ticket.status}(으)로 업데이트되었고 ${ticket.sources.length}개 소스와 검증 단계가 유지됩니다.` : `The persistent ticket moved or was reaffirmed at ${ticket.status}, backed by ${ticket.sources.length} source${ticket.sources.length === 1 ? '' : 's'}.`,
+      watch: ticket.expected || (activeLanguage === 'ko' ? '다음 상태 전환과 예상 시점을 확인하세요.' : 'Watch for the next state transition and its expected date.'),
+      confidence: ticket.verification === 'confirmed' ? 'high' : ticket.verification === 'partial' ? 'medium' : 'context',
+      freshness: ticket.updated_at,
+      href: `/models/forecast/${ticket.slug}`,
+      topics: [normalizeTopic(ticket.company), normalizeTopic(ticket.model || '')].filter(Boolean),
+      changedAt: `${ticket.updated_at}T06:29:00Z`,
+    });
+  }
+
+  for (const page of (wiki?.pages || []).filter((row) => row.updated_at === dateStr).sort((a, b) => (b.inbound.length + b.outbound.length) - (a.inbound.length + a.outbound.length)).slice(0, 1)) {
+    items.push({
+      id: `wiki:${page.slug}`,
+      kind: 'wiki',
+      title: page.title,
+      summary: page.summary,
+      why: activeLanguage === 'ko' ? `지식 그래프에서 ${page.inbound.length + page.outbound.length}개 연결을 가진 ${page.type} 페이지가 새 종합 결과로 갱신됐습니다.` : `This ${page.type} dossier was revised by the latest synthesis and connects to ${page.inbound.length + page.outbound.length} graph edges.`,
+      watch: activeLanguage === 'ko' ? '다음 인용, 시장 지표, 관련 모델 티켓의 변경을 추적하세요.' : 'Watch its next citation, market move, or related model-ticket update.',
+      confidence: 'medium', freshness: page.updated_at, href: `/wiki/${page.slug}`, topics: [page.slug], changedAt: `${page.updated_at}T01:00:00Z`,
+    });
+  }
+
+  const pricingHistory = pricing?.history || [];
+  if (pricing && pricingHistory.length >= 2) {
+    const latest = pricingHistory[pricingHistory.length - 1];
+    const previous = pricingHistory[pricingHistory.length - 2];
+    const tier = Object.keys(latest.frontier_price_at || {}).sort((a, b) => Number(b) - Number(a)).find((key) => typeof latest.frontier_price_at?.[key] === 'number' && typeof previous.frontier_price_at?.[key] === 'number');
+    if (tier) {
+      const now = Number(latest.frontier_price_at?.[tier]);
+      const before = Number(previous.frontier_price_at?.[tier]);
+      const delta = before ? ((now - before) / before) * 100 : 0;
+      items.push({ id: 'pricing:frontier', kind: 'pricing', title: activeLanguage === 'ko' ? `성능 ${tier} 달성 비용 ${delta >= 0 ? '+' : ''}${delta.toFixed(0)}%` : `Cost to reach capability ${tier} moved ${delta >= 0 ? '+' : ''}${delta.toFixed(0)}%`, summary: activeLanguage === 'ko' ? `최신 파레토 경계 비용은 출력 100만 토큰당 $${now.toFixed(2)}입니다.` : `The latest Pareto-frontier price is $${now.toFixed(2)} per million output tokens.`, why: activeLanguage === 'ko' ? '정적 벤치마크와 실시간 목록 가격을 결합한 성능 디플레이션 지표입니다.' : 'It measures capability deflation by joining benchmark score to current list price.', watch: activeLanguage === 'ko' ? '다음 스냅샷에서 반복되는지 확인하세요. 단일 가격 변화를 구조적 트렌드로 간주하지 마세요.' : 'Wait for persistence across snapshots; one list-price change is not yet a structural trend.', confidence: pricing.stale || pricing.capability_stale ? 'context' : 'high', freshness: pricing.generated_at, href: '/pricing', topics: ['model-pricing'], changedAt: pricing.generated_at });
+    }
+  }
+
+  const gpuModels = Object.entries(gpu?.snapshot?.models || {}).filter(([, row]) => typeof row.median === 'number').sort((a, b) => (a[1].median || 0) - (b[1].median || 0));
+  const h100 = gpuModels.find(([name]) => name === 'H100 SXM') || gpuModels[0];
+  if (gpu && h100) items.push({ id: 'gpu:spot', kind: 'gpu', title: `${h100[0]} ${activeLanguage === 'ko' ? '시간당 중앙값' : 'median spot'} $${Number(h100[1].median).toFixed(2)}`, summary: activeLanguage === 'ko' ? `${h100[1].samples || 0}개 공개 리스팅에서 GPU 1개·시간당 비용을 정규화했습니다.` : `Normalized to one GPU-hour across ${h100[1].samples || 0} public listings.`, why: activeLanguage === 'ko' ? '모델 가격과 별개로 기초 컴퓨트 공급 가격을 보여줍니다.' : 'It exposes the underlying compute-supply price separately from model API pricing.', watch: h100[1].truncated ? (activeLanguage === 'ko' ? '표본이 불완전합니다. 방향성으로만 보세요.' : 'The sample is incomplete; treat it as directional.') : (activeLanguage === 'ko' ? '동일 방법 버전의 주간 변화를 확인하세요.' : 'Watch the week-over-week move under the same method version.'), confidence: gpu.stale ? 'context' : 'medium', freshness: gpu.generated_at || dateStr, href: '/pricing', topics: ['gpu-compute'], changedAt: gpu.generated_at || `${dateStr}T00:00:00Z` });
+
+  const host = document.createElement('div');
+  host.innerHTML = renderWhatChanged(items.slice(0, 8), watchlist, activeLanguage);
+  const first = content.firstElementChild;
+  if (first) content.insertBefore(host.firstElementChild!, first);
+  else content.appendChild(host.firstElementChild!);
+  bindWatchlistActions(content);
 }
 
 // ── Generative research ───────────────────────────────
 
-// Default <title> from index.html, used to reset when leaving an article.
-const DEFAULT_DOC_TITLE = document.title;
-
 /** Update the browser title so the print dialog suggests a useful PDF
  * filename (browsers default to <title>). Reset on back-to-index. */
 function setDocTitle(articleTitle: string | null): void {
-  document.title = articleTitle
-    ? `${articleTitle} — ara`
-    : DEFAULT_DOC_TITLE;
+  const seo = runtimeSeoState(routeFromState());
+  const pageTitle = articleTitle || seo.heading;
+  document.title = articleTitle ? `${articleTitle} — ara` : seo.documentTitle;
+  setMetaContent('meta[property="og:title"]', pageTitle);
+  setMetaContent('meta[name="twitter:title"]', pageTitle);
+  setRuntimePageHeading(pageTitle);
 }
+
+function isIndexableResearchRow(row: GenResearchRow): boolean {
+  const tags = new Set((row.tags || []).map(tag => String(tag).trim().toLowerCase()));
+  if (tags.has('fixture') || tags.has('test')) return false;
+  if (row.slug === 'components') return false;
+  return !(tags.has('system') && tags.has('reference'));
+}
+
+/** Operational backend-routing metadata is searchable, but not article subject matter. */
+function isResearchDisplayTag(tag: string): boolean {
+  return tag !== 'fireworks-fallback' && !tag.startsWith('requested-');
+}
+
+const RESEARCH_PAGE_SIZE = 12;
+
+/** Number of jacket palettes defined in style.css (`.press-shelf-row[data-jacket]`). */
+const RESEARCH_JACKET_COUNT = 20;
+
+/**
+ * Stable slug → jacket palette index. Deterministic (FNV-1a over the slug) so an
+ * article keeps the same jacket colour across reloads and deploys; the palette
+ * itself lives in CSS, so no inline styles have to survive DOMPurify.
+ */
+function researchJacket(slug: string): number {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < slug.length; i++) {
+    hash ^= slug.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return hash % RESEARCH_JACKET_COUNT;
+}
+
+/**
+ * Model family → imprint. Each lab gets its own typeface on its books, the way
+ * a publishing house has a house face, so the shelf reads as a shelf of
+ * imprints rather than one press with twenty jacket colours. Keyed on the
+ * FAMILY, not the version: claude-opus-4-7 and claude-sonnet-5 are the same
+ * house. The faces themselves are declared in style.css on [data-imprint].
+ * Anything unrecognised falls through to the house face.
+ */
+function researchImprint(model: string): string {
+  const m = model.toLowerCase();
+  if (m.includes('claude') || m.includes('opus') || m.includes('sonnet') || m.includes('fable')) return 'claude';
+  if (m.includes('deepseek')) return 'deepseek';
+  if (m.includes('kimi') || m.includes('moonshot')) return 'kimi';
+  if (m.includes('gpt') || m.includes('codex')) return 'codex';
+  if (m.includes('glm') || m.includes('zai')) return 'glm';
+  return 'house';
+}
+
+/**
+ * Jacket the index actually painted each cover with, so the article page can
+ * open in the SAME colour the reader just clicked. The per-page de-duplication
+ * below can move a book off its raw hash, so re-hashing on the article page
+ * would sometimes disagree with the shelf. Deep links (no shelf visit) fall
+ * back to the raw hash, which is the best available answer.
+ */
+const researchJacketBySlug = new Map<string, number>();
+
+/**
+ * Jackets for one rendered page, hashed per slug then de-duplicated: a raw hash
+ * repeats often enough that two neighbouring bands land on the same colour and
+ * read as one block. Collisions walk forward to the next free palette, which
+ * keeps every band on a page distinct whenever the page is no longer than the
+ * palette (12 rows, 20 jackets) and stays a pure function of the row order.
+ */
+function researchJacketsForPage(slugs: string[]): number[] {
+  const taken = new Set<number>();
+  return slugs.map((slug) => {
+    let jacket = researchJacket(slug);
+    for (let step = 0; step < RESEARCH_JACKET_COUNT && taken.has(jacket); step++) {
+      jacket = (jacket + 1) % RESEARCH_JACKET_COUNT;
+    }
+    taken.add(jacket);
+    return jacket;
+  });
+}
+
+/**
+ * A handful of index.json titles were written with HTML entities already baked
+ * in ("Hims &amp; Hers"), so escaping them again renders the raw `&amp;` to the
+ * reader. Decode the five entities `escapeHtml` produces before re-escaping;
+ * anything else is left alone.
+ */
+function decodeStoredEntities(text: string): string {
+  return text.replace(/&(amp|lt|gt|quot|#39);/g, (_m, name) => {
+    switch (name) {
+      case 'lt': return '<';
+      case 'gt': return '>';
+      case 'quot': return '"';
+      case '#39': return "'";
+      default: return '&';
+    }
+  });
+}
+
+/* Scroll drift — "like the wind blew a bit".
+ *
+ * Each board's resting angle is nudged by a few degrees as the shelf moves,
+ * driven by where the book sits in the viewport rather than by a clock, so it
+ * only ever moves when the reader does and settles the instant they stop.
+ * PHASE spreads the books apart: keyed off the jacket index, so neighbours are
+ * at different points in the swing instead of tipping in lockstep. */
+const SHELF_DRIFT_DEG = 3.2;
+let shelfDriftFrame = 0;
+
+function driftShelfBoards(): void {
+  shelfDriftFrame = 0;
+  const books = document.querySelectorAll<HTMLElement>('.press-book');
+  if (!books.length) return;
+  const h = window.innerHeight || 1;
+  books.forEach((book) => {
+    const r = book.getBoundingClientRect();
+    // Skip anything off screen: no work, and no stale angle left behind
+    // because it is reset the moment it scrolls back into view.
+    if (r.bottom < -200 || r.top > h + 200) return;
+    // -1 at the top of the viewport, +1 at the bottom.
+    const pos = ((r.top + r.height / 2) / h) * 2 - 1;
+    const phase = (Number(book.dataset.jacket || 0) / RESEARCH_JACKET_COUNT) * Math.PI * 2;
+    const deg = Math.sin(pos * Math.PI + phase) * SHELF_DRIFT_DEG;
+    book.style.setProperty('--lay-drift', `${deg.toFixed(2)}deg`);
+  });
+}
+
+function scheduleShelfDrift(): void {
+  if (shelfDriftFrame) return;
+  shelfDriftFrame = requestAnimationFrame(driftShelfBoards);
+}
+
+/** Idempotent: renderResearchIndex calls it on every paint. */
+function watchShelfDrift(): void {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  window.removeEventListener('scroll', scheduleShelfDrift);
+  window.addEventListener('scroll', scheduleShelfDrift, { passive: true });
+  driftShelfBoards();
+}
+
+interface ShelfMeasure {
+  L0: number;   // spine width  — the hinge line's length
+  T0: number;   // spine height — the book's thickness
+  D0: number;   // board's untransformed depth
+  lay0: number; // the board's LIVE angle, hover and drift included
+  Hx0: number;  // hinge midpoint x
+  Hy0: number;  // hinge y (the spine plate's top edge)
+}
+
+interface BookStage {
+  stage: HTMLElement;
+  volume: HTMLElement;
+  body: HTMLElement;
+  spine: HTMLElement;
+  leaf: HTMLElement;
+  sheet: HTMLElement;
+  paper: HTMLElement;
+  fallback: HTMLElement;
+}
+
+/**
+ * Measure the book as it actually sits on the shelf, right now.
+ *
+ * Everything here is read from live layout rather than from the custom
+ * properties, and that is the point:
+ *  - `--depth`/`--spine-h` are unregistered, so getPropertyValue hands back the
+ *    literal `clamp(...)` token, not a length;
+ *  - the board's angle at click time is NOT `--lay`. You are hovering when you
+ *    click, so it is the hover angle, plus whatever `--lay-drift` the scroll
+ *    handler last wrote. Both are only visible in the computed matrix.
+ */
+function measureShelfBook(book: HTMLElement): ShelfMeasure | null {
+  const spine = book.querySelector<HTMLElement>('.press-book-spine');
+  const board = book.querySelector<HTMLElement>('.press-book-board');
+  if (!spine || !board) return null;
+  const rs = spine.getBoundingClientRect();
+  if (rs.width < 1 || rs.height < 1) return null;
+  const cs = getComputedStyle(board);
+  const D0 = parseFloat(cs.height);
+  if (!(D0 > 0)) return null;
+  // rotateX(θ) lands as matrix3d with m22 = cosθ, m23 = sinθ.
+  let lay0 = 79;
+  try {
+    const m = new DOMMatrix(cs.transform);
+    lay0 = (Math.atan2(m.m23, m.m22) * 180) / Math.PI;
+  } catch {
+    /* keep the fallback */
+  }
+  return {
+    L0: rs.width,
+    T0: rs.height,
+    D0,
+    lay0,
+    Hx0: rs.left + rs.width / 2,
+    Hy0: rs.top,
+  };
+}
+
+/** Where the risen cover ends up: portrait, centred, bounded by both axes. */
+function risenCover(): { L1: number; D1: number; Hx1: number; Hy1: number } {
+  const coverH = Math.min(
+    window.innerHeight * BOOK_OPEN_FILL_H,
+    (window.innerWidth * BOOK_OPEN_FILL_W * BOOK_COVER_RATIO) / 2,
+  );
+  const coverW = coverH / BOOK_COVER_RATIO;
+  // The body's L runs ALONG the hinge and D runs hinge→fore-edge. After the
+  // volume's +90deg roll, L reads as screen height and D as screen width — so
+  // the cover's height is L and its width is D.
+  return { L1: coverH, D1: coverW, Hx1: window.innerWidth / 2, Hy1: window.innerHeight / 2 };
+}
+
+/**
+ * The article card's on-screen paper, clipped to the viewport. The open book's
+ * page settles onto exactly this so the reader never sees the page and the
+ * article swap at different sizes. Height is capped at the fold because a full
+ * article card can be twenty thousand pixels tall and only its top is on screen.
+ */
+function articlePaperRect(): { left: number; top: number; width: number; height: number } | null {
+  const card = document.querySelector<HTMLElement>('.content-card.gen-research-doc');
+  if (!card) return null;
+  const r = card.getBoundingClientRect();
+  const top = Math.max(r.top, 0);
+  const height = Math.min(r.height, window.innerHeight - top);
+  if (r.width < 1 || height < 1) return null;
+  return { left: r.left, top, width: r.width, height };
+}
+
+/**
+ * Build the overlay both directions share.
+ *
+ * The thesis: the shelf book already IS the risen book. Its spine plate is the
+ * book's thickness and its `.press-book-board` is the front cover, hinged on the
+ * spine's top edge. So the clone does not REPAINT a portrait cover next to the
+ * shelf book — it re-hosts the shelf's own elements, reusing `.press-book-spine`,
+ * `.press-book-board-face` and the three type spans verbatim. That reuse is what
+ * buys pixel identity at t=0: the gradients, the shoulders, the drop shadow and
+ * the feTurbulence grain all reproduce because they are literally the same
+ * declarations, and the grain is a fixed-px tile so reproportioning crops it
+ * rather than stretching it.
+ *
+ * The frame is three nested boxes:
+ *   .press-open-volume  a ZERO-SIZE anchor pinned to the hinge. Carries the roll
+ *                       (rotate 0deg → 90deg) that turns the book from lying
+ *                       across the column to standing portrait.
+ *   .press-open-body    the board plane. left:-L/2 top:-D width:L height:D, so
+ *                       its bottom-centre is the volume's origin for ANY L,D —
+ *                       which is why the reproportion never moves the pivot.
+ *                       Carries the tip (rotateX lay0 → 0deg).
+ *   children            spine plate, boards, page and the hinged leaf, all in
+ *                       body-local space where +x runs along the hinge.
+ *
+ * Type lives in zero-size hinge-anchored boxes carrying a counter-roll, so it is
+ * upright from its first visible pixel and never reflows while L and D animate.
+ *
+ * Built with direct DOM calls rather than setSafeContent — the inline geometry
+ * could not survive DOMPurify. Jacket and imprint ride on the stage as data
+ * attributes; both palette tables are bare attribute selectors, so CSS resolves
+ * --jacket-bg/--jacket-ink/--imprint-face for everything inside.
+ */
+function buildBookStage(spec: {
+  jacket: number;
+  imprint: string;
+  title: string;
+  author: string;
+  date: string;
+  ground: string;
+}): BookStage {
+  const rootStyle = getComputedStyle(document.documentElement);
+  const readToken = (name: string, fallback: string): string =>
+    rootStyle.getPropertyValue(name).trim() || fallback;
+
+  const stage = document.createElement('div');
+  stage.className = 'press-open-stage';
+  stage.dataset.jacket = String(spec.jacket);
+  stage.dataset.imprint = spec.imprint;
+
+  const scrim = document.createElement('div');
+  scrim.className = 'press-open-scrim';
+
+  const ground = document.createElement('div');
+  ground.className = 'press-open-ground';
+  ground.style.background = spec.ground;
+
+  const volume = document.createElement('div');
+  volume.className = 'press-open-volume';
+
+  const body = document.createElement('div');
+  body.className = 'press-open-body';
+
+  // The spine plate — the shelf's own class, so the cloth, the shoulders, the
+  // head highlight, the grain and the drop shadow all come free.
+  const spine = document.createElement('div');
+  spine.className = 'press-open-spine press-book-spine';
+  const author = document.createElement('span');
+  author.className = 'press-book-author';
+  author.textContent = spec.author;
+  const spineTitle = document.createElement('span');
+  spineTitle.className = 'press-book-title';
+  spineTitle.textContent = spec.title;
+  const imprint = document.createElement('span');
+  imprint.className = 'press-book-imprint';
+  if (spec.date) {
+    const date = document.createElement('span');
+    date.className = 'press-book-date';
+    date.textContent = spec.date;
+    imprint.appendChild(date);
+  }
+  spine.append(author, spineTitle, imprint);
+
+  // Back board and text block, invisible at t=0 — the shelf shows no page.
+  const base = document.createElement('div');
+  base.className = 'press-open-base';
+  const block = document.createElement('div');
+  block.className = 'press-open-block';
+
+  const page = document.createElement('div');
+  page.className = 'press-open-page';
+  page.style.background = readToken('--bg', '#ffffff');
+  page.style.color = readToken('--text', '#16181d');
+
+  const pageShade = document.createElement('div');
+  pageShade.className = 'press-open-page-shade';
+
+  // Hinge-anchored, counter-rolled, fixed-px: upright from the first frame and
+  // never re-typeset while the body reproportions underneath it.
+  const cover = risenCover();
+  const pageW = cover.D1 - 18;   // page inset 7px each side in body-local x
+  const pageH = cover.L1 - 14;
+
+  const pageText = document.createElement('div');
+  pageText.className = 'press-open-pagetext';
+  const pageInner = document.createElement('div');
+  pageInner.className = 'press-open-inner';
+  // Fixed px, anchored at the hinge: the one point in body-local space that
+  // does not move when L and D animate. So the type is upright from its first
+  // visible pixel and never re-typesets while the body reproportions.
+  pageInner.style.left = '0px';
+  pageInner.style.top = `${-(cover.L1 / 2 - 7)}px`;
+  pageInner.style.width = `${pageW}px`;
+  pageInner.style.height = `${pageH}px`;
+  pageInner.style.padding = `${Math.round(pageH * 0.075)}px ${Math.round(pageW * 0.09)}px`;
+  pageInner.style.fontSize = `${Math.round(cover.D1 * 0.062)}px`;
+  const eyebrow = document.createElement('span');
+  eyebrow.className = 'press-open-eyebrow';
+  eyebrow.textContent = spec.author;
+  const pageTitle = document.createElement('span');
+  pageTitle.className = 'press-open-page-title';
+  pageTitle.textContent = spec.title;
+  const pageByline = document.createElement('span');
+  pageByline.className = 'press-open-page-byline';
+  pageByline.style.color = readToken('--text-tertiary', '#6b7280');
+  pageByline.textContent = spec.date;
+  pageInner.append(eyebrow, pageTitle, pageByline);
+
+  // The article's own first page, laid on the paper. It is authored at the
+  // article card's width and scaled down to the page, so the settle can take
+  // the scale to 1 as the page grows to the card — the type never reflows and
+  // the two are the same document at the same size by the time they meet.
+  // Until the fetch lands, the synthesised title page above stands in.
+  const paper = document.createElement('div');
+  paper.className = 'press-open-paper';
+  paper.style.left = '0px';
+  paper.style.top = `${-(cover.L1 / 2 - 7)}px`;
+  paper.style.width = `${pageW}px`;
+  paper.style.height = `${pageH}px`;
+  const sheet = document.createElement('div');
+  sheet.className = 'press-open-sheet';
+  sheet.style.width = `${BOOK_SHEET_W}px`;
+  sheet.style.transform = `scale(${pageW / BOOK_SHEET_W})`;
+  paper.appendChild(sheet);
+
+  pageText.append(pageInner, paper);
+  page.append(pageShade, pageText);
+
+  // The cover: the same board, now hinged so it can swing off the page.
+  const leaf = document.createElement('div');
+  leaf.className = 'press-open-leaf';
+  const front = document.createElement('div');
+  front.className = 'press-open-face press-open-face--front';
+  const leafSkin = document.createElement('div');
+  leafSkin.className = 'press-open-leafskin';
+  const boardFace = document.createElement('div');
+  boardFace.className = 'press-book-board-face';
+  leafSkin.appendChild(boardFace);
+  const coverText = document.createElement('div');
+  coverText.className = 'press-open-covertext';
+  const coverInner = document.createElement('div');
+  coverInner.className = 'press-open-inner press-open-inner--cover';
+  coverInner.style.left = '0px';
+  coverInner.style.top = `${-cover.L1 / 2}px`;
+  coverInner.style.width = `${cover.D1}px`;
+  coverInner.style.height = `${cover.L1}px`;
+  coverInner.style.padding = `${Math.round(cover.L1 * 0.05)}px ${Math.round(cover.D1 * 0.07)}px`;
+  const coverTitle = document.createElement('span');
+  coverTitle.className = 'press-open-cover-title';
+  coverTitle.textContent = spec.title;
+  coverInner.appendChild(coverTitle);
+  coverText.appendChild(coverInner);
+  front.append(leafSkin, coverText);
+  const back = document.createElement('div');
+  back.className = 'press-open-face press-open-face--back';
+  leaf.append(front, back);
+
+  body.append(spine, base, block, page, leaf);
+  volume.appendChild(body);
+  stage.append(scrim, ground, volume);
+  return { stage, volume, body, spine, leaf, sheet, paper, fallback: pageInner };
+}
+
+/** Pose the clone as the book lying on the shelf. */
+function poseLying(s: BookStage, m: ShelfMeasure): void {
+  s.stage.style.perspectiveOrigin = `${m.Hx0}px ${m.Hy0}px`;
+  s.volume.style.left = `${m.Hx0}px`;
+  s.volume.style.top = `${m.Hy0}px`;
+  s.volume.style.transform = 'rotate(0deg)';
+  s.body.style.left = `${-m.L0 / 2}px`;
+  s.body.style.top = `${-m.D0}px`;
+  s.body.style.width = `${m.L0}px`;
+  s.body.style.height = `${m.D0}px`;
+  s.body.style.transform = `rotateX(${m.lay0}deg)`;
+  s.spine.style.height = `${m.T0}px`;
+  // The plate turns away by exactly as much as the board turns toward us, so at
+  // rest the two are complementary and the plate faces the reader square-on.
+  s.spine.style.transform = `rotateX(${-m.lay0}deg) translateZ(0.5px)`;
+  // The leaf is deliberately NOT posed here. On the open path its angle comes
+  // from the .is-open rule, and an inline transform would silently outrank it —
+  // the cover would never swing. The close path sets it explicitly instead.
+}
+
+/** Pose the clone as the book standing upright, cover shut, at the centre. */
+function poseStanding(s: BookStage, cover: ReturnType<typeof risenCover>): void {
+  s.stage.style.perspectiveOrigin = `${cover.Hx1}px ${cover.Hy1}px`;
+  s.volume.style.left = `${cover.Hx1}px`;
+  s.volume.style.top = `${cover.Hy1}px`;
+  s.volume.style.transform = 'rotate(90deg)';
+  s.body.style.left = `${-cover.L1 / 2}px`;
+  s.body.style.top = `${-cover.D1}px`;
+  s.body.style.width = `${cover.L1}px`;
+  s.body.style.height = `${cover.D1}px`;
+  s.body.style.transform = 'rotateX(0deg)';
+  // A constant, not lay0: the standing plate is the article's 12px jacket rail.
+  s.spine.style.transform = `rotateX(${-BOOK_SPINE_STANDING_DEG}deg) translateZ(0.5px)`;
+}
+
+/** Pose the body onto a screen-space rect, in the rolled frame. */
+function poseOnRect(
+  s: BookStage,
+  rect: { left: number; top: number; width: number; height: number },
+): void {
+  // Rolled 90deg, body-local +x is screen-vertical: L is the rect's height and
+  // D its width, hinged on the rect's left edge at its vertical midpoint.
+  const hx = rect.left;
+  const hy = rect.top + rect.height / 2;
+  s.stage.style.perspectiveOrigin = `${hx}px ${hy}px`;
+  s.volume.style.left = `${hx}px`;
+  s.volume.style.top = `${hy}px`;
+  s.volume.style.transform = 'rotate(90deg)';
+  s.body.style.left = `${-rect.height / 2}px`;
+  s.body.style.top = `${-rect.width}px`;
+  s.body.style.width = `${rect.height}px`;
+  s.body.style.height = `${rect.width}px`;
+  s.body.style.transform = 'rotateX(0deg)';
+}
+
+/* Opening a book. The rise and the cover-swing are one gesture, not a queue:
+ *   0ms    tip     — the board opens out from its 31px sliver toward the reader,
+ *                    everything still square to the shelf. This is the frame
+ *                    budget in which the reader confirms it is the book they
+ *                    clicked, so nothing else moves in it.
+ *   90ms   roll    — the volume turns 90deg about the hinge, taking the book
+ *                    from lying across the column to standing portrait. The
+ *                    hinge itself travels only ~43px; the pivot barely moves,
+ *                    which is the structural reason this reads as continuous.
+ *   120ms  wash    — the screen takes the book's own jacket colour.
+ *   400ms  swing   — the cover starts falling open while the book is still ~22deg
+ *                    off upright, so the two beats interlock.
+ *   560ms  ground  — the destination's ground arrives under the wash.
+ *   740ms  swap    — the article renders behind it, invisibly.
+ *   ~820ms settle  — the page grows onto the article card's exact paper.
+ *
+ * The clone is pixel-identical to the shelf book at t=0 — it re-hosts the
+ * shelf's own elements rather than repainting a portrait cover — so there is no
+ * swap to see. See buildBookStage().
+ *
+ * Nothing here is load-bearing: reduced motion, an unmeasurable book, a missing
+ * article card and a stalled fetch all still land on the article.
+ */
+const BOOK_OPEN_NAVIGATE_AT_MS = 740;
+const BOOK_OPEN_SEQUENCE_MS = 820;
+const BOOK_OPEN_SETTLE_MS = 480;
+const BOOK_OPEN_CLEAR_MS = 340;
+/** Never hold the reader on the open book if the article fetch stalls. */
+const BOOK_OPEN_MAX_HOLD_MS = 2600;
+
+/** Fraction of the viewport the opened spread is allowed to fill. */
+const BOOK_OPEN_FILL_H = 0.68;
+/* Generous, because width only binds on phones — desktop is always the
+ * height-limited case, so raising this buys presence on small screens for
+ * free. */
+const BOOK_OPEN_FILL_W = 0.94;
+/** Cover proportions of the risen book (height / width) — a trade hardback. */
+const BOOK_COVER_RATIO = 7 / 5;
+/* The standing spine plate's angle. A constant rather than the measured lay,
+ * because its job at the end is to project the 12px jacket rail that
+ * .gen-research-doc[data-jacket] wears down the article card's edge. */
+const BOOK_SPINE_STANDING_DEG = 82;
+/* The width the article's first page is laid out at inside the book: the
+ * article's OWN column on a full-width desktop card (card 1102 less the 12px
+ * jacket rail and 2x32 body padding). Authoring at the column width means the
+ * settle only ever changes the sheet's scale and offset — never its width — so
+ * the type never re-wraps on the way to meeting the real article. */
+const BOOK_SHEET_W = 1026;
+/* The sheet's origin already coincides with the page's content origin, so the
+ * page's inset and the card's jacket rail need no correction on x — subtracting
+ * them landed the sheet exactly 19px (7 + 12) left of the article. Only y keeps
+ * a small residual, from the page box being bottom-anchored in the body while
+ * the card is top-anchored. Measured, not derived. */
+const BOOK_SHEET_Y_TRIM = 6;
+
+/** The shelf's ground is a BODY-scoped remap, so :root would hand back the article's. */
+function pressGround(): string {
+  return getComputedStyle(document.body).getPropertyValue('--press-ground').trim() || '#201819';
+}
+
+function articleGround(): string {
+  return (
+    getComputedStyle(document.documentElement).getPropertyValue('--bg-secondary').trim() || '#f4f5f8'
+  );
+}
+
+function openBookThen(book: HTMLElement, navigate: () => Promise<void>): void {
+  const m = measureShelfBook(book);
+  if (!m || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    void navigate();
+    return;
+  }
+
+  const s = buildBookStage({
+    jacket: Number(book.dataset.jacket || 0),
+    imprint: book.dataset.imprint || 'house',
+    title: (book.querySelector('.press-book-title')?.textContent || '').trim(),
+    author: (book.querySelector('.press-book-author')?.textContent || '').trim(),
+    date: (book.querySelector('.press-book-date')?.textContent || '').trim(),
+    ground: articleGround(),
+  });
+
+  // The lying pose has to be part of the resolved BASE style, so it is set on
+  // the detached tree and flushed before the standing pose lands. Setting it
+  // after insertion instead makes it a transition TARGET, and the move to the
+  // standing pose then interpolates from a value the book had barely begun
+  // travelling toward — the rise silently does nothing. rAF will not
+  // substitute: it runs before style recalc, so both states collapse into one.
+  poseLying(s, m);
+  document.body.appendChild(s.stage);
+  book.style.opacity = '0';
+  const restoreSource = (): void => { book.style.opacity = ''; };
+  void s.stage.offsetHeight;
+
+  poseStanding(s, risenCover());
+  s.stage.classList.add('is-open');
+
+  // Fetch the article NOW, in parallel with the rise, so the page the cover
+  // reveals is the real first page rather than a stand-in. Purely additive: if
+  // it is slow, fails, or the row is a standalone iframe doc, the synthesised
+  // title page is already there and stays.
+  const row = findResearchRow(book.dataset.slug || '');
+  if (row && row.kind !== 'standalone') {
+    const variant = researchVariant(row, activeLanguage);
+    const cached =
+      researchDocCache && researchDocCache.slug === row.slug &&
+      researchDocCache.language === activeLanguage
+        ? researchDocCache.body
+        : null;
+    const arrive = (html: string | null): void => {
+      if (!html || !s.stage.isConnected) return;
+      setSafeContent(s.sheet, html);
+      // Strip ids so this copy cannot win a getElementById race against the
+      // real article, whose TOC resolves heading ids after it renders.
+      s.sheet.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
+      s.fallback.style.display = 'none';
+      s.sheet.parentElement?.classList.add('has-sheet');
+    };
+    if (cached) arrive(cached);
+    else void fetchResearchDoc(variant, new AbortController().signal).then(arrive, () => {});
+  }
+
+  const played = new Promise<void>((resolve) => window.setTimeout(resolve, BOOK_OPEN_SEQUENCE_MS));
+  const capped = new Promise<void>((resolve) => window.setTimeout(resolve, BOOK_OPEN_MAX_HOLD_MS));
+  const navigated = new Promise<void>((resolve) => {
+    window.setTimeout(() => {
+      void navigate().then(() => {
+        // The page grows onto the article card's own paper — same edges, same
+        // place — while the cover and boards fade off it, so the stage lifts
+        // with nothing left to see change.
+        const rect = articlePaperRect();
+        if (rect) {
+          poseOnRect(s, rect);
+          // The hinge-anchored boxes are fixed px at the COVER's size, so they
+          // have to grow with the page or the article stays laid out for a
+          // 419px page while the paper underneath becomes 1102px.
+          s.paper.style.top = `${-rect.height / 2}px`;
+          s.paper.style.width = `${rect.width}px`;
+          s.paper.style.height = `${rect.height}px`;
+          // The sheet reaches 1:1 with the article exactly as the page reaches
+          // the card's rect, so the two are the same document at the same size
+          // when the stage lifts.
+          // Where the article sits INSIDE the card, measured off the real one
+          // rather than derived through the rotated frame. The page's own inset
+          // and the jacket rail already move the sheet's origin, so only the
+          // remainder is applied here. Measuring the CLONE instead would read a
+          // mid-transition value — the paper box is still travelling when any
+          // post-hoc correction could run, which is how an earlier cut landed
+          // the sheet 451px out.
+          const realArt = document.querySelector<HTMLElement>('#content article.ara-doc');
+          if (realArt) {
+            const ra = realArt.getBoundingClientRect();
+            s.sheet.style.transform = `scale(${ra.width / BOOK_SHEET_W})`;
+            s.sheet.style.left = `${ra.left - rect.left}px`;
+            s.sheet.style.top = `${ra.top - rect.top - BOOK_SHEET_Y_TRIM}px`;
+          } else {
+            s.sheet.style.transform = `scale(${rect.width / BOOK_SHEET_W})`;
+          }
+          s.stage.classList.add('is-settling');
+        }
+        resolve();
+      }, resolve);
+    }, BOOK_OPEN_NAVIGATE_AT_MS);
+  });
+
+  void Promise.race([Promise.all([played, navigated]), capped]).then(() => {
+    window.setTimeout(() => {
+      s.stage.classList.add('is-clearing');
+      window.setTimeout(() => {
+        s.stage.remove();
+        restoreSource();
+      }, BOOK_OPEN_CLEAR_MS);
+    }, BOOK_OPEN_SETTLE_MS);
+  });
+}
+
+/* Closing the book — the same gesture backwards. The page draws back off the
+ * article's paper into a standing cover, the cover shuts, then the volume rolls
+ * and tips back down into its slot on the shelf as the wash clears. */
+const BOOK_CLOSE_VEIL_MS = 280;
+const BOOK_CLOSE_DRAW_AT_MS = 40;
+const BOOK_CLOSE_DRAW_MS = 440;
+const BOOK_CLOSE_MAX_HOLD_MS = 2800;
+/** Backstop only; teardown is gated on the body's own transitionend. */
+const BOOK_CLOSE_FALLBACK_MS = 1500;
+
+function closeBookThen(row: GenResearchRow, navigate: () => Promise<void>): void {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    void navigate();
+    return;
+  }
+
+  const created = new Date(row.created_at);
+  const cover = risenCover();
+  const s = buildBookStage({
+    jacket: researchJacketBySlug.get(row.slug) ?? researchJacket(row.slug),
+    imprint: researchImprint(row.model),
+    title: decodeStoredEntities(row.title),
+    author: row.model,
+    date: isNaN(created.getTime()) ? '' : timeAgo(created),
+    // The destination here is the SHELF, whose ground is a body-scoped remap.
+    ground: pressGround(),
+  });
+  s.stage.classList.add('press-open-stage--reverse');
+  s.leaf.style.transform = 'rotateX(-166deg)';   // open; shut inline on is-closing
+
+  // Start ON the article's own paper so the reader's page draws back into a
+  // book, rather than a book cutting in over it.
+  const paper = articlePaperRect();
+  if (paper) {
+    poseOnRect(s, paper);
+    s.stage.classList.add('is-settling');
+  } else {
+    poseStanding(s, cover);
+  }
+
+  document.body.appendChild(s.stage);
+  void s.stage.offsetHeight;
+  s.stage.classList.add('is-veiling');
+  if (paper) {
+    window.setTimeout(() => {
+      poseStanding(s, cover);
+      s.stage.classList.remove('is-settling');
+    }, BOOK_CLOSE_DRAW_AT_MS);
+  }
+
+  let restore: (() => void) | null = null;
+  let torn = false;
+  const teardown = (): void => {
+    if (torn) return;
+    torn = true;
+    s.stage.remove();
+    if (restore) restore();
+  };
+
+  window.setTimeout(() => {
+    void navigate().then(() => {
+      const target = document.querySelector<HTMLElement>(
+        `.press-book[data-slug="${CSS.escape(row.slug)}"]`,
+      );
+      const m = target ? measureShelfBook(target) : null;
+      if (target && m) {
+        // Assigned BEFORE anything can tear the stage down, or the cap can fire
+        // with it still null and leave a permanently blank slot on the shelf.
+        target.style.opacity = '0';
+        restore = () => { target.style.opacity = ''; };
+        poseLying(s, m);
+      } else {
+        // Not on this page of the shelf (deep link, or the reader paged on).
+        // Lie the book down in the middle of the shelf and dissolve: an honest
+        // ending through the same code path rather than a one-frame vanish.
+        const shelf = document.querySelector<HTMLElement>('.press-shelf');
+        const w = shelf ? shelf.getBoundingClientRect().width : window.innerWidth * 0.8;
+        poseLying(s, {
+          L0: w,
+          T0: 86,
+          D0: 176,
+          lay0: 79,
+          Hx0: window.innerWidth / 2,
+          Hy0: window.innerHeight * 0.62,
+        });
+        s.stage.classList.add('is-clearing');
+      }
+      s.leaf.style.transform = 'rotateX(0deg)';
+      s.stage.classList.add('is-closing');
+      // Gate on the motion actually finishing rather than on a constant that
+      // mirrors a CSS duration with nothing enforcing agreement.
+      s.body.addEventListener(
+        'transitionend',
+        (e) => { if ((e as TransitionEvent).propertyName === 'transform') teardown(); },
+        { once: true },
+      );
+      window.setTimeout(teardown, BOOK_CLOSE_FALLBACK_MS);
+    }, () => { window.setTimeout(teardown, BOOK_CLOSE_FALLBACK_MS); });
+  }, BOOK_CLOSE_VEIL_MS + BOOK_CLOSE_DRAW_MS);
+
+  window.setTimeout(teardown, BOOK_CLOSE_MAX_HOLD_MS);
+}
+
 
 function renderResearchIndex(rows: GenResearchRow[]): void {
   setDocTitle(null);
@@ -2810,71 +5689,103 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
     return;
   }
   const term = searchTerm.toLowerCase();
-  // Newest first. The writer appends ascending, so reverse.
-  const reversed = rows.slice().reverse();
+  // Newest first with a slug tie-breaker, independent of manifest insertion order.
+  const reversed = rows.slice().sort((a, b) =>
+    b.created_at.localeCompare(a.created_at) || a.slug.localeCompare(b.slug),
+  );
   const visible = term
     ? reversed.filter((r) => {
-        const hay = (r.title + ' ' + r.prompt + ' ' + (r.tags || []).join(' ')).toLowerCase();
+        const variant = researchVariant(r, activeLanguage);
+        const hay = (variant.title + ' ' + variant.prompt + ' ' + r.title + ' ' + (variant.tags || []).join(' ')).toLowerCase();
         return hay.indexOf(term) !== -1;
       })
     : reversed;
 
+  const pageCount = Math.max(1, Math.ceil(visible.length / RESEARCH_PAGE_SIZE));
+  const requestedPage = researchIndexPage;
+  researchIndexPage = Math.min(researchIndexPage, pageCount);
+  if (researchIndexPage !== requestedPage) canonicalizeIndexPage();
+  const pageRows = visible.slice(
+    (researchIndexPage - 1) * RESEARCH_PAGE_SIZE,
+    researchIndexPage * RESEARCH_PAGE_SIZE,
+  );
+  // Stripe Press "shelf": a grid of book covers, each painted in its own
+  // jacket palette. The byline is the authoring model — the same slot a book
+  // cover gives the author.
+  const jackets = researchJacketsForPage(pageRows.map((r) => r.slug));
+  pageRows.forEach((r, i) => researchJacketBySlug.set(r.slug, jackets[i]));
   const items: string[] = [];
-  for (const row of visible) {
-    let title = escapeHtml(row.title);
+  pageRows.forEach((row, index) => {
+    const displayRow = researchVariant(row, activeLanguage);
+    let title = escapeHtml(decodeStoredEntities(displayRow.title));
     if (searchTerm) {
       const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const re = new RegExp('(' + escaped + ')', 'gi');
       title = title.replace(re, '<mark>$1</mark>');
     }
-    const created = new Date(row.created_at);
+    const created = new Date(displayRow.created_at);
     const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
-    // Surface first three tags inline; the chip on the right indicates fragment vs standalone.
-    const tagHtml = (row.tags || [])
-      .slice(0, 3)
-      .map((t) => '<span class="gen-research-tag">' + escapeHtml(t) + '</span>')
-      .join('');
-    const isStandalone = row.kind === 'standalone';
-    const kindLabel = isStandalone ? 'Standalone' : 'Article';
-    const kindClass = isStandalone ? 'gen-research-kind--standalone' : 'gen-research-kind--article';
-    const languageHtml = hasResearchLanguage(row, 'ko')
-      ? '      <span class="gen-research-tag" lang="ko">한국어</span>'
+    const koHtml = hasResearchLanguage(row, 'ko')
+      ? '    <span class="press-book-lang" lang="ko">한국어</span>'
       : '';
     items.push(
       [
-        '<li class="gen-research-item" data-slug="' + escapeHtml(row.slug) + '" tabindex="0">',
-        '  <div class="gen-research-item-main">',
-        '    <div class="gen-research-item-title">' + title + '</div>',
-        '    <div class="gen-research-item-meta">',
-        '      <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
-        rel ? '      <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
-        tagHtml ? '      <span class="gen-research-tags">' + tagHtml + '</span>' : '',
-        languageHtml,
-        '    </div>',
-        '  </div>',
-        '  <span class="gen-research-kind ' + kindClass + '">' + kindLabel + '</span>',
+        // role="link" (not the bare focusable <li> this replaced) so the book
+        // announces as navigation; the content keydown handler already
+        // activates [data-slug] rows on Enter. The spine truncates long titles,
+        // so title= carries the whole thing.
+        '<li class="press-book" role="link" data-jacket="' + jackets[index] + '"' +
+          ' data-imprint="' + researchImprint(displayRow.model) + '"' +
+          ' data-slug="' + escapeHtml(row.slug) + '" tabindex="0"' +
+          ' title="' + escapeHtml(decodeStoredEntities(displayRow.title)) + '">',
+        // The board is nested INSIDE the spine so it can hinge off the spine's
+        // top edge (bottom: 100%) rather than a fixed offset — which is what
+        // lets the spine grow when a long title wraps and keeps the board
+        // sitting on it. Perspective moves onto the spine to match.
+        '  <span class="press-book-spine">',
+        // The front board, laid back into the screen. Bare cloth: the grain and
+        // lighting on .press-book-board-face are what keep it reading as a
+        // surface. It carried a foreshortened copy of the title for a while,
+        // before the texture landed, and that job is now the grain's.
+        '    <span class="press-book-board">',
+        '      <span class="press-book-board-face"></span>',
+        '    </span>',
+        // Author left, title centred, date right — the same three slots
+        // press.stripe.com prints on a spine.
+        '    <span class="press-book-author">' + escapeHtml(displayRow.model) + '</span>',
+        '    <span class="press-book-title">' + title + '</span>',
+        '    <span class="press-book-imprint">',
+        rel ? '      <span class="press-book-date">' + escapeHtml(rel) + '</span>' : '',
+        koHtml,
+        '    </span>',
+        '  </span>',
         '</li>',
-      ].join('\n'),
+      ].filter(Boolean).join('\n'),
     );
-  }
+  });
 
   const empty = visible.length === 0
-    ? '<div class="empty-state-text gen-research-empty">No articles match the search.</div>'
+    ? '<p class="press-shelf-empty">' + escapeHtml(uiText(activeLanguage, 'research.noMatches')) + '</p>'
     : '';
 
   setSafeContent(
     content,
     [
-      '<div class="content-card">',
-      '  <div class="content-card-body">',
-      '    <ul class="gen-research-index">',
+      '<div class="press-shelf-page">',
+      '  <ul class="press-shelf">',
       items.join('\n'),
-      '    </ul>',
+      '  </ul>',
       empty,
+      '  <div class="press-shelf-foot">',
+      paginationHtml(researchIndexPage, visible.length, RESEARCH_PAGE_SIZE, uiText(activeLanguage, 'research.paginationLabel')),
       '  </div>',
       '</div>',
     ].join('\n'),
   );
+  // Only the index wears the press ground; the article view keeps the reading
+  // chrome. Cleared centrally at the top of load().
+  document.body.classList.add('research-shelf');
+  watchShelfDrift();
 }
 
 function renderResearchDoc(row: GenResearchRow, body: string): void {
@@ -2885,21 +5796,24 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
   const docHtml = body;
   const created = new Date(row.created_at);
   const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
+  // Same jacket the shelf painted this book with — the article reads as that
+  // cover opened, not as a generic page. See researchJacketBySlug.
+  const jacket = researchJacketBySlug.get(row.slug) ?? researchJacket(row.slug);
 
   setSafeContent(
     content,
     [
-      '<div class="content-card gen-research-doc">',
+      '<div class="content-card gen-research-doc" data-jacket="' + jacket + '">',
       '  <div class="content-card-header">',
       '    <div class="content-card-title">' + escapeHtml(row.title) + '</div>',
       '  </div>',
       '  <div class="gen-research-doc-meta">',
-      '    <button class="gen-research-back" data-research-back>&lsaquo; All articles</button>',
+      '    <button class="gen-research-back" data-research-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'research.allArticles')) + '</button>',
       '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
       rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
       languageFallbackNote(row),
       researchAudioControlsHtml(row),
-      '    <button class="gen-research-pdf" data-research-pdf title="Save this article as a PDF">Save as PDF</button>',
+      '    <button class="gen-research-pdf" data-research-pdf title="' + escapeHtml(uiText(activeLanguage, 'research.savePdfTitle')) + '">' + escapeHtml(uiText(activeLanguage, 'research.savePdf')) + '</button>',
       '  </div>',
       '  <div class="content-card-body">',
       docHtml,
@@ -2909,6 +5823,7 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
   );
 
   setDocTitle(row.title);
+  setRuntimeIndexable(isIndexableResearchRow(row));
   updateResearchAudioUi();
 
   // After DOM is in place, apply data-pct viz fills, wrap tables in a
@@ -2930,6 +5845,20 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     const cardBody = content.querySelector('.content-card-body') as HTMLElement | null;
     if (cardBody) highlightSearchMatches(cardBody, searchTerm);
   }
+  void hydrateResearchEvidence(row, body);
+}
+
+async function hydrateResearchEvidence(row: GenResearchRow, body: string): Promise<void> {
+  const claims = claimsForArticle(await loadPublicClaims(), row.file);
+  if (activeTab !== 'research' || selectedSlug !== row.slug) return;
+  const fallbackStatus = /deterministic|fallback|degraded/i.test(body)
+    ? (activeLanguage === 'ko' ? '저하/대체 출력 표시 감지' : 'degraded/fallback marker detected in publication')
+    : undefined;
+  const card = content.querySelector('.gen-research-doc .content-card-body');
+  if (!card) return;
+  const host = document.createElement('div');
+  setSafeContent(host, renderEvidenceDrawer(claims, { language: activeLanguage, fallbackStatus }));
+  card.prepend(host);
 }
 
 function renderResearchStandalone(row: GenResearchRow): void {
@@ -2947,12 +5876,12 @@ function renderResearchStandalone(row: GenResearchRow): void {
       '    <div class="content-card-title">' + escapeHtml(row.title) + '</div>',
       '  </div>',
       '  <div class="gen-research-doc-meta">',
-      '    <button class="gen-research-back" data-research-back>&lsaquo; All articles</button>',
+      '    <button class="gen-research-back" data-research-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'research.allArticles')) + '</button>',
       '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
       rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
       languageFallbackNote(row),
       researchAudioControlsHtml(row),
-      '    <a class="gen-research-fullscreen" href="' + escapeHtml(src) + '" target="_blank" rel="noopener noreferrer">Open full ↗</a>',
+      '    <a class="gen-research-fullscreen" href="' + escapeHtml(src) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(uiText(activeLanguage, 'research.openFull')) + '</a>',
       '  </div>',
       '  <iframe class="gen-research-iframe" src="' + escapeHtml(src) + '" sandbox="allow-scripts" loading="lazy" title="' + escapeHtml(row.title) + '"></iframe>',
       '</div>',
@@ -2968,7 +5897,7 @@ function renderResearchStandalone(row: GenResearchRow): void {
 }
 
 function renderAgentsStudio(): void {
-  setSafeContent(content, renderAgentsStudioHtml());
+  setSafeContent(content, renderAgentsStudioHtml(activeLanguage));
   document.title = 'Arm — ara';
 }
 
@@ -3324,20 +6253,52 @@ async function load(): Promise<void> {
   const controller = new AbortController();
   activeLoadController = controller;
   stopResearchAudio();
+  // A direct forecast route owns the ticket modal. Navigating away via
+  // back/forward must dismiss it without rewriting the destination route.
+  if (ticketModalEl && (activeTab !== 'models' || !selectedSlug)) {
+    ticketModalEl.style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
+  // Polymarket midpoint polling only runs while the models tab is shown.
+  if (activeTab !== 'models') stopTicketOddsPolling();
 
   // Hide the floating TOC unconditionally; renderResearchDoc shows it
   // again when it has enough sections to be useful.
   hideResearchTOC();
 
+  // The press ground belongs to the research INDEX only. Clear it on every
+  // dispatch; renderResearchIndex re-adds it when it actually paints the shelf.
+  document.body.classList.remove('research-shelf');
+
   updateRoute();
   showLoading();
 
   try {
+    if (activeTab === 'pricing') {
+      const pricing = await withTimeout(
+        Promise.all([loadModelPricing(controller.signal), loadGpuSpot(controller.signal)]),
+        LOAD_TIMEOUT_MS,
+        controller,
+      );
+      if (requestId !== loadRequestId || activeTab !== 'pricing') return;
+      if (pricing === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (pricing[0]) {
+        paintPricing(pricing[0], pricing[1]);
+      } else {
+        showEmpty(dateStr);
+      }
+      renderCalendar();
+      currentSection = 0;
+      updateNavCounter();
+      updateSearchCount();
+      return;
+    }
     if (activeTab === 'agents') {
       renderAgentsStudio();
       loadArmTimeline(controller.signal).then((timeline) => {
         if (requestId !== loadRequestId || activeTab !== 'agents') return;
-        hydrateAgentsTimeline(content, timeline);
+        hydrateAgentsTimeline(content, timeline, activeLanguage);
       });
       renderCalendar();
       currentSection = 0;
@@ -3349,6 +6310,7 @@ async function load(): Promise<void> {
       await loadManifest();
       if (requestId !== loadRequestId) return;
     }
+    if (latestAliasRequested) applyRuntimeSeo(routeFromState());
     if (activeTab === 'focusReader') {
       const result = await withTimeout(loadFocusReaderData(controller.signal), LOAD_TIMEOUT_MS, controller);
       if (requestId !== loadRequestId) return;
@@ -3371,16 +6333,22 @@ async function load(): Promise<void> {
       } else if (!selectedSlug) {
         renderWikiIndex(idx);
       } else {
-        const page = wikiPageMap.get(selectedSlug);
-        if (!page) {
+        const canonicalPage = wikiPageMap.get(selectedSlug);
+        if (!canonicalPage) {
           renderWikiNotFound(selectedSlug);
         } else {
-          const cached = wikiBodyCache.get(selectedSlug);
+          const translation = wikiTranslationFor(canonicalPage);
+          const page = localizedWikiPage(canonicalPage);
+          const translationMissing = activeLanguage === 'ko' && !translation;
+          const translationStale = Boolean(translation?.stale);
+          const bodyPath = translation?.file || `wiki/${canonicalPage.file}`;
+          const cacheKey = `${selectedSlug}:${translation ? 'ko' : 'en'}`;
+          const cached = wikiBodyCache.get(cacheKey);
           if (cached !== undefined) {
-            renderWikiPage(page, cached);
+            renderWikiPage(page, cached, controller.signal, translationMissing, translationStale);
           } else {
             const body = await withTimeout(
-              fetchMarkdownReport(`${DATA_BASE}/wiki/${page.file}`, controller.signal),
+              fetchMarkdownReport(`${DATA_BASE}/${bodyPath}`, controller.signal),
               LOAD_TIMEOUT_MS,
               controller,
             );
@@ -3388,8 +6356,8 @@ async function load(): Promise<void> {
             if (body === 'timeout') {
               showError('Loading timed out', 'Network may be slow. Click to retry.');
             } else if (body) {
-              wikiBodyCache.set(selectedSlug, body);
-              renderWikiPage(page, body);
+              wikiBodyCache.set(cacheKey, body);
+              renderWikiPage(page, body, controller.signal, translationMissing, translationStale);
             } else {
               renderWikiNotFound(selectedSlug);
             }
@@ -3464,6 +6432,13 @@ async function load(): Promise<void> {
         showError('Loading timed out', 'Network may be slow. Click to retry.');
       } else {
         renderTickets(ticketsResult);
+        const routedTicket = selectedSlug && Array.isArray(ticketsResult)
+          ? ticketsResult.find(ticket => ticket.slug === selectedSlug)
+          : null;
+        if (routedTicket && isShareableForecastTicket(routedTicket)) {
+          setDocTitle(`${routedTicket.title} forecast`);
+          openTicketModal(routedTicket);
+        }
       }
     } else if (activeTab === 'today') {
       // Fetch digest + front page in parallel — the front page goes
@@ -3516,7 +6491,10 @@ async function load(): Promise<void> {
         await loadManifest();
         if (requestId !== loadRequestId) return;
       }
-      const result = await withTimeout(fetchTwitter(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller);
+      const [result] = await Promise.all([
+        withTimeout(fetchTwitter(dateStr, controller.signal), LOAD_TIMEOUT_MS, controller),
+        ensureTwitterAbIndex(controller.signal),
+      ]);
       if (requestId !== loadRequestId) return;
       if (result === 'timeout') {
         showError('Loading timed out', 'Network may be slow. Click to retry.');
@@ -3546,7 +6524,8 @@ async function load(): Promise<void> {
       }
     }
 
-    if (activeTab !== 'research' && activeTab !== 'wiki' && activeTab !== 'focusReader') {
+    if (activeTab !== 'research' && activeTab !== 'wiki' && activeTab !== 'focusReader'
+      && !(activeTab === 'today' && digestUnavailableForCurrentView)) {
       syncDigestAudioForDate(dateStr);
     }
     renderCalendar();
@@ -3595,7 +6574,9 @@ function updateSearchCount(): void {
   }
   const matches = content.querySelectorAll('mark').length;
   const cards = getCards().length;
-  searchCountEl.textContent = matches === 0 ? '0 matches' : matches + ' in ' + cards;
+  searchCountEl.textContent = matches === 0
+    ? uiText(activeLanguage, 'search.zeroMatches')
+    : uiText(activeLanguage, 'search.matches', { matches, cards });
 }
 
 function scrollToSection(index: number): void {
@@ -3637,13 +6618,15 @@ document.getElementById('shortcutToggle')!.addEventListener('click', () => {
 function goHome(): void {
   activeTab = 'today';
   selectedSlug = null;
+  latestAliasRequested = null;
+  homeRouteRequested = true;
   syncTabUi();
   load();
 }
 const brandHome = document.getElementById('brandHome');
-brandHome?.addEventListener('click', goHome);
-brandHome?.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); }
+brandHome?.addEventListener('click', (event) => {
+  event.preventDefault();
+  goHome();
 });
 
 const searchToggle = document.getElementById('searchToggle');
@@ -3655,11 +6638,18 @@ const searchResultsEl = document.getElementById('searchResults');
 // Search across ALL content — research articles, wiki pages, model tickets —
 // from any tab; a result jumps straight to the item. The corpus is built lazily
 // from the already-loaded indexes and cached.
-type SearchHit = { type: 'research' | 'wiki' | 'model' | 'digest' | 'twitter'; title: string; subtitle: string; slug: string; hay: string; date?: string; anchor?: string; sectionTitle?: string };
+type SearchHit = { type: 'research' | 'wiki' | 'model' | 'claim' | 'digest' | 'twitter'; title: string; subtitle: string; slug: string; hay: string; date?: string; anchor?: string; sectionTitle?: string; evidence?: EvidenceSearchEntry; snippet?: string };
 let searchCorpus: SearchHit[] | null = null;
 let searchHits: SearchHit[] = [];
 let searchSel = -1;
-const SEARCH_TYPE_LABEL: Record<SearchHit['type'], string> = { research: 'Research', wiki: 'Wiki', model: 'Model', digest: 'Digest', twitter: 'Twitter' };
+const SEARCH_TYPE_KEY: Record<SearchHit['type'], UiCopyKey> = {
+  research: 'search.type.research',
+  wiki: 'search.type.wiki',
+  model: 'search.type.model',
+  claim: 'search.type.claim',
+  digest: 'search.type.digest',
+  twitter: 'search.type.twitter',
+};
 
 // Build-time content index (digest sections + twitter cycles) — see
 // scripts/prebuild.mjs:buildSearchIndex. Loaded once, cached, best-effort.
@@ -3692,15 +6682,16 @@ function ymdToDate(s: string): Date {
 
 async function buildSearchCorpus(): Promise<SearchHit[]> {
   if (searchCorpus) return searchCorpus;
-  const [m, wiki, tickets, idx] = await Promise.all([loadManifest(), loadWikiIndexCached(), loadTickets(), loadSearchIndex()]);
+  const [m, wiki, tickets, idx, evidence] = await Promise.all([loadManifest(), loadWikiIndexCached(), loadTickets(), loadSearchIndex(), loadEvidenceSearch()]);
   const hits: SearchHit[] = [];
   if (wiki) for (const p of wiki.pages) {
     hits.push({ type: 'wiki', title: p.title, subtitle: (p.aliases || []).slice(0, 3).join(', ') || String(p.type),
       slug: p.slug, hay: (p.title + ' ' + (p.aliases || []).join(' ') + ' ' + (p.summary || '') + ' ' + (p.tags || []).join(' ')).toLowerCase() });
   }
   if (m) for (const r of (m.generative || [])) {
-    hits.push({ type: 'research', title: r.title, subtitle: (r.tags || []).slice(0, 4).join(', '),
-      slug: r.slug, hay: (r.title + ' ' + (r.tags || []).join(' ') + ' ' + (r.prompt || '')).toLowerCase() });
+    const variant = researchVariant(r, activeLanguage);
+    hits.push({ type: 'research', title: variant.title, subtitle: (variant.tags || []).filter(isResearchDisplayTag).slice(0, 4).join(', '),
+      slug: r.slug, hay: (variant.title + ' ' + r.title + ' ' + (variant.tags || []).join(' ') + ' ' + (variant.prompt || '')).toLowerCase() });
   }
   if (tickets) for (const t of tickets) {
     hits.push({ type: 'model', title: t.title, subtitle: t.company + (t.model ? ' · ' + t.model : ''),
@@ -3719,22 +6710,60 @@ async function buildSearchCorpus(): Promise<SearchHit[]> {
       slug: '', date: c.date, anchor: c.anchor,
       hay: (c.date + ' ' + c.cycleTime + ' ' + (c.summary || '') + ' ' + (c.storyTitles || []).join(' ')).toLowerCase() });
   }
-  searchCorpus = hits;
-  return hits;
+  const byKey = new Map(hits.filter((hit) => ['research', 'wiki', 'model'].includes(hit.type)).map((hit) => [`${hit.type}:${hit.slug}`, hit]));
+  const enrichedKeys = new Set<string>();
+  const evidenceHits: SearchHit[] = [];
+  for (const entry of evidence) {
+    const key = `${entry.type}:${entry.id.replace(/^(?:research|wiki|model):/, '').replace(/:[a-z]{2}$/i, '')}`;
+    const existing = byKey.get(key);
+    if (existing) {
+      // Keep language variants as separate evidence records so the language
+      // filter and shared ranker operate on the actual indexed document.
+      enrichedKeys.add(key);
+      evidenceHits.push({
+        ...existing,
+        title: entry.title,
+        subtitle: [existing.subtitle, entry.language].filter(Boolean).join(' · '),
+        hay: `${existing.hay} ${entry.title} ${entry.body}`.toLowerCase(),
+        evidence: entry,
+        snippet: entry.body,
+        date: entry.date,
+      });
+      continue;
+    }
+    if (entry.type !== 'claim') continue;
+    evidenceHits.push({
+      type: 'claim',
+      title: entry.title,
+      subtitle: [entry.confidence, entry.risk, entry.sourceTier].map((value) => evidenceEnumLabel(value, activeLanguage)).concat(entry.date || []).filter(Boolean).join(' · '),
+      slug: entry.url,
+      hay: `${entry.title} ${entry.body}`.toLowerCase(),
+      evidence: entry,
+      snippet: entry.body,
+      date: entry.date,
+    });
+  }
+  searchCorpus = [
+    ...hits.filter((hit) => !enrichedKeys.has(`${hit.type}:${hit.slug}`)),
+    ...evidenceHits,
+  ];
+  return searchCorpus;
 }
 
 function renderSearchHits(): void {
   if (!searchResultsEl) return;
   if (searchHits.length === 0) {
-    setSafeContent(searchResultsEl, '<div class="search-empty">No matches</div>');
+    setSafeContent(searchResultsEl, '<div class="search-empty">' + escapeHtml(uiText(activeLanguage, 'search.noMatches')) + '</div>');
     searchResultsEl.hidden = false;
     return;
   }
   const rows = searchHits.map((h, i) =>
-    '<button class="search-result' + (i === searchSel ? ' is-sel' : '') + '" type="button" role="option" data-sr-index="' + i + '">' +
-    '<span class="search-result-type">' + SEARCH_TYPE_LABEL[h.type] + '</span>' +
+    '<button class="search-result' + (i === searchSel ? ' is-sel' : '') + (h.evidence?.reusable === false ? ' needs-reverify' : '') + '" type="button" role="option" data-sr-index="' + i + '">' +
+    '<span class="search-result-type">' + escapeHtml(uiText(activeLanguage, SEARCH_TYPE_KEY[h.type])) + '</span>' +
     '<span class="search-result-title">' + escapeHtml(h.title) + '</span>' +
     (h.subtitle ? '<span class="search-result-sub">' + escapeHtml(h.subtitle) + '</span>' : '') +
+    (h.snippet ? '<span class="search-result-snippet">' + escapeHtml(excerptAround(h.snippet, searchInput.value, 180)) + '</span>' : '') +
+    (h.evidence?.reusable === false ? '<span class="search-result-reverify">' + escapeHtml(activeLanguage === 'ko' ? '실시간 재검증 필요' : 'Reverify live') + (h.evidence.reuse_block ? ' · ' + escapeHtml(evidenceEnumLabel(h.evidence.reuse_block, activeLanguage)) : '') + '</span>' : '') +
     '</button>',
   ).join('');
   setSafeContent(searchResultsEl, rows);
@@ -3751,7 +6780,27 @@ async function runGlobalSearch(query: string): Promise<void> {
     return;
   }
   const corpus = await buildSearchCorpus();
-  searchHits = corpus
+  const typeFilter = (document.getElementById('searchTypeFilter') as HTMLSelectElement | null)?.value || '';
+  const confidenceFilter = (document.getElementById('searchConfidenceFilter') as HTMLSelectElement | null)?.value || '';
+  const tierFilter = (document.getElementById('searchTierFilter') as HTMLSelectElement | null)?.value || '';
+  const languageFilter = (document.getElementById('searchLanguageFilter') as HTMLSelectElement | null)?.value || '';
+  const evidenceHits = corpus.filter((hit): hit is SearchHit & { evidence: EvidenceSearchEntry } => Boolean(hit.evidence));
+  const rankedEvidence = searchEvidence(
+    evidenceHits.map((hit) => hit.evidence),
+    query,
+    {
+      type: typeFilter as EvidenceSearchEntry['type'] || undefined,
+      confidence: confidenceFilter || undefined,
+      sourceTier: tierFilter || undefined,
+      language: languageFilter || undefined,
+    },
+    80,
+  );
+  const legacyHits = corpus
+    .filter((hit) => !hit.evidence)
+    .filter((hit) => !typeFilter || hit.type === typeFilter)
+    // Evidence-only filters cannot truthfully be applied to legacy digest/Twitter records.
+    .filter(() => !confidenceFilter && !tierFilter && !languageFilter)
     .map((h) => {
       const t = h.title.toLowerCase();
       const score = t.startsWith(q) ? 3 : t.includes(q) ? 2 : h.hay.includes(q) ? 1 : 0;
@@ -3759,8 +6808,17 @@ async function runGlobalSearch(query: string): Promise<void> {
     })
     .filter((x) => x.score > 0)
     .sort((a, b) => b.score - a.score || a.h.title.length - b.h.title.length)
-    .slice(0, 24)
     .map((x) => x.h);
+  const hitByEvidenceId = new Map(evidenceHits.map((hit) => [hit.evidence.id, hit]));
+  const rankedHits = rankedEvidence.flatMap((entry): SearchHit[] => {
+    const hit = hitByEvidenceId.get(entry.id);
+    return hit ? [hit] : [];
+  });
+  searchHits = [
+    ...rankedHits,
+    ...legacyHits,
+  ]
+    .slice(0, 24);
   searchSel = searchHits.length ? 0 : -1;
   if (searchCountEl) searchCountEl.textContent = searchHits.length ? String(searchHits.length) : '';
   renderSearchHits();
@@ -3775,13 +6833,14 @@ function moveSearchSel(d: number): void {
 
 function activateSearchHit(h: SearchHit): void {
   closeSearch();
+  latestAliasRequested = null;
   if (h.type === 'model') {
     activeTab = 'models';
-    selectedSlug = null;
+    const t = ticketsCache ? ticketsCache.find((x) => x.slug === h.slug) : null;
+    selectedSlug = t && isShareableForecastTicket(t) ? t.slug : null;
     syncTabUi();
     load();
-    const t = ticketsCache ? ticketsCache.find((x) => x.slug === h.slug) : null;
-    if (t) window.setTimeout(() => openTicketModal(t), 60);
+    if (t && !isShareableForecastTicket(t)) window.setTimeout(() => openTicketModal(t), 60);
     return;
   }
   if (h.type === 'digest') {
@@ -3808,6 +6867,11 @@ function activateSearchHit(h: SearchHit): void {
     }
     return;
   }
+  if (h.type === 'claim') {
+    const path = h.slug.startsWith('/') ? h.slug : '/research';
+    if (parseRoute(path)) load();
+    return;
+  }
   activeTab = h.type; // 'research' | 'wiki'
   selectedSlug = h.slug;
   syncTabUi();
@@ -3818,14 +6882,20 @@ function syncSearchClear(): void {
   if (searchClear) (searchClear as HTMLElement).hidden = searchInput.value.length === 0;
 }
 function openSearch(): void {
+  closeAraFigureModal(); // the figure lightbox stacks above the search modal
   if (searchOverlay) searchOverlay.hidden = false;
+  document.body.classList.add('search-open'); // scroll-lock behind the modal
   syncSearchClear();
   searchInput.focus();
   searchInput.select();
+  // Re-run a kept query so reopening never shows Enter-able hits from a
+  // hidden, stale result list.
+  if (searchInput.value.trim()) void runGlobalSearch(searchInput.value);
 }
 function closeSearch(): void {
   if (searchOverlay) searchOverlay.hidden = true;
   if (searchResultsEl) searchResultsEl.hidden = true;
+  document.body.classList.remove('search-open');
 }
 function clearSearch(): void {
   searchInput.value = '';
@@ -3845,48 +6915,150 @@ searchResultsEl?.addEventListener('click', (e) => {
   if (searchHits[i]) activateSearchHit(searchHits[i]);
 });
 searchInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') { closeSearch(); searchInput.blur(); }
+  if (e.key === 'Escape') { closeSearch(); searchInput.blur(); (searchToggle as HTMLElement | null)?.focus(); }
   else if (e.key === 'ArrowDown') { e.preventDefault(); moveSearchSel(1); }
   else if (e.key === 'ArrowUp') { e.preventDefault(); moveSearchSel(-1); }
   else if (e.key === 'Enter') { e.preventDefault(); if (searchHits[searchSel]) activateSearchHit(searchHits[searchSel]); }
 });
-// ⌘F / Ctrl+F opens search from anywhere (overrides native find); click outside
-// the panel closes it.
+// ⌘K (the Mintlify/GitBook convention) and ⌘F / Ctrl+F open the search modal
+// from anywhere (⌘F deliberately overrides native find); clicking the dimmed
+// backdrop closes it.
 document.addEventListener('keydown', (e) => {
-  if ((e.metaKey || e.ctrlKey) && (e.key === 'f' || e.key === 'F')) {
+  if ((e.metaKey || e.ctrlKey) && ['f', 'F', 'k', 'K'].includes(e.key)) {
     e.preventDefault();
     openSearch();
   }
 });
-document.addEventListener('mousedown', (e) => {
-  if (!searchOverlay || searchOverlay.hidden) return;
-  const t = e.target as Node;
-  if (!searchOverlay.contains(t) && !(searchToggle && searchToggle.contains(t))) closeSearch();
-});
+// 'click', not 'mousedown': hiding the overlay on mousedown would let the
+// paired click land on whatever the backdrop was covering (e.g. the magnifier
+// toggle, whose handler would instantly reopen the modal).
+document.getElementById('searchBackdrop')?.addEventListener('click', closeSearch);
 
 searchInput.addEventListener('input', () => {
   syncSearchClear();
   if (searchDebounceId !== null) window.clearTimeout(searchDebounceId);
   searchDebounceId = window.setTimeout(() => { void runGlobalSearch(searchInput.value); }, 120);
 });
+document.querySelectorAll<HTMLSelectElement>('.search-filters select').forEach((select) => {
+  select.addEventListener('change', () => { void runGlobalSearch(searchInput.value); });
+});
 
-languageSwitch?.addEventListener('click', (e) => {
+function bindWatchlistActions(root: ParentNode): void {
+  root.querySelectorAll<HTMLButtonElement>('[data-watch-topic]').forEach((button) => {
+    if (button.dataset.boundWatchlist === 'true') return;
+    button.dataset.boundWatchlist = 'true';
+    button.addEventListener('click', () => {
+      const topic = normalizeTopic(button.dataset.watchTopic || '');
+      if (!topic) return;
+      const exists = watchlist.topics.includes(topic);
+      watchlist = {
+        ...watchlist,
+        topics: exists ? watchlist.topics.filter((item) => item !== topic) : [...watchlist.topics, topic],
+      };
+      writeWatchlist(watchlist);
+      button.classList.toggle('is-active', !exists);
+      button.setAttribute('aria-pressed', String(!exists));
+      button.textContent = `${!exists ? '★' : '+'} ${topic.replace(/-/g, ' ')}`;
+    });
+  });
+  root.querySelectorAll<HTMLButtonElement>('[data-share-watchlist]').forEach((button) => {
+    if (button.dataset.boundWatchlist === 'true') return;
+    button.dataset.boundWatchlist = 'true';
+    button.addEventListener('click', async () => {
+      const path = watchlistSharePath(watchlist.topics, location.pathname, activeLanguage);
+      const url = new URL(path, PUBLIC_SITE_ORIGIN).href;
+      try {
+        await navigator.clipboard.writeText(url);
+        button.textContent = activeLanguage === 'ko' ? '링크 복사됨' : 'Link copied';
+      } catch {
+        history.replaceState(history.state, '', path);
+        button.textContent = activeLanguage === 'ko' ? '주소에 저장됨' : 'Saved in URL';
+      }
+    });
+  });
+}
+
+languageToggle?.addEventListener('click', () => {
+  setLanguageMenuOpen(languageMenu?.hasAttribute('hidden') ?? true, true);
+});
+
+languageToggle?.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    setLanguageMenuOpen(true, true);
+  }
+});
+
+languageMenu?.addEventListener('click', (e) => {
   const btn = (e.target as HTMLElement).closest('[data-language]') as HTMLButtonElement | null;
   if (!btn) return;
   const language = btn.dataset.language === 'ko' ? 'ko' : 'en';
+  setLanguageMenuOpen(false);
+  languageToggle?.focus();
   if (language === activeLanguage) return;
   activeLanguage = language;
   storeLanguage(activeLanguage);
   researchDocCache = null;
+  searchCorpus = null;
   syncLanguageUi(selectedSlug ? findResearchRow(selectedSlug) : null);
-  load();
+  void load();
+});
+
+languageMenu?.addEventListener('keydown', (e) => {
+  const options = languageMenuOptions();
+  const current = options.indexOf(document.activeElement as HTMLButtonElement);
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    setLanguageMenuOpen(false);
+    languageToggle?.focus();
+  } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    const direction = e.key === 'ArrowDown' ? 1 : -1;
+    options[(current + direction + options.length) % options.length]?.focus();
+  } else if (e.key === 'Home' || e.key === 'End') {
+    e.preventDefault();
+    options[e.key === 'Home' ? 0 : options.length - 1]?.focus();
+  }
+});
+
+document.addEventListener('click', (e) => {
+  if (languageMenu?.hidden || languageSwitch?.contains(e.target as Node)) return;
+  setLanguageMenuOpen(false);
 });
 
 // Retry button + research index navigation (event delegation on content)
 content.addEventListener('click', (e) => {
   const target = e.target as HTMLElement;
+  const paginationLink = target.closest('[data-index-page]') as HTMLAnchorElement | null;
+  if (paginationLink && !selectedSlug && (activeTab === 'research' || activeTab === 'wiki')) {
+    const page = Number(paginationLink.dataset.indexPage);
+    if (Number.isSafeInteger(page) && page > 0) {
+      e.preventDefault();
+      if (activeTab === 'research') researchIndexPage = page;
+      else wikiIndexPage = page;
+      load();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    return;
+  }
   if (target.closest('[data-ara-figure-close]')) {
     closeAraFigureModal();
+    return;
+  }
+  const abChip = target.closest('.twitter-ab-chip') as HTMLButtonElement | null;
+  if (abChip) {
+    void toggleTwitterAbPanel(abChip);
+    return;
+  }
+  const abPick = target.closest('[data-ab-pick]') as HTMLButtonElement | null;
+  if (abPick) {
+    const panel = abPick.closest('.twitter-ab-panel') as HTMLElement | null;
+    const chip = panel?.closest('.twitter-cycle-card')?.querySelector('.twitter-ab-chip') as HTMLButtonElement | null;
+    const lane = abPick.dataset.abPick || '';
+    const lanes = (chip?.dataset.abLanes || '').split(',').filter(Boolean);
+    if (panel && chip && lane && panel.dataset.loaded !== lane) {
+      void buildTwitterAbPanel(panel, chip.dataset.abHour || '', lanes, lane);
+    }
     return;
   }
   const figureImg = target.closest('.ara-doc .ara-figure img') as HTMLImageElement | null;
@@ -3921,8 +7093,16 @@ content.addEventListener('click', (e) => {
   }
   const back = target.closest('[data-research-back]') as HTMLElement | null;
   if (back) {
-    selectedSlug = null;
-    load();
+    // Play the open in reverse when we know which book we're in. The browser's
+    // own Back button is left alone: popstate fires after the URL has already
+    // changed, so there is no clean moment to hold the article on screen.
+    const openRow = selectedSlug ? findResearchRow(selectedSlug) : null;
+    const navigate = (): Promise<void> => {
+      selectedSlug = null;
+      return load();
+    };
+    if (openRow) closeBookThen(openRow, navigate);
+    else void navigate();
     return;
   }
   if (target.closest('[data-research-file-audio-toggle]')) {
@@ -3956,6 +7136,7 @@ content.addEventListener('click', (e) => {
     const match = href.match(/^\/twitter\/(\d{4}-\d{2}-\d{2})$/);
     if (match) {
       e.preventDefault();
+      latestAliasRequested = null;
       currentDate = ymdToDate(match[1]);
       calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
       load();
@@ -4000,12 +7181,31 @@ content.addEventListener('click', (e) => {
     }
     return;
   }
+  // Odds chips are buttons that open the market-detail modal. Must run
+  // before the [data-slug] card branch below (which ignores a/button
+  // clicks, so the chip would otherwise be swallowed silently). Gated on
+  // the models tab like the sibling branches: real chips only render
+  // there, so a `.ticket-odds-chip` fabricated inside sanitized
+  // model-authored content on any other tab stays inert — safety rests on
+  // reachability, not on the modal's sinks being harmless. Keyboard needs
+  // no separate gate: chips are native buttons, so Enter/Space activation
+  // arrives here as this same click event.
+  const oddsChip = target.closest('.ticket-odds-chip') as HTMLElement | null;
+  if (oddsChip && activeTab === 'models') {
+    openTicketOddsModal(oddsChip);
+    return;
+  }
   const row = target.closest('[data-slug]') as HTMLElement | null;
   if (row && activeTab === 'research') {
     const slug = row.dataset.slug;
     if (slug) {
-      selectedSlug = slug;
-      load();
+      const navigate = (): Promise<void> => {
+        selectedSlug = slug;
+        return load();
+      };
+      // Index covers open; anything else navigating by slug goes straight through.
+      if (row.classList.contains('press-book')) openBookThen(row, navigate);
+      else void navigate();
     }
     return;
   }
@@ -4014,7 +7214,16 @@ content.addEventListener('click', (e) => {
     if (target.closest('a, button')) return;
     const slug = row.dataset.slug;
     const ticket = slug && ticketsCache ? ticketsCache.find((t) => t.slug === slug) : null;
-    if (ticket) openTicketModal(ticket);
+    if (ticket) {
+      rememberTicketModalOrigin(ticket);
+      if (isShareableForecastTicket(ticket)) {
+        pendingRouteState = { araForecastFromBoard: true };
+        selectedSlug = ticket.slug;
+        load();
+      } else {
+        openTicketModal(ticket);
+      }
+    }
   }
 });
 
@@ -4063,8 +7272,12 @@ content.addEventListener('keydown', (e: KeyboardEvent) => {
     e.preventDefault();
     const slug = row.dataset.slug;
     if (slug) {
-      selectedSlug = slug;
-      load();
+      const navigate = (): Promise<void> => {
+        selectedSlug = slug;
+        return load();
+      };
+      if (row.classList.contains('press-book')) openBookThen(row, navigate);
+      else void navigate();
     }
   }
 });
@@ -4078,6 +7291,12 @@ document.getElementById('refreshBtn')!.addEventListener('click', () => {
 // Keyboard shortcuts
 document.addEventListener('keydown', (e: KeyboardEvent) => {
   if (e.key === 'Escape') {
+    if (calendarEl.classList.contains('open')) {
+      calendarEl.classList.remove('open');
+      renderCalendar();
+      calendarEl.querySelector<HTMLButtonElement>('[data-cal-toggle]')?.focus();
+    }
+    closeTicketOddsModal();
     closeAraFigureModal();
     return;
   }
@@ -4099,6 +7318,7 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
       break;
     case 't':
     case 'T': {
+      latestAliasRequested = null;
       const now = new Date();
       currentDate = now;
       calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -4121,11 +7341,15 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
 });
 
 // ── Tab navigation ────────────────────────────────────
-document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
-  btn.addEventListener('click', () => {
+document.querySelectorAll<HTMLAnchorElement>('.tab').forEach((btn) => {
+  btn.addEventListener('click', (event) => {
+    event.preventDefault();
     const tab = btn.dataset.tab as Tab;
     if (tab === activeTab) return;
     activeTab = tab;
+    if (tab === 'research') researchIndexPage = 1;
+    if (tab === 'wiki') wikiIndexPage = 1;
+    latestAliasRequested = tab === 'twitter' ? 'twitter' : null;
     selectedSlug = null;
     syncTabUi();
     document.body.classList.toggle('tab-research', activeTab === 'research');
@@ -4133,10 +7357,11 @@ document.querySelectorAll<HTMLButtonElement>('.tab').forEach((btn) => {
     document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
     document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
     document.body.classList.toggle('tab-agents', activeTab === 'agents');
+    document.body.classList.toggle('tab-pricing', activeTab === 'pricing');
     // Re-probe availability for current month with new tab (date tabs only).
     // The models/wiki tabs don't use date routing, so skip probing there too —
     // it'd just paint dots on a calendar that's hidden anyway.
-    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader' && activeTab !== 'agents') {
+    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader' && activeTab !== 'agents' && activeTab !== 'pricing') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -4157,7 +7382,8 @@ document.body.classList.toggle('tab-models', currentTab === 'models');
 document.body.classList.toggle('tab-wiki', currentTab === 'wiki');
 document.body.classList.toggle('tab-focus-reader', currentTab === 'focusReader');
 document.body.classList.toggle('tab-agents', currentTab === 'agents');
-if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader' && currentTab !== 'agents') {
+document.body.classList.toggle('tab-pricing', currentTab === 'pricing');
+if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader' && currentTab !== 'agents' && currentTab !== 'pricing') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();
@@ -4166,7 +7392,7 @@ load();
 // Hash-only changes (anchor click within an article) just scroll; route
 // changes re-fetch via load() and fire a SPA page_view to GA.
 window.addEventListener('popstate', () => {
-  const newPathname = location.pathname;
+  const newPathname = location.pathname + location.search;
   if (newPathname === lastAppliedPathname) {
     // Same article, different anchor — just scroll to the new fragment.
     scrollToHashIfPresent();

@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
@@ -28,27 +28,28 @@ jobs:
         id: datetime
         run: |
           {
-            echo "date=$(date +'%Y-%m-%d')"
-            echo "timestamp=$(date +'%Y-%m-%d %H:%M UTC')"
+            echo "date=$(date -u +'%Y-%m-%d')"
+            echo "timestamp=$(date -u +'%Y-%m-%d %H:%M UTC')"
             echo "yesterday=$(date -u -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -u -v-1d +'%Y-%m-%d')"
           } >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '22'
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           enable-cache: true
 
       - name: Install Python dependencies
         run: uv sync --frozen
 
-      - name: Install bird CLI
-        # pinned 2026-05-17; bump manually (Dependabot can't track inline npm -g installs)
-        run: npm install -g @steipete/bird@0.8.0
+      # Was `npm install -g @steipete/bird@0.8.0` (npm: "no longer supported").
+      # birdy serves every command natively in Go since v1.0.0.
+      - name: Install birdy
+        uses: ./.github/actions/install-birdy
 
       - name: Fetch tweets from company accounts
         env:
@@ -62,7 +63,7 @@ jobs:
 
           for handle in $companies; do
             echo "Fetching @${handle}..."
-            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+            birdy user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
           done
 
       - name: Fetch tweets from key execs
@@ -75,7 +76,7 @@ jobs:
 
           for handle in $execs; do
             echo "Fetching @${handle}..."
-            bird user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+            birdy user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
           done
 
       - name: Search for model release tweets
@@ -84,16 +85,16 @@ jobs:
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
           # Model release announcements
-          bird search "new model release OR model launch OR new AI model OR foundation model release" -n 50 --json --plain > /tmp/bird/search-model-release.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-release.json
+          birdy search "new model release OR model launch OR new AI model OR foundation model release" -n 50 --json --plain > /tmp/bird/search-model-release.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-release.json
 
           # Specific model names
-          bird search "GPT-5 OR GPT-4.5 OR Claude 4 OR Gemini 2.5 OR Llama 4 OR Grok 3" -n 40 --json --plain > /tmp/bird/search-model-names.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-names.json
+          birdy search "GPT-5 OR GPT-4.5 OR Claude 4 OR Gemini 2.5 OR Llama 4 OR Grok 3" -n 40 --json --plain > /tmp/bird/search-model-names.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-names.json
 
           # Roadmaps and timelines
-          bird search "model roadmap OR upcoming model OR model release date OR model announcement" -n 30 --json --plain > /tmp/bird/search-roadmap.json 2>/dev/null || echo "[]" > /tmp/bird/search-roadmap.json
+          birdy search "model roadmap OR upcoming model OR model release date OR model announcement" -n 30 --json --plain > /tmp/bird/search-roadmap.json 2>/dev/null || echo "[]" > /tmp/bird/search-roadmap.json
 
           # Benchmarks and SOTA
-          bird search "AI model benchmark OR SOTA OR state of the art new model" -n 20 --json --plain > /tmp/bird/search-benchmark.json 2>/dev/null || echo "[]" > /tmp/bird/search-benchmark.json
+          birdy search "AI model benchmark OR SOTA OR state of the art new model" -n 20 --json --plain > /tmp/bird/search-benchmark.json 2>/dev/null || echo "[]" > /tmp/bird/search-benchmark.json
 
       # CRUD agent — maintains the persistent set of tickets at
       # research/models/tickets/<slug>.md instead of regenerating a
@@ -133,8 +134,17 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          # max-turns raised 60 -> 100 on 2026-08-16. The ticket store is
+          # persistent and append-only (rule 9), so the per-run read cost
+          # grows with it: at ~186 tickets the CRUD agent started dying on
+          # "Reached maximum number of turns (60)" (run 31871011485) rather
+          # than on any model or credential fault. This is a scope problem,
+          # so it will recur as the store grows -- the durable fix is a
+          # bounded working set, not a bigger number. Wall-clock headroom is
+          # fine: that run burned 60 turns in ~12 min, so 100 lands near
+          # ~20 min against the 90-min timeout above.
           claude-args: |
-            --model opus --max-turns 60 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),Bash(curl:*),Task,TodoWrite"
+            --model opus --max-turns 100 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),Bash(curl:*),Task,TodoWrite"
           expected-paths: |
             research/models/
           label: Model-ticket Claude CRUD
@@ -269,6 +279,11 @@ jobs:
               - The body is markdown narrative; keep it concise (the
                 history field is the audit trail). 3–10 short paragraphs
                 is typical.
+              - Optional `polymarket:` frontmatter: maintain mappings per
+                the "Polymarket market mappings" section of
+                docs/model-tickets.md — add one only when a clearly-matching
+                ACTIVE market exists, keep mappings after markets resolve,
+                and NEVER invent IDs (only IDs read from the Polymarket API).
               - Do not write outside research/models/tickets/ and the
                 single daily-diff file in research/models/.
 
@@ -334,8 +349,7 @@ jobs:
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the
       # rebase cannot fail to start with "cannot rebase: You have unstaged
-      # changes". The action exposes `outputs.pushed`, consumed by the
-      # Vercel deploy step below. Push failures now propagate as a real
+      # changes". Push failures now propagate as a real
       # job failure (previously the no-retry inline step quietly set
       # pushed=false on real errors).
       # See .github/actions/safe-push/action.yml.
@@ -344,22 +358,6 @@ jobs:
         uses: ./.github/actions/safe-push
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      # Vercel's GitHub App webhook should fire on bot pushes too (no
-      # cascade-trigger restriction at the webhook layer), but if the
-      # VERCEL_DEPLOY_HOOK secret is present we belt-and-suspenders it.
-      # Set the secret to a Vercel Project → Settings → Git → Deploy Hooks
-      # URL scoped to the `main` branch.
-      - name: Trigger Vercel deploy
-        if: steps.push.outputs.pushed == 'true'
-        env:
-          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
-        run: |
-          if [ -n "$VERCEL_DEPLOY_HOOK" ]; then
-            curl -fsSL -X POST "$VERCEL_DEPLOY_HOOK" && echo "Vercel deploy hook fired"
-          else
-            echo "VERCEL_DEPLOY_HOOK not set; relying on Vercel's GitHub auto-deploy"
-          fi
 
       - name: Publish Hooker workflow telemetry
         if: always()

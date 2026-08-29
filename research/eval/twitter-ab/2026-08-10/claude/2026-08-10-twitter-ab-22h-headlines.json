@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "NVIDIA REPORTEDLY ARRANGING ~$500B AI INFRASTRUCTURE DEBT PACKAGE WITH APOLLO, BLACKSTONE, BLACKROCK, GOLDMAN, KKR — NVDA OFF 3%",
+    "source": "@CenterPointSec",
+    "url": "https://x.com/CenterPointSec/status/2086936937492025590",
+    "category": "business"
+  },
+  {
+    "headline": "HUANG: NVIDIA AI FACTORY COMPUTE IS BECOMING AN INVESTABLE ASSET CLASS",
+    "source": "@JensenHuang",
+    "url": "https://x.com/JensenHuang/status/2086934705207959965",
+    "category": "infra"
+  },
+  {
+    "headline": "UNRELEASED CLAUDE LIFTS PROVEN RIEMANN ZETA ZERO BOUND FROM 41.6% TO 67.2% — 25.6 POINTS IN ONE RUN",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2086867246073401655",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI SHIPS GPT-5.6-CYBER UNDER DAYBREAK, SAYS IT FOUND PREVIOUSLY UNKNOWN BUGS IN CHROME V8",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2086864365379010729",
+    "category": "model"
+  },
+  {
+    "headline": "CLAUDE OUTPUT NOW REPORTED TO CARRY INVISIBLE WATERMARKS AND FILE METADATA — SCOPE UNCONFIRMED BY ANTHROPIC",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2086922991921664307",
+    "category": "policy"
+  },
+  {
+    "headline": "ANTHROPIC MAKES CLAUDE SONNET 5 INTRO PRICING PERMANENT AT $2 PER MILLION INPUT TOKENS",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2086897622049050776",
+    "category": "business"
+  },
+  {
+    "headline": "MICROSOFT SEEKS TSMC CAPACITY FOR 300,000-PLUS MAIA 300 CHIPS IN 2027, TARGETING OVER 1 MILLION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2086845154036445551",
+    "category": "infra"
+  }
+]

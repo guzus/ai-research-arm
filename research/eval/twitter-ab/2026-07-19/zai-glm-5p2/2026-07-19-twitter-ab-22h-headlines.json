@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "MOONSHOT PAUSES NEW KIMI K3 SUBSCRIPTIONS AS COMPUTE DEMAND OVERWHELMS CAPACITY",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2078934957435797713",
+    "category": "breaking"
+  },
+  {
+    "headline": "NVIDIA GPU SHORTAGE FORCES CLOUD RATIONING; NEBIUS SOLD OUT AFTER PRICE HIKES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2078925348020932667",
+    "category": "infra"
+  },
+  {
+    "headline": "KIMI K3 NEARLY MATCHES CLAUDE OPUS 4.8 ON KERNELBENCH CUDA KERNELS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2078925160732905851",
+    "category": "model"
+  },
+  {
+    "headline": "ALIBABA QWEN 3.8-MAX PREVIEW LAUNCHES AT 2.4T PARAMETERS, OPEN-WEIGHT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2078761134119927969",
+    "category": "model"
+  }
+]

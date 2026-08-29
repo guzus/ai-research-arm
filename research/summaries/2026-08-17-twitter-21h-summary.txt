@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-08-17 21:35:05 UTC
+
+CYCLE: NVIDIA's Ohio exposure turns out to be a $105B lease guarantee, Anthropic hands investors a $65B run rate ahead of a reported September IPO, and Groq's halved valuation gets an explanation.
+
+TOP STORIES:
+• NVIDIA guarantees up to $105B of OpenAI's PORTS-Pike lease payments — 70x its $1.5B equity stake — because OpenAI cannot borrow on its own credit [✓]
+• Anthropic tells investors: $65B annualized run rate at end-July, $11.5B preliminary Q2 revenue vs $787M a year ago, positive adjusted operating income [⚠]
+• Groq's $350M Series A at $3.5B, half its Sept-2025 $6.9B, attributed to the NVIDIA licensing deal taking the LPU business and founder with it [⚠]
+
+ALSO: Dylan Patel says Anthropic trained Mythos 2 and won't ship it; Nous Research ships Hermes Agent Desktop with Bot Mode; Anthropic case-studies a 50+ agent legal fleet; Brockman says OpenAI is training for "superhumanly secure code"; a Penn paper finds context compaction preserves only 17% of standing user rules; ByteDance's Harness-IF shows all 12 frontier models degrade on rules that contradict their defaults.
+
+WATCH: Whether NVIDIA books the lease guarantee as a contingent liability in its next filing, and at $105B or $100B.
+
+Full update on GitHub.

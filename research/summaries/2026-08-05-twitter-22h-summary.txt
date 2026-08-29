@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-05 22:18:02 UTC
+
+CYCLE: The scaffold, not the model, is the competitive artifact tonight.
+
+TOP STORIES:
+• Prime Intellect's Prime Agent harness reports 95.5% on ARC-AGI-3 with Opus 5, 0.1pt over the human-expert baseline - but on MazeBench its real effect is half the tokens, not more capability [⚠]
+• First independent numbers put Meta's Muse Spark 1.2 behind Opus 5 on both launch benchmarks: 82.9% vs 86.7% Terminal-Bench 2.1, 59.3% vs 65.0% DeepSWE 1.1 [✓]
+• Chamath: AI token bill doubles every 45 days for ~5% productivity gain; firm to reassess [⚠]
+
+WATCH: An ARC Prize Verified leaderboard entry for Prime Agent + Opus 5, with the published cost per task.
+
+Full update on GitHub.

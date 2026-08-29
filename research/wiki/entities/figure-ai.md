@@ -6,8 +6,9 @@ aliases: [Figure, "Figure AI", "Figure Robotics", "Figure 03", "Figure 4", "Heli
 tags: [humanoid-robotics, vla, robotics, brett-adcock]
 description: US humanoid-robotics company whose Helix-02 in-house VLA ran a 200-hour fully autonomous package-sort shift (249,560 packages, zero hardware failures, zero teleop) on its Figure 03 fleet at Sunnyvale on 2026-05-30, ~10× the previous public envelope on MTBI.
 created_at: 2026-06-01
-timestamp: 2026-06-01T00:00:00Z
+timestamp: 2026-07-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "Humanoids Daily — Figure 200-hour Helix-02 marathon", date: 2026-05-30}
 ---
@@ -30,7 +31,7 @@ The **2026-05-30 Sunnyvale 200-hour run** is the company's defining
   ran entirely on Helix-02 with autonomous task selection, autonomous
   fault recovery, and autonomous rotation to charging.
 - **~10× the prior public envelope** on MTBI (mean-time-between-intervention).
-  Optimus, Apollo, 1X Neo, Sanctuary, and Unitree had previously topped
+  Optimus, Apollo, 1X Neo, Sanctuary, and [[unitree|Unitree]] had previously topped
   out near 10–20h at meaningful throughput. MTBI is the metric that
   actually governs warehouse / 3PL / manufacturing procurement.
 - **Origin shape.** Started May 20 as an 8-hour livestream challenge;
@@ -52,6 +53,10 @@ rather than weights release — and slots into the [[ai-capex]]
 supercycle as a demand signal: humanoid autonomy at warehouse-grade
 MTBI lifts the addressable case for production-scale on-prem inference
 hardware.
+
+Figure competes on the humanoid axis with Chinese entrant [[agibot]],
+which showcased its A3 Ultra humanoid and three other embodied-AI
+products at WAIC 2026 (2026-07-19) as part of a global export push.
 
 ## Open questions
 

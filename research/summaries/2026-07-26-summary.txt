@@ -1,0 +1,12 @@
+AI News - 2026-07-26
+
+TOP STORIES:
+• South Korea locks in $950B AI chip/infra deals: SK Group-Nvidia ~$750B, Samsung-Broadcom ~$200B
+• Moonshot AI's Kimi K3 open weights (2.8T params) drop July 27 00:00 UTC - largest open-weight release ever
+• Kimi K3 lands 4th on independent benchmarks, behind Claude Fable 5 and GPT-5.6 Sol
+
+KEY NUMBERS:
+• $950B total Korea AI/chip deals ($750B SK-Nvidia, $200B Samsung-Broadcom)
+• Kimi K3: 2.8T params, 1.4TB MXFP4 weights, 16/896 experts active per token
+
+Full report on GitHub.

@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-27 22:38:58 UTC
+
+CYCLE: Anthropic-Nvidia open-weights fight goes public as DC lobbying intensifies
+
+TOP STORIES:
+• Anthropic publicly rebuts Jensen Huang's open-weights letter, denies ever seeking a ban ✓
+• Trump admin's frontier-AI framework nears Aug 1 deadline, adds federal pre-release review window ✓
+• Microsoft claims cybersecurity agent beats Anthropic's Mythos on CyberGym at half cost ⚠
+
+WATCH: Does the frontier-model framework actually publish by the Aug 1 deadline, and how does it treat open- vs. closed-weight models?
+
+Full update on GitHub.

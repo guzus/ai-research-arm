@@ -23,13 +23,34 @@ status_note: |
   update" is coming soon with big coding/agentic gains; Business Insider
   (secondary) names it "Watermelon" and claims GPT-5.5-parity on internal
   benchmarks with ~10x Muse Spark's training compute — unconfirmed by Meta.
-expected: "Muse Spark developer API expected 'later this month' (late June 2026, repeatedly slipped); Hatch launch + up-to-$199.99/mo pricing still TBD/unconfirmed. 2026-07-03: next Muse Spark update ('Watermelon' per BI) coming soon per Wang; GPT-5.5-parity claim unconfirmed"
+
+  **2026-07-09/10:** The "next update" landed as **Muse Spark 1.1** with
+  wider (but still gated) external access. Meta's own account posted
+  (2026-07-09) "We gave a few leaders early access to Muse Spark 1.1, here's
+  what they had to say" — an official primary confirming the version name
+  and an early-access (not general) release. Separately, testingcatalog
+  reports "Grok 4.5 and Muse Spark 1.1 are now available on the AI/ML
+  platform for testing" (2026-07-10) — a broader third-party testing surface
+  than partner-only early access, but still gated, not public GA. A named
+  official version + independent testing-platform corroboration advances
+  `verification` partial → confirmed; still gated access keeps `status` at
+  `in-testing` rather than `released`.
+
+  **2026-07-14:** Alexandr Wang (Meta Superintelligence Labs chief) claims
+  Muse Spark 1.1 tops HealthBench Professional and ranks near the top of a
+  Debate Benchmark, beating Opus/Gemini/GPT-5.6 on the cited evals —
+  self-reported by the team that built the model, with no independent
+  benchmark reproduction. Layered on top of, but not itself new
+  corroboration of, the already-`confirmed` verification (official version
+  name + third-party testing-platform listing). Status stays `in-testing`;
+  verification stays `confirmed`.
+expected: "Muse Spark 1.2 is publicly available on OpenRouter at $0.10/$0.20 per Mtok (contributor tier). Hatch itself is still unlaunched \u2014 The Information reported 2026-08-25 that it launches 'in coming weeks' and 'could cost as much as $199.99 a month'. Pending: the Hatch launch, official Meta pricing, and whether the separately-rumored 'Watermelon' model is real"
 labels:
   - consumer-agent
   - pricing
   - rumor
   - muse-spark
-verification: partial
+verification: confirmed
 sources:
   - "@theinformation"
   - https://x.com/JGidel4/status/2062360036190376378
@@ -37,8 +58,12 @@ sources:
   - https://the-decoder.com/metas-hatch-ai-agent-could-cost-up-to-200-a-month-and-marks-its-first-paid-ai-product/
   - "@alexandr_wang"
   - "@kimmonismus"
+  - "@AIatMeta"
+  - "@testingcatalog"
+  - "@OpenRouter"
+  - "@jyoti_mann1"
 created_at: 2026-06-04
-updated_at: 2026-07-03
+updated_at: 2026-08-26
 closed_at: null
 closed_reason: null
 history:
@@ -50,6 +75,14 @@ history:
     change: "The Decoder (2026-06-06) published a full writeup framing **Hatch** as **Meta's first paid AI product** at **up to $200/mo**: users describe what they need in plain language and Hatch builds working tools, schedules appointments, or sends emails. Second independent outlet on the Hatch consumer-agent angle (beyond The Information), reinforcing the pricing band; still no Meta primary on a launch date and the Muse Spark backend is unconfirmed. Status stays in-testing / partial"
   - ts: 2026-07-03
     change: "Next Muse Spark update confirmed coming, codename + benchmark claim still secondary. Meta Superintelligence Labs chief Alexandr Wang tweeted (01:01 UTC Jul 3, primary, 2,116 likes): 'Our next Muse Spark update is coming soon. Big improvements in coding and agentic capabilities.' Separately, Business Insider reporting (relayed by @kimmonismus) names the update 'Watermelon,' claims it already matches GPT-5.5 on internal benchmarks, and says it trains with ~10x the compute of Muse Spark (internal codename Avocado) — this specific codename/benchmark claim is BI-secondary, not in Wang's own tweet, and not independently verified. A real primary confirms an update is coming; the Watermelon specifics stay unconfirmed. Status stays in-testing; verification stays partial."
+  - ts: 2026-07-12
+    change: "Muse Spark 1.1 landed as gated early access, not GA. @AIatMeta (2026-07-09, official): 'We gave a few leaders early access to Muse Spark 1.1, here's what they had to say.' testingcatalog (2026-07-10) separately reports it's 'now available on the AI/ML platform for testing' alongside Grok 4.5 — a broader gated-testing surface, still not public. Official version name + independent testing-platform corroboration → verification partial → confirmed. Status stays in-testing (early-access/gated, not released)."
+  - ts: 2026-07-14
+    change: "Alexandr Wang claims Muse Spark 1.1 tops HealthBench Professional and ranks near the top of a Debate Benchmark, beating Opus/Gemini/GPT-5.6 on cited evals — self-reported by the team that built it, no independent reproduction. Status stays in-testing; verification stays confirmed."
+  - ts: 2026-08-23
+    change: "Muse Spark 1.2 reaches public distribution and public pricing. @testingcatalog (2026-08-21 22:37 UTC, ~267 likes): 'Meta heart OpenRouter — Muse Spark 1.2 contributor tier is now available on OpenRouter at $0.10/M input and $0.20/M output. For comparison, it offers GPT-5.6 Terra performance at a price cheaper than GPT-5.6 Luna. The Contributor tier means that your prompts and outputs may be used to improve Meta's products.' Three things change here versus the gated 1.1 state this ticket has held since July: a version bump to 1.2, first published per-token pricing, and open availability through a third-party router rather than partner allowlists. The data-for-price trade is explicit in the tier name. Meta has not posted this itself and no model card was captured, so the GPT-5.6-Terra-performance comparison is the relay's claim, not a benchmark. Status stays in-testing rather than advancing to released: a 'contributor tier' on a router where prompts train the vendor's products is a wider preview, not general availability on Meta's own terms."
+  - ts: 2026-08-26
+    change: "Hatch gets a launch window, an outlet-sourced price ceiling and a second model name. @theinformation (2026-08-25 14:40 UTC): 'Meta's Hatch AI agent could cost as much as $199.99 a month, part of Mark Zuckerberg's push to monetize the company's enormous AI investments.' That is the first named-outlet carry of the up-to-$199.99 tier this ticket has held as unconfirmed since June - it moves the pricing claim from rumor to reporting, though 'could cost as much as' is a ceiling rather than a price. The Information's TITV rundown the same day (16:30 UTC) leads with 'Meta to launch Hatch AI agent platform in coming weeks' (@jyoti_mann1), the first launch window attached to Hatch itself rather than to the Muse Spark model. Separately, an aggregated multi-item news digest the same day lists 'Meta plans to launch the AI agent platform Hatch and a new model Watermelon' - 'Watermelon' is a codename not previously on this ticket, resting on a single non-English aggregator with no primary source, so it is recorded as unverified and deliberately NOT written into the model field. Status stays in-testing because Hatch remains unlaunched; verification stays confirmed for Muse Spark's shipped state, with the Hatch pricing now outlet-sourced rather than aggregator-sourced."
 ---
 
 **The Information** (relayed on 2026-06-04, 02:25 UTC) reports that Meta is

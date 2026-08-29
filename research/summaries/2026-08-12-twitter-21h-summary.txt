@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-12 21:58:04 UTC
+
+CYCLE: The day's price-vs-capability fight gets its first non-vendor measurement, and megawatts finally get a revenue multiple.
+
+TOP STORIES:
+• Parametric CAD Bench: Opus 5 via Claude Code #1 at 0.906; Grok 4.6 via Grok Build hits 96.9% of it at 61% of cost — and clearing 0.8 fell from $170 to $36.59 in 90 days [⚠]
+• Gavin Baker uses Nebius's $20-25M/MW contract economics to derive ~$10B 2027 cloud ARR from Cerebras's disclosed 600MW [⚠]
+• Grok 4.6 reaction shows up as harness switching, not just benchmarks — though its loudest booster refuses to make a day-one call [⚠]
+
+WATCH: A second cost-aware harness benchmark on Grok 4.6 vs Opus 5 — today's is one domain, from the benchmark's own operator.
+
+Full update on GitHub.

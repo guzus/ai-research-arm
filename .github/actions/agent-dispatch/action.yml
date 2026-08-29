@@ -1,0 +1,179 @@
+name: ARA agent dispatcher
+description: >-
+  Resolve lane -> route -> backend from the routing SSOT, then run the
+  registered isolated editorial adapter without changing the lane's prompt or
+  I/O contract.
+
+inputs:
+  lane:
+    description: Runtime-dispatched lane key in data/agent-backends.json.
+    required: true
+  mode:
+    description: Stable lane I/O contract. This dispatcher currently supports editorial.
+    required: false
+    default: editorial
+  prompt-text:
+    description: Exact prompt passed to either registered adapter.
+    required: true
+  expected-paths:
+    description: >-
+      Stable required-output contract for CI and future compatible adapters.
+      The current OpenCode child is guarded again by the workflow's trusted
+      require-output step.
+    required: false
+    default: ''
+  allowed-paths:
+    description: >-
+      Newline-delimited committed paths the isolated adapter may change.
+    required: false
+    default: ''
+  return-artifacts:
+    description: >-
+      Exact newline-delimited uncommitted artifacts under .tmp/. OpenCode
+      copies these through its trusted boundary.
+    required: false
+    default: ''
+  timeout-minutes:
+    description: Isolated adapter's internal wall-clock cap.
+    required: false
+    default: '45'
+  claude-code-oauth-token:
+    description: Reserved known adapter credential; never passed to OpenCode.
+    required: false
+    default: ''
+  fireworks-api-key:
+    description: Reserved known adapter credential; never passed to OpenCode.
+    required: false
+    default: ''
+  zai-api-key:
+    description: Reserved known adapter credential; never passed to OpenCode.
+    required: false
+    default: ''
+  opencode-api-key:
+    description: OpenCode Go key, passed only to the OpenCode adapter.
+    required: false
+    default: ''
+  cursor-api-key:
+    description: Cursor CLI key, passed only to the Cursor adapter.
+    required: false
+    default: ''
+  cursor-config:
+    description: >-
+      Trusted workspace-relative Cursor CLI permission config. Callers may
+      narrow the default tool surface for a specific lane; the selected
+      model cannot modify this read-only mount.
+    required: false
+    default: .github/cursor/cli-config.json
+  opencode-config:
+    description: >-
+      Trusted workspace-relative OpenCode policy. Callers may narrow the
+      default tool surface for a specific lane; the selected model cannot
+      modify this read-only mount.
+    required: false
+    default: .github/opencode/opencode.json
+
+outputs:
+  route:
+    description: Resolved route group.
+    value: ${{ steps.route.outputs.route }}
+  adapter:
+    description: Resolved executable isolated adapter.
+    value: ${{ steps.route.outputs.adapter }}
+  backend:
+    description: Requested normalized backend profile.
+    value: ${{ steps.route.outputs.backend }}
+  effective-backend:
+    description: Effective fail-closed backend profile.
+    value: ${{ steps.route.outputs.backend }}
+  used-fallback:
+    description: Always false; isolated editorial routes do not cross adapter boundaries.
+    value: 'false'
+  model-id:
+    description: Effective provider model id.
+    value: ${{ steps.route.outputs.model }}
+
+runs:
+  using: composite
+  steps:
+    - name: Resolve lane route and adapter
+      id: route
+      shell: bash
+      env:
+        LANE: ${{ inputs.lane }}
+        MODE: ${{ inputs.mode }}
+        EXPECTED_PATHS: ${{ inputs.expected-paths }}
+        ALLOWED_PATHS: ${{ inputs.allowed-paths }}
+        RETURN_ARTIFACTS: ${{ inputs.return-artifacts }}
+      run: |
+        set -euo pipefail
+        if [ "$MODE" != "editorial" ]; then
+          echo "::error::agent-dispatch currently supports only the editorial I/O contract."
+          exit 1
+        fi
+        if [ -z "$EXPECTED_PATHS" ] && [ -z "$RETURN_ARTIFACTS" ]; then
+          echo "::error::agent-dispatch requires expected-paths and/or return-artifacts."
+          exit 1
+        fi
+        if [ -n "$EXPECTED_PATHS" ] && [ -z "$ALLOWED_PATHS" ]; then
+          echo "::error::commit-producing dispatch requires allowed-paths."
+          exit 1
+        fi
+        python3 scripts/resolve_agent_route.py "$LANE" \
+          --github-output "$GITHUB_OUTPUT"
+
+    - name: Verify selected adapter credential binding
+      if: steps.route.outputs.adapter == 'opencode' || steps.route.outputs.adapter == 'cursor'
+      shell: bash
+      env:
+        ADAPTER: ${{ steps.route.outputs.adapter }}
+        CREDENTIAL: ${{ steps.route.outputs.credential }}
+      run: |
+        set -euo pipefail
+        case "$ADAPTER" in
+          opencode)
+            if [ "$CREDENTIAL" != "opencode-api-key" ]; then
+              echo "::error::OpenCode route selected an unsupported credential binding."
+              exit 1
+            fi
+            ;;
+          cursor)
+            if [ "$CREDENTIAL" != "cursor-api-key" ]; then
+              echo "::error::Cursor route selected an unsupported credential binding."
+              exit 1
+            fi
+            ;;
+          *)
+            echo "::error::Unsupported isolated adapter: $ADAPTER"
+            exit 1
+            ;;
+        esac
+
+    - name: Run selected OpenCode adapter
+      id: opencode
+      if: steps.route.outputs.adapter == 'opencode'
+      uses: ./.github/actions/run-opencode-container
+      with:
+        mode: editorial
+        lane: ${{ inputs.lane }}
+        allowed-paths: ${{ inputs.allowed-paths }}
+        return-artifacts: ${{ inputs.return-artifacts }}
+        model: ${{ steps.route.outputs.model_ref }}
+        opencode-api-key: ${{ inputs.opencode-api-key }}
+        opencode-config: ${{ inputs.opencode-config }}
+        timeout-minutes: ${{ inputs.timeout-minutes }}
+        prompt-text: ${{ inputs.prompt-text }}
+
+    - name: Run selected Cursor CLI adapter
+      id: cursor
+      if: steps.route.outputs.adapter == 'cursor'
+      uses: ./.github/actions/run-cursor-container
+      with:
+        mode: editorial
+        lane: ${{ inputs.lane }}
+        allowed-paths: ${{ inputs.allowed-paths }}
+        return-artifacts: ${{ inputs.return-artifacts }}
+        model: ${{ steps.route.outputs.model_ref }}
+        cursor-api-key: ${{ inputs.cursor-api-key }}
+        cursor-config: ${{ inputs.cursor-config }}
+        timeout-minutes: ${{ inputs.timeout-minutes }}
+        prompt-text: ${{ inputs.prompt-text }}

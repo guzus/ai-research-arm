@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "On July 27, 2026, NVIDIA and Ilya Sutskever's Safe Superintelligence Inc. announced a \"long-term strategic partnership\" that press reports pegged at $5 billion.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "SSI was founded in June 2024 — not 2023 [^15] — a detail worth correcting since it changes the company's age at deal time from roughly three years to about 25 months.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The flat line between 2025 and 2026 is a statement about disclosure, not price. No new valuation accompanied the ~$5B NVIDIA commitment reported in July 2026 [^3,4] — press coverage simply continues to cite the same $32B figure set fourteen months earlier.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

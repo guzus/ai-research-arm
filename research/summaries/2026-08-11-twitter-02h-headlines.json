@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "NVIDIA SIGNS MOU WITH BLACKROCK, BLACKSTONE, BROOKFIELD, GOLDMAN, APOLLO, KKR TO RAISE $500B+ FOR AI FACTORIES",
+    "source": "@JensenHuang",
+    "url": "https://x.com/JensenHuang/status/2086976424326693185",
+    "category": "infra"
+  },
+  {
+    "headline": "ANTHROPIC STRIKES $9.1B 20-YEAR COMPUTE DEAL WITH BITCOIN MINER RIOT — EXTENDABLE TO $16.1B",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2086983550138495029",
+    "category": "business"
+  },
+  {
+    "headline": "RIOT-ANTHROPIC FIRST 96MW NOT LIVE UNTIL DEC 2027; AMD EXERCISES OPTION TO EXPAND ITS RIOT DEAL",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2086988264448409739",
+    "category": "infra"
+  },
+  {
+    "headline": "SK HYNIX SPC OVERTAKES TOSHIBA AS KIOXIA'S LARGEST SHAREHOLDER AT 14.19%",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2086989511121392051",
+    "category": "business"
+  },
+  {
+    "headline": "KOREA AUG 1-11 NAND EXPORTS $780M, UP 54% MOM AND 70% QOQ; DRAM MODULES DOWN 77% MOM",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2086996913321320866",
+    "category": "infra"
+  },
+  {
+    "headline": "GROK 4.6 SURFACES BRIEFLY IN CURSOR EDITOR THEN PULLED — WEEKS AFTER GROK 4.5 SHIPPED",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2086962127852523916",
+    "category": "model"
+  },
+  {
+    "headline": "GEMINI 3.7 FLASH APPEARS IN GOOGLE'S OFFICIAL PYTHON GENAI SDK MODEL ENUM",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2086950725146300525",
+    "category": "model"
+  }
+]

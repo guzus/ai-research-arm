@@ -5,33 +5,48 @@
 // Coverage:
 //   - Homepage (dist/index.html): rewrites the SEO:DEFAULT block with a
 //     homepage-specific title/description/OG + the default social share image.
-//   - "today" route (dist/today/index.html): latest daily digest -- per-page
-//     title/description/OG + the digest body inlined into #content.
+//   - Dated daily digest, Twitter/X report, and newspaper routes: unique
+//     metadata/content; undated latest aliases canonicalize to the dated page.
+//   - Research and wiki archive hubs: crawlable collections with real links.
 //   - Generative articles (dist/research/<slug>/index.html): per-article
 //     title/description/OG + JSON-LD Article + article body inlined.
 //   - Wiki pages (dist/wiki/<slug>/index.html): per-page title/description/OG
 //     from research/wiki/index.json + page body inlined.
+//   - Verified mapped model forecasts (dist/models/forecast/<slug>/index.html):
+//     stable metadata + committed evidence and prediction-market links.
+//   - Internal/duplicate routes (agents, focus-reader, dated model aliases):
+//     explicit noindex pages with an appropriate canonical.
 //
-// Also emits dist/sitemap.xml (article + tab + wiki URLs with lastmod),
+// Also emits dist/sitemap.xml (canonical indexable URLs only, with lastmod),
 // dist/robots.txt (allow all + sitemap pointer), dist/feed.xml, and
 // dist/llms.txt for AI-answer engines.
 //
-// Social share image: the most recent research/front-page/<date>-front-page.png
-// (the purpose-built daily newspaper graphic) is reused as the default og:image
-// / twitter:image. The image is referenced by its public URL, so it resolves on
-// the deployed site even when the build environment skipped LFS hydration
-// (Vercel hydrates LFS for the production deploy).
+// Social share images:
+//   - Per-article: a deterministic 1200x630 typographic card rendered at build
+//     time by scripts/social-card.mjs (resvg, no Chromium/network/S3 — the
+//     replaced Playwright screenshot pipeline needed all three and silently
+//     degraded when any was missing). Written to
+//     dist/research/generative/<stem>.social.png, same URL contract as before.
+//   - Everything else: the committed brand illustration in public/brand/
+//     (1280x640) with the wordmark composited in white at build time — a
+//     valid 2:1 card on every route.
 //
 // Standalone-kind generative entries (iframe articles) are skipped -- they are
 // already self-contained HTML and need a different SEO path.
 
-import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, createReadStream } from 'node:fs';
-import { createHash, createHmac } from 'node:crypto';
-import { createServer } from 'node:http';
-import { join, dirname, resolve, extname } from 'node:path';
+import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
+import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { marked } from 'marked';
-import { chromium } from 'playwright-core';
+import { renderSiteDefaultCardPng, renderSocialCardPng } from './social-card.mjs';
+import { forecastSeoRecord, mappedForecastTickets } from './forecast-seo.mjs';
+import { isDeterministicFallbackSource } from './publication-contract.mjs';
+import {
+  datedPagePolicy,
+  isIndexableResearchEntry,
+  latestAliasPolicy,
+  sortDatedRecords,
+} from './site-seo.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const dashboardDir = dirname(here);
@@ -43,9 +58,13 @@ const articlesDir = join(researchRoot, 'generative');
 const indexJsonPath = join(articlesDir, 'index.json');
 const frontPageDir = join(researchRoot, 'front-page');
 const digestDir = join(researchRoot, 'digest');
+const twitterDir = join(researchRoot, 'twitter');
+const modelTimelineDir = join(researchRoot, 'models');
 const wikiDir = join(researchRoot, 'wiki');
 const wikiIndexPath = join(wikiDir, 'index.json');
 const distGenerativeDir = join(dist, 'research', 'generative');
+const distTicketIndexPath = join(dist, 'research', 'models', 'tickets', 'index.json');
+const armTimelinePath = join(researchRoot, 'arm', 'timeline.json');
 
 // Override via env (POSTBUILD_SITE_ORIGIN) for preview deploys.
 const SITE_ORIGIN = process.env.POSTBUILD_SITE_ORIGIN || 'https://ara.guzus.xyz';
@@ -62,22 +81,11 @@ const SITE_LINKS = {
   github: 'https://github.com/guzus/ai-research-arm',
   author: 'https://x.com/uncanny_guzus',
 };
-const SOCIAL_PREVIEW_CONCURRENCY = Math.max(
-  1,
-  Math.min(6, Number(process.env.SOCIAL_PREVIEW_CONCURRENCY || 4) || 4),
-);
-const SOCIAL_PREVIEW_BASE_URL = (
-  process.env.SOCIAL_PREVIEW_BASE_URL ||
-  process.env.AUDIO_BASE_URL ||
-  'https://s3.guzus.xyz/obj-ai-research-arm'
-).replace(/\/+$/, '');
-const SOCIAL_PREVIEW_PREFIX = (process.env.SOCIAL_PREVIEW_PREFIX || 'social-preview')
-  .replace(/^\/+|\/+$/g, '');
-
 // Markers that delimit the default SEO block in index.html. postbuild replaces
 // the whole block (markers included) per page; if the markers are absent we
 // fall back to replacing just <title>...</title> so older shells still work.
 const SEO_BLOCK_RE = /<!-- SEO:DEFAULT:START[\s\S]*?SEO:DEFAULT:END -->/;
+const STATIC_CONTENT_RE = /<!-- SEO:STATIC:START -->[\s\S]*?<!-- SEO:STATIC:END -->/;
 
 function stripTags(html) {
   return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -109,7 +117,10 @@ function htmlEscapeAttr(s) {
 }
 
 function jsonLdTag(data) {
-  return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
+  // JSON.stringify does not escape HTML-significant characters. Keep model-
+  // authored ticket/article text from terminating the JSON-LD script early.
+  const json = JSON.stringify(data).replace(/</g, '\\u003c').replace(/>/g, '\\u003e');
+  return `<script type="application/ld+json">${json}</script>`;
 }
 
 function sharedMetaTags(title, desc) {
@@ -145,6 +156,14 @@ function compactText(s) {
 
 // SERPs typically truncate descriptions around 155-160 chars. Aim for ~190
 // and gracefully clip on a word boundary so OG / Twitter cards stay clean.
+// Public-facing one-line summary for an index.json row. Prefers the article's
+// own deck/lede (captured into articleDescriptions while the pages are built)
+// and falls back to the title — deliberately NEVER to row.prompt, which is the
+// internal dispatch brief and reads as leaked tooling to any human or crawler.
+function articleSummary(row) {
+  return articleDescriptions.get(row.slug) || row.title || row.slug;
+}
+
 function truncateDescription(s, max = 190) {
   if (s.length <= max) return s;
   const clipped = s.slice(0, max);
@@ -165,10 +184,26 @@ function sanitizeFragment(html) {
     .replace(/javascript:/gi, '');
 }
 
-// Most recent research/front-page/<date>-front-page.png, referenced by its
-// public URL so it resolves on the deployed site regardless of whether this
-// build hydrated LFS. Returns an absolute URL string or null.
-function findShareImageUrl() {
+// Site-wide default share image: the committed 2:1 brand illustration with
+// the wordmark composited in white at build time, written to dist/brand/.
+// Falls back to the raw brand asset if compositing fails, then to the newest
+// front-page newspaper PNG for forks that stripped the brand asset entirely.
+// Returns an absolute URL string or null.
+const brandSourcePath = join(dashboardDir, 'public', 'brand', 'github-social-preview.png');
+
+async function findShareImageUrl() {
+  if (existsSync(brandSourcePath)) {
+    try {
+      const png = await renderSiteDefaultCardPng(readFileSync(brandSourcePath), 'ai-research-arm');
+      const outDir = join(dist, 'brand');
+      mkdirSync(outDir, { recursive: true });
+      writeFileSync(join(outDir, 'site-social-card.png'), png);
+      return `${SITE_ORIGIN}/brand/site-social-card.png`;
+    } catch (e) {
+      console.warn(`postbuild-seo: site share-card compositing failed (${e.message}); using raw brand image`);
+      return `${SITE_ORIGIN}/brand/github-social-preview.png`;
+    }
+  }
   if (!existsSync(frontPageDir)) return null;
   const re = /^(\d{4}-\d{2}-\d{2})-front-page\.png$/;
   let best = null;
@@ -294,195 +329,19 @@ function articleShareImage(row, fallbackShareImageUrl, fallbackAlt, generatedIma
   return articleArtifactImage(row, fallbackAlt) || generatedImages.get(row.slug) || fallbackShareImageUrl;
 }
 
-function contentTypeForPath(path) {
-  const ext = extname(path).toLowerCase();
-  if (ext === '.html') return 'text/html; charset=utf-8';
-  if (ext === '.js') return 'text/javascript; charset=utf-8';
-  if (ext === '.css') return 'text/css; charset=utf-8';
-  if (ext === '.json') return 'application/json; charset=utf-8';
-  if (ext === '.png') return 'image/png';
-  if (ext === '.jpg' || ext === '.jpeg') return 'image/jpeg';
-  if (ext === '.webp') return 'image/webp';
-  if (ext === '.gif') return 'image/gif';
-  if (ext === '.svg') return 'image/svg+xml; charset=utf-8';
-  return 'application/octet-stream';
-}
-
-function startStaticServer(root) {
-  const rootDir = resolve(root);
-  const server = createServer((req, res) => {
-    try {
-      const rawPath = new URL(req.url || '/', 'http://127.0.0.1').pathname;
-      const decoded = decodeURIComponent(rawPath);
-      let filePath = resolve(rootDir, `.${decoded}`);
-      if (!filePath.startsWith(rootDir)) {
-        res.writeHead(403);
-        res.end('forbidden');
-        return;
-      }
-      if (!existsSync(filePath)) {
-        const indexPath = resolve(filePath, 'index.html');
-        if (indexPath.startsWith(rootDir) && existsSync(indexPath)) filePath = indexPath;
-      } else if (statSync(filePath).isDirectory()) {
-        filePath = resolve(filePath, 'index.html');
-      }
-      if (!filePath.startsWith(rootDir) || !existsSync(filePath) || !statSync(filePath).isFile()) {
-        res.writeHead(404);
-        res.end('not found');
-        return;
-      }
-      res.writeHead(200, { 'content-type': contentTypeForPath(filePath) });
-      createReadStream(filePath).pipe(res);
-    } catch (e) {
-      res.writeHead(500);
-      res.end(String(e?.message || e));
-    }
-  });
-
-  return new Promise((resolveServer, reject) => {
-    server.once('error', reject);
-    server.listen(0, '127.0.0.1', () => {
-      const address = server.address();
-      resolveServer({
-        origin: `http://127.0.0.1:${address.port}`,
-        close: () => new Promise(resolveClose => server.close(resolveClose)),
-      });
-    });
-  });
-}
-
-function browserExecutablePath() {
-  const candidates = [
-    process.env.SOCIAL_PREVIEW_BROWSER,
-    '/usr/bin/chromium-browser',
-    '/usr/bin/chromium',
-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser',
-  ].filter(Boolean);
-  return candidates.find(path => existsSync(path)) || null;
-}
-
-function hashHex(value) {
-  return createHash('sha256').update(value).digest('hex');
-}
-
-function hmac(key, value, encoding) {
-  return createHmac('sha256', key).update(value).digest(encoding);
-}
-
-function s3Config() {
-  const endpoint = process.env.S3_ENDPOINT_URL;
-  const bucket = process.env.S3_BUCKET;
-  const accessKey = process.env.S3_ACCESS_KEY_ID || process.env.AWS_ACCESS_KEY_ID;
-  const secretKey = process.env.S3_SECRET_ACCESS_KEY || process.env.AWS_SECRET_ACCESS_KEY;
-  if (!endpoint || !bucket || !accessKey || !secretKey) return null;
-  return {
-    endpoint: endpoint.replace(/\/+$/, ''),
-    bucket,
-    accessKey,
-    secretKey,
-    region: process.env.S3_REGION || process.env.AWS_REGION || 'us-east-1',
-  };
-}
-
-function encodeS3Key(key) {
-  return key.split('/').map(part => encodeURIComponent(part)).join('/');
-}
-
-function socialPreviewKey(stem) {
-  return `${SOCIAL_PREVIEW_PREFIX}/${stem}.social.png`;
-}
-
-function socialPreviewPublicUrl(key) {
-  return `${SOCIAL_PREVIEW_BASE_URL}/${key.split('/').map(encodeURIComponent).join('/')}`;
-}
-
-async function publicObjectExists(url) {
-  try {
-    const res = await fetch(url, { method: 'HEAD' });
-    return res.ok;
-  } catch {
-    return false;
-  }
-}
-
-async function putS3Object(key, body, contentType) {
-  const cfg = s3Config();
-  if (!cfg) return false;
-
-  const now = new Date();
-  const amzDate = now.toISOString().replace(/[:-]|\.\d{3}/g, '');
-  const dateStamp = amzDate.slice(0, 8);
-  const payloadHash = hashHex(body);
-  const objectPath = `/${cfg.bucket}/${encodeS3Key(key)}`;
-  const url = new URL(`${cfg.endpoint}${objectPath}`);
-  const canonicalHeaders =
-    `host:${url.host}\n` +
-    `x-amz-content-sha256:${payloadHash}\n` +
-    `x-amz-date:${amzDate}\n`;
-  const signedHeaders = 'host;x-amz-content-sha256;x-amz-date';
-  const canonicalRequest = [
-    'PUT',
-    url.pathname,
-    '',
-    canonicalHeaders,
-    signedHeaders,
-    payloadHash,
-  ].join('\n');
-  const credentialScope = `${dateStamp}/${cfg.region}/s3/aws4_request`;
-  const stringToSign = [
-    'AWS4-HMAC-SHA256',
-    amzDate,
-    credentialScope,
-    hashHex(canonicalRequest),
-  ].join('\n');
-  const kDate = hmac(`AWS4${cfg.secretKey}`, dateStamp);
-  const kRegion = hmac(kDate, cfg.region);
-  const kService = hmac(kRegion, 's3');
-  const kSigning = hmac(kService, 'aws4_request');
-  const signature = hmac(kSigning, stringToSign, 'hex');
-  const authorization =
-    `AWS4-HMAC-SHA256 Credential=${cfg.accessKey}/${credentialScope}, ` +
-    `SignedHeaders=${signedHeaders}, Signature=${signature}`;
-
-  const res = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      authorization,
-      'cache-control': 'public, max-age=31536000, immutable',
-      'content-type': contentType,
-      'x-amz-content-sha256': payloadHash,
-      'x-amz-date': amzDate,
-    },
-    body,
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    throw new Error(`S3 upload failed ${res.status} ${res.statusText}${text ? `: ${text.slice(0, 300)}` : ''}`);
-  }
-  return true;
-}
-
-function generatedArticleImageMeta(row) {
+// Deterministic per-article social card, written to
+// dist/research/generative/<stem>.social.png — the same URL contract as the
+// retired Chromium-screenshot pipeline, so links crawled against old deploys
+// pick up the new card on their next re-crawl without a URL change.
+function articleSocialCardMeta(row, alt) {
   const file = typeof row?.file === 'string' ? row.file : '';
   if (!file.endsWith('.html')) return null;
   const stem = file.slice(0, -'.html'.length);
-  const key = socialPreviewKey(stem);
   return {
-    key,
-    publicUrl: socialPreviewPublicUrl(key),
-    fileName: `${stem}.social.png`,
     outputPath: join(distGenerativeDir, `${stem}.social.png`),
     image: {
-      url: socialPreviewPublicUrl(key),
-      alt: row.title || row.slug,
-      width: 1200,
-      height: 630,
-      type: 'image/png',
-    },
-    localImage: {
       url: `/research/generative/${stem}.social.png`,
-      alt: row.title || row.slug,
+      alt,
       width: 1200,
       height: 630,
       type: 'image/png',
@@ -490,110 +349,27 @@ function generatedArticleImageMeta(row) {
   };
 }
 
-async function renderArticleSocialScreenshots(rows) {
-  const executablePath = browserExecutablePath();
-  if (!executablePath) {
-    console.warn('postbuild-seo: no Chromium executable found; article screenshot previews fall back to front-page image');
-    return new Map();
-  }
+const CARD_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function cardDateLabel(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ''));
+  if (!m) return '';
+  return `${CARD_MONTHS[Number(m[2]) - 1]} ${Number(m[3])}, ${m[1]}`;
+}
 
-  const generated = new Map();
-  const candidates = [];
-  await Promise.all(rows.map(async row => {
-    if (
-      row?.kind === 'standalone' ||
-      !row?.slug ||
-      !row?.file ||
-      articleArtifactImage(row, row.title || row.slug) ||
-      !existsSync(join(dist, 'research', row.slug, 'index.html'))
-    ) {
-      return;
-    }
-    const meta = generatedArticleImageMeta(row);
-    if (!meta) return;
-    if (await publicObjectExists(meta.publicUrl)) {
-      generated.set(row.slug, meta.image);
-      return;
-    }
-    candidates.push(row);
-  }));
-  if (!candidates.length) return generated;
-
-  mkdirSync(distGenerativeDir, { recursive: true });
-  if (!s3Config()) {
-    console.warn(
-      'postbuild-seo: S3 credentials missing; generated social previews will be local dist artifacts only',
-    );
-  }
-  const server = await startStaticServer(dist);
-  const browser = await chromium.launch({
-    executablePath,
-    headless: true,
-    args: ['--no-sandbox', '--disable-dev-shm-usage'],
+// Card chrome is deliberately spare — date, title, deck, model attribution,
+// domain — so shared links read canonical rather than decorated.
+async function generateArticleSocialCard(row, title, description) {
+  const meta = articleSocialCardMeta(row, title);
+  if (!meta) return null;
+  const png = await renderSocialCardPng({
+    eyebrow: cardDateLabel(row.created_at),
+    title,
+    description,
+    attribution: row.model ? `Research by ${row.model}` : '',
   });
-  try {
-    let next = 0;
-    async function renderNext() {
-      const page = await browser.newPage({
-        viewport: { width: 1200, height: 630 },
-        deviceScaleFactor: 1,
-      });
-      try {
-        while (next < candidates.length) {
-          const row = candidates[next++];
-          await renderOne(page, row);
-        }
-      } finally {
-        await page.close();
-      }
-    }
-
-    async function renderOne(page, row) {
-      const meta = generatedArticleImageMeta(row);
-      if (!meta) return;
-      const url = `${server.origin}/research/${encodeURIComponent(row.slug)}`;
-      try {
-        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-        await page.addStyleTag({
-          content: `
-            body { background: #0f172a !important; }
-            .topbar, .tabs, .search-overlay, .ara-toc, .gen-research-doc-meta,
-            .content-card-header, .gen-research-audio { display: none !important; }
-            #content { padding-top: 24px !important; }
-            .content-card.gen-research-doc { margin-top: 0 !important; }
-            html, body, #app { min-height: 1400px !important; }
-          `,
-        });
-        const card = page.locator('.content-card.gen-research-doc').first();
-        await card.waitFor({ state: 'visible', timeout: 10000 });
-        await page.waitForTimeout(700);
-        const box = await card.boundingBox();
-        const clipY = Math.max(0, Math.floor((box?.y || 0) - 24));
-        await page.evaluate(y => window.scrollTo(0, y), clipY);
-        await page.waitForTimeout(100);
-        await page.screenshot({
-          path: meta.outputPath,
-          fullPage: false,
-        });
-        const png = readFileSync(meta.outputPath);
-        const uploaded = await putS3Object(meta.key, png, 'image/png');
-        generated.set(row.slug, uploaded ? meta.image : meta.localImage);
-      } catch (e) {
-        console.warn(`postbuild-seo: screenshot preview failed for ${row.slug}: ${e.message}`);
-      }
-    }
-
-    await Promise.all(
-      Array.from(
-        { length: Math.min(SOCIAL_PREVIEW_CONCURRENCY, candidates.length) },
-        () => renderNext(),
-      ),
-    );
-  } finally {
-    await browser.close();
-    await server.close();
-  }
-  return generated;
+  mkdirSync(distGenerativeDir, { recursive: true });
+  writeFileSync(meta.outputPath, png);
+  return meta.image;
 }
 
 // Replace the marked SEO block with metaBlock. Fallback: if the markers are
@@ -601,16 +377,79 @@ async function renderArticleSocialScreenshots(rows) {
 function applySeoBlock(template, metaBlockLines) {
   const metaBlock = metaBlockLines.join('\n    ');
   if (SEO_BLOCK_RE.test(template)) {
-    return template.replace(SEO_BLOCK_RE, metaBlock);
+    // Preserve the markers so a diagnostic/manual second postbuild remains
+    // idempotent instead of appending a second canonical/OG block.
+    const wrapped = [
+      '<!-- SEO:DEFAULT:START -->',
+      metaBlock,
+      '<!-- SEO:DEFAULT:END -->',
+    ].join('\n    ');
+    return template.replace(SEO_BLOCK_RE, wrapped);
   }
   return template.replace(/<title>[\s\S]*?<\/title>/, metaBlock);
 }
 
 function inlineContent(template, innerHtml) {
+  const block = `<!-- SEO:STATIC:START -->${innerHtml}<!-- SEO:STATIC:END -->`;
+  if (STATIC_CONTENT_RE.test(template)) {
+    return template.replace(STATIC_CONTENT_RE, block);
+  }
   return template.replace(
     '<div id="content"></div>',
-    `<div id="content">${innerHtml}</div>`,
+    `<div id="content">${block}</div>`,
   );
+}
+
+function demoteHeadings(html) {
+  return String(html || '')
+    .replace(/<h1(\s[^>]*)?>/gi, '<h2$1>')
+    .replace(/<\/h1>/gi, '</h2>');
+}
+
+function singleH1Snapshot(title, bodyHtml, classes = 'content-card') {
+  return [
+    `<article class="${htmlEscapeAttr(classes)}">`,
+    '<div class="content-card-body">',
+    `<h1>${htmlEscapeAttr(title)}</h1>`,
+    demoteHeadings(bodyHtml),
+    '</div>',
+    '</article>',
+  ].join('');
+}
+
+function standardMetaBlock({
+  title,
+  description,
+  canonicalUrl,
+  shareImage,
+  type = 'website',
+  indexable = true,
+  jsonLd,
+  published,
+  modified,
+}) {
+  const desc = truncateDescription(compactText(description));
+  return [
+    `<title>${htmlEscapeAttr(title)} -- ara</title>`,
+    `<meta name="description" content="${htmlEscapeAttr(desc)}" />`,
+    ...sharedMetaTags(title, desc),
+    `<link rel="canonical" href="${htmlEscapeAttr(canonicalUrl)}" />`,
+    `<meta name="robots" content="${indexable ? 'index,follow,max-image-preview:large,max-snippet:-1' : 'noindex,follow'}" />`,
+    `<meta property="og:type" content="${htmlEscapeAttr(type)}" />`,
+    `<meta property="og:title" content="${htmlEscapeAttr(title)}" />`,
+    `<meta property="og:description" content="${htmlEscapeAttr(desc)}" />`,
+    `<meta property="og:url" content="${htmlEscapeAttr(canonicalUrl)}" />`,
+    `<meta property="og:site_name" content="ara -- AI research arm" />`,
+    published ? `<meta property="article:published_time" content="${htmlEscapeAttr(published)}" />` : '',
+    modified ? `<meta property="article:modified_time" content="${htmlEscapeAttr(modified)}" />` : '',
+    ...imageMetaTags(shareImage, title),
+    `<meta name="twitter:card" content="${shareImage ? 'summary_large_image' : 'summary'}" />`,
+    `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
+    `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
+    `<link rel="alternate" type="application/rss+xml" title="ara -- AI research arm" href="${SITE_ORIGIN}/feed.xml" />`,
+    `<link rel="alternate" type="text/plain" title="llms.txt" href="${SITE_ORIGIN}/llms.txt" />`,
+    jsonLd ? jsonLdTag(jsonLd) : '',
+  ].filter(Boolean);
 }
 
 function extractMeta(articleHtml) {
@@ -627,7 +466,7 @@ function extractMeta(articleHtml) {
   return { title, desc };
 }
 
-function buildArticlePage(template, row, articleHtml, shareImageUrl, generatedImages = new Map()) {
+function buildArticlePage(template, row, articleHtml, shareImageUrl, generatedImages = new Map(), indexable = true) {
   const url = `${SITE_ORIGIN}/research/${row.slug}`;
   const { title: extracted, desc } = extractMeta(articleHtml);
   const title = extracted || row.title || row.slug;
@@ -659,7 +498,7 @@ function buildArticlePage(template, row, articleHtml, shareImageUrl, generatedIm
     ...sharedMetaTags(title, desc),
     keywords.length ? `<meta name="news_keywords" content="${htmlEscapeAttr(keywords.join(', '))}" />` : '',
     `<link rel="canonical" href="${url}" />`,
-    `<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />`,
+    `<meta name="robots" content="${indexable ? 'index,follow,max-image-preview:large,max-snippet:-1' : 'noindex,follow'}" />`,
     `<meta property="og:type" content="article" />`,
     `<meta property="og:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta property="og:description" content="${htmlEscapeAttr(desc)}" />`,
@@ -676,9 +515,14 @@ function buildArticlePage(template, row, articleHtml, shareImageUrl, generatedIm
   ].filter(Boolean);
 
   let html = applySeoBlock(template, metaBlock);
+  const displayHeadingRe = /<h2(\s+class="ara-display"[^>]*)>([\s\S]*?)<\/h2>/i;
+  const demotedArticleHtml = demoteHeadings(articleHtml);
+  const crawlerArticleHtml = displayHeadingRe.test(demotedArticleHtml)
+    ? demotedArticleHtml.replace(displayHeadingRe, '<h1$1>$2</h1>')
+    : `<h1>${htmlEscapeAttr(title)}</h1>${demotedArticleHtml}`;
   html = inlineContent(
     html,
-    `<div class="content-card gen-research-doc"><div class="content-card-body">${articleHtml}</div></div>`,
+    `<div class="content-card gen-research-doc"><div class="content-card-body">${crawlerArticleHtml}</div></div>`,
   );
   return html;
 }
@@ -714,7 +558,7 @@ function buildHomePage(template, shareImageUrl) {
     `<meta property="og:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta property="og:description" content="${htmlEscapeAttr(desc)}" />`,
     `<meta property="og:url" content="${url}" />`,
-    ...imageMetaTags(shareImageUrl, 'ara daily AI newspaper front page'),
+    ...imageMetaTags(shareImageUrl, 'ara — AI research arm'),
     `<meta name="twitter:card" content="${shareImageUrl ? 'summary_large_image' : 'summary'}" />`,
     `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
@@ -722,7 +566,26 @@ function buildHomePage(template, shareImageUrl) {
     `<link rel="alternate" type="text/plain" title="llms.txt" href="${SITE_ORIGIN}/llms.txt" />`,
     jsonLdTag(jsonLd),
   ];
-  return applySeoBlock(template, metaBlock);
+  const snapshot = [
+    '<section class="content-card forecast-static-page">',
+    '<div class="content-card-body">',
+    '<p class="ara-eyebrow">Independent AI intelligence</p>',
+    '<h1>AI news, model forecasts, and research</h1>',
+    `<p>${htmlEscapeAttr(desc)}</p>`,
+    '<nav aria-label="Explore ara">',
+    '<ul>',
+    '<li><a href="/today">Daily AI digest</a></li>',
+    '<li><a href="/twitter">Twitter/X AI signal reports</a></li>',
+    '<li><a href="/models">AI model forecasts and prediction markets</a></li>',
+    '<li><a href="/research">Long-form generative research</a></li>',
+    '<li><a href="/wiki">LLM wiki</a></li>',
+    '<li><a href="/frontpage">Daily AI newspaper</a></li>',
+    '</ul>',
+    '</nav>',
+    '</div>',
+    '</section>',
+  ].join('');
+  return inlineContent(applySeoBlock(template, metaBlock), snapshot);
 }
 
 function latestDigest() {
@@ -751,15 +614,20 @@ function digestDescription(md) {
   return 'The day in AI: releases, funding, research, and community signal, synthesized into a single daily digest.';
 }
 
-function buildDigestPage(template, digest, shareImageUrl) {
+function buildDigestPage(template, digest, shareImageUrl, policy = datedPagePolicy('today', digest.date, SITE_ORIGIN)) {
   const md = readFileSync(digest.path, 'utf8');
-  const title = `AI Daily Digest -- ${digest.date}`;
-  const desc = digestDescription(md);
-  const url = `${SITE_ORIGIN}/today`;
-  const bodyHtml = sanitizeFragment(marked.parse(md));
+  const unavailable = digest.unavailable ?? isDeterministicFallbackSource(md);
+  const title = unavailable ? `Editorial brief unavailable -- ${digest.date}` : `AI Daily Digest -- ${digest.date}`;
+  const desc = unavailable
+    ? `No editorial brief was published for ${digest.date}. Unreviewed source material is not public editorial content.`
+    : digestDescription(md);
+  const url = policy.canonicalUrl;
+  const bodyHtml = unavailable
+    ? `<section role="status"><p class="ara-eyebrow">Daily brief</p><h2>No editorial brief was published for ${htmlEscapeAttr(digest.date)}</h2><p>Unreviewed source material is kept for operational diagnosis and is not published as editorial content.</p></section>`
+    : sanitizeFragment(marked.parse(md));
 
   const jsonLd = {
-    '@type': 'Article',
+    '@type': unavailable ? 'WebPage' : 'Article',
     headline: title,
     description: desc,
     datePublished: digest.date,
@@ -783,7 +651,7 @@ function buildDigestPage(template, digest, shareImageUrl) {
     `<meta name="description" content="${htmlEscapeAttr(desc)}" />`,
     ...sharedMetaTags(title, desc),
     `<link rel="canonical" href="${url}" />`,
-    `<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />`,
+    `<meta name="robots" content="${policy.indexable ? 'index,follow,max-image-preview:large,max-snippet:-1' : 'noindex,follow'}" />`,
     `<meta property="og:type" content="article" />`,
     `<meta property="og:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta property="og:description" content="${htmlEscapeAttr(desc)}" />`,
@@ -802,9 +670,377 @@ function buildDigestPage(template, digest, shareImageUrl) {
   let html = applySeoBlock(template, metaBlock);
   html = inlineContent(
     html,
-    `<div class="content-card"><div class="content-card-body">${bodyHtml}</div></div>`,
+    singleH1Snapshot(title, bodyHtml),
   );
   return html;
+}
+
+function datedMarkdownRecords(dir, pattern) {
+  if (!existsSync(dir)) return [];
+  return sortDatedRecords(readdirSync(dir).map(name => {
+    const match = pattern.exec(name);
+    return match ? { date: match[1], path: join(dir, name), name } : null;
+  }).filter(Boolean));
+}
+
+function digestRecords() {
+  return datedMarkdownRecords(digestDir, /^(\d{4}-\d{2}-\d{2})-digest\.md$/).map(record => ({
+    ...record,
+    unavailable: isDeterministicFallbackSource(readFileSync(record.path, 'utf8')),
+  }));
+}
+
+function twitterRecords() {
+  return datedMarkdownRecords(twitterDir, /^(\d{4}-\d{2}-\d{2})\.md$/);
+}
+
+function renderedWordCount(markdown) {
+  const text = decodeEntities(stripTags(sanitizeFragment(marked.parse(markdown))));
+  return compactText(text).split(/\s+/).filter(Boolean).length;
+}
+
+function frontPageRecords() {
+  if (!existsSync(frontPageDir)) return [];
+  return sortDatedRecords(readdirSync(frontPageDir).map(name => {
+    const match = /^(\d{4}-\d{2}-\d{2})-front-page\.png$/.exec(name);
+    if (!match) return null;
+    const notesPath = join(frontPageDir, `${match[1]}-front-page.ara.md`);
+    return {
+      date: match[1],
+      path: join(frontPageDir, name),
+      notesPath: existsSync(notesPath) ? notesPath : null,
+      imageUrl: `${SITE_ORIGIN}/research/front-page/${name}`,
+    };
+  }).filter(record => {
+    if (!record) return false;
+    const digestPath = join(digestDir, `${record.date}-digest.md`);
+    return !existsSync(digestPath) || !isDeterministicFallbackSource(readFileSync(digestPath, 'utf8'));
+  }));
+}
+
+function buildTwitterPage(template, report, shareImageUrl, policy = datedPagePolicy('twitter', report.date, SITE_ORIGIN)) {
+  const markdown = readFileSync(report.path, 'utf8');
+  const title = `Twitter/X AI signal report -- ${report.date}`;
+  const description = digestDescription(markdown);
+  const bodyHtml = sanitizeFragment(marked.parse(markdown));
+  const reportNode = {
+    '@type': 'Report',
+    headline: title,
+    description,
+    datePublished: report.date,
+    dateModified: report.date,
+    inLanguage: 'en',
+    isAccessibleForFree: true,
+    author: publisherNode(),
+    publisher: publisherNode(),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': policy.canonicalUrl },
+    about: [{ '@type': 'Thing', name: 'AI news from Twitter and X' }],
+    url: policy.canonicalUrl,
+  };
+  if (shareImageUrl) reportNode.image = shareImageUrl;
+  const metaBlock = standardMetaBlock({
+    title,
+    description,
+    canonicalUrl: policy.canonicalUrl,
+    shareImage: shareImageUrl,
+    type: 'article',
+    indexable: policy.indexable,
+    published: report.date,
+    modified: report.date,
+    jsonLd: { '@context': 'https://schema.org', '@graph': [organizationNode(), reportNode] },
+  });
+  return inlineContent(
+    applySeoBlock(template, metaBlock),
+    singleH1Snapshot(title, bodyHtml),
+  );
+}
+
+function frontPageDescription(record) {
+  const digestPath = join(digestDir, `${record.date}-digest.md`);
+  if (existsSync(digestPath)) return digestDescription(readFileSync(digestPath, 'utf8'));
+  if (record.notesPath) {
+    const notes = readFileSync(record.notesPath, 'utf8');
+    const deck = notes.match(/^deck:\s*["']?(.+?)["']?\s*$/m)?.[1];
+    if (deck) return truncateDescription(deck);
+  }
+  return `The ara daily AI newspaper front page for ${record.date}, generated from the verified daily digest.`;
+}
+
+function buildFrontPagePage(template, record, policy = datedPagePolicy('frontpage', record.date, SITE_ORIGIN)) {
+  const title = `Daily AI newspaper -- ${record.date}`;
+  const description = frontPageDescription(record);
+  const image = {
+    url: record.imageUrl,
+    alt: `ara daily AI newspaper front page for ${record.date}`,
+  };
+  const workNode = {
+    '@type': 'CreativeWork',
+    headline: title,
+    description,
+    datePublished: record.date,
+    dateModified: record.date,
+    inLanguage: 'en',
+    isAccessibleForFree: true,
+    author: publisherNode(),
+    publisher: publisherNode(),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': policy.canonicalUrl },
+    image: record.imageUrl,
+    url: policy.canonicalUrl,
+  };
+  const metaBlock = standardMetaBlock({
+    title,
+    description,
+    canonicalUrl: policy.canonicalUrl,
+    shareImage: image,
+    type: 'article',
+    indexable: policy.indexable,
+    published: record.date,
+    modified: record.date,
+    jsonLd: { '@context': 'https://schema.org', '@graph': [organizationNode(), workNode] },
+  });
+  const body = [
+    `<p>${htmlEscapeAttr(description)}</p>`,
+    `<figure><img src="${htmlEscapeAttr(record.imageUrl)}" alt="${htmlEscapeAttr(image.alt)}" loading="eager" decoding="async"><figcaption>${htmlEscapeAttr(title)}</figcaption></figure>`,
+    `<p><a href="/today/${htmlEscapeAttr(record.date)}">Read the source daily digest</a></p>`,
+  ].join('');
+  return inlineContent(
+    applySeoBlock(template, metaBlock),
+    singleH1Snapshot(title, body),
+  );
+}
+
+function buildArchivePage(template, {
+  route,
+  title,
+  description,
+  eyebrow,
+  items,
+  shareImageUrl,
+}) {
+  const url = `${SITE_ORIGIN}${route}`;
+  const normalized = items.map((item, index) => ({ ...item, position: index + 1 }));
+  const collectionNode = {
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url,
+    isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: normalized.length,
+      itemListElement: normalized.map(item => ({
+        '@type': 'ListItem',
+        position: item.position,
+        name: item.title,
+        url: `${SITE_ORIGIN}${item.route}`,
+      })),
+    },
+  };
+  const metaBlock = standardMetaBlock({
+    title,
+    description,
+    canonicalUrl: url,
+    shareImage: shareImageUrl,
+    jsonLd: { '@context': 'https://schema.org', '@graph': [organizationNode(), collectionNode] },
+  });
+  const list = normalized.map(item => [
+    '<li>',
+    `<a href="${htmlEscapeAttr(item.route)}"><strong>${htmlEscapeAttr(item.title)}</strong></a>`,
+    item.meta ? `<p>${htmlEscapeAttr(item.meta)}</p>` : '',
+    item.description ? `<p>${htmlEscapeAttr(truncateDescription(compactText(item.description), 240))}</p>` : '',
+    '</li>',
+  ].filter(Boolean).join('')).join('');
+  const snapshot = [
+    '<section class="content-card forecast-static-page">',
+    '<div class="content-card-body">',
+    `<p class="ara-eyebrow">${htmlEscapeAttr(eyebrow)}</p>`,
+    `<h1>${htmlEscapeAttr(title)}</h1>`,
+    `<p>${htmlEscapeAttr(description)}</p>`,
+    `<ol>${list}</ol>`,
+    '</div>',
+    '</section>',
+  ].join('');
+  return inlineContent(applySeoBlock(template, metaBlock), snapshot);
+}
+
+function buildNoindexPage(template, { route, canonicalRoute, title, description, body, shareImageUrl }) {
+  const canonicalUrl = `${SITE_ORIGIN}${canonicalRoute}`;
+  const metaBlock = standardMetaBlock({
+    title,
+    description,
+    canonicalUrl,
+    shareImage: shareImageUrl,
+    indexable: false,
+  });
+  return inlineContent(
+    applySeoBlock(template, metaBlock),
+    singleH1Snapshot(title, `<p>${htmlEscapeAttr(body || description)}</p>`),
+  );
+}
+
+function polymarketEventUrl(mapping) {
+  return `https://polymarket.com/event/${encodeURIComponent(String(mapping.event_slug))}`;
+}
+
+// A crawler-facing forecast page intentionally contains only committed
+// evidence and mapping metadata. Live odds remain a fail-soft browser concern;
+// baking a build-time price into OG copy would make shared cards stale or false.
+function buildForecastPage(template, ticket, shareImageUrl) {
+  const record = forecastSeoRecord(ticket, SITE_ORIGIN);
+  const desc = truncateDescription(record.description);
+  const published = ticket.created_at || ticket.updated_at;
+  const modified = ticket.updated_at || ticket.created_at;
+  const keywords = [
+    'AI forecast',
+    'prediction markets',
+    'Polymarket',
+    ticket.company,
+    ticket.model,
+    ...(Array.isArray(ticket.labels) ? ticket.labels : []),
+  ].filter(Boolean);
+  const marketUrls = ticket.polymarket.map(polymarketEventUrl);
+  const sourceUrls = (Array.isArray(ticket.sources) ? ticket.sources : [])
+    .filter(source => /^https?:\/\/\S+$/i.test(String(source)));
+  const jsonLd = {
+    '@type': 'Report',
+    headline: record.title,
+    description: desc,
+    datePublished: published,
+    dateModified: modified,
+    inLanguage: 'en',
+    isAccessibleForFree: true,
+    author: publisherNode(),
+    publisher: publisherNode(),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': record.url },
+    about: record.questions.map(name => ({ '@type': 'Thing', name })),
+    keywords,
+    citation: sourceUrls,
+    sameAs: marketUrls,
+    url: record.url,
+  };
+  if (shareImageUrl) jsonLd.image = shareImageUrl;
+
+  const metaBlock = [
+    `<title>${htmlEscapeAttr(record.title)} -- ara</title>`,
+    `<meta name="description" content="${htmlEscapeAttr(desc)}" />`,
+    ...sharedMetaTags(record.title, desc),
+    `<meta name="news_keywords" content="${htmlEscapeAttr(keywords.join(', '))}" />`,
+    `<link rel="canonical" href="${record.url}" />`,
+    `<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />`,
+    `<meta property="og:type" content="article" />`,
+    `<meta property="og:title" content="${htmlEscapeAttr(record.title)}" />`,
+    `<meta property="og:description" content="${htmlEscapeAttr(desc)}" />`,
+    `<meta property="og:url" content="${record.url}" />`,
+    `<meta property="og:site_name" content="ara -- AI research arm" />`,
+    published ? `<meta property="article:published_time" content="${htmlEscapeAttr(published)}" />` : '',
+    modified ? `<meta property="article:modified_time" content="${htmlEscapeAttr(modified)}" />` : '',
+    ...imageMetaTags(shareImageUrl, record.title),
+    `<meta name="twitter:card" content="${shareImageUrl ? 'summary_large_image' : 'summary'}" />`,
+    `<meta name="twitter:title" content="${htmlEscapeAttr(record.title)}" />`,
+    `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
+    `<link rel="alternate" type="application/rss+xml" title="ara -- AI research arm" href="${SITE_ORIGIN}/feed.xml" />`,
+    `<link rel="alternate" type="text/plain" title="llms.txt" href="${SITE_ORIGIN}/llms.txt" />`,
+    jsonLdTag({ '@context': 'https://schema.org', '@graph': [organizationNode(), jsonLd] }),
+  ].filter(Boolean);
+
+  const marketItems = ticket.polymarket.map(mapping => {
+    const outcome = String(mapping.outcome || '').trim();
+    return [
+      '<li>',
+      `<a href="${htmlEscapeAttr(polymarketEventUrl(mapping))}" rel="noopener noreferrer">${htmlEscapeAttr(mapping.question)}</a>`,
+      outcome ? ` <span>(${htmlEscapeAttr(outcome)} outcome)</span>` : '',
+      '</li>',
+    ].join('');
+  }).join('');
+  const sources = sourceUrls.map(source =>
+    `<li><a href="${htmlEscapeAttr(source)}" rel="noopener noreferrer">${htmlEscapeAttr(source)}</a></li>`,
+  ).join('');
+  const bodyHtml = sanitizeFragment(marked.parse(String(ticket.body || '')));
+  const status = String(ticket.status || 'tracked').replace(/-/g, ' ');
+  const snapshot = [
+    '<article class="content-card forecast-static-page">',
+    '<div class="content-card-body">',
+    '<p class="ara-eyebrow">AI forecast · prediction-market linked</p>',
+    `<h1>${htmlEscapeAttr(ticket.title)}</h1>`,
+    `<p>${htmlEscapeAttr(ticket.company)} · ${htmlEscapeAttr(status)} · verified · updated ${htmlEscapeAttr(ticket.updated_at || 'unknown')}</p>`,
+    '<section><h2>Linked prediction markets</h2>',
+    `<ul>${marketItems}</ul>`,
+    '<p>Live probabilities load in the interactive view and may be unavailable. Market links and questions are committed mappings; no price is asserted in this static snapshot.</p>',
+    '</section>',
+    bodyHtml ? `<section><h2>Forecast evidence</h2>${bodyHtml}</section>` : '',
+    sources ? `<section><h2>Sources</h2><ul>${sources}</ul></section>` : '',
+    '</div>',
+    '</article>',
+  ].filter(Boolean).join('');
+
+  return inlineContent(applySeoBlock(template, metaBlock), snapshot);
+}
+
+function buildModelsPage(template, forecastTickets, shareImageUrl) {
+  const url = `${SITE_ORIGIN}/models`;
+  const title = 'AI model forecasts and prediction markets';
+  const desc = truncateDescription(
+    'Verified AI model-release forecasts with evidence timelines and linked prediction-market questions. Live probabilities load in the interactive model board.',
+  );
+  const forecastRecords = forecastTickets.map(ticket => ({
+    ticket,
+    record: forecastSeoRecord(ticket, SITE_ORIGIN),
+  }));
+  const jsonLd = {
+    '@type': 'CollectionPage',
+    name: title,
+    description: desc,
+    url,
+    isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: forecastRecords.length,
+      itemListElement: forecastRecords.map(({ record }, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: record.title,
+        url: record.url,
+      })),
+    },
+  };
+  const metaBlock = [
+    `<title>${htmlEscapeAttr(title)} -- ara</title>`,
+    `<meta name="description" content="${htmlEscapeAttr(desc)}" />`,
+    ...sharedMetaTags(title, desc),
+    `<link rel="canonical" href="${url}" />`,
+    `<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />`,
+    `<meta property="og:type" content="website" />`,
+    `<meta property="og:title" content="${htmlEscapeAttr(title)}" />`,
+    `<meta property="og:description" content="${htmlEscapeAttr(desc)}" />`,
+    `<meta property="og:url" content="${url}" />`,
+    `<meta property="og:site_name" content="ara -- AI research arm" />`,
+    ...imageMetaTags(shareImageUrl, title),
+    `<meta name="twitter:card" content="${shareImageUrl ? 'summary_large_image' : 'summary'}" />`,
+    `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
+    `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
+    `<link rel="alternate" type="application/rss+xml" title="ara -- AI research arm" href="${SITE_ORIGIN}/feed.xml" />`,
+    `<link rel="alternate" type="text/plain" title="llms.txt" href="${SITE_ORIGIN}/llms.txt" />`,
+    jsonLdTag({ '@context': 'https://schema.org', '@graph': [organizationNode(), jsonLd] }),
+  ];
+  const rows = forecastRecords.map(({ ticket, record }) => [
+    '<li>',
+    `<a href="${htmlEscapeAttr(record.route)}"><strong>${htmlEscapeAttr(ticket.title)}</strong></a>`,
+    `<p>${htmlEscapeAttr(ticket.company)} · ${htmlEscapeAttr(String(ticket.status).replace(/-/g, ' '))} · updated ${htmlEscapeAttr(ticket.updated_at)}</p>`,
+    `<p>${htmlEscapeAttr(record.questions.join(' · '))}</p>`,
+    '</li>',
+  ].join('')).join('');
+  const snapshot = [
+    '<section class="content-card forecast-static-page">',
+    '<div class="content-card-body">',
+    '<p class="ara-eyebrow">AI forecast radar</p>',
+    `<h1>${htmlEscapeAttr(title)}</h1>`,
+    `<p>${htmlEscapeAttr(desc)}</p>`,
+    rows ? `<ol>${rows}</ol>` : '<p>No verified market-linked forecasts are currently published.</p>',
+    '<p>Probabilities are informational only and may be unavailable. Each forecast page identifies its committed market mapping and source evidence.</p>',
+    '</div>',
+    '</section>',
+  ].join('');
+  return inlineContent(applySeoBlock(template, metaBlock), snapshot);
 }
 
 function wikiPageImages(page, fallbackAlt) {
@@ -919,19 +1155,16 @@ function buildWikiPage(template, page, shareImageUrl) {
   let html = applySeoBlock(template, metaBlock);
   html = inlineContent(
     html,
-    `<div class="content-card"><div class="content-card-body"><h2>${htmlEscapeAttr(title)}</h2>${wikiImageGalleryHtml(page, title)}${bodyHtml}</div></div>`,
+    singleH1Snapshot(title, `${wikiImageGalleryHtml(page, title)}${bodyHtml}`),
   );
   return html;
 }
 
-function buildSitemap(entries, wikiPages) {
+function buildSitemap(entries, wikiPages, forecastTickets, datedPages) {
   const today = new Date().toISOString().slice(0, 10);
   const rootEntries = [
     { loc: SITE_ORIGIN + '/', priority: '1.0' },
-    { loc: SITE_ORIGIN + '/today', priority: '0.9' },
-    { loc: SITE_ORIGIN + '/twitter', priority: '0.7' },
     { loc: SITE_ORIGIN + '/models', priority: '0.7' },
-    { loc: SITE_ORIGIN + '/frontpage', priority: '0.6' },
     { loc: SITE_ORIGIN + '/research', priority: '0.9' },
     { loc: SITE_ORIGIN + '/wiki', priority: '0.7' },
   ].map(e => ({ ...e, lastmod: today }));
@@ -948,7 +1181,20 @@ function buildSitemap(entries, wikiPages) {
     priority: '0.6',
   }));
 
-  const all = [...rootEntries, ...articleEntries, ...wikiEntries];
+  const forecastEntries = (forecastTickets || []).map(ticket => ({
+    loc: forecastSeoRecord(ticket, SITE_ORIGIN).url,
+    lastmod: (ticket.updated_at || ticket.created_at || today).slice(0, 10),
+    priority: '0.7',
+  }));
+
+  const reportEntries = (datedPages || []).map(page => ({
+    loc: `${SITE_ORIGIN}${page.route}`,
+    lastmod: page.date,
+    priority: page.section === 'today' ? '0.8' : page.section === 'twitter' ? '0.6' : '0.5',
+  }));
+
+  const all = [...rootEntries, ...reportEntries, ...articleEntries, ...wikiEntries, ...forecastEntries]
+    .sort((a, b) => a.loc.localeCompare(b.loc));
   const lines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -993,7 +1239,10 @@ function recentDigestEntries(limit = 10) {
   const re = /^(\d{4}-\d{2}-\d{2})-digest\.md$/;
   return readdirSync(digestDir)
     .map(n => (re.exec(n) || [])[1])
-    .filter(Boolean)
+    .filter(date => {
+      if (!date) return false;
+      return !isDeterministicFallbackSource(readFileSync(join(digestDir, `${date}-digest.md`), 'utf8'));
+    })
     .sort()
     .reverse()
     .slice(0, limit)
@@ -1002,14 +1251,16 @@ function recentDigestEntries(limit = 10) {
       return {
         date,
         title: `AI Daily Digest -- ${date}`,
-        url: `${SITE_ORIGIN}/today#${date}`,
+        url: `${SITE_ORIGIN}/today/${date}`,
         description: digestDescription(md),
       };
     });
 }
 
-function buildLlmsTxt(entries, wikiPages) {
+function buildLlmsTxt(entries, wikiPages, forecastTickets) {
   const today = new Date().toISOString().slice(0, 10);
+  const digests = recentDigestEntries(10);
+  const latestTwitter = twitterRecords().at(-1);
   const recentArticles = entries
     .filter(e => e.kind !== 'standalone')
     .slice()
@@ -1030,7 +1281,8 @@ function buildLlmsTxt(entries, wikiPages) {
     '## Canonical entry points',
     '',
     `- [Homepage](${SITE_ORIGIN}/): Live AI-news dashboard and archive navigation.`,
-    `- [Today](${SITE_ORIGIN}/today): Latest daily AI digest.`,
+    `- [Latest daily digest](${digests[0]?.url || `${SITE_ORIGIN}/today`}): Daily AI news synthesis.`,
+    latestTwitter ? `- [Latest Twitter/X report](${SITE_ORIGIN}/twitter/${latestTwitter.date}): Source-attributed AI signals from Twitter/X.` : '',
     `- [Research archive](${SITE_ORIGIN}/research): Long-form generative research articles.`,
     `- [LLM Wiki](${SITE_ORIGIN}/wiki): Entity, concept, and theme pages built from curated AI-news synthesis.`,
     `- [Model timeline](${SITE_ORIGIN}/models): Model-release timeline and tickets.`,
@@ -1045,7 +1297,6 @@ function buildLlmsTxt(entries, wikiPages) {
     '',
   ];
 
-  const digests = recentDigestEntries(10);
   if (digests.length) {
     lines.push('## Recent daily digests', '');
     for (const digest of digests) {
@@ -1061,7 +1312,7 @@ function buildLlmsTxt(entries, wikiPages) {
       const tags = Array.isArray(article.tags) && article.tags.length
         ? ` Tags: ${article.tags.map(markdownLine).join(', ')}.`
         : '';
-      const desc = markdownLine(article.prompt || title);
+      const desc = markdownLine(articleSummary(article));
       lines.push(`- [${title}](${SITE_ORIGIN}/research/${article.slug}): ${desc}${tags}`);
     }
     lines.push('');
@@ -1073,6 +1324,15 @@ function buildLlmsTxt(entries, wikiPages) {
       const title = markdownLine(page.title || page.slug);
       const desc = markdownLine(page.summary || title);
       lines.push(`- [${title}](${SITE_ORIGIN}/wiki/${page.slug}): ${desc}`);
+    }
+    lines.push('');
+  }
+
+  if (forecastTickets?.length) {
+    lines.push('## Verified prediction-market forecasts', '');
+    for (const ticket of forecastTickets) {
+      const record = forecastSeoRecord(ticket, SITE_ORIGIN);
+      lines.push(`- [${markdownLine(record.title)}](${record.url}): ${markdownLine(record.description)}`);
     }
     lines.push('');
   }
@@ -1104,7 +1364,10 @@ function buildFeed(entries, shareImageUrl) {
     const re = /^(\d{4}-\d{2}-\d{2})-digest\.md$/;
     const dates = readdirSync(digestDir)
       .map(n => (re.exec(n) || [])[1])
-      .filter(Boolean)
+      .filter(date => {
+        if (!date) return false;
+        return !isDeterministicFallbackSource(readFileSync(join(digestDir, `${date}-digest.md`), 'utf8'));
+      })
       .sort()
       .reverse()
       .slice(0, 10);
@@ -1112,8 +1375,8 @@ function buildFeed(entries, shareImageUrl) {
       const md = readFileSync(join(digestDir, `${date}-digest.md`), 'utf8');
       items.push({
         title: `AI Daily Digest -- ${date}`,
-        link: `${SITE_ORIGIN}/today`,
-        guid: `${SITE_ORIGIN}/today#${date}`,
+        link: `${SITE_ORIGIN}/today/${date}`,
+        guid: `${SITE_ORIGIN}/today/${date}`,
         date,
         description: digestDescription(md),
       });
@@ -1131,7 +1394,7 @@ function buildFeed(entries, shareImageUrl) {
       link: `${SITE_ORIGIN}/research/${e.slug}`,
       guid: `${SITE_ORIGIN}/research/${e.slug}`,
       date: e.created_at,
-      description: truncateDescription(decodeEntities(stripTags(e.prompt || e.title || e.slug))),
+      description: truncateDescription(decodeEntities(stripTags(articleSummary(e)))),
     }));
   items.push(...articleItems);
 
@@ -1182,7 +1445,7 @@ if (!existsSync(indexHtmlPath)) {
 }
 
 const template = readFileSync(indexHtmlPath, 'utf8');
-const shareImageUrl = findShareImageUrl();
+const shareImageUrl = await findShareImageUrl();
 
 const entries = existsSync(indexJsonPath)
   ? JSON.parse(readFileSync(indexJsonPath, 'utf8'))
@@ -1191,9 +1454,22 @@ if (!existsSync(indexJsonPath)) {
   console.warn(`postbuild-seo: ${indexJsonPath} not found -- no article pages`);
 }
 
-// 1) Generative article pages.
+// 1) Generative article pages. Every non-standalone article gets a
+//    deterministic typographic social card unless it ships its own artifact
+//    image (articleArtifactImage precedence is unchanged).
 let written = 0;
 let skipped = 0;
+let cardAttempts = 0;
+let cardsGenerated = 0;
+const generatedArticleImages = new Map();
+// slug -> the article's own deck/lede, already truncated by extractMeta. The
+// article PAGES have always used this for their meta description and JSON-LD;
+// llms.txt, feed.xml and the /research hub used row.prompt instead, which is
+// the internal dispatch brief the workflow was launched with — up to 3.6KB of
+// "Argue it." and "EVIDENCE DISCIPLINE" addressed to the authoring agent, not
+// to a reader. Capturing it here lets those three consumers use the same
+// summary the article page already shows.
+const articleDescriptions = new Map();
 const articleRows = [];
 for (const row of entries) {
   if (row.kind === 'standalone') {
@@ -1206,28 +1482,128 @@ for (const row of entries) {
     continue;
   }
   const articleHtml = readFileSync(articlePath, 'utf8');
-  const page = buildArticlePage(template, row, articleHtml, shareImageUrl);
+  const indexable = isIndexableResearchEntry(row);
+  const { title: extractedTitle, desc: extractedDesc } = extractMeta(articleHtml);
+  if (extractedDesc) articleDescriptions.set(row.slug, extractedDesc);
+  const cardTitle = extractedTitle || row.title || row.slug;
+  if (!articleArtifactImage(row, cardTitle)) {
+    cardAttempts++;
+    try {
+      const image = await generateArticleSocialCard(row, cardTitle, extractedDesc);
+      if (image) {
+        generatedArticleImages.set(row.slug, image);
+        cardsGenerated++;
+      }
+    } catch (e) {
+      console.warn(`postbuild-seo: social card failed for ${row.slug}: ${e.message}`);
+    }
+  }
+  const page = buildArticlePage(template, row, articleHtml, shareImageUrl, generatedArticleImages, indexable);
   const outDir = join(dist, 'research', row.slug);
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, 'index.html'), page);
-  articleRows.push({ row, articleHtml, outDir });
+  articleRows.push({ row, articleHtml, outDir, indexable });
   written++;
 }
 
-const generatedArticleImages = await renderArticleSocialScreenshots(entries);
-if (generatedArticleImages.size) {
-  for (const { row, articleHtml, outDir } of articleRows) {
-    const page = buildArticlePage(template, row, articleHtml, shareImageUrl, generatedArticleImages);
-    writeFileSync(join(outDir, 'index.html'), page);
-  }
+// Per-card failures are tolerable (that article falls back to the site share
+// image), but EVERY card failing means the environment is broken — resvg
+// binding didn't load, fonts missing — and shipping a green build with zero
+// cards would hide it indefinitely (CI never runs the Dockerfile; see
+// CLAUDE.md load-bearing rule 3). Fail the build instead.
+if (cardAttempts > 0 && cardsGenerated === 0) {
+  console.error(
+    `postbuild-seo: all ${cardAttempts} social-card renders failed — ` +
+    'resvg/native-binding or system-font breakage; refusing to ship a build with no article cards',
+  );
+  process.exit(1);
 }
 
-// 2) "today" digest page.
-const digest = latestDigest();
-if (digest) {
+// 2) Dated editorial reports. Each real artifact receives one self-canonical
+// route. Undated convenience routes are noindex aliases to the latest dated
+// artifact, so they remain useful to humans without duplicating the index.
+const digests = digestRecords();
+const twitterReports = twitterRecords();
+const frontPages = frontPageRecords();
+const datedPages = [];
+for (const digest of digests) {
+  const basePolicy = datedPagePolicy('today', digest.date, SITE_ORIGIN);
+  const policy = digest.unavailable ? { ...basePolicy, indexable: false } : basePolicy;
+  const outDir = join(dist, 'today', digest.date);
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(join(outDir, 'index.html'), buildDigestPage(template, digest, shareImageUrl, policy));
+  if (!digest.unavailable) datedPages.push({ section: 'today', date: digest.date, route: policy.route });
+}
+const latestDigestRecord = digests.at(-1) || null;
+if (latestDigestRecord) {
   const outDir = join(dist, 'today');
   mkdirSync(outDir, { recursive: true });
-  writeFileSync(join(outDir, 'index.html'), buildDigestPage(template, digest, shareImageUrl));
+  writeFileSync(
+    join(outDir, 'index.html'),
+    buildDigestPage(
+      template,
+      latestDigestRecord,
+      shareImageUrl,
+      latestAliasPolicy('today', latestDigestRecord.date, SITE_ORIGIN),
+    ),
+  );
+}
+
+for (const report of twitterReports) {
+  const markdown = readFileSync(report.path, 'utf8');
+  report.wordCount = renderedWordCount(markdown);
+  const basePolicy = datedPagePolicy('twitter', report.date, SITE_ORIGIN);
+  const policy = report.wordCount >= 300
+    ? basePolicy
+    : { ...basePolicy, indexable: false };
+  const outDir = join(dist, 'twitter', report.date);
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(join(outDir, 'index.html'), buildTwitterPage(template, report, shareImageUrl, policy));
+  if (policy.indexable) datedPages.push({ section: 'twitter', date: report.date, route: policy.route });
+}
+const latestTwitterRecord = twitterReports.at(-1) || null;
+if (latestTwitterRecord) {
+  const outDir = join(dist, 'twitter');
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(
+    join(outDir, 'index.html'),
+    buildTwitterPage(
+      template,
+      latestTwitterRecord,
+      shareImageUrl,
+      latestAliasPolicy('twitter', latestTwitterRecord.date, SITE_ORIGIN),
+    ),
+  );
+}
+
+for (const frontPage of frontPages) {
+  const policy = {
+    route: `/frontpage/${frontPage.date}`,
+    canonicalRoute: `/today/${frontPage.date}`,
+    canonicalUrl: `${SITE_ORIGIN}/today/${frontPage.date}`,
+    indexable: false,
+  };
+  const outDir = join(dist, 'frontpage', frontPage.date);
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(join(outDir, 'index.html'), buildFrontPagePage(template, frontPage, policy));
+}
+const latestFrontPageRecord = frontPages.at(-1) || null;
+if (latestFrontPageRecord) {
+  const outDir = join(dist, 'frontpage');
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(
+    join(outDir, 'index.html'),
+    buildFrontPagePage(
+      template,
+      latestFrontPageRecord,
+      {
+        route: '/frontpage',
+        canonicalRoute: `/today/${latestFrontPageRecord.date}`,
+        canonicalUrl: `${SITE_ORIGIN}/today/${latestFrontPageRecord.date}`,
+        indexable: false,
+      },
+    ),
+  );
 }
 
 // 3) Wiki pages.
@@ -1249,19 +1625,133 @@ if (existsSync(wikiIndexPath)) {
   }
 }
 
-// 4) Homepage -- rewrite dist/index.html LAST (it was the template above, so
+
+// Archive hubs are indexable collections, not generic SPA shells. Their
+// direct links also keep valuable articles and wiki pages within a short crawl
+// path from the homepage.
+const publishedEntries = articleRows.filter(item => item.indexable).map(item => item.row);
+const researchItems = publishedEntries
+  .slice()
+  .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')))
+  .map(row => ({
+    route: `/research/${row.slug}`,
+    title: row.title || row.slug,
+    meta: row.created_at ? String(row.created_at).slice(0, 10) : '',
+    description: articleSummary(row),
+  }));
+const researchHubDir = join(dist, 'research');
+mkdirSync(researchHubDir, { recursive: true });
+writeFileSync(join(researchHubDir, 'index.html'), buildArchivePage(template, {
+  route: '/research',
+  title: 'AI research archive',
+  description: 'Source-cited, long-form research on AI models, companies, infrastructure, policy, and emerging technical claims.',
+  eyebrow: 'Generative research',
+  items: researchItems,
+  shareImageUrl,
+}));
+
+const wikiItems = wikiPages
+  .slice()
+  .sort((a, b) => String(a.title || a.slug).localeCompare(String(b.title || b.slug)))
+  .map(page => ({
+    route: `/wiki/${page.slug}`,
+    title: page.title || page.slug,
+    meta: [page.type, page.updated_at || page.created_at].filter(Boolean).join(' · '),
+    description: decodeEntities(stripTags(page.summary || page.title || page.slug)),
+  }));
+const wikiHubDir = join(dist, 'wiki');
+mkdirSync(wikiHubDir, { recursive: true });
+writeFileSync(join(wikiHubDir, 'index.html'), buildArchivePage(template, {
+  route: '/wiki',
+  title: 'LLM and AI wiki',
+  description: 'A maintained knowledge base of AI labs, models, infrastructure concepts, policy themes, and market participants.',
+  eyebrow: 'Compounding knowledge base',
+  items: wikiItems,
+  shareImageUrl,
+}));
+
+// 4) Verified model forecasts with committed Polymarket mappings. Read the
+// sanitized index emitted by prebuild so crawler and runtime contracts cannot
+// drift. Ordinary/unverified tickets intentionally receive no static page.
+let forecastTickets = [];
+let forecastWritten = 0;
+if (existsSync(distTicketIndexPath)) {
+  try {
+    const ticketIndex = JSON.parse(readFileSync(distTicketIndexPath, 'utf8'));
+    forecastTickets = mappedForecastTickets(ticketIndex);
+    for (const ticket of forecastTickets) {
+      const outDir = join(dist, 'models', 'forecast', ticket.slug);
+      mkdirSync(outDir, { recursive: true });
+      writeFileSync(join(outDir, 'index.html'), buildForecastPage(template, ticket, shareImageUrl));
+      forecastWritten++;
+    }
+  } catch (e) {
+    console.warn(`postbuild-seo: ticket index parse failed (${e.message}); skipping forecast pages`);
+  }
+}
+const distModelsDir = join(dist, 'models');
+mkdirSync(distModelsDir, { recursive: true });
+writeFileSync(join(distModelsDir, 'index.html'), buildModelsPage(template, forecastTickets, shareImageUrl));
+
+// Historical /models/YYYY-MM-DD URLs all render the same live ticket board.
+// Preserve those legacy links, but canonicalize and noindex them instead of
+// presenting 100+ duplicate pages to crawlers.
+const modelTimelineRecords = datedMarkdownRecords(modelTimelineDir, /^(\d{4}-\d{2}-\d{2})-timeline\.md$/);
+for (const record of modelTimelineRecords) {
+  const outDir = join(distModelsDir, record.date);
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(join(outDir, 'index.html'), buildNoindexPage(template, {
+    route: `/models/${record.date}`,
+    canonicalRoute: '/models',
+    title: `AI model timeline -- ${record.date}`,
+    description: 'This historical URL resolves to the live AI model forecast board.',
+    body: 'The model board is maintained as a live ticket collection. Continue to the canonical model forecasts page.',
+    shareImageUrl,
+  }));
+}
+
+// Operational and design-preview surfaces are public for transparency and QA,
+// but they are not search landing pages.
+const agentsDescription = existsSync(armTimelinePath)
+  ? 'Live operational timeline for the autonomous agents and scheduled workflows that maintain ara.'
+  : 'Operational surface for the autonomous agents that maintain ara.';
+const agentsDir = join(dist, 'agents');
+mkdirSync(agentsDir, { recursive: true });
+writeFileSync(join(agentsDir, 'index.html'), buildNoindexPage(template, {
+  route: '/agents',
+  canonicalRoute: '/agents',
+  title: 'ara agent operations',
+  description: agentsDescription,
+  body: agentsDescription,
+  shareImageUrl,
+}));
+const focusReaderDir = join(dist, 'design', 'focus-reader');
+mkdirSync(focusReaderDir, { recursive: true });
+writeFileSync(join(focusReaderDir, 'index.html'), buildNoindexPage(template, {
+  route: '/design/focus-reader',
+  canonicalRoute: '/design/focus-reader',
+  title: 'Focus reader design preview',
+  description: 'An internal design preview for ara reading experiences.',
+  body: 'This route is a design and quality-assurance surface, not a published research page.',
+  shareImageUrl,
+}));
+
+// 5) Homepage -- rewrite dist/index.html LAST (it was the template above, so
 //    article/today/wiki pages inherit the default block, not the homepage one).
 writeFileSync(indexHtmlPath, buildHomePage(template, shareImageUrl));
 
-// 5) sitemap.xml, robots.txt, feed.xml, llms.txt.
-writeFileSync(join(dist, 'sitemap.xml'), buildSitemap(entries, wikiPages));
+// 6) sitemap.xml, robots.txt, feed.xml, llms.txt.
+writeFileSync(join(dist, 'sitemap.xml'), buildSitemap(publishedEntries, wikiPages, forecastTickets, datedPages));
 writeFileSync(join(dist, 'robots.txt'), buildRobots());
-writeFileSync(join(dist, 'feed.xml'), buildFeed(entries, shareImageUrl));
-writeFileSync(join(dist, 'llms.txt'), buildLlmsTxt(entries, wikiPages));
+writeFileSync(join(dist, 'feed.xml'), buildFeed(publishedEntries, shareImageUrl));
+writeFileSync(join(dist, 'llms.txt'), buildLlmsTxt(publishedEntries, wikiPages, forecastTickets));
 
 console.log(
-  `postbuild-seo: ${written} article pages (${skipped} skipped), ` +
-  `${digest ? 1 : 0} digest page, ${wikiWritten} wiki pages`,
+  `postbuild-seo: ${written} article pages (${skipped} skipped, ${cardsGenerated} social cards), ` +
+  `${digests.length} digests, ${twitterReports.length} Twitter reports ` +
+  `(${twitterReports.filter(report => report.wordCount >= 300).length} indexable), ` +
+  `${frontPages.length} newspaper pages, ${wikiWritten} wiki pages, ` +
+  `${forecastWritten} verified forecast pages, ${modelTimelineRecords.length} noindex model aliases`,
 );
 console.log(`postbuild-seo: share image: ${shareImageUrl || '(none found)'}`);
 console.log('postbuild-seo: sitemap.xml + robots.txt + feed.xml + llms.txt written to dist/');

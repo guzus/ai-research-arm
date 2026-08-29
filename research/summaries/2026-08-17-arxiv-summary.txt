@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-17
+
+TOP 5 PAPERS:
+• Intern-S2-Mobius - decoupled Memory-FFN + Reasoners architecture: 7B matches baseline with 62.6% data, ~4x inference speedup
+• The Dynamics of Intelligence Explosions (Ord) - singular takeoff is harder than modeled; generation time is the pivotal parameter
+• ScienceFlow - long-horizon autoresearch agent hits SOTA 70.22% Any-Medal on full MLE-bench (24h), +4.92pp over prior best
+• Marionette - game world model predicts explicit 3D state, delegates geometry to fixed renderer, gains long-horizon consistency
+• Designing RL for Diffusion Models - unifies Flow-GRPO/AWM/DiffusionNFT under one path-space principle (variance reduction)
+
+CATEGORIES: NLP 6, CV/Multimodal 7, Agents 8, Safety 4, Other 7
+
+Full report on GitHub.

@@ -1,0 +1,244 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Anthropic's Claude Mythos Preview found that HAWK-256's expected key-recovery cost, previously thought to be 2^64, is actually 2^38 operations, via a nontrivial lattice automorphism.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/research/discovering-cryptographic-weaknesses"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "HAWK-256 is a deliberately weakened 'challenge' parameter set (~64-bit claimed security) that was never submitted to NIST as a security level; the actual NIST-submitted parameter sets are HAWK-512 (Level I) and HAWK-1024 (Level V).",
+      "type": "definition",
+      "source_urls": ["https://hawk-sign.info/hawk-spec.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-02-05",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c3",
+      "claim": "Independent commentary reports the same technique reduces HAWK-512's gate-count security from roughly 2^150 to at most 2^108, and HAWK-1024's from roughly 2^288 to at most 2^182 -- both still exponential.",
+      "type": "metric",
+      "source_urls": ["https://postquantum.com/security-pqc/ai-cryptanalysis-hawk-aes/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-28",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c4",
+      "claim": "HAWK advanced to Round 3 of NIST's Additional Digital Signatures on-ramp on May 14, 2026, as the sole lattice-based candidate among 9 (FAEST, HAWK, MAYO, MQOM, QR-UOV, SDitH, SNOVA, SQIsign, UOV); Round 3 is expected to run roughly two more years before any standardization decision.",
+      "type": "regulatory",
+      "source_urls": ["https://www.nist.gov/news-events/news/2026/05/nine-candidates-advance-third-round-additional-digital-signatures-pqc"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Prior theoretical work (van Gent & Pulles, May 2025) proved that a nontrivial automorphism of HAWK's lattice would enable an attack halving effective security bits, but stated no such automorphism was known to exist at the time, concluding the work 'does not affect the security of HAWK.'",
+      "type": "event",
+      "source_urls": ["https://eprint.iacr.org/2025/928"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-05-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "A separate, earlier automorphism finding (Luo et al., ASIACRYPT 2024) had already broken HAWK's original omSVP hardness assumption, forcing the HAWK team to amend that definition prior to the 2026 Mythos result.",
+      "type": "event",
+      "source_urls": ["https://eprint.iacr.org/2025/928"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-05-22",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Claude Mythos Preview's Möbius-bridge technique speeds up the best known attack on 7-of-10-round AES-128 (requiring 2^105 chosen plaintexts) by 200-800x depending on measurement, cutting estimated time from about 2^99 to between 2^89.3 and 2^91.4 operations.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/research/discovering-cryptographic-weaknesses"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "The best known attack on the full, unreduced 10-round AES-128 remains the 2011 biclique attack at 2^126.1 operations, essentially untouched by this result -- deployed AES-128 is not threatened.",
+      "type": "comparison",
+      "source_urls": ["https://eprint.iacr.org/2011/449"],
+      "source_tiers": ["academic"],
+      "as_of": "2011-01-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Reduced-round AES meet-in-the-middle cryptanalysis is an established academic lineage running from Demirci-Selcuk (FSE 2008) through Dunkelman et al. (ASIACRYPT 2010) to Derbez-Fouque-Jean (EUROCRYPT 2013), which already reached sub-2^100 complexity on 7-round AES-128 before this result.",
+      "type": "event",
+      "source_urls": ["https://eprint.iacr.org/2012/477"],
+      "source_tiers": ["academic"],
+      "as_of": "2013-01-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Each of the two results (HAWK, AES) cost roughly $100,000 in API spend to develop; the HAWK attack took about 60 human-researcher hours total, while the AES result required 'several hundred hours' and nearly a month for two researchers to verify correctness.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/research/discovering-cryptographic-weaknesses"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "Claude Mythos Preview initially refused the AES cryptanalysis task, stating 'AES-128 r5/r6 is just genuinely hard,' and proceeded only after explicit human encouragement not to give up.",
+      "type": "quote",
+      "source_urls": ["https://www.anthropic.com/research/discovering-cryptographic-weaknesses"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Anthropic states the HAWK finding 'is specific to HAWK and does not impact other NIST post-quantum signature candidates or lattice-based cryptography in general,' and that neither result 'has a practical impact on today's computer systems.'",
+      "type": "quote",
+      "source_urls": ["https://www.anthropic.com/research/discovering-cryptographic-weaknesses"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "No named, disinterested cryptographer has published an independent reproduction or confirmation of the specific HAWK/AES figures as of this writing; the closest public scrutiny is a reported process objection from cryptographer Markku-Juhani Saarinen on NIST's pqc-forum arguing AI-assisted cryptanalysis claims should ship machine-checkable proofs.",
+      "type": "event",
+      "source_urls": ["https://postquantum.com/security-pqc/ai-cryptanalysis-hawk-aes/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-29",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c14",
+      "claim": "Two secondary outlets give conflicting accounts of whether cryptographer Daniel Apon replied on NIST's public forum confirming the HAWK result -- one reports no replies found, another reports a confirming reply -- making this point contested, not settled.",
+      "type": "event",
+      "source_urls": ["https://thehackernews.com/2026/07/claude-ai-just-cracked-post-quantum.html", "https://postquantum.com/security-pqc/ai-cryptanalysis-hawk-aes/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-29",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c15",
+      "claim": "Anthropic released CryptanalysisBench, a benchmark built with ETH Zurich, Tel Aviv University, and the University of Haifa, on which frontier models solve 65-86% of Tier-1 tasks (known, documented attacks) but only 4-9% of Tier-2 tasks (full-strength schemes with no known attack).",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2607.18538v1"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-28",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c16",
+      "claim": "Microsoft's MAI-Cyber-1-Flash paired with its MDASH harness scored about 96% on the CyberGym benchmark, reported as roughly 12 percentage points above Anthropic Mythos's score on the same benchmark.",
+      "type": "comparison",
+      "source_urls": ["https://microsoft.ai/news/introducing-mai-cyber-1-flash-inside-mdash/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-27",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c17",
+      "claim": "CyberGym is an independent UC Berkeley benchmark testing proof-of-concept exploit reproduction against 1,507 real disclosed vulnerabilities -- a fundamentally different task from the open-ended structural cryptanalysis behind the HAWK/AES result, making direct 'capability' comparisons between the two a category error.",
+      "type": "definition",
+      "source_urls": ["https://arxiv.org/abs/2506.02548"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-03-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "All vendor-reported CyberGym scores circulating in July 2026 (Microsoft, Sakana, OpenAI, Google, Anthropic) are self-reported by each vendor; CyberGym's own creators reported top model combinations clearing only about 20% at the benchmark's ICLR 2026 baseline, an unexplained gap to the 83-96% figures vendors report a year later.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/abs/2506.02548"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-28",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "US federal post-quantum migration deadlines (Executive Order 14412 / OMB M-26-15, issued June 24, 2026) set 2030/2031 target dates and a 2035 backstop for already-finalized algorithms ML-KEM (FIPS 203), ML-DSA (FIPS 204), and SLH-DSA (FIPS 205), finalized in August 2024 -- not for HAWK, which remains an unstandardized Round 3 candidate.",
+      "type": "regulatory",
+      "source_urls": ["https://postquantum.com/security-pqc/us-pqc-regulatory-framework-2026/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-24",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "DeepMind's AlphaTensor (2022) matrix-multiplication results proved difficult for independent researchers to reproduce due to missing source code and undocumented implementation details, per a 2024 reproduction paper.",
+      "type": "event",
+      "source_urls": ["https://arxiv.org/abs/2405.20748"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-05-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "A November 2025 DeepMind-affiliated follow-up paper partially walked back AlphaEvolve's novelty framing, conceding it 'was not able to match or exceed previous results in all cases' and that traditional methods could likely have matched some individual improvements.",
+      "type": "event",
+      "source_urls": ["https://arxiv.org/pdf/2511.02864"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-11-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "METR's cross-lab 'time horizon' metric shows the length of tasks frontier AI models complete autonomously has been doubling roughly every 7 months over six years, though critics note comparisons of minimally-scaffolded old models to heavily-engineered new agent harnesses can inflate the apparent gain.",
+      "type": "metric",
+      "source_urls": ["https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-03-19",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c23",
+      "claim": "The UK AI Security Institute's own independent evaluation of OpenAI's GPT-5.5 found it solved one 32-step corporate-network attack range in 1 or 2 of 10 attempts (accounts differ), against a weakly-defended target with pre-existing access -- offered as the strongest independent, non-vendor evidence of a genuine autonomous offensive-capability trend, though narrowly scoped.",
+      "type": "event",
+      "source_urls": ["https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-04-30",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c24",
+      "claim": "The July 28, 2026 'Pacing the Frontier' letter (1,224 signatories including Dario Amodei and Jakub Pachocki) asking governments to build tools to deliberately pace frontier AI development contains no reference to cryptography, cryptanalysis, HAWK, or post-quantum cryptography anywhere in its text.",
+      "type": "event",
+      "source_urls": ["https://www.pacingthefrontier.com/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-28",
+      "confidence": "high",
+      "risk": "stable"
+    }
+  ]
+}

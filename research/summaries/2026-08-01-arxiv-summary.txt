@@ -1,0 +1,14 @@
+arXiv Papers - 2026-08-01
+
+No weekend announcement cycle; curated from the uncovered tail of the 409-paper 2026-07-30 batch.
+
+TOP 5 PAPERS:
+- Tycho: programmatic world models complete all 183 ARC-AGI-3 levels; Opus 5 hits 100.00 RHAE with 61% fewer actions than humans
+- Echoverse: co-evolving computer-use environments lift a 9B agent 36.5% -> 67.1%; shallow envs make it worse
+- CoMem: long-context memory on the layer axis - 97.05 RULER, 7.83x prefill, 18.26GB vs 89.36GB
+- Scaling VLMs Is Not Enough: 194 models, scale-vs-bias correlation collapses to rho=0.05
+- Fidelity Is Not Safety: compressed LLMs pass every quality guard, then invent SOP steps as agents
+
+CATEGORIES: LM/NLP 8, CV/Multimodal 8, Agents 7, Safety 7, Other 7
+
+Full report on GitHub.

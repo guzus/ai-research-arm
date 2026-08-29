@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-20
+
+TOP 5 PAPERS:
+• Audio-Visual Flamingo (NVIDIA) - open audio-visual model for long, complex video understanding
+• Loop the Loopies! - looped Transformer+MoE claims gold-medal IMO/IPhO performance via recurrence
+• Frontier LLMs struggle to copy - 2D-RoPE fixes a basic positional-encoding failure mode
+• Understanding Reasoning: Pretraining to Post-Training - chess/math testbed shows RL mostly amplifies latent base-model skill
+• When Do Multi-Agent Systems Help? - info-bottleneck theory: MAS wins only under bandwidth-forced compression
+
+CATEGORIES: LM/NLP 7 | CV/Multimodal 6 | Agents/Reasoning 9 | Safety/Alignment 4 | Other 4
+
+Full report on GitHub.

@@ -1,0 +1,274 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Three separate retrievals of NVIDIA's 10 August announcement — from the newsroom, from the investor-relations site, and through a raw-text proxy — return zero occurrences of \"residual,\" zero of \"backstop,\" and zero percentages other than the headline capital figure.",
+      "verdict": "supported",
+      "citation": "https://nvidianews.nvidia.com/news/nvidia-partners-with-apollo-blackrock-blackstone-brookfield-goldman-sachs-and-kkr-to-establish-ai-compute-infrastructure-financing-platforms-to-mobilize-over-500-billion-of-third-party-capital"
+    },
+    {
+      "id": "c2",
+      "text": "The press release runs to about 760 words of substantive body copy and does not contain the phrase \"residual value\" once.",
+      "verdict": "supported",
+      "citation": "https://nvidianews.nvidia.com/news/nvidia-partners-with-apollo-blackrock-blackstone-brookfield-goldman-sachs-and-kkr-to-establish-ai-compute-infrastructure-financing-platforms-to-mobilize-over-500-billion-of-third-party-capital"
+    },
+    {
+      "id": "c3",
+      "text": "\"Memorandums of understanding signed with six of the world's premier financial institutions,\" aiming to establish platforms that will \"mobilize over $500 billion of third-party capital for the buildout of AI infrastructure over time.\"",
+      "verdict": "supported",
+      "citation": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Partners-With-Apollo-BlackRock-Blackstone-Brookfield-Goldman-Sachs-and-KKR-to-Establish-AI-Compute-Infrastructure-Financing-Platforms-to-Mobilize-Over-500-Billion-of-Third-Party-Capital/default.aspx"
+    },
+    {
+      "id": "c4",
+      "text": "an essay Jensen Huang published under his own name the same day, in which he wrote that NVIDIA \"may provide a residual-value support mechanism for up to 25% of an opportunity,\"",
+      "verdict": "supported",
+      "citation": "https://www.linkedin.com/pulse/nvidia-ai-factory-compute-becoming-investable-asset-class-huang-4ju6c/"
+    },
+    {
+      "id": "c5",
+      "text": "NVIDIA has filed no Form 8-K since 2 July 2026, well before the announcement.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001045810&type=8-K"
+    },
+    {
+      "id": "c6",
+      "text": "An EDGAR full-text search for \"residual-value\" across 8-Ks filed in the first half of August 2026 returns 24 documents from roughly 21 filers",
+      "verdict": "supported",
+      "citation": "https://efts.sec.gov/LATEST/search-index?q=%22residual-value%22&forms=8-K&startdt=2026-08-01&enddt=2026-08-15"
+    },
+    {
+      "id": "c7",
+      "text": "NVIDIA guarantees partners' facility lease obligations on default \"in exchange for warrants,\" discloses maximum gross exposure of $3.5bn less $712m of partner escrow",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/R15.htm"
+    },
+    {
+      "id": "c8",
+      "text": "Epoch AI's stylised one-gigawatt model puts servers at 55.9% of a $37.9bn project, network at 13.0%, facility at 30.2%, land at 0.5% and utility works at 0.4%.",
+      "verdict": "weak",
+      "citation": "https://epoch.ai/data-insights/ai-datacenter-cost-breakdown"
+    },
+    {
+      "id": "c9",
+      "text": "he has said a gigawatt runs \"between $50 billion and $60 billion,\" of which \"$35 billion of that is for Nvidia chips and systems\"",
+      "verdict": "weak",
+      "citation": "https://www.cnbc.com/2025/09/22/nvidia-openai-data-center.html"
+    },
+    {
+      "id": "c10",
+      "text": "shows what a live marketplace paid across five NVIDIA generations on 11 August 2026.",
+      "verdict": "supported",
+      "citation": "https://console.vast.ai/api/v0/bundles/"
+    },
+    {
+      "id": "c11",
+      "text": "H100 one-year contract rentals bottomed around $1.70 in October 2025 and ran to roughly $2.35 by March 2026 — a 38% move off the bottom — and were reported near $2.65 in mid-2026.",
+      "verdict": "weak",
+      "citation": "https://gpu-index.semianalysis.com/"
+    },
+    {
+      "id": "c12",
+      "text": "shortening the useful life of a subset of servers and networking equipment from six years to five effective 1 January 2025",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm"
+    },
+    {
+      "id": "c13",
+      "text": "payment occurs only at a predefined terminal date — \"usually on maturity or break of a lease of the physical asset, or when a balloon payment is due\" — and equals \"the excess, if any, of the RVI attachment point over market values.\"",
+      "verdict": "supported",
+      "citation": "https://www3.ambest.com/ambv/ratingmethodology/OpenPDF.aspx?rc=234387"
+    },
+    {
+      "id": "c14",
+      "text": "ASC 460-10-50-4 requires disclosure of the maximum potential undiscounted future payment which \"should not be reduced by any potential recoveries under collateralization or recourse provisions,\" even where payment is remote.",
+      "verdict": "supported",
+      "citation": "https://viewpoint.pwc.com/dt/us/en/pwc/accounting_guides/financial_statement_/financial_statement___18_US/chapter_23_commitmen_US/236_guarantees_US.html"
+    },
+    {
+      "id": "c15",
+      "text": "In March, an $8.5bn facility to a bankruptcy-remote subsidiary, backed by a contract Fitch identifies as being with Meta, cleared at SOFR+225",
+      "verdict": "supported",
+      "citation": "https://www.fitchratings.com/research/structured-finance/fitch-rates-coreweave-compute-acquisition-co-viii-loans-a-sf-outlook-stable-01-04-2026"
+    },
+    {
+      "id": "c16",
+      "text": "On 10 August — the same day as the NVIDIA announcement — a $2.6bn facility priced at SOFR+550, wider than talk, on a structure whose roughly five-year maturity runs past the roughly three-year average customer contract.",
+      "verdict": "supported",
+      "citation": "https://theenergymag.com/news/2026-08-11/coreweave-ai-2-6-billion-wider-spread"
+    },
+    {
+      "id": "c17",
+      "text": "Fitch's A-sf rating of the $8.5bn CoreWeave facility describes loans that \"amortize over five years after the commitment period ends, 15 months from closing,\" sculpted to a 1.20x DSCR",
+      "verdict": "supported",
+      "citation": "https://www.fitchratings.com/research/structured-finance/fitch-rates-coreweave-compute-acquisition-co-viii-loans-a-sf-outlook-stable-01-04-2026"
+    },
+    {
+      "id": "c18",
+      "text": "it assigned BB-/RR3 and wrote that \"the project rating is capped by CoreWeave's credit quality.\"",
+      "verdict": "supported",
+      "citation": "https://www.fitchratings.com/research/infrastructure-project-finance/fitch-rates-apld-computeco-llc-subsidiary-of-applied-digital-senior-secured-notes-bb-rr3-05-12-2025"
+    },
+    {
+      "id": "c19",
+      "text": "S&P has assigned no data-centre ABS tranche above single-A, citing refinancing, obsolescence and tenant concentration, while Moody's, Fitch and Morningstar DBRS have put AAA on comparable paper",
+      "verdict": "weak",
+      "citation": "https://www.globalcapital.com/article/2gatl6p6gtk1i71gbe2o0/people-and-markets/gc-view/s-p-is-right-to-keep-triple-a-away-from-data-center-abs"
+    },
+    {
+      "id": "c20",
+      "text": "an asset class that grew from roughly $4bn of annual issuance in 2018–22 to $27bn in 2025",
+      "verdict": "weak",
+      "citation": "https://newslink.mba.org/mba-newslinks/2026/march/mba-newslink-thursday-march-5-2026/mba-newslink-roundtable-discussing-data-centers-demand-and-deal-structures-with-kbra/"
+    },
+    {
+      "id": "c21",
+      "text": "OpenAI's leaked 2025 accounts show $13.07bn of revenue against a $20.92bn loss from operations — an operating loss at 160% of revenue",
+      "verdict": "supported",
+      "citation": "https://arstechnica.com/ai/2026/06/leaked-financial-docs-show-openai-is-losing-billions-of-dollars-a-year/"
+    },
+    {
+      "id": "c22",
+      "text": "the roughly $600bn target is about 46 times OpenAI's 2025 revenue, and the loss ratio is improving rather than deteriorating — 160% of revenue in 2025 against 237% in 2024.",
+      "verdict": "supported",
+      "citation": "https://www.cnbc.com/2026/02/20/openai-resets-spend-expectations-targets-around-600-billion-by-2030.html"
+    },
+    {
+      "id": "c23",
+      "text": "CoreWeave reported $98.8bn of remaining performance obligations at 31 March 2026, up from $15.1bn at end-2024.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000222/crwv-20260331.htm"
+    },
+    {
+      "id": "c24",
+      "text": "This is the very beginning, like what it was when I started in the mortgage-backed securities market in the 1970s.",
+      "verdict": "supported",
+      "citation": "https://www.cnbc.com/2026/08/10/cnbc-exclusive-transcript-cnbcs-becky-quick-speaks-with-nvidias-jensen-huang-wall-street-leaders-on-500b-ai-infrastructure-push-on-closing-bell-overtime-today.html"
+    },
+    {
+      "id": "c25",
+      "text": "US life insurers' private and illiquid bond holdings grew from $685bn, or 18% of the portfolio, at end-2024 to $807bn, or 20%, at end-2025",
+      "verdict": "weak",
+      "citation": "https://www.insurancebusinessmag.com/us/news/life-insurance/us-life-insurers-private-credit-push-is-creating-liquidity-and-concentration-risks-moodys-warns-578168.aspx"
+    },
+    {
+      "id": "c26",
+      "text": "private credit's share of AI investment financing rose from 9% in 2024 to 34% in 2025, and AI issuers accounted for 41% of non-refinancing US high-yield issuance in 2026 year to date against 1% of the index at end-2025",
+      "verdict": "supported",
+      "citation": "https://www.bankofengland.co.uk/-/media/boe/files/financial-stability-report/2026/financial-stability-report-july-2026.pdf"
+    },
+    {
+      "id": "c27",
+      "text": "Non-listed BDC redemptions exceeded fundraising for the first time on record in the first quarter of 2026, with gross sales of $4.9bn against roughly $6.9bn of redemptions",
+      "verdict": "weak",
+      "citation": "https://www.rastanger.com/news/quarterly-redemptions-exceed-fundraising-for-the-first-time-in-non-listed-bdc-market"
+    },
+    {
+      "id": "c28",
+      "text": "NVIDIA is a founding investor in KKR's Helix Digital Infrastructure — KKR's own co-chief executives say so in the 10 August release",
+      "verdict": "supported",
+      "citation": "https://bam.brookfield.com/press-releases/nvidia-partners-apollo-blackrock-blackstone-brookfield-goldman-sachs-and-kkr"
+    },
+    {
+      "id": "c29",
+      "text": "Lucent's customer financing peaked at $8.1bn of commitments at 30 September 2000, and the structure was overwhelmingly *lending*",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001006240/000095011702003045/ex13.htm"
+    },
+    {
+      "id": "c30",
+      "text": "Embraer disclosed that \"on average, our residual value guarantee exposure is limited to 17% of the original sale price,\" and reported maximum exposure net of provisions of $1.34bn at end-2010",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1355444/000119312511101384/d20f.htm"
+    },
+    {
+      "id": "c31",
+      "text": "a $103.0m charge recorded at 31 December 2009 on Mesa Air's insolvency — was a credit impairment on a *financial* guarantee, not a residual-value settlement",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1355444/000119312511101384/d20f.htm"
+    },
+    {
+      "id": "c32",
+      "text": "Boeing ran the same structure through the worst downturn in aviation history and recognised $11m of trade-in and $15m of asset-related-guarantee expense in fiscal 2003, against carried liabilities of $70m on $1,747m of maximum potential payments.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/12927/000119312504034751/d10k.htm"
+    },
+    {
+      "id": "c33",
+      "text": "The $70m carried liability is 4.0% of maximum potential payments, but the same table discloses $1,578m of estimated proceeds from collateral and recourse",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/12927/000119312504034751/d10k.htm"
+    },
+    {
+      "id": "c34",
+      "text": "ten years of gain or loss on lease terminations \"has averaged about 1 percent of Cat Financial's profit before tax.\"",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0000018230/000001823009000153/form8k_1q09results.pdf"
+    },
+    {
+      "id": "c35",
+      "text": "AIG's guarantee book was called not through realised credit losses but through rating-triggered collateral mechanics — $40.1bn of collateral posted across 2007–08",
+      "verdict": "supported",
+      "citation": "https://www.nber.org/system/files/working_papers/w21108/w21108.pdf"
+    },
+    {
+      "id": "c36",
+      "text": "Meta guaranteed its Louisiana data-centre joint venture's residual value with \"an aggregate threshold of approximately $28 billion that decreases over time\" against roughly $27bn of estimated development costs",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/R14.htm"
+    },
+    {
+      "id": "c37",
+      "text": "Broadcom disclosed a backstop of an unnamed customer's lease obligations over five-year terms \"with a maximum exposure of $29 billion\"",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000054/avgo-20260503.htm"
+    },
+    {
+      "id": "c38",
+      "text": "Morgan Stanley reportedly modelled the platform as a recurring revenue stream worth up to roughly $51bn a year at gross margins \"approaching 100%,\"",
+      "verdict": "weak",
+      "citation": "https://finance.biggo.com/news/e4d766cd-2797-4eb4-8203-4bbded281df3"
+    },
+    {
+      "id": "c39",
+      "text": "NVIDIA put $18.6bn of cash into private companies and infrastructure funds — 23% of that quarter's revenue",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm"
+    },
+    {
+      "id": "c40",
+      "text": "$2.6bn of unrealised gains came from those private holdings and a further $13.4bn from NVIDIA's publicly-listed stakes — $15.9bn pre-tax in total, against $69.9bn of pre-tax income.",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm"
+    },
+    {
+      "id": "c41",
+      "text": "NVIDIA was a greater-than-10% CoreWeave customer in fiscal 2024 and fell *below* the threshold in fiscal 2025",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm"
+    },
+    {
+      "id": "c42",
+      "text": "Goldman Sachs, the only named estimator to publish the metric actually at issue, put circular deals at under 15% of projected 2027 revenue",
+      "verdict": "weak",
+      "citation": "https://www.benzinga.com/analyst-stock-ratings/analyst-color/25/10/48048036/nvidia-now-an-ai-hedge-fund-goldman-warns-circular-revenue-risk"
+    },
+    {
+      "id": "c43",
+      "text": "NVIDIA's five-year credit default swap was quoted near 77.5 basis points on 10 August, per a Bloomberg Markets Live note relayed second-hand by a market column",
+      "verdict": "weak",
+      "citation": "https://www.investing.com/analysis/nvidias-500-billion-ai-push-is-starting-to-show-up-in-credit-200685569"
+    },
+    {
+      "id": "c44",
+      "text": "NVDA closed down 2.86% at $217.55 on 10 August while Apollo, Blackstone and KKR all closed higher; the next session NVDA was unchanged at $217.50.",
+      "verdict": "supported",
+      "citation": "https://stockanalysis.com/stocks/nvda/history/"
+    },
+    {
+      "id": "c45",
+      "text": "NVIDIA's second-quarter fiscal 2027 results, for the quarter ended 2026-07-26, are scheduled for 2026-08-26",
+      "verdict": "supported",
+      "citation": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Sets-Conference-Call-for-Second-Quarter-Financial-Results/default.aspx"
+    }
+  ]
+}

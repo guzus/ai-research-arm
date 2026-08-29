@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Commit `59eca7c` was authored and committed by qqqys (qys177@gmail.com) at 2026-07-23T07:26:00Z — squarely inside the claimed window.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "\"The first Max-tier open-weight release\" is the single most consequential claim in the 3 August launch, and it is the least delivered: no Max-class Qwen flagship has ever shipped weights, no date has been committed, and no license has been named.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Analysts reconstructing the comparison report that the competitor columns were not re-run under those conditions — Opus 4.8 and Fable 5 appear under Terminus 2 via Artificial Analysis, GPT-5.6 Sol under Codex [^21].",
+      "contradicting_url": "https://apidog.com/blog/qwen-3-8-benchmarks/",
+      "contradicting_quote": "Most coding rows ran on the Claude Code harness. ... it evaluates every model inside the same widely used tool.",
+      "severity": "low",
+      "no_contradiction_found": false
+    }
+  ]
+}

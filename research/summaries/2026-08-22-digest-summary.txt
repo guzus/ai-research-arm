@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-08-22
+
+TOP STORIES:
+• OpenAI cut GPT-5.6 Sol pricing over 20% for three months - API and Codex/Work credits only, not Plus/Pro
+• DeepSeek shipped its first vision model, V4-Flash-Vision-Exp, at text-model token prices
+• NVIDIA's AVO agent harness swept ARC-AGI-3's public set, 183/183 levels - from a model near 30% unaided
+
+KEY NUMBERS:
+• 117-384 tokens per image on DeepSeek vision
+• Gemini 3.7 Flash: 84.6% on ARC-AGI-2 at $0.25/task (ARC-verified)
+• Nvidia disclosed 3 equity positions in one day: Cloverleaf, Starcloud ($250M @ $2.3B), Mercor ($20B talks)
+• Data-center opposition: 42% -> 75% in twelve months
+
+TRENDING: DeepSeek's vision release topped HN at 414 points; unclaimed "Ox Alpha" still has no lab behind it.
+
+Full digest on GitHub.

@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "ChangXin Memory Technologies — listing as 长鑫科技, ticker 688825 — opens subscription for its RMB 29.5 billion STAR Market IPO on July 16, 2026, the largest A-share listing of the year and the second-largest in the exchange's history[^2,61].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Q1 2026 revenue hit RMB 50.8 billion, up 719.13% year over year, with attributable net profit up 1,688.3%[^9]",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "CXMT is **not** on the Commerce Entity List — the binding one that cuts off US-origin exports [^41].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

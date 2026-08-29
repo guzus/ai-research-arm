@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "KIMI K3 EDGES OPUS 4.6, GPT-5.3-CODEX ON PRELIMINARY ECI — BUT SCORES 39% ON HARD MATH",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2078585312524026341",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC KEEPS FABLE 5 ON MAX AND TEAM PREMIUM PAST JULY 19",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2078529470894330026",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC RAISES CLAUDE CODE WEEKLY LIMITS 50% THROUGH AUGUST 19",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2078511173759324328",
+    "category": "model"
+  },
+  {
+    "headline": "KIMI K3'S KDA ATTENTION CUTS INFERENCE NETWORKING BANDWIDTH UP TO 10X",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2078594446996787568",
+    "category": "infra"
+  },
+  {
+    "headline": "GPT-5.6 SOL HITS ~750 TOKENS/S ON CEREBRAS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2078592918978269247",
+    "category": "infra"
+  },
+  {
+    "headline": "GROK 4.5 BECOMES DEFAULT MODEL IN GROK BUILD 0.2.105",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2078545195818172624",
+    "category": "model"
+  }
+]

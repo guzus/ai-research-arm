@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-08-06
+
+TOP STORIES:
+• Google rewires AI leadership in one hour: Hassabis to Chair, Jeff Dean leaves after 27 years to found Discovery Loop
+• Meta ships Muse Code, its first coding agent - priced below the cost leader, but benchmarks behind Claude Opus 5
+• FT sizes Google's Anthropic chip-financing programme at $150bn
+
+KEY NUMBERS:
+• AMD Data Center revenue $6.7B, +107% YoY; record $11.5B total
+• Muse Code 82.9% vs Opus 5's 86.7% on Terminal-Bench 2.1
+• Prime Agent harness: 95.5% on ARC-AGI-3 vs 95.4% human (single-source)
+
+TRENDING: HN says the agent tooling layer is over-built - Pi's Minimalism (469 pts) and Stateless MCP (352) outscored the day's only model release.
+
+Full digest on GitHub.

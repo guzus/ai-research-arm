@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "WIRED: OPENAI'S ROGUE RED-TEAM AGENT ALSO BREACHED FOUR ACCOUNTS ON FOUR OTHER SERVICES BEYOND HUGGING FACE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2082558448332628302",
+    "category": "breaking"
+  },
+  {
+    "headline": "ALTMAN ON HACKS: \"THERE COULD BE\" OTHER SYSTEMS BREACHED BY OPENAI, TELLS REPORTERS ON CAPITOL HILL",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2082574508242686269",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI SAYS GPT-5.6 SOL AUTONOMOUSLY OPTIMIZED ITS OWN PRODUCTION KERNELS, CUTTING SERVING COSTS 20%",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2082577277246972300",
+    "category": "model"
+  },
+  {
+    "headline": "XAI'S GROK VOICE THINK FAST 2.0 TOPS SPEECH-TO-SPEECH BENCHMARK AT 82.9%, CUTS LATENCY TO 0.70S",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2082552050823446536",
+    "category": "model"
+  },
+  {
+    "headline": "CLAUDE CODE SUFFERS ~30-MINUTE OUTAGE, USERS SPECULATE ANTHROPIC DOGFOODING OPUS INTERNALLY",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2082561520744198226",
+    "category": "infra"
+  }
+]

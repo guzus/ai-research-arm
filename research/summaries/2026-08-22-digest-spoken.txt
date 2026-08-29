@@ -1,0 +1,13 @@
+Speaker 1: Saturday, August twenty-second, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI cut pricing on G P T five point six Sol by [emphasis] over twenty percent [/emphasis], and it holds for three months.
+Speaker 1: Worth being precise about who gets it. That discount applies to API and Codex and Work credits only, not to Plus or Pro.
+Speaker 2: DeepSeek also shipped its first vision model, V four Flash Vision Experimental, and priced it at text model token rates.
+Speaker 1: Images run between one hundred seventeen and three hundred eighty-four tokens each, which is what makes that pricing hold up. It topped the developer boards at four hundred fourteen points.
+Speaker 2: [high_energy] But the result of the day is NVIDIA's AVO agent harness sweeping the ARC AGI three public set, [emphasis] one hundred eighty-three of one hundred eighty-three levels [/emphasis]. [dramatic_pause] The underlying model scores near thirty percent unaided.
+Speaker 1: On the same benchmark family, Gemini three point seven Flash posted eighty-four point six percent on ARC AGI two at twenty-five cents per task, ARC verified.
+Speaker 2: That's the kind of gap that says the harness is doing as much work as the model is.
+Speaker 1: Some quick numbers on the money side. Nvidia disclosed three equity positions in a single day.
+Speaker 2: Cloverleaf, Starcloud at two hundred fifty million dollars on a two point three billion dollar valuation, and Mercor in talks at [emphasis] twenty billion dollars [/emphasis].
+Speaker 1: On the ground, though, public opposition to data centers climbed from forty-two percent to seventy-five percent in twelve months.
+Speaker 2: And that unclaimed model, Ox Alpha, still has no lab willing to put its name on it.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

@@ -1,15 +1,23 @@
-name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi)
+name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash / cursor-grok-4p6-fast)
 
-# Unified Twitter/X pipeline that fans out across five backend tiers:
+# Unified Twitter/X pipeline that fans out across seven backend tiers:
 #   - claude            (cron '7 */3 * * *', primary tier, model routed by data/agent-backends.json,
 #                        output → research/twitter/)
-#   - deepseek-claude-code (cron '37 */6 * * *', model: deepseek-v4-flash via Fireworks, output → research/twitter-deepseek/)
+#   - deepseek-claude-code (manual only since 2026-08-01 — cron dropped while the
+#                        Fireworks account is suspended; see `on.schedule`,
+#                        model: deepseek-v4-flash via Fireworks, output → research/twitter-deepseek/)
 #   - zai-glm-5p2      (manual only,        model: glm-5.2 via Z.ai Coding Plan,
 #                        output → research/twitter-zai/)
 #   - deepseek-pi       (manual only,        model: deepseek-v4-flash via Fireworks + pi harness,
 #                        output → research/twitter-deepseek-pi/)
 #   - fireworks-pi      (manual only,        model: Kimi K2.6 via Fireworks + pi,
 #                        output → research/twitter-fireworks-pi/)
+#   - opencode-deepseek-v4-flash  (manual only, model: deepseek-v4-flash via
+#                        OpenCode Go + isolated opencode harness. Output remains
+#                        in the legacy research/twitter-opencode-kimi/ namespace.)
+#   - cursor-grok-4p6-fast (manual only, model: cursor-grok-4.6-high-fast via Cursor CLI
+#                        (`agent`) inside run-cursor-container. Output stays
+#                        in the legacy research/twitter-cursor/ namespace.)
 #
 # Routing rules:
 #   - schedule trigger → backend resolved from github.event.schedule by the
@@ -35,16 +43,18 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 #   BIRDY_ACCOUNTS                       — optional multi-account rotation JSON; each account is forced read-only
 #   BIRD_AUTH_TOKEN, BIRD_CT0            — fallback single-account cookies when BIRDY_ACCOUNTS is absent
 #   HOOKER_URL, HOOKER_TOKEN             — primary tier (headline-alert blast + telemetry) and comparison tiers (per-cycle notification, relayed to Telegram)
-#   VERCEL_DEPLOY_HOOK                   — optional, primary tier only
 
 on:
   schedule:
     # claude tier: every 3 hours at minute 7.
     - cron: '7 */3 * * *'
-    # deepseek-claude-code tier: every 6 hours at minute 37. Offset 30min from
-    # the nearest claude run so neither hits Birdy at the same time.
-    # Slots are 00:37, 06:37, 12:37, 18:37 UTC.
-    - cron: '37 */6 * * *'
+    # The deepseek-claude-code tier used to run here on '37 */6 * * *'.
+    # Dropped 2026-08-01: the Fireworks account is suspended (every probe
+    # returns HTTP 412), the lane is strict so it never falls back, and it
+    # had therefore hard-failed 4x/day since ~2026-07-05 — ~110 red runs
+    # that made this workflow's failure rate useless as a signal. It stays
+    # available via workflow_dispatch; restore this cron once billing is
+    # settled at https://fireworks.ai/account/billing.
   workflow_dispatch:
     inputs:
       backend:
@@ -58,6 +68,9 @@ on:
           - deepseek-claude-code
           - deepseek-pi
           - fireworks-pi
+          - opencode-deepseek-v4-flash
+          - cursor-grok-4p6-fast
+          - cursor-composer-2p5
       dry_run:
         description: Claude tier only — render fixture, skip push/deploy/alerts.
         required: false
@@ -106,14 +119,16 @@ jobs:
           # (only github/needs/vars/inputs are evaluated before the
           # matrix is expanded), so the filtering must run from inside a
           # step where steps.if can read matrix.event / matrix.schedule.
-          # Wasted-job cost: each cron trigger creates 3 jobs and 2 of
-          # them exit at step 1.
+          # Wasted-job cost: each cron trigger creates 2 jobs and 1 of
+          # them exits at step 1.
           - backend: claude
             event: schedule
             schedule: '7 */3 * * *'
-          - backend: deepseek-claude-code
-            event: schedule
-            schedule: '37 */6 * * *'
+          # The deepseek-claude-code scheduled entry was removed alongside
+          # its cron (see `on.schedule`). Leaving it here without a
+          # matching cron would spawn a job on every claude tick that only
+          # ever exits at step 1. It remains reachable via the dispatch
+          # entry below, whose `backend` input still offers it.
           # workflow_dispatch path — single entry, runtime-resolved.
           - backend: dispatch
             event: workflow_dispatch
@@ -157,7 +172,8 @@ jobs:
             BACKEND="$MATRIX_BACKEND"
           fi
           case "$BACKEND" in
-            claude|deepseek-claude-code|zai-glm-5p2|deepseek-pi|fireworks-pi) ;;
+            cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) BACKEND="cursor-grok-4p6-fast" ;;
+            claude|deepseek-claude-code|zai-glm-5p2|deepseek-pi|fireworks-pi|opencode-deepseek-v4-flash|cursor-grok-4p6-fast) ;;
             *) echo "::error::Unknown backend '$BACKEND'"; exit 1 ;;
           esac
           {
@@ -166,12 +182,55 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "Resolved backend: ${BACKEND}"
 
+      - name: Quarantine stale self-hosted workspace
+        if: steps.backend.outputs.skip != 'true'
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
       - name: Checkout repository
         if: steps.backend.outputs.skip != 'true'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           fetch-depth: 0
           persist-credentials: false
+          set-safe-directory: false
 
       - name: Get current datetime
         if: steps.backend.outputs.skip != 'true'
@@ -186,13 +245,13 @@ jobs:
 
       - name: Setup Node.js
         if: steps.backend.outputs.skip != 'true'
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '22'
 
       - name: Setup uv
         if: steps.backend.outputs.skip != 'true'
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           enable-cache: true
 
@@ -306,6 +365,39 @@ jobs:
               HARNESS_LABEL="on Kimi K2.6 through Fireworks under the pi coding agent harness"
               FEATURES="telegram"
               ;;
+            opencode-deepseek-v4-flash)
+              # OUTPUT_DIR and SUMMARY_SLUG are retained as a legacy data
+              # namespace so existing report history and dashboard links do not
+              # split. Every model-identifying label names DeepSeek explicitly.
+              OUTPUT_DIR="research/twitter-opencode-kimi"
+              SUMMARY_SLUG="twitter-opencode-kimi"
+              TITLE_SUFFIX=" (opencode + DeepSeek V4 Flash)"
+              CYCLE_HOURS=6
+              COMMIT_PREFIX="Twitter (opencode+DeepSeek V4 Flash) update"
+              FETCH_CONCURRENCY=6
+              PRE_FILTER=false
+              AGGREGATE=false
+              ENABLE_DAEMON=true
+              BIRD_BUDGET=5
+              CURL_BUDGET=3
+              HARNESS_LABEL="on DeepSeek V4 Flash under the opencode agent harness"
+              FEATURES="telegram"
+              ;;
+            cursor-grok-4p6-fast)
+              OUTPUT_DIR="research/twitter-cursor"
+              SUMMARY_SLUG="twitter-cursor"
+              TITLE_SUFFIX=" (Cursor CLI + Grok 4.6 Fast)"
+              CYCLE_HOURS=6
+              COMMIT_PREFIX="Twitter (Cursor CLI+Grok 4.6 Fast) update"
+              FETCH_CONCURRENCY=6
+              PRE_FILTER=false
+              AGGREGATE=false
+              ENABLE_DAEMON=true
+              BIRD_BUDGET=5
+              CURL_BUDGET=3
+              HARNESS_LABEL="on Grok 4.6 Fast under the Cursor CLI agent harness"
+              FEATURES="telegram"
+              ;;
           esac
           {
             echo "output_dir=${OUTPUT_DIR}"
@@ -364,8 +456,8 @@ jobs:
           bird_ct0: ${{ secrets.BIRD_CT0 }}
           birdy_accounts: ${{ secrets.BIRDY_ACCOUNTS }}
 
-      - name: Configure git identity (pi tier — no claude-code-action to do it)
-        if: contains(fromJSON('["deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
+      - name: Configure git identity (pi/opencode tiers — no claude-code-action to do it)
+        if: contains(fromJSON('["deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -418,22 +510,67 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          opencode-mode: twitter
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
             ${{ steps.const.outputs.status_file }}
           allowed-paths: |
-            research/twitter/
-            research/summaries/
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
           label: Twitter primary Claude processor
           prompt: ${{ steps.render.outputs.prompt }}
+
+      # agent-run's expected-path guard proves that the per-run heartbeat
+      # changed; it deliberately cannot prove the multi-file editorial
+      # contract. Check the canonical contract here so a syntactically fresh
+      # but incomplete model result gets one model repair turn before the
+      # deterministic last resort.
+      - name: Check Claude primary editorial contract
+        id: check_claude_primary
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && (steps.twitter-claude-agent.outcome == 'success' || steps.twitter-claude-agent.outcome == 'failure')
+          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+        env:
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          DIGEST_FILE: ${{ steps.const.outputs.digest_file }}
+          STATUS_FILE: ${{ steps.const.outputs.status_file }}
+          SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
+          HEADLINES_FILE: ${{ steps.const.outputs.headlines_file }}
+        run: |
+          set -euo pipefail
+          if uv run python scripts/validate_twitter_public_output.py \
+            --backend claude \
+            --status-file "$STATUS_FILE" \
+            --digest-file "$DIGEST_FILE" \
+            --summary-file "$SUMMARY_FILE" \
+            --headlines-file "$HEADLINES_FILE" \
+            --date "$DATE" \
+            --hour "$HOUR" \
+            --generated-at "$TIMESTAMP" \
+            --run-id "$RUN_ID" \
+            --run-attempt "$RUN_ATTEMPT" \
+            --reject-recovery; then
+            echo "valid=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "valid=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Primary model output failed the editorial contract; running one model repair turn"
+          fi
 
       - name: Repair missing Twitter output with Claude (primary tier)
         id: twitter-claude-repair
         continue-on-error: true
         if: >-
           steps.backend.outputs.name == 'claude'
-          && steps.twitter-claude-agent.outcome == 'failure'
+          && steps.check_claude_primary.outputs.valid != 'true'
           && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: ./.github/actions/agent-run
         env:
@@ -444,17 +581,21 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          opencode-mode: twitter
           claude-args: |
             --model opus --max-turns 40 --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
             ${{ steps.const.outputs.status_file }}
           allowed-paths: |
-            research/twitter/
-            research/summaries/
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
           label: Twitter primary Claude repair writer
           prompt: |
-            The primary Claude Twitter/X monitor returned without writing
-            its required files. Repair that now using only local files.
+            The primary Twitter/X model output failed its complete editorial
+            contract. Repair that now using only local files.
             Reason from first principles: for each candidate tweet, decide
             whether the underlying event is actually AI-specific and
             publication-worthy, not merely viral or from an AI-adjacent
@@ -475,6 +616,9 @@ jobs:
             HARD RULES
               - This is still the production Claude lane. Do not write a
                 deterministic quick-hit dump.
+              - Never copy or preserve a `recovery: true` status. Recovery
+                heartbeats belong only to the deterministic last resort and
+                are invalid model output.
               - Use tool calls to read the raw input and write the required
                 run artifacts. Do not merely respond in chat.
               - If any tool call is denied, retry with an allowed tool
@@ -519,12 +663,15 @@ jobs:
                  Use `status: "no_update"` and `public_items: 0` only when the
                  public same-hour section is absent. Count `public_items` as
                  Top Story `twitter-story` cards plus linked bullets under
-                 `### Quick hits`; it must equal the rendered count.
+                 `### Quick hits`; it must equal the rendered count. Do not
+                 include a `recovery` field in model-authored status.
               5. Commit exactly those outputs:
+                   uv run python scripts/validate_twitter_public_output.py --backend claude --status-file "${{ steps.const.outputs.status_file }}" --digest-file "${{ steps.const.outputs.digest_file }}" --summary-file "${{ steps.const.outputs.summary_file }}" --headlines-file "${{ steps.const.outputs.headlines_file }}" --date "${{ steps.datetime.outputs.date }}" --hour "${{ steps.datetime.outputs.hour }}" --generated-at "${{ steps.datetime.outputs.timestamp }}" --run-id "${{ github.run_id }}" --run-attempt "${{ github.run_attempt }}" --reject-recovery
                    git add "${{ steps.const.outputs.output_dir }}/" "${{ steps.const.outputs.summary_file }}" "${{ steps.const.outputs.headlines_file }}"
                    git commit -m "Twitter Claude repair ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
 
       - name: Validate or recover Claude primary output
+        id: recover_claude
         if: >-
           steps.backend.outputs.name == 'claude'
           && (steps.twitter-claude-agent.outcome == 'success' || steps.twitter-claude-agent.outcome == 'failure')
@@ -577,10 +724,45 @@ jobs:
               and (.public_items | type == "number" and . >= 0)
             ' "$STATUS_FILE" >/dev/null; then
               echo "fallback-needed: malformed cycle status"
+              # Name the offending field(s). The bare message above cost a
+              # real investigation: every identity value LOOKS right in a log
+              # dump, so "malformed" alone gives an operator nothing to act
+              # on — and the recovery path then discards the file, so the
+              # evidence is gone by the time anyone looks. Type mismatches
+              # are the ones you cannot see by eye (an unquoted numeric
+              # run_id renders identically to a quoted one), which is why
+              # this prints tojson on both sides.
+              # Capture rather than pipe: `jq | sed` reports sed's exit
+              # status, so a `|| echo "not valid JSON"` on the pipeline
+              # would never fire on a malformed file.
+              if status_diag=$(jq -r \
+                --arg date "$DATE" \
+                --arg hour "${HOUR}:00 UTC" \
+                --arg generated_at "$TIMESTAMP" \
+                --arg run_id "$RUN_ID" \
+                --argjson run_attempt "$RUN_ATTEMPT" '
+                [ (if .schema_version != 1 then "schema_version: want 1, got \(.schema_version|tojson)" else empty end),
+                  (if .date != $date then "date: want \($date|tojson), got \(.date|tojson)" else empty end),
+                  (if .hour != $hour then "hour: want \($hour|tojson), got \(.hour|tojson)" else empty end),
+                  (if .generated_at != $generated_at then "generated_at: want \($generated_at|tojson), got \(.generated_at|tojson)" else empty end),
+                  (if .run_id != $run_id then "run_id: want \($run_id|tojson), got \(.run_id|tojson)" else empty end),
+                  (if .run_attempt != $run_attempt then "run_attempt: want \($run_attempt|tojson), got \(.run_attempt|tojson)" else empty end),
+                  (if (.status != "published" and .status != "no_update") then "status: want published|no_update, got \(.status|tojson)" else empty end),
+                  (if (.public_items|type) != "number" or .public_items < 0 then "public_items: want number >= 0, got \(.public_items|tojson)" else empty end)
+                ] | .[]' "$STATUS_FILE" 2>/dev/null); then
+                [ -n "$status_diag" ] && printf '%s\n' "$status_diag" | sed 's/^/  mismatch: /'
+              else
+                echo "  mismatch: file is not valid JSON"
+              fi
+              echo "  agent-written status file (discarded by recovery below):"
+              sed 's/^/    /' "$STATUS_FILE" | head -20
               missing=1
             fi
             status=$(jq -r '.status // "invalid"' "$STATUS_FILE" 2>/dev/null || echo invalid)
-            if [ "$status" = "published" ] && ! jq -e '.public_items > 0' "$STATUS_FILE" >/dev/null; then
+            if jq -e '.recovery == true' "$STATUS_FILE" >/dev/null; then
+              echo "fallback-needed: recovery status is reserved for the deterministic recovery path"
+              missing=1
+            elif [ "$status" = "published" ] && ! jq -e '.public_items > 0' "$STATUS_FILE" >/dev/null; then
               echo "fallback-needed: published status has no public items"
               missing=1
             elif [ "$status" = "published" ] && { [ ! -f "$DIGEST_FILE" ] \
@@ -625,12 +807,21 @@ jobs:
           fi
 
           if [ "$missing" -eq 0 ]; then
+            echo "recovered=false" >> "$GITHUB_OUTPUT"
             echo "Claude repair already produced all required outputs; skipping deterministic fallback."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Recovery is fail-closed: discard every public-digest mutation from
+          # the failed analyst attempt, including unexpected-hour edits.
+          if git cat-file -e "${BASE_SHA}:${DIGEST_FILE}" 2>/dev/null; then
+            git restore --source="$BASE_SHA" -- "$DIGEST_FILE"
+          else
+            rm -f "$DIGEST_FILE"
+          fi
 
           uv run python scripts/deterministic_twitter_digest.py \
             --input-dir .twitter-input/bird \
@@ -648,6 +839,7 @@ jobs:
 
           git add "$OUTPUT_DIR/" "$SUMMARY_FILE" "$HEADLINES_FILE"
           git commit -m "Twitter deterministic fallback $TIMESTAMP" || echo "No deterministic fallback changes to commit"
+          echo "recovered=true" >> "$GITHUB_OUTPUT"
 
       - name: Process tweets with DeepSeek v4 Flash via Fireworks (deepseek-claude-code tier)
         id: twitter-deepseek-agent
@@ -685,8 +877,12 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          # Parity with the primary claude tier (kept honest for manual
+          # cross-model comparisons and the twitter-model-ab eval): same
+          # allowedTools list as the "Process tweets with Claude" step above
+          # and the same 40-turn budget the eval legs get.
           claude-args: |
-            --model opus --max-turns 30 --allowedTools "Read,Write,Edit,Bash(pwd:*),Bash(ls:*),Bash(rg:*),Bash(find:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*)"
+            --model opus --max-turns 40 --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
             ${{ steps.const.outputs.status_file }}
           allowed-paths: |
@@ -717,9 +913,200 @@ jobs:
           bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
           bird-ct0: ${{ secrets.BIRD_CT0 }}
 
+      # opencode tier runs on the host like opencode-deepseek-canary.yml (no
+      # claude-code-action, no pi container): pinned CLI, checked-in
+      # OPENCODE_CONFIG, env-var auth only — no `opencode auth login`, no
+      # auth.json. STRICT comparison tier: if the resolved route fails, this
+      # step fails — never re-route to another model, so the artifacts stay
+      # attributable to the model named in TITLE_SUFFIX/COMMIT_PREFIX above.
+      # The Birdy daemon (started above) enforces read-only X access for
+      # opencode's coarse bash tool, same as the pi tiers.
+      #
+      # This strict tier runs opencode-go/deepseek-v4-flash. Moonshot cannot
+      # serve DeepSeek, so a missing OpenCode Go key is a hard failure rather
+      # than a silent model substitution.
+      # Strict fail-fast on auth BEFORE building the image: a dead key should
+      # cost seconds, not a container build.
+      - name: Check opencode auth (opencode-deepseek-v4-flash tier)
+        if: steps.backend.outputs.name == 'opencode-deepseek-v4-flash'
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${OPENCODE_API_KEY:-}" ]; then
+            echo "::error::No opencode auth configured. Set OPENCODE_API_KEY (https://opencode.ai/auth). MOONSHOT_API_KEY is NOT a route while this tier is pinned to deepseek-v4-flash — Moonshot serves Kimi only, and this tier is strict: it will not silently author with a model other than the one its labels claim."
+            exit 1
+          fi
+
+      # Containerised like the pi tiers above. Previously this ran `opencode
+      # run --auto` directly on the self-hosted host with edit/bash/webfetch
+      # all "allow" — the only agent harness in the repo with no sandbox.
+      # 45m budget inside the 60m job cap leaves room for guards + push.
+      - name: Process tweets with opencode + DeepSeek V4 Flash (opencode-deepseek-v4-flash tier)
+        if: steps.backend.outputs.name == 'opencode-deepseek-v4-flash'
+        uses: ./.github/actions/run-opencode-container
+        with:
+          mode: twitter
+          allowed-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
+          prompt-file: ${{ steps.render.outputs.rendered_path }}
+          model: opencode-go/deepseek-v4-flash
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          timeout-minutes: '45'
+          mount-bird-snapshot: 'true'
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
+          birdy-tool-log-path: .twitter-input/birdy-tool-log.jsonl
+
+      - name: Check Cursor CLI auth (cursor-grok-4p6-fast tier)
+        if: steps.backend.outputs.name == 'cursor-grok-4p6-fast'
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${CURSOR_API_KEY:-}" ]; then
+            echo "::error::No Cursor CLI auth configured. Set CURSOR_API_KEY (Cursor dashboard API key) with: gh secret set CURSOR_API_KEY"
+            exit 1
+          fi
+
+      - name: Process tweets with Cursor CLI + Grok 4.6 Fast (cursor-grok-4p6-fast tier)
+        id: twitter-cursor-agent
+        if: steps.backend.outputs.name == 'cursor-grok-4p6-fast'
+        uses: ./.github/actions/run-cursor-container
+        with:
+          mode: twitter
+          allowed-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
+          prompt-file: ${{ steps.render.outputs.rendered_path }}
+          model: cursor/cursor-grok-4.6-high-fast
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          timeout-minutes: '45'
+          mount-bird-snapshot: 'true'
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
+          birdy-tool-log-path: .twitter-input/birdy-tool-log.jsonl
+
+      # One repair turn, same model, fail-closed. Comparison lanes do not get
+      # a deterministic composer (PR #303). The blocking Validate step below
+      # still gates push if this repair also misses the contract.
+      - name: Repair Cursor Twitter contract once
+        id: repair_cursor_twitter
+        if: steps.backend.outputs.name == 'cursor-grok-4p6-fast'
+        env:
+          BACKEND: ${{ steps.backend.outputs.name }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          DIGEST_FILE: ${{ steps.const.outputs.digest_file }}
+          STATUS_FILE: ${{ steps.const.outputs.status_file }}
+          SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
+          HEADLINES_FILE: ${{ steps.const.outputs.headlines_file }}
+          OUTPUT_DIR: ${{ steps.const.outputs.output_dir }}
+          COMMIT_PREFIX: ${{ steps.const.outputs.commit_prefix }}
+          REPAIR_PROMPT: ${{ runner.temp }}/cursor-twitter-repair.md
+        run: |
+          set -euo pipefail
+          needed=false
+          if uv run python scripts/validate_twitter_public_output.py \
+            --backend "$BACKEND" \
+            --status-file "$STATUS_FILE" \
+            --digest-file "$DIGEST_FILE" \
+            --summary-file "$SUMMARY_FILE" \
+            --headlines-file "$HEADLINES_FILE" \
+            --date "$DATE" \
+            --hour "$HOUR" \
+            --generated-at "$TIMESTAMP" \
+            --run-id "$RUN_ID" \
+            --run-attempt "$RUN_ATTEMPT" \
+            > /tmp/cursor-twitter-validate.out 2>&1; then
+            cat /tmp/cursor-twitter-validate.out
+          else
+            needed=true
+            echo "::warning::Cursor Twitter contract failed; one repair turn will run"
+            cat /tmp/cursor-twitter-validate.out
+            python3 - <<'PY'
+          import os
+          from pathlib import Path
+
+          err = Path("/tmp/cursor-twitter-validate.out").read_text(encoding="utf-8")
+          hour = os.environ["HOUR"]
+          digest = os.environ["DIGEST_FILE"]
+          status = os.environ["STATUS_FILE"]
+          summary = os.environ["SUMMARY_FILE"]
+          headlines = os.environ["HEADLINES_FILE"]
+          output_dir = os.environ["OUTPUT_DIR"]
+          prefix = os.environ["COMMIT_PREFIX"]
+          ts = os.environ["TIMESTAMP"]
+          backend = os.environ["BACKEND"]
+          date = os.environ["DATE"]
+          run_id = os.environ["RUN_ID"]
+          run_attempt = os.environ["RUN_ATTEMPT"]
+          # Concatenate the validator dump so braces in the section preview
+          # cannot break an f-string.
+          text = (
+              "The previous Cursor Twitter turn wrote artifacts that failed\n"
+              "scripts/validate_twitter_public_output.py.\n\n"
+              "Validator output:\n"
+              + err
+              + "\n\n"
+              "Repair ONLY the existing files. Do not start a new brief from scratch unless\n"
+              "a required file is missing.\n\n"
+              f"If status is published, the same-hour section under `## {hour}:00 UTC` MUST\n"
+              "contain this exact line on its own line (lowercase s in summary):\n\n"
+              "**Cycle summary**: <1-2 sentences naming the concrete developments>\n\n"
+              "`**Cycle Summary**:` (capital S), `Cycle summary:` without bold, HTML\n"
+              "<strong>, or a blank value all fail.\n\n"
+              "Then run this exact command and fix until it exits 0:\n\n"
+              "uv run python scripts/validate_twitter_public_output.py \\\n"
+              f"  --backend {backend} \\\n"
+              f"  --status-file {status} \\\n"
+              f"  --digest-file {digest} \\\n"
+              f"  --summary-file {summary} \\\n"
+              f"  --headlines-file {headlines} \\\n"
+              f"  --date {date} \\\n"
+              f"  --hour {hour} \\\n"
+              f"  --generated-at \"{ts}\" \\\n"
+              f"  --run-id {run_id} \\\n"
+              f"  --run-attempt {run_attempt}\n\n"
+              "Commit only the allowed paths:\n\n"
+              f"git add {output_dir}/ research/summaries/\n"
+              f"git commit -m \"{prefix} {ts}\" || echo \"No changes\"\n"
+          )
+          Path(os.environ["REPAIR_PROMPT"]).write_text(text, encoding="utf-8")
+          PY
+          fi
+          echo "needed=${needed}" >> "$GITHUB_OUTPUT"
+
+      - name: Re-run Cursor CLI to repair Twitter contract
+        if: steps.repair_cursor_twitter.outputs.needed == 'true'
+        uses: ./.github/actions/run-cursor-container
+        with:
+          mode: twitter
+          allowed-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
+          prompt-file: ${{ runner.temp }}/cursor-twitter-repair.md
+          model: cursor/cursor-grok-4.6-high-fast
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          timeout-minutes: '20'
+          mount-bird-snapshot: 'true'
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
+          birdy-tool-log-path: .twitter-input/birdy-tool-log.jsonl
+
       - name: Require Twitter producer diff scope
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: ./.github/actions/require-diff-scope
         with:
@@ -733,7 +1120,7 @@ jobs:
 
       - name: Require Twitter run heartbeat
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: ./.github/actions/require-output
         with:
@@ -744,7 +1131,7 @@ jobs:
 
       - name: Validate Twitter signal-only public output
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         env:
           BACKEND: ${{ steps.backend.outputs.name }}
@@ -1115,22 +1502,17 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           noop-pushed: 'false'
 
-      # ── Vercel deploy hook (claude tier only) ──────────────────────
-      # Vercel's GitHub App webhook should fire on bot pushes too, but
-      # if VERCEL_DEPLOY_HOOK is present we belt-and-suspenders it.
-      - name: Trigger Vercel deploy (claude tier)
+      # Persist the recovery heartbeat before failing the job. This makes the
+      # scheduled attempt observable without misreporting analyst failure as a
+      # successful "no news" cycle; success()-gated notifications stay skipped.
+      - name: Fail recovered Claude cycle
         if: >-
-          steps.backend.outputs.name == 'claude'
-          && steps.push.outputs.pushed == 'true'
-          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
-        env:
-          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+          success()
+          && steps.backend.outputs.name == 'claude'
+          && steps.recover_claude.outputs.recovered == 'true'
         run: |
-          if [ -n "$VERCEL_DEPLOY_HOOK" ]; then
-            curl -fsSL -X POST "$VERCEL_DEPLOY_HOOK" && echo "Vercel deploy hook fired"
-          else
-            echo "VERCEL_DEPLOY_HOOK not set; relying on Vercel's GitHub auto-deploy"
-          fi
+          echo "::error::Twitter analyst output was invalid or missing; recovery heartbeat was published."
+          exit 1
 
       # ── claude-tier dry-run summary (instead of real alerts) ───────
       - name: Dry-run alert summary (claude tier)
@@ -1151,6 +1533,7 @@ jobs:
 
       # ── claude-tier Hooker headline blast ──────────────────────────
       - name: Send headline alerts to Hooker (claude tier)
+        id: send_alerts
         if: >-
           success()
           && steps.backend.outputs.name == 'claude'
@@ -1296,26 +1679,16 @@ jobs:
 
             git add "$HISTORY_FILE"
             if git commit -m "Track delivered Twitter headline alerts ${ANNOUNCED_AT}"; then
-              AUTH_HEADER=$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')
-              git_auth() {
-                git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${AUTH_HEADER}" "$@"
-              }
-              # Retry push in case another workflow committed concurrently.
-              PUSHED=false
-              for attempt in 1 2 3; do
-                if git_auth push origin "HEAD:main"; then
-                  PUSHED=true
-                  break
-                fi
-                echo "History push attempt $attempt failed; rebasing"
-                if ! git_auth pull --rebase origin main; then
-                  git rebase --abort 2>/dev/null || true
-                  break
-                fi
-              done
-              if [ "$PUSHED" != "true" ]; then
-                echo "::warning::Failed to push delivered-alert history after retries; alerts were already sent, continuing"
-              fi
+              # The publish is handed to the shared safe-push action in the
+              # next step, NOT done here. A raw `git push origin HEAD:main`
+              # used to live at this spot; the 2026-07-06 repository ruleset
+              # made every one of those pushes fail with GH013, and because
+              # the failure was only a ::warning:: the job still reported
+              # success — so the ledger silently froze at 2026-07-04 while
+              # dedupe kept consulting it and duplicate alerts kept shipping.
+              # Publishing through safe-push gets the protected-branch PR
+              # fallback every other lane already uses.
+              echo "history_committed=true" >> "$GITHUB_OUTPUT"
             else
               echo "No delivered alert history changes"
             fi
@@ -1329,12 +1702,67 @@ jobs:
 
           echo "Done — batch delivered (delivered=$DELIVERED_COUNT, failed=$FAILED)."
 
+      # Publish the dedupe ledger. This runs even when the send step exited
+      # non-zero on partially-failed routes: the alerts that DID land are
+      # already recorded in the commit, and losing that commit is what
+      # causes duplicate alerts on the next cycle.
+      - name: Push delivered-alert history
+        id: push_history
+        if: >-
+          !cancelled()
+          && steps.send_alerts.outputs.history_committed == 'true'
+        uses: ./.github/actions/safe-push
+        with:
+          branch: ${{ github.ref_name }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          noop-pushed: 'false'
+
+      # Fail loudly if the ledger did not land. Dedupe correctness depends on
+      # this file being current; a silent failure here is invisible for weeks
+      # and only shows up as duplicate Telegram alerts to readers.
+      - name: Verify delivered-alert history landed
+        if: >-
+          !cancelled()
+          && steps.send_alerts.outputs.history_committed == 'true'
+        env:
+          PUSHED: ${{ steps.push_history.outputs.pushed }}
+          MODE: ${{ steps.push_history.outputs.publication-mode }}
+          HISTORY_FILE: research/summaries/twitter-announced-history.json
+          ANNOUNCED_AT: ${{ steps.datetime.outputs.timestamp }}
+          TARGET_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          echo "publication-mode=$MODE pushed=$PUSHED"
+          if [ "$PUSHED" != "true" ]; then
+            echo "::error::Delivered-alert ledger failed to publish (mode=$MODE)." \
+                 "research/summaries/twitter-announced-history.json is now stale," \
+                 "so headline dedupe will re-alert stories that already shipped." \
+                 "Land the open automation/safe-push PR, or re-run this lane."
+            exit 1
+          fi
+          # Confirm by CONTENT, not by the flag. pushed=true was not enough:
+          # when two safe-push calls in one job generated the same fallback
+          # branch, the second adopted the first's already-merged PR and
+          # reported pushed=true/pull-request-merged while its commit never
+          # landed. This guard is what turns that class of failure from
+          # invisible into red.
+          git fetch -q origin "$TARGET_BRANCH"
+          if ! git show "origin/${TARGET_BRANCH}:${HISTORY_FILE}" \
+               | jq -e --arg ts "$ANNOUNCED_AT" 'any(.[]; .delivered_at == $ts)' >/dev/null; then
+            echo "::error::safe-push reported success (mode=$MODE) but" \
+                 "origin/${TARGET_BRANCH}:${HISTORY_FILE} has no record stamped" \
+                 "'${ANNOUNCED_AT}'. The ledger did NOT land — dedupe will" \
+                 "re-alert already-shipped headlines. Do not trust pushed=true here."
+            exit 1
+          fi
+          echo "Ledger verified on origin/${TARGET_BRANCH}: records stamped ${ANNOUNCED_AT} are present."
+
       # ── Comparison-tier Telegram notification ──────────────────────
       - name: Read summary for Telegram (comparison tiers)
         id: summary
         if: >-
           steps.push.outputs.pushed == 'true'
-          && contains(fromJSON('["deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi"]'), steps.backend.outputs.name)
+          && contains(fromJSON('["deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
         env:
           SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
         run: |
@@ -1535,6 +1963,94 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Idempotency-Key: twitter-fireworks-pi-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
             --data-binary "@/tmp/hooker-twitter-fireworks-pi.json"
+
+      - name: Send notification via hooker (opencode-deepseek-v4-flash)
+        if: >-
+          success()
+          && steps.push.outputs.pushed == 'true'
+          && steps.backend.outputs.name == 'opencode-deepseek-v4-flash'
+          && steps.summary.outputs.content != ''
+        continue-on-error: true
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          SUMMARY: ${{ steps.summary.outputs.content }}
+          REPO: ${{ github.repository }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          GH_RUN_ID: ${{ github.run_id }}
+          GH_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+            echo "Hooker credentials missing — skipping notification"
+            exit 0
+          fi
+          # HTML-escape the untrusted summary before it goes into a
+          # parse_mode:"HTML" body. Order matters: escape & first.
+          SAFE=$(printf '%s' "$SUMMARY" \
+            | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
+          REPORT_URL="https://github.com/${REPO}/blob/main/research/twitter-opencode-kimi/${DATE}.md"
+          jq -n \
+            --arg title "🐦🌙 Twitter/X AI Pulse — opencode + DeepSeek V4 Flash" \
+            --arg text "$SAFE" \
+            --arg btn "Full Update on GitHub" \
+            --arg url "$REPORT_URL" \
+            '{
+              title: $title,
+              text: $text,
+              priority: 3,
+              tags: ["ara", "twitter"],
+              parse_mode: "HTML",
+              reply_markup: { inline_keyboard: [[{ text: $btn, url: $url }]] }
+            }' > /tmp/hooker-twitter-opencode-kimi.json
+          curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/ara-research" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: twitter-opencode-kimi-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
+            --data-binary "@/tmp/hooker-twitter-opencode-kimi.json"
+
+      - name: Send notification via hooker (cursor-grok-4p6-fast)
+        if: >-
+          success()
+          && steps.push.outputs.pushed == 'true'
+          && steps.backend.outputs.name == 'cursor-grok-4p6-fast'
+          && steps.summary.outputs.content != ''
+        continue-on-error: true
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          SUMMARY: ${{ steps.summary.outputs.content }}
+          REPO: ${{ github.repository }}
+          DATE: ${{ steps.datetime.outputs.date }}
+          GH_RUN_ID: ${{ github.run_id }}
+          GH_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+            echo "Hooker credentials missing — skipping notification"
+            exit 0
+          fi
+          SAFE=$(printf '%s' "$SUMMARY" \
+            | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
+          REPORT_URL="https://github.com/${REPO}/blob/main/research/twitter-cursor/${DATE}.md"
+          jq -n \
+            --arg title "🐦🖱️ Twitter/X AI Pulse — Cursor CLI + Grok 4.6 Fast" \
+            --arg text "$SAFE" \
+            --arg btn "Full Update on GitHub" \
+            --arg url "$REPORT_URL" \
+            '{
+              title: $title,
+              text: $text,
+              priority: 3,
+              tags: ["ara", "twitter"],
+              parse_mode: "HTML",
+              reply_markup: { inline_keyboard: [[{ text: $btn, url: $url }]] }
+            }' > /tmp/hooker-twitter-cursor.json
+          curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/ara-research" \
+            -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -H "Idempotency-Key: twitter-cursor-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
+            --data-binary "@/tmp/hooker-twitter-cursor.json"
 
       # ── claude-tier auto-research throttle + topic select + dispatch ─
       # Picks ONE high-signal topic from today's twitter pulse and

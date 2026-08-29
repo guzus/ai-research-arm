@@ -6,8 +6,9 @@ aliases: ["LifeSciBench", "Life Sci Bench", "Life-Sci-Bench", "LifeSci Bench"]
 tags: [benchmark, life-sciences, evaluation, agentic, openai, frontier-ai]
 description: OpenAI's 750-task, expert-authored life-science research benchmark (released 2026-06-17) on which the best model clears only 36.1% — a concrete measure of the gap between frontier models and autonomous scientific research.
 created_at: 2026-06-19
-timestamp: 2026-06-19T00:00:00Z
+timestamp: 2026-08-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "OpenAI — Introducing LifeSciBench", url: "https://openai.com/index/introducing-life-sci-bench", date: 2026-06-17}
   - {title: "MarkTechPost — OpenAI releases LifeSciBench", url: "https://www.marktechpost.com/2026/06/17/openai-releases-lifescibench-a-750-task-benchmark-grading-ai-models-on-real-life-science-research-with-expert-written-rubric/", date: 2026-06-17}
@@ -49,3 +50,14 @@ in three research-level tasks still defeat frontier systems.
 - **Policy use.** Could a "fraction of research tasks autonomously solvable"
   number feed into the biosecurity / pre-release-review framing in
   [[federal-ai-policy]]?
+- **Does an expert-authored ceiling actually bind?** LifeSciBench is one of
+  several 2026 attempts to restore a hard, human-adjudicated measure against
+  benchmark saturation — the same pressure tracked as the
+  [[verification-bottleneck]].
+- **Does the benchmark measure the capability that turned out to matter?**
+  LifeSciBench scores a general model's ability to do life-science *research
+  tasks*. The 2026-08-07 Science result came from [[evo-genome-models|Evo]], a
+  domain-specific genome model whose output was a working bacteriophage — no
+  benchmark score, a wet-lab outcome. If the shortest path to useful biology
+  runs through narrow models validated empirically rather than frontier models
+  scored on task suites, a 36.1% ceiling is measuring the wrong axis.

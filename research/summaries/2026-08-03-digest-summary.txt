@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-08-03
+
+TOP STORIES:
+• Claude Fable reported to reproduce 5 of Astra's 10 proofs in 24h — the moat question replaces the capability question
+• EU AI Act enforcement powers went live: Article 50 transparency + AI Office penalties up to EUR 15M / 3% turnover
+• Karpathy retired his own pelican benchmark for a 2-hour, ~$10 Opus 5 world-building run
+
+KEY NUMBERS:
+• Amazon: $53.4bn non-operating income, mostly revaluing Anthropic; S&P beat falls 31.4% -> 9.2% ex-AMZN/GOOGL
+• 1,061 AI-discovered vulns in H1 2026, only 1.3% exploited; time-to-exploit 120 -> 80 days
+• arXiv 77 papers; HN 13 AI stories; Seedance 2.5 peaked at 413 pts
+
+TRENDING: HN ran out of technique posts — 2 of the top 5 AI items were informal SVG eyeball benchmarks
+
+Full digest on GitHub.

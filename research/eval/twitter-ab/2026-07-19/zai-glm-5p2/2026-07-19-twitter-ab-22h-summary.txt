@@ -1,0 +1,11 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-19 22:30:42 UTC
+
+CYCLE: Kimi K3 demand freezes Moonshot subscriptions; GPU shortage rations cloud capacity.
+
+TOP STORIES:
+• Moonshot pauses new Kimi K3 subscriptions, prioritizes compute for existing users, reopens in batches [✓]
+• Nvidia GPU shortage forces cloud rationing; Nebius sold out after price hikes (The Information) [⚠]
+
+WATCH: Moonshot reopening Kimi K3 subs in batches; official Qwen 3.8-Max param/bench confirmation.
+
+Full update on GitHub.

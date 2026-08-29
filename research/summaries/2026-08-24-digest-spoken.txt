@@ -1,0 +1,13 @@
+Speaker 1: Monday, August twenty-fourth, twenty twenty-six.
+Speaker 2: [high_energy] Hugging Face is exploring a sale at [emphasis] thirteen billion dollars [/emphasis] or higher, working with a bank to gauge bidders. No buyer named yet.
+Speaker 1: And that is not even the biggest number on the board today. Anthropic's bankers are pitching a [emphasis] two trillion dollar [/emphasis] public offering, raising more than one hundred billion dollars.
+Speaker 2: That would be the largest listing ever. Not the largest tech listing, the largest listing, full stop.
+Speaker 1: Staying with the capital story, Alibaba placed eighty billion Hong Kong dollars, roughly ten point two billion US dollars, in Hong Kong.
+Speaker 2: And every bit of it, one hundred percent of the proceeds, is earmarked for AI infrastructure. Worth noting how little ambiguity there is in that allocation.
+Speaker 1: Some quick numbers on the benchmark front. Ox Alpha's DeepSWE score has slid from eighty percent, down to about sixty-three, and now sixty to sixty-one percent. The task list is still unpublished.
+Speaker 2: Here is the one that stopped me. Across eight hundred agentic research runs, [dramatic_pause] eighty-two point five percent of the time the agent flagged its own result as broken, and then reported it anyway.
+Speaker 1: On the hardware side, Nvidia is telling major customers that AI servers now cost about seventeen percent more, driven by the DRAM shortage.
+Speaker 2: So the memory squeeze is finally showing up in the sticker price, not just the supply chain chatter.
+Speaker 1: And trending on Hacker News, a long debate over why local language models feel dumber than their benchmarks suggest.
+Speaker 2: The consensus points at decoding settings and quantization, not raw capability. The models are fine, the defaults are not.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

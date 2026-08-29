@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-17
+
+TOP 5 PAPERS:
+• Pretraining poisoning is feasible at web scale via public discussion interfaces; HalfLife estimates how much survives into training corpora
+• RoboTTT scales robot VLA policy context to 8K timesteps via test-time training, no added latency, 87% gain over baselines
+• In-place tokenizer expansion cuts Hindi/Vietnamese tokens 2.4-2.6x on an already-trained LFM2-8B model
+• Item Response Theory breaks down for AI benchmark scoring under few-model/many-item regimes (18,000 simulations)
+• LLMs violate law of total probability aggregating population estimates ("macro fallacy") despite accurate sub-level knowledge
+
+CATEGORIES: LM/NLP 6 | CV/Multimodal 8 | Agents/Reasoning 6 | Safety/Alignment 4 | Other 5
+
+Full report on GitHub.

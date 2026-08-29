@@ -1320,5 +1320,1193 @@ class MethodologyArtifactValidationTest(unittest.TestCase):
         self.assertTrue(any("non-empty claims" in e for e in errs))
 
 
+# ---------------------------------------------------------------------------
+# Derived-claim recompute audit (--audit-derived-claims).
+# ---------------------------------------------------------------------------
+
+
+def _retrieval_claim(cid, claim=None, url="https://example.gov/x"):
+    """A normal (non-derived) ledger claim — the thing a derived claim's
+    inputs point at."""
+    return {
+        "id": cid,
+        "claim": claim or f"Retrieval claim {cid} with enough text to be real.",
+        "type": "metric",
+        "source_urls": [url],
+        "source_tiers": ["primary"],
+        "as_of": "2026-08-01",
+        "confidence": "high",
+        "risk": "volatile",
+    }
+
+
+def _derived_claim(cid="d1", **overrides):
+    """The canonical derived claim from the contract: 30 GW * $60B/GW =
+    $1.8T. Override any field to make a single rule fail in isolation."""
+    entry = {
+        "id": cid,
+        "type": "derived",
+        "claim": (
+            "At 30 GW of CY28 additions and $60B per GW, hyperscale+neocloud "
+            "capex is about $1.8T."
+        ),
+        "inputs": [
+            {"ref": "c3", "name": "gigawatts", "value": 30, "unit": "GW"},
+            {"ref": "c7", "name": "cost_per_gw", "value": 60e9, "unit": "USD/GW"},
+        ],
+        "formula": "gigawatts * cost_per_gw",
+        "result": 1800000000000,
+        "unit": "USD",
+        "assumptions": [
+            "Midpoint of the 25-35 GW consensus range",
+            "$60B/GW blended build cost",
+        ],
+        "as_of": "2026-08-01",
+        "confidence": "high",
+        "risk": "stable",
+    }
+    entry.update(overrides)
+    return entry
+
+
+class DerivedClaimAuditTest(unittest.TestCase):
+    """Each test isolates ONE of R1-R7 so a regression names its rule.
+
+    The premise: a derived claim carries no source URL by construction,
+    so retrieval verification is structurally impossible for it. This
+    audit substitutes recomputation — inputs must resolve inside the
+    ledger and the arithmetic must reproduce."""
+
+    def setUp(self):
+        self._paths = []
+
+    def tearDown(self):
+        for p in self._paths:
+            if p.exists():
+                p.unlink()
+
+    def _ledger(self, claims):
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+        with tmp:
+            json.dump({"claims": claims}, tmp)
+        p = Path(tmp.name)
+        self._paths.append(p)
+        return p
+
+    def _audit(self, claims, **kwargs):
+        return chk.audit_derived_claims(self._ledger(claims), **kwargs)
+
+    # -- identity: a derived entry must never be able to disappear -------
+    #
+    # Both of these were live one-key bypasses of the ENTIRE gate: the
+    # audit indexed the ledger by id and then built its work list from
+    # that index, so an entry with no id was never indexed and the
+    # second entry sharing an id was dropped by first-id-wins. The CLI
+    # reported "0 derived claim(s)" and exited 0 on a ledger whose
+    # arithmetic was off by five orders of magnitude. The rest of this
+    # class cannot catch them, because its helper hard-codes cid="d1".
+
+    def test_derived_entry_without_an_id_is_audited_not_skipped(self):
+        entry = _derived_claim(result=999_000_000_000_000)
+        del entry["id"]
+        total, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"), entry,
+        ])
+        self.assertEqual(total, 1, "an id-less derived entry must still be counted")
+        rules = {p["rule"] for p in problems}
+        self.assertIn("R1", rules, "the missing id must itself be a failure")
+        self.assertIn("R5", rules, "the wrong arithmetic must still be caught")
+        self.assertTrue(all(p["id"] for p in problems), "every problem needs a label")
+
+    def test_duplicate_id_cannot_hide_a_derived_entry(self):
+        total, problems = self._audit([
+            _retrieval_claim("d1"),  # shadows the derived entry below
+            _derived_claim(result=999_000_000_000_000),
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+        ])
+        self.assertEqual(total, 1)
+        rules = {p["rule"] for p in problems}
+        self.assertIn("R1", rules, "the duplicated id must itself be a failure")
+        self.assertIn("R5", rules, "the wrong arithmetic must still be caught")
+
+    def test_every_derived_entry_is_audited_when_ids_repeat(self):
+        """Two derived entries sharing an id: BOTH get recomputed."""
+        total, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(result=111),
+            _derived_claim(result=222),
+        ])
+        self.assertEqual(total, 2)
+        self.assertEqual(
+            len([p for p in problems if p["rule"] == "R5"]), 2,
+            "first-id-wins must not silence the second entry's arithmetic",
+        )
+
+    def _rules(self, problems):
+        return sorted({p["rule"] for p in problems})
+
+    # ---- happy paths ----------------------------------------------------
+
+    def test_valid_derived_claim_passes(self):
+        total, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"), _derived_claim(),
+        ])
+        self.assertEqual(total, 1)
+        self.assertEqual(problems, [], f"unexpected: {problems}")
+
+    def test_ledger_without_derived_claims_passes_trivially(self):
+        """Derived claims are optional; an all-retrieval ledger is a
+        pass, not a "you forgot to derive anything" failure."""
+        total, problems = self._audit([_retrieval_claim("c1"), _retrieval_claim("c2")])
+        self.assertEqual(total, 0)
+        self.assertEqual(problems, [])
+
+    def test_derived_claim_may_reference_another_derived_claim(self):
+        """R7 explicitly permits derived-on-derived; only cycles and
+        over-deep chains fail."""
+        total, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"), _derived_claim(),
+            _derived_claim(
+                cid="d2",
+                inputs=[
+                    {"ref": "d1", "name": "capex", "value": 1.8e12, "unit": "USD"},
+                    {"ref": "c3", "name": "years", "value": 3, "unit": "years"},
+                ],
+                formula="capex / years",
+                result=6e11,
+            ),
+        ])
+        self.assertEqual(total, 2)
+        self.assertEqual(problems, [], f"unexpected: {problems}")
+
+    # ---- R1: inputs shape ----------------------------------------------
+
+    def test_r1_missing_inputs_fails(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(inputs=[]),
+        ])
+        self.assertIn("R1", self._rules(problems))
+        self.assertTrue(any("non-empty array" in p["message"] for p in problems))
+
+    def test_r1_input_missing_unit_fails(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(inputs=[
+                {"ref": "c3", "name": "gigawatts", "value": 30, "unit": ""},
+                {"ref": "c7", "name": "cost_per_gw", "value": 60e9, "unit": "USD/GW"},
+            ]),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R1" and "unit" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r1_non_numeric_value_fails(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(inputs=[
+                {"ref": "c3", "name": "gigawatts", "value": "30", "unit": "GW"},
+                {"ref": "c7", "name": "cost_per_gw", "value": 60e9, "unit": "USD/GW"},
+            ]),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R1" and "finite number" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r1_boolean_value_is_not_a_number(self):
+        """`True` is an int in Python; accepting it would silently
+        evaluate a schema error as the number 1."""
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(inputs=[
+                {"ref": "c3", "name": "gigawatts", "value": True, "unit": "GW"},
+                {"ref": "c7", "name": "cost_per_gw", "value": 60e9, "unit": "USD/GW"},
+            ]),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R1" and "finite number" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r1_non_identifier_name_reported_as_such(self):
+        """"cost per gw" can never appear as an AST Name, so the error
+        must say so rather than surfacing as a confusing R4 mismatch."""
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(inputs=[
+                {"ref": "c3", "name": "gigawatts", "value": 30, "unit": "GW"},
+                {"ref": "c7", "name": "cost per gw", "value": 60e9, "unit": "USD/GW"},
+            ]),
+        ])
+        self.assertTrue(
+            any("not a valid identifier" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r1_duplicate_input_names_fail(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(inputs=[
+                {"ref": "c3", "name": "gigawatts", "value": 30, "unit": "GW"},
+                {"ref": "c7", "name": "gigawatts", "value": 60e9, "unit": "USD/GW"},
+            ]),
+        ])
+        self.assertTrue(
+            any("duplicates input name" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r1_untyped_arithmetic_claim_is_flagged(self):
+        """A claim carrying `formula`/`inputs` but typed something else
+        would skip this audit while still reading as arithmetic. Closes
+        the accidental version of that bypass (the deliberate version —
+        omitting the claim entirely — is out of reach, see the module
+        docstring)."""
+        _, problems = self._audit([
+            _retrieval_claim("c3"),
+            dict(_retrieval_claim("c9"), formula="a * b"),
+        ])
+        self.assertTrue(
+            any("must be typed 'derived'" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    # ---- R2: ref resolution ---------------------------------------------
+
+    def test_r2_dangling_ref_fails(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"),
+            _derived_claim(),  # references c7, which is absent
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R2" and "c7" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r2_ambiguous_duplicate_id_ref_fails(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _retrieval_claim("c7", claim="A second claim reusing the id c7."),
+            _derived_claim(),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R2" and "ambiguous" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    # ---- R3: formula AST whitelist --------------------------------------
+
+    def test_r3_call_node_rejected(self):
+        """The formula is LLM-authored. A Call node is the whole reason
+        this uses an AST walk instead of eval()."""
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(formula="__import__('os').system('id')"),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R3" and "Call" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r3_attribute_and_subscript_rejected(self):
+        for formula in ("gigawatts.real * cost_per_gw", "gigawatts[0] * cost_per_gw"):
+            with self.subTest(formula=formula):
+                _, problems = self._audit([
+                    _retrieval_claim("c3"), _retrieval_claim("c7"),
+                    _derived_claim(formula=formula),
+                ])
+                self.assertIn("R3", self._rules(problems))
+
+    def test_r3_comparison_rejected(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(formula="gigawatts > cost_per_gw"),
+        ])
+        self.assertIn("R3", self._rules(problems))
+
+    def test_r3_syntax_error_rejected(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(formula="gigawatts *"),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R3" and "does not parse" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r3_string_literal_rejected(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(formula="gigawatts * cost_per_gw * 'x'"),
+        ])
+        self.assertIn("R3", self._rules(problems))
+
+    def test_parse_formula_accepts_full_operator_set(self):
+        """Direct check on the helper: the allowed operators all parse
+        and the name set comes back."""
+        tree, names = chk._parse_formula("-(a + b) * c / d % e ** 2")
+        self.assertEqual(names, {"a", "b", "c", "d", "e"})
+        self.assertEqual(
+            chk._eval_formula(tree, {"a": 1.0, "b": 1.0, "c": 8.0, "d": 2.0, "e": 3.0}),
+            -(1 + 1) * 8 / 2 % 3 ** 2,
+        )
+
+    # ---- R4: name binding ------------------------------------------------
+
+    def test_r4_unbound_name_in_formula_fails(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(formula="gigawatts * cost_per_gw * utilization"),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R4" and "utilization" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r4_declared_but_unused_input_fails(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(formula="gigawatts * 60000000000", result=1800000000000),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R4" and "cost_per_gw" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    # ---- R5: recomputation ----------------------------------------------
+
+    def test_r5_arithmetic_mismatch_fails(self):
+        """The core value of the gate: a stated result that the stated
+        inputs do not produce."""
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(result=18000000000000),  # 10x too big
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R5" and "mismatch" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r5_within_tolerance_passes(self):
+        """Rounded headline figures are fine: computed 1.8e12 vs a
+        declared 1.81e12 is 0.55% off, inside the 1% default."""
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(result=1.81e12),
+        ])
+        self.assertEqual(problems, [], f"unexpected: {problems}")
+
+    def test_r5_tolerance_boundary(self):
+        """Boundary is checked with the SAME symmetric formula the code
+        uses: |c-d| / max(|c|,|d|). computed = 100.
+          declared 101   -> 1/101   = 0.990% -> inside 1%
+          declared 102   -> 2/102   = 1.961% -> outside 1%
+        """
+        base = [
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+        ]
+        inside = _derived_claim(
+            inputs=[
+                {"ref": "c3", "name": "a", "value": 10, "unit": "u"},
+                {"ref": "c7", "name": "b", "value": 10, "unit": "u"},
+            ],
+            formula="a * b", result=101,
+        )
+        _, problems = self._audit(base + [inside])
+        self.assertEqual(problems, [], f"101 should be inside 1%: {problems}")
+
+        outside = dict(inside, result=102)
+        _, problems = self._audit(base + [outside])
+        self.assertTrue(
+            any(p["rule"] == "R5" for p in problems),
+            f"102 should be outside 1%: {problems}",
+        )
+
+    def test_r5_tolerance_is_configurable(self):
+        _, problems = self._audit(
+            [
+                _retrieval_claim("c3"), _retrieval_claim("c7"),
+                _derived_claim(result=1.9e12),  # 5.3% off
+            ],
+            tolerance=0.10,
+        )
+        self.assertEqual(problems, [], f"unexpected at tolerance=0.10: {problems}")
+
+    def test_r5_division_by_zero_is_a_rejection_not_a_crash(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(
+                inputs=[
+                    {"ref": "c3", "name": "num", "value": 30, "unit": "GW"},
+                    {"ref": "c7", "name": "den", "value": 0, "unit": "GW"},
+                ],
+                formula="num / den", result=0,
+            ),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R5" and "zero" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r5_compute_bomb_exponent_rejected(self):
+        """`9**9**9` is three allowlisted nodes and would hang the
+        runner. The exponent cap catches it because evaluation is
+        inner-first: 9**9 = 387420489 > 64."""
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(
+                inputs=[{"ref": "c3", "name": "base", "value": 9, "unit": "x"}],
+                formula="base ** 9 ** 9", result=1,
+            ),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R5" and "exponent" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r5_overflow_to_infinity_rejected(self):
+        """Float multiplication overflows to inf SILENTLY in Python, so
+        a finite-check on every intermediate is load-bearing."""
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(
+                inputs=[
+                    {"ref": "c3", "name": "a", "value": 1e308, "unit": "x"},
+                    {"ref": "c7", "name": "b", "value": 1e10, "unit": "x"},
+                ],
+                formula="a * b", result=1e318,
+            ),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R5" for p in problems), f"got: {problems}",
+        )
+
+    def test_r5_non_numeric_result_fails(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(result="about $1.8T"),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R5" and "finite number" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    # ---- R6: assumptions + unit -----------------------------------------
+
+    def test_r6_empty_assumptions_fails(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(assumptions=[]),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R6" and "assumptions" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r6_blank_assumption_string_fails(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(assumptions=["   "]),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R6" for p in problems), f"got: {problems}",
+        )
+
+    def test_r6_missing_unit_fails(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(unit=""),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R6" and "unit" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    # ---- R7: cycles, depth, unsupported propagation ----------------------
+
+    def test_r7_two_node_cycle_detected(self):
+        d1 = _derived_claim(
+            cid="d1",
+            inputs=[
+                {"ref": "c3", "name": "a", "value": 2, "unit": "u"},
+                {"ref": "d2", "name": "b", "value": 3, "unit": "u"},
+            ],
+            formula="a * b", result=6,
+        )
+        d2 = _derived_claim(
+            cid="d2",
+            inputs=[
+                {"ref": "c3", "name": "a", "value": 2, "unit": "u"},
+                {"ref": "d1", "name": "b", "value": 3, "unit": "u"},
+            ],
+            formula="a * b", result=6,
+        )
+        _, problems = self._audit([_retrieval_claim("c3"), d1, d2])
+        self.assertTrue(
+            any(p["rule"] == "R7" and "cycle" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r7_self_reference_detected(self):
+        _, problems = self._audit([
+            _retrieval_claim("c3"),
+            _derived_claim(
+                cid="d1",
+                inputs=[
+                    {"ref": "c3", "name": "a", "value": 2, "unit": "u"},
+                    {"ref": "d1", "name": "b", "value": 3, "unit": "u"},
+                ],
+                formula="a * b", result=6,
+            ),
+        ])
+        self.assertTrue(
+            any(p["rule"] == "R7" and "cycle" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r7_depth_cap_enforced(self):
+        """A chain d1->d2->...->d7 exceeds the 5-edge cap."""
+        claims = [_retrieval_claim("c3")]
+        for i in range(1, 8):
+            nxt = f"d{i + 1}"
+            inputs = [{"ref": "c3", "name": "a", "value": 2, "unit": "u"}]
+            if i < 7:
+                inputs.append({"ref": nxt, "name": "b", "value": 3, "unit": "u"})
+                formula, result = "a * b", 6
+            else:
+                formula, result = "a", 2
+            claims.append(_derived_claim(
+                cid=f"d{i}", inputs=inputs, formula=formula, result=result,
+            ))
+        _, problems = self._audit(claims)
+        self.assertTrue(
+            any(p["rule"] == "R7" and "deep" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def _chain(self, n_derived):
+        """d1 -> d2 -> ... -> dN, i.e. N-1 derived-to-derived edges."""
+        claims = [_retrieval_claim("c3")]
+        for i in range(1, n_derived + 1):
+            inputs = [{"ref": "c3", "name": "a", "value": 2, "unit": "u"}]
+            if i < n_derived:
+                inputs.append(
+                    {"ref": f"d{i + 1}", "name": "b", "value": 3, "unit": "u"}
+                )
+                formula, result = "a * b", 6
+            else:
+                formula, result = "a", 2
+            claims.append(_derived_claim(
+                cid=f"d{i}", inputs=inputs, formula=formula, result=result,
+            ))
+        return claims
+
+    def test_r7_depth_boundary_is_exactly_max_depth_edges(self):
+        """Pins the cap: 5 edges pass, 6 fail (default max_depth=5)."""
+        _, ok = self._audit(self._chain(6))     # 5 edges
+        self.assertEqual(ok, [], f"5 edges should pass: {ok}")
+        _, bad = self._audit(self._chain(7))    # 6 edges
+        self.assertTrue(
+            any(p["rule"] == "R7" and "deep" in p["message"] for p in bad),
+            f"6 edges should fail: {bad}",
+        )
+
+    def test_r1_unit_error_does_not_suppress_the_recompute_check(self):
+        """A bad `unit` must not hide an arithmetic error behind it —
+        the author would fix the unit, re-run, and only THEN discover
+        the number was wrong."""
+        _, problems = self._audit([
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(
+                inputs=[
+                    {"ref": "c3", "name": "gigawatts", "value": 30, "unit": ""},
+                    {"ref": "c7", "name": "cost_per_gw", "value": 60e9,
+                     "unit": "USD/GW"},
+                ],
+                result=42,
+            ),
+        ])
+        rules = self._rules(problems)
+        self.assertIn("R1", rules)
+        self.assertIn("R5", rules)
+
+    def test_r7_shallow_chain_within_cap_passes(self):
+        claims = [_retrieval_claim("c3")]
+        for i in (1, 2):
+            inputs = [{"ref": "c3", "name": "a", "value": 2, "unit": "u"}]
+            if i == 1:
+                inputs.append({"ref": "d2", "name": "b", "value": 3, "unit": "u"})
+                formula, result = "a * b", 6
+            else:
+                formula, result = "a", 2
+            claims.append(_derived_claim(
+                cid=f"d{i}", inputs=inputs, formula=formula, result=result,
+            ))
+        _, problems = self._audit(claims)
+        self.assertEqual(problems, [], f"unexpected: {problems}")
+
+    def test_r7_dense_graph_hits_the_traversal_budget(self):
+        """A degenerate derived-on-derived ledger must fail closed in
+        bounded time, not pin the runner. 24 derived claims each
+        referencing the next 8 blows past the step budget."""
+        width = 8
+        n = 24
+        claims = [_retrieval_claim("c3")]
+        for i in range(1, n + 1):
+            inputs = [{"ref": "c3", "name": "a", "value": 2, "unit": "u"}]
+            for k in range(1, width + 1):
+                j = i + k
+                if j <= n:
+                    inputs.append(
+                        {"ref": f"d{j}", "name": f"b{k}", "value": 1, "unit": "u"}
+                    )
+            formula = " * ".join(inp["name"] for inp in inputs)
+            claims.append(_derived_claim(
+                cid=f"d{i}", inputs=inputs, formula=formula, result=2,
+            ))
+        _, problems = self._audit(claims)
+        self.assertTrue(
+            any("traversal-step budget" in p["message"] for p in problems),
+            f"expected a budget failure, got rules {self._rules(problems)}",
+        )
+
+    def test_r7_unsupported_input_taints_derived_claim(self):
+        _, problems = self._audit(
+            [_retrieval_claim("c3"), _retrieval_claim("c7"), _derived_claim()],
+            unsupported_ids={"c7"},
+        )
+        self.assertTrue(
+            any(p["rule"] == "R7" and "unsupported" in p["message"] for p in problems),
+            f"got: {problems}",
+        )
+
+    def test_r7_unsupported_taint_is_transitive(self):
+        """d2 depends on d1 depends on c3; c3 unsupported taints both."""
+        d1 = _derived_claim(
+            cid="d1",
+            inputs=[{"ref": "c3", "name": "a", "value": 2, "unit": "u"}],
+            formula="a", result=2,
+        )
+        d2 = _derived_claim(
+            cid="d2",
+            inputs=[{"ref": "d1", "name": "b", "value": 2, "unit": "u"}],
+            formula="b", result=2,
+        )
+        _, problems = self._audit(
+            [_retrieval_claim("c3"), d1, d2], unsupported_ids={"c3"},
+        )
+        tainted = {p["id"] for p in problems if p["rule"] == "R7"}
+        self.assertEqual(tainted, {"d1", "d2"}, f"got: {problems}")
+
+    def test_r7_derived_claims_own_unsupported_verdict_is_ignored(self):
+        """The verifier is EXPECTED to mark a derived sentence
+        unsupported — it has no source URL, which is the whole gap this
+        audit closes. Tainting a derived claim with its own verdict
+        would fail every derived claim as soon as both flags are passed,
+        i.e. exactly the case the feature exists for. R7 looks at
+        INPUTS only."""
+        _, problems = self._audit(
+            [_retrieval_claim("c3"), _retrieval_claim("c7"), _derived_claim()],
+            unsupported_ids={"d1"},
+        )
+        self.assertEqual(problems, [], f"unexpected: {problems}")
+
+    def test_r7_no_verifier_ids_means_no_taint_check(self):
+        """Documents the hole: without verifier findings, a derived
+        claim resting on rejected inputs passes silently."""
+        _, problems = self._audit(
+            [_retrieval_claim("c3"), _retrieval_claim("c7"), _derived_claim()],
+        )
+        self.assertEqual(problems, [])
+
+    # ---- artifact-level errors -------------------------------------------
+
+    def test_malformed_json_raises(self):
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+        with tmp:
+            tmp.write("{not json")
+        p = Path(tmp.name)
+        self._paths.append(p)
+        with self.assertRaises(ValueError):
+            chk.audit_derived_claims(p)
+
+    def test_missing_claims_array_raises(self):
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+        with tmp:
+            json.dump({"notclaims": []}, tmp)
+        p = Path(tmp.name)
+        self._paths.append(p)
+        with self.assertRaises(ValueError):
+            chk.audit_derived_claims(p)
+
+    def test_unsupported_claim_ids_is_lenient(self):
+        """A missing/malformed verifier artifact must NOT raise here —
+        --audit-verifier-findings owns that error and its exit code."""
+        self.assertEqual(chk.unsupported_claim_ids(Path("/nonexistent/x.json")), set())
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+        with tmp:
+            tmp.write("{broken")
+        p = Path(tmp.name)
+        self._paths.append(p)
+        self.assertEqual(chk.unsupported_claim_ids(p), set())
+
+    def test_unsupported_claim_ids_extracts_only_unsupported(self):
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+        with tmp:
+            json.dump({"claims": [
+                {"id": "c1", "verdict": "supported"},
+                {"id": "c2", "verdict": "unsupported"},
+                {"id": "c3", "verdict": "weak"},
+                {"id": "c4", "verdict": "UNSUPPORTED"},
+            ]}, tmp)
+        p = Path(tmp.name)
+        self._paths.append(p)
+        self.assertEqual(chk.unsupported_claim_ids(p), {"c2", "c4"})
+
+
+class DerivedClaimCliTest(unittest.TestCase):
+    """CLI wiring: --audit-derived-claims must mirror
+    --audit-verifier-findings' exit-code contract (2 = missing file,
+    1 = malformed or failing, 0 = clean) and must not disturb the
+    verifier audit when both flags are passed."""
+
+    def setUp(self):
+        self._paths = []
+        body = tempfile.NamedTemporaryFile("w", suffix=".html", delete=False)
+        with body:
+            body.write(
+                '<article class="ara-doc"><h2>T</h2>'
+                "<p>Body text for the audit-mode CLI tests.</p></article>"
+            )
+        self.body_path = Path(body.name)
+        self._paths.append(self.body_path)
+
+    def tearDown(self):
+        for p in self._paths:
+            if p.exists():
+                p.unlink()
+
+    def _json_file(self, payload, suffix=".json"):
+        tmp = tempfile.NamedTemporaryFile("w", suffix=suffix, delete=False)
+        with tmp:
+            json.dump(payload, tmp)
+        p = Path(tmp.name)
+        self._paths.append(p)
+        return p
+
+    def test_missing_ledger_exits_2(self):
+        rc = chk.main([
+            str(self.body_path),
+            "--audit-derived-claims", "/nonexistent/ledger.json",
+        ])
+        self.assertEqual(rc, 2)
+
+    def test_clean_ledger_exits_0(self):
+        ledger = self._json_file({"claims": [
+            _retrieval_claim("c3"), _retrieval_claim("c7"), _derived_claim(),
+        ]})
+        rc = chk.main([str(self.body_path), "--audit-derived-claims", str(ledger)])
+        self.assertEqual(rc, 0)
+
+    def test_bad_arithmetic_exits_1(self):
+        ledger = self._json_file({"claims": [
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(result=42),
+        ]})
+        rc = chk.main([str(self.body_path), "--audit-derived-claims", str(ledger)])
+        self.assertEqual(rc, 1)
+
+    def test_malformed_ledger_exits_1(self):
+        bad = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+        with bad:
+            bad.write("{nope")
+        p = Path(bad.name)
+        self._paths.append(p)
+        rc = chk.main([str(self.body_path), "--audit-derived-claims", str(p)])
+        self.assertEqual(rc, 1)
+
+    def test_tolerance_flag_is_wired(self):
+        ledger = self._json_file({"claims": [
+            _retrieval_claim("c3"), _retrieval_claim("c7"),
+            _derived_claim(result=1.9e12),  # 5.3% off
+        ]})
+        self.assertEqual(
+            chk.main([str(self.body_path), "--audit-derived-claims", str(ledger)]), 1
+        )
+        self.assertEqual(
+            chk.main([
+                str(self.body_path), "--audit-derived-claims", str(ledger),
+                "--derived-tolerance", "0.10",
+            ]),
+            0,
+        )
+
+    def test_both_audits_compose_verifier_still_runs(self):
+        """With both flags, a clean derived audit must fall through so
+        the verifier audit still gets to fail the build."""
+        ledger = self._json_file({"claims": [
+            _retrieval_claim("c3"), _retrieval_claim("c7"), _derived_claim(),
+        ]})
+        findings = self._json_file({"claims": [{
+            "id": "c1",
+            "text": "Body text for the audit-mode CLI tests.",
+            "verdict": "unsupported",
+            "citation": None,
+        }]})
+        rc = chk.main([
+            str(self.body_path),
+            "--audit-derived-claims", str(ledger),
+            "--audit-verifier-findings", str(findings),
+        ])
+        self.assertEqual(rc, 1, "surviving unsupported claim must still fail")
+
+    def test_co_passed_claims_ledger_still_validated(self):
+        """--audit-derived-claims takes the same file as --claims-ledger,
+        so co-passing them is the natural wiring. A clean derived audit
+        must NOT short-circuit the ledger-schema gate the caller also
+        asked for.
+
+        A `derived` entry is now LEGAL under
+        generative_methodology.validate_claim_ledger (it was rejected
+        three ways before that gate learned the type, which made this
+        whole feature inert end-to-end). So the schema failure is
+        injected independently — a retrieval claim with an invalid
+        `type` — proving the schema gate really ran rather than being
+        skipped by the derived audit's early return."""
+        good = self._json_file({"claims": [
+            _retrieval_claim("c3"), _retrieval_claim("c7"), _derived_claim(),
+        ]})
+        rc = chk.main([
+            str(self.body_path),
+            "--audit-derived-claims", str(good),
+            "--claims-ledger", str(good),
+        ])
+        self.assertEqual(
+            rc, 0,
+            "a valid derived ledger must satisfy BOTH the recompute audit "
+            "and the ledger schema gate",
+        )
+
+        broken = dict(_retrieval_claim("c7"))
+        broken["type"] = "not-a-real-type"
+        ledger = self._json_file({"claims": [
+            _retrieval_claim("c3"), broken, _derived_claim(),
+        ]})
+        rc = chk.main([
+            str(self.body_path),
+            "--audit-derived-claims", str(ledger),
+            "--claims-ledger", str(ledger),
+        ])
+        self.assertEqual(
+            rc, 1,
+            "co-passed --claims-ledger must still run and fail on the "
+            "schema-invalid entry rather than being skipped",
+        )
+
+    def test_co_passed_valid_claims_ledger_composes(self):
+        """Same wiring, ledger with no derived entries: both checks run
+        and both pass, so the fall-through is not a blanket failure."""
+        ledger = self._json_file({"claims": [_retrieval_claim("c3")]})
+        rc = chk.main([
+            str(self.body_path),
+            "--audit-derived-claims", str(ledger),
+            "--claims-ledger", str(ledger),
+        ])
+        self.assertEqual(rc, 0)
+
+    def test_verifier_flag_alone_is_unchanged(self):
+        """Regression guard: the pre-existing single-flag path must
+        behave exactly as before."""
+        findings = self._json_file({"claims": [{
+            "id": "c1",
+            "text": "A claim that no longer appears anywhere in the body.",
+            "verdict": "unsupported",
+            "citation": None,
+        }]})
+        rc = chk.main([
+            str(self.body_path), "--audit-verifier-findings", str(findings),
+        ])
+        self.assertEqual(rc, 0)
+
+    def test_unsupported_input_taint_via_both_flags(self):
+        """R7's propagation only activates when the verifier findings
+        are supplied alongside the ledger."""
+        ledger = self._json_file({"claims": [
+            _retrieval_claim("c3"), _retrieval_claim("c7"), _derived_claim(),
+        ]})
+        findings = self._json_file({"claims": [{
+            "id": "c7",
+            "text": "A claim that no longer appears anywhere in the body.",
+            "verdict": "unsupported",
+            "citation": None,
+        }]})
+        rc = chk.main([
+            str(self.body_path),
+            "--audit-derived-claims", str(ledger),
+            "--audit-verifier-findings", str(findings),
+        ])
+        self.assertEqual(rc, 1)
+
+
+# ---------------------------------------------------------------------------
+# :::position exemption.
+# ---------------------------------------------------------------------------
+
+POSITION_BLOCK = (
+    '<div class="ara-position ara-position--medium">'
+    '<p class="ara-position-label">Analyst position — not a sourced claim</p>'
+    '<p class="ara-position-stance">Hyperscaler credit spreads compress '
+    'rather than widen through Q4 2026.</p>'
+    '<div class="ara-position-row">'
+    '<span class="ara-position-key">Consensus</span>'
+    '<span class="ara-position-val">Sell-side models a Q3 operating '
+    'cash-flow deceleration and assumes the capex funding gap is '
+    'debt-financed.</span>'
+    "</div>"
+    '<div class="ara-position-row">'
+    '<span class="ara-position-key">Resolves</span>'
+    '<span class="ara-position-val">Q3 2026 hyperscaler 10-Q filings — '
+    'combined OCF growth vs. the 31% Q1 2026 print.</span>'
+    "</div>"
+    '<p class="ara-position-meta">Confidence medium · Horizon 2026-Q4</p>'
+    "</div>"
+)
+
+
+class PositionBlockExemptionTest(unittest.TestCase):
+    """A `:::position` block is labelled analyst judgment ("Analyst
+    position — not a sourced claim"). It is substantive by every
+    heuristic in this file and uncited by design, so the uncited-claim
+    gates must not see it — otherwise using the component correctly
+    would fail the gate that makes the article publishable.
+
+    Fail-open is the invariant that matters most: any parse weirdness
+    must return the body UNCHANGED, never strip to end-of-document
+    (which would delete every downstream cite marker and crater the
+    density of an article that should pass)."""
+
+    def _article(self, inner):
+        return f'<article class="ara-doc"><h2>Sec</h2>{inner}</article>'
+
+    def test_no_position_class_is_identity(self):
+        body = self._article("<p>Nvidia posted $30B in Q4 2026 revenue.</p>")
+        self.assertIs(chk.strip_position_blocks(body), body)
+
+    def test_oversized_position_block_is_not_exempted(self):
+        """REGRESSION: the exemption removed an unbounded, author-controlled
+        region from cite_density()'s denominator, which made it a bypass of
+        the live production gate `--cite-density-min 10`. Relocating uncited
+        prose into a `:::position` block took a measured 7.94 (FAIL) to
+        166.67 (PASS) using only the sanctioned directive and allowlisted
+        classes. An oversized block is now exempted NOT AT ALL, so the
+        relocation buys nothing."""
+        prose = " ".join(
+            ["Nvidia reported material capacity growth this quarter."] * 200
+        )
+        cites = "".join(
+            f"<p>Cited sentence {i} about Nvidia Q4 2026."
+            f'<sup><a class="ara-cite" href="#ref-{i}">{i}</a></sup></p>'
+            for i in range(1, 11)
+        )
+        plain = self._article(f"<p>{prose}</p>{cites}")
+        laundered = self._article(
+            '<div class="ara-position ara-position--medium">'
+            '<span class="ara-position-label">'
+            "Analyst position - not a sourced claim</span>"
+            f'<p class="ara-position-stance">{prose}</p></div>{cites}'
+        )
+        plain_density = chk.cite_density(plain)[0]
+        laundered_density = chk.cite_density(laundered)[0]
+        self.assertLess(plain_density, 10.0)
+        self.assertLess(
+            laundered_density, 10.0,
+            "relocating uncited prose into a position block must not turn a "
+            "failing cite density into a passing one",
+        )
+        # The oversized block is left wholly in place.
+        self.assertIn("ara-position-stance", chk.strip_position_blocks(laundered))
+
+    def test_normal_sized_position_block_is_still_exempted(self):
+        """Control for the cap: the component must remain usable."""
+        stripped = chk.strip_position_blocks(self._article(POSITION_BLOCK))
+        self.assertNotIn("ara-position", stripped)
+
+    def test_position_block_removed(self):
+        body = self._article(f"<p>Before.</p>{POSITION_BLOCK}<p>After.</p>")
+        out = chk.strip_position_blocks(body)
+        self.assertNotIn("ara-position", out)
+        self.assertIn("Before.", out)
+        self.assertIn("After.", out)
+
+    def test_nested_same_tag_does_not_end_region_early(self):
+        """The block root is a <div> containing <div class="…-row">
+        children. A non-greedy regex would stop at the first </div> and
+        leave the stance rows behind."""
+        out = chk.strip_position_blocks(
+            self._article(f"{POSITION_BLOCK}<p>Tail sentence.</p>")
+        )
+        self.assertNotIn("ara-position-row", out)
+        self.assertNotIn("Sell-side models", out)
+        self.assertIn("Tail sentence.", out)
+
+    def test_variant_class_alone_still_strips(self):
+        body = self._article(
+            '<div class="ara-position--high"><p>Stance only.</p></div><p>Tail.</p>'
+        )
+        out = chk.strip_position_blocks(body)
+        self.assertNotIn("Stance only.", out)
+        self.assertIn("Tail.", out)
+
+    def test_inner_position_classes_alone_do_not_strip(self):
+        """`ara-position-label` is NOT a block root. Substring matching
+        would treat it as one and swallow the wrong region."""
+        body = self._article(
+            '<p class="ara-position-label">Analyst position</p>'
+            "<p>Nvidia posted $30B in Q4 2026 revenue.</p>"
+        )
+        out = chk.strip_position_blocks(body)
+        self.assertIn("Nvidia posted", out)
+        self.assertIn("ara-position-label", out)
+
+    def test_unclosed_block_fails_open(self):
+        """Missing </div> must return the body untouched rather than
+        deleting everything after the block."""
+        body = (
+            '<article class="ara-doc">'
+            '<div class="ara-position"><p>Stance.</p>'
+            '<p>Later text with a cite'
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>.</p>'
+            "</article>"
+        )
+        self.assertIs(chk.strip_position_blocks(body), body)
+
+    def test_self_closing_position_tag_removed(self):
+        body = self._article('<p>A.</p><div class="ara-position"/><p>B.</p>')
+        out = chk.strip_position_blocks(body)
+        self.assertNotIn("ara-position", out)
+        self.assertIn("A.", out)
+        self.assertIn("B.", out)
+
+    # ---- gate-level behaviour -------------------------------------------
+
+    def test_cited_claim_share_ignores_position_text(self):
+        cited = (
+            "<p>Nvidia posted $30B in Q4 2026 revenue"
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>.</p>'
+        )
+        without = self._article(cited)
+        with_pos = self._article(cited + POSITION_BLOCK)
+        self.assertEqual(
+            chk.cited_claim_share(with_pos), chk.cited_claim_share(without),
+            "a :::position block must not enter the cited-claim denominator",
+        )
+        # And the position text WOULD have counted without the exemption:
+        # the raw block segments into substantive uncited sentences.
+        raw_share, _, raw_total = chk.cited_claim_share(
+            self._article(cited).replace("</article>", "</article>")
+        )
+        naive_total = chk.cited_claim_share(
+            self._article(cited + POSITION_BLOCK.replace("ara-position", "ara-kv"))
+        )[2]
+        self.assertGreater(
+            naive_total, raw_total,
+            "sanity: the same markup under a non-exempt class DOES inflate "
+            "the denominator, so the exemption is doing real work",
+        )
+
+    def test_cite_density_excludes_position_words(self):
+        cited = (
+            "<p>Nvidia posted $30B in Q4 2026 revenue"
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>.</p>'
+        )
+        d_without = chk.cite_density(self._article(cited))
+        d_with = chk.cite_density(self._article(cited + POSITION_BLOCK))
+        self.assertEqual(d_with, d_without)
+        # Same markup under a counted class dilutes density — proving the
+        # exclusion is not a no-op.
+        d_naive = chk.cite_density(
+            self._article(cited + POSITION_BLOCK.replace("ara-position", "ara-kv"))
+        )
+        self.assertLess(d_naive[0], d_without[0])
+
+    def test_corroboration_audit_ignores_position_claims(self):
+        cited = (
+            "<p>Nvidia posted $30B in Q4 2026 revenue"
+            '<sup><a class="ara-cite" href="#ref-1">1</a></sup>'
+            '<sup><a class="ara-cite" href="#ref-2">2</a></sup>.</p>'
+        )
+        refs = (
+            '<ol class="ara-refs">'
+            '<li id="ref-1"><a href="https://nvidia.com/a">a</a></li>'
+            '<li id="ref-2"><a href="https://sec.gov/b">b</a></li>'
+            '<li id="ref-3"><a href="https://example.com/c">c</a></li>'
+            "</ol>"
+        )
+        # A position block that carries a cite of its own would otherwise
+        # register as a single-host substantive claim and fail at N=2.
+        pos = POSITION_BLOCK.replace(
+            "</div>",
+            '<p class="ara-position-meta">Spreads tighten 40bp by Q4 2026'
+            '<sup><a class="ara-cite" href="#ref-3">3</a></sup>.</p></div>',
+            1,
+        )
+        failing, total = chk.corroboration_audit(
+            self._article(cited + pos + refs), 2
+        )
+        self.assertEqual(failing, [], f"got: {failing}")
+        self.assertEqual(total, 1)
+
+    def test_verifier_audit_is_not_exempt(self):
+        """Deliberate non-exemption: parking a claim the verifier
+        rejected inside a position block is not a demotion. `<mark>` is
+        the demotion channel."""
+        claim = "Nvidia will hold 90% of accelerator share through 2027."
+        body = self._article(
+            f'<div class="ara-position"><p class="ara-position-stance">'
+            f"{claim}</p></div>"
+        )
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+        with tmp:
+            json.dump({"claims": [{
+                "id": "c1", "text": claim,
+                "verdict": "unsupported", "citation": None,
+            }]}, tmp)
+        p = Path(tmp.name)
+        try:
+            total, surviving = chk.audit_verifier_findings(p, body)
+            self.assertEqual(total, 1)
+            self.assertEqual(
+                len(surviving), 1,
+                "an unsupported claim hidden in a position block must still "
+                "count as surviving",
+            )
+        finally:
+            p.unlink()
+
+    def test_corpus_position_blocks_strip_without_touching_others(self):
+        """Corpus evidence for both sides of the position-block contract."""
+        corpus = sorted((REPO_ROOT / "research" / "generative").glob("*.html"))
+        if not corpus:
+            self.skipTest("no committed articles to check")
+        stripped_count = 0
+        for path in corpus:
+            body = path.read_text(encoding="utf-8")
+            output = chk.strip_position_blocks(body)
+            with self.subTest(article=path.name):
+                if "ara-position" not in body:
+                    self.assertIs(
+                        output,
+                        body,
+                        "stripper must preserve identity when no position exists",
+                    )
+                else:
+                    stripped_count += 1
+                    self.assertNotEqual(output, body)
+                    self.assertNotIn("ara-position", output)
+        self.assertGreater(stripped_count, 0, "fixture corpus needs a position block")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-30 22:42:57 UTC
+
+CYCLE: Google backs $15B Anthropic Texas datacenter; Claude hit by capacity incidents; OpenAI cuts GPT-5.6 prices; Thinking Machines ships Inkling-Small.
+
+TOP STORIES:
+• Google backstops $15B Anthropic data-center campus in Hubbard, TX [✓]
+• Anthropic confirms two Claude network-capacity incidents in 24h [✓]
+• OpenAI cuts GPT-5.6 API prices as ChatGPT nears 1B weekly users [✓/⚠]
+• Thinking Machines ships Inkling-Small, beats its own larger model [✓]
+
+WATCH: Primary WSJ/CNBC coverage confirming the Anthropic-Google Hubbard, TX deal terms.
+
+Full update on GitHub.

@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-08-24 07:15:13 UTC
+
+CYCLE: Anthropic is mid-outage across its whole model lineup; the AI-authorship fight gets a mechanism proposal.
+
+TOP STORIES:
+• Anthropic down across Mythos 5, Fable 5, Opus 5 and Opus 4.8 at once - app, API, Claude Code and Cowork all degraded, unresolved ~90 min after the cause was said to be identified [✓]
+
+QUICK HITS:
+• @yoavgo argues against AI-use disclosure in papers; proposes conference software detect duplicate submissions instead
+• Darkbloom (EigenLabs) claims 500 idle Macs enrolled, 200+ in 60 hours - unaudited, affiliated sources [⚠]
+
+WATCH: Whether Anthropic publishes a root cause, and whether the API, Claude Code and Cowork recover on the same clock - a split recovery points at the gateway, not model serving.
+
+Full update on GitHub.

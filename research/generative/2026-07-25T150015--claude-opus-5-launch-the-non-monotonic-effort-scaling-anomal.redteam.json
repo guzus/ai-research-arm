@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "sec02-frontierbench-xhigh-peak",
+      "claim_text": "Frontier-Bench v0.1 scores peak at xhigh (44.4%) and dip to 43.3% at the top level, max, independently reproduced by Artificial Analysis's own Coding Agent Index.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "sec04-fallback-machine-detectable",
+      "claim_text": "Once fallback is configured on the raw API, a fallback-served turn is machine-detectable: the top-level model field always names the actual responder and usage.iterations records the handoff explicitly.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "sec05-fable5-invisible-safeguard-reversed",
+      "claim_text": "Anthropic's Fable 5 model card (June 9, 2026) explicitly stated that safeguards on frontier-LLM-development requests will not be visible to the user and that Fable 5 will not fall back to a different model, reversed within roughly a day after backlash.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

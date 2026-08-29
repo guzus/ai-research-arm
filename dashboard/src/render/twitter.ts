@@ -10,6 +10,8 @@ import {
   truncateText,
 } from './shared';
 import type { InfoTimelineItem } from './shared';
+import { uiText } from '../i18n';
+import type { UiLanguage } from '../i18n';
 
 export type TwitterStory = {
   rank: string;
@@ -44,6 +46,7 @@ type TimeInfo = {
 };
 
 export type TwitterReportRenderOptions = {
+  language: UiLanguage;
   fallbackDate: string | null;
   currentDateStr: string;
   currentDateTitle: string;
@@ -56,6 +59,10 @@ export type TwitterReportRenderOptions = {
   twitterMarkdownToHtml: (md: string) => string;
   renderSourceChips: (urls: string[], limit?: number) => string;
   renderHandleChips: (handles: string[], limit?: number) => string;
+  // Hours ("16") that have a same-hour comparison-lane cycle (from
+  // twitter-ab.json), mapped to the lane slugs. Drives the A/B chip only —
+  // absent/empty means the report renders exactly as before.
+  abHours?: Record<string, string[]>;
 };
 
 function highlightPlainText(text: string, searchTerm: string): string {
@@ -273,19 +280,25 @@ function twitterMindshareSizeClass(index: number): string {
   return 'twitter-mindshare-tile--sm';
 }
 
-function renderTwitterMindshareMap(items: TwitterMindshareItem[]): string {
+function renderTwitterMindshareMap(items: TwitterMindshareItem[], language: UiLanguage): string {
   if (items.length === 0) return '';
   const tiles = items.map((item, index) => {
+    const tone = language === 'ko'
+      ? ({ rising: '상승세', steady: '보합세', fading: '하락세' } as const)[item.tone]
+      : item.tone;
+    const accessibleLabel = language === 'ko'
+      ? item.label + ' 관심도, ' + tone
+      : item.label + ' mindshare, ' + tone;
     return [
-      '<a class="twitter-mindshare-tile ' + twitterMindshareSizeClass(index) + ' twitter-mindshare-tile--' + item.tone + '" href="' + escapeHtml(item.href) + '" aria-label="' + escapeHtml(item.label + ' mindshare, ' + item.tone) + '">',
+      '<a class="twitter-mindshare-tile ' + twitterMindshareSizeClass(index) + ' twitter-mindshare-tile--' + item.tone + '" href="' + escapeHtml(item.href) + '" aria-label="' + escapeHtml(accessibleLabel) + '">',
       '  <strong>' + escapeHtml(item.label) + '</strong>',
       '</a>',
     ].filter(Boolean).join('\n');
   }).join('\n');
   return [
-    '<section class="twitter-mindshare" aria-label="Twitter mindshare map">',
+    '<section class="twitter-mindshare" aria-label="' + escapeHtml(language === 'ko' ? '트위터 관심도 지도' : 'Twitter mindshare map') + '">',
     '  <div class="twitter-mindshare-head">',
-    '    <h2>Mindshare</h2>',
+    '    <h2>' + escapeHtml(uiText(language, 'twitter.mindshare')) + '</h2>',
     '  </div>',
     '  <div class="twitter-mindshare-map">' + tiles + '</div>',
     '</section>',
@@ -331,7 +344,7 @@ function firstHtml(root: ParentNode, selector: string): string {
   return (root.querySelector(selector) as HTMLElement | null)?.innerHTML?.trim() || '';
 }
 
-function twitterSignalsToCallouts(story: Element, searchTerm: string): string {
+function twitterSignalsToCallouts(story: Element, searchTerm: string, language: UiLanguage): string {
   const sig = story.querySelector('.twitter-story-signals');
   if (!sig) return '';
   const rows = Array.from(sig.querySelectorAll(':scope > div'));
@@ -348,7 +361,12 @@ function twitterSignalsToCallouts(story: Element, searchTerm: string): string {
       else if (/✓/.test(text)) { variant = 'ara-callout--success'; flag = '<span class="ara-flag ara-flag--green"></span>'; }
       text = text.replace(/^[✓⚠✗]\s*/, '');
     }
-    const labelText = label || (isVerify ? 'Verify' : 'Watch');
+    const isWatch = /watch/i.test(label);
+    const labelText = isVerify
+      ? uiText(language, 'twitter.verify')
+      : isWatch || !label
+        ? uiText(language, 'twitter.watch')
+        : label;
     return '<div class="ara-callout ' + variant + '">'
       + '<span class="ara-callout-label">' + flag + escapeHtml(labelText) + '</span>'
       + '<p>' + highlightPlainText(text, searchTerm) + '</p></div>';
@@ -363,6 +381,7 @@ function extractSkepticCorner(body: string): string {
 function renderStructuredTwitterStories(
   body: string,
   searchTerm: string,
+  language: UiLanguage,
 ): string {
   if (!/\btwitter-story\b/.test(body)) return '';
   const doc = new DOMParser().parseFromString('<div>' + body + '</div>', 'text/html');
@@ -374,7 +393,7 @@ function renderStructuredTwitterStories(
     const title = firstText(story, '.twitter-story-title, h3');
     const lead = firstText(story, '.twitter-story-lead');
     const sources = firstHtml(story, '.twitter-story-sources');
-    const signalsHtml = twitterSignalsToCallouts(story, searchTerm);
+    const signalsHtml = twitterSignalsToCallouts(story, searchTerm, language);
     const bodyHtml = firstHtml(story, '.twitter-story-body') || firstHtml(story, '.twitter-story-details');
     const detailsBits = [
       sources ? '<div class="twitter-story-chips">' + sources + '</div>' : '',
@@ -391,7 +410,7 @@ function renderStructuredTwitterStories(
       detailsBits
         ? [
             '    <details class="twitter-story-details">',
-            '      <summary>Full analysis</summary>',
+            '      <summary>' + escapeHtml(uiText(language, 'twitter.fullAnalysis')) + '</summary>',
             detailsBits,
             '    </details>',
           ].join('\n')
@@ -447,28 +466,109 @@ export function sanitizePublicReportMarkdown(md: string): string {
 }
 
 function renderTwitterDateNav(options: TwitterReportRenderOptions): string {
+  const language = options.language;
   const link = (date: string | null, label: string, cls: string): string => {
     if (!date) {
       return '<span class="twitter-date-link twitter-date-link--disabled ' + cls + '">' + label + '</span>';
     }
     return [
-      '<a class="twitter-date-link ' + cls + '" href="/twitter/' + escapeHtml(date) + '" aria-label="' + escapeHtml(label + ' Twitter summary: ' + date) + '">',
+      '<a class="twitter-date-link ' + cls + '" href="/twitter/' + escapeHtml(date) + '" aria-label="' + escapeHtml(language === 'ko' ? label + ' 트위터 요약: ' + date : label + ' Twitter summary: ' + date) + '">',
       '  <span class="twitter-date-link-label">' + label + '</span>',
       '  <span class="twitter-date-link-date">' + escapeHtml(date) + '</span>',
       '</a>',
     ].join('');
   };
   return [
-    '<nav class="twitter-date-nav" aria-label="Twitter summary dates">',
-    '  ' + link(options.prevDate, 'Prev day', 'twitter-date-link--prev'),
+    '<nav class="twitter-date-nav" aria-label="' + escapeHtml(language === 'ko' ? '트위터 요약 날짜' : 'Twitter summary dates') + '">',
+    '  ' + link(options.prevDate, uiText(language, 'twitter.prevDay'), 'twitter-date-link--prev'),
     '  <div class="twitter-date-current">',
-    '    <div class="twitter-date-current-label">Twitter summaries</div>',
+    '    <div class="twitter-date-current-label">' + escapeHtml(uiText(language, 'twitter.summaries')) + '</div>',
     '    <div class="twitter-date-current-date">' + escapeHtml(options.shownDateTitle) + '</div>',
-    options.fallbackDate ? '    <div class="twitter-date-current-note">Showing fallback for ' + escapeHtml(options.currentDateStr) + '</div>' : '',
     '  </div>',
-    '  ' + link(options.nextDate, 'Next day', 'twitter-date-link--next'),
+    '  ' + link(options.nextDate, uiText(language, 'twitter.nextDay'), 'twitter-date-link--next'),
     '</nav>',
   ].filter(Boolean).join('\n');
+}
+
+// Everything inside one cycle card below the header: lead brief + story
+// grid (or fallback body) + skeptic callout. Shared by the main report loop
+// and the A/B side-by-side panes so both render identically.
+export type TwitterCycleContent = {
+  leadText: string;
+  stories: TwitterStory[];
+  contentHtml: string;
+};
+
+export function buildTwitterCycleContent(sectionBody: string, options: TwitterReportRenderOptions): TwitterCycleContent {
+  const language = options.language;
+  const cycleSummary = stripEmptyCyclePlaceholderLines(extractCycleSummary(sectionBody));
+  const stories = parseTwitterStories(sectionBody);
+  const leadText = cycleSummary
+    ? cleanPublicLeadText(stripMarkdown(cycleSummary))
+    : truncateText(cleanPublicLeadText(stripMarkdown(stripEmptyCyclePlaceholderLines(sectionBody))), 620);
+
+  const fallbackBody = stripEmptyCyclePlaceholderLines(sectionBody
+    .replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '')
+    .replace(/###\s+[^\n]*[Ss]keptic[^\n]*\n[\s\S]*?(?=\n#{2,3}\s|$)/i, ''));
+  const fallbackHtml = fallbackBody && !isEmptyCyclePlaceholderMarkdown(fallbackBody)
+    ? '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + options.twitterMarkdownToHtml(fallbackBody) + '</div>'
+    : '';
+  const structuredStoryCards = renderStructuredTwitterStories(sectionBody, options.searchTerm, language);
+  const storyCards = structuredStoryCards || stories.map((story) => {
+    const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
+    const watch = truncateText(stripMarkdown(extractSectionText(story.body, 'Watch')), 210);
+    const storyIntro = stripMarkdown(storyCurrentLead(story.body))
+      .replace(/^[\s\-—–]+/, '')
+      .replace(/^the originating\b/i, 'Originating');
+    const storySummary = isSourceMethodLead(storyIntro) ? '' : truncateText(cleanPublicLeadText(storyIntro), 360);
+    const storyLinks = options.renderSourceChips(story.links, 6);
+    const storyHandles = options.renderHandleChips(story.handles, 8);
+    return [
+      '<article class="twitter-story-card">',
+      '  <div class="twitter-story-rank">' + escapeHtml(story.rank) + '</div>',
+      '  <div class="twitter-story-main">',
+      '    <h3 class="twitter-story-title">' + highlightPlainText(story.title, options.searchTerm) + '</h3>',
+      storySummary ? '    <p class="twitter-story-summary">' + highlightPlainText(storySummary, options.searchTerm) + '</p>' : '',
+      '    <details class="twitter-story-details">',
+      '      <summary>' + escapeHtml(uiText(language, 'twitter.fullAnalysis')) + '</summary>',
+      storyLinks || storyHandles ? '      <div class="twitter-story-chips">' + storyLinks + storyHandles + '</div>' : '',
+      verification || watch
+        ? '      <div class="twitter-story-signals">' +
+            (verification ? '<div><span>' + escapeHtml(uiText(language, 'twitter.verify')) + '</span>' + highlightPlainText(verification, options.searchTerm) + '</div>' : '') +
+            (watch ? '<div><span>' + escapeHtml(uiText(language, 'twitter.watch')) + '</span>' + highlightPlainText(watch, options.searchTerm) + '</div>' : '') +
+          '</div>'
+        : '',
+      '      <div class="md-content twitter-story-body">' + options.twitterMarkdownToHtml(story.body) + '</div>',
+      '    </details>',
+      '  </div>',
+      '</article>',
+    ].filter(Boolean).join('\n');
+  }).join('\n');
+
+  const skepticBody = extractSkepticCorner(sectionBody);
+  const skepticHtml = skepticBody
+    ? '<div class="ara-callout ara-callout--danger">' + options.twitterMarkdownToHtml(skepticBody) + '</div>'
+    : '';
+
+  const contentHtml = [
+    '  <div class="twitter-wire-brief">',
+    '    <div>',
+    '      <p class="twitter-brief-text">' + highlightPlainText(leadText, options.searchTerm) + '</p>',
+    '    </div>',
+    '  </div>',
+    storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : fallbackHtml,
+    skepticHtml,
+  ].filter(Boolean).join('\n');
+
+  return { leadText, stories, contentHtml };
+}
+
+/** Body of the `## <hour>:00 UTC` cycle in a raw report, or null. */
+export function extractTwitterCycleBody(md: string, hour: string): string | null {
+  for (const section of splitSections(sanitizePublicReportMarkdown(md))) {
+    if (section.title === hour + ':00 UTC') return section.body;
+  }
+  return null;
 }
 
 export function renderTwitterReportHtml(md: string, options: TwitterReportRenderOptions): string {
@@ -476,30 +576,16 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
   const cards: string[] = [renderTwitterDateNav(options)];
   const timelineItems: InfoTimelineItem[] = [];
   const mindshareCycles: TwitterMindshareCycle[] = [];
-  if (options.fallbackDate) {
-    cards.push(
-      '<div class="frontpage-fallback-note">No Twitter report for ' +
-        escapeHtml(options.currentDateStr) +
-        '. Showing ' +
-        escapeHtml(options.fallbackDate) +
-        ' instead.</div>',
-    );
-  }
-
   for (const section of sections) {
     if (!section.title && (!section.body || /^#\s+.+$/.test(section.body.trim()))) continue;
 
     const title = section.title || options.currentDateTitle;
     const timeInfo = options.parseUtcTime(section.title, options.currentDateStr);
     const cycleAnchor = 'cycle-' + section.title.replace(/[:\s]/g, '').toLowerCase();
-    const cycleSummary = stripEmptyCyclePlaceholderLines(extractCycleSummary(section.body));
-    const stories = parseTwitterStories(section.body);
+    const { leadText, stories, contentHtml } = buildTwitterCycleContent(section.body, options);
     const displayTime = timeInfo
       ? '<span class="twitter-cycle-time">' + escapeHtml(timeInfo.utc) + '</span><span class="local-time">' + escapeHtml(timeInfo.local) + '</span>'
       : '<span class="twitter-cycle-time">' + escapeHtml(title) + '</span>';
-    const leadText = cycleSummary
-      ? cleanPublicLeadText(stripMarkdown(cycleSummary))
-      : truncateText(cleanPublicLeadText(stripMarkdown(stripEmptyCyclePlaceholderLines(section.body))), 620);
     mindshareCycles.push({
       anchor: cycleAnchor,
       body: section.body,
@@ -514,47 +600,17 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
       detail: summarizeTwitterTimeline(leadText, stories, section.body),
     });
 
-    const fallbackBody = stripEmptyCyclePlaceholderLines(section.body
-      .replace(/\*\*Cycle summary\*\*:[\s\S]*?(?=\n#{1,3}\s|$)/i, '')
-      .replace(/###\s+[^\n]*[Ss]keptic[^\n]*\n[\s\S]*?(?=\n#{2,3}\s|$)/i, ''));
-    const fallbackHtml = fallbackBody && !isEmptyCyclePlaceholderMarkdown(fallbackBody)
-      ? '  <div class="md-content twitter-story-body twitter-cycle-fallback">' + options.twitterMarkdownToHtml(fallbackBody) + '</div>'
-      : '';
-    const structuredStoryCards = renderStructuredTwitterStories(section.body, options.searchTerm);
-    const storyCards = structuredStoryCards || stories.map((story) => {
-      const verification = truncateText(stripMarkdown(extractSectionText(story.body, 'Verification')), 210);
-      const watch = truncateText(stripMarkdown(extractSectionText(story.body, 'Watch')), 210);
-      const storyIntro = stripMarkdown(storyCurrentLead(story.body))
-        .replace(/^[\s\-—–]+/, '')
-        .replace(/^the originating\b/i, 'Originating');
-      const storySummary = isSourceMethodLead(storyIntro) ? '' : truncateText(cleanPublicLeadText(storyIntro), 360);
-      const storyLinks = options.renderSourceChips(story.links, 6);
-      const storyHandles = options.renderHandleChips(story.handles, 8);
-      return [
-        '<article class="twitter-story-card">',
-        '  <div class="twitter-story-rank">' + escapeHtml(story.rank) + '</div>',
-        '  <div class="twitter-story-main">',
-        '    <h3 class="twitter-story-title">' + highlightPlainText(story.title, options.searchTerm) + '</h3>',
-        storySummary ? '    <p class="twitter-story-summary">' + highlightPlainText(storySummary, options.searchTerm) + '</p>' : '',
-        '    <details class="twitter-story-details">',
-        '      <summary>Full analysis</summary>',
-        storyLinks || storyHandles ? '      <div class="twitter-story-chips">' + storyLinks + storyHandles + '</div>' : '',
-        verification || watch
-          ? '      <div class="twitter-story-signals">' +
-              (verification ? '<div><span>Verify</span>' + highlightPlainText(verification, options.searchTerm) + '</div>' : '') +
-              (watch ? '<div><span>Watch</span>' + highlightPlainText(watch, options.searchTerm) + '</div>' : '') +
-            '</div>'
-          : '',
-        '      <div class="md-content twitter-story-body">' + options.twitterMarkdownToHtml(story.body) + '</div>',
-        '    </details>',
-        '  </div>',
-        '</article>',
-      ].filter(Boolean).join('\n');
-    }).join('\n');
-
-    const skepticBody = extractSkepticCorner(section.body);
-    const skepticHtml = skepticBody
-      ? '<div class="ara-callout ara-callout--danger">' + options.twitterMarkdownToHtml(skepticBody) + '</div>'
+    // Quiet A/B affordance: only cycles with a same-hour comparison run get
+    // the chip; everyone else sees the header exactly as before. The panel
+    // div stays empty until the chip is clicked (filled by main.ts).
+    const hourMatch = /^(\d{2}):00 UTC$/.exec(section.title || '');
+    const abLanes = hourMatch ? options.abHours?.[hourMatch[1]] : undefined;
+    const abChip = abLanes?.length
+      ? '<button class="twitter-ab-chip" type="button" aria-expanded="false" ' +
+        'aria-label="' + escapeHtml(uiText(options.language, 'twitter.compare')) + '" ' +
+        'title="' + escapeHtml(uiText(options.language, 'twitter.compare')) + '" ' +
+        'data-ab-hour="' + escapeHtml(hourMatch![1]) + '" ' +
+        'data-ab-lanes="' + escapeHtml(abLanes.join(',')) + '">A/B</button>'
       : '';
 
     cards.push(
@@ -562,19 +618,17 @@ export function renderTwitterReportHtml(md: string, options: TwitterReportRender
         '<section id="' + cycleAnchor + '" class="content-card twitter-cycle-card">',
         '  <div class="twitter-cycle-header">',
         '    <div class="twitter-cycle-kicker">' + (timeInfo ? options.clockIcon(timeInfo.localHours, timeInfo.localMinutes) : '') + displayTime + '</div>',
+        abChip ? '    ' + abChip : '',
         '  </div>',
-        '  <div class="twitter-wire-brief">',
-        '    <div>',
-        '      <p class="twitter-brief-text">' + highlightPlainText(leadText, options.searchTerm) + '</p>',
-        '    </div>',
+        abChip ? '  <div class="twitter-ab-panel" hidden></div>' : '',
+        '  <div class="twitter-cycle-default">',
+        contentHtml,
         '  </div>',
-        storyCards ? '  <div class="twitter-story-grid">' + storyCards + '</div>' : fallbackHtml,
-        skepticHtml,
         '</section>',
-      ].join('\n'),
+      ].filter(Boolean).join('\n'),
     );
   }
 
-  const mindshareMap = renderTwitterMindshareMap(buildTwitterMindshare(mindshareCycles));
-  return '<div class="twitter-report">' + mindshareMap + renderInfoTimeline('twitter-info-timeline', 'Timeline', timelineItems) + cards.join('\n') + '</div>';
+  const mindshareMap = renderTwitterMindshareMap(buildTwitterMindshare(mindshareCycles), options.language);
+  return '<div class="twitter-report">' + mindshareMap + renderInfoTimeline('twitter-info-timeline', uiText(options.language, 'twitter.timeline'), timelineItems) + cards.join('\n') + '</div>';
 }

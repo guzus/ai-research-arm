@@ -31,6 +31,12 @@ research/front-page/*.png -filter -diff -merge -text
 # pages above; this is a small, hand-optimized asset dir, not pipeline output.
 assets/*.png -filter -diff -merge -text
 
+# Dashboard brand assets ship inside the Railway Docker image (COPY dashboard),
+# which does NOT hydrate LFS — an LFS pointer here would deploy as a broken
+# image. postbuild-seo.mjs uses brand/github-social-preview.png as the
+# site-wide default og:image. Small hand-optimized assets, not pipeline output.
+dashboard/public/brand/*.png -filter -diff -merge -text
+
 # Audio: mp3s live on S3 (s3.guzus.xyz), not in git. The files at
 # research/audio/*.mp3 are 0-byte stubs so dashboard/scripts/prebuild.mjs
 # keeps surfacing the date in the audio manifest. See AUDIO_BASE in

@@ -33,6 +33,12 @@ SLUG_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 HANDLE_RE = re.compile(r"^@[A-Za-z0-9_]{1,30}$")
 URL_RE = re.compile(r"^https?://\S+$")
 
+# Optional `polymarket:` frontmatter — see "Polymarket market mappings"
+# in docs/model-tickets.md. Keep these in lockstep with the doc.
+POLYMARKET_REQUIRED_KEYS = ("event_slug", "market_id", "token_id", "question")
+POLYMARKET_ALLOWED_KEYS = frozenset(POLYMARKET_REQUIRED_KEYS + ("outcome",))
+POLYMARKET_MAX_MAPPINGS = 3
+
 
 @dataclass
 class Failure:
@@ -159,6 +165,48 @@ def _check_history(val: Any, path: Path, report: Report, created_at: date | None
             prev_ts = ts
 
 
+def _check_polymarket(val: Any, path: Path, report: Report) -> None:
+    """Validate the optional `polymarket:` list of market mappings.
+
+    Contract (docs/model-tickets.md, "Polymarket market mappings"):
+    omitted or null is fine; otherwise a list of 1..3 mappings, each with
+    non-empty string event_slug/market_id/token_id/question, an optional
+    non-empty string outcome, and no other keys. market_id/token_id must
+    be YAML strings (quoted) — unquoted 78-digit token ids parse as
+    numbers and lose precision.
+    """
+    if val is None:
+        return
+    if not isinstance(val, list):
+        report.fail(path, "polymarket", f"must be a list of market mappings, got {type(val).__name__}")
+        return
+    if not val:
+        report.fail(path, "polymarket", "must have at least one mapping when present — omit the key instead")
+        return
+    if len(val) > POLYMARKET_MAX_MAPPINGS:
+        report.fail(
+            path, "polymarket",
+            f"at most {POLYMARKET_MAX_MAPPINGS} mappings per ticket (most-relevant first), got {len(val)}",
+        )
+    for i, mapping in enumerate(val):
+        if not isinstance(mapping, dict):
+            report.fail(path, "polymarket", f"mapping {i} must be a mapping with {'/'.join(POLYMARKET_REQUIRED_KEYS)} keys")
+            continue
+        unknown = sorted(set(mapping) - POLYMARKET_ALLOWED_KEYS)
+        if unknown:
+            report.fail(path, "polymarket", f"mapping {i} has unknown key(s): {', '.join(unknown)}")
+        for key in POLYMARKET_REQUIRED_KEYS:
+            v = mapping.get(key)
+            if not isinstance(v, str) or not v.strip():
+                report.fail(
+                    path, "polymarket",
+                    f"mapping {i} {key} must be a non-empty string (quote numeric ids in YAML), got {v!r}",
+                )
+        outcome = mapping.get("outcome")
+        if outcome is not None and (not isinstance(outcome, str) or not outcome.strip()):
+            report.fail(path, "polymarket", f"mapping {i} outcome must be a non-empty string or omitted, got {outcome!r}")
+
+
 def check_ticket(path: Path, report: Report) -> None:
     report.files_checked += 1
     try:
@@ -228,6 +276,9 @@ def check_ticket(path: Path, report: Report) -> None:
     if "labels" in data and data["labels"] is not None:
         if not isinstance(data["labels"], list) or not all(isinstance(l, str) for l in data["labels"]):
             report.fail(path, "labels", "must be a list of strings or null")
+
+    if "polymarket" in data:
+        _check_polymarket(data["polymarket"], path, report)
 
     body_stripped = body.strip()
     if not body_stripped:

@@ -3,7 +3,7 @@ slug: meituan-longcat-2-2026-06
 title: Meituan open-sources LongCat-2.0 — 1.6T agentic-coding model ("Owl Alpha")
 company: Meituan
 model: LongCat-2.0
-status: released
+status: closed
 status_note: |
   Released and open-weighted **2026-06-30** (GitHub + Hugging Face; VentureBeat
   + multiple relays): **LongCat-2.0**, a **1.6T-parameter MoE (~48B active),
@@ -32,12 +32,14 @@ sources:
   - https://x.com/VentureBeat/status/2071831014872092715
   - https://x.com/__vandos__/status/2071842186627317844
 created_at: 2026-06-30
-updated_at: 2026-06-30
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-28
+closed_at: 2026-07-28
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-30
     change: "Created — Meituan open-sourced LongCat-2.0 (2026-06-30, GitHub + Hugging Face; VentureBeat + multi-relay): 1.6T-param MoE (~48B active), ~1M context, 35T-token pretraining on a ~50,000-chip all-domestic (claimed no-NVIDIA) cluster, and revealed it as the anonymous 'Owl Alpha' that topped OpenRouter coding usage for ~2 months. Relays cite SWE-bench Pro 59.5 / 'beats GPT-5.5' and card-claimed Gemini 3.1 Pro / GPT / Opus-tier parity. Status released (open weights live + observable OpenRouter standing); verification partial (capability-parity and all-domestic-silicon claims are vendor-supplied, not third-party confirmed). Frontier-scale evidence for the moat-leak thesis alongside [[zhipu-glm-5-2]] and DeepSeek V4 ([[deepseek-v4-ga-surge-pricing-2026-06]])."
+  - ts: 2026-07-28
+    change: "Closed — released and settled into normal coverage for 4 weeks; no independent SWE-bench Pro/LMArena numbers or silicon-provenance scrutiny ever surfaced, and no successor model appeared. Closing per this ticket's own released-and-aged transition trigger."
 ---
 
 On **2026-06-30**, Chinese food-delivery giant **Meituan** released and

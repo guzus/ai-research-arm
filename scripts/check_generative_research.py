@@ -53,6 +53,30 @@ in the workflow prompt into deterministic build checks:
                             token. Heuristic; high false-positive on
                             section headings — start conservative.
 
+Text inside a `class="ara-position"` block is EXEMPT from all three
+uncited-claim heuristics above (cite density, cited-claim share,
+corroboration). A `:::position` block is labelled analyst judgment —
+"Analyst position — not a sourced claim" — so counting it as an
+uncited factual claim would penalise the article for using the
+component correctly. It is NOT exempt from --audit-verifier-findings:
+moving a claim the verifier rejected into a position block is not a
+demotion, `<mark>` is.
+
+Audit modes (each takes a path to a sidecar artifact):
+  --audit-verifier-findings PATH  fail if an `unsupported` claim
+                            survived in the body without being demoted
+                            (<mark>) or removed.
+  --audit-derived-claims PATH  recompute-verify the `type: "derived"`
+                            entries in a claims ledger. A derived claim
+                            (e.g. "30 GW at $60B/GW is ~$1.8T") has no
+                            source URL by construction, so retrieval
+                            cannot verify it; instead its inputs must
+                            resolve to other claims in the same ledger
+                            and its formula must reproduce its stated
+                            result. Formulas are parsed under a
+                            whitelisted AST — never eval()'d. See
+                            audit_derived_claims() for rules R1-R7.
+
 Exit status:
   0  — body is valid; safe to commit
   1  — body fails validation; the error is printed to stderr with
@@ -75,6 +99,8 @@ writer to commit. Deterministic — no agent self-validation needed.
 from __future__ import annotations
 
 import argparse
+import ast
+import math
 import re
 import sys
 from html.parser import HTMLParser
@@ -367,6 +393,191 @@ def primary_share(body_html: str) -> tuple[float, int, int]:
     return primary / len(refs), primary, len(refs)
 
 
+# ---------------------------------------------------------------------------
+# :::position exemption — labelled analyst judgment is not a sourced claim.
+# ---------------------------------------------------------------------------
+#
+# A `:::position` block compiles to an element carrying class
+# `ara-position` (plus a confidence variant `ara-position--high|medium|low`)
+# and renders a visible "Analyst position — not a sourced claim" label.
+# Its whole purpose is to ship an explicit non-consensus call that is
+# NOT presented as verified fact. The uncited-claim heuristics
+# (cited_claim_share, corroboration_audit, cite-density accounting)
+# therefore must not see it: a stance sentence like "Hyperscaler credit
+# spreads compress rather than widen through Q4 2026" is substantive by
+# every heuristic in this file and carries no cite by design, so leaving
+# it in the denominator would penalise the article for using the
+# component correctly.
+#
+# NOT exempt, deliberately:
+#   * audit_verifier_findings() — moving an `unsupported` verifier claim
+#     into a position block must NOT count as demotion. `<mark>` is the
+#     demotion channel; a position block is an original call, not a
+#     laundering slot for a claim that failed verification.
+#   * soft_warnings()/qsanity — advisory only, never fail a build.
+#   * primary_share()/count_references() — reference-list metrics; a
+#     position block contains no `<li id="ref-N">` entries.
+
+_POSITION_CLASS = "ara-position"
+
+# Hard bound on how much text one position block may remove from the
+# citation denominators.
+#
+# WHY THIS EXISTS: the exemption removes an author-controlled region from
+# cite_density()'s denominator. Unbounded, it is a bypass of the live
+# production gate `--cite-density-min 10`: relocate 1,200 words of
+# uncited prose into a `:::position` block and a 7.94 density (FAIL)
+# becomes 166.67 (PASS), using only the sanctioned DSL directive and
+# allowlisted classes. Measured before this cap was added.
+#
+# The cap is fail-CLOSED: an oversized block is not exempted AT ALL, so
+# every word of it stays in the denominator and the bypass yields
+# nothing. Partial stripping was rejected — it would leave a half-block
+# in the text and make the denominator depend on where the cut landed.
+#
+# The number is derived, not guessed: it is the largest block
+# emit_position() in compile_ara.py can produce given that module's
+# per-field word bound, plus headroom. scripts/test_ara_dsl.py asserts
+# that inequality empirically (compile bound <= this cap), so the two
+# modules cannot drift into a state where the compiler emits a block the
+# validator refuses to exempt — which would show up as a mysterious
+# density failure rather than a clear compile error.
+_POSITION_MAX_EXEMPT_WORDS = 260
+
+
+def _has_position_class(attrs: list[tuple[str, str | None]]) -> bool:
+    """True when a start tag's class attribute carries the `ara-position`
+    class as a WHOLE TOKEN (or its `ara-position--<variant>` modifier).
+
+    Token matching matters: the inner elements of the block are
+    `ara-position-label`, `ara-position-stance`, `ara-position-row`,
+    `ara-position-key`, `ara-position-val`, `ara-position-meta`. A
+    substring test would treat each of those as a block root and a naive
+    `.*?` regex would then close the region at the first `</div>`."""
+    for key, val in attrs:
+        if key.lower() != "class" or not val:
+            continue
+        for tok in val.split():
+            if tok == _POSITION_CLASS or tok.startswith(_POSITION_CLASS + "--"):
+                return True
+    return False
+
+
+class _PositionBlockStripper(HTMLParser):
+    """Records the character spans occupied by every top-level
+    `ara-position` block, matching the block root's OWN tag name with a
+    depth counter so nested markup (rows, spans, nested divs) cannot
+    terminate the region early.
+
+    `spans` is a list of (start, end) offsets into the source string;
+    `open_depth` is non-zero at EOF when a block was never closed, which
+    the caller treats as "give up and strip nothing" (fail open)."""
+
+    def __init__(self, html: str):
+        super().__init__(convert_charrefs=False)
+        self._html = html
+        # Precompute line-start offsets so getpos() (1-based line,
+        # 0-based column) can be converted to an absolute index.
+        self._line_starts = [0]
+        for i, ch in enumerate(html):
+            if ch == "\n":
+                self._line_starts.append(i + 1)
+        self._root_tag: str | None = None
+        self.open_depth = 0
+        self._span_start: int | None = None
+        self.spans: list[tuple[int, int]] = []
+
+    def _offset(self) -> int:
+        line, col = self.getpos()
+        if line - 1 >= len(self._line_starts):
+            return len(self._html)
+        return min(self._line_starts[line - 1] + col, len(self._html))
+
+    def handle_starttag(self, tag, attrs):
+        if self.open_depth == 0:
+            if _has_position_class(attrs):
+                self._root_tag = tag
+                self.open_depth = 1
+                self._span_start = self._offset()
+        elif tag == self._root_tag:
+            # Same-named element nested inside the block (e.g. a <div>
+            # row inside a <div class="ara-position">). Its close tag
+            # must not be mistaken for the block's.
+            self.open_depth += 1
+
+    def handle_startendtag(self, tag, attrs):
+        # `<div class="ara-position"/>` — opens and closes at once, so it
+        # never changes depth. Inside an already-open block it is just
+        # content and needs no span of its own.
+        if self.open_depth == 0 and _has_position_class(attrs):
+            start = self._offset()
+            raw = self.get_starttag_text() or ""
+            self.spans.append((start, start + len(raw)))
+
+    def handle_endtag(self, tag):
+        if self.open_depth > 0 and tag == self._root_tag:
+            self.open_depth -= 1
+            if self.open_depth == 0:
+                end = self._offset()
+                gt = self._html.find(">", end)
+                end = len(self._html) if gt == -1 else gt + 1
+                if self._span_start is not None:
+                    self.spans.append((self._span_start, end))
+                self._span_start = None
+                self._root_tag = None
+
+
+def strip_position_blocks(body_html: str) -> str:
+    """Return `body_html` with every `class="ara-position"` block removed
+    (replaced by a single space so surrounding prose does not concatenate).
+
+    Fail-open by construction — every abnormal shape returns the input
+    UNCHANGED rather than deleting to end-of-document:
+      * no `ara-position` substring at all -> identity, no parsing. This
+        makes "no behaviour change on the existing corpus" checkable
+        rather than merely argued.
+      * a block whose root tag never closes (`open_depth > 0` at EOF, or
+        a void root like `<br class="ara-position">`) -> identity. The
+        alternative — stripping to EOF — would delete every downstream
+        `ara-cite` marker and hard-fail a build that should have passed.
+      * any parser exception -> identity.
+
+    Limitation: the end-tag span ends at the first `>` at or after the
+    end tag's start offset. HTML end tags carry no attributes, so that is
+    exact for the compiled output this validator sees.
+
+    Bounded: a block whose visible text exceeds
+    `_POSITION_MAX_EXEMPT_WORDS` is left in place (see that constant).
+    An analyst position is a short labelled call, not a container an
+    author can pour arbitrary uncited prose into to shrink the
+    cite-density denominator."""
+    if _POSITION_CLASS not in body_html:
+        return body_html
+    parser = _PositionBlockStripper(body_html)
+    try:
+        parser.feed(body_html)
+        parser.close()
+    except Exception:  # noqa: BLE001 — boundary: never let a parse blow up a gate
+        return body_html
+    if parser.open_depth > 0 or not parser.spans:
+        return body_html
+    out: list[str] = []
+    prev = 0
+    for start, end in parser.spans:
+        if start < prev or end < start:  # overlapping/degenerate — bail out
+            return body_html
+        if _word_count(body_html[start:end]) > _POSITION_MAX_EXEMPT_WORDS:
+            # Oversized: exempt nothing. Leaving the span untouched keeps
+            # every one of its words in the denominator, which is what
+            # makes the relocation bypass worthless.
+            continue
+        out.append(body_html[prev:start])
+        out.append(" ")
+        prev = end
+    out.append(body_html[prev:])
+    return "".join(out)
+
+
 _SUBSTANTIVE_NE = re.compile(r"\b[A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)+|\b[A-Z]{3,}\b")
 _SENT_SPLIT = re.compile(r"(?<=[.!?])\s+")
 _CITE_MARKER = "\x00CITE\x00"
@@ -383,9 +594,14 @@ def cited_claim_share(body_html: str) -> tuple[float, int, int]:
     We pre-substitute `<sup>…<a class="ara-cite">…</a>…</sup>` with a
     sentinel so cite presence survives the strip-tags pass.
 
+    `ara-position` blocks are removed before segmentation — a labelled
+    analyst position is explicitly not a sourced claim, so it belongs in
+    neither the numerator nor the denominator (see strip_position_blocks).
+
     Returns (share, cited_substantive, total_substantive). Share is 0.0
     when no substantive sentences exist (empty/HTML-only body).
     """
+    body_html = strip_position_blocks(body_html)
     marked = re.sub(
         r'<sup[^>]*>\s*<a[^>]*class="ara-cite"[^>]*>[^<]*</a>\s*</sup>',
         f" {_CITE_MARKER} ",
@@ -416,9 +632,18 @@ def cited_claim_share(body_html: str) -> tuple[float, int, int]:
 
 
 def cite_density(body_html: str) -> tuple[float, int, int]:
-    """Citations per 1000 words. Returns (density, cites, words)."""
-    cites = count_cite_markers(body_html)
-    words = _word_count(body_html)
+    """Citations per 1000 words. Returns (density, cites, words).
+
+    `ara-position` blocks are excluded from BOTH terms: their words do
+    not dilute the denominator and any cite inside them does not pad the
+    numerator. Without the exclusion, an ~80-word analyst position would
+    shave roughly 3% off the density of a 3,000-word article purely for
+    using the component the contract provides. `count_cite_markers()` and
+    `_word_count()` stay position-blind so callers that want raw totals
+    (e.g. a reporting step) still get them."""
+    scoped = strip_position_blocks(body_html)
+    cites = count_cite_markers(scoped)
+    words = _word_count(scoped)
     if words == 0:
         return 0.0, cites, 0
     return (cites / words) * 1000.0, cites, words
@@ -614,12 +839,19 @@ def corroboration_audit(
     Each failing_claims entry: {"text": str, "ref_nums": [int],
                                 "hosts": [str], "distinct_hosts": int}
     Total_claims = number of substantive cited sentences considered
-    (NOT count of failures). Useful for the "X of Y claims pass" report."""
+    (NOT count of failures). Useful for the "X of Y claims pass" report.
+
+    Claim extraction skips `ara-position` blocks (labelled analyst
+    judgment is not a sourced claim). The ref-host map and the <mark>
+    exemption index are still built from the FULL body: a position block
+    contains no `<li id="ref-N">` entries, and building those from the
+    stripped body would only create a way for odd nesting to erase hosts
+    and manufacture failures."""
     if min_hosts < 1:
         raise ValueError(f"min_hosts must be >= 1, got {min_hosts}")
     ref_hosts = build_ref_host_map(body_html)
     mark_inners = _extract_mark_inner_texts(body_html)
-    claims = _claim_sentences_with_refs(body_html)
+    claims = _claim_sentences_with_refs(strip_position_blocks(body_html))
     failing: list[dict] = []
     for text, nums in claims:
         hosts: list[str] = []
@@ -1220,6 +1452,664 @@ def audit_verifier_findings(
     return unsupported_total, surviving
 
 
+# ---------------------------------------------------------------------------
+# Derived-claim recompute audit (--audit-derived-claims).
+# ---------------------------------------------------------------------------
+#
+# The rest of this file verifies claims by RETRIEVAL: does some cited URL
+# assert this sentence? That structurally forbids arithmetic the analyst
+# performs from cited inputs — "30 GW at $60B/GW is ~$1.8T of capex" has
+# no source URL, so the verifier marks it unsupported and the workflow's
+# verifier-findings audit fails the build.
+#
+# A derived claim is verified by RECOMPUTATION instead: it is supported
+# iff its inputs are supported and the arithmetic checks out. That is
+# stronger provenance than a citation, not weaker — the reader can redo
+# the sum.
+#
+# Ledger entry shape (lives in the same .gen-claims-ledger.json as the
+# retrieval claims; non-derived entries keep their existing shape):
+#
+#   {"id": "d1", "type": "derived",
+#    "claim": "At 30 GW of CY28 additions and $60B per GW, capex is ~$1.8T.",
+#    "inputs": [{"ref": "c3", "name": "gigawatts",   "value": 30,   "unit": "GW"},
+#               {"ref": "c7", "name": "cost_per_gw", "value": 60e9, "unit": "USD/GW"}],
+#    "formula": "gigawatts * cost_per_gw",
+#    "result": 1800000000000, "unit": "USD",
+#    "assumptions": ["Midpoint of the 25-35 GW consensus range"],
+#    "as_of": "YYYY-MM-DD", "confidence": "high", "risk": "stable"}
+#
+# What this audit can and cannot do:
+#   * CAN catch arithmetic that does not reproduce, dangling/circular
+#     input references, formulas that reach outside pure arithmetic, and
+#     derived claims resting on inputs the verifier rejected.
+#   * CANNOT force the author to declare its arithmetic at all. The same
+#     model writes the article, the ledger and the verifier findings, so
+#     an undeclared sum simply never enters this audit. The gate makes a
+#     DECLARED derivation checkable; it does not make declaration
+#     mandatory. (The `formula`/`inputs`-without-`type: derived` check
+#     below closes only the accidental version of that hole.)
+
+_DERIVED_TYPE = "derived"
+# The formula is LLM-authored and therefore untrusted input. It is never
+# passed to eval()/exec(); it is parsed with ast.parse(mode="eval") and
+# walked against this explicit node allowlist. Anything else — Call,
+# Attribute, Subscript, Compare, comprehensions, walrus, f-strings — is
+# a hard reject, so there is no name lookup, no attribute traversal and
+# no callable in the evaluation path at all.
+_DERIVED_ALLOWED_NODES: tuple[type[ast.AST], ...] = (
+    ast.Expression,
+    ast.BinOp,
+    ast.UnaryOp,
+    ast.Constant,
+    ast.Name,
+    ast.Load,
+    ast.Add,
+    ast.Sub,
+    ast.Mult,
+    ast.Div,
+    ast.Pow,
+    ast.Mod,
+    ast.UAdd,
+    ast.USub,
+)
+# Compute-bomb guards. `9**9**9` parses as three allowlisted nodes and
+# would hang the runner, so the exponent is capped after the right
+# operand is evaluated (inner-first evaluation means `9**9` = 387420489
+# trips the cap at the outer Pow). The length/node caps bound parser work
+# on pathological input.
+_DERIVED_MAX_POW_EXPONENT = 64
+_DERIVED_MAX_FORMULA_CHARS = 512
+_DERIVED_MAX_FORMULA_NODES = 200
+_DERIVED_DEFAULT_TOLERANCE = 0.01   # 1% relative
+_DERIVED_DEFAULT_MAX_DEPTH = 5
+# R7's traversal is path-sensitive, so a dense derived-on-derived graph
+# costs O(branching ** max_depth). Bound total edge visits so a
+# degenerate ledger fails closed instead of pinning the runner.
+_DERIVED_MAX_GRAPH_STEPS = 100_000
+
+
+class _FormulaError(ValueError):
+    """Raised for any formula that fails R3 (shape) or R5 (evaluation)."""
+
+
+def _parse_formula(formula: str) -> tuple[ast.Expression, set[str]]:
+    """R3: parse `formula` under the whitelisted AST and return
+    (tree, names_used). Raises _FormulaError on anything outside the
+    allowlist. NEVER calls eval()/exec()."""
+    if not isinstance(formula, str) or not formula.strip():
+        raise _FormulaError("formula is missing or empty")
+    if len(formula) > _DERIVED_MAX_FORMULA_CHARS:
+        raise _FormulaError(
+            f"formula is {len(formula)} chars, max {_DERIVED_MAX_FORMULA_CHARS}"
+        )
+    try:
+        tree = ast.parse(formula, mode="eval")
+    except (SyntaxError, ValueError, MemoryError, RecursionError) as e:
+        raise _FormulaError(f"formula does not parse as an expression: {e}") from e
+
+    names: set[str] = set()
+    node_count = 0
+    for node in ast.walk(tree):
+        node_count += 1
+        if node_count > _DERIVED_MAX_FORMULA_NODES:
+            raise _FormulaError(
+                f"formula has more than {_DERIVED_MAX_FORMULA_NODES} AST nodes"
+            )
+        if not isinstance(node, _DERIVED_ALLOWED_NODES):
+            raise _FormulaError(
+                f"formula uses disallowed syntax {type(node).__name__!r}; "
+                f"only + - * / ** %, unary +/-, numeric literals and input "
+                f"names are permitted"
+            )
+        if isinstance(node, ast.Constant):
+            if isinstance(node.value, bool) or not isinstance(
+                node.value, (int, float)
+            ):
+                raise _FormulaError(
+                    f"formula contains a non-numeric literal "
+                    f"{node.value!r} ({type(node.value).__name__})"
+                )
+        elif isinstance(node, ast.Name):
+            if not isinstance(node.ctx, ast.Load):
+                raise _FormulaError("formula may only read names, not assign them")
+            names.add(node.id)
+    return tree, names
+
+
+def _eval_formula(tree: ast.Expression, env: dict[str, float]) -> float:
+    """R5: evaluate a formula tree already checked by _parse_formula.
+
+    Every intermediate value must stay a finite float. Division/modulo by
+    zero, float overflow to inf/nan and out-of-range exponents are
+    _FormulaError (a rejected claim), never a traceback."""
+
+    def _num(value: float, what: str) -> float:
+        if not math.isfinite(value):
+            raise _FormulaError(f"{what} is not finite ({value})")
+        return value
+
+    def _walk(node: ast.AST) -> float:
+        if isinstance(node, ast.Expression):
+            return _walk(node.body)
+        if isinstance(node, ast.Constant):
+            try:
+                return _num(float(node.value), "numeric literal")
+            except OverflowError as e:
+                raise _FormulaError(f"numeric literal overflows: {e}") from e
+        if isinstance(node, ast.Name):
+            if node.id not in env:
+                raise _FormulaError(f"formula references unknown name {node.id!r}")
+            return env[node.id]
+        if isinstance(node, ast.UnaryOp):
+            operand = _walk(node.operand)
+            if isinstance(node.op, ast.UAdd):
+                return operand
+            if isinstance(node.op, ast.USub):
+                return -operand
+            raise _FormulaError(f"unsupported unary operator {type(node.op).__name__}")
+        if isinstance(node, ast.BinOp):
+            left = _walk(node.left)
+            right = _walk(node.right)
+            op = node.op
+            try:
+                if isinstance(op, ast.Add):
+                    out = left + right
+                elif isinstance(op, ast.Sub):
+                    out = left - right
+                elif isinstance(op, ast.Mult):
+                    out = left * right
+                elif isinstance(op, ast.Div):
+                    out = left / right
+                elif isinstance(op, ast.Mod):
+                    out = left % right
+                elif isinstance(op, ast.Pow):
+                    if abs(right) > _DERIVED_MAX_POW_EXPONENT:
+                        raise _FormulaError(
+                            f"exponent {right!r} exceeds the "
+                            f"{_DERIVED_MAX_POW_EXPONENT} cap (compute-bomb guard)"
+                        )
+                    out = left ** right
+                else:
+                    raise _FormulaError(
+                        f"unsupported binary operator {type(op).__name__}"
+                    )
+            except ZeroDivisionError as e:
+                raise _FormulaError(f"division or modulo by zero: {e}") from e
+            except OverflowError as e:
+                raise _FormulaError(f"arithmetic overflow: {e}") from e
+            except (TypeError, ValueError) as e:
+                raise _FormulaError(f"arithmetic error: {e}") from e
+            return _num(float(out), "intermediate result")
+        raise _FormulaError(f"unsupported node {type(node).__name__}")
+
+    return _walk(tree)
+
+
+def _relative_diff(computed: float, declared: float) -> float:
+    """Symmetric relative difference used by the R5 tolerance check.
+
+    |computed - declared| / max(|computed|, |declared|); 0.0 when both
+    are exactly zero. Symmetric (rather than dividing by the declared
+    value) so a declared result of 0 with a non-zero computation is a
+    clean 100% miss instead of a division by zero."""
+    scale = max(abs(computed), abs(declared))
+    if scale == 0.0:
+        return 0.0
+    return abs(computed - declared) / scale
+
+
+def _is_number(value: object) -> bool:
+    """Numeric for ledger purposes: int or float, not bool, and finite.
+    `True` is an int in Python; a boolean input value is a schema error,
+    not the number 1."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return False
+    try:
+        return math.isfinite(float(value))
+    except (OverflowError, ValueError):
+        return False
+
+
+def unsupported_claim_ids(findings_path: Path) -> set[str]:
+    """Return the set of claim ids the verifier marked `unsupported`.
+
+    Deliberately LENIENT at the boundary: a missing, unreadable or
+    malformed findings file yields an empty set instead of raising. The
+    canonical error for a bad verifier artifact belongs to
+    --audit-verifier-findings / validate_verifier_artifact; this helper
+    exists only to enrich R7, and must not change the exit code of a
+    path that already has an owner.
+
+    The join is by id string. The workflow prompt tells the verifier to
+    reuse the claim-ledger ids (`c1`, `c2`, ...), so the namespaces line
+    up by convention rather than by schema."""
+    import json as _json
+
+    try:
+        data = _json.loads(findings_path.read_text(encoding="utf-8"))
+    except (OSError, _json.JSONDecodeError):
+        return set()
+    claims = data.get("claims") if isinstance(data, dict) else None
+    if not isinstance(claims, list):
+        return set()
+    out: set[str] = set()
+    for claim in claims:
+        if not isinstance(claim, dict):
+            continue
+        if str(claim.get("verdict", "")).strip().lower() == "unsupported":
+            cid = str(claim.get("id", "")).strip()
+            if cid:
+                out.add(cid)
+    return out
+
+
+def audit_derived_claims(
+    ledger_path: Path,
+    *,
+    tolerance: float = _DERIVED_DEFAULT_TOLERANCE,
+    max_depth: int = _DERIVED_DEFAULT_MAX_DEPTH,
+    unsupported_ids: frozenset[str] | set[str] = frozenset(),
+) -> tuple[int, list[dict]]:
+    """Audit every `type: "derived"` entry in a claims-ledger JSON.
+
+    Returns (derived_total, problems). `problems` entries are
+    {"id": str, "rule": "R1".."R7", "message": str}; empty = pass. A
+    ledger with no derived claims is a trivial pass — derived claims are
+    an option the author may decline, not a quota.
+
+    Rules (a derived claim fails if ANY of these is violated):
+      R1 `inputs` is a non-empty list; each element carries ref, name,
+         value (finite number, not bool) and a non-empty unit string.
+         Names must be valid Python identifiers (an AST `Name` node can
+         never carry "cost per gw", so a non-identifier name is reported
+         as such rather than as a confusing R4 mismatch) and unique.
+      R2 every `inputs[].ref` resolves to another claim id in the SAME
+         ledger. Dangling refs and refs to an ambiguous duplicate id fail.
+      R3 `formula` parses under the whitelisted AST (see
+         _DERIVED_ALLOWED_NODES). Never eval()/exec().
+      R4 the set of names in the formula equals the set of input names —
+         no unbound name, no declared-but-unused input.
+      R5 evaluating the formula with the input values reproduces
+         `result` within `tolerance` (symmetric relative). Division by
+         zero, overflow and non-finite intermediates are rejections, not
+         crashes; Pow exponents are capped.
+      R6 `assumptions` is a non-empty list of non-empty strings and
+         `unit` is a non-empty string. Arithmetic without stated
+         assumptions is not reproducible judgment, it is a bare number.
+      R7 derived claims may reference other derived claims: reference
+         CYCLES are rejected, the derived-to-derived dependency chain is
+         capped at `max_depth` edges, and a derived claim whose
+         transitive inputs include an id in `unsupported_ids` is itself
+         unsupported.
+
+    Limitations:
+      * Units are checked for presence, not for dimensional consistency.
+        "30 GW * $60B/GW = $1.8T" and "30 GW * 60 apples = 1800 apples"
+        are equally acceptable here; the unit strings are for the reader.
+      * `value` is trusted to match the referenced claim. Nothing in the
+        ledger ties the number 30 to the prose of claim c3, so a derived
+        claim can cite a real claim and then compute with a different
+        number. Detecting that needs claim-text parsing, which this
+        deliberately does not attempt.
+      * R7's unsupported propagation only fires when the caller supplies
+        `unsupported_ids`, and it looks at INPUTS only. A derived claim's
+        own id appearing in `unsupported_ids` is ignored on purpose — the
+        verifier marks derived sentences unsupported precisely because
+        they carry no URL, which is the gap this audit closes. With no
+        verifier findings passed at all, a derived claim resting entirely
+        on rejected inputs passes silently.
+
+    Raises ValueError if the ledger JSON is unreadable or has no
+    top-level non-empty `claims[]` array (same contract as
+    audit_verifier_findings).
+    """
+    import json as _json
+
+    if tolerance < 0:
+        raise ValueError(f"tolerance must be >= 0, got {tolerance}")
+    if max_depth < 1:
+        raise ValueError(f"max_depth must be >= 1, got {max_depth}")
+
+    try:
+        data = _json.loads(ledger_path.read_text(encoding="utf-8"))
+    except (_json.JSONDecodeError, OSError) as e:
+        raise ValueError(f"could not parse claims ledger JSON: {e}") from e
+
+    claims = data.get("claims") if isinstance(data, dict) else None
+    if not isinstance(claims, list):
+        raise ValueError(
+            "claims ledger JSON missing top-level 'claims' array; "
+            f"got: {type(data).__name__}"
+        )
+    if not claims:
+        raise ValueError("claims ledger JSON claims[] is empty")
+
+    # Index the ledger. First id wins; duplicates are tracked so a ref
+    # into an ambiguous id can be reported instead of silently resolving.
+    by_id: dict[str, dict] = {}
+    duplicate_ids: set[str] = set()
+    for entry in claims:
+        if not isinstance(entry, dict):
+            continue
+        cid = str(entry.get("id", "")).strip()
+        if not cid:
+            continue
+        if cid in by_id:
+            duplicate_ids.add(cid)
+        else:
+            by_id[cid] = entry
+
+    def _is_derived(entry: dict) -> bool:
+        return str(entry.get("type", "")).strip().lower() == _DERIVED_TYPE
+
+    problems: list[dict] = []
+
+    def _fail(cid: str, rule: str, message: str) -> None:
+        problems.append({"id": cid, "rule": rule, "message": message})
+
+    # Enumerate derived entries from `claims` DIRECTLY, never from
+    # `by_id`. Indexing first-id-wins and then deriving the work list
+    # from the index made two entries invisible to every rule below:
+    #   * an entry with a missing/blank `id` was never indexed at all;
+    #   * the SECOND entry sharing an id was dropped by first-id-wins.
+    # In both cases the audit reported "0 derived claim(s)" and exited
+    # 0 on a ledger whose arithmetic was wrong — a one-key bypass of the
+    # whole gate. Every derived entry now gets a unique reportable
+    # label, is counted, and is audited; a missing or duplicated id is
+    # itself an R1 failure rather than a way to disappear.
+    derived_entries: list[tuple[str, dict]] = []
+    # Traversal keys for R7. Only an unambiguous id can be the TARGET of
+    # an `inputs[].ref`, so the graph is keyed by those; label-keyed
+    # entries can still be walk ORIGINS (see input_refs below).
+    derived_set: set[str] = {
+        cid for cid, e in by_id.items()
+        if _is_derived(e) and cid not in duplicate_ids
+    }
+    for pos, entry in enumerate(claims, start=1):
+        if not isinstance(entry, dict) or not _is_derived(entry):
+            continue
+        cid = str(entry.get("id", "")).strip()
+        if not cid:
+            label = f"claims[{pos}]"
+            _fail(
+                label, "R1",
+                "derived claim has a missing or blank id, so nothing can "
+                "reference it and it cannot be audited by id; give every "
+                "derived claim a unique id",
+            )
+        elif cid in duplicate_ids:
+            label = f"{cid}@claims[{pos}]"
+            _fail(
+                label, "R1",
+                f"derived claim id {cid!r} is used by more than one ledger "
+                f"entry; ids must be unique or a reference to it is "
+                f"ambiguous",
+            )
+        else:
+            label = cid
+        derived_entries.append((label, entry))
+    derived_ids = [label for label, _ in derived_entries]
+
+    # A claim that carries derivation machinery but is not typed
+    # `derived` would skip this audit entirely while still reading as
+    # arithmetic to a human. Catch the accidental version of that
+    # bypass. (No committed ledger in research/generative/ has these
+    # keys, so this cannot fire retroactively.)
+    for entry in claims:
+        if not isinstance(entry, dict) or _is_derived(entry):
+            continue
+        stray = [k for k in ("formula", "inputs") if k in entry]
+        if stray:
+            _fail(
+                str(entry.get("id", "")).strip() or "<no id>",
+                "R1",
+                f"carries {stray} but type is "
+                f"{str(entry.get('type', '')).strip()!r}; arithmetic claims "
+                f"must be typed {_DERIVED_TYPE!r} so they are recomputed",
+            )
+
+    derived_total = len(derived_ids)
+    if derived_total == 0:
+        return 0, problems
+
+    # Per-claim structural + arithmetic rules.
+    input_refs: dict[str, list[str]] = {}
+    for cid, entry in derived_entries:
+        env: dict[str, float] = {}
+        refs: list[str] = []
+
+        # ---- R1: inputs -------------------------------------------------
+        # `env_ok` means "the name->value bindings are usable", and it is
+        # the ONLY thing that gates R4/R5. A bad `ref` or a missing
+        # `unit` records its own R1 problem (which fails the audit) but
+        # leaves env_ok alone, so a unit typo cannot suppress the
+        # recompute check and hide an arithmetic error behind itself.
+        raw_inputs = entry.get("inputs")
+        env_ok = isinstance(raw_inputs, list) and bool(raw_inputs)
+        if not env_ok:
+            _fail(cid, "R1", "inputs must be a non-empty array")
+        else:
+            seen_names: set[str] = set()
+            for idx, item in enumerate(raw_inputs, start=1):
+                where = f"inputs[{idx}]"
+                if not isinstance(item, dict):
+                    _fail(cid, "R1", f"{where} must be an object")
+                    env_ok = False
+                    continue
+                ref = item.get("ref")
+                name = item.get("name")
+                value = item.get("value")
+                unit = item.get("unit")
+                if not isinstance(ref, str) or not ref.strip():
+                    _fail(cid, "R1", f"{where} ref must be a non-empty string")
+                else:
+                    refs.append(ref.strip())
+                if not isinstance(name, str) or not name.strip():
+                    _fail(cid, "R1", f"{where} name must be a non-empty string")
+                    env_ok = False
+                elif not name.strip().isidentifier():
+                    _fail(
+                        cid, "R1",
+                        f"{where} name {name!r} is not a valid identifier, so "
+                        f"it can never appear in a formula",
+                    )
+                    env_ok = False
+                elif name.strip() in seen_names:
+                    _fail(cid, "R1", f"{where} duplicates input name {name.strip()!r}")
+                    env_ok = False
+                else:
+                    seen_names.add(name.strip())
+                if not _is_number(value):
+                    _fail(
+                        cid, "R1",
+                        f"{where} value must be a finite number, got {value!r}",
+                    )
+                    env_ok = False
+                elif isinstance(name, str) and name.strip().isidentifier():
+                    env[name.strip()] = float(value)
+                if not isinstance(unit, str) or not unit.strip():
+                    _fail(cid, "R1", f"{where} unit must be a non-empty string")
+
+        # ---- R2: refs resolve inside this ledger ------------------------
+        for ref in refs:
+            if ref == cid:
+                _fail(cid, "R7", f"input ref {ref!r} points at its own claim (cycle)")
+            elif ref in duplicate_ids:
+                _fail(
+                    cid, "R2",
+                    f"input ref {ref!r} is ambiguous — the ledger has more "
+                    f"than one claim with that id",
+                )
+            elif ref not in by_id:
+                _fail(
+                    cid, "R2",
+                    f"input ref {ref!r} does not resolve to any claim id in "
+                    f"this ledger",
+                )
+        input_refs[cid] = refs
+
+        # ---- R6: assumptions + unit -------------------------------------
+        assumptions = entry.get("assumptions")
+        if not isinstance(assumptions, list) or not assumptions:
+            _fail(cid, "R6", "assumptions must be a non-empty array")
+        else:
+            bad = [
+                a for a in assumptions
+                if not isinstance(a, str) or not a.strip()
+            ]
+            if bad:
+                _fail(
+                    cid, "R6",
+                    f"assumptions must all be non-empty strings; bad "
+                    f"entries: {bad[:3]!r}",
+                )
+        unit = entry.get("unit")
+        if not isinstance(unit, str) or not unit.strip():
+            _fail(cid, "R6", "unit must be a non-empty string")
+
+        # ---- R3 + R4: formula shape and name binding --------------------
+        tree: ast.Expression | None = None
+        try:
+            tree, names = _parse_formula(entry.get("formula"))
+        except _FormulaError as e:
+            _fail(cid, "R3", str(e))
+            names = set()
+
+        names_ok = False
+        if tree is not None and env_ok:
+            declared = set(env)
+            missing = sorted(names - declared)
+            unused = sorted(declared - names)
+            if missing:
+                _fail(
+                    cid, "R4",
+                    f"formula uses name(s) {missing} that are not declared "
+                    f"in inputs",
+                )
+            if unused:
+                _fail(
+                    cid, "R4",
+                    f"input(s) {unused} are declared but never used in the "
+                    f"formula",
+                )
+            names_ok = not missing and not unused
+
+        # ---- R5: recomputation ------------------------------------------
+        if tree is not None and names_ok:
+            declared_result = entry.get("result")
+            if not _is_number(declared_result):
+                _fail(
+                    cid, "R5",
+                    f"result must be a finite number, got {declared_result!r}",
+                )
+            else:
+                try:
+                    computed = _eval_formula(tree, env)
+                except _FormulaError as e:
+                    _fail(cid, "R5", f"formula could not be evaluated: {e}")
+                else:
+                    rel = _relative_diff(computed, float(declared_result))
+                    if rel > tolerance:
+                        _fail(
+                            cid, "R5",
+                            f"recomputation mismatch: formula yields "
+                            f"{computed!r} but result declares "
+                            f"{declared_result!r} "
+                            f"({rel * 100:.4g}% off, tolerance "
+                            f"{tolerance * 100:.4g}%)",
+                        )
+
+    # ---- R7: cycles, depth, transitive support --------------------------
+    # `derived_set` was built above from unambiguous ids only — it is the
+    # set of legal ref TARGETS. `derived_ids` holds the walk origins,
+    # which may be synthetic labels for id-less/duplicated entries.
+    # Path-sensitive traversal re-explores shared sub-graphs, so a dense
+    # derived-on-derived ledger is O(branching ** max_depth). The ledger
+    # is LLM-authored, so bound the total work and fail closed if the
+    # graph is too big to verify rather than letting a runner spin.
+    budget = [_DERIVED_MAX_GRAPH_STEPS]
+    budget_reported = False
+
+    for cid in derived_ids:
+        # Walk the derived-to-derived edges from `cid`, carrying the
+        # current path so a repeat on that path is a cycle (and the
+        # recursion terminates instead of looping forever). `path` length
+        # counts NODES, so `len(path) > max_depth` means the next edge
+        # would be edge number max_depth+1: a derived claim built only
+        # from retrieval claims is depth 0, and max_depth=5 permits a
+        # five-edge chain. Both problems are reported at most once per
+        # entry point so one bad graph does not flood the output.
+        state = {"cycle": False, "depth": False}
+
+        def _walk(node: str, path: tuple[str, ...], _cid=cid, _state=state) -> None:
+            for ref in input_refs.get(node, []):
+                if ref not in derived_set:
+                    continue
+                budget[0] -= 1
+                if budget[0] < 0:
+                    return
+                if ref in path:
+                    if not _state["cycle"]:
+                        _state["cycle"] = True
+                        _fail(
+                            _cid, "R7",
+                            "derived-claim reference cycle: "
+                            + " -> ".join(path + (ref,)),
+                        )
+                    continue
+                if len(path) > max_depth:
+                    if not _state["depth"]:
+                        _state["depth"] = True
+                        _fail(
+                            _cid, "R7",
+                            f"derived dependency chain deeper than "
+                            f"{max_depth}: " + " -> ".join(path + (ref,)),
+                        )
+                    continue
+                _walk(ref, path + (ref,))
+
+        _walk(cid, (cid,))
+        if budget[0] < 0 and not budget_reported:
+            budget_reported = True
+            _fail(
+                cid, "R7",
+                f"derived-claim dependency graph exceeds the "
+                f"{_DERIVED_MAX_GRAPH_STEPS} traversal-step budget; it is "
+                f"too tangled to verify — flatten the derivations",
+            )
+            break
+
+    if unsupported_ids:
+        # INPUTS only — never the derived claim's own id. The verifier is
+        # EXPECTED to mark a derived sentence `unsupported`: it has no
+        # source URL, which is the entire gap this audit exists to close.
+        # Self-taint would therefore fail every derived claim the moment
+        # both flags are passed, i.e. exactly the case the feature is for.
+        for cid in derived_ids:
+            tainted: list[str] = []
+            seen: set[str] = {cid}
+            stack = list(input_refs.get(cid, []))
+            while stack:
+                ref = stack.pop()
+                if ref in seen:
+                    continue
+                seen.add(ref)
+                if ref in unsupported_ids:
+                    tainted.append(ref)
+                if ref in derived_set:
+                    stack.extend(input_refs.get(ref, []))
+            if tainted:
+                _fail(
+                    cid, "R7",
+                    f"transitive input(s) {sorted(set(tainted))} were marked "
+                    f"unsupported by the verifier, so the derived claim is "
+                    f"unsupported too",
+                )
+
+    return derived_total, problems
+
+
 def count_classes(body_html: str) -> dict[str, int]:
     """Return a {class_name: count} map of every ara-* class in the
     article's HTML output, after compile."""
@@ -1419,6 +2309,54 @@ def main(argv: list[str] | None = None) -> int:
             "demoted (<mark>) or removed."
         ),
     )
+    # Derived-claim recompute audit. Same audit-mode shape as
+    # --audit-verifier-findings: point it at the claims ledger and it
+    # exits 1 with a per-claim explanation when the arithmetic an
+    # article performs from its cited inputs does not reproduce.
+    p.add_argument(
+        "--audit-derived-claims",
+        type=str,
+        default=None,
+        metavar="PATH",
+        help=(
+            "path to .gen-claims-ledger.json. When set, every "
+            "type='derived' entry is recompute-verified: inputs must "
+            "resolve to other claims in the same ledger, the formula "
+            "must parse under a whitelisted AST (never eval'd), and "
+            "evaluating it must reproduce the declared result within "
+            "--derived-tolerance. Reference cycles, over-deep "
+            "dependency chains and derived claims resting on inputs "
+            "the verifier rejected also fail. A ledger with no derived "
+            "claims passes trivially. Pass it together with "
+            "--audit-verifier-findings to enable the unsupported-input "
+            "propagation check (R7)."
+        ),
+    )
+    p.add_argument(
+        "--derived-tolerance",
+        type=float,
+        default=_DERIVED_DEFAULT_TOLERANCE,
+        metavar="FLOAT",
+        help=(
+            "relative tolerance for the derived-claim recompute check "
+            f"(default {_DERIVED_DEFAULT_TOLERANCE} = 1%%). Compared "
+            "symmetrically: |computed-declared| / max(|computed|, "
+            "|declared|). Loosen it for claims stated as rounded "
+            "headline figures; do not loosen it to paper over an "
+            "arithmetic error."
+        ),
+    )
+    p.add_argument(
+        "--derived-max-depth",
+        type=int,
+        default=_DERIVED_DEFAULT_MAX_DEPTH,
+        metavar="INT",
+        help=(
+            "maximum derived-to-derived dependency chain length "
+            f"(default {_DERIVED_DEFAULT_MAX_DEPTH}). A derived claim "
+            "built only from retrieval claims has depth 0."
+        ),
+    )
     p.add_argument(
         "--claims-ledger",
         type=str,
@@ -1462,6 +2400,108 @@ def main(argv: list[str] | None = None) -> int:
             return 1
     else:
         body = raw
+
+    # Derived-claim recompute audit mode. Mirrors the verifier-findings
+    # audit below: missing file = 2, malformed/failing = 1, clean = 0.
+    #
+    # Composition rule: when --audit-verifier-findings is ALSO passed, we
+    # borrow its `unsupported` ids for R7 and then FALL THROUGH so the
+    # verifier audit still runs and still owns the exit code. Passing
+    # --audit-verifier-findings alone behaves exactly as it did before
+    # this flag existed.
+    if args.audit_derived_claims:
+        ledger_path = Path(args.audit_derived_claims)
+        if not ledger_path.exists():
+            print(
+                f"check: claims ledger file not found: {ledger_path}",
+                file=sys.stderr,
+            )
+            return 2
+        # R7's unsupported-input propagation needs the verifier's
+        # verdicts. Without them the rule silently no-ops, and a derived
+        # claim resting entirely on a REJECTED input passes with a clean
+        # "0 failed" line — a contract rule not running looked exactly
+        # like a contract rule passing. Two changes fix that: fall back
+        # to the sibling verifier artifact the workflow writes next to
+        # the ledger, and ALWAYS say on stderr which of the two happened.
+        unsupported: set[str] = set()
+        verifier_source: str | None = None
+        if args.audit_verifier_findings:
+            verifier_path = Path(args.audit_verifier_findings)
+            if verifier_path.exists():
+                # Lenient by design — a broken verifier artifact is the
+                # verifier audit's error to report, not this one's.
+                unsupported = unsupported_claim_ids(verifier_path)
+                verifier_source = str(verifier_path)
+        else:
+            sibling = ledger_path.parent / ".gen-verifier-findings.json"
+            if sibling.exists():
+                unsupported = unsupported_claim_ids(sibling)
+                verifier_source = f"{sibling} (auto-discovered sibling)"
+        if verifier_source is None:
+            print(
+                "check: R7 unsupported-input propagation NOT checked — no "
+                "verifier findings available (pass --audit-verifier-findings, "
+                "or place .gen-verifier-findings.json beside the ledger). A "
+                "derived claim resting on a rejected input will NOT be caught.",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                f"check: R7 unsupported-input propagation checked against "
+                f"{verifier_source} ({len(unsupported)} unsupported id(s)).",
+                file=sys.stderr,
+            )
+        try:
+            derived_total, problems = audit_derived_claims(
+                ledger_path,
+                tolerance=args.derived_tolerance,
+                max_depth=args.derived_max_depth,
+                unsupported_ids=unsupported,
+            )
+        except ValueError as e:
+            print(f"check: {e}", file=sys.stderr)
+            return 1
+        failing_ids = {p["id"] for p in problems}
+        print(
+            f"derived-claim audit: {derived_total} derived claim(s) in the "
+            f"ledger; {len(failing_ids)} failed recompute verification "
+            f"({len(problems)} problem(s)).",
+            file=sys.stderr,
+        )
+        if problems:
+            print(
+                "Derived-claim verification failed. A derived claim is "
+                "supported only if its inputs resolve and its arithmetic "
+                "reproduces; fix the numbers, the formula, or drop the "
+                "claim:",
+                file=sys.stderr,
+            )
+            for prob in problems[:10]:
+                print(
+                    f"  - id={prob['id']} [{prob['rule']}]: {prob['message']}",
+                    file=sys.stderr,
+                )
+            if len(problems) > 10:
+                print(f"  ... and {len(problems) - 10} more", file=sys.stderr)
+            return 1
+        # Only short-circuit when this is the ONLY artifact check asked
+        # for. --audit-derived-claims takes the same file as
+        # --claims-ledger, so co-passing them is the natural wiring;
+        # returning 0 here would silently skip the ledger-schema and
+        # red-team gates that the caller explicitly requested.
+        if not (
+            args.audit_verifier_findings
+            or args.claims_ledger
+            or args.redteam_findings
+        ):
+            return 0
+        # Fall through so the other requested checks still run and still
+        # own the exit code. NOTE: the verifier-findings block below ends
+        # in an unconditional return, so `--audit-verifier-findings`
+        # co-passed with `--claims-ledger` still short-circuits the
+        # methodology gate. That is pre-existing behaviour of that flag,
+        # left untouched here.
 
     # Verifier-findings audit mode. Runs ONLY when --audit-verifier-findings
     # is set. Bypasses validate_body / design / quality so the audit can run

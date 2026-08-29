@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-02 03:46:57 UTC
+
+CYCLE: Karpathy deprecates his own pelican eval; SemiAnalysis's founder reported raising a $400M fund.
+
+TOP STORIES:
+• Karpathy retires the pelican-SVG test — Opus 5, 1M tokens (~$10), 2 hours, 5,500 lines of three.js from one LOTR paragraph; the real finding is models still can't watch or play what they build [✓]
+• Dylan Patel reported aiming to raise a $400M VC fund, putting AI semis' most-cited independent analyst on the buy side of his own coverage [⚠]
+
+QUICK HITS: ChatGPT Work deploys apps to Cloudflare Workers ("ChatGPT Sites"); CXMT added to the $DRAM index.
+
+WATCH: Whether anyone reruns Karpathy's LOTR prompt at 1M tokens against Sol, Luna or V4-Flash — the only thing turning it into a comparison.
+
+Full update on GitHub.

@@ -1,0 +1,154 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Claude (Mythos Preview and Opus 4.8) autonomously designed protein binders against 16 targets, with binders confirmed for 14 of the 15 targets with interpretable data.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.anthropic.com/research/Claude-accelerates-protein-design", "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c2",
+      "claim": "354 of 1,320 designs bound their targets, a hit rate of 26.8% by the integrated call.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf", "https://www.adaptyvbio.com/blog/anthropic-1"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c3",
+      "claim": "Per-target hit rates ranged from 0% (MBP, 0/90) to 80% (TREM2, 72/90), i.e. extreme dispersion around the pooled 26.8%.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c4",
+      "claim": "The 26.8% figure is an orchestration result: Claude assembled pipelines from ten open-source structure-generation methods (including RFdiffusion and RFdiffusion3), not a single-model design.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c5",
+      "claim": "RFdiffusion (Watson et al., Nature 2023) reported an overall experimental binder success rate of 19%, across five targets testing fewer than 100 designs each, roughly two orders of magnitude above prior Rosetta-based methods.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.nature.com/articles/s41586-023-06415-8", "https://tienmphan.github.io/blog/2025/RFDiffusion/"],
+      "source_tiers": ["academic", "opinion"],
+      "as_of": "2023-07-11"
+    },
+    {
+      "id": "c6",
+      "claim": "Anthropic's blog post does not cite RFdiffusion's 19% as its baseline; it compares against a '10-15% typical' figure from ProteinBase and against Adaptyv's open competitions.",
+      "type": "comparison",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.anthropic.com/research/Claude-accelerates-protein-design", "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c7",
+      "claim": "A direct 26.8% versus 19% comparison is not a controlled benchmark because targets, CRO/assay methodology, design budgets and the era of the underlying generators differ.",
+      "type": "comparison",
+      "confidence": "medium",
+      "risk": "contested",
+      "source_urls": ["https://www.nature.com/articles/s41586-023-06415-8", "https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"],
+      "source_tiers": ["academic", "primary"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c8",
+      "claim": "Mythos Preview hit 26.7% (104/390) and Opus 4.8 hit 22.6% (88/390) in multi-target mode; Mythos Preview hit 35.1% (158/450) in single-target mode; the top-ranked design bound 49% of the time.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c9",
+      "claim": "On RBX1, 28 of 90 Claude designs bound versus 9 of 245 in the open competition (3.7%), and the tightest reached 3.9 nM against the competition winner's 45 nM re-measured on the same plate.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf", "https://proteinbase.com/collections/gem-x-adaptyv-rbx1-binder-design-competition-results"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c10",
+      "claim": "Claude designed 12 TNFalpha binders (12/150, 8%), all from Opus 4.8, on a target where AlphaProteo and other de novo efforts reported none.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf", "https://arxiv.org/abs/2409.08022"],
+      "source_tiers": ["primary", "academic"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c11",
+      "claim": "On the novel targets 15-PGDH and latent GDF-8, Claude scored 1/30 and 14/60 respectively, comparable to or better than Adaptyv competition fields (1/106 and 6/100).",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf", "https://proteinbase.com/collections/berlin-bio-x-adaptyv-15-pgdh-binder-design-competition", "https://proteinbase.com/collections/gdf-8-challenge-results"],
+      "source_tiers": ["primary", "secondary", "secondary"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c12",
+      "claim": "The integrated-call binder definition broadened the count above Adaptyv Bio's own classification (roughly 336 of 1,296), adding 19 binders.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c13",
+      "claim": "The report explicitly disclaims that Claude's designs are better than an expert would obtain with the same tools and budget, and describes 'campaigns rather than models'.",
+      "type": "quote",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c14",
+      "claim": "ProteinBase and the Overath et al. corpus consist of roughly 770 binders out of 5,700 designs against 40 targets; Overath et al. analyzed 3,766 characterized binders across 15 targets.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www.anthropic.com/research/Claude-accelerates-protein-design", "https://www.biorxiv.org/content/10.1101/2025.08.14.670059v2"],
+      "source_tiers": ["primary", "academic"],
+      "as_of": "2026-08-19"
+    },
+    {
+      "id": "c15",
+      "claim": "Every model Claude used was open-source; Anthropic releases prompts, models and both CROs' binding data under CC BY 4.0.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": ["https://www-cdn.anthropic.com/30bf50e22a01388bb29bf077ee3f244531594b7a.pdf", "https://huggingface.co/datasets/Anthropic/claude-protein-binder-design"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-18"
+    }
+  ]
+}

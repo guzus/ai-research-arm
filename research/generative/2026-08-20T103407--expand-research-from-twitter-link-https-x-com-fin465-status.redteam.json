@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Every company that has built a product on top of LinkedIn scraping has eventually been sued, forced to settle, or shut down entirely — and the pattern has only hardened as LinkedIn's parent Microsoft has scaled up enforcement each year since 2017.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Scraping public posts for buying-intent language and racing to the poster's inbox is not an underused hack; it is a named, funded, populated corner of a market already worth billions.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "exhaustive search turned up no independent corroboration anywhere online of the specific story in the tweet — a YC founder reaching $25k/month via this technique, closing a deal seven hours after a public LinkedIn post.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

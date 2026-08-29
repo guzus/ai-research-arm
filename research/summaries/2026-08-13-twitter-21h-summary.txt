@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-13 21:57:58 UTC
+
+CYCLE: Cheap-inference crown moves to Google; OpenAI ships speed and desktop memory; X opens the ranking code, partly.
+
+TOP STORIES:
+• Gemini 3.7 Flash GA 3 weeks after 3.6 at $0.75/$3.75 - but the "50% off" expires 1 Jan 2027 into 3.6's exact standard rate ✓
+• X published For You ranking code under Apache 2.0 - Grok prompts and enforcement rules withheld, so "fully open-sourced" is false 🚩
+• ChatGPT Computer History: opt-in desktop memory across apps/websites, feeds Codex; EEA/UK/Switzerland deferred ✓
+• GPT-5.6 Sol Ultrafast on Cerebras at 750 tok/s - select customers only, no price published ⚠
+
+WATCH: First independent benchmark of Gemini 3.7 Flash vs Google's own launch numbers.
+
+Full update on GitHub.

@@ -6,6 +6,7 @@ import {
   splitSections,
   wrapTables,
 } from './shared';
+import { uiText, type UiLanguage } from '../i18n';
 
 export type TodayRenderOptions = {
   md: string;
@@ -14,12 +15,48 @@ export type TodayRenderOptions = {
   audioDates: string[];
   searchTerm: string;
   frontPageCardHtml: string | null;
+  language: UiLanguage;
 };
+
+/** Operational fallback artifacts stay available to the pipeline, but they
+ * are not editorial publications and must never be rendered as reader copy. */
+export function isDeterministicFallbackDigest(md: string): boolean {
+  return md.trimStart().startsWith('<!-- ara-publication-state: unavailable -->');
+}
+
+function renderDigestUnavailable(language: UiLanguage, date: string): string {
+  return [
+    '<section class="content-card today-unavailable" role="status">',
+    '  <div class="content-card-body">',
+    '    <span class="ara-eyebrow">' + escapeHtml(uiText(language, 'today.unavailableEyebrow')) + '</span>',
+    '    <h2>' + escapeHtml(uiText(language, 'today.unavailableTitle', { date })) + '</h2>',
+    '    <p>' + escapeHtml(uiText(language, 'today.unavailableBody')) + '</p>',
+    '  </div>',
+    '</section>',
+  ].join('\n');
+}
+
+/** Drop the first top-level list item from a markdown block, keeping any of
+ * its wrapped continuation lines with it. Returns the input unchanged when
+ * there is no leading bullet, so a paragraph-style summary is never gutted. */
+function dropFirstBullet(md: string): string {
+  const lines = md.split('\n');
+  const start = lines.findIndex((l) => /^\s*[-*]\s+/.test(l));
+  if (start === -1) return md;
+  let end = start + 1;
+  while (end < lines.length && !/^\s*[-*]\s+/.test(lines[end]) && lines[end].trim()) {
+    end += 1;
+  }
+  return [...lines.slice(0, start), ...lines.slice(end)].join('\n').trim();
+}
 
 /** Render the daily digest. Treats Executive Summary specially as a TL;DR block.
  * When `frontPageCardHtml` is supplied the layout splits into two desktop
  * columns: front page on the left, digest cards on the right. */
 export function renderTodayHtml(options: TodayRenderOptions): string {
+  if (isDeterministicFallbackDigest(options.md)) {
+    return renderDigestUnavailable(options.language, options.dateStr);
+  }
   const sections = splitSections(options.md);
 
   // Digest files often start with `# AI Daily Digest - <date>` before the
@@ -40,7 +77,7 @@ export function renderTodayHtml(options: TodayRenderOptions): string {
         '  <button class="today-audio-play" type="button" data-digest-audio-play data-audio-date="' + escapeHtml(options.dateStr) + '" aria-pressed="false">',
         '    <span class="today-audio-play-icon" aria-hidden="true"></span>',
         '    <span class="today-audio-play-copy">',
-        '      <span class="today-audio-play-label" data-digest-audio-label>Play digest audio</span>',
+        '      <span class="today-audio-play-label" data-digest-audio-label>' + uiText(options.language, 'today.playAudio') + '</span>',
         '      <span class="today-audio-play-date">' + escapeHtml(options.fallbackTitle) + '</span>',
         '    </span>',
         '  </button>',
@@ -55,6 +92,17 @@ export function renderTodayHtml(options: TodayRenderOptions): string {
     if (section.title && isModelReleaseDigestSection(section.title)) continue;
 
     const isSummary = /^(executive summary|tl;dr|tldr|summary)$/i.test(section.title.trim());
+
+    // The front page's headline and standfirst ARE the first Executive
+    // Summary bullet (render_front_page.mjs builds them from it), so with
+    // both columns on screen the reader met the same sentence twice — once
+    // at masthead size on the left, once as bullet one on the right. Drop it
+    // from the TL;DR when the front page is showing it; no information is
+    // lost, it just stops being said twice.
+    if (isSummary && options.frontPageCardHtml) {
+      section.body = dropFirstBullet(section.body);
+      if (!section.body.trim()) continue;
+    }
     const title = section.title || options.fallbackTitle;
     const anchorId = sectionAnchorId('today', isSummary ? 'tl-dr' : title, sectionIndex);
     sectionIndex += 1;

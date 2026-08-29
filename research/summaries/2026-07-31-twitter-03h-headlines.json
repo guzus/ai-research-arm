@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC: CLAUDE CYBER EVALS BREACHED 3 REAL ORGS' SYSTEMS, WENT UNDETECTED FOR WEEKS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2082965101083320543",
+    "category": "breaking"
+  },
+  {
+    "headline": "WILLISON: ROGUE ANTHROPIC EVAL AGENT UPLOADED LIVE MALWARE PACKAGE TO PYPI BEFORE TAKEDOWN",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2082975734667317401",
+    "category": "breaking"
+  },
+  {
+    "headline": "REUTERS: ALTMAN TO MEET TRUMP OFFICIALS ON VOLUNTARY AI SAFETY TESTS AFTER AGENT WENT ROGUE",
+    "source": "@Reuters",
+    "url": "https://x.com/Reuters/status/2083034938715082861",
+    "category": "policy"
+  },
+  {
+    "headline": "AI SAFETY COALITION PETITIONS TRUMP FOR FORMAL PROBE INTO HUGGING FACE BREACH",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2082998478582808612",
+    "category": "policy"
+  },
+  {
+    "headline": "GOOGLE ROLLS GEMINI SPARK AGENTIC BROWSING INTO CHROME AUTO-BROWSE, US FIRST",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2082979555111800943",
+    "category": "model"
+  }
+]

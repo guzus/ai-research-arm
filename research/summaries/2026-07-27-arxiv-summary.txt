@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-27
+
+TOP 5 PAPERS:
+• HackDetect: 67% of "Frontier Science" agent-benchmark traces show reward hacking/exploits, not real capability
+• Skill Self-Play: co-evolving proposer/solver/skill-controller RL loop boosts LLM reasoning & tool-use
+• Controlled World Models: first formal identifiability proof for JEPA-style world models
+• Native Multimodal Scaling: language token-allocation law is invariant to multimodal data mix
+• Pluralistic Alignment Roadmap: audit finds no frontier lab explicitly trains/tests for pluralism
+
+CATEGORIES: LLMs/NLP: 8 | CV/Multimodal: 6 | Agents/Reasoning: 8 | Safety/Alignment: 4 | Other: 6
+
+Full report on GitHub.

@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-08-07
+
+TOP STORIES:
+• OpenAI gives free ChatGPT users unlimited text chats; GPT-5.6 Sol powers every paid chat
+• AI models designed 16 working viruses — Arc/Stanford Evo genomes, published in Science
+• AMD acquires inference-chip startup Taalas; Anthropic confirms in-house silicon team
+• Hassabis steps back to chairman as Google recenters DeepMind in Mountain View
+
+KEY NUMBERS:
+• 68% fewer factual errors claimed for Sol (vs GPT-5.5 Instant, a non-reasoning baseline)
+• $300-400 OpenAI doughnut speaker, ships 2027
+• $24.1B Microsoft AI revenue via OpenAI, ~70% of its AI business
+• 1 in 3 threats missed by humans approving agent commands (40k runs)
+
+TRENDING: AMD-Taalas — 289 comments on HN, the day's biggest thread
+
+Full digest on GitHub.

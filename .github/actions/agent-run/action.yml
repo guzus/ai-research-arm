@@ -1,5 +1,5 @@
 name: ARA agent run
-description: Run a Claude-Code-compatible agent through native Claude, Fireworks, or Z.ai and optionally require committed output.
+description: Run an agent through native Claude, Fireworks, Z.ai, or an explicitly compatible isolated OpenCode lane fallback and optionally require committed output.
 
 inputs:
   lane:
@@ -7,7 +7,7 @@ inputs:
     required: false
     default: ""
   backend:
-    description: Explicit backend override (claude, fireworks-glm-5p2, zai-glm-5p2, fireworks-deepseek-v4-flash, glm-5p2, deepseek-v4-flash). Bypasses the lane lookup. CI BANS explicit backends in committed workflows (build_backend_matrix.py cross-check) — this input exists only for manual/emergency composite invocation outside CI-checked workflows.
+    description: Explicit agent-run-compatible backend override. Cross-adapter backends require a lane fallback_chain contract and are rejected here. CI bans explicit backends in committed workflows.
     required: false
     default: ""
   claude-code-oauth-token:
@@ -21,8 +21,16 @@ inputs:
     description: Z.ai Coding Plan API key for Z.ai-routed Claude Code runs.
     required: false
     default: ""
+  opencode-api-key:
+    description: OpenCode Go key. Passed only to a lane-explicit isolated OpenCode fallback.
+    required: false
+    default: ""
+  opencode-mode:
+    description: Isolated OpenCode contract/input mode. Use twitter only for callers that stage .twitter-input; all other agent-run lanes remain editorial.
+    required: false
+    default: editorial
   fireworks-fallback:
-    description: Fallback policy. claude (default) = walk the ordered fallback.chain from data/agent-backends.json when the requested provider is unavailable; none = strict, the requested backend is the only candidate.
+    description: Fallback policy. claude (default) = walk the lane fallback_chain override when declared, otherwise the global fallback.chain; none = strict, requested backend only.
     required: false
     default: claude
   claude-args:
@@ -71,6 +79,12 @@ outputs:
   model-id:
     description: Provider model id of the EFFECTIVE backend (empty on the native path — see native-model resolution).
     value: ${{ steps.select.outputs.model-id }}
+  native-model:
+    description: Resolved native Claude model (what the `--model opus` alias serves on the native path — the native-model input, else the SSOT's global fallback.native_model).
+    value: ${{ steps.select.outputs.native-model }}
+  execution-file:
+    description: Path to the Claude Code execution transcript JSON reported by a Claude-compatible child (intentionally empty for isolated OpenCode). Callers that need it after a later agent-run call in the same job must copy it immediately.
+    value: ${{ steps.run-claude.outputs.execution_file || steps.run-claude-bots.outputs.execution_file || steps.run-fireworks.outputs.execution_file || steps.run-fireworks-bots.outputs.execution_file || steps.run-zai.outputs.execution_file || steps.run-zai-bots.outputs.execution_file }}
   changed:
     description: "true when expected-paths were provided and changed"
     value: ${{ steps.guard.outputs.changed }}
@@ -94,8 +108,9 @@ runs:
 
     # Routing SSOT: scripts/select_backend.py resolves the lane's backend
     # from data/agent-backends.json, probes the requested provider, and on
-    # unavailability walks the ordered fallback.chain — first available
-    # candidate wins. Strict lanes / fireworks-fallback=none skip the chain.
+    # unavailability walks the explicit lane fallback_chain override when
+    # present, otherwise the ordered global fallback.chain. Strict lanes /
+    # fireworks-fallback=none skip both chains.
     # No input at all is a hard error — never a silent default.
     - name: Select backend (SSOT lane + ordered fallback chain)
       id: select
@@ -107,6 +122,11 @@ runs:
         FALLBACK_POLICY: ${{ inputs.fireworks-fallback }}
         FIREWORKS_API_KEY: ${{ inputs.fireworks-api-key }}
         ZAI_API_KEY: ${{ inputs.zai-api-key }}
+        OPENCODE_API_KEY: ${{ inputs.opencode-api-key }}
+        # The Claude OAuth preflight marks 401/403 auth rejection and a 429
+        # run-scoped rate limit unavailable (non-strict → walk the chain).
+        # Without the token the native path is also unavailable.
+        CLAUDE_CODE_OAUTH_TOKEN: ${{ inputs.claude-code-oauth-token }}
       run: |
         set -euo pipefail
         args=(--github-output "$GITHUB_OUTPUT" --fallback-policy "${FALLBACK_POLICY:-claude}")
@@ -126,8 +146,47 @@ runs:
         fi
         python3 scripts/select_backend.py "${args[@]}"
 
+    - name: Resolve isolated editorial path contract
+      id: isolated-contract
+      if: steps.select.outputs.provider == 'opencode-go'
+      shell: bash
+      env:
+        EXPECTED_PATHS: ${{ inputs.expected-paths }}
+        ALLOWED_PATHS: ${{ inputs.allowed-paths }}
+      run: |
+        set -euo pipefail
+        paths="$ALLOWED_PATHS"
+        if [ -z "$paths" ]; then
+          paths="$EXPECTED_PATHS"
+        fi
+        if [ -z "$paths" ]; then
+          echo "::error::An isolated OpenCode fallback requires expected-paths or allowed-paths."
+          exit 1
+        fi
+        {
+          echo "paths<<__ISOLATED_ALLOWED_PATHS__"
+          echo "$paths"
+          echo "__ISOLATED_ALLOWED_PATHS__"
+        } >> "$GITHUB_OUTPUT"
+
     - name: Setup Claude sandbox
+      if: steps.select.outputs.provider != 'opencode-go'
       uses: ./.github/actions/setup-claude-sandbox
+
+    # Cross-adapter fallback is opt-in per lane in the routing SSOT. The
+    # isolated child receives the exact caller prompt and output path contract,
+    # and imports only one validated commit back into the host checkout.
+    - name: Run agent with isolated OpenCode
+      id: run-opencode
+      if: steps.select.outputs.provider == 'opencode-go'
+      uses: ./.github/actions/run-opencode-container
+      with:
+        mode: ${{ inputs.opencode-mode }}
+        lane: ${{ inputs.lane }}
+        allowed-paths: ${{ steps.isolated-contract.outputs.paths }}
+        model: ${{ steps.select.outputs.provider }}/${{ steps.select.outputs.model-id }}
+        opencode-api-key: ${{ inputs.opencode-api-key }}
+        prompt-text: ${{ inputs.prompt }}
 
     # Native-Claude runs (requested backend=claude or Fireworks fallback)
     # serve the resolved native model (native-model input, else the SSOT's
@@ -136,8 +195,9 @@ runs:
     # profile model. Haiku alias is left alone so cheap subagent calls
     # stay cheap.
     - name: Run agent with Claude
+      id: run-claude
       if: steps.select.outputs.provider == 'claude' && inputs.allowed-bots == ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_MODEL: ${{ steps.select.outputs.native-model }}
         ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.native-model }}
@@ -149,8 +209,9 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Claude
+      id: run-claude-bots
       if: steps.select.outputs.provider == 'claude' && inputs.allowed-bots != ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_MODEL: ${{ steps.select.outputs.native-model }}
         ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.native-model }}
@@ -163,8 +224,9 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Fireworks
+      id: run-fireworks
       if: steps.select.outputs.provider == 'fireworks' && inputs.allowed-bots == ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
         ANTHROPIC_API_KEY: ${{ inputs.fireworks-api-key }}
@@ -183,8 +245,9 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Fireworks
+      id: run-fireworks-bots
       if: steps.select.outputs.provider == 'fireworks' && inputs.allowed-bots != ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
         ANTHROPIC_API_KEY: ${{ inputs.fireworks-api-key }}
@@ -204,8 +267,9 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Z.ai
+      id: run-zai
       if: steps.select.outputs.provider == 'zai' && inputs.allowed-bots == ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
@@ -225,8 +289,9 @@ runs:
         prompt: ${{ inputs.prompt }}
 
     - name: Run agent with Z.ai
+      id: run-zai-bots
       if: steps.select.outputs.provider == 'zai' && inputs.allowed-bots != ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
@@ -257,6 +322,7 @@ runs:
         EXPECTED_PATHS: ${{ inputs.expected-paths }}
         ALLOWED_PATHS: ${{ inputs.allowed-paths }}
         LABEL: ${{ inputs.label }}
+        PRE_SHA: ${{ steps.pre.outputs.sha }}
       run: |
         set -euo pipefail
 
@@ -275,6 +341,44 @@ runs:
 
         if [ "${#pathspecs[@]}" -eq 0 ]; then
           exit 0
+        fi
+
+        # Research outputs are public artifacts, never hidden scratch files.
+        # Reject diagnostic probes before staging so a failed sandbox check
+        # cannot satisfy the output contract or be auto-merged as lane data.
+        hidden_outputs=()
+        add_hidden_output() {
+          local candidate="$1"
+          local existing
+          for existing in "${hidden_outputs[@]}"; do
+            [ "$existing" = "$candidate" ] && return
+          done
+          hidden_outputs+=("$candidate")
+        }
+        inspect_output_path() {
+          local candidate="$1"
+          local component
+          local components=()
+          IFS='/' read -r -a components <<< "$candidate"
+          for component in "${components[@]}"; do
+            if [[ "$component" == .* ]]; then
+              add_hidden_output "$candidate"
+              return
+            fi
+          done
+        }
+        while IFS= read -r -d '' candidate; do
+          inspect_output_path "$candidate"
+        done < <(
+          {
+            git ls-files --others --modified --exclude-standard -z -- "${pathspecs[@]}"
+            git diff --name-only -z "${PRE_SHA}..HEAD" -- "${pathspecs[@]}"
+          }
+        )
+        if [ "${#hidden_outputs[@]}" -gt 0 ]; then
+          echo "::error::${LABEL} produced hidden diagnostic file(s); refusing to commit them:"
+          printf '  - %s\n' "${hidden_outputs[@]}"
+          exit 1
         fi
 
         git add -- "${pathspecs[@]}"

@@ -3,7 +3,7 @@ slug: liquid-ai-lfm2-5-230m-2026-06
 title: Liquid AI LFM2.5-230M — smallest-yet on-device model
 company: Liquid AI
 model: LFM2.5-230M
-status: released
+status: closed
 status_note: |
   Liquid AI launched **LFM2.5-230M** on SGLang via LMSYS on 2026-06-26
   (@lmsysorg, ~27 likes) — its **smallest model yet at 230M parameters**,
@@ -25,12 +25,14 @@ sources:
   - https://x.com/lmsysorg/status/2070168574849945721
   - "@lmsysorg"
 created_at: 2026-06-26
-updated_at: 2026-06-26
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-26
+closed_at: 2026-07-26
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-26
     change: "Created — Liquid AI launched LFM2.5-230M on SGLang via LMSYS on 2026-06-26 (@lmsysorg ~27 likes): its smallest model yet at 230M params, for on-device deployment. Launched and usable → status released; verification partial (single low-engagement relay via @lmsysorg; no benchmarks/pricing/architecture detail in window). Joins the small/efficient-model set ([[xiaomi-mimo-code-2026-06]], [[cohere-bls-mini-code-1]], [[sakana-fugu-2026-06]])."
+  - ts: 2026-07-26
+    change: "Closed — released ≥4 weeks ago (2026-06-26), settled into normal coverage with no further signal in this window → closed_reason: released-and-aged."
 ---
 
 **Liquid AI** launched **LFM2.5-230M** — its **smallest model yet at 230M

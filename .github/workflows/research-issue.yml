@@ -24,23 +24,23 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
       - name: Get current date
         id: date
         run: |
-          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-          echo "timestamp=$(date +'%Y-%m-%d-%H%M%S')" >> $GITHUB_OUTPUT
+          echo "date=$(date -u +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "timestamp=$(date -u +'%Y-%m-%d-%H%M%S')" >> $GITHUB_OUTPUT
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '22'
 
       - name: Acknowledge research request
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
             await github.rest.issues.createComment({
@@ -143,7 +143,7 @@ jobs:
       - name: Run Deep Research (with MCP)
         if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
         id: research-mcp
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         with:
           # Security: NO env: block here. The Claude action injects every var
           # into the model's runtime environment; combined with any shell tool
@@ -262,7 +262,7 @@ jobs:
       - name: Run Deep Research (without MCP)
         if: steps.check-keys.outputs.has_exa != 'true' && steps.check-keys.outputs.has_perplexity != 'true'
         id: research-basic
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         with:
           # Security: NO env: block here. See notes on the MCP variant above —
           # issue content comes from /tmp/issue-input/{title,body}.txt to keep
@@ -411,7 +411,7 @@ jobs:
       # title/body, applied to the LLM's own output. The `issueNumber` env is
       # parsed via `parseInt` so a malformed number can't be smuggled in.
       - name: Post research results to issue
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         env:
           REPORT_CONTENT: ${{ steps.report.outputs.content }}
           HAS_REPORT: ${{ steps.report.outputs.has_report }}

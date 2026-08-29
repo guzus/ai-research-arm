@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The only independently, controlled-benchmarked figure anywhere in this field — METR's 2.01x average speedup — sits well below several of the self-reported multiples it should be calibrating[^4].",
+      "contradicting_url": "https://github.com/Dogacel/auto-gpu-kernel",
+      "contradicting_quote": "Ranked #1 on MLSys 2026 - FlashInfer AI Kernel Generation Contest (Agent-only)... with an average speedup of 34.93x",
+      "severity": "high",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Two efficiency shocks eighteen months apart (DeepSeek 2025, this current wave) have coincided with hyperscaler capex accelerating, not decelerating — and no credible analyst isolates \"AI-automated kernel writing\" as its own distinct efficiency lever[^36][^38][^39].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "As of 2026, no neutral third party has published a resourced-equivalent replication that settles which side is right — this is a live, unresolved dispute, not a debunked claim or a vindicated one.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

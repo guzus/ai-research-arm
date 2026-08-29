@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-judge-verdict",
+  "date": "2026-07-22",
+  "run_id": "29963552252",
+  "run_attempt": 1,
+  "judge_model": "claude-opus-4-8",
+  "position_swap": true,
+  "staging_key_ok": true,
+  "blinding": {
+    "run_key": "29963552252-1",
+    "pass1": {
+      "A": "zai-glm-5p2",
+      "B": "claude"
+    },
+    "pass2": {
+      "A": "claude",
+      "B": "zai-glm-5p2"
+    }
+  },
+  "passes": [
+    {
+      "pass": 1,
+      "parsed": false,
+      "reason": "verdict missing/unparseable"
+    },
+    {
+      "pass": 2,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "claude",
+        "B": "zai-glm-5p2"
+      },
+      "raw_preferred_letter": "A",
+      "preferred_leg": "claude",
+      "scores_by_leg": {
+        "claude": {
+          "coverage": 9.0,
+          "faithfulness": 9.0,
+          "headline_quality": 8.0,
+          "skepticism": 9.0,
+          "format": 9.0,
+          "overall": 9.0
+        },
+        "zai-glm-5p2": {
+          "coverage": 6.0,
+          "faithfulness": 9.0,
+          "headline_quality": 6.0,
+          "skepticism": 8.0,
+          "format": 8.0,
+          "overall": 7.0
+        }
+      },
+      "rationale_by_leg": {
+        "claude": "Broadest coverage: leads with Alphabet's Q2 capex raise ($195-205B, Cloud +82%, Gemini 950M) AND folds OpenAI's $750B in as context, plus 5 quick hits (Cursor Router, Managed Agents, ServiceNow cRPO, Micron/Tesla). Every spot-checked figure traces cleanly \u2014 SJRTrades EPS $9.11->~$2.85, ServiceNow 21.5% vs 19.5%, Musk/Micron 'reasonable terms', 44.9B capex. Skepticism is genuinely rich: EPS-normalization counter, negative FCF, '7-12 months behind', IP-theft boomerang, and a precise flag that 'sanctions on the table' is a reading, not a Bessent quote. Headlines hit the truly alert-worthy items. Dense but well-structured. Minor: states GLM-vision flatly.",
+        "zai-glm-5p2": "Faithful and well-verified \u2014 Camellia details (Brent Mayo, Uday Ruddarraju, ex-xAI Colossus, 3.2GW), $750B, and BofA $1,550 Micron/Kimi K3 all check out \u2014 and its falsification attempt on the unsourced Anthropic+AMD 6.2GW bundle is exemplary hygiene; it also correctly flags GLM-5.2-vision as single-source. But coverage is materially thinner: it omits the Alphabet Q2 earnings/capex story entirely (the window's most multi-sourced business item), buries Kimi K3 to a sub-clause, and drops Cursor Router/ServiceNow/Managed Agents. Headlines split OpenAI into two near-redundant alerts and elevate a single-source rumor and a minor connector; 'CAMELIA' is misspelled."
+      }
+    }
+  ],
+  "per_leg": {
+    "claude": {
+      "overall_avg": 9.0,
+      "criteria_avg": {
+        "coverage": 9.0,
+        "faithfulness": 9.0,
+        "format": 9.0,
+        "headline_quality": 8.0,
+        "skepticism": 9.0
+      },
+      "passes_scored": 1
+    },
+    "zai-glm-5p2": {
+      "overall_avg": 7.0,
+      "criteria_avg": {
+        "coverage": 6.0,
+        "faithfulness": 9.0,
+        "format": 8.0,
+        "headline_quality": 6.0,
+        "skepticism": 8.0
+      },
+      "passes_scored": 1
+    }
+  },
+  "passes_parsed": 1,
+  "final_preference": "claude"
+}

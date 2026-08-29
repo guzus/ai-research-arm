@@ -1,0 +1,13 @@
+Speaker 1: Friday, August fourteenth, twenty twenty-six.
+Speaker 2: [high_energy] Google shipped Gemini three point seven Flash at half price, just three weeks after three point six, and the promo expires straight into three point six's old rate.
+Speaker 1: That is [emphasis] seventy-five cents in, three dollars seventy-five out, per million tokens [/emphasis], reverting to one dollar fifty and seven dollars fifty on the first of January, twenty twenty-seven.
+Speaker 2: DeepSeek went the other direction, open-sourcing V four Pro weights and an M I T licensed agent harness, then raising API prices roughly two times off-peak and four times at peak.
+Speaker 1: Open the weights, charge more for the convenience. [dramatic_pause] That is the trade this market keeps converging on.
+Speaker 2: On the money side, Anthropic's backers are targeting a [emphasis] two trillion dollar [/emphasis] October I P O, on one hundred to one hundred twenty billion dollars of annualised revenue.
+Speaker 1: Worth noting the mix underneath that, Fable five is already six percent of Anthropic's own token usage, according to Ramp's July data.
+Speaker 2: OpenAI shipped ChatGPT Computer History alongside GPT five point six Sol Ultrafast running on Cerebras, at up to seven hundred fifty tokens per second.
+Speaker 1: No published price on Ultrafast yet, which is usually the tell that it is not cheap.
+Speaker 2: And X published its For You ranking code under Apache two point zero, though the Grok prompts stayed behind the curtain.
+Speaker 1: Some quick funding numbers, Databricks raised five billion dollars at a one hundred ninety billion dollar valuation, and Cognition is in talks north of forty billion.
+Speaker 2: Trending with developers, is AI removing the middle class of software engineering, six hundred five points and four hundred eighty-seven comments, and still climbing.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

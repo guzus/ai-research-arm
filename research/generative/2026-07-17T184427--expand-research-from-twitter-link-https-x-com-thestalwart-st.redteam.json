@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c3",
+      "claim_text": "The share price didn't reclaim its January high until roughly mid-July 2025 — about 5.5 months after the shock — and the proximate catalyst was the Trump administration's reversal of the H20 China-export ban, following direct lobbying from Huang and a broader US-China trade framework deal [^7].",
+      "contradicting_url": "https://finance.yahoo.com/news/nvidia-stock-notches-fresh-record-high-in-remarkable-2025-turnaround-200401502.html",
+      "contradicting_quote": "Nvidia shares hit an all-time high on Wednesday, June 25 [2025]... shares have jumped more than 14% since Nvidia's May 28 earnings report",
+      "severity": "high",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c1",
+      "claim_text": "Nvidia's move was more modest: -2.40% on July 16 (close $207.40) followed by a further -1.04% on July 17 (close $205.25), a cumulative two-day decline of roughly 3.4% [^16].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The first is the \"$1 trillion in chipmaker value erased\" / \"SOX down more than 10% over two sessions\" figure that has been recirculating as if it belonged to the Kimi K3 event. It doesn't: that number traces to a Broadcom-earnings-driven chip selloff on June 5, 2026 — six weeks before Moonshot AI shipped anything — and the original reporting makes no mention of Kimi K3 or Moonshot at all [^18].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

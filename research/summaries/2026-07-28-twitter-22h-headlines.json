@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI ENDORSES \"PACING THE FRONTIER\" LETTER — 1,132 LAB EMPLOYEES ASK D.C. TO SLOW AI RACE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2082208694142730340",
+    "category": "policy"
+  },
+  {
+    "headline": "SIGNATORIES SPAN OPENAI, ANTHROPIC, GOOGLE, META, MICROSOFT, MISTRAL, THINKING MACHINES",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2082214911531241525",
+    "category": "policy"
+  },
+  {
+    "headline": "HUGGING FACE PUBLISHES FULL TECHNICAL TIMELINE OF OPENAI-AGENT BREACH",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2082200406558429593",
+    "category": "breaking"
+  },
+  {
+    "headline": "MODAL LABS NAMED AS EXPOSED SANDBOX BEHIND HF ATTACK STAGING, PER RELAYED REUTERS QUOTE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2082204974038315366",
+    "category": "breaking"
+  },
+  {
+    "headline": "KIMI K3 TAKES NO. 1 ON LMARENA FULL-STACK CODING LEADERBOARD, AHEAD OF GPT-5.6 SOL",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2082214719667249386",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI SHIPS GPT-LIVE-TRANSCRIBE, LOW-LATENCY API TRANSCRIPTION AT ~$0.017/MIN",
+    "source": "@jxnlco",
+    "url": "https://x.com/jxnlco/status/2082201815525822872",
+    "category": "model"
+  }
+]

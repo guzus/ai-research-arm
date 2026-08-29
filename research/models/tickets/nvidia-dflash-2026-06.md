@@ -3,7 +3,7 @@ slug: nvidia-dflash-2026-06
 title: NVIDIA DFlash — open-sourced block-diffusion speculative decoding (up to 15x Blackwell throughput)
 company: NVIDIA
 model: DFlash
-status: released
+status: closed
 status_note: |
   NVIDIA **open-sourced DFlash** — a **block-diffusion speculative-decoding**
   technique (from UC San Diego + NVIDIA) that generates full token blocks in
@@ -31,12 +31,14 @@ sources:
   - https://x.com/arsh_goyal/status/2070029887407284303
   - "@arsh_goyal"
 created_at: 2026-06-26
-updated_at: 2026-06-26
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-26
+closed_at: 2026-07-26
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-26
     change: "Created — NVIDIA open-sourced DFlash (block-diffusion speculative decoding, UC San Diego + NVIDIA): generates full token blocks in parallel, up to 15x Blackwell throughput on ~120B models, works with vLLM/SGLang/TensorRT-LLM with no app rewrites, shipping now. Framing caveat logged: 15x is workload-specific (decode-efficiency layer for specific workloads), not a blanket Blackwell uplift. Open-sourced and shipping → status released; verification partial (single-relay window coverage via @arsh_goyal; the 15x headline awaits independent benchmarks). Competing/complementary to OpenAI Jalapeño ASIC ([[openai-jalapeno-chip-2026-06]]) — NVIDIA's software-optimization answer to the inference-cost question."
+  - ts: 2026-07-26
+    change: "Closed — released ≥4 weeks ago (2026-06-26), settled into normal coverage with no independent benchmark corroboration of the 15x claim in this window → closed_reason: released-and-aged."
 ---
 
 **DFlash** is a **block-diffusion speculative-decoding** technique from

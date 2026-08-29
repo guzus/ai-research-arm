@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-15
+
+TOP 5 PAPERS:
+• Ring-Zero: trillion-param zero-RL model spontaneously develops self-verification, parallel reasoning, "context anxiety"
+• Hy-Embodied-VLM-1.0: sparse MoE VLM hits near-32B performance activating only 3B params for embodied agents
+• The Illusion of Robustness: aggregate accuracy hides per-example prediction flips from irrelevant context
+• E3: agents that estimate task difficulty first cut coding-agent cost 85%, tokens 91%
+• Watermark Forensics: info-theoretic bounds prove a hard tradeoff between footprint resolution and attribution guarantees
+
+CATEGORIES: LM/NLP 7 · CV/Multimodal 6 · Agents/Reasoning 6 · Safety/Alignment 4 · Other 5
+
+Full report on GitHub.

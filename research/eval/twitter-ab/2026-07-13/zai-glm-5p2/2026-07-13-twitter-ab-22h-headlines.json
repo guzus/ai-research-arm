@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "MUSK ORDERS SPACEXAI TO WIPE ALL PRIOR USER DATA AFTER RETENTION SCRUTINY",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2076739687658496209",
+    "category": "breaking"
+  },
+  {
+    "headline": "ANTHROPIC ADDS MULTIPLAYER EDITING, PUBLIC SHARING TO CLAUDE CODE ARTIFACTS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2076789349145092230",
+    "category": "breaking"
+  },
+  {
+    "headline": "ANTHROPIC: CLAUDE'S VALUES SHIFT BY LANGUAGE IN 300K-CONVERSATION STUDY",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2076719540785012872",
+    "category": "research"
+  },
+  {
+    "headline": "META'S MUSE SPARK 1.1 CLAIMS SOTA ON HEALTHBENCH PROFESSIONAL",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2076794848909361311",
+    "category": "model"
+  },
+  {
+    "headline": "GOOGLE ANTIGRAVITY ROLLS OUT AGENT TEAMS FOR MULTI-AGENT TASKS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2076753626542801093",
+    "category": "infra"
+  },
+  {
+    "headline": "OPEN-WEIGHT MODELS HIT 29% OF GATEWAY TOKENS, UP FROM 11% IN APRIL",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2076713720731042174",
+    "category": "business"
+  }
+]

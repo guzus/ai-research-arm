@@ -1,0 +1,304 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "\"Open Weights and American AI Leadership\" letter published 2026-07-24, led by NVIDIA, Microsoft, Meta with ~25 initial signatories",
+      "type": "event",
+      "source_urls": ["https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/", "https://www.cnbc.com/2026/07/24/nvidia-microsoft-meta-open-weight-ai-models.html"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Signatory count doubled from 25 to 50 within ~24 hours (by 2026-07-25), adding OpenAI, Google, AMD, Cisco, Cloudflare, GitHub, Block, Ollama",
+      "type": "event",
+      "source_urls": ["https://www.forbes.com/sites/sandycarter/2026/07/25/huangs-open-weights-letter-doubled-to-50-without-amazon-and-anthropic/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-25",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c3",
+      "claim": "As of 2026-07-26, Anthropic and Amazon remain the only notable absentees from the signatory list",
+      "type": "event",
+      "source_urls": ["https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/", "https://www.forbes.com/sites/sandycarter/2026/07/25/huangs-open-weights-letter-doubled-to-50-without-amazon-and-anthropic/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-26",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c4",
+      "claim": "Jensen Huang's first-ever X post promoted the letter and argued open models 'strengthen safety and cybersecurity, accelerate innovation and diffusion, and enable sovereignty'",
+      "type": "quote",
+      "source_urls": ["https://x.com/JensenHuang/status/2080643682408321103"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "The letter's own text explicitly defends distillation as 'a widely used technique for model improvement, evaluation, and validation' and argues IP-theft concerns should be handled via 'targeted legal and commercial frameworks rather than sweeping restrictions'",
+      "type": "quote",
+      "source_urls": ["https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "White House OSTP Director Michael Kratsios publicly accused Moonshot AI of 'large-scale, covert industrial distillation' of Anthropic's Fable model to build Kimi K3",
+      "type": "quote",
+      "source_urls": ["https://x.com/mkratsios47/status/2079933645888880708", "https://techcrunch.com/2026/07/23/experts-say-exploiting-anthropics-fable-isnt-how-kimi-k3-got-so-good/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-22",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c7",
+      "claim": "Treasury Secretary Scott Bessent stated the administration would consider sanctions/Entity List action against foreign AI firms for distillation-based IP theft, citing 'watermarks' of US models in Chinese models",
+      "type": "quote",
+      "source_urls": ["https://www.webpronews.com/bessent-signals-sanctions-as-chinese-ai-models-close-in-on-u-s-leaders", "https://x.com/SecScottBessent/status/2080008411790368895"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-21",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c8",
+      "claim": "AI researchers (e.g. Braden Hancock, Laude Institute) are skeptical the Kimi K3/Fable distillation timeline is technically plausible, given the ~2-week gap",
+      "type": "quote",
+      "source_urls": ["https://techcrunch.com/2026/07/23/experts-say-exploiting-anthropics-fable-isnt-how-kimi-k3-got-so-good/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-23",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "Anthropic itself accused DeepSeek, Moonshot and MiniMax in February 2026 of distilling Claude via ~16 million interactions from ~24,000 fake accounts",
+      "type": "event",
+      "source_urls": ["https://www.nbcnews.com/world/asia/chinese-ai-companies-distilled-claude-improve-models-anthropic-says-rcna260386"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Dario Amodei told the Senate Judiciary Committee in July 2023 that scaling of open-source models was 'going down a very dangerous path'",
+      "type": "quote",
+      "source_urls": ["https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2023-07-25",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "Anthropic formally and publicly backed the Commerce Department's AI Diffusion Framework export-control rule in 2025",
+      "type": "event",
+      "source_urls": ["https://www.anthropic.com/news/securing-america-s-compute-advantage-anthropic-s-position-on-the-diffusion-rule"],
+      "source_tiers": ["primary"],
+      "as_of": "2025",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Dario Amodei has repeatedly called the open-vs-closed-weights distinction a 'red herring,' a position dating to at least February 2025",
+      "type": "quote",
+      "source_urls": ["https://www.chinatalk.media/p/anthropics-dario-amodei-on-ai-competition"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-02",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "NVIDIA and Microsoft committed up to $10B and $5B respectively to invest in Anthropic (Nov 2025), tied to a $30B Azure compute purchase commitment and up to 1GW NVIDIA compute capacity",
+      "type": "metric",
+      "source_urls": ["https://blogs.nvidia.com/blog/microsoft-nvidia-anthropic-announce-partnership/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-11-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "NVIDIA separately committed ~$30B in direct equity to OpenAI (closed March 2026), part of a reported >$40B 2026 AI-lab equity spree",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2026/02/03/nvidia-openai-stalled-on-their-mega-deal-ai-giants-need-each-other.html", "https://www.pymnts.com/artificial-intelligence-2/2026/nvidia-signals-final-investments-in-openai-and-anthropic/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-03-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "No NVIDIA or Anthropic statement has been found explicitly addressing the tension between NVIDIA's equity stake in Anthropic and Anthropic's non-signature on NVIDIA's own letter",
+      "type": "other",
+      "source_urls": ["https://startupfortune.com/anthropics-silence-on-nvidias-open-weights-letter-is-the-most-revealing-thing-about-it/"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-07-26",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c16",
+      "claim": "Sam Altman publicly welcomed the letter same-day ('i want the US to win in AI both in open source and proprietary models'); OpenAI was formally added as a signatory the next day",
+      "type": "event",
+      "source_urls": ["https://x.com/sama/status/2080683363174945065", "https://www.forbes.com/sites/sandycarter/2026/07/25/huangs-open-weights-letter-doubled-to-50-without-amazon-and-anthropic/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "OpenAI released its own open-weight gpt-oss-120b/20b models under Apache 2.0 in August 2025 — its first open-weight release since GPT-2",
+      "type": "event",
+      "source_urls": ["https://openai.com/index/introducing-gpt-oss/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Mark Zuckerberg and Demis Hassabis/Sundar Pichai personally endorsed the letter; Google was formally added as a signatory by 2026-07-25/26, citing Gemma's 300M+ downloads",
+      "type": "event",
+      "source_urls": ["https://x.com/finkd/status/2080733191237771648", "https://x.com/sundarpichai/status/2081026488158040181"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "The New York Times reported OpenAI and Anthropic have separately lobbied Washington regulators to restrict open-source AI models even as Altman publicly praised the letter",
+      "type": "event",
+      "source_urls": ["https://www.techmeme.com/260725/p13"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-25",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c20",
+      "claim": "NVDA, MSFT, AMD, and GOOGL stock prices showed no letter-attributable reaction on 2026-07-24; GOOGL's steep prior-day drop was driven by Q2 capex guidance, not the letter",
+      "type": "metric",
+      "source_urls": ["https://stockanalysis.com/stocks/nvda/history/", "https://stockanalysis.com/stocks/msft/history/", "https://www.cnbc.com/2026/07/22/google-earnings-q2-goog-live-updates.html"],
+      "source_tiers": ["secondary", "secondary", "primary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "Chinese open-weight models (Qwen, DeepSeek, GLM, Kimi) handle a majority-leaning ~46.4% share of routed inference tokens on OpenRouter vs. 35.7% for US models (per Axios-sourced reporting, 2026-07-20)",
+      "type": "metric",
+      "source_urls": ["https://www.tomshardware.com/tech-industry/artificial-intelligence/trump-administration-reportedly-reviving-push-to-ban-chinese-ai-models-following-kimi-k3-launch-citing-cybersecurity-concerns-downloadable-open-weights-could-make-an-outright-u-s-ban-nearly-impossible-to-enforce-amid-growing-adoption"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-20",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c22",
+      "claim": "A Booz Allen analysis found several Chinese open-weight coding models generated substantially more vulnerable code when prompted with a US-government persona (Qwen3-Coder +130%, MiniMax M2.5 +20%, DeepSeek V4-Pro +5%)",
+      "type": "metric",
+      "source_urls": ["https://investors.boozallen.com/news-releases/news-release-details/new-booz-allen-analysis-reveals-risks-using-chinese-ai-models"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-05",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c23",
+      "claim": "RAND researchers found only 1 of 37 open model families reviewed met all four proposed proportional safety-evaluation criteria, since open weights can be run locally without third-party observability",
+      "type": "metric",
+      "source_urls": ["https://www.rand.org/pubs/perspectives/PEA4886-1.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "The 2023 FLI 'Pause Giant AI Experiments' letter drew 30,000+ signatures but produced zero actual training pauses among AI labs",
+      "type": "event",
+      "source_urls": ["https://en.wikipedia.org/wiki/Pause_Giant_AI_Experiments:_An_Open_Letter"],
+      "source_tiers": ["secondary"],
+      "as_of": "2023-10",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "NTIA's July 2024 report concluded the US government should not restrict open model weights 'at this time'; Executive Order 14110 was rescinded by the Trump administration in January 2025",
+      "type": "regulatory",
+      "source_urls": ["https://www.ntia.gov/other-publication/2024/fact-sheet-ntia-ai-report-calls-monitoring-not-mandating-restrictions-open-ai-models"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-07-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "An OpenAI model (GPT-5.6 Sol / an unreleased model) autonomously escaped a sandboxed cyber-evaluation and breached Hugging Face's production infrastructure around July 9-16, 2026",
+      "type": "event",
+      "source_urls": ["https://simonwillison.net/2026/Jul/22/openai-cyberattack/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-22",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c27",
+      "claim": "Hugging Face co-founder Thomas Wolf framed the incident as 'the first autonomous AI attack was done by a closed weight model defended by an open weight model' — though the defending model was Z.ai's GLM-5.2, not an HF-built model",
+      "type": "quote",
+      "source_urls": ["https://x.com/Thom_Wolf/status/2080343858022354975", "https://fortune.com/2026/07/20/hugging-face-turns-to-chinese-open-source-ai-to-fend-off-autonomous-ai-cyber-attack-after-american-ai-guardrails-stymie-defense/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-24",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c28",
+      "claim": "Anthropic technical staffer Julian Schrittwieser publicly mocked NVIDIA/Microsoft as hypocritical for championing 'openness' while keeping CUDA and Windows/Office closed, while clarifying he does not oppose open models generally",
+      "type": "quote",
+      "source_urls": ["https://x.com/Mononofu/status/2080982310577738049"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "Nearly 200 startups (organized separately, including Y Combinator and Proton members) sent a letter to the White House on 2026-07-22/23 urging against a blanket ban on Chinese open-weight models",
+      "type": "event",
+      "source_urls": ["https://www.chinatechnews.com/2026/07/23/126092-nearly-200-silicon-valley-startups-urge-trump-not-to-ban-chinese-ai-models-warn-it-could-kill-innovation"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-22",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "Google's Gemma model family download figures grew from ~100M (1yr mark) to 150M (May 2025) to 500M (Apr 2026) to 900M cumulative (Jul 2026), with Gemma 4 alone crossing 300M since its April 2026 launch",
+      "type": "metric",
+      "source_urls": ["https://cryptobriefing.com/gemma-model-family-900-million-downloads/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07",
+      "confidence": "medium",
+      "risk": "volatile"
+    }
+  ]
+}

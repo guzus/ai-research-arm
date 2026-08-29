@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-judge-verdict",
+  "date": "2026-07-19",
+  "run_id": "29706270004",
+  "run_attempt": 1,
+  "judge_model": "claude-opus-4-8",
+  "position_swap": true,
+  "staging_key_ok": true,
+  "blinding": {
+    "run_key": "29706270004-1",
+    "pass1": {
+      "A": "claude",
+      "B": "zai-glm-5p2"
+    },
+    "pass2": {
+      "A": "zai-glm-5p2",
+      "B": "claude"
+    }
+  },
+  "passes": [
+    {
+      "pass": 1,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "claude",
+        "B": "zai-glm-5p2"
+      },
+      "raw_preferred_letter": "A",
+      "preferred_leg": "claude",
+      "scores_by_leg": {
+        "claude": {
+          "coverage": 9.0,
+          "faithfulness": 9.0,
+          "headline_quality": 8.0,
+          "skepticism": 9.0,
+          "format": 8.0,
+          "overall": 9.0
+        },
+        "zai-glm-5p2": {
+          "coverage": 6.0,
+          "faithfulness": 6.0,
+          "headline_quality": 6.0,
+          "skepticism": 7.0,
+          "format": 8.0,
+          "overall": 6.0
+        }
+      },
+      "rationale_by_leg": {
+        "claude": "Broadest faithful coverage: three well-sourced top stories (Moonshot K3 pause, Qwen3.8 2.4T open-weight, Nvidia/Nebius) plus a DRAM infra card whose every figure ($3,100-3,400, 146%, ~$1,380, Meritz, Saudi sovereign buyers) traces exactly to the snapshot. All spot-checked claims (KernelBench 14.82x, legal 26.7/14.2, SemiAnalysis 2.8T/10-days) verify. Best move: separates Qwen's verified launch/2.4T (multi-source, official RT + AndrewCurran) from the unverified 'beats GPT-5.6' ranking. Minor: one slightly padded aggregator-benchmark headline; run_id 'manual'. Strong, nuanced skepticism throughout.",
+        "zai-glm-5p2": "Cleaner and deeper on Moonshot (paid-sub throttle, second-day persistence, labeled Huawei speculation) and uniquely includes the enterprise-prompt privacy quick hit. But it misses two snapshot stories: the DRAM surge entirely, and Qwen as a real launch. Decisive flaw: it claims 'No official @Alibaba_Qwen announcement was captured in the snapshot' \u2014 false; the official RT and AndrewCurran's corroboration are present. It then fires a 2.4T Qwen headline via aggregator @kimmonismus while its own body says the figure 'should not be repeated as fact' \u2014 an internal contradiction. Correct run_id."
+      }
+    },
+    {
+      "pass": 2,
+      "parsed": true,
+      "letter_to_leg": {
+        "A": "zai-glm-5p2",
+        "B": "claude"
+      },
+      "raw_preferred_letter": "B",
+      "preferred_leg": "claude",
+      "scores_by_leg": {
+        "zai-glm-5p2": {
+          "coverage": 7.0,
+          "faithfulness": 7.0,
+          "headline_quality": 6.0,
+          "skepticism": 6.0,
+          "format": 8.0,
+          "overall": 7.0
+        },
+        "claude": {
+          "coverage": 9.0,
+          "faithfulness": 9.0,
+          "headline_quality": 8.0,
+          "skepticism": 9.0,
+          "format": 9.0,
+          "overall": 9.0
+        }
+      },
+      "rationale_by_leg": {
+        "zai-glm-5p2": "Both top stories (Moonshot K3 pause, Nvidia/Nebius) verify verbatim, and the Grok/VulcanBench skepticism is sound. But A wrongly asserts 'No official @Alibaba_Qwen announcement was captured in the snapshot' \u2014 the official Qwen post (2.4T, open-weight, 'second only to Fable 5') is present. A then contradicts itself: it lists the 2.4T Qwen figure as a headline alert while telling readers not to repeat it, and its Telegram omits Qwen entirely. Result: a genuine top story is buried in the skeptic's corner, DRAM squeeze is missed, and a factual sourcing error dents faithfulness.",
+        "claude": "Covers all three major threads as ranked story cards (K3 pause, Qwen3.8 open-weight launch, GPU/DRAM squeeze) plus the parallel memory data. Every distinctive claim spot-checked verifies exactly: DRAM $3,100-3,400/146%/$1,380/Meritz/Saudi, SemiAnalysis KDA 10x, teortaxes '155/slightly below GPT-5.6 Luna' and 'qwen max is nowhere near Kimi.' Model skepticism: separates verified launch/param facts from unverified 'beats GPT-5.6' ranking with independent cross-source corroboration. Headlines are specific and alert-worthy; digest/Telegram/headlines are internally consistent. Minor: teortaxes number slightly simplified."
+      }
+    }
+  ],
+  "per_leg": {
+    "claude": {
+      "overall_avg": 9.0,
+      "criteria_avg": {
+        "coverage": 9.0,
+        "faithfulness": 9.0,
+        "format": 8.5,
+        "headline_quality": 8.0,
+        "skepticism": 9.0
+      },
+      "passes_scored": 2
+    },
+    "zai-glm-5p2": {
+      "overall_avg": 6.5,
+      "criteria_avg": {
+        "coverage": 6.5,
+        "faithfulness": 6.5,
+        "format": 8.0,
+        "headline_quality": 6.0,
+        "skepticism": 6.5
+      },
+      "passes_scored": 2
+    }
+  },
+  "passes_parsed": 2,
+  "final_preference": "claude"
+}

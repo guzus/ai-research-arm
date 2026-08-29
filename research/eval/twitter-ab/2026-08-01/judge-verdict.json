@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "twitter-model-ab-judge-verdict",
+  "date": "2026-08-01",
+  "run_id": "30721510014",
+  "run_attempt": 1,
+  "judge_model": "claude-opus-4-8",
+  "position_swap": true,
+  "staging_key_ok": true,
+  "blinding": {
+    "run_key": "30721510014-1",
+    "pass1": {
+      "A": "zai-glm-5p2",
+      "B": "claude"
+    },
+    "pass2": {
+      "A": "claude",
+      "B": "zai-glm-5p2"
+    }
+  },
+  "passes": [
+    {
+      "pass": 1,
+      "parsed": false,
+      "reason": "verdict missing/unparseable"
+    },
+    {
+      "pass": 2,
+      "parsed": false,
+      "reason": "verdict missing/unparseable"
+    }
+  ],
+  "per_leg": {},
+  "passes_parsed": 0,
+  "final_preference": "none"
+}

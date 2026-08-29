@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "WHITE HOUSE TO SHOW OPENAI, GOOGLE, ANTHROPIC STAFF COMPLETED AI OVERSIGHT FRAMEWORK TUESDAY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2084286484622770363",
+    "category": "policy"
+  },
+  {
+    "headline": "MINIMAX H3 RUNS VIDEO-PLUS-AUDIO ON ONE RTX 5090 — BUT 2K REGEN AND SPARSE ATTENTION STAY SERVER-SIDE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2084229681012711598",
+    "category": "opensource"
+  },
+  {
+    "headline": "DEEPSEEK V4-FLASH 0731 HITS 50 ON ARTIFICIAL ANALYSIS — SIX POINTS ABOVE DEEPSEEK'S OWN V4 PRO",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2084247925119463899",
+    "category": "model"
+  },
+  {
+    "headline": "SEMIANALYSIS: AMD RALLY CUTS META, OPENAI GPU CAPITAL COST TO $1.60 AND $1.75 PER GPU-HOUR",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2084278534088835480",
+    "category": "infra"
+  },
+  {
+    "headline": "APPLE ACCUSES OPENAI AND FORMER EMPLOYEES OF DELIBERATELY STEALING TRADE SECRETS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2084293417144574343",
+    "category": "business"
+  },
+  {
+    "headline": "X LEAKS GROK IMAGINE PROMPTS AND SOURCE IMAGES — EDITED PHOTOS EXPOSE ORIGINAL SUBJECTS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2084285049248051656",
+    "category": "breaking"
+  },
+  {
+    "headline": "QWEN COMPUTER-USE AGENT SETS OSWORLD-VERIFIED SOTA, RANKS #2 ON WEBARENA",
+    "source": "@NielsRogge",
+    "url": "https://x.com/NielsRogge/status/2084223344333721653",
+    "category": "research"
+  }
+]

@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-05 14:27:46 UTC
+
+CYCLE: Anthropic goes vertical on silicon; the AI-capex ROIC number Nadella cites gets audited.
+
+TOP STORIES:
+• Anthropic posts for a "custom silicon team" at $320k-$485k, first on-record intent to design its own chips - while insisting AWS/Google/NVIDIA/AMD stay central [✓]
+• SemiAnalysis rechecks the Morgan Stanley returns report Nadella cites: two large offsetting errors, 31% ROIC becomes ~28% on ~$43/W invested capital [⚠]
+• ByteDance ships SeedRealtime, a natively audio-visual full-duplex model, free in Doubao - a day after NVIDIA open-sourced Nemotron VoiceChat [⚠]
+
+WATCH: Scope detail on the Anthropic silicon listings - inference accelerator vs training chip, and any named foundry partner.
+
+Full update on GitHub.

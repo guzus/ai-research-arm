@@ -6,106 +6,715 @@
       "id": "labs",
       "label": "AI labs and company accounts",
       "handles": [
-        {"handle": "OpenAI", "name": "OpenAI"},
-        {"handle": "AnthropicAI", "name": "Anthropic"},
-        {"handle": "GoogleAI", "name": "Google AI"},
-        {"handle": "GoogleDeepMind", "name": "Google DeepMind"},
-        {"handle": "MistralAI", "name": "Mistral AI"},
-        {"handle": "MetaAI", "name": "Meta AI"},
-        {"handle": "AIatMeta", "name": "AI at Meta", "notes": "Real Meta AI account; @MetaAI is largely inactive."},
-        {"handle": "CohereAI", "name": "Cohere"},
-        {"handle": "AI21Labs", "name": "AI21 Labs"},
-        {"handle": "StabilityAI", "name": "Stability AI"},
-        {"handle": "HuggingFace", "name": "Hugging Face"},
-        {"handle": "NVIDIAAIDev", "name": "NVIDIA AI Developer"},
-        {"handle": "ClaudeDevs", "name": "Claude Developers", "notes": "Official Anthropic developer announcements."}
+        {
+          "handle": "OpenAI",
+          "name": "OpenAI"
+        },
+        {
+          "handle": "AnthropicAI",
+          "name": "Anthropic"
+        },
+        {
+          "handle": "GoogleAI",
+          "name": "Google AI"
+        },
+        {
+          "handle": "GoogleDeepMind",
+          "name": "Google DeepMind"
+        },
+        {
+          "handle": "MistralAI",
+          "name": "Mistral AI"
+        },
+        {
+          "handle": "MetaAI",
+          "name": "Meta AI"
+        },
+        {
+          "handle": "AIatMeta",
+          "name": "AI at Meta",
+          "notes": "Real Meta AI account; @MetaAI is largely inactive."
+        },
+        {
+          "handle": "CohereAI",
+          "name": "Cohere"
+        },
+        {
+          "handle": "AI21Labs",
+          "name": "AI21 Labs"
+        },
+        {
+          "handle": "StabilityAI",
+          "name": "Stability AI"
+        },
+        {
+          "handle": "HuggingFace",
+          "name": "Hugging Face"
+        },
+        {
+          "handle": "NVIDIAAIDev",
+          "name": "NVIDIA AI Developer"
+        },
+        {
+          "handle": "ClaudeDevs",
+          "name": "Claude Developers",
+          "notes": "Official Anthropic developer announcements."
+        }
       ]
     },
     {
       "id": "hyperscalers",
       "label": "Hyperscalers, executives, and key insiders",
       "handles": [
-        {"handle": "elonmusk", "name": "Elon Musk"},
-        {"handle": "sama", "name": "Sam Altman"},
-        {"handle": "demishassabis", "name": "Demis Hassabis"},
-        {"handle": "OfficialLoganK", "name": "Logan Kilpatrick"},
-        {"handle": "alexalbert__", "name": "Alex Albert"},
-        {"handle": "DrJimFan", "name": "Jim Fan"},
-        {"handle": "tszzl", "name": "Roon"},
-        {"handle": "ilyasut", "name": "Ilya Sutskever"},
-        {"handle": "alexandr_wang", "name": "Alexandr Wang"},
-        {"handle": "OriolVinyalsML", "name": "Oriol Vinyals"},
-        {"handle": "woj_zaremba", "name": "Wojciech Zaremba"}
+        {
+          "handle": "elonmusk",
+          "name": "Elon Musk"
+        },
+        {
+          "handle": "sama",
+          "name": "Sam Altman"
+        },
+        {
+          "handle": "demishassabis",
+          "name": "Demis Hassabis"
+        },
+        {
+          "handle": "OfficialLoganK",
+          "name": "Logan Kilpatrick"
+        },
+        {
+          "handle": "alexalbert__",
+          "name": "Alex Albert"
+        },
+        {
+          "handle": "DrJimFan",
+          "name": "Jim Fan"
+        },
+        {
+          "handle": "tszzl",
+          "name": "Roon"
+        },
+        {
+          "handle": "ilyasut",
+          "name": "Ilya Sutskever"
+        },
+        {
+          "handle": "alexandr_wang",
+          "name": "Alexandr Wang"
+        },
+        {
+          "handle": "OriolVinyalsML",
+          "name": "Oriol Vinyals"
+        },
+        {
+          "handle": "woj_zaremba",
+          "name": "Wojciech Zaremba"
+        },
+        {
+          "handle": "JensenHuang",
+          "name": "Jensen Huang",
+          "notes": "NVIDIA CEO; account opened 2026-08 and posts first-party NVIDIA open-model/policy announcements (Alpamayo 2 Super AV reasoning model, NVIDIA open-models letter) at ~75k avg likes. Primary source for the compute layer the whole roster is downstream of.",
+          "evidence": [
+            "https://x.com/JensenHuang/status/2080643682408321103",
+            "https://x.com/JensenHuang/status/2081698060330250294"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "local-oss",
+      "label": "Local/on-device AI, quantization, OSS tooling, and the hardware to run it",
+      "handles": [
+        {
+          "handle": "alexocheema",
+          "name": "Alex Cheema",
+          "notes": "EXO Labs co-founder; primary source on distributed/on-device inference across consumer hardware. Anchors the local-AI beat the roster otherwise covers only via datacenter-side accounts.",
+          "evidence": [
+            "https://x.com/alexocheema/status/2085512573684719680",
+            "https://x.com/alexocheema/status/2085468655748255949"
+          ]
+        },
+        {
+          "handle": "_cpatonn",
+          "name": "Ton Cao",
+          "notes": "Publishes AWQ/quantized re-releases of open-weight models; primary source for when a new open model becomes runnable on consumer GPUs, which is a distinct event from the model's launch.",
+          "evidence": [
+            "https://x.com/_cpatonn/status/2084734667757080589",
+            "https://x.com/_cpatonn/status/2084544790419706228"
+          ]
+        },
+        {
+          "handle": "cyankiwi_ai",
+          "name": "cyan.kiwi",
+          "notes": "Quantization primary source: cyankiwi AWQ 4-bit, NVFP4 and FP8-dynamic quants plus published benchmarks; models curated into Azure AI Foundry. 77% AI-topical over a 20-tweet sample. Low engagement is a niche-audience artifact, not low signal.",
+          "evidence": [
+            "https://x.com/cyankiwi_ai/status/2062630478767960401",
+            "https://x.com/cyankiwi_ai/status/2054998140479312109"
+          ]
+        },
+        {
+          "handle": "Hikari_07_jp",
+          "name": "Hikari (LocalLLM)",
+          "notes": "Japanese local-LLM practitioner; hands-on abliteration/fine-tune work and consumer-GPU runnability reports. Adds a non-English local-AI vantage the roster lacks entirely.",
+          "evidence": [
+            "https://x.com/Hikari_07_jp/status/2085483925879857375",
+            "https://x.com/Hikari_07_jp/status/2085574136781496395"
+          ]
+        },
+        {
+          "handle": "alecqfong",
+          "name": "Alec Fong",
+          "notes": "Effectively the only account publishing measured DGX Station / GB300 and DGX Spark serving throughput (e.g. DeepSeek-V4-Flash aggregate tok/s). Fills a hard gap: first-party benchmarks for the new local-inference hardware tier.",
+          "evidence": [
+            "https://x.com/alecqfong/status/2081289013164703855",
+            "https://x.com/alecqfong/status/2083679692897603838"
+          ]
+        },
+        {
+          "handle": "NaderLikeLadder",
+          "name": "Nader Khalil",
+          "notes": "Brev founder; organizes local-AI summits and reports on the on-prem/local intelligence stack. Community-organizing signal upstream of releases.",
+          "evidence": [
+            "https://x.com/NaderLikeLadder/status/2085427619852325247",
+            "https://x.com/NaderLikeLadder/status/2085649793137664066"
+          ]
+        },
+        {
+          "handle": "UnslothAI",
+          "name": "Unsloth AI",
+          "notes": "Highest-volume primary source for accessible quantization: day-zero GGUF/training support for new open models (DeepSeek-V4-Flash 2x faster with DSpark, Qwen3.8-27B on 17GB VRAM). ~1.9k avg likes. Strongest single add in this batch.",
+          "evidence": [
+            "https://x.com/UnslothAI/status/2084110664789024769",
+            "https://x.com/UnslothAI/status/2083231049434435596"
+          ]
+        },
+        {
+          "handle": "LottoLabs",
+          "name": "Lotto",
+          "notes": "Runs an independent local-model benchmarking platform; publishes consumer-GPU throughput results (Qwen 9b/3.8-27b on a 3090). Independent eval signal, not vendor-published numbers.",
+          "evidence": [
+            "https://x.com/LottoLabs/status/2085607464649769387",
+            "https://x.com/LottoLabs/status/2085616192967049428"
+          ]
+        },
+        {
+          "handle": "localdotai",
+          "name": "Local.AI",
+          "notes": "Local.AI org account. NOTE: resolves but has posted ZERO tweets as of 2026-08-07 -- added on user request as a forward-looking source; contributes an empty fetch op until it starts posting.",
+          "evidence": [
+            "birdy user-tweets @localdotai -n 20 -> [] (verified 2026-08-07)"
+          ]
+        },
+        {
+          "handle": "MikeBradleyAI",
+          "name": "Mike Bradley",
+          "notes": "Builds and documents local AI rigs with full component/cost breakdowns, plus ODS (@OsmanticAI) local-AI onboarding. Hardware-BOM signal the roster has no other source for.",
+          "evidence": [
+            "https://x.com/MikeBradleyAI/status/2085190852964499891",
+            "https://x.com/MikeBradleyAI/status/2085464750377336854"
+          ]
+        },
+        {
+          "handle": "TheAhmadOsman",
+          "name": "Ahmad Osman",
+          "notes": "Long-form X Articles on local AI and self-hosted inference; ODS maintainer. High engagement (~140 avg likes) and analytical rather than announcement-driven.",
+          "evidence": [
+            "https://x.com/TheAhmadOsman/status/2085182913197334960",
+            "https://x.com/TheAhmadOsman/status/2085480348356321743"
+          ]
+        },
+        {
+          "handle": "Teknium",
+          "name": "Teknium",
+          "notes": "Nous Research co-founder; Hermes agent lineage and low-refusal open-weight model training. ~235 avg likes. Primary source for the open post-training ecosystem.",
+          "evidence": [
+            "https://x.com/Teknium/status/2085507282121720275",
+            "https://x.com/Teknium/status/2085597850696925242"
+          ]
+        },
+        {
+          "handle": "louszbd",
+          "name": "Lou",
+          "notes": "Z.ai/GLM; first-party GLM release and behavior detail (GLM-5.2, ZCode). Directly load-bearing -- ARA's own fallback chain routes to GLM-5.2, so upstream release signal is operationally relevant to this repo.",
+          "evidence": [
+            "https://x.com/louszbd/status/2083267295116443806",
+            "https://x.com/louszbd/status/2084728604815225326"
+          ]
+        },
+        {
+          "handle": "badlogicgames",
+          "name": "Mario Zechner",
+          "notes": "Mario Zechner, author of the pi.dev agent harness. Primary source on agent-harness internals (context handoff to subagents, transparent harnesses) -- a beat the roster covers only from the model side.",
+          "evidence": [
+            "https://x.com/badlogicgames/status/2085655394286735777",
+            "https://x.com/badlogicgames/status/2085490057134174479"
+          ]
+        },
+        {
+          "handle": "goodhunt",
+          "name": "Hunter Bown",
+          "notes": "Arcee AI; author of codewhale/DeepSeek TUI. Ships open agent tooling and posts release detail firsthand.",
+          "evidence": [
+            "https://x.com/goodhunt/status/2085283077883040246",
+            "https://x.com/goodhunt/status/2085266244329246783"
+          ]
+        },
+        {
+          "handle": "davis7",
+          "name": "Ben Davis",
+          "notes": "Deep hands-on infrastructure reporting on local rigs and multi-agent workloads (22 concurrent codex threads on one box, DGX Spark budget analysis). ~630 avg likes.",
+          "evidence": [
+            "https://x.com/davis7/status/2085092341459861756",
+            "https://x.com/davis7/status/2085113373805687241"
+          ]
+        },
+        {
+          "handle": "elliotarledge",
+          "name": "Elliot Arledge",
+          "notes": "CUDA/kernel-level educational content (matmul guides, KernelBench work) plus consumer-GPU builds. Adds a kernel/systems layer absent from the roster.",
+          "evidence": [
+            "https://x.com/elliotarledge/status/2085255908326822049",
+            "https://x.com/elliotarledge/status/2084966673069777080"
+          ]
+        },
+        {
+          "handle": "philipkiely",
+          "name": "Philip Kiely",
+          "notes": "Baseten; inference-engineering primary source (GLM vision support, production latency) and author of the free Inference Engineering book. Complements charles_irl/_xjdr on the serving beat.",
+          "evidence": [
+            "https://x.com/philipkiely/status/2083967553790214264",
+            "https://x.com/philipkiely/status/2083571741071462518"
+          ]
+        },
+        {
+          "handle": "mervenoyann",
+          "name": "Merve Noyan",
+          "notes": "Hugging Face; open-source multimodal/vision-model releases and open-science partnership news at the practitioner level, not the org-announcement level.",
+          "evidence": [
+            "https://x.com/mervenoyann/status/2084645990720569841",
+            "https://x.com/mervenoyann/status/2084734532398272586"
+          ]
+        }
       ]
     },
     {
       "id": "others",
       "label": "Researchers, analysts, builders, and media",
       "handles": [
-        {"handle": "karpathy", "name": "Andrej Karpathy"},
-        {"handle": "iruletheworldmo", "name": "Strawberry"},
-        {"handle": "AndrewCurran_", "name": "Andrew Curran"},
-        {"handle": "fi56622380", "name": "Fin"},
-        {"handle": "jukan05", "name": "Jukan"},
-        {"handle": "vitrupo", "name": "Vitrupo"},
-        {"handle": "dejavucoder", "name": "Deja Vu Coder"},
-        {"handle": "jiratickets", "name": "Jira Tickets"},
-        {"handle": "SemiAnalysis_", "name": "SemiAnalysis"},
-        {"handle": "benthompson", "name": "Ben Thompson"},
-        {"handle": "theinformation", "name": "The Information"},
-        {"handle": "GavinSBaker", "name": "Gavin Baker"},
-        {"handle": "mark_k", "name": "Mark"},
-        {"handle": "ns123abc", "name": "NIK"},
-        {"handle": "kimmonismus", "name": "Chubby"},
-        {"handle": "_akhaliq", "name": "AK"},
-        {"handle": "simonw", "name": "Simon Willison"},
-        {"handle": "emollick", "name": "Ethan Mollick"},
-        {"handle": "testingcatalog", "name": "TestingCatalog"},
-        {"handle": "rasbt", "name": "Sebastian Raschka"},
-        {"handle": "skirano", "name": "Sriram Krishnan"},
-        {"handle": "jackclarkSF", "name": "Jack Clark"},
-        {"handle": "ylecun", "name": "Yann LeCun"},
-        {"handle": "hardmaru", "name": "David Ha"},
-        {"handle": "JeffDean", "name": "Jeff Dean"},
-        {"handle": "AravSrinivas", "name": "Aravind Srinivas"},
-        {"handle": "deedydas", "name": "Deedy Das"},
-        {"handle": "swyx", "name": "Swyx"},
-        {"handle": "TheAITimeline", "name": "The AI Timeline"},
-        {"handle": "levelsio", "name": "Pieter Levels"},
-        {"handle": "steipete", "name": "Peter Steinberger"},
-        {"handle": "mckaywrigley", "name": "McKay Wrigley"},
-        {"handle": "nutlope", "name": "Nutlope"},
-        {"handle": "rauchg", "name": "Guillermo Rauch"},
-        {"handle": "amasad", "name": "Amjad Masad"},
-        {"handle": "geoffreylitt", "name": "Geoffrey Litt"},
-        {"handle": "jxnlco", "name": "Jason Liu"},
-        {"handle": "danshipper", "name": "Dan Shipper"},
-        {"handle": "andreasklinger", "name": "Andreas Klinger"},
-        {"handle": "nikitabier", "name": "Nikita Bier"},
-        {"handle": "tibo_maker", "name": "Tibo"},
-        {"handle": "marclou", "name": "Marc Lou"},
-        {"handle": "shl", "name": "Suhail"},
-        {"handle": "dharmesh", "name": "Dharmesh Shah"},
-        {"handle": "jeremyphoward", "name": "Jeremy Howard"},
-        {"handle": "soumithchintala", "name": "Soumith Chintala"},
-        {"handle": "giffmana", "name": "David Giffman"},
-        {"handle": "arankomatsuzaki", "name": "Aran Komatsuzaki"},
-        {"handle": "percyliang", "name": "Percy Liang"},
-        {"handle": "JonathanRoss321", "name": "Jonathan Ross"},
-        {"handle": "hendrycks", "name": "Dan Hendrycks"},
-        {"handle": "teortaxesTex", "name": "Teortaxes", "notes": "High-signal commentator on Chinese AI labs (DeepSeek, Qwen) and open-weights releases; fills a China-lab coverage gap.", "evidence": ["https://x.com/teortaxesTex/status/2068280339974304032", "https://x.com/teortaxesTex/status/2068252024320192620"]},
-        {"handle": "charles_irl", "name": "Charles Frye", "notes": "Modal; primary AI-inference-infrastructure detail (speculative decoding, Qwen 3.x co-releases, throughput benchmarks). Fills an inference/serving gap.", "evidence": ["https://x.com/charles_irl/status/2068124629433262210", "https://x.com/charles_irl/status/2068155299157164385"]},
-        {"handle": "MattNiessner", "name": "Matthias Niessner", "notes": "Primary-source 3D/spatial-VLM research (OneCanvas, SOTA spatial benchmarks). Adds academic signal in a 3D/spatial-reasoning area the roster lacks.", "evidence": ["https://x.com/MattNiessner/status/2068010775273165212"]},
-        {"handle": "theo", "name": "Theo Browne", "notes": "t3.gg; high-engagement coverage of the AI dev-tooling and coding-agent ecosystem (Claude Code, model usage, AI IDEs).", "evidence": ["https://x.com/theo/status/2068273183212638384", "https://x.com/theo/status/2068130475525468610"]},
-        {"handle": "Thom_Wolf", "name": "Thomas Wolf", "notes": "Co-founder of Hugging Face. Posts original primary-source commentary on open-weights releases (GLM-5.2, VibeThinker, Kimi) and the open vs. closed model ecosystem. Roster monitors the HuggingFace org account but not its co-founder's strategy analysis, leaving an open-weights commentary gap. Verified via bird user-tweets: substantive, original (non-RT) AI posts within 24h.", "evidence": ["https://x.com/Thom_Wolf/status/2067996287530684826", "https://x.com/Thom_Wolf/status/2067961714918764925"]},
-        {"handle": "scaling01", "name": "scaling01", "notes": "High-signal model-specs/scaling analyst. Already cited repeatedly BY the monitored synthesis as a primary analyst (Cursor jointly-trained model 1.5T/100k-GPU reading, Noam Shazeer->OpenAI move, Mythos training-hardware commentary) -- 13 cross-references across research/twitter/2026-06-17..18. Both author-search and trust-weighted mention-graph evidence; fills a frontier-model spec/analysis commentary niche.", "evidence": ["https://x.com/scaling01/status/2069207624214565010", "https://x.com/scaling01/status/2067017700384125238", "research/twitter/2026-06-17.md"]},
-        {"handle": "NielsRogge", "name": "Niels Rogge", "notes": "HuggingFace / Papers-with-Code engineer posting original primary-source ML-research signal: SOTA benchmark badges, open MIT-licensed models beating closed frontier models on agentic work, semi-supervised ImageNet SOTA. Adds benchmark/open-model research coverage the roster's org accounts don't surface at the practitioner level.", "evidence": ["https://x.com/NielsRogge/status/2069074323663442218", "https://x.com/NielsRogge/status/2069036677989835068"]},
-        {"handle": "_philschmid", "name": "Philipp Schmid", "notes": "Google DeepMind DevRel. Primary-source Gemini API / agent-tooling announcements (Interactions API GA, Gemini skills/agents). Fills a Gemini-side developer-platform gap the roster lacks (roster monitors GoogleDeepMind/OfficialLoganK at the exec level, not the API/agent-tooling detail).", "evidence": ["https://x.com/_philschmid/status/2069137029359645007"]},
-        {"handle": "_xjdr", "name": "xjdr", "notes": "entropix author; primary-source OSS model-serving / inference-engineering voice (ncode serving, rationale for serving open-weight models, DeepSeek-V3/Llama-405B serving). Adds depth in the inference/serving area where the roster is thin (only charles_irl covers it).", "evidence": ["https://x.com/_xjdr/status/2069038936362803544"]},
-        {"handle": "rohanpaul_ai", "name": "Rohan Paul", "notes": "High-throughput AI primary-source curator the monitored synthesis already leans on: cited 9 times across research/twitter/2026-06-16..30 yet unmonitored. Original AI commentary (Dario Amodei open-source testimony, Aravind Srinivas on China open-source + export controls).", "evidence": ["https://x.com/rohanpaul_ai/status/2071781026968580599", "research/twitter/2026-06-29.md"]},
-        {"handle": "quxiaoyin", "name": "Xiaoyin Qu", "notes": "Top trust-weighted mention-graph candidate (vouched by monitored @kimmonismus). Original high-signal AI-economics / China-lab analysis (token economics, GLM 5.2/Kimi 2.7, 'model is no longer the moat'). Fills a frontier-vs-open economics analytical niche.", "evidence": ["https://x.com/quxiaoyin/status/2071758034595111242", "https://x.com/kimmonismus/status/2071524362012791114"]},
-        {"handle": "WesRoth", "name": "Wes Roth", "notes": "Frequently-cited AI-news source the monitored synthesis already uses: cited 5 times across research/twitter/2026-06-16..30 yet unmonitored. Active daily AI-news coverage (Meta distillation, model/app releases).", "evidence": ["https://x.com/WesRoth/status/2071775735338115133", "research/twitter/2026-06-30.md"]},
-        {"handle": "aleabitoreddit", "name": "aleabitoreddit", "notes": "User-requested monitored account addition."}
+        {
+          "handle": "karpathy",
+          "name": "Andrej Karpathy"
+        },
+        {
+          "handle": "iruletheworldmo",
+          "name": "Strawberry"
+        },
+        {
+          "handle": "AndrewCurran_",
+          "name": "Andrew Curran"
+        },
+        {
+          "handle": "fi56622380",
+          "name": "Fin"
+        },
+        {
+          "handle": "jukan05",
+          "name": "Jukan"
+        },
+        {
+          "handle": "vitrupo",
+          "name": "Vitrupo"
+        },
+        {
+          "handle": "dejavucoder",
+          "name": "Deja Vu Coder"
+        },
+        {
+          "handle": "jiratickets",
+          "name": "Jira Tickets"
+        },
+        {
+          "handle": "SemiAnalysis_",
+          "name": "SemiAnalysis"
+        },
+        {
+          "handle": "benthompson",
+          "name": "Ben Thompson"
+        },
+        {
+          "handle": "theinformation",
+          "name": "The Information"
+        },
+        {
+          "handle": "GavinSBaker",
+          "name": "Gavin Baker"
+        },
+        {
+          "handle": "mark_k",
+          "name": "Mark"
+        },
+        {
+          "handle": "ns123abc",
+          "name": "NIK"
+        },
+        {
+          "handle": "kimmonismus",
+          "name": "Chubby"
+        },
+        {
+          "handle": "_akhaliq",
+          "name": "AK"
+        },
+        {
+          "handle": "simonw",
+          "name": "Simon Willison"
+        },
+        {
+          "handle": "emollick",
+          "name": "Ethan Mollick"
+        },
+        {
+          "handle": "testingcatalog",
+          "name": "TestingCatalog"
+        },
+        {
+          "handle": "rasbt",
+          "name": "Sebastian Raschka"
+        },
+        {
+          "handle": "skirano",
+          "name": "Sriram Krishnan"
+        },
+        {
+          "handle": "jackclarkSF",
+          "name": "Jack Clark"
+        },
+        {
+          "handle": "ylecun",
+          "name": "Yann LeCun"
+        },
+        {
+          "handle": "hardmaru",
+          "name": "David Ha"
+        },
+        {
+          "handle": "JeffDean",
+          "name": "Jeff Dean"
+        },
+        {
+          "handle": "AravSrinivas",
+          "name": "Aravind Srinivas"
+        },
+        {
+          "handle": "deedydas",
+          "name": "Deedy Das"
+        },
+        {
+          "handle": "swyx",
+          "name": "Swyx"
+        },
+        {
+          "handle": "TheAITimeline",
+          "name": "The AI Timeline"
+        },
+        {
+          "handle": "levelsio",
+          "name": "Pieter Levels"
+        },
+        {
+          "handle": "steipete",
+          "name": "Peter Steinberger"
+        },
+        {
+          "handle": "mckaywrigley",
+          "name": "McKay Wrigley"
+        },
+        {
+          "handle": "nutlope",
+          "name": "Nutlope"
+        },
+        {
+          "handle": "rauchg",
+          "name": "Guillermo Rauch"
+        },
+        {
+          "handle": "amasad",
+          "name": "Amjad Masad"
+        },
+        {
+          "handle": "geoffreylitt",
+          "name": "Geoffrey Litt"
+        },
+        {
+          "handle": "jxnlco",
+          "name": "Jason Liu"
+        },
+        {
+          "handle": "danshipper",
+          "name": "Dan Shipper"
+        },
+        {
+          "handle": "andreasklinger",
+          "name": "Andreas Klinger"
+        },
+        {
+          "handle": "nikitabier",
+          "name": "Nikita Bier"
+        },
+        {
+          "handle": "tibo_maker",
+          "name": "Tibo"
+        },
+        {
+          "handle": "marclou",
+          "name": "Marc Lou"
+        },
+        {
+          "handle": "shl",
+          "name": "Suhail"
+        },
+        {
+          "handle": "dharmesh",
+          "name": "Dharmesh Shah"
+        },
+        {
+          "handle": "jeremyphoward",
+          "name": "Jeremy Howard"
+        },
+        {
+          "handle": "soumithchintala",
+          "name": "Soumith Chintala"
+        },
+        {
+          "handle": "giffmana",
+          "name": "David Giffman"
+        },
+        {
+          "handle": "arankomatsuzaki",
+          "name": "Aran Komatsuzaki"
+        },
+        {
+          "handle": "percyliang",
+          "name": "Percy Liang"
+        },
+        {
+          "handle": "JonathanRoss321",
+          "name": "Jonathan Ross"
+        },
+        {
+          "handle": "hendrycks",
+          "name": "Dan Hendrycks"
+        },
+        {
+          "handle": "teortaxesTex",
+          "name": "Teortaxes",
+          "notes": "High-signal commentator on Chinese AI labs (DeepSeek, Qwen) and open-weights releases; fills a China-lab coverage gap.",
+          "evidence": [
+            "https://x.com/teortaxesTex/status/2068280339974304032",
+            "https://x.com/teortaxesTex/status/2068252024320192620"
+          ]
+        },
+        {
+          "handle": "charles_irl",
+          "name": "Charles Frye",
+          "notes": "Modal; primary AI-inference-infrastructure detail (speculative decoding, Qwen 3.x co-releases, throughput benchmarks). Fills an inference/serving gap.",
+          "evidence": [
+            "https://x.com/charles_irl/status/2068124629433262210",
+            "https://x.com/charles_irl/status/2068155299157164385"
+          ]
+        },
+        {
+          "handle": "MattNiessner",
+          "name": "Matthias Niessner",
+          "notes": "Primary-source 3D/spatial-VLM research (OneCanvas, SOTA spatial benchmarks). Adds academic signal in a 3D/spatial-reasoning area the roster lacks.",
+          "evidence": [
+            "https://x.com/MattNiessner/status/2068010775273165212"
+          ]
+        },
+        {
+          "handle": "theo",
+          "name": "Theo Browne",
+          "notes": "t3.gg; high-engagement coverage of the AI dev-tooling and coding-agent ecosystem (Claude Code, model usage, AI IDEs).",
+          "evidence": [
+            "https://x.com/theo/status/2068273183212638384",
+            "https://x.com/theo/status/2068130475525468610"
+          ]
+        },
+        {
+          "handle": "Thom_Wolf",
+          "name": "Thomas Wolf",
+          "notes": "Co-founder of Hugging Face. Posts original primary-source commentary on open-weights releases (GLM-5.2, VibeThinker, Kimi) and the open vs. closed model ecosystem. Roster monitors the HuggingFace org account but not its co-founder's strategy analysis, leaving an open-weights commentary gap. Verified via bird user-tweets: substantive, original (non-RT) AI posts within 24h.",
+          "evidence": [
+            "https://x.com/Thom_Wolf/status/2067996287530684826",
+            "https://x.com/Thom_Wolf/status/2067961714918764925"
+          ]
+        },
+        {
+          "handle": "scaling01",
+          "name": "scaling01",
+          "notes": "High-signal model-specs/scaling analyst. Already cited repeatedly BY the monitored synthesis as a primary analyst (Cursor jointly-trained model 1.5T/100k-GPU reading, Noam Shazeer->OpenAI move, Mythos training-hardware commentary) -- 13 cross-references across research/twitter/2026-06-17..18. Both author-search and trust-weighted mention-graph evidence; fills a frontier-model spec/analysis commentary niche.",
+          "evidence": [
+            "https://x.com/scaling01/status/2069207624214565010",
+            "https://x.com/scaling01/status/2067017700384125238",
+            "research/twitter/2026-06-17.md"
+          ]
+        },
+        {
+          "handle": "NielsRogge",
+          "name": "Niels Rogge",
+          "notes": "HuggingFace / Papers-with-Code engineer posting original primary-source ML-research signal: SOTA benchmark badges, open MIT-licensed models beating closed frontier models on agentic work, semi-supervised ImageNet SOTA. Adds benchmark/open-model research coverage the roster's org accounts don't surface at the practitioner level.",
+          "evidence": [
+            "https://x.com/NielsRogge/status/2069074323663442218",
+            "https://x.com/NielsRogge/status/2069036677989835068"
+          ]
+        },
+        {
+          "handle": "_philschmid",
+          "name": "Philipp Schmid",
+          "notes": "Google DeepMind DevRel. Primary-source Gemini API / agent-tooling announcements (Interactions API GA, Gemini skills/agents). Fills a Gemini-side developer-platform gap the roster lacks (roster monitors GoogleDeepMind/OfficialLoganK at the exec level, not the API/agent-tooling detail).",
+          "evidence": [
+            "https://x.com/_philschmid/status/2069137029359645007"
+          ]
+        },
+        {
+          "handle": "_xjdr",
+          "name": "xjdr",
+          "notes": "entropix author; primary-source OSS model-serving / inference-engineering voice (ncode serving, rationale for serving open-weight models, DeepSeek-V3/Llama-405B serving). Adds depth in the inference/serving area where the roster is thin (only charles_irl covers it).",
+          "evidence": [
+            "https://x.com/_xjdr/status/2069038936362803544"
+          ]
+        },
+        {
+          "handle": "rohanpaul_ai",
+          "name": "Rohan Paul",
+          "notes": "High-throughput AI primary-source curator the monitored synthesis already leans on: cited 9 times across research/twitter/2026-06-16..30 yet unmonitored. Original AI commentary (Dario Amodei open-source testimony, Aravind Srinivas on China open-source + export controls).",
+          "evidence": [
+            "https://x.com/rohanpaul_ai/status/2071781026968580599",
+            "research/twitter/2026-06-29.md"
+          ]
+        },
+        {
+          "handle": "quxiaoyin",
+          "name": "Xiaoyin Qu",
+          "notes": "Top trust-weighted mention-graph candidate (vouched by monitored @kimmonismus). Original high-signal AI-economics / China-lab analysis (token economics, GLM 5.2/Kimi 2.7, 'model is no longer the moat'). Fills a frontier-vs-open economics analytical niche.",
+          "evidence": [
+            "https://x.com/quxiaoyin/status/2071758034595111242",
+            "https://x.com/kimmonismus/status/2071524362012791114"
+          ]
+        },
+        {
+          "handle": "WesRoth",
+          "name": "Wes Roth",
+          "notes": "Frequently-cited AI-news source the monitored synthesis already uses: cited 5 times across research/twitter/2026-06-16..30 yet unmonitored. Active daily AI-news coverage (Meta distillation, model/app releases).",
+          "evidence": [
+            "https://x.com/WesRoth/status/2071775735338115133",
+            "research/twitter/2026-06-30.md"
+          ]
+        },
+        {
+          "handle": "aleabitoreddit",
+          "name": "aleabitoreddit",
+          "notes": "User-requested monitored account addition."
+        },
+        {
+          "handle": "MilksandMatcha",
+          "name": "Sarah Chieng",
+          "notes": "Sarah Chieng. Applied-AI product commentary with concrete detail (model routing to smaller models, agent tooling, API surfaces of non-technical products). Consistently original rather than reactive.",
+          "evidence": [
+            "https://x.com/MilksandMatcha/status/2085073829601349725",
+            "https://x.com/MilksandMatcha/status/2085096754945359891"
+          ]
+        },
+        {
+          "handle": "SIGKITTEN",
+          "name": "SIGKITTEN",
+          "notes": "Security/systems practitioner with occasional high-signal AI infrastructure commentary. CAVEAT: measured only 5% AI-topical over a 20-tweet sample (mostly personal posts) -- lowest topicality in this batch. Added on user request; the analyst prompt's AI-only filter is what keeps the off-topic majority out of the public brief. Re-evaluate at the next curation pass.",
+          "evidence": [
+            "https://x.com/SIGKITTEN/status/2084849671370105337",
+            "https://x.com/SIGKITTEN/status/2085563766629122233"
+          ]
+        },
+        {
+          "handle": "MatthewBerman",
+          "name": "Matthew Berman",
+          "notes": "Daily AI-news YouTube channel and OSS advocate; ~120 avg likes. Fast aggregator of model/app releases -- useful as a corroboration signal, and already adjacent to monitored WesRoth/kimmonismus.",
+          "evidence": [
+            "https://x.com/MatthewBerman/status/2084684099873288517",
+            "https://x.com/MatthewBerman/status/2085067144698740883"
+          ]
+        },
+        {
+          "handle": "KingBootoshi",
+          "name": "Bootoshi",
+          "notes": "Builder shipping agent and simulation projects in public with implementation detail.",
+          "evidence": [
+            "https://x.com/KingBootoshi/status/2085499970254430546",
+            "https://x.com/KingBootoshi/status/2085465535895220294"
+          ]
+        },
+        {
+          "handle": "RayFernando1337",
+          "name": "Ray Fernando",
+          "notes": "AI educational content and SF ecosystem coverage (open-weights events, inference-vendor meetups). Mostly amplification rather than primary reporting -- lower independent signal than the rest of this batch.",
+          "evidence": [
+            "https://x.com/RayFernando1337/status/2085584657702334467",
+            "https://x.com/RayFernando1337/status/2085664196352770452"
+          ]
+        },
+        {
+          "handle": "trq212",
+          "name": "Thariq Shihipar",
+          "notes": "Thariq at Anthropic. Primary-source guidance on Claude Code and Claude Connectors usage patterns; ~400 avg likes. The roster monitors ClaudeDevs/alexalbert__ for announcements but nothing for applied agent-usage practice.",
+          "evidence": [
+            "https://x.com/trq212/status/2084387303959740449",
+            "https://x.com/trq212/status/2082938946007556247"
+          ]
+        },
+        {
+          "handle": "sqs",
+          "name": "Quinn Slack",
+          "notes": "Quinn Slack, Sourcegraph/Amp. First-party coding-agent product signal (Amp Orbs, cloud agents) and organizer of the freedom-of-intelligence event; open-weights advocacy.",
+          "evidence": [
+            "https://x.com/sqs/status/2085277612587278360",
+            "https://x.com/sqs/status/2085083273655472561"
+          ]
+        },
+        {
+          "handle": "iamgingertrash",
+          "name": "simp 4 satoshi (Truffle)",
+          "notes": "Truffle. Analytical macro-plus-AI writing (compute buildout vs. rate cycles, ARC-AGI embodiment critiques, open-model capability drift) at ~470 avg likes. Argument-driven, not announcement-driven.",
+          "evidence": [
+            "https://x.com/iamgingertrash/status/2085395892174021093",
+            "https://x.com/iamgingertrash/status/2085147758911013254"
+          ]
+        },
+        {
+          "handle": "jessalanfields",
+          "name": "Jess Fields",
+          "notes": "Local-AI advocacy and US-wide community organizing. CAVEAT: 35% AI-topical over 20 tweets with heavy RT/off-topic mix and ~1 avg like; weakest engagement in the batch. Added on user request as an organizing/community signal rather than a news source.",
+          "evidence": [
+            "https://x.com/jessalanfields/status/2084820198779941242",
+            "https://x.com/jessalanfields/status/2085251521516646736"
+          ]
+        },
+        {
+          "handle": "Scav",
+          "name": "Mattie Fairchild",
+          "notes": "Mattie Fairchild; runs a robotics build space. Adds robotics/embodied-AI coverage the roster is thin on, plus first-principles commentary on compute-driven model scaling.",
+          "evidence": [
+            "https://x.com/Scav/status/2085598110672380288",
+            "https://x.com/Scav/status/2084782941805453751"
+          ]
+        },
+        {
+          "handle": "DavidOndrej1",
+          "name": "David Ondrej",
+          "notes": "Practical agent-building content, well-timed to model releases; pushes applied capability limits of current models.",
+          "evidence": [
+            "https://x.com/DavidOndrej1/status/2085649282430820776",
+            "https://x.com/DavidOndrej1/status/2085648017315549607"
+          ]
+        }
       ]
     }
   ],

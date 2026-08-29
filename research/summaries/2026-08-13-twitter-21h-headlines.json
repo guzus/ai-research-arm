@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "GOOGLE SHIPS GEMINI 3.7 FLASH AT $0.75/$3.75 — HALF-PRICE PROMO EXPIRES JAN 1 INTO 3.6 FLASH'S EXACT OLD RATE",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2087948481721962669",
+    "category": "model"
+  },
+  {
+    "headline": "X OPEN-SOURCES FOR YOU RANKING CODE UNDER APACHE 2.0 — GROK PROMPTS AND ENFORCEMENT RULES WITHHELD",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2087966834519675053",
+    "category": "opensource"
+  },
+  {
+    "headline": "OPENAI SHIPS CHATGPT COMPUTER HISTORY — DESKTOP MEMORY ACROSS APPS AND WEBSITES; EEA, UK, SWITZERLAND DEFERRED",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2087996496088297746",
+    "category": "breaking"
+  },
+  {
+    "headline": "GPT-5.6 SOL HITS 750 TOKENS/SEC ON CEREBRAS AT 14X SPEED — SELECT CUSTOMERS ONLY, NO PRICE PUBLISHED",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2087947721936359705",
+    "category": "infra"
+  },
+  {
+    "headline": "GEMINI 3.7 FLASH CLAIMS DEEPSWE 65.3% VS 49.0% AND AUTOMATIONBENCH 30.4% VS 17.0% — ALL VENDOR NUMBERS, NO INDEPENDENT RUN",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2087986154260037817",
+    "category": "research"
+  },
+  {
+    "headline": "H100 ONE-YEAR RENTAL CONTRACTS UP 50% IN SIX MONTHS; LARGE CLUSTERS NOW CARRY 12-18 MONTH WAITS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2087954865024536729",
+    "category": "infra"
+  },
+  {
+    "headline": "MICROSOFT TO SHARPLY RAISE HOMEGROWN AI CHIP PRODUCTION NEXT YEAR TO CUT NVIDIA RELIANCE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2088007770851192979",
+    "category": "business"
+  }
+]

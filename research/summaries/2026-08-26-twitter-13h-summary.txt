@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-26 13:10:55 UTC
+
+CYCLE: Two Chinese open-weight releases land in one window.
+
+TOP STORIES:
+• Qwen ships Qwen3.8-Flash-Next open-weight: 125B MoE + 51B N-gram bank, 6B active, 1/9 the training cost of Qwen3.7-Plus, billed as a Qwen4 preview [✓]
+• Zhipu/Z.ai confirms to Bloomberg that stealth model "Ox Alpha" is a new GLM iteration, weights open tonight — killing the Gemini and MiMo attributions [✓]
+• Anthropic reported to be pitching a $30T+ TAM and up to $100B at a $2T valuation, Sept-Oct listing — same $2T figure this brief flagged as unsourced on 20 Aug [⚠]
+
+WATCH: Whether Z.ai actually publishes the Ox Alpha weights tonight, and under what license.
+
+Full update on GitHub.

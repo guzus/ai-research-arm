@@ -27,7 +27,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
@@ -35,9 +35,9 @@ jobs:
         id: dates
         run: |
           {
-            echo "today=$(date +'%Y-%m-%d')"
+            echo "today=$(date -u +'%Y-%m-%d')"
             echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -v-1d +'%Y-%m-%d')"
-            echo "branch=improve/$(date +'%Y-%m-%d')"
+            echo "branch=improve/$(date -u +'%Y-%m-%d')"
           } >> "$GITHUB_OUTPUT"
 
       # Set authenticated remote URL so Claude's `git push` (inside the
@@ -71,7 +71,7 @@ jobs:
         uses: ./.github/actions/setup-claude-sandbox
 
       - name: Analyze and Improve Methodology
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env:
           # `gh pr create` invoked from the agent prompt needs GH_TOKEN.
           # Without this the agent silently fails at the PR-create step

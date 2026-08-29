@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-12 02:39:43 UTC
+
+CYCLE: Financing terms and supply dates got specific — Nvidia's backstop, Lumentum's optics ramp, Supermicro's missing margin.
+
+TOP STORIES:
+• Nvidia's 25% project backstop is residual-value support — it guarantees the resale floor on hardware Nvidia decides when to obsolete [✓]
+• Lumentum dates the co-packaged-optics ramp to H2 2027 and says it is already "way behind" on high-power laser shipments [⚠]
+• Supermicro guided FY2027 revenue to $65-72B, then declined twice to attach a gross margin to it [⚠]
+
+WATCH: Any aggregate figure for Nvidia's contingent residual-value exposure across the $500B package, and how it is accounted for before it is drawn.
+
+Full update on GitHub.

@@ -4,11 +4,16 @@
 from __future__ import annotations
 
 import datetime as dt
+import json
 import os
 import sys
 import tempfile
 import unittest
+import urllib.error
+from contextlib import redirect_stderr, redirect_stdout
+from io import StringIO
 from pathlib import Path
+from unittest import mock
 
 sys.path.insert(0, os.path.dirname(__file__))
 
@@ -307,6 +312,131 @@ class RenderAndMainTest(unittest.TestCase):
 
         self.assertEqual(rc, 0)
         self.assertIn("Example model release", text)
+
+
+GUARD_REGISTRY = [
+    {
+        "id": "down-channel",
+        "name": "Down Channel",
+        "kind": "channel",
+        "channel": "@downchannel",
+        "priority": "P0",
+        "count": 5,
+        "tags": ["official"],
+        "include_in_digest": True,
+    },
+    {
+        "id": "up-search",
+        "name": "Up Search",
+        "kind": "search",
+        "query": "ai news",
+        "priority": "P1",
+        "count": 5,
+        "tags": ["research"],
+        "include_in_digest": True,
+    },
+]
+
+
+class TotalFetchFailureGuardTest(unittest.TestCase):
+    """Total signal loss must fail loudly, not commit an empty artifact.
+
+    2026-07-12 incident: tuber-api returned HTTP 502 for all 10 sources and
+    the lane still committed a fresh-dated file ("Unique videos collected: 0
+    / Fetch errors: 10") with exit 0. The git-recency freshness watchdog
+    (scripts/check_lane_freshness.py) can never catch that shape because the
+    file exists and is dated today. main() must instead exit
+    EXIT_TOTAL_FETCH_FAILURE (3) and write nothing when EVERY checked source
+    produced a fetch error and zero candidates were collected, while partial
+    failures keep the current always-write behavior.
+    """
+
+    API_BASE = "https://tuber-api.test.invalid"
+
+    def run_main(self, td, fake_fetch, registry_rows=None):
+        """Run main() with the per-source network boundary stubbed out.
+
+        fetch_source_candidates is resolved as a module global inside
+        collect_candidates, so patching it exercises the real per-source
+        error accumulation. Enrichment budgets are zeroed so
+        enrich_candidates makes no network calls of its own.
+        """
+        registry = Path(td) / "sources.json"
+        registry.write_text(
+            json.dumps(GUARD_REGISTRY if registry_rows is None else registry_rows),
+            encoding="utf-8",
+        )
+        out_dir = Path(td) / "out"
+        stdout, stderr = StringIO(), StringIO()
+        with mock.patch.object(youtube, "fetch_source_candidates", fake_fetch):
+            with redirect_stdout(stdout), redirect_stderr(stderr):
+                rc = youtube.main(
+                    [
+                        "--registry", str(registry),
+                        "--out-dir", str(out_dir),
+                        "--date", "2026-07-12",
+                        "--tuber-api-base", self.API_BASE,
+                        "--max-preview-checks", "0",
+                        "--max-transcript-checks", "0",
+                    ]
+                )
+        return rc, stdout.getvalue(), stderr.getvalue(), out_dir / "2026-07-12.md"
+
+    @staticmethod
+    def all_sources_down(source, *, base_url, fetch_json_fn=None):
+        raise urllib.error.URLError("tuber-api unreachable (HTTP 502)")
+
+    def test_total_failure_exits_3_and_writes_nothing(self):
+        with tempfile.TemporaryDirectory() as td:
+            rc, out, err, out_path = self.run_main(td, self.all_sources_down)
+
+            self.assertEqual(rc, youtube.EXIT_TOTAL_FETCH_FAILURE)
+            self.assertEqual(rc, 3)  # distinct from 2 (argument validation)
+            self.assertFalse(out_path.exists())
+            self.assertFalse(out_path.parent.exists())  # no partial output either
+            self.assertNotIn("Wrote", out)
+            self.assertIn("ERROR:", err)
+            self.assertIn(self.API_BASE, err)
+            # Per-source error summary names every failed source.
+            self.assertIn("Down Channel", err)
+            self.assertIn("Up Search", err)
+            self.assertIn("URLError", err)
+
+    def test_partial_failure_still_writes_daily_file(self):
+        def one_source_up(source, *, base_url, fetch_json_fn=None):
+            if source.id == "down-channel":
+                raise urllib.error.URLError("tuber-api unreachable (HTTP 502)")
+            candidate = youtube.normalize_video(
+                source,
+                {
+                    "id": "gH4FTjDm9FQ",
+                    "title": "OpenAI announces a new reasoning model",
+                    "publishedAt": "2 days ago",
+                    "channel": "Up Search Channel",
+                },
+            )
+            assert candidate is not None
+            return [candidate]
+
+        with tempfile.TemporaryDirectory() as td:
+            rc, out, err, out_path = self.run_main(td, one_source_up)
+
+            self.assertEqual(rc, 0)
+            self.assertTrue(out_path.exists())
+            text = out_path.read_text(encoding="utf-8")
+            self.assertIn("Unique videos collected: 1", text)
+            self.assertIn("Fetch errors: 1", text)
+            self.assertIn("Wrote", out)
+
+    def test_empty_registry_keeps_current_write_behavior(self):
+        # The guard requires at least one checked source: an empty registry
+        # is a configuration state, not a fetch outage, and keeps writing.
+        with tempfile.TemporaryDirectory() as td:
+            rc, _out, _err, out_path = self.run_main(td, self.all_sources_down, registry_rows=[])
+
+            self.assertEqual(rc, 0)
+            self.assertTrue(out_path.exists())
+            self.assertIn("Sources checked: 0", out_path.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

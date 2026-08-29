@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ANTHROPIC LEFT ISOLATED AS OPENAI-BACKED OPEN-WEIGHT LETTER SPLITS SILICON VALLEY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2081484724329992485",
+    "category": "policy"
+  },
+  {
+    "headline": "ANTHROPIC WEIGHS ONE OF SILICON VALLEY'S STRICTEST EMPLOYEE STOCK-SALE POLICIES AHEAD OF IPO",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2081477158845743601",
+    "category": "business"
+  },
+  {
+    "headline": "xAI SHIPS GROK BUILD AGENT CLI; PITCHES GROK 4.5 AS VALUE LEADER AT $100",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2081485024872796427",
+    "category": "model"
+  },
+  {
+    "headline": "CXMT SET FOR IPO; NOMURA TARGET IMPLIES ~RMB 7.76T CAP, TWICE MICRON'S MULTIPLE",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2081508685810209276",
+    "category": "infra"
+  },
+  {
+    "headline": "MICRON-META WHITE PAPER: 38x SLOWDOWN WHEN TRAINING DATA SPILLS FROM DRAM TO SSD",
+    "source": "@GavinSBaker",
+    "url": "https://x.com/GavinSBaker/status/2081459531570090336",
+    "category": "research"
+  },
+  {
+    "headline": "AMD HELIOS HITS FULL PRODUCTION; MI455X DEPLOYMENTS LINED UP WITH ANTHROPIC, OPENAI",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2081472671129501729",
+    "category": "infra"
+  },
+  {
+    "headline": "POOLSIDE LAGUNA S 2.1: 118B SPARSE MoE, 8B ACTIVE, 1M CONTEXT, OPEN WEIGHTS",
+    "source": "@rasbt",
+    "url": "https://x.com/rasbt/status/2081374704753950742",
+    "category": "opensource"
+  }
+]

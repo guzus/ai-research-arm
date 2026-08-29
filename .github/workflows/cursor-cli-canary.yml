@@ -1,0 +1,108 @@
+name: Cursor CLI Canary
+
+# Diagnostics lane for the Cursor CLI backend (cursor-grok-4.6-high-fast via `agent`).
+#
+#   CURSOR_API_KEY — Cursor dashboard API key
+#   provider `cursor`, model `cursor/cursor-grok-4.6-high-fast`
+#
+# STRICT like opencode-deepseek-canary.yml: this lane exists to test the
+# Cursor path — an outage must fail this run, never re-route. Production
+# editorial defaults stay on OpenCode until a route explicitly selects
+# cursor-grok-4p6-fast.
+#
+# One harness probe: the containerised Cursor CLI runs one headless
+# `agent -p --mode ask` turn with the production model id and a
+# tool-denied canary config, so the canary cannot touch the repository.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: cursor-cli-canary
+  cancel-in-progress: false
+
+jobs:
+  canary:
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 15
+    permissions:
+      contents: read
+
+    steps:
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.cursor-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .cursor-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
+        with:
+          persist-credentials: false
+          set-safe-directory: false
+
+      - name: Check Cursor CLI auth
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${CURSOR_API_KEY:-}" ]; then
+            echo "::error::No Cursor CLI auth configured. Set CURSOR_API_KEY (Cursor dashboard API key) with: gh secret set CURSOR_API_KEY"
+            exit 1
+          fi
+
+      - name: Run Cursor CLI file-free canary
+        uses: ./.github/actions/run-cursor-container
+        with:
+          mode: canary
+          prompt-text: 'Reply with exactly this token and nothing else: CURSOR-CLI-CANARY-OK'
+          model: cursor/cursor-grok-4.6-high-fast
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          cursor-config: .github/cursor/cli-config-canary.json
+          timeout-minutes: '10'
+          output-file: ${{ runner.temp }}/cursor-cli-canary.out
+
+      - name: Assert canary token
+        run: |
+          set -euo pipefail
+          out="${RUNNER_TEMP:-/tmp}/cursor-cli-canary.out"
+          if ! grep -q "CURSOR-CLI-CANARY-OK" "$out"; then
+            echo "::error::Cursor CLI run completed but the canary token is missing from its output — API-key auth or model routing through agent is broken."
+            exit 1
+          fi
+          echo "Cursor CLI headless API-key auth canary OK."

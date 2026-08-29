@@ -1,0 +1,14 @@
+Speaker 1: Thursday, August sixth, twenty twenty-six.
+Speaker 2: [high_energy] Google rewired its entire AI leadership in the span of one hour, with Demis Hassabis moving up to Chair and Jeff Dean walking out the door after twenty-seven years to found a new venture called Discovery Loop.
+Speaker 1: Twenty-seven years at one company, and he leaves on an hour's notice to the org chart. That is the kind of departure that reshapes a research agenda, not just a reporting line.
+Speaker 2: And the money story underneath it is just as big, the Financial Times sizes Google's Anthropic chip-financing programme at [emphasis] one hundred fifty billion dollars [/emphasis].
+Speaker 1: Meanwhile Meta shipped Muse Code, its first coding agent, priced below the current cost leader.
+Speaker 2: Priced below, but not performing above. Muse Code lands at eighty-two point nine percent on Terminal Bench two point one, against Claude Opus five at eighty-six point seven percent.
+Speaker 1: So the pitch is cheaper, not better, and buyers get to decide how much that gap is worth.
+Speaker 1: Some quick numbers on the silicon side. A M D data center revenue came in at six point seven billion dollars, up [emphasis] one hundred seven percent [/emphasis] year over year, inside a record eleven point five billion dollar quarter.
+Speaker 2: Doubling a data center business in a year is not a normal hardware cycle, that is demand outrunning supply.
+Speaker 1: One more result, and it comes with a caveat. The Prime Agent harness reportedly hit ninety-five point five percent on ARC A G I three, against a human baseline of ninety-five point four.
+Speaker 2: [dramatic_pause] Above human, by one tenth of a point, and single-sourced, so hold that one loosely until someone reproduces it.
+Speaker 1: On the community front, Hacker News spent the day arguing that the agent tooling layer is over-built.
+Speaker 2: Worth noting that two critiques, Pi's Minimalism at four hundred sixty-nine points and Stateless M C P at three hundred fifty-two, both outscored the only model release of the day.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

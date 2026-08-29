@@ -1,0 +1,254 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Andrej Karpathy announced he joined Anthropic's pretraining team on 2026-05-19, to build a team using Claude to accelerate pretraining research.",
+      "type": "event",
+      "source_urls": ["https://x.com/karpathy/status/2056753169888334312", "https://techcrunch.com/2026/05/19/openai-co-founder-andrej-karpathy-joins-anthropics-pre-training-team/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-05-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Nick Joseph (Anthropic Head of Pretraining) said Karpathy's team is focused on using Claude to accelerate pretraining research itself.",
+      "type": "quote",
+      "source_urls": ["https://x.com/nickevanjoseph/status/2056760504949842219"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "John Jumper left Google DeepMind for Anthropic on 2026-06-19 after nearly nine years, with no disclosed title, team, or mandate.",
+      "type": "event",
+      "source_urls": ["https://x.com/JohnJumperSci/status/2068001285173834106", "https://www.cnbc.com/2026/06/19/john-jumper-to-leave-google-deepmind-for-anthropic.html"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-06-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Anthropic's Claude Science product, launched 2026-06-30, credits Alexander Tarashansky and Eric Kauderer-Abrams as leads; neither MIT Technology Review's nor STAT News's launch coverage names Jumper as involved.",
+      "type": "event",
+      "source_urls": ["https://www.technologyreview.com/2026/06/30/1139987/claude-science-is-anthropics-newest-flagship-product/", "https://www.statnews.com/2026/06/30/anthropic-release-claude-science-ceo-dario-amodei/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-06-30",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c5",
+      "claim": "Ross Nordeen, an xAI co-founder who led its compute/infrastructure dealmaking, joined Anthropic in May 2026 to focus on compute.",
+      "type": "event",
+      "source_urls": ["https://www.datacenterdynamics.com/en/news/xai-cofounder-ross-nordeen-joins-anthropic-to-focus-on-compute-following-colossus-lease-deal/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Anthropic agreed to pay xAI roughly $1.25B/month for Colossus compute capacity through May 2029 (~$45B over three years).",
+      "type": "metric",
+      "source_urls": ["https://techcrunch.com/2026/05/20/anthropic-will-pay-xai-1-25-billion-per-month-for-compute/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-20",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c7",
+      "claim": "Eric Boyd, former President of Microsoft's AI Platform / Azure AI lead, joined Anthropic as Head of Infrastructure on 2026-04-07.",
+      "type": "event",
+      "source_urls": ["https://www.bloomberg.com/news/articles/2026-04-07/anthropic-poaches-microsoft-executive-to-lead-infrastructure", "https://redmondmag.com/articles/2026/04/07/anthropic-names-former-microsoft-azure-ai-executive-eric-boyd-as-infrastructure-chief.aspx"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-04-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "Anthropic committed $100B+ over 10 years to AWS for up to 5GW of Trainium capacity, with roughly 1GW online by end of 2026.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/news/anthropic-amazon-compute"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-04-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Tom Blomfield, Monzo co-founder and YC group partner, took leave from YC to join Anthropic's compute team on 2026-07-13, working alongside co-founder Tom Brown.",
+      "type": "event",
+      "source_urls": ["https://sifted.eu/articles/anthropic-monzo-founder-tom-blomfield", "https://techfundingnews.com/monzo-co-founder-tom-blomfield-takes-leave-from-y-combinator-to-join-anthropic/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Marcus Fontoura, former CTO of Microsoft Azure Core, joined Anthropic as Member of Technical Staff around 2026-06-17.",
+      "type": "event",
+      "source_urls": ["https://www.datacenterdynamics.com/en/news/microsofts-azure-core-cto-latest-to-join-anthropic/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "Jelani Nelson, chair of UC Berkeley's CS Division and a streaming-algorithms theorist, joined Anthropic's pretraining team on academic leave effective 2026-07-01.",
+      "type": "event",
+      "source_urls": ["https://x.com/minilek/status/2072322757908664728", "https://www.techtimes.com/articles/319500/20260702/anthropic-hires-berkeley-cs-chair-jelani-nelson-signaling-new-phase-ai-race.htm"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Teresa Carlson (ex-AWS Worldwide Public Sector, Microsoft, Splunk) was named Anthropic's first-ever Global Head of Public Sector on 2026-07-07.",
+      "type": "event",
+      "source_urls": ["https://fedscoop.com/anthropic-taps-microsoft-aws-teresa-carlson-lead-public-sector/", "https://www.govconwire.com/articles/teresa-carlson-anthropic-public-sector-global-head"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "Anthropic's self-disclosed run-rate revenue rose from ~$9B (end 2025) to $14B (Feb 2026) to $30B (Apr 2026) to $47B (May 2026).",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/news/series-h", "https://www.anthropic.com/news/google-broadcom-partnership-compute"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-05-28",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c14",
+      "claim": "Anthropic closed a $65B Series H on 2026-05-28 at a $965B post-money valuation.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/news/series-h"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-28",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c15",
+      "claim": "Anthropic confidentially submitted a draft Form S-1 to the SEC on 2026-06-01.",
+      "type": "event",
+      "source_urls": ["https://www.cnbc.com/2026/06/01/anthropic-ipo-s1-prospectus.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "Anthropic's own Institute states: \"We are not there yet, and recursive self-improvement is not inevitable.\"",
+      "type": "quote",
+      "source_urls": ["https://www.anthropic.com/institute/recursive-self-improvement"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "Anthropic states more than 80% of code merged into its own codebase is Claude-authored, versus low single digits before Claude Code's Feb 2025 preview.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/institute/recursive-self-improvement"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-04",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c18",
+      "claim": "Boris Cherny (head of Claude Code) said he had not written a line of code by hand in roughly eight months as of June 2026.",
+      "type": "quote",
+      "source_urls": ["https://fortune.com/2026/06/11/anthropic-claude-boris-cherny-doesnt-write-code-by-hand-anymore/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-11",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "Anthropic's government relationship was volatile in 2026: GSA OneGov deal (Aug 2025) -> Trump directive to cease use (Feb 27, 2026) -> DOD 'supply chain risk' designation (Mar 2026) -> federal lawsuit -> preliminary injunction restoring access (Mar 26, 2026) -> GSA reinstatement (Apr 3, 2026), with DOD-specific exclusion persisting after an Apr 8 appeals loss.",
+      "type": "event",
+      "source_urls": ["https://www.gsa.gov/about-gsa/newsroom/news-releases/gsa-strikes-onegov-deal-with-anthropic-08122025", "https://www.gsa.gov/about-gsa/newsroom/news-releases/gsa-issues-statement-on-anthropic-preliminary-injunction-04032026"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-04-08",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c20",
+      "claim": "At least 22 professors left academia for frontier AI labs in H1 2026, split roughly evenly: OpenAI 6, Meta 6, Anthropic 5, Google DeepMind 5 — Anthropic is not the volume leader on this measure.",
+      "type": "comparison",
+      "source_urls": ["https://cryptobriefing.com/ai-companies-poach-professors-academia/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c21",
+      "claim": "Google lost Noam Shazeer to OpenAI and John Jumper to Anthropic within 48 hours of each other (June 18-19, 2026), reported by press as one symmetrical talent-war event.",
+      "type": "event",
+      "source_urls": ["https://www.fastcompany.com/91531084/inside-the-xai-exodus"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "Three of the eight named 2026 hires (Karpathy, Boyd, Nordeen) joined Anthropic before the June 1 S-1 filing existed; five (Jumper, Fontoura, Nelson, Carlson, Blomfield) were announced 18-42 days after the filing.",
+      "type": "comparison",
+      "source_urls": ["https://www.cnbc.com/2026/05/19/anthropic-hires-openai-cofounder-andrej-karpathy-former-tesla-ai-lead.html", "https://x.com/t_blom/status/2076580921398931788"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-13",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c23",
+      "claim": "SemiAnalysis reportedly estimates Anthropic's revenue per megawatt of compute capacity rose from ~$16M to a projected ~$60M within about nine months.",
+      "type": "metric",
+      "source_urls": ["https://www.kucoin.com/news/flash/semianalysis-anthropic-q3-2026-profit-to-exceed-10-billion"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-08",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c24",
+      "claim": "Dario Amodei's own estimate of algorithmic-efficiency progress is roughly 4x/year, up from a 2020 Anthropic-team estimate of 1.68x/year.",
+      "type": "metric",
+      "source_urls": ["https://darioamodei.com/post/on-deepseek-and-export-controls"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-01-31",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c25",
+      "claim": "Anthropic's headcount is estimated between roughly 2,500 (Bloomberg, June 2026) and 5,189 (Tracxn, May 2026), with no official company disclosure.",
+      "type": "metric",
+      "source_urls": ["https://www.bloomberg.com/news/articles/2026-06-10/anthropic-ceo-dario-amodei-is-a-manager-to-only-one-direct-report"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-10",
+      "confidence": "low",
+      "risk": "single-source"
+    }
+  ]
+}

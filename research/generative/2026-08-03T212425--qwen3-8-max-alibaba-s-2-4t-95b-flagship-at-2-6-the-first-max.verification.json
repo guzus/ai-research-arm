@@ -1,0 +1,238 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The documented half is unusually specific. Qwen's launch post gives the model's shape in a single clause: \"2.4T parameters (95B active), with open weights releasing next week\" [^1].",
+      "verdict": "supported",
+      "citation": "https://qwen.ai/blog?id=qwen3.8"
+    },
+    {
+      "id": "c2",
+      "text": "Alongside the $2/$6 base, QwenCloud publishes an implicit cache read at $0.25, an explicit cache *creation* charge at $2.50, and an explicit cache read at $0.17 [^2].",
+      "verdict": "supported",
+      "citation": "https://www.qwencloud.com/models/qwen3.8-max"
+    },
+    {
+      "id": "c3",
+      "text": "A 991K maximum input plus a 131K maximum output exceeds the 1M window, so these are per-field ceilings, not a budget you can spend simultaneously [^2].",
+      "verdict": "supported",
+      "citation": "https://www.qwencloud.com/models/qwen3.8-max"
+    },
+    {
+      "id": "c4",
+      "text": "Artificial Analysis measures Qwen3.8-Max at a blended $1.18 per million tokens — cheaper than its own card implies, because input dominates real traffic — and simultaneously at $2,159.51 to complete the Intelligence Index, having burned 150M output tokens against a comparison median of 63M, with the model explicitly labelled \"very verbose\" [^10].",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/models/qwen3-8-max"
+    },
+    {
+      "id": "c5",
+      "text": "Independently, Artificial Analysis places the served model at Intelligence Index 53, ranked #16 of 186, at 46.5 output tokens/sec, ranked #122 of 186 [^10].",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/models/qwen3-8-max"
+    },
+    {
+      "id": "c6",
+      "text": "The row Alibaba's messaging leans hardest on is Terminal-Bench 2.1, where 86.6 beats both Claude Opus 4.8 and Claude Fable 5 at 84.6 — and still trails GPT-5.6 Sol at 88.8 [^1][^21].",
+      "verdict": "supported",
+      "citation": "https://qwen.ai/blog?id=qwen3.8"
+    },
+    {
+      "id": "c7",
+      "text": "Analysts reconstructing the comparison report that the competitor columns were not re-run under those conditions — Opus 4.8 and Fable 5 appear under Terminus 2 via Artificial Analysis, GPT-5.6 Sol under Codex [^21].",
+      "verdict": "supported",
+      "citation": "https://qwen.ai/blog?id=qwen3.8"
+    },
+    {
+      "id": "c8",
+      "text": "How much does that matter? Independent work measuring the same models across harnesses puts GPT-5.5 at 82.7 under Codex CLI and 53.5 under Terminus-2, a 29.2-point swing attributable to scaffold alone; DeepSeek-V4-Pro moves 67.9 to 50.0 on the same axis [^23].",
+      "verdict": "unsupported",
+      "citation": "https://arxiv.org/pdf/2605.22535"
+    },
+    {
+      "id": "c9",
+      "text": "By 2.0 points, measured on a different harness than its rivals. Harness choice alone moves the same benchmark by up to 29.2 points [^1][^23].",
+      "verdict": "unsupported",
+      "citation": "https://arxiv.org/pdf/2605.22535"
+    },
+    {
+      "id": "c10",
+      "text": "Qwen's WideSearch footnote states the setup outright — \"Claude Code harness for external models and the Qwen-Agent harness for ours\" — and its Fable 5 column carries the caveat that \"Fable5 results may involve fallbacks\" [^1].",
+      "verdict": "supported",
+      "citation": "https://qwen.ai/blog?id=qwen3.8"
+    },
+    {
+      "id": "c11",
+      "text": "Counting back 265 commits from the census date lands exactly on the parentless root commit `170a3d8a`, dated 2026-07-13T12:22:21Z, message \"feat: scaffold oh-my-cli with toolchain, tools, and fake-provider smoke test\" [^33].",
+      "verdict": "supported",
+      "citation": "https://api.github.com/repos/qwen-code-dev-bot/oh-my-cli/commits/170a3d8a326bde61f7af9710ddb281e41f411531"
+    },
+    {
+      "id": "c12",
+      "text": "That root commit is a single +3,222 / −0 drop landing 39 minutes after the repository was created, already containing a layered CLI plus tests — and roughly 2,093 of those lines are a lockfile, leaving about 1,129 authored lines [^33].",
+      "verdict": "supported",
+      "citation": "https://api.github.com/repos/qwen-code-dev-bot/oh-my-cli/commits/170a3d8a326bde61f7af9710ddb281e41f411531"
+    },
+    {
+      "id": "c13",
+      "text": "Then the contributor list, which is where the framing breaks. GitHub records 463 contributions from `qwen-code-dev-bot` and 13 from a human account, `qqqys` [^31].",
+      "verdict": "weak",
+      "citation": "https://api.github.com/repos/qwen-code-dev-bot/oh-my-cli/contributors"
+    },
+    {
+      "id": "c14",
+      "text": "Commit `59eca7c` was authored and committed by qqqys (qys177@gmail.com) at 2026-07-23T07:26:00Z — squarely inside the claimed window.",
+      "verdict": "supported",
+      "citation": "https://api.github.com/repos/qwen-code-dev-bot/oh-my-cli/commits/59eca7c"
+    },
+    {
+      "id": "c15",
+      "text": "No agent work commit is cryptographically signed; the API reports verification reason \"unsigned\" on every non-merge commit, while GitHub's own web-flow merge commits are signed [^32].",
+      "verdict": "weak",
+      "citation": "https://api.github.com/repos/qwen-code-dev-bot/oh-my-cli/commits/59eca7c"
+    },
+    {
+      "id": "c16",
+      "text": "`oh-my-cli` is Apache-2.0 TypeScript with three runtime dependencies, roughly 130 `*.test.ts` files across unit, integration and smoke suites, LSP and MCP integration, and an Electron desktop shell [^30].",
+      "verdict": "weak",
+      "citation": "https://api.github.com/repos/qwen-code-dev-bot/oh-my-cli"
+    },
+    {
+      "id": "c17",
+      "text": "Querying the Hugging Face API for the Qwen organization sorted by last-modified returns no repository containing \"3.8\"; the most recently modified Qwen repository dates from 2026-07-22, and the highest version present is Qwen3.6 [^44].",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/api/models?author=Qwen&sort=lastModified&direction=-1&limit=30"
+    },
+    {
+      "id": "c18",
+      "text": "Every Max-tier Qwen flagship since Qwen2.5-Max in January 2025 has shipped closed — Qwen2.5-Max, Qwen3-Max-Preview (September 2025), Qwen3.6-Max-Preview (2026-04-20), Qwen3.7-Max (2026-05-20), and Qwen3.8-Max-Preview (2026-07-19) [^46] — and the Hugging Face organization contains no Max-class checkpoint to contradict it [^44,46].",
+      "verdict": "weak",
+      "citation": "https://www.digitalapplied.com/blog/qwen-closed-flagship-pivot-open-weight-retreat-2026"
+    },
+    {
+      "id": "c19",
+      "text": "The closed-flagship policy dates to roughly January 2025 [^46], which makes it an eighteen-month, repeatedly reaffirmed commercial posture rather than a three-month experiment.",
+      "verdict": "unsupported",
+      "citation": "https://www.digitalapplied.com/blog/qwen-closed-flagship-pivot-open-weight-retreat-2026"
+    },
+    {
+      "id": "c20",
+      "text": "Two things cut the other way, and both are real. First, Qwen's **non-Max** track delivers: at Qwen3.5, downloadable weights followed the flagship announcement within roughly 8–11 days, and the Hugging Face organization does contain Qwen3.5-397B-A17B along with its FP8 and GPTQ-Int4 variants, Qwen3.5-122B-A10B and Qwen3.5-27B [^44].",
+      "verdict": "weak",
+      "citation": "https://huggingface.co/api/models?author=Qwen&sort=lastModified&direction=-1&limit=30"
+    },
+    {
+      "id": "c21",
+      "text": "Is sixteen days even the impressive quantity? METR is explicit that its metric measures something else — time horizon is \"not the length of time AIs can work independently\" but \"the amount of serial human labor they can replace with a 50% success rate,\" and the best measured 50% horizon is about 17 hours [^36].",
+      "verdict": "unsupported",
+      "citation": "https://metr.org/notes/2026-01-22-time-horizon-limitations/"
+    },
+    {
+      "id": "c22",
+      "text": "Qwen's precedent is split by **tier**, not by default: small models ship Apache 2.0, but its largest open checkpoints have carried a bespoke Tongyi Qianwen License reading \"If you are commercially using the Materials, and your product or service has more than 100 million monthly active users, You shall request a license from Us\" — a license that also forbids relicensing and using outputs to improve any other LLM [^45].",
+      "verdict": "weak",
+      "citation": "https://github.com/QwenLM/Qwen/blob/main/Tongyi%20Qianwen%20LICENSE%20AGREEMENT"
+    },
+    {
+      "id": "c23",
+      "text": "For an actual cost anchor there is exactly one first-party production accounting of a large sparse MoE: DeepSeek's Open Source Week disclosure of 226.75 nodes of 8×H800 averaged over 24 hours, where \"assuming the leasing cost of one H800 GPU is $2 per hour, the total daily cost amounts to $87,072\" against $562,027 of theoretical daily revenue — the famous \"545% cost profit margin\" [^51].",
+      "verdict": "supported",
+      "citation": "https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md"
+    },
+    {
+      "id": "c24",
+      "text": "Independently, LMSYS served DeepSeek V3 on 96 H100s with wide expert parallelism at \"a cost of $0.20/1M output tokens, which is about one-fifth the cost of the official DeepSeek Chat API,\" landing within 5.6% (prefill) and 6.6% (decode) of DeepSeek's own published profile [^52].",
+      "verdict": "supported",
+      "citation": "https://lmsys.org/blog/2025-05-05-large-scale-ep/"
+    },
+    {
+      "id": "c25",
+      "text": "FY2026 capital expenditure reached RMB 126,063 million (US$18,275 million), up roughly 50% from about RMB 84.3 billion in FY2025, with RMB 26,887 million spent in the March quarter alone [^59].",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001577552/000110465926060224/tm2614494d1_ex99-1.htm"
+    },
+    {
+      "id": "c26",
+      "text": "Over the same year free cash flow reversed from an inflow of RMB 73.9 billion to an outflow of RMB 46.6 billion while group adjusted EBITA fell 84% year over year to RMB 5,102 million — a swing management attributes to quick commerce *and* cloud infrastructure jointly, so it is not an AI-only number [^59].",
+      "verdict": "weak",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001577552/000110465926060224/tm2614494d1_ex99-1.htm"
+    },
+    {
+      "id": "c27",
+      "text": "Cloud Intelligence revenue was RMB 41,626 million (US$6,035 million) in the quarter ended 2026-03-31, up 38% year over year, with external customer revenue growth accelerating to 40% and AI-related products at roughly 30% of external cloud revenue [^59].",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/0001577552/000110465926060224/tm2614494d1_ex99-1.htm"
+    },
+    {
+      "id": "c28",
+      "text": "And the tape has run this play before: the US line closed up 4.14% at $127.31 on 2026-08-03 against a $122.25 prior close, ranging $126.13–$129.50 with an intraday high 1.7% above the close, still far below its $192.67 52-week high and well above its June low of $91.99 [^62]",
+      "verdict": "supported",
+      "citation": "https://stockanalysis.com/stocks/baba/"
+    },
+    {
+      "id": "c29",
+      "text": "The Federal Register published on 2026-06-10 the Department of Defense's addition of 65 entities to its Section 1260H Chinese Military Companies list, Alibaba Group Holding Limited among them, on a stated basis of indirect SASAC affiliation — not any AI-specific or model-related conduct [^68].",
+      "verdict": "weak",
+      "citation": "https://www.federalregister.gov/documents/2026/06/10/2026-11571/notice-of-availability-of-designation-of-chinese-military-companies"
+    },
+    {
+      "id": "c30",
+      "text": "The consequence that bites is Section 805 of the FY2024 NDAA, effective 2026-06-30, barring DoD from entering, renewing or extending contracts directly with listed entities, with an indirect/supply-chain phase following 2027-06-30 [^69].",
+      "verdict": "supported",
+      "citation": "https://governmentcontractsnavigator.com/2026/07/22/dow-updates-section-1260h-list-expanding-compliance-obligations-for-government-contractors/"
+    },
+    {
+      "id": "c31",
+      "text": "The default inference scope is **Global**, documented as \"any available node, including within and outside China.\" Restricting execution to the US is opt-in: \"Use model names with the `-us` suffix (such as `qwen-plus-us`) to restrict inference to the US.\" Without the suffix, inference defaults to Global [^72].",
+      "verdict": "supported",
+      "citation": "https://www.alibabacloud.com/help/en/model-studio/regions/"
+    },
+    {
+      "id": "c32",
+      "text": "Here is the clearest thing that would weaken a \"fully shipped\" reading: coverage says GA arrived \"via Alibaba Cloud's Model Studio APIs\" [^3], yet Model Studio's own pricing and text-generation pages still top out at `qwen3.7-max` [^8].",
+      "verdict": "supported",
+      "citation": "https://www.alibabacloud.com/help/en/model-studio/model-pricing"
+    },
+    {
+      "id": "c33",
+      "text": "Second, the competitive incentive genuinely changed: Moonshot shipped Kimi K3, a 2.8T open-weight model, on 2026-07-16, three days before Qwen previewed 3.8-Max [^48].",
+      "verdict": "unsupported",
+      "citation": "https://technode.com/2026/08/03/alibaba-launches-qwen3-8-with-2-4-trillion-parameters/"
+    },
+    {
+      "id": "c34",
+      "text": "Moonshot shipped Kimi K3 — 2.8 trillion total parameters, reportedly China's largest model — on 2026-07-16, three days before Alibaba previewed Qwen3.8-Max on 2026-07-19, and K3 activates roughly 104B parameters per token against Qwen's 95B, leaving Qwen both smaller in total and slightly sparser [^63].",
+      "verdict": "weak",
+      "citation": "https://www.thestandard.com.hk/china/article/338878/Alibaba-unveils-its-most-capable-AI-model-to-date-not-far-behind-Moonshots"
+    },
+    {
+      "id": "c35",
+      "text": "The commitment itself is first-party and unambiguous. Alibaba's own launch post states that \"The model weights will be open-sourced on Hugging Face and ModelScope next week\" [^1], and the official @Alibaba_Qwen account names two artifacts rather than one: \"Next week, the open weights of Qwen3.8-Max will be released, and Qwen3.8-27B is also going open-weights to meet you all!\" [^6].",
+      "verdict": "weak",
+      "citation": "https://qwen.ai/blog?id=qwen3.8"
+    },
+    {
+      "id": "c36",
+      "text": "Anthropic removed its long-context surcharge in March 2026 and now serves the full 1M window at standard pricing [^13].",
+      "verdict": "weak",
+      "citation": "https://platform.claude.com/docs/en/about-claude/pricing"
+    },
+    {
+      "id": "c37",
+      "text": "It also has a short shelf life: Sonnet 5's $2/$10 is introductory pricing through 2026-08-31, stepping to $3/$15 on 1 September in a pre-announced 50% increase [^20][^13].",
+      "verdict": "supported",
+      "citation": "https://platform.claude.com/docs/en/about-claude/pricing"
+    },
+    {
+      "id": "c38",
+      "text": "The section heading reads \"10+ Days of Autonomous Coding: Building a Self-Evolving Harness\"; the body reports that the result arrived \"after approximately 16 days of fully autonomous AI operation,\" yielding \"265 commits, 127 PRs, and 151 issues\" [^1].",
+      "verdict": "supported",
+      "citation": "https://qwen.ai/blog?id=qwen3.8"
+    },
+    {
+      "id": "c39",
+      "text": "Prior-generation work found the Qwen2.5 pretraining corpus overlapping MATH-500, AMC and AIME 2024, and a leakage study across 35 open models ranked the Qwen family highest [^26].",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/html/2507.10532v1"
+    }
+  ]
+}

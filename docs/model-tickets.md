@@ -54,6 +54,12 @@ sources:                           # required, list of citations (URLs or @handl
   - https://red.anthropic.com/2026/mythos-preview/
   - "@scaling01"
   - "@kimmonismus"
+polymarket:                        # optional, 1-3 Polymarket market mappings (see "Polymarket market mappings")
+  - event_slug: mythos-released-by         # required, gamma event slug (polymarket.com/event/<event_slug>)
+    market_id: "2850825"                   # required, gamma market id — quote it, must be a string
+    token_id: "31380452762865791793..."    # required, CLOB YES-outcome token id — quote it, must be a string
+    question: "Mythos released by Aug 31, 2026?"   # required, human question incl. the outcome
+    outcome: "Aug 31 2026"                 # optional, short outcome label for the dashboard chip
 created_at: 2026-04-15             # required, YYYY-MM-DD
 updated_at: 2026-05-16             # required, YYYY-MM-DD (>= created_at)
 closed_at: null                    # required, YYYY-MM-DD when status=closed, else null
@@ -126,6 +132,58 @@ captures this in `verification`:
 If a ticket sits at `unverified` for more than ~15 daily cycles, the
 CRUD agent may close it with `closed_reason: stale-rumor-unverified`.
 
+## Polymarket market mappings (optional)
+
+A ticket tracks a real-world event; a Polymarket market is the crowd's
+live probability for that event. The optional `polymarket:` frontmatter
+key binds the two so the dashboard's models tab can render live odds
+(and their evolution) on the ticket card.
+
+Shape — a list of 1–3 mappings, **most-relevant first** (the first
+mapping is the primary one and gets the price-history sparkline):
+
+| Field        | Required | Meaning                                                                    |
+|--------------|----------|-----------------------------------------------------------------------------|
+| `event_slug` | yes      | Gamma event slug — the page at `https://polymarket.com/event/<event_slug>`  |
+| `market_id`  | yes      | Gamma market `id` inside that event (string — quote it in YAML)             |
+| `token_id`   | yes      | CLOB token id of the **Yes** outcome (string — quote it; ~78 digits)        |
+| `question`   | yes      | Human-readable market question including the outcome/date                   |
+| `outcome`    | no       | Short outcome label for the chip, e.g. `"Dec 31 2026"`                       |
+
+Validator rules (`scripts/check_model_tickets.py`): the key may be
+omitted or `null`; when present it must be a list of 1–3 mappings; every
+required field must be a non-empty **string** (`market_id` and
+`token_id` must be quoted in YAML — an unquoted 78-digit token id parses
+as a number and loses precision); no keys other than the five above are
+allowed inside a mapping.
+
+Maintenance protocol for the CRUD agent:
+
+1. **Add** a mapping only when a clearly-matching **active** market
+   exists — the market's resolution criteria must resolve on the same
+   real-world event the ticket tracks (e.g. a "GPT-6 released by ..."
+   market does NOT match a GPT-5.6 ticket; a "Grok 5" market that
+   excludes Grok 4.x variants does NOT match a Grok 4.5 ticket). Find
+   candidates via
+   `https://gamma-api.polymarket.com/public-search?q=<terms>&events_status=active`,
+   then read the event via
+   `https://gamma-api.polymarket.com/events?slug=<event_slug>` and check
+   the market's `description` text before mapping.
+2. **Never invent IDs.** Only use `event_slug` / `market_id` /
+   `token_id` values read from the Polymarket API response
+   (`markets[].id` and the first element of the market's
+   `clobTokenIds` JSON array = the Yes token). No recalled,
+   pattern-matched, or guessed IDs.
+3. **Keep mappings when markets resolve.** Final odds and the price
+   history stay valuable on released/closed tickets — do not remove a
+   mapping because the market closed.
+4. **Max 3 mappings per ticket**, most-relevant first. Prefer one
+   near-term date market plus (optionally) a longer-dated one from the
+   same event.
+
+Adding, correcting, or pruning a mapping is a ticket UPDATE: bump
+`updated_at` and append a `history` entry describing the change.
+
 ## Slug conventions
 
 - Lowercase ASCII, hyphen-separated, no underscores
@@ -184,6 +242,11 @@ signal:
      (`closed_reason: superseded-by:<successor-slug>`)
 
 6. **Never delete**. Closing preserves history; deletion does not.
+
+7. **Polymarket mappings** follow the "Polymarket market mappings"
+   section above: add one only when a clearly-matching active market
+   exists, keep mappings after markets resolve, never invent IDs (only
+   IDs read from the Polymarket API), max 3 per ticket.
 
 ## Daily diff
 

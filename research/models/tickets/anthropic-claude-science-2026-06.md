@@ -3,7 +3,7 @@ slug: anthropic-claude-science-2026-06
 title: Anthropic Claude Science — agentic research workbench
 company: Anthropic
 model: Claude Science
-status: released
+status: closed
 status_note: |
   **Launched 2026-06-30 17:02 UTC** (@claudeai, ~11.8K likes: "Introducing
   Claude Science, a new app designed with every stage of research in mind"),
@@ -49,9 +49,9 @@ sources:
   - "@CMichaelGibson"
   - https://x.com/claudeai/status/2072002740830842899
 created_at: 2026-07-01
-updated_at: 2026-07-05
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-31
+closed_at: 2026-07-31
+closed_reason: released-and-aged
 history:
   - ts: 2026-07-01
     change: "Created — Anthropic launched Claude Science on 2026-06-30 17:02 UTC (official @claudeai ~11.8K likes / 977 RT), an agentic research workbench with code-traced artifacts, on-demand managed compute, and 60+ optional scientific tools, debuting alongside Novartis, Bristol Myers Squibb and Genentech. Multi-source confirmed via trade press (Endpoints News, STAT/Matthew Herper); Modal and Harvard's ToolUniverse self-confirmed integrations. Shipped an hour before Sonnet 5 ([[claude-sonnet-5]]) and the same day OpenAI published GeneBench-Pro. Status released, verification confirmed (official primary + independent trade-press). Scope skepticism noted (a wet-lab-bio tool, not 'all of science'; researcher data-appropriation concerns)."
@@ -59,6 +59,8 @@ history:
     change: "Secondary business-press coverage continues (fourweekmba.com: 'rewriting the model company playbook') plus notes on life-sciences hire Jonah Cool and DeepMind alum John Jumper. Still no primary @AnthropicAI post naming target diseases or partners. Status stays released; verification stays confirmed."
   - ts: 2026-07-05
     change: "Trade-press pickup keeps broadening internationally (FT, Pharmaceutical Technology, MIT Technology Review, STAT News, GEN, plus Thai/Korean aggregators this week). The Decoder separately reports Anthropic is funding development for diseases 'Big Pharma considers unprofitable' — a new specifics-adjacent detail, still secondary-sourced. Still no primary @AnthropicAI post naming diseases or partners. Status stays released; verification stays confirmed."
+  - ts: 2026-07-31
+    change: "Closed — released-and-aged. 31 days past the 2026-06-30 launch (≥4 weeks), no fresh signal since 2026-07-05, no material product update since debut-partner trade-press coverage settled. Per this ticket's own transition trigger ('≥4 weeks settled into normal coverage → close released-and-aged')."
 ---
 
 **Claude Science** is Anthropic's agentic research environment, launched

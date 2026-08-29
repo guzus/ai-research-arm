@@ -3,7 +3,7 @@ slug: cognition-devin-fusion-2026-06
 title: Cognition ships Devin Fusion — sidekick-routing harness for ~35% cheaper coding
 company: Cognition
 model: Devin Fusion
-status: released
+status: closed
 status_note: |
   Launched **2026-06-30** (multiple independent accounts; @stretchcloud,
   @eddiboi): **Devin Fusion**, a hybrid harness that runs a cheap small-model
@@ -28,12 +28,14 @@ sources:
   - https://x.com/stretchcloud/status/2071797120617836614
   - https://x.com/eddiboi/status/2071833591034912884
 created_at: 2026-06-30
-updated_at: 2026-06-30
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-28
+closed_at: 2026-07-28
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-30
     change: "Created — Cognition launched Devin Fusion (2026-06-30, multi-account): a hybrid harness pairing a cheap small-model 'sidekick' with a frontier agent and routing work mid-session (large model keeps planning + final review; small model handles exploration/tests/formatting), claiming Fable-class intelligence at ~35% lower cost. @stretchcloud: 'the bottleneck in agentic coding just moved from the model to the harness.' Status released (shipped, described consistently across accounts); verification partial (35% / Fable-class are vendor claims, unbenchmarked, modest reach). Attacks the same cost axis as open-weight LongCat-2.0 ([[meituan-longcat-2-2026-06]]) and MiniMax M3 ([[minimax-m3]]) from the US frontier-adjacent side."
+  - ts: 2026-07-28
+    change: "Closed — released and settled into normal coverage for 4 weeks with no official spec/pricing page or independent cost-vs-quality benchmark ever surfacing. Closing per this ticket's own released-and-aged transition trigger."
 ---
 
 On **2026-06-30**, Devin-maker **Cognition** launched **Devin Fusion** — a

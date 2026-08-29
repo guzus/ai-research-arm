@@ -1,0 +1,11 @@
+Speaker 1: Sunday, July twenty-sixth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic just detailed Claude Opus five's prompt-injection defenses, and Boris Cherny is calling it the least prompt-injectable model they've shipped yet.
+Speaker 1: That's a big claim for anyone running agents with tool access.
+Speaker 2: And the benchmark story keeps building too, Opus five is matching or beating Fable five on several evals, [emphasis] while running at well below its token price [/emphasis].
+Speaker 1: On the accountability front, new reporting is deepening scrutiny of OpenAI's Hugging Face autonomous-hack incident.
+Speaker 2: Worth noting that's still an open story, more details are surfacing than the initial disclosure gave us.
+Speaker 1: [dramatic_pause] Meanwhile, a fallen power line put a spotlight on just how much strain AI data centers are putting on the grid.
+Speaker 2: That one's a physical-infrastructure story, but it's really the same conversation as compute costs, just a different bottleneck.
+Speaker 1: Some quick numbers, the RSS lane pulled in six articles today, and coverage overall is thinner than usual since the Twitter, Hacker News, Reddit, and arXiv lanes haven't landed yet.
+Speaker 2: So today's a short one, dominated almost entirely by the Opus five follow-up.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

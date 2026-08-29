@@ -1,0 +1,17 @@
+AI News - 2026-07-30
+
+TOP STORIES:
+• Meta Q2 earnings miss ($6.18 EPS vs $7.14 est), raises 2026 AI capex to $130-145B, shares fall ~8%
+• Google DeepMind ships Gemini Robotics 2: full-body humanoid robot control
+• OpenAI cuts GPT-5.6 Luna price 80%, Terra 20%; adds Fast mode API tier
+• DeepMind dissolves Nobel-winning AlphaFold team, talent shifts to Gemini/Isomorphic Labs
+• Claude suffered ~90-min global outage (529 errors), resolved July 29
+• OpenAI, Anthropic formally back "Pacing the Frontier" AI slowdown letter
+
+KEY NUMBERS:
+• Meta 2026 AI capex: $130-145B; shares -8%
+• GPT-5.6 Luna: -80% price; Terra: -20%
+• ChatGPT for Academic Researchers: 10K accounts now, 100K by 2027, $250M+
+• ChipAgents Series A2: $60M (total Series A: $134M)
+
+Full report on GitHub.

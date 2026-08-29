@@ -1,0 +1,124 @@
+{
+  "claims": [
+    {
+      "id": "c01",
+      "text": "GPT-5.6 Sol Standard on OpenAI's own API is $5.00/$30.00 per million tokens.",
+      "verdict": "supported",
+      "citation": "OpenAI API pricing page (https://platform.openai.com/docs/pricing) and model catalog list gpt-5.6-sol Standard at $5.00 in / $30.00 out, cached input $0.50."
+    },
+    {
+      "id": "c02",
+      "text": "GPT-5.6 Sol is listed at $2.50/$15 (50% off) on OpenRouter's OpenAI provider endpoint.",
+      "verdict": "supported",
+      "citation": "OpenRouter model page shows OpenAI provider at $2.50/$15 with '50% off' badge; OpenRouter /api/v1/models lists prompt 0.0000025, completion 0.000015, discount 0.5."
+    },
+    {
+      "id": "c03",
+      "text": "GPT-5.6 Sol is listed at $2.50/$15 standard on Vercel's AI Gateway.",
+      "verdict": "supported",
+      "citation": "Vercel AI Gateway public models API (https://ai-gateway.vercel.sh/v1/models) returns openai/gpt-5.6-sol input 0.0000025, output 0.000015."
+    },
+    {
+      "id": "c04",
+      "text": "Azure/Bedrock providers serving Sol through OpenRouter still list $5.00-$5.50 / $30-$33 (no 50% discount).",
+      "verdict": "supported",
+      "citation": "OpenRouter provider table and endpoints API: Azure $5.00/$30, Azure EU/US $5.50/$33, Bedrock US $5.50/$33, discount 0."
+    },
+    {
+      "id": "c05",
+      "text": "On July 30, 2026 OpenAI cut Luna 80% and Terra 20% on its own API while leaving Sol Standard at $5/$30.",
+      "verdict": "supported",
+      "citation": "OpenAI changelog Jul 30 entry and VentureBeat's 'AI price wars' story both state Luna -80%, Terra -20%, Sol Standard unchanged."
+    },
+    {
+      "id": "c06",
+      "text": "Altman announced the July 30 cuts on X as 'major price cuts today'.",
+      "verdict": "supported",
+      "citation": "VentureBeat quotes Sam Altman announcing 'major price cuts today' on X, in the context of the Luna/Terra reductions."
+    },
+    {
+      "id": "c07",
+      "text": "OpenRouter's OpenAI Flex endpoint for Sol is $1.25/$7.50, 50% below the API Flex price of $2.50/$15.",
+      "verdict": "supported",
+      "citation": "OpenRouter endpoints API shows openai/flex tag at prompt 0.00000125 / completion 0.0000075; OpenAI pricing page shows Flex $2.50/$15."
+    },
+    {
+      "id": "c08",
+      "text": "OpenRouter weekly token rankings (Aug 18, 2026) show DeepSeek V4 Flash 0731 #1 at 11.3T tokens and six of the top ten slots held by Chinese labs.",
+      "verdict": "supported",
+      "citation": "OpenRouter rankings page (https://openrouter.ai/rankings): DeepSeek V4 Flash 0731 11.3T, Hy3 9.7T, Luna 5.57T, MiMo-V2.5 4.99T, DeepSeek V4 Flash 0423 4.77T, GLM 5.2 4.41T, Gemini 3.6 Flash 2.77T, Opus 5 2.7T, DeepSeek V4 Pro 2.66T, Nemotron 3 Ultra 2.39T."
+    },
+    {
+      "id": "c09",
+      "text": "Sol is not in the OpenRouter top ten by weekly tokens; Luna is OpenAI's only top-ten entry.",
+      "verdict": "supported",
+      "citation": "OpenRouter rankings top ten contains GPT-5.6 Luna (5.57T) as the only OpenAI model; no GPT-5.6 Sol entry."
+    },
+    {
+      "id": "c10",
+      "text": "Sol processed ~736B prompt tokens and ~19.6M requests on OpenRouter on Aug 17, 2026.",
+      "verdict": "supported",
+      "citation": "OpenRouter rankings page embedded daily series for openai/gpt-5.6-sol-20260709 on 2026-08-17: total_prompt_tokens 735,857,087,244; count 19,582,986."
+    },
+    {
+      "id": "c11",
+      "text": "Grok 4.6 scores 61 on the AA Intelligence Index, matching GPT-5.6 Sol's 61.",
+      "verdict": "supported",
+      "citation": "x.ai 'Introducing Grok 4.6' post shows Grok 4.6 = 61 and GPT-5.6 Sol Max = 61 on the Artificial Analysis Intelligence Index."
+    },
+    {
+      "id": "c12",
+      "text": "TD Cowen: Luna effective price -10x with usage +14x and revenue +34%; Terra effective price -3x with usage +5x and revenue +45%.",
+      "verdict": "supported",
+      "citation": "Business Insider (Alistair Barr, Aug 14, 2026) reports TD Cowen's OpenRouter-usage-based estimates of ~10x/14x/34% for Luna and ~3x/5x/45% for Terra."
+    },
+    {
+      "id": "c13",
+      "text": "Ramp: Sol captured more business spending than Fable 5 in July 2026.",
+      "verdict": "supported",
+      "citation": "Business Insider (Aug 14, 2026) reports Ramp found GPT-5.6 Sol captured more business spend than Anthropic's Fable 5 in July."
+    },
+    {
+      "id": "c14",
+      "text": "OpenRouter weekly volume grew 5T to 25T tokens in six months; 8M+ developers; pacing toward a quadrillion tokens/year.",
+      "verdict": "supported",
+      "citation": "OpenRouter Series B announcement (May 28, 2026) states weekly volume grew from 5T to 25T tokens over six months, 8M+ developers, on pace to process over a quadrillion tokens this year."
+    },
+    {
+      "id": "c15",
+      "text": "Stripe agreed to buy OpenRouter for >$7B (Bloomberg); Axios put the price at $8B; WSJ reported talks at ~$10B.",
+      "verdict": "supported",
+      "citation": "Startup Fortune (Aug 17, 2026) reports Bloomberg's >$7B agreed deal and WSJ's ~$10B talks; Business Insider (Aug 18, 2026) reports Axios's $8B figure."
+    },
+    {
+      "id": "c16",
+      "text": "a16z owns >17% of OpenRouter and would net ~$1.5B at $8B; Menlo holds >6% worth >$500M.",
+      "verdict": "supported",
+      "citation": "Business Insider (Katie Roof, Aug 18, 2026) reports a16z >17% stake (~$20M invested, ~$1.5B payout) and Menlo >6% (worth >$500M)."
+    },
+    {
+      "id": "c17",
+      "text": "DeepSeek raised V4-Flash/V4-Pro prices Aug 17 by 50%-1,100% under a peak/off-peak schedule.",
+      "verdict": "supported",
+      "citation": "Pandaily (Aug 17, 2026): increases range 50%-1,100%; V4-Pro peak cache-hit input rose 1,100%."
+    },
+    {
+      "id": "c18",
+      "text": "OpenAI surpassed 1 billion active users in late July 2026.",
+      "verdict": "supported",
+      "citation": "CTV News (Jul 31, 2026) 'OpenAI says has more than 1 billion active users'; WSJ and TechSpot coverage dated Jul 31-Aug 3, 2026."
+    },
+    {
+      "id": "c19",
+      "text": "Vercel AI Gateway charges no markup / no platform fee, billing provider list price.",
+      "verdict": "supported",
+      "citation": "Vercel AI Gateway pricing docs: 'AI Gateway charges no markup and no platform fee on tokens. You pay the provider's list price.'"
+    },
+    {
+      "id": "c20",
+      "text": "The channel-locked 50% Sol cut is a token-share play rather than a demand-curve response.",
+      "verdict": "weak",
+      "citation": "The fact pattern (channel-locked discount, unchanged direct-API list, OpenRouter rankings) supports the interpretation, but intent is not directly evidenced; the existing Flex tier at the same $2.50/$15 price offers an alternative mechanical explanation."
+    }
+  ]
+}

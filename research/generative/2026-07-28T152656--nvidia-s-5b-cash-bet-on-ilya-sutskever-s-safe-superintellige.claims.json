@@ -1,0 +1,154 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "NVIDIA committed roughly $5 billion to Safe Superintelligence Inc., announced July 27, 2026, but neither company officially disclosed the dollar figure.",
+      "type": "market-structure",
+      "source_urls": ["https://nvidianews.nvidia.com/news/ilya-sutskevers-safe-superintelligence-inc-and-nvidia-announce-long-term-strategic-partnership", "https://www.bloomberg.com/news/articles/2026-07-27/nvidia-makes-substantial-investment-in-sutskever-s-ai-startup", "https://www.investing.com/news/stock-market-news/nvidia-to-invest-5-billion-in-ilya-sutskevers-ai-startup-source-says-4814862"],
+      "source_tiers": ["primary", "secondary", "secondary"],
+      "as_of": "2026-07-27",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c2",
+      "claim": "SSI was founded in June 2024, not 2023 as commonly assumed.",
+      "type": "definition",
+      "source_urls": ["https://www.cnbc.com/2024/06/19/openai-co-founder-ilya-sutskever-announces-safe-superintelligence.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2024-06-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "SSI's April 2025 funding round valued the company at $32 billion; this remains the most recent reported valuation, unchanged as of the July 2026 NVIDIA deal.",
+      "type": "metric",
+      "source_urls": ["https://techcrunch.com/2025/04/12/openai-co-founder-ilya-sutskevers-safe-superintelligence-reportedly-valued-at-32b"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-04-12",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c4",
+      "claim": "NVIDIA and Alphabet both participated in SSI's April 2025 ~$32B round, meaning NVIDIA was already an SSI shareholder before the 2026 deal.",
+      "type": "market-structure",
+      "source_urls": ["https://finance.yahoo.com/news/alphabet-nvidia-invest-ai-startup-102359815.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-04",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c5",
+      "claim": "No public paper, code repository, patent, or safety framework has been published by SSI since its founding.",
+      "type": "technical",
+      "source_urls": ["https://ssi.inc/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-28",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c6",
+      "claim": "NVIDIA's OpenAI commitment shrank from a headline $100B pledge (Sept 2025) to an actual ~$30B direct equity stake closed in March 2026.",
+      "type": "market-structure",
+      "source_urls": ["https://fortune.com/2026/02/02/jensen-huang-nvidia-ceo-on-openai-investment-never-a-commitment/", "https://www.techtimes.com/articles/317839/20260605/nvidia-openai-investment-shrinks-100b-30b-compute-lock-war-continues.htm"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-06-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "NVIDIA quantified its own strategic AI-startup investments at $3.7B in one quarter, about 7% of that quarter's revenue.",
+      "type": "metric",
+      "source_urls": ["https://www.theglobeandmail.com/business/article-nvidia-michael-burry-memo-ai-bubble-fears/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-11",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "NVIDIA's non-marketable equity securities balance grew roughly 6x in one year, from $3.39B to $22.25B.",
+      "type": "metric",
+      "source_urls": ["https://www.cnbc.com/2026/05/09/nvidia-embraces-ai-investor-topping-40-billion-in-equity-bets-2026.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-09",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c9",
+      "claim": "SSI's compute base was built on Google TPUs (partnership announced April 2025); reporting is unresolved on whether NVIDIA hardware replaces or supplements this.",
+      "type": "technical",
+      "source_urls": ["https://www.datacenterdynamics.com/en/news/ai-startup-safe-superintelligence-to-use-googles-tpu-chips-for-research/", "https://www.neowin.net/news/ilya-sutskevers-ssi-chooses-nvidia-vera-rubin-systems-after-earlier-google-tpu-partnership/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-27",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c10",
+      "claim": "Google TPUv7 delivers roughly 20-50% lower total cost per useful FLOP than NVIDIA's GB200/GB300.",
+      "type": "comparison",
+      "source_urls": ["https://newsletter.semianalysis.com/p/tpuv7-google-takes-a-swing-at-the"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c11",
+      "claim": "OpenAI, Anthropic, and xAI each have a computable valuation-to-actual-revenue multiple (65x, 97x, 78x respectively); SSI has none.",
+      "type": "comparison",
+      "source_urls": ["https://openai.com/index/accelerating-the-next-phase-ai/", "https://www.anthropic.com/news/series-h", "https://finance.yahoo.com/sectors/technology/articles/xai-burned-6-4b-last-222608682.html", "https://valueaddvc.com/blog/openai-revenue-2026-25b-arr-2b-month-and-the-path-to-profitability", "https://www.forbes.com/sites/petercohan/2026/05/29/why-anthropics-965-billion-ipo-could-pay-off-massively-for-investors/"],
+      "source_tiers": ["primary", "primary", "primary", "secondary", "secondary"],
+      "as_of": "2026-05",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "NVDA shares fell about 5% the day of the SSI announcement, attributed mainly to a broader semiconductor selloff rather than the SSI deal specifically.",
+      "type": "event",
+      "source_urls": ["https://finance.yahoo.com/markets/stocks/articles/nvidias-reported-5-billion-ssi-174148818.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-27",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c13",
+      "claim": "Polymarket's 'AI bubble burst by...?' contract priced roughly 18% Yes / 82% No for a Dec 31, 2026 resolution.",
+      "type": "forecast",
+      "source_urls": ["https://polymarket.com/event/ai-bubble-burst-by"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-07-28",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c14",
+      "claim": "Sutskever led/joined the Nov 2023 OpenAI board vote to remove Sam Altman, publicly regretted it the same week, and was off the reconstituted board by Nov 22, 2023.",
+      "type": "event",
+      "source_urls": ["https://sfstandard.com/2023/11/17/openai-sam-altman-firing-board-members/", "https://x.com/ilyasut/status/1726590052392956028", "https://openai.com/index/sam-altman-returns-as-ceo-openai-has-a-new-initial-board/"],
+      "source_tiers": ["secondary", "primary", "primary"],
+      "as_of": "2023-11-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Co-founder Daniel Gross departed SSI for Meta Superintelligence Labs on June 29, 2025, after Meta's reported rejected bids to acquire SSI outright and to hire Sutskever directly.",
+      "type": "event",
+      "source_urls": ["https://www.cnbc.com/2025/06/19/meta-tried-to-buy-safe-superintelligence-hired-ceo-daniel-gross.html", "https://www.cnbc.com/2025/07/03/ilya-sutskever-is-ceo-of-safe-superintelligence-after-meta-hired-gross.html"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2025-07-03",
+      "confidence": "medium",
+      "risk": "single-source"
+    }
+  ]
+}

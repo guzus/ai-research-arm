@@ -4,10 +4,11 @@ title: Claude Sonnet 5
 type: entity
 aliases: ["Claude Sonnet 5", "Sonnet 5", "claude-sonnet-5"]
 tags: [model-release, anthropic, claude, agentic-coding, frontier-model]
-description: Anthropic's 2026-06-30 mid-tier model — now the default on Free and Pro, priced $2/$10 per M (intro) with a 1M-token context — positioned as a cheap agentic default, whose day-2 independent benchmarks landed mixed and whose cyber capability was deliberately reduced.
+description: Anthropic's 2026-06-30 mid-tier model — the default on Free and Pro, with the $2/$10 intro pricing made permanent on 2026-08-10 (September increase cancelled) and a 1M-token context — positioned as a cheap agentic default.
 created_at: 2026-07-01
-timestamp: 2026-07-02T00:00:00Z
+timestamp: 2026-08-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "@claudeai launch post", date: 2026-06-30}
@@ -59,3 +60,15 @@ beneath Anthropic's frontier line (ARA digest 2026-07-01).
   whether Sonnet 5 is a genuine capability step or a safety-descoped repackaging
   shipped while [[claude-fable-5|Fable 5]]'s general re-release stayed
   conspicuously absent.
+
+## Pricing made permanent (2026-08-10/11)
+
+Anthropic made the **$2/$10 per million input/output tokens** pricing
+**permanent**, **cancelling the increase scheduled after 31 August** (the
+launch-day plan was a step to $3/$15 in September). Read across the feed as
+**squeezing Haiku out of its own price tier** — at $2/$10 the mid-tier model now
+prices below where a dedicated Haiku tier used to sit, a pressure signal on
+Anthropic's own tiering ahead of its planned IPO. The tokenizer-tax and
+cost-per-task questions above are now the standing cost argument, since the
+price step that was supposed to claw some margin back has been cancelled (ARA
+daily digest 2026-08-11).

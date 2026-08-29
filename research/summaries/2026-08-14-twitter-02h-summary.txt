@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-14 02:40:15 UTC
+
+CYCLE: Token pricing hardens into a dated event; Nvidia lands another national champion.
+
+TOP STORIES:
+• DeepSeek's hike starts 16 Aug - peak $1.32/$3.96 per Mtok vs $0.435/$0.87 today, output up 4.55x - while ModelScope, CometAPI and Baseten stood up the MIT weights within hours [multi-source]
+• LG and Nvidia signed a robots/AI-factory/mobility MOU at Santa Clara: bipedal humanoid on Jetson Thor targeted Q1 2027, 80MW Cheonan AI factory by H1 2028 [single-source]
+• OpenAI's @tszzl called for real-time-priced token APIs; @scaling01 answered with the sharpest case yet against compute spot markets [multi-source]
+
+WATCH: Qwen3.8-27B open weights, due 14 Aug 15:00 UTC.
+
+Full update on GitHub.

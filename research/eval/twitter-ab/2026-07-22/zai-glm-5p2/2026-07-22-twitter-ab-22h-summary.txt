@@ -1,0 +1,17 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-22 22:38:39 UTC
+
+CYCLE: AI infrastructure spending surge + U.S. open-source policy fight dominate the window
+
+TOP STORIES:
+• OpenAI projected compute spend raised to ~$750B through 2030 (WSJ), lead-designing $20B Project Camellia in Georgia [✓ multi-source/WSJ]
+• Wired exposes Trump-admin split on Chinese open-source AI; Lutnick pushes U.S. OSS subsidies, Commerce says regulate-not [⚠ single-source/Wired]
+
+QUICK HITS:
+• Zhipu GLM-5.2 ships vision (single-source) [⚠]
+• Anthropic Economic Index connector for Claude (official) [✓]
+
+SKEPTIC: Anthropic-buying-Physical-Intelligence rumor denied; GPT-5.6 "conjecture kill" unverified
+
+WATCH: OpenAI confirmation of $750B/Camellia; Zhipu GLM-5.2 vision official release
+
+Full update on GitHub.

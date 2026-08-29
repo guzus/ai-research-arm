@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-18
+
+TOP 5 PAPERS:
+• Matrix multiplication exponent improved to omega < 2.371177 via modern optimization + AlphaEvolve
+• Model Hypnosis - subtle additive cues strongly control frontier models; prompts transfer across models
+• Proteus - incremental memory activation fixes static-memory pollution for long-context models
+• Pixel-space T2I diffusion training study - latent-to-pixel transition recipe beats direct pixel training
+• Le Critique - privileged value functions enable token-level, group-free RL for LLMs
+
+CATEGORIES: NLP 6, CV/Multimodal 7, Agents 7, Safety 6, Other 7
+
+Full report on GitHub.

@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "DefiLlama's public API shows USD.AI's TVL at $177.1M as of August 16, 2026, down from a January 1, 2026 peak of $686.9M: a 74.2% decline, roughly double the 37% since the start of the year Arete cites.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "USD.AI's own mid-2026 Lighthouse report discloses $202-205M of loans actually deployed across 13 active positions, well short of the loan book approaching $500M Arete cites.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "QumulusAI's own S-1/A is reported to disclose just $4.3M drawn against its $500M USD.AI facility as of February 2026.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

@@ -82,6 +82,8 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Callable, Optional
 
+from artifact_slos import content_entries
+
 
 @dataclass(frozen=True)
 class LaneSpec:
@@ -117,41 +119,14 @@ class LaneSpec:
 # issues) and experimental A/B lanes (twitter-deepseek*, twitter-fireworks*)
 # are excluded — they have no steady cadence, so "small" is not a signal.
 LANE_SPECS: dict[str, LaneSpec] = {
-    # hourly RSS roundup.            obs min ~1.1KB
-    "rss": LaneSpec("research/rss/[0-9]*.md", min_bytes=400),
-    # 3-hourly twitter report.       obs min ~1.7KB; hugely bursty (→318KB)
-    "twitter": LaneSpec("research/twitter/[0-9]*.md", min_bytes=600),
-    # 4-hourly community (HN is the canonical primary; reddit runs parallel).
-    #                                obs min ~1.5KB
-    "community": LaneSpec("research/community/[0-9]*-hn.md", min_bytes=400),
-    # twice-daily bluesky.           obs min ~165B (genuinely thin some days)
-    "bluesky": LaneSpec("research/bluesky/[0-9]*.md", min_bytes=80),
-    # daily arxiv papers.            obs min ~6KB
-    "arxiv": LaneSpec("research/arxiv/[0-9]*-papers.md", min_bytes=1500),
-    # daily YouTube signal via tuber. The report always includes source
-    # boilerplate, so semantic zero-count markers are anomalous even if byte
-    # volume clears the floor.
-    "youtube": LaneSpec(
-        "research/youtube/[0-9]*.md",
-        min_bytes=600,
-        reject_patterns=(
-            r"(?m)^- Unique videos collected:\s*0\b",
-            r"(?m)^- High-signal videos selected:\s*0\b",
-        ),
-    ),
-    # daily synthesized digest.      obs min ~8.4KB
-    "digest": LaneSpec("research/digest/[0-9]*-digest.md", min_bytes=2000),
-    # daily model-timeline diff.     obs min ~455B (slow news days)
-    "models": LaneSpec("research/models/[0-9]*-timeline.md", min_bytes=150),
-    # daily front-page (HTML render is the stable text artifact; PNG media lives
-    # in S3 and is intentionally not inspected here). obs min ~6.5KB
-    "front-page": LaneSpec("research/front-page/[0-9]*-front-page.html", min_bytes=1500),
-    # daily wiki ingest. The per-page slugs are CRUD'd (an UPDATE may not grow
-    # bytes), but log.md is append-only — one entry per run — so it is the
-    # reliable "the ingest ran and did something" signal. It only ever grows,
-    # so the relative-drop arm is disabled (drop_ratio=0) and only the floor
-    # applies.
-    "wiki": LaneSpec("research/wiki/log.md", min_bytes=300, drop_ratio=0.0),
+    entry["id"]: LaneSpec(
+        entry["content"]["primary_glob"],
+        min_bytes=int(entry["content"]["min_bytes"]),
+        drop_ratio=float(entry["content"].get("drop_ratio", 0.10)),
+        soft_floor_mult=float(entry["content"].get("soft_floor_mult", 3.0)),
+        reject_patterns=tuple(entry["content"].get("reject_patterns", ())),
+    )
+    for entry in content_entries()
 }
 
 HEALTHY = "healthy"

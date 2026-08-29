@@ -1,0 +1,25 @@
+{
+  "findings": [
+    {
+      "claim_id": "jal-2",
+      "claim_text": "Compared against GB200/GB300 Blackwell systems on InferenceX, Jalapeño delivered 1.5-1.9x more AI work per watt at peak throughput and 1.7-3.6x lower end-to-end latency across GPT-OSS 120B, DeepSeek R1 670B, and Kimi K2.5 1T.",
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "jal-3",
+      "claim_text": "SemiAnalysis stated on August 25, 2026 that OpenAI's Jalapeño chip beats Vera Rubin's July results on Output Throughput per MW.",
+      "no_contradiction_found": false,
+      "severity": "medium",
+      "contradicting_url": "https://x.com/GavinSBaker/status/2092273718454284402",
+      "contradicting_quote": "Gavin Baker: 'the real comparison will be with Rubin Ultra given Rubin shipping today' — the 'beats Vera Rubin' result is against July 2026 MTP-enabled results, not a same-day head-to-head against the shipping Rubin or upcoming Rubin Ultra generation."
+    },
+    {
+      "claim_id": "jal-9",
+      "claim_text": "@jukan05 argued Jalapeño sources HBM4 almost exclusively from Samsung and therefore cannot scale to the same level as Rubin without relaxing its HBM4 speed requirement.",
+      "no_contradiction_found": false,
+      "severity": "low",
+      "contradicting_url": "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia",
+      "contradicting_quote": "SemiAnalysis hedges the supplier claim ('The HBM is likely provided by Samsung') and frames Jalapeño as a 'real high volume ASIC' with production 'gradually ramp over 2027', so the exclusivity-and-scale-cap reading is an analyst conclusion, not a confirmed constraint."
+    }
+  ]
+}

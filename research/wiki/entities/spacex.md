@@ -4,10 +4,12 @@ title: SpaceX
 type: entity
 aliases: [SpaceX, "@SpaceX", SPCX, "Space Exploration Technologies", Starlink]
 tags: [ipo, capital-markets, ai-infrastructure, space, public-listing]
-description: "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave on the public-markets side."
+description: "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave; its first public quarter (FY26Q2) put ~86% of $18.4B capex into AI compute; now designing an orbital AI datacenter with NVIDIA (Vera Rubin NVL72, Q4 2027 launch)."
 created_at: 2026-06-05
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-08-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
+  - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
   - {title: "ARA daily digest 2026-06-15", path: research/digest/2026-06-15-digest.md}
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
@@ -110,6 +112,24 @@ frontier labs (the Anthropic–SpaceX "Colossus" datacenter arrangement).
   $60B figure still rests on an aggregator-relayed SEC reference, not a
   directly-read filing. See [[cursor]] and [[ai-capex]] (ARA digest 2026-06-17).
 
+- **First public quarter: a launch business that reports like a neocloud
+  (2026-08-05).** SpaceX's **FY26Q2** — its first quarter as a listed company —
+  put **$7.8B revenue (+92% YoY)** against ~**$6.81B consensus**, **adjusted
+  EBITDA $3.53B (+191%)**, Starlink at **12 million subscribers**, and a
+  **$47.5B backlog** including **$14.1B of new cloud-compute contracts** plus
+  **$6B of Starshield awards**. **AI revenue was $2.6B, more than 3× YoY** — by
+  revenue mix this was more a [[neocloud]] quarter than a launch quarter.
+  **Capex was $18.4B, of which roughly $15.8B (~86%) went to AI
+  infrastructure**, and Musk guided to **over 2 GW of compute by year-end and
+  closer to 10 GW next year**. The stock rose **9.4% in session** and fell
+  **~5% after hours**. The sharpest published objection is a depreciation one:
+  with **$23.5B of first-half capex barely in service**, "the AI segment
+  flipped to positive adjusted EBITDA" is true and close to meaningless until
+  that capex starts depreciating — the single cleanest public test of the
+  [[ai-capex]] return question, now on a quarterly tape. Musk also used the
+  call to give the first first-party timing for **[[xai|Grok 4.6]]** ("next
+  week") (ARA daily digest 2026-08-05).
+
 ## Open questions
 
 - **Does SPCX hold its ~94× sales multiple post-debut?** A flat-priced $135 and a
@@ -119,3 +139,27 @@ frontier labs (the Anthropic–SpaceX "Colossus" datacenter arrangement).
   Starlink-backhaul ties to the frontier labs (the [[anthropic]] "Colossus"
   arrangement) blur the line between an aerospace IPO and an AI-infrastructure
   one.
+
+## The orbital AI datacenter with NVIDIA, and the Cursor deal goes named (2026-08-25)
+
+- **An orbital AI datacenter designed with NVIDIA — Musk dates the launch
+  (2026-08-25).** SpaceX and [[nvidia|NVIDIA]] unveiled a **space-optimized
+  Vera Rubin NVL72** orbital AI datacenter that Musk says will **launch Q4 2027**
+  with **significant scale in 2028** — NVIDIA carried the announcement in its own
+  voice first. **No thermal or power budget was published by either party**, the
+  hard constraint in vacuum. It extends the orbital-compute thesis this page
+  tracks (Starlink-backhaul, the FY26Q2 AI revenue line, and the
+  [[xai]]/Colossus compute-landlord business) into literal orbit — the same day
+  the independent orbital-datacenter venture **Starcloud** raised $250M at a
+  $2.3B valuation (The Information; @nvidia, @elonmusk; ARA daily digest
+  2026-08-25). See [[ai-capex]] and [[nvidia]].
+- **The Information names the Cursor deal at $60B — and the "Grok has fallen
+  behind" admission (2026-08-25).** *The Information* put the
+  [[cursor|Cursor]] acquisition figure on the record at **$60B**, reporting that
+  **Musk told Cursor employees Grok has fallen behind rivals and "he isn't used
+  to losing"** — the sharpest on-record acknowledgement yet of why the $60B
+  all-stock acquisition exists. He posted twice in the same hour that **Grok
+  Voice** is great and used by Starlink at scale. **No filing or company
+  statement confirms the terms**; the $60B figure still rests on press relays
+  rather than a directly-read filing (The Information, @elonmusk; ARA daily
+  digest 2026-08-25).

@@ -1,0 +1,20 @@
+[
+  {
+    "headline": "ANTHROPIC CONFIRMS TWO NETWORK FAILURES CUT CLAUDE CAPACITY OVER PAST 24 HOURS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2082937616941695241",
+    "category": "breaking"
+  },
+  {
+    "headline": "CRYPTOGRAPHERS: ANTHROPIC'S HAWK ATTACK ROUGHLY HALVES SECURITY BITS; AES GAIN IS CONSTANT-FACTOR, NOT A FULL BREAK",
+    "source": "@__su888",
+    "url": "https://x.com/__su888/status/2082953381409390944",
+    "category": "research"
+  },
+  {
+    "headline": "THINKING MACHINES' INKLING-SMALL (276B/12B ACTIVE) NOW RUNS LOCALLY VIA UNSLOTH, TOPS LARGER INKLING ON TERMINAL-BENCH 2.1",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2082921171897504235",
+    "category": "model"
+  }
+]

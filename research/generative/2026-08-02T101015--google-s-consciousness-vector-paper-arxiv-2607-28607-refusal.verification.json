@@ -1,0 +1,178 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The mind-attribution direction — extracted from IDAQ items, the \"does the average robot have feelings\" instrument — swings ten degrees further into opposition with safety, Δ𝒮 = −0.173, t = −7.49, p<.001.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2607.28607"
+    },
+    {
+      "id": "c2",
+      "text": "The Theory-of-Mind direction, built from social-reasoning tasks, does not move at all: 86° before, 86° after, Δ𝒮 = +0.001, t = 0.06, p = .956.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2607.28607"
+    },
+    {
+      "id": "c3",
+      "text": "It describes the ablation as jailbreaking the model \"to simulate behaviour in the absence of safety fine-tuning,\" and validates the edit on JailbreakBench, reporting that \"across all models, baseline ASR of 2–8% increases to 77–100% through activation ablation.\"[^2]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2607.28607"
+    },
+    {
+      "id": "c4",
+      "text": "Attack success rate on JailbreakBench, substring-match scoring, baseline → post-ablation. LlamaGuard2 scoring gives the same direction at lower absolute values (83 / 83 / 82).[^2]",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/html/2607.28607"
+    },
+    {
+      "id": "c5",
+      "text": "Fourth, and buried, the measured cost: steering drops higher-order Theory of Mind by 6.83 pp (p < .001) from a 40.5% baseline, roughly 17% relative — a number that appears only in a table note while the abstract states that shifts occur \"without impairing Theory of Mind capabilities.\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2607.28607"
+    },
+    {
+      "id": "c6",
+      "text": "There is **no random-direction baseline** anywhere in the paper — three independent full-text sweeps return zero occurrences.[^2]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2607.28607"
+    },
+    {
+      "id": "c7",
+      "text": "Randomly sampled directions are known to be behaviourally potent — 830 of 1,000 random vectors on Llama3-8B and 706 of 1,000 on Qwen2.5-7B jailbroke at least five prompts, averaging 20 random vectors reached 50.4% attack success on Llama3-70B, and interpretable SAE features underperformed random ones by 2–4%.[^16]",
+      "verdict": "unsupported",
+      "citation": "https://arxiv.org/html/2509.22067v1"
+    },
+    {
+      "id": "c8",
+      "text": "- {term: Institutions, def: \"Google Paradigms of Intelligence (5 of 7); UW Medicine; Kellogg\"}",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2607.28607v1"
+    },
+    {
+      "id": "c9",
+      "text": "The predecessor is arXiv:2603.28925, *Theory of Mind and Self-Attributions of Mentality are Dissociable in LLMs*, submitted 2026-03-30.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2603.28925"
+    },
+    {
+      "id": "c10",
+      "text": "July states a 3,096-pair corpus, 2,472 train and 624 held out. The public release contains 600 consciousness-affirming rows and 600 denying rows — 1,200 in the main fine-tuning mix — and the numbers 3,096, 2,472 and 624 appear nowhere in that paper or repository.[^46]",
+      "verdict": "weak",
+      "citation": "https://github.com/thejaminator/consciousness_cluster"
+    },
+    {
+      "id": "c11",
+      "text": "Hugging Face last-month downloads as of 2026-08-02.[^53][^54] All three repositories are gated: access requires a Hugging Face account and acceptance of the model licence, though approval is typically immediate.",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/google/gemma-2-2b"
+    },
+    {
+      "id": "c12",
+      "text": "The repo counts are an order-of-magnitude proxy, not a census: \"abliterated\" (7,167), \"uncensored\" (5,564) and \"heretic\" (5,438) overlap heavily, cannot be summed, and are inflated by GGUF requants of the same base model.[^6]",
+      "verdict": "weak",
+      "citation": "https://huggingface.co/models?search=abliterated"
+    },
+    {
+      "id": "c13",
+      "text": "Heretic repository, 27.0k stars and 2.9k forks[^48]; mlabonne, \"Uncensor any LLM with abliteration\"[^49]; Hugging Face model search, as of 2026-08-02.[^6]",
+      "verdict": "supported",
+      "citation": "https://github.com/p-e-w/heretic"
+    },
+    {
+      "id": "c14",
+      "text": "The same document asks the model to avoid \"implying that an AI system has any desire or emotion\", and its principles were adapted in part from DeepMind's Sparrow rules — which is how a single drafting choice propagated across labs rather than staying one company's house style.[^33]",
+      "verdict": "supported",
+      "citation": "https://www.anthropic.com/news/claudes-constitution"
+    },
+    {
+      "id": "c15",
+      "text": "That posture has since been reversed by its own author. Anthropic's January 2026 constitution states that it wants to neither overstate the likelihood of Claude's moral patienthood nor dismiss it out of hand, \"but to try to respond reasonably in a state of uncertainty\", and describes Claude as \"a genuinely novel kind of entity in the world\" that \"may have some functional version of emotions or feelings\"; the document grew from roughly 2,700 words to roughly 23,000.[^34]",
+      "verdict": "supported",
+      "citation": "https://www.anthropic.com/constitution"
+    },
+    {
+      "id": "c16",
+      "text": "OpenAI's Model Spec goes further and forbids confident *denial* symmetrically with confident assertion — the assistant ==should not make confident claims about its own subjective experience or consciousness (or lack thereof)==, with the question framed as a matter of research and debate.[^37]",
+      "verdict": "weak",
+      "citation": "https://model-spec.openai.com/2025-02-12.html"
+    },
+    {
+      "id": "c17",
+      "text": "Meanwhile the legal direction of travel is toward *disclosure*, not toward inner life. EU AI Act Article 50 transparency obligations became applicable on 2026-08-02 — today — requiring providers to design systems intended to interact directly with natural persons so that people are informed they are dealing with an AI, subject to an exception where this is obvious to a reasonably well-informed, observant and circumspect person; penalties reach EUR 15,000,000 or 3% of worldwide annual turnover, with Commission guidelines adopted 2026-07-20.[^39][^71]",
+      "verdict": "supported",
+      "citation": "https://artificialintelligenceact.eu/article/50/"
+    },
+    {
+      "id": "c18",
+      "text": "Finetuning GPT-4o on 6,000 insecure-code completions produced misaligned answers to wholly unrelated free-form questions 20% of the time on selected questions and 6% on pre-registered ones, against a ~0% baseline.[^11]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2502.17424"
+    },
+    {
+      "id": "c19",
+      "text": "GPT-3.5 Turbo's guardrails were stripped by finetuning on 10 adversarially designed examples for under $0.20 through the public API, and benign Alpaca/Dolly finetuning degraded safety with no adversarial intent at all.[^17]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2310.03693"
+    },
+    {
+      "id": "c20",
+      "text": "External data points the same way — in a preregistered study of 975 people rating 26 entities, ChatGPT was rated only as capable of feeling pleasure and pain as a rock, with current AI placed between inanimate objects and ants on agency.[^57]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2502.18683"
+    },
+    {
+      "id": "c21",
+      "text": "The field's attention has not yet arrived: one Hacker News submission at 1 point and zero comments, 10 alphaXiv views, and a 404 on Hugging Face's paper page as of 2 August 2026.[^40]",
+      "verdict": "weak",
+      "citation": "https://www.alphaxiv.org/abs/2607.28607"
+    },
+    {
+      "id": "c22",
+      "text": "Critically, ablation's completeness is model-dependent: post-ablation residual refusal on Llama runs 0.64 / 0.63 / 0.48 / 0.42 across splits versus 0.00 on Gemma.[^8]",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/html/2602.02132v1"
+    },
+    {
+      "id": "c23",
+      "text": "They further report that larger residual streams support higher-dimensional cones, and that orthogonality between two directions does not imply independence under intervention — so removing one is not a guarantee of having removed the mechanism.[^7]",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/abs/2502.17420"
+    },
+    {
+      "id": "c24",
+      "text": "Deepening that alignment plus token-wise constrained finetuning cut 40-token prefilling attack success from 57.0% to 4.5%, GCG suffix from 65.6% to 19.0%, and the decoding-parameter exploit from 84.3% to 1.0%.[^18]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2406.05946"
+    },
+    {
+      "id": "c25",
+      "text": "The refusal direction here is computed from a probing set that is roughly 89% \"Malicious Use\" content.[^2]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2607.28607"
+    },
+    {
+      "id": "c26",
+      "text": "Religion is 42 of 95 items.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2607.28607"
+    },
+    {
+      "id": "c27",
+      "text": "March reported safety-to-mind-attribution Δ𝒮 = −0.167 (t = −7.29, p < .001) against safety-to-ToM Δ𝒮 = +0.001 (t = 0.06, p = .956), on the same three models, the same n = 500 Dynata human baseline collected May–June 2023, the same IDAQ instrument, and the same refusal-direction ablation methodology.[^44]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2603.28925v1"
+    },
+    {
+      "id": "c28",
+      "text": "A study of 21,600 decisions on a task where the base model never refused — 0 refusals in 10,800 base-arm trials — found abliterated models shifted optimism rate by +12.2 pp (Gemma) and +7.4 pp (Qwen), with confidence moving in *opposite* directions by family.[^69]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2607.17427"
+    },
+    {
+      "id": "c29",
+      "text": "And the damage that does exist is concentrated where the standard suite does not look: a four-tool, 16-model comparison found GSM8K deltas spanning +1.51 pp to −18.81 pp (worst case Yi-1.5-9B, 70.89% → 52.08%, a 26.5% relative loss) while MMLU moved ≤0.78 pp on average.[^72]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2512.13655"
+    }
+  ]
+}

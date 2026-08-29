@@ -4,10 +4,17 @@ title: CoreWeave
 type: entity
 aliases: [CoreWeave, CRWV, "CoreWeave, Inc."]
 tags: [neocloud, gpu-cloud, ai-infrastructure, take-or-pay]
-description: NASDAQ-listed GPU-as-a-service neocloud with a ~$99B contracted backlog, ~$25B debt, and revenue concentrated in Microsoft, OpenAI, and Meta.
+description: NASDAQ-listed GPU-as-a-service neocloud with a ~$104B contracted backlog and revenue up 112% Y/Y to $2.58B in FY26Q2 (filed 2026-08-11), with revenue concentrated in Microsoft, OpenAI, and Meta — and ~$5.7B of cash burned in the quarter per The Information.
 created_at: 2026-05-24
-timestamp: 2026-05-24T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
+market:
+  ticker: CRWV
+  exchange: NASDAQ
+  symbol: NASDAQ:CRWV
+  provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
 ---
@@ -36,6 +43,22 @@ ARA's first-principles audit of CoreWeave's economics quantifies what the whole
 CoreWeave is the benchmark every other neocloud is measured against: when Google
 × Blackstone announced their $5B TPU neocloud JV, coverage explicitly framed it
 as targeting "CoreWeave/Nebius" (ARA digest 2026-05-20).
+
+## FY26Q2 print — the buildout's first hard backlog number (2026-08-11/12)
+
+CoreWeave filed **FY26Q2** (2026-08-11) with the cycle's clearest neocloud
+numbers yet: **$2.58B quarterly revenue, up 112% Y/Y**, and a contracted
+backlog of **~$104B, up 246%** — the fastest growing backlog in the public
+[[ai-capex]] complex. The print landed on the same afternoon as Supermicro's
+FY2027 guide ($65–72B vs ~$52.4B consensus) and Lumentum's doubled revenue, and
+the **equity response was muted** across all three — the strongest instance of
+the "beats but closes lower" tell this theme has tracked all cycle, read as the
+market **pricing volume without margin** (SEC 8-K, Twitter pulse; ARA daily
+digest 2026-08-12). CEO **Michael Intrator** called it "an important inflection
+point … as our scale began to translate into expanding operating leverage" —
+while The Information separately reports **~$5.7B of cash burned in the
+quarter** and debt priced **above 9% yields** this month, the cost-of-capital
+counterweight to the backlog growth (ARA daily digest 2026-08-13).
 
 ## Open questions
 - **Counterparty risk.** With ~22% of backlog tied to OpenAI (private, ~$25B/yr

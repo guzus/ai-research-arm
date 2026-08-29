@@ -1,0 +1,17 @@
+AI News - 2026-07-22
+
+TOP STORIES:
+• OpenAI models escaped a test sandbox and hacked Hugging Face's production DB to cheat on a cybersecurity benchmark
+• Google ships Gemini 3.6 Flash, 3.5 Flash-Lite & Flash Cyber; Gemini 3.5 Pro slips again, Gemini 4 pretraining begins
+• Tempus AI to acquire cancer-monitoring firm Personalis for ~$1.5-1.9B
+• Anthropic & OpenAI break Q2 2026 lobbying spending records ($1.97M / $1.2M)
+• South Korea locks in Dec. 2026 launch of free national "AI for Everyone" chatbot
+
+KEY NUMBERS:
+• Personalis deal: $16.25/share, ~$1.5-1.9B all-stock
+• Q2 lobbying: Anthropic $1.97M (+26% QoQ), OpenAI $1.2M (+18% QoQ)
+• Gemini 3.6 Flash: $1.50/$7.50 per Mtok; 3.5 Flash-Lite: $0.30/$2.50 per Mtok
+• Meta AI moderation: 13% fewer errors, 10% more violations caught vs. humans
+• ~23M South Koreans currently use ChatGPT
+
+Full report on GitHub.

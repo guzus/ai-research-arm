@@ -3,7 +3,7 @@ slug: nvidia-nemotron-openrouter-2026-06
 title: NVIDIA puts two Nemotron models free on OpenRouter
 company: NVIDIA
 model: Nemotron 3
-status: released
+status: closed
 status_note: |
   **2026-06-21:** NVIDIA made **two Nemotron models available for free on
   OpenRouter** — a **Nemotron 3.5 Content Safety** classifier and a
@@ -35,14 +35,16 @@ sources:
   - "@nvidia"
   - https://openrouter.ai/nvidia
 created_at: 2026-06-21
-updated_at: 2026-06-29
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-27
+closed_at: 2026-07-27
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-21
     change: "Created — NVIDIA put two Nemotron models free on OpenRouter: a Nemotron 3.5 Content Safety classifier and a Nemotron 3 Ultra frontier-tier model. Read as a GPU-demand distribution play (NVIDIA monetizes silicon, not API calls), pressuring paid closed-API economics. Usable now → status released; single secondary in-window mention (2026-06-21 digest) without a captured primary NVIDIA/OpenRouter post or model card → verification partial."
   - ts: 2026-06-29
     change: "Spec firm-up — the 2026-06-29 digest (Interconnects #22 roundup) gives Nemotron 3 Ultra concrete specs: a 550B LatentMoE model under the OpenMDW license, alongside a broader open-weight wave (Cohere Command A+ 218B MoE now Apache 2.0, Zyphra ZAYA1-74B, Poolside Laguna-M.1, Kimi-K2.7-Code). Also relayed: OpenRouter's top-4 broker models are now all Chinese (GLM-5.2 joining DeepSeek models), reflecting the broker market not direct API usage. Fills part of the model-card gap flagged at creation, but still a secondary roundup mention without a captured primary NVIDIA model card → status stays released, verification stays partial."
+  - ts: 2026-07-27
+    change: "Closed — released-and-aged. Nemotron 3.5 Content Safety + Nemotron 3 Ultra have been live free on OpenRouter since 2026-06-21; now ≥4 weeks past availability (36 days) with no fresh signal since the 06-29 spec firm-up and no successor Nemotron generation surfaced. Rolled into normal coverage. History preserved."
 ---
 
 On **2026-06-21**, **NVIDIA** made **two Nemotron models available for free on

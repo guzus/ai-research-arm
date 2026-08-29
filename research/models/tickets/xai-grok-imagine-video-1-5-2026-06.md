@@ -3,7 +3,7 @@ slug: xai-grok-imagine-video-1-5-2026-06
 title: xAI Grok Imagine Video 1.5 — image-to-video model in wide release
 company: xAI
 model: Grok Imagine Video 1.5
-status: released
+status: closed
 status_note: |
   xAI put **Grok Imagine Video 1.5** into **wide release** (2026-06-17, @xai own
   account) — an image-to-video model with "**sharper realism, better physics and
@@ -21,12 +21,14 @@ sources:
   - "@xai"
   - "@elonmusk"
 created_at: 2026-06-18
-updated_at: 2026-06-18
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-16
+closed_at: 2026-07-16
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-18
     change: "Created — xAI announced Grok Imagine Video 1.5 in wide release (2026-06-17, @xai own account): image-to-video with sharper realism, better physics, faster generations; Elon Musk amplified and teased 'full movies by the end of this year.' Own-account announcement of a live model → status released, verification confirmed; independent quality benchmarks vs. peers still pending."
+  - ts: 2026-07-16
+    change: "Closed — ≥4 weeks past release with no unresolved transition triggers; settled into normal coverage. closed_reason: released-and-aged."
 ---
 
 On **2026-06-17**, **xAI**'s own verified account announced **Grok Imagine

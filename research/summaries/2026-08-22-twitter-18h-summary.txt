@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-22 18:44:59 UTC
+
+CYCLE: Open weights take the majority of a real gateway's tokens, and inference finally gets a power unit.
+
+TOP STORIES:
+• Vercel AI Gateway: 62% of today's tokens are open weights, up from 28.4% on Jun 24 ⚠
+• SemiAnalysis puts a B300 at ~7,400 output tok/s per provisioned MW — 30.8 tokens/kcal vs a human's 690 ⚠
+• Luke Metz's second OpenAI exit gets a destination: Meta, on one aggregator account ⚠
+
+WATCH: Whether any gateway publishes the open-vs-closed token split weighted by spend — the number that settles whether 62% is adoption or price.
+
+Full update on GitHub.

@@ -1,0 +1,12 @@
+arXiv Papers - 2026-07-30
+
+TOP 5 PAPERS:
+• Can AI agents do open-ended research? Shadow evals find agents ace engineering but stall on real research judgment.
+• TurboVLA - real-time vision-language-action model, 97.7% LIBERO success at just 0.2B params.
+• A Compositional Theory of Causally Masked Transformers - algebraic hierarchy of what causal attention can compute.
+• HumanCLAW - no VLM tops 16.8% success acting through a full-body avatar; big embodied-agent gap.
+• MemSecBench - agent memory poisoning persists in 84.2% of tested configs.
+
+CATEGORIES: NLP 7 | CV/Multimodal 8 | Agents & Reasoning 9 | Safety & Alignment 7 | Other 6
+
+Full report on GitHub.

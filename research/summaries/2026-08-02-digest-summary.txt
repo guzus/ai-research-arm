@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-08-02
+
+TOP STORIES:
+• OpenAI names "Astra" as its next model family and publishes ten mathematics/TCS results with Lean certificates
+• No specialist has verified any Astra proof yet — OpenAI's own repo labels the package "agent-reviewed"
+• DeepSeek V4-Flash completes benchmark tasks at 105x lower cost than Anthropic's Fable 5 (Artificial Analysis via Cline)
+• OpenAI and Anthropic lobby Washington to extend frontier-model reviews to Meta and SpaceXAI
+
+KEY NUMBERS:
+• ~$2,000 total inference for all 10 Astra results (~$200 each); 249-page manuscript
+• Aschenbrenner's Situational Awareness fund: -67% in July
+• Alphabet TPU lease backstops: $6.5B -> $43.8B in under a year
+• DeepSeek V4-Flash: 50 on Artificial Analysis at $0.14/$0.27 per Mtok
+
+TRENDING: HN's #1 story is Cursor removing per-request cost data from its usage page and CSV export.
+
+Full digest on GitHub.

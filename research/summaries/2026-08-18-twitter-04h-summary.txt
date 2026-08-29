@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-18 04:01:45 UTC
+
+CYCLE: Anthropic's pre-IPO numbers get financial detail; OpenRouter's demand series lands a day after Stripe's bid.
+
+TOP STORIES:
+• Anthropic investor update: $65B run rate at end-July (from $47B in May), Q2 revenue >$11.5B vs $787M a year earlier, and an unlabelled claim that adjusted operating profit turned positive [⚠]
+• OpenRouter annual token throughput put at >75T, up from 3.73T — 20x in a year vs Google's 7x [⚠]
+
+ALSO: Claude Code /design officially announced (research preview, Pro/Max/Team/Enterprise); Qwen3.8-27B Unsloth GGUF past 2.7M downloads.
+
+WATCH: Whether an Anthropic S-1 appears in the reported September window and states Q2 operating income under GAAP.
+
+Full update on GitHub.

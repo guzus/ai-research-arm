@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ANTHROPIC RISK REPORT DISCLOSES UNRELEASED 'MODEL 2' STRONGER THAN MYTHOS 5 — NO PLANS TO SHIP",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2088324824863236248",
+    "category": "breaking"
+  },
+  {
+    "headline": "ANTHROPIC TELLS INVESTORS Q2 REVENUE TOPPED $11.5B, UP 14X, FIRST POSITIVE ADJUSTED OPERATING INCOME",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2088381621024239731",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI ANNUALIZED RUN RATE HITS $40B — ENTERPRISE NOW OUTEARNS CONSUMER",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2088385567663006000",
+    "category": "business"
+  },
+  {
+    "headline": "QWEN3.8-27B RUNS IN 17GB AND SETS NEW LAPTOP-CLASS BAR — DENSE MODEL WANTS DISCRETE GPUS",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2088361426662637714",
+    "category": "opensource"
+  },
+  {
+    "headline": "SEMIANALYSIS: GLM-5.3 BEATS EVERY AMERICAN OPEN MODEL, ALL GAINS FROM POST-TRAINING",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2088355003106828291",
+    "category": "opensource"
+  },
+  {
+    "headline": "CLAUDE CODE MAKES AUTO MODE THE DEFAULT PERMISSION MODE FOR PRO, MAX AND TEAM",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2088332927189049738",
+    "category": "infra"
+  },
+  {
+    "headline": "NVIDIA DISCLOSES $21 BILLION SPACEX STAKE IN LATEST SEC FILING",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2088367981587800192",
+    "category": "business"
+  }
+]

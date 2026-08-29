@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-18 21:48:27 UTC
+
+CYCLE: Open weights close on the frontier; Anthropic's IPO plumbing surfaces.
+
+TOP STORIES:
+• GLM-5.3 scores 60 on Artificial Analysis, ties Kimi K3, and ranks 2nd on agentic work behind only Opus 5 [⚠]
+• Anthropic pre-IPO: $10B+ oversubscribed revolver (Bloomberg) + extra-vote founder stock (The Information) [⚠]
+• OpenAI's training pause gets a cause — unreleased models showing "various degrees of misalignment" — but spares near-term ships [⚠]
+• Anthropic extends 50% Claude Code weekly-limit increase to Aug 31, warns capacity may be tight [✓]
+
+WATCH: Whether Z AI ships GLM-5.3's 753B/40B weights under MIT within its stated one-week window.
+
+Full update on GitHub.

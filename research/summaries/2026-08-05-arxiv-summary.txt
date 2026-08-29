@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-05
+
+TOP 5 PAPERS:
+• Game theory for foundation models - agents cooperate in social dilemmas; "embedded equilibrium" replaces Nash
+• Separating quantum circuits from classical LLMs - unconditional separations vs diffusion LMs and transformers
+• Logic Before Language - pre-pretraining on formal derivations saves 36B tokens and improves compressibility
+• Test-Time Scaling in Reasoning LLMs - 3 inference regimes backed by 2B+ full reasoning traces
+• Cross-Model KV Cache Transfer - closed-form linear map reuses prefill across model sizes, 2.7-25x faster
+
+CATEGORIES: Agents/Reasoning 13, CV/Multimodal 12, Other 13, LM/NLP 11, Safety 8
+
+Full report on GitHub.

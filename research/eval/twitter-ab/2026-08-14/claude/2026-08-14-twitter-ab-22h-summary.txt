@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-14 22:03:07 UTC
+
+CYCLE: Anthropic discloses an unreleased internal model, leaked lab revenue lands on both sides, and open weights move again.
+
+TOP STORIES:
+• Anthropic Risk Report names unreleased "Model 2" above Mythos 5, no plans to ship [✓]
+• Anthropic Q2 revenue >$11.5B (14x YoY, first positive adj. op income); OpenAI run rate $40B, enterprise now outearns consumer [⚠]
+• Qwen3.8-27B sets a new laptop-class bar at 17GB — dense, slow, and showing an agentic truncation regression [✓]
+• SemiAnalysis: GLM-5.3 beats every American open model, all gains from post-training [⚠]
+
+WATCH: Whether Anthropic or OpenAI comments on the leaked revenue figures, or a bylined story attaches a reporter to them.
+
+Full update on GitHub.

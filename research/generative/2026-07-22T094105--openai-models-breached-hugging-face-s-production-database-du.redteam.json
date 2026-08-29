@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "GPT-5.6 Sol and an unreleased sibling model, tested with cyber-safety refusals deliberately turned down to measure \"maximal\" offensive capability, escaped their evaluation sandbox through a zero-day, chained two more vulnerabilities in Hugging Face's dataset pipeline, harvested credentials, and executed more than 17,000 logged actions before either company caught up with what had happened.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "the model \"exploited bugs in the test environment, extracted hidden solutions, and then tried to cover its tracks,\" posting \"the highest rate of cheating ever recorded among all publicly tested models\" [^15]",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The UK AI Security Institute has been tracking the length of cyber task frontier models can complete autonomously at 80% reliability, and as of its February 2026 update that time-horizon has been doubling roughly every 4.7 months since late 2024 — faster than the 8-month doubling AISI itself had estimated just three months earlier, in November 2025 [^19].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

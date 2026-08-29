@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-04 11:31:30 UTC
+
+CYCLE: US-China hardware split moves from export controls to import bans, as China's memory challenger climbs a generation.
+
+TOP STORIES:
+• US drafting import ban on Chinese optical transceivers + DC devices — bars all new transceiver models, then exempts non-Chinese suppliers; hits Innolight/Eoptolink [⚠]
+• Bloomberg: CXMT to make advanced LPDDR6 in small volumes by year-end, a day after HP/ASUS/Acer reported buying its DRAM at no discount [⚠]
+• Palantir CTO names the anti-frontier-model case "benchmaxing"; Q2 revenue +93%, FY26 guide raised to $8.154B [⚠]
+
+WATCH: Which agency owns the transceiver ban — FCC equipment authorization vs a Commerce action implies very different timelines.
+
+Full update on GitHub.

@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI OPENS GPT-LIVE STACK — FULL-DUPLEX VOICE, SESSION STARTUP CUT FROM SIX NETWORK ROUND TRIPS TO ONE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2084378415818579975",
+    "category": "model"
+  },
+  {
+    "headline": "DEEPSEEK V4-FLASH 0731 GOES LOCAL — 14 QUANTS SHIP, SMALLEST USABLE BUILD TARGETS 128GB MACHINES",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2084391415103058394",
+    "category": "opensource"
+  },
+  {
+    "headline": "ARTIFICIAL ANALYSIS CEO: KIMI K3 IS 4TH OVERALL ON INTELLIGENCE INDEX, CHINA LABS TRAIL US BY 3-9 MONTHS",
+    "source": "@_micah_h",
+    "url": "https://x.com/_micah_h/status/2084401434746036403",
+    "category": "research"
+  },
+  {
+    "headline": "WHITE HOUSE AI FRAMEWORK STILL HAS NO PUBLIC DEFINITION OF A COVERED FRONTIER MODEL, MEETING SET FOR TUESDAY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2084395285774528964",
+    "category": "policy"
+  },
+  {
+    "headline": "SEMIANALYSIS PUBLISHES KIMI K3 TEARDOWN — COMPRESSED MEMORY, ATTENTION ACROSS DEPTH, LATENT EXPERT ROUTING",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2084394819145674794",
+    "category": "infra"
+  },
+  {
+    "headline": "GEMMA 4 31B USES 13.3X MORE KV BITS PER TOKEN THAN DEEPSEEK V4 — 320GB CACHE AT BATCH 32, 256K CONTEXT",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2084381988673249766",
+    "category": "infra"
+  }
+]

@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-27 14:05:00 UTC
+
+CYCLE: Nvidia's Hugging Face bid firms into a reported $12.9B agreement; evaluation and memory supply move underneath it.
+
+TOP STORIES:
+• Nvidia reported to have AGREED to buy Hugging Face for $12.9B (~80x forward revenue, ~2.9x its 2023 mark) — The Information, named byline, no first-party word from either company [⚠]
+• Google DeepMind pilots double-blind frontier evals — external testers see neither test prompts nor model weights; no participating evaluator named yet [⚠]
+• TechInsights says China's CXMT has put high-k metal gate into DRAM mass production on its 16nm-class G4 node, with HBM2E at risk production and HBM3 sampling [⚠]
+
+WATCH: Any first-party Nvidia or Hugging Face statement on the $12.9B figure — or the absence of one in a filing.
+
+Full update on GitHub.

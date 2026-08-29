@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Mensah's own company, Titan Builder, builds ~52% of Ethereum blocks [^19] [^20] — the \"neutral infrastructure\" framing elides that he runs the dominant firm in the market he's defending.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The UBS/Nethermind pilot Mensah cites as proof institutions can already comply was two testnet-only proofs of concept on Sepolia, with zero live transactions [^11].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Regulators have not concluded MEV is market manipulation. IOSCO treats it as a disclosure/control-risk factor [^3] [^4], ESMA's strongest language is a hedged 2024 draft consultation and a 2025 research note calling for \"more analysis\" [^5] [^6], and the SEC's own staff memo says searchers/builders following protocol rules are not being treated as manipulative [^8].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

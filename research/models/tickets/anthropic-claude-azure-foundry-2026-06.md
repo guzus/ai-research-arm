@@ -3,7 +3,7 @@ slug: anthropic-claude-azure-foundry-2026-06
 title: Claude GA in Microsoft Foundry on Azure — Anthropic's first NVIDIA-GPU deployment
 company: Anthropic / Microsoft
 model: Claude Opus 4.8 / Haiku 4.5
-status: released
+status: closed
 status_note: |
   Announced **2026-06-29** by the official **@claudeai**, **@nvidia**, and
   **@Azure** accounts within the same hour: **Claude Opus 4.8** ([[opus-4-8]])
@@ -42,12 +42,14 @@ sources:
   - https://x.com/nvidia/status/2071654937335926864
   - https://x.com/Azure/status/2071651695323492418
 created_at: 2026-06-30
-updated_at: 2026-06-30
-closed_at: null
-closed_reason: null
+updated_at: 2026-07-28
+closed_at: 2026-07-28
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-30
     change: "Created — Claude Opus 4.8 + Haiku 4.5 went GA in Microsoft Foundry on Azure (announced 2026-06-29 by official @claudeai, @nvidia, @Azure within the same hour), hosted natively with Azure auth/billing/commitment retirement, prompt caching + extended thinking. Runs on NVIDIA GB300 NVL72 (Blackwell Ultra) with Quantum-X800 InfiniBand — reported (@firstadopter, 'I am told') as Anthropic's first deployment on NVIDIA GPUs, completing a native Claude presence across AWS Bedrock + Google Vertex + Azure Foundry. Status released (live GA, three official accounts); verification confirmed for the GA, the 'first-ever NVIDIA' superlative single-sourced. Distribution play paired with the California state deal ([[anthropic-california-state-deal-2026-06]]) and the Amazon repricing ([[anthropic-amazon-repricing-2026-06]])."
+  - ts: 2026-07-28
+    change: "Closed — released and settled into normal coverage for 4 weeks with no further developments (Foundry pricing/commitment-retirement terms vs. Bedrock, and confirmation of a standing Anthropic-NVIDIA lane, never surfaced). Closing per this ticket's own released-and-aged transition trigger."
 ---
 
 On **2026-06-29**, Anthropic and Microsoft announced that **Claude Opus

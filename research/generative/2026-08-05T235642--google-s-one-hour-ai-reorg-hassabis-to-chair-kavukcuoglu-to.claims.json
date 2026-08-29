@@ -1,0 +1,581 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Google published a single blog post on 2026-08-05 at 16:00:00 UTC containing both Pichai's and Hassabis's employee memos, announcing Hassabis as Chair of Google DeepMind and Chief Scientist of Alphabet.",
+      "type": "event",
+      "source_urls": ["https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Pichai's memo states Kavukcuoglu will 'step up as SVP of Google DeepMind, reporting to me' — an SVP title, not CEO of the unit.",
+      "type": "quote",
+      "source_urls": ["https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "The phrase 'CEO of Google DeepMind' appears nowhere in Google's announcement; the title was neither refilled nor explicitly abolished.",
+      "type": "technical",
+      "source_urls": ["https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Kavukcuoglu's enumerated scope is Gemini model development, Frontier AI research, and the Gemini app and developer teams.",
+      "type": "quote",
+      "source_urls": ["https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "An Alphabet spokesperson told Reuters that Hassabis will explore research and strategy on societal impacts of AGI and 'will have few direct reports'.",
+      "type": "quote",
+      "source_urls": ["https://finance.yahoo.com/technology/ai/articles/google-shakes-up-ai-leadership-as-deepmind-chief-shifts-role-160227886.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Reuters reported that Alphabet 'did not provide any details on what precipitated the moves or their coincident timing.'",
+      "type": "quote",
+      "source_urls": ["https://finance.yahoo.com/technology/ai/articles/google-shakes-up-ai-leadership-as-deepmind-chief-shifts-role-160227886.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Reuters filed at 16:02:27 UTC and Axios at 16:00:19 UTC — 19 seconds after Google's post — indicating a pre-briefed embargo rather than a leak-forced announcement.",
+      "type": "event",
+      "source_urls": [
+        "https://finance.yahoo.com/technology/ai/articles/google-shakes-up-ai-leadership-as-deepmind-chief-shifts-role-160227886.html",
+        "https://www.axios.com/2026/08/05/google-deepmind-demis-hassabis-ai"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "Jeff Dean announced Discovery Loop on X at 16:06:02 UTC on 2026-08-05, roughly four minutes after the wires had already reported his departure.",
+      "type": "event",
+      "source_urls": ["https://x.com/JeffDean/status/2085034604172603724"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c9",
+      "claim": "GOOGL closed at $362.43 on 2026-08-05, down 4.03% from a $377.65 prior close, with an intraday high of $384.48 and a low of $356.77.",
+      "type": "metric",
+      "source_urls": ["https://stockanalysis.com/stocks/googl/history/"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "The high-to-low intraday swing on 2026-08-05 was 7.21%, larger than the 4.03% close-to-close move usually quoted.",
+      "type": "comparison",
+      "source_urls": ["https://stockanalysis.com/stocks/googl/history/"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "At roughly 12.23 billion shares outstanding, the $15.22 close-to-close decline corresponds to about $186 billion of Alphabet market capitalization.",
+      "type": "derived",
+      "inputs": {"shares_outstanding": 12230000000, "price_decline_usd": 15.22},
+      "formula": "shares_outstanding * price_decline_usd",
+      "result": 186140600000.0,
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "GOOGL's mean absolute daily move over the 15 sessions ending 2026-08-05 was about 2.77%, so a 4.03% decline is roughly 1.45x its recent average daily move.",
+      "type": "derived",
+      "inputs": {"move_pct": 4.03, "mean_abs_daily_move_pct": 2.77},
+      "formula": "move_pct / mean_abs_daily_move_pct",
+      "result": 1.4548736462093862,
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c13",
+      "claim": "GOOGL fell 7.13% on 2026-07-23 on capital-expenditure news and 4.44% on 2026-07-16 on a report that the flagship Gemini model was delayed — both single-day moves at least as large as the reorg reaction.",
+      "type": "comparison",
+      "source_urls": ["https://stockanalysis.com/stocks/googl/history/"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c14",
+      "claim": "Alphabet filed no Form 8-K for the reorganization; its most recent 8-K of any kind as of 2026-08-06 was dated 2026-07-22 (Items 2.02/9.01), and it had filed five Item 5.02 8-Ks in the first half of 2026.",
+      "type": "regulatory",
+      "source_urls": ["https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=8-K&dateb=&owner=include&count=40"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-06",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c15",
+      "claim": "Alphabet's 2026 proxy statement lists five executive officers — Pichai, Ashkenazi, Porat, Schindler and Walker — and none of Hassabis, Dean or Kavukcuoglu is among them.",
+      "type": "regulatory",
+      "source_urls": ["https://www.stocktitan.net/sec-filings/GOOG/def-14a-alphabet-inc-definitive-proxy-statement-5428f485f4af.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-04-24",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "UK Companies House records show Demis Hassabis resigned as a director of DeepMind Technologies Limited on 2014-01-24 and is not a current officer, so 'Chair of Google DeepMind' corresponds to no statutory governance body in that entity.",
+      "type": "regulatory",
+      "source_urls": ["https://find-and-update.company-information.service.gov.uk/company/07386350/officers"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-06",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c17",
+      "claim": "Kavukcuoglu was named Google's Chief AI Architect on 2025-06-11 in a Pichai memo whose stated purpose was to accelerate bringing models into products with 'more seamless integration, faster iteration, and greater efficiency.'",
+      "type": "event",
+      "source_urls": ["https://www.cnbc.com/2025/06/11/google-kavukcuoglu-chief-ai-architect.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-06-11",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Google's last new Pro-tier Gemini model in the public API changelog was gemini-3.1-pro-preview on 2026-02-19, leaving 167 days without a new Pro-tier release as of 2026-08-05.",
+      "type": "metric",
+      "source_urls": ["https://ai.google.dev/gemini-api/docs/changelog"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c19",
+      "claim": "Google stated on 2026-07-21 that Gemini 3.5 Pro was 'currently testing with partners' and that it had started its 'most ambitious pre-training run yet, for Gemini 4.'",
+      "type": "quote",
+      "source_urls": ["https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "Polymarket has resolved 'No' on fourteen consecutive contracts asking whether the next Gemini Pro model would be released, spanning deadlines from 2026-06-05 to 2026-07-31.",
+      "type": "market-structure",
+      "source_urls": ["https://gamma-api.polymarket.com/events?slug=next-google-gemini-pro-model-released-byptptpt"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "As of 2026-08-05T23:00Z Polymarket priced the next Gemini Pro release at 5.7% by 7 August, 24.5% by 14 August, 47.5% by 21 August and 70.0% by 31 August 2026.",
+      "type": "forecast",
+      "source_urls": ["https://gamma-api.polymarket.com/events?slug=next-google-gemini-pro-model-released-byptptpt"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c22",
+      "claim": "On the day of the reorg those contracts fell sharply — the 14 August market by 48 points and the 31 August market by 15.3 points — meaning traders read the announcement as evidence of further delay.",
+      "type": "market-structure",
+      "source_urls": [
+        "https://gamma-api.polymarket.com/events?slug=next-google-gemini-pro-model-released-byptptpt",
+        "https://clob.polymarket.com/prices-history?market=57710947326527517142791816702921024824946830323262226496916404734255533257132&interval=1w&fidelity=60"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "Bloomberg reported on 2026-07-16, citing ten current and former employees, that Gemini 3.5 Pro was months behind schedule on coding performance and that a late-June retraining attempt produced disappointing results.",
+      "type": "causal",
+      "source_urls": ["https://9to5google.com/2026/07/16/gemini-3-5-pro-delays/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-16",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c24",
+      "claim": "Alphabet reported Q2 2026 revenues of $119,796 million, up 24% year over year, with Google Cloud revenue of $24,768 million, up 82%, and Cloud operating income of $8,814 million against $2,826 million a year earlier.",
+      "type": "metric",
+      "source_urls": ["https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "Pichai disclosed for Q2 2026 that the Gemini app had 950 million monthly active users, that Google's model APIs processed about 22 billion tokens per minute, and that nearly 90% of the Fortune 100 use Gemini Enterprise.",
+      "type": "metric",
+      "source_urls": ["https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q2-2026/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-22",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c26",
+      "claim": "Google's own memo describes the new company as 'an independent public benefit corporation' and says Google will continue to work with it 'as a founding investor and Cloud partner' and collaborate on a research framework for ML systems.",
+      "type": "quote",
+      "source_urls": ["https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "Discovery Loop's seed round is co-led by Radical Ventures and Khosla Ventures with Lightspeed, Kleiner Perkins, Doerr Capital and Alphabet participating, and neither the round size nor the valuation has been disclosed.",
+      "type": "market-structure",
+      "source_urls": [
+        "https://techcrunch.com/2026/08/05/jeff-dean-and-other-top-ai-researchers-are-leaving-google-to-launch-their-own-startup/",
+        "https://qz.com/jeff-dean-google-chief-scientist-discovery-loop-startup-080526"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c28",
+      "claim": "Wired reported that Google's arrangement includes an investment plus compute power for the venture's first year, and that Radical Ventures managing partner Jordan Jacobs joins the board.",
+      "type": "market-structure",
+      "source_urls": ["https://www.wired.com/story/jeff-dean-google-discovery-loop-startup/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c29",
+      "claim": "Discovery Loop's own website states it will 'initially focus on automating the process of machine learning research and engineering' and act as its own first customer, and it names no investors, legal structure, titles or location.",
+      "type": "definition",
+      "source_urls": ["https://www.discoveryloop.com/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "Delaware's public benefit corporation statute requires only a stated public benefit, a director balancing duty and a biennial statement to stockholders, and expressly creates no duty to any person outside the corporation.",
+      "type": "regulatory",
+      "source_urls": ["https://delcode.delaware.gov/title8/c001/sc15/index.html"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-08-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "The FTC's 2026 HSR size-of-transaction threshold is $133.9 million, and the rule reaches only acquisitions of voting securities, non-corporate interests or assets — so a minority seed investment in a private company is very unlikely to be notifiable.",
+      "type": "regulatory",
+      "source_urls": ["https://www.ftc.gov/news-events/news/press-releases/2026/01/ftc-announces-2026-update-jurisdictional-fee-thresholds-premerger-notification-filings"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-02-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "The FTC and DOJ jointly issued a Request for Information on 2026-03-25 citing an 'uptick in business transactions that parties are not reporting' and asking whether the rules capture 'licensing agreements, acquihires, reverse acquihires'.",
+      "type": "regulatory",
+      "source_urls": ["https://www.ftc.gov/system/files/ftc_gov/pdf/2026.03.25-HSR-RFI.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-03-25",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c33",
+      "claim": "Every named target of the 2026 reverse-acquihire enforcement debate involves talent flowing INTO an incumbent, whereas Google funded talent flowing OUT — a direction of flow for which no agency action precedent exists.",
+      "type": "causal",
+      "source_urls": [
+        "https://www.warren.senate.gov/imo/media/doc/final_-_warren_wyden_blumenthal_letter_to_the_department_of_justice_and_the_federal_trade_commission_on_big_tech_reverse_acqui-hires.pdf",
+        "https://www.ftc.gov/system/files/ftc_gov/pdf/2026.03.25-HSR-RFI.pdf"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-06",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c34",
+      "claim": "Google's August 2024 Character.AI transaction — a reported ~$2.7 billion non-exclusive licence plus the return of about 30 researchers, with no equity acquired — drew a reported DOJ inquiry into whether it was structured to avoid merger review.",
+      "type": "regulatory",
+      "source_urls": ["https://www.fortune.com/2025/05/22/google-antitrust-investigation-character-ai-chatbot-doj"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-05-22",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c35",
+      "claim": "AlphaEvolve rediscovered state-of-the-art solutions in roughly 75% of more than 50 open mathematical problems and improved on the best known solution in 20% of cases.",
+      "type": "metric",
+      "source_urls": ["https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-05-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c36",
+      "claim": "AlphaEvolve sped up a kernel in Gemini's architecture by 23%, which produced a 1% reduction in Gemini's overall training time — the clearest documented instance of an AI system improving its own successor.",
+      "type": "metric",
+      "source_urls": ["https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-05-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c37",
+      "claim": "On METR's RE-Bench the best AI agents scored 4x higher than human experts at a two-hour budget, but humans narrowly exceeded the top agent at eight hours and reached twice the agent score at 32 hours.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/abs/2411.15114"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-05-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c38",
+      "claim": "On PaperBench, which measures replicating 20 ICML 2024 papers from scratch, the best tested agent reached 21.0% and models did not outperform the ML-PhD human baseline.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2504.01848"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-04-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c39",
+      "claim": "A July 2026 survey classifying 1,250 arXiv papers concludes that open-ended recursive self-improvement remains bounded by grounding requirements, collapse dynamics and compute constraints.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2607.07663"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-07-08",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c40",
+      "claim": "OpenAI froze the MLE-bench leaderboard on 2026-04-24 while it developed an improved process for ensuring submissions are fair and comparable.",
+      "type": "event",
+      "source_urls": ["https://github.com/openai/mle-bench"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-04-24",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c41",
+      "claim": "Reviewing Edison Scientific's Kosmos, Cambridge biophysicist Georg Meisl said that by the paper's own metrics one in five conclusions is still wrong and that mistakes are too common for anything that cannot be easily validated.",
+      "type": "quote",
+      "source_urls": ["https://www.alzforum.org/news/research-news/introducing-kosmos-ai-scientist-makes-discoveries-overnight"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-11-20",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c42",
+      "claim": "At least six funded companies had already raised roughly $2.0 billion in disclosed capital to automate scientific discovery before Discovery Loop's launch, led by Isomorphic Labs at $600 million and Lila Sciences at $550 million.",
+      "type": "comparison",
+      "source_urls": [
+        "https://sacra.com/c/lila-sciences/",
+        "https://www.lila.ai/news/announcing-the-close-of-our-series-a",
+        "https://techcrunch.com/2025/09/30/former-openai-and-deepmind-researchers-raise-whopping-300m-seed-to-automate-science/"
+      ],
+      "source_tiers": ["opinion", "primary", "secondary"],
+      "as_of": "2026-08-05",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c43",
+      "claim": "Noam Shazeer announced on 2026-06-18 that he was leaving Google for OpenAI, and John Jumper announced on 2026-06-19 that he was leaving Google DeepMind for Anthropic after nearly nine years.",
+      "type": "event",
+      "source_urls": [
+        "https://www.cnbc.com/2026/06/18/google-gemini-co-lead-noam-shazeer-leaves-for-openai.html",
+        "https://x.com/JohnJumperSci/status/2068001285173834106"
+      ],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-06-19",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c44",
+      "claim": "All eight authors of the 2017 paper 'Attention Is All You Need' had left Google by August 2023; the count briefly returned to one when Shazeer rejoined in 2024 and returned to zero when he left on 2026-06-18.",
+      "type": "metric",
+      "source_urls": [
+        "https://www.cnbc.com/2023/08/17/transformer-co-author-llion-jones-leaves-google-for-startup-sakana-ai.html",
+        "https://www.cnbc.com/2026/06/18/google-gemini-co-lead-noam-shazeer-leaves-for-openai.html"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c45",
+      "claim": "Google DeepMind VP of research Pushmeet Kohli confirmed on the record to the Financial Times that the lab's nine-year 'grand challenges' strategy has evolved, following reporting that the AlphaFold team had been broken up.",
+      "type": "quote",
+      "source_urls": ["https://the-decoder.com/deepmind-dismantles-its-alphafold-team-as-key-authors-leave-for-anthropic/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-29",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c46",
+      "claim": "Six weeks before the reorg, Hassabis said on stage at Cannes Lions that Google has 'by far the biggest and broadest research bench of any of the labs out there' and that talent movement between leading labs is normal.",
+      "type": "quote",
+      "source_urls": ["https://www.semafor.com/article/06/23/2026/deepmind-chief-demis-hassabis-says-googles-still-winning-ai-talent"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c47",
+      "claim": "The 2026-08-05 reorganization dissolved the leadership structure created on 2023-04-20, when Pichai merged Google Brain with DeepMind to form Google DeepMind.",
+      "type": "event",
+      "source_urls": ["https://blog.google/technology/ai/april-ai-update/"],
+      "source_tiers": ["primary"],
+      "as_of": "2023-04-20",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c48",
+      "claim": "Isomorphic Labs raised $2.1 billion in a round led by Thrive Capital announced in May 2026, and as of mid-2026 no Isomorphic drug candidate had been dosed in a human clinical trial.",
+      "type": "metric",
+      "source_urls": ["https://www.forbes.com/sites/amyfeldman/2026/05/13/isomorphic-labs-21-billion-fundraise-is-the-biggest-bet-yet-on-ai-drug-discovery/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-13",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c49",
+      "claim": "Isomorphic Labs appointed Max Jaderberg as President effective 2026-01-01, so Hassabis's retained Isomorphic CEO title already sits above a day-to-day operating president.",
+      "type": "event",
+      "source_urls": ["https://www.isomorphiclabs.com/articles/isomorphic-labs-to-appoint-max-jaderberg-as-president"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-11-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c50",
+      "claim": "Across five comparable tech founder-CEO transitions into a chair or chief-architect role, the time from title change to full departure ranged from about 2.5 years (Suleyman at DeepMind) to 8.5 years (Gates at Microsoft), and Page and Brin never fully exited Alphabet.",
+      "type": "comparison",
+      "source_urls": ["https://blogs.microsoft.com/blog/2024/03/19/mustafa-suleyman-deepmind-and-inflection-co-founder-joins-microsoft-to-lead-copilot/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-06",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c51",
+      "claim": "Microsoft's post-recapitalization OpenAI position was disclosed in an SEC exhibit as valued at approximately $135 billion, about 27% on an as-converted diluted basis, against roughly $13.75 billion of cash actually invested.",
+      "type": "comparison",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/789019/000119312525256310/msft-ex99_2.htm",
+        "https://www.ftc.gov/system/files/ftc_gov/pdf/p246201_aipartnerships6breport_redacted_0.pdf"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-10-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c52",
+      "claim": "The FTC's January 2025 6(b) staff report found that cloud providers appeared to be using AI partnerships to gain access to technical talent, and noted that both Amazon and Google hold non-voting shares in Anthropic.",
+      "type": "quote",
+      "source_urls": ["https://www.ftc.gov/system/files/ftc_gov/pdf/p246201_aipartnerships6breport_redacted_0.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-01-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c53",
+      "claim": "No Google model appeared in the LMArena text leaderboard top ten as of early August 2026, with gemini-3-pro ranked 11th at 1486 Elo against a leading score of 1509.",
+      "type": "metric",
+      "source_urls": ["https://lmarena.ai/leaderboard/text"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "low",
+      "risk": "volatile"
+    },
+    {
+      "id": "c54",
+      "claim": "Menlo Ventures' survey of 495 US enterprise AI decision-makers put Google at 21% of enterprise LLM API spend, up from 7% in 2023, behind Anthropic at 40% and OpenAI at 27%.",
+      "type": "metric",
+      "source_urls": ["https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-12-09",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c55",
+      "claim": "Google's Gemini 3.1 Pro model card, published 2026-02-19, reported 77.1% on ARC-AGI-2 and 94.3% on GPQA Diamond, ahead of the then-current Anthropic and OpenAI flagships on most named benchmarks but behind on SWE-Bench Verified.",
+      "type": "metric",
+      "source_urls": ["https://deepmind.google/models/model-cards/gemini-3-1-pro/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-02-19",
+      "confidence": "medium",
+      "risk": "stable"
+    }
+  ]
+}

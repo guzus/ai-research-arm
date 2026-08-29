@@ -1,0 +1,14 @@
+arXiv Papers - 2026-07-18
+
+TOP 5 PAPERS:
+• On-Policy Delta Distillation - distills base→tuned model deltas to transfer RL reasoning gains into smaller students
+• Scaling Behavior Foundation Model for Humanoid Robots - scaling laws for embodied foundation models
+• T²MLR - transformer with temporal middle-layer recurrence boosts reasoning at inference time
+• Video = World + Event Stream - real-time full-duplex audio-visual interaction at ~550ms latency
+• Grokipedia vs Wikipedia - multi-judge LLM audit finds ideology-dependent bias in both encyclopedias
+
+CATEGORIES: NLP 5, CV/Multimodal 5, Agents/Reasoning 5, Safety/Alignment 4, Other 5
+
+Note: arXiv's newest announced batch is still 07-16; today's picks are the next tier not covered yesterday.
+
+Full report on GitHub.

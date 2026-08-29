@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-15 03:49:32 UTC
+
+CYCLE: The cheap-token premise behind Chinese open-weight models gets challenged on the right denominator.
+
+TOP STORIES:
+• AlphaSense study via The Information: Anthropic/OpenAI models can cost LESS per completed answer than Chinese rivals despite higher per-token prices - Kimi is cheaper per token than GPT-5.6 Sol, dearer per finished question. Caveat: the vendor sells the retrieval layer its own conclusion favours [⚠]
+• A public DeepSeek Harness commit suggests V4-Pro's agentic gains are tied to the "minimal" preset used during RL, not the "0813 god mode" framing circulating [⚠]
+• The trending Jane Street $15B headline dropped its "AI fund collapse" clause; still zero corroboration in 2,085 tweets [🚩]
+
+WATCH: Whether AlphaSense publishes per-model tokens-to-completion, and whether DeepSeek's price increase lands on schedule 16 August.
+
+Full update on GitHub.

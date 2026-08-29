@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-21 07:02:55 UTC
+
+CYCLE: The stealth model Ox Alpha gets its first number and a named suspect.
+
+TOP STORIES:
+• Ox Alpha scores 80% on a 10-task DeepSWE subset vs Fable 65%, GPT-5.6 Sol 52% — n=10, so inside noise [⚠]
+• Four independent evaluators fingerprint it as Z.ai/GLM on shared tokenizer, video encoder and audio rejection [✓]
+• Now routable free in Hermes Agent via opencode and OpenRouter as 'stealth/ox-alpha' [✓]
+
+WATCH: Whether Z.ai claims the model, or anyone posts a full-set DeepSWE/SWE-Bench-Verified run at n>=300.
+
+Full update on GitHub.

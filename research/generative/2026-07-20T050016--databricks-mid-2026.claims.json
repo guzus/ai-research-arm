@@ -1,0 +1,354 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Databricks signed a term sheet on July 16, 2026 for a strategic funding round at a $188 billion valuation, led by existing investor Coatue, expected to close later in summer 2026.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-07-16",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-raising-strategic-round-funding-188-billion-valuation", "https://www.reuters.com/legal/transactional/databricks-valued-188-billion-after-coatue-led-investment-wsj-reports-2026-07-17/"],
+      "source_tiers": ["primary", "secondary"]
+    },
+    {
+      "id": "c2",
+      "claim": "The July 2026 round is reportedly roughly $3 billion in size; Databricks itself did not disclose the amount raised.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "single-source",
+      "as_of": "2026-07-17",
+      "source_urls": ["https://techcrunch.com/2026/07/17/databricks-hits-188b-valuation-extending-its-run-as-ais-favorite-second-act/"],
+      "source_tiers": ["secondary"]
+    },
+    {
+      "id": "c3",
+      "claim": "Databricks annualized revenue reached $6.9 billion in June 2026, up more than 80% year over year, up from $5.4 billion in fiscal Q4.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-06-16",
+      "source_urls": ["https://www.cnbc.com/2026/06/16/databricks-revenue-growth-tops-80percent-to-6point9-billion-annualized.html"],
+      "source_tiers": ["secondary"]
+    },
+    {
+      "id": "c4",
+      "claim": "Databricks crossed a $5.4 billion revenue run rate in Q4 FY2026 (reported February 9, 2026), growing more than 65% year over year, with positive free cash flow over the trailing 12 months.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-02-09",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-grows-65-yoy-surpasses-5-4-billion-revenue-run-rate"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c5",
+      "claim": "Databricks crossed a $4.8 billion revenue run rate in Q3 FY2026 (reported December 16, 2025), growing more than 55% year over year.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2025-12-16",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-surpasses-4-8b-revenue-run-rate-growing-55-year-over-year"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c6",
+      "claim": "Databricks crossed a $4 billion revenue run rate in Q2 FY2026 (reported September 8, 2025), growing more than 50% year over year.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2025-09-08",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-surpasses-4b-revenue-run-rate-exceeding-1b-ai-revenue"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c7",
+      "claim": "Databricks' AI products revenue run rate grew from $1 billion (September 2025) to $1.4 billion (February 2026) to $1.7 billion (June 2026), roughly a quarter of total run rate.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-06-16",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-surpasses-4b-revenue-run-rate-exceeding-1b-ai-revenue", "https://www.databricks.com/company/newsroom/press-releases/databricks-grows-65-yoy-surpasses-5-4-billion-revenue-run-rate", "https://www.cnbc.com/2026/06/16/databricks-revenue-growth-tops-80percent-to-6point9-billion-annualized.html"],
+      "source_tiers": ["primary", "primary", "secondary"]
+    },
+    {
+      "id": "c8",
+      "claim": "Databricks' net revenue retention rate has sustained above 140% across its September 2025, December 2025, and February 2026 disclosures.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-02-09",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-grows-65-yoy-surpasses-5-4-billion-revenue-run-rate", "https://www.databricks.com/company/newsroom/press-releases/databricks-surpasses-4-8b-revenue-run-rate-growing-55-year-over-year", "https://www.databricks.com/company/newsroom/press-releases/databricks-surpasses-4b-revenue-run-rate-exceeding-1b-ai-revenue"],
+      "source_tiers": ["primary", "primary", "primary"]
+    },
+    {
+      "id": "c9",
+      "claim": "More than 800 Databricks customers consume at over $1 million annual revenue run rate, and more than 70 at over $10 million, as of February 2026.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-02-09",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-grows-65-yoy-surpasses-5-4-billion-revenue-run-rate"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c10",
+      "claim": "Databricks' February 2026 financing totaled more than $7 billion, comprising roughly $5 billion of equity at a $134 billion valuation plus roughly $2 billion of debt capacity led by JPMorgan Chase.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-02-09",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-grows-65-yoy-surpasses-5-4-billion-revenue-run-rate"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c11",
+      "claim": "Databricks raised a >$4 billion Series L at a $134 billion valuation in December 2025, led by Insight Partners, Fidelity Management & Research, and J.P. Morgan Asset Management.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2025-12-16",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-surpasses-4-8b-revenue-run-rate-growing-55-year-over-year", "https://techcrunch.com/2025/12/16/databricks-raises-4b-at-134b-valuation-as-its-ai-business-heats-up/"],
+      "source_tiers": ["primary", "secondary"]
+    },
+    {
+      "id": "c12",
+      "claim": "Databricks raised a $10 billion Series J at a $62 billion valuation in December 2024.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2024-12-17",
+      "source_urls": ["https://techcrunch.com/2024/12/17/insight-vc-describes-databricks-wild-10b-deal-and-the-bad-advice-the-ceo-ignored/"],
+      "source_tiers": ["secondary"]
+    },
+    {
+      "id": "c13",
+      "claim": "Databricks closed a $1 billion Series K in September 2025 at a valuation above $100 billion, co-led by Andreessen Horowitz, Insight Partners, MGX, Thrive Capital, and WCM Investment Management.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2025-09-08",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-surpasses-4b-revenue-run-rate-exceeding-1b-ai-revenue"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c14",
+      "claim": "CEO Ali Ghodsi has told investors Databricks could pursue an IPO as early as 2027, calling 2026 the 'worst year' to list given the crowded IPO calendar.",
+      "type": "quote",
+      "confidence": "medium",
+      "risk": "single-source",
+      "as_of": "2026-06-09",
+      "source_urls": ["https://techfundingnews.com/ipo-bound-databricks-reportedly-eyes-175b-valuation-after-hitting-5-4b-revenue-run-rate/"],
+      "source_tiers": ["secondary"]
+    },
+    {
+      "id": "c15",
+      "claim": "Ghodsi said Databricks' gross margin 'will go lower' as agentic AI workloads drive more queries and higher costs under the consumption model.",
+      "type": "quote",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-06-16",
+      "source_urls": ["https://www.cnbc.com/2026/06/16/databricks-revenue-growth-tops-80percent-to-6point9-billion-annualized.html"],
+      "source_tiers": ["secondary"]
+    },
+    {
+      "id": "c16",
+      "claim": "Databricks' data warehousing product passed a $1 billion revenue run rate in less than four years from general availability, and Lakebase had thousands of customers in its first six months, growing revenue at twice the pace of the data warehousing product.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2025-12-16",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-surpasses-4-8b-revenue-run-rate-growing-55-year-over-year"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c17",
+      "claim": "Databricks acquired Neon, a serverless Postgres company, for about $1 billion in May 2025; Neon underpins the Lakebase product.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2025-05-14",
+      "source_urls": ["https://www.cnbc.com/2025/05/14/databricks-is-buying-database-startup-neon-for-about-1-billion.html", "https://www.databricks.com/company/newsroom/press-releases/databricks-agrees-acquire-neon-help-developers-deliver-ai-systems"],
+      "source_tiers": ["secondary", "primary"]
+    },
+    {
+      "id": "c18",
+      "claim": "Databricks acquired Tabular, founded by the original creators of Apache Iceberg, in June 2024; the price was reported at roughly $2 billion by Bloomberg while Databricks confirmed only more than $1 billion.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2024-08-14",
+      "source_urls": ["https://techcrunch.com/2024/08/14/databricks-reportedly-paid-2-billion-in-tabular-acquisition/", "https://www.databricks.com/company/newsroom/press-releases/databricks-agrees-acquire-tabular-company-founded-original-creators", "https://www.cnbc.com/2024/06/04/databricks-is-buying-data-optimization-startup-tabular.html"],
+      "source_tiers": ["secondary", "primary", "secondary"]
+    },
+    {
+      "id": "c19",
+      "claim": "In June 2025 Databricks announced full Apache Iceberg support in public preview, including managed Iceberg tables and an Iceberg REST catalog API in Unity Catalog, which it called the most complete catalog for Iceberg and Delta Lake.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2025-06-12",
+      "source_urls": ["https://www.databricks.com/blog/announcing-full-apache-iceberg-support-databricks", "https://www.databricks.com/company/newsroom/press-releases/databricks-eliminates-table-format-lock-and-adds-capabilities"],
+      "source_tiers": ["primary", "primary"]
+    },
+    {
+      "id": "c20",
+      "claim": "Snowflake Q1 FY2027 (ended April 30, 2026) product revenue was $1.334 billion, up 34% year over year; total revenue $1.391 billion, up 33%; net revenue retention 126%; 779 customers with trailing 12-month product revenue above $1 million; RPO $9.21 billion, up 38%.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-05-27",
+      "source_urls": ["https://investors.snowflake.com/news/news-details/2026/Snowflake-Reports-Financial-Results-for-the-First-Quarter-of-Fiscal-2027/default.aspx"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c21",
+      "claim": "Snowflake guided fiscal 2027 product revenue to $5.84 billion (31% growth), raised from $5.66 billion, with a 75% non-GAAP product gross margin and 23% adjusted free cash flow margin.",
+      "type": "forecast",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-05-27",
+      "source_urls": ["https://investors.snowflake.com/news/news-details/2026/Snowflake-Reports-Financial-Results-for-the-First-Quarter-of-Fiscal-2027/default.aspx"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c22",
+      "claim": "Snowflake's full fiscal 2026 product revenue was $4.472 billion, up 29%, and Q4 FY2026 product revenue was $1.227 billion, up 30%, with RPO of $9.77 billion, up 42%.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-02-25",
+      "source_urls": ["https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2026/"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c23",
+      "claim": "Snowflake's market capitalization was about $83 billion as of June 16, 2026, with annualized revenue around $5.6 billion.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-06-16",
+      "source_urls": ["https://www.cnbc.com/2026/06/16/databricks-revenue-growth-tops-80percent-to-6point9-billion-annualized.html"],
+      "source_tiers": ["secondary"]
+    },
+    {
+      "id": "c24",
+      "claim": "At roughly $188 billion on $6.9 billion annualized revenue, Databricks' implied valuation multiple is about 27x, versus about 15x for Snowflake ($83 billion on about $5.6 billion annualized) — a premium of roughly 1.8x the multiple for roughly 2.3x the growth rate.",
+      "type": "comparison",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-07-16",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-raising-strategic-round-funding-188-billion-valuation", "https://www.cnbc.com/2026/06/16/databricks-revenue-growth-tops-80percent-to-6point9-billion-annualized.html"],
+      "source_tiers": ["primary", "secondary"]
+    },
+    {
+      "id": "c25",
+      "claim": "SNOW fell from a monthly close of $274.88 in October 2025 to a trough of $136.47 in April 2026 (about -50%), then recovered to $268.90 by July 20, 2026, following its May 27, 2026 earnings beat.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-07-20",
+      "source_urls": ["https://finance.yahoo.com/quote/SNOW/history"],
+      "source_tiers": ["market-data"]
+    },
+    {
+      "id": "c26",
+      "claim": "More than 13,600 accounts use Snowflake AI capabilities; accounts using Snowflake Intelligence more than doubled quarter over quarter; Cortex Code is in use across more than 7,100 accounts, as of Q1 FY2027.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-05-27",
+      "source_urls": ["https://investors.snowflake.com/news/news-details/2026/Snowflake-Reports-Financial-Results-for-the-First-Quarter-of-Fiscal-2027/default.aspx"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c27",
+      "claim": "Snowflake expanded its AWS collaboration with a new $6 billion multi-year agreement and signed a definitive agreement in May 2026 to acquire Natoma, an enterprise MCP platform.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-05-27",
+      "source_urls": ["https://investors.snowflake.com/news/news-details/2026/Snowflake-Reports-Financial-Results-for-the-First-Quarter-of-Fiscal-2027/default.aspx"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c28",
+      "claim": "AWS made Amazon S3 Tables integration with Amazon SageMaker Lakehouse generally available in March 2025, giving AWS a managed-Iceberg lakehouse stack.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2025-03-13",
+      "source_urls": ["https://aws.amazon.com/blogs/aws/amazon-s3-tables-integration-with-amazon-sagemaker-lakehouse-is-now-generally-available/"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c29",
+      "claim": "Naveen Rao, Databricks' head of AI following the 2023 MosaicML acquisition, departed in September 2025 to found AI hardware startup Unconventional AI, which was reportedly raising $1 billion at a $5 billion valuation with a16z backing.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2025-10-03",
+      "source_urls": ["https://www.bloomberg.com/news/articles/2025-09-12/databricks-ai-chief-to-exit-launch-a-new-computer-startup", "https://techcrunch.com/2025/10/03/sources-naveen-raos-new-ai-hardware-startup-targets-5b-valuation-with-backing-from-a16z/"],
+      "source_tiers": ["secondary", "secondary"]
+    },
+    {
+      "id": "c30",
+      "claim": "Databricks and Anthropic signed a five-year, $100 million deal in March 2025 to bring Claude models natively to the Databricks Data Intelligence Platform.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2025-03-26",
+      "source_urls": ["https://www.forbes.com/sites/richardnieva/2025/03/26/anthropic-databricks/", "https://www.databricks.com/company/newsroom/press-releases/databricks-and-anthropic-sign-landmark-deal-bring-claude-models"],
+      "source_tiers": ["secondary", "primary"]
+    },
+    {
+      "id": "c31",
+      "claim": "Databricks' internal benchmarking across its multi-million-line codebase found open models, and Z.ai's GLM 5.2 in particular, able to handle the highest-difficulty coding tasks at lower total cost than proprietary models, with harness choice also materially affecting cost.",
+      "type": "technical",
+      "confidence": "medium",
+      "risk": "single-source",
+      "as_of": "2026-07-17",
+      "source_urls": ["https://www.databricks.com/blog/benchmarking-coding-agents-databricks-multi-million-line-codebase", "https://techcrunch.com/2026/07/17/databricks-hits-188b-valuation-extending-its-run-as-ais-favorite-second-act/"],
+      "source_tiers": ["primary", "secondary"]
+    },
+    {
+      "id": "c32",
+      "claim": "Databricks claims more than 20,000 customer organizations, including 70% of the Fortune 500, as of July 2026.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "as_of": "2026-07-16",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-raising-strategic-round-funding-188-billion-valuation"],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "c33",
+      "claim": "Databricks agreed to acquire security startup Panther and launched the CustomerLake marketing CDP at the June 16, 2026 Data + AI Summit, following the March 2026 launch of its Lakewatch cybersecurity product.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-06-16",
+      "source_urls": ["https://www.cnbc.com/2026/06/16/databricks-revenue-growth-tops-80percent-to-6point9-billion-annualized.html", "https://www.databricks.com/company/newsroom/press-releases/databricks-enters-marketing-industry-customerlake-agentic-customer"],
+      "source_tiers": ["secondary", "primary"]
+    },
+    {
+      "id": "c34",
+      "claim": "SpaceX completed the largest IPO on record in June 2026, topping a $2 trillion market cap in its first day of trading, while OpenAI and Anthropic filed confidentially for offerings — crowding the 2026 IPO calendar.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-06-16",
+      "source_urls": ["https://www.cnbc.com/2026/06/16/databricks-revenue-growth-tops-80percent-to-6point9-billion-annualized.html", "https://www.cnbc.com/2026/06/15/spacex-ipo-spcx-greenshoe-overallotment.html", "https://www.cnbc.com/2026/06/08/openai-confidentially-files-for-ipo-prepping-wall-street-for-ai-debut.html"],
+      "source_tiers": ["secondary", "secondary", "secondary"]
+    },
+    {
+      "id": "c35",
+      "claim": "Lakehouse//RT, announced June 16, 2026 and powered by the Reyden engine, delivers sub-100 millisecond latency at 12,000 queries per second on standard benchmarks and up to 16x better performance than specialized real-time serving stacks, querying Delta and Iceberg tables directly under Unity Catalog governance.",
+      "type": "technical",
+      "confidence": "medium",
+      "risk": "single-source",
+      "as_of": "2026-06-16",
+      "source_urls": ["https://www.databricks.com/company/newsroom/press-releases/databricks-launches-lakehousert-bring-real-time-analytics-directly"],
+      "source_tiers": ["primary"]
+    }
+  ]
+}

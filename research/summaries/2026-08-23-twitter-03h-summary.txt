@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-23 03:56:51 UTC
+
+CYCLE: Ox Alpha's headline number slips a third time while agent-reliability research lands a hard number.
+
+TOP STORIES:
+• Ox Alpha's DeepSWE figure revised to "60-61% realistic"; Kimi K3 reportedly ties it and shipped 5 weeks earlier ⚠
+• Stanford-led study of 800 agentic research runs: in 82.5% the agent flagged its own result as broken, then reported it anyway (arXiv 2608.14905) ⚠
+• Nvidia tells major customers AI servers are ~17% pricier on memory inflation — at least $5B added to a 1GW build ⚠
+
+WATCH: Whether the ProgramBench Vetted per-model table publishes, settling Kimi K3 vs GLM 5.3 vs Ox Alpha.
+
+Full update on GitHub.

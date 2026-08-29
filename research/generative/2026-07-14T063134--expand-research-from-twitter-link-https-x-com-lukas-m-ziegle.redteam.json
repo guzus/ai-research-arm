@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The Truss Links were operator controlled in all physical Truss Link experiments using a custom keyboard interface.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "DARPA TRADES: TRAnsformative DESign — a Defense Sciences Office program that ran ~2017-2021 and is now archived; funded computational design tools for exploiting new materials and additive manufacturing, not robotics or military hardware specifically",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Material cost exceeds $200/unit; the authors say it is neither cheap nor built for mass production.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

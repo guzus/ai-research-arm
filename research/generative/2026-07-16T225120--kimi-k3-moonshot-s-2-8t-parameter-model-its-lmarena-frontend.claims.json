@@ -1,0 +1,284 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Kimi K3 has 2.8 trillion total parameters, activating 16 of 896 experts per token via a 'Stable LatentMoE' framework; Moonshot has not disclosed an active-parameter-per-token figure.",
+      "type": "technical",
+      "source_urls": ["https://www.kimi.com/blog/kimi-k3"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-16",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c2",
+      "claim": "Kimi K2 (predecessor) explicitly disclosed 32B active parameters of 1T total, trained on 15.5T tokens on NVIDIA H800 GPUs.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2507.20534"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Kimi K3 ships a 1,048,576-token context window and API pricing of $0.30/MTok cache-hit input, $3.00/MTok cache-miss input, $15.00/MTok output.",
+      "type": "metric",
+      "source_urls": ["https://www.kimi.com/blog/kimi-k3", "https://openrouter.ai/moonshotai/kimi-k3"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Full open weights for Kimi K3 were not yet released at the time of its LMArena ranking; Moonshot targeted release by July 27, 2026, alongside a technical report.",
+      "type": "event",
+      "source_urls": ["https://www.kimi.com/blog/kimi-k3"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-16",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c5",
+      "claim": "Arena.ai announced Kimi K3 reached #1 on the Frontend Code Arena leaderboard with a score of 1679 points, a 17-place jump from predecessor Kimi K2.6 (#18 to #1).",
+      "type": "event",
+      "source_urls": ["https://x.com/arena/status/2077824029126504525"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-16",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "On the live Frontend/Code Arena leaderboard, Kimi K3 sits #1 at 1679 (+17/-17) on only 1,757 votes, tagged 'Preliminary,' versus #2 Claude Fable 5 at 1631 (+13/-13, 2,505 votes) and #5 Claude Opus 4.8-thinking at 1562 (+9/-9, 7,309 votes) — the #1 model has the fewest votes among the top ten.",
+      "type": "comparison",
+      "source_urls": ["https://arena.ai/leaderboard/code"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-16",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c7",
+      "claim": "Kimi K3 ranked #1 in 6 of 7 Frontend Code Arena sub-domains, placing #2 (behind Claude Fable 5) only in the Gaming sub-domain.",
+      "type": "comparison",
+      "source_urls": ["https://x.com/arena/status/2077824029126504525", "https://cryptobriefing.com/kimi-k3-moonshot-ai-frontend-code-arena/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-16",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "No evidence was found that Kimi K3 is ranked on LMArena/Arena.ai's general Text Arena leaderboard; the platform's changelog states only that it was 'added to' both Text Arena and Code Arena, without a stated Text Arena rank or score.",
+      "type": "event",
+      "source_urls": ["https://arena.ai/blog/leaderboard-changelog/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-17",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "LMArena's Code/WebDev Arena judges models by live-rendering two anonymous model outputs in a sandbox for human aesthetic/interaction voting, with no automated correctness grading; roughly 18% of votes in the category's launch cohort fell into a 'both bad' tie bucket from non-compiling or hallucinated-import code reaching the vote stage.",
+      "type": "definition",
+      "source_urls": ["https://arena.ai/blog/webdev-arena/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-03-09",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "LMArena's 'style control' methodology, introduced August 2024, found response length was the dominant stylistic factor inflating pairwise win rate, far outweighing markdown-formatting effects; applying it reshuffled rankings substantially (e.g., one 2024-era model fell from rank 6 to rank 18 on Overall).",
+      "type": "technical",
+      "source_urls": ["https://www.lmsys.org/blog/2024-08-28-style-control/"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-08-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "In April 2025, Meta submitted an undisclosed, specially chat-tuned 'experimental' Llama 4 Maverick variant to LMArena that scored ELO 1417 (rank ~#2); the publicly shipped model, tested under its own name, ranked 32nd — below year-old models. LMArena updated its leaderboard policy in direct response.",
+      "type": "event",
+      "source_urls": ["https://www.theregister.com/2025/04/08/meta_llama4_cheating/", "https://tech.slashdot.org/story/25/04/13/2226203/after-meta-cheating-allegations-unmodified-llama-4-maverick-model-tested---ranks-32"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2025-04-11",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "The peer-reviewed 'Leaderboard Illusion' paper found Meta tested 27 private, undisclosed model variants on Chatbot Arena before the Llama 4 launch, and that proprietary labs receive disproportionate data exposure (Google ~19.2%, OpenAI ~20.4% individually vs. 83 open models combined at ~29.7% by the paper's methodology); LMArena's own rebuttal conceded a real but modest (~11 Elo point) pre-release testing advantage while disputing the paper's larger '100+ point' / '112% gain' estimates as simulation artifacts.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/abs/2504.20879", "https://arena.ai/blog/our-response/"],
+      "source_tiers": ["academic", "primary"],
+      "as_of": "2025-05-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c13",
+      "claim": "Peer-reviewed research demonstrated Chatbot Arena's crowdsourced voting can be manipulated with roughly 1,000 adversarial votes using a technique that identifies the source model behind an anonymous response with over 95% accuracy, in a simulated offline replica (not demonstrated against the live production system).",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2501.07493"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-01-13",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "No documented case was found of a Chinese AI lab (DeepSeek, Qwen, Zhipu, or Moonshot) submitting a specially-tuned variant to an arena-style leaderboard; the only substantiated Chinese-lab controversies found concern alleged training-data distillation from Western models, a categorically different allegation.",
+      "type": "other",
+      "source_urls": ["https://www.cnn.com/2026/02/24/tech/anthropic-chinese-ai-distillation-intl-hnk"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-02-24",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c15",
+      "claim": "As of the K3 launch (July 16, 2026), no independent third-party evaluator had published SWE-bench Verified, Terminal-Bench, or LiveCodeBench scores for Kimi K3; a benchmark tracker (BenchLM.ai) excluded it from its composite leaderboard citing insufficient independently-verified coverage (34 of 52 published sub-scores were 'verified', the rest 'provisional', spanning only 5 of 8 tracked categories).",
+      "type": "event",
+      "source_urls": ["https://benchlm.ai/models/kimi-3"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-17",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c16",
+      "claim": "Moonshot's own launch-day benchmark table for Kimi K3 (self-reported, 'max' mode) claims Terminal Bench 2.1: 88.3, DeepSWE: 67.5, Program Bench: 77.8, FrontierSWE: 81.2, GPQA-Diamond: 93.5, and states K3 'still trails the most powerful proprietary models, Claude Fable 5 and GPT-5.6 Sol' but 'consistently outperforms' Claude Opus 4.8, GPT-5.5, and GLM-5.2 across its evaluation suite.",
+      "type": "metric",
+      "source_urls": ["https://www.kimi.com/blog/kimi-k3"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-16",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "On SWE-bench Verified, independent trackers cluster top scores at Claude Fable 5 (95.0%), GPT-5.5 (~88.7%), Claude Opus 4.8 (88.6%), and Gemini 3.1 Pro (80.6%); no Kimi model appears in this leading tier, and open-weight leaders on execution-graded benchmarks are DeepSeek V4 (80.6% SWE-bench Verified, 93.5% LiveCodeBench) and GLM-5.2 (62.1% SWE-bench Pro) — not Kimi.",
+      "type": "comparison",
+      "source_urls": ["https://www.morphllm.com/best-ai-model-for-coding", "https://theplanettools.ai/compare/glm-5-2-vs-deepseek-v4"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-01",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c18",
+      "claim": "On Scale AI's standardized (identical-scaffold) SWE-bench Pro leaderboard, vendor-reported open-weight coding scores run 10-30 points higher than the standardized result; the top open-weight entry (Qwen3-Coder-480B-A35B) scores only 38.7% under standardized scaffolding.",
+      "type": "comparison",
+      "source_urls": ["https://www.developersdigest.tech/blog/glm-5-2-vs-deepseek-v4-vs-qwen3-open-weights-coding-showdown"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-15",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c19",
+      "claim": "On Artificial Analysis's composite Intelligence Index, Kimi K2.7 Code scored 42, a regression from predecessor K2.6's score of 44, while GLM-5.2 led open-weight models at 51 and Claude Opus 4.8 led overall at roughly 56.",
+      "type": "metric",
+      "source_urls": ["https://artificialanalysis.ai/models/kimi-k2-7-code"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-11",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "Moonshot AI (月之暗面) was founded March 2023 by Tsinghua schoolmates Yang Zhilin, Zhou Xinyu, and Wu Yuxin, headquartered in Beijing.",
+      "type": "definition",
+      "source_urls": ["https://en.wikipedia.org/wiki/Moonshot_AI"],
+      "source_tiers": ["secondary"],
+      "as_of": "2023-03-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "Moonshot AI's valuation rose from $2.5B (Alibaba-led round, Feb 2024) to $3.3B (Aug 2024) to $4.3B (Dec 2025) to $20B (May 2026, Meituan Long-Z-led $2B round) to a reported $31.5B fundraising target (July 2026) — roughly 6x in six months and 9x in fourteen months, sourced to press reporting of investor-marked private valuations, not audited filings.",
+      "type": "metric",
+      "source_urls": ["https://en.wikipedia.org/wiki/Moonshot_AI", "https://techcrunch.com/2026/05/07/chinas-moonshot-ai-raises-2b-at-20b-valuation-as-demand-for-open-source-ai-skyrockets/", "https://technode.com/2026/06/08/kimi-reaches-30-billion-valuation-after-sixfold-increase-in-half-a-year/", "https://techcrunch.com/2026/07/16/moonshots-upcoming-kimi-3-is-expected-to-close-the-gap-with-anthropics-opus-4-8/"],
+      "source_tiers": ["secondary", "secondary", "secondary", "secondary"],
+      "as_of": "2026-07-16",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c22",
+      "claim": "Kimi App consumer monthly active users fell roughly 57% from an early-2025 peak (~21.7M in Q1 2025) to ~9.0M by Q4 2025, even as Moonshot's private valuation rose sharply over the same period — press-estimated figures with disagreeing methodologies across outlets.",
+      "type": "comparison",
+      "source_urls": ["https://theteardown.co/kimi"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-01-30",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c23",
+      "claim": "In February 2026, Anthropic publicly accused Moonshot AI, DeepSeek, and MiniMax of running a coordinated distillation campaign using roughly 24,000 fraudulent accounts to generate over 16 million exchanges with Claude in violation of its terms of service; Moonshot alone was attributed over 3.4 million of those exchanges.",
+      "type": "event",
+      "source_urls": ["https://www.eweek.com/security/anthropic-deepseek-moonshot-minimax-targeted-claude/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-02-24",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c24",
+      "claim": "US export-control policy shifted January 13, 2026 to allow case-by-case licensing of Nvidia H200/AMD MI325X chips to China (capped at 50% of aggregate compute shipped to equivalent US customers), but as of mid-May 2026 no Chinese company had actually received an H200 shipment — Beijing's own approval process, not Washington's licensing rule, is the binding constraint.",
+      "type": "regulatory",
+      "source_urls": ["https://www.bis.gov/press-release/department-commerce-revises-license-review-policy-semiconductors-exported-china", "https://www.brookings.edu/articles/ball-games-over-the-us-is-out-of-the-ai-chip-market-in-china/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-05-01",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c25",
+      "claim": "Kimi K2 was trained on NVIDIA H800 GPUs per its own technical report; Moonshot has disclosed no training-hardware information for Kimi K3, leaving its chip sourcing (legacy Nvidia inventory vs. domestic Huawei Ascend alternatives) unconfirmed, in contrast to GLM-5.2 (reportedly ~100,000 Huawei Ascend 910B chips, no Nvidia) and DeepSeek V4 (validated on both Nvidia GPU and Huawei Ascend NPU platforms).",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2507.20534", "https://decrypt.co/371613/china-z-ai-glm-5-2-model-rivals-claude-opus", "https://www.theregister.com/2026/04/24/deepseek_v4/"],
+      "source_tiers": ["primary", "secondary", "secondary"],
+      "as_of": "2026-07-16",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c26",
+      "claim": "SemiAnalysis disputed DeepSeek's earlier claimed ~$5.6M single-run training cost, estimating cumulative GPU spend at 'well over $500 million' and total infrastructure capex around $1.6 billion across roughly 50,000 Nvidia Hopper-generation GPUs — the load-bearing precedent for treating any Chinese lab's low training-cost framing (including Moonshot's undisclosed K3 figures) with skepticism.",
+      "type": "comparison",
+      "source_urls": ["https://www.cnbc.com/2025/01/31/deepseeks-hardware-spend-could-be-as-high-as-500-million-report.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-01-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "'Chinese lab beats GPT/Claude on a benchmark' has been a recurring release pattern roughly every few months across 18 months: DeepSeek-R1 (Jan 2025), Kimi K1.5 (Jan 2025), GLM-5 (Feb 2026, 77.8% SWE-bench Verified self-reported), GLM-5.2 (June 2026), and now Kimi K3 (July 2026) — each generating similar headline framing.",
+      "type": "other",
+      "source_urls": ["https://medium.com/@developeryusuf/china-just-built-an-open-source-ai-that-nearly-matches-claude-then-made-it-nearly-impossible-to-862150c9590d"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-02-15",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c28",
+      "claim": "Independent AI commentator 'kimmonismus' framed Kimi K3's showing as a potential 'DeepSeek 2.0 moment'; no named principal at OpenAI, Anthropic, Google DeepMind, or xAI was found publicly reacting to the specific July 16 Frontend Code Arena result (an earlier, unrelated March 2026 reaction from Musk/Karpathy/Tworek concerned a different Moonshot research paper on 'Attention Residuals').",
+      "type": "event",
+      "source_urls": ["https://x.com/kimmonismus/status/2077832669778317369"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-07-16",
+      "confidence": "low",
+      "risk": "single-source"
+    }
+  ]
+}

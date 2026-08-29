@@ -1,0 +1,19 @@
+Daily AI Digest - 2026-08-14
+
+TOP STORIES:
+• Google shipped Gemini 3.7 Flash at half price - 3 weeks after 3.6, promo expires into 3.6's old rate
+• DeepSeek open-sourced V4-Pro weights + MIT agent harness, then raised API prices
+• Anthropic backers target a $2tn October IPO on $100-120bn annualised revenue (FT)
+• OpenAI shipped ChatGPT Computer History + GPT-5.6 Sol Ultrafast on Cerebras
+• X published its For You ranking code under Apache 2.0, Grok prompts withheld
+
+KEY NUMBERS:
+• Gemini 3.7 Flash: $0.75/$3.75 per Mtok, reverts to $1.50/$7.50 on 1 Jan 2027
+• DeepSeek V4-Pro: ~2x off-peak, ~4x peak price increase
+• Fable 5 = 6% of Anthropic's own token mix (Ramp, July)
+• Ultrafast: up to 750 tokens/sec, no published price
+• Databricks $5B at $190B; Cognition talks at $40B+
+
+TRENDING: "AI is removing the middle class of software engineering?" - 605 pts, 487 comments on HN
+
+Full digest on GitHub.

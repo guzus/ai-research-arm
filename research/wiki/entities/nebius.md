@@ -4,10 +4,17 @@ title: Nebius Group
 type: entity
 aliases: [Nebius, NBIS, "Nebius Group N.V."]
 tags: [neocloud, gpu-cloud, ai-infrastructure, nvidia-partner]
-description: Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex, scaling GPU capacity for AI training and inference.
+description: Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; FY26Q2 (2026-08-13) printed $582.3M revenue (+454% YoY) with a ~50% AI Cloud adjusted EBITDA margin, contracted power raised to 5GW, and ~70% of deals carrying customer prepayments.
 created_at: 2026-05-24
-timestamp: 2026-05-24T00:00:00Z
+timestamp: 2026-08-13T00:00:00Z
+market:
+  ticker: NBIS
+  exchange: NASDAQ
+  symbol: NASDAQ:NBIS
+  provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
+  - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
   - {title: "ARA daily digest 2026-05-21 (Google × Blackstone neocloud JV targets CoreWeave/Nebius)", path: research/digest/2026-05-21-digest.md}
   - {title: "Nebius Group investor relations", url: "https://group.nebius.com/investors", date: 2026-05-20}
@@ -43,3 +50,28 @@ that NVIDIA's "demand has gone parabolic" Q1 FY27 print is meant to confirm
 - **Financing durability.** CoreWeave bootstrapped GPU-backed debt to an
   investment-grade SPV rating; can independent neoclouds like Nebius access
   comparably cheap capital, or does the cost of capital separate the winners?
+
+## Recent developments
+
+- **$1B+ Reflection AI compute deal; stock falls despite the win
+  (2026-07-15).** Nebius signed a **$1B+ compute agreement** with
+  **Reflection AI** for **Nvidia GB300** access through **2029** — a
+  large multi-year anchor-tenant contract of the kind that defines the
+  neocloud business model. Nebius stock still **fell ~5%** on the news,
+  with separate commentary noting Reflection AI has **~60 employees, no
+  revenue**, and already owes [[spacex]] ~$150M/month under existing
+  commitments — a customer-concentration and counterparty-risk read that
+  sharpens the "Customer concentration" open question above (ARA digest
+  2026-07-15).
+
+- **FY26Q2: the model's economics finally print (2026-08-13).** Nebius
+  posted **$582.3M quarterly revenue (+454% YoY, +46% sequential)** with a
+  **~50% AI Cloud adjusted EBITDA margin**, **$8.04B of cash**, and
+  **contracted power raised from ~4GW to 5GW** — saying it **could sell all
+  of its 2027 capacity today** while leaving **2026 guidance unchanged**.
+  It disclosed an **asset-light model where partners finance and operate
+  facilities**, and that **~70% of the quarter's deals carried customer
+  prepayments** — prepayments being the counterparty-quality evidence the
+  neocloud thesis needs against the reflection-deal skepticism above. The
+  print was the day's cleanest neocloud economics data point (ARA digest
+  2026-08-13).

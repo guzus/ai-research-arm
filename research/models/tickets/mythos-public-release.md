@@ -39,7 +39,19 @@ status_note: |
   it will "continue to work with the government to **expand access to Mythos 5**."
   Gated stance otherwise unchanged; status stays `confirmed`, verification stays
   `confirmed`.
-expected: "Mythos 5 stays restricted (Glasswing + trusted-access program); no public-release schedule for the unrestricted model. Public capability now reaches users via Fable 5 ([[claude-fable-5]])."
+
+  **2026-07-30 — new capability disclosure: cryptanalysis research.**
+  @AnthropicAI officially disclosed that **"Claude Mythos Preview" has helped
+  our researchers find weaknesses in cryptographic algorithms** (named
+  examples: HAWK, AES), alongside a new benchmark, **"CryptanalysisBench,"**
+  built with academic partners at ETH Zurich, Tel Aviv, and Haifa. This is a
+  primary-source capability reveal for the gated Mythos line — distinct from,
+  and not to be conflated with, an unrelated low-credibility "Mythos 5 too
+  dangerous to release" marketing/listicle claim circulating the same window
+  (single low-quality account, riffing on the real Mythos name, held as
+  noise). Gated-preview stance unchanged; status stays `confirmed`,
+  verification stays `confirmed`.
+expected: "Mythos 5 stays restricted; the Glasswing-only boundary first moved 2026-08-21 (@AndrewCurran_), recipient and terms undisclosed. No public-release schedule for the unrestricted model; public capability reaches users via Fable 5 ([[claude-fable-5]]). A Polymarket market priced a *next* Mythos model at 74% to release within roughly two weeks as of 2026-08-25 \u2014 crowd probability, not a schedule, and not necessarily this ticket's event. Pending: who received the new grant, whether a trusted-access program formalizes it, and whether a Mythos-derived scientific result is announced ahead of the IPO."
 labels:
   - frontier-model
   - gated
@@ -60,8 +72,10 @@ sources:
   - "@techcrunch"
   - "@alexalbert__"
   - https://the-decoder.com/anthropics-mythos-model-is-reportedly-powering-nsa-offensive-cyber-ops-against-china-and-iran/
+  - "@Polymarket"
+  - "@synthwavedd"
 created_at: 2026-04-12
-updated_at: 2026-07-02
+updated_at: 2026-08-26
 closed_at: null
 closed_reason: null
 history:
@@ -99,6 +113,12 @@ history:
     change: "Update — Mythos 5 SUSPENDED by US export control (2026-06-13). The same export-control directive that pulled the public Fable 5 also barred all foreign-national access to Mythos 5, forcing Anthropic to disable both worldwide; some Anthropic staff who built the models are reportedly locked out under the foreign-national bar. The regulatory action itself is tracked on the new legal-event ticket [[anthropic-fable-mythos-export-control-2026-06]]; this entry records the impact on the gated Mythos line. Gated-product stance otherwise unchanged; status stays confirmed, verification stays confirmed"
   - ts: 2026-07-02
     change: "Update — export-control suspension LIFTED (2026-06-30/07-01); Mythos 5 re-cleared, gated stance unchanged. Commerce lifted the June 12 export controls on both Mythos 5 and the public [[claude-fable-5]] (@AnthropicAI June 30 23:52 UTC, ~34.7K likes + Politico general-re-release framing; regulatory event on [[anthropic-fable-mythos-export-control-2026-06]]). Fable 5 returned to general availability (metered); Mythos 5 remains the gated defenders/governments product — the lift restores the pre-suspension status quo, NOT a public release of the unrestricted model. Anthropic says it will 'continue to work with the government to expand access to Mythos 5.' Gated stance unchanged; status stays confirmed, verification stays confirmed"
+  - ts: 2026-07-31
+    change: "New capability disclosure — @AnthropicAI officially says Claude Mythos Preview has helped researchers find weaknesses in cryptographic algorithms (HAWK, AES), alongside a new CryptanalysisBench benchmark built with ETH Zurich/Tel Aviv/Haifa academics. Primary-source capability reveal for the gated Mythos line; distinct from an unrelated low-credibility 'Mythos 5 too dangerous' marketing claim circulating the same window (noise, not tracked). Gated stance unchanged; status stays confirmed, verification stays confirmed."
+  - ts: 2026-08-23
+    change: "First widening of Mythos 5 access since Glasswing. @AndrewCurran_ (2026-08-21 17:40 UTC, ~580 likes / 42 RT): 'This is the first time any access to Mythos 5 has been granted beyond the small group that had access through Project Glasswing.' The recipient and terms of the grant are not in the captured signal — only the fact that the Glasswing-only boundary this ticket has tracked since June has moved for the first time. Corroborating that Mythos is in real long-run use rather than shelved: @tszzl (OpenAI, 2026-08-21 21:59 UTC, ~925 likes) — 'it's crazy that the first Mythos checkpoints were usable six months ago now.' Separately, @AndrewCurran_ argues Anthropic may be applying Mythos to medical research and will announce a result ahead of its IPO, chaining the 2026-08-10 WSJ healthcare-focus report, Dario Amodei's 2026-08-15 'early glimmers in the coming months' post, the 2026-08-18 protein-design research ([[anthropic-protein-binder-design-2026-08]]), and Trump's 2026-08-19 'pretty unstoppable disease' remark; that is his stated inference, not a sourced claim, and is recorded as a thesis to test. No public release and no schedule for one. Status stays confirmed; verification stays confirmed, with the access-widening itself resting on a single well-sourced journalist rather than an Anthropic post."
+  - ts: 2026-08-26
+    change: "Two market-and-competition datapoints; no Anthropic statement. @Polymarket (2026-08-25 15:41 UTC, ~916 engagement): 'BREAKING: Anthropic projected to release its next \"Mythos\" model within roughly two weeks. 74% chance.' That is a crowd probability rather than a schedule, and it is the first quantified near-term release expectation this ticket has carried. Two caveats kept explicit. First, the market's subject is a NEXT Mythos model, which is not the same event as this ticket's core question of whether the unrestricted Mythos 5 ever goes public - a next-generation gated Mythos shipping would resolve that market while leaving this ticket's stance untouched. Second, no polymarket: mapping is added to the frontmatter: the contract permits only event_slug, market_id and token_id values actually read from the Polymarket API, and the API was not reachable in this run, so inferring them is forbidden - the mapping is deferred to a cycle where the ids can be read. Competitive context from the same window: @synthwavedd's OpenAI scoop (recorded on [[openai-gpt-6]]) claims OpenAI believes Anthropic has no good response to Astra prepared for a public launch, and that Anthropic, compute-constrained, is bracing for much of the rest of the year to go OpenAI's way while expecting to be back on top early next year. That is a leaker's characterisation of Anthropic's internal posture with no primary source - recorded as rumor and as a thesis to test against whatever Anthropic actually ships. Gated stance unchanged; status stays confirmed, verification stays confirmed."
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a

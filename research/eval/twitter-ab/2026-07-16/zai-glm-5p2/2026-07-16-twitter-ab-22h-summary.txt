@@ -1,0 +1,12 @@
+Twitter/X AI Pulse (A/B eval) - 2026-07-16 22:52:51 UTC
+
+CYCLE: Moonshot Kimi K3 grabs the benchmark lead; Anthropic ships tiered Claude Code review; US AI incumbents slip on the day.
+
+TOP STORIES:
+• Moonshot Kimi K3 takes #1 Frontend Code Arena, beats Opus 4.8 broadly — but Moonshot's own blog concedes a UX gap vs Fable 5 / GPT-5.6 Sol; weights open ~Jul 27 [⚠]
+• Anthropic adds effort tiers + multi-agent "ultra" mode (reproduces every finding) to Claude Code /code-review [✓]
+• Kimi drop coincides w/ Alphabet -4.4% / xAI -3.1% and a Bloomberg report Gemini 3.5 Pro delayed again for missing DeepMind goals [⚠]
+
+WATCH: Hands-on K3 verdicts over 24-48h (agentic/long-horizon) — does the benchmark lead survive real workloads?
+
+Full update on GitHub.

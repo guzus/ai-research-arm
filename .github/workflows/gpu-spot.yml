@@ -1,0 +1,116 @@
+name: GPU Spot Prices
+
+# Refreshes research/market/gpu-spot.json — a per-GPU-model spot rental price
+# series observed directly from the Vast.ai public marketplace.
+#
+# Why this lane exists: the pipeline can cite what a filing SAYS but cannot
+# observe what a market DOES. Spot GPU rental pricing is the primary input that
+# anchors any argument about whether compute buyers are over- or under-earning
+# on contracted rates, and nobody publishes it as a clean time series. So the
+# pipeline observes it and compounds its own — `history` in that file only ever
+# appends, and the accumulation is the entire point. A snapshot of "now" would
+# be worthless here; one H100 print says nothing, H100 prints every 6h for a
+# year say whether the market is tightening.
+#
+# Deterministic lane: no model, no agent, no credentials. The endpoint is
+# public and unauthenticated, so this lane cannot be taken down by the
+# CLAUDE_CODE_OAUTH_TOKEN expiry that is a fleet-wide outage for agent lanes
+# (load-bearing rule 14).
+#
+# Fail-soft per GPU model (a model whose queries fail carries its previous
+# value forward marked `stale`, and that stale value is NEVER appended to the
+# history series — writing it would fabricate an observation). Fail-loud in
+# aggregate: if no model returns fresh data the script exits 1, this job goes
+# red, and nothing is committed.
+
+on:
+  schedule:
+    # Every 6 hours at :37 — 01:37, 07:37, 13:37, 19:37 UTC.
+    #
+    # Minute: :37 sits in the widest free gap in the repo's schedule, between
+    # rss (:30, every 2h) and arm-timeline (:45, every 2h), and deliberately
+    # clear of market-quotes (:53) and community (:19). Its previous occupant,
+    # the twitter-deepseek cron, was dropped 2026-08-01, so it is genuinely
+    # free rather than merely quiet.
+    #
+    # Interval: rental ask prices are set by hosts and move on a scale of hours
+    # to days, so 4 samples/day captures intraday variation without inventing
+    # noise. The cadence is not free — every run appends a permanent history
+    # record AND rewrites a file that is committed to git and copied into the
+    # deployed dashboard image by prebuild.mjs (research/market/ is in its
+    # COPY_DIRS). 6h is where the marginal information stops paying for that
+    # churn. Raising the frequency means lowering --history-max to hold the
+    # ~1 MB bound documented in the script.
+    - cron: '37 */6 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: gpu-spot
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    # Self-hosted per load-bearing rule 5. ubuntu-latest is reserved for CI and
+    # watchdogs; this is a production publishing lane.
+    runs-on: [self-hosted, Linux]
+    # ~40s observed for the 63 requests this makes. The generous ceiling exists
+    # so a hanging endpoint fails the job on a clock rather than retrying into
+    # the next scheduled run.
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      # Required by safe-push: `main` is PR-only (rule 13), so publishing goes
+      # through a run-scoped branch -> PR -> immediate squash-merge.
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Setup uv
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
+        with:
+          enable-cache: true
+
+      # No extras: fetch_gpu_spot.py is stdlib-only (urllib/json/re) on purpose,
+      # so this lane has no dependency that can break it.
+      - name: Install Python dependencies
+        run: uv sync --frozen
+
+      - name: Refresh GPU spot prices
+        run: uv run python scripts/fetch_gpu_spot.py
+
+      - name: Commit refreshed prices
+        id: commit
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- research/market/gpu-spot.json; then
+            # Practically unreachable — generated_at and the appended history
+            # record change every successful run. Kept so a future no-op mode
+            # cannot produce an empty commit.
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "gpu-spot unchanged; nothing to commit"
+            exit 0
+          fi
+          git add research/market/gpu-spot.json
+          # `date -u`, never bare `date`: the runner's clock is correct but its
+          # timezone is KST, while every consumer reads these as UTC.
+          git commit -m "GPU spot prices $(date -u +'%Y-%m-%d %H:%M UTC')"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Push changes
+        if: steps.commit.outputs.changed == 'true'
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Non-blocking by load-bearing rule 4 — telemetry must never fail a job.
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        continue-on-error: true
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+          text: "gpu-spot committed=${{ steps.commit.outputs.changed }}"
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

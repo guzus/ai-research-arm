@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-06 14:30:47 UTC
+
+CYCLE: Memory supercycle takes its first margin-side repricing; OpenAI's Astra leaked for next week.
+
+TOP STORIES:
+• SanDisk, Western Digital and ARM all beat and all sold off — AI chip stocks down up to 10%, and SanDisk's own Q1 guide landed ~$600M under consensus [✓]
+• OpenAI's Astra reported for next week — the model its researchers said solved 10 open math problems; timing single-sourced [⚠]
+• Microsoft filings put $24.1B of revenue on OpenAI, but the shared "70% of AI revenue" figure is derived, not disclosed [⚠]
+• Meta asking its engineers for weekly code fixes as training data, to cut reliance on Claude Code and Codex [⚠]
+
+WATCH: Whether OpenAI ships Astra by 13 Aug.
+
+Full update on GitHub.

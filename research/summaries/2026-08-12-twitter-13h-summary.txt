@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-12 13:39:18 UTC
+
+CYCLE: Neocloud demand looks uncapped but capital-constrained; Google trains Gemini on patients who lie; capital keeps pricing the layer above the model.
+
+TOP STORIES:
+• Nebius: $582.3M rev (+454% Y/Y), ~50% AI Cloud adj EBITDA, power target to 5GW, "could sell all 2027 capacity today" — but guide only reiterated, and it pivots asset-light ⚠
+• Google ResidencyRL: 49,870 simulated encounters with evasive patients lift Gemini 3.5 Flash adversarial diagnostic accuracy 81% to 88%, missed red flags -31% ⚠
+• CodeRabbit $143M Series C at $1.5B and Applied Compute talks at ~$3B both price the layer above the model ✓
+
+WATCH: Nebius asset-light partner economics — who funds and owns the facility.
+
+Full update on GitHub.

@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-08-11
+
+TOP STORIES:
+• Meta open-weighted Muse Glimmer, a 30B multimodal agent model, under Apache 2.0 — runs on one consumer GPU
+• Anthropic says an unreleased Claude raised the proven Riemann critical-line bound from 41.6% to 67.2%
+• Congress escalates: House Democrats want AI CEOs under oath, Sanders demands a pause. OpenAI ships GPT-5.6-Cyber
+
+KEY NUMBERS:
+• Muse Glimmer: best on 12 of 24 benchmark rows, ~17GB at 4-bit — but vs April-era Gemma/Qwen
+• ~$500B Nvidia + Wall Street AI financing package (unconfirmed); Intel raising $15B, capex $18B→$20B
+• TSMC July revenue NT$467,580mn, +44.7% YoY
+
+TRENDING: Muse Glimmer topped HN at 920 pts / 520 comments; the OpenClaw gym-booking agent exploit dominated safety talk
+
+Full digest on GitHub.

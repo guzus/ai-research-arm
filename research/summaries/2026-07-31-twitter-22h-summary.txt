@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-07-31 22:13:41 UTC
+
+CYCLE: Google consolidates its two front doors, and the Google Earth fake-imagery pullback gets expert corroboration.
+
+TOP STORIES:
+• Google folds AI Studio into the Gemini app - no standalone AI Studio mobile client; apps to "emerge naturally" from Gemini conversations [✓ announcement / ⚠ scope]
+• WITNESS's Sam Gregory publishes a Tech Policy Press analysis saying Google "briefly" turned Google Earth into a generator of plausible fakes - first named-expert confirmation of the pullback [✓]
+• Kimi K3 reported at 60.4% on ARC-AGI-2 as Bloomberg traces its compute to an Alibaba deal for ~20,000 Nvidia chips [⚠]
+
+WATCH: Whether ARC Prize posts a verified ARC-AGI-2 row for Kimi K3 with a cost-per-task figure.
+
+Full update on GitHub.

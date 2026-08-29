@@ -135,7 +135,50 @@ const policy = policyRecords.map((item) => item.text);
 const quoteBlock = markdown.match(/## Quote of the Day\s+>\s*([\s\S]*?)(?=\n---|\n##\s+|$)/i)?.[1] ?? "";
 const quote = stripMarkdown(quoteBlock.replace(/^>\s?/gm, " "));
 
-const lead = executive[0] || paragraphs(markdown, 1)[0] || "Today's AI digest is ready.";
+// A headline names the story — not the pipe it arrived through, nor when a
+// feed stamped it. The deterministic fallback digest labels every Executive
+// Summary bullet with its source lane and keeps the source item's trailing
+// timestamp:
+//   - **RSS / Official Announcements:** [Runway launches ...](url) - 2026-07-23 17:07 UTC
+// Rendered verbatim that shipped as a TOP STORY reading "RSS / Official
+// Announcements: Runway launches ... - 2026-07-23 17:07 UTC".
+//
+// Both strips are deliberately narrow so they cannot eat real copy: the
+// prefix must be one of the fallback composer's OWN lane labels (keep in
+// lockstep with LANES in scripts/deterministic_daily_digest.py) — so a
+// genuine "OpenAI: ..." headline survives — and the suffix must be a full
+// ISO date, so "Fable 5" or "$19.2B" is untouched.
+const LANE_LABELS = [
+  "Twitter/X",
+  "RSS / Official Announcements",
+  "Hacker News",
+  "Reddit",
+  "Expert Blogs",
+  "Bluesky",
+  "arXiv Papers",
+  "YouTube",
+];
+const LANE_LABEL_RE = new RegExp(
+  `^\\s*(?:${LANE_LABELS.map((l) => l.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&")).join("|")})\\s*:\\s*`,
+  "i",
+);
+const TRAILING_STAMP_RE =
+  /[\s(]*[-–—]?\s*\d{4}-\d{2}-\d{2}(?:[ T]\d{2}:\d{2}(?::\d{2})?)?\s*(?:UTC|GMT|Z)?\s*\)?\s*$/i;
+
+function headlineText(text) {
+  let out = text;
+  // Lanes can nest ("Hacker News: Reddit: ..." never happens today, but the
+  // loop costs nothing and keeps one stray label from surviving).
+  for (let i = 0; i < 3 && LANE_LABEL_RE.test(out); i += 1) {
+    out = out.replace(LANE_LABEL_RE, "");
+  }
+  out = out.replace(TRAILING_STAMP_RE, "").replace(/[\s–—-]+$/, "").trim();
+  return out || text.trim();
+}
+
+const lead = headlineText(
+  executive[0] || paragraphs(markdown, 1)[0] || "Today's AI digest is ready.",
+);
 const leadDeck = executive.slice(1, 4);
 const issue = Math.floor((new Date(`${date}T00:00:00Z`) - new Date(`${date.slice(0, 4)}-01-01T00:00:00Z`)) / 86400000) + 1;
 
@@ -380,20 +423,31 @@ function yamlItems(items, mapper) {
 function renderAraSource(images = []) {
   // Same editorial split as the PNG: the title holds one headline-sized
   // sentence, the rest of the lead bullet opens the body.
-  const [leadTitle, leadTitleRest] = splitFirstSentence(lead);
+  const [leadTitle, leadTitleRest] = splitLead(lead);
   const leadBodyItems = [leadTitleRest, ...leadDeck].filter(Boolean);
   const leadBody = leadBodyItems.length
     ? leadBodyItems.join("\n\n")
     : "No executive-summary detail was available for this edition.";
-  const breakingItems = [...breaking, ...policy].slice(0, 6);
-  if (breakingItems.length === 0) {
-    breakingItems.push("No breaking or policy items were highlighted in this edition.");
+  // Every department contributes stories to one run, tagged with where it
+  // came from. Ordered so the day's hard news leads and the standing beats
+  // follow.
+  const storyCards = [
+    ...breaking.map((t) => ({ text: t, tag: "Breaking" })),
+    ...models.map((t) => ({ text: t, tag: "Models" })),
+    ...policy.map((t) => ({ text: t, tag: "Policy" })),
+    ...research.map((t) => ({ text: t, tag: "Research" })),
+    ...business.map((t) => ({ text: t, tag: "Capital" })),
+  ]
+    .filter((card) => !isAbsenceNotice(stripMarkdown(card.text)))
+    .map((card) => ({ headline: conciseStory(card.text), tag: card.tag }))
+    .filter((card) => card.headline)
+    .slice(0, 10);
+  if (storyCards.length === 0) {
+    storyCards.push({
+      headline: "No stories were highlighted in this edition.",
+      tag: "Newsroom",
+    });
   }
-  const storyItems = [
-    ["Models & Systems", models, "hot"],
-    ["Research Ledger", research, "research"],
-    ["Capital & Compute", business, "market"],
-  ];
   const source = [
     "---",
     "title: " + yamlValue("THE AGI AWARENESS POST"),
@@ -407,9 +461,8 @@ function renderAraSource(images = []) {
     "",
     ":::paper-index",
     "- label: " + yamlValue("Lead") + "\n  target: " + yamlValue("#lead-top-story"),
-    "- label: " + yamlValue("Breaking") + "\n  target: " + yamlValue("#briefs-breaking-policy"),
+    "- label: " + yamlValue("Stories") + "\n  target: " + yamlValue("#briefs-stories"),
     "- label: " + yamlValue("Signals") + "\n  target: " + yamlValue("#meter-signal-mix"),
-    "- label: " + yamlValue("Departments") + "\n  target: " + yamlValue("#deck-departments"),
     ":::",
     "",
     `:::lead(id="lead-top-story", label="Top Story", title=${directiveAttr(leadTitle)})`,
@@ -425,11 +478,15 @@ function renderAraSource(images = []) {
           ]
         : []
     ),
-    `:::briefs(id="briefs-breaking-policy", title="Breaking & Policy", columns=2)`,
-    yamlItems(breakingItems, (item, index) => {
-      const tag = index < breaking.length ? "Breaking" : "Policy";
-      return "- headline: " + yamlValue(item) + "\n  tag: " + yamlValue(tag);
-    }),
+    // One "Stories" run instead of a "Breaking & Policy" block followed by a
+    // separate "Departments" deck. The department is not a section of its own
+    // — it is what a story IS, so it rides along as the story's tag. Each
+    // headline is cut to its own bold lead-in (or first sentence), because a
+    // full digest paragraph set in a two-up card column reads as a wall and
+    // gets truncated mid-thought.
+    `:::briefs(id="briefs-stories", title="Stories", columns=2)`,
+    yamlItems(storyCards, (card) =>
+      "- headline: " + yamlValue(card.headline) + "\n  tag: " + yamlValue(card.tag)),
     ":::",
     "",
     `:::news-meter(id="meter-signal-mix", title="Signal Mix")`,
@@ -437,13 +494,6 @@ function renderAraSource(images = []) {
     "- label: " + yamlValue("Model releases") + "\n  value: " + Math.min(100, models.length * 25) + "\n  display: " + yamlValue(`${models.length} items`) + "\n  tone: watch",
     "- label: " + yamlValue("Research highlights") + "\n  value: " + Math.min(100, research.length * 20) + "\n  display: " + yamlValue(`${research.length} items`) + "\n  tone: research",
     "- label: " + yamlValue("Funding and compute") + "\n  value: " + Math.min(100, business.length * 25) + "\n  display: " + yamlValue(`${business.length} items`) + "\n  tone: market",
-    ":::",
-    "",
-    `:::story-deck(id="deck-departments", title="Departments")`,
-    yamlItems(storyItems, ([label, items, tone]) => {
-      const summary = items.slice(0, 3).join(" ");
-      return "- headline: " + yamlValue(label) + "\n  summary: " + yamlValue(summary || "No items reported in this section.") + "\n  meta: " + yamlValue(`${items.length} digest items`) + "\n  tone: " + tone;
-    }),
     ":::",
     "",
     `:::quote(label="Quote of the Day")`,
@@ -493,6 +543,145 @@ function splitFirstSentence(text) {
     return [head, text.slice(match.index + match[0].length)];
   }
   return [text.trim(), ""];
+}
+
+// Where the digest cites its sourcing. A parenthetical is only treated as
+// attribution when it names an outlet or carries engagement figures, so
+// descriptive asides like "Flux 3 (image generation)" are left alone.
+const ATTRIBUTION_HINT_RE =
+  /\b(?:TechCrunch|The Verge|The Decoder|Ars Technica|Reuters|Bloomberg|Hacker News|HN|Reddit|Bluesky|arXiv|The Information|Wired|CNBC|Financial Times|WSJ|Guardian|Axios|Semafor|Business Insider|VentureBeat|Engadget|Nikkei|SCMP|TechMeme)\b|\b\d+\s*(?:points?|comments?|upvotes?)\b|#\d+\s+on\b/i;
+
+// A masthead headline names the story; who reported it and how it did on
+// Hacker News is body copy. The digest's lead bullet routinely ends with
+// "(TechCrunch, The Verge, The Decoder; #1 on Hacker News at 680 points/386
+// comments)" — and because that bullet is one long sentence,
+// splitFirstSentence() hands the whole thing to the headline, where it
+// rendered at 36-44px. Peel the attribution off and hand it to the body so
+// the sourcing survives; it is only moved, never dropped.
+function splitTrailingAttribution(title) {
+  let head = title;
+  const tail = [];
+  for (let i = 0; i < 3; i += 1) {
+    const match = head.match(/\s*\(([^()]*)\)\s*([.!?])?\s*$/);
+    if (!match || !ATTRIBUTION_HINT_RE.test(match[1])) break;
+    tail.unshift(`(${match[1].trim()})`);
+    head = `${head.slice(0, match.index).trimEnd()}${match[2] ?? ""}`;
+  }
+  if (!tail.length) return [title, ""];
+  // Never hand back an empty or stub headline — if the parenthetical WAS
+  // the sentence ("(TechCrunch, The Verge)."), keep the original rather
+  // than render a fragment. Guard on word count, not characters: a short
+  // real headline ("OpenAI ships GPT-6") must survive, and only a
+  // genuinely empty remainder should veto the split.
+  head = head.replace(/[\s,;:–—-]+$/, "").trim();
+  if (head.replace(/[^\w\s]/g, " ").split(/\s+/).filter(Boolean).length < 2) {
+    return [title, ""];
+  }
+  return [head, tail.join(" ")];
+}
+
+// The digest already marks where the headline ends: its Executive Summary
+// bullets open with a bold lead-in — "**Anthropic launched Claude Opus 5**,
+// positioned as delivering ..." — which is the headline, with the rest being
+// the standfirst. Using the whole first SENTENCE instead set a 27-word
+// analytical clause at masthead size, wrapping ten lines and pushing the
+// paper below the fold. Prefer the author's own emphasis; only fall back to
+// sentence-splitting for a bullet that has none (roughly one in five).
+function boldLeadIn(raw) {
+  const match = raw
+    .replace(/^\s*([-*]|\d+\.)\s+/, "")
+    .match(/^\*\*([^*]+)\*\*([\s\S]*)$/);
+  if (!match) return null;
+  const head = stripMarkdown(match[1]).replace(/[\s,:;.—–-]+$/, "").trim();
+  // A one-word bold run is emphasis, not a headline.
+  if (head.split(/\s+/).filter(Boolean).length < 2) return null;
+  const rest = stripMarkdown(match[2]).replace(/^[\s,:;—–-]+/, "").trim();
+  return [head, rest];
+}
+
+const leadBoldSplit = executiveRecords[0]
+  ? boldLeadIn(executiveRecords[0].raw)
+  : null;
+
+// A story card is a headline, not a paragraph. Digest section bullets run to
+// several sentences; set in a two-up card column they read as a wall and get
+// truncated mid-thought. Cut to the bullet's own bold lead-in when it has one
+// (the digest prompt asks for a 4-10 word headline there), else its first
+// sentence, then hard-cap so a run-on sentence can't defeat both.
+const STORY_WORD_CAP = 14;
+// Deliberately low. A short clause cut ("Data center siting", "Soofi S") is a
+// legitimate headline once the card carries a department tag, and it beats the
+// same sentence hacked off at a word count and trailed by an ellipsis. The
+// character floor just blocks absurd two-letter fragments.
+const STORY_WORD_FLOOR = 2;
+const STORY_CHAR_FLOOR = 7;
+
+function wordCount(text) {
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
+// Digest bullets hang their detail off a clause boundary — "Cognition
+// acquires Poke, an AI-companion app — TechCrunch frames the deal as ...",
+// "Claude Opus 5 (Anthropic) — new flagship-tier model; ...". Cutting there
+// yields a real headline; cutting at a word count yields a fragment ending in
+// an ellipsis, which is what made these cards read as truncated walls. Try
+// the em dash first (it almost always separates title from gloss) and accept
+// the first cut that lands in headline territory.
+function clauseCut(text) {
+  for (const sep of [" — ", " – ", "; ", ": "]) {
+    const index = text.indexOf(sep);
+    if (index === -1) continue;
+    const head = text.slice(0, index).replace(/[\s,;:.—–-]+$/, "").trim();
+    const count = wordCount(head);
+    if (count >= STORY_WORD_FLOOR && count <= STORY_WORD_CAP
+        && head.length >= STORY_CHAR_FLOOR) return head;
+  }
+  return null;
+}
+
+// When a lane lands nothing, the digest says so in prose — "No new arXiv
+// papers surfaced in today's sweep". That is honest inside the digest, but as
+// a front-page card it is filler: the 2026-07-26 edition ran three of eight
+// cards on absence notices, and they were the only truncated ones. A paper
+// prints the stories it has and stays quiet about the ones it doesn't.
+//
+// Anchored on a leading "No" as a whole word plus an absence verb, so a real
+// headline is safe: "No-code AI tools surge" fails \bNo\s, and "Nokia ships"
+// fails both.
+const ABSENCE_RE = /^No\s+(?=[\s\S]*\b(surfaced|reported|identified|landed|available|signal|in today's|this cycle)\b)/i;
+
+function isAbsenceNotice(text) {
+  return ABSENCE_RE.test(text.trim());
+}
+
+function conciseStory(text) {
+  const cleaned = headlineText(stripMarkdown(text));
+  if (!cleaned) return "";
+  const bold = boldLeadIn(text);
+  let head = bold ? bold[0] : splitTrailingAttribution(splitFirstSentence(cleaned)[0])[0];
+  head = head.replace(/\.$/, "");
+  if (wordCount(head) > STORY_WORD_CAP) {
+    // Ellipsis is the last resort, not the first.
+    head = clauseCut(head)
+      || head.split(/\s+/).filter(Boolean).slice(0, STORY_WORD_CAP).join(" ")
+           .replace(/[\s,;:.—–-]+$/, "") + "…";
+  }
+  return head;
+}
+
+// The editorial split both renderers share: one headline-sized phrase, with
+// the remainder plus any peeled attribution opening the body.
+function splitLead(text) {
+  if (leadBoldSplit) {
+    const [head, rest] = leadBoldSplit;
+    // The citation rides at the end of `rest`, so it lands in the body for
+    // free — no attribution peeling needed on this path.
+    return [headlineText(head), rest];
+  }
+  const [firstSentence, rest] = splitFirstSentence(text);
+  const [title, attribution] = splitTrailingAttribution(firstSentence);
+  const body = [attribution, rest].filter(Boolean).join(" ").trim();
+  return [title, body];
 }
 
 function svgText(x, y, lines, options = {}) {
@@ -550,11 +739,11 @@ function renderSvg(images = []) {
   const imageTop = 690;
   const leadBottom = images[0] ? imageTop - 18 : 906;
   let y = 305;
-  const [headlineText, headlineRest] = splitFirstSentence(lead);
-  const headlineSize = headlineText.length > 130 ? 36 : 44;
+  const [headlineLead, headlineRest] = splitLead(lead);
+  const headlineSize = headlineLead.length > 130 ? 36 : 44;
   const headlineWrap = headlineSize === 36 ? 31 : 25;
   const headlineLineHeight = headlineSize === 36 ? 40 : 48;
-  const headlineLines = clampText(headlineText, headlineWrap, 5);
+  const headlineLines = clampText(headlineLead, headlineWrap, 5);
   parts.push(svgText(62, y, headlineLines, { size: headlineSize, weight: "700", lineHeight: headlineLineHeight }));
   y += headlineLines.length * headlineLineHeight + 24;
   const ledeItems = [headlineRest, ...leadDeck].filter(Boolean);
