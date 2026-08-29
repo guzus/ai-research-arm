@@ -33,13 +33,31 @@ sources:
   - https://x.com/investor1397/status/2068230147606475240
   - "@gaze_observer"
   - "@investor1397"
+polymarket:
+  - event_slug: jio-platforms-ipo-byptptpt-20260629175823569
+    market_id: "2734707"
+    token_id: "78791224576670745293172582717415121152419990078489841207969233298036502966175"
+    question: "Will Jio Platforms IPO by September 30, 2026?"
+    outcome: "Sep 30 2026"
+  - event_slug: jio-platforms-ipo-byptptpt-20260629175823569
+    market_id: "2734708"
+    token_id: "87218132281162226192564134544957766898701908105269167897566982880770950467378"
+    question: "Will Jio Platforms IPO by December 31, 2026?"
+    outcome: "Dec 31 2026"
+  - event_slug: jio-platforms-ipo-byptptpt-20260629175823569
+    market_id: "2734705"
+    token_id: "106288975322599844817998715240962735449402266747474973473213248062206417629461"
+    question: "Will Jio Platforms IPO by July 31, 2026?"
+    outcome: "Jul 31 2026"
 created_at: 2026-06-20
-updated_at: 2026-06-20
+updated_at: 2026-08-30
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-20
     change: "Created — at Reliance's 49th AGM (2026-06-19) Mukesh Ambani moved Reliance Intelligence to execution: first 120 MW of Jamnagar AI compute by end-2026 (NVIDIA GB300 first phase, ~75k H100-equiv; scalable to >200k H100-equiv; Kutch solar-powered), free Google AI Pro (Gemini) for hundreds of millions of Jio users, a Meta/Llama JV, and a 22-language AI app suite. Same day, Jio Platforms filed a DRHP for a potential India-record IPO (~₹40,000 cr fresh issue; ~$120-150B est. valuation). Sourced from detailed secondary AGM recaps (no captured Reliance primary handle in-window) → status confirmed (official AGM event, multi-account corroboration), verification partial. @gaze_observer 2068232851724947827, @investor1397 2068230147606475240."
+  - ts: 2026-08-30
+    change: "Linked three exact Polymarket horizons for this ticket's Jio Platforms IPO leg: September 30 (market 2734707, primary/nearest decision-useful active horizon), December 31 (2734708, active year-end horizon), and the resolved July 31 market (2734705, final outcome No) for historical odds. Every leg requires Jio's first public stock sale on a recognized exchange, matching the ticket's pending IPO milestone rather than its separate AI-compute and partnership claims. Event, market, question, and Yes-token identities were revalidated against the Gamma record. The near-expiry August 31 sibling was omitted under the three-mapping cap in favor of the next live horizon, year-end horizon, and resolved history; no status or verification change."
 ---
 
 At **Reliance Industries' 49th AGM on 2026-06-19**, Mukesh Ambani declared
