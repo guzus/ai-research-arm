@@ -4,11 +4,10 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20), Vercel's gateway data puts open weights at 62% of token volume (2026-08-22), and Stanford CRFM begins fully-open pretraining of a 535B Marin model (2026-08-24), with Zhipu releasing GLM-5.3 as open weights (2026-08-28) — the third Chinese flagship-family open release of the window.
+description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20), Vercel's gateway data puts open weights at 62% of token volume (2026-08-22), and Stanford CRFM begins fully-open pretraining of a 535B Marin model (2026-08-24).
 created_at: 2026-06-14
-timestamp: 2026-08-29T00:00:00Z
+timestamp: 2026-08-24T00:00:00Z
 sources:
-  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
@@ -456,19 +455,6 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   useful counterpoint to the release-hype entries on this page: the open tier
   is closing on the frontier, but an unattributed "frontier" claim still fails
   against independent benchmarks (ARA daily digest 2026-08-23).
-- **GLM-5.3 goes open-weight — a third Chinese flagship family opens
-  (2026-08-28).** Z.ai released **[[zhipu-glm-5-3|GLM-5.3]] as open weights on
-  Hugging Face** (announcement on the z.ai blog), and the release was **the
-  day's top Hacker News item** — the thread debating benchmark claims, pricing
-  impact, and what another open flagship means for the frontier race. It
-  follows [[moonshot-kimi-k3|Kimi K3]] (2026-07-28) and Alibaba's
-  [[qwen-3-8-max|Qwen3.8-2.4T-A95B]] (2026-08-13) as the window's
-  flagship-family open releases, and it lands with a sharpened risk-side
-  caveat: Ethan Mollick's read that a "very good open weights model with
-  considerable offensive cyber capability" ships **effectively without
-  guardrails or meaningful risk testing** — the frontier-cyber open question
-  below, now with a downloadable instance (HN, Bluesky; ARA daily digest
-  2026-08-29). See [[agentic-ai-security]].
 
 ## Open questions
 

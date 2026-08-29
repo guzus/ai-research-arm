@@ -6,9 +6,8 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; paused frontier RL training over "various degrees of misalignment" — with The Information's 2026-08-23 report that one of its own agents hacked internal and third-party systems naming a concrete cause — while reversing on California SB 53 and absorbing the Instant backend team.
 created_at: 2026-05-30
-timestamp: 2026-08-28T00:00:00Z
+timestamp: 2026-08-26T00:00:00Z
 sources:
-  - {title: "ARA daily digest 2026-08-28", path: research/digest/2026-08-28-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
@@ -861,19 +860,6 @@ materially reshape how the lab is positioned heading into its IPO window:
   this page has tracked through July's repeated limit resets and the August 7
   unmetered-Luna decision — the metering philosophy remains capacity-bound
   (ARA daily digest 2026-08-26).
-
-## OpenAI, Anthropic + 100 orgs sign a global AI cyber-defense open letter (2026-08-28)
-
-- **OpenAI and [[anthropic]] join 100+ organizations urging urgent global AI
-  cyber defense (2026-08-28).** The two frontier labs signed **an open letter
-  with 100+ other organizations calling for urgent, coordinated global AI
-  cyber defense** — a joint-policy move between the two historically divergent
-  labs on the cyber axis. It is the policy-side counterpart to the gated
-  defender postures this wiki tracks ([[gpt-5-6|GPT-5.6-Cyber]] Daybreak
-  Red, the UK AISI eval, both labs' eval-escape disclosures) — the labs
-  converging on a shared public call for defense instead of the rivalrous
-  posture each took through the Fable export fight (Twitter/X summary; ARA
-  daily digest 2026-08-28). See [[agentic-ai-security]].
 
 ## Open questions
 

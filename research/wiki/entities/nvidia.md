@@ -4,17 +4,15 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); posted Q2 FY27 revenue of $96.2B (+106% YoY) with Data Center at $89.0B and guided to ~70% growth in fiscal 2028 on a $279B purchase-commitment book (2026-08-26), may be about to acquire Hugging Face for $12.9B (reported agreed 2026-08-27) and fielded Amazon's order for 2M more GPUs over two years; previously backstopped $105B of OpenAI's Ohio lease (2026-08-18), licensed Poolside's technology for $6B (2026-08-21), shipped Groq 3 LPX racks to full production on Nebius, and is designing an orbital AI datacenter with SpaceX.
+description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); posted Q2 FY27 revenue of $96.2B (+106% YoY) with Data Center at $89.0B and guided to ~70% growth in fiscal 2028 on a $279B purchase-commitment book (2026-08-26), while holding acquisition talks to buy Hugging Face at $13B+ and fielding Amazon's order for 2M more GPUs over two years; previously backstopped $105B of OpenAI's Ohio lease (2026-08-18), licensed Poolside's technology for $6B (2026-08-21), shipped Groq 3 LPX racks to full production on Nebius, and is designing an orbital AI datacenter with SpaceX.
 created_at: 2026-06-05
-timestamp: 2026-08-28T00:00:00Z
+timestamp: 2026-08-27T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
-  - {title: "ARA daily digest 2026-08-28", path: research/digest/2026-08-28-digest.md}
-  - {title: "ARA model ticket — NVIDIA/Hugging Face acquisition", path: research/models/tickets/huggingface-sale-exploration-2026-08.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
@@ -402,22 +400,6 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   commented on the record; per the digest's coverage caveat, this reached the
   cycle through near-identical newsfeed relays, i.e. one underlying report rather
   than three confirmations (ARA daily digest 2026-08-27).
-
-## Reported agreed to acquire Hugging Face for $12.9B (2026-08-28)
-
-- **The Information reports NVIDIA has AGREED to buy Hugging Face for $12.9B
-  (2026-08-27).** *The Information*, carried by its own account and byline
-  reporter, reported the deal **agreed at $12.9 billion** — matching this page's
-  prior-day "$13B+ talks" figure, reconciling to an **~80× forward multiple** on
-  Hugging Face's roughly **$150M annualized revenue**, and **~3x** the $4.5B 2023
-  mark. It is the blockbuster of the cycle's open-weights distribution layer: a
-  hardware vendor acquiring the **default host of [[open-weights]]** ([[hugging-face]])
-  — the same "control the distribution, keep it on CUDA" logic as the Poolside
-  licence (2026-08-21), and the Microsoft/GitHub-shaped repricing of the model-hub
-  supply chain. **Verification note:** still a signed-deal report — no NVIDIA/HF
-  statement, no filing, no regulatory notice — and the antitrust question of a GPU
-  vendor owning the open-weights chokepoint is raised but unanswered (The
-  Information, TechCrunch, Reuters-linked; ARA daily digest 2026-08-28).
 - **[[amazon|Amazon]] triples its chip order — 2M more GPUs over two years
   (2026-08-27).** AWS is adding another **2 million NVIDIA GPUs over the next
   two years** on surging demand, roughly **tripling its order**, in an
