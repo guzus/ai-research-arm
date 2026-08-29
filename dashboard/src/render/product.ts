@@ -1,5 +1,5 @@
-import { evidenceEnumLabel } from '../product-intelligence';
-import type { PublicClaim, WatchlistState } from '../product-intelligence';
+import { evidenceEnumLabel } from '../product-intelligence.ts';
+import type { PublicClaim, WatchlistState } from '../product-intelligence.ts';
 
 function esc(value: unknown): string {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
