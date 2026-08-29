@@ -11,6 +11,10 @@ Full contract + flow diagrams (incl. the downstream agent gate in
 Dedupe layers (see `duplicate_reason`), in priority order:
   1. shared story_key, exact normalized headline (any source), and same-source
      (same URL) paraphrase — time-independent, highest precision.
+  1d. same-source rebroadcast — the SAME tweet/status id (or normalized
+      external URL) that alerted in an EARLIER run, regardless of wording.
+      Records stamped by the current run do not qualify, preserving
+      same-cycle multi-claim extraction. Gated on a reference time like layer 2.
   2. cross-source semantic duplicate — the SAME story reported by a DIFFERENT
      account (different tweet URL) with paraphrased wording. This catches the
      re-reports the same-URL check structurally cannot see. It is gated on a
@@ -207,11 +211,14 @@ def external_key(url: str) -> str:
 
 
 def parse_delivered_at(value: Any) -> datetime | None:
-    """Parse a ledger ``delivered_at`` ("YYYY-MM-DD HH:MM UTC"); None if unparseable."""
-    try:
-        return datetime.strptime(str(value or "").strip(), "%Y-%m-%d %H:%M UTC")
-    except (TypeError, ValueError):
-        return None
+    """Parse legacy minute or current second precision; None if unparseable."""
+    raw = str(value or "").strip()
+    for fmt in ("%Y-%m-%d %H:%M:%S UTC", "%Y-%m-%d %H:%M UTC"):
+        try:
+            return datetime.strptime(raw, fmt)
+        except (TypeError, ValueError):
+            continue
+    return None
 
 
 def within_cross_source_window(delivered_at: Any, now: datetime, window_days: int) -> bool:
@@ -289,6 +296,21 @@ def duplicate_reason(
             similarity = headline_similarity(headline, record_headline)
             if similarity >= URL_SIMILARITY_THRESHOLD:
                 return "duplicate_source_similar_headline"
+
+    # Pass 1d — same external item, earlier cycle (rebroadcast). A status id or
+    # normalized external URL that already alerted is the same alert even when
+    # a later model rewrites its headline with zero token overlap. The strict
+    # timestamp comparison is load-bearing: records appended during this run
+    # have delivered_at == now and may represent distinct claims extracted from
+    # one thread, so they remain deliverable. Missing/unparseable timestamps
+    # fail open and cannot suppress an item.
+    if now is not None and keys.external_key:
+        for record, record_keys in zip(history, history_keys):
+            if record_keys.external_key != keys.external_key:
+                continue
+            delivered = parse_delivered_at(record.get("delivered_at"))
+            if delivered is not None and delivered < now:
+                return "duplicate_rebroadcast"
 
     # Pass 2 — cross-source semantic duplicate: same story, DIFFERENT account
     # (different tweet URL), paraphrased. Inert unless a reference time `now` is
