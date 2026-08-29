@@ -219,14 +219,20 @@
       "tier": "claude",
       "harness": "agent-run",
       "backend": "claude",
-      "notes": "Primary 3h Twitter/X processor (tier slot named 'claude' for historical reasons)."
+      "fallback_chain": [
+        "opencode-glm-5p3-flash"
+      ],
+      "notes": "Primary 3h Twitter/X processor (tier slot named 'claude' for historical reasons). Its local snapshot prompt and research/twitter/ + research/summaries/ write contract are compatible with isolated OpenCode editorial mode, so Claude unavailability uses OpenCode GLM 5.3 Flash instead of publishing a deterministic recovery heartbeat."
     },
     "twitter-primary-repair": {
       "workflow": "hourly-twitter.yml",
       "tier": "claude",
       "harness": "agent-run",
       "backend": "claude",
-      "notes": "Claude-only repair writer for the primary Twitter/X tier when the first Claude pass returns without required files."
+      "fallback_chain": [
+        "opencode-glm-5p3-flash"
+      ],
+      "notes": "Repair writer for the primary Twitter/X tier when the first pass returns without required files. It shares the primary lane's isolated OpenCode GLM 5.3 Flash fallback and exact output contract."
     },
     "twitter-judge": {
       "workflow": "hourly-twitter.yml",

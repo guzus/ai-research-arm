@@ -107,8 +107,8 @@ Reading notes:
 | twitter-deepseek-pi (tier:deepseek-pi) | `hourly-twitter.yml` | pi · run-pi-container (CI-enforced mirror) | fireworks (pi built-in) | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | — |
 | twitter-fireworks-pi (tier:fireworks-pi) | `hourly-twitter.yml` | pi · run-pi-container (CI-enforced mirror) | fireworks (pi built-in) | `accounts/fireworks/models/kimi-k2p7` | `FIREWORKS_API_KEY` | — |
 | twitter-judge (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
-| twitter-primary (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_twitter_digest.py` |
-| twitter-primary-repair (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
+| twitter-primary (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `opencode-glm-5p3-flash`; then `deterministic_twitter_digest.py` |
+| twitter-primary-repair (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `opencode-glm-5p3-flash` |
 | twitter-zai (tier:zai-glm-5p2) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
 | wiki-ingest (route:research-editorial-secondary) | `wiki-ingest.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | zai-canary · PINNED | `zai-claude-code-canary.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
@@ -142,7 +142,7 @@ Reading notes:
 
 _Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-opus-5`. 31 SSOT lanes (+10 dispatch execution paths) across 34 workflows; 14 workflows run no model._
 
-_Explicit lane fallback overrides (replace, never extend, the global chain): `digest-synthesis-fallback`: `opencode-glm-5p3-flash`._
+_Explicit lane fallback overrides (replace, never extend, the global chain): `digest-synthesis-fallback`: `opencode-glm-5p3-flash`; `twitter-primary`: `opencode-glm-5p3-flash`; `twitter-primary-repair`: `opencode-glm-5p3-flash`._
 
 <!-- END GENERATED BACKEND MATRIX -->
 

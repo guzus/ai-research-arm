@@ -105,6 +105,33 @@ class SelectBackendTest(unittest.TestCase):
         self.assertEqual(out["used-fallback"], "true")
         self.assertIn("rate limited for this run", log)
 
+    def test_twitter_primary_and_repair_use_opencode_on_claude_429(self):
+        lanes = {
+            lane: {
+                "workflow": "hourly-twitter.yml",
+                "harness": "agent-run",
+                "backend": "claude",
+                "fallback_chain": ["opencode-glm-5p3-flash"],
+            }
+            for lane in ("twitter-primary", "twitter-primary-repair")
+        }
+        self.set_availability(zai=True, **{"opencode-go": True})
+        with unittest.mock.patch.dict(
+                os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "sk-ant-oat01-test"}), \
+                unittest.mock.patch.object(
+                    select_backend, "request_oauth_preflight",
+                    return_value=(429, '{"error":{"message":"rate limit exceeded"}}')):
+            for lane in lanes:
+                with self.subTest(lane=lane):
+                    code, out, log = self.run_select(
+                        "--lane", lane,
+                        chain=("claude", "zai-glm-5p2"), lanes=lanes)
+                    self.assertEqual(code, 0)
+                    self.assertEqual(out["backend"], "opencode-glm-5p3-flash")
+                    self.assertEqual(out["provider"], "opencode-go")
+                    self.assertEqual(out["used-fallback"], "true")
+                    self.assertIn("rate limited for this run", log)
+
     def test_claude_429_does_not_cross_strict_lane_boundary(self):
         lanes = {
             "digest": {"workflow": "daily-digest.yml", "harness": "agent-run",
