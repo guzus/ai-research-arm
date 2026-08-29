@@ -386,28 +386,40 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(len(chain), len(set(chain)), "chain has duplicates")
         self.assertTrue(self.fallback["native_model"])
 
-    def test_local_digest_has_the_only_cross_adapter_lane_override(self):
+    def test_local_content_lanes_have_cross_adapter_overrides(self):
         overrides = {
             key: lane["fallback_chain"]
             for key, lane in self.lanes.items() if lane.get("fallback_chain")
         }
         self.assertEqual(
-            {"digest-synthesis-fallback": ["opencode-glm-5p3-flash"]},
+            {
+                "digest-synthesis-fallback": ["opencode-glm-5p3-flash"],
+                "twitter-primary": ["opencode-glm-5p3-flash"],
+                "twitter-primary-repair": ["opencode-glm-5p3-flash"],
+            },
             overrides,
         )
         # The lane override replaces this global chain; it never appends Z.ai
         # as a third provenance hop.
         self.assertEqual(["claude", "zai-glm-5p2"], self.fallback["chain"])
 
-        local_step = next(
-            step for step in self.obs["daily-digest.yml"].agent_run
-            if step.lane == "digest-synthesis-fallback"
-        )
-        self.assertEqual("OPENCODE_API_KEY",
-                         local_step.secrets["opencode-api-key"])
+        isolated_lanes = {
+            "digest-synthesis-fallback",
+            "twitter-primary",
+            "twitter-primary-repair",
+        }
+        local_steps = [
+            step for obs in self.obs.values() for step in obs.agent_run
+            if step.lane in isolated_lanes
+        ]
+        self.assertEqual(isolated_lanes, {step.lane for step in local_steps})
+        self.assertTrue(all(
+            step.secrets["opencode-api-key"] == "OPENCODE_API_KEY"
+            for step in local_steps
+        ))
         other_steps = [
             step for obs in self.obs.values() for step in obs.agent_run
-            if step.lane != "digest-synthesis-fallback"
+            if step.lane not in isolated_lanes
         ]
         self.assertTrue(all(not step.secrets.get("opencode-api-key")
                             for step in other_steps))
