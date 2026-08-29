@@ -132,7 +132,13 @@
       "contract": "research-editorial",
       "backend": "opencode-glm-5p3-flash",
       "fallback": "none",
-      "notes": "Shared runtime route for RSS, Bluesky, community, arXiv, and wiki. One backend edit switches all five to a profile whose adapter registry declares both isolated_workspace and editorial_contract. Incompatible host-checkout adapters are rejected before execution; this route is fail-closed with no cross-adapter fallback."
+      "notes": "Primary isolated editorial route for RSS, Bluesky, and community. The arXiv and wiki lanes deliberately use research-editorial-secondary so one provider credential or plan cap cannot stale all five scheduled editorial lanes. Incompatible host-checkout adapters are rejected before execution; this route is fail-closed with no cross-adapter fallback."
+    },
+    "research-editorial-secondary": {
+      "contract": "research-editorial",
+      "backend": "cursor-grok-4p6-fast",
+      "fallback": "none",
+      "notes": "Secondary isolated editorial failure domain for arXiv and wiki. It uses a different adapter, provider credential, and billing plan from research-editorial while retaining the same isolated_workspace + editorial_contract capability gate. It fails closed rather than silently changing model provenance."
     },
     "generative-translation": {
       "contract": "research-editorial",
@@ -168,8 +174,8 @@
     },
     "arxiv": {
       "workflow": "daily-arxiv.yml",
-      "route": "research-editorial",
-      "notes": "Daily arXiv sweep through the shared research-editorial route. The dated report is required and the companion summary is allowed; the lane fails closed with no deterministic fallback."
+      "route": "research-editorial-secondary",
+      "notes": "Daily arXiv sweep through the secondary isolated editorial route. The dated report is required and the companion summary is allowed; the lane fails closed with no deterministic fallback."
     },
     "digest-synthesis": {
       "workflow": "daily-digest.yml",
@@ -197,8 +203,8 @@
     },
     "wiki-ingest": {
       "workflow": "wiki-ingest.yml",
-      "route": "research-editorial",
-      "notes": "Digest -> LLM wiki page CRUD through the shared research-editorial route; writes stay under the wiki prefix and page deletion remains forbidden by the workflow guard."
+      "route": "research-editorial-secondary",
+      "notes": "Digest -> LLM wiki page CRUD through the secondary isolated editorial route; writes stay under the wiki prefix and page deletion remains forbidden by the workflow guard."
     },
     "generative-research-ko": {
       "workflow": "translate-generative-research.yml",

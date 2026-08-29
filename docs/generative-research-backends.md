@@ -222,11 +222,13 @@ tools. The writer script owns the commit.
 
 ## OpenCode Go: GLM 5.3 Flash production, DeepSeek comparison
 
-The shared `research-editorial` route prioritizes the canonical
+The primary `research-editorial` route prioritizes the canonical
 `opencode-glm-5p3-flash` backend profile: provider `opencode-go`, official
 model id `glm-5.3-flash`, resolved model ref `opencode-go/glm-5.3-flash`.
-That route serves RSS, community, arXiv, Bluesky, and wiki through the
-isolated `run-opencode-container` adapter and fails closed. It does not add a
+That route serves RSS, community, and Bluesky through the isolated
+`run-opencode-container` adapter and fails closed. ArXiv and wiki use the
+independent `research-editorial-secondary` route through the isolated Cursor
+adapter, bounding either provider credential's blast radius. Neither route adds a
 generative-research dispatch selector; the explicit DeepSeek path below remains
 available for controlled comparison and diagnostics.
 
@@ -366,9 +368,9 @@ isolation boundary (`--sandbox disabled` on the CLI; bubblewrap is not
 assumed in the slim image). Missing Docker is a hard failure; never fall
 back to host-level `agent -p`.
 
-Production editorial defaults stay on OpenCode. Switching the five
-scheduled lanes is an SSOT edit (`routes.research-editorial.backend:
-cursor-grok-4p6-fast`) plus `uv run python scripts/build_backend_matrix.py`.
+ArXiv and wiki use Cursor as the secondary production editorial failure domain;
+RSS, community, and Bluesky stay on OpenCode. Switching either route is an SSOT
+edit plus `uv run python scripts/build_backend_matrix.py`.
 Korean translation now selects this profile through
 `routes.generative-translation`. Cursor writes the fixed segment JSONL
 under `.github/cursor/translation.json`; pointing the route back to
