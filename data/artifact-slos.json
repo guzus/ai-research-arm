@@ -44,6 +44,15 @@
         "scripts/check_lane_content.py"
       ],
       "degraded_policy": "restore-baseline-and-fail",
+      "degraded_signal": {
+        "kind": "commit_subject",
+        "label": "restore-baseline",
+        "pattern": "^Twitter deterministic fallback \\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}(?::\\d{2})? UTC(?: \\(#\\d+\\))?$",
+        "paths": [
+          "research/twitter/[0-9]*.md",
+          "research/twitter/status/*.json"
+        ]
+      },
       "content": {
         "primary_glob": "research/twitter/[0-9]*.md",
         "min_bytes": 600
@@ -90,7 +99,13 @@
       "validators": [
         "scripts/fetch_ai_blogs.py"
       ],
-      "degraded_policy": "partial-source-fail-soft"
+      "degraded_policy": "partial-source-fail-soft",
+      "degraded_signal": {
+        "kind": "text_regex",
+        "label": "partial-source",
+        "path": "research/blogs/[0-9]*.md",
+        "pattern": "(?m)^- Fetch errors: [1-9]\\d*$"
+      }
     },
     {
       "id": "bluesky",
@@ -185,6 +200,11 @@
         "scripts/check_lane_content.py"
       ],
       "degraded_policy": "labelled-deterministic-fallback",
+      "degraded_signal": {
+        "kind": "commit_subject",
+        "label": "deterministic-fallback",
+        "pattern": "^Daily digest deterministic fallback \\d{4}-\\d{2}-\\d{2}(?: \\(#\\d+\\))?$"
+      },
       "content": {
         "primary_glob": "research/digest/[0-9]*-digest.md",
         "min_bytes": 2000
@@ -306,7 +326,15 @@
       "validators": [
         "scripts/fetch_market_quotes.py"
       ],
-      "degraded_policy": "per-symbol-stale-carry-forward"
+      "degraded_policy": "per-symbol-stale-carry-forward",
+      "degraded_signal": {
+        "kind": "json_boolean_any",
+        "label": "carry-forward",
+        "path": "research/market/quotes.json",
+        "selectors": [
+          "quotes.*.stale"
+        ]
+      }
     },
     {
       "id": "model-pricing",
@@ -325,7 +353,16 @@
       "validators": [
         "scripts/fetch_model_pricing.py"
       ],
-      "degraded_policy": "price-live-score-stale"
+      "degraded_policy": "price-live-score-stale",
+      "degraded_signal": {
+        "kind": "json_boolean_any",
+        "label": "carry-forward",
+        "path": "research/market/model-pricing.json",
+        "selectors": [
+          "stale",
+          "capability_stale"
+        ]
+      }
     },
     {
       "id": "gpu-spot",
@@ -344,7 +381,16 @@
       "validators": [
         "scripts/fetch_gpu_spot.py"
       ],
-      "degraded_policy": "per-model-stale-carry-forward"
+      "degraded_policy": "per-model-stale-carry-forward",
+      "degraded_signal": {
+        "kind": "json_boolean_any",
+        "label": "carry-forward",
+        "path": "research/market/gpu-spot.json",
+        "selectors": [
+          "stale",
+          "snapshot.models.*.stale"
+        ]
+      }
     },
     {
       "id": "earnings",
