@@ -141,6 +141,7 @@ def validate(
     run_id: str,
     run_attempt: int,
     headlines_file: Path | None = None,
+    reject_recovery: bool = False,
 ) -> None:
     status = load_json(status_file)
     if not isinstance(status, dict):
@@ -169,6 +170,8 @@ def validate(
         raise ContractError("public_items must be a non-negative integer")
     if not isinstance(recovery, bool):
         raise ContractError("recovery must be a boolean when present")
+    if reject_recovery and recovery:
+        raise ContractError("model output must not be a recovery heartbeat")
     if not summary_file.exists():
         raise ContractError(f"missing summary artifact: {summary_file}")
 
@@ -241,6 +244,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--generated-at", required=True)
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--run-attempt", type=int, required=True)
+    parser.add_argument(
+        "--reject-recovery",
+        action="store_true",
+        help="reject deterministic recovery heartbeats when validating model output",
+    )
     args = parser.parse_args(argv)
 
     try:
@@ -255,6 +263,7 @@ def main(argv: list[str] | None = None) -> int:
             generated_at=args.generated_at,
             run_id=args.run_id,
             run_attempt=args.run_attempt,
+            reject_recovery=args.reject_recovery,
         )
     except ContractError as exc:
         parser.error(str(exc))

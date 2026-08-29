@@ -47,7 +47,7 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
             encoding="utf-8",
         )
 
-    def validate(self) -> None:
+    def validate(self, *, reject_recovery: bool = False) -> None:
         validate(
             backend="claude",
             status_file=self.status,
@@ -59,6 +59,7 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
             generated_at="2026-07-10 10:07:09 UTC",
             run_id="1234",
             run_attempt=2,
+            reject_recovery=reject_recovery,
         )
 
     def test_accepts_concrete_published_section(self) -> None:
@@ -189,6 +190,12 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
             encoding="utf-8",
         )
         self.validate()
+
+    def test_model_validation_rejects_recovery_heartbeat(self) -> None:
+        self.write_status("no_update", 0, recovery=True)
+        self.summary.write_text("", encoding="utf-8")
+        with self.assertRaisesRegex(ContractError, "must not be a recovery heartbeat"):
+            self.validate(reject_recovery=True)
 
     def test_rejects_stale_run_identity(self) -> None:
         self.write_status("no_update", 0, generated_at="2026-07-10 10:07:00 UTC")

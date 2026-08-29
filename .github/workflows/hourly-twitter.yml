@@ -511,22 +511,66 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          opencode-mode: twitter
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
             ${{ steps.const.outputs.status_file }}
           allowed-paths: |
-            research/twitter/
-            research/summaries/
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
           label: Twitter primary Claude processor
           prompt: ${{ steps.render.outputs.prompt }}
+
+      # agent-run's expected-path guard proves that the per-run heartbeat
+      # changed; it deliberately cannot prove the multi-file editorial
+      # contract. Check the canonical contract here so a syntactically fresh
+      # but incomplete model result gets one model repair turn before the
+      # deterministic last resort.
+      - name: Check Claude primary editorial contract
+        id: check_claude_primary
+        if: >-
+          steps.backend.outputs.name == 'claude'
+          && (steps.twitter-claude-agent.outcome == 'success' || steps.twitter-claude-agent.outcome == 'failure')
+          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
+        env:
+          DATE: ${{ steps.datetime.outputs.date }}
+          HOUR: ${{ steps.datetime.outputs.hour }}
+          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          DIGEST_FILE: ${{ steps.const.outputs.digest_file }}
+          STATUS_FILE: ${{ steps.const.outputs.status_file }}
+          SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
+          HEADLINES_FILE: ${{ steps.const.outputs.headlines_file }}
+        run: |
+          set -euo pipefail
+          if uv run python scripts/validate_twitter_public_output.py \
+            --backend claude \
+            --status-file "$STATUS_FILE" \
+            --digest-file "$DIGEST_FILE" \
+            --summary-file "$SUMMARY_FILE" \
+            --headlines-file "$HEADLINES_FILE" \
+            --date "$DATE" \
+            --hour "$HOUR" \
+            --generated-at "$TIMESTAMP" \
+            --run-id "$RUN_ID" \
+            --run-attempt "$RUN_ATTEMPT" \
+            --reject-recovery; then
+            echo "valid=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "valid=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Primary model output failed the editorial contract; running one model repair turn"
+          fi
 
       - name: Repair missing Twitter output with Claude (primary tier)
         id: twitter-claude-repair
         continue-on-error: true
         if: >-
           steps.backend.outputs.name == 'claude'
-          && steps.twitter-claude-agent.outcome == 'failure'
+          && steps.check_claude_primary.outputs.valid != 'true'
           && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: ./.github/actions/agent-run
         env:
@@ -538,17 +582,20 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          opencode-mode: twitter
           claude-args: |
             --model opus --max-turns 40 --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
             ${{ steps.const.outputs.status_file }}
           allowed-paths: |
-            research/twitter/
-            research/summaries/
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
           label: Twitter primary Claude repair writer
           prompt: |
-            The primary Claude Twitter/X monitor returned without writing
-            its required files. Repair that now using only local files.
+            The primary Twitter/X model output failed its complete editorial
+            contract. Repair that now using only local files.
             Reason from first principles: for each candidate tweet, decide
             whether the underlying event is actually AI-specific and
             publication-worthy, not merely viral or from an AI-adjacent
@@ -569,6 +616,9 @@ jobs:
             HARD RULES
               - This is still the production Claude lane. Do not write a
                 deterministic quick-hit dump.
+              - Never copy or preserve a `recovery: true` status. Recovery
+                heartbeats belong only to the deterministic last resort and
+                are invalid model output.
               - Use tool calls to read the raw input and write the required
                 run artifacts. Do not merely respond in chat.
               - If any tool call is denied, retry with an allowed tool
@@ -613,8 +663,10 @@ jobs:
                  Use `status: "no_update"` and `public_items: 0` only when the
                  public same-hour section is absent. Count `public_items` as
                  Top Story `twitter-story` cards plus linked bullets under
-                 `### Quick hits`; it must equal the rendered count.
+                 `### Quick hits`; it must equal the rendered count. Do not
+                 include a `recovery` field in model-authored status.
               5. Commit exactly those outputs:
+                   uv run python scripts/validate_twitter_public_output.py --backend claude --status-file "${{ steps.const.outputs.status_file }}" --digest-file "${{ steps.const.outputs.digest_file }}" --summary-file "${{ steps.const.outputs.summary_file }}" --headlines-file "${{ steps.const.outputs.headlines_file }}" --date "${{ steps.datetime.outputs.date }}" --hour "${{ steps.datetime.outputs.hour }}" --generated-at "${{ steps.datetime.outputs.timestamp }}" --run-id "${{ github.run_id }}" --run-attempt "${{ github.run_attempt }}" --reject-recovery
                    git add "${{ steps.const.outputs.output_dir }}/" "${{ steps.const.outputs.summary_file }}" "${{ steps.const.outputs.headlines_file }}"
                    git commit -m "Twitter Claude repair ${{ steps.datetime.outputs.timestamp }}" || echo "No changes"
 

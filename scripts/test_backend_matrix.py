@@ -435,7 +435,8 @@ class RoutingInvariants(unittest.TestCase):
         )
         self.assertEqual("steps.select.outputs.provider == 'opencode-go'",
                          child.get("if"))
-        self.assertEqual("editorial", child["with"]["mode"])
+        self.assertEqual("editorial", action["inputs"]["opencode-mode"]["default"])
+        self.assertEqual("${{ inputs.opencode-mode }}", child["with"]["mode"])
         self.assertEqual("${{ inputs.prompt }}", child["with"]["prompt-text"])
         self.assertEqual("${{ steps.isolated-contract.outputs.paths }}",
                          child["with"]["allowed-paths"])
