@@ -164,6 +164,13 @@ REQUIRED_AGENT_RUN_SECRETS = {
     "fireworks-api-key": "FIREWORKS_API_KEY",
     "zai-api-key": "ZAI_API_KEY",
 }
+OPTIONAL_AGENT_RUN_SECRETS = {
+    "opencode-api-key": "OPENCODE_API_KEY",
+}
+AGENT_RUN_SECRET_INPUTS = {
+    **REQUIRED_AGENT_RUN_SECRETS,
+    **OPTIONAL_AGENT_RUN_SECRETS,
+}
 REQUIRED_DISPATCH_SECRETS = {
     **REQUIRED_AGENT_RUN_SECRETS,
     "opencode-api-key": "OPENCODE_API_KEY",
@@ -476,7 +483,7 @@ def observe_workflow(wf_path: Path) -> Observation:
                 ))
 
             elif uses == "./.github/actions/agent-run":
-                secrets = {k: first_secret(with_block.get(k)) for k in REQUIRED_AGENT_RUN_SECRETS}
+                secrets = {k: first_secret(with_block.get(k)) for k in AGENT_RUN_SECRET_INPUTS}
                 step_id = str(step.get("id", "")).strip()
                 lane = str(with_block.get("lane", "")).strip()
                 if step_id and lane:
@@ -732,6 +739,36 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
                               "must not lie about tier placement")
             if "strict" in lane and not isinstance(lane.get("strict"), bool):
                 errors.append(f"lane '{step.lane}': strict must be a boolean")
+            lane_chain = lane.get("fallback_chain", [])
+            if not isinstance(lane_chain, list):
+                errors.append(f"lane '{step.lane}': fallback_chain must be a list")
+                lane_chain = []
+            if lane.get("strict") and lane_chain:
+                errors.append(f"lane '{step.lane}': strict lanes cannot declare fallback_chain")
+            seen_lane_fallbacks: set[str] = set()
+            for candidate in lane_chain:
+                candidate_profile = profiles.get(str(candidate))
+                if candidate_profile is None:
+                    errors.append(f"lane '{step.lane}': fallback_chain entry '{candidate}' "
+                                  "is not in the backends table")
+                    continue
+                if candidate_profile.normalized in seen_lane_fallbacks:
+                    errors.append(f"lane '{step.lane}': fallback_chain entry '{candidate}' "
+                                  "duplicates an earlier candidate")
+                seen_lane_fallbacks.add(candidate_profile.normalized)
+                if candidate_profile.adapter not in {"agent-run", "opencode"}:
+                    errors.append(f"lane '{step.lane}': fallback backend '{candidate}' uses "
+                                  f"unsupported adapter '{candidate_profile.adapter}'")
+                if candidate_profile.adapter == "opencode":
+                    adapter = adapters.get("opencode", {})
+                    if adapter.get("isolated_workspace") is not True \
+                      or adapter.get("editorial_contract") is not True:
+                        errors.append(f"lane '{step.lane}': OpenCode fallback lacks the "
+                                      "isolated editorial capability contract")
+                    expected = OPTIONAL_AGENT_RUN_SECRETS["opencode-api-key"]
+                    if step.secrets.get("opencode-api-key") != expected:
+                        errors.append(f"{label}: lane fallback requires opencode-api-key: "
+                                      f"secrets.{expected}")
             for input_name, expected in REQUIRED_AGENT_RUN_SECRETS.items():
                 if step.secrets.get(input_name) != expected:
                     errors.append(f"{label}: must pass {input_name}: secrets.{expected} — "
@@ -907,9 +944,9 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             script = obs.det_job_wide[0]
         return f"; then `{script}`" if script else ""
 
-    def render_chain(requested: str) -> str:
+    def render_chain(requested: str, effective_chain: list[str] | None = None) -> str:
         parts = []
-        for entry in chain:
+        for entry in (chain if effective_chain is None else effective_chain):
             profile = profiles.get(str(entry))
             if profile is None or profile.normalized == requested:
                 continue  # select_backend skips the already-failed requested backend
@@ -985,7 +1022,11 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             elif setting == "none":
                 fallback = "hard fail (`fireworks-fallback: none`)"
             else:
-                fallback = render_chain(profile.normalized if profile else backend)
+                lane_chain = [str(entry) for entry in lane.get("fallback_chain", [])]
+                fallback = render_chain(
+                    profile.normalized if profile else backend,
+                    lane_chain if lane_chain else None,
+                )
             tier = step.tier if step else ""
             fallback += det_suffix(obs, key, tier)
             lane_label = key + (f" (tier:{tier})" if tier else "") + pinned
@@ -1283,6 +1324,14 @@ def build_generated_blocks() -> tuple[str, str]:
                  f"native path serves `{native_fallback}`. {len(lanes)} SSOT lanes "
                  f"(+{len(rows) - len(lanes)} dispatch execution paths) across "
                  f"{len(workflow_files())} workflows; {len(no_model)} workflows run no model._")
+    lane_overrides = [
+        f"`{key}`: " + " → ".join(f"`{entry}`" for entry in lane["fallback_chain"])
+        for key, lane in sorted(lanes.items()) if lane.get("fallback_chain")
+    ]
+    if lane_overrides:
+        lines.append("")
+        lines.append("_Explicit lane fallback overrides (replace, never extend, the global chain): "
+                     + "; ".join(lane_overrides) + "._")
     lines.append("")
     lines.append(END_MARKER)
 

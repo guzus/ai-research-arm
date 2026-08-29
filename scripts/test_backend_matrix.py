@@ -386,6 +386,83 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(len(chain), len(set(chain)), "chain has duplicates")
         self.assertTrue(self.fallback["native_model"])
 
+    def test_local_digest_has_the_only_cross_adapter_lane_override(self):
+        overrides = {
+            key: lane["fallback_chain"]
+            for key, lane in self.lanes.items() if lane.get("fallback_chain")
+        }
+        self.assertEqual(
+            {"digest-synthesis-fallback": ["opencode-glm-5p3-flash"]},
+            overrides,
+        )
+        # The lane override replaces this global chain; it never appends Z.ai
+        # as a third provenance hop.
+        self.assertEqual(["claude", "zai-glm-5p2"], self.fallback["chain"])
+
+        local_step = next(
+            step for step in self.obs["daily-digest.yml"].agent_run
+            if step.lane == "digest-synthesis-fallback"
+        )
+        self.assertEqual("OPENCODE_API_KEY",
+                         local_step.secrets["opencode-api-key"])
+        other_steps = [
+            step for obs in self.obs.values() for step in obs.agent_run
+            if step.lane != "digest-synthesis-fallback"
+        ]
+        self.assertTrue(all(not step.secrets.get("opencode-api-key")
+                            for step in other_steps))
+
+    def test_agent_run_scopes_isolated_opencode_child_contract(self):
+        action = yaml.safe_load(
+            (REPO_ROOT / ".github/actions/agent-run/action.yml").read_text()
+        )
+        steps = action["runs"]["steps"]
+        child = next(
+            step for step in steps
+            if step.get("uses") == "./.github/actions/run-opencode-container"
+        )
+        self.assertEqual("steps.select.outputs.provider == 'opencode-go'",
+                         child.get("if"))
+        self.assertEqual("editorial", child["with"]["mode"])
+        self.assertEqual("${{ inputs.prompt }}", child["with"]["prompt-text"])
+        self.assertEqual("${{ steps.isolated-contract.outputs.paths }}",
+                         child["with"]["allowed-paths"])
+        self.assertEqual("${{ inputs.opencode-api-key }}",
+                         child["with"]["opencode-api-key"])
+        rendered = json.dumps(child, sort_keys=True)
+        for secret_input in ("claude-code-oauth-token", "fireworks-api-key",
+                             "zai-api-key"):
+            self.assertNotIn(secret_input, rendered)
+
+        execution_output = action["outputs"]["execution-file"]["value"]
+        self.assertNotIn("run-opencode", execution_output)
+
+    def test_local_digest_exact_paths_and_post_recovery_scope_gate(self):
+        workflow = yaml.safe_load(
+            (REPO_ROOT / ".github/workflows/daily-digest.yml").read_text()
+        )
+        steps = workflow["jobs"]["daily-digest"]["steps"]
+        local = next(step for step in steps
+                     if step.get("id") == "digest-agent-local")
+        dated_paths = (
+            "research/digest/${{ steps.date.outputs.date }}-digest.md\n"
+            "research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt"
+        )
+        self.assertEqual(dated_paths, local["with"]["expected-paths"].strip())
+        self.assertEqual(dated_paths, local["with"]["allowed-paths"].strip())
+
+        recovery = next(step for step in steps
+                        if step.get("name") == "Commit recovered agent digest output")
+        self.assertIn('git add "$DIGEST_FILE" "$SUMMARY_FILE"', recovery["run"])
+        self.assertNotIn("git add research/digest/ research/summaries/", recovery["run"])
+
+        scope = next(step for step in steps
+                     if step.get("uses") == "./.github/actions/require-diff-scope"
+                     and step.get("name") == "Require digest diff scope")
+        self.assertEqual("${{ steps.digest-output-base.outputs.sha }}",
+                         scope["with"]["base-sha"])
+        self.assertEqual(dated_paths, scope["with"]["allowed-paths"].strip())
+
     def test_every_agent_run_lane_backend_has_a_profile(self):
         for key, lane in self.lanes.items():
             if lane.get("harness") == "agent-run":

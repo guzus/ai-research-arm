@@ -32,10 +32,16 @@ Fallback is an ORDERED CHAIN, SSOT-defined: the top-level `fallback.chain`
 lists backend selectors tried in order. At run time `scripts/select_backend.py`
 walks `[lane's backend] + chain` (deduplicated — a failed primary isn't
 retried from the chain), probes each candidate's provider (fireworks =
-preflight request, zai = Z.ai endpoint probe, claude = always available),
-and runs the first available candidate. Keeping `claude` terminal in the
-chain guarantees selection succeeds whenever the OAuth token exists — a
-unit test pins this invariant. Lanes marked `"strict": true` (zai-canary)
+preflight request, zai = Z.ai endpoint probe, claude = OAuth preflight),
+and runs the first available candidate. Claude 401/403 auth rejection or
+HTTP 429 rate limiting advances ordinary non-strict callers to Z.ai; the
+local-source digest lane explicitly overrides that chain with isolated
+OpenCode GLM 5.3 Flash because its local prompt and exact two-file commit
+contract are adapter-compatible. A lane override replaces the global chain,
+so OpenCode failure reaches the existing deterministic digest recovery rather
+than silently changing provenance again. HTTP 400, 5xx, and network faults
+retain the narrow fail-open behavior. Lanes marked
+`"strict": true` (zai-canary)
 and runs with `fireworks-fallback: none` never walk the chain: requested
 backend or hard fail. The `backends` profile table (selector → provider /
 model / aliases) also lives in the SSOT file — the action has no routing
@@ -84,7 +90,7 @@ Reading notes:
 | daily-improve | `daily-improve.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | digest-audio-script | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
 | digest-synthesis | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
-| digest-synthesis-fallback | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_daily_digest.py` |
+| digest-synthesis-fallback | `daily-digest.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `opencode-glm-5p3-flash`; then `deterministic_daily_digest.py` |
 | generative-research-claude (+1 retry step) | `generative-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | generative-research-default | `generative-research.yml` | dispatch default (runtime SSOT) | (per chosen backend) | default: `claude-opus-5` | (per chosen backend) | workflow-level `fireworks_fallback` input (default `claude`) |
 | generative-research-ko (route:generative-translation) | `translate-generative-research.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
@@ -135,6 +141,8 @@ Reading notes:
 - `production-synthetic.yml`
 
 _Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-opus-5`. 31 SSOT lanes (+10 dispatch execution paths) across 34 workflows; 14 workflows run no model._
+
+_Explicit lane fallback overrides (replace, never extend, the global chain): `digest-synthesis-fallback`: `opencode-glm-5p3-flash`._
 
 <!-- END GENERATED BACKEND MATRIX -->
 
