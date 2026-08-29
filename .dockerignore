@@ -50,6 +50,10 @@ research/*
 !research/arm/**
 !research/market
 !research/market/**
+# Build-only evidence input. prebuild reads the canonical index to emit the
+# narrowed public claims projection; it does not mirror this directory.
+!research/claims
+!research/claims/**
 # Twitter comparison-lane dirs: prebuild's twitter-ab.json index and the A/B
 # side-by-side view read these. A research dir consumed by prebuild MUST be
 # whitelisted here too — CI never runs the Dockerfile, so a miss ships an

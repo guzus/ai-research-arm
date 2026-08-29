@@ -35,6 +35,11 @@ const skipLfsPointers = process.env.SKIP_LFS_POINTERS === '1';
 // DATE_PATTERNS — it has no per-day artifacts for the freshness rows to key on.
 const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki', 'wiki-translations', 'youtube', 'arm', 'market'];
 
+// Research directories read during the build but never mirrored wholesale
+// into public/research/. Keep this explicit so the Docker-context contract can
+// verify production has every input without accidentally publishing internals.
+const BUILD_INPUT_DIRS = ['claims'];
+
 // Twitter comparison-lane dirs (hourly-twitter.yml backend tiers). Copied for
 // the A/B side-by-side view but deliberately NOT in COPY_DIRS/DATE_PATTERNS:
 // manifest keys feed the freshness rows, and these lanes run manually/rarely,
