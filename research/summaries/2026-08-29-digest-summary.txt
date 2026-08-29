@@ -1,12 +1,17 @@
-Daily AI Digest - 2026-08-29 (deterministic fallback)
+Daily AI Digest - 2026-08-29
 
-TOP OF EACH LANE:
-• [Twitter/X] OpenAI, Anthropic + 100 orgs sign open letter urging urgent global AI cyber defense [✓]
-• [RSS / Official Announcements] Our decision on Cursor following its acquisition by SpaceX - 2026-08-28 06:00 UTC
-• [Hacker News] [GLM-5.3 is now open-weight]: Z.ai releases GLM-5.3 as open weights on Hugging Face (with the annou…
-• [Reddit] I implemented a very tiny image generation model (latent flow transformer) on a RP2350 microcontrol…
-• [Expert Blogs] Just a rumour of a bug is enough to find a security exploit these days
+TOP STORIES:
+• OpenAI cuts off Cursor after SpaceX acquisition
+• Z.ai open-weights GLM-5.3 frontier model
+• Sony and Warner Chappell sue Anthropic
+• Claude acts as automated alignment researcher
 
-SOURCES: 8/8 lanes had data
+KEY NUMBERS:
+• Marvell FY27Q2 revenue $2.739B, +37% YoY; data center +46%
+• GLM-5.3: 743B base, day-0 on vLLM/SGLang/Baseten
+• Claude Code weekly limits −17% from Sept 14
+• Lambda raises $1B debt for Nvidia chips
 
-Verbatim, unranked lane excerpts. Full digest on GitHub.
+TRENDING: OpenAI–Cursor fallout and open-weight frontier models
+
+Full digest on GitHub.
