@@ -155,6 +155,7 @@ jobs:
       contents: write
       pull-requests: write
       issues: write
+      actions: write
       id-token: write
 
     steps:
@@ -3472,9 +3473,20 @@ jobs:
             exit 0
           fi
           FILENAME=$(basename "$(printf '%s\n' "$NEW_FILES" | head -n1)")
-          echo "file=$FILENAME" >> "$GITHUB_OUTPUT"
-          echo "has_file=true" >> "$GITHUB_OUTPUT"
-          echo "Generated: research/generative/$FILENAME"
+          ARTICLE_SLUG=$(jq -er --arg file "$FILENAME" '
+            map(select(.file == $file))
+            | if length == 1 then .[0].slug else error("expected exactly one index row") end
+          ' research/generative/index.json)
+          if [[ ! "$ARTICLE_SLUG" =~ ^[a-z0-9][a-z0-9-]{0,119}$ ]]; then
+            echo "::error::Writer produced an invalid final slug: $ARTICLE_SLUG"
+            exit 1
+          fi
+          {
+            echo "file=$FILENAME"
+            echo "slug=$ARTICLE_SLUG"
+            echo "has_file=true"
+          } >> "$GITHUB_OUTPUT"
+          echo "Generated: research/generative/$FILENAME (slug: $ARTICLE_SLUG)"
 
       # fable-5 and opus-5 are explicit, opt-in model selectors, so provenance
       # must be exact — the whole point of choosing one is knowing which model
@@ -4183,3 +4195,35 @@ jobs:
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+
+      # Translate only production publications. A workflow_dispatch from a PR
+      # branch remains reviewable on that branch and cannot enqueue a Korean
+      # translation whose canonical English source is not yet on main.
+      #
+      # workflow_dispatch is one of the events GitHub permits a GITHUB_TOKEN
+      # to create. The explicit actions:write permission above is still
+      # required for the dispatch API call.
+      - name: Dispatch Korean translation
+        id: dispatch-translation
+        if: >-
+          always()
+          && steps.outfile.outputs.has_file == 'true'
+          && steps.push.outputs.pushed == 'true'
+          && steps.publish-branch.outputs.branch == github.event.repository.default_branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ARTICLE_SLUG: ${{ steps.outfile.outputs.slug }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$ARTICLE_SLUG" =~ ^[a-z0-9][a-z0-9-]{0,119}$ ]]; then
+            echo "::error::Refusing to dispatch an invalid article slug: $ARTICLE_SLUG"
+            exit 1
+          fi
+          gh workflow run translate-generative-research.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref "$DEFAULT_BRANCH" \
+            -f "slug=$ARTICLE_SLUG" \
+            -f overwrite=false \
+            -f auto_merge=true
+          echo "::notice::Queued Korean translation for $ARTICLE_SLUG"
