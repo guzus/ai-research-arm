@@ -35,6 +35,15 @@ test('evidence search applies trust and language filters before ranking', async 
   assert.deepEqual(mod.searchEvidence(equivalent, 'evidence', {}).map((row) => row.id), ['reusable', 'blocked']);
 });
 
+test('evidence labels localize stable enums without changing raw semantics', async () => {
+  const mod = await importTs('src/product-intelligence.ts');
+  assert.equal(mod.evidenceEnumLabel('context', 'en'), 'Context');
+  assert.equal(mod.evidenceEnumLabel('context', 'ko'), '맥락');
+  assert.equal(mod.evidenceEnumLabel('high', 'ko'), '높음');
+  assert.equal(mod.evidenceEnumLabel('single-source', 'en'), 'Single source');
+  assert.equal(mod.evidenceEnumLabel('single-source', 'ko'), '단일 출처');
+});
+
 test('What changed DOM exposes reasoning, freshness, honest local highlights, and a site-wide feed', async () => {
   globalThis.location = new URL('https://ara.guzus.xyz/');
   const mod = await importTs('src/render/product.ts');
@@ -87,6 +96,34 @@ test('reader evidence explicitly denies independent-truth status and shows rever
   assert.match(html, /Reverify live/);
   assert.match(html, /As of 2026-08-01/);
   assert.match(html, /target="_blank" rel="noopener noreferrer"/);
+  assert.match(html, />Medium</);
+  assert.match(html, /Risk: Single source/);
+  assert.match(html, /Reverify live · Single source/);
+  const ko = mod.renderEvidenceDrawer([{ article: 'a', article_title: 'A', key: 'a#1', claim: 'A claim', type: 'metric', confidence: 'medium', risk: 'single-source', as_of: '2026-08-01', reusable: false, reuse_block: 'single-source', source_tiers: ['primary'], source_urls: ['https://example.com'] }], { language: 'ko' });
+  assert.match(ko, />중간</);
+  assert.match(ko, /위험: 단일 출처/);
+  assert.match(ko, /실시간 재검증 필요 · 단일 출처/);
+  assert.match(ko, />1차 출처</);
+});
+
+test('brief confidence labels are localized while raw values remain CSS semantics', async () => {
+  globalThis.location = new URL('https://ara.guzus.xyz/');
+  const mod = await importTs('src/render/product.ts');
+  const item = { id: 'x', kind: 'digest', title: 'T', summary: 'S', why: 'W', watch: 'N', confidence: 'context', freshness: '2026-08-29', href: '/', topics: [], changedAt: '2026-08-29T00:00:00Z' };
+  const en = mod.renderWhatChanged([item], { topics: [] }, 'en');
+  const ko = mod.renderWhatChanged([item], { topics: [] }, 'ko');
+  assert.match(en, /evidence-confidence--context">Confidence: Context/);
+  assert.match(ko, /evidence-confidence--context">신뢰: 맥락/);
+});
+
+test('claim reuse projection fails closed on malformed canonical metadata', async () => {
+  const mod = await import('./evidence-contract.mjs');
+  assert.doesNotThrow(() => mod.assertClaimReuseContract({ article: 'a', key: 'a#ok', reusable: true }));
+  assert.doesNotThrow(() => mod.assertClaimReuseContract({ article: 'a', key: 'a#blocked', reusable: false, reuse_block: 'single-source' }));
+  assert.throws(() => mod.assertClaimReuseContract({ article: 'a', key: 'a#missing' }), /a#missing: reusable must be boolean/);
+  assert.throws(() => mod.assertClaimReuseContract({ article: 'a', key: 'a#empty', reusable: false, reuse_block: '  ' }), /a#empty: reusable=false requires a non-empty reuse_block/);
+  const source = readFileSync(join(root, 'scripts/prebuild.mjs'), 'utf8');
+  assert.match(source, /if \(e instanceof EvidenceContractError\) throw e/);
 });
 
 test('product surfaces preserve loading/error paths and mobile containment', () => {
