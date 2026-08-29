@@ -41,15 +41,12 @@ const KIND_LABEL: Record<BriefItem['kind'], { en: string; ko: string }> = {
 export function renderWhatChanged(items: BriefItem[], watchlist: WatchlistState, language: 'en' | 'ko', degraded = false): string {
   const ko = language === 'ko';
   const watched = new Set(watchlist.topics);
-  const lastVisit = watchlist.lastVisit ? Date.parse(watchlist.lastVisit) : NaN;
   const rows = items.map((item) => {
-    const isNew = Number.isFinite(lastVisit) && Date.parse(item.changedAt) > lastVisit;
     const isWatched = item.topics.some((topic) => watched.has(topic));
     return [
-      `<article class="change-card${isNew ? ' is-new' : ''}${isWatched ? ' is-watched' : ''}">`,
+      `<article class="change-card${isWatched ? ' is-watched' : ''}">`,
       '  <div class="change-card-meta">',
       `    <span class="change-kind change-kind--${item.kind}">${esc(KIND_LABEL[item.kind][language])}</span>`,
-      isNew ? `    <span class="change-new">${ko ? '지난 방문 후' : 'Since your last visit'}</span>` : '',
       `    <span class="change-freshness">${esc(item.freshness)}</span>`,
       '  </div>',
       `  <h3><a href="${esc(item.href)}">${esc(item.title)}</a></h3>`,
@@ -69,9 +66,10 @@ export function renderWhatChanged(items: BriefItem[], watchlist: WatchlistState,
     '<section class="what-changed" aria-labelledby="whatChangedTitle">',
     '  <header class="what-changed-head">',
     `    <div><span class="ara-eyebrow">${ko ? '의사결정 브리프' : 'Decision brief'}</span><h2 id="whatChangedTitle">${ko ? '무엇이 바뀌었나' : 'What changed?'}</h2></div>`,
-    `    <div class="watchlist-actions"><a href="/feed.xml" class="watchlist-rss">RSS</a><button type="button" data-share-watchlist>${ko ? '공유' : 'Share watchlist'}</button></div>`,
+    `    <div class="watchlist-actions"><a href="/feed.xml" class="watchlist-rss">${ko ? '사이트 전체 피드' : 'Site-wide feed'}</a><button type="button" data-share-watchlist>${ko ? '관심 표시 공유' : 'Share highlights'}</button></div>`,
     '  </header>',
-    watchlist.topics.length ? `<p class="watchlist-summary">${ko ? '관심 주제' : 'Watching'}: ${esc(watchlist.topics.join(', ').replace(/-/g, ' '))}</p>` : '',
+    watchlist.topics.length ? `<p class="watchlist-summary">${ko ? '이 기기에서 강조 표시' : 'Highlighted on this device'}: ${esc(watchlist.topics.join(', ').replace(/-/g, ' '))}</p>` : '',
+    `<p class="watchlist-note">${ko ? '관심 주제는 이 기기에서 일치하는 카드를 강조할 뿐이며, 구독이나 개인 맞춤 순위가 아닙니다. 피드는 사이트 전체 내용을 제공합니다.' : 'Watched topics only highlight matching cards on this device; they do not subscribe you or personalize ranking. The feed is site-wide.'}</p>`,
     degraded ? `<p class="brief-degraded"><strong>${ko ? '저하 모드' : 'Degraded mode'}.</strong> ${ko ? '오늘의 다이제스트는 모델 종합이 아닌 표시된 결정적 대체 출력입니다. 카드 순서를 편집 우선순위로 해석하지 마세요.' : "Today's digest is a labelled deterministic fallback, not model synthesis. Card order is not an editorial ranking."}</p>` : '',
     `  <div class="change-grid">${rows}</div>`,
     '</section>',

@@ -29,6 +29,7 @@ import {
   excerptAround,
   normalizeTopic,
   readWatchlist,
+  searchEvidence,
   textMatchesTopic,
   watchlistFromUrl,
   watchlistSharePath,
@@ -1031,7 +1032,10 @@ async function loadEvidenceSearch(signal?: AbortSignal): Promise<EvidenceSearchE
   if (evidenceSearchPromise) return evidenceSearchPromise;
   evidenceSearchPromise = (async () => {
     try {
-      const response = await fetch(`${DATA_BASE}/evidence-search.json`, { cache: 'force-cache', signal });
+      // Revalidate across deployments so a browser cannot keep the older
+      // schema that omitted claim reuse warnings. The in-session promise
+      // still prevents duplicate downloads of this large artifact.
+      const response = await fetch(`${DATA_BASE}/evidence-search.json`, { cache: 'no-cache', signal });
       if (!response.ok) return [];
       const data = await response.json() as { entries?: EvidenceSearchEntry[] };
       return Array.isArray(data.entries) ? data.entries : [];
@@ -4843,7 +4847,7 @@ async function hydrateWhatChanged(md: string, dateStr: string): Promise<void> {
   );
   for (const [index, section] of sections.slice(0, 3).entries()) {
     const summary = truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 230);
-    const sourceCount = extractUrls(section.body).length;
+    const sourceCount = new Set(extractUrls(section.body)).size;
     items.push({
       id: `digest:${dateStr}:${index}`,
       kind: 'digest',
@@ -4853,7 +4857,9 @@ async function hydrateWhatChanged(md: string, dateStr: string): Promise<void> {
         ? (activeLanguage === 'ko' ? `표시된 대체 다이제스트의 상위 순서입니다. 편집 순위가 아니며 ${sourceCount}개 링크가 있습니다.` : `It appears early in the labelled fallback digest; this is source order, not editorial ranking, with ${sourceCount} linked source${sourceCount === 1 ? '' : 's'}.`)
         : (activeLanguage === 'ko' ? `오늘의 종합 브리프에서 상위 신호로 선정됐습니다. ${sourceCount}개의 링크된 소스가 있습니다.` : `It ranked near the top of today's synthesis and carries ${sourceCount} linked source${sourceCount === 1 ? '' : 's'}.`),
       watch: activeLanguage === 'ko' ? '차기 소스 사이클에서 독립적 확인과 수치 변화를 확인하세요.' : 'Look for independent confirmation and a measurable follow-through in the next source cycle.',
-      confidence: digestDegraded ? 'context' : sourceCount >= 3 ? 'high' : sourceCount ? 'medium' : 'context',
+      // A link count describes sourcing volume, not corroboration quality.
+      // Digest sections remain context until backed by structured claim evidence.
+      confidence: 'context',
       freshness: dateStr,
       href: `/today/${dateStr}`,
       topics: topicSlugs(`${section.title} ${summary}`),
@@ -4912,13 +4918,6 @@ async function hydrateWhatChanged(md: string, dateStr: string): Promise<void> {
   if (first) content.insertBefore(host.firstElementChild!, first);
   else content.appendChild(host.firstElementChild!);
   bindWatchlistActions(content);
-  const priorVisit = watchlist.lastVisit;
-  window.setTimeout(() => {
-    if (watchlist.lastVisit === priorVisit) {
-      watchlist = { ...watchlist, lastVisit: new Date().toISOString() };
-      writeWatchlist(watchlist);
-    }
-  }, 1000);
 }
 
 // ── Generative research ───────────────────────────────
@@ -6702,17 +6701,28 @@ async function buildSearchCorpus(): Promise<SearchHit[]> {
       hay: (c.date + ' ' + c.cycleTime + ' ' + (c.summary || '') + ' ' + (c.storyTitles || []).join(' ')).toLowerCase() });
   }
   const byKey = new Map(hits.filter((hit) => ['research', 'wiki', 'model'].includes(hit.type)).map((hit) => [`${hit.type}:${hit.slug}`, hit]));
+  const enrichedKeys = new Set<string>();
+  const evidenceHits: SearchHit[] = [];
   for (const entry of evidence) {
-    const key = `${entry.type}:${entry.id.replace(/^(?:research|wiki|model):/, '').replace(/:ko$/, '')}`;
+    const key = `${entry.type}:${entry.id.replace(/^(?:research|wiki|model):/, '').replace(/:[a-z]{2}$/i, '')}`;
     const existing = byKey.get(key);
     if (existing) {
-      existing.hay += ` ${entry.body.toLowerCase()}`;
-      existing.evidence = entry;
-      existing.snippet = entry.body;
+      // Keep language variants as separate evidence records so the language
+      // filter and shared ranker operate on the actual indexed document.
+      enrichedKeys.add(key);
+      evidenceHits.push({
+        ...existing,
+        title: entry.title,
+        subtitle: [existing.subtitle, entry.language].filter(Boolean).join(' · '),
+        hay: `${existing.hay} ${entry.title} ${entry.body}`.toLowerCase(),
+        evidence: entry,
+        snippet: entry.body,
+        date: entry.date,
+      });
       continue;
     }
     if (entry.type !== 'claim') continue;
-    hits.push({
+    evidenceHits.push({
       type: 'claim',
       title: entry.title,
       subtitle: [entry.confidence, entry.risk, entry.sourceTier, entry.date].filter(Boolean).join(' · '),
@@ -6723,8 +6733,11 @@ async function buildSearchCorpus(): Promise<SearchHit[]> {
       date: entry.date,
     });
   }
-  searchCorpus = hits;
-  return hits;
+  searchCorpus = [
+    ...hits.filter((hit) => !enrichedKeys.has(`${hit.type}:${hit.slug}`)),
+    ...evidenceHits,
+  ];
+  return searchCorpus;
 }
 
 function renderSearchHits(): void {
@@ -6735,11 +6748,12 @@ function renderSearchHits(): void {
     return;
   }
   const rows = searchHits.map((h, i) =>
-    '<button class="search-result' + (i === searchSel ? ' is-sel' : '') + '" type="button" role="option" data-sr-index="' + i + '">' +
+    '<button class="search-result' + (i === searchSel ? ' is-sel' : '') + (h.evidence?.reusable === false ? ' needs-reverify' : '') + '" type="button" role="option" data-sr-index="' + i + '">' +
     '<span class="search-result-type">' + escapeHtml(uiText(activeLanguage, SEARCH_TYPE_KEY[h.type])) + '</span>' +
     '<span class="search-result-title">' + escapeHtml(h.title) + '</span>' +
     (h.subtitle ? '<span class="search-result-sub">' + escapeHtml(h.subtitle) + '</span>' : '') +
     (h.snippet ? '<span class="search-result-snippet">' + escapeHtml(excerptAround(h.snippet, searchInput.value, 180)) + '</span>' : '') +
+    (h.evidence?.reusable === false ? '<span class="search-result-reverify">' + escapeHtml(activeLanguage === 'ko' ? '실시간 재검증 필요' : 'Reverify live') + (h.evidence.reuse_block ? ' · ' + escapeHtml(h.evidence.reuse_block) : '') + '</span>' : '') +
     '</button>',
   ).join('');
   setSafeContent(searchResultsEl, rows);
@@ -6760,11 +6774,23 @@ async function runGlobalSearch(query: string): Promise<void> {
   const confidenceFilter = (document.getElementById('searchConfidenceFilter') as HTMLSelectElement | null)?.value || '';
   const tierFilter = (document.getElementById('searchTierFilter') as HTMLSelectElement | null)?.value || '';
   const languageFilter = (document.getElementById('searchLanguageFilter') as HTMLSelectElement | null)?.value || '';
-  searchHits = corpus
+  const evidenceHits = corpus.filter((hit): hit is SearchHit & { evidence: EvidenceSearchEntry } => Boolean(hit.evidence));
+  const rankedEvidence = searchEvidence(
+    evidenceHits.map((hit) => hit.evidence),
+    query,
+    {
+      type: typeFilter as EvidenceSearchEntry['type'] || undefined,
+      confidence: confidenceFilter || undefined,
+      sourceTier: tierFilter || undefined,
+      language: languageFilter || undefined,
+    },
+    80,
+  );
+  const legacyHits = corpus
+    .filter((hit) => !hit.evidence)
     .filter((hit) => !typeFilter || hit.type === typeFilter)
-    .filter((hit) => !confidenceFilter || hit.evidence?.confidence === confidenceFilter)
-    .filter((hit) => !tierFilter || hit.evidence?.sourceTier === tierFilter || hit.evidence?.sourceTiers?.includes(tierFilter))
-    .filter((hit) => !languageFilter || hit.evidence?.language === languageFilter)
+    // Evidence-only filters cannot truthfully be applied to legacy digest/Twitter records.
+    .filter(() => !confidenceFilter && !tierFilter && !languageFilter)
     .map((h) => {
       const t = h.title.toLowerCase();
       const score = t.startsWith(q) ? 3 : t.includes(q) ? 2 : h.hay.includes(q) ? 1 : 0;
@@ -6772,8 +6798,17 @@ async function runGlobalSearch(query: string): Promise<void> {
     })
     .filter((x) => x.score > 0)
     .sort((a, b) => b.score - a.score || a.h.title.length - b.h.title.length)
-    .slice(0, 24)
     .map((x) => x.h);
+  const hitByEvidenceId = new Map(evidenceHits.map((hit) => [hit.evidence.id, hit]));
+  const rankedHits = rankedEvidence.flatMap((entry): SearchHit[] => {
+    const hit = hitByEvidenceId.get(entry.id);
+    return hit ? [hit] : [];
+  });
+  searchHits = [
+    ...rankedHits,
+    ...legacyHits,
+  ]
+    .slice(0, 24);
   searchSel = searchHits.length ? 0 : -1;
   if (searchCountEl) searchCountEl.textContent = searchHits.length ? String(searchHits.length) : '';
   renderSearchHits();

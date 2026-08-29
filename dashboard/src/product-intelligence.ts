@@ -28,11 +28,12 @@ export type EvidenceSearchEntry = {
   sourceTier?: string;
   sourceTiers?: string[];
   language?: string;
+  reusable?: boolean;
+  reuse_block?: string | null;
 };
 
 export type WatchlistState = {
   topics: string[];
-  lastVisit: string | null;
 };
 
 const WATCHLIST_KEY = 'ara:watchlist:v1';
@@ -42,15 +43,15 @@ export function normalizeTopic(value: string): string {
 }
 
 export function readWatchlist(storage: Storage | null = typeof localStorage === 'undefined' ? null : localStorage): WatchlistState {
-  if (!storage) return { topics: [], lastVisit: null };
+  if (!storage) return { topics: [] };
   try {
     const parsed = JSON.parse(storage.getItem(WATCHLIST_KEY) || '{}') as Partial<WatchlistState>;
     const topics = Array.isArray(parsed.topics)
       ? Array.from(new Set(parsed.topics.map(normalizeTopic).filter(Boolean))).slice(0, 50)
       : [];
-    return { topics, lastVisit: typeof parsed.lastVisit === 'string' ? parsed.lastVisit : null };
+    return { topics };
   } catch {
-    return { topics: [], lastVisit: null };
+    return { topics: [] };
   }
 }
 
@@ -58,7 +59,6 @@ export function writeWatchlist(state: WatchlistState, storage: Storage | null = 
   if (!storage) return;
   storage.setItem(WATCHLIST_KEY, JSON.stringify({
     topics: Array.from(new Set(state.topics.map(normalizeTopic).filter(Boolean))).slice(0, 50),
-    lastVisit: state.lastVisit,
   }));
 }
 
@@ -127,7 +127,13 @@ export function searchEvidence(
       return { entry, score };
     })
     .filter(({ score }) => terms.length === 0 || score > 0)
-    .sort((a, b) => b.score - a.score || (b.entry.date || '').localeCompare(a.entry.date || '') || a.entry.title.localeCompare(b.entry.title))
+    .sort((a, b) =>
+      b.score - a.score ||
+      Number(b.entry.reusable !== false) - Number(a.entry.reusable !== false) ||
+      confidenceRank(b.entry.confidence) - confidenceRank(a.entry.confidence) ||
+      (b.entry.date || '').localeCompare(a.entry.date || '') ||
+      a.entry.title.localeCompare(b.entry.title)
+    )
     .slice(0, limit)
     .map(({ entry }) => entry);
 }

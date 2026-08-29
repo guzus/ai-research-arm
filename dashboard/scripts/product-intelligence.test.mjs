@@ -13,7 +13,7 @@ test('watchlists are account-free, normalized, bounded, and shareable', async ()
   const mod = await importTs('src/product-intelligence.ts');
   const memory = new Map();
   const storage = { getItem: (key) => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value) };
-  mod.writeWatchlist({ topics: ['Anthropic', 'anthropic', 'GPU Compute'], lastVisit: '2026-08-29T00:00:00Z' }, storage);
+  mod.writeWatchlist({ topics: ['Anthropic', 'anthropic', 'GPU Compute'] }, storage);
   assert.deepEqual(mod.readWatchlist(storage).topics, ['anthropic', 'gpu-compute']);
   assert.equal(mod.watchlistSharePath(['anthropic', 'gpu-compute'], '/wiki/anthropic', 'ko'), '/wiki/anthropic?watch=anthropic%2Cgpu-compute&lang=ko');
   assert.deepEqual(mod.watchlistFromUrl('?watch=Anthropic,gpu%20compute'), ['anthropic', 'gpu-compute']);
@@ -22,31 +22,61 @@ test('watchlists are account-free, normalized, bounded, and shareable', async ()
 test('evidence search applies trust and language filters before ranking', async () => {
   const mod = await importTs('src/product-intelligence.ts');
   const entries = [
-    { id: 'c1', type: 'claim', title: 'Anthropic revenue', body: 'Primary filing evidence', url: '/', confidence: 'high', sourceTier: 'primary', language: 'en' },
-    { id: 'c2', type: 'claim', title: 'Anthropic rumor', body: 'Secondary report', url: '/', confidence: 'low', sourceTier: 'secondary', language: 'en' },
+    { id: 'c1', type: 'claim', title: 'Anthropic revenue', body: 'Primary filing evidence', url: '/', confidence: 'high', sourceTier: 'primary', language: 'en', reusable: true },
+    { id: 'c2', type: 'claim', title: 'Anthropic rumor', body: 'Secondary report', url: '/', confidence: 'low', sourceTier: 'secondary', language: 'en', reusable: false, reuse_block: 'time-sensitive' },
     { id: 'w1', type: 'wiki', title: '앤스로픽', body: '회사 지식', url: '/', language: 'ko' },
   ];
   assert.deepEqual(mod.searchEvidence(entries, 'anthropic', { confidence: 'high', sourceTier: 'primary' }).map((row) => row.id), ['c1']);
   assert.deepEqual(mod.searchEvidence(entries, '', { language: 'ko' }).map((row) => row.id), ['w1']);
+  const equivalent = [
+    { id: 'blocked', type: 'claim', title: 'Same evidence', body: 'same body', url: '/', confidence: 'high', reusable: false },
+    { id: 'reusable', type: 'claim', title: 'Same evidence', body: 'same body', url: '/', confidence: 'high', reusable: true },
+  ];
+  assert.deepEqual(mod.searchEvidence(equivalent, 'evidence', {}).map((row) => row.id), ['reusable', 'blocked']);
 });
 
-test('What changed DOM exposes reasoning, freshness, watch actions, and RSS without a new tab', async () => {
+test('What changed DOM exposes reasoning, freshness, honest local highlights, and a site-wide feed', async () => {
   globalThis.location = new URL('https://ara.guzus.xyz/');
   const mod = await importTs('src/render/product.ts');
   const html = mod.renderWhatChanged([{
     id: 'x', kind: 'digest', title: 'Model release', summary: 'A concise summary', why: 'It changes cost.', watch: 'Verify adoption.', confidence: 'high', freshness: '2026-08-29', href: '/today/2026-08-29', topics: ['anthropic'], changedAt: '2026-08-29T00:00:00Z',
-  }], { topics: ['anthropic'], lastVisit: '2026-08-28T00:00:00Z' }, 'en');
+  }], { topics: ['anthropic'] }, 'en');
   assert.match(html, /What changed\?/);
   assert.match(html, /Why it matters/);
   assert.match(html, /Watch next/);
-  assert.match(html, /Since your last visit/);
+  assert.doesNotMatch(html, /Since your last visit/);
+  assert.match(html, /only highlight matching cards on this device/);
+  assert.match(html, /Site-wide feed/);
   assert.match(html, /href="\/feed\.xml"/);
   assert.match(html, /data-watch-topic="anthropic"/);
-  const degraded = mod.renderWhatChanged([], { topics: [], lastVisit: null }, 'en', true);
+  const degraded = mod.renderWhatChanged([], { topics: [] }, 'en', true);
   assert.match(degraded, /Degraded mode/);
   assert.match(degraded, /not an editorial ranking/);
   const nav = readFileSync(join(root, 'index.html'), 'utf8');
   assert.equal((nav.match(/class="tab"/g) || []).length, 6);
+});
+
+test('prebuild search contract preserves claim reuse metadata and refuses unresolved article routes', () => {
+  const source = readFileSync(join(root, 'scripts/prebuild.mjs'), 'utf8');
+  assert.match(source, /if \(!articleSlug\) continue/);
+  assert.match(source, /reusable: claim\.reusable/);
+  assert.match(source, /reuse_block: claim\.reuse_block/);
+  assert.doesNotMatch(source, /articleSlugByStem\.get\(claim\.article\) \|\| ''/);
+});
+
+test('runtime global search uses the shared evidence ranker and renders reuse warnings', () => {
+  const source = readFileSync(join(root, 'src/main.ts'), 'utf8');
+  assert.match(source, /const rankedEvidence = searchEvidence\(/);
+  assert.match(source, /evidence-search\.json`, \{ cache: 'no-cache'/);
+  assert.match(source, /Keep language variants as separate evidence records/);
+  assert.match(source, /Reverify live/);
+  assert.match(source, /실시간 재검증 필요/);
+});
+
+test('digest cards do not infer confidence from URL count', () => {
+  const source = readFileSync(join(root, 'src/main.ts'), 'utf8');
+  assert.match(source, /A link count describes sourcing volume, not corroboration quality/);
+  assert.doesNotMatch(source, /sourceCount >= 3 \? 'high'/);
 });
 
 test('reader evidence explicitly denies independent-truth status and shows reverify warnings', async () => {
