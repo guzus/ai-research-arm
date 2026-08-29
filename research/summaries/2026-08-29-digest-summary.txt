@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-08-29 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Twitter/X] OpenAI, Anthropic + 100 orgs sign open letter urging urgent global AI cyber defense [✓]
+• [RSS / Official Announcements] Our decision on Cursor following its acquisition by SpaceX - 2026-08-28 06:00 UTC
+• [Hacker News] [GLM-5.3 is now open-weight]: Z.ai releases GLM-5.3 as open weights on Hugging Face (with the annou…
+• [Reddit] I implemented a very tiny image generation model (latent flow transformer) on a RP2350 microcontrol…
+• [Expert Blogs] Just a rumour of a bug is enough to find a security exploit these days
+
+SOURCES: 8/8 lanes had data
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
