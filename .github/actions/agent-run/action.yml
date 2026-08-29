@@ -25,6 +25,10 @@ inputs:
     description: OpenCode Go key. Passed only to a lane-explicit isolated OpenCode fallback.
     required: false
     default: ""
+  opencode-mode:
+    description: Isolated OpenCode contract/input mode. Use twitter only for callers that stage .twitter-input; all other agent-run lanes remain editorial.
+    required: false
+    default: editorial
   fireworks-fallback:
     description: Fallback policy. claude (default) = walk the lane fallback_chain override when declared, otherwise the global fallback.chain; none = strict, requested backend only.
     required: false
@@ -177,7 +181,7 @@ runs:
       if: steps.select.outputs.provider == 'opencode-go'
       uses: ./.github/actions/run-opencode-container
       with:
-        mode: editorial
+        mode: ${{ inputs.opencode-mode }}
         lane: ${{ inputs.lane }}
         allowed-paths: ${{ steps.isolated-contract.outputs.paths }}
         model: ${{ steps.select.outputs.provider }}/${{ steps.select.outputs.model-id }}
