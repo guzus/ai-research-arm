@@ -11,6 +11,121 @@ import dedupe_headline_alerts as dedupe
 
 
 class DedupeHeadlineAlertsTest(unittest.TestCase):
+    def test_same_tweet_earlier_run_is_rebroadcast_even_with_zero_overlap(self):
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "GPT-5.6 POSTPONED AGAIN; NEXT MOVE FRAMED AS SONNET 5",
+                    "url": "https://x.com/apples_jimmy/status/2071000000000000001",
+                },
+                "2026-06-24 01:06 UTC",
+            )
+        ]
+        item = {
+            "headline": "COMPLETELY DIFFERENT WORDING ABOUT A MID-JULY SLIP",
+            "url": "https://twitter.com/another_handle/status/2071000000000000001?s=20",
+        }
+        now = dedupe.parse_delivered_at("2026-06-24 03:54 UTC")
+        self.assertEqual(
+            dedupe.duplicate_reason(item, history, None, now),
+            "duplicate_rebroadcast",
+        )
+
+    def test_same_normalized_external_url_earlier_run_is_rebroadcast(self):
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "ORIGINAL PRODUCT ANNOUNCEMENT",
+                    "url": "https://example.com/launch?utm_source=x&edition=global",
+                },
+                "2026-06-24 01:06 UTC",
+            )
+        ]
+        item = {
+            "headline": "ZERO-OVERLAP REWRITE OF THE ANNOUNCEMENT",
+            "url": "https://www.example.com/launch?edition=global&utm_medium=social",
+        }
+        now = dedupe.parse_delivered_at("2026-06-24 03:54 UTC")
+        self.assertEqual(
+            dedupe.duplicate_reason(item, history, None, now),
+            "duplicate_rebroadcast",
+        )
+
+    def test_same_tweet_same_run_multi_claim_still_delivers(self):
+        now_text = "2026-06-29 03:36:27 UTC"
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "ELON MUSK ANNOUNCES GROK 4.5 IN PRIVATE BETA",
+                    "url": "https://x.com/elonmusk/status/2071184354756477041",
+                },
+                now_text,
+            )
+        ]
+        item = {
+            "headline": "SPACEX TO RELEASE FROM-SCRATCH AI MODELS EVERY MONTH THIS YEAR",
+            "url": "https://x.com/elonmusk/status/2071184354756477041",
+        }
+        now = dedupe.parse_delivered_at(now_text)
+        self.assertEqual(dedupe.duplicate_reason(item, history, None, now), "")
+
+    def test_rebroadcast_layer_is_inert_without_reference_time(self):
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "ORIGINAL WORDING OF SOME STORY",
+                    "url": "https://x.com/a/status/777",
+                },
+                "2026-06-24 01:06 UTC",
+            )
+        ]
+        item = {
+            "headline": "TOTALLY REWORDED TAKE WITH NO SHARED TOKENS AT ALL",
+            "url": "https://x.com/a/status/777",
+        }
+        self.assertEqual(dedupe.duplicate_reason(item, history), "")
+
+    def test_rebroadcast_fails_open_on_unparseable_history_timestamp(self):
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "ORIGINAL WORDING OF SOME STORY",
+                    "url": "https://x.com/a/status/888",
+                },
+                "not-a-timestamp",
+            )
+        ]
+        item = {
+            "headline": "TOTALLY REWORDED TAKE WITH NO SHARED TOKENS AT ALL",
+            "url": "https://x.com/a/status/888",
+        }
+        now = dedupe.parse_delivered_at("2026-06-24 03:54 UTC")
+        self.assertEqual(dedupe.duplicate_reason(item, history, None, now), "")
+
+    def test_rebroadcast_fails_open_on_future_history_timestamp(self):
+        history = [
+            dedupe.make_record(
+                {
+                    "headline": "ORIGINAL WORDING OF SOME STORY",
+                    "url": "https://x.com/a/status/999",
+                },
+                "2026-06-24 05:00 UTC",
+            )
+        ]
+        item = {
+            "headline": "TOTALLY REWORDED TAKE WITH NO SHARED TOKENS AT ALL",
+            "url": "https://x.com/a/status/999",
+        }
+        now = dedupe.parse_delivered_at("2026-06-24 03:54 UTC")
+        self.assertEqual(dedupe.duplicate_reason(item, history, None, now), "")
+
+    def test_delivered_at_parser_accepts_current_seconds_and_legacy_minutes(self):
+        seconds = dedupe.parse_delivered_at("2026-08-29 17:19:04 UTC")
+        minutes = dedupe.parse_delivered_at("2026-07-31 17:19 UTC")
+        self.assertEqual(seconds, dedupe.datetime(2026, 8, 29, 17, 19, 4))
+        self.assertEqual(minutes, dedupe.datetime(2026, 7, 31, 17, 19))
+        self.assertIsNone(dedupe.parse_delivered_at("2026-08-29T17:19:04Z"))
+
     def test_normalize_url_twitter_variants(self):
         left = "http://www.twitter.com/OpenAI/status/123?s=20&utm_source=x"
         right = "https://x.com/OpenAI/status/123/"
@@ -132,6 +247,41 @@ class DedupeHeadlineAlertsTest(unittest.TestCase):
                     }
                 ],
             )
+
+    def test_filter_keeps_distinct_same_cycle_claims_from_one_status(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            history_file = root / "history.json"
+            headlines_file = root / "headlines.json"
+            filtered_file = root / "filtered.json"
+            history_file.write_text("[]")
+            items = [
+                {
+                    "headline": "ELON MUSK ANNOUNCES GROK 4.5 IN PRIVATE BETA",
+                    "url": "https://x.com/elonmusk/status/2071184354756477041",
+                },
+                {
+                    "headline": "SPACEX TO RELEASE FROM-SCRATCH AI MODELS EVERY MONTH THIS YEAR",
+                    "url": "https://x.com/elonmusk/status/2071184354756477041",
+                },
+            ]
+            headlines_file.write_text(json.dumps(items))
+            with redirect_stdout(StringIO()):
+                rc = dedupe.main(
+                    [
+                        "filter",
+                        "--headlines-file",
+                        str(headlines_file),
+                        "--history-file",
+                        str(history_file),
+                        "--filtered-file",
+                        str(filtered_file),
+                        "--timestamp",
+                        "2026-06-29 03:36:27 UTC",
+                    ]
+                )
+            self.assertEqual(rc, 0)
+            self.assertEqual(json.loads(filtered_file.read_text()), items)
 
     def test_record_delivered_appends_with_retention(self):
         with tempfile.TemporaryDirectory() as tmp:
