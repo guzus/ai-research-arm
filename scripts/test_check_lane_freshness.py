@@ -19,6 +19,10 @@ class ClassifyTest(unittest.TestCase):
         # dir exists but git returned no commit (e.g. shallow clone)
         self.assertEqual(clf.classify(None, 30, dir_exists=True), clf.UNKNOWN)
 
+    def test_unknown_alerts_because_freshness_is_unproven(self):
+        status = clf.LaneStatus("rss", 8, None, clf.UNKNOWN)
+        self.assertTrue(status.alerting)
+
     def test_within_threshold_is_fresh(self):
         self.assertEqual(clf.classify(3.9, 4, dir_exists=True), clf.FRESH)
 
@@ -68,6 +72,21 @@ class EvaluateTest(unittest.TestCase):
             present={"rss", "twitter", "wiki", "gone"},
         )
         self.assertEqual([s for s in statuses if s.alerting], [])
+
+    def test_registry_monitors_market_artifacts_separately_and_skips_events(self):
+        self.assertEqual(clf.LANE_FRESHNESS_PATHS["market-quotes"], ("research/market/quotes.json",))
+        self.assertEqual(clf.LANE_FRESHNESS_PATHS["model-pricing"], ("research/market/model-pricing.json",))
+        self.assertEqual(clf.LANE_FRESHNESS_PATHS["gpu-spot"], ("research/market/gpu-spot.json",))
+        for value in (
+            clf.LANE_FRESHNESS_PATHS["market-quotes"],
+            clf.LANE_FRESHNESS_PATHS["model-pricing"],
+            clf.LANE_FRESHNESS_PATHS["gpu-spot"],
+        ):
+            self.assertNotEqual(value, ("research/market",))
+        self.assertNotIn("earnings", clf.LANE_THRESHOLDS_HOURS)
+
+    def test_twitter_status_heartbeat_cannot_mask_public_digest_staleness(self):
+        self.assertEqual(clf.LANE_FRESHNESS_PATHS["twitter"], ("research/twitter/[0-9]*.md",))
 
 
 class IdempotencyKeyTest(unittest.TestCase):

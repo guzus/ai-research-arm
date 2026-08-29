@@ -41,6 +41,7 @@ and opens a PR with methodology fixes.
 | [`ARA_DSL.md`](ARA_DSL.md) | Source format for generative-research articles; `scripts/compile_ara.py` turns `.ara.md` into a validated `<article>` fragment. |
 | [`ARA_CATALOG.json`](ARA_CATALOG.json) + [`COMPONENTS.md`](COMPONENTS.md) | The `ara-*` class allowlist the validator loads, and its human reference. Kept in lockstep by CI — see "Component catalog" below. |
 | [`data/agent-backends.json`](data/agent-backends.json) | Routing SSOT: per-lane backend, profile table, ordered fallback chain. See Backends. |
+| [`data/artifact-slos.json`](data/artifact-slos.json) | Artifact/SLO SSOT: producer, exact output paths, cadence kind, freshness threshold, validators, content policy, and degraded behavior. Event/on-demand artifacts are inventoried without false clock-based paging. |
 | `docs/*.md` | Per-lane contracts, read at runtime by the agents and enforced by the matching validator: `model-tickets`, `wiki-schema`, `okf`, `headline-dedupe`, `blog-subscriptions`, `twitter-account-curation`, `twitter-model-ab`, `generative-research-backends`, `backend-matrix` (generated), `claim-store`, `hooker-telemetry`. [`docs/archive/`](docs/archive/) holds superseded docs + improvement logs. |
 | `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`. |
 | [`Dockerfile`](Dockerfile) + [`Caddyfile`](Caddyfile) + [`railway.json`](railway.json) | The Railway stack serving **ara.guzus.xyz** behind Cloudflare (responses carry `x-railway-edge`): bun build → Caddy serves `dashboard/dist`; `railway.json` pins the DOCKERFILE builder + `/` healthcheck. Vercel no longer serves the domain — rule 3. |
@@ -310,7 +311,7 @@ false `deploy-stale` alerts. Do not "fix" any of these omissions.
 |---|---|---|
 | `market-quotes.yml` | every 3h `:53` | Deterministic refresh of `research/market/quotes.json` from Yahoo for every wiki entity carrying `market` frontmatter — the price row in the wiki hover card and on the entity page. Symbols come from `research/wiki/index.json`, so adding `market:` to a page is the only step needed to quote a new company. Fail-soft per symbol (carries the prior value forward marked `stale`), fail-loud if every symbol fails. Needs the optional `stock` extra — Yahoo's bare urllib path 429s. |
 | `arm-timeline.yml` | every 2h `:45` | Deterministic refresh of `research/arm/timeline.json` so the dashboard's Arm tab renders in prod (the Docker build context has no `.git`/`.github`, so prebuild falls back to this committed file; unrefreshed it ages out of the ±36h window). |
-| `model-pricing.yml` | every 6h `:26` (03/09/15/21 UTC) | Deterministic refresh of `research/market/model-pricing.json` — every priced frontier model joined to its benchmark score, the Pareto frontier between them, and an append-only `frontier_price_at` series answering *what a given capability level costs over time*. Renders as the dashboard's **Pricing** tab (`/pricing`), the first view that discloses its own freshness (`last synced Xh ago`, plus explicit `prices stale` / `scores stale` badges). Exit 3 = DEGRADED (prices live, scores missing) and still commits; exit 1 = price failure, nothing committed. Contract lives in the script docstring, same as `fetch_gpu_spot.py`. **Not registered in `check_lane_freshness.py` on purpose** — that watchdog keys staleness off the `research/<lane>` *directory*, and three lanes write into `research/market/`, so a "market" entry would read fresh whenever `market-quotes` ran and would therefore never catch this lane failing alone. Per-view staleness on the tab is the detection path instead. |
+| `model-pricing.yml` | every 6h `:26` (03/09/15/21 UTC) | Deterministic refresh of `research/market/model-pricing.json` — every priced frontier model joined to its benchmark score, the Pareto frontier between them, and an append-only `frontier_price_at` series answering *what a given capability level costs over time*. Renders as the dashboard's **Pricing** tab (`/pricing`), the first view that discloses its own freshness (`last synced Xh ago`, plus explicit `prices stale` / `scores stale` badges). Exit 3 = DEGRADED (prices live, scores missing) and still commits; exit 1 = price failure, nothing committed. Contract lives in the script docstring, same as `fetch_gpu_spot.py`. The artifact SLO registry monitors this exact file independently from the other `research/market/` producers, so activity in market quotes cannot mask stale pricing. |
 | `gpu-spot.yml` | every 6h `:37` | Deterministic refresh of `research/market/gpu-spot.json` — per-GPU-model spot rental prices from Vast.ai, in USD per GPU-hour, plus an append-only `history` series. Model-free and unauthenticated. `method_version` is stamped into every history record so a methodology change is never mistaken for a market move (bumped to 2 on 2026-08-02 for exhaustive `num_gpus` coverage + the `is_bid` filter). Nothing in the dashboard reads it yet. |
 | `daily-improve.yml` | weekly, Monday `00:17` UTC | Opens improve/YYYY-MM-DD PR with methodology fixes; each run auto-closes prior unmerged `improve/*` PRs. See "Load-bearing rules" for where the IMPROVEMENTS file belongs. |
 | `ci.yml` | push/PR on workflows/dashboard/scripts | actionlint + dashboard build + Python tests on GitHub-hosted runners |
@@ -568,6 +569,10 @@ output or break the pipeline. Read them before editing.
    a temp file in the same directory and `os.replace()` into place, so a
    half-finished file never reaches the dashboard prebuild — and thus the
    next deployed Railway image.
+   **Generative claims publish as one Git transaction.** The methodology
+   ledger and `research/claims/index.json` must be rebuilt and amended into the
+   same writer-owned article commit by `finalize_generative_publication.py`.
+   Never publish a new `*.claims.json` sidecar without its derived index.
 
 9. **Model tickets are CRUD'd, not regenerated.**
    `research/models/tickets/<slug>.md` is a persistent store — one ticket
@@ -625,7 +630,8 @@ output or break the pipeline. Read them before editing.
     workflow grants `pull-requests: write`, and by default (`pr-merge: true`)
     immediately squash-merges that PR (see rule 13). If repository settings
     still block Actions-created PRs, it leaves the generated branch in place
-    and emits `publication-mode=branch` instead of failing the workflow. For agent-authored
+    and emits `publication-mode=branch`; scheduled/explicitly strict callers
+    also fail so the off-main publication cannot look successful. For agent-authored
     feature PRs, the older working pattern (used by `daily-improve.yml` and
     `twitter-account-explorer.yml`) is still valid: have the agent push the
     branch and run `gh pr create` **from inside the
@@ -645,7 +651,10 @@ output or break the pipeline. Read them before editing.
     `automation/safe-push/*` branch → PR → immediate squash-merge.
     `pushed=true` now means "content is on `main`" (direct, no-op, or merged
     fallback PR), and Railway still deploys on each merge because a merge IS
-    a push to `main`. Two operational corollaries: (a) an
+    a push to `main`. Scheduled callers are strict by default; genuine no-op
+    runs still pass, while open-PR or branch-only fallbacks fail. The liveness
+    watchdog alerts on an `automation/safe-push/*` PR open for one hour.
+    Two operational corollaries: (a) an
     `automation/safe-push/*` PR left OPEN means the auto-merge failed —
     usually a same-file conflict with a concurrent writer; resolve and merge
     it manually (oldest first) or the lane's data never reaches the

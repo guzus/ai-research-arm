@@ -1,0 +1,390 @@
+{
+  "schema_version": 1,
+  "artifacts": [
+    {
+      "id": "rss",
+      "producer": ".github/workflows/hourly-rss.yml",
+      "artifacts": [
+        "research/rss/[0-9]*.md"
+      ],
+      "freshness_paths": [
+        "research/rss"
+      ],
+      "cadence": {
+        "kind": "interval",
+        "hours": 2,
+        "freshness_slo_hours": 8
+      },
+      "validators": [
+        "scripts/check_lane_content.py"
+      ],
+      "degraded_policy": "fail-closed",
+      "content": {
+        "primary_glob": "research/rss/[0-9]*.md",
+        "min_bytes": 400
+      }
+    },
+    {
+      "id": "twitter",
+      "producer": ".github/workflows/hourly-twitter.yml",
+      "artifacts": [
+        "research/twitter/[0-9]*.md",
+        "research/twitter/status/*.json"
+      ],
+      "freshness_paths": [
+        "research/twitter/[0-9]*.md"
+      ],
+      "cadence": {
+        "kind": "interval",
+        "hours": 3,
+        "freshness_slo_hours": 9
+      },
+      "validators": [
+        "scripts/validate_twitter_public_output.py",
+        "scripts/check_lane_content.py"
+      ],
+      "degraded_policy": "restore-baseline-and-fail",
+      "content": {
+        "primary_glob": "research/twitter/[0-9]*.md",
+        "min_bytes": 600
+      }
+    },
+    {
+      "id": "community",
+      "producer": ".github/workflows/4h-community.yml",
+      "artifacts": [
+        "research/community/[0-9]*-hn.md",
+        "research/community/[0-9]*-reddit.md"
+      ],
+      "freshness_paths": [
+        "research/community"
+      ],
+      "cadence": {
+        "kind": "interval",
+        "hours": 4,
+        "freshness_slo_hours": 11
+      },
+      "validators": [
+        "scripts/check_lane_content.py"
+      ],
+      "degraded_policy": "fail-closed",
+      "content": {
+        "primary_glob": "research/community/[0-9]*-hn.md",
+        "min_bytes": 400
+      }
+    },
+    {
+      "id": "blogs",
+      "producer": ".github/workflows/daily-ai-blogs.yml",
+      "artifacts": [
+        "research/blogs/[0-9]*.md"
+      ],
+      "freshness_paths": [
+        "research/blogs"
+      ],
+      "cadence": {
+        "kind": "interval",
+        "hours": 6,
+        "freshness_slo_hours": 14
+      },
+      "validators": [
+        "scripts/fetch_ai_blogs.py"
+      ],
+      "degraded_policy": "partial-source-fail-soft"
+    },
+    {
+      "id": "bluesky",
+      "producer": ".github/workflows/2h-bluesky.yml",
+      "artifacts": [
+        "research/bluesky/[0-9]*.md"
+      ],
+      "freshness_paths": [
+        "research/bluesky"
+      ],
+      "cadence": {
+        "kind": "daily",
+        "hours": 24,
+        "freshness_slo_hours": 30
+      },
+      "validators": [
+        "scripts/check_lane_content.py"
+      ],
+      "degraded_policy": "fail-closed",
+      "content": {
+        "primary_glob": "research/bluesky/[0-9]*.md",
+        "min_bytes": 80
+      }
+    },
+    {
+      "id": "arxiv",
+      "producer": ".github/workflows/daily-arxiv.yml",
+      "artifacts": [
+        "research/arxiv/[0-9]*-papers.md"
+      ],
+      "freshness_paths": [
+        "research/arxiv"
+      ],
+      "cadence": {
+        "kind": "daily",
+        "hours": 24,
+        "freshness_slo_hours": 30
+      },
+      "validators": [
+        "scripts/check_lane_content.py"
+      ],
+      "degraded_policy": "fail-closed",
+      "content": {
+        "primary_glob": "research/arxiv/[0-9]*-papers.md",
+        "min_bytes": 1500
+      }
+    },
+    {
+      "id": "youtube",
+      "producer": ".github/workflows/daily-youtube.yml",
+      "artifacts": [
+        "research/youtube/[0-9]*.md"
+      ],
+      "freshness_paths": [
+        "research/youtube"
+      ],
+      "cadence": {
+        "kind": "daily",
+        "hours": 24,
+        "freshness_slo_hours": 30
+      },
+      "validators": [
+        "scripts/fetch_youtube_signal.py",
+        "scripts/check_lane_content.py"
+      ],
+      "degraded_policy": "fail-loud-on-empty",
+      "content": {
+        "primary_glob": "research/youtube/[0-9]*.md",
+        "min_bytes": 600,
+        "reject_patterns": [
+          "(?m)^- Unique videos collected:\\s*0\\b",
+          "(?m)^- High-signal videos selected:\\s*0\\b"
+        ]
+      }
+    },
+    {
+      "id": "digest",
+      "producer": ".github/workflows/daily-digest.yml",
+      "artifacts": [
+        "research/digest/[0-9]*-digest.md"
+      ],
+      "freshness_paths": [
+        "research/digest"
+      ],
+      "cadence": {
+        "kind": "daily",
+        "hours": 24,
+        "freshness_slo_hours": 30
+      },
+      "validators": [
+        "scripts/check_digest_content.py",
+        "scripts/check_lane_content.py"
+      ],
+      "degraded_policy": "labelled-deterministic-fallback",
+      "content": {
+        "primary_glob": "research/digest/[0-9]*-digest.md",
+        "min_bytes": 2000
+      }
+    },
+    {
+      "id": "models",
+      "producer": ".github/workflows/24h-model-timeline.yml",
+      "artifacts": [
+        "research/models/[0-9]*-timeline.md",
+        "research/models/tickets/*.md"
+      ],
+      "freshness_paths": [
+        "research/models"
+      ],
+      "cadence": {
+        "kind": "daily",
+        "hours": 24,
+        "freshness_slo_hours": 30
+      },
+      "validators": [
+        "scripts/check_model_tickets.py",
+        "scripts/check_lane_content.py"
+      ],
+      "degraded_policy": "fail-closed",
+      "content": {
+        "primary_glob": "research/models/[0-9]*-timeline.md",
+        "min_bytes": 150
+      }
+    },
+    {
+      "id": "front-page",
+      "producer": ".github/workflows/daily-front-page.yml",
+      "artifacts": [
+        "research/front-page/[0-9]*-front-page.html",
+        "research/front-page/[0-9]*-front-page.png"
+      ],
+      "freshness_paths": [
+        "research/front-page"
+      ],
+      "cadence": {
+        "kind": "daily",
+        "hours": 24,
+        "freshness_slo_hours": 30
+      },
+      "validators": [
+        "scripts/check_generative_research.py",
+        "scripts/check_lane_content.py"
+      ],
+      "degraded_policy": "fail-closed",
+      "content": {
+        "primary_glob": "research/front-page/[0-9]*-front-page.html",
+        "min_bytes": 1500
+      }
+    },
+    {
+      "id": "arm",
+      "producer": ".github/workflows/arm-timeline.yml",
+      "artifacts": [
+        "research/arm/timeline.json"
+      ],
+      "freshness_paths": [
+        "research/arm/timeline.json"
+      ],
+      "cadence": {
+        "kind": "interval",
+        "hours": 2,
+        "freshness_slo_hours": 7
+      },
+      "validators": [
+        "dashboard/scripts/prebuild.mjs"
+      ],
+      "degraded_policy": "fail-closed"
+    },
+    {
+      "id": "wiki",
+      "producer": ".github/workflows/wiki-ingest.yml",
+      "artifacts": [
+        "research/wiki/log.md",
+        "research/wiki/index.json",
+        "research/wiki/entities/*.md",
+        "research/wiki/concepts/*.md",
+        "research/wiki/themes/*.md"
+      ],
+      "freshness_paths": [
+        "research/wiki/log.md"
+      ],
+      "cadence": {
+        "kind": "daily",
+        "hours": 24,
+        "freshness_slo_hours": 30
+      },
+      "validators": [
+        "scripts/check_wiki.py",
+        "scripts/build_wiki_index.py",
+        "scripts/check_lane_content.py"
+      ],
+      "degraded_policy": "fail-closed",
+      "content": {
+        "primary_glob": "research/wiki/log.md",
+        "min_bytes": 300,
+        "drop_ratio": 0.0
+      }
+    },
+    {
+      "id": "market-quotes",
+      "producer": ".github/workflows/market-quotes.yml",
+      "artifacts": [
+        "research/market/quotes.json"
+      ],
+      "freshness_paths": [
+        "research/market/quotes.json"
+      ],
+      "cadence": {
+        "kind": "interval",
+        "hours": 3,
+        "freshness_slo_hours": 9
+      },
+      "validators": [
+        "scripts/fetch_market_quotes.py"
+      ],
+      "degraded_policy": "per-symbol-stale-carry-forward"
+    },
+    {
+      "id": "model-pricing",
+      "producer": ".github/workflows/model-pricing.yml",
+      "artifacts": [
+        "research/market/model-pricing.json"
+      ],
+      "freshness_paths": [
+        "research/market/model-pricing.json"
+      ],
+      "cadence": {
+        "kind": "interval",
+        "hours": 6,
+        "freshness_slo_hours": 15
+      },
+      "validators": [
+        "scripts/fetch_model_pricing.py"
+      ],
+      "degraded_policy": "price-live-score-stale"
+    },
+    {
+      "id": "gpu-spot",
+      "producer": ".github/workflows/gpu-spot.yml",
+      "artifacts": [
+        "research/market/gpu-spot.json"
+      ],
+      "freshness_paths": [
+        "research/market/gpu-spot.json"
+      ],
+      "cadence": {
+        "kind": "interval",
+        "hours": 6,
+        "freshness_slo_hours": 15
+      },
+      "validators": [
+        "scripts/fetch_gpu_spot.py"
+      ],
+      "degraded_policy": "per-model-stale-carry-forward"
+    },
+    {
+      "id": "earnings",
+      "producer": ".github/workflows/daily-earnings.yml",
+      "artifacts": [
+        "research/earnings/*-*.md",
+        "research/earnings/index.json"
+      ],
+      "freshness_paths": [
+        "research/earnings"
+      ],
+      "cadence": {
+        "kind": "event"
+      },
+      "validators": [
+        "scripts/fetch_earnings_signal.py"
+      ],
+      "degraded_policy": "no-event-no-op"
+    },
+    {
+      "id": "generative-research",
+      "producer": ".github/workflows/generative-research.yml",
+      "artifacts": [
+        "research/generative/*.html",
+        "research/generative/*.ara.md",
+        "research/generative/*.claims.json",
+        "research/generative/index.json",
+        "research/claims/index.json"
+      ],
+      "freshness_paths": [
+        "research/generative"
+      ],
+      "cadence": {
+        "kind": "on_demand"
+      },
+      "validators": [
+        "scripts/check_generative_research.py",
+        "scripts/build_claim_index.py"
+      ],
+      "degraded_policy": "fail-closed"
+    }
+  ]
+}

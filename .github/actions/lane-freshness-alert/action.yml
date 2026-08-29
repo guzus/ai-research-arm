@@ -49,7 +49,15 @@ runs:
     - name: Check lane freshness
       id: check
       shell: bash
-      run: python3 scripts/check_lane_freshness.py || true
+      run: |
+        set +e
+        python3 scripts/check_lane_freshness.py
+        code=$?
+        set -e
+        # Exit 2 is the script's expected alert state; later steps deliver the
+        # alert and fail deliberately. Exit 1 is an internal/registry error and
+        # must never be converted into a healthy green run.
+        [ "$code" -eq 0 ] || [ "$code" -eq 2 ] || exit "$code"
 
     # ── Channel 1: hooker (relays to Telegram) ─────────────────────────────
     # Idempotency-Key is a per-day hash over the stale set, so the ubuntu-latest

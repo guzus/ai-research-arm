@@ -33,6 +33,7 @@ plus runner-queue slack, so a single transient failure does not page.
 from __future__ import annotations
 
 import argparse
+import glob
 import json
 import os
 import subprocess
@@ -41,24 +42,20 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Callable, Optional
 
+from artifact_slos import freshness_entries
+
 # lane -> max tolerated age in hours before we consider it stale.
 # Cadence comments reference the schedules documented in CLAUDE.md.
 # On-demand lanes (generative, issues) and experimental A/B lanes
 # (twitter-deepseek*, twitter-viral) are intentionally excluded: they
 # have no fixed cadence, so staleness is not a meaningful signal there.
+_FRESHNESS_ENTRIES = freshness_entries()
 LANE_THRESHOLDS_HOURS: dict[str, float] = {
-    "rss": 8,           # every 2h at :30 — four missed cycles + runner slack
-    "twitter": 9,       # every 3h at :07
-    "community": 11,    # every 4h at :19
-    "blogs": 14,        # every 6h at :13 — two missed cycles + queue slack
-    "bluesky": 30,      # daily at 10:11
-    "arxiv": 30,        # daily at 06:13
-    "youtube": 30,      # daily at 23:20
-    "digest": 30,       # daily at 00:00
-    "models": 30,       # daily at 06:29
-    "front-page": 30,   # daily at 00:30
-    "arm": 7,           # every 2h at :45 (arm-timeline.yml) — 3 missed cycles + slack
-    "wiki": 30,         # daily, after the digest (workflow_run)
+    entry["id"]: float(entry["cadence"]["freshness_slo_hours"])
+    for entry in _FRESHNESS_ENTRIES
+}
+LANE_FRESHNESS_PATHS: dict[str, tuple[str, ...]] = {
+    entry["id"]: tuple(entry["freshness_paths"]) for entry in _FRESHNESS_ENTRIES
 }
 
 FRESH = "fresh"
@@ -67,7 +64,10 @@ MISSING = "missing"
 UNKNOWN = "unknown"
 
 # States that should trigger an alert.
-ALERTING_STATES = frozenset({STALE, MISSING})
+# UNKNOWN means the watchdog cannot prove freshness (commonly truncated git
+# history or registry/path drift). Treating uncertainty as green recreated the
+# exact silent-outage class this watchdog exists to close.
+ALERTING_STATES = frozenset({STALE, MISSING, UNKNOWN})
 
 
 @dataclass
@@ -98,7 +98,13 @@ def _git(args: list[str], repo_root: str) -> Optional[str]:
 
 
 def lane_dir_exists(lane: str, repo_root: str) -> bool:
-    return os.path.isdir(os.path.join(repo_root, "research", lane))
+    paths = LANE_FRESHNESS_PATHS.get(lane, (f"research/{lane}",))
+    return all(
+        bool(glob.glob(os.path.join(repo_root, path)))
+        if any(char in path for char in "*?[")
+        else os.path.exists(os.path.join(repo_root, path))
+        for path in paths
+    )
 
 
 def lane_age_hours(lane: str, now_epoch: int, repo_root: str) -> Optional[float]:
@@ -107,8 +113,8 @@ def lane_age_hours(lane: str, now_epoch: int, repo_root: str) -> Optional[float]
     Returns None when the lane has no commits reachable in the current
     history (e.g. a shallow clone, or a genuinely never-written lane).
     """
-    path = f"research/{lane}"
-    last = _git(["log", "-1", "--format=%ct", "--", path], repo_root)
+    paths = LANE_FRESHNESS_PATHS.get(lane, (f"research/{lane}",))
+    last = _git(["log", "-1", "--format=%ct", "--", *paths], repo_root)
     if not last:
         return None
     try:
@@ -194,7 +200,7 @@ def _emit_step_summary(report: str, stale_lanes: list[str]) -> None:
     if not summary_path:
         return
     header = (
-        f"### 🔴 Pipeline freshness: {len(stale_lanes)} lane(s) stale\n\n"
+        f"### 🔴 Pipeline freshness: {len(stale_lanes)} lane(s) alerting\n\n"
         if stale_lanes
         else "### ✅ Pipeline freshness: all lanes fresh\n\n"
     )

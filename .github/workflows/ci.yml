@@ -26,6 +26,7 @@ on:
       - 'COMPONENTS.md'
       - 'docs/backend-matrix.md'
       - 'data/agent-backends.json'
+      - 'data/artifact-slos.json'
       - 'README.md'
   pull_request:
     paths:
@@ -51,6 +52,7 @@ on:
       - 'COMPONENTS.md'
       - 'docs/backend-matrix.md'
       - 'data/agent-backends.json'
+      - 'data/artifact-slos.json'
       - 'README.md'
   workflow_dispatch:
 

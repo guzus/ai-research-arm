@@ -27,6 +27,7 @@ REQUIRED_CONTRACT_PATHS = {
     "uv.lock",
     "ARA_CATALOG.json",
     "COMPONENTS.md",
+    "data/artifact-slos.json",
 }
 BROAD_RESEARCH_GLOBS = {"research/**", "research/**/*", "research/**/**"}
 
