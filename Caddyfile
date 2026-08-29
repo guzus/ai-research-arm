@@ -3,7 +3,7 @@
 	encode zstd gzip
 
 	@html {
-		path / /index.html /today /today/* /twitter /twitter/* /models /models/* /frontpage /frontpage/* /research /research/* /wiki /wiki/* /agents /agents/ /design/*
+		path / /index.html /today /today/* /twitter /twitter/* /models /models/* /frontpage /frontpage/* /research /research/* /wiki /wiki/* /agents /agents/ /design/* /pricing /pricing/
 		not path *.js *.css *.json *.xml *.txt *.png *.jpg *.jpeg *.webp *.gif *.svg *.ico *.avif *.woff *.woff2
 	}
 	header @html Cache-Control "public, max-age=0, must-revalidate"
@@ -38,8 +38,35 @@
 		Referrer-Policy "strict-origin-when-cross-origin"
 	}
 
-	# Every legitimate public SPA route has a generated HTML entry point. Return
-	# a real 404 for unknown/missing routes instead of a homepage soft-404.
-	try_files {path} {path}/index.html =404
-	file_server
+	# Generated HTML is authoritative and wins first. /pricing is the one
+	# interactive-only shell route. A syntactically valid dated route can also be
+	# opened before that artifact reaches the current Railway image; redirect it
+	# temporarily to the generated section alias instead of publishing a soft-404
+	# shell under a false date. Every malformed route, unknown slug, and missing
+	# asset remains a real 404.
+	@pricingShell path /pricing /pricing/
+	@datedShell {
+		path_regexp datedShell ^/(today|twitter|frontpage|models)/[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])/?$
+		not file {path}/index.html
+	}
+	route {
+		try_files {path} {path}/index.html
+
+		handle @pricingShell {
+			header X-Robots-Tag "noindex, nofollow"
+			rewrite * /index.html
+			file_server
+		}
+
+		handle @datedShell {
+			header Cache-Control "no-store"
+			header CDN-Cache-Control "no-store"
+			redir * /{re.datedShell.1} 307
+		}
+
+		handle {
+			try_files {path} =404
+			file_server
+		}
+	}
 }

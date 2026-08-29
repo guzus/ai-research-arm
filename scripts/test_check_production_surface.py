@@ -118,8 +118,9 @@ class EvaluateTest(unittest.TestCase):
 
     def test_default_matrix_covers_routes_discovery_404_and_user_agents(self):
         names = {probe.name for probe in cps.DEFAULT_PROBES}
-        self.assertTrue({"home", "today", "twitter", "models", "research", "wiki"} <= names)
+        self.assertTrue({"home", "today", "today-kst-current", "twitter", "models", "research", "wiki", "pricing", "pricing-trailing-slash"} <= names)
         self.assertTrue({"manifest", "robots", "sitemap", "feed", "llms", "real-404"} <= names)
+        self.assertTrue({"malformed-today-404", "missing-asset-404"} <= names)
         self.assertTrue({"evidence-search-contract", "public-claims-contract"} <= names)
         self.assertTrue({"ua-googlebot", "ua-perplexity", "ua-claudebot-policy", "ua-gptbot-policy", "ua-ccbot-policy"} <= names)
 

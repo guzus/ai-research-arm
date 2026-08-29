@@ -57,6 +57,7 @@ import {
   openAraFigureModal,
   scrollToHashIfPresent,
 } from './ara-enhance';
+import { resolvePublishedDate } from './date-routing';
 
 // Sanitizer-level guarantee: any sanitized anchor keeping target="_blank"
 // MUST carry rel="noopener noreferrer". Sanitized content is adversarial /
@@ -904,7 +905,15 @@ function displayDate(d: Date): string {
 
 function shiftDate(days: number): void {
   latestAliasRequested = null;
-  currentDate.setDate(currentDate.getDate() + days);
+  const requested = new Date(currentDate);
+  requested.setDate(requested.getDate() + days);
+  if (activeTab === 'today' && manifest) {
+    const published = resolvePublishedDate(manifest.today, fmtDate(requested));
+    if (!published) return;
+    currentDate = ymdToDate(published);
+  } else {
+    currentDate = requested;
+  }
   const newMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
   if (newMonth.getTime() !== calendarMonth.getTime()) {
     calendarMonth = newMonth;
@@ -1332,7 +1341,12 @@ function handleCalendarClick(e: Event): void {
   const dayEl = target.closest('.cal-day') as HTMLElement | null;
   if (dayEl && dayEl.dataset.date) {
     latestAliasRequested = null;
-    const parts = dayEl.dataset.date.split('-');
+    const requestedDate = dayEl.dataset.date;
+    const published = manifest
+      ? resolvePublishedDate(manifest.today, requestedDate)
+      : requestedDate;
+    if (!published) return;
+    const parts = published.split('-');
     currentDate = new Date(+parts[0], +parts[1] - 1, +parts[2]);
     activeTab = 'today';                 // picking a date opens that day's view
     syncTabUi();
@@ -2080,6 +2094,18 @@ function findMostRecentAvailable(tab: DateTab, targetDateStr: string): string | 
     else break;
   }
   return best;
+}
+
+/** Keep Today state, labels, canonical metadata, and URL on a real publication.
+ * The KST browser day advances nine hours before the UTC digest date; using
+ * that local day while rendering the previous digest creates a false dated
+ * page and a refresh-only 404. */
+function normalizeTodayPublicationDate(): void {
+  if (activeTab !== 'today' || !manifest) return;
+  const published = resolvePublishedDate(manifest.today, fmtDate(currentDate));
+  if (!published || published === fmtDate(currentDate)) return;
+  currentDate = ymdToDate(published);
+  calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 }
 
 function offsetDateStr(dateStr: string, days: number): string {
@@ -6247,7 +6273,7 @@ function renderFocusReader(data: FocusReaderData): void {
 
 // ── Main load ─────────────────────────────────────────
 async function load(): Promise<void> {
-  const dateStr = fmtDate(currentDate);
+  let dateStr = fmtDate(currentDate);
   const requestId = ++loadRequestId;
   if (activeLoadController) activeLoadController.abort();
   const controller = new AbortController();
@@ -6270,10 +6296,19 @@ async function load(): Promise<void> {
   // dispatch; renderResearchIndex re-adds it when it actually paints the shelf.
   document.body.classList.remove('research-shelf');
 
-  updateRoute();
-  showLoading();
-
   try {
+    // Root, /today, Go to today, calendar clicks, T, and adjacent-date
+    // shortcuts all converge here. Wait for the publication manifest before
+    // emitting a dated Today URL or painting a date label.
+    if (activeTab === 'today' && !manifest) {
+      await loadManifest();
+      if (requestId !== loadRequestId) return;
+    }
+    normalizeTodayPublicationDate();
+    dateStr = fmtDate(currentDate);
+    updateRoute();
+    showLoading();
+
     if (activeTab === 'pricing') {
       const pricing = await withTimeout(
         Promise.all([loadModelPricing(controller.signal), loadGpuSpot(controller.signal)]),
