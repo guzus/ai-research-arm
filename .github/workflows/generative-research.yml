@@ -12,7 +12,7 @@ name: Generative Research
 # Backends, mutually exclusive at runtime. The DEFAULT is not named here —
 # it lives in data/agent-backends.json (lane generative-research-default) and
 # is resolved at runtime, so re-routing the default needs no workflow change:
-#   * opus-5   — Explicit premium native Anthropic path on claude-opus-5. Same OAuth
+#   * opus-5   — CURRENT DEFAULT. Premium native Anthropic path on claude-opus-5. Same OAuth
 #                credential and billing surface as `claude`, so it keeps the
 #                recovery retry; unlike `claude` its provenance is verified
 #                against the committed index row before the push.
@@ -22,7 +22,7 @@ name: Generative Research
 #                fails preflight — a fallback stays on the cheap reliable path.
 #   * fable-5  — explicit, premium native Anthropic path (model claude-fable-5).
 #   * codex    — Codex CLI signed in with ChatGPT-managed auth.json.
-#   * opencode-deepseek-v4-flash — CURRENT DEFAULT. opencode CLI running
+#   * opencode-deepseek-v4-flash — opencode CLI running
 #                DeepSeek V4 Flash through OpenCode Go,
 #                authenticated by the plain OPENCODE_API_KEY env var (no
 #                auth.json seeding). The Moonshot route is gone, not
@@ -155,6 +155,7 @@ jobs:
       contents: write
       pull-requests: write
       issues: write
+      actions: write
       id-token: write
 
     steps:
@@ -197,7 +198,7 @@ jobs:
           rm -rf -- "$quarantine"
 
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         env:
           GIT_CONFIG_NOSYSTEM: "1"
           GIT_CONFIG_GLOBAL: /dev/null
@@ -217,12 +218,12 @@ jobs:
           echo "timestamp=$(date -u +'%Y-%m-%d-%H%M%S')" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '22'
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           enable-cache: true
 
@@ -266,6 +267,24 @@ jobs:
           # Routing SSOT: the default backend lives in data/agent-backends.json
           # (lane generative-research-default), not in this file.
           DEFAULT_BACKEND="$(python3 scripts/resolve_backend_lane.py generative-research-default)"
+
+          normalize_backend() {
+            local selector="$1"
+            if [ "$selector" = "default" ]; then
+              selector="$DEFAULT_BACKEND"
+            fi
+            case "$selector" in
+              codex|openai-codex) selector="codex" ;;
+              opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) selector="opencode-deepseek-v4-flash" ;;
+              cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) selector="cursor-grok-4p6-fast" ;;
+              deepseek) selector="deepseek-v4-flash" ;;
+              glm-5.2|glm5.2|glm52|glm-5p2) selector="glm-5p2" ;;
+              claude-opus-4-8|claude-sonnet-5) selector="claude" ;;
+              claude-fable-5|fable-5) selector="fable-5" ;;
+              claude-opus-5|opus-5|opus5) selector="opus-5" ;;
+            esac
+            printf '%s\n' "$selector"
+          }
 
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             TOPIC="$INPUT_TOPIC"
@@ -315,17 +334,7 @@ jobs:
                 | sed -E 's/^[[:space:]]*[Bb][Aa][Cc][Kk][Ee][Nn][Dd][[:space:]]*:[[:space:]]*//' \
                 | tr -d '[:space:]' \
                 | tr '[:upper:]' '[:lower:]' || true)
-              case "$CANDIDATE" in
-                default) CANDIDATE="$DEFAULT_BACKEND" ;;
-                claude-opus-4-8|claude-sonnet-5) CANDIDATE="claude" ;;
-                claude-fable-5|fable-5) CANDIDATE="fable-5" ;;
-                claude-opus-5|opus-5|opus5) CANDIDATE="opus-5" ;;
-                codex|openai-codex) CANDIDATE="codex" ;;
-                opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) CANDIDATE="opencode-deepseek-v4-flash" ;;
-                cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) CANDIDATE="cursor-grok-4p6-fast" ;;
-                deepseek) CANDIDATE="deepseek-v4-flash" ;;
-                glm-5.2|glm5.2|glm52|glm-5p2) CANDIDATE="glm-5p2" ;;
-              esac
+              CANDIDATE="$(normalize_backend "$CANDIDATE")"
               if [ -n "${CANDIDATE:-}" ]; then
                 if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "opus-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-deepseek-v4-flash" ] && [ "$CANDIDATE" != "cursor-grok-4p6-fast" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
                   echo "unsupported backend/model: $CANDIDATE" >&2
@@ -357,17 +366,7 @@ jobs:
             exit 1
           fi
 
-          case "$BACKEND" in
-            default) BACKEND="$DEFAULT_BACKEND" ;;
-            codex|openai-codex) BACKEND="codex" ;;
-            opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) BACKEND="opencode-deepseek-v4-flash" ;;
-            cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) BACKEND="cursor-grok-4p6-fast" ;;
-            deepseek) BACKEND="deepseek-v4-flash" ;;
-            glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
-            claude-opus-4-8|claude-sonnet-5) BACKEND="claude" ;;
-            claude-fable-5|fable-5) BACKEND="fable-5" ;;
-            claude-opus-5|opus-5|opus5) BACKEND="opus-5" ;;
-          esac
+          BACKEND="$(normalize_backend "$BACKEND")"
           if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "opus-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-deepseek-v4-flash" ] && [ "$BACKEND" != "cursor-grok-4p6-fast" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
@@ -676,7 +675,7 @@ jobs:
       # The workflow_dispatch path has no comment surface; skip.
       - name: Acknowledge research request
         if: github.event_name == 'issues'
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
             await github.rest.issues.createComment({
@@ -708,7 +707,7 @@ jobs:
         id: gen-claude
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env: &claude_env
           # Security: GEN_TOPIC / GEN_PROMPT / GEN_TAGS are NOT in this env
           # block. The agent reads them from $GITHUB_WORKSPACE/.gen-input/
@@ -1895,7 +1894,7 @@ jobs:
         id: gen-claude-retry
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env: *claude_env
         with: *claude_with
 
@@ -1933,7 +1932,7 @@ jobs:
 
       - name: Install Codex CLI
         if: steps.effective.outputs.backend == 'codex'
-        run: npm install -g @openai/codex
+        run: npm install -g --ignore-scripts @openai/codex@0.151.0
 
       # This backend uses the same staged-input files, writer-owned commit, and
       # verifier/methodology artifact contract as the Claude/Fireworks paths.
@@ -2156,7 +2155,7 @@ jobs:
         id: gen-deepseek
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env: &deepseek_v4_flash_env
           # Redirect Claude Code CLI to Fireworks' Anthropic-compatible endpoint,
           # whose base URL omits /v1 — the client appends /v1/messages. Every
@@ -3364,7 +3363,7 @@ jobs:
         id: gen-deepseek-retry
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env: *deepseek_v4_flash_env
         with: *deepseek_v4_flash_with
 
@@ -3446,7 +3445,7 @@ jobs:
         id: gen-deepseek-retry-2
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env: *deepseek_v4_flash_env
         with: *deepseek_v4_flash_with
 
@@ -3474,9 +3473,20 @@ jobs:
             exit 0
           fi
           FILENAME=$(basename "$(printf '%s\n' "$NEW_FILES" | head -n1)")
-          echo "file=$FILENAME" >> "$GITHUB_OUTPUT"
-          echo "has_file=true" >> "$GITHUB_OUTPUT"
-          echo "Generated: research/generative/$FILENAME"
+          ARTICLE_SLUG=$(jq -er --arg file "$FILENAME" '
+            map(select(.file == $file))
+            | if length == 1 then .[0].slug else error("expected exactly one index row") end
+          ' research/generative/index.json)
+          if [[ ! "$ARTICLE_SLUG" =~ ^[a-z0-9][a-z0-9-]{0,119}$ ]]; then
+            echo "::error::Writer produced an invalid final slug: $ARTICLE_SLUG"
+            exit 1
+          fi
+          {
+            echo "file=$FILENAME"
+            echo "slug=$ARTICLE_SLUG"
+            echo "has_file=true"
+          } >> "$GITHUB_OUTPUT"
+          echo "Generated: research/generative/$FILENAME (slug: $ARTICLE_SLUG)"
 
       # fable-5 and opus-5 are explicit, opt-in model selectors, so provenance
       # must be exact — the whole point of choosing one is knowing which model
@@ -3611,7 +3621,6 @@ jobs:
         run: |
           set -euo pipefail
           article="research/generative/$FILE"
-          stem="${FILE%.html}"
           claims="$GITHUB_WORKSPACE/.gen-claims-ledger.json"
           verifier="$GITHUB_WORKSPACE/.gen-verifier-findings.json"
           redteam="$GITHUB_WORKSPACE/.gen-redteam-findings.json"
@@ -3635,16 +3644,20 @@ jobs:
             exit 1
           fi
 
-          cp "$claims"   "research/generative/${stem}.claims.json"
-          cp "$verifier" "research/generative/${stem}.verification.json"
-          cp "$redteam"  "research/generative/${stem}.redteam.json"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            "research/generative/${stem}.claims.json" \
-            "research/generative/${stem}.verification.json" \
-            "research/generative/${stem}.redteam.json"
-          git commit --amend --no-edit
+          if ! uv run python scripts/finalize_generative_publication.py \
+              --repo "$GITHUB_WORKSPACE" \
+              --article-file "$FILE" \
+              --ledger "$claims" \
+              --verification "$verifier" \
+              --redteam "$redteam"; then
+            echo "::error::Transactional methodology + claim-index finalization failed"
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative research/claims
+            exit 1
+          fi
+          uv run python scripts/build_claim_index.py --check
           echo "passed=true" >> "$GITHUB_OUTPUT"
 
       # Per-run quality report — corpus-audit metrics on the article
@@ -3749,7 +3762,7 @@ jobs:
 
       - name: Post results to issue
         if: always() && github.event_name == 'issues'
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         env:
           HAS_FILE: ${{ steps.outfile.outputs.has_file }}
           FILE_NAME: ${{ steps.outfile.outputs.file }}
@@ -4182,3 +4195,35 @@ jobs:
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+
+      # Translate only production publications. A workflow_dispatch from a PR
+      # branch remains reviewable on that branch and cannot enqueue a Korean
+      # translation whose canonical English source is not yet on main.
+      #
+      # workflow_dispatch is one of the events GitHub permits a GITHUB_TOKEN
+      # to create. The explicit actions:write permission above is still
+      # required for the dispatch API call.
+      - name: Dispatch Korean translation
+        id: dispatch-translation
+        if: >-
+          always()
+          && steps.outfile.outputs.has_file == 'true'
+          && steps.push.outputs.pushed == 'true'
+          && steps.publish-branch.outputs.branch == github.event.repository.default_branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ARTICLE_SLUG: ${{ steps.outfile.outputs.slug }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$ARTICLE_SLUG" =~ ^[a-z0-9][a-z0-9-]{0,119}$ ]]; then
+            echo "::error::Refusing to dispatch an invalid article slug: $ARTICLE_SLUG"
+            exit 1
+          fi
+          gh workflow run translate-generative-research.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref "$DEFAULT_BRANCH" \
+            -f "slug=$ARTICLE_SLUG" \
+            -f overwrite=false \
+            -f auto_merge=true
+          echo "::notice::Queued Korean translation for $ARTICLE_SLUG"

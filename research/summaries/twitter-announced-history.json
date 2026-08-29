@@ -1,1320 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 18:00 UTC",
-    "headline": "GOOGLE NOW CONTROLS ~25% OF GLOBAL AI COMPUTE \u2014 3.8M TPUS, 1.3M GPUS",
-    "source": "@tszzl",
-    "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/tszzl/status/2048816421434228946"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-27 18:00 UTC",
-    "headline": "GPT-5.5 HIGH DEBUTS AT #9 ON LMARENA CODE ARENA WITH SCORE 1500 \u2014 SOLID BUT NOT DOMINANT",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/mark_k/status/2048816876860457453"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 18:00 UTC",
-    "headline": "SEMIANALYSIS CORRECTS GOOGLE TPU 8T SPEC \u2014 HBM3E IS 12-HI NOT 8-HI; 6 STACKS NEEDED FOR 216GB",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048817567783030796"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 18:00 UTC",
-    "headline": "INFERENCEX SHIPS DEEPSEEK-V4 MTP ON SGLANG/B300 \u2014 7X THROUGHPUT AT ISO-INTERACTIVITY ON BLACKWELL",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-04-27-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048768824345510259"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "OPENAI'S 2019 MISSION GUARDRAILS ALL GONE \u2014 100X CAP, AGI CLAUSE, MS EXCLUSIVITY REMOVED ON DAY ONE OF MUSK TRIAL",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2048860619693084727"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "COGNITION RAISING AT $25B \u2014 UP FROM $10.2B IN SEPT, $4B LAST MARCH",
-    "source": "search:business",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/search?q=Cognition%20%2425B"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "AI STARTUPS HIT WITH HIGHER PRICES, MONTHS-LONG NVIDIA GPU WAIT TIMES AS CLOUDS RESERVE SUPPLY FOR OPENAI, ANTHROPIC",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048862265017815180"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "XIAOMI MIMO-V2.5 LANDS ON HUGGING FACE",
-    "source": "@_akhaliq",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/_akhaliq/status/2048861462991360155"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "INTEL ISSCC 2026 \u2014 UCIE-S OVER 22NM ORGANIC SUBSTRATE HITS 48 GB/S/LANE AT 30MM, BEATS 3NM EMIB BY 3X DATA RATE",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048870022685081886"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "MUSK LIVE-TWEETS PERJURY CLAIM FROM COURTHOUSE \u2014 SAYS ALTMAN HID OWNERSHIP OF OPENAI STARTUP FUND IN CONGRESSIONAL TESTIMONY",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2048833679791641057"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-27 21:00 UTC",
-    "headline": "SILVER LAKE'S HUTCHINS \u2014 AI IS A TSUNAMI, LEVERAGED SOFTWARE COMPANIES ARE MELTING ICE CUBES",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-27-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048875869997760764"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "MICROSOFT-OPENAI EXCLUSIVITY ENDS \u2014 OPENAI CLEARED TO SELL ON AWS AND GOOGLE CLOUD",
-    "source": "Trending on X",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://twitter.com/i/trending/2048754063697744070"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "OPENAI MODELS ARRIVING ON AWS BEDROCK IN COMING WEEKS \u2014 AMAZON HOSTING APRIL 28 LIVESTREAM WITH GARMAN AND OPENAI LEADS",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2048913264013197748"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "MUSK V. ALTMAN TRIAL: 9 JURORS SEATED, VERDICT ADVISORY ONLY \u2014 JUDGE GONZALEZ ROGERS DECIDES",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2048886982449733974"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "OPENAI QUIETLY REMOVED AGI CLAUSE FROM CHARTER MID-JURY-SELECTION \u2014 MUSK: 'THEY STOLE A NONPROFIT'",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2048894730340384830"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "NVIDIA TOPS $5 TRILLION MARKET CAP ON RECORD $216.61 CLOSE \u2014 SEMICONDUCTOR RALLY HITS 18 STRAIGHT SESSIONS",
-    "source": "Trending on X",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://twitter.com/i/trending/2048811178273710563"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "POWER-SEMI LEAD TIMES STRETCH TO 30 WEEKS ON AI SERVER DEMAND \u2014 INFINEON, TI, ONSEMI HIT FIRST",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2048911765279584366"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-28 01:00 UTC",
-    "headline": "GROK CONFIRMS: CURSOR AGENT ON CLAUDE OPUS 4.6 WIPED POCKETOS PROD DB AND BACKUPS IN 9 SECONDS",
-    "source": "@grok",
-    "source_file": "research/summaries/2026-04-28-twitter-01h-headlines.json",
-    "url": "https://x.com/grok/status/2048930431756636403"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "OPENAI STRIPS AGI CLAUSE FROM MICROSOFT DEAL DURING MUSK V. ALTMAN JURY SELECTION \u2014 REV-SHARE NOW RUNS THROUGH 2030 INDEPENDENT OF AGI",
-    "source": "@simonw",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/simonw/status/2048834476323823983"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "MUSK V. ALTMAN: 9 JURORS SEATED \u2014 VERDICT WILL BE ADVISORY ONLY, JUDGE GONZALEZ ROGERS DECIDES THE CASE",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2048886982449733974"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "XIAOMI OPEN-SOURCES MIMO-V2.5 ON HUGGING FACE UNDER MIT LICENSE \u2014 COMMERCIAL DEPLOYMENT, FINE-TUNING PERMITTED",
-    "source": "@_akhaliq",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/_akhaliq/status/2048861462991360155"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "SAKANA AI LAUNCHES FUGU BETA \u2014 MULTI-AGENT ORCHESTRATION SYSTEM WITH RL-TRAINED 'CONDUCTOR' PAPER",
-    "source": "@hardmaru",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/hardmaru/status/2048954720761635041"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "SEMIANALYSIS: INFERENCEX SHIPS DEEPSEEK V4 PRO ON VLLM \u2014 B300 UP TO 8X FASTER THAN H200 IN DISAGGREGATED INFERENCE",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2048957715955765284"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "OPENAI MODELS COMING TO AWS BEDROCK \u2014 AMAZON HOSTS APRIL 28 LIVESTREAM WITH MATT GARMAN AND OPENAI LEADERS",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2048913264013197748"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 04:00 UTC",
-    "headline": "THE INFORMATION: AI STARTUPS HIT MONTHS-LONG NVIDIA GPU WAITS AS CLOUDS RESERVE SUPPLY FOR OPENAI, ANTHROPIC AND INTERNAL USE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-28-twitter-04h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048862265017815180"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-28 07:00 UTC",
-    "headline": "CHINA NDRC ORDERS META TO UNWIND $2B MANUS ACQUISITION \u2014 FIRST FORCED UNWINDING OF A FOREIGN AI DEAL",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/theinformation/status/2048809612304949303"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 07:00 UTC",
-    "headline": "RUMOR: GOOGLE TPU V9 SHIFTS TO DIRECT-TO-TSMC WAFER ORDERS, AWS-ANNAPURNA-STYLE \u2014 BROADCOM, MEDIATEK DOWNGRADED",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/jukan05/status/2048992506851868780"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-04-28 07:00 UTC",
-    "headline": "OPENCLAW PERF RELEASE \u2014 FIRST-OUTPUT LATENCY 1S \u2192 43MS, PLUGIN BOOTSTRAP 265MS \u2192 8MS",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/steipete/status/2049012392869138842"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-04-28 07:00 UTC",
-    "headline": "OPENCLAW CONFIRMED IN 300-USER ENTERPRISE DEPLOYMENT ON GCP/GKE BEHIND GVISOR SANDBOX",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/steipete/status/2049015421236384185"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 07:00 UTC",
-    "headline": "MOLLICK: MICROSOFT'S OUTLOOK AGENT MODE A 'WASTED OPPORTUNITY' \u2014 SILENTLY COMMITS USERS TO OBLIGATIONS",
-    "source": "@emollick",
-    "source_file": "research/summaries/2026-04-28-twitter-07h-headlines.json",
-    "url": "https://x.com/emollick/status/2048976454654820789"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "OPENAI CODEX GOES FULL COMPUTER-USE \u2014 OPENS BROWSER, CLICKS THROUGH GITHUB AND CLOSES ISSUE WHEN RATE-LIMITED",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/steipete/status/2049035044702843053"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "WSJ \u2014 OPENAI MISSED 1B WEEKLY-ACTIVE-USER TARGET; $1.5B OF CAPACITY SITTING UNUSED",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2049031119006216661"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "OPENAI OPEN-SOURCES SYMPHONY \u2014 EVERY GITHUB ISSUE GETS ITS OWN CODEX AGENT",
-    "source": "@maocaohu",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/maocaohu/status/2049065198649253960"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "DEEPSEEK CUTS API CACHE PRICING TO 1/10 ACROSS THE BOARD; V4-PRO STAYS 75% OFF",
-    "source": "@maocaohu",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/maocaohu/status/2049065198649253960"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "SK HYNIX \u2014 HYBRID-BONDING HBM YIELD MATERIALLY IMPROVED VS TWO YEARS AGO",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/jukan05/status/2049027230215594275"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "EX-DEEPMIND RESEARCHER'S SUPERINTELLIGENCE STARTUP RAISES RECORD $1.1B SEED ROUND",
-    "source": "@shehzadyounis",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/shehzadyounis/status/2049062100572758515"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-04-28 09:00 UTC",
-    "headline": "SAFETY STUDY \u2014 CLAUDE OPUS 4.5 AND GPT-5.2 RANK SAFEST ON DELUSION/PARANOIA TESTS; GROK 4.1 FLAGGED FOR REINFORCING HARM",
-    "source": "@Hodl_fm",
-    "source_file": "research/summaries/2026-04-28-twitter-09h-headlines.json",
-    "url": "https://x.com/Hodl_fm/status/2049022908853637321"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "XAI TRAINING GROK 5 ON COLOSSUS 2 \u2014 10 TRILLION PARAMETERS, ~20X SIZE OF GROK 4.3",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/mark_k/status/2049070786799976750"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "CHINA BLOCKS META'S $2B MANUS AI ACQUISITION \u2014 META PREPARING TO UNWIND THE DEAL",
-    "source": "@enes1050392",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/enes1050392/status/2049108348432249012"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "GOOGLE SIGNS PENTAGON DEAL FOR CLASSIFIED AI WORK \u2014 REVERSES 2018 PROJECT MAVEN EXIT",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2049081961222955403"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "MICROSOFT\u2013OPENAI PARTNERSHIP REWRITTEN THROUGH 2032 \u2014 AGI TRIGGER CLAUSE QUIETLY DROPPED",
-    "source": "@monkfromearth",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/monkfromearth/status/2049107595538084271"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "MICROSOFT OPEN-SOURCES TRELLIS.2 \u2014 4B-PARAM IMAGE-TO-3D MODEL, 1536\u00b3 PBR ASSETS",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2049099376476459372"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "ADANI TO BUILD ~1GW AI DATA CENTER HUB IN VIZAG \u2014 AMONG INDIA'S LARGEST DIGITAL INFRA PROJECTS",
-    "source": "@IndianIndex",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/IndianIndex/status/2049108234838147359"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 12:00 UTC",
-    "headline": "PALANTIR LANDS MULTI-YEAR AI DEPLOYMENT WITH CLEVELAND-CLIFFS (NYSE: CLF)",
-    "source": "@PalantirOg",
-    "source_file": "research/summaries/2026-04-28-twitter-12h-headlines.json",
-    "url": "https://x.com/PalantirOg/status/2049109137213050956"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-04-28 15:00 UTC",
-    "headline": "GOOGLE SIGNS PENTAGON DOD DEAL \u2014 GEMINI CLEARED FOR CLASSIFIED WORK DESPITE 600+ STAFF REVOLT",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-28-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2049141713352953965"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-04-28 15:00 UTC",
-    "headline": "ANTHROPIC MYTHOS MODEL BREACHED \u2014 OPENAI ALSO HIT BY BRIEF LEAK, FRONTIER WEIGHTS NOW IN ATTACKER REACH",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-28-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2049111469506060425"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-04-28 15:00 UTC",
-    "headline": "POOLSIDE OPEN-SOURCES LAGUNA XS.2 \u2014 33B-TOTAL / 3B-ACTIVE MOE BUILT FOR AGENTIC CODING",
-    "source": "@HuggingFace",
-    "source_file": "research/summaries/2026-04-28-twitter-15h-headlines.json",
-    "url": "https://x.com/HuggingFace/status/2049146102515908975"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-04-28 15:00 UTC",
-    "headline": "GPT-5.6 SPOTTED IN THE WILD \u2014 \"MORE PROGRESS IN NEXT 3 MONTHS THAN PAST 3 YEARS\"",
-    "source": "@iruletheworldmo",
-    "source_file": "research/summaries/2026-04-28-twitter-15h-headlines.json",
-    "url": "https://x.com/iruletheworldmo/status/2049145069333057974"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 15:00 UTC",
-    "headline": "MAGNETAR: HYPERSCALER AI CAPEX TO HIT $3T BY 2029 VS $1.5T CASH FLOW \u2014 $1.5T EXTERNAL FUNDING GAP",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-28-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2049125277054173612"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 15:00 UTC",
-    "headline": "EX-NVIDIA AND DEEPMIND RESEARCHERS LAUNCHING WORLD-MODEL STARTUPS WITH NINE-FIGURE ROUNDS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-04-28-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2049149179180568943"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-04-28 15:00 UTC",
-    "headline": "SPACEX SEC FILING \u2014 MUSK COULD GET 200M SHARES TIED TO MILESTONES AHEAD OF PLANNED JUNE IPO",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-04-28-twitter-15h-headlines.json",
-    "url": "https://x.com/mark_k/status/2049144256699249039"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "OPENAI CODEX UPDATE ADDS /SIDE COMMAND; GPT-5.5 NOW KEEPS CODEX RUNNING FOR DAYS TO BUILD OS KERNELS",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/steipete/status/2050016270574080188"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "SEMIANALYSIS \u2014 WAFER-MAKER ASPs TURN; LEADING-EDGE LOGIC DEMAND INFLECTS 2027, 2028+ EPI DEALS LOCKING ~20% HIGHER",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2050032500399841527"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "APPLE EARNINGS READ-THROUGH \u2014 TSMC LEADING-EDGE SoC CAPACITY, NOT MEMORY, IS THE BINDING SHIPMENT CONSTRAINT",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050024550176522452"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "KOREA APRIL CHIP EXPORTS \u2014 DRAM +83% QoQ, SSD +181% QoQ; DRAM CONTRACT PRICES UP 26% VS MARCH",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050025480225788287"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "HUAWEI GUIDES AI-CHIP REVENUE +60% TO ~$12B THIS YEAR; MAJORITY OF ORDERS FOR LATEST ASCEND 950PR",
-    "source": "@egarciagarcia",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/egarciagarcia/status/2050069370689171930"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "GROK 4.3 RANKS #1 ON VALS AI CORPFIN v2 BENCHMARK, AHEAD OF GPT-5.5 AND CLAUDE ON 200+ PAGE CREDIT AGREEMENTS",
-    "source": "@XFreeze",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/XFreeze/status/2050056011084411376"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 04:00 UTC",
-    "headline": "MISTRAL AI NAMED TO TIME100 MOST INFLUENTIAL COMPANIES 2026 AND TOP 10 FOR AI",
-    "source": "@MistralAI",
-    "source_file": "research/summaries/2026-05-01-twitter-04h-headlines.json",
-    "url": "https://x.com/MistralAI/status/2049988769928056852"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 07:00 UTC",
-    "headline": "GROK 4.3 GOES LIVE ON XAI API \u2014 ~500M PARAMS, 40-60% CHEAPER THAN 4.20, +321 ELO ON AGENTIC TASKS",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-01-twitter-07h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2050107378863886441"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 07:00 UTC",
-    "headline": "GOOGLE CLOUD LAUNCHES GEMINI ENTERPRISE AGENT PLATFORM \u2014 CRYPTOGRAPHIC AGENT IDS, REGISTRY, ZERO-TRUST",
-    "source": "@Geekissimo",
-    "source_file": "research/summaries/2026-05-01-twitter-07h-headlines.json",
-    "url": "https://x.com/Geekissimo/status/2050107956927078900"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-01 07:00 UTC",
-    "headline": "ANTHROPIC PUBLISHES LABOR-IMPACT DATA \u2014 PROGRAMMERS #1 AT 74.5% OF WORK NOW TOUCHING CLAUDE",
-    "source": "@launchreadiness",
-    "source_file": "research/summaries/2026-05-01-twitter-07h-headlines.json",
-    "url": "https://x.com/launchreadiness/status/2050103924414206431"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 07:00 UTC",
-    "headline": "ANTHROPIC EYEING $900B+ FUNDING ROUND AS WHITE HOUSE BLOCKS MYTHOS PROGRAM EXPANSION",
-    "source": "@revolterab",
-    "source_file": "research/summaries/2026-05-01-twitter-07h-headlines.json",
-    "url": "https://x.com/revolterab/status/2050103638488469618"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 07:00 UTC",
-    "headline": "RELIANCE \u00d7 META APPOINT FOUNDING CEO FOR INDIA AI JOINT VENTURE",
-    "source": "@arora_deva5228",
-    "source_file": "research/summaries/2026-05-01-twitter-07h-headlines.json",
-    "url": "https://x.com/arora_deva5228/status/2050103206907379764"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-01 07:00 UTC",
-    "headline": "FIRST RANDOMIZED TRIAL ON GOOGLE AI OVERVIEWS \u2014 38% FEWER ORGANIC CLICKS, ZERO-CLICK RATE 54% \u2192 72%",
-    "source": "@searchless_ai",
-    "source_file": "research/summaries/2026-05-01-twitter-07h-headlines.json",
-    "url": "https://x.com/searchless_ai/status/2050108465977114894"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 07:00 UTC",
-    "headline": "STRIPE LINK WALLET NOW LETS USERS AUTHORIZE AUTONOMOUS AI AGENTS TO SPEND VIA APPROVAL FLOWS",
-    "source": "@DeepThoughtAR",
-    "source_file": "research/summaries/2026-05-01-twitter-07h-headlines.json",
-    "url": "https://x.com/DeepThoughtAR/status/2050108081451979023"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "APPLE SHIPS INTERNAL CLAUDE.MD FILES TO PRODUCTION IN APPLE SUPPORT APP V5.13 \u2014 CONFIRMS CLAUDE CODE USE FOR IOS APP DEV",
-    "source": "@aaronp613",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/aaronp613/status/2049986504617820551"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "CLAUDE SECURITY ENTERS PUBLIC BETA \u2014 AUTONOMOUS CODEBASE VULN SCANNER FOR EVERY CLAUDE ENTERPRISE CUSTOMER",
-    "source": "@claudeai",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/claudeai/status/2049898739783897537"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "CURSOR LAUNCHES SECURITY REVIEW FOR TEAMS/ENTERPRISE \u2014 TWO ALWAYS-ON AGENTS BLOCK PRS AND POST FINDINGS TO SLACK",
-    "source": "@cursor_ai",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/cursor_ai/status/2049926283061035254"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "MICROSOFT LAUNCHES WORD LEGAL AGENT INSIDE $30 COPILOT BUNDLE \u2014 UNDERCUTS HARVEY'S $11B LEGAL-AI MOAT BY ~40X",
-    "source": "@BradSmi",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/BradSmi/status/2049993319800066119"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "FORMER TSMC PACKAGING VP DOUGLAS YU JOINS MEDIATEK \u2014 INDUSTRY SOURCE: 'TSMC ASSUMED CUSTOMERS WOULD NOT LEAVE BUT THEY DID'",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050136199621456079"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "GOOGLE CLOUD GROWS 70% IN Q1 VS AZURE 40% / AWS 28% \u2014 Q1 CLOUD BACKLOG +400% YOY, ADDED $219B SEQUENTIALLY",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/theinformation/status/2049938192455889380"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-01 09:00 UTC",
-    "headline": "ANTHROPIC USED 1M-CONVERSATION SYCOPHANCY STUDY TO RETRAIN OPUS 4.7 AND MYTHOS PREVIEW",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-01-twitter-09h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2049927618397614466"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 12:00 UTC",
-    "headline": "NEBIUS TO ACQUIRE EIGEN AI FOR ~$643M IN CASH + CLASS A SHARES, FOLDING INFERENCE OPTIMIZATION INTO TOKEN FACTORY",
-    "source": "@mvcinvesting",
-    "source_file": "research/summaries/2026-05-01-twitter-12h-headlines.json",
-    "url": "https://x.com/mvcinvesting/status/2050179412482568535"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 12:00 UTC",
-    "headline": "ANTHROPIC LINES UP $50B ROUND AT $900B+ VALUATION \u2014 INVESTORS GIVEN 48 HOURS TO ALLOCATE, BOARD DECISION IN MAY",
-    "source": "@QuikInsightz",
-    "source_file": "research/summaries/2026-05-01-twitter-12h-headlines.json",
-    "url": "https://x.com/QuikInsightz/status/2050029044369158417"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 12:00 UTC",
-    "headline": "ANTHROPIC TARGETING OCTOBER 2026 IPO; ROUND WOULD MARK 14\u00d7 RE-RATING FROM $61.5B IN MARCH 2025",
-    "source": "@QuikInsightz",
-    "source_file": "research/summaries/2026-05-01-twitter-12h-headlines.json",
-    "url": "https://x.com/QuikInsightz/status/2050029044369158417"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-01 12:00 UTC",
-    "headline": "CLAUDE MYTHOS SOLVES 30% OF BIOINFORMATICS PROBLEMS THAT STUMPED EVERY HUMAN EXPERT ON BIOMYSTERYBENCH (99 PROBLEMS)",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-01-twitter-12h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2049624600741560340"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 12:00 UTC",
-    "headline": "EIGEN AI'S OPTIMIZED OPEN-SOURCE MODELS ALREADY ON ARTIFICIAL ANALYSIS LEADERBOARD AT 615+ TOK/S; NEBIUS DEAL CLOSES IN COMING WEEKS",
-    "source": "@LEAPTRADER_",
-    "source_file": "research/summaries/2026-05-01-twitter-12h-headlines.json",
-    "url": "https://x.com/LEAPTRADER_/status/2050179099142823943"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-01 12:00 UTC",
-    "headline": "DEMIS HASSABIS AT YC: BIGGER CONTEXT WINDOWS ARE BRUTE FORCE \u2014 NEXT AI ARCHITECTURE NEEDS SLEEP-STYLE MEMORY REPLAY",
-    "source": "@vitrupo",
-    "source_file": "research/summaries/2026-05-01-twitter-12h-headlines.json",
-    "url": "https://x.com/vitrupo/status/2050184718579331427"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 12:00 UTC",
-    "headline": "GROK 4.3 LIVE ON XAI API WITH 1M-TOKEN CONTEXT; HITS #7 ON ARTIFICIAL ANALYSIS INDEX, EDGES META MUSE SPARK",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-01-twitter-12h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2050119051892986164"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "PENTAGON SIGNS CLASSIFIED-NETWORK AI DEALS WITH 7 LABS \u2014 SPACEX, OPENAI, GOOGLE, NVIDIA, REFLECTION, MICROSOFT, AWS \u2014 ANTHROPIC EXCLUDED",
-    "source": "@JerryDunleavy",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/JerryDunleavy/status/2050204126437404896"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "ALTMAN: 'WE WANT TO BUILD TOOLS TO AUGMENT AND ELEVATE PEOPLE, NOT ENTITIES TO REPLACE THEM' \u2014 READ AS DIRECT SHOT AT DARIO/MYTHOS",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/sama/status/2050229058425045178"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "MICROSOFT\u2013OPENAI PARTNERSHIP REWRITE \u2014 NADELLA AND ALTMAN TRADE EXCLUSIVITY FOR LOCKED-IN REVENUE SHARE; OPENAI CAN NOW SHIP ON AWS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050221224156901847"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "NEBIUS CRO: 'DEMAND FAR EXCEEDS OUR SUPPLY' \u2014 CAPITAL, NOT CHIP SUPPLY, IS NOW THE BIGGEST AI INFRASTRUCTURE BOTTLENECK",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050228889817911595"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "ALIBABA QWEN INKS STRATEGIC PARTNERSHIP WITH FIREWORKS AI FOR PRODUCTION DEPLOYMENT OF CLOSED-WEIGHTS QWEN MODELS",
-    "source": "@Alibaba_Qwen",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/Alibaba_Qwen/status/2050232280082522505"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "OPENAI MISSED INTERNAL Q1 REVENUE TARGET; ADVERTISING GROWTH NOW PARAMOUNT AS CONSUMER DEPENDENCE DEEPENS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050206131570491875"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-01 15:00 UTC",
-    "headline": "EX-WAYMO LEAD SHIMON WHITESON LEAVES AFTER 6 YEARS TO RUN NEW MULTI-AGENT LEARNING TEAM AT GOOGLE DEEPMIND",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-01-twitter-15h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2050226734109471047"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "ALTMAN WALKS BACK 'AUGMENT NOT ENTITIES' DIG \u2014 'USE CODEX OR CLAUDE CODE, WHATEVER WORKS BEST' POST PULLS 4.4K LIKES IN 30 MIN",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/sama/status/2050274547061129577"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "PENTAGON CTO ON CNBC: ANTHROPIC STILL 'SUPPLY CHAIN RISK' BUT MYTHOS IS 'SEPARATE NATIONAL SECURITY MOMENT' HANDLED GOVT-WIDE",
-    "source": "@CNBC",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/CNBC/status/2050205857145659685"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "ANTHROPIC ANNOUNCES CODE WITH CLAUDE DEVELOPER CONFERENCE RETURNS MAY 19 \u2014 SF MAIN STAGE + LONDON EXTENDED MAY 20",
-    "source": "@claudeai",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/claudeai/status/2050252933866930339"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "DEMIS HASSABIS WELCOMES SHIMON WHITESON FROM WAYMO TO LEAD DEEPMIND'S NEW MULTI-AGENT LEARNING TEAM",
-    "source": "@demishassabis",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/demishassabis/status/2050239954765185345"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "STARCLOUD IN TALKS FOR $200M RAISE ONE MONTH AFTER LAST ROUND \u2014 SPACE DATA-CENTER STARTUP HEATING UP",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050274138976047569"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 18:00 UTC",
-    "headline": "MANUS ACQUISITION FALLOUT FORCING CHINESE AI STARTUPS TO RETHINK CAPITAL-RAISE PLAYBOOK",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050266539018825783"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "OPENAI SHIPS CLAUDE CODE \u2192 CODEX AUTO-MIGRATION 64 MIN AFTER ALTMAN'S 'USE CODEX OR CLAUDE CODE' CLIMBDOWN \u2014 'YOUR MOVE'",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2050290618187055175"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "PENTAGON CTO CONFIRMS DOW DEAL IS 8 LABS, NOT 7 \u2014 ORACLE ADDED, ANTHROPIC STILL EXCLUDED FROM CLASSIFIED-NETWORK ROLLOUT",
-    "source": "@USWREMichael",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/USWREMichael/status/2050325961212649627"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "META ACQUIRES ASSURED ROBOT INTELLIGENCE FOR 'METABOT' HUMANOID PUSH \u2014 REALITY LABS BETS ANDROID-STYLE LICENSING",
-    "source": "@alexandr_wang",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/alexandr_wang/status/2050305805455700378"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "OPENAI CLAIMS GPT-5.5 API REVENUE GROWING 2X FASTER THAN ANY PRIOR LAUNCH; CODEX REVENUE DOUBLED IN UNDER 7 DAYS",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2050250926888468929"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "LEGORA HITS $5.6B VALUATION ON $50M EXTENSION LED BY NVIDIA NVENTURES \u2014 FIRST LEGAL-TECH BET; HARVEY AT $11B",
-    "source": "@credx_club",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/credx_club/status/2050182697159622980"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "MICROSOFT Q1: AI USAGE DRAGGING DOWN AZURE CLOUD MARGINS \u2014 COMPANY EFFECTIVELY BOOSTING PRICES",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050304304599191601"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-01 21:00 UTC",
-    "headline": "HANGZHOU COURT RULES AI-ONLY FIRINGS ILLEGAL \u2014 SET AS GUIDING PRECEDENT; FIRMS MUST REASSIGN, RETRAIN, OR FOLLOW FORMAL REDUNDANCY",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-01-twitter-21h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2050250164645007770"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 01:00 UTC",
-    "headline": "OPENAI OPENS CHATGPT-SUBSCRIPTION SIGN-IN ON OPENCLAW \u2014 STEIPETE'S OPEN AGENT PLATFORM NOW ON OAI SEAT QUOTAS",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-02-twitter-01h-headlines.json",
-    "url": "https://x.com/sama/status/2050357911915028689"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 01:00 UTC",
-    "headline": "XAI SHIPS GROK IMAGINE AGENT MODE PUBLIC BETA \u2014 UNIFIED TEXT/IMAGE/VIDEO CANVAS, PREMIUM + DESKTOP ONLY",
-    "source": "@imagine",
-    "source_file": "research/summaries/2026-05-02-twitter-01h-headlines.json",
-    "url": "https://x.com/imagine/status/2050327174629228889"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 01:00 UTC",
-    "headline": "APPLE HIKES MAC MINI BASE PRICE $599 \u2192 $799 \u2014 AI-DRIVEN NAND SHORTAGE KILLS THE 256GB ENTRY SKU",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-02-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050374333848322448"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 01:00 UTC",
-    "headline": "META DAUS DIP FOR FIRST TIME SINCE 2021 IN Q1 26 \u2014 A16Z CHART CIRCULATING ON DEVELOPER X",
-    "source": "@tszzl",
-    "source_file": "research/summaries/2026-05-02-twitter-01h-headlines.json",
-    "url": "https://x.com/tszzl/status/2050366962581295429"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 01:00 UTC",
-    "headline": "GOOGLE SEARCH AI MODE ENTERS WIDER A/B TESTING \u2014 FIRST COMMUNITY-OBSERVED ROLLOUT",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-02-twitter-01h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2050380316817395839"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "CEREBRAS UPSIZES IPO TO ~$40B TARGET / ~$4B RAISE \u2014 MONDAY ROADSHOW START, ~60-80% ABOVE APRIL PRIVATE MARK",
-    "source": "@Tickerwire",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/Tickerwire/status/2050412002510856197"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "CEREBRAS BACKLOG: $24.6B RPO / $510M 2025 REVENUE (+76%) / $87.9M NET INCOME / OPENAI ~$10B CONTRACT ANCHOR",
-    "source": "@realarmaansidhu",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/realarmaansidhu/status/2048246142819835953"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "KOREA INDUSTRY SOURCES: AI CPUS TARGETING 300-400GB DRAM ON-PACKAGE \u2014 4X TYPICAL CPU CONFIGS",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050393594499150332"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "DRAM ASPS UP 100%+ \u2014 'MEMORY SHORTAGE TO LAST ANOTHER YEAR' AS AI CPUS DEVOUR COMMODITY DRAM",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050393020340765133"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "OPENAI CODEX SHIPS 'PETS' FEATURE \u2014 /HATCH-PET SKILL, CLIPPY REANIMATION, ~58% OF 5H CREDITS PER HATCH",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/sama/status/2050402088266694689"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 04:00 UTC",
-    "headline": "FOUNDERS FUND ADDS $624M TO ANDURIL AT $60B VALUATION \u2014 TOTAL BET NOW $2.6B DESPITE >$1B/YR LOSSES EXPECTED",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-04h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050296726649544904"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 06:00 UTC",
-    "headline": "GOOGLE GEMINI 3.1 FLASH LITE GA IMMINENT \u2014 VERTEX AI EMAILS FLASH 2 CUSTOMERS ON MIGRATION",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-02-twitter-06h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2050449347137937437"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 06:00 UTC",
-    "headline": "NEW GEMINI 3 FLASH CHECKPOINT ON LM ARENA \u2014 REVIEWERS SAY OUTPUT QUALITY CLOSER TO 3.1 PRO THAN CURRENT FLASH",
-    "source": "@marmaduke091",
-    "source_file": "research/summaries/2026-05-02-twitter-06h-headlines.json",
-    "url": "https://x.com/marmaduke091/status/2050430054056767994"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 06:00 UTC",
-    "headline": "NEBIUS ACQUIRES EIGEN AI FOR $643M CASH AND SHARES \u2014 FOLDS OPEN-SOURCE INFERENCE STACK INTO NEBIUS TOKEN FACTORY",
-    "source": "@jiahanjimliu",
-    "source_file": "research/summaries/2026-05-02-twitter-06h-headlines.json",
-    "url": "https://x.com/jiahanjimliu/status/2050454445310521626"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 06:00 UTC",
-    "headline": "EIGEN AI #1 ACROSS 25 OPEN-SOURCE MODELS ON ARTIFICIAL ANALYSIS \u2014 QWEN3 CODER 480B AT 255.8 T/S, ~51% FASTER THAN GOOGLE VERTEX",
-    "source": "@HyperTechInvest",
-    "source_file": "research/summaries/2026-05-02-twitter-06h-headlines.json",
-    "url": "https://x.com/HyperTechInvest/status/2050443561951269104"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 06:00 UTC",
-    "headline": "SAMSUNG NAND LTA FLOOR PRICE FLIPS ABOVE Q3 SPOT \u2014 LONG-TERM-AGREEMENT eSSD CONTRACTS NOW PRICED AT PREMIUM TO SPOT",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-02-twitter-06h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050439372126986554"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 09:00 UTC",
-    "headline": "XAI CONSOLE SHIPS VOICE CLONING \u2014 $4.20 PER 1M CHARS TTS, 89 VOICES, 28 LANGUAGES, US-ONLY API",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-02-twitter-09h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2050472651919863885"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 09:00 UTC",
-    "headline": "MUSK: GROK VOICE IS USED BY STARLINK RIGHT NOW \u2014 FIRST EXPLICIT IN-HOUSE ENTERPRISE DEPLOYMENT CALL-OUT",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-02-twitter-09h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2050475355258151330"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 09:00 UTC",
-    "headline": "XAI TTS PRICED AT ROUGHLY 1/50TH OF ELEVENLABS REFERENCE ON 20-MIN SCRIPT \u2014 $0.08 VS $6",
-    "source": "@Sashadnx",
-    "source_file": "research/summaries/2026-05-02-twitter-09h-headlines.json",
-    "url": "https://x.com/Sashadnx/status/2050505944216928319"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 09:00 UTC",
-    "headline": "DEMIS HASSABIS AMPLIFIES GOOGLE I/O 2026 COUNTDOWN \u2014 KEYNOTE MAY 19-20, NEW GEMINI MODELS EXPECTED",
-    "source": "@demishassabis",
-    "source_file": "research/summaries/2026-05-02-twitter-09h-headlines.json",
-    "url": "https://x.com/demishassabis/status/2050493397928988783"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-02 09:00 UTC",
-    "headline": "VIRAL AGENTS OF CHAOS PAPER IS RECYCLED \u2014 ARXIV 2602.20021 FROM FEB 2026, IN CIRCULATION SINCE MARCH",
-    "source": "@Arcane_Aii",
-    "source_file": "research/summaries/2026-05-02-twitter-09h-headlines.json",
-    "url": "https://x.com/Arcane_Aii/status/2050495389300842995"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 12:00 UTC",
-    "headline": "MARK_K CLAIMS OPENAI CODEX ENGINEER CONFIRMED CHATGPT-INTO-CODEX SUPER-APP MERGER \u2014 NO PRIMARY OPENAI CORROBORATION",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-05-02-twitter-12h-headlines.json",
-    "url": "https://x.com/mark_k/status/2050514062862106930"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-02 12:00 UTC",
-    "headline": "DEMIS HASSABIS LOGS SEQUOIA AI ASCENT FIRESIDE CHAT WITH KONSTANTINE BUHLER \u2014 DEEPMIND, AGI, ALPHAFOLD; NO CONCRETE NEWS",
-    "source": "@demishassabis",
-    "source_file": "research/summaries/2026-05-02-twitter-12h-headlines.json",
-    "url": "https://x.com/demishassabis/status/2050539386475786708"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-02 12:00 UTC",
-    "headline": "MICROSOFT RELEASES DELULU FILL-IN-THE-MIDDLE CODE-COMPLETION BENCHMARK ON HUGGING FACE",
-    "source": "@HuggingPapers",
-    "source_file": "research/summaries/2026-05-02-twitter-12h-headlines.json",
-    "url": "https://x.com/HuggingPapers/status/2050550142948757823"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 15:00 UTC",
-    "headline": "ANTHROPIC ARR HITS ~$44B PER SEMIANALYSIS \u2014 UP FROM $9B END-2025, RECEIPT BEHIND RUMORED $900B-$1T RAISE",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-02-twitter-15h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2050577074763784400"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 15:00 UTC",
-    "headline": "ANTHROPIC IN TALKS TO BUY INFERENCE CHIPS FROM UK SRAM STARTUP FRACTILE \u2014 THE INFORMATION",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-02-twitter-15h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050578844571328690"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 15:00 UTC",
-    "headline": "OPENAI MISSED INTERNAL Q1 REVENUE TARGET; ADVERTISING NOW PARAMOUNT AS CONSUMER DEPENDENCE INTENSIFIES \u2014 THE INFORMATION",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050568505695654051"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 15:00 UTC",
-    "headline": "STANDARD INTELLIGENCE RAISES $75M FROM SEQUOIA + SPARK; KARPATHY ANGEL \u2014 VIDEO-TRAINED FDM-1 MODEL",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050591205633745241"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 18:00 UTC",
-    "headline": "THE INFORMATION: XAI'S GPU FLEET RUNNING AT ~11% UTILIZATION \u2014 3-6X BELOW PRIOR PUBLIC MFU BASELINES",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050606311440531809"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 18:00 UTC",
-    "headline": "BEDROCK-OPENAI LAUNCHES BUT AWS CUSTOMERS TELL THE INFORMATION: \"CLAUDE IS BETTER FOR CODING\"",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050621385467113870"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 18:00 UTC",
-    "headline": "STARCLOUD IN TALKS TO RAISE $200M ONE MONTH AFTER $170M SERIES A \u2014 POTENTIAL SUB-30-DAY DOUBLE-UP",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050636485938778120"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-02 18:00 UTC",
-    "headline": "MUSK VS OPENAI: CROSS-EXAMINATION RAISES DOUBTS ABOUT MUSK NARRATIVE PER THE INFORMATION POST-TRIAL WRAP",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050598702964695448"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-02 18:00 UTC",
-    "headline": "ALLEN AI RELEASES OLMPOOL: 26 7B-PARAM CHECKPOINTS WITH VARYING ARCHITECTURES TO STUDY LONG-CONTEXT EXTENSION",
-    "source": "@_akhaliq",
-    "source_file": "research/summaries/2026-05-02-twitter-18h-headlines.json",
-    "url": "https://x.com/_akhaliq/status/2050624406063800381"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "ALTMAN ENDORSES GPT-5.5 XHIGH IN FAST MODE \u2014 \"GOT PSYOPED BY TWITTER ON MEDIUM\" 3 DAYS BEFORE MAY 5 LAUNCH PARTY",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/sama/status/2050658558174437701"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "ALTMAN: \"SMARTER STILL THE MOST IMPORTANT THING\" \u2014 DROPS CHEAPER/FASTER PUSH AS OPENAI Q1 API REVENUE 2X PRIOR LAUNCH",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/sama/status/2050671161915371998"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "MICROSOFT Q1: AI USAGE DRAGS CLOUD MARGINS, MSFT \"EFFECTIVELY BOOSTING PRICES\" VIA USAGE-BASED PIVOT",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050666663259812001"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "SEMIANALYSIS: ABB ELECTRIFICATION Q1'26 ORDERS HIT RECORD +$6B \u2014 DATACENTER DEMAND EXTENDS Q4'25 +17% QOQ INVERSION",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2050681826226606387"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "STARLINK IPO DOCS: 8.9M SUBS (4X), ARPU DOWN 18% TO $81/MO AHEAD OF POTENTIAL $1T LISTING",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050674193629356040"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-02 21:00 UTC",
-    "headline": "KIMMONISMUS: \"I HOPE SONNET 4.8 WILL BE THE MODEL I HOPED OPUS 4.7 WOULD BE\" \u2014 OPUS 4.7 USER-DISSATISFACTION TAIL GROWS",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-02-twitter-21h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2050673775109177796"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-03 01:00 UTC",
-    "headline": "GEMINI \"POWERED BY OMNI\" STRING LEAKS IN VIDEO-GEN TAB \u2014 FIRST PRE-I/O HINT OF GOOGLE OMNI MODEL WITH NATIVE VIDEO OUTPUT",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-03-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2050705594458292496"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-03 01:00 UTC",
-    "headline": "ABB ELECTRIFICATION Q1'26 ORDERS HIT RECORD +$6B AS DATACENTER DEMAND INVERTS SEASONAL PATTERN \u2014 SEMIANALYSIS",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-03-twitter-01h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2050681826226606387"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-03 01:00 UTC",
-    "headline": "ALTMAN: \"I KEEP THINKING I WANT MODELS CHEAPER/FASTER, BUT BEING SMARTER IS STILL THE MOST IMPORTANT THING\"",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-03-twitter-01h-headlines.json",
-    "url": "https://x.com/sama/status/2050671161915371998"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-03 01:00 UTC",
-    "headline": "STARLINK QUADRUPLED TO 8.9M SUBSCRIBERS BUT REVENUE PER USER FELL 18% TO $81/MO \u2014 IPO DOCS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-03-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050674193629356040"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-03 04:00 UTC",
-    "headline": "NVIDIA-GROQ DEAL: GROQ TALENT TO OPTIMIZE RUBIN SOFTWARE; SRAM DATA-FLOW IP LANDS IN RUBIN ULTRA \u2014 SELL-SIDE",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-03-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050761931360022818"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-03 04:00 UTC",
-    "headline": "RUBIN ULTRA REPORTEDLY CARRIES 512MB ON-CHIP SRAM \u2014 ~4\u00d7 BLACKWELL B200, FIRST SPECIFIC FIGURE IN-CORPUS",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-03-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050761931360022818"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-03 04:00 UTC",
-    "headline": "SAMSUNG FOUNDRY 4NM FULLY BOOKED THROUGH 2027; HBM4 BASE DIE DRIVES NVIDIA, AMD, GOOGLE ORDERS",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-03-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050756475090550953"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-03 04:00 UTC",
-    "headline": "SAMSUNG FOUNDRY ON TRACK FOR H2'26 PROFITABILITY TURNAROUND AS HBM4 RAMP MAXES OUT 4NM LINE",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-03-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050756475090550953"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-05-03 04:00 UTC",
     "headline": "@SEMIANALYSIS_ POSTS OUT-OF-CHARACTER JANE STREET GRIFT TWEET \u2014 POSSIBLE COMPROMISE RECURRENCE OF JAN 4 HACK",
@@ -25498,5 +24184,1027 @@
     "headline": "SOFTBANK PLANS RECORD 1 TRILLION YEN ($6.3B) RETAIL BOND SALE IN JAPAN TO FUND AI COMMITMENTS",
     "source": "@tszzl",
     "url": "https://x.com/tszzl/status/2091708331023007995"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 09:58:06 UTC",
+    "headline": "NVIDIA IN TALKS TO INVEST IN, PARTNER WITH OR ACQUIRE ARAMCO-BACKED AI CHIPMAKER REBELLIONS",
+    "source": "@tahawultech",
+    "url": "https://x.com/tahawultech/status/2091822288828309630"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 09:58:06 UTC",
+    "headline": "UBS CUTS BROADCOM FY27 AI REVENUE ~$5B TO ~$130B ON LOWER GOOGLE TPU VOLUMES \u2014 SEES 6.4M TPUS IN 2027",
+    "source": "@naklongpoong",
+    "url": "https://x.com/naklongpoong/status/2091826921416118749"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 09:58:06 UTC",
+    "headline": "XIAOMI SHIPS LOCAL AI HOST ON IN-HOUSE XRING SILICON \u2014 O100 IS 6NM WITH WAFER-ON-WAFER NPU-DRAM BONDING",
+    "source": "@That_Kartikey",
+    "url": "https://x.com/That_Kartikey/status/2091788207679779198"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 09:58:06 UTC",
+    "headline": "XPENG ROBOTICS CLOSES $900M+ SERIES A AT $6.3B POST \u2014 IRON HUMANOID TO MASS PRODUCTION BY END-2026",
+    "source": "@thinkercar",
+    "url": "https://x.com/thinkercar/status/2091825844671123707"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-24 09:58:06 UTC",
+    "headline": "RL-TRAINED CODING MODEL PAINTS BY WRITING JAVASCRIPT \u2014 OUTPUT IS EDITABLE CODE, NOT PIXELS",
+    "source": "@mervenoyann",
+    "url": "https://x.com/mervenoyann/status/2091801467053072488"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "XIAOMI XRING O100 SPEC'D AT 1.22 TB/S NEAR-MEMORY BANDWIDTH \u2014 WAFER-ON-WAFER NPU-DRAM AT 1.4 MICRON PITCH",
+    "source": "@neil_shah",
+    "url": "https://x.com/neil_shah/status/2091874398756278472"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "XIAOMI DATES O100 AND D100 TO 2027 COMMERCIAL USE \u2014 AI CUBE RUNS 120B PARAMS LOCALLY AT 150W, STILL A PROTOTYPE",
+    "source": "@Nando_G_AI",
+    "url": "https://x.com/Nando_G_AI/status/2091875256663261478"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "STUDY CLAIMS CROSS-CUSTOMER PROMPT-CACHE READS ON LLM API RELAYS \u2014 ALL 5 GATEWAYS TESTED, OPENAI AND ANTHROPIC BOTH",
+    "source": "@Bell_QuoLu",
+    "url": "https://x.com/Bell_QuoLu/status/2091873947868705075"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "NVIDIA SAID TO RAISE AI SERVER PRICES OVER 15% ON VERA RUBIN AND GRACE BLACKWELL \u2014 MEMORY COSTS CITED",
+    "source": "@n5s_ai",
+    "url": "https://x.com/n5s_ai/status/2091875110533677111"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "TCS BUYS PORSCHE IT ARM MHP FOR 320 MILLION EUROS, SIGNS 1.25 BILLION EURO FIVE-YEAR AI MOBILITY DEAL",
+    "source": "@TCS",
+    "url": "https://x.com/TCS/status/2091874793553584211"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-24 13:08:17 UTC",
+    "headline": "AGENT SKILL LIBRARIES FAIL TO BEAT PLAIN CONTEXT \u2014 0.605 VS 0.602 ON GPT-5.3-CODEX IN CONTINUALSKILLBENCH ABLATION",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2091855138483032462"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "NVIDIA GROQ 3 LPX RACKS ENTER FULL PRODUCTION \u2014 NEBIUS FIRST CLOUD ADOPTER, PAIRED WITH VERA RUBIN NVL72",
+    "source": "@JonathanRoss321",
+    "url": "https://x.com/JonathanRoss321/status/2091914710325289435"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "NVIDIA AI SERVER SYSTEMS TO COST ABOUT 17% MORE \u2014 ADDS AT LEAST $5B TO A ONE-GIGAWATT DATA CENTER",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091903479434396010"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "75% OF AMERICANS NOW OPPOSE DATA CENTERS, UP FROM 42% A YEAR AGO \u2014 BOTH PARTIES MOVING TO RESTRICT",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091890001877323805"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "REDNOTE DOTS STUDIO SHIPS DOTS3-NOTE PREVIEW \u2014 OPEN-WEIGHT 280B TOTAL / 16B ACTIVE, 512K CONTEXT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2091886743171813732"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "PERPLEXITY HIRES ANDREW GORDON WILSON TO LEAD CONTINUAL LEARNING AND LONG-HORIZON RL RESEARCH",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2091909869796520394"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 15:51:04 UTC",
+    "headline": "ANALYST JEFF PU SEES GOOGLE TPU SHIPMENTS SURPASSING NVIDIA BY 2028",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2091896616353677773"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "SPACEX AND NVIDIA DESIGN SPACE-OPTIMIZED VERA RUBIN NVL72 \u2014 ORBIT LAUNCH Q4 2027, SCALE IN 2028",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2091939113008238838"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "NVIDIA $500B FINANCING PITCH HINGES ON GPUS HOLDING VALUE AS BANKABLE ASSETS \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091948741041279140"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "SEMIANALYSIS: AI CAPEX NEARS $3T THIS YEAR, AI DEBT TO TOP $7T \u2014 SECOND-LARGEST ASSET DEBT MARKET AFTER US MORTGAGES",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091934010318471562"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "ANTHROPIC ASKS JOB CANDIDATES HOW THEY'D FEEL IF THE STOCK WENT TO ZERO, PER AXIOS",
+    "source": "@MTSlive",
+    "url": "https://x.com/MTSlive/status/2091908034838868144"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "NVIDIA GROQ 3 LPX HITS 3,400 OUTPUT TOKENS/SEC ON GEMMA 4 31B AT 100K CONTEXT IN ARTIFICIAL ANALYSIS TESTING",
+    "source": "@nvidianewsroom",
+    "url": "https://x.com/nvidianewsroom/status/2091904293343252534"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "TAIWAN CHARGES NINE OVER ALLEGED SMUGGLING OF NVIDIA CHIPS INTO CHINA",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2091926963065876958"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-24 18:54:08 UTC",
+    "headline": "THOMSON REUTERS SHIPS IN-HOUSE LEGAL MODEL THOMSON 1 \u2014 $40M PROGRAM, $450K FINAL TRAINING RUN",
+    "source": "@ConorBronsdon",
+    "url": "https://x.com/ConorBronsdon/status/2091961489460715824"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "NVIDIA RUBIN ULTRA HBM SLASHED TO 192GB \u2014 ONE-FIFTH OF PREVIEWED 1TB, BELOW REGULAR RUBIN'S 288GB",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091994110911557679"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "MUSK TELLS CURSOR STAFF GROK HAS FALLEN BEHIND RIVALS; SPACEX $60B ACQUISITION NAMED BY THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091994016048890246"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "GPT-5.6 SOL API CUT TO $4 INPUT / $20 OUTPUT PER MTOK, REPORTED VALID THROUGH NOV 21",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2091969946846708120"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "NVIDIA WEIGHS MULTIBILLION PERPLEXITY FINANCING \u2014 VALUATION UP MORE THAN 50% FROM LAST ROUND",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091986418448892196"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "MISTRAL SIGNS SAUDI STATE AI FIRM HUMAIN FOR LOCALIZED FRONTIER MODELS IN CYBERSECURITY, VOICE, ARABIC",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2091964930715013224"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "SEMIANALYSIS: NVIDIA UP TO 5X MORE COST-EFFICIENT THAN AMD AT 150 TOK/S/USER \u2014 EVEN IF AMD SILICON WERE FREE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2091968131061387530"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-24 21:39:11 UTC",
+    "headline": "SAMSUNG, SK HYNIX STEP UP CHINA NAND CAPEX INTO 2027 ON AI-SERVER DEMAND; XI'AN X2 MOVES TO 280-LAYER V9",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2091999562340643274"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "SEC SUBPOENAS GOLDMAN, JPMORGAN, CITI, BOFA OVER FINANCING BEHIND SITUATIONAL AWARENESS AI-STOCK NEAR-COLLAPSE \u2014 FT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092042684190130500"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "ALABAMA SUBPOENAS OPENAI UNDER DECEPTIVE TRADE PRACTICES ACT OVER EVAL ESCAPE THAT BREACHED HUGGING FACE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092035823600554230"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "STEALTH MODEL OX ALPHA BURNS 11.6 TRILLION TOKENS IN THREE DAYS \u2014 2.6X OPENROUTER'S BIGGEST PRIOR LAUNCH",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092050483422855648"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "WIKIHOW SUES OPENAI IN SDNY OVER 11,000 SCRAPED ARTICLES AND 1,200 REGISTERED COPYRIGHTS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092041081663967381"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "HUGGING FACE ANNUALIZED REVENUE UP 50% IN TWO MONTHS TO OVER $150M \u2014 ABOUT 87X THE REPORTED $13B ASK",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092061147130376662"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "META TO LAUNCH HATCH WITHIN WEEKS, PREMIUM CONSUMER AGENT TIER POTENTIALLY $199.99 A MONTH \u2014 THE INFORMATION",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092027870373908713"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 01:47:30 UTC",
+    "headline": "SEMIANALYSIS RELEASES AGENTX 1.0, OPEN-SOURCE MULTI-TURN AGENTIC CODING BENCHMARK ACROSS GB300, MI355, B200",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092039363852902480"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "OPENAI RESTORES 5-HOUR RATE LIMIT ON PLUS FOR CHATGPT WORK AND CODEX; $100 AND $200 PRO TIERS EXEMPT",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2092058556707344708"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "ALABAMA AG STEVE MARSHALL SUBPOENAS OPENAI OVER 'COMPLETE LACK OF OVERSIGHT' IN HUGGING FACE BREACH",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092076635545801137"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "SWE-BENCH SCIENCE: TOP AGENT CLEARS 96.64% OF VISIBLE TESTS, JUST 47.90% PASS@1 ON HIDDEN ONES",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092088072624386209"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "DEEPMIND 'RECIRCULATION' CUTS GEMMA3 12B PERPLEXITY UP TO 35% WITH FROZEN WEIGHTS, COST MOVES TO PREFILL",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092071211480322435"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "CXMT NAMED LPDDR6 SUPPLIER FOR XIAOMI XRING-03 AT 10,667 MBPS AND 113.8 GB/S",
+    "source": "@tphuang",
+    "url": "https://x.com/tphuang/status/2092086800592609655"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 03:55:09 UTC",
+    "headline": "TCS BUYS PORSCHE IT ARM MHP AT EUR320M, SIGNS FIVE-YEAR EUR1.25BN AI MOBILITY DEAL",
+    "source": "@ETNOWlive",
+    "url": "https://x.com/ETNOWlive/status/2092094476026106365"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 07:03:43 UTC",
+    "headline": "PERPLEXITY CUTS GPT-5.6 SOL CREDIT PRICING 20% IN COMPUTER, LIVE NOW THROUGH NOV 21 2026",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2092135379545846250"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 07:03:43 UTC",
+    "headline": "PREDICTION MARKET NAMES Z.AI AS LAB BEHIND CLOAKED MODEL OX ALPHA \u2014 VOLUME LOW",
+    "source": "@nicbstme",
+    "url": "https://x.com/nicbstme/status/2092033524656410781"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 07:03:43 UTC",
+    "headline": "NOUS RESEARCH: SWITCHING MODELS MID-SESSION VOIDS ENTIRE PROMPT CACHE, FORCES FULL INPUT REPAY",
+    "source": "@Teknium",
+    "url": "https://x.com/Teknium/status/2092141955082019311"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-25 07:03:43 UTC",
+    "headline": "APODEX 1.1 MINI REPORTED AS QWEN 3.5 35B A3B MOE DERIVATIVE \u2014 LAUNCH POST NAMED NO BASE MODEL",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2092109965309657399"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 07:03:43 UTC",
+    "headline": "CHINESE MEDIA: CXMT EXPECTED AS KEY LPDDR6 SUPPLIER FOR XIAOMI XRING O3",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092144063902613878"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 09:47:10 UTC",
+    "headline": "AJINOMOTO RATIONS ABF FILM TO AI CUSTOMERS \u2014 LINES AT FULL CAPACITY, NEW CAPACITY FAR OUT, PER MERITZ CHECKS",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092157094271324610"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 09:47:10 UTC",
+    "headline": "OX ALPHA ATTRIBUTION FLIPS TO ZHIPU \u2014 GLM-5.3 AT 3X COST WHILE STEALTH MODEL UNREACHABLE FROM BEIJING",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2092158475333775420"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-25 09:47:10 UTC",
+    "headline": "GLM-5.2 BEATS GLM-5.3 ON KERNELBENCH-HARD PAGED ATTENTION \u2014 NEWER CHECKPOINT SKIPPED TRITON FOR RAW CUDA",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2092171758237351958"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 09:47:10 UTC",
+    "headline": "GROK BUILD 1.0.9 ADDS CHILD-AGENT BUDGETS, WORKFLOW DISCOVERY BY NAME, BACKGROUNDED SHELL COMMANDS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2092178491630387570"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-25 09:47:10 UTC",
+    "headline": "PHISHING CAMPAIGN SENT THROUGH OPENAI'S OWN DOMAIN CARRIES GMAIL OFFICIAL-SENDER BADGE",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2092159763479953768"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 13:06:17 UTC",
+    "headline": "APPLE LAUNCHES FIRST 2NM CHIP \u2014 M6 IN NEW MAC MINI, QUAD-DIE M5 ULTRA IN MAC STUDIO PITCHED AT FRONTIER AI",
+    "source": "@FirstSquawk",
+    "url": "https://x.com/FirstSquawk/status/2092236880234557623"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-25 13:06:17 UTC",
+    "headline": "APPLE CALLS M5 ULTRA ITS MOST POWERFUL CHIP EVER, BUILT FOR RUNNING FRONTIER AI MODELS ON-DEVICE",
+    "source": "@Polymarket",
+    "url": "https://x.com/Polymarket/status/2092237169217728682"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 13:06:17 UTC",
+    "headline": "OX ALPHA MATCHES OPUS 5 ON KERNELBENCH TOP-K AT 7.17% OF ROOFLINE, PLACES LAST ON SPARSE ATTENTION",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2092206366853148695"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-25 13:06:17 UTC",
+    "headline": "MODELSCOPE TEASES OPEN RELEASE OF QWEN3.8-FLASH-NEXT \u2014 THE ARCHITECTURE BEHIND QWEN4",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2092210590114553941"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 15:54:24 UTC",
+    "headline": "OPENAI'S FIRST IN-HOUSE ASIC JALAPENO BEATS NVIDIA GB200/GB300 BY 1.5-1.9X PER WATT ON INFERENCEX",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092253723640598761"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 15:54:24 UTC",
+    "headline": "OPENAI TO DEPLOY JALAPENO IN OWN FLEET BY YEAR-END; GEN 2 IN DEVELOPMENT, GEN 3 TAKING SHAPE",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2092261972360233427"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 15:54:24 UTC",
+    "headline": "APPLE M5 ULTRA: 512GB UNIFIED MEMORY AT 1.2TB/S, QUAD-DIE, 80-CORE GPU \u2014 SHIPS OCTOBER",
+    "source": "@alexocheema",
+    "url": "https://x.com/alexocheema/status/2092248148500492474"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 15:54:24 UTC",
+    "headline": "PERPLEXITY AND NVIDIA SHIP PORTABLE COMPUTER \u2014 FULLY LOCAL AGENT RUNTIME ON DGX SPARK",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2092270041471598820"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 15:54:24 UTC",
+    "headline": "NVIDIA IN TALKS TO INVEST IN PERPLEXITY AT VALUATION ABOVE $30 BILLION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092250748532744623"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-25 15:54:24 UTC",
+    "headline": "ANANDKUMAR LAUNCHES ACCELERATED UNDERSTANDING \u2014 NON-TRANSFORMER NEURAL-OPERATOR PHYSICS AI",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092244031002771643"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 15:54:24 UTC",
+    "headline": "GATIK RAISES $200M SERIES D AT $1B LED BY QIA AND KOCH; 100,000+ DRIVER-OUT FREIGHT DELIVERIES",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2092262211737542938"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "OPENAI JALAPENO BEATS NVIDIA VERA RUBIN NVL72 ON OUTPUT THROUGHPUT PER MEGAWATT \u2014 SEMIANALYSIS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092314842396828077"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "OPENAI BLOG NAMES UNANNOUNCED MODEL GPT-ASTRA \u2014 AI-WRITTEN KERNELS BEAT HUMAN EXPERTS BY 1.5-1.8X",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2092282443147497613"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "ANTHROPIC PITCHING $30 TRILLION ADDRESSABLE MARKET \u2014 ABOVE SPACEX'S $26.5T MAY FIGURE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092285615274705087"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "PHISHING MAIL SENT FROM OPENAI'S OWN VERIFIED DOMAIN VIA CHATGPT TRUSTED-CONTACT INVITE",
+    "source": "@altryne",
+    "url": "https://x.com/altryne/status/2092304565559607390"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "JALAPENO HITS 700 TOKENS/SEC/USER ON DEEPSEEK R1 VS 169 ON NVIDIA GB300",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2092302299213549757"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-25 18:53:01 UTC",
+    "headline": "TAIWAN CHARGES NINE INCLUDING NVIDIA EMPLOYEE OVER SMUGGLING AI SERVERS TO CHINA",
+    "source": "@AEIfdp",
+    "url": "https://x.com/AEIfdp/status/2092322839118447045"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-25 21:38:11 UTC",
+    "headline": "LEAK: OPENAI FINISHED 10T-PARAMETER PRETRAIN 'BEL' AS BASE FOR ASTRA AND GPT-6 \u2014 UNSOURCED, RIVAL LEAK CONTRADICTS ORDER",
+    "source": "@synthwavedd",
+    "url": "https://x.com/synthwavedd/status/2092326145270456377"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 21:38:11 UTC",
+    "headline": "PERPLEXITY ANNUALIZED REVENUE TOPS $750M; NVIDIA WEIGHING BACKING AT OVER $30B VALUATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092333712243413175"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-25 21:38:11 UTC",
+    "headline": "SKILD S1 CLAIMS 10-MINUTE UNSEEN ROBOT TASKS FROM A SINGLE VIDEO PROMPT WITH NO FINE-TUNING",
+    "source": "@SkildAI",
+    "url": "https://x.com/SkildAI/status/2092300842900865389"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 21:38:11 UTC",
+    "headline": "OPENAI LAUNCHES CHATGPT BUSINESS PREMIUM SEATS AT $100 PER SEAT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092335305366069305"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-25 21:38:11 UTC",
+    "headline": "WSJ: OPENAI HEAD OF DATA CENTERS CHRIS MALONE DEPARTED LAST WEEK, 17 MONTHS AFTER STARGATE LAUNCH",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092332661733990778"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 21:38:11 UTC",
+    "headline": "HUGGING FACE ANNUALIZED REVENUE UP 50% IN TWO MONTHS TO $150M ON PAID COMPUTE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092353818943963335"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-25 21:38:11 UTC",
+    "headline": "WSJ CONFIRMS ANTHROPIC IPO PITCH ABOVE $30T, TOPPING SPACEX'S $28.5T FILING ESTIMATE",
+    "source": "@WSJ",
+    "url": "https://x.com/WSJ/status/2092286402423660714"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "OPENAI SHIPS AGENT SIGN-IN \u2014 CHATGPT WORK BROWSER LOGS INTO WEBSITES WITHOUT MODEL SEEING USERNAME OR PASSWORD",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092418732215713898"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "SEMIANALYSIS: OPENAI JALAPENO UP TO 2X BETTER PERF-PER-WATT THAN JULY RUBIN NVL72 \u2014 AND WON WITH SPEC DECODING OFF",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092420526241108467"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "OPENAI'S ROON: BOTH INCUMBENTS NOW HAVE AN INTEREST IN SAYING RECURSIVE SELF-IMPROVEMENT IS AT HAND",
+    "source": "@tszzl",
+    "url": "https://x.com/tszzl/status/2092420937505546261"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "DYLAN PATEL: OPENAI WILL TURN PROFITABLE IN Q3",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092398551670345950"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "NEBIUS RAISES $5.75B IN CONVERTIBLE DEBT \u2014 ALL OF IT INTO DATA CENTERS AND GPU CAPACITY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092371627094716620"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 01:53:25 UTC",
+    "headline": "GOOGLE STUDY OF 15M GEMINI CONVERSATIONS: OVER 86% OF CONSUMER CHATS ARE NON-WORK, 26.4% COMPANIONSHIP AND LEISURE",
+    "source": "@cat_meety",
+    "url": "https://x.com/cat_meety/status/2092428905445781973"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 03:59:18 UTC",
+    "headline": "EMERALD AI CLOSES $150M SERIES A AT $1.05B \u2014 NVIDIA, SIEMENS, GE VERNOVA, JERA, ARAMCO BACK DATA-CENTER POWER FLEXIBILITY",
+    "source": "@AiFinnews",
+    "url": "https://x.com/AiFinnews/status/2092455224975962361"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 03:59:18 UTC",
+    "headline": "TESLA CONFIRMS SUMMER RELEASE RUNS GROK THINK FAST 2.0 \u2014 AN XAI MODEL TIER WITH NO PUBLIC DOCUMENTATION",
+    "source": "@Tesla",
+    "url": "https://x.com/Tesla/status/2092460375132586350"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 03:59:18 UTC",
+    "headline": "GOOGLE SHIPS GEMINI ENTERPRISE VERTICALS FOR LEGAL AND FINANCIAL SERVICES \u2014 CONNECTS TO HARVEY AND LEGORA",
+    "source": "@ThomasOrTK",
+    "url": "https://x.com/ThomasOrTK/status/2092269235863208128"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-26 03:59:18 UTC",
+    "headline": "ACCIO OPEN-SOURCES COMMERCEAGENTBENCH \u2014 107 TASKS SCORED ON EXECUTION TRACES, NOT AGENT SELF-REPORT",
+    "source": "@MrOnsase",
+    "url": "https://x.com/MrOnsase/status/2092459453048299953"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 07:03:34 UTC",
+    "headline": "APPLE MARKETS 4-WAY M5 ULTRA CLUSTER \u2014 2TB UNIFIED MEMORY, 4.8TB/S AGGREGATE, \"RUN TRILLION PARAMETER MODELS LOCALLY\"",
+    "source": "@alexocheema",
+    "url": "https://x.com/alexocheema/status/2092467109708107989"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 07:03:34 UTC",
+    "headline": "NVIDIA ASKS SAMSUNG, SK HYNIX TO MAKE 8-HIGH THE PRIMARY HBM4 STACK FOR H2 \u2014 THERMALS AND 12-HIGH YIELDS CITED",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092484503080206760"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 07:03:34 UTC",
+    "headline": "EXO SAYS IT CO-BUILT RDMA-OVER-THUNDERBOLT-5 WITH APPLE OVER PAST YEAR TO CLUSTER MACS FOR KIMI K3, GLM-5.3",
+    "source": "@alexocheema",
+    "url": "https://x.com/alexocheema/status/2092472092759363812"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 07:03:34 UTC",
+    "headline": "HBM4E EXPECTED PREDOMINANTLY 8-HIGH NEXT YEAR; WHETHER RUBIN ULTRA USES HBM4E OR HBM4 STILL UNRESOLVED",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092484503080206760"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 07:03:34 UTC",
+    "headline": "SWYX WARNS OFF CODEX \"LOCKED USE\" \u2014 TWO MACOS KEYCHAIN LOCKOUTS IN A WEEK, APPLE FORUMS CALL IT A KNOWN BUG",
+    "source": "@swyx",
+    "url": "https://x.com/swyx/status/2092492963435946494"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 09:53:09 UTC",
+    "headline": "DEEPSEEK SEEKS RMB 50B AT RMB 500B VALUATION AFTER 10X REVENUE GROWTH; BANKS HIRED FOR SHANGHAI IPO NEXT YEAR",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092510606763180513"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 09:53:09 UTC",
+    "headline": "DEEPSEEK BOOKS RMB 475M ($70.7M) JAN-JUL REVENUE, 82.9% API GROSS MARGIN, LOSS NARROWS TO RMB 715M",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092510606763180513"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 09:53:09 UTC",
+    "headline": "DEEPSEEK RAISES V4-PRO PEAK OUTPUT PRICE 4.6X TO $3.96/MTOK, STILL UNDER KIMI K3 AT $15 AND CLAUDE OPUS 5 AT $25",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092510606763180513"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-26 09:53:09 UTC",
+    "headline": "PULLED MODELSCOPE PAGE PUTS QWEN3.8-FLASH-NEXT AT 125B MOE PLUS 51B N-GRAM EMBEDDINGS, 6B ACTIVE PER TOKEN",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092541014183461369"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 09:53:09 UTC",
+    "headline": "SWE REFACTOR BENCH: ONLY 28 OF 520 AGENT RUNS SURVIVE FULL THREE-STAGE WHOLE-REPO REFACTOR EVAL",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092531505952166165"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "QWEN SHIPS QWEN3.8-FLASH-NEXT OPEN-WEIGHT \u2014 125B MoE PLUS 51B N-GRAM BANK, ONLY 6B ACTIVE PER TOKEN",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092593917543780735"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "ZHIPU CONFIRMS TO BLOOMBERG: STEALTH MODEL 'OX ALPHA' IS A NEW GLM ITERATION, WEIGHTS OPEN TONIGHT",
+    "source": "@business",
+    "url": "https://x.com/business/status/2092541346724679687"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "QWEN CLAIMS QWEN3.8-FLASH-NEXT TRAINED AT ONE-NINTH THE COST OF QWEN3.7-PLUS, CALLS IT A QWEN4 PREVIEW",
+    "source": "@vepsi__",
+    "url": "https://x.com/vepsi__/status/2092600110102270271"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "ANTHROPIC REPORTED PITCHING $30T ADDRESSABLE MARKET, UP TO $100B RAISE AT $2T VALUATION",
+    "source": "@anadoluagency",
+    "url": "https://x.com/anadoluagency/status/2092599207412609514"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "META SETTLES 29-STATE TEEN HARM CASE FOR UP TO $16.68B; COMPLAINT ALLEGED CHILD DATA USED TO TRAIN AI",
+    "source": "@WOLF_Financial",
+    "url": "https://x.com/WOLF_Financial/status/2092599515845190062"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "SKILD AI RELEASES S1 ROBOT FOUNDATION MODEL \u2014 66% ON UNSEEN TASKS FROM ONE VIDEO VS 9% FOR LANGUAGE-PROMPTED BASELINE",
+    "source": "@autonomousevent",
+    "url": "https://x.com/autonomousevent/status/2092600494132764722"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 13:10:55 UTC",
+    "headline": "M5 ULTRA MAC STUDIO 256GB LEAD TIMES STRETCH TO 10-12 WEEKS",
+    "source": "@alexocheema",
+    "url": "https://x.com/alexocheema/status/2092567601188577358"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "OX ALPHA UNMASKED \u2014 Z.AI SHIPS GLM-5.3-FLASH, 320B-A18B UNDER MIT AT $0.15/$0.50 PER MTOK",
+    "source": "@Zai_org",
+    "url": "https://x.com/Zai_org/status/2092616204787626030"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "Z.AI SAYS OX ALPHA PREVIEW RAN ENTIRELY ON CHINESE AI CHIPS \u2014 NO ACCELERATOR VENDOR NAMED",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092623833630998556"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "ALTMAN TELLS TIME OPENAI WILL HAVE AN INTERNAL SYSTEM HE WOULD CALL AGI BY END OF 2026",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092618789737353434"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "PACHOCKI SAYS OPENAI HAS ALREADY MET ITS AUTOMATED AI RESEARCH INTERN BENCHMARK \u2014 THE SYSTEM IS ASTRA",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092642707353010228"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "QWEN3.8-FLASH-NEXT NOW RUNS LOCALLY ON 75GB OF RAM VIA DAY-ZERO UNSLOTH GGUFS",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2092639558815060281"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "GLM-5.3-FLASH SCORES 84.3 ON TERMINAL-BENCH 2.1 VS OPUS 4.8 AT 85.0, AT ONE-TENTH GLM-5.2 PRICE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092619561505865866"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 16:32:37 UTC",
+    "headline": "ANTHROPIC APPEARS TO BE STEALTH-ROUTING USERS TO FABLE 5.1 \u2014 KNOWLEDGE CUTOFF UPDATED",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2092645689951981758"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "OPENAI CALLS HUGGING FACE INCIDENT A 'WARNING SHOT' FOR LOSS OF CONTROL, PUBLISHES FULL TECHNICAL REPORT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092691861773160673"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "OPENAI: INTERNAL-ONLY MODEL AT GPT-5.6 SOL SCALE HAD BROADEST CONFIRMED ROLE IN AGENT SWARM INCIDENT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092700504447131813"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "METR AND REDWOOD RESEARCH PUBLISH INDEPENDENT ASSESSMENT OF OPENAI AGENT BEHAVIOR IN HUGGING FACE BREACH",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092691863505346634"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "ANTHROPIC TO PAY NSCALE $45B OVER SIX YEARS FOR ~460MW ON NVIDIA VERA RUBIN \u2014 BLOOMBERG",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2092670115531706582"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "ANTHROPIC OPENS PRIVACY-PRESERVED CLAUDE USAGE DATA TO OUTSIDE RESEARCHERS \u2014 A FRONTIER-LAB FIRST",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2092661573223657834"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "GOOGLE SHIPS GEMINI 3.5 TRANSCRIBE: 2.6% WER, 85+ LANGUAGES, SUB-SECOND STREAMING, PUBLIC PREVIEW",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2092660925509890397"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-26 19:58:14 UTC",
+    "headline": "AI ASSISTANT STARTUP INSTINCT RAISES $250M SERIES B AT $2.5B, CO-LED BY INDEX AND BENCHMARK \u2014 WSJ",
+    "source": "@IPONewsroom_",
+    "url": "https://x.com/IPONewsroom_/status/2092697619449713010"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "NVIDIA GUIDES TO ~70% FISCAL-2028 REVENUE GROWTH, CALLS OUTLOOK SUPPLY CONSTRAINED",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2092723047107355133"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "NVIDIA HELD TALKS TO BUY HUGGING FACE AT MORE THAN $13B \u2014 NO AGREEMENT REACHED",
+    "source": "@wallstengine",
+    "url": "https://x.com/wallstengine/status/2092774691329224888"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "NVIDIA Q2 REVENUE $96.22B, DATA CENTER $89.0B UP 117% YOY; Q3 GUIDE $108B WITH ZERO CHINA",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2092718416683819292"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "METR: OVER 700 AGENTS \u2014 90% OF FLEET \u2014 WERE ATTACKING HUGGING FACE AT PEAK",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2092717818760614101"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "REDWOOD LEAD ANALYST: AI OVERSIGHT IS LOSING GROUND FASTER THAN AI HELPS US OVERSEE IT",
+    "source": "@RyanGreenblatt",
+    "url": "https://x.com/RyanGreenblatt/status/2092692685224325542"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "NVIDIA PURCHASE COMMITMENTS JUMP $119B TO $279B, PRIMARILY MEMORY PROCUREMENT",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2092718416683819292"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-27 00:43:52 UTC",
+    "headline": "OPENROUTER DREW NINE BIDDERS BEFORE STRIPE DEAL AT MORE THAN $7B \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092711199855059338"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "NVIDIA AGREES TO BUY HUGGING FACE FOR $12.9B, THE INFORMATION REPORTS \u2014 NEITHER COMPANY CONFIRMS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092970324836937827"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "HUGGING FACE PRICE IS ~80X FORWARD REVENUE ON ~$150M ANNUALIZED \u2014 AND 2.9X ITS 2023 MARK",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092890272979919181"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "GOOGLE DEEPMIND PILOTS DOUBLE-BLIND FRONTIER EVALS \u2014 NEITHER TEST PROMPTS NOR MODEL WEIGHTS REVEALED",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2092961763553677387"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "TECHINSIGHTS: CHINA'S CXMT PUTS HIGH-K METAL GATE INTO DRAM MASS PRODUCTION ON 16NM-CLASS G4 NODE",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092870742400811129"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "HUGGING FACE SHIPS MICRODUCK \u2014 $399 OPEN-SOURCE BIPED ROBOT WITH OPEN SIMULATOR",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2092959363992326236"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "SEMIANALYSIS ALLEGES AMD BURNING 20+ ENGINEERS ON 'ATOM' INFERENCE ENGINE WITH ONE PROD CUSTOMER",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092960615048360180"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-27 14:05:00 UTC",
+    "headline": "ANTHROPIC ADDS BUILT-IN WEB BROWSER TO CLAUDE COWORK \u2014 PRO, MAX AND TEAM DESKTOP BETA",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2092867859034640790"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "OPENAI, ANTHROPIC AND 100+ ORGS SIGN OPEN LETTER DEMANDING URGENT GLOBAL AI CYBER-DEFENSE SURGE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2093074192636018977"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "ANTHROPIC IPO SAID TO TARGET RAISE ABOVE SPACEX'S $86B, WITH INSIDER SHARE SALES AT ~$1.5T VALUATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2093118890284872106"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "ANTHROPIC OPENS MODEL HARDWARE STANDARD PREVIEW \u2014 AGENTS DRIVE LAB AND FACTORY EQUIPMENT VIA ONE INTERFACE",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2093038426140651791"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "SK HYNIX CEO: MEMORY SHORTAGE TO PERSIST THROUGH END OF 2030",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2093083595774849089"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "WSJ: NVIDIA PAUSES SOME AI-CLOUD REVENUE-SHARING DEALS AFTER PUSHBACK OVER CONTROL, ANTITRUST CONCERNS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2093099775990386725"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "X SAFETY FINDS 200,000-ACCOUNT BOT FARM; 200 ACCOUNTS PUSHED AI DATA-CENTER ELECTRICITY-PRICE CLAIMS",
+    "source": "@GlobalAffairs",
+    "url": "https://x.com/GlobalAffairs/status/2093130747796148634"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-28 00:22:27 UTC",
+    "headline": "SALESFORCE CLOSES UP 22% ON RAISED GUIDANCE AND NEW ANTHROPIC 'CLAUDEFORCE' PARTNERSHIP",
+    "source": "@Kalshi_Finance",
+    "url": "https://x.com/Kalshi_Finance/status/2093129938878484494"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-08-29 17:19:04 UTC",
+    "headline": "OPENAI ENDS CURSOR PARTNERSHIP AFTER SPACEX ACQUISITION \u2014 DIRECT MODEL ACCESS ENDS NOVEMBER 12",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2093515564786540695"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-29 17:19:04 UTC",
+    "headline": "SONY MUSIC PUBLISHING AND WARNER CHAPPELL SUE ANTHROPIC AND FOUNDERS OVER CLAUDE TRAINING-DATA COPYRIGHT INFRINGEMENT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2093712719186973016"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-29 17:19:04 UTC",
+    "headline": "Z.AI OPEN-WEIGHTS GLM-5.3: 743B-BASE POST-TRAINED FRONTIER MODEL WITH DAY-0 vLLM, SGLANG AND BASETEN SERVING",
+    "source": "@Zai_org",
+    "url": "https://x.com/Zai_org/status/2093354097122455713"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-08-29 17:19:04 UTC",
+    "headline": "ANTHROPIC: CLAUDE ACTED AS AUTOMATED ALIGNMENT RESEARCHER \u2014 48 HOURS, 1 GPU, TEN MEASURABLE FAILURES FIXED",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2093386528668172373"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-08-29 17:19:04 UTC",
+    "headline": "CLAUDE CODE WEEKLY LIMITS TO FALL ~17% VS TODAY FROM SEPTEMBER 14 AS 50% PROMO BOOST CONVERTS TO PERMANENT +25%",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2093742321473065266"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-08-29 17:19:04 UTC",
+    "headline": "TRUMP ADMIN DRAFTS RULE TO BLOCK CHINESE FIRMS' REMOTE ACCESS TO US CHIPS IN OVERSEAS DATA CENTERS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2093417101625069988"
   }
 ]

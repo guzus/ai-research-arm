@@ -270,7 +270,7 @@ runs:
             f"--summary-file {summaries_dir}/{date}-{summary_slug}-{hour}h-summary.txt "
             f"--headlines-file {summaries_dir}/{date}-{summary_slug}-{hour}h-headlines.json "
             f"--date {date} --hour {hour} --generated-at \"{ts}\" "
-            f"--run-id {run_id} --run-attempt {run_attempt}\n"
+            f"--run-id {run_id} --run-attempt {run_attempt} --reject-recovery\n"
             "A published section must contain this exact line:\n"
             "**Cycle summary**: <1-2 sentences>\n"
             "`**Cycle Summary**:` (capital S) or a missing line fails the host validator."

@@ -2,12 +2,13 @@
 slug: federal-ai-policy
 title: Federal AI Policy
 type: theme
-aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU"]
+aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now surfaced as a White House ask for voluntary 30-day pre-release model testing two weeks after a private briefing, drawing sworn-testimony demands from Congress, reportedly facing an update that could extend it to open models, and facing gray-market resale of Anthropic tokens that undercuts both export controls and lab safety systems (2026-08-24).
+description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models, a White House ask for voluntary 30-day pre-release testing, gray-market Claude-token resale that undercuts export controls, and now a drafted Commerce/BIS rule (RIN 0694-AJ90) aimed at closing the overseas-datacenter remote-access loophole for advanced US chips (2026-08-29).
 created_at: 2026-06-03
-timestamp: 2026-08-24T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -701,6 +702,24 @@ footing for the first time in the cycle.
    price rather than argued in policy (The Decoder; ARA daily digest
    2026-08-24).
 
+## A drafted remote-access chip rule (RIN 0694-AJ90) (2026-08-29)
+
+- **The Trump administration is drafting a rule to stop Chinese AI
+  firms from remotely accessing advanced US chips in overseas data
+  centers (2026-08-29).** Relays describe a **slimmed-down replacement
+  for Biden-era diffusion controls**, tied to Commerce's BIS interim
+  final rule **RIN 0694-AJ90**, with **screening conditions attached
+  to chip shipments**. If finalized as relayed, cloud providers
+  operating overseas data centers would face those conditions on
+  advanced US chip shipments to Chinese-affiliated firms — narrower
+  remote-access targeting rather than the broader diffusion
+  framework. **The rule text has not yet appeared**; watch for the
+  interim final rule (The Information, X relays; ARA daily digest
+  2026-08-29). This is the export-control counterpart to the
+  gray-market Claude-token leak above: one gap is in *who can buy
+  tokens*, the other in *who can sit on US silicon from abroad*. See
+  [[ai-capex]] and [[nvidia]].
+
 ## Open questions
 
 - **Is the new voluntary framework additive to the June 2 executive order, or a
@@ -715,3 +734,7 @@ footing for the first time in the cycle.
 - **Federal vs. [[california-ai-regulation|California]].** With both a narrow
   federal order and a ~30-bill California package live, does compliance
   fragment, or does one frame dominate for the frontier-lab IPO calendar?
+- **Does RIN 0694-AJ90 actually close the remote-access loophole?** The
+  draft is relayed, not published; screening-on-shipment is a different
+  instrument from a use ban, and the gray-market token path already
+  shows how access controls leak.

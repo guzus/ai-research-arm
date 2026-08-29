@@ -40,6 +40,7 @@ import { fileURLToPath } from 'node:url';
 import { marked } from 'marked';
 import { renderSiteDefaultCardPng, renderSocialCardPng } from './social-card.mjs';
 import { forecastSeoRecord, mappedForecastTickets } from './forecast-seo.mjs';
+import { isDeterministicFallbackSource } from './publication-contract.mjs';
 import {
   datedPagePolicy,
   isIndexableResearchEntry,
@@ -615,13 +616,18 @@ function digestDescription(md) {
 
 function buildDigestPage(template, digest, shareImageUrl, policy = datedPagePolicy('today', digest.date, SITE_ORIGIN)) {
   const md = readFileSync(digest.path, 'utf8');
-  const title = `AI Daily Digest -- ${digest.date}`;
-  const desc = digestDescription(md);
+  const unavailable = digest.unavailable ?? isDeterministicFallbackSource(md);
+  const title = unavailable ? `Editorial brief unavailable -- ${digest.date}` : `AI Daily Digest -- ${digest.date}`;
+  const desc = unavailable
+    ? `No editorial brief was published for ${digest.date}. Unreviewed source material is not public editorial content.`
+    : digestDescription(md);
   const url = policy.canonicalUrl;
-  const bodyHtml = sanitizeFragment(marked.parse(md));
+  const bodyHtml = unavailable
+    ? `<section role="status"><p class="ara-eyebrow">Daily brief</p><h2>No editorial brief was published for ${htmlEscapeAttr(digest.date)}</h2><p>Unreviewed source material is kept for operational diagnosis and is not published as editorial content.</p></section>`
+    : sanitizeFragment(marked.parse(md));
 
   const jsonLd = {
-    '@type': 'Article',
+    '@type': unavailable ? 'WebPage' : 'Article',
     headline: title,
     description: desc,
     datePublished: digest.date,
@@ -678,7 +684,10 @@ function datedMarkdownRecords(dir, pattern) {
 }
 
 function digestRecords() {
-  return datedMarkdownRecords(digestDir, /^(\d{4}-\d{2}-\d{2})-digest\.md$/);
+  return datedMarkdownRecords(digestDir, /^(\d{4}-\d{2}-\d{2})-digest\.md$/).map(record => ({
+    ...record,
+    unavailable: isDeterministicFallbackSource(readFileSync(record.path, 'utf8')),
+  }));
 }
 
 function twitterRecords() {
@@ -702,7 +711,11 @@ function frontPageRecords() {
       notesPath: existsSync(notesPath) ? notesPath : null,
       imageUrl: `${SITE_ORIGIN}/research/front-page/${name}`,
     };
-  }).filter(Boolean));
+  }).filter(record => {
+    if (!record) return false;
+    const digestPath = join(digestDir, `${record.date}-digest.md`);
+    return !existsSync(digestPath) || !isDeterministicFallbackSource(readFileSync(digestPath, 'utf8'));
+  }));
 }
 
 function buildTwitterPage(template, report, shareImageUrl, policy = datedPagePolicy('twitter', report.date, SITE_ORIGIN)) {
@@ -1226,7 +1239,10 @@ function recentDigestEntries(limit = 10) {
   const re = /^(\d{4}-\d{2}-\d{2})-digest\.md$/;
   return readdirSync(digestDir)
     .map(n => (re.exec(n) || [])[1])
-    .filter(Boolean)
+    .filter(date => {
+      if (!date) return false;
+      return !isDeterministicFallbackSource(readFileSync(join(digestDir, `${date}-digest.md`), 'utf8'));
+    })
     .sort()
     .reverse()
     .slice(0, limit)
@@ -1348,7 +1364,10 @@ function buildFeed(entries, shareImageUrl) {
     const re = /^(\d{4}-\d{2}-\d{2})-digest\.md$/;
     const dates = readdirSync(digestDir)
       .map(n => (re.exec(n) || [])[1])
-      .filter(Boolean)
+      .filter(date => {
+        if (!date) return false;
+        return !isDeterministicFallbackSource(readFileSync(join(digestDir, `${date}-digest.md`), 'utf8'));
+      })
       .sort()
       .reverse()
       .slice(0, 10);
@@ -1508,11 +1527,12 @@ const twitterReports = twitterRecords();
 const frontPages = frontPageRecords();
 const datedPages = [];
 for (const digest of digests) {
-  const policy = datedPagePolicy('today', digest.date, SITE_ORIGIN);
+  const basePolicy = datedPagePolicy('today', digest.date, SITE_ORIGIN);
+  const policy = digest.unavailable ? { ...basePolicy, indexable: false } : basePolicy;
   const outDir = join(dist, 'today', digest.date);
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, 'index.html'), buildDigestPage(template, digest, shareImageUrl, policy));
-  datedPages.push({ section: 'today', date: digest.date, route: policy.route });
+  if (!digest.unavailable) datedPages.push({ section: 'today', date: digest.date, route: policy.route });
 }
 const latestDigestRecord = digests.at(-1) || null;
 if (latestDigestRecord) {

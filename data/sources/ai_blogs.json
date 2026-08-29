@@ -177,7 +177,8 @@
     "cadence": "weekly",
     "tags": ["academic-research", "robotics", "inference", "world-models"],
     "include_in_digest": true,
-    "notes": "Berkeley AI Research primary context on academic AI work."
+    "enabled": false,
+    "notes": "Temporarily disabled 2026-08-29: the official feed and site repeatedly time out from the production runner. Re-enable after the endpoint responds reliably."
   },
   {
     "id": "microsoft-research",

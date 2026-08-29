@@ -5,6 +5,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import yaml
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from deterministic_twitter_digest import main
@@ -250,6 +252,44 @@ class DeterministicTwitterDigestTest(unittest.TestCase):
         fail_step = workflow[fail_index : workflow.index("\n      - name:", fail_index + 1)]
         self.assertIn("steps.recover_claude.outputs.recovered == 'true'", fail_step)
         self.assertIn("exit 1", fail_step)
+
+    def test_workflow_repairs_invalid_model_output_before_recovery(self) -> None:
+        workflow_path = (
+            Path(__file__).resolve().parent.parent / ".github" / "workflows" / "hourly-twitter.yml"
+        )
+        workflow = workflow_path.read_text(encoding="utf-8")
+
+        check_index = workflow.index("      - name: Check Claude primary editorial contract")
+        repair_index = workflow.index("      - name: Repair missing Twitter output with Claude")
+        recovery_index = workflow.index("      - name: Validate or recover Claude primary output")
+        self.assertLess(check_index, repair_index)
+        self.assertLess(repair_index, recovery_index)
+
+        check_step = workflow[check_index:repair_index]
+        self.assertIn("validate_twitter_public_output.py", check_step)
+        self.assertIn("--reject-recovery", check_step)
+        repair_step = workflow[repair_index:recovery_index]
+        self.assertIn("steps.check_claude_primary.outputs.valid != 'true'", repair_step)
+        self.assertNotIn("steps.twitter-claude-agent.outcome == 'failure'", repair_step)
+
+        doc = yaml.safe_load(workflow)
+        steps = doc["jobs"]["twitter"]["steps"]
+        primary = next(step for step in steps if step.get("id") == "twitter-claude-agent")
+        repair = next(step for step in steps if step.get("id") == "twitter-claude-repair")
+        self.assertEqual("twitter", primary["with"]["opencode-mode"])
+        self.assertEqual("twitter", repair["with"]["opencode-mode"])
+
+    def test_agent_run_preserves_editorial_default_but_forwards_explicit_twitter_mode(self) -> None:
+        action_path = (
+            Path(__file__).resolve().parent.parent / ".github" / "actions" / "agent-run" / "action.yml"
+        )
+        action = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        self.assertEqual("editorial", action["inputs"]["opencode-mode"]["default"])
+        isolated = next(
+            step for step in action["runs"]["steps"]
+            if step.get("id") == "run-opencode"
+        )
+        self.assertEqual("${{ inputs.opencode-mode }}", isolated["with"]["mode"])
 
 
 if __name__ == "__main__":

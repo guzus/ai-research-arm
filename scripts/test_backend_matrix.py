@@ -62,9 +62,29 @@ class RoutingInvariants(unittest.TestCase):
     def test_research_editorial_rejects_host_checkout_adapter(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
         config["routes"]["research-editorial"]["backend"] = "claude"
-        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest"):
+        for lane in ("rss", "bluesky", "community"):
             with self.assertRaisesRegex(ValueError, "isolated_workspace"):
                 resolve_route(config, lane)
+
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        config["routes"]["research-editorial-secondary"]["backend"] = "claude"
+        for lane in ("arxiv", "wiki-ingest"):
+            with self.assertRaisesRegex(ValueError, "isolated_workspace"):
+                resolve_route(config, lane)
+
+    def test_research_editorial_prioritizes_opencode_glm_5p3_flash(self):
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        route = config["routes"]["research-editorial"]
+        self.assertEqual("opencode-glm-5p3-flash", route["backend"])
+        self.assertIn("opencode-deepseek-v4-flash", config["backends"])
+        for lane in ("rss", "bluesky", "community"):
+            selected = resolve_route(config, lane)
+            self.assertEqual("opencode", selected.adapter)
+            self.assertEqual("opencode-go/glm-5.3-flash", selected.model_ref)
+        for lane in ("arxiv", "wiki-ingest"):
+            selected = resolve_route(config, lane)
+            self.assertEqual("cursor", selected.adapter)
+            self.assertEqual("cursor/cursor-grok-4.6-high-fast", selected.model_ref)
 
     def test_synthetic_opencode_profile_needs_only_profile_and_route_data(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
@@ -79,6 +99,7 @@ class RoutingInvariants(unittest.TestCase):
             "display_name": "Novel Flash via OpenCode",
         }
         config["routes"]["research-editorial"]["backend"] = "opencode-novel-flash"
+        config["routes"]["research-editorial-secondary"]["backend"] = "opencode-novel-flash"
         profiles = copy.deepcopy(self.profiles)
         profile = Profile("opencode-novel-flash", "opencode", "opencode-go",
                           "novel-flash", "Novel Flash via OpenCode",
@@ -126,6 +147,7 @@ class RoutingInvariants(unittest.TestCase):
             "display_name": "Composer Novel via Cursor CLI",
         }
         config["routes"]["research-editorial"]["backend"] = "cursor-composer-novel"
+        config["routes"]["research-editorial-secondary"]["backend"] = "cursor-composer-novel"
         profiles = copy.deepcopy(self.profiles)
         profile = Profile("cursor-composer-novel", "cursor", "cursor",
                           "composer-novel", "Composer Novel via Cursor CLI",
@@ -364,6 +386,96 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(len(chain), len(set(chain)), "chain has duplicates")
         self.assertTrue(self.fallback["native_model"])
 
+    def test_local_content_lanes_have_cross_adapter_overrides(self):
+        overrides = {
+            key: lane["fallback_chain"]
+            for key, lane in self.lanes.items() if lane.get("fallback_chain")
+        }
+        self.assertEqual(
+            {
+                "digest-synthesis-fallback": ["opencode-glm-5p3-flash"],
+                "twitter-primary": ["opencode-glm-5p3-flash"],
+                "twitter-primary-repair": ["opencode-glm-5p3-flash"],
+            },
+            overrides,
+        )
+        # The lane override replaces this global chain; it never appends Z.ai
+        # as a third provenance hop.
+        self.assertEqual(["claude", "zai-glm-5p2"], self.fallback["chain"])
+
+        isolated_lanes = {
+            "digest-synthesis-fallback",
+            "twitter-primary",
+            "twitter-primary-repair",
+        }
+        local_steps = [
+            step for obs in self.obs.values() for step in obs.agent_run
+            if step.lane in isolated_lanes
+        ]
+        self.assertEqual(isolated_lanes, {step.lane for step in local_steps})
+        self.assertTrue(all(
+            step.secrets["opencode-api-key"] == "OPENCODE_API_KEY"
+            for step in local_steps
+        ))
+        other_steps = [
+            step for obs in self.obs.values() for step in obs.agent_run
+            if step.lane not in isolated_lanes
+        ]
+        self.assertTrue(all(not step.secrets.get("opencode-api-key")
+                            for step in other_steps))
+
+    def test_agent_run_scopes_isolated_opencode_child_contract(self):
+        action = yaml.safe_load(
+            (REPO_ROOT / ".github/actions/agent-run/action.yml").read_text()
+        )
+        steps = action["runs"]["steps"]
+        child = next(
+            step for step in steps
+            if step.get("uses") == "./.github/actions/run-opencode-container"
+        )
+        self.assertEqual("steps.select.outputs.provider == 'opencode-go'",
+                         child.get("if"))
+        self.assertEqual("editorial", action["inputs"]["opencode-mode"]["default"])
+        self.assertEqual("${{ inputs.opencode-mode }}", child["with"]["mode"])
+        self.assertEqual("${{ inputs.prompt }}", child["with"]["prompt-text"])
+        self.assertEqual("${{ steps.isolated-contract.outputs.paths }}",
+                         child["with"]["allowed-paths"])
+        self.assertEqual("${{ inputs.opencode-api-key }}",
+                         child["with"]["opencode-api-key"])
+        rendered = json.dumps(child, sort_keys=True)
+        for secret_input in ("claude-code-oauth-token", "fireworks-api-key",
+                             "zai-api-key"):
+            self.assertNotIn(secret_input, rendered)
+
+        execution_output = action["outputs"]["execution-file"]["value"]
+        self.assertNotIn("run-opencode", execution_output)
+
+    def test_local_digest_exact_paths_and_post_recovery_scope_gate(self):
+        workflow = yaml.safe_load(
+            (REPO_ROOT / ".github/workflows/daily-digest.yml").read_text()
+        )
+        steps = workflow["jobs"]["daily-digest"]["steps"]
+        local = next(step for step in steps
+                     if step.get("id") == "digest-agent-local")
+        dated_paths = (
+            "research/digest/${{ steps.date.outputs.date }}-digest.md\n"
+            "research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt"
+        )
+        self.assertEqual(dated_paths, local["with"]["expected-paths"].strip())
+        self.assertEqual(dated_paths, local["with"]["allowed-paths"].strip())
+
+        recovery = next(step for step in steps
+                        if step.get("name") == "Commit recovered agent digest output")
+        self.assertIn('git add "$DIGEST_FILE" "$SUMMARY_FILE"', recovery["run"])
+        self.assertNotIn("git add research/digest/ research/summaries/", recovery["run"])
+
+        scope = next(step for step in steps
+                     if step.get("uses") == "./.github/actions/require-diff-scope"
+                     and step.get("name") == "Require digest diff scope")
+        self.assertEqual("${{ steps.digest-output-base.outputs.sha }}",
+                         scope["with"]["base-sha"])
+        self.assertEqual(dated_paths, scope["with"]["allowed-paths"].strip())
+
     def test_every_agent_run_lane_backend_has_a_profile(self):
         for key, lane in self.lanes.items():
             if lane.get("harness") == "agent-run":
@@ -440,10 +552,9 @@ class RoutingInvariants(unittest.TestCase):
     def test_gen_research_opus_5_is_explicit_and_provenance_checked(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
-        # Dispatch option, both case-normalizations, and the runtime allowlist.
+        # Dispatch option, canonical normalization, and the runtime allowlist.
         self.assertIn('- opus-5', workflow)
-        self.assertIn('claude-opus-5|opus-5|opus5) CANDIDATE="opus-5"', workflow)
-        self.assertIn('claude-opus-5|opus-5|opus5) BACKEND="opus-5"', workflow)
+        self.assertIn('claude-opus-5|opus-5|opus5) selector="opus-5"', workflow)
         self.assertIn('[ "$BACKEND" != "opus-5" ]', workflow)
         # Served model is pinned from the single resolver output, so an
         # opus-5-labelled article can never be authored by Sonnet.
@@ -457,12 +568,13 @@ class RoutingInvariants(unittest.TestCase):
         self.assertTrue(self.obs["generative-research.yml"].has_opus_dispatch)
         from build_backend_matrix import GEN_RESEARCH_BACKENDS
         self.assertIn("opus-5", GEN_RESEARCH_BACKENDS)
-        # DeepSeek/OpenCode is the SSOT default: manual dispatch with no backend input,
+        self.assertIn("claude-opus-5", GEN_RESEARCH_BACKENDS)
+        # Opus 5 is the SSOT default: manual dispatch with no backend input,
         # gen-research issues, and hourly-twitter's auto-research all inherit
         # it. The workflow must keep resolving that default at runtime rather
         # than hard-coding a backend of its own.
         self.assertEqual(self.lanes["generative-research-default"]["backend"],
-                         "opencode-deepseek-v4-flash")
+                         "claude-opus-5")
         self.assertIn("generative-research-default",
                       self.obs["generative-research.yml"].resolver_lanes)
         # The Fireworks-unavailable fallback is deliberately NOT the default:
@@ -470,13 +582,52 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('backend="claude"', (REPO_ROOT / ".github" / "workflows" /
                       "generative-research.yml").read_text(encoding="utf-8"))
 
+    def test_gen_research_default_backend_normalizes_for_every_trigger(self):
+        workflow_path = REPO_ROOT / ".github" / "workflows" / "generative-research.yml"
+        workflow = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
+        steps = workflow["jobs"]["generative-research"]["steps"]
+        derive_script = next(step["run"] for step in steps
+                             if step.get("name") == "Derive parameters")
+
+        base_env = {
+            "INPUT_TOPIC": "Uniswap CCA",
+            "INPUT_TWITTER_URL": "",
+            "INPUT_SLUG": "",
+            "INPUT_BACKEND": "default",
+            "INPUT_TAGS": "",
+            "ISSUE_TITLE": "Uniswap CCA",
+            "ISSUE_BODY": "",
+        }
+        cases = (
+            ("workflow_dispatch", ""),
+            ("issues", "backend: default"),
+        )
+        for event_name, issue_body in cases:
+            with self.subTest(event_name=event_name), tempfile.NamedTemporaryFile() as output:
+                env = os.environ.copy()
+                env.update(base_env)
+                env.update({
+                    "EVENT_NAME": event_name,
+                    "ISSUE_BODY": issue_body,
+                    "GITHUB_OUTPUT": output.name,
+                })
+                result = subprocess.run(
+                    ["bash", "-c", derive_script],
+                    cwd=REPO_ROOT,
+                    env=env,
+                    text=True,
+                    capture_output=True,
+                )
+                self.assertEqual(result.returncode, 0, result.stderr)
+                output.seek(0)
+                self.assertIn("backend=opus-5", output.read().decode("utf-8"))
+
     def test_gen_research_opencode_deepseek_is_explicit_and_fail_closed(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
-        # Dispatch option, both case-normalizations, and the runtime allowlist.
+        # Dispatch option, canonical normalization, and the runtime allowlist.
         self.assertIn("- opencode-deepseek-v4-flash", workflow)
-        self.assertIn('opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) CANDIDATE="opencode-deepseek-v4-flash"', workflow)
-        self.assertIn('opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) BACKEND="opencode-deepseek-v4-flash"', workflow)
+        self.assertIn('opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) selector="opencode-deepseek-v4-flash"', workflow)
         self.assertIn('[ "$BACKEND" != "opencode-deepseek-v4-flash" ]', workflow)
         # Fail-closed route preflight and the output guard stay in the
         # workflow; the version-pinned install and the env-var auth moved into
@@ -515,10 +666,7 @@ class RoutingInvariants(unittest.TestCase):
                     "generative-research.yml").read_text(encoding="utf-8")
         self.assertIn("- cursor-grok-4p6-fast", workflow)
         self.assertIn(
-            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) CANDIDATE="cursor-grok-4p6-fast"',
-            workflow)
-        self.assertIn(
-            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) BACKEND="cursor-grok-4p6-fast"',
+            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) selector="cursor-grok-4p6-fast"',
             workflow)
         self.assertIn('[ "$BACKEND" != "cursor-grok-4p6-fast" ]', workflow)
         self.assertIn("Resolve and preflight Cursor CLI route", workflow)
@@ -857,10 +1005,10 @@ class RoutingInvariants(unittest.TestCase):
             self.assertEqual(
                 "keep\n", (unrelated / "sentinel").read_text(encoding="utf-8"))
 
-    def test_opencode_canary_probes_the_model_production_runs(self):
-        # A canary that probes a different model than production runs is worse
-        # than no canary: it goes green on an entitlement the real lane never
-        # uses. Pin them to the same id.
+    def test_opencode_canary_covers_direct_deepseek_and_editorial_glm(self):
+        # The raw + first harness probes cover the direct DeepSeek comparison
+        # paths. The second harness probe resolves the production editorial
+        # model dynamically so a route edit cannot leave its canary stale.
         model_id = self.assert_single_opencode_model()
         canary = (REPO_ROOT / ".github" / "workflows" /
                   "opencode-deepseek-canary.yml").read_text(encoding="utf-8")
@@ -870,6 +1018,15 @@ class RoutingInvariants(unittest.TestCase):
         # or the cheap preflight certifies an entitlement the run never uses.
         self.assertIn(f'"model": "{model_id}"', canary)
         self.assertIn(f'{{"model":"{model_id}"', gen)
+        self.assertIn(
+            'python3 scripts/resolve_agent_route.py rss --github-output "$GITHUB_OUTPUT"',
+            canary,
+        )
+        self.assertIn('model: ${{ steps.glm_route.outputs.model_ref }}', canary)
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        editorial = resolve_route(config, "rss")
+        self.assertEqual("opencode-glm-5p3-flash", editorial.backend)
+        self.assertEqual("opencode-go/glm-5.3-flash", editorial.model_ref)
         # The production config deliberately carries no static model/default:
         # every action call is authoritative through `opencode run -m`, so a
         # newly registered SSOT profile does not require a config edit.
@@ -1127,12 +1284,14 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('timeout "${remaining_seconds}s" agent -p --mode ask --trust', action)
         self.assertIn("git bundle create .cursor-export.bundle", action)
         self.assertIn("Cursor attempt telemetry is malformed", action)
-        self.assertIn("curl https://cursor.com/install -fsS | bash", action)
+        self.assertIn("https://downloads.cursor.com/lab/", action)
+        self.assertIn("sha256sum -c -", action)
+        self.assertNotIn("curl https://cursor.com/install", action)
         self.assertIn("agent --version", action)
-        # The published `agent` name is a symlink into a Node package.
-        # Copying only the wrapper regresses to MODULE_NOT_FOUND index.js.
+        # The published `agent` name is a wrapper around its package payload.
+        # Installing only the wrapper regresses to MODULE_NOT_FOUND index.js.
         self.assertIn("/opt/cursor-agent", action)
-        self.assertIn('test -f "$pkg/index.js"', action)
+        self.assertIn("test -f /opt/cursor-agent/index.js", action)
         self.assertIn('ln -sfn /opt/cursor-agent/cursor-agent /usr/local/bin/agent', action)
         self.assertNotIn(
             "install -m 755 /root/.local/bin/agent /usr/local/bin/agent", action)
@@ -1454,6 +1613,183 @@ class RoutingInvariants(unittest.TestCase):
             self.assertEqual("1", attempts)
             self.assertIn("artifact_count=1", telemetry)
             self.assertIn("retry_reason=none", telemetry)
+
+    def test_editorial_zero_commit_retry_is_clean_bounded_and_fail_closed(self):
+        """Commit editorials retry one clean-workspace no-op, then fail."""
+        action_doc = yaml.safe_load(
+            (REPO_ROOT / ".github/actions/run-opencode-container/action.yml")
+            .read_text(encoding="utf-8")
+        )
+        run = action_doc["runs"]["steps"][0]["run"]
+        self.assertEqual(2, run.count('exit "$agent_status"'))
+        loop = run.split("# OPENCODE_ATTEMPT_LOOP_BEGIN", 1)[1].split(
+            "# OPENCODE_ATTEMPT_LOOP_END", 1)[0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bin_dir = root / "bin"
+            bin_dir.mkdir()
+            prompt = root / "prompt.md"
+            prompt.write_text("curate arxiv\n", encoding="utf-8")
+            loop = loop.replace("/tmp/opencode-prompt.md", str(prompt))
+            loop = loop.replace(
+                'attempt_log="/tmp/opencode-attempt-${attempt_count}.log"',
+                'attempt_log="$PWD/opencode-attempt-${attempt_count}.log"')
+
+            timeout = bin_dir / "timeout"
+            timeout.write_text(
+                "#!/bin/bash\nset -eu\nshift\nexec \"$@\"\n",
+                encoding="utf-8")
+            timeout.chmod(0o755)
+            opencode = bin_dir / "opencode"
+            opencode.write_text(
+                "#!/bin/bash\n"
+                "set -eu\n"
+                "attempt=0\n"
+                "if [ -f \"$OPENCODE_ATTEMPT_FILE\" ]; then "
+                "attempt=$(tr -d '\\r\\n' < \"$OPENCODE_ATTEMPT_FILE\"); fi\n"
+                "attempt=$((attempt + 1))\n"
+                "printf '%s\\n' \"$attempt\" > \"$OPENCODE_ATTEMPT_FILE\"\n"
+                "write_commit() {\n"
+                "  mkdir -p research/arxiv\n"
+                "  printf 'papers\\n' > research/arxiv/2026-08-26-papers.md\n"
+                "  git add research/arxiv/2026-08-26-papers.md\n"
+                "  git commit -qm 'arXiv papers'\n"
+                "}\n"
+                "case \"$OPENCODE_FAKE_BEHAVIOR\" in\n"
+                "  retry-commit) [ \"$attempt\" -eq 2 ] && write_commit || : ;;\n"
+                "  dirty-retry)\n"
+                "    if [ \"$attempt\" -eq 1 ]; then\n"
+                "      mkdir -p research/arxiv\n"
+                "      printf 'partial\\n' > research/arxiv/2026-08-26-papers.md\n"
+                "    else\n"
+                "      [ ! -e research/arxiv/2026-08-26-papers.md ] || exit 97\n"
+                "      write_commit\n"
+                "    fi\n"
+                "    ;;\n"
+                "  first-commit) write_commit ;;\n"
+                "  mutate-input)\n"
+                "    if [ \"$attempt\" -eq 1 ]; then\n"
+                "      printf 'changed\\n' > .agent-input/source.txt\n"
+                "    else\n"
+                "      grep -qx 'source' .agent-input/source.txt || exit 96\n"
+                "      write_commit\n"
+                "    fi\n"
+                "    ;;\n"
+                "  nonzero) exit 9 ;;\n"
+                "  no-output) ;;\n"
+                "  *) exit 98 ;;\n"
+                "esac\n",
+                encoding="utf-8")
+            opencode.chmod(0o755)
+
+            def run_case(name: str, behavior: str, *, mode: str = "editorial",
+                         allowed_paths: str = (
+                             "research/arxiv/2026-08-26-papers.md"),
+                         return_artifacts: str = ""):
+                case_dir = root / name
+                case_dir.mkdir()
+                subprocess.run(["git", "init", "-q"], cwd=case_dir,
+                               check=True)
+                subprocess.run(["git", "config", "user.name", "Test"],
+                               cwd=case_dir, check=True)
+                subprocess.run(["git", "config", "user.email", "test@example.com"],
+                               cwd=case_dir, check=True)
+                (case_dir / "seed.txt").write_text("seed\n", encoding="utf-8")
+                agent_input = case_dir / ".agent-input"
+                agent_input.mkdir()
+                (agent_input / "source.txt").write_text(
+                    "source\n", encoding="utf-8")
+                subprocess.run(["git", "add", "seed.txt"], cwd=case_dir,
+                               check=True)
+                subprocess.run(["git", "commit", "-qm", "seed"],
+                               cwd=case_dir, check=True)
+                pre_sha = subprocess.check_output(
+                    ["git", "rev-parse", "HEAD"], cwd=case_dir,
+                    text=True).strip()
+                attempts = root / f"{name}-attempts"
+                env = {
+                    **os.environ,
+                    "PATH": f"{bin_dir}:/usr/bin:/bin",
+                    "AGENT_TIMEOUT_MINUTES": "1",
+                    "AGENT_LANE": "arxiv",
+                    "RUN_MODE": mode,
+                    "ALLOWED_PATHS": allowed_paths,
+                    "RETURN_ARTIFACTS": return_artifacts,
+                    "PRE_SHA": pre_sha,
+                    "OPENCODE_MODEL_REF": "opencode-go/deepseek-v4-flash",
+                    "OPENCODE_ATTEMPT_FILE": str(attempts),
+                    "OPENCODE_FAKE_BEHAVIOR": behavior,
+                }
+                result = subprocess.run(
+                    ["bash", "-c", (
+                        "set -euo pipefail\n" + loop
+                        + '\nexit "$agent_status"\n')],
+                    cwd=case_dir, env=env, text=True, capture_output=True,
+                    check=False)
+                telemetry = (case_dir / ".opencode-attempt-telemetry").read_text(
+                    encoding="utf-8")
+                count = attempts.read_text(encoding="utf-8").strip()
+                return result, count, telemetry
+
+            retried, attempts, telemetry = run_case("retry", "retry-commit")
+            self.assertEqual(0, retried.returncode,
+                             retried.stdout + retried.stderr)
+            self.assertEqual("2", attempts)
+            self.assertIn("attempt_count=2", telemetry)
+            self.assertIn("last_agent_status=0", telemetry)
+            self.assertIn("retry_reason=zero-commit-editorial", telemetry)
+
+            cleaned, attempts, telemetry = run_case("clean", "dirty-retry")
+            self.assertEqual(0, cleaned.returncode,
+                             cleaned.stdout + cleaned.stderr)
+            self.assertEqual("2", attempts)
+            self.assertIn("last_agent_status=0", telemetry)
+
+            exhausted, attempts, telemetry = run_case("exhausted", "no-output")
+            self.assertEqual(86, exhausted.returncode,
+                             exhausted.stdout + exhausted.stderr)
+            self.assertEqual("2", attempts)
+            self.assertIn("last_agent_status=86", telemetry)
+            self.assertIn("retry_reason=zero-commit-editorial", telemetry)
+            self.assertIn("exited successfully twice without committing output",
+                          exhausted.stdout)
+
+            committed, attempts, telemetry = run_case(
+                "first-commit", "first-commit")
+            self.assertEqual(0, committed.returncode,
+                             committed.stdout + committed.stderr)
+            self.assertEqual("1", attempts)
+            self.assertIn("retry_reason=none", telemetry)
+
+            failed, attempts, telemetry = run_case("nonzero", "nonzero")
+            self.assertEqual(9, failed.returncode, failed.stdout + failed.stderr)
+            self.assertEqual("1", attempts)
+            self.assertIn("last_agent_status=9", telemetry)
+            self.assertIn("retry_reason=none", telemetry)
+
+            artifact_only, attempts, telemetry = run_case(
+                "artifact-only", "no-output", allowed_paths="",
+                return_artifacts=".tmp/bluesky-section.md")
+            self.assertEqual(0, artifact_only.returncode,
+                             artifact_only.stdout + artifact_only.stderr)
+            self.assertEqual("1", attempts)
+            self.assertIn("retry_reason=none", telemetry)
+
+            generative, attempts, telemetry = run_case(
+                "generative", "no-output", mode="generative")
+            self.assertEqual(0, generative.returncode,
+                             generative.stdout + generative.stderr)
+            self.assertEqual("1", attempts)
+            self.assertIn("retry_reason=none", telemetry)
+
+            restored, attempts, telemetry = run_case(
+                "mutated-input", "mutate-input")
+            self.assertEqual(0, restored.returncode,
+                             restored.stdout + restored.stderr)
+            self.assertEqual("2", attempts)
+            self.assertIn("last_agent_status=0", telemetry)
+            self.assertIn("retry_reason=zero-commit-editorial", telemetry)
 
     def test_opencode_attempt_telemetry_is_strictly_validated(self):
         """Only the fixed five-line numeric/enumerated record is logged."""

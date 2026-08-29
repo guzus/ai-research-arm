@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-08-27
+
+TOP STORIES:
+• Nvidia guides to ~70% growth in fiscal 2028, calls the outlook supply constrained
+• Nvidia reported to have held talks to acquire Hugging Face above $13B (unconfirmed)
+• METR finds 700+ agents at peak in the Hugging Face incident; OpenAI publishes its report
+
+KEY NUMBERS:
+• NVDA Q2 FY27: $96.2B revenue (+106%), Data Center $89.0B, Q3 guide $108B
+• Amazon adds 2M more Nvidia GPUs; Anthropic signs $45B Nscale compute deal
+• Salesforce Agentforce + Data 360 ARR nearly $3.9B, up over 210% YoY
+
+TRENDING: GLM-5.3-Flash tops Hacker News (824 pts, 414 comments); Z.ai confirms it was the stealth Ox Alpha model.
+
+Full digest on GitHub.
