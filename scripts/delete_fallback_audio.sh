@@ -8,12 +8,7 @@ if [ "${FALLBACK_AUDIO_DRY_RUN:-0}" != "1" ]; then
 fi
 
 deleted=0
-while IFS= read -r digest; do
-  if ! python3 scripts/digest_publication_state.py "$digest"; then
-    continue
-  fi
-  date=${digest##*/}
-  date=${date%-digest.md}
+while IFS= read -r date; do
   if [[ ! "$date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
     echo "Refusing unexpected digest filename: $digest" >&2
     exit 1
@@ -29,6 +24,6 @@ while IFS= read -r digest; do
   aws s3api wait object-not-exists --bucket "$S3_BUCKET" --key "$key" \
     --endpoint-url "$S3_ENDPOINT_URL"
   deleted=$((deleted + 1))
-done < <(find research/digest -maxdepth 1 -type f -name '*-digest.md' | sort)
+done < <(python3 scripts/digest_publication_state.py --list-fallback-dates research/digest)
 
 echo "Processed ${deleted} non-editorial audio object(s); exact keys are now inaccessible."
