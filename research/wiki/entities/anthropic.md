@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO, confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply, signed a $45B compute deal with Nscale (2026-08-27), and is now priced by its own bankers at $2 trillion with a >$100B raise pitch and a >$30T TAM investor story.
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue, signed a $45B Nscale compute deal (2026-08-27), pledged more Cursor compute as OpenAI exits that IDE (2026-08-29), and was sued by Sony Music Publishing and Warner Chappell (2026-08-28) weeks before a reported record IPO.
 created_at: 2026-05-24
-timestamp: 2026-08-27T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
@@ -1266,3 +1267,47 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   commitments rather than replacing it — a frontier lab signing an even larger
   take-or-pay-style capacity line, day after pitching a >$30T TAM to investors
   (TechCrunch, The Decoder; ARA daily digest 2026-08-27). See [[ai-capex]].
+
+## Music-publisher suit, self-alignment research, and the Cursor compute pledge (2026-08-29)
+
+- **Sony Music Publishing and Warner Chappell sued Anthropic and two
+  founders (2026-08-28/29).** The complaint, filed late on August 28
+  against Anthropic, **Dario Amodei** and **Benjamin Mann**, alleges a
+  "brazen campaign of illegally torrenting, scraping, and downloading
+  copyrighted works on a massive scale" to develop and operate Claude,
+  naming compositions from "Eye of the Tiger" to "All I Want for
+  Christmas Is You". It quotes the prior **Bartz v. Anthropic** finding
+  of "straightforward piracy but at massive scale." There has been **no
+  Anthropic response** in the digest window, and the suit lands **weeks
+  before a reported record IPO**. Whether it consolidates with the
+  existing books cases is the open question (filing text via X; ARA
+  daily digest 2026-08-29).
+- **Claude worked as an automated alignment researcher (2026-08-29).**
+  Anthropic's Fellows research gave Claude **48 hours and one GPU** to
+  improve small models' alignment: it researched and proposed methods,
+  generated training data, and trained and evaluated students, **fixing
+  all ten studied failures** without degrading measured capabilities.
+  [[claude-sonnet-5|Sonnet 5]] also post-trained an early
+  [[claude-opus-4-8|Opus 4.8]] checkpoint toward production safety
+  scores. The setup is being **released publicly**. Anthropic's own
+  caveat is load-bearing: **subtle or rare failures may have no
+  benchmark at all**, so "everything hinges on measuring the right
+  things" (Anthropic, TechCrunch; ARA daily digest 2026-08-29).
+- **Anthropic pledged more compute for [[cursor|Cursor]] the morning
+  OpenAI cut the IDE off (2026-08-29).** Co-founder **Tom Brown** wrote
+  that Cursor "has been a trusted partner of Anthropic since Sonnet
+  3.5" and that Anthropic **will continue to increase compute** to
+  support Claude models there — a same-day substitution offer as
+  [[openai]] winds down Cursor's contracted access on November 12
+  (X; ARA daily digest 2026-08-29). See [[cursor]].
+- **Claude Code weekly limits fall ~17% on September 14 (2026-08-29).**
+  The current temporary **50% boost** ends and a permanent **25% raise**
+  begins for Pro, Max, Team and seat-based Enterprise plans — which
+  Anthropic itself computed as a **roughly 17% reduction** versus
+  today's effective limits. The account **deleted and re-posted** the
+  announcement after pushback (ARA daily digest 2026-08-29).
+- **Model Hardware Standard (MHS) (2026-08-29).** Anthropic published a
+  unified interface for AI agents to physical devices (robotic arms,
+  lab instruments); early tests claimed integration time dropped from
+  **weeks to hours** (The Decoder; ARA daily digest 2026-08-29). See
+  [[claude-science]].

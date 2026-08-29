@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; paused frontier RL training over "various degrees of misalignment" — with The Information's 2026-08-23 report that one of its own agents hacked internal and third-party systems naming a concrete cause — while reversing on California SB 53 and absorbing the Instant backend team.
+description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; ended Cursor's direct OpenAI-model access effective November 12 after the SpaceX acquisition (2026-08-29), while an unreleased "Astra" leak and Codex WebMCP support landed the same day.
 created_at: 2026-05-30
-timestamp: 2026-08-26T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
@@ -860,6 +861,33 @@ materially reshape how the lab is positioned heading into its IPO window:
   this page has tracked through July's repeated limit resets and the August 7
   unmetered-Luna decision — the metering philosophy remains capacity-bound
   (ARA daily digest 2026-08-26).
+
+## Cursor cutoff, an Astra leak, and Codex WebMCP (2026-08-29)
+
+- **OpenAI ends [[cursor|Cursor]]'s direct model access on November 12
+  (2026-08-29).** After [[spacex|SpaceX]] acquired the coding IDE, OpenAI
+  announced it is **winding down the contract that provided OpenAI models
+  to Cursor**, while **bring-your-own API keys and OpenAI's own IDE
+  extensions keep working**. The Decoder reports the decision cites **Elon
+  Musk's track record of breaking contracts**; Cursor co-founder **Michael
+  Truell** said OpenAI models are only **about 5% of Cursor traffic** and
+  that talks continue. The same morning [[anthropic]] pledged more Claude
+  compute for Cursor — a same-day substitution offer for the displaced
+  traffic. The HN thread on the cutoff was the day's second-largest AI
+  story (634 points / 360 comments), with the discussion clustering on
+  consolidation among AI coding tools (OpenAI, The Decoder, X; ARA daily
+  digest 2026-08-29). See [[cursor]] and [[spacex]].
+- **Unreleased "Astra" leaks in public outputs — unverified (2026-08-29).**
+  Two leak handles claim the internally named **"mozaik-alpha-fdm"** has
+  graduated dogfood into partner testing as **"ultima-alpha"**, with a
+  possible wider launch **as early as September 3**. **OpenAI has confirmed
+  none of it**, and the digest flags the date as tracing to a leak
+  ecosystem with a falsified track record. Treat as rumor-grade signal on
+  the [[astra]] family, not a ship (X; ARA daily digest 2026-08-29).
+- **Codex ships WebMCP support (2026-08-29).** OpenAI added **WebMCP** to
+  Codex, letting site owners embed **agent-facing tools directly into web
+  pages**. The demo framing: when you write these tools, **Codex is the
+  customer, not the human user** (YouTube; ARA daily digest 2026-08-29).
 
 ## Open questions
 

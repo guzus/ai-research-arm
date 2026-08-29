@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20), Vercel's gateway data puts open weights at 62% of token volume (2026-08-22), and Stanford CRFM begins fully-open pretraining of a 535B Marin model (2026-08-24).
+description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash gains force — now including Z.ai's downloadable GLM-5.3 flagship (2026-08-29, the day's top HN AI thread) and Tencent's Hunyuan Hy4 preview (770B/49B-active, weights promised), after Meta's Apache-2.0 Muse Glimmer return, Alibaba's first Max-class Qwen, and Vercel gateway data putting open tokens at 62%.
 created_at: 2026-06-14
-timestamp: 2026-08-24T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
@@ -455,6 +456,28 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   useful counterpoint to the release-hype entries on this page: the open tier
   is closing on the frontier, but an unattributed "frontier" claim still fails
   against independent benchmarks (ARA daily digest 2026-08-23).
+
+- **[[zhipu-glm-5-3|GLM-5.3]] flagship weights actually download
+  (2026-08-29).** The promise this theme and the GLM-5.3 page have
+  carried since mid-August closes: Z.ai published **download weights
+  for its most capable agentic coding / cyber-defense model**,
+  post-trained on the 743B GLM-5.2 base, with day-0 vLLM / SGLang /
+  Baseten serving and same-evening Unsloth 2-bit GGUFs (239GB, ~81%
+  retained, 256GB Mac). It was the day's **biggest AI HN thread (733
+  points)**. Ethan Mollick's same-day caveat — **considerable
+  offensive cyber capability with effectively no guardrails** — is
+  the capability-side of the "does decentralization survive contact
+  with capability?" question below (Z.ai, Hugging Face, Hacker News,
+  Bluesky; ARA daily digest 2026-08-29). See [[zhipu-glm-5-3]] and
+  [[agentic-ai-security]].
+- **Tencent previews Hunyuan Hy4, weights promised (2026-08-29).**
+  **770B total / 49B active**, 1M context, positioned as an
+  open-source frontier productivity model at **$0.834/M input and
+  $2.501/M output**, with weights promised on Hugging Face and
+  GitHub. A preview, not a download — the same "weights promised"
+  gap [[zhipu-glm-5-3]] just closed. Fold onto the existing
+  [[tencent-hunyuan-hy3]] family rather than minting a Hy4 page
+  until weights land (X; ARA daily digest 2026-08-29).
 
 ## Open questions
 

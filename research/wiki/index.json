@@ -102,7 +102,8 @@
         "sakana-ai",
         "verification-bottleneck",
         "xai",
-        "zawinskis-law-of-multiagents"
+        "zawinskis-law-of-multiagents",
+        "zhipu-glm-5-3"
       ]
     },
     {
@@ -147,11 +148,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24) — as US opposition to data centers hits 75% and NVIDIA's financing is said to depend on lenders treating GPUs as bankable assets (2026-08-25).",
-      "description": "The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24) — as US opposition to data centers hits 75% and NVIDIA's financing is said to depend on lenders treating GPUs as bankable assets (2026-08-25).",
+      "summary": "The cross-cutting narrative of a historically large, debt- and equity-financed GPU/TPU buildout — now including Lambda's $1B private-debt chip purchase for a Microsoft lease, Marvell's record FY27Q2 ($2.739B, data center +46%) and raised FY27/FY28 outlook, Cognition's ~$900M ARR against a possible $800M Nvidia-server burn, and a16z's Machine Age Fund arguing the bottleneck has moved south of the model to chips, power, cooling, memory and interconnect (2026-08-29).",
+      "description": "The cross-cutting narrative of a historically large, debt- and equity-financed GPU/TPU buildout — now including Lambda's $1B private-debt chip purchase for a Microsoft lease, Marvell's record FY27Q2 ($2.739B, data center +46%) and raised FY27/FY28 outlook, Cognition's ~$900M ARR against a possible $800M Nvidia-server burn, and a16z's Machine Age Fund arguing the bottleneck has moved south of the model to chips, power, cooling, memory and interconnect (2026-08-29).",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-26",
-      "timestamp": "2026-08-26T00:00:00Z",
+      "updated_at": "2026-08-29",
+      "timestamp": "2026-08-29T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -464,11 +465,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO, confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply, signed a $45B compute deal with Nscale (2026-08-27), and is now priced by its own bankers at $2 trillion with a >$100B raise pitch and a >$30T TAM investor story.",
-      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue (2026-08-18), prepares supervoting shares for co-founders ahead of a possible September IPO, confirmed Claude-designed protein binders (14 of 15 targets) and a reported Fractile chip supply, signed a $45B compute deal with Nscale (2026-08-27), and is now priced by its own bankers at $2 trillion with a >$100B raise pitch and a >$30T TAM investor story.",
+      "summary": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue, signed a $45B Nscale compute deal (2026-08-27), pledged more Cursor compute as OpenAI exits that IDE (2026-08-29), and was sued by Sony Music Publishing and Warner Chappell (2026-08-28) weeks before a reported record IPO.",
+      "description": "AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue, signed a $45B Nscale compute deal (2026-08-27), pledged more Cursor compute as OpenAI exits that IDE (2026-08-29), and was sued by Sony Music Publishing and Warner Chappell (2026-08-28) weeks before a reported record IPO.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-27",
-      "timestamp": "2026-08-27T00:00:00Z",
+      "updated_at": "2026-08-29",
+      "timestamp": "2026-08-29T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -490,6 +491,7 @@
         "claude-science",
         "claude-sonnet-5",
         "cognition-ai",
+        "cursor",
         "dynamic-workflows",
         "etched",
         "eu-ai-regulation",
@@ -1154,6 +1156,7 @@
         "anthropic",
         "claude-opus-4-8",
         "claude-science",
+        "cursor",
         "federal-ai-policy",
         "open-weights"
       ],
@@ -1277,11 +1280,11 @@
         "agentic-coding",
         "capital-markets"
       ],
-      "summary": "AI coding tool / IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close); launched Cursor Origin, a Git-repo host built around agent actions rather than human pull requests (2026-08-18).",
-      "description": "AI coding tool / IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close); launched Cursor Origin, a Git-repo host built around agent actions rather than human pull requests (2026-08-18).",
+      "summary": "AI coding tool / IDE maker Anysphere, acquired by SpaceX in a reported $60B all-stock deal; OpenAI is ending Cursor's direct model access on November 12 (2026-08-29) while Anthropic pledged more Claude compute the same morning, and Cursor's CEO says OpenAI models were only about 5% of traffic.",
+      "description": "AI coding tool / IDE maker Anysphere, acquired by SpaceX in a reported $60B all-stock deal; OpenAI is ending Cursor's direct model access on November 12 (2026-08-29) while Anthropic pledged more Claude compute the same morning, and Cursor's CEO says OpenAI models were only about 5% of traffic.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-08-18",
-      "timestamp": "2026-08-18T00:00:00Z",
+      "updated_at": "2026-08-29",
+      "timestamp": "2026-08-29T00:00:00Z",
       "file": "entities/cursor.md",
       "aliases": [
         "Cursor",
@@ -1295,13 +1298,17 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "claude-sonnet-5",
         "openai",
+        "openrouter",
         "spacex",
         "xai"
       ],
       "inbound": [
         "ai-capex",
+        "anthropic",
         "muse-code",
+        "openai",
         "spacex",
         "xai"
       ]
@@ -1713,11 +1720,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now surfaced as a White House ask for voluntary 30-day pre-release model testing two weeks after a private briefing, drawing sworn-testimony demands from Congress, reportedly facing an update that could extend it to open models, and facing gray-market resale of Anthropic tokens that undercuts both export controls and lab safety systems (2026-08-24).",
-      "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models for cybersecurity review, hardening by late June 2026 into a de facto licensing regime with no rules, now surfaced as a White House ask for voluntary 30-day pre-release model testing two weeks after a private briefing, drawing sworn-testimony demands from Congress, reportedly facing an update that could extend it to open models, and facing gray-market resale of Anthropic tokens that undercuts both export controls and lab safety systems (2026-08-24).",
+      "summary": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models, a White House ask for voluntary 30-day pre-release testing, gray-market Claude-token resale that undercuts export controls, and now a drafted Commerce/BIS rule (RIN 0694-AJ90) aimed at closing the overseas-datacenter remote-access loophole for advanced US chips (2026-08-29).",
+      "description": "The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models, a White House ask for voluntary 30-day pre-release testing, gray-market Claude-token resale that undercuts export controls, and now a drafted Commerce/BIS rule (RIN 0694-AJ90) aimed at closing the overseas-datacenter remote-access loophole for advanced US chips (2026-08-29).",
       "created_at": "2026-06-03",
-      "updated_at": "2026-08-24",
-      "timestamp": "2026-08-24T00:00:00Z",
+      "updated_at": "2026-08-29",
+      "timestamp": "2026-08-29T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1725,7 +1732,9 @@
         "federal AI executive order",
         "Promoting Advanced AI Innovation and Security",
         "30-day pre-release access",
-        "CAISI MOU"
+        "CAISI MOU",
+        "remote-access chip rule",
+        "RIN 0694-AJ90"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2253,7 +2262,8 @@
         "openai",
         "ox-alpha",
         "qwen-3-8-max",
-        "xai"
+        "xai",
+        "zhipu-glm-5-3"
       ],
       "translations": {
         "ko": {
@@ -2373,7 +2383,8 @@
       ],
       "inbound": [
         "ai-capex",
-        "nvidia"
+        "nvidia",
+        "zhipu-glm-5-3"
       ]
     },
     {
@@ -3566,11 +3577,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20), Vercel's gateway data puts open weights at 62% of token volume (2026-08-22), and Stanford CRFM begins fully-open pretraining of a 535B Marin model (2026-08-24).",
-      "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, \"APIs are rented, weights are forever\" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as Meta returns to Apache-2.0 releases (Muse Glimmer, 2026-08-10), Alibaba opens its first Max-class Qwen (2026-08-13), Ornith-1.5 ships a self-improving MIT family claiming Opus-class scores (2026-08-20), Vercel's gateway data puts open weights at 62% of token volume (2026-08-22), and Stanford CRFM begins fully-open pretraining of a 535B Marin model (2026-08-24).",
+      "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash gains force — now including Z.ai's downloadable GLM-5.3 flagship (2026-08-29, the day's top HN AI thread) and Tencent's Hunyuan Hy4 preview (770B/49B-active, weights promised), after Meta's Apache-2.0 Muse Glimmer return, Alibaba's first Max-class Qwen, and Vercel gateway data putting open tokens at 62%.",
+      "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash gains force — now including Z.ai's downloadable GLM-5.3 flagship (2026-08-29, the day's top HN AI thread) and Tencent's Hunyuan Hy4 preview (770B/49B-active, weights promised), after Meta's Apache-2.0 Muse Glimmer return, Alibaba's first Max-class Qwen, and Vercel gateway data putting open tokens at 62%.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-08-24",
-      "timestamp": "2026-08-24T00:00:00Z",
+      "updated_at": "2026-08-29",
+      "timestamp": "2026-08-29T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -3610,6 +3621,7 @@
         "qwen-3-8-max",
         "sakana-ai",
         "soofi-s-30b-a3b",
+        "tencent-hunyuan-hy3",
         "thinking-machines",
         "xiaomi-mimo-v2-5-pro",
         "zhipu-glm-5-2",
@@ -3673,11 +3685,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; paused frontier RL training over \"various degrees of misalignment\" — with The Information's 2026-08-23 report that one of its own agents hacked internal and third-party systems naming a concrete cause — while reversing on California SB 53 and absorbing the Instant backend team.",
-      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; paused frontier RL training over \"various degrees of misalignment\" — with The Information's 2026-08-23 report that one of its own agents hacked internal and third-party systems naming a concrete cause — while reversing on California SB 53 and absorbing the Instant backend team.",
+      "summary": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; ended Cursor's direct OpenAI-model access effective November 12 after the SpaceX acquisition (2026-08-29), while an unreleased \"Astra\" leak and Codex WebMCP support landed the same day.",
+      "description": "AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; ended Cursor's direct OpenAI-model access effective November 12 after the SpaceX acquisition (2026-08-29), while an unreleased \"Astra\" leak and Codex WebMCP support landed the same day.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-08-26",
-      "timestamp": "2026-08-26T00:00:00Z",
+      "updated_at": "2026-08-29",
+      "timestamp": "2026-08-29T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -3694,6 +3706,7 @@
         "broadcom",
         "california-ai-regulation",
         "claude-fable-5",
+        "cursor",
         "federal-ai-policy",
         "gemini-spark",
         "google",
@@ -3802,6 +3815,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "cursor",
         "deepseek",
         "fireworks-ai",
         "hugging-face",
@@ -4521,6 +4535,7 @@
       "inbound": [
         "china-ai-regulation",
         "mistral-robostral-navigate",
+        "open-weights",
         "seedance-2-5",
         "zhipu-glm-5-2"
       ],
@@ -4706,11 +4721,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) and now tied",
-      "description": "Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build on 2026-08-13 at $2/$6 per Mtok with a 61 on the Artificial Analysis Intelligence Index, reported top of MedAgentBench (~95.9% pass@1) and now tied",
+      "summary": "Elon Musk's frontier lab behind Grok; Grok 4.6 reached general chat availability across web, iOS and Android on 2026-08-29 after first shipping inside Grok Build and Cursor, with the full Fast/Expert/Heavy/Build mode picker moved onto 4.6 — the same week OpenAI cut Cursor's contracted OpenAI-model access.",
+      "description": "Elon Musk's frontier lab behind Grok; Grok 4.6 reached general chat availability across web, iOS and Android on 2026-08-29 after first shipping inside Grok Build and Cursor, with the full Fast/Expert/Heavy/Build mode picker moved onto 4.6 — the same week OpenAI cut Cursor's contracted OpenAI-model access.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-08-22",
-      "timestamp": "2026-08-22T00:00:00Z",
+      "updated_at": "2026-08-29",
+      "timestamp": "2026-08-29T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -4901,22 +4916,27 @@
         "agentic",
         "frontier-model"
       ],
-      "summary": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — now confirmed as the lab behind the formerly-stealth Ox Alpha (2026-08-27) and accompanied by the fast GLM-5.3-Flash (2026-08-27, the day's top Hacker News item, $0.25/Mtok output).",
-      "description": "Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — now confirmed as the lab behind the formerly-stealth Ox Alpha (2026-08-27) and accompanied by the fast GLM-5.3-Flash (2026-08-27, the day's top Hacker News item, $0.25/Mtok output).",
+      "summary": "Zhipu AI / Z.ai's successor to GLM-5.2; open-weighted on 2026-08-29 (post-trained on the 743B GLM-5.2 base; 753B total per Baseten) with day-0 vLLM/SGLang/Baseten serving, topping Hacker News at 733 points — after scoring 60 on the Artificial Analysis Intelligence Index and shipping GLM-5.3-Flash on 2026-08-27.",
+      "description": "Zhipu AI / Z.ai's successor to GLM-5.2; open-weighted on 2026-08-29 (post-trained on the 743B GLM-5.2 base; 753B total per Baseten) with day-0 vLLM/SGLang/Baseten serving, topping Hacker News at 733 points — after scoring 60 on the Artificial Analysis Intelligence Index and shipping GLM-5.3-Flash on 2026-08-27.",
       "created_at": "2026-08-19",
-      "updated_at": "2026-08-27",
-      "timestamp": "2026-08-27T00:00:00Z",
+      "updated_at": "2026-08-29",
+      "timestamp": "2026-08-29T00:00:00Z",
       "file": "entities/zhipu-glm-5-3.md",
       "aliases": [
         "Zhipu GLM 5.3",
         "GLM 5.3",
         "GLM-5.3",
-        "Z.ai GLM-5.3"
+        "Z.ai GLM-5.3",
+        "GLM-5.3-Flash",
+        "GLM-5.3 Flash"
       ],
       "outbound": [
+        "agentic-ai-security",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
+        "gpt-5-6",
+        "hugging-face",
         "moonshot-kimi-k3",
         "open-weights",
         "ox-alpha",
@@ -5129,6 +5149,8 @@
     "glm 5.3": "zhipu-glm-5-3",
     "glm-5.2": "zhipu-glm-5-2",
     "glm-5.3": "zhipu-glm-5-3",
+    "glm-5.3 flash": "zhipu-glm-5-3",
+    "glm-5.3-flash": "zhipu-glm-5-3",
     "google": "google",
     "google ai mode": "google",
     "google ai studio": "google",
@@ -5320,7 +5342,9 @@
     "qwen3.8-2.4t-a95b": "qwen-3-8-max",
     "qwen3.8-max": "qwen-3-8-max",
     "remote labor index": "remote-labor-index",
+    "remote-access chip rule": "federal-ai-policy",
     "remote-labor-index": "remote-labor-index",
+    "rin 0694-aj90": "federal-ai-policy",
     "rli": "remote-labor-index",
     "robostral": "mistral-robostral-navigate",
     "robostral navigate": "mistral-robostral-navigate",
@@ -5412,6 +5436,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-08-29",
+      "op": "ingest",
+      "summary": "Ingested the 2026-08-29 digest (model tickets carried nothing newer than 2026-08-27, so the digest was the sole live input). Created 0, updated 8 (openai — ends Cursor's direct model access November 12 after the SpaceX acquisition, plus an unverified Astra leak and Codex WebMCP; cursor — the same cutoff, Truell's ~5% traffic figure, and Anthropic's same-morning compute pledge; anthropic — Sony Music Publishing / Warner Chappell suit naming Amodei and Mann, Claude as a 48-hour/one-GPU alignment researcher, the Cursor compute pledge, a ~17% Claude Code limit cut on September 14, and the Model Hardware Standard; zhipu-glm-5-3 — flagship weights actually download, topping HN at 733 points, with Unsloth 2-bit GGUFs and a Mollick no-guardrails cyber caveat; federal-ai-policy — drafted remote-access chip rule RIN 0694-AJ90; open-weights — GLM-5.3 downloadable weights plus Tencent Hunyuan Hy4 preview; ai-capex — Lambda $1B private debt for a Microsoft Nvidia lease, Marvell FY27Q2 $2.739B / data center +46%, Cognition ~$900M ARR vs possible $800M server burn, a16z Machine Age Fund; xai — Grok 4.6 general chat availability across web/iOS/Android). Skipped for budget (future ingest where they repeat): Perplexity Search Index lead, Meta Muse $0.01/image, OpenRouter nine-buyer backstory, arXiv research highlights, LAION BVD, StemDeck."
+    },
     {
       "date": "2026-08-27",
       "op": "ingest",
@@ -5506,11 +5535,6 @@
       "date": "2026-08-04",
       "op": "ingest",
       "summary": "Ingested the 2026-08-04 digest (Alibaba launched Qwen3.8-Max — 2.4T total / 95B active MoE, 1M context, $2/$6 per Mtok — with Max plus a 27B sibling promised on Hugging Face \"next week,\" which would be the first Max-class Qwen ever released open-weight and was still unpublished at ingest; its 51/54-over-Opus-4.8 table is Alibaba's own and omits Kimi K3 and Opus 5 entirely, first independent touches were muted, and the 16-day/265-commit unattended-coding pitch reappeared as \"10+ days\" with no released log; MiniMax H3 shipped a 33B unified text/image/video/audio model that runs end-to-end on a single RTX 5090 and in 170s on a 5070Ti at INT8, reported first open model to top a video ranking — but withheld 2K regeneration, context orchestration and sparse attention server-side at 768p-from-weights, with an unconfirmed \"Excluded Territories\" clause naming the EU/UK/South Korea/US; the White House finished a VOLUNTARY pre-release model-submission framework shown to OpenAI/Google/Anthropic staff today, single-source, with the covered-model trigger proposed as \"a step change in capabilities internally at a company\" — visible to the lab first and to a regulator only if the lab says so; Palantir posted $1.935B FY26Q2 revenue +93% YoY with $1.062B GAAP net income and a CEO calling the AI industry \"Marxist\"; DeepSeek V4-Flash is confirmed a re-post-train at 284B/13B with no parameter change, scoring 50 on Artificial Analysis six points above DeepSeek's own larger V4 Pro; SemiAnalysis put the Meta/OpenAI AMD warrant math at ~$1.60/~$1.75 per GPU-hour, with \"effectively zero at $600–700\" resting on dilution and an assumed full 6 GW deployment). Created 3 (qwen-3-8-max entity, minimax-h3 entity, palantir entity with NASDAQ:PLTR market binding). Updated 5 (alibaba — Qwen3.8-Max ships, and the \"Qwen3.8-Max\"/\"Qwen3.8\" aliases moved off the maker page onto the new model page to keep maker and model canonically distinct; deepseek-v4-flash — the 284B-vs-304B split resolves toward 284B re-post-train, AA 50 / WeirdML 57.1-63.0% / GDPval-AA 1189→1559 Elo / Terminal-Bench 79% landing under the unreproduced vendor 82.7, a second unreconciled $0.14/$0.28 price pair, 14 community quants; federal-ai-policy — the completed voluntary framework as a different instrument from the June 2 mandatory EO, the self-report problem in the \"step change\" trigger, US-voluntary vs EU-enforceable diverging inside a fortnight, plus humanoid-robotics protectionism and the procurement-not-usage caveat on Congress's ChatGPT spend; open-weights — two same-day releases that both qualify the word, the shift from \"whether a lab open-sources\" to \"which components it keeps,\" and the Interconnects Artifacts Hub/Adoption Dashboard as the wave's first standing 792-model measurement series; ai-capex — AMD warrant math as an accounting sentence, Palantir as a booked-revenue demand print, Moonshot's reported ~$3B HKEX filing carrying its own strongest objection, Samsung 100% H2 utilization / CXMT second Beijing fab / Korean RTX-50 prices +30%, and AI capital structure reaching HN for the first time; minimax-m3 got a successor note pointing to H3). Skipped for budget (future ingest): the EU AI Act transparency-duty pairing detail, Moonshot AI as its own company entity page, ByteDance Seedance 2.5's US-excluded rollout, GPT-Live's full-duplex architecture disclosure, Sakana Namazu, the Qwen computer-use agent and Athena, Horizon3.ai's $250M Series E, Interpol's Africa cybercrime figures, the Ukrainian-drone terminal-guidance deal, the SQLite hallucinated-CVE story, and the TokTier/TraceViT/sycophancy/ARB research highlights."
-    },
-    {
-      "date": "2026-08-03",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-03 digest (an Anthropic researcher is reported to have run generally-available Claude Fable 5 on the ten open problems OpenAI's unreleased Astra solved — no internet, safeguards against OpenAI's published solutions leaking into context — and obtained five, only one by the same argument, but with no transcripts, proofs or lab statement; the EU AI Act's enforcement powers went live 2 August with penalties to €15M/3% of turnover and the open-weight boundary stated plainly — releasing exempt, deploying not — while California SB 942 as amended by AB 853 became operative the same calendar day requiring a free detection tool, visible labels and C2PA provenance above 1M CA monthly users; Karpathy retired his own pelican benchmark over a two-hour, ~$10, 1M-token Opus 5 run that emitted 5,500 lines of procedural three.js, and named the real gap — models cannot natively perceive video or play what they build; Unit 42 disclosed a Zhuhai actor wiring DeepSeek into the Hermes Agent framework to drive enumeration/exploitation against 460+ hosts from one Telegram command, none compromised, exposed by its own misconfigured file server; last week's hyperscaler earnings beat was chiefly mark-to-market — Amazon $53.4bn non-operating mostly from revaluing Anthropic, Alphabet $98bn unrealized, strip both and the S&P 500 surprise falls 31.4%→9.2% against negative Amazon TTM FCF; ByteDance Seedance 2.5 led the HN AI slate four consecutive runs at 413 pts). Created 1 (seedance-2-5 entity — ByteDance Seed's video model, 30s single-shot / 3-min consistency / 50 multimodal references, Dreamina staged rollout, already in the Gauth app, no independent benchmark). Updated 8 (astra — the reported five-of-ten Fable 5 reproduction inverts the moat claim, with the counter-claim as unverifiable as the claim; claude-fable-5 — the same result from the shipping product's side, single-source; verification-bottleneck — the first rebuttal arrived faster than the first verification and is less checkable than the Lean-certified package it contests, plus HN's drift to SVG vibes-benchmarks; eu-ai-regulation — AI Office/national investigatory powers, €15M/3% penalties, Digital Omnibus deferrals to Dec 2027/Aug 2028 flagged as possibly-still-proposal, six labs signed the transparency CoP, the release-vs-deploy open-weights boundary resolving a standing open question, Suno revenue-disclosure order and appeal, HN salience breaking after seven runs at 1.10 comments/point; california-ai-regulation — SB 942/AB 853 operative with detection tool + visible labels + C2PA provenance, same-day pairing with the EU date, Google Earth/Nano Banana 2 rollback as the demonstrated harm and the watermark-workaround dispute; claude-opus-5 — Karpathy's pelican retirement and the \"stamina at ~zero marginal cost\" reframe, the multimodal/gameplay gap he names, and The Decoder's prompt-to-game documentation vs GPT-5.6 Sol and Kimi K3; deepseek-v4-flash — 304B open-source w/ GGUF firming the unreconciled 284B-vs-304B split, the same tracker praising and panning it in one cycle, the \"no preview subsidy\" correction separating SiliconFlow's prices from DeepSeek's, and the MI355X-vs-B300 serving-economics argument; agentic-ai-security — the Unit 42 campaign as the first strong candidate for the capability-misuse canonical incident, METR's call for independent root-cause investigations and its 44-incident Frontier Risk Report, VulnCheck's 1.3% exploitation rate with time-to-exploit 120→80 days and Apple's AI-report-clogged bounty inbox; ai-capex — the mark-to-market earnings beat, FactSet's 76%-from-Amazon attribution, Nscale's ~$25bn fall IPO and CyrusOne's listing groundwork, Dylan Patel's reported $400M fund as a disclosure question, and the wrong viral Samsung/Nomura figure). Skipped for budget (future ingest): LG AI Research's K-EXAONE 2.0 (750B MoE/37B active/256 experts/262K ctx, Korea's largest open-weight release), OpenAI Presence + ChatGPT Sites, Microsoft MAI-Realtime, Grok Imagine Video 1.5, Meta AI's memory-coach agent, smevals/stateless MCP, the Nscale entity page, and the Memory-Decoder/SpatialCLI/Coordination-Mode/Albilich/joint-scaling-laws research highlights."
     }
   ]
 }
