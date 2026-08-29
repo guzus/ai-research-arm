@@ -36,6 +36,43 @@ status_note: |
   fully offline through AI Edge Gallery ([[gemma-4]]) and in Xiaomi's own
   MiMo line ([[xiaomi-mimo-v2-5-pro]]). Xiaomi is now the rare company
   positioned to co-design the model and the silicon it runs on.
+
+  **2026-08-25 — the memory supplier is named, and the O100 got a
+  demonstrated system.**
+
+  *Supply chain.* @jukan05 (2026-08-25 06:56 UTC): "According to Chinese
+  media reports, **CXMT is expected to be a key supplier of LPDDR6 for
+  Xiaomi's new Xring O3 chip.**" @tphuang gives the technical detail
+  behind it — after the O3 became the first SoC to support LPDDR6 at
+  **10,667 Mbps / 113.8 GB/s**, CXMT was revealed as supplier; CXMT's
+  LPDDR6 has a **designed ceiling of 12,800 Mbps** but runs at the 10,667
+  base with this SoC, **16 Gb single die, 16 GB chip**. @teortaxesTex
+  flags the schedule tension honestly: "We were supposed to get CXMT's
+  LPDDR6 by end of 2026. Is this the end of year already?" — i.e. either
+  CXMT pulled in its schedule or the parts are early samples, and nothing
+  captured distinguishes those.
+
+  **Why this is the most consequential detail on the ticket.** It makes
+  the O3 an **end-to-end domestic part on its critical path** — Chinese
+  SoC plus Chinese leading-edge DRAM — at the exact moment memory is the
+  global bottleneck ([[nvidia-server-price-increase-2026-08]],
+  [[nvidia-rubin-ultra-hbm-downgrade-2026-08]]) and the US is reported to
+  be asking South Korea to build memory fabs on US soil. It also gives
+  [[cxmt-ipo-debut-2026-07]] a named flagship customer.
+
+  *System.* @mark_k (2026-08-24 15:45 UTC) reports a Xiaomi **"AI Cube"
+  engineering prototype** packing **all three chips — Xring O3, O100 and
+  D100 — together**, delivering up to **1.22 TB/s of near-memory
+  bandwidth** and **150 W sustained**, demonstrated running **120B + 3B
+  models entirely locally with a fast/slow model-switching
+  architecture**. Explicitly **no price and no release date**. The
+  fast/slow pairing is the notable part: it is speculative-decoding-shaped
+  local serving designed into the silicon, which is what the O100's
+  near-memory architecture was described as being for.
+
+  Status stays `confirmed`; verification stays `partial` — still no Xiaomi
+  primary post, and the AI Cube figures are a single relay of a prototype
+  demo with no third-party measurement.
 expected: "Unveiled 2026-08-24: Xring O3 (3nm flagship SoC, ships in Xiaomi 18 Fold and Pad 9 Pro Max in September), O100 (6nm near-memory accelerator for on-device LLMs), D100 (3nm driving, commercialization next year). Pending: a Xiaomi primary announcement, independent benchmarks against the vendor deltas and the 5M AnTuTu claim, O100 availability and which MiMo models it targets, and whether O100 ships in a shipping device at all"
 labels:
   - xiaomi
@@ -45,17 +82,23 @@ labels:
   - edge-inference
 verification: partial
 sources:
+  - "@jukan05"
+  - "@tphuang"
+  - "@teortaxesTex"
+  - "@mark_k"
   - "@ZionsAnvin"
   - https://x.com/ZionsAnvin/status/2091783440601653386
   - "@bytelee_trade"
   - https://x.com/bytelee_trade/status/2091787209104052312
 created_at: 2026-08-24
-updated_at: 2026-08-24
+updated_at: 2026-08-25
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-24
     change: "Created — Xiaomi unveiled three Xring chips simultaneously (@ZionsAnvin, @bytelee_trade, 2026-08-24): Xring O3, a 3nm flagship SoC (10-core CPU +60%, 16-core G2-Ultra NX GPU up to +85%, first mobile part with LPDDR6, 113.8 GB/s, 200 TOPS tensor, NPU +45%, claimed first past 5M AnTuTu) shipping in the Xiaomi 18 Fold and Pad 9 Pro Max in September; Xring O100, a 6nm wafer-level-stacked near-memory accelerator aimed at on-device large models and the memory wall; and Xring D100, a 3nm intelligent-driving part with development complete and commercialization planned for next year. Status confirmed on a dated unveiling with named devices and a detailed spec sheet from two independent accounts; verification partial — no Xiaomi primary post captured and all figures are vendor-supplied. The O100 is the model-lane-relevant part: purpose-built on-device LLM silicon from a company that also ships the MiMo model line ([[xiaomi-mimo-v2-5-pro]])."
+  - ts: 2026-08-25
+    change: "Memory supplier named and the O100 got a demonstrated system. @jukan05 (2026-08-25 06:56 UTC) relays Chinese media reporting CXMT as a key LPDDR6 supplier for the Xring O3; @tphuang adds that after the O3 became the first SoC supporting LPDDR6 at 10,667 Mbps / 113.8 GB/s, CXMT was revealed as supplier, with a 12,800 Mbps design ceiling, 16 Gb single die and 16 GB chip. @teortaxesTex flags the schedule tension — CXMT LPDDR6 was expected end-2026 — which nothing captured resolves between a pulled-in schedule and early samples. Consequential because it makes the O3 an end-to-end domestic part on its critical path while memory is the global bottleneck ([[nvidia-server-price-increase-2026-08]], [[nvidia-rubin-ultra-hbm-downgrade-2026-08]]), and gives [[cxmt-ipo-debut-2026-07]] a named flagship customer. Separately @mark_k (2026-08-24 15:45 UTC) reports a Xiaomi AI Cube engineering prototype packing all three chips together at up to 1.22 TB/s near-memory bandwidth and 150W sustained, demonstrated running 120B + 3B models fully locally with a fast/slow model-switching architecture, with no price or release date — speculative-decoding-shaped local serving designed into the silicon, which is what the O100 was described as being for. Status stays confirmed; verification stays partial — still no Xiaomi primary post, and the AI Cube figures are a single relay of a prototype demo."
 ---
 
 Xiaomi announced **three Xring parts in one event**, extending in-house

@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "NVIDIA AGREES TO BUY HUGGING FACE FOR $12.9B, THE INFORMATION REPORTS — NEITHER COMPANY CONFIRMS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092970324836937827",
+    "category": "breaking"
+  },
+  {
+    "headline": "HUGGING FACE PRICE IS ~80X FORWARD REVENUE ON ~$150M ANNUALIZED — AND 2.9X ITS 2023 MARK",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092890272979919181",
+    "category": "business"
+  },
+  {
+    "headline": "GOOGLE DEEPMIND PILOTS DOUBLE-BLIND FRONTIER EVALS — NEITHER TEST PROMPTS NOR MODEL WEIGHTS REVEALED",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2092961763553677387",
+    "category": "policy"
+  },
+  {
+    "headline": "TECHINSIGHTS: CHINA'S CXMT PUTS HIGH-K METAL GATE INTO DRAM MASS PRODUCTION ON 16NM-CLASS G4 NODE",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092870742400811129",
+    "category": "infra"
+  },
+  {
+    "headline": "HUGGING FACE SHIPS MICRODUCK — $399 OPEN-SOURCE BIPED ROBOT WITH OPEN SIMULATOR",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2092959363992326236",
+    "category": "opensource"
+  },
+  {
+    "headline": "SEMIANALYSIS ALLEGES AMD BURNING 20+ ENGINEERS ON 'ATOM' INFERENCE ENGINE WITH ONE PROD CUSTOMER",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092960615048360180",
+    "category": "infra"
+  },
+  {
+    "headline": "ANTHROPIC ADDS BUILT-IN WEB BROWSER TO CLAUDE COWORK — PRO, MAX AND TEAM DESKTOP BETA",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2092867859034640790",
+    "category": "model"
+  }
+]

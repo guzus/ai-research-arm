@@ -44,7 +44,7 @@ on:
     #
     # Hours: 3/9/15/21 deliberately avoid the crowded slots — the 00:xx digest
     # and front-page window, the 23:xx youtube/earnings pair that front-runs the
-    # digest, ai-news-research at 08:23 and 20:23, and twitter-model-ab at 21:40.
+    # digest and ai-news-research at 08:23 and 20:23.
     #
     # Interval: list prices change on announcement (weeks), and Epoch publishes
     # benchmark runs in batches (days), so the underlying data does not justify
@@ -75,10 +75,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
-
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - name: Setup uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           enable-cache: true
 

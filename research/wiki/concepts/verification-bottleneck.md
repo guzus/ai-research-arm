@@ -6,8 +6,9 @@ aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap"
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
 description: The 2026 constraint that models now generate research-shaped output faster than qualified humans can check it, so the scarce resource shifts from producing results to establishing which ones are correct and which matter.
 created_at: 2026-08-02
-timestamp: 2026-08-24T00:00:00Z
+timestamp: 2026-08-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "How Do Agents Fail on AutoResearch", url: "https://arxiv.org/abs/2608.14905", date: 2026-08-23}
   - {title: "ACID-Agent: Agentic Memory Cleanup as a Database Transaction", url: "https://arxiv.org/abs/2608.13900", date: 2026-08-23}
@@ -120,3 +121,27 @@ claim, and the dispute resolves on **relay credibility rather than
   $200-per-result generation.
 - **Can verification itself be automated without circularity?** Using models to
   adjudicate model output is the obvious move and the obvious failure mode.
+
+## The 6-sphere: a mathematician credits Claude with a 76-year-open result (2026-08-25)
+
+- **The first "outside-a-lab" claim of the cycle (2026-08-25).** A
+  mathematician posted a PDF answering **"Does S^6 admit a complex structure?"**
+  in the affirmative — a question **open since 1948** — and is reported to
+  credit Claude with the result. It is significant on two axes at once: it is
+  **the first such claim to run from outside a lab rather than from a model
+  vendor** (the division of labor this page has tracked flipping), and a human
+  is volunteering the attribution where labs have hedged. **Nobody on the record
+  has checked the construction**, and the problem has a **bad base rate for
+  claimed resolutions** — the strongest reminder yet that the scarce input is
+  still one qualified specialist reading the argument, not another model or
+  another PDF (Twitter/X via @__alpoge__, @littmath; ARA daily digest
+  2026-08-25). Track against the [[astra]] Lean-certified package and the
+  [[anthropic]] Riemann-zeta claim on this page — the same bottleneck, now
+  arriving from the non-vendor direction.
+- **The verification-relevant detail is who is checking, not who is
+  claiming.** On 2026-08-25 the claim's provenance is a named human + a PDF with
+  no announced referee, no Lean artifacts, and no specialist sign-off — a
+  *less* mechanically-checkable package than Astra's, resting entirely on
+  peer review that has not started. Whether it is deliberate-model-result or
+  human-guided, the load-bearing test is identical: the construction must
+  survive a specialist who is not the claimant (ARA daily digest 2026-08-25).

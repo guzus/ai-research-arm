@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-28
+
+TOP 5 PAPERS:
+• LeVJEPA - collapse-free video pretraining without EMA/stop-grad heuristics (LeCun et al.)
+• CLAP - cross-embodiment video world models as zero-shot physical simulators
+• Puro-2B - open pretraining recipe: 2B model on RTX 5090 for under $6.9K
+• SWE-Prime - fewer, cleaner SFT trajectories beat massive agent datasets
+• CritICL - weak-model failure modes power inference-time weak-to-strong reasoning
+
+CATEGORIES: LLM/NLP 10, CV/Multimodal 9, Agents/Reasoning 7, Safety/Alignment 6, Other 4
+
+Full report on GitHub.

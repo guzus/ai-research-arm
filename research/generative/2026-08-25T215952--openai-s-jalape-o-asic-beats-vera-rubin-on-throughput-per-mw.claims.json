@@ -1,0 +1,201 @@
+{
+  "claims": [
+    {
+      "id": "jal-1",
+      "claim": "OpenAI released the first measured results for its Jalapeño inference ASIC on August 25, 2026, tested on SemiAnalysis's public InferenceX benchmark.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://openai.com/index/jalapeno-first-results/",
+        "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia",
+        "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/"
+      ],
+      "source_tiers": ["primary", "secondary", "secondary"]
+    },
+    {
+      "id": "jal-2",
+      "claim": "Compared against GB200/GB300 Blackwell systems on InferenceX, Jalapeño delivered 1.5-1.9x more AI work per watt at peak throughput and 1.7-3.6x lower end-to-end latency across GPT-OSS 120B, DeepSeek R1 670B, and Kimi K2.5 1T.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "contested",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://openai.com/index/jalapeno-first-results/",
+        "https://x.com/kimmonismus/status/2092261453449327052",
+        "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia"
+      ],
+      "source_tiers": ["primary", "secondary", "secondary"]
+    },
+    {
+      "id": "jal-3",
+      "claim": "SemiAnalysis stated on August 25, 2026 that OpenAI's Jalapeño chip beats Vera Rubin's July results on Output Throughput per MW, i.e., it exceeds the Vera Rubin NVL72 figures NVIDIA and CoreWeave published in July.",
+      "type": "comparison",
+      "confidence": "high",
+      "risk": "contested",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://x.com/SemiAnalysis_/status/2092314842396828077",
+        "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia",
+        "https://the-decoder.com/openais-first-custom-chip-jalapeno-reportedly-beats-nvidias-blackwell-and-rubin-in-inference-benchmarks/"
+      ],
+      "source_tiers": ["secondary", "secondary", "secondary"]
+    },
+    {
+      "id": "jal-4",
+      "claim": "The Jalapeño results were gathered on the A0 stepping of the chip, roughly nine months into the program with about three months of bring-up on actual silicon, and the comparison ran with single-token prediction, no MTP, no speculative decoding, no prefill/decode disaggregation, and pure tensor parallel.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "contested",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia",
+        "https://x.com/teortaxesTex/status/2092280970292469931",
+        "https://x.com/mark_k/status/2092302299213549757"
+      ],
+      "source_tiers": ["secondary", "secondary", "secondary"]
+    },
+    {
+      "id": "jal-5",
+      "claim": "Jalapeño is rated at 700W TDP while its measured sustained power remained at or below 550W on the tested workloads.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://openai.com/index/jalapeno-first-results/",
+        "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia"
+      ],
+      "source_tiers": ["primary", "secondary"]
+    },
+    {
+      "id": "jal-6",
+      "claim": "At matched prior-best time-between-tokens, Jalapeño delivers 54x to 104x the token throughput per kilowatt versus the best available accelerator, depending on model.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "contested",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://openai.com/index/jalapeno-first-results/",
+        "https://the-decoder.com/openais-first-custom-chip-jalapeno-reportedly-beats-nvidias-blackwell-and-rubin-in-inference-benchmarks/"
+      ],
+      "source_tiers": ["primary", "secondary"]
+    },
+    {
+      "id": "jal-7",
+      "claim": "SemiAnalysis reports a B0 stepping of Jalapeño is already in the fab, delivering roughly a 25% perf-per-watt improvement over A0, with 13.4 PFLOPs of MXFP4 on a reticle-sized compute die on TSMC N3P.",
+      "type": "technical",
+      "confidence": "medium",
+      "risk": "single-source",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia",
+        "https://x.com/mark_k/status/2092302299213549757"
+      ],
+      "source_tiers": ["secondary", "secondary"]
+    },
+    {
+      "id": "jal-8",
+      "claim": "Analyst Gavin Baker wrote that 'the real comparison will be with Rubin Ultra given Rubin shipping today,' with Feynman behind it, while also granting that OpenAI deserves 'credit where credit is due — first good ASIC outside of TPU/Trainium' and that Jalapeño submitted to a third-party benchmark before Google's TPUs ever did.",
+      "type": "quote",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://x.com/GavinSBaker/status/2092269860374061150",
+        "https://x.com/GavinSBaker/status/2092273718454284402"
+      ],
+      "source_tiers": ["primary", "primary"]
+    },
+    {
+      "id": "jal-9",
+      "claim": "@jukan05 argued Jalapeño sources HBM4 almost exclusively from Samsung and therefore cannot scale to the same level as Rubin without relaxing its HBM4 speed requirement enough to qualify second sources.",
+      "type": "market-structure",
+      "confidence": "medium",
+      "risk": "single-source",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://x.com/jukan05/status/2092271778819375391",
+        "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia"
+      ],
+      "source_tiers": ["primary", "secondary"]
+    },
+    {
+      "id": "jal-10",
+      "claim": "SemiAnalysis reports Jalapeño's HBM4 hits 10Gbps pin speeds giving 15.4TB/s bandwidth per package, a slight edge over the 9.6Gbps NVIDIA gets from HBM4 in Rubin, with the HBM 'likely provided by Samsung'.",
+      "type": "technical",
+      "confidence": "medium",
+      "risk": "single-source",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia",
+        "https://x.com/jukan05/status/2092271778819375391"
+      ],
+      "source_tiers": ["secondary", "primary"]
+    },
+    {
+      "id": "jal-11",
+      "claim": "On perf/TCO, SemiAnalysis reports Vera Rubin and Jalapeño are roughly head-to-head, producing almost the same number of output tokens per dollar, even though Rubin's results use speculative decoding while Jalapeño's do not.",
+      "type": "comparison",
+      "confidence": "medium",
+      "risk": "contested",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia",
+        "https://the-decoder.com/openais-first-custom-chip-jalapeno-reportedly-beats-nvidias-blackwell-and-rubin-in-inference-benchmarks/"
+      ],
+      "source_tiers": ["secondary", "secondary"]
+    },
+    {
+      "id": "jal-12",
+      "claim": "OpenAI's blog disclosed that Codex working with GPT-Astra took three open-weight models not part of Jalapeño's original production plan to high performance within two months, and that AI-generated kernels beat expert-written kernels by 1.5-1.8x on selected GPT-OSS attention and MoE blocks.",
+      "type": "technical",
+      "confidence": "medium",
+      "risk": "single-source",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://openai.com/index/jalapeno-first-results/",
+        "https://x.com/scaling01/status/2092282443147497613"
+      ],
+      "source_tiers": ["primary", "secondary"]
+    },
+    {
+      "id": "jal-13",
+      "claim": "OpenAI plans to begin deploying Jalapeño within its own compute infrastructure by the end of 2026, with hardware lead Richard Ho describing the initial volume as 'very small,' a gradual ramp over 2027, and most output at the end of next year.",
+      "type": "forecast",
+      "confidence": "medium",
+      "risk": "volatile",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/",
+        "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia",
+        "https://x.com/OpenAI/status/2092300851482108064"
+      ],
+      "source_tiers": ["secondary", "secondary", "primary"]
+    },
+    {
+      "id": "jal-14",
+      "claim": "The OpenAI-Broadcom partnership claims Jalapeño used a nine-month design-to-tapeout cycle and that OpenAI's own models accelerated parts of the chip design and optimization process.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "contested",
+      "as_of": "2026-06-24",
+      "source_urls": [
+        "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/"
+      ],
+      "source_tiers": ["primary"]
+    },
+    {
+      "id": "jal-15",
+      "claim": "SemiAnalysis suggests the CUDA moat may be eroding, noting OpenAI had no internal implementation of MLA kernels until benchmarking DeepSeek with InferenceX, and that Codex wrote efficient kernels without the kernel-engineering team intervening.",
+      "type": "causal",
+      "confidence": "medium",
+      "risk": "contested",
+      "as_of": "2026-08-25",
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/openai-jalapeno-better-than-nvidia",
+        "https://x.com/teortaxesTex/status/2092268381269323815"
+      ],
+      "source_tiers": ["secondary", "secondary"]
+    }
+  ]
+}

@@ -16,13 +16,14 @@ description: >-
 inputs:
   version:
     description: >-
-      Release tag to install (e.g. v1.1.0), or "latest". Defaults to latest,
-      which is how every caller behaved before this action existed. NOTE: with
-      "latest", an upstream release changes these lanes with no commit here —
-      that is exactly how v1.0.0 dropping the bundled runtime broke the Twitter
-      lane on 2026-08-07. Pin a tag when a lane must not move on its own.
+      Audited release tag to install. The default is pinned in
+      data/toolchain-pins.json; an override must also provide sha256.
     required: false
-    default: latest
+    default: v1.1.0
+  sha256:
+    description: Optional SHA-256 for a non-default version override.
+    required: false
+    default: ""
 
 outputs:
   version:
@@ -37,6 +38,7 @@ runs:
       shell: bash
       env:
         BIRDY_VERSION: ${{ inputs.version }}
+        BIRDY_SHA256: ${{ inputs.sha256 }}
       run: |
         set -euo pipefail
 
@@ -48,10 +50,19 @@ runs:
         esac
         ASSET="birdy_${OS}_${ARCH}.tar.gz"
 
-        if [ "${BIRDY_VERSION}" = "latest" ]; then
-          URL="https://github.com/guzus/birdy/releases/latest/download/${ASSET}"
-        else
-          URL="https://github.com/guzus/birdy/releases/download/${BIRDY_VERSION}/${ASSET}"
+        URL="https://github.com/guzus/birdy/releases/download/${BIRDY_VERSION}/${ASSET}"
+        if [ -z "$BIRDY_SHA256" ]; then
+          PIN_FILE="$GITHUB_WORKSPACE/data/toolchain-pins.json"
+          pinned_version=$(jq -r '.birdy.version' "$PIN_FILE")
+          if [ "$BIRDY_VERSION" != "$pinned_version" ]; then
+            echo "::error::Non-default birdy version $BIRDY_VERSION requires an explicit sha256 input."
+            exit 1
+          fi
+          BIRDY_SHA256=$(jq -r --arg key "${OS}_${ARCH}" '.birdy.sha256[$key] // empty' "$PIN_FILE")
+        fi
+        if [[ ! "$BIRDY_SHA256" =~ ^[0-9a-f]{64}$ ]]; then
+          echo "::error::No audited SHA-256 for birdy ${BIRDY_VERSION} ${OS}/${ARCH}."
+          exit 1
         fi
 
         TMPDIR=$(mktemp -d)
@@ -59,6 +70,15 @@ runs:
 
         # Public repo, no auth needed.
         curl -fsSL "$URL" -o "$TMPDIR/$ASSET"
+        if command -v sha256sum >/dev/null 2>&1; then
+          printf '%s  %s\n' "$BIRDY_SHA256" "$TMPDIR/$ASSET" | sha256sum -c -
+        else
+          actual_sha=$(shasum -a 256 "$TMPDIR/$ASSET" | awk '{print $1}')
+          if [ "$actual_sha" != "$BIRDY_SHA256" ]; then
+            echo "::error::birdy archive SHA-256 mismatch."
+            exit 1
+          fi
+        fi
         tar -xzf "$TMPDIR/$ASSET" -C "$TMPDIR"
 
         BIN="$TMPDIR/birdy"

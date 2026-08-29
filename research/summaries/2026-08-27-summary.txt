@@ -1,0 +1,17 @@
+AI News - 2026-08-27
+
+TOP STORIES:
+• Nvidia reportedly agrees to buy Hugging Face for $12.9B, its biggest deal ever (unconfirmed by either company)
+• Nvidia stock jumps 7.6% overnight as market digests blowout Q2 earnings
+• Z.ai releases GLM-5.3-Flash, first natively multimodal GLM-5 model, MIT license, 1M context
+• Stability AI closes $76M Series B backed by Universal, Sony & Warner Music + EA
+• Anthropic adds built-in browser to Claude Cowork desktop
+• US Labor Dept confirms OpenAI, Google, Meta, Amazon sharing data for new AI workforce hub
+
+KEY NUMBERS:
+• $12.9B - Nvidia's reported bid for Hugging Face
+• +7.6% - Nvidia stock move post-earnings
+• 320B/18B params, 1M context - GLM-5.3-Flash
+• $76M - Stability AI Series B ($232M total raised)
+
+Full report on GitHub.

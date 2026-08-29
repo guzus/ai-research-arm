@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI JALAPENO BEATS NVIDIA GB300 IN HOT CHIPS TESTS — 1.5-1.9X PERF PER WATT, UP TO 4.1X ON INTERACTIVE WORKLOADS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092300846675505602",
+    "category": "infra"
+  },
+  {
+    "headline": "OPENAI SAYS GPT-ASTRA WROTE JALAPENO ATTENTION AND MOE KERNELS 1.5-1.8X FASTER THAN HUMAN-EXPERT CODE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092336013012275416",
+    "category": "research"
+  },
+  {
+    "headline": "WSJ: ANTHROPIC TO PITCH IPO INVESTORS A $30 TRILLION MARKET BUILT FROM AI-ADDRESSABLE HUMAN WORK",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092345726911357152",
+    "category": "business"
+  },
+  {
+    "headline": "MUSK TO CURSOR STAFF AFTER $60B SPACEX DEAL CLOSES — 'GROK IS FALLING BEHIND,' ANTHROPIC LEADING",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092367347835134082",
+    "category": "business"
+  },
+  {
+    "headline": "EXO LABS: APPLE M5 ULTRA MAC STUDIO DELIVERS 1,000X BETTER LOCAL AI THAN 2024 TWO-MACBOOK M3 MAX CLUSTER",
+    "source": "@alexocheema",
+    "url": "https://x.com/alexocheema/status/2092366617665511446",
+    "category": "infra"
+  },
+  {
+    "headline": "PERPLEXITY ANNUALIZED REVENUE TOPS $750M AS NVIDIA WEIGHS BACKING AT OVER $30B VALUATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092333712243413175",
+    "category": "business"
+  },
+  {
+    "headline": "NVIDIA RAISES PRICES ON GRACE BLACKWELL 300 AND VERA RUBIN 200 SYSTEMS — CLOUDS EXPECTED TO PASS COST THROUGH",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092356380166443084",
+    "category": "infra"
+  }
+]

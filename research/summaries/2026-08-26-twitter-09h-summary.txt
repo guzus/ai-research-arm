@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-08-26 09:53:09 UTC
+
+CYCLE: DeepSeek's first real P&L lands beside a RMB 500B raise; a pulled Qwen listing hints at a new sparsity regime.
+
+TOP STORIES:
+• DeepSeek: RMB 475M ($70.7M) revenue Jan-Jul, ~10x all of 2025, 82.9% API gross margin; seeking RMB 50B at a RMB 500B valuation (~165x annualized) plus a Shanghai IPO next year, and V4-Pro peak output pricing up 4.6x to $3.96/Mtok [⚠]
+• Qwen3.8-Flash-Next leak: 125B main params + 51B N-gram embeddings, only 6B active per token, from a ModelScope page taken down shortly after appearing [🚩]
+
+WATCH: Whether Qwen3.8-Flash-Next ships today and whether its published config actually carries a separate N-gram embedding bank.
+
+Full update on GitHub.

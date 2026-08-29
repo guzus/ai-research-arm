@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-29
+
+TOP 5 PAPERS:
+• Parallel & Distributed Reasoning LMs — first systems taxonomy for RL-for-LLMs training (Besta, ETH)
+• Recursive Transformers — shared-depth blocks + factorized embeddings win in the 10M-100M-word data-limited regime
+• Cross-Lingual Alignment Without Joint Training — monolingual LMs align; one Procrustes rotation causally transfers facts
+• JudgeStealer — query-efficient attack clones LLM judges across protocols (87% pairwise fidelity)
+• SpatialCrafter — single image → explorable world via generative 3D proxies + 115K-scene dataset
+
+CATEGORIES: NLP 6, CV/Multimodal 11, Agents & Reasoning 9, Safety 7, Other 8
+
+Full report on GitHub.

@@ -1,0 +1,384 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Uniswap's CCA developer documentation describes the mechanism as generalizing the uniform-price auction into continuous time while 'eliminating timing games and encouraging early participation'.",
+      "type": "definition",
+      "source_urls": ["https://developers.uniswap.org/docs/liquidity/liquidity-launchpad/concepts/cca"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "The CCA whitepaper's Risks and Limitations section concedes that 'uniform-price formats are not strategy-proof in general and may still admit residual bid shading'.",
+      "type": "quote",
+      "source_urls": ["https://developers.uniswap.org/whitepaper_cca.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-11-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "The CCA whitepaper states that careful parameterization 'mitigates but does not eliminate' timing games, contradicting the docs page claim that timing games are eliminated.",
+      "type": "comparison",
+      "source_urls": ["https://developers.uniswap.org/whitepaper_cca.pdf", "https://developers.uniswap.org/docs/liquidity/liquidity-launchpad/concepts/cca"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "The CCA whitepaper acknowledges that 'onchain execution inherits network frictions (e.g., MEV, L2/L1 sequencing latency)'.",
+      "type": "quote",
+      "source_urls": ["https://developers.uniswap.org/whitepaper_cca.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-11-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "The CCA whitepaper carries 10 references, of which the only classical auction-theory citation is Milgrom and Weber (1982); it cites no work on demand reduction in multi-unit uniform-price auctions.",
+      "type": "technical",
+      "source_urls": ["https://developers.uniswap.org/whitepaper_cca.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Ausubel, Cramton, Pycia, Rostek and Weretka establish that differential bid shading in multi-unit auctions 'results generically in ex post inefficient allocations', covering the entire equilibrium set.",
+      "type": "technical",
+      "source_urls": ["https://ideas.repec.org/a/oup/restud/v81y2014i4p1366-1400.html"],
+      "source_tiers": ["academic"],
+      "as_of": "2014-10-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Uniswap's own technical documentation warns that 'the last block of the auction MUST sell a significant amount of tokens' because otherwise 'the final price will be easy to manipulate'.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/Uniswap/continuous-clearing-auction/main/docs/TechnicalDocumentation.md"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "The CCA technical documentation states that too-small tick spacing 'can result in a DoS attack where the auction cannot finish', and the permissionless factory does not enforce a safe tick spacing.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/Uniswap/continuous-clearing-auction/main/docs/TechnicalDocumentation.md"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "A core invariant of the CCA is that no bids can be exited before the auction has graduated, so committed capital is locked for the auction's duration.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/Uniswap/continuous-clearing-auction/main/docs/TechnicalDocumentation.md"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "The Spearbit/Cantina v2.0.0 review of the CCA contracts reported 10 issues with 0 Critical, 0 High, 2 Medium, 1 Low and 7 Informational, including a finding that a bidder could use force iteration to exclude other bidders' final-block bids; both Mediums were fixed.",
+      "type": "technical",
+      "source_urls": ["https://github.com/Uniswap/continuous-clearing-auction/blob/main/docs/audits/Spearbit_v2.0.0.pdf", "https://github.com/Uniswap/continuous-clearing-auction/blob/main/docs/audits/README.md"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-06-16",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c11",
+      "claim": "DefiLlama's on-chain adapter reports $68,584,270 in cumulative realized Uniswap Auctions proceeds all-time, with $543,076 in the trailing 30 days and $0 in the trailing 24 hours.",
+      "type": "metric",
+      "source_urls": ["https://api.llama.fi/summary/dexs/uniswap-auctions?dataType=dailyVolume"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "DefiLlama attributes $59,240,697 of realized CCA proceeds to a single datapoint on 2025-12-06 flagged 'AZTEC Sale Completed', meaning roughly $9.3M of realized proceeds came from every other CCA combined.",
+      "type": "metric",
+      "source_urls": ["https://api.llama.fi/summary/dexs/uniswap-auctions?dataType=dailyVolume"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c13",
+      "claim": "Realized CCA proceeds by chain are Ethereum $67.72M, Arbitrum $465,451, Base $336,010 and Unichain $60,498, so Ethereum accounts for roughly 98.7% of the total.",
+      "type": "metric",
+      "source_urls": ["https://api.llama.fi/summary/dexs/uniswap-auctions?dataType=dailyVolume"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c14",
+      "claim": "Uniswap reports that roughly 17,000 participants verified identities and bid in the Aztec CCA, across 191 countries, with 96% of bidders contributing under $10,000 and a mean contribution of approximately $4,000.",
+      "type": "metric",
+      "source_urls": ["https://blog.uniswap.org/aztec-cca"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-02-10",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c15",
+      "claim": "Uniswap states the Aztec sale 'cleared at a price 60% above Aztec's floor price' and that 'no clear instances of sniping or automated price manipulation were detected based on onchain data'.",
+      "type": "quote",
+      "source_urls": ["https://blog.uniswap.org/aztec-cca"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-02-10",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c16",
+      "claim": "The Aztec auction offered 1,547,000,000 AZTEC, about 14.95% of a 10,350,000,000 genesis supply, and set a per-account maximum of 250 ETH.",
+      "type": "metric",
+      "source_urls": ["https://aztec.network/auction-terms-conditions"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-11-12",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "The Aztec auction collected 19,476 ETH from 16,741 participants, clearing at approximately $0.047 per token.",
+      "type": "metric",
+      "source_urls": ["https://aztec.network/blog/aztec-tge-next-steps", "https://unchainedcrypto.com/aztec-raises-59-million-in-token-sale-with-uniswaps-cca/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2025-12-08",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c18",
+      "claim": "As of 2026-08-26 AZTEC trades at $0.01468 with a market cap of $43.99M and a fully diluted valuation of $151.94M, against roughly $0.047 at auction clearing.",
+      "type": "metric",
+      "source_urls": ["https://www.coingecko.com/en/coins/aztec"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "AZTEC's all-time high of $0.03990 on 2026-02-20 is below its approximately $0.047 auction clearing price, meaning the token has never traded at or above the price the auction discovered.",
+      "type": "comparison",
+      "source_urls": ["https://www.coingecko.com/en/coins/aztec", "https://icodrops.com/aztec/"],
+      "source_tiers": ["market-data", "secondary"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "CryptoRank's Uniswap CCA launchpad page reports 9 total launches and $45.30M raised, a figure smaller than Aztec's single sale, indicating aggregator data on CCA totals is internally inconsistent.",
+      "type": "metric",
+      "source_urls": ["https://cryptorank.io/fundraising-platforms/uniswap-cca"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-26",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c21",
+      "claim": "Cap Labs' CAP is the clearest positive CCA outcome, trading at about $0.0712 with a fully diluted valuation near $712M as of 2026-08-26 against a reported clearing price near $0.011.",
+      "type": "metric",
+      "source_urls": ["https://cryptorank.io/price/cap", "https://icodrops.com/cap-3/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-26",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c22",
+      "claim": "Of 533 public token sales held in 2025, only 63 (11.82%) were trading above their offering price at year end.",
+      "type": "metric",
+      "source_urls": ["https://www.panewslab.com/en/articles/e21d9785-6cff-4ae6-9991-ad564c45c1f9"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-12-31",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "The CCA factory and auction contracts have no owner, pauser or proxy, and auction parameters are immutable after creation.",
+      "type": "technical",
+      "source_urls": ["https://github.com/Uniswap/continuous-clearing-auction"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-26",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "The protocol fee for CCAs is set by an external ProtocolFeeController owned by a single Ownable owner, expressed in pips against a 1,000,000 denominator, and read at fee-application time rather than at auction creation.",
+      "type": "technical",
+      "source_urls": ["https://github.com/Uniswap/liquidity-launcher/blob/main/src/periphery/ProtocolFeeController.sol"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-26",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c25",
+      "claim": "Uniswap Labs' Terms of Service state that 'Uniswap Labs is not the seller, underwriter, or issuer of any tokens distributed through a CCA'.",
+      "type": "regulatory",
+      "source_urls": ["https://support.uniswap.org/hc/en-us/articles/30935100859661"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "The Digital Asset Market Clarity Act (H.R. 3633) was reported in the Senate on 2026-06-01 and has not been enacted.",
+      "type": "regulatory",
+      "source_urls": ["https://www.govinfo.gov/app/details/BILLS-119hr3633rs"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c27",
+      "claim": "The SEC's 'Regulation Crypto Assets' release (Nos. 33-11434; 34-106150, File S7-2026-27) was published in the Federal Register on 2026-08-21 as a proposed rule with comments due 2026-10-20, proposing exemptions of up to $5 million over four years and up to $75 million per 12-month period.",
+      "type": "regulatory",
+      "source_urls": ["https://www.govinfo.gov/content/pkg/FR-2026-08-21/html/2026-17183.htm"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-08-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "The CFTC settled with Uniswap Labs on 2024-09-04 for a $175,000 civil monetary penalty over leveraged retail commodity transactions offered through its interface.",
+      "type": "regulatory",
+      "source_urls": ["https://www.cftc.gov/PressRoom/PressReleases/8961-24"],
+      "source_tiers": ["legal"],
+      "as_of": "2024-09-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "Ethereum block building is concentrated, with Titan Builder at 47.6% and BuilderNet at 26.0% of blocks per Coin Metrics.",
+      "type": "metric",
+      "source_urls": ["https://coinmetrics.substack.com/p/state-of-the-network-issue-356"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-03-24",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c30",
+      "claim": "Basic Attention Token's fixed-price sale raised roughly $35 million in about 30 seconds, with 185 purchases succeeding and over 10,000 failing.",
+      "type": "event",
+      "source_urls": ["https://vitalik.eth.limo/general/2017/06/09/sales.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2017-06-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "Gnosis publicly abandoned the Dutch auction format it used in 2017 in favour of batch auctions, writing in its own IDO contracts repository that 'the proposed batch auction system has a number of advantages over dutch auction'.",
+      "type": "quote",
+      "source_urls": ["https://github.com/gnosis/ido-contracts"],
+      "source_tiers": ["primary"],
+      "as_of": "2021-01-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "Hortacsu and McAdams find that switching from a discriminatory auction to a uniform-price or Vickrey auction would not significantly increase revenue, with bidder surplus gains bounded near 0.02%.",
+      "type": "technical",
+      "source_urls": ["https://ideas.repec.org/a/ucp/jpolec/doi10.1086-657948.html"],
+      "source_tiers": ["academic"],
+      "as_of": "2010-10-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c33",
+      "claim": "Kang and Puller find that in Korean treasury auctions the discriminatory format yielded statistically higher revenue and better allocative efficiency than the uniform-price format.",
+      "type": "technical",
+      "source_urls": ["https://s-puller.github.io/MyWebsite/Kang_Puller_JIE.pdf"],
+      "source_tiers": ["academic"],
+      "as_of": "2008-03-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c34",
+      "claim": "Uniswap v4 held approximately $952.5M in TVL against $23.96B of 30-day volume, so CCA's entire all-time realized proceeds are a small fraction of a single day of Uniswap swap volume.",
+      "type": "metric",
+      "source_urls": ["https://api.llama.fi/tvl/uniswap-v4", "https://api.llama.fi/summary/dexs/uniswap-auctions?dataType=dailyVolume"],
+      "source_tiers": ["market-data", "market-data"],
+      "as_of": "2026-08-26",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c35",
+      "claim": "A study of 655,770 pump.fun tokens found only 4,338 graduated, a rate of 0.63%.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2607.02823"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-10-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c36",
+      "claim": "The Uniswap CCA factory v2.1.0 is deployed at the same address 0x000000001F26a0044BaA66024e7b6599c61963F8 across Ethereum, Unichain, Base, Arbitrum, Robinhood Chain and Sepolia.",
+      "type": "technical",
+      "source_urls": ["https://developers.uniswap.org/docs/liquidity/liquidity-launchpad/deployments"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-26",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c37",
+      "claim": "The Aztec auction's graduation threshold was set to 0 ETH, meaning graduation was guaranteed regardless of demand.",
+      "type": "technical",
+      "source_urls": ["https://hackmd.io/SCfjYNHQTmuRl2adnFi2oA"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-12-02",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c38",
+      "claim": "Public crypto token sales raised approximately $58M in Q2 2026, the weakest quarter in five years and down sharply from the Q1 2025 peak.",
+      "type": "metric",
+      "source_urls": ["https://www.cryptotimes.io/2026/08/11/ethereum-leads-2026-public-token-sales-race-with-334m/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-30",
+      "confidence": "low",
+      "risk": "contested"
+    }
+  ]
+}

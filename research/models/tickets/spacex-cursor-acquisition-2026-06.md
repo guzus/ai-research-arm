@@ -16,7 +16,7 @@ status_note: |
   acquisition itself is confirmed (principals on-record) but the price/structure
   stay `partial`. At the same Compile event Cursor also announced **Origin**, a
   git-hosting "forge for the agentic era" (waitlist, fall 2026) aimed at GitHub.
-expected: "All-stock, ~$60B (per SEC-filing reference), Q3-2026 close; jointly-trained SpaceXAI×Cursor model + Cursor Origin git forge unveiled alongside"
+expected: "All-stock, ~$60B (per an SEC-filing reference). The Information reported 2026-08-25 that the acquisition has CLOSED and that Musk told Cursor employees 'Grok is falling behind, we need you guys to come in and help us' and that 'Anthropic is leading right now'. Pending: a SpaceX or Cursor post confirming the close, integration detail, and whether the jointly-trained model ([[cursor-spacexai-model-2026-06]]) ships"
 labels:
   - acquisition
   - m-and-a
@@ -29,13 +29,17 @@ sources:
   - "@mntruell"
   - "@testingcatalog"
   - "@kimmonismus"
+  - "@theinformation"
+  - "@graceihle"
 created_at: 2026-06-18
-updated_at: 2026-06-18
+updated_at: 2026-08-26
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-18
     change: "Created — SpaceX's own verified account confirmed (2026-06-16) it 'exercised the option to acquire @cursor_ai in an all-stock transaction,' corroborated by Cursor's account and CEO Michael Truell; SpaceX disclosed SpaceXAI has been jointly training a model with Cursor (see [[cursor-spacexai-model-2026-06]]). The ~$60B all-stock figure and Q3-2026 close rest on an SEC-filing reference relayed by aggregators, not read directly → status confirmed (principals on-record), verification partial (price/structure aggregator-relayed). Cursor also unveiled Origin (git hosting, fall-2026 waitlist) at the same Compile event."
+  - ts: 2026-08-26
+    change: "The deal has closed, and the acquirer's address to the acquired staff reframes the rationale. @theinformation (2026-08-25 21:43 UTC): 'Elon Musk addressed Cursor employees after SpaceX's acquisition of the company closed. He said \"Grok is falling behind, we need you guys to come in and help us.\" \"He outlined the stakes, basically, that Anthropic is leading right now.\"' A second Information post (19:00 UTC) adds that Musk told employees he 'isn't used to losing' and frames the $60 billion acquisition as a bet on closing the gap, reported by @graceihle. Two things change. First, the Q3-2026 close this ticket carried as an expectation is now reported as done - the acquisition is complete, not pending. Second, the stated motive is a competitive deficit rather than the joint-training synergy framing the principals used in June: the acquirer is on record, via reporting, that its own model line is behind, and specifically behind Anthropic. @Jessicalessin puts the deal alongside Stripe's $7B+ OpenRouter purchase ([[stripe-openrouter-acquisition-2026-08]]) as evidence of what big tech now pays for AI growth, and The Information independently carries the ~$60B figure this ticket had only through aggregator relay of an SEC-filing reference. Status stays confirmed; verification stays partial - the close and the quotes are single-outlet, with no SpaceX or Cursor post captured."
 ---
 
 On **2026-06-16**, **SpaceX's own verified account** posted that it has

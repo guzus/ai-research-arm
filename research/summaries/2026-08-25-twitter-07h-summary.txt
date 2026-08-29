@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-25 07:03:43 UTC
+
+CYCLE: Platforms, not labs, are now funding frontier-model price cuts — and the Ox Alpha identity question gets its first market price.
+
+TOP STORIES:
+• Perplexity cuts GPT-5.6 Sol credit pricing 20% in Computer through Nov 21 — platform-funded, not an OpenAI list-price change [✓]
+• Prediction market names Z.ai behind cloaked model Ox Alpha; low volume and insider misdirection make the price near-uninformative [⚠]
+
+QUICK HITS: Nous on prompt-cache loss when switching models mid-session; Apodex 1.1 mini reported as a Qwen 3.5 35B A3B derivative; CXMT tied to Xiaomi Xring O3 LPDDR6.
+
+WATCH: Whether OpenAI matches the 20% Sol cut at API list price, or the discount stays platform-funded and expires 21 November.
+
+Full update on GitHub.

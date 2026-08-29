@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI SHIPS AGENT SIGN-IN — CHATGPT WORK BROWSER LOGS INTO WEBSITES WITHOUT MODEL SEEING USERNAME OR PASSWORD",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092418732215713898",
+    "category": "breaking"
+  },
+  {
+    "headline": "SEMIANALYSIS: OPENAI JALAPENO UP TO 2X BETTER PERF-PER-WATT THAN JULY RUBIN NVL72 — AND WON WITH SPEC DECODING OFF",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092420526241108467",
+    "category": "infra"
+  },
+  {
+    "headline": "OPENAI'S ROON: BOTH INCUMBENTS NOW HAVE AN INTEREST IN SAYING RECURSIVE SELF-IMPROVEMENT IS AT HAND",
+    "source": "@tszzl",
+    "url": "https://x.com/tszzl/status/2092420937505546261",
+    "category": "research"
+  },
+  {
+    "headline": "DYLAN PATEL: OPENAI WILL TURN PROFITABLE IN Q3",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092398551670345950",
+    "category": "business"
+  },
+  {
+    "headline": "NEBIUS RAISES $5.75B IN CONVERTIBLE DEBT — ALL OF IT INTO DATA CENTERS AND GPU CAPACITY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092371627094716620",
+    "category": "infra"
+  },
+  {
+    "headline": "GOOGLE STUDY OF 15M GEMINI CONVERSATIONS: OVER 86% OF CONSUMER CHATS ARE NON-WORK, 26.4% COMPANIONSHIP AND LEISURE",
+    "source": "@cat_meety",
+    "url": "https://x.com/cat_meety/status/2092428905445781973",
+    "category": "research"
+  }
+]

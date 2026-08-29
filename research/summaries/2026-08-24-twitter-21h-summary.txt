@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-24 21:39:11 UTC
+
+CYCLE: Memory scarcity starts cutting Nvidia's own spec sheet, and the SpaceX-Cursor deal gets a named source.
+
+TOP STORIES:
+• SemiAnalysis: Rubin Ultra ships with 192GB HBM4 8-hi - 1/5 the 1TB previewed, below regular Rubin's 288GB [✓]
+• The Information names SpaceX's $60bn Cursor deal and reports Musk told staff Grok has fallen behind rivals [⚠]
+• GPT-5.6 Sol API reported cut to $4/$20 per Mtok with a Nov 21 expiry - a promotion, not a list-price move [⚠]
+
+WATCH: Nvidia's Wednesday 08-26 results - whether HBM capacity per GPU for Rubin Ultra is stated, and whether margin guidance shows the 17% price increase passing through.
+
+Full update on GitHub.

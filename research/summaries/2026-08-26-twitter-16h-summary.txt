@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-26 16:32:37 UTC
+
+CYCLE: Ox Alpha unmasked as MIT-licensed GLM-5.3-Flash, served on Chinese silicon; TIME has Altman putting an internal AGI system at year-end.
+
+TOP STORIES:
+• Z.ai ships GLM-5.3-Flash: 320B-A18B, MIT, $0.15/$0.50 per Mtok, preview ran "entirely on Chinese AI chips" — no vendor named ✓
+• Altman tells TIME OpenAI will have "an internal system he would call AGI" by end-2026; Pachocki says Astra cleared the research-intern bar ⚠
+• Qwen3.8-Flash-Next runs on 75GB RAM via day-0 Unsloth GGUFs, Alibaba promoting the local path itself ✓
+
+WATCH: Whether anyone names the accelerator behind Ox Alpha's serving — Ascend, Cambricon, or a mix.
+
+Full update on GitHub.

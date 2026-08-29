@@ -6,8 +6,9 @@ aliases: ["Qwen3.8-Max", "Qwen3.8", "Qwen 3.8 Max", "Qwen3.8 Max", "Qwen3.8-2.4T
 tags: [open-weights, model, moe, chinese-llm, long-context, alibaba]
 description: Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open — alongside the contested 27B sibling (Qwen3.8-27B).
 created_at: 2026-08-04
-timestamp: 2026-08-20T00:00:00Z
+timestamp: 2026-08-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
@@ -119,6 +120,30 @@ self-reported #2 overall rank behind [[claude-fable-5|Claude Fable 5]].
   publicly disputes benchmark placements that put it alongside frontier
   models** — keeping the index-versus-hands-on split from 2026-08-19 live
   (ARA daily digest 2026-08-20).
+
+## Qwen4 preview + Qwen3.8-Flash-Next teaser (2026-08-26)
+
+- **Alibaba sets a countdown for "A Preview of the Qwen4 Architecture," with
+  DeepSeek's Engram named as a key method (2026-08-26).** Alibaba teased the
+  next-architecture line, **naming DeepSeek's Engram technique as a key
+  method** — a rare cross-lab acknowledgment on the record. **No weights,
+  licence or date yet.** The companion ModelScope teaser — **Qwen3.8-Flash-Next**,
+  reported as **125B total / 6B active** MoE — drew **203 HN points** on its
+  open-weight positioning, with an r/LocalLLaMA thread arguing the
+  architecture "could be unusually local-friendly once weights drop." Both
+  are pre-release position plays in the 27B-was-the-real-adoption story this
+  page has tracked: the Flash-Next-active-parameter profile (6B active) is
+  squarely aimed at the local tier where the 27B sibling already dominates
+  (ModelScope, HN, r/LocalLLaMA; ARA daily digest 2026-08-26). See
+  [[alibaba]] and DeepSeek's Engram mention under [[deepseek]].
+- **Thomson Reuters builds its own Qwen model rather than rent GPT/Claude
+  (2026-08-26).** TR is spending **~$40M over two years** to build its own
+  model on Alibaba's **Qwen** rather than rent from [[openai|OpenAI]] or
+  [[anthropic]], with benchmarks only topping out when the model taps
+  **Westlaw and other proprietary content**. An enterprise "own the model"
+  datapoint that pairs with the Flash-Next teaser above — Qwen's economics
+  keep pulling build-vs-rent decisions Alibaba's way (ARA daily digest
+  2026-08-26).
 
 ## Open questions
 

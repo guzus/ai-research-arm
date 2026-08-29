@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "XIAOMI XRING O100 SPEC'D AT 1.22 TB/S NEAR-MEMORY BANDWIDTH — WAFER-ON-WAFER NPU-DRAM AT 1.4 MICRON PITCH",
+    "source": "@neil_shah",
+    "url": "https://x.com/neil_shah/status/2091874398756278472",
+    "category": "infra"
+  },
+  {
+    "headline": "XIAOMI DATES O100 AND D100 TO 2027 COMMERCIAL USE — AI CUBE RUNS 120B PARAMS LOCALLY AT 150W, STILL A PROTOTYPE",
+    "source": "@Nando_G_AI",
+    "url": "https://x.com/Nando_G_AI/status/2091875256663261478",
+    "category": "infra"
+  },
+  {
+    "headline": "STUDY CLAIMS CROSS-CUSTOMER PROMPT-CACHE READS ON LLM API RELAYS — ALL 5 GATEWAYS TESTED, OPENAI AND ANTHROPIC BOTH",
+    "source": "@Bell_QuoLu",
+    "url": "https://x.com/Bell_QuoLu/status/2091873947868705075",
+    "category": "research"
+  },
+  {
+    "headline": "NVIDIA SAID TO RAISE AI SERVER PRICES OVER 15% ON VERA RUBIN AND GRACE BLACKWELL — MEMORY COSTS CITED",
+    "source": "@n5s_ai",
+    "url": "https://x.com/n5s_ai/status/2091875110533677111",
+    "category": "business"
+  },
+  {
+    "headline": "TCS BUYS PORSCHE IT ARM MHP FOR 320 MILLION EUROS, SIGNS 1.25 BILLION EURO FIVE-YEAR AI MOBILITY DEAL",
+    "source": "@TCS",
+    "url": "https://x.com/TCS/status/2091874793553584211",
+    "category": "business"
+  },
+  {
+    "headline": "AGENT SKILL LIBRARIES FAIL TO BEAT PLAIN CONTEXT — 0.605 VS 0.602 ON GPT-5.3-CODEX IN CONTINUALSKILLBENCH ABLATION",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2091855138483032462",
+    "category": "research"
+  }
+]

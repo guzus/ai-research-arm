@@ -98,6 +98,18 @@ test('standalone tab renderers accept Korean and emit localized UI chrome', asyn
   });
   assert.match(todayHtml, />다이제스트 오디오 재생</);
 
+  const fallbackHtml = today.renderTodayHtml({
+    md: '<!-- ara-publication-state: unavailable -->\n# AI Daily Digest — 2026-08-30',
+    dateStr: '2026-08-30',
+    fallbackTitle: '2026-08-30',
+    audioDates: ['2026-08-30'],
+    searchTerm: '',
+    frontPageCardHtml: '<div>unreviewed front page</div>',
+    language: 'ko',
+  });
+  assert.match(fallbackHtml, /2026-08-30에는 편집 브리프가 게시되지 않았습니다/);
+  assert.doesNotMatch(fallbackHtml, /Verbatim excerpts|research\/|unreviewed source dump|unreviewed front page|다이제스트 오디오 재생|저하 모드/i);
+
   const twitterHtml = twitter.renderTwitterReportHtml(
     '## 16:00 UTC\n\n**Cycle summary**: A concise editorial fixture.',
     {

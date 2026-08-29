@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "NVIDIA RUBIN ULTRA CUT TO 192GB HBM4 — ONE-FIFTH OF PREVIEWED 1TB, BELOW REGULAR RUBIN'S 288GB",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091994110911557679",
+    "category": "infra"
+  },
+  {
+    "headline": "SPACEX SETS Q4 2027 ORBITAL LAUNCH FOR VERA RUBIN NVL72 — 72 GPUS, 36 VERA CPUS PER SATELLITE RACK",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2091939113008238838",
+    "category": "infra"
+  },
+  {
+    "headline": "NVIDIA WEIGHS MULTIBILLION-DOLLAR PERPLEXITY ROUND — VALUATION UP MORE THAN 50% FROM LAST RAISE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2091986418448892196",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC SHIPS ENTERPRISE-MANAGED MCP CONNECTOR AUTH GA — IDENTITY-PROVIDER SSO REPLACES PER-USER OAUTH",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2091953609185657251",
+    "category": "model"
+  },
+  {
+    "headline": "MISTRAL SIGNS SAUDI HUMAIN PACT ON INFRASTRUCTURE AND ARABIC-LANGUAGE FRONTIER MODELS",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2091964930715013224",
+    "category": "business"
+  },
+  {
+    "headline": "MATHEMATICIAN CLAIMS COMPLEX STRUCTURE ON 6-SPHERE WITH CLAUDE — 100-PAGE PROOF UNREFEREED",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2091964029283573913",
+    "category": "research"
+  }
+]

@@ -29,7 +29,54 @@ status_note: |
 
   Known gaps, from users: **no sharing feature and no iPad app** (both said
   to be coming), per @GavinSBaker.
-expected: "Generally available and free to try as of 2026-08-21/22, after expanding to SuperGrok Plus, Cursor Pro+ and Cursor Teams and then to everyone; official @bot / @grok posts now exist. Pending: docs and a spec, plan-level pricing detail after the free-try period, Grok mobile-app availability, and the promised sharing feature and iPad app"
+
+  **2026-08-26/27 — the free-try period converts into subscription
+  entitlement, and the usage clock resets.** **@bot**, first-party: "**All
+  SuperGrok and Cursor Pro subscribers now have access to Grok Bot. We're
+  also resetting weekly usage limits for all users.**" @elonmusk amplified
+  it as "Free usage limit reset for Grok @Bot users" (~29K engagement, the
+  largest single item in this run's window). @testingcatalog and @mark_k
+  both relayed the expansion independently. Note the tier change: the
+  2026-08-21 step was **SuperGrok *Plus*, Cursor *Pro+* and Cursor Teams**;
+  this one drops to **SuperGrok and Cursor Pro** — a strictly wider,
+  cheaper entitlement, which is what makes it a distribution event rather
+  than a repeat.
+
+  **Growth claim, from the distribution partner rather than xAI.**
+  @mntruell (Cursor): "Grok Bot is now available to everyone with a
+  standard Grok or Cursor subscription. **It's grown faster than any
+  product we've seen.** It's been particularly exciting to see the range of
+  jobs people delegate to Grok Bot, from running small e-commerce
+  businesses (including support, advertising, inventory…)." @GavinSBaker,
+  who called it a "Claude Code moment" a week earlier: "Cursor has had some
+  high growth products before this. **Grok Bot has been transformational
+  for me.**"
+
+  **The honest friction, on the record.** @mark_k: "Hearing from lots of
+  people that they have **trouble using Grok @Bot with a SuperGrok
+  subscription, due to the complex login situation.** I hope @SpaceXAI will
+  fix this soon and **unify all of the different X / Grok / Cursor
+  accounts**. Would be a shame to lose customers because of it." A fix
+  followed the same day for one segment — @romanugarte_: "We've fixed this
+  for **X Premium+** subscribers" — leaving the general account-unification
+  problem open. So the entitlement widened faster than the identity system
+  behind it.
+
+  **Adjacent, still unshipped:** @testingcatalog reports **voice call
+  support** for Grok Bot spotted in development ("Soon? 👀") — recorded as
+  a UI find, not a release. @mark_k separately logs **Grok Build 1.0.11**
+  (configurable default permission mode, auto-approved subagent messages in
+  Auto mode, headless sessions in the resume picker, background monitors
+  losing their 10-hour timeout), and Cursor **permanently raising included
+  usage** for first-party SpaceXAI Grok models again after doubling limits
+  last month, attributed to demand following Grok 4.6.
+
+  Verification advances `partial` → `confirmed` is **not** taken: the
+  access change is first-party from @bot, but there is still **no docs, no
+  spec and no plan-level pricing** after the free-try period, which is what
+  the previous cycle said `confirmed` required. It stays `confirmed` where
+  it already was for the product's existence.
+expected: "Generally available; as of 2026-08-26 access extends to ALL SuperGrok and Cursor Pro subscribers (down from the 2026-08-21 SuperGrok Plus / Cursor Pro+ / Cursor Teams tier) with weekly usage limits reset for everyone, per first-party @bot. Cursor's @mntruell says it has grown faster than any product they have seen. Pending: docs and a spec, plan-level pricing after the free-try period, unification of the X / Grok / Cursor login mess (fixed for X Premium+ only), the promised sharing feature and iPad app, and the voice-call support spotted in development"
 labels:
   - xai
   - spacex
@@ -48,8 +95,11 @@ sources:
   - "@testingcatalog"
   - "@ns123abc"
   - "@AndrewCurran_"
+  - "@mntruell"
+  - "@romanugarte_"
+  - https://x.com/elonmusk/status/2092691713399931124
 created_at: 2026-08-19
-updated_at: 2026-08-23
+updated_at: 2026-08-27
 closed_at: null
 closed_reason: null
 history:
@@ -57,6 +107,8 @@ history:
     change: "Created — Grok Bot (@bot), the SpaceXAI/xAI multi-agent product, is shipped and in wide use. Firsthand third-party assessment from @GavinSBaker (2026-08-17): another Claude Code moment, personal AI usage up ~100x, built a podcast summarizer in ~15 seconds. Shipped-changelog corroboration via @mark_k (2026-08-18): per-Bot grouped mobile notifications, easier phone access to the remote computer, multi-account plugins, improved plugin marketplace, Command-D dictation; plus Grok Build 1.0.6 with breaking subagent-spawning changes. @elonmusk promoted it continuously across the window. Status released; verification partial — no official @SpaceXAI launch post, docs or pricing captured, and Musk's posts are promotion rather than a launch announcement. Known gaps: no sharing feature, no iPad app."
   - ts: 2026-08-23
     change: "Access widens twice in two days, and the official account finally speaks. @bot (relayed by @AndrewCurran_, 2026-08-21 17:34 UTC, ~1,000 RT): 'We're making Grok Bot more widely available. All SuperGrok Plus, Cursor Pro+, and Cursor Teams subscribers now have access.' Roughly seven hours later @grok posted that Grok Bot 'has expanded to more plans and is now free to try' (relayed @ns123abc 2026-08-22 00:04 UTC), with @mark_k confirming 'it's now available for EVERYONE' and a 24-hour free Pro+ month promotion circulating. @elonmusk amplified continuously across the window ('Try Grok @Bot', 'It's that easy to use Grok @Bot', ~7,300 and ~4,800 likes). Product iteration continued: channels inside bot conversations, Discord/Slack style (@mark_k 2026-08-21 17:06 UTC), and @testingcatalog spotting Grok Bot coming to the Grok mobile apps with a hidden nav item for custom agents plus a SuperGrok-to-Heavy upgrade promotion. This closes part of the gap this ticket flagged: an official @bot/@grok post now exists, so verification advances partial -> confirmed. Still missing: docs, a spec, plan-level pricing detail, and the promised sharing feature and iPad app. Status stays released."
+  - ts: 2026-08-27
+    change: "Access widens again, to a strictly cheaper tier, and the usage clock resets. First-party @bot: 'All SuperGrok and Cursor Pro subscribers now have access to Grok Bot. We're also resetting weekly usage limits for all users.' @elonmusk amplified it as 'Free usage limit reset for Grok @Bot users' at ~29K engagement — the largest single item in this run's window — with @testingcatalog and @mark_k relaying independently. The tier movement is the substance: the 2026-08-21 step was SuperGrok Plus / Cursor Pro+ / Cursor Teams, this one is SuperGrok and Cursor Pro, so it is a genuine widening rather than a restatement. Growth claim comes from the distribution partner rather than xAI — @mntruell (Cursor): 'Grok Bot is now available to everyone with a standard Grok or Cursor subscription. It's grown faster than any product we've seen,' citing delegated jobs including running small e-commerce businesses end to end; @GavinSBaker, who called it a Claude Code moment a week ago, now calls it 'transformational for me'. Friction recorded rather than smoothed: @mark_k reports many SuperGrok subscribers cannot actually use it 'due to the complex login situation' and asks @SpaceXAI to unify the X / Grok / Cursor accounts before it costs customers; @romanugarte_ says the fix landed for X Premium+ subscribers only, so entitlement widened faster than the identity system behind it. Adjacent and NOT shipped: @testingcatalog reports voice-call support spotted in development, recorded as a UI find; @mark_k logs Grok Build 1.0.11 quality-of-life changes (configurable default permission mode, auto-approved subagent messages in Auto mode, headless sessions in the resume picker, background monitors losing the 10-hour timeout), and Cursor permanently raising included usage for first-party SpaceXAI Grok models again after doubling limits last month, attributed to post-Grok-4.6 demand. Status stays released; verification stays confirmed. Docs, spec and plan-level pricing after the free-try period are still missing."
 ---
 
 **Grok Bot** is xAI/SpaceXAI's multi-agent product — you run a main agent,

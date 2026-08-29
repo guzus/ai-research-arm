@@ -578,7 +578,7 @@ runs:
         # One image serves both. Agent/tool versions are pinned; the base image
         # tag and Debian package repositories remain mutable across rebuilds.
         cat > "$build_dir/Dockerfile" <<'EOF'
-        FROM node:22-bookworm-slim
+        FROM node:22-bookworm-slim@sha256:83f487e0a63425e5b4d146fb5e5be574bcbe1b7b843d3ebafdd95eaf7767a7e5
         RUN apt-get update \
           && apt-get install -y --no-install-recommends \
                ca-certificates curl git jq poppler-utils \
@@ -593,8 +593,13 @@ runs:
         # birdy: single static Go binary since v1.0.0, no Node runtime.
         RUN set -eux; \
           arch="$(dpkg --print-architecture)"; \
-          case "$arch" in amd64) a=amd64 ;; arm64) a=arm64 ;; *) echo "unsupported arch $arch" >&2; exit 1 ;; esac; \
+          case "$arch" in \
+            amd64) a=amd64; sha=001763ea3c9063f97980a912afa8d2b43ca2a949ea9cf3ab323b4d0f21421fb4 ;; \
+            arm64) a=arm64; sha=ac0f68274aa8a76ee0b015c776b0922303c03fe29c691477b49eb10e97231c94 ;; \
+            *) echo "unsupported arch $arch" >&2; exit 1 ;; \
+          esac; \
           curl -fsSL "https://github.com/guzus/birdy/releases/download/v1.1.0/birdy_linux_${a}.tar.gz" -o /tmp/birdy.tgz; \
+          echo "$sha  /tmp/birdy.tgz" | sha256sum -c -; \
           tar -xzf /tmp/birdy.tgz -C /tmp; \
           install -m 755 /tmp/birdy /usr/local/bin/birdy; \
           rm -rf /tmp/birdy.tgz /tmp/birdy
@@ -605,7 +610,7 @@ runs:
         COPY birdy-fast /usr/local/bin/birdy-fast
         RUN chmod 755 /usr/local/bin/birdy-fast
         # uv drives every `uv run python scripts/...` the research prompt makes.
-        COPY --from=ghcr.io/astral-sh/uv:0.9.7 /uv /uvx /usr/local/bin/
+        COPY --from=ghcr.io/astral-sh/uv:0.9.7@sha256:ba4857bf2a068e9bc0e64eed8563b065908a4cd6bfb66b531a9c424c8e25e142 /uv /uvx /usr/local/bin/
         RUN birdy version && uv --version && opencode --version
         WORKDIR /workspace
         EOF
@@ -716,12 +721,16 @@ runs:
               trusted_packed=$(base64 -w0 .git/packed-refs)
             fi
 
-            # The Korean translation lane has shown one specific provider
-            # failure mode: opencode exits zero without calling its only
-            # segment tool or creating the required result. Retry that silent
-            # no-op once, and only that no-op. Both attempts share the original
-            # timeout budget; partial output, nonzero exits, and every other
-            # lane remain single-attempt and fail closed.
+            # OpenCode can exit zero without producing required lane output.
+            # output. Retry two exact silent-success shapes once: Korean
+            # translation created neither its segment artifact nor a tool call,
+            # or a commit-producing editorial lane left HEAD at PRE_SHA. Both
+            # attempts share the original timeout budget. Before an editorial
+            # retry, restore the disposable workspace and staged source inputs,
+            # then give the new process a fresh HOME/cache and remove the first
+            # process log. Nonzero exits and successful commits remain
+            # single-attempt; a second editorial no-op becomes an explicit
+            # failure instead of looking like adapter success.
             # OPENCODE_ATTEMPT_LOOP_BEGIN
             #
             # Provider errors that can NEVER recover inside a single run.
@@ -752,6 +761,22 @@ runs:
             total_segment_calls=0
             retry_reason=none
             artifact_count=0
+            retry_commit_editorial=false
+            retry_agent_input_tree=""
+            if [ "${RUN_MODE:-}" = "editorial" ] \
+              && [ -n "${ALLOWED_PATHS:-}" ] \
+              && [ -z "${RETURN_ARTIFACTS:-}" ]; then
+              retry_commit_editorial=true
+              if [ -d .agent-input ]; then
+                retry_index=$(mktemp /tmp/opencode-retry-index.XXXXXX)
+                rm -f -- "$retry_index"
+                GIT_INDEX_FILE="$retry_index" git read-tree --empty
+                GIT_INDEX_FILE="$retry_index" git add -f -- .agent-input
+                retry_agent_input_tree=$(GIT_INDEX_FILE="$retry_index" \
+                  git write-tree)
+                rm -f -- "$retry_index"
+              fi
+            fi
             while :; do
               attempt_count=$((attempt_count + 1))
               remaining_seconds=$((model_budget_seconds \
@@ -763,13 +788,22 @@ runs:
 
               attempt_log="/tmp/opencode-attempt-${attempt_count}.log"
               rm -f -- "$attempt_log"
+              attempt_home="/tmp/opencode-home-attempt-${attempt_count}"
+              rm -rf -- "$attempt_home"
+              mkdir -p "$attempt_home"
               set +e
               # --print-logs puts opencode provider errors on stderr so a
               # dead route is visible in the job log instead of silent. The
               # run is backgrounded (rather than piped through tee) purely so
               # we hold its PID and can abort early; `tail --pid` reproduces
               # the old live-streaming behaviour and exits with the run.
-              timeout "${remaining_seconds}s" opencode run \
+              HOME="$attempt_home" \
+                XDG_CONFIG_HOME="$attempt_home/.config" \
+                XDG_DATA_HOME="$attempt_home/.local/share" \
+                XDG_CACHE_HOME="$attempt_home/.cache" \
+                UV_CACHE_DIR="$attempt_home/.cache/uv" \
+                UV_PYTHON_INSTALL_DIR="$attempt_home/.local/uv-python" \
+                timeout "${remaining_seconds}s" opencode run \
                 -m "$OPENCODE_MODEL_REF" \
                 --auto \
                 --print-logs --log-level ERROR \
@@ -821,6 +855,36 @@ runs:
                 fi
               done <<< "$RETURN_ARTIFACTS"
               echo "OpenCode attempt ${attempt_count}: status=${agent_status} translation_segment_calls=${segment_calls} artifacts=${artifact_count} remaining_seconds=${remaining_seconds}"
+
+              attempt_post_sha=""
+              if [ "$retry_commit_editorial" = "true" ]; then
+                attempt_post_sha=$(git rev-parse HEAD)
+              fi
+              if [ "$retry_commit_editorial" = "true" ] \
+                && [ "$agent_status" -eq 0 ] \
+                && [ "$attempt_post_sha" = "$PRE_SHA" ]; then
+                if [ "$attempt_count" -eq 1 ]; then
+                  retry_reason=zero-commit-editorial
+                  echo "Retrying editorial OpenCode once after a zero-commit successful attempt."
+                  git reset --hard "$PRE_SHA"
+                  git clean -ffdx
+                  mkdir -p .tmp
+                  if [ -n "$retry_agent_input_tree" ]; then
+                    retry_index=$(mktemp /tmp/opencode-retry-index.XXXXXX)
+                    rm -f -- "$retry_index"
+                    GIT_INDEX_FILE="$retry_index" git read-tree \
+                      "$retry_agent_input_tree"
+                    GIT_INDEX_FILE="$retry_index" git checkout-index \
+                      --all --force --prefix="$PWD/"
+                    rm -f -- "$retry_index"
+                  fi
+                  rm -rf -- "$attempt_home"
+                  rm -f -- "$attempt_log"
+                  continue
+                fi
+                echo "::error::Editorial OpenCode exited successfully twice without committing output."
+                agent_status=86
+              fi
 
               if [ "$AGENT_LANE" = "generative-research-ko" ] \
                 && [ "$RETURN_ARTIFACTS" = ".tmp/generative-translation.ko.segments.jsonl" ] \
@@ -1022,7 +1086,7 @@ runs:
           || [[ ! "$status_line" =~ ^last_agent_status=([0-9]{1,3})$ ]] \
           || [[ ! "$segment_line" =~ ^translation_segment_calls=([0-9]{1,5})$ ]] \
           || [[ ! "$artifact_line" =~ ^artifact_count=([0-8])$ ]] \
-          || [[ ! "$reason_line" =~ ^retry_reason=(none|zero-artifact-zero-translation-segment)$ ]]; then
+          || [[ ! "$reason_line" =~ ^retry_reason=(none|zero-artifact-zero-translation-segment|zero-commit-editorial)$ ]]; then
           echo "::error::opencode attempt telemetry is malformed."
           exit 1
         fi

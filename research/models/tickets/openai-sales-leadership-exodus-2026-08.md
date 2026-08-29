@@ -32,22 +32,26 @@ status_note: |
   Losing the top two commercial roles inside a week, in that setting, is
   the kind of thing that either resolves quickly with named replacements
   or does not.
-expected: "Reported 2026-08-21: VP of Sales resigned after ~5 months, a week after the Chief Revenue Officer. Pending: names, an OpenAI statement or outlet confirmation, named replacements, and whether further sales departures follow"
+expected: "Reported 2026-08-21: VP of Sales resigned after ~5 months, a week after the Chief Revenue Officer. The Information reported 2026-08-25 that two Salesforce veterans OpenAI recruited for enterprise sales are returning to Salesforce. Separately, WSJ reports OpenAI's head of data centers, Chris Malone, departed last week. Pending: names for the sales exits, an OpenAI statement, named replacements, and whether further departures follow"
 labels:
   - openai
   - personnel
   - executive-departure
   - unverified
-verification: unverified
+verification: partial
 sources:
   - "@ns123abc"
+  - "@theinformation"
+  - "@rohanpaul_ai"
 created_at: 2026-08-23
-updated_at: 2026-08-23
+updated_at: 2026-08-26
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-23
     change: "Created — OpenAI's VP of Sales resigned after roughly 5 months, one week after the Chief Revenue Officer also quit, with a reported claim that 'many other people on the sales team are considering resigning' (@ns123abc, 2026-08-21 19:48 UTC, ~630 likes). Neither individual is named in the captured signal and no OpenAI statement or outlet report was captured. Status confirmed on the specificity of two dated role-level departures in sequence; verification unverified — single aggregator account, no names, unsourced quote. Material because it lands the same week as a 20% GPT-5.6 Sol price cut, an IPO track, a paused frontier RL run, and a separate research departure ([[meta-luke-metz-hire-2026-08]])."
+  - ts: 2026-08-26
+    change: "Named-outlet reporting arrives, and the departures turn out not to be sales-only; verification advances unverified -> partial. @rohanpaul_ai relaying The Information (2026-08-26 00:35 UTC): 'OpenAI is losing part of the Salesforce-built sales leadership it assembled for enterprise expansion just as that business is gaining momentum. 2 Salesforce veterans OpenAI recruited for enterprise sales are now returning to Salesforce.' That supplies a specific, outlet-sourced mechanism - a boomerang back to the former employer, which is a different and less alarming story than a general loss of confidence - behind the two role-level exits this ticket had recorded on single-aggregator sourcing alone. Individuals are still not named in captured signal, which is why verification advances only to partial rather than confirmed. Separately, and adjacent rather than identical: @rohanpaul_ai relaying WSJ (2026-08-25 19:25 UTC) reports that OpenAI's head of data centers, Chris Malone, departed last week after joining in March 2025, shortly after OpenAI announced the Stargate infrastructure project. That is an infrastructure rather than a sales role and does not belong to this ticket's artifact, but it is recorded here because it makes the surrounding window a broader senior-leadership churn than a sales-desk story - and because Malone is the first departing executive in this cluster to be named at all. Status stays confirmed."
 ---
 
 Sales leadership is not usually a model-timeline concern. It is here for

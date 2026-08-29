@@ -1,4 +1,6 @@
-FROM oven/bun:1-alpine AS build
+# Keep the contest/release SBOM reproducible. The tag documents the human-
+# readable version while the digest prevents it from moving underneath us.
+FROM oven/bun:1.4.0-alpine@sha256:07235578f79ef8c6f97d94aee7938e76f5cdba5f21ae5dbfdd3d3d38058437eb AS build
 
 WORKDIR /app
 
@@ -18,9 +20,7 @@ COPY research ./research
 
 RUN cd dashboard && SKIP_LFS_POINTERS=1 bun run build
 
-FROM oven/bun:1-alpine AS runtime
-
-RUN apk add --no-cache caddy
+FROM caddy:2.11.4-alpine@sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648 AS runtime
 
 ENV PORT=8080
 

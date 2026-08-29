@@ -39,7 +39,7 @@ jobs:
           git lfs version
 
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
           # lfs: false because mp3s no longer live in LFS (moved to S3 in
@@ -98,7 +98,7 @@ jobs:
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '22'
 
@@ -335,12 +335,18 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          # Lane-scoped authorization: only this compatibility-tested digest
+          # call can select the isolated OpenCode fallback.
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           claude-args: |
             --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
-            research/digest/
-            research/summaries/
-          label: Daily digest Claude local-source synthesizer
+            research/digest/${{ steps.date.outputs.date }}-digest.md
+            research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
+          allowed-paths: |
+            research/digest/${{ steps.date.outputs.date }}-digest.md
+            research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
+          label: Daily digest local-source synthesizer
           prompt: |
             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
 
@@ -494,8 +500,7 @@ jobs:
       # commit (mid-run tool/API error) would otherwise strand the content:
       # floor ok → fallback skipped → require-output red → wiki-ingest/
       # front-page starve. Commit exactly this workflow's expected output
-      # paths (research/digest/ + research/summaries/ — both are .md/.txt/
-      # .json only, no LFS-filtered media). On a clean tree (re-dispatch on
+      # files only. On a clean tree (re-dispatch on
       # a healthy day) this is a no-op, so the fallback's overwrite
       # protection and honest-red semantics are unchanged.
       - name: Commit recovered agent digest output
@@ -504,12 +509,14 @@ jobs:
           DATE: ${{ steps.date.outputs.date }}
         run: |
           set -euo pipefail
-          if [ -z "$(git status --porcelain -- research/digest/ research/summaries/)" ]; then
+          DIGEST_FILE="research/digest/${DATE}-digest.md"
+          SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
+          if [ -z "$(git status --porcelain -- "$DIGEST_FILE" "$SUMMARY_FILE")" ]; then
             echo "No uncommitted digest-lane changes — nothing to recover."
             exit 0
           fi
           echo "::notice::Floor-passing digest output found uncommitted in the working tree (agent likely died before its commit step); committing it."
-          git add research/digest/ research/summaries/
+          git add "$DIGEST_FILE" "$SUMMARY_FILE"
           git commit -m "Daily digest ${DATE} (recovered uncommitted agent output)" || echo "No recovered digest changes"
 
       - name: Check for fresh digest output
@@ -571,7 +578,7 @@ jobs:
       # it silent by default — silence is how the broken agent path hid for
       # six days (07-02 → 07-08). Announce every actual rescue. Alerts must
       # never fail the job (Load-bearing rule 4 style).
-      - name: Alert deterministic fallback publication via Telegram
+      - name: Alert deterministic fallback retention via Telegram
         if: steps.digest-fallback.outcome == 'success' && steps.digest-fallback.outputs.used == 'true'
         continue-on-error: true
         env:
@@ -584,7 +591,7 @@ jobs:
             echo "Telegram credentials missing — skipping fallback-used alert"
             exit 0
           fi
-          TEXT="⚠️ Daily digest ${DATE} published via DETERMINISTIC fallback (model-free) — the digest agent produced no usable digest. wiki-ingest/front-page will run on fallback content. Investigate the agent path: ${RUN_URL}"
+          TEXT="⚠️ Daily digest ${DATE} retained a DETERMINISTIC fallback for operational diagnosis because the agent produced no usable digest. Public brief, front page, feeds, and audio are suppressed for this date. Investigate the agent path: ${RUN_URL}"
           curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
             --data-urlencode "text=${TEXT}" \
@@ -602,8 +609,51 @@ jobs:
             research/digest/
           label: Daily digest workflow output
 
+      # The synthesis composite is intentionally continue-on-error so the
+      # deterministic recovery can run. Independently prove that every commit
+      # since the pre-agent base stayed inside today's two publication files
+      # before any later safe-push step can publish it.
+      - name: Require digest diff scope
+        uses: ./.github/actions/require-diff-scope
+        with:
+          base-sha: ${{ steps.digest-output-base.outputs.sha }}
+          allowed-paths: |
+            research/digest/${{ steps.date.outputs.date }}-digest.md
+            research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
+          label: Daily digest workflow output
+
+      - name: Classify digest publication state
+        id: digest-publication
+        env:
+          DATE: ${{ steps.date.outputs.date }}
+        run: |
+          set -euo pipefail
+          DIGEST="research/digest/${DATE}-digest.md"
+          if python3 scripts/digest_publication_state.py "$DIGEST"; then
+            echo "editorial=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Operational fallback detected; skipping all public and audio derivatives."
+          else
+            echo "editorial=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Revoke fallback audio objects from S3
+        if: always()
+        continue-on-error: true
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
+          S3_ENDPOINT_URL: ${{ secrets.S3_ENDPOINT_URL }}
+          S3_BUCKET: ${{ secrets.S3_BUCKET }}
+        run: |
+          if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$S3_ENDPOINT_URL" ] || [ -z "$S3_BUCKET" ]; then
+            echo "S3 credentials missing — skipping fallback-audio revocation"
+            exit 0
+          fi
+          bash scripts/delete_fallback_audio.sh
+
       - name: Rewrite summary as ARA spoken script (Claude)
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
@@ -687,7 +737,7 @@ jobs:
             git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA two-host Claude rewrite)" || echo "No changes"
 
       - name: Generate audio digest with Gemini 3.1 Flash TTS
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -819,7 +869,7 @@ jobs:
           # + truncate to 0-byte stub + commit happen in later steps.
 
       - name: Upload audio digest to S3
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         env:
           DATE: ${{ steps.date.outputs.date }}
@@ -856,7 +906,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Send Telegram notification (audio + caption)
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -934,7 +984,7 @@ jobs:
           fi
 
       - name: Send audio to Hooker (parallel delivery channel)
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -987,7 +1037,7 @@ jobs:
           echo ""
 
       - name: Truncate audio mp3 to 0-byte stub + commit
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         env:
           DATE: ${{ steps.date.outputs.date }}
@@ -1003,7 +1053,7 @@ jobs:
           fi
 
       - name: Push audio stub
-        if: success()
+        if: success() && steps.digest-publication.outputs.editorial == 'true'
         uses: ./.github/actions/safe-push
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

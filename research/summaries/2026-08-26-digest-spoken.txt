@@ -1,0 +1,13 @@
+Speaker 1: Wednesday, August twenty-sixth, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI's Jalapeno chip is beating Nvidia's Blackwell and Rubin parts on inference efficiency, and the margin is not small.
+Speaker 1: The numbers back it up. Jalapeno is landing [emphasis] one point five to one point nine times [/emphasis] the work per watt, and one point seven to three point six times lower latency against G B two hundred and G B three hundred.
+Speaker 2: That is the first time we have seen a custom inference part put real daylight between itself and the incumbent on both power and latency at once.
+Speaker 1: On the silicon front, Apple shipped its first two nanometer M six, alongside a quad die M five Ultra.
+Speaker 2: And that Ultra carries [emphasis] five hundred twelve gigabytes [/emphasis] of unified memory at one point two terabytes per second, shipping in October. Local inference just got a lot more interesting.
+Speaker 1: It was the biggest conversation of the day too, roughly eight hundred six points and seven hundred thirteen comments on the launch.
+Speaker 2: Worth noting that the legal side is heating up. The Alabama Attorney General has subpoenaed OpenAI over the July Hugging Face hack.
+Speaker 1: And the S E C subpoenaed four banks over the Situational Awareness A I fund collapse. [dramatic_pause] The unwinding is now a securities question, not just a market one.
+Speaker 2: Some quick money numbers, Anthropic is pitching a [emphasis] thirty trillion dollar [/emphasis] addressable market, and Perplexity's annual recurring revenue has topped seven hundred fifty million dollars.
+Speaker 1: One benchmark to close on. On SWE bench Science, the best agent hit ninety six point six four percent on visible tests, but only forty seven point nine percent on the hidden ones.
+Speaker 2: That gap is the whole story on agent evaluation right now.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

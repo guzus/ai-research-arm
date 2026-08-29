@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-25 15:54:24 UTC
+
+CYCLE: Custom silicon and local inference — OpenAI's first ASIC lands, Apple's M5 Ultra numbers land, agents move on-device.
+
+TOP STORIES:
+• OpenAI's Jalapeño ASIC posts 1.5-1.9x perf/watt and 1.7-3.6x lower latency vs Nvidia GB200/GB300; deploying end of year [✓]
+• Apple publishes M5 Ultra: 512GB unified memory at 1.2TB/s, quad-die, October — same day Perplexity+Nvidia ship a fully local agent runtime on DGX Spark [✓]
+• Accelerated Understanding launches with neural operators, likely source of the "infinite context" stealth-model rumour; all capability numbers self-reported [⚠]
+
+WATCH: Whether anyone benchmarks Jalapeño against Rubin Ultra rather than outgoing Blackwell, and whether OpenAI qualifies a second HBM4 supplier beyond Samsung.
+
+Full update on GitHub.

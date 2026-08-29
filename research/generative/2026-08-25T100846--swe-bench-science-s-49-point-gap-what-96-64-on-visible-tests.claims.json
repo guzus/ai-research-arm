@@ -1,0 +1,284 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Claude Code with Opus-5 (max) is the best-performing agent on SWE-bench Science, achieving a Pass@1 of 47.90% on private tests.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799",
+        "https://swescience.github.io/"
+      ],
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "c2",
+      "claim": "The same Claude-Opus-5 (max) configuration attains a 96.64% public score, producing a ~49-point visible-to-hidden gap.",
+      "type": "comparison",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799",
+        "https://swescience.github.io/"
+      ],
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "c3",
+      "claim": "SWE-bench Science comprises 119 tasks from 98 GitHub repositories across 20 scientific domains.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799",
+        "https://github.com/OpenMOSS/SWE-bench-Science"
+      ],
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "c4",
+      "claim": "SWE-bench Science organizes tasks into three paradigms: Issue-driven, Expert-exploratory, and Engineering-integration.",
+      "type": "definition",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799"
+      ],
+      "source_tiers": [
+        "academic"
+      ]
+    },
+    {
+      "id": "c5",
+      "claim": "The benchmark's Chain-of-Evidence Protocol separates public and private tests, mounting private tests only after patch submission in a separate evaluator container.",
+      "type": "technical",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799"
+      ],
+      "source_tiers": [
+        "academic"
+      ]
+    },
+    {
+      "id": "c6",
+      "claim": "PublicScore is the mean score across applicable public test cases, while Pass@1 is a binary exact-private-success measure equal to 1 only when every applicable private test passes.",
+      "type": "definition",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799"
+      ],
+      "source_tiers": [
+        "academic"
+      ]
+    },
+    {
+      "id": "c7",
+      "claim": "DeepSeek-V4-Pro (max) scores 100.00% public and 42.02% overall Pass@1 on SWE-bench Science.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://swescience.github.io/"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "c8",
+      "claim": "DeepSeek-V4-flash (high) scores 100.00% public and 19.33% overall Pass@1, and Qwen3.8-27B (max) scores 100.00% public and 29.41% overall Pass@1.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://swescience.github.io/"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-24"
+    },
+    {
+      "id": "c9",
+      "claim": "The paper identifies four recurring scientific failure mechanisms: scientific-knowledge/abstraction deficit, misguided exploration/surface-level repair, incomplete coverage/system integration, and scientific-knowledge generalization failure.",
+      "type": "definition",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799"
+      ],
+      "source_tiers": [
+        "academic"
+      ]
+    },
+    {
+      "id": "c10",
+      "claim": "Claude-Opus-5 records the lowest categorized scientific-error count (58) plus four runtime/evaluation-path failures, and the fewest misguided-exploration errors (2).",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799"
+      ],
+      "source_tiers": [
+        "academic"
+      ],
+      "as_of": "2026-08-20"
+    },
+    {
+      "id": "c11",
+      "claim": "In a paired ablation on a 91-task subset, adding scientific information lowered GPT-5.6-sol's Pass@1 from 36.26% to 31.87% but raised DeepSeek-V4-flash's from 16.48% to 23.08%.",
+      "type": "comparison",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799"
+      ],
+      "source_tiers": [
+        "academic"
+      ],
+      "as_of": "2026-08-20"
+    },
+    {
+      "id": "c12",
+      "claim": "Scientific information slightly raises GPT-5.6-sol's mean public/private scores (96.70% to 97.80% and 73.23% to 74.06%) while its Pass@1 falls from 36.26% to 31.87%.",
+      "type": "comparison",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799"
+      ],
+      "source_tiers": [
+        "academic"
+      ],
+      "as_of": "2026-08-20"
+    },
+    {
+      "id": "c13",
+      "claim": "The paper states the paired ablation differences are descriptive and do not establish statistical significance or a causal effect.",
+      "type": "quote",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799"
+      ],
+      "source_tiers": [
+        "academic"
+      ]
+    },
+    {
+      "id": "c14",
+      "claim": "SWE-ABS found 19.78% of 11,041 previously-passing top-30 patches on SWE-bench Verified to be semantically incorrect, cutting the top agent from 78.80% to 62.20%.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2603.00520"
+      ],
+      "source_tiers": [
+        "academic"
+      ],
+      "as_of": "2026-02-28"
+    },
+    {
+      "id": "c15",
+      "claim": "SWE-bench+ attributed 32.67% of successful patches from top systems to solution leakage from issue reports.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2410.06992"
+      ],
+      "source_tiers": [
+        "academic"
+      ],
+      "as_of": "2024-10-09"
+    },
+    {
+      "id": "c16",
+      "claim": "UTBoost identified 345 erroneous patches incorrectly labeled as passed in the original SWE-Bench, affecting 40.9% of SWE-Bench Lite and 24.4% of SWE-Bench Verified leaderboard entries.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2506.09289"
+      ],
+      "source_tiers": [
+        "academic"
+      ],
+      "as_of": "2025-06-10"
+    },
+    {
+      "id": "c17",
+      "claim": "Cursor's June 2026 audit found 63% of successful Claude Opus 4.8 Max resolutions on SWE-bench Pro were achieved by retrieval rather than derivation.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "contested",
+      "source_urls": [
+        "https://cursor.com/blog/reward-hacking-coding-benchmarks"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-06-25"
+    },
+    {
+      "id": "c18",
+      "claim": "The non-empty input code in SWE-bench Science averages ~80,600 lines, and reference patches add ~118 lines on average.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799"
+      ],
+      "source_tiers": [
+        "academic"
+      ],
+      "as_of": "2026-08-20"
+    },
+    {
+      "id": "c19",
+      "claim": "SWE-Bench ProMax reports that a recent audit found nearly 60% of unsolved SWE-bench Verified instances contain flawed tests, and the best model achieves only 41.2% resolve rate on 170 refactoring tasks.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "volatile",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.09802"
+      ],
+      "source_tiers": [
+        "academic"
+      ],
+      "as_of": "2026-08-10"
+    },
+    {
+      "id": "c20",
+      "claim": "The paper's conclusion states the gap 'shows that repository-level scientific software engineering requires scientific abstraction, disciplined exploration, system-wide integration, and generalization beyond visible cases.'",
+      "type": "quote",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.19799"
+      ],
+      "source_tiers": [
+        "academic"
+      ]
+    }
+  ]
+}

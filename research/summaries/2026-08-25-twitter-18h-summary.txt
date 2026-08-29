@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-25 18:53:01 UTC
+
+CYCLE: Jalapeño clears Vera Rubin and OpenAI names an unannounced model; Anthropic's $30T pitch; OpenAI's own domain used for phishing.
+
+TOP STORIES:
+• SemiAnalysis: Jalapeño beats Vera Rubin NVL72 on output throughput per MW, and OpenAI's blog credits GPT-Astra with kernels 1.5-1.8x faster than expert-written [✓]
+• Anthropic reported to be pitching a $30T addressable market, above SpaceX's $26.5T May figure; the $2T/$100B IPO numbers have no named source [⚠]
+• Phishing mail delivered from noreply@tm.openai.com by abusing ChatGPT's trusted-contact invite, linking to an X OAuth grab [⚠]
+
+WATCH: Whether Nvidia answers with a fresh Rubin or Rubin Ultra InferenceX submission rather than a statement.
+
+Full update on GitHub.

@@ -4,10 +4,11 @@ title: Groq
 type: entity
 aliases: [Groq, "Groq Inc.", "@GroqInc", "Jonathan Ross"]
 tags: [inference, ai-chips, accelerator, model-specific-silicon]
-description: AI-inference-chip startup that raised $350M at a $3.5B valuation (2026-08-18), roughly half its September 2025 mark, after NVIDIA licensed its LPU architecture and absorbed founder Jonathan Ross.
+description: AI-inference-chip startup that raised $350M at a $3.5B valuation (2026-08-18), roughly half its September 2025 mark, after NVIDIA licensed its LPU architecture and absorbed founder Jonathan Ross; its Groq 3 LPX racks — the first shipping product of the Nvidia–Groq deal — entered full production with Nebius as launch cloud (2026-08-25).
 created_at: 2026-08-18
-timestamp: 2026-08-18T00:00:00Z
+timestamp: 2026-08-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
 ---
 
@@ -42,3 +43,18 @@ offering.
 - **Is NVIDIA participating, and at what terms?** Licensor-funding-licensee at
   a markdown would confirm the recapitalization read rather than a market
   print.
+
+## Groq 3 LPX racks reach full production (2026-08-25)
+
+- **The first shipping product of the [[nvidia|Nvidia]]–Groq deal lands
+  (2026-08-25).** Nvidia's **Groq 3 LPX racks entered full production** — the
+  first shipping product tied to the Groq arrangement — with **[[nebius|Nebius]]
+  as launch cloud**, and a claimed **3,400 output tokens/sec** paired to the
+  Vera Rubin NVL72 (the "4×" claim scoped to latency-sensitive agentic
+  responsiveness rather than throughput generally, and the token figure later
+  scoped to **Artificial Analysis testing on Gemma 4 31B at 100K context**).
+  Whether the underlying transaction was a **$20bn acquisition or a
+  non-exclusive licence** remains **disputed in the same day's sources** — the
+  licensing-vs-acquisition ambiguity this page flagged at the August raise now
+  has a shipping artifact attached to it (@GroqInc, @nvidianewsroom; ARA daily
+  digest 2026-08-25). See [[model-specific-silicon]] and [[nebius]].

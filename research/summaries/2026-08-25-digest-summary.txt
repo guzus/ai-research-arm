@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-08-25
+
+TOP STORIES:
+• Nvidia and SpaceX designed an orbital AI datacenter — space-optimized Vera Rubin NVL72, launching Q4 2027
+• Nvidia raising AI server prices ~17% on memory costs, per The Information
+• Anthropic went down across its entire model lineup — Mythos 5, Fable 5, Opus 5, Opus 4.8, plus app/API/Claude Code/Cowork
+
+KEY NUMBERS:
+• +$5B added to a 1-gigawatt datacenter by the 17% Nvidia price hike
+• US data-center opposition at 75%, up from 42% a year ago
+• Rubin Ultra reported at 192GB HBM4 — below regular Rubin's 288GB
+• Nvidia in equity talks with Perplexity above $30B
+
+TRENDING: HN debated whether AI reliance is collapsing coding expertise (330 pts, 350 comments)
+
+Full digest on GitHub.

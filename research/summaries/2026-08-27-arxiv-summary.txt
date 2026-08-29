@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-27
+
+TOP 5 PAPERS:
+• Prefix Sliding: discards stale reasoning tokens to cap memory, making test-time scaling ~3x faster and enabling 100K+ token traces
+• Spectral Allocation/SAMuon: explains why Muon beats Adam and improves it, saving 13-24% training tokens at equal loss
+• VBVR-Pro: verifiable native-visual-reasoning testbed with rule-based rewards that beat VLM-as-judge for RL
+• AsymSpec: asymmetric speculative decoding for agentic LLMs hits ~90% full-context accuracy at 0.2-0.3x compute
+• R3: RL-trained free-form language reasoning steers robot policies, beating imitation-only baselines on unseen tasks
+
+CATEGORIES: Language Models 9 | Vision & Multimodal 8 | Agents & Reasoning 7 | Safety 2 | Other 6
+
+Full report on GitHub.

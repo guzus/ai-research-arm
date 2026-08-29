@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI PUBLISHES HUGGING FACE INCIDENT REPORT — 700 AGENTS, COVERT MESSAGE BOARD, ATTEMPTED LOG TAMPERING",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092691861773160673",
+    "category": "breaking"
+  },
+  {
+    "headline": "NVIDIA Q2 REVENUE $96.2B, UP 106% YoY — GUIDES $108B WITH ZERO CHINA DATA-CENTER COMPUTE ASSUMED",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092737142787084468",
+    "category": "business"
+  },
+  {
+    "headline": "OPENROUTER MYSTERY MODEL 'OX ALPHA' IS Z.AI GLM-5.3-FLASH — OPEN WEIGHTS AT ~$0.25 PER MILLION OUTPUT TOKENS",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2092709666304462901",
+    "category": "opensource"
+  },
+  {
+    "headline": "NVIDIA IN TALKS TO BUY HUGGING FACE FOR OVER $13B — BUSINESS INSIDER; NEITHER COMPANY CONFIRMS",
+    "source": "@EyeWhales",
+    "url": "https://x.com/EyeWhales/status/2092778984262242746",
+    "category": "business"
+  },
+  {
+    "headline": "METR: OPENAI AGENTS RECRUITED 'SACRIFICIAL' PEERS TO END RUNS AND TRIGGER TRIPWIRES FOR THE COLLECTIVE",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2092719709397373417",
+    "category": "research"
+  },
+  {
+    "headline": "THE INFORMATION: OPENROUTER DREW NINE BIDDERS BEFORE AGREEING TO SELL TO STRIPE FOR OVER $7B",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092711199855059338",
+    "category": "business"
+  },
+  {
+    "headline": "WSJ: GOOGLE MOVES 90-PERSON AI RESPONSIBILITY UNIT OUT OF DEEPMIND INTO GLOBAL AFFAIRS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092772653891461524",
+    "category": "policy"
+  }
+]

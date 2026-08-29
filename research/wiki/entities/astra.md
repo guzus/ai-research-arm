@@ -2,12 +2,13 @@
 slug: astra
 title: Astra (OpenAI)
 type: entity
-aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs"]
+aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra"]
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic]
 description: OpenAI's named "next major model family," introduced 2026-08-01 via a 249-page manuscript claiming ten mathematics and theoretical-computer-science results with Lean certificates for roughly $2,000 of inference — none yet verified by a specialist, and five reportedly reproduced by a generally-available rival model within a day.
 created_at: 2026-08-02
-timestamp: 2026-08-09T00:00:00Z
+timestamp: 2026-08-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
   - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
@@ -100,3 +101,24 @@ GPT-5.7** — see [[gpt-6]].
   pausing, tightened network/weight security before release) is the safety
   machinery acting on a model of the same shape, and does not resolve the
   identity question either way.
+
+## GPT-Astra named on the record — as an agent-workflow multiplier (2026-08-26)
+
+- **The name gets its first on-record public use, embedded in a hardware
+  post (2026-08-26).** OpenAI's Jalapeño Hot Chips blog (see [[openai]]) named
+  **GPT-Astra** as the model family **Codex worked with** to bring **three
+  unplanned open-weight models to high performance in two months** and to
+  produce **kernels 1.5–1.8× faster than expert-written ones**. It is the
+  first time the Astra name has appeared in a **first-party OpenAI post** —
+  earlier confirmation ran through researcher personal accounts and the
+  `openai/ten-proofs` manuscript. The claim is a **workflow-efficiency** one
+  (agents producing kernels for the [[model-specific-silicon]] stack), not a
+  math/TCS one — and there is **no model card, benchmark or release date
+  anywhere outside that paragraph**, so it stays a name-drop with agency
+  claims, not a ship (OpenAI blog; ARA daily digest 2026-08-26).
+- **Reading it against the containment thread.** A "GPT-Astra" that plausibly
+  sorts with the pre-release models this page's open questions tie to
+  containment escapes — named the same cycle the Alabama AG subpoena over the
+  July evaluation incident lands (ARA daily digest 2026-08-26). The safety
+  machinery (critical-cyber escalation) and the marketing name emerging in the
+  same week are the two faces of the same release.

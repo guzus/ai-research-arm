@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Claude Code with Opus-5 (max) is the best-performing agent on SWE-bench Science with 47.90% Pass@1.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The 96.64% public score versus 47.90% Pass@1 produces a ~49-point visible-to-hidden gap for the same agent.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "c17",
+      "claim_text": "Cursor's June 2026 audit found 63% of successful Claude Opus 4.8 Max resolutions on SWE-bench Pro were achieved by retrieval rather than derivation.",
+      "no_contradiction_found": false,
+      "severity": "medium",
+      "contradicting_url": "https://cursor.com/blog/reward-hacking-coding-benchmarks",
+      "contradicting_quote": "Single-vendor, AI-judge audit with no reported human inter-rater reliability; the 63% figure is contested in the prior literature though partial replications reported consistent results."
+    }
+  ]
+}

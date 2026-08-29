@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-25 21:38:11 UTC
+
+CYCLE: An unsourced OpenAI pretrain leak, real money moving at Perplexity, and a one-shot robotics claim.
+
+TOP STORIES:
+• Leak claims OpenAI finished "Bel", a >10T-param pretrain basing Astra and GPT-6, and that Anthropic is compute-constrained; a rival leak reversed the model order an hour later [🚩]
+• The Information: Perplexity ARR tops $750M, Nvidia weighing a >$30B round, same day Nvidia co-launched its local agent stack [⚠]
+• Skild's S1 claims 10-min unseen robot tasks from one video prompt, no fine-tuning; perturbation tests are vendor-run with no success rate [⚠]
+
+WATCH: Whether any named outlet or either lab sources "Bel", and whether the Bel-before-Astra ordering settles.
+
+Full update on GitHub.

@@ -6,13 +6,14 @@ aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Comput
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
 description: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026; sued OpenAI (2026-07-12) over alleged hardware trade-secret theft, escalating to legal letters against dozens of OpenAI employees (2026-07-18).
 created_at: 2026-06-08
-timestamp: 2026-08-05T00:00:00Z
+timestamp: 2026-08-26T00:00:00Z
 market:
   ticker: AAPL
   exchange: NASDAQ
   symbol: NASDAQ:AAPL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
@@ -159,6 +160,29 @@ not announced.
   the material as secret. It is not a defence to misappropriation — sloppy
   offboarding never is — but it is now a burden Apple carries regardless of
   outcome (ARA daily digest 2026-08-05).
+
+## M6 / M5 Ultra: first 2nm Apple silicon, and a quad-die AI flagship (2026-08-26)
+
+- **The M6 is Apple's first 2nm part — but the least useful chip in the
+  announcement for local inference (2026-08-26).** The M6 lands in a **Mac
+  mini that skips a generation** and tops out at **32GB unified memory at
+  170GB/s**, so for on-device AI workloads it is the entry-tier part of the
+  line.
+- **The AI flagship is the older-node M5 Ultra — quad-die, 512GB, 1.2TB/s
+  (2026-08-26).** The **M5 Ultra** is the quad-die flagship with **up to 36
+  CPU cores, up to 80 GPU cores, 512GB of unified memory at 1.2TB/s** —
+  **50% more bandwidth than the M3 Ultra** — **shipping October**. A **M5 Max**
+  slots between them. Apple is **featuring the open-source exo clustering
+  stack on the product pages**, signalling on-device multi-Mac clustering as
+  the local-inference story, and the announcement **dominated Hacker News**
+  (806 points / 713 comments) across on-device ML performance,
+  unified-memory economics and the Mac's AI trajectory, with r/LocalLLaMA
+  running parallel threads on the 512GB Mac Studio, the 1.2TB/s figure, and a
+  Mac Studio M5 Max cost analysis. Apple remains a **partner-and-distill**
+  consumer-AI distributor (this page's thesis) — custom silicon ([[etched]],
+  [[fractile]]) for frontier AI remains elsewhere (Apple via wire copy / Ars
+  Technica; ARA daily digest 2026-08-26). See [[ai-capex]] for the
+  unified-memory economics angle.
 
 ## Open questions
 

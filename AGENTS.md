@@ -13,13 +13,14 @@ short pointer plus the few genuinely agent-specific notes.
 
 - **Scheduled model workflows** use the Claude-harness `.github/actions/agent-run`
   directly or, for RSS, community, arXiv, Bluesky, and wiki, the trusted
-  `.github/actions/agent-dispatch`. Those five reference the shared
-  `research-editorial` route, so its backend profile can select a registered
-  isolated editorial adapter without workflow edits. Two registered
-  compatible adapters exist: strict OpenCode Go (the current production
-  default) and Cursor CLI (`cursor-grok-4p6-fast`, Grok 4.6 Fast). Host-checkout
-  `agent-run` is deliberately capability-incompatible and rejected. While the
-  OpenCode profile is selected, one key/cap failure can stale all five together. Direct
+  `.github/actions/agent-dispatch`. RSS/community/Bluesky reference the
+  `research-editorial` OpenCode route; arXiv/wiki reference the
+  `research-editorial-secondary` Cursor route. Both select only registered
+  isolated editorial adapters. Two registered
+  compatible adapters are selected in production: strict OpenCode Go and
+  Cursor CLI (`cursor-grok-4p6-fast`, Grok 4.6 Fast). Host-checkout
+  `agent-run` is deliberately capability-incompatible and rejected. The split
+  bounds one provider key/cap failure to its assigned subset. Direct
   Claude workflows may still use
   `anthropics/claude-code-action@v1`; when they do, pass the model via
   `claude_args`, never as a separate `model:` input:
@@ -35,14 +36,18 @@ short pointer plus the few genuinely agent-specific notes.
   Reference: https://code.claude.com/docs/en/github-actions
   (action repo: https://github.com/anthropics/claude-code-action)
 
-- **GLM-5.2 is the preferred fallback for Claude-harness content lanes.** The
-  five editorial lanes are routed as a group; their current strict profile runs
-  the containerized OpenCode CLI at `opencode-go/deepseek-v4-flash`. Known
+- **GLM-5.2 is the default fallback for Claude-harness content lanes.** The
+  editorial dispatcher uses two strict isolated routes: OpenCode
+  `opencode-go/glm-5.3-flash` for RSS/community/Bluesky and Cursor Grok 4.6 Fast
+  for arXiv/wiki. Known
   credential slots are prewired for a future isolated adapter, but the current
   host-checkout `agent-run` profiles cannot be selected by this route. `agent-run`
   probes the requested provider and walks the ordered `fallback.chain` from
   `data/agent-backends.json` when it is unavailable (currently native Claude →
-  Z.ai GLM); lanes marked `"strict": true` and `fireworks-fallback:
+  Z.ai GLM). The local-source `digest-synthesis-fallback` lane is the explicit
+  exception: its lane-local chain replaces the global chain with isolated
+  OpenCode `opencode-go/glm-5.3-flash`, and Claude HTTP 429 selects that
+  adapter before execution. Lanes marked `"strict": true` and `fireworks-fallback:
   none` runs never fall back. Set `expected-paths` in `agent-run`, or call
   `.github/actions/require-output` after deterministic commit steps, so green
   no-op runs do not leave the freshness watchdog stale. RSS, HN/Reddit
@@ -63,9 +68,8 @@ short pointer plus the few genuinely agent-specific notes.
   `uv run python scripts/build_backend_matrix.py` to regenerate
   `docs/backend-matrix.md` (CI runs `--check` and fails on drift, missing
   secrets, orphan lanes, or mirror divergence).
-  To switch all five editorial lanes, edit only
-  `routes.research-editorial.backend` to a pre-registered compatible backend,
-  then run the generator. To split one lane, change only that lane's `route`
+  To switch one failure domain, edit its route backend to a pre-registered
+  compatible backend, then run the generator. To move one lane, change only its `route`
   reference (define the new route/profile first when needed).
 
 - **Z.ai GLM-5.2** is available through `agent-run` as `zai-glm-5p2` using
@@ -89,17 +93,19 @@ short pointer plus the few genuinely agent-specific notes.
   `openai-api-key` unless the intent is API billing instead of the
   ChatGPT/Codex subscription.
 
-- **OpenCode + DeepSeek V4 Flash runs** use the opencode CLI
-  (pinned `opencode-ai@1.18.3`) driving `deepseek-v4-flash` with plain env-var
-  auth — a single secret is the whole login; there is no `opencode auth
-  login` step and no auth-file seeding. The workflow resolves the route
-  exclusively through `OPENCODE_API_KEY` (OpenCode Go subscription — sign in
+- **OpenCode Go runs** use the opencode CLI (pinned `opencode-ai@1.18.3`)
+  with plain env-var auth. The production editorial route prioritizes
+  `glm-5.3-flash`; explicit generative-research, Twitter comparison, and canary
+  paths remain pinned to `deepseek-v4-flash`. A single secret is the whole login;
+  there is no `opencode auth login` step and no auth-file seeding. The workflow
+  resolves the route exclusively through `OPENCODE_API_KEY` (OpenCode Go subscription — sign in
   at https://opencode.ai/auth, subscribe, copy the key). The Go plan caps are
-  $12/5h, $30/week, and $60/month; because RSS, community, arXiv, Bluesky, and
-  wiki currently share this one strict route, exhaustion can stale all five together.
-  Moonshot is not a DeepSeek provider and is not a fallback. Store the key with
-  `gh secret set OPENCODE_API_KEY`, then validate cheaply with
-  `opencode-deepseek-canary.yml` before dispatching
+  $12/5h, $30/week, and $60/month; exhaustion affects RSS/community/Bluesky,
+  while arXiv/wiki use the independent Cursor route.
+  Moonshot is not a provider for either pinned model and is not a fallback.
+  Store the key with `gh secret set OPENCODE_API_KEY`; the retained
+  `opencode-deepseek-canary.yml` validates both the explicit DeepSeek path and
+  the dynamically resolved production GLM route before dispatching
   `generative-research.yml backend=opencode-deepseek-v4-flash`.
 
 - **Cursor CLI + Grok 4.6 Fast** is a second isolated editorial adapter

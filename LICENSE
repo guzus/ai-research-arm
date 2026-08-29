@@ -19,16 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-NOTE ON SCOPE: This MIT license covers the SOURCE CODE of this repository
-(scripts, workflows, the dashboard application, and documentation). It does
-NOT relicense the contents of `research/`, which are automated excerpts,
-summaries, and reproductions of third-party material (news articles, posts
-from X/Twitter, Hacker News, Reddit, Bluesky, arXiv, and similar sources).
-Those artifacts remain the property of their original authors and are included
-here only as the generated output of the pipeline. If you reuse anything under
-`research/`, you are responsible for complying with the original sources'
-terms (including the X/Twitter Terms of Service and the copyright of each
-publisher). See the "License" section of README.md for details.

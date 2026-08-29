@@ -1,0 +1,14 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-24 21:57:34 UTC
+
+CYCLE: Memory, orbit and money — Nvidia's roadmap gets cut, launched and financed in the same three hours.
+
+TOP STORIES:
+• Rubin Ultra ships with 192GB HBM4, one-fifth of the 1TB previewed and below regular Rubin's 288GB [⚠]
+• SpaceX details orbital Vera Rubin NVL72: 72 GPUs + 36 Vera CPUs per rack, first launch Q4 2027 [⚠]
+• Nvidia weighing multibillion-dollar Perplexity round at a 50%+ valuation step-up [✓]
+
+SKEPTIC: The "OpenAI cuts Sol pricing starting today" post recycles a 21 Aug announcement and adds a 33% output figure the primary source never stated.
+
+WATCH: An Nvidia or HBM-supplier statement restating Rubin Ultra memory capacity.
+
+Full update on GitHub.

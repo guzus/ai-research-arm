@@ -16,9 +16,30 @@ import { hydrateAgentsTimeline, renderAgentsStudioHtml } from './render/agents';
 import type { ArmTimeline } from './render/agents';
 import { hydratePricing, renderPricing } from './render/pricing';
 import type { ModelPricing } from './render/pricing';
+import {
+  renderDossierRelated,
+  renderEvidenceDrawer,
+  renderMarketTrends,
+  renderWhatChanged,
+} from './render/product';
+import type { BriefItem } from './render/product';
+import {
+  claimsForArticle,
+  claimsForTopic,
+  evidenceEnumLabel,
+  excerptAround,
+  normalizeTopic,
+  readWatchlist,
+  searchEvidence,
+  textMatchesTopic,
+  watchlistFromUrl,
+  watchlistSharePath,
+  writeWatchlist,
+} from './product-intelligence';
+import type { EvidenceSearchEntry, PublicClaim, WatchlistState } from './product-intelligence';
 import { localizeStaticUi, resolveUiLanguage, uiText } from './i18n';
 import type { UiCopyKey } from './i18n';
-import { renderTodayHtml } from './render/today';
+import { isDeterministicFallbackDigest, renderTodayHtml } from './render/today';
 import {
   buildTwitterCycleContent,
   extractTwitterCycleBody,
@@ -250,11 +271,18 @@ type DesignFrontendData = {
 
 let currentDate = new Date();
 let searchTerm = '';
+let watchlist: WatchlistState = readWatchlist();
+const sharedWatchTopics = watchlistFromUrl(location.search);
+if (sharedWatchTopics.length) {
+  watchlist = { ...watchlist, topics: Array.from(new Set([...watchlist.topics, ...sharedWatchTopics])) };
+  writeWatchlist(watchlist);
+}
 let activeTab: Tab = 'today';
 let selectedSlug: string | null = null;
 let researchIndexPage = 1;
 let wikiIndexPage = 1;
-let activeLanguage: ResearchLanguage = loadStoredLanguage();
+const sharedLanguage = new URLSearchParams(location.search).get('lang');
+let activeLanguage: ResearchLanguage = sharedLanguage === 'ko' || sharedLanguage === 'en' ? sharedLanguage : loadStoredLanguage();
 let calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 const availabilityCache = new Map<string, Set<string>>();
 let loadRequestId = 0;
@@ -316,6 +344,7 @@ let digestAudioPlayEl: HTMLButtonElement | null = null;
 let digestAudioTitleEl: HTMLButtonElement | null = null;
 let digestAudioTimeEl: HTMLElement | null = null;
 let digestAudioProgressEl: HTMLInputElement | null = null;
+let digestUnavailableForCurrentView = false;
 let lastDigestAudioBarActivation = 0;
 let lastInlineDigestAudioActivation = 0;
 
@@ -937,6 +966,16 @@ async function loadArmTimeline(signal?: AbortSignal): Promise<ArmTimeline | null
 // research/market/model-pricing.json — refreshed by model-pricing.yml. Cached
 // for the session like the Arm timeline; the artifact only moves every 6h.
 let modelPricingPromise: Promise<ModelPricing | null> | null = null;
+type GpuSpotData = {
+  generated_at?: string;
+  stale?: boolean;
+  method_version?: number;
+  snapshot?: { models?: Record<string, { median?: number; min?: number; samples?: number; stale?: boolean; truncated?: boolean }> };
+  history?: Array<Record<string, unknown>>;
+};
+let gpuSpotPromise: Promise<GpuSpotData | null> | null = null;
+let publicClaimsPromise: Promise<PublicClaim[]> | null = null;
+let evidenceSearchPromise: Promise<EvidenceSearchEntry[]> | null = null;
 // Which benchmark the chart is currently plotting. Session state only: the
 // price axis is identical across benchmarks, so a reload landing on the
 // primary is not a loss of context worth a URL segment.
@@ -959,14 +998,65 @@ async function loadModelPricing(signal?: AbortSignal): Promise<ModelPricing | nu
   return modelPricingPromise;
 }
 
-function paintPricing(data: ModelPricing): void {
+async function loadGpuSpot(signal?: AbortSignal): Promise<GpuSpotData | null> {
+  if (gpuSpotPromise) return gpuSpotPromise;
+  gpuSpotPromise = (async () => {
+    try {
+      const response = await fetch(`${DATA_BASE}/market/gpu-spot.json`, { cache: 'no-cache', signal });
+      if (!response.ok) return null;
+      const data = await response.json() as GpuSpotData;
+      return data?.snapshot?.models ? data : null;
+    } catch {
+      if (signal?.aborted) gpuSpotPromise = null;
+      return null;
+    }
+  })();
+  return gpuSpotPromise;
+}
+
+async function loadPublicClaims(signal?: AbortSignal): Promise<PublicClaim[]> {
+  if (publicClaimsPromise) return publicClaimsPromise;
+  publicClaimsPromise = (async () => {
+    try {
+      const response = await fetch(`${DATA_BASE}/claims/public.json`, { cache: 'no-cache', signal });
+      if (!response.ok) return [];
+      const data = await response.json() as { claims?: PublicClaim[] };
+      return Array.isArray(data.claims) ? data.claims : [];
+    } catch {
+      if (signal?.aborted) publicClaimsPromise = null;
+      return [];
+    }
+  })();
+  return publicClaimsPromise;
+}
+
+async function loadEvidenceSearch(signal?: AbortSignal): Promise<EvidenceSearchEntry[]> {
+  if (evidenceSearchPromise) return evidenceSearchPromise;
+  evidenceSearchPromise = (async () => {
+    try {
+      // Revalidate across deployments so a browser cannot keep the older
+      // schema that omitted claim reuse warnings. The in-session promise
+      // still prevents duplicate downloads of this large artifact.
+      const response = await fetch(`${DATA_BASE}/evidence-search.json`, { cache: 'no-cache', signal });
+      if (!response.ok) return [];
+      const data = await response.json() as { entries?: EvidenceSearchEntry[] };
+      return Array.isArray(data.entries) ? data.entries : [];
+    } catch {
+      if (signal?.aborted) evidenceSearchPromise = null;
+      return [];
+    }
+  })();
+  return evidenceSearchPromise;
+}
+
+function paintPricing(data: ModelPricing, gpu: GpuSpotData | null = null): void {
   // The SAME benchmark value drives both calls. Letting hydrate re-derive it
   // from the DOM is what produced tooltips keyed to the wrong model array.
   const benchmark = pricingBenchmark ?? undefined;
-  setSafeContent(content, renderPricing(data, benchmark, activeLanguage));
+  setSafeContent(content, renderPricing(data, benchmark, activeLanguage) + renderMarketTrends(data.history || [], gpu, activeLanguage));
   hydratePricing(content, data, (next) => {
     pricingBenchmark = next;
-    paintPricing(data);
+    paintPricing(data, gpu);
   }, benchmark, activeLanguage);
 }
 
@@ -3305,6 +3395,30 @@ function renderWikiPage(
 
   void hydrateWikiHistory(page, signal ?? new AbortController().signal);
   hydrateWikiKvMarket();
+  void hydrateWikiDossier(page, signal ?? new AbortController().signal);
+}
+
+async function hydrateWikiDossier(page: WikiPage, signal: AbortSignal): Promise<void> {
+  const [claims, tickets, currentManifest] = await Promise.all([
+    loadPublicClaims(signal),
+    loadTickets(),
+    loadManifest(),
+  ]);
+  if (signal.aborted || activeTab !== 'wiki' || selectedSlug !== page.slug) return;
+  const aliases = [page.title, page.slug, ...(page.aliases || [])];
+  const relatedResearch = (currentManifest?.generative || [])
+    .filter((row) => textMatchesTopic(`${row.title} ${row.prompt} ${(row.tags || []).join(' ')}`, page.title) || aliases.some((alias) => textMatchesTopic(`${row.title} ${row.prompt} ${(row.tags || []).join(' ')}`, alias)))
+    .sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const relatedTickets = (tickets || [])
+    .filter((ticket) => aliases.some((alias) => textMatchesTopic(`${ticket.title} ${ticket.company} ${ticket.model || ''} ${(ticket.labels || []).join(' ')}`, alias)))
+    .sort((a, b) => b.updated_at.localeCompare(a.updated_at));
+  const relatedClaims = claimsForTopic(claims, page.title, aliases).sort((a, b) => (b.as_of || '').localeCompare(a.as_of || ''));
+  const slot = content.querySelector('.wiki-page-main');
+  if (!slot) return;
+  const host = document.createElement('div');
+  setSafeContent(host, renderDossierRelated({ slug: page.slug, language: activeLanguage, research: relatedResearch, tickets: relatedTickets, claims: relatedClaims, watchlisted: watchlist.topics.includes(page.slug) }));
+  slot.appendChild(host);
+  bindWatchlistActions(slot);
 }
 
 function renderWikiNotFound(slug: string): void {
@@ -4684,8 +4798,10 @@ function renderFrontPage(frontPage: FrontPageAsset): void {
 
 function renderToday(md: string, frontPage: FrontPageAsset | null = null): void {
   const dateStr = fmtDate(currentDate);
+  const digestUnavailable = isDeterministicFallbackDigest(md);
+  digestUnavailableForCurrentView = digestUnavailable;
   let frontPageCardHtml: string | null = null;
-  if (frontPage) {
+  if (frontPage && !digestUnavailable) {
     frontPageCardHtml = [
       '<div class="content-card frontpage-card today-frontpage-card">',
       frontPageBodyHtml(frontPage),
@@ -4702,9 +4818,115 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     frontPageCardHtml,
     language: activeLanguage,
   }));
+  if (digestUnavailable) {
+    digestAudioEl?.pause();
+    hideDigestAudioPlayer();
+    return;
+  }
   if (frontPage) enhanceNewspaper();
   syncDigestAudioForDate(dateStr);
   void wikifyContent(content);
+  void hydrateWhatChanged(md, dateStr);
+}
+
+function topicSlugs(text: string): string[] {
+  const lowered = text.toLowerCase();
+  const indexed = Array.from(wikiPageMap.values())
+    .filter((page) => [page.title, page.slug, ...(page.aliases || [])].some((label) => label.length > 2 && lowered.includes(label.toLowerCase())))
+    .slice(0, 4)
+    .map((page) => page.slug);
+  return indexed.length ? indexed : [normalizeTopic(text.split(/\s+[—:-]\s+/)[0] || text)].filter(Boolean);
+}
+
+async function hydrateWhatChanged(md: string, dateStr: string): Promise<void> {
+  const [tickets, wiki, pricing, gpu] = await Promise.all([
+    loadTickets(),
+    loadWikiIndexCached(),
+    loadModelPricing(),
+    loadGpuSpot(),
+  ]);
+  if (activeTab !== 'today' || fmtDate(currentDate) !== dateStr) return;
+  const items: BriefItem[] = [];
+  // Defense in depth: operational fallback artifacts are never eligible for
+  // a public Decision brief, even if this hydrator is called independently.
+  if (isDeterministicFallbackDigest(md)) return;
+  const sections = splitSections(md).filter((section) =>
+    Boolean(section.title) &&
+    section.body &&
+    !/executive summary/i.test(section.title) &&
+    !/^AI Daily Digest\b/i.test(section.title),
+  );
+  for (const [index, section] of sections.slice(0, 3).entries()) {
+    const summary = truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 230);
+    const sourceCount = new Set(extractUrls(section.body)).size;
+    items.push({
+      id: `digest:${dateStr}:${index}`,
+      kind: 'digest',
+      title: section.title || uiText(activeLanguage, 'page.today', { date: dateStr }),
+      summary,
+      why: activeLanguage === 'ko' ? `오늘의 종합 브리프에서 상위 신호로 선정됐습니다. ${sourceCount}개의 링크된 소스가 있습니다.` : `It ranked near the top of today's synthesis and carries ${sourceCount} linked source${sourceCount === 1 ? '' : 's'}.`,
+      watch: activeLanguage === 'ko' ? '차기 소스 사이클에서 독립적 확인과 수치 변화를 확인하세요.' : 'Look for independent confirmation and a measurable follow-through in the next source cycle.',
+      // A link count describes sourcing volume, not corroboration quality.
+      // Digest sections remain context until backed by structured claim evidence.
+      confidence: 'context',
+      freshness: dateStr,
+      href: `/today/${dateStr}`,
+      topics: topicSlugs(`${section.title} ${summary}`),
+      changedAt: `${dateStr}T00:00:00Z`,
+    });
+  }
+
+  for (const ticket of (tickets || []).filter((row) => row.updated_at === dateStr).sort((a, b) => b.verification.localeCompare(a.verification)).slice(0, 2)) {
+    items.push({
+      id: `model:${ticket.slug}`,
+      kind: 'model',
+      title: ticket.title,
+      summary: ticket.status_note || ticket.expected || truncateText(stripMarkdown(ticket.body), 220),
+      why: activeLanguage === 'ko' ? `상태가 ${ticket.status}(으)로 업데이트되었고 ${ticket.sources.length}개 소스와 검증 단계가 유지됩니다.` : `The persistent ticket moved or was reaffirmed at ${ticket.status}, backed by ${ticket.sources.length} source${ticket.sources.length === 1 ? '' : 's'}.`,
+      watch: ticket.expected || (activeLanguage === 'ko' ? '다음 상태 전환과 예상 시점을 확인하세요.' : 'Watch for the next state transition and its expected date.'),
+      confidence: ticket.verification === 'confirmed' ? 'high' : ticket.verification === 'partial' ? 'medium' : 'context',
+      freshness: ticket.updated_at,
+      href: `/models/forecast/${ticket.slug}`,
+      topics: [normalizeTopic(ticket.company), normalizeTopic(ticket.model || '')].filter(Boolean),
+      changedAt: `${ticket.updated_at}T06:29:00Z`,
+    });
+  }
+
+  for (const page of (wiki?.pages || []).filter((row) => row.updated_at === dateStr).sort((a, b) => (b.inbound.length + b.outbound.length) - (a.inbound.length + a.outbound.length)).slice(0, 1)) {
+    items.push({
+      id: `wiki:${page.slug}`,
+      kind: 'wiki',
+      title: page.title,
+      summary: page.summary,
+      why: activeLanguage === 'ko' ? `지식 그래프에서 ${page.inbound.length + page.outbound.length}개 연결을 가진 ${page.type} 페이지가 새 종합 결과로 갱신됐습니다.` : `This ${page.type} dossier was revised by the latest synthesis and connects to ${page.inbound.length + page.outbound.length} graph edges.`,
+      watch: activeLanguage === 'ko' ? '다음 인용, 시장 지표, 관련 모델 티켓의 변경을 추적하세요.' : 'Watch its next citation, market move, or related model-ticket update.',
+      confidence: 'medium', freshness: page.updated_at, href: `/wiki/${page.slug}`, topics: [page.slug], changedAt: `${page.updated_at}T01:00:00Z`,
+    });
+  }
+
+  const pricingHistory = pricing?.history || [];
+  if (pricing && pricingHistory.length >= 2) {
+    const latest = pricingHistory[pricingHistory.length - 1];
+    const previous = pricingHistory[pricingHistory.length - 2];
+    const tier = Object.keys(latest.frontier_price_at || {}).sort((a, b) => Number(b) - Number(a)).find((key) => typeof latest.frontier_price_at?.[key] === 'number' && typeof previous.frontier_price_at?.[key] === 'number');
+    if (tier) {
+      const now = Number(latest.frontier_price_at?.[tier]);
+      const before = Number(previous.frontier_price_at?.[tier]);
+      const delta = before ? ((now - before) / before) * 100 : 0;
+      items.push({ id: 'pricing:frontier', kind: 'pricing', title: activeLanguage === 'ko' ? `성능 ${tier} 달성 비용 ${delta >= 0 ? '+' : ''}${delta.toFixed(0)}%` : `Cost to reach capability ${tier} moved ${delta >= 0 ? '+' : ''}${delta.toFixed(0)}%`, summary: activeLanguage === 'ko' ? `최신 파레토 경계 비용은 출력 100만 토큰당 $${now.toFixed(2)}입니다.` : `The latest Pareto-frontier price is $${now.toFixed(2)} per million output tokens.`, why: activeLanguage === 'ko' ? '정적 벤치마크와 실시간 목록 가격을 결합한 성능 디플레이션 지표입니다.' : 'It measures capability deflation by joining benchmark score to current list price.', watch: activeLanguage === 'ko' ? '다음 스냅샷에서 반복되는지 확인하세요. 단일 가격 변화를 구조적 트렌드로 간주하지 마세요.' : 'Wait for persistence across snapshots; one list-price change is not yet a structural trend.', confidence: pricing.stale || pricing.capability_stale ? 'context' : 'high', freshness: pricing.generated_at, href: '/pricing', topics: ['model-pricing'], changedAt: pricing.generated_at });
+    }
+  }
+
+  const gpuModels = Object.entries(gpu?.snapshot?.models || {}).filter(([, row]) => typeof row.median === 'number').sort((a, b) => (a[1].median || 0) - (b[1].median || 0));
+  const h100 = gpuModels.find(([name]) => name === 'H100 SXM') || gpuModels[0];
+  if (gpu && h100) items.push({ id: 'gpu:spot', kind: 'gpu', title: `${h100[0]} ${activeLanguage === 'ko' ? '시간당 중앙값' : 'median spot'} $${Number(h100[1].median).toFixed(2)}`, summary: activeLanguage === 'ko' ? `${h100[1].samples || 0}개 공개 리스팅에서 GPU 1개·시간당 비용을 정규화했습니다.` : `Normalized to one GPU-hour across ${h100[1].samples || 0} public listings.`, why: activeLanguage === 'ko' ? '모델 가격과 별개로 기초 컴퓨트 공급 가격을 보여줍니다.' : 'It exposes the underlying compute-supply price separately from model API pricing.', watch: h100[1].truncated ? (activeLanguage === 'ko' ? '표본이 불완전합니다. 방향성으로만 보세요.' : 'The sample is incomplete; treat it as directional.') : (activeLanguage === 'ko' ? '동일 방법 버전의 주간 변화를 확인하세요.' : 'Watch the week-over-week move under the same method version.'), confidence: gpu.stale ? 'context' : 'medium', freshness: gpu.generated_at || dateStr, href: '/pricing', topics: ['gpu-compute'], changedAt: gpu.generated_at || `${dateStr}T00:00:00Z` });
+
+  const host = document.createElement('div');
+  host.innerHTML = renderWhatChanged(items.slice(0, 8), watchlist, activeLanguage);
+  const first = content.firstElementChild;
+  if (first) content.insertBefore(host.firstElementChild!, first);
+  else content.appendChild(host.firstElementChild!);
+  bindWatchlistActions(content);
 }
 
 // ── Generative research ───────────────────────────────
@@ -5623,6 +5845,20 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     const cardBody = content.querySelector('.content-card-body') as HTMLElement | null;
     if (cardBody) highlightSearchMatches(cardBody, searchTerm);
   }
+  void hydrateResearchEvidence(row, body);
+}
+
+async function hydrateResearchEvidence(row: GenResearchRow, body: string): Promise<void> {
+  const claims = claimsForArticle(await loadPublicClaims(), row.file);
+  if (activeTab !== 'research' || selectedSlug !== row.slug) return;
+  const fallbackStatus = /deterministic|fallback|degraded/i.test(body)
+    ? (activeLanguage === 'ko' ? '저하/대체 출력 표시 감지' : 'degraded/fallback marker detected in publication')
+    : undefined;
+  const card = content.querySelector('.gen-research-doc .content-card-body');
+  if (!card) return;
+  const host = document.createElement('div');
+  setSafeContent(host, renderEvidenceDrawer(claims, { language: activeLanguage, fallbackStatus }));
+  card.prepend(host);
 }
 
 function renderResearchStandalone(row: GenResearchRow): void {
@@ -6039,12 +6275,16 @@ async function load(): Promise<void> {
 
   try {
     if (activeTab === 'pricing') {
-      const pricing = await withTimeout(loadModelPricing(controller.signal), LOAD_TIMEOUT_MS, controller);
+      const pricing = await withTimeout(
+        Promise.all([loadModelPricing(controller.signal), loadGpuSpot(controller.signal)]),
+        LOAD_TIMEOUT_MS,
+        controller,
+      );
       if (requestId !== loadRequestId || activeTab !== 'pricing') return;
       if (pricing === 'timeout') {
         showError('Loading timed out', 'Network may be slow. Click to retry.');
-      } else if (pricing) {
-        paintPricing(pricing);
+      } else if (pricing[0]) {
+        paintPricing(pricing[0], pricing[1]);
       } else {
         showEmpty(dateStr);
       }
@@ -6284,7 +6524,8 @@ async function load(): Promise<void> {
       }
     }
 
-    if (activeTab !== 'research' && activeTab !== 'wiki' && activeTab !== 'focusReader') {
+    if (activeTab !== 'research' && activeTab !== 'wiki' && activeTab !== 'focusReader'
+      && !(activeTab === 'today' && digestUnavailableForCurrentView)) {
       syncDigestAudioForDate(dateStr);
     }
     renderCalendar();
@@ -6397,7 +6638,7 @@ const searchResultsEl = document.getElementById('searchResults');
 // Search across ALL content — research articles, wiki pages, model tickets —
 // from any tab; a result jumps straight to the item. The corpus is built lazily
 // from the already-loaded indexes and cached.
-type SearchHit = { type: 'research' | 'wiki' | 'model' | 'digest' | 'twitter'; title: string; subtitle: string; slug: string; hay: string; date?: string; anchor?: string; sectionTitle?: string };
+type SearchHit = { type: 'research' | 'wiki' | 'model' | 'claim' | 'digest' | 'twitter'; title: string; subtitle: string; slug: string; hay: string; date?: string; anchor?: string; sectionTitle?: string; evidence?: EvidenceSearchEntry; snippet?: string };
 let searchCorpus: SearchHit[] | null = null;
 let searchHits: SearchHit[] = [];
 let searchSel = -1;
@@ -6405,6 +6646,7 @@ const SEARCH_TYPE_KEY: Record<SearchHit['type'], UiCopyKey> = {
   research: 'search.type.research',
   wiki: 'search.type.wiki',
   model: 'search.type.model',
+  claim: 'search.type.claim',
   digest: 'search.type.digest',
   twitter: 'search.type.twitter',
 };
@@ -6440,7 +6682,7 @@ function ymdToDate(s: string): Date {
 
 async function buildSearchCorpus(): Promise<SearchHit[]> {
   if (searchCorpus) return searchCorpus;
-  const [m, wiki, tickets, idx] = await Promise.all([loadManifest(), loadWikiIndexCached(), loadTickets(), loadSearchIndex()]);
+  const [m, wiki, tickets, idx, evidence] = await Promise.all([loadManifest(), loadWikiIndexCached(), loadTickets(), loadSearchIndex(), loadEvidenceSearch()]);
   const hits: SearchHit[] = [];
   if (wiki) for (const p of wiki.pages) {
     hits.push({ type: 'wiki', title: p.title, subtitle: (p.aliases || []).slice(0, 3).join(', ') || String(p.type),
@@ -6468,8 +6710,44 @@ async function buildSearchCorpus(): Promise<SearchHit[]> {
       slug: '', date: c.date, anchor: c.anchor,
       hay: (c.date + ' ' + c.cycleTime + ' ' + (c.summary || '') + ' ' + (c.storyTitles || []).join(' ')).toLowerCase() });
   }
-  searchCorpus = hits;
-  return hits;
+  const byKey = new Map(hits.filter((hit) => ['research', 'wiki', 'model'].includes(hit.type)).map((hit) => [`${hit.type}:${hit.slug}`, hit]));
+  const enrichedKeys = new Set<string>();
+  const evidenceHits: SearchHit[] = [];
+  for (const entry of evidence) {
+    const key = `${entry.type}:${entry.id.replace(/^(?:research|wiki|model):/, '').replace(/:[a-z]{2}$/i, '')}`;
+    const existing = byKey.get(key);
+    if (existing) {
+      // Keep language variants as separate evidence records so the language
+      // filter and shared ranker operate on the actual indexed document.
+      enrichedKeys.add(key);
+      evidenceHits.push({
+        ...existing,
+        title: entry.title,
+        subtitle: [existing.subtitle, entry.language].filter(Boolean).join(' · '),
+        hay: `${existing.hay} ${entry.title} ${entry.body}`.toLowerCase(),
+        evidence: entry,
+        snippet: entry.body,
+        date: entry.date,
+      });
+      continue;
+    }
+    if (entry.type !== 'claim') continue;
+    evidenceHits.push({
+      type: 'claim',
+      title: entry.title,
+      subtitle: [entry.confidence, entry.risk, entry.sourceTier].map((value) => evidenceEnumLabel(value, activeLanguage)).concat(entry.date || []).filter(Boolean).join(' · '),
+      slug: entry.url,
+      hay: `${entry.title} ${entry.body}`.toLowerCase(),
+      evidence: entry,
+      snippet: entry.body,
+      date: entry.date,
+    });
+  }
+  searchCorpus = [
+    ...hits.filter((hit) => !enrichedKeys.has(`${hit.type}:${hit.slug}`)),
+    ...evidenceHits,
+  ];
+  return searchCorpus;
 }
 
 function renderSearchHits(): void {
@@ -6480,10 +6758,12 @@ function renderSearchHits(): void {
     return;
   }
   const rows = searchHits.map((h, i) =>
-    '<button class="search-result' + (i === searchSel ? ' is-sel' : '') + '" type="button" role="option" data-sr-index="' + i + '">' +
+    '<button class="search-result' + (i === searchSel ? ' is-sel' : '') + (h.evidence?.reusable === false ? ' needs-reverify' : '') + '" type="button" role="option" data-sr-index="' + i + '">' +
     '<span class="search-result-type">' + escapeHtml(uiText(activeLanguage, SEARCH_TYPE_KEY[h.type])) + '</span>' +
     '<span class="search-result-title">' + escapeHtml(h.title) + '</span>' +
     (h.subtitle ? '<span class="search-result-sub">' + escapeHtml(h.subtitle) + '</span>' : '') +
+    (h.snippet ? '<span class="search-result-snippet">' + escapeHtml(excerptAround(h.snippet, searchInput.value, 180)) + '</span>' : '') +
+    (h.evidence?.reusable === false ? '<span class="search-result-reverify">' + escapeHtml(activeLanguage === 'ko' ? '실시간 재검증 필요' : 'Reverify live') + (h.evidence.reuse_block ? ' · ' + escapeHtml(evidenceEnumLabel(h.evidence.reuse_block, activeLanguage)) : '') + '</span>' : '') +
     '</button>',
   ).join('');
   setSafeContent(searchResultsEl, rows);
@@ -6500,7 +6780,27 @@ async function runGlobalSearch(query: string): Promise<void> {
     return;
   }
   const corpus = await buildSearchCorpus();
-  searchHits = corpus
+  const typeFilter = (document.getElementById('searchTypeFilter') as HTMLSelectElement | null)?.value || '';
+  const confidenceFilter = (document.getElementById('searchConfidenceFilter') as HTMLSelectElement | null)?.value || '';
+  const tierFilter = (document.getElementById('searchTierFilter') as HTMLSelectElement | null)?.value || '';
+  const languageFilter = (document.getElementById('searchLanguageFilter') as HTMLSelectElement | null)?.value || '';
+  const evidenceHits = corpus.filter((hit): hit is SearchHit & { evidence: EvidenceSearchEntry } => Boolean(hit.evidence));
+  const rankedEvidence = searchEvidence(
+    evidenceHits.map((hit) => hit.evidence),
+    query,
+    {
+      type: typeFilter as EvidenceSearchEntry['type'] || undefined,
+      confidence: confidenceFilter || undefined,
+      sourceTier: tierFilter || undefined,
+      language: languageFilter || undefined,
+    },
+    80,
+  );
+  const legacyHits = corpus
+    .filter((hit) => !hit.evidence)
+    .filter((hit) => !typeFilter || hit.type === typeFilter)
+    // Evidence-only filters cannot truthfully be applied to legacy digest/Twitter records.
+    .filter(() => !confidenceFilter && !tierFilter && !languageFilter)
     .map((h) => {
       const t = h.title.toLowerCase();
       const score = t.startsWith(q) ? 3 : t.includes(q) ? 2 : h.hay.includes(q) ? 1 : 0;
@@ -6508,8 +6808,17 @@ async function runGlobalSearch(query: string): Promise<void> {
     })
     .filter((x) => x.score > 0)
     .sort((a, b) => b.score - a.score || a.h.title.length - b.h.title.length)
-    .slice(0, 24)
     .map((x) => x.h);
+  const hitByEvidenceId = new Map(evidenceHits.map((hit) => [hit.evidence.id, hit]));
+  const rankedHits = rankedEvidence.flatMap((entry): SearchHit[] => {
+    const hit = hitByEvidenceId.get(entry.id);
+    return hit ? [hit] : [];
+  });
+  searchHits = [
+    ...rankedHits,
+    ...legacyHits,
+  ]
+    .slice(0, 24);
   searchSel = searchHits.length ? 0 : -1;
   if (searchCountEl) searchCountEl.textContent = searchHits.length ? String(searchHits.length) : '';
   renderSearchHits();
@@ -6556,6 +6865,11 @@ function activateSearchHit(h: SearchHit): void {
       syncTabUi();
       load();
     }
+    return;
+  }
+  if (h.type === 'claim') {
+    const path = h.slug.startsWith('/') ? h.slug : '/research';
+    if (parseRoute(path)) load();
     return;
   }
   activeTab = h.type; // 'research' | 'wiki'
@@ -6625,6 +6939,44 @@ searchInput.addEventListener('input', () => {
   if (searchDebounceId !== null) window.clearTimeout(searchDebounceId);
   searchDebounceId = window.setTimeout(() => { void runGlobalSearch(searchInput.value); }, 120);
 });
+document.querySelectorAll<HTMLSelectElement>('.search-filters select').forEach((select) => {
+  select.addEventListener('change', () => { void runGlobalSearch(searchInput.value); });
+});
+
+function bindWatchlistActions(root: ParentNode): void {
+  root.querySelectorAll<HTMLButtonElement>('[data-watch-topic]').forEach((button) => {
+    if (button.dataset.boundWatchlist === 'true') return;
+    button.dataset.boundWatchlist = 'true';
+    button.addEventListener('click', () => {
+      const topic = normalizeTopic(button.dataset.watchTopic || '');
+      if (!topic) return;
+      const exists = watchlist.topics.includes(topic);
+      watchlist = {
+        ...watchlist,
+        topics: exists ? watchlist.topics.filter((item) => item !== topic) : [...watchlist.topics, topic],
+      };
+      writeWatchlist(watchlist);
+      button.classList.toggle('is-active', !exists);
+      button.setAttribute('aria-pressed', String(!exists));
+      button.textContent = `${!exists ? '★' : '+'} ${topic.replace(/-/g, ' ')}`;
+    });
+  });
+  root.querySelectorAll<HTMLButtonElement>('[data-share-watchlist]').forEach((button) => {
+    if (button.dataset.boundWatchlist === 'true') return;
+    button.dataset.boundWatchlist = 'true';
+    button.addEventListener('click', async () => {
+      const path = watchlistSharePath(watchlist.topics, location.pathname, activeLanguage);
+      const url = new URL(path, PUBLIC_SITE_ORIGIN).href;
+      try {
+        await navigator.clipboard.writeText(url);
+        button.textContent = activeLanguage === 'ko' ? '링크 복사됨' : 'Link copied';
+      } catch {
+        history.replaceState(history.state, '', path);
+        button.textContent = activeLanguage === 'ko' ? '주소에 저장됨' : 'Saved in URL';
+      }
+    });
+  });
+}
 
 languageToggle?.addEventListener('click', () => {
   setLanguageMenuOpen(languageMenu?.hasAttribute('hidden') ?? true, true);

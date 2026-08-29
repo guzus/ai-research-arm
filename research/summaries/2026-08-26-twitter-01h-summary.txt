@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-26 01:53:25 UTC
+
+CYCLE: Agents get login credentials, Jalapeno gets a number, and the RSI rumour wave gets an insider naming its own incentive.
+
+TOP STORIES:
+• ChatGPT Work's agent browser can now sign in to websites; OpenAI says the model never sees the password - but the claim covers the credential, not the authenticated session [⚠]
+• SemiAnalysis: Jalapeno up to 2x better perf/watt than July Rubin NVL72, and it won with speculative decoding OFF on its side, ON for Nvidia [⚠]
+• Rumours of an imminent capability jump reached named OpenAI staff; @tszzl then wrote that both labs now have an interest in claiming RSI is at hand [🚩]
+
+WATCH: Whether Nvidia answers with post-July Rubin numbers on a matched config at spec-decoding parity.
+
+Full update on GitHub.

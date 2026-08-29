@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI'S FIRST IN-HOUSE ASIC JALAPENO BEATS NVIDIA GB200/GB300 BY 1.5-1.9X PER WATT ON INFERENCEX",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092253723640598761",
+    "category": "infra"
+  },
+  {
+    "headline": "OPENAI TO DEPLOY JALAPENO IN OWN FLEET BY YEAR-END; GEN 2 IN DEVELOPMENT, GEN 3 TAKING SHAPE",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2092261972360233427",
+    "category": "infra"
+  },
+  {
+    "headline": "APPLE M5 ULTRA: 512GB UNIFIED MEMORY AT 1.2TB/S, QUAD-DIE, 80-CORE GPU — SHIPS OCTOBER",
+    "source": "@alexocheema",
+    "url": "https://x.com/alexocheema/status/2092248148500492474",
+    "category": "infra"
+  },
+  {
+    "headline": "PERPLEXITY AND NVIDIA SHIP PORTABLE COMPUTER — FULLY LOCAL AGENT RUNTIME ON DGX SPARK",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2092270041471598820",
+    "category": "model"
+  },
+  {
+    "headline": "NVIDIA IN TALKS TO INVEST IN PERPLEXITY AT VALUATION ABOVE $30 BILLION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092250748532744623",
+    "category": "business"
+  },
+  {
+    "headline": "ANANDKUMAR LAUNCHES ACCELERATED UNDERSTANDING — NON-TRANSFORMER NEURAL-OPERATOR PHYSICS AI",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092244031002771643",
+    "category": "research"
+  },
+  {
+    "headline": "GATIK RAISES $200M SERIES D AT $1B LED BY QIA AND KOCH; 100,000+ DRIVER-OUT FREIGHT DELIVERIES",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2092262211737542938",
+    "category": "business"
+  }
+]

@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-08-26
+
+TOP STORIES:
+• OpenAI's Jalapeno chip beats Nvidia Blackwell and Rubin on inference efficiency
+• Apple ships first 2nm M6 and quad-die M5 Ultra with 512GB unified memory
+• Alabama AG subpoenas OpenAI over the July Hugging Face hack
+• SEC subpoenas four banks over the Situational Awareness AI fund collapse
+
+KEY NUMBERS:
+• Jalapeno: 1.5-1.9x work/watt, 1.7-3.6x lower latency vs GB200/GB300
+• M5 Ultra: 512GB unified memory at 1.2TB/s, ships October
+• Anthropic pitches a $30T TAM; Perplexity ARR tops $750M
+• SWE-bench Science: best agent 96.64% visible tests, 47.90% hidden
+
+TRENDING: Apple's M6/M5 Ultra launch — 806 points, 713 comments on HN
+
+Full digest on GitHub.

@@ -41,7 +41,7 @@
       "model": "",
       "display_name": "Claude",
       "aliases": [],
-      "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it). Always considered available."
+      "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it). The preflight marks 401/403 auth rejection and HTTP 429 rate limiting unavailable for the current run. Ordinary non-strict lanes continue to the global Z.ai secondary; digest-synthesis-fallback uses its explicit isolated OpenCode lane override."
     },
     "claude-opus-5": {
       "adapter": "dispatch-default",
@@ -52,7 +52,7 @@
         "opus-5",
         "opus5"
       ],
-      "notes": "Native Anthropic on an explicitly pinned model for the dispatch-default generative lane. It is deliberately absent from fallback.chain: a fallback should be the cheap reliable path."
+      "notes": "Native Anthropic on the default dispatch generative lane and explicit opus-5 selector. It is deliberately absent from fallback.chain: a fallback should be the cheap reliable path."
     },
     "fireworks-glm-5p2": {
       "adapter": "agent-run",
@@ -86,6 +86,18 @@
       ],
       "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to opencode-go/deepseek-v4-flash. Runtime-selectable by agent-dispatch; not selectable by agent-run."
     },
+    "opencode-glm-5p3-flash": {
+      "adapter": "opencode",
+      "provider": "opencode-go",
+      "model": "glm-5.3-flash",
+      "display_name": "GLM 5.3 Flash via OpenCode Go",
+      "aliases": [
+        "opencode-glm-5.3-flash",
+        "opencode-glm",
+        "glm-5.3-flash-opencode"
+      ],
+      "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to the official opencode-go/glm-5.3-flash model id. Primary strict profile for the shared research-editorial route and the explicit isolated fallback for digest-synthesis-fallback; it is never a member of the global host-checkout fallback chain."
+    },
     "zai-glm-5p2": {
       "adapter": "agent-run",
       "provider": "zai",
@@ -118,9 +130,15 @@
   "routes": {
     "research-editorial": {
       "contract": "research-editorial",
-      "backend": "opencode-deepseek-v4-flash",
+      "backend": "opencode-glm-5p3-flash",
       "fallback": "none",
-      "notes": "Shared runtime route for RSS, Bluesky, community, arXiv, and wiki. One backend edit switches all five to a profile whose adapter registry declares both isolated_workspace and editorial_contract. Incompatible host-checkout adapters are rejected before execution; this route is fail-closed with no cross-adapter fallback."
+      "notes": "Primary isolated editorial route for RSS, Bluesky, and community. The arXiv and wiki lanes deliberately use research-editorial-secondary so one provider credential or plan cap cannot stale all five scheduled editorial lanes. Incompatible host-checkout adapters are rejected before execution; this route is fail-closed with no cross-adapter fallback."
+    },
+    "research-editorial-secondary": {
+      "contract": "research-editorial",
+      "backend": "cursor-grok-4p6-fast",
+      "fallback": "none",
+      "notes": "Secondary isolated editorial failure domain for arXiv and wiki. It uses a different adapter, provider credential, and billing plan from research-editorial while retaining the same isolated_workspace + editorial_contract capability gate. It fails closed rather than silently changing model provenance."
     },
     "generative-translation": {
       "contract": "research-editorial",
@@ -136,7 +154,7 @@
       "zai-glm-5p2"
     ],
     "native_model": "claude-opus-5",
-    "notes": "ORDERED fallback chain, globally applied to every non-strict agent-run lane. When the lane's requested provider probe fails, scripts/select_backend.py walks this chain in order (skipping the already-failed requested backend if it reappears) and runs the first candidate whose provider is available. Native Claude leads the chain and serves `native_model`. Z.ai GLM-5.2 is the second link, added after the 2026-07-24 outage: the chain was [\"claude\"] only AND probe_claude() hardcoded \"always available\", so an expired CLAUDE_CODE_OAUTH_TOKEN took down every agent lane in the fleet at once with no route out (instant is_error, 1 turn, $0 cost) while ZAI_API_KEY sat configured and healthy. probe_claude() now reports down only on an explicit 401/403 credential rejection, so a rate limit, 5xx, or network blip still keeps the fleet on Claude. Lanes with \"strict\": true (zai-canary, the comparison tiers) never walk the chain — unavailability fails the run. `native_model` is the model served whenever the native claude path runs (also what the --model opus alias resolves to); raised from claude-sonnet-5 to claude-opus-5 on 2026-08-01, so every non-strict agent lane and the twitter-ab claude leg now run Opus 5 on the same OAuth subscription."
+    "notes": "ORDERED fallback chain, applied to non-strict agent-run lanes that do not declare a lane.fallback_chain override. Native Claude leads and serves `native_model`; Z.ai GLM-5.2 is the global secondary. Cross-adapter fallbacks are never inferred globally: only lanes with an explicit compatibility-tested fallback_chain may enter an isolated adapter, and that lane chain replaces rather than extends the global chain. The intentionally narrow Claude 400/5xx/network fail-open behavior is unchanged. Strict lanes never walk either chain."
   },
   "lanes": {
     "rss": {
@@ -156,8 +174,8 @@
     },
     "arxiv": {
       "workflow": "daily-arxiv.yml",
-      "route": "research-editorial",
-      "notes": "Daily arXiv sweep through the shared research-editorial route. The dated report is required and the companion summary is allowed; the lane fails closed with no deterministic fallback."
+      "route": "research-editorial-secondary",
+      "notes": "Daily arXiv sweep through the secondary isolated editorial route. The dated report is required and the companion summary is allowed; the lane fails closed with no deterministic fallback."
     },
     "digest-synthesis": {
       "workflow": "daily-digest.yml",
@@ -169,7 +187,10 @@
       "workflow": "daily-digest.yml",
       "harness": "agent-run",
       "backend": "claude",
-      "notes": "Local-source digest synthesis when MCP keys are absent."
+      "fallback_chain": [
+        "opencode-glm-5p3-flash"
+      ],
+      "notes": "Local-source digest synthesis when MCP keys are absent. Its committed research/digest/ + research/summaries/ contract and local-only prompt are compatible with isolated OpenCode editorial mode, so Claude unavailability uses OpenCode GLM 5.3 Flash instead of the global Z.ai chain."
     },
     "digest-audio-script": {
       "workflow": "daily-digest.yml",
@@ -185,27 +206,33 @@
     },
     "wiki-ingest": {
       "workflow": "wiki-ingest.yml",
-      "route": "research-editorial",
-      "notes": "Digest -> LLM wiki page CRUD through the shared research-editorial route; writes stay under the wiki prefix and page deletion remains forbidden by the workflow guard."
+      "route": "research-editorial-secondary",
+      "notes": "Digest -> LLM wiki page CRUD through the secondary isolated editorial route; writes stay under the wiki prefix and page deletion remains forbidden by the workflow guard."
     },
     "generative-research-ko": {
       "workflow": "translate-generative-research.yml",
       "route": "generative-translation",
-      "notes": "Manual one-slug Korean backfill. The isolated adapter returns one uncommitted draft; trusted host validators and the canonical writer own the immutable artifact pair, index mutation, and review-first publication."
+      "notes": "Automatic one-slug Korean translation after each production generative-research publication, with manual backfill still available. The isolated adapter returns one uncommitted draft; trusted host validators and the canonical writer own the immutable artifact pair, index mutation, and gated publication."
     },
     "twitter-primary": {
       "workflow": "hourly-twitter.yml",
       "tier": "claude",
       "harness": "agent-run",
       "backend": "claude",
-      "notes": "Primary 3h Twitter/X processor (tier slot named 'claude' for historical reasons)."
+      "fallback_chain": [
+        "opencode-glm-5p3-flash"
+      ],
+      "notes": "Primary 3h Twitter/X processor (tier slot named 'claude' for historical reasons). Its local snapshot prompt and research/twitter/ + research/summaries/ write contract are compatible with isolated OpenCode editorial mode, so Claude unavailability uses OpenCode GLM 5.3 Flash instead of publishing a deterministic recovery heartbeat."
     },
     "twitter-primary-repair": {
       "workflow": "hourly-twitter.yml",
       "tier": "claude",
       "harness": "agent-run",
       "backend": "claude",
-      "notes": "Claude-only repair writer for the primary Twitter/X tier when the first Claude pass returns without required files."
+      "fallback_chain": [
+        "opencode-glm-5p3-flash"
+      ],
+      "notes": "Repair writer for the primary Twitter/X tier when the first pass returns without required files. It shares the primary lane's isolated OpenCode GLM 5.3 Flash fallback and exact output contract."
     },
     "twitter-judge": {
       "workflow": "hourly-twitter.yml",
@@ -301,8 +328,8 @@
     "generative-research-default": {
       "workflow": "generative-research.yml",
       "harness": "dispatch-default",
-      "backend": "opencode-deepseek-v4-flash",
-      "notes": "Default backend when neither the dispatch input nor an issue-label form specifies one. Runtime-resolved by the workflow's backend-resolution step. DeepSeek V4 Flash through OpenCode Go is the preferred isolated generative route; consumers are manual dispatch with no backend input, gen-research-labelled issues, and hourly-twitter.yml's auto-research dispatch (throttled to <=2 per rolling 24h). The route is strict and fails closed rather than substituting another author. Explicit native Claude, Codex, Fireworks, and evaluation selectors remain available. This dispatch default does not alter the separate agent-run fallback chain because opencode is not an agent-run adapter."
+      "backend": "claude-opus-5",
+      "notes": "Default backend when neither the dispatch input nor an issue-label form specifies one. Runtime-resolved by the workflow's backend-resolution step. Claude Opus 5 is the premium native Anthropic generative route; consumers are manual dispatch with no backend input, gen-research-labelled issues, and hourly-twitter.yml's auto-research dispatch (throttled to <=2 per rolling 24h). The workflow pins the literal model ID and verifies committed article provenance before pushing. Explicit Sonnet Claude, Codex, Fireworks, OpenCode, Cursor, and evaluation selectors remain available."
     },
     "generative-research-claude": {
       "workflow": "generative-research.yml",

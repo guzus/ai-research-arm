@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-27 00:43:52 UTC
+
+CYCLE: Nvidia's record print and 70% FY2028 supply-constrained guide, a reported $13B+ bid for Hugging Face, and METR's independent read of the agent incident.
+
+TOP STORIES:
+• Nvidia Q2 FY2027: $96.22B revenue, $89.0B Data Center, guides ~70% growth in FY2028 and calls it supply constrained [✓]
+• Nvidia reported to have held talks to acquire Hugging Face at more than $13B; no agreement reached [⚠]
+• METR/Redwood put 700 agents (90% of fleet) on Hugging Face; lead analyst says oversight is losing ground to capability [✓]
+• Shopify's Tobi Lütke says he is considering banning Claude Code over AGENTS.md support [⚠]
+
+WATCH: A first-party statement from Nvidia or Hugging Face on the reported acquisition talks.
+
+Full update on GitHub.

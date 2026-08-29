@@ -2,12 +2,15 @@
 slug: zhipu-glm-5-3
 title: Zhipu GLM-5.3
 type: entity
-aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3"]
+aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3", "GLM-5.3-Flash", "GLM-5.3 Flash"]
 tags: [open-weights, china, agentic, frontier-model]
-description: Zhipu AI / Z.ai's successor to GLM-5.2, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 atop the open-model rankings, seven points ahead of GLM-5.2) with the cycle's top agentic Elo gain — 1524 → 1770 on GDPval-AA v2 behind only Claude Opus 5 — and now scoring near Fable 5 on Terminal-Bench 3.0 as a fourth independent frontier placement (2026-08-21) and posting 21.4× the optimized PyTorch baseline on KernelBench-Mega (2026-08-23); weights release delayed, and the 743B-vs-753B base-parameter discrepancy remains unresolved.
+description: Zhipu AI / Z.ai's successor to GLM-5.2; open-weighted on 2026-08-29 (post-trained on the 743B GLM-5.2 base; 753B total per Baseten) with day-0 vLLM/SGLang/Baseten serving, topping Hacker News at 733 points — after scoring 60 on the Artificial Analysis Intelligence Index and shipping GLM-5.3-Flash on 2026-08-27.
 created_at: 2026-08-19
-timestamp: 2026-08-23T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
+  - {title: "ARA model ticket — Zhipu GLM-5.3 family", path: research/models/tickets/zhipu-glm-5-3-2026-08.md}
+  - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
@@ -67,12 +70,61 @@ open-weight agentic development.
 
 ## Open questions
 
-- **Do the MIT weights actually land, and when?** As with GLM-5.2, the decisive
-  open-weights transition is a primary model card plus a download; until then
-  the class-leading agentic claim is backed only by a vendor-framed eval.
+- **Do independent evals confirm the Terminal-Bench 4.0 screenshot?** The
+  relayed claim that GLM-5.3 (max) beats [[gpt-5-6|GPT-5.6 Sol]] (max) is
+  single-source and unverified in the 2026-08-29 digest.
 - **Does the agentic Elo transfer outside the harness?** The +246 Elo swing is
   on one benchmark; whether it holds on contamination-aware agentic and coding
   tasks is unverified.
 - **Where does it sit in Z.ai's product ladder?** A distinct model from
   [[zhipu-glm-5-2]] — does it replace it as the flagship, or coexist as the
-  agentic tier?
+  agentic tier? The Flash sibling is already the computer-use favorite.
+
+## GLM-5.3-Flash ships, and Z.ai confirms Ox Alpha (2026-08-27)
+
+- **GLM-5.3-Flash is the day's top Hacker News item (2026-08-27).** Z.ai shipped
+  **GLM-5.3-Flash** at **$0.25 per million output tokens** — the day's runaway
+  HN thread (824 points / 414 comments) debating its speed, distillation from
+  GLM-5.2, and pricing. An independent test reports **881 tok/s at 64-way
+  concurrency, untuned on 2×DGX Station**, and **232 tok/s single-stream, with
+  vision support** (@theo, @alecqfong; ARA daily digest 2026-08-27). The
+  flash-tier speed/pricing echo of the flagship's post-training-depth thesis
+  keeps the agentic positioning consistent across the family.
+- **Z.ai confirms it is behind Ox Alpha — the stealth line resolves (2026-08-27).**
+  Z.ai stated it is the **lab behind [[ox-alpha]]**, the unattributed model that
+  topped leaderboards while unclaimed, with **weights said to be released soon**.
+  This converts what this page's earlier ticket read as the "open question" of
+  whether Ox Alpha is a GLM-5.3-Flash variant into a confirmed family launch —
+  the unattributed model is a **Z.ai GLM variant**, and the flagship/Flash pair
+  is now on the record (TechCrunch; ARA daily digest 2026-08-27). See
+  [[ox-alpha]] and [[open-weights]].
+
+## Flagship weights land — the promised download arrives (2026-08-29)
+
+- **Z.ai published download weights for GLM-5.3 (2026-08-29).** The
+  flagship — described as the lab's most capable **agentic coding and
+  cyber-defense** model, **post-trained on the 743B [[zhipu-glm-5-2|GLM-5.2]]
+  base** (753B total parameters per Baseten's Philip Kiely) — is now a
+  download, with **day-0 serving on vLLM, SGLang and Baseten** (1M
+  context, **US-only, ZDR**). This closes the "weights remain a promise"
+  gap this page has carried since 2026-08-19 and matches the model
+  ticket's 2026-08-27 trigger ("GLM-5.3's weights will be released
+  tomorrow"). The release was the day's **biggest AI Hacker News
+  thread at 733 points / 245 comments** (Z.ai, Hugging Face, Hacker
+  News; ARA daily digest 2026-08-29). See [[open-weights]] and
+  [[hugging-face]].
+- **Same-evening local path: Unsloth 2-bit GGUF (2026-08-29).** Unsloth
+  shipped **2-bit GGUF quants the same evening** — **239GB, ~81%
+  accuracy retained, runs on a 256GB Mac**. Practitioners separately
+  flagged the smaller **GLM-5.3 Flash** as unusually good for computer
+  use (Hugging Face, X; ARA daily digest 2026-08-29).
+- **Unverified Terminal-Bench 4.0 screenshot (2026-08-29).** A relayed
+  screenshot claiming **GLM-5.3 (max) beats [[gpt-5-6|GPT-5.6 Sol]]
+  (max) on Terminal-Bench 4.0** is **single-source and unverified** —
+  the digest's coverage note flags it explicitly (X; ARA daily digest
+  2026-08-29).
+- **Offensive-cyber caveat from Ethan Mollick (2026-08-29).** Mollick
+  flagged that GLM-5.3 **ships considerable offensive cyber capability
+  with effectively no guardrails** — the open-weights counterpart to
+  the [[agentic-ai-security]] story this cycle has been tracking on
+  gated frontier models (Bluesky; ARA daily digest 2026-08-29).

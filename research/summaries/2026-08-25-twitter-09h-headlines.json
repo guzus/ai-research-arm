@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "AJINOMOTO RATIONS ABF FILM TO AI CUSTOMERS — LINES AT FULL CAPACITY, NEW CAPACITY FAR OUT, PER MERITZ CHECKS",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2092157094271324610",
+    "category": "infra"
+  },
+  {
+    "headline": "OX ALPHA ATTRIBUTION FLIPS TO ZHIPU — GLM-5.3 AT 3X COST WHILE STEALTH MODEL UNREACHABLE FROM BEIJING",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2092158475333775420",
+    "category": "model"
+  },
+  {
+    "headline": "GLM-5.2 BEATS GLM-5.3 ON KERNELBENCH-HARD PAGED ATTENTION — NEWER CHECKPOINT SKIPPED TRITON FOR RAW CUDA",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2092171758237351958",
+    "category": "research"
+  },
+  {
+    "headline": "GROK BUILD 1.0.9 ADDS CHILD-AGENT BUDGETS, WORKFLOW DISCOVERY BY NAME, BACKGROUNDED SHELL COMMANDS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2092178491630387570",
+    "category": "model"
+  },
+  {
+    "headline": "PHISHING CAMPAIGN SENT THROUGH OPENAI'S OWN DOMAIN CARRIES GMAIL OFFICIAL-SENDER BADGE",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2092159763479953768",
+    "category": "breaking"
+  }
+]

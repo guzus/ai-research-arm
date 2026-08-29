@@ -245,6 +245,7 @@ class ShippedRegistryTest(unittest.TestCase):
 
     def test_registry_loads_and_is_non_trivial(self):
         self.assertGreaterEqual(len(self.sources), 25)
+        self.assertNotIn("bair", {source.id for source in self.sources})
 
     def test_feed_urls_are_https_and_unique(self):
         feeds = [s.feed_url for s in self.sources]

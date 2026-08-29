@@ -1,0 +1,13 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-25 22:01:19 UTC
+
+CYCLE: OpenAI's first custom silicon lands ahead of Blackwell; Anthropic's IPO math and Musk's Cursor concession reset the competitive frame.
+
+TOP STORIES:
+• OpenAI Jalapeño beats GB200/GB300 by 1.5-1.9x perf/watt; OpenAI says GPT-Astra wrote kernels 1.5-1.8x faster than its human experts [✓]
+• WSJ: Anthropic to pitch IPO investors a $30T+ TAM derived from AI-addressable human work, vs SpaceX's $28.5T [⚠]
+• SpaceX closes $60B Cursor deal; Musk tells staff "Grok is falling behind," Anthropic leading [⚠]
+• Apple M5 Ultra Mac Studio claimed at 2-3x memory-per-dollar vs DGX Spark — but Perplexity shipped a local 27B agent on DGX Spark same day [⚠]
+
+WATCH: A Jalapeño benchmark against a shipping Rubin/Rubin Ultra system, not Blackwell.
+
+Full update on GitHub.

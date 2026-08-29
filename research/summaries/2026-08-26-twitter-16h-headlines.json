@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OX ALPHA UNMASKED — Z.AI SHIPS GLM-5.3-FLASH, 320B-A18B UNDER MIT AT $0.15/$0.50 PER MTOK",
+    "source": "@Zai_org",
+    "url": "https://x.com/Zai_org/status/2092616204787626030",
+    "category": "model"
+  },
+  {
+    "headline": "Z.AI SAYS OX ALPHA PREVIEW RAN ENTIRELY ON CHINESE AI CHIPS — NO ACCELERATOR VENDOR NAMED",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2092623833630998556",
+    "category": "infra"
+  },
+  {
+    "headline": "ALTMAN TELLS TIME OPENAI WILL HAVE AN INTERNAL SYSTEM HE WOULD CALL AGI BY END OF 2026",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2092618789737353434",
+    "category": "breaking"
+  },
+  {
+    "headline": "PACHOCKI SAYS OPENAI HAS ALREADY MET ITS AUTOMATED AI RESEARCH INTERN BENCHMARK — THE SYSTEM IS ASTRA",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092642707353010228",
+    "category": "research"
+  },
+  {
+    "headline": "QWEN3.8-FLASH-NEXT NOW RUNS LOCALLY ON 75GB OF RAM VIA DAY-ZERO UNSLOTH GGUFS",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2092639558815060281",
+    "category": "opensource"
+  },
+  {
+    "headline": "GLM-5.3-FLASH SCORES 84.3 ON TERMINAL-BENCH 2.1 VS OPUS 4.8 AT 85.0, AT ONE-TENTH GLM-5.2 PRICE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092619561505865866",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC APPEARS TO BE STEALTH-ROUTING USERS TO FABLE 5.1 — KNOWLEDGE CUTOFF UPDATED",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2092645689951981758",
+    "category": "model"
+  }
+]

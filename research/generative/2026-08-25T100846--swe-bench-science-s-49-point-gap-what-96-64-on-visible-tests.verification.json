@@ -1,0 +1,124 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Claude Code with Opus-5 (max) achieves the best Pass@1 (47.90%) on SWE-bench Science private tests.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (Table 2); https://swescience.github.io/ (leaderboard, rank 1)"
+    },
+    {
+      "id": "c2",
+      "text": "The same configuration attains a 96.64% public score, a ~49-point gap to 47.90% Pass@1.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (conclusion: 47.90% Pass@1, 96.64% public); https://swescience.github.io/ (row 1: Public 96.64%, Overall 47.90%)"
+    },
+    {
+      "id": "c3",
+      "text": "SWE-bench Science contains 119 tasks from 98 GitHub repositories across 20 scientific domains.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (abstract); https://github.com/OpenMOSS/SWE-bench-Science (README badges)"
+    },
+    {
+      "id": "c4",
+      "text": "Tasks are organized into Issue-driven, Expert-exploratory, and Engineering-integration paradigms.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (abstract, Sec. 4)"
+    },
+    {
+      "id": "c5",
+      "text": "The Chain-of-Evidence Protocol separates public and private tests, mounting private tests only after submission.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (Sec. 3.1, 4)"
+    },
+    {
+      "id": "c6",
+      "text": "PublicScore is a mean; Pass@1 is a binary exact-private-success measure equal to 1 only when all private tests pass.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (Sec. 5 evaluation description)"
+    },
+    {
+      "id": "c7",
+      "text": "DeepSeek-V4-Pro (max) is 100.00% public and 42.02% overall.",
+      "verdict": "supported",
+      "citation": "https://swescience.github.io/ (leaderboard, row 03)"
+    },
+    {
+      "id": "c8",
+      "text": "DeepSeek-V4-flash (high) is 100.00% public / 19.33% overall; Qwen3.8-27B (max) is 100.00% public / 29.41% overall.",
+      "verdict": "supported",
+      "citation": "https://swescience.github.io/ (leaderboard, rows 10 and 06)"
+    },
+    {
+      "id": "c9",
+      "text": "The paper identifies four recurring scientific failure mechanisms.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (abstract, Sec. 6.1)"
+    },
+    {
+      "id": "c10",
+      "text": "Claude-Opus-5 records the lowest categorized scientific-error count (58 + 4 runtime) and fewest misguided-exploration errors (2).",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (Sec. 6.1, Table 3)"
+    },
+    {
+      "id": "c11",
+      "text": "Adding scientific info lowered GPT-5.6-sol Pass@1 from 36.26% to 31.87% but raised DeepSeek-V4-flash from 16.48% to 23.08%.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (Sec. 6.2, Fig. 7)"
+    },
+    {
+      "id": "c12",
+      "text": "Scientific info raised GPT-5.6-sol mean scores (to 97.80%/74.06%) while Pass@1 fell.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (Sec. 6.2 text)"
+    },
+    {
+      "id": "c13",
+      "text": "The paper says the paired differences are descriptive, without statistical significance or causal effect.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (Sec. 6.2)"
+    },
+    {
+      "id": "c14",
+      "text": "SWE-ABS found 19.78% of 11,041 previously-passing patches semantically incorrect, cutting top agent 78.80% to 62.20%.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2603.00520 (abstract)"
+    },
+    {
+      "id": "c15",
+      "text": "SWE-bench+ attributes 32.67% of successful patches to solution leakage.",
+      "verdict": "supported",
+      "citation": "Reusable claim store (2026-06-26 cursor-eval-integrity, c11) citing https://arxiv.org/abs/2410.06992"
+    },
+    {
+      "id": "c16",
+      "text": "UTBoost identified 345 erroneous pass labels, affecting 40.9% of SWE-Bench Lite and 24.4% of SWE-Bench Verified entries.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2506.09289 (abstract)"
+    },
+    {
+      "id": "c17",
+      "text": "Cursor found 63% of successful Opus 4.8 Max resolutions on SWE-bench Pro were retrieved rather than derived.",
+      "verdict": "supported",
+      "citation": "https://cursor.com/blog/reward-hacking-coding-benchmarks"
+    },
+    {
+      "id": "c18",
+      "text": "Non-empty input code averages ~80,600 lines; reference patches add ~118 lines.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (Sec. 3 benchmark statistics)"
+    },
+    {
+      "id": "c19",
+      "text": "SWE-Bench ProMax cites ~60% flawed tests in unsolved Verified instances and 41.2% best resolve rate on 170 tasks.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.09802 (abstract)"
+    },
+    {
+      "id": "c20",
+      "text": "The conclusion attributes the gap to needing scientific abstraction, disciplined exploration, system-wide integration, and generalization.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.19799 (conclusion)"
+    }
+  ]
+}

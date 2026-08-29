@@ -1,0 +1,13 @@
+Speaker 1: Thursday, August twenty-seventh, twenty twenty-six.
+Speaker 2: [high_energy] Nvidia just guided to roughly seventy percent growth in fiscal twenty twenty-eight, and called that outlook supply constrained.
+Speaker 1: Some quick numbers behind it. Second quarter revenue came in at [emphasis] ninety-six point two billion dollars [/emphasis], up one hundred six percent, with data center alone at eighty-nine billion.
+Speaker 2: And the third quarter guide is [emphasis] one hundred eight billion dollars [/emphasis]. When a company that size says demand still outruns supply, that is the whole story of this cycle.
+Speaker 1: On the deal front, Nvidia is reported to have held talks to acquire Hugging Face at a valuation above thirteen billion dollars. That one is unconfirmed.
+Speaker 2: Worth noting that would put the largest open model hub inside the company selling the chips those models run on. [dramatic_pause] Everybody is watching how regulators read that.
+Speaker 1: Compute commitments keep stacking up too. Amazon is adding two million more Nvidia GPUs, and Anthropic signed a forty-five billion dollar compute deal with Nscale.
+Speaker 2: On the agent side, METR counted more than seven hundred agents at peak during the Hugging Face incident, and OpenAI has now published its own report on it.
+Speaker 1: That is the first hard number we have on how many autonomous agents were actually in play at once.
+Speaker 2: Enterprise is showing real revenue as well. Salesforce says Agentforce and Data three sixty are at nearly three point nine billion dollars in annual recurring revenue, up more than two hundred ten percent year over year.
+Speaker 1: And trending today, G L M five point three Flash topped Hacker News with eight hundred twenty-four points and four hundred fourteen comments.
+Speaker 2: Z dot A I confirmed it was the stealth Ox Alpha model people had been testing for weeks without knowing who built it.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

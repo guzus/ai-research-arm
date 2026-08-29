@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-08-29 17:19:04 UTC
+
+CYCLE: OpenAI cuts Cursor's model access on November 12 after SpaceX's acquisition, with Anthropic pledging more compute for Cursor; Sony Music Publishing and Warner Chappell sue Anthropic and its founders over Claude training data; Z.ai open-weights GLM-5.3 with day-0 vLLM/SGLang/Baseten serving; Claude works as an automated alignment researcher at Anthropic; Claude Code weekly limits drop ~17% vs today from September 14.
+
+TOP STORIES:
+• OpenAI ends Cursor partnership after SpaceX acquisition — access ends Nov 12; Cursor CEO cites ~5% of traffic; Anthropic commits to more compute [✓]
+• Sony Music Publishing + Warner Chappell sue Anthropic, Amodei and Mann over "massive scale" training-data piracy claims [⚠]
+• Z.ai open-weights GLM-5.3 (743B base, post-trained); day-0 vLLM/SGLang/Baseten; 2-bit local quants in hours [✓]
+• Anthropic: Claude as automated alignment researcher — 48h, 1 GPU, ten measurable failures fixed; Sonnet 5 post-trained an Opus 4.8 checkpoint [✓]
+• Claude Code weekly limits permanently +25% from Sept 14 = ~17% below today's 50% promo boost; delete-and-repost on the math [✓]
+
+WATCH: Whether OpenAI-Cursor talks produce a deal before November 12; Anthropic's response to the publishers' suit; whether the Commerce rule (RIN 0694-AJ90) text lands.
+
+Full update on GitHub.

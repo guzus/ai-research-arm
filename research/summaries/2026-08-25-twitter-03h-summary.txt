@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-25 03:55:09 UTC
+
+CYCLE: Rate limits, regulators, and a benchmark that hides half its tests.
+
+TOP STORIES:
+• OpenAI brings back the 5h limit for Plus on ChatGPT Work + Codex tomorrow, to smooth compute load; $100/$200 Pro tiers exempt [✓]
+• Alabama AG Steve Marshall named on the OpenAI subpoena, alleging a "complete lack of oversight and adequate safeguards" over the Hugging Face incident [✓]
+• SWE-bench Science: best config (Claude Code + Opus-5) clears 96.64% of visible tests but only 47.90% Pass@1 on hidden ones [⚠]
+
+WATCH: Whether the 5h Plus limit actually ships on 25 August, and whether OpenAI discloses the cap inside the window rather than just its length.
+
+Full update on GitHub.
