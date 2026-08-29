@@ -39,7 +39,7 @@ import {
 import type { EvidenceSearchEntry, PublicClaim, WatchlistState } from './product-intelligence';
 import { localizeStaticUi, resolveUiLanguage, uiText } from './i18n';
 import type { UiCopyKey } from './i18n';
-import { renderTodayHtml } from './render/today';
+import { isDeterministicFallbackDigest, renderTodayHtml } from './render/today';
 import {
   buildTwitterCycleContent,
   extractTwitterCycleBody,
@@ -344,6 +344,7 @@ let digestAudioPlayEl: HTMLButtonElement | null = null;
 let digestAudioTitleEl: HTMLButtonElement | null = null;
 let digestAudioTimeEl: HTMLElement | null = null;
 let digestAudioProgressEl: HTMLInputElement | null = null;
+let digestUnavailableForCurrentView = false;
 let lastDigestAudioBarActivation = 0;
 let lastInlineDigestAudioActivation = 0;
 
@@ -4797,8 +4798,10 @@ function renderFrontPage(frontPage: FrontPageAsset): void {
 
 function renderToday(md: string, frontPage: FrontPageAsset | null = null): void {
   const dateStr = fmtDate(currentDate);
+  const digestUnavailable = isDeterministicFallbackDigest(md);
+  digestUnavailableForCurrentView = digestUnavailable;
   let frontPageCardHtml: string | null = null;
-  if (frontPage) {
+  if (frontPage && !digestUnavailable) {
     frontPageCardHtml = [
       '<div class="content-card frontpage-card today-frontpage-card">',
       frontPageBodyHtml(frontPage),
@@ -4815,6 +4818,11 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     frontPageCardHtml,
     language: activeLanguage,
   }));
+  if (digestUnavailable) {
+    digestAudioEl?.pause();
+    hideDigestAudioPlayer();
+    return;
+  }
   if (frontPage) enhanceNewspaper();
   syncDigestAudioForDate(dateStr);
   void wikifyContent(content);
@@ -4839,7 +4847,9 @@ async function hydrateWhatChanged(md: string, dateStr: string): Promise<void> {
   ]);
   if (activeTab !== 'today' || fmtDate(currentDate) !== dateStr) return;
   const items: BriefItem[] = [];
-  const digestDegraded = /Deterministic fallback digest/i.test(md);
+  // Defense in depth: operational fallback artifacts are never eligible for
+  // a public Decision brief, even if this hydrator is called independently.
+  if (isDeterministicFallbackDigest(md)) return;
   const sections = splitSections(md).filter((section) =>
     Boolean(section.title) &&
     section.body &&
@@ -4854,9 +4864,7 @@ async function hydrateWhatChanged(md: string, dateStr: string): Promise<void> {
       kind: 'digest',
       title: section.title || uiText(activeLanguage, 'page.today', { date: dateStr }),
       summary,
-      why: digestDegraded
-        ? (activeLanguage === 'ko' ? `표시된 대체 다이제스트의 상위 순서입니다. 편집 순위가 아니며 ${sourceCount}개 링크가 있습니다.` : `It appears early in the labelled fallback digest; this is source order, not editorial ranking, with ${sourceCount} linked source${sourceCount === 1 ? '' : 's'}.`)
-        : (activeLanguage === 'ko' ? `오늘의 종합 브리프에서 상위 신호로 선정됐습니다. ${sourceCount}개의 링크된 소스가 있습니다.` : `It ranked near the top of today's synthesis and carries ${sourceCount} linked source${sourceCount === 1 ? '' : 's'}.`),
+      why: activeLanguage === 'ko' ? `오늘의 종합 브리프에서 상위 신호로 선정됐습니다. ${sourceCount}개의 링크된 소스가 있습니다.` : `It ranked near the top of today's synthesis and carries ${sourceCount} linked source${sourceCount === 1 ? '' : 's'}.`,
       watch: activeLanguage === 'ko' ? '차기 소스 사이클에서 독립적 확인과 수치 변화를 확인하세요.' : 'Look for independent confirmation and a measurable follow-through in the next source cycle.',
       // A link count describes sourcing volume, not corroboration quality.
       // Digest sections remain context until backed by structured claim evidence.
@@ -4914,7 +4922,7 @@ async function hydrateWhatChanged(md: string, dateStr: string): Promise<void> {
   if (gpu && h100) items.push({ id: 'gpu:spot', kind: 'gpu', title: `${h100[0]} ${activeLanguage === 'ko' ? '시간당 중앙값' : 'median spot'} $${Number(h100[1].median).toFixed(2)}`, summary: activeLanguage === 'ko' ? `${h100[1].samples || 0}개 공개 리스팅에서 GPU 1개·시간당 비용을 정규화했습니다.` : `Normalized to one GPU-hour across ${h100[1].samples || 0} public listings.`, why: activeLanguage === 'ko' ? '모델 가격과 별개로 기초 컴퓨트 공급 가격을 보여줍니다.' : 'It exposes the underlying compute-supply price separately from model API pricing.', watch: h100[1].truncated ? (activeLanguage === 'ko' ? '표본이 불완전합니다. 방향성으로만 보세요.' : 'The sample is incomplete; treat it as directional.') : (activeLanguage === 'ko' ? '동일 방법 버전의 주간 변화를 확인하세요.' : 'Watch the week-over-week move under the same method version.'), confidence: gpu.stale ? 'context' : 'medium', freshness: gpu.generated_at || dateStr, href: '/pricing', topics: ['gpu-compute'], changedAt: gpu.generated_at || `${dateStr}T00:00:00Z` });
 
   const host = document.createElement('div');
-  host.innerHTML = renderWhatChanged(items.slice(0, 8), watchlist, activeLanguage, digestDegraded);
+  host.innerHTML = renderWhatChanged(items.slice(0, 8), watchlist, activeLanguage);
   const first = content.firstElementChild;
   if (first) content.insertBefore(host.firstElementChild!, first);
   else content.appendChild(host.firstElementChild!);
@@ -6516,7 +6524,8 @@ async function load(): Promise<void> {
       }
     }
 
-    if (activeTab !== 'research' && activeTab !== 'wiki' && activeTab !== 'focusReader') {
+    if (activeTab !== 'research' && activeTab !== 'wiki' && activeTab !== 'focusReader'
+      && !(activeTab === 'today' && digestUnavailableForCurrentView)) {
       syncDigestAudioForDate(dateStr);
     }
     renderCalendar();

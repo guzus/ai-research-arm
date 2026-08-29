@@ -191,7 +191,14 @@ re-dispatched (deliberate, PR #303 — see the fallback table above). Only
 output fails a hard content floor. So on the digest specifically, **a green
 run is not evidence the agent path was healthy** — green means "an artifact
 was committed". Read the agent/fallback step logs, or the fallback-used
-Telegram alert, to learn which path produced it.
+Telegram alert, to learn which path produced it. The fallback is retained as
+an operational diagnostic only: dashboard prebuild replaces it with an
+unavailable-state marker, excludes its front-page/audio derivatives and
+search/feed entries, and the front-page, audio, and wiki workflows skip it.
+The digest workflow also revokes any fallback-date S3 audio object; the manual
+`cleanup-fallback-publications.yml` workflow performs the same idempotent
+historical cleanup after a publication-boundary incident.
+Never promote its raw excerpts as editorial content.
 
 **Publishing uses `.github/actions/safe-push`** — see rule 13 for the
 protected-branch fallback and what `pushed=true` actually means.

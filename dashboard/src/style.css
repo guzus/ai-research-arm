@@ -7330,16 +7330,10 @@ body.tab-pricing .calendar { display: none; }
 .what-changed h2,
 .dossier-context h2,
 .market-trends h2 { font-size: clamp(1.45rem, 3vw, 2.1rem); line-height: 1.08; }
-.brief-degraded {
-  margin: 0 0 16px;
-  padding: 10px 12px;
-  border-inline-start: 3px solid var(--accent-warm);
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--accent-warm) 10%, var(--bg));
-  color: var(--text-secondary);
-  font-size: 0.78rem;
-  line-height: 1.55;
-}
+.today-unavailable { max-width: 720px; margin: clamp(32px, 8vh, 88px) auto; }
+.today-unavailable .content-card-body { padding: clamp(28px, 5vw, 52px); }
+.today-unavailable h2 { margin: 10px 0 12px; font-size: clamp(1.55rem, 4vw, 2.4rem); line-height: 1.12; }
+.today-unavailable p { max-width: 58ch; color: var(--text-secondary); line-height: 1.7; }
 .watchlist-actions { display: flex; align-items: center; gap: 8px; }
 .watchlist-actions a,
 .watchlist-actions button,
