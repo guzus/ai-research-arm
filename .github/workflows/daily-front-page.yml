@@ -205,6 +205,9 @@ jobs:
         uses: ./.github/actions/safe-push
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          # This workflow is triggered by workflow_run, not schedule, but its
+          # daily artifact must still land rather than remain on a PR branch.
+          strict-publication: 'true'
 
       # Publish front page image via hooker (routes to Telegram thread)
       - name: Publish front page via hooker
