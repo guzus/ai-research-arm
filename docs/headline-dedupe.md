@@ -137,6 +137,13 @@ never re-tokenizes history.
    never a swallowed headline. (Whole-file JSON corruption still fails
    **closed** — `load_json_list` raises `SystemExit`.)
 
+4. **Pass 1d has no separate recency window.** Within the retained 3,000-row
+   alert ledger, an external status ID or normalized URL is durable identity:
+   re-headlining it later does not make it a new alert. This deliberately favors
+   duplicate prevention over repeat coverage. A publisher that reuses one
+   canonical URL for genuinely different stories can therefore be suppressed;
+   producers should emit story-specific canonical URLs when available.
+
 **In-batch behavior:** `filter_headlines` appends each accepted item back into
 `history` (stamped with the run `now`) as it iterates, so two paraphrases of
 the same story *in the same cycle* from different accounts collapse to one —
