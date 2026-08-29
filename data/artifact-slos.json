@@ -50,6 +50,17 @@
         "path": "research/twitter/status/[0-9]*.json",
         "selectors": [
           "recovery"
+        ],
+        "absent_means_false": true,
+        "required_selectors": [
+          "schema_version",
+          "date",
+          "hour",
+          "generated_at",
+          "run_id",
+          "run_attempt",
+          "status",
+          "public_items"
         ]
       },
       "content": {

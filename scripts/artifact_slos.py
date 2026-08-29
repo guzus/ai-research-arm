@@ -92,6 +92,27 @@ def load_registry(path: Path | str = DEFAULT_REGISTRY) -> list[dict[str, Any]]:
                     raise ValueError(
                         f"{source}: {artifact_id} json_boolean_any signal needs selectors[]"
                     )
+                absent_means_false = signal.get("absent_means_false")
+                if absent_means_false is not None and not isinstance(absent_means_false, bool):
+                    raise ValueError(
+                        f"{source}: {artifact_id} json_boolean_any "
+                        "absent_means_false must be boolean"
+                    )
+                if absent_means_false is True and any("*" in value for value in selectors):
+                    raise ValueError(
+                        f"{source}: {artifact_id} json_boolean_any "
+                        "absent_means_false cannot be used with wildcard selectors"
+                    )
+                required_selectors = signal.get("required_selectors")
+                if required_selectors is not None and (
+                    not isinstance(required_selectors, list)
+                    or not required_selectors
+                    or not all(isinstance(value, str) and value for value in required_selectors)
+                ):
+                    raise ValueError(
+                        f"{source}: {artifact_id} json_boolean_any "
+                        "required_selectors must be a non-empty string list"
+                    )
         cadence = entry.get("cadence")
         if not isinstance(cadence, dict) or cadence.get("kind") not in CADENCE_KINDS:
             raise ValueError(f"{source}: {artifact_id} has invalid cadence")
