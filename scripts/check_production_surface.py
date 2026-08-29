@@ -29,7 +29,9 @@ from typing import Callable, Iterable, Optional
 
 DEFAULT_BASE_URL = "https://ara.guzus.xyz"
 DEFAULT_TIMEOUT_SECONDS = 15.0
-MAX_BODY_BYTES = 1_000_000
+# evidence-search.json is intentionally a lazy-loaded full-text corpus. Read
+# the whole semantic contract (rather than validating a truncated prefix).
+MAX_BODY_BYTES = 16_000_000
 
 BROWSER_UA = "ara-production-synthetic/1.0 (+https://github.com/guzus/ai-research-arm)"
 
@@ -42,6 +44,7 @@ class Probe:
     expected_status: int = 200
     content_type_prefix: str = ""
     body_contains: str = ""
+    json_contract: str = ""
     required_headers: tuple[tuple[str, str], ...] = ()
 
 
@@ -50,6 +53,7 @@ class Response:
     status: int
     headers: dict[str, str]
     body: str
+    truncated: bool = False
 
 
 @dataclass
@@ -78,6 +82,18 @@ ROUTE_PROBES: tuple[Probe, ...] = (
     Probe("research", "/research", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS),
     Probe("wiki", "/wiki", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS),
     Probe("manifest", "/research/manifest.json", content_type_prefix="application/json", body_contains='"generatedAt"'),
+    Probe(
+        "evidence-search-contract",
+        "/research/evidence-search.json",
+        content_type_prefix="application/json",
+        json_contract="evidence-search-v1",
+    ),
+    Probe(
+        "public-claims-contract",
+        "/research/claims/public.json",
+        content_type_prefix="application/json",
+        json_contract="public-claims-v1",
+    ),
     Probe("robots", "/robots.txt", content_type_prefix="text/plain", body_contains="User-agent:"),
     # Caddy currently serves both generated XML artifacts as text/xml. Pin the
     # observed edge contract so a type change is reviewed rather than ignored.
@@ -112,13 +128,15 @@ def fetch(probe: Probe, base_url: str, timeout: float = DEFAULT_TIMEOUT_SECONDS)
     )
     try:
         with urllib.request.urlopen(request, timeout=timeout) as response:
-            body = response.read(MAX_BODY_BYTES).decode("utf-8", "replace")
+            raw = response.read(MAX_BODY_BYTES + 1)
+            body = raw[:MAX_BODY_BYTES].decode("utf-8", "replace")
             headers = {str(k).lower(): str(v) for k, v in response.headers.items()}
-            return Response(int(response.status), headers, body)
+            return Response(int(response.status), headers, body, len(raw) > MAX_BODY_BYTES)
     except urllib.error.HTTPError as exc:
-        body = exc.read(MAX_BODY_BYTES).decode("utf-8", "replace")
+        raw = exc.read(MAX_BODY_BYTES + 1)
+        body = raw[:MAX_BODY_BYTES].decode("utf-8", "replace")
         headers = {str(k).lower(): str(v) for k, v in exc.headers.items()}
-        return Response(int(exc.code), headers, body)
+        return Response(int(exc.code), headers, body, len(raw) > MAX_BODY_BYTES)
 
 
 def evaluate_response(probe: Probe, response: Response) -> Result:
@@ -128,13 +146,90 @@ def evaluate_response(probe: Probe, response: Response) -> Result:
         actual = response.headers.get("content-type", "")
         if not actual.lower().startswith(probe.content_type_prefix.lower()):
             return Result(probe.name, probe.path, "failed", f"content-type {actual!r}, expected prefix {probe.content_type_prefix!r}", response.status)
+    if response.truncated:
+        return Result(
+            probe.name,
+            probe.path,
+            "failed",
+            f"body exceeds semantic-check limit of {MAX_BODY_BYTES} bytes",
+            response.status,
+        )
     if probe.body_contains and probe.body_contains.lower() not in response.body.lower():
         return Result(probe.name, probe.path, "failed", f"body missing marker {probe.body_contains!r}", response.status)
+    if probe.json_contract:
+        problem = validate_json_contract(probe.json_contract, response.body)
+        if problem:
+            return Result(
+                probe.name,
+                probe.path,
+                "failed",
+                f"JSON contract {probe.json_contract}: {problem}",
+                response.status,
+            )
     for header, marker in probe.required_headers:
         actual = response.headers.get(header, "")
         if marker.lower() not in actual.lower():
             return Result(probe.name, probe.path, "failed", f"header {header}={actual!r} missing {marker!r}", response.status)
     return Result(probe.name, probe.path, "healthy", f"HTTP {response.status}", response.status)
+
+
+def _object_array(payload: object, key: str) -> tuple[Optional[list[object]], Optional[str]]:
+    if not isinstance(payload, dict):
+        return None, "$ must be an object"
+    if key not in payload:
+        return None, f"$.{key} is missing"
+    values = payload[key]
+    if not isinstance(values, list):
+        return None, f"$.{key} must be an array"
+    return values, None
+
+
+def validate_json_contract(contract: str, body: str) -> Optional[str]:
+    """Return a precise schema violation, or None for a valid payload.
+
+    These checks pin stable public semantics, not generated counts, copy, or
+    ordering. That catches a SPA fallback or provenance regression without
+    paging when editorial content naturally changes.
+    """
+    try:
+        payload = json.loads(body)
+    except json.JSONDecodeError as exc:
+        return f"$ is not valid JSON ({exc.msg} at line {exc.lineno} column {exc.colno})"
+
+    if contract == "evidence-search-v1":
+        entries, problem = _object_array(payload, "entries")
+        if problem:
+            return problem
+        for index, entry in enumerate(entries or []):
+            path = f"$.entries[{index}]"
+            if not isinstance(entry, dict):
+                return f"{path} must be an object"
+            if not isinstance(entry.get("type"), str) or not entry["type"]:
+                return f"{path}.type must be a non-empty string"
+            if entry["type"] == "claim":
+                if not isinstance(entry.get("reusable"), bool):
+                    return f"{path}.reusable must be a boolean for claim entries"
+                for key in ("id", "title", "body", "url"):
+                    if not isinstance(entry.get(key), str) or not entry[key]:
+                        return f"{path}.{key} must be a non-empty string for claim entries"
+        return None
+
+    if contract == "public-claims-v1":
+        claims, problem = _object_array(payload, "claims")
+        if problem:
+            return problem
+        for index, claim in enumerate(claims or []):
+            path = f"$.claims[{index}]"
+            if not isinstance(claim, dict):
+                return f"{path} must be an object"
+            if not isinstance(claim.get("reusable"), bool):
+                return f"{path}.reusable must be a boolean"
+            for key in ("article", "claim"):
+                if not isinstance(claim.get(key), str) or not claim[key]:
+                    return f"{path}.{key} must be a non-empty string"
+        return None
+
+    return f"unsupported contract {contract!r}"
 
 
 def run_probe(

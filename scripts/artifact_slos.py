@@ -4,12 +4,22 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_REGISTRY = REPO_ROOT / "data" / "artifact-slos.json"
 CADENCE_KINDS = {"interval", "daily", "event", "on_demand"}
+DEGRADED_SIGNAL_KINDS = {"commit_subject", "json_boolean_any", "text_regex"}
+PUBLISHED_DEGRADED_POLICIES = {
+    "restore-baseline-and-fail",
+    "partial-source-fail-soft",
+    "labelled-deterministic-fallback",
+    "per-symbol-stale-carry-forward",
+    "price-live-score-stale",
+    "per-model-stale-carry-forward",
+}
 
 
 def load_registry(path: Path | str = DEFAULT_REGISTRY) -> list[dict[str, Any]]:
@@ -37,6 +47,51 @@ def load_registry(path: Path | str = DEFAULT_REGISTRY) -> list[dict[str, Any]]:
                 raise ValueError(f"{source}: {artifact_id} {field} must be a string list")
         if not isinstance(entry["degraded_policy"], str) or not entry["degraded_policy"]:
             raise ValueError(f"{source}: {artifact_id} degraded_policy must be a non-empty string")
+        signal = entry.get("degraded_signal")
+        if entry["degraded_policy"] in PUBLISHED_DEGRADED_POLICIES and signal is None:
+            raise ValueError(
+                f"{source}: {artifact_id} policy {entry['degraded_policy']!r} "
+                "can publish degraded output and needs degraded_signal"
+            )
+        if signal is not None:
+            if not isinstance(signal, dict) or signal.get("kind") not in DEGRADED_SIGNAL_KINDS:
+                raise ValueError(f"{source}: {artifact_id} has invalid degraded_signal kind")
+            if not isinstance(signal.get("label"), str) or not signal["label"]:
+                raise ValueError(f"{source}: {artifact_id} degraded_signal needs a non-empty label")
+            if signal["kind"] in {"commit_subject", "text_regex"}:
+                pattern = signal.get("pattern")
+                if not isinstance(pattern, str) or not pattern:
+                    raise ValueError(f"{source}: {artifact_id} regex signal needs pattern")
+                try:
+                    re.compile(pattern)
+                except re.error as exc:
+                    raise ValueError(
+                        f"{source}: {artifact_id} degraded_signal pattern is invalid: {exc}"
+                    ) from exc
+                paths = signal.get("paths")
+                if paths is not None and (
+                    not isinstance(paths, list)
+                    or not paths
+                    or not all(isinstance(value, str) and value for value in paths)
+                ):
+                    raise ValueError(
+                        f"{source}: {artifact_id} degraded_signal paths must be a string list"
+                    )
+                if signal["kind"] == "text_regex" and (
+                    not isinstance(signal.get("path"), str) or not signal["path"]
+                ):
+                    raise ValueError(f"{source}: {artifact_id} text_regex signal needs path")
+            else:
+                path = signal.get("path")
+                selectors = signal.get("selectors")
+                if not isinstance(path, str) or not path:
+                    raise ValueError(f"{source}: {artifact_id} json_boolean_any signal needs path")
+                if not isinstance(selectors, list) or not selectors or not all(
+                    isinstance(value, str) and value for value in selectors
+                ):
+                    raise ValueError(
+                        f"{source}: {artifact_id} json_boolean_any signal needs selectors[]"
+                    )
         cadence = entry.get("cadence")
         if not isinstance(cadence, dict) or cadence.get("kind") not in CADENCE_KINDS:
             raise ValueError(f"{source}: {artifact_id} has invalid cadence")

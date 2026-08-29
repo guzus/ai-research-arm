@@ -40,6 +40,16 @@ class ArtifactSloRegistryTest(unittest.TestCase):
         self.assertEqual(set(freshness.LANE_THRESHOLDS_HOURS), expected)
         self.assertEqual(set(content.LANE_SPECS), {e["id"] for e in artifact_slos.content_entries()})
 
+    def test_every_publishable_degraded_policy_has_an_executable_signal(self):
+        for entry in self.entries:
+            if entry["degraded_policy"] in artifact_slos.PUBLISHED_DEGRADED_POLICIES:
+                self.assertIn("degraded_signal", entry, entry["id"])
+                self.assertIn(
+                    entry["degraded_signal"]["kind"],
+                    artifact_slos.DEGRADED_SIGNAL_KINDS,
+                    entry["id"],
+                )
+
 
 if __name__ == "__main__":
     unittest.main()
