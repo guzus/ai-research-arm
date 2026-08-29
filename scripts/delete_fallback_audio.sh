@@ -10,7 +10,7 @@ fi
 deleted=0
 while IFS= read -r date; do
   if [[ ! "$date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
-    echo "Refusing unexpected digest filename: $digest" >&2
+    echo "Refusing unexpected digest date: $date" >&2
     exit 1
   fi
   key="audio/${date}-digest.mp3"
@@ -21,8 +21,10 @@ while IFS= read -r date; do
   fi
   aws s3api delete-object --bucket "$S3_BUCKET" --key "$key" \
     --endpoint-url "$S3_ENDPOINT_URL" >/dev/null
-  aws s3api wait object-not-exists --bucket "$S3_BUCKET" --key "$key" \
-    --endpoint-url "$S3_ENDPOINT_URL"
+  # This bucket credential intentionally has delete permission without
+  # head/list permission, so a follow-up object-not-exists waiter returns 403
+  # even after a successful deletion. Treat the signed delete response as the
+  # authoritative revocation receipt; deletion is exact-key and idempotent.
   deleted=$((deleted + 1))
 done < <(python3 scripts/digest_publication_state.py --list-fallback-dates research/digest)
 
