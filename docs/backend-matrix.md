@@ -15,8 +15,8 @@ slots, endpoints, selector tokens) live in `CLAUDE.md` → "Backends" and
 | Claude Code · claude-code-action | The action invoked directly. Native Anthropic unless the step's `env` reroutes `ANTHROPIC_BASE_URL` (generative-research does this on its Fireworks paths). |
 | pi · run-pi-container | The pi coding-agent harness in a container with pi's own provider config. Twitter comparison tiers only. |
 | Codex CLI | `codex exec` with ChatGPT-managed file auth (subscription entitlement, not API billing). |
-| opencode CLI | `opencode run` **inside a Docker container** (`.github/actions/run-opencode-container`: `--cap-drop ALL`, `no-new-privileges`, non-root, throwaway HOME, disposable clone). The trusted action injects the selected profile's validated `provider/model` into an ephemeral read-only config. Missing Docker is a hard failure. The five editorial lanes currently share a strict OpenCode route, so its key/caps are a correlated risk while selected; a route edit can move the group to another registered compatible isolated adapter. Host-checkout agent-run is explicitly incompatible. |
-| Cursor CLI | `agent -p` **inside a Docker container** (`.github/actions/run-cursor-container`: same isolation contract as OpenCode). Authenticated by `CURSOR_API_KEY`; model selected by `agent --model` (canonical `cursor-grok-4.6-high-fast`). Nested sandbox is disabled because the container is the boundary. Missing Docker is a hard failure. Registered as a second isolated editorial adapter; production defaults stay on OpenCode until a route selects `cursor-grok-4p6-fast`. Validate with `cursor-cli-canary.yml`. |
+| opencode CLI | `opencode run` **inside a Docker container** (`.github/actions/run-opencode-container`: `--cap-drop ALL`, `no-new-privileges`, non-root, throwaway HOME, disposable clone). The trusted action injects the selected profile's validated `provider/model` into an ephemeral read-only config. Missing Docker is a hard failure. RSS, community, and Bluesky use this strict route; host-checkout agent-run is explicitly incompatible. |
+| Cursor CLI | `agent -p` **inside a Docker container** (`.github/actions/run-cursor-container`: same isolation contract as OpenCode). Authenticated by `CURSOR_API_KEY`; model selected by `agent --model` (canonical `cursor-grok-4.6-high-fast`). Nested sandbox is disabled because the container is the boundary. Missing Docker is a hard failure. arXiv and wiki use this second strict failure domain, so no one provider key/cap can stale all five editorial lanes. Validate with `cursor-cli-canary.yml`. |
 | dispatch default | Not an agent itself: the SSOT-resolved default backend a dispatch/issue run uses when none is specified. |
 
 ## How routing consumption works
@@ -76,7 +76,7 @@ Reading notes:
 | Lane | Workflow | Harness | Provider | Model | Token secret | Fallback |
 |---|---|---|---|---|---|---|
 | ai-news-research (×2 step variants) | `ai-news-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| arxiv (route:research-editorial) | `daily-arxiv.yml` | agent-dispatch → opencode CLI (runtime SSOT) | GLM 5.3 Flash via OpenCode Go | `glm-5.3-flash` | `OPENCODE_API_KEY` | hard fail (route fallback=none) |
+| arxiv (route:research-editorial-secondary) | `daily-arxiv.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | bluesky (route:research-editorial) | `2h-bluesky.yml` | agent-dispatch → opencode CLI (runtime SSOT) | GLM 5.3 Flash via OpenCode Go | `glm-5.3-flash` | `OPENCODE_API_KEY` | hard fail (route fallback=none) |
 | claude-code-review | `claude-code-review.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | claude-interactive | `claude.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
@@ -104,7 +104,7 @@ Reading notes:
 | twitter-primary (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2`; then `deterministic_twitter_digest.py` |
 | twitter-primary-repair (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
 | twitter-zai (tier:zai-glm-5p2) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
-| wiki-ingest (route:research-editorial) | `wiki-ingest.yml` | agent-dispatch → opencode CLI (runtime SSOT) | GLM 5.3 Flash via OpenCode Go | `glm-5.3-flash` | `OPENCODE_API_KEY` | hard fail (route fallback=none) |
+| wiki-ingest (route:research-editorial-secondary) | `wiki-ingest.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | zai-canary · PINNED | `zai-claude-code-canary.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
 | (canary) cursor + cursor-grok-4.6-high-fast | `cursor-cli-canary.yml` | Cursor CLI (containerised) | Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (diagnostics lane) |
 | (dispatch path) backend=fireworks (+2 retry steps) | `generative-research.yml` | Claude Code · claude-code-action (env-rerouted) | Fireworks (Anthropic-compatible endpoint) | dynamic: per fireworks profile step | `FIREWORKS_API_KEY` | workflow-level `fireworks_fallback` input (default `claude`) |
@@ -131,8 +131,9 @@ Reading notes:
 - `liveness-check.yml`
 - `market-quotes.yml`
 - `model-pricing.yml`
+- `production-synthetic.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-opus-5`. 31 SSOT lanes (+10 dispatch execution paths) across 32 workflows; 12 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-opus-5`. 31 SSOT lanes (+10 dispatch execution paths) across 33 workflows; 13 workflows run no model._
 
 <!-- END GENERATED BACKEND MATRIX -->
 

@@ -1,0 +1,28 @@
+name: Production Surface Synthetic
+
+on:
+  schedule:
+    - cron: '17 */2 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: production-surface-synthetic
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    # This is intentionally GitHub-hosted and runs only trusted default-branch
+    # code. It must remain independent of the self-hosted runner it observes.
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout trusted default branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Probe routes, headers, discovery files, and user-agent policy
+        uses: ./.github/actions/production-surface-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
+          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}

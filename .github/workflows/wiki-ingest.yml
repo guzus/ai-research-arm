@@ -83,7 +83,7 @@ jobs:
       # LFS-tracked file either; a no-LFS checkout is safe all the way
       # through push.
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         env:
           GIT_CONFIG_NOSYSTEM: "1"
           GIT_CONFIG_GLOBAL: /dev/null
@@ -108,7 +108,7 @@ jobs:
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           enable-cache: true
 
@@ -390,8 +390,7 @@ jobs:
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the rebase
       # cannot fail to start with "cannot rebase: You have unstaged
-      # changes". The action exposes `outputs.pushed`, consumed by the
-      # Vercel deploy step below. Push failures propagate as a real job
+      # changes". Push failures propagate as a real job
       # failure. See .github/actions/safe-push/action.yml.
       - name: Push changes
         id: push
@@ -400,21 +399,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # workflow_run publishers are outside safe-push's schedule auto-mode.
           strict-publication: 'true'
-
-      # Vercel's GitHub App webhook should fire on bot pushes too, but if the
-      # VERCEL_DEPLOY_HOOK secret is present we belt-and-suspenders it.
-      # Set the secret to a Vercel Project → Settings → Git → Deploy Hooks
-      # URL scoped to the `main` branch.
-      - name: Trigger Vercel deploy
-        if: steps.push.outputs.pushed == 'true'
-        env:
-          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
-        run: |
-          if [ -n "$VERCEL_DEPLOY_HOOK" ]; then
-            curl -fsSL -X POST "$VERCEL_DEPLOY_HOOK" && echo "Vercel deploy hook fired"
-          else
-            echo "VERCEL_DEPLOY_HOOK not set; relying on Vercel's GitHub auto-deploy"
-          fi
 
       - name: Publish Hooker workflow telemetry
         if: always()
