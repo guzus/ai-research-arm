@@ -691,12 +691,16 @@ output or break the pipeline. Read them before editing.
     (a) **`fallback.chain` spans ≥2 providers** — CI-enforced by
     `test_backend_matrix.test_global_fallback_chain_shape`. Claude leads
     (it is what the prompts are tuned against); it must not also terminate.
-    (b) **`probe_claude()` is auth-only** — down on 401/403, up on
-    200/429/5xx/network fault. Both sides are empirically pinned: a dead
-    token answers `401 "OAuth access token is invalid."`, while a *live*
-    subscription token answers the same raw 1-token ping with **429**. So
-    treating non-200 as down would reroute a healthy fleet off Claude
-    permanently. It must send
+    (b) **`probe_claude()` is a narrow run-availability preflight** — down
+    on 401/403 auth rejection and on HTTP 429. A 429 proves the subscription
+    token is alive but also proves Claude cannot serve this run. The local-source
+    digest lane has an explicit compatibility-tested `fallback_chain` override,
+    so it runs the same prompt through isolated OpenCode GLM 5.3 Flash; if that
+    adapter is unavailable it fails into the existing deterministic recovery.
+    Unrelated non-strict agent-run lanes retain the global Z.ai secondary.
+    HTTP 400, 5xx, and network faults remain fail-open because this
+    tiny probe does not mechanically prove the full Claude Code path is down.
+    It must send
     `authorization: Bearer` + the oauth beta header and **never**
     `x-api-key` (which makes the API reject a *good* OAuth token with
     `401 invalid x-api-key`). `agent-run` must keep passing

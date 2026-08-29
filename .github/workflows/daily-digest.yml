@@ -335,12 +335,18 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          # Lane-scoped authorization: only this compatibility-tested digest
+          # call can select the isolated OpenCode fallback.
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           claude-args: |
             --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
-            research/digest/
-            research/summaries/
-          label: Daily digest Claude local-source synthesizer
+            research/digest/${{ steps.date.outputs.date }}-digest.md
+            research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
+          allowed-paths: |
+            research/digest/${{ steps.date.outputs.date }}-digest.md
+            research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
+          label: Daily digest local-source synthesizer
           prompt: |
             You are the AI News Editor. Create a comprehensive DAILY DIGEST.
 
@@ -494,8 +500,7 @@ jobs:
       # commit (mid-run tool/API error) would otherwise strand the content:
       # floor ok → fallback skipped → require-output red → wiki-ingest/
       # front-page starve. Commit exactly this workflow's expected output
-      # paths (research/digest/ + research/summaries/ — both are .md/.txt/
-      # .json only, no LFS-filtered media). On a clean tree (re-dispatch on
+      # files only. On a clean tree (re-dispatch on
       # a healthy day) this is a no-op, so the fallback's overwrite
       # protection and honest-red semantics are unchanged.
       - name: Commit recovered agent digest output
@@ -504,12 +509,14 @@ jobs:
           DATE: ${{ steps.date.outputs.date }}
         run: |
           set -euo pipefail
-          if [ -z "$(git status --porcelain -- research/digest/ research/summaries/)" ]; then
+          DIGEST_FILE="research/digest/${DATE}-digest.md"
+          SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
+          if [ -z "$(git status --porcelain -- "$DIGEST_FILE" "$SUMMARY_FILE")" ]; then
             echo "No uncommitted digest-lane changes — nothing to recover."
             exit 0
           fi
           echo "::notice::Floor-passing digest output found uncommitted in the working tree (agent likely died before its commit step); committing it."
-          git add research/digest/ research/summaries/
+          git add "$DIGEST_FILE" "$SUMMARY_FILE"
           git commit -m "Daily digest ${DATE} (recovered uncommitted agent output)" || echo "No recovered digest changes"
 
       - name: Check for fresh digest output
@@ -600,6 +607,19 @@ jobs:
           base-sha: ${{ steps.digest-output-base.outputs.sha }}
           expected-paths: |
             research/digest/
+          label: Daily digest workflow output
+
+      # The synthesis composite is intentionally continue-on-error so the
+      # deterministic recovery can run. Independently prove that every commit
+      # since the pre-agent base stayed inside today's two publication files
+      # before any later safe-push step can publish it.
+      - name: Require digest diff scope
+        uses: ./.github/actions/require-diff-scope
+        with:
+          base-sha: ${{ steps.digest-output-base.outputs.sha }}
+          allowed-paths: |
+            research/digest/${{ steps.date.outputs.date }}-digest.md
+            research/summaries/${{ steps.date.outputs.date }}-digest-summary.txt
           label: Daily digest workflow output
 
       - name: Classify digest publication state

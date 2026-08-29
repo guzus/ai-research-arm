@@ -41,7 +41,7 @@
       "model": "",
       "display_name": "Claude",
       "aliases": [],
-      "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it). Always considered available."
+      "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it). The preflight marks 401/403 auth rejection and HTTP 429 rate limiting unavailable for the current run. Ordinary non-strict lanes continue to the global Z.ai secondary; digest-synthesis-fallback uses its explicit isolated OpenCode lane override."
     },
     "claude-opus-5": {
       "adapter": "dispatch-default",
@@ -96,7 +96,7 @@
         "opencode-glm",
         "glm-5.3-flash-opencode"
       ],
-      "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to the official opencode-go/glm-5.3-flash model id. Primary strict profile for the shared research-editorial route; not selectable by agent-run."
+      "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to the official opencode-go/glm-5.3-flash model id. Primary strict profile for the shared research-editorial route and the explicit isolated fallback for digest-synthesis-fallback; it is never a member of the global host-checkout fallback chain."
     },
     "zai-glm-5p2": {
       "adapter": "agent-run",
@@ -154,7 +154,7 @@
       "zai-glm-5p2"
     ],
     "native_model": "claude-opus-5",
-    "notes": "ORDERED fallback chain, globally applied to every non-strict agent-run lane. When the lane's requested provider probe fails, scripts/select_backend.py walks this chain in order (skipping the already-failed requested backend if it reappears) and runs the first candidate whose provider is available. Native Claude leads the chain and serves `native_model`. Z.ai GLM-5.2 is the second link, added after the 2026-07-24 outage: the chain was [\"claude\"] only AND probe_claude() hardcoded \"always available\", so an expired CLAUDE_CODE_OAUTH_TOKEN took down every agent lane in the fleet at once with no route out (instant is_error, 1 turn, $0 cost) while ZAI_API_KEY sat configured and healthy. probe_claude() now reports down only on an explicit 401/403 credential rejection, so a rate limit, 5xx, or network blip still keeps the fleet on Claude. Lanes with \"strict\": true (zai-canary, the comparison tiers) never walk the chain — unavailability fails the run. `native_model` is the model served whenever the native claude path runs (also what the --model opus alias resolves to); raised from claude-sonnet-5 to claude-opus-5 on 2026-08-01, so every non-strict agent lane and the twitter-ab claude leg now run Opus 5 on the same OAuth subscription."
+    "notes": "ORDERED fallback chain, applied to non-strict agent-run lanes that do not declare a lane.fallback_chain override. Native Claude leads and serves `native_model`; Z.ai GLM-5.2 is the global secondary. Cross-adapter fallbacks are never inferred globally: only lanes with an explicit compatibility-tested fallback_chain may enter an isolated adapter, and that lane chain replaces rather than extends the global chain. The intentionally narrow Claude 400/5xx/network fail-open behavior is unchanged. Strict lanes never walk either chain."
   },
   "lanes": {
     "rss": {
@@ -187,7 +187,10 @@
       "workflow": "daily-digest.yml",
       "harness": "agent-run",
       "backend": "claude",
-      "notes": "Local-source digest synthesis when MCP keys are absent."
+      "fallback_chain": [
+        "opencode-glm-5p3-flash"
+      ],
+      "notes": "Local-source digest synthesis when MCP keys are absent. Its committed research/digest/ + research/summaries/ contract and local-only prompt are compatible with isolated OpenCode editorial mode, so Claude unavailability uses OpenCode GLM 5.3 Flash instead of the global Z.ai chain."
     },
     "digest-audio-script": {
       "workflow": "daily-digest.yml",

@@ -7,21 +7,27 @@ fallback chain), probes each candidate's provider for availability, and
 emits the first available candidate to $GITHUB_OUTPUT. Called by
 `.github/actions/agent-run` as the single backend-selection step.
 
-Candidate order: [requested backend] + fallback.chain, deduplicated (a
-zai-primary lane whose chain starts with the same zai backend skips it).
+Candidate order: [requested backend] + either lane.fallback_chain (when
+declared) OR fallback.chain, deduplicated. A lane-local chain overrides the
+global chain because it is the explicit compatibility boundary for a
+cross-adapter fallback; the global chain remains agent-run-native.
 Probes: fireworks → tiny /v1/messages preflight (reuses
 check_fireworks_backend); zai → same-shape probe against the Z.ai
-Anthropic-compatible endpoint; claude → OAuth-token auth probe against
-api.anthropic.com that is UNAVAILABLE only on an explicit credential
-rejection (401/403) and available on anything else.
+Anthropic-compatible endpoint; claude → OAuth-token preflight against
+api.anthropic.com that is UNAVAILABLE on an explicit credential rejection
+(401/403) or a run-scoped rate limit (429), and available on anything else;
+opencode-go is available when its isolated-adapter credential is configured.
 
 Why the claude probe is auth-only (2026-07-24 incident): this probe used
 to hardcode "always available", so when CLAUDE_CODE_OAUTH_TOKEN expired
 every agent lane in the fleet died instantly (is_error, 1 turn, $0) with
 no route out — the chain could not move past a backend it always believed
-was up. It stays deliberately narrow in the other direction too: a 429,
-5xx, or network blip must NOT reroute a healthy fleet away from Claude,
-so only a real auth rejection counts as down.
+was up. A 429 proves the credential is alive but also proves Claude cannot
+serve this run, so the compatible local-source digest lane first continues to
+isolated OpenCode GLM 5.3 Flash. Other lanes retain the global Z.ai chain. The probe remains
+deliberately narrow for 400, 5xx, and network faults: those inconclusive
+responses keep the existing fail-open behavior rather than broadening the
+reroute policy.
 
 Strictness: `--fallback-policy none` or a lane with `"strict": true`
 disables the chain — the requested backend is the only candidate and its
@@ -118,7 +124,7 @@ def probe_zai(model: str) -> tuple[bool, str]:
 
 
 def probe_claude(model: str) -> tuple[bool, str]:
-    """Report the native Claude OAuth path down ONLY on a credential rejection.
+    """Report Claude down on auth rejection or a run-scoped rate limit.
 
     The Claude Code OAuth token authenticates with `authorization: Bearer`
     plus the oauth beta header. It must NOT be sent as `x-api-key` — the
@@ -127,9 +133,12 @@ def probe_claude(model: str) -> tuple[bool, str]:
     how a naive reuse of request_preflight() would strand the whole fleet
     on the fallback backend. Hence a dedicated request here.
 
-    A healthy token typically answers this 1-token ping with 200 or 429
-    (subscription tokens are rate-limited on raw API pings); both mean
-    "credential is alive". Only 401/403 mean the token itself is dead.
+    A 429 means the credential is alive, but availability is the ability to
+    serve this run, not merely authenticate. Non-strict callers should walk
+    to Z.ai instead of selecting a Claude path known to be throttled. Only
+    401/403 and 429 are classified unavailable; 400, 5xx, and network faults
+    retain the existing fail-open behavior because this narrow preflight does
+    not prove the full Claude Code path is unavailable in those cases.
     """
     token = os.environ.get("CLAUDE_CODE_OAUTH_TOKEN", "").strip()
     if not token:
@@ -143,13 +152,30 @@ def probe_claude(model: str) -> tuple[bool, str]:
         return True, f"native path (OAuth probe inconclusive: {redact(str(exc))})"
     if status in (401, 403):
         return False, f"HTTP {status}: {extract_message(status, body)}"
+    if status == 429:
+        return False, f"HTTP 429: rate limited for this run: {extract_message(status, body)}"
     return True, f"native path (claude-code-action OAuth; probe HTTP {status})"
+
+
+def probe_opencode(model: str) -> tuple[bool, str]:
+    """Check only whether the isolated OpenCode adapter can authenticate.
+
+    OpenCode Go does not expose a stable provider preflight endpoint here.
+    The isolated container owns runtime/provider error handling, including
+    fatal usage-limit detection. Selection therefore treats a configured key
+    as available and never exposes it to any non-OpenCode child action.
+    """
+    api_key = os.environ.get("OPENCODE_API_KEY", "").strip()
+    if not api_key:
+        return False, "OPENCODE_API_KEY is not configured"
+    return True, "isolated OpenCode credential configured"
 
 
 PROBES = {
     "fireworks": probe_fireworks,
     "zai": probe_zai,
     "claude": probe_claude,
+    "opencode-go": probe_opencode,
 }
 
 
@@ -198,10 +224,17 @@ def main_with_args(argv: list[str] | None = None) -> int:
         return config_error(f"{args.file} has no 'backends' profile table")
 
     strict = args.fallback_policy == "none"
+    lane_fallback_chain: list[str] = []
     if args.backend:
         requested = normalize(args.backend, backends)
         if requested is None:
             return config_error(f"unknown backend selector '{args.backend}'")
+        adapter = str(backends[requested].get("adapter", "agent-run"))
+        if adapter != "agent-run":
+            return config_error(
+                f"explicit backend '{requested}' uses adapter '{adapter}'; "
+                "cross-adapter execution requires a lane fallback_chain contract"
+            )
     elif args.lane:
         lane = lanes.get(args.lane)
         if lane is None:
@@ -217,10 +250,23 @@ def main_with_args(argv: list[str] | None = None) -> int:
                                 "in the backends table")
         if lane.get("strict"):
             strict = True
+        raw_lane_chain = lane.get("fallback_chain", [])
+        if not isinstance(raw_lane_chain, list):
+            return config_error(f"lane '{args.lane}' fallback_chain must be a list")
+        lane_fallback_chain = [str(entry) for entry in raw_lane_chain]
     else:
         return config_error("one of --lane or --backend is required")
 
-    chain: list[str] = [] if strict else list(fallback.get("chain") or [])
+    # An explicit lane chain is an OVERRIDE, not a prefix. Compatibility was
+    # proven for that lane's prompt/input/output boundary only; silently
+    # continuing into the host-checkout global chain after it fails would
+    # change provenance again and hide the isolated-adapter failure.
+    if strict:
+        chain: list[str] = []
+    elif lane_fallback_chain:
+        chain = lane_fallback_chain
+    else:
+        chain = list(fallback.get("chain") or [])
     candidates: list[str] = []
     for selector in [requested, *chain]:
         key = normalize(str(selector), backends)
@@ -246,7 +292,8 @@ def main_with_args(argv: list[str] | None = None) -> int:
     if chosen is None:
         print(f"::error::no available backend: walked {len(candidates)} candidate(s) "
               f"({', '.join(candidates)}) and every provider probe failed. "
-              "Fix the providers or extend fallback.chain in data/agent-backends.json.",
+              "Fix the providers or the selected lane/global fallback chain in "
+              "data/agent-backends.json.",
               file=sys.stderr)
         return 1
 
