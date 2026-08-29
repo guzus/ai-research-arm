@@ -304,7 +304,7 @@ false `deploy-stale` alerts. Do not "fix" any of these omissions.
 |---|---|---|
 | `daily-front-page.yml` | daily `00:30` (after digest) | `research/front-page/YYYY-MM-DD-front-page.png` |
 | `generative-research.yml` | `gen-research` issue label or `workflow_dispatch` with `topic` or `twitter_url` | `research/generative/*.{html,ara.md}` + `index.json` |
-| `translate-generative-research.yml` | manual `workflow_dispatch` with an existing article `slug` | One validated Korean translation revision under `research/generative/`; review PR by default |
+| `translate-generative-research.yml` | automatically dispatched after each generative article reaches `main`; manual `workflow_dispatch` also accepts an existing article `slug` | One validated Korean translation revision under `research/generative/`; automatic runs auto-merge, manual runs use a review PR by default |
 | `research-issue.yml` | issue labeled `research` | `research/issues/{issue-number}-research.md` |
 
 ### Meta (CI, code-review, self-improvement)

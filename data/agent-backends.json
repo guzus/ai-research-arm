@@ -209,7 +209,7 @@
     "generative-research-ko": {
       "workflow": "translate-generative-research.yml",
       "route": "generative-translation",
-      "notes": "Manual one-slug Korean backfill. The isolated adapter returns one uncommitted draft; trusted host validators and the canonical writer own the immutable artifact pair, index mutation, and review-first publication."
+      "notes": "Automatic one-slug Korean translation after each production generative-research publication, with manual backfill still available. The isolated adapter returns one uncommitted draft; trusted host validators and the canonical writer own the immutable artifact pair, index mutation, and gated publication."
     },
     "twitter-primary": {
       "workflow": "hourly-twitter.yml",

@@ -244,7 +244,7 @@ interesting ones:
 |---|---|---|
 | `daily-front-page.yml` | after a successful daily digest | newspaper PNG + interactive edition |
 | `generative-research.yml` | issue label or dispatch | long-form cited article |
-| `translate-generative-research.yml` | manual dispatch | validated Korean article translation via review PR |
+| `translate-generative-research.yml` | after each production generative article; manual dispatch also available | validated Korean article translation; automatic runs merge after all gates pass |
 | `research-issue.yml` | `research` issue label | report posted back to the issue |
 
 **Keep it honest** — the pipeline watching itself

@@ -18,10 +18,13 @@ on:
         default: false
         type: boolean
 
-# Serialize every backfill because each one mutates the same index.json row store.
-# safe-push intentionally does not auto-merge nested index conflicts for this lane.
+# Keep duplicate requests for one article serialized without collapsing distinct
+# articles into one pending slot. GitHub retains only one pending run per group,
+# so a global group silently dropped translations during publication bursts. The
+# production self-hosted runner still serializes execution; safe-push intentionally
+# does not auto-merge nested index conflicts for this lane.
 concurrency:
-  group: generative-research-ko-backfill
+  group: generative-research-ko-backfill-${{ inputs.slug }}
   cancel-in-progress: false
 
 jobs:
@@ -79,6 +82,10 @@ jobs:
           GIT_CONFIG_NOSYSTEM: "1"
           GIT_CONFIG_GLOBAL: /dev/null
         with:
+          # A dispatch can wait behind the serialized backlog. Resolve the
+          # branch again at execution time so earlier translation merges are
+          # present in index.json instead of checking out the dispatch-time SHA.
+          ref: ${{ github.event.repository.default_branch }}
           fetch-depth: 0
           persist-credentials: false
           set-safe-directory: false
