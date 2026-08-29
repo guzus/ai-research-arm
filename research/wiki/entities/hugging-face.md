@@ -4,12 +4,10 @@ title: Hugging Face
 type: entity
 aliases: ["Hugging Face", "HuggingFace", "@huggingface"]
 tags: [open-weights, model-hub, infrastructure, platform, m&a]
-description: The open-source model repository and platform hub that hosts most of the world's open-weight releases; reported exploring a sale at $13B+ (2026-08-24) and now reported agreed to be acquired by NVIDIA for $12.9B (~80x forward revenue, ~3x the 2023 Series D mark, 2026-08-27) — the victim-turned-open-weights-advocate of the July 2026 agent hack.
+description: The open-source model repository and platform hub that hosts most of the world's open-weight releases; reported exploring a sale at $13B+ (2026-08-24), rough triple its 2023 Series D mark — with NVIDIA now reported in serious acquisition talks valuing it above $13B (2026-08-27) — and the victim-turned-open-weights-advocate of the July 2026 agent hack.
 created_at: 2026-08-24
-timestamp: 2026-08-28T00:00:00Z
+timestamp: 2026-08-27T00:00:00Z
 sources:
-  - {title: "ARA daily digest 2026-08-28", path: research/digest/2026-08-28-digest.md}
-  - {title: "ARA model ticket — NVIDIA/Hugging Face acquisition", path: research/models/tickets/huggingface-sale-exploration-2026-08.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
@@ -88,25 +86,3 @@ land on its Hub before anywhere else.
   question from anonymous to a named, strategic suitor — an NVIDIA tie-up
   would make the model hub's centrality to [[open-weights]] distribution sit
   inside the hardware vendor that anchors the [[ai-capex]] buildout.
-
-## NVIDIA agrees to acquire Hugging Face for $12.9B (2026-08-28)
-
-- **The deal is reported agreed at $12.9B (2026-08-27, digested 2026-08-28).**
-  *The Information* reported **[[nvidia|NVIDIA]] has AGREED to acquire Hugging
-  Face for $12.9 billion** — carried by the outlet's own account and its
-  byline reporter, with TechCrunch and Reuters-linked coverage matching the
-  figure. The price reconciles with this page's revenue datapoint: at roughly
-  **$150M annualized revenue it is an ~80× forward multiple**, and it is
-  **~3x the $4.5B 2023 Series D mark** — a Microsoft/GitHub-shaped ($7.5B
-  then vs $12.9B now) price on open-weights *distribution*. The strategic
-  read on the record: NVIDIA is buying control of the default open-weights
-  host to **keep that distribution on CUDA**, hedging against the
-  OpenAI/Anthropic/Google custom-silicon programs (see [[model-specific-silicon]]).
-- **Still a signed-deal report, not a closed transaction.** Neither NVIDIA nor
-  Hugging Face has issued a statement, there is no filing and no regulatory
-  notice; the one inside-HF datapoint is a **non-denial** — an HF employee
-  excluded "the nvidia deal" from an otherwise open AMA. The
-  **concentration question is now live**: a hardware vendor owning the
-  default distribution point for open weights, and what that means for
-  CUDA-neutrality of hosted inference and of the [[open-weights]] ecosystem,
-  is the unresolved aftershock (ARA daily digest 2026-08-28).

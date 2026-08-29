@@ -9,11 +9,12 @@
 // a fork's own host — is self-contained and reproducible.
 
 import { spawnSync } from 'node:child_process';
-import { existsSync, readdirSync, mkdirSync, readFileSync, writeFileSync, cpSync, statSync, openSync, readSync, closeSync } from 'node:fs';
+import { existsSync, readdirSync, mkdirSync, readFileSync, writeFileSync, cpSync, statSync, openSync, readSync, closeSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as yaml from 'js-yaml';
 import { assertClaimReuseContract, EvidenceContractError } from './evidence-contract.mjs';
+import { isDeterministicFallbackSource, unavailableDigestMarkdown } from './publication-contract.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const dashboardDir = dirname(here);
@@ -185,6 +186,53 @@ function copyData() {
     if (!existsSync(src)) continue;
     const dest = join(publicResearch, sub);
     copyResearchDir(src, dest);
+  }
+
+  // Deterministic fallback digests are operational evidence, not editorial
+  // publications. Keep the source artifact in git for diagnosis, but expose
+  // only a machine-readable unavailable marker and remove every public
+  // derivative for the same date.
+  const digestSourceDir = join(researchSrc, 'digest');
+  const fallbackDates = new Set();
+  if (existsSync(digestSourceDir)) {
+    for (const name of readdirSync(digestSourceDir)) {
+      const match = /^(\d{4}-\d{2}-\d{2})-digest\.md$/.exec(name);
+      if (!match) continue;
+      const source = readFileSync(join(digestSourceDir, name), 'utf8');
+      if (!isDeterministicFallbackSource(source)) continue;
+      const date = match[1];
+      fallbackDates.add(date);
+      writeFileSync(join(publicResearch, 'digest', name), unavailableDigestMarkdown(date));
+      for (const dir of ['front-page', 'audio']) {
+        const publicDir = join(publicResearch, dir);
+        if (!existsSync(publicDir)) continue;
+        for (const candidate of readdirSync(publicDir)) {
+          if (candidate.startsWith(`${date}-`)) rmSync(join(publicDir, candidate), { force: true });
+        }
+      }
+      console.warn(`prebuild: ${date} fallback kept operational; public digest sanitized and derivatives suppressed`);
+    }
+  }
+
+  // Wiki audit records that explicitly describe fallback ingestion are also
+  // operational provenance. Keep them in the repository, but do not publish
+  // them as reader-facing wiki activity metadata.
+  const publicWikiLog = join(publicResearch, 'wiki', 'log.md');
+  if (fallbackDates.size && existsSync(publicWikiLog)) {
+    const blocks = readFileSync(publicWikiLog, 'utf8').split(/(?=^## \[)/m);
+    const sanitized = blocks.filter(block => {
+      const date = /^## \[(\d{4}-\d{2}-\d{2})\] ingest/m.exec(block)?.[1];
+      return !date || !fallbackDates.has(date);
+    }).join('');
+    writeFileSync(publicWikiLog, sanitized);
+  }
+  const publicWikiIndex = join(publicResearch, 'wiki', 'index.json');
+  if (fallbackDates.size && existsSync(publicWikiIndex)) {
+    const index = JSON.parse(readFileSync(publicWikiIndex, 'utf8'));
+    if (Array.isArray(index.recent_log)) {
+      index.recent_log = index.recent_log.filter(entry => !fallbackDates.has(String(entry?.date || '')));
+      writeFileSync(publicWikiIndex, JSON.stringify(index, null, 2) + '\n');
+    }
   }
 
   for (const lane of AB_COMPARISON_LANES) {
@@ -776,7 +824,10 @@ function buildSearchIndex() {
   // splitSections() in main.ts). Skip "Executive Summary" — it renders as the
   // tldr card with no .content-card-title to scroll to.
   try {
-    const dir = join(researchSrc, 'digest');
+    // Index the public projection, never the operational source. Fallback
+    // dates contain only the unavailable marker here and therefore emit no
+    // searchable raw excerpts.
+    const dir = join(publicResearch, 'digest');
     if (existsSync(dir)) {
       const re = /^(\d{4}-\d{2}-\d{2})-digest\.md$/;
       const dates = readdirSync(dir)

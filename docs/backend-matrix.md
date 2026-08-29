@@ -123,6 +123,7 @@ Reading notes:
 - `auto-rerun-on-runner-loss.yml`
 - `blog-subscriptions.yml`
 - `ci.yml`
+- `cleanup-fallback-publications.yml`
 - `daily-ai-blogs.yml`
 - `daily-earnings.yml`
 - `daily-front-page.yml`
@@ -133,7 +134,7 @@ Reading notes:
 - `model-pricing.yml`
 - `production-synthetic.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-opus-5`. 31 SSOT lanes (+10 dispatch execution paths) across 33 workflows; 13 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-opus-5`. 31 SSOT lanes (+10 dispatch execution paths) across 34 workflows; 14 workflows run no model._
 
 <!-- END GENERATED BACKEND MATRIX -->
 

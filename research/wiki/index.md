@@ -91,7 +91,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[xai]] — Elon Musk's frontier lab behind Grok; shipped Grok 4.6 into Cursor and Grok Build at $2/$6 per Mtok (2026-08-13), dating Grok 4.7 ~3–4 weeks out, and runs a compute-landlord business renting Colossus capacity to rival labs at $2B+/month.
 - [[xiaomi-mimo-v2-5-pro]] — Xiaomi MiMo UltraSpeed model tied to the 1,000+ tok/s on 1T MoE claim using a standard 8-GPU server; high-signal but still partially verified.
 - [[zhipu-glm-5-2]] — Zhipu / Z.ai's 1M-context GLM-5.2, deployed in the GLM Coding Plan with MIT open weights promised; marquee Chinese open-weight release.
-- [[zhipu-glm-5-3]] — Zhipu / Z.ai's GLM-5.3, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 top of open-model rankings); confirmed 2026-08-27 as the lab behind the stealth Ox Alpha, shipped the fast GLM-5.3-Flash ($0.25/Mtok output), and released as open weights on Hugging Face (2026-08-28) — the day's top Hacker News item.
+- [[zhipu-glm-5-3]] — Zhipu / Z.ai's GLM-5.3, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 top of open-model rankings); confirmed 2026-08-27 as the lab behind the stealth Ox Alpha, with the fast GLM-5.3-Flash ($0.25/Mtok output) the day's top Hacker News item.
 
 ## Concepts
 
@@ -101,7 +101,6 @@ Each page is one of three types — entity, concept, or theme. See
 - [[lifescibench]] — OpenAI's 750-task expert-authored life-science research benchmark; the best model clears only 36.1%.
 - [[model-specific-silicon]] — Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token.
 - [[matrix-multiplication-exponent]] — The complexity-exponent ω for matrix multiplication; pushed below 2.371177 on 2026-08-19 by a DeepMind-and-academia team combining modern optimization with AlphaEvolve.
-- [[model-hardware-standard]] — Anthropic's proposed open standard (research preview 2026-08-27) letting AI agents directly control physical lab and factory gear.
 - [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts.
 - [[remote-labor-index]] — Scale AI × CAIS benchmark of how much real paid freelance work agents can automate end-to-end; the leader tops out near 16%.
 - [[verification-bottleneck]] — Models now emit research-shaped output faster than qualified humans can check it, so verification — not generation — becomes the scarce input.

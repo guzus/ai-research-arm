@@ -39,7 +39,7 @@ const KIND_LABEL: Record<BriefItem['kind'], { en: string; ko: string }> = {
   gpu: { en: 'Compute market', ko: '컴퓨트 시장' },
 };
 
-export function renderWhatChanged(items: BriefItem[], watchlist: WatchlistState, language: 'en' | 'ko', degraded = false): string {
+export function renderWhatChanged(items: BriefItem[], watchlist: WatchlistState, language: 'en' | 'ko'): string {
   const ko = language === 'ko';
   const watched = new Set(watchlist.topics);
   const rows = items.map((item) => {
@@ -71,7 +71,6 @@ export function renderWhatChanged(items: BriefItem[], watchlist: WatchlistState,
     '  </header>',
     watchlist.topics.length ? `<p class="watchlist-summary">${ko ? '이 기기에서 강조 표시' : 'Highlighted on this device'}: ${esc(watchlist.topics.join(', ').replace(/-/g, ' '))}</p>` : '',
     `<p class="watchlist-note">${ko ? '관심 주제는 이 기기에서 일치하는 카드를 강조할 뿐이며, 구독이나 개인 맞춤 순위가 아닙니다. 피드는 사이트 전체 내용을 제공합니다.' : 'Watched topics only highlight matching cards on this device; they do not subscribe you or personalize ranking. The feed is site-wide.'}</p>`,
-    degraded ? `<p class="brief-degraded"><strong>${ko ? '저하 모드' : 'Degraded mode'}.</strong> ${ko ? '오늘의 다이제스트는 모델 종합이 아닌 표시된 결정적 대체 출력입니다. 카드 순서를 편집 우선순위로 해석하지 마세요.' : "Today's digest is a labelled deterministic fallback, not model synthesis. Card order is not an editorial ranking."}</p>` : '',
     `  <div class="change-grid">${rows}</div>`,
     '</section>',
   ].filter(Boolean).join('\n');

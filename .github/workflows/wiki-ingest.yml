@@ -101,18 +101,39 @@ jobs:
             echo "yesterday=$(date -u -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -u -v-1d +'%Y-%m-%d')"
           } >> "$GITHUB_OUTPUT"
 
+      - name: Check curated digest publication state
+        id: digest-publication
+        run: |
+          set -euo pipefail
+          DIGEST="research/digest/${{ steps.datetime.outputs.date }}-digest.md"
+          if [ ! -f "$DIGEST" ]; then
+            DIGEST=$(find research/digest -maxdepth 1 -type f -name '*-digest.md' | sort | tail -1)
+          fi
+          if [ -z "${DIGEST:-}" ]; then
+            echo "editorial=false" >> "$GITHUB_OUTPUT"
+            echo "No digest available; skipping wiki ingest."
+          elif python3 scripts/digest_publication_state.py "$DIGEST"; then
+            echo "editorial=false" >> "$GITHUB_OUTPUT"
+            echo "Operational fallback found; skipping wiki ingest because it is not curated synthesis."
+          else
+            echo "editorial=true" >> "$GITHUB_OUTPUT"
+          fi
+
       # Snapshot HEAD before the agent runs so the deletion guard below can
       # diff exactly the agent's commit (robust whether or not it commits).
       - name: Record base commit
+        if: steps.digest-publication.outputs.editorial == 'true'
         id: basesha
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Setup uv
+        if: steps.digest-publication.outputs.editorial == 'true'
         uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           enable-cache: true
 
       - name: Install Python dependencies
+        if: steps.digest-publication.outputs.editorial == 'true'
         run: uv sync --frozen
 
       # Wiki ingest agent — maintains the compounding knowledge base at
@@ -153,6 +174,7 @@ jobs:
       # fires). Without the inspect step, this flag would silently mask
       # timeouts as success.
       - name: Ingest digest into wiki with SSOT-routed agent
+        if: steps.digest-publication.outputs.editorial == 'true'
         id: ingest
         timeout-minutes: 90
         continue-on-error: true
@@ -346,6 +368,7 @@ jobs:
                 path and the whole run fails.
 
       - name: Require wiki output
+        if: steps.digest-publication.outputs.editorial == 'true'
         uses: ./.github/actions/require-output
         with:
           base-sha: ${{ steps.basesha.outputs.sha }}
@@ -360,7 +383,7 @@ jobs:
       # steps (telemetry) still fire while flipping job.status to failure
       # when it should be.
       - name: Inspect routed agent outcome
-        if: always()
+        if: always() && steps.digest-publication.outputs.editorial == 'true'
         env:
           OUTCOME: ${{ steps.ingest.outcome }}
         run: |
@@ -376,6 +399,7 @@ jobs:
       # page files; fail before the commit reaches main + Vercel. Slugs are
       # immutable by contract, so a rename is a deletion and is caught too.
       - name: Guard against wiki page deletions
+        if: steps.digest-publication.outputs.editorial == 'true'
         env:
           BASE_SHA: ${{ steps.basesha.outputs.sha }}
         run: |
@@ -393,6 +417,7 @@ jobs:
       # changes". Push failures propagate as a real job
       # failure. See .github/actions/safe-push/action.yml.
       - name: Push changes
+        if: steps.digest-publication.outputs.editorial == 'true'
         id: push
         uses: ./.github/actions/safe-push
         with:

@@ -58,9 +58,7 @@ test('What changed DOM exposes reasoning, freshness, honest local highlights, an
   assert.match(html, /Site-wide feed/);
   assert.match(html, /href="\/feed\.xml"/);
   assert.match(html, /data-watch-topic="anthropic"/);
-  const degraded = mod.renderWhatChanged([], { topics: [] }, 'en', true);
-  assert.match(degraded, /Degraded mode/);
-  assert.match(degraded, /not an editorial ranking/);
+  assert.doesNotMatch(html, /Degraded mode|저하 모드|deterministic fallback/i);
   const nav = readFileSync(join(root, 'index.html'), 'utf8');
   assert.equal((nav.match(/class="tab"/g) || []).length, 6);
 });

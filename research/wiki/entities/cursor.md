@@ -4,11 +4,10 @@ title: Cursor (Anysphere)
 type: entity
 aliases: [Cursor, Anysphere, "@cursor_ai", "Cursor AI", "SpaceXAI", "Cursor Origin", "Origin"]
 tags: [ai-coding, ide, acquisition, agentic-coding, capital-markets]
-description: AI coding tool / IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close); launched Cursor Origin, a Git-repo host built around agent actions rather than human pull requests (2026-08-18), and drew a first-party decision post from OpenAI following the acquisition (2026-08-28).
+description: AI coding tool / IDE maker Anysphere, acquired by SpaceX in a $60B all-stock deal (Q3-2026 close); launched Cursor Origin, a Git-repo host built around agent actions rather than human pull requests (2026-08-18).
 created_at: 2026-06-17
-timestamp: 2026-08-29T00:00:00Z
+timestamp: 2026-08-18T00:00:00Z
 sources:
-  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
@@ -63,14 +62,6 @@ the cycle's largest AI-coding M&A: a **$60B all-stock acquisition by
   the collaboration/codebase surface its planner/worker agent swarm and the
   [[xai|SpaceXAI]] captive model thread point toward (ARA daily digest
   2026-08-18).
-- **OpenAI publishes its decision on Cursor following the SpaceX acquisition
-  (2026-08-28).** [[openai|OpenAI]] published a first-party post — **"Our
-  decision on Cursor following its acquisition by SpaceX"** — its first formal
-  statement on the acquired rival, which had been a major Codex/ChatGPT
-  distribution surface before the deal (openai.com). The digest excerpt
-  carries only the headline, so the substance of the decision — access,
-  model-availability or partnership terms — is **unresolved** until the
-  post's contents are captured (ARA daily digest 2026-08-29).
 
 ## Open questions
 
@@ -83,5 +74,3 @@ the cycle's largest AI-coding M&A: a **$60B all-stock acquisition by
 - **Developer retention.** Does Cursor's user base stay through a SpaceX
   acquisition, or does the ownership change push developers toward rival
   agentic IDEs?
-- **What did OpenAI actually decide?** The 2026-08-28 first-party post's
-  contents are not yet captured in the wiki's sources; resolve when ingested.

@@ -4,11 +4,10 @@ title: Neocloud
 type: concept
 aliases: [neocloud, "neo-cloud", "GPU-as-a-service", GPUaaS]
 tags: [ai-infrastructure, gpu-cloud, business-model, take-or-pay]
-description: Business model where a specialized provider buys GPUs on debt and rents the capacity back under multi-year take-or-pay contracts, distinct from general-purpose hyperscalers; Lambda's $1B debt raise to buy more chips (2026-08-28) is a fresh instance.
+description: Business model where a specialized provider buys GPUs on debt and rents the capacity back under multi-year take-or-pay contracts, distinct from general-purpose hyperscalers.
 created_at: 2026-05-24
-timestamp: 2026-08-29T00:00:00Z
+timestamp: 2026-05-24T00:00:00Z
 sources:
-  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
 ---
@@ -35,13 +34,6 @@ the **Google × Blackstone $5B TPU-as-a-service JV** (BXN1, 500 MW by 2027) is a
 neocloud play explicitly aimed at [[coreweave]] and [[nebius]] (ARA digest
 2026-05-20). OpenAI's "Guaranteed Capacity" multi-year compute futures are the
 demand-side mirror of the same take-or-pay logic.
-
-**Lambda's $1B debt raise (2026-08-28).** Lambda — one of the older independent
-neoclouds — **secured $1B in debt to buy more chips** (TechCrunch), a fresh
-instance of the model's defining mechanic: GPU acquisition financed by debt
-against a forward contract book, continuing at scale alongside
-[[coreweave]]'s >9%-yield debt and [[nebius]]'s prepayment-heavy deals (ARA
-daily digest 2026-08-29). See [[ai-capex]].
 
 ## Open questions
 - **Concentration is structural.** Because the debt is underwritten against a few
