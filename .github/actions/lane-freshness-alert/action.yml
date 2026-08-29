@@ -1,7 +1,8 @@
-name: Lane freshness alert
+name: Lane availability and producer-health alert
 description: >-
-  Check research-lane freshness (git-commit recency vs per-lane cadence) and,
-  on staleness, alert via hooker (relays to Telegram) AND a direct Telegram
+  Check research-lane availability (git-commit recency vs per-lane cadence)
+  separately from producer health (labelled fallback/carry-forward signals) and,
+  on either anomaly, alert via hooker (relays to Telegram) AND a direct Telegram
   fallback, then fail the job. Stdlib Python only, so it runs identically on
   ubuntu-latest and the self-hosted runner. Intended to be invoked from both
   tiers so the watchdog survives whichever tier an outage takes down. The dual
@@ -32,11 +33,25 @@ inputs:
 
 outputs:
   stale:
-    description: "'true' when one or more lanes are stale (lets the caller gate a heartbeat)."
+    description: >-
+      Compatibility alert bit: 'true' when any lane is unavailable, unknown, or
+      producer-degraded. Existing callers use this to gate a healthy heartbeat.
     value: ${{ steps.check.outputs.stale }}
   stale_lanes:
-    description: Comma-separated stale lane names.
+    description: Compatibility alias for comma-separated alerting lane names.
     value: ${{ steps.check.outputs.stale_lanes }}
+  alert_lanes:
+    description: Comma-separated lanes with availability or producer-health alerts.
+    value: ${{ steps.check.outputs.alert_lanes }}
+  unavailable_lanes:
+    description: Comma-separated stale, missing, or availability-unknown lanes.
+    value: ${{ steps.check.outputs.unavailable_lanes }}
+  degraded_lanes:
+    description: Comma-separated lanes whose labelled producer signal is degraded.
+    value: ${{ steps.check.outputs.degraded_lanes }}
+  producer_unknown_lanes:
+    description: Comma-separated lanes whose configured producer signal cannot be evaluated.
+    value: ${{ steps.check.outputs.producer_unknown_lanes }}
 
 runs:
   using: composite
@@ -44,7 +59,7 @@ runs:
     # The script writes stale / stale_lanes / idempotency_key / report to
     # $GITHUB_OUTPUT (registered as this step's outputs) and a table to the
     # job step summary. `|| true` keeps this step green so the alert steps can
-    # still fire on staleness; the explicit "Fail if stale" step (LAST) sets
+    # still fire on an alert; the explicit final fail step sets
     # the job's final red status. (Avoids relying on composite continue-on-error.)
     - name: Check lane freshness
       id: check
@@ -60,9 +75,9 @@ runs:
         [ "$code" -eq 0 ] || [ "$code" -eq 2 ] || exit "$code"
 
     # ── Channel 1: hooker (relays to Telegram) ─────────────────────────────
-    # Idempotency-Key is a per-day hash over the stale set, so the ubuntu-latest
+    # Idempotency-Key is a per-day hash over the alert set, so the ubuntu-latest
     # and self-hosted jobs (and repeat runs the same day) collapse to a single
-    # delivered message; a change in the stale set produces a new key and
+    # delivered message; a change in the alert set produces a new key and
     # re-alerts. continue-on-error so a hooker outage cannot fail the job and
     # cannot prevent the Telegram fallback below from firing.
     - name: Alert via hooker (relays to Telegram)
@@ -74,13 +89,16 @@ runs:
         HOOKER_TOKEN: ${{ inputs.hooker_token }}
         TOPIC: ${{ inputs.topic }}
         STALE_LANES: ${{ steps.check.outputs.stale_lanes }}
+        UNAVAILABLE_LANES: ${{ steps.check.outputs.unavailable_lanes }}
+        DEGRADED_LANES: ${{ steps.check.outputs.degraded_lanes }}
+        PRODUCER_UNKNOWN_LANES: ${{ steps.check.outputs.producer_unknown_lanes }}
         IDEMPOTENCY_KEY: ${{ steps.check.outputs.idempotency_key }}
         REPO: ${{ github.repository }}
         SERVER: ${{ github.server_url }}
       run: |
         set -euo pipefail
         if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
-          echo "Hooker credentials missing — skipping hooker alert (Telegram fallback + staleness fail still apply)"
+          echo "Hooker credentials missing — skipping hooker alert (Telegram fallback + lane-health fail still apply)"
           exit 0
         fi
         count=$(printf '%s' "$STALE_LANES" | tr ',' '\n' | grep -c . || true)
@@ -88,10 +106,11 @@ runs:
         # since the body uses parse_mode:HTML.
         SAFE_LANES=$(printf '%s' "$STALE_LANES" \
           | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
-        TEXT=$(printf 'Stale lanes: %s\n\nThese research lanes have not committed within their expected cadence — likely a workflow outage. Check the GitHub Actions billing/spending limit and the self-hosted runner.' "$SAFE_LANES")
+        TEXT=$(printf 'Alerting lanes: %s\nUnavailable/unknown: %s\nProducer degraded: %s\nProducer unknown: %s\n\nThe report separates artifact availability from producer health. Investigate the liveness workflow.' \
+          "$SAFE_LANES" "${UNAVAILABLE_LANES:-none}" "${DEGRADED_LANES:-none}" "${PRODUCER_UNKNOWN_LANES:-none}")
         ACTIONS_URL="${SERVER%/}/${REPO}/actions/workflows/liveness-check.yml"
         jq -n \
-          --arg title "🚨 ARA pipeline: ${count} lane(s) stale" \
+          --arg title "🚨 ARA pipeline: ${count} lane(s) unhealthy" \
           --arg text "$TEXT" \
           --arg btn "Investigate (Actions)" \
           --arg url "$ACTIONS_URL" \
@@ -125,6 +144,9 @@ runs:
         TELEGRAM_BOT_TOKEN: ${{ inputs.telegram_bot_token }}
         TELEGRAM_CHAT_ID: ${{ inputs.telegram_chat_id }}
         STALE_LANES: ${{ steps.check.outputs.stale_lanes }}
+        UNAVAILABLE_LANES: ${{ steps.check.outputs.unavailable_lanes }}
+        DEGRADED_LANES: ${{ steps.check.outputs.degraded_lanes }}
+        PRODUCER_UNKNOWN_LANES: ${{ steps.check.outputs.producer_unknown_lanes }}
         REPO: ${{ github.repository }}
         SERVER: ${{ github.server_url }}
         RUN_ID: ${{ github.run_id }}
@@ -139,8 +161,8 @@ runs:
         # Plain text + a Markdown link. Lane names are a controlled allowlist
         # (no Markdown metacharacters), so keeping the body metachar-free is
         # what prevents a silent Telegram parse error under continue-on-error.
-        TEXT=$(printf '🚨 ARA pipeline: %s lane(s) STALE\n\nStale lanes: %s\n\nNo commit within the expected cadence — likely a workflow outage (check GitHub Actions billing/spending limit + the self-hosted runner).\n\n[Investigate](%s)' \
-          "$count" "$STALE_LANES" "$RUN_URL")
+        TEXT=$(printf '🚨 ARA pipeline: %s lane(s) UNHEALTHY\n\nAlerting: %s\nUnavailable/unknown: %s\nProducer degraded: %s\nProducer unknown: %s\n\n[Investigate](%s)' \
+          "$count" "$STALE_LANES" "${UNAVAILABLE_LANES:-none}" "${DEGRADED_LANES:-none}" "${PRODUCER_UNKNOWN_LANES:-none}" "$RUN_URL")
         if curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
           --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
           --data-urlencode "text=${TEXT}" \
@@ -156,11 +178,11 @@ runs:
     # subsequent steps once one fails without continue-on-error), which is why
     # the alert channels above run first and why the heartbeat is wired in the
     # caller AFTER this action with an `if: stale == 'false'` guard.
-    - name: Fail if stale
+    - name: Fail if lane health alerts
       if: steps.check.outputs.stale == 'true'
       shell: bash
       env:
         STALE_LANES: ${{ steps.check.outputs.stale_lanes }}
       run: |
-        echo "::error::stale lanes: ${STALE_LANES}"
+        echo "::error::lane health alerts: ${STALE_LANES}"
         exit 1

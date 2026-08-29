@@ -13,6 +13,7 @@ import { existsSync, readdirSync, mkdirSync, readFileSync, writeFileSync, cpSync
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as yaml from 'js-yaml';
+import { assertClaimReuseContract, EvidenceContractError } from './evidence-contract.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const dashboardDir = dirname(here);
@@ -891,41 +892,51 @@ function buildEvidenceArtifacts() {
     const parsed = JSON.parse(readFileSync(path, 'utf8'));
     publicClaims = (Array.isArray(parsed.claims) ? parsed.claims : [])
       .filter((claim) => claim && typeof claim.claim === 'string' && typeof claim.article === 'string')
-      .map((claim) => ({
-        article: claim.article,
-        article_title: claim.article_title || claim.article,
-        article_created_at: claim.article_created_at || null,
-        key: claim.key || `${claim.article}#${claim.id || 'claim'}`,
-        claim: claim.claim,
-        type: claim.type || 'other',
-        confidence: claim.confidence || 'unknown',
-        risk: claim.risk || null,
-        as_of: claim.as_of || null,
-        reusable: claim.reusable === true,
-        reuse_block: claim.reuse_block || null,
-        source_tiers: Array.isArray(claim.source_tiers) ? claim.source_tiers : [],
-        source_urls: Array.isArray(claim.source_urls) ? claim.source_urls : [],
-        hosts: Array.isArray(claim.hosts) ? claim.hosts : [],
-      }));
+      .map((claim) => {
+        assertClaimReuseContract(claim);
+        return {
+          article: claim.article,
+          article_title: claim.article_title || claim.article,
+          article_created_at: claim.article_created_at || null,
+          key: claim.key || `${claim.article}#${claim.id || 'claim'}`,
+          claim: claim.claim,
+          type: claim.type || 'other',
+          confidence: claim.confidence || 'unknown',
+          risk: claim.risk || null,
+          as_of: claim.as_of || null,
+          reusable: claim.reusable,
+          reuse_block: claim.reuse_block ?? null,
+          source_tiers: Array.isArray(claim.source_tiers) ? claim.source_tiers : [],
+          source_urls: Array.isArray(claim.source_urls) ? claim.source_urls : [],
+          hosts: Array.isArray(claim.hosts) ? claim.hosts : [],
+        };
+      });
     const dir = join(publicResearch, 'claims');
     mkdirSync(dir, { recursive: true });
     writeFileSync(join(dir, 'public.json'), JSON.stringify({ generated_at: new Date().toISOString(), contract: 'evidence-metadata-not-independent-truth', claims: publicClaims }));
     for (const claim of publicClaims) {
+      const articleSlug = articleSlugByStem.get(claim.article);
+      // A search result is actionable only when its article route resolves.
+      // The public ledger still retains every claim for article/dossier drawers.
+      if (!articleSlug) continue;
       entries.push({
         id: claim.key,
         type: 'claim',
         title: claim.article_title,
         body: claim.claim,
-        url: `/research/${articleSlugByStem.get(claim.article) || ''}`,
+        url: `/research/${articleSlug}`,
         date: claim.as_of || claim.article_created_at || '',
         confidence: claim.confidence,
         risk: claim.risk || '',
         sourceTier: claim.source_tiers[0] || '',
         sourceTiers: claim.source_tiers,
         language: 'en',
+        reusable: claim.reusable,
+        reuse_block: claim.reuse_block,
       });
     }
   } catch (e) {
+    if (e instanceof EvidenceContractError) throw e;
     console.warn('prebuild: public claim evidence skipped:', e?.message || e);
   }
 

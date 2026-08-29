@@ -21,8 +21,8 @@ out with `fetch-depth: 0` (a shallow clone makes `git log` unreliable;
 we warn when we detect one).
 
 Exit codes:
-  0  every lane is fresh
-  2  one or more lanes are stale or their directory is missing (alert)
+  0  every artifact is available and every producer is healthy
+  2  one or more availability/producer states alert
   1  internal error (e.g. not a git repository)
 
 Per-lane thresholds are tuned to each lane's schedule (see CLAUDE.md
@@ -36,6 +36,7 @@ import argparse
 import glob
 import json
 import os
+import re
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -57,11 +58,21 @@ LANE_THRESHOLDS_HOURS: dict[str, float] = {
 LANE_FRESHNESS_PATHS: dict[str, tuple[str, ...]] = {
     entry["id"]: tuple(entry["freshness_paths"]) for entry in _FRESHNESS_ENTRIES
 }
+LANE_DEGRADED_SIGNALS: dict[str, dict[str, object]] = {
+    entry["id"]: entry["degraded_signal"]
+    for entry in _FRESHNESS_ENTRIES
+    if isinstance(entry.get("degraded_signal"), dict)
+}
 
 FRESH = "fresh"
 STALE = "stale"
 MISSING = "missing"
 UNKNOWN = "unknown"
+
+AVAILABLE = "available"
+UNAVAILABLE = "unavailable"
+HEALTHY = "healthy"
+DEGRADED = "degraded"
 
 # States that should trigger an alert.
 # UNKNOWN means the watchdog cannot prove freshness (commonly truncated git
@@ -76,10 +87,20 @@ class LaneStatus:
     threshold_hours: float
     age_hours: Optional[float]
     state: str
+    producer_state: str = HEALTHY
+    degraded_reason: Optional[str] = None
+
+    @property
+    def availability(self) -> str:
+        if self.state == FRESH:
+            return AVAILABLE
+        if self.state in {STALE, MISSING}:
+            return UNAVAILABLE
+        return UNKNOWN
 
     @property
     def alerting(self) -> bool:
-        return self.state in ALERTING_STATES
+        return self.state in ALERTING_STATES or self.producer_state != HEALTHY
 
 
 def _git(args: list[str], repo_root: str) -> Optional[str]:
@@ -124,6 +145,95 @@ def lane_age_hours(lane: str, now_epoch: int, repo_root: str) -> Optional[float]
     return (now_epoch - commit_epoch) / 3600.0
 
 
+def _select_values(value: object, selector: str) -> list[object]:
+    """Resolve a deliberately small dotted selector with ``*`` wildcards.
+
+    This is not JSONPath: keeping the grammar to object keys plus collection
+    wildcard makes registry signals deterministic and easy to validate.
+    """
+    values = [value]
+    for part in selector.split("."):
+        next_values: list[object] = []
+        for current in values:
+            if part == "*":
+                if isinstance(current, dict):
+                    next_values.extend(current.values())
+                elif isinstance(current, list):
+                    next_values.extend(current)
+            elif isinstance(current, dict) and part in current:
+                next_values.append(current[part])
+        values = next_values
+    return values
+
+
+def lane_producer_health(lane: str, repo_root: str) -> tuple[str, Optional[str]]:
+    """Return producer health independently of artifact availability.
+
+    A lane without an executable degraded signal is healthy by construction:
+    its policy fails closed and therefore cannot publish a labelled degraded
+    artifact. Configured signals are strict. Missing git/JSON evidence is
+    UNKNOWN and alerts rather than silently claiming producer health.
+    """
+    signal = LANE_DEGRADED_SIGNALS.get(lane)
+    if not signal:
+        return HEALTHY, None
+    label = str(signal["label"])
+    kind = signal["kind"]
+    if kind == "commit_subject":
+        configured_paths = signal.get("paths")
+        paths = (
+            tuple(str(path) for path in configured_paths)
+            if isinstance(configured_paths, list)
+            else LANE_FRESHNESS_PATHS.get(lane, (f"research/{lane}",))
+        )
+        subject = _git(["log", "-1", "--format=%s", "--", *paths], repo_root)
+        if subject is None:
+            return UNKNOWN, f"{label}: commit subject unavailable"
+        if re.fullmatch(str(signal["pattern"]), subject):
+            return DEGRADED, f"{label}: {subject}"
+        return HEALTHY, None
+    if kind == "json_boolean_any":
+        relative_glob = str(signal["path"])
+        matches = sorted(glob.glob(os.path.join(repo_root, relative_glob)))
+        if not matches:
+            return UNKNOWN, f"{label}: no file matches {relative_glob}"
+        artifact_path = matches[-1]
+        display_path = os.path.relpath(artifact_path, repo_root)
+        try:
+            with open(artifact_path, encoding="utf-8") as handle:
+                payload = json.load(handle)
+        except (OSError, json.JSONDecodeError) as exc:
+            return UNKNOWN, f"{label}: cannot read {display_path}: {type(exc).__name__}"
+        observed = False
+        for selector in signal["selectors"]:  # validated by artifact_slos
+            values = _select_values(payload, str(selector))
+            if not values:
+                continue
+            observed = True
+            if any(not isinstance(value, bool) for value in values):
+                return UNKNOWN, f"{label}: {display_path} {selector} is not boolean"
+            if any(value is True for value in values):
+                return DEGRADED, f"{label}: {display_path} {selector}=true"
+        if not observed:
+            return UNKNOWN, f"{label}: {display_path} selectors matched no values"
+        return HEALTHY, None
+    if kind == "text_regex":
+        relative_glob = str(signal["path"])
+        matches = sorted(glob.glob(os.path.join(repo_root, relative_glob)))
+        if not matches:
+            return UNKNOWN, f"{label}: no file matches {relative_glob}"
+        latest = matches[-1]
+        try:
+            with open(latest, encoding="utf-8") as handle:
+                text = handle.read()
+        except OSError as exc:
+            return UNKNOWN, f"{label}: cannot read {relative_glob}: {type(exc).__name__}"
+        if re.search(str(signal["pattern"]), text):
+            return DEGRADED, f"{label}: {os.path.relpath(latest, repo_root)}"
+        return HEALTHY, None
+    return UNKNOWN, f"unsupported degraded signal kind: {kind}"
+
+
 def classify(age_hours: Optional[float], threshold_hours: float, dir_exists: bool) -> str:
     if not dir_exists:
         return MISSING
@@ -139,6 +249,7 @@ def evaluate(
     *,
     age_fn: Callable[[str, int, str], Optional[float]] = lane_age_hours,
     dir_exists_fn: Callable[[str, str], bool] = lane_dir_exists,
+    producer_fn: Callable[[str, str], tuple[str, Optional[str]]] = lane_producer_health,
 ) -> list[LaneStatus]:
     """Evaluate every configured lane. age_fn/dir_exists_fn are injectable
     so the logic can be unit-tested without a real repository."""
@@ -146,7 +257,17 @@ def evaluate(
     for lane, threshold in thresholds.items():
         exists = dir_exists_fn(lane, repo_root)
         age = age_fn(lane, now_epoch, repo_root) if exists else None
-        results.append(LaneStatus(lane, threshold, age, classify(age, threshold, exists)))
+        producer_state, reason = producer_fn(lane, repo_root) if exists else (UNKNOWN, None)
+        results.append(
+            LaneStatus(
+                lane,
+                threshold,
+                age,
+                classify(age, threshold, exists),
+                producer_state,
+                reason,
+            )
+        )
     return results
 
 
@@ -159,50 +280,64 @@ def _fmt_age(age_hours: Optional[float]) -> str:
 
 
 def format_report(statuses: list[LaneStatus]) -> str:
-    """Human/markdown-friendly table. Stale and missing lanes first."""
+    """Human/markdown-friendly table. Alerting lanes first."""
     icon = {FRESH: "✅", STALE: "🔴", MISSING: "❓", UNKNOWN: "⚠️"}
     order = {STALE: 0, MISSING: 1, UNKNOWN: 2, FRESH: 3}
-    rows = sorted(statuses, key=lambda s: (order[s.state], s.lane))
-    lines = ["| lane | state | age | threshold |", "|---|---|---|---|"]
+    rows = sorted(statuses, key=lambda s: (not s.alerting, order[s.state], s.lane))
+    lines = [
+        "| lane | availability | producer | legacy state | age | threshold | detail |",
+        "|---|---|---|---|---|---|---|",
+    ]
     for s in rows:
+        detail = (s.degraded_reason or "-").replace("|", "\\|")
         lines.append(
-            f"| `{s.lane}` | {icon[s.state]} {s.state} "
-            f"| {_fmt_age(s.age_hours)} | {s.threshold_hours:g}h |"
+            f"| `{s.lane}` | {icon[s.state]} {s.availability} | {s.producer_state} "
+            f"| {s.state} | {_fmt_age(s.age_hours)} | {s.threshold_hours:g}h | {detail} |"
         )
     return "\n".join(lines)
 
 
-def idempotency_key(stale_lanes: list[str], now: datetime) -> str:
-    """Stable per-day key over the stale set, so the same outage reported
+def idempotency_key(alert_lanes: list[str], now: datetime) -> str:
+    """Stable per-day key over the alert set, so the same outage reported
     by both the ubuntu-latest and self-hosted watchdog jobs (and by repeat
     runs the same day) collapses to a single delivered alert. A change in
-    the stale set (escalation) produces a new key."""
+    the alert set (escalation) produces a new key."""
     date = now.strftime("%Y-%m-%d")
-    part = "-".join(sorted(stale_lanes)) if stale_lanes else "none"
+    part = "-".join(sorted(alert_lanes)) if alert_lanes else "none"
     return f"lane-freshness-{date}-{part}"
 
 
-def _emit_github_output(stale_lanes: list[str], report: str, key: str) -> None:
+def _emit_github_output(statuses: list[LaneStatus], report: str, key: str) -> None:
     out_path = os.environ.get("GITHUB_OUTPUT")
     if not out_path:
         return
-    stale = "true" if stale_lanes else "false"
+    alert_lanes = sorted(s.lane for s in statuses if s.alerting)
+    unavailable_lanes = sorted(s.lane for s in statuses if s.availability != AVAILABLE)
+    degraded_lanes = sorted(s.lane for s in statuses if s.producer_state == DEGRADED)
+    producer_unknown_lanes = sorted(s.lane for s in statuses if s.producer_state == UNKNOWN)
+    # `stale` remains the compatibility alert bit consumed by existing actions.
+    stale = "true" if alert_lanes else "false"
     delim = "__ARA_REPORT_EOF__"
     with open(out_path, "a", encoding="utf-8") as fh:
         fh.write(f"stale={stale}\n")
-        fh.write(f"stale_lanes={','.join(sorted(stale_lanes))}\n")
+        fh.write(f"stale_lanes={','.join(alert_lanes)}\n")
+        fh.write(f"alert={stale}\n")
+        fh.write(f"alert_lanes={','.join(alert_lanes)}\n")
+        fh.write(f"unavailable_lanes={','.join(unavailable_lanes)}\n")
+        fh.write(f"degraded_lanes={','.join(degraded_lanes)}\n")
+        fh.write(f"producer_unknown_lanes={','.join(producer_unknown_lanes)}\n")
         fh.write(f"idempotency_key={key}\n")
         fh.write(f"report<<{delim}\n{report}\n{delim}\n")
 
 
-def _emit_step_summary(report: str, stale_lanes: list[str]) -> None:
+def _emit_step_summary(report: str, alert_lanes: list[str]) -> None:
     summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
     if not summary_path:
         return
     header = (
-        f"### 🔴 Pipeline freshness: {len(stale_lanes)} lane(s) alerting\n\n"
-        if stale_lanes
-        else "### ✅ Pipeline freshness: all lanes fresh\n\n"
+        f"### 🔴 Pipeline health: {len(alert_lanes)} lane(s) alerting\n\n"
+        if alert_lanes
+        else "### ✅ Pipeline health: all artifacts available, producers healthy\n\n"
     )
     with open(summary_path, "a", encoding="utf-8") as fh:
         fh.write(header + report + "\n")
@@ -249,21 +384,31 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
 
     statuses = evaluate(LANE_THRESHOLDS_HOURS, now_epoch, repo_root)
-    stale_lanes = [s.lane for s in statuses if s.alerting]
+    alert_lanes = [s.lane for s in statuses if s.alerting]
+    unavailable_lanes = [s.lane for s in statuses if s.availability != AVAILABLE]
+    degraded_lanes = [s.lane for s in statuses if s.producer_state == DEGRADED]
+    producer_unknown_lanes = [s.lane for s in statuses if s.producer_state == UNKNOWN]
     report = format_report(statuses)
-    key = idempotency_key(stale_lanes, now_dt)
+    key = idempotency_key(alert_lanes, now_dt)
 
     if args.json:
         print(
             json.dumps(
                 {
                     "now": now_dt.isoformat(),
-                    "stale_lanes": sorted(stale_lanes),
+                    "stale_lanes": sorted(alert_lanes),
+                    "alert_lanes": sorted(alert_lanes),
+                    "unavailable_lanes": sorted(unavailable_lanes),
+                    "degraded_lanes": sorted(degraded_lanes),
+                    "producer_unknown_lanes": sorted(producer_unknown_lanes),
                     "idempotency_key": key,
                     "lanes": [
                         {
                             "lane": s.lane,
                             "state": s.state,
+                            "availability": s.availability,
+                            "producer_state": s.producer_state,
+                            "degraded_reason": s.degraded_reason,
                             "age_hours": s.age_hours,
                             "threshold_hours": s.threshold_hours,
                         }
@@ -276,13 +421,13 @@ def main(argv: Optional[list[str]] = None) -> int:
     else:
         print(report)
 
-    _emit_github_output(stale_lanes, report, key)
-    _emit_step_summary(report, stale_lanes)
+    _emit_github_output(statuses, report, key)
+    _emit_step_summary(report, alert_lanes)
 
-    if stale_lanes:
-        print(f"\n::error::stale lanes detected: {', '.join(sorted(stale_lanes))}", file=sys.stderr)
+    if alert_lanes:
+        print(f"\n::error::lane health alerts: {', '.join(sorted(alert_lanes))}", file=sys.stderr)
         return 2
-    print("\nall lanes fresh", file=sys.stderr)
+    print("\nall artifacts available; all producers healthy", file=sys.stderr)
     return 0
 
 

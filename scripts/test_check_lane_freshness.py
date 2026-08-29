@@ -5,7 +5,9 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+from pathlib import Path
 from datetime import datetime, timezone
+from unittest import mock
 
 import check_lane_freshness as clf
 
@@ -33,6 +35,16 @@ class ClassifyTest(unittest.TestCase):
         # boundary: equal age is not yet stale
         self.assertEqual(clf.classify(30.0, 30, dir_exists=True), clf.FRESH)
 
+    def test_availability_and_producer_are_independent(self):
+        fresh_fallback = clf.LaneStatus("digest", 30, 1, clf.FRESH, clf.DEGRADED)
+        stale_normal = clf.LaneStatus("rss", 8, 9, clf.STALE, clf.HEALTHY)
+        self.assertEqual((fresh_fallback.availability, fresh_fallback.producer_state),
+                         (clf.AVAILABLE, clf.DEGRADED))
+        self.assertEqual((stale_normal.availability, stale_normal.producer_state),
+                         (clf.UNAVAILABLE, clf.HEALTHY))
+        self.assertTrue(fresh_fallback.alerting)
+        self.assertTrue(stale_normal.alerting)
+
 
 class EvaluateTest(unittest.TestCase):
     def _evaluate_with(self, ages, present):
@@ -50,6 +62,7 @@ class EvaluateTest(unittest.TestCase):
             repo_root="/nonexistent",
             age_fn=age_fn,
             dir_exists_fn=dir_exists_fn,
+            producer_fn=lambda lane, repo: (clf.HEALTHY, None),
         )
 
     def test_mixed_states(self):
@@ -116,6 +129,89 @@ class IdempotencyKeyTest(unittest.TestCase):
         self.assertNotEqual(a, b)
 
 
+class ProducerSignalTest(unittest.TestCase):
+    def test_json_carry_forward_is_degraded_and_parse_failure_unknown(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "artifact.json"
+            path.write_text('{"rows":{"a":{"stale":true},"b":{"stale":false}}}')
+            signal = {
+                "kind": "json_boolean_any",
+                "label": "carry-forward",
+                "path": "artifact.json",
+                "selectors": ["rows.*.stale"],
+            }
+            with mock.patch.dict(clf.LANE_DEGRADED_SIGNALS, {"test": signal}, clear=True):
+                state, reason = clf.lane_producer_health("test", tmp)
+                self.assertEqual(state, clf.DEGRADED)
+                self.assertIn("rows.*.stale=true", reason)
+                path.write_text("not-json")
+                state, reason = clf.lane_producer_health("test", tmp)
+                self.assertEqual(state, clf.UNKNOWN)
+                self.assertIn("JSONDecodeError", reason)
+
+    def test_json_all_false_is_healthy(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            Path(tmp, "artifact.json").write_text('{"rows":[{"stale":false}]}')
+            signal = {
+                "kind": "json_boolean_any",
+                "label": "carry-forward",
+                "path": "artifact.json",
+                "selectors": ["rows.*.stale"],
+            }
+            with mock.patch.dict(clf.LANE_DEGRADED_SIGNALS, {"test": signal}, clear=True):
+                self.assertEqual(clf.lane_producer_health("test", tmp), (clf.HEALTHY, None))
+
+    def test_missing_or_non_boolean_json_signal_is_unknown(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp, "artifact.json")
+            signal = {
+                "kind": "json_boolean_any", "label": "carry-forward",
+                "path": "artifact.json", "selectors": ["stale"],
+            }
+            with mock.patch.dict(clf.LANE_DEGRADED_SIGNALS, {"test": signal}, clear=True):
+                path.write_text("{}")
+                self.assertEqual(clf.lane_producer_health("test", tmp)[0], clf.UNKNOWN)
+                path.write_text('{"stale":"false"}')
+                self.assertEqual(clf.lane_producer_health("test", tmp)[0], clf.UNKNOWN)
+
+    def test_text_regex_reads_latest_labelled_artifact_only(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            lane = Path(tmp, "lane")
+            lane.mkdir()
+            Path(lane, "2026-01-01.md").write_text("- Fetch errors: 9\n")
+            Path(lane, "2026-01-02.md").write_text("- Fetch errors: 0\n")
+            signal = {
+                "kind": "text_regex", "label": "partial-source",
+                "path": "lane/[0-9]*.md", "pattern": r"(?m)^- Fetch errors: [1-9]\d*$",
+            }
+            with mock.patch.dict(clf.LANE_DEGRADED_SIGNALS, {"test": signal}, clear=True):
+                self.assertEqual(clf.lane_producer_health("test", tmp), (clf.HEALTHY, None))
+                Path(lane, "2026-01-02.md").write_text("- Fetch errors: 1\n")
+                self.assertEqual(clf.lane_producer_health("test", tmp)[0], clf.DEGRADED)
+
+
+class GithubOutputTest(unittest.TestCase):
+    def test_legacy_and_two_axis_outputs_share_alert_semantics(self):
+        statuses = [
+            clf.LaneStatus("normal", 8, 1, clf.FRESH, clf.HEALTHY),
+            clf.LaneStatus("fallback", 30, 1, clf.FRESH, clf.DEGRADED, "fallback"),
+            clf.LaneStatus("late", 8, 9, clf.STALE, clf.HEALTHY),
+            clf.LaneStatus("uncertain", 8, 1, clf.FRESH, clf.UNKNOWN, "unreadable"),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "output"
+            with mock.patch.dict(os.environ, {"GITHUB_OUTPUT": str(output)}):
+                clf._emit_github_output(statuses, "report", "key")
+            values = output.read_text()
+        self.assertIn("stale=true\n", values)
+        self.assertIn("alert=true\n", values)
+        self.assertIn("stale_lanes=fallback,late,uncertain\n", values)
+        self.assertIn("alert_lanes=fallback,late,uncertain\n", values)
+        self.assertIn("unavailable_lanes=late\n", values)
+        self.assertIn("degraded_lanes=fallback\n", values)
+        self.assertIn("producer_unknown_lanes=uncertain\n", values)
+
+
 @unittest.skipIf(shutil.which("git") is None, "git not available")
 class GitIntegrationTest(unittest.TestCase):
     """Exercises the real `git log` path with deterministic backdated commits."""
@@ -136,7 +232,7 @@ class GitIntegrationTest(unittest.TestCase):
         subprocess.run(["git", *args], cwd=self.repo, check=True,
                        capture_output=True, text=True, env=env)
 
-    def _commit_lane(self, lane, iso_date):
+    def _commit_lane(self, lane, iso_date, message=None):
         d = os.path.join(self.repo, "research", lane)
         os.makedirs(d, exist_ok=True)
         with open(os.path.join(d, "2026-01-01.md"), "a", encoding="utf-8") as fh:
@@ -144,7 +240,7 @@ class GitIntegrationTest(unittest.TestCase):
         self._git("add", "-A")
         # Pin both author and committer date so %ct is deterministic.
         self._git(
-            "commit", "-q", "-m", f"{lane} {iso_date}",
+            "commit", "-q", "-m", message or f"{lane} {iso_date}",
             env_extra={"GIT_AUTHOR_DATE": iso_date, "GIT_COMMITTER_DATE": iso_date},
         )
 
@@ -177,6 +273,73 @@ class GitIntegrationTest(unittest.TestCase):
         now_epoch = int(datetime(2026, 5, 28, 6, 0, tzinfo=timezone.utc).timestamp())
         statuses = clf.evaluate({"bluesky": 30}, now_epoch, self.repo)
         self.assertEqual(statuses[0].state, clf.MISSING)
+
+    def test_fresh_labelled_fallback_is_available_but_degraded(self):
+        path = Path(self.repo, "research", "digest", "2026-05-28-digest.md")
+        path.parent.mkdir(parents=True)
+        path.write_text(
+            "# Digest\n\n> **Deterministic fallback digest.** Model synthesis failed.\n",
+            encoding="utf-8",
+        )
+        self._git("add", "-A")
+        self._git(
+            "commit", "-q", "-m", "Daily digest deterministic fallback 2026-05-28 (#42)",
+            env_extra={
+                "GIT_AUTHOR_DATE": "2026-05-28T05:00:00Z",
+                "GIT_COMMITTER_DATE": "2026-05-28T05:00:00Z",
+            },
+        )
+        now_epoch = int(datetime(2026, 5, 28, 6, 0, tzinfo=timezone.utc).timestamp())
+        statuses = clf.evaluate({"digest": 30}, now_epoch, self.repo)
+        self.assertEqual(len(statuses), 1)
+        status = statuses[0]
+        self.assertEqual(status.state, clf.FRESH)
+        self.assertEqual(status.availability, clf.AVAILABLE)
+        self.assertEqual(status.producer_state, clf.DEGRADED)
+        self.assertTrue(status.alerting)
+
+    def test_generic_fallback_words_do_not_match_durable_banner(self):
+        path = Path(self.repo, "research", "digest", "2026-05-28-digest.md")
+        path.parent.mkdir(parents=True)
+        path.write_text("# Digest\n\nDiscussion of deterministic fallback behavior.\n")
+        self._git("add", "-A")
+        self._git("commit", "-q", "-m", "Fix deterministic fallback digest parser (#42)")
+        self.assertEqual(clf.lane_producer_health("digest", self.repo), (clf.HEALTHY, None))
+
+    def test_digest_banner_survives_later_same_path_spoken_commit_until_replaced(self):
+        path = Path(self.repo, "research", "digest", "2026-05-28-digest.md")
+        path.parent.mkdir(parents=True)
+        path.write_text(
+            "# Digest\n\n> **Deterministic fallback digest.** The model path failed.\n",
+            encoding="utf-8",
+        )
+        self._git("add", "-A")
+        self._git("commit", "-q", "-m", "Daily digest deterministic fallback 2026-05-28")
+        self.assertEqual(clf.lane_producer_health("digest", self.repo)[0], clf.DEGRADED)
+
+        path.write_text(path.read_text() + "\n<!-- spoken script generated -->\n", encoding="utf-8")
+        self._git("add", "-A")
+        self._git("commit", "-q", "-m", "Add digest spoken script metadata")
+        self.assertEqual(clf.lane_producer_health("digest", self.repo)[0], clf.DEGRADED)
+
+        path.write_text("# Digest\n\nModel-authored synthesis.\n", encoding="utf-8")
+        self._git("add", "-A")
+        self._git("commit", "-q", "-m", "Daily digest 2026-05-28")
+        self.assertEqual(clf.lane_producer_health("digest", self.repo), (clf.HEALTHY, None))
+
+    def test_twitter_recovery_status_survives_unrelated_public_path_commit(self):
+        status = Path(self.repo, "research", "twitter", "status", "2026-05-28-06h.json")
+        status.parent.mkdir(parents=True)
+        status.write_text('{"recovery":true}', encoding="utf-8")
+        self._git("add", "-A")
+        self._git("commit", "-q", "-m", "Twitter deterministic fallback 2026-05-28 06:00 UTC")
+        self.assertEqual(clf.lane_producer_health("twitter", self.repo)[0], clf.DEGRADED)
+
+        digest = Path(self.repo, "research", "twitter", "2026-05-28.md")
+        digest.write_text("# existing digest\n<!-- spoken metadata -->\n", encoding="utf-8")
+        self._git("add", "-A")
+        self._git("commit", "-q", "-m", "Update Twitter spoken metadata")
+        self.assertEqual(clf.lane_producer_health("twitter", self.repo)[0], clf.DEGRADED)
 
 
 if __name__ == "__main__":

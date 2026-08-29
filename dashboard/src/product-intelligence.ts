@@ -28,29 +28,53 @@ export type EvidenceSearchEntry = {
   sourceTier?: string;
   sourceTiers?: string[];
   language?: string;
+  reusable?: boolean;
+  reuse_block?: string | null;
 };
 
 export type WatchlistState = {
   topics: string[];
-  lastVisit: string | null;
 };
 
 const WATCHLIST_KEY = 'ara:watchlist:v1';
+
+const EVIDENCE_LABELS: Record<string, { en: string; ko: string }> = {
+  high: { en: 'High', ko: '높음' },
+  medium: { en: 'Medium', ko: '중간' },
+  low: { en: 'Low', ko: '낮음' },
+  context: { en: 'Context', ko: '맥락' },
+  unknown: { en: 'Unknown', ko: '미확인' },
+  stable: { en: 'Stable', ko: '안정적' },
+  volatile: { en: 'Volatile', ko: '변동 가능' },
+  contested: { en: 'Contested', ko: '상충' },
+  'single-source': { en: 'Single source', ko: '단일 출처' },
+  'no-as-of': { en: 'No as-of date', ko: '기준일 없음' },
+  'time-sensitive': { en: 'Time-sensitive', ko: '시점 민감' },
+  primary: { en: 'Primary', ko: '1차 출처' },
+  secondary: { en: 'Secondary', ko: '2차 출처' },
+  academic: { en: 'Academic', ko: '학술' },
+  official: { en: 'Official', ko: '공식' },
+};
+
+export function evidenceEnumLabel(value: string | null | undefined, language: 'en' | 'ko'): string {
+  if (!value) return '';
+  return EVIDENCE_LABELS[value]?.[language] || value.replace(/-/g, ' ');
+}
 
 export function normalizeTopic(value: string): string {
   return value.trim().toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
 export function readWatchlist(storage: Storage | null = typeof localStorage === 'undefined' ? null : localStorage): WatchlistState {
-  if (!storage) return { topics: [], lastVisit: null };
+  if (!storage) return { topics: [] };
   try {
     const parsed = JSON.parse(storage.getItem(WATCHLIST_KEY) || '{}') as Partial<WatchlistState>;
     const topics = Array.isArray(parsed.topics)
       ? Array.from(new Set(parsed.topics.map(normalizeTopic).filter(Boolean))).slice(0, 50)
       : [];
-    return { topics, lastVisit: typeof parsed.lastVisit === 'string' ? parsed.lastVisit : null };
+    return { topics };
   } catch {
-    return { topics: [], lastVisit: null };
+    return { topics: [] };
   }
 }
 
@@ -58,7 +82,6 @@ export function writeWatchlist(state: WatchlistState, storage: Storage | null = 
   if (!storage) return;
   storage.setItem(WATCHLIST_KEY, JSON.stringify({
     topics: Array.from(new Set(state.topics.map(normalizeTopic).filter(Boolean))).slice(0, 50),
-    lastVisit: state.lastVisit,
   }));
 }
 
@@ -127,7 +150,13 @@ export function searchEvidence(
       return { entry, score };
     })
     .filter(({ score }) => terms.length === 0 || score > 0)
-    .sort((a, b) => b.score - a.score || (b.entry.date || '').localeCompare(a.entry.date || '') || a.entry.title.localeCompare(b.entry.title))
+    .sort((a, b) =>
+      b.score - a.score ||
+      Number(b.entry.reusable !== false) - Number(a.entry.reusable !== false) ||
+      confidenceRank(b.entry.confidence) - confidenceRank(a.entry.confidence) ||
+      (b.entry.date || '').localeCompare(a.entry.date || '') ||
+      a.entry.title.localeCompare(b.entry.title)
+    )
     .slice(0, limit)
     .map(({ entry }) => entry);
 }
