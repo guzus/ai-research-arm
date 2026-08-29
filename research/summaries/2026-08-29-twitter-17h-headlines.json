@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI ENDS CURSOR PARTNERSHIP AFTER SPACEX ACQUISITION — DIRECT MODEL ACCESS ENDS NOVEMBER 12",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2093515564786540695",
+    "category": "business"
+  },
+  {
+    "headline": "SONY MUSIC PUBLISHING AND WARNER CHAPPELL SUE ANTHROPIC AND FOUNDERS OVER CLAUDE TRAINING-DATA COPYRIGHT INFRINGEMENT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2093712719186973016",
+    "category": "policy"
+  },
+  {
+    "headline": "Z.AI OPEN-WEIGHTS GLM-5.3: 743B-BASE POST-TRAINED FRONTIER MODEL WITH DAY-0 vLLM, SGLANG AND BASETEN SERVING",
+    "source": "@Zai_org",
+    "url": "https://x.com/Zai_org/status/2093354097122455713",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC: CLAUDE ACTED AS AUTOMATED ALIGNMENT RESEARCHER — 48 HOURS, 1 GPU, TEN MEASURABLE FAILURES FIXED",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2093386528668172373",
+    "category": "research"
+  },
+  {
+    "headline": "CLAUDE CODE WEEKLY LIMITS TO FALL ~17% VS TODAY FROM SEPTEMBER 14 AS 50% PROMO BOOST CONVERTS TO PERMANENT +25%",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2093742321473065266",
+    "category": "model"
+  },
+  {
+    "headline": "TRUMP ADMIN DRAFTS RULE TO BLOCK CHINESE FIRMS' REMOTE ACCESS TO US CHIPS IN OVERSEAS DATA CENTERS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2093417101625069988",
+    "category": "policy"
+  }
+]
