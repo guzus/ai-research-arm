@@ -911,18 +911,24 @@ function buildEvidenceArtifacts() {
     mkdirSync(dir, { recursive: true });
     writeFileSync(join(dir, 'public.json'), JSON.stringify({ generated_at: new Date().toISOString(), contract: 'evidence-metadata-not-independent-truth', claims: publicClaims }));
     for (const claim of publicClaims) {
+      const articleSlug = articleSlugByStem.get(claim.article);
+      // A search result is actionable only when its article route resolves.
+      // The public ledger still retains every claim for article/dossier drawers.
+      if (!articleSlug) continue;
       entries.push({
         id: claim.key,
         type: 'claim',
         title: claim.article_title,
         body: claim.claim,
-        url: `/research/${articleSlugByStem.get(claim.article) || ''}`,
+        url: `/research/${articleSlug}`,
         date: claim.as_of || claim.article_created_at || '',
         confidence: claim.confidence,
         risk: claim.risk || '',
         sourceTier: claim.source_tiers[0] || '',
         sourceTiers: claim.source_tiers,
         language: 'en',
+        reusable: claim.reusable,
+        reuse_block: claim.reuse_block,
       });
     }
   } catch (e) {
