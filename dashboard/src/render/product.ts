@@ -1,3 +1,4 @@
+import { evidenceEnumLabel } from '../product-intelligence';
 import type { PublicClaim, WatchlistState } from '../product-intelligence';
 
 function esc(value: unknown): string {
@@ -56,7 +57,7 @@ export function renderWhatChanged(items: BriefItem[], watchlist: WatchlistState,
       `    <div><dt>${ko ? '다음 확인' : 'Watch next'}</dt><dd>${esc(item.watch)}</dd></div>`,
       '  </dl>',
       '  <div class="change-card-foot">',
-      `    <span class="evidence-confidence evidence-confidence--${item.confidence}">${ko ? '신뢰' : 'Confidence'}: ${esc(item.confidence)}</span>`,
+      `    <span class="evidence-confidence evidence-confidence--${item.confidence}">${ko ? '신뢰' : 'Confidence'}: ${esc(evidenceEnumLabel(item.confidence, language))}</span>`,
       item.topics.slice(0, 3).map((topic) => `<button class="watch-chip${watched.has(topic) ? ' is-active' : ''}" type="button" data-watch-topic="${esc(topic)}" aria-pressed="${watched.has(topic)}">${watched.has(topic) ? '★' : '+'} ${esc(topic.replace(/-/g, ' '))}</button>`).join(''),
       '  </div>',
       '</article>',
@@ -84,15 +85,15 @@ export function renderEvidenceDrawer(claims: PublicClaim[], options: { language:
     '<li class="evidence-claim">',
     `  <p>${esc(claim.claim)}</p>`,
     '  <div class="evidence-claim-meta">',
-    `    <span class="evidence-confidence evidence-confidence--${esc(claim.confidence)}">${esc(claim.confidence)}</span>`,
+    `    <span class="evidence-confidence evidence-confidence--${esc(claim.confidence)}">${esc(evidenceEnumLabel(claim.confidence, options.language))}</span>`,
     claim.as_of ? `    <span>${ko ? '기준일' : 'As of'} ${esc(claim.as_of)}</span>` : '',
-    claim.risk ? `    <span>${ko ? '위험' : 'Risk'}: ${esc(claim.risk)}</span>` : '',
+    claim.risk ? `    <span>${ko ? '위험' : 'Risk'}: ${esc(evidenceEnumLabel(claim.risk, options.language))}</span>` : '',
     `    <span>${esc(claim.type)}</span>`,
     '  </div>',
     claim.reusable
       ? `  <div class="evidence-reuse is-reusable">${ko ? '다시 인용 가능한 안정적 근거' : 'Reusable evidence metadata; verify the linked source when stakes are high.'}</div>`
-      : `  <div class="evidence-reuse is-blocked">${ko ? '실시간 재검증 필요' : 'Reverify live'}${claim.reuse_block ? ` · ${esc(claim.reuse_block)}` : ''}</div>`,
-    claim.source_tiers.length ? `  <div class="evidence-tier-list">${claim.source_tiers.map((tier) => `<span>${esc(tier)}</span>`).join('')}</div>` : '',
+      : `  <div class="evidence-reuse is-blocked">${ko ? '실시간 재검증 필요' : 'Reverify live'}${claim.reuse_block ? ` · ${esc(evidenceEnumLabel(claim.reuse_block, options.language))}` : ''}</div>`,
+    claim.source_tiers.length ? `  <div class="evidence-tier-list">${claim.source_tiers.map((tier) => `<span>${esc(evidenceEnumLabel(tier, options.language))}</span>`).join('')}</div>` : '',
     '  <div class="evidence-sources">' + claim.source_urls.slice(0, 4).map((url, index) =>
       `<a href="${safeUrl(url)}" target="_blank" rel="noopener noreferrer">${esc((() => { try { return new URL(url).hostname; } catch { return claim.hosts?.[index] || `source ${index + 1}`; } })())}</a>`
     ).join('') + '</div>',

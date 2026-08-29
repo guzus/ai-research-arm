@@ -38,6 +38,29 @@ export type WatchlistState = {
 
 const WATCHLIST_KEY = 'ara:watchlist:v1';
 
+const EVIDENCE_LABELS: Record<string, { en: string; ko: string }> = {
+  high: { en: 'High', ko: '높음' },
+  medium: { en: 'Medium', ko: '중간' },
+  low: { en: 'Low', ko: '낮음' },
+  context: { en: 'Context', ko: '맥락' },
+  unknown: { en: 'Unknown', ko: '미확인' },
+  stable: { en: 'Stable', ko: '안정적' },
+  volatile: { en: 'Volatile', ko: '변동 가능' },
+  contested: { en: 'Contested', ko: '상충' },
+  'single-source': { en: 'Single source', ko: '단일 출처' },
+  'no-as-of': { en: 'No as-of date', ko: '기준일 없음' },
+  'time-sensitive': { en: 'Time-sensitive', ko: '시점 민감' },
+  primary: { en: 'Primary', ko: '1차 출처' },
+  secondary: { en: 'Secondary', ko: '2차 출처' },
+  academic: { en: 'Academic', ko: '학술' },
+  official: { en: 'Official', ko: '공식' },
+};
+
+export function evidenceEnumLabel(value: string | null | undefined, language: 'en' | 'ko'): string {
+  if (!value) return '';
+  return EVIDENCE_LABELS[value]?.[language] || value.replace(/-/g, ' ');
+}
+
 export function normalizeTopic(value: string): string {
   return value.trim().toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '');
 }

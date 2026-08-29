@@ -26,6 +26,7 @@ import type { BriefItem } from './render/product';
 import {
   claimsForArticle,
   claimsForTopic,
+  evidenceEnumLabel,
   excerptAround,
   normalizeTopic,
   readWatchlist,
@@ -6725,7 +6726,7 @@ async function buildSearchCorpus(): Promise<SearchHit[]> {
     evidenceHits.push({
       type: 'claim',
       title: entry.title,
-      subtitle: [entry.confidence, entry.risk, entry.sourceTier, entry.date].filter(Boolean).join(' · '),
+      subtitle: [entry.confidence, entry.risk, entry.sourceTier].map((value) => evidenceEnumLabel(value, activeLanguage)).concat(entry.date || []).filter(Boolean).join(' · '),
       slug: entry.url,
       hay: `${entry.title} ${entry.body}`.toLowerCase(),
       evidence: entry,
@@ -6753,7 +6754,7 @@ function renderSearchHits(): void {
     '<span class="search-result-title">' + escapeHtml(h.title) + '</span>' +
     (h.subtitle ? '<span class="search-result-sub">' + escapeHtml(h.subtitle) + '</span>' : '') +
     (h.snippet ? '<span class="search-result-snippet">' + escapeHtml(excerptAround(h.snippet, searchInput.value, 180)) + '</span>' : '') +
-    (h.evidence?.reusable === false ? '<span class="search-result-reverify">' + escapeHtml(activeLanguage === 'ko' ? '실시간 재검증 필요' : 'Reverify live') + (h.evidence.reuse_block ? ' · ' + escapeHtml(h.evidence.reuse_block) : '') + '</span>' : '') +
+    (h.evidence?.reusable === false ? '<span class="search-result-reverify">' + escapeHtml(activeLanguage === 'ko' ? '실시간 재검증 필요' : 'Reverify live') + (h.evidence.reuse_block ? ' · ' + escapeHtml(evidenceEnumLabel(h.evidence.reuse_block, activeLanguage)) : '') + '</span>' : '') +
     '</button>',
   ).join('');
   setSafeContent(searchResultsEl, rows);
