@@ -41,7 +41,7 @@ class ResponseEvaluationTest(unittest.TestCase):
         probe = cps.Probe("evidence", "/evidence.json", json_contract="evidence-search-v1")
         good = {"entries": [
             {"type": "research"},
-            {"type": "claim", "id": "a#c1", "title": "A", "body": "Claim", "url": "/research/a", "reusable": False},
+            {"type": "claim", "id": "a#c1", "title": "A", "body": "Claim", "url": "/research/a", "reusable": False, "reuse_block": "Reverify live"},
         ]}
         self.assertFalse(cps.evaluate_response(probe, cps.Response(200, {}, json.dumps(good))).failed)
 
@@ -59,6 +59,39 @@ class ResponseEvaluationTest(unittest.TestCase):
         result = cps.evaluate_response(probe, cps.Response(200, {}, json.dumps(bad)))
         self.assertTrue(result.failed)
         self.assertIn("$.claims[0].reusable", result.detail)
+
+    def test_claim_contracts_reject_empty_collections_and_missing_reuse_reason(self):
+        evidence = cps.Probe("evidence", "/evidence.json", json_contract="evidence-search-v1")
+        result = cps.evaluate_response(evidence, cps.Response(200, {}, '{"entries":[]}'))
+        self.assertIn("at least one claim entry", result.detail)
+        no_claims = '{"entries":[{"type":"research"}]}'
+        self.assertIn(
+            "at least one claim entry",
+            cps.evaluate_response(evidence, cps.Response(200, {}, no_claims)).detail,
+        )
+        missing_reason = {
+            "entries": [{
+                "type": "claim", "id": "a#c1", "title": "A", "body": "Claim",
+                "url": "/research/a", "reusable": False, "reuse_block": "",
+            }]
+        }
+        self.assertIn(
+            "$.entries[0].reuse_block",
+            cps.evaluate_response(evidence, cps.Response(200, {}, json.dumps(missing_reason))).detail,
+        )
+
+        claims = cps.Probe("claims", "/claims.json", json_contract="public-claims-v1")
+        self.assertIn(
+            "at least one claim",
+            cps.evaluate_response(claims, cps.Response(200, {}, '{"claims":[]}')).detail,
+        )
+        public_missing_reason = {
+            "claims": [{"article": "a", "claim": "Claim", "reusable": False}]
+        }
+        self.assertIn(
+            "$.claims[0].reuse_block",
+            cps.evaluate_response(claims, cps.Response(200, {}, json.dumps(public_missing_reason))).detail,
+        )
 
     def test_json_contract_rejects_spa_html_and_wrong_array_key(self):
         probe = cps.Probe("evidence", "/evidence.json", json_contract="evidence-search-v1")

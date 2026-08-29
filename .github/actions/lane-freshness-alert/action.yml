@@ -49,6 +49,9 @@ outputs:
   degraded_lanes:
     description: Comma-separated lanes whose labelled producer signal is degraded.
     value: ${{ steps.check.outputs.degraded_lanes }}
+  producer_unknown_lanes:
+    description: Comma-separated lanes whose configured producer signal cannot be evaluated.
+    value: ${{ steps.check.outputs.producer_unknown_lanes }}
 
 runs:
   using: composite
@@ -88,6 +91,7 @@ runs:
         STALE_LANES: ${{ steps.check.outputs.stale_lanes }}
         UNAVAILABLE_LANES: ${{ steps.check.outputs.unavailable_lanes }}
         DEGRADED_LANES: ${{ steps.check.outputs.degraded_lanes }}
+        PRODUCER_UNKNOWN_LANES: ${{ steps.check.outputs.producer_unknown_lanes }}
         IDEMPOTENCY_KEY: ${{ steps.check.outputs.idempotency_key }}
         REPO: ${{ github.repository }}
         SERVER: ${{ github.server_url }}
@@ -102,8 +106,8 @@ runs:
         # since the body uses parse_mode:HTML.
         SAFE_LANES=$(printf '%s' "$STALE_LANES" \
           | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
-        TEXT=$(printf 'Alerting lanes: %s\nUnavailable/unknown: %s\nProducer degraded: %s\n\nThe report separates artifact availability from producer health. Investigate the liveness workflow.' \
-          "$SAFE_LANES" "${UNAVAILABLE_LANES:-none}" "${DEGRADED_LANES:-none}")
+        TEXT=$(printf 'Alerting lanes: %s\nUnavailable/unknown: %s\nProducer degraded: %s\nProducer unknown: %s\n\nThe report separates artifact availability from producer health. Investigate the liveness workflow.' \
+          "$SAFE_LANES" "${UNAVAILABLE_LANES:-none}" "${DEGRADED_LANES:-none}" "${PRODUCER_UNKNOWN_LANES:-none}")
         ACTIONS_URL="${SERVER%/}/${REPO}/actions/workflows/liveness-check.yml"
         jq -n \
           --arg title "🚨 ARA pipeline: ${count} lane(s) unhealthy" \
@@ -142,6 +146,7 @@ runs:
         STALE_LANES: ${{ steps.check.outputs.stale_lanes }}
         UNAVAILABLE_LANES: ${{ steps.check.outputs.unavailable_lanes }}
         DEGRADED_LANES: ${{ steps.check.outputs.degraded_lanes }}
+        PRODUCER_UNKNOWN_LANES: ${{ steps.check.outputs.producer_unknown_lanes }}
         REPO: ${{ github.repository }}
         SERVER: ${{ github.server_url }}
         RUN_ID: ${{ github.run_id }}
@@ -156,8 +161,8 @@ runs:
         # Plain text + a Markdown link. Lane names are a controlled allowlist
         # (no Markdown metacharacters), so keeping the body metachar-free is
         # what prevents a silent Telegram parse error under continue-on-error.
-        TEXT=$(printf '🚨 ARA pipeline: %s lane(s) UNHEALTHY\n\nAlerting: %s\nUnavailable/unknown: %s\nProducer degraded: %s\n\n[Investigate](%s)' \
-          "$count" "$STALE_LANES" "${UNAVAILABLE_LANES:-none}" "${DEGRADED_LANES:-none}" "$RUN_URL")
+        TEXT=$(printf '🚨 ARA pipeline: %s lane(s) UNHEALTHY\n\nAlerting: %s\nUnavailable/unknown: %s\nProducer degraded: %s\nProducer unknown: %s\n\n[Investigate](%s)' \
+          "$count" "$STALE_LANES" "${UNAVAILABLE_LANES:-none}" "${DEGRADED_LANES:-none}" "${PRODUCER_UNKNOWN_LANES:-none}" "$RUN_URL")
         if curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
           --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
           --data-urlencode "text=${TEXT}" \

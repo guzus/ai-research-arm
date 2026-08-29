@@ -193,12 +193,17 @@ def lane_producer_health(lane: str, repo_root: str) -> tuple[str, Optional[str]]
             return DEGRADED, f"{label}: {subject}"
         return HEALTHY, None
     if kind == "json_boolean_any":
-        relative_path = str(signal["path"])
+        relative_glob = str(signal["path"])
+        matches = sorted(glob.glob(os.path.join(repo_root, relative_glob)))
+        if not matches:
+            return UNKNOWN, f"{label}: no file matches {relative_glob}"
+        artifact_path = matches[-1]
+        display_path = os.path.relpath(artifact_path, repo_root)
         try:
-            with open(os.path.join(repo_root, relative_path), encoding="utf-8") as handle:
+            with open(artifact_path, encoding="utf-8") as handle:
                 payload = json.load(handle)
         except (OSError, json.JSONDecodeError) as exc:
-            return UNKNOWN, f"{label}: cannot read {relative_path}: {type(exc).__name__}"
+            return UNKNOWN, f"{label}: cannot read {display_path}: {type(exc).__name__}"
         observed = False
         for selector in signal["selectors"]:  # validated by artifact_slos
             values = _select_values(payload, str(selector))
@@ -206,11 +211,11 @@ def lane_producer_health(lane: str, repo_root: str) -> tuple[str, Optional[str]]
                 continue
             observed = True
             if any(not isinstance(value, bool) for value in values):
-                return UNKNOWN, f"{label}: {relative_path} {selector} is not boolean"
+                return UNKNOWN, f"{label}: {display_path} {selector} is not boolean"
             if any(value is True for value in values):
-                return DEGRADED, f"{label}: {relative_path} {selector}=true"
+                return DEGRADED, f"{label}: {display_path} {selector}=true"
         if not observed:
-            return UNKNOWN, f"{label}: {relative_path} selectors matched no values"
+            return UNKNOWN, f"{label}: {display_path} selectors matched no values"
         return HEALTHY, None
     if kind == "text_regex":
         relative_glob = str(signal["path"])
@@ -309,6 +314,7 @@ def _emit_github_output(statuses: list[LaneStatus], report: str, key: str) -> No
     alert_lanes = sorted(s.lane for s in statuses if s.alerting)
     unavailable_lanes = sorted(s.lane for s in statuses if s.availability != AVAILABLE)
     degraded_lanes = sorted(s.lane for s in statuses if s.producer_state == DEGRADED)
+    producer_unknown_lanes = sorted(s.lane for s in statuses if s.producer_state == UNKNOWN)
     # `stale` remains the compatibility alert bit consumed by existing actions.
     stale = "true" if alert_lanes else "false"
     delim = "__ARA_REPORT_EOF__"
@@ -319,6 +325,7 @@ def _emit_github_output(statuses: list[LaneStatus], report: str, key: str) -> No
         fh.write(f"alert_lanes={','.join(alert_lanes)}\n")
         fh.write(f"unavailable_lanes={','.join(unavailable_lanes)}\n")
         fh.write(f"degraded_lanes={','.join(degraded_lanes)}\n")
+        fh.write(f"producer_unknown_lanes={','.join(producer_unknown_lanes)}\n")
         fh.write(f"idempotency_key={key}\n")
         fh.write(f"report<<{delim}\n{report}\n{delim}\n")
 
@@ -380,6 +387,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     alert_lanes = [s.lane for s in statuses if s.alerting]
     unavailable_lanes = [s.lane for s in statuses if s.availability != AVAILABLE]
     degraded_lanes = [s.lane for s in statuses if s.producer_state == DEGRADED]
+    producer_unknown_lanes = [s.lane for s in statuses if s.producer_state == UNKNOWN]
     report = format_report(statuses)
     key = idempotency_key(alert_lanes, now_dt)
 
@@ -392,6 +400,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                     "alert_lanes": sorted(alert_lanes),
                     "unavailable_lanes": sorted(unavailable_lanes),
                     "degraded_lanes": sorted(degraded_lanes),
+                    "producer_unknown_lanes": sorted(producer_unknown_lanes),
                     "idempotency_key": key,
                     "lanes": [
                         {
