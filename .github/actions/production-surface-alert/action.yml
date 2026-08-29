@@ -1,0 +1,73 @@
+name: Production surface synthetic alert
+description: Run external route/user-agent probes, alert through two channels, then fail on mismatch.
+
+inputs:
+  hooker_url:
+    required: false
+    default: ""
+  hooker_token:
+    required: false
+    default: ""
+  telegram_bot_token:
+    required: false
+    default: ""
+  telegram_chat_id:
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Probe production surface
+      id: check
+      continue-on-error: true
+      shell: bash
+      run: python3 scripts/check_production_surface.py --exit-code
+
+    - name: Alert via hooker
+      if: steps.check.outcome == 'failure'
+      continue-on-error: true
+      shell: bash
+      env:
+        HOOKER_URL: ${{ inputs.hooker_url }}
+        HOOKER_TOKEN: ${{ inputs.hooker_token }}
+        FAILED_PROBES: ${{ steps.check.outputs.failed_probes }}
+        IDEMPOTENCY_KEY: ${{ steps.check.outputs.idempotency_key }}
+      run: |
+        set -euo pipefail
+        if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then exit 0; fi
+        body="$(jq -n --arg failed "$FAILED_PROBES" '{title:"🔴 ARA production surface mismatch",text:("Failed probes: " + $failed + "\n\nThe live route/header/user-agent contract changed or is unavailable."),priority:5,tags:["ara","alert","production-surface"]}')"
+        curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/ara-research" \
+          -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+          -H "Content-Type: application/json" \
+          -H "Idempotency-Key: ${IDEMPOTENCY_KEY}" \
+          --data-binary "$body"
+
+    - name: Alert via direct Telegram
+      if: steps.check.outcome == 'failure'
+      continue-on-error: true
+      shell: bash
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ inputs.telegram_bot_token }}
+        TELEGRAM_CHAT_ID: ${{ inputs.telegram_chat_id }}
+        FAILED_PROBES: ${{ steps.check.outputs.failed_probes }}
+        SERVER: ${{ github.server_url }}
+        REPO: ${{ github.repository }}
+        RUN_ID: ${{ github.run_id }}
+      run: |
+        set -euo pipefail
+        if [ -z "${TELEGRAM_BOT_TOKEN:-}" ] || [ -z "${TELEGRAM_CHAT_ID:-}" ]; then exit 0; fi
+        run_url="${SERVER%/}/${REPO}/actions/runs/${RUN_ID}"
+        text="🔴 ARA production surface mismatch\n\nFailed probes: ${FAILED_PROBES}\n\n${run_url}"
+        curl -sS --fail-with-body -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+          --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+          --data-urlencode "text=${text}" >/dev/null
+
+    - name: Fail on production mismatch
+      if: steps.check.outcome == 'failure'
+      shell: bash
+      env:
+        FAILED_PROBES: ${{ steps.check.outputs.failed_probes }}
+      run: |
+        echo "::error::production surface probes failed: ${FAILED_PROBES}"
+        exit 1

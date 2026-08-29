@@ -62,7 +62,13 @@ class RoutingInvariants(unittest.TestCase):
     def test_research_editorial_rejects_host_checkout_adapter(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
         config["routes"]["research-editorial"]["backend"] = "claude"
-        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest"):
+        for lane in ("rss", "bluesky", "community"):
+            with self.assertRaisesRegex(ValueError, "isolated_workspace"):
+                resolve_route(config, lane)
+
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        config["routes"]["research-editorial-secondary"]["backend"] = "claude"
+        for lane in ("arxiv", "wiki-ingest"):
             with self.assertRaisesRegex(ValueError, "isolated_workspace"):
                 resolve_route(config, lane)
 
@@ -71,10 +77,14 @@ class RoutingInvariants(unittest.TestCase):
         route = config["routes"]["research-editorial"]
         self.assertEqual("opencode-glm-5p3-flash", route["backend"])
         self.assertIn("opencode-deepseek-v4-flash", config["backends"])
-        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest"):
+        for lane in ("rss", "bluesky", "community"):
             selected = resolve_route(config, lane)
             self.assertEqual("opencode", selected.adapter)
             self.assertEqual("opencode-go/glm-5.3-flash", selected.model_ref)
+        for lane in ("arxiv", "wiki-ingest"):
+            selected = resolve_route(config, lane)
+            self.assertEqual("cursor", selected.adapter)
+            self.assertEqual("cursor/cursor-grok-4.6-high-fast", selected.model_ref)
 
     def test_synthetic_opencode_profile_needs_only_profile_and_route_data(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
@@ -89,6 +99,7 @@ class RoutingInvariants(unittest.TestCase):
             "display_name": "Novel Flash via OpenCode",
         }
         config["routes"]["research-editorial"]["backend"] = "opencode-novel-flash"
+        config["routes"]["research-editorial-secondary"]["backend"] = "opencode-novel-flash"
         profiles = copy.deepcopy(self.profiles)
         profile = Profile("opencode-novel-flash", "opencode", "opencode-go",
                           "novel-flash", "Novel Flash via OpenCode",
@@ -136,6 +147,7 @@ class RoutingInvariants(unittest.TestCase):
             "display_name": "Composer Novel via Cursor CLI",
         }
         config["routes"]["research-editorial"]["backend"] = "cursor-composer-novel"
+        config["routes"]["research-editorial-secondary"]["backend"] = "cursor-composer-novel"
         profiles = copy.deepcopy(self.profiles)
         profile = Profile("cursor-composer-novel", "cursor", "cursor",
                           "composer-novel", "Composer Novel via Cursor CLI",
@@ -1182,12 +1194,14 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('timeout "${remaining_seconds}s" agent -p --mode ask --trust', action)
         self.assertIn("git bundle create .cursor-export.bundle", action)
         self.assertIn("Cursor attempt telemetry is malformed", action)
-        self.assertIn("curl https://cursor.com/install -fsS | bash", action)
+        self.assertIn("https://downloads.cursor.com/lab/", action)
+        self.assertIn("sha256sum -c -", action)
+        self.assertNotIn("curl https://cursor.com/install", action)
         self.assertIn("agent --version", action)
-        # The published `agent` name is a symlink into a Node package.
-        # Copying only the wrapper regresses to MODULE_NOT_FOUND index.js.
+        # The published `agent` name is a wrapper around its package payload.
+        # Installing only the wrapper regresses to MODULE_NOT_FOUND index.js.
         self.assertIn("/opt/cursor-agent", action)
-        self.assertIn('test -f "$pkg/index.js"', action)
+        self.assertIn("test -f /opt/cursor-agent/index.js", action)
         self.assertIn('ln -sfn /opt/cursor-agent/cursor-agent /usr/local/bin/agent', action)
         self.assertNotIn(
             "install -m 755 /root/.local/bin/agent /usr/local/bin/agent", action)

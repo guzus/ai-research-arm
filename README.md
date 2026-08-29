@@ -154,9 +154,9 @@ flowchart LR
     subgraph runtime["⚙️ Runtime-routed lanes — lane: → data/agent-backends.json"]
         lanes0["digest-audio-script · digest-synthesis · digest-synthesis-fallback<br/>model-timeline · twitter-autoresearch · twitter-judge<br/>twitter-primary · twitter-primary-repair<br/><i>8 lanes</i>"]
         strict0["🔒 twitter-ab-claude · twitter-ab-judge · twitter-ab-judge-swapped<br/><i>strict — never falls back</i>"]
-        strict1["🔒 generative-research-ko<br/><i>strict — never falls back</i>"]
+        strict1["🔒 arxiv · generative-research-ko · wiki-ingest<br/><i>strict — never falls back</i>"]
         strict2["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
-        strict3["🔒 arxiv · bluesky · community<br/>rss · wiki-ingest<br/><i>strict — never falls back</i>"]
+        strict3["🔒 bluesky · community · rss<br/><i>strict — never falls back</i>"]
         strict4["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
         gendef["generative-research-default<br/><i>dispatch default</i>"]
     end
@@ -380,7 +380,7 @@ settings and service overrides. None are needed for the
 | `FIREWORKS_API_KEY` | Fireworks generative and comparison routes | Anthropic-compatible Fireworks endpoint for explicit model routes and comparison lanes |
 | `ZAI_API_KEY` | Z.ai GLM 5.2 lanes and fallback chain | Z.ai Coding Plan key; current second provider in the global fallback chain and used by Z.ai canaries/comparison lanes |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
-| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. The five editorial lanes use it for the strict `glm-5.3-flash` profile and share its plan caps; the OpenCode canary validates both direct DeepSeek and the dynamically resolved production GLM route. |
+| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. RSS, community, and Bluesky use its strict `glm-5.3-flash` route; arXiv/wiki use an independent Cursor route. The OpenCode canary validates both direct DeepSeek and the dynamically resolved primary editorial route. |
 | `CURSOR_API_KEY` | Cursor CLI profiles, direct comparison/canary paths, dispatcher route plumbing | Cursor dashboard API key. Prewired so an SSOT-only switch to `cursor-grok-4p6-fast` needs no workflow edit. Production defaults stay on OpenCode. |
 | `BIRD_AUTH_TOKEN` / `BIRD_CT0` | Twitter/X lanes | X cookies (read-only use; expire often) |
 | `BIRDY_ACCOUNTS` | alternative to cookie pair | multi-account rotation JSON; every account forced read-only |

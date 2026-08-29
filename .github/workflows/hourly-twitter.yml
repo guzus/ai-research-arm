@@ -43,7 +43,6 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 #   BIRDY_ACCOUNTS                       — optional multi-account rotation JSON; each account is forced read-only
 #   BIRD_AUTH_TOKEN, BIRD_CT0            — fallback single-account cookies when BIRDY_ACCOUNTS is absent
 #   HOOKER_URL, HOOKER_TOKEN             — primary tier (headline-alert blast + telemetry) and comparison tiers (per-cycle notification, relayed to Telegram)
-#   VERCEL_DEPLOY_HOOK                   — optional, primary tier only
 
 on:
   schedule:
@@ -224,7 +223,7 @@ jobs:
 
       - name: Checkout repository
         if: steps.backend.outputs.skip != 'true'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         env:
           GIT_CONFIG_NOSYSTEM: "1"
           GIT_CONFIG_GLOBAL: /dev/null
@@ -246,13 +245,13 @@ jobs:
 
       - name: Setup Node.js
         if: steps.backend.outputs.skip != 'true'
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '22'
 
       - name: Setup uv
         if: steps.backend.outputs.skip != 'true'
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           enable-cache: true
 
@@ -1460,23 +1459,6 @@ jobs:
         run: |
           echo "::error::Twitter analyst output was invalid or missing; recovery heartbeat was published."
           exit 1
-
-      # ── Vercel deploy hook (claude tier only) ──────────────────────
-      # Vercel's GitHub App webhook should fire on bot pushes too, but
-      # if VERCEL_DEPLOY_HOOK is present we belt-and-suspenders it.
-      - name: Trigger Vercel deploy (claude tier)
-        if: >-
-          steps.backend.outputs.name == 'claude'
-          && steps.push.outputs.pushed == 'true'
-          && !(github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
-        env:
-          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
-        run: |
-          if [ -n "$VERCEL_DEPLOY_HOOK" ]; then
-            curl -fsSL -X POST "$VERCEL_DEPLOY_HOOK" && echo "Vercel deploy hook fired"
-          else
-            echo "VERCEL_DEPLOY_HOOK not set; relying on Vercel's GitHub auto-deploy"
-          fi
 
       # ── claude-tier dry-run summary (instead of real alerts) ───────
       - name: Dry-run alert summary (claude tier)

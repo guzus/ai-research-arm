@@ -148,7 +148,7 @@ runs:
     - name: Run agent with Claude
       id: run-claude
       if: steps.select.outputs.provider == 'claude' && inputs.allowed-bots == ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_MODEL: ${{ steps.select.outputs.native-model }}
         ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.native-model }}
@@ -162,7 +162,7 @@ runs:
     - name: Run agent with Claude
       id: run-claude-bots
       if: steps.select.outputs.provider == 'claude' && inputs.allowed-bots != ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_MODEL: ${{ steps.select.outputs.native-model }}
         ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.native-model }}
@@ -177,7 +177,7 @@ runs:
     - name: Run agent with Fireworks
       id: run-fireworks
       if: steps.select.outputs.provider == 'fireworks' && inputs.allowed-bots == ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
         ANTHROPIC_API_KEY: ${{ inputs.fireworks-api-key }}
@@ -198,7 +198,7 @@ runs:
     - name: Run agent with Fireworks
       id: run-fireworks-bots
       if: steps.select.outputs.provider == 'fireworks' && inputs.allowed-bots != ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
         ANTHROPIC_API_KEY: ${{ inputs.fireworks-api-key }}
@@ -220,7 +220,7 @@ runs:
     - name: Run agent with Z.ai
       id: run-zai
       if: steps.select.outputs.provider == 'zai' && inputs.allowed-bots == ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
@@ -242,7 +242,7 @@ runs:
     - name: Run agent with Z.ai
       id: run-zai-bots
       if: steps.select.outputs.provider == 'zai' && inputs.allowed-bots != ''
-      uses: anthropics/claude-code-action@v1
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
