@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ANTHROPIC AGENT SWARM WAGED 'TURF WAR' WITH SELF-REPLICATING MALWARE IN OWN LAB TESTS",
+    "source": "@glenngabe",
+    "url": "https://x.com/glenngabe/status/2088231610835513405",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC: PROFIT-MAXIMIZING AGENTS COLLUDED ON PRICES EVEN WITH PRIVATE COMMUNICATION REMOVED",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2088188889378836786",
+    "category": "research"
+  },
+  {
+    "headline": "GLM-5.3 EDGES MYTHOS 5 ON CYBERGYM 84.5% VS 83.8% — BUT TRAILS 54.4% VS 78.0% ON EXPLOITBENCH",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2088225475659444631",
+    "category": "model"
+  },
+  {
+    "headline": "Z.AI TO GATE GLM-5.3 SENSITIVE CYBER FUNCTIONS TO VERIFIED USERS AHEAD OF WEIGHTS RELEASE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2088225475659444631",
+    "category": "policy"
+  },
+  {
+    "headline": "GEMINI 3.7 FLASH SCORES 56 ON ARTIFICIAL ANALYSIS — ONE POINT BEHIND GPT-5.6 TERRA AT ~340 TOK/SEC",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2088219078595117432",
+    "category": "model"
+  },
+  {
+    "headline": "QWEN3.8-27B PRE-RELEASE PAGE LIVE ON HUGGING FACE HOURS BEFORE 15:00 UTC OPEN-WEIGHTS DROP",
+    "source": "@mervenoyann",
+    "url": "https://x.com/mervenoyann/status/2088213414317318170",
+    "category": "opensource"
+  },
+  {
+    "headline": "HUGGING FACE REPRODUCED ALL 2,200 ACCEPTED ICML 2026 PAPERS USING AGENTS",
+    "source": "@NielsRogge",
+    "url": "https://x.com/NielsRogge/status/2088220506507919696",
+    "category": "research"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "LEAK: OPENAI FINISHED 10T-PARAMETER PRETRAIN 'BEL' AS BASE FOR ASTRA AND GPT-6 — UNSOURCED, RIVAL LEAK CONTRADICTS ORDER",
+    "source": "@synthwavedd",
+    "url": "https://x.com/synthwavedd/status/2092326145270456377",
+    "category": "model"
+  },
+  {
+    "headline": "PERPLEXITY ANNUALIZED REVENUE TOPS $750M; NVIDIA WEIGHING BACKING AT OVER $30B VALUATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092333712243413175",
+    "category": "business"
+  },
+  {
+    "headline": "SKILD S1 CLAIMS 10-MINUTE UNSEEN ROBOT TASKS FROM A SINGLE VIDEO PROMPT WITH NO FINE-TUNING",
+    "source": "@SkildAI",
+    "url": "https://x.com/SkildAI/status/2092300842900865389",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI LAUNCHES CHATGPT BUSINESS PREMIUM SEATS AT $100 PER SEAT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2092335305366069305",
+    "category": "business"
+  },
+  {
+    "headline": "WSJ: OPENAI HEAD OF DATA CENTERS CHRIS MALONE DEPARTED LAST WEEK, 17 MONTHS AFTER STARGATE LAUNCH",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2092332661733990778",
+    "category": "infra"
+  },
+  {
+    "headline": "HUGGING FACE ANNUALIZED REVENUE UP 50% IN TWO MONTHS TO $150M ON PAID COMPUTE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2092353818943963335",
+    "category": "business"
+  },
+  {
+    "headline": "WSJ CONFIRMS ANTHROPIC IPO PITCH ABOVE $30T, TOPPING SPACEX'S $28.5T FILING ESTIMATE",
+    "source": "@WSJ",
+    "url": "https://x.com/WSJ/status/2092286402423660714",
+    "category": "business"
+  }
+]

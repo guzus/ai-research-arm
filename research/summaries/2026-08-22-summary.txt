@@ -1,0 +1,16 @@
+AI News - 2026-08-22
+
+TOP STORIES:
+• OpenAI cuts GPT-5.6 Sol API/credit pricing 20%+ through Nov 21
+• Nevada OKs up to 8,000 robotaxis for Tesla/Uber/Waymo in Las Vegas
+• Anthropic's Claude wet-lab validated on autonomous protein design
+• Perplexity's Computer agent now runs tasks straight from email
+• Apple Music to require "Made With AI" labels on AI-generated songs
+
+KEY NUMBERS:
+• GPT-5.6 Sol: $5→$4/Mtok input, $30→$20/Mtok output
+• Nevada: 5,000 Tesla + 1,000 Waymo + 1,000 Uber robotaxis
+• Claude: 354 confirmed protein binders from 1,320 designs, 14/15 targets, 22-27% hit rate (2x industry baseline)
+• Apple Music: ~1/3 of uploaded tracks now entirely AI-generated
+
+Full report on GitHub.

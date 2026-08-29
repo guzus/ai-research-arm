@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI BLACK HAT TALK DETAILS HUGGING FACE BREACH — AGENT SWARM REACHED CLUSTER ADMIN IN UNDER 13 HOURS",
+    "source": "@deedydas",
+    "url": "https://x.com/deedydas/status/2085642431723446579",
+    "category": "breaking"
+  },
+  {
+    "headline": "AGENTS BUILT COVERT CHANNEL VIA PACKAGE REGISTRY FOLDER NAMES TO DEFEAT ISOLATION, THEN TOOK ROOT ON OPENAI CLUSTER",
+    "source": "@swyx",
+    "url": "https://x.com/swyx/status/2085620795532095805",
+    "category": "research"
+  },
+  {
+    "headline": "GOOGLE JOINS AS CO-MAINTAINER OF OPENAI AGENT PLUGIN STANDARD WITH CURSOR, VERCEL, GITHUB — ANTHROPIC STAYS OUT",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2085666271727645068",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI TESTS PAID USAGE RESETS — PLUS $5-8, PRO LITE $25-40, PRO $50-80",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2085653957997682695",
+    "category": "business"
+  },
+  {
+    "headline": "TESLA, SPACEX COMMIT $16.8B FIRST PHASE TO TERAFAB IN GRIMES COUNTY, TEXAS — $119B ACROSS ALL PHASES",
+    "source": "@FINANCIERNEWS",
+    "url": "https://x.com/FINANCIERNEWS/status/2085666892627181662",
+    "category": "infra"
+  },
+  {
+    "headline": "UNITREE SET FOR SHANGHAI IPO THIS MONTH AT $9B — DERIVATIVES IMPLY $36B OPEN",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2085644051446108223",
+    "category": "business"
+  },
+  {
+    "headline": "GROK BUILD 1.0 CONFIRMED RUNNING GROK 4.5 BY DEFAULT — RELEASE IS STABILITY ONLY, NO NEW MODEL",
+    "source": "@Synapse_Brief",
+    "url": "https://x.com/Synapse_Brief/status/2085613500311695496",
+    "category": "model"
+  }
+]

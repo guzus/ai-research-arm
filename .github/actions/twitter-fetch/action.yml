@@ -17,8 +17,12 @@ inputs:
     description: BIRD_CT0 secret value (for birdy stateless auth).
     required: true
   github_token:
-    description: GITHUB_TOKEN (used only to follow GitHub release redirects).
-    required: true
+    description: >-
+      Unused since the birdy install moved to .github/actions/install-birdy
+      (the birdy repo is public, so the release download needs no auth). Kept
+      so existing callers keep working; drop it and its call sites together.
+    required: false
+    default: ""
   birdy_accounts:
     description: >
       Optional BIRDY_ACCOUNTS JSON for multi-account rotation. Every account is
@@ -75,49 +79,12 @@ runs:
         echo "Disk after:"
         df -h / 2>&1 | tail -2
 
-    - name: Install birdy from GitHub release
-      shell: bash
-      env:
-        GH_TOKEN: ${{ inputs.github_token }}
-      run: |
-        # Download pre-built birdy binary from the latest release — avoids
-        # needing Go toolchain (~150MB) on the self-hosted runner. The
-        # v0.9.0+ release includes the `multi-fetch` command.
-        set -e
-
-        OS=$(uname -s | tr '[:upper:]' '[:lower:]')
-        ARCH=$(uname -m)
-        case "$ARCH" in
-          x86_64|amd64) ARCH=amd64 ;;
-          arm64|aarch64) ARCH=arm64 ;;
-        esac
-        ASSET="birdy_${OS}_${ARCH}.tar.gz"
-
-        TMPDIR=$(mktemp -d)
-        trap 'rm -rf "$TMPDIR"' EXIT
-
-        # Public repo, no auth needed. Install the whole release layout because
-        # birdy locates the bundled bird runtime next to the birdy binary.
-        curl -fsSL "https://github.com/guzus/birdy/releases/latest/download/${ASSET}" -o "$TMPDIR/$ASSET"
-        tar -xzf "$TMPDIR/$ASSET" -C "$TMPDIR"
-
-        BIN="$TMPDIR/birdy"
-        [ -f "$BIN" ] || BIN="$TMPDIR/birdy_${OS}_${ARCH}"
-        if [ ! -f "$BIN" ]; then
-          echo "Could not find birdy binary in release tarball"
-          ls "$TMPDIR" >&2
-          exit 1
-        fi
-
-        INSTALL_DIR="$HOME/.local/birdy"
-        rm -rf "$INSTALL_DIR"
-        mkdir -p "$INSTALL_DIR"
-        cp -R "$TMPDIR"/bird "$INSTALL_DIR"/
-        install -m 755 "$BIN" "$INSTALL_DIR/birdy"
-        echo "$INSTALL_DIR" >> "$GITHUB_PATH"
-        export PATH="$INSTALL_DIR:$PATH"
-
-        birdy version 2>&1 | head -3 || echo "(birdy installed)"
+    # Shared installer (.github/actions/install-birdy) so every lane obtains
+    # birdy the same way. It replaced the inline copy that also copied a
+    # bundled Node `bird/` runtime out of the tarball — birdy v1.0.0 dropped
+    # that runtime and serves all commands natively, so the copy is gone.
+    - name: Install birdy
+      uses: ./.github/actions/install-birdy
 
     - name: Fetch tweets, searches, and news via birdy multi-fetch
       shell: bash
@@ -128,7 +95,31 @@ runs:
         FETCH_CONCURRENCY: ${{ inputs.concurrency }}
       run: |
         set -euo pipefail
-        mkdir -p /tmp/bird
+
+        # TRUSTED_BIRD_SNAPSHOT_SETUP_BEGIN
+        # /tmp persists on this self-hosted runner. Own a new snapshot for
+        # this job before Birdy writes anything: mkdir -p would follow a stale
+        # /tmp/bird symlink and could overwrite an unrelated host directory.
+        bird_root=/tmp/bird
+        canonical_bird_parent=$(realpath -- "$(dirname -- "$bird_root")")
+        if [ -L "$bird_root" ]; then
+          rm -f -- "$bird_root"
+        elif [ -d "$bird_root" ]; then
+          rm -rf -- "$bird_root"
+        elif [ -e "$bird_root" ]; then
+          rm -f -- "$bird_root"
+        fi
+        umask 077
+        mkdir -- "$bird_root"
+        chmod 700 "$bird_root"
+        if [ ! -d "$bird_root" ] || [ -L "$bird_root" ] \
+          || [ "$(realpath -- "$bird_root")" \
+            != "$canonical_bird_parent/$(basename -- "$bird_root")" ]; then
+          echo "::error::Could not create a canonical, non-linked Birdy snapshot directory."
+          exit 1
+        fi
+        # TRUSTED_BIRD_SNAPSHOT_SETUP_END
+
         export BIRDY_READ_ONLY=1
         BIRDY_ACCOUNTS="$(python3 scripts/birdy_ci_accounts.py)"
         export BIRDY_ACCOUNTS

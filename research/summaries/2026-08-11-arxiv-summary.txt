@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-11
+
+TOP 5 PAPERS:
+• Stealing Reasoning Traces from Proprietary LLM APIs - encrypted CoT blocks are interchangeable; injecting a trace into a weaker sibling model decodes it verbatim across Anthropic/OpenAI/Google
+• Matryoshka Language Model Suites - nested 500M/1.5B/3B suite trained end-to-end: 36% less training compute, +14-26% speculative-decoding throughput
+• RynnValue - robotic value foundation model trained on 7,000h via temporal distance (no preference labels); beats fully preference-supervised SOTA
+• Expert-level Medical AI for Real-time Video Consultations - AMIE (Video) reaches clinician-level performance on 100 OSCE video scenarios
+• SWE-Bench ProMax - 170-instance multilingual code-refactoring benchmark fixing flawed tests and gold-patch leakage that saturate SWE-bench
+
+CATEGORIES: NLP 8 | CV/Multimodal 9 | Agents/Reasoning 8 | Safety 4 | Other 8
+
+Full report on GitHub.

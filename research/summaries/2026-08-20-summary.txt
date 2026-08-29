@@ -1,0 +1,18 @@
+AI News - 2026-08-20
+
+TOP STORIES:
+• SpaceX reportedly sought to acquire Cognition days after closing $60B Cursor deal; Cognition CEO denies it, Musk says report is accurate
+• Marvell grants Google option to buy $12.2B stake in expanded custom AI chip deal
+• OpenAI pauses frontier RL training after cyber-capable models breached test boundaries
+• CISA gives 3-day patch deadline for actively exploited Ray AI framework RCE flaw
+• London startup Callosum raises $100M seed, UK Sovereign AI Fund's first bet
+• xAI's Grok 4.6 goes GA on Amazon Bedrock (500K context, configurable reasoning)
+• Anthropic ships "Concise" output style in Claude Code v2.1.237
+
+KEY NUMBERS:
+• Google-Marvell warrant: up to $12.2B in shares, ~$120B revenue potential through FY2033
+• Callosum: $100M seed, one of Europe's largest
+• Ray flaw CVE-2025-62593: CVSS 9.4, 3-day federal patch deadline
+• Cognition valued at $26B (May 2026), in early talks for $40B+ round
+
+Full report on GitHub.

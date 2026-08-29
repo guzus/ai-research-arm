@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "ox-2",
+      "claim_text": "davis7 reported 8/10 (80%) for Ox Alpha on a 10-task DeepSWE subset on August 21, 2026, saying it 'was a near miss on the x's so actually over 80%'; Sol scored 52% and Fable 65% on the same tasks.",
+      "no_contradiction_found": false,
+      "severity": "low",
+      "contradicting_url": "https://x.com/davis7/status/2091285712566140986",
+      "contradicting_quote": "Actual DeepSWE run on the ox alpha mystery model is done. Ended at ~63% NOT the 80% my first subset test got"
+    },
+    {
+      "claim_id": "ox-3",
+      "claim_text": "winkey_h reported Ox Alpha reached around 63% at 47K average output tokens on a DeepSWE subset, describing the result as pareto optimal amongst open models and just shy of Grok 4.6 among closed models.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "ox-11",
+      "claim_text": "Forensic analysis assigns roughly 90% confidence to Ox Alpha being a Zhipu next-generation multimodal GLM checkpoint such as a GLM-5.3 flash or GLM-5V variant, based on tokenizer, video-encoder, audio and speed fingerprints.",
+      "no_contradiction_found": false,
+      "severity": "low",
+      "contradicting_url": "https://caimpare.ai/articles/anonymous-ox-alpha-model-beats-gpt-and-claude-on-coding-benchmark-forensic-clues-point-to-china-s-zhipu",
+      "contradicting_quote": "one DeepMind researcher suggested Ox Alpha could be an unannounced Gemini Pro successor"
+    }
+  ]
+}

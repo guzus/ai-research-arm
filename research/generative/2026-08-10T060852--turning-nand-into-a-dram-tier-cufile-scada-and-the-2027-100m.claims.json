@@ -1,0 +1,404 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "NVIDIA's FMS 2026 announcement blog defines SCADA as 'scaled, accelerated data access' and names no workload, no block size and no IOPS figure.",
+      "type": "definition",
+      "source_urls": ["https://blogs.nvidia.com/blog/ai-storage-fms/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "The shipping cuFile v1.18 API reference states that all cuFile APIs are issued from the CPU, not the GPU.",
+      "type": "technical",
+      "source_urls": ["https://docs.nvidia.com/gpudirect-storage/api-reference-guide/index.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-21",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c3",
+      "claim": "As of 2026-08-10 the XIO-SIG GitHub organisation contains only a placeholder .github repository; the four named projects (cuFile, cuFileConformance, libxFile, xioLinux) do not yet exist.",
+      "type": "event",
+      "source_urls": ["https://github.com/xio-sig"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c4",
+      "claim": "Kioxia's GP1 Series is rated up to 10 million random-read IOPS at a 512-byte block size, with evaluation samples available to select customers by the end of 2026.",
+      "type": "metric",
+      "source_urls": ["https://www.kioxia.com/en-jp/business/news/2026/20260804-1.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "The 100-million-IOPS figure is a forward-looking per-drive target for a future PCIe 7.0 generation, not a measured product; Kioxia's own 107 MIOPS demonstration ran on an emulation platform.",
+      "type": "forecast",
+      "source_urls": ["https://americas.kioxia.com/en-us/insights/super-high-iops-ssd-202604.html", "https://www.kioxia.com/en-jp/business/news/2026/20260804-1.html"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-04-14",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c6",
+      "claim": "Micron's 230 million IOPS result is an aggregate across 44 Micron 9650 Gen6 SSDs at 512B, implying roughly 5.2M IOPS per drive.",
+      "type": "metric",
+      "source_urls": ["https://www.micron.com/about/blog/storage/ssd/sc25-performance-breakthrough-230m-iops-in-a-single-server"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-10-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Graid Technology reached 100 million random 512-byte IOPS on a RAID-5 protected volume built from 32 Kioxia XD8 SSDs — an array result, not a per-drive one.",
+      "type": "metric",
+      "source_urls": ["https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/graid-technology-achieves-industry-first-100-million-iops-on-a-pr-1191189"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-15",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "The best shipping single-drive 4KB random read figure is 5.5M IOPS (Micron 9650, PCIe Gen6); Gen5 flagships cluster at 2.7-3.3M.",
+      "type": "comparison",
+      "source_urls": ["https://www.micron.com/products/storage/ssd/data-center-ssd/9650-ssd"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01-01",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c9",
+      "claim": "vLLM deliberately re-laid-out its KV cache so that one physical offload block spans all layers, growing it from a few KB to approximately 0.5-2 MB.",
+      "type": "technical",
+      "source_urls": ["https://vllm.ai/blog/2026-01-08-kv-offloading-connector"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Llama-3.1-70B stores 327,680 bytes (320 KiB) of KV per token across all 80 layers: 2 x 80 x 8 x 128 x 2 bytes.",
+      "type": "derived",
+      "inputs": {"layers": 80, "kv_heads": 8, "head_dim": 128, "kv_pair": 2, "bytes_per_elem": 2},
+      "formula": "layers * kv_heads * head_dim * kv_pair * bytes_per_elem",
+      "result": 327680,
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "A 16-token vLLM block for Llama-3.1-70B is 5,242,880 bytes of KV, roughly ten thousand times a 512-byte I/O unit.",
+      "type": "derived",
+      "inputs": {"bytes_per_token": 327680, "block_tokens": 16},
+      "formula": "bytes_per_token * block_tokens",
+      "result": 5242880,
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "The BaM paper that underpins SCADA names graph and data analytics, recommender systems and graph neural networks as its motivating workloads; it predates the KV-cache era entirely.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2203.04910"],
+      "source_tiers": ["academic"],
+      "as_of": "2022-03-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "At FMS 2026 Kioxia demonstrated 512-byte GP1 for 'near GPU workloads', context-memory caching on the CM9 TLC drive, and vector/RAG via AiSAQ — three separate products for three separate problems.",
+      "type": "event",
+      "source_urls": ["https://americas.kioxia.com/en-us/business/news/2026/ssd-20260803-2.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "Meta's Bandana paper reports recommender embedding vectors of 64-128 bytes against a 4KB NVM block, wasting roughly 96% of read bandwidth.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/1811.05922"],
+      "source_tiers": ["academic"],
+      "as_of": "2018-11-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "The GIDS paper states GNN node feature sizes typically range from 512B to 4KB, and sizes the GPU cache line to the embedding to avoid I/O amplification.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2306.16384"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-06-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "NVIDIA's own KV-cache-on-flash proposal is CMX, a BlueField-4 Ethernet-attached G3.5 tier, whose materials never mention 512 bytes or IOPS.",
+      "type": "technical",
+      "source_urls": ["https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-BlueField-4-Powers-New-Class-of-AI-Native-Storage-Infrastructure-for-the-Next-Frontier-of-AI/default.aspx"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "NVIDIA's purpose-built massive-context inference GPU, Rubin CPX, solves the context-memory problem with 128GB of GDDR7, not flash.",
+      "type": "technical",
+      "source_urls": ["https://nvidianews.nvidia.com/news/nvidia-unveils-rubin-cpx-a-new-class-of-gpu-designed-for-massive-context-inference"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-09-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Conventional DRAM contract prices rose approximately 93-98% quarter-on-quarter in 1Q26, lifting DRAM industry revenue 81% QoQ to $97 billion.",
+      "type": "metric",
+      "source_urls": ["https://www.trendforce.com/presscenter/news/20260601-13070.html"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-06-01",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "HBM per-wafer revenue was overtaken by DDR5 64GB RDIMM in 1Q26, inverting the assumption that HBM is the most profitable use of a DRAM wafer.",
+      "type": "market-structure",
+      "source_urls": ["https://www.trendforce.com/presscenter/news/20260602-13074.html"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-06-02",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c20",
+      "claim": "HBM took roughly 22% of top-three DRAM wafer input at end-2026 while producing only about 9% of DRAM bits.",
+      "type": "metric",
+      "source_urls": ["https://www.trendforce.com/presscenter/news/20260602-13074.html"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-06-02",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c21",
+      "claim": "Kioxia XL-FLASH is specified at under 5 microseconds read latency on a 128Gb SLC die with a 16-plane architecture — one to two orders of magnitude slower than DRAM's tens of nanoseconds.",
+      "type": "technical",
+      "source_urls": ["https://americas.kioxia.com/en-us/business/memory/xlflash.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "A peer-reviewed IEEE Computer Architecture Letters analysis puts flash read energy at 102.4 pJ/bit against HBM3's 4.2 pJ/bit, a total path of 110.8 pJ/bit and roughly a 26-fold energy increase.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2508.06978v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-08-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "In a measured KV-offload deployment the flash tier ran at roughly 3.2 drive-writes-per-day against a 3 DWPD rating while using only about 1/28th of available bandwidth.",
+      "type": "metric",
+      "source_urls": ["https://www.storagereview.com/review/the-token-efficient-path-for-long-context-inference-kv-cache-offload-to-flash"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c24",
+      "claim": "Samsung's own KV-cache-offloading white paper reports the NVMe configuration costing about 4% more below the crossover and reaching only 1.5x cost efficiency at 240 concurrent users.",
+      "type": "metric",
+      "source_urls": ["https://download.semiconductor.samsung.com/resources/white-paper/scaling_ai_inference_with_kv_cache_offloading.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-06",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c25",
+      "claim": "A production KV-cache characterisation from Alibaba and SJTU concludes that a cache of 2x the per-GPU HBM approaches the ideal hit rate, eliminating the need for a CPU-RDMA-SSD storage hierarchy.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2506.02634v3"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-06-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "Mooncake's SSD offload is a July 2026 open-source feature benchmarked on a single 8xA100 node, not a disclosed Kimi production deployment.",
+      "type": "event",
+      "source_urls": ["https://kvcache.ai/blog/scaling-kv-cache-beyond-memory/", "https://arxiv.org/html/2407.00079v1"],
+      "source_tiers": ["primary", "academic"],
+      "as_of": "2026-07-15",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c27",
+      "claim": "Agentic coding traces show roughly 95.8% token-weighted prefix-cache hit rates, with misses clustering at gaps longer than five minutes.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2606.30560v2"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-06-01",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c28",
+      "claim": "Four major API providers price a cache hit at roughly 10% of uncached input tokens, and OpenAI and Anthropic now charge a write premium of 1.25x to 2x.",
+      "type": "metric",
+      "source_urls": ["https://platform.claude.com/docs/en/build-with-claude/prompt-caching", "https://developers.openai.com/api/docs/guides/prompt-caching"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c29",
+      "claim": "Intel began winding down the Optane memory business in Q2 2022, taking a $559 million inventory impairment.",
+      "type": "event",
+      "source_urls": ["https://www.intc.com/news-events/press-releases/detail/1563/intel-reports-second-quarter-2022-financial-results"],
+      "source_tiers": ["primary"],
+      "as_of": "2022-07-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "PCI-SIG released the PCIe 7.0 specification at 128 GT/s on 2025-06-11, delivering up to 512 GB/s bidirectionally over x16.",
+      "type": "technical",
+      "source_urls": ["https://www.businesswire.com/news/home/20250611299049/en/PCI-SIG-Releases-PCIe-7.0-Specification-to-Support-the-Bandwidth-Demands-of-Artificial-Intelligence-at-128.0-GTs-Transfer-Rates"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-06-11",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "Ten million IOPS at a 512-byte block size delivers 5.12 GB/s of payload bandwidth.",
+      "type": "derived",
+      "inputs": {"iops": 10000000, "block_bytes": 512},
+      "formula": "iops * block_bytes / 1000000000",
+      "result": 5.12,
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "One hundred million IOPS at 512 bytes delivers 51.2 GB/s of payload, roughly 1/65th of an H100's 3.35 TB/s HBM bandwidth.",
+      "type": "derived",
+      "inputs": {"iops": 100000000, "block_bytes": 512, "hbm_bandwidth_gbs": 3350},
+      "formula": "hbm_bandwidth_gbs / (iops * block_bytes / 1000000000)",
+      "result": 65.4296875,
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c33",
+      "claim": "The first OCP High Bandwidth Flash specification defines three bandwidth grades from roughly 0.4 TB/s to 3.0 TB/s and up to 512GB per stack, and states no latency figure.",
+      "type": "technical",
+      "source_urls": ["https://news.skhynix.com/en/hbf-at-fms-2026/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c34",
+      "claim": "NAND contract prices rose 70-75% QoQ in 2Q26, outpacing conventional DRAM's 58-63%, with NOR flash and SLC NAND up more than 100% across the first half of 2026.",
+      "type": "metric",
+      "source_urls": ["https://www.trendforce.com/presscenter/news/20260616-13102.html", "https://www.trendforce.com/presscenter/news/20260703-13134.html"],
+      "source_tiers": ["market-data", "market-data"],
+      "as_of": "2026-07-03",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c35",
+      "claim": "Memory rose from about 52% to about 63% of AI-chip component cost between Q1 2024 and Q4 2025, while advanced packaging fell from 19% to 15%.",
+      "type": "metric",
+      "source_urls": ["https://epoch.ai/data-insights/ai-chip-component-cost-shares"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-05-21",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c36",
+      "claim": "Micron reported record FQ3 FY2026 revenue of $41.456 billion at 84.9% non-GAAP gross margin and guided FQ4 to $50 billion.",
+      "type": "metric",
+      "source_urls": ["https://www.globenewswire.com/news-release/2026/06/24/3317151/14450/en/micron-technology-inc-reports-record-results-for-the-third-quarter-of-fiscal-2026.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c37",
+      "claim": "Analyst Jim Handy of Objective Analysis published a public rebuttal of the 100-million-IOPS SSD target, noting today's highest-performing SSDs deliver well under ten million IOPS.",
+      "type": "quote",
+      "source_urls": ["https://thessdguy.com/100-million-iops-ssds-you-must-be-kidding/"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-02-02",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c38",
+      "claim": "Samsung's own scorecard records NVMe Zoned Namespaces as standardised but with low NVMe traction, because adoption requires major host-stack changes.",
+      "type": "regulatory",
+      "source_urls": ["https://semiconductor.samsung.com/news-events/tech-blog/a-brief-history-of-data-placement-technologies/"],
+      "source_tiers": ["primary"],
+      "as_of": "2023-08-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c39",
+      "claim": "Kioxia's GP1 endurance rating is up to 50 DWPD, an unusually high figure that implies the vendor expects an extreme write load.",
+      "type": "metric",
+      "source_urls": ["https://www.kioxia.com/en-jp/business/news/2026/20260804-1.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-04",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c40",
+      "claim": "SanDisk reported FQ4 FY2026 revenue of $8.965 billion with datacenter revenue of $2.977 billion, roughly a third of the total.",
+      "type": "metric",
+      "source_urls": ["https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-fourth-quarter-2026-financial-results"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-05",
+      "confidence": "medium",
+      "risk": "volatile"
+    }
+  ]
+}

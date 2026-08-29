@@ -1,0 +1,109 @@
+name: Install birdy
+description: >-
+  Install the birdy X/Twitter CLI from its GitHub release and put it on PATH.
+  Single source of truth for how every lane obtains birdy.
+
+# birdy has served all 24 commands natively in Go since v1.0.0 (2026-08-07);
+# the release is one binary with no Node runtime. This action replaced three
+# separate `npm install -g @steipete/bird@0.8.0` sites — npm already flags that
+# package "no longer supported", and running two X clients side by side meant
+# two auth paths, two rate-limit accountings, and two output shapes to keep in
+# sync. birdy is also the only one of the two that rotates accounts.
+#
+# Pre-built binary rather than `go install`: the self-hosted runner would
+# otherwise need a ~150MB Go toolchain.
+
+inputs:
+  version:
+    description: >-
+      Audited release tag to install. The default is pinned in
+      data/toolchain-pins.json; an override must also provide sha256.
+    required: false
+    default: v1.1.0
+  sha256:
+    description: Optional SHA-256 for a non-default version override.
+    required: false
+    default: ""
+
+outputs:
+  version:
+    description: The birdy version actually installed, as reported by `birdy version`.
+    value: ${{ steps.install.outputs.version }}
+
+runs:
+  using: composite
+  steps:
+    - name: Install birdy from GitHub release
+      id: install
+      shell: bash
+      env:
+        BIRDY_VERSION: ${{ inputs.version }}
+        BIRDY_SHA256: ${{ inputs.sha256 }}
+      run: |
+        set -euo pipefail
+
+        OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+        ARCH=$(uname -m)
+        case "$ARCH" in
+          x86_64|amd64) ARCH=amd64 ;;
+          arm64|aarch64) ARCH=arm64 ;;
+        esac
+        ASSET="birdy_${OS}_${ARCH}.tar.gz"
+
+        URL="https://github.com/guzus/birdy/releases/download/${BIRDY_VERSION}/${ASSET}"
+        if [ -z "$BIRDY_SHA256" ]; then
+          PIN_FILE="$GITHUB_WORKSPACE/data/toolchain-pins.json"
+          pinned_version=$(jq -r '.birdy.version' "$PIN_FILE")
+          if [ "$BIRDY_VERSION" != "$pinned_version" ]; then
+            echo "::error::Non-default birdy version $BIRDY_VERSION requires an explicit sha256 input."
+            exit 1
+          fi
+          BIRDY_SHA256=$(jq -r --arg key "${OS}_${ARCH}" '.birdy.sha256[$key] // empty' "$PIN_FILE")
+        fi
+        if [[ ! "$BIRDY_SHA256" =~ ^[0-9a-f]{64}$ ]]; then
+          echo "::error::No audited SHA-256 for birdy ${BIRDY_VERSION} ${OS}/${ARCH}."
+          exit 1
+        fi
+
+        TMPDIR=$(mktemp -d)
+        trap 'rm -rf "$TMPDIR"' EXIT
+
+        # Public repo, no auth needed.
+        curl -fsSL "$URL" -o "$TMPDIR/$ASSET"
+        if command -v sha256sum >/dev/null 2>&1; then
+          printf '%s  %s\n' "$BIRDY_SHA256" "$TMPDIR/$ASSET" | sha256sum -c -
+        else
+          actual_sha=$(shasum -a 256 "$TMPDIR/$ASSET" | awk '{print $1}')
+          if [ "$actual_sha" != "$BIRDY_SHA256" ]; then
+            echo "::error::birdy archive SHA-256 mismatch."
+            exit 1
+          fi
+        fi
+        tar -xzf "$TMPDIR/$ASSET" -C "$TMPDIR"
+
+        BIN="$TMPDIR/birdy"
+        [ -f "$BIN" ] || BIN="$TMPDIR/birdy_${OS}_${ARCH}"
+        if [ ! -f "$BIN" ]; then
+          echo "::error::No birdy binary in ${ASSET}. Release layout changed?"
+          ls -R "$TMPDIR" >&2
+          exit 1
+        fi
+
+        # The runner's HOME persists between jobs, so wipe rather than merge:
+        # a stale layout left behind by an older release must not shadow this
+        # install.
+        INSTALL_DIR="$HOME/.local/birdy"
+        rm -rf "$INSTALL_DIR"
+        mkdir -p "$INSTALL_DIR"
+        install -m 755 "$BIN" "$INSTALL_DIR/birdy"
+        echo "$INSTALL_DIR" >> "$GITHUB_PATH"
+        export PATH="$INSTALL_DIR:$PATH"
+
+        # Fail loudly here rather than let every downstream `|| echo "[]"`
+        # silently turn a broken install into an empty, plausible-looking lane.
+        if ! VERSION=$(birdy version 2>&1 | head -1); then
+          echo "::error::birdy installed but not runnable: $VERSION"
+          exit 1
+        fi
+        echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+        echo "Installed $VERSION"

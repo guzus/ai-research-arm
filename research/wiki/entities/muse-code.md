@@ -4,10 +4,11 @@ title: Muse Code (Muse Spark 1.2)
 type: entity
 aliases: ["Muse Code", "Muse Spark 1.2", "Meta Muse Code"]
 tags: [coding-agent, meta, terminal-agent, benchmarks, pricing]
-description: Meta Superintelligence Labs' first coding agent (beta, 2026-08-06), a terminal agent with persistent sub-agents running on the new Muse Spark 1.2 at $1.25/$4.25 per Mtok, with a cheaper tier for developers who let Meta train on their code.
+description: Meta Superintelligence Labs' first coding agent (beta, 2026-08-06), a terminal agent with persistent sub-agents running on the new Muse Spark 1.2 at $1.25/$4.25 per Mtok, with a cheaper tier for developers who let Meta train on their code; a Muse Spark 1.2 open-weight version was promised for "the coming weeks" (2026-08-10).
 created_at: 2026-08-06
-timestamp: 2026-08-06T00:00:00Z
+timestamp: 2026-08-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA model ticket — Meta Hatch / Muse Spark", path: research/models/tickets/meta-hatch-muse-spark-2026-06.md}
 ---
@@ -56,8 +57,10 @@ as one product; the maker is tracked on [[meta]] and the earlier
 - **Do the independent Terminal-Bench and DeepSWE numbers hold** once the
   beta widens and harness configuration is matched? Both readings arrived
   within three hours of launch.
-- **Is Muse Spark 1.2 open-weight?** Nothing published says so, which would
-  break Meta's historic [[open-weights]] positioning for its most
-  commercially exposed model yet.
+- **Is Muse Spark 1.2 open-weight?** Meta committed on 2026-08-10 to
+  open-weighting a version of Muse Spark 1.2 ("in the coming weeks") — still a
+  promise, not a release, and read as a reversal of the closed posture this
+  question was tracking. The commitment landed with the [[muse-glimmer]]
+  Apache-2.0 release, Meta's return to [[open-weights]].
 - **Where does Hatch fit now?** The earlier Meta Hatch / Muse Spark ticket
   and this release have not been reconciled in one place.

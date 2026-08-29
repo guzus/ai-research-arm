@@ -4,15 +4,17 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and frontier-model builder (Llama); began alerting parents when teens discuss suicide/self-harm with Meta AI (2026-07-17, live in the US/UK/Australia/Canada), its most direct AI-safety product response yet.
+description: Social-platform hyperscaler and frontier-model builder (Llama); returned to open weights with Muse Glimmer (2026-08-10, Apache 2.0) and a commitment to open-weight Muse Spark 1.2, with a reported hundreds-of-millions-a-year Azure AI spend and a competing multi-model API service under construction (2026-08-21).
 created_at: 2026-06-16
-timestamp: 2026-08-07T00:00:00Z
+timestamp: 2026-08-21T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
@@ -163,3 +165,44 @@ the pacing coalition on 2026-07-30, and [[openai]] and [[anthropic]] have been
 lobbying to pull Meta inside the frontier-review regime — a voluntary breach
 disclosure is the strongest argument Meta has that it does not need to be
 compelled, and the strongest evidence that the regime has something to cover.
+
+## Muse Glimmer — Meta returns to open weights (2026-08-10/11)
+
+Meta released **[[muse-glimmer]]**, a **30B dense multimodal agent model under
+Apache 2.0** with weights live on Hugging Face and day-0 support in
+transformers, llama.cpp, vLLM, SGLang and Ollama — its first major
+[[open-weights]] release since the Llama lineage, breaking a streak of closed,
+priced products ([[muse-code|Muse Code / Muse Spark 1.2]]). Details, benchmark
+reality-check, and local-inference economics are on the [[muse-glimmer]] page.
+Two things matter for Meta specifically:
+
+- **The open-weights reversal, and the Spark 1.2 promise.** Meta also committed
+  to open-weighting a version of **Muse Spark 1.2** — the proprietary model
+  behind Muse Code it began charging for four days earlier — with timing firmed
+  only from "soon" to **"in the coming weeks"**. That commitment is still a
+  promise, not a release, but it directly answers the open question the
+  [[muse-code]] page left open ("is Muse Spark 1.2 open-weight?").
+- **Zuckerberg's superintelligence manifesto (2026-08-10).** Alongside the
+  release, Zuckerberg published a manifesto carrying specific policy asks:
+  share **intermediate training checkpoints with government** rather than
+  waiting for training to finish, leave **distillation unrestricted**, and the
+  claim that *"any policy that slows American model releases — even by a month —
+  could add significant risk to American leadership."* It drew unusually hostile
+  coverage (The Verge ran two critical pieces; TechCrunch called it "exactly why
+  people don't like AI"). Set against the 2026-07-30 WSJ remarks and the
+  [[open-weights]] letter fights, the manifesto hardens Meta's position as the
+  loudest pro-open-weights US frontier voice, at odds with [[openai]] and
+  [[anthropic]] (ARA daily digest 2026-08-11).
+
+## Meta's Azure AI spend, and a competing multi-model API (2026-08-21)
+
+Bloomberg reporting relayed into the timeline puts **Meta's Azure AI spend at
+hundreds of millions of dollars a year**, with **trillions of tokens weekly
+flowing through Azure Foundry — including OpenAI models used to grade Meta's
+own outputs**. Meta is separately said to be **building a competing multi-model
+API service** — the same multi-model routing posture as [[openrouter]]. The
+portrait is striking: a frontier rival ([[openai]]'s largest customer base via
+Azure) paying [[microsoft]] to host the [[openai|OpenAI]] models that grade
+Meta's own work, even as Meta builds the aggregation layer that could
+eventually route around OpenAI (Bloomberg via relay; ARA daily digest
+2026-08-21). See [[ai-capex]].

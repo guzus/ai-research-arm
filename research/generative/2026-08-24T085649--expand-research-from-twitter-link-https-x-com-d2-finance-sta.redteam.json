@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "A governance-token takeover — not a smart-contract bug — let an attacker who spent roughly 2 ETH drain $8.5M from Term Finance's Yearn-v3-based strategy vaults on August 23, 2026, while Term's core lending markets stayed untouched.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The single most important unresolved fact in this dispute is also the simplest to state: \"Tori's Ecosystem Vault\" is not one product. It is a name attached to at least two structurally different things, and untangling which one — if either — had capital sitting inside the Term Finance vaults that got drained is the question Tori's \"not affected\" statement never actually answers.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "It published on-chain forensic analysis of the April 2026 Kelp DAO/LayerZero exploit — roughly $292M — that was cited alongside independent researchers' findings in mainstream coverage of that incident [^20]. That is evidence this is not D2's first attempt at serious on-chain investigation.",
+      "contradicting_url": "https://www.chainalysis.com/blog/kelpdao-bridge-exploit-april-2026/",
+      "contradicting_quote": "Not a private key exposure: 'Two RPC nodes hosted by LayerZero were compromised' feeding forged data to 'a single verifier: the LayerZero Labs DVN.'",
+      "severity": "high",
+      "no_contradiction_found": false
+    }
+  ]
+}

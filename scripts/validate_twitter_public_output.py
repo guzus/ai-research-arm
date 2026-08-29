@@ -80,6 +80,19 @@ def cycle_sections(text: str, hour: str) -> list[str]:
     return sections
 
 
+def _section_preview(section: str, *, max_lines: int = 12, max_chars: int = 800) -> str:
+    """Keep just enough of a failing section for the next operator to see the miss."""
+    lines = section.splitlines()
+    preview = "\n".join(lines[:max_lines])
+    truncated = len(lines) > max_lines
+    if len(preview) > max_chars:
+        preview = preview[:max_chars]
+        truncated = True
+    if truncated:
+        preview += "\n..."
+    return preview
+
+
 def public_item_count(section: str) -> int:
     section = HTML_COMMENT_RE.sub("", section)
 
@@ -128,6 +141,7 @@ def validate(
     run_id: str,
     run_attempt: int,
     headlines_file: Path | None = None,
+    reject_recovery: bool = False,
 ) -> None:
     status = load_json(status_file)
     if not isinstance(status, dict):
@@ -156,6 +170,8 @@ def validate(
         raise ContractError("public_items must be a non-negative integer")
     if not isinstance(recovery, bool):
         raise ContractError("recovery must be a boolean when present")
+    if reject_recovery and recovery:
+        raise ContractError("model output must not be a recovery heartbeat")
     if not summary_file.exists():
         raise ContractError(f"missing summary artifact: {summary_file}")
 
@@ -187,7 +203,11 @@ def validate(
             re.MULTILINE,
         )
         if summary_match is None:
-            raise ContractError("published section requires a non-empty Cycle summary")
+            raise ContractError(
+                "published section requires a non-empty Cycle summary "
+                "(exact line: **Cycle summary**: <text>)\n"
+                f"section preview:\n{_section_preview(section)}"
+            )
         filler = FILLER_RE.search(section)
         if filler is not None:
             raise ContractError(f"public section contains operational/no-news filler: {filler.group(0)!r}")
@@ -224,6 +244,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--generated-at", required=True)
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--run-attempt", type=int, required=True)
+    parser.add_argument(
+        "--reject-recovery",
+        action="store_true",
+        help="reject deterministic recovery heartbeats when validating model output",
+    )
     args = parser.parse_args(argv)
 
     try:
@@ -238,6 +263,7 @@ def main(argv: list[str] | None = None) -> int:
             generated_at=args.generated_at,
             run_id=args.run_id,
             run_attempt=args.run_attempt,
+            reject_recovery=args.reject_recovery,
         )
     except ContractError as exc:
         parser.error(str(exc))

@@ -4,10 +4,19 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity, and the question of whether demand justifies it.
+description: The cross-cutting narrative of a historically large, debt- and equity-financed GPU/TPU buildout — now including Lambda's $1B private-debt chip purchase for a Microsoft lease, Marvell's record FY27Q2 ($2.739B, data center +46%) and raised FY27/FY28 outlook, Cognition's ~$900M ARR against a possible $800M Nvidia-server burn, and a16z's Machine Age Fund arguing the bottleneck has moved south of the model to chips, power, cooling, memory and interconnect (2026-08-29).
 created_at: 2026-05-24
-timestamp: 2026-08-06T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
+  - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
+  - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
+  - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
@@ -587,6 +596,196 @@ package cleared its chamber-of-origin crossover.
   HBM cannot clear. Memory, not logic, is where the next binding constraint is
   forming (ARA daily digest 2026-08-06).
 
+- **Wall Street assembles a ~$500B Nvidia-anchored financing package — on debt
+  (2026-08-10).** A **~$500B AI-infrastructure financing package** is reported
+  assembling around [[nvidia]] with **Apollo, Blackstone, BlackRock's Global
+  Infrastructure Partners, Brookfield, Goldman Sachs and KKR** named. Two
+  caveats govern every reading: CNBC's relay traces to **one anonymous person**,
+  and the **material distinction is debt rather than equity** — a later
+  FT-attributed relay specifies **debt**, which is leverage against
+  depreciating GPU assets, a different bet from equity funding. **Unconfirmed by
+  any named participant.** The same window produced the first **named vehicle**
+  attached to the syndicate: the **Nvidia–IREN "DSX AI factories" partnership**,
+  with quoted executives (Jensen Huang, Brookfield's Bruce Flatt, BlackRock's
+  Larry Fink, Blackstone's Jon Gray) — IREN nonetheless closed **down ~6.1%** on
+  the session before the announcement landed. **Intel separately launched a
+  $15B underwritten common-stock offering** (two independent relays agree on
+  size and instrument; no prospectus linked), raising 2026 capex from **$18B to
+  $20B** with the stated driver being **AI-agent demand pushing CPU orders past
+  manufacturing capacity** — and because the share price roughly tripled this
+  year, the same cash costs materially less dilution (ARA daily digest
+  2026-08-11).
+- **Microsoft chases TSMC capacity for 300,000+ Maia 300 chips — and wants
+  Anthropic as anchor (2026-08-10).** Per The Information, [[microsoft]] is
+  chasing TSMC capacity for **over 300,000 Maia 300 chips**, ultimately wanting
+  more than a million as **Nadella pushes to cut Nvidia reliance** — and wants
+  [[anthropic]] as an anchor customer. The constraint is the one the custom-
+  silicon strategy was meant to escape: **custom AI chips queue for the same
+  leading-edge wafers as the GPUs they replace** (ARA daily digest 2026-08-11).
+- **Theseus Infrastructure — investors own the equity, Anthropic rents
+  (2026-08-10).** [[anthropic]], **Macquarie Asset Management** and **GIC** are
+  reported establishing **Theseus Infrastructure**, a build-to-suit datacenter
+  platform where the investors own the equity and Anthropic signs on as anchor
+  tenant paying **rent rather than capex**. Single relay, no counterparty
+  statement — and the structure **moves construction risk, not the obligation**,
+  the same off-balance-sheet shape this theme has tracked since the ~$150bn
+  Google-arranged chip vehicle (see [[anthropic]]) (ARA daily digest
+  2026-08-11).
+- **The supply-chain squeeze keeps broadening off the accelerator (2026-08-10).**
+  TSMC posted July revenue of **NT$467,580mn (+5.6% MoM, +44.7% YoY)**;
+  AI-server buyers are reportedly bidding **2–3× list to Yageo and Murata for
+  MLCCs** and signing multi-year passive-component contracts; TrendForce
+  estimates the **256GB iPhone 18 Pro costs ~38% more to build this quarter**
+  than the 2025 equivalent. **"The constraint has moved off the accelerator onto
+  everything around it"** — the buildout's cost is now showing up in passives,
+  handsets and grid politics rather than GPUs alone (ARA daily digest
+  2026-08-11).
+- **Three infrastructure suppliers beat in one afternoon — and the market shrugs
+  (2026-08-11/12).** The buildout printed its first hard quarterly numbers and
+  every layer beat: **[[coreweave|CoreWeave]]** posted **$2.58B quarterly revenue
+  (+112% Y/Y)** and a **~$104B contracted backlog (+246%)**; **Supermicro**
+  guided **FY2027 to $65–72B against ~$52.4B consensus**; **Lumentum**'s revenue
+  **doubled to $1.01B**. Yet the equity response was muted — Supermicro moved
+  just **+5.3%** on a guide **$16B above consensus** — the strongest instance yet
+  of the "beats but closes lower" tell this theme has tracked all cycle, and a
+  signal that the market is **pricing volume without margin** (SEC 8-K filings,
+  Twitter pulse; ARA daily digest 2026-08-12).
+- **Nvidia's 25% backstop inside its own $500B package — the circularity,
+  named (2026-08-11/12).** *The Information* reported that the **~$500B** package
+  assembled around [[nvidia]] carries a **25% per-project backstop**, under which
+  the chip vendor can absorb losses on projects **its own GPUs are sold into** —
+  the precise circularity the "new asset class" framing was built to answer.
+  **No term sheet is public**, and the earlier caveats (one anonymous CNBC
+  source; debt, not equity) still govern. This is the "circular financing"
+  critique from 2026-07-29 becoming a *documented structural feature* of the
+  package rather than an outside suspicion (ARA daily digest 2026-08-12).
+- **Texas pauses new data-center construction — the constraint shifts from
+  capital to interconnection (2026-08-11/12).** Texas, the state that marketed
+  itself as the buildout's epicenter, **paused new data-center construction**
+  while sitting on **more than 474 GW of pending grid-interconnection requests**
+  — roughly **five times ERCOT's all-time peak load**, so the queue is likely
+  inflated with speculative filings. The **binding constraint is shifting from
+  capital to interconnection** — the permitting/power gate this theme flagged as
+  an open question (2026-06-05) is now the operative bottleneck. Which authority
+  ordered it (ERCOT, the PUC, or the legislature) and whether it covers projects
+  already in the queue remains unreported (ARA daily digest 2026-08-12).
+- **TSMC's real-economy read keeps accelerating (2026-08-11/12).** TSMC's July
+  revenue rose **44.7% Y/Y to NT$467.58B (~$14.5B)** with **HPC at 66% of Q2
+  revenue** and full-year growth guided slightly above 40% in USD terms — a
+  foundry-level confirmation that the chip buildout is **accelerating rather than
+  plateauing**, the counterweight to the muted equity tape above (CNBC, Bloomberg;
+  ARA daily digest 2026-08-12).
+- **DDR5 contract prices jump 15–23% in a month — and the premium sits at the
+  low-density tier (2026-08-13).** A single-source channel survey puts server
+  DDR5 RDIMM contract prices at **$900 / $1,590 / $2,650 for 32/64/96GB** — up
+  **15–23% month-over-month** — with the **same modules trading at roughly 2×
+  contract on spot**. The premium concentrates in the commodity tier: **2.00–2.33×
+  spot at 32GB versus 1.43–1.55× at 96GB** — the memory-squeeze continuation of
+  the thread tracked since [[micron]]/[[sk-hynix]] became the binding constraint
+  (2026-08-01/05) (ARA daily digest 2026-08-13).
+- **The financing targets get bigger — BofA $250B, Morgan Stanley ~$1.5T, and
+  a compute-token futures market (2026-08-13).** **Bank of America** set a
+  **$250B AI-infrastructure and power financing target through 4 July 2027**,
+  two days after **Morgan Stanley announced a roughly $1.5T ten-year program**.
+  Separately, **Compute Exchange** is launching **contracts that let companies
+  lock in AI token prices for up to six months** — token-derivative futures,
+  a financialisation of inference pricing that presumes a deep, liquid compute
+  market. And **Cerebras disclosed 600MW under contract for end-2027**, with
+  Gavin Baker applying [[nebius]]'s disclosed **$20–25M-per-megawatt** long-term
+  economics (haircut for the take-or-pay OpenAI structure) to derive roughly
+  **$10B of 2027 exit cloud ARR** — his arithmetic, not a company guide (ARA
+  daily digest 2026-08-13).
+- **The neocloud economics print and the cash-burn ledger (2026-08-13).**
+  **[[nebius]]** posted **$582.3M quarterly revenue (+454% YoY, +46% seq.)** at a
+  **~50% AI Cloud adjusted EBITDA margin**, raised **contracted power to 5GW**,
+  and said **~70% of the quarter's deals carried customer prepayments** — the
+  strongest prepayment evidence for the neocloud thesis yet. Against it,
+  **[[coreweave|CoreWeave]]** filed its FY26Q2 8-K: CEO Michael Intrator called
+  the quarter "an important inflection point … as our scale began to translate
+  into expanding operating leverage," while The Information separately reports
+  **$5.7B of cash burned in the quarter** and debt priced **above 9% yields**
+  this month. **Super Micro's FY26Q4 8-K** prints gross margin **17.5% vs 9.9%**
+  in Q3'26 with net income **$1,178M vs $483M** and diluted EPS **$1.62** — CEO
+  Charles Liang declining to attach a margin to the $65–72B FY2027 guide, the
+  "volume without margin" concern flagged when the guide first landed
+  (2026-08-12) (ARA daily digest 2026-08-13).
+- **Frontier-grade work got 4.6× cheaper in 90 days (2026-08-13).** Parametric
+  CAD Bench re-ran the same 100 tasks and found the cost to clear a 0.8 score
+  fell from **$170.00 to $36.59**, with [[claude-opus-5|Claude Opus 5]] taking
+  the top score at **0.906** and [[xai|Grok 4.6]] reaching 96.9% of it for 61%
+   of the cost — a concrete price-performance deflation data point for the
+   "does demand justify the buildout" question (ARA daily digest 2026-08-13).
+- **Texas halts ALL datacenter energization approvals; the interconnection gate
+  tightens further (2026-08-21).** Governor Abbott froze **every** datacenter
+  energization approval pending an audit of an **ERCOT interconnection queue at
+  roughly 474 GW — about five times ERCOT's record peak load** (the same ~474 GW
+  this theme tracked on 2026-08-11/12). The audit now requires developers to
+  **disclose which subsidies they take and the effect on neighbouring load**,
+  pulling in smaller projects previously below the threshold; ERCOT is holding
+  the most advanced projects' place in the study calendar. The **PUCT votes
+  Thursday on the audit's scope and timing**. The 2026-08-11 open question
+  ("which authority ordered it, and does it cover projects already in the
+  queue?") is now partially answered: the governor and audit extend the freeze
+  to all approvals. **Pennsylvania** separately converted its previously
+  voluntary **GRID standards** for data-center developers into **binding
+  requirements via Executive Order 2026-05** — Consent Orders covering local
+  approvals, full funding of new electricity infrastructure, water conservation
+  and local hiring. While the November 2026 NRSC memo (single-source, a GOP
+  campaign committee warning AI firms that data centers are close to costing the
+  party Ohio) is politically-motivated, it reinforces the same direction: the
+  buildout's political allies pricing their own support as contingent
+  (SemiAnalysis, Reuters; ARA daily digest 2026-08-21).
+- **Alibaba's quarter prints the AI-capex signature (2026-08-21).** Reported
+  results showed **revenue RMB 268.95B (+9% YoY)** with **AI Cloud and Compute
+  +45%**, **operating income −57%**, and **free cash flow negative RMB 44.67B**.
+  On the call, management said it **recoups AI investments within three years**,
+  is trending toward 2.5 and targets two, citing **2018 V100s and 2020 A100s still
+  at full utilization** — though "payback" was never defined (ARA daily digest
+  2026-08-21). See [[alibaba]].
+- **Micron trails $250B+ in US advanced-memory manufacturing; Meta–Microsoft
+  Azure spend surfaces (2026-08-21).** **[[micron|Micron]]** trailed an
+  announcement of **more than $250 billion in US advanced memory manufacturing
+  and R&D, creating over 90,000 jobs** — a memory-supply vote of confidence
+  paralleling the [[sk-hynix]] buildout. And Bloomberg reporting relayed into the
+  timeline put **[[meta|Meta]]'s Azure AI spend at hundreds of millions a year**,
+  with **trillions of tokens weekly through Azure Foundry**, including **OpenAI
+  models used to grade Meta's own outputs**, and Meta building a **competing
+  multi-model API service** — a striking portrait of a rival paying [[microsoft]]
+and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
+   2026-08-21).
+
+- **NVIDIA pushes AI server prices up >15%; data-center opposition hardens into
+  a first-order political input (2026-08-23).** Three 2026-08-23 data points
+  compound the buildout's cost-and-politics ledger. **(1)** Bloomberg reports
+  [[nvidia|NVIDIA]] communicated a **>15% AI-server price increase to its
+  largest customers, effective on early-2027 shipments**, blaming **soaring
+  memory costs** — no first-party statement, and memory is only a minority of a
+  rack-scale BOM, so treat size and attribution as report-grade (see
+  [[nvidia]]). **(2)** A **Heatmap News survey** finds **three in four Americans
+  oppose a data center near them** (up from an even split a year ago), with
+  **61% "strongly opposed"** — and reporting says the number is **headed into
+  [[anthropic|Anthropic's]] IPO risk factors**, with investor listing
+  expectations near **$2T**, down from the $3T the FT carried on 2026-08-13.
+  **(3)** Same-week concrete actions: Florida gubernatorial primary winner
+  **Byron Donalds** proposed **in-state data-center restrictions**, and
+  Pennsylvania Governor **Josh Shapiro** signed an executive order imposing
+**stringent development standards** — building on the Texas interconnection
+   gate and the PA GRID EO already tracked on this page (ARA daily digest
+   2026-08-23).
+- **The capital markets keep printing AI raise — Alibaba's placement and a $2T
+   IPO pitch (2026-08-24).** Two 2026-08-24 financing data points expand the
+   buildout's funding ledger. **(1)** [[alibaba]] placed **HK$80B (~$10.2B) of
+   new Hong Kong shares — its first placement since 2019 — with 100% of
+   proceeds earmarked for full-stack AI infrastructure**, an equity-funded
+   Chinese capex line that lands days after management's "recoup within three
+   years" claim (see [[alibaba]]). **(2)** [[anthropic|Anthropic's]] bankers are
+   said to be pitching a **raise of more than $100B at a $2 trillion valuation** —
+   alongside **[[hugging-face|Hugging Face]] exploring a sale above $13B** —
+   marking the [[openrouter]]/Stripe anchor (~$7-8B) as the new valuation
+   comparable. Read together with the NVIDIA 17% server-price increase (see
+   [[nvidia]]), the funding side and the cost side of the buildout are both
+   printing larger numbers in the same week (ARA daily digest 2026-08-24).
+
 ## Open questions
 - **Does the permitting/power gate bind before the demand question resolves?**
   Texas gating interconnection and states stripping tax breaks both raise the
@@ -602,3 +801,121 @@ package cleared its chamber-of-origin crossover.
 - **How much of the reported AI earnings is cash?** If mark-to-market gains on
   private-lab stakes carry the beat, the hyperscalers' apparent capacity to fund
   capex from operations is overstated. The 10-Qs, not the relays, resolve it.
+
+## 75% opposition, a bankability test for GPUs, and the orbital datacenter (2026-08-25)
+
+- **US opposition to data centers hits 75% — bipartisan now (2026-08-25).** Per
+  The Information, US opposition to data centers reached **75%, up from 42% a
+  year earlier**, with **Republican and Democratic leaders both moving to
+  restrict growth over power and water use** — the policy hardening this theme
+  has tracked since the Heatmap survey and the Texas/PA actions (2026-08-23)
+  now arriving as a named bipartisan number. The stated grievances are **power,
+  water and siting — not job loss or catastrophic risk** — which cuts against
+  attributing the backlash to AI-safety messaging. *No pollster, sample or
+  question wording has been published, so treat the bipartisan legislative
+  movement as the corroborated fact and the 75% figure as awaiting its
+  methodology* (The Information via Twitter/X; ARA daily digest 2026-08-25).
+- **The financing question underneath it all: GPUs as bankable assets
+  (2026-08-25).** The Information reports NVIDIA's **~$500B financing pitch
+  depends on lenders treating GPUs as bankable assets**, while SemiAnalysis
+  sizes **cumulative AI capex near $3T by year-end and outstanding AI debt past
+  $7T** — and names **market-driven GPU residual-value pricing as the tool
+  capital providers most urgently lack**. Both carriers have a position; there
+  is still **no observable market price for a used Blackwell** (The
+  Information, SemiAnalysis; ARA daily digest 2026-08-25). See [[nvidia]] for
+  the 17% server-price increase and the ~$8M Rubin NVL72 rack this runs
+  against.
+- **Orbital compute goes two-track: the Nvidia–SpaceX datacenter and Starcloud
+  (2026-08-25).** The same day [[nvidia]] and [[spacex]] unveiled their
+  space-optimized Vera Rubin NVL72 orbital datacenter (Q4 2027 launch), the
+  independent orbital-datacenter venture **Starcloud** raised **$250M at a
+  $2.3B valuation** on the identical thesis — the pattern (see 2026-08-22)
+  funding two tracks at once. Treat orbital compute as a live sub-theme of the
+  capex buildout rather than a stunt (The Information; ARA daily digest
+  2026-08-25).
+- **Equity becomes the capex channel's test front (2026-08-25).**
+  [[alibaba|Alibaba's]] HK$80B placement **priced at an 8.4% discount and its
+  shares opened roughly 10% lower in Hong Kong** — the **first market verdict
+  on financing AI capex with equity**, arriving alongside a reported 75% YoY
+  drop in quarterly profit (see [[alibaba]]). SoftBank separately plans a record
+  **¥1 trillion (~$6.3bn) retail bond sale** to fund AI commitments — the size
+  is what is new, not the instrument (Twitter/X, The Decoder; ARA daily digest
+  2026-08-25).
+- **UBS cuts Broadcom's FY2027 AI revenue; the TPU-vs-NVIDIA forecast flips
+  (2026-08-25).** UBS trimmed **[[broadcom|Broadcom's]] FY2027 AI revenue by
+  roughly $5bn to about $130bn** on a **lower Google TPU forecast (~6.4M units
+  for calendar 2027)**, keeping its Buy and cutting the target from $485 to
+  $470 — while analyst **Jeff Pu expects Google TPU shipments to surpass
+  NVIDIA's by 2028**. The TPU-vs-GPU competitive read inside the buildout keeps
+  firming (UBS, Jeff Pu; ARA daily digest 2026-08-25). See [[broadcom]].
+
+## SEC subpoenas the prime brokers; ABF rationing and the Jalapeño per-MW claim (2026-08-26)
+
+- **The SEC moves the leverage question from the fund to its prime brokers
+  (2026-08-26).** The **SEC subpoenaed Goldman Sachs, JPMorgan, Citigroup and
+  Bank of America** for documents on the **borrowed capital behind
+  Situational Awareness** — the AI hedge fund that reached **$20B+ in assets
+  in under two years and nearly imploded in July**. Moving the leverage
+  question from the fund to its **prime brokers** is the first regulator
+  action to chase the financing side of the AI-investment buildout, not the
+  models it buys compute for. *Caveats:* TechCrunch independently confirms a
+  **federal probe**, but the **specific four-bank list rests on one relay of
+  FT reporting** (TechCrunch; ARA daily digest 2026-08-26). This is the
+  financier-side echo of the GPU-bankability / ~$500B package question on this
+  page — leverage on AI assets is now a securities-regulator question.
+- **ABF substrate supply starts being rationed to AI customers
+  (2026-08-26).** Per a Meritz Securities channel check, **Ajinomoto — the
+  sole meaningful supplier of ABF film**, the dielectric substrate behind
+  advanced packaging — told customers **lines are at full 2Q26 capacity and
+  volumes will be allocated to AI and high-end orders first**. **Single-source,
+  no Ajinomoto statement or second broker confirmation** — but consistent with
+  the substrate/memory squeeze narrative alongside the Rubin Ultra HBM4
+  downgrade (see [[nvidia]]) and DDR5 price rises tracked on this page (ARA
+  daily digest 2026-08-26).
+- **OpenAI's Jalapeño Hot Chips numbers force the per-MW comparison
+  (2026-08-26).** OpenAI's in-house inference ASIC (co-designed with
+  [[broadcom]]) reports **1.5–1.9× work-per-watt and 1.7–3.6× lower latency
+  than GB200/GB300**, with SemiAnalysis claiming it **clears Vera Rubin
+  NVL72's per-MW output** — the strongest external challenge yet to the
+  merchant-GPU economics this theme's take-or-pay contracts are priced on.
+  The runs are **OpenAI-submitted and unaudited**, so treat it as the custom-
+  vs-merchant-silicon debate's latest data point, not a settled result (OpenAI
+  blog, SemiAnalysis; ARA daily digest 2026-08-26). See [[model-specific-silicon]].
+
+## Lambda debt, Marvell's record quarter, and a16z's Machine Age (2026-08-29)
+
+- **[[neocloud]] Lambda secured $1B in private debt to buy Nvidia chips
+  and lease them to [[microsoft|Microsoft]] (2026-08-29).** Another
+  take-or-pay-shaped loan in the string this theme has tracked —
+  neocloud borrows to buy [[nvidia|NVIDIA]] silicon, then rents the
+  capacity to a hyperscaler. Capital intensity, not a new structure
+  (TechCrunch; ARA daily digest 2026-08-29).
+- **Marvell's FY27Q2 print: $2.739B, +37% YoY, data center +46%
+  (2026-08-29).** The SEC 8-K (filed 2026-08-27) set a record quarter;
+  CEO Matt Murphy said "AI-related bookings remain exceptionally
+  robust," guided **Q3 to $3.15B ±5%**, and **again raised the FY27
+  and FY28 revenue outlook**. Read against this page's earlier
+  Broadcom/TPU and Google-warrant-on-Marvell threads: custom-silicon
+  demand is still printing in the interconnect/PHY layer, not only
+  at the GPU vendors (SEC 8-K; ARA daily digest 2026-08-29). See
+  [[google]] and [[broadcom]].
+- **[[cognition-ai|Cognition]] is generating about $900M in
+  annualized revenue — more than triple its start-of-year level —
+  while potentially burning $800M this year buying Nvidia servers
+  (2026-08-29).** The ARR number is consistent with the ~$1B run-rate
+  already on that page (2026-08-13); the new fact is the **cash-burn
+  side of the same growth** (The Information via X; ARA daily digest
+  2026-08-29). See [[cognition-ai]] and [[nvidia]].
+- **a16z announced the Machine Age Fund (2026-08-29).** The thesis:
+  the bottleneck has moved **south of the model** to chips, power,
+  cooling, memory and interconnect, with **supply booked into
+  2027–2028** — a VC restatement of the interconnection/memory/ABF
+  constraints this theme has been accumulating (a16z on YouTube; ARA
+  daily digest 2026-08-29).
+- **[[openrouter]] attracted nine prospective buyers before selling
+  to Stripe for more than $7B (2026-08-29).** A read on how
+  aggressively model-routing infrastructure is being priced; the
+  acquisition itself is already tracked on [[openrouter]]
+  (The Information via X; ARA daily digest 2026-08-29). The
+  circulating **$60B** [[spacex]]–[[cursor]] figure still has **no
+  named source** in today's coverage.

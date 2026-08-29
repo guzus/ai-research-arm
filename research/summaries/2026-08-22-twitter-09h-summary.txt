@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-22 09:36:29 UTC
+
+CYCLE: Ox Alpha's hype math gets disowned by its own amplifier; orbital compute gets a $2.3B mark; OpenAI's quota story shifts again.
+
+TOP STORIES:
+• Ox Alpha's 100T-tokens/day claim called unsubstantiated marketing by the analyst who carried its arithmetic - minutes before the crowd pinned the model on Google DeepMind with no evidence [U]
+• Starcloud raised $250M at $2.3B post-money for orbital AI datacenters, NVIDIA participating; CEO names rocket slots, not power, as the binding constraint [OK]
+• OpenAI on its third explanation in three days for shrinking ChatGPT quotas - one Pro 5x account's weekly allowance down 76.7% - while API prices fall in public [SS]
+
+WATCH: Whether OpenAI's promised next update states a subscription quota in absolute terms instead of a "5x" multiplier.
+
+Full update on GitHub.

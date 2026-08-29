@@ -31,7 +31,7 @@ The **2026-05-30 Sunnyvale 200-hour run** is the company's defining
   ran entirely on Helix-02 with autonomous task selection, autonomous
   fault recovery, and autonomous rotation to charging.
 - **~10× the prior public envelope** on MTBI (mean-time-between-intervention).
-  Optimus, Apollo, 1X Neo, Sanctuary, and Unitree had previously topped
+  Optimus, Apollo, 1X Neo, Sanctuary, and [[unitree|Unitree]] had previously topped
   out near 10–20h at meaningful throughput. MTBI is the metric that
   actually governs warehouse / 3PL / manufacturing procurement.
 - **Origin shape.** Started May 20 as an 8-hour livestream challenge;

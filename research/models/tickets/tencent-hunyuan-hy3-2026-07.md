@@ -3,7 +3,7 @@ slug: tencent-hunyuan-hy3-2026-07
 title: Tencent Hunyuan releases Hy3 — 295B open-weight MoE under Apache 2.0
 company: Tencent
 model: Hunyuan Hy3
-status: released
+status: closed
 status_note: |
   Tencent Hunyuan released **Hy3**, a **295B-parameter MoE** open-weight
   model under **Apache 2.0** with a commercial-use API. Reported as new
@@ -23,12 +23,14 @@ sources:
   - "@NielsRogge"
   - "@rohanpaul_ai"
 created_at: 2026-07-12
-updated_at: 2026-07-12
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-07-12
     change: "Created — Tencent Hunyuan released Hy3, a 295B open-weight MoE under Apache 2.0 with a commercial API. @NielsRogge (2026-07-06): 'Impressive open release by @TencentHunyuan — new open SOTA on MCP-Atlas, even beating GLM-5.2'; a second account (2026-07-12) reports it beats GPT-5.5 on a science benchmark with a smaller compute setup; a Japanese aggregator (2026-07-12) restates the 295B/Apache-2.0/commercial-API specifics independently. Three independent secondary sources agree on specifics; no official Tencent primary captured → status released (weights are out), verification partial."
+  - ts: 2026-08-19
+    change: "Closed — released-and-aged. Hunyuan Hy3 released under Apache 2.0 in early July and was logged 2026-07-12, 38 days ago (>=4 weeks), with no follow-on signal since. Normal open-weights coverage from here."
 ---
 
 **Tencent Hunyuan** released **Hy3**, a **295-billion-parameter

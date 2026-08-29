@@ -1,0 +1,15 @@
+AI News - 2026-08-15
+
+TOP STORIES:
+• Anthropic investors reportedly targeting $2T valuation for an October IPO, largest ever
+• OpenAI's annualized revenue run rate reportedly passed $40B, doubling since end-2025
+• Alibaba released Qwen3.8-27B, open-weight multimodal model for consumer GPUs
+• DeepSeek hiking V4 Flash/Pro API prices up to 14x, effective Aug 16
+• Anthropic detailed Claude's new SynthID-based text watermarking amid backlash
+
+KEY NUMBERS:
+• $2T: targeted Anthropic IPO valuation (vs. $47B revenue reported in May)
+• $40B+: OpenAI's annualized revenue run rate (>20% monthly growth in July)
+• $0.28 → $1.32/M tokens: DeepSeek V4 Flash peak output pricing
+
+Full report on GitHub.

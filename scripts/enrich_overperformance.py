@@ -17,7 +17,7 @@ over-performer; a 200-like tweet from a huge account can be a flop.
 
 Data source: by default reuses the timeline tweets already persisted in
 ``viral_tweets.jsonl`` (``source == "user-tweets"``) — no network, so it can't
-be rate-limited. Pass ``--refresh`` to pull fresh, deeper timelines via bird
+be rate-limited. Pass ``--refresh`` to pull fresh, deeper timelines via birdy
 (``collect_viral_tweets.run_bird``/``flatten``, which degrade to [] on failure).
 Output feeds ``analyze_overperformance.py``.
 """
@@ -83,7 +83,7 @@ def load_existing_timeline() -> dict[str, list[dict]]:
 
 def fetch_timelines(authors: list[str], per_author: int, window_days: int,
                     sleep: float) -> dict[str, list[dict]]:
-    """Pull fresh, deeper timelines via bird (rate-limit prone)."""
+    """Pull fresh, deeper timelines via birdy (rate-limit prone)."""
     cutoff = datetime.now(timezone.utc) - timedelta(days=window_days)
     by_author: dict[str, list[dict]] = {}
     for i, user in enumerate(authors, 1):
@@ -121,7 +121,7 @@ def _write_json(path: Path, obj) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--refresh", action="store_true",
-                    help="pull fresh timelines via birdy/bird instead of reusing persisted data")
+                    help="pull fresh timelines via birdy instead of reusing persisted data")
     ap.add_argument("--discover", action="store_true",
                     help="(--refresh) also discover new AI/tech authors via search")
     ap.add_argument("--discover-pages", type=int, default=3,

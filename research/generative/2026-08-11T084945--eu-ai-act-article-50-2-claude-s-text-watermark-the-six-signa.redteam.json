@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "About 190 organisations signed the EU Code of Practice on Transparency of AI-generated Content (82 Section 1 providers / 152 Section 2 deployers), refuting a \"six signatories\" framing.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Anthropic's help page states no token threshold at all; the EU Code's only free-form-text number is 200 tokens; 400 tokens is a SynthID-Text benchmark generation length, not a detectability floor.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Claude Opus 5 launched 24 July 2026, before the 2 August 2026 cutoff Anthropic's marking policy keys to, so no shipping Claude model is watermarked \"at launch\".",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

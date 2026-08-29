@@ -1,0 +1,292 @@
+name: OpenCode DeepSeek V4 Flash Canary
+
+# Diagnostics lane for the opencode backend used by
+# generative-research.yml and hourly-twitter.yml (backend=opencode-deepseek-v4-flash).
+#
+#   OPENCODE_API_KEY — OpenCode Go subscription (opencode.ai/auth),
+#   provider `opencode-go`, model `opencode-go/deepseek-v4-flash`, raw
+#   endpoint https://opencode.ai/zen/go/v1 (OpenAI-compatible).
+#
+# The first probe certifies the explicit DeepSeek comparison paths. A second
+# harness probe resolves `research-editorial` from the SSOT and certifies the
+# exact production GLM model. Moonshot is intentionally not a fallback here.
+#
+# Three probes, cheap to expensive, so a dead key/plan fails in seconds
+# instead of mid-research:
+#
+#   1. Raw API probe — stdlib-only one-shot deepseek-v4-flash completion
+#      against the Go route, proving the secret authenticates AND the account
+#      can actually bill usage (Go usage caps are the realistic failure
+#      mode).
+#   2. DeepSeek harness probe — the pinned opencode CLI runs one headless
+#      `opencode run` turn with the exact direct-comparison argv (`-m <route
+#      model>` + `--auto` + OPENCODE_CONFIG file injection) authenticated
+#      purely by the env var — no interactive `opencode auth login`, no
+#      auth.json — with all tool permissions denied so the canary cannot
+#      touch the repository (deny survives --auto, which only auto-approves
+#      what is not explicitly denied).
+#   3. Production-route harness probe — resolves `research-editorial` from
+#      the SSOT and runs the same pinned container against that exact model.
+#
+# STRICT like zai-claude-code-canary.yml: this lane exists to test the
+# opencode path — an outage must fail this run, never re-route.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: opencode-deepseek-canary
+  cancel-in-progress: false
+
+jobs:
+  canary:
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 15
+    permissions:
+      contents: read
+
+    steps:
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
+        with:
+          persist-credentials: false
+          set-safe-directory: false
+
+      - name: Probe raw DeepSeek V4 Flash API on the OpenCode Go route
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.error
+          import urllib.request
+
+          go_key = os.environ.get("OPENCODE_API_KEY", "")
+          moonshot_key = os.environ.get("MOONSHOT_API_KEY", "")
+
+          if go_key:
+              route = "opencode-go"
+              key = go_key
+              completions_url = "https://opencode.ai/zen/go/v1/chat/completions"
+              models_url = "https://opencode.ai/zen/go/v1/models"
+              billing_hint = "Go plan subscription/usage limits ($12/5h, $30/week, $60/month) at https://opencode.ai/auth"
+          elif moonshot_key:
+              print("::error::MOONSHOT_API_KEY is set but OPENCODE_API_KEY is not. Moonshot cannot serve the required deepseek-v4-flash model. Set OPENCODE_API_KEY from https://opencode.ai/auth.")
+              sys.exit(1)
+          else:
+              print("::error::No opencode auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription) with: gh secret set OPENCODE_API_KEY")
+              sys.exit(1)
+
+          print(f"Resolved route: {route}")
+          headers = {
+              "Authorization": f"Bearer {key}",
+              "Content-Type": "application/json",
+              # opencode.ai sits behind Cloudflare, whose bot filter bans
+              # the default python-urllib signature with 403 "error code:
+              # 1010" (observed live, run 29699747370). An honest custom
+              # UA clears the UA-signature ban.
+              "User-Agent": "ai-research-arm-canary/1.0 (+https://github.com/guzus/ai-research-arm)",
+          }
+
+          # The Go raw endpoint is undocumented (models.dev provider.toml
+          # caveat) — verified facts: GET /zen/go/v1/models is live and
+          # lists bare ids like "deepseek-v4-flash" — so on the Go route only
+          # 401/402 (bad key / billing) are fatal. 403 is deliberately
+          # NON-fatal there: Cloudflare's bot filter answers 403 "error
+          # code: 1010" to clients it dislikes (observed live), so a Go
+          # 403 is ambiguous and the harness stage below — the exact SDK
+          # client production uses — is the authoritative gate.
+          # `route` is always opencode-go; the variable keeps request/error
+          # handling below explicit and aligned with the production probe.
+          go_route = route == "opencode-go"
+
+          # Informational listing probe (free; the Go listing is public).
+          if models_url:
+              req = urllib.request.Request(models_url, headers=headers)
+              try:
+                  with urllib.request.urlopen(req, timeout=60) as resp:
+                      models = json.loads(resp.read().decode())
+              except urllib.error.HTTPError as exc:
+                  safe_body = exc.read().decode(errors="replace")[:500]
+                  if go_route:
+                      print(f"::warning::{route} models listing returned HTTP {exc.code}: {safe_body}")
+                      models = {}
+                  else:
+                      print(f"::error::{route} auth probe failed with HTTP {exc.code}: {safe_body}")
+                      sys.exit(1)
+              except (urllib.error.URLError, OSError) as exc:
+                  print(f"::error::{route} models probe failed before an HTTP response (DNS/connect/timeout): {exc}")
+                  sys.exit(1)
+              model_ids = sorted(
+                  m.get("id", "") for m in models.get("data", []) if m.get("id")
+              )
+              if model_ids:
+                  print(f"{route} models listing OK; visible models:", json.dumps(model_ids))
+                  if "deepseek-v4-flash" not in model_ids:
+                      print("::warning::deepseek-v4-flash not present in the models listing — continuing to the completion probe.")
+
+          # Completion probe: one tiny deepseek-v4-flash completion
+          # (entitlement + billing; costs a fraction of a cent).
+          payload = {
+              "model": "deepseek-v4-flash",
+              "max_tokens": 128,
+              "messages": [
+                  {"role": "user", "content": "Reply with exactly: ok"}
+              ],
+          }
+          req = urllib.request.Request(
+              completions_url,
+              data=json.dumps(payload).encode(),
+              headers=headers,
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=120) as resp:
+                  body = json.loads(resp.read().decode())
+          except urllib.error.HTTPError as exc:
+              safe_body = exc.read().decode(errors="replace")[:500]
+              cf_hint = (
+                  " — body looks like a Cloudflare bot-filter block, NOT an auth verdict"
+                  if "error code: 10" in safe_body
+                  else ""
+              )
+              fatal_codes = (401, 402) if go_route else (401, 402, 403)
+              if exc.code in fatal_codes:
+                  print(f"::error::deepseek-v4-flash completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
+                  sys.exit(1)
+              if go_route:
+                  print(f"::warning::deepseek-v4-flash completion probe on {route} returned HTTP {exc.code}{cf_hint} (undocumented raw surface — not blocking; the harness stage below is authoritative): {safe_body}")
+                  body = {}
+              else:
+                  print(f"::error::deepseek-v4-flash completion probe on {route} failed with HTTP {exc.code} — dead key, or {billing_hint}: {safe_body}")
+                  sys.exit(1)
+          except (urllib.error.URLError, OSError) as exc:
+              print(f"::error::deepseek-v4-flash completion probe on {route} failed before an HTTP response (DNS/connect/timeout): {exc}")
+              sys.exit(1)
+          choices = body.get("choices", [])
+          if choices:
+              print(
+                  f"deepseek-v4-flash completion probe OK on {route}:",
+                  json.dumps(
+                      {
+                          "model": body.get("model"),
+                          "finish_reason": choices[0].get("finish_reason"),
+                          "usage": body.get("usage"),
+                      },
+                      sort_keys=True,
+                  ),
+              )
+          elif body:
+              if go_route:
+                  print(f"::warning::deepseek-v4-flash completion probe on {route} returned no choices (deferring to the harness stage)")
+                  print(json.dumps({k: body.get(k) for k in ("id", "model", "usage", "error")}))
+              else:
+                  print(f"::error::deepseek-v4-flash completion probe on {route} returned no choices")
+                  print(json.dumps({k: body.get(k) for k in ("id", "model", "usage", "error")}))
+                  sys.exit(1)
+          PY
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '22'
+
+      # Headless env-var login through the real harness, using the EXACT
+      # invocation shape of the production backend step in
+      # generative-research.yml — same route-resolved `-m` model, same
+      # `--auto` flag, same OPENCODE_CONFIG file-path injection, same env
+      # vars — so a green canary actually certifies the argv the 90-minute
+      # lane will use. The only intended difference is the config file: the
+      # canary one denies edit/bash/webfetch, so this canary can only
+      # produce text. The provider model declarations keep the pinned
+      # model resolvable even if the models.dev registry cache on the
+      # runner predates it.
+      - name: Check opencode auth
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${OPENCODE_API_KEY:-}" ]; then
+            echo "::error::No opencode auth configured (OPENCODE_API_KEY). Moonshot cannot serve deepseek-v4-flash."
+            exit 1
+          fi
+
+      # Containerised, matching the direct comparison paths. Tools stay denied
+      # by opencode-canary.json, so containment here is belt AND braces.
+      - name: Run opencode file-free canary
+        uses: ./.github/actions/run-opencode-container
+        with:
+          mode: canary
+          prompt-text: 'Reply with exactly: ok'
+          model: opencode-go/deepseek-v4-flash
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          opencode-config: .github/opencode/opencode-canary.json
+          timeout-minutes: '10'
+
+      # Keep this model dynamic: production editorial routing is owned by the
+      # SSOT, and a canary literal can silently drift away from that route.
+      - name: Resolve production editorial OpenCode model
+        id: glm_route
+        run: |
+          set -euo pipefail
+          python3 scripts/resolve_agent_route.py rss --github-output "$GITHUB_OUTPUT"
+          if [ "$(python3 scripts/resolve_agent_route.py rss --field backend)" \
+            != "opencode-glm-5p3-flash" ]; then
+            echo "::error::research-editorial is not routed to the expected GLM 5.3 Flash profile."
+            exit 1
+          fi
+
+      - name: Run production editorial GLM canary
+        uses: ./.github/actions/run-opencode-container
+        with:
+          mode: canary
+          prompt-text: 'Reply with exactly: ok'
+          model: ${{ steps.glm_route.outputs.model_ref }}
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          opencode-config: .github/opencode/opencode-canary.json
+          timeout-minutes: '10'

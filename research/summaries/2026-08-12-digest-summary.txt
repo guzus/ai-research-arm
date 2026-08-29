@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-08-12
+
+TOP STORIES:
+• AI buildout printed hard numbers: CoreWeave, Supermicro and Lumentum all beat after the close — the market barely paid
+• Nvidia assembled a $500B Wall Street financing package, with an option to backstop up to 25% of each project
+• Anthropic will watermark all Claude text worldwide under EU AI Act Article 50
+
+KEY NUMBERS:
+• CoreWeave: $2.58B Q2 revenue, ~$104B backlog (+246%)
+• Supermicro: FY27 guide $65-72B vs ~$52.4B consensus
+• Gemini app: 1B monthly users, parity with ChatGPT
+• Texas: 474 GW of grid requests, datacenter builds paused
+
+TRENDING: HN's loudest thread (831 pts) — as AI eats the web, the internet's collective memory is disappearing
+
+Full digest on GitHub.

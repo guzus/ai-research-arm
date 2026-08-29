@@ -2,12 +2,15 @@
 """Build/verify docs/backend-matrix.md from the backend routing SSOT.
 
 `data/agent-backends.json` is the SINGLE SOURCE OF TRUTH for which backend
-every lane runs. Consumption is two-mode:
+every lane runs. Consumption is three-mode:
 
-- harness=agent-run and harness=dispatch-default lanes are resolved AT
+- route-backed agent-dispatch lanes resolve lane -> route -> backend adapter
+  AT RUNTIME, so a shared route backend edit can re-route multiple lanes;
+- harness=agent-run and harness=dispatch-default legacy lanes are resolved AT
   RUNTIME on the runner (scripts/resolve_backend_lane.py), so editing the
   file re-routes them with no workflow change;
-- harness=pi and harness=claude-code-action lanes are CI-ENFORCED MIRRORS:
+- harness=pi, harness=opencode, and harness=claude-code-action lanes are
+  CI-ENFORCED MIRRORS:
   the model/provider stays literal in the workflow step and this script
   fails when workflow and file disagree.
 
@@ -37,6 +40,7 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parent.parent
 WORKFLOWS_DIR = REPO_ROOT / ".github" / "workflows"
 AGENT_RUN_ACTION = REPO_ROOT / ".github" / "actions" / "agent-run" / "action.yml"
+AGENT_DISPATCH_ACTION = REPO_ROOT / ".github" / "actions" / "agent-dispatch" / "action.yml"
 LANES_FILE = REPO_ROOT / "data" / "agent-backends.json"
 DOC_PATH = REPO_ROOT / "docs" / "backend-matrix.md"
 README_PATH = REPO_ROOT / "README.md"
@@ -45,6 +49,80 @@ BEGIN_MARKER = "<!-- BEGIN GENERATED BACKEND MATRIX (scripts/build_backend_matri
 END_MARKER = "<!-- END GENERATED BACKEND MATRIX -->"
 BEGIN_DIAGRAM = "<!-- BEGIN GENERATED BACKEND DIAGRAM (scripts/build_backend_matrix.py — do not edit by hand) -->"
 END_DIAGRAM = "<!-- END GENERATED BACKEND DIAGRAM -->"
+
+# The canonical selector names the provider/model route, while the model it
+# actually serves is still read out of the workflow. Hard-coding the model
+# here once produced a green
+# `--check` over a table that named the wrong author for every artifact in
+# the lane (generator and doc agreed with each other, both stale).
+OPENCODE_SELECTOR = "opencode-deepseek-v4-flash"
+OPENCODE_PROVIDER_LABEL = "OpenCode Go"
+OPENCODE_MODEL_RE = re.compile(r'model="opencode-go/([A-Za-z0-9._-]+)"')
+OPENCODE_ACTION_MODEL_RE = re.compile(r'^opencode-go/([A-Za-z0-9._-]+)$')
+
+
+def opencode_model_id(workflow_name: str) -> str:
+    """The model id an opencode workflow actually passes to `opencode run -m`.
+
+    Reads the shell of every `run:` step so a REVERT comment quoting the old
+    assignment can never be mistaken for live routing. Raises rather than
+    guessing: a silent default here would reintroduce the stale-literal bug.
+    """
+    doc = yaml.safe_load((WORKFLOWS_DIR / workflow_name).read_text(encoding="utf-8"))
+    found = set()
+    for job in (doc.get("jobs") or {}).values():
+        for step in job.get("steps") or []:
+            for line in (step.get("run") or "").splitlines():
+                if line.lstrip().startswith("#"):
+                    continue
+                found.update(OPENCODE_MODEL_RE.findall(line))
+            # The container action takes the id as a `model:` input. A ${{ }}
+            # expression indirects to a preflight literal already collected
+            # above, so skip it rather than mistake the expression for an id.
+            if step.get("uses") == "./.github/actions/run-opencode-container":
+                model = str((step.get("with") or {}).get("model") or "")
+                if model and "${{" not in model:
+                    found.update(OPENCODE_ACTION_MODEL_RE.findall(model))
+    if len(found) != 1:
+        raise SystemExit(
+            f"{workflow_name}: expected exactly one opencode-go model id in "
+            f"executable shell, found {sorted(found)}. The matrix cannot name "
+            f"an author it cannot resolve."
+        )
+    return found.pop()
+
+
+CURSOR_MODEL_RE = re.compile(r'model="cursor/([A-Za-z0-9._-]+)"')
+
+
+def cursor_model_id(workflow_name: str) -> str:
+    """The model id a Cursor workflow actually passes to `agent --model`."""
+    doc = yaml.safe_load((WORKFLOWS_DIR / workflow_name).read_text(encoding="utf-8"))
+    found = set()
+    for job in (doc.get("jobs") or {}).values():
+        for step in job.get("steps") or []:
+            for line in (step.get("run") or "").splitlines():
+                if line.lstrip().startswith("#"):
+                    continue
+                found.update(CURSOR_MODEL_RE.findall(line))
+            if step.get("uses") == "./.github/actions/run-cursor-container":
+                model = str((step.get("with") or {}).get("model") or "")
+                if model and "${{" not in model:
+                    found.update(CURSOR_ACTION_MODEL_RE.findall(model))
+    if len(found) != 1:
+        raise SystemExit(
+            f"{workflow_name}: expected exactly one Cursor model id, "
+            f"found {sorted(found)}. The matrix cannot name an author it "
+            "cannot resolve."
+        )
+    return found.pop()
+
+
+def opencode_display_name(model_id: str) -> str:
+    """Human label for the diagram node, derived from the served model id."""
+    words = {"v4": "V4", "k3": "K3", "k2": "K2", "deepseek": "DeepSeek", "glm": "GLM"}
+    return " ".join(words.get(p, p.capitalize()) for p in model_id.split("-"))
+
 
 SECRET_RE = re.compile(r"secrets\.([A-Z0-9_]+)")
 # Both tier regexes take only the FIRST tier of a compound `||` condition; a
@@ -62,28 +140,56 @@ CODEX_EXEC_RE = re.compile(r"\bcodex\b[^\n]*(?:\n[^\n]*)*?\bexec\b")
 # step's `"opencode": env(...)` python + a later "GitHub run" label, which
 # would have kept the matrix row alive after a partial backend removal.
 OPENCODE_RUN_RE = re.compile(r"^\s*opencode run\b", re.M)
+# opencode now runs ONLY inside .github/actions/run-opencode-container, so the
+# `opencode run` string no longer appears in any workflow's shell. Detect the
+# action usage too, or the matrix rows and the README diagram edge silently
+# vanish the moment a lane is containerised.
+OPENCODE_ACTION = "run-opencode-container"
+CURSOR_ACTION = "run-cursor-container"
+CURSOR_SELECTOR = "cursor-grok-4p6-fast"
+CURSOR_PROVIDER_LABEL = "Cursor CLI"
+CURSOR_ACTION_MODEL_RE = re.compile(r'^cursor/([A-Za-z0-9._-]+)$')
+AGENT_DISPATCH = "agent-dispatch"
 RESOLVER_CALL_RE = re.compile(r"resolve_backend_lane\.py\s+([a-z0-9\-]+)")
 STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure'")
 
 # Backends generative-research.yml can actually execute (its params step
 # validates against this same set at runtime).
-GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "opus-5", "codex",
-                         "opencode-kimi-k3", "deepseek-v4-flash", "glm-5p2"}
+GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "opus-5", "claude-opus-5", "codex",
+                         "opencode-deepseek-v4-flash", "deepseek-v4-flash", "glm-5p2",
+                         "cursor-grok-4p6-fast"}
 
 REQUIRED_AGENT_RUN_SECRETS = {
     "claude-code-oauth-token": "CLAUDE_CODE_OAUTH_TOKEN",
     "fireworks-api-key": "FIREWORKS_API_KEY",
     "zai-api-key": "ZAI_API_KEY",
 }
+OPTIONAL_AGENT_RUN_SECRETS = {
+    "opencode-api-key": "OPENCODE_API_KEY",
+}
+AGENT_RUN_SECRET_INPUTS = {
+    **REQUIRED_AGENT_RUN_SECRETS,
+    **OPTIONAL_AGENT_RUN_SECRETS,
+}
+REQUIRED_DISPATCH_SECRETS = {
+    **REQUIRED_AGENT_RUN_SECRETS,
+    "opencode-api-key": "OPENCODE_API_KEY",
+    "cursor-api-key": "CURSOR_API_KEY",
+}
 
 
 @dataclass
 class Profile:
     normalized: str
+    adapter: str
     provider: str
     model_id: str
     display_name: str
     selectors: list[str] = field(default_factory=list)
+
+    @property
+    def model_ref(self) -> str:
+        return f"{self.provider}/{self.model_id}" if self.provider and self.model_id else ""
 
 
 @dataclass
@@ -110,6 +216,37 @@ class PiStep:
 
 
 @dataclass
+class OpencodeStep:
+    workflow: str
+    lane: str
+    model: str
+    token: str
+    step_name: str
+
+
+@dataclass
+class CursorStep:
+    workflow: str
+    lane: str
+    model: str
+    token: str
+    step_name: str
+
+
+@dataclass
+class DispatchStep:
+    workflow: str
+    lane: str
+    step_id: str
+    step_name: str
+    mode: str
+    expected_paths: str
+    allowed_paths: str
+    return_artifacts: str
+    secrets: dict[str, str]
+
+
+@dataclass
 class NativeStep:
     workflow: str
     step_name: str
@@ -122,13 +259,18 @@ class NativeStep:
 
 @dataclass
 class Observation:
+    dispatch_steps: list[DispatchStep] = field(default_factory=list)
     agent_run: list[AgentRunStep] = field(default_factory=list)
     pi: list[PiStep] = field(default_factory=list)
+    opencode_steps: list[OpencodeStep] = field(default_factory=list)
+    cursor_steps: list[CursorStep] = field(default_factory=list)
     native: list[NativeStep] = field(default_factory=list)
     codex: bool = False
     codex_token: str = ""
     opencode: bool = False
     opencode_token: str = ""
+    cursor: bool = False
+    cursor_token: str = ""
     resolver_lanes: set[str] = field(default_factory=set)
     det_by_lane: dict[str, str] = field(default_factory=dict)
     det_by_tier: dict[str, str] = field(default_factory=dict)
@@ -174,6 +316,28 @@ def load_lanes() -> tuple[dict[str, dict], dict]:
     return lanes, fallback
 
 
+def load_routes() -> dict[str, dict]:
+    try:
+        data = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        fail(f"cannot read {LANES_FILE}: {exc}")
+    routes = data.get("routes")
+    if not isinstance(routes, dict) or not routes:
+        fail(f"{LANES_FILE} must define the 'routes' mapping")
+    return routes
+
+
+def load_adapters() -> dict[str, dict]:
+    try:
+        data = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        fail(f"cannot read {LANES_FILE}: {exc}")
+    adapters = data.get("adapters")
+    if not isinstance(adapters, dict) or not adapters:
+        fail(f"{LANES_FILE} must define the 'adapters' capability registry")
+    return adapters
+
+
 def load_profiles() -> dict[str, Profile]:
     """The backend profile table lives in the SSOT file itself (selector →
     provider/model/display + aliases); selectors and aliases all resolve to
@@ -189,6 +353,7 @@ def load_profiles() -> dict[str, Profile]:
     for key, spec in backends.items():
         profile = Profile(
             normalized=key,
+            adapter=str(spec.get("adapter", "")),
             provider=str(spec.get("provider", "")),
             model_id=str(spec.get("model", "")),
             display_name=str(spec.get("display_name", key)),
@@ -222,6 +387,9 @@ def check_fallback(fallback: dict, profiles: dict[str, Profile]) -> list[str]:
         if profile is None:
             errors.append(f"fallback.chain entry '{entry}' is not in the backends table")
             continue
+        if profile.adapter != "agent-run":
+            errors.append(f"fallback.chain entry '{entry}' uses adapter "
+                          f"'{profile.adapter}', but fallback executes inside agent-run")
         if profile.normalized in seen:
             errors.append(f"fallback.chain entry '{entry}' duplicates an earlier candidate")
         seen.add(profile.normalized)
@@ -295,8 +463,27 @@ def observe_workflow(wf_path: Path) -> Observation:
                     elif script not in obs.det_job_wide:
                         obs.det_job_wide.append(script)
 
-            if uses.startswith("./.github/actions/agent-run"):
-                secrets = {k: first_secret(with_block.get(k)) for k in REQUIRED_AGENT_RUN_SECRETS}
+            if uses == "./.github/actions/agent-dispatch":
+                secrets = {k: first_secret(with_block.get(k))
+                           for k in REQUIRED_DISPATCH_SECRETS}
+                step_id = str(step.get("id", "")).strip()
+                lane = str(with_block.get("lane", "")).strip()
+                if step_id and lane:
+                    step_id_to_lane[step_id] = lane
+                obs.dispatch_steps.append(DispatchStep(
+                    workflow=wf_path.name,
+                    lane=lane,
+                    step_id=step_id,
+                    step_name=step_name,
+                    mode=str(with_block.get("mode", "editorial")).strip(),
+                    expected_paths=str(with_block.get("expected-paths", "")).strip(),
+                    allowed_paths=str(with_block.get("allowed-paths", "")).strip(),
+                    return_artifacts=str(with_block.get("return-artifacts", "")).strip(),
+                    secrets=secrets,
+                ))
+
+            elif uses == "./.github/actions/agent-run":
+                secrets = {k: first_secret(with_block.get(k)) for k in AGENT_RUN_SECRET_INPUTS}
                 step_id = str(step.get("id", "")).strip()
                 lane = str(with_block.get("lane", "")).strip()
                 if step_id and lane:
@@ -369,7 +556,8 @@ def observe_workflow(wf_path: Path) -> Observation:
                 wf_text = wf_path.read_text(encoding="utf-8")
                 obs.codex_token = "CODEX_AUTH_JSON" if "CODEX_AUTH_JSON" in wf_text else "(unknown)"
 
-            elif run and OPENCODE_RUN_RE.search(run):
+            elif (run and OPENCODE_RUN_RE.search(run)) or \
+                    uses == "./.github/actions/run-opencode-container":
                 obs.opencode = True
                 wf_text = wf_path.read_text(encoding="utf-8")
                 # Same preference order the workflow's route resolver uses:
@@ -380,16 +568,134 @@ def observe_workflow(wf_path: Path) -> Observation:
                     obs.opencode_token = "MOONSHOT_API_KEY"
                 else:
                     obs.opencode_token = "(unknown)"
+                if uses == "./.github/actions/run-opencode-container":
+                    obs.opencode_steps.append(OpencodeStep(
+                        workflow=wf_path.name,
+                        lane=str(with_block.get("lane", "")).strip(),
+                        model=str(with_block.get("model", "")).strip(),
+                        token=first_secret(with_block.get("opencode-api-key")),
+                        step_name=step_name,
+                    ))
+
+            elif uses == "./.github/actions/run-cursor-container":
+                obs.cursor = True
+                wf_text = wf_path.read_text(encoding="utf-8")
+                obs.cursor_token = "CURSOR_API_KEY" if "CURSOR_API_KEY" in wf_text else "(unknown)"
+                obs.cursor_steps.append(CursorStep(
+                    workflow=wf_path.name,
+                    lane=str(with_block.get("lane", "")).strip(),
+                    model=str(with_block.get("model", "")).strip(),
+                    token=first_secret(with_block.get("cursor-api-key")),
+                    step_name=step_name,
+                ))
 
     return obs
 
 
 def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
-                profiles: dict[str, Profile]) -> list[str]:
+                profiles: dict[str, Profile],
+                routes: dict[str, dict] | None = None,
+                adapters: dict[str, dict] | None = None) -> list[str]:
     errors: list[str] = []
     seen_lanes: set[str] = set()
+    routes = load_routes() if routes is None else routes
+    adapters = load_adapters() if adapters is None else adapters
+
+    used_routes: set[str] = set()
+    for route_key, route in routes.items():
+        if not isinstance(route, dict):
+            errors.append(f"route '{route_key}' must be an object")
+            continue
+        backend = str(route.get("backend", ""))
+        profile = profiles.get(backend)
+        if profile is None or profile.normalized != backend:
+            errors.append(f"route '{route_key}': backend '{backend}' is not a canonical "
+                          "backend profile")
+            continue
+        if route.get("contract") != "research-editorial":
+            errors.append(f"route '{route_key}': contract must be 'research-editorial'")
+        adapter = adapters.get(profile.adapter)
+        if not isinstance(adapter, dict):
+            errors.append(f"route '{route_key}': backend '{backend}' references unknown "
+                          f"adapter '{profile.adapter}'")
+            continue
+        for capability in ("isolated_workspace", "editorial_contract"):
+            if adapter.get(capability) is not True:
+                errors.append(f"route '{route_key}': adapter '{profile.adapter}' is "
+                              "incompatible with research-editorial because capability "
+                              f"'{capability}' is not true")
+        provider_credentials = adapter.get("provider_credentials")
+        if not isinstance(provider_credentials, dict):
+            errors.append(f"route '{route_key}': adapter '{profile.adapter}' has no "
+                          "provider_credentials mapping")
+            credential = ""
+        else:
+            credential = str(provider_credentials.get(profile.provider, ""))
+            if not credential:
+                errors.append(f"route '{route_key}': adapter '{profile.adapter}' does not "
+                              f"bind provider '{profile.provider}' to a credential input")
+        fallback = route.get("fallback")
+        if fallback not in {"global", "none"}:
+            errors.append(f"route '{route_key}': fallback must be 'global' or 'none'")
+        if profile.adapter == "opencode":
+            if fallback != "none":
+                errors.append(f"route '{route_key}': opencode routes must use fallback "
+                              "'none' because cross-adapter fallback is not implemented")
+            if profile.provider != "opencode-go" or not profile.model_id:
+                errors.append(f"route '{route_key}': opencode backend '{backend}' must "
+                              "declare provider=opencode-go and a non-empty model")
+            if credential != "opencode-api-key":
+                errors.append(f"route '{route_key}': opencode provider must bind exactly "
+                              "to dispatcher input opencode-api-key")
+        elif profile.adapter == "cursor":
+            if fallback != "none":
+                errors.append(f"route '{route_key}': cursor routes must use fallback "
+                              "'none' because cross-adapter fallback is not implemented")
+            if profile.provider != "cursor" or not profile.model_id:
+                errors.append(f"route '{route_key}': cursor backend '{backend}' must "
+                              "declare provider=cursor and a non-empty model")
+            if credential != "cursor-api-key":
+                errors.append(f"route '{route_key}': cursor provider must bind exactly "
+                              "to dispatcher input cursor-api-key")
+        else:
+            errors.append(f"route '{route_key}': backend '{backend}' adapter "
+                          f"'{profile.adapter}' is not implemented by agent-dispatch")
 
     for wf_name, obs in observations.items():
+        for step in obs.dispatch_steps:
+            label = f"{wf_name} step '{step.step_name}'"
+            if not step.lane:
+                errors.append(f"{label}: agent-dispatch call has no lane: input")
+                continue
+            lane = lanes.get(step.lane)
+            if lane is None:
+                errors.append(f"{label}: lane '{step.lane}' is not defined in "
+                              "data/agent-backends.json")
+                continue
+            seen_lanes.add(step.lane)
+            route_key = lane.get("route")
+            if not isinstance(route_key, str) or route_key not in routes:
+                errors.append(f"{label}: lane '{step.lane}' has unknown route "
+                              f"'{route_key}'")
+            else:
+                used_routes.add(route_key)
+            if lane.get("workflow") != wf_name:
+                errors.append(f"{label}: lane '{step.lane}' belongs to workflow "
+                              f"'{lane.get('workflow')}', not {wf_name}")
+            if step.mode != "editorial":
+                errors.append(f"{label}: agent-dispatch currently supports mode=editorial, "
+                              f"not '{step.mode}'")
+            if not step.expected_paths and not step.return_artifacts:
+                errors.append(f"{label}: must pass expected-paths and/or return-artifacts")
+            if step.expected_paths and not step.allowed_paths:
+                errors.append(f"{label}: commit-producing dispatched lanes must pass an "
+                              "explicit allowed-paths contract")
+            for input_name, expected in REQUIRED_DISPATCH_SECRETS.items():
+                if step.secrets.get(input_name) != expected:
+                    errors.append(f"{label}: must pass {input_name}: secrets.{expected} — "
+                                  "all registered adapter credentials are plumbing for an "
+                                  "SSOT-only route switch")
+
         for step in obs.agent_run:
             label = f"{wf_name} step '{step.step_name}'"
             if step.raw_backend:
@@ -433,6 +739,36 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
                               "must not lie about tier placement")
             if "strict" in lane and not isinstance(lane.get("strict"), bool):
                 errors.append(f"lane '{step.lane}': strict must be a boolean")
+            lane_chain = lane.get("fallback_chain", [])
+            if not isinstance(lane_chain, list):
+                errors.append(f"lane '{step.lane}': fallback_chain must be a list")
+                lane_chain = []
+            if lane.get("strict") and lane_chain:
+                errors.append(f"lane '{step.lane}': strict lanes cannot declare fallback_chain")
+            seen_lane_fallbacks: set[str] = set()
+            for candidate in lane_chain:
+                candidate_profile = profiles.get(str(candidate))
+                if candidate_profile is None:
+                    errors.append(f"lane '{step.lane}': fallback_chain entry '{candidate}' "
+                                  "is not in the backends table")
+                    continue
+                if candidate_profile.normalized in seen_lane_fallbacks:
+                    errors.append(f"lane '{step.lane}': fallback_chain entry '{candidate}' "
+                                  "duplicates an earlier candidate")
+                seen_lane_fallbacks.add(candidate_profile.normalized)
+                if candidate_profile.adapter not in {"agent-run", "opencode"}:
+                    errors.append(f"lane '{step.lane}': fallback backend '{candidate}' uses "
+                                  f"unsupported adapter '{candidate_profile.adapter}'")
+                if candidate_profile.adapter == "opencode":
+                    adapter = adapters.get("opencode", {})
+                    if adapter.get("isolated_workspace") is not True \
+                      or adapter.get("editorial_contract") is not True:
+                        errors.append(f"lane '{step.lane}': OpenCode fallback lacks the "
+                                      "isolated editorial capability contract")
+                    expected = OPTIONAL_AGENT_RUN_SECRETS["opencode-api-key"]
+                    if step.secrets.get("opencode-api-key") != expected:
+                        errors.append(f"{label}: lane fallback requires opencode-api-key: "
+                                      f"secrets.{expected}")
             for input_name, expected in REQUIRED_AGENT_RUN_SECRETS.items():
                 if step.secrets.get(input_name) != expected:
                     errors.append(f"{label}: must pass {input_name}: secrets.{expected} — "
@@ -455,6 +791,47 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
                 errors.append(f"{wf_name} pi step '{step.step_name}': workflow pins "
                               f"{step.provider}/{step.model} but lane '{key}' says "
                               f"{lane.get('provider')}/{lane.get('model')} — update one (mirror contract)")
+
+        for step in obs.opencode_steps:
+            # Dispatch/comparison/canary calls are documented execution paths,
+            # not standalone SSOT lanes. Scheduled editorial callers name a
+            # lane explicitly so their literal model/token cannot drift.
+            if not step.lane:
+                continue
+            label = f"{wf_name} step '{step.step_name}'"
+            lane = lanes.get(step.lane)
+            if lane is None:
+                errors.append(f"{label}: opencode lane '{step.lane}' is not defined "
+                              "in data/agent-backends.json")
+                continue
+            seen_lanes.add(step.lane)
+            if lane.get("harness") != "opencode":
+                errors.append(f"{label}: lane '{step.lane}' has harness "
+                              f"'{lane.get('harness')}', expected opencode")
+            if lane.get("workflow") != wf_name:
+                errors.append(f"{label}: lane '{step.lane}' belongs to workflow "
+                              f"'{lane.get('workflow')}', not {wf_name}")
+            backend = str(lane.get("backend", ""))
+            profile = profiles.get(backend)
+            if profile is None:
+                errors.append(f"lane '{step.lane}': backend '{backend}' is not in the "
+                              "backends table in data/agent-backends.json")
+                continue
+            if profile.provider != "opencode-go":
+                errors.append(f"lane '{step.lane}': opencode harness cannot serve "
+                              f"provider '{profile.provider}'")
+            expected_model = f"opencode-go/{profile.model_id}"
+            if step.model != expected_model:
+                errors.append(f"{label}: workflow pins '{step.model}' but lane "
+                              f"'{step.lane}' resolves to '{expected_model}'")
+            if step.token != "OPENCODE_API_KEY":
+                errors.append(f"{label}: must pass opencode-api-key: "
+                              "secrets.OPENCODE_API_KEY")
+            if "strict" in lane and not isinstance(lane.get("strict"), bool):
+                errors.append(f"lane '{step.lane}': strict must be a boolean")
+            elif lane.get("strict") is not True:
+                errors.append(f"lane '{step.lane}': opencode editorial lanes must be "
+                              "strict (no silent model/provider fallback)")
 
         for step in obs.native:
             if step.rerouted_provider:
@@ -489,7 +866,14 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
         if not (WORKFLOWS_DIR / wf_name).exists():
             errors.append(f"lane '{key}': workflow '{wf_name}' does not exist")
             continue
-        if harness == "dispatch-default":
+        if "route" in lane:
+            route_key = lane.get("route")
+            if not isinstance(route_key, str) or route_key not in routes:
+                errors.append(f"lane '{key}': route '{route_key}' is not defined")
+            if key not in seen_lanes:
+                errors.append(f"lane '{key}' ({wf_name}) is route-backed but no "
+                              "agent-dispatch step references it")
+        elif harness == "dispatch-default":
             obs = observations.get(wf_name)
             if obs is None or key not in obs.resolver_lanes:
                 errors.append(f"lane '{key}': {wf_name} never calls "
@@ -504,6 +888,9 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
             errors.append(f"lane '{key}' ({wf_name}) is defined in data/agent-backends.json "
                           "but no workflow step references it — orphan lanes hide dead routing")
 
+    for route_key in sorted(set(routes) - used_routes):
+        errors.append(f"route '{route_key}' is not referenced by any dispatched lane")
+
     # One agent-run call site per lane: duplicates would make "which step is
     # this lane" ambiguous in the table and in freshness debugging.
     counts: dict[str, int] = {}
@@ -516,13 +903,38 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
             errors.append(f"lane '{lane_key}' is referenced by {n} agent-run steps — "
                           "one lane per call site; add a distinct lane per step")
 
+    # Named opencode editorial callers are CI-enforced mirrors rather than
+    # runtime-routed agent-run calls, but the lane identity must be just as
+    # unambiguous for matrix attribution and outage diagnosis.
+    opencode_counts: dict[str, int] = {}
+    for obs in observations.values():
+        for step in obs.opencode_steps:
+            if step.lane:
+                opencode_counts[step.lane] = opencode_counts.get(step.lane, 0) + 1
+    for lane_key, n in sorted(opencode_counts.items()):
+        if n > 1:
+            errors.append(f"lane '{lane_key}' is referenced by {n} named opencode steps — "
+                          "one lane per call site; add a distinct lane per step")
+
+    dispatch_counts: dict[str, int] = {}
+    for obs in observations.values():
+        for step in obs.dispatch_steps:
+            if step.lane:
+                dispatch_counts[step.lane] = dispatch_counts.get(step.lane, 0) + 1
+    for lane_key, n in sorted(dispatch_counts.items()):
+        if n > 1:
+            errors.append(f"lane '{lane_key}' is referenced by {n} agent-dispatch steps — "
+                          "one lane per call site; add a distinct lane per step")
+
     return errors
 
 
 def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
                profiles: dict[str, Profile], native_fallback: str,
-               fallback_default: str, chain: list[str]) -> list[list[str]]:
+               fallback_default: str, chain: list[str],
+               routes: dict[str, dict] | None = None) -> list[list[str]]:
     rows: list[list[str]] = []
+    routes = load_routes() if routes is None else routes
 
     def det_suffix(obs: Observation, lane_key: str, tier: str) -> str:
         script = obs.det_by_lane.get(lane_key)
@@ -532,9 +944,9 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             script = obs.det_job_wide[0]
         return f"; then `{script}`" if script else ""
 
-    def render_chain(requested: str) -> str:
+    def render_chain(requested: str, effective_chain: list[str] | None = None) -> str:
         parts = []
-        for entry in chain:
+        for entry in (chain if effective_chain is None else effective_chain):
             profile = profiles.get(str(entry))
             if profile is None or profile.normalized == requested:
                 continue  # select_backend skips the already-failed requested backend
@@ -545,7 +957,9 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
         return "chain: " + " → ".join(parts) if parts else "hard fail (chain exhausted)"
 
     TOKEN_BY_PROVIDER = {"fireworks": "FIREWORKS_API_KEY", "zai": "ZAI_API_KEY",
-                         "claude": "CLAUDE_CODE_OAUTH_TOKEN"}
+                         "claude": "CLAUDE_CODE_OAUTH_TOKEN",
+                         "opencode-go": "OPENCODE_API_KEY",
+                         "cursor": "CURSOR_API_KEY"}
 
     for key in sorted(lanes):
         lane = lanes[key]
@@ -554,7 +968,36 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
         harness = lane.get("harness")
         pinned = " · PINNED" if lane.get("pinned") else ""
 
-        if harness == "agent-run":
+        if "route" in lane:
+            route_key = str(lane.get("route", ""))
+            route = routes.get(route_key, {})
+            backend = str(route.get("backend", ""))
+            profile = profiles.get(backend)
+            if profile and profile.provider == "claude":
+                model = profile.model_id or native_fallback
+            else:
+                model = profile.model_id if profile else "?"
+            token = TOKEN_BY_PROVIDER.get(profile.provider if profile else "", "?")
+            if profile and profile.adapter == "opencode":
+                token = "OPENCODE_API_KEY"
+                harness_label = "agent-dispatch → opencode CLI (runtime SSOT)"
+            elif profile and profile.adapter == "cursor":
+                token = "CURSOR_API_KEY"
+                harness_label = "agent-dispatch → Cursor CLI (runtime SSOT)"
+            else:
+                harness_label = "agent-dispatch → Claude Code · agent-run (runtime SSOT)"
+            if route.get("fallback") == "none":
+                fallback = "hard fail (route fallback=none)"
+            else:
+                fallback = render_chain(profile.normalized if profile else backend)
+            fallback += det_suffix(obs, key, "")
+            rows.append([
+                f"{key} (route:{route_key})", f"`{wf_name}`", harness_label,
+                profile.display_name if profile else backend, f"`{model}`",
+                f"`{token}`", fallback,
+            ])
+
+        elif harness == "agent-run":
             step = next((s for s in obs.agent_run if s.lane == key), None)
             backend = str(lane.get("backend", ""))
             profile = profiles.get(backend)
@@ -579,7 +1022,11 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             elif setting == "none":
                 fallback = "hard fail (`fireworks-fallback: none`)"
             else:
-                fallback = render_chain(profile.normalized if profile else backend)
+                lane_chain = [str(entry) for entry in lane.get("fallback_chain", [])]
+                fallback = render_chain(
+                    profile.normalized if profile else backend,
+                    lane_chain if lane_chain else None,
+                )
             tier = step.tier if step else ""
             fallback += det_suffix(obs, key, tier)
             lane_label = key + (f" (tier:{tier})" if tier else "") + pinned
@@ -591,6 +1038,16 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
                          f"`{wf_name}`", "pi · run-pi-container (CI-enforced mirror)",
                          f"{lane.get('provider', '?')} (pi built-in)",
                          f"`{lane.get('model', '?')}`", "`FIREWORKS_API_KEY`", "—"])
+
+        elif harness == "opencode":
+            backend = str(lane.get("backend", ""))
+            profile = profiles.get(backend)
+            rows.append([key, f"`{wf_name}`",
+                         "opencode CLI · run-opencode-container (CI-enforced mirror)",
+                         profile.display_name if profile else backend,
+                         f"`{profile.model_id if profile else '?'}`",
+                         "`OPENCODE_API_KEY`",
+                         "hard fail (strict — no provider fallback)"])
 
         elif harness == "claude-code-action":
             native_steps = [s for s in obs.native if not s.rerouted_provider]
@@ -634,16 +1091,28 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             rows.append(["(dispatch path) backend=codex", f"`{wf_name}`", "Codex CLI",
                          "OpenAI (ChatGPT subscription auth)", "codex CLI default",
                          f"`{obs.codex_token}`", "—"])
-        if obs.opencode:
+        if obs.opencode and any(not step.lane for step in obs.opencode_steps):
+            # The model and provider are read from the workflow, not hard-coded:
+            # this table is the human view of routing, and a stale literal here
+            # is a CI-blessed lie about which model authored an artifact. The
+            # selector and Model columns must both remain truthful.
+            model_id = opencode_model_id(wf_name)
             if wf_name == "generative-research.yml":
-                rows.append(["(dispatch path) backend=opencode-kimi-k3", f"`{wf_name}`",
-                             "opencode CLI", "OpenCode Go → Moonshot (env-resolved)", "`kimi-k3`",
-                             f"`{obs.opencode_token}`",
-                             "hard fail (strict comparison backend)"])
+                label = f"(dispatch path) backend={OPENCODE_SELECTOR}"
+                note = "hard fail (strict comparison backend)"
+            elif "canary" in wf_name:
+                label = f"(canary) opencode + {model_id}"
+                note = "hard fail (diagnostics lane)"
             else:
-                rows.append(["(canary) opencode + kimi-k3", f"`{wf_name}`",
-                             "opencode CLI", "OpenCode Go → Moonshot (env-resolved)", "`kimi-k3`",
-                             f"`{obs.opencode_token}`", "hard fail (diagnostics lane)"])
+                # e.g. hourly-twitter's opencode tier — a strict comparison
+                # tier, NOT a canary. Labelling it "(canary)" because it was
+                # the only other opencode caller would misdescribe a lane that
+                # publishes real artifacts.
+                label = f"(tier) backend={OPENCODE_SELECTOR}"
+                note = "hard fail (strict comparison tier)"
+            rows.append([label, f"`{wf_name}`", "opencode CLI (containerised)",
+                         OPENCODE_PROVIDER_LABEL, f"`{model_id}`",
+                         f"`{obs.opencode_token}`", note])
         if obs.has_fable_dispatch:
             rows.append(["(dispatch path) backend=fable-5", f"`{wf_name}`",
                          "Claude Code · claude-code-action (explicit premium selector)",
@@ -655,6 +1124,20 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
                          "Anthropic (native)", "`claude-opus-5`",
                          "`CLAUDE_CODE_OAUTH_TOKEN`",
                          "hard fail (one recovery retry, same as `claude`)"])
+        if obs.cursor and any(not step.lane for step in obs.cursor_steps):
+            model_id = cursor_model_id(wf_name)
+            if wf_name == "generative-research.yml":
+                label = f"(dispatch path) backend={CURSOR_SELECTOR}"
+                note = "hard fail (strict comparison backend)"
+            elif "canary" in wf_name:
+                label = f"(canary) cursor + {model_id}"
+                note = "hard fail (diagnostics lane)"
+            else:
+                label = f"(tier) backend={CURSOR_SELECTOR}"
+                note = "hard fail (strict comparison tier)"
+            rows.append([label, f"`{wf_name}`", "Cursor CLI (containerised)",
+                         CURSOR_PROVIDER_LABEL, f"`{model_id}`",
+                         f"`{obs.cursor_token}`", note])
 
     return rows
 
@@ -663,6 +1146,8 @@ PROVIDER_NODES = {
     "fireworks": ("FW", "🎆 Fireworks"),
     "zai": ("ZAI", "⚡ Z.ai"),
     "claude": ("ANT", "🅰️ Anthropic<br/><i>native Claude</i>"),
+    "opencode-go": ("OC", "🚀 OpenCode Go<br/><i>opencode CLI</i>"),
+    "cursor": ("CUR", "🖱️ Cursor CLI<br/><i>agent</i>"),
 }
 
 
@@ -673,7 +1158,9 @@ def _wrap(items: list[str], per_line: int = 3) -> str:
 
 def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
                          chain: list[str], native_fallback: str,
-                         has_codex: bool, has_opencode: bool) -> str:
+                         has_codex: bool, has_opencode: bool,
+                         routes: dict[str, dict] | None = None,
+                         has_cursor: bool = False) -> str:
     """Mermaid routing diagram for the README, derived from the SSOT. Lanes
     are grouped per backend (strict lanes separately) so a re-route in the
     JSON changes the picture on the next regeneration."""
@@ -683,11 +1170,19 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
     native_models: set[str] = set()
     pi_lanes: list[str] = []
     pi_models: list[str] = []
+    opencode_lanes: list[str] = []
+    opencode_models: list[str] = []
     gen_default: tuple[str, str] | None = None
+    routes = load_routes() if routes is None else routes
     for key in sorted(lanes):
         lane = lanes[key]
         harness = lane.get("harness")
-        if harness == "agent-run":
+        if "route" in lane:
+            route = routes[str(lane["route"])]
+            backend = profiles[str(route["backend"])].normalized
+            target = strict_by_backend if route.get("fallback") == "none" else by_backend
+            target.setdefault(backend, []).append(key)
+        elif harness == "agent-run":
             backend = profiles[str(lane["backend"])].normalized
             target = strict_by_backend if lane.get("strict") else by_backend
             target.setdefault(backend, []).append(key)
@@ -697,6 +1192,13 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
         elif harness == "pi":
             pi_lanes.append(key)
             pi_models.append(str(lane.get("model", "")).split("/")[-1])
+        elif harness == "opencode":
+            opencode_lanes.append(key)
+            backend = str(lane.get("backend", ""))
+            if backend in profiles:
+                opencode_models.append(profiles[backend].model_id)
+            elif lane.get("model"):
+                opencode_models.append(str(lane["model"]).split("/")[-1])
         elif harness == "dispatch-default":
             gen_default = (key, profiles[str(lane["backend"])].normalized)
 
@@ -721,6 +1223,8 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
     out.append('    subgraph mirrors["🪞 CI-enforced mirrors — literal in workflow, equality-gated"]')
     out.append(f'        pi["{_wrap(pi_lanes)}"]')
     out.append(f'        native["{_wrap(native_lanes)}"]')
+    if opencode_lanes:
+        out.append(f'        opencode["{_wrap(opencode_lanes)}"]')
     out.append("    end")
 
     out.append('    subgraph providers["🏭 Token providers"]')
@@ -728,8 +1232,6 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
         out.append(f'        {node}["{label}"]')
     if has_codex:
         out.append('        OAI["🤖 OpenAI Codex CLI<br/><i>ChatGPT auth</i>"]')
-    if has_opencode:
-        out.append('        MSH["🌙 Moonshot Kimi K3<br/><i>opencode CLI</i>"]')
     out.append("    end")
 
     for node, backend in edges:
@@ -738,10 +1240,14 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
         out.append(f'    {node} -->|"{short}"| {PROVIDER_NODES[profile.provider][0]}')
     out.append(f'    pi -->|"{" · ".join(sorted(set(pi_models)))}"| FW')
     out.append(f'    native -->|"{" · ".join(sorted(m for m in native_models if m))}"| ANT')
+    if opencode_lanes and opencode_models:
+        out.append(f'    opencode -->|"{" · ".join(sorted(set(opencode_models)))}"| OC')
     if gen_default and has_codex:
         out.append('    gendef -.->|"backend=codex"| OAI')
     if gen_default and has_opencode:
-        out.append('    gendef -.->|"backend=opencode-kimi-k3"| MSH')
+        out.append(f'    gendef -.->|"backend={OPENCODE_SELECTOR}"| OC')
+    if gen_default and has_cursor:
+        out.append(f'    gendef -.->|"backend={CURSOR_SELECTOR}"| CUR')
 
     # ordered chain arrows between providers: primary-heaviest provider first,
     # then each chain hop
@@ -764,32 +1270,41 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
 
 def build_generated_blocks() -> tuple[str, str]:
     lanes, fallback = load_lanes()
+    routes = load_routes()
     profiles = load_profiles()
     action_text = AGENT_RUN_ACTION.read_text(encoding="utf-8")
     if "select_backend.py" not in action_text:
         fail("agent-run action.yml no longer calls scripts/select_backend.py — "
              "the runtime selector and this validator must stay coupled")
+    dispatch_text = AGENT_DISPATCH_ACTION.read_text(encoding="utf-8")
+    if "resolve_agent_route.py" not in dispatch_text:
+        fail("agent-dispatch action.yml no longer calls scripts/resolve_agent_route.py — "
+             "the runtime route resolver and this validator must stay coupled")
     fallback_default = agent_run_fallback_default(load_yaml(AGENT_RUN_ACTION))
     native_fallback = str(fallback.get("native_model", ""))
     chain = [str(c) for c in (fallback.get("chain") or [])]
 
     observations = {p.name: observe_workflow(p) for p in workflow_files()}
 
-    errors = check_fallback(fallback, profiles) + cross_check(lanes, observations, profiles)
+    errors = check_fallback(fallback, profiles) \
+        + cross_check(lanes, observations, profiles, routes)
     if errors:
         for err in errors:
             print(f"CROSS-CHECK: {err}", file=sys.stderr)
         fail(f"{len(errors)} SSOT consistency error(s) between data/agent-backends.json "
              "and .github/workflows/ — fix the routing before regenerating the matrix")
 
-    rows = build_rows(lanes, observations, profiles, native_fallback, fallback_default, chain)
+    rows = build_rows(lanes, observations, profiles, native_fallback,
+                      fallback_default, chain, routes)
 
     lane_workflows = {str(l.get("workflow")) for l in lanes.values()}
     no_model = [p.name for p in workflow_files()
                 if p.name not in lane_workflows
-                and not any([observations[p.name].agent_run, observations[p.name].pi,
+                and not any([observations[p.name].dispatch_steps,
+                             observations[p.name].agent_run, observations[p.name].pi,
                              observations[p.name].native, observations[p.name].codex,
-                             observations[p.name].opencode])]
+                             observations[p.name].opencode,
+                             observations[p.name].cursor])]
 
     lines = [BEGIN_MARKER, ""]
     lines.append("### Lanes")
@@ -809,13 +1324,26 @@ def build_generated_blocks() -> tuple[str, str]:
                  f"native path serves `{native_fallback}`. {len(lanes)} SSOT lanes "
                  f"(+{len(rows) - len(lanes)} dispatch execution paths) across "
                  f"{len(workflow_files())} workflows; {len(no_model)} workflows run no model._")
+    lane_overrides = [
+        f"`{key}`: " + " → ".join(f"`{entry}`" for entry in lane["fallback_chain"])
+        for key, lane in sorted(lanes.items()) if lane.get("fallback_chain")
+    ]
+    if lane_overrides:
+        lines.append("")
+        lines.append("_Explicit lane fallback overrides (replace, never extend, the global chain): "
+                     + "; ".join(lane_overrides) + "._")
     lines.append("")
     lines.append(END_MARKER)
 
     has_codex = any(o.codex for o in observations.values())
-    has_opencode = any(o.opencode for o in observations.values())
+    has_opencode = any(o.opencode for o in observations.values()) \
+        or any(profiles[str(route["backend"])].adapter == "opencode"
+               for route in routes.values())
+    has_cursor = any(o.cursor for o in observations.values()) \
+        or any(profiles[str(route["backend"])].adapter == "cursor"
+               for route in routes.values())
     diagram = build_readme_diagram(lanes, profiles, chain, native_fallback,
-                                   has_codex, has_opencode)
+                                   has_codex, has_opencode, routes, has_cursor)
     diagram_block = "\n".join([
         BEGIN_DIAGRAM,
         "```mermaid",

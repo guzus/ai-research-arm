@@ -2,12 +2,19 @@
 slug: xai
 title: xAI
 type: entity
-aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6"]
+aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; shipped Grok Build 0.2.105 with Grok 4.5 as the new default model (2026-07-19), while still suing users over Grok-generated CSAM (2026-07-17) rather than addressing the underlying capability.
+description: Elon Musk's frontier lab behind Grok; Grok 4.6 reached general chat availability across web, iOS and Android on 2026-08-29 after first shipping inside Grok Build and Cursor, with the full Fast/Expert/Heavy/Build mode picker moved onto 4.6 — the same week OpenAI cut Cursor's contracted OpenAI-model access.
 created_at: 2026-06-08
-timestamp: 2026-07-30T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
+  - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
+  - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
@@ -161,6 +168,88 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   Analysis Speech-to-Speech Quality Index at 82.9%**, cutting
   time-to-first-audio from 1.25s to 0.70s at 60% fewer reasoning tokens,
   priced **$0.08/minute** (ARA daily digest 2026-07-30).
+- **Grok Image 2.0 — xAI's image model takes editing seriously (2026-08-09,
+  blog-sourced).** Coverage of a **Grok Image 2.0** release focused on
+  substantially improved **image editing** —   positioning it against the
+  consumer image-editing front led by Google's [[nano-banana-2-lite|Nano
+  Banana]] and [[midjourney]] — a modest capability update to xAI's image
+  line rather than a new foundation model. Single-blog coverage in the
+  digest; no official xAI announcement or model card was captured (ARA daily
+  digest 2026-08-10).
+- **Grok Bot enters early beta — persistent cloud agents (2026-08-12).**
+  **SpaceXAI** (the xAI/SpaceX pairing) shipped **Grok Bot into early beta**:
+  persistent cloud agents that **keep working after the user disconnects**,
+  **delegate to one another**, and **sign into sites lacking APIs** —
+  distributed through   **[[cursor|Cursor]]'s paid tiers**. It is xAI's
+  productized answer to the always-on agent wave and the first consumer-facing
+  persistent-agent surface from the Grok line. In the same window, Musk
+  pushed **Grok 4.6** to **"later this week"** after it **slipped twice** —
+  the model tracked since 2026-07-26 still has no shipped artifact
+  (@elonmusk, @AndrewCurran_, @testingcatalog; ARA daily digest 2026-08-12).
+- **Grok 4.6 ships — the 2T from-scratch model finally lands (2026-08-13).**
+  Live around **15:27 UTC** in **Cursor and Grok Build** same-day, at **$2 per
+  million input / $6 per million output** tokens (2× usage included for the
+  first week) — repricing the frontier tier against [[claude-fable-5|Claude
+  Fable 5 Max]]'s **$10/$50** (roughly 5×/8× cheaper). The vendor table puts it
+  at **61 on the Artificial Analysis Intelligence Index** (level with
+  [[gpt-5-6|GPT-5.6 Sol]]) and **first on the separate Agentic Index**, ahead
+  of Sol on **CursorBench (69.9% vs 67.2%)**, FrontierCode and AA-Briefcase,
+  behind on DeepSWE and Terminal-Bench. The "1753" figure Musk amplified at
+  launch resolved to a **GDPVal-AA v2 score**. The Decoder reports it
+  completes complex agentic workflows in **~53 steps where Opus 5 needs 103,
+  at 60%+ lower price**; on Parametric CAD Bench, Grok 4.6 hit **96.9% of
+  [[claude-opus-5|Claude Opus 5]]'s top score for 61% of the cost**. Caveats:
+  every capability claim at launch traces back to the vendor, and the
+  friendliest witness, @scaling01, wrote that on "really long-running and
+  autonomous workflows … the best OpenAI and Anthropic models are much better
+  in the tails." Musk dated **Grok 4.7 to three or four weeks out** at
+  18:34 UTC with initial training already complete (ARA digest 2026-08-13).
+
+- **Grok 4.6 reported top of MedAgentBench; Grok 4.7 "coming soon" (2026-08-19).**
+  Grok 4.6 was reported **top of MedAgentBench at ~95.9% pass@1** (three-run
+  average, range 95.3–96.3%) against a **prior best of ~94.7% for
+  [[gpt-5-6|GPT-5.6 Sol]]**, amplified by Elon Musk — **at least the fourth
+  favourable leaderboard placement in six days**, several of them
+  **vendor-adjacent**, so treat the superlative with the same skepticism this
+  page applies to xAI's bold benchmark claims. Musk separately said **Grok 4.7
+  is "a major upgrade" and "coming soon,"** with **no date** — consistent with
+  the ~3–4-week cadence dated at the 2026-08-13 Grok 4.6 ship (ARA daily digest
+  2026-08-19).
+
+- **Grok 4.6 safety numbers revised downward-by-rewrite; wider rollout
+  (2026-08-21).** xAI published a **model-card diff showing four eval results
+  restated in the flattering direction and the independent Vals Index deleted
+  with no changelog entry** — the same week Ars Technica documented a **Grok
+  data-exfiltration technique** (@SafetyChanges, Ars Technica). This is the
+  safety-transparency counterweight to the favourable-leaderboard pattern this
+  page tracks. Separately, **Grok 4.6 continued rolling out on the X platform**,
+  with **Grok Build expanded from a limited cohort to all SuperGrok and X
+  Premium users**; a relay putting **Grok 4.6 (High) tied for #1 on Artificial
+  Analysis's Agentic Index at 59, level with [[claude-opus-5|Claude Opus 5]]**,
+  was retweeted by Elon Musk. TechCrunch separately reported **Grok sending
+  gibberish responses to Grok Lite users** (ARA daily digest 2026-08-21).
+
+- **Grok Bot widens, Grok Build 1.0.8, and Grok 4.6 lands on Google Vertex
+  (2026-08-22).** Three incremental distribution moves over one day: **Grok Bot**
+  (the persistent cloud-agent product) moved to **wider access — later clarified as
+  SuperGrok Plus, Cursor Pro+ and Cursor Teams, not general availability**; **Grok
+  Build 1.0.8** shipped with **faster non-blocking subagents**; and **Grok 4.6
+  landed on Google Vertex AI**, its first hyperscaler-cloud presence since the
+  Cursor/Grok Build launch surfaces of 2026-08-13. Vertex availability is the
+  distribution-relevant part: it puts the 2T model in front of enterprise/regulated
+  buyers without going through Google's own Gemini branding (ARA daily digest
+  2026-08-22).
+
+- **Grok 4.6 reaches general chat availability (2026-08-29).** After
+  initially shipping only inside **Grok Build** (and [[cursor|Cursor]]),
+  Grok 4.6 is now live across **web, iOS and Android**, with the full
+  **Fast / Expert / Heavy / Build** mode picker moved onto 4.6. This is
+  the consumer-surface GA of a model this page has tracked since the
+  2026-08-13 Cursor/Grok Build ship — not a new checkpoint. It lands
+  the same day [[openai]] cuts Cursor's contracted OpenAI-model access,
+  which makes Grok (already in Cursor) and [[anthropic|Claude]] the
+  remaining first-party frontier options on that IDE (X; ARA daily
+  digest 2026-08-29). See [[cursor]].
 
 ## Open questions
 

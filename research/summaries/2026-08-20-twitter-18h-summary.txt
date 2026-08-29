@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-20 18:55:34 UTC
+
+CYCLE: Anthropic's IPO gets a filing date, xAI's Grok 4.6 safety card gets quietly rewritten, and Texas freezes datacenter energization.
+
+TOP STORIES:
+• Anthropic reported preparing a public IPO prospectus as soon as end of August; confidential S-1 said to have been filed in June [⚠]
+• xAI quietly revised the Grok 4.6 model card: harmful-cyber compliance restated 16.7% -> 6.9%, independent Vals Index deleted with no changelog entry [⚠]
+• Texas halts all datacenter energization approvals pending an ERCOT queue audit; the queue is ~474 GW, 5x record peak [⚠]
+
+WATCH: Whether an Anthropic S-1 actually appears on SEC EDGAR before 1 September.
+
+Full update on GitHub.

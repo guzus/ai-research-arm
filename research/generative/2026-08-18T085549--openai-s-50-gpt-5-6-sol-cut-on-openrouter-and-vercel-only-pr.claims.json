@@ -1,0 +1,306 @@
+{
+  "claims": [
+    {
+      "id": "c01",
+      "claim": "GPT-5.6 Sol Standard on OpenAI's own API is priced at $5.00 per million input tokens and $30.00 per million output tokens as of Aug 18, 2026.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://platform.openai.com/docs/pricing",
+        "https://developers.openai.com/api/docs/models"
+      ],
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c02",
+      "claim": "GPT-5.6 Sol is listed at $2.50 per million input and $15 per million output tokens (50% off) on OpenRouter's OpenAI provider endpoint as of Aug 18, 2026.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": [
+        "https://openrouter.ai/openai/gpt-5.6-sol",
+        "https://openrouter.ai/api/v1/models"
+      ],
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c03",
+      "claim": "GPT-5.6 Sol is listed at $2.50 per million input and $15 per million output tokens (standard tier) on Vercel's AI Gateway as of Aug 18, 2026.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": [
+        "https://ai-gateway.vercel.sh/v1/models"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c04",
+      "claim": "Azure and Amazon Bedrock providers serving GPT-5.6 Sol through OpenRouter still list $5.00-$5.50 input / $30-$33 output (no 50% discount) as of Aug 18, 2026.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": [
+        "https://openrouter.ai/openai/gpt-5.6-sol",
+        "https://openrouter.ai/api/v1/models/openai/gpt-5.6-sol-20260709/endpoints"
+      ],
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c05",
+      "claim": "On July 30, 2026, OpenAI cut GPT-5.6 Luna prices by 80% and GPT-5.6 Terra prices by 20% on its own API while leaving GPT-5.6 Sol Standard unchanged at $5/$30.",
+      "type": "event",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://developers.openai.com/api/docs/changelog",
+        "https://venturebeat.com/2026/07/30/ai-price-wars-openai-cuts-gpt-5-6-luna-prices-by-80-as-model-competition-shifts-toward-cost/"
+      ],
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "as_of": "2026-07-30"
+    },
+    {
+      "id": "c06",
+      "claim": "OpenAI CEO Sam Altman announced the July 30 cuts on X as 'major price cuts today', referring to the Luna and Terra reductions.",
+      "type": "quote",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": [
+        "https://venturebeat.com/2026/07/30/ai-price-wars-openai-cuts-gpt-5-6-luna-prices-by-80-as-model-competition-shifts-toward-cost/"
+      ],
+      "source_tiers": [
+        "secondary"
+      ],
+      "as_of": "2026-07-30"
+    },
+    {
+      "id": "c07",
+      "claim": "OpenRouter's dedicated OpenAI Flex endpoint for GPT-5.6 Sol lists $1.25 input / $7.50 output per million tokens, i.e. 50% below OpenAI's own API Flex price of $2.50/$15.",
+      "type": "comparison",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": [
+        "https://openrouter.ai/api/v1/models",
+        "https://openrouter.ai/api/v1/models/openai/gpt-5.6-sol-20260709/endpoints",
+        "https://platform.openai.com/docs/pricing"
+      ],
+      "source_tiers": [
+        "primary",
+        "primary",
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c08",
+      "claim": "OpenRouter's weekly token rankings as of Aug 18, 2026 show DeepSeek V4 Flash 0731 at 11.3T tokens, Tencent Hy3 at 9.7T, GPT-5.6 Luna at 5.57T, and six of the top ten slots held by Chinese labs.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": [
+        "https://openrouter.ai/rankings"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c09",
+      "claim": "GPT-5.6 Sol is not among the top ten models by weekly tokens on OpenRouter as of Aug 18, 2026; GPT-5.6 Luna is OpenAI's only top-ten entrant.",
+      "type": "market-structure",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": [
+        "https://openrouter.ai/rankings"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c10",
+      "claim": "On Aug 17, 2026, GPT-5.6 Sol processed roughly 736 billion prompt tokens and ~19.6 million requests on OpenRouter.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": [
+        "https://openrouter.ai/rankings"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-17"
+    },
+    {
+      "id": "c11",
+      "claim": "Grok 4.6 (launched Aug 12, 2026) scores 61 on the Artificial Analysis Intelligence Index, matching GPT-5.6 Sol's score of 61.",
+      "type": "comparison",
+      "confidence": "high",
+      "risk": "contested",
+      "source_urls": [
+        "https://x.ai/news/grok-4-6"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-12"
+    },
+    {
+      "id": "c12",
+      "claim": "TD Cowen analysis of OpenRouter data (reported by Business Insider) found Luna's effective price fell ~10x with usage up ~14x and OpenAI Luna revenue up ~34% vs the pre-cut week; Terra's effective price fell ~3x with usage up ~5x and revenue up ~45%.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": [
+        "https://www.businessinsider.com/openai-slashed-ai-prices-usage-soared-revenue-jumped-2026-8"
+      ],
+      "source_tiers": [
+        "secondary"
+      ],
+      "as_of": "2026-08-14"
+    },
+    {
+      "id": "c13",
+      "claim": "Ramp data (reported by Business Insider) shows OpenAI's GPT-5.6 Sol captured more business spending in July 2026 than Anthropic's Fable 5.",
+      "type": "comparison",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": [
+        "https://www.businessinsider.com/openai-slashed-ai-prices-usage-soared-revenue-jumped-2026-8"
+      ],
+      "source_tiers": [
+        "secondary"
+      ],
+      "as_of": "2026-07-31"
+    },
+    {
+      "id": "c14",
+      "claim": "OpenRouter reported weekly token volume growth from 5 trillion to 25 trillion tokens in six months (May 2026), serving 8M+ developers across 400+ models and pacing toward a quadrillion tokens per year.",
+      "type": "metric",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://openrouter.ai/blog/announcements/series-b"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-05-28"
+    },
+    {
+      "id": "c15",
+      "claim": "Stripe agreed to buy OpenRouter for more than $7 billion (Bloomberg); Axios reported an $8 billion price; WSJ reported talks at roughly $10 billion in July 2026.",
+      "type": "event",
+      "confidence": "medium",
+      "risk": "contested",
+      "source_urls": [
+        "https://startupfortune.com/stripe-agrees-to-buy-ai-router-openrouter-for-more-than-7-billion/",
+        "https://www.businessinsider.com/stripe-is-finalizing-8b-openrouter-purchase-investors-could-gain-2026-8"
+      ],
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "as_of": "2026-08-17"
+    },
+    {
+      "id": "c16",
+      "claim": "a16z owns more than 17% of OpenRouter (roughly $20M invested) and would net close to $1.5 billion if the sale closes near $8 billion; Menlo Ventures holds >6% worth more than $500 million.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "single-source",
+      "source_urls": [
+        "https://www.businessinsider.com/stripe-is-finalizing-8b-openrouter-purchase-investors-could-gain-2026-8"
+      ],
+      "source_tiers": [
+        "secondary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c17",
+      "claim": "DeepSeek raised V4-Flash and V4-Pro API prices effective Aug 17, 2026, with increases from 50% to 1,100% under a peak/off-peak schedule (V4-Pro peak cache-hit input +1,100%).",
+      "type": "event",
+      "confidence": "high",
+      "risk": "volatile",
+      "source_urls": [
+        "https://pandaily.com/deepseek-v4-peak-off-peak-pricing-effective-august-17-up-to-1100-percent-aug2026"
+      ],
+      "source_tiers": [
+        "secondary"
+      ],
+      "as_of": "2026-08-17"
+    },
+    {
+      "id": "c18",
+      "claim": "OpenAI said it surpassed 1 billion active users in late July 2026, the same week it announced the GPT-5.6 price cuts.",
+      "type": "metric",
+      "confidence": "medium",
+      "risk": "contested",
+      "source_urls": [
+        "https://openai.com/index/building-abundant-intelligence",
+        "https://news.google.com/rss/articles/CBMikwFBVV95cUxNRmRvV2MzWFdULXctMWJGbl9GWUpqeHhmVFV1VkoyWFRPSGFER051dXdoY0ZNeG5ZMVEzZU9yV190YWVqTmJjNTluV3RJR1ZGRzl6aWMzWjV2cXh3Vy1ZQzFhb0ItT200cGJRak1NQ3dxa0M3WmgwZTFJd3NGYjVocERVYzdYbzBKTGFBdHBId2o1MGM?oc=5"
+      ],
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "as_of": "2026-07-31"
+    },
+    {
+      "id": "c19",
+      "claim": "Vercel's AI Gateway charges no markup and no platform fee on tokens, billing at the provider's list price (pass-through).",
+      "type": "definition",
+      "confidence": "high",
+      "risk": "stable",
+      "source_urls": [
+        "https://vercel.com/docs/ai-gateway/pricing"
+      ],
+      "source_tiers": [
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    },
+    {
+      "id": "c20",
+      "claim": "The channel-restricted 50% discount on GPT-5.6 Sol (OpenRouter and Vercel only, direct API unchanged) indicates OpenAI is pricing to win token share in third-party routing channels rather than responding to a demand curve on its own API.",
+      "type": "causal",
+      "confidence": "medium",
+      "risk": "contested",
+      "source_urls": [
+        "https://openrouter.ai/openai/gpt-5.6-sol",
+        "https://ai-gateway.vercel.sh/v1/models",
+        "https://platform.openai.com/docs/pricing",
+        "https://www.businessinsider.com/openai-slashed-ai-prices-usage-soared-revenue-jumped-2026-8"
+      ],
+      "source_tiers": [
+        "primary",
+        "primary",
+        "primary",
+        "primary"
+      ],
+      "as_of": "2026-08-18"
+    }
+  ]
+}

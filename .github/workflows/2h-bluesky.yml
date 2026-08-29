@@ -15,17 +15,60 @@ concurrency:
 jobs:
   bluesky-feed:
     runs-on: [self-hosted, Linux]
-    timeout-minutes: 15
+    timeout-minutes: 30
     permissions:
       contents: write
       pull-requests: write
       id-token: write
 
     steps:
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           fetch-depth: 0
+          persist-credentials: false
+          set-safe-directory: false
 
       - name: Get current datetime
         id: datetime
@@ -90,11 +133,13 @@ jobs:
 
           echo "Bluesky data fetched successfully"
 
-      - name: Copy Bluesky data to working directory
+      - name: Stage Bluesky data for isolated agent
         run: |
-          mkdir -p data/bluesky
-          cp /tmp/bluesky/*.json data/bluesky/ || echo "No files to copy"
-          ls -la data/bluesky/
+          set -euo pipefail
+          rm -rf .agent-input/bluesky
+          mkdir -p .agent-input/bluesky
+          cp /tmp/bluesky/*.json .agent-input/bluesky/
+          ls -la .agent-input/bluesky/
 
       # Pre-create the daily file with its title header (idempotent). The
       # agent only ever APPENDS a per-run section to a temp file; a
@@ -122,20 +167,23 @@ jobs:
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       # continue-on-error lets the append step emit a clear missing-output
-      # error when Claude fails or exits green without writing the section.
-      - name: Process Bluesky Feed with GLM-5.2 via Fireworks
+      # error when the routed agent fails or exits green without writing the section.
+      - name: Process Bluesky feed with SSOT-routed agent
         id: bluesky_agent
         continue-on-error: true
-        uses: ./.github/actions/agent-run
+        uses: ./.github/actions/agent-dispatch
         with:
+          mode: editorial
           lane: bluesky
+          return-artifacts: |
+            .tmp/bluesky-section.md
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
-          claude-args: |
-            --model opus --allowedTools "Read,Write,Bash(ls:*)"
-          label: Bluesky GLM-5.2 Fireworks curator
-          prompt: |
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          timeout-minutes: '12'
+          prompt-text: |
             You are a Bluesky AI expert-commentary curator. Process recent
             posts from a small set of tracked AI researchers and practitioners.
 
@@ -149,8 +197,8 @@ jobs:
 
             ## SOURCE FILES
 
-            Read EVERY `*.json` file in `data/bluesky/` (one per tracked
-            account; run `ls data/bluesky/` first to enumerate them). Do NOT
+            Read EVERY `*.json` file in `.agent-input/bluesky/` (one per tracked
+            account; run `ls .agent-input/bluesky/` first to enumerate them). Do NOT
             rely on a hardcoded filename list — the curated handle set changes
             over time (handles get fixed, added, or dropped), so always process
             whatever files are actually present.
@@ -249,7 +297,7 @@ jobs:
           FILTERED=".tmp/bluesky-section-deduped.md"
           export FILE SECTION FILTERED
           if [ ! -s "$SECTION" ]; then
-            echo "::error::Claude did not produce $SECTION; refusing to silently drop this cycle."
+            echo "::error::Routed agent did not produce $SECTION; refusing to silently drop this cycle."
             exit 1
           fi
           # Ensure the title header exists (the pre-step creates it, but be
@@ -360,7 +408,13 @@ jobs:
           base-sha: ${{ steps.bluesky-output-base.outputs.sha }}
           expected-paths: |
             research/bluesky/
-          label: Bluesky Fireworks curator
+          label: Bluesky routed curator
+
+      - name: Propagate Bluesky agent contract failure
+        if: always() && steps.bluesky_agent.outcome != 'success'
+        run: |
+          echo "::error::Bluesky routed agent failed its containment or artifact contract."
+          exit 1
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm).
       #

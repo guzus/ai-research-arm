@@ -4,10 +4,11 @@ title: Model-specific silicon
 type: concept
 aliases: ["model-specific ASIC", "hardwired model silicon", "weights in silicon", "model-specific chip"]
 tags: [inference, asic, hardware, chip-design, cost-per-token]
-description: Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token — the design bet behind Taalas, Etched, Groq and the 2026 custom-inference-silicon wave.
+description: Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token — the design bet behind Taalas, Etched, Groq, Fractile and the 2026 custom-inference-silicon wave.
 created_at: 2026-08-07
-timestamp: 2026-08-07T00:00:00Z
+timestamp: 2026-08-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
 ---
@@ -18,8 +19,11 @@ architecture, fixed into the part — rather than by general-purpose accelerator
 that load any model at runtime. It sits at the extreme end of a spectrum:
 GPUs ([[nvidia]], [[amd]]) run anything; custom accelerators
 ([[broadcom]]-co-designed TPUs, OpenAI's Jalapeño) specialize to a customer;
-transformer-only ASICs ([[etched]]'s Sohu) specialize to an architecture;
-[[taalas]] specializes to a single model.
+transformer-only ASICs ([[etched]]'s Sohu, [[fractile]]'s inference chips)
+specialize to an architecture; [[taalas]] specializes to a single model.
+The 2026-08-20 Bloomberg confirmation that [[anthropic]] will buy inference
+chips from [[fractile]] gives the category its first confirmed frontier-lab
+customer rather than a valuation mark.
 
 ## Why it matters
 
@@ -31,8 +35,8 @@ transformer-only ASICs ([[etched]]'s Sohu) specialize to an architecture;
   freezing into a mask set"** — the framing Hacker News converged on under the
   AMD–Taalas thread (367 pts / 289 comments, ARA daily digest 2026-08-07).
 - **2026 turned it from a startup thesis into an incumbent strategy.** Within
-  one cycle: **Nvidia acquired Groq**, then **[[amd]] acquired [[taalas]]
-  (2026-08-07)**, and **[[etched]] was repriced at $10B by SK Hynix and
+  one cycle: **Nvidia acquired Groq** (see [[groq]]), then **[[amd]] acquired
+  [[taalas]] (2026-08-07)**, and **[[etched]] was repriced at $10B by SK Hynix and
   TSMC** — the market marking the category up at the same moment a GPU vendor
   bought into it. Both acquirers sell the general-purpose part the category
   argues against.

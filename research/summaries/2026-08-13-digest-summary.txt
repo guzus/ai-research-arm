@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-08-13
+
+TOP STORIES:
+• Three frontier models shipped in 45 minutes: Grok 4.6, Alibaba's open-weight Qwen3.8-2.4T, DeepSeek V4 Pro
+• Grok 4.6 at $2/$6 per Mtok vs Fable 5 Max's $10/$50, scoring 61 on the AA Index against 62
+• Nvidia's 25% backstop in the $500B package is residual-value support — it guarantees the resale floor on hardware Nvidia obsoletes (WSJ)
+
+KEY NUMBERS:
+• Frontier work 4.6x cheaper in 90 days: clearing 0.8 on Parametric CAD Bench fell $170.00 to $36.59
+• Nebius: $582.3M revenue, +454% YoY, 5GW contracted power
+• Server DDR5 contract prices up 15-23% in a month
+• Lovable $400M at $13.3B; Cognition in talks at $40B+
+
+TRENDING: "AI is removing the middle class of software engineering?" — 605 pts, 487 comments on HN
+
+Full digest on GitHub.

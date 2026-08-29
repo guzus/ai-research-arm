@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "It names no motivating workload at all, and states neither \"512 bytes\" nor any IOPS figure.",
+      "contradicting_url": "https://blogs.nvidia.com/blog/ai-storage-fms/",
+      "contradicting_quote": "Plus, NVIDIA CMX Context Memory Storage provides an AI-native context tier for long-context, multi-turn, agentic AI inference",
+      "severity": "high",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Endurance. This is the wall that actually binds, and there is now a measurement.",
+      "contradicting_url": "https://www.storagereview.com/review/the-token-efficient-path-for-long-context-inference-kv-cache-offload-to-flash",
+      "contradicting_quote": "cutting the media rate to about 1.6 DWPD, comfortably inside the rating",
+      "severity": "high",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Real serving engines move 0.5–2 MB per KV block and have been growing that number, not shrinking it.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

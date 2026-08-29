@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-15 06:53:31 UTC
+
+CYCLE: Model-scale and model-scope arguments — how big Mythos Preview really is, and how narrow V4-Pro's gains really are.
+
+TOP STORIES:
+• The "Anthropic has a ~10T model" case rests on a retired $125/Mtok price card; rebuttal says price tracks serving cost, not parameters [🚩]
+• DeepSeek V4-Pro's main defender concedes it is "overfit to bash + string editor" two days after release [⚠]
+• Qwen3.8-27B passes CRUDbench 100% with thinking off, fails a task at xhigh reasoning [⚠]
+
+WATCH: Whether any Anthropic document attaches a compute or parameter figure to Mythos Preview.
+
+Full update on GitHub.

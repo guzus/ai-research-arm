@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "editor": {
+    "vimMode": false
+  },
+  "permissions": {
+    "allow": [],
+    "deny": [
+      "Shell(*)",
+      "Write(*)",
+      "WebFetch(*)",
+      "Mcp(*)"
+    ]
+  }
+}

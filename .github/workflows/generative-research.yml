@@ -12,7 +12,7 @@ name: Generative Research
 # Backends, mutually exclusive at runtime. The DEFAULT is not named here —
 # it lives in data/agent-backends.json (lane generative-research-default) and
 # is resolved at runtime, so re-routing the default needs no workflow change:
-#   * opus-5   — CURRENT DEFAULT. Native Anthropic on claude-opus-5. Same OAuth
+#   * opus-5   — CURRENT DEFAULT. Premium native Anthropic path on claude-opus-5. Same OAuth
 #                credential and billing surface as `claude`, so it keeps the
 #                recovery retry; unlike `claude` its provenance is verified
 #                against the committed index row before the push.
@@ -22,8 +22,14 @@ name: Generative Research
 #                fails preflight — a fallback stays on the cheap reliable path.
 #   * fable-5  — explicit, premium native Anthropic path (model claude-fable-5).
 #   * codex    — Codex CLI signed in with ChatGPT-managed auth.json.
-#   * opencode-kimi-k3 — opencode CLI running Moonshot Kimi K3, authenticated
-#                by the plain MOONSHOT_API_KEY env var (no auth.json seeding).
+#   * opencode-deepseek-v4-flash — opencode CLI running
+#                DeepSeek V4 Flash through OpenCode Go,
+#                authenticated by the plain OPENCODE_API_KEY env var (no
+#                auth.json seeding). The Moonshot route is gone, not
+#                repointed — Moonshot serves Kimi only.
+#   * cursor-grok-4p6-fast — Grok 4.6 Fast via the Cursor CLI (`agent`),
+#                authenticated by CURSOR_API_KEY inside run-cursor-container.
+#                Selectable comparison backend; not the production default.
 #   * deepseek — comparison/fallback route through Fireworks'
 #                Anthropic-compatible endpoint via ANTHROPIC_BASE_URL /
 #                ANTHROPIC_AUTH_TOKEN.
@@ -72,7 +78,9 @@ on:
           - glm-5p2
           - deepseek-v4-flash
           - codex
-          - opencode-kimi-k3
+          - opencode-deepseek-v4-flash
+          - cursor-grok-4p6-fast
+          - cursor-composer-2p5
           - claude
           - fable-5
           - opus-5
@@ -147,13 +155,61 @@ jobs:
       contents: write
       pull-requests: write
       issues: write
+      actions: write
       id-token: write
 
     steps:
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           fetch-depth: 0
+          # checkout@v7 stores the token material under RUNNER_TEMP (which the
+          # opencode container never mounts), but its git config still carries
+          # a credential include. Remove that wiring as least privilege;
+          # safe-push injects its own token at publish time.
+          persist-credentials: false
+          set-safe-directory: false
 
       - name: Get current date
         id: date
@@ -162,12 +218,12 @@ jobs:
           echo "timestamp=$(date -u +'%Y-%m-%d-%H%M%S')" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '22'
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           enable-cache: true
 
@@ -211,6 +267,24 @@ jobs:
           # Routing SSOT: the default backend lives in data/agent-backends.json
           # (lane generative-research-default), not in this file.
           DEFAULT_BACKEND="$(python3 scripts/resolve_backend_lane.py generative-research-default)"
+
+          normalize_backend() {
+            local selector="$1"
+            if [ "$selector" = "default" ]; then
+              selector="$DEFAULT_BACKEND"
+            fi
+            case "$selector" in
+              codex|openai-codex) selector="codex" ;;
+              opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) selector="opencode-deepseek-v4-flash" ;;
+              cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) selector="cursor-grok-4p6-fast" ;;
+              deepseek) selector="deepseek-v4-flash" ;;
+              glm-5.2|glm5.2|glm52|glm-5p2) selector="glm-5p2" ;;
+              claude-opus-4-8|claude-sonnet-5) selector="claude" ;;
+              claude-fable-5|fable-5) selector="fable-5" ;;
+              claude-opus-5|opus-5|opus5) selector="opus-5" ;;
+            esac
+            printf '%s\n' "$selector"
+          }
 
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             TOPIC="$INPUT_TOPIC"
@@ -260,18 +334,9 @@ jobs:
                 | sed -E 's/^[[:space:]]*[Bb][Aa][Cc][Kk][Ee][Nn][Dd][[:space:]]*:[[:space:]]*//' \
                 | tr -d '[:space:]' \
                 | tr '[:upper:]' '[:lower:]' || true)
-              case "$CANDIDATE" in
-                default) CANDIDATE="$DEFAULT_BACKEND" ;;
-                claude-opus-4-8|claude-sonnet-5) CANDIDATE="claude" ;;
-                claude-fable-5|fable-5) CANDIDATE="fable-5" ;;
-                claude-opus-5|opus-5|opus5) CANDIDATE="opus-5" ;;
-                codex|openai-codex) CANDIDATE="codex" ;;
-                opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) CANDIDATE="opencode-kimi-k3" ;;
-                deepseek) CANDIDATE="deepseek-v4-flash" ;;
-                glm-5.2|glm5.2|glm52|glm-5p2) CANDIDATE="glm-5p2" ;;
-              esac
+              CANDIDATE="$(normalize_backend "$CANDIDATE")"
               if [ -n "${CANDIDATE:-}" ]; then
-                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "opus-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-kimi-k3" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
+                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "opus-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-deepseek-v4-flash" ] && [ "$CANDIDATE" != "cursor-grok-4p6-fast" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
                   echo "unsupported backend/model: $CANDIDATE" >&2
                   exit 1
                 fi
@@ -301,17 +366,8 @@ jobs:
             exit 1
           fi
 
-          case "$BACKEND" in
-            default) BACKEND="$DEFAULT_BACKEND" ;;
-            codex|openai-codex) BACKEND="codex" ;;
-            opencode|opencode-kimi|opencode-kimi-k3|kimi|kimi-k3) BACKEND="opencode-kimi-k3" ;;
-            deepseek) BACKEND="deepseek-v4-flash" ;;
-            glm-5.2|glm5.2|glm52|glm-5p2) BACKEND="glm-5p2" ;;
-            claude-opus-4-8|claude-sonnet-5) BACKEND="claude" ;;
-            claude-fable-5|fable-5) BACKEND="fable-5" ;;
-            claude-opus-5|opus-5|opus5) BACKEND="opus-5" ;;
-          esac
-          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "opus-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-kimi-k3" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
+          BACKEND="$(normalize_backend "$BACKEND")"
+          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "opus-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-deepseek-v4-flash" ] && [ "$BACKEND" != "cursor-grok-4p6-fast" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
           fi
@@ -619,7 +675,7 @@ jobs:
       # The workflow_dispatch path has no comment surface; skip.
       - name: Acknowledge research request
         if: github.event_name == 'issues'
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
             await github.rest.issues.createComment({
@@ -651,7 +707,7 @@ jobs:
         id: gen-claude
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env: &claude_env
           # Security: GEN_TOPIC / GEN_PROMPT / GEN_TAGS are NOT in this env
           # block. The agent reads them from $GITHUB_WORKSPACE/.gen-input/
@@ -688,7 +744,7 @@ jobs:
           # The agent reads topic/prompt/tags from .gen-input/*.txt files
           # instead — same defense as research-issue.yml after PR #42.
           claude_args: |
-            --model ${{ steps.native-model.outputs.model }} --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
+            --model ${{ steps.native-model.outputs.model }} --max-turns 120 --allowedTools "Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(curl:*),Bash(pdftotext:*),Bash(birdy:*),Bash(birdy-fast:*),Bash(jq:*),WebSearch,WebFetch,Task,TodoWrite"
           prompt: |
             You are a deep-research analyst writing a COMPREHENSIVE,
             analyst-grade HTML article on the topic supplied by the user.
@@ -802,8 +858,8 @@ jobs:
                 to bypass on a known-stale URL. `info <url>` prints
                 cached metadata; `stats` shows hit rate, size, top
                 domains.
-              - `bird search "<query>" --json --plain | jq ...` and
-                `bird user-tweets <handle> --json --plain | jq ...` —
+              - `birdy search "<query>" --json --plain | jq ...` and
+                `birdy user-tweets <handle> --json --plain | jq ...` —
                 X/Twitter as a primary source via the bird CLI. A tweet
                 from a NAMED PRINCIPAL (founder, official corporate
                 account, lead engineer of the named project) counts as
@@ -845,9 +901,9 @@ jobs:
                  non-empty, this run was intentionally dispatched from
                  ONLY a Twitter/X link or from a Twitter/X link plus a
                  short framing note. Before the ambiguity check:
-                   a. Read the URL with `bird read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
+                   a. Read the URL with `birdy read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
                    b. Read the thread/conversation with
-                      `bird thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
+                      `birdy thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
                    c. Extract: author handle/name, posted date, quoted
                       tweet if present, named entities, concrete claims,
                       links/media mentioned in the tweet, and the
@@ -1087,8 +1143,8 @@ jobs:
                                    primaries for the specific question
                AND tell them they CAN use
                `curl + pdftotext` for PDF sources,
-               AND tell them they CAN use `bird search "<query>" --json --plain`
-               or `bird user-tweets <handle> --json --plain` to pull
+               AND tell them they CAN use `birdy search "<query>" --json --plain`
+               or `birdy user-tweets <handle> --json --plain` to pull
                X/Twitter primary sources (a tweet from a named principal
                counts as PRIMARY; AUTH_TOKEN / CT0 cookies are already in
                env),
@@ -1838,7 +1894,7 @@ jobs:
         id: gen-claude-retry
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env: *claude_env
         with: *claude_with
 
@@ -1876,7 +1932,7 @@ jobs:
 
       - name: Install Codex CLI
         if: steps.effective.outputs.backend == 'codex'
-        run: npm install -g @openai/codex
+        run: npm install -g --ignore-scripts @openai/codex@0.151.0
 
       # This backend uses the same staged-input files, writer-owned commit, and
       # verifier/methodology artifact contract as the Claude/Fireworks paths.
@@ -1906,21 +1962,25 @@ jobs:
             -c 'shell_environment_policy.include_only=["PATH","HOME","PWD","GITHUB_WORKSPACE","RUNNER_TEMP","TMPDIR","GEN_DRAFT","GEN_SLUG","GEN_SOURCE","AUTH_TOKEN","CT0","SSL_CERT_FILE","EDGAR_CONTACT_EMAIL","SOURCE_CACHE_MAX_BYTES","SOURCE_CACHE_MAX_TOTAL_BYTES","SOURCE_CACHE_TIMEOUT"]' \
             < .github/codex/prompts/generative-research.md
 
-      # ---- OpenCode + Kimi K3 backend ---------------------------------------
-      # opencode CLI (github.com/anomalyco/opencode) driving Kimi K3. Two
-      # auth routes, resolved in preference order by the preflight below —
-      # both are plain env-var API keys (no interactive `opencode auth
-      # login`, no auth.json seeding):
-      #   1. OPENCODE_API_KEY — OpenCode Go subscription ($10/mo) via the
-      #      built-in `opencode-go` provider, model `opencode-go/kimi-k3`
-      #      (models.dev pins env=OPENCODE_API_KEY, api=opencode.ai/zen/go/v1).
-      #      NOTE: K3 bills usage at full $3/$15 value against the Go caps
-      #      ($12/5h, $30/week, $60/month), so one deep research run is a
-      #      real fraction of the weekly allowance.
-      #   2. MOONSHOT_API_KEY — Moonshot platform pay-per-token via the
-      #      `moonshotai` provider, model `moonshotai/kimi-k3`.
-      # The install is version-pinned (Moonshot's opencode guide requires
-      # >= 1.18.3 for kimi-k3) and OPENCODE_DISABLE_AUTOUPDATE keeps the
+      # ---- OpenCode backend -------------------------------------------------
+      # opencode CLI (github.com/anomalyco/opencode) on the OpenCode Go
+      # subscription ($10/mo), authenticated by a plain env-var API key — no
+      # interactive `opencode auth login`, no auth.json seeding.
+      #   OPENCODE_API_KEY — built-in `opencode-go` provider, model
+      #   `opencode-go/deepseek-v4-flash` (models.dev pins
+      #   env=OPENCODE_API_KEY, api=opencode.ai/zen/go/v1).
+      #
+      # This route is pinned to `opencode-go/deepseek-v4-flash` (the 2026-07-31
+      # release — on this provider the bare id IS that build; only Fireworks
+      # needs a -0731 suffix). Two consequences are deliberate:
+      #   * The Moonshot route is GONE, not repointed — Moonshot serves Kimi
+      #     only. The preflight hard-fails there rather than silently authoring
+      #     with a model the article metadata does not name.
+      #   * DeepSeek V4 Flash is the preferred low-cost OpenCode Go model;
+      #     attribution and the strict route stay coupled to that exact model.
+      #
+      # The install is version-pinned at 1.18.3 (verified to resolve
+      # opencode-go/deepseek-v4-flash) and OPENCODE_DISABLE_AUTOUPDATE keeps the
       # pinned binary deterministic on the persistent self-hosted runner.
       # Headless permission grants + model declarations live in the
       # committed .github/opencode/opencode.json, injected via
@@ -1932,9 +1992,16 @@ jobs:
       # matches the codex lane's residual surface: the prompt's env-exfil
       # prohibitions, Actions log masking, and keys scoped to model billing
       # only. Keep this step's env to the minimum set.
-      - name: Resolve and preflight OpenCode Kimi route
-        if: steps.effective.outputs.backend == 'opencode-kimi-k3'
+      - name: Resolve and preflight OpenCode route
+        if: steps.effective.outputs.backend == 'opencode-deepseek-v4-flash'
         id: opencode-route
+        # The curl below is bounded (--max-time 60 --retry 2 --retry-delay 5,
+        # so ~190s worst case), but a bounded curl is not a bounded STEP: on
+        # 2026-08-16 this step wedged for 3h and, because this repo has a
+        # single self-hosted runner, head-of-line blocked 10 queued runs —
+        # including gpu-spot/model-pricing/blogs, which never touch OpenCode.
+        # Every sibling agent step carries timeout-minutes; this one must too.
+        timeout-minutes: 5
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
@@ -1948,9 +2015,9 @@ jobs:
           # a genuinely dead key still fails within ~a minute.
           if [ -n "${OPENCODE_API_KEY:-}" ]; then
             route="opencode-go"
-            model="opencode-go/kimi-k3"
+            model="opencode-go/deepseek-v4-flash"
             # The Go endpoint is OpenAI-compatible (raw model id is bare
-            # "kimi-k3" — verified against GET /zen/go/v1/models) but
+            # "deepseek-v4-flash" — the models.dev id for this provider) but
             # otherwise an undocumented surface (models.dev provider.toml
             # caveat). Probe with one tiny billable completion and be
             # AUTH-FATAL ONLY: 401/402 are definitive (bad key / billing)
@@ -1968,14 +2035,14 @@ jobs:
               -A "ai-research-arm-preflight/1.0 (+https://github.com/guzus/ai-research-arm)" \
               -H "Authorization: Bearer $OPENCODE_API_KEY" \
               -H "Content-Type: application/json" \
-              --data '{"model":"kimi-k3","max_tokens":128,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}' \
+              --data '{"model":"deepseek-v4-flash","max_tokens":128,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}' \
               https://opencode.ai/zen/go/v1/chat/completions || echo "000")
             case "$status" in
               2*)
                 echo "OpenCode Go preflight OK (HTTP $status)."
                 ;;
               401|402)
-                echo "::error::OpenCode Go preflight failed with HTTP $status — the key is invalid or cannot bill Go usage. Check the plan + limits at https://opencode.ai/auth (or unset OPENCODE_API_KEY to route via MOONSHOT_API_KEY). Response: $(head -c 500 "$body_file" 2>/dev/null || true)"
+                echo "::error::OpenCode Go preflight failed with HTTP $status — the key is invalid or cannot bill Go usage. Check the plan + limits at https://opencode.ai/auth (the Moonshot route is unavailable while this backend is pinned to DeepSeek). Response: $(head -c 500 "$body_file" 2>/dev/null || true)"
                 exit 1
                 ;;
               *)
@@ -1983,17 +2050,15 @@ jobs:
                 ;;
             esac
           elif [ -n "${MOONSHOT_API_KEY:-}" ]; then
-            route="moonshot"
-            model="moonshotai/kimi-k3"
-            if ! curl -fsS --max-time 30 --retry 2 --retry-delay 5 --retry-all-errors \
-                -H "Authorization: Bearer $MOONSHOT_API_KEY" \
-                https://api.moonshot.ai/v1/models >/dev/null; then
-              echo "::error::Moonshot API preflight failed (auth or availability). Verify MOONSHOT_API_KEY and account balance at https://platform.kimi.ai/console/api-keys"
-              exit 1
-            fi
-            echo "Moonshot API preflight OK."
+            # Moonshot serves Kimi only and cannot serve deepseek-v4-flash.
+            # This backend is strict —
+            # it must never silently author with a model other than the one its
+            # article metadata records — so an OPENCODE_API_KEY-less run now
+            # fails here instead of quietly producing a Kimi article.
+            echo "::error::MOONSHOT_API_KEY is set but OPENCODE_API_KEY is not. Moonshot cannot serve the required deepseek-v4-flash model. Set OPENCODE_API_KEY from https://opencode.ai/auth."
+            exit 1
           else
-            echo "::error::No Kimi auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription key from https://opencode.ai/auth — preferred) or MOONSHOT_API_KEY (pay-per-token key from https://platform.kimi.ai/console/api-keys) with: gh secret set <NAME>"
+            echo "::error::No opencode auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription key from https://opencode.ai/auth) with: gh secret set OPENCODE_API_KEY"
             exit 1
           fi
           {
@@ -2002,46 +2067,80 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "Resolved opencode route: $route ($model)"
 
-      - name: Install opencode CLI
-        if: steps.effective.outputs.backend == 'opencode-kimi-k3'
-        run: |
-          npm install -g opencode-ai@1.18.3
-          opencode --version
-
       # This backend uses the same staged-input files, writer-owned commit,
       # and verifier/methodology artifact contract as the Claude/Codex/
       # Fireworks paths. The prompt is passed as the positional message arg;
       # --auto approves any permission not explicitly denied so a headless
       # run can never hang on an interactive permission ask.
-      - name: Run Generative Research (OpenCode Kimi K3)
-        if: steps.effective.outputs.backend == 'opencode-kimi-k3'
+      # Containerised (.github/actions/run-opencode-container). This lane is
+      # why the container matters most: the workflow triggers on
+      # `issues: [opened, labeled]` and the twitter_url path feeds live tweets,
+      # replies and attached images to the agent. Previously that
+      # attacker-influenced content reached an agent holding unsandboxed bash
+      # on the self-hosted host, whose persistent HOME holds other lanes'
+      # credentials. Untrusted GEN_TOPIC / GEN_PROMPT / GEN_TAGS still stay out
+      # of env entirely — the agent reads them from .gen-input/ inside the
+      # mounted workspace.
+      - name: Run Generative Research (OpenCode DeepSeek V4 Flash)
+        if: steps.effective.outputs.backend == 'opencode-deepseek-v4-flash'
         id: gen-opencode
         continue-on-error: true
         timeout-minutes: 90
+        uses: ./.github/actions/run-opencode-container
+        with:
+          mode: generative
+          prompt-file: ${{ github.workspace }}/.github/opencode/prompts/generative-research.md
+          model: ${{ steps.opencode-route.outputs.model }}
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          # Inside the 90-minute step cap, so the agent is cut off with time
+          # left for the failure path rather than the step being killed.
+          timeout-minutes: '85'
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
+          gen-slug: ${{ steps.params.outputs.slug }}
+          gen-source: ${{ steps.params.outputs.source }}
+          gen-draft: ${{ steps.draft.outputs.path }}
+
+      - name: Resolve and preflight Cursor CLI route
+        if: steps.effective.outputs.backend == 'cursor-grok-4p6-fast'
+        id: cursor-route
+        timeout-minutes: 5
         env:
-          # Security: GEN_TOPIC / GEN_PROMPT / GEN_TAGS are NOT in this env
-          # block. The agent reads them from $GITHUB_WORKSPACE/.gen-input/
-          # so untrusted issue/dispatch text is not injected into env.
-          GEN_SLUG: ${{ steps.params.outputs.slug }}
-          GEN_SOURCE: ${{ steps.params.outputs.source }}
-          GEN_DRAFT: ${{ steps.draft.outputs.path }}
-          AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
-          CT0: ${{ secrets.BIRD_CT0 }}
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
-          OPENCODE_MODEL_REF: ${{ steps.opencode-route.outputs.model }}
-          OPENCODE_DISABLE_AUTOUPDATE: '1'
-          OPENCODE_CONFIG: ${{ github.workspace }}/.github/opencode/opencode.json
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
         run: |
           set -euo pipefail
-          # Plain assignment so a missing prompt file fails the step here;
-          # an inline "$(cat ...)" argument would swallow the cat failure
-          # under set -e and hand opencode an empty prompt.
-          GEN_OPENCODE_PROMPT="$(cat .github/opencode/prompts/generative-research.md)"
-          opencode run \
-            -m "$OPENCODE_MODEL_REF" \
-            --auto \
-            "$GEN_OPENCODE_PROMPT"
+          # Fail fast on a missing key before the 90-minute container build.
+          # This backend is an explicit comparison choice, so there is no
+          # Claude fallback. The harness itself is the authoritative auth
+          # check; agent is not on the host PATH.
+          if [ -z "${CURSOR_API_KEY:-}" ]; then
+            echo "::error::No Cursor CLI auth configured. Set CURSOR_API_KEY (Cursor dashboard API key) with: gh secret set CURSOR_API_KEY"
+            exit 1
+          fi
+          model="cursor/cursor-grok-4.6-high-fast"
+          {
+            echo "route=cursor"
+            echo "model=$model"
+          } >> "$GITHUB_OUTPUT"
+          echo "Resolved Cursor route: cursor ($model)"
+
+      - name: Run Generative Research (Cursor CLI Grok 4.6 Fast)
+        if: steps.effective.outputs.backend == 'cursor-grok-4p6-fast'
+        id: gen-cursor
+        continue-on-error: true
+        timeout-minutes: 90
+        uses: ./.github/actions/run-cursor-container
+        with:
+          mode: generative
+          prompt-file: ${{ github.workspace }}/.github/cursor/prompts/generative-research.md
+          model: ${{ steps.cursor-route.outputs.model }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          timeout-minutes: '85'
+          bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
+          bird-ct0: ${{ secrets.BIRD_CT0 }}
+          gen-slug: ${{ steps.params.outputs.slug }}
+          gen-source: ${{ steps.params.outputs.source }}
+          gen-draft: ${{ steps.draft.outputs.path }}
 
       # ---- Fireworks backends ----------------------------------------------
       # claude-code-action redirected to Fireworks' Anthropic-compatible
@@ -2056,7 +2155,7 @@ jobs:
         id: gen-deepseek
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env: &deepseek_v4_flash_env
           # Redirect Claude Code CLI to Fireworks' Anthropic-compatible endpoint,
           # whose base URL omits /v1 — the client appends /v1/messages. Every
@@ -2098,7 +2197,7 @@ jobs:
           # var the action injects. The agent reads topic/prompt/tags from
           # .gen-input/*.txt instead.
           claude_args: |
-            --model opus --max-turns 120 --allowedTools "Glob,Grep,Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(grep:*),Bash(curl:*),Bash(pdftotext:*),Bash(bird:*),Bash(bird-fast:*),Bash(jq:*),Task,TodoWrite"
+            --model opus --max-turns 120 --allowedTools "Glob,Grep,Read,Write,Edit,Bash(git:*),Bash(uv:*),Bash(cat:*),Bash(ls:*),Bash(grep:*),Bash(curl:*),Bash(pdftotext:*),Bash(birdy:*),Bash(birdy-fast:*),Bash(jq:*),Task,TodoWrite"
           show_full_output: ${{ inputs.debug_full_output == 'true' }}
           prompt: |
             You are a deep-research analyst running on the selected Fireworks backend,
@@ -2217,8 +2316,8 @@ jobs:
                 to bypass on a known-stale URL. `info <url>` prints
                 cached metadata; `stats` shows hit rate, size, top
                 domains.
-              - `bird search "<query>" --json --plain | jq ...` and
-                `bird user-tweets <handle> --json --plain | jq ...` —
+              - `birdy search "<query>" --json --plain | jq ...` and
+                `birdy user-tweets <handle> --json --plain | jq ...` —
                 X/Twitter as a primary source via the bird CLI. A tweet
                 from a NAMED PRINCIPAL (founder, official corporate
                 account, lead engineer of the named project) counts as
@@ -2260,9 +2359,9 @@ jobs:
                  non-empty, this run was intentionally dispatched from
                  ONLY a Twitter/X link or from a Twitter/X link plus a
                  short framing note. Before the ambiguity check:
-                   a. Read the URL with `bird read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
+                   a. Read the URL with `birdy read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
                    b. Read the thread/conversation with
-                      `bird thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
+                      `birdy thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"`.
                    c. Extract: author handle/name, posted date, quoted
                       tweet if present, named entities, concrete claims,
                       links/media mentioned in the tweet, and the
@@ -2502,8 +2601,8 @@ jobs:
                                    primaries for the specific question
                AND tell them they CAN use
                `curl + pdftotext` for PDF sources,
-               AND tell them they CAN use `bird search "<query>" --json --plain`
-               or `bird user-tweets <handle> --json --plain` to pull
+               AND tell them they CAN use `birdy search "<query>" --json --plain`
+               or `birdy user-tweets <handle> --json --plain` to pull
                X/Twitter primary sources (a tweet from a named principal
                counts as PRIMARY; AUTH_TOKEN / CT0 cookies are already in
                env),
@@ -3264,7 +3363,7 @@ jobs:
         id: gen-deepseek-retry
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env: *deepseek_v4_flash_env
         with: *deepseek_v4_flash_with
 
@@ -3346,7 +3445,7 @@ jobs:
         id: gen-deepseek-retry-2
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env: *deepseek_v4_flash_env
         with: *deepseek_v4_flash_with
 
@@ -3374,9 +3473,20 @@ jobs:
             exit 0
           fi
           FILENAME=$(basename "$(printf '%s\n' "$NEW_FILES" | head -n1)")
-          echo "file=$FILENAME" >> "$GITHUB_OUTPUT"
-          echo "has_file=true" >> "$GITHUB_OUTPUT"
-          echo "Generated: research/generative/$FILENAME"
+          ARTICLE_SLUG=$(jq -er --arg file "$FILENAME" '
+            map(select(.file == $file))
+            | if length == 1 then .[0].slug else error("expected exactly one index row") end
+          ' research/generative/index.json)
+          if [[ ! "$ARTICLE_SLUG" =~ ^[a-z0-9][a-z0-9-]{0,119}$ ]]; then
+            echo "::error::Writer produced an invalid final slug: $ARTICLE_SLUG"
+            exit 1
+          fi
+          {
+            echo "file=$FILENAME"
+            echo "slug=$ARTICLE_SLUG"
+            echo "has_file=true"
+          } >> "$GITHUB_OUTPUT"
+          echo "Generated: research/generative/$FILENAME (slug: $ARTICLE_SLUG)"
 
       # fable-5 and opus-5 are explicit, opt-in model selectors, so provenance
       # must be exact — the whole point of choosing one is knowing which model
@@ -3511,7 +3621,6 @@ jobs:
         run: |
           set -euo pipefail
           article="research/generative/$FILE"
-          stem="${FILE%.html}"
           claims="$GITHUB_WORKSPACE/.gen-claims-ledger.json"
           verifier="$GITHUB_WORKSPACE/.gen-verifier-findings.json"
           redteam="$GITHUB_WORKSPACE/.gen-redteam-findings.json"
@@ -3535,16 +3644,20 @@ jobs:
             exit 1
           fi
 
-          cp "$claims"   "research/generative/${stem}.claims.json"
-          cp "$verifier" "research/generative/${stem}.verification.json"
-          cp "$redteam"  "research/generative/${stem}.redteam.json"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            "research/generative/${stem}.claims.json" \
-            "research/generative/${stem}.verification.json" \
-            "research/generative/${stem}.redteam.json"
-          git commit --amend --no-edit
+          if ! uv run python scripts/finalize_generative_publication.py \
+              --repo "$GITHUB_WORKSPACE" \
+              --article-file "$FILE" \
+              --ledger "$claims" \
+              --verification "$verifier" \
+              --redteam "$redteam"; then
+            echo "::error::Transactional methodology + claim-index finalization failed"
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative research/claims
+            exit 1
+          fi
+          uv run python scripts/build_claim_index.py --check
           echo "passed=true" >> "$GITHUB_OUTPUT"
 
       # Per-run quality report — corpus-audit metrics on the article
@@ -3649,7 +3762,7 @@ jobs:
 
       - name: Post results to issue
         if: always() && github.event_name == 'issues'
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         env:
           HAS_FILE: ${{ steps.outfile.outputs.has_file }}
           FILE_NAME: ${{ steps.outfile.outputs.file }}
@@ -3726,6 +3839,7 @@ jobs:
           CLAUDE_RETRY_1_OUTCOME: ${{ steps.gen-claude-retry.outcome }}
           CODEX_OUTCOME: ${{ steps.gen-codex.outcome }}
           OPENCODE_OUTCOME: ${{ steps.gen-opencode.outcome }}
+          CURSOR_OUTCOME: ${{ steps.gen-cursor.outcome }}
           DEEPSEEK_ATTEMPT_1_OUTCOME: ${{ steps.gen-deepseek.outcome }}
           DEEPSEEK_RETRY_1_OUTCOME: ${{ steps.gen-deepseek-retry.outcome }}
           DEEPSEEK_RETRY_2_OUTCOME: ${{ steps.gen-deepseek-retry-2.outcome }}
@@ -3815,6 +3929,7 @@ jobs:
                   "claude_retry_1": env("CLAUDE_RETRY_1_OUTCOME"),
                   "codex": env("CODEX_OUTCOME"),
                   "opencode": env("OPENCODE_OUTCOME"),
+                  "cursor": env("CURSOR_OUTCOME"),
                   "deepseek_attempt_1": env("DEEPSEEK_ATTEMPT_1_OUTCOME"),
                   "deepseek_retry_1": env("DEEPSEEK_RETRY_1_OUTCOME"),
                   "deepseek_retry_2": env("DEEPSEEK_RETRY_2_OUTCOME"),
@@ -3896,10 +4011,17 @@ jobs:
           exit 1
 
       - name: Fail OpenCode run without article
-        if: always() && steps.effective.outputs.backend == 'opencode-kimi-k3' && steps.outfile.outputs.has_file != 'true'
+        if: always() && steps.effective.outputs.backend == 'opencode-deepseek-v4-flash' && steps.outfile.outputs.has_file != 'true'
         run: |
-          echo "::error::OpenCode Kimi K3 backend did not produce an article."
+          echo "::error::OpenCode DeepSeek V4 Flash backend did not produce an article."
           echo "OpenCode outcome: ${{ steps.gen-opencode.outcome }}"
+          exit 1
+
+      - name: Fail Cursor run without article
+        if: always() && steps.effective.outputs.backend == 'cursor-grok-4p6-fast' && steps.outfile.outputs.has_file != 'true'
+        run: |
+          echo "::error::Cursor CLI Grok 4.6 Fast backend did not produce an article."
+          echo "Cursor outcome: ${{ steps.gen-cursor.outcome }}"
           exit 1
 
       # claude-code-action reports success when the model session completes,
@@ -4021,7 +4143,19 @@ jobs:
             echo "::warning::Could not resolve article slug for ${TG_FILE}; linking to research index"
             ARTICLE_URL="${SITE_ORIGIN%/}/research"
           fi
-          BODY=$(printf '📝 Topic: %s\n🤖 Backend: %s' "${TG_TOPIC}" "${TG_BACKEND}")
+          # Announce the MODEL, not just the backend selector, so a routing
+          # change cannot make the notification misidentify the author. The committed
+          # index row is written by the writer script from the model that
+          # actually ran, so it cannot drift from a workflow literal.
+          TG_MODEL=$(jq -r --arg f "${TG_FILE}" \
+            'map(select(.file == $f)) | .[0].model // empty' \
+            research/generative/index.json 2>/dev/null || echo "")
+          if [ -n "$TG_MODEL" ]; then
+            BODY=$(printf '📝 Topic: %s\n🤖 Model: %s (backend %s)' \
+              "${TG_TOPIC}" "${TG_MODEL}" "${TG_BACKEND}")
+          else
+            BODY=$(printf '📝 Topic: %s\n🤖 Backend: %s' "${TG_TOPIC}" "${TG_BACKEND}")
+          fi
           if [ "${TG_USED_FALLBACK:-false}" = "true" ]; then
             BODY=$(printf '%s (requested %s; fireworks-fallback)' "$BODY" "${TG_REQUESTED_BACKEND}")
           fi
@@ -4061,3 +4195,35 @@ jobs:
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+
+      # Translate only production publications. A workflow_dispatch from a PR
+      # branch remains reviewable on that branch and cannot enqueue a Korean
+      # translation whose canonical English source is not yet on main.
+      #
+      # workflow_dispatch is one of the events GitHub permits a GITHUB_TOKEN
+      # to create. The explicit actions:write permission above is still
+      # required for the dispatch API call.
+      - name: Dispatch Korean translation
+        id: dispatch-translation
+        if: >-
+          always()
+          && steps.outfile.outputs.has_file == 'true'
+          && steps.push.outputs.pushed == 'true'
+          && steps.publish-branch.outputs.branch == github.event.repository.default_branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ARTICLE_SLUG: ${{ steps.outfile.outputs.slug }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$ARTICLE_SLUG" =~ ^[a-z0-9][a-z0-9-]{0,119}$ ]]; then
+            echo "::error::Refusing to dispatch an invalid article slug: $ARTICLE_SLUG"
+            exit 1
+          fi
+          gh workflow run translate-generative-research.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref "$DEFAULT_BRANCH" \
+            -f "slug=$ARTICLE_SLUG" \
+            -f overwrite=false \
+            -f auto_merge=true
+          echo "::notice::Queued Korean translation for $ARTICLE_SLUG"

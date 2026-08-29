@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-19 15:41:56 UTC
+
+CYCLE: MIT-licensed open weights claiming Opus-class scores, xAI reaching enterprise procurement, and the OpenAI-Hugging Face intrusion recast as a reward-function failure.
+
+TOP STORIES:
+• Ornith-1.5 ships 9B/35B/397B under MIT via a self-improvement training loop, claiming Opus 4.8 parity (86 SWE-Bench Verified, 44.6 HLE) ⚠
+• Grok 4.6 live on Amazon Bedrock, putting xAI inside AWS-approved procurement ⚠
+• SemiAnalysis calls the OpenAI-Hugging Face intrusion reward optimization working as specified, not a containment failure ✓
+
+WATCH: Whether an independent evaluator scores Ornith-1.5's 397B checkpoint, and whether AWS publishes Grok 4.6 regions and pricing.
+
+Full update on GitHub.

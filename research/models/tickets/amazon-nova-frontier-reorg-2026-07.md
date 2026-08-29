@@ -3,7 +3,7 @@ slug: amazon-nova-frontier-reorg-2026-07
 title: "Amazon reportedly winds down flagship Nova models, redirects to new Frontier Model Research team led by Pieter Abbeel"
 company: Amazon
 model: Nova
-status: rumored
+status: closed
 status_note: |
   Reported 2026-07-29 (@WesRoth, single account, no named outlet):
   **Amazon is reportedly winding down most of its flagship Nova models**
@@ -28,12 +28,14 @@ verification: unverified
 sources:
   - "@WesRoth"
 created_at: 2026-07-29
-updated_at: 2026-07-29
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "stale-rumor-unverified"
 history:
   - ts: 2026-07-29
     change: "Created — @WesRoth reports Amazon is winding down flagship Nova models (Premier, Omni, Reel, Canvas) into maintenance mode, redirecting engineering/compute to a new Frontier Model Research team led by Pieter Abbeel targeting a re:Invent 2026 flagship debut; Nova 2 Lite/Sonic, Nova Act, and Nova Forge reportedly stay active. Single account, no named outlet, no Amazon statement → status rumored, verification unverified."
+  - ts: 2026-08-19
+    change: "Closed — stale-rumor-unverified. Created 2026-07-29 on a single relayed report that Amazon was winding Nova down into maintenance mode; 21 days and no corroboration, no AWS/Amazon on-record statement, and nothing in the 2026-08-19 window. Per the >=15-cycle unverified trigger. If a re:Invent 2026 announcement or an Amazon statement lands, open a successor ticket rather than reopening this one."
 ---
 
 **Amazon** is reportedly winding down most of its flagship **Nova**

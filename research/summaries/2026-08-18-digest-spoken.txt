@@ -1,0 +1,14 @@
+Speaker 1: Tuesday, August eighteenth, twenty twenty-six.
+Speaker 2: [high_energy] Nvidia is guaranteeing up to [emphasis] one hundred five billion dollars [/emphasis] of OpenAI's twenty-year data center lease in Ohio.
+Speaker 1: That is a chip supplier underwriting its own customer's real estate, which tells you how much of this buildout now runs on balance sheet promises rather than cash.
+Speaker 2: And Anthropic told investors its run rate has hit [emphasis] sixty-five billion dollars [/emphasis], on eleven point five billion in preliminary second quarter revenue.
+Speaker 1: Some quick numbers on that, eleven point five billion is up fourteen times from seven hundred eighty-seven million a year ago.
+Speaker 2: Fourteen times, year over year, at that scale. [dramatic_pause] That is the steepest revenue curve we have seen from anyone in this sector.
+Speaker 1: On the deal front, Stripe is acquiring OpenRouter for more than seven billion dollars, and DeepSeek's V four Pro repricing has gone live.
+Speaker 2: V four Pro lands at one dollar thirty-two in and three ninety-six out per million tokens at peak, roughly half that off peak.
+Speaker 1: On benchmarks, V four Pro scores sixty-six point two percent on WeirdML against sixty-three percent for DeepSeek's own cheaper Flash tier.
+Speaker 2: Worth noting that is a narrow gap for a meaningful price step, so the cheap tier keeps looking like the value play.
+Speaker 1: In funding, Groq raised three hundred fifty million dollars at a three point five billion dollar valuation, about half its September twenty twenty-five mark.
+Speaker 2: A down round for an inference chip company in this market is the contrarian data point of the day.
+Speaker 1: Elsewhere, developers are debating GPT five point six Sol's vision results, and an AI copilot autofix that enabled a Snowflake Jira compromise.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.

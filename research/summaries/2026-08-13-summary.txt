@@ -1,0 +1,14 @@
+AI News - 2026-08-13
+
+TOP STORIES:
+• Meta & Nvidia publish open-weight models to counter China's lead; xAI/SpaceXAI ships Grok 4.6 (500K context, agentic coding)
+• Lovable raises $400M at $13.3B valuation; Blacksmith discloses $45M Series B at $550M (10x in under a year)
+• OpenAI hires Dali Rajic (ex-Wiz) as CRO, its 2nd in under a year
+• Taiwan says China-linked hackers used AI agents (Hermes, OpenClaw) to breach 85+ gov't accounts
+
+KEY NUMBERS:
+• Lovable: $400M raised, $13.3B valuation, ARR ~$200M+ tracking to $600M
+• Blacksmith: $45M Series B, $550M valuation, 6,000+ customers
+• Grok 4.6: AA Intelligence Index 61, $2/$6 per Mtok
+
+Full report on GitHub.

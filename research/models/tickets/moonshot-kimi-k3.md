@@ -3,7 +3,7 @@ slug: moonshot-kimi-k3
 title: Moonshot AI's Kimi K3 spotted live-testing under codename "Kivine," not yet publicly shipped
 company: Moonshot AI
 model: Kimi K3
-status: released
+status: closed
 status_note: |
   Testingcatalog reported Kimi K3 "teased officially" as of **2026-07-15
   22:38 UTC**; separately, **@AndrewCurran_** reports it live-testing in
@@ -78,9 +78,9 @@ sources:
   - "@EpochAIResearch"
   - "@theinformation"
 created_at: 2026-07-16
-updated_at: 2026-07-28
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-23
+closed_at: 2026-08-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-07-16
     change: "Created — Testingcatalog reported Kimi K3 'teased officially' (2026-07-15 22:38 UTC); @AndrewCurran_ separately reports it live-testing in a model arena under stealth codename 'Kivine,' with early tester reports near-parity with Fable 5. Not yet publicly shipped as of the 2026-07-16 08:00 UTC cycle, continuing a multi-day rumor thread → status in-testing, verification partial (arena sighting + tease, no primary Moonshot statement)."
@@ -92,6 +92,8 @@ history:
     change: "Full open-weights drop, as scheduled. 2.8T-param MoE (16/896 experts active), 1M context, native vision, Modified MIT license, ~594GB native weights, vLLM day-0 support in prep (@johnseach). Light independent corroboration (@_A_Radwan_, a CN-platform weekly roundup listing K3 live). No official @Kimi_Moonshot capture of the weights drop itself in this window — entirely third-party, though detailed and internally consistent. Status stays released; verification stays confirmed."
   - ts: 2026-07-28
     change: "License, pricing, and rank detail. Licensing clarified as a bespoke 'Kimi K3 License' (>$20M/12mo-revenue MaaS providers need a separate Moonshot agreement; must display the 'Kimi K3' name) rather than plain Modified MIT. API pricing published: $0.30/$3/$15 per Mtok. Artificial Analysis Intelligence Index: 57, #1 open-weight (ahead of GLM-5.2 at 51, DeepSeek V4 Pro at 44). Day-0 hosting confirmed: Baseten, Nebius, Vercel AI Gateway, Dell on-prem. Status stays released; verification stays confirmed."
+  - ts: 2026-08-23
+    change: "Closed — released-and-aged. Kimi K3 shipped in mid-July and had licensing, pricing ($0.30/$3/$15 per Mtok), Artificial Analysis Intelligence Index 57 (#1 open-weight at the time) and day-0 hosting all resolved by the 2026-07-28 update; @teortaxesTex (2026-08-23) refers to it as having been 'released 5 weeks ago,' putting it past the >=4-week trigger. It remains an active reference point rather than a forgotten model — @emollick benchmarks the unattributed [[stealth-ox-alpha-model-2026-08]] against it and rates K3 higher on his shader test — but that is normal coverage. The successor signal is a separate artifact: @kimmonismus (2026-08-21) relays that 'Kimi k3.1 also incoming,' which is a zero-artifact single-relay claim and will get its own ticket when an artifact appears. Moonshot's other open tickets ([[moonshot-funding-2026-06]], [[moonshot-claude-distillation-us-scrutiny-2026-07]]) are unaffected. History preserved."
 ---
 
 **Moonshot AI's** next flagship coding/reasoning model, **Kimi K3**, is

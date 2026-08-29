@@ -39,6 +39,7 @@ from pathlib import Path
 from typing import Any
 
 import check_wiki as cw
+import check_wiki_translation as cwt
 
 RECENT_LOG_LIMIT = 20
 
@@ -77,7 +78,9 @@ def _page_extra_fields(path: Path) -> dict[str, Any]:
     }
 
 
-def build_index(wiki_dir: Path) -> dict[str, Any]:
+def build_index(
+    wiki_dir: Path, translation_root: Path | None = None
+) -> dict[str, Any]:
     """Load + validate the wiki, then assemble the index document. Raises
     SystemExit(1) loudly if any page fails to load — build_wiki_index runs
     AFTER check_wiki, so an invalid page here is a real (gating) problem."""
@@ -103,6 +106,21 @@ def build_index(wiki_dir: Path) -> dict[str, Any]:
     if not report.ok():  # resolver collisions
         for f in report.failures:
             print(f"FAIL {f.path}: {f.field}: {f.msg}", file=sys.stderr)
+        raise SystemExit(1)
+
+    if translation_root is None:
+        translation_root = wiki_dir.parent / "wiki-translations" / "ko"
+    translations, translation_failures = cwt.load_all(
+        wiki_dir=wiki_dir, translation_root=translation_root
+    )
+    if translation_failures:
+        for path, error in translation_failures:
+            print(f"FAIL {path}: {error}", file=sys.stderr)
+        print(
+            "\nbuild_wiki_index: Korean mirrors do not pass validation — run "
+            "`uv run python scripts/check_wiki_translation.py` first",
+            file=sys.stderr,
+        )
         raise SystemExit(1)
 
     # Outbound (resolved, deduped, excluding self) + inbound graph.
@@ -141,6 +159,11 @@ def build_index(wiki_dir: Path) -> dict[str, Any]:
         # make the committed index non-deterministic and instantly stale.
         if extra["market"]:
             doc["market"] = extra["market"]
+        translation = translations.get(page.slug)
+        if translation:
+            doc["translations"] = {
+                "ko": translation.index_doc(translation_root),
+            }
         page_docs.append(doc)
 
     return {
@@ -176,6 +199,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", default=None, help="wiki root (default research/wiki)")
     parser.add_argument("--out", default=None, help="output path (default <root>/index.json)")
     parser.add_argument(
+        "--translation-root",
+        default=None,
+        help="Korean mirror root (default <root>/../wiki-translations/ko)",
+    )
+    parser.add_argument(
         "--check",
         action="store_true",
         help="exit 1 if the committed index.json differs from a fresh build (CI drift gate)",
@@ -189,7 +217,8 @@ def main(argv: list[str] | None = None) -> int:
         print(f"no wiki dir at {wiki_dir} — nothing to index", file=sys.stderr)
         return 0
 
-    index = build_index(wiki_dir)
+    translation_root = Path(args.translation_root) if args.translation_root else None
+    index = build_index(wiki_dir, translation_root)
     content = render(index)
 
     if args.check:

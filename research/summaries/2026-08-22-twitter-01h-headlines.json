@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "GROK BOT NOW FREE TO TRY — XAI DROPS PAYWALL UNDER FOUR HOURS AFTER ENDING INVITE QUEUE",
+    "source": "@grok",
+    "url": "https://x.com/ns123abc/status/2090953121723830369",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC SHIPS CLAUDE CODE REMOTE CONTROL FIXES — PHONE-STARTED SESSIONS, AUTO-RECONNECT, LIVE CLI SYNC",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2090933155847143498",
+    "category": "model"
+  },
+  {
+    "headline": "OX ALPHA PEGGED AS GLM-5.3 FLASH DISTILL — BANKROLLED NOT SERVED, GPUS OVERSEAS, STILL UNCLAIMED",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2090950719901679794",
+    "category": "model"
+  },
+  {
+    "headline": "THINKING MACHINES SERVES INKLING FREE ON OPENROUTER TO HARVEST REAL-WORLD AGENTIC BEHAVIOR",
+    "source": "@thinkymachines",
+    "url": "https://x.com/soumithchintala/status/2090897419403718747",
+    "category": "opensource"
+  },
+  {
+    "headline": "FX AGENT CLI ADDS GROK AND CODEX SUBSCRIPTION AUTH — NO PER-TOKEN BILLING FOR EXISTING SUBSCRIBERS",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2090953806624489501",
+    "category": "infra"
+  }
+]

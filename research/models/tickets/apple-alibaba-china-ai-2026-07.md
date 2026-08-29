@@ -3,7 +3,7 @@ slug: apple-alibaba-china-ai-2026-07
 title: Caixin Global reports China cleared Apple Intelligence for launch via Alibaba partnership
 company: Apple / Alibaba
 model: null
-status: rumored
+status: closed
 status_note: |
   Caixin Global (**@caixin**, 2026-07-15 19:08 UTC): "China has approved
   its first batch of mobile-based generative AI models, clearing the way
@@ -28,12 +28,14 @@ sources:
   - "@caixin"
   - https://x.com/caixin/status/2077470486242484581
 created_at: 2026-07-16
-updated_at: 2026-07-16
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "stale-rumor-unverified"
 history:
   - ts: 2026-07-16
     change: "Created — Caixin Global (2026-07-15 19:08 UTC) reported China approved its first batch of mobile-based generative AI models, clearing the way for Apple to launch Apple Intelligence in China via a partnership with Alibaba. Caixin is a named, credible outlet — more so than the anonymous low-engagement accounts pushing the identical claim across three earlier cycles that day (11:00/14:00/16:00 UTC) — but remains the single named source, zero likes/retweets at capture, no second outlet, no Apple/Alibaba on-record statement → status rumored, verification unverified per the single-source rule regardless of outlet credibility."
+  - ts: 2026-08-19
+    change: "Closed — stale-rumor-unverified. Created 2026-07-16 on a single Caixin report; 34 days with no second named outlet and no Apple or Alibaba on-record statement, including in the 2026-08-19 window. Per the >=15-cycle unverified trigger. Apple/Alibaba China signal today is confined to unrelated App Store EU rate changes."
 ---
 
 **Caixin Global** reported (2026-07-15 19:08 UTC) that **China has

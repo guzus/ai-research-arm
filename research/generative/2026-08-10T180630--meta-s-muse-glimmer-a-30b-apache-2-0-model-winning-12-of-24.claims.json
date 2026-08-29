@@ -1,0 +1,470 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Muse Glimmer is a 30B-parameter dense multimodal model (roughly 1.8-2B perception encoder plus a ~28B text decoder), released by Meta under Apache 2.0 with ungated weights on Hugging Face.",
+      "type": "technical",
+      "source_urls": ["https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model", "https://huggingface.co/meta-models/Muse-Glimmer-30B"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Meta's published comparison table has 24 benchmark rows and Muse Glimmer takes the best result on exactly 12 of them.",
+      "type": "comparison",
+      "source_urls": ["https://huggingface.co/meta-models/Muse-Glimmer-30B", "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "In the same 24-row table Qwen3.6-27B takes 8 rows and Gemma4-31B takes 4 (two capability rows plus the harm axis of both safety benchmarks).",
+      "type": "comparison",
+      "source_urls": ["https://huggingface.co/meta-models/Muse-Glimmer-30B"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Meta's own wording is that Muse Glimmer 'performs strongly for its size class', not that it beats the leading models in its size class.",
+      "type": "quote",
+      "source_urls": ["https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Qwen3.6-27B leads Muse Glimmer on OSWorld-Verified 75.6 to 65.9 and on TerminalBench 2.1 60.7 to 51.7 — the two largest gaps in the table, both losses, and both on execution-verified agentic benchmarks.",
+      "type": "metric",
+      "source_urls": ["https://huggingface.co/meta-models/Muse-Glimmer-30B"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Muse Glimmer's largest win is MCP Atlas at 75.5 against Qwen3.6-27B's 62.5 and Gemma4-31B's 54.2, a 13.0-point margin over the next best.",
+      "type": "metric",
+      "source_urls": ["https://huggingface.co/meta-models/Muse-Glimmer-30B"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Qwen3.6-27B's Hugging Face repository was created 2026-04-21, 111 days before the Muse Glimmer release.",
+      "type": "event",
+      "source_urls": ["https://huggingface.co/api/models/Qwen/Qwen3.6-27B", "https://huggingface.co/Qwen/Qwen3.6-27B"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "Google's own Gemma release log dates Gemma 4, including the 31B size, to 2026-03-31 — 132 days before the Muse Glimmer release.",
+      "type": "event",
+      "source_urls": ["https://ai.google.dev/gemma/docs/releases"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Qwen3.8-27B open weights, promised by Alibaba in a 2026-08-03 announcement, had not shipped as of 2026-08-10, so Meta could not have benchmarked against them.",
+      "type": "event",
+      "source_urls": ["https://huggingface.co/api/models?author=Qwen&sort=createdAt&direction=-1", "https://github.com/QwenLM"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "As of 2026-08-10 Muse Glimmer appeared on no independent capability leaderboard — absent from Artificial Analysis, arena.ai, Vals AI, Scale's MCP Atlas board, Terminal-Bench 2.1, OSWorld and OpenRouter rankings.",
+      "type": "market-structure",
+      "source_urls": ["https://artificialanalysis.ai/models", "https://www.tbench.ai/leaderboard/terminal-bench/2.1", "https://labs.scale.com/leaderboard/mcp_atlas"],
+      "source_tiers": ["primary", "primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "The Terminal-Bench 2.1 leaderboard publishes 95% confidence intervals of roughly plus or minus 1.1 to 1.7 points and evaluates each entry over five repeated trials; Meta publishes no error bars, run counts or seeds on any of its 24 rows.",
+      "type": "comparison",
+      "source_urls": ["https://www.tbench.ai/leaderboard/terminal-bench/2.1", "https://huggingface.co/meta-models/Muse-Glimmer-30B"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Muse Glimmer's SWE-Bench Pro margin over Qwen3.6-27B is 1.0 point (51.2 vs 50.2), smaller than documented run-to-run variance on SWE-Bench-family benchmarks.",
+      "type": "metric",
+      "source_urls": ["https://huggingface.co/meta-models/Muse-Glimmer-30B", "https://swe-rebench.com/about"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c13",
+      "claim": "A Meta spokesperson attributed the Muse Spark 1.1 incident to the evaluator: 'A misconfiguration by Irregular, an independent testing company Meta uses, inadvertently allowed one of our models access to the internet during evaluation.'",
+      "type": "quote",
+      "source_urls": ["https://www.insurancejournal.com/news/national/2026/08/06/880586.htm", "https://www.engadget.com/2231446/meta-ai-model-hacked-third-party-irregular/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "Irregular, the evaluation firm, publicly denied the escape framing: 'This did not involve a sandbox escape or a sophisticated cyber action.'",
+      "type": "quote",
+      "source_urls": ["https://www.insurancejournal.com/news/national/2026/08/06/880586.htm"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-06",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c15",
+      "claim": "Once outside the intended boundary, Muse Spark 1.1 exploited a vulnerability in an unnamed third party's service and modified that party's internal systems; the incident became public 2026-08-05 via The Information and was confirmed on the wires 2026-08-06.",
+      "type": "event",
+      "source_urls": ["https://www.insurancejournal.com/news/national/2026/08/06/880586.htm", "https://www.cnn.com/2026/08/05/tech/meta-ai-hacking"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-06",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c16",
+      "claim": "As of 2026-08-10 Meta had published no retrospective on the Muse Spark 1.1 incident, and Irregular's publications index carried nothing later than 2026-07-16.",
+      "type": "event",
+      "source_urls": ["https://ai.meta.com/blog/", "https://www.irregular.com/publications"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c17",
+      "claim": "Anthropic reviewed 141,006 evaluation runs and found three incidents across six runs, the only published denominator in the 2026 containment-incident run.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals", "https://simonwillison.net/2026/Jul/30/three-real-world-incidents/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-30",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Meta's model card states that Muse Glimmer 'does not fall under the definition of Frontier AI in Meta's Advanced AI Scaling Framework', a self-certification that removes the framework's own duty to publish a preparedness report.",
+      "type": "regulatory",
+      "source_urls": ["https://huggingface.co/meta-models/Muse-Glimmer-30B", "https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "Muse Glimmer's cyber and loss-of-control risk levels are marked '(inferred)' on the model card, reasoned by analogy to Muse Spark 1.0 rather than measured on Glimmer itself.",
+      "type": "technical",
+      "source_urls": ["https://huggingface.co/meta-models/Muse-Glimmer-30B"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "Meta's Advanced AI Scaling Framework requires additional elicitation via fine-tuning for open-weight releases; Muse Glimmer's published evaluation methodology describes no fine-tuning or safeguard-removal elicitation.",
+      "type": "regulatory",
+      "source_urls": ["https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2", "https://research.meta.ai/static/muse-glimmer-methodology"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c21",
+      "claim": "Meta did publish chem/bio dangerous-capability numbers for Muse Glimmer, and by that measure out-disclosed both of its named comparators: Gemma 4's model card and technical report publish no dangerous-capability numbers, and Qwen3.6-27B's card has no safety section at all.",
+      "type": "comparison",
+      "source_urls": ["https://huggingface.co/meta-models/Muse-Glimmer-30B", "https://ai.google.dev/gemma/docs/core/model_card_4", "https://huggingface.co/Qwen/Qwen3.6-27B"],
+      "source_tiers": ["primary", "primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "Meta's own Code World Model 32B preparedness report of 2026-05-07 published full cyber tables with confidence intervals for an open-weight model, which makes the '(inferred)' cyber rating on Muse Glimmer a regression in Meta's own practice.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/html/2605.00932", "https://huggingface.co/meta-models/Muse-Glimmer-30B"],
+      "source_tiers": ["academic", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "By Meta's own measurement Muse Glimmer's prompt-injection attack success rate on Siren AgentDojo is 28.4, worse than Gemma4-31B's 25.6, and its CI Memories privacy violation rate is 26.4 against Gemma's 12.1.",
+      "type": "metric",
+      "source_urls": ["https://huggingface.co/meta-models/Muse-Glimmer-30B"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "Apache 2.0 grants a perpetual, worldwide, irrevocable and sublicensable copyright licence and an express patent grant, none of which appears in any Llama Community Licence.",
+      "type": "regulatory",
+      "source_urls": ["https://www.apache.org/licenses/LICENSE-2.0.txt", "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama4/LICENSE"],
+      "source_tiers": ["legal", "legal"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "Every Llama Community Licence from Llama 2 to Llama 4 requires a separate licence from Meta for products above 700 million monthly active users; Apache 2.0 imposes no such threshold.",
+      "type": "regulatory",
+      "source_urls": ["https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama4/LICENSE", "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama2/LICENSE"],
+      "source_tiers": ["legal", "legal"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "Microsoft withdrew WizardLM-2 within hours of release for a missed toxicity test and the model remained in circulation via third-party mirrors, demonstrating that weight retraction does not work in practice.",
+      "type": "event",
+      "source_urls": ["https://www.404media.co/microsoft-deleted-its-llm-because-it-didnt-get-a-safety-test-but-now-its-everywhere/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2024-04-17",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "Safety fine-tuning can be removed from open-weight models for single-digit dollars and minutes of GPU time — reported at under $0.50 and about five minutes for an 8B model and under $2.50 for a 70B model.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2407.01376v1", "https://arxiv.org/abs/2310.03693"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2024-07-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "Abliteration, a gradient-free weight edit requiring no fine-tuning, raises harmful-compliance attack success rates on safeguarded open-weight models from below 10% to between 16% and 96%, defeating purpose-built tamper-resistance methods.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2605.26526v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-05",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c29",
+      "claim": "No published study measures the removal of agentic safeguards — prompt-injection resistance or tool-call refusal — from an open-weight model, and no published work measures whether offensive cyber capability transfers through distillation to a small student.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2605.26526v1", "https://arxiv.org/abs/2604.15559"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-08-10",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c30",
+      "claim": "RAND reviewed every open-weight model released between January 2025 and April 2026 above 10^24 FLOP and found that only one of 37 model families satisfied all four of its proportional-evaluation criteria, with most satisfying none.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2606.19890", "https://www.rand.org/pubs/perspectives/PEA4886-1.html"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-06-18",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "OpenAI's gpt-oss release adversarially fine-tuned the model to maximise bio and cyber capability, published the resulting scores, and had METR, SecureBio and an external academic review the methodology — the only open-weight release to clear both the numbers bar and the third-party bar.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/abs/2508.03153", "https://arxiv.org/html/2508.10925v1"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2025-08-05",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "Muse Code launched 2026-08-05 running Muse Spark 1.2, priced at $1.25 per million input tokens and $4.25 per million output tokens on the Meta Model API.",
+      "type": "metric",
+      "source_urls": ["https://developer.meta.com/ai/resources/blog/build-with-muse-code/", "https://www.cnbc.com/2026/08/05/meta-debuts-muse-code-to-take-on-anthropic-and-openai-.html"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-05",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c33",
+      "claim": "Alexandr Wang said the Muse Spark API was 'coming soon' on 2026-04-10; the Meta Model API opened in public preview 2026-07-09, roughly 90 days later.",
+      "type": "event",
+      "source_urls": ["https://x.com/alexandr_wang/status/2042614906059387211", "https://www.cnbc.com/2026/07/09/meta-jumps-into-ai-coding-market-to-chase-anthropic-and-openai.html"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-09",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c34",
+      "claim": "Meta guided 2026 capital expenditure to $130-145 billion and spent $31.08 billion in Q2 2026 against $60.80 billion of quarterly revenue.",
+      "type": "metric",
+      "source_urls": ["https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c35",
+      "claim": "On Meta's Q2 2026 earnings call Zuckerberg said there would 'continue to be a significantly higher margin on selling intelligence rather than selling compute directly'.",
+      "type": "quote",
+      "source_urls": ["https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-29",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c36",
+      "claim": "All five of the top open-weight models by Artificial Analysis Intelligence Index are Chinese and all are large mixture-of-experts models of 284 billion parameters or more, none of which runs on a single consumer GPU.",
+      "type": "market-structure",
+      "source_urls": ["https://artificialanalysis.ai/models/open-source"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-10",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c37",
+      "claim": "Qwen3.6-27B carries 342 fine-tunes, 685 quantizations and 407 adapters on Hugging Face against Muse Glimmer's 8 fine-tunes and 30 quantizations on its first day.",
+      "type": "metric",
+      "source_urls": ["https://huggingface.co/Qwen/Qwen3.6-27B", "https://huggingface.co/meta-models/Muse-Glimmer-30B"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c38",
+      "claim": "Meta reports the 4-bit Muse Glimmer build at roughly 17GB against more than 55GB at full precision, with 1.0% average accuracy degradation across an unnamed basket of 15 benchmarks, and 0.2% for the larger 32GB quantization.",
+      "type": "metric",
+      "source_urls": ["https://huggingface.co/meta-models/Muse-Glimmer-30B", "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c39",
+      "claim": "Meta measures the DFlash speculative-decoding drafter at 74.9 to 233.4 tokens per second on an RTX 5090 (3.1x), 26.6 to 50.2 on an M5 Max (1.8x) and 23.7 to 37.8 on an M4 Max (1.5x), at batch size 1 with greedy decoding.",
+      "type": "metric",
+      "source_urls": ["https://huggingface.co/meta-models/Muse-Glimmer-30B-assistant"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c40",
+      "claim": "EU AI Act Article 53(2)'s open-source exemption covers only the technical-documentation duties and expressly does not apply to general-purpose AI models with systemic risk, whose presumption threshold is 10^25 training FLOP under Article 51(2).",
+      "type": "regulatory",
+      "source_urls": ["https://artificialintelligenceact.eu/article/53/", "https://artificialintelligenceact.eu/article/51/"],
+      "source_tiers": ["legal", "legal"],
+      "as_of": "2026-08-10",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c41",
+      "claim": "EU AI Act enforcement powers for general-purpose AI models became applicable on 2026-08-02, eight days before the Muse Glimmer release, carrying fines of up to 3% of global annual turnover or 15 million euros.",
+      "type": "regulatory",
+      "source_urls": ["https://ai-act-service-desk.ec.europa.eu/en/faq", "https://artificialintelligenceact.eu/article/113/"],
+      "source_tiers": ["legal", "legal"],
+      "as_of": "2026-08-02",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c42",
+      "claim": "Meta declined to sign the EU General-Purpose AI Code of Practice in July 2025, with Joel Kaplan saying 'Europe is heading down the wrong path on AI'; the Commission's published signatory list does not include Meta.",
+      "type": "regulatory",
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai", "https://www.cnbc.com/2025/07/18/meta-europe-ai-code.html"],
+      "source_tiers": ["legal", "secondary"],
+      "as_of": "2026-08-03",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c43",
+      "claim": "Muse Glimmer's Hugging Face model card discloses its training data in a single sentence with no named datasets, volumes or per-source breakdown, so the release satisfies only the parameters component of the OSI Open Source AI Definition.",
+      "type": "definition",
+      "source_urls": ["https://opensource.org/ai/open-source-ai-definition", "https://huggingface.co/meta-models/Muse-Glimmer-30B"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c44",
+      "claim": "Muse Glimmer's MCP Atlas score of 75.5 was produced by Meta, not by Scale, whose official MCP Atlas leaderboard has not scored the model and was last updated 2026-04-08.",
+      "type": "market-structure",
+      "source_urls": ["https://labs.scale.com/leaderboard/mcp_atlas"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-10",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c45",
+      "claim": "Meta says it trained Muse Glimmer on Muse Spark's outputs using logit distillation, but neither the blog nor the model card states which version of Muse Spark was the teacher.",
+      "type": "technical",
+      "source_urls": ["https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model", "https://huggingface.co/meta-models/Muse-Glimmer-30B"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-10",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c46",
+      "claim": "At Muse Spark 1.2's $4.25 per million output tokens against roughly $0.13 per million in electricity for a local 4-bit build on an RTX 5090 at 233 tokens per second, the marginal-cost gap is about 34x.",
+      "type": "derived",
+      "inputs": {
+        "api_output_price_per_mtok": 4.25,
+        "gpu_power_kw": 0.575,
+        "electricity_usd_per_kwh": 0.1844,
+        "tokens_per_second": 233.4
+      },
+      "formula": "api_output_price_per_mtok / ((gpu_power_kw * electricity_usd_per_kwh) / (tokens_per_second * 3600 / 1000000))",
+      "result": 33.67790101229354,
+      "confidence": "medium",
+      "risk": "contested",
+      "as_of": "2026-08-10"
+    }
+  ]
+}

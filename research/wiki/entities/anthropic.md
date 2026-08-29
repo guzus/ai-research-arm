@@ -4,10 +4,26 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28; in early talks to lease up to $10B in compute from Meta over two years and in bank credit-line talks worth "a few billions" ahead of a planned IPO (2026-07-19).
+description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue, signed a $45B Nscale compute deal (2026-08-27), pledged more Cursor compute as OpenAI exits that IDE (2026-08-29), and was sued by Sony Music Publishing and Warner Chappell (2026-08-28) weeks before a reported record IPO.
 created_at: 2026-05-24
-timestamp: 2026-08-07T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
+  - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
+  - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
+  - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
+  - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
+  - {title: "ARA model ticket — Anthropic protein-binder design", path: research/models/tickets/anthropic-protein-binder-design-2026-08.md}
+  - {title: "ARA model ticket — Anthropic IPO", path: research/models/tickets/anthropic-ipo-2026-06.md}
+  - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
+  - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
@@ -912,6 +928,271 @@ of the listing.
   now treating its own staff as an attack surface, not just its models (ARA
   daily digest 2026-08-07).
 
+## The Riemann-bound claim, text watermarking, and Theseus Infrastructure (2026-08-10/11)
+
+Three developments landed together on 2026-08-10:
+
+- **The Riemann bound claim (unverified).** Anthropic announced that an
+  **unreleased research model** raised the proven lower bound for the proportion
+  of **zeta zeros on the critical line from 41.6% to 67.2%**, in a **paper the
+  model solely authored**. No independent number theorist has checked it — the
+  strongest instance yet of the [[verification-bottleneck]] in science (ARA
+  daily digest 2026-08-11). Track against the [[claude-science]] workbench and
+  the [[john-jumper]] AI-for-science hiring.
+- **Text watermarking ships — the first by a US frontier lab.** Anthropic began
+  embedding **invisible token-level signals in all generated text** and
+  **provenance metadata in every file**, the first such shipment by a US
+  frontier lab. Researchers immediately noted a token-level watermark is
+  defeated by cheap rewriting, and **Anthropic has not published the scheme or a
+  detector**. Read against the [[eu-ai-regulation]] Article 50 transparency
+  obligation that took effect 2026-08-02 — flagged by at least one ML researcher
+  as the likely driver, though Anthropic stated no reason (ARA daily digest
+  2026-08-11).
+- **Theseus Infrastructure — a build-to-suit datacenter platform.** Anthropic,
+  **Macquarie Asset Management** and **GIC** are reported to be establishing
+  **Theseus Infrastructure**, a build-to-suit datacenter platform where the
+  investors own the equity and **Anthropic signs on as anchor tenant paying rent
+  rather than capex**. Single relay, no counterparty statement — and the
+  structure moves **construction risk, not the obligation** (ARA daily digest
+  2026-08-11). See [[ai-capex]] for how this sits in the off-balance-sheet
+  financing pattern this theme has tracked since the ~$150bn Google-arranged
+  chip vehicle.
+
+## Global watermarking, the Riot Platforms deal, and the IPO window (2026-08-12)
+
+- **Watermarking goes worldwide and Article 50 gets named as the driver.**
+  Anthropic will watermark **all Claude text output globally**, and staff
+  **confirmed a public text-detection API is coming**. The commitment is now
+  **explicitly framed as compliance with the [[eu-ai-regulation]] AI Act
+  Article 50 transparency obligations** that became enforceable **2 August
+  2026** for newly launched systems — and Anthropic staff assert **other labs
+  are adding similar marking**. The chosen demo case — checking whether a pull
+  request came from Claude Code — is **the low-entropy case the technique
+  handles worst**, per TechCrunch/The Register, a candid admission of the
+  watermark's limits (TechCrunch, The Verge, The Register; ARA daily digest
+  2026-08-12).
+
+## Watermarking backlash, Claude for Legal, and Claude in Chrome (2026-08-13)
+
+- **The watermarking backlash begins — users, not just researchers
+  (2026-08-13).** A day after the feature's global announcement, **TechCrunch
+  reports Claude users complaining publicly that the mark will expose their
+  use of the model at work and in classes**, and **Stratechery published a
+  same-day critique** arguing the implementation **reaches further than the
+  EU AI Act provision that prompted it** — the regulation exempts standard
+  editing that does not substantially change meaning, while a **model-level
+  mark also lands on human text Claude merely proofread or translated**.
+  The detector's **error rates remain unpublished**, the criticism this wiki
+  has tracked since the 2026-08-11 ship (TechCrunch, Stratechery,
+  @benthompson; ARA daily digest 2026-08-13).
+- **Robert Mahari named first Head of Claude for Legal (2026-08-13).**
+  Anthropic hired **Robert Mahari**, a legal-startup founder (Lex Machina
+  lineage, per reporting), as its **first Head of Claude for Legal** — a
+  vertical-specialist hire in the [[claude-science]] mold, aimed at the
+  legal-practice market (The Decoder; ARA daily digest 2026-08-13).
+- **Claude in Chrome converges on the Claude Cowork backend (2026-08-13).**
+  **Claude in Chrome** now runs on **the same infrastructure as Claude
+  Cowork**, syncing across clients with **Skills and Connectors** — available
+  on **Max and Team**, with **Pro in coming weeks** (ARA daily digest
+  2026-08-13).
+
+- **A $9.1B, 20-year compute deal with Riot Platforms (2026-08-12).** Anthropic
+  signed a **$9.1B, 20-year compute agreement with Riot Platforms**, extendable
+  to **$16.1B** — though the **first 96MW does not land until December 2027**,
+  a long-dated, miner-backed counterparty consistent with the
+  [[volta-infra|Volta Infra]] and Theseus pattern of thin new entities (Bloomberg
+  via Twitter, The Decoder; ARA daily digest 2026-08-12).
+- **IPO reportedly set for September or early October — ahead of OpenAI
+  (2026-08-12).** Per the WSJ, Anthropic's **IPO is set for September or early
+  October**, ahead of [[openai|OpenAI]]'s, with investors pressing on **Chinese
+  model competition and datacenter opposition**. The pre-IPO pitch reportedly
+  **leans into biology and healthcare** — the [[claude-science]] / [[john-jumper]]
+  science thesis — to blunt worsening public sentiment (WSJ via Twitter, The
+  Decoder; ARA daily digest 2026-08-12).
+- **Theseus covers consumer electricity price increases (2026-08-12).**
+  Follow-on reporting on **Theseus Infrastructure** adds that Anthropic
+  **separately committed to covering consumer electricity price increases tied to
+  the facilities** — a direct answer to the rate-payer-protection politics that
+  has dogged data-center siting all cycle (see [[ai-capex]]) (Bloomberg,
+  Macquarie, Data Center Dynamics; ARA daily digest 2026-08-12).
+
+## $65B run rate disclosed ahead of the IPO window (2026-08-18)
+
+- **Anthropic reports a $65B annualized run rate with positive adjusted
+  operating income (2026-08-18).** The company told investors over the weekend
+  that **annualized revenue reached $65B at end-July**, on **preliminary Q2
+  revenue of $11.5B** — up **14x year over year** from $787M a year earlier —
+  with **positive adjusted operating income**. All figures are
+  **company-supplied and unaudited** ahead of a reported **September or early
+  October IPO window** (see 2026-08-12 IPO entry above). Worth holding the
+  arithmetic: $11.5B of Q2 revenue annualizes to only ~$46B, so the $65B
+  headline asserts roughly **41% growth in the two months after the quarter
+  closed** — company-supplied and unaudited, consistent with the investor-facing
+  pre-IPO cadence this page has tracked (2026-08-05 run-rate to $47B, 2026-08-06
+  ~$50B). Nothing in the disclosure **breaks revenue out by product**, leaving
+  the **Claude Code concentration question open** (Bloomberg; ARA daily digest
+  2026-08-18).
+
+## Pre-IPO balance-sheet machinery; degraded performance across tiers (2026-08-19)
+
+- **An oversubscribed $10B+ revolver (2026-08-19).** Two separate
+  anonymously-sourced pre-IPO reports landed the same evening. Per Bloomberg,
+  Anthropic drew commitments **above a ~$10B revolver target** — **at least 4×
+  the $2.5B facility closed in 2025** — with **Morgan Stanley, Goldman Sachs
+  and JPMorgan** working the listing. A second report (The Information) says a
+  **share class gives Dario Amodei and co-founders extra voting power**. Both
+  are single-anonymous-source and **neither confirms the other**; together
+  they sketch the balance-sheet scaffolding ahead of the reported
+  September-or-early-October IPO window (ARA daily digest 2026-08-19).
+- **Degraded performance reported across every model tier (2026-08-19).** The
+  Anthropic status page listed **Mythos 5, Fable 5, Opus 5, Sonnet 5 and Haiku
+  4.5** as affected across the **Claude app, API, Claude Code and Cowork**, with
+  users still reporting problems **100 minutes later** (@ns123abc; ARA daily
+  digest 2026-08-19).
+
+## Protein binders, a Fractile chip supply, and supervoting shares (2026-08-20)
+
+- **Claude designs working protein binders — 14 of 15 targets (2026-08-20).**
+  Anthropic published an experiment in which **Claude designed novel protein
+  binders from scratch** given a single expert-written protocol — hitting
+  **14 of 15 measurable targets at a 26.8% hit rate across 1,320 designs built
+  and tested by Adaptyv Bio and Twist Bioscience**, against a field-typical
+  10–15%. It is one of the few capability claims this cycle with a **wet-lab
+  readout** — designs either bound or they did not, and third-party labs did
+  the measuring. The same-day rebuttal is load-bearing: critics read the
+  result as **Claude orchestration existing open-source protein-design tools
+  (PXDesign, Protenix, Baker-lab tools)** rather than the LLM inventing
+  protein design — a different-but-real finding ("an LLM competently drives a
+  toolchain of specialist models") that is compatible with every number.
+  Anthropic itself bounds the claim: binder design is "an easier process than
+  designing a drug, but it's a useful proxy" (Anthropic, Twitter, The Decoder,
+  model timeline; ARA daily digest 2026-08-20).
+- **Bloomberg confirms Fractile will supply Anthropic chips (2026-08-20).** The
+  first named-outlet confirmation that **Anthropic is buying inference silicon
+  from a startup**: [[fractile|Fractile]] will supply Anthropic chips, with the
+  startup in **advanced talks at more than six times its May valuation** on
+  reports of ~$250M of chips and a ~$6.5B target valuation. It landed three
+  hours after this pipeline declined to publish the same claim from an
+  unattributed account — a named-outlet confirmation upgrading a relaying-only
+  story. It pairs with Anthropic's in-house silicon team and the
+  [[model-specific-silicon]] category (see [[fractile]] for the startup side;
+  ARA daily digest 2026-08-20).
+- **Supervoting shares prepared ahead of a possible September IPO; Decoder says
+  Anthropic passed OpenAI on revenue (2026-08-20).** Per The Information,
+  Anthropic is preparing **supervoting shares for Dario Amodei and other
+  co-founders** ahead of a **possible September IPO**, against investor-relayed
+  figures of **~$65B ARR at end-July and ~$11.5B 2Q26 revenue (14× YoY)** with
+  **SemiAnalysis putting >40% of ARR in indirect channels** (Bedrock, Foundry,
+  Gemini Agent Enterprise). The Decoder separately reports Anthropic **passing
+  [[openai]] on revenue for the first time** — the revenue-side counterpart to
+  the valuation flip already tracked since the $965B Series H (ARA daily digest
+  2026-08-20).
+
+## IPO prospectus preparation and computer use GA (2026-08-21)
+
+- **Anthropic prepares a public IPO prospectus; supervoting shares confirmed
+  (2026-08-21).** Reports attributed to Bloomberg (via relays) say a **public
+  IPO filing could come as soon as end-August 2026**, and that a **confidential
+  S-1 went in during June** — consistent with the confidential June 1 S-1 and the
+  September/early-October window this page already tracks. The Information
+  separately reported the **supervoting shares for Dario Amodei and co-founders**
+  first surfaced on 2026-08-19/20. Treat the end-August filing date as reported,
+  not established (Bloomberg via relays, The Information; ARA daily digest
+  2026-08-21).
+- **Computer use, the browser tool, the Skills API and the Files API go GA
+  (2026-08-21).** Anthropic moved **computer use**, the **browser tool**, the
+  **Skills API** and the **Files API** to GA on the Claude Platform. The **Skills
+  API versions a team procedure and pins requests to a `version_id`**; the
+  **Files API adds expiring uploads, 500 requests/minute (5×), and 1 TB per
+  organisation**. An **AG-UI adapter** shipped two hours earlier, and earlier the
+  same day Anthropic added **domain allowlists/blocklists for `web_search` and
+  `web_fetch`**, **memory persistence from Self-Hosted Sandboxes**, a rebuilt
+  **Console session viewer with per-thread dollar costs**, and a **"Concise"
+  output style for Claude Code v2.1.237**. Notable open question: the **perimeter
+  for a tool that drives arbitrary GUI software was not stated** (@ClaudeDevs;
+  ARA daily digest 2026-08-21). See [[dynamic-workflows]] and
+  [[agentic-ai-security]].
+
+## Claude Security behind an enterprise scanner; a TPU-executive hire; Ode's first acquisition (2026-08-22)
+
+- **Claude Security — Mythos 5's most cyber-capable build shipped behind an
+  enterprise scanner (2026-08-22).** Anthropic put **Claude Mythos 5** — its most
+  cyber-capable model — behind **Claude Security**, a scanner that **takes a
+  GitHub repository and returns findings with CWE severity, confidence, and
+  suggested patches**. Customers **cannot freely prompt the model from that
+  surface**, which is a deliberate capability-guardrail: the model's cyber reach is
+  exposed only through the scanner's structured output. It extends the gated-defender
+  lineage tracked since the [[claude-fable-5|Fable 5 / Mythos 5]] export-restoration
+  and parallels [[openai|OpenAI's]] [[gpt-5-6|GPT-5.6-Cyber]] Daybreak Red tier — the
+  two labs converging on the same "defenders-only, mediated surface" posture (The
+  Decoder, Anthropic via HN; ARA daily digest 2026-08-22). See [[agentic-ai-security]].
+- **Google's former TPU business chief joins the compute team — the own-silicon
+  push (2026-08-22).** Anthropic hired **Amir Salek**, **Google's former TPU
+  business chief**, into its compute team, which two accounts describe as a move
+  toward **its own silicon**. It is the highest-profile hire yet on the compute-hardware
+  axis this page has tracked (Samsung chip talks July 3, AMD evaluation July 21,
+  Fractile supply August 20) and matters because **Anthropic is the frontier lab most
+  exposed to other companies' accelerator roadmaps** — the direct logic for why it keeps
+  hedging across vendors and now insources them. Neither Anthropic nor Salek has
+  confirmed first-party; treat as reported (The Decoder, @AndrewCurran_, @techsnif; ARA
+  daily digest 2026-08-22).
+- **Ode makes its first acquisition — Casper Studios (2026-08-22).** Anthropic's
+  **Ode** (its enterprise agentic-solutions arm) bought **Casper Studios** to
+  build enterprise AI solutions faster for client-specific workflows — the first
+  acquisition for the unit since its launch. Small by disclosed terms, but a signal
+  that Ode is consolidating delivery capability rather than only reselling Claude
+  (The Information; ARA daily digest 2026-08-22).
+
+## The Claude Code serving experiment, Remote Control, and a $2T-sized IPO frame (2026-08-23)
+
+- **Anthropic confirms the live Claude Code serving experiment — answering a
+  week of "my model got dumber" complaints (2026-08-23).** Engineer **Thariq
+  Shihipar** disclosed that the "10" users find on high reasoning effort comes
+  from an **untagged API serving config being tested on production users**
+  before rollout, that **the scale is not 0–100** and the number "isn't
+  meaningful on its own," and that **internal evals show no performance
+  change** at the mapped effort level. It was the day's Quote of the Day —
+  the more expensive admission than denying any change, with the remaining gap
+  that **the changelog still does not mention it**. Twenty-one minutes later
+  Shihipar separately called [[claude-opus-5|Opus 5]] "a really spiky model"
+  and said consistency is "a huge priority" (Twitter, @trq212, @argofowl; ARA
+  daily digest 2026-08-23).
+- **Claude Code Remote Control ships — repair work, not a feature drop
+  (2026-08-23).** A five-post release consisting almost entirely of
+  stabilization: **phone-initiated sessions against any machine running
+  `claude remote-control`**, **automatic reconnection**, and **live
+  phone/CLI sync of model and effort level**. [[google|Google]]'s Antigravity
+  exposed the same phone-continuation primitive roughly fourteen hours later —
+  with no mobile app, routed through mobile web (ARA daily digest 2026-08-23).
+- **Data-center opposition is named a core IPO risk factor; investor
+  expectations near $2T (2026-08-23).** Relayed CNBC reporting says **US
+  public opposition to data-center construction is expected as a core
+  prospectus risk factor**, with investors forecasting a listing **near $2
+  trillion**. The number sits **a third below the $3T** the FT carried on
+  2026-08-13, and the **$65B revenue figure's provenance is contested as a
+  possible pre-roadshow leak**. The same cycle: the **Anthropic–Blackstone JV
+  made its first acquisition** (target and price undisclosed), and Anthropic
+  **eased its data-retention policy** after enterprise pushback, letting
+enterprise customers keep their own data. See [[ai-capex]] for the survey
+   and state-action detail behind the risk factor (ARA digest
+   2026-08-23).
+
+## The bankers pitch a >$100B raise at a $2 trillion valuation (2026-08-24)
+
+- **The valuation shifts from "investors forecasting" to "bankers telling
+  investors" (2026-08-24).** Per @AndrewCurran_, Anthropic's bankers are
+  pitching potential investors on a **raise of over $100 billion** at a **$2
+  trillion valuation** — described as exceeding [[spacex|SpaceX]]'s record IPO
+  and ranking as **the largest listing on record**. **Nothing first-party from
+  Anthropic appears in the window**: the figure moves from the 2026-08-13
+  "$3T" the FT carried to "near $2T" investor expectations (2026-08-23) to a
+  fixed $2T banker pitch, still **roughly double the ~$1T private mark** and
+  unanchored by any public S-1. The latest rumors put the **listing in
+  September** ([anthropic-ipo-2026-06](../../models/tickets/anthropic-ipo-2026-06.md)
+  ticket update). Treat the $2T / >$100B figures as banker-to-investor talk
+  relayed by a journalist — one step further from the record than the July
+  revenue leak (ARA daily digest 2026-08-24).
+
 ## Open questions
 - **Does the eval-breach disclosure produce consequences?** Two of three
   affected organizations never detected the intrusion, and the liability
@@ -928,3 +1209,105 @@ of the listing.
 - **Pre-training acceleration.** Karpathy's group reportedly uses Claude to
   accelerate frontier pre-training. Does recursive self-acceleration materially
   change Anthropic's release cadence?
+
+## A full-lineup outage, the FT revenue picture, and unreleased checkpoints (2026-08-25)
+
+- **Anthropic extends its outage streak to the entire model lineup
+  (2026-08-25).** Elevated errors spanned **[[claude-fable-5|Mythos 5]],
+  [[claude-fable-5|Fable 5]], [[claude-opus-5|Opus 5]] and
+  [[claude-opus-4-8|Opus 4.8]] at once**, degrading **the Claude app, the API,
+  Claude Code and Cowork together** — errors were still live roughly an hour
+  after the company said it had identified the cause, and **no root cause was
+  published through the end of the day** (ITmedia, Anthropic status page via
+  Twitter/X; ARA daily digest 2026-08-25). It follows the 2026-08-19
+  degraded-performance entry above; note the pattern, and that this outage hit
+  the **whole lineup simultaneously** rather than one tier.
+- **The FT revenue picture refines the growth story ahead of the IPO
+  (2026-08-25).** Per FT reporting, Anthropic reached **~$65bn annualized in
+  July up from ~$47bn in May**, with **6,000 customers spending $100,000+ a
+  year**, and **Q3 expected profitable**. The load-bearing detail is
+  **Fable 5 accounting for only ~6% of purchased Anthropic tokens at twice
+  Opus 5's rates** — which two investors argue reflects **customer preference
+  for zero-data-retention terms over price**, not rate resistance (Simon
+  Willison, @GavinSBaker, @martin_casado; ARA daily digest 2026-08-25).
+  Cross-check against the 2026-08-18 $65B run-rate disclosure on this page and
+  the >$2T banker pitch above.
+- **Unreleased checkpoints `marshmallow` and `melon` produce first public
+  samples (2026-08-25).** Anthropic's checkpoints **`marshmallow` and `melon`**
+  yielded their **first public sample outputs**, with one observer noting that
+  "They're really pushing **3D RL** a lot." Still unreleased and still
+  uncorroborated by the company — the checkpoint-telegraph pattern this wiki
+  tracks (ARA daily digest 2026-08-25).
+
+## A $30 trillion TAM pitch to investors (2026-08-26)
+
+- **Anthropic pitches investors a >$30T total addressable market
+  (2026-08-26).** The WSJ reports Anthropic's investor story now puts its
+  **TAM above $30 trillion** — positioned against **SpaceX's $28.5T** from its
+  IPO filing — roughly **the global knowledge-work wage bill recast as
+  software revenue**, against **cited quarterly revenue of $11.6B**. Read
+  against this page's IPO thread: the >$30T TAM is the scale argument
+  underneath the >$100B raise / $2T valuation banker pitch (2026-08-24), and
+  the $11.6B cited quarter is consistent with the ~$11.5B preliminary Q2
+  revenue already tracked (2026-08-18). The number is an **investor pitch, not
+  a filing** — the "$2 trillion valuation, up to $100B raised" figures that
+  accompany it appear only in relays with no named outlet (WSJ, HN; ARA daily
+  digest 2026-08-26).
+
+## A $45B Nscale compute commitment (2026-08-27)
+
+- **Anthropic signs a $45B compute deal with Nscale (2026-08-27).** The latest
+  in the very large compute commitments this page has tracked all cycle:
+  Anthropic signed a **$45B deal with infrastructure provider Nscale**,
+  announced in parallel with **[[amazon|Amazon]] tripling its
+  [[nvidia|NVIDIA]] GPU order** (2M more GPUs over two years) and NVIDIA posting
+  its $96.2B quarter. Read against the [[volta-infra|Volta]] (~$10B), Riot
+  (~$9.1B), Theseus, and Google/[[broadcom|Broadcom]]-arranged financing stack,
+  the Nscale deal deepens the [[ai-capex]] pattern of chained compute
+  commitments rather than replacing it — a frontier lab signing an even larger
+  take-or-pay-style capacity line, day after pitching a >$30T TAM to investors
+  (TechCrunch, The Decoder; ARA daily digest 2026-08-27). See [[ai-capex]].
+
+## Music-publisher suit, self-alignment research, and the Cursor compute pledge (2026-08-29)
+
+- **Sony Music Publishing and Warner Chappell sued Anthropic and two
+  founders (2026-08-28/29).** The complaint, filed late on August 28
+  against Anthropic, **Dario Amodei** and **Benjamin Mann**, alleges a
+  "brazen campaign of illegally torrenting, scraping, and downloading
+  copyrighted works on a massive scale" to develop and operate Claude,
+  naming compositions from "Eye of the Tiger" to "All I Want for
+  Christmas Is You". It quotes the prior **Bartz v. Anthropic** finding
+  of "straightforward piracy but at massive scale." There has been **no
+  Anthropic response** in the digest window, and the suit lands **weeks
+  before a reported record IPO**. Whether it consolidates with the
+  existing books cases is the open question (filing text via X; ARA
+  daily digest 2026-08-29).
+- **Claude worked as an automated alignment researcher (2026-08-29).**
+  Anthropic's Fellows research gave Claude **48 hours and one GPU** to
+  improve small models' alignment: it researched and proposed methods,
+  generated training data, and trained and evaluated students, **fixing
+  all ten studied failures** without degrading measured capabilities.
+  [[claude-sonnet-5|Sonnet 5]] also post-trained an early
+  [[claude-opus-4-8|Opus 4.8]] checkpoint toward production safety
+  scores. The setup is being **released publicly**. Anthropic's own
+  caveat is load-bearing: **subtle or rare failures may have no
+  benchmark at all**, so "everything hinges on measuring the right
+  things" (Anthropic, TechCrunch; ARA daily digest 2026-08-29).
+- **Anthropic pledged more compute for [[cursor|Cursor]] the morning
+  OpenAI cut the IDE off (2026-08-29).** Co-founder **Tom Brown** wrote
+  that Cursor "has been a trusted partner of Anthropic since Sonnet
+  3.5" and that Anthropic **will continue to increase compute** to
+  support Claude models there — a same-day substitution offer as
+  [[openai]] winds down Cursor's contracted access on November 12
+  (X; ARA daily digest 2026-08-29). See [[cursor]].
+- **Claude Code weekly limits fall ~17% on September 14 (2026-08-29).**
+  The current temporary **50% boost** ends and a permanent **25% raise**
+  begins for Pro, Max, Team and seat-based Enterprise plans — which
+  Anthropic itself computed as a **roughly 17% reduction** versus
+  today's effective limits. The account **deleted and re-posted** the
+  announcement after pushback (ARA daily digest 2026-08-29).
+- **Model Hardware Standard (MHS) (2026-08-29).** Anthropic published a
+  unified interface for AI agents to physical devices (robotic arms,
+  lab instruments); early tests claimed integration time dropped from
+  **weeks to hours** (The Decoder; ARA daily digest 2026-08-29). See
+  [[claude-science]].

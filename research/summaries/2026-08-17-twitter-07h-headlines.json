@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "AGENT SWARMS SOLVED 3 OF 13 DEF CON GOLDBUG PUZZLES — TEAM STILL TOOK BLACK BADGE",
+    "source": "@davis7",
+    "url": "https://x.com/davis7/status/2089244416263536720",
+    "category": "research"
+  },
+  {
+    "headline": "LLAMA.CPP SERVES QWEN3.8-27B IN ONE COMMAND WITH MTP SPECULATIVE DECODING",
+    "source": "@mervenoyann",
+    "url": "https://x.com/mervenoyann/status/2089238812484342235",
+    "category": "opensource"
+  },
+  {
+    "headline": "OPENAI RESEARCHER LISTS MONITORING FAILURE MODES — DOWNTIME, FATIGUE, FALSE POSITIVES",
+    "source": "@tszzl",
+    "url": "https://x.com/tszzl/status/2089234808480407818",
+    "category": "research"
+  },
+  {
+    "headline": "DEEPSEEK V4 FLASH ON TWO DGX SPARKS RATED NEAR GPT-5.4 AND OPUS 4.5 LEVEL",
+    "source": "@davis7",
+    "url": "https://x.com/davis7/status/2089205408451952864",
+    "category": "model"
+  }
+]

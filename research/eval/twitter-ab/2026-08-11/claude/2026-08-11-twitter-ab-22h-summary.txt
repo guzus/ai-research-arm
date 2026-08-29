@@ -1,0 +1,14 @@
+Twitter/X AI Pulse (A/B eval) - 2026-08-11 22:22:43 UTC
+
+CYCLE: Agent products ship, AI-buildout suppliers beat, OpenAI's COO exits.
+
+TOP STORIES:
+• xAI ships Grok Bot - cloud agent teams with their own computers, gated to Grok Heavy / Cursor Ultra; Grok 4.6 "later this week" [✓]
+• CoreWeave ~$104B backlog, Supermicro guides FY27 $65-72B (+$16B vs consensus), Lumentum revenue +109% Y/Y [⚠]
+• OpenAI COO Brad Lightcap leaving after 8 years; CRO Denise Dresser already holds most of the role [✓]
+• Microsoft says Maia 200 costs 30-40% less to operate than top Nvidia silicon on some models [⚠]
+• Anthropic to ship a public text-detection API on the new worldwide Claude watermark [✓]
+
+WATCH: Grok 4.6 + wider Grok Bot beta shipping before 2026-08-16.
+
+Full update on GitHub.

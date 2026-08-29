@@ -1,0 +1,304 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "On its Q2 2026 earnings conference call (30 July 2026) Samsung Electro-Mechanics stated it is targeting full-scale operation of glass substrate production from 2028.",
+      "type": "event",
+      "source_urls": ["https://www.etnews.com/20260730000332", "https://www.thelec.kr/news/articleView.html?idxno=60326", "https://www.ddaily.co.kr/page/view/2026073014381730009"],
+      "source_tiers": ["secondary", "secondary", "secondary"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "GlaSSEM is the tentative name of a glass-core joint venture between Samsung Electro-Mechanics (66%) and Dongwoo Fine-Chem (34%), capitalised at KRW 482,100 million and sited in Pyeongtaek.",
+      "type": "market-structure",
+      "source_urls": ["https://www.sumitomo-chem.co.jp/english/news/detail/20260702e_2.html", "https://www.thelec.net/news/articleView.html?idxno=11916"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "The GlaSSEM joint venture is scheduled to establish a glass-core supply system by the second half of fiscal 2027, one step upstream of Samsung Electro-Mechanics' own 2028 substrate date.",
+      "type": "forecast",
+      "source_urls": ["https://www.sumitomo-chem.co.jp/english/news/detail/20260702e_2.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-02",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c4",
+      "claim": "Samsung Electro-Mechanics reported Q2 2026 consolidated revenue of KRW 3,457.2 billion, operating profit of KRW 440.4 billion, and Package Solutions segment revenue of KRW 771.6 billion, up 37% year over year.",
+      "type": "metric",
+      "source_urls": ["https://www.samsungsem.com/resources/file/kr/ir/earnings_release/2Q26_Earnings_Release_kor.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Samsung Electro-Mechanics' own published Q2 2026 earnings deck and newsroom release contain no reference to glass substrates, the joint venture, or 2028; the date exists only as spoken conference-call commentary.",
+      "type": "market-structure",
+      "source_urls": ["https://www.samsungsem.com/resources/file/kr/ir/earnings_release/2Q26_Earnings_Release_kor.pdf", "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "At a CES 2024 press briefing Samsung Electro-Mechanics CEO Jang Duck-hyun described a roadmap of pilot line in 2024, prototype in 2025 and a full mass-production system in 2026.",
+      "type": "quote",
+      "source_urls": ["https://v.daum.net/v/20240111150003453", "https://v.daum.net/v/20240412182107348"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2024-01-11",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c7",
+      "claim": "Intel's September 2023 glass substrate announcement claimed a 10x increase in interconnect density is possible and committed to complete glass substrate solutions in the second half of this decade.",
+      "type": "quote",
+      "source_urls": ["https://newsroom.intel.com/artificial-intelligence/intel-unveils-industry-leading-glass-substrates"],
+      "source_tiers": ["primary"],
+      "as_of": "2023-09-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "Absolics holds up to $75 million in CHIPS direct funding plus a $100 million NAPMP glass-core R&D award against $343 million of expected capex, and the US government project page states production capacity is expected in 2027.",
+      "type": "metric",
+      "source_urls": ["https://www.nist.gov/chips/absolics-georgia-covington", "https://www.nist.gov/news-events/news/2025/01/us-department-commerce-announces-14-billion-final-awards-support-next"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "As of SKC's Q2 2026 earnings call on 27 July 2026, Absolics samples had only just begun initial package-level reliability evaluation in Taiwan, a stage before proof of concept and before revenue production.",
+      "type": "event",
+      "source_urls": ["https://www.thelec.net/news/articleView.html?idxno=12584"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-27",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c10",
+      "claim": "LG Innotek pushed glass-substrate commercialisation from around 2028 to 2030, with CEO Moon citing insufficient demand rather than technical failure.",
+      "type": "event",
+      "source_urls": ["https://www.trendforce.com/news/2026/01/13/news-lg-reportedly-delays-glass-substrate-commercialization-to-2030-on-demand-uncertainty/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-01-13",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c11",
+      "claim": "Dai Nippon Printing began a TGV glass-core pilot line in December 2025 on 510 x 515 mm panels and targets mass production only in fiscal 2028.",
+      "type": "forecast",
+      "source_urls": ["https://www.trendforce.com/news/2025/12/22/news-dnp-accelerates-tgv-glass-substrate-push-with-late-2025-pilot-line-early-2026-sample-shipments/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-12-22",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "TSMC's CoPoS panel-level packaging is reported to be standardised on 310 x 310 mm with pilot production in 2027 and mass production in 2H 2028, while glass-core substrates are deferred to after 2030.",
+      "type": "forecast",
+      "source_urls": ["https://www.trendforce.com/presscenter/news/20260617-13107.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-17",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c13",
+      "claim": "Ibiden committed approximately 500 billion yen over fiscal 2026 to 2028 to high-performance organic IC package substrates for AI servers, with mass production from fiscal 2027, and the release makes no mention of glass.",
+      "type": "metric",
+      "source_urls": ["https://www.ibiden.com/company/2026/02/notice-regarding-capital-investment-plan-for-high-performance-ic-package-substrates.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-02-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "AT&S stated that EUR 1.5 to 2.0 billion of organic IC-substrate expansion is fully covered by long-term customer commitments, and raised its FY2026/27 revenue growth guidance from 30-35% to 45-55%.",
+      "type": "metric",
+      "source_urls": ["https://www.eqs-news.com/news/ad-hoc/ats-austria-technologie-systemtechnik-ag-ats-expands-ai-substrate-capacity-in-kulim-and-increases-outlook-for-2026-27/1a92bc40-a144-4533-878c-cf31c886f44c_en"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-06-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Finite-element analysis of a flip-chip package found accumulated inelastic strain of 19% per cycle in the corner solder joint on a 4.8 ppm/degC glass core versus 8.43% on an organic core, and raising glass CTE toward 10 ppm/degC cut warpage 48% and strain 50%.",
+      "type": "technical",
+      "source_urls": ["https://imapsjmep.org/article/144212-flip-chip-on-glass-core-substrates-with-microbump-and-cu-cu-hybrid-bonding"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-09-15",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c16",
+      "claim": "Copper adhesion to bare glass measures 72 plus or minus 18 gf/cm against an industry threshold above 500 gf/cm, requiring an engineered adhesion layer; a porous titania promoter reached 1392 plus or minus 64 gf/cm.",
+      "type": "technical",
+      "source_urls": ["https://iopscience.iop.org/article/10.1149/1945-7111/adb5c9"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-03-17",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "At ECTC 2025 Samsung Electro-Mechanics' disclosed glass-core status was 40 micrometre laser-formed through-glass vias with an eight-layer build-up on a 640 micrometre core at 80 x 80 mm body size, with board- and system-level reliability explicitly unknown.",
+      "type": "technical",
+      "source_urls": ["https://www.3dincites.com/2025/07/glass-core-vs-rdl-interposer-substrates-ready-for-prime-time/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-05-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "A Samsung Electro-Mechanics package marketing leader stated publicly that glass replaces copper-clad laminate cores only once package body size exceeds roughly 120 to 140 mm per side.",
+      "type": "quote",
+      "source_urls": ["https://www.thelec.kr/news/articleView.html?idxno=40301"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-09-04",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "TSMC's 5.5-reticle CoWoS is reported in mass production above 98% yield with a 14-reticle step slated for 2028, and a TSMC packaging executive named memory and ABF substrate supply, not glass, as the AI bottlenecks.",
+      "type": "metric",
+      "source_urls": ["https://www.trendforce.com/news/2026/08/11/news-tsmcs-5-5-reticle-cowos-reportedly-tops-99-yield-flags-memory-abf-as-ai-bottlenecks/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-11",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "As of August 2026 no chip designer or substrate supplier has publicly disclosed a signed supply agreement, capacity reservation or qualified design-in for a glass-core substrate.",
+      "type": "market-structure",
+      "source_urls": ["https://www.absolicsinc.com/", "https://www.thelec.net/news/articleView.html?idxno=12584", "https://www.technologyreview.com/2026/03/13/1134230/future-ai-chips-could-be-built-on-glass/"],
+      "source_tiers": ["primary", "secondary", "secondary"],
+      "as_of": "2026-08-12",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c21",
+      "claim": "At ECTC 2026 STATS ChipPAC reported that 74 x 74 mm glass-core packages failed every reliability test segment without edge coating, and that edge coating reduced warpage 33.5%.",
+      "type": "technical",
+      "source_urls": ["https://newsletter.semianalysis.com/p/ectc2026"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-02",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c22",
+      "claim": "Samsung Electro-Mechanics sold its panel-level packaging business to Samsung Electronics in 2019 for KRW 785.0 billion against net asset fair value of KRW 578.3 billion, and the resulting KRW 206.7 billion of goodwill was impaired in full within a year.",
+      "type": "event",
+      "source_urls": ["https://www.thelec.kr/news/articleView.html?idxno=1535", "https://www.etoday.co.kr/news/view/2005730"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2019-04-30",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "Samsung Electro-Mechanics shares closed at KRW 1,335,000 on 12 August 2026, within a 52-week range of roughly KRW 153,800 to 2,417,000.",
+      "type": "metric",
+      "source_urls": ["https://markets.hankyung.com/stock/009150"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-08-12",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "TSMC's first reported glass-substrate validation on an 85 x 110 mm five-reticle package showed 27% lower power-supply resistance, 42% lower inductance and 16% better package warpage versus organic.",
+      "type": "technical",
+      "source_urls": ["https://finance.biggo.com/news/0FZvz54B5GWQxSUZ6mk3"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-06-16",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c25",
+      "claim": "A peer-reviewed study found a glass interposer power delivery network coupled 142 mV peak-to-peak of noise, 14.2% of the input, because glass's low loss tangent makes the substrate a high-Q resonant cavity.",
+      "type": "technical",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC10609628/"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-09-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "On 6 August 2026 Korea's materials-parts-equipment competitiveness committee designated next-generation glass package substrates as one of five new cooperation models sharing a KRW 91 billion five-year R&D envelope.",
+      "type": "regulatory",
+      "source_urls": ["https://m.korea.kr/news/policyNewsView.do?newsId=148969611"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "Nvidia's May 2026 long-term partnership with Corning covers optical fiber, connectivity and photonics, not packaging substrates.",
+      "type": "event",
+      "source_urls": ["https://nvidianews.nvidia.com/news/nvidia-and-corning-announce-long-term-partnership-to-strengthen-us-manufacturing-for-ai-infrastructure"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-05-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "An independent cost teardown puts advanced packaging at about $1,100 and packaging-induced yield loss at about $1,000 of an estimated $6,250 total variable cost for an Nvidia B200.",
+      "type": "metric",
+      "source_urls": ["https://epoch.ai/data-insights/b200-cost-breakdown"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-12-10",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c29",
+      "claim": "Laser-assisted wet etching of through-glass vias required roughly nine hours in 8 mol/L potassium hydroxide at 110 degC to open vias in 100 micrometre glass even at 333x etch selectivity.",
+      "type": "technical",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC10536211/"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-09-14",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "SCHOTT's production glass panels for IC substrates are offered in a single 510 x 515 mm format with four CTE grades between 3.2 and 7.2 ppm/K and total thickness variation guaranteed only to 10-20 micrometres.",
+      "type": "technical",
+      "source_urls": ["https://www.schott.com/en-gb/products/glass-panels-p1001142/technical-details"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-12",
+      "confidence": "high",
+      "risk": "stable"
+    }
+  ]
+}

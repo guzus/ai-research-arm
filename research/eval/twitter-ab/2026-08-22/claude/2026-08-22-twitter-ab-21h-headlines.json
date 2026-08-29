@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "NYT: ANTHROPIC EYES $100B+ RAISE AT ~$2T VALUATION — WOULD BE LARGEST IPO EVER, TOPPING SPACEX",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2091216475147399396",
+    "category": "business"
+  },
+  {
+    "headline": "OPEN-WEIGHT MODELS TAKE 62% OF VERCEL AI GATEWAY TOKENS, UP FROM 28.4% IN JUNE",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2091234105702887879",
+    "category": "opensource"
+  },
+  {
+    "headline": "MOLLICK ON MYSTERY MODEL OX ALPHA: 'NICE MODEL, BUT NOT FRONTIER' ACROSS EVERY TEST",
+    "source": "@emollick",
+    "url": "https://x.com/emollick/status/2091266172545102059",
+    "category": "model"
+  },
+  {
+    "headline": "SEMIANALYSIS: MOLYBDENUM MANDATORY ABOVE 300-LAYER NAND — >$1B DEPOSITION TOOL SALES IN 2027",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2091269330675671396",
+    "category": "infra"
+  },
+  {
+    "headline": "NVIDIA AVO AGENT HITS 100% ON ARC-AGI-3 PUBLIC SET — ALL 183 LEVELS, 25 ENVIRONMENTS",
+    "source": "@HuggingFace",
+    "url": "https://x.com/HuggingFace/status/2091274979161620564",
+    "category": "research"
+  },
+  {
+    "headline": "UTOKYO PAPER: OVER 70% OF AGENT BENCHMARK TASKS ARE UNINFORMATIVE; ADAPTIVE SELECTION CUTS COST 67-80%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2091271715422912844",
+    "category": "research"
+  },
+  {
+    "headline": "NVIDIA RELEASES 550B INSTRUCTION-FOLLOWING TEACHER MODEL ON HUGGING FACE",
+    "source": "@HuggingFace",
+    "url": "https://x.com/HuggingFace/status/2091275299941957906",
+    "category": "opensource"
+  }
+]

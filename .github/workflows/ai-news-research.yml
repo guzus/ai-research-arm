@@ -29,7 +29,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
@@ -40,7 +40,7 @@ jobs:
           echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -v-1d +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       - name: Setup Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '22'
 
@@ -109,7 +109,7 @@ jobs:
 
       - name: Run AI News Research with Claude (with MCP)
         if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
@@ -186,7 +186,7 @@ jobs:
 
       - name: Run AI News Research with Claude (without MCP)
         if: steps.check-keys.outputs.has_exa != 'true' && steps.check-keys.outputs.has_perplexity != 'true'
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |

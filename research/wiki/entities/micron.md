@@ -4,15 +4,16 @@ title: Micron Technology
 type: entity
 aliases: [Micron, "Micron Technology", MU, "@MicronTech"]
 tags: [memory, hbm, dram, ai-infrastructure, supply-chain, anthropic]
-description: US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round.
+description: US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round — and trailed a $250B+ US advanced-memory manufacturing and R&D commitment (2026-08-21).
 created_at: 2026-06-23
-timestamp: 2026-07-12T00:00:00Z
+timestamp: 2026-08-21T00:00:00Z
 market:
   ticker: MU
   exchange: NASDAQ
   symbol: NASDAQ:MU
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "Micron and Anthropic announce strategic agreement", url: "https://investors.micron.com/news-releases/news-release-details/micron-and-anthropic-announce-strategic-agreement-scale-next", date: 2026-06-23}
@@ -49,6 +50,13 @@ both track (ARA digest 2026-07-12).
   launches ([[openai|OpenAI Daybreak]], [[sakana-ai|Sakana Fugu]]) frame themselves
   *around* the outage. Micron's bet is the opposite posture — capital and supply
   committed **on** Anthropic's recovery rather than around its weakness.
+- **$250B+ US advanced-memory manufacturing trailed (2026-08-21).** Micron
+  trailed an announcement of **more than $250 billion in US advanced memory
+  manufacturing and R&D, creating over 90,000 jobs** — a major US
+  manufacturing/employment commitment on the memory-supply side of the
+  [[ai-capex]] buildout, paralleling the [[sk-hynix]] capacity expansion and a
+  further datapoint on the HBM/DRAM crunch this page and [[ai-capex]] track (ARA
+  daily digest 2026-08-21).
 
 ## Open questions
 

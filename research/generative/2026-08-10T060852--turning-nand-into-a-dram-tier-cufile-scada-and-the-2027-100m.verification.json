@@ -1,0 +1,244 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Kioxia's own August 2026 press release is the honest version: it puts **10 million** random-read IOPS at a 512-byte block size in the headline for the GP1 Series, and puts 100 million in a forward-looking clause about “future generations”.",
+      "verdict": "supported",
+      "citation": "https://www.kioxia.com/en-jp/business/news/2026/20260804-1.html"
+    },
+    {
+      "id": "c2",
+      "text": "The GP1 is PCIe 6.0, NVMe 2.2, second-generation XL-FLASH, rated up to 50 DWPD — and evaluation samples reach select customers only “by the end of 2026”, explicitly for functional checking, with production specifications subject to change.",
+      "verdict": "supported",
+      "citation": "https://www.kioxia.com/en-jp/business/news/2026/20260804-1.html"
+    },
+    {
+      "id": "c3",
+      "text": "Kioxia's April 2026 roadmap page adds the missing detail: the 100 MIOPS figure attaches to a *second-generation* product at a PCIe 7.0 intercept, and the only demonstration of it — 107 MIOPS — ran on an emulation platform, not on silicon.",
+      "verdict": "supported",
+      "citation": "https://americas.kioxia.com/en-us/insights/super-high-iops-ssd-202604.html"
+    },
+    {
+      "id": "c4",
+      "text": "- {label: \"Kioxia — FPGA emulator, 512B\", value: 107M, pct: 11}",
+      "verdict": "weak",
+      "citation": "https://americas.kioxia.com/en-us/insights/super-high-iops-ssd-202604.html"
+    },
+    {
+      "id": "c5",
+      "text": "Micron's 230 million IOPS is the largest published GPU-initiated result and it comes from forty-four Gen6 SSDs behind three Broadcom PCIe switches, scaling linearly from one drive to forty-four.",
+      "verdict": "supported",
+      "citation": "https://www.micron.com/about/blog/storage/ssd/sc25-performance-breakthrough-230m-iops-in-a-single-server"
+    },
+    {
+      "id": "c6",
+      "text": "Divide it out and each drive is contributing roughly 5.2M IOPS — against the 9650's rated 5.5M at *4KB*.",
+      "verdict": "weak",
+      "citation": "https://www.micron.com/products/storage/ssd/data-center-ssd/9650-ssd"
+    },
+    {
+      "id": "c7",
+      "text": "And the schedule risk is structural: PCI-SIG released PCIe 7.0 to members on 11 June 2025, while Gen6 SSDs only entered mass production in 2026 — roughly three years after the Gen6 specification.",
+      "verdict": "weak",
+      "citation": "https://www.blocksandfiles.com/flash/2026/08/04/fms-storage-ticker-4-aug-2026/5282932"
+    },
+    {
+      "id": "c8",
+      "text": "Objective Analysis principal Jim Handy — a NAND analyst whose clients are the vendors making the claim — put a public rebuttal under the headline",
+      "verdict": "weak",
+      "citation": "https://thessdguy.com/100-million-iops-ssds-you-must-be-kidding/"
+    },
+    {
+      "id": "c9",
+      "text": "A 2026 architecture paper from KAIST targeting exactly this roadmap is blunter still: enterprise SSDs support only about 3 MIOPS today, and the benefits of GPU-initiated storage \"cannot yet be evaluated because the hardware is not commercially available.\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2604.06668v1"
+    },
+    {
+      "id": "c10",
+      "text": "It names no motivating workload at all, and states neither \"512 bytes\" nor any IOPS figure.",
+      "verdict": "unsupported",
+      "citation": "https://blogs.nvidia.com/blog/ai-storage-fms/"
+    },
+    {
+      "id": "c11",
+      "text": "NVIDIA's FMS 2026 announcement blog — the primary document for both SCADA and the cuFile open-sourcing — contains no mention of KV cache, embeddings, vectors, RAG, retrieval, graph analytics or recommenders.",
+      "verdict": "supported",
+      "citation": "https://blogs.nvidia.com/blog/ai-storage-fms/"
+    },
+    {
+      "id": "c12",
+      "text": "Its measured configuration is the origin of the number: with 512-byte cache lines BaM achieved 85% of peak throughput at 17 MIOPS, against a 4KB configuration that saturated the PCIe link.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2203.04910"
+    },
+    {
+      "id": "c13",
+      "text": "| *\"Context Memory Caching for Maximizing AI Inferencing\"* | KIOXIA CM9 Series | TLC, PCIe 5.0 |",
+      "verdict": "weak",
+      "citation": "https://americas.kioxia.com/en-us/business/news/2026/ssd-20260803-2.html"
+    },
+    {
+      "id": "c14",
+      "text": "The GP1 press release itself never uses the words \"KV cache\", \"vector\", \"embedding\" or \"inference\"; its stated purpose is to \"extend High Bandwidth Memory (HBM) as a fast flash memory media-based tier\".",
+      "verdict": "supported",
+      "citation": "https://www.kioxia.com/en-jp/business/news/2026/20260804-1.html"
+    },
+    {
+      "id": "c15",
+      "text": "StorageReview's FMS write-up — the most widely-cited secondary account — asserts that \"embeddings run a few hundred bytes, and KV cache blocks are well under a kilobyte.\"",
+      "verdict": "supported",
+      "citation": "https://www.storagereview.com/news/nvidia-scada-puts-storage-control-on-the-gpu-as-cufile-goes-open-source"
+    },
+    {
+      "id": "c16",
+      "text": "`2 × 80 × 8 × 128 × 2 = 327,680 bytes` — **320 KiB per token**, across the whole model.",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/unsloth/Meta-Llama-3.1-70B-Instruct/raw/main/config.json"
+    },
+    {
+      "id": "c17",
+      "text": "In vLLM's own words, \"the new vLLM KV cache layout yields a physical block size of about 0.5-2 MB, while in the old layout it is only a few KB\" — and fragmentation, harmless for compute, \"is devastating for KV offloading.\"",
+      "verdict": "supported",
+      "citation": "https://vllm.ai/blog/2026-01-08-kv-offloading-connector"
+    },
+    {
+      "id": "c18",
+      "text": "llm-d publishes 128-token blocks at roughly 8.6 MB for DeepSeek-R1, and states that Llama-3.1-70B \"requires 305 GB of KV-cache for one million tokens\"",
+      "verdict": "unsupported",
+      "citation": "https://llm-d.ai/blog/native-kv-cache-offloading-to-any-file-system-with-llm-d"
+    },
+    {
+      "id": "c19",
+      "text": "The Tutti paper measures the pathology directly: reloading a 128K-token KV for a 64-layer model at block size 64 requires fetching roughly 256,000 scattered ~80KB objects, and fixing the layout — not the device — took retrieval from 11.9 GB/s to 25.9 GB/s and cut TTFT 78.3%.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2605.03375"
+    },
+    {
+      "id": "c20",
+      "text": "Per-block recompute budgets for a 128-token block run in the low milliseconds, against NVMe access latencies in the hundreds of microseconds — one to two orders of magnitude of headroom.",
+      "verdict": "unsupported",
+      "citation": "https://arxiv.org/html/2605.03375"
+    },
+    {
+      "id": "c21",
+      "text": "DeepSeek's Multi-head Latent Attention compresses KV to `(d_c + d_h^R) × l` per token, which for V3's shape is 68.6 KiB — a 57× reduction against multi-head attention, but only about 3.6× against an 8-head GQA baseline at the same depth.",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/html/2405.04434v5"
+    },
+    {
+      "id": "c22",
+      "text": "Conventional DRAM contract prices rose approximately 93–98% quarter-on-quarter in 1Q26 alone, lifting DRAM industry revenue 81% QoQ to $97 billion.",
+      "verdict": "supported",
+      "citation": "https://www.trendforce.com/presscenter/news/20260601-13070.html"
+    },
+    {
+      "id": "c23",
+      "text": "TrendForce measures HBM per-wafer revenue as having been *overtaken* by DDR5 64GB RDIMM in 1Q26.",
+      "verdict": "supported",
+      "citation": "https://www.trendforce.com/presscenter/news/20260602-13074.html"
+    },
+    {
+      "id": "c24",
+      "text": "HBM took roughly 22% of top-three DRAM wafer input at end-2026 while producing about 9% of DRAM bits — a real crowding-out mechanism, but one now sustained by multi-year contracts and requalification cost rather than by superior margin.",
+      "verdict": "weak",
+      "citation": "https://www.trendforce.com/presscenter/news/20260602-13074.html"
+    },
+    {
+      "id": "c25",
+      "text": "NAND is not the cheap alternative to a squeezed DRAM market — in 2Q26 NAND contract prices rose 70–75% QoQ, *outpacing* conventional DRAM's 58–63%, and NOR flash and SLC NAND cumulatively more than doubled across the first half of 2026.",
+      "verdict": "unsupported",
+      "citation": "https://www.trendforce.com/presscenter/news/20260616-13102.html"
+    },
+    {
+      "id": "c26",
+      "text": "Kioxia specifies XL-FLASH at \"a read latency of less than 5 microseconds\", on a 128Gb SLC die with a 16-plane architecture and a 4KB page.",
+      "verdict": "supported",
+      "citation": "https://americas.kioxia.com/en-us/business/memory/xlflash.html"
+    },
+    {
+      "id": "c27",
+      "text": "The first OCP High Bandwidth Flash specification, published on 3 August 2026, defines three bandwidth grades from about 0.4 TB/s to 3.0 TB/s and up to 512GB per stack over a UCIe interface — and states **no latency figure at all**.",
+      "verdict": "weak",
+      "citation": "https://news.skhynix.com/en/hbf-at-fms-2026/"
+    },
+    {
+      "id": "c28",
+      "text": "A peer-reviewed IEEE Computer Architecture Letters analysis puts flash read energy at 102.4 pJ/bit against HBM3's 4.2 pJ/bit, for a total access path of 110.8 pJ/bit and roughly a 26-fold increase in access energy versus an HBM baseline.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2508.06978v1"
+    },
+    {
+      "id": "c29",
+      "text": "StorageReview instrumented a real KV-offload deployment — four Blackwell GPUs, eight Solidigm D7-PS1030 drives, vLLM plus LMCache — and found the array running at roughly **3.2 drive-writes-per-day against a 3 DWPD rating**, while consuming about one twenty-eighth of available bandwidth.",
+      "verdict": "supported",
+      "citation": "https://www.storagereview.com/review/the-token-efficient-path-for-long-context-inference-kv-cache-offload-to-flash"
+    },
+    {
+      "id": "c30",
+      "text": "Scale the measured 0.475 GB/s-per-GPU write rate to a thousand GPUs and you are writing on the order of 15 exabytes a year",
+      "verdict": "weak",
+      "citation": null
+    },
+    {
+      "id": "c31",
+      "text": "Its NVMe-offload configuration costs approximately 4% *more* than the baseline below the crossover, and reaches only 1.5× cost efficiency at 240 concurrent users.",
+      "verdict": "supported",
+      "citation": "https://download.semiconductor.samsung.com/resources/white-paper/scaling_ai_inference_with_kv_cache_offloading.pdf"
+    },
+    {
+      "id": "c32",
+      "text": "Alibaba and SJTU, at USENIX ATC'25, found that \"a KV$ with capacity 2× of the GPU HBM per-GPU is sufficient to approach an ideal hit rate\", explicitly \"eliminating the cost and complexity of deploying and managing a CPU-RDMA-SSD storage hierarchy.\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2506.02634v3"
+    },
+    {
+      "id": "c33",
+      "text": "A 2026 study of coding-agent traces across 43 developers and 4,265 sessions found token-weighted prefix-cache hit rates around 95.8%, with misses clustering exactly at human thinking gaps — and extending eviction from five minutes to one hour raising the hit rate from 85.4% to 98.6% at roughly 2.7× more resident KV.",
+      "verdict": "unsupported",
+      "citation": "https://arxiv.org/html/2606.30560v2"
+    },
+    {
+      "id": "c34",
+      "text": "Buying the first to solve the second is how a memory-tier thesis becomes a write-off — which is what happened the last time, and cost Intel $559 million.",
+      "verdict": "supported",
+      "citation": "https://www.intc.com/news-events/press-releases/detail/1563/intel-reports-second-quarter-2022-financial-results"
+    },
+    {
+      "id": "c35",
+      "text": "On 5 January 2026, seven months before FMS, NVIDIA announced BlueField-4 and CMX: an Ethernet-attached, RDMA-accessed flash tier inserted into the memory hierarchy as \"a new G3.5 layer, an Ethernet-attached flash tier optimized specifically for KV cache\", claiming up to 5× tokens per second and 5× power efficiency at petabytes per GPU pod.",
+      "verdict": "unsupported",
+      "citation": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-BlueField-4-Powers-New-Class-of-AI-Native-Storage-Infrastructure-for-the-Next-Frontier-of-AI/default.aspx"
+    },
+    {
+      "id": "c36",
+      "text": "Rubin CPX, announced September 2025, is \"the first CUDA GPU purpose-built for massive-context AI\", and it solves the problem with 128GB of \"cost-efficient GDDR7 memory\".",
+      "verdict": "supported",
+      "citation": "https://nvidianews.nvidia.com/news/nvidia-unveils-rubin-cpx-a-new-class-of-gpu-designed-for-massive-context-inference"
+    },
+    {
+      "id": "c37",
+      "text": "As of 10 August 2026 the XIO-SIG GitHub organisation holds a single placeholder repository; the four named projects do not exist.",
+      "verdict": "weak",
+      "citation": null
+    },
+    {
+      "id": "c38",
+      "text": "The shipping cuFile v1.18 documentation still states that every API is issued from the CPU.",
+      "verdict": "supported",
+      "citation": "https://docs.nvidia.com/gpudirect-storage/api-reference-guide/index.html"
+    },
+    {
+      "id": "c39",
+      "text": "Enterprise SSD revenue among the top five suppliers hit $18.46 billion in 1Q26, up 86.1% QoQ, of which roughly 80% was price rather than bits.",
+      "verdict": "weak",
+      "citation": "https://www.trendforce.com/presscenter/news/20260611-13092.html"
+    },
+    {
+      "id": "c40",
+      "text": "SanDisk reported $8.965 billion of FQ4 FY2026 revenue with datacenter at $2.977 billion — roughly a third of the total, up 103% sequentially",
+      "verdict": "weak",
+      "citation": "https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-fourth-quarter-2026-financial-results"
+    }
+  ]
+}

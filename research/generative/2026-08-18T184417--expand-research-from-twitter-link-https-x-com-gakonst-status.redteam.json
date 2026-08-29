@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "OpenRouter's provider-selection guide states plainly that its default load-balancer \"look[s] at the lowest-cost candidates and select[s] one weighted by inverse square of the price\" — literally r=2, spelled out with a worked example ($1 vs. $3 providers split roughly 9-to-1) [^9].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "TechCrunch reported on 2026-07-13 — five weeks before the OpenRouter critique — that Robot Ventures was *leading* a new $75 million round valuing Nous Research at $1.5 billion [^35].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "A 2026 paper formally proves that splitting one bid across multiple sub-identities in a Tullock procurement contest yields no higher payoff than submitting one consolidated bid [^21], and a survey of the same literature calls Sybil-proofness one of the properties that makes Tullock contests attractive for decentralized infrastructure design in the first place [^20].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

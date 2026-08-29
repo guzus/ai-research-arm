@@ -3,7 +3,7 @@ slug: grok-v9-medium
 title: Grok 4.5 (1.5T V9-Medium) — public release
 company: xAI
 model: Grok V9-Medium
-status: released
+status: closed
 status_note: |
   Officially announced by Elon Musk (2026-05-25): the 1.5T-parameter Grok
   V9-Medium foundation model has finished training (evals "look good"),
@@ -39,9 +39,9 @@ sources:
   - https://x.com/elonmusk/status/2071184354756477041
   - https://x.com/elonmusk/status/2071357162195132454
 created_at: 2026-05-25
-updated_at: 2026-07-29
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-05-25
     change: "Created — @elonmusk announced Grok V9-Medium (1.5T) finished training, fine-tuning underway, RL in days, 2-3 weeks to public release; major coding upgrade over the 0.5T v8-small, trained with heavy Cursor data"
@@ -57,6 +57,8 @@ history:
     change: "Status → released. xAI shipped Grok 4.5 (same 1.5T V9 foundation this ticket tracks) free to all X accounts via the Grok Build surface — the private-beta gate at SpaceX/Tesla is gone. @elonmusk posted a 'Grok 4.5 Review' (2026-07-11); testingcatalog independently confirmed 'Grok 4.5 is now available to free X accounts via Grok Build' (2026-07-10); WesRoth corroborates. Also a ~44K-post trending topic per the day's news feed. Multi-source, founder + independent aggregators → verification stays confirmed. First public availability clears the released bar; status advances confirmed → released."
   - ts: 2026-07-29
     change: "Continued third-party distribution + next-generation roadmap. Grok 4.5 is now bundled into GitHub Copilot's model picker ('Grok 4.5 is now live in GitHub Copilot... frontier intelligence at top speeds') and is the headline model in Cursor's new India-only 'Cursor Start' plan (₹649/month, official @cursor_ai: 'Start includes generous access to Grok 4.5 and Composer'). Separately, Elon Musk revealed the next-generation roadmap (relayed via @scaling01 RT, ~2,300 RTs): 'Grok 4.6 releases around August 7. This will be the 1.5T model with significantly improved SFT & RL. Grok 4.7…' (message cut off before further detail on 4.7). Note the apparent tension with this ticket's own history — Grok 4.5 was already described as the 1.5T V9 foundation model — so 4.6 likely denotes a retrained/improved checkpoint on the same parameter count rather than a new foundation size; treat 'the 1.5T model' phrasing as Musk's informal shorthand pending clarification. No xAI primary on the 4.6/4.7 roadmap itself (founder-only, no company account confirmation) → status stays released for Grok 4.5 (unaffected); the 4.6/4.7 roadmap itself is tracked here as founder-primary but company-unconfirmed forward guidance."
+  - ts: 2026-08-19
+    change: "Closed — released-and-aged. Grok 4.5 (the 1.5T V9-Medium foundation this ticket tracks) shipped publicly 2026-07-12, 38 days ago (>=4 weeks), and the roadmap has moved on: the 2T successor Grok 4.6 is now in users hands (see [[xai-grok-2t-spacex-data-2026-07]]). Grok 4.5 distribution is normal coverage from here."
 ---
 
 xAI's next foundation model, **Grok V9-Medium**, was announced by Elon

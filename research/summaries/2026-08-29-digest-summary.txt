@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-08-29
+
+TOP STORIES:
+• OpenAI cuts off Cursor after SpaceX acquisition
+• Z.ai open-weights GLM-5.3 frontier model
+• Sony and Warner Chappell sue Anthropic
+• Claude acts as automated alignment researcher
+
+KEY NUMBERS:
+• Marvell FY27Q2 revenue $2.739B, +37% YoY; data center +46%
+• GLM-5.3: 743B base, day-0 on vLLM/SGLang/Baseten
+• Claude Code weekly limits −17% from Sept 14
+• Lambda raises $1B debt for Nvidia chips
+
+TRENDING: OpenAI–Cursor fallout and open-weight frontier models
+
+Full digest on GitHub.

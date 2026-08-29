@@ -2337,20 +2337,27 @@ class PositionBlockExemptionTest(unittest.TestCase):
         finally:
             p.unlink()
 
-    def test_corpus_is_unaffected(self):
-        """Decisive premise-3 evidence: every committed article must be
-        byte-identical under the stripper, so no currently-passing run
-        can start failing because of this exemption."""
+    def test_corpus_position_blocks_strip_without_touching_others(self):
+        """Corpus evidence for both sides of the position-block contract."""
         corpus = sorted((REPO_ROOT / "research" / "generative").glob("*.html"))
         if not corpus:
             self.skipTest("no committed articles to check")
+        stripped_count = 0
         for path in corpus:
             body = path.read_text(encoding="utf-8")
+            output = chk.strip_position_blocks(body)
             with self.subTest(article=path.name):
-                self.assertIs(
-                    chk.strip_position_blocks(body), body,
-                    "stripper must be identity on the existing corpus",
-                )
+                if "ara-position" not in body:
+                    self.assertIs(
+                        output,
+                        body,
+                        "stripper must preserve identity when no position exists",
+                    )
+                else:
+                    stripped_count += 1
+                    self.assertNotEqual(output, body)
+                    self.assertNotIn("ara-position", output)
+        self.assertGreater(stripped_count, 0, "fixture corpus needs a position block")
 
 
 if __name__ == "__main__":

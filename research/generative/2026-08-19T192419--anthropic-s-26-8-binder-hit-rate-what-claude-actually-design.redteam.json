@@ -1,0 +1,19 @@
+{
+  "findings": [
+    {
+      "claim_id": "c7",
+      "claim_text": "A direct 26.8% versus 19% comparison is not a controlled benchmark because targets, CRO/assay methodology, design budgets and the era of the underlying generators differ.",
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c5",
+      "claim_text": "RFdiffusion (Watson et al., Nature 2023) reported an overall experimental binder success rate of 19%.",
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "354 of 1,320 designs bound their targets, a hit rate of 26.8% by the integrated call.",
+      "no_contradiction_found": true
+    }
+  ]
+}

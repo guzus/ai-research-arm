@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
@@ -34,20 +34,22 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '22'
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           enable-cache: true
 
       - name: Install Python dependencies
         run: uv sync --frozen
 
-      - name: Install bird CLI
-        run: npm install -g @steipete/bird@0.8.0
+      # Was `npm install -g @steipete/bird@0.8.0` (npm: "no longer supported").
+      # birdy serves every command natively in Go since v1.0.0.
+      - name: Install birdy
+        uses: ./.github/actions/install-birdy
 
       - name: Generate seed account candidates
         env:
@@ -71,7 +73,7 @@ jobs:
         uses: ./.github/actions/setup-claude-sandbox
 
       - name: Explore and curate account list
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
@@ -79,7 +81,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model claude-sonnet-5 --allowedTools "Read,Write,Edit,Bash(git checkout:*),Bash(git status:*),Bash(git diff:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh:*),Bash(uv:*),Bash(python:*),Bash(python3:*),Bash(bird:*),Bash(jq:*),Bash(cat:*)"
+            --model claude-sonnet-5 --allowedTools "Read,Write,Edit,Bash(git checkout:*),Bash(git status:*),Bash(git diff:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh:*),Bash(uv:*),Bash(python:*),Bash(python3:*),Bash(birdy:*),Bash(jq:*),Bash(cat:*)"
           prompt: |
             You are the ARA Twitter account explorer agent.
 
@@ -105,7 +107,7 @@ jobs:
                Prefer mention-graph evidence when available: goodtweet's account
                discovery work found repeated cross-account mentions more reliable
                than keyword search alone.
-            3. Optionally issue up to 10 follow-up `bird` calls with `--json --plain`
+            3. Optionally issue up to 10 follow-up `birdy` calls with `--json --plain`
                to verify candidate accounts or suspected stale accounts.
             4. If there are no strong changes, print exactly `no account changes`
                and stop without creating a branch.

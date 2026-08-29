@@ -16,7 +16,7 @@ status_note: |
   account has NOT tweeted about this launch** as of this writing (checked
   directly) — no primary confirmation yet, hence verification stays
   `partial` despite the strong multi-source secondary corroboration.
-expected: null
+expected: "Operating and acquiring — made its first acquisition since the 2026-07-15 launch per an @theinformation exclusive on 2026-08-22, target and terms undisclosed. Pending: the target's identity and terms, and any @AnthropicAI primary acknowledgement of the JV"
 labels:
   - partnership
   - enterprise
@@ -26,13 +26,16 @@ sources:
   - "@AIStockSavvy"
   - "@Investingcom"
   - "@AShmueil"
+  - "@theinformation"
 created_at: 2026-07-16
-updated_at: 2026-07-16
+updated_at: 2026-08-23
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-07-16
     change: "Created — Anthropic, Blackstone, and Hellman & Friedman launched Ode, a standalone enterprise AI services firm combining Anthropic's models with applied-AI engineering talent built on the previously-acquired Fractional AI. Led by CEO Chris Taylor and CTO Eddie Siegel; backers include Blackstone, Hellman & Friedman, Goldman Sachs, General Atlantic, Apollo, GIC, and Sequoia. Three independent accounts (@AIStockSavvy, @Investingcom, @AShmueil) converged within a 5-minute window on 2026-07-15 (14:00 UTC cycle) → status confirmed. AnthropicAI's own account has not tweeted about the launch as of this check → verification stays partial."
+  - ts: 2026-08-23
+    change: "First acquisition since launch. @theinformation (2026-08-22 14:00 UTC, exclusive): 'A joint venture established by Anthropic and Wall Street firms such as Blackstone has made its first acquisition since its July launch as it looks to boost the growth of Claude among businesses.' The target, price and terms are behind the paywall and were not captured; what is established is that Ode is operating and buying, roughly five weeks after the 2026-07-15 launch. That answers this ticket's implicit open question — whether the JV was an announcement or a going concern — in favour of the latter. Anthropic's own account still has not posted about Ode, so verification stays partial. Status stays confirmed. Pending: the target's identity and what capability it adds to the Claude enterprise-deployment motion."
 ---
 
 **Anthropic**, together with **Blackstone** and **Hellman & Friedman**,

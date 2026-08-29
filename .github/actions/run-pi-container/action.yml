@@ -64,11 +64,30 @@ runs:
         mkdir -p "$build_dir"
 
         cat > "$build_dir/Dockerfile" <<'EOF'
-        FROM node:22-bookworm-slim
+        FROM node:22-bookworm-slim@sha256:83f487e0a63425e5b4d146fb5e5be574bcbe1b7b843d3ebafdd95eaf7767a7e5
         RUN apt-get update \
           && apt-get install -y --no-install-recommends ca-certificates curl git jq \
           && rm -rf /var/lib/apt/lists/*
-        RUN npm install -g --ignore-scripts @mariozechner/pi-coding-agent @steipete/bird@0.8.0
+        RUN npm install -g --ignore-scripts @mariozechner/pi-coding-agent@0.73.1
+        # birdy replaces the Node `bird` CLI that used to be npm-installed here
+        # (npm reports that package "no longer supported"). Since v1.0.0 birdy
+        # serves all 24 commands natively in Go, so this is one static binary
+        # with no Node dependency — the image only still needs Node for pi.
+        # Pinned, unlike the runner-side installer: a container image rebuilt
+        # months from now should not silently acquire a new major version.
+        RUN set -eux; \
+          arch="$(dpkg --print-architecture)"; \
+          case "$arch" in \
+            amd64) a=amd64; sha=001763ea3c9063f97980a912afa8d2b43ca2a949ea9cf3ab323b4d0f21421fb4 ;; \
+            arm64) a=arm64; sha=ac0f68274aa8a76ee0b015c776b0922303c03fe29c691477b49eb10e97231c94 ;; \
+            *) echo "unsupported arch $arch" >&2; exit 1 ;; \
+          esac; \
+          curl -fsSL "https://github.com/guzus/birdy/releases/download/v1.1.0/birdy_linux_${a}.tar.gz" -o /tmp/birdy.tgz; \
+          echo "$sha  /tmp/birdy.tgz" | sha256sum -c -; \
+          tar -xzf /tmp/birdy.tgz -C /tmp; \
+          install -m 755 /tmp/birdy /usr/local/bin/birdy; \
+          rm -rf /tmp/birdy.tgz /tmp/birdy; \
+          birdy version
         WORKDIR /workspace
         EOF
 

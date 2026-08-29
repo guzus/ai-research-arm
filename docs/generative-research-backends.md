@@ -8,12 +8,13 @@ research pipeline:
 
 | Dispatch value | Served model | Auth path | Notes |
 |---|---|---|---|
-| `glm-5p2` | `GLM 5.2` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Opt-in Fireworks route (was the default before `claude`, which was in turn replaced by `opus-5` on 2026-07-31). Routes through `accounts/fireworks/models/glm-5p2` and records `glm-5p2` in article metadata. Uses the same retry, quality-gate, verifier, methodology-artifact, and safe-push path as `deepseek-v4-flash`. |
+| `glm-5p2` | `GLM 5.2` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Opt-in Fireworks route. Routes through `accounts/fireworks/models/glm-5p2` and records `glm-5p2` in article metadata. Uses the same retry, quality-gate, verifier, methodology-artifact, and safe-push path as `deepseek-v4-flash`. |
 | `claude` | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit native Anthropic Claude Code path and default fallback when a Fireworks backend is unavailable. The workflow pins `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-sonnet-5`, so the Claude Code `opus` alias resolves to Sonnet 5 for this lane. |
 | `fable-5` | `claude-fable-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit premium native Anthropic path for deliberate one-off runs. It is never the default or a fallback target, and it gets one model-action attempt rather than Claude's automatic recovery retry. The workflow passes the literal model ID to Claude Code and resolves every alias/subagent pin plus article metadata from `claude-fable-5`, preventing a Fable-labeled article from silently running on Sonnet. |
-| `opus-5` | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | **The default** (SSOT lane `generative-research-default`, since 2026-07-31) — inherited by manual dispatch with no `backend` input, `gen-research`-labelled issues, and `hourly-twitter.yml`'s throttled auto-research dispatch. Native Anthropic on Opus 5 (released 2026-07-24). It is still **not** the Fireworks-unavailable fallback target: that stays `claude`, because a fallback should be the cheap reliable path. Because it bills against the same OAuth subscription as `claude`, it keeps Claude's single automatic recovery retry — the retry costs no more than the first attempt would have. Like `fable-5`, the workflow pins the literal model ID across every alias/subagent slot and article metadata, and additionally verifies the committed `index.json` row records `claude-opus-5` before pushing (mismatch = hard rollback). Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
+| `opus-5` | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | **The default** (SSOT lane `generative-research-default`) for manual no-backend dispatches, `gen-research` issues, and throttled Twitter auto-research. Premium native Anthropic route. It is not the Fireworks-unavailable fallback target. The workflow pins the literal model ID across every alias/subagent slot and article metadata, and verifies the committed `index.json` row records `claude-opus-5` before pushing. Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
 | `codex` | Codex CLI default model for ChatGPT auth | `CODEX_AUTH_JSON` seeded into file-backed `auth.json` | Optional Codex backend using ChatGPT-managed Codex auth rather than OpenAI API billing. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
-| `opencode-kimi-k3` | `kimi-k3` (1M context) via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription, preferred) or `MOONSHOT_API_KEY` (pay-per-token), read directly from env by opencode's built-in `opencode-go` / `moonshotai` providers | Optional comparison backend on a third harness (opencode, pinned `opencode-ai@1.18.3`). No interactive login and no auth-file seeding — the env var IS the auth; the workflow resolves the route Go-first. Strict: preflight failure on the resolved route fails the run (no Claude fallback). Same staged inputs, methodology artifacts, and writer contract; article metadata records `kimi-k3`. Validate the secret first with `opencode-kimi-canary.yml`. |
+| `opencode-deepseek-v4-flash` | `deepseek-v4-flash` (1M context, the 2026-07-31 build) via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription), read directly from env by opencode's built-in `opencode-go` provider. Moonshot serves Kimi only and is not a fallback. | Explicit isolated comparison backend; the production editorial route now prioritizes the separate `opencode-glm-5p3-flash` profile. No interactive login or auth-file seeding. Strict: preflight failure fails rather than substituting another author. Article metadata records `deepseek-v4-flash`. Validate with `opencode-deepseek-canary.yml`. |
+| `cursor-grok-4p6-fast` | `cursor-grok-4.6-high-fast` via the Cursor CLI (`agent`) | `CURSOR_API_KEY` (Cursor dashboard API key), read from env by the official CLI. | Selectable isolated comparison backend. Same disposable-clone / `--cap-drop ALL` contract as OpenCode (`run-cursor-container`). Not the production default and not on `fallback.chain`. Article metadata records `cursor-grok-4.6-high-fast`. Selectors: `cursor`, `cursor-cli`, `cursor-agent`, `grok-4.6-fast`, `grok`. `cursor-composer-2p5` remains a compatibility alias. Validate with `cursor-cli-canary.yml`. Current `generative-translation` route. |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 
 ## Local Oracle / GPT-5.5 Pro
@@ -68,8 +69,33 @@ uv run python scripts/write_generative_research.py \
 
 The writer emits `research/generative/<timestamp>--<slug>.ko.html` and stores
 it under `translations.ko` in `research/generative/index.json`. The dashboard
-language switch will show Korean only after that file and index update have
-been pushed and deployed.
+runtime can load that variant; its visible language control is currently a
+separate UI rollout, so this workflow establishes the publishing contract
+without claiming the translation is already discoverable in the interface.
+
+For model-assisted backfills, dispatch **Korean Generative Research Backfill**
+from the default branch with one existing `slug`. The workflow resolves the
+canonical `.ara.md` source, sends only that public article to the dedicated
+isolated `generative-translation` route, and imports one uncommitted Korean
+draft. Trusted host steps then enforce URL, citation, numeric, and
+component-topology parity before calling the writer. The one legacy HTML-only
+article fails preflight in v1 because its structured component cardinality
+cannot be proven safely.
+
+```bash
+gh workflow run translate-generative-research.yml \
+  -f slug="<existing-slug>" \
+  -f overwrite=false \
+  -f auto_merge=false
+```
+
+`overwrite=false` refuses an existing `translations.ko` pointer before model
+spend. `overwrite=true` publishes a new immutable artifact revision without
+deleting the prior files. Publication opens a review PR by default;
+`auto_merge=true` opts into the normal protected-branch squash-merge path.
+The lane deliberately disables `safe-push`'s append-oriented index merge:
+translation mutates an existing slug, so an index conflict fails for a clean
+rerun rather than risking a dropped nested translation.
 
 ## Article Audio
 
@@ -194,64 +220,80 @@ topic/prompt/tags live in `.gen-input/*.txt`; workflow-owned metadata is in env;
 and Codex subprocesses receive only the allowlisted env vars needed by the repo
 tools. The writer script owns the commit.
 
-## OpenCode + Kimi K3
+## OpenCode Go: GLM 5.3 Flash production, DeepSeek comparison
 
-The `opencode-kimi-k3` backend runs the [opencode CLI](https://opencode.ai)
-(github.com/anomalyco/opencode) against Kimi K3. Kimi K3 shipped
-2026-07-16: 1M-token context, tool calling, priced $3.00/Mtok input
-($0.30 cache-hit) and $15.00/Mtok output. It is NOT on Fireworks or the
-pay-as-you-go OpenCode Zen catalog until the promised open-weight release
-(~2026-07-27) — but it IS included in the **OpenCode Go** subscription,
-which is this lane's preferred route. Revisit Fireworks routing after the
-weights land.
+The primary `research-editorial` route prioritizes the canonical
+`opencode-glm-5p3-flash` backend profile: provider `opencode-go`, official
+model id `glm-5.3-flash`, resolved model ref `opencode-go/glm-5.3-flash`.
+That route serves RSS, community, and Bluesky through the isolated
+`run-opencode-container` adapter and fails closed. ArXiv and wiki use the
+independent `research-editorial-secondary` route through the isolated Cursor
+adapter, bounding either provider credential's blast radius. Neither route adds a
+generative-research dispatch selector; the explicit DeepSeek path below remains
+available for controlled comparison and diagnostics.
 
-**Two auth routes, resolved Go-first by the workflow preflight.** Both are
-plain env-var API keys — opencode documents environment variables as a
-full substitute for interactive `opencode auth login` / `/connect` (which
-write `~/.local/share/opencode/auth.json`); nothing is seeded to disk in
-CI. Do not wire a key through a custom `provider.*.options.apiKey:
-"{env:...}"` block — that substitution path is broken upstream
+### Explicit DeepSeek V4 Flash path
+
+The canonical selector is `opencode-deepseek-v4-flash`; aliases are
+`opencode`, `opencode-deepseek`, and `deepseek-opencode`. The Twitter output
+directory remains `research/twitter-opencode-kimi/` solely as a legacy data
+namespace so historical URLs do not split. It does not indicate the active
+model. All current model-identifying metadata and labels name DeepSeek.
+
+The `opencode-deepseek-v4-flash` backend runs the [opencode CLI](https://opencode.ai)
+(github.com/anomalyco/opencode) against DeepSeek V4 Flash on the **OpenCode
+Go** subscription. The 07-31 build is what `opencode-go/deepseek-v4-flash`
+resolves to — on this provider the bare id **is** the 2026-07-31 release
+(`release_date` per models.dev). Only Fireworks needs the explicit
+`deepseek-v4-flash-0731` suffix, because there the bare id still points at
+the older 2026-04-24 build. 1M-token context, tool calling, and **$0.07/Mtok
+input ($0.0014 cache-read) / $0.14/Mtok output** on the Go route — roughly
+40x cheaper on input than the K3 it replaces, which is most of the point.
+
+**One auth route while the DeepSeek pin is active.** It is a plain env-var
+API key — opencode documents environment variables as a full substitute for
+interactive `opencode auth login` / `/connect` (which write
+`~/.local/share/opencode/auth.json`); nothing is seeded to disk in CI. Do
+not wire a key through a custom `provider.*.options.apiKey: "{env:...}"`
+block — that substitution path is broken upstream
 (anomalyco/opencode#19946); the built-in providers' native env pickup is
 the supported path.
 
-1. **OpenCode Go (preferred)** — `OPENCODE_API_KEY`, provider
-   `opencode-go`, model `opencode-go/kimi-k3` (models.dev pins
-   `env = ["OPENCODE_API_KEY"]`, `api = https://opencode.ai/zen/go/v1`).
-   Go is opencode's $10/month plan ($5 first month) and its catalog
-   includes Kimi K3. Usage is dollar-value capped — **$12/5h, $30/week,
-   $60/month — and K3 bills at its full $3/$15 rate** (the registry labels
-   it "Kimi K3 (2x usage)"), so one deep research run consumes a real
-   fraction of the weekly allowance. The console's "Use balance" toggle
-   lets Go fall back to Zen pay-as-you-go credits instead of blocking when
-   a cap is hit.
-2. **Moonshot direct (fallback)** — `MOONSHOT_API_KEY`, provider
-   `moonshotai`, model `moonshotai/kimi-k3`, billed per-token against the
-   platform balance (new-user vouchers cannot bill kimi-k3). One platform
-   key works for both Moonshot's OpenAI-compatible and Anthropic-compatible
-   endpoints.
+**OpenCode Go** — `OPENCODE_API_KEY`, provider `opencode-go`, model
+`opencode-go/deepseek-v4-flash` (models.dev pins
+`env = ["OPENCODE_API_KEY"]`, `api = https://opencode.ai/zen/go/v1`).
+Go is opencode's $10/month plan ($5 first month). Usage is dollar-value
+capped — **$12/5h, $30/week, $60/month** — and at Flash pricing a deep
+research run is a small fraction of the weekly allowance. The console's "Use
+balance" toggle lets Go fall back to Zen pay-as-you-go credits instead of
+blocking when a cap is hit.
 
-Seed the secret once (either one; Go wins when both exist):
+If `MOONSHOT_API_KEY` is set and `OPENCODE_API_KEY` is not, the preflight
+**fails loudly** instead of routing to Moonshot: Moonshot cannot serve
+DeepSeek, and silently authoring with Kimi under DeepSeek labels is the
+exact failure this lane's strictness exists to prevent.
+
+Seed the secret once:
 
 ```bash
 # OpenCode Go: sign in at https://opencode.ai/auth, subscribe to Go,
 # copy the API key from the console.
 gh secret set OPENCODE_API_KEY
-
-# Or Moonshot pay-per-token: create a key at
-# https://platform.kimi.ai/console/api-keys (needs a real balance).
-gh secret set MOONSHOT_API_KEY
 ```
 
 Then prove the key + harness before spending a 90-minute research run:
 
 ```bash
-gh workflow run opencode-kimi-canary.yml
+gh workflow run opencode-deepseek-canary.yml
 ```
 
-The canary resolves the same Go-first route as the production lane, then
-runs two probes: a stdlib-only raw API check (a models listing plus one
-tiny `kimi-k3` completion against the resolved endpoint), followed by a
-tool-denied headless `opencode run` using the exact production argv. On
+This canary validates both the retained explicit DeepSeek route and the
+production `opencode-go/glm-5.3-flash` editorial route. It runs a stdlib-only
+raw API check (a models listing plus one
+tiny `deepseek-v4-flash` completion against the endpoint), followed by a
+tool-denied headless `opencode run` using the exact direct-DeepSeek argv, then
+resolves `research-editorial` from the SSOT and runs a second tool-denied
+harness probe against that exact model ref. On
 the Go route the raw probe is **auth-fatal only** — 401/402 (bad key /
 billing) fail the run, while any other status merely warns: the raw
 `/zen/go/v1` surface is undocumented, and Cloudflare's bot filter in
@@ -259,8 +301,7 @@ front of opencode.ai answers 403 `error code: 1010` to client
 signatures it dislikes (observed live), so a Go 403 is ambiguous. The
 probes send an honest custom User-Agent to clear the common
 python/curl signature ban, and the opencode harness stage — the exact
-SDK client the gateway expects — is the authoritative check. The
-documented Moonshot route stays strict on every probe failure.
+SDK client the gateway expects — is the authoritative check.
 
 Dispatch a research run:
 
@@ -268,30 +309,30 @@ Dispatch a research run:
 gh workflow run generative-research.yml \
   --ref main \
   -f topic="$TOPIC" \
-  -f slug="qa-kimi-k3-power-bottlenecks" \
-  -f backend=opencode-kimi-k3 \
-  -f tags="qa,comparison,kimi-k3"
+  -f slug="qa-deepseek-v4-flash-power-bottlenecks" \
+  -f backend=opencode-deepseek-v4-flash \
+  -f tags="qa,comparison,deepseek-v4-flash"
 ```
 
 Lane mechanics, mirroring the Codex path:
 
-- Version pinned: `npm install -g opencode-ai@1.18.3` (Moonshot's opencode
-  guide requires >= 1.18.3 for kimi-k3) with `OPENCODE_DISABLE_AUTOUPDATE=1`
+- Version pinned: `npm install -g opencode-ai@1.18.3` (verified to resolve
+  `opencode-go/deepseek-v4-flash`) with `OPENCODE_DISABLE_AUTOUPDATE=1`
   so the persistent self-hosted runner cannot drift.
 - Config at [`.github/opencode/opencode.json`](../.github/opencode/opencode.json)
   (injected via `OPENCODE_CONFIG`): grants headless
-  `edit`/`bash`/`webfetch` permissions and declares `kimi-k3` under both
-  `provider.opencode-go.models` and `provider.moonshotai.models` so model
-  resolution survives a stale models.dev registry cache on the runner; the
-  route-resolved `-m` flag picks the provider at run time. The run also
+  `edit`/`bash`/`webfetch` permissions and declares `deepseek-v4-flash`
+  under `provider.opencode-go.models` so model resolution survives a stale
+  models.dev registry cache on the runner; the route-resolved `-m` flag
+  picks the model at run time. The run also
   passes `--auto` so a headless session can never hang on a permission ask.
 - Prompt at [`.github/opencode/prompts/generative-research.md`](../.github/opencode/prompts/generative-research.md):
   same data boundary (untrusted inputs in `.gen-input/*.txt`), same
   methodology artifacts, same validation gates, and the writer owns the
-  commit with `--model kimi-k3` metadata.
+  commit with `--model deepseek-v4-flash` metadata.
 - The workflow preflights the resolved route's API (missing secrets or a
   definitively dead key — HTTP 401/402 — fails in seconds, before
-  install/agent) and fails closed — an explicit `opencode-kimi-k3`
+  install/agent) and fails closed — an explicit `opencode-deepseek-v4-flash`
   request never falls back to Claude, matching the comparison-lane
   strictness of `fireworks_fallback=none`. Other statuses from the
   undocumented Go raw endpoint (including Cloudflare bot-filter 403s)
@@ -302,17 +343,80 @@ Lane mechanics, mirroring the Codex path:
   `curl`/`pdftotext`, `bird`, and opencode's webfetch tool.
 - Security tradeoff vs. Codex: opencode has no
   `shell_environment_policy.include_only` equivalent, so agent subshells
-  inherit the step env including `MOONSHOT_API_KEY`. Containment is the
-  prompt's env-exfil prohibitions, Actions log masking, and the key being
-  scoped to Moonshot billing only.
+  inherit the whole step env, including `OPENCODE_API_KEY`. Containment is
+  the prompt's env-exfil prohibitions, Actions log masking, and the key being
+  scoped to model billing only. Because that env is agent-readable, the step
+  carries the minimum set: `MOONSHOT_API_KEY` is **not** passed to the agent
+  step at all (it cannot serve the pinned DeepSeek model, so injecting it
+  would widen the blast radius for nothing). It survives only in the
+  preflight step, which runs no agent, purely to emit a precise error when it
+  is the only key configured. `scripts/test_backend_matrix.py` asserts that
+  scoping.
 
-**No-new-harness alternative (not wired up):** Moonshot also runs an
-official Anthropic-compatible endpoint that works with the existing Claude
-Code harness pattern — `ANTHROPIC_BASE_URL=https://api.moonshot.ai/anthropic`,
-`ANTHROPIC_AUTH_TOKEN=$MOONSHOT_API_KEY`, model `kimi-k3[1m]` (the `[1m]`
-alias is endpoint-valid here, unlike Z.ai's rejection of `glm-5.2[1m]`).
-If a Kimi lane is ever wanted without the opencode harness, that is the
-Z.ai-style route to take.
+## Cursor CLI + Grok 4.6 Fast
+
+The canonical selector is `cursor-grok-4p6-fast`; aliases are `cursor`,
+`cursor-cli`, `cursor-agent`, `grok-4.6-fast`, `grok`, and the retired
+`cursor-composer-2p5` / `composer-2.5` names. Twitter comparison
+output stays in the legacy `research/twitter-cursor/` namespace.
+
+The backend runs the official Cursor Agent CLI (`agent`) against
+**Grok 4.6 Fast** inside `.github/actions/run-cursor-container`. Auth is
+the plain `CURSOR_API_KEY` env var from the Cursor dashboard — there is
+no `agent login` step and no auth-file seeding. The container is the
+isolation boundary (`--sandbox disabled` on the CLI; bubblewrap is not
+assumed in the slim image). Missing Docker is a hard failure; never fall
+back to host-level `agent -p`.
+
+ArXiv and wiki use Cursor as the secondary production editorial failure domain;
+RSS, community, and Bluesky stay on OpenCode. Switching either route is an SSOT
+edit plus `uv run python scripts/build_backend_matrix.py`.
+Korean translation now selects this profile through
+`routes.generative-translation`. Cursor writes the fixed segment JSONL
+under `.github/cursor/translation.json`; pointing the route back to
+OpenCode does not need a workflow edit.
+
+Seed the secret once:
+
+```bash
+# Cursor dashboard API key
+gh secret set CURSOR_API_KEY
+```
+
+Then prove the key + harness before spending a 90-minute research run:
+
+```bash
+gh workflow run cursor-cli-canary.yml
+```
+
+The canary runs one tool-denied headless `agent -p --mode ask` turn
+against `cursor/cursor-grok-4.6-high-fast` and asserts the token
+`CURSOR-CLI-CANARY-OK`.
+
+Dispatch a research run:
+
+```bash
+gh workflow run generative-research.yml \
+  --ref main \
+  -f topic="$TOPIC" \
+  -f slug="qa-grok-4-6-fast-power-bottlenecks" \
+  -f backend=cursor-grok-4p6-fast \
+  -f tags="qa,comparison,grok-4.6-fast"
+```
+
+Lane mechanics:
+
+- Official install `curl https://cursor.com/install -fsS | bash` inside
+  the image; binary copied to `/usr/local/bin/agent`.
+- Permission config at [`.github/cursor/cli-config.json`](../.github/cursor/cli-config.json)
+  (injected via `CURSOR_CONFIG_DIR`); the canary uses
+  [`.github/cursor/cli-config-canary.json`](../.github/cursor/cli-config-canary.json)
+  which denies Shell/Write/WebFetch/Mcp.
+- Prompt at [`.github/cursor/prompts/generative-research.md`](../.github/cursor/prompts/generative-research.md):
+  same data boundary, same methodology artifacts, writer `--model cursor-grok-4.6-high-fast`.
+- Headless argv: `agent -p --force --trust --sandbox disabled --workspace /workspace --model cursor-grok-4.6-high-fast --output-format text --disable-auto-update`.
+- Strict: a missing `CURSOR_API_KEY` fails in seconds; an explicit
+  `cursor-grok-4p6-fast` request never falls back to Claude.
 
 ## Fireworks Backends
 
@@ -393,9 +497,15 @@ gh workflow run generative-research.yml \
 
 gh workflow run generative-research.yml \
   -f topic="$TOPIC" \
-  -f slug="qa-kimi-k3-power-bottlenecks" \
-  -f backend=opencode-kimi-k3 \
-  -f tags="qa,comparison,kimi-k3"
+  -f slug="qa-deepseek-v4-flash-power-bottlenecks" \
+  -f backend=opencode-deepseek-v4-flash \
+  -f tags="qa,comparison,deepseek-v4-flash"
+
+gh workflow run generative-research.yml \
+  -f topic="$TOPIC" \
+  -f slug="qa-grok-4-6-fast-power-bottlenecks" \
+  -f backend=cursor-grok-4p6-fast \
+  -f tags="qa,comparison,grok-4.6-fast"
 
 gh workflow run generative-research.yml \
   -f topic="$TOPIC" \
@@ -423,6 +533,11 @@ The expected difference is the model backend:
 - Codex: Codex CLI with ChatGPT-managed `CODEX_AUTH_JSON`, `codex` metadata
   in `research/generative/index.json`, and the prompt file at
   `.github/codex/prompts/generative-research.md`.
+- Cursor (`cursor-grok-4p6-fast`): official Cursor CLI (`agent`) inside
+  `run-cursor-container`, `CURSOR_API_KEY`, `cursor-grok-4.6-high-fast` metadata in
+  `research/generative/index.json`, and the prompt file at
+  `.github/cursor/prompts/generative-research.md`. Strict: no Claude
+  fallback. Not the production default.
 - Fireworks (`deepseek-v4-flash` or `glm-5p2`): Anthropic-compatible
   Fireworks endpoint, backend-specific metadata in
   `research/generative/index.json`. This path has a longer action timeout

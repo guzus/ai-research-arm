@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-22 01:46:09 UTC
+
+CYCLE: Frontier agent access keeps getting cheaper — and one giveaway still has no owner.
+
+TOP STORIES:
+• Grok Bot goes "free to try" under four hours after xAI dropped the invite queue [✓]
+• Anthropic's Claude Code Remote Control release is all reliability repair — phone-started sessions, auto-reconnect, live CLI sync — and ships with no measured numbers [✓]
+• Ox Alpha gets its first economics theory (GLM-5.3 distill, bankrolled not served, overseas GPUs) — then the analyst concedes new benchmarks break his own hypothesis [🚩]
+
+WATCH: Whether any lab claims Ox Alpha before its free window closes ~2026-08-27.
+
+Full update on GitHub.

@@ -3,8 +3,9 @@
 
 This closes a gap that CI structurally cannot see. `.dockerignore` excludes
 `research/*` and re-includes specific dirs; `dashboard/scripts/prebuild.mjs`
-copies a list of dirs into `public/research/`. The two lists must agree, but
-nothing enforced it and the failure is SILENT in both directions that matter:
+copies some dirs into `public/research/` and reads other build-only inputs. The
+three lists must agree, but nothing enforced it and the failure is SILENT in
+both directions that matter:
 
   - prebuild skips a missing dir with `if (!existsSync(src)) continue;`
   - CI never builds the Dockerfile (load-bearing rule 3), so the local build
@@ -30,7 +31,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DOCKERIGNORE = REPO_ROOT / ".dockerignore"
 PREBUILD = REPO_ROOT / "dashboard" / "scripts" / "prebuild.mjs"
 
-# `const COPY_DIRS = ['a', 'b', ...];` / `const AB_COMPARISON_LANES = [ ... ];`
+# `const COPY_DIRS = ['a', ...];` / `const BUILD_INPUT_DIRS = ['b', ...];` /
+# `const AB_COMPARISON_LANES = [ ... ];`
 ARRAY_RE = r"const\s+{name}\s*=\s*\[(.*?)\]"
 
 
@@ -74,6 +76,15 @@ class DockerignoreResearchDirsTest(unittest.TestCase):
             f"them, so they are absent from the Railway build context and production will "
             f"404 that data while the local build looks fine. Add `!research/<dir>` and "
             f"`!research/<dir>/**` to .dockerignore.",
+        )
+
+    def test_every_build_input_dir_is_whitelisted(self):
+        missing = [d for d in _js_string_array(self.prebuild, "BUILD_INPUT_DIRS") if d not in self.reincluded]
+        self.assertEqual(
+            [], missing,
+            f"prebuild.mjs reads build-only research/{missing} but .dockerignore does not "
+            f"re-include them, so Railway silently builds incomplete public artifacts. "
+            f"Add `!research/<dir>` and `!research/<dir>/**` to .dockerignore.",
         )
 
     def test_every_ab_comparison_lane_is_whitelisted(self):

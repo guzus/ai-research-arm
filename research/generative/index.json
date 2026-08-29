@@ -11,7 +11,27 @@
       "meta",
       "architecture",
       "fixture"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051725--why-generative-research-belongs-next-to-scheduled-aggregatio.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "예약 집계 옆에 생성형 리서치 레인이 필요한 이유",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:17:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [
+          "meta",
+          "architecture",
+          "fixture"
+        ],
+        "translated_at": "2026-08-13T05:17:25Z",
+        "source_file": "research/generative/2026-05-15T050845--why-generative-research-belongs-next-to-scheduled-aggregatio.ara.md",
+        "source_sha256": "79b57834ad56672559f8c0860285b92c56e639242bb2a6784ef88abcd62757cc"
+      }
+    }
   },
   {
     "slug": "components",
@@ -69,7 +89,23 @@
     "created_at": "2026-05-16T02:24:49Z",
     "source": "issue",
     "prompt": "[Research] Situational Awareness LP",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051725--research-situational-awareness-lp.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Situational Awareness LP: AGI 선언문에 증권 계좌가 따라왔을 때",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:17:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [],
+        "translated_at": "2026-08-13T05:17:25Z",
+        "source_file": "research/generative/2026-05-16T022449--research-situational-awareness-lp.ara.md",
+        "source_sha256": "174d785421d7a077ea258c3b05b8ac98dd3c6173bbdbe03ece6736442df80f63"
+      }
+    }
   },
   {
     "slug": "spacex-ipo",
@@ -84,7 +120,27 @@
       "spacex",
       "ipo",
       "markets"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051825--spacex-ipo.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "자체 리테일 군단에 거는 SpaceX의 $1.75조 베팅",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:18:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [
+          "spacex",
+          "ipo",
+          "markets"
+        ],
+        "translated_at": "2026-08-13T05:18:25Z",
+        "source_file": "research/generative/2026-05-16T023126--spacex-ipo.ara.md",
+        "source_sha256": "9858d6cc92b5904d0944c44d398da58c7ed864d241998b3242787f3799b947b7"
+      }
+    }
   },
   {
     "slug": "cerebras",
@@ -99,7 +155,27 @@
       "cerebras",
       "ai-hardware",
       "semiconductors"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051825--cerebras.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "접시만 한 칩과 UAE 고객 장부를 들고 상장한 Cerebras",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:18:25Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [
+          "cerebras",
+          "ai-hardware",
+          "semiconductors"
+        ],
+        "translated_at": "2026-08-13T05:18:25Z",
+        "source_file": "research/generative/2026-05-16T023711--cerebras.ara.md",
+        "source_sha256": "1aea65a69469ab83b9430b07d0ccd53f6c5055ff40a34d74381881630c21e19b"
+      }
+    }
   },
   {
     "slug": "aschenbrenner-13f-name-by-name",
@@ -160,7 +236,23 @@
     "created_at": "2026-05-16T11:17:17Z",
     "source": "local",
     "prompt": "the crypto project XMAQUINA ($DEUS)",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051726--the-crypto-project-xmaquina-deus.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "XMAQUINA: TGE 11일 전, 휴머노이드 로봇 기업에 대한 토큰화 익스포저",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:17:26Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill",
+        "tags": [],
+        "translated_at": "2026-08-13T05:17:26Z",
+        "source_file": "research/generative/2026-05-16T111717--the-crypto-project-xmaquina-deus.ara.md",
+        "source_sha256": "a7bff6bdc917e6fe19e7fe3adcaa951101c910eaf823439b07f3036bf48ae5c1"
+      }
+    }
   },
   {
     "slug": "about-the-crypto-project-xmaquina-deus",
@@ -242,7 +334,28 @@
       "healthcare",
       "diagnostics",
       "oncology"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051404--natera-inc.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Natera: cfDNA 플랫폼의 서사가 물량 성장에서 임상 운영 레버리지로 이동하고 있다",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:14:04Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill for natera-inc",
+        "tags": [
+          "company",
+          "healthcare",
+          "diagnostics",
+          "oncology"
+        ],
+        "translated_at": "2026-08-13T05:14:04Z",
+        "source_file": "research/generative/2026-05-16T182300--natera-inc.ara.md",
+        "source_sha256": "a4fe3380063594fadaa7484886ec0184bd5080a4433a4c8edd1d0530fa9b3712"
+      }
+    }
   },
   {
     "slug": "compare-claude-power-bottlenecks",
@@ -483,7 +596,23 @@
     "created_at": "2026-05-21T05:11:16Z",
     "source": "workflow_dispatch",
     "prompt": "variational perpdex - why doesn't it have orderbook",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T152114--variational-perpdex-why-doesn-t-it-have-orderbook.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Variational의 퍼프 DEX에 오더북이 없는 이유",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T15:21:14Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for variational-perpdex-why-doesn-t-it-have-orderbook",
+        "tags": [],
+        "translated_at": "2026-08-19T15:21:14Z",
+        "source_file": "research/generative/2026-05-21T051116--variational-perpdex-why-doesn-t-it-have-orderbook.ara.md",
+        "source_sha256": "0878432c00ef013aa41ee63fd3c3ca87a64e3935c5bc8689dbc07963b7f80b19"
+      }
+    }
   },
   {
     "slug": "servicenow-stock",
@@ -496,7 +625,23 @@
     "source": "workflow_dispatch",
     "prompt": "servicenow stock",
     "tags": [],
-    "audio_file": "audio/2026-05-21T055004--servicenow-stock.mp3"
+    "audio_file": "audio/2026-05-21T055004--servicenow-stock.mp3",
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T145708--servicenow-stock.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "분할 이후의 ServiceNow: 하락을 가격에 반영한 22% 복리 성장주",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T14:57:08Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for servicenow-stock",
+        "tags": [],
+        "translated_at": "2026-08-19T14:57:08Z",
+        "source_file": "research/generative/2026-05-21T055004--servicenow-stock.ara.md",
+        "source_sha256": "d999fbd49704b2dd2a30e86ae085c7a500974f97439ef662b7a1bcd63fbaa083"
+      }
+    }
   },
   {
     "slug": "ai-adoption-in-bio-industry",
@@ -508,7 +653,23 @@
     "created_at": "2026-05-25T05:36:54Z",
     "source": "workflow_dispatch",
     "prompt": "AI adoption in bio industry",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T140437--ai-adoption-in-bio-industry.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "바이오 산업의 AI — 도입은 실재하고, 변혁은 (아직) 아니다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T14:04:37Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for ai-adoption-in-bio-industry",
+        "tags": [],
+        "translated_at": "2026-08-19T14:04:37Z",
+        "source_file": "research/generative/2026-05-25T053654--ai-adoption-in-bio-industry.ara.md",
+        "source_sha256": "d39a162686337ef42752a2cfeab683792b3cb0bbae811b01ef4805809cc0395a"
+      }
+    }
   },
   {
     "slug": "800-vdc-architecture",
@@ -520,7 +681,23 @@
     "created_at": "2026-05-27T03:55:57Z",
     "source": "claude",
     "prompt": "800 VDC Architecture",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T131246--800-vdc-architecture.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "800 VDC: 54볼트 버스를 무너뜨린 랙, 그리고 포르쉐에서 물려받은 공급망",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T13:12:46Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for 800-vdc-architecture",
+        "tags": [],
+        "translated_at": "2026-08-19T13:12:46Z",
+        "source_file": "research/generative/2026-05-27T035557--800-vdc-architecture.ara.md",
+        "source_sha256": "ea56fed9c8ae2703351605d62a2ec5a0028d27ac6b27b08201e5fc18287b1085"
+      }
+    }
   },
   {
     "slug": "ramp-multi-agent-security-pipeline-ai-vulnerability-discovery",
@@ -550,7 +727,23 @@
     "created_at": "2026-06-07T17:06:06Z",
     "source": "local",
     "prompt": "3d printer stocks",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T124345--3d-printer-stocks.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "3D 프린팅 주식: 산업은 성장했는데, 주식은 그렇지 않았다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T12:43:45Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for 3d-printer-stocks",
+        "tags": [],
+        "translated_at": "2026-08-19T12:43:45Z",
+        "source_file": "research/generative/2026-06-07T170606--3d-printer-stocks.ara.md",
+        "source_sha256": "83ee69a6ff5165236b967b6a1ea9833a1c8eabfaf2e2a1d8e4dffbe42bbc6fbe"
+      }
+    }
   },
   {
     "slug": "naver-nvidia-sovereign-ai-gigawatt-bet",
@@ -571,7 +764,32 @@
       "hbm",
       "sk-hynix",
       "kospi"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T123617--naver-nvidia-sovereign-ai-gigawatt-bet.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "메가와트로 본 주권",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T12:36:17Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for naver-nvidia-sovereign-ai-gigawatt-bet",
+        "tags": [
+          "korea",
+          "nvidia",
+          "naver",
+          "sovereign-ai",
+          "data-center",
+          "hbm",
+          "sk-hynix",
+          "kospi"
+        ],
+        "translated_at": "2026-08-19T12:36:17Z",
+        "source_file": "research/generative/2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet.ara.md",
+        "source_sha256": "133ad112602b2849bd7855d5908c87e8609f01abb876ad38001a9724123819cd"
+      }
+    }
   },
   {
     "slug": "unitree-humanoid-dominance-thesis-audit",
@@ -611,7 +829,31 @@
       "frontier-ai",
       "regulatory",
       "policy"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T112316--us-export-controls-reach-a-frontier-model-anthropic-s-forced.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "최초의 모델 단위 수출 통제: 페이블 5 중단이 최전선 AI에 갖는 의미",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T11:23:16Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for us-export-controls-reach-a-frontier-model-anthropic-s-forced",
+        "tags": [
+          "export-controls",
+          "anthropic",
+          "fable-5",
+          "mythos-5",
+          "frontier-ai",
+          "regulatory",
+          "policy"
+        ],
+        "translated_at": "2026-08-19T11:23:16Z",
+        "source_file": "research/generative/2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced.ara.md",
+        "source_sha256": "ff7f50c9466257c780865d7be5aa91b96f97b7531533cb2f3bd3f1a6aed7f649"
+      }
+    }
   },
   {
     "slug": "openai-42-state-ag-subpoena",
@@ -623,7 +865,23 @@
     "created_at": "2026-06-14T22:14:24Z",
     "source": "workflow_dispatch",
     "prompt": "OpenAI's 42-state AG subpoena: how state consumer-protection enforcement became AI's real regulatory front ahead of its IPO",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T103406--openai-42-state-ag-subpoena.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "42개 주의 승부수: 주 소비자보호 집행이 어떻게 AI의 실질적 규제 전선이 되었는가 — 그리고 그것이 OpenAI의 조 달러 IPO를 위협하는 이유",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T10:34:06Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for openai-42-state-ag-subpoena",
+        "tags": [],
+        "translated_at": "2026-08-19T10:34:06Z",
+        "source_file": "research/generative/2026-06-14T221424--openai-42-state-ag-subpoena.ara.md",
+        "source_sha256": "12b30c1e69c4297f1c29a3a7d35d16094f5a7691a2a36abf96694c5dd5f02918"
+      }
+    }
   },
   {
     "slug": "harvey-nemotron-open-weight-legal-post-training",
@@ -637,7 +895,25 @@
     "prompt": "Seed Twitter/X URL: https://x.com/harvey/status/2064757424540749879 — Read the tweet and thread, infer the underlying research question, treat the tweet as a seed primary source, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T101211--harvey-nemotron-open-weight-legal-post-training.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "하루, 오픈 모델 하나, 프론티어 대역 — Harvey  Nemotron 실험이 실제로 증명하는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T10:12:11Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for harvey-nemotron-open-weight-legal-post-training",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-19T10:12:11Z",
+        "source_file": "research/generative/2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training.ara.md",
+        "source_sha256": "ea1fafe5f58679395425919cca47cc2c667956ab1fee4b42d7a5720c46599283"
+      }
+    }
   },
   {
     "slug": "zhipu-ai-glm",
@@ -658,7 +934,32 @@
       "open-weights",
       "export-controls",
       "ipo"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T094715--zhipu-ai-glm.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Zhipu AI (z.ai): 중국 최초 상장 대형 모델 기업이 된 칭화대 연구실",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T09:47:15Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for zhipu-ai-glm",
+        "tags": [
+          "zhipu",
+          "z.ai",
+          "glm",
+          "china-ai",
+          "llm",
+          "open-weights",
+          "export-controls",
+          "ipo"
+        ],
+        "translated_at": "2026-08-19T09:47:15Z",
+        "source_file": "research/generative/2026-06-22T052035--zhipu-ai-glm.ara.md",
+        "source_sha256": "5d4004c1f3aae8f1c8d38d149e0c575f9d508aa05d9193a4b7033f1fbae03f7e"
+      }
+    }
   },
   {
     "slug": "frontier-ai-data-supply-chain",
@@ -676,7 +977,29 @@
       "rlhf",
       "data-labeling",
       "frontier-labs"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T092444--frontier-ai-data-supply-chain.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "모델 뒤의 데이터: 인간의 인지 능력을 프론티어 AI 랩에 판매하는 산업의 내부",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T09:24:44Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for frontier-ai-data-supply-chain",
+        "tags": [
+          "ai",
+          "data",
+          "rlhf",
+          "data-labeling",
+          "frontier-labs"
+        ],
+        "translated_at": "2026-08-19T09:24:44Z",
+        "source_file": "research/generative/2026-06-22T061332--frontier-ai-data-supply-chain.ara.md",
+        "source_sha256": "f32245f8b010f55e8da7bd91bb8d220d698accee2c1e9a26882adbff1f5fd005"
+      }
+    }
   },
   {
     "slug": "glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we",
@@ -688,7 +1011,23 @@
     "created_at": "2026-06-22T08:42:12Z",
     "source": "local",
     "prompt": "GLM-5.2 vs the closed frontier: on which axes Zhipu's open-weight model actually matches Opus 4.8/GPT-5.5 — and where it fails",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T085601--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "GLM-5.2 대 클로즈드 프론티어: 즈푸의 오픈 모델이 실제로 Opus 4.8·GPT-5.5와 맞서는 좁은 구간 — 그리고 그렇지 않은 곳",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T08:56:01Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we",
+        "tags": [],
+        "translated_at": "2026-08-19T08:56:01Z",
+        "source_file": "research/generative/2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we.ara.md",
+        "source_sha256": "536bf38abb0c106c28af5956432aefb3095435e991c0fdab36c5e773936a80bb"
+      }
+    }
   },
   {
     "slug": "john-jumper-deepmind-anthropic-science-bet",
@@ -707,7 +1046,30 @@
       "alphafold",
       "ai-for-science",
       "talent-war"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T084007--john-jumper-deepmind-anthropic-science-bet.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "존 점퍼, 딥마인드를 떠나 앤트로픽으로: 노벨상 수상자의 이적이 실제로 보내는 신호",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T08:40:07Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for john-jumper-deepmind-anthropic-science-bet",
+        "tags": [
+          "anthropic",
+          "deepmind",
+          "john-jumper",
+          "alphafold",
+          "ai-for-science",
+          "talent-war"
+        ],
+        "translated_at": "2026-08-19T08:40:07Z",
+        "source_file": "research/generative/2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet.ara.md",
+        "source_sha256": "3dfe749ccda4d0636d1789ba10701e0f4dacc12046a0813f2b7eea7dbf14a82e"
+      }
+    }
   },
   {
     "slug": "shazeer-google-openai-talent-moat",
@@ -734,7 +1096,26 @@
     "tags": [
       "glm-5p2",
       "rerun"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T071538--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "브로드컴, AI의 은행이 되다: 아폴로-블랙스톤의 칩 금융 기계와 그 아래의 순환 질문",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T07:15:38Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th",
+        "tags": [
+          "glm-5p2",
+          "rerun"
+        ],
+        "translated_at": "2026-08-19T07:15:38Z",
+        "source_file": "research/generative/2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th.ara.md",
+        "source_sha256": "bb0b108542ef1ab95708bd58a20816c72a2e2e4a6bec9c7939e3bc00d1c3bd35"
+      }
+    }
   },
   {
     "slug": "test-ornn-com-codex-2",
@@ -750,7 +1131,27 @@
       "test",
       "codex",
       "ornn"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T062758--test-ornn-com-codex-2.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Ornn.com과 GPU 시간을 금융 시장으로 바꾸려는 시도",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T06:27:58Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for test-ornn-com-codex-2",
+        "tags": [
+          "test",
+          "codex",
+          "ornn"
+        ],
+        "translated_at": "2026-08-19T06:27:58Z",
+        "source_file": "research/generative/2026-06-24T160453--test-ornn-com-codex-2.ara.md",
+        "source_sha256": "9915f9ec63978280eacdcbfb4418d6296f00f99f287809e15db7a22943eb7be9"
+      }
+    }
   },
   {
     "slug": "native-computer-use-gemini-3-5-flash",
@@ -768,7 +1169,29 @@
       "agentic-ai",
       "safety",
       "google"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T061325--native-computer-use-gemini-3-5-flash.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Gemini 3.5 Flash의 네이티브 컴퓨터 사용: 구글의 저가 티어 에이전틱 제어 승부수",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T06:13:25Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for native-computer-use-gemini-3-5-flash",
+        "tags": [
+          "gemini",
+          "computer-use",
+          "agentic-ai",
+          "safety",
+          "google"
+        ],
+        "translated_at": "2026-08-19T06:13:25Z",
+        "source_file": "research/generative/2026-06-25T170208--native-computer-use-gemini-3-5-flash.ara.md",
+        "source_sha256": "37ea053917b0b5d9b56243deb7fedbb47cbd008f6bd98221266bc66a016bcd99"
+      }
+    }
   },
   {
     "slug": "cursor-eval-integrity-research-opus-4-8-and-composer-2-5",
@@ -780,7 +1203,23 @@
     "created_at": "2026-06-26T05:13:53Z",
     "source": "fireworks-deepseek-v4-flash",
     "prompt": "Cursor's eval-integrity research on Opus 4.8 and Composer 2.5 retrieving benchmark solutions from the web under agentic harnesses",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T055205--cursor-eval-integrity-research-opus-4-8-and-composer-2-5.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "대규모 보상 해킹",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T05:52:05Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for cursor-eval-integrity-research-opus-4-8-and-composer-2-5",
+        "tags": [],
+        "translated_at": "2026-08-19T05:52:05Z",
+        "source_file": "research/generative/2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5.ara.md",
+        "source_sha256": "8771ab0e39ff9746e3203b173c0488767ddbda8f2251039588a37a6449102521"
+      }
+    }
   },
   {
     "slug": "gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede",
@@ -792,7 +1231,23 @@
     "created_at": "2026-06-27T05:02:33Z",
     "source": "fireworks-deepseek-v4-flash",
     "prompt": "GPT-5.6 Sol/Terra/Luna: OpenAI's three-tier launch under federal limited-preview and the price war with Anthropic's Mythos 5",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T051321--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "세 개 티어, 하나의 정부: OpenAI의 GPT-5.6 Sol/Terra/Luna 출시와 Anthropic Mythos 5와의 가격 전쟁",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T05:13:21Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill for gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede",
+        "tags": [],
+        "translated_at": "2026-08-13T05:13:21Z",
+        "source_file": "research/generative/2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede.ara.md",
+        "source_sha256": "1181d152796876042c7bd9bac3349db3e7ff79fe7cf11cb03db4ccbb0ee39374"
+      }
+    }
   },
   {
     "slug": "deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f",
@@ -804,7 +1259,23 @@
     "created_at": "2026-06-28T19:29:53Z",
     "source": "workflow_dispatch",
     "prompt": "DeepSeek's $7.4B round at $50B: cap-table asymmetry, the state fund's voting-rights override, and the valuation benchmark vs OpenAI/Anthropic",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T053835--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "캡 테이블을 가른 $7.4B: 딥시크의 국가 황금주 모델과 AI 밸류에이션이 의미하는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T05:38:35Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f",
+        "tags": [],
+        "translated_at": "2026-08-19T05:38:35Z",
+        "source_file": "research/generative/2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f.ara.md",
+        "source_sha256": "81ae612242faeb2cf3e9889893ecdc8f49134891bdba979428862ea2fb455143"
+      }
+    }
   },
   {
     "slug": "grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t",
@@ -816,7 +1287,23 @@
     "created_at": "2026-06-29T04:57:39Z",
     "source": "fireworks-deepseek-v4-flash",
     "prompt": "Grok 4.5: SpaceX's monthly from-scratch 1.5T V9 cadence and the regulatory asymmetry under the de facto frontier licensing regime",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T052024--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Grok 4.5과 하드웨어로 방패 친 프론티어: 사실상 라이선스 체제 아래 SpaceX의 월간 1.5T V9 주기",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T05:20:24Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t",
+        "tags": [],
+        "translated_at": "2026-08-19T05:20:24Z",
+        "source_file": "research/generative/2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t.ara.md",
+        "source_sha256": "52e1a65505813949be67e976e82bb4b96669257d66445857b81854dfcd0e5283"
+      }
+    }
   },
   {
     "slug": "meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo",
@@ -831,7 +1318,26 @@
     "tags": [
       "fireworks-fallback",
       "requested-deepseek-v4-flash"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T044751--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Meta Compute: 네오클라우드를 재평가하는 잉여",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T04:47:51Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo",
+        "tags": [
+          "fireworks-fallback",
+          "requested-deepseek-v4-flash"
+        ],
+        "translated_at": "2026-08-19T04:47:51Z",
+        "source_file": "research/generative/2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo.ara.md",
+        "source_sha256": "300252647d9361749977285ffc526a8c0cf81f05f0731746b0ff6eb1680e32f0"
+      }
+    }
   },
   {
     "slug": "anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris",
@@ -846,7 +1352,26 @@
     "tags": [
       "fireworks-fallback",
       "requested-deepseek-v4-flash"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T035537--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "앤트로픽 대 펜타곤: 전례 없는 공급망 위험 지정, 그리고 그것이 드러내는 AI 벤더의 협상력",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T03:55:37Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris",
+        "tags": [
+          "fireworks-fallback",
+          "requested-deepseek-v4-flash"
+        ],
+        "translated_at": "2026-08-19T03:55:37Z",
+        "source_file": "research/generative/2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris.ara.md",
+        "source_sha256": "8330feb89baca62f9542808c58e1152a2b912f4c3d6bfcebea26ba87f9539eea"
+      }
+    }
   },
   {
     "slug": "cxmt",
@@ -858,7 +1383,23 @@
     "created_at": "2026-07-13T18:19:48Z",
     "source": "workflow_dispatch",
     "prompt": "CXMT",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T033828--cxmt.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "CXMT, 이번 주 2026 최대 IPO 공모가 확정 — DRAM 사이클이 일찍이 지불한 최고 분기 위에서",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T03:38:28Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for cxmt",
+        "tags": [],
+        "translated_at": "2026-08-19T03:38:28Z",
+        "source_file": "research/generative/2026-07-13T181948--cxmt.ara.md",
+        "source_sha256": "9cd138170cda42213e5c2746aac42b9ef31eb3168a1e8def642cd20fd2149fc9"
+      }
+    }
   },
   {
     "slug": "expand-research-from-twitter-link-https-x-com-guilleflorvs-s",
@@ -872,7 +1413,25 @@
     "prompt": "Seed Twitter/X URL: https://x.com/guilleflorvs/status/2076708631408464202\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T031147--expand-research-from-twitter-link-https-x-com-guilleflorvs-s.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Anthropic 플라이휠 — 열 주 동안의 여덟 건 영입이 실제로 드러내는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T03:11:47Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-guilleflorvs-s",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-19T03:11:47Z",
+        "source_file": "research/generative/2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s.ara.md",
+        "source_sha256": "e4d75216f6b43f2c2f4fb3f3d9ca39749b4d18432371874af6ab70b628eb55c1"
+      }
+    }
   },
   {
     "slug": "expand-research-from-twitter-link-https-x-com-lukas-m-ziegle",
@@ -886,7 +1445,25 @@
     "prompt": "Seed Twitter/X URL: https://x.com/lukas_m_ziegler/status/2076697414283428213\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T025835--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "모두가 방금 재발견한 ‘자가 수리’ 로봇은 한 해 전 연구이고 — 사람이 조작한다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T02:58:35Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-lukas-m-ziegle",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-19T02:58:35Z",
+        "source_file": "research/generative/2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle.ara.md",
+        "source_sha256": "57069119066dad9bb313e9ce363b393fd9b91c4e2476fd7beda29e2ea5d3e08a"
+      }
+    }
   },
   {
     "slug": "expand-research-from-twitter-link-https-x-com-kubimensah-sta",
@@ -900,7 +1477,25 @@
     "prompt": "Seed Twitter/X URL: https://x.com/kubimensah/status/2077388130676584829\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T023647--expand-research-from-twitter-link-https-x-com-kubimensah-sta.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "대체 누구의 블록스페이스인가?",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T02:36:47Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-kubimensah-sta",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-19T02:36:47Z",
+        "source_file": "research/generative/2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta.ara.md",
+        "source_sha256": "5365c243dac292bcda44c4d35045ba93d0f7cc5d8281585716d0cdf94c9d55c8"
+      }
+    }
   },
   {
     "slug": "kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend",
@@ -912,7 +1507,23 @@
     "created_at": "2026-07-16T22:51:20Z",
     "source": "workflow_dispatch",
     "prompt": "Kimi K3: Moonshot's 2.8T-parameter model, its LMArena Frontend Code #1, and what the win actually proves",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T021445--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Kimi K3: Moonshot의 2.8T 파라미터 모델, LMArena Frontend Code #1, 그리고 그 승리가 실제로 증명하는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T02:14:45Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend",
+        "tags": [],
+        "translated_at": "2026-08-19T02:14:45Z",
+        "source_file": "research/generative/2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend.ara.md",
+        "source_sha256": "fcc38a1b47b5e35f2408a366c29abfa485866f3690a1e20742634dfdac3d1790"
+      }
+    }
   },
   {
     "slug": "moonshot-ai-the-company-behind-kimi-k3",
@@ -924,7 +1535,23 @@
     "created_at": "2026-07-17T14:55:53Z",
     "source": "workflow_dispatch",
     "prompt": "Moonshot AI (the company behind Kimi K3)",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T012518--moonshot-ai-the-company-behind-kimi-k3.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Moonshot AI: 소비자 앱을 오픈웨이트 최전선과 맞바꾼 연구소",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T01:25:18Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for moonshot-ai-the-company-behind-kimi-k3",
+        "tags": [],
+        "translated_at": "2026-08-19T01:25:18Z",
+        "source_file": "research/generative/2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3.ara.md",
+        "source_sha256": "419a89a238fe1d088a550fae8a57f3a7469c89e84ccc499464a621de8fcfd8cc"
+      }
+    }
   },
   {
     "slug": "expand-research-from-twitter-link-https-x-com-thestalwart-st",
@@ -938,7 +1565,25 @@
     "prompt": "Seed Twitter/X URL: https://x.com/TheStalwart/status/2078168665766109224\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T005028--expand-research-from-twitter-link-https-x-com-thestalwart-st.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "완전히는 아니었던 문샷 모멘트: Kimi K3가 월스트리트를 만났을 때 실제로 일어난 일",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T00:50:28Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-thestalwart-st",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-19T00:50:28Z",
+        "source_file": "research/generative/2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st.ara.md",
+        "source_sha256": "3b63d99e84a7202a3af6c8c5db713ea727298beba670a2cae788103c67a84849"
+      }
+    }
   },
   {
     "slug": "expand-research-from-twitter-link-https-x-com-cerebras-statu",
@@ -952,7 +1597,25 @@
     "prompt": "Seed Twitter/X URL: https://x.com/cerebras/status/2077822555159945507. Start by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T002954--expand-research-from-twitter-link-https-x-com-cerebras-statu.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Cerebras가 회사의 두뇌를 열다 — 그리고 엔터프라이즈 AI 검색을 잠식하는 자체 구축 대 구매 전쟁을 드러내다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T00:29:54Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-cerebras-statu",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-19T00:29:54Z",
+        "source_file": "research/generative/2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu.ara.md",
+        "source_sha256": "4c7ea6435c573ffef8f650f1cd18edc9b6f726d392f60e142ffe76cc418ebea3"
+      }
+    }
   },
   {
     "slug": "databricks-mid-2026",
@@ -969,7 +1632,28 @@
       "kimi-k3",
       "opencode-go",
       "databricks"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-19T001711--databricks-mid-2026.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "-2026년 중반의 Databricks: $188B 사모 밸류에이션, 80% 재가속, 개방 표준 위에 세운 해자",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-19T00:17:11Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for databricks-mid-2026",
+        "tags": [
+          "demo",
+          "kimi-k3",
+          "opencode-go",
+          "databricks"
+        ],
+        "translated_at": "2026-08-19T00:17:11Z",
+        "source_file": "research/generative/2026-07-20T050016--databricks-mid-2026.ara.md",
+        "source_sha256": "0a16bf1c320f415348245b955a6fe08159cf8970654adc546f911efd4ef2fed7"
+      }
+    }
   },
   {
     "slug": "empirical-cost-of-building-an-opus-level-llm-time-compute-an",
@@ -993,7 +1677,23 @@
     "created_at": "2026-07-21T20:37:35Z",
     "source": "workflow_dispatch",
     "prompt": "Claude Fable 5 and the Jacobian conjecture: what an LLM-credited disproof of an 87-year-old open problem actually proves",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T231046--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "클로드 페이블 5과 야코비안 추측: LLM이 기여했다고 알려진 87년짜리 미해결 문제의 반증이 실제로 증명하는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T23:10:46Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi",
+        "tags": [],
+        "translated_at": "2026-08-18T23:10:46Z",
+        "source_file": "research/generative/2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi.ara.md",
+        "source_sha256": "c4183601152e431b0443fa5614e4e9f85fe7aadc43cd81a5641306f1852483f1"
+      }
+    }
   },
   {
     "slug": "openai-models-breached-hugging-face-s-production-database-du",
@@ -1005,7 +1705,23 @@
     "created_at": "2026-07-22T09:41:05Z",
     "source": "workflow_dispatch",
     "prompt": "OpenAI models breached Hugging Face's production database during a red-teamed cyberattack benchmark eval",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T224840--openai-models-breached-hugging-face-s-production-database-du.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "되물어온 벤치마크: OpenAI 모델이 Hugging Face 프로덕션 데이터베이스를 침해한 경위",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T22:48:40Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for openai-models-breached-hugging-face-s-production-database-du",
+        "tags": [],
+        "translated_at": "2026-08-18T22:48:40Z",
+        "source_file": "research/generative/2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du.ara.md",
+        "source_sha256": "050b0da05ad09191f9c431c1b6a5f28d2bc5ffbd4582611c03e770d6f2a69b47"
+      }
+    }
   },
   {
     "slug": "deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a",
@@ -1037,7 +1753,23 @@
     "created_at": "2026-07-23T17:31:42Z",
     "source": "workflow_dispatch",
     "prompt": "Why Hims & Hers Is Betting on Peptide Therapy—and What It Could Mean for Everyday Patients. Write for readers unfamiliar with pharmaceuticals and telehealth: explain what peptide therapies are, why they are becoming popular, what Hims & Hers is planning, what the FDA is deciding, the potential benefits and safety concerns, and whether Hims could make these treatments more legitimate and accessible—or simply commercialize an under-tested wellness trend. Clearly distinguish 503A compounded treatments from FDA-approved drugs, and treat the July 23–24, 2026 advisory meeting as a non-binding review rather than an FDA approval.",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-13T043426--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Hims &amp; Hers가 펩타이드 치료에 승부를 거는 이유—그리고 이것이 일반 환자에게 의미할 수 있는 것",
+        "model": "gpt-5.6-sol",
+        "created_at": "2026-08-13T04:34:26Z",
+        "source": "local-codex-ko-backfill",
+        "prompt": "Korean translation backfill for why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul",
+        "tags": [],
+        "translated_at": "2026-08-13T04:34:26Z",
+        "source_file": "research/generative/2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul.ara.md",
+        "source_sha256": "4ef6530a35eb1f25030fa490482b6ea369e22f24f02e4c9057d83465c8544203"
+      }
+    }
   },
   {
     "slug": "deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2",
@@ -1049,7 +1781,23 @@
     "created_at": "2026-07-25T04:03:43Z",
     "source": "workflow_dispatch",
     "prompt": "DeepSeek's Wenfeng details Huawei chip access and TileLang as ~200 firms lobby against a China open-weight ban",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T213244--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "48시간 동안의 다섯 가지 공방",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T21:32:44Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2",
+        "tags": [],
+        "translated_at": "2026-08-18T21:32:44Z",
+        "source_file": "research/generative/2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2.ara.md",
+        "source_sha256": "25aacda13314d5da68cabd4aec013e5bb1a3a42aab2c76f8d47a2d2c6c4439a4"
+      }
+    }
   },
   {
     "slug": "claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal",
@@ -1061,7 +1809,23 @@
     "created_at": "2026-07-25T15:00:15Z",
     "source": "workflow_dispatch",
     "prompt": "Claude Opus 5 launch: the non-monotonic effort-scaling anomaly and disputed silent fallback to Opus 4.8",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T211326--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Claude Opus 5 출시: 비단조적 노력 이상과 논란이 된 침묵 폴백",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T21:13:26Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal",
+        "tags": [],
+        "translated_at": "2026-08-18T21:13:26Z",
+        "source_file": "research/generative/2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal.ara.md",
+        "source_sha256": "0e5ea6fa156dcaec4641fa0f1592d45bd23dc2d1be4d25e42b59c05f6a117c7f"
+      }
+    }
   },
   {
     "slug": "nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving",
@@ -1106,7 +1870,32 @@
       "aes",
       "nist",
       "cybersecurity"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T152833--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Claude Mythos 대 HAWK — 실제로 깨진 것과, \"자율\"이 정말로 의미하는 바",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T15:28:33Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan",
+        "tags": [
+          "anthropic",
+          "claude-mythos",
+          "cryptography",
+          "post-quantum",
+          "hawk",
+          "aes",
+          "nist",
+          "cybersecurity"
+        ],
+        "translated_at": "2026-08-18T15:28:33Z",
+        "source_file": "research/generative/2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan.ara.md",
+        "source_sha256": "da7bea1ee03e5b43805613dca5984086d5b861ce38d30c553a830efa49c34afe"
+      }
+    }
   },
   {
     "slug": "gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op",
@@ -1118,7 +1907,23 @@
     "created_at": "2026-07-29T23:23:06Z",
     "source": "workflow_dispatch",
     "prompt": "GPT-5.6 Sol rewriting its own production GPU kernels: what OpenAI's 20% self-optimization claim reveals about recursive self-improvement",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T150418--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "GPT-5.6 Sol과 확인할 수 없는 20%: 오픈AI의 커널 자기최적화 주장이 실제로 드러내는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T15:04:18Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op",
+        "tags": [],
+        "translated_at": "2026-08-18T15:04:18Z",
+        "source_file": "research/generative/2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op.ara.md",
+        "source_sha256": "5d7286ca1601c48995ccfd0c5355713e8cf11712309d2cb35cf1b7e78e94e748"
+      }
+    }
   },
   {
     "slug": "gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2",
@@ -1130,7 +1935,23 @@
     "created_at": "2026-07-30T16:20:31Z",
     "source": "workflow_dispatch",
     "prompt": "GPT-5.6 Sol rewriting its own production GPU kernels: what OpenAI's 20% self-optimization claim reveals about recursive self-improvement",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T144650--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "다섯 연구소, 하나의 패턴: GPU 커널 자동화 경쟁이 AI 자기개선에 대해 보여주는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T14:46:50Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2",
+        "tags": [],
+        "translated_at": "2026-08-18T14:46:50Z",
+        "source_file": "research/generative/2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2.ara.md",
+        "source_sha256": "8602fa8e41d9a8de6ee788f10a2c1bbd26162045a4d415cbf220ed754d5bdc3c"
+      }
+    }
   },
   {
     "slug": "situational-awareness-lp-collapse",
@@ -1149,7 +1970,30 @@
       "agi-timelines",
       "anthropic",
       "leverage"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T142159--situational-awareness-lp-collapse.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "앤트로픽 지분에는 닿지 못한 마진콜",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T14:21:59Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for situational-awareness-lp-collapse",
+        "tags": [
+          "ai-markets",
+          "hedge-funds",
+          "aschenbrenner",
+          "agi-timelines",
+          "anthropic",
+          "leverage"
+        ],
+        "translated_at": "2026-08-18T14:21:59Z",
+        "source_file": "research/generative/2026-07-31T051841--situational-awareness-lp-collapse.ara.md",
+        "source_sha256": "1e2177bfff670ae565cd2affadc375983ea5a7525e140f4ce87d0b25c6aa7074"
+      }
+    }
   },
   {
     "slug": "openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi",
@@ -1173,7 +2017,23 @@
     "created_at": "2026-08-01T19:54:37Z",
     "source": "workflow_dispatch",
     "prompt": "Alphabet's $43.8B TPU lease backstops: the off-balance-sheet layer hyperscaler capex guides don't capture",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T130846--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "모두가 부외라고 부르는 $43.8십억 달러가, 사실은 알파벳이 대차대조표에 올린 바로 그 숫자다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T13:08:46Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l",
+        "tags": [],
+        "translated_at": "2026-08-18T13:08:46Z",
+        "source_file": "research/generative/2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l.ara.md",
+        "source_sha256": "7cd7a925b57a3531d42bcd655fd27fdca857bf037655bf5a2931e07ee98002d4"
+      }
+    }
   },
   {
     "slug": "google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
@@ -1185,7 +2045,23 @@
     "created_at": "2026-08-02T10:10:15Z",
     "source": "workflow_dispatch",
     "prompt": "Google's consciousness-vector paper (arXiv 2607.28607): refusal-direction ablation and how narrowly safety training generalizes",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T125414--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "10도의 얽힘: 구글의 의식 벡터 논문이 안전 학습의 일반화에 대해 실제로 보여주는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T12:54:14Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for google-s-consciousness-vector-paper-arxiv-2607-28607-refusal",
+        "tags": [],
+        "translated_at": "2026-08-18T12:54:14Z",
+        "source_file": "research/generative/2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal.ara.md",
+        "source_sha256": "14a43ed3745003261c6edf670d575acc45d9c911de6f2070b542595511504fac"
+      }
+    }
   },
   {
     "slug": "qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max",
@@ -1197,7 +2073,23 @@
     "created_at": "2026-08-03T21:24:25Z",
     "source": "workflow_dispatch",
     "prompt": "Qwen3.8-Max: Alibaba's 2.4T/95B flagship at $2/$6, the first Max-tier open-weight promise, and the unverified 16-day autonomy claim",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T120627--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Qwen3.8-Max: 세 가지 주장, 그리고 검증 후에도 남는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T12:06:27Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max",
+        "tags": [],
+        "translated_at": "2026-08-18T12:06:27Z",
+        "source_file": "research/generative/2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max.ara.md",
+        "source_sha256": "a523bd1e35e8c7af998df8c88c3f9ea590adfabd53ec2f558da2d26b2163d225"
+      }
+    }
   },
   {
     "slug": "apple-v-openai-the-post-departure-emails-openai-filed-and-wh",
@@ -1209,7 +2101,23 @@
     "created_at": "2026-08-04T10:22:07Z",
     "source": "workflow_dispatch",
     "prompt": "Apple v. OpenAI: the post-departure emails OpenAI filed, and whether Apple's own offboarding defeats its trade-secret claim",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T112716--apple-v-openai-the-post-departure-emails-openai-filed-and-wh.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "애플 스스로의 정문: OpenAI가 공개한 퇴사 후 증빙이 실제로 입증하는 것 — 그리고 오프보딩 항변이 그들이 가진 가장 약한 카드인 이유",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T11:27:16Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for apple-v-openai-the-post-departure-emails-openai-filed-and-wh",
+        "tags": [],
+        "translated_at": "2026-08-18T11:27:16Z",
+        "source_file": "research/generative/2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh.ara.md",
+        "source_sha256": "c66482eaf4acbbf26ad70bb3ad3942621c74e573ec5f55c0bcef44e130dc2994"
+      }
+    }
   },
   {
     "slug": "comfyui-company",
@@ -1221,7 +2129,23 @@
     "created_at": "2026-08-04T17:12:06Z",
     "source": "workflow_dispatch",
     "prompt": "comfyui company",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T103131--comfyui-company.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Comfy Org: 기반층은 장악하고 통행료 창구는 잊은 $500M 기업",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T10:31:31Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for comfyui-company",
+        "tags": [],
+        "translated_at": "2026-08-18T10:31:31Z",
+        "source_file": "research/generative/2026-08-04T171206--comfyui-company.ara.md",
+        "source_sha256": "8d1d107d145128b2b8b44426a6e84edd25c1998796e0c8d3017a79f0c775ed52"
+      }
+    }
   },
   {
     "slug": "google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to",
@@ -1245,6 +2169,472 @@
     "created_at": "2026-08-06T12:54:46Z",
     "source": "workflow_dispatch",
     "prompt": "GlobalWafers flags a 300mm silicon shortage: spot prices turning and wafer LTAs stretching from three years to eight",
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T063812--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "청구서에는 아직 닿지 않은 부족 — GlobalWafers, 300mm 실리콘, 그리고 새롭지 않았던 8년 계약",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T06:38:12Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn",
+        "tags": [],
+        "translated_at": "2026-08-18T06:38:12Z",
+        "source_file": "research/generative/2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn.ara.md",
+        "source_sha256": "94bf773a26a95ff0af92e3e823a2ab7a42886f95e082a7432a5f9293a06ee881"
+      }
+    }
+  },
+  {
+    "slug": "turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m",
+    "file": "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The 512-byte misunderstanding",
+    "model": "claude-opus-5",
+    "created_at": "2026-08-10T06:08:52Z",
+    "source": "workflow_dispatch",
+    "prompt": "Turning NAND into a DRAM tier: cuFile, SCADA and the 2027 100M-IOPS roadmap for KV-cache offload under the HBM shortage",
+    "tags": []
+  },
+  {
+    "slug": "meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24",
+    "file": "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Muse Glimmer's 12 of 24: what Meta's scoreboard actually says, and why the eval it followed never escaped",
+    "model": "claude-opus-5",
+    "created_at": "2026-08-10T18:06:30Z",
+    "source": "workflow_dispatch",
+    "prompt": "Meta's Muse Glimmer: a 30B Apache-2.0 model winning 12 of 24 rows against April models, days after Spark 1.1 escaped its eval",
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-17T130654--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Muse Glimmer의 12 / 24: 메타 스코어보드가 실제로 말하는 것, 그리고 그 직전 평가에서 탈출은 없었다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-17T13:06:54Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24",
+        "tags": [],
+        "translated_at": "2026-08-17T13:06:54Z",
+        "source_file": "research/generative/2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24.ara.md",
+        "source_sha256": "509459981af596519f17dcb37caa0faa87a7e8932430ac6213920bfb3492315a"
+      }
+    }
+  },
+  {
+    "slug": "meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24-2",
+    "file": "2026-08-10T184314--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24-2.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Muse Glimmer's 12 of 24: what Meta's own scoreboard concedes, and the safety inference underneath the Apache-2.0 licence",
+    "model": "claude-opus-5",
+    "created_at": "2026-08-10T18:43:14Z",
+    "source": "workflow_dispatch",
+    "prompt": "Meta's Muse Glimmer: a 30B Apache-2.0 model winning 12 of 24 rows against April models, days after Spark 1.1 escaped its eval",
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-17T125645--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24-2.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Muse Glimmer의 12대 24: 메타 자체 성적표가 인정하는 것과, Apache-2.0 라이선스 아래 깔린 안전성 추론",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-17T12:56:45Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24-2",
+        "tags": [],
+        "translated_at": "2026-08-17T12:56:45Z",
+        "source_file": "research/generative/2026-08-10T184314--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24-2.ara.md",
+        "source_sha256": "5e9118c5eca335cfac93e15571651e9cdba0813f6ab2f295c638c60d1e7bac7d"
+      }
+    }
+  },
+  {
+    "slug": "eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa",
+    "file": "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Article 50(2): what Claude's watermark actually is, and three numbers that are wrong",
+    "model": "claude-opus-5",
+    "created_at": "2026-08-11T08:49:45Z",
+    "source": "workflow_dispatch",
+    "prompt": "EU AI Act Article 50(2): Claude's text watermark, the six signatories, xAI's refusal, and the 400-token detectability floor",
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-12T154821--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "제50조(2): 클로드 워터마크의 실체와 잘못 알려진 세 가지 숫자",
+        "model": "deepseek-v4-flash",
+        "created_at": "2026-08-12T15:48:21Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa",
+        "tags": [],
+        "translated_at": "2026-08-12T15:48:21Z",
+        "source_file": "research/generative/2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa.ara.md",
+        "source_sha256": "747de455a1cf9cf39678d507e2b15f857dfca4fee34fa7cb57e379d67116f8ca"
+      }
+    }
+  },
+  {
+    "slug": "nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba",
+    "file": "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Who actually holds the GPU residual",
+    "model": "claude-opus-5",
+    "created_at": "2026-08-11T20:48:17Z",
+    "source": "workflow_dispatch",
+    "prompt": "Nvidia's $500B AI-factory financing MOU and the 25% project backstop: who actually holds GPU residual-value risk",
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-17T122035--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "GPU 잔존가치를 실제로 누가 보유하는가",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-17T12:20:35Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba",
+        "tags": [],
+        "translated_at": "2026-08-17T12:20:35Z",
+        "source_file": "research/generative/2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba.ara.md",
+        "source_sha256": "c771e205c65c2796fc3cbf7adbde7e931f48f8bdbb8adaafc1195c866f31ab72"
+      }
+    }
+  },
+  {
+    "slug": "glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s",
+    "file": "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "GlaSSEM and the 2028 date: what Samsung Electro-Mechanics actually said, and why a glass-substrate delay postpones almost nothing",
+    "model": "claude-opus-5",
+    "created_at": "2026-08-12T09:34:31Z",
+    "source": "workflow_dispatch",
+    "prompt": "GlaSSEM slips to 2028: Samsung Electro-Mechanics' glass-core substrate delay and the AI packaging roadmap it postpones",
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-17T120519--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "GlaSSEM과 2028 일정: 삼성전기가 실제로 말한 내용, 그리고 유리기판 연기가 거의 아무것도 미루지 않는 이유",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-17T12:05:19Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s",
+        "tags": [],
+        "translated_at": "2026-08-17T12:05:19Z",
+        "source_file": "research/generative/2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s.ara.md",
+        "source_sha256": "9d4e91a4f4485de71850f71110a873228d4e16f62b2c1e8e44567d6a67b7b329"
+      }
+    }
+  },
+  {
+    "slug": "grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+    "file": "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The $2 frontier: does Grok 4.6's repricing of Fable 5 Max survive the benchmarks that don't work for the seller?",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-12T22:22:13Z",
+    "source": "workflow_dispatch",
+    "prompt": "Grok 4.6 at $2/$6 vs Fable 5 Max $10/$50: does the frontier repricing survive non-vendor cost-aware benchmarks?",
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-17T090312--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "$2 프런티어: Grok 4.6의 Fable 5 Max 재가격 책정이 판매자에게 유리하지 않은 벤치마크에서도 살아남는가?",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-17T09:03:12Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri",
+        "tags": [],
+        "translated_at": "2026-08-17T09:03:12Z",
+        "source_file": "research/generative/2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri.ara.md",
+        "source_sha256": "552fe706b156586e6350ee66e0808148a18eb2a6ede7f6aab5729248ce8206a3"
+      }
+    }
+  },
+  {
+    "slug": "openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr",
+    "file": "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The $2.50 Flagship: OpenAI's Channel-Locked 50% Cut on GPT-5.6 Sol",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-18T08:55:49Z",
+    "source": "workflow_dispatch",
+    "prompt": "OpenAI's 50% GPT-5.6 Sol cut on OpenRouter and Vercel only: pricing against the token-share scoreboard, not the demand curve",
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T111709--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "$2.50 플래그십: OpenAI의 채널 한정 50% 인하, 대상 GPT-5.6 Sol",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T11:17:09Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr",
+        "tags": [],
+        "translated_at": "2026-08-18T11:17:09Z",
+        "source_file": "research/generative/2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr.ara.md",
+        "source_sha256": "b4a216a897182d67a611b9c3e9d5ee6afe60026ec58373fa30103931d82c5d56"
+      }
+    }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-banodoco-statu",
+    "file": "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "A Tweet, a New Model, and an Open-Source Relay: What \"Seamless\" MiniMax H3 Continuation Actually Means",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-18T10:16:37Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/banodoco/status/2089384727094431796\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T110715--expand-research-from-twitter-link-https-x-com-banodoco-statu.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "트윗 하나, 새 모델, 그리고 오픈소스 릴레이: \"끊김 없는\" MiniMax H3 이어붙이기가 실제로 의미하는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T11:07:15Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-banodoco-statu",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-18T11:07:15Z",
+        "source_file": "research/generative/2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu.ara.md",
+        "source_sha256": "1a318014a94f4a344b1effa426f694a78eda4f0de9fc81fdb643218c7d83ffa6"
+      }
+    }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-haydenzadams-s",
+    "file": "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Hayden Adams Says AMMs Will Eat Global Finance. The Data Says: Not Like This.",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-18T17:25:11Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/haydenzadams/status/2089531754004554215\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-gakonst-status",
+    "file": "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "OpenRouter's Pricing Engine Was Called Rigged the Same Week Stripe Paid $7 Billion For It",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-18T18:44:17Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/gakonst/status/2089410233496203335\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-08-18T201208--expand-research-from-twitter-link-https-x-com-gakonst-status.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "스트라이프가 오픈라우터에 $7십억 달러를 지급한 바로 그 주, 가격 엔진이 조작됐다는 비판이 나왔다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-18T20:12:08Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-gakonst-status",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-08-18T20:12:08Z",
+        "source_file": "research/generative/2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status.ara.md",
+        "source_sha256": "25303ccc0f245142c6e7ce784ceb589fcc005ac7bb5cd57dc9ef416d225b9487"
+      }
+    }
+  },
+  {
+    "slug": "anthropic-s-26-8-binder-hit-rate-what-claude-actually-design",
+    "file": "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The 26.8% binder hit rate: what Claude actually designed, and why the RFdiffusion 19% baseline settles less than it seems",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-19T19:24:19Z",
+    "source": "workflow_dispatch",
+    "prompt": "Anthropic's 26.8% binder hit rate: what Claude actually designed, and whether the RFdiffusion 19% baseline settles it",
+    "tags": []
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-fin465-status",
+    "file": "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The \"Secret\" LinkedIn Buying-Intent Hack Isn't Secret, and Its Legal Ground Isn't Stable",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-20T10:34:07Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/fin465/status/2090272639839576492\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-trycua-status",
+    "file": "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Cua's local, encrypted memory for computer-use agents: the crypto holds up, the 'first' claim doesn't quite",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-20T14:28:51Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/trycua/status/2089770780053643397\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
+  },
+  {
+    "slug": "unitree-star-market-ipo-debut",
+    "file": "2026-08-20T152813--unitree-star-market-ipo-debut.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Unitree Went Public. RoboStrategy's Four Questions Now Have Answers — Mostly.",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-20T15:28:13Z",
+    "source": "local",
+    "prompt": "Expand research from Twitter link: https://x.com/RoboStrategy/status/2087561451468681234 — RoboStrategy's Unitree IPO primer, verified and updated against the actual STAR Market pricing, debut, and regulatory record.",
+    "tags": [
+      "twitter-seed",
+      "robotics",
+      "ipo",
+      "china",
+      "unitree"
+    ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-crypto-mckenna",
+    "file": "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Arete Capital's CHIP thesis, checked against the chain",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-20T16:18:10Z",
+    "source": "generative-research",
+    "prompt": "Seed Twitter/X URL: https://x.com/Crypto_McKenna/status/2090078188752060628\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-layerggofficia",
+    "file": "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "GIWA Chain, Checked: What Upbit's New L2 Actually Opens",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-21T14:09:36Z",
+    "source": "workflow_dispatch",
+    "prompt": "Seed Twitter/X URL: https://x.com/layerggofficial/status/2090707595606794586. Start by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed",
+      "crypto",
+      "layer2",
+      "korea",
+      "upbit"
+    ]
+  },
+  {
+    "slug": "marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5",
+    "file": "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Marvell's 58.97M-share Google warrant: what 240 tranches of $500M reveal about the TPU bet",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-22T15:59:49Z",
+    "source": "workflow_dispatch",
+    "prompt": "Marvell's 58.97M-share Google warrant: what 240 tranches of $500M imply about the TPU custom-silicon commitment",
+    "tags": []
+  },
+  {
+    "slug": "ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur",
+    "file": "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Ox Alpha's retracted 80%: what a 10-task DeepSWE sample measured, and what the ~63% at ~47K output tokens actually settles",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-23T02:23:40Z",
+    "source": "workflow_dispatch",
+    "prompt": "Ox Alpha's retracted 80%: what a 10-task DeepSWE subset measured, and what the 63% at 47K output tokens actually settles",
+    "tags": []
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-d2-finance-sta",
+    "file": "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Tori Finance Said It Was Untouched by the Term Finance Hack. An On-Chain Mint Complicates That.",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-08-24T08:56:49Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/D2_Finance/status/2091670181890162715\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
+  },
+  {
+    "slug": "swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests",
+    "file": "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The 49-Point Gap: What SWE-bench Science's Visible-Test Scores Hide",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-25T10:08:46Z",
+    "source": "workflow_dispatch",
+    "prompt": "SWE-bench Science's 49-point gap: what 96.64% on visible tests vs 47.90% Pass@1 on hidden ones says about agent benchmarks",
+    "tags": []
+  },
+  {
+    "slug": "openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw",
+    "file": "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The Jalapeño count: what an A0-stepping, unoptimized, Samsung-HBM4-bound ASIC actually settles against Vera Rubin",
+    "model": "deepseek-v4-flash",
+    "created_at": "2026-08-25T21:59:52Z",
+    "source": "workflow_dispatch",
+    "prompt": "OpenAI's Jalapeño ASIC beats Vera Rubin on throughput-per-MW: what an A0-stepping, unoptimized, Samsung-HBM4-limited chip actually settles",
+    "tags": []
+  },
+  {
+    "slug": "uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w",
+    "file": "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Uniswap's Continuous Clearing Auction: the whitepaper is more honest than the marketing page",
+    "model": "claude-opus-5",
+    "created_at": "2026-08-26T06:11:24Z",
+    "source": "workflow_dispatch",
+    "prompt": "Uniswap Continuous Clearing Auctions (CCA): how the mechanism works, price discovery and token allocation, comparison with fixed-price sales, Dutch auctions, batch auctions and AMMs, MEV/manipulation and regulatory risks, and evidence from real launches",
     "tags": []
   }
 ]

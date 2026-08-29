@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-11 10:08:01 UTC
+
+CYCLE: The Anthropic IPO rumour gets a named outlet, the Claude watermark turns out to be global, and SK hynix restarts a mothballed China NAND fab.
+
+TOP STORIES:
+• WSJ: Anthropic targeting a September/early-October IPO, ahead of OpenAI's, with investors pressing on Chinese models and datacenter opposition [✓]
+• Claude's text watermark applies worldwide — Claude, API, Code, Cowork, Tag, AWS, Google Cloud, Foundry — but only for models launched in the EU from Aug 2 [✓]
+• SK hynix restarts Dalian Fab 2, +50% China NAND capacity, equipment as early as November — mature 100-layer parts only, not the tier that is short [⚠]
+
+WATCH: A confidential S-1 or underwriting syndicate converting the Anthropic IPO window from a reported target into a filing.
+
+Full update on GitHub.

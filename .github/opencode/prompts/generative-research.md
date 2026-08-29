@@ -16,7 +16,7 @@ secrets, or pass secret-looking strings to external services. The provider
 API keys (`OPENCODE_API_KEY`, `MOONSHOT_API_KEY`) live in env for the
 harness itself — never echo them, never send them anywhere, never read auth
 files. The only env values you should rely on are workflow-controlled
-paths/metadata (`GEN_DRAFT`, `GEN_SLUG`, `GEN_SOURCE`) and the bird CLI
+paths/metadata (`GEN_DRAFT`, `GEN_SLUG`, `GEN_SOURCE`) and the birdy CLI
 cookies already consumed by bird.
 
 You have no server-side web-search tool in this harness. For source
@@ -28,8 +28,8 @@ then fetch specific URLs with `scripts/source_cache.py`, `curl` +
 If `.gen-input/twitter_url.txt` is non-empty, begin by reading the seed with:
 
 ```bash
-bird read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"
-bird thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"
+birdy read "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"
+birdy thread "$(cat .gen-input/twitter_url.txt)" --json --plain || echo "[]"
 ```
 
 Use X/Twitter only as primary evidence for what the author/account said. Do not
@@ -123,7 +123,7 @@ uv run python scripts/write_generative_research.py \
   --tags "$(cat .gen-input/tags.txt)" \
   --source "$GEN_SOURCE" \
   --prompt "$(cat .gen-input/prompt.txt)" \
-  --model kimi-k3 \
+  --model deepseek-v4-flash \
   --cite-density-min 10 --refs-min 20 \
   --qsanity \
   --html-body "$GEN_DRAFT"
@@ -137,7 +137,7 @@ uv run python scripts/write_generative_research.py \
   --tags "$(cat .gen-input/tags.txt)" \
   --source "$GEN_SOURCE" \
   --prompt "$(cat .gen-input/prompt.txt)" \
-  --model kimi-k3 \
+  --model deepseek-v4-flash \
   --cite-density-min 10 --refs-min 20 \
   --qsanity \
   --html-body "$GEN_DRAFT"

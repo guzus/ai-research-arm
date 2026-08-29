@@ -1,0 +1,17 @@
+AI News - 2026-08-11
+
+TOP STORIES:
+• Nvidia partners with Wall Street firms to raise $500B for AI data centers
+• Anthropic, Macquarie & GIC launch Theseus JV to build dedicated US data centers for Claude
+• Anthropic to embed invisible watermarks in all Claude text worldwide, citing EU AI Act
+• OpenAI launches GPT-5.6-Cyber for vetted cybersecurity partners
+• TSMC July revenue up 44.7% YoY on AI chip demand
+• China's AgiBot overtakes Unitree as top humanoid robot vendor
+
+KEY NUMBERS:
+• $500B - Nvidia/Wall Street AI infrastructure financing target
+• $50B - Anthropic's planned US data-center spend
+• 44.7% - TSMC July YoY revenue growth ($14.5B)
+• 8,400 units / 44% share - AgiBot H1 2026 humanoid robot shipments
+
+Full report on GitHub.

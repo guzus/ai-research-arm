@@ -4,10 +4,17 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash — torrent networks, local hosting, "APIs are rented, weights are forever" — gains force, surging directly on the Fable 5 government shutdown and hardening through mid-2026 as a broker/router shift routes production traffic to Chinese open models.
+description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash gains force — now including Z.ai's downloadable GLM-5.3 flagship (2026-08-29, the day's top HN AI thread) and Tencent's Hunyuan Hy4 preview (770B/49B-active, weights promised), after Meta's Apache-2.0 Muse Glimmer return, Alibaba's first Max-class Qwen, and Vercel gateway data putting open tokens at 62%.
 created_at: 2026-06-14
-timestamp: 2026-08-06T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
+  - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
+  - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
+  - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
+  - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
@@ -362,6 +369,115 @@ fragile and local weights look like insurance.
   API product with no open-weight release stated** — the main Western
   counterweight named below is now closed at its most commercially exposed
   model (ARA daily digest 2026-08-06).
+- **A code-forge backlash: Codeberg's community votes to keep its code out of
+  LLM training (2026-08-09).** The **Codeberg** maintainers, after their
+  community voted **not to allow any code hosted there to be used for LLM
+  training** and to **ban vibe-coded projects**, published a statement
+  defending the decision — a developer-side, self-hosted counterweight to the
+  training-data free-for-all the open-weights ecosystem depends on (Bluesky
+  @alexhanna; ARA daily digest 2026-08-10).
+- **Meta returns to open weights — and commits to opening its priced model
+  (2026-08-10).** **[[muse-glimmer|Muse Glimmer]]** — a **30B dense multimodal
+  agent model under Apache 2.0**, day-0 in transformers/llama.cpp/vLLM/SGLang/
+  Ollama, ~17GB in 4-bit — is the best non-Chinese open-weights release in a
+  year (Ethan Mollick's calibrated read: not at the Chinese-open-model frontier,
+  well behind the closed frontier, but the strongest Western open ship of the
+  window; it wins 12 of 24 benchmark rows against April-generation
+  [[gemma-4|Gemma 4 31B]] and Qwen 3.6 27B). Two things matter for this theme:
+  first, Meta also committed to **open-weighting a version of Muse Spark 1.2** —
+  the proprietary model it began charging for in [[muse-code|Muse Code]] four
+  days earlier — a reversal of the component-withholding pattern this page
+  flagged on 2026-08-06 (the main Western counterweight to the Chinese open
+  wave had gone closed at its most commercially exposed model). Second, CEO
+  **Mark Zuckerberg's superintelligence manifesto** made the policy asks
+  explicit: share **intermediate training checkpoints with government**, leave
+  **distillation unrestricted**, and the argument that *"any policy that slows
+  American model releases — even by a month — could add significant risk to
+  American leadership."* Together they harden Meta as the loudest pro-open
+  US voice against the [[anthropic]]/[[openai]] convergence this theme has
+  tracked since the "dumping" framing fight (ARA daily digest 2026-08-11).
+- **China opens its first Max-class flagship — Alibaba's Qwen3.8-2.4T-A95B
+  (2026-08-13).** The promise tracked on [[qwen-3-8-max]] since launch day
+  landed: Alibaba open-weighted the **2.4T-param / 95B-active model across 512
+  experts (4.89TB of weights)** with day-0 vLLM and pre-quantized 4-bit
+  checkpoints sized to a single 8×B300 or 8×MI355X node — the **first
+  Max-class Qwen ever released open**. The day's HN threads on it and
+  [[deepseek|DeepSeek V4-Pro-0813]] converged on **MoE active-parameter
+  economics** (how ~95B-active models price against frontier rivals), the
+  cost story that has driven this theme all cycle. Two caveats keep the
+  component-withholding pattern alive: **vision, 1M default context and
+  built-in tools are withheld** on the open base (they stay the paid layer),
+  and **no quality measurement against the quantizations was published**
+  (ARA daily digest 2026-08-13).
+- **Ornith-1.5 ships a self-improving open family claiming Opus-class scores
+  (2026-08-20).** **[[ornith-1-5|Ornith-1.5]]** — a **9B dense / 35B MoE /
+  397B MoE family under MIT**, shipped same-day with FP8, GGUF, MLX and NVFP4
+  quantizations — claims **Claude Opus 4.8-class scores from a training loop
+  that writes its own RL tasks**: 86.1 Terminal-Bench 2.1, 86 SWE-Bench
+  Verified, 65.1 SWE-Bench Pro, 44.6 HLE, 71.2 Tool Decathlon. Every number is
+  **self-reported and no independent eval has landed**, and the release drew a
+  cluster of near-identical praise posts from low-follower accounts inside
+  three minutes — **amplification rather than corroboration**. It arrives as
+  the digest's listed research paper "On the Fragility of Self-Improving
+  Agents" argues memory-based self-improving agents show high across-run
+  variance and task-order dependence — read those two together before pricing
+  the claim — and Nathan Lambert's framing that the **training recipe, not the
+  weights, is the real open-source analogue to Linux** (ARA daily digest
+  2026-08-20).
+
+- **The open share of routed traffic crosses the majority — Vercel's gateway at
+  62% open (2026-08-23).** **Guillermo Rauch** published the **22 August split
+  of Vercel AI Gateway token volume at 62% open against 38% closed** — **up
+  from 28.4% open on 24 June** — the **first operator-level number** behind a
+  week of vendor benchmarks, and a major step past the "29% in July" data
+  point this theme tracked on 2026-08-14. Two caveats: it is one gateway
+  operator's routed mix (see [[openrouter]] for the broker-layer read), and the
+  June→August jump partly reflects open flagships ([[zhipu-glm-5-3|GLM-5.3]],
+  [[moonshot-kimi-k3|Kimi K3]], [[deepseek-v4-flash|V4-Flash]]) entering
+production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
+   2026-08-23).
+- **The open-local field sizes itself, and Stanford begins a fully-open 535B
+   pre-train (2026-08-24).** Two 2026-08-24 data points continue the
+   capability-at-commodity-price thread. **(1)** The local-model field ranking
+   read: best **dense** model fitting a single RTX 5090 is **Qwen 3.8 27B**;
+   best **MoE** for a 2× DGX Spark is **[[deepseek-v4-flash|V4-Flash-0731]]**,
+   with one user reporting sustained local inference above **200 tokens/sec**.
+   **(2)** **Stanford CRFM's Marin 535B-A23B** pretraining run began: **18.75T
+   tokens on 11 × GB200 NVL72, roughly three months, fully open** — a
+   university-scale open-weight pre-train at frontier-challenging scale that
+   will compound over its ~90-day runway (model timeline; ARA daily digest
+   2026-08-24).
+- **The smarter read of the Ox Alpha arc — a "not frontier" open-weight
+  benchmark reality-check (2026-08-23).** The [[ox-alpha]] mystery-model hype
+  deflated over five cycles in a way that matters for this theme: the
+  community consensus converged on **a Z.ai GLM Flash variant**, and Ethan
+  Mollick's calibrated read was blunt — **"not at the frontier even among open
+  weights,"** below [[moonshot-kimi-k3|Kimi K3]] on every test he ran. It is a
+  useful counterpoint to the release-hype entries on this page: the open tier
+  is closing on the frontier, but an unattributed "frontier" claim still fails
+  against independent benchmarks (ARA daily digest 2026-08-23).
+
+- **[[zhipu-glm-5-3|GLM-5.3]] flagship weights actually download
+  (2026-08-29).** The promise this theme and the GLM-5.3 page have
+  carried since mid-August closes: Z.ai published **download weights
+  for its most capable agentic coding / cyber-defense model**,
+  post-trained on the 743B GLM-5.2 base, with day-0 vLLM / SGLang /
+  Baseten serving and same-evening Unsloth 2-bit GGUFs (239GB, ~81%
+  retained, 256GB Mac). It was the day's **biggest AI HN thread (733
+  points)**. Ethan Mollick's same-day caveat — **considerable
+  offensive cyber capability with effectively no guardrails** — is
+  the capability-side of the "does decentralization survive contact
+  with capability?" question below (Z.ai, Hugging Face, Hacker News,
+  Bluesky; ARA daily digest 2026-08-29). See [[zhipu-glm-5-3]] and
+  [[agentic-ai-security]].
+- **Tencent previews Hunyuan Hy4, weights promised (2026-08-29).**
+  **770B total / 49B active**, 1M context, positioned as an
+  open-source frontier productivity model at **$0.834/M input and
+  $2.501/M output**, with weights promised on Hugging Face and
+  GitHub. A preview, not a download — the same "weights promised"
+  gap [[zhipu-glm-5-3]] just closed. Fold onto the existing
+  [[tencent-hunyuan-hy3]] family rather than minting a Hy4 page
+  until weights land (X; ARA daily digest 2026-08-29).
 
 ## Open questions
 

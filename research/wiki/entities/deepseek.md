@@ -4,10 +4,13 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — marking its pivot from research to commercialization toward AGI.
+description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — pivoting to commercialization toward AGI, and shipped V4 Pro's repriced card on 2026-08-18.
 created_at: 2026-06-04
-timestamp: 2026-08-02T00:00:00Z
+timestamp: 2026-08-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
+  - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA model ticket — DeepSeek V4 GA + surge pricing", path: research/models/tickets/deepseek-v4-ga-surge-pricing-2026-06.md}
@@ -172,6 +175,50 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   Same cycle, [[deepseek-v4-flash|V4-Flash]] kept clearing outside tests and
   was relayed as **105× cheaper per task than [[claude-fable-5|Fable 5]]**
   (ARA digest 2026-08-02).
+
+- **V4-Pro-0813 lands on the API — and the cheap sibling outperforms it on a
+  friendly test (2026-08-13).** DeepSeek listed **`DeepSeek-V4-Pro-0813`** on
+  its own API documentation page at **$0.435 input / $0.87 output per million
+  tokens** at **1M context** — roughly **4.5× the cost of the
+  [[deepseek-v4-flash|V4 Flash 0731]]** — confirmed across two independent
+  readings. SemiAnalysis put the parameter count at **1.5T**; a competing
+  relay says **1.6T with 49B active**. There is **no official model card**;
+  circulating benchmark tables come from **WeChat screenshots comparing
+  against [[claude-opus-4-8|Claude Opus 4.8]] rather than
+  [[claude-opus-5|Opus 5]]**. Within two hours, @teortaxesTex — a
+  consistently pro-DeepSeek analyst — reported the cheaper V4 Flash 0731
+  outperforming it on his own tasks, calling the release evidence that
+  **"they need more than scale"** (ARA digest 2026-08-13).
+
+- **V4 Pro's repriced card goes live — peak/off-peak tiering (2026-08-18).**
+  DeepSeek's V4 Pro now charges **$1.32/M input and $3.96/M output at peak,
+  exactly half off-peak**, with **cached input as low as $0.022/M**. The peak
+  windows are **01:00–04:00 and 06:00–10:00 UTC** — the Chinese working day
+  with the lunch break cut out — so **US-hours developers pay off-peak by
+  default**. V4 Pro also ships **native Responses API support**, **1M-token
+  context with up to 384K output**, and **reasoning-effort controls currently
+  exposing only high and max**. Independent **WeirdML** scoring (benchmark
+  author @htihle) puts **V4 Pro 0813 at maximum reasoning at 66.2% against
+  63.0% for the cheaper [[deepseek-v4-flash|V4 Flash 0731]]** — the premium
+  tier buys about **3.2 points** — with @teortaxesTex, a consistently
+  DeepSeek-favorable analyst, calling it **"functionally Flash."** VentureBeat
+  framed the API change as prices "up to **1,100%**" higher, a figure nobody
+  has tied to a named line item and which is **inconsistent with the
+  published per-Mtok rates** (which make even the cheapest output rate 2.28x
+  last week's). Treat the surge-style peak/off-peak scheme as the long-flagged
+  pricing lever finally going live; see the earlier June surge-pricing entry
+  above (ARA digest 2026-08-18).
+
+- **DeepSeek ships its first image-capable model — V4-Flash-Vision-Exp
+  (2026-08-22).** An experimental **vision-capable variant of
+  [[deepseek-v4-flash|V4-Flash]]** went live on the API at V4-Flash token prices
+  with mixed text-plus-image input, image billing of 117–384 tokens each, and a
+  free Files API for image reuse — the lab's **first multimodal model**, extending
+  the 2026-06-19 Vision launch (then V4-app only, image *understanding*) into the
+  V4-Flash line and the API surface. Nothing has been said about open weights, the
+  load-bearing omission for this lab; the vendor's "close to Opus 4.8" framing has
+  not been independently benchmarked. See [[deepseek-v4-flash]] (The Decoder; ARA
+  daily digest 2026-08-22).
 
 ## Open questions
 

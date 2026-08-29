@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Grok 4.6 is priced at $2 per million input tokens and $6 per million output against Claude Fable 5 Max at $10/$50 — an 80% discount on input and 88% on output.",
+      "no_contradiction_found": true,
+      "severity": null,
+      "contradicting_url": null,
+      "contradicting_quote": null
+    },
+    {
+      "claim_id": "c4",
+      "claim_text": "Parametric CAD Bench measured Grok 4.6 at 96.9% of Claude Opus 5's top score of 0.906 for 61% of the cost — the claim that the repricing survives non-vendor cost-aware benchmarks.",
+      "no_contradiction_found": false,
+      "severity": "medium",
+      "contradicting_url": "https://x.com/testingcatalog/status/2087567672695275584",
+      "contradicting_quote": "The single third-party number anyone cited — Frontend Arena, 1,553 points — places Grok 4.6 13th, which is not a frontier-leading position and sits awkwardly beside a table asserting parity with GPT-5.6 Sol. The CAD result is single-operator, covers one engineering domain, and was published inside the seven-day promotional window."
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Artificial Analysis puts Grok 4.6 at 61 on its Intelligence Index against Fable 5 Max's 62 — the near-parity that anchors the frontier-repricing thesis.",
+      "no_contradiction_found": false,
+      "severity": "low",
+      "contradicting_url": "https://x.com/scaling01/status/2087608575631695899",
+      "contradicting_quote": "On really long-running and autonomous workflows … the best OpenAI and Anthropic models are much better in the tails — a composite index cannot capture the tail-reliability gap where Fable 5 Max's premium is most defensible."
+    }
+  ]
+}

@@ -15,28 +15,66 @@ jobs:
     runs-on: [self-hosted, Linux]
     # Cap a hung agent/fetch so it can't pin a Cloud Run worker for GitHub's
     # 6h default (mirrors the 90-min agent-lane convention).
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: write
       pull-requests: write
       id-token: write
 
     steps:
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           fetch-depth: 0
+          persist-credentials: false
+          set-safe-directory: false
 
       - name: Get current datetime
         id: datetime
         run: |
-          echo "date=$(date -u +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-          echo "timestamp=$(date -u +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: '22'
+          echo "date=$(date -u +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+          echo "timestamp=$(date -u +'%Y-%m-%d %H:%M UTC')" >> "$GITHUB_OUTPUT"
 
       - name: Fetch Reddit RSS feeds
         id: reddit
@@ -73,11 +111,13 @@ jobs:
           head -c 300 /tmp/reddit/ml.rss
           echo ""
 
-      - name: Copy Reddit data to working directory
+      - name: Stage Reddit data for isolated agent
         run: |
-          mkdir -p data/reddit
-          cp /tmp/reddit/*.rss data/reddit/ || echo "No files to copy"
-          ls -la data/reddit/
+          set -euo pipefail
+          rm -rf .agent-input/reddit
+          mkdir -p .agent-input/reddit
+          cp /tmp/reddit/*.rss .agent-input/reddit/
+          ls -la .agent-input/reddit/
 
       # Deterministic HN pre-fetch (mirrors the Reddit RSS approach above).
       # The mcp-hackernews MCP server has failed intermittently inside the
@@ -106,45 +146,38 @@ jobs:
           fi
           echo "HN frontpage.json size: $(wc -c < /tmp/hn/frontpage.json) bytes"
 
-      - name: Copy HN data to working directory
+      - name: Stage HN data for isolated agent
         run: |
-          mkdir -p data/hn
-          cp /tmp/hn/*.json data/hn/ || echo "No files to copy"
-          ls -la data/hn/
+          set -euo pipefail
+          rm -rf .agent-input/hn
+          mkdir -p .agent-input/hn
+          cp /tmp/hn/*.json .agent-input/hn/
+          ls -la .agent-input/hn/
 
       - name: Capture community output base
         id: community-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      - name: Create MCP Config
-        run: |
-          cat > /tmp/mcp-config.json << 'EOF'
-          {
-            "mcpServers": {
-              "hackernews": {
-                "command": "npx",
-                "args": ["-y", "mcp-hackernews"]
-              }
-            }
-          }
-          EOF
-
-      - name: Process Community Data with Fireworks
+      - name: Process community data with SSOT-routed agent
         id: community-agent
         continue-on-error: true
-        uses: ./.github/actions/agent-run
+        uses: ./.github/actions/agent-dispatch
         with:
+          mode: editorial
           lane: community
+          expected-paths: |
+            research/community/${{ steps.datetime.outputs.date }}-hn.md
+            research/community/${{ steps.datetime.outputs.date }}-reddit.md
+          allowed-paths: |
+            research/community/${{ steps.datetime.outputs.date }}-hn.md
+            research/community/${{ steps.datetime.outputs.date }}-reddit.md
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
-          claude-args: |
-            --model opus --mcp-config /tmp/mcp-config.json
-            --allowedTools "Read,Write,Edit,Bash(git:*),Bash(ls:*),Bash(cat:*),mcp__hackernews__*"
-          expected-paths: |
-            research/community/
-          label: Community Fireworks processor
-          prompt: |
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          timeout-minutes: '25'
+          prompt-text: |
             You are a community AI news curator. Process REAL-TIME data from HN and Reddit.
 
             TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
@@ -153,7 +186,7 @@ jobs:
             ## TASK 1: Hacker News
 
             PRIMARY SOURCE (always available): read the pre-fetched front page
-            from data/hn/frontpage.json. This is the Algolia HN Search API
+            from `.agent-input/hn/frontpage.json`. This is the Algolia HN Search API
             response; each item in hits[] has:
             - title          (story title)
             - url            (external link; may be null for Ask/Show HN)
@@ -166,21 +199,17 @@ jobs:
 
             Filter hits[] for AI/ML/LLM-related content and rank by points.
 
-            SUPPLEMENT (best-effort): if the Hacker News MCP tools respond, use
-            them to refine scores/comment counts or pull "new" stories not yet
-            on the front page. If the MCP tools error or return nothing, DO NOT
-            leave the HN section empty — data/hn/frontpage.json is sufficient on
-            its own. Never emit an "HN data unavailable" placeholder while
-            frontpage.json has hits.
+            The pre-fetched file is the authoritative input for this run. Do
+            not leave the HN section empty while frontpage.json has AI/ML hits.
 
             Write to: research/community/${{ steps.datetime.outputs.date }}-hn.md
 
             ## TASK 2: Reddit (RSS Feeds)
 
-            Read the Reddit RSS feed files from data/reddit/:
-            - data/reddit/ml.rss (r/MachineLearning hot posts)
-            - data/reddit/localllama.rss (r/LocalLLaMA hot posts)
-            - data/reddit/artificial.rss (r/artificial hot posts)
+            Read the Reddit RSS feed files from `.agent-input/reddit/`:
+            - .agent-input/reddit/ml.rss (r/MachineLearning hot posts)
+            - .agent-input/reddit/localllama.rss (r/LocalLLaMA hot posts)
+            - .agent-input/reddit/artificial.rss (r/artificial hot posts)
 
             These are standard RSS/Atom XML feeds. Each <entry> contains:
             - <title> - post title
@@ -243,8 +272,15 @@ jobs:
         with:
           base-sha: ${{ steps.community-output-base.outputs.sha }}
           expected-paths: |
-            research/community/
+            research/community/${{ steps.datetime.outputs.date }}-hn.md
+            research/community/${{ steps.datetime.outputs.date }}-reddit.md
           label: Community workflow output
+
+      - name: Propagate community agent contract failure
+        if: always() && steps.community-agent.outcome != 'success'
+        run: |
+          echo "::error::Community routed agent failed its containment or output contract."
+          exit 1
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the

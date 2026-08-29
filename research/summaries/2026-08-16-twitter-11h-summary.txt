@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-16 11:46:47 UTC
+
+CYCLE: ChatGPT ad terms, Amodei's actual regulatory ask, and DeepSeek repricing the agent loop.
+
+TOP STORIES:
+• OpenAI privacy policy puts ChatGPT ad personalisation behind explicit opt-in; in some regions declining ads caps free-tier messages ⚠
+• Amodei's ask itemised: rules weighted against the biggest labs, testing that also covers open weights, FINRA-style body ⚠
+• DeepSeek Harness reported past 122K GitHub stars in 3 days, same week cache-hit input reportedly repriced 6-12x ⚠
+• Qwen3.8-27B ships at XHIGH reasoning; MEDIUM reported equivalent at ~1/4 the tokens ⚠
+
+WATCH: Whether DeepSeek's 16 Aug price card confirms the cache-hit multiple with before/after $/Mtok.
+
+Full update on GitHub.

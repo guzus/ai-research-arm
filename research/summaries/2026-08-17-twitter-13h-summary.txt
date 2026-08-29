@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-17 13:09:52 UTC
+
+CYCLE: Infrastructure deal terms shrink, DeepSeek's flagship premium gets measured, Unitree prices its IPO.
+
+TOP STORIES:
+- NVIDIA takes $1.5B stake in SB Energy, exclusive compute for OpenAI's Ohio campus; 8 GW headline, but 3.75 GW of it is an option, not contracted capacity [⚠]
+- DeepSeek V4 Pro 0813 scores 66.2% on WeirdML vs 63.0% for its own cheaper Flash tier — 3.2 points for a 4.55x output price [⚠]
+- Unitree sets Shanghai STAR listing for 19 Aug at ~61B yuan (~$9B), two days after unmeasured superhuman locomotion claims [⚠]
+
+WATCH: Whether NVIDIA or SB Energy publishes terms naming the 4.25/3.75 GW split and an exercise date for the option.
+
+Full update on GitHub.

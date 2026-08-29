@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-08-21
+
+TOP STORIES:
+• Nvidia pays Poolside $6B for a non-exclusive licence, plus $1B at a $12B pre-money and offers to 109 staff
+• Anthropic reported to be preparing a public IPO prospectus as soon as end-August; confidential S-1 said to have gone in during June
+• Anthropic takes computer use, browser tool, Skills API and Files API to general availability
+• Texas freezes all datacenter energization approvals pending an ERCOT queue audit
+
+KEY NUMBERS:
+• ERCOT interconnection queue: ~474 GW, about 5x record peak demand
+• Alibaba: AI Cloud +45% YoY, free cash flow -RMB 44.67B, stated AI payback 3 years
+• Samsung payout reports disagree 50%: KRW 100T vs KRW 150T
+
+TRENDING: HN's top AI story is a 125M piano-autocomplete model running on-device, over any frontier news.
+
+Full digest on GitHub.

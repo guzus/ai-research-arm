@@ -23,6 +23,7 @@ concurrency:
 jobs:
   wiki-ingest:
     runs-on: [self-hosted, Linux]
+    timeout-minutes: 105
     # Only run when the digest succeeded, OR when a human dispatched us.
     # `workflow_run.conclusion` is empty on workflow_dispatch, so we must
     # explicitly allow that event or the manual fallback silently no-ops.
@@ -34,6 +35,44 @@ jobs:
       id-token: write
 
     steps:
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
       # No `lfs: true`: the wiki lane reads + writes ONLY markdown
       # (research/wiki/**, the digest, the model tickets, the schema doc).
       # None of those match the LFS patterns in .gitattributes (png/jpg/gif/
@@ -44,29 +83,57 @@ jobs:
       # LFS-tracked file either; a no-LFS checkout is safe all the way
       # through push.
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           fetch-depth: 0
+          persist-credentials: false
+          set-safe-directory: false
 
       - name: Get current datetime
         id: datetime
         run: |
-          echo "date=$(date -u +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-          echo "timestamp=$(date -u +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
-          echo "yesterday=$(date -u -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -u -v-1d +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          {
+            echo "date=$(date -u +'%Y-%m-%d')"
+            echo "timestamp=$(date -u +'%Y-%m-%d %H:%M UTC')"
+            echo "yesterday=$(date -u -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -u -v-1d +'%Y-%m-%d')"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Check curated digest publication state
+        id: digest-publication
+        run: |
+          set -euo pipefail
+          DIGEST="research/digest/${{ steps.datetime.outputs.date }}-digest.md"
+          if [ ! -f "$DIGEST" ]; then
+            DIGEST=$(find research/digest -maxdepth 1 -type f -name '*-digest.md' | sort | tail -1)
+          fi
+          if [ -z "${DIGEST:-}" ]; then
+            echo "editorial=false" >> "$GITHUB_OUTPUT"
+            echo "No digest available; skipping wiki ingest."
+          elif python3 scripts/digest_publication_state.py "$DIGEST"; then
+            echo "editorial=false" >> "$GITHUB_OUTPUT"
+            echo "Operational fallback found; skipping wiki ingest because it is not curated synthesis."
+          else
+            echo "editorial=true" >> "$GITHUB_OUTPUT"
+          fi
 
       # Snapshot HEAD before the agent runs so the deletion guard below can
       # diff exactly the agent's commit (robust whether or not it commits).
       - name: Record base commit
+        if: steps.digest-publication.outputs.editorial == 'true'
         id: basesha
-        run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v7
+        if: steps.digest-publication.outputs.editorial == 'true'
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           enable-cache: true
 
       - name: Install Python dependencies
+        if: steps.digest-publication.outputs.editorial == 'true'
         run: uv sync --frozen
 
       # Wiki ingest agent — maintains the compounding knowledge base at
@@ -101,31 +168,31 @@ jobs:
       # The prompt now also bounds work per run and commits a valid PARTIAL
       # pass rather than racing the cap to zero with an empty tree.
       #
-      # continue-on-error keeps the runner alive past a Claude failure so
-      # the "Inspect Claude outcome" step below can decide what to surface
+      # continue-on-error keeps the runner alive past an agent failure so
+      # the outcome-inspection step below can decide what to surface
       # to job.status (and so hooker-telemetry's `if: always()` step still
       # fires). Without the inspect step, this flag would silently mask
       # timeouts as success.
-      - name: Ingest digest into wiki via Claude
+      - name: Ingest digest into wiki with SSOT-routed agent
+        if: steps.digest-publication.outputs.editorial == 'true'
         id: ingest
         timeout-minutes: 90
         continue-on-error: true
-        uses: ./.github/actions/agent-run
-        env:
-          DATE_TODAY: ${{ steps.datetime.outputs.date }}
-          DATE_YESTERDAY: ${{ steps.datetime.outputs.yesterday }}
-          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
+        uses: ./.github/actions/agent-dispatch
         with:
+          mode: editorial
           lane: wiki-ingest
+          expected-paths: |
+            research/wiki/
+          allowed-paths: |
+            research/wiki/
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
-          claude-args: |
-            --model opus --max-turns 80 --allowedTools "Read,Write,Edit,Bash(uv:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(jq:*),Task,TodoWrite"
-          expected-paths: |
-            research/wiki/
-          label: Wiki Claude ingest
-          prompt: |
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          timeout-minutes: '80'
+          prompt-text: |
             You maintain the LLM Wiki: a compounding, interlinked knowledge
             base of markdown pages at research/wiki/. One page per
             significant entity, concept, or theme. Each day you INGEST
@@ -177,7 +244,7 @@ jobs:
               research/community/, research/arxiv/, or any other raw-source
               directory; the digest is the curated distillation of those and
               reading them again would re-introduce the noise the digest
-              exists to remove. Do not use WebSearch in this Claude-routed
+              exists to remove. Do not use WebSearch in this routed
               lane; if a claim is not supported by the digest or model tickets,
               leave it out or mark it as unresolved rather than expanding the
               research scope.
@@ -291,6 +358,23 @@ jobs:
               - Update-in-place is the default; creation is the exception.
               - Write ONLY under research/wiki/. Do not touch the digest,
                 the tickets, the dashboard, or any other research subdir.
+              - research/wiki-translations/ is OFF-LIMITS in particular.
+                Editing an English page that has a Korean mirror leaves that
+                mirror stale — expected and tolerated: check_wiki.py and
+                build_wiki_index.py still exit 0 (the index just marks the
+                mirror "stale": true), and a separate manual lane refreshes
+                translations later. No action is needed from you. NEVER edit
+                a mirror file: the workflow rejects any commit touching that
+                path and the whole run fails.
+
+      - name: Require wiki output
+        if: steps.digest-publication.outputs.editorial == 'true'
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.basesha.outputs.sha }}
+          expected-paths: |
+            research/wiki/
+          label: Wiki routed ingest
 
       # Propagate the agent step's outcome to job.status. With
       # continue-on-error: true on the agent step, a timeout/error would
@@ -298,16 +382,16 @@ jobs:
       # would report a green run. exit 1 here lets later `if: always()`
       # steps (telemetry) still fire while flipping job.status to failure
       # when it should be.
-      - name: Inspect Claude outcome
-        if: always()
+      - name: Inspect routed agent outcome
+        if: always() && steps.digest-publication.outputs.editorial == 'true'
         env:
           OUTCOME: ${{ steps.ingest.outcome }}
         run: |
-          if [ "$OUTCOME" = "failure" ]; then
-            echo "::error::Wiki Claude ingest step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
+          if [ "$OUTCOME" != "success" ]; then
+            echo "::error::Wiki routed ingest step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
             exit 1
           fi
-          echo "Wiki Claude ingest step succeeded."
+          echo "Wiki routed ingest step succeeded."
 
       # Mechanically enforce the "never delete a page" invariant. The prompt
       # says it, but a prompt is not a guarantee. Diff exactly the agent's
@@ -315,6 +399,7 @@ jobs:
       # page files; fail before the commit reaches main + Vercel. Slugs are
       # immutable by contract, so a rename is a deletion and is caught too.
       - name: Guard against wiki page deletions
+        if: steps.digest-publication.outputs.editorial == 'true'
         env:
           BASE_SHA: ${{ steps.basesha.outputs.sha }}
         run: |
@@ -329,29 +414,16 @@ jobs:
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the rebase
       # cannot fail to start with "cannot rebase: You have unstaged
-      # changes". The action exposes `outputs.pushed`, consumed by the
-      # Vercel deploy step below. Push failures propagate as a real job
+      # changes". Push failures propagate as a real job
       # failure. See .github/actions/safe-push/action.yml.
       - name: Push changes
+        if: steps.digest-publication.outputs.editorial == 'true'
         id: push
         uses: ./.github/actions/safe-push
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      # Vercel's GitHub App webhook should fire on bot pushes too, but if the
-      # VERCEL_DEPLOY_HOOK secret is present we belt-and-suspenders it.
-      # Set the secret to a Vercel Project → Settings → Git → Deploy Hooks
-      # URL scoped to the `main` branch.
-      - name: Trigger Vercel deploy
-        if: steps.push.outputs.pushed == 'true'
-        env:
-          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
-        run: |
-          if [ -n "$VERCEL_DEPLOY_HOOK" ]; then
-            curl -fsSL -X POST "$VERCEL_DEPLOY_HOOK" && echo "Vercel deploy hook fired"
-          else
-            echo "VERCEL_DEPLOY_HOOK not set; relying on Vercel's GitHub auto-deploy"
-          fi
+          # workflow_run publishers are outside safe-push's schedule auto-mode.
+          strict-publication: 'true'
 
       - name: Publish Hooker workflow telemetry
         if: always()

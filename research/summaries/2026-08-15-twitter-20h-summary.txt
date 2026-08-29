@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-08-15 20:26:22 UTC
+
+CYCLE: Compute financing day - Nvidia underwrites OpenAI capacity, contract GPU prices spike, users get metered.
+
+TOP STORIES:
+• Nvidia nearing a reworked deal to fund a 10GW OpenAI campus in Ohio: ~$3B into SB Energy [⚠]
+• H100 one-year contracts reportedly +50% in 6mo with 12-18mo cluster waits - but spot pricing is flat over 2 weeks [⚠]
+• OpenAI charging $80 to reset a weekly usage limit on the $200 plan; no first-party confirmation [⚠]
+• Scott Gray exit puts the 2026 OpenAI departure list at 13 - but the CRO seat was refilled same day [⚠]
+• Qwen3.8-27B hits 1M downloads as 3 testers find its edge over 3.6 vanishes with thinking off [✓]
+
+WATCH: Where Nvidia sits in the Ohio capital stack.
+
+Full update on GitHub.

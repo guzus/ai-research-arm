@@ -3,7 +3,7 @@ slug: openai-gpt-live-2026-07
 title: OpenAI GPT-Live — full-duplex voice, general rollout
 company: OpenAI
 model: GPT-Live
-status: released
+status: closed
 status_note: |
   OpenAI's full-duplex voice architecture, **GPT-Live**, is now **fully
   rolled out to all ChatGPT users globally**. OpenAI's own account
@@ -23,12 +23,14 @@ sources:
   - "@OpenAI"
   - "@athyuttamre"
 created_at: 2026-07-12
-updated_at: 2026-07-12
-closed_at: null
-closed_reason: null
+updated_at: 2026-08-19
+closed_at: 2026-08-19
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-07-12
     change: "Created — OpenAI's own account RT'd its full-duplex voice architecture GPT-Live as fully rolled out to all ChatGPT users globally, doubling everyone's voice usage limit (@athyuttamre, official OpenAI staff, RT'd by @OpenAI 2026-07-11). Real, general-availability rollout with an official primary → status released, verification confirmed. Distinct from the GPT-5.6 text-model family ([[openai-gpt-5-6]])."
+  - ts: 2026-08-19
+    change: "Closed — released-and-aged. GPT-Live completed its global rollout to all ChatGPT users by 2026-07-12, 38 days ago (>=4 weeks), with no follow-on signal since. Normal coverage from here."
 ---
 
 **GPT-Live** is OpenAI's full-duplex voice architecture — real-time,

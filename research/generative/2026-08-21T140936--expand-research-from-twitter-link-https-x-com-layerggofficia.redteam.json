@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "What actually gates access to Upbit is Korea's real-name banking law... no L2, sidechain, or smart contract Dunamu deploys can satisfy or bypass a same-bank, real-name-account requirement, because the requirement is about which bank account settles fiat, not about which chain settles crypto.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "FSS-sourced data via Seoul Kyungjae puts that share at roughly 65.0% by Q4 2025, and in the 57-59% range (58% used below as the reported midpoint) by mid-2026 [^9].",
+      "contradicting_url": "https://crypto.news/south-korea-crypto-trading-volume-plunges-in-h1/",
+      "contradicting_quote": "Upbit's trading volume fell 10%, but its market share increased from 62.3% to 67.4% [in July 2026] as competing platforms suffered steeper declines (NexBlock data).",
+      "severity": "medium",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "coverage syndicated across CoinCentral, Cryptonews, and CryptoBriefing reported that \"the chain is already live on testnet, with nearly 100 million transactions processed as of May 3, 2026...\"",
+      "contradicting_url": "https://layerhub.xyz/chains/giwa_testnet",
+      "contradicting_quote": "Total Transactions: 213.32M; Active Wallets: 2.23M (Last updated: Aug 21, 2026 10:32AM UTC) — no cited methodology or source.",
+      "severity": "medium",
+      "no_contradiction_found": false
+    }
+  ]
+}

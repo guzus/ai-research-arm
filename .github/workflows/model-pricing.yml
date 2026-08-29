@@ -1,0 +1,142 @@
+name: Model Pricing (price vs. capability)
+
+# Refreshes research/market/model-pricing.json — every priced frontier model
+# joined to its benchmark score, plus the Pareto frontier between the two and
+# an append-only series of what a given capability level COSTS.
+#
+# Why this lane exists: the daily digest already writes this comparison by
+# hand, in prose, every day ("50 on the Intelligence Index at $0.14/$0.27 per
+# million tokens", "51 ... at 12.5x the price"). Each of those sentences is an
+# unaudited join between two numbers the pipeline never stored, so the next run
+# re-derives them from yesterday's prose. This lane stores the join instead,
+# and one artifact then serves three consumers: the dashboard's Pricing tab,
+# the digest's pricing paragraph, and `type: "derived"` claim-ledger entries,
+# which under load-bearing rule 1 must carry inputs/formula/result and are
+# recomputed by check_generative_research.py --audit-derived-claims.
+#
+# The `history` series is the compounding part, exactly as in gpu-spot: a file
+# holding only "now" answers "what is cheap today", while the series answers
+# "what does a given level of capability cost, and when did it get cheaper".
+#
+# Deterministic lane: no model, no agent, no credentials. Both sources are
+# public and unauthenticated, so this lane cannot be taken down by the
+# CLAUDE_CODE_OAUTH_TOKEN expiry that is a fleet-wide outage for agent lanes
+# (load-bearing rule 14).
+#
+# Failure policy, enforced in the script and mirrored in the exit codes below:
+#   0  healthy
+#   3  DEGRADED — prices are live but the capability source failed. Still
+#      commits: withholding a good price snapshot over a missing score axis
+#      helps nobody. The artifact carries `capability_stale: true` and the
+#      dashboard says so on the view. No history record is appended, because a
+#      frontier cannot be computed without scores and a gap in the series is
+#      honest where a fabricated point is not.
+#   1  price source failed — job goes red, previous artifact is carried
+#      forward marked stale, and again nothing enters the series.
+
+on:
+  schedule:
+    # Every 6 hours at :26 — 03:26, 09:26, 15:26, 21:26 UTC.
+    #
+    # Minute: :26 is genuinely free. It clears community (:19), models (06:29),
+    # rss (:30), gpu-spot (:37), arm-timeline (:45), blog-subscriptions (:47),
+    # market-quotes (:53), twitter (:07) and blogs (:13).
+    #
+    # Hours: 3/9/15/21 deliberately avoid the crowded slots — the 00:xx digest
+    # and front-page window, the 23:xx youtube/earnings pair that front-runs the
+    # digest and ai-news-research at 08:23 and 20:23.
+    #
+    # Interval: list prices change on announcement (weeks), and Epoch publishes
+    # benchmark runs in batches (days), so the underlying data does not justify
+    # a tighter cadence. 6h exists to catch a price cut the same day it lands,
+    # not to sample a fast-moving series. Every run rewrites a file that is
+    # committed to git and copied into the deployed image by prebuild.mjs
+    # (research/market/ is in its COPY_DIRS), so the cadence is not free.
+    - cron: '26 3,9,15,21 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: model-pricing
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    # Self-hosted per load-bearing rule 5. ubuntu-latest is reserved for CI and
+    # watchdogs; this is a production publishing lane.
+    runs-on: [self-hosted, Linux]
+    # Two requests, one of which is a ~2.5 MB CSV. The ceiling exists so a
+    # hanging endpoint fails on a clock rather than retrying into the next slot.
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      # Required by safe-push: `main` is PR-only (rule 13), so publishing goes
+      # through a run-scoped branch -> PR -> immediate squash-merge.
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Setup uv
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
+        with:
+          enable-cache: true
+
+      # No extras: fetch_model_pricing.py is stdlib-only (urllib/json/csv/re) on
+      # purpose, so this lane has no dependency that can break it.
+      - name: Install Python dependencies
+        run: uv sync --frozen
+
+      - name: Refresh model pricing
+        id: refresh
+        run: |
+          set -uo pipefail
+          # `set -e` is deliberately OFF for this line: exit 3 is a documented
+          # DEGRADED result that must still commit, so the code is inspected
+          # rather than left to abort the step.
+          uv run python scripts/fetch_model_pricing.py
+          code=$?
+          echo "exit-code=$code" >> "$GITHUB_OUTPUT"
+          case "$code" in
+            0) echo "degraded=false" >> "$GITHUB_OUTPUT" ;;
+            3) echo "degraded=true"  >> "$GITHUB_OUTPUT"
+               echo "::warning::Capability source unavailable — published price-only (capability_stale=true)." ;;
+            *) echo "::error::Price source failed (exit $code); nothing will be committed."
+               exit "$code" ;;
+          esac
+
+      - name: Commit refreshed pricing
+        id: commit
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- research/market/model-pricing.json; then
+            # Practically unreachable — generated_at changes every run. Kept so
+            # a future no-op mode cannot produce an empty commit.
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "model-pricing unchanged; nothing to commit"
+            exit 0
+          fi
+          git add research/market/model-pricing.json
+          # `date -u`, never bare `date`: the runner's clock is correct but its
+          # timezone is KST, while every consumer reads these as UTC.
+          git commit -m "Model pricing refresh $(date -u +'%Y-%m-%d %H:%M UTC')"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Push changes
+        if: steps.commit.outputs.changed == 'true'
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Non-blocking by load-bearing rule 4 — telemetry must never fail a job.
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        continue-on-error: true
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+          text: >-
+            model-pricing committed=${{ steps.commit.outputs.changed }}
+            degraded=${{ steps.refresh.outputs.degraded }}
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

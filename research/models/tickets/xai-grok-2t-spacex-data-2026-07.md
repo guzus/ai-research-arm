@@ -29,7 +29,7 @@ status_note: |
   Weaker sourcing tier than the Grok 4.6 timing itself (no independent
   corroboration yet, unlike @kimmonismus's independent Grok 4.6 listing).
   Still no artifact for either model. Status stays `rumored`.
-expected: "Grok 4.6 (2T) expected ~2 weeks from 2026-07-25 (~2026-08-08) per Elon Musk via @testingcatalog, corroborated by @kimmonismus; a further Grok 4.7 expected ~4 weeks out (~2026-08-22), single-sourced"
+expected: "Grok 4.6 is shipping and in general use as of 2026-08-19 (Grok Build harness, third-party subscriptions). Still pending: an xAI confirmation that the shipped checkpoint is the 2T run trained on SpaceX engineering data, and any sign of the single-sourced Grok 4.7 (~2026-08-22)"
 labels:
   - frontier-model
   - training-data
@@ -38,8 +38,10 @@ sources:
   - https://x.com/elonmusk/status/2079446276299465185
   - https://x.com/testingcatalog/status/2081148852695093410
   - "@kimmonismus"
+  - "@elonmusk"
+  - "@joehansen"
 created_at: 2026-07-21
-updated_at: 2026-07-27
+updated_at: 2026-08-23
 closed_at: null
 closed_reason: null
 history:
@@ -49,6 +51,10 @@ history:
     change: "The 2T model now has a working name (Grok 4.6) and a rough timeline — '~2 weeks' per Elon Musk via @testingcatalog, corroborated independently by @kimmonismus. 2T vs 1.5T on Grok 4.5, expected to surpass Kimi. No artifact yet → status stays rumored; model field updated to 'Grok 4.6 (2T, next-gen)', expected/status_note updated with the timeline."
   - ts: 2026-07-27
     change: "A further model, Grok 4.7, reported 'in 4 weeks' per the same @testingcatalog relay of an Elon Musk comment. Weaker/single-sourced vs. the independently-corroborated Grok 4.6 timing. No artifact for either model. Status stays rumored."
+  - ts: 2026-08-19
+    change: "Status → released. Grok 4.6 is in users hands, on roughly the timeline this ticket recorded (~2026-08-08 per Musk via @testingcatalog). Firsthand usage reports in the 2026-08-19 window: @kamellperry_ (relayed by @elonmusk) — I have finally had the chance to play with Grok 4.6 today after exhausting all of my Codex usage. Grok Build + 4.6 has been…; @doodlestein (also relayed by @elonmusk) — Grok 4.6 with the grok build harness is probably the best all-around, value-for-money subscription out there. Grok Build itself shipped 1.0.6 on 2026-08-18 (@mark_k, changelog-level detail). No xAI post captured in-window restates the 2T parameter count or confirms that SpaceX engineering data made it into the shipped checkpoint, so the training-data claim this ticket was opened on stays at Musk original statement — status advances to released on the model shipping, verification stays confirmed for the same reason. The separately-reported Grok 4.7 (~4 weeks out, single-sourced) has not appeared."
+  - ts: 2026-08-23
+    change: "Successor sizing claim, relayed not confirmed. @kimmonismus (2026-08-22 09:34 UTC, ~650 likes) quotes a claim that 'Grok 4.7 will be the 2.1T model released a few weeks later. This will be better than 4.6 in every way, except slightly slower to serve, albeit with even better token efficiency,' and states that the shipped Grok 4.6 'was just the 1.5T version.' That is a direct contradiction of this ticket's original framing: it says the 2T-class run ships as Grok 4.7, not as 4.6, and puts 4.6 at 1.5T. The quote is unattributed inside the relay and xAI has said nothing; treat both parameter counts as reported. Supporting context on 4.6's standing, all third-party: @joehansen (RT by @elonmusk) says Grok 4.6 took #1 on CursorBench at a fraction of the cost of the models above it, and @kimmonismus rates it on par with GPT-5.6, Opus 5 and in places Fable 5 on benchmarks. Status stays rumored — the underlying claim this ticket tracks (a 2T checkpoint trained on SpaceX engineering data) is still unconfirmed by xAI, and has now had its version number moved by the same source class that produced it."
 ---
 
 Elon Musk announced directly that SpaceX's proprietary engineering-data

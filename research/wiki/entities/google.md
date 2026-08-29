@@ -4,15 +4,20 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22), the first hard earnings evidence that its AI-capex guidance is converting into cloud revenue.
+description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22); a DeepMind–academia team pushed the matrix multiplication exponent below 2.371177 with optimization + AlphaEvolve (2026-08-19) and Google took a revenue-linked equity claim on Marvell (2026-08-20).
 created_at: 2026-07-17
-timestamp: 2026-08-06T00:00:00Z
+timestamp: 2026-08-20T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
+  - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
+  - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
+  - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA model ticket — Gemini Robotics 2", path: research/models/tickets/google-gemini-robotics-2-2026-07.md}
@@ -152,6 +157,52 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   holds, the interesting part is not the price but what is being bought —
   hand-authored RL environments as a scarce input, i.e. training data for
   agents priced like consulting rather than like scraped corpus.
+- **DeepMind's hurricane model buys forecasters an extra day (2026-08-08).**
+  DeepMind's AI hurricane-forecasting model surprised weather scientists by
+  **extending useful warning lead time by roughly a day** on 2026-08-08
+  (Ars Technica) — a concrete validation of ML weather prediction in an
+  operational setting, and the strongest science-side DeepMind datapoint in
+  the wiki since the leadership rewire tracked above. Details (model name,
+  verification, agency adoption) are thin in the source; the lead-time gain
+  itself is the headline (Ars Technica; ARA daily digest 2026-08-10).
+- **Gemini app crosses one billion monthly users — nominal ChatGPT parity
+  (2026-08-12).** Google's **Gemini app reached one billion monthly users**,
+  claiming nominal parity with **[[openai|ChatGPT]]**, which hit the same mark
+  in June — and **neither company has disclosed retention, session frequency,
+  or paid conversion**, so the parity claim measures monthly reach, not
+  engagement or revenue. It is the hard number behind the 2026-07-23 "nears a
+  billion-user milestone" entry and a consumer-scale validation of the
+  [[ai-capex]] thesis (TechCrunch, Ars Technica, The Verge; ARA daily digest
+  2026-08-12).
+- **AMIE (Video) reaches clinician-level ratings (2026-08-12).** Google
+  Research's **AMIE (Video)** — the medical-AI system extended to real-time
+  video consultations — was rated **at clinician level by evaluators in a
+  randomized OSCE study**, the video counterpart to the text-based AMIE
+  trajectory and a concrete read on where AI-for-medicine stands (Google
+  Research; ARA daily digest 2026-08-12).
+- **Made by Google '26 — the hardware line ships Gemini throughout
+  (2026-08-13).** Google announced the **Pixel 11 series**, **Pixel Watch 5 at
+  $399**, a **Pixel Tag** AirTag rival, and a slate of **Gemini features** at
+  Made by Google '26. In the same window **DeepMind released SL2T**, an
+  **American Sign Language–to-English model** running **body-pose tracking
+  on-device** and shipping in **Gboard and Live Transcribe on Pixel 11** —
+  accessibility-model progress as a consumer-hardware feature rather than a
+  cloud API (TechCrunch, The Verge, @GoogleDeepMind; ARA daily digest
+  2026-08-13).
+- **DeepMind helps push the [[matrix-multiplication-exponent]] below 2.371177 (2026-08-19).** A DeepMind-and-
+  academia team combined a reformulated optimization with AlphaEvolve to
+  tighten the matrix multiplication exponent ω below **2.371177**, improving
+  the prior 2.371339 record — a genuine ML-assisted result in theoretical CS
+  in the AlphaTensor lineage (ARA daily digest 2026-08-19).
+- **Google takes a revenue-linked equity claim on Marvell (2026-08-20).** Google
+  secured a **warrant for up to 58,970,907 Marvell shares at a $206.58 strike**,
+  vesting in 240 tranches against **$500M each of custom-silicon purchases** —
+  full vesting requires **$120B of Google revenue through fiscal 2033** — a
+  supplier-financing structure that converts Google's custom-silicon spending
+  into a potential equity claim on the merchant-chip maker. **MRVL rose over
+  13% and Broadcom fell about 2%** on the print, a market read that the
+  revenue-rebate structure shifts custom-ASIC economics toward [[broadcom]]'s
+  merchant rival (ARA daily digest 2026-08-20).
 
 ## Open questions
 

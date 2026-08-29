@@ -12,7 +12,6 @@ import json
 import math
 import os
 import re
-import shutil
 import subprocess
 import sys
 from collections import defaultdict
@@ -25,7 +24,10 @@ from curate_twitter_accounts import DEFAULT_MANIFEST, ManifestError, iter_handle
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT = Path("/tmp/twitter-account-candidates.json")
 DEFAULT_REPORT = Path("/tmp/twitter-account-explorer-report.md")
-BIRD_CMD = os.environ.get("ARA_BIRD_CMD") or ("birdy" if shutil.which("birdy") else "bird")
+# birdy only: the Node `bird` CLI was retired 2026-08-08 and birdy serves
+# every command natively. Falling back to a CLI that is no longer installed
+# turned a rate limit into a confusing "bird CLI not found".
+BIRD_CMD = os.environ.get("ARA_BIRD_CMD") or "birdy"
 MENTION_RE = re.compile(r"(?<![A-Za-z0-9_])@([A-Za-z0-9_]{1,15})")
 
 # AI-topicality vocabulary. A candidate earns a bonus for each DISTINCT term

@@ -1,0 +1,13 @@
+Speaker 1: Friday, August twenty-first, twenty twenty-six.
+Speaker 2: [high_energy] Nvidia is paying Poolside [emphasis] six billion dollars [/emphasis] for a non-exclusive licence, plus another one billion at a twelve billion dollar pre-money, and it is putting offers in front of one hundred nine of their staff.
+Speaker 1: That is a licence, a stake, and a hiring raid in a single move, and none of it requires an acquisition.
+Speaker 2: And the other headline is Anthropic, reported to be preparing a public I P O prospectus as soon as the end of August, with a confidential S one said to have gone in back in June.
+Speaker 1: On the product side, the same company took computer use, the browser tool, the Skills A P I and the Files A P I to general availability.
+Speaker 2: Worth noting that those graduating together is the tell, the agent stack is being treated as shipped infrastructure now, not a preview.
+Speaker 1: On the policy front, Texas has frozen all datacenter energization approvals, pending an audit of the ERCOT queue.
+Speaker 2: [high_energy] And the reason why is the queue itself, [emphasis] four hundred seventy-four gigawatts [/emphasis] of interconnection requests, roughly five times the record peak demand on that grid.
+Speaker 1: Some quick numbers elsewhere. Alibaba's A I cloud revenue is up forty-five percent year over year, but free cash flow ran to negative forty-four point six seven billion renminbi, with a stated A I payback period of three years.
+Speaker 2: Samsung's payout reports cannot even agree on the order of magnitude, one hundred trillion won versus one hundred fifty trillion won, a fifty percent gap between them.
+Speaker 1: And the trending story is not any of that. [dramatic_pause] Hacker News put a one hundred twenty-five million parameter piano autocomplete model, running entirely on device, above every piece of frontier news.
+Speaker 2: Small, local, and genuinely useful still wins the room.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

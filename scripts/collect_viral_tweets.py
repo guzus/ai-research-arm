@@ -15,9 +15,9 @@ isolates *content/form* effects -- the part a writer can actually act on.
 
 Network boundary
 ----------------
-This is the only networked script in the set: it shells out to ``birdy`` when
-present (a multi-account proxy that rotates X accounts to cut rate-limit risk),
-else plain ``bird`` (override via ``ARA_BIRD_CMD``). All calls degrade gracefully
+This is the only networked script in the set: it shells out to ``birdy``
+(a native-Go X client that rotates multiple accounts to cut rate-limit risk;
+override via ``ARA_BIRD_CMD``). All calls degrade gracefully
 to empty results, per repo convention (``--json`` + fallback). Offline analysis
 lives in ``analyze_viral_tweets.py``; the verifier (``tweet_virality_verifier.py``)
 is pure and never touches the network.
@@ -32,7 +32,6 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import shutil
 import subprocess
 import sys
 import time
@@ -42,9 +41,12 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = REPO_ROOT / "research" / "twitter-viral"
 
-# Prefer birdy (rotates across multiple X accounts -> ~Nx the rate-limit
-# headroom) when it's on PATH; fall back to plain bird. Override with ARA_BIRD_CMD.
-BIRD_CMD = os.environ.get("ARA_BIRD_CMD") or ("birdy" if shutil.which("birdy") else "bird")
+# birdy rotates across multiple X accounts -> ~Nx the rate-limit headroom.
+# The Node `bird` fallback was dropped when bird was retired (2026-08-08):
+# birdy serves every command natively, and silently falling back to a CLI that
+# is no longer installed produced "bird CLI not found" instead of a real error.
+# Override with ARA_BIRD_CMD.
+BIRD_CMD = os.environ.get("ARA_BIRD_CMD") or "birdy"
 
 # AI/tech topic queries. Deliberately broad: we want variance in *how* viral
 # AI-adjacent tweets are written, not a narrow keyword slice. Each is formatted

@@ -9,10 +9,12 @@
 // a fork's own host — is self-contained and reproducible.
 
 import { spawnSync } from 'node:child_process';
-import { existsSync, readdirSync, mkdirSync, readFileSync, writeFileSync, cpSync, statSync, openSync, readSync, closeSync } from 'node:fs';
+import { existsSync, readdirSync, mkdirSync, readFileSync, writeFileSync, cpSync, statSync, openSync, readSync, closeSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as yaml from 'js-yaml';
+import { assertClaimReuseContract, EvidenceContractError } from './evidence-contract.mjs';
+import { isDeterministicFallbackSource, unavailableDigestMarkdown } from './publication-contract.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const dashboardDir = dirname(here);
@@ -26,12 +28,18 @@ const skipLfsPointers = process.env.SKIP_LFS_POINTERS === '1';
 // Subdirs to mirror into public/research/. Keys match how the dashboard
 // fetches them; the manifest builder below uses the same set.
 // `wiki` carries research/wiki/ (committed index.json + entities/concepts/themes
-// markdown). The index is built in Python (scripts/build_wiki_index.py) and
+// markdown). `wiki-translations` carries locale mirrors referenced by that
+// index. The index is built in Python (scripts/build_wiki_index.py) and
 // committed — we only copy it here; we never rebuild it in JS.
 // `market` carries research/market/quotes.json (market-quotes.yml). Like
 // `arm` it is a single JSON with no date-keyed files, so it stays out of
 // DATE_PATTERNS — it has no per-day artifacts for the freshness rows to key on.
-const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki', 'youtube', 'arm', 'market'];
+const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki', 'wiki-translations', 'youtube', 'arm', 'market'];
+
+// Research directories read during the build but never mirrored wholesale
+// into public/research/. Keep this explicit so the Docker-context contract can
+// verify production has every input without accidentally publishing internals.
+const BUILD_INPUT_DIRS = ['claims'];
 
 // Twitter comparison-lane dirs (hourly-twitter.yml backend tiers). Copied for
 // the A/B side-by-side view but deliberately NOT in COPY_DIRS/DATE_PATTERNS:
@@ -178,6 +186,53 @@ function copyData() {
     if (!existsSync(src)) continue;
     const dest = join(publicResearch, sub);
     copyResearchDir(src, dest);
+  }
+
+  // Deterministic fallback digests are operational evidence, not editorial
+  // publications. Keep the source artifact in git for diagnosis, but expose
+  // only a machine-readable unavailable marker and remove every public
+  // derivative for the same date.
+  const digestSourceDir = join(researchSrc, 'digest');
+  const fallbackDates = new Set();
+  if (existsSync(digestSourceDir)) {
+    for (const name of readdirSync(digestSourceDir)) {
+      const match = /^(\d{4}-\d{2}-\d{2})-digest\.md$/.exec(name);
+      if (!match) continue;
+      const source = readFileSync(join(digestSourceDir, name), 'utf8');
+      if (!isDeterministicFallbackSource(source)) continue;
+      const date = match[1];
+      fallbackDates.add(date);
+      writeFileSync(join(publicResearch, 'digest', name), unavailableDigestMarkdown(date));
+      for (const dir of ['front-page', 'audio']) {
+        const publicDir = join(publicResearch, dir);
+        if (!existsSync(publicDir)) continue;
+        for (const candidate of readdirSync(publicDir)) {
+          if (candidate.startsWith(`${date}-`)) rmSync(join(publicDir, candidate), { force: true });
+        }
+      }
+      console.warn(`prebuild: ${date} fallback kept operational; public digest sanitized and derivatives suppressed`);
+    }
+  }
+
+  // Wiki audit records that explicitly describe fallback ingestion are also
+  // operational provenance. Keep them in the repository, but do not publish
+  // them as reader-facing wiki activity metadata.
+  const publicWikiLog = join(publicResearch, 'wiki', 'log.md');
+  if (fallbackDates.size && existsSync(publicWikiLog)) {
+    const blocks = readFileSync(publicWikiLog, 'utf8').split(/(?=^## \[)/m);
+    const sanitized = blocks.filter(block => {
+      const date = /^## \[(\d{4}-\d{2}-\d{2})\] ingest/m.exec(block)?.[1];
+      return !date || !fallbackDates.has(date);
+    }).join('');
+    writeFileSync(publicWikiLog, sanitized);
+  }
+  const publicWikiIndex = join(publicResearch, 'wiki', 'index.json');
+  if (fallbackDates.size && existsSync(publicWikiIndex)) {
+    const index = JSON.parse(readFileSync(publicWikiIndex, 'utf8'));
+    if (Array.isArray(index.recent_log)) {
+      index.recent_log = index.recent_log.filter(entry => !fallbackDates.has(String(entry?.date || '')));
+      writeFileSync(publicWikiIndex, JSON.stringify(index, null, 2) + '\n');
+    }
   }
 
   for (const lane of AB_COMPARISON_LANES) {
@@ -769,7 +824,10 @@ function buildSearchIndex() {
   // splitSections() in main.ts). Skip "Executive Summary" — it renders as the
   // tldr card with no .content-card-title to scroll to.
   try {
-    const dir = join(researchSrc, 'digest');
+    // Index the public projection, never the operational source. Fallback
+    // dates contain only the unavailable marker here and therefore emit no
+    // searchable raw excerpts.
+    const dir = join(publicResearch, 'digest');
     if (existsSync(dir)) {
       const re = /^(\d{4}-\d{2}-\d{2})-digest\.md$/;
       const dates = readdirSync(dir)
@@ -850,10 +908,145 @@ function buildSearchIndex() {
   );
 }
 
+// Public, reader-facing evidence artifacts. The canonical claim store remains
+// an agent memory and is never treated as truth by the dashboard. We publish a
+// deliberately narrowed projection: enough provenance for a reader to inspect
+// a claim, but no formulas, internal adjudication state, or filesystem paths.
+function plainText(value) {
+  return String(value || '')
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/^---[\s\S]*?---\s*/m, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/[#>*_`~|]/g, ' ')
+    .replace(/&(?:amp|#38);/g, '&')
+    .replace(/&(?:lt|#60);/g, '<')
+    .replace(/&(?:gt|#62);/g, '>')
+    .replace(/&(?:quot|#34);/g, '"')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function buildEvidenceArtifacts() {
+  const entries = [];
+  let publicClaims = [];
+  let researchRows = [];
+  const articleSlugByStem = new Map();
+  try {
+    const parsed = JSON.parse(readFileSync(join(researchSrc, 'generative', 'index.json'), 'utf8'));
+    researchRows = Array.isArray(parsed) ? parsed : [];
+    for (const row of researchRows) {
+      if (row?.file && row?.slug) articleSlugByStem.set(String(row.file).replace(/\.html$/i, ''), row.slug);
+    }
+  } catch {
+    researchRows = [];
+  }
+  try {
+    const path = join(researchSrc, 'claims', 'index.json');
+    const parsed = JSON.parse(readFileSync(path, 'utf8'));
+    publicClaims = (Array.isArray(parsed.claims) ? parsed.claims : [])
+      .filter((claim) => claim && typeof claim.claim === 'string' && typeof claim.article === 'string')
+      .map((claim) => {
+        assertClaimReuseContract(claim);
+        return {
+          article: claim.article,
+          article_title: claim.article_title || claim.article,
+          article_created_at: claim.article_created_at || null,
+          key: claim.key || `${claim.article}#${claim.id || 'claim'}`,
+          claim: claim.claim,
+          type: claim.type || 'other',
+          confidence: claim.confidence || 'unknown',
+          risk: claim.risk || null,
+          as_of: claim.as_of || null,
+          reusable: claim.reusable,
+          reuse_block: claim.reuse_block ?? null,
+          source_tiers: Array.isArray(claim.source_tiers) ? claim.source_tiers : [],
+          source_urls: Array.isArray(claim.source_urls) ? claim.source_urls : [],
+          hosts: Array.isArray(claim.hosts) ? claim.hosts : [],
+        };
+      });
+    const dir = join(publicResearch, 'claims');
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, 'public.json'), JSON.stringify({ generated_at: new Date().toISOString(), contract: 'evidence-metadata-not-independent-truth', claims: publicClaims }));
+    for (const claim of publicClaims) {
+      const articleSlug = articleSlugByStem.get(claim.article);
+      // A search result is actionable only when its article route resolves.
+      // The public ledger still retains every claim for article/dossier drawers.
+      if (!articleSlug) continue;
+      entries.push({
+        id: claim.key,
+        type: 'claim',
+        title: claim.article_title,
+        body: claim.claim,
+        url: `/research/${articleSlug}`,
+        date: claim.as_of || claim.article_created_at || '',
+        confidence: claim.confidence,
+        risk: claim.risk || '',
+        sourceTier: claim.source_tiers[0] || '',
+        sourceTiers: claim.source_tiers,
+        language: 'en',
+        reusable: claim.reusable,
+        reuse_block: claim.reuse_block,
+      });
+    }
+  } catch (e) {
+    if (e instanceof EvidenceContractError) throw e;
+    console.warn('prebuild: public claim evidence skipped:', e?.message || e);
+  }
+
+  try {
+    for (const row of researchRows) {
+      const path = join(researchSrc, 'generative', row.file || '');
+      if (!row?.slug || !existsSync(path)) continue;
+      entries.push({ id: `research:${row.slug}`, type: 'research', title: row.title || row.slug, body: plainText(readFileSync(path, 'utf8')), url: `/research/${row.slug}`, date: row.created_at || '', language: row.language || 'en' });
+      for (const [language, translation] of Object.entries(row.translations || {})) {
+        const translatedPath = join(researchSrc, 'generative', translation.file || '');
+        if (!existsSync(translatedPath)) continue;
+        entries.push({ id: `research:${row.slug}:${language}`, type: 'research', title: translation.title || row.title || row.slug, body: plainText(readFileSync(translatedPath, 'utf8')), url: `/research/${row.slug}`, date: translation.created_at || row.created_at || '', language });
+      }
+    }
+  } catch (e) {
+    console.warn('prebuild: research evidence index skipped:', e?.message || e);
+  }
+
+  try {
+    const index = JSON.parse(readFileSync(join(researchSrc, 'wiki', 'index.json'), 'utf8'));
+    for (const page of Array.isArray(index.pages) ? index.pages : []) {
+      const path = join(researchSrc, 'wiki', page.file || '');
+      if (!page?.slug || !existsSync(path)) continue;
+      entries.push({ id: `wiki:${page.slug}`, type: 'wiki', title: page.title || page.slug, body: plainText(readFileSync(path, 'utf8')), url: `/wiki/${page.slug}`, date: page.updated_at || '', entity: page.slug, language: 'en' });
+      const translation = page.translations?.ko;
+      const translatedPath = translation?.file ? join(researchSrc, translation.file) : '';
+      if (translatedPath && existsSync(translatedPath)) entries.push({ id: `wiki:${page.slug}:ko`, type: 'wiki', title: translation.title || page.title || page.slug, body: plainText(readFileSync(translatedPath, 'utf8')), url: `/wiki/${page.slug}`, date: page.updated_at || '', entity: page.slug, language: 'ko' });
+    }
+  } catch (e) {
+    console.warn('prebuild: wiki evidence index skipped:', e?.message || e);
+  }
+
+  try {
+    for (const name of readdirSync(ticketsSrc).filter((file) => file.endsWith('.md')).sort()) {
+      const text = readFileSync(join(ticketsSrc, name), 'utf8');
+      const end = text.indexOf('\n---\n', 4);
+      if (!text.startsWith('---\n') || end < 0) continue;
+      const fm = yaml.load(text.slice(4, end));
+      if (!fm || typeof fm !== 'object' || !fm.slug) continue;
+      entries.push({ id: `model:${fm.slug}`, type: 'model', title: fm.title || fm.slug, body: plainText(`${text.slice(end + 5)} ${(fm.history || []).map((item) => item.change || '').join(' ')}`), url: `/models/forecast/${fm.slug}`, date: fm.updated_at || fm.created_at || '', entity: fm.company || '', language: 'en' });
+    }
+  } catch (e) {
+    console.warn('prebuild: model evidence index skipped:', e?.message || e);
+  }
+
+  writeFileSync(join(publicResearch, 'evidence-search.json'), JSON.stringify({ generated_at: new Date().toISOString(), entries }));
+  console.log(`prebuild: public evidence (${publicClaims.length} claims, ${entries.length} searchable records)`);
+}
+
 copyData();
 buildTwitterAbIndex();
 buildArmTimeline();
 buildTicketsIndex();
 buildManifest();
 buildSearchIndex();
+buildEvidenceArtifacts();
 await hydrateTweets().catch((e) => console.warn('prebuild: tweet hydration skipped:', e?.message || e));

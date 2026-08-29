@@ -6,8 +6,10 @@ aliases: ["Dynamic Workflows", "Claude Code Dynamic Workflows", "parallel subage
 tags: [agentic, claude-code, anthropic, subagents, codebase-migration]
 description: Anthropic's 2026-05-28 Claude Code feature in which Claude writes a JavaScript orchestrator that fans a single session out to up to 1,000 parallel subagents per run, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.
 created_at: 2026-05-29
-timestamp: 2026-05-30T00:00:00Z
+timestamp: 2026-08-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
+  - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
   - {title: "ARA daily digest 2026-05-30", path: research/digest/2026-05-30-digest.md}
   - {title: "Introducing Dynamic Workflows in Claude Code", url: "https://claude.com/blog/introducing-dynamic-workflows-in-claude-code", date: 2026-05-28}
@@ -44,6 +46,19 @@ tiers.
   subagent cap** itself became the focal point of cost-control and
   blast-radius discussion, exactly the failure mode that [[agentic-ai-security]]
   predicts will dominate large-fan-out agentic systems.
+- **Claude Code grows cross-session messaging and a classifier-mediated
+  default (2026-08-07).** Sessions can now **message each other**: one session
+  sends a **summary (not history or files)** that another picks up **mid-task,
+  on any machine** — the productized form of the arbitrary thread-to-thread
+  coordination [[zawinskis-law-of-multiagents]] names as the field's
+  convergence point. The same window brought: **"auto mode" as the default
+  permission path for Pro/Max/Team** (a separate classifier reviews shell
+  commands/actions — reportedly catching **89% of dangerous commands vs 14%**
+  for manual approval in Anthropic's testing), **session budgets**, automatic
+  **repo-skills loading**, and **"advisor" models callable mid-session**. The
+  classifier default is a direct answer to this page's blast-radius open
+  question — see [[agentic-ai-security]] (Latent.Space AINews; ARA daily digest
+  2026-08-09).
 
 ## Open questions
 - **Blast radius.** Hundreds of parallel subagents on a real codebase create

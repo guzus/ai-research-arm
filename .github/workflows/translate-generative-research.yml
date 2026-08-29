@@ -1,0 +1,366 @@
+name: Korean Generative Research Backfill
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: Existing English generative-research slug
+        required: true
+        type: string
+      overwrite:
+        description: Publish a new Korean revision when translations.ko already exists
+        required: false
+        default: false
+        type: boolean
+      auto_merge:
+        description: Auto-merge the protected-branch publication PR after all gates pass
+        required: false
+        default: false
+        type: boolean
+
+# Keep duplicate requests for one article serialized without collapsing distinct
+# articles into one pending slot. GitHub retains only one pending run per group,
+# so a global group silently dropped translations during publication bursts. The
+# production self-hosted runner still serializes execution; safe-push intentionally
+# does not auto-merge nested index conflicts for this lane.
+concurrency:
+  group: generative-research-ko-backfill-${{ inputs.slug }}
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 100
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      # The self-hosted workspace persists between jobs. Move only the exact
+      # canonical checkout aside before checkout runs Git against it.
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
+        with:
+          # A dispatch can wait behind the serialized backlog. Resolve the
+          # branch again at execution time so earlier translation merges are
+          # present in index.json instead of checking out the dispatch-time SHA.
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+          persist-credentials: false
+          set-safe-directory: false
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
+      - name: Require a default-branch dispatch
+        env:
+          TRIGGER_REF: ${{ github.ref_name }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          if [ "$TRIGGER_REF" != "$DEFAULT_BRANCH" ]; then
+            echo "::error::Dispatch this publisher from $DEFAULT_BRANCH, not $TRIGGER_REF."
+            exit 1
+          fi
+
+      - name: Resolve canonical source and replacement policy
+        id: prepare
+        env:
+          INPUT_SLUG: ${{ inputs.slug }}
+          OVERWRITE: ${{ inputs.overwrite }}
+        run: |
+          set -euo pipefail
+          uv run python scripts/prepare_generative_translation.py \
+            --slug "$INPUT_SLUG" \
+            --force "$OVERWRITE" \
+            --request-file .agent-input/translation.json \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Capture translation output base
+        id: base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare protected translation segments
+        env:
+          SOURCE_PATH: ${{ steps.prepare.outputs.source_path }}
+          SOURCE_SHA256: ${{ steps.prepare.outputs.source_sha256 }}
+        run: |
+          set -euo pipefail
+          uv run python scripts/generative_translation_segments.py prepare \
+            --source "$SOURCE_PATH" \
+            --source-sha256 "$SOURCE_SHA256" \
+            --manifest .agent-input/translation-segments.json
+
+      # The model receives a disposable clone and may return only the named
+      # uncommitted .tmp artifact. Trusted host steps below own publication.
+      - name: Translate canonical article in isolated adapter
+        id: agent
+        uses: ./.github/actions/agent-dispatch
+        with:
+          mode: editorial
+          lane: generative-research-ko
+          return-artifacts: ${{ steps.prepare.outputs.result_path }}
+          # Translation needs one compact read and one fixed-destination segment tool.
+          # Explicit denies remain enforced under --auto, so prompt injection
+          # cannot gain shell, network, search, subagent, edit/write, or
+          # broader repository access.
+          opencode-config: .github/opencode/translation.json
+          cursor-config: .github/cursor/translation.json
+          timeout-minutes: '80'
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          prompt-text: |
+            Translate one existing ARA generative-research article into natural,
+            professional Korean. This is translation, not new research.
+
+            The run fails unless
+            `.tmp/generative-translation.ko.segments.jsonl` exists as a
+            regular file before you stop. A chat-only translation is a
+            failed run. Use the Write tool on that exact path.
+
+            Read `.agent-input/translation-segments.json`. It is compact JSON
+            Lines: the first line is a header; every later line is
+            `[segment_id, source_text, internal_flag]`. Translate each
+            `source_text` into Korean. Submit `{id, text}` objects only.
+            If `translation_segment` exists, submit batches with that tool
+            immediately after reading the rows. Otherwise Write one JSON
+            object per line to exactly
+            `.tmp/generative-translation.ko.segments.jsonl`. Do not
+            draft a full document or final-answer translation. If the read is
+            paginated, Write the current page before reading the next page.
+            Preserve every opaque token such as
+            `⟦ARA0000⟧` exactly once and in its original order. Submit each
+            segment id exactly once. Never invent an opaque token; a row may
+            contain only the tokens literally present in its source text.
+            Do not put translations in your final
+            response. Tool permissions allow only this read and the
+            fixed-destination segment file or tool; shell, web, search,
+            subagents, and all other writes are intentionally unavailable.
+
+            Trusted code owns the document structure and immutable literals:
+            - Never translate, remove, reorder, duplicate, or alter opaque tokens.
+            - Do not invent raw digits. Source numbers are already opaque
+              tokens. The only allowed untokenized digits are an integer
+              glued to Hangul (`9일`, `3배`). Never write `$1,000`, `2.5`,
+              `30%`, `2026`, or any other bare number.
+            - Translate reader-facing prose, headings, labels, captions,
+              callouts, quotations, and reference titles into idiomatic Korean.
+            - Do not browse, research, add claims, add sources, drop sections,
+              edit the English source, or write any other file.
+            - Do not run git, stage files, or commit. The trusted host publishes.
+
+            Finish only after the tool reports that all segments were submitted.
+
+      - name: Reconstruct trusted Korean artifact
+        env:
+          SOURCE_PATH: ${{ steps.prepare.outputs.source_path }}
+          SOURCE_SHA256: ${{ steps.prepare.outputs.source_sha256 }}
+          RESULT_PATH: ${{ steps.prepare.outputs.result_path }}
+          DRAFT_PATH: ${{ steps.prepare.outputs.draft_path }}
+        run: |
+          set -euo pipefail
+          uv run python scripts/generative_translation_segments.py render \
+            --source "$SOURCE_PATH" \
+            --source-sha256 "$SOURCE_SHA256" \
+            --result "$RESULT_PATH" \
+            --draft "$DRAFT_PATH"
+
+      - name: Validate Korean draft and source parity
+        env:
+          SOURCE_PATH: ${{ steps.prepare.outputs.source_path }}
+          DRAFT_PATH: ${{ steps.prepare.outputs.draft_path }}
+        run: |
+          set -euo pipefail
+          test -f "$DRAFT_PATH"
+          uv run python scripts/check_generative_research.py "$DRAFT_PATH"
+          uv run python scripts/check_generative_translation.py \
+            --allow-localized-number-rendering \
+            "$SOURCE_PATH" "$DRAFT_PATH"
+
+      - name: Configure trusted writer identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Publish through canonical generative writer
+        env:
+          SLUG: ${{ steps.prepare.outputs.slug }}
+          SOURCE_PATH: ${{ steps.prepare.outputs.source_path }}
+          SOURCE_SHA256: ${{ steps.prepare.outputs.source_sha256 }}
+          DRAFT_PATH: ${{ steps.prepare.outputs.draft_path }}
+          MODEL_ID: ${{ steps.agent.outputs.model-id }}
+          OVERWRITE: ${{ inputs.overwrite }}
+        run: |
+          set -euo pipefail
+          extra=()
+          if [ "$OVERWRITE" = "true" ]; then
+            extra+=(--replace-translation)
+          fi
+          uv run python scripts/write_generative_research.py \
+            --topic "Korean translation of $SLUG" \
+            --translation-of "$SLUG" \
+            --language ko \
+            --kind fragment \
+            --model "$MODEL_ID" \
+            --source workflow_dispatch-ko-backfill \
+            --prompt "Korean translation backfill for $SLUG" \
+            --translation-source-file "$SOURCE_PATH" \
+            --translation-source-sha256 "$SOURCE_SHA256" \
+            --html-body "$DRAFT_PATH" \
+            "${extra[@]}"
+
+      - name: Verify exact committed translation contract
+        id: verify
+        env:
+          BASE_SHA: ${{ steps.base.outputs.sha }}
+          SLUG: ${{ steps.prepare.outputs.slug }}
+          SOURCE_TYPE: ${{ steps.prepare.outputs.source_type }}
+          SOURCE_PATH: ${{ steps.prepare.outputs.source_path }}
+          SOURCE_SHA256: ${{ steps.prepare.outputs.source_sha256 }}
+          MODEL_ID: ${{ steps.agent.outputs.model-id }}
+        run: |
+          set -euo pipefail
+          uv run python scripts/verify_generative_translation_commit.py \
+            --base-sha "$BASE_SHA" \
+            --slug "$SLUG" \
+            --source-type "$SOURCE_TYPE" \
+            --source-file "$SOURCE_PATH" \
+            --source-sha256 "$SOURCE_SHA256" \
+            --model "$MODEL_ID" \
+            --translation-type "${{ steps.prepare.outputs.translation_type }}" \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Revalidate published artifact against canonical source
+        env:
+          SOURCE_PATH: ${{ steps.prepare.outputs.source_path }}
+          HTML_PATH: ${{ steps.verify.outputs.html_path }}
+        run: |
+          set -euo pipefail
+          translation_path="$HTML_PATH"
+          test -f "$translation_path"
+          uv run python scripts/check_generative_research.py "$translation_path"
+          uv run python scripts/check_generative_translation.py \
+            --allow-localized-number-rendering \
+            "$SOURCE_PATH" "$translation_path"
+
+      - name: Require every translation artifact
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.base.outputs.sha }}
+          expected-paths: ${{ steps.verify.outputs.allowed_paths }}
+          label: Korean generative-research translation
+
+      - name: Enforce exact translation diff scope
+        uses: ./.github/actions/require-diff-scope
+        with:
+          base-sha: ${{ steps.base.outputs.sha }}
+          allowed-paths: ${{ steps.verify.outputs.allowed_paths }}
+          label: Korean generative-research translation
+
+      - name: Remove untrusted staging files
+        if: always()
+        run: rm -rf -- .tmp .agent-input
+
+      # index-merge MUST remain false: its append-oriented union-by-slug merge
+      # can discard a nested translations.ko mutation during a conflict.
+      - name: Publish review PR or auto-merge
+        id: push
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.event.repository.default_branch }}
+          index-merge: 'false'
+          pr-merge: ${{ inputs.auto_merge }}
+          pr-branch-prefix: automation/ko-backfill
+
+      - name: Require requested auto-merge
+        if: inputs.auto_merge && steps.push.outputs.pushed != 'true'
+        run: |
+          echo "::error::The translation was not merged into the default branch."
+          exit 1
+
+      - name: Require a review pull request
+        if: ${{ !inputs.auto_merge }}
+        env:
+          PUBLICATION_MODE: ${{ steps.push.outputs.publication-mode }}
+          PULL_REQUEST_URL: ${{ steps.push.outputs.pull-request-url }}
+        run: |
+          set -euo pipefail
+          if [ "$PUBLICATION_MODE" != "pull-request" ] \
+              || [ -z "$PULL_REQUEST_URL" ]; then
+            echo "::error::Review-first publication did not create a pull request."
+            echo "::error::Mode was '${PUBLICATION_MODE:-empty}'."
+            exit 1
+          fi
+
+      - name: Summarize publication
+        if: always() && steps.push.outcome == 'success'
+        env:
+          SLUG: ${{ steps.prepare.outputs.slug }}
+          MODE: ${{ steps.push.outputs.publication-mode }}
+          PR_URL: ${{ steps.push.outputs.pull-request-url }}
+          HTML_PATH: ${{ steps.verify.outputs.html_path }}
+        run: |
+          {
+            echo "## Korean backfill"
+            echo
+            echo "- Slug: \`$SLUG\`"
+            echo "- Artifact: \`$HTML_PATH\`"
+            echo "- Publication mode: \`$MODE\`"
+            if [ -n "$PR_URL" ]; then echo "- Pull request: $PR_URL"; fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+          title: Korean generative-research backfill
+          text: "Slug: ${{ inputs.slug }}"
+          tags: generative-research,translation,ko
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

@@ -1,0 +1,1490 @@
+name: Run opencode in container
+description: >-
+  Run the opencode agent inside a Docker container with only the workflow
+  workspace's disposable clone, the rendered prompt, and (optionally) the
+  Twitter snapshot mounted. The real checkout is never writable by the agent.
+
+# WHY THIS EXISTS
+#
+# opencode was the one agent harness in this repo with no containment. Claude
+# lanes get the bubblewrap sandbox from the checked-in .claude/settings.json
+# (failIfUnavailable: true, allowUnsandboxedCommands: false, denyRead on ~/,
+# /proc, ~/.ssh, ~/.aws, and env denies on every provider token). pi lanes get
+# .github/actions/run-pi-container. opencode read NEITHER: it ran bare on the
+# self-hosted host with `permission: {edit,bash,webfetch}: allow` plus `--auto`,
+# which auto-approves anything not explicitly denied.
+#
+# That mattered because generative-research.yml triggers on `issues: [opened,
+# labeled]` and its twitter_url path feeds live tweets, replies and images to
+# the agent. Attacker-influenced text reaching an agent that holds unsandboxed
+# host bash on a runner with a PERSISTENT home — where other lanes' credentials
+# live — is a prompt-injection blast radius, not a theoretical one. The prior
+# containment was prose in the prompt ("do not exfiltrate env") plus Actions log
+# masking; neither is enforcement.
+#
+# This mirrors run-pi-container: same --cap-drop ALL, --security-opt
+# no-new-privileges, --pids-limit, non-root --user matching the host uid so
+# writes into the disposable clone keep correct ownership, and a container HOME
+# under /tmp so the agent never sees the runner's real home. The host imports
+# only a validated one-commit static bundle plus explicitly named data files.
+#
+# Missing Docker is a HARD FAILURE. Never fall back to host-level `opencode
+# run` — that is exactly the posture this action removes.
+
+inputs:
+  mode:
+    description: Output contract to enforce after the isolated agent run (generative, twitter, editorial, or canary).
+    required: true
+  lane:
+    description: >-
+      Backend SSOT lane key for scheduled editorial callers. Dispatch/comparison
+      callers leave this empty; CI cross-checks named lanes against
+      data/agent-backends.json.
+    required: false
+    default: ''
+  allowed-paths:
+    description: >-
+      Exact newline-delimited commit paths (or directory prefixes ending in /)
+      allowed in twitter/editorial mode. Ignored in generative/canary modes,
+      whose contracts are built in.
+    required: false
+    default: ''
+  return-artifacts:
+    description: >-
+      Exact newline-delimited uncommitted artifacts under .tmp/ to return from
+      an editorial run after regular-file/path/size validation. Used when a
+      trusted host step owns the final append and commit contract.
+    required: false
+    default: ''
+  prompt-file:
+    description: >-
+      Path to the rendered prompt file (host path). Exactly one of
+      prompt-file / prompt-text is required; that is enforced at runtime rather
+      than by `required: true`, which cannot express either/or.
+    required: false
+    default: ''
+  model:
+    description: Fully-qualified opencode model ref, e.g. opencode-go/deepseek-v4-flash.
+    required: true
+  opencode-api-key:
+    description: OPENCODE_API_KEY (OpenCode Go subscription).
+    required: true
+  opencode-config:
+    description: Workspace-relative path to the opencode config to inject.
+    required: false
+    default: .github/opencode/opencode.json
+  timeout-minutes:
+    description: Hard wall-clock cap on the agent turn, enforced inside the container.
+    required: false
+    default: '45'
+  mount-bird-snapshot:
+    description: >-
+      Mount /tmp/bird read-only. The Twitter lanes read a pre-fetched snapshot
+      from there; generative-research does not.
+    required: false
+    default: 'false'
+  bird-auth-token:
+    description: X/Twitter auth_token cookie, for birdy calls made by the agent.
+    required: false
+    default: ''
+  bird-ct0:
+    description: X/Twitter ct0 cookie, for birdy calls made by the agent.
+    required: false
+    default: ''
+  birdy-tool-log-path:
+    description: Workspace-relative path for birdy's tool log, if the lane collects one.
+    required: false
+    default: ''
+  gen-slug:
+    description: GEN_SLUG for the generative-research lane.
+    required: false
+    default: ''
+  gen-source:
+    description: GEN_SOURCE for the generative-research lane.
+    required: false
+    default: ''
+  gen-draft:
+    description: >-
+      GEN_DRAFT for the generative-research lane. Only the BASENAME is used:
+      the host path lives under $RUNNER_TEMP, which the non-root container user
+      cannot even mkdir (`/home/<runner>/... Permission denied`), and mounting
+      $RUNNER_TEMP would hand the agent every other job's leftovers on a
+      persistent runner. The draft is written and read entirely within one
+      agent turn — the writer persists the .ara.md into research/generative/
+      on success — so it is remapped to a container-local path instead.
+    required: false
+    default: ''
+  git-user-name:
+    description: >-
+      Commit identity for writers that commit from inside the container
+      (generative-research's write_generative_research.py does). Passed as
+      GIT_AUTHOR_*/GIT_COMMITTER_* rather than written to config, because the
+      container HOME and isolated clone are both throwaway.
+    required: false
+    default: github-actions[bot]
+  git-user-email:
+    description: Commit identity email (see git-user-name).
+    required: false
+    default: 41898282+github-actions[bot]@users.noreply.github.com
+  prompt-text:
+    description: >-
+      Inline prompt, used instead of prompt-file. For short probes (the canary)
+      that have no rendered file. Exactly one of prompt-file / prompt-text.
+    required: false
+    default: ''
+  output-file:
+    description: >-
+      Host path to tee the agent's stdout to, for lanes that assert on what the
+      agent said (the canary greps for its token). Written on the host, so it
+      needs no mount and the container cannot tamper with it.
+    required: false
+    default: ''
+
+runs:
+  using: composite
+  steps:
+    - name: Build and run opencode container
+      shell: bash
+      env:
+        RUN_MODE: ${{ inputs.mode }}
+        AGENT_LANE: ${{ inputs.lane }}
+        ALLOWED_PATHS: ${{ inputs.allowed-paths }}
+        RETURN_ARTIFACTS: ${{ inputs.return-artifacts }}
+        PROMPT_FILE: ${{ inputs.prompt-file }}
+        PROMPT_TEXT: ${{ inputs.prompt-text }}
+        OUTPUT_FILE: ${{ inputs.output-file }}
+        OPENCODE_MODEL_REF: ${{ inputs.model }}
+        OPENCODE_API_KEY: ${{ inputs.opencode-api-key }}
+        OPENCODE_CONFIG_REL: ${{ inputs.opencode-config }}
+        AGENT_TIMEOUT_MINUTES: ${{ inputs.timeout-minutes }}
+        MOUNT_BIRD_SNAPSHOT: ${{ inputs.mount-bird-snapshot }}
+        AUTH_TOKEN: ${{ inputs.bird-auth-token }}
+        CT0: ${{ inputs.bird-ct0 }}
+        BIRDY_TOOL_LOG_REL: ${{ inputs.birdy-tool-log-path }}
+        GEN_SLUG: ${{ inputs.gen-slug }}
+        GEN_SOURCE: ${{ inputs.gen-source }}
+        GEN_DRAFT: ${{ inputs.gen-draft }}
+        GIT_USER_NAME: ${{ inputs.git-user-name }}
+        GIT_USER_EMAIL: ${{ inputs.git-user-email }}
+      run: |
+        set -euo pipefail
+
+        if ! command -v docker >/dev/null 2>&1; then
+          echo "::error::Docker is required for sandboxed opencode runs. Refusing to fall back to host-level 'opencode run' — that is the unsandboxed posture this action exists to remove."
+          exit 1
+        fi
+
+        # The self-hosted runner is persistent. Keep every per-run artifact
+        # scoped to this invocation and remove it on success, failure, timeout,
+        # or cancellation so repeated scheduled runs cannot fill its disk.
+        build_dir=""
+        isolated_workspace=""
+        image=""
+        container_name=""
+        staged_prompt=""
+        cleanup() {
+          exit_code=$?
+          trap - EXIT
+          # GitHub cancellation can escalate INT -> TERM while cleanup is
+          # already stopping Docker. Do not let the second signal interrupt
+          # removal of the secret-bearing container.
+          trap '' TERM INT
+          if [ -n "$container_name" ] \
+            && docker container inspect "$container_name" >/dev/null 2>&1; then
+            timeout 30s docker rm -f "$container_name" >/dev/null 2>&1 \
+              || echo "::warning::Failed to remove opencode container $container_name"
+          fi
+          if [ -n "$image" ] && docker image inspect "$image" >/dev/null 2>&1; then
+            docker image rm -f "$image" >/dev/null 2>&1 \
+              || echo "::warning::Failed to remove opencode image $image"
+          fi
+          if [ -n "$build_dir" ] && [ -d "$build_dir" ]; then
+            rm -rf -- "$build_dir" \
+              || echo "::warning::Failed to remove opencode build directory $build_dir"
+          fi
+          if [ -n "$isolated_workspace" ] && [ -d "$isolated_workspace" ]; then
+            rm -rf -- "$isolated_workspace" \
+              || echo "::warning::Failed to remove isolated opencode workspace $isolated_workspace"
+          fi
+          if [ -n "$staged_prompt" ] && [ -f "$staged_prompt" ]; then
+            rm -f -- "$staged_prompt" \
+              || echo "::warning::Failed to remove staged opencode prompt $staged_prompt"
+          fi
+          exit "$exit_code"
+        }
+        trap cleanup EXIT
+        trap 'exit 143' TERM
+        trap 'exit 130' INT
+
+        if [ -n "$PROMPT_FILE" ] && [ -n "$PROMPT_TEXT" ]; then
+          echo "::error::Pass exactly one of prompt-file / prompt-text, not both."
+          exit 1
+        fi
+        if [ -z "$PROMPT_FILE" ] && [ -z "$PROMPT_TEXT" ]; then
+          echo "::error::One of prompt-file / prompt-text is required."
+          exit 1
+        fi
+        case "$RUN_MODE" in
+          generative|twitter|editorial|canary) ;;
+          *)
+            echo "::error::mode must be one of: generative, twitter, editorial, canary (got '$RUN_MODE')."
+            exit 1
+            ;;
+        esac
+        if [[ ! "$OPENCODE_MODEL_REF" =~ ^[a-z0-9][a-z0-9-]*/[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
+          echo "::error::model must be one canonical provider/model ref."
+          exit 1
+        fi
+        if [[ ! "$AGENT_TIMEOUT_MINUTES" =~ ^[0-9]+$ ]] \
+          || [ "$AGENT_TIMEOUT_MINUTES" -lt 1 ] \
+          || [ "$AGENT_TIMEOUT_MINUTES" -gt 240 ]; then
+          echo "::error::timeout-minutes must be an integer from 1 through 240."
+          exit 1
+        fi
+        if [ "$RUN_MODE" = "twitter" ] && [ -z "$ALLOWED_PATHS" ]; then
+          echo "::error::twitter mode requires allowed-paths."
+          exit 1
+        fi
+        if [ "$RUN_MODE" = "editorial" ] && [ -z "$ALLOWED_PATHS" ] \
+          && [ -z "$RETURN_ARTIFACTS" ]; then
+          echo "::error::editorial mode requires allowed-paths and/or return-artifacts."
+          exit 1
+        fi
+        case "$OPENCODE_CONFIG_REL" in
+          /*|../*|*/../*|*/..|.git/*)
+            echo "::error::opencode-config must be a workspace-relative non-git path."
+            exit 1
+            ;;
+        esac
+        if [ -n "$BIRDY_TOOL_LOG_REL" ]; then
+          case "$BIRDY_TOOL_LOG_REL" in
+            .twitter-input/*) ;;
+            *)
+              echo "::error::birdy-tool-log-path must stay under .twitter-input/."
+              exit 1
+              ;;
+          esac
+          case "$BIRDY_TOOL_LOG_REL" in
+            */../*|../*|*/..)
+              echo "::error::birdy-tool-log-path cannot traverse directories."
+              exit 1
+              ;;
+          esac
+        fi
+        if { [ "$RUN_MODE" = "twitter" ] || [ "$RUN_MODE" = "editorial" ]; } \
+          && [ -n "$ALLOWED_PATHS" ]; then
+          allowed_count=0
+          while IFS= read -r allowed_path; do
+            [ -z "$allowed_path" ] && continue
+            allowed_count=$((allowed_count + 1))
+            case "$allowed_path" in
+              research/*) ;;
+              *)
+                echo "::error::$RUN_MODE allowed path must stay under research/: $allowed_path"
+                exit 1
+                ;;
+            esac
+            case "$allowed_path" in
+              */../*|../*|*/..|*.git/*)
+                echo "::error::$RUN_MODE allowed path traverses a forbidden directory: $allowed_path"
+                exit 1
+                ;;
+            esac
+          done <<< "$ALLOWED_PATHS"
+          if [ "$allowed_count" -lt 1 ] || [ "$allowed_count" -gt 8 ]; then
+            echo "::error::$RUN_MODE allowed-paths must contain 1-8 paths."
+            exit 1
+          fi
+        fi
+        return_artifact_count=0
+        while IFS= read -r artifact; do
+          [ -z "$artifact" ] && continue
+          return_artifact_count=$((return_artifact_count + 1))
+          case "$artifact" in
+            .tmp/*) ;;
+            *)
+              echo "::error::return-artifacts must stay under .tmp/: $artifact"
+              exit 1
+              ;;
+          esac
+          case "$artifact" in
+            */../*|../*|*/..|*/./*|*/.|*.git/*)
+              echo "::error::return artifact traverses a forbidden directory: $artifact"
+              exit 1
+              ;;
+          esac
+        done <<< "$RETURN_ARTIFACTS"
+        if [ "$return_artifact_count" -gt 8 ]; then
+          echo "::error::return-artifacts must contain at most 8 exact paths."
+          exit 1
+        fi
+        if [ -n "$PROMPT_FILE" ] && [ ! -f "$PROMPT_FILE" ]; then
+          echo "::error::opencode prompt file not found: $PROMPT_FILE"
+          exit 1
+        fi
+        # An inline prompt is staged to a run-scoped file so both paths mount
+        # the prompt identically read-only.
+        if [ -n "$PROMPT_TEXT" ]; then
+          staged_prompt="${RUNNER_TEMP:-/tmp}/opencode-inline-prompt-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}.md"
+          PROMPT_FILE="$staged_prompt"
+          printf '%s' "$PROMPT_TEXT" > "$PROMPT_FILE"
+        fi
+        workspace_root_for_config=$(realpath -- "$GITHUB_WORKSPACE")
+        config_path="$workspace_root_for_config/$OPENCODE_CONFIG_REL"
+        if [ ! -f "$config_path" ] || [ -L "$config_path" ] \
+          || [ "$(realpath -- "$config_path")" != "$config_path" ]; then
+          echo "::error::opencode config not found: $OPENCODE_CONFIG_REL"
+          exit 1
+        fi
+        # TRUSTED_BIRD_MOUNT_GUARD_BEGIN
+        if [ "$MOUNT_BIRD_SNAPSHOT" = "true" ]; then
+          bird_root=/tmp/bird
+          canonical_bird_parent=$(realpath -- "$(dirname -- "$bird_root")")
+          if [ ! -d "$bird_root" ] || [ -L "$bird_root" ] \
+            || [ "$(realpath -- "$bird_root")" \
+              != "$canonical_bird_parent/$(basename -- "$bird_root")" ]; then
+            echo "::error::Twitter fetch directory /tmp/bird is missing, linked, or noncanonical."
+            exit 1
+          fi
+          if ! unsafe_bird_entry=$(find "$bird_root" -mindepth 1 \
+            \! -type d \! -type f -print -quit); then
+            echo "::error::Could not audit the Twitter snapshot before mounting it."
+            exit 1
+          fi
+          if [ -n "$unsafe_bird_entry" ]; then
+            echo "::error::Twitter snapshot contains a linked or special entry: $unsafe_bird_entry"
+            exit 1
+          fi
+        fi
+        # TRUSTED_BIRD_MOUNT_GUARD_END
+
+        # Scheduled editorial lanes stage freshly fetched, untrusted source
+        # data here. It is copied into the disposable clone, never committed or
+        # mounted from an arbitrary host path. Reject links/special entries so
+        # cp cannot cross outside the workspace.
+        # TRUSTED_AGENT_INPUT_GUARD_BEGIN
+        agent_input="$GITHUB_WORKSPACE/.agent-input"
+        if [ -e "$agent_input" ] || [ -L "$agent_input" ]; then
+          workspace_root_for_input=$(realpath -- "$GITHUB_WORKSPACE")
+          if [ ! -d "$agent_input" ] || [ -L "$agent_input" ] \
+            || [ "$(realpath -- "$agent_input")" != "$workspace_root_for_input/.agent-input" ]; then
+            echo "::error::.agent-input is missing, linked, or noncanonical."
+            exit 1
+          fi
+          if ! unsafe_agent_input=$(find "$agent_input" -mindepth 1 \
+            \! -type d \! -type f -print -quit); then
+            echo "::error::Could not audit .agent-input before copying it."
+            exit 1
+          fi
+          if [ -n "$unsafe_agent_input" ]; then
+            echo "::error::.agent-input contains a linked or special entry: $unsafe_agent_input"
+            exit 1
+          fi
+          agent_input_bytes=$(find "$agent_input" -type f -exec wc -c {} \; \
+            | awk '{sum += $1} END {print sum + 0}')
+          if [ "$agent_input_bytes" -gt 52428800 ]; then
+            echo "::error::.agent-input exceeds the 50 MiB lane-data cap."
+            exit 1
+          fi
+        fi
+        # TRUSTED_AGENT_INPUT_GUARD_END
+
+        build_dir="${RUNNER_TEMP:-/tmp}/opencode-container-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        rm -rf "$build_dir"
+        mkdir -p "$build_dir"
+        generated_opencode_config="$build_dir/opencode.generated.json"
+        /usr/bin/python3 -I scripts/build_opencode_config.py \
+          "$GITHUB_WORKSPACE/$OPENCODE_CONFIG_REL" \
+          "$generated_opencode_config" "$OPENCODE_MODEL_REF"
+        empty_git_template="$build_dir/empty-git-template"
+        mkdir -p "$empty_git_template"
+
+        # Never give the agent a writable mount of the real checkout. A local,
+        # no-hardlink clone carries the same committed tree but has disposable
+        # git metadata, hooks, ignored files, and virtualenv state. The trusted
+        # host shell below imports a commit only after validating its exact diff.
+        # TRUSTED_CLONE_SETUP_BEGIN
+        workspace_root=$(realpath -- "$GITHUB_WORKSPACE")
+        git_dir="$workspace_root/.git"
+        if [ ! -d "$git_dir" ] || [ -L "$git_dir" ] \
+          || [ "$(realpath -- "$git_dir")" != "$workspace_root/.git" ]; then
+          echo "::error::Real checkout .git must be a canonical directory inside GITHUB_WORKSPACE."
+          exit 1
+        fi
+        # A linked-worktree commondir redirects config, refs, and objects before
+        # Git consults any -c override. These jobs use a normal checkout, so a
+        # persisted commondir is stale/hostile metadata, never required state.
+        rm -f -- "$git_dir/commondir"
+        for git_control_dir in "$git_dir/objects" "$git_dir/objects/info" \
+          "$git_dir/refs" "$git_dir/info"; do
+          if [ ! -d "$git_control_dir" ] || [ -L "$git_control_dir" ] \
+            || [ "$(realpath -- "$git_control_dir")" != "$git_control_dir" ]; then
+            echo "::error::Real checkout has a linked or malformed Git control directory: $git_control_dir"
+            exit 1
+          fi
+        done
+        for required_git_file in "$git_dir/HEAD" "$git_dir/index"; do
+          if [ ! -f "$required_git_file" ] || [ -L "$required_git_file" ] \
+            || [ "$(realpath -- "$required_git_file")" != "$required_git_file" ]; then
+            echo "::error::Real checkout has a linked or malformed Git control file: $required_git_file"
+            exit 1
+          fi
+        done
+        if [ -e "$git_dir/packed-refs" ] || [ -L "$git_dir/packed-refs" ]; then
+          if [ ! -f "$git_dir/packed-refs" ] || [ -L "$git_dir/packed-refs" ] \
+            || [ "$(realpath -- "$git_dir/packed-refs")" != "$git_dir/packed-refs" ]; then
+            echo "::error::Real checkout packed-refs is linked or malformed."
+            exit 1
+          fi
+        fi
+        if [[ ! "${GITHUB_SERVER_URL:-}" =~ ^https://[^/[:space:]]+(/[^[:space:]]*)?$ ]] \
+          || [[ ! "${GITHUB_REPOSITORY:-}" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]]; then
+          echo "::error::Trusted GitHub origin coordinates are malformed."
+          exit 1
+        fi
+        trusted_origin="${GITHUB_SERVER_URL%/}/${GITHUB_REPOSITORY}.git"
+
+        # This checkout persists across jobs. Replace executable local Git
+        # configuration before the FIRST Git command and remove every local
+        # metadata bridge that can redirect object lookup, attributes, hooks,
+        # or later safe-push transport. Callers use persist-credentials:false;
+        # safe-push supplies its own one-command authorization header.
+        trusted_config=$(mktemp "$git_dir/config.opencode.XXXXXX")
+        {
+          printf '%s\n' '[core]'
+          printf '%s\n' '  repositoryformatversion = 0'
+          printf '%s\n' '  filemode = true'
+          printf '%s\n' '  bare = false'
+          printf '%s\n' '  logallrefupdates = false'
+          printf '%s\n' '[user]'
+          printf '%s\n' '  name = github-actions[bot]'
+          printf '%s\n' '  email = 41898282+github-actions[bot]@users.noreply.github.com'
+          printf '%s\n' '[remote "origin"]'
+          printf '  url = %s\n' "$trusted_origin"
+          printf '%s\n' '  fetch = +refs/heads/*:refs/remotes/origin/*'
+        } > "$trusted_config"
+        chmod 600 "$trusted_config"
+        mv -f -- "$trusted_config" "$git_dir/config"
+        rm -f -- "$git_dir/config.worktree" "$git_dir/info/attributes" \
+          "$git_dir/info/grafts" "$git_dir/objects/info/alternates" \
+          "$git_dir/objects/info/http-alternates"
+        rm -rf -- "$git_dir/hooks" "$git_dir/logs" "$git_dir/refs/replace"
+        mkdir -p "$git_dir/hooks"
+        if ! bad_ref_path=$(find "$git_dir/refs" -mindepth 1 \
+          \! -type d \! -type f -print -quit) \
+          || ! bad_object_path=$(find "$git_dir/objects" -mindepth 1 \
+          \! -type d \! -type f -print -quit); then
+          echo "::error::Could not audit real checkout refs/objects control paths."
+          exit 1
+        fi
+        if [ -n "$bad_ref_path" ] || [ -n "$bad_object_path" ]; then
+          echo "::error::Real checkout refs/objects contain linked or special control paths."
+          exit 1
+        fi
+        if [ -n "${GITHUB_ENV:-}" ]; then
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+        fi
+
+        host_git=(env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+          GIT_NO_REPLACE_OBJECTS=1 git -c core.fsmonitor=false \
+          -c core.hooksPath=/dev/null -c core.attributesFile=/dev/null \
+          -c core.sparseCheckout=false -c core.sparseCheckoutCone=false \
+          -c index.sparse=false -c core.worktree="$workspace_root" \
+          -C "$workspace_root")
+        if ! "${host_git[@]}" diff --no-ext-diff --quiet \
+          || ! "${host_git[@]}" diff --no-ext-diff --cached --quiet; then
+          echo "::error::Real checkout has tracked changes before the opencode run."
+          exit 1
+        fi
+        pre_sha=$("${host_git[@]}" rev-parse HEAD)
+        isolated_workspace="${RUNNER_TEMP:-/tmp}/opencode-workspace-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        rm -rf "$isolated_workspace"
+        env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+          GIT_NO_REPLACE_OBJECTS=1 GIT_LFS_SKIP_SMUDGE=1 \
+          git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
+          -c core.attributesFile=/dev/null clone --quiet --no-hardlinks \
+          --no-checkout --template="$empty_git_template" \
+          "$GITHUB_WORKSPACE" "$isolated_workspace"
+        isolated_pre_sha=$(env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+          GIT_NO_REPLACE_OBJECTS=1 git -c core.fsmonitor=false \
+          -c core.hooksPath=/dev/null -c core.attributesFile=/dev/null \
+          -c core.worktree="$isolated_workspace" \
+          -C "$isolated_workspace" rev-parse HEAD)
+        if [ "$isolated_pre_sha" != "$pre_sha" ]; then
+          echo "::error::Isolated opencode clone HEAD does not match the real checkout."
+          exit 1
+        fi
+        # `git clone --template=<empty> --no-checkout` does not create
+        # .git/info. The containment tail deliberately requires every Git
+        # control directory to remain canonical after the agent exits, so the
+        # trusted host must establish that invariant before the container runs.
+        # This was the canary 31290819841 false positive: the agent/provider
+        # succeeded, then the tail rejected a directory that never existed.
+        # TRUSTED_ISOLATED_CONTROL_SETUP_BEGIN
+        for isolated_control_dir in \
+          "$isolated_workspace/.git/info" \
+          "$isolated_workspace/.git/objects/info"; do
+          if [ -e "$isolated_control_dir" ] || [ -L "$isolated_control_dir" ]; then
+            if [ ! -d "$isolated_control_dir" ] || [ -L "$isolated_control_dir" ]; then
+              echo "::error::Isolated opencode clone has a linked or malformed Git control directory: $isolated_control_dir"
+              exit 1
+            fi
+          else
+            mkdir -- "$isolated_control_dir"
+          fi
+          isolated_control_parent=$(realpath -- "$(dirname -- "$isolated_control_dir")")
+          if [ "$(realpath -- "$isolated_control_dir")" \
+            != "$isolated_control_parent/$(basename -- "$isolated_control_dir")" ]; then
+            echo "::error::Isolated opencode Git control directory is noncanonical: $isolated_control_dir"
+            exit 1
+          fi
+        done
+        # TRUSTED_ISOLATED_CONTROL_SETUP_END
+        if [ "$RUN_MODE" = "generative" ] && [ -d "$GITHUB_WORKSPACE/.gen-input" ]; then
+          cp -a "$GITHUB_WORKSPACE/.gen-input" "$isolated_workspace/.gen-input"
+        fi
+        if [ "$RUN_MODE" = "twitter" ] && [ -d "$GITHUB_WORKSPACE/.twitter-input" ]; then
+          cp -a "$GITHUB_WORKSPACE/.twitter-input" "$isolated_workspace/.twitter-input"
+        fi
+        if [ -d "$GITHUB_WORKSPACE/.agent-input" ]; then
+          cp -a "$GITHUB_WORKSPACE/.agent-input" "$isolated_workspace/.agent-input"
+        fi
+        # Return artifacts are untracked, so the no-checkout clone does not
+        # carry their parent. Establish the one trusted scratch root before
+        # the model runs; a translation policy can then deny bash entirely.
+        isolated_tmp="$isolated_workspace/.tmp"
+        if [ -e "$isolated_tmp" ] || [ -L "$isolated_tmp" ]; then
+          if [ ! -d "$isolated_tmp" ] || [ -L "$isolated_tmp" ]; then
+            echo "::error::Isolated opencode .tmp root is linked or malformed."
+            exit 1
+          fi
+        else
+          mkdir -- "$isolated_tmp"
+        fi
+        isolated_tmp_parent=$(realpath -- "$(dirname -- "$isolated_tmp")")
+        if [ "$(realpath -- "$isolated_tmp")" \
+          != "$isolated_tmp_parent/$(basename -- "$isolated_tmp")" ]; then
+          echo "::error::Isolated opencode .tmp root is noncanonical."
+          exit 1
+        fi
+        # TRUSTED_CLONE_SETUP_END
+        # Everything the opencode lane families shell out to:
+        #   generative-research -> uv run python (17 call sites), birdy, pdftotext, git, curl, jq
+        #   hourly-twitter      -> birdy, jq
+        # One image serves both. Agent/tool versions are pinned; the base image
+        # tag and Debian package repositories remain mutable across rebuilds.
+        cat > "$build_dir/Dockerfile" <<'EOF'
+        FROM node:22-bookworm-slim@sha256:83f487e0a63425e5b4d146fb5e5be574bcbe1b7b843d3ebafdd95eaf7767a7e5
+        RUN apt-get update \
+          && apt-get install -y --no-install-recommends \
+               ca-certificates curl git jq poppler-utils \
+          && rm -rf /var/lib/apt/lists/*
+        # --ignore-scripts stays on so no TRANSITIVE dependency gets to run
+        # arbitrary install code, but opencode-ai genuinely needs its own
+        # postinstall (it fetches the platform binary) and hard-fails without
+        # it: "opencode-ai's postinstall script was not run." So run exactly
+        # that one script, explicitly, instead of dropping the flag globally.
+        RUN npm install -g --ignore-scripts opencode-ai@1.18.3 \
+          && ( cd "$(npm root -g)/opencode-ai" && node postinstall.mjs )
+        # birdy: single static Go binary since v1.0.0, no Node runtime.
+        RUN set -eux; \
+          arch="$(dpkg --print-architecture)"; \
+          case "$arch" in \
+            amd64) a=amd64; sha=001763ea3c9063f97980a912afa8d2b43ca2a949ea9cf3ab323b4d0f21421fb4 ;; \
+            arm64) a=arm64; sha=ac0f68274aa8a76ee0b015c776b0922303c03fe29c691477b49eb10e97231c94 ;; \
+            *) echo "unsupported arch $arch" >&2; exit 1 ;; \
+          esac; \
+          curl -fsSL "https://github.com/guzus/birdy/releases/download/v1.1.0/birdy_linux_${a}.tar.gz" -o /tmp/birdy.tgz; \
+          echo "$sha  /tmp/birdy.tgz" | sha256sum -c -; \
+          tar -xzf /tmp/birdy.tgz -C /tmp; \
+          install -m 755 /tmp/birdy /usr/local/bin/birdy; \
+          rm -rf /tmp/birdy.tgz /tmp/birdy
+        # The rendered Twitter prompt calls birdy-fast. The host wrapper talks
+        # to a localhost daemon that is intentionally outside the container;
+        # this wrapper preserves the command contract via the pinned binary,
+        # forces read-only mode, and logs command names without arguments.
+        COPY birdy-fast /usr/local/bin/birdy-fast
+        RUN chmod 755 /usr/local/bin/birdy-fast
+        # uv drives every `uv run python scripts/...` the research prompt makes.
+        COPY --from=ghcr.io/astral-sh/uv:0.9.7@sha256:ba4857bf2a068e9bc0e64eed8563b065908a4cd6bfb66b531a9c424c8e25e142 /uv /uvx /usr/local/bin/
+        RUN birdy version && uv --version && opencode --version
+        WORKDIR /workspace
+        EOF
+
+        image="ara-opencode-agent:${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        container_name="ara-opencode-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-${GITHUB_JOB:-job}"
+        case "$container_name" in
+          *[!A-Za-z0-9_.-]*)
+            echo "::error::Unsafe run-scoped opencode container name: $container_name"
+            exit 1
+            ;;
+        esac
+        if [ "${#container_name}" -gt 120 ]; then
+          echo "::error::Run-scoped opencode container name exceeds 120 characters."
+          exit 1
+        fi
+        cp "$GITHUB_ACTION_PATH/birdy-fast" "$build_dir/birdy-fast"
+        docker build --pull -t "$image" "$build_dir"
+
+        # Optional mounts / env, assembled as arrays so empty values never
+        # collapse into a stray argument.
+        # Remap the draft into the container (see the gen-draft input docs).
+        GEN_DRAFT_IN_CONTAINER=""
+        if [ -n "$GEN_DRAFT" ]; then
+          GEN_DRAFT_IN_CONTAINER="/tmp/opencode-home/$(basename "$GEN_DRAFT")"
+        fi
+
+        # Expanded below as ${extra_args[@]+"${extra_args[@]}"}: under `set -u`
+        # a plain "${arr[@]}" on an EMPTY array is an unbound-variable error in
+        # bash < 4.4. The Linux runner has 5.x so it would pass there and blow
+        # up anywhere older — not worth the latent trap.
+        extra_args=()
+        if [ "$MOUNT_BIRD_SNAPSHOT" = "true" ]; then
+          extra_args+=(--volume "/tmp/bird:/tmp/bird:ro")
+        fi
+        if [ -n "$BIRDY_TOOL_LOG_REL" ]; then
+          extra_args+=(--env "BIRDY_TOOL_LOG_PATH=/workspace/${BIRDY_TOOL_LOG_REL#/}")
+        fi
+
+        # The agent's HOME is a throwaway inside the container: the runner's
+        # real home holds other lanes' credentials and must never be reachable.
+        # UV_* keep uv's python + cache inside the container too, so a package
+        # download can't write to shared runner state.
+        docker_cmd=(docker run --rm \
+          --name "$container_name" \
+          --user "$(id -u):$(id -g)" \
+          --workdir /workspace \
+          --cap-drop ALL \
+          --security-opt no-new-privileges \
+          --pids-limit 512 \
+          --env HOME=/tmp/opencode-home \
+          --env XDG_CONFIG_HOME=/tmp/opencode-home/.config \
+          --env XDG_DATA_HOME=/tmp/opencode-home/.local/share \
+          --env XDG_CACHE_HOME=/tmp/opencode-home/.cache \
+          --env UV_CACHE_DIR=/tmp/opencode-home/.cache/uv \
+          --env UV_PYTHON_INSTALL_DIR=/tmp/opencode-home/.local/uv-python \
+          --env UV_LINK_MODE=copy \
+          --env OPENCODE_API_KEY \
+          --env OPENCODE_DISABLE_AUTOUPDATE=1 \
+          --env GITHUB_WORKSPACE=/workspace \
+          --env OPENCODE_CONFIG=/tmp/opencode.generated.json \
+          --env AUTH_TOKEN \
+          --env CT0 \
+          --env BIRDY_READ_ONLY=1 \
+          --env GEN_SLUG \
+          --env GEN_SOURCE \
+          --env "GEN_DRAFT=$GEN_DRAFT_IN_CONTAINER" \
+          --env "GIT_AUTHOR_NAME=$GIT_USER_NAME" \
+          --env "GIT_AUTHOR_EMAIL=$GIT_USER_EMAIL" \
+          --env "GIT_COMMITTER_NAME=$GIT_USER_NAME" \
+          --env "GIT_COMMITTER_EMAIL=$GIT_USER_EMAIL" \
+          --env OPENCODE_MODEL_REF \
+          --env AGENT_TIMEOUT_MINUTES \
+          --env AGENT_LANE \
+          --env RUN_MODE \
+          --env ALLOWED_PATHS \
+          --env RETURN_ARTIFACTS \
+          --env "PRE_SHA=$pre_sha" \
+          ${extra_args[@]+"${extra_args[@]}"} \
+          --volume "$isolated_workspace:/workspace" \
+          --volume "$PROMPT_FILE:/tmp/opencode-prompt.md:ro" \
+          --volume "$generated_opencode_config:/tmp/opencode.generated.json:ro" \
+          "$image" \
+          bash -lc '
+            set -uo pipefail
+            mkdir -p "$HOME" "$XDG_CONFIG_HOME"
+
+            # The host deliberately cloned without a checkout, so neither
+            # persistent global config nor a template hook can run there.
+            # Materialize the tree only after entering the disposable
+            # container, with config, hooks, and global attributes disabled.
+            export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+              GIT_NO_REPLACE_OBJECTS=1
+            git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
+              -c core.attributesFile=/dev/null reset --hard "$PRE_SHA"
+            if [ "$(git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
+              -c core.attributesFile=/dev/null rev-parse HEAD)" != "$PRE_SHA" ]; then
+              echo "isolated opencode checkout does not match pre-run HEAD" >&2
+              exit 1
+            fi
+
+            # Keep trusted git control state in non-exported shell variables;
+            # the opencode child cannot mutate its parent shell variables.
+            trusted_config=$(base64 -w0 .git/config)
+            trusted_head=$(base64 -w0 .git/HEAD)
+            trusted_packed=""
+            if [ -f .git/packed-refs ]; then
+              trusted_packed=$(base64 -w0 .git/packed-refs)
+            fi
+
+            # OpenCode can exit zero without producing required lane output.
+            # output. Retry two exact silent-success shapes once: Korean
+            # translation created neither its segment artifact nor a tool call,
+            # or a commit-producing editorial lane left HEAD at PRE_SHA. Both
+            # attempts share the original timeout budget. Before an editorial
+            # retry, restore the disposable workspace and staged source inputs,
+            # then give the new process a fresh HOME/cache and remove the first
+            # process log. Nonzero exits and successful commits remain
+            # single-attempt; a second editorial no-op becomes an explicit
+            # failure instead of looking like adapter success.
+            # OPENCODE_ATTEMPT_LOOP_BEGIN
+            #
+            # Provider errors that can NEVER recover inside a single run.
+            # Anchored on `level=ERROR` so this only ever matches opencode
+            # structured log lines, never article prose that happens to
+            # quote one of these phrases.
+            #
+            # Why this exists: on 2026-08-13 the OpenCode workspace hit its
+            # monthly usage cap. opencode reports that clearly, but it keeps
+            # stream-retrying instead of exiting, and without --print-logs the
+            # message stayed in its internal log file. The lane therefore
+            # emitted ZERO bytes between its banner and `timeout` firing at
+            # 25-80 min, so a billing limit was indistinguishable from a long
+            # healthy run. Five editorial lanes stayed dark for four days and
+            # the cause was only found by reproducing the CLI by hand. Each
+            # hang also pinned this repo single self-hosted runner for the
+            # full timeout, head-of-line blocking unrelated lanes.
+            # Double quotes required: this body runs inside an outer
+            # single-quoted bash -lc script, so a single-quoted pattern ends
+            # that outer string early and leaves regex metacharacters as a
+            # host-shell syntax error (RSS run 31991149151; same class as
+            # Cursor canary 31993098610). Inside the outer singles these
+            # doubles stay literal and re-quote correctly for the container.
+            opencode_fatal_pattern="level=ERROR.*(Monthly usage limit reached|usage limit reached|Insufficient balance|Insufficient credits|Invalid API key|API key is invalid)"
+            model_budget_seconds=$((AGENT_TIMEOUT_MINUTES * 60))
+            model_started_seconds=$SECONDS
+            attempt_count=0
+            total_segment_calls=0
+            retry_reason=none
+            artifact_count=0
+            retry_commit_editorial=false
+            retry_agent_input_tree=""
+            if [ "${RUN_MODE:-}" = "editorial" ] \
+              && [ -n "${ALLOWED_PATHS:-}" ] \
+              && [ -z "${RETURN_ARTIFACTS:-}" ]; then
+              retry_commit_editorial=true
+              if [ -d .agent-input ]; then
+                retry_index=$(mktemp /tmp/opencode-retry-index.XXXXXX)
+                rm -f -- "$retry_index"
+                GIT_INDEX_FILE="$retry_index" git read-tree --empty
+                GIT_INDEX_FILE="$retry_index" git add -f -- .agent-input
+                retry_agent_input_tree=$(GIT_INDEX_FILE="$retry_index" \
+                  git write-tree)
+                rm -f -- "$retry_index"
+              fi
+            fi
+            while :; do
+              attempt_count=$((attempt_count + 1))
+              remaining_seconds=$((model_budget_seconds \
+                - (SECONDS - model_started_seconds)))
+              if [ "$remaining_seconds" -le 0 ]; then
+                agent_status=124
+                break
+              fi
+
+              attempt_log="/tmp/opencode-attempt-${attempt_count}.log"
+              rm -f -- "$attempt_log"
+              attempt_home="/tmp/opencode-home-attempt-${attempt_count}"
+              rm -rf -- "$attempt_home"
+              mkdir -p "$attempt_home"
+              set +e
+              # --print-logs puts opencode provider errors on stderr so a
+              # dead route is visible in the job log instead of silent. The
+              # run is backgrounded (rather than piped through tee) purely so
+              # we hold its PID and can abort early; `tail --pid` reproduces
+              # the old live-streaming behaviour and exits with the run.
+              HOME="$attempt_home" \
+                XDG_CONFIG_HOME="$attempt_home/.config" \
+                XDG_DATA_HOME="$attempt_home/.local/share" \
+                XDG_CACHE_HOME="$attempt_home/.cache" \
+                UV_CACHE_DIR="$attempt_home/.cache/uv" \
+                UV_PYTHON_INSTALL_DIR="$attempt_home/.local/uv-python" \
+                timeout "${remaining_seconds}s" opencode run \
+                -m "$OPENCODE_MODEL_REF" \
+                --auto \
+                --print-logs --log-level ERROR \
+                "$(cat /tmp/opencode-prompt.md)" > "$attempt_log" 2>&1 &
+              opencode_pid=$!
+              tail -n +1 -f "$attempt_log" --pid "$opencode_pid" 2>/dev/null &
+              tail_pid=$!
+              # Poll for an unrecoverable provider error and cut the run short.
+              # GNU timeout forwards SIGTERM to the command it manages, so
+              # terminating it stops opencode too. procps (pgrep/pkill) is not
+              # installed in the slim image, hence the PID-based approach.
+              while kill -0 "$opencode_pid" 2>/dev/null; do
+                sleep 5
+                fatal=$(grep -m1 -oiE "$opencode_fatal_pattern" "$attempt_log" 2>/dev/null | cut -c1-300)
+                if [ -n "$fatal" ]; then
+                  echo "::error::OpenCode provider returned an unrecoverable error; aborting this attempt instead of waiting out the ${remaining_seconds}s timeout: ${fatal}"
+                  kill -TERM "$opencode_pid" 2>/dev/null
+                  # Escalate if it does not go down promptly, so a wedged
+                  # provider client can never outlive its own abort and keep
+                  # holding the runner.
+                  for _ in 1 2 3 4 5 6 7 8 9 10; do
+                    kill -0 "$opencode_pid" 2>/dev/null || break
+                    sleep 1
+                  done
+                  kill -KILL "$opencode_pid" 2>/dev/null
+                  break
+                fi
+              done
+              wait "$opencode_pid"
+              agent_status=$?
+              # Tear the streamer down explicitly rather than trusting
+              # `tail --pid` to notice; an unreaped tail keeps this step
+              # stdout open and would hang the job it was meant to shorten.
+              kill -TERM "$tail_pid" 2>/dev/null
+              wait "$tail_pid" 2>/dev/null
+              set -e
+
+              segment_calls=$(grep -cF "translation_segment {" "$attempt_log" || true)
+              if [[ ! "$segment_calls" =~ ^[0-9]+$ ]]; then
+                echo "could not derive translation_segment call telemetry" >&2
+                exit 1
+              fi
+              total_segment_calls=$((total_segment_calls + segment_calls))
+              artifact_count=0
+              while IFS= read -r artifact; do
+                [ -z "$artifact" ] && continue
+                if [ -e "$artifact" ] || [ -L "$artifact" ]; then
+                  artifact_count=$((artifact_count + 1))
+                fi
+              done <<< "$RETURN_ARTIFACTS"
+              echo "OpenCode attempt ${attempt_count}: status=${agent_status} translation_segment_calls=${segment_calls} artifacts=${artifact_count} remaining_seconds=${remaining_seconds}"
+
+              attempt_post_sha=""
+              if [ "$retry_commit_editorial" = "true" ]; then
+                attempt_post_sha=$(git rev-parse HEAD)
+              fi
+              if [ "$retry_commit_editorial" = "true" ] \
+                && [ "$agent_status" -eq 0 ] \
+                && [ "$attempt_post_sha" = "$PRE_SHA" ]; then
+                if [ "$attempt_count" -eq 1 ]; then
+                  retry_reason=zero-commit-editorial
+                  echo "Retrying editorial OpenCode once after a zero-commit successful attempt."
+                  git reset --hard "$PRE_SHA"
+                  git clean -ffdx
+                  mkdir -p .tmp
+                  if [ -n "$retry_agent_input_tree" ]; then
+                    retry_index=$(mktemp /tmp/opencode-retry-index.XXXXXX)
+                    rm -f -- "$retry_index"
+                    GIT_INDEX_FILE="$retry_index" git read-tree \
+                      "$retry_agent_input_tree"
+                    GIT_INDEX_FILE="$retry_index" git checkout-index \
+                      --all --force --prefix="$PWD/"
+                    rm -f -- "$retry_index"
+                  fi
+                  rm -rf -- "$attempt_home"
+                  rm -f -- "$attempt_log"
+                  continue
+                fi
+                echo "::error::Editorial OpenCode exited successfully twice without committing output."
+                agent_status=86
+              fi
+
+              if [ "$AGENT_LANE" = "generative-research-ko" ] \
+                && [ "$RETURN_ARTIFACTS" = ".tmp/generative-translation.ko.segments.jsonl" ] \
+                && [ "$agent_status" -eq 0 ] \
+                && [ "$artifact_count" -eq 0 ] \
+                && [ "$segment_calls" -eq 0 ] \
+                && [ "$attempt_count" -eq 1 ]; then
+                retry_reason=zero-artifact-zero-translation-segment
+                echo "Retrying Korean translation once after a zero-output OpenCode attempt."
+                continue
+              fi
+              break
+            done
+
+            # The model child is gone before this fixed-format file is
+            # replaced. The host still validates every field before logging
+            # it; telemetry never authorizes artifact import or publication.
+            rm -f -- .opencode-attempt-telemetry
+            {
+              printf "attempt_count=%s\n" "$attempt_count"
+              printf "last_agent_status=%s\n" "$agent_status"
+              printf "translation_segment_calls=%s\n" "$total_segment_calls"
+              printf "artifact_count=%s\n" "$artifact_count"
+              printf "retry_reason=%s\n" "$retry_reason"
+            } > .opencode-attempt-telemetry
+            # OPENCODE_ATTEMPT_LOOP_END
+
+            # This fixed container tail runs after the agent child exits. It
+            # restores config/HEAD, removes hooks and object indirections, and
+            # exports a static bundle. The host never fetches from this repo.
+            for trusted_dir in .git .git/objects .git/objects/info .git/refs .git/info; do
+              if [ ! -d "$trusted_dir" ] || [ -L "$trusted_dir" ]; then
+                echo "isolated opencode run replaced trusted git directory: $trusted_dir" >&2
+                exit 1
+              fi
+            done
+            rm -f -- .git/config .git/HEAD .git/packed-refs
+            printf "%s" "$trusted_config" | base64 -d > .git/config
+            printf "%s" "$trusted_head" | base64 -d > .git/HEAD
+            if [ -n "$trusted_packed" ]; then
+              printf "%s" "$trusted_packed" | base64 -d > .git/packed-refs
+            fi
+            rm -rf -- .git/hooks .git/refs/replace
+            mkdir -p .git/hooks
+            rm -f -- .git/objects/info/alternates \
+              .git/objects/info/http-alternates .git/info/grafts .git/shallow
+
+            export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+              GIT_NO_REPLACE_OBJECTS=1
+            # Agents commonly commit a draft and then make a second repair
+            # commit after a validator/length check. Exporting that history
+            # directly would violate the trusted host one-direct-child
+            # import contract. Normalize the FINAL committed tree into one
+            # fixed-message child of PRE_SHA inside the disposable clone.
+            #
+            # This is not permission to accept arbitrary rewritten history:
+            # verify the agent HEAD still descends from PRE_SHA BEFORE
+            # normalization. `git bundle create HEAD ^PRE_SHA` then contains
+            # only the normalized commit and its final reachable blobs;
+            # intermediate-only objects never cross into the real checkout.
+            # TRUSTED_COMMIT_NORMALIZATION_BEGIN
+            agent_post_sha=$(git rev-parse HEAD)
+            post_sha="$agent_post_sha"
+            if [ "$agent_post_sha" != "$PRE_SHA" ]; then
+              if ! git merge-base --is-ancestor "$PRE_SHA" "$agent_post_sha"; then
+                echo "isolated opencode commit does not descend from the pre-run HEAD" >&2
+                exit 1
+              fi
+              if [ "$RUN_MODE" = "canary" ]; then
+                echo "canary opencode run created a commit" >&2
+                exit 1
+              fi
+
+              commit_count=$(git rev-list --count "$PRE_SHA..$agent_post_sha")
+              if [ "$commit_count" -lt 1 ] || [ "$commit_count" -gt 8 ]; then
+                echo "isolated opencode commit chain must contain 1-8 commits; got $commit_count" >&2
+                exit 1
+              fi
+
+              expected_parent="$PRE_SHA"
+              while IFS= read -r commit_oid; do
+                [ -z "$commit_oid" ] && continue
+                parent_line=$(git rev-list --parents -n 1 "$commit_oid")
+                read -r observed_commit observed_parent extra_parent <<< "$parent_line"
+                if [ "$observed_commit" != "$commit_oid" ] \
+                  || [ "$observed_parent" != "$expected_parent" ] \
+                  || [ -n "${extra_parent:-}" ]; then
+                  echo "isolated opencode history must be a merge-free linear chain rooted at PRE_SHA" >&2
+                  exit 1
+                fi
+
+                commit_path_count=0
+                while IFS= read -r -d "" status \
+                  && IFS= read -r -d "" path; do
+                  commit_path_count=$((commit_path_count + 1))
+                  if [ "$commit_path_count" -gt 512 ]; then
+                    echo "isolated opencode commit changes more than 512 paths" >&2
+                    exit 1
+                  fi
+
+                  path_allowed=false
+                  case "$RUN_MODE" in
+                    generative)
+                      relative="${path#research/generative/}"
+                      if [ "$path" = "research/generative/index.json" ] \
+                        || { [ "$relative" != "$path" ] \
+                          && [[ "$relative" != */* ]] \
+                          && { [[ "$relative" = *.html ]] \
+                            || [[ "$relative" = *.ara.md ]]; }; }; then
+                        path_allowed=true
+                      fi
+                      ;;
+                    twitter|editorial)
+                      while IFS= read -r allowed_path; do
+                        if [ -n "$allowed_path" ] \
+                          && { [ "$path" = "$allowed_path" ] \
+                            || { [[ "$allowed_path" = */ ]] \
+                              && [[ "$path" = "$allowed_path"* ]]; }; }; then
+                          path_allowed=true
+                          break
+                        fi
+                      done <<< "$ALLOWED_PATHS"
+                      ;;
+                    canary)
+                      echo "canary opencode run created a commit: $status $path" >&2
+                      exit 1
+                      ;;
+                    *)
+                      echo "unknown opencode run mode during commit normalization: $RUN_MODE" >&2
+                      exit 1
+                      ;;
+                  esac
+                  if [ "$path_allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
+                    echo "$RUN_MODE opencode intermediate commit changed forbidden path/status: $status $path" >&2
+                    exit 1
+                  fi
+
+                  tree_entry=$(git ls-tree "$commit_oid" -- "$path")
+                  read -r tree_mode tree_type tree_oid trailing <<< "$tree_entry"
+                  if [ "$tree_mode" != "100644" ] || [ "$tree_type" != "blob" ] \
+                    || [ "$(git cat-file -s "$tree_oid" 2>/dev/null || echo 99999999)" -gt 5242880 ]; then
+                    echo "opencode intermediate path is not a <=5 MiB regular non-executable blob: $path" >&2
+                    exit 1
+                  fi
+                done < <(git diff-tree --no-commit-id --name-status \
+                  --no-renames -r -z "$expected_parent" "$commit_oid")
+                expected_parent="$commit_oid"
+              done < <(git rev-list --reverse "$PRE_SHA..$agent_post_sha")
+              if [ "$expected_parent" != "$agent_post_sha" ]; then
+                echo "isolated opencode linear history validation did not reach agent HEAD" >&2
+                exit 1
+              fi
+
+              final_tree=$(git rev-parse "$agent_post_sha^{tree}")
+              post_sha=$(printf "%s\n" "Normalize isolated opencode output" \
+                | git commit-tree "$final_tree" -p "$PRE_SHA")
+              git update-ref HEAD "$post_sha" "$agent_post_sha"
+            fi
+            rm -f -- .opencode-post-sha .opencode-export.bundle
+            printf "%s\n" "$post_sha" > .opencode-post-sha
+            if [ "$post_sha" != "$PRE_SHA" ]; then
+              git bundle create .opencode-export.bundle HEAD "^$PRE_SHA"
+            fi
+            # TRUSTED_COMMIT_NORMALIZATION_END
+            exit "$agent_status"
+          ')
+
+        # tee on the HOST, so the output file needs no mount and the container
+        # cannot rewrite what the lane asserts on. Capture the container status
+        # instead of exiting immediately: the trusted host must validate and,
+        # when safe, import a writer commit even if opencode timed out afterward.
+        set +e
+        if [ -n "$OUTPUT_FILE" ]; then
+          "${docker_cmd[@]}" | tee "$OUTPUT_FILE"
+          agent_status=${PIPESTATUS[0]}
+        else
+          "${docker_cmd[@]}"
+          agent_status=$?
+        fi
+        set -e
+
+        # TRUSTED_ATTEMPT_TELEMETRY_BEGIN
+        telemetry_file="$isolated_workspace/.opencode-attempt-telemetry"
+        if [ ! -f "$telemetry_file" ] || [ -L "$telemetry_file" ] \
+          || [ "$(realpath -- "$telemetry_file")" \
+            != "$(realpath -- "$isolated_workspace")/.opencode-attempt-telemetry" ] \
+          || [ "$(wc -c < "$telemetry_file")" -gt 256 ]; then
+          echo "::error::opencode attempt telemetry is missing, linked, noncanonical, or oversized."
+          exit 1
+        fi
+        telemetry_line_count=$(wc -l < "$telemetry_file")
+        attempt_line=$(sed -n "1p" "$telemetry_file")
+        status_line=$(sed -n "2p" "$telemetry_file")
+        segment_line=$(sed -n "3p" "$telemetry_file")
+        artifact_line=$(sed -n "4p" "$telemetry_file")
+        reason_line=$(sed -n "5p" "$telemetry_file")
+        if [ "$telemetry_line_count" -ne 5 ] \
+          || [[ ! "$attempt_line" =~ ^attempt_count=([12])$ ]] \
+          || [[ ! "$status_line" =~ ^last_agent_status=([0-9]{1,3})$ ]] \
+          || [[ ! "$segment_line" =~ ^translation_segment_calls=([0-9]{1,5})$ ]] \
+          || [[ ! "$artifact_line" =~ ^artifact_count=([0-8])$ ]] \
+          || [[ ! "$reason_line" =~ ^retry_reason=(none|zero-artifact-zero-translation-segment|zero-commit-editorial)$ ]]; then
+          echo "::error::opencode attempt telemetry is malformed."
+          exit 1
+        fi
+        attempt_count=${attempt_line#attempt_count=}
+        last_agent_status=${status_line#last_agent_status=}
+        translation_segment_calls=${segment_line#translation_segment_calls=}
+        artifact_count=${artifact_line#artifact_count=}
+        retry_reason=${reason_line#retry_reason=}
+        if [ "$last_agent_status" -ne "$agent_status" ]; then
+          echo "::error::opencode model status does not match the container exit status."
+          exit 1
+        fi
+        echo "::notice title=OpenCode attempt telemetry::attempts=${attempt_count} last_status=${last_agent_status} translation_segment_calls=${translation_segment_calls} artifacts=${artifact_count} retry_reason=${retry_reason}"
+        # TRUSTED_ATTEMPT_TELEMETRY_END
+
+        # TRUSTED_IMPORT_GUARD_BEGIN
+        RETURN_ARTIFACTS="${RETURN_ARTIFACTS:-}"
+        # Import only a static bundle produced by the fixed container tail.
+        # Do not use `git fetch` even with the bundle's absolute path: fetch is
+        # transport-aware, so persisted url.*.insteadOf + core.sshCommand
+        # settings in the real repo could rewrite that path and execute a host
+        # helper. `git bundle unbundle` directly parses/indexes the local bundle
+        # and neither resolves a transport URL nor updates a ref.
+        post_file="$isolated_workspace/.opencode-post-sha"
+        bundle_file="$isolated_workspace/.opencode-export.bundle"
+        if [ ! -f "$post_file" ] || [ -L "$post_file" ] \
+          || [ "$(wc -c < "$post_file")" -gt 128 ]; then
+          echo "::error::opencode did not produce a valid regular post-SHA file."
+          exit 1
+        fi
+        post_sha=$(tr -d '\r\n' < "$post_file")
+        if [[ ! "$post_sha" =~ ^[0-9a-f]{40,64}$ ]]; then
+          echo "::error::opencode post-SHA is malformed."
+          exit 1
+        fi
+
+        trusted_git=(env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+          GIT_NO_REPLACE_OBJECTS=1 git -c core.fsmonitor=false \
+          -c core.hooksPath=/dev/null -c core.attributesFile=/dev/null \
+          -c core.sparseCheckout=false -c core.sparseCheckoutCone=false \
+          -c index.sparse=false \
+          -c core.worktree="$GITHUB_WORKSPACE" -C "$GITHUB_WORKSPACE")
+        import_paths=()
+        import_statuses=()
+        import_oids=()
+        import_pre_oids=()
+        if [ "$post_sha" != "$pre_sha" ]; then
+          if [ ! -f "$bundle_file" ] || [ -L "$bundle_file" ] \
+            || [ "$(wc -c < "$bundle_file")" -gt 20971520 ]; then
+            echo "::error::opencode commit bundle is missing, linked, or exceeds 20 MiB."
+            exit 1
+          fi
+          "${trusted_git[@]}" bundle verify "$bundle_file"
+          bundle_heads=$("${trusted_git[@]}" bundle unbundle "$bundle_file")
+          advertised_count=0
+          advertised_head=""
+          while read -r advertised_oid advertised_ref trailing; do
+            [ -z "$advertised_oid" ] && continue
+            advertised_count=$((advertised_count + 1))
+            if [ "$advertised_ref" != "HEAD" ] || [ -n "${trailing:-}" ]; then
+              echo "::error::Static opencode bundle advertises an unexpected ref."
+              exit 1
+            fi
+            advertised_head="$advertised_oid"
+          done <<< "$bundle_heads"
+          if [ "$advertised_count" != "1" ] || [ "$advertised_head" != "$post_sha" ]; then
+            echo "::error::Static opencode bundle HEAD does not match its declared post-SHA."
+            exit 1
+          fi
+        elif [ -e "$bundle_file" ] || [ -L "$bundle_file" ]; then
+          echo "::error::opencode emitted a bundle despite leaving HEAD unchanged."
+          exit 1
+        fi
+
+        if ! "${trusted_git[@]}" merge-base --is-ancestor "$pre_sha" "$post_sha"; then
+          echo "::error::opencode commit does not descend from the pre-run HEAD."
+          exit 1
+        fi
+        if ! "${trusted_git[@]}" diff --no-ext-diff --quiet \
+          || ! "${trusted_git[@]}" diff --no-ext-diff --cached --quiet \
+          || [ "$("${trusted_git[@]}" rev-parse HEAD)" != "$pre_sha" ]; then
+          echo "::error::Real checkout changed during the isolated opencode run."
+          exit 1
+        fi
+
+        if [ "$post_sha" != "$pre_sha" ]; then
+          if [ "$("${trusted_git[@]}" rev-list --count "$pre_sha..$post_sha")" != "1" ] \
+            || [ "$("${trusted_git[@]}" rev-parse "$post_sha^")" != "$pre_sha" ]; then
+            echo "::error::opencode must produce at most one direct child commit."
+            exit 1
+          fi
+          if [ "$RUN_MODE" = "canary" ]; then
+            echo "::error::canary opencode run created a commit."
+            exit 1
+          fi
+
+          changed_count=0
+          gen_index=0
+          gen_html=0
+          gen_source=0
+          path_violation=0
+          while IFS= read -r -d '' status && IFS= read -r -d '' path; do
+            changed_count=$((changed_count + 1))
+            tree_entry=$("${trusted_git[@]}" ls-tree "$post_sha" -- "$path")
+            tree_header="${tree_entry%%$'\t'*}"
+            read -r tree_mode tree_type tree_oid <<< "$tree_header"
+            if [ "$tree_mode" != "100644" ] || [ "$tree_type" != "blob" ] \
+              || [ "$("${trusted_git[@]}" cat-file -s "$tree_oid" 2>/dev/null || echo 99999999)" -gt 5242880 ]; then
+              echo "::error::opencode commit path is not a <=5 MiB regular non-executable blob: $path"
+              path_violation=1
+              continue
+            fi
+            import_paths+=("$path")
+            import_statuses+=("$status")
+            import_oids+=("$tree_oid")
+            case "$RUN_MODE" in
+              generative)
+                relative="${path#research/generative/}"
+                if [ "$path" = "research/generative/index.json" ] && [ "$status" = "M" ]; then
+                  gen_index=$((gen_index + 1))
+                elif [ "$relative" != "$path" ] && [[ "$relative" != */* ]] \
+                  && [ "$status" = "A" ] && [[ "$relative" = *.html ]]; then
+                  gen_html=$((gen_html + 1))
+                elif [ "$relative" != "$path" ] && [[ "$relative" != */* ]] \
+                  && [ "$status" = "A" ] && [[ "$relative" = *.ara.md ]]; then
+                  gen_source=$((gen_source + 1))
+                else
+                  echo "::error::generative opencode commit changed forbidden path/status: $status $path"
+                  path_violation=1
+                fi
+                ;;
+              twitter|editorial)
+                allowed=false
+                while IFS= read -r allowed_path; do
+                  if [ -n "$allowed_path" ] \
+                    && { [ "$path" = "$allowed_path" ] \
+                      || { [[ "$allowed_path" = */ ]] \
+                        && [[ "$path" = "$allowed_path"* ]]; }; }; then
+                    allowed=true
+                    break
+                  fi
+                done <<< "$ALLOWED_PATHS"
+                if [ "$allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
+                  echo "::error::$RUN_MODE opencode commit changed forbidden path/status: $status $path"
+                  path_violation=1
+                fi
+                ;;
+              canary)
+                echo "::error::canary opencode run created a commit: $status $path"
+                path_violation=1
+                ;;
+            esac
+          done < <("${trusted_git[@]}" diff --no-ext-diff --name-status --no-renames -z "$pre_sha..$post_sha")
+          if [ "$RUN_MODE" = "generative" ] \
+            && { [ "$gen_index" != "1" ] || [ "$gen_html" != "1" ] || [ "$gen_source" != "1" ] || [ "$changed_count" != "3" ]; }; then
+            echo "::error::generative writer contract requires exactly index.json + one added HTML/ARA source pair."
+            path_violation=1
+          fi
+          if [ "$path_violation" != "0" ]; then
+            exit 1
+          fi
+        elif [ "$RUN_MODE" = "canary" ]; then
+          echo "Canary left the disposable repository unchanged."
+        fi
+
+        # Methodology JSON and the Twitter tool log are untrusted DATA, not
+        # executable workspace state. Reject links/oversized files and copy
+        # only these named artifacts back to the real checkout.
+        artifacts=()
+        if [ "$RUN_MODE" = "generative" ]; then
+          artifacts+=(.gen-verifier-findings.json .gen-redteam-findings.json .gen-claims-ledger.json)
+        elif [ "$RUN_MODE" = "twitter" ] && [ -n "$BIRDY_TOOL_LOG_REL" ]; then
+          artifacts+=("${BIRDY_TOOL_LOG_REL#/}")
+        fi
+        while IFS= read -r artifact; do
+          [ -n "$artifact" ] && artifacts+=("$artifact")
+        done <<< "$RETURN_ARTIFACTS"
+        # Both GNU and BSD realpath require the target to exist; avoid GNU's
+        # non-portable -e spelling because local/self-hosted runners include macOS.
+        isolated_root=$(realpath -- "$isolated_workspace")
+        trusted_workspace=$(realpath -- "$GITHUB_WORKSPACE")
+        for artifact in ${artifacts[@]+"${artifacts[@]}"}; do
+          case "$artifact" in
+            ""|/*|.|..|./*|../*|*/../*|*/..|*/./*|*/.)
+              echo "::error::opencode artifact path is not a clean relative path: $artifact"
+              exit 1
+              ;;
+          esac
+          source_artifact="$isolated_workspace/$artifact"
+          if [ -e "$source_artifact" ] || [ -L "$source_artifact" ]; then
+            if [ ! -f "$source_artifact" ] || [ -L "$source_artifact" ]; then
+              echo "::error::opencode artifact is not a regular file: $artifact"
+              exit 1
+            fi
+            source_resolved=$(realpath -- "$source_artifact")
+            if [ "$source_resolved" != "$isolated_root/$artifact" ]; then
+              echo "::error::opencode artifact escapes the isolated workspace or crosses a symlink: $artifact"
+              exit 1
+            fi
+            if [ "$(wc -c < "$source_artifact")" -gt 10485760 ]; then
+              echo "::error::opencode artifact exceeds 10 MiB: $artifact"
+              exit 1
+            fi
+            artifact_parent=$(dirname -- "$artifact")
+            if [ "$artifact_parent" = "." ]; then
+              expected_destination_parent="$trusted_workspace"
+            else
+              expected_destination_parent="$trusted_workspace/$artifact_parent"
+            fi
+            if [ ! -d "$expected_destination_parent" ] \
+              || [ -L "$expected_destination_parent" ]; then
+              echo "::error::opencode artifact destination parent is missing, linked, or not a directory: $artifact"
+              exit 1
+            fi
+            destination_parent_resolved=$(realpath -- "$expected_destination_parent")
+            if [ "$destination_parent_resolved" != "$expected_destination_parent" ]; then
+              echo "::error::opencode artifact destination crosses a symlink: $artifact"
+              exit 1
+            fi
+            destination="$trusted_workspace/$artifact"
+            if [ -L "$destination" ] || { [ -e "$destination" ] && [ ! -f "$destination" ]; }; then
+              echo "::error::opencode artifact destination is not a regular file path: $artifact"
+              exit 1
+            fi
+          fi
+        done
+        while IFS= read -r artifact; do
+          [ -z "$artifact" ] && continue
+          source_artifact="$isolated_workspace/$artifact"
+          if [ ! -f "$source_artifact" ] || [ -L "$source_artifact" ]; then
+            echo "::error::opencode did not produce required return artifact: $artifact"
+            exit 1
+          fi
+        done <<< "$RETURN_ARTIFACTS"
+
+        if [ "$post_sha" != "$pre_sha" ]; then
+          if [ "$("${trusted_git[@]}" rev-parse HEAD)" != "$pre_sha" ]; then
+            echo "::error::Real checkout HEAD changed during isolated opencode run."
+            exit 1
+          fi
+
+          # Never ask Git to populate the real worktree. Even with global
+          # attributes disabled, a persisted .git/info/attributes plus local
+          # filter.*.smudge/process command can make checkout/reset execute
+          # host code. Materialize only the already-validated regular blobs
+          # with cat-file, update the index without -u, then advance HEAD with
+          # an old-value compare-and-swap.
+          import_dir="$build_dir/trusted-import"
+          rm -rf -- "$import_dir"
+          mkdir -p "$import_dir"
+
+          install_blob() {
+            local source_blob="$1"
+            local destination_blob="$2"
+            local destination_dir staged_blob
+            destination_dir=$(dirname -- "$destination_blob")
+            staged_blob=$(mktemp "$destination_dir/.opencode-import.XXXXXX") || return 1
+            if ! install -m 644 "$source_blob" "$staged_blob"; then
+              rm -f -- "$staged_blob"
+              return 1
+            fi
+            if ! mv -f -- "$staged_blob" "$destination_blob"; then
+              rm -f -- "$staged_blob"
+              return 1
+            fi
+          }
+
+          import_count=${#import_paths[@]}
+          for ((import_i = 0; import_i < import_count; import_i++)); do
+            path=${import_paths[$import_i]}
+            status=${import_statuses[$import_i]}
+            tree_oid=${import_oids[$import_i]}
+            destination="$trusted_workspace/$path"
+            destination_parent=$(dirname -- "$destination")
+            if [ ! -d "$destination_parent" ] || [ -L "$destination_parent" ] \
+              || [ "$(realpath -- "$destination_parent")" != "$destination_parent" ]; then
+              echo "::error::opencode commit destination crosses a linked or missing directory: $path"
+              exit 1
+            fi
+            if [ "$status" = "A" ]; then
+              import_pre_oids[$import_i]=""
+              if [ -e "$destination" ] || [ -L "$destination" ]; then
+                echo "::error::opencode added path would overwrite real checkout data: $path"
+                exit 1
+              fi
+            elif [ "$status" = "M" ]; then
+              if [ ! -f "$destination" ] || [ -L "$destination" ] \
+                || [ "$(realpath -- "$destination")" != "$destination" ]; then
+                echo "::error::opencode modified path is not a canonical regular checkout file: $path"
+                exit 1
+              fi
+              pre_entry=$("${trusted_git[@]}" ls-tree "$pre_sha" -- "$path")
+              pre_header="${pre_entry%%$'\t'*}"
+              read -r pre_mode pre_type pre_oid <<< "$pre_header"
+              if [ "$pre_mode" != "100644" ] || [ "$pre_type" != "blob" ]; then
+                echo "::error::opencode modified path cannot be restored as a regular blob: $path"
+                exit 1
+              fi
+              import_pre_oids[$import_i]="$pre_oid"
+              "${trusted_git[@]}" cat-file blob "$pre_sha:$path" \
+                > "$import_dir/$import_i.pre"
+            else
+              echo "::error::opencode import received an unvalidated status: $status $path"
+              exit 1
+            fi
+            "${trusted_git[@]}" cat-file blob "$tree_oid" \
+              > "$import_dir/$import_i.post"
+          done
+
+          restore_pre_import() {
+            local restore_i restore_path restore_status restore_destination
+            local restore_failed=0
+            "${trusted_git[@]}" read-tree --reset --no-sparse-checkout "$pre_sha" \
+              || restore_failed=1
+            for ((restore_i = 0; restore_i < import_count; restore_i++)); do
+              restore_path=${import_paths[$restore_i]}
+              restore_status=${import_statuses[$restore_i]}
+              restore_destination="$trusted_workspace/$restore_path"
+              if [ "$restore_status" = "A" ]; then
+                rm -f -- "$restore_destination" || restore_failed=1
+              elif ! install_blob "$import_dir/$restore_i.pre" "$restore_destination"; then
+                restore_failed=1
+              fi
+            done
+            if [ "$("${trusted_git[@]}" rev-parse HEAD)" != "$pre_sha" ] \
+              || [ "$("${trusted_git[@]}" write-tree)" \
+                != "$("${trusted_git[@]}" rev-parse "$pre_sha^{tree}")" ]; then
+              restore_failed=1
+            fi
+            for ((restore_i = 0; restore_i < import_count; restore_i++)); do
+              restore_destination="$trusted_workspace/${import_paths[$restore_i]}"
+              if [ "${import_statuses[$restore_i]}" = "A" ]; then
+                if [ -e "$restore_destination" ] || [ -L "$restore_destination" ]; then
+                  restore_failed=1
+                fi
+              elif [ "$("${trusted_git[@]}" hash-object --no-filters -- \
+                "$restore_destination")" != "${import_pre_oids[$restore_i]}" ]; then
+                restore_failed=1
+              fi
+            done
+            return "$restore_failed"
+          }
+
+          apply_failed=0
+          for ((import_i = 0; import_i < import_count; import_i++)); do
+            destination="$trusted_workspace/${import_paths[$import_i]}"
+            if ! install_blob "$import_dir/$import_i.post" "$destination"; then
+              apply_failed=1
+              break
+            fi
+          done
+          if [ "$apply_failed" != "0" ] \
+            || ! "${trusted_git[@]}" read-tree --reset --no-sparse-checkout "$post_sha" \
+            || ! "${trusted_git[@]}" update-ref HEAD "$post_sha" "$pre_sha"; then
+            restore_pre_import \
+              || echo "::error::Failed to fully restore the pre-import checkout."
+            echo "::error::Failed to atomically import the validated opencode commit."
+            exit 1
+          fi
+
+          expected_tree=$("${trusted_git[@]}" rev-parse "$post_sha^{tree}")
+          actual_tree=$("${trusted_git[@]}" write-tree)
+          import_verified=true
+          if [ "$actual_tree" != "$expected_tree" ] \
+            || [ "$("${trusted_git[@]}" rev-parse HEAD)" != "$post_sha" ]; then
+            import_verified=false
+          fi
+          for ((import_i = 0; import_i < import_count; import_i++)); do
+            destination="$trusted_workspace/${import_paths[$import_i]}"
+            if [ "$("${trusted_git[@]}" hash-object --no-filters -- "$destination")" \
+              != "${import_oids[$import_i]}" ]; then
+              import_verified=false
+            fi
+          done
+          if [ "$import_verified" != "true" ]; then
+            rollback_failed=0
+            "${trusted_git[@]}" update-ref HEAD "$pre_sha" "$post_sha" \
+              || rollback_failed=1
+            restore_pre_import || rollback_failed=1
+            if [ "$rollback_failed" != "0" ]; then
+              echo "::error::Failed to fully restore the pre-import checkout."
+            fi
+            echo "::error::Validated opencode commit did not materialize exactly."
+            exit 1
+          fi
+        fi
+        for artifact in ${artifacts[@]+"${artifacts[@]}"}; do
+          source_artifact="$isolated_workspace/$artifact"
+          if [ -f "$source_artifact" ] && [ ! -L "$source_artifact" ]; then
+            source_resolved=$(realpath -- "$source_artifact")
+            if [ "$source_resolved" != "$isolated_root/$artifact" ]; then
+              echo "::error::opencode artifact source changed after validation: $artifact"
+              exit 1
+            fi
+            destination="$trusted_workspace/$artifact"
+            install -m 600 "$source_resolved" "$destination"
+          fi
+        done
+
+        # TRUSTED_IMPORT_GUARD_END
+        exit "$agent_status"

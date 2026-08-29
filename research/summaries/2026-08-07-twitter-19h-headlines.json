@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI NAMES ASTRA FIRST 'CRITICAL' CYBER MODEL UNDER PREPAREDNESS FRAMEWORK — INTERNAL ACTIVITIES PAUSED",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2085801349866729975",
+    "category": "breaking"
+  },
+  {
+    "headline": "ANTHROPIC: HUMAN APPROVAL CAUGHT 14% OF DANGEROUS COMMANDS, CLASSIFIER 89% — AUTO MODE DEFAULT AUG 14",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2085794862608318627",
+    "category": "model"
+  },
+  {
+    "headline": "HARVEY IN TALKS TO RAISE $500M AT $15.5B POST — REVENUE $350M ANNUALIZED, UP 80% SINCE JANUARY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2085803248783352030",
+    "category": "business"
+  },
+  {
+    "headline": "NVIDIA WEIGHS CUTTING HBM CONTENT IN RUBIN ULTRA AS MEMORY SHORTAGE REACHES FLAGSHIP GPU",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2085757967459139924",
+    "category": "infra"
+  },
+  {
+    "headline": "OKLO REACTOR REACHES CRITICALITY UNDER A YEAR AFTER GROUNDBREAKING — FIRST HARD SMR DATAPOINT FOR DATACENTERS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2085765236876046500",
+    "category": "infra"
+  },
+  {
+    "headline": "DEEPSEEK RESUMES TALKS FOR $8B RAISE AT $74B VALUATION — UP 43% FROM FIRST ROUND WEEKS AGO",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2085682364491948125",
+    "category": "business"
+  }
+]

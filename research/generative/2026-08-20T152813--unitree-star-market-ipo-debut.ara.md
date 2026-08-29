@@ -1,0 +1,278 @@
+---
+eyebrow: IPO PRIMER · ROBOTICS
+title: "Unitree Went Public. RoboStrategy's Four Questions Now Have Answers — Mostly."
+deck: A fund with disclosed stakes in two of Unitree's competitors previewed the IPO with four open questions on August 12. Eight days, a prospectus, and a 460-629% debut later, three have real answers and the fourth is more complicated than either side of the trade wants it to be.
+lede: |
+  On August 12, 2026, the closed-end robotics fund RoboStrategy (Nasdaq: BOT) published an "IPO primer" on Unitree Robotics ahead of its Shanghai STAR Market listing — four open questions about U.S. market access, the shift to an AI-model company, industrial penetration, and competitive resilience, plus a disclosure that the fund holds positions in two named Unitree rivals, Figure AI and Apptronik. A week later the IPO priced, debuted, and answered — or complicated — each of those four questions with real numbers. This piece traces the prospectus, the regulator's filings, and the trading tape behind the headline figures, and checks RoboStrategy's framing against what has actually been disclosed since.
+domain: finance
+stats:
+  - {label: IPO price, value: "¥150.80", note: "$22.30/share"}
+  - {label: Raised, value: "$904M", note: "45% above consensus estimate"}
+  - {label: Debut close, value: "+460%", note: "peaked +629% intraday"}
+  - {label: Peak valuation, value: "$66B", note: "vs $9.04B offer-price cap"}
+---
+
+:::callout(kind=info, label="In short")
+- Unitree priced at ¥150.80/share on August 6, raising $904M at a $9.04B valuation — 45% above the market's earlier ~¥104/share consensus — after a record-fast 104-day CSRC review.[^1][^2][^3]
+- The August 19 debut opened +629% and closed +460%; both figures are correct, they're just measuring different points in a single session under STAR Market's no-price-limit rule for new listings.[^4][^5]
+- FY2025 revenue grew 335% to ¥1.708bn with 60.27% gross margin, but reported net profit (¥278M) is roughly half the ex-one-off figure (¥600M) because of a ¥349M non-cash stock-compensation charge — and Q1 2026 profit fell ~48-53% year-on-year even as revenue kept growing.[^6][^7][^8]
+- Founder Wang Xingxing holds 23.8% of the equity but 68.78% of the votes; DeepSeek, Tencent, PetroChina and four other state-linked entities each took ~2.2-2.3% strategic stakes in the IPO tranche.[^9][^10][^11]
+- By the time Unitree rang the bell, AgiBot had already overtaken it as the world's largest humanoid-robot vendor by H1 2026 shipments — a fact neither the prospectus valuation nor most debut-day coverage foregrounded.[^35]
+:::
+
+## 01. What RoboStrategy Actually Asked
+
+RoboStrategy is not a disinterested observer. It is a Nasdaq-listed closed-end fund (ticker BOT) that began trading May 11, 2026, built specifically to give public-market investors exposure to a basket of private and pre-IPO robotics companies — and its portfolio includes named Unitree competitors Figure AI and Apptronik.[^13] The fund's own August 12 article, written by investment principal JacklouisP and titled "Unitree Robotics: The IPO Primer," disclosed this directly: RoboStrategy "holds positions in competitors Figure AI and Apptronik," creating what the piece itself calls a financial incentive to characterize Unitree less favorably than its own holdings.[^1] That disclosure is worth taking at face value rather than dismissing — a fund that profits when Figure and Apptronik out-execute Unitree has a structural reason to frame Unitree's bull case as contingent.
+
+The primer's actual content, though, was not a hit piece. It laid out Unitree's IPO terms, technical choices, and buyer mix even-handedly, then organized its outlook around four genuinely open questions rather than a verdict:
+
+:::kv
+- {term: "Q1 — U.S. dependence", def: "How much does Unitree's growth actually rely on U.S. market access, given FCC and Pentagon restrictions already in place?"}
+- {term: "Q2 — AI pivot", def: "Can Unitree credibly become a 'full-stack' AI/model company, or does it stay a hardware manufacturer with a software story bolted on?"}
+- {term: "Q3 — Industrial demand", def: "Is humanoid demand real commercial deployment, or mostly research and demonstration purchases dressed up as a market?"}
+- {term: "Q4 — Competitive position", def: "Does Unitree's cost lead hold up against AgiBot, UBTech, and the rest of a crowded and fast-moving Chinese field?"}
+:::
+
+Everything that follows works through what the prospectus, the exchange filings, and eight days of trading have actually revealed about each — starting with the mechanics of the listing itself, since the multiples RoboStrategy and everyone else quoted only make sense once the raise is reconstructed line by line.
+
+## 02. The IPO, Line by Line: From a ¥4.2bn Ask to a ¥6.1bn Raise
+
+Unitree's STAR Market prospectus was accepted by the Shanghai Stock Exchange on March 20, 2026, targeting a raise of roughly ¥4.202bn (~$610-620M) across four disclosed projects: an "intelligent robot model" (embodied-AI) R&D program (¥2.022bn), a robot-hardware R&D program (¥1.110bn), new-product development (¥0.445bn), and a smart-manufacturing base targeting 75,000 humanoid and 115,000 quadruped units of annual capacity (¥0.624bn) — roughly 85% of the planned raise classified as R&D.[^2][^14]
+
+What followed was unusually fast by STAR Market's own standards. The China Securities Regulatory Commission approved Unitree's registration on July 1, 2026 — 104 days after acceptance, and the fastest full review-to-registration turnaround since the exchange's post-2025 "pre-review" pilot mechanism launched (Unitree was only the second company to use it, after chipmaker CXMT). The listing-committee review itself took just 73 days, faster than the previous record-holder, GPU maker Moore Threads, at 88 days.[^3][^4] That speed is a genuine data point, not a rounding error: Chinese regulators moved a robotics company through full IPO review in roughly a third of a typical STAR Market timeline, at the same moment China's 15th Five-Year Plan named "embodied intelligence" as a strategic future-industry track.[^15] It is circumstantial evidence for a deliberate industrial-policy push behind humanoid robotics, not documentary proof of one — no public directive names Unitree specifically — but the timing is hard to read as coincidence.
+
+:::timeline
+- {date: "2026-03-20", headline: "Prospectus accepted", body: "SSE accepts Unitree's STAR Market filing, targeting a ¥4.202bn raise."}
+- {date: "2026-06-01", headline: "Listing committee approves", body: "73 days after acceptance — faster than prior record-holder Moore Threads (88 days)."}
+- {date: "2026-07-01", headline: "CSRC registration approved", body: "104 days total; fastest full review under the post-2025 pre-review pilot."}
+- {date: "2026-08-06", headline: "IPO priced", body: "¥150.80/share, 45% above the ~¥104 consensus estimate; $904M raised, above the original $610M target."}
+- {date: "2026-08-19", headline: "Trading debut", body: "Opens +629%, closes +460%, briefly valuing Unitree near $66bn."}
+:::
+
+The final offering priced at ¥150.80/share on the evening of August 6 — 40.4464 million new shares, about 10% of the post-issue company — for gross proceeds of ¥6.099bn (~$904M), roughly ¥1.9bn above the original target and implying a listing-day market capitalization of ¥60.99bn (~$9.04bn).[^5][^6] The offer price itself was demand-driven: ¥150.80 landed about 45% above the market's earlier consensus estimate near ¥104/share, a gap that retail demand closed before the stock ever opened.[^6]
+
+That demand set records on its own terms. The retail tranche drew roughly 9.78 million valid subscriber accounts — more than the prior STAR Market record-holder, CXMT's 9.43 million.[^7] Different outlets then report wildly different "oversubscription" multiples — 8,289x, 5,526x, 8,000x — and none of them are wrong; they describe the same roughly ¥53.6bn pool of retail demand divided by different denominators at different stages of the clawback mechanism between the retail and institutional tranches. The pre-clawback online multiple was ~8,289x; a later, larger post-clawback online allotment implies ~5,526x; the offline institutional tranche, drawing from a materially larger allotment pool, cleared at a much lower ~2,618x.[^7][^8] The headline number a given article uses says more about which stage of the mechanism it's citing than about the underlying demand, which by any measure was extreme.
+
+One more reconciliation is worth doing explicitly, because it is the exact pairing RoboStrategy's primer cited without deriving: Unitree's offer priced at 219.23x trailing statutory earnings, or 103x if a smaller, non-recurring-items-adjusted profit figure is used instead. Both multiples land on the same ¥60.99bn market cap divided by two different net-income bases — ¥60.99bn ÷ 219.23 ≈ ¥278M (statutory net profit) and ¥60.99bn ÷ 103 ≈ ¥592-600M (ex-one-off profit) — and CSRC pricing convention requires disclosing whichever multiple uses the *smaller* of the two income bases as the headline figure.[^9] The two numbers aren't competing claims; they're the same valuation measured against two different definitions of profit, which is itself the subject of the next section.
+
+## 03. 460% or 629%? Reconciling the Pop
+
+Unitree's August 19 debut produced two widely circulated and seemingly contradictory numbers: Fortune reported the stock "surged by more than 460%," while Forbes and others put it at "629%."[^11][^16] Both are correct. STAR Market imposes no daily price limit for a new listing's first five trading days — a deliberate design choice, distinct from the ±20% band that applies to STAR-listed stocks thereafter (itself double the ±10% limit elsewhere in China) — with only a temporary trading pause if the price first moves ±30% or ±60% from the day's open.[^10] Under that rule, Unitree opened at roughly ¥1,100/share, a peak of +629% versus the ¥150.80 offer price, then drifted down through the session to close at ¥845/share, +460%. Both figures are the same event measured at two different points in one trading day — an open-to-close spread the no-limit rule makes structurally possible, not a discrepancy between sources.[^11]
+
+:::compare
+- {role: OFFER, name: "IPO price", value: "¥150.80"}
+- {role: PEAK, name: "Intraday high (open)", value: "¥1,100"}
+- {role: SUBJECT, name: "Close", value: "¥845"}
+:::
+
+The resulting valuation swung with it: roughly ¥445bn (~$66bn) at the intraday peak, settling to roughly ¥342bn (~$50bn) at the close — both far above the ¥60.99bn ($9.04bn) offer-price market cap, and both, by Fortune's framing, ahead of established Chinese tech names like Baidu and JD.com on a same-day comparison.[^11] Worth doing the same arithmetic RoboStrategy's "36x revenue" framing implicitly relies on: 36x is the *offer-price* multiple (¥60.99bn ÷ ¥1.708bn revenue). At the intraday peak, the same revenue base implies a market multiple closer to 262x — a number none of the debut-day headlines led with, because "262 times revenue" reads as a warning where "629% pop" reads as a triumph, even though they're the same fact.
+
+Is a 400-600%+ debut actually unusual for STAR Market? Less than it looks — and less than three weeks of 2026 alone should have made obvious. When the exchange itself launched in July 2019, its inaugural cohort closed their first day up an average of roughly 136%; the top performer, semiconductor maker Anji Microelectronics, peaked intraday at +520% before closing +400.2% — the same open-to-close divergence pattern Unitree repeated seven years later.[^12] More tellingly, on July 27, 2026 — three weeks before Unitree's debut — memory-chip maker CXMT closed its own STAR Market debut up 465.82%, briefly the most valuable company listed in mainland China at nearly $490bn, on a float of just 6.73% of post-IPO shares.[^50] A ~279% "average first-day pop for 2026 China listings" figure and separate figures in the 460-470% range both circulated around Unitree's debut; this piece could not fully reconcile whether the higher figures describe a STAR-Market-specific average or are simply CXMT's own individual result bleeding into adjacent coverage, and flags that ambiguity rather than picking a resolution. What is not ambiguous is CXMT itself, independently confirmed: a comparable-scale mania three weeks before Unitree's own.[^50] The honest read: Unitree's debut was extreme even by STAR Market's own retail-mania standards, but it is not a new phenomenon on this exchange, nor even a rare one in 2026 — CXMT ran a comparable playbook (thin float, no-limit first week, retail mania) three weeks earlier at roughly ten times Unitree's scale.
+
+## 04. Show Me the Money: Growth, Margin, and a Profit Number That Isn't What It Looks Like
+
+Strip away the trading-day drama and the prospectus tells a more measured story. FY2025 revenue reached ¥1.708bn, up 335% from ¥392.77M in 2024 and ¥159.13M in 2023 — a genuine inflection, with humanoid robots overtaking quadrupeds as the largest segment for the first time (51.78% of revenue, roughly ¥868M, up from just 1.88% in 2023) against quadrupeds' 41.62% and components at the remainder.[^6][^17]
+
+:::line-chart(title="Unitree annual revenue", subtitle="¥ million, fiscal year", y-unit="¥")
+x: 2023,2024,2025
+Revenue: 159,393,1708
+:::
+
+:::donut(center-label="FY2025")
+- {label: Humanoid robots, value: 51.78}
+- {label: Quadruped robots, value: 41.62}
+- {label: Components, value: 6.6}
+:::
+
+Gross margin expanded alongside the growth — from roughly 44.2% in 2023 to 60.27% in 2025 — but that is where the clean narrative stops. Two numbers for FY2025 net profit circulate, and they are not typos: statutory net profit attributable to the parent was ¥278.21M (a 16.4% net margin), while profit after excluding non-recurring items was ¥590.75-600.1M — more than double.[^6][^18] Arithmetically, that is a gap of roughly ¥312-322M between the two profit bases; company- and press-sourced commentary attributes most of it to non-cash share-based compensation booked to administrative expenses around the listing, though this report could not independently pin the SBC charge to an exact yuan figure or confirm a specific pre/post administrative-expense ratio against a primary filing line, so those finer figures are omitted rather than asserted with false precision. What is well-supported is the shape of the distortion: the "low-profit" statutory number that produces headline multiples like 219x is substantially inflated by one-time, equity-grant-related accounting items around the IPO, not by weak underlying cash economics — but the ex-one-off number is also not neutral, since it is management's own adjustment, not an audited GAAP-equivalent line.
+
+:::callout(kind=warn, label="Reconciliation")
+219x and 103x are the same valuation divided by two different net-income bases — statutory (¥278M) versus non-recurring-adjusted (¥591-600M) — a gap of roughly ¥312-322M attributed in large part to non-cash, IPO-related equity compensation. Neither multiple is fabricated; each measures a different definition of "profit."
+:::
+
+The more genuinely mixed signal sits in the most recent quarter, not the annual figures RoboStrategy and most coverage cited. Q1 2026 revenue grew 68.49% year-on-year to ¥423M — still fast, but a sharp deceleration from the 332.64% growth rate in the same quarter a year earlier — while net profit attributable to the parent *fell* 47.69% to 52.55% year-on-year, to roughly ¥50M, on rising R&D and sales expense (including CCTV Spring Festival Gala brand spending) and a cooling in what the company itself describes as an over-inflated 2025 hype cycle.[^15][^16] Humanoid average selling price fell from ¥590,000 to ¥166,400 as humanoids grew past half of revenue — but unit cost fell faster (humanoid unit cost ¥73,200 to ¥62,200; quadruped ¥22,300 to ¥12,100 over the same window), meaning the ASP collapse was margin-accretive rather than margin-eroding, a volume-over-price strategy that is working on the cost side even as it compresses near-term reported profit.[^16][^20] Customer concentration looks genuinely low — the top five customers were just 10.61% of 9-month-2025 revenue, with JD.com the single largest buyer at 3.54% — though a second source cites a materially different 44% concentration figure for the same period, likely reflecting a different method of grouping unnamed overseas accounts; treat the true figure as low-to-moderate rather than precisely pinned.[^21]
+
+One more tension worth naming directly, because it bears on RoboStrategy's second question: Unitree's R&D expense ratio actually *fell* sharply as revenue outgrew R&D spend — 31.39% in 2023 to 17.84% in 2024 to just 7.73% for the first nine months of 2025, against peers UBTech and Yuejiang running 27-35% over the same stretch.[^22] That is arithmetically a denominator effect, not a spending cut in absolute terms — and the IPO earmarks roughly 48% of new proceeds specifically to embodied-AI model R&D going forward — but it means the *trailing* data does not yet show Unitree spending like an AI-model company; it shows a hardware manufacturer whose R&D intensity has been diluted by explosive top-line growth. Whether the forward-looking capital allocation changes that is an open question the trailing financials cannot answer.
+
+## 05. Who Actually Owns Unitree
+
+Founder and CEO Wang Xingxing holds 23.8% of Unitree's equity directly, but controls roughly 68.78% of the company's voting rights through a differentiated-voting control structure — a gap of more than three-to-one between his economic stake and his governance control.[^9][^23]
+
+:::slope(left-label="Economic stake", right-label="Voting control", unit="%")
+| Holder | Economic stake | Voting control |
+|---|---|---|
+| Wang Xingxing | 23.8 | 68.78 |
+:::
+
+The largest outside institutional shareholders, in order, are Meituan (~9.65%, across several affiliated entities), HongShan — the renamed Sequoia China — (~7.11%, reportedly a roughly 38-fold return on its original investment), and Matrix Partners China (~5.45%).[^24] CITIC's most visible role is not as a top disclosed shareholder but as CITIC Securities, the offering's sponsor and lead underwriter of record.[^25]
+
+The IPO's strategic-placement tranche is where the state-linked capital shows up most explicitly, and where the RoboStrategy primer's framing of Unitree as simply "backed by DeepSeek" undersells what actually happened. DeepSeek's parent entity, Hangzhou DeepSeek Artificial Intelligence Basic Technology Research Co., took a direct equity stake of roughly 2.31% (933,399-933,400 shares, ~¥141M, ~$21.3M) with a three-year lock-up — DeepSeek's first disclosed equity position in a robotics company — alongside a technology partnership to co-develop AI foundation models and embodied-intelligence capability, with reciprocal priority access on robot procurement and model services.[^19] Six more strategic investors took roughly 2.23% each: PetroChina's Kunlun Capital, Tencent, China Southern Power Grid, China Telecom, and the National Council for Social Security Fund.[^19]
+
+:::donut(center-label="Pre-IPO")
+- {label: Wang Xingxing (direct), value: 23.8}
+- {label: Meituan, value: 9.65}
+- {label: HongShan, value: 7.11}
+- {label: Matrix Partners China, value: 5.45}
+- {label: DeepSeek + other strategic, value: 15.2}
+- {label: Other holders, value: 38.79}
+:::
+
+None of this is a smoking gun for state control in the direct-ownership sense — Wang's own voting bloc dwarfs any single strategic investor's stake — but the pattern (a 104-day regulatory review, a Five-Year Plan naming embodied intelligence as a priority track, and a strategic-placement roster reading like a checklist of state-linked capital) is consistent with China treating Unitree's listing as a policy showcase rather than a routine private financing event.[^15] The corollary that matters for foreign investors: STAR Market shares remain structurally hard to access from outside China. The main channel is the institutional-only QFII/QFI program; Stock Connect's Northbound route requires index-inclusion or dual-listing criteria and is restricted to professional investors even where it applies.[^26] Nearly every reader following this story from outside China is, by design, watching from the sidelines.
+
+## 06. The QDD Bet: Cheaper Robots, Real Tradeoffs
+
+Unitree's most consistent engineering choice — across its quadrupeds and humanoids alike — is quasi-direct-drive (QDD) actuation instead of the strain-wave (harmonic) gearboxes standard in industrial and precision robotics. The tradeoff is real, not marketing: harmonic drives can cost 5-20x more to achieve near-zero backlash, while QDD designs run much lower reduction ratios (roughly 2-15:1, versus 50-300:1 for geared or harmonic designs), trading manufacturing cost and speed for reduced torque density and more backlash-driven imprecision.[^27] That is a legible, well-understood engineering choice in the robotics literature — Unitree is not claiming a free lunch, it is claiming the precision loss doesn't matter for its actual buyers.
+
+Whether that claim holds depends on who those buyers are, and the company's own disclosures are more candid on this point than most coverage of the IPO. In its January 2026 clarification of its own sales data, Unitree stated it shipped more than 5,500 humanoid units in 2025 (over 6,500 mass-produced) — a figure meaningfully higher than independent trackers' estimates for the same period: Omdia put Unitree at roughly 4,200 units (32% share) and Counterpoint at roughly 4,224 units (26.4% share), with the gap likely reflecting inconsistent definitions of "shipped" versus "ordered" versus "produced" across the industry.[^28][^29] The prospectus's own audited cumulative figure — 5,632 humanoid units and 33,294 quadrupeds sold across 2023-2025 — is the one number in this dispute that has gone through an underwriter's due diligence, and it is closer to the independent trackers' estimates than to the company's self-reported single-year figure.
+
+More important than the unit-count dispute is the buyer mix behind it. Unitree's own IPO filing discloses that roughly 74% of humanoid revenue and shipments came from research and education buyers, 17% from general commercial use, and only about 9% from industrial deployment — and within that 9%, roughly half to 70% is reception or tour-guide use rather than functional labor, leaving true industrial-labor deployment closer to 3-4% of the humanoid business.[^30] An industry-wide tracker, Interact Analysis, puts the same phenomenon at the sector level: only about 10% of 2025 global humanoid production reached any real-world deployment, with the deployments that did occur "predominantly driven by government subsidies... not commercial rationale."[^31] The sector-wide picture is genuinely improving — a separate tracker (Smart Analytics Global) finds industrial and commercial applications rose to over 70% of global H1 2026 shipments, up from roughly 50% a year earlier — but that same report specifically flags Unitree as an outlier within the shift: "research, education and performance-related applications continue to represent a meaningful portion of Unitree's deployments," distinguishing it from rivals leaning harder into industrial/commercial use.[^52] Read together, the two data points (Unitree's own 74/17/9 split, and an independent tracker naming Unitree specifically as skewing toward research/education even as the industry average moves the other way) are the sharpest disconfirmation of the "humanoid demand is real" thesis as applied to Unitree in particular — not that industrial demand for humanoids doesn't exist, but that Unitree's own buyer mix lags the trend its stock price is pricing in.
+
+:::bars
+- {label: Research / education, value: "74%", pct: 74}
+- {label: Commercial (non-industrial), value: "17%", pct: 17}
+- {label: Industrial deployment, value: "9%", pct: 9}
+:::
+
+Pricing is where the QDD bet pays off most visibly, whatever the buyer mix says about demand quality. Unitree's G1 humanoid retails around $13,500-$19,300 — roughly an order of magnitude below Western competitors' stated or estimated price points for comparable tiers: 1X's Neo at roughly $20,000, Tesla's stated Optimus target of $20,000-$30,000, and an unlisted, analyst-estimated ~$250,000 for Figure's Figure 03.[^32] The comparison is not perfectly clean — G1 is explicitly a research/development platform, while Figure and Tesla are aiming at autonomous commercial labor — but the magnitude of the gap is large enough that some of it is genuinely engineering economics, not just product-tier mismatch.
+
+:::rank-list
+- {label: "Unitree G1 (research tier)", value: "$13,500-19,300", pct: 8}
+- {label: "1X Neo", value: "~$20,000", pct: 10}
+- {label: "Tesla Optimus (target)", value: "$20,000-30,000", pct: 12}
+- {label: "Figure 03 (estimated)", value: "~$250,000", pct: 100, highlight: true}
+:::
+
+## 07. Crowded Podium: Who's Actually Winning the Humanoid Race
+
+The single fact most conspicuously absent from debut-day coverage: by the first half of 2026, Unitree was no longer the world's largest humanoid-robot vendor by total shipments. AgiBot (Zhiyuan Robotics) overtook it, shipping roughly 8,400 units for a 44% global share against Unitree's roughly 5,900 units and 31% share over the same January-June window.[^12] Global humanoid shipments as a whole reached roughly 19,000 units in H1 2026, up 272% year-on-year, with Chinese makers accounting for about 97% of the total — Morgan Stanley forecasts full-year 2026 China shipments near 50,000 units, up from about 12,000 in 2025.[^33] Unitree's IPO prospectus and its FY2025 "world's top-shipping humanoid maker" framing were both accurate when written; by the time the stock actually traded, the ground had already shifted under the claim — a shift Unitree itself did not concede quietly. On August 12, the same day RoboStrategy's primer published, Unitree put a specific number on that legacy claim: a cumulative-to-date count of roughly 18,000 *bipedal* humanoid units, explicitly excluding wheeled and hybrid platforms — a category cut that plays to Unitree's strength, since AgiBot's broader 44%-share lead is built on a more diverse product mix (bipedal, half-size, and wheeled) rather than bipedal units alone.[^51] This report could not independently source a directly comparable bipedal-only cumulative figure for AgiBot, so the two companies' "largest maker" claims should be read as measuring different things — a pure-bipedal count versus a total-shipment count — rather than as a resolved, apples-to-apples contest.
+
+Debut-day mainstream coverage largely did not reflect this shift, either: CNN, Yahoo Finance and other outlets covering the August 19 listing itself continued to describe Unitree as "the world's largest humanoid robot maker," citing Unitree's own 5,500+-unit 2025 figure rather than the more recent AgiBot H1-2026 data — evidence for, not against, this report's point that the framing shift was under-covered even as it happened.[^53]
+
+:::rank-list
+- {label: AgiBot (Zhiyuan Robotics), value: "44%", pct: 44}
+- {label: Unitree, value: "31%", pct: 31, highlight: true}
+- {label: Rest of market, value: "25%", pct: 25}
+:::
+
+Unitree's closest listed comparison remains UBTech Robotics (9880.HK, ~$5.2bn market cap), the only other publicly listed pure-play humanoid maker, which reports 2025 full-year humanoid revenue of ¥820M across 1,079 units — smaller than Unitree in absolute humanoid revenue, and still loss-making (an interim 2025 net loss of roughly ¥440M), against Unitree's profitability.[^34] Behind both sits a genuinely deep private-market pipeline that Unitree's listing appears to have accelerated rather than created: AgiBot confirmed a Hong Kong IPO process to Caixin on July 24, 2026, pursuing a parallel mainland A-share route via a controlling stake in Shanghai-listed Swancor Advanced Materials; Galbot raised roughly ¥5bn across two rounds between December 2025 and March 2026 at a valuation above ¥20bn (~$3bn), also eyeing a Hong Kong listing; EngineAI raised a $200M Series B at a $1.5bn valuation in April 2026 and has reportedly filed confidentially for its own Hong Kong IPO.[^12][^35]
+
+| Company | Status | Valuation / cap | Basis |
+|---|---|---|---|
+| *Unitree | Listed (STAR Market, Aug 2026) | $9.04B offer / $50-66B post-debut | ~36x FY25 revenue at offer; ~262x at peak |
+| UBTech | Listed (HKEX, since 2023) | ~$5.2B | Loss-making; ¥820M humanoid revenue |
+| AgiBot | Pre-IPO, filing for HK | $1.4-6.4B (disputed across trackers) | No disclosed revenue multiple |
+| Figure AI | Private (US) | $39B (Sept 2025 round) | Pre-revenue-at-scale |
+| Agility Robotics | SPAC merger pending | $2.5B | $300M+ order book (not revenue) |
+| EngineAI | Private, HK filing reported | $1.5B (Apr 2026 round) | No disclosed revenue |
+
+Figure AI's $39bn private valuation — roughly 4.3x Unitree's offer-price valuation — is the clearest illustration of how differently the market is pricing the US and Chinese sides of this race: Figure has no disclosed revenue at all, while secondary-market trades in its shares (Forge Global, ~$174/share in August 2026) have recently priced below that primary-round mark, suggesting softer private-market sentiment than the headline valuation implies.[^36] Tesla's Optimus program illustrates the opposite failure mode — an ambitious stated cost target ($20,000-25,000/unit at 1 million units/year) against an estimated actual current manufacturing cost several times higher ($50,000-100,000/unit), with 2025 actual production reportedly reaching only a few hundred units against a 5,000-unit guidance target.[^15] Agility Robotics, going public via SPAC merger at a $2.5bn valuation with Foxconn leading a roughly $200M PIPE, is the one Western peer with a disclosed, if milestone-contingent, order book — over $300M across 30-plus customers — giving it the sector's only computable order-to-valuation ratio (~8.3x), though orders are not recognized revenue and the figure isn't directly comparable to Unitree's revenue multiple.[^37] A large Chinese industrial conglomerate is also entering directly rather than backing a startup: BYD has confirmed an internally funded humanoid program with roughly 150 units already deployed at its Shenzhen and Changsha plants and an internal target of 20,000 deployments by the end of 2026 — a scale of committed industrial in-housing that neither Unitree nor AgiBot currently discloses from a single customer.[^38]
+
+## 08. Washington's Levers: What the FCC and Pentagon Lists Actually Do
+
+RoboStrategy's first question — how exposed is Unitree to U.S. market access — is the one place its own primer likely understated the mechanism, because "FCC Covered List" and "Pentagon designation" sound like blanket bans and are legally neither.
+
+The FCC's Public Notice DA 26-786, released July 28, 2026, added "foreign-produced advanced robotic devices" — a category defined by *place of manufacture*, not a named company — to the agency's Covered List, which blocks *new* equipment authorization for covered devices.[^39][^40] Unitree's already-authorized existing models (G1, H2, R1, Go2, B2, A2) keep their prior FCC authorization and remain legally sellable in the U.S. unless the FCC separately revokes them; only future, not-yet-authorized models are actually blocked from entering the U.S. market under this specific rule.[^40] Separately, the Department of Defense added Hangzhou Yushu Technology (Unitree's legal entity name) to the Section 1260H "Chinese Military Company" list on June 8, 2026, citing indirect SASAC affiliation and a "Little Giant" military-civil-fusion designation — not any allegation that Unitree makes weapons or has a direct PLA role.[^41] The 1260H listing's actual legal effect is narrower than the label suggests: it bars the Department of Defense from procuring from listed firms and functions as public "name and shame," but it does not itself prohibit sales or purchases by private buyers, universities, or businesses, and it is legally distinct from the Treasury OFAC list (NS-CMIC) that *does* bar U.S. persons from trading a company's securities — a list Unitree is not on as of August 2026.[^41][^42]
+
+:::timeline
+- {date: "2026-06-08", headline: "DoD Section 1260H listing", body: "Hangzhou Yushu Technology added, citing indirect SASAC affiliation. Bars DoD procurement; does not ban private sales or securities trading."}
+- {date: "2026-07-28", headline: "FCC Covered List expansion", body: "'Foreign-produced advanced robotic devices' added by place-of-manufacture. Blocks NEW-model authorization only; existing authorized models unaffected."}
+:::
+
+There is also a real, tested pathway to reverse a 1260H listing: Xiaomi won a preliminary injunction and delisting in 2021; Luokung Technology's designation was voluntarily withdrawn by the DoD that same year; and in August 2026 a U.S. judge blocked the Pentagon's 1260H label for WuXi AppTec, extending the precedent.[^43][^44] No source confirms Unitree itself has filed suit as of this writing, but the legal pathway other Chinese firms have used successfully is available to it.
+
+:::slope(left-label=2023, right-label=2025, unit="%")
+| Item | 2023 | 2025 |
+|---|---|---|
+| U.S. share of revenue | 18.39 | 13.3 |
+:::
+
+The financial exposure these designations threaten is, on the company's own numbers, already shrinking. U.S. sales fell from 18.39% of revenue in 2023 to 19.54% in 2024 and down to 13.3% in 2025, even as total overseas revenue held at 43.65% of the main business (¥731.66M) — meaning Unitree has been diversifying away from U.S. dependence for two years, not toward it, while total international demand stays healthy.[^45] Unitree's own prospectus discloses the regulatory risk plainly: potential U.S. tariffs, government-purchase restrictions, export controls, loss of existing FCC approvals, or disrupted imported-component supply chains are all named as material risks. That is a real, disclosed exposure — just a shrinking and legally narrower one than "Unitree is banned from America" implies.
+
+## 09. RoboStrategy's Four Questions, Revisited
+
+Taking each of RoboStrategy's original framings in turn, against what the prospectus and eight days of trading actually show:
+
+:::kv
+- {term: "Q1 — U.S. dependence", def: "Real but shrinking and legally narrower than the labels imply: 13.3% of revenue (down from 18.4-19.5%), and both the FCC and DoD actions are place-of-manufacture / procurement-scoped, not blanket bans on Unitree's existing products."}
+- {term: "Q2 — AI pivot", def: "Not yet visible in trailing data — R&D intensity fell from 31.4% to 7.7% of revenue as sales outgrew spend — but ~48% of new IPO proceeds are earmarked for embodied-AI model R&D, so the pivot is a forward capital-allocation bet, not a demonstrated trend."}
+- {term: "Q3 — Industrial demand", def: "The weakest link in the bull case: ~74% of humanoid revenue is research/education, true industrial-labor deployment is ~3-4%, and an independent tracker puts only ~10% of 2025 global humanoid output in real-world use — most of that subsidy-driven."}
+- {term: "Q4 — Competitive position", def: "Already eroding by the numbers that matter most: AgiBot passed Unitree in global unit-share before the stock even opened, even as Unitree's pricing and cost structure remain genuinely differentiated."}
+:::
+
+:::position(confidence=medium, horizon="12-18 months")
+stance: "Unitree's post-debut trading price reflects retail-mania mechanics more than fundamentals; the offer-price valuation (~36x revenue, ¥9.04bn) is the more defensible reference point than the peak (~262x, $66bn)."
+consensus: "Coverage broadly treats the 460-629% pop as validation of the humanoid-robotics investment thesis and Unitree's leadership within it."
+resolves: "Whether Unitree's STAR Market share price converges toward the offer-price multiple, or the post-2026-plan 20% daily band, over the next two quarters of reported earnings."
+:::
+
+RoboStrategy's disclosed conflict is worth one more look in light of all this. A fund holding Figure AI and Apptronik has every incentive to frame Unitree's bear case generously and its bull case skeptically — and yet the primer's actual four questions turn out to be well-chosen rather than tendentious: the U.S.-dependence question resolved in Unitree's favor (shrinking, narrower than feared), the buyer-mix question resolved against it (research/education dominated), and the competitive-position question resolved in a way that outran the article itself (AgiBot's overtake wasn't yet visible on August 12, but was already true). RoboStrategy is also not a neutral index of "the market's" view of humanoid robotics — the fund itself has traded at a large and persistent premium to its own disclosed net asset value (roughly 168% over NAV as of August 6, 2026: $28.19/share against a $10.51 NAV), the same retail-enthusiasm dynamic visible in Unitree's own debut.[^46][^47] Even Unitree's own founder is more measured than either side of this trade: speaking at the World Robot Conference the day after the debut, Wang Xingxing said a robotics "ChatGPT moment" — the point where humanoids can generalize across unfamiliar tasks — is likely two to ten years away, and described the company's current technical strategy as a "self-evolving development loop" meant to close that gap incrementally rather than a claim that it's already closed.[^48] His own paper wealth from the listing — roughly $16bn, on his 23.8% direct stake — is itself the clearest illustration of how much of this story is still unrealized value rather than cash economics.[^49]
+
+## 10. What Could Break This Thesis
+
+Four specific things would falsify the reading in this article, and are worth stating plainly rather than folded into hedge language above.
+
+**The pop is retail mania, and the multiple compresses hard.** STAR Market's no-limit first-five-days rule has produced 400-600%+ debuts before (2019's launch cohort) that were not sustained at those multiples; if Unitree's price reverts toward its offer-price valuation as the ±20% band takes effect and lock-ups begin expiring, the "$66bn company" framing this week's headlines used will look like a one-session artifact rather than a durable re-rating.
+
+**Q1 2026's profit decline is the leading indicator, not a blip.** A 48-53% year-on-year net profit drop alongside decelerating revenue growth (332.6% to 68.5%) is exactly the pattern a maturing hype cycle produces before growth itself slows — and Unitree's own management attributed part of the decline to a cooling in inflated 2025 expectations, which is a company acknowledging the risk, not analysts inventing it.
+
+**AgiBot's overtake compounds, not stabilizes.** If AgiBot's H1 2026 lead (44% vs. 31% global share) reflects a durable execution gap rather than a one-period fluctuation, Unitree's IPO narrative as "the world's top-shipping humanoid maker" — accurate for full-year 2025 — becomes a backward-looking claim the market priced as forward-looking.
+
+**The buyer mix doesn't convert.** If the ~74% research/education share of humanoid revenue doesn't migrate toward genuine industrial deployment over the next 12-18 months, the entire "humanoid labor replacement" investment thesis — not just Unitree's version of it — rests on demonstration purchases rather than commercial demand, a risk Interact Analysis's sector-wide 10%-deployment figure suggests is not unique to Unitree.
+
+Against all four: Unitree is the only profitable major humanoid maker among its listed and disclosed private peers, its cost structure is genuinely differentiated, and its declining U.S.-revenue dependence means the regulatory risk both bulls and bears have focused hardest on is, by the company's own numbers, the least of its problems.
+
+:::references
+- {id: 1, title: "Unitree Robotics: The IPO Primer", url: "https://x.com/RoboStrategy/status/2087561451468681234", source: "RoboStrategy (@RoboStrategy) on X", date: "2026-08-12"}
+- {id: 2, title: "STAR Market prospectus acceptance filing", url: "https://static.sse.com.cn/stock/disclosure/announcement/c/202603/002178_20260320_QY8F.pdf", source: "Shanghai Stock Exchange", date: "2026-03-20"}
+- {id: 3, title: "CSRC registration approval, 证监许可〔2026〕1612号", url: "https://www.csrc.gov.cn/csrc/c105906/c7642867/content.shtml", source: "China Securities Regulatory Commission", date: "2026-07-01"}
+- {id: 4, title: "宇树科技注册生效历时104天", url: "https://www.cls.cn/detail/2415523", source: "Cailian Press (CLS)", date: "2026-07-02"}
+- {id: 5, title: "Unitree STAR Market listing announcement", url: "https://stock.stockstar.com/notice/SN2026081800000862.shtml", source: "Stockstar", date: "2026-08-18"}
+- {id: 6, title: "Chinese humanoid robot maker Unitree prices IPO at $9 billion valuation", url: "https://www.cnbc.com/2026/08/06/chinese-humanoid-robot-maker-unitree-prices-ipo-at-9-billion-valuation.html", source: "CNBC", date: "2026-08-06"}
+- {id: 7, title: "宇树科技网上发行申购结果", url: "https://www.stcn.com/article/detail/4068051.html", source: "Securities Times", date: "2026-08-11"}
+- {id: 8, title: "宇树科技网下发行申购结果", url: "https://m.21jingji.com/article/20260812/herald/455230a1de7d846a75e2579b682f9053.html", source: "21st Century Business Herald", date: "2026-08-12"}
+- {id: 9, title: "宇树科技发行价150.8元/股，市盈率219.23倍", url: "https://www.ithome.com/0/986/699.htm", source: "IT Home", date: "2026-08"}
+- {id: 10, title: "STAR Market trading mechanism", url: "https://english.sse.com.cn/start/trading/mechanism/", source: "Shanghai Stock Exchange"}
+- {id: 11, title: "Unitree Robotics surges 629%, US$66 billion valuation in Shanghai share debut", url: "https://www.scmp.com/tech/tech-trends/article/3364499/unitree-robotics-surges-629-us66-billion-valuation-shanghai-share-debut", source: "South China Morning Post", date: "2026-08-19"}
+- {id: 12, title: "China's new tech-focused stock market soars in opening", url: "https://www.nbcnews.com/business/business-news/china-s-new-tech-focused-stock-market-soars-opening-n1032256", source: "NBC News", date: "2019-07-22"}
+- {id: 13, title: "RoboStrategy, Inc. Lists on NASDAQ Under Ticker BOT", url: "https://www.globenewswire.com/news-release/2026/05/11/3291751/0/en/robostrategy-inc-lists-on-nasdaq-under-ticker-bot-enabling-investors-to-access-a-portfolio-of-robotics-and-physical-ai-companies-in-a-single-stock.html", source: "GlobeNewswire", date: "2026-05-11"}
+- {id: 14, title: "宇树科技募资用途明细", url: "https://m.thepaper.cn/newsDetail_forward_33711755", source: "The Paper", date: "2026-08-06"}
+- {id: 15, title: "China's new five-year plan prioritizes robotics", url: "https://thediplomat.com/2026/03/chinas-new-five-year-plan-prioritizes-robotics-the-world-should-pay-attention/", source: "The Diplomat", date: "2026-03"}
+- {id: 16, title: "Unitree Robotics stock soars 460% in Shanghai IPO debut", url: "https://finance.yahoo.com/markets/stocks/articles/unitree-robotics-stock-soars-460-111514463.html", source: "Yahoo Finance / Reuters", date: "2026-08-19"}
+- {id: 17, title: "宇树科技招股书披露收入结构", url: "https://www.eeo.com.cn/2026/0320/813654.shtml", source: "Economic Observer", date: "2026-03-20"}
+- {id: 18, title: "Unitree IPO draws spotlight to China's fast-growing humanoid robot sector", url: "https://english.news.cn/20260810/d1fe25981435453db422ecf41dd9b3e2/c.html", source: "Xinhua / SSE", date: "2026-08-10"}
+- {id: 19, title: "宇树科技战略配售结果：DeepSeek、腾讯等9家机构", url: "https://www.globaltimes.cn/page/202608/1367695.shtml", source: "Global Times", date: "2026-08-07"}
+- {id: 20, title: "宇树科技单价与成本变化", url: "https://finance.sina.com.cn/wm/2026-05-30/doc-inhzsssh7008473.shtml", source: "Sina Finance", date: "2026-05-30"}
+- {id: 21, title: "宇树科技客户集中度分析", url: "https://www.163.com/dy/article/L4M93LVA0539M09S.html", source: "NetEase Finance", date: "2026"}
+- {id: 22, title: "宇树科技研发费用率变化", url: "https://www.hstong.com/news/detail/26032720281879176", source: "Haitong International", date: "2026-03-27"}
+- {id: 23, title: "Inside Unitree's landmark IPO: what to know about China's humanoid giant", url: "https://www.scmp.com/tech/article/3347611/inside-unitrees-landmark-ipo-what-know-about-chinas-humanoid-giant", source: "South China Morning Post", date: "2026-08"}
+- {id: 24, title: "宇树科技股东结构：美团、红杉、纪源持股", url: "https://eu.36kr.com/en/p/3732145162944770", source: "36Kr", date: "2026-08"}
+- {id: 25, title: "Unitree STAR Market IPO subscription, CITIC Securities lead underwriter", url: "https://theroboticsmedia.com/article/unitree-star-market-ipo-subscription-august-10-40-million-shares-citic-securities-2026-07-31", source: "The Robotics Media", date: "2026-07-31"}
+- {id: 26, title: "Stock Connect information booklet and FAQ", url: "https://www.hkex.com.hk/-/media/HKEX-Market/Mutual-Market/Stock-Connect/Getting-Started/Information-Booklet-and-FAQ/FAQ/FAQ_En.pdf", source: "Hong Kong Exchanges and Clearing", date: "2026-03-02"}
+- {id: 27, title: "Design considerations for quasi-direct-drive actuators in legged robots", url: "https://arxiv.org/pdf/2410.16591", source: "arXiv preprint", date: "2024-10"}
+- {id: 28, title: "Clarification Regarding Unitree's 2025 Sales Data", url: "https://shop.unitree.com/blogs/news/clarification-regarding-unitrees-2025-sales-data", source: "Unitree Robotics", date: "2026-01-22"}
+- {id: 29, title: "Unitree prices IPO as world's humanoid leader — but data shows AgiBot led H1 shipments", url: "https://www.techtimes.com/articles/323791/20260810/unitree-prices-ipo-humanoid-leader-data-shows-agibot-led-h1-shipments.htm", source: "Tech Times", date: "2026-08-10"}
+- {id: 30, title: "Unitree's IPO filing: the state of the robotics market", url: "https://www.tanayj.com/p/unitrees-ipo-filing-the-state-of", source: "Tanay Jaipuria (substack)", date: "2026-08"}
+- {id: 31, title: "Humanoid robot production surges", url: "https://interactanalysis.com/insight/humanoid-robot-production-surges/", source: "Interact Analysis", date: "2026"}
+- {id: 32, title: "Humanoid robot price comparison 2026", url: "https://aibusiness.vc/robots/humanoid-robot-price-comparison-2026", source: "AI Business VC", date: "2026"}
+- {id: 33, title: "China's Unitree soars in market debut as investors bet on humanoid robots", url: "https://www.aljazeera.com/economy/2026/8/19/chinas-unitree-soars-in-market-debut-as-investors-bet-on-humanoid-robots", source: "Al Jazeera", date: "2026-08-19"}
+- {id: 34, title: "UBTech Robotics company profile", url: "https://www.ubtrobot.com/en/about/company-profile", source: "UBTech Robotics", date: "2026-08"}
+- {id: 35, title: "AgiBot overtakes Unitree as top global humanoid robot vendor in first half amid IPO push", url: "https://www.scmp.com/tech/tech-trends/article/3363544/agibot-overtakes-unitree-top-global-humanoid-robot-vendor-first-half-amid-ipo-push", source: "South China Morning Post", date: "2026-08"}
+- {id: 36, title: "Figure raises $1B in Series C, hits $39B valuation", url: "https://seekingalpha.com/news/4495255-figure-raises-1b-in-series-c-hits-39b-valuation-to-scale-humanoid-robot-deployment", source: "Seeking Alpha", date: "2025-09-24"}
+- {id: 37, title: "Digit maker Agility Robotics to go public in $2.5B deal", url: "https://www.geekwire.com/2026/digit-maker-agility-robotics-to-go-public-in-2-5b-deal-heres-what-the-filings-say-about-its-finances/", source: "GeekWire", date: "2026"}
+- {id: 38, title: "BYD confirms humanoid robot program, targets 20,000 factory deployments by 2026", url: "https://chinabizinsider.com/byd-confirms-humanoid-robot-program-targets-20-000-factory-deployments-by-2026/", source: "China Biz Insider", date: "2026-07"}
+- {id: 39, title: "Public Notice DA 26-786: Covered List Update", url: "https://docs.fcc.gov/public/attachments/DA-26-786A1.pdf", source: "Federal Communications Commission", date: "2026-07-28"}
+- {id: 40, title: "FCC Adds Foreign-Produced Power Inverters and Advanced Robotic Devices to the Covered List", url: "https://www.wiley.law/alert-FCC-Adds-Foreign-Produced-Power-Inverters-and-Advanced-Robotic-Devices-to-the-Covered-List", source: "Wiley Rein LLP", date: "2026-07-30"}
+- {id: 41, title: "Entities Identified as Chinese Military Companies Operating in the United States (Section 1260H)", url: "https://media.defense.gov/2026/Jun/08/2003945537/-1/-1/1/ENTITIES-IDENTIFIED-AS-CHINESE-MILITARY-COMPANIES-OPERATING-IN-THE-UNITED-STATES-IN-ACCORDANCE-WITH-SECTION-1260H.PDF", source: "U.S. Department of Defense", date: "2026-06-08"}
+- {id: 42, title: "Non-SDN Chinese Military-Industrial Complex Companies List", url: "https://www.treasury.gov/ofac/downloads/ccmc/nscmiclist.pdf", source: "U.S. Treasury OFAC", date: "2026-08"}
+- {id: 43, title: "DoD Relieves Luokung Technology From Communist Chinese Military Company Designation", url: "https://www.sec.gov/Archives/edgar/data/1487839/000121390021032436/ea142712ex99-1_luokungtech.htm", source: "SEC EDGAR / Luokung Technology 8-K exhibit", date: "2021-06"}
+- {id: 44, title: "US judge blocks Pentagon's 'Chinese military' label for WuXi AppTec", url: "https://www.scmp.com/news/us/article/3363369/us-judge-blocks-pentagons-chinese-military-label-wuxi-apptec", source: "South China Morning Post", date: "2026-08"}
+- {id: 45, title: "Unitree Robotics IPO 2026: Financials, Valuation and Risks", url: "https://robotopian.com/blogs/news/unitree-robotics-ipo-2026-financials-valuation", source: "Robotopian", date: "2026-08"}
+- {id: 46, title: "RoboStrategy, Inc. Form 497AD", url: "https://www.sec.gov/Archives/edgar/data/0002081119/000121390026076409/ea0297444-01_497ad.htm", source: "SEC EDGAR", date: "2026"}
+- {id: 47, title: "RoboStrategy NAV rises to $10.51; raises $7.6M", url: "https://www.stocktitan.net/news/BOT/robo-strategy-inc-announces-updated-net-asset-value-and-additional-k3dv6rw21bor.html", source: "StockTitan", date: "2026-08"}
+- {id: 48, title: "Humanoid robots' 'ChatGPT moment' could be 10 years away, Unitree founder says", url: "https://www.cnbc.com/2026/08/20/unitree-humanoid-robots-chatgpt-moment.html", source: "CNBC", date: "2026-08-20"}
+- {id: 49, title: "Unitree's Blockbuster Debut Vaults Billionaire Founder Into Ranks Of China's Richest Tech Moguls", url: "https://www.forbes.com/sites/ywang/2026/08/19/unitrees-blockbuster-debut-vaults-billionaire-founder-into-ranks-of-chinas-richest-tech-moguls/", source: "Forbes", date: "2026-08-19"}
+- {id: 50, title: "Chipmaker CXMT's 466% market debut surge makes it the most valuable China-listed company", url: "https://www.cnbc.com/2026/07/27/cxmt-china-market-debut-chipmaker-ipo.html", source: "CNBC", date: "2026-07-27"}
+- {id: 51, title: "Unitree Reclaims the Spotlight with 18,000 Cumulative Bipedal Humanoids Produced", url: "https://www.humanoidsdaily.com/news/unitree-reclaims-the-spotlight-with-18-000-cumulative-bipedal-humanoids-produced", source: "Humanoids Daily", date: "2026-08-12"}
+- {id: 52, title: "SAG: Global Humanoid Robot Shipments Surged 272% YoY to 19.1K Units in 1H 2026; AGIBOT Overtook Unitree for No. 1 Position", url: "https://smartanalyticsglobal.com/global-humanoid-robot-shipments-2026-agibot-unitree/", source: "Smart Analytics Global", date: "2026-08-10"}
+- {id: 53, title: "World's top humanoid robot maker Unitree surges in blockbuster market debut in China", url: "https://www.cnn.com/2026/08/18/tech/china-unitree-ipo-intl-hnk", source: "CNN", date: "2026-08-18"}
+:::

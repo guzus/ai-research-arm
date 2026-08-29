@@ -5,6 +5,34 @@ The production Twitter/X monitor reads accounts and search queries from
 deterministic: every run validates the manifest, builds a birdy multi-fetch
 manifest, and fetches the exact reviewed account set.
 
+## Categories
+
+The manifest groups handles into four categories:
+
+| id | Beat |
+|---|---|
+| `labs` | AI labs and company accounts |
+| `hyperscalers` | Hyperscalers, executives, and key insiders |
+| `local-oss` | Local/on-device AI, quantization, OSS tooling, and the hardware to run it |
+| `others` | Researchers, analysts, builders, and media |
+
+**Categories are organizational, not operational.** `build_fetch_manifest`
+iterates every category identically and `tweets_per_account` is manifest-global,
+so moving a handle between categories changes nothing about what gets fetched.
+They exist so the roster stays legible and so a future curation pass can reason
+about coverage per beat.
+
+Two couplings are load-bearing anyway, and both are easy to trip:
+
+- **`others` is hardcoded in two places, not one.** It is the
+  `--default-category` for `propose`, *and* `explore_twitter_accounts.py`
+  stamps `"category": "others"` onto every candidate it discovers. Consequence:
+  **no category other than `others` ever grows via the weekly explorer.** A
+  beat like `local-oss` only gains handles through a manual curation pass.
+- **Category ORDER is pinned by a test.** `test_curate_twitter_accounts.py`
+  asserts the first built fetch operation is `@OpenAI`, so `labs` must stay
+  first. Append a new category in the middle or at the end — never prepend one.
+
 Use `scripts/curate_twitter_accounts.py` for account changes:
 
 ```bash
@@ -92,3 +120,9 @@ dispatch. It is an agent loop, but it is intentionally review-gated:
 The loop caps each run at five additions and two removals. Removals require
 clear observed evidence because losing a quiet but important source is costlier
 than adding a marginal candidate.
+
+**That cap governs the explorer loop only.** A hand-curated batch that goes
+through `propose` → human review → `apply` is a different path and is not bound
+by it — the cap exists to stop an *unattended agent* from churning the roster,
+not to limit reviewed human curation. Record the per-handle rationale in `notes`
+and the verification in `evidence` so a later pass can re-adjudicate.

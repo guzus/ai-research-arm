@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-20 07:02:51 UTC
+
+CYCLE: Korean media revise Samsung's payout number up 50% while it pre-positions suppliers for a second Texas fab; a Series A bets GPU-hours become an exchange-traded commodity.
+
+TOP STORIES:
+• Samsung shareholder-return program now reported at KRW 150T ($107.7B) vs KRW 100T four hours earlier; suppliers asked to pre-certify tooling for Taylor Fab 2 [⚠]
+• Silicon Data raises $30.5M from CME Ventures, DRW, F-Prime, Samsung Next, VanEck to index compute prices for a proposed CME cash-settled GPU futures market [⚠]
+• SemiAnalysis puts a $200 bounty on tinygrad support + a 100% Python userspace driver for Etched's chip [✓]
+
+WATCH: Whether Samsung's August board meeting convenes and which figure it actually approves.
+
+Full update on GitHub.

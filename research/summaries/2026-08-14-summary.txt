@@ -1,0 +1,14 @@
+AI News - 2026-08-14
+
+TOP STORIES:
+• Anthropic in talks to buy Israeli startup Decart AI for $6B — its largest known acquisition, boosting chip-efficiency/video-gen tech
+• Vantage Data Centers exploring ~$100B IPO or sale, would be largest data-center IPO ever
+• Claude Code's "auto mode" becomes default today for Pro/Max/Team plans, reducing manual approval prompts
+• California legislature holds make-or-break votes on ~30 AI bills (chatbot safety, copyright, AI safety commission)
+
+KEY NUMBERS:
+• $6B — Anthropic's reported offer for Decart AI (up from $4B valuation in May)
+• $100B — Vantage Data Centers' explored IPO/sale valuation
+• 89% vs 13.6% — dangerous-command catch rate for Claude Code auto mode vs. humans (per Anthropic study)
+
+Full report on GitHub.

@@ -1,0 +1,47 @@
+name: Stranded publication alert
+description: Detect and alert on automation/safe-push PRs left open off main.
+inputs:
+  hooker_url: {required: false, default: ""}
+  hooker_token: {required: false, default: ""}
+  telegram_bot_token: {required: false, default: ""}
+  telegram_chat_id: {required: false, default: ""}
+runs:
+  using: composite
+  steps:
+    - name: Check stranded publication PRs
+      id: check
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: python3 scripts/check_stranded_publications.py || code=$?; test "${code:-0}" -eq 2 || exit "${code:-0}"
+    - name: Alert via hooker
+      if: steps.check.outputs.stranded == 'true'
+      continue-on-error: true
+      shell: bash
+      env:
+        HOOKER_URL: ${{ inputs.hooker_url }}
+        HOOKER_TOKEN: ${{ inputs.hooker_token }}
+        KEY: ${{ steps.check.outputs.idempotency_key }}
+        COUNT: ${{ steps.check.outputs.count }}
+        SUMMARY: ${{ steps.check.outputs.summary }}
+      run: |
+        [ -n "$HOOKER_URL" ] && [ -n "$HOOKER_TOKEN" ] || exit 0
+        jq -n --arg title "🚨 ARA: $COUNT stranded publication PR(s)" --arg text "$SUMMARY" \
+          '{title:$title,text:$text,priority:5,tags:["ara","alert","publication"]}' > "${RUNNER_TEMP:-/tmp}/stranded-publications.json"
+        curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/ara-research" \
+          -H "Authorization: Bearer $HOOKER_TOKEN" -H 'Content-Type: application/json' \
+          -H "Idempotency-Key: $KEY" --data-binary "@${RUNNER_TEMP:-/tmp}/stranded-publications.json"
+    - name: Alert via Telegram
+      if: steps.check.outputs.stranded == 'true'
+      continue-on-error: true
+      shell: bash
+      env:
+        TOKEN: ${{ inputs.telegram_bot_token }}
+        CHAT: ${{ inputs.telegram_chat_id }}
+        COUNT: ${{ steps.check.outputs.count }}
+        SUMMARY: ${{ steps.check.outputs.summary }}
+      run: |
+        [ -n "$TOKEN" ] && [ -n "$CHAT" ] || exit 0
+        text=$(printf '🚨 ARA: %s publication PR(s) stranded off main\n\n%s' "$COUNT" "$SUMMARY")
+        curl -sS -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" \
+          --data-urlencode "chat_id=$CHAT" --data-urlencode "text=$text" >/dev/null

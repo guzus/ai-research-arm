@@ -4,16 +4,23 @@ title: Alibaba
 type: entity
 aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max on 2026-08-04 with open weights promised, even as it continues fighting a US DoD PLA-linked designation.
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max and open-weighted it as Qwen3.8-2.4T-A95B, reported an AI-capex-signature quarter, priced an HK$80B (~$10.2B) AI-infrastructure placement (2026-08-25), and shipped the Qwen4-architecture Qwen3.8-Flash-Next MoE preview (2026-08-27).
 created_at: 2026-07-05
-timestamp: 2026-08-04T00:00:00Z
+timestamp: 2026-08-27T00:00:00Z
 market:
   ticker: BABA
   exchange: NYSE
   symbol: NYSE:BABA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
+  - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
+  - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
+  - {title: "ARA model ticket — Alibaba AI share placement", path: research/models/tickets/alibaba-ai-share-placement-2026-08.md}
+  - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
+  - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "ARA model ticket — Qwen-Image-3.0 release", path: research/models/tickets/alibaba-qwen-image-3-2026-07.md}
   - {title: "ARA daily digest 2026-07-21", path: research/digest/2026-07-21-digest.md}
@@ -131,6 +138,67 @@ friction point distinct from Qwen's own model-release cadence.
   independent touches were more muted. It led the Hacker News AI slate in five
   consecutive windows (115 → 960 points). Model-level detail lives on
   [[qwen-3-8-max]] (ARA digest 2026-08-04).
+
+- **The Max-class open release lands as Qwen3.8-2.4T-A95B (2026-08-13).**
+  Alibaba open-weighted the flagship tracked above: **4.89TB of weights, 95B
+  active across 512 experts**, day-0 vLLM, pre-quantized 4-bit checkpoints
+  sized to a single 8×B300 or 8×MI355X node, and a **27B sibling due Friday
+  14 August** — the first Max-class Qwen ever released open. The model card
+  confirms the open release is the **base of Alibaba's commercial flagship**,
+   with **vision, 1M default context and built-in tools withheld as the paid
+   layer**. See [[qwen-3-8-max]] and [[open-weights]] (ARA digest 2026-08-13).
+- **The reported quarter prints the AI-capex signature (2026-08-21).** Reported
+   results put **revenue at RMB 268.95B (+9% YoY)** with **AI Cloud and Compute
+   +45%**, **operating income −57%**, and **free cash flow negative RMB 44.67B**.
+   On the call, management said it **recoups AI investments within three years**,
+   trending toward 2.5 and targeting two, and cited **2018 V100s and 2020 A100s
+   still at full utilization** — an explicit bet that its AI capex pays back
+   faster than the market assumes — though **"payback" was never defined** (ARA
+   daily digest 2026-08-21). See [[ai-capex]].
+- **HK$80B placement funds the AI buildout from public equity (2026-08-24).**
+   Alibaba placed **HK$80 billion (~$10.2B) of new Hong Kong shares** — its
+   **first placement since the 2019 secondary listing** and reported as the
+   **largest-ever primary follow-on by a Hong Kong-listed company** — with
+   **100% of net proceeds earmarked for full-stack AI infrastructure**. The
+   binding-constraint read: management said **three days earlier** it recoups AI
+   investments within three years, so **issuing dilutive equity anyway signals
+   capital availability — not conviction — is the binding constraint**. A raise
+   of this size is roughly the scale of a serious multi-gigawatt buildout, and
+   the domestic-vs-imported accelerator split of the spend remains undisclosed.
+   *(Single-aggregator sourcing in-window with no HKEX filing yet — the figures
+   are internally consistent, which checks the relay, not the event.)* See
+   [[ai-capex]] and the [share-placement ticket](../../models/tickets/alibaba-ai-share-placement-2026-08.md)
+   (ARA daily digest and model ticket 2026-08-24).
+- **The placement prices — the first market verdict on equity-funded AI capex
+  (2026-08-25).** The HK$80B placement **priced at HK$112.70, an 8.4% discount to
+  the prior close**, and Alibaba's shares **opened roughly 10% lower in Hong
+  Kong** against a Hang Seng down 2.1% — the **first market verdict on financing
+  AI capex with equity**, and a harsh one. It arrived alongside a reported
+  **75% year-over-year drop in quarterly profit**, and a separate datapoint that
+  **Qwen has passed 3B cumulative downloads**. Three independent relays plus an
+  observable share-price consequence now corroborate the event, though **still no
+  HKEX filing or Alibaba primary post** was captured (ARA daily digest and model
+  ticket 2026-08-25). See [[ai-capex]].
+- **The next line is teased: Qwen4 architecture preview + Qwen3.8-Flash-Next
+  (2026-08-26).** Alibaba set a **countdown for "A Preview of the Qwen4
+  Architecture"** and separately surfaced **Qwen3.8-Flash-Next** on ModelScope
+  (reported **125B total / 6B active** MoE, drawing 203 HN points on its
+  open-weight positioning) — with **DeepSeek's Engram technique named as a key
+  method**, a rare cross-lab on-record acknowledgment. **No weights, licence or
+  date yet** for either. Pair with Thomson Reuters spending **~$40M over two
+  years building its own model on Qwen** rather than renting GPT/Claude —
+  Qwen's economics keep pulling build-vs-rent decisions Alibaba's way (ModelScope,
+  HN, r/LocalLLaMA; ARA daily digest 2026-08-26). See [[qwen-3-8-max]].
+- **Qwen3.8-Flash-Next ships as a Qwen4-architecture MoE preview (2026-08-27).**
+  Alibaba released **Qwen3.8-Flash-Next**, a **mixture-of-experts preview of
+  the Qwen4 architecture** activating roughly **6B of 125B parameters per
+  token**, claiming to **beat much larger rivals on coding and office
+  benchmarks at one-ninth the training cost**. At **1-bit quantization
+  (79GB)** it reportedly runs at **30 tok/s on a 64GB M5 MacBook Pro Max** — a
+  local-first headline that pairs with the earlier Qwen4 countdown and
+  positions the Flash-Next against the day's other open-release,
+  [[zhipu-glm-5-3|GLM-5.3-Flash]] (The Decoder, @Hikari_07_jp; ARA daily digest
+  2026-08-27). See [[open-weights]] and [[qwen-3-8-max]].
 
 ## Open questions
 

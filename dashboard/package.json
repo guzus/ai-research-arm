@@ -24,6 +24,6 @@
   "dependencies": {
     "@resvg/resvg-js": "^2.6.2",
     "dompurify": "^3.4.12",
-    "marked": "^18.0.7"
+    "marked": "^18.0.9"
   }
 }

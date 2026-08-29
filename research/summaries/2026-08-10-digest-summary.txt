@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-08-10 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] _No new items in window. openai.xml newest is 2026-08-07 15:20 UTC (outside 24h).
+• [Hacker News] Mea Culpa – Dark Hours: The snapshot's top story and by far its largest
+• [Reddit] A Mechanistic Explanation of Prompt Injection (and why you should study roles) [R] — link
+• [Expert Blogs] Lessons from the hacks
+• [Bluesky] @simonwillison.net: "Thanks to the video from the Black Hat security conference of OpenAI's present…
+
+SOURCES: 7/8 lanes had data; missing: Twitter/X
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.

@@ -13,70 +13,95 @@ concurrency:
 jobs:
   arxiv-research:
     runs-on: [self-hosted, Linux]
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: write
       pull-requests: write
       id-token: write
 
     steps:
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
         with:
           fetch-depth: 0
+          persist-credentials: false
+          set-safe-directory: false
 
       - name: Get current date
         id: date
         run: |
-          echo "date=$(date -u +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-          echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -v-1d +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: '22'
-
-      - name: Create MCP Config for arXiv
-        run: |
-          cat > /tmp/mcp-config.json << 'EOF'
-          {
-            "mcpServers": {
-              "arxiv": {
-                "command": "npx",
-                "args": ["-y", "arxiv-mcp-server"]
-              }
-            }
-          }
-          EOF
+          echo "date=$(date -u +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+          echo "yesterday=$(date -d 'yesterday' +'%Y-%m-%d' 2>/dev/null || date -v-1d +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
 
       # Base SHA for the standalone output guard below — captured BEFORE the
-      # agent so the guard proves Claude committed under research/arxiv/.
+      # agent so the guard proves the routed agent committed under research/arxiv/.
       - name: Capture arXiv output base
         id: arxiv-output-base
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       # continue-on-error lets the final require-output step report the
-      # missing Claude artifact clearly instead of hiding the root cause in
+      # missing artifact clearly instead of hiding the root cause in
       # the composite action.
-      - name: Fetch arXiv AI Papers
+      - name: Fetch arXiv AI papers with SSOT-routed agent
         id: arxiv-agent
         continue-on-error: true
-        uses: ./.github/actions/agent-run
+        uses: ./.github/actions/agent-dispatch
         with:
+          mode: editorial
           lane: arxiv
+          expected-paths: |
+            research/arxiv/${{ steps.date.outputs.date }}-papers.md
+          allowed-paths: |
+            research/arxiv/${{ steps.date.outputs.date }}-papers.md
+            research/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
-          claude-args: |
-            --model opus --mcp-config /tmp/mcp-config.json
-            --allowedTools "Read,Write,Edit,Bash(git:*),Bash(curl:*),WebFetch,mcp__arxiv__*"
-          expected-paths: |
-            research/arxiv/
-          allowed-paths: |
-            research/arxiv/
-            research/summaries/
-          label: arXiv Fireworks curator
-          prompt: |
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          timeout-minutes: '25'
+          prompt-text: |
             You are an AI research paper curator. Find the most important NEW papers from arXiv.
 
             DATE: ${{ steps.date.outputs.date }}
@@ -89,13 +114,7 @@ jobs:
             - cs.CV (Computer Vision)
             - cs.NE (Neural and Evolutionary Computing)
 
-            Use arXiv MCP tools:
-            - Search for papers submitted in last 24 hours
-            - "site:arxiv.org cs.AI" submitted today
-            - "site:arxiv.org LLM language model" new
-
-            If the arXiv MCP tools are unavailable or erroring, do NOT give up:
-            fetch the arXiv Atom API directly via curl or WebFetch, e.g.
+            Query the arXiv Atom API directly via curl or web fetch, e.g.
             `curl -sL "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.LG+OR+cat:cs.CL+OR+cat:cs.CV+OR+cat:cs.NE&sortBy=submittedDate&sortOrder=descending&max_results=100"`
             and curate from the returned Atom XML instead.
 
@@ -170,7 +189,7 @@ jobs:
             git add research/arxiv/${{ steps.date.outputs.date }}-papers.md research/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt
             git commit -m "arXiv papers ${{ steps.date.outputs.date }}"
 
-      # Final hard gate: Claude must have committed under research/arxiv/
+      # Final hard gate: the routed agent must have committed under research/arxiv/
       # since the pre-agent base SHA. A missing output is better than
       # publishing an uncurated fallback listing as editorial content.
       - name: Require arXiv output
@@ -180,6 +199,12 @@ jobs:
           expected-paths: |
             research/arxiv/
           label: arXiv workflow output
+
+      - name: Propagate arXiv agent contract failure
+        if: always() && steps.arxiv-agent.outcome != 'success'
+        run: |
+          echo "::error::arXiv routed agent failed its containment or output contract."
+          exit 1
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the
@@ -196,11 +221,13 @@ jobs:
           SUMMARY_FILE="research/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt"
           if [ -f "$SUMMARY_FILE" ]; then
             SUMMARY=$(cat "$SUMMARY_FILE" | head -c 800)
-            echo "content<<EOF" >> $GITHUB_OUTPUT
-            echo "$SUMMARY" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
+            {
+              echo "content<<EOF"
+              echo "$SUMMARY"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
           else
-            echo "content=No summary available" >> $GITHUB_OUTPUT
+            echo "content=No summary available" >> "$GITHUB_OUTPUT"
           fi
 
       # Notify via hooker (relays to Telegram). Replaces the Docker-based

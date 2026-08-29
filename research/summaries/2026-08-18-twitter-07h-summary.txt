@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-18 07:21:37 UTC
+
+CYCLE: Pricing and benchmarks as positioning — a discount aimed at the scoreboard, a 1.2-point leaderboard flip, and a sell-side call on China's price war.
+
+TOP STORIES:
+• OpenAI's 50% GPT-5.6 Sol cut applies only on OpenRouter and Vercel — the two venues analysts use to estimate lab market share [⚠]
+• Grok 4.6 tops MedAgentBench at ~95.9% pass@1 vs GPT-5.6 Sol's 94.7%, its fourth leaderboard claim in six days [⚠]
+• Morgan Stanley reads DeepSeek's 2.38x V4 Pro price rise as the end of China's LLM price war; GLM-5.3 gains credited to post-training RL alone [🚩]
+
+WATCH: Whether OpenRouter publishes matching 50%-off terms, or the discount proves Vercel-only.
+
+Full update on GitHub.

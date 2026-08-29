@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-12 16:07:06 UTC
+
+CYCLE: Three frontier model releases inside 45 minutes - and every performance claim is vendor-supplied.
+
+TOP STORIES:
+• xAI ships Grok 4.6 into Cursor claiming GPT-5.6 Sol parity at Grok 4.5 pricing; the one third-party leaderboard cited puts it 13th [multi-source as a release, vendor-only on benchmarks]
+• Alibaba open-weights Qwen3.8-2.4T-A95B (2.4T params, 95B active, 4.89TB) - vLLM day-0, but the practical floor to run it is an 8-GPU node [✓]
+• DeepSeek-V4-Pro-0813 listed on DeepSeek's API docs at $0.87/M output; circulating benchmarks compare against Opus 4.8, not Opus 5 [⚠]
+
+WATCH: Cerebras Q2 2026 after the close tonight - first read on whether its reported $20B+ OpenAI deal is converting to revenue.
+
+Full update on GitHub.

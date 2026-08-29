@@ -14,7 +14,32 @@ import {
 } from './render/shared';
 import { hydrateAgentsTimeline, renderAgentsStudioHtml } from './render/agents';
 import type { ArmTimeline } from './render/agents';
-import { renderTodayHtml } from './render/today';
+import { hydratePricing, renderPricing } from './render/pricing';
+import type { ModelPricing } from './render/pricing';
+import {
+  renderDossierRelated,
+  renderEvidenceDrawer,
+  renderMarketTrends,
+  renderWhatChanged,
+} from './render/product';
+import type { BriefItem } from './render/product';
+import {
+  claimsForArticle,
+  claimsForTopic,
+  evidenceEnumLabel,
+  excerptAround,
+  normalizeTopic,
+  readWatchlist,
+  searchEvidence,
+  textMatchesTopic,
+  watchlistFromUrl,
+  watchlistSharePath,
+  writeWatchlist,
+} from './product-intelligence';
+import type { EvidenceSearchEntry, PublicClaim, WatchlistState } from './product-intelligence';
+import { localizeStaticUi, resolveUiLanguage, uiText } from './i18n';
+import type { UiCopyKey } from './i18n';
+import { isDeterministicFallbackDigest, renderTodayHtml } from './render/today';
 import {
   buildTwitterCycleContent,
   extractTwitterCycleBody,
@@ -119,21 +144,21 @@ function snowflakeToDate(id: string): Date | null {
 function timeAgo(date: Date): string {
   const now = Date.now();
   const diff = now - date.getTime();
-  if (diff < 0) return 'just now';
+  if (diff < 0) return uiText(activeLanguage, 'time.now');
   const mins = Math.floor(diff / 60000);
-  if (mins < 1) return 'just now';
-  if (mins < 60) return mins + 'm ago';
+  if (mins < 1) return uiText(activeLanguage, 'time.now');
+  if (mins < 60) return uiText(activeLanguage, 'time.minutesAgo', { count: mins });
   const hours = Math.floor(mins / 60);
-  if (hours < 24) return hours + 'h ago';
+  if (hours < 24) return uiText(activeLanguage, 'time.hoursAgo', { count: hours });
   const days = Math.floor(hours / 24);
-  return days + 'd ago';
+  return uiText(activeLanguage, 'time.daysAgo', { count: days });
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader' | 'agents';
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader' | 'agents' | 'pricing';
 // Tabs that route by date (calendar-driven). research + wiki are slug-driven
 // (or index views) and are excluded — mirror the research precedent.
-type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader' | 'agents'>;
+type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader' | 'agents' | 'pricing'>;
 type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
@@ -246,11 +271,18 @@ type DesignFrontendData = {
 
 let currentDate = new Date();
 let searchTerm = '';
+let watchlist: WatchlistState = readWatchlist();
+const sharedWatchTopics = watchlistFromUrl(location.search);
+if (sharedWatchTopics.length) {
+  watchlist = { ...watchlist, topics: Array.from(new Set([...watchlist.topics, ...sharedWatchTopics])) };
+  writeWatchlist(watchlist);
+}
 let activeTab: Tab = 'today';
 let selectedSlug: string | null = null;
 let researchIndexPage = 1;
 let wikiIndexPage = 1;
-let activeLanguage: ResearchLanguage = loadStoredLanguage();
+const sharedLanguage = new URLSearchParams(location.search).get('lang');
+let activeLanguage: ResearchLanguage = sharedLanguage === 'ko' || sharedLanguage === 'en' ? sharedLanguage : loadStoredLanguage();
 let calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 const availabilityCache = new Map<string, Set<string>>();
 let loadRequestId = 0;
@@ -312,6 +344,7 @@ let digestAudioPlayEl: HTMLButtonElement | null = null;
 let digestAudioTitleEl: HTMLButtonElement | null = null;
 let digestAudioTimeEl: HTMLElement | null = null;
 let digestAudioProgressEl: HTMLInputElement | null = null;
+let digestUnavailableForCurrentView = false;
 let lastDigestAudioBarActivation = 0;
 let lastInlineDigestAudioActivation = 0;
 
@@ -321,6 +354,8 @@ const calendarEl = document.getElementById('calendar')!;
 const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 const searchCountEl = document.getElementById('searchCount')!;
 const languageSwitch = document.getElementById('languageSwitch');
+const languageToggle = document.getElementById('languageToggle') as HTMLButtonElement | null;
+const languageMenu = document.getElementById('languageMenu');
 
 // ── Path routing ─────────────────────────────────────
 // Format (history API, no hash):
@@ -342,6 +377,9 @@ function routeFromState(): string {
   }
   if (activeTab === 'agents') {
     return '/agents';
+  }
+  if (activeTab === 'pricing') {
+    return '/pricing';
   }
   if (activeTab === 'research') {
     return selectedSlug ? '/research/' + selectedSlug : paginationRoute('/research', researchIndexPage);
@@ -431,21 +469,23 @@ function runtimeSeoState(target: string): RuntimeSeoState {
     };
   }
   if (activeTab === 'today') {
+    const pageTitle = uiText(activeLanguage, 'page.today', { date });
     return {
       canonicalPath: `/today/${date}`,
       description: `The ara daily AI digest for ${date}, covering model releases, research, funding, policy, and community signal.`,
-      documentTitle: `AI Daily Digest -- ${date} -- ara`,
-      heading: `AI Daily Digest -- ${date}`,
+      documentTitle: `${pageTitle} -- ara`,
+      heading: pageTitle,
       indexable: !isLatestAlias,
       type: 'article',
     };
   }
   if (activeTab === 'twitter') {
+    const pageTitle = uiText(activeLanguage, 'page.twitter', { date });
     return {
       canonicalPath: `/twitter/${date}`,
       description: `Source-attributed AI signals from Twitter/X for ${date}.`,
-      documentTitle: `Twitter/X AI signal report -- ${date} -- ara`,
-      heading: `Twitter/X AI signal report -- ${date}`,
+      documentTitle: `${pageTitle} -- ara`,
+      heading: pageTitle,
       indexable: !isLatestAlias,
       type: 'article',
     };
@@ -467,8 +507,8 @@ function runtimeSeoState(target: string): RuntimeSeoState {
       description: detail
         ? 'A verified AI model forecast with committed prediction-market context and supporting evidence.'
         : 'Verified AI model forecasts, release timelines, and prediction-market context.',
-      documentTitle: detail ? 'AI model forecast -- ara' : 'AI model forecasts and prediction markets -- ara',
-      heading: detail ? 'AI model forecast' : 'AI model forecasts and prediction markets',
+      documentTitle: `${uiText(activeLanguage, detail ? 'page.model' : 'page.models')} -- ara`,
+      heading: uiText(activeLanguage, detail ? 'page.model' : 'page.models'),
       indexable: true,
       type: detail ? 'article' : 'website',
     };
@@ -480,8 +520,8 @@ function runtimeSeoState(target: string): RuntimeSeoState {
       description: detail
         ? 'Source-cited, long-form AI research from ara.'
         : 'Source-cited, long-form research on AI models, companies, infrastructure, policy, and emerging technical claims.',
-      documentTitle: detail ? 'AI research -- ara' : 'AI research archive -- ara',
-      heading: detail ? 'AI research' : 'AI research archive',
+      documentTitle: `${uiText(activeLanguage, detail ? 'page.researchArticle' : 'page.research')} -- ara`,
+      heading: uiText(activeLanguage, detail ? 'page.researchArticle' : 'page.research'),
       indexable: true,
       type: detail ? 'article' : 'website',
     };
@@ -493,18 +533,30 @@ function runtimeSeoState(target: string): RuntimeSeoState {
       description: detail
         ? 'A maintained ara knowledge-base entry about AI models, labs, infrastructure, policy, or markets.'
         : 'A maintained knowledge base of AI labs, models, infrastructure concepts, policy themes, and market participants.',
-      documentTitle: 'LLM and AI wiki -- ara',
-      heading: detail ? 'LLM and AI wiki entry' : 'LLM and AI wiki',
+      documentTitle: `${uiText(activeLanguage, 'page.wiki')} -- ara`,
+      heading: uiText(activeLanguage, detail ? 'page.wikiEntry' : 'page.wiki'),
       indexable: true,
       type: detail ? 'article' : 'website',
+    };
+  }
+  if (activeTab === 'pricing') {
+    return {
+      canonicalPath: '/pricing',
+      description:
+        'Every frontier LLM plotted by output price against benchmark score, with the Pareto frontier — '
+        + 'the models where nothing else is both cheaper and at least as capable.',
+      documentTitle: `${uiText(activeLanguage, 'page.pricing')} -- ara`,
+      heading: uiText(activeLanguage, 'page.pricing'),
+      indexable: true,
+      type: 'website',
     };
   }
   if (activeTab === 'agents') {
     return {
       canonicalPath: '/agents',
       description: 'Live operational timeline for the autonomous agents and scheduled workflows that maintain ara.',
-      documentTitle: 'ara agent operations -- ara',
-      heading: 'ara agent operations',
+      documentTitle: `${uiText(activeLanguage, 'page.agents')} -- ara`,
+      heading: uiText(activeLanguage, 'page.agents'),
       indexable: false,
       type: 'website',
     };
@@ -644,6 +696,17 @@ function parseRoute(path: string): boolean {
     syncTabUi();
     return true;
   }
+  if (trimmed === 'pricing') {
+    activeTab = 'pricing';
+    selectedSlug = null;
+    // Reset the benchmark selection on every entry to the route. It is session
+    // state with no URL segment, so leaving it set means navigating away and
+    // back shows an alternate benchmark while routeFromState() and the SEO
+    // description both still describe the primary one.
+    pricingBenchmark = null;
+    syncTabUi();
+    return true;
+  }
   const forecastMatch = trimmed.match(/^models\/forecast\/([a-z0-9][a-z0-9._-]*[a-z0-9]|[a-z0-9])$/);
   if (forecastMatch) {
     activeTab = 'models';
@@ -722,15 +785,23 @@ function syncTabUi(): void {
   document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
   document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
   document.body.classList.toggle('tab-agents', activeTab === 'agents');
+  document.body.classList.toggle('tab-pricing', activeTab === 'pricing');
 }
 
 // ── Helpers ───────────────────────────────────────────
 function loadStoredLanguage(): ResearchLanguage {
+  let storedLanguage: string | null = null;
   try {
-    return localStorage.getItem('ara-language') === 'ko' ? 'ko' : 'en';
+    storedLanguage = localStorage.getItem('ara-language');
   } catch {
-    return 'en';
+    // Browser preference still works when storage is unavailable.
   }
+  const browserLanguages = navigator.languages.length
+    ? navigator.languages
+    : navigator.language
+      ? [navigator.language]
+      : [];
+  return resolveUiLanguage(storedLanguage, browserLanguages);
 }
 
 function storeLanguage(language: ResearchLanguage): void {
@@ -767,23 +838,38 @@ function hasResearchLanguage(row: GenResearchRow | null, language: ResearchLangu
   return Boolean(row?.translations?.[language]?.file);
 }
 
-function syncLanguageUi(row: GenResearchRow | null = null): void {
-  if (!languageSwitch) return;  // language toggle removed (English-only for now)
+function syncLanguageUi(_row: GenResearchRow | null = null): void {
+  if (!languageSwitch) return;
+  document.documentElement.lang = activeLanguage;
+  localizeStaticUi(activeLanguage);
   languageSwitch.querySelectorAll<HTMLButtonElement>('[data-language]').forEach((btn) => {
     const language = btn.dataset.language as ResearchLanguage;
-    const available = !row || hasResearchLanguage(row, language);
-    btn.classList.toggle('active', language === activeLanguage);
-    btn.classList.toggle('unavailable', !available);
-    btn.setAttribute('aria-pressed', String(language === activeLanguage));
-    btn.title = available
-      ? (language === 'ko' ? 'Show Korean' : 'Show English')
-      : 'Korean version has not been published for this article';
+    btn.setAttribute('aria-checked', String(language === activeLanguage));
   });
+  if (languageToggle) {
+    const label = activeLanguage === 'ko' ? '한국어' : 'English';
+    languageToggle.setAttribute('aria-label', uiText(activeLanguage, 'language.current', { language: label }));
+  }
+}
+
+function setLanguageMenuOpen(open: boolean, focusSelected = false): void {
+  if (!languageMenu || !languageToggle) return;
+  languageMenu.hidden = !open;
+  languageToggle.setAttribute('aria-expanded', String(open));
+  if (open && focusSelected) {
+    languageMenu.querySelector<HTMLButtonElement>('[aria-checked="true"]')?.focus();
+  }
+}
+
+function languageMenuOptions(): HTMLButtonElement[] {
+  return languageMenu
+    ? Array.from(languageMenu.querySelectorAll<HTMLButtonElement>('[data-language]'))
+    : [];
 }
 
 function languageFallbackNote(row: GenResearchRow): string {
   if (activeLanguage !== 'ko' || hasResearchLanguage(row, 'ko')) return '';
-  return '<div class="gen-research-language-note">Korean version has not been published for this article yet.</div>';
+  return '<div class="gen-research-language-note">' + escapeHtml(uiText(activeLanguage, 'research.unavailableKo')) + '</div>';
 }
 
 function fmtDate(d: Date): string {
@@ -808,7 +894,7 @@ function isImmutableDate(dateStr: string): boolean {
 }
 
 function displayDate(d: Date): string {
-  return d.toLocaleDateString('en-US', {
+  return d.toLocaleDateString(activeLanguage === 'ko' ? 'ko-KR' : 'en-US', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -875,6 +961,103 @@ async function loadArmTimeline(signal?: AbortSignal): Promise<ArmTimeline | null
     }
   })();
   return armTimelinePromise;
+}
+
+// research/market/model-pricing.json — refreshed by model-pricing.yml. Cached
+// for the session like the Arm timeline; the artifact only moves every 6h.
+let modelPricingPromise: Promise<ModelPricing | null> | null = null;
+type GpuSpotData = {
+  generated_at?: string;
+  stale?: boolean;
+  method_version?: number;
+  snapshot?: { models?: Record<string, { median?: number; min?: number; samples?: number; stale?: boolean; truncated?: boolean }> };
+  history?: Array<Record<string, unknown>>;
+};
+let gpuSpotPromise: Promise<GpuSpotData | null> | null = null;
+let publicClaimsPromise: Promise<PublicClaim[]> | null = null;
+let evidenceSearchPromise: Promise<EvidenceSearchEntry[]> | null = null;
+// Which benchmark the chart is currently plotting. Session state only: the
+// price axis is identical across benchmarks, so a reload landing on the
+// primary is not a loss of context worth a URL segment.
+let pricingBenchmark: string | null = null;
+
+async function loadModelPricing(signal?: AbortSignal): Promise<ModelPricing | null> {
+  if (modelPricingPromise) return modelPricingPromise;
+  modelPricingPromise = (async () => {
+    try {
+      const resp = await fetch(`${DATA_BASE}/market/model-pricing.json`, { cache: 'no-cache', signal });
+      if (!resp.ok) return null;
+      const data = await resp.json();
+      if (!data?.snapshot || !Array.isArray(data.snapshot.models)) return null;
+      return data as ModelPricing;
+    } catch {
+      if (signal?.aborted) modelPricingPromise = null;
+      return null;
+    }
+  })();
+  return modelPricingPromise;
+}
+
+async function loadGpuSpot(signal?: AbortSignal): Promise<GpuSpotData | null> {
+  if (gpuSpotPromise) return gpuSpotPromise;
+  gpuSpotPromise = (async () => {
+    try {
+      const response = await fetch(`${DATA_BASE}/market/gpu-spot.json`, { cache: 'no-cache', signal });
+      if (!response.ok) return null;
+      const data = await response.json() as GpuSpotData;
+      return data?.snapshot?.models ? data : null;
+    } catch {
+      if (signal?.aborted) gpuSpotPromise = null;
+      return null;
+    }
+  })();
+  return gpuSpotPromise;
+}
+
+async function loadPublicClaims(signal?: AbortSignal): Promise<PublicClaim[]> {
+  if (publicClaimsPromise) return publicClaimsPromise;
+  publicClaimsPromise = (async () => {
+    try {
+      const response = await fetch(`${DATA_BASE}/claims/public.json`, { cache: 'no-cache', signal });
+      if (!response.ok) return [];
+      const data = await response.json() as { claims?: PublicClaim[] };
+      return Array.isArray(data.claims) ? data.claims : [];
+    } catch {
+      if (signal?.aborted) publicClaimsPromise = null;
+      return [];
+    }
+  })();
+  return publicClaimsPromise;
+}
+
+async function loadEvidenceSearch(signal?: AbortSignal): Promise<EvidenceSearchEntry[]> {
+  if (evidenceSearchPromise) return evidenceSearchPromise;
+  evidenceSearchPromise = (async () => {
+    try {
+      // Revalidate across deployments so a browser cannot keep the older
+      // schema that omitted claim reuse warnings. The in-session promise
+      // still prevents duplicate downloads of this large artifact.
+      const response = await fetch(`${DATA_BASE}/evidence-search.json`, { cache: 'no-cache', signal });
+      if (!response.ok) return [];
+      const data = await response.json() as { entries?: EvidenceSearchEntry[] };
+      return Array.isArray(data.entries) ? data.entries : [];
+    } catch {
+      if (signal?.aborted) evidenceSearchPromise = null;
+      return [];
+    }
+  })();
+  return evidenceSearchPromise;
+}
+
+function paintPricing(data: ModelPricing, gpu: GpuSpotData | null = null): void {
+  // The SAME benchmark value drives both calls. Letting hydrate re-derive it
+  // from the DOM is what produced tooltips keyed to the wrong model array.
+  const benchmark = pricingBenchmark ?? undefined;
+  setSafeContent(content, renderPricing(data, benchmark, activeLanguage) + renderMarketTrends(data.history || [], gpu, activeLanguage));
+  hydratePricing(content, data, (next) => {
+    pricingBenchmark = next;
+    paintPricing(data, gpu);
+  }, benchmark, activeLanguage);
 }
 
 function hydrateAvailabilityFromManifest(m: Manifest): void {
@@ -979,8 +1162,9 @@ function buildCalendarHtml(): string {
   const todayStr = fmtDate(today);
   const selectedStr = fmtDate(currentDate);
 
-  const monthLabel = calendarMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-  const selectedLabel = currentDate.toLocaleDateString('en-US', {
+  const locale = activeLanguage === 'ko' ? 'ko-KR' : 'en-US';
+  const monthLabel = calendarMonth.toLocaleDateString(locale, { month: 'long', year: 'numeric' });
+  const selectedLabel = currentDate.toLocaleDateString(locale, {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
@@ -990,23 +1174,25 @@ function buildCalendarHtml(): string {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const prevMonthDays = new Date(year, month, 0).getDate();
 
-  const dows = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+  const dows = activeLanguage === 'ko'
+    ? ['일', '월', '화', '수', '목', '금', '토']
+    : ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   const open = calendarEl.classList.contains('open');
   const isDayView = activeTab === 'today';
   const headerAttrs = isDayView
-    ? ' aria-expanded="' + open + '" aria-controls="calendar-popover" aria-label="Choose a date"'
-    : ' aria-label="Open ' + selectedLabel + ' day view"';
+    ? ' aria-expanded="' + open + '" aria-controls="calendar-popover" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.choose')) + '"'
+    : ' aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.openDay', { date: selectedLabel })) + '"';
   const headerIndicator = isDayView ? (open ? '&#9650;' : '&#9660;') : '&rsaquo;';
   let html = '<button class="cal-header" type="button" data-cal-toggle' + headerAttrs + '>';
   html += '<span class="cal-header-label"><span class="cal-selected-date">' + selectedLabel + '</span><span class="cal-chevron">' + headerIndicator + '</span></span>';
   html += '</button>';
 
   // Month nav + day grid live in a popover so the pill keeps a fixed size.
-  html += '<div class="cal-pop" id="calendar-popover" role="group" aria-label="' + monthLabel + ' calendar">';
+  html += '<div class="cal-pop" id="calendar-popover" role="group" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.group', { month: monthLabel })) + '">';
   html += '<div class="cal-header-nav">';
-  html += '<button class="cal-nav-btn" type="button" data-cal-nav="-1" aria-label="Previous month">&lsaquo;</button>';
+  html += '<button class="cal-nav-btn" type="button" data-cal-nav="-1" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.previousMonth')) + '">&lsaquo;</button>';
   html += '<span class="cal-pop-title" aria-live="polite">' + monthLabel + '</span>';
-  html += '<button class="cal-nav-btn" type="button" data-cal-nav="1" aria-label="Next month">&rsaquo;</button>';
+  html += '<button class="cal-nav-btn" type="button" data-cal-nav="1" aria-label="' + escapeHtml(uiText(activeLanguage, 'calendar.nextMonth')) + '">&rsaquo;</button>';
   html += '</div>';
 
   html += '<div class="cal-grid">';
@@ -1019,7 +1205,7 @@ function buildCalendarHtml(): string {
     const pm = month === 0 ? 11 : month - 1;
     const py = month === 0 ? year - 1 : year;
     const dateStr = `${py}-${String(pm + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    const dateLabel = new Date(py, pm, d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const dateLabel = new Date(py, pm, d).toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     html += '<button class="cal-day other-month" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '">' + d + '</button>';
   }
 
@@ -1029,7 +1215,7 @@ function buildCalendarHtml(): string {
     if (dateStr === todayStr) cls += ' today';
     if (dateStr === selectedStr) cls += ' selected';
     if (available.has(dateStr)) cls += ' has-data';
-    const dateLabel = new Date(year, month, d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const dateLabel = new Date(year, month, d).toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     const ariaCurrent = dateStr === todayStr ? ' aria-current="date"' : '';
     const ariaSelected = dateStr === selectedStr ? ' aria-pressed="true"' : '';
     html += '<button class="' + cls + '" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '"' + ariaCurrent + ariaSelected + '>' + d + '</button>';
@@ -1041,12 +1227,12 @@ function buildCalendarHtml(): string {
     const nm = month === 11 ? 0 : month + 1;
     const ny = month === 11 ? year + 1 : year;
     const dateStr = `${ny}-${String(nm + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    const dateLabel = new Date(ny, nm, d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const dateLabel = new Date(ny, nm, d).toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     html += '<button class="cal-day other-month" type="button" data-date="' + dateStr + '" aria-label="' + dateLabel + '">' + d + '</button>';
   }
 
   html += '</div>';
-  html += '<button class="cal-today-btn" type="button" data-cal-today>Go to today</button>';
+  html += '<button class="cal-today-btn" type="button" data-cal-today>' + escapeHtml(uiText(activeLanguage, 'calendar.today')) + '</button>';
   html += '</div>';
   return html;
 }
@@ -1229,11 +1415,11 @@ function researchAudioControlsHtml(row: GenResearchRow): string {
   const fileUrl = researchAudioUrl(row);
   if (fileUrl) {
     return [
-      '<span class="gen-research-audio-controls has-file" aria-label="Article audio controls">',
-      '  <audio class="gen-research-audio-file" preload="metadata" src="' + escapeHtml(fileUrl) + '">Your browser does not support the audio element.</audio>',
-      '  <button class="gen-research-file-audio" data-research-file-audio-toggle aria-pressed="false" title="Play article audio">',
+      '<span class="gen-research-audio-controls has-file" aria-label="' + escapeHtml(uiText(activeLanguage, 'audio.articleControls')) + '">',
+      '  <audio class="gen-research-audio-file" preload="metadata" src="' + escapeHtml(fileUrl) + '">' + escapeHtml(uiText(activeLanguage, 'audio.unsupportedElement')) + '</audio>',
+      '  <button class="gen-research-file-audio" data-research-file-audio-toggle aria-pressed="false" title="' + escapeHtml(uiText(activeLanguage, 'audio.playArticle')) + '">',
       '    <span class="gen-research-file-audio-icon" aria-hidden="true"></span>',
-      '    <span class="gen-research-file-audio-label" data-research-file-audio-label>Listen</span>',
+      '    <span class="gen-research-file-audio-label" data-research-file-audio-label>' + escapeHtml(uiText(activeLanguage, 'audio.listen')) + '</span>',
       '    <span class="gen-research-file-audio-progress" data-research-file-audio-progress aria-hidden="true"></span>',
       '    <span class="gen-research-file-audio-time" data-research-file-audio-time>--:--</span>',
       '  </button>',
@@ -1241,14 +1427,14 @@ function researchAudioControlsHtml(row: GenResearchRow): string {
     ].join('\n');
   }
   return [
-    '<span class="gen-research-audio-controls" aria-label="Article read-aloud controls">',
+    '<span class="gen-research-audio-controls" aria-label="' + escapeHtml(uiText(activeLanguage, 'audio.readAloudControls')) + '">',
     '  <button class="gen-research-audio" data-research-audio-toggle data-has-audio-file="' + (fileUrl ? 'true' : 'false') + '" aria-pressed="false"' +
-      (unsupported ? ' disabled title="Read-aloud is not supported in this browser"' : ' title="Play this article with browser read-aloud"') +
+      (unsupported ? ' disabled title="' + escapeHtml(uiText(activeLanguage, 'audio.unsupported')) + '"' : ' title="' + escapeHtml(uiText(activeLanguage, 'audio.playReadAloud')) + '"') +
       '>',
     '    <span class="gen-research-audio-icon" aria-hidden="true"></span>',
-    '    <span data-research-audio-label>' + (unsupported ? 'Audio unavailable' : 'Listen') + '</span>',
+    '    <span data-research-audio-label>' + escapeHtml(uiText(activeLanguage, unsupported ? 'audio.unavailable' : 'audio.listen')) + '</span>',
     '  </button>',
-    '  <button class="gen-research-audio-stop" data-research-audio-stop hidden title="Stop article audio">Stop</button>',
+    '  <button class="gen-research-audio-stop" data-research-audio-stop hidden title="' + escapeHtml(uiText(activeLanguage, 'audio.stopTitle')) + '">' + escapeHtml(uiText(activeLanguage, 'audio.stop')) + '</button>',
     '</span>',
   ].join('\n');
 }
@@ -1274,7 +1460,7 @@ function digestAudioUrl(dateStr: string): string {
 
 function digestAudioTitle(dateStr: string): string {
   const date = dateFromString(dateStr);
-  return `Daily Digest · ${date ? displayDate(date) : dateStr}`;
+  return `${uiText(activeLanguage, 'today.audioTitle')} · ${date ? displayDate(date) : dateStr}`;
 }
 
 function ensureDigestAudioPlayer(): HTMLAudioElement {
@@ -1284,17 +1470,17 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
   bar.id = 'digestAudioBar';
   bar.className = 'digest-audio-bar';
   bar.hidden = true;
-  bar.setAttribute('aria-label', 'Daily digest audio player');
+  bar.setAttribute('aria-label', uiText(activeLanguage, 'today.audioPlayer'));
   bar.innerHTML = [
     '<audio preload="metadata"></audio>',
     '<div class="digest-audio-shell">',
-    '  <button class="digest-audio-toggle" type="button" data-digest-audio-toggle aria-label="Play digest audio" aria-pressed="false">',
+    '  <button class="digest-audio-toggle" type="button" data-digest-audio-toggle aria-label="' + escapeHtml(uiText(activeLanguage, 'today.playAudio')) + '" aria-pressed="false">',
     '    <span class="digest-audio-toggle-icon" aria-hidden="true"></span>',
     '  </button>',
-    '  <button class="digest-audio-title" type="button" data-digest-audio-title>Daily Digest</button>',
+    '  <button class="digest-audio-title" type="button" data-digest-audio-title>' + escapeHtml(uiText(activeLanguage, 'today.audioTitle')) + '</button>',
     '  <span class="digest-audio-time" data-digest-audio-time aria-live="off">0:00 / --:--</span>',
-    '  <input class="digest-audio-progress" data-digest-audio-progress type="range" min="0" max="1000" value="0" step="1" aria-label="Seek digest audio">',
-    '  <button class="digest-audio-close" type="button" data-digest-audio-close aria-label="Close audio player">&times;</button>',
+    '  <input class="digest-audio-progress" data-digest-audio-progress type="range" min="0" max="1000" value="0" step="1" aria-label="' + escapeHtml(uiText(activeLanguage, 'today.seekAudio')) + '">',
+    '  <button class="digest-audio-close" type="button" data-digest-audio-close aria-label="' + escapeHtml(uiText(activeLanguage, 'today.closeAudio')) + '">&times;</button>',
     '</div>',
   ].join('\n');
   document.body.appendChild(bar);
@@ -1466,7 +1652,7 @@ function updateDigestAudioUi(): void {
   const duration = audio && Number.isFinite(audio.duration) ? audio.duration : 0;
   const current = audio ? audio.currentTime : 0;
   const pct = duration > 0 ? Math.round((current / duration) * 1000) : 0;
-  const label = isPlaying ? 'Pause digest audio' : 'Play digest audio';
+  const label = isPlaying ? uiText(activeLanguage, 'today.pauseAudio') : uiText(activeLanguage, 'today.playAudio');
 
   if (digestAudioPlayEl) {
     digestAudioPlayEl.setAttribute('aria-label', label);
@@ -1508,7 +1694,11 @@ function updateDigestAudioUi(): void {
     button.setAttribute('aria-pressed', String(buttonPlaying));
     const buttonLabel = button.querySelector<HTMLElement>('[data-digest-audio-label]');
     if (buttonLabel) {
-      buttonLabel.textContent = buttonPlaying ? 'Pause digest audio' : isCurrent && audio && audio.currentTime > 0 && !audio.ended ? 'Resume digest audio' : 'Play digest audio';
+      buttonLabel.textContent = buttonPlaying
+        ? uiText(activeLanguage, 'today.pauseAudio')
+        : isCurrent && audio && audio.currentTime > 0 && !audio.ended
+          ? uiText(activeLanguage, 'today.resumeAudio')
+          : uiText(activeLanguage, 'today.playAudio');
     }
   });
 }
@@ -1524,7 +1714,7 @@ function updateResearchFileAudioUi(): void {
   const pct = duration > 0 ? Math.min(100, Math.max(0, (audio.currentTime / duration) * 100)) : 0;
   toggle.classList.toggle('is-playing', !audio.paused && !audio.ended);
   toggle.setAttribute('aria-pressed', String(!audio.paused && !audio.ended));
-  if (label) label.textContent = audio.paused || audio.ended ? 'Listen' : 'Pause';
+  if (label) label.textContent = uiText(activeLanguage, audio.paused || audio.ended ? 'audio.listen' : 'audio.pause');
   if (time) time.textContent = duration > 0 ? `${formatAudioTime(audio.currentTime)} / ${formatAudioTime(duration)}` : '--:--';
   if (progress) progress.style.setProperty('--audio-progress', `${pct}%`);
 }
@@ -1540,7 +1730,7 @@ function bindResearchFileAudioUi(): void {
   audio.addEventListener('ended', updateResearchFileAudioUi);
   audio.addEventListener('error', () => {
     const label = content.querySelector<HTMLElement>('[data-research-file-audio-label]');
-    if (label) label.textContent = 'Unavailable';
+    if (label) label.textContent = uiText(activeLanguage, 'audio.unavailableShort');
   });
   updateResearchFileAudioUi();
 }
@@ -1557,7 +1747,7 @@ function updateResearchAudioUi(): void {
     toggle.disabled = true;
     toggle.classList.remove('is-playing', 'is-paused', 'is-loading');
     toggle.setAttribute('aria-pressed', 'false');
-    label.textContent = 'Audio unavailable';
+    label.textContent = uiText(activeLanguage, 'audio.unavailable');
     if (stop) stop.hidden = true;
     return;
   }
@@ -1570,10 +1760,10 @@ function updateResearchAudioUi(): void {
   toggle.classList.toggle('is-paused', status === 'paused');
   toggle.setAttribute('aria-pressed', String(status === 'playing'));
   label.textContent =
-    status === 'loading' ? 'Preparing' :
-    status === 'playing' ? 'Pause' :
-    status === 'paused' ? 'Resume' :
-    'Listen';
+    status === 'loading' ? uiText(activeLanguage, 'audio.preparing') :
+    status === 'playing' ? uiText(activeLanguage, 'audio.pause') :
+    status === 'paused' ? uiText(activeLanguage, 'audio.resume') :
+    uiText(activeLanguage, 'audio.listen');
   if (stop) stop.hidden = !(status === 'playing' || status === 'paused' || status === 'loading');
 }
 
@@ -1586,7 +1776,7 @@ async function toggleResearchFileAudio(): Promise<void> {
       await audio.play();
     } catch {
       const label = content.querySelector<HTMLElement>('[data-research-file-audio-label]');
-      if (label) label.textContent = 'Unavailable';
+      if (label) label.textContent = uiText(activeLanguage, 'audio.unavailableShort');
     }
   } else {
     audio.pause();
@@ -1934,19 +2124,22 @@ function withTimeout<T>(p: Promise<T>, ms: number, controller: AbortController):
 
 // ── Rendering ─────────────────────────────────────────
 function showLoading(): void {
-  const label = activeTab === 'frontpage'
-    ? 'Loading front page\u2026'
+  const key: UiCopyKey = activeTab === 'frontpage'
+    ? 'loading.frontpage'
     : activeTab === 'models'
-    ? 'Loading model timeline\u2026'
+    ? 'loading.models'
     : activeTab === 'focusReader'
-    ? 'Loading focus reader\u2026'
+    ? 'loading.focus'
     : activeTab === 'agents'
-    ? 'Loading Arm\u2026'
+    ? 'loading.arm'
+    : activeTab === 'pricing'
+    ? 'loading.pricing'
     : activeTab === 'research'
-    ? (selectedSlug ? 'Loading article\u2026' : 'Loading research index\u2026')
+    ? (selectedSlug ? 'loading.article' : 'loading.research')
     : activeTab === 'wiki'
-    ? (selectedSlug ? 'Loading wiki page\u2026' : 'Loading wiki\u2026')
-    : 'Loading Twitter report\u2026';
+    ? (selectedSlug ? 'loading.wikiPage' : 'loading.wiki')
+    : 'loading.twitter';
+  const label = uiText(activeLanguage, key);
   setSafeContent(
     content,
     [
@@ -1963,18 +2156,20 @@ function showLoading(): void {
 
 function showEmpty(dateStr: string): void {
   const label = activeTab === 'today'
-    ? 'No digest yet for ' + escapeHtml(dateStr)
+    ? uiText(activeLanguage, 'empty.digest', { date: dateStr })
     : activeTab === 'frontpage'
-    ? 'No front page for ' + escapeHtml(dateStr)
+    ? uiText(activeLanguage, 'empty.frontpage', { date: dateStr })
     : activeTab === 'models'
-    ? 'No Jira for ' + escapeHtml(dateStr)
+    ? uiText(activeLanguage, 'empty.models', { date: dateStr })
     : activeTab === 'focusReader'
-    ? 'No focus reader data available'
+    ? uiText(activeLanguage, 'empty.focus')
     : activeTab === 'agents'
-    ? 'Arm view unavailable'
+    ? uiText(activeLanguage, 'empty.arm')
+    : activeTab === 'pricing'
+    ? uiText(activeLanguage, 'empty.pricing')
     : activeTab === 'research'
-    ? (selectedSlug ? 'Article not found: ' + escapeHtml(selectedSlug) : 'No research articles yet')
-    : 'No Twitter report for ' + escapeHtml(dateStr);
+    ? (selectedSlug ? uiText(activeLanguage, 'empty.article', { slug: selectedSlug }) : uiText(activeLanguage, 'empty.research'))
+    : uiText(activeLanguage, 'empty.twitter', { date: dateStr });
   setSafeContent(
     content,
     [
@@ -1989,14 +2184,22 @@ function showEmpty(dateStr: string): void {
 }
 
 function showError(message: string, hint?: string): void {
+  const knownCopy: Partial<Record<string, UiCopyKey>> = {
+    'Loading timed out': 'error.timeout',
+    'Network may be slow. Click to retry.': 'error.networkHint',
+    'Wiki unavailable': 'error.wikiUnavailable',
+    'Could not load the wiki index. Click to retry.': 'error.wikiHint',
+  };
+  const localizedMessage = knownCopy[message] ? uiText(activeLanguage, knownCopy[message]) : message;
+  const localizedHint = hint && knownCopy[hint] ? uiText(activeLanguage, knownCopy[hint]) : hint;
   setSafeContent(
     content,
     [
       '<div class="content-card">',
       '  <div class="error-state">',
-      '    <div class="error-state-text">' + escapeHtml(message) + '</div>',
-      hint ? '    <div class="error-state-hint">' + escapeHtml(hint) + '</div>' : '',
-      '    <button class="retry-btn" data-retry>Retry</button>',
+      '    <div class="error-state-text">' + escapeHtml(localizedMessage) + '</div>',
+      localizedHint ? '    <div class="error-state-hint">' + escapeHtml(localizedHint) + '</div>' : '',
+      '    <button class="retry-btn" data-retry>' + escapeHtml(uiText(activeLanguage, 'action.retry')) + '</button>',
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -2454,6 +2657,19 @@ type WikiMarket = {
   tradingview_symbol?: string;
 };
 
+type WikiTranslation = {
+  title: string;
+  summary: string;
+  description: string;
+  file: string;            // relative to research/, e.g. wiki-translations/ko/entities/deepseek.md
+  source_file: string;
+  source_sha256: string;
+  images?: WikiImage[];
+  // The English source moved on after this translation was written (recorded
+  // source_sha256 is behind). Still served, but badged as stale.
+  stale?: boolean;
+};
+
 type WikiPage = {
   slug: string;
   title: string;
@@ -2466,6 +2682,7 @@ type WikiPage = {
   aliases: string[];
   images?: WikiImage[];
   market?: WikiMarket;
+  translations?: { ko?: WikiTranslation };
   outbound: string[];      // slugs
   inbound: string[];       // slugs
 };
@@ -2599,7 +2816,7 @@ function wikiHistoryLinkHtml(page: WikiPage): string {
   const href = `https://github.com/${WIKI_REPO}/commits/main/research/wiki/${page.file}`;
   return (
     '<a class="wiki-history-more" href="' + escapeHtml(href) +
-    '" target="_blank" rel="noopener noreferrer">Full history on GitHub &rsaquo;</a>'
+    '" target="_blank" rel="noopener noreferrer">' + escapeHtml(uiText(activeLanguage, 'wiki.fullHistory')) + '</a>'
   );
 }
 
@@ -2633,12 +2850,15 @@ async function hydrateWikiHistory(page: WikiPage, signal: AbortSignal): Promise<
 
   const rows = collapsed.map((c, i) => {
     const summary = c.text;
-    const label = i === collapsed.length - 1 ? 'created' : 'updated';
+    const operation = i === collapsed.length - 1 ? 'created' : 'updated';
+    const label = operation === 'created'
+      ? uiText(activeLanguage, 'wiki.created')
+      : uiText(activeLanguage, 'wiki.updated');
     const text = escapeHtml(summary);
     return (
       '<li class="wiki-history-item">' +
       '<time class="wiki-history-date" datetime="' + escapeHtml(c.date) + '">' + escapeHtml(c.date) + '</time>' +
-      '<span class="wiki-history-op wiki-history-op--' + label + '">' + label + '</span>' +
+      '<span class="wiki-history-op wiki-history-op--' + operation + '">' + escapeHtml(label) + '</span>' +
       (c.url
         ? '<a class="wiki-history-summary" href="' + escapeHtml(c.url) + '" target="_blank" rel="noopener noreferrer">' + text + '</a>'
         : '<span class="wiki-history-summary">' + text + '</span>') +
@@ -2656,7 +2876,8 @@ async function hydrateWikiHistory(page: WikiPage, signal: AbortSignal): Promise<
 // rendering is O(n) not O(n^2) (advisor note 5).
 let wikiIndexCache: WikiIndex | null = null;
 let wikiPageMap: Map<string, WikiPage> = new Map();
-// Body cache keyed by slug so re-visiting a page doesn't refetch.
+// Body cache is locale-aware: an English fallback must never occupy the
+// Korean slot after a translation is published during the same session.
 const wikiBodyCache = new Map<string, string>();
 
 async function loadWikiIndex(signal: AbortSignal): Promise<WikiIndex | null> {
@@ -2677,6 +2898,21 @@ async function loadWikiIndex(signal: AbortSignal): Promise<WikiIndex | null> {
     if (error instanceof DOMException && error.name === 'AbortError') return null;
     return null;
   }
+}
+
+function wikiTranslationFor(page: WikiPage): WikiTranslation | null {
+  return activeLanguage === 'ko' ? (page.translations?.ko || null) : null;
+}
+
+function localizedWikiPage(page: WikiPage): WikiPage {
+  const translation = wikiTranslationFor(page);
+  if (!translation) return page;
+  return {
+    ...page,
+    title: translation.title,
+    summary: translation.summary,
+    images: translation.images || page.images,
+  };
 }
 
 /** Strip leading YAML frontmatter, matching the validator/prebuild semantics
@@ -2786,10 +3022,15 @@ function setSafeWikiContent(el: HTMLElement, rawHtml: string): void {
 const WIKI_TYPE_ORDER: WikiType[] = ['entity', 'concept', 'theme'];
 const WIKI_PAGE_SIZE = 12;
 const WIKI_TYPE_LABEL: Record<string, string> = {
-  entity: 'Entities',
-  concept: 'Concepts',
-  theme: 'Themes',
+  entity: 'wiki.entities',
+  concept: 'wiki.concepts',
+  theme: 'wiki.themes',
 };
+
+function wikiTypeLabel(type: string): string {
+  const key = WIKI_TYPE_LABEL[type] as UiCopyKey | undefined;
+  return key ? uiText(activeLanguage, key) : type;
+}
 
 function wikiTagsHtml(tags: string[] | undefined): string {
   if (!tags || tags.length === 0) return '';
@@ -2827,7 +3068,8 @@ function wikiImagesHtml(images: WikiImage[] | undefined): string {
         ? '<a href="' + escapeHtml(img.source_url) + '" class="wiki-image-credit">' + escapeHtml(img.credit) + '</a>'
         : '<span class="wiki-image-credit">' + escapeHtml(img.credit) + '</span>'
       : img.source_url
-        ? '<a href="' + escapeHtml(img.source_url) + '" class="wiki-image-credit">Source</a>'
+        ? '<a href="' + escapeHtml(img.source_url) + '" class="wiki-image-credit">' +
+          escapeHtml(uiText(activeLanguage, 'wiki.source')) + '</a>'
         : '';
     const captionBits = [
       img.caption ? '<span class="wiki-image-caption-text">' + escapeHtml(img.caption) + '</span>' : '',
@@ -2849,14 +3091,17 @@ function wikiImagesHtml(images: WikiImage[] | undefined): string {
 // compact entity card.
 function wikiKvHtml(page: WikiPage): string {
   const rows = [
-    page.updated_at ? '<dt>Updated</dt><dd>' + escapeHtml(page.updated_at) + '</dd>' : '',
-    page.created_at ? '<dt>Created</dt><dd>' + escapeHtml(page.created_at) + '</dd>' : '',
-    '<dt>Links</dt><dd>' + (page.inbound || []).length + ' in · ' + (page.outbound || []).length + ' out</dd>',
+    page.updated_at ? '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.updated')) + '</dt><dd>' + escapeHtml(page.updated_at) + '</dd>' : '',
+    page.created_at ? '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.created')) + '</dt><dd>' + escapeHtml(page.created_at) + '</dd>' : '',
+    '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.links')) + '</dt><dd>' + escapeHtml(uiText(activeLanguage, 'wiki.linkCounts', {
+      inbound: (page.inbound || []).length,
+      outbound: (page.outbound || []).length,
+    })) + '</dd>',
     // Listed entities repeat the quote here, not only in the hover card.
     // A hover does not exist on touch: tapping a .wiki-mention navigates to
     // this page, so without this row the market data would be desktop-only.
     page.market
-      ? '<dt>Market</dt><dd class="wiki-kv-market" data-market-symbol="' +
+      ? '<dt>' + escapeHtml(uiText(activeLanguage, 'wiki.market')) + '</dt><dd class="wiki-kv-market" data-market-symbol="' +
         escapeHtml(page.market.symbol) + '">' + escapeHtml(page.market.symbol) + '</dd>'
       : '',
   ].filter(Boolean).join('');
@@ -2899,7 +3144,8 @@ function hydrateWikiKvMarket(root: ParentNode = document): void {
 /** Internal link to another wiki page (used in lists/backlinks). Always an
  * <a data-wiki-slug> so the content click handler intercepts it for SPA nav. */
 function wikiInternalLink(slug: string, text?: string): string {
-  const label = text || wikiPageMap.get(slug)?.title || slug;
+  const indexed = wikiPageMap.get(slug);
+  const label = text || (indexed ? localizedWikiPage(indexed).title : '') || slug;
   return (
     '<a href="/wiki/' + escapeHtml(slug) + '" class="wikilink" ' +
     'data-wiki-slug="' + escapeHtml(slug) + '">' + escapeHtml(label) + '</a>'
@@ -2921,12 +3167,12 @@ function paginationHtml(page: number, totalItems: number, pageSize: number, labe
     return '<a class="index-pagination-link ' + className + '" href="' + href + '" data-index-page="' + target + '">' + text + '</a>';
   };
   return [
-    '<nav class="index-pagination" aria-label="' + escapeHtml(label) + ' pagination">',
-    '  <div class="index-pagination-summary">' + first + '\u2013' + last + ' of ' + totalItems + '</div>',
+    '<nav class="index-pagination" aria-label="' + escapeHtml(uiText(activeLanguage, 'pagination.label', { label })) + '">',
+    '  <div class="index-pagination-summary">' + escapeHtml(uiText(activeLanguage, 'pagination.summary', { first, last, total: totalItems })) + '</div>',
     '  <div class="index-pagination-controls">',
-    pageLink(safePage - 1, '&larr;<span> Previous</span>', 'index-pagination-prev'),
+    pageLink(safePage - 1, '&larr;<span> ' + escapeHtml(uiText(activeLanguage, 'pagination.previous')) + '</span>', 'index-pagination-prev'),
     '    <span class="index-pagination-status" aria-current="page">' + safePage + ' / ' + pageCount + '</span>',
-    pageLink(safePage + 1, '<span>Next </span>&rarr;', 'index-pagination-next'),
+    pageLink(safePage + 1, '<span>' + escapeHtml(uiText(activeLanguage, 'pagination.next')) + ' </span>&rarr;', 'index-pagination-next'),
     '  </div>',
     '</nav>',
   ].join('\n');
@@ -2935,7 +3181,7 @@ function paginationHtml(page: number, totalItems: number, pageSize: number, labe
 // LIST view: catalog grouped by type + a recent-changes panel + a count.
 function renderWikiIndex(index: WikiIndex): void {
   setDocTitle(null);
-  const pages = index.pages.slice();
+  const pages = index.pages.map(localizedWikiPage);
   if (pages.length === 0) {
     setSafeWikiContent(
       content,
@@ -2943,7 +3189,7 @@ function renderWikiIndex(index: WikiIndex): void {
         '<div class="content-card">',
         '  <div class="empty-state">',
         '    <div class="empty-state-icon">' + DOC_ICON + '</div>',
-        '    <div class="empty-state-text">No wiki pages yet</div>',
+        '    <div class="empty-state-text">' + escapeHtml(uiText(activeLanguage, 'wiki.noPages')) + '</div>',
         '  </div>',
         '</div>',
       ].join('\n'),
@@ -2996,7 +3242,9 @@ function renderWikiIndex(index: WikiIndex): void {
   const sections: string[] = [];
   for (const key of orderedKeys) {
     const rows = groups.get(key)!.slice().sort((a, b) => a.title.localeCompare(b.title));
-    const label = WIKI_TYPE_LABEL[key] || (key.charAt(0).toUpperCase() + key.slice(1));
+    const label = WIKI_TYPE_LABEL[key]
+      ? wikiTypeLabel(key)
+      : (key.charAt(0).toUpperCase() + key.slice(1));
     const items = rows
       .map((p) =>
         [
@@ -3004,7 +3252,7 @@ function renderWikiIndex(index: WikiIndex): void {
           '  <div class="wiki-item-head">',
           '    ' + wikiInternalLink(p.slug, p.title),
           '    <span class="wiki-type-chip wiki-type-' + escapeHtml(String(p.type)) + '">' +
-            escapeHtml(String(p.type)) + '</span>',
+            escapeHtml(wikiTypeLabel(String(p.type))) + '</span>',
           '  </div>',
           p.summary ? '  <div class="wiki-item-summary">' + escapeHtml(p.summary) + '</div>' : '',
           wikiTagsHtml(p.tags),
@@ -3027,7 +3275,7 @@ function renderWikiIndex(index: WikiIndex): void {
 
   const emptyNote =
     visible.length === 0
-      ? '<div class="empty-state-text wiki-empty">No wiki pages match the search.</div>'
+      ? '<div class="empty-state-text wiki-empty">' + escapeHtml(uiText(activeLanguage, 'wiki.noMatches')) + '</div>'
       : '';
 
   setSafeWikiContent(
@@ -3037,7 +3285,7 @@ function renderWikiIndex(index: WikiIndex): void {
       '  <div class="wiki-index-main">',
       emptyNote,
       sections.join('\n'),
-      paginationHtml(wikiIndexPage, visible.length, WIKI_PAGE_SIZE, 'Wiki pages'),
+      paginationHtml(wikiIndexPage, visible.length, WIKI_PAGE_SIZE, uiText(activeLanguage, 'wiki.pages')),
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -3045,7 +3293,13 @@ function renderWikiIndex(index: WikiIndex): void {
 }
 
 // PAGE view: title + type chip + tags + rendered body + backlinks + related.
-function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): void {
+function renderWikiPage(
+  page: WikiPage,
+  body: string,
+  signal?: AbortSignal,
+  translationMissing = false,
+  translationStale = false,
+): void {
   setDocTitle(page.title);
   const bodyHtml = wikiMarkdownToHtml(stripWikiFrontmatter(body));
 
@@ -3054,7 +3308,7 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
   const backlinksHtml = inbound.length
     ? [
         '<section class="wiki-backlinks">',
-        '  <h2 class="wiki-section-title">Backlinks</h2>',
+        '  <h2 class="wiki-section-title">' + escapeHtml(uiText(activeLanguage, 'wiki.backlinks')) + '</h2>',
         '  <ul class="wiki-link-list">',
         inbound
           .map((s) => '<li class="wiki-link-item">' + wikiInternalLink(s) + '</li>')
@@ -3070,7 +3324,7 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
   const relatedHtml = related.length
     ? [
         '<section class="wiki-related">',
-        '  <h2 class="wiki-section-title">Related</h2>',
+        '  <h2 class="wiki-section-title">' + escapeHtml(uiText(activeLanguage, 'wiki.related')) + '</h2>',
         '  <ul class="wiki-link-list">',
         related
           .map((s) => '<li class="wiki-link-item">' + wikiInternalLink(s) + '</li>')
@@ -3092,13 +3346,19 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
     [
       '<div class="content-card wiki-page-card">',
       '  <div class="wiki-page-meta">',
-      '    <button class="gen-research-back" data-wiki-back>&lsaquo; All pages</button>',
+      '    <button class="gen-research-back" data-wiki-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'wiki.allPages')) + '</button>',
       '  </div>',
       '  <div class="wiki-page-header">',
-      '    <span class="ara-eyebrow">' + escapeHtml(String(page.type)) + '</span>',
+      '    <span class="ara-eyebrow">' + escapeHtml(wikiTypeLabel(String(page.type))) + '</span>',
       '    <h1 class="wiki-page-title">' + escapeHtml(page.title) + '</h1>',
       page.summary
-        ? '    <div class="ara-callout ara-callout--info"><span class="ara-callout-label">Summary</span><p>' + escapeHtml(page.summary) + '</p></div>'
+        ? '    <div class="ara-callout ara-callout--info"><span class="ara-callout-label">' + escapeHtml(uiText(activeLanguage, 'wiki.summary')) + '</span><p>' + escapeHtml(page.summary) + '</p></div>'
+        : '',
+      translationMissing
+        ? '    <div class="ara-callout ara-callout--warning"><p>' + escapeHtml(uiText(activeLanguage, 'wiki.translationUnavailable')) + '</p></div>'
+        : '',
+      translationStale
+        ? '    <div class="ara-callout ara-callout--warning"><p>' + escapeHtml(uiText(activeLanguage, 'wiki.translationStale')) + '</p></div>'
         : '',
       wikiImagesHtml(page.images),
       wikiKvHtml(page),
@@ -3118,8 +3378,8 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
       '</div>',
       '<aside class="wiki-page-rail">',
       '<section class="wiki-history">',
-      '  <h2 class="wiki-section-title">History</h2>',
-      '  <div class="wiki-history-body"><p class="wiki-history-empty">Loading history…</p></div>',
+      '  <h2 class="wiki-section-title">' + escapeHtml(uiText(activeLanguage, 'wiki.history')) + '</h2>',
+      '  <div class="wiki-history-body"><p class="wiki-history-empty">' + escapeHtml(uiText(activeLanguage, 'wiki.loadingHistory')) + '</p></div>',
       '</section>',
       '</aside>',
       '</div>',
@@ -3135,6 +3395,30 @@ function renderWikiPage(page: WikiPage, body: string, signal?: AbortSignal): voi
 
   void hydrateWikiHistory(page, signal ?? new AbortController().signal);
   hydrateWikiKvMarket();
+  void hydrateWikiDossier(page, signal ?? new AbortController().signal);
+}
+
+async function hydrateWikiDossier(page: WikiPage, signal: AbortSignal): Promise<void> {
+  const [claims, tickets, currentManifest] = await Promise.all([
+    loadPublicClaims(signal),
+    loadTickets(),
+    loadManifest(),
+  ]);
+  if (signal.aborted || activeTab !== 'wiki' || selectedSlug !== page.slug) return;
+  const aliases = [page.title, page.slug, ...(page.aliases || [])];
+  const relatedResearch = (currentManifest?.generative || [])
+    .filter((row) => textMatchesTopic(`${row.title} ${row.prompt} ${(row.tags || []).join(' ')}`, page.title) || aliases.some((alias) => textMatchesTopic(`${row.title} ${row.prompt} ${(row.tags || []).join(' ')}`, alias)))
+    .sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const relatedTickets = (tickets || [])
+    .filter((ticket) => aliases.some((alias) => textMatchesTopic(`${ticket.title} ${ticket.company} ${ticket.model || ''} ${(ticket.labels || []).join(' ')}`, alias)))
+    .sort((a, b) => b.updated_at.localeCompare(a.updated_at));
+  const relatedClaims = claimsForTopic(claims, page.title, aliases).sort((a, b) => (b.as_of || '').localeCompare(a.as_of || ''));
+  const slot = content.querySelector('.wiki-page-main');
+  if (!slot) return;
+  const host = document.createElement('div');
+  setSafeContent(host, renderDossierRelated({ slug: page.slug, language: activeLanguage, research: relatedResearch, tickets: relatedTickets, claims: relatedClaims, watchlisted: watchlist.topics.includes(page.slug) }));
+  slot.appendChild(host);
+  bindWatchlistActions(slot);
 }
 
 function renderWikiNotFound(slug: string): void {
@@ -3147,8 +3431,8 @@ function renderWikiNotFound(slug: string): void {
       '<div class="content-card">',
       '  <div class="empty-state">',
       '    <div class="empty-state-icon">' + DOC_ICON + '</div>',
-      '    <div class="empty-state-text">Wiki page not found: ' + escapeHtml(slug) + '</div>',
-      '    <button class="gen-research-back" data-wiki-back>&lsaquo; Back to wiki</button>',
+      '    <div class="empty-state-text">' + escapeHtml(uiText(activeLanguage, 'wiki.notFound', { slug })) + '</div>',
+      '    <button class="gen-research-back" data-wiki-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'wiki.back')) + '</button>',
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -3166,13 +3450,40 @@ let currentTwitterMd = '';
 let currentTwitterMdDate = '';
 const twitterAbMdCache = new Map<string, string | null>();
 
-const TWITTER_AB_LANE_META: Record<string, { label: string; model: string; harness: string }> = {
-  'twitter-opencode-kimi': { label: 'Kimi K3', model: 'kimi-k3 · OpenCode Go / Moonshot', harness: 'opencode CLI' },
+type TwitterAbLaneMeta = { label: string; model: string; harness: string };
+
+const TWITTER_AB_LANE_META: Record<string, TwitterAbLaneMeta> = {
+  // The lane key keeps its historical "-kimi" name so the temporary
+  // 2026-08-07 DeepSeek swap stays a label-only change (renaming it would move
+  // the research dir, the .dockerignore allowlist and the prebuild COPY_DIRS).
+  // The displayed model must always name what actually authored the artifact.
+  'twitter-opencode-kimi': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · OpenCode Go', harness: 'opencode CLI' },
   'twitter-zai': { label: 'GLM-5.2', model: 'glm-5.2 · Z.ai', harness: 'Claude Code' },
   'twitter-deepseek': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · Fireworks', harness: 'Claude Code' },
   'twitter-deepseek-pi': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · Fireworks', harness: 'pi (container)' },
   'twitter-fireworks-pi': { label: 'Kimi K2.7', model: 'kimi-k2p7 · Fireworks', harness: 'pi (container)' },
 };
+
+// A lane outlives the model it runs, so the map above is only the CURRENT
+// answer. Reports already on disk were written by whatever ran that day, and
+// re-labelling them is the same defect as mislabelling a new one — just
+// pointed backwards. Each entry applies to reports dated STRICTLY BEFORE
+// `before` (ISO YYYY-MM-DD, lexicographically comparable), newest bound last.
+const TWITTER_AB_LANE_META_HISTORY: Record<string, Array<{ before: string } & TwitterAbLaneMeta>> = {
+  'twitter-opencode-kimi': [
+    // Ran Kimi K3 until the 2026-08-07 swap to DeepSeek V4 Flash.
+    { before: '2026-08-07', label: 'Kimi K3', model: 'kimi-k3 · OpenCode Go / Moonshot', harness: 'opencode CLI' },
+  ],
+};
+
+function twitterAbLaneMeta(lane: string, dateStr: string): TwitterAbLaneMeta | undefined {
+  for (const era of TWITTER_AB_LANE_META_HISTORY[lane] || []) {
+    if (dateStr && dateStr < era.before) {
+      return { label: era.label, model: era.model, harness: era.harness };
+    }
+  }
+  return TWITTER_AB_LANE_META[lane];
+}
 // The primary tier's model is resolved at run time by agent-run
 // (Fireworks GLM → Z.ai → native Claude), so label the chain, not one model.
 const TWITTER_AB_PRIMARY_META = {
@@ -3209,6 +3520,7 @@ async function fetchTwitterAbLaneMd(lane: string, dateStr: string, signal?: Abor
 function buildTwitterRenderOptions(fallbackDate: string | null, shownDate: string): TwitterReportRenderOptions {
   const dateStr = fmtDate(currentDate);
   return {
+    language: activeLanguage,
     fallbackDate,
     currentDateStr: dateStr,
     currentDateTitle: displayDate(currentDate),
@@ -3306,7 +3618,9 @@ async function hydrateTwitterAbRuntimes(panel: HTMLElement, dateStr: string): Pr
     const rt = await fetchTwitterAbRuntime(laneDir, dateStr, hour);
     const slot = el.querySelector<HTMLElement>('[data-ab-runtime]');
     if (!rt || !slot || !panel.isConnected) return;
-    const label = rt.seconds != null ? 'agent ' + formatAbDuration(rt.seconds) : 'run';
+    const label = rt.seconds != null
+      ? uiText(activeLanguage, 'twitter.agentRun', { duration: formatAbDuration(rt.seconds) })
+      : uiText(activeLanguage, 'twitter.run');
     setSafeContent(slot, '<a href="' + escapeHtml(rt.runUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>');
     slot.hidden = false;
   }));
@@ -3332,20 +3646,20 @@ function twitterAbPaneHtml(
 }
 
 async function buildTwitterAbPanel(panel: HTMLElement, hour: string, lanes: string[], activeLane: string): Promise<void> {
-  setSafeContent(panel, '<p class="twitter-ab-note">Loading comparison…</p>');
+  setSafeContent(panel, '<p class="twitter-ab-note">' + escapeHtml(uiText(activeLanguage, 'twitter.loadingComparison')) + '</p>');
   const dateStr = currentTwitterMdDate;
   const laneMd = await fetchTwitterAbLaneMd(activeLane, dateStr);
   const primaryBody = extractTwitterCycleBody(currentTwitterMd, hour);
   const laneBody = laneMd ? extractTwitterCycleBody(laneMd, hour) : null;
   if (!primaryBody || !laneBody || !panel.isConnected) {
-    setSafeContent(panel, '<p class="twitter-ab-note">Comparison data unavailable for this cycle.</p>');
+    setSafeContent(panel, '<p class="twitter-ab-note">' + escapeHtml(uiText(activeLanguage, 'twitter.comparisonUnavailable')) + '</p>');
     return;
   }
   const options = buildTwitterRenderOptions(null, dateStr);
-  const meta = TWITTER_AB_LANE_META[activeLane] || { label: activeLane, model: activeLane, harness: '' };
+  const meta = twitterAbLaneMeta(activeLane, dateStr) || { label: activeLane, model: activeLane, harness: '' };
   const laneTabs = lanes.length > 1
     ? '<div class="twitter-ab-lanes" role="tablist">' + lanes.map((l) => {
-        const m = TWITTER_AB_LANE_META[l];
+        const m = twitterAbLaneMeta(l, dateStr);
         return '<button type="button" class="twitter-ab-lane-tab' + (l === activeLane ? ' is-active' : '') + '" data-ab-pick="' + escapeHtml(l) + '">' + escapeHtml(m?.label || l) + '</button>';
       }).join('') + '</div>'
     : '';
@@ -3573,8 +3887,8 @@ function ticketForecastActionsHtml(ticket: Ticket): string {
   }).join('');
   return `<div class="ticket-forecast-actions">
     <div class="ticket-forecast-heading">
-      <h4 class="ticket-history-title">Linked forecasts</h4>
-      <button class="ticket-share-button" type="button" data-ticket-share="${escapeHtml(ticket.slug)}" aria-describedby="${escapeHtml(statusId)}">Share forecast</button>
+      <h4 class="ticket-history-title">${escapeHtml(uiText(activeLanguage, 'models.linkedForecasts'))}</h4>
+      <button class="ticket-share-button" type="button" data-ticket-share="${escapeHtml(ticket.slug)}" aria-describedby="${escapeHtml(statusId)}">${escapeHtml(uiText(activeLanguage, 'models.shareForecast'))}</button>
     </div>
     <ul class="ticket-forecast-links">${markets}</ul>
     <span class="ticket-share-status" id="${escapeHtml(statusId)}" role="status" aria-live="polite"></span>
@@ -3612,14 +3926,14 @@ function trackForecastShare(ticket: Ticket, method: 'native' | 'clipboard'): voi
 async function shareTicketForecast(ticket: Ticket, button: HTMLButtonElement): Promise<void> {
   const status = button.closest('.ticket-forecast-actions')?.querySelector<HTMLElement>('.ticket-share-status');
   const shareData = {
-    title: `${ticket.title} forecast — ara`,
-    text: `Verified model forecast with linked prediction-market context: ${ticket.title}`,
+    title: uiText(activeLanguage, 'models.shareTitle', { title: ticket.title }),
+    text: uiText(activeLanguage, 'models.shareText', { title: ticket.title }),
     url: forecastUrl(ticket),
   };
   if (typeof navigator.share === 'function') {
     try {
       await navigator.share(shareData);
-      if (status) status.textContent = 'Shared.';
+      if (status) status.textContent = uiText(activeLanguage, 'models.shared');
       trackForecastShare(ticket, 'native');
       return;
     } catch (error) {
@@ -3639,10 +3953,10 @@ async function shareTicketForecast(ticket: Ticket, button: HTMLButtonElement): P
     copied = copyTextFallback(shareData.url);
   }
   if (copied) {
-    if (status) status.textContent = 'Forecast link copied.';
+    if (status) status.textContent = uiText(activeLanguage, 'models.linkCopied');
     trackForecastShare(ticket, 'clipboard');
   } else if (status) {
-    status.textContent = `Copy this link: ${shareData.url}`;
+    status.textContent = uiText(activeLanguage, 'models.copyLink', { url: shareData.url });
   }
 }
 
@@ -3668,7 +3982,7 @@ function ticketOddsSectionHtml(ticket: Ticket): string {
       data-odds-question="${escapeHtml(m.question)}" data-odds-outcome="${escapeHtml(outcome)}"
       title="${escapeHtml(m.question)}"
       aria-haspopup="dialog"
-      aria-label="Polymarket odds: ${escapeHtml(m.question)} — open market details">
+      aria-label="${escapeHtml(uiText(activeLanguage, 'models.oddsAria', { question: m.question }))}">
       <span class="ticket-odds-label">${escapeHtml(m.question)}</span>
       <span class="ticket-odds-pct">—</span>
     </button>`;
@@ -3685,9 +3999,10 @@ function applyOddsToChip(chip: HTMLElement, price: number, closed: boolean): voi
   const question = chip.dataset.oddsQuestion || '';
   if (closed) {
     const yes = price >= 0.5;
+    const result = uiText(activeLanguage, yes ? 'models.yes' : 'models.no');
     chip.classList.add('is-resolved', yes ? 'is-resolved-yes' : 'is-resolved-no');
     pctEl.textContent = `${yes ? '✓' : '✗'} ${Math.round(price * 100)}%`;
-    chip.title = `${question} — resolved ${yes ? 'Yes' : 'No'}`;
+    chip.title = `${question} — ${uiText(activeLanguage, 'models.resolved', { result })}`;
   } else {
     pctEl.textContent = fmtOddsPct(price);
     chip.title = question; // restore after a transient unavailable pass
@@ -3698,11 +4013,11 @@ function markChipUnavailable(chip: HTMLElement): void {
   const pctEl = chip.querySelector<HTMLElement>('.ticket-odds-pct');
   if (pctEl) pctEl.textContent = '—';
   chip.classList.add('is-unavailable');
-  chip.title = 'odds unavailable';
+  chip.title = uiText(activeLanguage, 'models.oddsUnavailable');
 }
 
 function fmtOddsChartDate(unixSec: number): string {
-  return new Date(unixSec * 1000).toLocaleDateString('en-US', {
+  return new Date(unixSec * 1000).toLocaleDateString(activeLanguage === 'ko' ? 'ko-KR' : 'en-US', {
     month: 'short', day: 'numeric', year: 'numeric',
   });
 }
@@ -3748,9 +4063,13 @@ function buildOddsModalChart(points: OddsHistoryPoint[], width: number): SVGSVGE
   svg.setAttribute('class', 'ticket-odds-modal-chart-svg');
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   svg.setAttribute('role', 'img');
-  svg.setAttribute('aria-label',
-    `Price history from ${fmtOddsChartDate(t0)} to ${fmtOddsChartDate(t1)}, ` +
-    `between ${fmtOddsPct(actualMin)} and ${fmtOddsPct(actualMax)}, latest ${fmtOddsPct(series[series.length - 1].p)}`);
+  svg.setAttribute('aria-label', uiText(activeLanguage, 'models.priceHistory', {
+    start: fmtOddsChartDate(t0),
+    end: fmtOddsChartDate(t1),
+    min: fmtOddsPct(actualMin),
+    max: fmtOddsPct(actualMax),
+    latest: fmtOddsPct(series[series.length - 1].p),
+  }));
   const text = (tx: number, ty: number, content: string, opts: { anchor?: string; bold?: boolean; dim?: boolean } = {}) => {
     const el = document.createElementNS(SVG_NS, 'text');
     el.setAttribute('x', tx.toFixed(1));
@@ -3918,7 +4237,16 @@ let oddsModalToken: string | null = null;
 let oddsModalGeneration = 0;
 
 function ensureTicketOddsModal(): HTMLDivElement {
-  if (ticketOddsModalEl) return ticketOddsModalEl;
+  if (ticketOddsModalEl) {
+    const closeLabel = uiText(activeLanguage, 'models.closeMarket');
+    ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-backdrop')?.setAttribute('aria-label', closeLabel);
+    ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-close')?.setAttribute('aria-label', closeLabel);
+    const link = ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-link');
+    if (link) link.textContent = uiText(activeLanguage, 'models.openMarket');
+    const note = ticketOddsModalEl.querySelector<HTMLElement>('.ticket-odds-modal-note');
+    if (note) note.textContent = uiText(activeLanguage, 'models.oddsNote');
+    return ticketOddsModalEl;
+  }
   const modal = document.createElement('div');
   modal.id = 'ticketOddsModal';
   modal.className = 'ticket-odds-modal';
@@ -3931,7 +4259,7 @@ function ensureTicketOddsModal(): HTMLDivElement {
   backdrop.className = 'ticket-odds-modal-backdrop';
   backdrop.type = 'button';
   backdrop.dataset.oddsModalClose = '1';
-  backdrop.setAttribute('aria-label', 'Close market details');
+  backdrop.setAttribute('aria-label', uiText(activeLanguage, 'models.closeMarket'));
 
   const panel = document.createElement('div');
   panel.className = 'ticket-odds-modal-panel';
@@ -3941,7 +4269,7 @@ function ensureTicketOddsModal(): HTMLDivElement {
   close.className = 'ticket-odds-modal-close';
   close.type = 'button';
   close.dataset.oddsModalClose = '1';
-  close.setAttribute('aria-label', 'Close market details');
+  close.setAttribute('aria-label', uiText(activeLanguage, 'models.closeMarket'));
   close.textContent = '×';
 
   const title = document.createElement('h3');
@@ -3965,11 +4293,11 @@ function ensureTicketOddsModal(): HTMLDivElement {
   link.className = 'ticket-odds-modal-link';
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
-  link.textContent = 'Open on Polymarket ↗';
+  link.textContent = uiText(activeLanguage, 'models.openMarket');
 
   const note = document.createElement('p');
   note.className = 'ticket-odds-modal-note';
-  note.textContent = 'Polymarket midpoints, informational only — not investment advice.';
+  note.textContent = uiText(activeLanguage, 'models.oddsNote');
 
   panel.appendChild(close);
   panel.appendChild(title);
@@ -4002,19 +4330,20 @@ function setOddsModalStatus(state: OddsModalPriceState, outcome: string): void {
   const prefix = outcome ? `${outcome} · ` : '';
   if (state === 'pending') {
     pctEl.textContent = '—';
-    metaEl.textContent = `${prefix}loading odds…`;
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.loadingOdds')}`;
   } else if (state === 'unavailable') {
     status.classList.add('is-unavailable');
     pctEl.textContent = '—';
-    metaEl.textContent = `${prefix}odds unavailable`;
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.oddsUnavailable')}`;
   } else if (state.closed) {
     const yes = state.price >= 0.5;
+    const result = uiText(activeLanguage, yes ? 'models.yes' : 'models.no');
     status.classList.add(yes ? 'is-resolved-yes' : 'is-resolved-no');
     pctEl.textContent = `${yes ? '✓' : '✗'} ${Math.round(state.price * 100)}%`;
-    metaEl.textContent = `${prefix}resolved ${yes ? 'Yes' : 'No'}`;
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.resolved', { result })}`;
   } else {
     pctEl.textContent = fmtOddsPct(state.price);
-    metaEl.textContent = `${prefix}live odds · updates every minute`;
+    metaEl.textContent = `${prefix}${uiText(activeLanguage, 'models.liveOdds')}`;
   }
 }
 
@@ -4024,7 +4353,7 @@ function renderOddsModalChart(points: OddsHistoryPoint[] | null): void {
   if (!points) {
     const empty = document.createElement('span');
     empty.className = 'ticket-odds-modal-chart-empty';
-    empty.textContent = 'chart unavailable';
+    empty.textContent = uiText(activeLanguage, 'models.chartUnavailable');
     chart.replaceChildren(empty);
     return;
   }
@@ -4035,7 +4364,7 @@ function openTicketOddsModal(chip: HTMLElement): void {
   const eventSlug = chip.dataset.oddsEvent || '';
   const marketId = chip.dataset.oddsMarket || '';
   const tokenId = chip.dataset.oddsToken || '';
-  const question = chip.dataset.oddsQuestion || 'Polymarket market';
+  const question = chip.dataset.oddsQuestion || uiText(activeLanguage, 'models.defaultMarket');
   const outcome = (chip.dataset.oddsOutcome || '').trim();
   if (!eventSlug || !tokenId) return;
   const modal = ensureTicketOddsModal();
@@ -4050,7 +4379,7 @@ function openTicketOddsModal(chip: HTMLElement): void {
   setOddsModalStatus('pending', outcome);
   const loading = document.createElement('span');
   loading.className = 'ticket-odds-modal-chart-empty';
-  loading.textContent = 'loading chart…';
+  loading.textContent = uiText(activeLanguage, 'models.loadingChart');
   chart.replaceChildren(loading);
   oddsModalLastFocus = chip;
   oddsModalToken = tokenId;
@@ -4098,16 +4427,21 @@ function closeTicketOddsModal(): void {
   if (focusTarget && focusTarget.isConnected) focusTarget.focus();
 }
 
+function ticketStatusLabel(status: TicketStatus): string {
+  const labels: Record<TicketStatus, string> = {
+    'rumored': uiText(activeLanguage, 'models.rumored'),
+    'in-testing': uiText(activeLanguage, 'models.inTesting'),
+    'confirmed': uiText(activeLanguage, 'models.confirmed'),
+    'released': uiText(activeLanguage, 'models.released'),
+    'closed': uiText(activeLanguage, 'models.closedStatus'),
+  };
+  return labels[status];
+}
+
 function ticketStatusPill(status: TicketStatus): string {
   // Color via class so dark/light mode and contrast stay consistent.
-  const labels: Record<TicketStatus, string> = {
-    'rumored': 'Rumored',
-    'in-testing': 'In Testing',
-    'confirmed': 'Confirmed',
-    'released': 'Released',
-    'closed': 'Closed',
-  };
-  return `<span class="ticket-pill ticket-pill-${status}">${escapeHtml(labels[status])}</span>`;
+  const label = ticketStatusLabel(status);
+  return `<span class="ticket-pill ticket-pill-${status}">${escapeHtml(label)}</span>`;
 }
 
 // Compact card — status + title + company + a few labels. Everything else
@@ -4134,27 +4468,27 @@ function ticketExpandedPanel(ticket: Ticket | null): string {
     'unverified': 'ara-flag--red',
   };
   const verifLabel: Record<TicketVerification, string> = {
-    'confirmed': 'Confirmed',
-    'partial': 'Partial corroboration',
-    'unverified': 'Unverified',
+    'confirmed': uiText(activeLanguage, 'models.confirmed'),
+    'partial': uiText(activeLanguage, 'models.partial'),
+    'unverified': uiText(activeLanguage, 'models.unverified'),
   };
   // Structured metadata as an ara-kv definition grid.
   const kvRows = [
-    `<dt>Company</dt><dd>${escapeHtml(ticket.company)}</dd>`,
-    ticket.model ? `<dt>Model</dt><dd>${escapeHtml(ticket.model)}</dd>` : '',
-    ticket.expected ? `<dt>Expected</dt><dd>${escapeHtml(ticket.expected)}</dd>` : '',
-    `<dt>Verification</dt><dd><span class="ara-flag ${verifFlag[ticket.verification]}"></span>${escapeHtml(verifLabel[ticket.verification])}</dd>`,
-    `<dt>Updated</dt><dd>${escapeHtml(ticket.updated_at)}</dd>`,
-    `<dt>Created</dt><dd>${escapeHtml(ticket.created_at)}</dd>`,
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.company'))}</dt><dd>${escapeHtml(ticket.company)}</dd>`,
+    ticket.model ? `<dt>${escapeHtml(uiText(activeLanguage, 'models.model'))}</dt><dd>${escapeHtml(ticket.model)}</dd>` : '',
+    ticket.expected ? `<dt>${escapeHtml(uiText(activeLanguage, 'models.expected'))}</dt><dd>${escapeHtml(ticket.expected)}</dd>` : '',
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.verification'))}</dt><dd><span class="ara-flag ${verifFlag[ticket.verification]}"></span>${escapeHtml(verifLabel[ticket.verification])}</dd>`,
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.updated'))}</dt><dd>${escapeHtml(ticket.updated_at)}</dd>`,
+    `<dt>${escapeHtml(uiText(activeLanguage, 'models.created'))}</dt><dd>${escapeHtml(ticket.created_at)}</dd>`,
     ticket.status === 'closed' && ticket.closed_reason
-      ? `<dt>Closed</dt><dd>${escapeHtml(ticket.closed_at || '')} — ${escapeHtml(ticket.closed_reason)}</dd>`
+      ? `<dt>${escapeHtml(uiText(activeLanguage, 'models.closed'))}</dt><dd>${escapeHtml(ticket.closed_at || '')} — ${escapeHtml(ticket.closed_reason)}</dd>`
       : '',
   ].filter(Boolean).join('\n');
   // History → ara-timeline (the canonical chronological-log component).
   const historyItems = ticket.history.map((h) =>
     `<li class="ara-timeline-item"><time class="ara-timeline-date">${escapeHtml(h.ts)}</time><div class="ara-timeline-event"><p>${escapeHtml(h.change)}</p></div></li>`,
   ).join('');
-  return `<section class="ticket-detail-panel" aria-label="${escapeHtml(ticket.title)} details">
+  return `<section class="ticket-detail-panel" aria-label="${escapeHtml(uiText(activeLanguage, 'models.details', { title: ticket.title }))}">
     <div class="ticket-detail-header">
       ${ticketStatusPill(ticket.status)}
       <h3 id="ticket-dialog-title-${escapeHtml(ticket.slug)}">${escapeHtml(ticket.title)}</h3>
@@ -4164,11 +4498,11 @@ function ticketExpandedPanel(ticket: Ticket | null): string {
       <dl class="ara-kv">${kvRows}</dl>
       <div class="ticket-body md-content">${DOMPurify.sanitize(renderReportMarkdown(ticket.body))}</div>
       <div class="ticket-history">
-        <h4 class="ticket-history-title">History</h4>
+        <h4 class="ticket-history-title">${escapeHtml(uiText(activeLanguage, 'models.history'))}</h4>
         <ol class="ara-timeline">${historyItems}</ol>
       </div>
       <div class="ticket-all-sources">
-        <h4 class="ticket-history-title">All sources (${ticket.sources.length})</h4>
+        <h4 class="ticket-history-title">${escapeHtml(uiText(activeLanguage, 'models.sources', { count: ticket.sources.length }))}</h4>
         <ul class="ticket-source-list">${ticket.sources.map((s) => s.startsWith('@')
           ? `<li><span class="ticket-source-handle">${escapeHtml(s)}</span></li>`
           : `<li><a href="${escapeHtml(s)}" target="_blank" rel="noopener">${escapeHtml(s)}</a></li>`).join('')}</ul>
@@ -4259,7 +4593,7 @@ function openTicketModal(ticket: Ticket): void {
   }
   setSafeContent(
     ticketModalEl,
-    '<div class="ticket-modal-card"><button class="ticket-modal-close" type="button" aria-label="Close">✕</button>' +
+    '<div class="ticket-modal-card"><button class="ticket-modal-close" type="button" aria-label="' + escapeHtml(uiText(activeLanguage, 'models.close')) + '">✕</button>' +
       ticketExpandedPanel(ticket) + '</div>',
   );
   ticketModalEl.setAttribute('aria-labelledby', `ticket-dialog-title-${ticket.slug}`);
@@ -4335,8 +4669,7 @@ function renderTickets(tickets: Ticket[] | null): void {
     setSafeContent(
       content,
       `<div class="content-card"><div class="content-card-body">
-        <p>No model tickets yet. The daily CRUD agent will seed this list on the next run, or run <code>workflow_dispatch</code> on
-        <a href="https://github.com/guzus/ai-research-arm/actions/workflows/24h-model-timeline.yml" target="_blank" rel="noopener">24h-model-timeline</a>.</p>
+        <p>${escapeHtml(uiText(activeLanguage, 'models.empty'))}</p>
       </div></div>`,
     );
     return;
@@ -4354,30 +4687,30 @@ function renderTickets(tickets: Ticket[] | null): void {
   for (const s of statusOptions) statusCounts[s] = tickets.filter((t) => t.status === s).length;
 
   const statusBar = [
-    `<button class="ticket-filter-pill${ticketFilters.status === 'all' ? ' active' : ''}" data-filter-status="all">All <span class="ticket-filter-count">${statusCounts.all}</span></button>`,
-    ...statusOptions.map((s) => `<button class="ticket-filter-pill ticket-filter-pill-${s}${ticketFilters.status === s ? ' active' : ''}" data-filter-status="${s}">${escapeHtml(s)} <span class="ticket-filter-count">${statusCounts[s]}</span></button>`),
+    `<button class="ticket-filter-pill${ticketFilters.status === 'all' ? ' active' : ''}" data-filter-status="all">${escapeHtml(uiText(activeLanguage, 'models.all'))} <span class="ticket-filter-count">${statusCounts.all}</span></button>`,
+    ...statusOptions.map((s) => `<button class="ticket-filter-pill ticket-filter-pill-${s}${ticketFilters.status === s ? ' active' : ''}" data-filter-status="${s}">${escapeHtml(ticketStatusLabel(s))} <span class="ticket-filter-count">${statusCounts[s]}</span></button>`),
   ].join('');
 
   const companyOptions = ['all', ...companyKeys].map((k) =>
-    `<option value="${escapeHtml(k)}"${ticketFilters.company === k ? ' selected' : ''}>${escapeHtml(k === 'all' ? 'All companies' : companyLabels[k] || k)}</option>`).join('');
+    `<option value="${escapeHtml(k)}"${ticketFilters.company === k ? ' selected' : ''}>${escapeHtml(k === 'all' ? uiText(activeLanguage, 'models.allCompanies') : companyLabels[k] || k)}</option>`).join('');
 
   const visibleStatuses = ticketFilters.status === 'all'
     ? statusOptions
     : statusOptions.filter((s) => s === ticketFilters.status);
   const statusLabels: Record<TicketStatus, string> = {
-    'rumored': 'Rumored',
-    'in-testing': 'In testing',
-    'confirmed': 'Confirmed',
-    'released': 'Released',
-    'closed': 'Closed',
+    'rumored': uiText(activeLanguage, 'models.rumored'),
+    'in-testing': uiText(activeLanguage, 'models.inTesting'),
+    'confirmed': uiText(activeLanguage, 'models.confirmed'),
+    'released': uiText(activeLanguage, 'models.released'),
+    'closed': uiText(activeLanguage, 'models.closedStatus'),
   };
   const board = visibleStatuses.map((status) => {
     const cards = filtered.filter((ticket) => ticket.status === status);
     const cardHtml = cards.length
       ? cards.map(ticketCard).join('\n')
-      : '<div class="ticket-column-empty">No tickets</div>';
+      : '<div class="ticket-column-empty">' + escapeHtml(uiText(activeLanguage, 'models.noTickets')) + '</div>';
     return [
-      `<section class="ticket-column ticket-column-${status}" aria-label="${escapeHtml(statusLabels[status])} tickets">`,
+      `<section class="ticket-column ticket-column-${status}" aria-label="${escapeHtml(uiText(activeLanguage, 'models.column', { status: statusLabels[status] }))}">`,
       `  <div class="ticket-column-header"><span>${escapeHtml(statusLabels[status])}</span><span class="ticket-column-count">${cards.length}</span></div>`,
       `  <div class="ticket-column-cards">${cardHtml}</div>`,
       `</section>`,
@@ -4385,11 +4718,11 @@ function renderTickets(tickets: Ticket[] | null): void {
   }).join('\n');
 
   const emptyNote = filtered.length === 0
-    ? `<div class="ticket-board-empty">No tickets match the current filters.</div>`
+    ? `<div class="ticket-board-empty">${escapeHtml(uiText(activeLanguage, 'models.noMatches'))}</div>`
     : '';
   // Disclaimer shown whenever any loaded ticket carries market mappings.
   const oddsNote = tickets.some((t) => ticketPolymarketMappings(t).length > 0)
-    ? `<p class="tickets-odds-note">Odds: Polymarket midpoints, informational only — not investment advice.</p>`
+    ? `<p class="tickets-odds-note">${escapeHtml(uiText(activeLanguage, 'models.oddsNote'))}</p>`
     : '';
   setSafeContent(
     content,
@@ -4465,8 +4798,10 @@ function renderFrontPage(frontPage: FrontPageAsset): void {
 
 function renderToday(md: string, frontPage: FrontPageAsset | null = null): void {
   const dateStr = fmtDate(currentDate);
+  const digestUnavailable = isDeterministicFallbackDigest(md);
+  digestUnavailableForCurrentView = digestUnavailable;
   let frontPageCardHtml: string | null = null;
-  if (frontPage) {
+  if (frontPage && !digestUnavailable) {
     frontPageCardHtml = [
       '<div class="content-card frontpage-card today-frontpage-card">',
       frontPageBodyHtml(frontPage),
@@ -4481,10 +4816,117 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     audioDates: manifest?.audio || [],
     searchTerm,
     frontPageCardHtml,
+    language: activeLanguage,
   }));
+  if (digestUnavailable) {
+    digestAudioEl?.pause();
+    hideDigestAudioPlayer();
+    return;
+  }
   if (frontPage) enhanceNewspaper();
   syncDigestAudioForDate(dateStr);
   void wikifyContent(content);
+  void hydrateWhatChanged(md, dateStr);
+}
+
+function topicSlugs(text: string): string[] {
+  const lowered = text.toLowerCase();
+  const indexed = Array.from(wikiPageMap.values())
+    .filter((page) => [page.title, page.slug, ...(page.aliases || [])].some((label) => label.length > 2 && lowered.includes(label.toLowerCase())))
+    .slice(0, 4)
+    .map((page) => page.slug);
+  return indexed.length ? indexed : [normalizeTopic(text.split(/\s+[—:-]\s+/)[0] || text)].filter(Boolean);
+}
+
+async function hydrateWhatChanged(md: string, dateStr: string): Promise<void> {
+  const [tickets, wiki, pricing, gpu] = await Promise.all([
+    loadTickets(),
+    loadWikiIndexCached(),
+    loadModelPricing(),
+    loadGpuSpot(),
+  ]);
+  if (activeTab !== 'today' || fmtDate(currentDate) !== dateStr) return;
+  const items: BriefItem[] = [];
+  // Defense in depth: operational fallback artifacts are never eligible for
+  // a public Decision brief, even if this hydrator is called independently.
+  if (isDeterministicFallbackDigest(md)) return;
+  const sections = splitSections(md).filter((section) =>
+    Boolean(section.title) &&
+    section.body &&
+    !/executive summary/i.test(section.title) &&
+    !/^AI Daily Digest\b/i.test(section.title),
+  );
+  for (const [index, section] of sections.slice(0, 3).entries()) {
+    const summary = truncateText(cleanPublicLeadText(stripMarkdown(section.body)), 230);
+    const sourceCount = new Set(extractUrls(section.body)).size;
+    items.push({
+      id: `digest:${dateStr}:${index}`,
+      kind: 'digest',
+      title: section.title || uiText(activeLanguage, 'page.today', { date: dateStr }),
+      summary,
+      why: activeLanguage === 'ko' ? `오늘의 종합 브리프에서 상위 신호로 선정됐습니다. ${sourceCount}개의 링크된 소스가 있습니다.` : `It ranked near the top of today's synthesis and carries ${sourceCount} linked source${sourceCount === 1 ? '' : 's'}.`,
+      watch: activeLanguage === 'ko' ? '차기 소스 사이클에서 독립적 확인과 수치 변화를 확인하세요.' : 'Look for independent confirmation and a measurable follow-through in the next source cycle.',
+      // A link count describes sourcing volume, not corroboration quality.
+      // Digest sections remain context until backed by structured claim evidence.
+      confidence: 'context',
+      freshness: dateStr,
+      href: `/today/${dateStr}`,
+      topics: topicSlugs(`${section.title} ${summary}`),
+      changedAt: `${dateStr}T00:00:00Z`,
+    });
+  }
+
+  for (const ticket of (tickets || []).filter((row) => row.updated_at === dateStr).sort((a, b) => b.verification.localeCompare(a.verification)).slice(0, 2)) {
+    items.push({
+      id: `model:${ticket.slug}`,
+      kind: 'model',
+      title: ticket.title,
+      summary: ticket.status_note || ticket.expected || truncateText(stripMarkdown(ticket.body), 220),
+      why: activeLanguage === 'ko' ? `상태가 ${ticket.status}(으)로 업데이트되었고 ${ticket.sources.length}개 소스와 검증 단계가 유지됩니다.` : `The persistent ticket moved or was reaffirmed at ${ticket.status}, backed by ${ticket.sources.length} source${ticket.sources.length === 1 ? '' : 's'}.`,
+      watch: ticket.expected || (activeLanguage === 'ko' ? '다음 상태 전환과 예상 시점을 확인하세요.' : 'Watch for the next state transition and its expected date.'),
+      confidence: ticket.verification === 'confirmed' ? 'high' : ticket.verification === 'partial' ? 'medium' : 'context',
+      freshness: ticket.updated_at,
+      href: `/models/forecast/${ticket.slug}`,
+      topics: [normalizeTopic(ticket.company), normalizeTopic(ticket.model || '')].filter(Boolean),
+      changedAt: `${ticket.updated_at}T06:29:00Z`,
+    });
+  }
+
+  for (const page of (wiki?.pages || []).filter((row) => row.updated_at === dateStr).sort((a, b) => (b.inbound.length + b.outbound.length) - (a.inbound.length + a.outbound.length)).slice(0, 1)) {
+    items.push({
+      id: `wiki:${page.slug}`,
+      kind: 'wiki',
+      title: page.title,
+      summary: page.summary,
+      why: activeLanguage === 'ko' ? `지식 그래프에서 ${page.inbound.length + page.outbound.length}개 연결을 가진 ${page.type} 페이지가 새 종합 결과로 갱신됐습니다.` : `This ${page.type} dossier was revised by the latest synthesis and connects to ${page.inbound.length + page.outbound.length} graph edges.`,
+      watch: activeLanguage === 'ko' ? '다음 인용, 시장 지표, 관련 모델 티켓의 변경을 추적하세요.' : 'Watch its next citation, market move, or related model-ticket update.',
+      confidence: 'medium', freshness: page.updated_at, href: `/wiki/${page.slug}`, topics: [page.slug], changedAt: `${page.updated_at}T01:00:00Z`,
+    });
+  }
+
+  const pricingHistory = pricing?.history || [];
+  if (pricing && pricingHistory.length >= 2) {
+    const latest = pricingHistory[pricingHistory.length - 1];
+    const previous = pricingHistory[pricingHistory.length - 2];
+    const tier = Object.keys(latest.frontier_price_at || {}).sort((a, b) => Number(b) - Number(a)).find((key) => typeof latest.frontier_price_at?.[key] === 'number' && typeof previous.frontier_price_at?.[key] === 'number');
+    if (tier) {
+      const now = Number(latest.frontier_price_at?.[tier]);
+      const before = Number(previous.frontier_price_at?.[tier]);
+      const delta = before ? ((now - before) / before) * 100 : 0;
+      items.push({ id: 'pricing:frontier', kind: 'pricing', title: activeLanguage === 'ko' ? `성능 ${tier} 달성 비용 ${delta >= 0 ? '+' : ''}${delta.toFixed(0)}%` : `Cost to reach capability ${tier} moved ${delta >= 0 ? '+' : ''}${delta.toFixed(0)}%`, summary: activeLanguage === 'ko' ? `최신 파레토 경계 비용은 출력 100만 토큰당 $${now.toFixed(2)}입니다.` : `The latest Pareto-frontier price is $${now.toFixed(2)} per million output tokens.`, why: activeLanguage === 'ko' ? '정적 벤치마크와 실시간 목록 가격을 결합한 성능 디플레이션 지표입니다.' : 'It measures capability deflation by joining benchmark score to current list price.', watch: activeLanguage === 'ko' ? '다음 스냅샷에서 반복되는지 확인하세요. 단일 가격 변화를 구조적 트렌드로 간주하지 마세요.' : 'Wait for persistence across snapshots; one list-price change is not yet a structural trend.', confidence: pricing.stale || pricing.capability_stale ? 'context' : 'high', freshness: pricing.generated_at, href: '/pricing', topics: ['model-pricing'], changedAt: pricing.generated_at });
+    }
+  }
+
+  const gpuModels = Object.entries(gpu?.snapshot?.models || {}).filter(([, row]) => typeof row.median === 'number').sort((a, b) => (a[1].median || 0) - (b[1].median || 0));
+  const h100 = gpuModels.find(([name]) => name === 'H100 SXM') || gpuModels[0];
+  if (gpu && h100) items.push({ id: 'gpu:spot', kind: 'gpu', title: `${h100[0]} ${activeLanguage === 'ko' ? '시간당 중앙값' : 'median spot'} $${Number(h100[1].median).toFixed(2)}`, summary: activeLanguage === 'ko' ? `${h100[1].samples || 0}개 공개 리스팅에서 GPU 1개·시간당 비용을 정규화했습니다.` : `Normalized to one GPU-hour across ${h100[1].samples || 0} public listings.`, why: activeLanguage === 'ko' ? '모델 가격과 별개로 기초 컴퓨트 공급 가격을 보여줍니다.' : 'It exposes the underlying compute-supply price separately from model API pricing.', watch: h100[1].truncated ? (activeLanguage === 'ko' ? '표본이 불완전합니다. 방향성으로만 보세요.' : 'The sample is incomplete; treat it as directional.') : (activeLanguage === 'ko' ? '동일 방법 버전의 주간 변화를 확인하세요.' : 'Watch the week-over-week move under the same method version.'), confidence: gpu.stale ? 'context' : 'medium', freshness: gpu.generated_at || dateStr, href: '/pricing', topics: ['gpu-compute'], changedAt: gpu.generated_at || `${dateStr}T00:00:00Z` });
+
+  const host = document.createElement('div');
+  host.innerHTML = renderWhatChanged(items.slice(0, 8), watchlist, activeLanguage);
+  const first = content.firstElementChild;
+  if (first) content.insertBefore(host.firstElementChild!, first);
+  else content.appendChild(host.firstElementChild!);
+  bindWatchlistActions(content);
 }
 
 // ── Generative research ───────────────────────────────
@@ -5253,7 +5695,8 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
   );
   const visible = term
     ? reversed.filter((r) => {
-        const hay = (r.title + ' ' + r.prompt + ' ' + (r.tags || []).join(' ')).toLowerCase();
+        const variant = researchVariant(r, activeLanguage);
+        const hay = (variant.title + ' ' + variant.prompt + ' ' + r.title + ' ' + (variant.tags || []).join(' ')).toLowerCase();
         return hay.indexOf(term) !== -1;
       })
     : reversed;
@@ -5273,13 +5716,14 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
   pageRows.forEach((r, i) => researchJacketBySlug.set(r.slug, jackets[i]));
   const items: string[] = [];
   pageRows.forEach((row, index) => {
-    let title = escapeHtml(decodeStoredEntities(row.title));
+    const displayRow = researchVariant(row, activeLanguage);
+    let title = escapeHtml(decodeStoredEntities(displayRow.title));
     if (searchTerm) {
       const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const re = new RegExp('(' + escaped + ')', 'gi');
       title = title.replace(re, '<mark>$1</mark>');
     }
-    const created = new Date(row.created_at);
+    const created = new Date(displayRow.created_at);
     const rel = isNaN(created.getTime()) ? '' : timeAgo(created);
     const koHtml = hasResearchLanguage(row, 'ko')
       ? '    <span class="press-book-lang" lang="ko">한국어</span>'
@@ -5291,9 +5735,9 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
         // activates [data-slug] rows on Enter. The spine truncates long titles,
         // so title= carries the whole thing.
         '<li class="press-book" role="link" data-jacket="' + jackets[index] + '"' +
-          ' data-imprint="' + researchImprint(row.model) + '"' +
+          ' data-imprint="' + researchImprint(displayRow.model) + '"' +
           ' data-slug="' + escapeHtml(row.slug) + '" tabindex="0"' +
-          ' title="' + escapeHtml(decodeStoredEntities(row.title)) + '">',
+          ' title="' + escapeHtml(decodeStoredEntities(displayRow.title)) + '">',
         // The board is nested INSIDE the spine so it can hinge off the spine's
         // top edge (bottom: 100%) rather than a fixed offset — which is what
         // lets the spine grow when a long title wraps and keeps the board
@@ -5308,7 +5752,7 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
         '    </span>',
         // Author left, title centred, date right — the same three slots
         // press.stripe.com prints on a spine.
-        '    <span class="press-book-author">' + escapeHtml(row.model) + '</span>',
+        '    <span class="press-book-author">' + escapeHtml(displayRow.model) + '</span>',
         '    <span class="press-book-title">' + title + '</span>',
         '    <span class="press-book-imprint">',
         rel ? '      <span class="press-book-date">' + escapeHtml(rel) + '</span>' : '',
@@ -5321,7 +5765,7 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
   });
 
   const empty = visible.length === 0
-    ? '<p class="press-shelf-empty">No articles match the search.</p>'
+    ? '<p class="press-shelf-empty">' + escapeHtml(uiText(activeLanguage, 'research.noMatches')) + '</p>'
     : '';
 
   setSafeContent(
@@ -5333,7 +5777,7 @@ function renderResearchIndex(rows: GenResearchRow[]): void {
       '  </ul>',
       empty,
       '  <div class="press-shelf-foot">',
-      paginationHtml(researchIndexPage, visible.length, RESEARCH_PAGE_SIZE, 'Research articles'),
+      paginationHtml(researchIndexPage, visible.length, RESEARCH_PAGE_SIZE, uiText(activeLanguage, 'research.paginationLabel')),
       '  </div>',
       '</div>',
     ].join('\n'),
@@ -5364,12 +5808,12 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
       '    <div class="content-card-title">' + escapeHtml(row.title) + '</div>',
       '  </div>',
       '  <div class="gen-research-doc-meta">',
-      '    <button class="gen-research-back" data-research-back>&lsaquo; All articles</button>',
+      '    <button class="gen-research-back" data-research-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'research.allArticles')) + '</button>',
       '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
       rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
       languageFallbackNote(row),
       researchAudioControlsHtml(row),
-      '    <button class="gen-research-pdf" data-research-pdf title="Save this article as a PDF">Save as PDF</button>',
+      '    <button class="gen-research-pdf" data-research-pdf title="' + escapeHtml(uiText(activeLanguage, 'research.savePdfTitle')) + '">' + escapeHtml(uiText(activeLanguage, 'research.savePdf')) + '</button>',
       '  </div>',
       '  <div class="content-card-body">',
       docHtml,
@@ -5401,6 +5845,20 @@ function renderResearchDoc(row: GenResearchRow, body: string): void {
     const cardBody = content.querySelector('.content-card-body') as HTMLElement | null;
     if (cardBody) highlightSearchMatches(cardBody, searchTerm);
   }
+  void hydrateResearchEvidence(row, body);
+}
+
+async function hydrateResearchEvidence(row: GenResearchRow, body: string): Promise<void> {
+  const claims = claimsForArticle(await loadPublicClaims(), row.file);
+  if (activeTab !== 'research' || selectedSlug !== row.slug) return;
+  const fallbackStatus = /deterministic|fallback|degraded/i.test(body)
+    ? (activeLanguage === 'ko' ? '저하/대체 출력 표시 감지' : 'degraded/fallback marker detected in publication')
+    : undefined;
+  const card = content.querySelector('.gen-research-doc .content-card-body');
+  if (!card) return;
+  const host = document.createElement('div');
+  setSafeContent(host, renderEvidenceDrawer(claims, { language: activeLanguage, fallbackStatus }));
+  card.prepend(host);
 }
 
 function renderResearchStandalone(row: GenResearchRow): void {
@@ -5418,12 +5876,12 @@ function renderResearchStandalone(row: GenResearchRow): void {
       '    <div class="content-card-title">' + escapeHtml(row.title) + '</div>',
       '  </div>',
       '  <div class="gen-research-doc-meta">',
-      '    <button class="gen-research-back" data-research-back>&lsaquo; All articles</button>',
+      '    <button class="gen-research-back" data-research-back>&lsaquo; ' + escapeHtml(uiText(activeLanguage, 'research.allArticles')) + '</button>',
       '    <span class="gen-research-model">' + escapeHtml(row.model) + '</span>',
       rel ? '    <span class="gen-research-time">' + escapeHtml(rel) + '</span>' : '',
       languageFallbackNote(row),
       researchAudioControlsHtml(row),
-      '    <a class="gen-research-fullscreen" href="' + escapeHtml(src) + '" target="_blank" rel="noopener noreferrer">Open full ↗</a>',
+      '    <a class="gen-research-fullscreen" href="' + escapeHtml(src) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(uiText(activeLanguage, 'research.openFull')) + '</a>',
       '  </div>',
       '  <iframe class="gen-research-iframe" src="' + escapeHtml(src) + '" sandbox="allow-scripts" loading="lazy" title="' + escapeHtml(row.title) + '"></iframe>',
       '</div>',
@@ -5439,7 +5897,7 @@ function renderResearchStandalone(row: GenResearchRow): void {
 }
 
 function renderAgentsStudio(): void {
-  setSafeContent(content, renderAgentsStudioHtml());
+  setSafeContent(content, renderAgentsStudioHtml(activeLanguage));
   document.title = 'Arm — ara';
 }
 
@@ -5816,11 +6274,31 @@ async function load(): Promise<void> {
   showLoading();
 
   try {
+    if (activeTab === 'pricing') {
+      const pricing = await withTimeout(
+        Promise.all([loadModelPricing(controller.signal), loadGpuSpot(controller.signal)]),
+        LOAD_TIMEOUT_MS,
+        controller,
+      );
+      if (requestId !== loadRequestId || activeTab !== 'pricing') return;
+      if (pricing === 'timeout') {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else if (pricing[0]) {
+        paintPricing(pricing[0], pricing[1]);
+      } else {
+        showEmpty(dateStr);
+      }
+      renderCalendar();
+      currentSection = 0;
+      updateNavCounter();
+      updateSearchCount();
+      return;
+    }
     if (activeTab === 'agents') {
       renderAgentsStudio();
       loadArmTimeline(controller.signal).then((timeline) => {
         if (requestId !== loadRequestId || activeTab !== 'agents') return;
-        hydrateAgentsTimeline(content, timeline);
+        hydrateAgentsTimeline(content, timeline, activeLanguage);
       });
       renderCalendar();
       currentSection = 0;
@@ -5855,16 +6333,22 @@ async function load(): Promise<void> {
       } else if (!selectedSlug) {
         renderWikiIndex(idx);
       } else {
-        const page = wikiPageMap.get(selectedSlug);
-        if (!page) {
+        const canonicalPage = wikiPageMap.get(selectedSlug);
+        if (!canonicalPage) {
           renderWikiNotFound(selectedSlug);
         } else {
-          const cached = wikiBodyCache.get(selectedSlug);
+          const translation = wikiTranslationFor(canonicalPage);
+          const page = localizedWikiPage(canonicalPage);
+          const translationMissing = activeLanguage === 'ko' && !translation;
+          const translationStale = Boolean(translation?.stale);
+          const bodyPath = translation?.file || `wiki/${canonicalPage.file}`;
+          const cacheKey = `${selectedSlug}:${translation ? 'ko' : 'en'}`;
+          const cached = wikiBodyCache.get(cacheKey);
           if (cached !== undefined) {
-            renderWikiPage(page, cached, controller.signal);
+            renderWikiPage(page, cached, controller.signal, translationMissing, translationStale);
           } else {
             const body = await withTimeout(
-              fetchMarkdownReport(`${DATA_BASE}/wiki/${page.file}`, controller.signal),
+              fetchMarkdownReport(`${DATA_BASE}/${bodyPath}`, controller.signal),
               LOAD_TIMEOUT_MS,
               controller,
             );
@@ -5872,8 +6356,8 @@ async function load(): Promise<void> {
             if (body === 'timeout') {
               showError('Loading timed out', 'Network may be slow. Click to retry.');
             } else if (body) {
-              wikiBodyCache.set(selectedSlug, body);
-              renderWikiPage(page, body, controller.signal);
+              wikiBodyCache.set(cacheKey, body);
+              renderWikiPage(page, body, controller.signal, translationMissing, translationStale);
             } else {
               renderWikiNotFound(selectedSlug);
             }
@@ -6040,7 +6524,8 @@ async function load(): Promise<void> {
       }
     }
 
-    if (activeTab !== 'research' && activeTab !== 'wiki' && activeTab !== 'focusReader') {
+    if (activeTab !== 'research' && activeTab !== 'wiki' && activeTab !== 'focusReader'
+      && !(activeTab === 'today' && digestUnavailableForCurrentView)) {
       syncDigestAudioForDate(dateStr);
     }
     renderCalendar();
@@ -6089,7 +6574,9 @@ function updateSearchCount(): void {
   }
   const matches = content.querySelectorAll('mark').length;
   const cards = getCards().length;
-  searchCountEl.textContent = matches === 0 ? '0 matches' : matches + ' in ' + cards;
+  searchCountEl.textContent = matches === 0
+    ? uiText(activeLanguage, 'search.zeroMatches')
+    : uiText(activeLanguage, 'search.matches', { matches, cards });
 }
 
 function scrollToSection(index: number): void {
@@ -6151,11 +6638,18 @@ const searchResultsEl = document.getElementById('searchResults');
 // Search across ALL content — research articles, wiki pages, model tickets —
 // from any tab; a result jumps straight to the item. The corpus is built lazily
 // from the already-loaded indexes and cached.
-type SearchHit = { type: 'research' | 'wiki' | 'model' | 'digest' | 'twitter'; title: string; subtitle: string; slug: string; hay: string; date?: string; anchor?: string; sectionTitle?: string };
+type SearchHit = { type: 'research' | 'wiki' | 'model' | 'claim' | 'digest' | 'twitter'; title: string; subtitle: string; slug: string; hay: string; date?: string; anchor?: string; sectionTitle?: string; evidence?: EvidenceSearchEntry; snippet?: string };
 let searchCorpus: SearchHit[] | null = null;
 let searchHits: SearchHit[] = [];
 let searchSel = -1;
-const SEARCH_TYPE_LABEL: Record<SearchHit['type'], string> = { research: 'Research', wiki: 'Wiki', model: 'Model', digest: 'Digest', twitter: 'Twitter' };
+const SEARCH_TYPE_KEY: Record<SearchHit['type'], UiCopyKey> = {
+  research: 'search.type.research',
+  wiki: 'search.type.wiki',
+  model: 'search.type.model',
+  claim: 'search.type.claim',
+  digest: 'search.type.digest',
+  twitter: 'search.type.twitter',
+};
 
 // Build-time content index (digest sections + twitter cycles) — see
 // scripts/prebuild.mjs:buildSearchIndex. Loaded once, cached, best-effort.
@@ -6188,15 +6682,16 @@ function ymdToDate(s: string): Date {
 
 async function buildSearchCorpus(): Promise<SearchHit[]> {
   if (searchCorpus) return searchCorpus;
-  const [m, wiki, tickets, idx] = await Promise.all([loadManifest(), loadWikiIndexCached(), loadTickets(), loadSearchIndex()]);
+  const [m, wiki, tickets, idx, evidence] = await Promise.all([loadManifest(), loadWikiIndexCached(), loadTickets(), loadSearchIndex(), loadEvidenceSearch()]);
   const hits: SearchHit[] = [];
   if (wiki) for (const p of wiki.pages) {
     hits.push({ type: 'wiki', title: p.title, subtitle: (p.aliases || []).slice(0, 3).join(', ') || String(p.type),
       slug: p.slug, hay: (p.title + ' ' + (p.aliases || []).join(' ') + ' ' + (p.summary || '') + ' ' + (p.tags || []).join(' ')).toLowerCase() });
   }
   if (m) for (const r of (m.generative || [])) {
-    hits.push({ type: 'research', title: r.title, subtitle: (r.tags || []).filter(isResearchDisplayTag).slice(0, 4).join(', '),
-      slug: r.slug, hay: (r.title + ' ' + (r.tags || []).join(' ') + ' ' + (r.prompt || '')).toLowerCase() });
+    const variant = researchVariant(r, activeLanguage);
+    hits.push({ type: 'research', title: variant.title, subtitle: (variant.tags || []).filter(isResearchDisplayTag).slice(0, 4).join(', '),
+      slug: r.slug, hay: (variant.title + ' ' + r.title + ' ' + (variant.tags || []).join(' ') + ' ' + (variant.prompt || '')).toLowerCase() });
   }
   if (tickets) for (const t of tickets) {
     hits.push({ type: 'model', title: t.title, subtitle: t.company + (t.model ? ' · ' + t.model : ''),
@@ -6215,22 +6710,60 @@ async function buildSearchCorpus(): Promise<SearchHit[]> {
       slug: '', date: c.date, anchor: c.anchor,
       hay: (c.date + ' ' + c.cycleTime + ' ' + (c.summary || '') + ' ' + (c.storyTitles || []).join(' ')).toLowerCase() });
   }
-  searchCorpus = hits;
-  return hits;
+  const byKey = new Map(hits.filter((hit) => ['research', 'wiki', 'model'].includes(hit.type)).map((hit) => [`${hit.type}:${hit.slug}`, hit]));
+  const enrichedKeys = new Set<string>();
+  const evidenceHits: SearchHit[] = [];
+  for (const entry of evidence) {
+    const key = `${entry.type}:${entry.id.replace(/^(?:research|wiki|model):/, '').replace(/:[a-z]{2}$/i, '')}`;
+    const existing = byKey.get(key);
+    if (existing) {
+      // Keep language variants as separate evidence records so the language
+      // filter and shared ranker operate on the actual indexed document.
+      enrichedKeys.add(key);
+      evidenceHits.push({
+        ...existing,
+        title: entry.title,
+        subtitle: [existing.subtitle, entry.language].filter(Boolean).join(' · '),
+        hay: `${existing.hay} ${entry.title} ${entry.body}`.toLowerCase(),
+        evidence: entry,
+        snippet: entry.body,
+        date: entry.date,
+      });
+      continue;
+    }
+    if (entry.type !== 'claim') continue;
+    evidenceHits.push({
+      type: 'claim',
+      title: entry.title,
+      subtitle: [entry.confidence, entry.risk, entry.sourceTier].map((value) => evidenceEnumLabel(value, activeLanguage)).concat(entry.date || []).filter(Boolean).join(' · '),
+      slug: entry.url,
+      hay: `${entry.title} ${entry.body}`.toLowerCase(),
+      evidence: entry,
+      snippet: entry.body,
+      date: entry.date,
+    });
+  }
+  searchCorpus = [
+    ...hits.filter((hit) => !enrichedKeys.has(`${hit.type}:${hit.slug}`)),
+    ...evidenceHits,
+  ];
+  return searchCorpus;
 }
 
 function renderSearchHits(): void {
   if (!searchResultsEl) return;
   if (searchHits.length === 0) {
-    setSafeContent(searchResultsEl, '<div class="search-empty">No matches</div>');
+    setSafeContent(searchResultsEl, '<div class="search-empty">' + escapeHtml(uiText(activeLanguage, 'search.noMatches')) + '</div>');
     searchResultsEl.hidden = false;
     return;
   }
   const rows = searchHits.map((h, i) =>
-    '<button class="search-result' + (i === searchSel ? ' is-sel' : '') + '" type="button" role="option" data-sr-index="' + i + '">' +
-    '<span class="search-result-type">' + SEARCH_TYPE_LABEL[h.type] + '</span>' +
+    '<button class="search-result' + (i === searchSel ? ' is-sel' : '') + (h.evidence?.reusable === false ? ' needs-reverify' : '') + '" type="button" role="option" data-sr-index="' + i + '">' +
+    '<span class="search-result-type">' + escapeHtml(uiText(activeLanguage, SEARCH_TYPE_KEY[h.type])) + '</span>' +
     '<span class="search-result-title">' + escapeHtml(h.title) + '</span>' +
     (h.subtitle ? '<span class="search-result-sub">' + escapeHtml(h.subtitle) + '</span>' : '') +
+    (h.snippet ? '<span class="search-result-snippet">' + escapeHtml(excerptAround(h.snippet, searchInput.value, 180)) + '</span>' : '') +
+    (h.evidence?.reusable === false ? '<span class="search-result-reverify">' + escapeHtml(activeLanguage === 'ko' ? '실시간 재검증 필요' : 'Reverify live') + (h.evidence.reuse_block ? ' · ' + escapeHtml(evidenceEnumLabel(h.evidence.reuse_block, activeLanguage)) : '') + '</span>' : '') +
     '</button>',
   ).join('');
   setSafeContent(searchResultsEl, rows);
@@ -6247,7 +6780,27 @@ async function runGlobalSearch(query: string): Promise<void> {
     return;
   }
   const corpus = await buildSearchCorpus();
-  searchHits = corpus
+  const typeFilter = (document.getElementById('searchTypeFilter') as HTMLSelectElement | null)?.value || '';
+  const confidenceFilter = (document.getElementById('searchConfidenceFilter') as HTMLSelectElement | null)?.value || '';
+  const tierFilter = (document.getElementById('searchTierFilter') as HTMLSelectElement | null)?.value || '';
+  const languageFilter = (document.getElementById('searchLanguageFilter') as HTMLSelectElement | null)?.value || '';
+  const evidenceHits = corpus.filter((hit): hit is SearchHit & { evidence: EvidenceSearchEntry } => Boolean(hit.evidence));
+  const rankedEvidence = searchEvidence(
+    evidenceHits.map((hit) => hit.evidence),
+    query,
+    {
+      type: typeFilter as EvidenceSearchEntry['type'] || undefined,
+      confidence: confidenceFilter || undefined,
+      sourceTier: tierFilter || undefined,
+      language: languageFilter || undefined,
+    },
+    80,
+  );
+  const legacyHits = corpus
+    .filter((hit) => !hit.evidence)
+    .filter((hit) => !typeFilter || hit.type === typeFilter)
+    // Evidence-only filters cannot truthfully be applied to legacy digest/Twitter records.
+    .filter(() => !confidenceFilter && !tierFilter && !languageFilter)
     .map((h) => {
       const t = h.title.toLowerCase();
       const score = t.startsWith(q) ? 3 : t.includes(q) ? 2 : h.hay.includes(q) ? 1 : 0;
@@ -6255,8 +6808,17 @@ async function runGlobalSearch(query: string): Promise<void> {
     })
     .filter((x) => x.score > 0)
     .sort((a, b) => b.score - a.score || a.h.title.length - b.h.title.length)
-    .slice(0, 24)
     .map((x) => x.h);
+  const hitByEvidenceId = new Map(evidenceHits.map((hit) => [hit.evidence.id, hit]));
+  const rankedHits = rankedEvidence.flatMap((entry): SearchHit[] => {
+    const hit = hitByEvidenceId.get(entry.id);
+    return hit ? [hit] : [];
+  });
+  searchHits = [
+    ...rankedHits,
+    ...legacyHits,
+  ]
+    .slice(0, 24);
   searchSel = searchHits.length ? 0 : -1;
   if (searchCountEl) searchCountEl.textContent = searchHits.length ? String(searchHits.length) : '';
   renderSearchHits();
@@ -6303,6 +6865,11 @@ function activateSearchHit(h: SearchHit): void {
       syncTabUi();
       load();
     }
+    return;
+  }
+  if (h.type === 'claim') {
+    const path = h.slug.startsWith('/') ? h.slug : '/research';
+    if (parseRoute(path)) load();
     return;
   }
   activeTab = h.type; // 'research' | 'wiki'
@@ -6372,17 +6939,91 @@ searchInput.addEventListener('input', () => {
   if (searchDebounceId !== null) window.clearTimeout(searchDebounceId);
   searchDebounceId = window.setTimeout(() => { void runGlobalSearch(searchInput.value); }, 120);
 });
+document.querySelectorAll<HTMLSelectElement>('.search-filters select').forEach((select) => {
+  select.addEventListener('change', () => { void runGlobalSearch(searchInput.value); });
+});
 
-languageSwitch?.addEventListener('click', (e) => {
+function bindWatchlistActions(root: ParentNode): void {
+  root.querySelectorAll<HTMLButtonElement>('[data-watch-topic]').forEach((button) => {
+    if (button.dataset.boundWatchlist === 'true') return;
+    button.dataset.boundWatchlist = 'true';
+    button.addEventListener('click', () => {
+      const topic = normalizeTopic(button.dataset.watchTopic || '');
+      if (!topic) return;
+      const exists = watchlist.topics.includes(topic);
+      watchlist = {
+        ...watchlist,
+        topics: exists ? watchlist.topics.filter((item) => item !== topic) : [...watchlist.topics, topic],
+      };
+      writeWatchlist(watchlist);
+      button.classList.toggle('is-active', !exists);
+      button.setAttribute('aria-pressed', String(!exists));
+      button.textContent = `${!exists ? '★' : '+'} ${topic.replace(/-/g, ' ')}`;
+    });
+  });
+  root.querySelectorAll<HTMLButtonElement>('[data-share-watchlist]').forEach((button) => {
+    if (button.dataset.boundWatchlist === 'true') return;
+    button.dataset.boundWatchlist = 'true';
+    button.addEventListener('click', async () => {
+      const path = watchlistSharePath(watchlist.topics, location.pathname, activeLanguage);
+      const url = new URL(path, PUBLIC_SITE_ORIGIN).href;
+      try {
+        await navigator.clipboard.writeText(url);
+        button.textContent = activeLanguage === 'ko' ? '링크 복사됨' : 'Link copied';
+      } catch {
+        history.replaceState(history.state, '', path);
+        button.textContent = activeLanguage === 'ko' ? '주소에 저장됨' : 'Saved in URL';
+      }
+    });
+  });
+}
+
+languageToggle?.addEventListener('click', () => {
+  setLanguageMenuOpen(languageMenu?.hasAttribute('hidden') ?? true, true);
+});
+
+languageToggle?.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    setLanguageMenuOpen(true, true);
+  }
+});
+
+languageMenu?.addEventListener('click', (e) => {
   const btn = (e.target as HTMLElement).closest('[data-language]') as HTMLButtonElement | null;
   if (!btn) return;
   const language = btn.dataset.language === 'ko' ? 'ko' : 'en';
+  setLanguageMenuOpen(false);
+  languageToggle?.focus();
   if (language === activeLanguage) return;
   activeLanguage = language;
   storeLanguage(activeLanguage);
   researchDocCache = null;
+  searchCorpus = null;
   syncLanguageUi(selectedSlug ? findResearchRow(selectedSlug) : null);
-  load();
+  void load();
+});
+
+languageMenu?.addEventListener('keydown', (e) => {
+  const options = languageMenuOptions();
+  const current = options.indexOf(document.activeElement as HTMLButtonElement);
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    setLanguageMenuOpen(false);
+    languageToggle?.focus();
+  } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    const direction = e.key === 'ArrowDown' ? 1 : -1;
+    options[(current + direction + options.length) % options.length]?.focus();
+  } else if (e.key === 'Home' || e.key === 'End') {
+    e.preventDefault();
+    options[e.key === 'Home' ? 0 : options.length - 1]?.focus();
+  }
+});
+
+document.addEventListener('click', (e) => {
+  if (languageMenu?.hidden || languageSwitch?.contains(e.target as Node)) return;
+  setLanguageMenuOpen(false);
 });
 
 // Retry button + research index navigation (event delegation on content)
@@ -6716,10 +7357,11 @@ document.querySelectorAll<HTMLAnchorElement>('.tab').forEach((btn) => {
     document.body.classList.toggle('tab-wiki', activeTab === 'wiki');
     document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
     document.body.classList.toggle('tab-agents', activeTab === 'agents');
+    document.body.classList.toggle('tab-pricing', activeTab === 'pricing');
     // Re-probe availability for current month with new tab (date tabs only).
     // The models/wiki tabs don't use date routing, so skip probing there too —
     // it'd just paint dots on a calendar that's hidden anyway.
-    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader' && activeTab !== 'agents') {
+    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader' && activeTab !== 'agents' && activeTab !== 'pricing') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -6740,7 +7382,8 @@ document.body.classList.toggle('tab-models', currentTab === 'models');
 document.body.classList.toggle('tab-wiki', currentTab === 'wiki');
 document.body.classList.toggle('tab-focus-reader', currentTab === 'focusReader');
 document.body.classList.toggle('tab-agents', currentTab === 'agents');
-if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader' && currentTab !== 'agents') {
+document.body.classList.toggle('tab-pricing', currentTab === 'pricing');
+if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader' && currentTab !== 'agents' && currentTab !== 'pricing') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();

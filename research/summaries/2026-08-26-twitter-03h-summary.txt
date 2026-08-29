@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-08-26 03:59:18 UTC
+
+CYCLE: AI's power constraint gets a unicorn, and Tesla names the xAI model in its fleet.
+
+TOP STORIES:
+• Emerald AI closes $150M Series A at $1.05B for data-center power flexibility; cap table is Nvidia, Siemens, GE Vernova, JERA, Aramco - almost entirely the electricity supply side [⚠]
+• Tesla confirms from its own account that the Summer Release runs Grok Think Fast 2.0, a tier xAI has never documented [⚠]
+
+ALSO: Google ships Gemini Enterprise verticals for Legal and Financial Services, connecting to Harvey and Legora; Accio open-sources CommerceAgentBench, scored on execution traces rather than agent self-report.
+
+WATCH: Whether xAI documents Grok Think Fast 2.0 and Tesla states on-device vs cloud inference.
+
+Full update on GitHub.
