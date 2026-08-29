@@ -1,6 +1,6 @@
 # Twitter Model A/B Eval
 
-`twitter-model-ab.yml` runs a controlled head-to-head between two models on
+`twitter-model-ab.yml` runs an on-demand controlled head-to-head between two models on
 the pipeline's REAL Twitter-summary workload, cleanly separating model
 capability from harness/rescue effects:
 
