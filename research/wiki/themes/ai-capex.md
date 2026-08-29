@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24) — as US opposition to data centers hits 75% and NVIDIA's financing is said to depend on lenders treating GPUs as bankable assets (2026-08-25).
+description: The cross-cutting narrative of a historically large, debt- and equity-financed GPU/TPU buildout — now including Lambda's $1B private-debt chip purchase for a Microsoft lease, Marvell's record FY27Q2 ($2.739B, data center +46%) and raised FY27/FY28 outlook, Cognition's ~$900M ARR against a possible $800M Nvidia-server burn, and a16z's Machine Age Fund arguing the bottleneck has moved south of the model to chips, power, cooling, memory and interconnect (2026-08-29).
 created_at: 2026-05-24
-timestamp: 2026-08-26T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
@@ -880,3 +881,41 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   The runs are **OpenAI-submitted and unaudited**, so treat it as the custom-
   vs-merchant-silicon debate's latest data point, not a settled result (OpenAI
   blog, SemiAnalysis; ARA daily digest 2026-08-26). See [[model-specific-silicon]].
+
+## Lambda debt, Marvell's record quarter, and a16z's Machine Age (2026-08-29)
+
+- **[[neocloud]] Lambda secured $1B in private debt to buy Nvidia chips
+  and lease them to [[microsoft|Microsoft]] (2026-08-29).** Another
+  take-or-pay-shaped loan in the string this theme has tracked —
+  neocloud borrows to buy [[nvidia|NVIDIA]] silicon, then rents the
+  capacity to a hyperscaler. Capital intensity, not a new structure
+  (TechCrunch; ARA daily digest 2026-08-29).
+- **Marvell's FY27Q2 print: $2.739B, +37% YoY, data center +46%
+  (2026-08-29).** The SEC 8-K (filed 2026-08-27) set a record quarter;
+  CEO Matt Murphy said "AI-related bookings remain exceptionally
+  robust," guided **Q3 to $3.15B ±5%**, and **again raised the FY27
+  and FY28 revenue outlook**. Read against this page's earlier
+  Broadcom/TPU and Google-warrant-on-Marvell threads: custom-silicon
+  demand is still printing in the interconnect/PHY layer, not only
+  at the GPU vendors (SEC 8-K; ARA daily digest 2026-08-29). See
+  [[google]] and [[broadcom]].
+- **[[cognition-ai|Cognition]] is generating about $900M in
+  annualized revenue — more than triple its start-of-year level —
+  while potentially burning $800M this year buying Nvidia servers
+  (2026-08-29).** The ARR number is consistent with the ~$1B run-rate
+  already on that page (2026-08-13); the new fact is the **cash-burn
+  side of the same growth** (The Information via X; ARA daily digest
+  2026-08-29). See [[cognition-ai]] and [[nvidia]].
+- **a16z announced the Machine Age Fund (2026-08-29).** The thesis:
+  the bottleneck has moved **south of the model** to chips, power,
+  cooling, memory and interconnect, with **supply booked into
+  2027–2028** — a VC restatement of the interconnection/memory/ABF
+  constraints this theme has been accumulating (a16z on YouTube; ARA
+  daily digest 2026-08-29).
+- **[[openrouter]] attracted nine prospective buyers before selling
+  to Stripe for more than $7B (2026-08-29).** A read on how
+  aggressively model-routing infrastructure is being priced; the
+  acquisition itself is already tracked on [[openrouter]]
+  (The Information via X; ARA daily digest 2026-08-29). The
+  circulating **$60B** [[spacex]]–[[cursor]] figure still has **no
+  named source** in today's coverage.
