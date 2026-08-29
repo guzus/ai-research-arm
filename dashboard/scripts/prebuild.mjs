@@ -851,10 +851,135 @@ function buildSearchIndex() {
   );
 }
 
+// Public, reader-facing evidence artifacts. The canonical claim store remains
+// an agent memory and is never treated as truth by the dashboard. We publish a
+// deliberately narrowed projection: enough provenance for a reader to inspect
+// a claim, but no formulas, internal adjudication state, or filesystem paths.
+function plainText(value) {
+  return String(value || '')
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/^---[\s\S]*?---\s*/m, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/[#>*_`~|]/g, ' ')
+    .replace(/&(?:amp|#38);/g, '&')
+    .replace(/&(?:lt|#60);/g, '<')
+    .replace(/&(?:gt|#62);/g, '>')
+    .replace(/&(?:quot|#34);/g, '"')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function buildEvidenceArtifacts() {
+  const entries = [];
+  let publicClaims = [];
+  let researchRows = [];
+  const articleSlugByStem = new Map();
+  try {
+    const parsed = JSON.parse(readFileSync(join(researchSrc, 'generative', 'index.json'), 'utf8'));
+    researchRows = Array.isArray(parsed) ? parsed : [];
+    for (const row of researchRows) {
+      if (row?.file && row?.slug) articleSlugByStem.set(String(row.file).replace(/\.html$/i, ''), row.slug);
+    }
+  } catch {
+    researchRows = [];
+  }
+  try {
+    const path = join(researchSrc, 'claims', 'index.json');
+    const parsed = JSON.parse(readFileSync(path, 'utf8'));
+    publicClaims = (Array.isArray(parsed.claims) ? parsed.claims : [])
+      .filter((claim) => claim && typeof claim.claim === 'string' && typeof claim.article === 'string')
+      .map((claim) => ({
+        article: claim.article,
+        article_title: claim.article_title || claim.article,
+        article_created_at: claim.article_created_at || null,
+        key: claim.key || `${claim.article}#${claim.id || 'claim'}`,
+        claim: claim.claim,
+        type: claim.type || 'other',
+        confidence: claim.confidence || 'unknown',
+        risk: claim.risk || null,
+        as_of: claim.as_of || null,
+        reusable: claim.reusable === true,
+        reuse_block: claim.reuse_block || null,
+        source_tiers: Array.isArray(claim.source_tiers) ? claim.source_tiers : [],
+        source_urls: Array.isArray(claim.source_urls) ? claim.source_urls : [],
+        hosts: Array.isArray(claim.hosts) ? claim.hosts : [],
+      }));
+    const dir = join(publicResearch, 'claims');
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, 'public.json'), JSON.stringify({ generated_at: new Date().toISOString(), contract: 'evidence-metadata-not-independent-truth', claims: publicClaims }));
+    for (const claim of publicClaims) {
+      entries.push({
+        id: claim.key,
+        type: 'claim',
+        title: claim.article_title,
+        body: claim.claim,
+        url: `/research/${articleSlugByStem.get(claim.article) || ''}`,
+        date: claim.as_of || claim.article_created_at || '',
+        confidence: claim.confidence,
+        risk: claim.risk || '',
+        sourceTier: claim.source_tiers[0] || '',
+        sourceTiers: claim.source_tiers,
+        language: 'en',
+      });
+    }
+  } catch (e) {
+    console.warn('prebuild: public claim evidence skipped:', e?.message || e);
+  }
+
+  try {
+    for (const row of researchRows) {
+      const path = join(researchSrc, 'generative', row.file || '');
+      if (!row?.slug || !existsSync(path)) continue;
+      entries.push({ id: `research:${row.slug}`, type: 'research', title: row.title || row.slug, body: plainText(readFileSync(path, 'utf8')), url: `/research/${row.slug}`, date: row.created_at || '', language: row.language || 'en' });
+      for (const [language, translation] of Object.entries(row.translations || {})) {
+        const translatedPath = join(researchSrc, 'generative', translation.file || '');
+        if (!existsSync(translatedPath)) continue;
+        entries.push({ id: `research:${row.slug}:${language}`, type: 'research', title: translation.title || row.title || row.slug, body: plainText(readFileSync(translatedPath, 'utf8')), url: `/research/${row.slug}`, date: translation.created_at || row.created_at || '', language });
+      }
+    }
+  } catch (e) {
+    console.warn('prebuild: research evidence index skipped:', e?.message || e);
+  }
+
+  try {
+    const index = JSON.parse(readFileSync(join(researchSrc, 'wiki', 'index.json'), 'utf8'));
+    for (const page of Array.isArray(index.pages) ? index.pages : []) {
+      const path = join(researchSrc, 'wiki', page.file || '');
+      if (!page?.slug || !existsSync(path)) continue;
+      entries.push({ id: `wiki:${page.slug}`, type: 'wiki', title: page.title || page.slug, body: plainText(readFileSync(path, 'utf8')), url: `/wiki/${page.slug}`, date: page.updated_at || '', entity: page.slug, language: 'en' });
+      const translation = page.translations?.ko;
+      const translatedPath = translation?.file ? join(researchSrc, translation.file) : '';
+      if (translatedPath && existsSync(translatedPath)) entries.push({ id: `wiki:${page.slug}:ko`, type: 'wiki', title: translation.title || page.title || page.slug, body: plainText(readFileSync(translatedPath, 'utf8')), url: `/wiki/${page.slug}`, date: page.updated_at || '', entity: page.slug, language: 'ko' });
+    }
+  } catch (e) {
+    console.warn('prebuild: wiki evidence index skipped:', e?.message || e);
+  }
+
+  try {
+    for (const name of readdirSync(ticketsSrc).filter((file) => file.endsWith('.md')).sort()) {
+      const text = readFileSync(join(ticketsSrc, name), 'utf8');
+      const end = text.indexOf('\n---\n', 4);
+      if (!text.startsWith('---\n') || end < 0) continue;
+      const fm = yaml.load(text.slice(4, end));
+      if (!fm || typeof fm !== 'object' || !fm.slug) continue;
+      entries.push({ id: `model:${fm.slug}`, type: 'model', title: fm.title || fm.slug, body: plainText(`${text.slice(end + 5)} ${(fm.history || []).map((item) => item.change || '').join(' ')}`), url: `/models/forecast/${fm.slug}`, date: fm.updated_at || fm.created_at || '', entity: fm.company || '', language: 'en' });
+    }
+  } catch (e) {
+    console.warn('prebuild: model evidence index skipped:', e?.message || e);
+  }
+
+  writeFileSync(join(publicResearch, 'evidence-search.json'), JSON.stringify({ generated_at: new Date().toISOString(), entries }));
+  console.log(`prebuild: public evidence (${publicClaims.length} claims, ${entries.length} searchable records)`);
+}
+
 copyData();
 buildTwitterAbIndex();
 buildArmTimeline();
 buildTicketsIndex();
 buildManifest();
 buildSearchIndex();
+buildEvidenceArtifacts();
 await hydrateTweets().catch((e) => console.warn('prebuild: tweet hydration skipped:', e?.message || e));
