@@ -123,6 +123,7 @@ class Source:
     tags: tuple[str, ...]
     include_in_digest: bool
     notes: str = ""
+    enabled: bool = True
 
 
 @dataclasses.dataclass(frozen=True)
@@ -224,6 +225,7 @@ def load_sources(path: Path) -> list[Source]:
             tags=tuple(row.get("tags", [])),
             include_in_digest=bool(row.get("include_in_digest", True)),
             notes=row.get("notes", ""),
+            enabled=row.get("enabled", True),
         )
         if src.id in seen_ids:
             raise ValueError(f"duplicate source id: {src.id}")
@@ -231,8 +233,11 @@ def load_sources(path: Path) -> list[Source]:
             raise ValueError(f"{src.id}: invalid priority {src.priority!r}")
         if src.type not in TYPE_WEIGHT:
             raise ValueError(f"{src.id}: invalid type {src.type!r}")
+        if not isinstance(src.enabled, bool):
+            raise ValueError(f"{src.id}: enabled must be boolean")
         seen_ids.add(src.id)
-        sources.append(src)
+        if src.enabled:
+            sources.append(src)
     return sources
 
 
