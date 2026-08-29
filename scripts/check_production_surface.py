@@ -23,7 +23,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Callable, Iterable, Optional
 
 
@@ -74,13 +74,32 @@ HTML_HEADERS = (
     ("cache-control", "max-age=0"),
 )
 
+KST_TODAY = datetime.now(timezone(timedelta(hours=9))).date().isoformat()
+
 ROUTE_PROBES: tuple[Probe, ...] = (
     Probe("home", "/", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS),
     Probe("today", "/today", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS),
+    # Follows the temporary section-alias redirect when KST has advanced ahead
+    # of the deployed UTC digest; either way the user must reach HTML, not 404.
+    Probe("today-kst-current", f"/today/{KST_TODAY}", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS),
     Probe("twitter", "/twitter", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS),
     Probe("models", "/models", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS),
     Probe("research", "/research", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS),
     Probe("wiki", "/wiki", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS),
+    Probe(
+        "pricing",
+        "/pricing",
+        content_type_prefix="text/html",
+        body_contains="<title",
+        required_headers=HTML_HEADERS + (("x-robots-tag", "noindex, nofollow"),),
+    ),
+    Probe(
+        "pricing-trailing-slash",
+        "/pricing/",
+        content_type_prefix="text/html",
+        body_contains="<title",
+        required_headers=HTML_HEADERS + (("x-robots-tag", "noindex, nofollow"),),
+    ),
     Probe("manifest", "/research/manifest.json", content_type_prefix="application/json", body_contains='"generatedAt"'),
     Probe(
         "evidence-search-contract",
@@ -101,6 +120,8 @@ ROUTE_PROBES: tuple[Probe, ...] = (
     Probe("feed", "/feed.xml", content_type_prefix="text/xml", body_contains="<rss"),
     Probe("llms", "/llms.txt", content_type_prefix="text/plain", body_contains="#"),
     Probe("real-404", "/__ara_synthetic_missing__", expected_status=404),
+    Probe("malformed-today-404", "/today/not-a-date", expected_status=404),
+    Probe("missing-asset-404", "/assets/__ara_synthetic_missing__.js", expected_status=404),
 )
 
 # Cloudflare policy observed and documented in CLAUDE.md rule 3.  These are

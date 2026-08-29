@@ -33,7 +33,7 @@ for attempt in {1..30}; do
   sleep 1
 done
 
-for route in / /today /twitter /models /research /wiki; do
+for route in / /today /twitter /models /research /wiki /pricing /pricing/; do
   headers="$(mktemp)"
   body="$(mktemp)"
   curl -fsS --max-time 10 -D "$headers" -o "$body" "$base$route"
@@ -44,12 +44,45 @@ for route in / /today /twitter /models /research /wiki; do
   rm -f "$headers" "$body"
 done
 
+for route in /pricing /pricing/; do
+  pricing_headers="$(mktemp)"
+  curl -fsS --max-time 10 -D "$pricing_headers" -o /dev/null "$base$route"
+  grep -Eiq '^x-robots-tag: noindex, nofollow' "$pricing_headers"
+  rm -f "$pricing_headers"
+done
+
 manifest_headers="$(mktemp)"
 manifest_body="$(mktemp)"
 curl -fsS --max-time 10 -D "$manifest_headers" -o "$manifest_body" "$base/research/manifest.json"
 grep -Eiq '^content-type: application/json' "$manifest_headers"
 grep -q '"generatedAt"' "$manifest_body"
+
+# A generated dated page must win over the temporary missing-date redirect.
+latest_today="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["today"][-1])' "$manifest_body")"
 rm -f "$manifest_headers" "$manifest_body"
+generated_headers="$(mktemp)"
+generated_body="$(mktemp)"
+curl -fsS --max-time 10 -D "$generated_headers" -o "$generated_body" "$base/today/$latest_today"
+grep -Eiq '^content-type: text/html' "$generated_headers"
+grep -Fq "$latest_today" "$generated_body"
+if grep -Eiq '^location:' "$generated_headers"; then
+  echo "generated Today page redirected unexpectedly" >&2
+  exit 1
+fi
+rm -f "$generated_headers" "$generated_body"
+
+status="$(curl -sS --max-time 10 -o /dev/null -w '%{http_code}' "$base/today/$latest_today/")"
+test "$status" = 200
+
+# A valid but unpublished date redirects temporarily to the generated alias;
+# no-store ensures the future artifact can take over without a cached redirect.
+missing_headers="$(mktemp)"
+status="$(curl -sS --max-time 10 -D "$missing_headers" -o /dev/null -w '%{http_code}' "$base/today/2999-12-31")"
+test "$status" = 307
+grep -Eiq '^location: /today' "$missing_headers"
+grep -Eiq '^cache-control: no-store' "$missing_headers"
+grep -Eiq '^cdn-cache-control: no-store' "$missing_headers"
+rm -f "$missing_headers"
 
 for route in /robots.txt /sitemap.xml /feed.xml /llms.txt; do
   curl -fsS --max-time 10 "$base$route" >/dev/null
@@ -57,5 +90,10 @@ done
 
 status="$(curl -sS --max-time 10 -o /dev/null -w '%{http_code}' "$base/__ara_smoke_missing__")"
 test "$status" = 404
+
+for route in /today/not-a-date /assets/__ara_smoke_missing__.js; do
+  status="$(curl -sS --max-time 10 -o /dev/null -w '%{http_code}' "$base$route")"
+  test "$status" = 404
+done
 
 echo "production Docker/Caddy smoke passed at $base"
