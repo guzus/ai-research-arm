@@ -35,21 +35,27 @@ and `stale_lanes` output remain compatibility fields; `stale` now means the
 same thing as the new aggregate alert bit, so a degraded producer cannot emit
 a false healthy heartbeat. New consumers should use `availability`,
 `producer_state`, `alert_lanes`, `unavailable_lanes`, and `degraded_lanes`.
+Producer-signal uncertainty is separately listed in `producer_unknown_lanes`,
+so an `available/unknown` lane can never disappear between the availability
+and degraded bucket lists.
 
 Supported executable signals are intentionally narrow:
 
-- `commit_subject` uses a lane-specific, fully anchored regular expression.
-  The digest and Twitter recovery subjects are stable workflow contracts;
-  generic commits merely discussing a fallback do not match. A signal may
-  declare broader `paths` than freshness itself, allowing Twitter's recovery
-  status commit to expose restored-baseline degradation without letting that
-  status heartbeat make the public digest look fresh.
+- `commit_subject` is available for lane-specific, fully anchored workflow
+  contracts, but current fallback state uses durable artifact markers so a
+  later audio/spoken-script commit cannot mask a degraded digest.
 - `json_boolean_any` resolves registry-declared dotted selectors with `*`
   collection wildcards. Market `stale` flags therefore expose carry-forward
   directly from their public artifact rather than from a commit-message guess.
 - `text_regex` matches a fully specified producer field in the latest matching
-  artifact. The blog lane's numeric `Fetch errors` summary makes partial-source
+  artifact. The digest fallback banner persists across same-path audio updates;
+  the blog lane's numeric `Fetch errors` summary makes partial-source
   publication visible without guessing from natural-language article copy.
+
+Twitter restore-baseline state comes from the latest status artifact's boolean
+`recovery` field. Status remains broader producer-health evidence only: it is
+not added to `freshness_paths`, so a recovery heartbeat cannot make an unchanged
+public digest available.
 
 A configured signal whose git, JSON, or text evidence cannot be read is
 producer-`unknown` and alerts. Exit codes remain `0` for all available/healthy,

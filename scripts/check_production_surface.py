@@ -200,6 +200,7 @@ def validate_json_contract(contract: str, body: str) -> Optional[str]:
         entries, problem = _object_array(payload, "entries")
         if problem:
             return problem
+        claim_count = 0
         for index, entry in enumerate(entries or []):
             path = f"$.entries[{index}]"
             if not isinstance(entry, dict):
@@ -207,23 +208,36 @@ def validate_json_contract(contract: str, body: str) -> Optional[str]:
             if not isinstance(entry.get("type"), str) or not entry["type"]:
                 return f"{path}.type must be a non-empty string"
             if entry["type"] == "claim":
+                claim_count += 1
                 if not isinstance(entry.get("reusable"), bool):
                     return f"{path}.reusable must be a boolean for claim entries"
+                if entry["reusable"] is False and (
+                    not isinstance(entry.get("reuse_block"), str) or not entry["reuse_block"].strip()
+                ):
+                    return f"{path}.reuse_block must be a non-empty string when reusable=false"
                 for key in ("id", "title", "body", "url"):
                     if not isinstance(entry.get(key), str) or not entry[key]:
                         return f"{path}.{key} must be a non-empty string for claim entries"
+        if claim_count == 0:
+            return "$.entries must contain at least one claim entry"
         return None
 
     if contract == "public-claims-v1":
         claims, problem = _object_array(payload, "claims")
         if problem:
             return problem
+        if not claims:
+            return "$.claims must contain at least one claim"
         for index, claim in enumerate(claims or []):
             path = f"$.claims[{index}]"
             if not isinstance(claim, dict):
                 return f"{path} must be an object"
             if not isinstance(claim.get("reusable"), bool):
                 return f"{path}.reusable must be a boolean"
+            if claim["reusable"] is False and (
+                not isinstance(claim.get("reuse_block"), str) or not claim["reuse_block"].strip()
+            ):
+                return f"{path}.reuse_block must be a non-empty string when reusable=false"
             for key in ("article", "claim"):
                 if not isinstance(claim.get(key), str) or not claim[key]:
                     return f"{path}.{key} must be a non-empty string"

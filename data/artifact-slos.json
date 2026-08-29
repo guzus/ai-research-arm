@@ -45,12 +45,11 @@
       ],
       "degraded_policy": "restore-baseline-and-fail",
       "degraded_signal": {
-        "kind": "commit_subject",
+        "kind": "json_boolean_any",
         "label": "restore-baseline",
-        "pattern": "^Twitter deterministic fallback \\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}(?::\\d{2})? UTC(?: \\(#\\d+\\))?$",
-        "paths": [
-          "research/twitter/[0-9]*.md",
-          "research/twitter/status/*.json"
+        "path": "research/twitter/status/[0-9]*.json",
+        "selectors": [
+          "recovery"
         ]
       },
       "content": {
@@ -201,9 +200,10 @@
       ],
       "degraded_policy": "labelled-deterministic-fallback",
       "degraded_signal": {
-        "kind": "commit_subject",
+        "kind": "text_regex",
         "label": "deterministic-fallback",
-        "pattern": "^Daily digest deterministic fallback \\d{4}-\\d{2}-\\d{2}(?: \\(#\\d+\\))?$"
+        "path": "research/digest/[0-9]*-digest.md",
+        "pattern": "(?m)^> \\*\\*Deterministic fallback digest\\.\\*\\*"
       },
       "content": {
         "primary_glob": "research/digest/[0-9]*-digest.md",
