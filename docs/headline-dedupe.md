@@ -43,7 +43,8 @@ Two `dedupe_headline_alerts.py` subcommands bracket the send:
 The ledger (`research/summaries/twitter-announced-history.json`) is committed
 back to `main` each cycle, so the next run sees the updated history. Each
 record is `{headline, source, url, category, delivered_at}` where
-`delivered_at` is `"YYYY-MM-DD HH:MM UTC"`.
+`delivered_at` is the workflow's current `"YYYY-MM-DD HH:MM:SS UTC"` format;
+legacy `"YYYY-MM-DD HH:MM UTC"` records remain parseable.
 
 ## The decision: `duplicate_reason(item, history, history_keys, now)`
 
@@ -66,7 +67,9 @@ flowchart TD
     G -->|yes| R2([duplicate_headline]):::supp
     G -->|no| H{"Any record with the SAME url<br/>and max-containment/Jaccard ≥ 0.62?"}
     H -->|yes| R3([duplicate_source_similar_headline]):::supp
-    H -->|no| Q
+    H -->|no| I{"now provided and same external key<br/>was delivered strictly before now?"}
+    I -->|yes| R3D([duplicate_rebroadcast]):::supp
+    I -->|no| Q
 
     %% Gate: cross-source pass only runs when a reference time is supplied
     Q{now provided?} -->|"no — legacy / test caller"| SEND
@@ -90,6 +93,7 @@ flowchart TD
 | 1a | `duplicate_story_key` | same non-empty `story_key` | explicit story grouping (**inert today** — the agent's schema emits no `story_key`; kept for when it does) |
 | 1b | `duplicate_headline` | identical **normalized** headline, **any** source | verbatim re-posts / cross-account copies |
 | 1c | `duplicate_source_similar_headline` | **same URL** + `max(containment, jaccard) ≥ 0.62` | one author rephrasing their own tweet |
+| 1d | `duplicate_rebroadcast` | same external key + parseable `delivered_at < now` | a prior-run tweet/status or normalized URL re-headlined at any wording overlap |
 | 2 | `duplicate_cross_source_similar_headline` | **different URL** + in 14-day window + `≥ 4` shared tokens + `Jaccard ≥ 0.5` | **the same story from a different account, paraphrased** (the leak this layer was added to close) |
 
 **Normalization** (`normalize_headline`): NFKC, uppercase, strip URLs, drop
@@ -118,17 +122,27 @@ never re-tokenizes history.
    gap (0.375 there), letting genuine "more details" updates through. Pass 1c
    keeps the looser `max()` because an identical URL already proves same source.
 
-2. **Pass 2 is inert without `now`.** The recency window needs a reference
-   time. When `duplicate_reason` is called with no `now` (the 2-arg legacy/test
-   signature), Pass 2 is skipped entirely — existing callers are byte-for-byte
-   unchanged. `filter_headlines` derives `now` from the run `--timestamp`; if
-   that is malformed, Pass 2 simply doesn't run (no crash).
+2. **Passes 1d and 2 are inert without `now`.** Both need a trusted run
+   boundary. When `duplicate_reason` is called with no `now` (the 2-arg
+   legacy/test signature), both are skipped. `filter_headlines` derives `now`
+   from the run `--timestamp`; if that is malformed, both passes simply do not
+   run (no crash). Pass 1d uses strict `delivered_at < now`, not `<=`: accepted
+   same-cycle items are appended to in-memory history at exactly `now`, and one
+   thread may legitimately yield multiple distinct claims in that cycle.
 
 3. **Per-record timestamps fail OPEN.** A history record whose `delivered_at`
-   is missing or unparseable is treated as **outside** the window → it cannot
-   suppress an incoming alert. The cost of a parse bug is at worst one
-   duplicate, never a swallowed headline. (Whole-file JSON corruption still
-   fails **closed** — `load_json_list` raises `SystemExit`.)
+   is missing, unparseable, equal to the current run, or in the future cannot
+   trigger Pass 1d. Missing/unparseable timestamps are also treated as outside
+   the Pass-2 window. The cost of a timestamp bug is at worst one duplicate,
+   never a swallowed headline. (Whole-file JSON corruption still fails
+   **closed** — `load_json_list` raises `SystemExit`.)
+
+4. **Pass 1d has no separate recency window.** Within the retained 3,000-row
+   alert ledger, an external status ID or normalized URL is durable identity:
+   re-headlining it later does not make it a new alert. This deliberately favors
+   duplicate prevention over repeat coverage. A publisher that reuses one
+   canonical URL for genuinely different stories can therefore be suppressed;
+   producers should emit story-specific canonical URLs when available.
 
 **In-batch behavior:** `filter_headlines` appends each accepted item back into
 `history` (stamped with the run `now`) as it iterates, so two paraphrases of

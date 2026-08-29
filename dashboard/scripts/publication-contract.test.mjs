@@ -12,7 +12,7 @@ import {
 const repoRoot = join(import.meta.dirname, '..', '..');
 
 test('publication contract recognizes only the exact operational fallback banner', () => {
-  const fallback = readFileSync(join(repoRoot, 'research/digest/2026-08-29-digest.md'), 'utf8');
+  const fallback = '# AI Daily Digest - 2026-08-30\n\n> **Deterministic fallback digest.** Source lanes were unavailable.';
   assert.equal(isDeterministicFallbackSource(fallback), true);
   assert.equal(isDeterministicFallbackSource('# Editorial\n\nWe audited scripts/deterministic_daily_digest.py.'), false);
   assert.equal(isDeterministicFallbackSource('# Editorial\n\nTop verbatim excerpt from each covered lane.'), false);
@@ -25,6 +25,15 @@ test('publication contract recognizes only the exact operational fallback banner
   assert.equal(classify(`${'\n'.repeat(10)}> **Deterministic fallback digest.**`), false);
 });
 
+test('recovered editorial digests are no longer treated as operational fallbacks', () => {
+  const recovered = readFileSync(join(repoRoot, 'research/digest/2026-08-29-digest.md'), 'utf8');
+  assert.equal(isDeterministicFallbackSource(recovered), false);
+
+  const classifier = join(repoRoot, 'scripts/digest_publication_state.py');
+  const classified = spawnSync('python3', [classifier, '-'], { input: recovered, encoding: 'utf8' });
+  assert.equal(classified.status, 1);
+});
+
 test('public projection carries status only and never copies fallback source material', () => {
   const projected = unavailableDigestMarkdown('2026-08-29');
   assert.equal(isPublicUnavailableDigest(projected), true);
@@ -32,7 +41,7 @@ test('public projection carries status only and never copies fallback source mat
   assert.doesNotMatch(projected, /Verbatim excerpts|research\/summaries|deterministic_daily_digest/i);
 });
 
-test('historical audio cleanup derives only the seven exact fallback-date keys', () => {
+test('historical audio cleanup derives only the six exact fallback-date keys', () => {
   const cleanup = spawnSync('bash', [join(repoRoot, 'scripts/delete_fallback_audio.sh')], {
     cwd: repoRoot,
     env: { ...process.env, FALLBACK_AUDIO_DRY_RUN: '1' },
@@ -47,7 +56,6 @@ test('historical audio cleanup derives only the seven exact fallback-date keys',
     'audio/2026-08-10-digest.mp3',
     'audio/2026-08-17-digest.mp3',
     'audio/2026-08-28-digest.mp3',
-    'audio/2026-08-29-digest.mp3',
   ]);
 });
 
