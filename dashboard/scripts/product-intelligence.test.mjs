@@ -1,0 +1,70 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+const root = join(import.meta.dirname, '..');
+
+async function importTs(relativePath) {
+  return import(new URL(`../${relativePath}`, import.meta.url));
+}
+
+test('watchlists are account-free, normalized, bounded, and shareable', async () => {
+  const mod = await importTs('src/product-intelligence.ts');
+  const memory = new Map();
+  const storage = { getItem: (key) => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value) };
+  mod.writeWatchlist({ topics: ['Anthropic', 'anthropic', 'GPU Compute'], lastVisit: '2026-08-29T00:00:00Z' }, storage);
+  assert.deepEqual(mod.readWatchlist(storage).topics, ['anthropic', 'gpu-compute']);
+  assert.equal(mod.watchlistSharePath(['anthropic', 'gpu-compute'], '/wiki/anthropic', 'ko'), '/wiki/anthropic?watch=anthropic%2Cgpu-compute&lang=ko');
+  assert.deepEqual(mod.watchlistFromUrl('?watch=Anthropic,gpu%20compute'), ['anthropic', 'gpu-compute']);
+});
+
+test('evidence search applies trust and language filters before ranking', async () => {
+  const mod = await importTs('src/product-intelligence.ts');
+  const entries = [
+    { id: 'c1', type: 'claim', title: 'Anthropic revenue', body: 'Primary filing evidence', url: '/', confidence: 'high', sourceTier: 'primary', language: 'en' },
+    { id: 'c2', type: 'claim', title: 'Anthropic rumor', body: 'Secondary report', url: '/', confidence: 'low', sourceTier: 'secondary', language: 'en' },
+    { id: 'w1', type: 'wiki', title: '앤스로픽', body: '회사 지식', url: '/', language: 'ko' },
+  ];
+  assert.deepEqual(mod.searchEvidence(entries, 'anthropic', { confidence: 'high', sourceTier: 'primary' }).map((row) => row.id), ['c1']);
+  assert.deepEqual(mod.searchEvidence(entries, '', { language: 'ko' }).map((row) => row.id), ['w1']);
+});
+
+test('What changed DOM exposes reasoning, freshness, watch actions, and RSS without a new tab', async () => {
+  globalThis.location = new URL('https://ara.guzus.xyz/');
+  const mod = await importTs('src/render/product.ts');
+  const html = mod.renderWhatChanged([{
+    id: 'x', kind: 'digest', title: 'Model release', summary: 'A concise summary', why: 'It changes cost.', watch: 'Verify adoption.', confidence: 'high', freshness: '2026-08-29', href: '/today/2026-08-29', topics: ['anthropic'], changedAt: '2026-08-29T00:00:00Z',
+  }], { topics: ['anthropic'], lastVisit: '2026-08-28T00:00:00Z' }, 'en');
+  assert.match(html, /What changed\?/);
+  assert.match(html, /Why it matters/);
+  assert.match(html, /Watch next/);
+  assert.match(html, /Since your last visit/);
+  assert.match(html, /href="\/feed\.xml"/);
+  assert.match(html, /data-watch-topic="anthropic"/);
+  const degraded = mod.renderWhatChanged([], { topics: [], lastVisit: null }, 'en', true);
+  assert.match(degraded, /Degraded mode/);
+  assert.match(degraded, /not an editorial ranking/);
+  const nav = readFileSync(join(root, 'index.html'), 'utf8');
+  assert.equal((nav.match(/class="tab"/g) || []).length, 6);
+});
+
+test('reader evidence explicitly denies independent-truth status and shows reverify warnings', async () => {
+  globalThis.location = new URL('https://ara.guzus.xyz/');
+  const mod = await importTs('src/render/product.ts');
+  const html = mod.renderEvidenceDrawer([{ article: 'a', article_title: 'A', key: 'a#1', claim: 'A claim', type: 'metric', confidence: 'medium', risk: 'single-source', as_of: '2026-08-01', reusable: false, reuse_block: 'single-source', source_tiers: ['primary'], source_urls: ['https://example.com'] }], { language: 'en' });
+  assert.match(html, /never an independent source of truth/);
+  assert.match(html, /Reverify live/);
+  assert.match(html, /As of 2026-08-01/);
+  assert.match(html, /target="_blank" rel="noopener noreferrer"/);
+});
+
+test('product surfaces preserve loading/error paths and mobile containment', () => {
+  const main = readFileSync(join(root, 'src/main.ts'), 'utf8');
+  const css = readFileSync(join(root, 'src/style.css'), 'utf8');
+  assert.match(main, /if \(pricing === 'timeout'\)/);
+  assert.match(main, /showError\('Loading timed out'/);
+  assert.match(main, /else \{\s*showEmpty\(dateStr\);/);
+  assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.change-grid[\s\S]*grid-template-columns: 1fr/);
+  assert.match(css, /@media \(max-width: 420px\)[\s\S]*\.search-filters \{ grid-template-columns: 1fr/);
+});
