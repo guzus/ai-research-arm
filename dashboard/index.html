@@ -150,6 +150,12 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
           </button>
         </div>
+        <div class="search-filters" aria-label="Search filters">
+          <label><span data-i18n="search.filterType">Type</span><select id="searchTypeFilter"><option value="">All</option><option value="research">Research</option><option value="wiki">Wiki</option><option value="model">Models</option><option value="claim">Claims</option><option value="digest">Digests</option><option value="twitter">Twitter</option></select></label>
+          <label><span>Confidence</span><select id="searchConfidenceFilter"><option value="">All</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></label>
+          <label><span>Source tier</span><select id="searchTierFilter"><option value="">All</option><option value="primary">Primary</option><option value="academic">Academic</option><option value="official">Official</option><option value="secondary">Secondary</option></select></label>
+          <label><span>Language</span><select id="searchLanguageFilter"><option value="">All</option><option value="en">English</option><option value="ko">한국어</option></select></label>
+        </div>
         <div class="search-results" id="searchResults" role="listbox" hidden></div>
         <div class="search-footer">
           <span><kbd>↑</kbd><kbd>↓</kbd> <span data-i18n="search.navigate">navigate</span></span>

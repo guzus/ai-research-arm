@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Set the two artifacts side by side and the pattern is consistent: every property the docs page presents as eliminated, the whitepaper presents as mitigated.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "AZTEC's all-time high of $0.03990 on 2026-02-20 is *below* its auction clearing price.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "As of 2026-08-26 it reports $68,584,270 in cumulative realized proceeds, $543,076 in the trailing 30 days, $536,987 in the trailing 7 days, and $0 in the trailing 24 hours.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

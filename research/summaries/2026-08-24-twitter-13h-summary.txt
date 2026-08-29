@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-08-24 13:08:17 UTC
+
+CYCLE: Chinese edge-inference silicon gets a real spec sheet; the API relay layer gets a confidentiality problem.
+
+TOP STORIES:
+- Xiaomi's XRING conference details the O100: 1.22 TB/s near-memory bandwidth from a wafer-on-wafer NPU-DRAM stack at 1.4um pitch - but commercial use is 2027, not now [OK multi-source]
+- "KeyPooling" study claims cross-customer prompt-cache reads on shared-credential LLM API relays, confirmed in all 5 gateways tested [single-source]
+- Nvidia reported to raise AI server prices 15%+ on Vera Rubin / Grace Blackwell over memory costs, two days before earnings [single-source]
+
+WATCH: Nvidia results Wed 2026-08-26 - whether memory-cost pass-through shows up in gross-margin guidance.
+
+Full update on GitHub.

@@ -561,51 +561,50 @@ runs:
         # Everything the Cursor lane families shell out to:
         #   generative-research -> uv run python, birdy, pdftotext, git, curl, jq
         #   hourly-twitter      -> birdy, jq
-        # One image serves both. The Cursor CLI installer is the official
-        # curl | bash path; --disable-auto-update keeps the in-image binary
-        # from drifting mid-run. Base image tag and Debian repos remain
-        # mutable across rebuilds.
+        # One image serves both. Download the audited Cursor package directly;
+        # never execute the mutable curl|bash installer during a trusted build.
+        # --disable-auto-update also prevents drift after startup.
         cat > "$build_dir/Dockerfile" <<'EOF'
-        FROM node:22-bookworm-slim
+        FROM node:22-bookworm-slim@sha256:83f487e0a63425e5b4d146fb5e5be574bcbe1b7b843d3ebafdd95eaf7767a7e5
         RUN apt-get update \
           && apt-get install -y --no-install-recommends \
                ca-certificates curl git jq poppler-utils \
           && rm -rf /var/lib/apt/lists/*
-        # Official Cursor Agent CLI. `~/.local/bin/agent` is a symlink into a
-        # versioned Node package (cursor-agent + index.js + bundled node).
-        # Copying only the wrapper to /usr/local/bin makes the script resolve
-        # siblings from /usr/local/bin and fail with MODULE_NOT_FOUND
-        # index.js (canary run 31992463836). Relocate the whole package so
-        # the non-root runtime user can exec it without $HOME/.cursor.
-        RUN curl https://cursor.com/install -fsS | bash \
-          && wrapper="" \
-          && for candidate in /root/.local/bin/agent /root/.cursor/bin/agent; do \
-               if [ -e "$candidate" ]; then wrapper="$candidate"; break; fi; \
-             done \
-          && if [ -z "$wrapper" ]; then \
-               echo "Cursor CLI installer did not produce an agent binary" >&2; \
-               exit 1; \
-             fi \
-          && resolved="$(readlink -f "$wrapper")" \
-          && pkg="$(dirname "$resolved")" \
-          && test -x "$pkg/cursor-agent" && test -f "$pkg/index.js" && test -x "$pkg/node" \
-          && rm -rf /opt/cursor-agent \
-          && mkdir -p /opt/cursor-agent \
-          && cp -a "$pkg"/. /opt/cursor-agent/ \
-          && chmod -R a+rX /opt/cursor-agent \
-          && ln -sfn /opt/cursor-agent/cursor-agent /usr/local/bin/agent \
-          && ln -sfn /opt/cursor-agent/cursor-agent /usr/local/bin/cursor-agent
+        RUN set -eux; \
+          arch="$(dpkg --print-architecture)"; \
+          case "$arch" in \
+            amd64) a=x64; sha=7a212e5a17ff9316f5acc78808e33c536940d5455645022e6388d99ba48c8425 ;; \
+            arm64) a=arm64; sha=f1c1c2330d89fa4ef5b6cc04fcffba15012ff50eacd07e0f3baec0716f25ac5d ;; \
+            *) echo "unsupported arch $arch" >&2; exit 1 ;; \
+          esac; \
+          curl -fsSL "https://downloads.cursor.com/lab/2026.08.25-3e8eec8/linux/${a}/agent-cli-package.tar.gz" -o /tmp/cursor-agent.tgz; \
+          echo "$sha  /tmp/cursor-agent.tgz" | sha256sum -c -; \
+          rm -rf /opt/cursor-agent; \
+          mkdir -p /opt/cursor-agent; \
+          tar --strip-components=1 -xzf /tmp/cursor-agent.tgz -C /opt/cursor-agent; \
+          rm -f /tmp/cursor-agent.tgz; \
+          test -x /opt/cursor-agent/cursor-agent; \
+          test -f /opt/cursor-agent/index.js; \
+          test -x /opt/cursor-agent/node; \
+          chmod -R a+rX /opt/cursor-agent; \
+          ln -sfn /opt/cursor-agent/cursor-agent /usr/local/bin/agent; \
+          ln -sfn /opt/cursor-agent/cursor-agent /usr/local/bin/cursor-agent
         # birdy: single static Go binary since v1.0.0, no Node runtime.
         RUN set -eux; \
           arch="$(dpkg --print-architecture)"; \
-          case "$arch" in amd64) a=amd64 ;; arm64) a=arm64 ;; *) echo "unsupported arch $arch" >&2; exit 1 ;; esac; \
+          case "$arch" in \
+            amd64) a=amd64; sha=001763ea3c9063f97980a912afa8d2b43ca2a949ea9cf3ab323b4d0f21421fb4 ;; \
+            arm64) a=arm64; sha=ac0f68274aa8a76ee0b015c776b0922303c03fe29c691477b49eb10e97231c94 ;; \
+            *) echo "unsupported arch $arch" >&2; exit 1 ;; \
+          esac; \
           curl -fsSL "https://github.com/guzus/birdy/releases/download/v1.1.0/birdy_linux_${a}.tar.gz" -o /tmp/birdy.tgz; \
+          echo "$sha  /tmp/birdy.tgz" | sha256sum -c -; \
           tar -xzf /tmp/birdy.tgz -C /tmp; \
           install -m 755 /tmp/birdy /usr/local/bin/birdy; \
           rm -rf /tmp/birdy.tgz /tmp/birdy
         COPY birdy-fast /usr/local/bin/birdy-fast
         RUN chmod 755 /usr/local/bin/birdy-fast
-        COPY --from=ghcr.io/astral-sh/uv:0.9.7 /uv /uvx /usr/local/bin/
+        COPY --from=ghcr.io/astral-sh/uv:0.9.7@sha256:ba4857bf2a068e9bc0e64eed8563b065908a4cd6bfb66b531a9c424c8e25e142 /uv /uvx /usr/local/bin/
         RUN birdy version && uv --version && agent --version
         WORKDIR /workspace
         EOF

@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "QWEN SHIPS QWEN3.8-FLASH-NEXT OPEN-WEIGHT — 125B MoE PLUS 51B N-GRAM BANK, ONLY 6B ACTIVE PER TOKEN",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2092593917543780735",
+    "category": "opensource"
+  },
+  {
+    "headline": "ZHIPU CONFIRMS TO BLOOMBERG: STEALTH MODEL 'OX ALPHA' IS A NEW GLM ITERATION, WEIGHTS OPEN TONIGHT",
+    "source": "@business",
+    "url": "https://x.com/business/status/2092541346724679687",
+    "category": "breaking"
+  },
+  {
+    "headline": "QWEN CLAIMS QWEN3.8-FLASH-NEXT TRAINED AT ONE-NINTH THE COST OF QWEN3.7-PLUS, CALLS IT A QWEN4 PREVIEW",
+    "source": "@vepsi__",
+    "url": "https://x.com/vepsi__/status/2092600110102270271",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC REPORTED PITCHING $30T ADDRESSABLE MARKET, UP TO $100B RAISE AT $2T VALUATION",
+    "source": "@anadoluagency",
+    "url": "https://x.com/anadoluagency/status/2092599207412609514",
+    "category": "business"
+  },
+  {
+    "headline": "META SETTLES 29-STATE TEEN HARM CASE FOR UP TO $16.68B; COMPLAINT ALLEGED CHILD DATA USED TO TRAIN AI",
+    "source": "@WOLF_Financial",
+    "url": "https://x.com/WOLF_Financial/status/2092599515845190062",
+    "category": "policy"
+  },
+  {
+    "headline": "SKILD AI RELEASES S1 ROBOT FOUNDATION MODEL — 66% ON UNSEEN TASKS FROM ONE VIDEO VS 9% FOR LANGUAGE-PROMPTED BASELINE",
+    "source": "@autonomousevent",
+    "url": "https://x.com/autonomousevent/status/2092600494132764722",
+    "category": "research"
+  },
+  {
+    "headline": "M5 ULTRA MAC STUDIO 256GB LEAD TIMES STRETCH TO 10-12 WEEKS",
+    "source": "@alexocheema",
+    "url": "https://x.com/alexocheema/status/2092567601188577358",
+    "category": "infra"
+  }
+]

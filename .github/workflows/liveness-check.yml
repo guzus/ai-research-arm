@@ -70,9 +70,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pull-requests: read
     steps:
       - name: Checkout (full history, no LFS blobs)
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0   # git log needs full history; depth:1 breaks it
           lfs: false       # commit metadata + non-LFS text artifacts only
@@ -94,6 +95,14 @@ jobs:
       - name: Deploy health (advisory) + alert if prod is stale
         continue-on-error: true
         uses: ./.github/actions/deploy-health-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
+          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Detect stranded scheduled publications
+        uses: ./.github/actions/publication-health-alert
         with:
           hooker_url: ${{ secrets.HOOKER_URL }}
           hooker_token: ${{ secrets.HOOKER_TOKEN }}
@@ -124,9 +133,10 @@ jobs:
     runs-on: [self-hosted, Linux]
     permissions:
       contents: read
+      pull-requests: read
     steps:
       - name: Checkout (full history, no LFS blobs)
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
           lfs: false
@@ -142,6 +152,14 @@ jobs:
       - name: Deploy health (advisory) + alert if prod is stale
         continue-on-error: true
         uses: ./.github/actions/deploy-health-alert
+        with:
+          hooker_url: ${{ secrets.HOOKER_URL }}
+          hooker_token: ${{ secrets.HOOKER_TOKEN }}
+          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Detect stranded scheduled publications
+        uses: ./.github/actions/publication-health-alert
         with:
           hooker_url: ${{ secrets.HOOKER_URL }}
           hooker_token: ${{ secrets.HOOKER_TOKEN }}

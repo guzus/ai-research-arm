@@ -29,7 +29,7 @@ wiki. Public outputs deploy continuously to
 ## Today's Front Page
 
 <!-- FRONT_PAGE_START -->
-![Today's Front Page](research/front-page/2026-08-24-front-page.png)
+![Today's Front Page](research/front-page/2026-08-29-front-page.png)
 <!-- FRONT_PAGE_END -->
 
 > 🗞️ Rendered after each successful daily digest — deterministic SVG→PNG, no
@@ -154,9 +154,9 @@ flowchart LR
     subgraph runtime["⚙️ Runtime-routed lanes — lane: → data/agent-backends.json"]
         lanes0["digest-audio-script · digest-synthesis · digest-synthesis-fallback<br/>model-timeline · twitter-autoresearch · twitter-judge<br/>twitter-primary · twitter-primary-repair<br/><i>8 lanes</i>"]
         strict0["🔒 twitter-ab-claude · twitter-ab-judge · twitter-ab-judge-swapped<br/><i>strict — never falls back</i>"]
-        strict1["🔒 generative-research-ko<br/><i>strict — never falls back</i>"]
+        strict1["🔒 arxiv · generative-research-ko · wiki-ingest<br/><i>strict — never falls back</i>"]
         strict2["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
-        strict3["🔒 arxiv · bluesky · community<br/>rss · wiki-ingest<br/><i>strict — never falls back</i>"]
+        strict3["🔒 bluesky · community · rss<br/><i>strict — never falls back</i>"]
         strict4["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
         gendef["generative-research-default<br/><i>dispatch default</i>"]
     end
@@ -176,9 +176,9 @@ flowchart LR
     strict0 -->|"claude-opus-5"| ANT
     strict1 -->|"cursor-grok-4.6-high-fast"| CUR
     strict2 -->|"deepseek-v4-flash"| FW
-    strict3 -->|"deepseek-v4-flash"| OC
+    strict3 -->|"glm-5.3-flash"| OC
     strict4 -->|"glm-5.2"| ZAI
-    gendef -->|"deepseek-v4-flash"| OC
+    gendef -->|"claude-opus-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
     gendef -.->|"backend=codex"| OAI
@@ -244,7 +244,7 @@ interesting ones:
 |---|---|---|
 | `daily-front-page.yml` | after a successful daily digest | newspaper PNG + interactive edition |
 | `generative-research.yml` | issue label or dispatch | long-form cited article |
-| `translate-generative-research.yml` | manual dispatch | validated Korean article translation via review PR |
+| `translate-generative-research.yml` | after each production generative article; manual dispatch also available | validated Korean article translation; automatic runs merge after all gates pass |
 | `research-issue.yml` | `research` issue label | report posted back to the issue |
 
 **Keep it honest** — the pipeline watching itself
@@ -276,9 +276,10 @@ and posts the findings back on the issue.
 a `topic`. The agent researches primary sources, writes in the
 [ARA DSL](ARA_DSL.md) (a validated component language — see
 [Component catalog](COMPONENTS.md)), and publishes through a single writer
-path that re-validates everything before commit. The SSOT default is DeepSeek
-V4 Flash via OpenCode Go; explicit selectors also expose native Claude, Codex,
-Cursor, and Fireworks routes
+path that re-validates everything before commit. The SSOT generative default is
+native Claude Opus 5; explicit selectors also expose Codex, OpenCode DeepSeek,
+Cursor, and Fireworks routes. Separately, the five scheduled editorial lanes
+prioritize GLM 5.3 Flash through the strict OpenCode Go route
 ([details](docs/generative-research-backends.md)).
 
 **3. Tweet → verified article.** Give it just a tweet URL — it reads the
@@ -379,7 +380,7 @@ settings and service overrides. None are needed for the
 | `FIREWORKS_API_KEY` | Fireworks generative and comparison routes | Anthropic-compatible Fireworks endpoint for explicit model routes and comparison lanes |
 | `ZAI_API_KEY` | Z.ai GLM 5.2 lanes and fallback chain | Z.ai Coding Plan key; current second provider in the global fallback chain and used by Z.ai canaries/comparison lanes |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
-| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. The five editorial lanes use it while their shared route selects the current strict OpenCode profile; then they share its plan caps. |
+| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. RSS, community, and Bluesky use its strict `glm-5.3-flash` route; arXiv/wiki use an independent Cursor route. The OpenCode canary validates both direct DeepSeek and the dynamically resolved primary editorial route. |
 | `CURSOR_API_KEY` | Cursor CLI profiles, direct comparison/canary paths, dispatcher route plumbing | Cursor dashboard API key. Prewired so an SSOT-only switch to `cursor-grok-4p6-fast` needs no workflow edit. Production defaults stay on OpenCode. |
 | `BIRD_AUTH_TOKEN` / `BIRD_CT0` | Twitter/X lanes | X cookies (read-only use; expire often) |
 | `BIRDY_ACCOUNTS` | alternative to cookie pair | multi-account rotation JSON; every account forced read-only |

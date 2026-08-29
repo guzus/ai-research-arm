@@ -4,10 +4,13 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The cross-cutting narrative of a historically large, debt- and equity-financed buildout of GPU/TPU compute capacity — now including a reported ~$500B Nvidia-anchored debt package, Intel's $15B raise, off-balance-sheet structures like Theseus Infrastructure, Texas halting all datacenter energization approvals against a ~474 GW ERCOT queue as the interconnection gate binds, data-center opposition hardening into a first-order political input, and the capital markets printing Alibaba's HK$80B AI-infrastructure placement and a $2T Anthropic IPO banker pitch (2026-08-24).
+description: The cross-cutting narrative of a historically large, debt- and equity-financed GPU/TPU buildout — now including Lambda's $1B private-debt chip purchase for a Microsoft lease, Marvell's record FY27Q2 ($2.739B, data center +46%) and raised FY27/FY28 outlook, Cognition's ~$900M ARR against a possible $800M Nvidia-server burn, and a16z's Machine Age Fund arguing the bottleneck has moved south of the model to chips, power, cooling, memory and interconnect (2026-08-29).
 created_at: 2026-05-24
-timestamp: 2026-08-24T00:00:00Z
+timestamp: 2026-08-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
+  - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
+  - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
@@ -798,3 +801,121 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
 - **How much of the reported AI earnings is cash?** If mark-to-market gains on
   private-lab stakes carry the beat, the hyperscalers' apparent capacity to fund
   capex from operations is overstated. The 10-Qs, not the relays, resolve it.
+
+## 75% opposition, a bankability test for GPUs, and the orbital datacenter (2026-08-25)
+
+- **US opposition to data centers hits 75% — bipartisan now (2026-08-25).** Per
+  The Information, US opposition to data centers reached **75%, up from 42% a
+  year earlier**, with **Republican and Democratic leaders both moving to
+  restrict growth over power and water use** — the policy hardening this theme
+  has tracked since the Heatmap survey and the Texas/PA actions (2026-08-23)
+  now arriving as a named bipartisan number. The stated grievances are **power,
+  water and siting — not job loss or catastrophic risk** — which cuts against
+  attributing the backlash to AI-safety messaging. *No pollster, sample or
+  question wording has been published, so treat the bipartisan legislative
+  movement as the corroborated fact and the 75% figure as awaiting its
+  methodology* (The Information via Twitter/X; ARA daily digest 2026-08-25).
+- **The financing question underneath it all: GPUs as bankable assets
+  (2026-08-25).** The Information reports NVIDIA's **~$500B financing pitch
+  depends on lenders treating GPUs as bankable assets**, while SemiAnalysis
+  sizes **cumulative AI capex near $3T by year-end and outstanding AI debt past
+  $7T** — and names **market-driven GPU residual-value pricing as the tool
+  capital providers most urgently lack**. Both carriers have a position; there
+  is still **no observable market price for a used Blackwell** (The
+  Information, SemiAnalysis; ARA daily digest 2026-08-25). See [[nvidia]] for
+  the 17% server-price increase and the ~$8M Rubin NVL72 rack this runs
+  against.
+- **Orbital compute goes two-track: the Nvidia–SpaceX datacenter and Starcloud
+  (2026-08-25).** The same day [[nvidia]] and [[spacex]] unveiled their
+  space-optimized Vera Rubin NVL72 orbital datacenter (Q4 2027 launch), the
+  independent orbital-datacenter venture **Starcloud** raised **$250M at a
+  $2.3B valuation** on the identical thesis — the pattern (see 2026-08-22)
+  funding two tracks at once. Treat orbital compute as a live sub-theme of the
+  capex buildout rather than a stunt (The Information; ARA daily digest
+  2026-08-25).
+- **Equity becomes the capex channel's test front (2026-08-25).**
+  [[alibaba|Alibaba's]] HK$80B placement **priced at an 8.4% discount and its
+  shares opened roughly 10% lower in Hong Kong** — the **first market verdict
+  on financing AI capex with equity**, arriving alongside a reported 75% YoY
+  drop in quarterly profit (see [[alibaba]]). SoftBank separately plans a record
+  **¥1 trillion (~$6.3bn) retail bond sale** to fund AI commitments — the size
+  is what is new, not the instrument (Twitter/X, The Decoder; ARA daily digest
+  2026-08-25).
+- **UBS cuts Broadcom's FY2027 AI revenue; the TPU-vs-NVIDIA forecast flips
+  (2026-08-25).** UBS trimmed **[[broadcom|Broadcom's]] FY2027 AI revenue by
+  roughly $5bn to about $130bn** on a **lower Google TPU forecast (~6.4M units
+  for calendar 2027)**, keeping its Buy and cutting the target from $485 to
+  $470 — while analyst **Jeff Pu expects Google TPU shipments to surpass
+  NVIDIA's by 2028**. The TPU-vs-GPU competitive read inside the buildout keeps
+  firming (UBS, Jeff Pu; ARA daily digest 2026-08-25). See [[broadcom]].
+
+## SEC subpoenas the prime brokers; ABF rationing and the Jalapeño per-MW claim (2026-08-26)
+
+- **The SEC moves the leverage question from the fund to its prime brokers
+  (2026-08-26).** The **SEC subpoenaed Goldman Sachs, JPMorgan, Citigroup and
+  Bank of America** for documents on the **borrowed capital behind
+  Situational Awareness** — the AI hedge fund that reached **$20B+ in assets
+  in under two years and nearly imploded in July**. Moving the leverage
+  question from the fund to its **prime brokers** is the first regulator
+  action to chase the financing side of the AI-investment buildout, not the
+  models it buys compute for. *Caveats:* TechCrunch independently confirms a
+  **federal probe**, but the **specific four-bank list rests on one relay of
+  FT reporting** (TechCrunch; ARA daily digest 2026-08-26). This is the
+  financier-side echo of the GPU-bankability / ~$500B package question on this
+  page — leverage on AI assets is now a securities-regulator question.
+- **ABF substrate supply starts being rationed to AI customers
+  (2026-08-26).** Per a Meritz Securities channel check, **Ajinomoto — the
+  sole meaningful supplier of ABF film**, the dielectric substrate behind
+  advanced packaging — told customers **lines are at full 2Q26 capacity and
+  volumes will be allocated to AI and high-end orders first**. **Single-source,
+  no Ajinomoto statement or second broker confirmation** — but consistent with
+  the substrate/memory squeeze narrative alongside the Rubin Ultra HBM4
+  downgrade (see [[nvidia]]) and DDR5 price rises tracked on this page (ARA
+  daily digest 2026-08-26).
+- **OpenAI's Jalapeño Hot Chips numbers force the per-MW comparison
+  (2026-08-26).** OpenAI's in-house inference ASIC (co-designed with
+  [[broadcom]]) reports **1.5–1.9× work-per-watt and 1.7–3.6× lower latency
+  than GB200/GB300**, with SemiAnalysis claiming it **clears Vera Rubin
+  NVL72's per-MW output** — the strongest external challenge yet to the
+  merchant-GPU economics this theme's take-or-pay contracts are priced on.
+  The runs are **OpenAI-submitted and unaudited**, so treat it as the custom-
+  vs-merchant-silicon debate's latest data point, not a settled result (OpenAI
+  blog, SemiAnalysis; ARA daily digest 2026-08-26). See [[model-specific-silicon]].
+
+## Lambda debt, Marvell's record quarter, and a16z's Machine Age (2026-08-29)
+
+- **[[neocloud]] Lambda secured $1B in private debt to buy Nvidia chips
+  and lease them to [[microsoft|Microsoft]] (2026-08-29).** Another
+  take-or-pay-shaped loan in the string this theme has tracked —
+  neocloud borrows to buy [[nvidia|NVIDIA]] silicon, then rents the
+  capacity to a hyperscaler. Capital intensity, not a new structure
+  (TechCrunch; ARA daily digest 2026-08-29).
+- **Marvell's FY27Q2 print: $2.739B, +37% YoY, data center +46%
+  (2026-08-29).** The SEC 8-K (filed 2026-08-27) set a record quarter;
+  CEO Matt Murphy said "AI-related bookings remain exceptionally
+  robust," guided **Q3 to $3.15B ±5%**, and **again raised the FY27
+  and FY28 revenue outlook**. Read against this page's earlier
+  Broadcom/TPU and Google-warrant-on-Marvell threads: custom-silicon
+  demand is still printing in the interconnect/PHY layer, not only
+  at the GPU vendors (SEC 8-K; ARA daily digest 2026-08-29). See
+  [[google]] and [[broadcom]].
+- **[[cognition-ai|Cognition]] is generating about $900M in
+  annualized revenue — more than triple its start-of-year level —
+  while potentially burning $800M this year buying Nvidia servers
+  (2026-08-29).** The ARR number is consistent with the ~$1B run-rate
+  already on that page (2026-08-13); the new fact is the **cash-burn
+  side of the same growth** (The Information via X; ARA daily digest
+  2026-08-29). See [[cognition-ai]] and [[nvidia]].
+- **a16z announced the Machine Age Fund (2026-08-29).** The thesis:
+  the bottleneck has moved **south of the model** to chips, power,
+  cooling, memory and interconnect, with **supply booked into
+  2027–2028** — a VC restatement of the interconnection/memory/ABF
+  constraints this theme has been accumulating (a16z on YouTube; ARA
+  daily digest 2026-08-29).
+- **[[openrouter]] attracted nine prospective buyers before selling
+  to Stripe for more than $7B (2026-08-29).** A read on how
+  aggressively model-routing infrastructure is being priced; the
+  acquisition itself is already tracked on [[openrouter]]
+  (The Information via X; ARA daily digest 2026-08-29). The
+  circulating **$60B** [[spacex]]–[[cursor]] figure still has **no
+  named source** in today's coverage.
