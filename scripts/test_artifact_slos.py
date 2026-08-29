@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import json
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -49,6 +51,53 @@ class ArtifactSloRegistryTest(unittest.TestCase):
                     artifact_slos.DEGRADED_SIGNAL_KINDS,
                     entry["id"],
                 )
+
+    def test_json_signal_optional_fields_are_typed(self):
+        base = {
+            "schema_version": 1,
+            "artifacts": [
+                {
+                    "id": "test",
+                    "producer": "workflow.yml",
+                    "artifacts": ["artifact.json"],
+                    "freshness_paths": ["artifact.json"],
+                    "validators": ["validator.py"],
+                    "degraded_policy": "per-symbol-stale-carry-forward",
+                    "degraded_signal": {
+                        "kind": "json_boolean_any",
+                        "label": "stale",
+                        "path": "artifact.json",
+                        "selectors": ["stale"],
+                    },
+                    "cadence": {
+                        "kind": "interval",
+                        "hours": 1,
+                        "freshness_slo_hours": 3,
+                    },
+                }
+            ],
+        }
+        for key, value, message in (
+            ("absent_means_false", "false", "must be boolean"),
+            ("required_selectors", [], "non-empty string list"),
+        ):
+            payload = json.loads(json.dumps(base))
+            payload["artifacts"][0]["degraded_signal"][key] = value
+            with tempfile.TemporaryDirectory() as tmp:
+                registry = Path(tmp) / "artifact-slos.json"
+                registry.write_text(json.dumps(payload), encoding="utf-8")
+                with self.assertRaisesRegex(ValueError, message):
+                    artifact_slos.load_registry(registry)
+
+        payload = json.loads(json.dumps(base))
+        signal = payload["artifacts"][0]["degraded_signal"]
+        signal["selectors"] = ["rows.*.stale"]
+        signal["absent_means_false"] = True
+        with tempfile.TemporaryDirectory() as tmp:
+            registry = Path(tmp) / "artifact-slos.json"
+            registry.write_text(json.dumps(payload), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "cannot be used with wildcard"):
+                artifact_slos.load_registry(registry)
 
 
 if __name__ == "__main__":

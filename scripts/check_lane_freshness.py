@@ -204,6 +204,9 @@ def lane_producer_health(lane: str, repo_root: str) -> tuple[str, Optional[str]]
                 payload = json.load(handle)
         except (OSError, json.JSONDecodeError) as exc:
             return UNKNOWN, f"{label}: cannot read {display_path}: {type(exc).__name__}"
+        for selector in signal.get("required_selectors", []):
+            if not _select_values(payload, str(selector)):
+                return UNKNOWN, f"{label}: {display_path} missing required {selector}"
         observed = False
         for selector in signal["selectors"]:  # validated by artifact_slos
             values = _select_values(payload, str(selector))
@@ -215,6 +218,8 @@ def lane_producer_health(lane: str, repo_root: str) -> tuple[str, Optional[str]]
             if any(value is True for value in values):
                 return DEGRADED, f"{label}: {display_path} {selector}=true"
         if not observed:
+            if signal.get("absent_means_false") is True:
+                return HEALTHY, None
             return UNKNOWN, f"{label}: {display_path} selectors matched no values"
         return HEALTHY, None
     if kind == "text_regex":

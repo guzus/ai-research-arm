@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import json
 import os
 import shutil
 import subprocess
@@ -174,6 +175,59 @@ class ProducerSignalTest(unittest.TestCase):
                 path.write_text('{"stale":"false"}')
                 self.assertEqual(clf.lane_producer_health("test", tmp)[0], clf.UNKNOWN)
 
+    def test_optional_positive_json_marker_can_be_absent_when_contract_is_complete(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "status.json"
+            base = {
+                "schema_version": 1,
+                "date": "2026-08-29",
+                "status": "published",
+            }
+            signal = {
+                "kind": "json_boolean_any",
+                "label": "restore-baseline",
+                "path": "status.json",
+                "selectors": ["recovery"],
+                "absent_means_false": True,
+                "required_selectors": ["schema_version", "date", "status"],
+            }
+            with mock.patch.dict(clf.LANE_DEGRADED_SIGNALS, {"test": signal}, clear=True):
+                path.write_text(json.dumps(base), encoding="utf-8")
+                self.assertEqual(clf.lane_producer_health("test", tmp), (clf.HEALTHY, None))
+
+                path.write_text(json.dumps({**base, "recovery": False}), encoding="utf-8")
+                self.assertEqual(clf.lane_producer_health("test", tmp), (clf.HEALTHY, None))
+
+                path.write_text(json.dumps({**base, "recovery": True}), encoding="utf-8")
+                self.assertEqual(clf.lane_producer_health("test", tmp)[0], clf.DEGRADED)
+
+                path.write_text(json.dumps({**base, "recovery": "false"}), encoding="utf-8")
+                self.assertEqual(clf.lane_producer_health("test", tmp)[0], clf.UNKNOWN)
+
+                for invalid in (None, 0):
+                    path.write_text(json.dumps({**base, "recovery": invalid}), encoding="utf-8")
+                    self.assertEqual(clf.lane_producer_health("test", tmp)[0], clf.UNKNOWN)
+
+                path.write_text("{}", encoding="utf-8")
+                state, reason = clf.lane_producer_health("test", tmp)
+                self.assertEqual(state, clf.UNKNOWN)
+                self.assertIn("missing required schema_version", reason)
+
+                path.write_text("[]", encoding="utf-8")
+                self.assertEqual(clf.lane_producer_health("test", tmp)[0], clf.UNKNOWN)
+
+    def test_json_marker_absence_stays_unknown_without_explicit_default(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            Path(tmp, "artifact.json").write_text("{}", encoding="utf-8")
+            signal = {
+                "kind": "json_boolean_any",
+                "label": "carry-forward",
+                "path": "artifact.json",
+                "selectors": ["stale"],
+            }
+            with mock.patch.dict(clf.LANE_DEGRADED_SIGNALS, {"test": signal}, clear=True):
+                self.assertEqual(clf.lane_producer_health("test", tmp)[0], clf.UNKNOWN)
+
     def test_text_regex_reads_latest_labelled_artifact_only(self):
         with tempfile.TemporaryDirectory() as tmp:
             lane = Path(tmp, "lane")
@@ -330,7 +384,22 @@ class GitIntegrationTest(unittest.TestCase):
     def test_twitter_recovery_status_survives_unrelated_public_path_commit(self):
         status = Path(self.repo, "research", "twitter", "status", "2026-05-28-06h.json")
         status.parent.mkdir(parents=True)
-        status.write_text('{"recovery":true}', encoding="utf-8")
+        status.write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "date": "2026-05-28",
+                    "hour": "06:00 UTC",
+                    "generated_at": "2026-05-28 06:00:00 UTC",
+                    "run_id": "42",
+                    "run_attempt": 1,
+                    "status": "no_update",
+                    "public_items": 0,
+                    "recovery": True,
+                }
+            ),
+            encoding="utf-8",
+        )
         self._git("add", "-A")
         self._git("commit", "-q", "-m", "Twitter deterministic fallback 2026-05-28 06:00 UTC")
         self.assertEqual(clf.lane_producer_health("twitter", self.repo)[0], clf.DEGRADED)
