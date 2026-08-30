@@ -1,7 +1,7 @@
 {
   "benchmark": "GPQA diamond",
   "benchmarks_available": {
-    "Chess Puzzles": 99,
+    "Chess Puzzles": 100,
     "EBR-bench": 19,
     "FrontierMath-2025-02-28-Private": 69,
     "FrontierMath-2025-02-28-Public": 64,
@@ -15,7 +15,7 @@
     "Mystery Game Puzzles": 57,
     "OEIS Open": 3,
     "OEIS Open Lite": 5,
-    "OTIS Mock AIME 2024-2025": 153,
+    "OTIS Mock AIME 2024-2025": 154,
     "SWE-Bench verified": 32,
     "SimpleQA Verified": 57
   },
@@ -33,7 +33,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-08-30T18:39:24Z",
+  "generated_at": "2026-08-30T23:35:17Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -119,7 +119,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":98,"ts":"2026-08-29T23:25:00Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":98,"ts":"2026-08-30T09:20:22Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":98,"ts":"2026-08-30T14:26:58Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":98,"ts":"2026-08-30T18:39:24Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":98,"ts":"2026-08-30T18:39:24Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":98,"ts":"2026-08-30T23:35:17Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -1745,6 +1746,15 @@
           "vendor": "qwen"
         },
         {
+          "key": "gemini3.1flashlite",
+          "name": "Gemini 3.1 Flash Lite",
+          "output_usd_per_mtok": 1.5,
+          "pareto": false,
+          "score": 0.2771929824561403,
+          "stderr": 0.026560920735701255,
+          "vendor": "google"
+        },
+        {
           "key": "gemini3.5flashlite",
           "name": "Gemini 3.5 Flash Lite",
           "output_usd_per_mtok": 2.5,
@@ -1779,15 +1789,6 @@
           "score": 0.22456140350877193,
           "stderr": 0.024761793289496806,
           "vendor": "qwen"
-        },
-        {
-          "key": "gemini3.1flashlite",
-          "name": "Gemini 3.1 Flash Lite",
-          "output_usd_per_mtok": 1.5,
-          "pareto": false,
-          "score": 0.21403508771929824,
-          "stderr": 0.02433800055326239,
-          "vendor": "google"
         },
         {
           "key": "gpt5nano",
@@ -3091,7 +3092,7 @@
         }
       ]
     },
-    "as_of": "2026-08-30T18:39:24Z",
+    "as_of": "2026-08-30T23:35:17Z",
     "counts": {
       "pareto": 8,
       "plotted": 98,
