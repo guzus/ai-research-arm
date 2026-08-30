@@ -4852,7 +4852,6 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
   if (frontPage) enhanceNewspaper();
   syncDigestAudioForDate(dateStr);
   void wikifyContent(content);
-  void hydrateWhatChanged(md, dateStr);
 }
 
 function topicSlugs(text: string): string[] {
@@ -4864,7 +4863,9 @@ function topicSlugs(text: string): string[] {
   return indexed.length ? indexed : [normalizeTopic(text.split(/\s+[—:-]\s+/)[0] || text)].filter(Boolean);
 }
 
-async function hydrateWhatChanged(md: string, dateStr: string): Promise<void> {
+// Kept as an explicit renderer API for any future opt-in surface. The Today
+// route deliberately does not call it; see the product regression test.
+export async function hydrateWhatChanged(md: string, dateStr: string): Promise<void> {
   const [tickets, wiki, pricing, gpu] = await Promise.all([
     loadTickets(),
     loadWikiIndexCached(),
