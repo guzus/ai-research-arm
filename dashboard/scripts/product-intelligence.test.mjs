@@ -63,6 +63,11 @@ test('What changed DOM exposes reasoning, freshness, honest local highlights, an
   assert.equal((nav.match(/class="tab"/g) || []).length, 6);
 });
 
+test('Today does not mount the What changed decision brief', () => {
+  const source = readFileSync(join(root, 'src/main.ts'), 'utf8');
+  assert.doesNotMatch(source, /void hydrateWhatChanged\(md, dateStr\)/);
+});
+
 test('prebuild search contract preserves claim reuse metadata and refuses unresolved article routes', () => {
   const source = readFileSync(join(root, 'scripts/prebuild.mjs'), 'utf8');
   assert.match(source, /if \(!articleSlug\) continue/);
