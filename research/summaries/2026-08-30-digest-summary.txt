@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-08-30 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Twitter/X] OpenAI ends Cursor partnership after SpaceX acquisition — access ends Nov 12; Cursor CEO cites ~5%…
+• [RSS / Official Announcements] Our decision on Cursor following its acquisition by SpaceX - 2026-08-28 06:00 UTC
+• [Hacker News] GLM-5.3 is now open-weight: Z.ai publishes GLM-5.3 weights on Hugging Face (zai-org/GLM-5.3) — the…
+• [Reddit] [P] I analyzed 31,352 hourly LLM benchmark scores: within-day variation was 2.8 points, while betwe…
+• [Expert Blogs] [[AINews] OpenAI shuts off Cursor](https://www.latent.space/p/ainews-openai-shuts-off-cursor)
+
+SOURCES: 8/8 lanes had data
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
