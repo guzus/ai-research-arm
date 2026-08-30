@@ -14,7 +14,11 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as yaml from 'js-yaml';
 import { assertClaimReuseContract, EvidenceContractError } from './evidence-contract.mjs';
-import { isDeterministicFallbackSource, unavailableDigestMarkdown } from './publication-contract.mjs';
+import {
+  editorialDigestDates,
+  isDeterministicFallbackSource,
+  unavailableDigestMarkdown,
+} from './publication-contract.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const dashboardDir = dirname(here);
@@ -670,6 +674,8 @@ function buildManifest() {
   for (const [key, { dir, re }] of Object.entries(DATE_PATTERNS)) {
     manifest[key] = collectDates(join(publicResearch, dir), re);
   }
+  manifest.todayEditorial = editorialDigestDates(manifest.today, date =>
+    readFileSync(join(publicResearch, 'digest', `${date}-digest.md`), 'utf8'));
   const genIndex = join(publicResearch, 'generative', 'index.json');
   if (existsSync(genIndex)) {
     // A half-written/malformed generative index (the publish + audio-backfill
