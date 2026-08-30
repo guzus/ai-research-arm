@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-30
+
+TOP 5 PAPERS:
+• PAWBench — video "world models" fail the distributional test: none match valid physics probabilities
+• Thomson / SovereignAI — continual learning on open weights claims frontier-class gains without a frontier lab
+• UrbanGround — real-scale Hong Kong sandbox: MLLM local vision does not compose into urban agency
+• How LMs Structure Moral Knowledge — MFT probes span independent axes plus a moral-specific shared component
+• DiD on Censored LLM-Judge Scales — bounded double-differences can manufacture a "bias" from a severity shift
+
+CATEGORIES: NLP 5, CV/Multimodal 7, Agents & Reasoning 6, Safety 4, Other 6
+
+Full report on GitHub.
