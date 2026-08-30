@@ -41,7 +41,7 @@ test('public projection carries status only and never copies fallback source mat
   assert.doesNotMatch(projected, /Verbatim excerpts|research\/summaries|deterministic_daily_digest/i);
 });
 
-test('historical audio cleanup derives only the six exact fallback-date keys', () => {
+test('historical audio cleanup derives only the seven exact fallback-date keys', () => {
   const cleanup = spawnSync('bash', [join(repoRoot, 'scripts/delete_fallback_audio.sh')], {
     cwd: repoRoot,
     env: { ...process.env, FALLBACK_AUDIO_DRY_RUN: '1' },
@@ -56,6 +56,7 @@ test('historical audio cleanup derives only the six exact fallback-date keys', (
     'audio/2026-08-10-digest.mp3',
     'audio/2026-08-17-digest.mp3',
     'audio/2026-08-28-digest.mp3',
+    'audio/2026-08-30-digest.mp3',
   ]);
 });
 
