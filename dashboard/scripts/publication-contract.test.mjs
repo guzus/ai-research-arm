@@ -4,8 +4,12 @@ import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
 import {
+  digestStaticSeoSemantics,
+  editorialDigestDates,
   isDeterministicFallbackSource,
   isPublicUnavailableDigest,
+  latestEditorialAliasPlan,
+  latestEditorialRecord,
   unavailableDigestMarkdown,
 } from './publication-contract.mjs';
 
@@ -39,6 +43,50 @@ test('public projection carries status only and never copies fallback source mat
   assert.equal(isPublicUnavailableDigest(projected), true);
   assert.match(projected, /2026-08-29/);
   assert.doesNotMatch(projected, /Verbatim excerpts|research\/summaries|deterministic_daily_digest/i);
+});
+
+test('editorial manifest dates exclude unavailable projections and ignore input order', () => {
+  const byDate = new Map([
+    ['2026-08-28', unavailableDigestMarkdown('2026-08-28')],
+    ['2026-08-27', '# AI Daily Digest — 2026-08-27\n\nEditorial brief.'],
+    ['2026-08-29', '# AI Daily Digest — 2026-08-29\n\nEditorial brief.'],
+  ]);
+  assert.deepEqual(
+    editorialDigestDates(['2026-08-29', '2026-08-28', '2026-08-27', '2026-08-29'], date => byDate.get(date)),
+    ['2026-08-27', '2026-08-29'],
+  );
+});
+
+test('static Today alias selects the latest editorial record, not the newest unavailable file', () => {
+  assert.deepEqual(
+    latestEditorialRecord([
+      { date: '2026-08-30', unavailable: true },
+      { date: '2026-08-27', unavailable: false },
+      { date: '2026-08-29', unavailable: false },
+    ]),
+    { date: '2026-08-29', unavailable: false },
+  );
+});
+
+test('static Today alias fails closed when every routable digest is unavailable', () => {
+  assert.deepEqual(
+    latestEditorialAliasPlan([
+      { date: '2026-08-29', unavailable: true },
+      { date: '2026-08-30', unavailable: true },
+    ]),
+    { kind: 'empty' },
+  );
+});
+
+test('static dated digest metadata distinguishes diagnostic pages from editorial articles', () => {
+  assert.deepEqual(digestStaticSeoSemantics('2026-08-30', true), {
+    ogType: 'website',
+    articlePublishedTime: null,
+  });
+  assert.deepEqual(digestStaticSeoSemantics('2026-08-29', false), {
+    ogType: 'article',
+    articlePublishedTime: '2026-08-29',
+  });
 });
 
 test('historical audio cleanup derives only the seven exact fallback-date keys', () => {

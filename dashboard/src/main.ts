@@ -57,7 +57,15 @@ import {
   openAraFigureModal,
   scrollToHashIfPresent,
 } from './ara-enhance';
-import { resolvePublishedDate } from './date-routing';
+import {
+  editorialDatesFromManifest,
+  isExplicitUnavailableTodayDate,
+  resolvePublishedDate,
+  resolveTodayEntryPlan,
+  transitionRootRoute,
+  unavailableTodayRoutePolicy,
+} from './date-routing';
+import type { TodayEntryPlan } from './date-routing';
 
 // Sanitizer-level guarantee: any sanitized anchor keeping target="_blank"
 // MUST carry rel="noopener noreferrer". Sanitized content is adversarial /
@@ -190,6 +198,7 @@ type GenResearchRow = {
 };
 type Manifest = {
   today: string[];
+  todayEditorial: string[];
   twitter: string[];
   models: string[];
   frontpage: string[];
@@ -367,7 +376,7 @@ const languageMenu = document.getElementById('languageMenu');
 // are disambiguated from routes by the file extension; Vercel rewrites only
 // extensionless paths to /index.html.
 function routeFromState(): string {
-  if (homeRouteRequested && activeTab === 'today') {
+  if (rootRouteActive && activeTab === 'today') {
     return '/';
   }
   if (latestAliasRequested === activeTab) {
@@ -420,11 +429,17 @@ function canonicalizeIndexPage(): void {
 // of the stack). Every subsequent call is a user navigation and gets
 // pushState so browser back/forward walks through the visited views.
 let routeInitialized = false;
-// Set by parsing `/` so initial hydration and Back/Forward can render the
-// latest Today view without rewriting the self-canonical homepage URL. It is
-// consumed by the next updateRoute call; subsequent user navigation gets the
-// normal dated route.
-let homeRouteRequested = false;
+// Root identity belongs to the current history entry. It persists across
+// refresh/language rerenders and is cleared only by parsing or selecting a
+// non-root destination. This keeps `/` stable without hijacking explicit date
+// navigation.
+let rootRouteActive = false;
+function activateRootRoute(): void {
+  rootRouteActive = transitionRootRoute(rootRouteActive, 'enter-home');
+}
+function clearRootRoute(): void {
+  rootRouteActive = transitionRootRoute(rootRouteActive, 'enter-other');
+}
 type LatestAliasTab = 'today' | 'twitter' | 'frontpage';
 let latestAliasRequested: LatestAliasTab | null = null;
 
@@ -447,7 +462,7 @@ const runtimePageHeading = document.createElement('h1');
 runtimePageHeading.className = 'runtime-page-heading';
 
 function latestAliasDate(tab: LatestAliasTab, fallback: string): string {
-  const dates = manifest?.[tab];
+  const dates = tab === 'today' ? manifest?.todayEditorial : manifest?.[tab];
   if (!Array.isArray(dates) || dates.length === 0) return fallback;
   const sorted = dates.filter(isIsoCalendarDate).slice().sort();
   return sorted[sorted.length - 1] || fallback;
@@ -469,7 +484,41 @@ function runtimeSeoState(target: string): RuntimeSeoState {
       type: 'website',
     };
   }
+  if (
+    activeTab === 'today'
+    && latestAliasRequested === 'today'
+    && manifest
+    && manifest.todayEditorial.length === 0
+  ) {
+    const heading = uiText(activeLanguage, 'empty.latestEditorialTitle');
+    return {
+      canonicalPath: '/',
+      description: uiText(activeLanguage, 'empty.latestEditorialBody'),
+      documentTitle: `${heading} -- ara`,
+      heading,
+      indexable: false,
+      type: 'website',
+    };
+  }
   if (activeTab === 'today') {
+    const isUnavailable = manifest
+      ? isExplicitUnavailableTodayDate(
+        manifest.today,
+        manifest.todayEditorial,
+        date,
+        rootRouteActive || latestAliasRequested === 'today',
+      )
+      : false;
+    if (isUnavailable) {
+      const heading = uiText(activeLanguage, 'today.unavailableTitle', { date });
+      const body = uiText(activeLanguage, 'today.unavailableBody');
+      return {
+        ...unavailableTodayRoutePolicy(date),
+        description: `${heading}. ${body}`,
+        documentTitle: `${heading} -- ara`,
+        heading,
+      };
+    }
     const pageTitle = uiText(activeLanguage, 'page.today', { date });
     return {
       canonicalPath: `/today/${date}`,
@@ -658,7 +707,6 @@ function updateRoute(): void {
   if (shouldSyncSeo) applyRuntimeSeo(target);
   routeInitialized = true;
   lastAppliedPathname = location.pathname + location.search;
-  homeRouteRequested = false;
 }
 
 function isIsoCalendarDate(value: string): boolean {
@@ -680,10 +728,11 @@ function parseRoute(path: string): boolean {
   if (clean === '/') {
     activeTab = 'today';
     selectedSlug = null;
-    homeRouteRequested = true;
+    activateRootRoute();
     syncTabUi();
     return true;
   }
+  clearRootRoute();
   const trimmed = clean.replace(/^\/+/, '');
   if (trimmed === 'design/focus-reader') {
     activeTab = 'focusReader';
@@ -905,6 +954,7 @@ function displayDate(d: Date): string {
 
 function shiftDate(days: number): void {
   latestAliasRequested = null;
+  clearRootRoute();
   const requested = new Date(currentDate);
   requested.setDate(requested.getDate() + days);
   if (activeTab === 'today' && manifest) {
@@ -938,6 +988,9 @@ async function loadManifest(): Promise<Manifest | null> {
       // Normalize: ensure all sources have an array
       const normalized: Manifest = {
         today: Array.isArray(m.today) ? m.today : (Array.isArray(m.digest) ? m.digest : []),
+        // Deliberately do not infer this from `today`: legacy manifests cannot
+        // tell editorial briefs from unavailable operational projections.
+        todayEditorial: editorialDatesFromManifest(m.todayEditorial),
         twitter: Array.isArray(m.twitter) ? m.twitter : [],
         models: Array.isArray(m.models) ? m.models : [],
         frontpage: Array.isArray(m.frontpage) ? m.frontpage : [],
@@ -1298,6 +1351,7 @@ function handleCalendarClick(e: Event): void {
     // Once there, clicking it opens the picker for choosing another day.
     if (activeTab !== 'today') {
       latestAliasRequested = null;
+      clearRootRoute();
       activeTab = 'today';
       selectedSlug = null;
       calendarEl.classList.remove('open');
@@ -1327,6 +1381,7 @@ function handleCalendarClick(e: Event): void {
 
   if (target.closest('[data-cal-today]')) {
     latestAliasRequested = null;
+    clearRootRoute();
     const now = new Date();
     currentDate = now;
     activeTab = 'today';
@@ -1341,6 +1396,7 @@ function handleCalendarClick(e: Event): void {
   const dayEl = target.closest('.cal-day') as HTMLElement | null;
   if (dayEl && dayEl.dataset.date) {
     latestAliasRequested = null;
+    clearRootRoute();
     const requestedDate = dayEl.dataset.date;
     const published = manifest
       ? resolvePublishedDate(manifest.today, requestedDate)
@@ -1650,6 +1706,7 @@ function navigateToDigestAudioDate(): void {
   const date = dateFromString(digestAudioState.date);
   if (!date) return;
   latestAliasRequested = null;
+  clearRootRoute();
   currentDate = date;
   activeTab = 'today';
   selectedSlug = null;
@@ -2096,16 +2153,18 @@ function findMostRecentAvailable(tab: DateTab, targetDateStr: string): string | 
   return best;
 }
 
-/** Keep Today state, labels, canonical metadata, and URL on a real publication.
- * The KST browser day advances nine hours before the UTC digest date; using
- * that local day while rendering the previous digest creates a false dated
- * page and a refresh-only 404. */
-function normalizeTodayPublicationDate(): void {
-  if (activeTab !== 'today' || !manifest) return;
-  const published = resolvePublishedDate(manifest.today, fmtDate(currentDate));
-  if (!published || published === fmtDate(currentDate)) return;
-  currentDate = ymdToDate(published);
+/** `/` and `/today` mean latest editorial publication, independent of the
+ * viewer's local day. Explicit dated routes retain their requested date,
+ * including the intentional unavailable page for a fallback date. */
+function planTodayEntry(): TodayEntryPlan | null {
+  if (activeTab !== 'today' || !manifest) return null;
+  const isLatestEntry = rootRouteActive || latestAliasRequested === 'today';
+  const requested = fmtDate(currentDate);
+  const plan = resolveTodayEntryPlan(manifest.todayEditorial, requested, isLatestEntry);
+  if (plan.kind !== 'editorial' || plan.date === requested) return plan;
+  currentDate = ymdToDate(plan.date);
   calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+  return plan;
 }
 
 function offsetDateStr(dateStr: string, days: number): string {
@@ -2207,6 +2266,24 @@ function showEmpty(dateStr: string): void {
       '</div>',
     ].join('\n'),
   );
+}
+
+function showNoEditorialPublication(): void {
+  const title = uiText(activeLanguage, 'empty.latestEditorialTitle');
+  const body = uiText(activeLanguage, 'empty.latestEditorialBody');
+  setSafeContent(
+    content,
+    [
+      '<div class="content-card">',
+      '  <div class="empty-state">',
+      '    <div class="empty-state-icon">' + DOC_ICON + '</div>',
+      '    <h2 class="empty-state-text">' + escapeHtml(title) + '</h2>',
+      '    <p>' + escapeHtml(body) + '</p>',
+      '  </div>',
+      '</div>',
+    ].join('\n'),
+  );
+  setRuntimePageHeading(title);
 }
 
 function showError(message: string, hint?: string): void {
@@ -6298,6 +6375,7 @@ async function load(): Promise<void> {
   document.body.classList.remove('research-shelf');
 
   try {
+    if (activeTab !== 'today') clearRootRoute();
     // Root, /today, Go to today, calendar clicks, T, and adjacent-date
     // shortcuts all converge here. Wait for the publication manifest before
     // emitting a dated Today URL or painting a date label.
@@ -6305,10 +6383,23 @@ async function load(): Promise<void> {
       await loadManifest();
       if (requestId !== loadRequestId) return;
     }
-    normalizeTodayPublicationDate();
+    const todayEntryPlan = planTodayEntry();
     dateStr = fmtDate(currentDate);
     updateRoute();
     showLoading();
+    // Today publication state is manifest-derived. Reapply even on initial
+    // same-path hydration so stored language and unavailable metadata replace
+    // the English static snapshot consistently.
+    if (latestAliasRequested || activeTab === 'today') applyRuntimeSeo(routeFromState());
+
+    if (todayEntryPlan?.kind === 'empty') {
+      showNoEditorialPublication();
+      renderCalendar();
+      currentSection = 0;
+      updateNavCounter();
+      updateSearchCount();
+      return;
+    }
 
     if (activeTab === 'pricing') {
       const pricing = await withTimeout(
@@ -6346,7 +6437,6 @@ async function load(): Promise<void> {
       await loadManifest();
       if (requestId !== loadRequestId) return;
     }
-    if (latestAliasRequested) applyRuntimeSeo(routeFromState());
     if (activeTab === 'focusReader') {
       const result = await withTimeout(loadFocusReaderData(controller.signal), LOAD_TIMEOUT_MS, controller);
       if (requestId !== loadRequestId) return;
@@ -6655,7 +6745,7 @@ function goHome(): void {
   activeTab = 'today';
   selectedSlug = null;
   latestAliasRequested = null;
-  homeRouteRequested = true;
+  activateRootRoute();
   syncTabUi();
   load();
 }
@@ -6870,6 +6960,7 @@ function moveSearchSel(d: number): void {
 function activateSearchHit(h: SearchHit): void {
   closeSearch();
   latestAliasRequested = null;
+  clearRootRoute();
   if (h.type === 'model') {
     activeTab = 'models';
     const t = ticketsCache ? ticketsCache.find((x) => x.slug === h.slug) : null;
@@ -7173,6 +7264,7 @@ content.addEventListener('click', (e) => {
     if (match) {
       e.preventDefault();
       latestAliasRequested = null;
+      clearRootRoute();
       currentDate = ymdToDate(match[1]);
       calendarMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
       load();
@@ -7355,6 +7447,7 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
     case 't':
     case 'T': {
       latestAliasRequested = null;
+      clearRootRoute();
       const now = new Date();
       currentDate = now;
       calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1);

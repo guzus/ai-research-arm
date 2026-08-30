@@ -40,7 +40,11 @@ import { fileURLToPath } from 'node:url';
 import { marked } from 'marked';
 import { renderSiteDefaultCardPng, renderSocialCardPng } from './social-card.mjs';
 import { forecastSeoRecord, mappedForecastTickets } from './forecast-seo.mjs';
-import { isDeterministicFallbackSource } from './publication-contract.mjs';
+import {
+  digestStaticSeoSemantics,
+  isDeterministicFallbackSource,
+  latestEditorialAliasPlan,
+} from './publication-contract.mjs';
 import {
   datedPagePolicy,
   isIndexableResearchEntry,
@@ -622,6 +626,7 @@ function buildDigestPage(template, digest, shareImageUrl, policy = datedPagePoli
     ? `No editorial brief was published for ${digest.date}. Unreviewed source material is not public editorial content.`
     : digestDescription(md);
   const url = policy.canonicalUrl;
+  const publicationMeta = digestStaticSeoSemantics(digest.date, unavailable);
   const bodyHtml = unavailable
     ? `<section role="status"><p class="ara-eyebrow">Daily brief</p><h2>No editorial brief was published for ${htmlEscapeAttr(digest.date)}</h2><p>Unreviewed source material is kept for operational diagnosis and is not published as editorial content.</p></section>`
     : sanitizeFragment(marked.parse(md));
@@ -652,12 +657,14 @@ function buildDigestPage(template, digest, shareImageUrl, policy = datedPagePoli
     ...sharedMetaTags(title, desc),
     `<link rel="canonical" href="${url}" />`,
     `<meta name="robots" content="${policy.indexable ? 'index,follow,max-image-preview:large,max-snippet:-1' : 'noindex,follow'}" />`,
-    `<meta property="og:type" content="article" />`,
+    `<meta property="og:type" content="${publicationMeta.ogType}" />`,
     `<meta property="og:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta property="og:description" content="${htmlEscapeAttr(desc)}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:site_name" content="ara -- AI research arm" />`,
-    `<meta property="article:published_time" content="${digest.date}" />`,
+    publicationMeta.articlePublishedTime
+      ? `<meta property="article:published_time" content="${publicationMeta.articlePublishedTime}" />`
+      : '',
     ...imageMetaTags(shareImageUrl, title),
     `<meta name="twitter:card" content="${shareImageUrl ? 'summary_large_image' : 'summary'}" />`,
     `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
@@ -1534,19 +1541,36 @@ for (const digest of digests) {
   writeFileSync(join(outDir, 'index.html'), buildDigestPage(template, digest, shareImageUrl, policy));
   if (!digest.unavailable) datedPages.push({ section: 'today', date: digest.date, route: policy.route });
 }
-const latestDigestRecord = digests.at(-1) || null;
-if (latestDigestRecord) {
+const latestDigestAlias = latestEditorialAliasPlan(digests);
+{
   const outDir = join(dist, 'today');
   mkdirSync(outDir, { recursive: true });
-  writeFileSync(
-    join(outDir, 'index.html'),
-    buildDigestPage(
-      template,
-      latestDigestRecord,
-      shareImageUrl,
-      latestAliasPolicy('today', latestDigestRecord.date, SITE_ORIGIN),
-    ),
-  );
+  if (latestDigestAlias.kind === 'editorial') {
+    const latestDigestRecord = latestDigestAlias.record;
+    writeFileSync(
+      join(outDir, 'index.html'),
+      buildDigestPage(
+        template,
+        latestDigestRecord,
+        shareImageUrl,
+        latestAliasPolicy('today', latestDigestRecord.date, SITE_ORIGIN),
+      ),
+    );
+  } else {
+    // `/today` is a latest-editorial alias, not a latest-file alias. Keep the
+    // app route available without baking an operational fallback into HTML.
+    writeFileSync(
+      join(outDir, 'index.html'),
+      buildNoindexPage(template, {
+        route: '/today',
+        canonicalRoute: '/',
+        title: 'No editorial brief has been published yet',
+        description: 'No editorial daily brief is currently available.',
+        body: 'Unavailable operational material is retained for diagnosis and is not shown as the latest brief.',
+        shareImageUrl,
+      }),
+    );
+  }
 }
 
 for (const report of twitterReports) {
