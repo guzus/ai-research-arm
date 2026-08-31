@@ -1,0 +1,12 @@
+arXiv Papers - 2026-08-31
+
+TOP 5 PAPERS:
+• Formal limits on meaning from text — no LM representation beats an information-theoretic ceiling on recovering speaker intent
+• Sliding-window beats linear attention — SWA+sinks matches/beats retrofit linear attn, 2–10× on long-context
+• Driving video scaling laws — 1M–9B from scratch on 5,500h; loss falls faster with exposure than size
+• LongPIBench — long-context prompt injection bypasses SOTA defenses; short-context benches overestimate
+• ContextPilot — fine-grained RL for context tools: stronger long-horizon agents, smaller working context
+
+CATEGORIES: NLP 9, CV/Multimodal 5, Agents & Reasoning 8, Safety 6, Other 5
+
+Full report on GitHub.
