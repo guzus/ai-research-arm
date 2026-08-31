@@ -2647,6 +2647,22 @@
     "created_at": "2026-08-31T04:52:30Z",
     "source": "workflow_dispatch",
     "prompt": "H3 Max by fal Research, post-trained from MiniMax H3: establish correct attribution and release timeline; explain what post-training, architecture or inference optimizations changed versus the open-weight base H3; verify claims of stronger prompt adherence, aesthetics, under-3-second generation and roughly 50x speedup; compare output quality, native audio, duration, resolution, throughput, latency and cost against base H3 and leading video models; audit Artificial Analysis rankings and uncertainty; distinguish measured results from vendor demos; examine hardware and fal inference-stack dependence, weights availability and reproducibility, MiniMax license implications and commercial rights, pricing and unit economics, and whether H3 Max demonstrates a durable post-training moat or a rapidly copyable optimization layer",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-08-31T051603--h3-max-by-fal-research-post-trained-from-minimax-h3-establis.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "H3 Max: fal의 가장 빠른 비디오 모델, 그리고 모델이 아닌 해자",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-08-31T05:16:03Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for h3-max-by-fal-research-post-trained-from-minimax-h3-establis",
+        "tags": [],
+        "translated_at": "2026-08-31T05:16:03Z",
+        "source_file": "research/generative/2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis.ara.md",
+        "source_sha256": "5dc0cecf8a4273eb58baa2142d37a8848ef875806ad9e6c65dd1b10442590fde"
+      }
+    }
   }
 ]
