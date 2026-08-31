@@ -1,0 +1,10 @@
+Daily AI Digest - 2026-08-31 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Expert Blogs] 🔮 Unbounded self-improvement and its limits #599
+• [arXiv Papers] 1. PAWBench: How Far Are We from Probabilistically Aligned World Modeling?
+• [YouTube] Build agent-ready sites with WebMCP
+
+SOURCES: 3/8 lanes had data; missing: Twitter/X, RSS / Official Announcements, Hacker News, Reddit, Bluesky
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
