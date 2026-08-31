@@ -1,0 +1,250 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "H3 Max — the variant that turns a minute of 768p video around roughly 35x faster than base MiniMax H3 — lists at **$0.08 per second of generated video**, or $4.80 per minute.",
+      "verdict": "supported",
+      "citation": "https://fal.ai/models/minimax/h3-max/text-to-video"
+    },
+    {
+      "id": "c2",
+      "text": "fal's own hosting of the *slower* base H3 lists at **$0.06 per second at the same 768p**, alongside $0.05 at 480p, $0.13 at 2K and $0.16 at 4K.",
+      "verdict": "supported",
+      "citation": "https://fal.ai/models/minimax/h3/text-to-video"
+    },
+    {
+      "id": "c3",
+      "text": "fal's own FAQ, answering how H3 Max differs from standard H3, says of the base model that \"on fal's stack it runs about 15x faster than MiniMax's own inference.\"",
+      "verdict": "supported",
+      "citation": "https://fal.ai/minimax-h3-max"
+    },
+    {
+      "id": "c4",
+      "text": "The blog says H3 Max \"generates a 5-second video in approximately 3 seconds.\"",
+      "verdict": "supported",
+      "citation": "https://blog.fal.ai/introducing-h3-max-by-fal/"
+    },
+    {
+      "id": "c5",
+      "text": "The hardware claim is concrete too: H3 Max \"was trained and served entirely on NVIDIA GB200 NVL72 systems,\" delivering \"up to 2x the performance of the previous-generation accelerators\"",
+      "verdict": "supported",
+      "citation": "https://blog.fal.ai/introducing-h3-max-by-fal/"
+    },
+    {
+      "id": "c6",
+      "text": "The top four are one cluster and everything below is another: 1,203 / 1,190 / 1,185 / 1,179, then a 71-point cliff to 1,108.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+    },
+    {
+      "id": "c7",
+      "text": "And H3 Max is rated on the thinnest evidence in that cluster — n=5,368 against Seedance's 17,383 and Gemini Omni Flash's 12,057.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+    },
+    {
+      "id": "c8",
+      "text": "Wan 3.0 versus H3 Max is Δ = 7, z ≈ 1.02, p ≈ 0.31 — no separation at all.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+    },
+    {
+      "id": "c9",
+      "text": "On the image-to-video board *without* audio, H3 Max does not appear in the top five.",
+      "verdict": "weak",
+      "citation": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+    },
+    {
+      "id": "c10",
+      "text": "Design Arena corroborates the ordering: H3 Max 1,349 over 3,574 image-to-video battles against base H3's 1,326.",
+      "verdict": "weak",
+      "citation": "https://www.designarena.ai/leaderboard/image-to-video"
+    },
+    {
+      "id": "c11",
+      "text": "On Design Arena's live image-to-video board, base MiniMax H3 is timed at 241.4 seconds and H3 Max at 6.1 seconds — a ratio of 39.6x, not \"more than 50x\" (as of 2026-08-31).",
+      "verdict": "weak",
+      "citation": "https://www.designarena.ai/leaderboard/image-to-video"
+    },
+    {
+      "id": "c12",
+      "text": "On its general Video board the ordering inverts outright: base H3 1,298 beats H3 Max 1,293, both behind Gemini Omni 1.1 Flash at 1,377.",
+      "verdict": "weak",
+      "citation": "https://www.designarena.ai/leaderboard/image-to-video"
+    },
+    {
+      "id": "c13",
+      "text": "But fal cited the launch-day figures, 1,341 versus 1,333 — eight points.",
+      "verdict": "supported",
+      "citation": "https://fal.ai/minimax-h3-max"
+    },
+    {
+      "id": "c14",
+      "text": "Section I.5 defines \"Excluded Territories\" as \"the European Union, the United Kingdom, the Republic of Korea and the United States of America,\" and \"Applicable Territory\" as \"worldwide, excluding the Excluded Territories.\"",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/MiniMaxAI/MiniMax-H3/raw/main/LICENSE"
+    },
+    {
+      "id": "c15",
+      "text": "- {term: Revenue threshold, def: \"Separate prior written authorization above $20M yearly revenue (Section IV.1)\"}",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/MiniMaxAI/MiniMax-H3/raw/main/LICENSE"
+    },
+    {
+      "id": "c16",
+      "text": "\"Model Derivatives\" expressly covers modification, distillation and synthetic-data training, and the grant covers creating them — qualified only by \"Solely within the Applicable Territory.\"",
+      "verdict": "weak",
+      "citation": "https://huggingface.co/MiniMaxAI/MiniMax-H3/raw/main/LICENSE"
+    },
+    {
+      "id": "c17",
+      "text": "Disney, Universal/NBCUniversal and Warner Bros. Discovery entities — twelve plaintiffs including Marvel, Lucasfilm, Twentieth Century Fox, DreamWorks and DC Comics — sued in the Central District of California on 2025-09-16 (*Disney Enterprises, Inc. v. MiniMax*, No. 2:25-cv-08768), alleging MiniMax \"pirates and plunders Plaintiffs' copyrighted works on a massive scale\" and seeking statutory damages up to $150,000 per infringed work.",
+      "verdict": "weak",
+      "citation": "https://variety.com/2025/digital/news/disney-warner-bros-discovery-nbcu-lawsuit-minimax-chinese-ai-company-1236520395/"
+    },
+    {
+      "id": "c18",
+      "text": "The detail that matters most: Nanonoble Pte. Ltd. is both the licensor on the H3 Community Licence and a named defendant in that case — the entity granting the weights is the entity being sued.",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/MiniMaxAI/MiniMax-H3/raw/main/LICENSE"
+    },
+    {
+      "id": "c19",
+      "text": "MiniMax's Rule 12(b)(2) personal-jurisdiction motion was denied in May 2026; the case is in discovery, with no settlement, dismissal or injunction.",
+      "verdict": "supported",
+      "citation": "https://www.loeb.com/en/insights/publications/2026/06/disney-enterprises-inc-v-minimax"
+    },
+    {
+      "id": "c20",
+      "text": "MiniMax's API documentation goes further and calls H3 Max \"jointly released by MiniMax and fal.ai\" — while still conceding it is \"a video generation model post-trained by fal.ai on MiniMax H3.\"",
+      "verdict": "supported",
+      "citation": "https://platform.minimax.io/docs/guides/video-generation"
+    },
+    {
+      "id": "c21",
+      "text": "MiniMax's own rate card prices `MiniMax-H3-Max` at $0.05/sec (480P) and $0.08/sec (768P) — an exact match to fal's post-promotion list — while pricing base `MiniMax-H3` at $0.08/sec (768P) and $0.13/sec (2K).",
+      "verdict": "supported",
+      "citation": "https://platform.minimax.io/docs/guides/pricing-paygo"
+    },
+    {
+      "id": "c22",
+      "text": "The best available anchor is MiniMax's own self-host benchmark: a ~5-second 768p generation (1344x768, 124 frames, 50 steps) takes 75.10 seconds mean inference latency on 4xH200 — 84.14 seconds end to end — and 19.04 seconds on 8xB300.",
+      "verdict": "supported",
+      "citation": "https://platform.minimax.io/docs/guides/local-deploy-h3"
+    },
+    {
+      "id": "c23",
+      "text": "CoreWeave lists on-demand GB200 NVL72 at $42.00/hour for a 4-GPU instance — $10.50 per GPU-hour — with no spot tier available for GB200.",
+      "verdict": "supported",
+      "citation": "https://www.coreweave.com/pricing"
+    },
+    {
+      "id": "c24",
+      "text": "And on launch day itself, FastH3 shipped with full open weights: 15 seconds of 768p video in under 13 seconds on 8×B200, the base model's 49 DiT calls collapsed to 4, trained on roughly 258k prompts with no video data for about 1,000 B200 hours — a 5-second clip in 6.1 seconds on 4×B200.",
+      "verdict": "weak",
+      "citation": "https://haoailab.com/blogs/fasth3-preview/"
+    },
+    {
+      "id": "c25",
+      "text": "The core is a 33B-parameter dense single-stream transformer — the \"H3-Omni-Transformer\" — with roughly 13B of those parameters sitting in AdaLN-related branches; the text conditioner is a separate full Qwen3-VL-32B whose 50th-layer hidden states are consumed, so anyone deploying it carries about 65B parameters, not 33B.",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/MiniMaxAI/MiniMax-H3"
+    },
+    {
+      "id": "c26",
+      "text": "Natively it produces 4–15s clips at 24 FPS, 768px short side, with jointly denoised 32 kHz stereo audio in the same pass.",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/MiniMaxAI/MiniMax-H3"
+    },
+    {
+      "id": "c27",
+      "text": "Google's cheapest tier undercuts H3 Max outright at $0.05/sec with audio included by default; Veo 3.1 Fast and Sora 2 sit at $0.10/sec at 720p.",
+      "verdict": "supported",
+      "citation": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    {
+      "id": "c28",
+      "text": "Two *identical* Aya-Vision-8B checkpoints scored 17 Elo apart in Chatbot Arena from sampling noise alone — larger than H3 Max's text-to-video lead.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2504.20879"
+    },
+    {
+      "id": "c29",
+      "text": "In 3D Arena, identical models gained 78 Elo purely from rendering changes \"that enhance immediate visual appeal\" across 123,243 votes.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2506.18787v1"
+    },
+    {
+      "id": "c30",
+      "text": "A MiniMax organization member wrote on the licence discussion thread that \"this regional carve-out stems from our ongoing generative video copyright litigation with major Hollywood studios.\"",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/MiniMaxAI/MiniMax-H3/discussions/12"
+    },
+    {
+      "id": "c31",
+      "text": "Independent commentary\nhas called the release \"only minimally open,\" and the sharpest published framing\nis a subtitle: \"You Don't Need a Supercomputer. You Might Need a Lawyer.\"",
+      "verdict": "unsupported",
+      "citation": "https://www.deeplearning.ai/the-batch/minimaxs-state-of-the-art-video-model-is-only-minimally-open"
+    },
+    {
+      "id": "c32",
+      "text": "It originates on a third-party reseller page and was laundered into authority by search summarizers.",
+      "verdict": "unsupported",
+      "citation": "https://fal.ai/serverless"
+    },
+    {
+      "id": "c33",
+      "text": "- {label: \"Kling 3.0 Pro (1080p)\", value: \"$0.336\", pct: 48}",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c34",
+      "text": "A 50%-off launch discount was live on 2026-08-31, putting H3 Max at $0.04/sec, but fal contradicts itself across three of its own pages on when it ends — \"the first week,\" \"the first 14 days,\" and a September 1 date on the API page — so no single expiry should be assumed.",
+      "verdict": "weak",
+      "citation": "https://fal.ai/models/minimax/h3-max/text-to-video"
+    },
+    {
+      "id": "c35",
+      "text": "fal's own published work on splitting one diffusion request across GPUs, \"Ulysses Unbound,\" benchmarks a single 8xB200 node and reports chunk-latency gains of 23-25% collapsing to roughly 3-5% end-to-end.",
+      "verdict": "supported",
+      "citation": "https://blog.fal.ai/ulysses-unbound-experiments-in-communication-computation-overlap/"
+    },
+    {
+      "id": "c36",
+      "text": "Nobody outside fal and Design Arena has independently timed H3 Max,[^40] and Artificial Analysis does not latency-benchmark audio-enabled video models at all.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/video/methodology"
+    },
+    {
+      "id": "c37",
+      "text": "Artificial Analysis generates at \"1080p (or closest supported value)\" with otherwise identical settings.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/video/methodology"
+    },
+    {
+      "id": "c38",
+      "text": "The consequence is downstream: Artificial Analysis's leaderboard carries H3 Max at $2.40/min, the promotional rate rather than the $4.80/min list, which temporarily flatters the #1 model's price-per-quality position.",
+      "verdict": "supported",
+      "citation": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+    },
+    {
+      "id": "c39",
+      "text": "One smaller discrepancy: fal says AA lists the model as \"MiniMax H3 Turbo (768p)\"; the live board carries no such row.",
+      "verdict": "supported",
+      "citation": "https://fal.ai/minimax-h3-max"
+    },
+    {
+      "id": "c40",
+      "text": "OpenAI has scheduled the Sora 2 and Sora 2 Pro Videos API for removal on 2026-09-24 with no listed replacement, pulling the highest-profile Western competitor three weeks after launch.",
+      "verdict": "supported",
+      "citation": "https://developers.openai.com/api/docs/deprecations"
+    },
+    {
+      "id": "c41",
+      "text": "Design Arena lists a model after fifteen comparisons, weights every vote equally \"with no filtering or editorial adjustment,\" is a 2025-founded, $7.9M-seed startup selling private evaluations to the labs it ranks, and promoted H3 Max on launch day.",
+      "verdict": "weak",
+      "citation": "https://notes.designarena.ai/methodology/"
+    }
+  ]
+}
