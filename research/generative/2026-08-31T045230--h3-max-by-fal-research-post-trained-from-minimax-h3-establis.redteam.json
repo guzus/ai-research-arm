@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "If fal-hosted *base* H3 is already ~15x, and H3 Max is ~35x, then everything the post-training and the Max-specific work contributed is roughly 2.3x.",
+      "contradicting_url": "https://www.digitalapplied.com/blog/fal-h3-max-faster-than-real-time-video-generation",
+      "contradicting_quote": "The baseline is fal's own hosted endpoint; fal controls both sides of the measurement",
+      "severity": "medium",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "It is also board-specific, resolution-mismatched, and — at the sample size fal cited on launch day — not statistically separated from second place.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The detail that matters most: Nanonoble Pte. Ltd. is both the licensor on the H3 Community Licence and a named defendant in that case — the entity granting the weights is the entity being sued.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

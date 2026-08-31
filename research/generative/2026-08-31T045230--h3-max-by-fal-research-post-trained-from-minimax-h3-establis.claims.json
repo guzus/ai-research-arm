@@ -1,0 +1,404 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "fal announced H3 Max on 2026-08-27 as a post-trained version of MiniMax H3 developed by fal Research and optimized for speed by fal's inference team.",
+      "type": "event",
+      "source_urls": ["https://blog.fal.ai/introducing-h3-max-by-fal/", "https://fal.ai/minimax-h3-max"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "MiniMax open-weighted the base MiniMax H3 model on 2026-08-03, publishing it as HuggingFace repository MiniMaxAI/MiniMax-H3.",
+      "type": "event",
+      "source_urls": ["https://www.minimax.io/news/minimax-h3-open-source", "https://huggingface.co/MiniMaxAI/MiniMax-H3"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "MiniMax's own API documentation exposes model ID MiniMax-H3-Max and describes it as jointly released by MiniMax and fal.ai, post-trained by fal.ai on MiniMax H3.",
+      "type": "market-structure",
+      "source_urls": ["https://platform.minimax.io/docs/guides/video-generation"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c4",
+      "claim": "The base MiniMax H3 generative core is a 33-billion-parameter dense single-stream transformer, with roughly 13B of those parameters in AdaLN-related branches, conditioned by a full Qwen3-VL-32B text encoder.",
+      "type": "technical",
+      "source_urls": ["https://huggingface.co/MiniMaxAI/MiniMax-H3"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "MiniMax released only the 768p base checkpoints; the H3-Context-IR orchestration module, the H3-Regenerate-2K upscaler, and the sparse-attention implementation were withheld, so 768p is a hard ceiling for anything post-trained from the open weights.",
+      "type": "technical",
+      "source_urls": ["https://www.minimax.io/news/minimax-h3-open-source", "https://huggingface.co/MiniMaxAI/MiniMax-H3"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "fal's blog states H3 Max generates a 5-second video in approximately 3 seconds, and its landing page reports backend denoising of roughly 2.5 seconds for a 5-second 768p generation.",
+      "type": "metric",
+      "source_urls": ["https://blog.fal.ai/introducing-h3-max-by-fal/", "https://fal.ai/minimax-h3-max"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-27",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c7",
+      "claim": "fal publishes three different speed multipliers with three different baselines: roughly 35x the throughput of the official H3 endpoint, on average 15x faster than models of comparable quality, and a Design Arena figure of more than 50x the speed of MiniMax H3.",
+      "type": "comparison",
+      "source_urls": ["https://blog.fal.ai/introducing-h3-max-by-fal/", "https://fal.ai/minimax-h3-max"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-27",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c8",
+      "claim": "fal's own FAQ states that base MiniMax H3 running on fal's stack is about 15x faster than MiniMax's own inference, which implies the post-training and Max-specific work accounts for only about 2.3x of the headline 35x figure.",
+      "type": "comparison",
+      "source_urls": ["https://fal.ai/minimax-h3-max"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-31",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "fal's claims that post-training spent a large portion of compute on verifiable RL tasks appear only on its marketing landing page and one X post, and never in its technical launch blog, which does not use the word reinforcement at all.",
+      "type": "technical",
+      "source_urls": ["https://fal.ai/minimax-h3-max", "https://blog.fal.ai/introducing-h3-max-by-fal/", "https://x.com/fal/status/2092710681577504975"],
+      "source_tiers": ["primary", "primary", "primary"],
+      "as_of": "2026-08-27",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c10",
+      "claim": "fal states H3 Max was trained and served entirely on NVIDIA GB200 NVL72 systems, and that GB200 delivers up to 2x the per-chip performance of previous-generation accelerators.",
+      "type": "technical",
+      "source_urls": ["https://blog.fal.ai/introducing-h3-max-by-fal/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-27",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c11",
+      "claim": "fal's own published research on splitting a single diffusion request across GPUs, Ulysses Unbound, benchmarks only a single 8xB200 node and reports end-to-end gains of roughly 3 to 5 percent.",
+      "type": "technical",
+      "source_urls": ["https://blog.fal.ai/ulysses-unbound-experiments-in-communication-computation-overlap/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-02-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "On Artificial Analysis's image-to-video with-audio leaderboard, H3 Max ranks first at Elo 1,203 with a 95% confidence interval of plus or minus 9 over 5,368 samples, ahead of Dreamina Seedance 2.0 720p at 1,190 plus or minus 6 and base MiniMax H3 at 1,185 plus or minus 8.",
+      "type": "metric",
+      "source_urls": ["https://artificialanalysis.ai/video/leaderboard/image-to-video"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c13",
+      "claim": "At the 2,177-sample figure fal cited, the Elo 1,201 plus or minus 11 first-place claim was not statistically separated from second place, with confidence intervals overlapping by six Elo points and a two-sample test giving p of about 0.085.",
+      "type": "metric",
+      "source_urls": ["https://fal.ai/minimax-h3-max", "https://artificialanalysis.ai/video/leaderboard/image-to-video"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-31",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c14",
+      "claim": "On Artificial Analysis's text-to-video with-audio board H3 Max ranks third at Elo 1,235 behind Wan 3.0 at 1,242 and Gemini Omni Flash at 1,237, with all three confidence intervals mutually overlapping.",
+      "type": "metric",
+      "source_urls": ["https://artificialanalysis.ai/video/leaderboard/text-to-video"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c15",
+      "claim": "Artificial Analysis generates at 1080p or the closest supported value, while fal's H3 Max API accepts only 480P or 768P, so H3 Max is rated against competitors producing higher-resolution output.",
+      "type": "technical",
+      "source_urls": ["https://artificialanalysis.ai/video/methodology", "https://fal.ai/models/minimax/h3-max/text-to-video"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "On Design Arena's image-to-video board H3 Max scores Elo 1,349 over 3,574 battles at 6.1 seconds, versus base MiniMax H3 at 1,326 over 3,041 battles at 241.4 seconds, a measured speed ratio of about 39.6x rather than the more than 50x fal cited.",
+      "type": "metric",
+      "source_urls": ["https://www.designarena.ai/leaderboard/image-to-video"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c17",
+      "claim": "Design Arena lists a model after a minimum of 15 pairwise comparisons and states that each vote is weighted equally with no filtering or editorial adjustment.",
+      "type": "technical",
+      "source_urls": ["https://notes.designarena.ai/methodology/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "fal lists H3 Max at $0.08 per second at 768p while listing its own hosting of base MiniMax H3 at $0.06 per second at the same 768p resolution, a 33 percent premium for the faster model.",
+      "type": "metric",
+      "source_urls": ["https://fal.ai/minimax-h3-max", "https://fal.ai/models/minimax/h3/text-to-video"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "MiniMax's own pay-as-you-go rate card prices MiniMax-H3-Max at $0.05 per second at 480P and $0.08 per second at 768P, exactly matching fal's post-promotion list price, while pricing base MiniMax-H3 at $0.08 per second at 768P and $0.13 per second at 2K.",
+      "type": "metric",
+      "source_urls": ["https://platform.minimax.io/docs/guides/pricing-paygo"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "MiniMax's published self-host benchmark puts a roughly 5-second 768p generation at 75.10 seconds mean inference latency on 4xH200 and 19.04 seconds on 8xB300.",
+      "type": "metric",
+      "source_urls": ["https://platform.minimax.io/docs/guides/local-deploy-h3"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "CoreWeave publishes an on-demand GB200 NVL72 rate of $42.00 per hour for a four-GPU instance, equivalent to $10.50 per GPU-hour, with committed-use discounts advertised up to 60 percent.",
+      "type": "metric",
+      "source_urls": ["https://www.coreweave.com/pricing"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c22",
+      "claim": "A community four-step distillation LoRA of MiniMax H3 from lightx2v and ModelTC shipped within days of the 2026-08-03 weights release, roughly three weeks before fal's H3 Max launched.",
+      "type": "event",
+      "source_urls": ["https://comfyui-wiki.com/en/news/2026-08-11-minimax-h3-turbo-lightx2v-v1", "https://comfyui-wiki.com/en/news/2026-08-06-minimax-h3-turbo-lora"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-08-11",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c23",
+      "claim": "FastH3, a four-step DMD2 plus sparse-attention distillation of the same H3 base from Hao AI Lab with Nuva Lab and NVIDIA, was released with full open weights on 2026-08-27 and generates 15 seconds of 768p video in under 13 seconds on 8xB200, trained for about 1,000 B200 hours.",
+      "type": "event",
+      "source_urls": ["https://haoailab.com/blogs/fasth3-preview/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-27",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c24",
+      "claim": "Baseten published a 53.6x speedup on Wan 2.2 in July 2026, decomposed as 20x from timestep distillation, 1.5x from custom kernels and 1.5x from NVFP4 quantization, taking generation from over 120 seconds to 2.75 seconds per clip.",
+      "type": "technical",
+      "source_urls": ["https://www.baseten.co/blog/real-time-video-generation-inference-on-baseten/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-07-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "The MiniMax H3 Community License defines Excluded Territories as the European Union, the United Kingdom, the Republic of Korea and the United States of America, and grants rights only in the Applicable Territory defined as worldwide excluding those.",
+      "type": "regulatory",
+      "source_urls": ["https://huggingface.co/MiniMaxAI/MiniMax-H3/raw/main/LICENSE"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-08-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "The MiniMax H3 Community License requires separate prior written authorization where commercial products and services generate more than 20 million US dollars in yearly revenue.",
+      "type": "regulatory",
+      "source_urls": ["https://huggingface.co/MiniMaxAI/MiniMax-H3/raw/main/LICENSE"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-08-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "Disney, Universal and Warner Bros. Discovery entities sued MiniMax and Nanonoble Pte. Ltd. in the Central District of California on 2025-09-16, and the personal-jurisdiction motion to dismiss was denied in May 2026 with the case proceeding.",
+      "type": "regulatory",
+      "source_urls": ["https://variety.com/2025/digital/news/disney-warner-bros-discovery-nbcu-lawsuit-minimax-chinese-ai-company-1236520395/", "https://www.courtlistener.com/docket/71357247/disney-enterprises-inc-v-minimax/"],
+      "source_tiers": ["legal", "legal"],
+      "as_of": "2026-08-31",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c28",
+      "claim": "A MiniMax organization member wrote on the HuggingFace license discussion thread that the regional carve-out stems from the company's ongoing generative video copyright litigation with major Hollywood studios.",
+      "type": "quote",
+      "source_urls": ["https://huggingface.co/MiniMaxAI/MiniMax-H3/discussions/12"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-03",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c29",
+      "claim": "MiniMax listed in Hong Kong in January 2026 and reported first-half 2026 revenue of $116.6 million, up 283.1 percent, with its Open Platform and enterprise line growing 703.1 percent to $73.9 million or 63.4 percent of revenue, on a 17.9 percent gross margin and an adjusted net loss of $293 million.",
+      "type": "metric",
+      "source_urls": ["https://www.minimax.io/news/minimax-announces-first-half-2026-financial-results-1787744160", "https://www.cnbc.com/2026/01/09/minimax-hong-kong-ipo-ai-tigers-zhipu.html"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-26",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "fal raised a $140 million Series D led by Sequoia at a $4.5 billion valuation in December 2025 with NVIDIA's NVentures participating, and reported annualized revenue of roughly $400 million as of February 2026.",
+      "type": "metric",
+      "source_urls": ["https://sacra.com/c/fal-ai/", "https://sequoiacap.com/article/partnering-with-fal-the-generative-media-company"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-02-28",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c31",
+      "claim": "Google prices Veo 3.1 Lite at $0.05 per second at 720p with audio included by default, undercutting H3 Max's $0.08 per second list rate.",
+      "type": "metric",
+      "source_urls": ["https://ai.google.dev/gemini-api/docs/pricing"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c32",
+      "claim": "OpenAI has scheduled the Sora 2 and Sora 2 Pro Videos API for removal on 2026-09-24 with no recommended replacement listed.",
+      "type": "event",
+      "source_urls": ["https://developers.openai.com/api/docs/deprecations"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c33",
+      "claim": "A controlled study of Chatbot Arena found that two identical Aya-Vision-8B checkpoints scored 17 Elo points apart from sampling noise alone, and documented undisclosed private multi-variant testing by large providers.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2504.20879"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-04-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c34",
+      "claim": "In the 3D Arena study, identical underlying models gained a 78 Elo point advantage purely through rendering differences that enhanced immediate visual appeal, across 123,243 votes from 8,096 users.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2506.18787v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-06-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c35",
+      "claim": "A CVPR 2025 workshop survey gathering artist feedback on generative video named consistency, controllability, fine-grained editing and motion refinement as the desired improvements, with no mention of generation speed.",
+      "type": "market-structure",
+      "source_urls": ["https://arxiv.org/abs/2504.08296"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-04-11",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c36",
+      "claim": "Nielsen's three response-time limits of 0.1 second, 1 second and 10 seconds define the thresholds at which latency changes user experience, placing a sub-3-second batch generation inside the flow-preserving band rather than the direct-manipulation band.",
+      "type": "definition",
+      "source_urls": ["https://www.nngroup.com/articles/response-times-3-important-limits/"],
+      "source_tiers": ["secondary"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c37",
+      "claim": "A peer-reviewed controlled experiment found that an additional 500 milliseconds of latency significantly decreased user activity and dataset coverage in exploratory analysis, and shifted exploration strategy.",
+      "type": "causal",
+      "source_urls": ["https://idl.uw.edu/papers/latency"],
+      "source_tiers": ["academic"],
+      "as_of": "2014-10-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c38",
+      "claim": "fal's previous house research model AuraFlow was overtaken by Black Forest Labs' FLUX.1 within roughly two weeks of that release, and fal has published no new AuraFlow version since v0.3 in August 2024.",
+      "type": "event",
+      "source_urls": ["https://huggingface.co/fal/AuraFlow-v0.3"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-08-14",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c39",
+      "claim": "In July 2025 fal and Replicate shipped competing branded fast variants of Wan 2.2 within days of each other at the same $0.05 per video price, both built on third-party distillation work rather than their own post-training.",
+      "type": "event",
+      "source_urls": ["https://replicate.com/blog/wan-22"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-07-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c40",
+      "claim": "No independent hands-on review or third-party wall-clock verification of H3 Max's latency claims existed as of 2026-08-31, roughly four days after launch.",
+      "type": "market-structure",
+      "source_urls": ["https://www.digitalapplied.com/blog/fal-h3-max-faster-than-real-time-video-generation", "https://artificialanalysis.ai/video/methodology"],
+      "source_tiers": ["opinion", "secondary"],
+      "as_of": "2026-08-31",
+      "confidence": "medium",
+      "risk": "volatile"
+    }
+  ]
+}

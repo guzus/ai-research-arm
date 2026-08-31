@@ -2636,5 +2636,17 @@
     "source": "workflow_dispatch",
     "prompt": "Uniswap Continuous Clearing Auctions (CCA): how the mechanism works, price discovery and token allocation, comparison with fixed-price sales, Dutch auctions, batch auctions and AMMs, MEV/manipulation and regulatory risks, and evidence from real launches",
     "tags": []
+  },
+  {
+    "slug": "h3-max-by-fal-research-post-trained-from-minimax-h3-establis",
+    "file": "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "H3 Max: fal's fastest video model, and the moat that isn't the model",
+    "model": "claude-opus-5",
+    "created_at": "2026-08-31T04:52:30Z",
+    "source": "workflow_dispatch",
+    "prompt": "H3 Max by fal Research, post-trained from MiniMax H3: establish correct attribution and release timeline; explain what post-training, architecture or inference optimizations changed versus the open-weight base H3; verify claims of stronger prompt adherence, aesthetics, under-3-second generation and roughly 50x speedup; compare output quality, native audio, duration, resolution, throughput, latency and cost against base H3 and leading video models; audit Artificial Analysis rankings and uncertainty; distinguish measured results from vendor demos; examine hardware and fal inference-stack dependence, weights availability and reproducibility, MiniMax license implications and commercial rights, pricing and unit economics, and whether H3 Max demonstrates a durable post-training moat or a rapidly copyable optimization layer",
+    "tags": []
   }
 ]
