@@ -1,15 +1,15 @@
 AI News - 2026-08-31
 
 TOP STORIES:
-• Anthropic warns infostealer malware is hijacking Claude sessions to drain paid usage; signing out affected users and refunding
-• OpenAI retires the official DALL·E GPT from ChatGPT, pushing users to ChatGPT Images
-• Google shuts down Gemini Robotics-ER 1.6 Preview, replaced by ER 2 Preview/streaming endpoints
-• Caterpillar details $100M/5yr AI workforce push, applying autonomous-mining lessons jobsite-wide
-• Google Meet hardware controllers can now start/stop Gemini note-taking in-room
+• OpenAI cuts off Cursor's model access after SpaceX's $60B takeover; Anthropic to boost Claude supply
+• Anthropic warns infostealer malware is hijacking Claude sessions to drain paid usage
+• OpenAI reportedly buys tens of thousands of Macs to train computer-use AI agents via RL
+• California's session ends with SB 813 (AI safety verification) and AB 1883 (worker AI ban) passed
+• OpenAI retires DALL·E GPT from ChatGPT, pushing users to ChatGPT Images
 
 KEY NUMBERS:
-• Malware families involved: Vidar, LummaC2, StealC, RedLine, Acreed, Atomic Stealer (AMOS)
-• Caterpillar: $100M workforce AI training investment over 5 years; 118,000 employees
-• Caterpillar autonomous mining: 11B+ tons moved, 385M+ autonomous km
+• Cursor deal: $60B all-stock; OpenAI cutoff Nov 12; ~5% of Cursor traffic is OpenAI
+• Malware: Vidar, LummaC2, StealC, RedLine, Acreed, AMOS
+• Apate.AI seed: A$13.9M, now Delaware-incorporated
 
 Full report on GitHub.
