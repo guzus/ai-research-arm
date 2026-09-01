@@ -1,5 +1,5 @@
 {
-  "article_count": 75,
+  "article_count": 76,
   "articles": [
     {
       "claim_count": 18,
@@ -739,6 +739,16 @@
       "stem": "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis",
       "tags": [],
       "title": "H3 Max: fal's fastest video model, and the moat that isn't the model"
+    },
+    {
+      "claim_count": 30,
+      "created_at": "2026-09-01T07:22:26Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "stem": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "The NASDAQ Company That Isn't There"
     }
   ],
   "by_host": {
@@ -1063,6 +1073,9 @@
     "ara.guzus.xyz": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c12",
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c20"
+    ],
+    "architectpartners.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22"
     ],
     "arena.ai": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c12",
@@ -1495,7 +1508,8 @@
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c34",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c11",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c12",
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c3"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c3",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c4"
     ],
     "bloomingbit.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
@@ -1833,7 +1847,8 @@
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c11",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c11",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c18",
-      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c19"
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c19",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29"
     ],
     "coinlaw.io": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c29"
@@ -1849,6 +1864,12 @@
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c20",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c1",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c5"
+    ],
+    "cointribune.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c24"
+    ],
+    "columbia.edu": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c25"
     ],
     "cometapi.com": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c15"
@@ -1934,7 +1955,9 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c22",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c20",
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c1",
-      "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c17"
+      "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c17",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c19",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c20"
     ],
     "cryptopolitan.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30"
@@ -2202,6 +2225,9 @@
       "2026-07-13T181948--cxmt#c27",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c9"
     ],
+    "dinari.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c16"
+    ],
     "discord.com": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c38"
     ],
@@ -2250,11 +2276,18 @@
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c2",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c25"
     ],
+    "docs.robinhood.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c17",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21"
+    ],
     "docs.tori.finance": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c10"
     ],
     "docs.usd.ai": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c12"
+    ],
+    "docs.xstocks.fi": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c16"
     ],
     "docs.z.ai": [
       "2026-06-22T052035--zhipu-ai-glm#c20",
@@ -2267,6 +2300,9 @@
       "2026-05-25T053654--ai-adoption-in-bio-industry#c2",
       "2026-05-25T053654--ai-adoption-in-bio-industry#c3",
       "2026-05-25T053654--ai-adoption-in-bio-industry#c7"
+    ],
+    "dorsey.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c4"
     ],
     "download.semiconductor.samsung.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c24"
@@ -2612,10 +2648,17 @@
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c4",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c2",
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c8",
-      "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-9"
+      "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-9",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c12",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22"
     ],
     "find-and-update.company-information.service.gov.uk": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c16"
+    ],
+    "findmymoat.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c6",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c7"
     ],
     "fingfx.thomsonreuters.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c25"
@@ -2630,7 +2673,8 @@
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c14"
     ],
     "foleyhoag.com": [
-      "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c26"
+      "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c26",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c25"
     ],
     "fool.com": [
       "2026-05-27T035557--800-vdc-architecture#c11",
@@ -2819,7 +2863,9 @@
       "2026-08-04T171206--comfyui-company#c2",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c4",
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c36",
-      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c26"
+      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c26",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c24"
     ],
     "gmicloud.ai": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c27"
@@ -2904,6 +2950,9 @@
     ],
     "hhmi.org": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c38"
+    ],
+    "highshortinterest.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c6"
     ],
     "hiive.com": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c23"
@@ -3131,6 +3180,9 @@
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c22",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c38"
     ],
+    "investors.sharplink.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11"
+    ],
     "investors.snowflake.com": [
       "2026-07-20T050016--databricks-mid-2026#c20",
       "2026-07-20T050016--databricks-mid-2026#c21",
@@ -3255,7 +3307,8 @@
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c12",
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c30",
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15",
-      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c22"
+      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c22",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29"
     ],
     "kvcache.ai": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c26"
@@ -3322,6 +3375,9 @@
     "lesswrong.com": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c27",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c37"
+    ],
+    "lex.substack.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23"
     ],
     "lexisnexis.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c27"
@@ -3501,6 +3557,9 @@
     ],
     "money.finance.sina.com.cn": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c34"
+    ],
+    "money.usnews.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c18"
     ],
     "mordorintelligence.com": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c24"
@@ -3906,7 +3965,8 @@
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c28"
     ],
     "phemex.com": [
-      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c2"
+      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c2",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21"
     ],
     "phone.cnmo.com": [
       "2026-07-13T181948--cxmt#c16"
@@ -4180,6 +4240,9 @@
     "richmondfed.org": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c16"
     ],
+    "robinhood.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c18"
+    ],
     "robostore.com": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c21"
     ],
@@ -4204,6 +4267,9 @@
     ],
     "royalsociety.org": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c35"
+    ],
+    "ryanoconnellfinance.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
     ],
     "ryder.id": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c19"
@@ -4370,7 +4436,11 @@
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-5",
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-6",
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-7",
-      "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-8"
+      "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-8",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c10",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c15",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c27",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c9"
     ],
     "securitycompass.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
@@ -4455,6 +4525,9 @@
       "2026-07-31T051841--situational-awareness-lp-collapse#c27",
       "2026-07-31T051841--situational-awareness-lp-collapse#c37"
     ],
+    "skadden.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c5"
+    ],
     "smartanalyticsglobal.com": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c14"
     ],
@@ -4477,7 +4550,8 @@
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c22"
     ],
     "spotgamma.com": [
-      "2026-07-31T051841--situational-awareness-lp-collapse#c26"
+      "2026-07-31T051841--situational-awareness-lp-collapse#c26",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c14"
     ],
     "spyglass.org": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c6"
@@ -4579,6 +4653,9 @@
     "stripe.com": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c34"
     ],
+    "sullivanlaw.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c5"
+    ],
     "sumitomo-chem.co.jp": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c2",
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c3"
@@ -4620,6 +4697,9 @@
     ],
     "tanayj.com": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c15"
+    ],
+    "tapeboard.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
     ],
     "tbench.ai": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10",
@@ -4803,7 +4883,9 @@
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c9",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c1",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c18",
-      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c3"
+      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c3",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23"
     ],
     "thechinaacademy.org": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c1"
@@ -4924,7 +5006,8 @@
     ],
     "tipranks.com": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c17",
-      "2026-08-20T152813--unitree-star-market-ipo-debut#c19"
+      "2026-08-20T152813--unitree-star-market-ipo-debut#c19",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c24"
     ],
     "tokencost.app": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c3"
@@ -4957,6 +5040,9 @@
     ],
     "tradingkey.com": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c16"
+    ],
+    "tradingsim.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c14"
     ],
     "trajectory.ai": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c1",
@@ -5134,11 +5220,17 @@
     "wavespeed.ai": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c28"
     ],
+    "wealthmanagement.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c26"
+    ],
     "webpronews.com": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c7"
     ],
     "wffi.wharton.upenn.edu": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c14"
+    ],
+    "whitecase.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c9"
     ],
     "whitehouse.gov": [
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c14",
@@ -5195,6 +5287,9 @@
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c7",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c8",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9"
+    ],
+    "x-stocks.app": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c17"
     ],
     "x.ai": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c11"
@@ -5362,7 +5457,12 @@
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-7",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-8",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-9",
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c9"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c9",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c1",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c2",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c28",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c3",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c30"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -5664,6 +5764,9 @@
     ],
     "https://ara.guzus.xyz/research/generative/2026-06-14T221424--openai-42-state-ag-subpoena": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c20"
+    ],
+    "https://architectpartners.com/q2-2026-crypto-ma-and-financing-report": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22"
     ],
     "https://arena.ai/blog/leaderboard-changelog": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c8"
@@ -6600,11 +6703,17 @@
     "https://cryptobriefing.com/bitcoin-mining-partnership-hut8-google-fluidstack": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c22"
     ],
+    "https://cryptobriefing.com/boner-memecoin-hims-robinhood-chain-squeeze": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c19"
+    ],
     "https://cryptobriefing.com/gemma-model-family-900-million-downloads": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c30"
     ],
     "https://cryptobriefing.com/kimi-k3-moonshot-ai-frontend-code-arena": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c7"
+    ],
+    "https://cryptobriefing.com/memecoins-tokenized-stocks-price-impact": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c20"
     ],
     "https://cryptobriefing.com/meta-279b-ai-data-center-leases": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c18"
@@ -6850,6 +6959,9 @@
     "https://digitalcommons.chapman.edu/cgi/viewcontent.cgi?article=1123&context=esi_working_papers": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c11"
     ],
+    "https://dinari.com/dshares": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c16"
+    ],
     "https://discord.com/invite/KVvVqy429": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c38"
     ],
@@ -6893,6 +7005,10 @@
     "https://docs.nvidia.com/gpudirect-storage/api-reference-guide/index.html": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c2"
     ],
+    "https://docs.robinhood.com/chain/stock-tokens": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c17",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21"
+    ],
     "https://docs.tori.finance/products/trusd": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c10"
     ],
@@ -6901,6 +7017,9 @@
     ],
     "https://docs.usd.ai/governance/chip": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c12"
+    ],
+    "https://docs.xstocks.fi/docs": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c16"
     ],
     "https://docs.z.ai/devpack/overview": [
       "2026-06-22T052035--zhipu-ai-glm#c20"
@@ -7267,6 +7386,10 @@
     "https://finance.yahoo.com/news/exclusive-us-holds-off-blacklisting-000212827.html": [
       "2026-07-13T181948--cxmt#c19"
     ],
+    "https://finance.yahoo.com/news/fintech-eightco-shares-skyrocket-move-153925244.html": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c12"
+    ],
     "https://finance.yahoo.com/news/globalwafers-opens-us-factory-plans-031532082.html": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c43"
     ],
@@ -7278,6 +7401,9 @@
     ],
     "https://finance.yahoo.com/news/microsoft-ceo-satya-nadella-admits-143026640.html": [
       "2026-05-27T035557--800-vdc-architecture#c25"
+    ],
+    "https://finance.yahoo.com/news/nasdaq-puts-132-billion-crypto-130235736.html": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22"
     ],
     "https://finance.yahoo.com/news/openai-secures-200-million-pentagon-190059280.html": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c20"
@@ -7349,6 +7475,9 @@
     ],
     "https://fingfx.thomsonreuters.com/gfx/legaldocs/znpnkxmnavl/APPLE%20RIVOS%20LAWSUIT%20settlement.pdf": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c25"
+    ],
+    "https://foleyhoag.com/getattachment/3bb3c189-3b03-4c80-bf98-8f41ef76968b/16SECComplianceandEnforcementAB2021-excerpt.pdf": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c25"
     ],
     "https://foleyhoag.com/news-and-insights/publications/alerts-and-updates/2026/may/the-dtsa-turns-ten-what-a-decade-of-litigation-tells-us": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c26"
@@ -7836,6 +7965,9 @@
     "https://investors.micron.com/static-files/e089f8c0-065d-47b8-9d02-bfa863cdb357": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c22"
     ],
+    "https://investors.sharplink.com/sharplink-gaming-announces-425000000-private-placement-to-initiate-ethereum-treasury-strategy": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11"
+    ],
     "https://investors.snowflake.com/news/news-details/2026/Snowflake-Reports-Financial-Results-for-the-First-Quarter-of-Fiscal-2027/default.aspx": [
       "2026-07-20T050016--databricks-mid-2026#c20",
       "2026-07-20T050016--databricks-mid-2026#c21",
@@ -7933,6 +8065,9 @@
     ],
     "https://leidendeclaration.ai": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c40"
+    ],
+    "https://lex.substack.com/p/analysis-unwinding-the-30b-digital": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23"
     ],
     "https://link.springer.com/article/10.1007/s00493-003-0019-y": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c20"
@@ -8063,6 +8198,9 @@
     ],
     "https://mlq.ai/news/zuckerberg-says-meta-cloud-business-is-definitely-on-the-table-as-ai-capex-hits-145-billion": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c3"
+    ],
+    "https://money.usnews.com/investing/articles/tokenized-stocks-what-they-are-and-what-investors-should-know-now": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c18"
     ],
     "https://natlawreview.com/article/fcc-adds-foreign-produced-advanced-robotic-devices-covered-list-five-things-know": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c11"
@@ -8479,6 +8617,9 @@
     "https://phala.com/posts/GPU-TEEs-is-Alive-on-OpenRouter": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c28"
     ],
+    "https://phemex.com/news/article/long-and-bankr-introduce-stockpaired-tokens-on-robinhood-chain-94284": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21"
+    ],
     "https://phemex.com/news/article/uniswap-protocol-surpasses-4-trillion-in-total-trading-volume-41375": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c2"
     ],
@@ -8762,6 +8903,9 @@
     "https://research/2026-06-05-ai-news.md": [
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c19"
     ],
+    "https://robinhood.com/eu/en/support/articles/about-stock-tokens": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c18"
+    ],
     "https://robostore.com": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c21"
     ],
@@ -8783,6 +8927,9 @@
     ],
     "https://royalsociety.org/people/john-jumper-37403": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c35"
+    ],
+    "https://ryanoconnellfinance.com/short-selling": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
     ],
     "https://ryder.id/blogs/post/robinhood-tokenized-stocks-the-on-chain-custody-catch": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c19"
@@ -8944,6 +9091,9 @@
     ],
     "https://spectrum.ieee.org/deepmind-alphaevolve": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c24"
+    ],
+    "https://spotgamma.com/gamma-squeeze": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c14"
     ],
     "https://spotgamma.com/situational-awareness-unwind-margin-call-ai": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c26"
@@ -9107,6 +9257,9 @@
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c2",
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c7",
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c8"
+    ],
+    "https://tapeboard.com/blog/glossary-what-is-the-finra-threshold-list": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
     ],
     "https://tech.slashdot.org/story/25/04/13/2226203/after-meta-cheating-allegations-unmodified-llama-4-maverick-model-tested---ranks-32": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c11"
@@ -9964,6 +10117,9 @@
     "https://www.bloomberg.com/news/articles/2026-07-20/goldman-says-hedge-funds-sell-us-tech-stocks-at-record-pace": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c16"
     ],
+    "https://www.bloomberg.com/news/articles/2026-07-22/nasdaq-to-kick-off-tiny-companies-faster-after-sec-approves-rule": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c4"
+    ],
     "https://www.bloomberg.com/news/articles/2026-07-23/alphabet-s-future-spending-commitments-soar-to-811-billion": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c9"
     ],
@@ -10408,6 +10564,9 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c18",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c19"
     ],
+    "https://www.coingecko.com/en/coins/pons": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29"
+    ],
     "https://www.coingecko.com/en/coins/tori-trusd": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c11"
     ],
@@ -10420,6 +10579,12 @@
     ],
     "https://www.coingecko.com/research/publications/decentralized-crypto-exchanges-market-share": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c5"
+    ],
+    "https://www.cointribune.com/en/after-a-92-drop-the-bnb-fund-managed-by-cea-industries-in-turmoil": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c24"
+    ],
+    "https://www.columbia.edu/~hcs14/SX9.htm": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c25"
     ],
     "https://www.cometapi.com/gpt-5-5-vs-claude-opus-4-7-which-ai-to-use-when-hallucination-matters-2026-benchmark-data": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c15"
@@ -10690,6 +10855,9 @@
     "https://www.dlnews.com/articles/defi/uniswap-dao-to-activate-fee-switch-and-burn-100m-uni-tokens": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c28"
     ],
+    "https://www.dorsey.com/newsresources/publications/client-alerts/2026/7/sec-approves-nasdaq-mvls-standard": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c4"
+    ],
     "https://www.dtcc.com/accelerated-settlement": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c27"
     ],
@@ -10813,6 +10981,10 @@
     ],
     "https://www.figure.ai/news/series-c": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c13"
+    ],
+    "https://www.findmymoat.com/short-interest": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c6",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c7"
     ],
     "https://www.finra.org/rules-guidance/notices/21-23": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c29"
@@ -10958,6 +11130,12 @@
     "https://www.globenewswire.com/news-release/2024/10/28/2970195/0/en/NVIDIA-Ethernet-Networking-Accelerates-World-s-Largest-AI-Supercomputer-Built-by-xAI.html": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c26"
     ],
+    "https://www.globenewswire.com/news-release/2025/06/16/3099827/0/en/SRM-Launches-TRON-Treasury-Strategy-with-100-000-000-Equity-Investment.html": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11"
+    ],
+    "https://www.globenewswire.com/news-release/2025/08/05/3127489/0/en/CEA-Industries-Closes-500-Million-Private-Placement-to-Advance-Its-BNB-Treasury-Strategy-Common-Stock-Ticker-to-Become-BNC.html": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c24"
+    ],
     "https://www.globenewswire.com/news-release/2025/11/05/3181232/0/en/Recursion-Reports-Third-Quarter-2025-Financial-Results-and-Provides-Business-Update.html": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c4"
     ],
@@ -11050,6 +11228,9 @@
     ],
     "https://www.hhmi.org/hhmi-david-baker-wins-2024-nobel-chemistry": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c38"
+    ],
+    "https://www.highshortinterest.com": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c6"
     ],
     "https://www.hiive.com/securities/cerebras-systems-stock": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c23"
@@ -11255,6 +11436,9 @@
     ],
     "https://www.koreatimes.co.kr/www/tech/2024/09/129_342689.html": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c7"
+    ],
+    "https://www.kucoin.com/blog/pons-token-robinhood-chain-pump-fun-rival": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29"
     ],
     "https://www.kucoin.com/news/flash/minimax-restricts-h3-license-in-u-s-eu-uk-and-south-korea-due-to-hollywood-copyright-lawsuit": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15"
@@ -11961,14 +12145,26 @@
     "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=8-K&dateb=&owner=include&count=40": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c14"
     ],
+    "https://www.sec.gov/edgar/search": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c10"
+    ],
     "https://www.sec.gov/files/ctf-memo-paradigm-cooley-051525.pdf": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c6"
+    ],
+    "https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c15"
     ],
     "https://www.sec.gov/newsroom/press-releases/2022-70": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c20"
     ],
+    "https://www.sec.gov/newsroom/press-releases/2023-219": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c9"
+    ],
     "https://www.sec.gov/newsroom/press-releases/2026-54-sec-proposes-rescission-regulation-nms-rules-611-610e": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c28"
+    ],
+    "https://www.sec.gov/newsroom/speeches-statements/corp-fin-statement-tokenized-securities-012826-statement-tokenized-securities": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c27"
     ],
     "https://www.sec.gov/newsroom/speeches-statements/staff-statement-regarding-broker-dealer-registration-certain-user-interfaces-utilized-prepare-staff-statement-regarding-broker-dealer-registration-certain-user-interfaces-utilized": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c5"
@@ -12008,6 +12204,9 @@
     ],
     "https://www.sina.cn/news/detail/5331059726090857.html": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c2"
+    ],
+    "https://www.skadden.com/insights/publications/2024/11/sec-approves-nasdaq-rule-change": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c5"
     ],
     "https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2026": [
       "2026-07-20T050016--databricks-mid-2026#c22"
@@ -12062,6 +12261,9 @@
     ],
     "https://www.storagereview.com/review/the-token-efficient-path-for-long-context-inference-kv-cache-offload-to-flash": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c23"
+    ],
+    "https://www.sullivanlaw.com/viewpoints/nasdaq-changes-rules-regarding-minimum-bid-price-compliance-periods-and-restricts-the-use-of-reverse-stock-splits": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c5"
     ],
     "https://www.sumitomo-chem.co.jp/english/news/detail/20260702e_2.html": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c2",
@@ -12196,6 +12398,12 @@
     "https://www.theblock.co/post/346161/compound-launches-new-vaults-rival-morpho-controversial-gauntlet-proposal": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c29"
     ],
+    "https://www.theblock.co/post/362417/hyperliquid-strategies-hype-treasury": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11"
+    ],
+    "https://www.theblock.co/post/371021/quarter-of-public-bitcoin-treasury-companies-trade-below-btc-holdings": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23"
+    ],
     "https://www.theblock.co/post/390544/secs-peirce-atkins-incremental-path-tokenized-securities-agency-readies-innovation-exemption": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c26"
     ],
@@ -12274,6 +12482,9 @@
     "https://www.tipranks.com/stocks/hk:9880/revenue": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c19"
     ],
+    "https://www.tipranks.com/stocks/vape/historical-prices": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c24"
+    ],
     "https://www.tomshardware.com/pc-components/ram/memory-price-surge-begins-to-cool-as-consumers-hit-affordability-limit-ai-demand-still-keeps-dram-and-nand-prices-climbing-through-q3-2026": [
       "2026-07-13T181948--cxmt#c30"
     ],
@@ -12309,6 +12520,9 @@
     ],
     "https://www.tradingkey.com/analysis/stocks/us-stocks/262022410-alibaba-baba-stock-forecast-july-2026-doj-settlement-cloud-h200-tradingkey": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c16"
+    ],
+    "https://www.tradingsim.com/blog/the-gme-gamestop-short-squeeze-explained": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c14"
     ],
     "https://www.trendforce.com/news/2023/08/14/news-silicon-wafer-long-term-contracts-unstable-major-foundry-seeks-price-cut-from-japanese-suppliers": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c40"
@@ -12455,8 +12669,14 @@
     "https://www.washingtonpost.com/technology/2026/03/04/anthropic-ai-iran-campaign": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c16"
     ],
+    "https://www.wealthmanagement.com/regulation-compliance/massmutual-to-pay-4m-for-failing-to-identify-keith-gill-s-social-persona": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c26"
+    ],
     "https://www.webpronews.com/bessent-signals-sanctions-as-chinese-ai-models-close-in-on-u-s-leaders": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c7"
+    ],
+    "https://www.whitecase.com/insight-alert/sec-adopts-rule-amendments-modernize-beneficial-ownership-reporting": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c9"
     ],
     "https://www.whitehouse.gov": [
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c14"
@@ -12518,6 +12738,9 @@
     ],
     "https://www.youtube.com/watch?v=oYs_qtuk2Pg": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c5"
+    ],
+    "https://x-stocks.app": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c17"
     ],
     "https://x.ai/news/grok-4-6": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c11"
@@ -12654,6 +12877,15 @@
       "2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th#c12",
       "2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th#c5",
       "2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th#c6"
+    ],
+    "https://x.com/RuneCrypto_": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c28"
+    ],
+    "https://x.com/RuneCrypto_/status/2094474650541543914": [
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c1",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c2",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c3",
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c30"
     ],
     "https://x.com/SERobinsonJr/status/2064491214020161630": [
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c20"
@@ -12978,7 +13210,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2208,
+  "claim_count": 2238,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -66057,9 +66289,750 @@
         "https://x.com/fal/status/2092710681577504975"
       ],
       "type": "technical"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-08-31",
+      "claim": "@RuneCrypto_ posted on 2026-08-31 claiming to have acquired 37.4% of a NASDAQ-listed company for $1,800,000, describing it as a $4.8M market cap, $0.12/share stock with 92.3% short interest, $6.2M debt against $380K ARR.",
+      "confidence": "high",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/RuneCrypto_/status/2094474650541543914"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-09-01",
+      "claim": "Repeated SEC EDGAR full-text searches for a Schedule 13D, 13G, or 8-K filed between 2026-08-01 and 2026-09-01 disclosing a new ~35-40% beneficial ownership stake for a purchase price near $1.5-2M in a small Nasdaq issuer returned no matching filing.",
+      "confidence": "medium",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c10",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/edgar/search"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-06-16",
+      "claim": "Every identified 2025-2026 disclosed crypto-treasury micro-cap pivot (Eightco/Worldcoin, SharpLink Gaming/Ethereum, SRM Entertainment/Tron, Sonnet BioTherapeutics/Hyperliquid) was structured as a negotiated primary-issuance PIPE or reverse merger with the acquirer named publicly the same day or within days, not silent open-market accumulation.",
+      "confidence": "high",
+      "hosts": [
+        "finance.yahoo.com",
+        "globenewswire.com",
+        "investors.sharplink.com",
+        "theblock.co"
+      ],
+      "id": "c11",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "primary",
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/news/fintech-eightco-shares-skyrocket-move-153925244.html",
+        "https://investors.sharplink.com/sharplink-gaming-announces-425000000-private-placement-to-initiate-ethereum-treasury-strategy",
+        "https://www.globenewswire.com/news-release/2025/06/16/3099827/0/en/SRM-Launches-TRON-Treasury-Strategy-with-100-000-000-Equity-Investment.html",
+        "https://www.theblock.co/post/362417/hyperliquid-strategies-hype-treasury"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2025-09-08",
+      "claim": "Eightco Holdings' pre-pivot market cap was $4.4M (about 3M shares outstanding at $1.45/share) before a $250M PIPE tied to a Worldcoin treasury strategy -- the closest real comp in size to the claimed target, and it used new-share issuance, not open-market buying.",
+      "confidence": "high",
+      "hosts": [
+        "finance.yahoo.com"
+      ],
+      "id": "c12",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/news/fintech-eightco-shares-skyrocket-move-153925244.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "",
+      "claim": "A margin call, a securities-lending buy-in/recall notice, or a Reg SHO mandatory close-out are the mechanisms that force short covering, and all three are anchored to trades and settlement in the registered security itself, not a derivative or token that merely references its price.",
+      "confidence": "high",
+      "hosts": [
+        "ryanoconnellfinance.com",
+        "tapeboard.com"
+      ],
+      "id": "c13",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://ryanoconnellfinance.com/short-selling",
+        "https://tapeboard.com/blog/glossary-what-is-the-finra-threshold-list"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2021-01-01",
+      "claim": "GameStop's January 2021 squeeze occurred with short interest exceeding 140% of float, and the mechanical drivers (margin-forced covering, and dealer delta-hedging as options moved through strikes) both required real trades in the registered security's own order book.",
+      "confidence": "high",
+      "hosts": [
+        "spotgamma.com",
+        "tradingsim.com"
+      ],
+      "id": "c14",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.tradingsim.com/blog/the-gme-gamestop-short-squeeze-explained",
+        "https://spotgamma.com/gamma-squeeze"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2021-10-18",
+      "claim": "The SEC's official October 2021 staff report on the GameStop episode concluded retail sentiment-driven buying, not short covering, was the primary sustained driver of the multi-week price appreciation.",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c15",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c15",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-01-01",
+      "claim": "Legitimate tokenized-equity issuers (Backed Finance/xStocks, Dinari dShares) back tokens 1:1 through a real creation/redemption loop: the issuer buys and custodies actual shares before minting, and burns tokens on redemption, but retail redemption is generally gated to KYC'd institutional channels with minimums around $5,000.",
+      "confidence": "high",
+      "hosts": [
+        "dinari.com",
+        "docs.xstocks.fi"
+      ],
+      "id": "c16",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.xstocks.fi/docs",
+        "https://dinari.com/dshares"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-08-01",
+      "claim": "Every published catalog of legitimately tokenized equities (xStocks ~60-100 names, Robinhood Chain 200-2,000+ tokens, Dinari ~724 names) is composed of large, liquid, exchange-listed names -- no issuer documents support for sub-$5M-market-cap Nasdaq microcaps.",
+      "confidence": "high",
+      "hosts": [
+        "docs.robinhood.com",
+        "x-stocks.app"
+      ],
+      "id": "c17",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://x-stocks.app",
+        "https://docs.robinhood.com/chain/stock-tokens"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-06-01",
+      "claim": "Robinhood's EU/global 'Stock Tokens' are tokenized derivative contracts issued by Robinhood Assets (Jersey) Ltd. that track a share's price but confer no ownership, voting, or direct redemption rights -- structurally different from genuine custodial 1:1 backing -- and are not offered to US persons.",
+      "confidence": "high",
+      "hosts": [
+        "money.usnews.com",
+        "robinhood.com"
+      ],
+      "id": "c18",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://robinhood.com/eu/en/support/articles/about-stock-tokens",
+        "https://money.usnews.com/investing/articles/tokenized-stocks-what-they-are-and-what-investors-should-know-now"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-08-01",
+      "claim": "On Robinhood Chain, a memecoin called BONER paired directly against tokenized Hims & Hers (HIMS) stock absorbed roughly 53% of the tokenized HIMS float in a single pool (83% across all pools), causing the on-chain token to print $132.64 versus a real NYSE close of $28.84 -- a roughly 4.6x dislocation -- while the real exchange was closed.",
+      "confidence": "medium",
+      "hosts": [
+        "cryptobriefing.com"
+      ],
+      "id": "c19",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c19",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://cryptobriefing.com/boner-memecoin-hims-robinhood-chain-squeeze"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-08-31",
+      "claim": "The account described a plan to tokenize the stock and pair a memecoin against it so DEX volume would 'flow into the tokenized stock,' framed to trigger a squeeze given the claimed 92.3% short interest.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c2",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/RuneCrypto_/status/2094474650541543914"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-07-23",
+      "claim": "Tokenized-stock daily volume on Robinhood Chain jumped from under $500K to $8.1M after Bankr/Long.xyz enabled memecoin-stock pairing in July 2026, while tokenized stocks remained only about 4% of the chain's total value locked ($12.8M of $312M).",
+      "confidence": "medium",
+      "hosts": [
+        "cryptobriefing.com"
+      ],
+      "id": "c20",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c20",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://cryptobriefing.com/memecoins-tokenized-stocks-price-impact"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-08-01",
+      "claim": "Neither Robinhood nor the Bankr/Long.xyz memecoin-pairing layer publish an issuer-consent, minimum-market-cap, or listing-tier eligibility policy for which stocks can be tokenized or paired -- but Robinhood itself still gates which underlying stocks get tokenized at all, and its list is limited to roughly 90+ large/liquid tickers with no documented sub-$5M microcap ever added.",
+      "confidence": "medium",
+      "hosts": [
+        "docs.robinhood.com",
+        "phemex.com"
+      ],
+      "id": "c21",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://docs.robinhood.com/chain/stock-tokens",
+        "https://phemex.com/news/article/long-and-bankr-introduce-stockpaired-tokens-on-robinhood-chain-94284"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2025-09-05",
+      "claim": "Architect Partners tracked 184 public companies that had disclosed plans to raise more than $132 billion for crypto-asset purchases, as of a September 2025 snapshot; a later Architect Partners report cited a different, overlapping-window figure of 221 digital-asset-treasury vehicles and ~$145B, illustrating that the headline number is a fast-moving point-in-time count, not a constant.",
+      "confidence": "medium",
+      "hosts": [
+        "architectpartners.com",
+        "finance.yahoo.com"
+      ],
+      "id": "c22",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/news/nasdaq-puts-132-billion-crypto-130235736.html",
+        "https://architectpartners.com/q2-2026-crypto-ma-and-financing-report"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2025-09-15",
+      "claim": "K33 Research found 26 of 168 tracked Bitcoin-holding public companies traded below the market value of their own crypto holdings (mNAV below 1.0x) as of mid-September 2025 -- about 15.5%, though widely mis-headlined as 'one in four' (25%); a later April 2026 analysis put the below-NAV share at roughly 40%.",
+      "confidence": "medium",
+      "hosts": [
+        "lex.substack.com",
+        "theblock.co"
+      ],
+      "id": "c23",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "opinion"
+      ],
+      "source_urls": [
+        "https://www.theblock.co/post/371021/quarter-of-public-bitcoin-treasury-companies-trade-below-btc-holdings",
+        "https://lex.substack.com/p/analysis-unwinding-the-30b-digital"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-08-31",
+      "claim": "CEA Industries (ticker BNC) closed at $8.88 on 2025-07-25, the last trading day before announcing a $500M PIPE-funded BNB treasury strategy backed by YZi Labs; it spiked to an intraday peak of $82.88 on announcement, then fell roughly 92% to $6.47 by December 2025 amid a PIPE-dilution selloff and an activist governance fight with YZi Labs, and traded around $3.09 by 2026-08-31 (roughly 96% below its post-announcement peak).",
+      "confidence": "medium",
+      "hosts": [
+        "cointribune.com",
+        "globenewswire.com",
+        "tipranks.com"
+      ],
+      "id": "c24",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c24",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.tipranks.com/stocks/vape/historical-prices",
+        "https://www.cointribune.com/en/after-a-92-drop-the-bnb-fund-managed-by-cea-industries-in-turmoil",
+        "https://www.globenewswire.com/news-release/2025/08/05/3127489/0/en/CEA-Industries-Closes-500-Million-Private-Placement-to-Advance-Its-BNB-Treasury-Strategy-Common-Stock-Ticker-to-Become-BNC.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "",
+      "claim": "SEC Rule 10b-5 and Exchange Act Section 9(a)(2) require manipulative intent and an artificial-price effect, or specific intent to induce others' trading through a false appearance of activity -- publicly stating a trading thesis or announcing an acquisition is not, by itself, illegal manipulation; case law holds that aggressive trading strategies must be combined with additional deceptive conduct (false statements, wash trading, undisclosed coordinated buying) to violate these provisions.",
+      "confidence": "high",
+      "hosts": [
+        "columbia.edu",
+        "foleyhoag.com"
+      ],
+      "id": "c25",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c25",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.columbia.edu/~hcs14/SX9.htm",
+        "https://foleyhoag.com/getattachment/3bb3c189-3b03-4c80-bf98-8f41ef76968b/16SECComplianceandEnforcementAB2021-excerpt.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2022-01-01",
+      "claim": "No SEC enforcement action or criminal charge was ever brought against Keith Gill ('Roaring Kitty') personally for his GameStop-era social media activity; the only monetary penalty from that episode landed on his former employer, MML Investors Services (MassMutual), fined $4 million for supervisory failure.",
+      "confidence": "high",
+      "hosts": [
+        "wealthmanagement.com"
+      ],
+      "id": "c26",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.wealthmanagement.com/regulation-compliance/massmutual-to-pay-4m-for-failing-to-identify-keith-gill-s-social-persona"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-01-28",
+      "claim": "The SEC's January 28, 2026 joint staff statement held that tokenizing a security does not change its legal status under federal securities law, and distinguished issuer-sponsored tokenized securities (real backing, needs issuer cooperation) from unregistered third-party synthetic tokens, which typically confer no shareholder rights and can implicate unregistered security-based-swap rules.",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c27",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c27",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/newsroom/speeches-statements/corp-fin-statement-tokenized-securities-012826-statement-tokenized-securities"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-09-01",
+      "claim": "@RuneCrypto_ is a pseudonymous X account active since at least 2022 with roughly 164,000 followers whose established content pattern is memecoin discovery and DeFi yield-farming commentary; no public source discloses a real-world legal identity behind the handle.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c28",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c28",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/RuneCrypto_"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-07-21",
+      "claim": "$PONS is the native token of a memecoin-launchpad protocol built on Robinhood Chain (a pump.fun-style launchpad), not a bespoke memecoin created specifically to pair against the claimed NASDAQ acquisition; RuneCrypto_'s only found connection to it is routine engagement with an unrelated Hyperliquid perpetuals-listing announcement.",
+      "confidence": "medium",
+      "hosts": [
+        "coingecko.com",
+        "kucoin.com"
+      ],
+      "id": "c29",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.coingecko.com/en/coins/pons",
+        "https://www.kucoin.com/blog/pons-token-robinhood-chain-pump-fun-rival"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-08-31",
+      "claim": "X's community fact-check response on the post states no NASDAQ stock matches the claimed $4.8M market cap at $0.12/share with 92.3% short interest.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c3",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c3",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/RuneCrypto_/status/2094474650541543914"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-09-01",
+      "claim": "As of the day after the post, no coverage of the specific @RuneCrypto_ NASDAQ claim was found in mainstream crypto press (CoinDesk, The Block, Decrypt, Crypto Briefing) or on Polymarket, and no regulator has issued any statement specifically addressing the memecoin-paired-tokenized-stock mechanism as of 2026-09-01.",
+      "confidence": "low",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c30",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c30",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "unknown"
+      ],
+      "source_urls": [
+        "https://x.com/RuneCrypto_/status/2094474650541543914"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-07-29",
+      "claim": "The SEC approved a Nasdaq rule change (effective 2026-07-22) that places any Nasdaq-listed company with Market Value of Listed Securities below $5 million for 30 consecutive business days into immediate suspension and delisting with no standard cure period; this order was subsequently stayed pending appeal petitions as of 2026-07-29.",
+      "confidence": "high",
+      "hosts": [
+        "bloomberg.com",
+        "dorsey.com"
+      ],
+      "id": "c4",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.bloomberg.com/news/articles/2026-07-22/nasdaq-to-kick-off-tiny-companies-faster-after-sec-approves-rule",
+        "https://www.dorsey.com/newsresources/publications/client-alerts/2026/7/sec-approves-nasdaq-mvls-standard"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-01-01",
+      "claim": "Nasdaq Capital Market issuers must maintain a $1.00 minimum bid price (Rule 5550(a)(2)); falling below it for 30 consecutive business days triggers a deficiency notice with cure periods historically extending up to ~540 days before delisting.",
+      "confidence": "high",
+      "hosts": [
+        "skadden.com",
+        "sullivanlaw.com"
+      ],
+      "id": "c5",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.sullivanlaw.com/viewpoints/nasdaq-changes-rules-regarding-minimum-bid-price-compliance-periods-and-restricts-the-use-of-reverse-stock-splits",
+        "https://www.skadden.com/insights/publications/2024/11/sec-approves-nasdaq-rule-change"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-09-01",
+      "claim": "A systematic search across major short-interest screeners (highshortinterest.com, findmymoat.com, and others) found no Nasdaq-listed ticker matching the claimed combination of ~$4.8M market cap, ~$0.12 share price, and ~92.3% short interest.",
+      "confidence": "medium",
+      "hosts": [
+        "findmymoat.com",
+        "highshortinterest.com"
+      ],
+      "id": "c6",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c6",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.highshortinterest.com",
+        "https://www.findmymoat.com/short-interest"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2026-07-31",
+      "claim": "FINRA's most recent short-interest-by-float ranking (data as of 2026-07-31) tops out with OSI Systems at 93.83%, followed by indie Semiconductor (86.24%), TransMedics (85.71%), Under Armour (85.21%), and Kohl's (83.24%) -- all established, liquid companies, not sub-$5M microcaps.",
+      "confidence": "medium",
+      "hosts": [
+        "findmymoat.com"
+      ],
+      "id": "c7",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.findmymoat.com/short-interest"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "",
+      "claim": "The claim's core figures are internally arithmetically consistent: 37.4% of a $4.8M market cap equals approximately $1,795,200, matching the stated $1.8M purchase price.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "c8",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c8",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+      "article_created_at": "2026-09-01T07:22:26Z",
+      "article_title": "The NASDAQ Company That Isn't There",
+      "as_of": "2023-10-10",
+      "claim": "Under SEC Rule 13d-1 (amended 2023), an investor crossing 5% beneficial ownership of a public company with control intent must file an initial Schedule 13D within 5 business days; amendments to the stated plan must be disclosed within 2 business days.",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov",
+        "whitecase.com"
+      ],
+      "id": "c9",
+      "key": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/newsroom/press-releases/2023-219",
+        "https://www.whitecase.com/insight-alert/sec-adopts-rule-amendments-modernize-beneficial-ownership-reporting"
+      ],
+      "type": "regulatory"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1066,
+  "reusable_count": 1077,
   "schema_version": 1
 }

@@ -2664,5 +2664,19 @@
         "source_sha256": "5dc0cecf8a4273eb58baa2142d37a8848ef875806ad9e6c65dd1b10442590fde"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+    "file": "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The NASDAQ Company That Isn't There",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-09-01T07:22:26Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/RuneCrypto_/status/2094474650541543914\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
