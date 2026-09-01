@@ -1,0 +1,15 @@
+AI News - 2026-09-01
+
+TOP STORIES:
+• Pentagon adds ChatGPT Mil + Grok for Government to GenAI.mil, joining Gemini for 3M DoD personnel
+• Moonshot retires Kimi K2.5/moonshot-v1; Kimi K3 now sole flagship (2.8T params, 1M context)
+• Nvidia invests $3.5B in MediaTek to expand AI computing/NVLink Fusion partnership
+• Clay (AI sales platform) raising round at $7B pre-money, led by Wellington Management
+• John Ternus becomes Apple CEO today, succeeding Tim Cook (now exec chairman)
+
+KEY NUMBERS:
+• $3.5B - Nvidia's convertible bond investment in MediaTek
+• $7B - Clay's new pre-money valuation (up from $5B in Jan 2026)
+• 1.7M of 3M - DoD personnel already onboarded to GenAI.mil
+
+Full report on GitHub.
