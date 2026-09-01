@@ -2696,5 +2696,19 @@
         "source_sha256": "79686b2cba99c14eb8d6b053ef250a1c5cb93fcd4bc5829e561407b646b4f361"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+    "file": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-09-01T15:31:49Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/vfat0/status/2094673214324736054\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

@@ -1,0 +1,214 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "vfat0 (vfat.eth) posted \"Lets do this again then\" on X on 2026-09-01 linking to vfat.tools' Ripe Protocol farm tracker on Robinhood Chain",
+      "type": "event",
+      "source_urls": ["https://x.com/vfat0/status/2094673214324736054", "https://vfat.tools/robinhood/ripe/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Robinhood Chain is an Arbitrum Orbit-based optimistic rollup (chain ID 4663) with EIP-4844 blobs, fraud proofs, and a 7-day withdrawal challenge window",
+      "type": "technical",
+      "source_urls": ["https://docs.robinhood.com/chain/"],
+      "source_tiers": ["primary"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Robinhood Chain governance is an 8-signer Security Council with Robinhood holding 2 of 8 seats; L2Beat characterizes it as a 7-of-8 multisig that can act as direct executor bypassing the timelock, and flags EOA-upgradeable critical contracts",
+      "type": "market-structure",
+      "source_urls": ["https://docs.robinhood.com/chain/governance/", "https://l2beat.com/layer2s/projects/robinhood"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-09-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c4",
+      "claim": "Robinhood Chain TVL figures diverge materially by source and methodology: DefiLlama historical API $310M (Jul 21) to $738M (Jul 31); live DefiLlama snapshot $727.4M chain TVL with $2.4B bridged assets (Sep 1); The Block reported >$540M DeFi TVL as of Aug 17",
+      "type": "metric",
+      "source_urls": ["https://api.llama.fi/v2/historicalChainTvl/Robinhood%20Chain", "https://defillama.com/chain/robinhood-chain", "https://www.theblock.co/news/ecosystems/2026-08-17-robinhood-chain-tvl-surges-45-august-tokenized-rwas-lose-ground-411998"],
+      "source_tiers": ["primary", "primary", "secondary"],
+      "as_of": "2026-09-01",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c5",
+      "claim": "Ripe Protocol's two published audits (ChainSecurity Jan2024-Jan2025, Anatomist Oct2025) reviewed architecture that has since shed audited components (Juice Score incentive system, GREEN bonds), and Ripe's own FAQ/audits page does not confirm an audit naming the exact live shipped build",
+      "type": "regulatory",
+      "source_urls": ["https://docs.ripe.finance/resources/faq", "https://docs.ripe.finance/resources/audits"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-01",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "Ripe Protocol raised $1.87M total funding ($1.32M self-funded via Hightop, $550K seed round Feb 2025 at $0.02/RIPE implying ~$20M FDV)",
+      "type": "metric",
+      "source_urls": ["https://www.ripe.finance/opportunity"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-02",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c7",
+      "claim": "Mick Hagen publicly confirmed he previously operated pseudonymously as \"Dre Ham\" and ran Mainframe, which reached ~$250M peak market cap and listed on Binance and Upbit",
+      "type": "event",
+      "source_urls": ["https://medium.com/hightop/hightop-sunset-ripe-sunrise-b2559ff9a7e4"],
+      "source_tiers": ["primary"],
+      "as_of": "2024",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "CoinDesk investigative reporting (citing former Terraform Labs colleagues) found Do Kwon co-founded Basis Cash; Hagen created the Basis Cash Discord before Kwon's involvement came to light",
+      "type": "event",
+      "source_urls": ["https://www.coindesk.com/tech/2022/05/11/usts-do-kwon-was-behind-earlier-failed-stablecoin-ex-terra-colleagues-say"],
+      "source_tiers": ["secondary"],
+      "as_of": "2022-05-11",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Compound's June 2020 COMP liquidity-mining launch is credited as the spark for the term \"yield farming\"; total DeFi TVL grew roughly 20x from under $1B to ~$20.5B by early January 2021",
+      "type": "metric",
+      "source_urls": ["https://www.coinspeaker.com/total-value-locked-defi-20b/", "https://coinmarketcap.com/academy/article/what-is-yield-farming"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2021-01-03",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "YAM Finance TVL hit ~$500-600M within 24 hours (Aug 2020); a rebase-contract bug collapsed market cap from ~$475M to ~$19.5M in minutes",
+      "type": "event",
+      "source_urls": ["https://www.theblock.co/post/74810/yam-token-market-cap-collapses-by-more-than-90-flaw"],
+      "source_tiers": ["secondary"],
+      "as_of": "2020-08-13",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "SushiSwap's vampire attack migrated roughly $810M (~55%) of Uniswap liquidity in ~11 days; founder Chef Nomi sold his founder allocation for ~$13-14M before backlash forced control transfer to Sam Bankman-Fried",
+      "type": "event",
+      "source_urls": ["https://finematics.com/vampire-attack-sushiswap-explained/", "https://medium.com/coinmonks/sushiswap-and-the-vampire-attack-8a9826475b8e"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2020-09-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Harvest Finance flash-loan attack drained $24M (later revised to $33.8M); FARM fell 65% in under an hour; protocol TVL fell from over $1B to $430M amid a $570M withdrawal wave",
+      "type": "event",
+      "source_urls": ["https://www.coindesk.com/tech/2020/10/26/harvest-finance-24m-attack-triggers-570m-bank-run-in-latest-defi-exploit"],
+      "source_tiers": ["secondary"],
+      "as_of": "2020-10-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "Chainalysis found DeFi-protocol theft rose from ~$162M in 2020 (31% of stolen crypto) to ~$2.2B in 2021 (72% of total)",
+      "type": "metric",
+      "source_urls": ["https://www.coindesk.com/tech/2022/01/06/crypto-crime-hit-an-all-time-high-of-14b-in-2021-as-prices-climbed-chainalysis"],
+      "source_tiers": ["secondary"],
+      "as_of": "2022-01-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "RWA share of Robinhood Chain TVL fell from ~33% (Jul 7) to 4.1% (Jul 13, Dune-sourced) to 6% (Aug 17, The Block/Dune)",
+      "type": "metric",
+      "source_urls": ["https://www.coindesk.com/tech/2026/07/13/robinhood-built-a-blockchain-for-tokenized-stocks-memecoins-took-over", "https://crypto.news/robinhood-chain-memecoins-tokenized-stocks/", "https://www.theblock.co/news/ecosystems/2026-08-17-robinhood-chain-tvl-surges-45-august-tokenized-rwas-lose-ground-411998"],
+      "source_tiers": ["secondary", "secondary", "secondary"],
+      "as_of": "2026-08-17",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c15",
+      "claim": "Robinhood Chain recorded ~$570M DEX volume against ~$22M liquidity in its first week; CASHCAT memecoin jumped 1,300-1,700% after CEO Vlad Tenev's post, reaching ~$200M market cap and 3,759% weekly gain by July 11",
+      "type": "metric",
+      "source_urls": ["https://blog.uniswap.org/robinhood-chain-is-live", "https://bitcoinfoundation.org/news/analysis/what-is-cashcat-crypto-why-robinhoods-memecoin-is-exploding/", "https://www.kucoin.com/news/flash/cashcat-surges-3-759-to-200m-market-cap-on-robinhood-chain-growth"],
+      "source_tiers": ["primary", "secondary", "secondary"],
+      "as_of": "2026-07-11",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c16",
+      "claim": "Robinhood Earn advertises ~7% APY on USDG via Morpho vaults, while the underlying Morpho vault's native rate is closer to 3.23%",
+      "type": "comparison",
+      "source_urls": ["https://news.todayindefi.com/p/farm-robinhood-chains-best-yields"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-17",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c17",
+      "claim": "Coinbase's Base (launched Aug 2023) has TVL above $5.6B, ~46.6% of all L2 DeFi TVL",
+      "type": "metric",
+      "source_urls": ["https://defillama.com/chain/Base", "https://www.theblock.co/post/383329/2026-layer-2-outlook"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-09-01",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c18",
+      "claim": "Blast's TVL fell 65% within 24 hours of its Feb 2024 mainnet launch (peak $2.2-2.7B to $745M), later declining to ~$105M by mid-2025 and ~$65M by Aug 2025, a 96-97% cumulative decline from peak",
+      "type": "metric",
+      "source_urls": ["https://cryptoslate.com/blast-network-tvl-plummets-65-losing-2-billion-in-24-hours-post-mainnet-launch/", "https://bravenewcoin.com/insights/blast-chain-in-2025-from-2-7b-tvl-to-near-collapse-in-under-two-years"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2025-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "Crypto trading fell to ~7.6% of Robinhood's Q2 2026 revenue (down from ~16% a year earlier), crypto revenue fell 38% YoY, while overall revenue hit a record $1.31B",
+      "type": "metric",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/0001783879/000178387926000114/hood-20260630.htm", "https://www.cryptotimes.io/2026/07/30/robinhood-q2-revenue-hits-record-1-31b-crypto-earnings-fall-38/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-07-29",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "In July 2025 Robinhood distributed \"OpenAI\" and \"SpaceX\" stock tokens to EU users; both companies disavowed them and the Bank of Lithuania opened a formal review with no public confirmation of closing found",
+      "type": "regulatory",
+      "source_urls": ["https://www.cnbc.com/2025/07/07/robinhood-stock-tokens-face-scrutiny-in-the-eu-after-openai-warning.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-07-07",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c21",
+      "claim": "The SEC's joint divisional statement on tokenized securities (Jan 28, 2026) warns third-party tokenized exposure typically does not convey equity, voting, information or other rights",
+      "type": "regulatory",
+      "source_urls": ["https://www.sec.gov/newsroom/speeches-statements/corp-fin-statement-tokenized-securities-012826"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-01-28",
+      "confidence": "high",
+      "risk": "stable"
+    }
+  ]
+}

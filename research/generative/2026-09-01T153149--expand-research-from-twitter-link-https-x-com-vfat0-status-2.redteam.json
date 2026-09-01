@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "L2Beat's independent tracking characterizes the council as a 7-of-8 multisig that can act as a **direct executor**, meaning upgrades can bypass the timelock delay entirely rather than being gated by it — a materially more centralized picture than \"seven days to react.\"",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Ripe's own archives confirm that two components covered by its published audits — the \"Juice Score\" incentive system and GREEN bonds — were subsequently stripped from the launched protocol, \"removed to reduce complexity\" and \"removed to reduce risk\" respectively.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "by August 17, a separate Block analysis using the same underlying Dune data put the RWA share at 6%",
+      "contradicting_url": "https://cryptorank.io/news/feed/acfaf-robinhood-news-chain-tvl-hits-536m-as-tokenized-stocks-lag",
+      "contradicting_quote": "DeFiLlama listed Robinhood Chain's RWA active market capitalization at $124.8 million... Robinhood Chain's DeFi TVL reached $536.48 million... on Aug. 17",
+      "severity": "medium",
+      "no_contradiction_found": false
+    }
+  ]
+}

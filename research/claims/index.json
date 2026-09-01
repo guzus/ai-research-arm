@@ -1,5 +1,5 @@
 {
-  "article_count": 76,
+  "article_count": 77,
   "articles": [
     {
       "claim_count": 18,
@@ -749,6 +749,16 @@
         "twitter-seed"
       ],
       "title": "The NASDAQ Company That Isn't There"
+    },
+    {
+      "claim_count": 21,
+      "created_at": "2026-09-01T15:31:49Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "stem": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer"
     }
   ],
   "by_host": {
@@ -1041,7 +1051,8 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c11",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c12",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c13",
-      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c34"
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c34",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4"
     ],
     "api.semanticscholar.org": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c21"
@@ -1400,6 +1411,9 @@
     "bisnow.com": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c15"
     ],
+    "bitcoinfoundation.org": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15"
+    ],
     "bitcoinworld.co.in": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c16"
     ],
@@ -1474,7 +1488,8 @@
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c28",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c14",
-      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c15"
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c15",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15"
     ],
     "blogs.microsoft.com": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c50"
@@ -1513,6 +1528,9 @@
     ],
     "bloomingbit.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
+    ],
+    "bravenewcoin.com": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c18"
     ],
     "breakingdefense.com": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c12"
@@ -1808,7 +1826,8 @@
       "2026-08-20T152813--unitree-star-market-ipo-debut#c1",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c17",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c25",
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c29"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c29",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c20"
     ],
     "cnenergynews.cn": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c1"
@@ -1839,7 +1858,11 @@
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c24",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c31",
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c1",
-      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c2"
+      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c2",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c12",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c13",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c8"
     ],
     "coingecko.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c3",
@@ -1854,11 +1877,15 @@
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c29"
     ],
     "coinmarketcap.com": [
-      "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c11"
+      "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c11",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c9"
     ],
     "coinmetrics.substack.com": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c2",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c29"
+    ],
+    "coinspeaker.com": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c9"
     ],
     "cointelegraph.com": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c20",
@@ -1944,7 +1971,8 @@
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c14"
     ],
     "crypto.news": [
-      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c4"
+      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c4",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14"
     ],
     "cryptobriefing.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c20",
@@ -1967,12 +1995,14 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c21"
     ],
     "cryptoslate.com": [
-      "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c13"
+      "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c13",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c18"
     ],
     "cryptotimes.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c23",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c4",
-      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c38"
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c38",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c19"
     ],
     "cs.stanford.edu": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c12"
@@ -2132,7 +2162,9 @@
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c14"
     ],
     "defillama.com": [
-      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c29"
+      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c29",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c17",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4"
     ],
     "delcode.delaware.gov": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c30"
@@ -2276,9 +2308,14 @@
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c2",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c25"
     ],
+    "docs.ripe.finance": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c5"
+    ],
     "docs.robinhood.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c17",
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c2",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c3"
     ],
     "docs.tori.finance": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c10"
@@ -2659,6 +2696,9 @@
     "findmymoat.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c6",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c7"
+    ],
+    "finematics.com": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c11"
     ],
     "fingfx.thomsonreuters.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c25"
@@ -3308,10 +3348,14 @@
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c30",
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c22",
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15"
     ],
     "kvcache.ai": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c26"
+    ],
+    "l2beat.com": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c3"
     ],
     "labs.cloudsecurityalliance.org": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c37"
@@ -3487,7 +3531,9 @@
     ],
     "medium.com": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c27",
-      "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c19"
+      "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c19",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c11",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c7"
     ],
     "mengqianzhang.me": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c15"
@@ -3656,6 +3702,9 @@
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c20",
       "2026-07-31T051841--situational-awareness-lp-collapse#c51",
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c33"
+    ],
+    "news.todayindefi.com": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c16"
     ],
     "news.ycombinator.com": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c15",
@@ -4240,6 +4289,9 @@
     "richmondfed.org": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c16"
     ],
+    "ripe.finance": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c6"
+    ],
     "robinhood.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c18"
     ],
@@ -4440,7 +4492,9 @@
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c10",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c15",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c27",
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c9"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c9",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c19",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c21"
     ],
     "securitycompass.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
@@ -4885,7 +4939,11 @@
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c18",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c3",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11",
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c10",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c17",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4"
     ],
     "thechinaacademy.org": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c1"
@@ -5187,6 +5245,9 @@
     "vertiv.com": [
       "2026-05-27T035557--800-vdc-architecture#c11"
     ],
+    "vfat.tools": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c1"
+    ],
     "vibraniumlabs.ai": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c8"
     ],
@@ -5462,7 +5523,8 @@
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c2",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c28",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c3",
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c30"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c30",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c1"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -5743,6 +5805,9 @@
     ],
     "https://api.llama.fi/tvl/uniswap-v4": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c34"
+    ],
+    "https://api.llama.fi/v2/historicalChainTvl/Robinhood%20Chain": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4"
     ],
     "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1126/sciadv.adu6897": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c21"
@@ -6416,6 +6481,9 @@
     "https://bfl.ai/blog/24-08-01-bfl": [
       "2026-08-04T171206--comfyui-company#c20"
     ],
+    "https://bitcoinfoundation.org/news/analysis/what-is-cashcat-crypto-why-robinhoods-memecoin-is-exploding": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15"
+    ],
     "https://bitcoinworld.co.in/dunamu-pauses-upbit-d-conference-2026-kbw-sponsorship": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c16"
     ],
@@ -6513,6 +6581,9 @@
     "https://blog.uniswap.org/dualpool-hook-is-now-live": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c18"
     ],
+    "https://blog.uniswap.org/robinhood-chain-is-live": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15"
+    ],
     "https://blog.uniswap.org/tokenized-securities-are-live": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c21"
     ],
@@ -6540,6 +6611,9 @@
     ],
     "https://bloomingbit.io/en/feed/news/101415": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
+    ],
+    "https://bravenewcoin.com/insights/blast-chain-in-2025-from-2-7b-tvl-to-near-collapse-in-under-two-years": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c18"
     ],
     "https://breakingdefense.com/2026/03/judge-grants-anthropic-preliminary-injunction-but-pentagon-cto-says-ban-still-stands": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c12"
@@ -6646,6 +6720,9 @@
     "https://coinlaw.io/uniswap-statistics": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c29"
     ],
+    "https://coinmarketcap.com/academy/article/what-is-yield-farming": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c9"
+    ],
     "https://coinmarketcap.com/currencies/usd-ai": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c11"
     ],
@@ -6694,6 +6771,9 @@
     "https://crypto.news/esma-targets-mev-as-potential-market-abuse-in-mica-proposal": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c4"
     ],
+    "https://crypto.news/robinhood-chain-memecoins-tokenized-stocks": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14"
+    ],
     "https://cryptobriefing.com/ai-companies-poach-professors-academia": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c20"
     ],
@@ -6732,6 +6812,9 @@
     ],
     "https://cryptorank.io/price/cap": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c21"
+    ],
+    "https://cryptoslate.com/blast-network-tvl-plummets-65-losing-2-billion-in-24-hours-post-mainnet-launch": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c18"
     ],
     "https://cryptoslate.com/south-korea-blocks-17-overseas-crypto-exchange-apps-in-registration-crackdown": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c13"
@@ -6855,6 +6938,12 @@
     ],
     "https://defensescoop.com/2026/05/01/dod-expands-classified-ai-work-with-8-companies-excluding-anthropic": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c13"
+    ],
+    "https://defillama.com/chain/Base": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c17"
+    ],
+    "https://defillama.com/chain/robinhood-chain": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4"
     ],
     "https://defillama.com/protocol/uniswap": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c29"
@@ -7004,6 +7093,18 @@
     ],
     "https://docs.nvidia.com/gpudirect-storage/api-reference-guide/index.html": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c2"
+    ],
+    "https://docs.ripe.finance/resources/audits": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c5"
+    ],
+    "https://docs.ripe.finance/resources/faq": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c5"
+    ],
+    "https://docs.robinhood.com/chain": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c2"
+    ],
+    "https://docs.robinhood.com/chain/governance": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c3"
     ],
     "https://docs.robinhood.com/chain/stock-tokens": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c17",
@@ -7472,6 +7573,9 @@
     ],
     "https://find-and-update.company-information.service.gov.uk/company/07386350/officers": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c16"
+    ],
+    "https://finematics.com/vampire-attack-sushiswap-explained": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c11"
     ],
     "https://fingfx.thomsonreuters.com/gfx/legaldocs/znpnkxmnavl/APPLE%20RIVOS%20LAWSUIT%20settlement.pdf": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c25"
@@ -8032,6 +8136,9 @@
     "https://kvcache.ai/blog/scaling-kv-cache-beyond-memory": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c26"
     ],
+    "https://l2beat.com/layer2s/projects/robinhood": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c3"
+    ],
     "https://labs.cloudsecurityalliance.org/research/csa-whitepaper-ai-velocity-gap-development-security-capacity": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c37"
     ],
@@ -8142,6 +8249,12 @@
     "https://medium.com/@developeryusuf/china-just-built-an-open-source-ai-that-nearly-matches-claude-then-made-it-nearly-impossible-to-862150c9590d": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c27"
     ],
+    "https://medium.com/coinmonks/sushiswap-and-the-vampire-attack-8a9826475b8e": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c11"
+    ],
+    "https://medium.com/hightop/hightop-sunset-ripe-sunrise-b2559ff9a7e4": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c7"
+    ],
     "https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c54"
     ],
@@ -8246,6 +8359,9 @@
     ],
     "https://news.skhynix.com/sk-hynix-announces-fy25-financial-results": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c20"
+    ],
+    "https://news.todayindefi.com/p/farm-robinhood-chains-best-yields": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c16"
     ],
     "https://news.ycombinator.com/item?id=43772582": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c15"
@@ -9710,6 +9826,9 @@
     "https://vercel.com/docs/ai-gateway/pricing": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c19"
     ],
+    "https://vfat.tools/robinhood/ripe": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c1"
+    ],
     "https://vibraniumlabs.ai/blog/chinese-ai-models-sanctioned-whats-actually-happening": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c8"
     ],
@@ -10364,6 +10483,9 @@
     "https://www.cnbc.com/2025/07/03/ilya-sutskever-is-ceo-of-safe-superintelligence-after-meta-hired-gross.html": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c15"
     ],
+    "https://www.cnbc.com/2025/07/07/robinhood-stock-tokens-face-scrutiny-in-the-eu-after-openai-warning.html": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c20"
+    ],
     "https://www.cnbc.com/2025/07/09/nvidia-4-trillion.html": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c19"
     ],
@@ -10551,8 +10673,20 @@
     "https://www.coindesk.com/policy/2026/03/18/sec-approves-nasdaq-s-move-to-allow-tokenized-securities-trading": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c24"
     ],
+    "https://www.coindesk.com/tech/2020/10/26/harvest-finance-24m-attack-triggers-570m-bank-run-in-latest-defi-exploit": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c12"
+    ],
+    "https://www.coindesk.com/tech/2022/01/06/crypto-crime-hit-an-all-time-high-of-14b-in-2021-as-prices-climbed-chainalysis": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c13"
+    ],
+    "https://www.coindesk.com/tech/2022/05/11/usts-do-kwon-was-behind-earlier-failed-stablecoin-ex-terra-colleagues-say": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c8"
+    ],
     "https://www.coindesk.com/tech/2024/02/22/risk-manager-gauntlet-terminates-relationship-with-aave-citing-dao-dysfunction": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c31"
+    ],
+    "https://www.coindesk.com/tech/2026/07/13/robinhood-built-a-blockchain-for-tokenized-stocks-memecoins-took-over": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14"
     ],
     "https://www.coindesk.com/tech/2026/07/21/claude-s-fable-5-just-solved-an-87-year-old-math-problem-and-it-matters-for-bitcoin": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c26"
@@ -10579,6 +10713,9 @@
     ],
     "https://www.coingecko.com/research/publications/decentralized-crypto-exchanges-market-share": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c5"
+    ],
+    "https://www.coinspeaker.com/total-value-locked-defi-20b": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c9"
     ],
     "https://www.cointribune.com/en/after-a-92-drop-the-bnb-fund-managed-by-cea-industries-in-turmoil": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c24"
@@ -10674,6 +10811,9 @@
     ],
     "https://www.cryptotimes.io/2026/03/04/south-korea-sets-ownership-cap-for-upbit-and-bithumb": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c23"
+    ],
+    "https://www.cryptotimes.io/2026/07/30/robinhood-q2-revenue-hits-record-1-31b-crypto-earnings-fall-38": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c19"
     ],
     "https://www.cryptotimes.io/2026/08/11/ethereum-leads-2026-public-token-sales-race-with-334m": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c38"
@@ -11440,6 +11580,9 @@
     "https://www.kucoin.com/blog/pons-token-robinhood-chain-pump-fun-rival": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29"
     ],
+    "https://www.kucoin.com/news/flash/cashcat-surges-3-759-to-200m-market-cap-on-robinhood-chain-growth": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15"
+    ],
     "https://www.kucoin.com/news/flash/minimax-restricts-h3-license-in-u-s-eu-uk-and-south-korea-due-to-hollywood-copyright-lawsuit": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15"
     ],
@@ -11896,6 +12039,9 @@
     "https://www.richmondfed.org/publications/research/economic_brief/2022/eb_22-24": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c16"
     ],
+    "https://www.ripe.finance/opportunity": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c6"
+    ],
     "https://www.rockawayx.com/insights/rockawayx-tori-ecosystem-vault-investment-thesis-risk-disclosure": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c12"
     ],
@@ -12023,6 +12169,9 @@
     ],
     "https://www.sec.gov/Archives/edgar/data/0001713445/000171344525000018/rddt-20241231.htm": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c14"
+    ],
+    "https://www.sec.gov/Archives/edgar/data/0001783879/000178387926000114/hood-20260630.htm": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c19"
     ],
     "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c12",
@@ -12162,6 +12311,9 @@
     ],
     "https://www.sec.gov/newsroom/press-releases/2026-54-sec-proposes-rescission-regulation-nms-rules-611-610e": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c28"
+    ],
+    "https://www.sec.gov/newsroom/speeches-statements/corp-fin-statement-tokenized-securities-012826": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c21"
     ],
     "https://www.sec.gov/newsroom/speeches-statements/corp-fin-statement-tokenized-securities-012826-statement-tokenized-securities": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c27"
@@ -12389,6 +12541,10 @@
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c1",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c3"
     ],
+    "https://www.theblock.co/news/ecosystems/2026-08-17-robinhood-chain-tvl-surges-45-august-tokenized-rwas-lose-ground-411998": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14",
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4"
+    ],
     "https://www.theblock.co/post/231637/attacker-uses-malicious-proposal-to-take-over-tornado-cash-governance": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c18"
     ],
@@ -12404,11 +12560,17 @@
     "https://www.theblock.co/post/371021/quarter-of-public-bitcoin-treasury-companies-trade-below-btc-holdings": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23"
     ],
+    "https://www.theblock.co/post/383329/2026-layer-2-outlook": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c17"
+    ],
     "https://www.theblock.co/post/390544/secs-peirce-atkins-incremental-path-tokenized-securities-agency-readies-innovation-exemption": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c26"
     ],
     "https://www.theblock.co/post/395643/upbit-operator-dunamu-sees-10-revenue-drop-to-1-billion-in-2025-as-crypto-trading-cools": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c9"
+    ],
+    "https://www.theblock.co/post/74810/yam-token-market-cap-collapses-by-more-than-90-flaw": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c10"
     ],
     "https://www.thecoinrepublic.com/2026/08/23/crypto-scams-watch-term-labs-hit-by-8-5m-governance-exploit": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c2"
@@ -13174,6 +13336,9 @@
     "https://x.com/trycua/status/2089770780053643397": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c1"
     ],
+    "https://x.com/vfat0/status/2094673214324736054": [
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c1"
+    ],
     "https://x.com/winkey_h/status/2090814178810306874": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-3"
     ],
@@ -13210,7 +13375,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2238,
+  "claim_count": 2259,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -67030,9 +67195,533 @@
         "https://www.whitecase.com/insight-alert/sec-adopts-rule-amendments-modernize-beneficial-ownership-reporting"
       ],
       "type": "regulatory"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2026-09-01",
+      "claim": "vfat0 (vfat.eth) posted \"Lets do this again then\" on X on 2026-09-01 linking to vfat.tools' Ripe Protocol farm tracker on Robinhood Chain",
+      "confidence": "high",
+      "hosts": [
+        "vfat.tools",
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/vfat0/status/2094673214324736054",
+        "https://vfat.tools/robinhood/ripe"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2020-08-13",
+      "claim": "YAM Finance TVL hit ~$500-600M within 24 hours (Aug 2020); a rebase-contract bug collapsed market cap from ~$475M to ~$19.5M in minutes",
+      "confidence": "high",
+      "hosts": [
+        "theblock.co"
+      ],
+      "id": "c10",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.theblock.co/post/74810/yam-token-market-cap-collapses-by-more-than-90-flaw"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2020-09-05",
+      "claim": "SushiSwap's vampire attack migrated roughly $810M (~55%) of Uniswap liquidity in ~11 days; founder Chef Nomi sold his founder allocation for ~$13-14M before backlash forced control transfer to Sam Bankman-Fried",
+      "confidence": "high",
+      "hosts": [
+        "finematics.com",
+        "medium.com"
+      ],
+      "id": "c11",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finematics.com/vampire-attack-sushiswap-explained",
+        "https://medium.com/coinmonks/sushiswap-and-the-vampire-attack-8a9826475b8e"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2020-10-26",
+      "claim": "Harvest Finance flash-loan attack drained $24M (later revised to $33.8M); FARM fell 65% in under an hour; protocol TVL fell from over $1B to $430M amid a $570M withdrawal wave",
+      "confidence": "high",
+      "hosts": [
+        "coindesk.com"
+      ],
+      "id": "c12",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.coindesk.com/tech/2020/10/26/harvest-finance-24m-attack-triggers-570m-bank-run-in-latest-defi-exploit"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2022-01-06",
+      "claim": "Chainalysis found DeFi-protocol theft rose from ~$162M in 2020 (31% of stolen crypto) to ~$2.2B in 2021 (72% of total)",
+      "confidence": "high",
+      "hosts": [
+        "coindesk.com"
+      ],
+      "id": "c13",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.coindesk.com/tech/2022/01/06/crypto-crime-hit-an-all-time-high-of-14b-in-2021-as-prices-climbed-chainalysis"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2026-08-17",
+      "claim": "RWA share of Robinhood Chain TVL fell from ~33% (Jul 7) to 4.1% (Jul 13, Dune-sourced) to 6% (Aug 17, The Block/Dune)",
+      "confidence": "medium",
+      "hosts": [
+        "coindesk.com",
+        "crypto.news",
+        "theblock.co"
+      ],
+      "id": "c14",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.coindesk.com/tech/2026/07/13/robinhood-built-a-blockchain-for-tokenized-stocks-memecoins-took-over",
+        "https://crypto.news/robinhood-chain-memecoins-tokenized-stocks",
+        "https://www.theblock.co/news/ecosystems/2026-08-17-robinhood-chain-tvl-surges-45-august-tokenized-rwas-lose-ground-411998"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2026-07-11",
+      "claim": "Robinhood Chain recorded ~$570M DEX volume against ~$22M liquidity in its first week; CASHCAT memecoin jumped 1,300-1,700% after CEO Vlad Tenev's post, reaching ~$200M market cap and 3,759% weekly gain by July 11",
+      "confidence": "medium",
+      "hosts": [
+        "bitcoinfoundation.org",
+        "blog.uniswap.org",
+        "kucoin.com"
+      ],
+      "id": "c15",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://blog.uniswap.org/robinhood-chain-is-live",
+        "https://bitcoinfoundation.org/news/analysis/what-is-cashcat-crypto-why-robinhoods-memecoin-is-exploding",
+        "https://www.kucoin.com/news/flash/cashcat-surges-3-759-to-200m-market-cap-on-robinhood-chain-growth"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2026-07-17",
+      "claim": "Robinhood Earn advertises ~7% APY on USDG via Morpho vaults, while the underlying Morpho vault's native rate is closer to 3.23%",
+      "confidence": "medium",
+      "hosts": [
+        "news.todayindefi.com"
+      ],
+      "id": "c16",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c16",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://news.todayindefi.com/p/farm-robinhood-chains-best-yields"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2026-09-01",
+      "claim": "Coinbase's Base (launched Aug 2023) has TVL above $5.6B, ~46.6% of all L2 DeFi TVL",
+      "confidence": "high",
+      "hosts": [
+        "defillama.com",
+        "theblock.co"
+      ],
+      "id": "c17",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c17",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://defillama.com/chain/Base",
+        "https://www.theblock.co/post/383329/2026-layer-2-outlook"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2025-08",
+      "claim": "Blast's TVL fell 65% within 24 hours of its Feb 2024 mainnet launch (peak $2.2-2.7B to $745M), later declining to ~$105M by mid-2025 and ~$65M by Aug 2025, a 96-97% cumulative decline from peak",
+      "confidence": "high",
+      "hosts": [
+        "bravenewcoin.com",
+        "cryptoslate.com"
+      ],
+      "id": "c18",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://cryptoslate.com/blast-network-tvl-plummets-65-losing-2-billion-in-24-hours-post-mainnet-launch",
+        "https://bravenewcoin.com/insights/blast-chain-in-2025-from-2-7b-tvl-to-near-collapse-in-under-two-years"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2026-07-29",
+      "claim": "Crypto trading fell to ~7.6% of Robinhood's Q2 2026 revenue (down from ~16% a year earlier), crypto revenue fell 38% YoY, while overall revenue hit a record $1.31B",
+      "confidence": "high",
+      "hosts": [
+        "cryptotimes.io",
+        "sec.gov"
+      ],
+      "id": "c19",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/0001783879/000178387926000114/hood-20260630.htm",
+        "https://www.cryptotimes.io/2026/07/30/robinhood-q2-revenue-hits-record-1-31b-crypto-earnings-fall-38"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "",
+      "claim": "Robinhood Chain is an Arbitrum Orbit-based optimistic rollup (chain ID 4663) with EIP-4844 blobs, fraud proofs, and a 7-day withdrawal challenge window",
+      "confidence": "high",
+      "hosts": [
+        "docs.robinhood.com"
+      ],
+      "id": "c2",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c2",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.robinhood.com/chain"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2025-07-07",
+      "claim": "In July 2025 Robinhood distributed \"OpenAI\" and \"SpaceX\" stock tokens to EU users; both companies disavowed them and the Bank of Lithuania opened a formal review with no public confirmation of closing found",
+      "confidence": "high",
+      "hosts": [
+        "cnbc.com"
+      ],
+      "id": "c20",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c20",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.cnbc.com/2025/07/07/robinhood-stock-tokens-face-scrutiny-in-the-eu-after-openai-warning.html"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2026-01-28",
+      "claim": "The SEC's joint divisional statement on tokenized securities (Jan 28, 2026) warns third-party tokenized exposure typically does not convey equity, voting, information or other rights",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c21",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c21",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/newsroom/speeches-statements/corp-fin-statement-tokenized-securities-012826"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2026-09-01",
+      "claim": "Robinhood Chain governance is an 8-signer Security Council with Robinhood holding 2 of 8 seats; L2Beat characterizes it as a 7-of-8 multisig that can act as direct executor bypassing the timelock, and flags EOA-upgradeable critical contracts",
+      "confidence": "medium",
+      "hosts": [
+        "docs.robinhood.com",
+        "l2beat.com"
+      ],
+      "id": "c3",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c3",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://docs.robinhood.com/chain/governance",
+        "https://l2beat.com/layer2s/projects/robinhood"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2026-09-01",
+      "claim": "Robinhood Chain TVL figures diverge materially by source and methodology: DefiLlama historical API $310M (Jul 21) to $738M (Jul 31); live DefiLlama snapshot $727.4M chain TVL with $2.4B bridged assets (Sep 1); The Block reported >$540M DeFi TVL as of Aug 17",
+      "confidence": "medium",
+      "hosts": [
+        "api.llama.fi",
+        "defillama.com",
+        "theblock.co"
+      ],
+      "id": "c4",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://api.llama.fi/v2/historicalChainTvl/Robinhood%20Chain",
+        "https://defillama.com/chain/robinhood-chain",
+        "https://www.theblock.co/news/ecosystems/2026-08-17-robinhood-chain-tvl-surges-45-august-tokenized-rwas-lose-ground-411998"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2026-09-01",
+      "claim": "Ripe Protocol's two published audits (ChainSecurity Jan2024-Jan2025, Anatomist Oct2025) reviewed architecture that has since shed audited components (Juice Score incentive system, GREEN bonds), and Ripe's own FAQ/audits page does not confirm an audit naming the exact live shipped build",
+      "confidence": "high",
+      "hosts": [
+        "docs.ripe.finance"
+      ],
+      "id": "c5",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c5",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.ripe.finance/resources/faq",
+        "https://docs.ripe.finance/resources/audits"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2025-02",
+      "claim": "Ripe Protocol raised $1.87M total funding ($1.32M self-funded via Hightop, $550K seed round Feb 2025 at $0.02/RIPE implying ~$20M FDV)",
+      "confidence": "medium",
+      "hosts": [
+        "ripe.finance"
+      ],
+      "id": "c6",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c6",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.ripe.finance/opportunity"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2024",
+      "claim": "Mick Hagen publicly confirmed he previously operated pseudonymously as \"Dre Ham\" and ran Mainframe, which reached ~$250M peak market cap and listed on Binance and Upbit",
+      "confidence": "medium",
+      "hosts": [
+        "medium.com"
+      ],
+      "id": "c7",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c7",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://medium.com/hightop/hightop-sunset-ripe-sunrise-b2559ff9a7e4"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2022-05-11",
+      "claim": "CoinDesk investigative reporting (citing former Terraform Labs colleagues) found Do Kwon co-founded Basis Cash; Hagen created the Basis Cash Discord before Kwon's involvement came to light",
+      "confidence": "medium",
+      "hosts": [
+        "coindesk.com"
+      ],
+      "id": "c8",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.coindesk.com/tech/2022/05/11/usts-do-kwon-was-behind-earlier-failed-stablecoin-ex-terra-colleagues-say"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2",
+      "article_created_at": "2026-09-01T15:31:49Z",
+      "article_title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer",
+      "as_of": "2021-01-03",
+      "claim": "Compound's June 2020 COMP liquidity-mining launch is credited as the spark for the term \"yield farming\"; total DeFi TVL grew roughly 20x from under $1B to ~$20.5B by early January 2021",
+      "confidence": "high",
+      "hosts": [
+        "coinmarketcap.com",
+        "coinspeaker.com"
+      ],
+      "id": "c9",
+      "key": "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.coinspeaker.com/total-value-locked-defi-20b",
+        "https://coinmarketcap.com/academy/article/what-is-yield-farming"
+      ],
+      "type": "metric"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1077,
+  "reusable_count": 1087,
   "schema_version": 1
 }
