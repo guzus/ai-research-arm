@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Running the claimed $4.8M market cap, $0.12 share price, and 92.3% short interest against Nasdaq's own listing rules and every major short-interest data source, the profile does not correspond to any real Nasdaq-listed company, and current Nasdaq rules make a listing anywhere near that market cap structurally precarious to begin with.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Repeated searches of SEC EDGAR's full-text search system for a Schedule 13D, 13G, or 8-K filed between 2026-08-01 and 2026-09-01 disclosing a new roughly 35-40% beneficial ownership stake, purchased for something near $1.5-2M, in a small Nasdaq issuer, returned no matching filing.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "On the announcement, shares spiked to an intraday peak of $82.88 ... the stock fell about 92% to $6.47 by December 2025 ... and by 2026-08-31 BNC traded around $3.09 — roughly 96% below its post-announcement peak and still below the pre-announcement price.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

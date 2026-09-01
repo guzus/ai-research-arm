@@ -1,0 +1,76 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The SEC approved a Nasdaq rule change effective 2026-07-22 that places any listed company with a Market Value of Listed Securities below $5 million for 30 consecutive business days into immediate suspension and delisting, with no standard cure period at all[^2]... this specific rule was stayed pending appeal as of 2026-07-29[^2]",
+      "verdict": "supported",
+      "citation": "https://www.bloomberg.com/news/articles/2026-07-22/nasdaq-to-kick-off-tiny-companies-faster-after-sec-approves-rule"
+    },
+    {
+      "id": "c2",
+      "text": "Nasdaq Capital Market issuers must hold a minimum $1.00 bid price under Rule 5550(a)(2); falling below that threshold for 30 consecutive business days triggers a deficiency notice, but the resulting cure periods have historically run as long as roughly 540 days before delisting actually happens[^3]",
+      "verdict": "supported",
+      "citation": "https://www.sullivanlaw.com/viewpoints/nasdaq-changes-rules-regarding-minimum-bid-price-compliance-periods-and-restricts-the-use-of-reverse-stock-splits"
+    },
+    {
+      "id": "c3",
+      "text": "Under SEC Rule 13d-1, amended in 2023, an investor who crosses 5% beneficial ownership of a public company with intent to influence or control it must file an initial Schedule 13D within five business days of crossing the threshold, and any material change to the stated plan must be amended within two business days[^6]",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/newsroom/press-releases/2023-219"
+    },
+    {
+      "id": "c4",
+      "text": "The SEC's January 28, 2026 joint staff statement is explicit that wrapping a security in a token does not change its legal status under federal law. It draws a sharp line between issuer-sponsored tokenized securities... versus unregistered third-party synthetic tokens, which typically confer no shareholder rights at all and can implicate security-based-swap registration rules on their own[^24]",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/newsroom/speeches-statements/corp-fin-statement-tokenized-securities-012826-statement-tokenized-securities"
+    },
+    {
+      "id": "c5",
+      "text": "a memecoin called BONER paired directly against tokenized Hims & Hers (HIMS) stock on Robinhood Chain and absorbed roughly 53% of the tokenized HIMS float in a single liquidity pool — 83% across all pools combined... the on-chain token printed $132.64 while the real NYSE close sat at $28.84, a roughly 4.6x gap[^16]",
+      "verdict": "weak",
+      "citation": "https://cryptobriefing.com/boner-memecoin-hims-robinhood-chain-squeeze/"
+    },
+    {
+      "id": "c6",
+      "text": "CEA Industries (ticker BNC)... closed at $8.88 on 2025-07-25... shares spiked to an intraday peak of $82.88... fell about 92% to $6.47 by December 2025... by 2026-08-31 BNC traded around $3.09[^21]",
+      "verdict": "weak",
+      "citation": "https://www.tipranks.com/stocks/vape/historical-prices"
+    },
+    {
+      "id": "c7",
+      "text": "Architect Partners tracked 184 public companies that had disclosed plans to raise more than $132 billion for crypto-asset purchases as of a September 2025 snapshot[^19]",
+      "verdict": "supported",
+      "citation": "https://finance.yahoo.com/news/nasdaq-puts-132-billion-crypto-130235736.html"
+    },
+    {
+      "id": "c8",
+      "text": "The only monetary penalty to come out of the episode landed on his former employer, MML Investors Services (a MassMutual subsidiary), which paid a $4 million fine — not for manipulation, but for failing to supervise and identify his outside social persona[^23]",
+      "verdict": "supported",
+      "citation": "https://www.wealthmanagement.com/regulation-compliance/massmutual-to-pay-4m-for-failing-to-identify-keith-gill-s-social-persona"
+    },
+    {
+      "id": "c9",
+      "text": "i've been quiet for a few days. i acquired a controlling stake in a NASDAQ-listed company. $4.8M market cap, trading at $0.12/share with a crazy 92.3% short interest... it cost me $1,800,000 for 37.4% of the total shares.",
+      "verdict": "supported",
+      "citation": "https://x.com/RuneCrypto_/status/2094474650541543914"
+    },
+    {
+      "id": "c10",
+      "text": "K33 Research found that 26 of 168 tracked Bitcoin-holding public companies, about 15.5%, traded below the market value of their own crypto holdings (mNAV under 1.0x) as of mid-September 2025. That figure is sometimes mis-cited in headlines as 'one in four' (25%), which overstates the more rigorously sourced count[^20]",
+      "verdict": "weak",
+      "citation": "https://www.theblock.co/post/371021/quarter-of-public-bitcoin-treasury-companies-trade-below-btc-holdings"
+    },
+    {
+      "id": "c11",
+      "text": "Hyperliquid Strategies (PURR), which gained roughly 98% over a comparable one-year stretch[^27]",
+      "verdict": "weak",
+      "citation": "https://www.theblock.co/post/362417/hyperliquid-strategies-hype-treasury"
+    },
+    {
+      "id": "c12",
+      "text": "Eightco Holdings traded at a $4.4M market cap — roughly 3M shares outstanding at $1.45/share — before its Worldcoin treasury pivot... it raised its treasury money through a $250M primary-issuance PIPE, not open-market buying[^9]",
+      "verdict": "supported",
+      "citation": "https://finance.yahoo.com/news/fintech-eightco-shares-skyrocket-move-153925244.html"
+    }
+  ]
+}
