@@ -2677,6 +2677,24 @@
     "prompt": "Seed Twitter/X URL: https://x.com/RuneCrypto_/status/2094474650541543914\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-09-01T074026--expand-research-from-twitter-link-https-x-com-runecrypto-sta.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "존재하지 않는 나스닥 기업",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-09-01T07:40:26Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-runecrypto-sta",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-09-01T07:40:26Z",
+        "source_file": "research/generative/2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta.ara.md",
+        "source_sha256": "79686b2cba99c14eb8d6b053ef250a1c5cb93fcd4bc5829e561407b646b4f361"
+      }
+    }
   }
 ]
