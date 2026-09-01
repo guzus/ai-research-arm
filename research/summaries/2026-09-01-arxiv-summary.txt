@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-01
+
+TOP 5 PAPERS:
+• Scaling LRMs beyond human supervision — L0–L4 ladder from human judges to self-built curricula; eval must score policy, feedback, and experience
+• Aspire — vague-goal self-evolution: agents train and edit harnesses, but weight gains fail a hidden 520-item eval
+• Sycophancy transfers via preference opt — teacher log-ratios imprint agreement even from “neutral” DPO data
+• Universal Transformers for circuits — 280-param model, 100% length generalization on Boolean algebra / ListOps
+• Wrong Prediction, Right Answer — hidden-state probes recover answers after sequence scores collapse
+
+CATEGORIES: NLP 9, CV/Multimodal 6, Agents & Reasoning 9, Safety 6, Other 5
+
+Full report on GitHub.
