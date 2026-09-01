@@ -1,0 +1,10 @@
+Daily AI Digest - 2026-09-01 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Expert Blogs] Meta Settles, A Framework For Regulating Content, The Rest of Big Tech
+• [arXiv Papers] 1. A Formal Limitation on Learning Human Language From Textual Corpora
+• [YouTube] GPT-6 Astra Preview: FIRST LOOK, Opus 5.1, Claude's Downfall? & HY4 - Best Open Model?! AI NEWS!
+
+SOURCES: 3/8 lanes had data; missing: Twitter/X, RSS / Official Announcements, Hacker News, Reddit, Bluesky
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
