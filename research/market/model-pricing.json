@@ -1,23 +1,23 @@
 {
   "benchmark": "GPQA diamond",
   "benchmarks_available": {
-    "Chess Puzzles": 121,
+    "Chess Puzzles": 122,
     "EBR-bench": 19,
     "FrontierMath-2025-02-28-Private": 69,
     "FrontierMath-2025-02-28-Public": 64,
     "FrontierMath-Tier-4-2025-07-01-Private": 55,
     "FrontierMath-Tier-4-2025-07-01-Public": 36,
-    "FrontierMath-Tier-4-v2-Private": 52,
-    "FrontierMath-Tiers-1-3-v2-Private": 70,
+    "FrontierMath-Tier-4-v2-Private": 53,
+    "FrontierMath-Tiers-1-3-v2-Private": 71,
     "GPQA diamond": 187,
     "MATH level 5": 88,
     "MirrorCode": 6,
-    "Mystery Game Puzzles": 63,
+    "Mystery Game Puzzles": 64,
     "OEIS Open": 3,
     "OEIS Open Lite": 5,
-    "OTIS Mock AIME 2024-2025": 167,
+    "OTIS Mock AIME 2024-2025": 168,
     "SWE-Bench verified": 32,
-    "SimpleQA Verified": 67
+    "SimpleQA Verified": 68
   },
   "blend_input_ratio": 3.0,
   "capability_attribution": "Epoch AI, 'AI Benchmarking Hub', https://epoch.ai/data/ai-benchmarking-dashboard \u2014 used under a Creative Commons Attribution license.",
@@ -33,7 +33,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-09-01T18:38:00Z",
+  "generated_at": "2026-09-01T23:22:22Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -125,7 +125,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":98,"ts":"2026-08-31T21:40:48Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":102,"ts":"2026-09-01T00:40:26Z"},
     {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":102,"ts":"2026-09-01T08:45:50Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":102,"ts":"2026-09-01T18:38:00Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":102,"ts":"2026-09-01T18:38:00Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9482323232323232,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":8,"plotted":102,"ts":"2026-09-01T23:22:22Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -224,6 +225,15 @@
           "score": 0.47,
           "stderr": 0.05016135580465918,
           "vendor": "google"
+        },
+        {
+          "key": "claudefable5.1",
+          "name": "Claude Fable 5.1",
+          "output_usd_per_mtok": 50.0,
+          "pareto": false,
+          "score": 0.47,
+          "stderr": 0.05016135580465918,
+          "vendor": "anthropic"
         },
         {
           "key": "gpt5.4",
@@ -1391,6 +1401,15 @@
       ],
       "FrontierMath-Tiers-1-3-v2-Private": [
         {
+          "key": "claudefable5.1",
+          "name": "Claude Fable 5.1",
+          "output_usd_per_mtok": 50.0,
+          "pareto": true,
+          "score": 0.9017543859649123,
+          "stderr": 0.017662067789031757,
+          "vendor": "anthropic"
+        },
+        {
           "key": "gpt5.6sol",
           "name": "GPT-5.6 Sol",
           "output_usd_per_mtok": 10.0,
@@ -2313,6 +2332,15 @@
           "vendor": "openai"
         },
         {
+          "key": "claudefable5.1",
+          "name": "Claude Fable 5.1",
+          "output_usd_per_mtok": 50.0,
+          "pareto": false,
+          "score": 1.0,
+          "stderr": 0.0,
+          "vendor": "anthropic"
+        },
+        {
           "key": "claudefable5",
           "name": "Claude Fable 5",
           "output_usd_per_mtok": 50.0,
@@ -3196,7 +3224,7 @@
         }
       ]
     },
-    "as_of": "2026-09-01T18:38:00Z",
+    "as_of": "2026-09-01T23:22:22Z",
     "counts": {
       "pareto": 8,
       "plotted": 102,
@@ -5237,10 +5265,10 @@
         "vendor": "amazon"
       },
       {
-        "input_usd_per_mtok": 0.07476,
+        "input_usd_per_mtok": 0.07168,
         "key": "deepseekv4flash0423",
         "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.14952,
+        "output_usd_per_mtok": 0.14336,
         "vendor": "deepseek"
       },
       {
@@ -6063,6 +6091,13 @@
         "vendor": "openai"
       },
       {
+        "input_usd_per_mtok": 1.02747,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 2.05494,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.18,
         "key": "qwen3vl8bthinking",
         "name": "Qwen3 VL 8B Thinking",
@@ -6243,13 +6278,6 @@
         "name": "Hermes 4 405B",
         "output_usd_per_mtok": 3.0,
         "vendor": "nousresearch"
-      },
-      {
-        "input_usd_per_mtok": 1.6,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 3.2,
-        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.8,
