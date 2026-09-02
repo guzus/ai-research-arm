@@ -1,0 +1,15 @@
+AI News - 2026-09-02
+
+TOP STORIES:
+• OpenAI: Astra is first model to hit "Critical" cybersecurity threshold (autonomous exploit chains, sandbox escapes)
+• ChatGPT Ads passes $1B annualized run rate; self-serve buying now live in India, Europe, MENA
+• AIR Security emerges from stealth with $50M to secure AI agent supply chains
+
+KEY NUMBERS:
+• ChatGPT Ads: $1B annualized run rate in <200 days, 40+ countries
+• AIR Security: $50M seed (Sequoia + Greenoaks)
+• Gridsight: $26M Series B (energy-grid AI analytics)
+• Tripo AI / VAST: ~RMB 3B (~$446M) each, generative 3D AI
+• McKinsey: large-enterprise AI agent scaling up 27%->40% YoY; 32% skip buying software due to agentic coding
+
+Full report on GitHub.
