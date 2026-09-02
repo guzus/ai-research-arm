@@ -1,15 +1,13 @@
 AI News - 2026-09-02
 
 TOP STORIES:
-• OpenAI: Astra is first model to hit "Critical" cybersecurity threshold (autonomous exploit chains, sandbox escapes)
-• ChatGPT Ads passes $1B annualized run rate; self-serve buying now live in India, Europe, MENA
-• AIR Security emerges from stealth with $50M to secure AI agent supply chains
+• Anthropic ships Claude Fable 5.1 / Mythos 5.1: ~25% cheaper typical, up to 45% for agentic work; Terminal-Bench-Science 52.6%
+• OpenAI: Astra hits "Critical" cyber threshold; ChatGPT Health adds Epic EHR (325M patients, read-only)
+• AfterQuery reportedly YC's fastest unicorn at $3.2B, 5 months after a $300M Series A
 
 KEY NUMBERS:
-• ChatGPT Ads: $1B annualized run rate in <200 days, 40+ countries
-• AIR Security: $50M seed (Sequoia + Greenoaks)
-• Gridsight: $26M Series B (energy-grid AI analytics)
-• Tripo AI / VAST: ~RMB 3B (~$446M) each, generative 3D AI
-• McKinsey: large-enterprise AI agent scaling up 27%->40% YoY; 32% skip buying software due to agentic coding
+• Fable 5.1 cache reads $0.25/MTok (75% cut); API still $10/$50 in/out
+• AfterQuery $3.2B val; AIR Security $50M; Empirik $21M seed
+• ChatGPT Ads: $1B annualized run rate in <200 days
 
 Full report on GitHub.
