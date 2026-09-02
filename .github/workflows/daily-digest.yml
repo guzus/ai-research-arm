@@ -654,7 +654,7 @@ jobs:
           fi
           bash scripts/delete_fallback_audio.sh
 
-      - name: Rewrite summary as ARA spoken script (Claude)
+      - name: Rewrite summary as ARA spoken script (routed agent)
         if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         uses: ./.github/actions/agent-run
@@ -663,11 +663,15 @@ jobs:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          cursor-mode: editorial
           claude-args: |
             --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
-            research/summaries/
-          label: Digest spoken-script Claude rewrite
+            research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
+          allowed-paths: |
+            research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
+          label: Digest spoken-script routed rewrite
           prompt: |
             You are writing the daily ARA broadcast — a TWO-HOST AI-news podcast
             with banter between Speaker 1 (anchor, deep voice) and Speaker 2

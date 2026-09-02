@@ -396,6 +396,7 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(
             {
                 "ai-news-research": ["cursor-grok-4p6-fast"],
+                "digest-audio-script": ["cursor-grok-4p6-fast"],
                 "digest-synthesis-fallback": ["cursor-grok-4p6-fast"],
                 "twitter-primary": ["cursor-grok-4p6-fast"],
                 "twitter-primary-repair": ["cursor-grok-4p6-fast"],
@@ -407,6 +408,7 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(["claude", "zai-glm-5p2"], self.fallback["chain"])
 
         isolated_lanes = {
+            "digest-audio-script",
             "digest-synthesis-fallback",
             "ai-news-research",
             "twitter-primary",
@@ -431,6 +433,7 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(
             {
                 "ai-news-research": "editorial",
+                "digest-audio-script": "editorial",
                 "digest-synthesis-fallback": "editorial",
                 "twitter-primary": "twitter",
                 "twitter-primary-repair": "twitter",

@@ -43,9 +43,10 @@ short pointer plus the few genuinely agent-specific notes.
   host-checkout `agent-run` profiles cannot be selected by this route. `agent-run`
   probes the requested provider and walks the ordered `fallback.chain` from
   `data/agent-backends.json` when it is unavailable (currently native Claude →
-  Z.ai GLM). Compatibility-tested local digest, primary Twitter/repair, and
-  no-MCP AI-news lanes are explicit exceptions: their lane-local chains replace
-  the currently unusable global secondary with isolated Cursor. Claude remains
+  Z.ai GLM). Compatibility-tested local digest synthesis/audio, primary
+  Twitter/repair, and no-MCP AI-news lanes are explicit exceptions: their
+  lane-local chains replace the currently unusable global secondary with
+  isolated Cursor. Claude remains
   primary and currently healthy; these Cursor paths are standby fallbacks.
   The MCP AI-news path stays direct native Claude because Cursor denies MCP.
   Lanes marked `"strict": true` and `fireworks-fallback:
@@ -119,7 +120,8 @@ short pointer plus the few genuinely agent-specific notes.
   backend=cursor-grok-4p6-fast` / `hourly-twitter.yml
   backend=cursor-grok-4p6-fast` and temporarily serves both production
   editorial routes plus lane-local standby fallbacks for compatible local
-  digest/Twitter/no-MCP AI-news contracts. It is never in the global chain.
+  digest synthesis/audio, Twitter, and no-MCP AI-news contracts. It is never
+  in the global chain.
   Store the key with `gh secret set CURSOR_API_KEY`, then validate
   cheaply with `cursor-cli-canary.yml`. Korean translation currently
   selects this profile via `routes.generative-translation`.
