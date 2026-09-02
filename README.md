@@ -152,17 +152,16 @@ the SSOT so it cannot drift. Full per-lane matrix:
 ```mermaid
 flowchart LR
     subgraph runtime["⚙️ Runtime-routed lanes — lane: → data/agent-backends.json"]
-        lanes0["digest-audio-script · digest-synthesis · digest-synthesis-fallback<br/>model-timeline · twitter-autoresearch · twitter-judge<br/>twitter-primary · twitter-primary-repair<br/><i>8 lanes</i>"]
+        lanes0["ai-news-research · digest-audio-script · digest-synthesis<br/>digest-synthesis-fallback · model-timeline · twitter-autoresearch<br/>twitter-judge · twitter-primary · twitter-primary-repair<br/><i>9 lanes</i>"]
         strict0["🔒 twitter-ab-claude · twitter-ab-judge · twitter-ab-judge-swapped<br/><i>strict — never falls back</i>"]
-        strict1["🔒 arxiv · generative-research-ko · wiki-ingest<br/><i>strict — never falls back</i>"]
+        strict1["🔒 arxiv · bluesky · community<br/>generative-research-ko · rss · wiki-ingest<br/><i>strict — never falls back</i>"]
         strict2["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
-        strict3["🔒 bluesky · community · rss<br/><i>strict — never falls back</i>"]
-        strict4["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
+        strict3["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
         gendef["generative-research-default<br/><i>dispatch default</i>"]
     end
     subgraph mirrors["🪞 CI-enforced mirrors — literal in workflow, equality-gated"]
         pi["twitter-deepseek-pi · twitter-fireworks-pi"]
-        native["ai-news-research · claude-code-review · claude-interactive<br/>daily-improve · generative-research-claude · research-issue<br/>twitter-account-explorer"]
+        native["ai-news-research-mcp · claude-code-review · claude-interactive<br/>daily-improve · generative-research-claude · research-issue<br/>twitter-account-explorer"]
     end
     subgraph providers["🏭 Token providers"]
         FW["🎆 Fireworks"]
@@ -176,8 +175,7 @@ flowchart LR
     strict0 -->|"claude-opus-5"| ANT
     strict1 -->|"cursor-grok-4.6-high-fast"| CUR
     strict2 -->|"deepseek-v4-flash"| FW
-    strict3 -->|"glm-5.3-flash"| OC
-    strict4 -->|"glm-5.2"| ZAI
+    strict3 -->|"glm-5.2"| ZAI
     gendef -->|"claude-opus-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT

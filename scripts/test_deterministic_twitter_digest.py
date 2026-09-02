@@ -276,20 +276,26 @@ class DeterministicTwitterDigestTest(unittest.TestCase):
         steps = doc["jobs"]["twitter"]["steps"]
         primary = next(step for step in steps if step.get("id") == "twitter-claude-agent")
         repair = next(step for step in steps if step.get("id") == "twitter-claude-repair")
-        self.assertEqual("twitter", primary["with"]["opencode-mode"])
-        self.assertEqual("twitter", repair["with"]["opencode-mode"])
+        self.assertEqual("twitter", primary["with"]["cursor-mode"])
+        self.assertEqual("twitter", repair["with"]["cursor-mode"])
 
-    def test_agent_run_preserves_editorial_default_but_forwards_explicit_twitter_mode(self) -> None:
+    def test_agent_run_preserves_isolated_defaults_and_forwards_cursor_twitter_mode(self) -> None:
         action_path = (
             Path(__file__).resolve().parent.parent / ".github" / "actions" / "agent-run" / "action.yml"
         )
         action = yaml.safe_load(action_path.read_text(encoding="utf-8"))
         self.assertEqual("editorial", action["inputs"]["opencode-mode"]["default"])
-        isolated = next(
+        self.assertEqual("editorial", action["inputs"]["cursor-mode"]["default"])
+        opencode = next(
             step for step in action["runs"]["steps"]
             if step.get("id") == "run-opencode"
         )
-        self.assertEqual("${{ inputs.opencode-mode }}", isolated["with"]["mode"])
+        cursor = next(
+            step for step in action["runs"]["steps"]
+            if step.get("id") == "run-cursor"
+        )
+        self.assertEqual("${{ inputs.opencode-mode }}", opencode["with"]["mode"])
+        self.assertEqual("${{ inputs.cursor-mode }}", cursor["with"]["mode"])
 
 
 if __name__ == "__main__":

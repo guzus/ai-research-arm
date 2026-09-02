@@ -268,20 +268,31 @@ jobs:
           opencode-config: .github/opencode/opencode-canary.json
           timeout-minutes: '10'
 
-      # Keep this model dynamic: production editorial routing is owned by the
-      # SSOT, and a canary literal can silently drift away from that route.
-      - name: Resolve production editorial OpenCode model
+      # Resolve the registered editorial profile directly. During an emergency
+      # route switch RSS no longer points at OpenCode; this independent probe
+      # is the evidence required before moving research-editorial back.
+      - name: Resolve registered editorial OpenCode model
         id: glm_route
         run: |
           set -euo pipefail
-          python3 scripts/resolve_agent_route.py rss --github-output "$GITHUB_OUTPUT"
-          if [ "$(python3 scripts/resolve_agent_route.py rss --field backend)" \
-            != "opencode-glm-5p3-flash" ]; then
-            echo "::error::research-editorial is not routed to the expected GLM 5.3 Flash profile."
-            exit 1
-          fi
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
 
-      - name: Run production editorial GLM canary
+          profile = json.loads(Path("data/agent-backends.json").read_text())["backends"].get(
+              "opencode-glm-5p3-flash"
+          )
+          if not isinstance(profile, dict):
+              raise SystemExit("registered OpenCode editorial profile is missing")
+          if profile.get("adapter") != "opencode" or profile.get("provider") != "opencode-go":
+              raise SystemExit("registered OpenCode editorial profile has an invalid adapter/provider")
+          model = profile.get("model")
+          if not isinstance(model, str) or not model:
+              raise SystemExit("registered OpenCode editorial profile has no model")
+          print(f"model_ref=opencode-go/{model}")
+          PY
+
+      - name: Run registered editorial GLM canary
         uses: ./.github/actions/run-opencode-container
         with:
           mode: canary

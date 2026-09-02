@@ -336,8 +336,10 @@ jobs:
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
           # Lane-scoped authorization: only this compatibility-tested digest
-          # call can select the isolated OpenCode fallback.
+          # call can select the isolated Cursor fallback.
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          cursor-mode: editorial
           claude-args: |
             --model opus --allowedTools "Glob,Read,Write,Edit,Bash(git:*),Bash(jq:*),Bash(python3:*),Bash(test:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(wc:*),Bash(mkdir:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |

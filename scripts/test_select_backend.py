@@ -16,6 +16,27 @@ import select_backend
 
 def fake_data(chain, lanes=None):
     return {
+        "adapters": {
+            "agent-run": {
+                "isolated_workspace": False,
+                "editorial_contract": True,
+                "provider_credentials": {
+                    "claude": "claude-code-oauth-token",
+                    "fireworks": "fireworks-api-key",
+                    "zai": "zai-api-key",
+                },
+            },
+            "opencode": {
+                "isolated_workspace": True,
+                "editorial_contract": True,
+                "provider_credentials": {"opencode-go": "opencode-api-key"},
+            },
+            "cursor": {
+                "isolated_workspace": True,
+                "editorial_contract": True,
+                "provider_credentials": {"cursor": "cursor-api-key"},
+            },
+        },
         "backends": {
             "claude": {"provider": "claude", "model": "", "display_name": "Claude", "aliases": []},
             "fireworks-glm-5p2": {"provider": "fireworks",
@@ -29,6 +50,12 @@ def fake_data(chain, lanes=None):
                 "provider": "opencode-go", "model": "glm-5.3-flash",
                 "display_name": "GLM 5.3 Flash via OpenCode Go",
                 "aliases": ["opencode-glm"],
+            },
+            "cursor-grok-4p6-fast": {
+                "adapter": "cursor",
+                "provider": "cursor", "model": "cursor-grok-4.6-high-fast",
+                "display_name": "Grok 4.6 Fast via Cursor CLI",
+                "aliases": ["cursor"],
             },
         },
         "fallback": {"harness": "agent-run", "chain": chain,
@@ -84,13 +111,13 @@ class SelectBackendTest(unittest.TestCase):
         self.assertEqual(out["provider"], "zai")
         self.assertEqual(out["used-fallback"], "true")
 
-    def test_claude_429_uses_lane_local_opencode_before_global_zai(self):
+    def test_claude_429_uses_lane_local_cursor_instead_of_global_zai(self):
         lanes = {
             "digest": {"workflow": "daily-digest.yml", "harness": "agent-run",
                        "backend": "claude",
-                       "fallback_chain": ["opencode-glm-5p3-flash"]},
+                       "fallback_chain": ["cursor-grok-4p6-fast"]},
         }
-        self.set_availability(zai=True, **{"opencode-go": True})
+        self.set_availability(zai=True, cursor=True)
         with unittest.mock.patch.dict(
                 os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "sk-ant-oat01-test"}), \
                 unittest.mock.patch.object(
@@ -100,22 +127,23 @@ class SelectBackendTest(unittest.TestCase):
                 "--lane", "digest", chain=("claude", "zai-glm-5p2"), lanes=lanes)
 
         self.assertEqual(code, 0)
-        self.assertEqual(out["backend"], "opencode-glm-5p3-flash")
-        self.assertEqual(out["provider"], "opencode-go")
+        self.assertEqual(out["backend"], "cursor-grok-4p6-fast")
+        self.assertEqual(out["provider"], "cursor")
+        self.assertEqual(out["adapter"], "cursor")
         self.assertEqual(out["used-fallback"], "true")
         self.assertIn("rate limited for this run", log)
 
-    def test_twitter_primary_and_repair_use_opencode_on_claude_429(self):
+    def test_twitter_primary_and_repair_use_cursor_on_claude_429(self):
         lanes = {
             lane: {
                 "workflow": "hourly-twitter.yml",
                 "harness": "agent-run",
                 "backend": "claude",
-                "fallback_chain": ["opencode-glm-5p3-flash"],
+                "fallback_chain": ["cursor-grok-4p6-fast"],
             }
             for lane in ("twitter-primary", "twitter-primary-repair")
         }
-        self.set_availability(zai=True, **{"opencode-go": True})
+        self.set_availability(zai=True, cursor=True)
         with unittest.mock.patch.dict(
                 os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "sk-ant-oat01-test"}), \
                 unittest.mock.patch.object(
@@ -127,8 +155,8 @@ class SelectBackendTest(unittest.TestCase):
                         "--lane", lane,
                         chain=("claude", "zai-glm-5p2"), lanes=lanes)
                     self.assertEqual(code, 0)
-                    self.assertEqual(out["backend"], "opencode-glm-5p3-flash")
-                    self.assertEqual(out["provider"], "opencode-go")
+                    self.assertEqual(out["backend"], "cursor-grok-4p6-fast")
+                    self.assertEqual(out["provider"], "cursor")
                     self.assertEqual(out["used-fallback"], "true")
                     self.assertIn("rate limited for this run", log)
 
@@ -136,9 +164,9 @@ class SelectBackendTest(unittest.TestCase):
         lanes = {
             "digest": {"workflow": "daily-digest.yml", "harness": "agent-run",
                        "backend": "claude",
-                       "fallback_chain": ["opencode-glm-5p3-flash"]},
+                       "fallback_chain": ["cursor-grok-4p6-fast"]},
         }
-        self.set_availability(zai=True, **{"opencode-go": True})
+        self.set_availability(zai=True, cursor=True)
         with unittest.mock.patch.dict(
                 os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "sk-ant-oat01-test"}), \
                 unittest.mock.patch.object(
@@ -151,16 +179,16 @@ class SelectBackendTest(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertNotIn("backend", out)
         self.assertIn("rate limited for this run", log)
-        self.assertNotIn("candidate opencode-glm-5p3-flash", log)
+        self.assertNotIn("candidate cursor-grok-4p6-fast", log)
         self.assertNotIn("candidate zai-glm-5p2", log)
 
     def test_lane_override_does_not_continue_to_global_zai(self):
         lanes = {
             "digest": {"workflow": "daily-digest.yml", "harness": "agent-run",
                        "backend": "claude",
-                       "fallback_chain": ["opencode-glm-5p3-flash"]},
+                       "fallback_chain": ["cursor-grok-4p6-fast"]},
         }
-        self.set_availability(zai=True, **{"opencode-go": False})
+        self.set_availability(zai=True, cursor=False)
         with unittest.mock.patch.dict(
                 os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "sk-ant-oat01-test"}), \
                 unittest.mock.patch.object(
@@ -170,7 +198,7 @@ class SelectBackendTest(unittest.TestCase):
 
         self.assertEqual(code, 1)
         self.assertNotIn("backend", out)
-        self.assertIn("candidate opencode-glm-5p3-flash", log)
+        self.assertIn("candidate cursor-grok-4p6-fast", log)
         self.assertNotIn("candidate zai-glm-5p2", log)
 
     def test_explicit_cross_adapter_override_requires_lane_contract(self):
@@ -179,6 +207,26 @@ class SelectBackendTest(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertNotIn("backend", out)
         self.assertIn("requires a lane fallback_chain contract", log)
+
+    def test_cross_adapter_requires_isolated_editorial_capabilities(self):
+        lanes = {
+            "digest": {"workflow": "daily-digest.yml", "harness": "agent-run",
+                       "backend": "claude",
+                       "fallback_chain": ["cursor-grok-4p6-fast"]},
+        }
+        data = fake_data(["claude", "zai-glm-5p2"], lanes)
+        data["adapters"]["cursor"]["editorial_contract"] = False
+        data_file = Path(self.tmp.name) / "invalid-backends.json"
+        data_file.write_text(json.dumps(data))
+        out_file = Path(self.tmp.name) / "invalid-out.txt"
+        stdout = io.StringIO()
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stdout):
+            code = select_backend.main_with_args([
+                "--file", str(data_file), "--github-output", str(out_file),
+                "--lane", "digest",
+            ])
+        self.assertEqual(2, code)
+        self.assertIn("lacks required capability 'editorial_contract'", stdout.getvalue())
 
     def test_chain_skips_unavailable_middle_candidate(self):
         self.set_availability(fireworks=False, zai=False, claude=True)
@@ -350,6 +398,23 @@ class ProbeOpenCodeTest(unittest.TestCase):
             available, reason = select_backend.probe_opencode("glm-5.3-flash")
         self.assertTrue(available)
         self.assertIn("isolated OpenCode", reason)
+
+
+class ProbeCursorTest(unittest.TestCase):
+    def test_requires_scoped_credential(self):
+        with unittest.mock.patch.dict(os.environ, {}, clear=True):
+            available, reason = select_backend.probe_cursor(
+                "cursor-grok-4.6-high-fast")
+        self.assertFalse(available)
+        self.assertIn("not configured", reason)
+
+    def test_configured_credential_is_available_without_network_probe(self):
+        with unittest.mock.patch.dict(
+                os.environ, {"CURSOR_API_KEY": "test-key"}, clear=True):
+            available, reason = select_backend.probe_cursor(
+                "cursor-grok-4.6-high-fast")
+        self.assertTrue(available)
+        self.assertIn("isolated Cursor", reason)
 
 
 if __name__ == "__main__":

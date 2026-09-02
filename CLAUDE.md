@@ -166,12 +166,13 @@ deleted on purpose.
 
 **Scheduled agent lanes use `.github/actions/agent-run` or the trusted
 `.github/actions/agent-dispatch`,** not `anthropics/claude-code-action@v1`
-directly. RSS, community, and Bluesky use the strict containerized OpenCode
-`research-editorial` route; arXiv and wiki use the strict Cursor-backed
-`research-editorial-secondary` route. The split prevents one provider key or
-plan cap from staling all five editorial lanes. The adapter registry requires both `isolated_workspace`
+directly. RSS, community, and Bluesky use `research-editorial`; arXiv and wiki
+use `research-editorial-secondary`. Both strict routes temporarily select
+Cursor because the OpenCode Go monthly plan is exhausted. This restores the
+three actively failing lanes while deliberately expanding one Cursor failure
+domain across all five editorial lanes. The adapter registry requires both `isolated_workspace`
 and `editorial_contract`; current host-checkout `agent-run` is explicitly
-incompatible and rejected. The selected OpenCode action uses a disposable
+incompatible and rejected. The selected isolated action uses a disposable
 checkout and imports only validated output.
 `agent-run` resolves its backend from
 the SSOT (see Backends), sets up the sandbox centrally, and enforces two
@@ -333,9 +334,11 @@ false `deploy-stale` alerts. Do not "fix" any of these omissions.
 `agent-run` remaps that alias to whatever the resolved backend serves —
 the Fireworks or Z.ai profile model, or `native-model` (default
 **`claude-opus-5`** since 2026-08-01 — was `claude-sonnet-5`) on the
-native path. Direct Claude workflows are NOT covered by that default:
+native path. A caller can preserve a cheaper native model while retaining a
+lane-compatible fallback by setting `native-model` (no-MCP AI news pins Sonnet
+5 this way). Direct Claude workflows are NOT covered by that default:
 the mirror lanes (`claude.yml`, `claude-code-review.yml`,
-`ai-news-research.yml`, `daily-improve.yml`, `research-issue.yml`,
+the MCP variant of `ai-news-research.yml`, `daily-improve.yml`, `research-issue.yml`,
 `twitter-account-explorer.yml`) still pin `--model claude-sonnet-5`
 literally via `claude_args`, and the README diagram's `native` node is
 where that split is visible. Read the workflow file rather than assuming
@@ -365,9 +368,9 @@ derivable from the SSOT.
 | **GLM 5.2 (via Z.ai Coding Plan)** | Second link in the fallback chain; `agent-run backend=zai-glm-5p2`; default manual `hourly-twitter.yml` backend; `zai-claude-code-canary.yml` | `ZAI_API_KEY` | Anthropic-compatible Claude Code endpoint `https://api.z.ai/api/anthropic`, model `glm-5.2`, `CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000`. The `glm-5.2[1m]` alias was rejected as `Unknown Model` (canary run `28751367808`) — keep the endpoint-valid id unless a raw probe proves otherwise. Because it shares the harness and sandbox but not the credential, **the canary is the fastest way to tell a dead Claude token from a broken runner**. Selectors: `zai-glm-5p2`, `zai-glm-5.2`, `zai-glm52`, `zai`. |
 | **GLM 5.2 (via Fireworks)** | `generative-research backend=glm-5p2` | `FIREWORKS_API_KEY` | Model `accounts/fireworks/models/glm-5p2`. Selectors: `fireworks-glm-5p2`, `glm-5p2`, `glm`. In `generative-research.yml` the workflow-level `fireworks_fallback` input falls back to native Claude by default. |
 | **DeepSeek V4 Flash (via Fireworks)** | Low-cost/comparison: `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek tiers | `FIREWORKS_API_KEY` | Endpoint `https://api.fireworks.ai/inference` (base URL omits `/v1`; the client appends `/v1/messages`), model `accounts/fireworks/models/deepseek-v4-flash`. Overrides `ANTHROPIC_BASE_URL`/`AUTH_TOKEN`/`MODEL` so the Claude action transparently calls Fireworks. The direct DeepSeek API is retired (billing). Scheduled DeepSeek lanes are STRICT comparison tiers that never fall back. |
-| **GLM 5.3 Flash (via OpenCode)** | Primary `research-editorial` route for RSS, community, and Bluesky | `OPENCODE_API_KEY` (Go plan) | Strict containerized opencode profile `opencode-glm-5p3-flash`, using the official `opencode-go/glm-5.3-flash` model id. The trusted action injects the selected SSOT `provider/model` into an ephemeral read-only config. This failure domain is independent from the Cursor-backed arXiv/wiki route. |
+| **GLM 5.3 Flash (via OpenCode)** | Registered editorial profile; explicit generative/Twitter selector and canary | `OPENCODE_API_KEY` (Go plan) | Strict containerized profile `opencode-glm-5p3-flash`, using `opencode-go/glm-5.3-flash`. Temporarily removed from production routes while its monthly plan is exhausted. The independent registered-profile probe in `opencode-deepseek-canary.yml` is the exact reversion signal. |
 | **DeepSeek V4 Flash (via opencode)** | Explicit `generative-research` and `hourly-twitter` selector; and `opencode-deepseek-canary.yml` | `OPENCODE_API_KEY` (Go plan) | Retained comparison/diagnostic profile pinned to `opencode-go/deepseek-v4-flash` — the **2026-07-31** release. 1M ctx, $0.07/$0.14 per Mtok on the $10/mo Go plan (caps $12/5h, $30/wk, $60/mo). It is no longer the production editorial priority. Moonshot serves Kimi only and is not a fallback. |
-| **Grok 4.6 Fast (via Cursor CLI)** | Secondary `research-editorial-secondary` route for arXiv/wiki; explicit generative/Twitter selector; `cursor-cli-canary.yml`; `generative-translation` route | `CURSOR_API_KEY` | Official Cursor Agent CLI (`agent`) inside `run-cursor-container`, same isolation contract as OpenCode. Model **`cursor-grok-4.6-high-fast`** (the CLI id for Grok 4.6 Fast; replaced `composer-2.5`). Nested sandbox disabled (container is the boundary). Not on `fallback.chain`; the secondary route fails closed. Selectors: `cursor`, `cursor-cli`, `cursor-agent`, `grok-4.6-fast`, `grok`. `cursor-composer-2p5` remains a compatibility alias. Validate with `cursor-cli-canary.yml`. |
+| **Grok 4.6 Fast (via Cursor CLI)** | Both strict editorial routes during the OpenCode incident; lane-local standby for compatible local digest/Twitter/no-MCP AI-news; explicit generative/Twitter selector; canary; translation | `CURSOR_API_KEY` | Official Cursor Agent CLI (`agent`) inside `run-cursor-container`, same isolation contract as OpenCode. Model **`cursor-grok-4.6-high-fast`**. Nested sandbox disabled (container is the boundary). Never on global `fallback.chain`: only named lane-local chains may cross into Cursor, and exact path/mode contracts apply. MCP AI-news is excluded because Cursor policy denies MCP. Validate with `cursor-cli-canary.yml`. |
 | **Opus 5 (native)** | **The `generative-research` default** plus explicit `generative-research` `backend=opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic on **`claude-opus-5`**. Not the Fireworks-unavailable fallback target. The resolved model pins `--model`, every `ANTHROPIC_DEFAULT_*` alias, and `CLAUDE_CODE_SUBAGENT_MODEL`; a pre-push gate verifies provenance. Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
 | **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage bills against the ChatGPT/Codex subscription, not the API. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p7`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
@@ -465,8 +468,8 @@ Secrets are configured in GitHub Actions. None are committed.
 | `CLAUDE_CODE_OAUTH_TOKEN` | Claude-harness `agent-run` lanes, direct-Claude workflows, and a reserved dispatcher credential slot | Required by `claude-code-action@v1`; agent-run call sites carry it alongside alternate-provider keys for runtime routing. Expiry can take down the Claude-harness failure domain, but current host-checkout agent-run is rejected by `research-editorial` and never receives this reserved dispatcher slot. Log signature: `is_error: true`, `num_turns: 1`, `total_cost_usd: 0`, `duration_ms` < ~2000, zero permission denials — the agent dies before doing any work. Re-mint with `claude setup-token` → `gh secret set CLAUDE_CODE_OAUTH_TOKEN`; dispatch `zai-claude-code-canary.yml` to separate a dead credential from a broken runner/sandbox. Last expiry 2026-07-24; see rule 14. |
 | `ZAI_API_KEY` | Fallback chain link 2; `agent-run backend=zai-glm-5p2`; `zai-claude-code-canary.yml` | Z.ai Coding Plan key. Now load-bearing for outage resilience, not just comparison. |
 | `FIREWORKS_API_KEY` | Fireworks generative/comparison lanes and a reserved dispatcher credential slot | Covers GLM and DeepSeek Fireworks profiles. The prewired dispatcher slot is for a future isolated adapter; current agent-run profiles are not selectable by `research-editorial`. **The account is SUSPENDED as of 2026-08-01** — probes return `HTTP 412: Account getclarito-5mege6wpl is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices` (run `30641250660`). The strict `twitter-deepseek` cron had hard-failed 4×/day since ~2026-07-05 and was dropped 2026-08-01; it remains dispatch-only until billing is settled at https://fireworks.ai/account/billing. Check the job name before attributing those historical failures to a primary lane. |
-| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, and the dispatcher credential set | OpenCode Go key: https://opencode.ai/auth; caps are $12/5h, $30/week, $60/month. It backs RSS, community, and Bluesky; arXiv/wiki are deliberately outside this failure domain. `MOONSHOT_API_KEY` serves neither pinned OpenCode Go model. `opencode-deepseek-canary.yml` validates both the retained explicit DeepSeek path and the dynamically resolved primary editorial route. |
-| `CURSOR_API_KEY` | Cursor CLI profiles, arXiv/wiki, translation, direct comparison/canary paths, and the dispatcher credential set | Cursor dashboard API key. It backs the secondary editorial failure domain plus translation. Validate with `cursor-cli-canary.yml`. |
+| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, and the dispatcher credential set | OpenCode Go key: https://opencode.ai/auth; caps are $12/5h, $30/week, $60/month. The monthly cap is currently exhausted, so production editorial routing is temporarily off OpenCode. `opencode-deepseek-canary.yml` independently probes the registered editorial profile. When that probe succeeds, restore only `routes.research-editorial.backend`, regenerate docs, and redispatch RSS/community/Bluesky. |
+| `CURSOR_API_KEY` | Cursor CLI profiles, all five editorial lanes during the incident, translation, direct comparison/canary paths, and four lane-local agent-run fallbacks | Cursor dashboard API key. It temporarily carries a larger failure domain: RSS/community/Bluesky plus arXiv/wiki, with standby fallback authorization for local digest, primary Twitter/repair, and no-MCP AI-news. Cursor is never a global fallback. Validate with `cursor-cli-canary.yml`. |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | The file-backed `~/.codex/auth.json` from `codex login`. Treat like a password; one auth file per serialized runner stream. |
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | birdy workflows (`hourly-twitter*`, `24h-model-timeline`, `twitter-account-explorer`, `generative-research`) | X/Twitter cookies; they expire — see rule 6. The env-var names keep the `BIRD_` prefix because that is what birdy reads. |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `blog-subscriptions`, `daily-digest`, `liveness-check` | Blog alerts, digest delivery, liveness escalation. |
@@ -678,10 +681,14 @@ output or break the pipeline. Read them before editing.
 
 14. **No single credential may be able to take down the whole agent fleet.**
     The remaining `agent-run` production lanes use a provider-spanning global
-    `fallback.chain`. The isolated editorial fleet is split across two strict
-    route failure domains: OpenCode backs RSS/community/Bluesky, while Cursor
-    backs arXiv/wiki. Neither silently changes provider; the split bounds each
-    credential's blast radius. On
+    `fallback.chain`. The isolated editorial fleet normally splits across two
+    strict route failure domains. During the current OpenCode monthly-cap
+    incident, Cursor temporarily backs all five editorial lanes, increasing
+    blast radius in exchange for restoring RSS/community/Bluesky. Restore the
+    split only after `opencode-deepseek-canary.yml`'s registered editorial GLM
+    probe succeeds: change only `routes.research-editorial.backend` back to
+    `opencode-glm-5p3-flash`, regenerate the matrix, then redispatch the three
+    lanes. On
     2026-07-24 it wasn't: the chain was `["claude"]` and `probe_claude()`
     hardcoded "always available", so an expired `CLAUDE_CODE_OAUTH_TOKEN`
     killed every lane at once (then including digest, RSS, community, Twitter,
@@ -693,10 +700,13 @@ output or break the pipeline. Read them before editing.
     (it is what the prompts are tuned against); it must not also terminate.
     (b) **`probe_claude()` is a narrow run-availability preflight** — down
     on 401/403 auth rejection and on HTTP 429. A 429 proves the subscription
-    token is alive but also proves Claude cannot serve this run. The local-source
-    digest lane has an explicit compatibility-tested `fallback_chain` override,
-    so it runs the same prompt through isolated OpenCode GLM 5.3 Flash; if that
-    adapter is unavailable it fails into the existing deterministic recovery.
+    token is alive but also proves Claude cannot serve this run. Local digest,
+    primary Twitter/repair, and no-MCP AI-news have explicit
+    compatibility-tested `fallback_chain` overrides to isolated Cursor. These
+    are standby paths while Claude is healthy, replace rather than append the
+    global chain, and keep exact path/mode contracts. MCP AI-news remains direct
+    Claude because Cursor denies MCP. If Cursor is unavailable, digest/Twitter
+    continue into their existing deterministic recovery where applicable.
     Unrelated non-strict agent-run lanes retain the global Z.ai secondary.
     HTTP 400, 5xx, and network faults remain fail-open because this
     tiny probe does not mechanically prove the full Claude Code path is down.
