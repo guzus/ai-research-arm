@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "GOOGLE SHIPS GEMINI 3.8 FLASH — THIRD FLASH IN 6 WEEKS, $0.75/$3.75 INTRO THROUGH DEC 31",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2095175498967949359",
+    "category": "model"
+  },
+  {
+    "headline": "GEMINI 3.8 FLASH CYBER GATED TO FAIRWIND — DEFENDER-ONLY SKU, NOT ON THE PUBLIC API",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2095175502298243094",
+    "category": "breaking"
+  },
+  {
+    "headline": "DOJ TELLS SDNY: TRAINING LLMS ON COPYRIGHTED TEXTS DOES NOT VIOLATE COPYRIGHT LAW",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2095185916457566489",
+    "category": "policy"
+  },
+  {
+    "headline": "GOOGLE TABLE: 3.8 FLASH 73.7% DEEPSWE VS OPUS 5 74.0% — 19.1% VS 51.8% ON TERMINAL-BENCH 4.0",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2095175881690173885",
+    "category": "model"
+  }
+]

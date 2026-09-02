@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-02 16:30:02 UTC
+
+CYCLE: Google ships Gemini 3.8 Flash and gated Flash Cyber; DOJ says LLM training is fair use
+
+TOP STORIES:
+• Google ships Gemini 3.8 Flash — third Flash in 6 weeks, $0.75/$3.75 intro [✓]
+• Gemini 3.8 Flash Cyber gated to Fairwind defenders; Chrome 2.6× patch claim [✓]
+• DOJ Sept. 1 SOI: training LLMs on copyrighted texts does not violate copyright [✓]
+
+WATCH: Independent Terminal-Bench 4.0 / SWE runs vs Google's 19.1% vs Opus 51.8% table
+
+Full update on GitHub.
