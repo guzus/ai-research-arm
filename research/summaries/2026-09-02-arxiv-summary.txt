@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-02
+
+TOP 5 PAPERS:
+• Mechanism Design for Alignment — revelation principle for agents with hidden prefs/capabilities; sandbagging + scalable oversight
+• SMELT — compute-matched MoE looped transformers; 6.8–18% FLOP savings, gap grows with length
+• Mid-training KD favors reasoning — forward KL starves factual recall; Switch Distillation routes on teacher entropy
+• GlossoGen — LLM agents invent compositional languages humans cannot read; needs pressure + postmortem
+• Harness-of-Harness — multi-day autonomous software; +52% vs standalone harnesses, 70-iteration FPS
+
+CATEGORIES: NLP 9, CV/Multimodal 7, Agents & Reasoning 9, Safety 7, Other 6
+
+Full report on GitHub.
