@@ -1,0 +1,10 @@
+Daily AI Digest - 2026-09-02 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Expert Blogs] Codex bundles LibreOffice
+• [arXiv Papers] 1. Scaling Large Reasoning Models beyond Human Supervision: A Path toward Superintelligence
+• [YouTube] GPT-6 Astra Preview: FIRST LOOK, Opus 5.1, Claude's Downfall? & HY4 - Best Open Model?! AI NEWS!
+
+SOURCES: 3/8 lanes had data; missing: Twitter/X, RSS / Official Announcements, Hacker News, Reddit, Bluesky
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
