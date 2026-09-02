@@ -4,15 +4,17 @@ title: Dell Technologies
 type: entity
 aliases: [Dell, "Dell Technologies", "Dell Inc.", "DELL", "@MichaelDell"]
 tags: [oem, server-vendor, enterprise-ai, capital-markets]
-description: US enterprise-IT OEM; Q1 FY27 (reported 2026-05-29) printed $43.8B revenue (+88% YoY) with AI-Optimized Servers at $16.1B (+757% YoY), $24.4B AI orders booked, FY27 AI-server outlook raised to $60B; stock +32% on the print, the best single day in company history.
+description: US enterprise-IT OEM; FY27Q2 (filed 2026-09-01) printed $47.0B revenue (+58% YoY) with $16.4B of AI-optimized server sales, $60.9B of AI-server orders and a $95B backlog, lifting full-year guidance to $192.0B.
 created_at: 2026-06-01
-timestamp: 2026-06-01T00:00:00Z
+timestamp: 2026-09-02T00:00:00Z
 market:
   ticker: DELL
   exchange: NYSE
   symbol: NYSE:DELL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
+  - {title: "Dell FY27Q2 8-K EX-99.1", date: 2026-09-01}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "Dell Q1 FY27 results", date: 2026-05-29}
 ---
@@ -54,15 +56,44 @@ production-class signal on Rubin GPU availability outside NVIDIA's own
 venues — Dell is anchoring the next-gen Rubin ramp on the [[neocloud]]
 side as well as the enterprise side.
 
+## FY27Q2 — $95B AI-server backlog, guidance to $192B (filed 2026-09-01)
+
+The **FY27Q2 8-K (filed 2026-09-01)** is the first issuer print that
+supersedes the Q1 snapshot above. All figures below are Dell's own
+(SEC 8-K EX-99.1; ARA daily digest 2026-09-02):
+
+- **Revenue $47.0B (+58% YoY)** — another record quarter.
+- **Diluted EPS $6.34 (+273%)**; **non-GAAP diluted EPS $7.04 (+203%)**.
+- **AI-optimized servers $16.4B (+100% YoY)** — almost flat on the $16.1B
+  Q1 line, so the growth is now year-over-year rather than sequential
+  explosion.
+- **Traditional servers and networking $10.5B (+122% YoY)** — the
+  non-AI ISG line is also doubling, which matters for the "is this only
+  GPU boxes" read.
+- **AI-server orders $60.9B** in the quarter; **backlog exited at $95B**.
+  COO Jeff Clarke: "That's clearest in our AI server business where we
+  booked a record $60.9 billion in orders, recognized a record $16.4
+  billion in revenue and exited the quarter with a record $95 billion
+  backlog."
+- **FY27 revenue guidance raised by $25B to $192.0B (+69% YoY)** — CFO
+  David Kennedy on the record. The Q1 company outlook had been ~$167B
+  with a $60B AI-server band; the new guide is a company-level number,
+  not a restated AI-server band.
+
+This is the cleanest enterprise-OEM demand print of the September window
+and slots into [[ai-capex]] as booked orders plus a disclosed backlog,
+not a hyperscaler capex slide.
+
 ## Open questions
 
-- **Backlog conversion.** $24.4B booked in a single quarter with backlog
-  growing ~$8.3B/qtr — can ISG ship against the order book without
-  GPU-supply or working-capital bottlenecks?
+- **Backlog conversion.** The order book jumped from $24.4B booked in Q1
+  to **$60.9B booked / $95B backlog** in Q2. Can ISG ship against that
+  without GPU-supply or working-capital bottlenecks — and how much of
+  the $95B is already in the $192B FY27 guide?
 - **Sovereign-AI mix.** "Enterprise / tier-2 cloud / sovereign-AI" is
-  three very different segments. How much of the $60B FY27 outlook is
+  three very different segments. How much of the raised outlook is
   sovereign-AI — and therefore sensitive to export-control and
   geopolitical shifts that don't affect hyperscaler demand?
-- **Margin durability.** Record EPS at +282% GAAP / +214% non-GAAP is
-  the most favorable AI-OEM print to date. Does pricing power hold as
-  Rubin economics compress NVIDIA's reseller margins?
+- **Margin durability.** Record EPS at +273% GAAP / +203% non-GAAP held
+  for a second quarter. Does pricing power hold as Rubin economics
+  compress NVIDIA's reseller margins?

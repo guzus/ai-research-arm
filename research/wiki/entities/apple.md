@@ -4,15 +4,16 @@ title: Apple
 type: entity
 aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC]
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
-description: Consumer-hardware giant whose long-delayed Siri rebuild — reportedly powered by a custom Google Gemini model with a user-selectable "Extensions" layer — is the marquee AI item at WWDC 2026; sued OpenAI (2026-07-12) over alleged hardware trade-secret theft, escalating to legal letters against dozens of OpenAI employees (2026-07-18).
+description: Consumer-hardware giant whose Siri rebuild is the marquee WWDC 2026 AI item; sued OpenAI over alleged hardware trade-secret theft and on 2026-09-02 accused the lab of destroying evidence, asking for expedited discovery.
 created_at: 2026-06-08
-timestamp: 2026-08-26T00:00:00Z
+timestamp: 2026-09-02T00:00:00Z
 market:
   ticker: AAPL
   exchange: NASDAQ
   symbol: NASDAQ:AAPL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
@@ -183,6 +184,17 @@ not announced.
   [[fractile]]) for frontier AI remains elsewhere (Apple via wire copy / Ars
   Technica; ARA daily digest 2026-08-26). See [[ai-capex]] for the
   unified-memory economics angle.
+
+## Spoliation allegation in the OpenAI suit (2026-09-02)
+
+- **Apple accused [[openai]] of destroying evidence** in the companies'
+  trade-secrets fight and **asked for expedited discovery**. The Verge
+  is the only local source on the filing; **no OpenAI reply** appears in
+  today's files. This is the next escalation after the 2026-08-05
+  preliminary-injunction / forensic-inspection motion and the October 1
+  hearing before Judge Davila — a spoliation claim, if it sticks, is a
+  different remedy track from the underlying trade-secret allegations
+  (The Verge; ARA daily digest 2026-09-02).
 
 ## Open questions
 

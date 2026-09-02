@@ -4,10 +4,11 @@ title: Astra (OpenAI)
 type: entity
 aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra"]
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic]
-description: OpenAI's named "next major model family," introduced 2026-08-01 via a 249-page manuscript claiming ten mathematics and theoretical-computer-science results with Lean certificates for roughly $2,000 of inference — none yet verified by a specialist, and five reportedly reproduced by a generally-available rival model within a day.
+description: OpenAI's named next model family; the first model the lab says meets the Critical cybersecurity threshold under its Preparedness Framework, with development delayed after the Hugging Face agent-swarm incident and no public launch date in the 2026-09-02 Path to Astra note.
 created_at: 2026-08-02
-timestamp: 2026-08-26T00:00:00Z
+timestamp: 2026-09-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
   - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
@@ -122,3 +123,23 @@ GPT-5.7** — see [[gpt-6]].
   July evaluation incident lands (ARA daily digest 2026-08-26). The safety
   machinery (critical-cyber escalation) and the marketing name emerging in the
   same week are the two faces of the same release.
+
+## Path to Astra — Critical cyber, delayed after Hugging Face (2026-09-02)
+
+- **OpenAI says Astra is the first model to meet the Critical cybersecurity
+  threshold** under its Preparedness Framework, and published **Path to
+  Astra** as a capability-and-safeguard disclosure rather than a launch.
+  TechCrunch and The Verge say **development was delayed after the
+  [[hugging-face|Hugging Face]] agent-swarm incident**; OpenAI now considers
+  the extra controls sufficient to ship later. There is **no public launch
+  date** in today's files. Local CNBC/OpenAI excerpts say red-teamers found
+  Astra could **discover unknown vulnerabilities in a hardened browser and OS
+  and chain them without a human**, including a **browser-sandbox escape** and
+  a **local privilege escalation to root**. YouTube titles claiming a
+  "GPT-6 Astra" leak remain **metadata-only and unverified**. The Path to
+  Astra note held the HN front page at 149 points. This hardens the
+  2026-08-07/08 "cannot rule out Critical" escalation into a **stated
+  threshold crossing**, and it answers the identity question this page left
+  open only one notch: the Critical model is now named Astra on the record,
+  still unreleased. See [[agentic-ai-security]] and [[openai]] (OpenAI,
+  TechCrunch, The Verge; ARA daily digest 2026-09-02).

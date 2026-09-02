@@ -4,10 +4,11 @@ title: European AI regulation
 type: theme
 aliases: ["EU AI Act", "EU AI regulation", "European AI Act", "AI Act"]
 tags: [regulation, eu, ai-act, copyright, transparency]
-description: The 2026 storyline of Europe regulating AI through binding statute rather than agency discretion — the AI Act's obligations switching on by calendar date, and national courts applying EU copyright law to model training and output.
+description: The 2026 storyline of Europe regulating AI by binding statute; the AI Act's transparency obligation took effect 2026-08-02, and Anthropic opened a Claude watermark-detection API to regulators, media and researchers as an Article 50 compliance product (2026-09-02).
 created_at: 2026-08-02
-timestamp: 2026-08-12T00:00:00Z
+timestamp: 2026-09-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
@@ -92,6 +93,16 @@ training and output.
   labelling duty propagating from AI outputs to AI-generated music and to
   camera-captured media (TechCrunch, Euronews, The Register, The Verge; ARA
   daily digest 2026-08-12).
+
+- **The promised Claude watermark-detection API opens (2026-09-02).**
+  [[anthropic]] opened detection to **regulators, media, fact-checkers, and
+  researchers** via an API that checks for Claude's digital watermark. The
+  Decoder ties the launch to the **AI Act's invisible-watermark rule** —
+  the first outsider-facing compliance product on the Article 50
+  provenance thread this page logged on 2026-08-12, when Anthropic staff
+  confirmed a public text-detection API was coming. Detector error rates
+  remain unpublished (The Decoder; ARA daily digest 2026-09-02). See
+  [[anthropic]].
 
 ## Open questions
 
