@@ -50,6 +50,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import os
 import sys
 from datetime import datetime, timedelta, timezone
@@ -97,6 +98,28 @@ def load_symbols(index_path: Path) -> list[dict[str, str]]:
     return [seen[k] for k in sorted(seen)]
 
 
+def _epoch_seconds(value: Any) -> int | None:
+    """Normalize Yahoo timestamps across yfinance response versions.
+
+    Older yfinance releases returned ``regularMarketTime`` as Unix seconds;
+    yfinance 1.6 returns a pandas ``Timestamp``. Missing datetime-like values
+    such as pandas ``NaT`` are treated as absent so the caller can use its
+    existing current-time fallback.
+    """
+    if value is None:
+        return None
+
+    try:
+        raw_seconds = value.timestamp() if hasattr(value, "timestamp") else value
+        seconds = float(raw_seconds)
+    except (TypeError, ValueError, OverflowError):
+        return None
+
+    if not math.isfinite(seconds):
+        return None
+    return int(seconds)
+
+
 def _closes_via_yfinance(ticker: str) -> tuple[list[float], str, int | None, str | None]:
     import yfinance as yf  # local import — optional `stock` extra
 
@@ -111,7 +134,7 @@ def _closes_via_yfinance(ticker: str) -> tuple[list[float], str, int | None, str
     currency = str(meta.get("currency") or "USD")
     as_of = meta.get("regularMarketTime")
     market_state = meta.get("marketState")
-    return closes, currency, (int(as_of) if as_of else None), (str(market_state) if market_state else None)
+    return closes, currency, _epoch_seconds(as_of), (str(market_state) if market_state else None)
 
 
 def _closes_via_urllib(ticker: str) -> tuple[list[float], str, int | None, str | None]:
