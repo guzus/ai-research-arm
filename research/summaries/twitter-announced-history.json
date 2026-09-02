@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-03 04:00 UTC",
-    "headline": "@SEMIANALYSIS_ POSTS OUT-OF-CHARACTER JANE STREET GRIFT TWEET \u2014 POSSIBLE COMPROMISE RECURRENCE OF JAN 4 HACK",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-03-twitter-04h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2050749738262794529"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-03 21:00 UTC",
-    "headline": "DEV SENTIMENT SWINGS TO OPENAI CODEX \u2014 \"DEVS SWITCH FROM CLAUDE OVER LIMITS\" HITS X TRENDING #1 WITH 4,400 POSTS",
-    "source": "@arankomatsuzaki",
-    "source_file": "research/summaries/2026-05-03-twitter-21h-headlines.json",
-    "url": "https://x.com/arankomatsuzaki/status/2050620582434382228"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-03 21:00 UTC",
-    "headline": "JENSEN HUANG: NVIDIA CHINA AI-CHIP SHARE COLLAPSED 95% TO 0%, US EXPORT POLICY \"LARGELY BACKFIRED\"",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-03-twitter-21h-headlines.json",
-    "url": "https://x.com/jukan05/status/2050930415196925978"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-03 21:00 UTC",
-    "headline": "THE INFORMATION: BEDROCK CUSTOMER ON OPENAI-AWS DEAL \u2014 \"FOR CODING, CLAUDE IS BETTER\"",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-03-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050945991226912850"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-03 21:00 UTC",
     "headline": "GOOGLE PRE-I/O RAMP: NEW GEMINI IOS DESIGN LEAKS, AI STUDIO BUILD ADDS FIGMA + GITHUB IMPORTS",
@@ -25206,5 +25170,33 @@
     "headline": "TRUMP ADMIN DRAFTS RULE TO BLOCK CHINESE FIRMS' REMOTE ACCESS TO US CHIPS IN OVERSEAS DATA CENTERS",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2093417101625069988"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-02 09:30:42 UTC",
+    "headline": "THE INFORMATION: ASTRA USES RECURRENT DEPTH \u2014 PACHOCKI SAYS COMPUTE-GRAPH DEPTH STAYS WITHIN 2X GPT-4",
+    "source": "@steph_palazzolo",
+    "url": "https://x.com/steph_palazzolo/status/2094954680765829533"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-02 09:30:42 UTC",
+    "headline": "OPENAI PATH TO ASTRA: FIRST CONFIRMED CRITICAL-TIER MODEL CLEARED FOR STAGED RELEASE, DAYBREAK GATES CYBER TOOLS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2094885578173260259"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-02 09:30:42 UTC",
+    "headline": "ALIBABA SHIPS QWEN3.8-MAX-0902 \u2014 SAME 2.4T/1M LINE, CODING POST-TRAIN, $2/$6 ON QWENCLOUD",
+    "source": "@Alibaba_Qwen",
+    "url": "https://x.com/Alibaba_Qwen/status/2094968708288680276"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-02 09:30:42 UTC",
+    "headline": "MUSK: GROK 4.7 COMES OUT IN 10 DAYS",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2094983639780204846"
   }
 ]
