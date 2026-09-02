@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-04 01:00 UTC",
-    "headline": "GPT-5.5 BURNS CODEX WEEKLY QUOTAS IN HOURS \u2014 OPENAI INFRA LEAD OPENS PUBLIC FEEDBACK LINE AS RATE-LIMIT REVOLT HITS X TRENDING",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-05-04-twitter-01h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2051062151805382956"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 01:00 UTC",
-    "headline": "GOLDMAN HIKES SAMSUNG 2027 OP-PROFIT FORECAST 43% TO \u20a9438T ($297B); 2028 RAISED 56% ON HBM/AI-SERVER CYCLE",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-04-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051088714357715392"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-04 01:00 UTC",
-    "headline": "CCL SUBSTRATE SHORTAGE HITS CRISIS LEVEL \u2014 KOREAN PCB MAKER ORDERS 5X NORMAL VOLUME FROM TAIWANESE EMC AND TUC",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-04-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051070393734303767"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-04 01:00 UTC",
-    "headline": "OPENAI OPEN-SOURCES SYMPHONY SPEC \u2014 TURNS LINEAR AND JIRA BOARDS INTO CODEX AGENT TASK QUEUES",
-    "source": "@btibor91",
-    "source_file": "research/summaries/2026-05-04-twitter-01h-headlines.json",
-    "url": "https://x.com/btibor91/status/2051031732384854396"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 01:00 UTC",
-    "headline": "FOUNDERS FUND ADDS $624M TO ANDURIL AT $60B VALUATION \u2014 TOTAL BET NOW $2.6B DESPITE $1B+ ANNUAL LOSSES EXPECTED FOR YEARS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-04-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation/status/2051021481837031713"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-04 01:00 UTC",
-    "headline": "INFORMATION: TENCENT'S NEW AI MODEL WINS DEV PRAISE \u2014 BUT 'PROBABLY OWES SOME OF THAT SUCCESS TO ANTHROPIC'",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-04-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation/status/2051036584808517770"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-04 01:00 UTC",
     "headline": "MICROSOFT Q1 \u2014 AI USAGE DRAGGED CLOUD MARGINS, COMPANY EFFECTIVELY BOOSTED PRICES IN RESPONSE",
@@ -25190,5 +25136,47 @@
     "headline": "GOOGLE TABLE: 3.8 FLASH 73.7% DEEPSWE VS OPUS 5 74.0% \u2014 19.1% VS 51.8% ON TERMINAL-BENCH 4.0",
     "source": "@OfficialLoganK",
     "url": "https://x.com/OfficialLoganK/status/2095175881690173885"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-02 20:58:15 UTC",
+    "headline": "META SHIPS MUSE SPARK 1.3 \u2014 AA INDEX 61 ON PUBLIC XHIGH, GATED MAX AT 62",
+    "source": "@AIatMeta",
+    "url": "https://x.com/AIatMeta/status/2095234385129963666"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-02 20:58:15 UTC",
+    "headline": "MUSE SPARK 1.3 LIST PRICE UNCHANGED AT $1.25/$4.25 \u2014 AA COST/TASK $0.55 VS $0.95 SOL",
+    "source": "@ArtificialAnlys",
+    "url": "https://x.com/ArtificialAnlys/status/2095247787277553929"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-02 20:58:15 UTC",
+    "headline": "ANTHROPIC OPEN-SOURCES CLAUDE COMMERCE AGENTS \u2014 VISA, MASTERCARD, SHOPIFY, PRICELINE",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2095233745167282602"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-02 20:58:15 UTC",
+    "headline": "FRONTIERSWE V2: FABLE 5.1 56.3% VS GPT-5.6 32.2%; MUSE SPARK 1.2 NINTH AT 12%",
+    "source": "@ProximalHQ",
+    "url": "https://x.com/ProximalHQ/status/2095233547330347491"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-02 20:58:15 UTC",
+    "headline": "CLAUDE CODE DESKTOP COMPUTER USE NOW RUNS IN BACKGROUND \u2014 MACOS PRO/MAX BETA",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2095226982644830648"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-02 20:58:15 UTC",
+    "headline": "GROK BOT SHIPS ON ANDROID \u2014 FLAGS ISSUES, NOTIFIES ON FIX, CONTINUES THE PROJECT",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2095208414196674930"
   }
 ]
