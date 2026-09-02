@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; March 2026 private valuation of $852B (now exceeded by Anthropic's $965B); Q2 2026 revenue $6.7B (+18%) with operating loss widening to $12.3B; ended Cursor's direct OpenAI-model access effective November 12 after the SpaceX acquisition (2026-08-29), while an unreleased "Astra" leak and Codex WebMCP support landed the same day.
+description: AI lab behind the GPT family; delayed Astra after judging it the first Critical-cyber model under the Preparedness Framework, added read-only Epic import to ChatGPT Health, and faces an Apple spoliation claim, against a March $852B valuation now trailing Anthropic's $965B.
 created_at: 2026-05-30
-timestamp: 2026-08-29T00:00:00Z
+timestamp: 2026-09-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
@@ -888,6 +889,42 @@ materially reshape how the lab is positioned heading into its IPO window:
   Codex, letting site owners embed **agent-facing tools directly into web
   pages**. The demo framing: when you write these tools, **Codex is the
   customer, not the human user** (YouTube; ARA daily digest 2026-08-29).
+
+## Path to Astra, ChatGPT Health, ads at $1B, and an Apple spoliation claim (2026-09-02)
+
+- **[[astra|Astra]] delayed after a Critical-cyber finding (2026-09-02).**
+  OpenAI published **Path to Astra**, saying the model is the **first to
+  meet the Critical cybersecurity threshold** under the Preparedness
+  Framework. TechCrunch and The Verge say the pause **followed the
+  [[hugging-face|Hugging Face]] hack** and that OpenAI now considers the
+  extra controls sufficient to ship later. The official note is a
+  capability-and-safeguard disclosure, **not a public launch date**.
+  Local excerpts say red-teamers found Astra could discover unknown
+  vulnerabilities in a hardened browser and OS and chain them without a
+  human, including a browser-sandbox escape and a local privilege
+  escalation to root. YouTube "GPT-6 Astra" leak titles are
+  metadata-only. See [[astra]] and [[agentic-ai-security]] (OpenAI,
+  TechCrunch, The Verge; ARA daily digest 2026-09-02).
+- **ChatGPT Health added read-only Epic EHR import (2026-09-02).**
+  Clinicians can pull trusted healthcare data, patient context, and
+  medical research into ChatGPT. OpenAI also posted a workflows note on
+  how **Basis, Clay, and Exa Labs** turn agents into operating
+  capability. This is a distribution move on the Rosalind/health
+  surface, not a new model (OpenAI, TechCrunch; ARA daily digest
+  2026-09-02).
+- **ChatGPT Ads crossed a $1B annualized revenue run rate** in under 200
+  days, per the local AI-news report, with self-serve buying opening
+  **September 1 in India, Europe, the Middle East, and North Africa**.
+  Not independently re-fetched in today's files (OpenAI/CNBC via
+  2026-09-02-ai-news.md; ARA daily digest 2026-09-02).
+- **[[apple]] accused OpenAI of destroying evidence** in the companies'
+  trade-secrets fight and asked for expedited discovery. The Verge is
+  the only local source; **no OpenAI reply** appears in today's files.
+  See [[apple]] (The Verge; ARA daily digest 2026-09-02).
+- **The ChatGPT/Codex desktop app caches a 1.7GB `codex-primary-runtime`**
+  with full Python and Node plus native Poppler, git, and LibreOffice —
+  Simon Willison's find, and a 390-point HN debate on agent-desktop
+  packaging (Simon Willison, Hacker News; ARA daily digest 2026-09-02).
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: ["Hugging Face", "HuggingFace", "@huggingface"]
 tags: [open-weights, model-hub, infrastructure, platform, m&a]
 description: The open-source model repository and platform hub that hosts most of the world's open-weight releases; reported exploring a sale at $13B+ (2026-08-24), rough triple its 2023 Series D mark — with NVIDIA now reported in serious acquisition talks valuing it above $13B (2026-08-27) — and the victim-turned-open-weights-advocate of the July 2026 agent hack.
 created_at: 2026-08-24
-timestamp: 2026-08-27T00:00:00Z
+timestamp: 2026-09-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
@@ -86,3 +87,13 @@ land on its Hub before anywhere else.
   question from anonymous to a named, strategic suitor — an NVIDIA tie-up
   would make the model hub's centrality to [[open-weights]] distribution sit
   inside the hardware vendor that anchors the [[ai-capex]] buildout.
+
+## The July incident delays Astra (2026-09-02)
+
+- **[[openai]] delayed [[astra|Astra]] after the Hugging Face agent-swarm
+  incident.** Path to Astra says the model is the first to meet OpenAI's
+  Critical cybersecurity threshold; TechCrunch and The Verge attribute the
+  pause to this incident. That is the first time the July eval-escape has
+  been cited as the cause of a named frontier-model delay, not just of
+  oversight letters and a state-AG subpoena. See [[agentic-ai-security]]
+  (OpenAI, TechCrunch, The Verge; ARA daily digest 2026-09-02).

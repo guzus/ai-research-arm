@@ -2,12 +2,13 @@
 slug: claude-fable-5
 title: Claude Fable 5 / Mythos 5
 type: entity
-aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-class", "claude-fable-5", "claude-mythos-5"]
+aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-class", "claude-fable-5", "claude-mythos-5", "Claude Fable 5.1", "Fable 5.1", "Claude Mythos 5.1", "Mythos 5.1"]
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
-description: Anthropic's 2026-06-09 frontier release — one Mythos-class model sold as two products, the safeguarded GA Fable 5 (auto-routing high-risk queries to Opus 4.8) and the restricted, unsafeguarded Mythos 5 for Glasswing/critical-infra partners; returned worldwide 2026-07-01 after a two-week export ban, metered and reclassified, and promptly topped the Remote Labor Index.
+description: Anthropic's Mythos-class pair — safeguarded Fable and restricted Mythos — first shipped 2026-06-09 and upgraded to Fable 5.1 / Mythos 5.1 on 2026-09-02, pitching up to 45% cheaper agentic work and 52.6% on Terminal-Bench-Science versus 24.7% for Fable 5.
 created_at: 2026-06-10
-timestamp: 2026-08-03T00:00:00Z
+timestamp: 2026-09-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
@@ -359,6 +360,27 @@ every feed on launch day.
   statement** — the same evidentiary weakness as the ten-proof manuscript it
   contests, which is itself the point of the [[verification-bottleneck]] (ARA
   daily digest 2026-08-03).
+
+- **Fable 5.1 / Mythos 5.1 ships (2026-09-02).** [[anthropic]] launched the
+  successor pair after a late-August stealth-routing window (see model ticket
+  `anthropic-claude-fable-5-1-2026-08`). The pitch answers the three complaints
+  this page has tracked since launch: **price** (up to **45 percent cheaper**
+  for agentic work), **data retention**, and **overzealous safeguards** (fewer
+  false-positive refusals — the benign-query reroute / BridgeMind "slaughtered"
+  strand). The one independent-looking bench in today's files is
+  **Terminal-Bench-Science 0.1: Fable 5.1 at 52.6%**, versus **24.7% for Fable
+  5** and **29.0% for [[claude-opus-5|Opus 5]]** — Anthropic's own doubling
+  claim, carried by The Verge, The Decoder, Hacker News and Simon Willison.
+  Ethan Mollick, with early access, called it "a real advance in long-run work
+  that requires judgement and taste, but less of an advance in the amount of
+  Claudish language." Willison said Max thinking produced his best Anthropic
+  SVG pelican, at a **$3.30 sample cost**. The HN thread was the day's runaway
+  (1,210 points / 1,131 comments). Same-day product evidence: Paint.NET shipped
+  a Claude-authored clean-room Direct2D rewrite for WINE (Rick Brewster: "This
+  was written by our good friend Claude"). No API id, list price, or neutral
+  eval beyond Terminal-Bench-Science appears in the digest — treat the 45%
+  cheaper / doubled-science claims as vendor-stated (ARA daily digest
+  2026-09-02).
 
 ## Open questions
 

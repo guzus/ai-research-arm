@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety company and frontier lab behind the Claude model family; closed a $65B Series H at $965B post-money on 2026-05-28, reported a $65B annualized run rate on $11.5B preliminary Q2 revenue, signed a $45B Nscale compute deal (2026-08-27), pledged more Cursor compute as OpenAI exits that IDE (2026-08-29), and was sued by Sony Music Publishing and Warner Chappell (2026-08-28) weeks before a reported record IPO.
+description: AI safety lab behind the Claude family; shipped Claude Fable 5.1 / Mythos 5.1 on 2026-09-02 and opened a Claude watermark-detection API to regulators, media and researchers, after a $65B Series H at $965B, a $45B Nscale compute deal, and a Sony/Warner Chappell suit weeks before a reported record IPO.
 created_at: 2026-05-24
-timestamp: 2026-08-29T00:00:00Z
+timestamp: 2026-09-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
@@ -1311,3 +1312,25 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   lab instruments); early tests claimed integration time dropped from
   **weeks to hours** (The Decoder; ARA daily digest 2026-08-29). See
   [[claude-science]].
+
+## Fable 5.1 ships; the watermark detector opens to outsiders (2026-09-02)
+
+- **[[claude-fable-5|Claude Fable 5.1 / Mythos 5.1]] launched
+  (2026-09-02).** The successor pair is pitched as up to **45 percent
+  cheaper for agentic work**, less trigger-happy on refusals, and
+  **52.6% on Terminal-Bench-Science 0.1** versus **24.7% for Fable 5**
+  and **29.0% for [[claude-opus-5|Opus 5]]**. Anthropic frames it as
+  answering customer complaints on **price, data retention, and
+  overzealous safeguards** — the three friction strands this page has
+  carried since the June launch and the July BridgeMind retest. Ethan
+  Mollick called it a real advance in long-run work that needs judgement
+  and taste; the HN thread was the day's runaway (1,210 / 1,131). See
+  [[claude-fable-5]] for the model-side detail (The Verge, The Decoder,
+  Simon Willison; ARA daily digest 2026-09-02).
+- **Claude watermark detection opens as an API (2026-09-02).** The
+  2026-08-11/12 watermark ship promised a public text-detection API;
+  it is now open to **regulators, media, fact-checkers, and
+  researchers**. The Decoder ties the launch to the **[[eu-ai-regulation|EU
+  AI Act]] invisible-watermark rule**. Detector error rates remain
+  unpublished — the gap this page flagged on 2026-08-13 is still open
+  (The Decoder; ARA daily digest 2026-09-02).
