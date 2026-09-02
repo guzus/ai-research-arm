@@ -1,10 +1,16 @@
-Daily AI Digest - 2026-09-02 (deterministic fallback)
+Daily AI Digest - 2026-09-02
 
-TOP OF EACH LANE:
-• [Expert Blogs] Codex bundles LibreOffice
-• [arXiv Papers] 1. Scaling Large Reasoning Models beyond Human Supervision: A Path toward Superintelligence
-• [YouTube] GPT-6 Astra Preview: FIRST LOOK, Opus 5.1, Claude's Downfall? & HY4 - Best Open Model?! AI NEWS!
+TOP STORIES:
+• Anthropic launched Claude Fable 5.1 (up to 45% cheaper; 52.6% Terminal-Bench-Science)
+• OpenAI flagged Astra as first Critical-cyber model; delayed after Hugging Face hack
+• Dell FY27Q2: $47B revenue, $16.4B AI servers, $95B backlog
 
-SOURCES: 3/8 lanes had data; missing: Twitter/X, RSS / Official Announcements, Hacker News, Reddit, Bluesky
+KEY NUMBERS:
+• AfterQuery: $3.2B valuation, 5 months after $300M
+• AIR: $50M (Sequoia + Greenoaks)
+• ChatGPT Ads: $1B ARR in under 200 days
+• HN Fable thread: 1,210 points / 1,131 comments
 
-Verbatim, unranked lane excerpts. Full digest on GitHub.
+TRENDING: Claude Fable 5.1 vs OpenAI Astra cyber threshold
+
+Full digest on GitHub.
