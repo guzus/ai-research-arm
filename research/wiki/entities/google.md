@@ -2,17 +2,18 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio"]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler and frontier-model builder behind Gemini; Q2 2026 revenue hit $119.8B (+24% YoY) with Google Cloud up 82% to $24.77B (2026-07-22); a DeepMind–academia team pushed the matrix multiplication exponent below 2.371177 with optimization + AlphaEvolve (2026-08-19) and Google took a revenue-linked equity claim on Marvell (2026-08-20).
+description: Hyperscaler behind Gemini; launched Pics, an AI-first Workspace design suite aimed at Canva and Adobe (2026-09-02), after Q2 2026 revenue of $119.8B and a revenue-linked equity claim on Marvell.
 created_at: 2026-07-17
-timestamp: 2026-08-20T00:00:00Z
+timestamp: 2026-09-02T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -31,7 +32,7 @@ sources:
 
 **Google** is the hyperscaler and frontier-model builder behind the
 **Gemini** family ([[gemini-3-5-flash]], [[gemini-3-6-flash]],
-[[gemini-3-5-pro]], [[gemini-spark]],
+[[gemini-3-7-flash]], [[gemini-3-5-pro]], [[gemini-spark]],
 [[gemma-4]], [[nano-banana-2-lite]]). While its individual model releases
 have been tracked on their own pages, this page covers Google as a company:
 the regulatory and product-strategy threads that don't attach to a single
@@ -203,6 +204,43 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   13% and Broadcom fell about 2%** on the print, a market read that the
   revenue-rebate structure shifts custom-ASIC economics toward [[broadcom]]'s
   merchant rival (ARA daily digest 2026-08-20).
+
+## Pics, Flash video analysis, and a "below the frontier" admission (2026-09-02)
+
+- **Google launched Pics, an AI-first Workspace design suite (2026-09-02).**
+  Pics is aimed at Canva and Adobe: users **prompt instead of laying out a
+  canvas**, and The Verge and TechCrunch both frame it as professional-grade
+  generation and editing rather than a traditional design surface. This is a
+  Workspace distribution play, not a new foundation model — the interesting
+  part is Google putting a generative suite into the same productivity
+  surface that already defaults to Gemini (TechCrunch, The Verge; ARA daily
+  digest 2026-09-02).
+- **Gemini Flash models gained agent-based video analysis.**
+  [[gemini-3-7-flash|3.7 Flash]], [[gemini-3-6-flash|3.6 Flash]], and
+  **3.5 Flash-Lite** now choose what to inspect instead of scanning every
+  frame, cutting token use by **up to 88 percent** per The Decoder. That is
+  a serving-cost claim on the already-cheap Flash tier, not a new
+  capability score (The Decoder; ARA daily digest 2026-09-02).
+- **Kavukcuoglu said current Google models are "a little bit below the
+  frontier."** Google DeepMind's Koray Kavukcuoglu — operational lead since
+  the 2026-08-06 leadership rewire — said he is **"100% certain that we
+  will be at the frontier,"** with leadership framed as the only metric
+  that matters. Treat as a first-party positioning quote, not a
+  benchmark (The Decoder; ARA daily digest 2026-09-02).
+- **Reported Hollywood catalog-licensing talks.** Google has reportedly
+  approached studios for catalog deals to train models; The Verge's read
+  is that **Google needs Hollywood more than the studios need AI**.
+  Single-outlet, no studio confirmation in today's files (The Verge; ARA
+  daily digest 2026-09-02).
+- **AlgorithmWatch used DSA access on 4,480 election-related Google
+  queries** and found AI Overviews opaque, thin-sourced, and sometimes
+  taking sides — a researcher-side read on the same AI-Overviews surface
+  already tracked under [[eu-ai-regulation]] (The Decoder; ARA daily
+  digest 2026-09-02).
+- **Google dropped AI-search advice** that had told users who said they
+  were alone with certain nationalities to get to a safe place or call
+  emergency services; The Decoder says other Facebook-derived flags
+  remain (The Decoder; ARA daily digest 2026-09-02).
 
 ## Open questions
 

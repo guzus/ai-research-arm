@@ -4,10 +4,11 @@ title: Gemini 3.6 Flash, 3.5 Flash-Lite & Flash Cyber
 type: entity
 aliases: ["Gemini 3.6 Flash", "Gemini 3.5 Flash-Lite", "Gemini 3.5 Flash Cyber", "Flash Cyber", "Gemini Flash Cyber"]
 tags: [model-release, google-deepmind, flash-tier, ai-security]
-description: Google's 2026-07-21 triple Flash-tier release — Gemini 3.6 Flash, 3.5 Flash-Lite, and a security-focused "Cyber" variant — shipped while Gemini 3.5 Pro remains delayed and Gemini 4 is already in training.
+description: Google's 2026-07-21 triple Flash-tier release — Gemini 3.6 Flash, 3.5 Flash-Lite, and Flash "Cyber" — later gained agent-based video analysis on 3.6 Flash and 3.5 Flash-Lite (2026-09-02), claimed to cut video-token use by up to 88 percent.
 created_at: 2026-07-22
-timestamp: 2026-07-22T00:00:00Z
+timestamp: 2026-09-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "Google releases three new Gemini models but no 3.5 Pro (TechCrunch)", url: "https://techcrunch.com/2026/07/21/google-releases-three-new-gemini-models-but-no-3-5-pro/", date: 2026-07-21}
   - {title: "Google reveals faster and cheaper Gemini 3.6 Flash, says 3.5 Pro is still in testing (Ars Technica)", url: "https://arstechnica.com/google/2026/07/google-reveals-faster-and-cheaper-gemini-3-6-flash-says-3-5-pro-is-still-in-testing/", date: 2026-07-21}
@@ -39,6 +40,15 @@ still-delayed Pro tier.
   was the top-voted Hacker News story (524 pts / 420 comments) in the day's
   later crawl run, ahead of Alibaba's [[alibaba|Qwen-Image-3.0]] and
   Moonshot's [[moonshot-kimi-k3|Kimi Work]] launch.
+
+## Agent-based video analysis (2026-09-02)
+
+[[google]] added agent-based video analysis to **3.6 Flash**, **3.5
+Flash-Lite**, and [[gemini-3-7-flash|3.7 Flash]]: the model chooses what
+to inspect instead of scanning every frame, cutting token use by **up to
+88 percent** per The Decoder. Same serving-cost claim as on the 3.7 page;
+no independent token-use measurement in today's files (The Decoder; ARA
+daily digest 2026-09-02).
 
 ## Open questions
 
