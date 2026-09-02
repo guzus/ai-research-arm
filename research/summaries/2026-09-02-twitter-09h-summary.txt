@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-02 09:30:42 UTC
+
+CYCLE: Astra recurrent-depth scoop vs Pachocki pushback; Qwen3.8-Max-0902 ships; Musk dates Grok 4.7 to 10 days
+
+TOP STORIES:
+• The Information: Astra uses recurrent depth; Pachocki says compute-graph depth stays within 2× GPT-4 [⚠]
+• Alibaba ships Qwen3.8-Max-0902 — 2.4T/1M, coding post-train, $2/$6 on QwenCloud [✓]
+• Musk: Grok 4.7 comes out in 10 days (~Sept 12); no card or price [⚠]
+
+WATCH: Astra system card / Thursday rumor; Google 3.8 Flash first-party post; independent Qwen 0902 vs Fable 5.1
+
+Full update on GitHub.
