@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-02 20:58:15 UTC
+
+CYCLE: Meta ships Muse Spark 1.3; Anthropic open-sources commerce agents; FrontierSWE v2 gaps
+
+TOP STORIES:
+• Meta ships Muse Spark 1.3 — AA 61 xhigh / 62 gated max, same $1.25/$4.25 [✓]
+• Anthropic open-sources Claude Commerce Agents (Visa, Mastercard, Shopify) [✓]
+• FrontierSWE v2: Fable 5.1 56.3% vs GPT-5.6 32.2%; Muse 1.2 ninth at 12% [✓]
+
+WATCH: Muse Spark 1.3 max out of safety gate; FrontierSWE/SWE row for 1.3 not 1.2
+
+Full update on GitHub.
