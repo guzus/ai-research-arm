@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 01:00 UTC",
-    "headline": "MICROSOFT Q1 \u2014 AI USAGE DRAGGED CLOUD MARGINS, COMPANY EFFECTIVELY BOOSTED PRICES IN RESPONSE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-04-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation/status/2051029049078608051"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 04:00 UTC",
-    "headline": "ANTHROPIC FINALIZING $1.5B JV WITH BLACKSTONE, HELLMAN & FRIEDMAN, GOLDMAN SACHS \u2014 CLAUDE INTO PE PORTFOLIO COMPANIES",
-    "source": "@berber_jin1",
-    "source_file": "research/summaries/2026-05-04-twitter-04h-headlines.json",
-    "url": "https://x.com/berber_jin1/status/2051128918154051863"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-04 04:00 UTC",
-    "headline": "ANTHROPIC PUTTING $300M OF ITS OWN BALANCE SHEET INTO PE JV \u2014 ANNOUNCEMENT EXPECTED MONDAY MORNING",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-04-twitter-04h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2051151418602774836"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 04:00 UTC",
-    "headline": "SK HYNIX MARKET CAP CROSSES KRW 1,000 TRILLION \u2014 KOREAN MEMORY MAKER NOW ~$680B COMPANY",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-04-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051124404629975307"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-04 04:00 UTC",
-    "headline": "SK HYNIX HBM4-TO-NVIDIA SHIPMENT CUT 20-30% AS VERA RUBIN RAMP SLIPS \u2014 M15X FAB PIVOTS TO 1c DRAM FOR HBM4E AND SOCAMM2",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-04-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051128451231514744"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-04 04:00 UTC",
     "headline": "H100 NEOCLOUD SPOT NOW $2.75/HR \u2014 UP 60% VS 2023 A16Z OXYGEN PROGRAM RATES",
@@ -25178,5 +25133,40 @@
     "headline": "GROK BOT SHIPS ON ANDROID \u2014 FLAGS ISSUES, NOTIFIES ON FIX, CONTINUES THE PROJECT",
     "source": "@elonmusk",
     "url": "https://x.com/elonmusk/status/2095208414196674930"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-02 23:16:01 UTC",
+    "headline": "PERPLEXITY OPEN-SOURCES LILY \u2014 METAL SERVER FOR QWEN3.6-35B-A3B ON APPLE M5+",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2095264908762140823"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-02 23:16:01 UTC",
+    "headline": "LILY VENDOR BENCH: ~1.3\u00d7 MLX DECODE ON M5 MAX \u2014 GREEDY-ONLY, ONE 4-BIT CHECKPOINT",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2095264908762140823"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-02 23:16:01 UTC",
+    "headline": "PALO ALTO PAID $500M CASH-AND-STOCK FOR THRIVE-BACKED CONSOLE, TECHCRUNCH SOURCES SAY",
+    "source": "@TechCrunch",
+    "url": "https://x.com/TechCrunch/status/2095281907005063405"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-02 23:16:01 UTC",
+    "headline": "CONSOLE LAST VALUED $157M AFTER $29M RAISED \u2014 PANW'S 7TH 2026 DEAL, INTO CORTEX",
+    "source": "@TechCrunch",
+    "url": "https://x.com/TechCrunch/status/2095281907005063405"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-02 23:16:01 UTC",
+    "headline": "MARIN 535B-A23B OPEN RUN HITS 13% \u2014 HUANG FOUNDATION FUNDED COREWEAVE COMPUTE",
+    "source": "@percyliang",
+    "url": "https://x.com/percyliang/status/2095255747487740401"
   }
 ]
