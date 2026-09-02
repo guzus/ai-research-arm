@@ -35,11 +35,11 @@ Each page is one of three types — entity, concept, or theme. See
 - [[fractile]] — UK inference-chip startup that Bloomberg reports will supply Anthropic with chips (2026-08-20), the first named-outlet confirmation that Anthropic buys inference silicon from a startup, in advanced talks at more than six times its May valuation (~$6.5B target).
 - [[gemini-3-5-flash]] — Google's fast, low-cost frontier model shipped at I/O 2026.
 - [[gemini-3-5-pro]] — Google's Pro-tier follow-on to Gemini 3.5 Flash; reported months behind schedule, wiping out ~$200B of Alphabet's market cap.
-- [[gemini-3-6-flash]] — Google's next Flash-tier trio (3.6 Flash, 3.5 Flash-Lite, Flash "Cyber"), shipped 2026-07-21 while 3.5 Pro stays delayed and Gemini 4 is already training.
-- [[gemini-3-7-flash]] — Google's Flash-tier follow-on (2026-08-13) at 50% below 3.6 Flash pricing through year end; claimed Google's fastest-growing launch ever, ARC-AGI-2 at 84.6% for $0.25/task.
+- [[gemini-3-6-flash]] — Google's Flash-tier trio (3.6 Flash, 3.5 Flash-Lite, Flash "Cyber"), shipped 2026-07-21; 3.6 Flash and 3.5 Flash-Lite gained agent-based video analysis on 2026-09-02 (claimed up to 88% fewer tokens).
+- [[gemini-3-7-flash]] — Google's Flash-tier follow-on (2026-08-13) at 50% below 3.6 pricing; gained agent-based video analysis on 2026-09-02 after an ARC-AGI-2 84.6% / $0.25-per-task launch card.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; encoder-free 12B variant runs on 16 GB RAM, 150M+ cumulative downloads.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
-- [[google]] — Hyperscaler behind Gemini; ordered by the EU to open Android and Search to rivals under the DMA (2026-07-17); shipped the 2026 hardware line with Gemini throughout (2026-08-13) and took a revenue-linked equity claim on Marvell against custom-silicon purchases (2026-08-20).
+- [[google]] — Hyperscaler behind Gemini; launched Pics, an AI-first Workspace design suite aimed at Canva and Adobe (2026-09-02), after Q2 2026 revenue of $119.8B and a revenue-linked equity claim on Marvell.
 - [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 - [[gpt-6]] — OpenAI's anticipated next flagship generation beyond GPT-5.6; reportedly previewed to US officials the week of 2026-07-27, not yet officially named.
 - [[groq]] — AI-inference-chip startup that raised $350M at a $3.5B valuation (2026-08-18), roughly half its September 2025 mark, after NVIDIA licensed its LPU architecture and absorbed founder Jonathan Ross.
@@ -109,7 +109,7 @@ Each page is one of three types — entity, concept, or theme. See
 ## Themes
 
 - [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities at scale; OpenAI now says Astra is the first model to meet its Critical cybersecurity threshold and delayed the ship after the Hugging Face agent-swarm incident (2026-09-02).
-- [[ai-capex]] — The historically large compute buildout and the bubble debate; Lambda's $1B private-debt Nvidia purchase for a Microsoft lease, Marvell's record FY27Q2 ($2.739B, data center +46%), and Cognition's ~$900M ARR against a possible $800M server burn (2026-08-29).
+- [[ai-capex]] — The historically large compute buildout; Dell's FY27Q2 printed $16.4B of AI-server sales, $60.9B of orders and a $95B backlog (filed 2026-09-01), after Lambda's $1B private-debt Nvidia lease, Marvell's record quarter, and Cognition's ~$900M ARR against a possible $800M server burn.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator on the consumer-facing axis; ~30-bill package cleared the May 29 crossover.
 - [[china-ai-regulation]] — Beijing regulating consumer AI products directly, opening with the AI-companion-agent law that took effect 2026-07-15 and forced Doubao and Qwen offline.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; the AI Act's transparency obligation took effect 2026-08-02, and Anthropic opened a Claude watermark-detection API to regulators, media and researchers as an Article 50 compliance product (2026-09-02).

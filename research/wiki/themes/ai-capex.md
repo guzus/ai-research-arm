@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The cross-cutting narrative of a historically large, debt- and equity-financed GPU/TPU buildout — now including Lambda's $1B private-debt chip purchase for a Microsoft lease, Marvell's record FY27Q2 ($2.739B, data center +46%) and raised FY27/FY28 outlook, Cognition's ~$900M ARR against a possible $800M Nvidia-server burn, and a16z's Machine Age Fund arguing the bottleneck has moved south of the model to chips, power, cooling, memory and interconnect (2026-08-29).
+description: The historically large compute buildout; Dell's FY27Q2 (filed 2026-09-01) printed $16.4B of AI-server sales, $60.9B of orders and a $95B backlog against $47.0B revenue, after Lambda's $1B private-debt Nvidia lease, Marvell's record FY27Q2, and Cognition's ~$900M ARR against a possible $800M server burn.
 created_at: 2026-05-24
-timestamp: 2026-08-29T00:00:00Z
+timestamp: 2026-09-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
@@ -919,3 +920,25 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   (The Information via X; ARA daily digest 2026-08-29). The
   circulating **$60B** [[spacex]]–[[cursor]] figure still has **no
   named source** in today's coverage.
+
+## Dell's $95B AI-server backlog (filed 2026-09-01)
+
+- **[[dell]] FY27Q2 is the first OEM demand print after the 2026-08-29
+  Lambda/Marvell/Cognition cluster.** Issuer figures from the 2026-09-01
+  8-K: **$47.0B revenue (+58% YoY)**, **$16.4B of AI-optimized server
+  sales (+100%)**, **$60.9B of AI-server orders**, a **$95B backlog**,
+  and full-year FY27 guidance raised **$25B to $192.0B**. COO Jeff
+  Clarke: "we booked a record $60.9 billion in orders, recognized a
+  record $16.4 billion in revenue and exited the quarter with a record
+  $95 billion backlog." This is booked hardware demand in the
+  enterprise channel this theme has tracked since Dell's Q1 FY27
+  print — not a lab capex guide and not a neocloud take-or-pay
+  (SEC 8-K EX-99.1; ARA daily digest 2026-09-02). See [[dell]] and
+  [[nvidia]].
+- **McKinsey's State of AI 2026 survey, as relayed locally**, says
+  large enterprises scaling AI agents rose from **27% to 40%** year
+  over year; **32% skipped buying software** they could build with
+  agentic coding tools, and about **20% say token costs now constrain
+  usage**. Relayed via the local AI-news file, not independently
+  re-fetched (McKinsey via 2026-09-02-ai-news.md; ARA daily digest
+  2026-09-02).
