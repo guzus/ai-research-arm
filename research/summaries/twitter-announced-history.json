@@ -2,42 +2,6 @@
   {
     "backfilled": true,
     "category": "model",
-    "delivered_at": "2026-05-03 21:00 UTC",
-    "headline": "GOOGLE PRE-I/O RAMP: NEW GEMINI IOS DESIGN LEAKS, AI STUDIO BUILD ADDS FIGMA + GITHUB IMPORTS",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-03-twitter-21h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2050976509855138022"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-03 21:00 UTC",
-    "headline": "ALTMAN: \"AGENTS SDK 2.0 IS UNDERRATED\" \u2014 OPENAI CODEX/AGENT STACK MOMENTUM CONTINUES",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-03-twitter-21h-headlines.json",
-    "url": "https://x.com/sama/status/2050998576671859003"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-03 21:00 UTC",
-    "headline": "THE INFORMATION: XAI GPU FLEET RUNNING AT ~11% UTILIZATION \u2014 AI LABS STRUGGLE TO USE EXPENSIVE NVIDIA HARDWARE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-03-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2050938476032356566"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-03 21:00 UTC",
-    "headline": "ANDURIL RAISES AT $60B VALUATION \u2014 FOUNDERS FUND ADDS $624M, BRINGING TOTAL BET TO $2.6B",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-03-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2051021481837031713"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
     "delivered_at": "2026-05-04 01:00 UTC",
     "headline": "GPT-5.5 BURNS CODEX WEEKLY QUOTAS IN HOURS \u2014 OPENAI INFRA LEAD OPENS PUBLIC FEEDBACK LINE AS RATE-LIMIT REVOLT HITS X TRENDING",
     "source": "@thsottiaux",
@@ -25198,5 +25162,33 @@
     "headline": "MUSK: GROK 4.7 COMES OUT IN 10 DAYS",
     "source": "@elonmusk",
     "url": "https://x.com/elonmusk/status/2094983639780204846"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-02 16:30:02 UTC",
+    "headline": "GOOGLE SHIPS GEMINI 3.8 FLASH \u2014 THIRD FLASH IN 6 WEEKS, $0.75/$3.75 INTRO THROUGH DEC 31",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2095175498967949359"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-02 16:30:02 UTC",
+    "headline": "GEMINI 3.8 FLASH CYBER GATED TO FAIRWIND \u2014 DEFENDER-ONLY SKU, NOT ON THE PUBLIC API",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2095175502298243094"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-02 16:30:02 UTC",
+    "headline": "DOJ TELLS SDNY: TRAINING LLMS ON COPYRIGHTED TEXTS DOES NOT VIOLATE COPYRIGHT LAW",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2095185916457566489"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-02 16:30:02 UTC",
+    "headline": "GOOGLE TABLE: 3.8 FLASH 73.7% DEEPSWE VS OPUS 5 74.0% \u2014 19.1% VS 51.8% ON TERMINAL-BENCH 4.0",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2095175881690173885"
   }
 ]
