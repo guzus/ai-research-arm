@@ -1,13 +1,13 @@
 AI News - 2026-09-02
 
 TOP STORIES:
-• Anthropic ships Claude Fable 5.1 / Mythos 5.1: ~25% cheaper typical, up to 45% for agentic work; Terminal-Bench-Science 52.6%
-• OpenAI: Astra hits "Critical" cyber threshold; ChatGPT Health adds Epic EHR (325M patients, read-only)
-• AfterQuery reportedly YC's fastest unicorn at $3.2B, 5 months after a $300M Series A
+• Google ships Gemini 3.8 Flash + 3.8 Flash Cyber; DeepSWE 73.7% vs Opus 5 74.0%; intro $0.75/$3.75
+• Wonderful $550M Series C at $5B; HiddenLayer $100M Series B for AI-model/agent security
+• DOJ backs OpenAI fair-use defense in NYT suit; NYC bans classroom AI for ~600k K–8 students
+• Dell FY27Q2: $47B revenue, $16.4B AI servers, $95B backlog; FY guidance lifted to $192B
 
 KEY NUMBERS:
-• Fable 5.1 cache reads $0.25/MTok (75% cut); API still $10/$50 in/out
-• AfterQuery $3.2B val; AIR Security $50M; Empirik $21M seed
-• ChatGPT Ads: $1B annualized run rate in <200 days
+• Gemini 3.8: $0.75/$3.75 intro; AA Index 59; ~40% higher cost/task vs 3.7 Flash
+• Wonderful $5B; HiddenLayer $100M; Dell $16.4B AI-server rev / $60.9B orders
 
 Full report on GitHub.
