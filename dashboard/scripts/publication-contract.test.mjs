@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
@@ -89,7 +89,7 @@ test('static dated digest metadata distinguishes diagnostic pages from editorial
   });
 });
 
-test('historical audio cleanup derives only the seven exact fallback-date keys', () => {
+test('historical audio cleanup matches every current fallback digest exactly', () => {
   const cleanup = spawnSync('bash', [join(repoRoot, 'scripts/delete_fallback_audio.sh')], {
     cwd: repoRoot,
     env: { ...process.env, FALLBACK_AUDIO_DRY_RUN: '1' },
@@ -97,15 +97,15 @@ test('historical audio cleanup derives only the seven exact fallback-date keys',
   });
   assert.equal(cleanup.status, 0, cleanup.stderr);
   const keys = [...cleanup.stdout.matchAll(/Fallback audio candidate: (.+)/g)].map(match => match[1]);
-  assert.deepEqual(keys, [
-    'audio/2026-07-07-digest.mp3',
-    'audio/2026-08-08-digest.mp3',
-    'audio/2026-08-09-digest.mp3',
-    'audio/2026-08-10-digest.mp3',
-    'audio/2026-08-17-digest.mp3',
-    'audio/2026-08-28-digest.mp3',
-    'audio/2026-08-30-digest.mp3',
-  ]);
+  const digestDir = join(repoRoot, 'research/digest');
+  const expectedKeys = readdirSync(digestDir)
+    .filter(name => /^\d{4}-\d{2}-\d{2}-digest\.md$/.test(name))
+    .filter(name => isDeterministicFallbackSource(readFileSync(join(digestDir, name), 'utf8')))
+    .map(name => `audio/${name.replace(/\.md$/, '.mp3')}`)
+    .sort();
+
+  assert.ok(expectedKeys.length > 0, 'fixture corpus contains fallback digests');
+  assert.deepEqual(keys, expectedKeys);
 });
 
 test('workflows suppress fallback-derived front pages, notifications, and audio', () => {
