@@ -16,15 +16,17 @@ check_fireworks_backend); zai → same-shape probe against the Z.ai
 Anthropic-compatible endpoint; claude → OAuth-token preflight against
 api.anthropic.com that is UNAVAILABLE on an explicit credential rejection
 (401/403) or a run-scoped rate limit (429), and available on anything else;
-opencode-go is available when its isolated-adapter credential is configured.
+opencode-go and Cursor are available when their isolated-adapter credentials
+are configured; their containers own the runtime provider call.
 
 Why the claude probe is auth-only (2026-07-24 incident): this probe used
 to hardcode "always available", so when CLAUDE_CODE_OAUTH_TOKEN expired
 every agent lane in the fleet died instantly (is_error, 1 turn, $0) with
 no route out — the chain could not move past a backend it always believed
 was up. A 429 proves the credential is alive but also proves Claude cannot
-serve this run, so the compatible local-source digest lane first continues to
-isolated OpenCode GLM 5.3 Flash. Other lanes retain the global Z.ai chain. The probe remains
+serve this run, so compatibility-tested local-content lanes can continue
+through an explicit isolated-adapter override. Other lanes retain the global
+chain. The probe remains
 deliberately narrow for 400, 5xx, and network faults: those inconclusive
 responses keep the existing fail-open behavior rather than broadening the
 reroute policy.
@@ -171,11 +173,25 @@ def probe_opencode(model: str) -> tuple[bool, str]:
     return True, "isolated OpenCode credential configured"
 
 
+def probe_cursor(model: str) -> tuple[bool, str]:
+    """Check whether the isolated Cursor adapter credential is configured.
+
+    The scheduled canary is the authoritative live provider probe. Selection
+    keeps the key scoped to run-cursor-container and lets that action surface
+    provider/model failures without exposing the key to another adapter.
+    """
+    api_key = os.environ.get("CURSOR_API_KEY", "").strip()
+    if not api_key:
+        return False, "CURSOR_API_KEY is not configured"
+    return True, "isolated Cursor credential configured"
+
+
 PROBES = {
     "fireworks": probe_fireworks,
     "zai": probe_zai,
     "claude": probe_claude,
     "opencode-go": probe_opencode,
+    "cursor": probe_cursor,
 }
 
 
@@ -218,6 +234,7 @@ def main_with_args(argv: list[str] | None = None) -> int:
         return config_error(f"cannot read {args.file}: {exc}")
 
     backends = data.get("backends") or {}
+    adapters = data.get("adapters") or {}
     fallback = data.get("fallback") or {}
     lanes = data.get("lanes") or {}
     if not backends:
@@ -248,6 +265,13 @@ def main_with_args(argv: list[str] | None = None) -> int:
         if requested is None:
             return config_error(f"lane '{args.lane}' backend '{lane.get('backend')}' is not "
                                 "in the backends table")
+        requested_adapter = str(backends[requested].get("adapter", "agent-run"))
+        if requested_adapter != "agent-run":
+            return config_error(
+                f"lane '{args.lane}' primary backend '{requested}' uses adapter "
+                f"'{requested_adapter}'; agent-run permits isolated adapters only "
+                "as explicit lane fallback_chain candidates"
+            )
         if lane.get("strict"):
             strict = True
         raw_lane_chain = lane.get("fallback_chain", [])
@@ -274,6 +298,37 @@ def main_with_args(argv: list[str] | None = None) -> int:
             return config_error(f"fallback chain entry '{selector}' is not in the backends table")
         if key not in candidates:
             candidates.append(key)
+
+    isolated_candidates = {
+        normalize(selector, backends) for selector in lane_fallback_chain
+    }
+    for key in candidates:
+        spec = backends[key]
+        adapter_name = str(spec.get("adapter", "agent-run"))
+        if adapter_name == "agent-run":
+            continue
+        if key not in isolated_candidates or adapter_name not in {"opencode", "cursor"}:
+            return config_error(
+                f"backend '{key}' uses unsupported agent-run adapter '{adapter_name}'"
+            )
+        adapter_spec = adapters.get(adapter_name)
+        if not isinstance(adapter_spec, dict):
+            return config_error(
+                f"backend '{key}' references unknown adapter '{adapter_name}'"
+            )
+        for capability in ("isolated_workspace", "editorial_contract"):
+            if adapter_spec.get(capability) is not True:
+                return config_error(
+                    f"backend '{key}' adapter '{adapter_name}' lacks required "
+                    f"capability '{capability}'"
+                )
+        credential_map = adapter_spec.get("provider_credentials")
+        provider = str(spec.get("provider", ""))
+        if not isinstance(credential_map, dict) or not credential_map.get(provider):
+            return config_error(
+                f"backend '{key}' adapter '{adapter_name}' has no credential "
+                f"binding for provider '{provider}'"
+            )
 
     chosen = None
     for key in candidates:
@@ -310,6 +365,7 @@ def main_with_args(argv: list[str] | None = None) -> int:
         "requested-backend": requested,
         "backend": chosen,
         "provider": str(spec.get("provider", "")),
+        "adapter": str(spec.get("adapter", "agent-run")),
         "model-id": str(spec.get("model", "")),
         "display-name": str(spec.get("display_name", chosen)),
         "native-model": native_model,

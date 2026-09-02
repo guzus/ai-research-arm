@@ -166,6 +166,7 @@ REQUIRED_AGENT_RUN_SECRETS = {
 }
 OPTIONAL_AGENT_RUN_SECRETS = {
     "opencode-api-key": "OPENCODE_API_KEY",
+    "cursor-api-key": "CURSOR_API_KEY",
 }
 AGENT_RUN_SECRET_INPUTS = {
     **REQUIRED_AGENT_RUN_SECRETS,
@@ -203,6 +204,7 @@ class AgentRunStep:
     secrets: dict[str, str]
     fireworks_fallback: str
     native_model_override: str
+    cursor_mode: str
     is_retry: bool
 
 
@@ -498,6 +500,7 @@ def observe_workflow(wf_path: Path) -> Observation:
                     secrets=secrets,
                     fireworks_fallback=str(with_block.get("fireworks-fallback", "")).strip(),
                     native_model_override=str(with_block.get("native-model", "")).strip(),
+                    cursor_mode=str(with_block.get("cursor-mode", "editorial")).strip(),
                     is_retry=is_retry,
                 ))
 
@@ -746,6 +749,7 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
             if lane.get("strict") and lane_chain:
                 errors.append(f"lane '{step.lane}': strict lanes cannot declare fallback_chain")
             seen_lane_fallbacks: set[str] = set()
+            has_cursor_fallback = False
             for candidate in lane_chain:
                 candidate_profile = profiles.get(str(candidate))
                 if candidate_profile is None:
@@ -756,7 +760,7 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
                     errors.append(f"lane '{step.lane}': fallback_chain entry '{candidate}' "
                                   "duplicates an earlier candidate")
                 seen_lane_fallbacks.add(candidate_profile.normalized)
-                if candidate_profile.adapter not in {"agent-run", "opencode"}:
+                if candidate_profile.adapter not in {"agent-run", "opencode", "cursor"}:
                     errors.append(f"lane '{step.lane}': fallback backend '{candidate}' uses "
                                   f"unsupported adapter '{candidate_profile.adapter}'")
                 if candidate_profile.adapter == "opencode":
@@ -769,6 +773,29 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
                     if step.secrets.get("opencode-api-key") != expected:
                         errors.append(f"{label}: lane fallback requires opencode-api-key: "
                                       f"secrets.{expected}")
+                if candidate_profile.adapter == "cursor":
+                    has_cursor_fallback = True
+                    adapter = adapters.get("cursor", {})
+                    if adapter.get("isolated_workspace") is not True \
+                      or adapter.get("editorial_contract") is not True:
+                        errors.append(f"lane '{step.lane}': Cursor fallback lacks the "
+                                      "isolated editorial capability contract")
+                    expected = OPTIONAL_AGENT_RUN_SECRETS["cursor-api-key"]
+                    if step.secrets.get("cursor-api-key") != expected:
+                        errors.append(f"{label}: lane fallback requires cursor-api-key: "
+                                      f"secrets.{expected}")
+            fallback_mode = lane.get("fallback_mode")
+            if has_cursor_fallback:
+                if fallback_mode not in {"editorial", "twitter"}:
+                    errors.append(f"lane '{step.lane}': Cursor fallback requires "
+                                  "fallback_mode editorial or twitter")
+                elif step.cursor_mode != fallback_mode:
+                    errors.append(f"{label}: lane '{step.lane}' declares fallback_mode "
+                                  f"'{fallback_mode}' but the step passes cursor-mode "
+                                  f"'{step.cursor_mode}'")
+            elif fallback_mode is not None:
+                errors.append(f"lane '{step.lane}': fallback_mode is only valid with a "
+                              "Cursor fallback_chain entry")
             for input_name, expected in REQUIRED_AGENT_RUN_SECRETS.items():
                 if step.secrets.get(input_name) != expected:
                     errors.append(f"{label}: must pass {input_name}: secrets.{expected} — "

@@ -41,7 +41,7 @@
       "model": "",
       "display_name": "Claude",
       "aliases": [],
-      "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it). The preflight marks 401/403 auth rejection and HTTP 429 rate limiting unavailable for the current run. Ordinary non-strict lanes continue to the global Z.ai secondary; digest-synthesis-fallback uses its explicit isolated OpenCode lane override."
+      "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it). The preflight marks 401/403 auth rejection and HTTP 429 rate limiting unavailable for the current run. Ordinary non-strict lanes continue to the global Z.ai secondary; compatibility-tested local content lanes can replace that chain with an explicit isolated Cursor fallback."
     },
     "claude-opus-5": {
       "adapter": "dispatch-default",
@@ -96,7 +96,7 @@
         "opencode-glm",
         "glm-5.3-flash-opencode"
       ],
-      "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to the official opencode-go/glm-5.3-flash model id. Primary strict profile for the shared research-editorial route and the explicit isolated fallback for digest-synthesis-fallback; it is never a member of the global host-checkout fallback chain."
+      "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to the official opencode-go/glm-5.3-flash model id. Retained as a registered compatible editorial profile, but not selected by production routes while the OpenCode Go monthly plan is exhausted; it is never a member of the global host-checkout fallback chain."
     },
     "zai-glm-5p2": {
       "adapter": "agent-run",
@@ -124,15 +124,15 @@
         "cursor-composer-2p5",
         "composer-2.5"
       ],
-      "notes": "Cursor Agent CLI inside run-cursor-container, authenticated by CURSOR_API_KEY and pinned to cursor-grok-4.6-high-fast (the CLI id for Grok 4.6 Fast; grok-4.6-fast is not a valid --model). Replaces composer-2.5. Runtime-selectable by agent-dispatch; not selectable by agent-run. Production editorial defaults stay on OpenCode until this profile is chosen in a route. cursor-composer-2p5 remains a compatibility alias."
+      "notes": "Cursor Agent CLI inside run-cursor-container, authenticated by CURSOR_API_KEY and pinned to cursor-grok-4.6-high-fast (the CLI id for Grok 4.6 Fast; grok-4.6-fast is not a valid --model). Replaces composer-2.5. Runtime-selectable by agent-dispatch and by agent-run only through a lane-local compatibility override. It temporarily serves both production editorial routes while the OpenCode Go monthly plan is exhausted. cursor-composer-2p5 remains a compatibility alias."
     }
   },
   "routes": {
     "research-editorial": {
       "contract": "research-editorial",
-      "backend": "opencode-glm-5p3-flash",
+      "backend": "cursor-grok-4p6-fast",
       "fallback": "none",
-      "notes": "Primary isolated editorial route for RSS, Bluesky, and community. The arXiv and wiki lanes deliberately use research-editorial-secondary so one provider credential or plan cap cannot stale all five scheduled editorial lanes. Incompatible host-checkout adapters are rejected before execution; this route is fail-closed with no cross-adapter fallback."
+      "notes": "Primary isolated editorial route for RSS, Bluesky, and community. It temporarily shares Cursor with research-editorial-secondary while the OpenCode Go monthly plan is exhausted, increasing the Cursor failure domain across all five scheduled editorial lanes. Revert this route to opencode-glm-5p3-flash only after the OpenCode canary proves the plan is usable again. Incompatible host-checkout adapters are rejected before execution; this route is fail-closed with no cross-adapter fallback."
     },
     "research-editorial-secondary": {
       "contract": "research-editorial",
@@ -188,9 +188,10 @@
       "harness": "agent-run",
       "backend": "claude",
       "fallback_chain": [
-        "opencode-glm-5p3-flash"
+        "cursor-grok-4p6-fast"
       ],
-      "notes": "Local-source digest synthesis when MCP keys are absent. Its committed research/digest/ + research/summaries/ contract and local-only prompt are compatible with isolated OpenCode editorial mode, so Claude unavailability uses OpenCode GLM 5.3 Flash instead of the global Z.ai chain."
+      "fallback_mode": "editorial",
+      "notes": "Local-source digest synthesis when MCP keys are absent. Its exact local write contract is compatible with isolated Cursor editorial mode, so this lane-local chain replaces the unavailable global Claude -> Z.ai chain during the provider incident."
     },
     "digest-audio-script": {
       "workflow": "daily-digest.yml",
@@ -220,9 +221,10 @@
       "harness": "agent-run",
       "backend": "claude",
       "fallback_chain": [
-        "opencode-glm-5p3-flash"
+        "cursor-grok-4p6-fast"
       ],
-      "notes": "Primary 3h Twitter/X processor (tier slot named 'claude' for historical reasons). Its local snapshot prompt and research/twitter/ + research/summaries/ write contract are compatible with isolated OpenCode editorial mode, so Claude unavailability uses OpenCode GLM 5.3 Flash instead of publishing a deterministic recovery heartbeat."
+      "fallback_mode": "twitter",
+      "notes": "Primary 3h Twitter/X processor (tier slot named 'claude' for historical reasons). Its staged snapshot and exact output contract are compatible with isolated Cursor twitter mode; if native Claude and Cursor are unavailable, the workflow publishes its deterministic recovery heartbeat."
     },
     "twitter-primary-repair": {
       "workflow": "hourly-twitter.yml",
@@ -230,9 +232,10 @@
       "harness": "agent-run",
       "backend": "claude",
       "fallback_chain": [
-        "opencode-glm-5p3-flash"
+        "cursor-grok-4p6-fast"
       ],
-      "notes": "Repair writer for the primary Twitter/X tier when the first pass returns without required files. It shares the primary lane's isolated OpenCode GLM 5.3 Flash fallback and exact output contract."
+      "fallback_mode": "twitter",
+      "notes": "Repair writer for the primary Twitter/X tier when the first pass returns without required files. It shares the primary lane's isolated Cursor twitter-mode fallback and exact output contract."
     },
     "twitter-judge": {
       "workflow": "hourly-twitter.yml",
@@ -339,9 +342,20 @@
     },
     "ai-news-research": {
       "workflow": "ai-news-research.yml",
+      "harness": "agent-run",
+      "backend": "claude",
+      "fallback_chain": [
+        "cursor-grok-4p6-fast"
+      ],
+      "fallback_mode": "editorial",
+      "notes": "Twice-daily broad news sweep without external MCP search keys. Native Claude remains Sonnet 5 via the workflow override; the prompt uses a portable curl/WebFetch discovery contract so the lane-local Cursor editorial fallback can preserve the same exact output paths."
+    },
+    "ai-news-research-mcp": {
+      "workflow": "ai-news-research.yml",
       "harness": "claude-code-action",
       "model": "claude-sonnet-5",
-      "notes": "Twice-daily broad news sweep (MCP and no-MCP variants share the lane). MIRROR: CI enforces equality."
+      "strict": true,
+      "notes": "Twice-daily broad news sweep with configured Exa/Perplexity MCP search. It remains pinned to native Claude Sonnet 5 because the isolated Cursor adapter intentionally denies MCP tools; the lane fails honestly rather than silently changing its search contract. MIRROR: CI enforces equality."
     },
     "research-issue": {
       "workflow": "research-issue.yml",

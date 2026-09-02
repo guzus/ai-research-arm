@@ -1,5 +1,5 @@
 name: ARA agent run
-description: Run an agent through native Claude, Fireworks, Z.ai, or an explicitly compatible isolated OpenCode lane fallback and optionally require committed output.
+description: Run an agent through native Claude, Fireworks, Z.ai, or an explicitly compatible isolated adapter fallback and optionally require committed output.
 
 inputs:
   lane:
@@ -27,6 +27,14 @@ inputs:
     default: ""
   opencode-mode:
     description: Isolated OpenCode contract/input mode. Use twitter only for callers that stage .twitter-input; all other agent-run lanes remain editorial.
+    required: false
+    default: editorial
+  cursor-api-key:
+    description: Cursor API key. Passed only to a lane-explicit isolated Cursor fallback.
+    required: false
+    default: ""
+  cursor-mode:
+    description: Isolated Cursor contract/input mode. Use twitter only for callers that stage .twitter-input; all other agent-run lanes remain editorial.
     required: false
     default: editorial
   fireworks-fallback:
@@ -83,7 +91,7 @@ outputs:
     description: Resolved native Claude model (what the `--model opus` alias serves on the native path — the native-model input, else the SSOT's global fallback.native_model).
     value: ${{ steps.select.outputs.native-model }}
   execution-file:
-    description: Path to the Claude Code execution transcript JSON reported by a Claude-compatible child (intentionally empty for isolated OpenCode). Callers that need it after a later agent-run call in the same job must copy it immediately.
+    description: Path to the Claude Code execution transcript JSON reported by a Claude-compatible child (intentionally empty for isolated adapters). Callers that need it after a later agent-run call in the same job must copy it immediately.
     value: ${{ steps.run-claude.outputs.execution_file || steps.run-claude-bots.outputs.execution_file || steps.run-fireworks.outputs.execution_file || steps.run-fireworks-bots.outputs.execution_file || steps.run-zai.outputs.execution_file || steps.run-zai-bots.outputs.execution_file }}
   changed:
     description: "true when expected-paths were provided and changed"
@@ -123,6 +131,7 @@ runs:
         FIREWORKS_API_KEY: ${{ inputs.fireworks-api-key }}
         ZAI_API_KEY: ${{ inputs.zai-api-key }}
         OPENCODE_API_KEY: ${{ inputs.opencode-api-key }}
+        CURSOR_API_KEY: ${{ inputs.cursor-api-key }}
         # The Claude OAuth preflight marks 401/403 auth rejection and a 429
         # run-scoped rate limit unavailable (non-strict → walk the chain).
         # Without the token the native path is also unavailable.
@@ -148,7 +157,7 @@ runs:
 
     - name: Resolve isolated editorial path contract
       id: isolated-contract
-      if: steps.select.outputs.provider == 'opencode-go'
+      if: steps.select.outputs.adapter == 'opencode' || steps.select.outputs.adapter == 'cursor'
       shell: bash
       env:
         EXPECTED_PATHS: ${{ inputs.expected-paths }}
@@ -160,7 +169,7 @@ runs:
           paths="$EXPECTED_PATHS"
         fi
         if [ -z "$paths" ]; then
-          echo "::error::An isolated OpenCode fallback requires expected-paths or allowed-paths."
+          echo "::error::An isolated adapter fallback requires expected-paths or allowed-paths."
           exit 1
         fi
         {
@@ -170,7 +179,7 @@ runs:
         } >> "$GITHUB_OUTPUT"
 
     - name: Setup Claude sandbox
-      if: steps.select.outputs.provider != 'opencode-go'
+      if: steps.select.outputs.adapter == 'agent-run'
       uses: ./.github/actions/setup-claude-sandbox
 
     # Cross-adapter fallback is opt-in per lane in the routing SSOT. The
@@ -178,7 +187,7 @@ runs:
     # and imports only one validated commit back into the host checkout.
     - name: Run agent with isolated OpenCode
       id: run-opencode
-      if: steps.select.outputs.provider == 'opencode-go'
+      if: steps.select.outputs.adapter == 'opencode'
       uses: ./.github/actions/run-opencode-container
       with:
         mode: ${{ inputs.opencode-mode }}
@@ -186,6 +195,18 @@ runs:
         allowed-paths: ${{ steps.isolated-contract.outputs.paths }}
         model: ${{ steps.select.outputs.provider }}/${{ steps.select.outputs.model-id }}
         opencode-api-key: ${{ inputs.opencode-api-key }}
+        prompt-text: ${{ inputs.prompt }}
+
+    - name: Run agent with isolated Cursor
+      id: run-cursor
+      if: steps.select.outputs.adapter == 'cursor'
+      uses: ./.github/actions/run-cursor-container
+      with:
+        mode: ${{ inputs.cursor-mode }}
+        lane: ${{ inputs.lane }}
+        allowed-paths: ${{ steps.isolated-contract.outputs.paths }}
+        model: ${{ steps.select.outputs.provider }}/${{ steps.select.outputs.model-id }}
+        cursor-api-key: ${{ inputs.cursor-api-key }}
         prompt-text: ${{ inputs.prompt }}
 
     # Native-Claude runs (requested backend=claude or Fireworks fallback)

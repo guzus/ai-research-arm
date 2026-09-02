@@ -105,6 +105,7 @@ jobs:
           [ "${{ steps.check-keys.outputs.has_perplexity }}" = "true" ] && echo "perplexity"
 
       - name: Setup Claude sandbox
+        if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
         uses: ./.github/actions/setup-claude-sandbox
 
       - name: Run AI News Research with Claude (with MCP)
@@ -184,13 +185,27 @@ jobs:
 
             CRITICAL: Write REAL news with actual sources. No placeholder content. NO DUPLICATES from previous reports.
 
-      - name: Run AI News Research with Claude (without MCP)
+      - name: Run AI News Research with SSOT-routed agent (without MCP)
         if: steps.check-keys.outputs.has_exa != 'true' && steps.check-keys.outputs.has_perplexity != 'true'
-        uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
+        uses: ./.github/actions/agent-run
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: |
-            --model claude-sonnet-5 --allowedTools "Read,Write,Edit,Bash(git:*),WebSearch"
+          lane: ai-news-research
+          native-model: claude-sonnet-5
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          cursor-mode: editorial
+          claude-args: |
+            --model opus --allowedTools "Read,Write,Edit,Bash(git:*),Bash(curl:*),Bash(uv:*),Bash(python3:*),WebFetch"
+          expected-paths: |
+            research/${{ steps.date.outputs.date }}-ai-news.md
+            research/summaries/${{ steps.date.outputs.date }}-summary.txt
+          allowed-paths: |
+            research/${{ steps.date.outputs.date }}-ai-news.md
+            research/summaries/${{ steps.date.outputs.date }}-summary.txt
+          label: AI news research (portable discovery)
           prompt: |
             You are an AI news research agent. Find BREAKING NEWS and RECENT ANNOUNCEMENTS only.
 
@@ -206,16 +221,17 @@ jobs:
             Make a mental note of ALL stories already covered. DO NOT include any story that was already reported.
 
             STEP 2 - SEARCH FOR NEW NEWS:
-            Do multiple specific searches to find REAL NEWS from TODAY (${{ steps.date.outputs.date }}) or YESTERDAY (${{ steps.date.outputs.yesterday }}):
-            - "OpenAI announcement ${{ steps.date.outputs.date }}"
-            - "Anthropic Claude news ${{ steps.date.outputs.date }}"
-            - "Google Gemini update ${{ steps.date.outputs.date }}"
-            - "AI startup funding ${{ steps.date.outputs.date }}"
-            - "AI model release today"
-            - "AI news today ${{ steps.date.outputs.date }}"
-
-            Also try yesterday's date if today has few results:
-            - "AI breaking news ${{ steps.date.outputs.yesterday }}"
+            This no-MCP lane must use a provider-portable discovery contract.
+            Do NOT call WebSearch or MCP tools. Start with the repo's stdlib
+            search wrappers, running several focused commands such as:
+            - uv run python scripts/research_search.py gdelt "OpenAI OR Anthropic OR Gemini" --limit 10
+            - uv run python scripts/research_search.py arxiv "large language model OR AI agent" --limit 8
+            - uv run python scripts/research_search.py github "AI agent created:>${{ steps.date.outputs.yesterday }}" --limit 8
+            Use curl or WebFetch to open promising result URLs and verify each
+            claim against the publisher page or an official company source.
+            You may use `uv run python scripts/source_cache.py get <url>` for a
+            source that needs a stable local copy. If a source cannot be
+            fetched or dated, omit it.
 
             STRICT RECENCY FILTER - Today is ${{ steps.date.outputs.date }}. ONLY include news that:
             - Was published on ${{ steps.date.outputs.date }} or ${{ steps.date.outputs.yesterday }} (LAST 24-48 HOURS ONLY)

@@ -72,15 +72,15 @@ class RoutingInvariants(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "isolated_workspace"):
                 resolve_route(config, lane)
 
-    def test_research_editorial_prioritizes_opencode_glm_5p3_flash(self):
+    def test_research_editorial_temporarily_uses_cursor(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
         route = config["routes"]["research-editorial"]
-        self.assertEqual("opencode-glm-5p3-flash", route["backend"])
+        self.assertEqual("cursor-grok-4p6-fast", route["backend"])
         self.assertIn("opencode-deepseek-v4-flash", config["backends"])
         for lane in ("rss", "bluesky", "community"):
             selected = resolve_route(config, lane)
-            self.assertEqual("opencode", selected.adapter)
-            self.assertEqual("opencode-go/glm-5.3-flash", selected.model_ref)
+            self.assertEqual("cursor", selected.adapter)
+            self.assertEqual("cursor/cursor-grok-4.6-high-fast", selected.model_ref)
         for lane in ("arxiv", "wiki-ingest"):
             selected = resolve_route(config, lane)
             self.assertEqual("cursor", selected.adapter)
@@ -190,6 +190,8 @@ class RoutingInvariants(unittest.TestCase):
             resolve_route(config, "rss")
 
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        config["routes"]["research-editorial"]["backend"] = \
+            "opencode-glm-5p3-flash"
         config["adapters"]["opencode"]["provider_credentials"]["opencode-go"] = \
             "claude-code-oauth-token"
         with self.assertRaisesRegex(ValueError, "opencode-api-key"):
@@ -393,9 +395,10 @@ class RoutingInvariants(unittest.TestCase):
         }
         self.assertEqual(
             {
-                "digest-synthesis-fallback": ["opencode-glm-5p3-flash"],
-                "twitter-primary": ["opencode-glm-5p3-flash"],
-                "twitter-primary-repair": ["opencode-glm-5p3-flash"],
+                "ai-news-research": ["cursor-grok-4p6-fast"],
+                "digest-synthesis-fallback": ["cursor-grok-4p6-fast"],
+                "twitter-primary": ["cursor-grok-4p6-fast"],
+                "twitter-primary-repair": ["cursor-grok-4p6-fast"],
             },
             overrides,
         )
@@ -405,6 +408,7 @@ class RoutingInvariants(unittest.TestCase):
 
         isolated_lanes = {
             "digest-synthesis-fallback",
+            "ai-news-research",
             "twitter-primary",
             "twitter-primary-repair",
         }
@@ -414,41 +418,95 @@ class RoutingInvariants(unittest.TestCase):
         ]
         self.assertEqual(isolated_lanes, {step.lane for step in local_steps})
         self.assertTrue(all(
-            step.secrets["opencode-api-key"] == "OPENCODE_API_KEY"
+            step.secrets["cursor-api-key"] == "CURSOR_API_KEY"
             for step in local_steps
         ))
         other_steps = [
             step for obs in self.obs.values() for step in obs.agent_run
             if step.lane not in isolated_lanes
         ]
-        self.assertTrue(all(not step.secrets.get("opencode-api-key")
+        self.assertTrue(all(not step.secrets.get("cursor-api-key")
                             for step in other_steps))
+        modes = {step.lane: step.cursor_mode for step in local_steps}
+        self.assertEqual(
+            {
+                "ai-news-research": "editorial",
+                "digest-synthesis-fallback": "editorial",
+                "twitter-primary": "twitter",
+                "twitter-primary-repair": "twitter",
+            },
+            modes,
+        )
 
-    def test_agent_run_scopes_isolated_opencode_child_contract(self):
+    def test_agent_run_scopes_isolated_adapter_child_contracts(self):
         action = yaml.safe_load(
             (REPO_ROOT / ".github/actions/agent-run/action.yml").read_text()
         )
         steps = action["runs"]["steps"]
-        child = next(
+        opencode = next(
             step for step in steps
             if step.get("uses") == "./.github/actions/run-opencode-container"
         )
-        self.assertEqual("steps.select.outputs.provider == 'opencode-go'",
-                         child.get("if"))
+        self.assertEqual("steps.select.outputs.adapter == 'opencode'",
+                         opencode.get("if"))
         self.assertEqual("editorial", action["inputs"]["opencode-mode"]["default"])
-        self.assertEqual("${{ inputs.opencode-mode }}", child["with"]["mode"])
-        self.assertEqual("${{ inputs.prompt }}", child["with"]["prompt-text"])
-        self.assertEqual("${{ steps.isolated-contract.outputs.paths }}",
-                         child["with"]["allowed-paths"])
-        self.assertEqual("${{ inputs.opencode-api-key }}",
-                         child["with"]["opencode-api-key"])
-        rendered = json.dumps(child, sort_keys=True)
-        for secret_input in ("claude-code-oauth-token", "fireworks-api-key",
-                             "zai-api-key"):
-            self.assertNotIn(secret_input, rendered)
+        self.assertEqual("${{ inputs.opencode-mode }}", opencode["with"]["mode"])
+
+        cursor = next(
+            step for step in steps
+            if step.get("uses") == "./.github/actions/run-cursor-container"
+        )
+        self.assertEqual("steps.select.outputs.adapter == 'cursor'", cursor.get("if"))
+        self.assertEqual("editorial", action["inputs"]["cursor-mode"]["default"])
+        self.assertEqual("${{ inputs.cursor-mode }}", cursor["with"]["mode"])
+        self.assertEqual("${{ inputs.cursor-api-key }}",
+                         cursor["with"]["cursor-api-key"])
+
+        for child in (opencode, cursor):
+            self.assertEqual("${{ inputs.prompt }}", child["with"]["prompt-text"])
+            self.assertEqual("${{ steps.isolated-contract.outputs.paths }}",
+                             child["with"]["allowed-paths"])
+            rendered = json.dumps(child, sort_keys=True)
+            for secret_input in ("claude-code-oauth-token", "fireworks-api-key",
+                                 "zai-api-key"):
+                self.assertNotIn(secret_input, rendered)
+        self.assertNotIn("cursor-api-key", json.dumps(opencode, sort_keys=True))
+        self.assertNotIn("opencode-api-key", json.dumps(cursor, sort_keys=True))
 
         execution_output = action["outputs"]["execution-file"]["value"]
         self.assertNotIn("run-opencode", execution_output)
+        self.assertNotIn("run-cursor", execution_output)
+
+    def test_ai_news_mcp_cannot_select_cursor(self):
+        mcp = self.lanes["ai-news-research-mcp"]
+        self.assertEqual("claude-code-action", mcp["harness"])
+        self.assertTrue(mcp["strict"])
+        self.assertNotIn("fallback_chain", mcp)
+        workflow = yaml.safe_load(
+            (REPO_ROOT / ".github/workflows/ai-news-research.yml").read_text()
+        )
+        steps = workflow["jobs"]["ai-news-research"]["steps"]
+        mcp_step = next(step for step in steps if step.get("name") ==
+                        "Run AI News Research with Claude (with MCP)")
+        self.assertIn("anthropics/claude-code-action", mcp_step["uses"])
+        self.assertNotIn("cursor-api-key", mcp_step["with"])
+        cursor_policy = json.loads(
+            (REPO_ROOT / ".github/cursor/cli-config.json").read_text()
+        )
+        self.assertIn("Mcp(*)", cursor_policy["permissions"]["deny"])
+
+        portable = next(step for step in steps if step.get("name") ==
+                        "Run AI News Research with SSOT-routed agent (without MCP)")
+        prompt = portable["with"]["prompt"]
+        self.assertIn("scripts/research_search.py gdelt", prompt)
+        self.assertIn("scripts/research_search.py arxiv", prompt)
+        self.assertIn("scripts/research_search.py github", prompt)
+        self.assertIn("scripts/source_cache.py get", prompt)
+        self.assertIn("Do NOT call WebSearch or MCP tools", prompt)
+        claude_args = portable["with"]["claude-args"]
+        self.assertNotIn("WebSearch", claude_args)
+        self.assertNotIn("mcp__", claude_args)
+        self.assertIn("Bash(uv:*)", claude_args)
 
     def test_local_digest_exact_paths_and_post_recovery_scope_gate(self):
         workflow = yaml.safe_load(
@@ -1005,10 +1063,11 @@ class RoutingInvariants(unittest.TestCase):
             self.assertEqual(
                 "keep\n", (unrelated / "sentinel").read_text(encoding="utf-8"))
 
-    def test_opencode_canary_covers_direct_deepseek_and_editorial_glm(self):
+    def test_opencode_canary_covers_direct_deepseek_and_registered_editorial_glm(self):
         # The raw + first harness probes cover the direct DeepSeek comparison
-        # paths. The second harness probe resolves the production editorial
-        # model dynamically so a route edit cannot leave its canary stale.
+        # paths. The second harness probe resolves the registered editorial
+        # profile independently, so it remains a useful reversion signal while
+        # the production editorial route temporarily points to Cursor.
         model_id = self.assert_single_opencode_model()
         canary = (REPO_ROOT / ".github" / "workflows" /
                   "opencode-deepseek-canary.yml").read_text(encoding="utf-8")
@@ -1018,15 +1077,13 @@ class RoutingInvariants(unittest.TestCase):
         # or the cheap preflight certifies an entitlement the run never uses.
         self.assertIn(f'"model": "{model_id}"', canary)
         self.assertIn(f'{{"model":"{model_id}"', gen)
-        self.assertIn(
-            'python3 scripts/resolve_agent_route.py rss --github-output "$GITHUB_OUTPUT"',
-            canary,
-        )
+        self.assertIn('"opencode-glm-5p3-flash"', canary)
         self.assertIn('model: ${{ steps.glm_route.outputs.model_ref }}', canary)
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
-        editorial = resolve_route(config, "rss")
-        self.assertEqual("opencode-glm-5p3-flash", editorial.backend)
-        self.assertEqual("opencode-go/glm-5.3-flash", editorial.model_ref)
+        profile = config["backends"]["opencode-glm-5p3-flash"]
+        self.assertEqual("opencode", profile["adapter"])
+        self.assertEqual("opencode-go", profile["provider"])
+        self.assertEqual("glm-5.3-flash", profile["model"])
         # The production config deliberately carries no static model/default:
         # every action call is authoritative through `opencode run -m`, so a
         # newly registered SSOT profile does not require a config edit.
@@ -3073,6 +3130,12 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn(self.fallback["native_model"], leg_a[0])
         self.assertNotIn("override", leg_a[0])
 
+        ai_news = [ln for ln in matrix.splitlines()
+                   if ln.startswith("| ai-news-research ")]
+        self.assertEqual(1, len(ai_news), matrix)
+        self.assertIn("claude-sonnet-5", ai_news[0])
+        self.assertIn("native-model` override", ai_news[0])
+
     def test_readme_diagram_generated_and_deterministic(self):
         from build_backend_matrix import build_generated_blocks
         _, diagram1 = build_generated_blocks()
@@ -3102,6 +3165,16 @@ class CrossCheckEnforcement(unittest.TestCase):
         obs["daily-digest.yml"].agent_run[0].secrets["zai-api-key"] = ""
         errors = cross_check(lanes, obs, self.profiles)
         self.assertTrue(any("zai-api-key" in e for e in errors), errors)
+
+    def test_cursor_fallback_mode_mismatch_is_an_error(self):
+        lanes, obs = self.mutated()
+        step = next(
+            step for step in obs["hourly-twitter.yml"].agent_run
+            if step.lane == "twitter-primary"
+        )
+        step.cursor_mode = "editorial"
+        errors = cross_check(lanes, obs, self.profiles)
+        self.assertTrue(any("fallback_mode 'twitter'" in e for e in errors), errors)
 
     def test_explicit_backend_in_workflow_is_an_error(self):
         lanes, obs = self.mutated()
