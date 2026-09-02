@@ -197,7 +197,11 @@
       "workflow": "daily-digest.yml",
       "harness": "agent-run",
       "backend": "claude",
-      "notes": "Rewrites the digest summary as the ARA spoken TTS script."
+      "fallback_chain": [
+        "cursor-grok-4p6-fast"
+      ],
+      "fallback_mode": "editorial",
+      "notes": "Rewrites the committed digest summary as one exact ARA spoken-script file. The local read/write contract is compatible with isolated Cursor editorial mode, so a run-scoped Claude outage does not silently skip the rewrite."
     },
     "model-timeline": {
       "workflow": "24h-model-timeline.yml",
