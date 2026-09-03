@@ -1136,6 +1136,10 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn("test_muse:", canary)
         self.assertIn("if: inputs.test_muse == true", canary)
         self.assertGreaterEqual(canary.count("if: inputs.test_muse != true"), 4)
+        self.assertIn("Probe Meta Muse Spark Responses API eligibility", canary)
+        self.assertIn("https://opencode.ai/zen/go/v1/responses", canary)
+        self.assertIn('"model":"muse-spark-1.3-contributor"', canary)
+        self.assertIn("Check OpenCode workspace Contributor consent and Meta regional availability", canary)
         # The production config deliberately carries no static model/default:
         # every action call is authoritative through `opencode run -m`, so a
         # newly registered SSOT profile does not require a config edit.

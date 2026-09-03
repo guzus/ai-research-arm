@@ -301,7 +301,9 @@ Then prove the key + harness before spending a 90-minute research run:
 ```bash
 gh workflow run opencode-deepseek-canary.yml
 
-# Explicitly exercise Muse only after accepting the Contributor data policy.
+# Explicitly exercise Muse only after reviewing the Contributor data policy.
+# The canary first reports Responses-API consent/region eligibility, then runs
+# the exact pinned container harness when that probe succeeds.
 gh workflow run opencode-deepseek-canary.yml -f test_muse=true
 ```
 
