@@ -1,4 +1,4 @@
-name: OpenCode DeepSeek V4 Flash Canary
+name: OpenCode Go Model Canary
 
 # Diagnostics lane for the opencode backend used by
 # generative-research.yml and hourly-twitter.yml (backend=opencode-deepseek-v4-flash).
@@ -7,12 +7,14 @@ name: OpenCode DeepSeek V4 Flash Canary
 #   provider `opencode-go`, model `opencode-go/deepseek-v4-flash`, raw
 #   endpoint https://opencode.ai/zen/go/v1 (OpenAI-compatible).
 #
-# The first probe certifies the explicit DeepSeek comparison paths. A second
-# harness probe resolves `research-editorial` from the SSOT and certifies the
-# exact production GLM model. Moonshot is intentionally not a fallback here.
+# The raw and first harness probes certify the explicit DeepSeek comparison
+# paths. Additional harness probes cover the registered GLM editorial profile
+# and the explicit Muse Spark generative profile. Moonshot is intentionally
+# not a fallback here.
 #
-# Three probes, cheap to expensive, so a dead key/plan fails in seconds
-# instead of mid-research:
+# Default mode runs the three existing DeepSeek/GLM probes. Explicit
+# `test_muse=true` instead runs only the Muse probe, so an unrelated model
+# entitlement or cap failure cannot prevent the requested diagnostic.
 #
 #   1. Raw API probe — stdlib-only one-shot deepseek-v4-flash completion
 #      against the Go route, proving the secret authenticates AND the account
@@ -25,14 +27,24 @@ name: OpenCode DeepSeek V4 Flash Canary
 #      auth.json — with all tool permissions denied so the canary cannot
 #      touch the repository (deny survives --auto, which only auto-approves
 #      what is not explicitly denied).
-#   3. Production-route harness probe — resolves `research-editorial` from
-#      the SSOT and runs the same pinned container against that exact model.
+#   3. Registered editorial harness probe — resolves the retained GLM profile
+#      from the SSOT and runs the same pinned container against that model.
+#   4. Muse Spark eligibility + harness probes — the documented Responses API
+#      surfaces consent/region failures, then the exact pinned container runs
+#      the SSOT-checked model. Contributor use requires workspace opt-in to
+#      model-improvement data collection and is region-limited.
 #
 # STRICT like zai-claude-code-canary.yml: this lane exists to test the
 # opencode path — an outage must fail this run, never re-route.
 
 on:
   workflow_dispatch:
+    inputs:
+      test_muse:
+        description: 'Test Muse Contributor (sends prompt data for model improvement; region-limited and requires workspace opt-in)'
+        required: false
+        default: false
+        type: boolean
 
 concurrency:
   group: opencode-deepseek-canary
@@ -94,6 +106,7 @@ jobs:
           set-safe-directory: false
 
       - name: Probe raw DeepSeek V4 Flash API on the OpenCode Go route
+        if: inputs.test_muse != true
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
@@ -252,13 +265,43 @@ jobs:
         run: |
           set -euo pipefail
           if [ -z "${OPENCODE_API_KEY:-}" ]; then
-            echo "::error::No opencode auth configured (OPENCODE_API_KEY). Moonshot cannot serve deepseek-v4-flash."
+            echo "::error::No OpenCode Go auth configured (OPENCODE_API_KEY); no selected canary model can run."
             exit 1
           fi
+
+      # Muse Contributor has an account-level consent gate and a regional
+      # policy. Probe its documented Responses endpoint directly so a rejected
+      # workspace produces an actionable HTTP body instead of an opaque
+      # one-turn harness exit. This runs only after the operator explicitly
+      # selected test_muse=true.
+      - name: Probe Meta Muse Spark Responses API eligibility
+        if: inputs.test_muse == true
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+        run: |
+          set -euo pipefail
+          body_file="${RUNNER_TEMP:-/tmp}/opencode-muse-canary-response.json"
+          trap 'rm -f -- "$body_file"' EXIT
+          status=$(curl -sS --max-time 60 --retry 2 --retry-delay 5 \
+            -o "$body_file" -w '%{http_code}' \
+            -A "ai-research-arm-canary/1.0 (+https://github.com/guzus/ai-research-arm)" \
+            -H "Authorization: Bearer $OPENCODE_API_KEY" \
+            -H "Content-Type: application/json" \
+            --data '{"model":"muse-spark-1.3-contributor","max_output_tokens":128,"input":"Reply with exactly: ok"}' \
+            https://opencode.ai/zen/go/v1/responses || echo "000")
+          case "$status" in
+            2*) echo "Muse Spark Responses API eligibility probe OK (HTTP $status)." ;;
+            *)
+              safe_body=$(head -c 500 "$body_file" 2>/dev/null || true)
+              echo "::error::Muse Spark Responses API eligibility probe failed with HTTP $status. Check OpenCode workspace Contributor consent and Meta regional availability. Response: $safe_body"
+              exit 1
+              ;;
+          esac
 
       # Containerised, matching the direct comparison paths. Tools stay denied
       # by opencode-canary.json, so containment here is belt AND braces.
       - name: Run opencode file-free canary
+        if: inputs.test_muse != true
         uses: ./.github/actions/run-opencode-container
         with:
           mode: canary
@@ -273,6 +316,7 @@ jobs:
       # is the evidence required before moving research-editorial back.
       - name: Resolve registered editorial OpenCode model
         id: glm_route
+        if: inputs.test_muse != true
         run: |
           set -euo pipefail
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
@@ -293,11 +337,45 @@ jobs:
           PY
 
       - name: Run registered editorial GLM canary
+        if: inputs.test_muse != true
         uses: ./.github/actions/run-opencode-container
         with:
           mode: canary
           prompt-text: 'Reply with exactly: ok'
           model: ${{ steps.glm_route.outputs.model_ref }}
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          opencode-config: .github/opencode/opencode-canary.json
+          timeout-minutes: '10'
+
+      - name: Resolve Meta Muse Spark OpenCode model
+        id: muse_route
+        if: inputs.test_muse == true
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+
+          profile = json.loads(Path("data/agent-backends.json").read_text())["backends"].get(
+              "opencode-muse-spark-1p3-contributor"
+          )
+          if not isinstance(profile, dict):
+              raise SystemExit("registered Muse Spark OpenCode profile is missing")
+          if profile.get("adapter") != "opencode" or profile.get("provider") != "opencode-go":
+              raise SystemExit("registered Muse Spark profile has an invalid adapter/provider")
+          model = profile.get("model")
+          if model != "muse-spark-1.3-contributor":
+              raise SystemExit("registered Muse Spark profile has the wrong model id")
+          print(f"model_ref=opencode-go/{model}")
+          PY
+
+      - name: Run Meta Muse Spark 1.3 Contributor canary
+        if: inputs.test_muse == true
+        uses: ./.github/actions/run-opencode-container
+        with:
+          mode: canary
+          prompt-text: 'Reply with exactly: ok'
+          model: opencode-go/muse-spark-1.3-contributor
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
           opencode-config: .github/opencode/opencode-canary.json
           timeout-minutes: '10'

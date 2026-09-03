@@ -14,6 +14,7 @@ research pipeline:
 | `opus-5` | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | **The default** (SSOT lane `generative-research-default`) for manual no-backend dispatches, `gen-research` issues, and throttled Twitter auto-research. Premium native Anthropic route. It is not the Fireworks-unavailable fallback target. The workflow pins the literal model ID across every alias/subagent slot and article metadata, and verifies the committed `index.json` row records `claude-opus-5` before pushing. Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
 | `codex` | Codex CLI default model for ChatGPT auth | `CODEX_AUTH_JSON` seeded into file-backed `auth.json` | Optional Codex backend using ChatGPT-managed Codex auth rather than OpenAI API billing. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
 | `opencode-deepseek-v4-flash` | `deepseek-v4-flash` (1M context, the 2026-07-31 build) via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription), read directly from env by opencode's built-in `opencode-go` provider. Moonshot serves Kimi only and is not a fallback. | Explicit isolated comparison backend; the production editorial route now prioritizes the separate `opencode-glm-5p3-flash` profile. No interactive login or auth-file seeding. Strict: preflight failure fails rather than substituting another author. Article metadata records `deepseek-v4-flash`. Validate with `opencode-deepseek-canary.yml`. |
+| `opencode-muse-spark-1p3-contributor` | Meta Muse Spark 1.3 Contributor via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription) | Explicit isolated backend using `opencode-go/muse-spark-1.3-contributor` and the provider's OpenAI Responses transport. Region-limited. Requires explicit OpenCode workspace consent because prompts and outputs may be used for model improvement. Strict: never substitutes another author. Article metadata records `muse-spark-1.3-contributor`. It is not a production editorial route. |
 | `cursor-grok-4p6-fast` | `cursor-grok-4.6-high-fast` via the Cursor CLI (`agent`) | `CURSOR_API_KEY` (Cursor dashboard API key), read from env by the official CLI. | Selectable isolated comparison backend. Same disposable-clone / `--cap-drop ALL` contract as OpenCode (`run-cursor-container`). Not the production default and not on `fallback.chain`. Article metadata records `cursor-grok-4.6-high-fast`. Selectors: `cursor`, `cursor-cli`, `cursor-agent`, `grok-4.6-fast`, `grok`. `cursor-composer-2p5` remains a compatibility alias. Validate with `cursor-cli-canary.yml`. Current `generative-translation` route. |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 
@@ -220,14 +221,28 @@ topic/prompt/tags live in `.gen-input/*.txt`; workflow-owned metadata is in env;
 and Codex subprocesses receive only the allowlisted env vars needed by the repo
 tools. The writer script owns the commit.
 
-## OpenCode Go: GLM 5.3 Flash production, DeepSeek comparison
+## OpenCode Go: registered GLM, explicit DeepSeek and Muse
 
-The primary `research-editorial` route prioritizes the canonical
-`opencode-glm-5p3-flash` backend profile: provider `opencode-go`, official
-model id `glm-5.3-flash`, resolved model ref `opencode-go/glm-5.3-flash`.
-That route serves RSS, community, and Bluesky through the isolated
-`run-opencode-container` adapter and fails closed. ArXiv and wiki use the
-independent `research-editorial-secondary` route through the isolated Cursor
+Muse Spark 1.3 Contributor is also available as the explicit selector
+`opencode-muse-spark-1p3-contributor` (aliases include `muse-spark-1.3` and
+`muse-1.3`). Its exact provider ref is
+`opencode-go/muse-spark-1.3-contributor`. Unlike the DeepSeek and GLM models,
+Muse uses OpenCode Go's OpenAI Responses transport (`/v1/responses`). The
+workflow selects the matching preflight endpoint and passes the resolved bare
+model id to the canonical writer, so model provenance remains exact.
+
+Muse Contributor is not an ordinary drop-in production route: OpenCode marks
+it region-limited and requires workspace-level opt-in because submitted data
+may be used to improve the model. The workflow never grants that consent and
+production editorial routes remain unchanged. An operator must review and
+accept the policy in the OpenCode workspace before selecting Muse.
+
+The canonical `opencode-glm-5p3-flash` backend profile remains registered:
+provider `opencode-go`, official model id `glm-5.3-flash`, resolved model ref
+`opencode-go/glm-5.3-flash`. It is temporarily absent from production routes
+while the OpenCode Go monthly plan is exhausted. Production editorial lanes
+currently use isolated Cursor routes; restoring GLM remains a separate,
+deliberate route change after its canary succeeds.
 adapter, bounding either provider credential's blast radius. Neither route adds a
 generative-research dispatch selector; the explicit DeepSeek path below remains
 available for controlled comparison and diagnostics.
@@ -285,6 +300,11 @@ Then prove the key + harness before spending a 90-minute research run:
 
 ```bash
 gh workflow run opencode-deepseek-canary.yml
+
+# Explicitly exercise Muse only after reviewing the Contributor data policy.
+# The canary first reports Responses-API consent/region eligibility, then runs
+# the exact pinned container harness when that probe succeeds.
+gh workflow run opencode-deepseek-canary.yml -f test_muse=true
 ```
 
 This canary validates both the retained explicit DeepSeek route and the

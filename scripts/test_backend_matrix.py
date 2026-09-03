@@ -28,6 +28,7 @@ from build_backend_matrix import (
     build_readme_diagram,
     build_rows,
     check_fallback,
+    check_opencode_selectors,
     cross_check,
     load_adapters,
     load_lanes,
@@ -56,6 +57,7 @@ class RoutingInvariants(unittest.TestCase):
 
     def test_cross_check_is_clean_on_repo_state(self):
         errors = check_fallback(self.fallback, self.profiles) \
+            + check_opencode_selectors(self.profiles) \
             + cross_check(self.lanes, self.obs, self.profiles)
         self.assertEqual(errors, [])
 
@@ -624,8 +626,9 @@ class RoutingInvariants(unittest.TestCase):
         # index row is provenance-verified before the push.
         self.assertIn('contains(fromJSON(\'["claude","fable-5","opus-5"]\'), '
                       'steps.effective.outputs.backend)', workflow)
-        self.assertIn('contains(fromJSON(\'["fable-5","opus-5"]\'), '
-                      'steps.effective.outputs.backend)', workflow)
+        self.assertIn(
+            'contains(fromJSON(\'["fable-5","opus-5","opencode-deepseek-v4-flash","opencode-muse-spark-1p3-contributor"]\'), '
+            'steps.effective.outputs.backend)', workflow)
         self.assertTrue(self.obs["generative-research.yml"].has_opus_dispatch)
         from build_backend_matrix import GEN_RESEARCH_BACKENDS
         self.assertIn("opus-5", GEN_RESEARCH_BACKENDS)
@@ -704,15 +707,23 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(
             1, workflow.count("MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}"),
             "MOONSHOT_API_KEY must be scoped to the preflight step only")
-        # ATTRIBUTION COUPLING: the model every opencode workflow resolves and
-        # the model the writer stamps into index.json must be the same string,
-        # so a half-done swap cannot ship articles credited to the wrong model.
-        model_id = self.assert_single_opencode_model()
+        # ATTRIBUTION COUPLING: the selected bare model id is passed into both
+        # writer call sites; it is never hard-coded to the first OpenCode model.
         prompt = (REPO_ROOT / ".github" / "opencode" / "prompts" /
                   "generative-research.md").read_text(encoding="utf-8")
-        # BOTH writer call sites (slug / no-slug), not just one: assertIn would
-        # be satisfied by a single updated invocation.
-        self.assertEqual([model_id, model_id], re.findall(r"--model (\S+)", prompt))
+        self.assertEqual(['"$GEN_MODEL"', '"$GEN_MODEL"'],
+                         re.findall(r"--model (\S+)", prompt))
+        self.assertIn("gen-model: ${{ steps.opencode-route.outputs.model_id }}", workflow)
+        self.assertIn(
+            '["fable-5","opus-5","opencode-deepseek-v4-flash","opencode-muse-spark-1p3-contributor"]',
+            workflow,
+        )
+        self.assertIn("OPENCODE_EXPECTED_MODEL: ${{ steps.opencode-route.outputs.model_id }}",
+                      workflow)
+        self.assertIn('EXPECTED_MODEL="$OPENCODE_EXPECTED_MODEL"', workflow)
+        self.assertIn('if [ "$actual_model" != "$EXPECTED_MODEL" ]; then', workflow)
+        self.assertIn('git reset --hard "$PRE_SHA"', workflow)
+        self.assertIn('git clean -fd -- research/generative', workflow)
         # The scanner must see both opencode call sites (research + canary),
         # which drive the matrix rows and the README diagram edge.
         self.assertTrue(self.obs["generative-research.yml"].opencode)
@@ -721,6 +732,40 @@ class RoutingInvariants(unittest.TestCase):
         self.assertTrue(self.obs["opencode-deepseek-canary.yml"].opencode)
         from build_backend_matrix import GEN_RESEARCH_BACKENDS
         self.assertIn("opencode-deepseek-v4-flash", GEN_RESEARCH_BACKENDS)
+
+    def test_gen_research_opencode_muse_is_explicit_provenance_correct_and_opt_in(self):
+        workflow = (REPO_ROOT / ".github" / "workflows" /
+                    "generative-research.yml").read_text(encoding="utf-8")
+        self.assertIn("- opencode-muse-spark-1p3-contributor", workflow)
+        self.assertIn(
+            'muse-spark-1.3|muse-1.3) selector="opencode-muse-spark-1p3-contributor"',
+            workflow,
+        )
+        self.assertIn('model="opencode-go/muse-spark-1.3-contributor"', workflow)
+        self.assertIn('model_id="muse-spark-1.3-contributor"', workflow)
+        self.assertIn('transport_path="responses"', workflow)
+        self.assertIn('"max_output_tokens":128', workflow)
+        self.assertNotEqual(
+            self.lanes["generative-research-default"]["backend"],
+            "opencode-muse-spark-1p3-contributor",
+        )
+        from build_backend_matrix import GEN_RESEARCH_BACKENDS
+        self.assertIn("opencode-muse-spark-1p3-contributor", GEN_RESEARCH_BACKENDS)
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        profile = config["backends"]["opencode-muse-spark-1p3-contributor"]
+        self.assertEqual("opencode-go", profile["provider"])
+        self.assertEqual("muse-spark-1.3-contributor", profile["model"])
+        self.assertIn("muse-spark-1.3", profile["aliases"])
+        broken_profiles = copy.deepcopy(self.profiles)
+        broken_profiles["opencode-muse-spark-1p3-contributor"] = Profile(
+            normalized="opencode-muse-spark-1p3-contributor",
+            adapter="opencode",
+            provider="opencode-go",
+            model_id="muse-spark-1.2-contributor",
+            display_name="broken",
+        )
+        self.assertTrue(any("SSOT profile serves" in error
+                            for error in check_opencode_selectors(broken_profiles)))
 
     def test_gen_research_cursor_is_explicit_and_fail_closed(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
@@ -762,14 +807,13 @@ class RoutingInvariants(unittest.TestCase):
         "wiki-ingest.yml",
     )
 
-    def assert_single_opencode_model(self) -> str:
-        """Exactly one opencode-go model id across every opencode workflow.
+    def direct_opencode_models(self) -> dict[str, set[str]]:
+        """Return literal OpenCode model refs by direct-caller workflow.
 
         Parses `run:` shell and skips comment lines. A whole-file substring
         scan cannot tell live routing from a REVERT marker that quotes the old
-        assignment — it already false-positived on one — which pressures the
-        next maintainer to write vaguer comments to stay green. Set equality
-        (not "no moonshot") is strictly stronger: any second route fails.
+        assignment — it already false-positived on one. Multiple explicit
+        models are valid; every discovered ref must still use opencode-go.
         """
         seen: dict[str, set] = {}
         direct_workflows = (
@@ -802,17 +846,11 @@ class RoutingInvariants(unittest.TestCase):
                         if model and "${{" not in model:
                             found.add(model)
             seen[name] = found
-        union = set().union(*seen.values())
-        self.assertEqual(
-            1, len(union),
-            f"opencode workflows must route to exactly one model; found {seen}")
-        model_ref = union.pop()
-        self.assertTrue(model_ref.startswith("opencode-go/"),
-                        f"unexpected opencode provider in {model_ref}")
         for name, found in seen.items():
-            self.assertEqual({model_ref}, found,
-                             f"{name} does not route to {model_ref}")
-        return model_ref.split("/", 1)[1]
+            self.assertTrue(found, f"{name} has no inspectable OpenCode model")
+            self.assertTrue(all(ref.startswith("opencode-go/") for ref in found),
+                            f"unexpected OpenCode provider in {name}: {found}")
+        return seen
 
     CURSOR_WORKFLOWS = (
         "cursor-cli-canary.yml",
@@ -1071,15 +1109,15 @@ class RoutingInvariants(unittest.TestCase):
         # paths. The second harness probe resolves the registered editorial
         # profile independently, so it remains a useful reversion signal while
         # the production editorial route temporarily points to Cursor.
-        model_id = self.assert_single_opencode_model()
+        models = self.direct_opencode_models()
         canary = (REPO_ROOT / ".github" / "workflows" /
                   "opencode-deepseek-canary.yml").read_text(encoding="utf-8")
         gen = (REPO_ROOT / ".github" / "workflows" /
                "generative-research.yml").read_text(encoding="utf-8")
         # The RAW API probes bill the bare id; they must match the harness id
         # or the cheap preflight certifies an entitlement the run never uses.
-        self.assertIn(f'"model": "{model_id}"', canary)
-        self.assertIn(f'{{"model":"{model_id}"', gen)
+        self.assertIn('"model": "deepseek-v4-flash"', canary)
+        self.assertIn('{"model":"deepseek-v4-flash"', gen)
         self.assertIn('"opencode-glm-5p3-flash"', canary)
         self.assertIn('model: ${{ steps.glm_route.outputs.model_ref }}', canary)
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
@@ -1087,6 +1125,21 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual("opencode", profile["adapter"])
         self.assertEqual("opencode-go", profile["provider"])
         self.assertEqual("glm-5.3-flash", profile["model"])
+        muse = config["backends"]["opencode-muse-spark-1p3-contributor"]
+        self.assertEqual("opencode", muse["adapter"])
+        self.assertEqual("opencode-go", muse["provider"])
+        self.assertEqual("muse-spark-1.3-contributor", muse["model"])
+        self.assertIn("opencode-go/muse-spark-1.3-contributor",
+                      models["generative-research.yml"])
+        self.assertIn("opencode-go/muse-spark-1.3-contributor",
+                      models["opencode-deepseek-canary.yml"])
+        self.assertIn("test_muse:", canary)
+        self.assertIn("if: inputs.test_muse == true", canary)
+        self.assertGreaterEqual(canary.count("if: inputs.test_muse != true"), 4)
+        self.assertIn("Probe Meta Muse Spark Responses API eligibility", canary)
+        self.assertIn("https://opencode.ai/zen/go/v1/responses", canary)
+        self.assertIn('"model":"muse-spark-1.3-contributor"', canary)
+        self.assertIn("Check OpenCode workspace Contributor consent and Meta regional availability", canary)
         # The production config deliberately carries no static model/default:
         # every action call is authoritative through `opencode run -m`, so a
         # newly registered SSOT profile does not require a config edit.
@@ -1115,7 +1168,7 @@ class RoutingInvariants(unittest.TestCase):
     def test_opencode_twitter_tier_labels_name_the_served_model(self):
         # The output dir is a legacy namespace, so human-facing labels must
         # name the served model rather than inheriting the directory label.
-        model_id = self.assert_single_opencode_model()
+        model_id = "deepseek-v4-flash"
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "hourly-twitter.yml").read_text(encoding="utf-8")
         # Pick the tier-CONFIG case arm by content: the workflow has an earlier
