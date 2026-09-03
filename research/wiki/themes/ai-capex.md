@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Dell's FY27Q2 (filed 2026-09-01) printed $16.4B of AI-server sales, $60.9B of orders and a $95B backlog against $47.0B revenue, after Lambda's $1B private-debt Nvidia lease, Marvell's record FY27Q2, and Cognition's ~$900M ARR against a possible $800M server burn.
+description: The historically large compute buildout; Broadcom's FY26Q3 printed $16.7B of AI chip sales (+221% YoY) with Q4 AI guided to $21.7B, after Dell's FY27Q2 $95B AI-server backlog and Lambda's $1B private-debt Nvidia lease.
 created_at: 2026-05-24
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
@@ -942,3 +943,17 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   usage**. Relayed via the local AI-news file, not independently
   re-fetched (McKinsey via 2026-09-02-ai-news.md; ARA daily digest
   2026-09-02).
+
+## Broadcom's $16.7B AI-semiconductor print (filed 2026-09-02)
+
+- **[[broadcom]] FY26Q3 is the custom-ASIC counterpart to Dell's OEM
+  backlog.** Issuer figures: **$29.6B revenue (+86% YoY)**, **$16.7B
+  of AI chip sales (+221% YoY, +54% QoQ)**, Q4 AI semiconductor
+  revenue guided to **$21.7B (+236% YoY)**, company Q4 revenue guided
+  to **~$34.8B (+93%)**, free cash flow **$13.7B (46% of revenue)**,
+  non-GAAP operating margin held at **66%**. This clears the June 5
+  in-line ~$16B Q3 AI guide that erased ~$320B of AVGO market value
+  and replaces it with a raised Q4 AI number. Pair the two 48-hour
+  issuer prints — Broadcom silicon, Dell servers — as the week's
+  booked-demand evidence, not lab capex guides (SEC 8-K EX-99.1; ARA
+  daily digest 2026-09-03). See [[broadcom]] and [[dell]].

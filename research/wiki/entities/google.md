@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; launched Pics, an AI-first Workspace design suite aimed at Canva and Adobe (2026-09-02), after Q2 2026 revenue of $119.8B and a revenue-linked equity claim on Marvell.
+description: Hyperscaler behind Gemini; shipped Gemini 3.8 Flash and a gated 3.8 Flash Cyber SKU (2026-09-03), after launching Pics and a Flash video-analysis path (2026-09-02).
 created_at: 2026-07-17
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-03T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
@@ -32,8 +33,8 @@ sources:
 
 **Google** is the hyperscaler and frontier-model builder behind the
 **Gemini** family ([[gemini-3-5-flash]], [[gemini-3-6-flash]],
-[[gemini-3-7-flash]], [[gemini-3-5-pro]], [[gemini-spark]],
-[[gemma-4]], [[nano-banana-2-lite]]). While its individual model releases
+[[gemini-3-7-flash]], [[gemini-3-8-flash]], [[gemini-3-5-pro]],
+[[gemini-spark]], [[gemma-4]], [[nano-banana-2-lite]]). While its individual model releases
 have been tracked on their own pages, this page covers Google as a company:
 the regulatory and product-strategy threads that don't attach to a single
 model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
@@ -241,6 +242,29 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   were alone with certain nationalities to get to a safe place or call
   emergency services; The Decoder says other Facebook-derived flags
   remain (The Decoder; ARA daily digest 2026-09-02).
+
+## Gemini 3.8 Flash, Flash Cyber, and a MrBeast partnership (2026-09-03)
+
+- **[[gemini-3-8-flash|Gemini 3.8 Flash]] shipped — the third Flash SKU
+  in six weeks.** Live in the Gemini API, AI Studio, Antigravity, the
+  Pro/Ultra app, Search AI Mode, and Sheets at **$0.75/$3.75 per million
+  tokens through 2026-12-31**, then **$1.50/$7.50**. Google's table puts
+  DeepSWE 1.1 at **73.7%**, near [[claude-opus-5|Opus 5]]'s **74.0%**,
+  while Terminal-Bench 4.0 stays at **19.1% versus 51.8%**. Artificial
+  Analysis scores Intelligence Index **59** at about **$0.58/task**,
+  ~40% more expensive per task than 3.7 because it burns ~30% more
+  output tokens. The HN thread hit **748 points / 449 comments**. Model
+  card and Cyber SKU detail live on [[gemini-3-8-flash]] (Google, The
+  Verge, Ars Technica; ARA daily digest 2026-09-03).
+- **3.8 Flash Cyber is gated behind Fairwind**, a defender-only program
+  (~650 members) that is **not** on the public Gemini API. It is a new
+  SKU, not an upgrade of the July [[gemini-3-6-flash|3.5 Flash Cyber]],
+  and reads as Google's Daybreak-shaped answer the day after [[openai]]
+  marked [[astra]] Critical-cyber. See [[agentic-ai-security]] (Google
+  DeepMind; ARA daily digest 2026-09-03).
+- **Google partnered with MrBeast** for a multi-year Gemini / Google
+  Health / Fitbit Air push starting **2026-09-05**. Distribution, not a
+  model release (The Verge; ARA daily digest 2026-09-03).
 
 ## Open questions
 

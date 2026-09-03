@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities at scale; OpenAI now says Astra is the first model to meet its Critical cybersecurity threshold and delayed the ship after the Hugging Face agent-swarm incident (2026-09-02).
+description: The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities at scale; Google gated 3.8 Flash Cyber behind Fairwind the day after OpenAI's Astra Critical-cyber finding, while Astra's recurrent-depth debate turned on CoT-monitorability.
 created_at: 2026-05-29
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
@@ -760,3 +761,25 @@ the cycle:
   most-liked Bluesky post (409 likes). The digest flags the claim as
   **not independently verifiable from local files** — recorded, not
   adopted (ARA daily digest 2026-09-02).
+
+## Flash Cyber ships gated; Astra's monitorability argument (2026-09-03)
+
+- **[[google]] gated [[gemini-3-8-flash|Gemini 3.8 Flash Cyber]] behind
+  Fairwind** (~650 trusted governments and maintainers), a more
+  permissive cybersecurity specialist that is **not** on the public
+  Gemini API. Vendor claims include CyberGym "frontier-level" scores
+  and Chrome Security **2.6× more correct patches**. It is a
+  Daybreak-shaped defender SKU the day after [[astra]] was marked
+  Critical-cyber — capability on the defender side of the same
+  axis, access-controlled rather than delayed (Google DeepMind; ARA
+  daily digest 2026-09-03).
+- **[[openai]] chief scientist Jakub Pachocki answered The
+  Information's "recurrent depth" report** by saying Astra's
+  computation-graph depth stays **within 2× of GPT-4** and that
+  chain-of-thought monitoring is **"fragile and unfortunately
+  trending in a negative direction, for reasons not contingent on
+  architecture changes."** The monitorability problem this theme
+  has tracked (hidden CoT, EchoCoT, summariser refusals) is now
+  attached on the record to the Critical-cyber model, and the lab
+  says the trend is architectural-independent. See [[astra]]
+  (TechCrunch, The Verge; ARA daily digest 2026-09-03).

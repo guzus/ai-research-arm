@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: The 2026 storyline of US federal AI governance — Trump's June 2 executive order mandating 30-day government pre-release access to frontier models, a White House ask for voluntary 30-day pre-release testing, gray-market Claude-token resale that undercuts export controls, and now a drafted Commerce/BIS rule (RIN 0694-AJ90) aimed at closing the overseas-datacenter remote-access loophole for advanced US chips (2026-08-29).
+description: The 2026 storyline of US federal AI governance — a September 1 DOJ Statement of Interest arguing LLM training is fair use, Pentagon addition of ChatGPT Mil and Grok for Government, Trump's June 2 pre-release-access EO, and a drafted Commerce/BIS remote-access chip rule (RIN 0694-AJ90).
 created_at: 2026-06-03
-timestamp: 2026-08-29T00:00:00Z
+timestamp: 2026-09-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
@@ -719,6 +720,35 @@ footing for the first time in the cycle.
   gray-market Claude-token leak above: one gap is in *who can buy
   tokens*, the other in *who can sit on US silicon from abroad*. See
   [[ai-capex]] and [[nvidia]].
+
+## DOJ training-fair-use brief, Pentagon SKUs, and a municipal school ban (2026-09-03)
+
+- **The DOJ filed a Statement of Interest in the [[openai]] copyright
+  MDL (Document 316, signed 2026-09-01).** The 20-page brief argues
+  that training on copyrighted texts is **"extraordinarily
+  transformative"** and does not, in itself, violate copyright law,
+  and that a contrary ruling would raise licensing barriers. It is a
+  **policy filing, not a judgment**; the brief itself says fair use is
+  fact-specific and separates training from output-stage copying. The
+  Times' response is not in local files. This is the administration
+  putting a federal thumb on the training-data axis this theme has
+  tracked since the June 2 EO — a litigation brief, not a statute
+  (TechCrunch, The Verge, The Decoder; ARA daily digest 2026-09-03).
+- **The US military added ChatGPT Mil and [[xai|Grok for Government]]**
+  to the Pentagon's GenAI.mil platform. Local files do not name a
+  contract value or deployment scope (The Decoder; ARA daily digest
+  2026-09-03).
+- **NYC banned classroom AI through eighth grade** for one year,
+  covering about **600,000** public-school students in 2-K through
+  eighth. Teachers may not use AI to grade; companion chatbots are
+  barred in all grades, with limited high-school pilots. Municipal,
+  not federal, but the clearest new US classroom rule of the cycle
+  (The Verge, Hacker News; ARA daily digest 2026-09-03).
+- **Commerce Secretary Howard Lutnick** said the [[anthropic]]–
+  administration feud is over and that **"We trust Anthropic,"** after
+  Tom Brown joined a G20 Innovation Ministerial. Treat as a
+  political-temperature quote, not a policy instrument (Twitter/Axios
+  relay; ARA daily digest 2026-09-03).
 
 ## Open questions
 

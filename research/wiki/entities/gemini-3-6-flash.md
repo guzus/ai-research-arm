@@ -6,8 +6,9 @@ aliases: ["Gemini 3.6 Flash", "Gemini 3.5 Flash-Lite", "Gemini 3.5 Flash Cyber",
 tags: [model-release, google-deepmind, flash-tier, ai-security]
 description: Google's 2026-07-21 triple Flash-tier release — Gemini 3.6 Flash, 3.5 Flash-Lite, and Flash "Cyber" — later gained agent-based video analysis on 3.6 Flash and 3.5 Flash-Lite (2026-09-02), claimed to cut video-token use by up to 88 percent.
 created_at: 2026-07-22
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
   - {title: "Google releases three new Gemini models but no 3.5 Pro (TechCrunch)", url: "https://techcrunch.com/2026/07/21/google-releases-three-new-gemini-models-but-no-3-5-pro/", date: 2026-07-21}
@@ -55,6 +56,15 @@ daily digest 2026-09-02).
 - **Does "Cyber" hold up against dedicated AI-security tools?** No
   independent benchmark has been published comparing it to purpose-built
   vulnerability-scanning models.
+
+## Not the same SKU as 3.8 Flash Cyber (2026-09-03)
+
+[[gemini-3-8-flash|Gemini 3.8 Flash Cyber]] is a **new Fairwind-gated
+defender model**, not an upgrade of this page's July **3.5 Flash
+Cyber**. Keep the two aliases on this page ("Flash Cyber", "Gemini
+Flash Cyber") pointed at the 2026-07-21 trio; the 3.8 specialist lives
+on [[gemini-3-8-flash]] (Google DeepMind; ARA daily digest
+2026-09-03).
 - **When does Gemini 3.5 Pro actually ship**, and does the reported Gemini 4
   training effort mean Pro is being effectively skipped or folded into the
   next major version? See [[gemini-3-5-pro]] for the dedicated tracking page.
