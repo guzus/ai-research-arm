@@ -1,5 +1,5 @@
 {
-  "article_count": 77,
+  "article_count": 78,
   "articles": [
     {
       "claim_count": 18,
@@ -759,6 +759,16 @@
         "twitter-seed"
       ],
       "title": "\"Lets do this again then\": Robinhood Chain, Ripe Protocol, and the replay of DeFi Summer"
+    },
+    {
+      "claim_count": 32,
+      "created_at": "2026-09-03T14:28:04Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "stem": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern"
     }
   ],
   "by_host": {
@@ -774,7 +784,8 @@
     ],
     "247wallst.com": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c19",
-      "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c30"
+      "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c30",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c27"
     ],
     "3dincites.com": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c17"
@@ -1064,7 +1075,8 @@
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c4"
     ],
     "apollo.com": [
-      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c1"
+      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c1",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c24"
     ],
     "apollo.io": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c26"
@@ -1391,7 +1403,8 @@
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c13",
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c14",
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c23",
-      "2026-07-31T051841--situational-awareness-lp-collapse#c31"
+      "2026-07-31T051841--situational-awareness-lp-collapse#c31",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c15"
     ],
     "bfl.ai": [
       "2026-08-04T171206--comfyui-company#c20"
@@ -1406,7 +1419,8 @@
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c14"
     ],
     "bis.gov": [
-      "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c24"
+      "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c24",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c20"
     ],
     "bisnow.com": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c15"
@@ -1985,7 +1999,8 @@
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c1",
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c17",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c19",
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c20"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c20",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c10"
     ],
     "cryptopolitan.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30"
@@ -2688,7 +2703,12 @@
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-9",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c12",
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c13",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c15",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c16",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c8"
     ],
     "find-and-update.company-information.service.gov.uk": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c16"
@@ -2725,7 +2745,11 @@
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c24",
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c9",
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-12",
-      "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-16"
+      "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-16",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c11",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c22",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c28",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c29"
     ],
     "forbes.com": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c23",
@@ -2741,7 +2765,9 @@
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c25",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c22",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c17",
-      "2026-08-20T152813--unitree-star-market-ipo-debut#c23"
+      "2026-08-20T152813--unitree-star-market-ipo-debut#c23",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c13",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c14"
     ],
     "fortune.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c22",
@@ -2767,7 +2793,8 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c17",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c19",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c34",
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c33"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c33",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c25"
     ],
     "fortunebusinessinsights.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
@@ -2789,6 +2816,9 @@
     "futurism.com": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c26",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c24"
+    ],
+    "fxstreet.com": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c21"
     ],
     "gale.finance": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c17"
@@ -3007,6 +3037,9 @@
       "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul#c2",
       "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul#c4"
     ],
+    "home.saxo": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c11"
+    ],
     "huggingface.co": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6",
       "2026-06-22T052035--zhipu-ai-glm#c10",
@@ -3142,6 +3175,9 @@
     "incidentdatabase.ai": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c19"
     ],
+    "indexbox.io": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c8"
+    ],
     "info.arxiv.org": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c41"
     ],
@@ -3197,7 +3233,10 @@
     ],
     "investor.nvidia.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c16",
-      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c30"
+      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c30",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c1",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c2",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c3"
     ],
     "investor.sandisk.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c40"
@@ -3481,6 +3520,9 @@
       "2026-07-13T181948--cxmt#c20",
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c36"
     ],
+    "marketbeat.com": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c4"
+    ],
     "marketreportanalytics.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c7"
     ],
@@ -3605,7 +3647,8 @@
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c34"
     ],
     "money.usnews.com": [
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c18"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c18",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c32"
     ],
     "mordorintelligence.com": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c24"
@@ -3625,6 +3668,9 @@
     ],
     "msn.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c10"
+    ],
+    "nasdaq.com": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c20"
     ],
     "natlawreview.com": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c11"
@@ -3945,6 +3991,9 @@
     ],
     "optimusk.blog": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c10"
+    ],
+    "orats.com": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c12"
     ],
     "origami.chat": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c18"
@@ -4494,7 +4543,12 @@
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c27",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c9",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c19",
-      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c21"
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c21",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c17",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c18",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c19",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c30",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c31"
     ],
     "securitycompass.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
@@ -4634,6 +4688,10 @@
       "2026-07-13T181948--cxmt#c8",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c33"
     ],
+    "statmuse.com": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c6",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c7"
+    ],
     "statnews.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c4"
     ],
@@ -4674,7 +4732,11 @@
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c13",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c9",
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c21",
-      "2026-08-20T152813--unitree-star-market-ipo-debut#c19"
+      "2026-08-20T152813--unitree-star-market-ipo-debut#c19",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c22",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c23",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c4",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5"
     ],
     "stocktitan.net": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c9",
@@ -5065,7 +5127,11 @@
     "tipranks.com": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c17",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c19",
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c24"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c24",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c10"
+    ],
+    "tmtfinance.com": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c27"
     ],
     "tokencost.app": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c3"
@@ -5097,7 +5163,8 @@
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c11"
     ],
     "tradingkey.com": [
-      "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c16"
+      "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c16",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c9"
     ],
     "tradingsim.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c14"
@@ -5211,7 +5278,8 @@
     "valueaddvc.com": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c9",
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c18",
-      "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c11"
+      "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c11",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c26"
     ],
     "valuespectrum.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c28"
@@ -5300,12 +5368,16 @@
     "wikidata.org": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c20",
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c6",
-      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c25"
+      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c25",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c30"
     ],
     "wilmerhale.com": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c19",
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c5",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c10"
+    ],
+    "winbuzzer.com": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c21"
     ],
     "wipo.int": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c18"
@@ -6804,6 +6876,9 @@
     "https://cryptobriefing.com/morgan-stanley-data-center-capex-2028": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c1"
     ],
+    "https://cryptobriefing.com/nvidia-implied-move-lowest-volatility-two-years": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c10"
+    ],
     "https://cryptobriefing.com/uniswap-v4-dominates-robinhood-chain-tokenized-stocks": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c20"
     ],
@@ -7469,6 +7544,9 @@
     "https://finance.yahoo.com/markets/stocks/articles/hedge-funds-dumped-chip-stocks-111514085.html": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c16"
     ],
+    "https://finance.yahoo.com/markets/stocks/articles/nvidia-drops-3-3-315-222706659.html": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5"
+    ],
     "https://finance.yahoo.com/markets/stocks/articles/nvidias-reported-5-billion-ssi-174148818.html": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c12"
     ],
@@ -7515,6 +7593,9 @@
     "https://finance.yahoo.com/news/south-korea-charges-10-over-082944853.html": [
       "2026-07-13T181948--cxmt#c27"
     ],
+    "https://finance.yahoo.com/news/stock-market-today-feb-26-183634080.html": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c8"
+    ],
     "https://finance.yahoo.com/news/upbit-corners-72-korean-crypto-233000204.html": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c8"
     ],
@@ -7559,17 +7640,26 @@
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c6",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c7"
     ],
+    "https://finance.yahoo.com/technology/ai/articles/michael-burry-flags-nvidias-500-220000898.html": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c15"
+    ],
     "https://finance.yahoo.com/technology/ai/articles/nebius-coreweave-iren-tumble-meta-162444225.html": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c2"
     ],
     "https://finance.yahoo.com/technology/ai/articles/stripe-talks-acquire-openrouter-potential-215104525.html": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c4"
     ],
+    "https://finance.yahoo.com/technology/ai/articles/wall-street-giants-partner-nvidia-163441421.html": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c13"
+    ],
     "https://finance.yahoo.com/technology/articles/exclusive-chinas-cxmt-wins-3-070237888.html": [
       "2026-07-13T181948--cxmt#c21"
     ],
     "https://finance.yahoo.com/technology/articles/marvell-shares-surge-google-warrant-132458296.html": [
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-9"
+    ],
+    "https://finance.yahoo.com/video/why-nvidia-says-its-ai-partnerships-arent-circular-financing-222400222.html": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c16"
     ],
     "https://find-and-update.company-information.service.gov.uk/company/07386350/officers": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c16"
@@ -7639,6 +7729,9 @@
     ],
     "https://fortune.com/2026/06/27/apple-us-approval-chips-blacklisted-cxmt-price-hikes-mac-memory-shortage": [
       "2026-07-13T181948--cxmt#c20"
+    ],
+    "https://fortune.com/2026/06/29/bis-central-bank-warning-hyperscaler-data-center-1-trillion-gamble-recession": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c25"
     ],
     "https://fortune.com/2026/07/09/gauntlet-defi-vault-risk-curation-tarun-chitra-sbi-holdings-fundraise": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c33"
@@ -8038,6 +8131,11 @@
       "2026-07-31T051841--situational-awareness-lp-collapse#c30",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c34"
     ],
+    "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c1",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c2",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c3"
+    ],
     "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-BlueField-4-Powers-New-Class-of-AI-Native-Storage-Infrastructure-for-the-Next-Frontier-of-AI/default.aspx": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c16"
     ],
@@ -8314,6 +8412,9 @@
     ],
     "https://money.usnews.com/investing/articles/tokenized-stocks-what-they-are-and-what-investors-should-know-now": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c18"
+    ],
+    "https://money.usnews.com/investing/news/articles/2026-08-27/nvidia-pauses-revenue-sharing-deals-with-ai-cloud-companies-wsj-reports": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c32"
     ],
     "https://natlawreview.com/article/fcc-adds-foreign-produced-advanced-robotic-devices-covered-list-five-things-know": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c11"
@@ -8676,6 +8777,9 @@
     ],
     "https://optimusk.blog/blog/tesla-optimus-hardware-specs": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c10"
+    ],
+    "https://orats.com/blog/nvidia-earnings-options-market-expectations-vs-reality": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c12"
     ],
     "https://origami.chat": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c18"
@@ -9309,7 +9413,13 @@
     "https://stockanalysis.com/stocks/nvda/history": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c13",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c20",
-      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c21"
+      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c21",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c4",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5"
+    ],
+    "https://stockanalysis.com/stocks/nvda/statistics": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c22",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c23"
     ],
     "https://stockanalysis.com/stocks/sndk/history": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c9"
@@ -9714,6 +9824,9 @@
     "https://timroughgarden.org/papers/tullock.pdf": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c12"
     ],
+    "https://tipranks.com/news/options-volatility-and-implied-earnings-moves-today-august-26-2026": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c10"
+    ],
     "https://tokencost.app/blog/kimi-k3-pricing": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c3"
     ],
@@ -9790,6 +9903,9 @@
     "https://v.daum.net/v/20240412182107348": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c6"
     ],
+    "https://valueaddvc.com/ai-spending": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c26"
+    ],
     "https://valueaddvc.com/blog/anthropics-business-model-how-the-ai-safety-company-makes-money": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c9"
     ],
@@ -9850,6 +9966,9 @@
     "https://wffi.wharton.upenn.edu/uncategorized/research-spotlight-payment-for-order-flow-and-price-improvement": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c14"
     ],
+    "https://winbuzzer.com/2026/01/14/chinese-customs-block-nvidia-h200-shipments-hours-after-us-approval-freezing-54b-in-orders-xcxwbn": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c21"
+    ],
     "https://wisetoast.com/openai-discloses-staggering-37-billion-infrastructure-spending": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c25"
     ],
@@ -9889,6 +10008,9 @@
     ],
     "https://www.21jingji.com/article/20260520/herald/479c3a328776ac189032079a93ae5c9b.html": [
       "2026-07-13T181948--cxmt#c6"
+    ],
+    "https://www.247wallst.com/investing/2026/06/19/google-spacex-microsoft-and-amazon-are-about-to-spend-twice-the-entire-u-s-defense-budget-on-ai": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c27"
     ],
     "https://www.3dincites.com/2025/07/glass-core-vs-rdl-interposer-substrates-ready-for-prime-time": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c17"
@@ -10105,6 +10227,9 @@
     "https://www.apollo.com/insights-news/pressreleases/2026/08/nvidia-partners-with-apollo": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c1"
     ],
+    "https://www.apollo.com/wealth/insights-news/insights/daily-spark/the-ai-capex-boom-is-building-twice-as-fast-as-the-housing-boom": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c24"
+    ],
     "https://www.apollo.io/product/prospect": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c26"
     ],
@@ -10157,6 +10282,9 @@
     "https://www.benzinga.com/markets/earnings/26/07/60781217/meta-reports-mixed-q2-results-raises-low-end-of-capex-guidance-range-shares-move-lower": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c23"
     ],
+    "https://www.benzinga.com/markets/earnings/26/08/61486426/michael-burry-points-to-nvidias-105b-openai-guarantee-as-circular-financing-red-flag-whistling-past-the-graveyard": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c15"
+    ],
     "https://www.benzinga.com/markets/tech/26/05/52681185/google-deepmind-contextual-ai-talent-antitrust-scrutiny": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c16"
     ],
@@ -10177,7 +10305,8 @@
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c14"
     ],
     "https://www.bis.gov/press-release/department-commerce-revises-license-review-policy-semiconductors-exported-china": [
-      "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c24"
+      "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c24",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c20"
     ],
     "https://www.bisnow.com/national/news/data-center-capital-markets/tech-giants-hiding-662b-data-center-leasing-possibly-far-more-133408": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c15"
@@ -11148,14 +11277,24 @@
     "https://www.fool.com/earnings/call-transcripts/2026/05/03/vicor-vicr-q1-2026-earnings-transcript": [
       "2026-05-27T035557--800-vdc-architecture#c17"
     ],
+    "https://www.fool.com/earnings/call-transcripts/2026/05/20/nvidia-nvda-q1-2027-earnings-transcript": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c29"
+    ],
     "https://www.fool.com/earnings/call-transcripts/2026/08/13/sharonai-shaz-q2-2026-earnings-call-transcript": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c9"
+    ],
+    "https://www.fool.com/earnings/call-transcripts/2026/08/31/nvidia-nvda-q2-2027-earnings-call-transcript": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c28"
     ],
     "https://www.fool.com/investing/2026/03/24/jensen-huang-sees-1-trillion-in-demand-3-ai-stocks": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c23"
     ],
+    "https://www.fool.com/investing/2026/05/31/nvidia-shares-dropped-after-stellar-earnings-is-th": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c11"
+    ],
     "https://www.fool.com/investing/2026/07/11/nvidias-forward-pe-has-actually-fallen-as-its-stoc": [
-      "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c18"
+      "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c18",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c22"
     ],
     "https://www.fool.com/investing/2026/07/12/sam-altman-is-waiting-for-a-1-trillion-openai-valu": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c24"
@@ -11169,6 +11308,10 @@
     ],
     "https://www.forbes.com/sites/anishasircar/2026/06/17/deepseek-just-raised-74-billion-heres-the-catch": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c7"
+    ],
+    "https://www.forbes.com/sites/antoniopequenoiv/2026/08/10/nvidia-stock-loses-130-billion-in-market-value-as-firm-reportedly-enters-500-billion-ai-financing-deal": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c13",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c14"
     ],
     "https://www.forbes.com/sites/astanley/2026/07/02/the-tokenized-asset-market-is-60-billion-most-of-it-isnt-moving": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c22"
@@ -11230,6 +11373,9 @@
     "https://www.ftc.gov/system/files/ftc_gov/pdf/p246201_aipartnerships6breport_redacted_0.pdf": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c51",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c52"
+    ],
+    "https://www.fxstreet.com/news/nvidia-slips-14-as-china-reportedly-blocks-h200-ai-chip-imports-202601151321": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c21"
     ],
     "https://www.gale.finance/compare/nvda-vs-spy": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c17"
@@ -11387,6 +11533,9 @@
       "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul#c2",
       "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul#c4"
     ],
+    "https://www.home.saxo/content/articles/options/nvidia-earnings-trading-the-8-move-the-options-market-is-pricing-18052026": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c11"
+    ],
     "https://www.humanoidsdaily.com/news/inside-unitree-s-prospectus-revenue-climbs-and-profits-dip-as-star-market-ipo-hearing-approaches": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c4",
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c6"
@@ -11432,6 +11581,9 @@
     ],
     "https://www.inc.com/sam-blum/bootstrapped-to-1-billion-surge-ai-ceo-edwin-chen-on-how-he-did-it/91207937": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c4"
+    ],
+    "https://www.indexbox.io/blog/semiconductor-stocks-fall-despite-nvidias-strong-earnings": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c8"
     ],
     "https://www.insurancebusinessmag.com/us/news/life-insurance/us-life-insurers-private-credit-push-is-creating-liquidity-and-concentration-risks-moodys-warns-578168.aspx": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c24"
@@ -11683,6 +11835,9 @@
     "https://www.macrumors.com/2026/07/17/apple-sends-legal-letters-openai": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c36"
     ],
+    "https://www.marketbeat.com/instant-alerts/price-nvidia-nasdaq-nvda-stock-price-up-87-following-better-than-expected-earnings-2026-08-27": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c4"
+    ],
     "https://www.marketreportanalytics.com/reports/south-korea-cloud-computing-market-87712": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c7"
     ],
@@ -11773,6 +11928,9 @@
     ],
     "https://www.msn.com/en-xl/news/other/over-half-of-kepco-grid-projects-delayed-risking-renewable-expansion/ar-AA1ORvxw": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c10"
+    ],
+    "https://www.nasdaq.com/articles/stock-market-today-jan-13-nvidia-rises-h200-export-developments": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c20"
     ],
     "https://www.naturalgasintel.com/news/amaranth-turns-the-tables-sues-former-bankers-for-1b-2": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c25"
@@ -12180,6 +12338,9 @@
     "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000002/amzn-20251231xex991.htm": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c21"
     ],
+    "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c31"
+    ],
     "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm": [
       "2026-06-24T160453--test-ornn-com-codex-2#C10"
     ],
@@ -12192,7 +12353,18 @@
     "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c6",
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c8",
-      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c9"
+      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c9",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c18"
+    ],
+    "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c19"
+    ],
+    "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c30"
+    ],
+    "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c17",
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c18"
     ],
     "https://www.sec.gov/Archives/edgar/data/12927/000119312504034751/d10k.htm": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c32"
@@ -12374,6 +12546,27 @@
     ],
     "https://www.stablewatch.io/analytics/assets/sUSDai-USD.AI": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c4"
+    ],
+    "https://www.statmuse.com/money/ask/nvda+stock+price+on+august+28+2025": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c6"
+    ],
+    "https://www.statmuse.com/money/ask/nvda+stock+price+on+december+19+2025": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c7"
+    ],
+    "https://www.statmuse.com/money/ask/nvda+stock+price+on+february+26+2026": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c6"
+    ],
+    "https://www.statmuse.com/money/ask/nvda+stock+price+on+june+18+2026": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c7"
+    ],
+    "https://www.statmuse.com/money/ask/nvda+stock+price+on+march+26+2026": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c7"
+    ],
+    "https://www.statmuse.com/money/ask/nvda+stock+price+on+may+21+2026": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c6"
+    ],
+    "https://www.statmuse.com/money/ask/nvda+stock+price+on+november+20+2025": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c6"
     ],
     "https://www.statnews.com/2026/06/30/anthropic-release-claude-science-ceo-dario-amodei": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c4"
@@ -12647,6 +12840,9 @@
     "https://www.tipranks.com/stocks/vape/historical-prices": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c24"
     ],
+    "https://www.tmtfinance.com/intel/2026-hyperscaler-capex-tops-us700bn-analysis": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c27"
+    ],
     "https://www.tomshardware.com/pc-components/ram/memory-price-surge-begins-to-cool-as-consumers-hit-affordability-limit-ai-demand-still-keeps-dram-and-nand-prices-climbing-through-q3-2026": [
       "2026-07-13T181948--cxmt#c30"
     ],
@@ -12679,6 +12875,9 @@
     ],
     "https://www.tori.finance": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c15"
+    ],
+    "https://www.tradingkey.com/analysis/stocks/us-stocks/261628049-nvidia-nvda-earnings-q4-stock-price-investors-value-tradingkey": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c9"
     ],
     "https://www.tradingkey.com/analysis/stocks/us-stocks/262022410-alibaba-baba-stock-forecast-july-2026-doj-settlement-cloud-h200-tradingkey": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c16"
@@ -12858,6 +13057,9 @@
     "https://www.wikidata.org/wiki/Q131577453": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c20",
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c6"
+    ],
+    "https://www.wikidata.org/wiki/Q182477": [
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c30"
     ],
     "https://www.wilmerhale.com/en/insights/client-alerts/20260129-ftc-eyeing-acquihire-transactions-in-tech-industry": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c19"
@@ -13375,7 +13577,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2259,
+  "claim_count": 2291,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -67719,9 +67921,793 @@
         "https://coinmarketcap.com/academy/article/what-is-yield-farming"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-26",
+      "claim": "NVIDIA Q2 FY2027 (period ended July 26, 2026) revenue was $96.221B, up 106% YoY and 18% QoQ",
+      "confidence": "high",
+      "hosts": [
+        "investor.nvidia.com"
+      ],
+      "id": "c1",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-26",
+      "claim": "Ahead of the Aug 26 2026 print, options markets priced an implied earnings-day move of roughly 5.4-5.9%, the lowest in two years and below NVDA's own trailing 12-quarter average realized move of ~7.6%",
+      "confidence": "medium",
+      "hosts": [
+        "cryptobriefing.com",
+        "tipranks.com"
+      ],
+      "id": "c10",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://cryptobriefing.com/nvidia-implied-move-lowest-volatility-two-years",
+        "https://tipranks.com/news/options-volatility-and-implied-earnings-moves-today-august-26-2026"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-05-21",
+      "claim": "Ahead of the May 20 2026 print, options-implied earnings move was roughly 6.5-8%; the actual next-day decline was only ~1.77-1.8%, well inside the implied range, meaning the market had correctly priced elevated uncertainty and the outcome was not a volatility surprise, only a sentiment one",
+      "confidence": "medium",
+      "hosts": [
+        "fool.com",
+        "home.saxo"
+      ],
+      "id": "c11",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c11",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.home.saxo/content/articles/options/nvidia-earnings-trading-the-8-move-the-options-market-is-pricing-18052026",
+        "https://www.fool.com/investing/2026/05/31/nvidia-shares-dropped-after-stellar-earnings-is-th"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08",
+      "claim": "Over NVDA's trailing 12 quarters, options-implied earnings-day moves (avg 7.7%) have tracked actual realized moves (avg 7.6%) almost exactly, per ORATS data -- the options market has historically been well-calibrated on NVDA, not systematically wrong",
+      "confidence": "medium",
+      "hosts": [
+        "orats.com"
+      ],
+      "id": "c12",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c12",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://orats.com/blog/nvidia-earnings-options-market-expectations-vs-reality"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-11",
+      "claim": "In August 2026 NVIDIA announced non-binding MOUs with six financial institutions (Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, KKR) targeting over $500B in third-party capital for AI infrastructure financing; NVIDIA disclosed an optional backstop of up to $125B (25%), not a direct $500B outlay",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com",
+        "forbes.com"
+      ],
+      "id": "c13",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/technology/ai/articles/wall-street-giants-partner-nvidia-163441421.html",
+        "https://www.forbes.com/sites/antoniopequenoiv/2026/08/10/nvidia-stock-loses-130-billion-in-market-value-as-firm-reportedly-enters-500-billion-ai-financing-deal"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-10",
+      "claim": "NVDA fell ~2.4-3% on Aug 10 2026 (~$130B market cap) when the FT first reported the financing talks, coinciding with a sector-wide selloff -- the Philadelphia Semiconductor Index fell ~2.94% and Intel fell ~4% the same day on an unrelated equity raise",
+      "confidence": "medium",
+      "hosts": [
+        "forbes.com"
+      ],
+      "id": "c14",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c14",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.forbes.com/sites/antoniopequenoiv/2026/08/10/nvidia-stock-loses-130-billion-in-market-value-as-firm-reportedly-enters-500-billion-ai-financing-deal"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-14",
+      "claim": "Separately, NVIDIA agreed to guarantee up to $105B to help OpenAI lease computing infrastructure -- a distinct transaction from the $500B platform that Michael Burry cited as a specific circular-financing red flag, alongside $879B in cited hyperscaler commitments circling through NVIDIA",
+      "confidence": "medium",
+      "hosts": [
+        "benzinga.com",
+        "finance.yahoo.com"
+      ],
+      "id": "c15",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c15",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.benzinga.com/markets/earnings/26/08/61486426/michael-burry-points-to-nvidias-105b-openai-guarantee-as-circular-financing-red-flag-whistling-past-the-graveyard",
+        "https://finance.yahoo.com/technology/ai/articles/michael-burry-flags-nvidias-500-220000898.html"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-26",
+      "claim": "NVIDIA CFO Colette Kress addressed circular-financing criticism directly on the Aug 26 2026 earnings call: 'We recognize the scale of this support, and we know some will call this circular financing. We see it differently.'",
+      "confidence": "high",
+      "hosts": [
+        "finance.yahoo.com"
+      ],
+      "id": "c16",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/video/why-nvidia-says-its-ai-partnerships-arent-circular-financing-222400222.html"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-07-26",
+      "claim": "NVIDIA's Q2 FY2027 10-Q discloses total supply/purchase commitments rose from $119B to $279B in one quarter, but the filing's own hedge language says these commitments 'may be cancelable, rescheduled, or adjustable' and that AI-cloud counterparties 'can unilaterally stop providing to us and sell to third-party customers at more advantageous rates'",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c17",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c17",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-07-26",
+      "claim": "As of the Q1 FY2027 10-Q (April 26, 2026), three direct customers accounted for 21%, 17% and 16% of NVIDIA total revenue (~54% combined), nearly all attributable to the Compute & Networking segment; as of Q2 FY2027, five direct customers accounted for 22%, 14%, 13%, 11% and 10% of accounts receivable (~70% combined)",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c18",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm",
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-26",
+      "claim": "China Hopper/H200 shipments were less than 1% of Data Center revenue in Q2 FY2027, and NVIDIA's own guidance assumes zero China Data Center compute revenue going forward, directly undercutting any narrative that China demand drove the beat",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c19",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-26",
+      "claim": "NVIDIA Data Center segment revenue was $89.0B in Q2 FY2027, up 117% YoY, 18% QoQ",
+      "confidence": "high",
+      "hosts": [
+        "investor.nvidia.com"
+      ],
+      "id": "c2",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-01-13",
+      "claim": "On Jan 13 2026, the U.S. Commerce Department (BIS) eased China export-license review for NVIDIA H200 and AMD MI325X chips from presumption-of-denial to case-by-case; NVDA rose only 0.47% that day on below-average volume",
+      "confidence": "high",
+      "hosts": [
+        "bis.gov",
+        "nasdaq.com"
+      ],
+      "id": "c20",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c20",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.bis.gov/press-release/department-commerce-revises-license-review-policy-semiconductors-exported-china",
+        "https://www.nasdaq.com/articles/stock-market-today-jan-13-nvidia-rises-h200-export-developments"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-01-16",
+      "claim": "On Jan 14 2026 Chinese customs authorities reportedly blocked NVIDIA H200 chip imports, freezing an estimated $54B in pending orders from Alibaba, ByteDance and others; NVDA fell ~1.4% that day but had recovered to roughly its pre-block level ($186.23) by Jan 16, a net ~+0.2% over the four-day span",
+      "confidence": "medium",
+      "hosts": [
+        "fxstreet.com",
+        "winbuzzer.com"
+      ],
+      "id": "c21",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c21",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.fxstreet.com/news/nvidia-slips-14-as-china-reportedly-blocks-h200-ai-chip-imports-202601151321",
+        "https://winbuzzer.com/2026/01/14/chinese-customs-block-nvidia-h200-shipments-hours-after-us-approval-freezing-54b-in-orders-xcxwbn"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-09-03",
+      "claim": "NVIDIA's forward P/E compressed through 2026, from roughly 24-26x in mid-year to ~18.6x by early September 2026, even as the stock price rose -- consistent with earnings growing faster than the share price, not a valuation blow-off",
+      "confidence": "medium",
+      "hosts": [
+        "fool.com",
+        "stockanalysis.com"
+      ],
+      "id": "c22",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c22",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://stockanalysis.com/stocks/nvda/statistics",
+        "https://www.fool.com/investing/2026/07/11/nvidias-forward-pe-has-actually-fallen-as-its-stoc"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-09-03",
+      "claim": "NVIDIA's market capitalization reached approximately $5.51 trillion as of September 3, 2026, after first crossing $5 trillion in late 2025 and re-crossing multiple times through 2026",
+      "confidence": "high",
+      "hosts": [
+        "stockanalysis.com"
+      ],
+      "id": "c23",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c23",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://stockanalysis.com/stocks/nvda/statistics"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08",
+      "claim": "Apollo Global chief economist Torsten Slok noted AI data-center capex is rising as a share of GDP nearly twice as fast as the 2000s housing boom and far faster than the 1990s telecom bubble",
+      "confidence": "medium",
+      "hosts": [
+        "apollo.com"
+      ],
+      "id": "c24",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c24",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.apollo.com/wealth/insights-news/insights/daily-spark/the-ai-capex-boom-is-building-twice-as-fast-as-the-housing-boom"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-06-28",
+      "claim": "The Bank for International Settlements' 2026 Annual Economic Report named AI capex a financial-stability 'pressure point,' warning circular financing could turn a return disappointment into a 'protracted investment bust'",
+      "confidence": "medium",
+      "hosts": [
+        "fortune.com"
+      ],
+      "id": "c25",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c25",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://fortune.com/2026/06/29/bis-central-bank-warning-hyperscaler-data-center-1-trillion-gamble-recession"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08",
+      "claim": "Combined 2026 AI capex guidance across Microsoft, Alphabet, Amazon and Meta rose to roughly $725B, up ~77% from ~$410B in 2025, with every major cloud provider raising guidance at least once during the year",
+      "confidence": "medium",
+      "hosts": [
+        "valueaddvc.com"
+      ],
+      "id": "c26",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c26",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://valueaddvc.com/ai-spending"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-07-30",
+      "claim": "Amazon CEO Andy Jassy said AWS's ~$364B backlog and multi-year capacity shortfalls through 2027 reflect demand, not speculation; Microsoft CFO Amy Hood said customer demand 'continues to exceed available capacity'",
+      "confidence": "medium",
+      "hosts": [
+        "247wallst.com",
+        "tmtfinance.com"
+      ],
+      "id": "c27",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c27",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.247wallst.com/investing/2026/06/19/google-spacex-microsoft-and-amazon-are-about-to-spend-twice-the-entire-u-s-defense-budget-on-ai",
+        "https://www.tmtfinance.com/intel/2026-hyperscaler-capex-tops-us700bn-analysis"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-26",
+      "claim": "On the Aug 26 2026 earnings call, CFO Colette Kress said NVIDIA's FY2028 guidance of approximately 70% revenue growth is 'a supply-constrained outlook,' cited a cloud-industry backlog 'now greater than $2 trillion,' and said memory (DRAM/HBM) price increases 'have exceeded our prior expectations and are headed even higher into next year'",
+      "confidence": "high",
+      "hosts": [
+        "fool.com"
+      ],
+      "id": "c28",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c28",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.fool.com/earnings/call-transcripts/2026/08/31/nvidia-nvda-q2-2027-earnings-call-transcript"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-05-20",
+      "claim": "On the May 20 2026 call, CEO Jensen Huang said 'My sense is that we will be supply constrained throughout the entire life of Vera Rubin,' and CFO Colette Kress disclosed total supply/prepaid commitments of $145B and explicitly excluded China from the outlook",
+      "confidence": "high",
+      "hosts": [
+        "fool.com"
+      ],
+      "id": "c29",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c29",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.fool.com/earnings/call-transcripts/2026/05/20/nvidia-nvda-q1-2027-earnings-transcript"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-26",
+      "claim": "NVIDIA guided Q3 FY2027 revenue to $108.0B +/- 2%, gross margin to 74.0% +/- 50bps (down from 75.0% actual in Q2), and explicitly assumes zero China Data Center compute revenue",
+      "confidence": "high",
+      "hosts": [
+        "investor.nvidia.com"
+      ],
+      "id": "c3",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-09-03",
+      "claim": "NVIDIA was founded April 5, 1993 by Jensen Huang, Chris Malachowsky and Curtis Priem; is headquartered in Santa Clara, California; trades on Nasdaq as NVDA (listed since Jan 22, 1999); and its fiscal year ends the last Sunday of January, offset roughly one calendar year from the fiscal-year label (e.g., the quarter ended July 26, 2026 is fiscal Q2 2027)",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov",
+        "wikidata.org"
+      ],
+      "id": "c30",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c30",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.wikidata.org/wiki/Q182477",
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-01-25",
+      "claim": "NVIDIA had approximately 42,000 employees as of January 25, 2026 (FY2026 fiscal year-end), up 16.67% year over year",
+      "confidence": "medium",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c31",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c31",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-27",
+      "claim": "The WSJ reported NVIDIA paused parts of a roughly $36B AI-cloud revenue-sharing financing program amid antitrust concerns; the story broke Aug 27 2026, the same day NVDA rallied 8.74%, one session before the Aug 28 profit-taking dip -- undercutting a clean causal read that the story drove the later decline",
+      "confidence": "medium",
+      "hosts": [
+        "money.usnews.com"
+      ],
+      "id": "c32",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c32",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://money.usnews.com/investing/news/articles/2026-08-27/nvidia-pauses-revenue-sharing-deals-with-ai-cloud-companies-wsj-reports"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-27",
+      "claim": "NVDA closed +8.74% at $227.98 on Aug 27 2026, the session after the Q2 FY2027 print — its biggest one-day gain since April 2025, breaking a four-quarter streak of post-earnings declines",
+      "confidence": "high",
+      "hosts": [
+        "marketbeat.com",
+        "stockanalysis.com"
+      ],
+      "id": "c4",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://www.marketbeat.com/instant-alerts/price-nvidia-nasdaq-nvda-stock-price-up-87-following-better-than-expected-earnings-2026-08-27",
+        "https://stockanalysis.com/stocks/nvda/history"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-08-28",
+      "claim": "NVDA then fell -4.57% to $217.55 on Aug 28 2026, the session after the rally, attributed by coverage to profit-taking on the prior day's ~$441.5B market-cap gain, not new negative news",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com",
+        "stockanalysis.com"
+      ],
+      "id": "c5",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/markets/stocks/articles/nvidia-drops-3-3-315-222706659.html",
+        "https://stockanalysis.com/stocks/nvda/history"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-05-21",
+      "claim": "NVDA fell ~0.8-3.1% after Q2 FY2026 earnings (Aug 27-28 2025), ~3.2-7.8% after Q3 FY2026 (Nov 19-20 2025), ~5.46% after Q4 FY2026 (Feb 25-26 2026), and ~1.2-1.8% after Q1 FY2027 (May 20-21 2026) -- four consecutive beat-and-raise quarters each followed by a stock decline",
+      "confidence": "high",
+      "hosts": [
+        "statmuse.com"
+      ],
+      "id": "c6",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "market-data",
+        "market-data",
+        "market-data",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://www.statmuse.com/money/ask/nvda+stock+price+on+august+28+2025",
+        "https://www.statmuse.com/money/ask/nvda+stock+price+on+november+20+2025",
+        "https://www.statmuse.com/money/ask/nvda+stock+price+on+february+26+2026",
+        "https://www.statmuse.com/money/ask/nvda+stock+price+on+may+21+2026"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-06-18",
+      "claim": "One month after the Nov 2025, Feb 2026 and May 2026 post-earnings drops, NVDA was still flat-to-down versus its post-earnings baseline and underperformed the Nasdaq-100 (QQQ) by 3-6 percentage points each time; only the Aug 2025 dip fully reversed, and that took roughly nine weeks",
+      "confidence": "medium",
+      "hosts": [
+        "statmuse.com"
+      ],
+      "id": "c7",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data",
+        "market-data",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://www.statmuse.com/money/ask/nvda+stock+price+on+december+19+2025",
+        "https://www.statmuse.com/money/ask/nvda+stock+price+on+march+26+2026",
+        "https://www.statmuse.com/money/ask/nvda+stock+price+on+june+18+2026"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-02-26",
+      "claim": "On Feb 26 2026, the Nasdaq Composite fell ~1.18% and the broader semiconductor group (SOX-adjacent) fell ~5%, with Broadcom, Micron and AMD reported falling alongside NVDA -- evidence the drop was sector/macro-coincident, not NVDA-specific",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com",
+        "indexbox.io"
+      ],
+      "id": "c8",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c8",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/news/stock-market-today-feb-26-183634080.html",
+        "https://www.indexbox.io/blog/semiconductor-stocks-fall-despite-nvidias-strong-earnings"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+      "article_created_at": "2026-09-03T14:28:04Z",
+      "article_title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+      "as_of": "2026-02-25",
+      "claim": "Sell-side analysts (Citi, Bernstein, Baird, BofA, Rosenblatt) raised NVDA price targets immediately after the Feb 25 2026 print despite the stock falling -- inconsistent with a genuine earnings disappointment",
+      "confidence": "medium",
+      "hosts": [
+        "tradingkey.com"
+      ],
+      "id": "c9",
+      "key": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c9",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.tradingkey.com/analysis/stocks/us-stocks/261628049-nvidia-nvda-earnings-q4-stock-price-investors-value-tradingkey"
+      ],
+      "type": "comparison"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1087,
+  "reusable_count": 1099,
   "schema_version": 1
 }
