@@ -2710,5 +2710,19 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+    "file": "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-09-03T14:28:04Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/Zh_Crypto517/status/2095141224340734433\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

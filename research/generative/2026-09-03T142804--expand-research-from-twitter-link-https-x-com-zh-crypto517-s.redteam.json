@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "On August 27, 2026, NVDA closed at $227.98, up 8.74%, on volume of approximately 293.3 million shares — roughly 106% above the three-month average, adding an estimated $441.5 billion in market value in a single day, its biggest one-day gain since April 2025.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "February 26, 2026, when NVDA closed at $184.66, down 5.46% the day after a beat-and-raise Q4 FY2026 report... The Nasdaq Composite fell that same day... while the Dow Jones Industrial Average was essentially flat... Citi, Bernstein, Baird, Bank of America, and Rosenblatt all raised their NVDA price targets immediately after the February 25 print.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "NVIDIA reported total revenue of $96.221 billion, up 106% year-over-year and 18% sequentially, against a Street consensus of roughly $92.17 billion — a beat of just over $4 billion, or about 4.4%.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
