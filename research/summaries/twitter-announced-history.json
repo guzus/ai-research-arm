@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-04 12:00 UTC",
-    "headline": "GOOGLE AI STUDIO A/B SURFACES VECTOR-SVG GENERATION 'LIKELY FROM NEW FLASH/PRO MODEL' \u2014 PRE-I/O LEAK CADENCE ACCELERATING",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-04-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2051215328105922757"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-04 12:00 UTC",
-    "headline": "BLENDER FOUNDATION DOWNGRADES ANTHROPIC OPEN-SOURCE SPONSORSHIP TO ONE-OFF DONATION AFTER ANTI-AI PRESSURE CAMPAIGN",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-05-04-twitter-12h-headlines.json",
-    "url": "https://x.com/mark_k/status/2051216185425887730"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 15:00 UTC",
-    "headline": "ANTHROPIC ANNOUNCES $1.5B+ JV \u2014 LP LIST EXPANDS TO 9: BLACKSTONE, GOLDMAN, H&F, APOLLO, GENERAL ATLANTIC, SEQUOIA, LEONARD GREEN, GIC",
-    "source": "@exec_sum",
-    "source_file": "research/summaries/2026-05-04-twitter-15h-headlines.json",
-    "url": "https://x.com/exec_sum/status/2051321182675411162"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 15:00 UTC",
-    "headline": "ANTHROPIC JV LANDS ~2 HOURS AFTER OPENAI DEPLOYCO CLOSE \u2014 LAB+PE DISTRIBUTION TEMPLATE NOW AN INDUSTRY PATTERN",
-    "source": "@HighyieldHarry",
-    "source_file": "research/summaries/2026-05-04-twitter-15h-headlines.json",
-    "url": "https://x.com/HighyieldHarry/status/2051318519623499976"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-04 15:00 UTC",
-    "headline": "JACK CLARK (ANTHROPIC CO-FOUNDER): 60% PROBABILITY OF RECURSIVE SELF-IMPROVEMENT BY END OF 2028",
-    "source": "@jackclarkSF",
-    "source_file": "research/summaries/2026-05-04-twitter-15h-headlines.json",
-    "url": "https://x.com/jackclarkSF/status/2051312759594471886"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-04 15:00 UTC",
-    "headline": "OPENAI COURT FILING ALLEGES PRE-TRIAL MUSK THREAT TO BROCKMAN: 'YOU AND SAM WILL BE THE MOST HATED MEN IN AMERICA'",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-04-twitter-15h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2051300598893740543"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-04 15:00 UTC",
     "headline": "JUDGE DENIES OPENAI MOTION TO PUT ALLEGED MUSK SETTLEMENT MESSAGE BEFORE JURY VIA BROCKMAN TESTIMONY",
@@ -25148,5 +25094,47 @@
     "headline": "GOOGLE SHIPS WEATHERNEXT 3 \u2014 UP TO 5\u00d7 SHARPER THAN WN2, HOURLY SATELLITE, LIVE IN SEARCH/MAPS",
     "source": "@GoogleDeepMind",
     "url": "https://x.com/GoogleDeepMind/status/2095528012791902536"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-03 20:56:31 UTC",
+    "headline": "OPENAI SHIPS GPT-6 ASTRA \u2014 DAYBREAK TODAY; PLUS, API, AWS OVER COMING DAYS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2095595741528125780"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-03 20:56:31 UTC",
+    "headline": "ASTRA API ID GPT-6-ASTRA AT $10/$50 PER MTOK; FAST MODE 2\u00d7 PRICE, UP TO 2.5\u00d7 SPEED",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2095594744458203616"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-03 20:56:31 UTC",
+    "headline": "ALTMAN: ASTRA 99.9% ARC-AGI-3, 98% FRONTIERMATH T4, 100% EXPLOITBENCH",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2095600005772104059"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-03 20:56:31 UTC",
+    "headline": "ASTRA SYSTEM CARD: CRITICAL CYBER, HIGH BIO; COT MONITORABILITY DOWN VS GPT-5.6 SOL",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2095603101944476127"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-03 20:56:31 UTC",
+    "headline": "UK AISI: ASTRA NO-COT MATH HORIZON 30.9 MIN VS 3.6 FOR SOL; SIMULATED SUPPLY-CHAIN ATTACKS",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2095596612856741902"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-03 20:56:31 UTC",
+    "headline": "THE INFORMATION: THINKING MACHINES SEEKS FRESH CAPITAL AT ROUGHLY $40B VALUATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2095602785349751003"
   }
 ]
