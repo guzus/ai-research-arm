@@ -2723,6 +2723,24 @@
     "prompt": "Seed Twitter/X URL: https://x.com/Zh_Crypto517/status/2095141224340734433\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-09-03T150544--expand-research-from-twitter-link-https-x-com-zh-crypto517-s.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "실적 역설 — NVIDIA는 왜 서프라이즈 이후에도 계속 빠졌는가, 그리고 8월이 그 패턴을 깨기까지",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-09-03T15:05:44Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-zh-crypto517-s",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-09-03T15:05:44Z",
+        "source_file": "research/generative/2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s.ara.md",
+        "source_sha256": "8df3c21abea677e9c08ee37453a017e503ad842ae09fecc31e8998f0517cb318"
+      }
+    }
   }
 ]
