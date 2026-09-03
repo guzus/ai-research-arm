@@ -30,6 +30,7 @@ from build_backend_matrix import (
     check_fallback,
     check_opencode_selectors,
     cross_check,
+    generative_profiles,
     load_adapters,
     load_lanes,
     load_profiles,
@@ -38,6 +39,7 @@ from build_backend_matrix import (
     workflow_files,
 )
 from resolve_agent_route import resolve_route
+from resolve_generative_backend import load_config as load_generative_config, resolve as resolve_generative
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RESOLVER = REPO_ROOT / "scripts" / "resolve_backend_lane.py"
@@ -99,13 +101,14 @@ class RoutingInvariants(unittest.TestCase):
             "adapter": "opencode", "provider": "opencode-go",
             "model": "novel-flash",
             "display_name": "Novel Flash via OpenCode",
+            "production_eligible": True,
         }
         config["routes"]["research-editorial"]["backend"] = "opencode-novel-flash"
         config["routes"]["research-editorial-secondary"]["backend"] = "opencode-novel-flash"
         profiles = copy.deepcopy(self.profiles)
         profile = Profile("opencode-novel-flash", "opencode", "opencode-go",
                           "novel-flash", "Novel Flash via OpenCode",
-                          ["opencode-novel-flash"])
+                          ["opencode-novel-flash"], production_eligible=True)
         profiles[profile.normalized] = profile
         for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest"):
             selected = resolve_route(config, lane)
@@ -147,13 +150,14 @@ class RoutingInvariants(unittest.TestCase):
             "adapter": "cursor", "provider": "cursor",
             "model": "composer-novel",
             "display_name": "Composer Novel via Cursor CLI",
+            "production_eligible": True,
         }
         config["routes"]["research-editorial"]["backend"] = "cursor-composer-novel"
         config["routes"]["research-editorial-secondary"]["backend"] = "cursor-composer-novel"
         profiles = copy.deepcopy(self.profiles)
         profile = Profile("cursor-composer-novel", "cursor", "cursor",
                           "composer-novel", "Composer Novel via Cursor CLI",
-                          ["cursor-composer-novel"])
+                          ["cursor-composer-novel"], production_eligible=True)
         profiles[profile.normalized] = profile
         for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest"):
             selected = resolve_route(config, lane)
@@ -206,6 +210,22 @@ class RoutingInvariants(unittest.TestCase):
             "opencode-api-key"
         with self.assertRaisesRegex(ValueError, "cursor-api-key"):
             resolve_route(config, "rss")
+
+    def test_restricted_profiles_cannot_enter_defaults_or_fallbacks(self):
+        lanes = copy.deepcopy(self.lanes)
+        lanes["generative-research-default"]["backend"] = \
+            "opencode-muse-spark-1p3-contributor"
+        errors = cross_check(lanes, self.obs, self.profiles)
+        self.assertTrue(any("default backend" in error and "production-eligible" in error
+                            for error in errors), errors)
+
+        lanes = copy.deepcopy(self.lanes)
+        lanes["digest-synthesis-fallback"]["fallback_chain"].append(
+            "opencode-muse-spark-1p3-contributor"
+        )
+        errors = cross_check(lanes, self.obs, self.profiles)
+        self.assertTrue(any("fallback backend" in error and "production-eligible" in error
+                            for error in errors), errors)
 
     def test_dispatched_lane_io_contracts_are_exact_and_route_neutral(self):
         expected = {
@@ -593,8 +613,8 @@ class RoutingInvariants(unittest.TestCase):
     def test_gen_research_fable_is_explicit_and_fail_closed(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
-        self.assertIn('- fable-5', workflow)
-        self.assertIn('fable-5) model="claude-fable-5"', workflow)
+        selected = resolve_generative(load_generative_config(LANES_FILE), "fable-5")
+        self.assertEqual("claude-fable-5", selected.provenance_model)
         self.assertIn('ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.native-model.outputs.model }}', workflow)
         self.assertIn('CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.native-model.outputs.model }}', workflow)
         self.assertIn('--model ${{ steps.native-model.outputs.model }}', workflow)
@@ -608,31 +628,23 @@ class RoutingInvariants(unittest.TestCase):
                          workflow)
         self.assertIn("Verify pinned model provenance", workflow)
         self.assertIn("actual_model=$(jq -r", workflow)
-        self.assertTrue(self.obs["generative-research.yml"].has_fable_dispatch)
+        self.assertIn("python3 scripts/resolve_generative_backend.py", workflow)
         # Fable is never reachable without asking for it by name.
         self.assertNotEqual(self.lanes["generative-research-default"]["backend"], "fable-5")
 
     def test_gen_research_opus_5_is_explicit_and_provenance_checked(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
-        # Dispatch option, canonical normalization, and the runtime allowlist.
-        self.assertIn('- opus-5', workflow)
-        self.assertIn('claude-opus-5|opus-5|opus5) selector="opus-5"', workflow)
-        self.assertIn('[ "$BACKEND" != "opus-5" ]', workflow)
+        selected = resolve_generative(load_generative_config(LANES_FILE), "opus5")
+        self.assertEqual("opus-5", selected.selector)
         # Served model is pinned from the single resolver output, so an
         # opus-5-labelled article can never be authored by Sonnet.
-        self.assertIn('opus-5) model="claude-opus-5"', workflow)
+        self.assertEqual("claude-opus-5", selected.provenance_model)
         # Runs on the shared native-Claude model step, and its committed
         # index row is provenance-verified before the push.
         self.assertIn('contains(fromJSON(\'["claude","fable-5","opus-5"]\'), '
                       'steps.effective.outputs.backend)', workflow)
-        self.assertIn(
-            'contains(fromJSON(\'["fable-5","opus-5","opencode-deepseek-v4-flash","opencode-muse-spark-1p3-contributor"]\'), '
-            'steps.effective.outputs.backend)', workflow)
-        self.assertTrue(self.obs["generative-research.yml"].has_opus_dispatch)
-        from build_backend_matrix import GEN_RESEARCH_BACKENDS
-        self.assertIn("opus-5", GEN_RESEARCH_BACKENDS)
-        self.assertIn("claude-opus-5", GEN_RESEARCH_BACKENDS)
+        self.assertIn("EXPECTED_MODEL: ${{ steps.backend.outputs.provenance_model }}", workflow)
         # Opus 5 is the SSOT default: manual dispatch with no backend input,
         # gen-research issues, and hourly-twitter's auto-research all inherit
         # it. The workflow must keep resolving that default at runtime rather
@@ -684,15 +696,18 @@ class RoutingInvariants(unittest.TestCase):
                 )
                 self.assertEqual(result.returncode, 0, result.stderr)
                 output.seek(0)
-                self.assertIn("backend=opus-5", output.read().decode("utf-8"))
+                expected = "backend=default" if event_name == "workflow_dispatch" else "backend=default"
+                self.assertIn(expected, output.read().decode("utf-8"))
+        self.assertEqual(
+            "opus-5",
+            resolve_generative(load_generative_config(LANES_FILE), "default").selector,
+        )
 
     def test_gen_research_opencode_deepseek_is_explicit_and_fail_closed(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
-        # Dispatch option, canonical normalization, and the runtime allowlist.
-        self.assertIn("- opencode-deepseek-v4-flash", workflow)
-        self.assertIn('opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) selector="opencode-deepseek-v4-flash"', workflow)
-        self.assertIn('[ "$BACKEND" != "opencode-deepseek-v4-flash" ]', workflow)
+        selected = resolve_generative(load_generative_config(LANES_FILE), "opencode")
+        self.assertEqual("opencode-deepseek-v4-flash", selected.selector)
         # Fail-closed route preflight and the output guard stay in the
         # workflow; the version-pinned install and the env-var auth moved into
         # the container action and are asserted there (see the containment
@@ -713,14 +728,9 @@ class RoutingInvariants(unittest.TestCase):
                   "generative-research.md").read_text(encoding="utf-8")
         self.assertEqual(['"$GEN_MODEL"', '"$GEN_MODEL"'],
                          re.findall(r"--model (\S+)", prompt))
-        self.assertIn("gen-model: ${{ steps.opencode-route.outputs.model_id }}", workflow)
-        self.assertIn(
-            '["fable-5","opus-5","opencode-deepseek-v4-flash","opencode-muse-spark-1p3-contributor"]',
-            workflow,
-        )
-        self.assertIn("OPENCODE_EXPECTED_MODEL: ${{ steps.opencode-route.outputs.model_id }}",
-                      workflow)
-        self.assertIn('EXPECTED_MODEL="$OPENCODE_EXPECTED_MODEL"', workflow)
+        self.assertIn("gen-model: ${{ steps.backend.outputs.provenance_model }}", workflow)
+        self.assertIn("steps.backend.outputs.adapter == 'opencode'", workflow)
+        self.assertIn("EXPECTED_MODEL: ${{ steps.backend.outputs.provenance_model }}", workflow)
         self.assertIn('if [ "$actual_model" != "$EXPECTED_MODEL" ]; then', workflow)
         self.assertIn('git reset --hard "$PRE_SHA"', workflow)
         self.assertIn('git clean -fd -- research/generative', workflow)
@@ -730,65 +740,49 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(self.obs["generative-research.yml"].opencode_token,
                          "OPENCODE_API_KEY")
         self.assertTrue(self.obs["opencode-deepseek-canary.yml"].opencode)
-        from build_backend_matrix import GEN_RESEARCH_BACKENDS
-        self.assertIn("opencode-deepseek-v4-flash", GEN_RESEARCH_BACKENDS)
 
     def test_gen_research_opencode_muse_is_explicit_provenance_correct_and_opt_in(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
-        self.assertIn("- opencode-muse-spark-1p3-contributor", workflow)
-        self.assertIn(
-            'muse-spark-1.3|muse-1.3) selector="opencode-muse-spark-1p3-contributor"',
-            workflow,
-        )
-        self.assertIn('model="opencode-go/muse-spark-1.3-contributor"', workflow)
-        self.assertIn('model_id="muse-spark-1.3-contributor"', workflow)
-        self.assertIn('transport_path="responses"', workflow)
-        self.assertIn('"max_output_tokens":128', workflow)
+        selected = resolve_generative(load_generative_config(LANES_FILE), "muse-1.3")
+        self.assertEqual("opencode-go/muse-spark-1.3-contributor", selected.model_ref)
+        self.assertEqual("openai-responses", selected.protocol)
+        self.assertIn("openai-responses)", workflow)
+        self.assertIn("max_output_tokens:128", workflow)
         self.assertNotEqual(
             self.lanes["generative-research-default"]["backend"],
             "opencode-muse-spark-1p3-contributor",
         )
-        from build_backend_matrix import GEN_RESEARCH_BACKENDS
-        self.assertIn("opencode-muse-spark-1p3-contributor", GEN_RESEARCH_BACKENDS)
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
         profile = config["backends"]["opencode-muse-spark-1p3-contributor"]
         self.assertEqual("opencode-go", profile["provider"])
         self.assertEqual("muse-spark-1.3-contributor", profile["model"])
         self.assertIn("muse-spark-1.3", profile["aliases"])
-        broken_profiles = copy.deepcopy(self.profiles)
-        broken_profiles["opencode-muse-spark-1p3-contributor"] = Profile(
-            normalized="opencode-muse-spark-1p3-contributor",
-            adapter="opencode",
-            provider="opencode-go",
-            model_id="muse-spark-1.2-contributor",
-            display_name="broken",
-        )
-        self.assertTrue(any("SSOT profile serves" in error
-                            for error in check_opencode_selectors(broken_profiles)))
+        self.assertFalse(profile["production_eligible"])
+        self.assertTrue(profile["restrictions"]["requires_workspace_contributor_consent"])
 
     def test_gen_research_cursor_is_explicit_and_fail_closed(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
-        self.assertIn("- cursor-grok-4p6-fast", workflow)
-        self.assertIn(
-            'cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) selector="cursor-grok-4p6-fast"',
-            workflow)
-        self.assertIn('[ "$BACKEND" != "cursor-grok-4p6-fast" ]', workflow)
+        selected = resolve_generative(load_generative_config(LANES_FILE), "composer-2.5")
+        self.assertEqual("cursor-grok-4p6-fast", selected.selector)
         self.assertIn("Resolve and preflight Cursor CLI route", workflow)
         self.assertIn("Fail Cursor run without article", workflow)
         self.assertIn("uses: ./.github/actions/run-cursor-container", workflow)
-        self.assertIn('model="cursor/cursor-grok-4.6-high-fast"', workflow)
-        model_id = self.assert_single_cursor_model()
+        self.assertIn("model: ${{ steps.backend.outputs.model_ref }}", workflow)
+        self.assertIn("gen-model: ${{ steps.backend.outputs.provenance_model }}", workflow)
+        model_id = selected.provenance_model
         prompt = (REPO_ROOT / ".github" / "cursor" / "prompts" /
                   "generative-research.md").read_text(encoding="utf-8")
-        self.assertEqual([model_id, model_id], re.findall(r"--model (\S+)", prompt))
+        self.assertEqual(['"$GEN_MODEL"', '"$GEN_MODEL"'], re.findall(r"--model (\S+)", prompt))
+        action = (REPO_ROOT / ".github" / "actions" / "run-cursor-container" /
+                  "action.yml").read_text(encoding="utf-8")
+        self.assertIn("GEN_MODEL: ${{ inputs.gen-model }}", action)
+        self.assertIn("--env GEN_MODEL", action)
         self.assertTrue(self.obs["generative-research.yml"].cursor)
         self.assertEqual(self.obs["generative-research.yml"].cursor_token,
                          "CURSOR_API_KEY")
         self.assertTrue(self.obs["cursor-cli-canary.yml"].cursor)
-        from build_backend_matrix import GEN_RESEARCH_BACKENDS
-        self.assertIn("cursor-grok-4p6-fast", GEN_RESEARCH_BACKENDS)
         self.assertNotEqual(self.lanes["generative-research-default"]["backend"],
                             "cursor-grok-4p6-fast")
 
@@ -847,6 +841,10 @@ class RoutingInvariants(unittest.TestCase):
                             found.add(model)
             seen[name] = found
         for name, found in seen.items():
+            if name == "generative-research.yml":
+                found.update(
+                    profile.model_ref for profile in generative_profiles(self.profiles, "opencode")
+                )
             self.assertTrue(found, f"{name} has no inspectable OpenCode model")
             self.assertTrue(all(ref.startswith("opencode-go/") for ref in found),
                             f"unexpected OpenCode provider in {name}: {found}")
@@ -859,7 +857,7 @@ class RoutingInvariants(unittest.TestCase):
     )
 
     def assert_single_cursor_model(self) -> str:
-        """Exactly one Cursor model id across every Cursor workflow."""
+        """Legacy production/canary callers pin one model; generative is a registry."""
         from build_backend_matrix import CURSOR_ACTION_MODEL_RE, CURSOR_MODEL_RE
         seen: dict[str, set[str]] = {}
         for name in self.CURSOR_WORKFLOWS:
@@ -877,15 +875,45 @@ class RoutingInvariants(unittest.TestCase):
                         if model and "${{" not in model:
                             found.update(CURSOR_ACTION_MODEL_RE.findall(model))
             seen[name] = found
-        union = set().union(*seen.values()) if seen else set()
+        generative_models = {
+            profile.model_id for profile in generative_profiles(self.profiles, "cursor")
+        }
+        legacy = {name: found for name, found in seen.items()
+                  if name != "generative-research.yml"}
+        union = set().union(*legacy.values()) if legacy else set()
         self.assertEqual(
             1, len(union),
-            f"Cursor workflows must route to exactly one model; found {seen}")
+            f"Cursor production/canary workflows must route to one model; found {legacy}")
         model_id = union.pop()
-        for name, found in seen.items():
+        for name, found in legacy.items():
             self.assertEqual({model_id}, found,
                              f"{name} does not route to {model_id}")
+        self.assertTrue(generative_models, "generative registry has no Cursor model")
+        self.assertIn(model_id, generative_models,
+                      "production Cursor model is not exposed in the generative registry")
         return model_id
+
+    def test_generative_cursor_registry_allows_multiple_models(self):
+        profiles = copy.deepcopy(self.profiles)
+        profiles["cursor-future"] = Profile(
+            normalized="cursor-future",
+            adapter="cursor",
+            provider="cursor",
+            model_id="future-model",
+            display_name="Future Cursor model",
+            selectors=["cursor-future"],
+            production_eligible=False,
+            generative_selector="cursor-future",
+            provenance_model="future-model",
+            protocol="cursor-cli",
+            preflight_path="harness",
+        )
+        original = self.profiles
+        self.profiles = profiles
+        try:
+            self.assertEqual("cursor-grok-4.6-high-fast", self.assert_single_cursor_model())
+        finally:
+            self.profiles = original
 
     def test_all_opencode_callers_disable_checkout_credentials(self):
         """Every known caller removes checkout auth before metadata cleanup."""
@@ -1117,7 +1145,8 @@ class RoutingInvariants(unittest.TestCase):
         # The RAW API probes bill the bare id; they must match the harness id
         # or the cheap preflight certifies an entitlement the run never uses.
         self.assertIn('"model": "deepseek-v4-flash"', canary)
-        self.assertIn('{"model":"deepseek-v4-flash"', gen)
+        self.assertIn("MODEL_ID: ${{ steps.backend.outputs.model }}", gen)
+        self.assertIn("--arg model \"$MODEL_ID\"", gen)
         self.assertIn('"opencode-glm-5p3-flash"', canary)
         self.assertIn('model: ${{ steps.glm_route.outputs.model_ref }}', canary)
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
@@ -3285,6 +3314,14 @@ class CrossCheckEnforcement(unittest.TestCase):
         lanes["generative-research-default"]["backend"] = "zai-glm-5p2"
         errors = cross_check(lanes, obs, self.profiles)
         self.assertTrue(any("not supported by" in e for e in errors), errors)
+
+    def test_restricted_manual_backend_cannot_become_production_route(self):
+        lanes, obs = self.mutated()
+        routes = copy.deepcopy(load_routes())
+        routes["research-editorial"]["backend"] = \
+            "opencode-muse-spark-1p3-contributor"
+        errors = cross_check(lanes, obs, self.profiles, routes)
+        self.assertTrue(any("not production-eligible" in e for e in errors), errors)
 
     def test_rerouting_a_pinned_lane_is_an_error(self):
         lanes, obs = self.mutated()

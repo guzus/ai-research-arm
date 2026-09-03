@@ -122,7 +122,7 @@ uv run python scripts/write_generative_research.py \
   --tags "$(cat .gen-input/tags.txt)" \
   --source "$GEN_SOURCE" \
   --prompt "$(cat .gen-input/prompt.txt)" \
-  --model cursor-grok-4.6-high-fast \
+  --model "$GEN_MODEL" \
   --cite-density-min 10 --refs-min 20 \
   --qsanity \
   --html-body "$GEN_DRAFT"
@@ -136,7 +136,7 @@ uv run python scripts/write_generative_research.py \
   --tags "$(cat .gen-input/tags.txt)" \
   --source "$GEN_SOURCE" \
   --prompt "$(cat .gen-input/prompt.txt)" \
-  --model cursor-grok-4.6-high-fast \
+  --model "$GEN_MODEL" \
   --cite-density-min 10 --refs-min 20 \
   --qsanity \
   --html-body "$GEN_DRAFT"

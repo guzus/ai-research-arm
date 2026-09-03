@@ -27,9 +27,25 @@ class BuildOpenCodeConfigTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             source = Path(tmp) / "base.json"
             source.write_text("{}")
-            for model_ref in ("deepseek", "../x/y", "opencode-go/a/b", "x/ bad"):
+            for model_ref in (
+                "deepseek", "../x/y", "x/ bad", "openrouter/a//b",
+                "openrouter/a/../b", "openrouter/a/./b", "openrouter/a/",
+            ):
                 with self.subTest(model_ref=model_ref), self.assertRaises(ValueError):
                     build(source, Path(tmp) / "out.json", model_ref)
+
+    def test_accepts_nested_model_id_for_registered_providers(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "base.json"
+            source.write_text("{}")
+            destination = Path(tmp) / "out.json"
+            build(source, destination, "openrouter/anthropic/claude-sonnet-5")
+            generated = json.loads(destination.read_text())
+            self.assertEqual(
+                {},
+                generated["provider"]["openrouter"]["models"]
+                ["anthropic/claude-sonnet-5"],
+            )
 
     def test_merges_existing_provider_catalog_without_static_global_default(self):
         with tempfile.TemporaryDirectory() as tmp:

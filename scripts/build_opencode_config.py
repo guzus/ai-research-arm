@@ -10,13 +10,15 @@ import re
 from pathlib import Path
 
 
-MODEL_REF = re.compile(r"^[a-z0-9][a-z0-9-]*/[A-Za-z0-9][A-Za-z0-9._-]*$")
+MODEL_REF = re.compile(r"^[a-z0-9][a-z0-9-]*/[A-Za-z0-9][A-Za-z0-9._/-]*$")
 
 
 def build(source: Path, destination: Path, model_ref: str) -> None:
     if not MODEL_REF.fullmatch(model_ref):
         raise ValueError("model must be one canonical provider/model ref")
     provider_id, model_id = model_ref.split("/", 1)
+    if any(part in {"", ".", ".."} for part in model_id.split("/")):
+        raise ValueError("model contains an unsafe or empty path segment")
     config = json.loads(source.read_text(encoding="utf-8"))
     if not isinstance(config, dict):
         raise ValueError("base OpenCode config must be a JSON object")

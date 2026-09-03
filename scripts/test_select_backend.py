@@ -38,24 +38,27 @@ def fake_data(chain, lanes=None):
             },
         },
         "backends": {
-            "claude": {"provider": "claude", "model": "", "display_name": "Claude", "aliases": []},
+            "claude": {"provider": "claude", "model": "", "display_name": "Claude",
+                       "aliases": [], "production_eligible": True},
             "fireworks-glm-5p2": {"provider": "fireworks",
                                   "model": "accounts/fireworks/models/glm-5p2",
                                   "display_name": "GLM 5.2 via Fireworks",
-                                  "aliases": ["glm-5p2", "glm"]},
+                                  "aliases": ["glm-5p2", "glm"],
+                                  "production_eligible": True},
             "zai-glm-5p2": {"provider": "zai", "model": "glm-5.2",
-                            "display_name": "GLM 5.2 via Z.ai", "aliases": ["zai"]},
+                            "display_name": "GLM 5.2 via Z.ai", "aliases": ["zai"],
+                            "production_eligible": True},
             "opencode-glm-5p3-flash": {
                 "adapter": "opencode",
                 "provider": "opencode-go", "model": "glm-5.3-flash",
                 "display_name": "GLM 5.3 Flash via OpenCode Go",
-                "aliases": ["opencode-glm"],
+                "aliases": ["opencode-glm"], "production_eligible": True,
             },
             "cursor-grok-4p6-fast": {
                 "adapter": "cursor",
                 "provider": "cursor", "model": "cursor-grok-4.6-high-fast",
                 "display_name": "Grok 4.6 Fast via Cursor CLI",
-                "aliases": ["cursor"],
+                "aliases": ["cursor"], "production_eligible": True,
             },
         },
         "fallback": {"harness": "agent-run", "chain": chain,
@@ -84,9 +87,13 @@ class SelectBackendTest(unittest.TestCase):
                 lambda model, a=available, p=provider: (a, f"{p} stub")
             )
 
-    def run_select(self, *argv, chain=("zai-glm-5p2", "claude"), lanes=None):
+    def run_select(self, *argv, chain=("zai-glm-5p2", "claude"), lanes=None,
+                   mutate=None):
         data_file = Path(self.tmp.name) / "backends.json"
-        data_file.write_text(json.dumps(fake_data(list(chain), lanes)))
+        data = fake_data(list(chain), lanes)
+        if mutate:
+            mutate(data)
+        data_file.write_text(json.dumps(data))
         out_file = Path(self.tmp.name) / "out.txt"
         out_file.write_text("")
         stdout = io.StringIO()
@@ -132,6 +139,25 @@ class SelectBackendTest(unittest.TestCase):
         self.assertEqual(out["adapter"], "cursor")
         self.assertEqual(out["used-fallback"], "true")
         self.assertIn("rate limited for this run", log)
+
+    def test_automated_lane_rejects_restricted_fallback_at_runtime(self):
+        lanes = {
+            "digest": {"workflow": "daily-digest.yml", "harness": "agent-run",
+                       "backend": "claude",
+                       "fallback_chain": ["cursor-grok-4p6-fast"]},
+        }
+
+        def restrict_cursor(data):
+            profile = data["backends"]["cursor-grok-4p6-fast"]
+            profile["production_eligible"] = True
+            profile["restrictions"] = {"manual_only": True}
+
+        code, out, log = self.run_select(
+            "--lane", "digest", lanes=lanes, mutate=restrict_cursor)
+        self.assertEqual(2, code)
+        self.assertNotIn("backend", out)
+        self.assertIn("not production-eligible", log)
+        self.assertIn("manual_only", log)
 
     def test_twitter_primary_and_repair_use_cursor_on_claude_429(self):
         lanes = {
