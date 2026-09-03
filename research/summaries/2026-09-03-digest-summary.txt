@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-09-03
+
+TOP STORIES:
+• Google shipped Gemini 3.8 Flash (third Flash in 6 weeks; $0.75/$3.75)
+• DOJ backed OpenAI: training on copyrighted text is fair use
+• Broadcom Q3: $29.6B revenue, $16.7B AI semis (+221% YoY)
+
+KEY NUMBERS:
+• Wonderful: $550M Series C at $5B
+• HiddenLayer: $100M Series B
+• Palo Alto: $500M for Console (sources)
+• FrontierSWE v2: Fable 5.1 56.3% vs GPT-5.6 32.2%
+• HN Gemini thread: 748 points / 449 comments
+
+TRENDING: Gemini 3.8 Flash vs Mistral training-on-inputs
+
+Full digest on GitHub.

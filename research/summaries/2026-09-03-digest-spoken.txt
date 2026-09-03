@@ -1,0 +1,10 @@
+Speaker 1: Thursday, September third, twenty twenty-six.
+Speaker 2: [high_energy] Google just shipped Gemini three point eight Flash, its third Flash model in six weeks, priced at seventy-five cents in and three dollars seventy-five out.
+Speaker 1: That cadence is the story, and Hacker News already has seven hundred forty-eight points on the thread.
+Speaker 2: That's the first time we've seen three Flash drops stacked that tight.
+Speaker 1: On the policy front, the Justice Department backed OpenAI, [dramatic_pause] arguing that training on copyrighted text is fair use.
+Speaker 2: Worth noting that's the same fight Mistral is in over training on inputs.
+Speaker 1: Some quick numbers from Broadcom's third quarter: [emphasis] twenty-nine point six billion dollars [/emphasis] in revenue, and AI semis at [emphasis] sixteen point seven billion [/emphasis], up two hundred twenty-one percent year over year.
+Speaker 2: The funding tape is loud too. Wonderful closed a five hundred fifty million dollar Series C at five billion, HiddenLayer raised one hundred million, and Palo Alto is said to be putting five hundred million into Console.
+Speaker 1: And on Frontier SWE version two, Fable five point one hit [emphasis] fifty-six point three percent [/emphasis] against GPT five point six at thirty-two point two.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
