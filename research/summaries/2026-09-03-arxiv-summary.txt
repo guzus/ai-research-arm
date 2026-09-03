@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-03
+
+TOP 5 PAPERS:
+• Gold-medal coding — Nemotron-3-Ultra-CC scores 535.4/600 at IOI 2026, first AI to beat the top human (498)
+• SolarWM — open 5B–33B video world models; minute-to-hour rollouts after training on 5s clips
+• Cliff — process rewards from the first mistake; +15% vs on-policy distill, +7% vs GRPO
+• oHC — SO(4) quaternion Hyper-Connections; no extra params, beats mHC without stream collapse
+• Linguistic Illegibility — CoT/probe monitors can never be sound; sandbox via taint tracking
+
+CATEGORIES: NLP 9, CV/Multimodal 8, Agents & Reasoning 5, Safety 5, Other 6
+
+Full report on GitHub.
