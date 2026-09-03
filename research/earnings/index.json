@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 13,
+  "count": 14,
   "events": [
+    {
+      "file": "2026-09-02-AVGO-FY26Q3.md",
+      "date": "2026-09-02",
+      "ticker": "AVGO",
+      "period": "FY26Q3",
+      "issuer": "Broadcom Inc.",
+      "form": "8-K",
+      "accession": "0001730168-26-000076",
+      "transcript": false
+    },
     {
       "file": "2026-09-01-DELL-FY27Q2.md",
       "date": "2026-09-01",
