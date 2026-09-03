@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-04 15:00 UTC",
-    "headline": "JUDGE DENIES OPENAI MOTION TO PUT ALLEGED MUSK SETTLEMENT MESSAGE BEFORE JURY VIA BROCKMAN TESTIMONY",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-04-twitter-15h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2051323907174604831"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 15:00 UTC",
-    "headline": "SAP MOVING TO BLOCK UNAUTHORIZED AI AGENTS FROM OPENAI, ANTHROPIC AS THREAT TO CUSTOMER DATA GRIP MOUNTS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-04-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2051323974363070562"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-04 15:00 UTC",
-    "headline": "AMD MI550 POSITIONED TO CHALLENGE NVIDIA RUBIN ULTRA IN 2H27 WITH 4-DIE/12-HBM4E PACKAGE AS RUBIN ULTRA SLIPS",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-04-twitter-15h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051305126011576374"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-04 18:00 UTC",
-    "headline": "GROK BUILD \"LIVE NOW\" WAVE IS @GROK CHATBOT HALLUCINATION \u2014 SAME ESCALATION BOILERPLATE SINCE APR 26, NO XAI PRIMARY POST",
-    "source": "@grok",
-    "source_file": "research/summaries/2026-05-04-twitter-18h-headlines.json",
-    "url": "https://x.com/grok/status/2051365581136249257"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 18:00 UTC",
-    "headline": "ANTHROPIC JV WIRE: \"STANDALONE ENTITY WITH ANTHROPIC ENGINEERING EMBEDDED\" \u2014 PALANTIR-FDE TEMPLATE NOW EXPLICIT",
-    "source": "@CHItrader",
-    "source_file": "research/summaries/2026-05-04-twitter-18h-headlines.json",
-    "url": "https://x.com/CHItrader/status/2051285980666118656"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 18:00 UTC",
-    "headline": "ZERO OVERLAP BETWEEN ANTHROPIC'S 9 JV BACKERS AND OPENAI DEPLOYCO'S 19 \u2014 ALTS FIRMS PICKING SIDES IN AI ENTERPRISE WAR",
-    "source": "@AlperTheKing",
-    "source_file": "research/summaries/2026-05-04-twitter-18h-headlines.json",
-    "url": "https://x.com/AlperTheKing/status/2051355528077447459"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-04 18:00 UTC",
     "headline": "JACK CLARK ESSAY: ~30% CHANCE OF FULLY AUTOMATED AI R&D BY 2027, ~60%+ BY 2028 \u2014 NOT STRICT RSI, CLAIM IS AI TRAINS ITS OWN SUCCESSOR",
@@ -25136,5 +25082,47 @@
     "headline": "THE INFORMATION: THINKING MACHINES SEEKS FRESH CAPITAL AT ROUGHLY $40B VALUATION",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2095602785349751003"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-03 23:14:13 UTC",
+    "headline": "MICRON TO ADD UP TO 60K HBM WAFERS/MONTH BY YEAR-END, TARGETING ~100K WPM",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2095633416041689569"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-03 23:14:13 UTC",
+    "headline": "SPACEX: GROK OUTAGE WAS MEMPHIS COMPUTE CENTER; OPENAI CITES ROUTING ERROR",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2095651097545494923"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-03 23:14:13 UTC",
+    "headline": "NYT: LAUSD BANS MOST GENERATIVE AI FOR STUDENTS ON DISTRICT DEVICES",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2095643644024033494"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-03 23:14:13 UTC",
+    "headline": "COGNITION: GPT-6 ASTRA COMING TO DEVIN; WITHIN 0.4 OF FABLE 5 ON FRONTIERCODE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2095648712639070518"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-03 23:14:13 UTC",
+    "headline": "PERPLEXITY TO PUT ASTRA ON COMET AND COMPUTER; WANDR SCORE 0.682 AT $11.98/TASK",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2095621195131695352"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-03 23:14:13 UTC",
+    "headline": "ANTHROPIC SHIPS ANT APPLY \u2014 REPO FILES SYNC MANAGED AGENTS, SKILLS, DEPLOYS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2095651107645145538"
   }
 ]
