@@ -27,6 +27,10 @@ name: Generative Research
 #                authenticated by the plain OPENCODE_API_KEY env var (no
 #                auth.json seeding). The Moonshot route is gone, not
 #                repointed — Moonshot serves Kimi only.
+#   * opencode-muse-spark-1p3-contributor — Meta Muse Spark 1.3 Contributor
+#                through OpenCode Go's Responses transport. Region-limited;
+#                selecting it requires prior workspace consent to Contributor
+#                model-improvement data collection.
 #   * cursor-grok-4p6-fast — Grok 4.6 Fast via the Cursor CLI (`agent`),
 #                authenticated by CURSOR_API_KEY inside run-cursor-container.
 #                Selectable comparison backend; not the production default.
@@ -79,6 +83,7 @@ on:
           - deepseek-v4-flash
           - codex
           - opencode-deepseek-v4-flash
+          - opencode-muse-spark-1p3-contributor
           - cursor-grok-4p6-fast
           - cursor-composer-2p5
           - claude
@@ -276,6 +281,7 @@ jobs:
             case "$selector" in
               codex|openai-codex) selector="codex" ;;
               opencode|opencode-deepseek|opencode-deepseek-v4-flash|deepseek-opencode) selector="opencode-deepseek-v4-flash" ;;
+              opencode-muse-spark-1p3-contributor|opencode-muse-spark-1.3-contributor|opencode-muse-spark-1.3|muse-spark-1.3-contributor|muse-spark-1.3|muse-1.3) selector="opencode-muse-spark-1p3-contributor" ;;
               cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) selector="cursor-grok-4p6-fast" ;;
               deepseek) selector="deepseek-v4-flash" ;;
               glm-5.2|glm5.2|glm52|glm-5p2) selector="glm-5p2" ;;
@@ -336,7 +342,7 @@ jobs:
                 | tr '[:upper:]' '[:lower:]' || true)
               CANDIDATE="$(normalize_backend "$CANDIDATE")"
               if [ -n "${CANDIDATE:-}" ]; then
-                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "opus-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-deepseek-v4-flash" ] && [ "$CANDIDATE" != "cursor-grok-4p6-fast" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
+                if [ "$CANDIDATE" != "claude" ] && [ "$CANDIDATE" != "fable-5" ] && [ "$CANDIDATE" != "opus-5" ] && [ "$CANDIDATE" != "codex" ] && [ "$CANDIDATE" != "opencode-deepseek-v4-flash" ] && [ "$CANDIDATE" != "opencode-muse-spark-1p3-contributor" ] && [ "$CANDIDATE" != "cursor-grok-4p6-fast" ] && [ "$CANDIDATE" != "deepseek-v4-flash" ] && [ "$CANDIDATE" != "glm-5p2" ]; then
                   echo "unsupported backend/model: $CANDIDATE" >&2
                   exit 1
                 fi
@@ -367,7 +373,7 @@ jobs:
           fi
 
           BACKEND="$(normalize_backend "$BACKEND")"
-          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "opus-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-deepseek-v4-flash" ] && [ "$BACKEND" != "cursor-grok-4p6-fast" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
+          if [ "$BACKEND" != "claude" ] && [ "$BACKEND" != "fable-5" ] && [ "$BACKEND" != "opus-5" ] && [ "$BACKEND" != "codex" ] && [ "$BACKEND" != "opencode-deepseek-v4-flash" ] && [ "$BACKEND" != "opencode-muse-spark-1p3-contributor" ] && [ "$BACKEND" != "cursor-grok-4p6-fast" ] && [ "$BACKEND" != "deepseek-v4-flash" ] && [ "$BACKEND" != "glm-5p2" ]; then
             echo "unsupported backend/model: $BACKEND" >&2
             exit 1
           fi
@@ -1966,21 +1972,20 @@ jobs:
       # opencode CLI (github.com/anomalyco/opencode) on the OpenCode Go
       # subscription ($10/mo), authenticated by a plain env-var API key — no
       # interactive `opencode auth login`, no auth.json seeding.
-      #   OPENCODE_API_KEY — built-in `opencode-go` provider, model
-      #   `opencode-go/deepseek-v4-flash` (models.dev pins
+      #   OPENCODE_API_KEY — built-in `opencode-go` provider. Explicit models
+      #   are DeepSeek V4 Flash and Meta Muse Spark 1.3 Contributor (models.dev pins
       #   env=OPENCODE_API_KEY, api=opencode.ai/zen/go/v1).
       #
-      # This route is pinned to `opencode-go/deepseek-v4-flash` (the 2026-07-31
-      # release — on this provider the bare id IS that build; only Fireworks
-      # needs a -0731 suffix). Two consequences are deliberate:
+      # DeepSeek is pinned to `opencode-go/deepseek-v4-flash` (the 2026-07-31
+      # release); Muse is pinned to `opencode-go/muse-spark-1.3-contributor`.
+      # Two consequences are deliberate:
       #   * The Moonshot route is GONE, not repointed — Moonshot serves Kimi
       #     only. The preflight hard-fails there rather than silently authoring
       #     with a model the article metadata does not name.
-      #   * DeepSeek V4 Flash is the preferred low-cost OpenCode Go model;
-      #     attribution and the strict route stay coupled to that exact model.
+      #   * Attribution and strict routing stay coupled to the selected model.
       #
       # The install is version-pinned at 1.18.3 (verified to resolve
-      # opencode-go/deepseek-v4-flash) and OPENCODE_DISABLE_AUTOUPDATE keeps the
+      # both refs above) and OPENCODE_DISABLE_AUTOUPDATE keeps the
       # pinned binary deterministic on the persistent self-hosted runner.
       # Headless permission grants + model declarations live in the
       # committed .github/opencode/opencode.json, injected via
@@ -1993,7 +1998,7 @@ jobs:
       # prohibitions, Actions log masking, and keys scoped to model billing
       # only. Keep this step's env to the minimum set.
       - name: Resolve and preflight OpenCode route
-        if: steps.effective.outputs.backend == 'opencode-deepseek-v4-flash'
+        if: contains(fromJSON('["opencode-deepseek-v4-flash","opencode-muse-spark-1p3-contributor"]'), steps.effective.outputs.backend)
         id: opencode-route
         # The curl below is bounded (--max-time 60 --retry 2 --retry-delay 5,
         # so ~190s worst case), but a bounded curl is not a bounded STEP: on
@@ -2005,6 +2010,7 @@ jobs:
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+          EFFECTIVE_BACKEND: ${{ steps.effective.outputs.backend }}
         run: |
           set -euo pipefail
           # One cheap authenticated call before the 90-minute agent run —
@@ -2015,9 +2021,22 @@ jobs:
           # a genuinely dead key still fails within ~a minute.
           if [ -n "${OPENCODE_API_KEY:-}" ]; then
             route="opencode-go"
-            model="opencode-go/deepseek-v4-flash"
-            # The Go endpoint is OpenAI-compatible (raw model id is bare
-            # "deepseek-v4-flash" — the models.dev id for this provider) but
+            case "$EFFECTIVE_BACKEND" in
+              opencode-deepseek-v4-flash)
+                model_id="deepseek-v4-flash"
+                model="opencode-go/deepseek-v4-flash"
+                transport_path="chat/completions"
+                request_data='{"model":"deepseek-v4-flash","max_tokens":128,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}'
+                ;;
+              opencode-muse-spark-1p3-contributor)
+                model_id="muse-spark-1.3-contributor"
+                model="opencode-go/muse-spark-1.3-contributor"
+                transport_path="responses"
+                request_data='{"model":"muse-spark-1.3-contributor","max_output_tokens":128,"input":"Reply with exactly: ok"}'
+                ;;
+              *) echo "::error::Unsupported OpenCode backend."; exit 1 ;;
+            esac
+            # The Go endpoint is OpenAI-compatible (the raw model id is bare) but
             # otherwise an undocumented surface (models.dev provider.toml
             # caveat). Probe with one tiny billable completion and be
             # AUTH-FATAL ONLY: 401/402 are definitive (bad key / billing)
@@ -2035,14 +2054,14 @@ jobs:
               -A "ai-research-arm-preflight/1.0 (+https://github.com/guzus/ai-research-arm)" \
               -H "Authorization: Bearer $OPENCODE_API_KEY" \
               -H "Content-Type: application/json" \
-              --data '{"model":"deepseek-v4-flash","max_tokens":128,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}' \
-              https://opencode.ai/zen/go/v1/chat/completions || echo "000")
+              --data "$request_data" \
+              "https://opencode.ai/zen/go/v1/$transport_path" || echo "000")
             case "$status" in
               2*)
                 echo "OpenCode Go preflight OK (HTTP $status)."
                 ;;
               401|402)
-                echo "::error::OpenCode Go preflight failed with HTTP $status — the key is invalid or cannot bill Go usage. Check the plan + limits at https://opencode.ai/auth (the Moonshot route is unavailable while this backend is pinned to DeepSeek). Response: $(head -c 500 "$body_file" 2>/dev/null || true)"
+                echo "::error::OpenCode Go preflight failed with HTTP $status — the key is invalid or cannot bill Go usage. Check the plan + limits at https://opencode.ai/auth. Response: $(head -c 500 "$body_file" 2>/dev/null || true)"
                 exit 1
                 ;;
               *)
@@ -2050,12 +2069,12 @@ jobs:
                 ;;
             esac
           elif [ -n "${MOONSHOT_API_KEY:-}" ]; then
-            # Moonshot serves Kimi only and cannot serve deepseek-v4-flash.
+            # Moonshot serves Kimi only and cannot serve either selected model.
             # This backend is strict —
             # it must never silently author with a model other than the one its
             # article metadata records — so an OPENCODE_API_KEY-less run now
             # fails here instead of quietly producing a Kimi article.
-            echo "::error::MOONSHOT_API_KEY is set but OPENCODE_API_KEY is not. Moonshot cannot serve the required deepseek-v4-flash model. Set OPENCODE_API_KEY from https://opencode.ai/auth."
+            echo "::error::MOONSHOT_API_KEY is set but OPENCODE_API_KEY is not. Moonshot cannot serve the selected OpenCode Go model. Set OPENCODE_API_KEY from https://opencode.ai/auth."
             exit 1
           else
             echo "::error::No opencode auth configured. Set OPENCODE_API_KEY (OpenCode Go subscription key from https://opencode.ai/auth) with: gh secret set OPENCODE_API_KEY"
@@ -2064,6 +2083,7 @@ jobs:
           {
             echo "route=$route"
             echo "model=$model"
+            echo "model_id=$model_id"
           } >> "$GITHUB_OUTPUT"
           echo "Resolved opencode route: $route ($model)"
 
@@ -2081,8 +2101,8 @@ jobs:
       # credentials. Untrusted GEN_TOPIC / GEN_PROMPT / GEN_TAGS still stay out
       # of env entirely — the agent reads them from .gen-input/ inside the
       # mounted workspace.
-      - name: Run Generative Research (OpenCode DeepSeek V4 Flash)
-        if: steps.effective.outputs.backend == 'opencode-deepseek-v4-flash'
+      - name: Run Generative Research (OpenCode Go)
+        if: contains(fromJSON('["opencode-deepseek-v4-flash","opencode-muse-spark-1p3-contributor"]'), steps.effective.outputs.backend)
         id: gen-opencode
         continue-on-error: true
         timeout-minutes: 90
@@ -2099,6 +2119,7 @@ jobs:
           bird-ct0: ${{ secrets.BIRD_CT0 }}
           gen-slug: ${{ steps.params.outputs.slug }}
           gen-source: ${{ steps.params.outputs.source }}
+          gen-model: ${{ steps.opencode-route.outputs.model_id }}
           gen-draft: ${{ steps.draft.outputs.path }}
 
       - name: Resolve and preflight Cursor CLI route
@@ -3488,20 +3509,35 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "Generated: research/generative/$FILENAME (slug: $ARTICLE_SLUG)"
 
-      # fable-5 and opus-5 are explicit, opt-in model selectors, so provenance
-      # must be exact — the whole point of choosing one is knowing which model
+      # Premium native and explicit OpenCode selector provenance must be exact —
+      # the whole point of choosing one is knowing which model
       # wrote the article. Do not rely only on the agent following its writer
       # command: verify the committed index row against the same resolver
       # output that pinned the served model, and roll back before any push if
       # they differ.
       - name: Verify pinned model provenance
-        if: contains(fromJSON('["fable-5","opus-5"]'), steps.effective.outputs.backend) && steps.outfile.outputs.has_file == 'true'
+        if: contains(fromJSON('["fable-5","opus-5","opencode-deepseek-v4-flash","opencode-muse-spark-1p3-contributor"]'), steps.effective.outputs.backend) && steps.outfile.outputs.has_file == 'true'
         env:
           FILE: ${{ steps.outfile.outputs.file }}
-          EXPECTED_MODEL: ${{ steps.native-model.outputs.model }}
+          BACKEND: ${{ steps.effective.outputs.backend }}
+          NATIVE_EXPECTED_MODEL: ${{ steps.native-model.outputs.model }}
+          OPENCODE_EXPECTED_MODEL: ${{ steps.opencode-route.outputs.model_id }}
           PRE_SHA: ${{ steps.pre.outputs.sha }}
         run: |
           set -euo pipefail
+          case "$BACKEND" in
+            fable-5|opus-5) EXPECTED_MODEL="$NATIVE_EXPECTED_MODEL" ;;
+            opencode-deepseek-v4-flash|opencode-muse-spark-1p3-contributor)
+              EXPECTED_MODEL="$OPENCODE_EXPECTED_MODEL"
+              ;;
+            *) echo "::error::Unexpected provenance-gated backend: $BACKEND"; exit 1 ;;
+          esac
+          if [ -z "$EXPECTED_MODEL" ]; then
+            echo "::error::Expected model provenance is missing for backend '$BACKEND'."
+            git reset --hard "$PRE_SHA"
+            git clean -fd -- research/generative || true
+            exit 1
+          fi
           actual_model=$(jq -r --arg file "$FILE" \
             '[.[] | select(.file == $file) | .model] | last // ""' \
             research/generative/index.json)
@@ -4011,9 +4047,9 @@ jobs:
           exit 1
 
       - name: Fail OpenCode run without article
-        if: always() && steps.effective.outputs.backend == 'opencode-deepseek-v4-flash' && steps.outfile.outputs.has_file != 'true'
+        if: always() && contains(fromJSON('["opencode-deepseek-v4-flash","opencode-muse-spark-1p3-contributor"]'), steps.effective.outputs.backend) && steps.outfile.outputs.has_file != 'true'
         run: |
-          echo "::error::OpenCode DeepSeek V4 Flash backend did not produce an article."
+          echo "::error::OpenCode backend did not produce an article."
           echo "OpenCode outcome: ${{ steps.gen-opencode.outcome }}"
           exit 1
 

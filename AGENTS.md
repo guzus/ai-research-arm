@@ -98,7 +98,8 @@ short pointer plus the few genuinely agent-specific notes.
 - **OpenCode Go runs** use the opencode CLI (pinned `opencode-ai@1.18.3`)
   with plain env-var auth. The registered editorial profile uses
   `glm-5.3-flash`; explicit generative-research, Twitter comparison, and canary
-  paths remain pinned to `deepseek-v4-flash`. A single secret is the whole login;
+  paths remain pinned to `deepseek-v4-flash`; generative research also exposes
+  `muse-spark-1.3-contributor`. A single secret is the whole login;
   there is no `opencode auth login` step and no auth-file seeding. The workflow
   resolves the route exclusively through `OPENCODE_API_KEY` (OpenCode Go subscription — sign in
   at https://opencode.ai/auth, subscribe, copy the key). The Go plan caps are
@@ -110,9 +111,12 @@ short pointer plus the few genuinely agent-specific notes.
   RSS/community/Bluesky.
   Moonshot is not a provider for either pinned model and is not a fallback.
   Store the key with `gh secret set OPENCODE_API_KEY`; the retained
-  `opencode-deepseek-canary.yml` validates both the explicit DeepSeek path and
-  the registered editorial GLM profile before dispatching
-  `generative-research.yml backend=opencode-deepseek-v4-flash`.
+  `opencode-deepseek-canary.yml` validates the explicit DeepSeek path and the
+  registered GLM profile; its opt-in Muse probe validates
+  `generative-research.yml backend=opencode-muse-spark-1p3-contributor`.
+  Muse uses the OpenAI Responses transport, is region-limited, and requires
+  workspace consent to Contributor model-improvement data collection. Keep it
+  out of production routes unless those constraints are deliberately accepted.
 
 - **Cursor CLI + Grok 4.6 Fast** is an isolated editorial adapter
   (`run-cursor-container`, official `agent` binary, `CURSOR_API_KEY`).

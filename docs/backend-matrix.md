@@ -119,13 +119,15 @@ Reading notes:
 | (canary) cursor + cursor-grok-4.6-high-fast | `cursor-cli-canary.yml` | Cursor CLI (containerised) | Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (diagnostics lane) |
 | (dispatch path) backend=fireworks (+2 retry steps) | `generative-research.yml` | Claude Code · claude-code-action (env-rerouted) | Fireworks (Anthropic-compatible endpoint) | dynamic: per fireworks profile step | `FIREWORKS_API_KEY` | workflow-level `fireworks_fallback` input (default `claude`) |
 | (dispatch path) backend=codex | `generative-research.yml` | Codex CLI | OpenAI (ChatGPT subscription auth) | codex CLI default | `CODEX_AUTH_JSON` | — |
-| (dispatch path) backend=opencode-deepseek-v4-flash | `generative-research.yml` | opencode CLI (containerised) | OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (strict comparison backend) |
+| (dispatch path) backend=opencode-deepseek-v4-flash | `generative-research.yml` | opencode CLI (containerised) | OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (strict explicit backend) |
+| (dispatch path) backend=opencode-muse-spark-1p3-contributor | `generative-research.yml` | opencode CLI (containerised) | OpenCode Go | `muse-spark-1.3-contributor` | `OPENCODE_API_KEY` | hard fail (strict explicit backend) |
 | (dispatch path) backend=fable-5 | `generative-research.yml` | Claude Code · claude-code-action (explicit premium selector) | Anthropic (native) | `claude-fable-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (no model-action retry) |
 | (dispatch path) backend=opus-5 | `generative-research.yml` | Claude Code · claude-code-action (explicit model selector) | Anthropic (native) | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (one recovery retry, same as `claude`) |
 | (dispatch path) backend=cursor-grok-4p6-fast | `generative-research.yml` | Cursor CLI (containerised) | Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (strict comparison backend) |
 | (tier) backend=opencode-deepseek-v4-flash | `hourly-twitter.yml` | opencode CLI (containerised) | OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (strict comparison tier) |
 | (tier) backend=cursor-grok-4p6-fast | `hourly-twitter.yml` | Cursor CLI (containerised) | Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (strict comparison tier) |
 | (canary) opencode + deepseek-v4-flash | `opencode-deepseek-canary.yml` | opencode CLI (containerised) | OpenCode Go | `deepseek-v4-flash` | `OPENCODE_API_KEY` | hard fail (diagnostics lane) |
+| (canary) opencode + muse-spark-1.3-contributor | `opencode-deepseek-canary.yml` | opencode CLI (containerised) | OpenCode Go | `muse-spark-1.3-contributor` | `OPENCODE_API_KEY` | hard fail (diagnostics lane) |
 
 ### Workflows with no model lane (deterministic / infra)
 
@@ -144,7 +146,7 @@ Reading notes:
 - `model-pricing.yml`
 - `production-synthetic.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-opus-5`. 32 SSOT lanes (+10 dispatch execution paths) across 34 workflows; 14 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p2`; native path serves `claude-opus-5`. 32 SSOT lanes (+12 dispatch execution paths) across 34 workflows; 14 workflows run no model._
 
 _Explicit lane fallback overrides (replace, never extend, the global chain): `ai-news-research`: `cursor-grok-4p6-fast`; `digest-audio-script`: `cursor-grok-4p6-fast`; `digest-synthesis-fallback`: `cursor-grok-4p6-fast`; `twitter-primary`: `cursor-grok-4p6-fast`; `twitter-primary-repair`: `cursor-grok-4p6-fast`._
 

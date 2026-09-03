@@ -98,6 +98,20 @@
       ],
       "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to the official opencode-go/glm-5.3-flash model id. Retained as a registered compatible editorial profile, but not selected by production routes while the OpenCode Go monthly plan is exhausted; it is never a member of the global host-checkout fallback chain."
     },
+    "opencode-muse-spark-1p3-contributor": {
+      "adapter": "opencode",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "display_name": "Meta Muse Spark 1.3 Contributor via OpenCode Go",
+      "aliases": [
+        "opencode-muse-spark-1.3-contributor",
+        "opencode-muse-spark-1.3",
+        "muse-spark-1.3-contributor",
+        "muse-spark-1.3",
+        "muse-1.3"
+      ],
+      "notes": "Explicit generative-research profile for opencode-go/muse-spark-1.3-contributor. The Contributor route uses OpenAI Responses transport, is limited by region, and requires workspace-level opt-in to Meta model-improvement data collection. It is deliberately not selected by a production editorial route."
+    },
     "zai-glm-5p2": {
       "adapter": "agent-run",
       "provider": "zai",

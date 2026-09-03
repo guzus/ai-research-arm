@@ -180,7 +180,7 @@ flowchart LR
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
     gendef -.->|"backend=codex"| OAI
-    gendef -.->|"backend=opencode-deepseek-v4-flash"| OC
+    gendef -.->|"backend=opencode-deepseek-v4-flash · backend=opencode-muse-spark-1p3-contributor"| OC
     gendef -.->|"backend=cursor-grok-4p6-fast"| CUR
     ANT -. "provider outage → fallback #1" .-> ZAI
 ```
@@ -275,9 +275,11 @@ a `topic`. The agent researches primary sources, writes in the
 [ARA DSL](ARA_DSL.md) (a validated component language — see
 [Component catalog](COMPONENTS.md)), and publishes through a single writer
 path that re-validates everything before commit. The SSOT generative default is
-native Claude Opus 5; explicit selectors also expose Codex, OpenCode DeepSeek,
-Cursor, and Fireworks routes. Separately, the five scheduled editorial lanes
-prioritize GLM 5.3 Flash through the strict OpenCode Go route
+native Claude Opus 5; explicit selectors also expose Codex, OpenCode DeepSeek
+and Meta Muse Spark 1.3 Contributor, Cursor, and Fireworks routes. Muse is
+region-limited and requires explicit consent to Contributor model-improvement
+data collection, so it is not a production editorial default. Separately, the five scheduled editorial lanes
+currently use isolated Cursor routes while the OpenCode Go monthly plan is exhausted
 ([details](docs/generative-research-backends.md)).
 
 **3. Tweet → verified article.** Give it just a tweet URL — it reads the

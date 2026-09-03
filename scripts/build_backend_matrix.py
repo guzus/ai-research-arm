@@ -55,14 +55,17 @@ END_DIAGRAM = "<!-- END GENERATED BACKEND DIAGRAM -->"
 # here once produced a green
 # `--check` over a table that named the wrong author for every artifact in
 # the lane (generator and doc agreed with each other, both stale).
-OPENCODE_SELECTOR = "opencode-deepseek-v4-flash"
+OPENCODE_SELECTORS = {
+    "deepseek-v4-flash": "opencode-deepseek-v4-flash",
+    "muse-spark-1.3-contributor": "opencode-muse-spark-1p3-contributor",
+}
 OPENCODE_PROVIDER_LABEL = "OpenCode Go"
 OPENCODE_MODEL_RE = re.compile(r'model="opencode-go/([A-Za-z0-9._-]+)"')
 OPENCODE_ACTION_MODEL_RE = re.compile(r'^opencode-go/([A-Za-z0-9._-]+)$')
 
 
-def opencode_model_id(workflow_name: str) -> str:
-    """The model id an opencode workflow actually passes to `opencode run -m`.
+def opencode_model_ids(workflow_name: str) -> set[str]:
+    """Model ids an opencode workflow can pass to `opencode run -m`.
 
     Reads the shell of every `run:` step so a REVERT comment quoting the old
     assignment can never be mistaken for live routing. Raises rather than
@@ -83,13 +86,13 @@ def opencode_model_id(workflow_name: str) -> str:
                 model = str((step.get("with") or {}).get("model") or "")
                 if model and "${{" not in model:
                     found.update(OPENCODE_ACTION_MODEL_RE.findall(model))
-    if len(found) != 1:
+    if not found:
         raise SystemExit(
-            f"{workflow_name}: expected exactly one opencode-go model id in "
-            f"executable shell, found {sorted(found)}. The matrix cannot name "
+            f"{workflow_name}: expected at least one opencode-go model id in "
+            f"executable shell, found none. The matrix cannot name "
             f"an author it cannot resolve."
         )
-    return found.pop()
+    return found
 
 
 CURSOR_MODEL_RE = re.compile(r'model="cursor/([A-Za-z0-9._-]+)"')
@@ -156,7 +159,9 @@ STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure
 # Backends generative-research.yml can actually execute (its params step
 # validates against this same set at runtime).
 GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "opus-5", "claude-opus-5", "codex",
-                         "opencode-deepseek-v4-flash", "deepseek-v4-flash", "glm-5p2",
+                         "opencode-deepseek-v4-flash",
+                         "opencode-muse-spark-1p3-contributor",
+                         "deepseek-v4-flash", "glm-5p2",
                          "cursor-grok-4p6-fast"}
 
 REQUIRED_AGENT_RUN_SECRETS = {
@@ -395,6 +400,32 @@ def check_fallback(fallback: dict, profiles: dict[str, Profile]) -> list[str]:
         if profile.normalized in seen:
             errors.append(f"fallback.chain entry '{entry}' duplicates an earlier candidate")
         seen.add(profile.normalized)
+    return errors
+
+
+def check_opencode_selectors(profiles: dict[str, Profile]) -> list[str]:
+    """Keep explicit generative selectors, literal models, and SSOT profiles exact."""
+    errors: list[str] = []
+    for model_id, selector in OPENCODE_SELECTORS.items():
+        profile = profiles.get(selector)
+        if profile is None:
+            errors.append(f"OpenCode selector '{selector}' has no backend profile")
+            continue
+        if profile.normalized != selector:
+            errors.append(f"OpenCode selector '{selector}' resolves through an alias, not its canonical profile")
+        if profile.adapter != "opencode" or profile.provider != "opencode-go":
+            errors.append(f"OpenCode selector '{selector}' must use adapter/provider opencode/opencode-go")
+        if profile.model_id != model_id:
+            errors.append(
+                f"OpenCode selector '{selector}' maps to literal model '{model_id}' "
+                f"but its SSOT profile serves '{profile.model_id}'"
+            )
+    literal_models = opencode_model_ids("generative-research.yml")
+    if literal_models != set(OPENCODE_SELECTORS):
+        errors.append(
+            "generative-research.yml OpenCode literal models "
+            f"{sorted(literal_models)} do not equal selector map {sorted(OPENCODE_SELECTORS)}"
+        )
     return errors
 
 
@@ -1123,23 +1154,23 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             # this table is the human view of routing, and a stale literal here
             # is a CI-blessed lie about which model authored an artifact. The
             # selector and Model columns must both remain truthful.
-            model_id = opencode_model_id(wf_name)
-            if wf_name == "generative-research.yml":
-                label = f"(dispatch path) backend={OPENCODE_SELECTOR}"
-                note = "hard fail (strict comparison backend)"
-            elif "canary" in wf_name:
-                label = f"(canary) opencode + {model_id}"
-                note = "hard fail (diagnostics lane)"
-            else:
-                # e.g. hourly-twitter's opencode tier — a strict comparison
-                # tier, NOT a canary. Labelling it "(canary)" because it was
-                # the only other opencode caller would misdescribe a lane that
-                # publishes real artifacts.
-                label = f"(tier) backend={OPENCODE_SELECTOR}"
-                note = "hard fail (strict comparison tier)"
-            rows.append([label, f"`{wf_name}`", "opencode CLI (containerised)",
-                         OPENCODE_PROVIDER_LABEL, f"`{model_id}`",
-                         f"`{obs.opencode_token}`", note])
+            for model_id in sorted(opencode_model_ids(wf_name)):
+                if wf_name == "generative-research.yml":
+                    selector = OPENCODE_SELECTORS.get(model_id)
+                    if not selector:
+                        fail(f"{wf_name}: no canonical selector for OpenCode model {model_id}")
+                    label = f"(dispatch path) backend={selector}"
+                    note = "hard fail (strict explicit backend)"
+                elif "canary" in wf_name:
+                    label = f"(canary) opencode + {model_id}"
+                    note = "hard fail (diagnostics lane)"
+                else:
+                    selector = OPENCODE_SELECTORS.get(model_id, model_id)
+                    label = f"(tier) backend={selector}"
+                    note = "hard fail (strict comparison tier)"
+                rows.append([label, f"`{wf_name}`", "opencode CLI (containerised)",
+                             OPENCODE_PROVIDER_LABEL, f"`{model_id}`",
+                             f"`{obs.opencode_token}`", note])
         if obs.has_fable_dispatch:
             rows.append(["(dispatch path) backend=fable-5", f"`{wf_name}`",
                          "Claude Code · claude-code-action (explicit premium selector)",
@@ -1272,7 +1303,8 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
     if gen_default and has_codex:
         out.append('    gendef -.->|"backend=codex"| OAI')
     if gen_default and has_opencode:
-        out.append(f'    gendef -.->|"backend={OPENCODE_SELECTOR}"| OC')
+        selectors = " · ".join(f"backend={selector}" for selector in OPENCODE_SELECTORS.values())
+        out.append(f'    gendef -.->|"{selectors}"| OC')
     if gen_default and has_cursor:
         out.append(f'    gendef -.->|"backend={CURSOR_SELECTOR}"| CUR')
 
@@ -1314,6 +1346,7 @@ def build_generated_blocks() -> tuple[str, str]:
     observations = {p.name: observe_workflow(p) for p in workflow_files()}
 
     errors = check_fallback(fallback, profiles) \
+        + check_opencode_selectors(profiles) \
         + cross_check(lanes, observations, profiles, routes)
     if errors:
         for err in errors:
