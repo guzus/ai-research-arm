@@ -4,10 +4,11 @@ title: Astra (OpenAI)
 type: entity
 aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra"]
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic]
-description: OpenAI's named next model family; the first model the lab says meets the Critical cybersecurity threshold under its Preparedness Framework, with development delayed after the Hugging Face agent-swarm incident and no public launch date in the 2026-09-02 Path to Astra note.
+description: OpenAI's named next model family; the first Critical-cyber model under the Preparedness Framework, still unreleased after the Hugging Face delay, with a 2026-09-03 architecture argument that recurrent depth stays within 2× of GPT-4.
 created_at: 2026-08-02
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
@@ -143,3 +144,24 @@ GPT-5.7** — see [[gpt-6]].
   open only one notch: the Critical model is now named Astra on the record,
   still unreleased. See [[agentic-ai-security]] and [[openai]] (OpenAI,
   TechCrunch, The Verge; ARA daily digest 2026-09-02).
+
+## Recurrent depth, not a launch (2026-09-03)
+
+- **Astra remains unreleased.** Street-date chatter about a Thursday
+  launch was retracted by at least one leak account; "gpt-6-astra"
+  API-error tells recycle the same rumor method used on Fable 5.1.
+  YouTube titles claiming a "GPT-6 Astra Preview" stay metadata-only.
+  The new fact is an architecture argument, not a public SKU
+  (Twitter, TechCrunch; ARA daily digest 2026-09-03).
+- **The Information said the unreleased model uses "recurrent depth"**
+  that can hide thinking. [[openai|OpenAI]] chief scientist **Jakub
+  Pachocki** answered on X that **"the depth of the computation graph
+  for our present frontier models, including Astra, is within a factor
+  of two of GPT-4"** and that chain-of-thought monitoring is
+  **"fragile and unfortunately trending in a negative direction, for
+  reasons not contingent on architecture changes."** That is a
+  monitorability claim, not a ship date, and it lands the day
+  [[google]] gated [[gemini-3-8-flash|3.8 Flash Cyber]] behind
+  Fairwind as a defender-only answer to Astra's Critical-cyber
+  threshold (TechCrunch, The Verge; ARA daily digest 2026-09-03).
+  See [[agentic-ai-security]].

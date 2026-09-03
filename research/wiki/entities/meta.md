@@ -4,15 +4,16 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and frontier-model builder (Llama); returned to open weights with Muse Glimmer (2026-08-10, Apache 2.0) and a commitment to open-weight Muse Spark 1.2, with a reported hundreds-of-millions-a-year Azure AI spend and a competing multi-model API service under construction (2026-08-21).
+description: Social-platform hyperscaler and Llama maker; shipped Muse Spark 1.3 in Muse Code (2026-09-03) at the same $1.25/$4.25 list as 1.2, after returning to open weights with Muse Glimmer and committing to open-weight Spark 1.2.
 created_at: 2026-06-16
-timestamp: 2026-08-21T00:00:00Z
+timestamp: 2026-09-03T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
@@ -206,3 +207,14 @@ Azure) paying [[microsoft]] to host the [[openai|OpenAI]] models that grade
 Meta's own work, even as Meta builds the aggregation layer that could
 eventually route around OpenAI (Bloomberg via relay; ARA daily digest
 2026-08-21). See [[ai-capex]].
+
+## Muse Spark 1.3 (2026-09-03)
+
+[[muse-code|Muse Spark 1.3]] landed in Muse Code and the Meta Model API
+at the **same $1.25/$4.25 list as 1.2**. Artificial Analysis scores the
+public xhigh SKU at **61 (+4 from 1.2)** and a gated max at **62**,
+still behind [[claude-fable-5|Fable 5.1]] (66). Meta's own DeepSWE v1.1
+table (75.4 vs Opus 5 74.0) remains first-party. The 2026-08-10 promise
+to open-weight a version of Spark 1.2 has not landed; 1.3 is another
+closed increment. Detail on [[muse-code]] (Meta, Artificial Analysis;
+ARA daily digest 2026-09-03).

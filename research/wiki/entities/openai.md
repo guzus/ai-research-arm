@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; delayed Astra after judging it the first Critical-cyber model under the Preparedness Framework, added read-only Epic import to ChatGPT Health, and faces an Apple spoliation claim, against a March $852B valuation now trailing Anthropic's $965B.
+description: AI lab behind the GPT family; won a DOJ Statement of Interest arguing LLM training is fair use (2026-09-01), delayed Astra after a Critical-cyber finding, and faces new shooting lawsuits plus an Apple spoliation claim.
 created_at: 2026-05-30
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
@@ -925,6 +926,40 @@ materially reshape how the lab is positioned heading into its IPO window:
   with full Python and Node plus native Poppler, git, and LibreOffice —
   Simon Willison's find, and a 390-point HN debate on agent-desktop
   packaging (Simon Willison, Hacker News; ARA daily digest 2026-09-02).
+
+## DOJ fair-use brief, more shooting suits, and Astra recurrence (2026-09-03)
+
+- **The DOJ filed a Statement of Interest backing OpenAI's training
+  defense (2026-09-01).** Document 316 in the SDNY copyright MDL argues
+  that training LLMs on copyrighted texts is **"extraordinarily
+  transformative"** and does not, in itself, violate copyright law, and
+  that a contrary ruling would raise licensing barriers. The 20-page
+  brief is a **policy filing, not a judgment**; it says fair use is
+  fact-specific and **separates training from output-stage copying**.
+  The Times' response is not in local files. See
+  [[federal-ai-policy]] (TechCrunch, The Verge, The Decoder; ARA daily
+  digest 2026-09-03).
+- **Thirty more shooting lawsuits** were filed in California federal
+  court over the Tumbler Ridge shooting, now alleging **aiding and
+  abetting**. The complaints name **Chris Lehane**; CSO **Jason Kwon**
+  called claims about safety-team motives **"completely untrue"**
+  (TechCrunch, The Verge; ARA daily digest 2026-09-03).
+- **Safety researchers warned on [[astra]] recurrence.** The Information
+  said the unreleased model uses **"recurrent depth"** that can hide
+  thinking. Chief scientist **Jakub Pachocki** said Astra's
+  computation-graph depth stays **within 2× of GPT-4** and that
+  chain-of-thought monitoring is **"fragile and unfortunately trending
+  in a negative direction."** Street-date chatter about a Thursday
+  launch was retracted; "gpt-6-astra" API-error tells remain the same
+  rumor method used on Fable 5.1. The new fact is the architecture
+  argument, not a public SKU. Same-day, [[google]] gated
+  [[gemini-3-8-flash|3.8 Flash Cyber]] behind Fairwind as a
+  defender-only answer. See [[astra]] and [[agentic-ai-security]]
+  (TechCrunch, The Verge; ARA daily digest 2026-09-03).
+- **The US military added ChatGPT Mil** (and [[xai|Grok for Government]])
+  to the Pentagon's GenAI.mil platform. Local files do not name a
+  contract value or deployment scope (The Decoder; ARA daily digest
+  2026-09-03). See [[federal-ai-policy]].
 
 ## Open questions
 

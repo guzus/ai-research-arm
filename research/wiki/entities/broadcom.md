@@ -4,15 +4,16 @@ title: Broadcom
 type: entity
 aliases: [Broadcom, "Broadcom Inc.", AVGO, "Broadcom custom ASICs"]
 tags: [ai-infrastructure, semiconductors, custom-asic, private-credit, ai-capex]
-description: Custom AI ASIC vendor and capex sentiment lever; central to Google/Anthropic TPU financing, OpenAI's first custom inference chip (Jalapeño, co-designed with Broadcom), and the June 2026 Broadcom guidance gut-check that erased roughly $320B of market value.
+description: Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B, after the June 2026 guidance gut-check that erased roughly $320B of market value.
 created_at: 2026-06-17
-timestamp: 2026-08-25T00:00:00Z
+timestamp: 2026-09-03T00:00:00Z
 market:
   ticker: AVGO
   exchange: NASDAQ
   symbol: NASDAQ:AVGO
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-06-29", path: research/digest/2026-06-29-digest.md}
   - {title: "ARA model ticket — OpenAI Jalapeño chip", path: research/models/tickets/openai-jalapeno-chip-2026-06.md}
@@ -104,3 +105,24 @@ the clearest named entities inside the [[ai-capex]] supercycle's move from
   the buildout firming to an outright crossover call (UBS, Jeff Pu; ARA daily
   digest 2026-08-25). See [[ai-capex]] for the theme-level placement and the
   [[google]] page for the custom-silicon direction this cuts against NVIDIA.
+
+## FY26Q3: $16.7B of AI chip sales, Q4 guided to $21.7B (filed 2026-09-02)
+
+- **Issuer figures from the 2026-09-02 8-K:** revenue of **$29.6 billion
+  (+86% YoY)**; GAAP operating income of **$16.0 billion**; non-GAAP
+  diluted EPS of **$3.32**; free cash flow of **$13.7 billion**, or
+  **46% of revenue**; Q4 revenue guidance of approximately **$34.8
+  billion (+93%)**. CEO Hock Tan: "Q3 AI semiconductor revenue of
+  **$16.7 billion** grew **221% year-over-year, and 54%
+  quarter-over-quarter.**" Tan: "In Q4 the momentum continues, and we
+  expect AI semiconductor revenue to accelerate to **$21.7 billion,
+  up 236% year-over-year.**" CFO Amie Thuener: non-GAAP operating
+  margin held at **66%**, flat from a year ago (SEC 8-K EX-99.1; ARA
+  daily digest 2026-09-03).
+- **This is the first Broadcom AI-semiconductor print after the June 5
+  gut-check.** The June quarter posted $10.8B of AI semis and an
+  in-line ~$16B Q3 guide that erased ~$320B of market value. The
+  actual Q3 AI number ($16.7B) cleared that guide, and the Q4 AI
+  guide ($21.7B) is a raised, not in-line, print. Pair it with
+  [[dell]]'s FY27Q2 $95B AI-server backlog as the two issuer demand
+  points of the week. See [[ai-capex]].

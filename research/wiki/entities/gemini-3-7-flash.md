@@ -4,10 +4,11 @@ title: Gemini 3.7 Flash
 type: entity
 aliases: ["Gemini 3.7 Flash", "Gemini 3.7 Flash model"]
 tags: [model-release, google-deepmind, flash-tier]
-description: Google's Flash-tier follow-on after Gemini 3.6 Flash, shipped 2026-08-13 at 50% below 3.6 pricing through year end; gained agent-based video analysis on 2026-09-02 (choose-what-to-inspect, claimed up to 88% fewer tokens) after an ARC-AGI-2 84.6% / $0.25-per-task launch card.
+description: Google's Flash-tier follow-on after Gemini 3.6 Flash, shipped 2026-08-13 at 50% below 3.6 pricing through year end; superseded as the cheap workhorse by Gemini 3.8 Flash (2026-09-03) after gaining agent-based video analysis on 2026-09-02.
 created_at: 2026-08-23
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
 ---
@@ -48,3 +49,13 @@ price-performance cadence resumed after [[gemini-3-5-pro]].
 - **Does the 88% video-token cut reproduce?** The Decoder figure is
   first-party/relayed; no independent token-use measurement landed in
   today's files.
+
+## Successor: Gemini 3.8 Flash (2026-09-03)
+
+[[gemini-3-8-flash|Gemini 3.8 Flash]] shipped at the **same $0.75/$3.75
+intro price** as 3.7 through year-end, then $1.50/$7.50. Artificial
+Analysis reads it as **~40% more expensive per task than 3.7** because
+it burns ~30% more output tokens — the first post-launch comparison
+that makes 3.7 the cheaper task, not just the cheaper sticker. A gated
+**3.8 Flash Cyber** SKU sits behind Fairwind and is not a 3.7 upgrade
+(Google, Artificial Analysis; ARA daily digest 2026-09-03).
