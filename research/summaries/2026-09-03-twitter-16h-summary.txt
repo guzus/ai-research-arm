@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-03 16:20:44 UTC
+
+CYCLE: NVIDIA buys Hugging Face for $12.93B; Claude outage clears, OpenAI still degraded; WeatherNext 3 ships
+
+TOP STORIES:
+• NVIDIA agrees to acquire Hugging Face for $12,930,300,000; Hub stays compute-agnostic [✓]
+• Claude Mythos/Fable/Opus 5 major outage ~13:26–16:16 UTC; OpenAI ChatGPT+Codex still monitoring [✓]
+• Google ships WeatherNext 3 — hourly satellite weather, up to 5× vs WN2, live in Search/Maps [✓]
+
+WATCH: HF close/8-K, or an actual Astra/GPT-Image-2.5 card vs the untitled OpenAI video
+
+Full update on GitHub.
