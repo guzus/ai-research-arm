@@ -41,6 +41,15 @@
       "model": "",
       "display_name": "Claude",
       "aliases": [],
+      "production_eligible": true,
+      "generative": {
+        "exposed": true,
+        "selector": "claude",
+        "aliases": ["claude-opus-4-8", "claude-sonnet-5"],
+        "provenance_model": "claude-sonnet-5",
+        "protocol": "native-claude",
+        "preflight_path": "harness"
+      },
       "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it). The preflight marks 401/403 auth rejection and HTTP 429 rate limiting unavailable for the current run. Ordinary non-strict lanes continue to the global Z.ai secondary; compatibility-tested local content lanes can replace that chain with an explicit isolated Cursor fallback."
     },
     "claude-opus-5": {
@@ -52,7 +61,45 @@
         "opus-5",
         "opus5"
       ],
+      "production_eligible": true,
+      "generative": {
+        "exposed": true,
+        "selector": "opus-5",
+        "provenance_model": "claude-opus-5",
+        "protocol": "native-claude",
+        "preflight_path": "harness"
+      },
       "notes": "Native Anthropic on the default dispatch generative lane and explicit opus-5 selector. It is deliberately absent from fallback.chain: a fallback should be the cheap reliable path."
+    },
+    "claude-fable-5": {
+      "adapter": "dispatch-default",
+      "provider": "claude",
+      "model": "claude-fable-5",
+      "display_name": "Claude Fable 5",
+      "aliases": ["fable-5"],
+      "production_eligible": false,
+      "generative": {
+        "exposed": true,
+        "selector": "fable-5",
+        "provenance_model": "claude-fable-5",
+        "protocol": "native-claude",
+        "preflight_path": "harness"
+      }
+    },
+    "codex": {
+      "adapter": "dispatch-default",
+      "provider": "openai",
+      "model": "",
+      "display_name": "Codex CLI",
+      "aliases": ["openai-codex"],
+      "production_eligible": false,
+      "generative": {
+        "exposed": true,
+        "selector": "codex",
+        "provenance_model": "codex",
+        "protocol": "codex-cli",
+        "preflight_path": "harness"
+      }
     },
     "fireworks-glm-5p2": {
       "adapter": "agent-run",
@@ -62,7 +109,16 @@
       "aliases": [
         "glm-5p2",
         "glm"
-      ]
+      ],
+      "production_eligible": true,
+      "generative": {
+        "exposed": true,
+        "selector": "glm-5p2",
+        "aliases": ["glm-5.2", "glm5.2", "glm52"],
+        "provenance_model": "glm-5p2",
+        "protocol": "anthropic-compatible",
+        "preflight_path": "scripts/check_fireworks_backend.py"
+      }
     },
     "fireworks-deepseek-v4-flash": {
       "adapter": "agent-run",
@@ -72,7 +128,15 @@
       "aliases": [
         "deepseek-v4-flash",
         "deepseek"
-      ]
+      ],
+      "production_eligible": true,
+      "generative": {
+        "exposed": true,
+        "selector": "deepseek-v4-flash",
+        "provenance_model": "deepseek-v4-flash",
+        "protocol": "anthropic-compatible",
+        "preflight_path": "scripts/check_fireworks_backend.py"
+      }
     },
     "opencode-deepseek-v4-flash": {
       "adapter": "opencode",
@@ -84,6 +148,14 @@
         "deepseek-opencode",
         "opencode"
       ],
+      "production_eligible": true,
+      "generative": {
+        "exposed": true,
+        "selector": "opencode-deepseek-v4-flash",
+        "provenance_model": "deepseek-v4-flash",
+        "protocol": "openai-chat-completions",
+        "preflight_path": "chat/completions"
+      },
       "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to opencode-go/deepseek-v4-flash. Runtime-selectable by agent-dispatch; not selectable by agent-run."
     },
     "opencode-glm-5p3-flash": {
@@ -96,6 +168,7 @@
         "opencode-glm",
         "glm-5.3-flash-opencode"
       ],
+      "production_eligible": true,
       "notes": "OpenCode CLI inside run-opencode-container, authenticated by OPENCODE_API_KEY and pinned to the official opencode-go/glm-5.3-flash model id. Retained as a registered compatible editorial profile, but not selected by production routes while the OpenCode Go monthly plan is exhausted; it is never a member of the global host-checkout fallback chain."
     },
     "opencode-muse-spark-1p3-contributor": {
@@ -110,6 +183,19 @@
         "muse-spark-1.3",
         "muse-1.3"
       ],
+      "production_eligible": false,
+      "restrictions": {
+        "manual_only": true,
+        "requires_workspace_contributor_consent": true,
+        "region_limited": true
+      },
+      "generative": {
+        "exposed": true,
+        "selector": "opencode-muse-spark-1p3-contributor",
+        "provenance_model": "muse-spark-1.3-contributor",
+        "protocol": "openai-responses",
+        "preflight_path": "responses"
+      },
       "notes": "Explicit generative-research profile for opencode-go/muse-spark-1.3-contributor. The Contributor route uses OpenAI Responses transport, is limited by region, and requires workspace-level opt-in to Meta model-improvement data collection. It is deliberately not selected by a production editorial route."
     },
     "zai-glm-5p2": {
@@ -121,7 +207,8 @@
         "zai-glm-5.2",
         "zai-glm52",
         "zai"
-      ]
+      ],
+      "production_eligible": true
     },
     "cursor-grok-4p6-fast": {
       "adapter": "cursor",
@@ -138,6 +225,14 @@
         "cursor-composer-2p5",
         "composer-2.5"
       ],
+      "production_eligible": true,
+      "generative": {
+        "exposed": true,
+        "selector": "cursor-grok-4p6-fast",
+        "provenance_model": "cursor-grok-4.6-high-fast",
+        "protocol": "cursor-cli",
+        "preflight_path": "harness"
+      },
       "notes": "Cursor Agent CLI inside run-cursor-container, authenticated by CURSOR_API_KEY and pinned to cursor-grok-4.6-high-fast (the CLI id for Grok 4.6 Fast; grok-4.6-fast is not a valid --model). Replaces composer-2.5. Runtime-selectable by agent-dispatch and by agent-run only through a lane-local compatibility override. It temporarily serves both production editorial routes while the OpenCode Go monthly plan is exhausted. cursor-composer-2p5 remains a compatibility alias."
     }
   },

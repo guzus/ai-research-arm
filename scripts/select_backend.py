@@ -299,6 +299,26 @@ def main_with_args(argv: list[str] | None = None) -> int:
         if key not in candidates:
             candidates.append(key)
 
+    # A lane is an automated production path. Explicit --backend probes may
+    # select manual profiles, but every lane primary/fallback must pass the
+    # same policy at runtime that CI enforces on the registry.
+    if args.lane:
+        for key in candidates:
+            spec = backends[key]
+            restrictions = spec.get("restrictions", {})
+            if not isinstance(restrictions, dict) or any(
+                not isinstance(name, str) or not isinstance(enabled, bool)
+                for name, enabled in restrictions.items()
+            ):
+                return config_error(f"backend '{key}' has invalid restrictions metadata")
+            active = sorted(name for name, enabled in restrictions.items() if enabled)
+            if spec.get("production_eligible") is not True or active:
+                detail = f"; active restrictions: {', '.join(active)}" if active else ""
+                return config_error(
+                    f"automated lane '{args.lane}' cannot select backend '{key}': "
+                    f"not production-eligible{detail}"
+                )
+
     isolated_candidates = {
         normalize(selector, backends) for selector in lane_fallback_chain
     }

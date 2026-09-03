@@ -146,7 +146,10 @@ outage — is defined in one file:
 resolve it at runtime; container/native mirror lanes pin the same route in
 their workflow and CI checks equality. The diagram below is generated from
 the SSOT so it cannot drift. Full per-lane matrix:
-[`docs/backend-matrix.md`](docs/backend-matrix.md).
+[`docs/backend-matrix.md`](docs/backend-matrix.md). To register another model,
+see [`docs/model-onboarding.md`](docs/model-onboarding.md); a model on an
+existing adapter/provider is registry-driven, while a new provider still
+requires credential and contained-runner plumbing.
 
 <!-- BEGIN GENERATED BACKEND DIAGRAM (scripts/build_backend_matrix.py — do not edit by hand) -->
 ```mermaid

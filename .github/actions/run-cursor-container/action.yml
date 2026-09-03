@@ -89,6 +89,10 @@ inputs:
     description: GEN_SOURCE for the generative-research lane.
     required: false
     default: ''
+  gen-model:
+    description: Exact provenance model written by the generative-research writer.
+    required: false
+    default: ''
   gen-draft:
     description: >-
       GEN_DRAFT for the generative-research lane. Only the BASENAME is used:
@@ -149,6 +153,7 @@ runs:
         BIRDY_TOOL_LOG_REL: ${{ inputs.birdy-tool-log-path }}
         GEN_SLUG: ${{ inputs.gen-slug }}
         GEN_SOURCE: ${{ inputs.gen-source }}
+        GEN_MODEL: ${{ inputs.gen-model }}
         GEN_DRAFT: ${{ inputs.gen-draft }}
         GIT_USER_NAME: ${{ inputs.git-user-name }}
         GIT_USER_EMAIL: ${{ inputs.git-user-email }}
@@ -219,6 +224,14 @@ runs:
         esac
         if [[ ! "$CURSOR_MODEL_REF" =~ ^[a-z0-9][a-z0-9-]*/[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
           echo "::error::model must be one canonical provider/model ref."
+          exit 1
+        fi
+        if [ "$RUN_MODE" = "generative" ] && { \
+          [[ ! "$GEN_MODEL" =~ ^[A-Za-z0-9][A-Za-z0-9._/-]*$ ]] \
+          || [[ "$GEN_MODEL" == */ || "$GEN_MODEL" == *//* \
+            || "$GEN_MODEL" == */./* || "$GEN_MODEL" == */../* \
+            || "$GEN_MODEL" == */. || "$GEN_MODEL" == */.. ]]; }; then
+          echo "::error::generative mode requires a safe, non-empty gen-model provenance value."
           exit 1
         fi
         if [[ ! "$AGENT_TIMEOUT_MINUTES" =~ ^[0-9]+$ ]] \
@@ -670,6 +683,7 @@ runs:
           --env BIRDY_READ_ONLY=1 \
           --env GEN_SLUG \
           --env GEN_SOURCE \
+          --env GEN_MODEL \
           --env "GEN_DRAFT=$GEN_DRAFT_IN_CONTAINER" \
           --env "GIT_AUTHOR_NAME=$GIT_USER_NAME" \
           --env "GIT_AUTHOR_EMAIL=$GIT_USER_EMAIL" \

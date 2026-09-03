@@ -105,6 +105,23 @@ def resolve_route(data: dict, lane_key: str) -> RouteSelection:
     backend = backends.get(backend_key)
     if not isinstance(backend, dict):
         raise RouteError(f"route '{route_key}' references unknown backend '{backend_key}'")
+    restrictions = backend.get("restrictions", {})
+    if not isinstance(restrictions, dict) or any(
+        not isinstance(key, str) or not isinstance(value, bool)
+        for key, value in restrictions.items()
+    ):
+        raise RouteError(f"backend '{backend_key}' has invalid restrictions metadata")
+    active_restrictions = sorted(key for key, value in restrictions.items() if value)
+    if active_restrictions:
+        raise RouteError(
+            f"backend '{backend_key}' has active production restrictions: "
+            f"{', '.join(active_restrictions)}"
+        )
+    if backend.get("production_eligible") is not True:
+        raise RouteError(
+            f"backend '{backend_key}' is not production-eligible; manual, restricted, "
+            "or consent-gated profiles cannot serve a production route"
+        )
     adapter = backend.get("adapter")
     capabilities = adapters.get(adapter)
     if not isinstance(capabilities, dict):

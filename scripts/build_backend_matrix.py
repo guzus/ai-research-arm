@@ -50,15 +50,6 @@ END_MARKER = "<!-- END GENERATED BACKEND MATRIX -->"
 BEGIN_DIAGRAM = "<!-- BEGIN GENERATED BACKEND DIAGRAM (scripts/build_backend_matrix.py — do not edit by hand) -->"
 END_DIAGRAM = "<!-- END GENERATED BACKEND DIAGRAM -->"
 
-# The canonical selector names the provider/model route, while the model it
-# actually serves is still read out of the workflow. Hard-coding the model
-# here once produced a green
-# `--check` over a table that named the wrong author for every artifact in
-# the lane (generator and doc agreed with each other, both stale).
-OPENCODE_SELECTORS = {
-    "deepseek-v4-flash": "opencode-deepseek-v4-flash",
-    "muse-spark-1.3-contributor": "opencode-muse-spark-1p3-contributor",
-}
 OPENCODE_PROVIDER_LABEL = "OpenCode Go"
 OPENCODE_MODEL_RE = re.compile(r'model="opencode-go/([A-Za-z0-9._-]+)"')
 OPENCODE_ACTION_MODEL_RE = re.compile(r'^opencode-go/([A-Za-z0-9._-]+)$')
@@ -149,20 +140,11 @@ OPENCODE_RUN_RE = re.compile(r"^\s*opencode run\b", re.M)
 # vanish the moment a lane is containerised.
 OPENCODE_ACTION = "run-opencode-container"
 CURSOR_ACTION = "run-cursor-container"
-CURSOR_SELECTOR = "cursor-grok-4p6-fast"
 CURSOR_PROVIDER_LABEL = "Cursor CLI"
 CURSOR_ACTION_MODEL_RE = re.compile(r'^cursor/([A-Za-z0-9._-]+)$')
 AGENT_DISPATCH = "agent-dispatch"
 RESOLVER_CALL_RE = re.compile(r"resolve_backend_lane\.py\s+([a-z0-9\-]+)")
 STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure'")
-
-# Backends generative-research.yml can actually execute (its params step
-# validates against this same set at runtime).
-GEN_RESEARCH_BACKENDS = {"claude", "fable-5", "opus-5", "claude-opus-5", "codex",
-                         "opencode-deepseek-v4-flash",
-                         "opencode-muse-spark-1p3-contributor",
-                         "deepseek-v4-flash", "glm-5p2",
-                         "cursor-grok-4p6-fast"}
 
 REQUIRED_AGENT_RUN_SECRETS = {
     "claude-code-oauth-token": "CLAUDE_CODE_OAUTH_TOKEN",
@@ -192,10 +174,29 @@ class Profile:
     model_id: str
     display_name: str
     selectors: list[str] = field(default_factory=list)
+    production_eligible: bool = False
+    production_restrictions: list[str] = field(default_factory=list)
+    generative_selector: str = ""
+    generative_aliases: list[str] = field(default_factory=list)
+    provenance_model: str = ""
+    protocol: str = ""
+    preflight_path: str = ""
 
     @property
     def model_ref(self) -> str:
         return f"{self.provider}/{self.model_id}" if self.provider and self.model_id else ""
+
+
+def canonical_profiles(profiles: dict[str, Profile]) -> dict[str, Profile]:
+    return {profile.normalized: profile for profile in profiles.values()}
+
+
+def generative_profiles(profiles: dict[str, Profile], adapter: str = "") -> list[Profile]:
+    return sorted(
+        (profile for profile in canonical_profiles(profiles).values()
+         if profile.generative_selector and (not adapter or profile.adapter == adapter)),
+        key=lambda profile: profile.generative_selector,
+    )
 
 
 @dataclass
@@ -358,6 +359,14 @@ def load_profiles() -> dict[str, Profile]:
         fail(f"{LANES_FILE} must define the 'backends' profile table")
     profiles: dict[str, Profile] = {}
     for key, spec in backends.items():
+        generative = spec.get("generative") or {}
+        generative_aliases = list(generative.get("aliases") or [])
+        restrictions = spec.get("restrictions") or {}
+        if not isinstance(restrictions, dict) or any(
+            not isinstance(name, str) or not isinstance(enabled, bool)
+            for name, enabled in restrictions.items()
+        ):
+            fail(f"backends table: '{key}' restrictions must be boolean fields")
         profile = Profile(
             normalized=key,
             adapter=str(spec.get("adapter", "")),
@@ -365,6 +374,16 @@ def load_profiles() -> dict[str, Profile]:
             model_id=str(spec.get("model", "")),
             display_name=str(spec.get("display_name", key)),
             selectors=[key, *(spec.get("aliases") or [])],
+            production_eligible=spec.get("production_eligible") is True,
+            production_restrictions=sorted(
+                name for name, enabled in restrictions.items() if enabled
+            ),
+            generative_selector=str(generative.get("selector", ""))
+                if generative.get("exposed") is True else "",
+            generative_aliases=generative_aliases,
+            provenance_model=str(generative.get("provenance_model", "")),
+            protocol=str(generative.get("protocol", "")),
+            preflight_path=str(generative.get("preflight_path", "")),
         )
         for selector in profile.selectors:
             if selector in profiles:
@@ -397,6 +416,8 @@ def check_fallback(fallback: dict, profiles: dict[str, Profile]) -> list[str]:
         if profile.adapter != "agent-run":
             errors.append(f"fallback.chain entry '{entry}' uses adapter "
                           f"'{profile.adapter}', but fallback executes inside agent-run")
+        if not profile.production_eligible or profile.production_restrictions:
+            errors.append(f"fallback.chain entry '{entry}' is not production-eligible")
         if profile.normalized in seen:
             errors.append(f"fallback.chain entry '{entry}' duplicates an earlier candidate")
         seen.add(profile.normalized)
@@ -404,28 +425,24 @@ def check_fallback(fallback: dict, profiles: dict[str, Profile]) -> list[str]:
 
 
 def check_opencode_selectors(profiles: dict[str, Profile]) -> list[str]:
-    """Keep explicit generative selectors, literal models, and SSOT profiles exact."""
+    """Validate OpenCode generative identity entirely from the registry."""
     errors: list[str] = []
-    for model_id, selector in OPENCODE_SELECTORS.items():
-        profile = profiles.get(selector)
-        if profile is None:
-            errors.append(f"OpenCode selector '{selector}' has no backend profile")
-            continue
-        if profile.normalized != selector:
-            errors.append(f"OpenCode selector '{selector}' resolves through an alias, not its canonical profile")
+    seen_models: set[str] = set()
+    seen_selectors: set[str] = set()
+    for profile in generative_profiles(profiles, "opencode"):
+        selector = profile.generative_selector
+        if selector in seen_selectors:
+            errors.append(f"OpenCode generative selector '{selector}' is duplicated")
+        seen_selectors.add(selector)
         if profile.adapter != "opencode" or profile.provider != "opencode-go":
             errors.append(f"OpenCode selector '{selector}' must use adapter/provider opencode/opencode-go")
-        if profile.model_id != model_id:
-            errors.append(
-                f"OpenCode selector '{selector}' maps to literal model '{model_id}' "
-                f"but its SSOT profile serves '{profile.model_id}'"
-            )
-    literal_models = opencode_model_ids("generative-research.yml")
-    if literal_models != set(OPENCODE_SELECTORS):
-        errors.append(
-            "generative-research.yml OpenCode literal models "
-            f"{sorted(literal_models)} do not equal selector map {sorted(OPENCODE_SELECTORS)}"
-        )
+        if not profile.model_id or not profile.provenance_model:
+            errors.append(f"OpenCode selector '{selector}' needs model and provenance_model")
+        if profile.model_id in seen_models:
+            errors.append(f"OpenCode generative model '{profile.model_id}' is duplicated")
+        seen_models.add(profile.model_id)
+        if profile.protocol not in {"openai-chat-completions", "openai-responses"}:
+            errors.append(f"OpenCode selector '{selector}' has unsupported protocol '{profile.protocol}'")
     return errors
 
 
@@ -475,6 +492,8 @@ def observe_workflow(wf_path: Path) -> Observation:
 
             if run:
                 obs.resolver_lanes.update(RESOLVER_CALL_RE.findall(run))
+                if "resolve_generative_backend.py" in run:
+                    obs.resolver_lanes.add("generative-research-default")
                 # Manual emergency fallback is not an automatic lane backstop.
                 # The matrix's Fallback column documents what happens in the
                 # scheduled/default path, so opt-in workflow_dispatch fallbacks
@@ -635,6 +654,13 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
     routes = load_routes() if routes is None else routes
     adapters = load_adapters() if adapters is None else adapters
 
+    for profile in canonical_profiles(profiles).values():
+        if profile.production_eligible and profile.production_restrictions:
+            errors.append(
+                f"backend '{profile.normalized}' cannot be production-eligible while "
+                f"restrictions are active: {', '.join(profile.production_restrictions)}"
+            )
+
     used_routes: set[str] = set()
     for route_key, route in routes.items():
         if not isinstance(route, dict):
@@ -646,6 +672,13 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
             errors.append(f"route '{route_key}': backend '{backend}' is not a canonical "
                           "backend profile")
             continue
+        if not profile.production_eligible:
+            errors.append(f"route '{route_key}': backend '{backend}' is not production-eligible")
+        if profile.production_restrictions:
+            errors.append(
+                f"route '{route_key}': backend '{backend}' has active production "
+                f"restrictions: {', '.join(profile.production_restrictions)}"
+            )
         if route.get("contract") != "research-editorial":
             errors.append(f"route '{route_key}': contract must be 'research-editorial'")
         adapter = adapters.get(profile.adapter)
@@ -791,6 +824,10 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
                     errors.append(f"lane '{step.lane}': fallback_chain entry '{candidate}' "
                                   "duplicates an earlier candidate")
                 seen_lane_fallbacks.add(candidate_profile.normalized)
+                if (not candidate_profile.production_eligible
+                        or candidate_profile.production_restrictions):
+                    errors.append(f"lane '{step.lane}': fallback backend '{candidate}' is "
+                                  "not production-eligible")
                 if candidate_profile.adapter not in {"agent-run", "opencode", "cursor"}:
                     errors.append(f"lane '{step.lane}': fallback backend '{candidate}' uses "
                                   f"unsupported adapter '{candidate_profile.adapter}'")
@@ -939,9 +976,16 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
             else:
                 seen_lanes.add(key)
             backend = str(lane.get("backend", ""))
-            if wf_name == "generative-research.yml" and backend not in GEN_RESEARCH_BACKENDS:
+            if wf_name == "generative-research.yml" and not (
+                profiles.get(backend) and profiles[backend].generative_selector
+            ):
                 errors.append(f"lane '{key}': backend '{backend}' is not supported by "
-                              f"generative-research.yml (allowed: {sorted(GEN_RESEARCH_BACKENDS)})")
+                              "generative-research.yml (backend is not generative.exposed)")
+            elif wf_name == "generative-research.yml":
+                profile = profiles[backend]
+                if not profile.production_eligible or profile.production_restrictions:
+                    errors.append(f"lane '{key}': default backend '{backend}' is not "
+                                  "production-eligible")
         elif key not in seen_lanes:
             errors.append(f"lane '{key}' ({wf_name}) is defined in data/agent-backends.json "
                           "but no workflow step references it — orphan lanes hide dead routing")
@@ -1135,6 +1179,35 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
     # codex) — real execution paths of the dispatch-default lane, shown for
     # completeness but not themselves routing decisions.
     for wf_name, obs in sorted(observations.items()):
+        if wf_name == "generative-research.yml":
+            for profile in generative_profiles(profiles):
+                if profile.adapter == "opencode":
+                    harness = "opencode CLI (containerised)"
+                    provider = OPENCODE_PROVIDER_LABEL
+                    token = "OPENCODE_API_KEY"
+                elif profile.adapter == "cursor":
+                    harness = "Cursor CLI (containerised)"
+                    provider = CURSOR_PROVIDER_LABEL
+                    token = "CURSOR_API_KEY"
+                elif profile.provider == "fireworks":
+                    harness = "Claude Code · claude-code-action (env-rerouted)"
+                    provider = "Fireworks (Anthropic-compatible endpoint)"
+                    token = "FIREWORKS_API_KEY"
+                elif profile.provider == "openai":
+                    harness = "Codex CLI"
+                    provider = "OpenAI (ChatGPT subscription auth)"
+                    token = "CODEX_AUTH_JSON"
+                else:
+                    harness = "Claude Code · claude-code-action"
+                    provider = "Anthropic (native)"
+                    token = "CLAUDE_CODE_OAUTH_TOKEN"
+                rows.append([
+                    f"(dispatch path) backend={profile.generative_selector}",
+                    f"`{wf_name}`", harness, provider,
+                    f"`{profile.model_id or profile.provenance_model}`",
+                    f"`{token}`", "hard fail (explicit backend)",
+                ])
+            continue
         fw_steps = [s for s in obs.native if s.rerouted_provider == "fireworks"]
         if fw_steps:
             retries = len([s for s in fw_steps if s.is_retry])
@@ -1155,17 +1228,13 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             # is a CI-blessed lie about which model authored an artifact. The
             # selector and Model columns must both remain truthful.
             for model_id in sorted(opencode_model_ids(wf_name)):
-                if wf_name == "generative-research.yml":
-                    selector = OPENCODE_SELECTORS.get(model_id)
-                    if not selector:
-                        fail(f"{wf_name}: no canonical selector for OpenCode model {model_id}")
-                    label = f"(dispatch path) backend={selector}"
-                    note = "hard fail (strict explicit backend)"
-                elif "canary" in wf_name:
+                if "canary" in wf_name:
                     label = f"(canary) opencode + {model_id}"
                     note = "hard fail (diagnostics lane)"
                 else:
-                    selector = OPENCODE_SELECTORS.get(model_id, model_id)
+                    matching = [p.generative_selector for p in generative_profiles(profiles, "opencode")
+                                if p.model_id == model_id]
+                    selector = matching[0] if len(matching) == 1 else model_id
                     label = f"(tier) backend={selector}"
                     note = "hard fail (strict comparison tier)"
                 rows.append([label, f"`{wf_name}`", "opencode CLI (containerised)",
@@ -1184,14 +1253,14 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
                          "hard fail (one recovery retry, same as `claude`)"])
         if obs.cursor and any(not step.lane for step in obs.cursor_steps):
             model_id = cursor_model_id(wf_name)
-            if wf_name == "generative-research.yml":
-                label = f"(dispatch path) backend={CURSOR_SELECTOR}"
-                note = "hard fail (strict comparison backend)"
-            elif "canary" in wf_name:
+            matching = [p.generative_selector for p in generative_profiles(profiles, "cursor")
+                        if p.model_id == model_id]
+            selector = matching[0] if len(matching) == 1 else model_id
+            if "canary" in wf_name:
                 label = f"(canary) cursor + {model_id}"
                 note = "hard fail (diagnostics lane)"
             else:
-                label = f"(tier) backend={CURSOR_SELECTOR}"
+                label = f"(tier) backend={selector}"
                 note = "hard fail (strict comparison tier)"
             rows.append([label, f"`{wf_name}`", "Cursor CLI (containerised)",
                          CURSOR_PROVIDER_LABEL, f"`{model_id}`",
@@ -1303,10 +1372,17 @@ def build_readme_diagram(lanes: dict[str, dict], profiles: dict[str, Profile],
     if gen_default and has_codex:
         out.append('    gendef -.->|"backend=codex"| OAI')
     if gen_default and has_opencode:
-        selectors = " · ".join(f"backend={selector}" for selector in OPENCODE_SELECTORS.values())
+        selectors = " · ".join(
+            f"backend={profile.generative_selector}"
+            for profile in generative_profiles(profiles, "opencode")
+        )
         out.append(f'    gendef -.->|"{selectors}"| OC')
     if gen_default and has_cursor:
-        out.append(f'    gendef -.->|"backend={CURSOR_SELECTOR}"| CUR')
+        selectors = " · ".join(
+            f"backend={profile.generative_selector}"
+            for profile in generative_profiles(profiles, "cursor")
+        )
+        out.append(f'    gendef -.->|"{selectors}"| CUR')
 
     # ordered chain arrows between providers: primary-heaviest provider first,
     # then each chain hop

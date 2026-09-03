@@ -236,7 +236,10 @@ runs:
             exit 1
             ;;
         esac
-        if [[ ! "$OPENCODE_MODEL_REF" =~ ^[a-z0-9][a-z0-9-]*/[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
+        if [[ ! "$OPENCODE_MODEL_REF" =~ ^[a-z0-9][a-z0-9-]*/[A-Za-z0-9][A-Za-z0-9._/-]*$ ]] \
+          || [[ "$OPENCODE_MODEL_REF" == */ || "$OPENCODE_MODEL_REF" == *//* \
+            || "$OPENCODE_MODEL_REF" == */./* || "$OPENCODE_MODEL_REF" == */../* \
+            || "$OPENCODE_MODEL_REF" == */. || "$OPENCODE_MODEL_REF" == */.. ]]; then
           echo "::error::model must be one canonical provider/model ref."
           exit 1
         fi
