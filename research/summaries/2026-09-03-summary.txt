@@ -1,0 +1,13 @@
+AI News - 2026-09-03
+
+TOP STORIES:
+• Broadcom FY26Q3: $29.6B revenue; AI semis $16.7B (+221% YoY); Q4 AI guided to $21.7B
+• Meta ships Muse Spark 1.3 (AA Index 61 xhigh / 62 max) at $1.25/$4.25; max still gated
+• Palo Alto paid ~$500M for Console (sources); Hugging Face ships funes local agent memory
+
+KEY NUMBERS:
+• Broadcom Q4 guide: $34.8B revenue / $21.7B AI chips
+• Muse Spark 1.3: $0.55/task — cheapest AA model at 59+ intelligence
+• Nemotron Ultra-CC: 535.4/600 at IOI 2026 vs top human 498.27
+
+Full report on GitHub.
