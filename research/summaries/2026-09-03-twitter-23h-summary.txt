@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-03 23:14:13 UTC
+
+CYCLE: Micron HBM double; official outage causes; LAUSD student AI block
+
+TOP STORIES:
+• Micron to add up to 60k HBM wafers/month by year-end, targeting ~100k wpm and more 12-high HBM4 [⚠]
+• WIRED: OpenAI names routing error; SpaceX names Memphis for Grok; no shared vendor found [✓]
+• NYT: LAUSD bans most generative AI for students on district devices; teachers still allowed [⚠]
+
+WATCH: gpt-6-astra in Plus/API/Bedrock/Devin, or a Micron note restating ~100k HBM wpm
+
+Full update on GitHub.
