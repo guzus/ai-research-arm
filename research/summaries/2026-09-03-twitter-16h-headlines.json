@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "NVIDIA TO ACQUIRE HUGGING FACE FOR $12,930,300,000 — HUB TO STAY OPEN AND COMPUTE-AGNOSTIC",
+    "source": "@JensenHuang",
+    "url": "https://x.com/JensenHuang/status/2095482647355244762",
+    "category": "business"
+  },
+  {
+    "headline": "CLEM: HF APPROACHED JENSEN; FOUNDERS STAY; GOAL IS 100 MILLION BUILDERS WHO OWN INTELLIGENCE",
+    "source": "@ClementDelangue",
+    "url": "https://x.com/ClementDelangue/status/2095482998674112733",
+    "category": "opensource"
+  },
+  {
+    "headline": "CLAUDE MYTHOS 5.1, FABLE 5.1, OPUS 5 MAJOR OUTAGE RESOLVED 16:16 UTC AFTER ~3 HOURS",
+    "source": "@levelsio",
+    "url": "https://x.com/levelsio/status/2095515616702591106",
+    "category": "infra"
+  },
+  {
+    "headline": "OPENAI STILL MONITORING CHATGPT AND CODEX ERRORS AFTER 14:43 UTC MITIGATION",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2095531414179488088",
+    "category": "infra"
+  },
+  {
+    "headline": "GOOGLE SHIPS WEATHERNEXT 3 — UP TO 5× SHARPER THAN WN2, HOURLY SATELLITE, LIVE IN SEARCH/MAPS",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2095528012791902536",
+    "category": "research"
+  }
+]
