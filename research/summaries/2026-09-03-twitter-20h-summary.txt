@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-09-03 20:56:31 UTC
+
+CYCLE: OpenAI ships GPT-6 Astra; system card marks Critical cyber and weaker CoT monitors
+
+TOP STORIES:
+• GPT-6 Astra launches — Daybreak today, $10/$50 API (`gpt-6-astra`), Plus/API/AWS in coming days [✓]
+• System card: Critical cyber, High bio; CoT control 60.9% vs Sol 16.1%; AISI 30.9-min no-CoT horizon [✓]
+
+WATCH: gpt-6-astra in ChatGPT Plus, the public API, or Bedrock
+
+Full update on GitHub.
