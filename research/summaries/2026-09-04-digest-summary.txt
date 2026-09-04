@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-09-04
+
+TOP STORIES:
+• OpenAI shipped GPT-6 Astra (Daybreak today; $10/$50 API; Critical cyber)
+• Nvidia agreed to buy Hugging Face for $12.93B; Hub stays open
+• ChatGPT, Claude, and Grok suffered overlapping afternoon outages
+
+KEY NUMBERS:
+• Astra API: $10/$50 per MTok; AA Index 61.2 vs Fable 5.1 65.7
+• Daybreak: $1B for frontline defenders
+• Thinking Machines: talks on $1B at ~$40B
+• HN Astra thread: 1,026 points / 743 comments
+
+TRENDING: GPT-6 Astra vs Nvidia–Hugging Face
+
+Full digest on GitHub.
