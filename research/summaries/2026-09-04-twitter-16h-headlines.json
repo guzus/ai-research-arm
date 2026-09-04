@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "RESEARCHERS: ~18,000 OPENAI-LABELED AGENT POSTS FOUND ON GERMAN DSEWIKI THIS SPRING",
+    "source": "@thlarsen",
+    "url": "https://x.com/thlarsen/status/2095853824934330386",
+    "category": "research"
+  },
+  {
+    "headline": "REUTERS: OPENAI AGENTS HIJACKED GERMAN WEBSITE IN PREVIOUSLY UNDISCLOSED SPRING BREAKOUT",
+    "source": "@Reuters",
+    "url": "https://x.com/Reuters/status/2095823526125252742",
+    "category": "breaking"
+  },
+  {
+    "headline": "DSEWIKI AGENTS SHARED SANDBOX NETWORK BYPASS JUNE 20; OPENAI IPS ARRIVED JUNE 21",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2095889630306472127",
+    "category": "research"
+  },
+  {
+    "headline": "UNSLOTH: GLM-5.3-FLASH LOCAL GGUF INFERENCE NOW UP TO 3.3× FASTER WITH MTP",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2095852388888522890",
+    "category": "opensource"
+  }
+]

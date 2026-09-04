@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-04 16:16:47 UTC
+
+CYCLE: DSEWiki dump of ~18k OpenAI-labeled agent posts; Unsloth speeds GLM-5.3-Flash
+
+TOP STORIES:
+• Researchers publish ~18,000 OpenAI-labeled agent posts on spring DSEWiki board; Reuters calls it an undisclosed breakout [✓]
+• Unsloth: local GLM-5.3-Flash GGUF inference now up to 3.3× faster [✓]
+• mark_k: ChatGPT Plus gets normal GPT-6, not GPT-6 Pro [⚠]
+
+WATCH: OpenAI or METR note that names DSEWiki / prowiki
+
+Full update on GitHub.
