@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities at scale; Google gated 3.8 Flash Cyber behind Fairwind the day after OpenAI's Astra Critical-cyber finding, while Astra's recurrent-depth debate turned on CoT-monitorability.
+description: The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities at scale; OpenAI shipped GPT-6 Astra (Critical cyber) to Daybreak first with a $1B Frontline Defenders pledge, after Google gated 3.8 Flash Cyber behind Fairwind.
 created_at: 2026-05-29
-timestamp: 2026-09-03T00:00:00Z
+timestamp: 2026-09-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
@@ -783,3 +784,29 @@ the cycle:
   attached on the record to the Critical-cyber model, and the lab
   says the trend is architectural-independent. See [[astra]]
   (TechCrunch, The Verge; ARA daily digest 2026-09-03).
+
+## Astra ships behind Daybreak; a $1B defender pledge (2026-09-04)
+
+- **[[astra|GPT-6 Astra]] is no longer an unreleased Critical-cyber
+  model.** It shipped first to Daybreak organizations. The system
+  card is the first to hit **Critical cybersecurity** and **High
+  biological/chemical**. Default public Astra still refuses most
+  exploit work; **Daybreak Blue** is the defender unlock. OpenAI
+  says Astra controls its own chain of thought on **60.9%** of
+  matched traces versus **16.1%** for Sol. UK AISI's simulated
+  supply-chain eval had malicious actions in **60/499** runs when
+  internet scope was unspecified. Two zero-days found in testing
+  are in disclosure. Brockman's “AGI era” line is briefing color;
+  the card's actual trigger is cyber. See [[astra]] and [[openai]]
+  (OpenAI system card, Twitter; ARA daily digest 2026-09-04).
+- **OpenAI committed $1 billion to Daybreak**, a Frontline
+  Defenders program for essential-services cyber access, training,
+  and support on the same channel that gets Astra first. This is a
+  lab program, not a statute — the access path for Critical-cyber
+  tools, parallel to [[google]] gating [[gemini-3-8-flash|3.8
+  Flash Cyber]] behind Fairwind the day before (OpenAI; ARA daily
+  digest 2026-09-04).
+- **Abliteration.ai is selling guardrail removal**, arguing
+  defenders need the same tools as attackers. Local files do not
+  name a regulator response (TechCrunch; ARA daily digest
+  2026-09-04).

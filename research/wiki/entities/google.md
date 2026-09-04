@@ -2,17 +2,18 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics"]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; shipped Gemini 3.8 Flash and a gated 3.8 Flash Cyber SKU (2026-09-03), after launching Pics and a Flash video-analysis path (2026-09-02).
+description: Hyperscaler behind Gemini; shipped WeatherNext 3 (2026-09-04), an observation-driven global forecast model live in Search, Gemini, and Maps, after Gemini 3.8 Flash and a gated 3.8 Flash Cyber SKU (2026-09-03).
 created_at: 2026-07-17
-timestamp: 2026-09-03T00:00:00Z
+timestamp: 2026-09-04T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
@@ -265,6 +266,27 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
 - **Google partnered with MrBeast** for a multi-year Gemini / Google
   Health / Fitbit Air push starting **2026-09-05**. Distribution, not a
   model release (The Verge; ARA daily digest 2026-09-03).
+
+## WeatherNext 3 ships into Search, Gemini, and Maps (2026-09-04)
+
+- **WeatherNext 3 is Google's new flagship weather model.** It is
+  trained on live geostationary satellite and surface observations
+  instead of a six-hour physics lag, refreshes hourly, and claims
+  **up to 5× sharper spatial detail than WeatherNext 2**, plus vendor
+  precipitation-error cuts as high as **50–60%** depending on the
+  comparison set, and **100-meter wind and solar radiation** for
+  clean-energy planning. It is rolling into **Search, Gemini, Maps,
+  and Cloud** today. Google grades it against WeatherNext 2, **not a
+  published ECMWF bake-off**. Same-day Google also launched **Gmail
+  Docs Keep Live** Gemini voice modes, starting in English on mobile
+  (Google, TechCrunch, The Verge; ARA daily digest 2026-09-04).
+- **Google Antigravity TOS** blew up on HN after Gergely Orosz
+  flagged that third-party use can suspend the linked Google account
+  (253/172) (Hacker News; ARA daily digest 2026-09-04).
+- **Google Research and HHMI Janelia** published a proofread male
+  *Drosophila* CNS connectome in *Cell*: **166,000 neurons and 125
+  million synapses**, open in Neuroglancer (Google Research; ARA
+  daily digest 2026-09-04).
 
 ## Open questions
 

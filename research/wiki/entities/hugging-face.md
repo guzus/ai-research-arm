@@ -4,10 +4,11 @@ title: Hugging Face
 type: entity
 aliases: ["Hugging Face", "HuggingFace", "@huggingface"]
 tags: [open-weights, model-hub, infrastructure, platform, m&a]
-description: The open-source model repository and platform hub that hosts most of the world's open-weight releases; reported exploring a sale at $13B+ (2026-08-24), rough triple its 2023 Series D mark — with NVIDIA now reported in serious acquisition talks valuing it above $13B (2026-08-27) — and the victim-turned-open-weights-advocate of the July 2026 agent hack.
+description: The open-source model hub; NVIDIA agreed to buy it for $12,930,300,000 (2026-09-04), pledging the Hub stays open and compute-agnostic for 18 million developers, after the July 2026 agent-hack.
 created_at: 2026-08-24
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
@@ -53,9 +54,9 @@ land on its Hub before anywhere else.
 
 ## Open questions
 
-- **Who would buy at $13B?** The bank engagement and the $4.5B Series D
-  anchor are reported, but no bidder has surfaced and the company has not
-  confirmed the process.
+- **Who would buy at $13B?** Resolved on 2026-09-04: **[[nvidia]] signed
+  at exactly $12,930,300,000.** Close date, cash/stock mix, and HSR
+  timing remain absent from Huang's letter.
 
 ## Revenue jumps 50% — the first number behind the $13B ask (2026-08-26)
 
@@ -97,3 +98,20 @@ land on its Hub before anywhere else.
   been cited as the cause of a named frontier-model delay, not just of
   oversight letters and a state-AG subpoena. See [[agentic-ai-security]]
   (OpenAI, TechCrunch, The Verge; ARA daily digest 2026-09-02).
+
+## NVIDIA signs at $12.93 billion (2026-09-04)
+
+- **[[nvidia]] agreed to buy Hugging Face for exactly
+  $12,930,300,000.** Jensen Huang and Clément Delangue both said the
+  Hub stays **open, independent, and compute-agnostic**, and that
+  NVIDIA GPUs will not be required. Hugging Face hosts **3 million-plus
+  models** for **18 million developers** and **200,000 companies**;
+  last official mark was **$4.5 billion (2023)**. Close date,
+  consideration mix, and HSR timing are absent from Huang's letter.
+  The CNBC thread led HN at 19:18 UTC (280/88) and then dropped behind
+  the Astra launch. This converts the August 24–27 sale-exploration
+  and named-bidder arc into a signed deal — the ownership-transfer
+  question this page left open is now *when and on what terms*, not
+  *whether and who*. See [[open-weights]] and [[ai-capex]] (NVIDIA
+  Blog, TechCrunch, The Verge, Ars Technica; ARA daily digest
+  2026-09-04).

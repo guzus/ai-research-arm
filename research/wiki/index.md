@@ -11,9 +11,9 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen) accused by Anthropic of the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max (2026-08-04) and open-weighted it as Qwen3.8-2.4T-A95B (2026-08-13), while fighting a US DoD PLA-linked designation; priced an HK$80B AI-infrastructure placement (2026-08-25) and shipped the Qwen4-architecture Qwen3.8-Flash-Next MoE preview (2026-08-27).
 - [[amd]] — Credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios began ramping into Anthropic's 2 GW MI450 commitment.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; per WSJ/Axios, CEO Andy Jassy's Treasury briefing triggered the June 2026 Fable 5 / Mythos 5 export crackdown.
-- [[anthropic]] — AI safety lab behind the Claude family; shipped Claude Fable 5.1 / Mythos 5.1 on 2026-09-02 and opened a Claude watermark-detection API to regulators, media and researchers, after a $65B Series H at $965B, a $45B Nscale compute deal, and a Sony/Warner Chappell suit weeks before a reported record IPO.
+- [[anthropic]] — AI safety lab behind the Claude family; marked a ~3-hour major incident on Mythos 5.1 / Fable 5.1 / Opus 5 (resolved 16:16 UTC, 2026-09-04) and is reported in a $35B Lambda Texas deal after last week's $45B Nscale contract.
 - [[apple]] — Consumer-hardware giant whose Siri rebuild is the marquee WWDC 2026 AI item; sued OpenAI over alleged hardware trade-secret theft and on 2026-09-02 accused the lab of destroying evidence, asking for expedited discovery.
-- [[astra]] — OpenAI's named next model family; the first Critical-cyber model under the Preparedness Framework, still unreleased after the Hugging Face delay, with a 2026-09-03 architecture argument that recurrent depth stays within 2× of GPT-4.
+- [[astra]] — OpenAI's GPT-6 Astra computer-use model, shipped 2026-09-04 first to Daybreak orgs at $10/$50 per Mtok; Critical cyber and High bio/chem, with Plus/Pro/Business/Enterprise and AWS promised over coming days.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
 - [[claude-fable-5]] — Anthropic's Mythos-class pair (safeguarded Fable / restricted Mythos), first shipped 2026-06-09 and upgraded to Fable 5.1 / Mythos 5.1 on 2026-09-02, pitching up to 45% cheaper agentic work and 52.6% on Terminal-Bench-Science versus 24.7% for Fable 5.
@@ -40,11 +40,11 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-3-8-flash]] — Google's third Flash SKU in six weeks, shipped 2026-09-03 at the same $0.75/$3.75 intro price as 3.7 through year-end, plus a gated 3.8 Flash Cyber defender model via Fairwind.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; encoder-free 12B variant runs on 16 GB RAM, 150M+ cumulative downloads.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
-- [[google]] — Hyperscaler behind Gemini; shipped Gemini 3.8 Flash and a gated 3.8 Flash Cyber SKU (2026-09-03), after launching Pics and a Flash video-analysis path (2026-09-02).
+- [[google]] — Hyperscaler behind Gemini; shipped WeatherNext 3 (2026-09-04), an observation-driven global forecast model live in Search, Gemini, and Maps, after Gemini 3.8 Flash and a gated 3.8 Flash Cyber SKU (2026-09-03).
 - [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
-- [[gpt-6]] — OpenAI's anticipated next flagship generation beyond GPT-5.6; reportedly previewed to US officials the week of 2026-07-27, not yet officially named.
+- [[gpt-6]] — OpenAI's next flagship generation beyond GPT-5.6; shipped 2026-09-04 as GPT-6 Astra, resolving the GPT-6 vs GPT-5.7 naming question in favor of GPT-6.
 - [[groq]] — AI-inference-chip startup that raised $350M at a $3.5B valuation (2026-08-18), roughly half its September 2025 mark, after NVIDIA licensed its LPU architecture and absorbed founder Jonathan Ross.
-- [[hugging-face]] — The open-source model repository and platform hub; NVIDIA is a named bidder in $13B+ talks (2026-08-27), and the July agent-hack victim whose incident OpenAI now cites as the reason it delayed Astra (2026-09-02).
+- [[hugging-face]] — The open-source model hub; NVIDIA agreed to buy it for $12,930,300,000 (2026-09-04), pledging the Hub stays open and compute-agnostic for 18 million developers, after the July 2026 agent-hack.
 - [[jelani-nelson]] — Theoretical computer scientist and chair of UC Berkeley's EECS department who joined Anthropic as a Member of Technical Staff (on leave) on 2026-07-02.
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
@@ -65,8 +65,8 @@ Each page is one of three types — entity, concept, or theme. See
 - [[nano-banana-2-lite]] — Google's fastest/cheapest image model (gemini-3.1-flash-lite-image, ~4s/~$0.034), shipped 2026-06-30 with Gemini Omni Flash bringing text-prompt video gen/editing to the API.
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; FY26Q2 (2026-08-13) printed $582.3M revenue (+454% YoY) with a ~50% AI Cloud adjusted EBITDA margin, contracted power raised to 5GW, and ~70% of deals carrying customer prepayments.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
-- [[nvidia]] — Dominant AI-accelerator supplier underwriting the capex buildout; Q2 FY27 revenue $96.2B (+106% YoY) with Data Center at $89.0B, a ~70% fiscal-2028 growth guide on a $279B purchase-commitment book (2026-08-26), held talks to buy Hugging Face at $13B+, and anchors a reported ~$500B Wall Street AI-financing package.
-- [[openai]] — Frontier lab behind the GPT family; won a DOJ Statement of Interest arguing LLM training is fair use (2026-09-01), delayed Astra after a Critical-cyber finding, and faces new shooting lawsuits plus an Apple spoliation claim.
+- [[nvidia]] — Dominant AI-accelerator supplier; Q2 FY27 revenue $96.2B (+106% YoY) with Data Center at $89.0B, and on 2026-09-04 agreed to buy Hugging Face for $12.93B while pledging the Hub stays open and compute-agnostic.
+- [[openai]] — Frontier lab behind the GPT family; shipped GPT-6 Astra on 2026-09-04 with a $1B Daybreak pledge, named a routing error for a Thursday ChatGPT outage, and still faces shooting lawsuits plus an Apple spoliation claim.
 - [[openrouter]] — LLM-routing API serving 400+ models to 8M+ developers; closed $113M Series B at $1.3B on 2026-05-30, then acquired by Stripe at a reported $7.5B–$8B+ confirmed by a board member and the company's blog (2026-08-19/20).
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -109,7 +109,7 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities at scale; Google gated 3.8 Flash Cyber behind Fairwind the day after OpenAI's Astra Critical-cyber finding, while Astra's recurrent-depth debate turned on CoT-monitorability.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities at scale; OpenAI shipped GPT-6 Astra (Critical cyber) to Daybreak first with a $1B Frontline Defenders pledge, after Google gated 3.8 Flash Cyber behind Fairwind.
 - [[ai-capex]] — The historically large compute buildout; Broadcom's FY26Q3 printed $16.7B of AI chip sales (+221% YoY) with Q4 AI guided to $21.7B, after Dell's FY27Q2 $95B AI-server backlog.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator on the consumer-facing axis; ~30-bill package cleared the May 29 crossover.
 - [[china-ai-regulation]] — Beijing regulating consumer AI products directly, opening with the AI-companion-agent law that took effect 2026-07-15 and forced Doubao and Qwen offline.

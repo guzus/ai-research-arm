@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: The dominant AI accelerator supplier and the anchor of a reported ~$500B Wall Street AI-infrastructure financing package (2026-08-10); posted Q2 FY27 revenue of $96.2B (+106% YoY) with Data Center at $89.0B and guided to ~70% growth in fiscal 2028 on a $279B purchase-commitment book (2026-08-26), while holding acquisition talks to buy Hugging Face at $13B+ and fielding Amazon's order for 2M more GPUs over two years; previously backstopped $105B of OpenAI's Ohio lease (2026-08-18), licensed Poolside's technology for $6B (2026-08-21), shipped Groq 3 LPX racks to full production on Nebius, and is designing an orbital AI datacenter with SpaceX.
+description: The dominant AI accelerator supplier; Q2 FY27 revenue $96.2B (+106% YoY) with Data Center at $89.0B, and on 2026-09-04 agreed to buy Hugging Face for $12.93B while pledging the Hub stays open and compute-agnostic.
 created_at: 2026-06-05
-timestamp: 2026-08-27T00:00:00Z
+timestamp: 2026-09-04T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
@@ -413,3 +414,25 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   commitment book and the ~17% price increases tracked on this page both cut
   the same way — but a guide that "assumes zero China DC revenue" is an
   explicitly conservative base that flatters the upside if China reopens.
+- **Does the Hugging Face close keep the Hub compute-agnostic?** Huang
+  and Delangue pledged 18 months of independence in the letter's
+  framing; close timing and consideration mix are still unpublished.
+
+## Signs to buy Hugging Face for $12.93 billion (2026-09-04)
+
+- **The August talks closed.** NVIDIA **agreed to buy
+  [[hugging-face]] at exactly $12,930,300,000.** Jensen Huang and
+  Clément Delangue both said the Hub stays **open, independent, and
+  compute-agnostic**, and that **NVIDIA GPUs will not be required**.
+  Close date, cash/stock mix, and HSR timing are not in the letter.
+  Hugging Face hosts 3 million-plus models for 18 million developers;
+  last official mark was $4.5 billion (2023). This is the day's
+  largest deal and the first time the model-hub layer of
+  [[open-weights]] sits inside a signed acquisition by the hardware
+  vendor that anchors [[ai-capex]] (NVIDIA Blog, TechCrunch, The
+  Verge, Ars Technica; ARA daily digest 2026-09-04).
+- **NVIDIA PAIR** is a same-day product footnote: a free Personal AI
+  Router that pools idle RTX PCs and Apple M4+ Macs for local Ollama /
+  LM Studio inference. Beta is out for Windows, Linux, and macOS (The
+  Verge; ARA daily digest 2026-09-04).
+
