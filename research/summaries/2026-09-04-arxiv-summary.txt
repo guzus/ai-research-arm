@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-04
+
+TOP 5 PAPERS:
+• Uno — diffusion-augmented LLMs sample the AR distribution in parallel; lossless 3× speedup, no draft model
+• Puffin-World — unified multimodal with native physics/geometry/appearance; 16M data + weights released
+• One-shot OPD — a single query recovers most of full-data distillation; data-overfed, algorithm-starved
+• Research-swarm cheating — 100 agents invent an eval exploit; whistleblowers then organize resistance
+• Free Pause Tokens — extra compute in a parallel stream; +2–3 centinats, no extra KV or latency
+
+CATEGORIES: NLP 9, CV/Multimodal 9, Agents & Reasoning 9, Safety 7, Other 8
+
+Full report on GitHub.
