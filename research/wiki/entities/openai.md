@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: AI lab behind the GPT family; won a DOJ Statement of Interest arguing LLM training is fair use (2026-09-01), delayed Astra after a Critical-cyber finding, and faces new shooting lawsuits plus an Apple spoliation claim.
+description: Frontier lab behind the GPT family; shipped GPT-6 Astra on 2026-09-04 with a $1B Daybreak pledge, named a routing error for a Thursday ChatGPT outage, and still faces shooting lawsuits plus an Apple spoliation claim.
 created_at: 2026-05-30
-timestamp: 2026-09-03T00:00:00Z
+timestamp: 2026-09-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
@@ -960,6 +961,36 @@ materially reshape how the lab is positioned heading into its IPO window:
   to the Pentagon's GenAI.mil platform. Local files do not name a
   contract value or deployment scope (The Decoder; ARA daily digest
   2026-09-03). See [[federal-ai-policy]].
+
+## GPT-6 Astra ships, Daybreak gets $1B, and ChatGPT goes down (2026-09-04)
+
+- **[[astra|GPT-6 Astra]] shipped (2026-09-04).** Live first for a
+  limited set of Daybreak organizations at **$10/$50 per million
+  tokens**, with ChatGPT Plus/Pro/Business/Enterprise, the API, and
+  AWS scheduled over the coming days. The system card is the first to
+  hit **Critical cybersecurity** and **High biological/chemical**
+  under the Preparedness Framework. President **Greg Brockman** closed
+  the briefing with “Welcome to the AGI era” — a press line, not an
+  AGI declaration. Model-side tables and the Daybreak-Blue unlock live
+  on [[astra]] (OpenAI, TechCrunch, The Verge, Simon Willison; ARA
+  daily digest 2026-09-04).
+- **OpenAI committed $1 billion to Daybreak**, a Frontline Defenders
+  program for essential-services cyber access, training, and support,
+  on the same channel that gets Astra first. Default public Astra is
+  supposed to refuse exploit work; Daybreak Blue is the defender
+  unlock. This is a lab program, not a statute. See
+  [[agentic-ai-security]] (OpenAI; ARA daily digest 2026-09-04).
+- **ChatGPT went down in an overlapping Thursday outage** with
+  [[anthropic|Claude]] and [[xai|Grok]]. WIRED later got OpenAI to
+  name a **routing error**; Cloudflare, AWS, and Azure logged no
+  matching incidents. The three-lab overlap made this the day's
+  most-commented HN item (303/509) after the Astra launch thread
+  (The Verge, Ars Technica, WIRED, Hacker News; ARA daily digest
+  2026-09-04).
+- **Sam Altman warned of “unsustainable silliness”** in the compute
+  buildout, saying too many [[neocloud|neoclouds]] announce capacity
+  without customers (The Decoder; ARA daily digest 2026-09-04). See
+  [[ai-capex]].
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind the Claude family; shipped Claude Fable 5.1 / Mythos 5.1 on 2026-09-02 and opened a Claude watermark-detection API to regulators, media and researchers, after a $65B Series H at $965B, a $45B Nscale compute deal, and a Sony/Warner Chappell suit weeks before a reported record IPO.
+description: AI safety lab behind the Claude family; marked a ~3-hour major incident on Mythos 5.1 / Fable 5.1 / Opus 5 (resolved 16:16 UTC, 2026-09-04) and is reported in a $35B Lambda Texas deal after last week's $45B Nscale contract.
 created_at: 2026-05-24
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
@@ -1334,3 +1335,24 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   AI Act]] invisible-watermark rule**. Detector error rates remain
   unpublished — the gap this page flagged on 2026-08-13 is still open
   (The Decoder; ARA daily digest 2026-09-02).
+
+## A three-hour outage, a reported $35B Lambda deal, and `ant apply` (2026-09-04)
+
+- **Anthropic marked a ~3-hour major incident** on
+  [[claude-fable-5|Mythos 5.1 / Fable 5.1]] / [[claude-opus-5|Opus 5]],
+  resolved at **16:16 UTC**. It overlapped a Thursday ChatGPT and
+  [[xai|Grok]] outage that WIRED later split: [[openai]] named a
+  routing error, SpaceX named a Memphis compute-center cut for Grok,
+  and Claude's cause stayed unnamed. Cloudflare, AWS, and Azure
+  logged no matching incidents (The Verge, Ars Technica, WIRED,
+  Hacker News; ARA daily digest 2026-09-04).
+- **A reported $35 billion Lambda deal** for a **~350 MW Texas data
+  center**, Reuters-sourced via The Decoder, after last week's
+  **$45 billion Nscale** contract. Treat the dollar figure as
+  unnamed-source until a filing. See [[ai-capex]] and [[neocloud]]
+  (The Decoder; ARA daily digest 2026-09-04).
+- **Anthropic shipped `ant apply`**, so Managed Agent environments,
+  skills, memory stores, and deployments can be declared as repo
+  files and synced to the API. Claude Code is also exploring
+  unshipped Function Hooks (GitHub issue 91870) (Twitter; ARA daily
+  digest 2026-09-04).

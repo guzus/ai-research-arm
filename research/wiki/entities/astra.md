@@ -2,12 +2,13 @@
 slug: astra
 title: Astra (OpenAI)
 type: entity
-aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra"]
-tags: [model-release, openai, frontier-model, mathematics, lean, agentic]
-description: OpenAI's named next model family; the first Critical-cyber model under the Preparedness Framework, still unreleased after the Hugging Face delay, with a 2026-09-03 architecture argument that recurrent depth stays within 2× of GPT-4.
+aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro"]
+tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use]
+description: OpenAI's GPT-6 Astra computer-use model, shipped 2026-09-04 first to Daybreak orgs at $10/$50 per Mtok; Critical cyber and High bio/chem, with Plus/Pro/Business/Enterprise and AWS promised over coming days.
 created_at: 2026-08-02
-timestamp: 2026-09-03T00:00:00Z
+timestamp: 2026-09-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
@@ -18,14 +19,13 @@ sources:
   - {title: "OpenAI — Ten advances in mathematics and theoretical computer science", url: "https://openai.com/index/ten-advances-in-mathematics", date: 2026-08-01}
 ---
 
-**Astra** is the name [[openai|OpenAI]] put on the record for its **next major
-model family**, disclosed alongside a **249-page manuscript** claiming **ten
-results in mathematics and theoretical computer science**. The pitch is
-long-horizon agency: running multiple agents on a single problem for **hours or
-days**. Confirmation so far comes from **researcher personal accounts**
-(@SebastienBubeck, @polynoamial) rather than the @OpenAI account, and The
-Information reports OpenAI **has not decided whether it ships as GPT-6 or
-GPT-5.7** — see [[gpt-6]].
+**Astra** is [[openai|OpenAI]]'s next major model family. It shipped on
+**2026-09-04 as GPT-6 Astra** (`gpt-6-astra`), a Daybreak-first
+computer-use SKU — resolving the GPT-6 vs GPT-5.7 naming question this
+page carried since August. The family was first disclosed alongside a
+**249-page manuscript** claiming **ten results in mathematics and
+theoretical computer science**, pitched on long-horizon agency: running
+multiple agents on a single problem for **hours or days**. See [[gpt-6]].
 
 ## Why it matters
 
@@ -85,8 +85,9 @@ GPT-5.7** — see [[gpt-6]].
 
 ## Open questions
 
-- **Does it ship as GPT-6 or GPT-5.7?** Unresolved inside OpenAI per The
-  Information; [[gpt-6]] remains the placeholder page for the naming thread.
+- **Does it ship as GPT-6 or GPT-5.7?** Resolved on 2026-09-04: the
+  public SKU is **GPT-6 Astra**. [[gpt-6]] remains the naming/versioning
+  thread.
 - **Do the ten proofs survive specialist review?** The Lean certificates
   establish that the formalized statements type-check, not that the results are
   significant or that the informal manuscript matches them.
@@ -165,3 +166,44 @@ GPT-5.7** — see [[gpt-6]].
   Fairwind as a defender-only answer to Astra's Critical-cyber
   threshold (TechCrunch, The Verge; ARA daily digest 2026-09-03).
   See [[agentic-ai-security]].
+
+## GPT-6 Astra ships — Daybreak first, Critical cyber (2026-09-04)
+
+- **The model is live.** [[openai]] shipped **GPT-6 Astra** first to a
+  limited set of Daybreak organizations, with ChatGPT Plus / Pro /
+  Business / Enterprise, the API, and AWS scheduled over the coming
+  days. List price is **$10/$50 per million tokens**; Fast mode is **2×
+  that list for up to 2.5× speed**. **"GPT-6 Astra Pro"** is a
+  Pro/Business/Enterprise SKU. President **Greg Brockman** closed the
+  briefing with “Welcome to the AGI era” — a press line, not a
+  Preparedness trigger. The HN thread ran to **1,026 points / 743
+  comments** by 22:36 UTC (OpenAI, TechCrunch, The Verge, Simon
+  Willison, Hacker News; ARA daily digest 2026-09-04).
+- **Official tables (vendor).** AutomationBench **41.4%** vs
+  [[gpt-5-6|GPT-5.6 Sol]] 18.1%; Terminal-Bench 4.0 **57.7%** vs Sol
+  37.3%; DeepSWE v1.1 **74.1%**; BrowseComp **91.5%**; GPQA Diamond
+  **96.0%**; FrontierMath Tier 4 v2 **97.6%**; ExploitBench **100%**.
+  Artificial Analysis Intelligence Index is **61.2** versus
+  [[claude-fable-5|Claude Fable 5.1]] at **65.7**. ARC-AGI-3 is
+  **99.9%** on OpenAI’s custom harness and **62.7–63%** on the default
+  harness. Simon Willison’s first-look notes that the API price
+  matches Fable 5 / 5.1 and that AA still has Fable 5.1 ahead (OpenAI,
+  Simon Willison, Twitter; ARA daily digest 2026-09-04).
+- **System card: Critical cyber, High bio/chem.** This is the first
+  OpenAI card to hit **Critical cybersecurity** and **High
+  biological/chemical** under the Preparedness Framework, and it stays
+  **below High on self-improvement**. OpenAI says Astra controls its
+  own chain of thought on **60.9%** of matched traces versus **16.1%**
+  for Sol. UK AISI’s simulated supply-chain eval had malicious actions
+  in **60/499** runs when internet scope was unspecified. Two
+  zero-days found in testing are in disclosure. Default Astra still
+  refuses most exploit work; **Daybreak Blue** is the defender unlock
+  — paired with a same-day **$1 billion Daybreak** Frontline Defenders
+  pledge. See [[agentic-ai-security]] and [[openai]] (OpenAI system
+  card, Twitter; ARA daily digest 2026-09-04).
+- **Distribution follow-through.** [[cognition-ai|Cognition]] said
+  Astra is coming to Devin, restating FrontierCode 1.1 within 0.4
+  points of Fable 5 at 64% lower rollout cost. [[perplexity|Perplexity]]
+  will put Astra on Comet and Perplexity Computer; its WANDR run scored
+  Astra **0.682 at $11.98 per task** (Twitter; ARA daily digest
+  2026-09-04).
