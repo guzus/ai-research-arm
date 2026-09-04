@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-04 21:00 UTC",
-    "headline": "ANTHROPIC SHIPS KEYLESS AUTH FOR CLAUDE PLATFORM \u2014 BROWSER CLI + AWS/GCP/AZURE/OIDC WORKLOADS, 12H BEFORE CODE WITH CLAUDE OPENS",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-04-twitter-21h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2051393709619732758"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 21:00 UTC",
-    "headline": "@ANTHROPICAI PRIMARY FEED ON DAY 5 OF SILENCE THROUGH $1.5B PE JV \u2014 LAST POST APR 30 SYCOPHANCY PAPER",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-04-twitter-21h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2049927618397614466"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-04 21:00 UTC",
-    "headline": "SEMIANALYSIS: GB300 NVL72 ALREADY 2.7\u00d7 FASTER THAN GB200 ON vLLM \u2014 DESPITE PAPER SPEC ONLY 1.5\u00d7 FLOPS / 1.5\u00d7 HBM CAP / SAME HBM BW",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-04-twitter-21h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2051406756429943109"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 21:00 UTC",
-    "headline": "MERCEDES CUT SAP INSTANCES 40% (1,000\u2192600) USING OWN AI + CHATGPT + CLAUDE TO CLEAN DATA \u2014 SAP NOW BLOCKING UNAUTHORIZED AGENTS",
-    "source": "@amir",
-    "source_file": "research/summaries/2026-05-04-twitter-21h-headlines.json",
-    "url": "https://x.com/amir/status/2051323029511352518"
-  },
-  {
-    "backfilled": true,
     "category": "opensource",
     "delivered_at": "2026-05-04 21:00 UTC",
     "headline": "VERCEL OPEN-SOURCES `npx deepsec` \u2014 CODING-AGENT ORCHESTRATOR FOR DEEP SECURITY REVIEWS, FINDS CRITICAL VULNS IN MINUTES",
@@ -25116,5 +25080,33 @@
     "headline": "WIRED: OPENAI CUT A $1B-ARR CUSTOMER \u2014 CURSOR \u2014 RATHER THAN DEAL WITH MUSK",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2095675221139452379"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-04 12:02:26 UTC",
+    "headline": "DEEPSEEK PLANS 160,000 HUAWEI ASCEND 950DT CHIPS FOR INNER MONGOLIA INFERENCE",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2095813662220951570"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-04 12:02:26 UTC",
+    "headline": "HUAWEI 950DT OUTPUT CAPPED IN LOW HUNDREDS OF THOUSANDS \u2014 DEEPSEEK ORDER MAY TAKE OVER A YEAR",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2095813662220951570"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-04 12:02:26 UTC",
+    "headline": "EPOCH: GPT-6 ASTRA SETS ECI RECORD AT 169, UP SIX POINTS FROM 163",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2095824384753549517"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-04 12:02:26 UTC",
+    "headline": "EPOCH: ASTRA SATURATES FRONTIERMATH TIER 4 AT 98%, SCORES 84% ON MYSTERY GAME PUZZLES",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2095824384753549517"
   }
 ]
