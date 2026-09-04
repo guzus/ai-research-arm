@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-09-04 12:02:26 UTC
+
+CYCLE: DeepSeek plans 160k Huawei 950DTs; Epoch puts Astra at ECI 169
+
+TOP STORIES:
+• DeepSeek plans ≥160,000 Huawei Ascend 950DT chips for Inner Mongolia inference; training stays on Nvidia [⚠]
+• Epoch scores GPT-6 Astra at ECI 169 vs prior 163 — inside reasoning-era trend [✓]
+
+WATCH: DeepSeek/Huawei confirm or deny the 160k 950DT allocation
+
+Full update on GitHub.
