@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-05 01:00 UTC",
-    "headline": "BROCKMAN UNDER OATH: ALTMAN PAID HIM $10M IN OFF-BOOKS EQUITY FROM PERSONAL FAMILY OFFICE IN 2017, HIDDEN FROM MUSK",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-05-twitter-01h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2051431726287900816"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-05 01:00 UTC",
-    "headline": "GEMINI API SHIPS WEBHOOKS \u2014 UNLOCKS LONG-RUNNING TASK DEVX FOR BATCH, AGENTS, GENMEDIA",
-    "source": "@OfficialLoganK",
-    "source_file": "research/summaries/2026-05-05-twitter-01h-headlines.json",
-    "url": "https://x.com/OfficialLoganK/status/2051434527931953490"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-05 04:00 UTC",
-    "headline": "BROCKMAN UNDER OATH: 'I'VE NEVER BEEN CERTAIN WHAT I'M BEING SUED FOR' \u2014 $30B OPENAI STAKE FOR $0 CASH CONFIRMED BY MULTIPLE WIRES",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-05-twitter-04h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2051501311175065944"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-05 04:00 UTC",
-    "headline": "COINTELEGRAPH CONFIRMS BROCKMAN $30B OPENAI STAKE DISCLOSURE IN MUSK V. ALTMAN TRIAL",
-    "source": "@Cointelegraph",
-    "source_file": "research/summaries/2026-05-05-twitter-04h-headlines.json",
-    "url": "https://x.com/Cointelegraph/status/2051507411844731139"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 04:00 UTC",
-    "headline": "TICKERTRENDS: CODEX OVERTAKES CLAUDE CODE IN NPM WEEKLY DOWNLOADS \u2014 46M VS 491K, GAP WIDENING SINCE APRIL 30",
-    "source": "@tickerplus",
-    "source_file": "research/summaries/2026-05-05-twitter-04h-headlines.json",
-    "url": "https://x.com/tickerplus/status/2051126808037257704"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-05 04:00 UTC",
     "headline": "JACK CLARK: 60% CHANCE OF RECURSIVE SELF-IMPROVEMENT BY END OF 2028 \u2014 ANTHROPIC POLICY LEAD GOES ON RECORD",
@@ -25092,5 +25047,40 @@
     "headline": "REUTERS: US AND CHINA PREP MID-SEPTEMBER OFFICIAL AI SAFETY TALKS LED BY BESSENT",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2095939728059326720"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-04 23:00:37 UTC",
+    "headline": "GPT-6 ASTRA NOW LIVE FOR ALL CHATGPT PLUS AND BUSINESS USERS",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2096002992046796932"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-04 23:00:37 UTC",
+    "headline": "ARTIFICIAL ANALYSIS V4.2: FABLE 5.1 STILL LEADS; ASTRA NO. 2 AFTER GPQA RETIRED",
+    "source": "@ArtificialAnlys",
+    "url": "https://x.com/ArtificialAnlys/status/2096001986110099767"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-04 23:00:37 UTC",
+    "headline": "DELL: FIRST PRODUCTION NVIDIA VERA RUBIN NVL72 RACKS DELIVERED TO COREWEAVE",
+    "source": "@MichaelDell",
+    "url": "https://x.com/MichaelDell/status/2095984882769866938"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-04 23:00:37 UTC",
+    "headline": "ANTHROPIC'S LYDIA HALLIE RESETS CLAUDE MAX WEEKLY LIMITS FOR THE LONG WEEKEND",
+    "source": "@lydiahallie",
+    "url": "https://x.com/lydiahallie/status/2095967323412930677"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-04 23:00:37 UTC",
+    "headline": "ALTMAN: CYBER-PAUSE MODEL IS A FUTURE SYSTEM, NOT GPT-6 ASTRA",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2095988755060633604"
   }
 ]
