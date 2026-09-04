@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 01:00 UTC",
-    "headline": "SIERRA RAISES $950M SERIES E AT $15B+ VALUATION, TIGER GLOBAL + GV LED \u2014 ARR $100M (NOV) TO $150M (FEB)",
-    "source": "@SierraPlatform",
-    "source_file": "research/summaries/2026-05-05-twitter-01h-headlines.json",
-    "url": "https://x.com/SierraPlatform/status/2051314764798943456"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 01:00 UTC",
-    "headline": "OPENAI 10X CODEX RATE LIMITS UNTIL JUNE 5 FOR GPT-5.5 PARTY APPLICANTS WHO DIDN'T GET IN \u2014 CONCESSION ON 4-DAY REVOLT",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-05-twitter-01h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2051462208748675541"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 01:00 UTC",
-    "headline": "ANTHROPIC ORBIT LEAK: PROACTIVE ASSISTANT FOR CLAUDE COWORK PULLING FROM GMAIL, SLACK, GITHUB, CALENDAR, DRIVE, FIGMA",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-05-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2051450201668256051"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 01:00 UTC",
-    "headline": "CEREBRAS S-1 AMENDMENT SETS IPO RANGE $115-$125, ~$25.5B VALUATION MIDPOINT, $3.24-3.73B RAISE \u2014 TARGET MAY 13 ON NASDAQ",
-    "source": "@YeboahWalee",
-    "source_file": "research/summaries/2026-05-05-twitter-01h-headlines.json",
-    "url": "https://x.com/YeboahWalee/status/2051300983855345807"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-05-05 01:00 UTC",
     "headline": "BROCKMAN UNDER OATH: ALTMAN PAID HIM $10M IN OFF-BOOKS EQUITY FROM PERSONAL FAMILY OFFICE IN 2017, HIDDEN FROM MUSK",
@@ -25100,5 +25064,33 @@
     "headline": "UNSLOTH: GLM-5.3-FLASH LOCAL GGUF INFERENCE NOW UP TO 3.3\u00d7 FASTER WITH MTP",
     "source": "@UnslothAI",
     "url": "https://x.com/UnslothAI/status/2095852388888522890"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-04 20:42:41 UTC",
+    "headline": "GPT-6 ASTRA NOW LIVE FOR PRO, ENTERPRISE AND BUSINESS PREMIUM IN WORK/CODEX, PLUS THE API",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2095968413646737608"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-04 20:42:41 UTC",
+    "headline": "ANTHROPIC: CLAUDE FORMALIZED FERMAT'S LAST THEOREM IN LEAN \u2014 13M LINES, 11 DAYS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2095947707605266436"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-04 20:42:41 UTC",
+    "headline": "META OPENS MUSE SPARK 1.3 MAX ON MUSE CODE AND THE META MODEL API",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2095938990197329935"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-04 20:42:41 UTC",
+    "headline": "REUTERS: US AND CHINA PREP MID-SEPTEMBER OFFICIAL AI SAFETY TALKS LED BY BESSENT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2095939728059326720"
   }
 ]
