@@ -1,0 +1,9 @@
+Speaker 1: Friday, September fourth, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI shipped GPT six Astra today, with Daybreak live and the API at ten and fifty dollars per million tokens.
+Speaker 1: The model lands rated Critical cyber, and the AA Index sits at [emphasis] sixty-one point two [/emphasis] versus Fable five point one's sixty-five point seven.
+Speaker 2: Daybreak also puts [emphasis] one billion dollars [/emphasis] toward frontline defenders, and Hacker News already stacked one thousand twenty-six points and seven hundred forty-three comments.
+Speaker 1: On the deal front, Nvidia agreed to buy Hugging Face for [emphasis] twelve point ninety-three billion dollars [/emphasis], and the Hub stays open.
+Speaker 2: That's the first time we've seen a chip giant swallow the open-model commons at that price, and keeping the Hub public is the part that matters.
+Speaker 1: Some quick numbers: Thinking Machines is in talks on one billion dollars at about forty billion.
+Speaker 2: Worth noting that ChatGPT, Claude, and Grok [dramatic_pause] all suffered overlapping afternoon outages, so the whole frontier stack blinked at once.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
