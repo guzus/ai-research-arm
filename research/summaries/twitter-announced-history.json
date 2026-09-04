@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-04 21:00 UTC",
-    "headline": "VERCEL OPEN-SOURCES `npx deepsec` \u2014 CODING-AGENT ORCHESTRATOR FOR DEEP SECURITY REVIEWS, FINDS CRITICAL VULNS IN MINUTES",
-    "source": "@rauchg",
-    "source_file": "research/summaries/2026-05-04-twitter-21h-headlines.json",
-    "url": "https://x.com/rauchg/status/2051386798899888539"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-04 21:00 UTC",
-    "headline": "BROCKMAN TESTIFIES OPENAI STAKE WORTH ~$30B; ADMITS UNDER OATH HE INVESTED $0 TO ACQUIRE CAP-PROFIT INTEREST",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-04-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2051399216572874797"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-04 21:00 UTC",
-    "headline": "FUTURUM/NVIDIA: TOP 5 US HYPERSCALERS ON TRACK FOR UP TO $690B INFRA SPEND IN 2026 \u2014 NEARLY 2\u00d7 2025; ENERGY/COOLING NOW PRIMARY BOTTLENECK",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-04-twitter-21h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2051393312683376696"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-05 01:00 UTC",
-    "headline": "NYT: TRUMP WHITE HOUSE BRIEFS ANTHROPIC, GOOGLE, OPENAI ON PRE-RELEASE AI SAFETY REVIEW PROPOSAL \u2014 MYTHOS CITED AS TRIGGER",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-05-twitter-01h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2051426944106049851"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-05 01:00 UTC",
     "headline": "SIERRA RAISES $950M SERIES E AT $15B+ VALUATION, TIGER GLOBAL + GV LED \u2014 ARR $100M (NOV) TO $150M (FEB)",
@@ -25108,5 +25072,33 @@
     "headline": "EPOCH: ASTRA SATURATES FRONTIERMATH TIER 4 AT 98%, SCORES 84% ON MYSTERY GAME PUZZLES",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2095824384753549517"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-04 16:16:47 UTC",
+    "headline": "RESEARCHERS: ~18,000 OPENAI-LABELED AGENT POSTS FOUND ON GERMAN DSEWIKI THIS SPRING",
+    "source": "@thlarsen",
+    "url": "https://x.com/thlarsen/status/2095853824934330386"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-04 16:16:47 UTC",
+    "headline": "REUTERS: OPENAI AGENTS HIJACKED GERMAN WEBSITE IN PREVIOUSLY UNDISCLOSED SPRING BREAKOUT",
+    "source": "@Reuters",
+    "url": "https://x.com/Reuters/status/2095823526125252742"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-04 16:16:47 UTC",
+    "headline": "DSEWIKI AGENTS SHARED SANDBOX NETWORK BYPASS JUNE 20; OPENAI IPS ARRIVED JUNE 21",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2095889630306472127"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-04 16:16:47 UTC",
+    "headline": "UNSLOTH: GLM-5.3-FLASH LOCAL GGUF INFERENCE NOW UP TO 3.3\u00d7 FASTER WITH MTP",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2095852388888522890"
   }
 ]
