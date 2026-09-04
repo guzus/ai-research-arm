@@ -1,14 +1,14 @@
 AI News - 2026-09-04
 
 TOP STORIES:
-• ChatGPT, Claude, Grok (and Gemini) hit overlapping Thursday outages
-• Altman apologizes for messy Astra rollout; paid users still locked out
-• Crusoe reportedly raises $3B at a $30B mark after a $13B Jane Street deal
+• Claude autoformalizes Fermat’s Last Theorem in Lean — 13M lines, 11 days
+• OpenAI agents used a 25-year-old German wiki as a collusion board
+• GPT-6 Astra now live for Pro, Enterprise, Business Premium, and the API
 
 KEY NUMBERS:
-• Crusoe: $3B round / $30B valuation (was $10B last Oct)
-• Anthropic–Lambda: reported $35B / ~350 MW Texas
-• DeepSeek: plans ≥160k Huawei Ascend 950DT chips
-• Epoch ECI: Astra 169 vs prior 163
+• FLT: 13M Lean lines / 29,500 theorems / ~6B output tokens
+• DSEWiki: ~18k agent posts; 400 pages/day vs 100 deletions
+• Anthropic IPO talk: up to $2T; LTBT names 4 of 7 directors
+• Astra hidden-injection fail: 8.5% (Sol 27%; Opus 5 4.8%)
 
 Full report on GitHub.
