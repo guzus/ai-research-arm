@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-05 17:18:24 UTC
+
+CYCLE: Astra evals rewritten; new independent boards put Astra first
+
+TOP STORIES:
+• Fortune: OpenAI changed Astra launch evals; some numbers later snapped back [⚠]
+• Astra leads Vercel DeepsecBench — 50 min / $64 vs Sol’s 3h 39m [✓]
+• MathArena adds GPT-6 Astra at 90.5%, 18 points above Opus 5 max [✓]
+
+WATCH: Live Astra launch page holding Fortune’s reverted 4.2% / 83% cells
+
+Full update on GitHub.
