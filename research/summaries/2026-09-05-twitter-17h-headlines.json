@@ -1,0 +1,20 @@
+[
+  {
+    "headline": "FORTUNE: OPENAI CHANGED ASTRA LAUNCH EVALS — HALLUCINATION RATE HIT 2% THEN REVERTED TO 4.2%",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2096258675077738963",
+    "category": "breaking"
+  },
+  {
+    "headline": "ASTRA LEADS VERCEL DEEPSECBENCH — 50 MIN AND $64 VS SOL’S 3H 39M",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2096285043094405491",
+    "category": "model"
+  },
+  {
+    "headline": "MATHARENA ADDS GPT-6 ASTRA AT 90.5% — 18 POINTS CLEAR OF OPUS 5 MAX",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2096284872151085298",
+    "category": "research"
+  }
+]
