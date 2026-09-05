@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind the Claude family; marked a ~3-hour major incident on Mythos 5.1 / Fable 5.1 / Opus 5 (resolved 16:16 UTC, 2026-09-04) and is reported in a $35B Lambda Texas deal after last week's $45B Nscale contract.
+description: AI safety lab behind Claude; an internal research model formalized Fermat's Last Theorem in 13 million Lean lines, while IPO reporting put LTBT governance under scrutiny at a prospective $2T valuation.
 created_at: 2026-05-24
-timestamp: 2026-09-04T00:00:00Z
+timestamp: 2026-09-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
@@ -1356,3 +1357,33 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   files and synced to the API. Claude Code is also exploring
   unshipped Function Hooks (GitHub issue 91870) (Twitter; ARA daily
   digest 2026-09-04).
+
+## FLT autoformalization and LTBT IPO scrutiny (2026-09-05)
+
+- **An internal research model formalized Fermat’s Last Theorem**
+  in **13 million Lean lines** over **11 days** on the Prove2Me
+  scaffold, producing **29,500 intermediate theorems** used in
+  the final proof and ~**6 billion** output tokens. Anthropic
+  says Lean checked the artifact against Mathlib’s FLT statement
+  using only the three standard axioms; the repo is
+  `github.com/anthropics/fermats-last-theorem`. Kevin Buzzard
+  called it an **extraordinary autoformalization of Wiles, not a
+  new human proof**. Treat “first complete computer-checked
+  proof” as Anthropic’s claim plus Buzzard’s quoted review until
+  a third party rebuilds the root. The HN thread jumped from
+  22/2 to **361/234** in four hours and was the #2 AI story.
+  See [[verification-bottleneck]] (Anthropic, Hacker News; ARA
+  daily digest 2026-09-05).
+- **IPO trustees face scrutiny.** Ars/FT report a prospective
+  valuation as high as **$2 trillion** and public-market buyers
+  living with the Long-Term Benefit Trust. The LTBT appoints or
+  dismisses a majority of the board and has already named four
+  of seven directors, including Reed Hastings; an **85%
+  shareholder vote** can fire the trustees. This is governance
+  reporting, **not an S-1**. The Information said IPO buyers are
+  asking for **revenue per token and revenue per gigawatt**, not
+  only standard financials. Same cycle, Nscale shopped **$3.5
+  billion** of pre-IPO financing after the reported **$45
+  billion** Anthropic compute deal. See [[ai-capex]] (Ars
+  Technica, Financial Times, The Information, TechCrunch; ARA
+  daily digest 2026-09-05).

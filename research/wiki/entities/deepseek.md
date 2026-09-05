@@ -4,10 +4,11 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou-based Chinese frontier lab; closed its first-ever external round (~$7.4B / ~50B yuan at a $50B+ valuation, the largest in Chinese AI history) on 2026-06-18 — founder-controlled, vote-less capital from Tencent + CATL, with the state AI fund the only voting investor — pivoting to commercialization toward AGI, and shipped V4 Pro's repriced card on 2026-08-18.
+description: Hangzhou Chinese frontier lab; Bloomberg says it planned a Huawei inference cluster of at least 160,000 Ascend 950DT chips for its Inner Mongolia campus, while still training on Nvidia.
 created_at: 2026-06-04
-timestamp: 2026-08-22T00:00:00Z
+timestamp: 2026-09-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -219,6 +220,20 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   load-bearing omission for this lab; the vendor's "close to Opus 4.8" framing has
   not been independently benchmarked. See [[deepseek-v4-flash]] (The Decoder; ARA
   daily digest 2026-08-22).
+
+- **A planned Huawei inference cluster fills the Inner Mongolia
+  campus (2026-09-05).** Bloomberg says DeepSeek ordered **at
+  least 160,000 Ascend 950DT** chips to run models at the
+  gigawatt-scale Inner Mongolia site tracked on 2026-08-02 —
+  **inference only**. The order could take **more than a year**;
+  memory shortages cap 950DT output this year. DeepSeek did not
+  comment; Huawei had no immediate reply. The same report says
+  DeepSeek **still trains on Nvidia**, so the 2026-08-02 open
+  question (“which accelerators fill the racks”) now has a
+  split answer: Huawei for inference, Nvidia for training,
+  both still single-source until a principal speaks. See
+  [[ai-capex]] (Bloomberg, The Decoder, Twitter; ARA daily
+  digest 2026-09-05).
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: Astra (OpenAI)
 type: entity
 aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro"]
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use]
-description: OpenAI's GPT-6 Astra computer-use model, shipped 2026-09-04 first to Daybreak orgs at $10/$50 per Mtok; Critical cyber and High bio/chem, with Plus/Pro/Business/Enterprise and AWS promised over coming days.
+description: OpenAI's GPT-6 Astra computer-use model, opened to Plus on 2026-09-05 after a Daybreak-only launch; $10/$50 per Mtok; Epoch ECI 169; Artificial Analysis v4.2 ranks it second behind Fable 5.1.
 created_at: 2026-08-02
-timestamp: 2026-09-04T00:00:00Z
+timestamp: 2026-09-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
@@ -207,3 +208,35 @@ multiple agents on a single problem for **hours or days**. See [[gpt-6]].
   will put Astra on Comet and Perplexity Computer; its WANDR run scored
   Astra **0.682 at $11.98 per task** (Twitter; ARA daily digest
   2026-09-04).
+
+## Plus rollout, Epoch 169, and AA second (2026-09-05)
+
+- **Opened to Plus.** Product lead Tibo Sottiaux reversed a
+  same-evening wait after saying capacity held; Altman posted
+  “Now out to all Plus and Business users,” walking back the
+  Daybreak-only launch. Pro, Enterprise, Business Premium,
+  ChatGPT Work, Codex, and the API were already live at **$10
+  input / $50 output per million tokens**. In Chat, Astra
+  powers the GPT-6 Pro SKU for Pro / Business / Enterprise;
+  Plus still gets the normal GPT-6 tier. OpenRouter listed
+  `openai/gpt-6-astra` the same evening. See [[openai]]
+  (OpenAI, Twitter, The Verge; ARA daily digest 2026-09-05).
+- **Independent scores landed the same evening.** Epoch AI’s
+  Capabilities Index prints Astra at **169** versus a prior
+  best of **163**, inside the reasoning-era trend. Artificial
+  Analysis Intelligence Index **v4.2** still ranks
+  [[claude-fable-5|Claude Fable 5.1]] first, with Astra
+  second and a **4-point gap** over [[gpt-5-6|GPT-5.6 Sol]]
+  (Artificial Analysis, Epoch AI, Twitter; ARA daily digest
+  2026-09-05).
+- **Gray Swan’s hidden-in-document IPI Arena leftover is
+  8.5%** across 1,810 attacks, down from Sol’s **27%** and
+  still worse than [[claude-opus-5|Claude Opus 5]] at
+  **4.8%**. Direct injections are blocked **99.99%**. The
+  Decoder says Astra also hallucinates less than the GPT-5
+  family (The Decoder; ARA daily digest 2026-09-05).
+- **Simon Willison’s pelican grid** is the first public Astra
+  SVG bake-off across low / medium / high / xhigh / max
+  reasoning: every Astra pelican beat the best GPT-5.6 Sol,
+  and max is “really good” (Simon Willison; ARA daily digest
+  2026-09-05).
