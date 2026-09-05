@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 09:00 UTC",
-    "headline": "WSJ NAMED AS PRIMARY ON FIS-ANTHROPIC AML AGENT \u2014 DAYS-TO-MINUTES INVESTIGATION TIMES",
-    "source": "@Anyutik_1907",
-    "source_file": "research/summaries/2026-05-05-twitter-09h-headlines.json",
-    "url": "https://x.com/Anyutik_1907/status/2051496726943465651"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-05 09:00 UTC",
-    "headline": "CURRAN: TRUMP AI EXECUTIVE ORDER + POLICY MEMO COULD DROP TODAY \u2014 TECH-CEO/ADMIN MIXED WORKING GROUP",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-05-twitter-09h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2051540046772134263"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 09:00 UTC",
-    "headline": "ANTHROPIC PRIMARY X FEED NOW DAY 6+ SILENT \u2014 NO POST ON OWN FIS JV, PRIOR BLACKSTONE JV, OR NYT EO STORY",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-05-twitter-09h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2049927618397614466"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-05 09:00 UTC",
     "headline": "KIMMONISMUS: NEW CHATGPT VOICE MODE PRETTY MUCH CONFIRMED \u2014 SAMA TEASE NOW 4,836L/187RT",
@@ -25062,5 +25035,26 @@
     "headline": "HERMES ADDS ONE-COMMAND RESUME OF CLAUDE CODE AND CODEX SESSIONS",
     "source": "@Teknium",
     "url": "https://x.com/Teknium/status/2096239718824550439"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-05 17:18:24 UTC",
+    "headline": "FORTUNE: OPENAI CHANGED ASTRA LAUNCH EVALS \u2014 HALLUCINATION RATE HIT 2% THEN REVERTED TO 4.2%",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2096258675077738963"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-05 17:18:24 UTC",
+    "headline": "ASTRA LEADS VERCEL DEEPSECBENCH \u2014 50 MIN AND $64 VS SOL\u2019S 3H 39M",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2096285043094405491"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-05 17:18:24 UTC",
+    "headline": "MATHARENA ADDS GPT-6 ASTRA AT 90.5% \u2014 18 POINTS CLEAR OF OPUS 5 MAX",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2096284872151085298"
   }
 ]
