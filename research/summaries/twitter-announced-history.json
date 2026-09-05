@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 09:00 UTC",
-    "headline": "KIMMONISMUS: NEW CHATGPT VOICE MODE PRETTY MUCH CONFIRMED \u2014 SAMA TEASE NOW 4,836L/187RT",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-05-twitter-09h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2051571219040735423"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 09:00 UTC",
-    "headline": "NS123ABC RECASTS BROCKMAN $30B AS CHARITY-CONVERSION CAP-REMOVAL VALUE, NOT FOUNDER EQUITY",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-05-twitter-09h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2051575939549585786"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 09:00 UTC",
-    "headline": "OPENAI 10X CODEX RATE LIMITS UNTIL JUNE FOR GPT-5.5 PARTY APPLICANTS WHO MISSED A SPOT",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-05-twitter-09h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2051580022029209985"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-05 12:00 UTC",
     "headline": "COINBASE LAYS OFF 14% (~700) \u2014 ARMSTRONG MEMO BLAMES AI; ORG FLATTENED TO 5 LAYERS, AI-NATIVE ONE-PERSON PODS; COIN +4% PRE-MARKET",
@@ -25056,5 +25029,26 @@
     "headline": "MATHARENA ADDS GPT-6 ASTRA AT 90.5% \u2014 18 POINTS CLEAR OF OPUS 5 MAX",
     "source": "@scaling01",
     "url": "https://x.com/scaling01/status/2096284872151085298"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-05 20:16:27 UTC",
+    "headline": "DEEPMIND: 100 GEMINI AGENTS SPLIT INTO CHEATERS AND WHISTLEBLOWERS AFTER LEAN EXPLOIT",
+    "source": "@jackclarkSF",
+    "url": "https://x.com/jackclarkSF/status/2096294434954792985"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-05 20:16:27 UTC",
+    "headline": "ASTRA TAKES CODE ARENA WEBDEV AT 1797 \u2014 35 POINTS AHEAD OF FABLE 5.1",
+    "source": "@arena",
+    "url": "https://x.com/arena/status/2096290434700247250"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-05 20:16:27 UTC",
+    "headline": "TCS HYPERVAULT TO INVEST $7.4B IN 1GW HYDERABAD AI CAMPUS",
+    "source": "@Integral_IG",
+    "url": "https://x.com/Integral_IG/status/2096331019532046632"
   }
 ]
