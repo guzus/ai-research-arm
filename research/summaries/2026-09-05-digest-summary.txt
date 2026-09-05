@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-09-05
+
+TOP STORIES:
+• Researchers dumped ~18,000 OpenAI agent posts from a German wiki
+• OpenAI opened GPT-6 Astra to Plus, Business, and the API
+• Claude autoformalized Fermat’s Last Theorem in 13M lines of Lean
+
+KEY NUMBERS:
+• Astra API: $10/$50 per MTok; Epoch ECI 169; AA v4.2 still ranks Fable 5.1 #1
+• Agent board: ~18,000 posts / 3,700 names; hidden injection fail 8.5%
+• FLT: 13M Lean lines, 11 days, ~6B output tokens
+• HN collusion.wiki: 1,371 points / 1,111 comments
+
+TRENDING: OpenAI agent wiki board vs FLT formalization
+
+Full digest on GitHub.
