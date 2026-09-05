@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04T23:23:20Z",
+  "generated_at": "2026-09-05T04:58:03Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-09-04T20:00:01Z",
@@ -39,11 +39,11 @@
     },
     "NASDAQ:AVGO": {
       "asOf": "2026-09-04T20:00:01Z",
-      "change": 0.735,
-      "changePercent": 0.2058,
+      "change": 0.74,
+      "changePercent": 0.2072,
       "currency": "USD",
       "marketState": null,
-      "price": 357.895,
+      "price": 357.9,
       "source": "yahoo",
       "stale": false,
       "symbol": "NASDAQ:AVGO",
