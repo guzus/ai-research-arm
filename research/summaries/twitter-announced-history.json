@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-05 04:00 UTC",
-    "headline": "JACK CLARK: 60% CHANCE OF RECURSIVE SELF-IMPROVEMENT BY END OF 2028 \u2014 ANTHROPIC POLICY LEAD GOES ON RECORD",
-    "source": "@jackclarkSF",
-    "source_file": "research/summaries/2026-05-05-twitter-04h-headlines.json",
-    "url": "https://x.com/jackclarkSF/status/2051312759594471886"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 04:00 UTC",
-    "headline": "REUTERS: CEREBRAS TARGETS $26.6B VALUATION IN US IPO AS AI CHIP DEMAND SURGES",
-    "source": "@Reuters",
-    "source_file": "research/summaries/2026-05-05-twitter-04h-headlines.json",
-    "url": "https://x.com/Reuters/status/2051507186526724180"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 04:00 UTC",
-    "headline": "OPENAI 10X CODEX RATE-LIMIT BUMP NOW EXTENDS TO ALL GPT-5.5 PARTY APPLICANTS, NOT JUST NON-ATTENDEES",
-    "source": "@jxnlco",
-    "source_file": "research/summaries/2026-05-05-twitter-04h-headlines.json",
-    "url": "https://x.com/jxnlco/status/2051468129101099038"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-05 04:00 UTC",
     "headline": "SIMONW: BUN APPEARS TO BE EXPLORING A PORT FROM ZIG TO RUST PER LEAKED PORTING.MD GUIDE FOR CODING AGENTS",
@@ -25082,5 +25055,26 @@
     "headline": "ALTMAN: CYBER-PAUSE MODEL IS A FUTURE SYSTEM, NOT GPT-6 ASTRA",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2095988755060633604"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-05 04:17:25 UTC",
+    "headline": "PERPLEXITY COMPUTER ADDS GPT-6 ASTRA AND CLAUDE FABLE FOR PRO AND MAX",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2096081180043125186"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-05 04:17:25 UTC",
+    "headline": "GPT-6 ASTRA NOW LIVE IN HERMES AGENT ON NOUS PORTAL",
+    "source": "@Teknium",
+    "url": "https://x.com/Teknium/status/2096012475947004269"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-05 04:17:25 UTC",
+    "headline": "CURRAN: CLAUDE SOLVED NAVIER-STOKES, OUT FOR EXPERT REVIEW BEFORE ANTHROPIC IPO",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2096062392442724805"
   }
 ]
