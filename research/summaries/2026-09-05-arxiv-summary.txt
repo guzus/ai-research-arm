@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-05
+
+TOP 5 PAPERS:
+• Interface Censoring — same agent scores 0.00 or 0.96 if only the serving adapter changes
+• ESPO — error-structured prompt opt: +3.8pp vs GEPA, 47% shorter; Qwen3 GSM8K 15→91
+• Scal3R — frozen 3D backbone + 1% pose tokens; −60% ATE on long video
+• Text-AB — alignment-free 3B speech DiT on 480k hours; dubbing + full-duplex dialogue
+• CAPA — meeting delegates miss 51% of turns; structured state cuts silence to 2.5%
+
+CATEGORIES: NLP 8, CV/Multimodal 9, Agents & Reasoning 8, Safety 6, Other 8
+
+Full report on GitHub.
