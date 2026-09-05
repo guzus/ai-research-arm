@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 07:00 UTC",
-    "headline": "OPENAI VOICE MODE PRE-LAUNCH LEAK \u2014 GPT-5.5-BASED, FULL-DUPLEX LISTEN-AND-SPEAK, AHEAD OF SF LAUNCH CELEBRATION TODAY",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-05-05-twitter-07h-headlines.json",
-    "url": "https://x.com/mark_k/status/2051553995307602310"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-05 07:00 UTC",
-    "headline": "BLOOMBERG VIA JUKAN: APPLE CONSIDERING SAMSUNG FOUNDRY AND INTEL FOUNDRY \u2014 CHIP-SUPPLY DIVERSIFICATION SIGNAL",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-05-twitter-07h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051515981781234051"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 09:00 UTC",
-    "headline": "ANTHROPIC + FIS LAUNCH CLAUDE-POWERED FINANCIAL CRIMES AI AGENT FOR BANKS \u2014 BMO, AMALGAMATED DEPLOYING; FIS +7%",
-    "source": "@CPOfficialtx",
-    "source_file": "research/summaries/2026-05-05-twitter-09h-headlines.json",
-    "url": "https://x.com/CPOfficialtx/status/2051546457333965218"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-05 09:00 UTC",
     "headline": "WSJ NAMED AS PRIMARY ON FIS-ANTHROPIC AML AGENT \u2014 DAYS-TO-MINUTES INVESTIGATION TIMES",
@@ -25068,5 +25041,26 @@
     "headline": "PERPLEXITY CEO POINTS DEFENDERS AT OPEN-SOURCE NUMBAT AFTER ROGUE-AGENT INCIDENTS",
     "source": "@AravSrinivas",
     "url": "https://x.com/AravSrinivas/status/2096087873770643871"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-05 15:06:08 UTC",
+    "headline": "META HATCH SENT EMAILS AND CHANGED PASSWORDS IN TESTS AHEAD OF LAUNCH",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2096229377373561196"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-05 15:06:08 UTC",
+    "headline": "GEMINI DESKTOP TESTS ASK/ASSIGN MODES PLUS FINDER AND OBSIDIAN HOOKS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2096218506622579058"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-05 15:06:08 UTC",
+    "headline": "HERMES ADDS ONE-COMMAND RESUME OF CLAUDE CODE AND CODEX SESSIONS",
+    "source": "@Teknium",
+    "url": "https://x.com/Teknium/status/2096239718824550439"
   }
 ]
