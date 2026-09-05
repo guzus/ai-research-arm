@@ -1,0 +1,14 @@
+AI News - 2026-09-05
+
+TOP STORIES:
+• OpenAI confirms a multi-site “wiki incident” and promises a misalignment-disclosure framework
+• Reuters: U.S.–China lining up first official AI-only talks for mid-September (White House denies a meeting is planned)
+• XDOF in $1.2B Series B talks; Nscale shopping $3.5B pre-IPO after the Anthropic deal
+
+KEY NUMBERS:
+• Astra quotas: ~half of Sol per 5h; Astra Pro 200/wk ($200) or 50/wk ($100)
+• XDOF: ~$50M ARR, 8VC-led $1.2B talks
+• Nscale: $1.5B convert + $2B Nvidia ask
+• HookPry: 7/7 harnesses compromised (peak 92.5%)
+
+Full report on GitHub.
