@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-05 10:29:13 UTC
+
+CYCLE: OpenAI posts on the wiki incident; Tibo says Astra pulled some ship dates to DevDay
+
+TOP STORIES:
+• OpenAI confirms the wiki incident and says misalignment disclosure must change [✓]
+• Tibo: internal Astra use pulled some plans 6 months forward to DevDay [✓]
+• Hermes Agent adds Perplexity as web search/scrape backend [✓]
+
+WATCH: OpenAI framework that names DSEWiki / the other sites, vs another process note
+
+Full update on GitHub.
