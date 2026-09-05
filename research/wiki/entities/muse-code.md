@@ -2,12 +2,13 @@
 slug: muse-code
 title: Muse Code (Muse Spark 1.3)
 type: entity
-aliases: ["Muse Code", "Muse Spark 1.2", "Muse Spark 1.3", "Meta Muse Code"]
+aliases: ["Muse Code", "Muse Spark 1.2", "Muse Spark 1.3", "Meta Muse Code", "Muse Spark max", "Muse Spark 1.3 max"]
 tags: [coding-agent, meta, terminal-agent, benchmarks, pricing]
-description: Meta Superintelligence Labs' coding agent on Muse Spark 1.3 (2026-09-03) at the same $1.25/$4.25 list as 1.2; Artificial Analysis scores the public xhigh SKU at 61, with a gated max at 62 still behind Fable 5.1.
+description: Meta Superintelligence Labs' coding agent; Muse Spark 1.3 max unlocked 2026-09-05 after extra safety testing, still $1.25/$4.25, with a partner-preview AA card at 62 versus xhigh 61.
 created_at: 2026-08-06
-timestamp: 2026-09-03T00:00:00Z
+timestamp: 2026-09-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
@@ -84,3 +85,16 @@ as one product; the maker is tracked on [[meta]] and the earlier
 - **Hacker News** treated 1.3 as the day's third AI thread (**285
   points / 181 comments**), behind [[gemini-3-8-flash]] and Mistral's
   default user-input training change (ARA daily digest 2026-09-03).
+
+## Muse Spark max unlocks (2026-09-05)
+
+- **[[meta]] unlocked Muse Spark max**, the reasoning tier held
+  for extra safety testing after the September 2 ship. This is a
+  **setting unlock, not a new family**. Alexandr Wang recommended
+  max over high / xhigh for coding and agentic work on Muse Code
+  and the Model API. A partner-preview Artificial Analysis card
+  had max at Intelligence Index **62** versus xhigh **61**;
+  standard list price is still **$1.25 / $4.25 per million
+  tokens**. The public AA board still has
+  [[claude-fable-5|Fable 5.1]] first (Meta, Twitter, Artificial
+  Analysis; ARA daily digest 2026-09-05).

@@ -4,10 +4,11 @@ title: The verification bottleneck
 type: concept
 aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: The 2026 constraint that models now generate research-shaped output faster than qualified humans can check it, so the scarce resource shifts from producing results to establishing which ones are correct and which matter.
+description: The 2026 constraint that models emit research-shaped output faster than specialists can check it; Anthropic's FLT formalization (13M Lean lines) is the latest checkable artifact still awaiting a third-party rebuild.
 created_at: 2026-08-02
-timestamp: 2026-08-25T00:00:00Z
+timestamp: 2026-09-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "How Do Agents Fail on AutoResearch", url: "https://arxiv.org/abs/2608.14905", date: 2026-08-23}
@@ -145,3 +146,22 @@ claim, and the dispute resolves on **relay credibility rather than
   peer review that has not started. Whether it is deliberate-model-result or
   human-guided, the load-bearing test is identical: the construction must
   survive a specialist who is not the claimant (ARA daily digest 2026-08-25).
+
+## FLT as a checkable artifact that still needs a rebuild (2026-09-05)
+
+- **[[anthropic]] published a 13-million-line Lean formalization
+  of Fermat’s Last Theorem**, produced in 11 days on an internal
+  research model via the Prove2Me scaffold (~6 billion output
+  tokens; 29,500 intermediate theorems in the final proof). Lean
+  checked the artifact against Mathlib’s FLT statement using only
+  the three standard axioms. Kevin Buzzard called it an
+  **extraordinary autoformalization of Wiles, not a new human
+  proof**. That is the same split this page named on [[astra]]:
+  the Lean certificate settles type-checking, not that the
+  informal claim (“first complete computer-checked proof”) is
+  the interesting one, and not that a third party can rebuild
+  the root. Treat that first-complete line as Anthropic’s claim
+  plus Buzzard’s quoted review until someone else does. The HN
+  thread became the #2 AI story the same evening the
+  [[openai]] DSEWiki dump took #1 (Anthropic, Hacker News; ARA
+  daily digest 2026-09-05).

@@ -4,10 +4,11 @@ title: Claude Fable 5 / Mythos 5
 type: entity
 aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-class", "claude-fable-5", "claude-mythos-5", "Claude Fable 5.1", "Fable 5.1", "Claude Mythos 5.1", "Mythos 5.1"]
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
-description: Anthropic's Mythos-class pair — safeguarded Fable and restricted Mythos — first shipped 2026-06-09 and upgraded to Fable 5.1 / Mythos 5.1 on 2026-09-02, pitching up to 45% cheaper agentic work and 52.6% on Terminal-Bench-Science versus 24.7% for Fable 5.
+description: Anthropic's Mythos-class pair; Artificial Analysis Intelligence Index v4.2 ranked Fable 5.1 first the evening Astra hit the public API, with a 4-point gap over Astra.
 created_at: 2026-06-10
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
@@ -381,6 +382,19 @@ every feed on launch day.
   eval beyond Terminal-Bench-Science appears in the digest — treat the 45%
   cheaper / doubled-science claims as vendor-stated (ARA daily digest
   2026-09-02).
+
+- **Artificial Analysis Intelligence Index v4.2 ranks Fable 5.1
+  first (2026-09-05).** The card shipped the same evening
+  [[astra]] hit the public API. Astra is second, with a
+  **4-point gap** over [[gpt-5-6|GPT-5.6 Sol]]. Epoch’s ECI
+  puts Astra at a record **169** — a different index, not a
+  contradiction of the AA ranking. This is the first
+  independent-looking lead for 5.1 since the 2026-09-02
+  Terminal-Bench-Science vendor table. Same evening,
+  [[muse-code|Muse Spark max]] unlocked at a partner-preview
+  AA **62** versus xhigh **61** — still behind Fable
+  (Artificial Analysis, Epoch AI, Twitter; ARA daily digest
+  2026-09-05).
 
 ## Open questions
 
