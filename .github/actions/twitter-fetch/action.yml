@@ -247,8 +247,19 @@ runs:
         total = 0
         non_empty_accounts = 0
 
+        # birdy >= 1.2 writes <output-dir>/_report.json (per-op status) beside
+        # the op files; it is metadata, never an account. Surface it so the
+        # agent can tell "quiet handle" from "not fetched (429 / dead handle)".
+        fetch_report = None
+        report_path = bird / "_report.json"
+        if report_path.exists():
+            try:
+                fetch_report = json.loads(report_path.read_text())
+            except Exception as exc:
+                print(f"warning: unreadable _report.json: {exc}")
+
         for f in sorted(bird.glob("*.json")):
-            if f.name in ("all.json", "manifest.json"):
+            if f.name in ("all.json", "manifest.json") or f.name.startswith("_"):
                 continue
             try:
                 data = json.loads(f.read_text() or "[]")
@@ -282,10 +293,35 @@ runs:
                 "generated_at": datetime.now(timezone.utc).isoformat(),
             },
         }
+        if isinstance(fetch_report, dict):
+            ops = fetch_report.get("ops") or []
+            by_status = {}
+            for op in ops:
+                if isinstance(op, dict) and op.get("status") and op.get("status") != "ok":
+                    by_status.setdefault(op["status"], []).append(op.get("id"))
+            out["meta"]["fetch"] = {
+                "summary": fetch_report.get("summary") or {},
+                # Handles that were NOT read this run. An empty array under
+                # accounts[<handle>] for one of these means "unfetched", not
+                # "posted nothing" — the agent must not treat it as silence.
+                "unfetched_accounts": sorted(
+                    op.get("id") for op in ops
+                    if isinstance(op, dict) and not op.get("ok")
+                    and not str(op.get("id", "")).startswith("search-")
+                    and op.get("id") != "news"
+                ),
+                "ops_by_status": {k: sorted(v) for k, v in sorted(by_status.items())},
+            }
         (bird / "all.json").write_text(json.dumps(out, separators=(",", ":")))
+        fetch_note = ""
+        if "fetch" in out["meta"]:
+            fs = out["meta"]["fetch"]["summary"]
+            fetch_note = (f"; fetch: {fs.get('failed', 0)} failed "
+                          f"({fs.get('rate_limited', 0)} rate_limited, {fs.get('not_found', 0)} not_found), "
+                          f"{fs.get('retried', 0)} retried")
         print(f"Aggregated: {len(accounts)} accounts ({non_empty_accounts} non-empty), "
               f"{len(searches)} searches, {len(news)} news items, "
-              f"{total} tweets total")
+              f"{total} tweets total{fetch_note}")
         '
         echo "all.json size: $(wc -c < /tmp/bird/all.json) bytes"
 

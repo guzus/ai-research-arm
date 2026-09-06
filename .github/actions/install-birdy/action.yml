@@ -19,7 +19,7 @@ inputs:
       Audited release tag to install. The default is pinned in
       data/toolchain-pins.json; an override must also provide sha256.
     required: false
-    default: v1.1.0
+    default: v1.2.0
   sha256:
     description: Optional SHA-256 for a non-default version override.
     required: false
