@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-06 22:51:52 UTC
+
+CYCLE: NVIDIA's CEO declares AGI on a named Astra cluster, while OpenAI's own long-horizon numbers argue against him.
+
+TOP STORIES:
+• Jensen Huang: GPT-6 Astra trained on ~100K+ Grace Blackwell NVLink72, "AGI has arrived," 400K GPUs next — count already disputed (300K vs 100K) [✓ he said it / claims unverified]
+• NVIDIA reportedly in talks for $2.5B into Murati's Thinking Machines at $40B+ pre-money; Accel may lead a $5-6B round [⚠]
+• OpenAI says Astra power users on ChatGPT accounts now draw up to 3-4x less subscription usage, no quality change [⚠]
+
+WATCH: A first-party figure reconciling the 100K / 300K / 400K GPU numbers now circulating for Astra's Abilene training run.
+
+Full update on GitHub.
