@@ -575,6 +575,16 @@ output or break the pipeline. Read them before editing.
    looked self-sufficient and were not), and birdy falls back to `bird` when
    its native path fails — with bird absent that surfaces as
    `bird CLI not found` where the real cause is usually a rate limit.
+   **Since birdy v1.2.0 (pinned 2026-09-06) `multi-fetch` runs every op
+   natively in-process** — it no longer needs a bird binary at all — retries
+   a rate-limited op once on a non-cooling account, and writes
+   `<output-dir>/_report.json` (per-op `status`: ok | rate_limited |
+   not_found | timeout | error). `twitter-fetch` folds that into
+   `all.json` as `meta.fetch` (`summary`, `unfetched_accounts`,
+   `ops_by_status`): an empty `accounts[<handle>]` listed under
+   `unfetched_accounts` means "not read this run", never "posted nothing".
+   Before 1.2.0 every run silently lost 7-42 of 127 ops to X 429s (the same
+   ~13 tail handles each time) with a green job.
 
 7. **Improvement logs belong in `docs/archive/YYYY-MM-DD-improvements.md`,**
    not repo root. The improve loop runs weekly on Mondays and auto-closes

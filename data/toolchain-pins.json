@@ -14,12 +14,12 @@
     "anthropics/claude-code-action": {"version": "v1", "sha": "a874e9ecd7bb36efdad65429c6b35815f5a08f10"}
   },
   "birdy": {
-    "version": "v1.1.0",
+    "version": "v1.2.0",
     "sha256": {
-      "darwin_amd64": "350c50306fa30705c01141ba195df1805021821e9e60a2a01bb9e162576282cf",
-      "darwin_arm64": "64708f03ef3ade019784a20328b4a8c8ac5a80325538f584d945e2e64d3181aa",
-      "linux_amd64": "001763ea3c9063f97980a912afa8d2b43ca2a949ea9cf3ab323b4d0f21421fb4",
-      "linux_arm64": "ac0f68274aa8a76ee0b015c776b0922303c03fe29c691477b49eb10e97231c94"
+      "darwin_amd64": "a3b16873aba5bd576d6e7b670a613f3a86c76fe168384a471a7016604a0277e6",
+      "darwin_arm64": "d920dc782a4ba24761729619b6849120009c958e48b19979c41944ed59bb1c86",
+      "linux_amd64": "e6ba33c9b0934d7d0fe26fd2bca02b25f713614b40770f611e4de6c17b05ba41",
+      "linux_arm64": "e8a19d16aefc8c83b929ce10d389b0cee93cadc23629f635c695c10a01ec35c9"
     }
   },
   "cursor_agent": {
