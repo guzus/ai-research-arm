@@ -575,7 +575,7 @@ output or break the pipeline. Read them before editing.
    looked self-sufficient and were not), and birdy falls back to `bird` when
    its native path fails — with bird absent that surfaces as
    `bird CLI not found` where the real cause is usually a rate limit.
-   **Since birdy v1.2.1 (pinned 2026-09-06) `multi-fetch` runs every op
+   **Since birdy v1.2.2 (pinned 2026-09-06) `multi-fetch` runs every op
    natively in-process** — it no longer needs a bird binary at all — retries
    a rate-limited op once on a non-cooling account, and writes
    `<output-dir>/_report.json` (per-op `status`: ok | rate_limited |
