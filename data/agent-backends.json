@@ -50,7 +50,7 @@
         "protocol": "native-claude",
         "preflight_path": "harness"
       },
-      "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it). The preflight marks 401/403 auth rejection and HTTP 429 rate limiting unavailable for the current run. Ordinary non-strict lanes continue to the global Z.ai secondary; compatibility-tested local content lanes can replace that chain with an explicit isolated Cursor fallback."
+      "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it; agent-run's native-model input overrides it per call \u2014 hourly-twitter exposes that as the native_model dispatch input). The preflight is AUTH-ONLY: 401/403 = unavailable; HTTP 429 is UP because a healthy OAuth token answers the raw 1-token ping 429 unconditionally (2026-08-30..09-06: classifying it as down ran the whole fleet on Cursor for a week). A real throttle is detected AFTER the agent step \u2014 dead-start = is_error, <=1 turn, $0 (scripts/classify_claude_execution.py) \u2014 and agent-run then re-runs the selector with --exclude-backend claude over the SAME chain: ordinary non-strict lanes continue to the global Z.ai secondary; compatibility-tested local content lanes replace that chain with their explicit isolated Cursor fallback. A Claude failure after real work is never retried elsewhere."
     },
     "claude-opus-5": {
       "adapter": "dispatch-default",
@@ -263,7 +263,7 @@
       "zai-glm-5p2"
     ],
     "native_model": "claude-opus-5",
-    "notes": "ORDERED fallback chain, applied to non-strict agent-run lanes that do not declare a lane.fallback_chain override. Native Claude leads and serves `native_model`; Z.ai GLM-5.2 is the global secondary. Cross-adapter fallbacks are never inferred globally: only lanes with an explicit compatibility-tested fallback_chain may enter an isolated adapter, and that lane chain replaces rather than extends the global chain. The intentionally narrow Claude 400/5xx/network fail-open behavior is unchanged. Strict lanes never walk either chain."
+    "notes": "ORDERED fallback chain, applied to non-strict agent-run lanes that do not declare a lane.fallback_chain override. Native Claude leads and serves `native_model`; Z.ai GLM-5.2 is the global secondary. Cross-adapter fallbacks are never inferred globally: only lanes with an explicit compatibility-tested fallback_chain may enter an isolated adapter, and that lane chain replaces rather than extends the global chain. The Claude probe is auth-only (401/403 down; 429, 400, 5xx and network faults stay UP \u2014 429 is the steady-state answer for a live OAuth token). The chain is walked twice at most: pre-agent on a probe failure, and post-agent with --exclude-backend claude when the Claude step dead-starts (is_error, <=1 turn, $0). Strict lanes never walk either chain."
   },
   "lanes": {
     "rss": {

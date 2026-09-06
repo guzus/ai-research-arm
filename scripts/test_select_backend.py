@@ -118,7 +118,11 @@ class SelectBackendTest(unittest.TestCase):
         self.assertEqual(out["provider"], "zai")
         self.assertEqual(out["used-fallback"], "true")
 
-    def test_claude_429_uses_lane_local_cursor_instead_of_global_zai(self):
+    def test_claude_429_probe_keeps_claude_selected(self):
+        """Regression for the 2026-08-30..09-06 incident: a healthy OAuth
+        token answers the raw ping 429 unconditionally, so 429 must NOT
+        reroute — PR #3333 did, and the whole fleet ran on Cursor for a
+        week while the same token served real runs."""
         lanes = {
             "digest": {"workflow": "daily-digest.yml", "harness": "agent-run",
                        "backend": "claude",
@@ -129,16 +133,59 @@ class SelectBackendTest(unittest.TestCase):
                 os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "sk-ant-oat01-test"}), \
                 unittest.mock.patch.object(
                     select_backend, "request_oauth_preflight",
-                    return_value=(429, '{"error":{"message":"rate limit exceeded"}}')):
+                    return_value=(429, '{"type":"error","error":{"type":"rate_limit_error","message":"Error"}}')):
             code, out, log = self.run_select(
                 "--lane", "digest", chain=("claude", "zai-glm-5p2"), lanes=lanes)
+
+        self.assertEqual(code, 0)
+        self.assertEqual(out["backend"], "claude")
+        self.assertEqual(out["used-fallback"], "false")
+        self.assertEqual(out["reselected"], "false")
+        self.assertIn("probe HTTP 429", log)
+        self.assertNotIn("candidate cursor-grok-4p6-fast", log)
+
+    def test_post_agent_exclude_uses_lane_local_cursor_instead_of_global_zai(self):
+        """The post-agent path: agent-run saw Claude dead-start and re-runs
+        the selector with --exclude-backend claude. Same chain semantics as
+        a probe failure — the lane override wins over the global chain."""
+        lanes = {
+            "digest": {"workflow": "daily-digest.yml", "harness": "agent-run",
+                       "backend": "claude",
+                       "fallback_chain": ["cursor-grok-4p6-fast"]},
+        }
+        self.set_availability(zai=True, cursor=True, claude=True)
+        code, out, log = self.run_select(
+            "--lane", "digest", "--exclude-backend", "claude",
+            chain=("claude", "zai-glm-5p2"), lanes=lanes)
 
         self.assertEqual(code, 0)
         self.assertEqual(out["backend"], "cursor-grok-4p6-fast")
         self.assertEqual(out["provider"], "cursor")
         self.assertEqual(out["adapter"], "cursor")
         self.assertEqual(out["used-fallback"], "true")
-        self.assertIn("rate limited for this run", log)
+        self.assertEqual(out["reselected"], "true")
+        self.assertIn("candidate claude (claude): UNAVAILABLE — excluded", log)
+        self.assertIn("failed at agent time", log)
+        self.assertNotIn("candidate zai-glm-5p2", log)
+
+    def test_exclude_never_probes_the_excluded_backend(self):
+        calls = []
+        select_backend.PROBES["claude"] = lambda model: calls.append(model) or (True, "x")
+        self.set_availability(zai=True)
+        code, out, _ = self.run_select(
+            "--lane", "rss", "--exclude-backend", "claude",
+            chain=("claude", "zai-glm-5p2"),
+            lanes={"rss": {"workflow": "hourly-rss.yml", "harness": "agent-run",
+                           "backend": "claude"}})
+        self.assertEqual(code, 0)
+        self.assertEqual(out["backend"], "zai-glm-5p2")
+        self.assertEqual(calls, [], "an excluded backend must not be probed")
+
+    def test_exclude_unknown_selector_is_config_error(self):
+        code, out, log = self.run_select("--lane", "rss", "--exclude-backend", "nope")
+        self.assertEqual(code, 2)
+        self.assertNotIn("backend", out)
+        self.assertIn("--exclude-backend 'nope'", log)
 
     def test_automated_lane_rejects_restricted_fallback_at_runtime(self):
         lanes = {
@@ -159,7 +206,7 @@ class SelectBackendTest(unittest.TestCase):
         self.assertIn("not production-eligible", log)
         self.assertIn("manual_only", log)
 
-    def test_twitter_primary_and_repair_use_cursor_on_claude_429(self):
+    def test_twitter_primary_and_repair_use_cursor_on_claude_dead_start(self):
         lanes = {
             lane: {
                 "workflow": "hourly-twitter.yml",
@@ -169,42 +216,32 @@ class SelectBackendTest(unittest.TestCase):
             }
             for lane in ("twitter-primary", "twitter-primary-repair")
         }
-        self.set_availability(zai=True, cursor=True)
-        with unittest.mock.patch.dict(
-                os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "sk-ant-oat01-test"}), \
-                unittest.mock.patch.object(
-                    select_backend, "request_oauth_preflight",
-                    return_value=(429, '{"error":{"message":"rate limit exceeded"}}')):
-            for lane in lanes:
-                with self.subTest(lane=lane):
-                    code, out, log = self.run_select(
-                        "--lane", lane,
-                        chain=("claude", "zai-glm-5p2"), lanes=lanes)
-                    self.assertEqual(code, 0)
-                    self.assertEqual(out["backend"], "cursor-grok-4p6-fast")
-                    self.assertEqual(out["provider"], "cursor")
-                    self.assertEqual(out["used-fallback"], "true")
-                    self.assertIn("rate limited for this run", log)
+        self.set_availability(zai=True, cursor=True, claude=True)
+        for lane in lanes:
+            with self.subTest(lane=lane):
+                code, out, log = self.run_select(
+                    "--lane", lane, "--exclude-backend", "claude",
+                    chain=("claude", "zai-glm-5p2"), lanes=lanes)
+                self.assertEqual(code, 0)
+                self.assertEqual(out["backend"], "cursor-grok-4p6-fast")
+                self.assertEqual(out["provider"], "cursor")
+                self.assertEqual(out["used-fallback"], "true")
+                self.assertIn("failed at agent time", log)
 
-    def test_claude_429_does_not_cross_strict_lane_boundary(self):
+    def test_claude_dead_start_does_not_cross_strict_lane_boundary(self):
         lanes = {
             "digest": {"workflow": "daily-digest.yml", "harness": "agent-run",
                        "backend": "claude",
                        "fallback_chain": ["cursor-grok-4p6-fast"]},
         }
-        self.set_availability(zai=True, cursor=True)
-        with unittest.mock.patch.dict(
-                os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "sk-ant-oat01-test"}), \
-                unittest.mock.patch.object(
-                    select_backend, "request_oauth_preflight",
-                    return_value=(429, '{"error":{"message":"rate limit exceeded"}}')):
-            code, out, log = self.run_select(
-                "--lane", "digest", "--fallback-policy", "none",
-                chain=("claude", "zai-glm-5p2"), lanes=lanes)
+        self.set_availability(zai=True, cursor=True, claude=True)
+        code, out, log = self.run_select(
+            "--lane", "digest", "--fallback-policy", "none", "--exclude-backend", "claude",
+            chain=("claude", "zai-glm-5p2"), lanes=lanes)
 
         self.assertEqual(code, 1)
         self.assertNotIn("backend", out)
-        self.assertIn("rate limited for this run", log)
+        self.assertIn("excluded", log)
         self.assertNotIn("candidate cursor-grok-4p6-fast", log)
         self.assertNotIn("candidate zai-glm-5p2", log)
 
@@ -214,13 +251,10 @@ class SelectBackendTest(unittest.TestCase):
                        "backend": "claude",
                        "fallback_chain": ["cursor-grok-4p6-fast"]},
         }
-        self.set_availability(zai=True, cursor=False)
-        with unittest.mock.patch.dict(
-                os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "sk-ant-oat01-test"}), \
-                unittest.mock.patch.object(
-                    select_backend, "request_oauth_preflight", return_value=(429, "{}")):
-            code, out, log = self.run_select(
-                "--lane", "digest", chain=("claude", "zai-glm-5p2"), lanes=lanes)
+        self.set_availability(zai=True, cursor=False, claude=True)
+        code, out, log = self.run_select(
+            "--lane", "digest", "--exclude-backend", "claude",
+            chain=("claude", "zai-glm-5p2"), lanes=lanes)
 
         self.assertEqual(code, 1)
         self.assertNotIn("backend", out)
@@ -322,8 +356,10 @@ class ProbeClaudeTest(unittest.TestCase):
     probe_claude used to hardcode "always available", so an expired
     CLAUDE_CODE_OAUTH_TOKEN killed every agent lane with no route out.
     The replacement must be sharp in BOTH directions: down on a real
-    credential rejection or a run-scoped 429, without broadening other
-    inconclusive failures into reroutes.
+    credential rejection, up on everything else — INCLUDING 429, which is
+    the steady-state answer a healthy OAuth token gives this raw ping
+    (2026-08-30..09-06 incident: classifying it as down rerouted the whole
+    fleet). Real throttles are detected post-agent, not here.
     """
 
     def setUp(self):
@@ -345,11 +381,14 @@ class ProbeClaudeTest(unittest.TestCase):
                 self.assertFalse(available)
                 self.assertIn(str(status), reason)
 
-    def test_rate_limit_marks_claude_unavailable_for_this_run(self):
-        self.stub(429, '{"error":{"message":"rate limit exceeded"}}')
+    def test_steady_state_429_keeps_claude_up(self):
+        # Exact body a live Max-plan token returned on 2026-09-06 while it
+        # was serving real runs. Down here == fleet permanently off Claude.
+        self.stub(429, '{"type":"error","error":{"type":"rate_limit_error","message":"Error"}}')
         available, reason = select_backend.probe_claude("claude-sonnet-5")
-        self.assertFalse(available)
-        self.assertIn("rate limited for this run", reason)
+        self.assertTrue(available, "429 is not evidence Claude cannot serve the run")
+        self.assertIn("429", reason)
+        self.assertIn("steady-state", reason)
 
     def test_healthy_and_inconclusive_non_auth_failures_keep_claude_up(self):
         # Preserve the old narrow behavior for shapes this preflight cannot
