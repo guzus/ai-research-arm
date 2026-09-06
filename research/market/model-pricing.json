@@ -34,7 +34,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-09-06T17:37:00Z",
+  "generated_at": "2026-09-06T23:00:39Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -146,7 +146,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":50.0},"pareto":9,"plotted":103,"ts":"2026-09-05T22:58:58Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":50.0},"pareto":8,"plotted":103,"ts":"2026-09-06T07:58:53Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09996,"0.6":0.09996,"0.7":0.09996,"0.8":0.09996,"0.9":0.09996,"0.95":50.0},"pareto":7,"plotted":103,"ts":"2026-09-06T12:55:51Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09996,"0.6":0.09996,"0.7":0.09996,"0.8":0.09996,"0.9":0.09996,"0.95":50.0},"pareto":8,"plotted":103,"ts":"2026-09-06T17:37:00Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09996,"0.6":0.09996,"0.7":0.09996,"0.8":0.09996,"0.9":0.09996,"0.95":50.0},"pareto":8,"plotted":103,"ts":"2026-09-06T17:37:00Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09996,"0.6":0.09996,"0.7":0.09996,"0.8":0.09996,"0.9":0.09996,"0.95":50.0},"pareto":8,"plotted":103,"ts":"2026-09-06T23:00:39Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -699,7 +700,7 @@
         {
           "key": "qwen3.5397ba17b",
           "name": "Qwen3.5 397B A17B",
-          "output_usd_per_mtok": 3.5,
+          "output_usd_per_mtok": 2.34,
           "pareto": false,
           "score": 0.13,
           "stderr": 0.03379976689896311,
@@ -1855,7 +1856,7 @@
         {
           "key": "qwen3.5397ba17b",
           "name": "Qwen3.5 397B A17B",
-          "output_usd_per_mtok": 3.5,
+          "output_usd_per_mtok": 2.34,
           "pareto": false,
           "score": 0.312280701754386,
           "stderr": 0.027499133473298815,
@@ -2696,7 +2697,7 @@
         {
           "key": "qwen3.5397ba17b",
           "name": "Qwen3.5 397B A17B",
-          "output_usd_per_mtok": 3.5,
+          "output_usd_per_mtok": 2.34,
           "pareto": false,
           "score": 0.8888888888888888,
           "stderr": 0.04737793696791343,
@@ -3271,7 +3272,7 @@
         }
       ]
     },
-    "as_of": "2026-09-06T17:37:00Z",
+    "as_of": "2026-09-06T23:00:39Z",
     "counts": {
       "pareto": 8,
       "plotted": 103,
@@ -4060,14 +4061,14 @@
         "vendor": "openai"
       },
       {
-        "blended_usd_per_mtok": 1.2875,
+        "blended_usd_per_mtok": 0.8775,
         "context_length": 262144,
         "epoch_model": "Qwen3.5 397B-A17B",
-        "input_usd_per_mtok": 0.55,
+        "input_usd_per_mtok": 0.39,
         "key": "qwen3.5397ba17b",
         "name": "Qwen3.5 397B A17B",
         "openrouter_id": "qwen/qwen3.5-397b-a17b",
-        "output_usd_per_mtok": 3.5,
+        "output_usd_per_mtok": 2.34,
         "pareto": false,
         "price_variant": null,
         "runs": 2,
@@ -5352,10 +5353,10 @@
         "vendor": "cohere"
       },
       {
-        "input_usd_per_mtok": 0.08022,
+        "input_usd_per_mtok": 0.0791,
         "key": "deepseekv4flash0423",
         "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.16044,
+        "output_usd_per_mtok": 0.1582,
         "vendor": "deepseek"
       },
       {
@@ -6003,6 +6004,13 @@
         "vendor": "morph"
       },
       {
+        "input_usd_per_mtok": 0.616656,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 1.233312,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.85,
         "key": "relaceapply3",
         "name": "Relace Apply 3",
@@ -6015,13 +6023,6 @@
         "name": "ERNIE 4.5 VL 424B A47B",
         "output_usd_per_mtok": 1.25,
         "vendor": "baidu"
-      },
-      {
-        "input_usd_per_mtok": 0.657198,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 1.314396,
-        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.7,
