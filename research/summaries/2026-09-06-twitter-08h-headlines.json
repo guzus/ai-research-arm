@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "SKILL LIBRARY LIFTS MLE-BENCH 31.11% TO 72.89% ON SAME MODEL, SAME BUDGET — 5,353 SKILLS FROM 1,000 REPOS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2096406594460487716",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC ADDS BLENDER CONNECTOR TO CLAUDE — CONNECTORS MOVE FROM CODE AND DOCS INTO 3D AUTHORING",
+    "source": "@claudeai",
+    "url": "https://x.com/ns123abc/status/2096429330209366526",
+    "category": "model"
+  },
+  {
+    "headline": "HBM SPEC DOWNGRADE CALLED DELIBERATE — STACK HEIGHTS CUT FOR SUPPLY ELASTICITY, FEYNMAN PUT AT 8-HIGH",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2096470793756569640",
+    "category": "infra"
+  },
+  {
+    "headline": "BATZOGLOU BENCHMARKS GPT-6 ASTRA ON INDUCTION AT 88%, NEAR SATURATION",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2096443582529798313",
+    "category": "model"
+  },
+  {
+    "headline": "OPEN INFERENCE STACK RUNNING ON TENSTORRENT P150 — TP2, DFLASH2 AND QWEN 27B QUEUED",
+    "source": "@LottoLabs",
+    "url": "https://x.com/LottoLabs/status/2096397651537539105",
+    "category": "opensource"
+  }
+]

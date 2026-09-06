@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-06 08:29:15 UTC
+
+CYCLE: Agent scaffolding beats model swaps on MLE-bench, Claude gets a Blender connector, and the HBM stack-height cut gets a supply-side explanation.
+
+TOP STORIES:
+- Repo-To-Skill/DisCo preprint: MLE-bench 31.11% -> 72.89% on the same model and same budget, from a 5,353-skill library distilled off 1,000 ML repos [WARN single-source]
+- Anthropic announced a Blender connector for Claude, pushing connectors past code/docs into 3D authoring [WARN single-source]
+- @jukan05: HBM stack heights cut deliberately to make supply elastic; scarcity shifts to pin speed, Feynman put at 8-High [WARN single-source]
+
+WATCH: An independent MLE-bench rerun with the released DisCo skill library, plus a contamination check against the 1,000 source repositories.
+
+Full update on GitHub.
