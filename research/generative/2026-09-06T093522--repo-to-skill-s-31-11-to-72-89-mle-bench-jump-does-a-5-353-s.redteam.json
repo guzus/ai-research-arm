@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "So the headline number was produced by seventy-five bespoke artifacts, each one built for the competition it was about to be scored on, from a live web search conducted before the clock started.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "On 2 September 2026 a team from BAAI and three universities posted Repo-To-Skill, which distils GitHub repositories into agent skills and reports MLE-bench \"Any Medal\" rising from 31.11% to 72.89% on the full 75-competition suite — a 41.78-point move, the largest ever claimed on that benchmark.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "My arithmetic, not the paper's: ≤48 GPU-hours per competition for the skill arm against ≤24 for the baseline is up to 2.0x, and across all 75 competitions up to roughly 1,800 GPU-hours of exploration with no baseline counterpart.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

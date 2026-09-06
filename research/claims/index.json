@@ -1,5 +1,5 @@
 {
-  "article_count": 78,
+  "article_count": 79,
   "articles": [
     {
       "claim_count": 18,
@@ -769,6 +769,14 @@
         "twitter-seed"
       ],
       "title": "The Earnings Paradox — Why NVIDIA Kept Falling After Beating, Until August Broke the Pattern"
+    },
+    {
+      "claim_count": 32,
+      "created_at": "2026-09-06T09:35:22Z",
+      "slug": "repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "stem": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "tags": [],
+      "title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured"
     }
   ],
   "by_host": {
@@ -1340,7 +1348,31 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c35",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c33",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c34",
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c35"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c35",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c1",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c10",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c11",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c12",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c14",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c19",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c2",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c20",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c21",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c22",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c23",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c26",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c27",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c28",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c29",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c3",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c31",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c32",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c4",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c5",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c7",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c8",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c9"
     ],
     "assets.anthropic.com": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c23"
@@ -2901,7 +2933,15 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c10",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c23",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c24",
-      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c31"
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c31",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c1",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c17",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c18",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c24",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c25",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c30",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c8"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -3100,7 +3140,8 @@
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c28",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c38",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c4",
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c5"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c5",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
@@ -3335,6 +3376,9 @@
     ],
     "kabuyoho.jp": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c13"
+    ],
+    "kaggle.com": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15"
     ],
     "kalviumlabs.ai": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c17"
@@ -4282,7 +4326,12 @@
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c30",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c7",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c8",
-      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c9"
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c9",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c12",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c13",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c16",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c17",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c2"
     ],
     "rdi.berkeley.edu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
@@ -6306,6 +6355,9 @@
     "https://arxiv.org/abs/2603.14968": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c27"
     ],
+    "https://arxiv.org/abs/2603.15401": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c20"
+    ],
     "https://arxiv.org/abs/2603.16093": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c40"
     ],
@@ -6345,6 +6397,9 @@
     "https://arxiv.org/abs/2606.25592": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c22"
     ],
+    "https://arxiv.org/abs/2606.30911": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c31"
+    ],
     "https://arxiv.org/abs/2607.07663": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c39"
     ],
@@ -6358,6 +6413,9 @@
     ],
     "https://arxiv.org/abs/2608.09802": [
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c19"
+    ],
+    "https://arxiv.org/abs/2608.14036": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c21"
     ],
     "https://arxiv.org/abs/2608.19799": [
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c1",
@@ -6374,6 +6432,9 @@
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c6",
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c9"
     ],
+    "https://arxiv.org/abs/2608.21964": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c22"
+    ],
     "https://arxiv.org/html/2306.07951v4": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c21"
     ],
@@ -6388,6 +6449,19 @@
     ],
     "https://arxiv.org/html/2407.01376v1": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c27"
+    ],
+    "https://arxiv.org/html/2410.06992v2": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c27"
+    ],
+    "https://arxiv.org/html/2410.07095v6": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c10",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c11",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c12",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c23",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c29",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c32",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c8",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c9"
     ],
     "https://arxiv.org/html/2411.10053v1": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c13"
@@ -6413,6 +6487,9 @@
     ],
     "https://arxiv.org/html/2508.10925v1": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c31"
+    ],
+    "https://arxiv.org/html/2508.13180": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c26"
     ],
     "https://arxiv.org/html/2509.22067v1": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c9"
@@ -6477,6 +6554,20 @@
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c6",
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c7",
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c8"
+    ],
+    "https://arxiv.org/html/2609.02749v1": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c1",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c14",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c19",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c2",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c28",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c29",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c3",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c32",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c4",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c5",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c7"
     ],
     "https://arxiv.org/pdf/1509.07466": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c19"
@@ -7816,6 +7907,16 @@
     "https://github.com/Uniswap/liquidity-launcher/blob/main/src/periphery/ProtocolFeeController.sol": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c24"
     ],
+    "https://github.com/VectorSpaceLab/AREX-Skill": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c1",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c17"
+    ],
+    "https://github.com/VectorSpaceLab/AREX-Skill/tree/main/skills/task-oriented": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c18"
+    ],
+    "https://github.com/ainatersol/Vesuvius-InkDetection": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15"
+    ],
     "https://github.com/banodoco": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c38"
     ],
@@ -7831,6 +7932,9 @@
     ],
     "https://github.com/cocoindex-io/cocoindex": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c14"
+    ],
+    "https://github.com/dangnh0611/kaggle_rsna_breast_cancer": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15"
     ],
     "https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c20"
@@ -7858,6 +7962,9 @@
     "https://github.com/huggingface/datasets/issues/7693": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c9"
     ],
+    "https://github.com/junkoda/kaggle_contrails_solution": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15"
+    ],
     "https://github.com/leanprover/lean4/blob/master/src/Init/Core.lean": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c34"
     ],
@@ -7868,7 +7975,11 @@
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c20"
     ],
     "https://github.com/openai/mle-bench": [
-      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c40"
+      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c40",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c24",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c25",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c30",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c8"
     ],
     "https://github.com/openai/ten-proofs": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c1",
@@ -8057,6 +8168,9 @@
     ],
     "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6"
+    ],
+    "https://huggingface.co/papers/2609.02749": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6"
     ],
     "https://huggingface.co/zai-org/GLM-4.5": [
       "2026-06-22T052035--zhipu-ai-glm#c5"
@@ -9048,6 +9162,14 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c8",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c9"
     ],
+    "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/families/data-science/tabular-modeling.md": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c16",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c17"
+    ],
+    "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/index/build-metadata.json": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c16",
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c2"
+    ],
     "https://raw.githubusercontent.com/black-forest-labs/flux/main/model_licenses/LICENSE-FLUX1-dev": [
       "2026-08-04T171206--comfyui-company#c41"
     ],
@@ -9070,6 +9192,12 @@
     "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama4/LICENSE": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c24",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c25"
+    ],
+    "https://raw.githubusercontent.com/openai/mle-bench/main/environment/instructions.txt": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c12"
+    ],
+    "https://raw.githubusercontent.com/openai/mle-bench/main/mlebench/grade_helpers.py": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c13"
     ],
     "https://raw.githubusercontent.com/openai/ten-proofs/main/ComparatorChallenges/A_SpherePacking.lean": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c10",
@@ -11693,6 +11821,9 @@
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c1",
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c8"
     ],
+    "https://www.kaggle.com/competitions/rsna-2022-cervical-spine-fracture-detection/discussion/362607": [
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15"
+    ],
     "https://www.kalviumlabs.ai/blog/vector-databases-compared-pgvector-pinecone-qdrant-weaviate": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c17"
     ],
@@ -13577,7 +13708,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2291,
+  "claim_count": 2323,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -68705,9 +68836,776 @@
         "https://www.tradingkey.com/analysis/stocks/us-stocks/261628049-nvidia-nvda-earnings-q4-stock-price-investors-value-tradingkey"
       ],
       "type": "comparison"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "Repo-To-Skill (arXiv:2609.02749) reports MLE-bench Any-Medal rising from 31.11% to 72.89% on the full 75-competition suite, a 41.78-point absolute and 134.3% relative gain.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "github.com"
+      ],
+      "id": "c1",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.02749v1",
+        "https://github.com/VectorSpaceLab/AREX-Skill"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2025-02-26",
+      "claim": "The MLE-bench authors state that it is difficult to detect the reuse of high-level strategies, which is exactly what a distilled skill encodes.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c10",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2410.07095v6"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2025-02-26",
+      "claim": "MLE-bench's obfuscation experiment found 8.5 +/- 0.6% Any Medal on original descriptions versus 8.4 +/- 1.0% on obfuscated ones, but was run only on GPT-4o at an 8.5% medal rate.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c11",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2410.07095v6"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-06",
+      "claim": "MLE-bench's agent instructions forbid viewing others' solutions to the competition and threaten disqualification for plagiarism, but no rule governs pre-task preparation or internet access.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "raw.githubusercontent.com"
+      ],
+      "id": "c12",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "academic"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/mle-bench/main/environment/instructions.txt",
+        "https://arxiv.org/html/2410.07095v6"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-06",
+      "claim": "MLE-bench's grader awards bronze at a flat leaderboard position 100 for competitions with 250 to 999 teams, not at the top 10%.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c13",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/mle-bench/main/mlebench/grade_helpers.py"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "Repo-To-Skill reports the High-complexity split rising from 13.33% to 62.22% Any Medal on 15 competitions over three runs, equivalent to roughly 6 of 45 competition-runs medalling versus 28 of 45.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c14",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.02749v1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-06",
+      "claim": "Public first-place or top-placing solution write-ups with runnable code exist for at least 9 of the 15 High-complexity MLE-bench competitions and are first-page web search results.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com",
+        "kaggle.com"
+      ],
+      "id": "c15",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary",
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/junkoda/kaggle_contrails_solution",
+        "https://github.com/dangnh0611/kaggle_rsna_breast_cancer",
+        "https://www.kaggle.com/competitions/rsna-2022-cervical-spine-fracture-detection/discussion/362607",
+        "https://github.com/ainatersol/Vesuvius-InkDetection"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-06",
+      "claim": "The AREX-Skill library's 1,000 source repositories contain no repository whose owner or name includes kaggle, solution, 1st-place, winning, or competition, across all 178 family index files.",
+      "confidence": "medium",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c16",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c16",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/families/data-science/tabular-modeling.md",
+        "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/index/build-metadata.json"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-06",
+      "claim": "XGBoost, LightGBM, CatBoost, scikit-learn and pandas have no skill directory in the AREX-Skill library, despite the tabular-modeling family's scope line naming gradient boosting.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com",
+        "raw.githubusercontent.com"
+      ],
+      "id": "c17",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c17",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/families/data-science/tabular-modeling.md",
+        "https://github.com/VectorSpaceLab/AREX-Skill"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-06",
+      "claim": "The AREX-Skill repository publishes task-oriented skill graphs for FrontierCS, PaperBench and PassNet but not for MLE-bench.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c18",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/VectorSpaceLab/AREX-Skill/tree/main/skills/task-oriented"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "Across the four benchmarks the relative gain is 134.3% for MLE-bench, 34.4% for PaperBench, 14.0% for PassNet and 9.2% for FrontierCS, and only FrontierCS carries a confidence interval.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c19",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.02749v1"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "The AREX-Skill repository snapshot contains 5,353 skills across 1,000 repository graphs, organized into 20 areas and 178 capability families.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "raw.githubusercontent.com"
+      ],
+      "id": "c2",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.02749v1",
+        "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/index/build-metadata.json"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-03-16",
+      "claim": "SWE-Skills-Bench found 39 of 49 published agent skills produced zero pass-rate improvement, with a mean gain of 1.2% and token overhead up to 451%.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c20",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c20",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2603.15401"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-08-14",
+      "claim": "A controlled study found skill actual-use precision falls from 29.6% to 3.3% as skill pools grow from 5 to 100 entries, and that procedural anchoring accounts for 65.7% of skill benefit versus 4.5% for explicit knowledge injection.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c21",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c21",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2608.14036"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-08-22",
+      "claim": "Repo2Skill-Evo found every evaluated release transition invalidates part of the prior skill set across 105 transitions in 57 repositories, with frontier agents repairing them at only 29.9% to 69.7% macro F1.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c22",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c22",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2608.21964"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2025-02-26",
+      "claim": "MLE-bench's own budget ablations show GPT-4o rising from 8.7% to 11.8% Any Medal when the budget goes from 24 to 100 hours, and o1-preview rising from 16.9% pass@1 to 34.1% pass@8.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c23",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c23",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2410.07095v6"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-02-23",
+      "claim": "The best comparable score on OpenAI's official MLE-bench leaderboard is Famou-Agent 2.0 with Gemini-3-Pro-Preview at 64.44% Any Medal, dated 2026-02-23.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c24",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c24",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/openai/mle-bench"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-04-24",
+      "claim": "OpenAI paused new MLE-bench leaderboard submissions on 2026-04-24 while developing an improved process for ensuring submissions are fair and comparable.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c25",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c25",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/openai/mle-bench"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2025-08-12",
+      "claim": "Scale AI's search-contamination study measured an approximately 15% accuracy drop on the contaminated subset when the answer-bearing domain was blocked and the same questions re-run.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c26",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2508.13180"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2024-10-10",
+      "claim": "An independent audit of SWE-bench found 32.67% of successful patches had the solution present in the issue report or comments, dropping SWE-Agent plus GPT-4 on Verified from 22.4% to 10.0%.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c27",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c27",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2410.06992v2"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "Repo-To-Skill states library construction uses GPT-5.5 and GPT-5.6-sol at xhigh reasoning effort with an average allocation of about $40 per repository.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c28",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c28",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.02749v1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "Repo-To-Skill reports MLE-bench results averaged over three repeated runs, whereas the original MLE-bench paper used 16 and 36 seeds for its headline AIDE rows.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c29",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c29",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.02749v1",
+        "https://arxiv.org/html/2410.07095v6"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "The paper states that paper-derived and task-oriented skill graphs are not included in the 5,353 count, so the benchmarked skill sets are not the published library.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c3",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.02749v1"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-02-23",
+      "claim": "MLE-bench full-75 Any Medal state of the art rose from 17.12% in October 2024 to 64.44% in February 2026 across successive published agents.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c30",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c30",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/openai/mle-bench"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-06-29",
+      "claim": "HASTE reports a 77.3% medal rate on MLE-bench Lite from a single-seed campaign, and a controlled ablation where tiered skill loading reaches 100% medal rate versus 62.5% for flat loading on 8 competitions.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c31",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c31",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2606.30911"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "Repo-To-Skill does not state the GPU model, vCPU count or RAM used for its MLE-bench graded runs, while MLE-bench's canonical envelope is 24 hours on 36 vCPUs, 440GB RAM and a single 24GB A10.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c32",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c32",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic",
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.02749v1",
+        "https://arxiv.org/html/2410.07095v6"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "Section 4.3 states MLE-bench uses one descriptive skill graph for each of 75 competitions, built through task decomposition, source discovery, and bounded diagnostic trials.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c4",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.02749v1"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "The MLE-bench skill graphs were distilled from sources collected through web search, excluding only the original competition webpage and competition-specific content.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c5",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.02749v1"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "Appendix A.2.1 Table 5 gives the skill arm an Exploration phase capped at 24 GPU-hours per task plus a Running phase capped at 24 GPU-hours, while the no-skill baseline receives only the running budget.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "huggingface.co"
+      ],
+      "id": "c6",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic",
+        "academic"
+      ],
+      "source_urls": [
+        "https://huggingface.co/papers/2609.02749",
+        "https://arxiv.org/html/2609.02749v1"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2026-09-02",
+      "claim": "The paper states the one-time construction budget is separate and is not counted in either run-time condition.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c7",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.02749v1"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2025-02-26",
+      "claim": "MLE-bench comprises 75 Kaggle competitions split 22 Low, 38 Medium, 15 High complexity, and its Low split is identical to the Lite subset.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "github.com"
+      ],
+      "id": "c8",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2410.07095v6",
+        "https://github.com/openai/mle-bench"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
+      "article_created_at": "2026-09-06T09:35:22Z",
+      "article_title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured",
+      "as_of": "2025-02-26",
+      "claim": "MLE-bench's plagiarism check runs Dolos code fingerprinting against the top 50 public Kaggle notebooks per competition at a 60% similarity threshold and found zero flagged submissions.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c9",
+      "key": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2410.07095v6"
+      ],
+      "type": "metric"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1099,
+  "reusable_count": 1120,
   "schema_version": 1
 }

@@ -1,0 +1,324 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Repo-To-Skill (arXiv:2609.02749) reports MLE-bench Any-Medal rising from 31.11% to 72.89% on the full 75-competition suite, a 41.78-point absolute and 134.3% relative gain.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.02749v1", "https://github.com/VectorSpaceLab/AREX-Skill"],
+      "source_tiers": ["academic", "primary"],
+      "as_of": "2026-09-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "The AREX-Skill repository snapshot contains 5,353 skills across 1,000 repository graphs, organized into 20 areas and 178 capability families.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.02749v1", "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/index/build-metadata.json"],
+      "source_tiers": ["academic", "primary"],
+      "as_of": "2026-09-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "The paper states that paper-derived and task-oriented skill graphs are not included in the 5,353 count, so the benchmarked skill sets are not the published library.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2609.02749v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "Section 4.3 states MLE-bench uses one descriptive skill graph for each of 75 competitions, built through task decomposition, source discovery, and bounded diagnostic trials.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2609.02749v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "The MLE-bench skill graphs were distilled from sources collected through web search, excluding only the original competition webpage and competition-specific content.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2609.02749v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-02",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c6",
+      "claim": "Appendix A.2.1 Table 5 gives the skill arm an Exploration phase capped at 24 GPU-hours per task plus a Running phase capped at 24 GPU-hours, while the no-skill baseline receives only the running budget.",
+      "type": "technical",
+      "source_urls": ["https://huggingface.co/papers/2609.02749", "https://arxiv.org/html/2609.02749v1"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-09-02",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c7",
+      "claim": "The paper states the one-time construction budget is separate and is not counted in either run-time condition.",
+      "type": "quote",
+      "source_urls": ["https://arxiv.org/html/2609.02749v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "MLE-bench comprises 75 Kaggle competitions split 22 Low, 38 Medium, 15 High complexity, and its Low split is identical to the Lite subset.",
+      "type": "definition",
+      "source_urls": ["https://arxiv.org/html/2410.07095v6", "https://github.com/openai/mle-bench"],
+      "source_tiers": ["academic", "primary"],
+      "as_of": "2025-02-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "MLE-bench's plagiarism check runs Dolos code fingerprinting against the top 50 public Kaggle notebooks per competition at a 60% similarity threshold and found zero flagged submissions.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2410.07095v6"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-02-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "The MLE-bench authors state that it is difficult to detect the reuse of high-level strategies, which is exactly what a distilled skill encodes.",
+      "type": "quote",
+      "source_urls": ["https://arxiv.org/html/2410.07095v6"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-02-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "MLE-bench's obfuscation experiment found 8.5 +/- 0.6% Any Medal on original descriptions versus 8.4 +/- 1.0% on obfuscated ones, but was run only on GPT-4o at an 8.5% medal rate.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2410.07095v6"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-02-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "MLE-bench's agent instructions forbid viewing others' solutions to the competition and threaten disqualification for plagiarism, but no rule governs pre-task preparation or internet access.",
+      "type": "regulatory",
+      "source_urls": ["https://raw.githubusercontent.com/openai/mle-bench/main/environment/instructions.txt", "https://arxiv.org/html/2410.07095v6"],
+      "source_tiers": ["primary", "academic"],
+      "as_of": "2026-09-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "MLE-bench's grader awards bronze at a flat leaderboard position 100 for competitions with 250 to 999 teams, not at the top 10%.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/openai/mle-bench/main/mlebench/grade_helpers.py"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "Repo-To-Skill reports the High-complexity split rising from 13.33% to 62.22% Any Medal on 15 competitions over three runs, equivalent to roughly 6 of 45 competition-runs medalling versus 28 of 45.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.02749v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-02",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c15",
+      "claim": "Public first-place or top-placing solution write-ups with runnable code exist for at least 9 of the 15 High-complexity MLE-bench competitions and are first-page web search results.",
+      "type": "comparison",
+      "source_urls": ["https://github.com/junkoda/kaggle_contrails_solution", "https://github.com/dangnh0611/kaggle_rsna_breast_cancer", "https://www.kaggle.com/competitions/rsna-2022-cervical-spine-fracture-detection/discussion/362607", "https://github.com/ainatersol/Vesuvius-InkDetection"],
+      "source_tiers": ["primary", "primary", "primary", "primary"],
+      "as_of": "2026-09-06",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c16",
+      "claim": "The AREX-Skill library's 1,000 source repositories contain no repository whose owner or name includes kaggle, solution, 1st-place, winning, or competition, across all 178 family index files.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/families/data-science/tabular-modeling.md", "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/index/build-metadata.json"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-06",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c17",
+      "claim": "XGBoost, LightGBM, CatBoost, scikit-learn and pandas have no skill directory in the AREX-Skill library, despite the tabular-modeling family's scope line naming gradient boosting.",
+      "type": "technical",
+      "source_urls": ["https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/families/data-science/tabular-modeling.md", "https://github.com/VectorSpaceLab/AREX-Skill"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-06",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "The AREX-Skill repository publishes task-oriented skill graphs for FrontierCS, PaperBench and PassNet but not for MLE-bench.",
+      "type": "technical",
+      "source_urls": ["https://github.com/VectorSpaceLab/AREX-Skill/tree/main/skills/task-oriented"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-06",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "Across the four benchmarks the relative gain is 134.3% for MLE-bench, 34.4% for PaperBench, 14.0% for PassNet and 9.2% for FrontierCS, and only FrontierCS carries a confidence interval.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/html/2609.02749v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "SWE-Skills-Bench found 39 of 49 published agent skills produced zero pass-rate improvement, with a mean gain of 1.2% and token overhead up to 451%.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2603.15401"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-03-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "A controlled study found skill actual-use precision falls from 29.6% to 3.3% as skill pools grow from 5 to 100 entries, and that procedural anchoring accounts for 65.7% of skill benefit versus 4.5% for explicit knowledge injection.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2608.14036"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-08-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "Repo2Skill-Evo found every evaluated release transition invalidates part of the prior skill set across 105 transitions in 57 repositories, with frontier agents repairing them at only 29.9% to 69.7% macro F1.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2608.21964"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-08-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "MLE-bench's own budget ablations show GPT-4o rising from 8.7% to 11.8% Any Medal when the budget goes from 24 to 100 hours, and o1-preview rising from 16.9% pass@1 to 34.1% pass@8.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2410.07095v6"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-02-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "The best comparable score on OpenAI's official MLE-bench leaderboard is Famou-Agent 2.0 with Gemini-3-Pro-Preview at 64.44% Any Medal, dated 2026-02-23.",
+      "type": "metric",
+      "source_urls": ["https://github.com/openai/mle-bench"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-02-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c25",
+      "claim": "OpenAI paused new MLE-bench leaderboard submissions on 2026-04-24 while developing an improved process for ensuring submissions are fair and comparable.",
+      "type": "event",
+      "source_urls": ["https://github.com/openai/mle-bench"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-04-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "Scale AI's search-contamination study measured an approximately 15% accuracy drop on the contaminated subset when the answer-bearing domain was blocked and the same questions re-run.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2508.13180"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-08-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "An independent audit of SWE-bench found 32.67% of successful patches had the solution present in the issue report or comments, dropping SWE-Agent plus GPT-4 on Verified from 22.4% to 10.0%.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2410.06992v2"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-10-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "Repo-To-Skill states library construction uses GPT-5.5 and GPT-5.6-sol at xhigh reasoning effort with an average allocation of about $40 per repository.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.02749v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "Repo-To-Skill reports MLE-bench results averaged over three repeated runs, whereas the original MLE-bench paper used 16 and 36 seeds for its headline AIDE rows.",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/html/2609.02749v1", "https://arxiv.org/html/2410.07095v6"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-09-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "MLE-bench full-75 Any Medal state of the art rose from 17.12% in October 2024 to 64.44% in February 2026 across successive published agents.",
+      "type": "metric",
+      "source_urls": ["https://github.com/openai/mle-bench"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-02-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c31",
+      "claim": "HASTE reports a 77.3% medal rate on MLE-bench Lite from a single-seed campaign, and a controlled ablation where tiered skill loading reaches 100% medal rate versus 62.5% for flat loading on 8 competitions.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2606.30911"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-06-29",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c32",
+      "claim": "Repo-To-Skill does not state the GPU model, vCPU count or RAM used for its MLE-bench graded runs, while MLE-bench's canonical envelope is 24 hours on 36 vCPUs, 440GB RAM and a single 24GB A10.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2609.02749v1", "https://arxiv.org/html/2410.07095v6"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-09-02",
+      "confidence": "medium",
+      "risk": "contested"
+    }
+  ]
+}

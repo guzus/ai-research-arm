@@ -1,0 +1,334 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Its Table 1 reports MLE-bench Any Medal at 31.11 ± 2.22 without skills and 72.89 ± 1.18 with them, over the full 75-competition suite, averaged across three repeated runs, with Codex as the harness and a GPT-5.5 backbone held fixed.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    },
+    {
+      "id": "c2",
+      "text": "Repo-To-Skill (arXiv:2609.02749, submitted 2 September 2026, eleven authors across BAAI, USTC, Renmin University and Hong Kong PolyU) presents DisCo, an agent that turns repositories into reusable skills, and the AREX-Skill Library those skills live in.",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/abs/2609.02749"
+    },
+    {
+      "id": "c3",
+      "text": "The precise figure appears in §4.1: \"The repository snapshot contains 5,353 skills across 1,000 repository graphs, organized into 20 areas and 178 capability families.\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    },
+    {
+      "id": "c4",
+      "text": "The same paragraph closes with one sentence that reorganises everything downstream of it: \"Paper-derived and task-oriented graphs are not included in these counts.\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    },
+    {
+      "id": "c5",
+      "text": "Section 4.3 says what MLE-bench used instead: \"MLE-bench uses one descriptive graph for each of 75 competitions, built through task decomposition, source discovery, and bounded diagnostic trials\".",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    },
+    {
+      "id": "c6",
+      "text": "Section 5.1 says where the material came from — the graphs were distilled from \"knowledge sources collected through web search while excluding the original competition webpage and competition-specific content\".",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    },
+    {
+      "id": "c7",
+      "text": "Exploration is defined as \"Explore useful modeling and execution decisions and finalize a task-oriented set of descriptive skills\" at \"≤ 24 GPU-hours\"; Running is \"Let Codex select from the finalized skill pool and optimize a full benchmark submission\" at \"≤ 24 GPU-hours\".",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/papers/2609.02749"
+    },
+    {
+      "id": "c8",
+      "text": "§5.1 states the accounting rule directly: \"the one-time construction budget is separate and is not counted in either run-time condition.\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    },
+    {
+      "id": "c9",
+      "text": "Appendix A.2.1 says only: \"The no-skill condition uses the same Codex backbone and running budget but does not receive the distilled skills.\"",
+      "verdict": "supported",
+      "citation": "https://huggingface.co/papers/2609.02749"
+    },
+    {
+      "id": "c10",
+      "text": "MLE-bench, meanwhile, fixes its envelope exactly: \"On each run, agents have access to a machine with 36 vCPUs, 440GB RAM, 4095 GiB SSD, and a single Nvidia A10 GPU\", with \"a maximum of 24 hours to produce a submission\" per competition.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2410.07095v6"
+    },
+    {
+      "id": "c11",
+      "text": "\"GPT-4o scores 8.7% given 24 hours to attempt each competition, but 11.8% when given 100 hours\" — though the 100h arm also raised the AIDE node cap from 500 to 5,000, so that is a compound change, not clean time.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2410.07095v6"
+    },
+    {
+      "id": "c12",
+      "text": "Retries are cleaner: \"o1-preview's score doubles from 16.9% using pass@1 to 34.1% using pass@8\", and \"both agents' pass@6 scores are roughly double their pass@1 scores\", with GPT-4o at pass@6 (17.0%) landing on o1-preview's pass@1 (16.9%).",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2410.07095v6"
+    },
+    {
+      "id": "c13",
+      "text": "Harness alone moves it too: AIRA-dojo re-ran the identical published AIDE-greedy o1-preview agent in their own environment and it \"improves the medal rate from 35.2 % to 45.9 % compared to the reported results\".",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2507.02554v2"
+    },
+    {
+      "id": "c14",
+      "text": "The **plagiarism** control ran Dolos code fingerprinting over k=23 token subsequences, comparing every medal-winning submission against the top 50 associated notebooks from the relevant Kaggle competition and surfacing anything above 60% similarity",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2410.07095v6"
+    },
+    {
+      "id": "c15",
+      "text": "The **obfuscation** control manually rewrote all 75 competition descriptions to hide the competition's identity, then ran GPT-4o with AIDE over 10 seeds — 8.5 ± 0.6% Any Medal on the originals against 8.4 ± 1.0% on the obfuscated versions.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2410.07095v6"
+    },
+    {
+      "id": "c16",
+      "text": "> Mitigations exist for code and label plagiarism, but it is difficult to detect the reuse of high-level strategies.",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/html/2410.07095v6"
+    },
+    {
+      "id": "c17",
+      "text": "The same literature offers a formal taxonomy in which retrieval and tool-use answer acquisition is a distinct category — \"Acquired\" contamination — certifiable only per-run, never once per benchmark.",
+      "verdict": "unsupported",
+      "citation": "https://arxiv.org/html/2606.05241"
+    },
+    {
+      "id": "c18",
+      "text": "\"Search-Time Contamination\" describes inference-time retrieval returning answer-bearing content, \"where external retrieval bypasses intended reasoning and inflates measured performance\", with measured turn-level jumps immediately after explicit answer leakage of 7.69% to 89.74% on MedQA and 19.25% to 79.45% on MedMCQA.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2606.05241"
+    },
+    {
+      "id": "c19",
+      "text": "Reading the grader's `get_thresholds(num_teams)` directly: under 100 teams, gold/silver/bronze fall at 10%/20%/40% of the field; at 100–249 teams gold becomes fixed position 10; at 250–999 teams gold is `10 + int(num_teams * 0.002)`, silver is fixed position 50, and bronze is fixed position 100; only at 1000+ teams does bronze become a true top 10%.",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/openai/mle-bench/main/mlebench/grade_helpers.py"
+    },
+    {
+      "id": "c20",
+      "text": "The six largest fields — siim-covid19-detection (1,305), rsna-miccai (1,555), stanford-covid-vaccine (1,636), rsna-breast-cancer-detection (1,687), hms-harmful-brain-activity-classification (2,767) — are the ones where bronze means what a reader assumes it means.",
+      "verdict": "weak",
+      "citation": "https://raw.githubusercontent.com/openai/mle-bench/main/mlebench/grade_helpers.py"
+    },
+    {
+      "id": "c21",
+      "text": "Table 1 reports Any Medal on the 15 High competitions rising from 13.33 ± 3.85 to 62.22 ± 2.22, against an overall move of 31.11 ± 2.22 to 72.89 ± 1.18, Low of 42.42 ± 6.60 to 86.36 ± 2.62, and Medium of 31.58 ± 1.52 to 69.30 ± 3.16 — all means over three repeated runs.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    },
+    {
+      "id": "c22",
+      "text": "AIBuildAI's 7-of-15 on the sampled seed matches its published High cell of 46.67 ± 0.00 exactly.",
+      "verdict": "supported",
+      "citation": "https://media.githubusercontent.com/media/openai/mle-bench/main/runs/aba_group1/grading_report_group_1.json"
+    },
+    {
+      "id": "c23",
+      "text": "Against that field, 62.22 would sit above every non-flagged published High figure: AIBuildAI at 46.67 ± 0.00, Famou-Agent 2.0 and ML-Master 2.0 at 42.22 ± 2.22, AIDE with o1-preview at 11.67 ± 1.27 in October 2024.",
+      "verdict": "supported",
+      "citation": "https://github.com/openai/mle-bench"
+    },
+    {
+      "id": "c24",
+      "text": "A volunteer GitHub index alone covers roughly 717 Kaggle competitions and carries 6,451 stars.",
+      "verdict": "weak",
+      "citation": "https://github.com/faridrashidi/kaggle-solutions"
+    },
+    {
+      "id": "c25",
+      "text": "Repo-To-Skill's MLE-bench number was produced by 75 per-competition task-oriented graphs, and the repository publishes task-oriented graphs for FrontierCS, PaperBench and PassNet — but has no MLE-bench directory.",
+      "verdict": "supported",
+      "citation": "https://github.com/VectorSpaceLab/AREX-Skill/tree/main/skills/task-oriented"
+    },
+    {
+      "id": "c26",
+      "text": "Scope first, in the repository's own words: \"Current scope: 1,000 repository skill roots, 20 areas, 178 families, and 2,209 area-family memberships.\"",
+      "verdict": "weak",
+      "citation": "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/index/build-metadata.json"
+    },
+    {
+      "id": "c27",
+      "text": "The shape of the index is a general ML-engineering library, not a competition shelf. By repository count, the eight largest areas:",
+      "verdict": "weak",
+      "citation": "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/index/build-metadata.json"
+    },
+    {
+      "id": "c28",
+      "text": "The `data-science / tabular-modeling` family holds 17 repositories and its own scope line promises exactly the missing material — \"Classical and neural classifiers and regressors for tabular or structured data, including gradient boosting and tabular deep learning\" — yet it indexes only AutoML wrappers and pedagogical repos",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/families/data-science/tabular-modeling.md"
+    },
+    {
+      "id": "c29",
+      "text": "XGBoost, LightGBM, CatBoost, scikit-learn and pandas have no skill directory in the library at all. All five paths return HTTP 404, including the kebab-case variant the repo's own slug convention would require, and none appears in any of the 178 family files.",
+      "verdict": "supported",
+      "citation": "https://github.com/VectorSpaceLab/AREX-Skill"
+    },
+    {
+      "id": "c30",
+      "text": "**The first negative finding.** Across all 178 family index files, no repository owner or name contains `kaggle`, `solution`, `1st-place`, `winning`, or `competition`.",
+      "verdict": "weak",
+      "citation": "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills-router/references/families/data-science/tabular-modeling.md"
+    },
+    {
+      "id": "c31",
+      "text": "Even the sub-skill explicitly named `benchmarking-and-results` carries no measured numbers. Verbatim: \"This sub-skill covers benchmark execution and result interpretation only\", and \"Pick the smallest representative scope first: one model, one device, low batch size, and low iteration counts.\"",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills/timm/sub-skills/benchmarking-and-results/SKILL.md"
+    },
+    {
+      "id": "c32",
+      "text": "Provenance is repo-internal to match: `optuna/references/repo-provenance.md` records schema `disco.repo-provenance.v1`, commit `243c156d9dda5093fa4358c6923fb22cd721fd04` on `master`, remote `https://github.com/optuna/optuna.git`, `generated_at_utc: 2026-06-21T00:00:00Z`",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/VectorSpaceLab/AREX-Skill/main/skills/repositories/repo-skills/optuna/references/repo-provenance.md"
+    },
+    {
+      "id": "c33",
+      "text": "The raw numbers behind that fan: MLE-bench Any Medal 31.11 to 72.89, +134.3% over n=75; PaperBench replication 29.45 to 39.59, +34.4% over 20 papers; PassNet AS Score 1.343 to 1.5313, +14.0% over 200 samples; FrontierCS 70.63 to 77.14, +9.2% over 188 Agent Track tasks.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    },
+    {
+      "id": "c34",
+      "text": "\"A paired bootstrap over all 188 tasks yields a 95% confidence interval of [3.41,9.83] points for the mean improvement\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    },
+    {
+      "id": "c35",
+      "text": "PaperBench is where the per-task texture is visible: 18 of 20 papers improved and 2 regressed.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    },
+    {
+      "id": "c36",
+      "text": "ran a paired with/without design over real repositories — 49 skills, about 565 instances, 6 subdomains — and found that \"39 of 49 skills yield zero pass-rate improvement,\" that \"the average gain is only +1.2%,\" and that \"three degrade performance (up to -10%),\" with token overhead reaching +451%.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2603.15401"
+    },
+    {
+      "id": "c37",
+      "text": "\"Demystifying Agent Skills: Why They Work—Until They Don't\" (14 Aug 2026) reports the cleanest version: \"Retrieval is a separate bottleneck: as pools grow from 5 to 100, actual-use precision falls from 29.6% to 3.3%.\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.14036"
+    },
+    {
+      "id": "c38",
+      "text": "The same paper's mechanism finding cuts deeper into the standard story: \"Procedural anchoring accounts for 65.7% of skill cases, versus 4.5% for explicit knowledge injection.\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.14036"
+    },
+    {
+      "id": "c39",
+      "text": "A large multi-author benchmark of hand-curated skills reports that \"Curated Skills raise the average pass rate from 33.9% to 50.5% (+16.6 percentage points; 25.5% normalized gain),\" ranging +4.1 to +25.7 points across 18 model-harness configurations.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2602.12670"
+    },
+    {
+      "id": "c40",
+      "text": "Repo2Skill-Evo, \"Repository Skills Go Stale in Silence\" (22 Aug 2026), tracked 105 release transitions across 57 repositories and found that \"every evaluated transition invalidates part of the V1 skill set,\" with six frontier agents reaching \"only 29.9%-69.7% avg@3 macro F1\" on the repair task.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2608.21964"
+    },
+    {
+      "id": "c41",
+      "text": "The load-bearing sentence is architectural: a skill \"may remain loadable and retrievable while giving guidance that no longer matches the current repository state\".",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/abs/2608.21964"
+    },
+    {
+      "id": "c42",
+      "text": "which reports a 77.3% medal rate on MLE-bench Lite with Claude Sonnet 4.6 at a 12-hour budget — explicitly \"a single-seed campaign result,\" with multi-seed replication named as the top follow-up.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2606.30911"
+    },
+    {
+      "id": "c43",
+      "text": "holding a 159-skill inventory constant across 8 competitions, tiered loading reaches a 100% medal rate while flat loading reaches 62.5% — matching loading no skills at all, at twice the output tokens.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2606.30911"
+    },
+    {
+      "id": "c44",
+      "text": "When the benchmark shipped in October 2024, the best full-75 \"Any Medal\" score on the board was AIDE + o1-preview at 17.12 ± 0.61.",
+      "verdict": "supported",
+      "citation": "https://github.com/openai/mle-bench"
+    },
+    {
+      "id": "c45",
+      "text": "The repo README, dated 04-24-2026, reads: \"We are currently not taking any new submissions to the leaderboard while we develop an improved process for ensuring submissions are fair and comparable.\"",
+      "verdict": "supported",
+      "citation": "https://github.com/openai/mle-bench"
+    },
+    {
+      "id": "c46",
+      "text": "Systems on this board have delivered comparable single-entry jumps before — the December 2025 stretch from 50.67 to 59.56 took nineteen days.",
+      "verdict": "weak",
+      "citation": "https://github.com/openai/mle-bench"
+    },
+    {
+      "id": "c47",
+      "text": "MLE-STAR (Google) reports winning medals in 63% of competitions on MLE-bench Lite, and has no full-75 leaderboard entry at all.",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/abs/2506.15692"
+    },
+    {
+      "id": "c48",
+      "text": "The leading agent-benchmark checklist proposal, with 25 authors, documents that benchmark flaws distort scores \"by up to 100% in relative terms\" and that applying it cut one benchmark's overestimation by 33%",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/html/2507.02825v5"
+    },
+    {
+      "id": "c49",
+      "text": "That the gap bites in practice is not hypothetical: one large evaluation harness (21,730 rollouts, roughly $40,000) caught agents \"searching for the benchmark on HuggingFace instead of solving a task\".",
+      "verdict": "unsupported",
+      "citation": "https://arxiv.org/html/2507.02825v5"
+    },
+    {
+      "id": "c50",
+      "text": "then re-ran the same questions with that domain blocked — \"we observe a drop in accuracy on the contaminated subset of approximately 15%.\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2508.13180"
+    },
+    {
+      "id": "c51",
+      "text": "An independent audit of SWE-bench found \"32.67% of the successful patches involve 'cheating' as the solutions were directly provided in the issue report or the comments\", cutting SWE-Agent + GPT-4 on Verified from 22.4% to 10.0%.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2410.06992v2"
+    },
+    {
+      "id": "c52",
+      "text": "the paper only asks developers to report \"whether the agent had internet access\" alongside models, scaffolding, hardware and runtime, and the repo frames its resource defaults as \"not a strict requirement of the benchmark but please report if you stray from these defaults!\"",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2410.07095v6"
+    },
+    {
+      "id": "c53",
+      "text": "The 15 High slugs are public in `experiments/splits/high.txt`,",
+      "verdict": "supported",
+      "citation": "https://raw.githubusercontent.com/openai/mle-bench/main/experiments/splits/high.txt"
+    },
+    {
+      "id": "c54",
+      "text": "reporting a move \"from 64.44% to 72.89% (+8.45 points)\" over the strongest public baseline, with tier-level gains of 6.06 (Low), 5.26 (Medium) and 15.55 (High) points.",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    },
+    {
+      "id": "c55",
+      "text": "The paper prices the High jump in the most impressive available units: \"from 13.33% to 62.22%\", a \"366.8% improvement, or 4.67 times the no-skill score\".",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2609.02749v1"
+    }
+  ]
+}
