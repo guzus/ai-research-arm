@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-09-06
+
+TOP STORIES:
+• OpenAI confirmed the wiki incident and promised a disclosure framework
+• Seattle Times and Newsday sued OpenAI and Microsoft over training data
+• Astra led DeepsecBench, MathArena, and Code Arena WebDev
+
+KEY NUMBERS:
+• Astra: DeepsecBench 37.79 in 50 min / $64; MathArena 90.5%; Code Arena 1,797
+• HN collusion.wiki: 2,047 points / 1,494 comments
+• TCS HyperVault: up to $7.41B for a 1 GW Hyderabad campus
+• Astra Pro weekly cap: 200 on the $200 Pro plan
+
+TRENDING: OpenAI wiki confirmation vs FLT formalization
+
+Full digest on GitHub.
