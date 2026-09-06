@@ -570,6 +570,15 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn("run-zai-fallback", execution_output)
         self.assertNotIn("run-opencode", execution_output)
         self.assertNotIn("run-cursor", execution_output)
+        # After a dead-start the failed Claude transcript still exists; when an
+        # ISOLATED adapter then served the run the output must be empty, not
+        # that stale path (review finding on PR #3698). The guard must precede
+        # the step chain so the whole `||` chain is short-circuited to ''.
+        guard = ("steps.reselect.outputs.adapter != 'opencode' && "
+                 "steps.reselect.outputs.adapter != 'cursor' && (")
+        self.assertTrue(execution_output.strip().startswith("${{ " + guard),
+                        execution_output)
+        self.assertTrue(execution_output.rstrip().endswith(") || '' }}"), execution_output)
 
     def test_twitter_native_model_dispatch_input_reaches_agent_run(self):
         """hourly-twitter's `native_model` input is the one-off model switch

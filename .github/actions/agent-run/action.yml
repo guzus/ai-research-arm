@@ -94,8 +94,8 @@ outputs:
     description: Resolved native Claude model (what the `--model opus` alias serves on the native path — the native-model input, else the SSOT's global fallback.native_model).
     value: ${{ steps.select.outputs.native-model }}
   execution-file:
-    description: Path to the Claude Code execution transcript JSON reported by a Claude-compatible child (intentionally empty for isolated adapters). Callers that need it after a later agent-run call in the same job must copy it immediately.
-    value: ${{ steps.run-zai-fallback.outputs.execution_file || steps.run-zai-fallback-bots.outputs.execution_file || steps.run-claude.outputs.execution_file || steps.run-claude-bots.outputs.execution_file || steps.run-fireworks.outputs.execution_file || steps.run-fireworks-bots.outputs.execution_file || steps.run-zai.outputs.execution_file || steps.run-zai-bots.outputs.execution_file }}
+    description: Path to the Claude Code execution transcript JSON reported by a Claude-compatible child (intentionally empty for isolated adapters — including when an isolated adapter served the run as the post-agent fallback after a Claude dead-start, whose failed transcript must not be reported as the run's transcript). Callers that need it after a later agent-run call in the same job must copy it immediately.
+    value: ${{ steps.reselect.outputs.adapter != 'opencode' && steps.reselect.outputs.adapter != 'cursor' && (steps.run-zai-fallback.outputs.execution_file || steps.run-zai-fallback-bots.outputs.execution_file || steps.run-claude.outputs.execution_file || steps.run-claude-bots.outputs.execution_file || steps.run-fireworks.outputs.execution_file || steps.run-fireworks-bots.outputs.execution_file || steps.run-zai.outputs.execution_file || steps.run-zai-bots.outputs.execution_file) || '' }}
   changed:
     description: "true when expected-paths were provided and changed"
     value: ${{ steps.guard.outputs.changed }}

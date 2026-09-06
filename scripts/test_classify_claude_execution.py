@@ -56,6 +56,21 @@ class ClassifyTest(unittest.TestCase):
         v = self.classify_text("")
         self.assertEqual("unknown", v["outcome"])
 
+    def test_real_action_transcript_is_a_pretty_printed_json_array(self):
+        """claude-code-action@a874e9e writes JSON.stringify(messages, null, 2):
+        ONE top-level array, not JSONL. A parser that only reads top-level
+        objects returns nothing and every dead-start becomes `unknown`, so
+        the fallback never fires (caught in review of PR #3698)."""
+        transcript_array = json.dumps([
+            {"type": "system", "subtype": "init"},
+            result(is_error=True, num_turns=1, total_cost_usd=0,
+                   result="API Error: 429 rate limit"),
+        ], indent=2)
+        v = self.classify_text(transcript_array)
+        self.assertEqual("dead-start", v["outcome"])
+        v = self.classify_text(json.dumps([{"type": "system"}, result()], indent=2))
+        self.assertEqual("success", v["outcome"])
+
     def test_last_result_object_wins(self):
         v = self.classify_text(transcript(
             result(is_error=True, num_turns=1, total_cost_usd=0), result()))
