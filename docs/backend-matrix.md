@@ -33,8 +33,12 @@ lists backend selectors tried in order. At run time `scripts/select_backend.py`
 walks `[lane's backend] + chain` (deduplicated — a failed primary isn't
 retried from the chain), probes each candidate's provider (fireworks =
 preflight request, zai = Z.ai endpoint probe, claude = OAuth preflight),
-and runs the first available candidate. Claude 401/403 auth rejection or
-HTTP 429 rate limiting advances ordinary non-strict callers to Z.ai; the
+and runs the first available candidate. The Claude probe is auth-only:
+401/403 advances ordinary non-strict callers to Z.ai, while HTTP 429 keeps
+Claude selected (a healthy OAuth token answers the raw ping 429
+unconditionally — it is not a throttle signal). A real throttle surfaces as a
+Claude dead-start (is_error, ≤1 turn, $0) and `agent-run` then re-runs the
+selector with `--exclude-backend claude` over the same chain post-agent. The
 local digest, primary Twitter/repair, and no-MCP AI-news lanes explicitly
 override that chain with isolated Cursor because their inputs and exact commit
 contracts are adapter-compatible. Each lane declares `fallback_mode`; CI
@@ -111,8 +115,8 @@ Reading notes:
 | twitter-deepseek-pi (tier:deepseek-pi) | `hourly-twitter.yml` | pi · run-pi-container (CI-enforced mirror) | fireworks (pi built-in) | `accounts/fireworks/models/deepseek-v4-flash` | `FIREWORKS_API_KEY` | — |
 | twitter-fireworks-pi (tier:fireworks-pi) | `hourly-twitter.yml` | pi · run-pi-container (CI-enforced mirror) | fireworks (pi built-in) | `accounts/fireworks/models/kimi-k2p7` | `FIREWORKS_API_KEY` | — |
 | twitter-judge (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `zai-glm-5p2` |
-| twitter-primary (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `cursor-grok-4p6-fast`; then `deterministic_twitter_digest.py` |
-| twitter-primary-repair (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `cursor-grok-4p6-fast` |
+| twitter-primary (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `${{ steps.backend.outputs.native_model }}` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `cursor-grok-4p6-fast`; then `deterministic_twitter_digest.py` |
+| twitter-primary-repair (tier:claude) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `${{ steps.backend.outputs.native_model }}` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `cursor-grok-4p6-fast` |
 | twitter-zai (tier:zai-glm-5p2) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
 | wiki-ingest (route:research-editorial-secondary) | `wiki-ingest.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | zai-canary · PINNED | `zai-claude-code-canary.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.2 via Z.ai | `glm-5.2` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |

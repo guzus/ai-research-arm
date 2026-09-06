@@ -14,8 +14,8 @@ cross-adapter fallback; the global chain remains agent-run-native.
 Probes: fireworks → tiny /v1/messages preflight (reuses
 check_fireworks_backend); zai → same-shape probe against the Z.ai
 Anthropic-compatible endpoint; claude → OAuth-token preflight against
-api.anthropic.com that is UNAVAILABLE on an explicit credential rejection
-(401/403) or a run-scoped rate limit (429), and available on anything else;
+api.anthropic.com that is UNAVAILABLE only on an explicit credential
+rejection (401/403) and available on anything else — INCLUDING 429;
 opencode-go and Cursor are available when their isolated-adapter credentials
 are configured; their containers own the runtime provider call.
 
@@ -23,13 +23,28 @@ Why the claude probe is auth-only (2026-07-24 incident): this probe used
 to hardcode "always available", so when CLAUDE_CODE_OAUTH_TOKEN expired
 every agent lane in the fleet died instantly (is_error, 1 turn, $0) with
 no route out — the chain could not move past a backend it always believed
-was up. A 429 proves the credential is alive but also proves Claude cannot
-serve this run, so compatibility-tested local-content lanes can continue
-through an explicit isolated-adapter override. Other lanes retain the global
-chain. The probe remains
-deliberately narrow for 400, 5xx, and network faults: those inconclusive
-responses keep the existing fail-open behavior rather than broadening the
-reroute policy.
+was up.
+
+Why 429 is NOT "down" (2026-08-30..09-06 incident): a healthy Claude Code
+OAuth subscription token answers this raw 1-token /v1/messages ping with
+`429 rate_limit_error "Error"` EVERY time — it is the steady-state answer,
+not a throttle signal. PR #3333 classified it as unavailable and the whole
+Claude fleet silently ran on the Cursor fallback for a week while the same
+token served 121-turn generative-research runs. A real throttle looks
+identical here, so this preflight cannot tell them apart; instead
+`.github/actions/agent-run` lets the Claude step run, classifies a
+dead-start failure (is_error, ≤1 turn, $0) with
+`scripts/classify_claude_execution.py`, and re-invokes this selector with
+`--exclude-backend claude` to walk the SAME lane/global chain post-agent.
+The probe remains deliberately narrow for 400, 5xx, and network faults:
+those inconclusive responses keep the fail-open behavior rather than
+broadening the reroute policy.
+
+`--exclude-backend <selector>` (repeatable) marks a candidate unavailable
+without probing — the post-agent reselection path. Chain order, strictness,
+lane-override and production-eligibility rules are identical to the first
+selection, so a strict lane still fails closed and a lane override still
+never continues into the global chain.
 
 Strictness: `--fallback-policy none` or a lane with `"strict": true`
 disables the chain — the requested backend is the only candidate and its
@@ -126,7 +141,7 @@ def probe_zai(model: str) -> tuple[bool, str]:
 
 
 def probe_claude(model: str) -> tuple[bool, str]:
-    """Report Claude down on auth rejection or a run-scoped rate limit.
+    """Report Claude down ONLY on an explicit credential rejection.
 
     The Claude Code OAuth token authenticates with `authorization: Bearer`
     plus the oauth beta header. It must NOT be sent as `x-api-key` — the
@@ -135,11 +150,15 @@ def probe_claude(model: str) -> tuple[bool, str]:
     how a naive reuse of request_preflight() would strand the whole fleet
     on the fallback backend. Hence a dedicated request here.
 
-    A 429 means the credential is alive, but availability is the ability to
-    serve this run, not merely authenticate. Non-strict callers should walk
-    to Z.ai instead of selecting a Claude path known to be throttled. Only
-    401/403 and 429 are classified unavailable; 400, 5xx, and network faults
-    retain the existing fail-open behavior because this narrow preflight does
+    HTTP 429 is UP. A healthy subscription token answers this raw ping with
+    `429 rate_limit_error` unconditionally (verified 2026-08-28 and
+    2026-09-06 against tokens that were serving real runs at the same
+    moment), so 429 carries no information about whether Claude can serve
+    the run. Treating it as down reroutes a healthy fleet off Claude
+    permanently (the 2026-08-30..09-06 incident). Real throttles are
+    detected AFTER the agent step by scripts/classify_claude_execution.py
+    and handled by re-running this selector with `--exclude-backend claude`.
+    400, 5xx, and network faults also stay fail-open: this preflight does
     not prove the full Claude Code path is unavailable in those cases.
     """
     token = os.environ.get("CLAUDE_CODE_OAUTH_TOKEN", "").strip()
@@ -155,7 +174,10 @@ def probe_claude(model: str) -> tuple[bool, str]:
     if status in (401, 403):
         return False, f"HTTP {status}: {extract_message(status, body)}"
     if status == 429:
-        return False, f"HTTP 429: rate limited for this run: {extract_message(status, body)}"
+        # Steady-state answer for a healthy OAuth token — NOT a throttle
+        # signal (see docstring). Real throttles surface post-agent.
+        return True, ("native path (claude-code-action OAuth; probe HTTP 429 is the "
+                      "steady-state answer for a live OAuth token, not a throttle)")
     return True, f"native path (claude-code-action OAuth; probe HTTP {status})"
 
 
@@ -224,6 +246,11 @@ def main_with_args(argv: list[str] | None = None) -> int:
                         choices=["claude", "none"],
                         help="claude = walk the SSOT fallback chain; none = strict")
     parser.add_argument("--native-model-override", default="")
+    parser.add_argument("--exclude-backend", action="append", default=[],
+                        metavar="SELECTOR",
+                        help="mark this backend unavailable without probing "
+                             "(post-agent reselection after an agent-time failure); "
+                             "repeatable")
     parser.add_argument("--file", type=Path, default=DEFAULT_FILE)
     parser.add_argument("--github-output", type=Path)
     args = parser.parse_args(argv)
@@ -350,6 +377,13 @@ def main_with_args(argv: list[str] | None = None) -> int:
                 f"binding for provider '{provider}'"
             )
 
+    excluded: set[str] = set()
+    for selector in args.exclude_backend:
+        key = normalize(str(selector), backends)
+        if key is None:
+            return config_error(f"--exclude-backend '{selector}' is not in the backends table")
+        excluded.add(key)
+
     chosen = None
     for key in candidates:
         spec = backends[key]
@@ -357,7 +391,11 @@ def main_with_args(argv: list[str] | None = None) -> int:
         probe = PROBES.get(provider)
         if probe is None:
             return config_error(f"backend '{key}' has unknown provider '{provider}'")
-        available, reason = probe(str(spec.get("model", "")))
+        if key in excluded:
+            available, reason = False, ("excluded: failed at agent time "
+                                        "(post-agent reselection)")
+        else:
+            available, reason = probe(str(spec.get("model", "")))
         marker = "available" if available else "UNAVAILABLE"
         print(f"candidate {key} ({provider}): {marker} — {reason}")
         if available:
@@ -378,7 +416,8 @@ def main_with_args(argv: list[str] | None = None) -> int:
         return config_error("fallback.native_model is not set in data/agent-backends.json")
     used_fallback = chosen != requested
     if used_fallback:
-        print(f"::warning::requested backend '{requested}' unavailable; "
+        how = ("failed at agent time" if requested in excluded else "unavailable")
+        print(f"::warning::requested backend '{requested}' {how}; "
               f"selected '{chosen}' from the SSOT fallback chain.")
 
     write_outputs(args.github_output, {
@@ -390,6 +429,7 @@ def main_with_args(argv: list[str] | None = None) -> int:
         "display-name": str(spec.get("display_name", chosen)),
         "native-model": native_model,
         "used-fallback": str(used_fallback).lower(),
+        "reselected": str(bool(excluded)).lower(),
     })
     print(f"Selected backend: {spec.get('display_name', chosen)} "
           f"(requested {requested}{', fell back' if used_fallback else ''})")

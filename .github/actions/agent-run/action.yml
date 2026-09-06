@@ -79,20 +79,23 @@ outputs:
     description: Normalized requested backend selector.
     value: ${{ steps.select.outputs.requested-backend }}
   effective-backend:
-    description: Backend actually used after walking the SSOT fallback chain.
-    value: ${{ steps.select.outputs.backend }}
+    description: Backend actually used after walking the SSOT fallback chain (pre-agent probe OR post-agent reselection after a Claude dead-start).
+    value: ${{ steps.reselect.outputs.backend || steps.select.outputs.backend }}
   used-fallback:
-    description: "true when the requested backend was unavailable and a chain candidate was selected"
-    value: ${{ steps.select.outputs.used-fallback }}
+    description: "true when the requested backend was unavailable (or died at agent time) and a chain candidate was selected"
+    value: ${{ steps.reselect.outputs.used-fallback || steps.select.outputs.used-fallback }}
+  claude-dead-start:
+    description: "true when native Claude was selected but died before doing any work (is_error, <=1 turn, $0 — throttle or rejected credential) and the lane chain was re-walked post-agent"
+    value: ${{ steps.claude-outcome.outputs.dead-start == 'true' }}
   model-id:
     description: Provider model id of the EFFECTIVE backend (empty on the native path — see native-model resolution).
-    value: ${{ steps.select.outputs.model-id }}
+    value: ${{ steps.reselect.outputs.model-id || steps.select.outputs.model-id }}
   native-model:
     description: Resolved native Claude model (what the `--model opus` alias serves on the native path — the native-model input, else the SSOT's global fallback.native_model).
     value: ${{ steps.select.outputs.native-model }}
   execution-file:
-    description: Path to the Claude Code execution transcript JSON reported by a Claude-compatible child (intentionally empty for isolated adapters). Callers that need it after a later agent-run call in the same job must copy it immediately.
-    value: ${{ steps.run-claude.outputs.execution_file || steps.run-claude-bots.outputs.execution_file || steps.run-fireworks.outputs.execution_file || steps.run-fireworks-bots.outputs.execution_file || steps.run-zai.outputs.execution_file || steps.run-zai-bots.outputs.execution_file }}
+    description: Path to the Claude Code execution transcript JSON reported by a Claude-compatible child (intentionally empty for isolated adapters — including when an isolated adapter served the run as the post-agent fallback after a Claude dead-start, whose failed transcript must not be reported as the run's transcript). Callers that need it after a later agent-run call in the same job must copy it immediately.
+    value: ${{ steps.reselect.outputs.adapter != 'opencode' && steps.reselect.outputs.adapter != 'cursor' && (steps.run-zai-fallback.outputs.execution_file || steps.run-zai-fallback-bots.outputs.execution_file || steps.run-claude.outputs.execution_file || steps.run-claude-bots.outputs.execution_file || steps.run-fireworks.outputs.execution_file || steps.run-fireworks-bots.outputs.execution_file || steps.run-zai.outputs.execution_file || steps.run-zai-bots.outputs.execution_file) || '' }}
   changed:
     description: "true when expected-paths were provided and changed"
     value: ${{ steps.guard.outputs.changed }}
@@ -132,8 +135,11 @@ runs:
         ZAI_API_KEY: ${{ inputs.zai-api-key }}
         OPENCODE_API_KEY: ${{ inputs.opencode-api-key }}
         CURSOR_API_KEY: ${{ inputs.cursor-api-key }}
-        # The Claude OAuth preflight marks 401/403 auth rejection and a 429
-        # run-scoped rate limit unavailable (non-strict → walk the chain).
+        # The Claude OAuth preflight is AUTH-ONLY: 401/403 = unavailable
+        # (non-strict → walk the chain); 429 is the steady-state answer a
+        # healthy OAuth token gives this raw ping and therefore UP. A real
+        # throttle is detected after the Claude step (see "Classify native
+        # Claude outcome" below) and re-walks the same chain post-agent.
         # Without the token the native path is also unavailable.
         CLAUDE_CODE_OAUTH_TOKEN: ${{ inputs.claude-code-oauth-token }}
       run: |
@@ -218,6 +224,9 @@ runs:
     - name: Run agent with Claude
       id: run-claude
       if: steps.select.outputs.provider == 'claude' && inputs.allowed-bots == ''
+      # continue-on-error so the step below can classify HOW it ended. A
+      # non-dead-start failure is re-raised there, so this is not a swallow.
+      continue-on-error: true
       uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_MODEL: ${{ steps.select.outputs.native-model }}
@@ -232,12 +241,217 @@ runs:
     - name: Run agent with Claude
       id: run-claude-bots
       if: steps.select.outputs.provider == 'claude' && inputs.allowed-bots != ''
+      continue-on-error: true
       uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
       env:
         ANTHROPIC_MODEL: ${{ steps.select.outputs.native-model }}
         ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.native-model }}
         ARA_AGENT_BACKEND: claude
         ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.native-model }}
+      with:
+        claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
+        allowed_bots: ${{ inputs.allowed-bots }}
+        claude_args: ${{ inputs.claude-args }}
+        prompt: ${{ inputs.prompt }}
+
+    # POST-AGENT THROTTLE FALLBACK. The pre-agent OAuth probe cannot see a
+    # real throttle (a healthy token answers the raw ping 429 unconditionally),
+    # so the Claude step runs first and its transcript is classified here.
+    # Only a DEAD-START — is_error with <=1 turn and $0, the signature of a
+    # throttled or rejected credential — may hand the SAME prompt to the next
+    # chain candidate: nothing was written, so a clean re-run is safe. A
+    # failure after real work is re-raised: partial edits may sit in the
+    # checkout and a second model must never silently finish another's job.
+    - name: Classify native Claude outcome
+      id: claude-outcome
+      if: steps.select.outputs.provider == 'claude'
+      shell: bash
+      env:
+        STEP_OUTCOME: ${{ inputs.allowed-bots == '' && steps.run-claude.outcome || steps.run-claude-bots.outcome }}
+        EXEC_FILE: ${{ steps.run-claude.outputs.execution_file || steps.run-claude-bots.outputs.execution_file }}
+        LABEL: ${{ inputs.label }}
+        PRE_SHA: ${{ steps.pre.outputs.sha }}
+        EXPECTED_PATHS: ${{ inputs.expected-paths }}
+        ALLOWED_PATHS: ${{ inputs.allowed-paths }}
+      run: |
+        set -euo pipefail
+        if [ "$STEP_OUTCOME" = "success" ]; then
+          echo "dead-start=false" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+        verdict_file="$(mktemp)"
+        python3 scripts/classify_claude_execution.py ${EXEC_FILE:+"$EXEC_FILE"} --github-output "$verdict_file"
+        outcome="$(sed -n 's/^outcome=//p' "$verdict_file" | head -n1)"
+        reason="$(sed -n 's/^reason=//p' "$verdict_file" | head -n1)"
+        rm -f "$verdict_file"
+        if [ "$outcome" = "dead-start" ]; then
+          # Belt and braces: the transcript says nothing was written; prove it
+          # against the checkout too. HEAD must still be the pre-run SHA and
+          # no tracked or untracked file under the output contract may have
+          # changed — otherwise a fallback runner's import plus the later
+          # "Commit expected-path changes" step could merge two models' work.
+          leftovers=""
+          if [ "$(git rev-parse HEAD)" != "$PRE_SHA" ]; then
+            leftovers="HEAD moved from ${PRE_SHA}"
+          fi
+          paths="$ALLOWED_PATHS"
+          [ -z "$paths" ] && paths="$EXPECTED_PATHS"
+          pathspecs=()
+          while IFS= read -r pathspec; do
+            pathspec="${pathspec#"${pathspec%%[![:space:]]*}"}"
+            pathspec="${pathspec%"${pathspec##*[![:space:]]}"}"
+            [ -z "$pathspec" ] && continue
+            pathspecs+=("$pathspec")
+          done <<< "$paths"
+          if [ "${#pathspecs[@]}" -gt 0 ] && [ -n "$(git status --porcelain -- "${pathspecs[@]}")" ]; then
+            leftovers="${leftovers:+$leftovers; }uncommitted changes under the output contract"
+          fi
+          if [ -n "$leftovers" ]; then
+            echo "dead-start=false" >> "$GITHUB_OUTPUT"
+            echo "::error::${LABEL}: transcript looks like a Claude dead-start (${reason}) but the checkout is not clean (${leftovers}). Refusing the post-agent fallback so two models' work cannot be merged."
+            exit 1
+          fi
+          echo "::warning::${LABEL}: native Claude died before doing work — ${reason}. Re-walking the lane fallback chain post-agent."
+          echo "dead-start=true" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+        echo "dead-start=false" >> "$GITHUB_OUTPUT"
+        echo "::error::${LABEL}: native Claude step failed (${outcome}) — ${reason}. Not a dead-start, so no fallback is attempted."
+        exit 1
+
+    # Same selector, same lane/global chain, same strictness and eligibility
+    # rules — with Claude marked unavailable. A strict lane or an exhausted
+    # chain exits 1 here and the run stays red (fail-closed, as before).
+    - name: Re-select backend after Claude dead-start
+      id: reselect
+      if: steps.claude-outcome.outputs.dead-start == 'true'
+      shell: bash
+      env:
+        LANE: ${{ inputs.lane }}
+        BACKEND_OVERRIDE: ${{ inputs.backend }}
+        NATIVE_MODEL_OVERRIDE: ${{ inputs.native-model }}
+        FALLBACK_POLICY: ${{ inputs.fireworks-fallback }}
+        FIREWORKS_API_KEY: ${{ inputs.fireworks-api-key }}
+        ZAI_API_KEY: ${{ inputs.zai-api-key }}
+        OPENCODE_API_KEY: ${{ inputs.opencode-api-key }}
+        CURSOR_API_KEY: ${{ inputs.cursor-api-key }}
+        CLAUDE_CODE_OAUTH_TOKEN: ${{ inputs.claude-code-oauth-token }}
+      run: |
+        set -euo pipefail
+        args=(--github-output "$GITHUB_OUTPUT" --fallback-policy "${FALLBACK_POLICY:-claude}" --exclude-backend claude)
+        if [ -n "$BACKEND_OVERRIDE" ]; then
+          args+=(--backend "$BACKEND_OVERRIDE")
+        else
+          args+=(--lane "$LANE")
+        fi
+        if [ -n "$NATIVE_MODEL_OVERRIDE" ]; then
+          args+=(--native-model-override "$NATIVE_MODEL_OVERRIDE")
+        fi
+        python3 scripts/select_backend.py "${args[@]}"
+
+    - name: Resolve isolated editorial path contract (post-agent fallback)
+      id: isolated-contract-fallback
+      if: steps.reselect.outputs.adapter == 'opencode' || steps.reselect.outputs.adapter == 'cursor'
+      shell: bash
+      env:
+        EXPECTED_PATHS: ${{ inputs.expected-paths }}
+        ALLOWED_PATHS: ${{ inputs.allowed-paths }}
+      run: |
+        set -euo pipefail
+        paths="$ALLOWED_PATHS"
+        if [ -z "$paths" ]; then
+          paths="$EXPECTED_PATHS"
+        fi
+        if [ -z "$paths" ]; then
+          echo "::error::An isolated adapter fallback requires expected-paths or allowed-paths."
+          exit 1
+        fi
+        {
+          echo "paths<<__ISOLATED_ALLOWED_PATHS__"
+          echo "$paths"
+          echo "__ISOLATED_ALLOWED_PATHS__"
+        } >> "$GITHUB_OUTPUT"
+
+    # Only the providers that appear in a lane or global chain have a
+    # post-agent runner. Anything else is a hard error rather than a silent
+    # no-op that the output guard would report as a confusing "no output".
+    - name: Verify the reselected backend has a post-agent runner
+      if: steps.reselect.outcome == 'success'
+      shell: bash
+      env:
+        ADAPTER: ${{ steps.reselect.outputs.adapter }}
+        PROVIDER: ${{ steps.reselect.outputs.provider }}
+        BACKEND: ${{ steps.reselect.outputs.backend }}
+      run: |
+        set -euo pipefail
+        case "${ADAPTER}/${PROVIDER}" in
+          opencode/*|cursor/*|agent-run/zai) ;;
+          *) echo "::error::post-agent fallback selected '${BACKEND}' (adapter=${ADAPTER}, provider=${PROVIDER}) but agent-run has no post-agent runner for it."; exit 1 ;;
+        esac
+
+    - name: Run agent with isolated OpenCode (post-agent fallback)
+      id: run-opencode-fallback
+      if: steps.reselect.outputs.adapter == 'opencode'
+      uses: ./.github/actions/run-opencode-container
+      with:
+        mode: ${{ inputs.opencode-mode }}
+        lane: ${{ inputs.lane }}
+        allowed-paths: ${{ steps.isolated-contract-fallback.outputs.paths }}
+        model: ${{ steps.reselect.outputs.provider }}/${{ steps.reselect.outputs.model-id }}
+        opencode-api-key: ${{ inputs.opencode-api-key }}
+        prompt-text: ${{ inputs.prompt }}
+
+    - name: Run agent with isolated Cursor (post-agent fallback)
+      id: run-cursor-fallback
+      if: steps.reselect.outputs.adapter == 'cursor'
+      uses: ./.github/actions/run-cursor-container
+      with:
+        mode: ${{ inputs.cursor-mode }}
+        lane: ${{ inputs.lane }}
+        allowed-paths: ${{ steps.isolated-contract-fallback.outputs.paths }}
+        model: ${{ steps.reselect.outputs.provider }}/${{ steps.reselect.outputs.model-id }}
+        cursor-api-key: ${{ inputs.cursor-api-key }}
+        prompt-text: ${{ inputs.prompt }}
+
+    - name: Run agent with Z.ai (post-agent fallback)
+      id: run-zai-fallback
+      if: steps.reselect.outputs.provider == 'zai' && inputs.allowed-bots == ''
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
+      env:
+        ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
+        ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
+        ANTHROPIC_MODEL: ${{ steps.reselect.outputs.model-id }}
+        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.reselect.outputs.model-id }}
+        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.reselect.outputs.model-id }}
+        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.reselect.outputs.model-id }}
+        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.reselect.outputs.model-id }}
+        CLAUDE_CODE_EFFORT_LEVEL: max
+        CLAUDE_CODE_AUTO_COMPACT_WINDOW: "1000000"
+        API_TIMEOUT_MS: "3000000"
+        ARA_AGENT_BACKEND: ${{ steps.reselect.outputs.backend }}
+        ARA_AGENT_MODEL_ID: ${{ steps.reselect.outputs.model-id }}
+      with:
+        claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
+        claude_args: ${{ inputs.claude-args }}
+        prompt: ${{ inputs.prompt }}
+
+    - name: Run agent with Z.ai (post-agent fallback)
+      id: run-zai-fallback-bots
+      if: steps.reselect.outputs.provider == 'zai' && inputs.allowed-bots != ''
+      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
+      env:
+        ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
+        ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
+        ANTHROPIC_MODEL: ${{ steps.reselect.outputs.model-id }}
+        ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.reselect.outputs.model-id }}
+        ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.reselect.outputs.model-id }}
+        ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.reselect.outputs.model-id }}
+        CLAUDE_CODE_SUBAGENT_MODEL: ${{ steps.reselect.outputs.model-id }}
+        CLAUDE_CODE_EFFORT_LEVEL: max
+        CLAUDE_CODE_AUTO_COMPACT_WINDOW: "1000000"
+        API_TIMEOUT_MS: "3000000"
+        ARA_AGENT_BACKEND: ${{ steps.reselect.outputs.backend }}
+        ARA_AGENT_MODEL_ID: ${{ steps.reselect.outputs.model-id }}
       with:
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         allowed_bots: ${{ inputs.allowed-bots }}

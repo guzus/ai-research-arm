@@ -23,7 +23,14 @@ MAX_MESSAGE_CHARS = 500
 
 
 def parse_objects(text: str) -> list[dict[str, Any]]:
-    """Parse JSONL or concatenated JSON objects."""
+    """Parse the claude-code-action execution transcript.
+
+    The pinned action writes ONE pretty-printed JSON array
+    (`JSON.stringify(messages, null, 2)` in base-action/src/execution-file.ts),
+    so a top-level list is expanded into its dict elements. JSONL and
+    concatenated JSON objects are accepted too, because older transcripts and
+    hand-written fixtures use those shapes. Anything else is skipped.
+    """
     objects: list[dict[str, Any]] = []
     decoder = json.JSONDecoder()
     pos = 0
@@ -42,6 +49,8 @@ def parse_objects(text: str) -> list[dict[str, Any]]:
             continue
         if isinstance(obj, dict):
             objects.append(obj)
+        elif isinstance(obj, list):
+            objects.extend(item for item in obj if isinstance(item, dict))
         pos = end
     return objects
 

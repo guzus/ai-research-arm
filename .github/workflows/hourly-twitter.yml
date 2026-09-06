@@ -76,6 +76,17 @@ on:
         required: false
         default: false
         type: boolean
+      native_model:
+        description: >-
+          Claude tier only — native Anthropic model id served by the
+          `--model opus` alias for this run (e.g. claude-fable-5-1,
+          claude-opus-5). Empty = the SSOT fallback.native_model. Rejected
+          for any other backend so a requested model is never silently
+          ignored. Premium models bill the shared subscription window —
+          use for deliberate one-off comparisons, not as a standing default.
+        required: false
+        default: ""
+        type: string
 
 # Per-backend concurrency groups: each tier serializes against itself
 # (cron-driven and manually-dispatched runs of the same backend land
@@ -149,6 +160,7 @@ jobs:
           ACTUAL_SCHEDULE: ${{ github.event.schedule }}
           MATRIX_BACKEND: ${{ matrix.backend }}
           INPUT_BACKEND: ${{ inputs.backend }}
+          INPUT_NATIVE_MODEL: ${{ inputs.native_model }}
         run: |
           set -euo pipefail
 
@@ -176,11 +188,28 @@ jobs:
             claude|deepseek-claude-code|zai-glm-5p2|deepseek-pi|fireworks-pi|opencode-deepseek-v4-flash|cursor-grok-4p6-fast) ;;
             *) echo "::error::Unknown backend '$BACKEND'"; exit 1 ;;
           esac
+          # Optional native-model override (dispatch only). Honored solely on
+          # the Claude tier: agent-run maps it onto the `--model opus` alias.
+          # Any other tier serves a fixed provider model, so a requested id
+          # there would be a silent no-op — reject it instead.
+          NATIVE_MODEL=""
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] && [ -n "${INPUT_NATIVE_MODEL:-}" ]; then
+            if [ "$BACKEND" != "claude" ]; then
+              echo "::error::native_model='${INPUT_NATIVE_MODEL}' is only honored with backend=claude (got '${BACKEND}')."
+              exit 1
+            fi
+            if ! [[ "$INPUT_NATIVE_MODEL" =~ ^claude-[a-z0-9][a-z0-9.-]*$ ]]; then
+              echo "::error::native_model='${INPUT_NATIVE_MODEL}' is not a native Anthropic model id (expected claude-<family>-<version>, e.g. claude-fable-5-1)."
+              exit 1
+            fi
+            NATIVE_MODEL="$INPUT_NATIVE_MODEL"
+          fi
           {
             echo "skip=false"
             echo "name=${BACKEND}"
+            echo "native_model=${NATIVE_MODEL}"
           } >> "$GITHUB_OUTPUT"
-          echo "Resolved backend: ${BACKEND}"
+          echo "Resolved backend: ${BACKEND}${NATIVE_MODEL:+ (native model override: ${NATIVE_MODEL})}"
 
       - name: Quarantine stale self-hosted workspace
         if: steps.backend.outputs.skip != 'true'
@@ -507,6 +536,7 @@ jobs:
           BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
         with:
           lane: twitter-primary
+          native-model: ${{ steps.backend.outputs.native_model }}
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}
@@ -579,6 +609,7 @@ jobs:
           BIRDY_TOOL_LOG_PATH: ${{ github.workspace }}/.twitter-input/birdy-tool-log.jsonl
         with:
           lane: twitter-primary-repair
+          native-model: ${{ steps.backend.outputs.native_model }}
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}

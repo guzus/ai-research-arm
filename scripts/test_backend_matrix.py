@@ -502,6 +502,107 @@ class RoutingInvariants(unittest.TestCase):
         self.assertNotIn("run-opencode", execution_output)
         self.assertNotIn("run-cursor", execution_output)
 
+    def test_agent_run_post_agent_dead_start_fallback_contract(self):
+        """The 2026-08-30..09-06 incident fix: 429 no longer reroutes at the
+        probe, so a REAL throttle must be caught after the Claude step and
+        re-walk the same chain. Four invariants keep that from becoming a
+        swallow or a secret leak; preserve them if you edit agent-run."""
+        action = yaml.safe_load(
+            (REPO_ROOT / ".github/actions/agent-run/action.yml").read_text()
+        )
+        steps = action["runs"]["steps"]
+        by_id = {step.get("id"): step for step in steps if step.get("id")}
+
+        # (1) Both Claude steps are continue-on-error, else the classifier
+        # never runs; and the classifier re-raises anything but a dead-start.
+        for step_id in ("run-claude", "run-claude-bots"):
+            self.assertIs(True, by_id[step_id].get("continue-on-error"), step_id)
+        outcome = by_id["claude-outcome"]
+        self.assertEqual("steps.select.outputs.provider == 'claude'", outcome["if"])
+        self.assertIn("classify_claude_execution.py", outcome["run"])
+        self.assertIn('if [ "$outcome" = "dead-start" ]', outcome["run"])
+        self.assertIn("exit 1", outcome["run"],
+                      "a non-dead-start Claude failure must stay red")
+
+        # (2) Reselection is the SAME selector with claude excluded — same
+        # lane/global chain, strictness and eligibility rules — and it
+        # only fires on a dead-start.
+        reselect = by_id["reselect"]
+        self.assertEqual("steps.claude-outcome.outputs.dead-start == 'true'",
+                         reselect["if"])
+        self.assertIn("select_backend.py", reselect["run"])
+        self.assertIn("--exclude-backend claude", reselect["run"])
+        self.assertEqual("${{ inputs.fireworks-fallback }}",
+                         reselect["env"]["FALLBACK_POLICY"])
+
+        # (3) Fallback children are keyed on the RESELECT outputs and carry
+        # the same secret scoping as the primary isolated children.
+        opencode = by_id["run-opencode-fallback"]
+        cursor = by_id["run-cursor-fallback"]
+        self.assertEqual("./.github/actions/run-opencode-container", opencode["uses"])
+        self.assertEqual("./.github/actions/run-cursor-container", cursor["uses"])
+        self.assertEqual("steps.reselect.outputs.adapter == 'opencode'", opencode["if"])
+        self.assertEqual("steps.reselect.outputs.adapter == 'cursor'", cursor["if"])
+        for child in (opencode, cursor):
+            self.assertEqual("${{ inputs.prompt }}", child["with"]["prompt-text"])
+            self.assertEqual("${{ steps.isolated-contract-fallback.outputs.paths }}",
+                             child["with"]["allowed-paths"])
+            self.assertIn("steps.reselect.outputs.model-id", child["with"]["model"])
+            rendered = json.dumps(child, sort_keys=True)
+            for secret_input in ("claude-code-oauth-token", "fireworks-api-key",
+                                 "zai-api-key"):
+                self.assertNotIn(secret_input, rendered)
+        self.assertNotIn("cursor-api-key", json.dumps(opencode, sort_keys=True))
+        self.assertNotIn("opencode-api-key", json.dumps(cursor, sort_keys=True))
+        for step_id in ("run-zai-fallback", "run-zai-fallback-bots"):
+            zai = by_id[step_id]
+            self.assertIn("steps.reselect.outputs.provider == 'zai'", zai["if"])
+            self.assertEqual("${{ steps.reselect.outputs.model-id }}",
+                             zai["env"]["ANTHROPIC_MODEL"])
+
+        # (4) Outputs report the EFFECTIVE backend after reselection, and the
+        # execution-file output still never points at an isolated child.
+        outputs = action["outputs"]
+        for key in ("effective-backend", "used-fallback", "model-id"):
+            self.assertIn("steps.reselect.outputs", outputs[key]["value"], key)
+        self.assertIn("claude-dead-start", outputs)
+        execution_output = outputs["execution-file"]["value"]
+        self.assertIn("run-zai-fallback", execution_output)
+        self.assertNotIn("run-opencode", execution_output)
+        self.assertNotIn("run-cursor", execution_output)
+        # After a dead-start the failed Claude transcript still exists; when an
+        # ISOLATED adapter then served the run the output must be empty, not
+        # that stale path (review finding on PR #3698). The guard must precede
+        # the step chain so the whole `||` chain is short-circuited to ''.
+        guard = ("steps.reselect.outputs.adapter != 'opencode' && "
+                 "steps.reselect.outputs.adapter != 'cursor' && (")
+        self.assertTrue(execution_output.strip().startswith("${{ " + guard),
+                        execution_output)
+        self.assertTrue(execution_output.rstrip().endswith(") || '' }}"), execution_output)
+
+    def test_twitter_native_model_dispatch_input_reaches_agent_run(self):
+        """hourly-twitter's `native_model` input is the one-off model switch
+        (e.g. claude-fable-5-1). It must reach BOTH twitter-primary agent-run
+        calls, be validated, and be rejected off the Claude tier."""
+        workflow_path = REPO_ROOT / ".github/workflows/hourly-twitter.yml"
+        text = workflow_path.read_text()
+        workflow = yaml.safe_load(text)
+        inputs = workflow[True]["workflow_dispatch"]["inputs"]
+        self.assertEqual("", inputs["native_model"]["default"])
+        self.assertEqual("string", inputs["native_model"]["type"])
+        job = next(iter(workflow["jobs"].values()))
+        agent_runs = [step for step in job["steps"]
+                      if step.get("uses") == "./.github/actions/agent-run"
+                      and str((step.get("with") or {}).get("lane", "")).startswith("twitter-primary")]
+        self.assertEqual(2, len(agent_runs))
+        for step in agent_runs:
+            self.assertEqual("${{ steps.backend.outputs.native_model }}",
+                             step["with"]["native-model"], step["with"]["lane"])
+        resolve = next(step for step in job["steps"] if step.get("id") == "backend")
+        self.assertIn('[ "$BACKEND" != "claude" ]', resolve["run"])
+        self.assertIn("^claude-[a-z0-9][a-z0-9.-]*$", resolve["run"])
+        self.assertIn('echo "native_model=${NATIVE_MODEL}"', resolve["run"])
+
     def test_ai_news_mcp_cannot_select_cursor(self):
         mcp = self.lanes["ai-news-research-mcp"]
         self.assertEqual("claude-code-action", mcp["harness"])

@@ -466,7 +466,7 @@ Secrets are configured in GitHub Actions. None are committed.
 
 | Secret | Used by | Notes |
 |---|---|---|
-| `CLAUDE_CODE_OAUTH_TOKEN` | Claude-harness `agent-run` lanes, direct-Claude workflows, and a reserved dispatcher credential slot | Required by `claude-code-action@v1`; agent-run call sites carry it alongside alternate-provider keys for runtime routing. Expiry can take down the Claude-harness failure domain, but current host-checkout agent-run is rejected by `research-editorial` and never receives this reserved dispatcher slot. Log signature: `is_error: true`, `num_turns: 1`, `total_cost_usd: 0`, `duration_ms` < ~2000, zero permission denials — the agent dies before doing any work. Re-mint with `claude setup-token` → `gh secret set CLAUDE_CODE_OAUTH_TOKEN`; dispatch `zai-claude-code-canary.yml` to separate a dead credential from a broken runner/sandbox. Last expiry 2026-07-24; see rule 14. |
+| `CLAUDE_CODE_OAUTH_TOKEN` | Claude-harness `agent-run` lanes, direct-Claude workflows, and a reserved dispatcher credential slot | Required by `claude-code-action@v1`; agent-run call sites carry it alongside alternate-provider keys for runtime routing. Expiry can take down the Claude-harness failure domain, but current host-checkout agent-run is rejected by `research-editorial` and never receives this reserved dispatcher slot. Log signature: `is_error: true`, `num_turns: 1`, `total_cost_usd: 0`, `duration_ms` < ~2000, zero permission denials — the agent dies before doing any work. `agent-run` now classifies exactly this shape as a **dead-start** and re-walks the lane chain post-agent (rule 14b), so the lane survives; the run log carries the `died before doing work` warning. Re-mint with `claude setup-token` → `gh secret set CLAUDE_CODE_OAUTH_TOKEN`; dispatch `zai-claude-code-canary.yml` to separate a dead credential from a broken runner/sandbox. Last expiry 2026-07-24; see rule 14. |
 | `ZAI_API_KEY` | Fallback chain link 2; `agent-run backend=zai-glm-5p2`; `zai-claude-code-canary.yml` | Z.ai Coding Plan key. Now load-bearing for outage resilience, not just comparison. |
 | `FIREWORKS_API_KEY` | Fireworks generative/comparison lanes and a reserved dispatcher credential slot | Covers GLM and DeepSeek Fireworks profiles. The prewired dispatcher slot is for a future isolated adapter; current agent-run profiles are not selectable by `research-editorial`. **The account is SUSPENDED as of 2026-08-01** — probes return `HTTP 412: Account getclarito-5mege6wpl is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices` (run `30641250660`). The strict `twitter-deepseek` cron had hard-failed 4×/day since ~2026-07-05 and was dropped 2026-08-01; it remains dispatch-only until billing is settled at https://fireworks.ai/account/billing. Check the job name before attributing those historical failures to a primary lane. |
 | `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, and the dispatcher credential set | OpenCode Go key: https://opencode.ai/auth; caps are $12/5h, $30/week, $60/month. The monthly cap is currently exhausted, so production editorial routing is temporarily off OpenCode. `opencode-deepseek-canary.yml` independently probes the registered editorial profile. When that probe succeeds, restore only `routes.research-editorial.backend`, regenerate docs, and redispatch RSS/community/Bluesky. |
@@ -699,18 +699,33 @@ output or break the pipeline. Read them before editing.
     (a) **`fallback.chain` spans ≥2 providers** — CI-enforced by
     `test_backend_matrix.test_global_fallback_chain_shape`. Claude leads
     (it is what the prompts are tuned against); it must not also terminate.
-    (b) **`probe_claude()` is a narrow run-availability preflight** — down
-    on 401/403 auth rejection and on HTTP 429. A 429 proves the subscription
-    token is alive but also proves Claude cannot serve this run. Local digest,
-    primary Twitter/repair, and no-MCP AI-news have explicit
-    compatibility-tested `fallback_chain` overrides to isolated Cursor. These
-    are standby paths while Claude is healthy, replace rather than append the
-    global chain, and keep exact path/mode contracts. MCP AI-news remains direct
-    Claude because Cursor denies MCP. If Cursor is unavailable, digest/Twitter
-    continue into their existing deterministic recovery where applicable.
-    Unrelated non-strict agent-run lanes retain the global Z.ai secondary.
-    HTTP 400, 5xx, and network faults remain fail-open because this
-    tiny probe does not mechanically prove the full Claude Code path is down.
+    (b) **`probe_claude()` is auth-only, and HTTP 429 is UP.** Down only
+    on 401/403. A healthy Claude Code OAuth token answers the probe's raw
+    1-token ping with `429 rate_limit_error "Error"` **every time** — it is
+    the steady-state answer, not a throttle signal (re-verified 2026-09-06
+    against a Max token that was serving real runs at that moment). PR #3333
+    (2026-08-30) classified 429 as down and the entire Claude fleet silently
+    ran on Cursor Grok for a week — green runs, fresh files, no alert —
+    while the model-timeline lane, whose only other candidate is the
+    out-of-balance Z.ai key, published six days of "No change today"
+    fallbacks. **Do not reintroduce 429-as-down.** A real throttle looks
+    identical at the probe, so it is detected AFTER the agent step instead:
+    `agent-run` runs the Claude step with `continue-on-error`, classifies the
+    transcript with `scripts/classify_claude_execution.py`, and only on a
+    **dead-start** (is_error, ≤1 turn, $0 — the 2026-07-24 and 2026-08-28
+    signature) re-runs `select_backend.py --exclude-backend claude` over the
+    SAME lane/global chain and hands the same prompt to that candidate from
+    the clean checkout. A Claude failure after real work is re-raised, never
+    retried elsewhere. Local digest, primary Twitter/repair, and no-MCP
+    AI-news have explicit compatibility-tested `fallback_chain` overrides to
+    isolated Cursor; these replace rather than append the global chain and
+    keep exact path/mode contracts. MCP AI-news remains direct Claude because
+    Cursor denies MCP. Unrelated non-strict agent-run lanes retain the global
+    Z.ai secondary. HTTP 400, 5xx, and network faults remain fail-open
+    because the tiny probe does not prove the full Claude Code path is down.
+    **Reading a run:** `candidate claude (claude): available — ... probe HTTP
+    429` is normal; a fallback shows up as the `::warning::... died before
+    doing work` line plus `Re-select backend after Claude dead-start`.
     It must send
     `authorization: Bearer` + the oauth beta header and **never**
     `x-api-key` (which makes the API reject a *good* OAuth token with
