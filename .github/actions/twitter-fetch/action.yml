@@ -318,9 +318,13 @@ runs:
         fetch_note = ""
         if "fetch" in out["meta"]:
             fs = out["meta"]["fetch"]["summary"]
-            fetch_note = (f"; fetch: {fs.get('failed', 0)} failed "
-                          f"({fs.get('rate_limited', 0)} rate_limited, {fs.get('not_found', 0)} not_found), "
-                          f"{fs.get('retried', 0)} retried")
+            # NOTE: this whole program is inside a single-quoted `python3 -c`
+            # shell string — never use a single quote in it.
+            failed_n = fs.get("failed", 0)
+            rl_n = fs.get("rate_limited", 0)
+            nf_n = fs.get("not_found", 0)
+            retried_n = fs.get("retried", 0)
+            fetch_note = f"; fetch: {failed_n} failed ({rl_n} rate_limited, {nf_n} not_found), {retried_n} retried"
         print(f"Aggregated: {len(accounts)} accounts ({non_empty_accounts} non-empty), "
               f"{len(searches)} searches, {len(news)} news items, "
               f"{total} tweets total{fetch_note}")
