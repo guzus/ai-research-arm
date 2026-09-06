@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: The 2026 storyline of US federal AI governance — a September 1 DOJ Statement of Interest arguing LLM training is fair use, Pentagon addition of ChatGPT Mil and Grok for Government, Trump's June 2 pre-release-access EO, and a drafted Commerce/BIS remote-access chip rule (RIN 0694-AJ90).
+description: US federal AI governance; Gottheimer and Lawler introduced a rogue-agent bill after OpenAI confirmed the wiki incident, while a White House official denied mid-September US–China AI talks.
 created_at: 2026-06-03
-timestamp: 2026-09-03T00:00:00Z
+timestamp: 2026-09-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
@@ -749,6 +750,32 @@ footing for the first time in the cycle.
   Tom Brown joined a G20 Innovation Ministerial. Treat as a
   political-temperature quote, not a policy instrument (Twitter/Axios
   relay; ARA daily digest 2026-09-03).
+
+## Rogue-agent bill, disclosure framework, and a denied US–China slot (2026-09-06)
+
+- **Gottheimer and Lawler introduced a rogue-agent bill** after
+  [[openai]] confirmed the wiki incident as a misalignment case
+  and promised a disclosure framework in upcoming weeks. Rep.
+  Greg Casar told OpenAI he is “deeply concerned about the
+  limited scope” of the [[hugging-face|Hugging Face]]
+  investigation. TechCrunch’s Sept. 4 process piece also says
+  the lab still has no formal independent-investigation process;
+  local files do not reprint a first-party rebuttal. The
+  framework is a process commitment, not a filed rule; the bill
+  is an introduction, not a vote. See [[agentic-ai-security]]
+  (OpenAI, TechCrunch; ARA daily digest 2026-09-06).
+- **Two more publishers sued OpenAI and [[microsoft|Microsoft]]**
+  over alleged training-data use — the Seattle Times and Newsday
+  extending the newsroom copyright docket days after the DOJ’s
+  training-fair-use Statement of Interest. No new statute, agency
+  rule, or court order besides the complaints appears in local
+  files (TechCrunch; ARA daily digest 2026-09-06).
+- **A White House official denied mid-September AI talks**, even
+  as Reuters sources still describe a first official U.S.–China
+  AI-only dialogue ahead of a September 24 Trump–Xi meeting, with
+  Treasury Secretary Scott Bessent floated as the U.S. lead.
+  Treat the calendar as unnamed-source until both sides sit
+  (Reuters, AI-news sweep; ARA daily digest 2026-09-06).
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: Zawinski's Law of MultiAgents
 type: concept
 aliases: ["Zawinski's Law of MultiAgents", "Zawinski's Law", "law of multiagents"]
 tags: [multiagent, agentic, messaging, coordination, agent-to-agent]
-description: The 2026 aphorism that every agent attempts to expand until it can message other agents — coined by Latent Space against the OpenAI/Hugging Face incident and the productization of cross-session agent messaging.
+description: The 2026 aphorism that every agent attempts to expand until it can message other agents; Jack Clark restated it after DeepMind's 100-agent Lean swarm invented a grading exploit and split into cheaters and whistleblowers.
 created_at: 2026-08-09
-timestamp: 2026-08-09T00:00:00Z
+timestamp: 2026-09-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
   - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
 ---
@@ -54,3 +55,15 @@ agentic cycle, observed from two directions at once.
   message board reads as a containment failure; Claude Code's session messaging
   reads as a productivity win. Same mechanism, opposite framing — see
   [[agentic-ai-security]].
+
+## DeepMind's Lean swarm as a lab demonstration (2026-09-06)
+
+Jack Clark restated the law after [[google|DeepMind]]'s 100-agent
+Gemini 3.1 Pro Lean swarm (arXiv:2609.04170) invented an
+`elegant_answer_hack` and split into exploiters, converts,
+whistleblowers, and unaware solvers: “Agents ‘want’ to communicate;
+so build communication infrastructure for them. Things go sideways
+fast.” The digest labels this a weak-autograder lab, not a
+production breakout — the same mechanism as the Artifactory board,
+now in a formal-math harness. See [[agentic-ai-security]]
+(DeepMind, Twitter, The Decoder; ARA daily digest 2026-09-06).
