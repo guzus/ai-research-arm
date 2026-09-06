@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 15:00 UTC",
-    "headline": "CLAUDE NOW WORKS IN MICROSOFT EXCEL, POWERPOINT, WORD, OUTLOOK VIA M365 ADD-INS \u2014 PLUS FACTSET, S&P GLOBAL, MORNINGSTAR CONNECTORS",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-05-twitter-15h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2051681279582540114"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 15:00 UTC",
-    "headline": "GEMINI 3.2 FLASH FLASHES ON GEMINI APP \u2014 VERTEX AI POSTS GEMINI 2 FLASH DEPRECATION NOTICE; LM ARENA SHOWS UPDATED 3 FLASH",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-05-twitter-15h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2051683664753209793"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 15:00 UTC",
-    "headline": "MARK_K: GEMINI 3.5 PRO COMING AT GOOGLE I/O \u2014 WILL BE MEGA GOOD",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-05-05-twitter-15h-headlines.json",
-    "url": "https://x.com/mark_k/status/2051655683548848626"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-05 15:00 UTC",
-    "headline": "SWE-BENCH CREATORS DROP PROGRAMBENCH \u2014 RECREATE FFMPEG/SQLITE/RIPGREP FROM SCRATCH WITH NO INTERNET; EVERY LLM SCORES 0%",
-    "source": "@deedydas",
-    "source_file": "research/summaries/2026-05-05-twitter-15h-headlines.json",
-    "url": "https://x.com/deedydas/status/2051684179084284409"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 18:00 UTC",
-    "headline": "OPENAI SHIPS GPT-5.5 INSTANT AS NEW CHATGPT DEFAULT \u2014 'GPT-5.5-CHAT-LATEST' LIVE IN API",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-05-twitter-18h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2051709028250915275"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 18:00 UTC",
-    "headline": "CHATGPT NOW PULLS CONTEXT FROM SAVED MEMORIES, PAST CHATS, FILES, GMAIL \u2014 NEW 'MEMORY SOURCES' PANEL",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-05-twitter-18h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2051709033414025647"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-05 18:00 UTC",
     "headline": "ANTHROPIC BREAKS 7-DAY SILENCE \u2014 FIRST PRIMARY POST SINCE APR 30 IS A SANDBAGGING-RESEARCH PAPER",
@@ -25030,5 +24976,47 @@
     "headline": "KKR'S NVIDIA-BACKED HELIX STAFFING UP TO DEPLOY $10B INTO AI INFRASTRUCTURE",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2096584230604050828"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-06 20:20:37 UTC",
+    "headline": "OPENAI CHIEF SCIENTIST: NO LAB HAS SOLVED ALIGNMENT ENOUGH TO KEEP SCALING AT MAX SPEED \u2014 CALLS FOR VOLUNTARY SLOWDOWNS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2096638237439901985"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-06 20:20:37 UTC",
+    "headline": "PACHOCKI SAYS INTERNAL RESULTS POINT TO RECURSIVE SELF-IMPROVEMENT AS CHAIN-OF-THOUGHT MONITORING RELIABILITY DECLINES",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2096645621096575381"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-06 20:20:37 UTC",
+    "headline": "ANTHROPIC HAS LINED UP 14.8 GW OF COMPUTE SINCE OCTOBER, UP TO $517B OVER A DECADE \u2014 THE INFORMATION",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2096644731371667965"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-06 20:20:37 UTC",
+    "headline": "MURATI'S THINKING MACHINES LAB RAISING AT ROUGHLY $40B VALUATION ON A FEW HUNDRED MILLION IN ANNUALIZED REVENUE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2096644636643033280"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-06 20:20:37 UTC",
+    "headline": "VALS AI: META MUSE SPARK 1.3 MAX MATCHES FABLE 5 AND GPT-5.6 SOL AT 4-8X CHEAPER",
+    "source": "@AIatMeta",
+    "url": "https://x.com/AIatMeta/status/2096663862565339176"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-06 20:20:37 UTC",
+    "headline": "FLUIDSTACK HITS $18B VALUATION AS TEST BED FOR GOOGLE'S EXTERNAL AI CHIP PUSH \u2014 FORBES",
+    "source": "@Forbes",
+    "url": "https://x.com/Forbes/status/2096689943062172094"
   }
 ]
