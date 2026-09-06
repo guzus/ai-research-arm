@@ -259,7 +259,9 @@ runs:
                 print(f"warning: unreadable _report.json: {exc}")
 
         for f in sorted(bird.glob("*.json")):
-            if f.name in ("all.json", "manifest.json") or f.name.startswith("_"):
+            # Exact names only: X handles may start with "_" (e.g. @_cpatonn),
+            # and the op file for such a handle is data, not metadata.
+            if f.name in ("all.json", "manifest.json", "_report.json"):
                 continue
             try:
                 data = json.loads(f.read_text() or "[]")
