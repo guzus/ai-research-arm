@@ -2,13 +2,15 @@ AI News - 2026-09-06
 
 TOP STORIES:
 • Nvidia to acquire Hugging Face for $12.9B (announced Sept 4, first coverage)
-• Google ships WeatherNext 3 (satellite-trained, no physics sim) + Lyria 3.5 music in Gemini
+• Google ships WeatherNext 3 (satellite-trained) + Lyria 3.5 music in Gemini
 • Meta releases real-time Muse Voice Transcribe; Seattle Times & Newsday sue OpenAI/Microsoft
-• Clinical review asks if "AI-associated psychosis" is a real diagnosis (King's College/UCL)
+• Clinical review asks if "AI-associated psychosis" is a real diagnosis
+• Authors/agents clash with publishers over Anthropic's $1.5B piracy settlement payouts
 
 KEY NUMBERS:
-• Nvidia-Hugging Face: $12.9B (plus Stripe-OpenRouter ~$8B, three weeks apart)
-• Muse Voice Transcribe: 3.1% WER in 0.16s, $0.18/hr (vs ElevenLabs $6.50/hr)
-• AI psychosis review: safety interventions fail ~60% of the time; some models 95% sycophantic
+• Nvidia-Hugging Face: $12.9B; Stripe-OpenRouter ~$8B (3 weeks apart)
+• Muse Voice Transcribe: 3.1% WER in 0.16s, $0.18/hr
+• AI psychosis review: safety interventions fail ~60% of the time
+• Anthropic settlement: $3,000/title to ~500K authors, 50/50 split
 
 Full report on GitHub.
