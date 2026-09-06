@@ -7,7 +7,7 @@ capability from harness/rescue effects:
 | Leg | Lane (SSOT) | Provider route | Served model |
 |---|---|---|---|
 | `claude` | `twitter-ab-claude` | native Claude via `agent-run` | whatever `fallback.native_model` serves in production — `claude-opus-5` since 2026-08-01 (`claude-sonnet-5` before it). The metrics step reads the id from the SSOT, so the leg follows production instead of pinning a literal. |
-| `zai-glm-5p2` | `twitter-ab-zai` | Z.ai Coding Plan via `agent-run` | `glm-5.2` |
+| `zai-glm-5p3` | `twitter-ab-zai` | Z.ai Coding Plan via `agent-run` | `glm-5.3` |
 
 Outputs land under `research/eval/twitter-ab/`:
 
@@ -15,7 +15,7 @@ Outputs land under `research/eval/twitter-ab/`:
 research/eval/twitter-ab/
 ├── <date>/
 │   ├── claude/          # leg output: <date>.md digest + status/ + summary + headlines
-│   ├── zai-glm-5p2/     # same shape
+│   ├── zai-glm-5p3/     # same shape
 │   ├── metrics.json     # mechanical metrics + blinding mapping + contamination verdict
 │   └── judge-verdict.json  # de-blinded judge scores (when the judge ran)
 └── <date>-report.md     # the human report
@@ -147,7 +147,7 @@ A CONTAMINATED report must not be read as a model comparison.
 gh workflow run twitter-model-ab.yml
 
 # one leg only, or skip the judge
-gh workflow run twitter-model-ab.yml -f legs=zai-glm-5p2 -f judge=false
+gh workflow run twitter-model-ab.yml -f legs=zai-glm-5p3 -f judge=false
 ```
 
 It also runs daily at `21:40 UTC` (offset from the production twitter
@@ -168,7 +168,7 @@ when the eval week ends**; `workflow_dispatch` stays.
    checks, whether the leg committed.
 3. **Judge table** — de-blinded per-criterion averages across the two
    position-swapped passes, and the **final preference**
-   (`claude` / `zai-glm-5p2` / `tie` / `split`).
+   (`claude` / `zai-glm-5p3` / `tie` / `split`).
 4. Single runs are noisy: judge one run's `split` or a ±1 overall delta
    as noise; look for a consistent preference across the eval week.
 
@@ -177,7 +177,7 @@ when the eval week ends**; `workflow_dispatch` stays.
 - `claude` leg: one Sonnet-5 agent run over a large snapshot, ≤40 turns —
   observed production twitter cycles land roughly **$1–4**; the actual
   number is recorded per run in `metrics.json → legs.claude.agent.total_cost_usd`.
-- `zai-glm-5p2` leg: covered by the Z.ai Coding Plan subscription —
+- `zai-glm-5p3` leg: covered by the Z.ai Coding Plan subscription —
   **no marginal API cost** (the transcript's cost field, if any, is
   recorded as-is).
 - Judge: two Opus-4-8 passes over two briefs + snapshot spot-checks,

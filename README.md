@@ -178,7 +178,7 @@ flowchart LR
     strict0 -->|"claude-opus-5"| ANT
     strict1 -->|"cursor-grok-4.6-high-fast"| CUR
     strict2 -->|"deepseek-v4-flash"| FW
-    strict3 -->|"glm-5.2"| ZAI
+    strict3 -->|"glm-5.3"| ZAI
     gendef -->|"claude-opus-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5"| ANT
@@ -187,7 +187,7 @@ flowchart LR
     gendef -.->|"backend=cursor-grok-4p6-fast"| CUR
     ANT -. "provider outage → fallback #1" .-> ZAI
 ```
-_Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `claude` → `zai-glm-5p2`; regenerate with `uv run python scripts/build_backend_matrix.py`._
+_Generated from [`data/agent-backends.json`](data/agent-backends.json) — fallback chain: `claude` → `zai-glm-5p3`; regenerate with `uv run python scripts/build_backend_matrix.py`._
 <!-- END GENERATED BACKEND DIAGRAM -->
 
 ## Sources
@@ -381,7 +381,7 @@ settings and service overrides. None are needed for the
 |--------|--------------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | native-Claude lanes, fallback path, reserved dispatcher plumbing | Claude Code auth; current host-checkout agent-run is incompatible with the editorial dispatcher |
 | `FIREWORKS_API_KEY` | Fireworks generative and comparison routes | Anthropic-compatible Fireworks endpoint for explicit model routes and comparison lanes |
-| `ZAI_API_KEY` | Z.ai GLM 5.2 lanes and fallback chain | Z.ai Coding Plan key; current second provider in the global fallback chain and used by Z.ai canaries/comparison lanes |
+| `ZAI_API_KEY` | Z.ai GLM 5.3 lanes and fallback chain | Z.ai Coding Plan key; current second provider in the global fallback chain and used by Z.ai canaries/comparison lanes |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
 | `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. RSS, community, and Bluesky use its strict `glm-5.3-flash` route; arXiv/wiki use an independent Cursor route. The OpenCode canary validates both direct DeepSeek and the dynamically resolved primary editorial route. |
 | `CURSOR_API_KEY` | Cursor CLI profiles, direct comparison/canary paths, dispatcher route plumbing | Cursor dashboard API key. Prewired so an SSOT-only switch to `cursor-grok-4p6-fast` needs no workflow edit. Production defaults stay on OpenCode. |

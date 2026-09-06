@@ -4,7 +4,7 @@ name: Twitter Model A/B Eval
 #   leg "claude"      → lane twitter-ab-claude (native Claude on whatever
 #                       fallback.native_model serves in production — claude-opus-5
 #                       since 2026-08-01, claude-sonnet-5 before it)
-#   leg "zai-glm-5p2" → lane twitter-ab-zai    (GLM-5.2 via Z.ai Coding Plan)
+#   leg "zai-glm-5p3" → lane twitter-ab-zai    (GLM-5.3 via Z.ai Coding Plan)
 #
 # Cardinal rule: PARITY. Both legs get the SAME byte-identical input
 # snapshot, the SAME rendered prompt (differing only in the leg output
@@ -28,9 +28,9 @@ on:
   workflow_dispatch:
     inputs:
       legs:
-        description: Comma-separated legs to run (claude,zai-glm-5p2).
+        description: Comma-separated legs to run (claude,zai-glm-5p3).
         required: false
-        default: claude,zai-glm-5p2
+        default: claude,zai-glm-5p3
         type: string
       judge:
         description: Run the blinded Opus judge when both legs produce a digest.
@@ -80,7 +80,7 @@ jobs:
           RUN_ATTEMPT: ${{ github.run_attempt }}
         run: |
           set -euo pipefail
-          LEGS="${INPUT_LEGS:-claude,zai-glm-5p2}"
+          LEGS="${INPUT_LEGS:-claude,zai-glm-5p3}"
           JUDGE="${INPUT_JUDGE:-true}"
           RUN_CLAUDE=false
           RUN_ZAI=false
@@ -89,9 +89,9 @@ jobs:
             token="$(echo "$token" | tr -d '[:space:]')"
             case "$token" in
               claude) RUN_CLAUDE=true ;;
-              zai-glm-5p2) RUN_ZAI=true ;;
+              zai-glm-5p3) RUN_ZAI=true ;;
               "") ;;
-              *) echo "::error::Unknown leg '$token' (allowed: claude, zai-glm-5p2)"; exit 1 ;;
+              *) echo "::error::Unknown leg '$token' (allowed: claude, zai-glm-5p3)"; exit 1 ;;
             esac
           done
           if [ "$RUN_CLAUDE" != "true" ] && [ "$RUN_ZAI" != "true" ]; then
@@ -119,7 +119,7 @@ jobs:
             echo "date_dir=research/eval/twitter-ab/${DATE}"
             echo "state_dir=${STATE}"
           } >> "$GITHUB_OUTPUT"
-          echo "legs: claude=${RUN_CLAUDE} zai-glm-5p2=${RUN_ZAI}; judge=${JUDGE}; state=${STATE}"
+          echo "legs: claude=${RUN_CLAUDE} zai-glm-5p3=${RUN_ZAI}; judge=${JUDGE}; state=${STATE}"
 
       - name: Setup Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
@@ -233,15 +233,15 @@ jobs:
           run_attempt: ${{ github.run_attempt }}
           yesterday: unused-0000-00-00
 
-      - name: Render prompt (leg zai-glm-5p2)
+      - name: Render prompt (leg zai-glm-5p3)
         id: render_zai
         if: steps.gate.outputs.proceed == 'true' && steps.params.outputs.run_zai == 'true'
         uses: ./.github/actions/render-twitter-prompt
         with:
           backend: claude
-          output_path: ${{ steps.params.outputs.state_dir }}/prompt-zai-glm-5p2.md
-          output_dir: ${{ steps.params.outputs.date_dir }}/zai-glm-5p2
-          summaries_dir: ${{ steps.params.outputs.date_dir }}/zai-glm-5p2
+          output_path: ${{ steps.params.outputs.state_dir }}/prompt-zai-glm-5p3.md
+          output_dir: ${{ steps.params.outputs.date_dir }}/zai-glm-5p3
+          summaries_dir: ${{ steps.params.outputs.date_dir }}/zai-glm-5p3
           summary_slug: twitter-ab
           title_suffix: ' (A/B eval)'
           cycle_hours: '3'
@@ -279,11 +279,11 @@ jobs:
             NORM_SHA=$(sha256sum "$STATE/normalized-claude.md" | cut -d' ' -f1)
           fi
           if [ "$RUN_ZAI" = "true" ]; then
-            normalize zai-glm-5p2 zai-glm-5p2
-            ZAI_SHA=$(sha256sum "$STATE/normalized-zai-glm-5p2.md" | cut -d' ' -f1)
+            normalize zai-glm-5p3 zai-glm-5p3
+            ZAI_SHA=$(sha256sum "$STATE/normalized-zai-glm-5p3.md" | cut -d' ' -f1)
             if [ -n "$NORM_SHA" ] && [ "$NORM_SHA" != "$ZAI_SHA" ]; then
               echo "::error::PARITY VIOLATION: rendered prompts differ beyond the leg directory."
-              diff "$STATE/normalized-claude.md" "$STATE/normalized-zai-glm-5p2.md" | head -40 || true
+              diff "$STATE/normalized-claude.md" "$STATE/normalized-zai-glm-5p3.md" | head -40 || true
               exit 1
             fi
             NORM_SHA="$ZAI_SHA"
@@ -414,10 +414,10 @@ jobs:
             > "$STATE/leg-claude.json"
           echo "leg claude recorded: outcome=$OUTCOME effective=$EFFECTIVE post=$POST_SHA"
 
-      # ═══════════════════════ LEG: zai-glm-5p2 ═══════════════════════
+      # ═══════════════════════ LEG: zai-glm-5p3 ═══════════════════════
       # Identical staging from the SAME base SHA — leg A's commits live only
       # on its detached line, so this leg sees the identical repo state.
-      - name: Stage leg (zai-glm-5p2)
+      - name: Stage leg (zai-glm-5p3)
         id: stage_zai
         if: ${{ !cancelled() && steps.gate.outputs.proceed == 'true' && steps.params.outputs.run_zai == 'true' && steps.base.outcome == 'success' && steps.parity.outcome == 'success' }}
         env:
@@ -441,10 +441,10 @@ jobs:
           {
             echo "t0=$(date -u +%s)"
             echo "input_sha_pre=${COPY_SHA}"
-            echo "prompt_sha=$(sha256sum "$STATE/prompt-zai-glm-5p2.md" | cut -d' ' -f1)"
+            echo "prompt_sha=$(sha256sum "$STATE/prompt-zai-glm-5p3.md" | cut -d' ' -f1)"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Process tweets (leg zai-glm-5p2 — GLM-5.2 via Z.ai)
+      - name: Process tweets (leg zai-glm-5p3 — GLM-5.3 via Z.ai)
         id: leg_zai
         continue-on-error: true
         timeout-minutes: 25
@@ -461,13 +461,13 @@ jobs:
           claude-args: |
             --model opus --max-turns 40 --allowedTools "Read,Write,Edit,MultiEdit,Bash(git:*),Bash(birdy-fast:*),Bash(curl:*),Bash(jq:*),Bash(python3:*),Bash(python:*),Bash(node:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(test:*),Bash(wc:*),Bash(mkdir:*),Bash(sed:*),Bash(rg:*),Bash(printf:*),Bash(touch:*)"
           expected-paths: |
-            ${{ steps.params.outputs.date_dir }}/zai-glm-5p2/status/${{ steps.params.outputs.date }}-${{ steps.params.outputs.hour }}h.json
+            ${{ steps.params.outputs.date_dir }}/zai-glm-5p3/status/${{ steps.params.outputs.date }}-${{ steps.params.outputs.hour }}h.json
           allowed-paths: |
-            ${{ steps.params.outputs.date_dir }}/zai-glm-5p2/
-          label: Twitter A/B leg zai-glm-5p2
+            ${{ steps.params.outputs.date_dir }}/zai-glm-5p3/
+          label: Twitter A/B leg zai-glm-5p3
           prompt: ${{ steps.render_zai.outputs.prompt }}
 
-      - name: Record leg result (zai-glm-5p2)
+      - name: Record leg result (zai-glm-5p3)
         id: record_zai
         if: ${{ !cancelled() && steps.stage_zai.outcome == 'success' }}
         env:
@@ -491,15 +491,15 @@ jobs:
           INPUT_SHA_POST=$(sha256sum .twitter-input/bird/all.json 2>/dev/null | cut -d' ' -f1 || echo missing)
           EXEC_COPY=""
           if [ -n "$EXEC_FILE" ] && [ -f "$EXEC_FILE" ]; then
-            EXEC_COPY="$STATE/zai-glm-5p2-execution.json"
+            EXEC_COPY="$STATE/zai-glm-5p3-execution.json"
             cp "$EXEC_FILE" "$EXEC_COPY"
           fi
-          cp .twitter-input/birdy-tool-log.jsonl "$STATE/zai-glm-5p2-birdy-tool-log.jsonl" 2>/dev/null || true
+          cp .twitter-input/birdy-tool-log.jsonl "$STATE/zai-glm-5p3-birdy-tool-log.jsonl" 2>/dev/null || true
           jq -n \
-            --arg leg "zai-glm-5p2" \
+            --arg leg "zai-glm-5p3" \
             --arg lane "twitter-ab-zai" \
             --arg expected_provider "zai" \
-            --arg expected_model "glm-5.2" \
+            --arg expected_model "glm-5.3" \
             --arg outcome "$OUTCOME" \
             --arg requested "$REQUESTED" \
             --arg effective "$EFFECTIVE" \
@@ -507,7 +507,7 @@ jobs:
             --arg model_id "$MODEL_ID" \
             --arg native_model "$NATIVE_MODEL" \
             --arg execution_file "$EXEC_COPY" \
-            --arg leg_dir "$DATE_DIR/zai-glm-5p2" \
+            --arg leg_dir "$DATE_DIR/zai-glm-5p3" \
             --arg input_sha_pre "$INPUT_SHA_PRE" \
             --arg input_sha_post "$INPUT_SHA_POST" \
             --arg prompt_sha "$PROMPT_SHA" \
@@ -524,8 +524,8 @@ jobs:
               input_sha_post: $input_sha_post, prompt_sha256: $prompt_sha,
               base_sha: $base_sha, post_sha: $post_sha,
               started_at_epoch: $started, finished_at_epoch: $finished}' \
-            > "$STATE/leg-zai-glm-5p2.json"
-          echo "leg zai-glm-5p2 recorded: outcome=$OUTCOME effective=$EFFECTIVE post=$POST_SHA"
+            > "$STATE/leg-zai-glm-5p3.json"
+          echo "leg zai-glm-5p3 recorded: outcome=$OUTCOME effective=$EFFECTIVE post=$POST_SHA"
 
       # ── Harvest: back to the branch, restore ONLY the leg dirs ──────
       # Leg commits live on detached lines. Restoring each leg's own
@@ -547,7 +547,7 @@ jobs:
           git checkout -f "$REF_NAME"
           rm -rf .twitter-input
           git clean -fd -e .ab-input
-          for leg in claude zai-glm-5p2; do
+          for leg in claude zai-glm-5p3; do
             META="$STATE/leg-${leg}.json"
             [ -f "$META" ] || continue
             POST=$(jq -r '.post_sha // empty' "$META")
@@ -593,7 +593,7 @@ jobs:
             --input-json .ab-input/bird/all.json
             --normalized-prompt-sha "$NORMALIZED_PROMPT_SHA"
             --out "$STATE/metrics.json")
-          for leg in claude zai-glm-5p2; do
+          for leg in claude zai-glm-5p3; do
             [ -f "$STATE/leg-${leg}.json" ] && ARGS+=(--leg-meta "$STATE/leg-${leg}.json")
           done
           if [ "$JUDGE" = "true" ]; then

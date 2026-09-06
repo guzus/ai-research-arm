@@ -36,7 +36,7 @@ short pointer plus the few genuinely agent-specific notes.
   Reference: https://code.claude.com/docs/en/github-actions
   (action repo: https://github.com/anthropics/claude-code-action)
 
-- **GLM-5.2 is the default fallback for ordinary Claude-harness lanes.** The
+- **GLM-5.3 is the default fallback for ordinary Claude-harness lanes.** The
   editorial dispatcher temporarily serves both strict routes with Cursor Grok
   4.6 Fast while the OpenCode Go monthly plan is exhausted. Known
   credential slots are prewired for a future isolated adapter, but the current
@@ -74,8 +74,10 @@ short pointer plus the few genuinely agent-specific notes.
   compatible backend, then run the generator. To move one lane, change only its `route`
   reference (define the new route/profile first when needed).
 
-- **Z.ai GLM-5.2** is available through `agent-run` as `zai-glm-5p2` using
-  `ZAI_API_KEY` and Claude Code's Anthropic-compatible route. It is the
+- **Z.ai GLM-5.3** is available through `agent-run` as `zai-glm-5p3` using
+  `ZAI_API_KEY` and Claude Code's Anthropic-compatible route (model id
+  `glm-5.3`; the old `zai-glm-5p2` selector is a compatibility alias — Z.ai
+  routed glm-5.2 requests to 5.3 upstream before the rename). It is the
   preferred manual `hourly-twitter.yml` backend and writes to
   `research/twitter-zai/`; use `zai-claude-code-canary.yml` for focused
   provider diagnostics.
