@@ -3561,7 +3561,9 @@ const TWITTER_AB_LANE_META: Record<string, TwitterAbLaneMeta> = {
   // the research dir, the .dockerignore allowlist and the prebuild COPY_DIRS).
   // The displayed model must always name what actually authored the artifact.
   'twitter-opencode-kimi': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · OpenCode Go', harness: 'opencode CLI' },
-  'twitter-zai': { label: 'GLM-5.2', model: 'glm-5.2 · Z.ai', harness: 'Claude Code' },
+  // Lane key stays 'twitter-zai' (it is the research dir); only the served
+  // model moved, 5.2 → 5.3, on 2026-09-06 — see the history table below.
+  'twitter-zai': { label: 'GLM-5.3', model: 'glm-5.3 · Z.ai', harness: 'Claude Code' },
   'twitter-deepseek': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · Fireworks', harness: 'Claude Code' },
   'twitter-deepseek-pi': { label: 'DeepSeek V4 Flash', model: 'deepseek-v4-flash · Fireworks', harness: 'pi (container)' },
   'twitter-fireworks-pi': { label: 'Kimi K2.7', model: 'kimi-k2p7 · Fireworks', harness: 'pi (container)' },
@@ -3577,6 +3579,13 @@ const TWITTER_AB_LANE_META_HISTORY: Record<string, Array<{ before: string } & Tw
     // Ran Kimi K3 until the 2026-08-07 swap to DeepSeek V4 Flash.
     { before: '2026-08-07', label: 'Kimi K3', model: 'kimi-k3 · OpenCode Go / Moonshot', harness: 'opencode CLI' },
   ],
+  'twitter-zai': [
+    // Requested glm-5.2 until the 2026-09-06 SSOT bump to glm-5.3. Z.ai had
+    // already been routing glm-5.2 requests to 5.3 upstream for an unknown
+    // stretch before that, so the label names the REQUESTED id, not a
+    // guarantee of what answered.
+    { before: '2026-09-06', label: 'GLM-5.2', model: 'glm-5.2 (requested) · Z.ai', harness: 'Claude Code' },
+  ],
 };
 
 function twitterAbLaneMeta(lane: string, dateStr: string): TwitterAbLaneMeta | undefined {
@@ -3588,10 +3597,11 @@ function twitterAbLaneMeta(lane: string, dateStr: string): TwitterAbLaneMeta | u
   return TWITTER_AB_LANE_META[lane];
 }
 // The primary tier's model is resolved at run time by agent-run
-// (Fireworks GLM → Z.ai → native Claude), so label the chain, not one model.
+// (native Claude → Z.ai GLM; data/agent-backends.json fallback.chain), so
+// label the chain, not one model.
 const TWITTER_AB_PRIMARY_META = {
   label: 'Primary lane',
-  model: 'agent-run chain: GLM-5.2 → Z.ai → claude-sonnet-5',
+  model: 'agent-run chain: claude-opus-5 → glm-5.3 · Z.ai',
   harness: 'Claude Code',
 };
 

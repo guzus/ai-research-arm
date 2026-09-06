@@ -427,7 +427,7 @@ class RoutingInvariants(unittest.TestCase):
         )
         # The lane override replaces this global chain; it never appends Z.ai
         # as a third provenance hop.
-        self.assertEqual(["claude", "zai-glm-5p2"], self.fallback["chain"])
+        self.assertEqual(["claude", "zai-glm-5p3"], self.fallback["chain"])
 
         isolated_lanes = {
             "digest-audio-script",
@@ -677,7 +677,7 @@ class RoutingInvariants(unittest.TestCase):
         tiers = {l.get("tier") for l in self.lanes.values()
                  if l.get("workflow") == "hourly-twitter.yml"}
         self.assertLessEqual(
-            {"claude", "deepseek-claude-code", "zai-glm-5p2", "deepseek-pi", "fireworks-pi"},
+            {"claude", "deepseek-claude-code", "zai-glm-5p3", "deepseek-pi", "fireworks-pi"},
             tiers,
         )
 
@@ -3412,7 +3412,7 @@ class CrossCheckEnforcement(unittest.TestCase):
 
     def test_unsupported_gen_research_default_is_an_error(self):
         lanes, obs = self.mutated()
-        lanes["generative-research-default"]["backend"] = "zai-glm-5p2"
+        lanes["generative-research-default"]["backend"] = "zai-glm-5p3"
         errors = cross_check(lanes, obs, self.profiles)
         self.assertTrue(any("not supported by" in e for e in errors), errors)
 

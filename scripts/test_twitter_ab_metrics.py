@@ -103,8 +103,8 @@ class Fixture:
             "expected_provider": expected_provider,
             "expected_model": expected_model,
             "outcome": "success",
-            "requested_backend": "claude" if expected_provider == "claude" else "zai-glm-5p2",
-            "effective_backend": "claude" if expected_provider == "claude" else "zai-glm-5p2",
+            "requested_backend": "claude" if expected_provider == "claude" else "zai-glm-5p3",
+            "effective_backend": "claude" if expected_provider == "claude" else "zai-glm-5p3",
             "used_fallback": "false",
             "model_id": "" if expected_provider == "claude" else expected_model,
             "native_model": expected_model if expected_provider == "claude" else "claude-sonnet-5",
@@ -221,7 +221,7 @@ class ExecutionParsingTest(unittest.TestCase):
 class ScrubTest(unittest.TestCase):
     def test_model_strings_scrubbed_outside_urls(self):
         text = (
-            "Claude and GLM-5.2 disagree; Anthropic said so at "
+            "Claude and GLM-5.3 disagree; Anthropic said so at "
             "https://x.com/AnthropicAI/status/1 and Z.ai replied."
         )
         scrubbed, hits = ab.scrub_text(text)
@@ -242,7 +242,7 @@ class CollectTest(unittest.TestCase):
     def _two_good_legs(self, tmp: Path, judge=True, seed=7):
         leg_a = Fixture(tmp, "claude", "claude", "claude-sonnet-5")
         leg_a.write_artifacts()
-        leg_b = Fixture(tmp, "zai-glm-5p2", "zai", "glm-5.2")
+        leg_b = Fixture(tmp, "zai-glm-5p3", "zai", "glm-5.3")
         leg_b.write_artifacts()
         input_json = tmp / "all.json"
         input_json.write_text(json.dumps({"accounts": {}, "searches": {}, "news": [],
@@ -270,8 +270,8 @@ class CollectTest(unittest.TestCase):
             self.assertEqual(claude["backend"]["served_model"], "claude-sonnet-5")
             self.assertEqual(claude["wall_time_seconds"], 500)
             self.assertEqual(claude["flags"], [])
-            zai = metrics["legs"]["zai-glm-5p2"]
-            self.assertEqual(zai["backend"]["served_model"], "glm-5.2")
+            zai = metrics["legs"]["zai-glm-5p3"]
+            self.assertEqual(zai["backend"]["served_model"], "glm-5.3")
             self.assertFalse(metrics["contamination"]["contaminated"])
             self.assertFalse(metrics["contamination"]["sandbox_suspect"])
             self.assertEqual(metrics["input"]["total_tweets"], 321)
@@ -282,7 +282,7 @@ class CollectTest(unittest.TestCase):
             metrics = self._two_good_legs(tmp, seed=7)
             blinding = metrics["blinding"]
             self.assertEqual(sorted(blinding["pass1"].values()),
-                             ["claude", "zai-glm-5p2"])
+                             ["claude", "zai-glm-5p3"])
             # pass2 is the position swap of pass1
             self.assertEqual(blinding["pass2"]["A"], blinding["pass1"]["B"])
             self.assertEqual(blinding["pass2"]["B"], blinding["pass1"]["A"])
@@ -313,14 +313,14 @@ class CollectTest(unittest.TestCase):
             tmp = Path(tmp_str)
             leg_a = Fixture(tmp, "claude", "claude", "claude-sonnet-5")
             leg_a.write_artifacts()
-            leg_b = Fixture(tmp, "zai-glm-5p2", "zai", "glm-5.2")
+            leg_b = Fixture(tmp, "zai-glm-5p3", "zai", "glm-5.3")
             leg_b.meta["outcome"] = "failure"
             leg_b.meta["post_sha"] = leg_b.meta["base_sha"]  # nothing committed
             # leg dir never created — the leg wrote nothing at all
             metrics = run_collect(
                 tmp, [leg_a.write_meta(), leg_b.write_meta()], judge_dir=tmp / "judge"
             )
-            zai = metrics["legs"]["zai-glm-5p2"]
+            zai = metrics["legs"]["zai-glm-5p3"]
             self.assertEqual(zai["artifacts"]["required_written"], "0/3")
             self.assertFalse(zai["format"]["valid"])
             self.assertIn("leg-failed", zai["flags"])
@@ -334,12 +334,12 @@ class CollectTest(unittest.TestCase):
             tmp = Path(tmp_str)
             leg_a = Fixture(tmp, "claude", "claude", "claude-sonnet-5")
             leg_a.write_artifacts()
-            leg_b = Fixture(tmp, "zai-glm-5p2", "zai", "glm-5.2")
+            leg_b = Fixture(tmp, "zai-glm-5p3", "zai", "glm-5.3")
             leg_b.write_artifacts(digest=False)
             metrics = run_collect(
                 tmp, [leg_a.write_meta(), leg_b.write_meta()], judge_dir=tmp / "judge"
             )
-            zai = metrics["legs"]["zai-glm-5p2"]
+            zai = metrics["legs"]["zai-glm-5p3"]
             self.assertTrue(zai["format"]["valid"])
             self.assertEqual(zai["format"]["status"], "no_update")
             self.assertIsNone(metrics["blinding"])
@@ -349,15 +349,15 @@ class CollectTest(unittest.TestCase):
             tmp = Path(tmp_str)
             leg_a = Fixture(tmp, "claude", "claude", "claude-sonnet-5")
             leg_a.write_artifacts()
-            leg_b = Fixture(tmp, "zai-glm-5p2", "zai", "glm-5.2")
+            leg_b = Fixture(tmp, "zai-glm-5p3", "zai", "glm-5.3")
             leg_b.write_artifacts()
             # Z.ai leg silently served by claude — the exact failure the guard exists for.
             leg_b.meta["effective_backend"] = "claude"
             leg_b.meta["used_fallback"] = "true"
             metrics = run_collect(tmp, [leg_a.write_meta(), leg_b.write_meta()])
-            self.assertIn("backend-mismatch", metrics["legs"]["zai-glm-5p2"]["flags"])
+            self.assertIn("backend-mismatch", metrics["legs"]["zai-glm-5p3"]["flags"])
             self.assertTrue(metrics["contamination"]["contaminated"])
-            self.assertIn("zai-glm-5p2:backend-mismatch",
+            self.assertIn("zai-glm-5p3:backend-mismatch",
                           metrics["contamination"]["reasons"])
 
     def test_input_mismatch_contaminates(self):
@@ -383,11 +383,11 @@ class CollectTest(unittest.TestCase):
     def test_unexpected_served_model_contaminates(self):
         with tempfile.TemporaryDirectory() as tmp_str:
             tmp = Path(tmp_str)
-            leg_b = Fixture(tmp, "zai-glm-5p2", "zai", "glm-5.2")
+            leg_b = Fixture(tmp, "zai-glm-5p3", "zai", "glm-5.3")
             leg_b.write_artifacts(execution_kwargs={"models": ("claude-sonnet-5",)})
             metrics = run_collect(tmp, [leg_b.write_meta()])
             self.assertIn("expected-model-not-observed",
-                          metrics["legs"]["zai-glm-5p2"]["flags"])
+                          metrics["legs"]["zai-glm-5p3"]["flags"])
             self.assertTrue(metrics["contamination"]["contaminated"])
 
     def test_dated_observed_model_id_is_not_flagged(self):
@@ -409,7 +409,7 @@ class CollectTest(unittest.TestCase):
             tmp = Path(tmp_str)
             leg_a = Fixture(tmp, "claude", "claude", "claude-sonnet-5")
             leg_a.write_artifacts()
-            leg_b = Fixture(tmp, "zai-glm-5p2", "zai", "glm-5.2")
+            leg_b = Fixture(tmp, "zai-glm-5p3", "zai", "glm-5.3")
             leg_b.write_artifacts()
             judge_dir = tmp / "judge"
             judge_dir.mkdir()
@@ -432,7 +432,7 @@ class FinalizeTest(unittest.TestCase):
     def _staged(self, tmp: Path, seed=7):
         leg_a = Fixture(tmp, "claude", "claude", "claude-sonnet-5")
         leg_a.write_artifacts()
-        leg_b = Fixture(tmp, "zai-glm-5p2", "zai", "glm-5.2")
+        leg_b = Fixture(tmp, "zai-glm-5p3", "zai", "glm-5.3")
         leg_b.write_artifacts()
         return run_collect(
             tmp, [leg_a.write_meta(), leg_b.write_meta()], judge_dir=tmp / "judge",
@@ -564,7 +564,7 @@ class ReportTest(unittest.TestCase):
             tmp = Path(tmp_str)
             leg_a = Fixture(tmp, "claude", "claude", "claude-sonnet-5")
             leg_a.write_artifacts()
-            leg_b = Fixture(tmp, "zai-glm-5p2", "zai", "glm-5.2")
+            leg_b = Fixture(tmp, "zai-glm-5p3", "zai", "glm-5.3")
             leg_b.write_artifacts()
             metrics = run_collect(
                 tmp, [leg_a.write_meta(), leg_b.write_meta()], judge_dir=tmp / "judge"
@@ -594,7 +594,7 @@ class ReportTest(unittest.TestCase):
             self.assertIn("Parity guards: clean", text)
             self.assertIn("| `claude` (claude-sonnet-5) |".replace("| ", "").split()[0], text)
             self.assertIn("claude-sonnet-5", text)
-            self.assertIn("glm-5.2", text)
+            self.assertIn("glm-5.3", text)
             self.assertIn("final preference", text)
             line = summary.read_text().strip()
             self.assertTrue(line.startswith(f"AB {DATE}:"))
@@ -604,7 +604,7 @@ class ReportTest(unittest.TestCase):
             metrics = json.loads((tmp / "metrics.json").read_text())
             metrics["contamination"] = {
                 "contaminated": True,
-                "reasons": ["zai-glm-5p2:backend-mismatch"],
+                "reasons": ["zai-glm-5p3:backend-mismatch"],
                 "sandbox_suspect": False,
             }
             (tmp / "metrics.json").write_text(json.dumps(metrics))
@@ -615,7 +615,7 @@ class ReportTest(unittest.TestCase):
                 )
             text = out.read_text()
             self.assertIn("CONTAMINATED RUN", text)
-            self.assertIn("zai-glm-5p2:backend-mismatch", text)
+            self.assertIn("zai-glm-5p3:backend-mismatch", text)
 
     def test_report_handles_missing_judge_and_missing_leg(self):
         with tempfile.TemporaryDirectory() as tmp_str:

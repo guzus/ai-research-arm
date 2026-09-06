@@ -2,6 +2,17 @@ name: Z.ai Claude Code Canary
 
 on:
   workflow_dispatch:
+    inputs:
+      model:
+        description: >-
+          Model id for the RAW endpoint probe only (the agent-run canary step
+          below always serves the SSOT `zai-canary` lane model). Use it to
+          validate a new Z.ai id — e.g. before bumping data/agent-backends.json —
+          without editing this file. Plain ids only: `glm-5.3-flash` 404s on the
+          Anthropic-compatible proxy.
+        required: false
+        default: glm-5.3
+        type: string
 
 concurrency:
   group: zai-claude-code-canary
@@ -25,11 +36,15 @@ jobs:
       - name: Probe raw Z.ai Anthropic tool-use
         env:
           ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          # Dispatch input, passed through env (never interpolated into the
+          # script) so an arbitrary string cannot inject into the heredoc.
+          ZAI_PROBE_MODEL: ${{ inputs.model }}
         run: |
           set -euo pipefail
           python3 <<'PY'
           import json
           import os
+          import re
           import sys
           import urllib.error
           import urllib.request
@@ -39,8 +54,15 @@ jobs:
               print("::error::ZAI_API_KEY is not configured")
               sys.exit(1)
 
+          # Default mirrors data/agent-backends.json backends.zai-glm-5p3.model.
+          model = (os.environ.get("ZAI_PROBE_MODEL") or "glm-5.3").strip()
+          if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,63}", model):
+              print(f"::error::Refusing probe model id {model!r} (expected a plain id like glm-5.3)")
+              sys.exit(1)
+          print(f"Z.ai raw tool probe model: {model}")
+
           payload = {
-              "model": "glm-5.2",
+              "model": model,
               "max_tokens": 256,
               "messages": [
                   {
@@ -124,7 +146,7 @@ jobs:
             research/summaries/
           label: Z.ai Claude Code file-write canary
           prompt: |
-            This is a minimal file-write canary for GLM-5.2 through Claude Code.
+            This is a minimal file-write canary for GLM-5.3 through Claude Code.
 
             Do exactly these steps and nothing else:
             1. Use the Write tool to create `research/zai-canary/${{ github.run_id }}.md` with:

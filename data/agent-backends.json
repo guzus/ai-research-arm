@@ -198,17 +198,21 @@
       },
       "notes": "Explicit generative-research profile for opencode-go/muse-spark-1.3-contributor. The Contributor route uses OpenAI Responses transport, is limited by region, and requires workspace-level opt-in to Meta model-improvement data collection. It is deliberately not selected by a production editorial route."
     },
-    "zai-glm-5p2": {
+    "zai-glm-5p3": {
       "adapter": "agent-run",
       "provider": "zai",
-      "model": "glm-5.2",
-      "display_name": "GLM 5.2 via Z.ai",
+      "model": "glm-5.3",
+      "display_name": "GLM 5.3 via Z.ai",
       "aliases": [
+        "zai-glm-5.3",
+        "zai-glm53",
+        "zai",
+        "zai-glm-5p2",
         "zai-glm-5.2",
-        "zai-glm52",
-        "zai"
+        "zai-glm52"
       ],
-      "production_eligible": true
+      "production_eligible": true,
+      "notes": "Z.ai GLM Coding Plan serves GLM-5.3 (and GLM-5.3-Flash); glm-5.2 requests were already routed to 5.3 upstream, so the profile names what is actually served. Use the plain `glm-5.3` id on the Anthropic-compatible endpoint — `glm-5.3-flash` 404s there. The zai-glm-5p2 / zai-glm-5.2 / zai-glm52 selectors are compatibility aliases (external dispatches and older docs use them) and must keep resolving here; scripts/test_select_backend.py pins that."
     },
     "cursor-grok-4p6-fast": {
       "adapter": "cursor",
@@ -260,10 +264,10 @@
     "harness": "agent-run",
     "chain": [
       "claude",
-      "zai-glm-5p2"
+      "zai-glm-5p3"
     ],
     "native_model": "claude-opus-5",
-    "notes": "ORDERED fallback chain, applied to non-strict agent-run lanes that do not declare a lane.fallback_chain override. Native Claude leads and serves `native_model`; Z.ai GLM-5.2 is the global secondary. Cross-adapter fallbacks are never inferred globally: only lanes with an explicit compatibility-tested fallback_chain may enter an isolated adapter, and that lane chain replaces rather than extends the global chain. The Claude probe is auth-only (401/403 down; 429, 400, 5xx and network faults stay UP \u2014 429 is the steady-state answer for a live OAuth token). The chain is walked twice at most: pre-agent on a probe failure, and post-agent with --exclude-backend claude when the Claude step dead-starts (is_error, <=1 turn, $0). Strict lanes never walk either chain."
+    "notes": "ORDERED fallback chain, applied to non-strict agent-run lanes that do not declare a lane.fallback_chain override. Native Claude leads and serves `native_model`; Z.ai GLM-5.3 is the global secondary. Cross-adapter fallbacks are never inferred globally: only lanes with an explicit compatibility-tested fallback_chain may enter an isolated adapter, and that lane chain replaces rather than extends the global chain. The Claude probe is auth-only (401/403 down; 429, 400, 5xx and network faults stay UP \u2014 429 is the steady-state answer for a live OAuth token). The chain is walked twice at most: pre-agent on a probe failure, and post-agent with --exclude-backend claude when the Claude step dead-starts (is_error, <=1 turn, $0). Strict lanes never walk either chain."
   },
   "lanes": {
     "rss": {
@@ -374,16 +378,16 @@
     },
     "twitter-zai": {
       "workflow": "hourly-twitter.yml",
-      "tier": "zai-glm-5p2",
+      "tier": "zai-glm-5p3",
       "harness": "agent-run",
-      "backend": "zai-glm-5p2",
+      "backend": "zai-glm-5p3",
       "strict": true,
       "notes": "Manual-default Z.ai comparison tier. STRICT: comparison artifacts must be attributable to Z.ai, so this lane never walks the fallback chain and has no automatic deterministic fallback."
     },
     "zai-canary": {
       "workflow": "zai-claude-code-canary.yml",
       "harness": "agent-run",
-      "backend": "zai-glm-5p2",
+      "backend": "zai-glm-5p3",
       "pinned": true,
       "pinned_provider": "zai",
       "strict": true,
@@ -401,11 +405,11 @@
     "twitter-ab-zai": {
       "workflow": "twitter-model-ab.yml",
       "harness": "agent-run",
-      "backend": "zai-glm-5p2",
+      "backend": "zai-glm-5p3",
       "pinned": true,
       "pinned_provider": "zai",
       "strict": true,
-      "notes": "A/B eval leg B: GLM-5.2 via Z.ai Coding Plan. PINNED+STRICT: a Z.ai outage must FAIL this leg, never fall back to Claude — a silent fallback would make the eval Claude-vs-Claude (docs/twitter-model-ab.md)."
+      "notes": "A/B eval leg B: GLM-5.3 via Z.ai Coding Plan. PINNED+STRICT: a Z.ai outage must FAIL this leg, never fall back to Claude — a silent fallback would make the eval Claude-vs-Claude (docs/twitter-model-ab.md)."
     },
     "twitter-ab-judge": {
       "workflow": "twitter-model-ab.yml",

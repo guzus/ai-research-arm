@@ -19,12 +19,17 @@ on:
   workflow_run:
     # Unattended, main-branch pipelines worth auto-recovering. PR-scoped CI /
     # code-review are intentionally excluded (their author re-runs those).
+    # workflow_run matches on the target's `name:` STRING, so a renamed
+    # workflow silently drops out of coverage — this list drifted twice
+    # (Twitter carried its backend tier list in its name; Bluesky was renamed).
+    # scripts/test_auto_rerun_watchdog.py fails CI on any entry that no longer
+    # matches a workflow's name.
     workflows:
       - "RSS Official Announcements (Every 2 Hours)"
-      - "Twitter AI News (matrix — claude / deepseek-claude-code / deepseek-pi / fireworks-pi)"
+      - "Twitter AI News (hourly matrix)"
       - "Daily AI Expert Blogs"
       - "Naver Blog Subscriptions"
-      - "Bluesky AI Researcher Feed (Twice Daily)"
+      - "Bluesky AI Researcher Commentary (Daily)"
       - "Community AI Digest (HN + Reddit)"
       - "Daily arXiv AI Research"
       - "Daily AI Digest (All Sources)"

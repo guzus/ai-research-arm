@@ -45,8 +45,9 @@ def fake_data(chain, lanes=None):
                                   "display_name": "GLM 5.2 via Fireworks",
                                   "aliases": ["glm-5p2", "glm"],
                                   "production_eligible": True},
-            "zai-glm-5p2": {"provider": "zai", "model": "glm-5.2",
-                            "display_name": "GLM 5.2 via Z.ai", "aliases": ["zai"],
+            "zai-glm-5p3": {"provider": "zai", "model": "glm-5.3",
+                            "display_name": "GLM 5.3 via Z.ai",
+                            "aliases": ["zai", "zai-glm-5p2", "zai-glm-5.2", "zai-glm52"],
                             "production_eligible": True},
             "opencode-glm-5p3-flash": {
                 "adapter": "opencode",
@@ -67,7 +68,7 @@ def fake_data(chain, lanes=None):
             "rss": {"workflow": "hourly-rss.yml", "harness": "agent-run",
                     "backend": "fireworks-glm-5p2"},
             "strict-lane": {"workflow": "x.yml", "harness": "agent-run",
-                            "backend": "zai-glm-5p2", "strict": True},
+                            "backend": "zai-glm-5p3", "strict": True},
             "mirror": {"workflow": "y.yml", "harness": "pi",
                        "provider": "fireworks", "model": "m"},
         },
@@ -87,7 +88,7 @@ class SelectBackendTest(unittest.TestCase):
                 lambda model, a=available, p=provider: (a, f"{p} stub")
             )
 
-    def run_select(self, *argv, chain=("zai-glm-5p2", "claude"), lanes=None,
+    def run_select(self, *argv, chain=("zai-glm-5p3", "claude"), lanes=None,
                    mutate=None):
         data_file = Path(self.tmp.name) / "backends.json"
         data = fake_data(list(chain), lanes)
@@ -114,7 +115,7 @@ class SelectBackendTest(unittest.TestCase):
         self.set_availability(fireworks=False, zai=True, claude=True)
         code, out, _ = self.run_select("--lane", "rss")
         self.assertEqual(code, 0)
-        self.assertEqual(out["backend"], "zai-glm-5p2")
+        self.assertEqual(out["backend"], "zai-glm-5p3")
         self.assertEqual(out["provider"], "zai")
         self.assertEqual(out["used-fallback"], "true")
 
@@ -135,7 +136,7 @@ class SelectBackendTest(unittest.TestCase):
                     select_backend, "request_oauth_preflight",
                     return_value=(429, '{"type":"error","error":{"type":"rate_limit_error","message":"Error"}}')):
             code, out, log = self.run_select(
-                "--lane", "digest", chain=("claude", "zai-glm-5p2"), lanes=lanes)
+                "--lane", "digest", chain=("claude", "zai-glm-5p3"), lanes=lanes)
 
         self.assertEqual(code, 0)
         self.assertEqual(out["backend"], "claude")
@@ -156,7 +157,7 @@ class SelectBackendTest(unittest.TestCase):
         self.set_availability(zai=True, cursor=True, claude=True)
         code, out, log = self.run_select(
             "--lane", "digest", "--exclude-backend", "claude",
-            chain=("claude", "zai-glm-5p2"), lanes=lanes)
+            chain=("claude", "zai-glm-5p3"), lanes=lanes)
 
         self.assertEqual(code, 0)
         self.assertEqual(out["backend"], "cursor-grok-4p6-fast")
@@ -166,7 +167,7 @@ class SelectBackendTest(unittest.TestCase):
         self.assertEqual(out["reselected"], "true")
         self.assertIn("candidate claude (claude): UNAVAILABLE — excluded", log)
         self.assertIn("failed at agent time", log)
-        self.assertNotIn("candidate zai-glm-5p2", log)
+        self.assertNotIn("candidate zai-glm-5p3", log)
 
     def test_exclude_never_probes_the_excluded_backend(self):
         calls = []
@@ -174,11 +175,11 @@ class SelectBackendTest(unittest.TestCase):
         self.set_availability(zai=True)
         code, out, _ = self.run_select(
             "--lane", "rss", "--exclude-backend", "claude",
-            chain=("claude", "zai-glm-5p2"),
+            chain=("claude", "zai-glm-5p3"),
             lanes={"rss": {"workflow": "hourly-rss.yml", "harness": "agent-run",
                            "backend": "claude"}})
         self.assertEqual(code, 0)
-        self.assertEqual(out["backend"], "zai-glm-5p2")
+        self.assertEqual(out["backend"], "zai-glm-5p3")
         self.assertEqual(calls, [], "an excluded backend must not be probed")
 
     def test_exclude_unknown_selector_is_config_error(self):
@@ -221,7 +222,7 @@ class SelectBackendTest(unittest.TestCase):
             with self.subTest(lane=lane):
                 code, out, log = self.run_select(
                     "--lane", lane, "--exclude-backend", "claude",
-                    chain=("claude", "zai-glm-5p2"), lanes=lanes)
+                    chain=("claude", "zai-glm-5p3"), lanes=lanes)
                 self.assertEqual(code, 0)
                 self.assertEqual(out["backend"], "cursor-grok-4p6-fast")
                 self.assertEqual(out["provider"], "cursor")
@@ -237,13 +238,13 @@ class SelectBackendTest(unittest.TestCase):
         self.set_availability(zai=True, cursor=True, claude=True)
         code, out, log = self.run_select(
             "--lane", "digest", "--fallback-policy", "none", "--exclude-backend", "claude",
-            chain=("claude", "zai-glm-5p2"), lanes=lanes)
+            chain=("claude", "zai-glm-5p3"), lanes=lanes)
 
         self.assertEqual(code, 1)
         self.assertNotIn("backend", out)
         self.assertIn("excluded", log)
         self.assertNotIn("candidate cursor-grok-4p6-fast", log)
-        self.assertNotIn("candidate zai-glm-5p2", log)
+        self.assertNotIn("candidate zai-glm-5p3", log)
 
     def test_lane_override_does_not_continue_to_global_zai(self):
         lanes = {
@@ -254,16 +255,16 @@ class SelectBackendTest(unittest.TestCase):
         self.set_availability(zai=True, cursor=False, claude=True)
         code, out, log = self.run_select(
             "--lane", "digest", "--exclude-backend", "claude",
-            chain=("claude", "zai-glm-5p2"), lanes=lanes)
+            chain=("claude", "zai-glm-5p3"), lanes=lanes)
 
         self.assertEqual(code, 1)
         self.assertNotIn("backend", out)
         self.assertIn("candidate cursor-grok-4p6-fast", log)
-        self.assertNotIn("candidate zai-glm-5p2", log)
+        self.assertNotIn("candidate zai-glm-5p3", log)
 
     def test_explicit_cross_adapter_override_requires_lane_contract(self):
         code, out, log = self.run_select(
-            "--backend", "opencode-glm", chain=("claude", "zai-glm-5p2"))
+            "--backend", "opencode-glm", chain=("claude", "zai-glm-5p3"))
         self.assertEqual(code, 2)
         self.assertNotIn("backend", out)
         self.assertIn("requires a lane fallback_chain contract", log)
@@ -274,7 +275,7 @@ class SelectBackendTest(unittest.TestCase):
                        "backend": "claude",
                        "fallback_chain": ["cursor-grok-4p6-fast"]},
         }
-        data = fake_data(["claude", "zai-glm-5p2"], lanes)
+        data = fake_data(["claude", "zai-glm-5p3"], lanes)
         data["adapters"]["cursor"]["editorial_contract"] = False
         data_file = Path(self.tmp.name) / "invalid-backends.json"
         data_file.write_text(json.dumps(data))
@@ -330,6 +331,25 @@ class SelectBackendTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual(out["backend"], "fireworks-glm-5p2")
         self.assertEqual(out["requested-backend"], "fireworks-glm-5p2")
+
+    def test_legacy_zai_selectors_normalize_to_glm_5p3(self):
+        """The Z.ai profile was renamed zai-glm-5p2 -> zai-glm-5p3 on 2026-09-06
+        (the Coding Plan serves GLM-5.3 and already routed glm-5.2 there).
+        External dispatches and older docs still say `zai-glm-5p2`, so the old
+        selectors are compatibility aliases — checked against the SHIPPED SSOT,
+        not the fixture, so dropping them from data/agent-backends.json fails."""
+        shipped = json.loads(
+            (Path(__file__).resolve().parent.parent / "data" / "agent-backends.json").read_text()
+        )["backends"]
+        self.assertEqual(shipped["zai-glm-5p3"]["model"], "glm-5.3")
+        for legacy in ("zai-glm-5p2", "zai-glm-5.2", "zai-glm52", "zai", "zai-glm-5p3"):
+            self.assertEqual(select_backend.normalize(legacy, shipped), "zai-glm-5p3", legacy)
+        # And the runtime path honors the alias end to end.
+        self.set_availability(fireworks=True, zai=True, claude=True)
+        code, out, _ = self.run_select("--backend", "zai-glm-5p2")
+        self.assertEqual(code, 0)
+        self.assertEqual(out["backend"], "zai-glm-5p3")
+        self.assertEqual(out["requested-backend"], "zai-glm-5p3")
 
     def test_native_model_override(self):
         self.set_availability(fireworks=False, zai=False, claude=True)

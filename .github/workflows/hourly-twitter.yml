@@ -1,4 +1,4 @@
-name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash / cursor-grok-4p6-fast)
+name: Twitter AI News (hourly matrix)
 
 # Unified Twitter/X pipeline that fans out across seven backend tiers:
 #   - claude            (cron '7 */3 * * *', primary tier, model routed by data/agent-backends.json,
@@ -6,7 +6,7 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 #   - deepseek-claude-code (manual only since 2026-08-01 — cron dropped while the
 #                        Fireworks account is suspended; see `on.schedule`,
 #                        model: deepseek-v4-flash via Fireworks, output → research/twitter-deepseek/)
-#   - zai-glm-5p2      (manual only,        model: glm-5.2 via Z.ai Coding Plan,
+#   - zai-glm-5p3      (manual only,        model: glm-5.3 via Z.ai Coding Plan,
 #                        output → research/twitter-zai/)
 #   - deepseek-pi       (manual only,        model: deepseek-v4-flash via Fireworks + pi harness,
 #                        output → research/twitter-deepseek-pi/)
@@ -23,7 +23,7 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 #   - schedule trigger → backend resolved from github.event.schedule by the
 #     matrix `include` list. Each cron only activates the matrix entry
 #     whose `schedule` field matches, so the active matrix size is 1.
-#   - workflow_dispatch → backend resolved from inputs.backend (default: zai-glm-5p2).
+#   - workflow_dispatch → backend resolved from inputs.backend (default: zai-glm-5p3).
 #
 # The backend tiers share:
 #   - .github/actions/twitter-fetch          (Birdy multi-fetch + optional pre-filter + optional aggregate)
@@ -39,7 +39,7 @@ name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p2 / 
 # Required secrets:
 #   CLAUDE_CODE_OAUTH_TOKEN              — required by claude-code-action wrapper
 #   FIREWORKS_API_KEY                    — comparison tiers and fallback-capable agent-run lanes
-#   ZAI_API_KEY                          — preferred manual Z.ai GLM-5.2 Claude Code comparison tier
+#   ZAI_API_KEY                          — preferred manual Z.ai GLM-5.3 Claude Code comparison tier
 #   BIRDY_ACCOUNTS                       — optional multi-account rotation JSON; each account is forced read-only
 #   BIRD_AUTH_TOKEN, BIRD_CT0            — fallback single-account cookies when BIRDY_ACCOUNTS is absent
 #   HOOKER_URL, HOOKER_TOKEN             — primary tier (headline-alert blast + telemetry) and comparison tiers (per-cycle notification, relayed to Telegram)
@@ -60,10 +60,10 @@ on:
       backend:
         description: Which backend tier to run.
         required: false
-        default: zai-glm-5p2
+        default: zai-glm-5p3
         type: choice
         options:
-          - zai-glm-5p2
+          - zai-glm-5p3
           - claude
           - deepseek-claude-code
           - deepseek-pi
@@ -179,13 +179,17 @@ jobs:
           fi
 
           if [ "$MATRIX_BACKEND" = "dispatch" ]; then
-            BACKEND="${INPUT_BACKEND:-zai-glm-5p2}"
+            BACKEND="${INPUT_BACKEND:-zai-glm-5p3}"
           else
             BACKEND="$MATRIX_BACKEND"
           fi
           case "$BACKEND" in
             cursor|cursor-cli|cursor-agent|cursor-composer-2p5|composer-2.5|cursor-grok-4p6-fast|grok-4.6-fast|grok-4.6|grok) BACKEND="cursor-grok-4p6-fast" ;;
-            claude|deepseek-claude-code|zai-glm-5p2|deepseek-pi|fireworks-pi|opencode-deepseek-v4-flash|cursor-grok-4p6-fast) ;;
+            # Legacy Z.ai selectors: the Coding Plan now serves GLM-5.3 and
+            # routed glm-5.2 requests there upstream, so old dispatches keep
+            # working and land on the same tier (mirrors the SSOT aliases).
+            zai-glm-5p2|zai-glm-5.2|zai-glm52|zai) BACKEND="zai-glm-5p3" ;;
+            claude|deepseek-claude-code|zai-glm-5p3|deepseek-pi|fireworks-pi|opencode-deepseek-v4-flash|cursor-grok-4p6-fast) ;;
             *) echo "::error::Unknown backend '$BACKEND'"; exit 1 ;;
           esac
           # Optional native-model override (dispatch only). Honored solely on
@@ -349,19 +353,19 @@ jobs:
               HARNESS_LABEL="on DeepSeek v4 Flash via Fireworks"
               FEATURES="telegram"
               ;;
-            zai-glm-5p2)
+            zai-glm-5p3)
               OUTPUT_DIR="research/twitter-zai"
               SUMMARY_SLUG="twitter-zai"
-              TITLE_SUFFIX=" (GLM-5.2 · Z.ai)"
+              TITLE_SUFFIX=" (GLM-5.3 · Z.ai)"
               CYCLE_HOURS=6
-              COMMIT_PREFIX="Twitter (Z.ai GLM-5.2) update"
+              COMMIT_PREFIX="Twitter (Z.ai GLM-5.3) update"
               FETCH_CONCURRENCY=6
               PRE_FILTER=true
               AGGREGATE=false
               ENABLE_DAEMON=true
               BIRD_BUDGET=30
               CURL_BUDGET=5
-              HARNESS_LABEL="on GLM-5.2 via Z.ai Coding Plan through Claude Code"
+              HARNESS_LABEL="on GLM-5.3 via Z.ai Coding Plan through Claude Code"
               FEATURES="telegram"
               ;;
             deepseek-pi)
@@ -897,10 +901,10 @@ jobs:
           label: Twitter DeepSeek comparison processor
           prompt: ${{ steps.render.outputs.prompt }}
 
-      - name: Process tweets with GLM-5.2 via Z.ai (zai-glm-5p2 tier)
+      - name: Process tweets with GLM-5.3 via Z.ai (zai-glm-5p3 tier)
         id: twitter-zai-agent
         continue-on-error: true
-        if: steps.backend.outputs.name == 'zai-glm-5p2'
+        if: steps.backend.outputs.name == 'zai-glm-5p3'
         uses: ./.github/actions/agent-run
         env:
           BIRDY_READ_ONLY: "1"
@@ -921,7 +925,7 @@ jobs:
           allowed-paths: |
             research/twitter-zai/
             research/summaries/
-          label: Twitter Z.ai GLM-5.2 comparison processor
+          label: Twitter Z.ai GLM-5.3 comparison processor
           prompt: ${{ steps.render.outputs.prompt }}
 
       - name: Process tweets with pi + DeepSeek v4 Flash via Fireworks (deepseek-pi tier)
@@ -1139,7 +1143,7 @@ jobs:
 
       - name: Require Twitter producer diff scope
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p3","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: ./.github/actions/require-diff-scope
         with:
@@ -1153,7 +1157,7 @@ jobs:
 
       - name: Require Twitter run heartbeat
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p3","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         uses: ./.github/actions/require-output
         with:
@@ -1164,7 +1168,7 @@ jobs:
 
       - name: Validate Twitter signal-only public output
         if: >-
-          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
+          contains(fromJSON('["claude","deepseek-claude-code","zai-glm-5p3","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
           && !(steps.backend.outputs.name == 'claude' && github.event_name == 'workflow_dispatch' && inputs.dry_run == true)
         env:
           BACKEND: ${{ steps.backend.outputs.name }}
@@ -1795,7 +1799,7 @@ jobs:
         id: summary
         if: >-
           steps.push.outputs.pushed == 'true'
-          && contains(fromJSON('["deepseek-claude-code","zai-glm-5p2","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
+          && contains(fromJSON('["deepseek-claude-code","zai-glm-5p3","deepseek-pi","fireworks-pi","opencode-deepseek-v4-flash","cursor-grok-4p6-fast"]'), steps.backend.outputs.name)
         env:
           SUMMARY_FILE: ${{ steps.const.outputs.summary_file }}
         run: |
@@ -1859,11 +1863,11 @@ jobs:
             -H "Idempotency-Key: twitter-deepseek-claude-code-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
             --data-binary "@/tmp/hooker-twitter-deepseek-claude-code.json"
 
-      - name: Send notification via hooker (zai-glm-5p2)
+      - name: Send notification via hooker (zai-glm-5p3)
         if: >-
           success()
           && steps.push.outputs.pushed == 'true'
-          && steps.backend.outputs.name == 'zai-glm-5p2'
+          && steps.backend.outputs.name == 'zai-glm-5p3'
           && steps.summary.outputs.content != ''
         continue-on-error: true
         env:
@@ -1884,7 +1888,7 @@ jobs:
             | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
           REPORT_URL="https://github.com/${REPO}/blob/main/research/twitter-zai/${DATE}.md"
           jq -n \
-            --arg title "🐦 Twitter/X AI Pulse — Z.ai GLM-5.2" \
+            --arg title "🐦 Twitter/X AI Pulse — Z.ai GLM-5.3" \
             --arg text "$SAFE" \
             --arg btn "Full Update on GitHub" \
             --arg url "$REPORT_URL" \
@@ -1895,12 +1899,12 @@ jobs:
               tags: ["ara", "twitter"],
               parse_mode: "HTML",
               reply_markup: { inline_keyboard: [[{ text: $btn, url: $url }]] }
-            }' > /tmp/hooker-twitter-zai-glm-5p2.json
+            }' > /tmp/hooker-twitter-zai-glm-5p3.json
           curl -sS --fail-with-body -X POST "${HOOKER_URL%/}/publish/ara-research" \
             -H "Authorization: Bearer ${HOOKER_TOKEN}" \
             -H "Content-Type: application/json" \
-            -H "Idempotency-Key: twitter-zai-glm-5p2-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
-            --data-binary "@/tmp/hooker-twitter-zai-glm-5p2.json"
+            -H "Idempotency-Key: twitter-zai-glm-5p3-${GH_RUN_ID}-${GH_RUN_ATTEMPT}" \
+            --data-binary "@/tmp/hooker-twitter-zai-glm-5p3.json"
 
       # Notify via hooker (relays to Telegram). Replaces the Docker-based
       # appleboy/telegram-action, which fails on the Cloud Run runner.
