@@ -1,4 +1,4 @@
-name: Twitter AI News (matrix — claude / deepseek-claude-code / zai-glm-5p3 / deepseek-pi / fireworks-pi / opencode-deepseek-v4-flash / cursor-grok-4p6-fast)
+name: Twitter AI News (hourly matrix)
 
 # Unified Twitter/X pipeline that fans out across seven backend tiers:
 #   - claude            (cron '7 */3 * * *', primary tier, model routed by data/agent-backends.json,
