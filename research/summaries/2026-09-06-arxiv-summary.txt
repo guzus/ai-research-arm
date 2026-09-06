@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-06
+
+TOP 5 PAPERS:
+• Principia — six SOTA video models ≤0.42 on relational physics; all ~0.8 on VBench
+• LLM-judge reliability — 52,988 preregistered calls: same-window rank Spearman 0.40 (need 0.90)
+• Legibility ≠ interpretability — CoT-step text only partly tracks Monte Carlo advantage; COLM 2026
+• TAHI — cross-session human edits adapt agents; +4.5–20.9% solo success in tens of tasks
+• Terminal-Universe — 37.3k environments from traces; Qwen3.5-27B +11.9 Terminal-Bench 2.1
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 5, Other 8
+
+Full report on GitHub.
