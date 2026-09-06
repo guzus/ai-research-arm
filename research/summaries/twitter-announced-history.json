@@ -2,51 +2,6 @@
   {
     "backfilled": true,
     "category": "business",
-    "delivered_at": "2026-05-05 12:00 UTC",
-    "headline": "AMD Q1 EARNINGS PREVIEW \u2014 GF SECURITIES RAISES PT TO $465 (BUY); MI455 + RUMORED ANTHROPIC PARTNERSHIP THE BULL CASE; REPORTS AFTER-MARKET",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-05-twitter-12h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051612202403299609"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-05 12:00 UTC",
-    "headline": "CURRAN \"EO TOMORROW\" CALL NOW 342L/38RT (+35% IN 3H) \u2014 NO WIRE CONFIRMING WH AI ORDER TIMING; FALSIFICATION WINDOW OPENS US-AM",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-05-twitter-12h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2051540046772134263"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-05 15:00 UTC",
-    "headline": "CAISI SIGNS PRE-DEPLOYMENT AI EVAL DEALS WITH GOOGLE DEEPMIND, MICROSOFT, XAI \u2014 OPENAI AND ANTHROPIC RENEGOTIATE AUG-2024 AGREEMENTS",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-05-twitter-15h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2051659525166444589"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-05 15:00 UTC",
-    "headline": "NIST: CAISI HAS COMPLETED >40 FRONTIER MODEL EVALUATIONS, INCLUDING ON STATE-OF-THE-ART MODELS THAT REMAIN UNRELEASED",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-05-twitter-15h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2051659525166444589"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 15:00 UTC",
-    "headline": "ANTHROPIC SHIPS 10 READY-TO-RUN CLAUDE FINANCE AGENTS \u2014 PITCHBOOKS, CREDIT MEMOS, KYC, MONTH-END CLOSE",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-05-twitter-15h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2051680299474686304"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
     "delivered_at": "2026-05-05 15:00 UTC",
     "headline": "CLAUDE NOW WORKS IN MICROSOFT EXCEL, POWERPOINT, WORD, OUTLOOK VIA M365 ADD-INS \u2014 PLUS FACTSET, S&P GLOBAL, MORNINGSTAR CONNECTORS",
     "source": "@kimmonismus",
@@ -25040,5 +24995,40 @@
     "headline": "OPEN INFERENCE STACK RUNNING ON TENSTORRENT P150 \u2014 TP2, DFLASH2 AND QWEN 27B QUEUED",
     "source": "@LottoLabs",
     "url": "https://x.com/LottoLabs/status/2096397651537539105"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-06 15:23:33 UTC",
+    "headline": "OPENAI CLAIMS 'AUTOMATED RESEARCH INTERN', TARGETS AUTOMATED AI RESEARCHER BY MARCH 2028",
+    "source": "@itnavi2022",
+    "url": "https://x.com/itnavi2022/status/2096618908254175730"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-06 15:23:33 UTC",
+    "headline": "MEDIAN OPENAI RESEARCHER BURNED $601.25 A DAY ON CODING AGENTS AS OF AUG 15",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2096620189794042036"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-06 15:23:33 UTC",
+    "headline": "ASTRA USES TECHNIQUE THAT MAKES ITS REASONING HARDER FOR RESEARCHERS TO INSPECT \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2096614444650430703"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-06 15:23:33 UTC",
+    "headline": "OPENAI AND GOOGLE OPPOSE MASSACHUSETTS AI SAFETY RULES THAT ANTHROPIC SUPPORTS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2096606859645858174"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-06 15:23:33 UTC",
+    "headline": "KKR'S NVIDIA-BACKED HELIX STAFFING UP TO DEPLOY $10B INTO AI INFRASTRUCTURE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2096584230604050828"
   }
 ]
