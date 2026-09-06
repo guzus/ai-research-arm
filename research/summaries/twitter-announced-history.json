@@ -2,51 +2,6 @@
   {
     "backfilled": true,
     "category": "research",
-    "delivered_at": "2026-05-05 18:00 UTC",
-    "headline": "ANTHROPIC BREAKS 7-DAY SILENCE \u2014 FIRST PRIMARY POST SINCE APR 30 IS A SANDBAGGING-RESEARCH PAPER",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-05-twitter-18h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2051718308702081047"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-05 18:00 UTC",
-    "headline": "MATS, REDWOOD, ANTHROPIC: STRATEGICALLY SANDBAGGING MODELS CAN BE TRAINED TO FULL CAPABILITY UNDER WEAK SUPERVISION",
-    "source": "@emilaryd",
-    "source_file": "research/summaries/2026-05-05-twitter-18h-headlines.json",
-    "url": "https://x.com/emilaryd/status/2051697625179582606"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-05 18:00 UTC",
-    "headline": "GEMINI API FILE SEARCH NOW MULTI-MODAL \u2014 POWERED BY GEMINI EMBEDDING 2, ADDS CUSTOM METADATA + INLINE CITATIONS",
-    "source": "@OfficialLoganK",
-    "source_file": "research/summaries/2026-05-05-twitter-18h-headlines.json",
-    "url": "https://x.com/OfficialLoganK/status/2051728186824904743"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 18:00 UTC",
-    "headline": "AI STUDIO VIBE CODING ROLLS OUT EDIT MODE \u2014 NANO BANANA NOW EDITS IMAGE ASSETS DIRECTLY IN-FLOW",
-    "source": "@OfficialLoganK",
-    "source_file": "research/summaries/2026-05-05-twitter-18h-headlines.json",
-    "url": "https://x.com/OfficialLoganK/status/2051698665652412919"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 18:00 UTC",
-    "headline": "$IREN +11% AFTER $625M MIRANTIS ACQUISITION \u2014 AI-CLOUD SOFTWARE ROLLUP THESIS REWARDED",
-    "source": "@SmallCapSnipa",
-    "source_file": "research/summaries/2026-05-05-twitter-18h-headlines.json",
-    "url": "https://x.com/SmallCapSnipa/status/2051729893105279203"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
     "delivered_at": "2026-05-05 21:00 UTC",
     "headline": "ANTHROPIC SHIPS SECOND ALIGNMENT PAPER IN 2.7 HOURS \u2014 MODEL SPEC MIDTRAINING DROPS HOURS AFTER SANDBAGGING RESEARCH",
     "source": "@AnthropicAI",
@@ -25018,5 +24973,40 @@
     "headline": "FLUIDSTACK HITS $18B VALUATION AS TEST BED FOR GOOGLE'S EXTERNAL AI CHIP PUSH \u2014 FORBES",
     "source": "@Forbes",
     "url": "https://x.com/Forbes/status/2096689943062172094"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-06 22:51:52 UTC",
+    "headline": "JENSEN HUANG: GPT-6 ASTRA TRAINED ON 100K+ GRACE BLACKWELL NVLINK72 \u2014 \"AGI HAS ARRIVED,\" 400K GPUS NEXT",
+    "source": "@JensenHuang",
+    "url": "https://x.com/jukan05/status/2096724783723602260"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-06 22:51:52 UTC",
+    "headline": "NVIDIA IN TALKS FOR $2.5B STAKE IN MURATI'S THINKING MACHINES AT $40B-PLUS PRE-MONEY; ACCEL MAY LEAD",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2096701471232545206"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-06 22:51:52 UTC",
+    "headline": "OPENAI CUTS ASTRA SUBSCRIPTION USAGE DRAW UP TO 3-4X FOR POWER USERS, SAYS NO QUALITY CHANGE",
+    "source": "@thsottiaux",
+    "url": "https://x.com/kimmonismus/status/2096719290183356909"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-06 22:51:52 UTC",
+    "headline": "OPENAI DATA: AGENT SUCCESS WITHOUT HUMAN HELP FALLS FROM 86% TO 16% ON 64-128 HOUR TASKS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2096720216466342334"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-06 22:51:52 UTC",
+    "headline": "SK HYNIX 1C DRAM TO OVERTAKE 1B AS MAIN PROCESS IN Q1; FIRST 1C HBM CORE DIE LANDS AT HBM4E",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2096729233943130328"
   }
 ]
