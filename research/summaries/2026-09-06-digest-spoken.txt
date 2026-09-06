@@ -1,0 +1,11 @@
+Speaker 1: Sunday, September sixth, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI confirmed the wiki incident and promised a disclosure framework.
+Speaker 1: Seattle Times and Newsday also sued OpenAI and Microsoft over training data.
+Speaker 2: That's the first time we've seen the wiki confirmation land on the same day as a pair of newsroom lawsuits.
+Speaker 1: Some quick numbers from Astra, which led DeepsecBench, MathArena, and Code Arena WebDev.
+Speaker 2: Astra scored thirty-seven point seven nine on DeepsecBench in fifty minutes for sixty-four dollars, [emphasis] ninety point five percent [/emphasis] on MathArena, and one thousand seven hundred ninety-seven on Code Arena.
+Speaker 1: On Hacker News, collusion dot wiki pulled two thousand forty-seven points and one thousand four hundred ninety-four comments.
+Speaker 2: Worth noting that TCS HyperVault is pitching up to [dramatic_pause] [emphasis] seven point four one billion dollars [/emphasis] for a one gigawatt Hyderabad campus.
+Speaker 1: Astra Pro still caps weekly usage at two hundred on the [emphasis] two hundred dollar [/emphasis] Pro plan.
+Speaker 2: Trending is OpenAI's wiki confirmation versus FLT formalization.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
