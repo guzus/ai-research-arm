@@ -4,10 +4,11 @@ title: Perplexity
 type: entity
 aliases: ["Perplexity AI", "Perplexity Computer"]
 tags: [search, agents, ai-application, funding]
-description: AI search-and-agent company behind the Perplexity Computer workflow agent, which drove annualized revenue from under $250M at the start of 2026 past $750M; NVIDIA is reported in talks to invest at a $30B+ valuation (2026-08-25).
+description: AI search-and-agent company; Perplexity Computer now runs GPT-6 Astra and Claude Fable for Pro and Max subscribers, after a reported NVIDIA investment talk at $30B+ and a $750M revenue run.
 created_at: 2026-08-25
-timestamp: 2026-08-26T00:00:00Z
+timestamp: 2026-09-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA model ticket — NVIDIA/Perplexity investment talks", path: research/models/tickets/nvidia-perplexity-investment-2026-08.md}
@@ -73,3 +74,12 @@ investment target.
   datapoint on the equity-talk relationship (see the 2026-08-25 >$30B entry
   above), consistent with NVIDIA deepening the customer relationship beyond a
   check (ARA daily digest 2026-08-26).
+
+## Perplexity Computer opens Astra and Fable seats (2026-09-06)
+
+CEO Aravind Srinivas posted that **Perplexity Computer now runs
+[[astra|GPT-6 Astra]] and [[claude-fable-5|Claude Fable]]** for Pro
+and Max subscribers (03:39–03:41 UTC). **Comet was not listed as
+live** in that cycle. This is the seat opening promised on the
+Astra launch day, not a new product. See [[astra]] (Twitter; ARA
+daily digest 2026-09-06).

@@ -4,10 +4,11 @@ title: Astra (OpenAI)
 type: entity
 aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro"]
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use]
-description: OpenAI's GPT-6 Astra computer-use model, opened to Plus on 2026-09-05 after a Daybreak-only launch; $10/$50 per Mtok; Epoch ECI 169; Artificial Analysis v4.2 ranks it second behind Fable 5.1.
+description: OpenAI's GPT-6 Astra computer-use model; public quotas land at about half GPT-5.6 Sol's 5-hour window, while the model led Vercel DeepsecBench, MathArena, and Arena Code WebDev the same Saturday.
 created_at: 2026-08-02
-timestamp: 2026-09-05T00:00:00Z
+timestamp: 2026-09-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
@@ -240,3 +241,44 @@ multiple agents on a single problem for **hours or days**. See [[gpt-6]].
   reasoning: every Astra pelican beat the best GPT-5.6 Sol,
   and max is “really good” (Simon Willison; ARA daily digest
   2026-09-05).
+
+## Public quotas, three boards, and eval-table edits (2026-09-06)
+
+- **Quotas are now public.** The Decoder says standard Astra is
+  about half [[gpt-5-6|GPT-5.6 Sol]]’s messages per five-hour
+  window (Plus ~5–45 vs 10–100; Pro 20x ~100–900 vs 200–2,000).
+  Astra Pro weekly caps: **200** on the $200 Pro plan, **50** on
+  $100 Pro and Business Premium, **15 per month** on Business
+  Standard. Free and Go get neither frontier SKU (The Decoder;
+  ARA daily digest 2026-09-06).
+- **Three independent boards the same Saturday.** Vercel
+  DeepsecBench: Astra xhigh **37.79** in 49m 47s for $63.70 vs
+  Sol xhigh 35.44 in 3h 39m and [[claude-opus-5|Opus 5]] max
+  32.44 / $127.93. MathArena (max): **90.5%** expected
+  performance vs Opus 5 max 72.5%; [[claude-fable-5|Fable 5.1]]
+  is absent. Code Arena WebDev: **1,797** vs Fable 5.1 Max
+  1,762, on only 1,199 votes versus Fable’s 2,275 (Vercel,
+  MathArena, Arena, Twitter; ARA daily digest 2026-09-06).
+- **Artificial Analysis v4.2 still ranks Fable 5.1 first**, with
+  Astra second and a 4-point gain over Sol after adding
+  AA-Briefcase and Surge’s GDP.pdf and dropping saturated GPQA
+  Diamond. The Decoder framed the overhaul as a response to
+  Astra-scoring skepticism (Artificial Analysis, The Decoder;
+  ARA daily digest 2026-09-06).
+- **Fortune reconstructed a pulled-and-reposted Sept. 3 launch
+  blog** that briefly cut Astra’s hallucination rate from
+  **4.2% to 2%** and dropped Fable 5.1’s FrontierMath print.
+  Some cells later reverted; [[openai]] said evals move with
+  checkpoint, harness, and reasoning settings (Fortune,
+  Twitter; ARA daily digest 2026-09-06).
+- **Distribution widened.** [[perplexity|Perplexity Computer]]
+  now runs Astra and Fable for Pro and Max subscribers (CEO
+  Aravind Srinivas, 03:39–03:41 UTC); Comet was not listed as
+  live in that cycle. Hermes Agent added Astra on Nous Portal.
+  Product lead Tibo Sottiaux said internal use was “probably
+  our biggest competitive advantage” and moved some unnamed
+  ship dates six months forward to DevDay from mid next year
+  (Twitter; ARA daily digest 2026-09-06).
+- **OpenAI posted Astra prompting tips**, including a slop-word
+  blocklist and guidance to take more initiative and stop
+  overtesting code (The Decoder; ARA daily digest 2026-09-06).

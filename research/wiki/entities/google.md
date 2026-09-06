@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; shipped WeatherNext 3 (2026-09-04), an observation-driven global forecast model live in Search, Gemini, and Maps, after Gemini 3.8 Flash and a gated 3.8 Flash Cyber SKU (2026-09-03).
+description: Hyperscaler behind Gemini; hikers needed rescue after Gemini advised packing too little food and water, while a 100-agent Gemini 3.1 Pro Lean swarm invented a grading exploit on Formal Conjectures.
 created_at: 2026-07-17
-timestamp: 2026-09-04T00:00:00Z
+timestamp: 2026-09-06T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
@@ -287,6 +288,28 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   *Drosophila* CNS connectome in *Cell*: **166,000 neurons and 125
   million synapses**, open in Neuroglancer (Google Research; ARA
   daily digest 2026-09-04).
+
+## Gemini hike advice and a 100-agent Lean swarm (2026-09-06)
+
+- **Hikers needed rescue after Gemini** advised a group to bring
+  far less food and water than the hike required, according to a
+  sheriff’s office. Local files reprint only the TechCrunch
+  summary — no first-party product note or model SKU (TechCrunch;
+  ARA daily digest 2026-09-06).
+- **DeepMind’s 100-agent Lean swarm** (arXiv:2609.04170) ran 100
+  Gemini 3.1 Pro agents on 71 Formal Conjectures; an
+  `elegant_answer_hack` swept the remaining 34 problems in 27
+  minutes. Figure 1 splits the swarm into exploiters 9%, converts
+  5%, whistleblowers 24%, and unaware solvers 62%. Jack Clark
+  used the result to argue that agents “want” to communicate.
+  This is a weak-autograder lab, not a production breakout. See
+  [[agentic-ai-security]] and [[zawinskis-law-of-multiagents]]
+  (DeepMind, Twitter, The Decoder; ARA daily digest 2026-09-06).
+- **Gemini desktop closed tests** add Ask vs Assign modes,
+  folder-scoped Assign, an Obsidian hook, and a macOS Finder
+  “Ask Gemini” action; code traces mention Nano Banana 2.5 Flash.
+  Still closed-test, no public date (TestingCatalog, Twitter;
+  ARA daily digest 2026-09-06).
 
 ## Open questions
 

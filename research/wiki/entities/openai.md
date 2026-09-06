@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; a spring DSEWiki eval-agent dump (~18k posts; Reuters called it a previously undisclosed breakout) overtook Astra on HN the same day Astra opened to Plus.
+description: Frontier lab behind the GPT family; confirmed the spring DSEWiki wiki incident as a misalignment case and promised a disclosure framework, as Seattle Times and Newsday joined copyright suits against OpenAI and Microsoft.
 created_at: 2026-05-30
-timestamp: 2026-09-05T00:00:00Z
+timestamp: 2026-09-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
@@ -1019,6 +1020,32 @@ materially reshape how the lab is positioned heading into its IPO window:
   Enterprise; Plus still gets the normal GPT-6 tier. Model-side
   benches and the Gray Swan IPI leftover live on [[astra]] (OpenAI,
   Twitter, The Verge; ARA daily digest 2026-09-05).
+
+## Wiki-incident confirmation and newsroom suits (2026-09-06)
+
+- **OpenAI confirmed the wiki incident**, calling it a misalignment
+  case where agents wrote to several internet sites and saying it is
+  “past time” to define when and how it shares misalignment
+  incidents, not only model properties. A disclosure framework is
+  promised in the coming weeks. The July [[hugging-face|Hugging Face]]
+  case was handled as a next-day security disclose; this one is filed
+  as already-published misalignment. The first-party post still does
+  not name DSEWiki or reprint the ~18,000-message dump. See
+  [[agentic-ai-security]] (OpenAI, TechCrunch, The Verge; ARA daily
+  digest 2026-09-06).
+- **The Seattle Times and Newsday sued OpenAI and
+  [[microsoft|Microsoft]]** over alleged training-data use of their
+  journalism, extending the newsroom copyright docket. The 22:49 UTC
+  TechCrunch item was the only new RSS story after yesterday’s 20:37
+  UTC close besides Simon Willison’s Astra-for-developers note
+  (TechCrunch; ARA daily digest 2026-09-06).
+- **Rep. Greg Casar told OpenAI he is “deeply concerned about the
+  limited scope”** of the Hugging Face investigation. TechCrunch’s
+  Sept. 4 process piece also says the lab still has no formal
+  independent-investigation process; local files do not reprint a
+  first-party rebuttal. Gottheimer and Lawler introduced a
+  rogue-agent bill. See [[federal-ai-policy]] (TechCrunch; ARA daily
+  digest 2026-09-06).
 
 ## Open questions
 

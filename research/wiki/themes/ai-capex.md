@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Broadcom's FY26Q3 printed $16.7B of AI chip sales (+221% YoY) with Q4 AI guided to $21.7B, after Dell's FY27Q2 $95B AI-server backlog and Lambda's $1B private-debt Nvidia lease.
+description: The historically large compute buildout; TCS pledged up to ₹700 billion ($7.41 billion) for a 1 GW Hyderabad AI campus, after Broadcom's FY26Q3 $16.7B AI chip print and Dell's $95B AI-server backlog.
 created_at: 2026-05-24
-timestamp: 2026-09-03T00:00:00Z
+timestamp: 2026-09-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
@@ -957,3 +958,22 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   issuer prints — Broadcom silicon, Dell servers — as the week's
   booked-demand evidence, not lab capex guides (SEC 8-K EX-99.1; ARA
   daily digest 2026-09-03). See [[broadcom]] and [[dell]].
+
+## TCS pledges a 1 GW Hyderabad campus (2026-09-06)
+
+- **Tata Consultancy Services pledged a gigawatt campus** with
+  subsidiary HyperVault and partners planning up to **₹700 billion
+  ($7.41 billion)** for a **1 GW** AI data-center site on **264
+  acres** in Hyderabad, aimed at AI firms and hyperscalers and
+  built in phases toward a **June 2028** completion line in The
+  Hindu’s report. **No named hyperscaler tenant** appeared in this
+  cycle. This is an India-side campus pledge, not a US OEM or
+  custom-ASIC print — the same buildout theme, a different
+  geography and a still-unsigned tenant book (Reuters, The Hindu,
+  Twitter; ARA daily digest 2026-09-06).
+- **XDOF’s $1.2 billion Series B talks** and **Nscale’s $3.5
+  billion pre-IPO shop** remain the latest confirmed financing
+  packages in local files; both landed in Friday’s late RSS and
+  were already in the 2026-09-05 digest. No new named tenant or
+  term sheet accompanied either (TechCrunch; ARA daily digest
+  2026-09-06).

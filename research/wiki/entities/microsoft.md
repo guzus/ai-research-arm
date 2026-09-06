@@ -4,15 +4,16 @@ title: Microsoft
 type: entity
 aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; at Build 2026 shipped a full first-party MAI model stack and made Project Polaris the default GitHub Copilot engine; CEO Satya Nadella publicly called Anthropic's Fable "editorially controlled" (2026-07-18) despite Microsoft's $5B stake in Anthropic, MAI-Thinking-1 reached Microsoft Foundry as the first "built from scratch" reasoning model (2026-08-13), and Meta's Azure AI spend surfaced at hundreds of millions a year (2026-08-21).
+description: Hyperscaler and frontier-model builder; Seattle Times and Newsday joined copyright suits against Microsoft and OpenAI over alleged training-data use of their journalism.
 created_at: 2026-06-03
-timestamp: 2026-08-21T00:00:00Z
+timestamp: 2026-09-06T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
@@ -151,6 +152,16 @@ with **trillions of tokens weekly flowing through Azure Foundry**, including
 **OpenAI models used to grade Meta's own outputs**; Meta is separately said to be
 **building a competing multi-model API service** (Bloomberg via relay; ARA daily
 digest 2026-08-21). See [[ai-capex]] and [[openai]].
+
+**Seattle Times and Newsday join the newsroom copyright docket
+(2026-09-06).** The Seattle Times and Newsday sued [[openai|OpenAI]]
+and Microsoft over alleged training-data use of their journalism —
+the latest publishers on a docket this page has shared with OpenAI
+since the NYT-era suits. The 22:49 UTC TechCrunch item was the only
+new RSS story after the 2026-09-05 20:37 UTC close besides Simon
+Willison’s Astra note. No new court order or first-party rebuttal
+appears in local files (TechCrunch; ARA daily digest 2026-09-06).
+See [[openai]] and [[federal-ai-policy]].
 
 ## Open questions
 
