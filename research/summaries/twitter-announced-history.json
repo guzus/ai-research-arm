@@ -3,51 +3,6 @@
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-05 12:00 UTC",
-    "headline": "COINBASE LAYS OFF 14% (~700) \u2014 ARMSTRONG MEMO BLAMES AI; ORG FLATTENED TO 5 LAYERS, AI-NATIVE ONE-PERSON PODS; COIN +4% PRE-MARKET",
-    "source": "@decrypt",
-    "source_file": "research/summaries/2026-05-05-twitter-12h-headlines.json",
-    "url": "https://x.com/i/web/status/2051638585107865771"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 12:00 UTC",
-    "headline": "IREN SIGNS DEFINITIVE DEAL TO ACQUIRE MIRANTIS FOR $625M ALL-STOCK \u2014 3.8% DILUTION, 1,500+ ENTERPRISE CUSTOMERS, K0RDENT AI/K8S PLATFORM",
-    "source": "@FinnStockinger",
-    "source_file": "research/summaries/2026-05-05-twitter-12h-headlines.json",
-    "url": "https://x.com/i/web/status/2051626450558529833"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 12:00 UTC",
-    "headline": "GEMINI 3.2 FLASH RELEASE IMMINENT FROM GOOGLE DEEPMIND \u2014 LEAK TRIANGULATED ACROSS MARK_K, IRULETHEWORLDMO, KIMMONISMUS PRE-I/O",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-05-05-twitter-12h-headlines.json",
-    "url": "https://x.com/mark_k/status/2051616788316573961"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 12:00 UTC",
-    "headline": "ANTHROPIC ORBIT RE-LEAKED \u2014 PROACTIVE CLAUDE COWORK ASSISTANT, AUTO-BRIEFINGS FROM GMAIL/SLACK/GITHUB; FRAMED AS ANSWER TO CHATGPT PULSE",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-05-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2051618156385366305"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-05 12:00 UTC",
-    "headline": "RADIXARK CLOSES $100M SEED AT $400M VALUATION \u2014 EX-XAI YING SHENG'S OPEN-SOURCE SGLANG INFERENCE ENGINE PER WSJ",
-    "source": "@WSJ",
-    "source_file": "research/summaries/2026-05-05-twitter-12h-headlines.json",
-    "url": "https://x.com/i/web/status/2051639489769156863"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 12:00 UTC",
     "headline": "AMD Q1 EARNINGS PREVIEW \u2014 GF SECURITIES RAISES PT TO $465 (BUY); MI455 + RUMORED ANTHROPIC PARTNERSHIP THE BULL CASE; REPORTS AFTER-MARKET",
     "source": "@jukan05",
     "source_file": "research/summaries/2026-05-05-twitter-12h-headlines.json",
@@ -25050,5 +25005,40 @@
     "headline": "TCS HYPERVAULT TO INVEST $7.4B IN 1GW HYDERABAD AI CAMPUS",
     "source": "@Integral_IG",
     "url": "https://x.com/Integral_IG/status/2096331019532046632"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-06 08:29:15 UTC",
+    "headline": "SKILL LIBRARY LIFTS MLE-BENCH 31.11% TO 72.89% ON SAME MODEL, SAME BUDGET \u2014 5,353 SKILLS FROM 1,000 REPOS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2096406594460487716"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-06 08:29:15 UTC",
+    "headline": "ANTHROPIC ADDS BLENDER CONNECTOR TO CLAUDE \u2014 CONNECTORS MOVE FROM CODE AND DOCS INTO 3D AUTHORING",
+    "source": "@claudeai",
+    "url": "https://x.com/ns123abc/status/2096429330209366526"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-06 08:29:15 UTC",
+    "headline": "HBM SPEC DOWNGRADE CALLED DELIBERATE \u2014 STACK HEIGHTS CUT FOR SUPPLY ELASTICITY, FEYNMAN PUT AT 8-HIGH",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2096470793756569640"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-06 08:29:15 UTC",
+    "headline": "BATZOGLOU BENCHMARKS GPT-6 ASTRA ON INDUCTION AT 88%, NEAR SATURATION",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2096443582529798313"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-06 08:29:15 UTC",
+    "headline": "OPEN INFERENCE STACK RUNNING ON TENSTORRENT P150 \u2014 TP2, DFLASH2 AND QWEN 27B QUEUED",
+    "source": "@LottoLabs",
+    "url": "https://x.com/LottoLabs/status/2096397651537539105"
   }
 ]
