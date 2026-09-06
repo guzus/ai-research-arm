@@ -270,6 +270,9 @@ runs:
         STEP_OUTCOME: ${{ inputs.allowed-bots == '' && steps.run-claude.outcome || steps.run-claude-bots.outcome }}
         EXEC_FILE: ${{ steps.run-claude.outputs.execution_file || steps.run-claude-bots.outputs.execution_file }}
         LABEL: ${{ inputs.label }}
+        PRE_SHA: ${{ steps.pre.outputs.sha }}
+        EXPECTED_PATHS: ${{ inputs.expected-paths }}
+        ALLOWED_PATHS: ${{ inputs.allowed-paths }}
       run: |
         set -euo pipefail
         if [ "$STEP_OUTCOME" = "success" ]; then
@@ -282,6 +285,32 @@ runs:
         reason="$(sed -n 's/^reason=//p' "$verdict_file" | head -n1)"
         rm -f "$verdict_file"
         if [ "$outcome" = "dead-start" ]; then
+          # Belt and braces: the transcript says nothing was written; prove it
+          # against the checkout too. HEAD must still be the pre-run SHA and
+          # no tracked or untracked file under the output contract may have
+          # changed — otherwise a fallback runner's import plus the later
+          # "Commit expected-path changes" step could merge two models' work.
+          leftovers=""
+          if [ "$(git rev-parse HEAD)" != "$PRE_SHA" ]; then
+            leftovers="HEAD moved from ${PRE_SHA}"
+          fi
+          paths="$ALLOWED_PATHS"
+          [ -z "$paths" ] && paths="$EXPECTED_PATHS"
+          pathspecs=()
+          while IFS= read -r pathspec; do
+            pathspec="${pathspec#"${pathspec%%[![:space:]]*}"}"
+            pathspec="${pathspec%"${pathspec##*[![:space:]]}"}"
+            [ -z "$pathspec" ] && continue
+            pathspecs+=("$pathspec")
+          done <<< "$paths"
+          if [ "${#pathspecs[@]}" -gt 0 ] && [ -n "$(git status --porcelain -- "${pathspecs[@]}")" ]; then
+            leftovers="${leftovers:+$leftovers; }uncommitted changes under the output contract"
+          fi
+          if [ -n "$leftovers" ]; then
+            echo "dead-start=false" >> "$GITHUB_OUTPUT"
+            echo "::error::${LABEL}: transcript looks like a Claude dead-start (${reason}) but the checkout is not clean (${leftovers}). Refusing the post-agent fallback so two models' work cannot be merged."
+            exit 1
+          fi
           echo "::warning::${LABEL}: native Claude died before doing work — ${reason}. Re-walking the lane fallback chain post-agent."
           echo "dead-start=true" >> "$GITHUB_OUTPUT"
           exit 0
