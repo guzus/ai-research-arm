@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-06 15:23:33 UTC
+
+CYCLE: OpenAI grades its own AI-research acceleration while The Information reports the model got harder to inspect.
+
+TOP STORIES:
+- OpenAI claims an "automated research intern," targets an automated AI researcher by March 2028; median researcher spent $601.25/day on coding agents as of Aug 15, agent runtime 3.1x human hours [OK multi-source]
+- The Information: Astra uses a technique making its reasoning harder for researchers to inspect - better coding, lower cost, weaker dangerous-behavior detection [single-source]
+- OpenAI and Google push back on Massachusetts AI safety rules that Anthropic supports [single-source]
+
+WATCH: Whether OpenAI publishes the rubric behind "automated research intern" or a system-card note on the inspectability trade-off.
+
+Full update on GitHub.
