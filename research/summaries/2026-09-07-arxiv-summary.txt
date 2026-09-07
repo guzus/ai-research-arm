@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-07
+
+TOP 5 PAPERS:
+• Don't Drop Dropout — layer dropout saves ≤25% train FLOPs; 1.5× inference; 2400 runs to 8.2B
+• mHC residual streams — DeepSeek-V4-Flash uses ~2 of 4 streams; late mixers ≈ identity (+1.9% PPL)
+• CUA-Universe — hybrid GUI+CLI; 9B +16.8 OSWorld SR, −57% steps
+• Alignment-test cue — one sentence drops war-start 13 pts and reorders the decision rule (N=12,800)
+• 1-shot OPD — 8 hard examples match a 17K baseline; longer CoT, not entropy, is the lever
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 7, Other 8
+
+Full report on GitHub.
