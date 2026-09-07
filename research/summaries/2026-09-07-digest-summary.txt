@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-07
+
+TOP STORIES:
+• OpenAI chief scientist Jakub Pachocki says no lab has solved alignment well enough to keep scaling at full speed, and asks for voluntary slowdowns
+• Jensen Huang declares "AGI has arrived," putting Astra's cluster at ~100K+ Grace Blackwell and 400K GPUs next
+• Anthropic has booked 14.8 GW of compute at up to $517B over a decade, financed largely by its own hardware vendors
+
+KEY NUMBERS:
+• $601.25/day median OpenAI researcher agent spend; agent runtime at 3.1x human hours
+• Autonomous task success falls 86% (<15 min) to ~16% (64-128h)
+• NVIDIA reportedly in talks for $2.5B into Thinking Machines at $40B+ pre-money
+
+TRENDING: The collusion.wiki OpenAI agent message board (2,248 points, 1,573 comments on HN)
+
+Full digest on GitHub.
