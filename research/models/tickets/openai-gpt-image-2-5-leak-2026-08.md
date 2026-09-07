@@ -3,7 +3,7 @@ slug: openai-gpt-image-2-5-leak-2026-08
 title: OpenAI's next image models leak as "mona-lisa-1" and "luna-lisa-alpha"
 company: OpenAI
 model: GPT-Image-2.5 / GPT-Image-2.5 Mini (codenames mona-lisa-1 / luna-lisa-alpha)
-status: in-testing
+status: closed
 status_note: |
   **@mark_k** (2026-08-22 17:13 UTC): "Just to clear this up: @OpenAI has
   **two new image models in the pipeline**: **`mona-lisa-1`** —
@@ -31,6 +31,17 @@ status_note: |
   Adjacent, and separately sourced: OpenAI shipped **transparent
   backgrounds for GPT-Image-2 on the API** (@testingcatalog, 2026-08-21)
   — the current generation still receiving feature work.
+
+  **2026-09-07 — CLOSED, stale-rumor-unverified.** The GPT-Image-2.5 /
+  GPT-Image-2.5 Mini codename leak (`mona-lisa-1` / `luna-lisa-alpha`) has sat at
+  `unverified` since 2026-08-23 with no corroboration in 15 cycles. The test this
+  cycle was unusually strong: OpenAI ran its largest launch of the year on
+  2026-09-03 ([[openai-gpt-6]]) and published a safety preview, a launch thread, a
+  rollout thread and a misalignment-disclosure post across 2026-09-01..09-05, and
+  **not one mentions an image model**. Dense third-party signal across the same
+  week is likewise silent on both codenames. Closed per the ≥15-cycle unverified
+  trigger. If OpenAI ships an image model, it gets a fresh ticket referencing this
+  slug — closure preserves the leak record, it does not delete it.
 expected: "Two unreleased image models under test as of 2026-08-22 per a single leaker, with product names inferred rather than disclosed. Pending: an API string or console route, screenshots or samples, whether the noise-artifact defect blocks launch, and an OpenAI announcement"
 labels:
   - openai
@@ -43,12 +54,14 @@ sources:
   - "@mark_k"
   - "@testingcatalog"
 created_at: 2026-08-23
-updated_at: 2026-08-23
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-07
+closed_at: 2026-09-07
+closed_reason: "stale-rumor-unverified"
 history:
   - ts: 2026-08-23
     change: "Created — @mark_k reports two unreleased OpenAI image models in the pipeline under the codenames mona-lisa-1 (inferred GPT-Image-2.5) and luna-lisa-alpha (inferred GPT-Image-2.5 Mini, built on the GPT Luna tier), 2026-08-22 17:13 UTC. He characterises the large model as a noticeable but not spectacular improvement over GPT-Image-2, the small one as faster and roughly at parity with the current model, and says both still exhibit the existing noise-artifact defect. Status in-testing — the report is hands-on relative-quality comparison across two named codenames with a persisting specific defect, which is artifact-grade rather than tease-grade. Verification unverified — single account, no screenshots, no API string, no OpenAI acknowledgement, and the GPT-Image-2.5 product names are the leaker's inference. Separately, OpenAI shipped transparent backgrounds for GPT-Image-2 on the API (@testingcatalog, 2026-08-21)."
+  - ts: 2026-09-07
+    change: "CLOSED — stale-rumor-unverified. The GPT-Image-2.5 / GPT-Image-2.5 Mini codename leak (mona-lisa-1 / luna-lisa-alpha) has been unverified since 2026-08-23 with no corroboration in 15 daily cycles. The negative evidence this cycle is unusually strong: OpenAI published a pre-launch safety preview (09-01), the GPT-6 Astra launch thread (09-03), the rollout thread (09-04) and the wiki-incident disclosure (09-05), and none mentions an image model; dense third-party signal across 2026-09-01..09-07 does not surface either codename. Closed per the docs/model-tickets.md >=15-cycle unverified trigger. A future OpenAI image-model release gets a new ticket referencing this slug — the leak record is preserved, not deleted."
 ---
 
 Two things make this more than a codename drop.

@@ -28,6 +28,17 @@ status_note: |
   It is `in-testing` rather than `confirmed`-as-a-release because **no
   model exists yet** — this is a three-month run that started this week,
   and post-training follows it.
+
+  **2026-09-02 — the hero run is 13% through training, and the funding source
+  is named.** @percyliang: "Marin 535B-A23B is **13% through training**. This hero
+  run would not be possible without the generous support of the **Jen-Hsun and
+  Lori Huang Foundation**, which provided the funding for the compute
+  (**CoreWeave**)," with thanks to the **Google TPU Research Cloud** for the
+  compute behind Marin's earlier models. That pins two things this ticket did not
+  have: a live progress marker on the run, and the fact that the largest fully
+  open academic pretrain currently in flight is being paid for by the NVIDIA
+  CEO's personal foundation on a neocloud, not by a hyperscaler research
+  credit.
 expected: "Training started week of 2026-08-17; ~3 months of pretraining + midtraining on 18.75T tokens (2.7e24 FLOPs) on 11 x GB200 NVL72, post-training after. Pending: intermediate checkpoints against the published forecast, whether the run holds its trajectory, weights release, and post-training results"
 labels:
   - open-weights
@@ -39,13 +50,16 @@ verification: confirmed
 sources:
   - "@percyliang"
   - "@classiclarryd"
+  - https://x.com/percyliang/status/2095255747487740401
 created_at: 2026-08-23
-updated_at: 2026-08-23
+updated_at: 2026-09-07
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-23
     change: "Created — Stanford's Marin project began training Marin 535B-A23B (@percyliang, 2026-08-21 21:44 UTC, ~2,570 likes): 18.75T tokens, 80% pretraining / 20% midtraining, 11 x GB200 NVL72, ~3 months, 2.7e24 FLOPs, with post-training to follow. Preceded by a 4-rung scaling ladder from 1.6B-A61M (48B tokens) to 27.7B-A1.2B (926B tokens) used to debug and to forecast the hero run; the team also forecasts intermediate-checkpoint loss, not only final loss. Data composition, a live wandb dashboard for the run, and the GitHub repo were all published alongside. Status in-testing (run in progress, no model yet); verification confirmed (project principal, full disclosed plan, live public instrumentation)."
+  - ts: 2026-09-07
+    change: "Training progress and funding disclosed. @percyliang (2026-09-02): Marin 535B-A23B is 13% through training; the compute is funded by the Jen-Hsun and Lori Huang Foundation and runs on CoreWeave, with the Google TPU Research Cloud credited for the compute behind Marin's earlier models. Two new facts for this ticket: a live progress marker on the hero run, and confirmation that the largest fully-open academic pretrain in flight is paid for by the NVIDIA CEO's personal foundation on a neocloud rather than by a hyperscaler research credit. Status stays in-testing (run is ~1/8 complete); verification stays confirmed."
 ---
 
 Nearly every training run in this ticket set is disclosed after the fact,

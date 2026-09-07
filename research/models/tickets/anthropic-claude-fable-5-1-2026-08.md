@@ -3,7 +3,7 @@ slug: anthropic-claude-fable-5-1-2026-08
 title: Claude Fable 5.1 — successor stealth-testing on a subset of accounts
 company: Anthropic
 model: Claude Fable 5.1 (reported)
-status: in-testing
+status: released
 status_note: |
   A successor to Fable 5 — reported as **Fable 5.1** (5.5 also floated) —
   is being **served to a subset of accounts that have "Fable 5" selected**
@@ -72,13 +72,29 @@ status_note: |
   Verification stays `partial`. The routing probe is a real advance, but
   it is one leak account's test relayed by one aggregator, and neither
   posted the *output* they got. `confirmed` needs Anthropic.
-expected: "As of 2026-08-27 17:43 UTC: still unannounced. Rollout reportedly widened — @legit_api reports Fable 5 routing to Fable 5.1 on claude web for a subset of users and published a knowledge-cutoff probe prompt to test for it; @testingcatalog reports more users routed and an updated Fable 5 knowledge cutoff. Leakers called 2026-08-27 release day and it did not land in-window. Pending: an Anthropic announcement, model card, API id and pricing; someone posting the actual probe output; and whether the rumoured Opus 5.1 / Sonnet 5.1 siblings are real (currently single-chain, unconfirmed)"
+
+  **2026-09-01 — SHIPPED. in-testing -> released, partial -> confirmed.**
+  Anthropic launched Claude Fable 5.1 on 2026-09-01 18:13 UTC, live the same day
+  in Claude Code and on the Claude Platform as `claude-fable-5-1`, alongside
+  Claude Mythos 5.1 ([[mythos-public-release]]) — same underlying model, different
+  safeguards, and only Fable 5.1 is generally available. Priced the same as Fable
+  5, with API cache reads cut 75% to $0.25/MTok (from $1/MTok). Anthropic's own
+  numbers: Terminal-Bench 4.0 in Claude Code 55.8%, vs 42% for Fable 5 and 52.3%
+  for Opus 5 on the same setup; ahead of both across agentic coding and computer
+  use evals. Reported specs (@MilksandMatcha): 1M token context, 128K max output,
+  June 2026 knowledge cutoff. Anthropic reset 5-hour and weekly limits for all
+  users on launch day, shipped Enterprise Frontier Safeguards alongside it
+  (@alexalbert__), and made an anti-distillation change to the Messages API — new
+  accounts on Fable 5.1 can no longer edit Claude's context prior to thinking
+  blocks. Third-party placement 2026-09-07: #1 on Agent Arena over 6.7K+ real
+  sessions, and also the most expensive model in that comparison at $4.14/task.
+expected: "RELEASED 2026-09-01 as claude-fable-5-1 in Claude Code and on the Claude Platform. Next open question is Fable 5.2, which @GavinSBaker speculates is already staged."
 labels:
   - anthropic
   - frontier-model
   - stealth-test
   - leak
-verification: partial
+verification: confirmed
 sources:
   - "@synthwavedd"
   - "@kimmonismus"
@@ -88,8 +104,15 @@ sources:
   - "@testingcatalog"
   - https://x.com/testingcatalog/status/2092645689951981758
   - "@mark_k"
+  - https://x.com/ClaudeDevs/status/2094851229734277228
+  - https://x.com/ClaudeDevs/status/2094851231487541376
+  - https://x.com/ClaudeDevs/status/2094856679250919746
+  - https://x.com/MilksandMatcha/status/2094858716260729122
+  - "@alexalbert__"
+  - "@simonw"
+  - "@WesRoth"
 created_at: 2026-08-19
-updated_at: 2026-08-27
+updated_at: 2026-09-07
 closed_at: null
 closed_reason: null
 history:
@@ -97,6 +120,8 @@ history:
     change: "Created — @synthwavedd (2026-08-18) reports a Fable 5 successor, likely Fable 5.1, being served to a subset of accounts with Fable 5 selected; amplified by @kimmonismus (who vouches for the leaker and reads a launch as very close) and independently echoed by @AndrewCurran_, who says Fable 5.1 has been ready to ship for weeks and that a small stealth test flight before launch is normal for both OpenAI and Anthropic. Trending as its own AI news item (~956 posts). Status in-testing — the claim is a real artifact served in production, not a tease. Verification partial: two independent secondary accounts, no Anthropic statement, model card, API id or firsthand distinguishing output. Successor to the closed [[claude-fable-5]]."
   - ts: 2026-08-27
     change: "The rollout widened and the ticket's own named evidence gap partly closed — but it still has not shipped. This ticket noted on 2026-08-19 that nobody had posted a firsthand output distinguishing 5.1 from Fable 5; @legit_api (2026-08-26) published a reproducible probe instead: 'Claude Fable 5 is now routing to Fable 5.1 on claude web for some users. To check if you have access, you can test this prompt: opus 4.6 date of release and gpt image 1.5 without searching the web' — a knowledge-cutoff discriminator anyone can run. @testingcatalog relayed it and reported that more users are now routed in the background and that the Fable 5 knowledge cutoff itself got updated, which is a behavioural fingerprint rather than a leaker assertion. @mark_k: 'Fable 5.1 coming soon from @AnthropicAI'. It trended twice — 'Anthropic Quietly Rolls Out Claude Fable 5.1 Update' (~1.8K posts) and 'Anthropic's Claude 5.1 Models Spark Release Buzz' (~142 posts). Timing claims firmed and then failed in-window: @synthwavedd said launch 'as soon as tomorrow', @kimmonismus said on 2026-08-27 09:25 UTC that 'today is release day', and as of this run's 17:43 UTC cutoff there is no Anthropic announcement — recorded as an unfulfilled prediction, not as evidence. Scope creep recorded but deliberately not adopted: @kimmonismus expects Opus 5.1 / Sonnet 5.1 alongside Fable 5.1 and @vepsi__ labels the Opus leg 'NOT CONFIRMED YET'; that entire leg traces to one leaker chain with no probe, no artifact and no routing observation, so no sibling ticket is created — if a 5.1 wave ships, siblings get their own tickets then. Status stays in-testing; verification stays partial, because the probe is one leak account's test relayed by one aggregator and neither posted the output they actually got. confirmed needs Anthropic."
+  - ts: 2026-09-07
+    change: "RELEASED. Anthropic shipped Claude Fable 5.1 on 2026-09-01 18:13 UTC — live immediately in Claude Code and on the Claude Platform as claude-fable-5-1, launched alongside Claude Mythos 5.1 (same underlying model, different safeguards; only Fable 5.1 is GA). Pricing held at Fable 5 levels with API cache reads cut 75% to $0.25/MTok. Anthropic's published evals: Terminal-Bench 4.0 in Claude Code 55.8% vs Fable 5 42% and Opus 5 52.3%; ahead of both across agentic coding and computer use. Reported specs via @MilksandMatcha: 1M context, 128K max output, June 2026 cutoff. Shipped with it: a reset of 5-hour and weekly limits for all users, Enterprise Frontier Safeguards (@alexalbert__), an anti-distillation Messages API change blocking context edits prior to thinking blocks for new accounts, and cyber-related fallbacks to Opus down ~40% from Fable 5. Status in-testing -> released, verification partial -> confirmed on Anthropic's own launch posts. Third-party: #1 on Agent Arena across 6.7K+ real sessions at $4.14/task (@WesRoth 2026-09-07); @simonw published notes on the Fable 5.1 system prompt diff."
 ---
 
 Anthropic pulled **Claude Fable 5** in mid-June under an export-control

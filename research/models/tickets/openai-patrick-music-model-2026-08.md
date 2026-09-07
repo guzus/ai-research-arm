@@ -3,7 +3,7 @@ slug: openai-patrick-music-model-2026-08
 title: OpenAI internal music-generation model, codename "Patrick"
 company: OpenAI
 model: Patrick (music generation, codename)
-status: rumored
+status: closed
 status_note: |
   **@iruletheworldmo** (2026-08-22 17:26 UTC, ~1,070 likes), tagged
   BREAKING: "after breaking the ssi and astra release and being the first
@@ -32,6 +32,14 @@ status_note: |
   Recorded because a music-generation model would be a **new modality
   line** for OpenAI, and because codename leaks in this lane have
   repeatedly preceded artifacts by weeks.
+
+  **2026-09-07 — CLOSED, stale-rumor-unverified.** The "Patrick" music-generation
+  codename has been `rumored` / `unverified` since 2026-08-23 with no
+  corroboration in 15 cycles. Music generation was actively in the news this week
+  — Google shipped **Lyria 3.5** to the Gemini app, AI Studio and the Gemini API
+  ([[google-lyria-3-5-2026-07]]) — and no relay connected that coverage to an
+  OpenAI counterpart. Closed per the ≥15-cycle unverified trigger; a real OpenAI
+  music model would get a fresh ticket referencing this slug.
 expected: "Zero-artifact single-leaker claim as of 2026-08-22, with a vague 'later than next week' window. Pending: any artifact — API string, console route, model card — or an OpenAI acknowledgement. Closes as stale-rumor-unverified if nothing corroborates within ~15 cycles"
 labels:
   - openai
@@ -43,12 +51,14 @@ verification: unverified
 sources:
   - "@iruletheworldmo"
 created_at: 2026-08-23
-updated_at: 2026-08-23
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-07
+closed_at: 2026-09-07
+closed_reason: "stale-rumor-unverified"
 history:
   - ts: 2026-08-23
     change: "Created — @iruletheworldmo claims OpenAI has an internal music-generation model codenamed 'Patrick' (2026-08-22 17:26 UTC, ~1,070 likes), sourcing it to 'basically the head of codex globally' and citing his own prior ssi/astra/'doug'/'dougtrio' breaks as track record. Later the same evening he implied a release window beyond the coming week ('im not talking about patrick, that's later'). Circulated far enough to reach X trending as a headline (~147 posts) but with zero artifact — no API string, console route, model card, or OpenAI acknowledgement — and a single unnamed source. Status rumored, verification unverified per the contract's single-source-tease rule."
+  - ts: 2026-09-07
+    change: "CLOSED — stale-rumor-unverified. The 'Patrick' OpenAI music-generation codename has been rumored/unverified since 2026-08-23 with no corroboration in 15 daily cycles. Music generation had a live news cycle in the same window — Google rolled Lyria 3.5 out to the Gemini app, AI Studio and the Gemini API ([[google-lyria-3-5-2026-07]]) — and no relay tied that coverage to an OpenAI counterpart, nor did OpenAI's four public posts across 2026-09-01..09-05 mention one. Closed per the docs/model-tickets.md >=15-cycle unverified trigger; a real OpenAI music model gets a new ticket referencing this slug."
 ---
 
 A codename with no artifact is the weakest evidence class this lane

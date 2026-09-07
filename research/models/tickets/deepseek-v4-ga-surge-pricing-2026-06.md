@@ -3,7 +3,7 @@ slug: deepseek-v4-ga-surge-pricing-2026-06
 title: DeepSeek dates V4 GA for mid-July with first-of-its-kind API surge pricing
 company: DeepSeek
 model: DeepSeek V4 (Pro + Flash)
-status: released
+status: closed
 status_note: |
   Reported **2026-06-29/30** across 10+ independent accounts relaying a
   **DeepSeek email to API users**: **V4-Pro and V4-Flash** (~1M context) leave
@@ -35,6 +35,15 @@ status_note: |
   and exact-pricing gaps from the original filing persist for the rate-card
   specifics. Status advances confirmed → released; verification advances
   partial → confirmed.
+
+  **2026-09-07 — CLOSED, released-and-aged.** DeepSeek V4 (Pro + Flash) has been
+  generally available with the surge-pricing scheme in place since 2026-07-31, 38
+  days ago. The only DeepSeek signal in this cycle's window is downstream
+  ecosystem use — @UnslothAI one-click GGUFs for DeepSeek-V4-Flash (2026-09-03),
+  and several accounts adopting the DeepSeek harness — which is normal coverage of
+  a shipped product, not a change to the release or its pricing. DeepSeek's live
+  storylines have moved to compute ([[deepseek-huawei-ascend-950dt-2026-09]]) and
+  funding ([[deepseek-second-round-2026-07]]).
 expected: "GA live 2026-07-31 in public beta (official API, agent-capability upgrade, native Responses API + Codex support). Pending: an official DeepSeek pricing page resolving the conflicting $0.14/$0.28 vs $0.28/$0.87 per-Mtok figures, and confirmation of open weights release"
 labels:
   - frontier-model
@@ -51,14 +60,16 @@ sources:
   - https://x.com/alephantai/status/2071621413711094240
   - https://x.com/AndrewCurran_/status/2071590515909480648
 created_at: 2026-06-30
-updated_at: 2026-07-31
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-07
+closed_at: 2026-09-07
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-06-30
     change: "Created — DeepSeek emailed API users (relayed 2026-06-29/30 by 10+ accounts) that V4-Pro and V4-Flash (~1M context) leave preview for mid-July GA, paired with first-of-its-kind LLM time-of-day surge pricing: peak hours ~2× off-peak (relayed as 9–12 and 14–18 Beijing time, off-peak flat). Mid-July date corroborated by @AndrewCurran_. V4-Flash already in wide use, so 'V4' = full GA. Status confirmed (consistent multi-account email relay + Curran corroboration); verification partial (peak windows diverge across reposters, no official pricing page yet). Distinct from the May permanent 75% V4-Pro price cut ([[deepseek-v4-pro-price-cut-2026-05]]) and the V4 Vision turn-on ([[deepseek-v4-vision-2026-06]])."
   - ts: 2026-07-31
     change: "GA landed — official V4-Flash API now LIVE in public beta (@deepseek_ai primary), massively upgraded agent capabilities, native Responses API support, full Codex adaptation. Corroborated by @kimmonismus and @AndrewCurran_. Reported MoE 284B total/~13B active. Pricing figures conflict across secondary relays (~$0.14/$0.28 vs ~$0.28/$0.87 per Mtok) — unresolved pending an official pricing page; open weights reported 'coming shortly' but not yet DeepSeek-primary. A separate single-account claim of renewed 2x peak surge pricing is unconfirmed, not carried forward. Status confirmed → released; verification partial → confirmed."
+  - ts: 2026-09-07
+    change: "CLOSED — released-and-aged. DeepSeek V4 (Pro + Flash) has been GA with its surge-pricing scheme since 2026-07-31 (38 days). The only DeepSeek signal in the 2026-09-01..09-07 window is downstream ecosystem adoption — @UnslothAI one-click GGUFs for DeepSeek-V4-Flash on 2026-09-03, plus several accounts migrating to the DeepSeek harness — which is normal coverage of a shipped product rather than a change to the release or its pricing. Closed per the four-week released trigger; DeepSeek's active storylines continue on [[deepseek-huawei-ascend-950dt-2026-09]] and [[deepseek-second-round-2026-07]]."
 ---
 
 Reported **2026-06-29/30** across 10+ independent accounts relaying a

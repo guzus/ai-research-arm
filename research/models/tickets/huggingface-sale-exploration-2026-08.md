@@ -1,6 +1,6 @@
 ---
 slug: huggingface-sale-exploration-2026-08
-title: NVIDIA agrees to acquire Hugging Face for $12.9B (ticket opened as a sale exploration)
+title: "NVIDIA acquires Hugging Face — $12.93B, agreed 2026-09-03"
 company: Hugging Face / NVIDIA
 model: null
 status: confirmed
@@ -118,14 +118,36 @@ status_note: |
   concentration question, and antitrust review is raised only by low-reach
   aggregator commentary here, not by any named outlet. Recorded as an open
   question, not a finding.
-expected: "As of 2026-08-27: The Information reports NVIDIA has AGREED to acquire Hugging Face for $12.9B (~80x the ~$150M annualized revenue, ~3x the $4.5B 2023 mark), carried by the outlet's own account and its byline reporter @amir, with TechCrunch and Reuters-linked coverage matching the figure. Neither company has issued a statement; an HF employee explicitly excluded the deal from an open AMA. Pending: an NVIDIA or Hugging Face confirmation, deal terms and structure, regulatory/antitrust review of a chip vendor owning the default open-weights host, and what changes for Hub distribution, the CUDA-neutrality of hosted inference, and Nemotron"
+
+  **2026-09-03 — the exploration resolved into a signed deal.** NVIDIA agreed
+  to acquire Hugging Face for **$12,930,300,000** (@ns123abc, 2026-09-03 13:38
+  UTC, quoting Jensen Huang: "Thank you @ClementDelangue for coming to me"). This
+  is corroborated first-hand rather than by aggregators: Hugging Face staff
+  announced the transition in their own names the same day — @NielsRogge
+  ("Been working @huggingface for 5 years / Officially part of @nvidia now!!"),
+  @mervenoyann ("super happy to join @nvidia"), with congratulations from
+  @_philschmid, @TheAhmadOsman, @AravSrinivas and @alexocheema, the last quoting
+  deal language about "keeping the platform open, independent and compute
+  agnostic" and "empowering 100 million AI builders to own their intelligence
+  rather than rent it."
+
+    Verification advances partial -> confirmed on those first-person employee
+  statements. Status stays `confirmed` rather than `released`, matching how this
+  ticket set treats announced-but-unclosed M&A ([[stripe-openrouter-acquisition-2026-08]],
+  [[openai-ona-acquisition-2026-06]]). @GavinSBaker's 2026-09-04 read is that
+  "Jensen is likely to bring American open-weight AI to the frontier," possibly
+  via a multi-billion-dollar Nemotron v5-6 training run, and that the parallel
+  Poolside transaction ([[nvidia-poolside-license-2026-08]]) "may end up mattering
+  even more." The obvious thing to watch is the one @vibeconnectfyi flagged:
+  NVIDIA says it will keep Hugging Face open — check model access and free tiers.
+expected: "Deal AGREED and announced 2026-09-03 at $12,930,300,000; Hugging Face staff already describe themselves as part of NVIDIA. Open: regulatory review, and whether the 'open, independent and compute agnostic' commitment survives contact with model access and free tiers."
 labels:
   - hugging-face
   - nvidia
   - open-weights
   - infrastructure
   - m-and-a
-verification: partial
+verification: confirmed
 sources:
   - "@dongwukeji"
   - https://x.com/dongwukeji/status/2091782952657244467
@@ -143,8 +165,15 @@ sources:
   - "@mervenoyann"
   - "@theo"
   - "@MikeBradleyAI"
+  - https://x.com/ns123abc/status/2095506610718155083
+  - https://x.com/NielsRogge/status/2095527689901752532
+  - https://x.com/mervenoyann/status/2095486409326952489
+  - https://x.com/GavinSBaker/status/2095867284434596090
+  - "@_philschmid"
+  - "@alexocheema"
+  - "@AravSrinivas"
 created_at: 2026-08-24
-updated_at: 2026-08-27
+updated_at: 2026-09-07
 closed_at: null
 closed_reason: null
 history:
@@ -154,6 +183,8 @@ history:
     change: "Financials and process detail arrive. The Information (via @rohanpaul_ai 2026-08-25 01:27 UTC) reports annualized revenue jumped 50% to more than $150M in two months, driven by paid compute, storage and subscriptions around the model hub — the first figure that makes the ask legible, implying roughly an 85x forward multiple at $13B. @mark_k, citing Business Insider, says the company is working with a bank to gauge acquisition interest at $13B+ with no bidder named, and notes the ask is almost 3x its $4.5B 2023 valuation; @ValonHajredini adds the founders' posture that community loyalty means a sale is no sure thing. @stretchcloud argues the growth is infrastructure-layer (caching, bandwidth, inference endpoints) rather than enterprise contracts or licensing, so the cash flow is defended by data gravity — analysis, not a disclosed figure. Status stays rumored: a retained bank gauging interest with no named bidder and founders publicly hedging is still a process. Verification stays partial — The Information now joins Reuters/BI as a third named outlet corroborating the process, but there is still no Hugging Face statement and no direct capture of any article."
   - ts: 2026-08-27
     change: "Status rumored -> confirmed. The bidder is NVIDIA and the deal is reported agreed at $12.9B. Overnight sequence: @AndrewCurran_ (01:03 UTC) reported NVIDIA and Hugging Face had 'serious acquisition conversations in recent weeks' at a $13B+ valuation, matching @jukan05's 'NVIDIA Seeks to Acquire Hugging Face'; 32 minutes later @AndrewCurran_ posted 'The Information is reporting that the deal is done' and @jukan05 carried the headline 'THE INFORMATION: NVIDIA AGREES TO BUY OPEN-SOURCE MODEL REPOSITORY HUGGING FACE FOR $12.9 BILLION'. @theinformation's own account RT'd its byline reporter @amir ('Nvidia agrees to take Hugging Face for $12.9 billion'), so the outlet is behind the scoop directly rather than through a relay; TechCrunch and a Reuters-linked aggregator carry the same figure independently. Verification held at partial on purpose: no NVIDIA statement, no Hugging Face statement, no filing, no regulatory notice, and every account says 'reportedly'/'agrees to' — signed-deal reporting, not a closed transaction. The one inside-HF datapoint is a non-denial: @mervenoyann posted a long correction about what Hugging Face's business actually is and closed with 'AMA if you have more questions (except for nvidia deal)'. Price reconciles with this ticket's own 2026-08-25 figure — The Information puts HF at roughly $150M annualized revenue, making the deal ~80x forward revenue (@kimmonismus) and ~3x the $4.5B 2023 valuation (@mark_k). Rationale on the record from @kimmonismus: NVIDIA is buying strategic control rather than sales, hedging against OpenAI/Anthropic/Google custom silicon by keeping the open-weights ecosystem on CUDA; @MikeBradleyAI reads it as stacking on [[nvidia-poolside-license-2026-08]]; @theo's GitHub/Microsoft comparison ($7.5B then vs $12.9B now) frames what is being priced. Title updated to name the buyer, slug immutable per convention. Open and unanswered in-window: antitrust review of a hardware vendor owning the default open-weights distribution point, raised only by low-reach aggregators, recorded as a question rather than a finding."
+  - ts: 2026-09-07
+    change: "DEAL AGREED. NVIDIA agreed to acquire Hugging Face for $12,930,300,000, announced 2026-09-03 (@ns123abc 13:38 UTC, quoting Jensen Huang). Corroborated first-hand the same day by Hugging Face employees announcing the transition in their own names — @NielsRogge ('Officially part of @nvidia now!!'), @mervenoyann ('super happy to join @nvidia') — with congratulations from @_philschmid, @TheAhmadOsman, @AravSrinivas and @alexocheema; @alexocheema quotes deal language on 'keeping the platform open, independent and compute agnostic' and 'empowering 100 million AI builders to own their intelligence rather than rent it.' Verification partial -> confirmed on those first-person statements; status stays confirmed (not released), matching this ticket set's convention for announced M&A. @GavinSBaker (2026-09-04) reads it as NVIDIA moving to bring American open-weight AI to the frontier, possibly via a multi-billion-dollar Nemotron v5-6 run, and argues the parallel Poolside transaction may matter more still. Title updated from the exploration framing to the agreed deal; slug unchanged per contract."
 ---
 
 **NVIDIA has agreed to acquire Hugging Face for $12.9B**, per The
