@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-07 12:20:21 UTC
+
+CYCLE: Memory allocation tightens at the wafer level, Malaysia weighs Huawei silicon, and Astra's leaderboard win meets a practitioner backlash.
+
+TOP STORIES:
+- Samsung Foundry now puts >50% of 4nm capacity on HBM4 base dies; SED says Samsung/SK hynix stockpiles are under 10 days [OK-multi]
+- Bloomberg: Malaysia evaluating Huawei Ascend 910C for a $494M sovereign AI project, Telekom Malaysia as operator [single-source]
+- Astra takes #1 on Code Arena WebDev (1,797 pts) while four heavy users independently say it lacks judgment [OK-multi]
+
+WATCH: A 4Q26 DRAM contract print settling whether pricing decelerates to ~+10% QoQ or re-accelerates toward high-teens.
+
+Full update on GitHub.
