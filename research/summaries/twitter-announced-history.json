@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-05 21:00 UTC",
-    "headline": "ANTHROPIC SHIPS SECOND ALIGNMENT PAPER IN 2.7 HOURS \u2014 MODEL SPEC MIDTRAINING DROPS HOURS AFTER SANDBAGGING RESEARCH",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-05-twitter-21h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2051758528562364902"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 21:00 UTC",
-    "headline": "ANTHROPIC USES CLAUDE MYTHOS INTERNALLY ALONGSIDE OPUS 4.7 \u2014 TONED-DOWN MYTHOS HEADED FOR PUBLIC RELEASE, CHERNY CONFIRMS",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-05-twitter-21h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2051735777105846632"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 21:00 UTC",
-    "headline": "BLACKROCK CEO LARRY FINK: COMPUTE WILL BE A NEW ASSET CLASS WITH ITS OWN FUTURES MARKET",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-05-twitter-21h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2051740930663944659"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-05 21:00 UTC",
-    "headline": "META BUILDS AGENTIC ASSISTANT FOR 3 BILLION USERS POWERED BY NEW MUSE SPARK MODEL \u2014 FT",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-05-twitter-21h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2051748884662407211"
-  },
-  {
-    "backfilled": true,
     "category": "opensource",
     "delivered_at": "2026-05-05 21:00 UTC",
     "headline": "GOOGLE SHIPS GEMMA 4 MULTI-TOKEN PREDICTION DRAFTERS \u2014 3X INFERENCE SPEEDUP AT ZERO QUALITY LOSS",
@@ -25008,5 +24972,33 @@
     "headline": "SK HYNIX 1C DRAM TO OVERTAKE 1B AS MAIN PROCESS IN Q1; FIRST 1C HBM CORE DIE LANDS AT HBM4E",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2096729233943130328"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-07 04:27:32 UTC",
+    "headline": "AUTHORS CONTEST PUBLISHER CLAIMS ON ANTHROPIC $1.5B COPYRIGHT FUND \u2014 500,000 TITLES AT ~$3,000 EACH",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2096779988662198730"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-07 04:27:32 UTC",
+    "headline": "SELL-SIDE DESK FLIPS POSITIVE ON DRAM \u2014 SEES BLENDED PRICE +10% QOQ IN 4Q26 VS HIGH-TEENS IN 3Q26",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2096781957934076397"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-07 04:27:32 UTC",
+    "headline": "OPENAI DOCS: JULY 20 SAFETY PAUSE CUT ASTRA-CLASS RL COMPUTE SHARPLY, MORE RESTRICTIONS AUG 6-7",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2096765395223110079"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-07 04:27:32 UTC",
+    "headline": "META MUSE AGENT MOVES TO CLOSED ALPHA WITH INVITE CODES, APP STORE LISTING SHOWS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2096753152926122300"
   }
 ]
