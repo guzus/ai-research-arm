@@ -34,7 +34,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-09-07T08:27:34Z",
+  "generated_at": "2026-09-07T15:06:18Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -148,7 +148,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09996,"0.6":0.09996,"0.7":0.09996,"0.8":0.09996,"0.9":0.09996,"0.95":50.0},"pareto":7,"plotted":103,"ts":"2026-09-06T12:55:51Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09996,"0.6":0.09996,"0.7":0.09996,"0.8":0.09996,"0.9":0.09996,"0.95":50.0},"pareto":8,"plotted":103,"ts":"2026-09-06T17:37:00Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09996,"0.6":0.09996,"0.7":0.09996,"0.8":0.09996,"0.9":0.09996,"0.95":50.0},"pareto":8,"plotted":103,"ts":"2026-09-06T23:00:39Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.25,"0.95":50.0},"pareto":9,"plotted":103,"ts":"2026-09-07T08:27:34Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.25,"0.95":50.0},"pareto":9,"plotted":103,"ts":"2026-09-07T08:27:34Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.25,"0.95":50.0},"pareto":10,"plotted":103,"ts":"2026-09-07T15:06:18Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -242,7 +243,7 @@
         {
           "key": "deepseekv4pro0813",
           "name": "DeepSeek V4 Pro 0813",
-          "output_usd_per_mtok": 3.1482,
+          "output_usd_per_mtok": 1.98,
           "pareto": true,
           "score": 0.47,
           "stderr": 0.05016135580465918,
@@ -1632,7 +1633,7 @@
         {
           "key": "deepseekv4pro0813",
           "name": "DeepSeek V4 Pro 0813",
-          "output_usd_per_mtok": 3.1482,
+          "output_usd_per_mtok": 1.98,
           "pareto": false,
           "score": 0.6456140350877193,
           "stderr": 0.028383475205435625,
@@ -2446,7 +2447,7 @@
         {
           "key": "deepseekv4pro0813",
           "name": "DeepSeek V4 Pro 0813",
-          "output_usd_per_mtok": 3.1482,
+          "output_usd_per_mtok": 1.98,
           "pareto": true,
           "score": 0.9861111111111112,
           "stderr": 0.00990980650017605,
@@ -3273,9 +3274,9 @@
         }
       ]
     },
-    "as_of": "2026-09-07T08:27:34Z",
+    "as_of": "2026-09-07T15:06:18Z",
     "counts": {
-      "pareto": 9,
+      "pareto": 10,
       "plotted": 103,
       "priced": 327,
       "scored": 180,
@@ -3587,15 +3588,15 @@
         "vendor": "z-ai"
       },
       {
-        "blended_usd_per_mtok": 1.5741,
+        "blended_usd_per_mtok": 0.99,
         "context_length": 1048576,
         "epoch_model": "DeepSeek V4 Pro 0813",
-        "input_usd_per_mtok": 1.0494,
+        "input_usd_per_mtok": 0.66,
         "key": "deepseekv4pro0813",
         "name": "DeepSeek V4 Pro 0813",
         "openrouter_id": "deepseek/deepseek-v4-pro-0813",
-        "output_usd_per_mtok": 3.1482,
-        "pareto": false,
+        "output_usd_per_mtok": 1.98,
+        "pareto": true,
         "price_variant": null,
         "runs": 1,
         "score": 0.9166666666666666,
@@ -5732,6 +5733,13 @@
         "vendor": "undi95"
       },
       {
+        "input_usd_per_mtok": 0.22,
+        "key": "deepseekv4flashvisionexp",
+        "name": "DeepSeek V4 Flash Vision Exp",
+        "output_usd_per_mtok": 0.66,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.7,
         "key": "hermes370binstruct",
         "name": "Hermes 3 70B Instruct",
@@ -6010,13 +6018,6 @@
         "name": "ERNIE 4.5 VL 424B A47B",
         "output_usd_per_mtok": 1.25,
         "vendor": "baidu"
-      },
-      {
-        "input_usd_per_mtok": 0.44,
-        "key": "deepseekv4flashvisionexp",
-        "name": "DeepSeek V4 Flash Vision Exp",
-        "output_usd_per_mtok": 1.32,
-        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.7,
