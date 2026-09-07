@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: The dominant AI accelerator supplier; Q2 FY27 revenue $96.2B (+106% YoY) with Data Center at $89.0B, and on 2026-09-04 agreed to buy Hugging Face for $12.93B while pledging the Hub stays open and compute-agnostic.
+description: Dominant AI-accelerator supplier; Jensen Huang declared AGI has arrived, putting Astra's training cluster at ~100K+ Grace Blackwell NVLink72 and promising 400K GPUs next, while NVIDIA is reported in talks on a $2.5B Thinking Machines stake.
 created_at: 2026-06-05
-timestamp: 2026-09-04T00:00:00Z
+timestamp: 2026-09-07T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
@@ -435,4 +436,32 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   Router that pools idle RTX PCs and Apple M4+ Macs for local Ollama /
   LM Studio inference. Beta is out for Windows, Linux, and macOS (The
   Verge; ARA daily digest 2026-09-04).
+
+## Jensen declares AGI; a contested 400K GPU follow-on (2026-09-07)
+
+- **Jensen Huang wrote that AGI has arrived**, putting
+  [[astra|GPT-6 Astra]] as "trained on ~100K+ NVIDIA Grace
+  Blackwell NVLink72" with **"400K GPUs coming online next."**
+  The count is contested — an earlier version of the post
+  reportedly said **300K**, and nobody has reconciled the three
+  figures (100K+ trained / 300K earlier / 400K next). The
+  declaration landed hours before [[openai]]'s own data showed
+  long-task success collapsing to roughly **16%**. See [[astra]]
+  (Twitter; ARA daily digest 2026-09-07).
+- **NVIDIA is reported in talks to fund
+  [[thinking-machines|Thinking Machines]]**, discussing a
+  **$2.5 billion** position as Mira Murati's lab seeks
+  **$5–6 billion at a $40 billion-plus pre-money**, with Accel
+  in talks to lead. The Information's own post confirms only
+  the ~$40B raise and "at least a few hundred million dollars
+  in annualized revenue"; the NVIDIA and Accel specifics reach
+  the record through one aggregator's paraphrase. Neither
+  NVIDIA nor Accel is named in the primary outlet's own
+  summary. See [[thinking-machines]] (The Information, Twitter;
+  ARA daily digest 2026-09-07).
+- **The same cycle puts NVIDIA on both sides of
+  [[anthropic]]'s 14.8 GW book** — hardware supplier and
+  reported investor (up to **$10B**) while Anthropic buys
+  capacity. See [[ai-capex]] (The Information via Twitter; ARA
+  daily digest 2026-09-07).
 

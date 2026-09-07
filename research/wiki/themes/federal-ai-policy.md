@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; Gottheimer and Lawler introduced a rogue-agent bill after OpenAI confirmed the wiki incident, while a White House official denied mid-September US–China AI talks.
+description: US federal and state AI governance; OpenAI and Google are reported opposing Massachusetts AI safety rules that Anthropic supports, the same day OpenAI's chief scientist asked for international coordination.
 created_at: 2026-06-03
-timestamp: 2026-09-06T00:00:00Z
+timestamp: 2026-09-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
@@ -776,6 +777,28 @@ footing for the first time in the cycle.
   Treasury Secretary Scott Bessent floated as the U.S. lead.
   Treat the calendar as unnamed-source until both sides sit
   (Reuters, AI-news sweep; ARA daily digest 2026-09-06).
+
+## Massachusetts split: two labs vs. Anthropic (2026-09-07)
+
+- **[[openai]] and [[google]] are reported opposing
+  Massachusetts AI safety rules that [[anthropic]] supports.**
+  The fight is framed as a template for how other states
+  regulate frontier models. No bill number, docket, or public
+  comment letter has been attached, and none of the three
+  companies has posted a position. This is the state-level
+  counterpart to the [[california-ai-regulation]] package —
+  a different jurisdiction, the same "who writes the first
+  template" question (The Information via Twitter; ARA daily
+  digest 2026-09-07).
+- **Jakub Pachocki's coordination ask landed the same day.**
+  [[openai]]'s chief scientist wrote that international
+  coordination on future AI development "needs to become a
+  top priority" and asked for voluntary slowdowns until
+  shared safety bars exist — on the same day his company was
+  reported to be resisting one state's attempt at exactly
+  that. Nobody has put that question to OpenAI on the record.
+  See [[openai]] (OpenAI, The Information, Twitter; ARA daily
+  digest 2026-09-07).
 
 ## Open questions
 

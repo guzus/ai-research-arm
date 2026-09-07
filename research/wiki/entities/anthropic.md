@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; an internal research model formalized Fermat's Last Theorem in 13 million Lean lines, while IPO reporting put LTBT governance under scrutiny at a prospective $2T valuation.
+description: AI safety lab behind Claude; has booked 14.8 GW of compute at a reported cost of up to $517B over a decade, largely vendor-financed, while supporting Massachusetts AI safety rules that OpenAI and Google oppose.
 created_at: 2026-05-24
-timestamp: 2026-09-05T00:00:00Z
+timestamp: 2026-09-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
@@ -1387,3 +1388,42 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   billion** Anthropic compute deal. See [[ai-capex]] (Ars
   Technica, Financial Times, The Information, TechCrunch; ARA
   daily digest 2026-09-05).
+
+## 14.8 GW booked, vendor-financed, and a Massachusetts split (2026-09-07)
+
+- **Compute commitments now have a wattage.** The Information,
+  via Twitter, says Anthropic has booked **14.8 gigawatts**
+  since October at a potential **$517 billion over ten years**
+  across AWS Trainium, [[google|Google]] TPUs, [[nvidia|Nvidia]]
+  hardware, and up to **2 GW of [[amd|AMD]] systems from 2027**.
+  The same item itemizes the vendor-financing loop: [[amazon]]
+  at **$5B with up to $20B more** against a **$100B-plus**
+  compute commitment; [[microsoft]] and Nvidia at up to **$5B**
+  and **$10B** while Anthropic buys **$30B of Azure** capacity.
+  Circular financing inflates headline commitments, so read
+  **$517B as an upper bound on optionality, not a liability**.
+  The 14.8 GW figure is now public before the
+  revenue-per-token / revenue-per-gigawatt ratios IPO buyers
+  were already asking for on 2026-09-05. See [[ai-capex]]
+  (The Information via Twitter; ARA daily digest 2026-09-07).
+- **Anthropic supports Massachusetts AI safety rules** that
+  [[openai]] and [[google]] oppose. The fight is framed as a
+  template for other states; no bill number, docket, or
+  first-party comment letter is attached. See
+  [[federal-ai-policy]] (The Information via Twitter; ARA
+  daily digest 2026-09-07).
+- **A Blender connector extends Claude** past code and office
+  software into 3D authoring, with scene debugging as the
+  worked example. Simon Willison separately posted a TIL
+  driving installed Blender from [[astra]] through two
+  refinement passes (Twitter, Bluesky; ARA daily digest
+  2026-09-07).
+- **Authors are contesting publisher claims** on the $1.5
+  billion settlement. Under the deal, authors of roughly
+  **500,000 pirated titles** are due **$3,000 per work**,
+  split 50-50 with publishers for in-print books. Writers
+  Beware documented two recurring errors — publishers claiming
+  works whose rights reverted years ago, and publishers
+  seeking 100% when entitled to half — with the Authors Guild
+  attributing it to bad record-keeping rather than misconduct
+  (TechCrunch; ARA daily digest 2026-09-07).

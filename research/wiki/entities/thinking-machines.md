@@ -4,10 +4,11 @@ title: Thinking Machines Lab
 type: entity
 aliases: ["Thinking Machines", "Thinking Machines Lab", Inkling, "Inkling-Small", Tinker, "Mira Murati"]
 tags: [frontier-lab, open-weights, multimodal, mira-murati]
-description: Mira Murati's AI lab; shipped Inkling on 2026-07-15, its first public model release — a 975B-parameter (41B active) open-weights multimodal MoE positioned against both Chinese open labs and closed US frontier players.
+description: Mira Murati's AI lab; seeking $5–6B at a $40B-plus pre-money, with NVIDIA reported in talks on a $2.5B position, after shipping Inkling on 2026-07-15.
 created_at: 2026-07-17
-timestamp: 2026-08-22T00:00:00Z
+timestamp: 2026-09-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA model ticket — Thinking Machines Inkling-Small", path: research/models/tickets/thinking-machines-inkling-small-2026-07.md}
@@ -63,6 +64,21 @@ account, corroborated within 15 minutes by @ns123abc and @kimmonismus.
   Machines is transparently paying in free inference for telemetry on how open
   models behave inside harnesses — and it doubles as a live-lab dataset play ahead
   of follow-on releases (ARA daily digest 2026-08-22).
+
+- **A $40B-plus raise, with NVIDIA reported in talks on $2.5B
+  (2026-09-07).** The Information, via Twitter, says
+  [[thinking-machines|Thinking Machines]] is seeking
+  **$5–6 billion at a $40 billion-plus pre-money**, with Accel
+  in talks to lead and [[nvidia]] discussing a **$2.5 billion**
+  position. The Information's own post confirms only the ~$40B
+  raise and "at least a few hundred million dollars in
+  annualized revenue"; the NVIDIA and Accel specifics reach the
+  record through one aggregator's paraphrase. Neither NVIDIA
+  nor Accel is named in the primary outlet's own summary. This
+  is the financing item the 2026-09-04 ingest skipped; treat
+  the $2.5B stake as contested until a principal comments.
+  See [[nvidia]] and [[ai-capex]] (The Information, Twitter;
+  ARA daily digest 2026-09-07).
 
 ## Open questions
 
