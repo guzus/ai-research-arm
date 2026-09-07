@@ -1,0 +1,442 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The final approval order records a definitive count of **482,460 works** and describes an estimated per-work payment of \"approximately $3,000,\" which it benchmarks as four times the $750 statutory minimum.",
+      "verdict": "supported",
+      "citation": "https://cdn.arstechnica.net/wp-content/uploads/2026/07/Bartz-v-Anthropic-Order-Approving-Settlement-7-20-26.pdf"
+    },
+    {
+      "id": "c2",
+      "text": "It awarded class counsel **$101,561,111** — \"nearly 6.8% percent of the non-reversionary Settlement Fund\" — applying a 3.75 multiplier to a $27,082,963 lodestar, and withheld 10% of even that pending a post-distribution accounting.",
+      "verdict": "supported",
+      "citation": "https://cdn.arstechnica.net/wp-content/uploads/2026/07/Bartz-v-Anthropic-Order-Approving-Settlement-7-20-26.pdf"
+    },
+    {
+      "id": "c3",
+      "text": "It approved roughly $2.64 million in litigation expenses, an **$18,220,000** cost reserve for settlement administration on top of the administrator's own ~$15 million estimated expenses, and cut service awards for Andrea Bartz, Charles Graeber and Kirk Wallace Johnson from the $50,000 each requested to $15,000.",
+      "verdict": "supported",
+      "citation": "https://cdn.arstechnica.net/wp-content/uploads/2026/07/Bartz-v-Anthropic-Order-Approving-Settlement-7-20-26.pdf"
+    },
+    {
+      "id": "c4",
+      "text": "- {date: 2026-03-30, headline: \"Claims deadline\", body: \"Final rate reaches 92.77% of listed works.\"}",
+      "verdict": "weak",
+      "citation": "https://publishingperspectives.com/2026/05/anthropic-settlement-appears-to-cruise-through-its-final-fairness-hearing/"
+    },
+    {
+      "id": "c5",
+      "text": "A caution the coverage has mostly skipped: **no court document states a \"Net Settlement Fund\" figure at all.**",
+      "verdict": "weak",
+      "citation": "https://authorsguild.org/news/anthropic-settlement-update-91-percent-of-books-claimed/"
+    },
+    {
+      "id": "c6",
+      "text": "The widely circulated $3,127.28 per work is one commentator's division, not an administrator number, and an earlier $1,291,350,049.74 net figure that appeared in April 2026 was computed against the *requested* $187.5 million fee, which the court then cut by roughly $86 million.",
+      "verdict": "weak",
+      "citation": "https://authorsguild.org/news/anthropic-settlement-update-91-percent-of-books-claimed/"
+    },
+    {
+      "id": "c7",
+      "text": "Under the court-approved class notice, \"the payment, by default, will be split 50-50 between authors and publishers,\" a rule the notice calls the Default Option.",
+      "verdict": "supported",
+      "citation": "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/34a80bf3-70fc-414a-8a4c-daa81b5a0caf/ANT%20-%20Long-Form%20Notice_DeadlinesSecondUpdate%201.27.26.pdf"
+    },
+    {
+      "id": "c8",
+      "text": "class counsel's September status report put the immediately distributable amount at approximately **$2,203.56 per work**, because Anthropic has funded only $1.05 billion of the $1.5 billion so far.",
+      "verdict": "supported",
+      "citation": "https://lunch.publishersmarketplace.com/2026/09/widespread-problems-as-authors-receive-anthropic-settlement-notices/"
+    },
+    {
+      "id": "c9",
+      "text": "**The first cheque is ~$2,203.56 per work, targeted for no later than 15 November 2026** — and only for works where every claimant already agrees.",
+      "verdict": "supported",
+      "citation": "https://www.taaonline.net/anthropic-settlement"
+    },
+    {
+      "id": "c10",
+      "text": "Anthropic's escrow had reportedly earned about $25 million by September 2026.",
+      "verdict": "supported",
+      "citation": "https://lunch.publishersmarketplace.com/2026/09/widespread-problems-as-authors-receive-anthropic-settlement-notices/"
+    },
+    {
+      "id": "c11",
+      "text": "Anthropic co-founder Ben Mann downloaded the 196,640-book Books3 dataset in early 2021; in June 2021 he \"downloaded in this way at least five million copies of books from Library Genesis, or LibGen, which he knew had been pirated\"; and in July 2022 Anthropic took at least two million more from the Pirate Library Mirror.",
+      "verdict": "supported",
+      "citation": "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf"
+    },
+    {
+      "id": "c12",
+      "text": "The order's aggregate: Anthropic \"thereby pirated over seven million copies of books.\"",
+      "verdict": "supported",
+      "citation": "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf"
+    },
+    {
+      "id": "c13",
+      "text": "Judge Alsup wrote the class definition himself and limited it to works \"in the versions of LibGen or PiLiMi downloaded by Anthropic,\" excluding Books3 entirely on the ground that it carried \"fewer fields of metadata, less routinely complete files.\"",
+      "verdict": "supported",
+      "citation": "https://chatgptiseatingtheworld.com/wp-content/uploads/2025/07/Class-Certification-Order-on-pirated-books-class-Bartz-v.-Anthropic-July-17-20250-.pdf"
+    },
+    {
+      "id": "c14",
+      "text": "notice reached 594,945 potential class members covering 482,374 works, or 99.98% of the list.",
+      "verdict": "supported",
+      "citation": "https://cdn.arstechnica.net/wp-content/uploads/2026/07/Bartz-v-Anthropic-Order-Approving-Settlement-7-20-26.pdf"
+    },
+    {
+      "id": "c15",
+      "text": "- {label: \"Unique works, estimated\", value: \"~4,000,000\", pct: 57}",
+      "verdict": "weak",
+      "citation": null
+    },
+    {
+      "id": "c16",
+      "text": "The order found \"the use of the books at issue to train Claude and its precursors was exceedingly transformative and was a fair use under Section 107,\" and elsewhere calls it \"spectacularly so.\"",
+      "verdict": "supported",
+      "citation": "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf"
+    },
+    {
+      "id": "c17",
+      "text": "\"Creating a permanent, general-purpose library was not itself a fair use excusing Anthropic's piracy,\" the order says, adding that \"there is no carveout, however, from the Copyright Act for AI companies.\"",
+      "verdict": "supported",
+      "citation": "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf"
+    },
+    {
+      "id": "c18",
+      "text": "Alsup held that fair use on a narrow, non-training rationale: \"The print original was destroyed. One replaced the other.\"",
+      "verdict": "supported",
+      "citation": "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf"
+    },
+    {
+      "id": "c19",
+      "text": "statutory damages at $150,000 per work \"could exceed the entire gross domestic product of each of 171 countries, including Switzerland,\" and \"even a small risk of incurring such extraordinary damages is coercive enough to force almost any defendant to settle.\"",
+      "verdict": "supported",
+      "citation": "https://ccianet.org/wp-content/uploads/2025/08/TechNet-CCIA-et-al.-Amicus-Bartz-v.-Anthropic-CA9.pdf"
+    },
+    {
+      "id": "c20",
+      "text": "Anthropic's Rule 23(f) petition was filed on 1 August 2025 and its stay request denied ten days later, leaving a 1 December trial date intact; the settlement was noticed on 26 August.",
+      "verdict": "weak",
+      "citation": "https://chatgptiseatingtheworld.com/2025/08/05/anthropic-filed-rule-23f-petition-to-appeal-judge-alsups-class-certification-in-9th-circuit/"
+    },
+    {
+      "id": "c21",
+      "text": "The Settlement Agreement fixes one date for the whole class: \"'Download Date' means August 10, 2022 for purposes of this Agreement.\"",
+      "verdict": "supported",
+      "citation": "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/d8578720-9fd0-4c27-9c7f-041bac826869/Class%20Action%20Settlement%20Agreement.pdf"
+    },
+    {
+      "id": "c22",
+      "text": "The Authors Guild's reading, published to its members on 4 September 2026, is that \"an author whose rights reverted before August 10, 2022 … should be entitled to 100 percent of the funds for the title,\" while \"if rights in an author's work reverted after August 10, 2022, the publisher may have a valid claim.\"",
+      "verdict": "supported",
+      "citation": "https://authorsguild.org/news/important-information-regarding-anthropic-copyright-settlement-claim-notices/"
+    },
+    {
+      "id": "c23",
+      "text": "unresolved splits go to Special Master **Theodore K. Cheng**, appointed 25 November 2025 \"at the rate of $500 per hour,\" whose determinations are final and binding without appeal.",
+      "verdict": "supported",
+      "citation": "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/255f15f4-cbba-466b-a868-75ba3853db93/2025-11-25%20Order%20Approving%20And%20_dckt%20501_0_.pdf"
+    },
+    {
+      "id": "c24",
+      "text": "Cheng's fees come from the common fund, not from the disputants — so escalation is free to the claimant and negative-sum for the class.",
+      "verdict": "supported",
+      "citation": "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/255f15f4-cbba-466b-a868-75ba3853db93/2025-11-25%20Order%20Approving%20And%20_dckt%20501_0_.pdf"
+    },
+    {
+      "id": "c25",
+      "text": "for Education Works there is no default at all, and claimants must \"make a good-faith representation regarding the percentage of recovery they believe they are entitled to receive.\"",
+      "verdict": "supported",
+      "citation": "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/34a80bf3-70fc-414a-8a4c-daa81b5a0caf/ANT%20-%20Long-Form%20Notice_DeadlinesSecondUpdate%201.27.26.pdf"
+    },
+    {
+      "id": "c26",
+      "text": "a **sole owner** \"holds all rights to reproduce the work\" — a category whose enumerated examples include \"an author whose rights in the work have reverted from the publisher.\"",
+      "verdict": "supported",
+      "citation": "https://www.anthropiccopyrightsettlement.com/claim-form"
+    },
+    {
+      "id": "c27",
+      "text": "the portal invites a claimant to \"upload supporting documentation for this work, if you choose to do so\"",
+      "verdict": "supported",
+      "citation": "https://www.anthropiccopyrightsettlement.com/allocation-portal-instructions"
+    },
+    {
+      "id": "c28",
+      "text": "catalogued more than twenty publishers filing **100% allocation claims on in-print titles** where the default is 50/50 — \"odd how many university presses are in this category\"",
+      "verdict": "supported",
+      "citation": "https://writerbeware.blog/2026/09/04/anthropic-copyright-settlement-publishers-are-making-incorrect-claims-on-authors-payouts/"
+    },
+    {
+      "id": "c29",
+      "text": "seven titles reverted between 1996 and 2008 drawing a 50% publisher claim, a 2009-reverted title drawing a 100% third-party claim.",
+      "verdict": "supported",
+      "citation": "https://writerbeware.blog/2026/09/04/anthropic-copyright-settlement-publishers-are-making-incorrect-claims-on-authors-payouts/"
+    },
+    {
+      "id": "c30",
+      "text": "The author April Henry found HarperCollins claiming a book that had reverted to her at least seventeen years earlier, and resolved it by uploading an agent-supplied reversion letter.",
+      "verdict": "weak",
+      "citation": "https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement/"
+    },
+    {
+      "id": "c31",
+      "text": "Literary agencies — six of them, by author reports — filed for 15–25% commissions, though agents are not rightsholders and the class is defined as copyright owners; at least one agent's explanation is that publishers pulled payee data from the agency clause",
+      "verdict": "weak",
+      "citation": "https://writerbeware.blog/2026/09/04/anthropic-copyright-settlement-publishers-are-making-incorrect-claims-on-authors-payouts/"
+    },
+    {
+      "id": "c32",
+      "text": "a firm soliciting as Phoenix Trade Finance began offering claimants \"up to 1500 USD per book\" in immediate cash",
+      "verdict": "supported",
+      "citation": "https://writerbeware.blog/2026/09/04/anthropic-copyright-settlement-publishers-are-making-incorrect-claims-on-authors-payouts/"
+    },
+    {
+      "id": "c33",
+      "text": "Kensington's chief executive indicated the 100% election was not intended, and at least five publishers said they were correcting filings.",
+      "verdict": "supported",
+      "citation": "https://writerbeware.blog/2026/09/04/anthropic-copyright-settlement-publishers-are-making-incorrect-claims-on-authors-payouts/"
+    },
+    {
+      "id": "c34",
+      "text": "Authors Guild chief executive Mary Rasenberger told the *New York Times* it was not \"a grab by the publishers.\"",
+      "verdict": "supported",
+      "citation": "https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement/"
+    },
+    {
+      "id": "c35",
+      "text": "- {label: \"Educational publishers on textbook titles (reported)\", value: \"75–90%\", pct: 90}",
+      "verdict": "supported",
+      "citation": "https://writerbeware.blog/2026/09/04/anthropic-copyright-settlement-publishers-are-making-incorrect-claims-on-authors-payouts/"
+    },
+    {
+      "id": "c36",
+      "text": "in December 2025 Sage emailed textbook authors directing them to claim their royalty rate and warning a different split \"could result in a delay,\" withdrawing only under a Textbook & Academic Authors Association motion to compel a curative notice.",
+      "verdict": "supported",
+      "citation": "https://publishingperspectives.com/2026/01/sage-textbook-authors-settle-dispute-over-anthropic-settlement-guidance/"
+    },
+    {
+      "id": "c37",
+      "text": "Penguin Random House's own author FAQ explains the 50/50 default and never mentions reversion, out-of-print status or terminated grants — the single fact that would let an author claim the full amount.",
+      "verdict": "supported",
+      "citation": "https://www.penguinrandomhouse.com/bartz-v-anthropic-copyright-settlement-faq-for-authors/"
+    },
+    {
+      "id": "c38",
+      "text": "For out-of-print unreverted books first published before 1987, \"the Registry will pay 65% to the author and 35% to the publisher\"; from 1987, 50/50.",
+      "verdict": "supported",
+      "citation": "https://cases.justia.com/federal/appellate-courts/ca2/13-4829/45/2.pdf"
+    },
+    {
+      "id": "c39",
+      "text": "And the common claim that Judge Chin rejected Google Books over its allocation rule is simply false: he mentions Attachment A exactly once, in passing, and rejected the deal because it \"exceeds what the Court may permit under Rule 23,\" because orphan works are \"more suited for Congress,\" and because it \"would give Google a de facto monopoly over unclaimed works.\"",
+      "verdict": "supported",
+      "citation": "https://static.case.law/f-supp-2d/770/html/0666-01.html"
+    },
+    {
+      "id": "c40",
+      "text": "the Second Circuit vacated approval because \"the interests of class members who hold only Category C claims fundamentally conflict with those of class members who hold Category A and B claims,\" and held that \"only the creation of subclasses, and the advocacy of an attorney representing each subclass, can ensure that the interests of that particular subgroup are in fact adequately represented.\"",
+      "verdict": "supported",
+      "citation": "https://static.case.law/f3d/654/html/0242-01.html"
+    },
+    {
+      "id": "c41",
+      "text": "That is precisely the intraclass-conflict theory Professor Lea Bishop raised against Bartz — that the distribution plan systematically favours publishers over authors.",
+      "verdict": "weak",
+      "citation": "https://www.authorsalliance.org/2026/04/14/bartz-v-anthropic-settlement-update-new-date-and-time-for-the-fairness-hearing-you-can-join-online-and-unsealed-objections/"
+    },
+    {
+      "id": "c42",
+      "text": "the 30-day window closed on 19 August 2026 with only fee-award appeals from firms excluded from the fee.",
+      "verdict": "weak",
+      "citation": "https://chatgptiseatingtheworld.com/2026/08/18/update-publishers-coordination-counsel-files-notice-of-appeal-in-bartz-of-fee-award-does-not-affect-payout-schedule/"
+    },
+    {
+      "id": "c43",
+      "text": "leaving his conflict with Judge Chhabria — who wrote four days later that market dilution \"will often cause plaintiffs to decisively win the fourth factor\" — permanently unresolved.",
+      "verdict": "unsupported",
+      "citation": "https://caselaw.findlaw.com/court/us-dis-crt-n-d-cal/117422847.html"
+    },
+    {
+      "id": "c44",
+      "text": "the Series F post, three days earlier, put the company at \"$13 billion\" raised on a \"$183 billion post-money valuation\" with run-rate \"over $5 billion.\"",
+      "verdict": "supported",
+      "citation": "https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation"
+    },
+    {
+      "id": "c45",
+      "text": "Anthropic raised $30 billion at a $380 billion post-money in February 2026 and $65 billion at $965 billion in May.",
+      "verdict": "supported",
+      "citation": "https://www.anthropic.com/news/series-h"
+    },
+    {
+      "id": "c46",
+      "text": "Eleven months later the reported run-rate was above $65 billion.",
+      "verdict": "supported",
+      "citation": "https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b/"
+    },
+    {
+      "id": "c47",
+      "text": "Anthropic filed its S-1 confidentially on 1 June 2026, so there is no audited revenue, loss, cash-burn or litigation-reserve figure.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c48",
+      "text": "The Settlement Agreement accelerates both $450 million installments to thirty days after a qualifying financing above $5 billion or an IPO above $10 billion in gross proceeds.",
+      "verdict": "supported",
+      "citation": "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/d8578720-9fd0-4c27-9c7f-041bac826869/Class%20Action%20Settlement%20Agreement.pdf"
+    },
+    {
+      "id": "c49",
+      "text": "The agreement also contains a $3,000-per-work escalator above a 500,000-work threshold — which never fired, because the final list came in below it, capping the class's upside rather than raising Anthropic's payment.",
+      "verdict": "supported",
+      "citation": "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/d8578720-9fd0-4c27-9c7f-041bac826869/Class%20Action%20Settlement%20Agreement.pdf"
+    },
+    {
+      "id": "c50",
+      "text": "It is true that the Microsoft/HarperCollins AI licence paid \"a per-title fee of US$2,500\" to the author and \"an equal amount of US$2,500\" to the publisher — $5,000 gross, against ~$3,000 settled.",
+      "verdict": "weak",
+      "citation": "https://bernoff.com/blog/why-i-took-the-2500-check-to-license-my-book-for-ai"
+    },
+    {
+      "id": "c51",
+      "text": "Sony Music Publishing's August 2026 complaint against Anthropic pleads that $1.5 billion \"is obviously not a large enough settlement to deter infringing conduct\"",
+      "verdict": "unsupported",
+      "citation": "https://www.courtlistener.com/docket/72199828/concord-music-group-inc-v-anthropic-pbc/"
+    },
+    {
+      "id": "c52",
+      "text": "a January 2026 music-publisher suit covering 21,231 works names Dario Amodei and Ben Mann individually, with BMG, Round Hill and Sony Music Publishing actions following through August 2026.",
+      "verdict": "weak",
+      "citation": "https://www.courtlistener.com/docket/72199828/concord-music-group-inc-v-anthropic-pbc/"
+    },
+    {
+      "id": "c53",
+      "text": "the Department of Justice filed a Statement of Interest under 28 U.S.C. § 517 in the OpenAI MDL, arguing \"it would be problematic—and legally incorrect—to impose broad copyright liability that would generally render training of AI models impermissible without licensing,\" and calling the *Kadrey* court's fourth-factor application \"deeply flawed.\"",
+      "verdict": "supported",
+      "citation": "https://chatgptiseatingtheworld.com/wp-content/uploads/2026/09/Statement-of-Interest-of-the-United-States-on-Fair-Use-Sept-1-2026-gov.uscourts.nysd_.640396.1682.0.pdf"
+    },
+    {
+      "id": "c54",
+      "text": "A footnote tells Judge Stein the Register of Copyrights' contrary view is entitled to no deference.",
+      "verdict": "supported",
+      "citation": "https://chatgptiseatingtheworld.com/wp-content/uploads/2026/09/Statement-of-Interest-of-the-United-States-on-Fair-Use-Sept-1-2026-gov.uscourts.nysd_.640396.1682.0.pdf"
+    },
+    {
+      "id": "c55",
+      "text": "it defends the training stage and says nothing about acquisition.",
+      "verdict": "supported",
+      "citation": "https://chatgptiseatingtheworld.com/wp-content/uploads/2026/09/Statement-of-Interest-of-the-United-States-on-Fair-Use-Sept-1-2026-gov.uscourts.nysd_.640396.1682.0.pdf"
+    },
+    {
+      "id": "c56",
+      "text": "on 18 March 2026 the government reported that \"a broad copyright exception with opt-out is no longer the government's preferred way forward,\" after a consultation drawing 11,520 responses, and committed to no legislation \"until we are confident that they will meet our objectives.\"",
+      "verdict": "supported",
+      "citation": "https://www.gov.uk/government/publications/report-and-impact-assessment-on-copyright-and-artificial-intelligence/report-on-copyright-and-artificial-intelligence"
+    },
+    {
+      "id": "c57",
+      "text": "The Hawley–Blumenthal bill (S. 2367) and the TRAIN Act (S. 2455) were introduced within eight days of each other in July 2025 — before the settlement — and neither advanced.",
+      "verdict": "unsupported",
+      "citation": "https://artificialintelligenceact.eu/article/53/"
+    },
+    {
+      "id": "c58",
+      "text": "The EU's AI Omnibus delayed high-risk obligations to 2027–2028 but left Article 53 alone: general-purpose-AI providers must still publish \"a sufficiently detailed summary about the content used for training,\" and Commission enforcement powers began on 2 August 2026 as scheduled.",
+      "verdict": "weak",
+      "citation": "https://artificialintelligenceact.eu/article/53/"
+    },
+    {
+      "id": "c59",
+      "text": "GEMA beat OpenAI in Munich in November 2025 and Suno in August 2026, winning injunctions and disclosure orders both times — and **no damages figure at all** in either.",
+      "verdict": "weak",
+      "citation": "https://www.technollama.co.uk/victory-for-gema-in-germany-against-openai"
+    },
+    {
+      "id": "c60",
+      "text": "Getty Images abandoned its primary copyright and database-right claims mid-trial in London on a territoriality concession and lost the surviving secondary-infringement claim, the court holding that \"the Model itself does not store any of those Copyright Works; the model weights are not themselves an infringing copy.\"",
+      "verdict": "supported",
+      "citation": "https://www.lw.com/en/insights/getty-images-v-stability-ai-english-high-court-rejects-secondary-copyright-claim"
+    },
+    {
+      "id": "c61",
+      "text": "The Delhi High Court refused ANI an interim injunction against OpenAI in July 2026.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c62",
+      "text": "The Copyright Office's Part 3 report on generative-AI training, meanwhile, has sat as a pre-publication draft since 9 May 2025 with no final version, and Register Shira Perlmutter was removed within a day of its release and is still litigating that removal.",
+      "verdict": "weak",
+      "citation": "https://www.copyright.gov/ai/"
+    },
+    {
+      "id": "c63",
+      "text": "So $1.5 billion bought a release for input-side conduct through 25 August 2025, plus an obligation to destroy the LibGen and PiLiMi files within thirty days of judgment and certify it — with an express carve-out preserving the scanned copies, and **no obligation whatsoever to retrain a model or delete a weight.**",
+      "verdict": "supported",
+      "citation": "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/d8578720-9fd0-4c27-9c7f-041bac826869/Class%20Action%20Settlement%20Agreement.pdf"
+    },
+    {
+      "id": "c64",
+      "text": "An objector's request for deletion of the models was overruled as beyond the settlement's scope.",
+      "verdict": "supported",
+      "citation": "https://cdn.arstechnica.net/wp-content/uploads/2026/07/Bartz-v-Anthropic-Order-Approving-Settlement-7-20-26.pdf"
+    },
+    {
+      "id": "c65",
+      "text": "the closest thing on the record is Judge Martínez-Olguín's observation that \"success at trial was not assured, and a loss would have left the Class with no recourse.\"",
+      "verdict": "supported",
+      "citation": "https://cdn.arstechnica.net/wp-content/uploads/2026/07/Bartz-v-Anthropic-Order-Approving-Settlement-7-20-26.pdf"
+    },
+    {
+      "id": "c66",
+      "text": "- {date: 2025-09-08, headline: \"Preliminary approval refused\", body: \"Alsup demands a Works List, claim form and allocation protocol; grants approval on 25 September.\"}",
+      "verdict": "weak",
+      "citation": "https://www.publishersweekly.com/pw/by-topic/digital/copyright/article/98552-judge-delays-preliminary-approval-in-anthropic-copyright-settlement.html"
+    },
+    {
+      "id": "c67",
+      "text": "the ownership-assessment framing is the Authors Guild's gloss, not language I could verify in the Plan of Allocation, which is not machine-readable on the administrator's document index.",
+      "verdict": "supported",
+      "citation": "https://www.anthropiccopyrightsettlement.com/documents"
+    },
+    {
+      "id": "c68",
+      "text": "He then required an ISBN or ASIN plus US copyright registration within five years of publication and before Anthropic's download, or within three months of publication.",
+      "verdict": "supported",
+      "citation": "https://chatgptiseatingtheworld.com/wp-content/uploads/2025/07/Class-Certification-Order-on-pirated-books-class-Bartz-v.-Anthropic-July-17-20250-.pdf"
+    },
+    {
+      "id": "c69",
+      "text": "matched on two independent tracks — US Copyright Office records and the Bowker/ISBNdb commercial databases",
+      "verdict": "supported",
+      "citation": "https://www.anthropiccopyrightsettlement.com/search-tips"
+    },
+    {
+      "id": "c70",
+      "text": "Luke McDonagh of the LSE: \"This kind of sum—$3,000 per work—is manageable for a firm valued as highly as Anthropic and the other large AI firms,\" adding \"It may be less so for smaller firms.\"",
+      "verdict": "supported",
+      "citation": "https://fortune.com/2025/09/05/anthropic-reaches-1-5-billion-settlement-with-authors-in-landmark-copyright-case/"
+    },
+    {
+      "id": "c71",
+      "text": "Class counsel's own description: the settlement \"does not release any claims – past or future – based on the output\" of AI models, and \"does not give Anthropic a license or permission for future AI training.\"",
+      "verdict": "supported",
+      "citation": "https://www.susmangodfrey.com/wins/susman-godfrey-secures-1-5-billion-settlement-in-landmark-ai-piracy-case/"
+    },
+    {
+      "id": "c72",
+      "text": "The Authors Alliance is blunter: the deal \"does not create any precedent that is binding on future courts, who may one day find that such use is non-infringing.\"",
+      "verdict": "supported",
+      "citation": "https://www.authorsalliance.org/resources/generative-ai/bartz-v-anthropic-settlement-faq/"
+    },
+    {
+      "id": "c73",
+      "text": "plaintiffs' co-lead Justin Nelson publicly frames the deal as \"a precedent requiring AI companies to pay copyright owners,\"",
+      "verdict": "supported",
+      "citation": "https://www.susmangodfrey.com/wins/susman-godfrey-secures-1-5-billion-settlement-in-landmark-ai-piracy-case/"
+    }
+  ]
+}
