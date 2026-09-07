@@ -4,10 +4,11 @@ title: Astra (OpenAI)
 type: entity
 aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro"]
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use]
-description: OpenAI's GPT-6 Astra computer-use model; public quotas land at about half GPT-5.6 Sol's 5-hour window, while the model led Vercel DeepsecBench, MathArena, and Arena Code WebDev the same Saturday.
+description: OpenAI's GPT-6 Astra computer-use model; Jensen Huang put its training cluster at ~100K+ Grace Blackwell NVLink72, while OpenAI's own data showed long-task success collapsing to roughly 16%.
 created_at: 2026-08-02
-timestamp: 2026-09-06T00:00:00Z
+timestamp: 2026-09-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
@@ -282,3 +283,22 @@ multiple agents on a single problem for **hours or days**. See [[gpt-6]].
 - **OpenAI posted Astra prompting tips**, including a slop-word
   blocklist and guidance to take more initiative and stop
   overtesting code (The Decoder; ARA daily digest 2026-09-06).
+
+## Jensen's 100K+ cluster, a 16% long-task print, and 3–4× relief (2026-09-07)
+
+- **[[nvidia|Jensen Huang]] put Astra's training cluster at
+  ~100K+ Grace Blackwell NVLink72**, with **"400K GPUs coming
+  online next,"** and declared that AGI has arrived. An earlier
+  version of the post reportedly said **300K**; nobody has
+  reconciled the three figures. The declaration landed hours
+  before [[openai]]'s own data showed long-task success
+  collapsing to roughly **16%** — the capability print that
+  sits next to the AGI line (Twitter; ARA daily digest
+  2026-09-07).
+- **OpenAI says an efficiency change cuts Astra's usage draw
+  by "up to 3-4X less"** from the subscription on the long tail
+  for power users logged in with a ChatGPT account, with output
+  quality said to be unaffected. It is **rate-limit relief
+  scoped to ChatGPT logins, not the API**, and the multiple is
+  a vendor-stated ceiling (Twitter; ARA daily digest
+  2026-09-07).

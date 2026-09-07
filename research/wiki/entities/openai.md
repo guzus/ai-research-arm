@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; confirmed the spring DSEWiki wiki incident as a misalignment case and promised a disclosure framework, as Seattle Times and Newsday joined copyright suits against OpenAI and Microsoft.
+description: Frontier lab behind the GPT family; chief scientist Jakub Pachocki asked for voluntary slowdowns while the lab disclosed $601/day median researcher agent spend and opposed Massachusetts AI safety rules.
 created_at: 2026-05-30
-timestamp: 2026-09-06T00:00:00Z
+timestamp: 2026-09-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
@@ -1046,6 +1047,49 @@ materially reshape how the lab is positioned heading into its IPO window:
   first-party rebuttal. Gottheimer and Lawler introduced a
   rogue-agent bill. See [[federal-ai-policy]] (TechCrunch; ARA daily
   digest 2026-09-06).
+
+## Pachocki asks for slowdowns; $601/day agent spend (2026-09-07)
+
+- **Chief scientist Jakub Pachocki asked for voluntary slowdowns**
+  in a 2026-09-06 post, "An Alien Mind." The quoted line: no lab
+  has solved alignment and monitoring well enough "to continue
+  responsibly scaling at maximum speed for much longer." He also
+  wrote that internal results give him "a strong expectation that
+  this speed of progress could be sustained into recursive
+  self-improvement." Sam Altman amplified it; four monitored
+  accounts quote the text verbatim. The same-day report that
+  OpenAI (with [[google]]) is opposing Massachusetts AI safety
+  rules that [[anthropic]] supports sits next to that
+  coordination ask — no bill number, docket, or first-party
+  comment letter is attached. See [[federal-ai-policy]]
+  (OpenAI, The Information, Twitter; ARA daily digest
+  2026-09-07).
+- **A first-party research-acceleration post disclosed internal
+  agent spend.** As of 2026-08-15 the median researcher was
+  spending **$601.25 a day** on coding agents at API-equivalent
+  prices, with total agent runtime at **3.1× human working
+  hours**. The same post claims an "automated research intern"
+  and targets a fully automated AI researcher by **March 2028**.
+  This is a lab cost/throughput disclosure, not an API price
+  change (OpenAI, Twitter; ARA daily digest 2026-09-07).
+- **[[astra]] usage-draw relief is ChatGPT-login scoped.** OpenAI
+  says an efficiency change cuts Astra's subscription draw by
+  "up to 3-4X less" for power users logged in with a ChatGPT
+  account, quality said to be unaffected. The multiple is a
+  vendor-stated ceiling and does **not** apply to the API. See
+  [[astra]] (Twitter; ARA daily digest 2026-09-07).
+- **collusion.wiki stayed the HN slate.** The OpenAI agent
+  message-board write-up peaked at **2,248 points / 1,573
+  comments** before leaving the front page — a step up from the
+  1,371 / 1,111 already logged on 2026-09-05. See
+  [[agentic-ai-security]] (Hacker News; ARA daily digest
+  2026-09-07).
+- **The Seattle Times / Newsday suits gained a Microsoft
+  reply.** [[microsoft]] said it was "surprised by the lawsuit"
+  but remains "always happy to sit down and explore solutions."
+  No dollar amount was specified. The complaints themselves
+  landed on this page yesterday (The Verge, TechCrunch; ARA
+  daily digest 2026-09-07).
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; TCS pledged up to ₹700 billion ($7.41 billion) for a 1 GW Hyderabad AI campus, after Broadcom's FY26Q3 $16.7B AI chip print and Dell's $95B AI-server backlog.
+description: The historically large compute buildout; Anthropic has booked 14.8 GW at a reported cost of up to $517B over a decade, largely vendor-financed, after TCS's 1 GW Hyderabad campus pledge.
 created_at: 2026-05-24
-timestamp: 2026-09-06T00:00:00Z
+timestamp: 2026-09-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
@@ -977,3 +978,44 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   were already in the 2026-09-05 digest. No new named tenant or
   term sheet accompanied either (TechCrunch; ARA daily digest
   2026-09-06).
+
+## Anthropic's 14.8 GW book and a $517B optionality ceiling (2026-09-07)
+
+- **[[anthropic]] has booked 14.8 gigawatts** since October at a
+  potential **$517 billion over ten years** across AWS Trainium,
+  [[google|Google]] TPUs, [[nvidia|Nvidia]] hardware, and up to
+  **2 GW of [[amd|AMD]] systems from 2027**. The relay itemizes
+  the vendor-financing loop: [[amazon]] at **$5B with up to $20B
+  more** against a **$100B-plus** compute commitment;
+  [[microsoft]] and Nvidia at up to **$5B** and **$10B** while
+  Anthropic buys **$30B of Azure** capacity. Circular financing
+  inflates headline commitments, so read **$517B as an upper
+  bound on optionality, not a liability**. IPO buyers were
+  already asking for revenue per token and per gigawatt; the
+  wattage is now public before the ratio. See [[anthropic]]
+  (The Information via Twitter; ARA daily digest 2026-09-07).
+- **[[nvidia]] is reported discussing a $2.5 billion position
+  in [[thinking-machines]]**, which is said to be seeking
+  **$5–6 billion at a $40 billion-plus pre-money**. The
+  Information confirms only the ~$40B raise and hundreds of
+  millions in annualized revenue; the NVIDIA/Accel specifics
+  are aggregator paraphrase. See [[thinking-machines]]
+  (The Information, Twitter; ARA daily digest 2026-09-07).
+- **KKR's Nvidia-backed Helix venture is staffing up to deploy
+  $10 billion** into AI infrastructure, hiring senior
+  executives from Equinix and AES, and intends to pair data
+  centers with power for large cloud customers while moving
+  quickly through acquisitions (The Information via Twitter;
+  ARA daily digest 2026-09-07).
+- **Fluidstack reached an $18 billion valuation**, per Forbes,
+  becoming a test bed for [[google|Google]]'s plans to sell its
+  own AI chip externally — the clearest public marker yet of
+  what third-party TPU distribution is worth (Forbes via
+  Twitter; ARA daily digest 2026-09-07).
+- **Two independent supply chokepoints tightened.** T-glass
+  shortages are capping high-end ABF substrate output at
+  roughly **10–15% of potential monthly revenue**, with a
+  **~25% capacity expansion planned for 2027**; separately,
+  [[sk-hynix]] is accelerating its 1c DRAM transition from
+  **~13% of output in Q2 to a projected 34% in Q4** (Twitter;
+  ARA daily digest 2026-09-07).

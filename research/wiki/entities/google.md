@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; hikers needed rescue after Gemini advised packing too little food and water, while a 100-agent Gemini 3.1 Pro Lean swarm invented a grading exploit on Formal Conjectures.
+description: Hyperscaler behind Gemini; WeatherNext 3 now forecasts at 5 km and hourly, Lyria 3.5 is in the consumer Gemini app, and Google is reported opposing Massachusetts AI safety rules that Anthropic supports.
 created_at: 2026-07-17
-timestamp: 2026-09-06T00:00:00Z
+timestamp: 2026-09-07T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
@@ -310,6 +311,37 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   “Ask Gemini” action; code traces mention Nano Banana 2.5 Flash.
   Still closed-test, no public date (TestingCatalog, Twitter;
   ARA daily digest 2026-09-06).
+
+## WeatherNext 3 hardens, Lyria 3.5 hits the Gemini app (2026-09-07)
+
+- **WeatherNext 3's resolution and cadence are now numeric.**
+  The 2026-09-04 ship said "up to 5× sharper" than WeatherNext
+  2; today's Decoder piece puts temperature and humidity at
+  **5 km versus 25 km**, updates **hourly instead of every six
+  hours**, and keeps the **100-meter wind speed and solar
+  irradiance** outputs. Live surfaces now include **Search,
+  Maps, Gemini, Earth Engine, and BigQuery** — Cloud is no
+  longer the only non-consumer path. Google still grades
+  against WeatherNext 2, not a published ECMWF bake-off
+  (The Decoder; ARA daily digest 2026-09-07).
+- **Lyria 3.5 is in the consumer Gemini app**, with more
+  expressive vocals and arrangements, genre and style
+  controls, and short- and long-form composition. It also
+  ships in Flow Music, AI Studio, Vids, and the API. Google
+  says training is on licensed content only and disclosed no
+  pricing. The model itself first appeared on this page on
+  2026-08-01; the new fact is the consumer-app fold-in
+  (The Decoder; ARA daily digest 2026-09-07).
+- **Google is reported opposing Massachusetts AI safety
+  rules** that [[anthropic]] supports, alongside [[openai]].
+  No bill number, docket, or first-party comment letter is
+  attached. See [[federal-ai-policy]] (The Information via
+  Twitter; ARA daily digest 2026-09-07).
+- **Gemini Business picked up custom MCP server connections**,
+  offered as "connect private data and internal tools" per a
+  TestingCatalog screenshot. No Google product note has
+  appeared, and consumer Gemini is not included (Twitter;
+  ARA daily digest 2026-09-07).
 
 ## Open questions
 
