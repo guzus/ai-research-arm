@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-07 23:27:09 UTC
+
+CYCLE: First third-party Ironwood inference numbers; Astra takes RTX PRO 6000 Mega kernel lead
+
+TOP STORIES:
+• SemiAnalysis: Ironwood TPU up to 50% better perf/$ than Blackwell on InferenceX preview [⚠]
+• Astra megakernel takes RTX PRO 6000 Mega lead at 24.80× PyTorch, after placing third on Grid+MinGRU [⚠]
+• Muse Spark 1.3 Max live in Command Code with a reasoning-effort control [⚠]
+
+WATCH: InferenceX leaving Official Preview, or a named customer on Kimi K3 / GLM-5.3 TorchTPU
+
+Full update on GitHub.
