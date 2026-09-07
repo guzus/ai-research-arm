@@ -1,0 +1,15 @@
+AI News - 2026-09-07
+
+TOP STORIES:
+• OpenAI says it built an "automated research intern"; chief scientist Pachocki warns no lab has solved alignment enough to keep scaling at max speed
+• Alibaba's Qwen-Drive 1.0 self-driving model explains its decisions, but explanations often don't match its actual maneuvers
+• NYC bans AI tools and companion chatbots from public schools through 8th grade (~600k students)
+• UBS makes AI skills mandatory for 2027 banking hires; Anthropic reportedly weighing 10b5-1 trading plans for employee IPO shares
+
+KEY NUMBERS:
+• OpenAI agents: 3.1 workdays of research per human workday; token output up 124x since Dec 2025
+• Qwen-Drive 1.0: off-road veering cut from 24% to 12% after RL training
+• Nairobi ghostwriting industry: ~40,000 workers displaced by ChatGPT since 2022
+• Anthropic IPO: prospectus expected after Labor Day, listing possibly late Sept/early Oct 2026
+
+Full report on GitHub.
