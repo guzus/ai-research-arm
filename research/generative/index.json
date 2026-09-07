@@ -2781,6 +2781,22 @@
     "created_at": "2026-09-07T13:41:42Z",
     "source": "workflow_dispatch",
     "prompt": "Anthropic's $1.5B copyright settlement: how 500,000 titles at ~$3,000 split, and what the reverted-rights rule sets as precedent",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-09-07T142428--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "$3,000권의 책: 앤트로픽의 $1.5B 합의가 실제로 산 것과, 그 돈을 누가 가져가는가",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-09-07T14:24:28Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+        "tags": [],
+        "translated_at": "2026-09-07T14:24:28Z",
+        "source_file": "research/generative/2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at.ara.md",
+        "source_sha256": "9e0c2242669d87833a301e47e2ee88651cb0c14356d9e72b1d9a5d28de82fbce"
+      }
+    }
   }
 ]
