@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c2",
+      "claim_text": "So the realistic path for a mid-list trade author with one book on the list runs: ~$3,000 gross → ~$2,900 after fees → ~$1,450 after the publisher's half.",
+      "contradicting_url": "https://sfwa.org/anthropic-faq/",
+      "contradicting_quote": "increase payment to $3,127.28 per work (half that if the publisher gets a default share.)",
+      "severity": "medium",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c1",
+      "claim_text": "The Authors Guild's reading, published to its members on 4 September 2026, is that \"an author whose rights reverted before August 10, 2022 … should be entitled to 100 percent of the funds for the title,\" while \"if rights in an author's work reverted after August 10, 2022, the publisher may have a valid claim.\"",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "So $1.5 billion bought a release for input-side conduct through 25 August 2025, plus an obligation to destroy the LibGen and PiLiMi files within thirty days of judgment and certify it — with an express carve-out preserving the scanned copies, and no obligation whatsoever to retrain a model or delete a weight.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

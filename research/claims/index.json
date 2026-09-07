@@ -1,5 +1,5 @@
 {
-  "article_count": 79,
+  "article_count": 80,
   "articles": [
     {
       "claim_count": 18,
@@ -777,6 +777,14 @@
       "stem": "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s",
       "tags": [],
       "title": "Repo-To-Skill's 41.78-point jump: the 5,353-skill library is not the thing that was measured"
+    },
+    {
+      "claim_count": 40,
+      "created_at": "2026-09-07T13:41:42Z",
+      "slug": "anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "stem": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "tags": [],
+      "title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it"
     }
   ],
   "by_host": {
@@ -1033,7 +1041,11 @@
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c1",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c14",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c6",
-      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c16"
+      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c16",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c25"
+    ],
+    "anthropiccopyrightsettlement.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
     ],
     "aol.com": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c5"
@@ -1374,8 +1386,31 @@
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c8",
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c9"
     ],
+    "assets-us-01.kc-usercontent.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c14",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c15",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c16",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c17",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c2",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c3",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c36",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c4",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c6",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c8"
+    ],
     "assets.anthropic.com": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c23"
+    ],
+    "authorsalliance.org": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
+    ],
+    "authorsguild.org": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c21",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c24",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c29",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c3",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c5"
     ],
     "autobound.ai": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c25"
@@ -1437,6 +1472,9 @@
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c23",
       "2026-07-31T051841--situational-awareness-lp-collapse#c31",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c15"
+    ],
+    "bernoff.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c27"
     ],
     "bfl.ai": [
       "2026-08-04T171206--comfyui-company#c20"
@@ -1655,6 +1693,16 @@
     "caproasia.com": [
       "2026-06-22T052035--zhipu-ai-glm#c2"
     ],
+    "case-law.vlex.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c11",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c12"
+    ],
+    "caselaw.findlaw.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c28"
+    ],
+    "cases.justia.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c29"
+    ],
     "causvid.github.io": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c36"
     ],
@@ -1668,6 +1716,10 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c3",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c5",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c6"
+    ],
+    "cdn.arstechnica.net": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c19",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c20"
     ],
     "cdn.ca9.uscourts.gov": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c15",
@@ -1708,6 +1760,10 @@
     ],
     "chainwire.org": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c16"
+    ],
+    "chatgptiseatingtheworld.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c12",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c32"
     ],
     "cheomayield.xyz": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c18"
@@ -1986,6 +2042,12 @@
     "cooley.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c27"
     ],
+    "copyrightalliance.org": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c10",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c11",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c39",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c9"
+    ],
     "coreweave.com": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c6",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c21"
@@ -2001,7 +2063,10 @@
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c20",
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c25",
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c3",
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c27"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c27",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c30",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c35",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c38"
     ],
     "cp4space.hatsya.com": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c4"
@@ -2826,7 +2891,8 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c19",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c34",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c33",
-      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c25"
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c25",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c37"
     ],
     "fortunebusinessinsights.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
@@ -2987,7 +3053,8 @@
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c21"
     ],
     "gov.uk": [
-      "2026-06-22T101547--shazeer-google-openai-talent-moat#c14"
+      "2026-06-22T101547--shazeer-google-openai-talent-moat#c14",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c33"
     ],
     "govconwire.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c12"
@@ -3315,6 +3382,9 @@
     "iosco.org": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c3"
     ],
+    "ipkitten.blogspot.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c14"
+    ],
     "ir.aboutamazon.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C13"
     ],
@@ -3364,6 +3434,9 @@
     ],
     "judiciary.senate.gov": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c10"
+    ],
+    "judiciary.uk": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c34"
     ],
     "justice.gov": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c23",
@@ -3469,7 +3542,8 @@
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c12",
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c22",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30",
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c23"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c23",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c13"
     ],
     "law.justia.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c17",
@@ -3540,6 +3614,9 @@
     "lmsys.org": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c10",
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c21"
+    ],
+    "lw.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c34"
     ],
     "m.bjnews.com.cn": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c25"
@@ -4243,6 +4320,13 @@
     "publicationethics.org": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c41"
     ],
+    "publishersweekly.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c37"
+    ],
+    "publishingperspectives.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c18",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c23"
+    ],
     "pubs.usgs.gov": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c14"
     ],
@@ -4635,6 +4719,9 @@
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c24",
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c14"
     ],
+    "sfwa.org": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c18"
+    ],
     "sherwood.news": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c24"
     ],
@@ -4730,7 +4817,8 @@
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c15"
     ],
     "static.case.law": [
-      "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c16"
+      "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c16",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c31"
     ],
     "static.sse.com.cn": [
       "2026-07-13T181948--cxmt#c22",
@@ -4806,7 +4894,8 @@
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c6",
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c7",
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c8",
-      "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c9"
+      "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c9",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c9"
     ],
     "storage.googleapis.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c2",
@@ -4844,6 +4933,9 @@
     "support.uniswap.org": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c25"
     ],
+    "susmangodfrey.com": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c17"
+    ],
     "swe-rebench.com": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c12"
     ],
@@ -4852,6 +4944,9 @@
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c2",
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c7",
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c8"
+    ],
+    "taaonline.net": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c21"
     ],
     "taipeitimes.com": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c2",
@@ -4936,7 +5031,10 @@
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c5",
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c27",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-1",
-      "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-13"
+      "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-13",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c22",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c26",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c38"
     ],
     "techflowpost.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20"
@@ -5393,7 +5491,8 @@
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c18",
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c16",
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c29",
-      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c44"
+      "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c44",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c39"
     ],
     "wavespeed.ai": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c28"
@@ -5440,6 +5539,11 @@
     ],
     "worldscientific.com": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c14"
+    ],
+    "writerbeware.blog": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c22",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c23",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c40"
     ],
     "writings.flashbots.net": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c11"
@@ -6611,8 +6715,40 @@
     "https://arxiv.org/pdf/2607.04003": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c20"
     ],
+    "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/255f15f4-cbba-466b-a868-75ba3853db93/2025-11-25%20Order%20Approving%20And%20_dckt%20501_0_.pdf": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c8"
+    ],
+    "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/34a80bf3-70fc-414a-8a4c-daa81b5a0caf/ANT%20-%20Long-Form%20Notice_DeadlinesSecondUpdate%201.27.26.pdf": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c15",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c6"
+    ],
+    "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/36cce252-a32c-4cbb-a624-31dd8ac9574c/2026-07-20%20Order%20Granting%20Final%20_dckt%20680_0_.pdf": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c14",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c2",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c3"
+    ],
+    "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/d8578720-9fd0-4c27-9c7f-041bac826869/Class%20Action%20Settlement%20Agreement.pdf": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c16",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c17",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c36",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c4"
+    ],
     "https://assets.anthropic.com/m/4e20a4ab6512e217/original/Anthropic-Response-to-OSTP-RFI-March-2025-Final-Submission-v3.pdf": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c23"
+    ],
+    "https://authorsguild.org/news/anthropic-settlement-update-91-percent-of-books-claimed": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c24"
+    ],
+    "https://authorsguild.org/news/court-grants-final-approval-anthropic-copyright-settlement": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c3"
+    ],
+    "https://authorsguild.org/news/how-the-authors-guild-v-google-settlement-will-work": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c29"
+    ],
+    "https://authorsguild.org/news/important-information-regarding-anthropic-copyright-settlement-claim-notices": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c21",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c5"
     ],
     "https://aws.amazon.com/blogs/aws/amazon-s3-tables-integration-with-amazon-sagemaker-lakehouse-is-now-generally-available": [
       "2026-07-20T050016--databricks-mid-2026#c28"
@@ -6640,6 +6776,9 @@
     ],
     "https://benchlm.ai/models/kimi-3": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c15"
+    ],
+    "https://bernoff.com/blog/why-i-took-the-2500-check-to-license-my-book-for-ai": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c27"
     ],
     "https://bfl.ai/blog/24-08-01-bfl": [
       "2026-08-04T171206--comfyui-company#c20"
@@ -6805,6 +6944,18 @@
     "https://canonical.com/blog/finding-the-blind-spot-how-canonical-hunts-logic-flaws-with-ai": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c16"
     ],
+    "https://case-law.vlex.com/vid/bartz-v-anthropic-pbc-1093500941": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c12"
+    ],
+    "https://case-law.vlex.com/vid/bartz-v-anthropic-pbc-1094702944": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c11"
+    ],
+    "https://caselaw.findlaw.com/court/us-dis-crt-n-d-cal/117422847.html": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c28"
+    ],
+    "https://cases.justia.com/federal/appellate-courts/ca2/13-4829/45/2.pdf": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c29"
+    ],
     "https://causvid.github.io": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c36"
     ],
@@ -6813,6 +6964,10 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c3",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c5",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c6"
+    ],
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/07/Bartz-v-Anthropic-Order-Approving-Settlement-7-20-26.pdf": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c19",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c20"
     ],
     "https://cdn.ca9.uscourts.gov/datastore/opinions/2020/10/15/19-55862.pdf": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c15"
@@ -6836,6 +6991,12 @@
     ],
     "https://chainwire.org/2026/01/13/kbw-2026-returns-to-seoul-september-29-october-1-upbit-joins-as-main-sponsor": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c16"
+    ],
+    "https://chatgptiseatingtheworld.com/wp-content/uploads/2025/07/Class-Certification-Order-on-pirated-books-class-Bartz-v.-Anthropic-July-17-20250-.pdf": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c12"
+    ],
+    "https://chatgptiseatingtheworld.com/wp-content/uploads/2026/09/Statement-of-Interest-of-the-United-States-on-Fair-Use-Sept-1-2026-gov.uscourts.nysd_.640396.1682.0.pdf": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c32"
     ],
     "https://chinaselectcommittee.house.gov/media/press-releases/chairmen-moolenaar-garbarino-announce-joint-investigation-into-airbnb-anysphere-and-the-national-security-risks-posed-by-chinese-ai-models": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c28"
@@ -6924,6 +7085,12 @@
     ],
     "https://comptes-rendus.academie-sciences.fr/mathematique/item/10.5802/crmath.831": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c13"
+    ],
+    "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c10",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c11",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c39",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c9"
     ],
     "https://corporate.vanguard.com/content/corporatesite/us/en/corp/articles/50-years-50-facts-indexing-since-1976.html": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c6"
@@ -7776,6 +7943,9 @@
     "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c22"
     ],
+    "https://fortune.com/2025/09/09/anthropic-settlement-book-authors-1-5-billion-judge-alsup": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c37"
+    ],
     "https://fortune.com/2025/09/28/nvidia-openai-circular-financing-ai-bubble": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c16"
     ],
@@ -8292,6 +8462,9 @@
     ],
     "https://iopscience.iop.org/article/10.1149/1945-7111/adb5c9": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c16"
+    ],
+    "https://ipkitten.blogspot.com/2026/08/the-bartzanthropic-settlement-is-still.html": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c14"
     ],
     "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-First-Quarter-Results/default.aspx": [
       "2026-06-24T160453--test-ornn-com-codex-2#C13"
@@ -9100,6 +9273,12 @@
     "https://publicationethics.org/guidance/cope-position/authorship-and-ai-tools": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c41"
     ],
+    "https://publishingperspectives.com/2026/01/sage-textbook-authors-settle-dispute-over-anthropic-settlement-guidance": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c23"
+    ],
+    "https://publishingperspectives.com/2026/05/anthropic-settlement-appears-to-cruise-through-its-final-fairness-hearing": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c18"
+    ],
     "https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-rare-earths.pdf": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c14"
     ],
@@ -9385,6 +9564,9 @@
     "https://sfstandard.com/opinion/2026/04/03/google-maven-anthropic-pentagon-ai": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c24"
     ],
+    "https://sfwa.org/anthropic-faq": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c18"
+    ],
     "https://sherwood.news/tech/report-google-is-backstopping-anthropics-35-billion-data-center-deal": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c24"
     ],
@@ -9457,6 +9639,9 @@
     ],
     "https://startupfortune.com/stripe-agrees-to-buy-ai-router-openrouter-for-more-than-7-billion": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c15"
+    ],
+    "https://static.case.law/f3d/654/html/0242-01.html": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c31"
     ],
     "https://static.case.law/f3d/898/html/1279-01.html": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c16"
@@ -9554,6 +9739,9 @@
     ],
     "https://stockanalysis.com/stocks/vrt/statistics": [
       "2026-05-27T035557--800-vdc-architecture#c20"
+    ],
+    "https://storage.courtlistener.com/recap/gov.uscourts.cand.434709/gov.uscourts.cand.434709.231.0.pdf": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c9"
     ],
     "https://storage.courtlistener.com/recap/gov.uscourts.cand.474095/gov.uscourts.cand.474095.1.0.pdf": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c33",
@@ -9765,6 +9953,9 @@
       "2026-07-20T050016--databricks-mid-2026#c2",
       "2026-07-20T050016--databricks-mid-2026#c31"
     ],
+    "https://techcrunch.com/2026/07/20/anthropics-landmark-1-5b-copyright-settlement-is-approved": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c38"
+    ],
     "https://techcrunch.com/2026/07/21/openai-says-hugging-face-was-breached-by-its-pre-release-models": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c2"
     ],
@@ -9783,9 +9974,15 @@
     "https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c3"
     ],
+    "https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c26"
+    ],
     "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show": [
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-1",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-13"
+    ],
+    "https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c22"
     ],
     "https://techfundingnews.com/ipo-bound-databricks-reportedly-eyes-175b-valuation-after-hitting-5-4b-revenue-run-rate": [
       "2026-07-20T050016--databricks-mid-2026#c14"
@@ -10100,6 +10297,11 @@
     "https://wisetoast.com/openai-discloses-staggering-37-billion-infrastructure-spending": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c25"
     ],
+    "https://writerbeware.blog/2026/09/04/anthropic-copyright-settlement-publishers-are-making-incorrect-claims-on-authors-payouts": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c22",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c23",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c40"
+    ],
     "https://writings.flashbots.net/migrating-to-buildernet": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c11"
     ],
@@ -10253,7 +10455,8 @@
     "https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c13",
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c18",
-      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c19"
+      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c19",
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c25"
     ],
     "https://www.anthropic.com/news/claude-3-family": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c25"
@@ -10346,6 +10549,9 @@
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c12",
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c7"
     ],
+    "https://www.anthropiccopyrightsettlement.com/claim-form": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
+    ],
     "https://www.aol.com/news/huawei-founder-told-xi-chinas-015107530.html": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c5"
     ],
@@ -10366,6 +10572,9 @@
     ],
     "https://www.aptible.com/blog/annual-pentest-continuous-security": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c21"
+    ],
+    "https://www.authorsalliance.org/resources/generative-ai/bartz-v-anthropic-settlement-faq": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
     ],
     "https://www.autobound.ai/blog/top-15-intent-data-providers-compared-2026": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c25"
@@ -11039,8 +11248,14 @@
     "https://www.courtlistener.com/docket/68532791/united-states-v-peraire-bueno": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c7"
     ],
+    "https://www.courtlistener.com/docket/69058235/bartz-v-anthropic-pbc": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c38"
+    ],
     "https://www.courtlistener.com/docket/71357247/disney-enterprises-inc-v-minimax": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c27"
+    ],
+    "https://www.courtlistener.com/docket/72199828/concord-music-group-inc-v-anthropic-pbc": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c35"
     ],
     "https://www.courtlistener.com/docket/72379655/anthropic-pbc-v-us-department-of-war": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c9"
@@ -11050,6 +11265,9 @@
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c2",
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c20",
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c3"
+    ],
+    "https://www.courtlistener.com/opinion/2476173/authors-guild-v-google-inc": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c30"
     ],
     "https://www.creativemachineslab.com/people.html": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c30"
@@ -11575,6 +11793,9 @@
     "https://www.gov.uk/cma-cases/microsoft-slash-inflection-ai-inquiry": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c14"
     ],
+    "https://www.gov.uk/government/publications/report-and-impact-assessment-on-copyright-and-artificial-intelligence/report-on-copyright-and-artificial-intelligence": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c33"
+    ],
     "https://www.govconwire.com/articles/teresa-carlson-anthropic-public-sector-global-head": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c12"
     ],
@@ -11811,6 +12032,9 @@
     "https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c10"
     ],
+    "https://www.judiciary.uk/judgments/getty-images-v-stability-ai": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c34"
+    ],
     "https://www.justice.gov/usao-cdca/pr/santa-clarita-man-agrees-plead-guilty-hacking-disney-employees-computer-downloading": [
       "2026-08-04T171206--comfyui-company#c31"
     ],
@@ -11898,6 +12122,12 @@
     "https://www.law.com/therecorder/2025/01/27/linkedin-suit-says-millions-of-profiles-scraped-by-singapore-firms-fake-accounts": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c4"
     ],
+    "https://www.law.cornell.edu/uscode/text/17/412": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c13"
+    ],
+    "https://www.law.cornell.edu/uscode/text/17/504": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c13"
+    ],
     "https://www.law.cornell.edu/uscode/text/18/1836": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c22"
     ],
@@ -11956,6 +12186,9 @@
     ],
     "https://www.lmsys.org/blog/2024-08-28-style-control": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c10"
+    ],
+    "https://www.lw.com/en/insights/getty-images-v-stability-ai-english-high-court-rejects-secondary-copyright-claim": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c34"
     ],
     "https://www.macrotrends.net/stocks/charts/GOOGL/alphabet/research-development-expenses": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c23"
@@ -12260,6 +12493,9 @@
     ],
     "https://www.prweb.com/releases/new_research_from_onelogin_finds_more_than_half_of_ex_employees_still_have_access_to_corporate_applications/prweb14502632.htm": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c29"
+    ],
+    "https://www.publishersweekly.com/pw/by-topic/digital/copyright/article/98552-judge-delays-preliminary-approval-in-anthropic-copyright-settlement.html": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c37"
     ],
     "https://www.pymnts.com/artificial-intelligence-2/2026/nvidia-signals-final-investments-in-openai-and-anthropic": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c14"
@@ -12745,6 +12981,12 @@
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c2",
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c3"
     ],
+    "https://www.susmangodfrey.com/wins/susman-godfrey-secures-1-5-billion-settlement-in-landmark-ai-piracy-case": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c17"
+    ],
+    "https://www.taaonline.net/anthropic-settlement": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c21"
+    ],
     "https://www.taipeitimes.com/News/biz/archives/2021/12/16/2003769652": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c2",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c3"
@@ -13154,6 +13396,9 @@
     ],
     "https://www.washingtonpost.com/technology/2025/07/10/nvidia-4-trillion-market-cap": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c29"
+    ],
+    "https://www.washingtonpost.com/technology/2026/01/27/anthropic-ai-scan-destroy-books": [
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c39"
     ],
     "https://www.washingtonpost.com/technology/2026/02/27/anthropic-trump-ban-federal-agencies": [
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c18"
@@ -13708,7 +13953,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2323,
+  "claim_count": 2363,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -69603,9 +69848,979 @@
         "https://arxiv.org/html/2410.07095v6"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-07-20",
+      "claim": "The Bartz v. Anthropic Works List contains a definitive count of 482,460 works, of which 440,490 (91.3%) had been claimed as of the April 2026 status report.",
+      "confidence": "high",
+      "hosts": [
+        "assets-us-01.kc-usercontent.com"
+      ],
+      "id": "c1",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/36cce252-a32c-4cbb-a624-31dd8ac9574c/2026-07-20%20Order%20Granting%20Final%20_dckt%20680_0_.pdf"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-06-23",
+      "claim": "Judge Alsup held that creating a permanent, general-purpose library from pirated copies was not itself a fair use, and that there is no carveout from the Copyright Act for AI companies.",
+      "confidence": "high",
+      "hosts": [
+        "copyrightalliance.org"
+      ],
+      "id": "c10",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-06-23",
+      "claim": "The court record establishes Anthropic downloaded 196,640 books from Books3 in early 2021, at least 5 million copies from LibGen in June 2021, and at least 2 million from the Pirate Library Mirror in July 2022 — over seven million copies in total.",
+      "confidence": "high",
+      "hosts": [
+        "case-law.vlex.com",
+        "copyrightalliance.org"
+      ],
+      "id": "c11",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf",
+        "https://case-law.vlex.com/vid/bartz-v-anthropic-pbc-1094702944"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-07-17",
+      "claim": "The certified class was limited to works downloaded from LibGen or PiLiMi that carry an ISBN or ASIN and were registered with the US Copyright Office within five years of publication and before Anthropic's download; Books3 was excluded as unworkable to identify.",
+      "confidence": "high",
+      "hosts": [
+        "case-law.vlex.com",
+        "chatgptiseatingtheworld.com"
+      ],
+      "id": "c12",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://chatgptiseatingtheworld.com/wp-content/uploads/2025/07/Class-Certification-Order-on-pirated-books-class-Bartz-v.-Anthropic-July-17-20250-.pdf",
+        "https://case-law.vlex.com/vid/bartz-v-anthropic-pbc-1093500941"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "",
+      "claim": "17 U.S.C. 504(c) provides statutory damages of $750 to $30,000 per work, rising to $150,000 for willful infringement, and 17 U.S.C. 412 bars statutory damages where registration was untimely.",
+      "confidence": "high",
+      "hosts": [
+        "law.cornell.edu"
+      ],
+      "id": "c13",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c13",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.law.cornell.edu/uscode/text/17/504",
+        "https://www.law.cornell.edu/uscode/text/17/412"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-07-20",
+      "claim": "The final approval order found the estimated per-work payment of approximately $3,000 to be four times the minimum statutory damages amount.",
+      "confidence": "high",
+      "hosts": [
+        "assets-us-01.kc-usercontent.com",
+        "ipkitten.blogspot.com"
+      ],
+      "id": "c14",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "opinion"
+      ],
+      "source_urls": [
+        "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/36cce252-a32c-4cbb-a624-31dd8ac9574c/2026-07-20%20Order%20Granting%20Final%20_dckt%20680_0_.pdf",
+        "https://ipkitten.blogspot.com/2026/08/the-bartzanthropic-settlement-is-still.html"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-01-27",
+      "claim": "Anthropic funds the settlement in four installments: $300 million paid October 2, 2025; $300 million within five business days of final approval; $450 million by September 25, 2026; and $450 million by September 27, 2027.",
+      "confidence": "high",
+      "hosts": [
+        "assets-us-01.kc-usercontent.com"
+      ],
+      "id": "c15",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/34a80bf3-70fc-414a-8a4c-daa81b5a0caf/ANT%20-%20Long-Form%20Notice_DeadlinesSecondUpdate%201.27.26.pdf"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-09-25",
+      "claim": "The Settlement Agreement obliges Anthropic to destroy the LibGen and PiLiMi files and copies originating from them within thirty days of final judgment and to certify the deletion, while expressly not requiring deletion of scanned copies and imposing no obligation to retrain or delete model weights.",
+      "confidence": "high",
+      "hosts": [
+        "assets-us-01.kc-usercontent.com"
+      ],
+      "id": "c16",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/d8578720-9fd0-4c27-9c7f-041bac826869/Class%20Action%20Settlement%20Agreement.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-09-25",
+      "claim": "The settlement releases only past input-side conduct through August 25, 2025 and does not release output-based claims, future conduct, or works absent from the Works List, and grants no licence.",
+      "confidence": "high",
+      "hosts": [
+        "assets-us-01.kc-usercontent.com",
+        "susmangodfrey.com"
+      ],
+      "id": "c17",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.susmangodfrey.com/wins/susman-godfrey-secures-1-5-billion-settlement-in-landmark-ai-piracy-case",
+        "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/d8578720-9fd0-4c27-9c7f-041bac826869/Class%20Action%20Settlement%20Agreement.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-05-14",
+      "claim": "The claims rate rose from about 12% of works at the end of October 2025 to 54% on March 19, 2026, 91.3% on April 16, 2026, and 92.77% by the May 14, 2026 fairness hearing.",
+      "confidence": "medium",
+      "hosts": [
+        "publishingperspectives.com",
+        "sfwa.org"
+      ],
+      "id": "c18",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://sfwa.org/anthropic-faq",
+        "https://publishingperspectives.com/2026/05/anthropic-settlement-appears-to-cruise-through-its-final-fairness-hearing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-07-20",
+      "claim": "Only 350 valid opt-outs, spanning 1,802 works, were timely submitted, and the final approval order records 54 objections or comments, all overruled.",
+      "confidence": "high",
+      "hosts": [
+        "cdn.arstechnica.net"
+      ],
+      "id": "c19",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://cdn.arstechnica.net/wp-content/uploads/2026/07/Bartz-v-Anthropic-Order-Approving-Settlement-7-20-26.pdf"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-07-20",
+      "claim": "The court awarded attorneys' fees of $101,561,111 (approximately 6.8% of the fund), applying a 3.75 multiplier to a $27,082,963 lodestar, with 10% withheld pending a post-distribution accounting.",
+      "confidence": "high",
+      "hosts": [
+        "assets-us-01.kc-usercontent.com"
+      ],
+      "id": "c2",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/36cce252-a32c-4cbb-a624-31dd8ac9574c/2026-07-20%20Order%20Granting%20Final%20_dckt%20680_0_.pdf"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-07-20",
+      "claim": "Direct notice was sent to 594,945 potential class members covering 482,374 works, and notice was not returned undeliverable for 506,194 members associated with 480,114 works, or 99.5 percent.",
+      "confidence": "high",
+      "hosts": [
+        "cdn.arstechnica.net"
+      ],
+      "id": "c20",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c20",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://cdn.arstechnica.net/wp-content/uploads/2026/07/Bartz-v-Anthropic-Order-Approving-Settlement-7-20-26.pdf"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-09-04",
+      "claim": "A first distribution of approximately $2,203.56 per work is targeted for no later than November 15, 2026, and only for works where all rightsholders agree and payment information is complete.",
+      "confidence": "medium",
+      "hosts": [
+        "authorsguild.org",
+        "taaonline.net"
+      ],
+      "id": "c21",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c21",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.taaonline.net/anthropic-settlement",
+        "https://authorsguild.org/news/important-information-regarding-anthropic-copyright-settlement-claim-notices"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-09-06",
+      "claim": "In September 2026 authors reported that more than twenty publishers filed 100 percent allocation claims on in-print titles subject to the 50/50 default, and a comparable number filed claims on works whose rights had already reverted.",
+      "confidence": "medium",
+      "hosts": [
+        "techcrunch.com",
+        "writerbeware.blog"
+      ],
+      "id": "c22",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c22",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "opinion",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://writerbeware.blog/2026/09/04/anthropic-copyright-settlement-publishers-are-making-incorrect-claims-on-authors-payouts",
+        "https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-09-04",
+      "claim": "Educational publishers including Wiley and Pearson are reported to be claiming between 75 and 90 percent of the allocation on textbook titles, which the settlement's Education Works carve-out structurally permits.",
+      "confidence": "medium",
+      "hosts": [
+        "publishingperspectives.com",
+        "writerbeware.blog"
+      ],
+      "id": "c23",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c23",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "opinion",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://writerbeware.blog/2026/09/04/anthropic-copyright-settlement-publishers-are-making-incorrect-claims-on-authors-payouts",
+        "https://publishingperspectives.com/2026/01/sage-textbook-authors-settle-dispute-over-anthropic-settlement-guidance"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-09-07",
+      "claim": "No public source discloses how many works are subject to competing allocation claims.",
+      "confidence": "medium",
+      "hosts": [
+        "authorsguild.org"
+      ],
+      "id": "c24",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c24",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://authorsguild.org/news/anthropic-settlement-update-91-percent-of-books-claimed"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-09-02",
+      "claim": "Anthropic's Series F closed at $13 billion on a $183 billion post-money valuation on September 2, 2025, with run-rate revenue then above $5 billion.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c25",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c25",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-08-17",
+      "claim": "Anthropic's annualised run-rate revenue was reported above $65 billion at the end of July 2026, up from $47 billion in May 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "techcrunch.com"
+      ],
+      "id": "c26",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c26",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-04-15",
+      "claim": "The Microsoft-HarperCollins AI training licence paid $5,000 per title for a three-year non-exclusive term, split evenly between author and publisher.",
+      "confidence": "medium",
+      "hosts": [
+        "bernoff.com"
+      ],
+      "id": "c27",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c27",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://bernoff.com/blog/why-i-took-the-2500-check-to-license-my-book-for-ai"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-06-25",
+      "claim": "Judge Chhabria wrote in Kadrey v. Meta that the ruling does not stand for the proposition that Meta's use of copyrighted materials to train its language models is lawful.",
+      "confidence": "high",
+      "hosts": [
+        "caselaw.findlaw.com"
+      ],
+      "id": "c28",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c28",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://caselaw.findlaw.com/court/us-dis-crt-n-d-cal/117422847.html"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2009-11-13",
+      "claim": "The Google Books Amended Settlement Agreement's Author-Publisher Procedures split out-of-print unreverted revenue 65/35 in the author's favour for books first published before 1987 and 50/50 thereafter, and gave 100 percent to the author where rights had reverted.",
+      "confidence": "medium",
+      "hosts": [
+        "authorsguild.org",
+        "cases.justia.com"
+      ],
+      "id": "c29",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c29",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://cases.justia.com/federal/appellate-courts/ca2/13-4829/45/2.pdf",
+        "https://authorsguild.org/news/how-the-authors-guild-v-google-settlement-will-work"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-07-20",
+      "claim": "Service awards to the three named plaintiffs were cut from the $50,000 each requested to $15,000 each.",
+      "confidence": "high",
+      "hosts": [
+        "assets-us-01.kc-usercontent.com",
+        "authorsguild.org"
+      ],
+      "id": "c3",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/36cce252-a32c-4cbb-a624-31dd8ac9574c/2026-07-20%20Order%20Granting%20Final%20_dckt%20680_0_.pdf",
+        "https://authorsguild.org/news/court-grants-final-approval-anthropic-copyright-settlement"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2011-03-22",
+      "claim": "Judge Chin rejected the Google Books settlement on grounds of Rule 23 scope, orphan works being a matter for Congress, adequacy of representation as to academic authors, foreign rightsholders and owners of unclaimed works, and a de facto monopoly — not on the author-publisher allocation rule.",
+      "confidence": "high",
+      "hosts": [
+        "courtlistener.com"
+      ],
+      "id": "c30",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c30",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.courtlistener.com/opinion/2476173/authors-guild-v-google-inc"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2011-08-17",
+      "claim": "In In re Literary Works in Electronic Databases the Second Circuit vacated approval because the interests of Category C claimants fundamentally conflicted with those of Category A and B claimants, holding class representation inadequate.",
+      "confidence": "high",
+      "hosts": [
+        "static.case.law"
+      ],
+      "id": "c31",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c31",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://static.case.law/f3d/654/html/0242-01.html"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-09-01",
+      "claim": "The Department of Justice filed a Statement of Interest under 28 U.S.C. 517 in the OpenAI copyright MDL on September 1, 2026 arguing that imposing broad copyright liability rendering AI training impermissible without licensing would be legally incorrect.",
+      "confidence": "medium",
+      "hosts": [
+        "chatgptiseatingtheworld.com"
+      ],
+      "id": "c32",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c32",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://chatgptiseatingtheworld.com/wp-content/uploads/2026/09/Statement-of-Interest-of-the-United-States-on-Fair-Use-Sept-1-2026-gov.uscourts.nysd_.640396.1682.0.pdf"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-03-18",
+      "claim": "The UK government reported on March 18, 2026 that a broad copyright exception with opt-out is no longer its preferred way forward, following a consultation that drew 11,520 responses.",
+      "confidence": "high",
+      "hosts": [
+        "gov.uk"
+      ],
+      "id": "c33",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c33",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.gov.uk/government/publications/report-and-impact-assessment-on-copyright-and-artificial-intelligence/report-on-copyright-and-artificial-intelligence"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-11-04",
+      "claim": "Getty Images abandoned its primary copyright and database-right claims mid-trial and lost its secondary infringement claim, the English High Court holding that model weights are not an infringing copy.",
+      "confidence": "medium",
+      "hosts": [
+        "judiciary.uk",
+        "lw.com"
+      ],
+      "id": "c34",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c34",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.judiciary.uk/judgments/getty-images-v-stability-ai",
+        "https://www.lw.com/en/insights/getty-images-v-stability-ai-english-high-court-rejects-secondary-copyright-claim"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-08-28",
+      "claim": "Anthropic faces continuing non-released music-publisher litigation, including a January 2026 suit covering 21,231 works that names Dario Amodei and Ben Mann individually, plus BMG, Round Hill and Sony Music Publishing actions filed during 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "courtlistener.com"
+      ],
+      "id": "c35",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c35",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.courtlistener.com/docket/72199828/concord-music-group-inc-v-anthropic-pbc"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-09-25",
+      "claim": "The Settlement Agreement contains a $3,000-per-work escalator for works above a 500,000 threshold and accelerates the two $450 million installments on a qualifying financing above $5 billion or an IPO above $10 billion in gross proceeds.",
+      "confidence": "medium",
+      "hosts": [
+        "assets-us-01.kc-usercontent.com"
+      ],
+      "id": "c36",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c36",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/d8578720-9fd0-4c27-9c7f-041bac826869/Class%20Action%20Settlement%20Agreement.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-09-25",
+      "claim": "Judge Alsup refused preliminary approval on September 8, 2025, saying he felt misled and that the deal risked being pushed down the throat of authors, and granted preliminary approval on September 25, 2025 after the parties added a Works List, claim form and allocation protocol.",
+      "confidence": "medium",
+      "hosts": [
+        "fortune.com",
+        "publishersweekly.com"
+      ],
+      "id": "c37",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c37",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.publishersweekly.com/pw/by-topic/digital/copyright/article/98552-judge-delays-preliminary-approval-in-anthropic-copyright-settlement.html",
+        "https://fortune.com/2025/09/09/anthropic-settlement-book-authors-1-5-billion-judge-alsup"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-07-20",
+      "claim": "Final approval and judgment were entered on July 20, 2026 by Judge Araceli Martinez-Olguin after Judge Alsup retired and the case was reassigned.",
+      "confidence": "high",
+      "hosts": [
+        "courtlistener.com",
+        "techcrunch.com"
+      ],
+      "id": "c38",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c38",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.courtlistener.com/docket/69058235/bartz-v-anthropic-pbc",
+        "https://techcrunch.com/2026/07/20/anthropics-landmark-1-5b-copyright-settlement-is-approved"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-06-23",
+      "claim": "Anthropic hired Tom Turvey, the former head of partnerships for Google's book-scanning project, in February 2024, and vendors stripped bindings and discarded the paper originals of millions of purchased print books, which Judge Alsup held was fair use.",
+      "confidence": "high",
+      "hosts": [
+        "copyrightalliance.org",
+        "washingtonpost.com"
+      ],
+      "id": "c39",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c39",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf",
+        "https://www.washingtonpost.com/technology/2026/01/27/anthropic-ai-scan-destroy-books"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-09-25",
+      "claim": "The Settlement Agreement defines the 'Download Date' as August 10, 2022 for purposes of the agreement.",
+      "confidence": "high",
+      "hosts": [
+        "assets-us-01.kc-usercontent.com"
+      ],
+      "id": "c4",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/d8578720-9fd0-4c27-9c7f-041bac826869/Class%20Action%20Settlement%20Agreement.pdf"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-09-06",
+      "claim": "A firm soliciting claimants as Phoenix Trade Finance offered to buy settlement claims for up to $1,500 per book in September 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "writerbeware.blog"
+      ],
+      "id": "c40",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c40",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://writerbeware.blog/2026/09/04/anthropic-copyright-settlement-publishers-are-making-incorrect-claims-on-authors-payouts"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-09-04",
+      "claim": "The Authors Guild states that an author whose rights reverted before August 10, 2022 should be entitled to 100 percent of the settlement funds for that title, and that where rights reverted after that date the publisher may have a valid claim.",
+      "confidence": "medium",
+      "hosts": [
+        "authorsguild.org"
+      ],
+      "id": "c5",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://authorsguild.org/news/important-information-regarding-anthropic-copyright-settlement-claim-notices"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-01-27",
+      "claim": "The court-approved Long-Form Notice states that by default the payment will be split 50-50 between authors and publishers, and that this Default Option does not apply to Education Works.",
+      "confidence": "high",
+      "hosts": [
+        "assets-us-01.kc-usercontent.com"
+      ],
+      "id": "c6",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/34a80bf3-70fc-414a-8a4c-daa81b5a0caf/ANT%20-%20Long-Form%20Notice_DeadlinesSecondUpdate%201.27.26.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2026-09-07",
+      "claim": "An author who is the sole rightsholder — self-published, or whose rights have reverted or whose grant has terminated — receives the full award for that work.",
+      "confidence": "high",
+      "hosts": [
+        "anthropiccopyrightsettlement.com",
+        "authorsalliance.org"
+      ],
+      "id": "c7",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.anthropiccopyrightsettlement.com/claim-form",
+        "https://www.authorsalliance.org/resources/generative-ai/bartz-v-anthropic-settlement-faq"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-11-25",
+      "claim": "The court appointed Theodore K. Cheng as Special Master for settlement claims at a rate of $500 per hour, payable from the Settlement Fund rather than by the disputing claimants.",
+      "confidence": "high",
+      "hosts": [
+        "assets-us-01.kc-usercontent.com"
+      ],
+      "id": "c8",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/255f15f4-cbba-466b-a868-75ba3853db93/2025-11-25%20Order%20Approving%20And%20_dckt%20501_0_.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at",
+      "article_created_at": "2026-09-07T13:41:42Z",
+      "article_title": "The $3,000 book: what Anthropic's $1.5B settlement actually bought, and who gets to keep it",
+      "as_of": "2025-06-23",
+      "claim": "Judge Alsup held that using the books to train Claude was 'exceedingly transformative' and a fair use under Section 107.",
+      "confidence": "high",
+      "hosts": [
+        "copyrightalliance.org",
+        "storage.courtlistener.com"
+      ],
+      "id": "c9",
+      "key": "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf",
+        "https://storage.courtlistener.com/recap/gov.uscourts.cand.434709/gov.uscourts.cand.434709.231.0.pdf"
+      ],
+      "type": "quote"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1120,
+  "reusable_count": 1149,
   "schema_version": 1
 }
