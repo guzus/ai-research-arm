@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-06 04:00 UTC",
-    "headline": "AMD AFTER-HOURS RALLY EXTENDS TO +21% / ~$580B MARKET CAP POST-Q1 BLOWOUT \u2014 AI INFRA REPRICING CONTINUES",
-    "source": "@VietnamPenguin",
-    "source_file": "research/summaries/2026-05-06-twitter-04h-headlines.json",
-    "url": "https://x.com/VietnamPenguin/status/2051880578199466492"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-06 04:00 UTC",
-    "headline": "MORGAN STANLEY RAISES HYPERSCALER CAPEX FORECAST: $805B IN 2026, $1.1T BY 2027 ACROSS AMZN/GOOG/META/MSFT/ORCL",
-    "source": "@sinclairdta",
-    "source_file": "research/summaries/2026-05-06-twitter-04h-headlines.json",
-    "url": "https://x.com/sinclairdta/status/2051880137583378579"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-06 04:00 UTC",
-    "headline": "NVIDIA OPEN-SOURCES 20+ CUDNN MOE KERNELS + NSA SPARSE ATTENTION KERNELS, ENDING 12-YEAR CLOSED-SOURCE ERA",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-06-twitter-04h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2051874751455408284"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 07:00 UTC",
-    "headline": "DEEPSEEK IN TALKS TO RAISE AT ~$45B IN FIRST MAJOR ROUND \u2014 CHINA STATE-BACKED 'BIG FUND' LEADING, TENCENT JOINING (FT)",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-06-twitter-07h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051904572038455634"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-06 07:00 UTC",
     "headline": "DEEPSEEK VALUATION COULD DOUBLE FROM $20B TO $45B IN WEEKS \u2014 INVESTOR LINE-UP NOT YET LOCKED IN",
@@ -24972,5 +24936,33 @@
     "headline": "BYTEDANCE BUILDS SEEDANCE-BASED WORLD MODEL TO RIVAL GENIE, TARGETING OCTOBER LAUNCH",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2096969714874658887"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-07 23:27:09 UTC",
+    "headline": "SEMIANALYSIS: IRONWOOD TPU UP TO 50% BETTER PERF/$ THAN BLACKWELL ON FIRST THIRD-PARTY RUN",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2097054644258103448"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-07 23:27:09 UTC",
+    "headline": "GOOGLE BRINGING UP TORCHTPU VLLM ON QWEN3.5 397B; KIMI K3 AND GLM-5.3 NEXT",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2097054644258103448"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-07 23:27:09 UTC",
+    "headline": "ASTRA MEGAKERNEL TAKES RTX PRO 6000 MEGA LEAD AT 24.80X PYTORCH BASELINE",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2097072163979419948"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-07 23:27:09 UTC",
+    "headline": "MUSE SPARK 1.3 MAX GOES LIVE IN COMMAND CODE WITH REASONING-EFFORT CONTROL",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2097038824920789134"
   }
 ]
