@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 01:00 UTC",
-    "headline": "SAMSUNG ELECTRONICS HITS $1 TRILLION MARKET CAP \u2014 SECOND ASIAN COMPANY AFTER TSMC, STOCK +11% ON AI CHIP DEMAND",
-    "source": "@Techmeme",
-    "source_file": "research/summaries/2026-05-06-twitter-01h-headlines.json",
-    "url": "https://x.com/Techmeme/status/2051822038915191284"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 01:00 UTC",
-    "headline": "SK HYNIX +10% PRE-MARKET AS KOREAN MEMORY RALLY HARDENS INTO AI-INFRA REPRICING",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-06-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051808106376806657"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-06 01:00 UTC",
-    "headline": "OPENAI ACCELERATES AI-AGENT PHONE TO H1 2027 MASS PRODUCTION \u2014 KOREAN SUPPLY-CHAIN LEAK",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-06-twitter-01h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2051799863965454773"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-06 04:00 UTC",
-    "headline": "ANTHROPIC COMMITS ~$200B TO GOOGLE CLOUD + TPUS OVER 5 YEARS, BEGINS 2027 \u2014 LARGEST KNOWN SINGLE-CUSTOMER COMPUTE DEAL ON RECORD",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-06-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051846970978062669"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 04:00 UTC",
-    "headline": "ANTHROPIC, BLACKSTONE, GOLDMAN SACHS, HELLMAN & FRIEDMAN LAUNCH $1.5B ENTERPRISE AI SERVICES VENTURE",
-    "source": "@Mingtiandi",
-    "source_file": "research/summaries/2026-05-06-twitter-04h-headlines.json",
-    "url": "https://x.com/Mingtiandi/status/2051872736562360759"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 04:00 UTC",
-    "headline": "DARIO AMODEI: OTHER MAJOR US AI LABS ~1-3 MONTHS BEHIND ANTHROPIC; NO ISSUE PUTTING MORE COMPUTE INTO MYTHOS; REVENUE GREW 80X SINCE 2024",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-06-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051847480254570998"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 04:00 UTC",
-    "headline": "SIERRA RAISES $950M AT $15.8B POST-MONEY VALUATION \u2014 BRET TAYLOR'S AGENTIC CUSTOMER-EXPERIENCE STARTUP, TIGER GLOBAL + GV LED",
-    "source": "@pulse2news",
-    "source_file": "research/summaries/2026-05-06-twitter-04h-headlines.json",
-    "url": "https://x.com/pulse2news/status/2051879961225732464"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-06 04:00 UTC",
     "headline": "AMD AFTER-HOURS RALLY EXTENDS TO +21% / ~$580B MARKET CAP POST-Q1 BLOWOUT \u2014 AI INFRA REPRICING CONTINUES",
@@ -24986,5 +24923,54 @@
     "headline": "KB SECURITIES SEES MEMORY AT 57% OF AI INFRA COST IN 2027, TRENDFORCE AT 68%",
     "source": "@aleabitoreddit",
     "url": "https://x.com/aleabitoreddit/status/2096858276290015563"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-07 19:07:06 UTC",
+    "headline": "OPENAI TO UNVEIL MANAGED AGENTS AT DEVDAY 2026 \u2014 AGENTS, ENVIRONMENTS, SESSIONS AS PLATFORM OBJECTS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2096949150755471510"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-07 19:07:06 UTC",
+    "headline": "SIMPLEBENCH: GPT-6 ASTRA PRO 86.5% TRAILS CLAUDE FABLE 5.1 AT 86.6%; HUMAN BASELINE 83.7%",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2096970502111662376"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-07 19:07:06 UTC",
+    "headline": "MAZEBENCH AUTHOR: ASTRA SCORES 14% AFTER 60+ HOURS IN 3D SPATIAL-REASONING EVAL",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2097032985019023606"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-07 19:07:06 UTC",
+    "headline": "AMD LIFTS VLLM AGENTIC THROUGHPUT 11X ON MI355X IN UNDER 19 DAYS \u2014 SOFTWARE ONLY",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2097007346421531008"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-07 19:07:06 UTC",
+    "headline": "SAMSUNG CO-DEVELOPING ON-DEVICE CHIP WITH ARM; OPENAI BELIEVED TO BE END CUSTOMER",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2096967899537907945"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-07 19:07:06 UTC",
+    "headline": "ANTHROPIC WEIGHS BRINGING PAYMENTS TECH IN-HOUSE, THREATENING STRIPE RELATIONSHIP",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2096999454104555822"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-07 19:07:06 UTC",
+    "headline": "BYTEDANCE BUILDS SEEDANCE-BASED WORLD MODEL TO RIVAL GENIE, TARGETING OCTOBER LAUNCH",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2096969714874658887"
   }
 ]
