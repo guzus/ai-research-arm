@@ -52,6 +52,26 @@ status_note: |
   Status stays `confirmed`; verification stays `confirmed` on the filing
   track, with both of today's items secondary and neither touching the
   S-1 timeline.
+
+  **2026-09-05/07 — the diligence fight is now about disclosure units, and the
+  ARR number moved.** The Information (2026-09-05, repeated 2026-09-06) reports
+  that **potential IPO investors are pressing Anthropic for detail beyond
+  standard financial statements — specifically revenue per token and revenue per
+  gigawatt of compute** — and notes that what Anthropic discloses "could set a
+  benchmark for OpenAI and other AI companies." That is a genuinely new fact
+  about this listing: the pricing argument is being fought over unit economics
+  that no AI company currently publishes.
+
+    Recorded as **speculation, explicitly labelled as such by its author**:
+  @GavinSBaker (2026-09-05) argues Anthropic shifted from gross to net ARR
+  accounting and stripped both Meta and Chinese distillation revenue out of its
+  $65B ARR figure — his read being that this pre-positions Anthropic to weather
+  Meta turning them off after listing. He calls it "pure speculation."
+  @aleabitoreddit (2026-09-06) relays chatter about a **$2T** listing "next
+  month," one-upping SpaceX; that is timeline-and-valuation chatter with no
+  named source and is not adopted here. @rohanpaul_ai (2026-09-07) relays David
+  Sacks arguing an Anthropic IPO would enlarge the funding base behind AI-doom
+  advocacy — commentary, not a fact about the offering.
 expected: "Bankers are telling potential investors (2026-08-22, @AndrewCurran_) it may raise >$100B at a ~$2T valuation \u2014 the largest IPO of all time \u2014 with the latest rumors pointing to a September listing. Anthropic is now reported (2026-08-25) to be preparing to tell investors its total addressable market exceeds $30T, above the $26.5T SpaceX claimed in May as the largest actionable market in human history. Investor-relayed figures as of 2026-08-17: ~$65B ARR at end-July, ~$11.5B 2Q26 revenue, >40% of ARR indirect. All of it pending an actual public S-1 or on-record confirmation"
 labels:
   - corporate-action
@@ -75,6 +95,10 @@ sources:
   - "@GavinSBaker"
   - "@scaling01"
   - "@Polymarket"
+  - https://x.com/theinformation/status/2096335063650574706
+  - https://x.com/GavinSBaker/status/2096257640884027500
+  - "@aleabitoreddit"
+  - "@rohanpaul_ai"
 polymarket:
   - event_slug: anthropic-ipo-by
     market_id: "2413330"
@@ -82,7 +106,7 @@ polymarket:
     question: "Anthropic IPO by Dec 31, 2026?"
     outcome: "Dec 31 2026"
 created_at: 2026-06-02
-updated_at: 2026-08-26
+updated_at: 2026-09-07
 closed_at: null
 closed_reason: null
 history:
@@ -100,6 +124,8 @@ history:
     change: "Two pre-IPO side-effects, neither a filing. Axios (via @WesRoth and @MTSlive) reports every Anthropic candidate goes through a culture interview run by a nominated employee, and that one applicant was asked how they would feel if Anthropic abandoned its AI ambitions for safety reasons and sent the stock to zero; a former employee says the questions are suggested rather than scripted, which Axios itself uses to explain why some candidates recall a stock crash and others recall broader safety-versus-revenue framings — so the headline version is one candidate's recollection of an unscripted prompt, not a documented question. First IPO-driven scepticism aimed at Anthropic's framing showed up in response: @scaling01 argues money-motivated applicants would simply lie and asks what scenario actually zeroes a $2T company, and @TheAhmadOsman calls the $2T IPO the most ambitious pump and dump in history; both recorded as commentary. Separately a trending item (~2,300 posts) reports EntropyIO launching Anthropic pre-IPO perpetual futures on Hyperliquid — no first-party capture, no volume or open interest, and a perp on an unlisted company is a derivative of a mark rather than price discovery, so it is recorded as demand to trade the listing, not a valuation datapoint. Status stays confirmed; verification stays confirmed on the filing track."
   - ts: 2026-08-26
     change: "Anthropic's own pre-IPO TAM number goes public: more than $30 trillion. @Polymarket (2026-08-25 16:09 UTC, ~1.17K engagement): 'JUST IN: Anthropic is reportedly expected to tell investors its total addressable market exceeds $30,000,000,000,000.00.' @AndrewCurran_ (16:18 UTC, ~719 engagement) supplies the scale comparison: 'Anthropic estimates their TAM at $30 trillion! This would be far in excess of the total addressable market opportunity of $26.5 trillion estimated by SpaceX in May, that at the time they called the largest actionable market in human history.' @scaling01 posted the underlying breakdown slide ('Anthropic defining their TAM'), and a market-side relay (@drop_grl) pairs the figure with the ~$2T target valuation this ticket already carries, against SpaceX's $1.77T. What this actually is matters: a number Anthropic is REPORTED to be preparing to tell investors - a pitch-deck denominator, not a filed disclosure. No public S-1 has appeared, no Anthropic account has posted it, and a TAM that large is a claim about the size of the addressable labour-and-software market rather than a revenue projection, so it constrains almost nothing about near-term financials. It is consistent in direction with the September-listing and ~$2T rumors already recorded. Status stays confirmed and verification stays confirmed for the confidential filing itself, which is separately sourced; the TAM figure specifically is report-grade and flagged as such."
+  - ts: 2026-09-07
+    change: "Diligence detail and an ARR accounting question. The Information (2026-09-05, repeated 09-06) reports potential IPO investors are pressing Anthropic for disclosure beyond standard financial statements — specifically revenue per token and revenue per gigawatt of compute — and that what Anthropic discloses could set a benchmark for OpenAI and other AI companies; no AI company currently publishes those units. Recorded as speculation and labelled as such by its author: @GavinSBaker (2026-09-05) argues Anthropic shifted gross -> net ARR accounting and stripped Meta and Chinese distillation revenue from its $65B ARR figure, pre-positioning for Meta turning them off post-listing ('pure speculation'). Not adopted: @aleabitoreddit's 2026-09-06 relay of $2T-next-month chatter (no named source), and David Sacks' commentary via @rohanpaul_ai that an Anthropic IPO would enlarge the AI-doom funding base. Status and verification unchanged."
 ---
 
 Anthropic **confidentially filed an S-1 registration statement with

@@ -3,7 +3,7 @@ slug: bytedance-seedance-2-5-2026-07
 title: ByteDance/Dreamina ships Seedance 2.5 video-generation model
 company: ByteDance
 model: Seedance 2.5
-status: released
+status: closed
 status_note: |
   **Seedance 2.5** is live on **Dreamina** (@BytePlusGlobal, official):
   staged regional rollout starting with SEA/Middle East/Africa/Europe/South
@@ -14,6 +14,12 @@ status_note: |
   consumer-product launch, not the enterprise API. Independently adopted
   by @higgsfield_ai ("a major leap over Seedance 2.0") same-day, plus
   corroboration from @AndrewCurran_ and @kimmonismus.
+
+  **2026-09-07 — CLOSED, released-and-aged.** Seedance 2.5 has been publicly
+  released since 2026-07-31, 38 days ago, with no new signal in this cycle's
+  window. Per the close triggers in `docs/model-tickets.md`, a shipped artifact
+  in `released` state for four weeks rolls into normal coverage. Nothing is
+  disputed and nothing is superseded — the ticket has simply run its course.
 expected: "BytePlus enterprise API access — not yet live as of launch, described as 'coming soon'"
 labels:
   - bytedance
@@ -27,12 +33,14 @@ sources:
   - "@AndrewCurran_"
   - "@kimmonismus"
 created_at: 2026-07-31
-updated_at: 2026-07-31
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-07
+closed_at: 2026-09-07
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-07-31
     change: "Created — ByteDance/Dreamina shipped Seedance 2.5, live via Dreamina with a staged regional rollout (SEA/ME/Africa/Europe/S.America first): native 30s single-shot generation, up to 3-min long-form with consistency, up to 50 multimodal references. Enterprise API via BytePlus 'coming soon,' not yet live. Official @BytePlusGlobal primary, independently adopted same-day by @higgsfield_ai, corroborated by @AndrewCurran_/@kimmonismus → status released (consumer product is live now), verification confirmed."
+  - ts: 2026-09-07
+    change: "CLOSED — released-and-aged. Seedance 2.5 has been publicly available since 2026-07-31 (38 days) and drew no new signal in the 2026-09-01..09-07 window. Closed per the docs/model-tickets.md trigger for artifacts that shipped publicly four or more weeks ago and are in released state; the artifact rolls into normal coverage. No dispute, no successor, history preserved."
 ---
 
 **ByteDance's Dreamina** shipped **Seedance 2.5**, its next-generation

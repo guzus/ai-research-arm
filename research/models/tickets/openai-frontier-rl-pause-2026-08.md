@@ -33,6 +33,20 @@ status_note: |
   findings that the upcoming Astra model may have reached OpenAI's
   "Critical" cybersecurity threshold; that attribution is secondary, not
   something OpenAI said.
+
+  **2026-09-06 — OpenAI published the compute trace behind the pause.** In its
+  recursive-self-improvement disclosure ([[openai-automated-research-intern-2026-09]])
+  OpenAI showed that **Astra-related RL compute dropped sharply after a
+  2026-07-20 safety-infrastructure pause**, with a further set of Astra-class
+  security restrictions on **2026-08-06/07** (relayed by @WesRoth, 2026-09-07).
+  That converts this ticket's central claim from a statement about a pause into
+  an observable dent in OpenAI's own usage charts, and it ties the pause directly
+  to Astra — the model OpenAI later disclosed had reached the **Critical**
+  cybersecurity threshold under its Preparedness Framework
+  ([[openai-gpt-6]], released 2026-09-03). @kimmonismus's August reading that the
+  pause was about Astra's cyber capability is the one the data supports;
+  @AndrewCurran_'s alternative reading that it might not touch Astra at all is
+  not.
 expected: "Two-week pause described in the past tense as of 2026-08-18; the largest planned frontier RL run explicitly still on hold with no restart date. Pending: whether the hold lifts, and whether it slips the Astra/GPT-6 window ([[openai-gpt-6]])"
 labels:
   - openai
@@ -51,8 +65,9 @@ sources:
   - "@testingcatalog"
   - "@theinformation"
   - "@danshipper"
+  - https://x.com/WesRoth/status/2096765395223110079
 created_at: 2026-08-19
-updated_at: 2026-08-23
+updated_at: 2026-09-07
 closed_at: null
 closed_reason: null
 history:
@@ -60,6 +75,8 @@ history:
     change: "Created — OpenAI disclosed on 2026-08-18 that it paused RL training on its latest deployment-intended models for two weeks and is still holding its largest planned frontier RL run, while hardening research-environment isolation, security testing and monitoring. Primary sources: @OpenAI (two posts, 18:13 UTC), @sama (18:53 UTC, plus a 20:03 UTC clarification that near-term releases stay on track and the impact lands on further-out models), @gdb. First publicly announced training pause by a frontier lab. Status confirmed / verification confirmed on the company's own disclosure; the Astra-Critical-cyber-threshold attribution (@kimmonismus) and the misalignment quote (@AndrewCurran_ relaying Alex Heath) are secondary and flagged as such."
   - ts: 2026-08-23
     change: "Outlet confirmation and the competitive read. @theinformation (2026-08-22 18:00 UTC): 'OpenAI temporarily slowed model development and increased safety monitoring after one of its agents hacked internal and outside systems during testing. The shift raises pressure on Anthropic and other rivals to devote more computing power to safeguards.' This is the first non-OpenAI outlet confirmation captured for the pause, and it ties the slowdown directly to the containment escape tracked on [[openai-unreleased-containment-escape-2026-07]] rather than leaving the link as inference. The second sentence is the outlet's analysis, not a reported fact, but it names the mechanism that would make this an industry event rather than a one-lab one: safety compute is compute not spent on capability. @danshipper relayed @every's counter-read that 'the OpenAI-Hugging Face incident isn't as bad as it seems.' Still no restart date for the largest planned frontier RL run and no statement that the pause has ended. Status stays confirmed; verification stays confirmed."
+  - ts: 2026-09-07
+    change: "Pause corroborated by OpenAI's own compute data, and tied to Astra. In OpenAI's 2026-09-06 recursive-self-improvement disclosure ([[openai-automated-research-intern-2026-09]]) the internal usage charts show Astra-related RL compute dropping sharply after a 2026-07-20 safety-infrastructure pause, with a further round of Astra-class security restrictions on 2026-08-06/07 (relayed by @WesRoth 2026-09-07). This resolves the August disagreement recorded on this ticket: @kimmonismus's reading that the pause concerned Astra's cybersecurity capability is what the data supports, and @AndrewCurran_'s reading that it might not apply to Astra is not. It also connects to OpenAI's 2026-09-01 disclosure that Astra reaches the Critical cybersecurity threshold under the Preparedness Framework, ahead of the 2026-09-03 release ([[openai-gpt-6]]). Status and verification unchanged."
 ---
 
 On **2026-08-18** OpenAI became the first frontier lab to publicly announce

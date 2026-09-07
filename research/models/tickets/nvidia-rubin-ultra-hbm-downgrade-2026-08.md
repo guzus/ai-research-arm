@@ -38,6 +38,18 @@ status_note: |
   even thousands of chips — if we want to scale to 100T models we could
   just do it today." Both are on the record; this ticket records the
   disagreement rather than picking a side.
+
+  **2026-09-05 — SemiAnalysis names the reason, and it is not supply.**
+  "Nvidia **de-specced Rubin Ultra's HBM from 12-Hi to 8-Hi because the real
+  bottleneck is $/bandwidth, not $/capacity**." That reframes this ticket: the cut
+  reads as a deliberate architectural trade rather than a memory-supply
+  concession. Adjacent context from the same week — @MilksandMatcha (2026-09-01)
+  notes the industry moving from 12-Hi back toward 8-Hi even as DRAM stacking
+  accelerates, because taller stacks make thermals, power, yield, packaging and
+  reliability harder; @jukan05 (2026-09-06) adds that lowering stack heights makes
+  DRAM-wafer supply more elastic and predicts scarcity shifts to **HBM pin speed**
+  rather than disappearing. SemiAnalysis followed up 2026-09-06 costing the OG
+  1024GB vs the new 192GB Rubin "Ultra" against an F-35.
 expected: "Reported 2026-08-24 by SemiAnalysis: Rubin Ultra to ship with 192GB HBM4 8-hi vs 1TB previewed and 288GB on regular Rubin, after the 4-die variant was scrapped, stacks cut to 8-hi, and HBM4E 32Gb dies swapped for HBM4 24Gb. The 8-hi shift is now independently corroborated from the Korean memory-supply side (Zdnet Korea, 2026-08-26): NVIDIA asked suppliers to change the primary HBM4 configuration from 12-hi to 8-hi for 2H26, and HBM4E is now also expected predominantly 8-hi. Pending: NVIDIA confirmation or denial (its earnings call is 2026-08-26), corroboration of the specific 192GB figure, and what NVIDIA does to offset lower capacity per GPU"
 labels:
   - nvidia
@@ -50,8 +62,10 @@ sources:
   - "@SemiAnalysis_"
   - "@scaling01"
   - "@jukan05"
+  - https://x.com/SemiAnalysis_/status/2096282606803284031
+  - "@MilksandMatcha"
 created_at: 2026-08-25
-updated_at: 2026-08-26
+updated_at: 2026-09-07
 closed_at: null
 closed_reason: null
 history:
@@ -59,6 +73,8 @@ history:
     change: "Created — @SemiAnalysis_ (2026-08-24 21:00 UTC) reports Rubin Ultra will ship with 192GB of HBM4 8-hi, down from the 1TB originally previewed and below regular Rubin's 288GB, via three compounding cuts: cube count to 8 after the 4-die Rubin Ultra was scrapped, stack height to 8-hi instead of 16-hi, and HBM4 24Gb dies instead of HBM4E 32Gb dies (an 8-hi HBM4E upgrade flagged as possible later). SemiAnalysis says it broke this to Accelerator Model subscribers in July. Status confirmed on a specialist desk publishing a specific spec with a decomposed causal chain; verification partial — no NVIDIA statement, no second independent source, and the analysis sits behind a paywall that was not read. @scaling01 read it as bearish for large models, then argued the counterpoint himself; both recorded. Directly relevant to [[nvidia-server-price-increase-2026-08]] — memory is the cost driver in both."
   - ts: 2026-08-26
     change: "Independent corroboration of the 8-high shift arrives from the Korean memory-supply side - the second source this ticket was explicitly waiting on. @jukan05 (2026-08-26 05:29 UTC) relays Zdnet Korea: Samsung Electronics and SK hynix are set to increase the 8-high share of their HBM4 shipments to NVIDIA in the second half of this year, having previously supplied 12-high for the Vera Rubin series. The load-bearing quote is attributed to a memory-semiconductor industry source: 'Nvidia recently asked suppliers to change the primary HBM4 product configuration from 12-high to 8-high. My understanding is that supply plans for the second half of the year were revised accordingly.' The stated drivers reach SemiAnalysis's causal chain from a different direction: thermals (HBM4 doubles I/O channels to 2,048, substantially increasing heat at both chip and rack level, and 'Nvidia is placing the highest priority on thermal management when designing its latest AI platforms') and yield (core DRAM die yields improve relatively quickly, but yields decline significantly during the stacking, bonding and packaging of 12 dies). A senior memory source adds that HBM4E - the generation expected in Rubin Ultra - is now also likely to ship 'predominantly 8-high' next year, while the report itself flags the unresolved question: 'issues such as whether Rubin Ultra will use HBM4E or HBM4 have yet to be resolved.' One official-tone hedge is worth preserving against the 'downgrade' framing: 'This is not so much about downgrading individual chip specifications as it is about finding the optimal system-level configuration, so it is unlikely to cause a major change in overall market demand.' Net: the stack-height half of the SemiAnalysis report is now independently sourced; the specific 192GB Rubin Ultra capacity figure is not. Status stays confirmed; verification stays partial pending NVIDIA on the record - its earnings call is today."
+  - ts: 2026-09-07
+    change: "Rationale named. @SemiAnalysis_ (2026-09-05): 'Nvidia de-specced Rubin Ultra's HBM from 12-Hi to 8-Hi because the real bottleneck is $/bandwidth, not $/capacity' — reframing the cut as a deliberate architectural trade rather than a memory-supply concession. Corroborating context the same week: @MilksandMatcha (2026-09-01) on the industry moving 12-Hi -> 8-Hi even as stacking accelerates, because taller stacks worsen thermals, power, yield, packaging and reliability; @jukan05 (2026-09-06) that lower stack heights make DRAM-wafer supply more elastic and that scarcity shifts to HBM pin speed rather than disappearing. SemiAnalysis followed up 2026-09-06 costing OG 1024GB vs the new 192GB Rubin 'Ultra' against an F-35. Status and verification unchanged."
 ---
 
 SemiAnalysis reports that **Rubin Ultra will carry 192GB of HBM4** — less
