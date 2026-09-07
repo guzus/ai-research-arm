@@ -645,7 +645,7 @@ jobs:
         id: gen-claude
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1
+        uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
         env: &claude_env
           # Security: GEN_TOPIC / GEN_PROMPT / GEN_TAGS are NOT in this env
           # block. The agent reads them from $GITHUB_WORKSPACE/.gen-input/
@@ -1832,7 +1832,7 @@ jobs:
         id: gen-claude-retry
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1
+        uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
         env: *claude_env
         with: *claude_with
 
@@ -2105,7 +2105,7 @@ jobs:
         id: gen-deepseek
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1
+        uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
         env: &deepseek_v4_flash_env
           # Redirect Claude Code CLI to Fireworks' Anthropic-compatible endpoint,
           # whose base URL omits /v1 — the client appends /v1/messages. Every
@@ -3313,7 +3313,7 @@ jobs:
         id: gen-deepseek-retry
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1
+        uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
         env: *deepseek_v4_flash_env
         with: *deepseek_v4_flash_with
 
@@ -3395,7 +3395,7 @@ jobs:
         id: gen-deepseek-retry-2
         continue-on-error: true
         timeout-minutes: 90
-        uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1
+        uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
         env: *deepseek_v4_flash_env
         with: *deepseek_v4_flash_with
 

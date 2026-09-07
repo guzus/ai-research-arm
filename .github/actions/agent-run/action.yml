@@ -227,7 +227,7 @@ runs:
       # continue-on-error so the step below can classify HOW it ended. A
       # non-dead-start failure is re-raised there, so this is not a swallow.
       continue-on-error: true
-      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
+      uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
       env:
         ANTHROPIC_MODEL: ${{ steps.select.outputs.native-model }}
         ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.native-model }}
@@ -242,7 +242,7 @@ runs:
       id: run-claude-bots
       if: steps.select.outputs.provider == 'claude' && inputs.allowed-bots != ''
       continue-on-error: true
-      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
+      uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
       env:
         ANTHROPIC_MODEL: ${{ steps.select.outputs.native-model }}
         ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.select.outputs.native-model }}
@@ -416,7 +416,7 @@ runs:
     - name: Run agent with Z.ai (post-agent fallback)
       id: run-zai-fallback
       if: steps.reselect.outputs.provider == 'zai' && inputs.allowed-bots == ''
-      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
+      uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
       env:
         ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
@@ -438,7 +438,7 @@ runs:
     - name: Run agent with Z.ai (post-agent fallback)
       id: run-zai-fallback-bots
       if: steps.reselect.outputs.provider == 'zai' && inputs.allowed-bots != ''
-      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
+      uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
       env:
         ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
@@ -461,7 +461,7 @@ runs:
     - name: Run agent with Fireworks
       id: run-fireworks
       if: steps.select.outputs.provider == 'fireworks' && inputs.allowed-bots == ''
-      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
+      uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
       env:
         ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
         ANTHROPIC_API_KEY: ${{ inputs.fireworks-api-key }}
@@ -482,7 +482,7 @@ runs:
     - name: Run agent with Fireworks
       id: run-fireworks-bots
       if: steps.select.outputs.provider == 'fireworks' && inputs.allowed-bots != ''
-      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
+      uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
       env:
         ANTHROPIC_BASE_URL: https://api.fireworks.ai/inference
         ANTHROPIC_API_KEY: ${{ inputs.fireworks-api-key }}
@@ -504,7 +504,7 @@ runs:
     - name: Run agent with Z.ai
       id: run-zai
       if: steps.select.outputs.provider == 'zai' && inputs.allowed-bots == ''
-      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
+      uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
       env:
         ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
@@ -526,7 +526,7 @@ runs:
     - name: Run agent with Z.ai
       id: run-zai-bots
       if: steps.select.outputs.provider == 'zai' && inputs.allowed-bots != ''
-      uses: anthropics/claude-code-action@a874e9ecd7bb36efdad65429c6b35815f5a08f10 # v1
+      uses: anthropics/claude-code-action@d75b94d5ad426cb8546e6628b6f5f19b84e5cce1 # v1.0.216
       env:
         ANTHROPIC_BASE_URL: https://api.z.ai/api/anthropic
         ANTHROPIC_AUTH_TOKEN: ${{ inputs.zai-api-key }}
