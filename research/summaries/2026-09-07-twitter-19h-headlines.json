@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI TO UNVEIL MANAGED AGENTS AT DEVDAY 2026 — AGENTS, ENVIRONMENTS, SESSIONS AS PLATFORM OBJECTS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2096949150755471510",
+    "category": "breaking"
+  },
+  {
+    "headline": "SIMPLEBENCH: GPT-6 ASTRA PRO 86.5% TRAILS CLAUDE FABLE 5.1 AT 86.6%; HUMAN BASELINE 83.7%",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2096970502111662376",
+    "category": "model"
+  },
+  {
+    "headline": "MAZEBENCH AUTHOR: ASTRA SCORES 14% AFTER 60+ HOURS IN 3D SPATIAL-REASONING EVAL",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2097032985019023606",
+    "category": "research"
+  },
+  {
+    "headline": "AMD LIFTS VLLM AGENTIC THROUGHPUT 11X ON MI355X IN UNDER 19 DAYS — SOFTWARE ONLY",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2097007346421531008",
+    "category": "infra"
+  },
+  {
+    "headline": "SAMSUNG CO-DEVELOPING ON-DEVICE CHIP WITH ARM; OPENAI BELIEVED TO BE END CUSTOMER",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2096967899537907945",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC WEIGHS BRINGING PAYMENTS TECH IN-HOUSE, THREATENING STRIPE RELATIONSHIP",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2096999454104555822",
+    "category": "business"
+  },
+  {
+    "headline": "BYTEDANCE BUILDS SEEDANCE-BASED WORLD MODEL TO RIVAL GENIE, TARGETING OCTOBER LAUNCH",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2096969714874658887",
+    "category": "model"
+  }
+]

@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-07 19:07:06 UTC
+
+CYCLE: Astra's benchmark picture splits open; OpenAI's agent-platform plans leak.
+
+TOP STORIES:
+• SimpleBench: Astra Pro 86.5% vs Fable 5.1 86.6%; MazeBench author reports Astra at 14% after 60+ hrs — a 450-like relay claimed the opposite ⚠
+• TestingCatalog: OpenAI to announce Managed Agents at DevDay 2026 — Agents, Environments, Agent Sessions as platform objects, hosted or self-hosted ⚠
+• SemiAnalysis: AMD lifted vLLM agentic throughput 11x on MI355X in under 19 days via ROCm software alone ⚠
+
+WATCH: An OpenAI Platform docs page or DevDay agenda naming Agents/Environments/Agent Sessions as API resources.
+
+Full update on GitHub.
