@@ -34,7 +34,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-09-07T19:17:30Z",
+  "generated_at": "2026-09-07T23:35:08Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -150,7 +150,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09996,"0.6":0.09996,"0.7":0.09996,"0.8":0.09996,"0.9":0.09996,"0.95":50.0},"pareto":8,"plotted":103,"ts":"2026-09-06T23:00:39Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.25,"0.95":50.0},"pareto":9,"plotted":103,"ts":"2026-09-07T08:27:34Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.25,"0.95":50.0},"pareto":10,"plotted":103,"ts":"2026-09-07T15:06:18Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.25,"0.95":50.0},"pareto":10,"plotted":103,"ts":"2026-09-07T19:17:30Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.25,"0.95":50.0},"pareto":10,"plotted":103,"ts":"2026-09-07T19:17:30Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.25,"0.95":50.0},"pareto":10,"plotted":103,"ts":"2026-09-07T23:35:08Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -3275,7 +3276,7 @@
         }
       ]
     },
-    "as_of": "2026-09-07T19:17:30Z",
+    "as_of": "2026-09-07T23:35:08Z",
     "counts": {
       "pareto": 10,
       "plotted": 103,
@@ -6686,10 +6687,10 @@
         "vendor": "amazon"
       },
       {
-        "input_usd_per_mtok": 2.55,
+        "input_usd_per_mtok": 2.5,
         "key": "moonshotaikimilatest",
         "name": "MoonshotAI Kimi Latest",
-        "output_usd_per_mtok": 12.75,
+        "output_usd_per_mtok": 14.0,
         "vendor": "~moonshotai"
       },
       {
