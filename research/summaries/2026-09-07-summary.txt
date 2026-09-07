@@ -1,15 +1,14 @@
 AI News - 2026-09-07
 
 TOP STORIES:
-• OpenAI says it built an "automated research intern"; chief scientist Pachocki warns no lab has solved alignment enough to keep scaling at max speed
-• Alibaba's Qwen-Drive 1.0 self-driving model explains its decisions, but explanations often don't match its actual maneuvers
-• NYC bans AI tools and companion chatbots from public schools through 8th grade (~600k students)
-• UBS makes AI skills mandatory for 2027 banking hires; Anthropic reportedly weighing 10b5-1 trading plans for employee IPO shares
+• Anthropic locked in up to $517B of compute (14.8 GW) in 11 months after Amodei warned rivals about reckless pace
+• OpenAI agents now do 3.1 research-workdays per human day; Pachocki says no lab has alignment good enough to keep scaling at max speed
+• GPT-6 Astra beat Portal unaided in 23h 43m; NYC bans school AI through 8th grade (~600k students)
+• Insilico's AI-designed rentosertib shifted 6 aging clocks younger vs placebo in a 42-patient Nature Biotechnology analysis
 
 KEY NUMBERS:
-• OpenAI agents: 3.1 workdays of research per human workday; token output up 124x since Dec 2025
-• Qwen-Drive 1.0: off-road veering cut from 24% to 12% after RL training
-• Nairobi ghostwriting industry: ~40,000 workers displaced by ChatGPT since 2022
-• Anthropic IPO: prospectus expected after Labor Day, listing possibly late Sept/early Oct 2026
+• Anthropic: 14.8 GW added, ~$65B ARR (Bloomberg); OpenAI compute book $750B through 2030
+• ChatGPT web-chatbot share back to 55.5% (52.7% 3 months ago; 73.3% a year ago); Claude 9.3%
+• Lake Mariner NY campus: $3.2B / up to 500 MW / 35–40 permanent jobs
 
 Full report on GitHub.
