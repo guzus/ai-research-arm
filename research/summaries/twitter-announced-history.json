@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-05 21:00 UTC",
-    "headline": "GOOGLE SHIPS GEMMA 4 MULTI-TOKEN PREDICTION DRAFTERS \u2014 3X INFERENCE SPEEDUP AT ZERO QUALITY LOSS",
-    "source": "@googlegemma",
-    "source_file": "research/summaries/2026-05-05-twitter-21h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2051746452234285160"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-05 21:00 UTC",
-    "headline": "BRAZIL AI LEGAL STARTUP ENTER RAISES $100M AT $1.2B \u2014 FOUNDERS FUND LEADS, SEQUOIA + RIBBIT JOIN, VALUATION TRIPLES IN 8 MONTHS",
-    "source": "@BSCNews",
-    "source_file": "research/summaries/2026-05-05-twitter-21h-headlines.json",
-    "url": "https://x.com/BSCNews/status/2051780033128825240"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-05 21:00 UTC",
-    "headline": "OPENAI AGENTS SDK NOW IN TYPESCRIPT WITH SANDBOX AGENTS AND OPEN-SOURCE HARNESS BUILT IN",
-    "source": "@OpenAIDevs",
-    "source_file": "research/summaries/2026-05-05-twitter-21h-headlines.json",
-    "url": "https://x.com/OpenAIDevs/status/2051725072873001338"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-06 01:00 UTC",
-    "headline": "CAISI SIGNS PRE-RELEASE AI EVALUATION MOUS WITH MICROSOFT, GOOGLE, XAI \u2014 ANTHROPIC EXCLUDED OVER PENTAGON CLAUDE DISPUTE",
-    "source": "@NewsNew97351204",
-    "source_file": "research/summaries/2026-05-06-twitter-01h-headlines.json",
-    "url": "https://x.com/NewsNew97351204/status/2051783142617514172"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-06 01:00 UTC",
-    "headline": "MYTHOS NAMED AS TRIGGER \u2014 NIST DIRECTOR FALL CITES 40+ FRONTIER MODEL EVALUATIONS ALREADY COMPLETED ON PUBLIC-UNRELEASED MODELS",
-    "source": "@plaz28",
-    "source_file": "research/summaries/2026-05-06-twitter-01h-headlines.json",
-    "url": "https://x.com/plaz28/status/2051673466131079504"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 01:00 UTC",
-    "headline": "AMD Q1 2026 BLOWOUT \u2014 $10.25B REVENUE +38% YOY, DATA CENTER $5.8B +57%, $1.37 EPS BEAT; STOCK +12-16% AFTER HOURS",
-    "source": "@AMD",
-    "source_file": "research/summaries/2026-05-06-twitter-01h-headlines.json",
-    "url": "https://x.com/AMD/status/2051758675426005380"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 01:00 UTC",
-    "headline": "AMD RAISES Q2 GUIDE TO $11.2B \u2014 46% YOY GROWTH, RECORD $2.6B FREE CASH FLOW, GROSS MARGIN EXPANDING TO 56%",
-    "source": "@donaldjdean",
-    "source_file": "research/summaries/2026-05-06-twitter-01h-headlines.json",
-    "url": "https://x.com/donaldjdean/status/2051822982436475364"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-06 01:00 UTC",
     "headline": "SAMSUNG ELECTRONICS HITS $1 TRILLION MARKET CAP \u2014 SECOND ASIAN COMPANY AFTER TSMC, STOCK +11% ON AI CHIP DEMAND",
@@ -25000,5 +24937,54 @@
     "headline": "META MUSE AGENT MOVES TO CLOSED ALPHA WITH INVITE CODES, APP STORE LISTING SHOWS",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2096753152926122300"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-07 12:20:21 UTC",
+    "headline": "SAMSUNG FOUNDRY SHIFTS OVER HALF OF 4NM CAPACITY TO HBM4 BASE DIES FOR NVIDIA, BROADCOM, AMD",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2096837362475253761"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-07 12:20:21 UTC",
+    "headline": "SAMSUNG, SK HYNIX MEMORY STOCKPILES FALL BELOW 10 DAYS OF SUPPLY \u2014 SED",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2096858276290015563"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-07 12:20:21 UTC",
+    "headline": "MALAYSIA WEIGHING HUAWEI ASCEND 910C FOR $494M SOVEREIGN AI PROJECT DESPITE US WARNINGS \u2014 BLOOMBERG",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2096901383530418216"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-07 12:20:21 UTC",
+    "headline": "GPT-6 ASTRA TAKES #1 ON CODE ARENA WEBDEV AT 1,797 POINTS \u2014 OPENAI GOES #13 TO #1 IN ONE GENERATION",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2096840889733706083"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-07 12:20:21 UTC",
+    "headline": "ASTRA POWER USERS BREAK WITH BENCHMARKS: LACKS TASTE, BETTER AS SUBAGENT UNDER CLAUDE FABLE",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2096925646404403598"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-07 12:20:21 UTC",
+    "headline": "CLAUDE FABLE 5.1 TAKES #1 ON AGENT ARENA OVER 6.7K SESSIONS \u2014 AND IS PRICIEST AT $4.14 PER TASK",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2096855991039995954"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-07 12:20:21 UTC",
+    "headline": "KB SECURITIES SEES MEMORY AT 57% OF AI INFRA COST IN 2027, TRENDFORCE AT 68%",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2096858276290015563"
   }
 ]
