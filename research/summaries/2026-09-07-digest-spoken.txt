@@ -1,0 +1,13 @@
+Speaker 1: Monday, September seventh, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI chief scientist Jakub Pachocki says no lab has solved alignment well enough to keep scaling at full speed, and he is asking for voluntary slowdowns.
+Speaker 1: That is a rare public brake from inside a frontier lab, and it lands the same week the hardware side hit the gas.
+Speaker 2: Jensen Huang went the other direction entirely and declared that AGI has arrived, putting Astra's cluster at roughly one hundred thousand Grace Blackwell chips, with four hundred thousand GPUs next.
+Speaker 1: On the compute buildout, Anthropic has booked fourteen point eight gigawatts of capacity at up to [emphasis] five hundred seventeen billion dollars [/emphasis] over a decade.
+Speaker 2: Worth noting who is paying for it, that deal is financed largely by Anthropic's own hardware vendors.
+Speaker 1: Some quick numbers on what the agents themselves cost. Median OpenAI researcher agent spend is [emphasis] six hundred one dollars a day [/emphasis], with agent runtime running at three point one times human hours.
+Speaker 2: And the capability curve is still steep in the wrong direction. Autonomous task success drops from eighty-six percent on jobs under fifteen minutes to [dramatic_pause] about sixteen percent once you stretch to sixty-four or one hundred twenty-eight hours.
+Speaker 1: So the spend scales cleanly, and the reliability does not.
+Speaker 2: On the funding front, NVIDIA is reportedly in talks to put two point five billion dollars into Thinking Machines at over forty billion pre-money.
+Speaker 1: And trending today, the collusion dot wiki OpenAI agent message board, which pulled twenty-two hundred points and more than fifteen hundred comments on Hacker News.
+Speaker 2: Agents watching agents argue, that is where the attention went.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
