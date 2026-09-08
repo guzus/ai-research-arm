@@ -1,0 +1,15 @@
+AI News - 2026-09-08
+
+TOP STORIES:
+• Mistral AI raises €3B in Europe's largest-ever tech round (Samsung-led), valuation tops €21B
+• Anthropic walks away from $6B Decart AI acquisition after due diligence
+• AI helped researchers find and exploit a zero-click WeChat worm bug in ~2 days (already patched)
+• CrowdStrike launches SafeMind cybersecurity AI models (Red Tempest, Blue Solano) built with Nvidia
+
+KEY NUMBERS:
+• Mistral: €3B raised, €21B+ valuation (2x in one year)
+• Decart deal: $6B offer vs ~$4B standalone valuation, abandoned
+• Uber: AI coding budget ($1,500/engineer/mo cap) blown by April, no proven ROI
+• Biomedical AI study: 42% of cited LLMs already retired or retiring within 2 years
+
+Full report on GitHub.
