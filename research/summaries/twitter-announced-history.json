@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-06 18:00 UTC",
-    "headline": "MUSK ON RECORD: SPACEXAI MOVED TRAINING TO COLOSSUS 2, LEASING COLOSSUS 1 TO ANTHROPIC",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-06-twitter-18h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2052073708127133958"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-06 18:00 UTC",
-    "headline": "CODE WITH CLAUDE KEYNOTE: NO NEW MODEL \u2014 MANAGED AGENTS SHIPS DREAMS, MULTIAGENT, OUTCOMES, WEBHOOKS",
-    "source": "@claudeai",
-    "source_file": "research/summaries/2026-05-06-twitter-18h-headlines.json",
-    "url": "https://x.com/claudeai/status/2052067399088664981"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 18:00 UTC",
-    "headline": "BROCKMAN CROSS-EXAM: 77,727 CEREBRAS SHARES (MAR 2017) + DEC 2025 OPENAI 750 MW DEAL \u2192 CEREBRAS TRIPLED TO $23B+",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-06-twitter-18h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2052064407195115566"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 18:00 UTC",
-    "headline": "LECUN: ANTHROPIC-COLOSSUS DEAL IS A BLOW TO THE IDEA THAT GROK WILL REMAIN A FRONTIER MODEL",
-    "source": "@ylecun",
-    "source_file": "research/summaries/2026-05-06-twitter-18h-headlines.json",
-    "url": "https://x.com/ylecun/status/2052068290311139769"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-06 18:00 UTC",
-    "headline": "ANTHROPIC + SPACEX EXPLORING MULTI-GIGAWATT ORBITAL AI COMPUTE PARTNERSHIP",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-06-twitter-18h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2052062825598644398"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 21:00 UTC",
-    "headline": "MUSK DISSOLVES xAI AS SEPARATE COMPANY \u2014 AI PRODUCTS NOW 'SPACEXAI' UNDER SPACEX, COMPLETING FEB 2026 ALL-STOCK MERGER",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-06-twitter-21h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2052108173323215008"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-06 21:00 UTC",
     "headline": "xAI HANDLE CONFIRMS COLOSSUS 1 LEASE TO ANTHROPIC + MULTI-GIGAWATT ORBITAL AI COMPUTE PARTNERSHIP EXPLORATION",
@@ -24912,5 +24858,47 @@
     "headline": "COGNITION REPORTED RAISING $2B AT $48B VALUATION \u2014 ROUGHLY 53X ITS $900M RUN-RATE",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2097393102164258999"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-08 23:21:01 UTC",
+    "headline": "ZUCKERBERG: META IS 'PAST WATERMELON' \u2014 1GW PROMETHEUS CLUSTER NOW SCALING POST-WATERMELON MODELS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2097464773898318100"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-08 23:21:01 UTC",
+    "headline": "SAMSUNG TAYLOR FAB REPORTED ALREADY OPERATING IN TEXAS \u2014 SAME-DAY REPORT HAD PILOT START WEEKS AWAY",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2097459601780441322"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-08 23:21:01 UTC",
+    "headline": "CHINA'S CXMT STUCK AT 25% HBM3 YIELD VS 80% PRODUCTION FLOOR \u2014 TSV STACKING NAMED AS BLOCKER",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2097451352310030599"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-08 23:21:01 UTC",
+    "headline": "COGNITION CONFIRMS RAISE FIRST-PARTY: OVER $2B AT $48B VALUATION",
+    "source": "@swyx",
+    "url": "https://x.com/swyx/status/2097446534417895797"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-08 23:21:01 UTC",
+    "headline": "OPENAI PRESIDENT MARK CHEN: NO HUMAN OR AGENT LOOKED AT USER DATA IN NAVIER-STOKES EFFORT",
+    "source": "@jxnlco",
+    "url": "https://x.com/jxnlco/status/2097439001594798456"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-08 23:21:01 UTC",
+    "headline": "META DETAILS MUSE'S EXCLUSIVE CONNECTORS \u2014 INSTAGRAM DMS, THREADS, MESSENGER, MARKETPLACE, PLUS 1PASSWORD LOGINS",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2097454574202495340"
   }
 ]
