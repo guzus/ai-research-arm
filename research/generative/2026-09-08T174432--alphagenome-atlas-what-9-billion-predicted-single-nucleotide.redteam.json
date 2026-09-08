@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "What the announcement does not foreground, and the technical paper states plainly, is what that number was fit against: \"the population group max filtering allele frequency from gnomAD v4.1 is used to derive proxy labels to train AVI scores,\" with variants above the 0.1% filtering allele frequency taking the proxy-benign label and variants below it the proxy-impactful label.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The technical paper supplies the denominator, and it is narrow: across the headline ClinVar breakdown, the models AVI is measured against are GPN-Star, in its vertebrate and mammal variants, and CADD v1.7.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Of the ROSMAP genes where Enformer's predictions were \"significantly correlated to observed expression for 598 genes,\" the model was \"significantly anti-correlated with the true gene expression for 195 (33%) of these genes\"; Sasse et al. conclude it \"fails to correctly attribute the variants' direction of effect.\"",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
