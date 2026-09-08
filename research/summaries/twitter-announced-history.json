@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-06 15:00 UTC",
-    "headline": "MRC PUBLISHED THROUGH OPEN COMPUTE PROJECT \u2014 SRv6 SOURCE ROUTING REPLACES BGP, MICROSECOND FAILURE RECOVERY VS SECONDS",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-06-twitter-15h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2052025533937103102"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-06 15:00 UTC",
-    "headline": "GPT-5.5 INSTANT NOW DEFAULT MODEL FOR ALL CHATGPT USERS \u2014 API ALIAS gpt-5.5-chat-latest LIVE",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-06-twitter-15h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2051709028250915275"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-06 15:00 UTC",
-    "headline": "ALTMAN: 'CHATGPT FEELS VERY SWITCHED ON NOW' \u2014 SOLICITS LUDICROUS-TOKEN-BUDGET 5.5 USE CASES",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-06-twitter-15h-headlines.json",
-    "url": "https://x.com/sama/status/2051724685231214650"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-06 15:00 UTC",
-    "headline": "GOOGLE DEEPMIND PARTNERS WITH EVE ONLINE FOR AGENT RESEARCH \u2014 MEMORY, CONTINUAL LEARNING, LONG-HORIZON PLANNING",
-    "source": "@GoogleDeepMind",
-    "source_file": "research/summaries/2026-05-06-twitter-15h-headlines.json",
-    "url": "https://x.com/GoogleDeepMind/status/2052011542707630461"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 15:00 UTC",
-    "headline": "ANTHROPIC CODE WITH CLAUDE 2026 KEYNOTE OPENS 15:00 UTC SF \u2014 NO MODEL DROPS YET",
-    "source": "@claudeai",
-    "source_file": "research/summaries/2026-05-06-twitter-15h-headlines.json",
-    "url": "https://x.com/claudeai/status/2050252933866930339"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-06 18:00 UTC",
-    "headline": "ANTHROPIC TAKES ALL OF SPACEX/XAI COLOSSUS 1 \u2014 300+ MW, 220K+ GPUS, DEPLOYABLE WITHIN THE MONTH",
-    "source": "@claudeai",
-    "source_file": "research/summaries/2026-05-06-twitter-18h-headlines.json",
-    "url": "https://x.com/claudeai/status/2052060694699237558"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-06 18:00 UTC",
-    "headline": "ANTHROPIC DOUBLES CLAUDE CODE 5-HOUR LIMITS ON PRO/MAX/TEAM/ENTERPRISE; OPUS API RATES SUBSTANTIALLY RAISED",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-06-twitter-18h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2052064938840228237"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-05-06 18:00 UTC",
     "headline": "MUSK ON RECORD: SPACEXAI MOVED TRAINING TO COLOSSUS 2, LEASING COLOSSUS 1 TO ANTHROPIC",
@@ -24926,5 +24863,54 @@
     "headline": "INTOLOGY LOCUS HITS 44.7% ON POSTTRAINBENCH, LIFTS OPUS 5 BY 10 POINTS ON AI R&D TASK",
     "source": "@intology",
     "url": "https://x.com/intology/status/2097361405347602486"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-08 21:04:52 UTC",
+    "headline": "OPENAI CLAIMS NAVIER-STOKES \u2014 10,000 AGENTS, 88 HOURS, 130B OUTPUT TOKENS ON AN UNRELEASED MODEL",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2097374640582668336"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-08 21:04:52 UTC",
+    "headline": "OPENAI DENIES SEEING RIVAL PROOF, CANNOT RULE OUT DE-IDENTIFIED USER DATA IMPROVED ITS MODELS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2097375276384567642"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-08 21:04:52 UTC",
+    "headline": "ALTMAN: OPENAI OFFERED BUCKMASTER LEAD AUTHORSHIP; RIVAL TEAM THREATENED PLAGIARISM ACCUSATIONS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2097385167002415140"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-08 21:04:52 UTC",
+    "headline": "META LAUNCHES MUSE \u2014 AGENT WITH ITS OWN LINUX VM, TERMINAL AND STRIPE SPENDING AUTHORITY",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2097402344061510004"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-08 21:04:52 UTC",
+    "headline": "META PUTS $300,000 BOUNTY ON AN IMPACTFUL PROMPT INJECTION AGAINST MUSE",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2097405158703649059"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-08 21:04:52 UTC",
+    "headline": "OPENAI SHIPS CHATGPT IMAGES 2.5 PLUS API MODELS GPT-IMAGE-2.5 FLARE AND SUNBURST",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2097394962782384318"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-08 21:04:52 UTC",
+    "headline": "COGNITION REPORTED RAISING $2B AT $48B VALUATION \u2014 ROUGHLY 53X ITS $900M RUN-RATE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2097393102164258999"
   }
 ]
