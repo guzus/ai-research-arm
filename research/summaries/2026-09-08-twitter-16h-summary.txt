@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-08 16:33:39 UTC
+
+CYCLE: Hyperscaler silicon money moves, and two big numbers that need their fine print read.
+
+TOP STORIES:
+• Amazon to buy up to $60B of Qualcomm AI inference chips; takes warrants on 25M QCOM shares at $161.26 [✓]
+• The Information: Anthropic compute deals total as much as $517B vs the $180B guided to investors through 2029 [⚠]
+• Google DeepMind ships AlphaGenome Atlas — predicted impact for all 9B single-letter human DNA changes, free via API [✓]
+• SemiAnalysis restates Ironwood at 50% better perf/$ vs Blackwell Ultra; first decomposition says ~5% per chip, 19-34% real [⚠]
+
+WATCH: The Qualcomm filing — whether the warrant block vests on shipped volume or on time.
+
+Full update on GitHub.
