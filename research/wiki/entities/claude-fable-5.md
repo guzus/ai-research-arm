@@ -4,10 +4,12 @@ title: Claude Fable 5 / Mythos 5
 type: entity
 aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-class", "claude-fable-5", "claude-mythos-5", "Claude Fable 5.1", "Fable 5.1", "Claude Mythos 5.1", "Mythos 5.1"]
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
-description: Anthropic's Mythos-class pair; Artificial Analysis Intelligence Index v4.2 ranked Fable 5.1 first the evening Astra hit the public API, with a 4-point gap over Astra.
+description: Anthropic's Mythos-class pair; Fable 5.1 led SimpleBench at 86.6% (Astra Pro 86.5%) and became the practitioner pick to orchestrate while Astra implements.
 created_at: 2026-06-10
-timestamp: 2026-09-05T00:00:00Z
+timestamp: 2026-09-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
+  - {title: "ARA model ticket — Claude Fable 5.1", path: research/models/tickets/anthropic-claude-fable-5-1-2026-08.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
@@ -395,6 +397,22 @@ every feed on launch day.
   AA **62** versus xhigh **61** — still behind Fable
   (Artificial Analysis, Epoch AI, Twitter; ARA daily digest
   2026-09-05).
+
+- **SimpleBench puts Fable 5.1 a tenth ahead of Astra Pro
+  (2026-09-08).** Fable 5.1 at **86.6%** versus [[astra|Astra
+  Pro]] **86.5%** (human baseline 83.7%) — the same day
+  Astra took Code Arena: WebDev #1 at 1,797. Practitioners
+  independently landed on a role split the boards do not
+  measure: **Fable orchestrates, Astra implements**. @Teknium
+  reported Astra failing at orchestrating subagents and then
+  recommending Fable for that role; @scaling01, after
+  exhausting Astra Pro limits twice, said Astra "is still
+  not opinionated and lacks taste." No published multi-model
+  agent eval reproduces the split yet. Third-party
+  placement the same week: **#1 on Agent Arena** across
+  6.7K+ real sessions, also the most expensive model in that
+  comparison at **$4.14/task**. See [[astra]] (Twitter; ARA
+  daily digest 2026-09-08).
 
 ## Open questions
 

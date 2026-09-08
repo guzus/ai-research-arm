@@ -4,10 +4,11 @@ title: Muse Code (Muse Spark 1.3)
 type: entity
 aliases: ["Muse Code", "Muse Spark 1.2", "Muse Spark 1.3", "Meta Muse Code", "Muse Spark max", "Muse Spark 1.3 max"]
 tags: [coding-agent, meta, terminal-agent, benchmarks, pricing]
-description: Meta Superintelligence Labs' coding agent; Muse Spark 1.3 max unlocked 2026-09-05 after extra safety testing, still $1.25/$4.25, with a partner-preview AA card at 62 versus xhigh 61.
+description: Meta Superintelligence Labs' coding agent; Muse Spark 1.3 Max shipped into Command Code with a reasoning-effort parameter, while the Muse consumer agent moved to closed alpha.
 created_at: 2026-08-06
-timestamp: 2026-09-05T00:00:00Z
+timestamp: 2026-09-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
@@ -98,3 +99,22 @@ as one product; the maker is tracked on [[meta]] and the earlier
   tokens**. The public AA board still has
   [[claude-fable-5|Fable 5.1]] first (Meta, Twitter, Artificial
   Analysis; ARA daily digest 2026-09-05).
+
+## Command Code, a reasoning-effort knob, and a gated Muse agent (2026-09-08)
+
+- **[[meta]] shipped Muse Spark 1.3 Max into Command
+  Code** with a new **reasoning-effort parameter**,
+  amplified by chief AI officer Alexandr Wang. This is
+  the same 1.3 max unlock logged on 2026-09-05, now
+  named as a Command Code surface rather than only Muse
+  Code / the Model API (Twitter; ARA daily digest
+  2026-09-08).
+- **The Muse *agent* is a separate product and still
+  gated.** It moved from internal to **closed/limited
+  alpha with invite codes**. The App Store listing
+  describes a proactive assistant tracking user goals,
+  schedule and tasks — the consumer-agent leg this
+  page's [[meta]] counterpart has tracked as Hatch. The
+  model line is released; the agent is not (Twitter;
+  ARA daily digest 2026-09-08). See
+  [meta-hatch-muse-spark-2026-06](../../models/tickets/meta-hatch-muse-spark-2026-06.md).

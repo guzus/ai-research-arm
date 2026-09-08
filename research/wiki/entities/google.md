@@ -2,17 +2,18 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext"]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; WeatherNext 3 now forecasts at 5 km and hourly, Lyria 3.5 is in the consumer Gemini app, and Google is reported opposing Massachusetts AI safety rules that Anthropic supports.
+description: Hyperscaler behind Gemini; SemiAnalysis published the first third-party Ironwood TPUv7 inference numbers, claiming up to 50% better performance per dollar than Blackwell B200/B300.
 created_at: 2026-07-17
-timestamp: 2026-09-07T00:00:00Z
+timestamp: 2026-09-08T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
@@ -342,6 +343,18 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   TestingCatalog screenshot. No Google product note has
   appeared, and consumer Gemini is not included (Twitter;
   ARA daily digest 2026-09-07).
+
+## Ironwood vs Blackwell — first third-party TPUv7 numbers (2026-09-08)
+
+- **SemiAnalysis measured Google's Ironwood TPU against
+  [[nvidia|Blackwell]]**, publishing the first third-party
+  inference numbers for **TPUv7** and claiming **up to 50%
+  better performance per dollar than B200/B300** on an
+  Official Preview stack. This is an independent cost
+  print, not a Google launch note, and it sits next to
+  Fluidstack's $18B valuation as a Google-chip test bed
+  already logged on [[ai-capex]] (SemiAnalysis, Sept 7;
+  ARA daily digest 2026-09-08).
 
 ## Open questions
 

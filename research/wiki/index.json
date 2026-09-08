@@ -153,11 +153,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Anthropic has booked 14.8 GW at a reported cost of up to $517B over a decade, largely vendor-financed, after TCS's 1 GW Hyderabad campus pledge.",
-      "description": "The historically large compute buildout; Anthropic has booked 14.8 GW at a reported cost of up to $517B over a decade, largely vendor-financed, after TCS's 1 GW Hyderabad campus pledge.",
+      "summary": "The historically large compute buildout; Anthropic's 14.8 GW / $517B book is still behind OpenAI's $750B through 2030, while Lake Mariner's June fire showed how thinly campus accountability is spread.",
+      "description": "The historically large compute buildout; Anthropic's 14.8 GW / $517B book is still behind OpenAI's $750B through 2030, while Lake Mariner's June fire showed how thinly campus accountability is spread.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-07",
-      "timestamp": "2026-09-07T00:00:00Z",
+      "updated_at": "2026-09-08",
+      "timestamp": "2026-09-08T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -282,11 +282,11 @@
         "export-control",
         "hyperscaler-china"
       ],
-      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max and open-weighted it as Qwen3.8-2.4T-A95B, reported an AI-capex-signature quarter, priced an HK$80B (~$10.2B) AI-infrastructure placement (2026-08-25), and shipped the Qwen4-architecture Qwen3.8-Flash-Next MoE preview (2026-08-27).",
-      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max and open-weighted it as Qwen3.8-2.4T-A95B, reported an AI-capex-signature quarter, priced an HK$80B (~$10.2B) AI-infrastructure placement (2026-08-25), and shipped the Qwen4-architecture Qwen3.8-Flash-Next MoE preview (2026-08-27).",
+      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0, a 4B Qwen3.5 driving stack that combines perception, traffic Q&A and route planning, free on Hugging Face.",
+      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0, a 4B Qwen3.5 driving stack that combines perception, traffic Q&A and route planning, free on Hugging Face.",
       "created_at": "2026-07-05",
-      "updated_at": "2026-08-27",
-      "timestamp": "2026-08-27T00:00:00Z",
+      "updated_at": "2026-09-08",
+      "timestamp": "2026-09-08T00:00:00Z",
       "file": "entities/alibaba.md",
       "aliases": [
         "Alibaba Group",
@@ -294,7 +294,9 @@
         "BABA",
         "Alibaba Group Holding",
         "Qwen",
-        "Qoder"
+        "Qoder",
+        "Qwen-Drive",
+        "Qwen-Drive 1.0"
       ],
       "outbound": [
         "ai-capex",
@@ -472,11 +474,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; has booked 14.8 GW of compute at a reported cost of up to $517B over a decade, largely vendor-financed, while supporting Massachusetts AI safety rules that OpenAI and Google oppose.",
-      "description": "AI safety lab behind Claude; has booked 14.8 GW of compute at a reported cost of up to $517B over a decade, largely vendor-financed, while supporting Massachusetts AI safety rules that OpenAI and Google oppose.",
+      "summary": "AI safety lab behind Claude; has booked 14.8 GW of compute at a reported cost of up to $517B over a decade, still behind OpenAI's $750B through 2030, while authors contest the $1.5B settlement's publisher split ahead of a possible late-September IPO.",
+      "description": "AI safety lab behind Claude; has booked 14.8 GW of compute at a reported cost of up to $517B over a decade, still behind OpenAI's $750B through 2030, while authors contest the $1.5B settlement's publisher split ahead of a possible late-September IPO.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-07",
-      "timestamp": "2026-09-07T00:00:00Z",
+      "updated_at": "2026-09-08",
+      "timestamp": "2026-09-08T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -693,11 +695,11 @@
         "agentic",
         "computer-use"
       ],
-      "summary": "OpenAI's GPT-6 Astra computer-use model; Jensen Huang put its training cluster at ~100K+ Grace Blackwell NVLink72, while OpenAI's own data showed long-task success collapsing to roughly 16%.",
-      "description": "OpenAI's GPT-6 Astra computer-use model; Jensen Huang put its training cluster at ~100K+ Grace Blackwell NVLink72, while OpenAI's own data showed long-task success collapsing to roughly 16%.",
+      "summary": "OpenAI's GPT-6 Astra computer-use model; four days post-launch it took Code Arena WebDev",
+      "description": "OpenAI's GPT-6 Astra computer-use model; four days post-launch it took Code Arena WebDev",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-07",
-      "timestamp": "2026-09-07T00:00:00Z",
+      "updated_at": "2026-09-08",
+      "timestamp": "2026-09-08T00:00:00Z",
       "file": "entities/astra.md",
       "aliases": [
         "Astra",
@@ -945,11 +947,11 @@
         "mythos-class",
         "alignment"
       ],
-      "summary": "Anthropic's Mythos-class pair; Artificial Analysis Intelligence Index v4.2 ranked Fable 5.1 first the evening Astra hit the public API, with a 4-point gap over Astra.",
-      "description": "Anthropic's Mythos-class pair; Artificial Analysis Intelligence Index v4.2 ranked Fable 5.1 first the evening Astra hit the public API, with a 4-point gap over Astra.",
+      "summary": "Anthropic's Mythos-class pair; Fable 5.1 led SimpleBench at 86.6% (Astra Pro 86.5%) and became the practitioner pick to orchestrate while Astra implements.",
+      "description": "Anthropic's Mythos-class pair; Fable 5.1 led SimpleBench at 86.6% (Astra Pro 86.5%) and became the practitioner pick to orchestrate while Astra implements.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-09-05",
-      "timestamp": "2026-09-05T00:00:00Z",
+      "updated_at": "2026-09-08",
+      "timestamp": "2026-09-08T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -2247,11 +2249,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; WeatherNext 3 now forecasts at 5 km and hourly, Lyria 3.5 is in the consumer Gemini app, and Google is reported opposing Massachusetts AI safety rules that Anthropic supports.",
-      "description": "Hyperscaler behind Gemini; WeatherNext 3 now forecasts at 5 km and hourly, Lyria 3.5 is in the consumer Gemini app, and Google is reported opposing Massachusetts AI safety rules that Anthropic supports.",
+      "summary": "Hyperscaler behind Gemini; SemiAnalysis published the first third-party Ironwood TPUv7 inference numbers, claiming up to 50% better performance per dollar than Blackwell B200/B300.",
+      "description": "Hyperscaler behind Gemini; SemiAnalysis published the first third-party Ironwood TPUv7 inference numbers, claiming up to 50% better performance per dollar than Blackwell B200/B300.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-09-07",
-      "timestamp": "2026-09-07T00:00:00Z",
+      "updated_at": "2026-09-08",
+      "timestamp": "2026-09-08T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2265,7 +2267,10 @@
         "Google AI Studio",
         "Google Pics",
         "WeatherNext 3",
-        "WeatherNext"
+        "WeatherNext",
+        "Ironwood",
+        "TPUv7",
+        "TPU v7"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2289,6 +2294,7 @@
         "matrix-multiplication-exponent",
         "meta",
         "nano-banana-2-lite",
+        "nvidia",
         "openai",
         "zawinskis-law-of-multiagents"
       ],
@@ -3305,11 +3311,11 @@
         "benchmarks",
         "pricing"
       ],
-      "summary": "Meta Superintelligence Labs' coding agent; Muse Spark 1.3 max unlocked 2026-09-05 after extra safety testing, still $1.25/$4.25, with a partner-preview AA card at 62 versus xhigh 61.",
-      "description": "Meta Superintelligence Labs' coding agent; Muse Spark 1.3 max unlocked 2026-09-05 after extra safety testing, still $1.25/$4.25, with a partner-preview AA card at 62 versus xhigh 61.",
+      "summary": "Meta Superintelligence Labs' coding agent; Muse Spark 1.3 Max shipped into Command Code with a reasoning-effort parameter, while the Muse consumer agent moved to closed alpha.",
+      "description": "Meta Superintelligence Labs' coding agent; Muse Spark 1.3 Max shipped into Command Code with a reasoning-effort parameter, while the Muse consumer agent moved to closed alpha.",
       "created_at": "2026-08-06",
-      "updated_at": "2026-09-05",
-      "timestamp": "2026-09-05T00:00:00Z",
+      "updated_at": "2026-09-08",
+      "timestamp": "2026-09-08T00:00:00Z",
       "file": "entities/muse-code.md",
       "aliases": [
         "Muse Code",
@@ -3638,6 +3644,7 @@
         "fireworks-ai",
         "fractile",
         "gemma-4",
+        "google",
         "gpt-6",
         "groq",
         "hugging-face",
@@ -3826,11 +3833,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; chief scientist Jakub Pachocki asked for voluntary slowdowns while the lab disclosed $601/day median researcher agent spend and opposed Massachusetts AI safety rules.",
-      "description": "Frontier lab behind the GPT family; chief scientist Jakub Pachocki asked for voluntary slowdowns while the lab disclosed $601/day median researcher agent spend and opposed Massachusetts AI safety rules.",
+      "summary": "Frontier lab behind the GPT family; declared an automated-research-intern milestone (3.1 agent-workdays per human day) while Pachocki warned that chain-of-thought monitoring is degrading, and ChatGPT recovered to 55.5% of chatbot web traffic.",
+      "description": "Frontier lab behind the GPT family; declared an automated-research-intern milestone (3.1 agent-workdays per human day) while Pachocki warned that chain-of-thought monitoring is degrading, and ChatGPT recovered to 55.5% of chatbot web traffic.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-07",
-      "timestamp": "2026-09-07T00:00:00Z",
+      "updated_at": "2026-09-08",
+      "timestamp": "2026-09-08T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5360,6 +5367,7 @@
     "inkling-small": "thinking-machines",
     "instinct": "amd",
     "interim measures for the administration of ai anthropomorphic interactive services": "china-ai-regulation",
+    "ironwood": "google",
     "jelani nelson": "jelani-nelson",
     "jelani-nelson": "jelani-nelson",
     "jensen huang": "nvidia",
@@ -5510,6 +5518,8 @@
     "qwen": "alibaba",
     "qwen 3.8 max": "qwen-3-8-max",
     "qwen-3-8-max": "qwen-3-8-max",
+    "qwen-drive": "alibaba",
+    "qwen-drive 1.0": "alibaba",
     "qwen3.8": "qwen-3-8-max",
     "qwen3.8 max": "qwen-3-8-max",
     "qwen3.8-2.4t-a95b": "qwen-3-8-max",
@@ -5574,6 +5584,8 @@
     "thinking machines lab": "thinking-machines",
     "thinking-machines": "thinking-machines",
     "tinker": "thinking-machines",
+    "tpu v7": "google",
+    "tpuv7": "google",
     "trump ai executive order": "federal-ai-policy",
     "unitree": "unitree",
     "unitree robotics": "unitree",
@@ -5611,6 +5623,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-09-08",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-08 digest plus tickets updated 2026-09-07 (openai-automated-research-intern, anthropic-ipo, anthropic-copyright-settlement, anthropic-claude-fable-5-1, malaysia-huawei-sovereign-ai, meta-hatch-muse-spark, openai-gpt-6). Created 0, updated 8 (openai — intern milestone 3.1 agent-workdays / 124× tokens / 86% sub-15min + CoT-monitor decay + ChatGPT 55.5% web share; astra — Code Arena WebDev #1 at 1,797 vs SimpleBench 86.5 / MazeBench 14% + Portal 23h43m + Fable-orchestrates/Astra-implements; anthropic — own DCs vs OpenAI $750B, 10b5-1 rank-and-file IPO lockup, Stripe in-house eval, settlement distribution fight; claude-fable-5 — SimpleBench 86.6% + orchestration role + Agent Arena #1; google — SemiAnalysis Ironwood TPUv7 vs Blackwell, up to 50% better perf/$; ai-capex — Lake Mariner fire accountability, Malaysia Huawei Ascend 910C $494M eval, Samsung 4nm→HBM4 crowding; muse-code — Spark 1.3 Max into Command Code + Muse agent closed alpha; alibaba — Qwen-Drive 1.0). Skipped for budget: NYC classroom-ban increment (already on federal-ai-policy 2026-09-03), Grok 4.7 rumor, Managed Agents DevDay rumor as its own page, Snowflake CoCo, AMD vLLM 11×, Anubis WASM, arXiv highlights (Don't Drop Dropout, mHC residuals, OPD, CUA-Universe)."
+    },
     {
       "date": "2026-09-07",
       "op": "ingest",
@@ -5705,11 +5722,6 @@
       "date": "2026-08-13",
       "op": "ingest",
       "summary": "Ingested the 2026-08-13 digest — a full model-synthesis run with three frontier model ships in 45 minutes (Grok 4.6, Qwen3.8-2.4T-A95B, DeepSeek-V4-Pro-0813). Created 0, updated 16 (xai — Grok 4.6 ships at $2/$6 per Mtok into Cursor/Grok Build, 61 on the AA Intelligence Index, Grok 4.7 dated 3–4 weeks out; qwen-3-8-max — the promised Max-class open release lands as Qwen3.8-2.4T-A95B, 95B-active/512 experts/4.89TB with day-0 vLLM, vision+1M context+built-in tools withheld as the paid layer, 27B sibling due Aug 14; alibaba + open-weights — the first Max-class Qwen ever released open, HN threads converging on MoE active-parameter economics; deepseek + deepseek-v4-flash — V4-Pro-0813 at $0.435/$0.87 (~4.5× V4-Flash) with @teortaxesTex reporting the cheap sibling outperforming it, \"they need more than scale\"; nebius — FY26Q2 $582.3M revenue +454% YoY at ~50% AI Cloud EBITDA, 5GW contracted power, ~70% deals prepaid, $8.04B cash; nvidia — Nemotron 4 aimed at 1T/leading-edge, Nemotron 3.5 Lightning on Perplexity Agent API at $0.0115/$0.17, Jensen's residual-value-guarantee framing of the 25% backstop; anthropic — watermarking's first user backlash + Stratechery over-reach critique, Robert Mahari first Head of Claude for Legal, Claude in Chrome on the Cowork backend; ai-capex — DDR5 contract prices +15–23% MoM, BofA $250B + Morgan Stanley ~$1.5T financing targets, Compute Exchange token contracts, Super Micro FY26Q4 8-K, Parametric CAD Bench 4.6× cost deflation; cognition-ai — $40B+ round talks ~3 months after $26B; coreweave — Intrator \"inflection point\" + ~$5.7B quarterly cash burn + >9% debt yields; microsoft — MAI-Thinking-1 formalized as first \"built from scratch\" reasoning model in Foundry; google — Made by Google '26 hardware line + on-device SL2T sign-language model; federal-ai-policy — oversight framework update possibly extending to open models + OpenAI ethics-head resignation; agentic-ai-security — package credential heist (2,500 users), ClaudeBot-spoofing crawlers, twin reasoning-trace extraction findings). Skipped for budget (future ingest): Lovable's $400M/$13.3B, Thrive $2B/$12B, CodeRabbit/Applied Compute/Blacksmith rounds, Zed Delta, Claude-in-Chrome details, LangSmith BYOC, GitSkills, research highlights beyond security (Grothendieck paper, OlmPool, DSAgentBench, Mind Viruses), Mistral EU data-processing, Amazon-Twitch default training."
-    },
-    {
-      "date": "2026-08-12",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-12 digest (model tickets carried nothing newer than 2026-07-31, so the digest was again the sole input). Created 0, updated 8. The AI buildout printed its first hard numbers — CoreWeave FY26Q2 $2.58B revenue (+112% Y/Y) with a ~$104B backlog (+246%), Supermicro guiding FY2027 $65–72B against ~$52.4B consensus, Lumentum doubling to $1.01B — and the market's muted response (Supermicro +5.3%) was the strongest \"beats but closes lower\" instance yet (coreweave, ai-capex). The Information named Nvidia's 25% per-project backstop inside its own ~$500B package, the circularity the \"new asset class\" framing was built to answer, with no term sheet public (nvidia, ai-capex); Texas paused new data-center construction against 474 GW of interconnection requests (~5x ERCOT peak), shifting the binding constraint from capital to interconnection (ai-capex). Anthropic's watermarking went global and was explicitly framed as EU AI Act Article 50 compliance with a public text-detection API coming; it also signed a $9.1B/20-year Riot Platforms compute deal (extendable to $16.1B, first 96MW Dec 2027), had its IPO reportedly set for September/early October ahead of OpenAI, and committed to covering Theseus-linked consumer electricity price increases (anthropic, eu-ai-regulation). OpenAI's COO Brad Lightcap left after eight years, a ~$7B self-funded employee tender at $852B and the only ethicist quitting; Daybreak split into Blue/Red and went live on AWS Bedrock; ChatGPT desktop previewed on Linux; $125 Premium Seats introduced (openai). SpaceXAI shipped Grok Bot (persistent cloud agents) into early beta via Cursor paid tiers while Grok 4.6 slipped again (xai). Google's Gemini app crossed 1B monthly users claiming nominal ChatGPT parity, and AMIE (Video) reached clinician-level ratings (google). TSMC July revenue +44.7% Y/Y kept the real-economy read accelerating (ai-capex)."
     }
   ]
 }

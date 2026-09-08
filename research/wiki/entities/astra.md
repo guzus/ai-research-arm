@@ -4,10 +4,11 @@ title: Astra (OpenAI)
 type: entity
 aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro"]
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use]
-description: OpenAI's GPT-6 Astra computer-use model; Jensen Huang put its training cluster at ~100K+ Grace Blackwell NVLink72, while OpenAI's own data showed long-task success collapsing to roughly 16%.
+description: OpenAI's GPT-6 Astra computer-use model; four days post-launch it took Code Arena WebDev #1 at 1,797 while SimpleBench put it a tenth behind Fable 5.1 and MazeBench scored it 14%.
 created_at: 2026-08-02
-timestamp: 2026-09-07T00:00:00Z
+timestamp: 2026-09-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
@@ -302,3 +303,42 @@ multiple agents on a single problem for **hours or days**. See [[gpt-6]].
   scoped to ChatGPT logins, not the API**, and the multiple is
   a vendor-stated ceiling (Twitter; ARA daily digest
   2026-09-07).
+
+## A split scoreboard, a Portal run, and a taste complaint (2026-09-08)
+
+- **Four days post-launch the independent boards
+  contradicted each other.** Code Arena: WebDev put Astra
+  **#1 at 1,797** — **+35 over [[claude-fable-5|Claude
+  Fable 5.1]]**, **+180 over [[gpt-5-6|GPT-5.6 Sol]]**, a
+  **#13 → #1** jump in one generation. The same window, a
+  Kimi-Linear decode megakernel on RTX PRO 6000 ran at
+  **24.80×** an optimized PyTorch baseline, edging Fable
+  5's July **24.61×** record. Against that, SimpleBench
+  has **Astra Pro at 86.5% versus Fable 5.1 at 86.6%**
+  (human baseline 83.7%), and the MazeBench author — a
+  3D open-world spatial-reasoning eval — reported Astra
+  at **14% after 60+ hours**. A widely-shared relay
+  claiming Astra "outperforms any other model" on
+  MazeBench was the inverse of what the eval's author
+  published. **All of these figures reach the record
+  through single relays with no leaderboard links**
+  (Twitter; ARA daily digest 2026-09-08).
+- **Astra finished Valve's *Portal* start to finish with
+  no human help** in **23 hours 43 minutes**, controlling
+  the game through MCP and a modified SourcePauseTool
+  that pauses play while it thinks. Token cost was at
+  least **$570 at list prices**; the run itself used a
+  **$200 Codex subscription** (The Decoder; ARA daily
+  digest 2026-09-08).
+- **Practitioners converged on a judgment complaint, not
+  a capability one.** Four independent heavy users in
+  one window described Astra as capable but
+  directionless. After exhausting Pro limits twice,
+  @scaling01 said it "is still not opinionated and lacks
+  taste"; @Teknium reported it failing at orchestrating
+  subagents and then recommending Fable for the
+  orchestration role. Two landed independently on the
+  same remedy: **Fable orchestrates, Astra implements**.
+  No published multi-model agent eval reproduces this
+  yet. See [[claude-fable-5]] (Twitter; ARA daily digest
+  2026-09-08).
