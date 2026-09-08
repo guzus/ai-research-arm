@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-06 07:00 UTC",
-    "headline": "DEEPSEEK VALUATION COULD DOUBLE FROM $20B TO $45B IN WEEKS \u2014 INVESTOR LINE-UP NOT YET LOCKED IN",
-    "source": "@coinbureau",
-    "source_file": "research/summaries/2026-05-06-twitter-07h-headlines.json",
-    "url": "https://x.com/coinbureau/status/2051912014923252158"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-06 07:00 UTC",
-    "headline": "NVIDIA PARTIALLY OPEN-SOURCES CUDNN FOR FIRST TIME IN 12 YEARS \u2014 20+ MOE + NSA SPARSE-ATTENTION KERNELS RELEASED",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-06-twitter-07h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2051874751455408284"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-06 07:00 UTC",
-    "headline": "GEMMA 4 GETS MULTI-TOKEN PREDICTION DRAFTERS \u2014 UP TO 3X FASTER DECODING, APACHE 2.0, DAY-0 VLLM SUPPORT",
-    "source": "@vllm_project",
-    "source_file": "research/summaries/2026-05-06-twitter-07h-headlines.json",
-    "url": "https://x.com/jeremyphoward/status/2051872304205025620"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-06 07:00 UTC",
-    "headline": "ANTHROPIC SHIPS MODEL SPEC MIDTRAINING (MSM) RESEARCH \u2014 ALIGNMENT BY EXPLAINING VALUES, NOT JUST RULES",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-06-twitter-07h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2051758528562364902"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-06 07:00 UTC",
-    "headline": "ANTHROPIC'S BORIS CHERNY: TONED-DOWN CLAUDE MYTHOS RELEASE COMING; INTERNAL USE STILL MAINLY OPUS 4.7",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-06-twitter-07h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2051735777105846632"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-06 07:00 UTC",
-    "headline": "GOOGLE TO HOST SEPARATE 'ANDROID SHOW | I/O EDITION' MAY 12 \u2014 GEMINI-FLAVORED ANDROID SPLIT FROM MAIN I/O KEYNOTE",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-06-twitter-07h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2051847511157932518"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-06 09:00 UTC",
-    "headline": "SPACEX FILES FOR $55B-$119B VERTICAL CHIP FAB IN GRIMES COUNTY TX \u2014 JUNE 3 PUBLIC HEARING ON TAX ABATEMENT",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-06-twitter-09h-headlines.json",
-    "url": "https://x.com/jukan05/status/2051930827668467864"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-06 09:00 UTC",
     "headline": "ANTHROPIC CODE WITH CLAUDE 2026 OPENS TODAY IN SF \u2014 LAST YEAR SHIPPED SONNET/OPUS 4 SAME DAY; LIVESTREAM 15:00 UTC",
@@ -24964,5 +24901,54 @@
     "headline": "MUSE SPARK 1.3 MAX GOES LIVE IN COMMAND CODE WITH REASONING-EFFORT CONTROL",
     "source": "@alexandr_wang",
     "url": "https://x.com/alexandr_wang/status/2097038824920789134"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-08 04:26:08 UTC",
+    "headline": "SEMIANALYSIS: GEMINI 3.8 FLASH AND MUSE SPARK 1.3 ARE MOST CLEARLY BENCHMAXXED MODELS YET",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2097112791471522292"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-08 04:26:08 UTC",
+    "headline": "ARTIFICIAL ANALYSIS SWAPS TERMINAL-BENCH 2.1 FOR 4.0, RAISES PRIVATE-TEST WEIGHTING TO 45% TO BLOCK GAMING",
+    "source": "@ArtificialAnlys",
+    "url": "https://x.com/ArtificialAnlys/status/2097025638695940590"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-08 04:26:08 UTC",
+    "headline": "HUANG: NVIDIA COMPUTE IS FUNGIBLE AND DURABLE \u2014 H100 RENTAL UP 22% ON MONTH TO $3.28/HOUR",
+    "source": "@JensenHuang",
+    "url": "https://x.com/JensenHuang/status/2097118747509268885"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-08 04:26:08 UTC",
+    "headline": "SAMSUNG TAYLOR FAB REPORTED FULLY BOOKED BEFORE PILOT \u2014 2NM YIELD ~80%, TESLA AI5 AND BROADCOM NAMED",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2097166388842684917"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-08 04:26:08 UTC",
+    "headline": "UNCONFIRMED: ANTHROPIC WALKS AWAY FROM ~$6B DECART ACQUISITION AFTER MONTHS OF DILIGENCE",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2097156005423444468"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-08 04:26:08 UTC",
+    "headline": "SEATTLE TIMES AND NEWSDAY SUE OPENAI AND MICROSOFT, DEMAND DESTRUCTION OF TRAINING DATASETS AND MODELS",
+    "source": "@WesRoth",
+    "url": "https://x.com/WesRoth/status/2097165531459588594"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-08 04:26:08 UTC",
+    "headline": "FT: CXMT AND YMTC SECURE ENOUGH ASML DUV TOOLS FOR THREE YEARS OF CAPACITY EXPANSION",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2097158555665399925"
   }
 ]
