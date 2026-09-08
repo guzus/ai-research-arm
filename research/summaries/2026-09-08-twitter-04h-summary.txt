@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-08 04:26:08 UTC
+
+CYCLE: A benchmark harness swap exposed two "cheap frontier" models, and the GPU depreciation argument got real rental data.
+
+TOP STORIES:
+• SemiAnalysis calls Gemini 3.8 Flash and Muse Spark 1.3 the most clearly benchmaxxed models yet - fine on Terminal-Bench 2.1, markedly worse on 4.0 [✓]
+• Jensen Huang restates the durable-asset case as H100 rentals run +22% MoM to $3.28/hr; memory-driven scarcity is the live counter-explanation [⚠]
+• Samsung's $37B Taylor fab reported fully booked pre-pilot on 2nm (Tesla AI5, Broadcom, Arm), yield ~60% to ~80% [⚠]
+• One relay says Anthropic killed a ~$6B Decart acquisition, no reason given, after Decart turned down ~$8B from Nvidia [🚩]
+
+WATCH: Artificial Analysis adding Terminal-Bench 4.0 to its Coding Agent Index would separate benchmaxxing from harness sensitivity.
+
+Full update on GitHub.
