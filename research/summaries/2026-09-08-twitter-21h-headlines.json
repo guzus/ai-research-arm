@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI CLAIMS NAVIER-STOKES — 10,000 AGENTS, 88 HOURS, 130B OUTPUT TOKENS ON AN UNRELEASED MODEL",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2097374640582668336",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI DENIES SEEING RIVAL PROOF, CANNOT RULE OUT DE-IDENTIFIED USER DATA IMPROVED ITS MODELS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2097375276384567642",
+    "category": "breaking"
+  },
+  {
+    "headline": "ALTMAN: OPENAI OFFERED BUCKMASTER LEAD AUTHORSHIP; RIVAL TEAM THREATENED PLAGIARISM ACCUSATIONS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2097385167002415140",
+    "category": "breaking"
+  },
+  {
+    "headline": "META LAUNCHES MUSE — AGENT WITH ITS OWN LINUX VM, TERMINAL AND STRIPE SPENDING AUTHORITY",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2097402344061510004",
+    "category": "model"
+  },
+  {
+    "headline": "META PUTS $300,000 BOUNTY ON AN IMPACTFUL PROMPT INJECTION AGAINST MUSE",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2097405158703649059",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI SHIPS CHATGPT IMAGES 2.5 PLUS API MODELS GPT-IMAGE-2.5 FLARE AND SUNBURST",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2097394962782384318",
+    "category": "model"
+  },
+  {
+    "headline": "COGNITION REPORTED RAISING $2B AT $48B VALUATION — ROUGHLY 53X ITS $900M RUN-RATE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2097393102164258999",
+    "category": "business"
+  }
+]

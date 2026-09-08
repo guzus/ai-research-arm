@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-08 21:04:52 UTC
+
+CYCLE: OpenAI makes the Navier-Stokes claim official and rebuts the credit allegations; Meta ships an agent that can spend your money.
+
+TOP STORIES:
+• OpenAI: 10,000 agents, 88 hours, 130B output tokens on an unreleased model solved Navier-Stokes - but the Aug 28 training start points to an RL post-train, not a new pretrain [✓]
+• Altman rebuts on record: says OpenAI offered Buckmaster lead authorship, never saw the rival work, but cannot rule out de-identified usage data [⚠]
+• Meta launches Muse: always-on agent with its own Linux VM, terminal, browser, WhatsApp and Stripe payments; $300K prompt-injection bounty [✓]
+• Cognition reported raising $2B at $48B, ~53x its ~$900M run-rate [⚠]
+
+WATCH: Whether the released Lean formalization states the blowup with or without a smooth external force - that decides if it meets the Clay statement.
+
+Full update on GitHub.
