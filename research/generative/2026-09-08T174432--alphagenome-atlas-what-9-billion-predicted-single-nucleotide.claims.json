@@ -1,0 +1,404 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Google DeepMind released AlphaGenome Atlas on 2026-09-08: a ~1-petabyte precomputed dataset covering all ~9 billion possible single-nucleotide variants in the human genome, described as more than 30 times larger than the AlphaFold Database.",
+      "type": "metric",
+      "source_urls": ["https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "The AVI (AlphaGenome Variant Impact) score is trained on proxy labels derived from the gnomAD v4.1 population-group-max filtering allele frequency at a 0.1% threshold — that is, on rarity, not on curated pathogenicity — using 18 input features.",
+      "type": "technical",
+      "source_urls": ["https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-08",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c3",
+      "claim": "AVI is published on a PHRED-like percentile rank scale running 0 to approximately 80, where 10 means the top 10% most impactful variants genome-wide, 20 the top 1%, and 30 the top 0.1%.",
+      "type": "definition",
+      "source_urls": ["https://fortune.com/2026/09/08/google-deepmind-ai-predictions-9-billion-mutation-human-genome/", "https://github.com/Ensembl/VEP_plugins/blob/release/116/AVI.pm"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-09-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "On ClinVar intronic SNVs the Atlas paper reports AVI AUPRC 0.76 versus 0.44 for the next-best model GPN-Star-V; on synonymous 0.57 versus CADD v1.7's 0.35; on 3'UTR 0.50 versus GPN-Star-M's 0.18.",
+      "type": "metric",
+      "source_urls": ["https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-08",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c5",
+      "claim": "AVI is beaten on ClinVar 5'UTR SNVs by GPN-Star-V (0.27 versus 0.26) and on TraitGym Mendelian variants by GPN-Star-M (0.77 versus 0.76); the paper's error bars are 95% confidence intervals from 100 bootstraps, so both 0.01 margins are non-differences.",
+      "type": "metric",
+      "source_urls": ["https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-08",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "On a splicing exon-extension task the specialist predictors are effectively tied with AVI: AVI/AlphaGenome 0.943, SpliceAI 0.940, Pangolin 0.939, against GPN-Star-V 0.348 and CADD v1.7 0.289.",
+      "type": "comparison",
+      "source_urls": ["https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-08",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c7",
+      "claim": "In DeepMind's retrospective rare-disease benchmark on 112 known likely-pathogenic variants, AVI ranked the causal variant in the top 50 candidates 29.5% of the time versus 12.5% for CADD v1.7; after applying a gnomAD allele-frequency filter of 0.001 the figures rise to 74.3% and 61.0%.",
+      "type": "metric",
+      "source_urls": ["https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf", "https://fortune.com/2026/09/08/google-deepmind-ai-predictions-9-billion-mutation-human-genome/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-09-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "gnomAD v4 reports 786,500,648 SNVs passing quality control from 807,162 individuals — under a tenth of the roughly 9 billion arithmetically possible single-nucleotide substitutions in GRCh38.",
+      "type": "metric",
+      "source_urls": ["https://groups.google.com/g/exac_data_announcements/c/cdz1BNHe01w"],
+      "source_tiers": ["primary"],
+      "as_of": "2023-11-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "CADD has precomputed deleteriousness scores for all possible human SNVs since 2014 and is free only for non-commercial use, so the count of 9 billion scored variants is not itself novel; the Atlas's differentiator is depth, at roughly 27,000 experiment-specific predictions per variant.",
+      "type": "comparison",
+      "source_urls": ["https://cadd.gs.washington.edu/download", "https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "ClinGen's SVI calibration of PP3/BP4 sets local positive likelihood-ratio thresholds of 2.406 (Supporting), 5.790 (Moderate), 33.53 (Strong) and 1,124 (Very Strong) against an estimated 4.41% prior probability of pathogenicity.",
+      "type": "regulatory",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC9748256/"],
+      "source_tiers": ["academic"],
+      "as_of": "2022-12-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "ClinGen's calibration found CADD's developer-recommended threshold of 20.0 falls in the score interval corresponding to moderate evidence for BP4 (benign), with a local LR+ of 0.157, and that CADD at that default flags 65.1% of gnomAD variants as damaging against a 4.41% prior.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC9748256/"],
+      "source_tiers": ["academic"],
+      "as_of": "2022-12-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "ClinGen SVI calibration found AlphaMissense's developer-recommended cutoff of 0.564 does not reach even the Supporting level of evidence; the recalibrated PP3_Strong threshold is 0.990.",
+      "type": "regulatory",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC11429929/"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-03-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "Sasse et al. found Enformer achieved Pearson R = 0.58 across 13,397 genes but a mean cross-individual R of 0.01 across 839 ROSMAP individuals, with 195 of 598 significantly predicted genes (33%) anti-correlated with observed expression.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC10055057/"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-03-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "In the same study a PrediXcan elastic-net baseline significantly predicted 921 genes to Enformer's 162 on the 1,570 shared genes (mean R 0.26 versus 0.02) and never predicted the wrong direction of effect.",
+      "type": "comparison",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC10055057/"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-03-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Huang et al. reported across-gene Spearman correlations of 0.57 (Enformer), 0.52 (Basenji2), 0.53 (ExPecto) and 0.33 (Xpresso) on Geuvadis data (n=421, 3,259 eQTL genes), while the distribution of cross-individual correlations was centered close to zero for all four models.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC10703684/"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-11-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "Karollus et al. found Enformer correlated r = 0.81 with measured promoter strength but only r = 0.137 with enhancer strength in the same assay, and underestimated validated enhancer effects roughly fivefold (median predicted ~4% versus ~20% measured).",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC10045630/"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-03-27",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "GTEx v8, the source of AlphaGenome's expression and splicing supervision across 49 tissues, comprises 838 donors of whom 715 (85.3%) are European American, 103 (12.3%) African American and 12 (1.4%) Asian American.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC7737656/"],
+      "source_tiers": ["academic"],
+      "as_of": "2020-09-11",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "The Human Pangenome Reference Consortium's 47-assembly draft adds 119 million base pairs of euchromatic polymorphic sequence and 1,115 gene duplications relative to GRCh38 — sequence that has no coordinate in an atlas enumerated on GRCh38.",
+      "type": "metric",
+      "source_urls": ["https://www.nature.com/articles/s41586-023-05896-x"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-05-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "UK Biobank participants are 94.6% of white ethnicity, and the Atlas's flagship population-genetics case study ran on over 54,000 UK Biobank participants without any stated ancestry stratification.",
+      "type": "metric",
+      "source_urls": ["https://www.ukbiobank.ac.uk/about-our-data/our-participants/", "https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-08",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "The Zoonomia project estimates at least 332 million bases — about 10.7% of the human genome — are unusually conserved across 240 mammals, far below ENCODE's contested 80.4% biochemical-activity figure, so covering the non-coding 98% of coordinates is not the same as covering functional sequence.",
+      "type": "metric",
+      "source_urls": ["https://www.science.org/doi/10.1126/science.abn3943"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-04-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "ClinVar held 4,561,224 variation records as of 2026-09-08, of which 2,373,336 (52.0%) carry an uncertain-significance classification against 423,738 (9.3%) pathogenic or likely pathogenic.",
+      "type": "metric",
+      "source_urls": ["https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=%22clinsig+vus%22%5BProperties%5D&retmode=json"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-08",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c22",
+      "claim": "In the largest published reclassification cohort only 7.7% of unique variants of uncertain significance were ever reclassified, and 91.2% of those were downgraded to benign or likely benign rather than upgraded.",
+      "type": "metric",
+      "source_urls": ["https://jamanetwork.com/journals/jama/fullarticle/2703350"],
+      "source_tiers": ["academic"],
+      "as_of": "2018-09-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "Manrai et al. found 5 of 94 variants previously reported as causing hypertrophic cardiomyopathy were too common in the general population to be pathogenic, and seven patients — all of African or unspecified ancestry — had already received positive reports.",
+      "type": "event",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC5292722/"],
+      "source_tiers": ["academic"],
+      "as_of": "2016-08-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "Kurian et al. reported adjusted bilateral-mastectomy probabilities among average-pretest-risk breast-cancer patients of 85% with a pathogenic mutation, 51% with only a variant of uncertain significance, and 42% with no mutation detected; among lower-volume surgeons, 50% managed BRCA1/2 VUS the same as pathogenic mutations.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC5501363"],
+      "source_tiers": ["academic"],
+      "as_of": "2017-04-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c37",
+      "claim": "In a single-laboratory cohort of 36,684 people with no personal cancer history tested on one 30-gene panel, the HBOC and Lynch VUS rate was 5.8% for European-ancestry patients, 12.3% for African-ancestry patients and 13.1% for Asian and Pacific Islander patients, while pathogenic detection ran the other way at 7.6% versus 2.4% and 4.3%.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC6785397/"],
+      "source_tiers": ["academic"],
+      "as_of": "2019-10-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c38",
+      "claim": "In 493,515 Invitae probands, African American or Black patients had a VUS rate of 46% against 32% for non-Hispanic white patients, and a pathogenic germline variant rate of 9% against 13%.",
+      "type": "metric",
+      "source_urls": ["https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12085080/"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-07-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c39",
+      "claim": "FDA's Clinical Decision Support Software guidance, reissued 2026-01-29, explicitly lists a prioritized list of options as an acceptable non-device output, but requires that the software let a clinician independently review the basis of the recommendation, including a description of the data relied upon and of validation results and their limitations.",
+      "type": "regulatory",
+      "source_urls": ["https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-01-29",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c40",
+      "claim": "ClinGen retired its Sequence Variant Interpretation Working Group in April 2025 and marked its general recommendations, including the PP3/BP4 calibration, as archived in July 2025, directing users to a newer variant classification guidance page.",
+      "type": "regulatory",
+      "source_urls": ["https://clinicalgenome.org/working-groups/sequence-variant-interpretation/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-09",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c25",
+      "claim": "The AlphaGenome Atlas prospective analysis ranked de novo variants in 814 individuals with parent-and-proband genomes from the GREGoR Consortium, and the only new diagnosis publicized is a single DNM1 variant.",
+      "type": "metric",
+      "source_urls": ["https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf", "https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-08",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c26",
+      "claim": "A dedicated deep-intronic and non-canonical splicing sweep across 38,688 individuals in the 100,000 Genomes Project produced 35 candidate new diagnoses of which only 6 were confirmed molecular diagnoses.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC9327385/"],
+      "source_tiers": ["academic"],
+      "as_of": "2022-07-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "MaveDB, the central repository for multiplexed assays of variant effect, held over 7 million variant effect measurements across 1,884 datasets as of November 2024 — under 0.1% of the 9 billion variants the Atlas scores, and dominated by protein rather than regulatory assays.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC11753097/"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-01-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "The AVI static score table is licensed for commercial and non-commercial use, while the AlphaGenome Atlas feature attributions that explain the score are non-commercial only, and the API terms forbid using outputs to train other machine learning models.",
+      "type": "regulatory",
+      "source_urls": ["https://github.com/Ensembl/VEP_plugins/blob/release/116/AVI.pm", "https://www.alphagenomedocs.com/faqs.html"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-09",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "Carl de Boer of the University of British Columbia, who is unaffiliated with DeepMind, said of the Atlas's single-number impact score that it has a clear use but is probably going to be easily misinterpreted.",
+      "type": "quote",
+      "source_urls": ["https://spectrum.ieee.org/alphagenome-atlas"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-09-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "Google DeepMind states that AlphaGenome has not been validated for, and is not approved for, any clinical use, and describes the Atlas as a baseline rather than an endpoint.",
+      "type": "quote",
+      "source_urls": ["https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "The published AlphaGenome Nature paper claims the model matches or exceeds the strongest available external models in 25 of 26 variant-effect evaluations; in the preprint the figure was 24 of 26, and the named loss is MFASS, where Pangolin scored auPRC 0.54 against AlphaGenome's 0.51.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12851941/", "https://www.biorxiv.org/content/10.1101/2025.06.25.661532v1.full"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-01-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "An independent evaluation of AlphaGenome on personal genomes found it clearly beat Enformer but still lagged plain Elastic Net and Random Forest models trained on individual-level data, with about 28% of its predictions still anti-correlated with observed expression.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC12440111/"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-09-09",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c33",
+      "claim": "CADD's own documentation tells users to rank candidates for follow-up rather than hard-filter on a cutoff, and states that there is not a natural choice of threshold because it is always arbitrary.",
+      "type": "quote",
+      "source_urls": ["https://cadd.bihealth.org/info"],
+      "source_tiers": ["primary"],
+      "as_of": "2023-11-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c34",
+      "claim": "The 100,000 Genomes Project pilot achieved genetic diagnoses in 25% of probands, of which 14% came via the combined research and automated pathway that non-coding, structural and mitochondrial findings travel through.",
+      "type": "metric",
+      "source_urls": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC7613219/"],
+      "source_tiers": ["academic"],
+      "as_of": "2021-11-11",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c35",
+      "claim": "The comparator set in the Atlas's genome-wide benchmarks consists of CADD v1.7 and GPN-Star; REVEL, BayesDel, VEST4, MutPred2, Enformer, Borzoi, Evo 2 and ESM do not appear as baselines, while GPN-Star's own paper benchmarks against a strictly larger set.",
+      "type": "comparison",
+      "source_urls": ["https://www.biorxiv.org/content/10.1101/2025.09.21.677619v1.full-text", "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf"],
+      "source_tiers": ["academic", "primary"],
+      "as_of": "2026-09-08",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c36",
+      "claim": "AlphaFold2 won CASP14 with a summed z-score of 244.02 against the runner-up's 90.82 in a blinded prospective third-party assessment; no equivalent blinded assessment of AlphaGenome or the AVI score exists, because CAGI7's prediction season closed in December 2025.",
+      "type": "comparison",
+      "source_urls": ["https://predictioncenter.org/casp14/zscores_final.cgi", "https://pmc.ncbi.nlm.nih.gov/articles/PMC10882881/"],
+      "source_tiers": ["primary", "academic"],
+      "as_of": "2026-09-09",
+      "confidence": "medium",
+      "risk": "contested"
+    }
+  ]
+}

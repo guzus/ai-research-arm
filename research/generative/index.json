@@ -2798,5 +2798,17 @@
         "source_sha256": "9e0c2242669d87833a301e47e2ee88651cb0c14356d9e72b1d9a5d28de82fbce"
       }
     }
+  },
+  {
+    "slug": "alphagenome-atlas-what-9-billion-predicted-single-nucleotide",
+    "file": "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "AlphaGenome Atlas scored 9 billion variants. It was trained on how rare they are.",
+    "model": "claude-opus-5",
+    "created_at": "2026-09-08T17:44:32Z",
+    "source": "workflow_dispatch",
+    "prompt": "AlphaGenome Atlas: what 9 billion predicted single-nucleotide effects settle, and where the AVI score is least validated",
+    "tags": []
   }
 ]

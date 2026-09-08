@@ -1,0 +1,148 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "\"the population group max filtering allele frequency from gnomAD v4.1 is used to\nderive proxy labels to train AVI scores,\" with variants above the 0.1%\nfiltering allele frequency taking the proxy-benign label and variants below it\nthe proxy-impactful label.",
+      "verdict": "supported",
+      "citation": "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf"
+    },
+    {
+      "id": "c2",
+      "text": "On\nintronic ClinVar SNVs AVI scores 0.76 AUPRC against GPN-Star-V's 0.44; on\nsynonymous variants 0.57 against CADD v1.7's 0.35; on 3'UTR variants 0.50\nagainst GPN-Star-M's 0.18.",
+      "verdict": "supported",
+      "citation": "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf"
+    },
+    {
+      "id": "c3",
+      "text": "On TraitGym, AVI\nranks second to GPN-Star-M on Mendelian trait variants at 0.76 versus 0.77, and\nleads on complex traits at 0.28 versus 0.27.",
+      "verdict": "supported",
+      "citation": "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf"
+    },
+    {
+      "id": "c4",
+      "text": "On 112 known likely-pathogenic variants, AVI ranked\nthe causal variant in the top 50 candidates 29.5% of the time against CADD\nv1.7's 12.5% — a headline 2.4x. But restrict to variants surviving a gnomAD\nallele-frequency filter of 0.001, the routine first move in any diagnostic lab,\nand recall at top 50 rises to 74.3% for AVI and 61.0% for CADD.",
+      "verdict": "supported",
+      "citation": "https://fortune.com/2026/09/08/google-deepmind-ai-predictions-9-billion-mutation-human-genome/"
+    },
+    {
+      "id": "c5",
+      "text": "the screen involved \"systematically ranking and analyzing all\nsmall de novo variants in 814 individuals with parent and proband genomes\navailable.\"",
+      "verdict": "supported",
+      "citation": "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf"
+    },
+    {
+      "id": "c6",
+      "text": "On the splicing exon-extension task the paper reports AVI/AlphaGenome merged at\n0.943 and notes that \"SpliceAI (41) and Pangolin (42) also performed well at\nthis task (AUPRC: 0.940 and 0.939, respectively),\" while on the same task\nGPN-Star-V scores 0.348 and CADD v1.7 scores 0.289.",
+      "verdict": "supported",
+      "citation": "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/alphagenome-atlas.pdf"
+    },
+    {
+      "id": "c7",
+      "text": "gnomAD v4 contains 786,500,648 SNVs passing QC — alongside 122,583,462 indels —\nfrom 807,162 individuals, 730,947 exomes and 76,215 genomes, on GRCh38.",
+      "verdict": "supported",
+      "citation": "https://groups.google.com/g/exac_data_announcements/c/cdz1BNHe01w"
+    },
+    {
+      "id": "c8",
+      "text": "When ClinGen calibrated CADD against clinical evidence\nstrength, the tool's own default of 20.0 fell in the score interval\ncorresponding to moderate evidence for BP4 — the benign direction — and at\ndeveloper defaults CADD flagged 65.1% of gnomAD variants as damaging against an\nestimated 4.41% prior probability of pathogenicity.",
+      "verdict": "supported",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9748256/"
+    },
+    {
+      "id": "c9",
+      "text": "the authors report \"good prediction accuracy as measured by the\nPearson correlation coefficient R=0.58\". Re-scored across individuals at 6,825\ncortex-expressed genes, the same predictions produce \"a large distribution in\nPearson's R (min R=−0.76, max R=0.84, mean = 0.01)\".",
+      "verdict": "supported",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10055057/"
+    },
+    {
+      "id": "c10",
+      "text": "The left column\nholds four separately published across-gene Spearman correlations against median\nobserved expression from Huang et al. — \"0.57 for Enformer, 0.52 for Basenji2,\n0.53 for ExPecto and 0.33 for Xpresso\".",
+      "verdict": "supported",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703684/"
+    },
+    {
+      "id": "c11",
+      "text": "GTEx v8's eQTL cohort of 838\npostmortem donors was \"715 (85.3%) were European American, 103 (12.3%) African\nAmerican, and 12 (1.4%) Asian American,\" with 16 (1.9%) Hispanic/Latino and 557\n(66.4%) male.",
+      "verdict": "supported",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7737656/"
+    },
+    {
+      "id": "c12",
+      "text": "Pangenome Reference Consortium's draft — 47 diploid individuals, 94 haplotype\nassemblies — \"adds 119 million base pairs of euchromatic polymorphic sequences\nand 1,115 gene duplications relative to GRCh38,\" cutting small-variant discovery\nerror by 34% and raising detected structural variants per haplotype by\n104%.",
+      "verdict": "supported",
+      "citation": "https://www.nature.com/articles/s41586-023-05896-x"
+    },
+    {
+      "id": "c13",
+      "text": "ClinVar held 4,561,224 variation records as of\n2026-09-08: 2,373,336 uncertain significance (52.0%), 1,166,236 likely benign\n(25.6%), 281,265 benign (6.2%), 256,785 pathogenic (5.6%) and 166,953 likely\npathogenic (3.7%)",
+      "verdict": "supported",
+      "citation": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=%22clinsig+vus%22%5BProperties%5D&retmode=json"
+    },
+    {
+      "id": "c14",
+      "text": "Across 1.45 million individuals and 1.67 million initial tests at one\nlaboratory, \"7.7% (2048 of 26 670) of unique variants of uncertain significance\nwere reclassified\" — and of those, the split was lopsided.",
+      "verdict": "supported",
+      "citation": "https://jamanetwork.com/journals/jama/fullarticle/2703350"
+    },
+    {
+      "id": "c15",
+      "text": "of 94 variants previously reported as causing hypertrophic\ncardiomyopathy, five were too common in the general population to be pathogenic,\nthe top five accounted for 74% of the misclassified variation, and seven\npatients — all of African or unspecified ancestry — had received \"pathogenic\" or\n\"presumed pathogenic\" reports",
+      "verdict": "supported",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5292722/"
+    },
+    {
+      "id": "c16",
+      "text": "In a survey of 3,672 breast-cancer patients (68% response) and\ntheir 377 attending surgeons (78% response), adjusted bilateral-mastectomy\nprobabilities among average-pretest-risk patients were 85% with a pathogenic\nmutation, 51% with only a variant of uncertain significance, and 42% with no\nmutation detected",
+      "verdict": "supported",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5501363"
+    },
+    {
+      "id": "c17",
+      "text": "the Ensembl VEP plugin states \"AVI scores were developed by Google DeepMind and\nare available for commercial and non-commercial use\" — while the feature\nattributions behind the score \"can be accessed via Google DeepMind's AlphaGenome\nAtlas, which is available for non-commercial use.\"",
+      "verdict": "supported",
+      "citation": "https://github.com/Ensembl/VEP_plugins/blob/release/116/AVI.pm"
+    },
+    {
+      "id": "c18",
+      "text": "AlphaFold2's\nCASP14 result was not close: group 427 scored a summed z-score of 244.02 across\n92 domains against the runner-up group's 90.82.",
+      "verdict": "supported",
+      "citation": "https://predictioncenter.org/casp14/zscores_final.cgi"
+    },
+    {
+      "id": "c19",
+      "text": "In a\ncohort of 36,684 people with no personal cancer history tested on one 30-gene\npanel, the combined hereditary breast/ovarian and Lynch VUS rate was 5.8% for\nEuropean-ancestry patients, 7.1% Hispanic, 12.3% African and 13.1% Asian and\nPacific Islander — while pathogenic and likely pathogenic detection ran the\nother way, 7.6% European against 2.4% African.",
+      "verdict": "weak",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6785397/"
+    },
+    {
+      "id": "c20",
+      "text": "across 493,515 Invitae probands, \"frequencies\nof VUS and PGV remained significantly higher (46% v 32%; P < .0001) and lower\n(9% v 13%; P < .0001) in AA/B\".",
+      "verdict": "supported",
+      "citation": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12085080/"
+    },
+    {
+      "id": "c21",
+      "text": "applied to 300\nRare Genomes Project probands with a median of 75.5 rare missense variants in\ndisease genes each, a median of one variant per proband reached PP3_Strong, 3–5\nreached Moderate and 3–5 Supporting, while 41–49 received BP4 — leading those\nauthors to conclude the codes are \"unlikely to inappropriately contribute to the\nclassification of an excessive number of variants as pathogenic.\"",
+      "verdict": "unsupported",
+      "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9748256/"
+    },
+    {
+      "id": "c22",
+      "text": "K562 derives from a 53-year-old Caucasian female with chronic\nmyelogenous leukemia, and HepG2, at Tier 2, is a male hepatoblastoma line — with\nK562, HepG2 and HeLa all aneuploid cancer lines.",
+      "verdict": "weak",
+      "citation": "https://www.genome.gov/encode-project-common-cell-types"
+    },
+    {
+      "id": "c23",
+      "text": "its design samples nine matched negative controls per positive causal\nvariant, matched on chromosome, consequence, TSS distance, MAF and LD score, so\na random classifier lands near 0.1 AUPRC.",
+      "verdict": "weak",
+      "citation": "https://www.biorxiv.org/content/10.1101/2025.02.11.637758v2.full"
+    },
+    {
+      "id": "c24",
+      "text": "it recruited 503,317 participants who\n\"are mostly (94.6%) of white ethnicity.\"",
+      "verdict": "supported",
+      "citation": "https://www.ukbiobank.ac.uk/about-our-data/our-participants/"
+    }
+  ]
+}
