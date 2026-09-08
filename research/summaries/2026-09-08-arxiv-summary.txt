@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-08
+
+TOP 5 PAPERS:
+• Molecular Déjà Vu — 22 frontier models retrieve published molecular numbers; high reasoning +89% retrieval
+• τ^τ-Bench — coding agents building CS agents: Opus 5 23.9% vs expert 82.2%
+• Beneath CoT — reasoning ops are geometrically separable in mid layers (EMNLP 2026)
+• Overtraining optimizers — horizon flips which optimizer wins; ADANA outscales AdamW
+• Refusal beyond attention — one direction ports SSM↔transformer; re-read at the write site
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 7, Other 8
+
+Full report on GitHub.
