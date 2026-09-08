@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-08
+
+TOP STORIES:
+• Anthropic signed $517B in compute deals in 11 months, still behind OpenAI's $750B through 2030
+• OpenAI declared an "automated research intern" milestone while its chief scientist warned no lab has solved alignment
+• Astra's scoreboard split: #1 on Code Arena WebDev, but 14% on a 3D spatial-reasoning eval after 60+ hours
+
+KEY NUMBERS:
+• 3.1 agent-workdays per human workday at OpenAI; token output up 124x since Dec 2025
+• Ironwood TPU: up to 50% better perf/dollar than Blackwell (SemiAnalysis, first third-party run)
+• NYC banned AI tools for ~600,000 students through 8th grade
+
+TRENDING: HN spent the day on defending against AI — Anubis shipping WebAssembly for its crawler firewall hit #1 (346 pts).
+
+Full digest on GitHub.
