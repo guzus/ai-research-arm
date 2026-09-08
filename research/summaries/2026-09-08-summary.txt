@@ -1,15 +1,16 @@
-AI News - 2026-09-08
+AI News - 2026-09-08 (updated)
 
 TOP STORIES:
-• Mistral AI raises €3B in Europe's largest-ever tech round (Samsung-led), valuation tops €21B
-• Anthropic walks away from $6B Decart AI acquisition after due diligence
-• AI helped researchers find and exploit a zero-click WeChat worm bug in ~2 days (already patched)
-• CrowdStrike launches SafeMind cybersecurity AI models (Red Tempest, Blue Solano) built with Nvidia
+• OpenAI claims Navier-Stokes proof; NYU mathematician says it pressured him to drop an Anthropic co-author
+• Infostealer malware hijacking Claude subscriber sessions, draining token quotas
+• Cognition raises $2B Series E at $48B valuation (up from $26B in May)
+• Mistral raises €3B in Europe's largest-ever tech round; Anthropic walks from $6B Decart deal
+• Meta drops token-usage from reviews; launches Muse personal AI agent
 
 KEY NUMBERS:
-• Mistral: €3B raised, €21B+ valuation (2x in one year)
-• Decart deal: $6B offer vs ~$4B standalone valuation, abandoned
-• Uber: AI coding budget ($1,500/engineer/mo cap) blown by April, no proven ROI
-• Biomedical AI study: 42% of cited LLMs already retired or retiring within 2 years
+• Cognition: $48B valuation, ARR $492M→$900M since May
+• OpenAI's proof run: ~300B output tokens, ~$22.5M compute cost
+• Mistral: €3B raised, €21B+ valuation; Decart deal ($6B) abandoned
+• Google Cloud-Accenture: up to 1,000 FDEs deployed
 
 Full report on GitHub.
