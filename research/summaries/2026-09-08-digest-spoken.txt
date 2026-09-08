@@ -1,0 +1,13 @@
+Speaker 1: Tuesday, September eighth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic has signed [emphasis] five hundred seventeen billion dollars [/emphasis] in compute deals in eleven months, and that still leaves it behind OpenAI.
+Speaker 1: Behind by a wide margin, actually. OpenAI's commitments run to [emphasis] seven hundred fifty billion dollars [/emphasis] through twenty thirty.
+Speaker 2: Meanwhile OpenAI declared what it calls an automated research intern milestone, on the same day its own chief scientist warned that no lab has solved alignment.
+Speaker 1: Those two statements landing together is the story of the week.
+Speaker 2: And the scoreboard is getting strange. Astra took number one on Code Arena WebDev, then scored fourteen percent on a three-D spatial reasoning eval after more than sixty hours.
+Speaker 1: Some quick numbers behind the hype. OpenAI says it is running three point one agent-workdays per human workday, with token output up [emphasis] one hundred twenty-four times [/emphasis] since December twenty twenty-five.
+Speaker 2: On silicon, SemiAnalysis published the first third-party run on Google's Ironwood TPU, up to fifty percent better performance per dollar than Blackwell.
+Speaker 1: On the policy front, New York City banned AI tools for roughly six hundred thousand students through eighth grade.
+Speaker 2: [dramatic_pause] And the mood online matched it. Hacker News spent the whole day on defending against AI.
+Speaker 1: The top post was Anubis shipping WebAssembly for its crawler firewall, three hundred forty-six points at number one.
+Speaker 2: Half the industry buying compute by the hundreds of billions, the other half building walls to keep it out.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
