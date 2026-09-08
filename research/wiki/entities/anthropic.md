@@ -4,10 +4,12 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; has booked 14.8 GW of compute at a reported cost of up to $517B over a decade, largely vendor-financed, while supporting Massachusetts AI safety rules that OpenAI and Google oppose.
+description: AI safety lab behind Claude; has booked 14.8 GW of compute at a reported cost of up to $517B over a decade, still behind OpenAI's $750B through 2030, while authors contest the $1.5B settlement's publisher split ahead of a possible late-September IPO.
 created_at: 2026-05-24
-timestamp: 2026-09-07T00:00:00Z
+timestamp: 2026-09-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
+  - {title: "ARA model ticket — Anthropic IPO", path: research/models/tickets/anthropic-ipo-2026-06.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
@@ -1427,3 +1429,42 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   seeking 100% when entitled to half — with the Authors Guild
   attributing it to bad record-keeping rather than misconduct
   (TechCrunch; ARA daily digest 2026-09-07).
+
+## Own data centers, an IPO lockup, and the settlement's distribution fight (2026-09-08)
+
+- **The $517B book is now framed against [[openai]]'s $750B
+  through 2030**, and The Decoder says Anthropic is
+  **planning its own data centers** — still unfundable from
+  either lab's current revenue. Bloomberg puts Anthropic
+  **annualized revenue above $65B** against OpenAI's
+  **$40B+ as of July**. The wattage itself landed yesterday;
+  today's add is the own-campus intention and the explicit
+  "neither lab funds these contracts from revenue" read.
+  See [[ai-capex]] (The Decoder citing The Information;
+  ARA daily digest 2026-09-08).
+- **Rank-and-file IPO sales may get a mandatory Rule
+  10b5-1 plan** — a mechanism normally reserved for senior
+  leadership — ahead of a prospectus expected after Labor
+  Day and a possible **late-September or early-October
+  listing**. Described as under discussion, not finalized
+  (The Motley Fool via AOL; ARA daily digest 2026-09-08).
+- **Anthropic is evaluating bringing more payments
+  technology in-house**, putting a lucrative Stripe
+  relationship at risk (The Information; ARA daily digest
+  2026-09-08).
+- **The $1.5B settlement fight has moved to
+  distribution.** Authors report publishers claiming works
+  whose rights had already reverted, and claiming 100% of
+  in-print awards the default would split 50/50. The
+  Authors Guild says authors whose rights reverted
+  **before August 10, 2022** may qualify for the full
+  amount depending on contract terms. A
+  claims-administrator notice or Northern District of
+  California filing setting the rule for reverted rights
+  would decide a large share of $1.5B — and would set the
+  template every future AI training-data settlement is
+  argued against. This is a distribution dispute inside an
+  already-approved settlement, not a challenge to it
+  (TechCrunch, Twitter; ARA daily digest 2026-09-08).
+  See the
+  [copyright-settlement ticket](../../models/tickets/anthropic-copyright-settlement-approved-2026-07.md).

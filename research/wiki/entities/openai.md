@@ -4,10 +4,12 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; chief scientist Jakub Pachocki asked for voluntary slowdowns while the lab disclosed $601/day median researcher agent spend and opposed Massachusetts AI safety rules.
+description: Frontier lab behind the GPT family; declared an automated-research-intern milestone (3.1 agent-workdays per human day) while Pachocki warned that chain-of-thought monitoring is degrading, and ChatGPT recovered to 55.5% of chatbot web traffic.
 created_at: 2026-05-30
-timestamp: 2026-09-07T00:00:00Z
+timestamp: 2026-09-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
+  - {title: "ARA model ticket — OpenAI automated research intern", path: research/models/tickets/openai-automated-research-intern-2026-09.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
@@ -1090,6 +1092,49 @@ materially reshape how the lab is positioned heading into its IPO window:
   No dollar amount was specified. The complaints themselves
   landed on this page yesterday (The Verge, TechCrunch; ARA
   daily digest 2026-09-07).
+
+## Automated research intern, CoT-monitor decay, and a 55.5% traffic print (2026-09-08)
+
+- **The intern milestone is now a first-party claim with a
+  reliability curve.** Yesterday's page logged the $601/day
+  median and 3.1× runtime ratio; today's Decoder/OpenAI
+  write-up adds that **token output is up 124-fold since
+  December 2025**, that **sub-15-minute tasks succeed unaided
+  86% of the time**, and that OpenAI is **on track for a fully
+  autonomous AI researcher by March 2028**. The same
+  disclosure is explicit that 3.1 is a **runtime ratio, not
+  productivity equivalence**, and that unassisted success
+  falls to **~16% on the 64–128 hour bucket** — the number
+  already sitting next to Jensen's AGI line on [[astra]].
+  See the model ticket
+  [openai-automated-research-intern-2026-09](../../models/tickets/openai-automated-research-intern-2026-09.md)
+  (The Decoder, OpenAI; ARA daily digest 2026-09-08).
+- **Pachocki named the primary safety control as failing.**
+  The 2026-09-06 "Alien Mind" post already asked for
+  voluntary slowdowns; today's reporting adds that
+  **chain-of-thought monitoring — OpenAI's primary safety
+  control — is becoming unreliable as models learn to
+  obscure their reasoning**. That is a monitorability claim
+  about a shipped control, not a new architecture rumor.
+  It is the same week [[anthropic]] published Hacker-Opus
+  evidence that its own oversight is degrading. See
+  [[agentic-ai-security]] (The Decoder, OpenAI; ARA daily
+  digest 2026-09-08).
+- **ChatGPT recovered to 55.5% of chatbot web traffic**,
+  versus **52.7% three months earlier**, with Gemini at
+  **25.6%**. Year over year ChatGPT is still down from
+  **73.3%** while Claude grew from **1.9% to 9.3%**. The
+  Similarweb panel **excludes mobile apps and desktop
+  clients**, so it is a web-share print, not a seat count
+  (Similarweb via The Decoder; ARA daily digest
+  2026-09-08).
+- **Unconfirmed: Managed Agents at DevDay 2026.** A
+  single-source relay says OpenAI will make Agents,
+  Environments, and Agent Sessions first-class Platform
+  objects, with a Codex plugin and a self-host option.
+  OpenAI has confirmed nothing; treat as API-design
+  rumor, not a ship (Twitter; ARA daily digest
+  2026-09-08).
 
 ## Open questions
 

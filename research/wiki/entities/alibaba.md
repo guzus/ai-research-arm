@@ -2,17 +2,18 @@
 slug: alibaba
 title: Alibaba
 type: entity
-aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder"]
+aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder", "Qwen-Drive", "Qwen-Drive 1.0"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen models) accused by Anthropic of running the largest documented Claude-distillation campaign; launched the 2.4T-param Qwen3.8-Max and open-weighted it as Qwen3.8-2.4T-A95B, reported an AI-capex-signature quarter, priced an HK$80B (~$10.2B) AI-infrastructure placement (2026-08-25), and shipped the Qwen4-architecture Qwen3.8-Flash-Next MoE preview (2026-08-27).
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0, a 4B Qwen3.5 driving stack that combines perception, traffic Q&A and route planning, free on Hugging Face.
 created_at: 2026-07-05
-timestamp: 2026-08-27T00:00:00Z
+timestamp: 2026-09-08T00:00:00Z
 market:
   ticker: BABA
   exchange: NYSE
   symbol: NYSE:BABA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
@@ -199,6 +200,16 @@ friction point distinct from Qwen's own model-release cadence.
   positions the Flash-Next against the day's other open-release,
   [[zhipu-glm-5-3|GLM-5.3-Flash]] (The Decoder, @Hikari_07_jp; ARA daily digest
   2026-08-27). See [[open-weights]] and [[qwen-3-8-max]].
+- **Qwen-Drive 1.0 ships as an embodied Qwen3.5 stack
+  (2026-09-08).** Alibaba released **Qwen-Drive 1.0**,
+  extending the **4B-parameter Qwen3.5** with 3D-mapping
+  and trajectory-planning modules to combine perception,
+  traffic Q&A and route planning. The paper concedes the
+  explanations **do not reliably match the maneuver**; RL
+  training cut simulated off-road veering from **24% to
+  12%**. Free on Hugging Face, ModelScope and GitHub
+  (The Decoder; ARA daily digest 2026-09-08). See
+  [[open-weights]].
 
 ## Open questions
 

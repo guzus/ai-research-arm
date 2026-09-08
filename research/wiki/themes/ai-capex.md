@@ -4,10 +4,12 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Anthropic has booked 14.8 GW at a reported cost of up to $517B over a decade, largely vendor-financed, after TCS's 1 GW Hyderabad campus pledge.
+description: The historically large compute buildout; Anthropic's 14.8 GW / $517B book is still behind OpenAI's $750B through 2030, while Lake Mariner's June fire showed how thinly campus accountability is spread.
 created_at: 2026-05-24
-timestamp: 2026-09-07T00:00:00Z
+timestamp: 2026-09-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
+  - {title: "ARA model ticket — Malaysia Huawei sovereign AI", path: research/models/tickets/malaysia-huawei-sovereign-ai-2026-09.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
@@ -1019,3 +1021,49 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   [[sk-hynix]] is accelerating its 1c DRAM transition from
   **~13% of output in Q2 to a projected 34% in Q4** (Twitter;
   ARA daily digest 2026-09-07).
+
+## Lake Mariner, Malaysia's Huawei eval, and HBM4 crowding logic (2026-09-08)
+
+- **[[anthropic]]'s $517B book is now set against
+  [[openai]]'s $750B through 2030**, and The Decoder says
+  Anthropic is planning its own data centers. Neither lab
+  funds these contracts from current revenue — Bloomberg
+  puts Anthropic above **$65B** annualized against OpenAI's
+  **$40B+ as of July**. The wattage landed yesterday; the
+  new fact is the own-campus intention and the explicit
+  unfundable-from-revenue read (The Decoder citing The
+  Information; ARA daily digest 2026-09-08).
+- **A June fire at the already-permitted 500 MW Lake
+  Mariner campus** — no working alarm, no suppression,
+  three dead hydrants, and ownership split across
+  TeraWulf, Fluidstack, [[google]] warrants and
+  [[anthropic]] tenancy — is the day's clearest account of
+  how thinly accountability is spread across the
+  buildout. New York's Responsible Data Center
+  Development Act remains unsigned three months after
+  passage and would not cover Lake Mariner regardless
+  (Ars Technica; ARA daily digest 2026-09-08).
+- **Malaysia is weighing Huawei Ascend 910C** for a
+  **$494M** sovereign AI build, with state-linked Telekom
+  Malaysia as key operator and data sovereignty as the
+  stated driver, against explicit US warnings. The
+  incumbent AI compute service there runs on
+  [[nvidia|Nvidia]], so this is a swap under evaluation
+  rather than a decision. Single-relay Bloomberg; no
+  government statement attached. See
+  [malaysia-huawei-sovereign-ai-2026-09](../../models/tickets/malaysia-huawei-sovereign-ai-2026-09.md)
+  and [[deepseek]]'s reported Ascend inference cluster
+  (Bloomberg via Twitter; ARA daily digest 2026-09-08).
+- **Samsung Foundry pushed over half its 4nm capacity
+  onto HBM4 base dies**, framed as a pre-emptive move to
+  supply Nvidia, [[broadcom|Broadcom]] and [[amd|AMD]] in
+  2H26. A separate SED report puts Samsung and
+  [[sk-hynix]] stockpiles below **10 days** of supply —
+  leading-edge logic capacity now consumed by memory
+  packaging. Single-relay Korean industry sourcing
+  (Twitter; ARA daily digest 2026-09-08).
+- **SemiAnalysis's first third-party Ironwood TPUv7
+  inference numbers** claim up to **50% better performance
+  per dollar than Blackwell B200/B300** on an Official
+  Preview stack. See [[google]] (SemiAnalysis, Sept 7;
+  ARA daily digest 2026-09-08).
