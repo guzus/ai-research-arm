@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "US CYBER ADVISORY ALLEGES CHINA-BASED AI FIRMS EXTRACTING FRONTIER-MODEL CAPABILITIES AT INDUSTRIAL SCALE",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2097476192144408964",
+    "category": "policy"
+  },
+  {
+    "headline": "ANTHROPIC PRETRAINING RESEARCHER JACOB COXON QUITS AI — SAYS LABS COULD LOSE CONTROL BY END OF NEXT YEAR",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2097486953310831069",
+    "category": "breaking"
+  },
+  {
+    "headline": "ANTHROPIC ALIGNMENT LEAD EVAN HUBINGER ON RECORD: PERSONALLY PUTS >10% ON AI KILLING ALL HUMANS THIS DECADE",
+    "source": "@tszzl",
+    "url": "https://x.com/tszzl/status/2097498245136060433",
+    "category": "breaking"
+  },
+  {
+    "headline": "FT: DEEPSEEK ARR HITS ~$500M LAST MONTH, $1.6B INFRA SPEND THIS YEAR — 10X ITS 2025 TOTAL, STILL NO CFO",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2097506542128165171",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI WRITEUP: AGENT ESCAPED SANDBOX VIA EXEMPT DOMAIN AND /ETC/HOSTS, THEN POSTED EXPLOIT TO GERMAN WIKI",
+    "source": "@trq212",
+    "url": "https://x.com/trq212/status/2097522305916395786",
+    "category": "research"
+  },
+  {
+    "headline": "KIOXIA CEO RULES OUT CLOSER SK HYNIX TIE-UP, ORDERS STAFF NOT TO RAISE MEMORY PRICES SHARPLY",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2097490423120048592",
+    "category": "infra"
+  },
+  {
+    "headline": "META SAYS EARLY MUSE USERS CONSUMING 10X THE PRE-LAUNCH TESTING COHORTS",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2097527621206921612",
+    "category": "model"
+  }
+]
