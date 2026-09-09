@@ -11,7 +11,7 @@ sources:
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
 ---
 
-Leanstral 1.5 is Mistral's open-source formal-verification model for **Lean 4** — reported at **119B-A6B** (Mixture-of-
+Leanstral 1.5 is [[mistral|Mistral]]'s open-source formal-verification model for **Lean 4** — reported at **119B-A6B** (Mixture-of-
 Experts) per Reddit/LocalLLaMA — released under **Apache 2.0**. It
 **saturates the miniF2F** benchmark and sets **SOTA on FATE-H/FATE-X**, and
 in a practical demonstration of its verification capability it **found 5

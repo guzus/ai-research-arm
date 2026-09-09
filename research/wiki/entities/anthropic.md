@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; has booked 14.8 GW of compute at a reported cost of up to $517B over a decade, still behind OpenAI's $750B through 2030, while authors contest the $1.5B settlement's publisher split ahead of a possible late-September IPO.
+description: AI safety lab behind Claude; The Information frames its $517B compute book as 2.9× the $180B it told investors it would spend through 2029, while an Anthropic-employed coauthor sits in OpenAI's Navier–Stokes credit fight.
 created_at: 2026-05-24
-timestamp: 2026-09-08T00:00:00Z
+timestamp: 2026-09-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA model ticket — Anthropic IPO", path: research/models/tickets/anthropic-ipo-2026-06.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
@@ -1468,3 +1469,43 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   (TechCrunch, Twitter; ARA daily digest 2026-09-08).
   See the
   [copyright-settlement ticket](../../models/tickets/anthropic-copyright-settlement-approved-2026-07.md).
+
+## $517B vs $180B, a credit fight, and a walked-away deal (2026-09-09)
+
+- **The Information frames the $517B compute book as
+  2.9× the $180B Anthropic told investors it expected
+  to spend through 2029.** The wattage and dollar
+  ceiling already landed on this page 2026-09-07/08;
+  today's add is the **investor-facing gap**. The
+  source is **single-outlet and behind a paywall**,
+  and the horizons may not be commensurable — a
+  decade of vendor optionality versus a through-2029
+  spend guide. See [[ai-capex]] (The Information; ARA
+  daily digest 2026-09-09).
+- **An Anthropic employee is at the center of
+  [[openai]]'s Navier–Stokes credit fight.** NYU's
+  Tristan Buckmaster says OpenAI conditioned
+  authorship on dropping **Levent Alpöge**; Altman
+  says OpenAI offered Buckmaster lead authorship and
+  never saw the rival work. Alpöge is the same
+  researcher this wiki recorded on the 2026-08-03
+  Fable 5 five-of-ten Astra-reproduction relay. See
+  [[astra]] and [[verification-bottleneck]]
+  (cims.nyu.edu, TechCrunch, The Decoder; ARA daily
+  digest 2026-09-09).
+- **Bloomberg confirms Anthropic walked away from a
+  ~$6B Decart acquisition** after due diligence.
+  Decart was valued near $4B months ago; the reported
+  interest was in its **inference-optimization
+  stack**, not its world models. Circulated unsourced
+  overnight, now named-outlet (Bloomberg; ARA daily
+  digest 2026-09-09).
+- **A proposed class action accuses Anthropic of
+  misleading power users** on what top-tier
+  subscription plans delivered (The Verge; ARA daily
+  digest 2026-09-09).
+- **Anthropic published its Claude Tag CI on-call
+  setup** — the agent reads alerts, metrics and logs,
+  writes a SITREP and maintains a running
+  `lessons.md`; template and skills released
+  (Anthropic; ARA daily digest 2026-09-09).

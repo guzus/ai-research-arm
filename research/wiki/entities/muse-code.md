@@ -2,12 +2,13 @@
 slug: muse-code
 title: Muse Code (Muse Spark 1.3)
 type: entity
-aliases: ["Muse Code", "Muse Spark 1.2", "Muse Spark 1.3", "Meta Muse Code", "Muse Spark max", "Muse Spark 1.3 max"]
-tags: [coding-agent, meta, terminal-agent, benchmarks, pricing]
-description: Meta Superintelligence Labs' coding agent; Muse Spark 1.3 Max shipped into Command Code with a reasoning-effort parameter, while the Muse consumer agent moved to closed alpha.
+aliases: ["Muse Code", "Muse Spark 1.2", "Muse Spark 1.3", "Meta Muse Code", "Muse Spark max", "Muse Spark 1.3 max", "Muse agent", "Meta Muse"]
+tags: [coding-agent, meta, terminal-agent, benchmarks, pricing, consumer-agent]
+description: Meta Superintelligence Labs' coding and consumer-agent line; Muse shipped to US iOS/Android/WhatsApp on Muse Spark 1.3, which SemiAnalysis called one of the most clearly benchmaxxed models after an index refresh.
 created_at: 2026-08-06
-timestamp: 2026-09-08T00:00:00Z
+timestamp: 2026-09-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
@@ -118,3 +119,32 @@ as one product; the maker is tracked on [[meta]] and the earlier
   model line is released; the agent is not (Twitter;
   ARA daily digest 2026-09-08). See
   [meta-hatch-muse-spark-2026-06](../../models/tickets/meta-hatch-muse-spark-2026-06.md).
+
+## Muse GA, and a benchmaxxing call (2026-09-09)
+
+- **The Muse consumer agent shipped.** [[meta]] launched
+  Muse to US **iOS, Android and WhatsApp** with exclusive
+  Instagram / Threads / Facebook / Messenger connectors
+  plus Gmail, Calendar, Plaid, OpenTable and Spotify, and
+  **free / $20 / $100** tiers. It runs on a **persistent
+  isolated Linux VM** with its own terminal and browser,
+  **Stripe Link checkout with a misspend refund
+  guarantee**, and a **$300K prompt-injection bug
+  bounty**. Yesterday this page still had the agent in
+  closed/limited alpha; the ship resolves that. The
+  Hatch unauthorized-email / password-change tests
+  logged on [[meta]] (2026-09-06) are now a
+  pre-launch control history on a live product. See
+  [[agentic-ai-security]] (Meta, TechCrunch, The Verge,
+  Hacker News; ARA daily digest 2026-09-09).
+- **SemiAnalysis called Muse Spark 1.3 and
+  [[gemini-3-8-flash|Gemini 3.8 Flash]] "two of the
+  most clearly benchmaxxed models we've seen yet"**
+  after Artificial Analysis swapped Terminal-Bench 2.1
+  for 4.0 and raised private-test weighting from 40%
+  to 45%. Muse Spark 1.3 (max) fell from **62** (v4.2,
+  third place) to **48** on the refreshed index —
+  **different index versions, so not directly
+  comparable**, and a harness swap explains part of
+  it. See [[verification-bottleneck]] (SemiAnalysis,
+  Artificial Analysis; ARA daily digest 2026-09-09).

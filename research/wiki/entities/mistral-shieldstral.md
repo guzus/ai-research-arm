@@ -13,7 +13,7 @@ sources:
 ---
 
 **Shieldstral** is a **3B open-weights multimodal moderation model** from
-Mistral — a classifier for content safety rather than a generative model. It
+[[mistral|Mistral]] — a classifier for content safety rather than a generative model. It
 was the clearest shipping artifact on Hacker News for three consecutive
 snapshots, peaking at **461 points**, and The Decoder reports it matching much
 larger safety models at a fraction of the size. Sibling pages:

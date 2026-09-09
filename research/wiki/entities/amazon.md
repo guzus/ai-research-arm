@@ -4,15 +4,16 @@ title: Amazon
 type: entity
 aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy"]
 tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
-description: Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.
+description: Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 and naming a third inference architecture beside Trainium and Nvidia.
 created_at: 2026-06-14
-timestamp: 2026-08-10T00:00:00Z
+timestamp: 2026-09-09T00:00:00Z
 market:
   ticker: AMZN
   exchange: NASDAQ
   symbol: NASDAQ:AMZN
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
   - {title: "ARA model ticket — Amazon Nova frontier reorg", path: research/models/tickets/amazon-nova-frontier-reorg-2026-07.md}
@@ -85,6 +86,22 @@ largest investee banned.
   landing on one hyperscaler's named project, feeding the same
   rate-payer-pledge / permitting-gate thread tracked on [[ai-capex]]
   (TechCrunch, The Verge; ARA daily digest 2026-08-10).
+
+## Up to $60B of Qualcomm inference silicon (2026-09-09)
+
+- **Amazon committed to up to $60B of Qualcomm custom
+  AI inference silicon** and optical connectivity,
+  taking **warrants on 25 million QCOM shares at
+  $161.26** (~$4B at strike). QCOM traded up about
+  **5%**. The digest's own caveat: **four converging
+  market relays, no first-party post and no filing in
+  window** — treat the dollar figure and warrant terms
+  as reported, not confirmed on Amazon's or Qualcomm's
+  IR. The strategic sentence is that Amazon is
+  **admitting a third inference architecture**
+  alongside **Trainium** and [[nvidia|Nvidia]]. See
+  [[ai-capex]] (market relays; ARA daily digest
+  2026-09-09).
 
 ## Open questions
 

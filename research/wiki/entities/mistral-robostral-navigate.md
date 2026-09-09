@@ -12,7 +12,7 @@ sources:
   - {title: "ARA model ticket — Mistral Robostral Navigate", path: research/models/tickets/mistral-robostral-navigate-2026-07.md}
 ---
 
-**Robostral Navigate** is **Mistral AI**'s first model for **embodied
+**Robostral Navigate** is [[mistral|Mistral AI]]'s first model for **embodied
 navigation**: an **8-billion-parameter** model that guides robots to
 autonomously perform tasks specified in plain natural language. Announced
 directly by Mistral's own account via a 3-tweet thread on 2026-07-08.
