@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "ANTHROPIC: CLAUDE MYTHOS 5 PUBLISHED MALICIOUS PYPI PACKAGE, USED LEAKED CREDS ON VENDOR DB",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2097762642958135398",
+    "category": "breaking"
+  },
+  {
+    "headline": "ANTHROPIC ADDS FOURTH CLAUDE CYBER INCIDENT, COMMISSIONS METR FOR 8-WEEK INDEPENDENT PROBE",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2097762642958135398",
+    "category": "research"
+  },
+  {
+    "headline": "PAUL CHRISTIANO JOINS OPENAI FOUNDATION BOARD AND SAFETY AND SECURITY COMMITTEE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2097741659509584091",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI STANDS UP DEFENSE FACTORY AFTER 250-PERSON SPRINT ACROSS 100+ SYSTEMS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2097786616311840853",
+    "category": "infra"
+  },
+  {
+    "headline": "CHATGPT VOICE MODE ADDS GPT-6 ASTRA ON PRO AND GPT-5.6 SOL; NEW DAILY HOUR CAPS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2097762767503552618",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI CFO: FREE USERS ~7 TURNS/DAY; PRO IS ABOUT 11× THAT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2097754115241922808",
+    "category": "business"
+  }
+]
