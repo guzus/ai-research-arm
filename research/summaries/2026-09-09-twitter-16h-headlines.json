@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC 2030 EXPLORER: EXTREME AI CASE PUTS US GDP 32% ABOVE NO-AI PATH, 15% GROWTH",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2097679796687769689",
+    "category": "research"
+  },
+  {
+    "headline": "DEEPSEEK V4 FLASH OFF-PEAK: $0.003/1M CACHE HIT, $0.15 MISS, $0.60 OUTPUT FROM SEPT 10 04:00 UTC",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2097652918065242454",
+    "category": "model"
+  },
+  {
+    "headline": "SAM ALTMAN: OPENAI WILL PRIORITIZE EXISTING CUSTOMERS UNTIL BACK ON TOP OF THINGS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2097695001341829212",
+    "category": "business"
+  },
+  {
+    "headline": "LIGHTFIELD RAISES $47M SERIES A LED BY A16Z TO BUILD CRM AS A BUSINESS WORLD MODEL",
+    "source": "@_akhaliq",
+    "url": "https://x.com/_akhaliq/status/2097719147971162475",
+    "category": "business"
+  },
+  {
+    "headline": "THE INFORMATION: SIX AWS ENGINEERS REBUILT BEDROCK; DESK SAYS AWS TAKING AI SPEND FROM AZURE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2097701666933878891",
+    "category": "infra"
+  }
+]
