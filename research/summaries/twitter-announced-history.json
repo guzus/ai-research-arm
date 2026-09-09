@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-07 12:00 UTC",
-    "headline": "DARIO AMODEI ON MYTHOS ROLLOUT: TOO FEW ACTORS DEFENDERS STAY WEAK, TOO MANY MISUSE SCALES; TOO SLOW CHINA CATCHES UP",
-    "source": "@vitrupo",
-    "source_file": "research/summaries/2026-05-07-twitter-12h-headlines.json",
-    "url": "https://x.com/vitrupo/status/2052359534103114177"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-07 15:00 UTC",
-    "headline": "ANTHROPIC LAUNCHES THE ANTHROPIC INSTITUTE (TAI) \u2014 4-PILLAR RESEARCH AGENDA, ENDORSES 60% RSI-BY-2028 THESIS",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-07-twitter-15h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052385812881228218"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-07 15:00 UTC",
-    "headline": "ANTHROPIC ON-RECORD: CLAUDE MYTHOS PREVIEW IS OUR MOST POWERFUL CODING MODEL \u2014 FIRST OFFICIAL CHANNEL CONFIRMATION",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-07-twitter-15h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052385817100763581"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-07 15:00 UTC",
-    "headline": "META 'HATCH' AGENT TARGETS END-JUNE INTERNAL TESTING \u2014 ANTHROPIC CLAUDE OPUS 4.6 REPORTEDLY AS TRANSITIONAL INFERENCE LAYER",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-07-twitter-15h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2052398131048800585"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-07 15:00 UTC",
     "headline": "META BUILDING HATCH AGENT + INSTAGRAM SHOPPING TOOL \u2014 ZUCKERBERG PUSHING AGENTIC AI TO REVENUE",
@@ -24854,5 +24818,33 @@
     "headline": "OPENAI CFO: FREE USERS ~7 TURNS/DAY; PRO IS ABOUT 11\u00d7 THAT",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2097754115241922808"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-09 23:09:52 UTC",
+    "headline": "EPOCH: OPENAI COMPUTE 17\u00d7 IN TWO YEARS TO 1.74M H100e AT END-2025",
+    "source": "@EpochAIResearch",
+    "url": "https://x.com/EpochAIResearch/status/2097787904462627017"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-09 23:09:52 UTC",
+    "headline": "EPOCH CHIP-USERS LEDGER: OPENAI 1.74M H100e END-2025, AHEAD OF GDM 1.58M AND ANTHROPIC 1.19M",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2097789799805714746"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-09 23:09:52 UTC",
+    "headline": "STILLA JOINS META TO BUILD BUSINESS AI AGENTS AFTER MUSE CONSUMER LAUNCH",
+    "source": "@stillaai",
+    "url": "https://x.com/stillaai/status/2097737539134099826"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-09 23:09:52 UTC",
+    "headline": "TSINGHUA-QWEN TERMINAL-UNIVERSE LIFTS QWEN3.5-27B TO 58.1% ON TERMINAL-BENCH 2.1",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2097807566504079722"
   }
 ]
