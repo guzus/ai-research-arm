@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-09 04:32:11 UTC
+
+CYCLE: US agencies allege industrial-scale extraction of American frontier models, while an Anthropic researcher quits the industry and its alignment lead puts extinction odds above 10%.
+
+TOP STORIES:
+• US cyber advisory accuses China-based AI firms of extracting frontier-model capabilities at scale; the defenses shipped alongside it point at API distillation, not stolen weights [✓]
+• Anthropic pretraining researcher Jacob Coxon resigns from AI over recursive self-improvement; alignment lead Evan Hubinger confirms on the record he personally puts >10% on AI killing all humans this decade [✓]
+• FT: DeepSeek at ~$500M ARR last month against $1.6B of 2026 infrastructure spend, ~10x its 2025 total, with no CFO and no roadshow [⚠]
+
+WATCH: Sept 10 - DeepSeek's interim V4.1 tier expires and the promised price cut lands, now measurable against that ~$500M run-rate.
+
+Full update on GitHub.
