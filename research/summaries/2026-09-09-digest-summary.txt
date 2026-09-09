@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-09
+
+TOP STORIES:
+• OpenAI claims a Navier-Stokes proof from an unreleased model - and a mathematician accuses it of authorship pressure
+• Mistral raises EUR 3B led by Samsung at EUR 21B+, Europe's largest-ever equity round
+• Meta launches Muse, a consumer agent with its own terminal and payment authority
+
+KEY NUMBERS:
+• ~10,000 agents, 88 hours, ~130B output tokens for the OpenAI proof; ~$15M
+• Amazon commits to up to $60B of Qualcomm AI silicon, plus warrants on 25M shares
+• Cognition confirms $2B at $48B; Anthropic compute deals reported at $517B vs $180B guided
+
+TRENDING: HN's top two threads are Buckmaster's statement (1,008 pts) and OpenAI's post (994 pts)
+
+Full digest on GitHub.
