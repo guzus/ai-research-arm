@@ -1,0 +1,11 @@
+Speaker 1: Wednesday, September ninth, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI says an unreleased model produced a Navier-Stokes proof, and the claim is already contested, a mathematician has accused the company of pressuring him over authorship.
+Speaker 1: The compute behind it is what people are staring at, roughly ten thousand agents running eighty-eight hours, about one hundred thirty billion output tokens, and a bill near [emphasis] fifteen million dollars [/emphasis].
+Speaker 2: That is the first time we have seen a single proof attempt priced like a small research program.
+Speaker 1: On the funding side, Mistral raised three billion euros led by Samsung at more than [emphasis] twenty-one billion euros [/emphasis], the largest equity round Europe has ever done.
+Speaker 2: And Meta launched Muse, a consumer agent that ships with its own terminal and its own payment authority. [dramatic_pause] It can spend your money.
+Speaker 1: Some quick numbers on silicon, Amazon has committed to as much as sixty billion dollars of Qualcomm AI chips, plus warrants on twenty-five million shares.
+Speaker 2: Cognition confirmed two billion dollars at a forty-eight billion dollar valuation, and Anthropic's compute deals are reported at [emphasis] five hundred seventeen billion dollars [/emphasis] against one hundred eighty billion guided.
+Speaker 1: That gap is the thing to watch, reported commitments and guided spend are drifting a long way apart.
+Speaker 2: Worth noting where the attention went, the top two threads on Hacker News were Buckmaster's statement at one thousand and eight points and OpenAI's post at nine hundred ninety-four.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
