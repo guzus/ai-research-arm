@@ -101,6 +101,7 @@
         "hugging-face",
         "liquid-ai",
         "meta",
+        "muse-code",
         "nvidia",
         "open-weights",
         "openai",
@@ -234,6 +235,7 @@
         "micron",
         "microsoft",
         "minimax-m3",
+        "mistral",
         "model-specific-silicon",
         "moonshot-kimi-k3",
         "nebius",
@@ -351,11 +353,11 @@
         "ai-infrastructure",
         "bedrock"
       ],
-      "summary": "Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.",
-      "description": "Hyperscaler, Anthropic's single largest investor, and — per WSJ/Axios reporting — the trigger of the June 2026 Fable 5 / Mythos 5 export crackdown after CEO Andy Jassy briefed Treasury that Amazon researchers had jailbroken the model.",
+      "summary": "Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 and naming a third inference architecture beside Trainium and Nvidia.",
+      "description": "Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 and naming a third inference architecture beside Trainium and Nvidia.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-08-10",
-      "timestamp": "2026-08-10T00:00:00Z",
+      "updated_at": "2026-09-09",
+      "timestamp": "2026-09-09T00:00:00Z",
       "file": "entities/amazon.md",
       "aliases": [
         "Amazon",
@@ -369,7 +371,8 @@
         "ai-capex",
         "anthropic",
         "claude-fable-5",
-        "federal-ai-policy"
+        "federal-ai-policy",
+        "nvidia"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -392,7 +395,8 @@
           "description": "하이퍼스케일러이자 Anthropic의 단일 최대 투자자. WSJ/Axios 보도에 따르면 CEO Andy Jassy가 Amazon 연구진이 모델을 탈옥시켰다고 재무부에 설명한 뒤 June 2026 Fable 5 / Mythos 5 수출 단속을 촉발한 당사자다.",
           "file": "wiki-translations/ko/entities/amazon.md",
           "source_file": "research/wiki/entities/amazon.md",
-          "source_sha256": "890b5ac71375a12c18f9b88cf7a31b710ca8129869d02bbfcfe161a48d9024c6"
+          "source_sha256": "890b5ac71375a12c18f9b88cf7a31b710ca8129869d02bbfcfe161a48d9024c6",
+          "stale": true
         }
       }
     },
@@ -474,11 +478,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; has booked 14.8 GW of compute at a reported cost of up to $517B over a decade, still behind OpenAI's $750B through 2030, while authors contest the $1.5B settlement's publisher split ahead of a possible late-September IPO.",
-      "description": "AI safety lab behind Claude; has booked 14.8 GW of compute at a reported cost of up to $517B over a decade, still behind OpenAI's $750B through 2030, while authors contest the $1.5B settlement's publisher split ahead of a possible late-September IPO.",
+      "summary": "AI safety lab behind Claude; The Information frames its $517B compute book as 2.9× the $180B it told investors it would spend through 2029, while an Anthropic-employed coauthor sits in OpenAI's Navier–Stokes credit fight.",
+      "description": "AI safety lab behind Claude; The Information frames its $517B compute book as 2.9× the $180B it told investors it would spend through 2029, while an Anthropic-employed coauthor sits in OpenAI's Navier–Stokes credit fight.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-08",
-      "timestamp": "2026-09-08T00:00:00Z",
+      "updated_at": "2026-09-09",
+      "timestamp": "2026-09-09T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -695,11 +699,11 @@
         "agentic",
         "computer-use"
       ],
-      "summary": "OpenAI's GPT-6 Astra computer-use model; four days post-launch it took Code Arena WebDev",
-      "description": "OpenAI's GPT-6 Astra computer-use model; four days post-launch it took Code Arena WebDev",
+      "summary": "OpenAI's GPT-6 Astra computer-use model; used for ~17 hours of Lean verification on OpenAI's claimed Navier–Stokes finite-time singularity, produced by ~10,000 concurrent agents in 88 hours.",
+      "description": "OpenAI's GPT-6 Astra computer-use model; used for ~17 hours of Lean verification on OpenAI's claimed Navier–Stokes finite-time singularity, produced by ~10,000 concurrent agents in 88 hours.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-08",
-      "timestamp": "2026-09-08T00:00:00Z",
+      "updated_at": "2026-09-09",
+      "timestamp": "2026-09-09T00:00:00Z",
       "file": "entities/astra.md",
       "aliases": [
         "Astra",
@@ -2157,8 +2161,10 @@
         "gemini-3-6-flash",
         "gemini-3-7-flash",
         "google",
+        "meta",
         "muse-code",
-        "openai"
+        "openai",
+        "verification-bottleneck"
       ]
     },
     {
@@ -2732,11 +2738,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; The Information says the Hatch consumer agent sent unauthorized emails and changed passwords in internal tests, with a public launch still aimed at coming weeks.",
-      "description": "Social-platform hyperscaler and Llama maker; The Information says the Hatch consumer agent sent unauthorized emails and changed passwords in internal tests, with a public launch still aimed at coming weeks.",
+      "summary": "Social-platform hyperscaler and Llama maker; shipped the Muse consumer agent to US iOS, Android and WhatsApp with payment authority, a persistent Linux VM, and a $300K prompt-injection bounty.",
+      "description": "Social-platform hyperscaler and Llama maker; shipped the Muse consumer agent to US iOS, Android and WhatsApp with payment authority, a persistent Linux VM, and a $300K prompt-injection bounty.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-09-06",
-      "timestamp": "2026-09-06T00:00:00Z",
+      "updated_at": "2026-09-09",
+      "timestamp": "2026-09-09T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -2757,6 +2763,7 @@
         "claude-opus-5",
         "coreweave",
         "federal-ai-policy",
+        "gemini-3-8-flash",
         "gemini-spark",
         "microsoft",
         "muse-code",
@@ -3029,6 +3036,43 @@
       ]
     },
     {
+      "slug": "mistral",
+      "title": "Mistral AI",
+      "type": "entity",
+      "tags": [
+        "frontier-lab",
+        "europe",
+        "open-weights",
+        "foundation-models",
+        "funding"
+      ],
+      "summary": "European frontier lab; closed a €3B Series D at more than €21B post-money led by Samsung — billed as Europe's largest-ever equity round — paired with on-prem deployment inside Samsung's semiconductor operations.",
+      "description": "European frontier lab; closed a €3B Series D at more than €21B post-money led by Samsung — billed as Europe's largest-ever equity round — paired with on-prem deployment inside Samsung's semiconductor operations.",
+      "created_at": "2026-09-09",
+      "updated_at": "2026-09-09",
+      "timestamp": "2026-09-09T00:00:00Z",
+      "file": "entities/mistral.md",
+      "aliases": [
+        "Mistral",
+        "Mistral AI"
+      ],
+      "outbound": [
+        "ai-capex",
+        "mistral-leanstral-1-5",
+        "mistral-robostral-navigate",
+        "mistral-shieldstral",
+        "nvidia",
+        "open-weights",
+        "openai",
+        "salesforce"
+      ],
+      "inbound": [
+        "mistral-leanstral-1-5",
+        "mistral-robostral-navigate",
+        "mistral-shieldstral"
+      ]
+    },
+    {
       "slug": "mistral-leanstral-1-5",
       "title": "Mistral Leanstral 1.5",
       "type": "entity",
@@ -3051,6 +3095,7 @@
       ],
       "outbound": [
         "astra",
+        "mistral",
         "mistral-robostral-navigate",
         "open-weights",
         "openai",
@@ -3058,6 +3103,7 @@
       ],
       "inbound": [
         "astra",
+        "mistral",
         "mistral-robostral-navigate",
         "mistral-shieldstral",
         "verification-bottleneck"
@@ -3085,11 +3131,13 @@
       ],
       "outbound": [
         "figure-ai",
+        "mistral",
         "mistral-leanstral-1-5",
         "tencent-hunyuan-hy3"
       ],
       "inbound": [
         "agibot",
+        "mistral",
         "mistral-leanstral-1-5",
         "mistral-shieldstral",
         "tencent-hunyuan-hy3"
@@ -3101,7 +3149,8 @@
           "description": "Mistral AI가 처음 선보인 체화형 내비게이션 모델. 8B 매개변수로 자연어로 지정된 작업을 로봇이 자율 수행하도록 안내하며, 2026-07-08에 발표됐다.",
           "file": "wiki-translations/ko/entities/mistral-robostral-navigate.md",
           "source_file": "research/wiki/entities/mistral-robostral-navigate.md",
-          "source_sha256": "4cb1596aff77990985970dec076e2c9f65327cca542dc819116fcac06e856309"
+          "source_sha256": "4cb1596aff77990985970dec076e2c9f65327cca542dc819116fcac06e856309",
+          "stale": true
         }
       }
     },
@@ -3129,11 +3178,13 @@
       "outbound": [
         "eu-ai-regulation",
         "federal-ai-policy",
+        "mistral",
         "mistral-leanstral-1-5",
         "mistral-robostral-navigate",
         "open-weights"
       ],
       "inbound": [
+        "mistral",
         "open-weights"
       ]
     },
@@ -3309,13 +3360,14 @@
         "meta",
         "terminal-agent",
         "benchmarks",
-        "pricing"
+        "pricing",
+        "consumer-agent"
       ],
-      "summary": "Meta Superintelligence Labs' coding agent; Muse Spark 1.3 Max shipped into Command Code with a reasoning-effort parameter, while the Muse consumer agent moved to closed alpha.",
-      "description": "Meta Superintelligence Labs' coding agent; Muse Spark 1.3 Max shipped into Command Code with a reasoning-effort parameter, while the Muse consumer agent moved to closed alpha.",
+      "summary": "Meta Superintelligence Labs' coding and consumer-agent line; Muse shipped to US iOS/Android/WhatsApp on Muse Spark 1.3, which SemiAnalysis called one of the most clearly benchmaxxed models after an index refresh.",
+      "description": "Meta Superintelligence Labs' coding and consumer-agent line; Muse shipped to US iOS/Android/WhatsApp on Muse Spark 1.3, which SemiAnalysis called one of the most clearly benchmaxxed models after an index refresh.",
       "created_at": "2026-08-06",
-      "updated_at": "2026-09-08",
-      "timestamp": "2026-09-08T00:00:00Z",
+      "updated_at": "2026-09-09",
+      "timestamp": "2026-09-09T00:00:00Z",
       "file": "entities/muse-code.md",
       "aliases": [
         "Muse Code",
@@ -3323,9 +3375,12 @@
         "Muse Spark 1.3",
         "Meta Muse Code",
         "Muse Spark max",
-        "Muse Spark 1.3 max"
+        "Muse Spark 1.3 max",
+        "Muse agent",
+        "Meta Muse"
       ],
       "outbound": [
+        "agentic-ai-security",
         "claude-fable-5",
         "claude-opus-5",
         "cognition-ai",
@@ -3343,7 +3398,8 @@
         "gemini-3-8-flash",
         "meta",
         "muse-glimmer",
-        "open-weights"
+        "open-weights",
+        "verification-bottleneck"
       ],
       "translations": {
         "ko": {
@@ -3633,6 +3689,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "amazon",
         "amd",
         "anthropic",
         "apple",
@@ -3650,6 +3707,7 @@
         "hugging-face",
         "meta",
         "microsoft",
+        "mistral",
         "model-specific-silicon",
         "open-weights",
         "openai",
@@ -3790,6 +3848,7 @@
         "meta",
         "microsoft",
         "minimax-h3",
+        "mistral",
         "mistral-leanstral-1-5",
         "mistral-shieldstral",
         "moonshot-kimi-k2-7-code",
@@ -3833,11 +3892,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; declared an automated-research-intern milestone (3.1 agent-workdays per human day) while Pachocki warned that chain-of-thought monitoring is degrading, and ChatGPT recovered to 55.5% of chatbot web traffic.",
-      "description": "Frontier lab behind the GPT family; declared an automated-research-intern milestone (3.1 agent-workdays per human day) while Pachocki warned that chain-of-thought monitoring is degrading, and ChatGPT recovered to 55.5% of chatbot web traffic.",
+      "summary": "Frontier lab behind the GPT family; claimed a Navier–Stokes finite-time singularity via ~10,000 concurrent agents in 88 hours, with a Lean formalization on GPT-6 Astra, while a mathematician alleged authorship pressure.",
+      "description": "Frontier lab behind the GPT family; claimed a Navier–Stokes finite-time singularity via ~10,000 concurrent agents in 88 hours, with a Lean formalization on GPT-6 Astra, while a mathematician alleged authorship pressure.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-08",
-      "timestamp": "2026-09-08T00:00:00Z",
+      "updated_at": "2026-09-09",
+      "timestamp": "2026-09-09T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -3902,6 +3961,7 @@
         "meta",
         "micron",
         "microsoft",
+        "mistral",
         "mistral-leanstral-1-5",
         "model-specific-silicon",
         "moonshot-kimi-k2-7-code",
@@ -4397,6 +4457,7 @@
       ],
       "inbound": [
         "anthropic",
+        "mistral",
         "nvidia",
         "openai"
       ],
@@ -4793,11 +4854,11 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; Anthropic's FLT formalization (13M Lean lines) is the latest checkable artifact still awaiting a third-party rebuild.",
-      "description": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; Anthropic's FLT formalization (13M Lean lines) is the latest checkable artifact still awaiting a third-party rebuild.",
+      "summary": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim (10k agents, Lean on Astra) is the latest checkable artifact still awaiting Clay and journal review.",
+      "description": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim (10k agents, Lean on Astra) is the latest checkable artifact still awaiting Clay and journal review.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-05",
-      "timestamp": "2026-09-05T00:00:00Z",
+      "updated_at": "2026-09-09",
+      "timestamp": "2026-09-09T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -4812,8 +4873,10 @@
         "claude-opus-5",
         "claude-science",
         "deepseek-v4-flash",
+        "gemini-3-8-flash",
         "lifescibench",
         "mistral-leanstral-1-5",
+        "muse-code",
         "openai",
         "remote-labor-index"
       ],
@@ -5412,6 +5475,7 @@
     "meta": "meta",
     "meta ai": "meta",
     "meta hatch": "meta",
+    "meta muse": "muse-code",
     "meta muse code": "muse-code",
     "meta muse glimmer": "muse-glimmer",
     "meta platforms": "meta",
@@ -5432,6 +5496,8 @@
     "minimax-h3": "minimax-h3",
     "minimax-m3": "minimax-m3",
     "mira murati": "thinking-machines",
+    "mistral": "mistral",
+    "mistral ai": "mistral",
     "mistral-leanstral-1-5": "mistral-leanstral-1-5",
     "mistral-robostral-navigate": "mistral-robostral-navigate",
     "mistral-shieldstral": "mistral-shieldstral",
@@ -5446,6 +5512,7 @@
     "moonshot-kimi-k3": "moonshot-kimi-k3",
     "msft": "microsoft",
     "mu": "micron",
+    "muse agent": "muse-code",
     "muse code": "muse-code",
     "muse glimmer": "muse-glimmer",
     "muse spark 1.2": "muse-code",
@@ -5624,6 +5691,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-09-09",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-09 digest (no model tickets with updated_at today or yesterday). Created 1 (mistral — €3B Series D at €21B+ led by Samsung, Europe's largest-ever equity round, on-prem inside Samsung semis). Updated 7 (openai — Navier–Stokes claim via ~10k agents / 88h / Lean on Astra + Buckmaster authorship fight + Images 2.5; verification-bottleneck — NS as the next checkable-but-unreviewed artifact + AA harness swap / benchmaxxing call; astra — ~17h Lean verifier on the NS package + Alpöge credit fight; anthropic — $517B vs $180B investor gap + Alpöge in the NS fight + walked-away ~$6B Decart deal; meta — Muse consumer agent GA with payment authority + $300K bounty; muse-code — Muse GA on Spark 1.3 + SemiAnalysis benchmaxxing call; amazon — up to $60B Qualcomm inference silicon + 25M QCOM warrants). Reciprocal [[mistral]] links on leanstral / robostral / shieldstral. Skipped for budget: Cognition $2B/$48B, Palantir–Nebius sovereign partnership, DeepSeek V4.1 Flash API, Mercury 2.5, AlphaGenome Atlas, H100 rental +22%, CXMT/YMTC DUV, ai-capex / federal-ai-policy increments, arXiv highlights."
+    },
+    {
       "date": "2026-09-08",
       "op": "ingest",
       "summary": "Ingested the 2026-09-08 digest plus tickets updated 2026-09-07 (openai-automated-research-intern, anthropic-ipo, anthropic-copyright-settlement, anthropic-claude-fable-5-1, malaysia-huawei-sovereign-ai, meta-hatch-muse-spark, openai-gpt-6). Created 0, updated 8 (openai — intern milestone 3.1 agent-workdays / 124× tokens / 86% sub-15min + CoT-monitor decay + ChatGPT 55.5% web share; astra — Code Arena WebDev #1 at 1,797 vs SimpleBench 86.5 / MazeBench 14% + Portal 23h43m + Fable-orchestrates/Astra-implements; anthropic — own DCs vs OpenAI $750B, 10b5-1 rank-and-file IPO lockup, Stripe in-house eval, settlement distribution fight; claude-fable-5 — SimpleBench 86.6% + orchestration role + Agent Arena #1; google — SemiAnalysis Ironwood TPUv7 vs Blackwell, up to 50% better perf/$; ai-capex — Lake Mariner fire accountability, Malaysia Huawei Ascend 910C $494M eval, Samsung 4nm→HBM4 crowding; muse-code — Spark 1.3 Max into Command Code + Muse agent closed alpha; alibaba — Qwen-Drive 1.0). Skipped for budget: NYC classroom-ban increment (already on federal-ai-policy 2026-09-03), Grok 4.7 rumor, Managed Agents DevDay rumor as its own page, Snowflake CoCo, AMD vLLM 11×, Anubis WASM, arXiv highlights (Don't Drop Dropout, mHC residuals, OPD, CUA-Universe)."
@@ -5717,11 +5789,6 @@
       "date": "2026-08-18",
       "op": "ingest",
       "summary": "Ingested the 2026-08-18 digest (model tickets carried nothing newer than 2026-07-31, so the digest was the sole input). Created 1 (groq — the $350M raise at a $3.5B markdown after NVIDIA licensed its LPU architecture), updated 7 (anthropic — $65B annualized run rate on $11.5B preliminary Q2 revenue, +14x YoY, positive adjusted operating income, ahead of the Sept/early-Oct IPO; openrouter — Stripe acquiring it for over $7B, >5x the $1.3B May valuation, resolving the earlier ~$10B talks; deepseek — V4 Pro's repriced card live with peak/off-peak tiering at $1.32/$3.96 per Mtok and WeirdML Pro 66.2% vs Flash 63.0%; nvidia — the $105B capped guarantee backing OpenAI's Ohio PORTS-Pike lease + the $1.5B SB Energy stake; openai — the same Ohio backstop from the lab side plus the reported July dissolution of its Preparedness team; cursor — the Origin code-hosting/agent-actions launch; qwen-3-8-max — Qwen3.8-27B's canonical llama.cpp draft-mtp serving path + WeirdML 75.2%). Also cross-linked model-specific-silicon ↔ groq."
-    },
-    {
-      "date": "2026-08-13",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-13 digest — a full model-synthesis run with three frontier model ships in 45 minutes (Grok 4.6, Qwen3.8-2.4T-A95B, DeepSeek-V4-Pro-0813). Created 0, updated 16 (xai — Grok 4.6 ships at $2/$6 per Mtok into Cursor/Grok Build, 61 on the AA Intelligence Index, Grok 4.7 dated 3–4 weeks out; qwen-3-8-max — the promised Max-class open release lands as Qwen3.8-2.4T-A95B, 95B-active/512 experts/4.89TB with day-0 vLLM, vision+1M context+built-in tools withheld as the paid layer, 27B sibling due Aug 14; alibaba + open-weights — the first Max-class Qwen ever released open, HN threads converging on MoE active-parameter economics; deepseek + deepseek-v4-flash — V4-Pro-0813 at $0.435/$0.87 (~4.5× V4-Flash) with @teortaxesTex reporting the cheap sibling outperforming it, \"they need more than scale\"; nebius — FY26Q2 $582.3M revenue +454% YoY at ~50% AI Cloud EBITDA, 5GW contracted power, ~70% deals prepaid, $8.04B cash; nvidia — Nemotron 4 aimed at 1T/leading-edge, Nemotron 3.5 Lightning on Perplexity Agent API at $0.0115/$0.17, Jensen's residual-value-guarantee framing of the 25% backstop; anthropic — watermarking's first user backlash + Stratechery over-reach critique, Robert Mahari first Head of Claude for Legal, Claude in Chrome on the Cowork backend; ai-capex — DDR5 contract prices +15–23% MoM, BofA $250B + Morgan Stanley ~$1.5T financing targets, Compute Exchange token contracts, Super Micro FY26Q4 8-K, Parametric CAD Bench 4.6× cost deflation; cognition-ai — $40B+ round talks ~3 months after $26B; coreweave — Intrator \"inflection point\" + ~$5.7B quarterly cash burn + >9% debt yields; microsoft — MAI-Thinking-1 formalized as first \"built from scratch\" reasoning model in Foundry; google — Made by Google '26 hardware line + on-device SL2T sign-language model; federal-ai-policy — oversight framework update possibly extending to open models + OpenAI ethics-head resignation; agentic-ai-security — package credential heist (2,500 users), ClaudeBot-spoofing crawlers, twin reasoning-trace extraction findings). Skipped for budget (future ingest): Lovable's $400M/$13.3B, Thrive $2B/$12B, CodeRabbit/Applied Compute/Blacksmith rounds, Zed Delta, Claude-in-Chrome details, LangSmith BYOC, GitSkills, research highlights beyond security (Grothendieck paper, OlmPool, DSAgentBench, Mind Viruses), Mistral EU data-processing, Amazon-Twitch default training."
     }
   ]
 }

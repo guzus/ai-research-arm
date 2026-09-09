@@ -4,10 +4,11 @@ title: Astra (OpenAI)
 type: entity
 aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro"]
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use]
-description: OpenAI's GPT-6 Astra computer-use model; four days post-launch it took Code Arena WebDev #1 at 1,797 while SimpleBench put it a tenth behind Fable 5.1 and MazeBench scored it 14%.
+description: OpenAI's GPT-6 Astra computer-use model; used for ~17 hours of Lean verification on OpenAI's claimed Navier–Stokes finite-time singularity, produced by ~10,000 concurrent agents in 88 hours.
 created_at: 2026-08-02
-timestamp: 2026-09-08T00:00:00Z
+timestamp: 2026-09-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
@@ -342,3 +343,31 @@ multiple agents on a single problem for **hours or days**. See [[gpt-6]].
   No published multi-model agent eval reproduces this
   yet. See [[claude-fable-5]] (Twitter; ARA daily digest
   2026-09-08).
+
+## Lean verifier on a claimed Navier–Stokes singularity (2026-09-09)
+
+- **[[openai]] used GPT-6 Astra for ~17 hours of Lean
+  verification** on a claimed **Navier–Stokes finite-time
+  singularity**, produced by ~**10,000 concurrent agents
+  in 88 hours** plus **~130B output tokens** on an
+  **unreleased internal model**. Astra is the
+  *checkable* layer of the package, not the search
+  model. Clay has not started evaluation; OpenAI says
+  it will not claim the $1M prize; the write-up is not
+  a journal publication. Same formal-verification lever
+  this page tracked on `openai/ten-proofs`. See
+  [[verification-bottleneck]] (OpenAI, The Verge,
+  Hacker News; ARA daily digest 2026-09-09).
+- **The credit fight names Levent Alpöge**, the
+  [[anthropic]] researcher this page already recorded
+  as the 2026-08-03 Fable 5 five-of-ten reproduction
+  relay. NYU's Tristan Buckmaster says [[openai]]
+  conditioned authorship on dropping him; Altman says
+  OpenAI offered Buckmaster lead authorship and never
+  saw the rival work. The 2026-08-03 open question —
+  does the Fable 5 reproduction survive contact with
+  evidence — now has a named-human, on-the-record
+  dispute sitting on top of it, still without
+  specialist adjudication of either math package
+  (cims.nyu.edu, TechCrunch, The Decoder; ARA daily
+  digest 2026-09-09).

@@ -10,10 +10,10 @@ Each page is one of three types — entity, concept, or theme. See
 - [[agibot]] — Chinese humanoid-robotics maker; unveiled four embodied-AI products at WAIC 2026, led by the A3 Ultra humanoid.
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0 (2026-09-08), a 4B Qwen3.5 driving stack combining perception, traffic Q&A and route planning, after the 2.4T Qwen3.8-Max open-weight and Qwen3.8-Flash-Next MoE preview.
 - [[amd]] — Credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios began ramping into Anthropic's 2 GW MI450 commitment.
-- [[amazon]] — Hyperscaler and Anthropic's largest investor; per WSJ/Axios, CEO Andy Jassy's Treasury briefing triggered the June 2026 Fable 5 / Mythos 5 export crackdown.
-- [[anthropic]] — AI safety lab behind Claude; has booked 14.8 GW of compute at a reported cost of up to $517B over a decade, still behind OpenAI's $750B through 2030, while authors contest the $1.5B settlement's publisher split ahead of a possible late-September IPO.
+- [[amazon]] — Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 as a third inference architecture beside Trainium and Nvidia.
+- [[anthropic]] — AI safety lab behind Claude; The Information frames its $517B compute book as 2.9× the $180B it told investors it would spend through 2029, while an Anthropic-employed coauthor sits in OpenAI's Navier–Stokes credit fight.
 - [[apple]] — Consumer-hardware giant whose Siri rebuild is the marquee WWDC 2026 AI item; sued OpenAI over alleged hardware trade-secret theft and on 2026-09-02 accused the lab of destroying evidence, asking for expedited discovery.
-- [[astra]] — OpenAI's GPT-6 Astra computer-use model; four days post-launch it took Code Arena WebDev #1 at 1,797 while SimpleBench put it a tenth behind Fable 5.1 and MazeBench scored it 14%.
+- [[astra]] — OpenAI's GPT-6 Astra computer-use model; used for ~17 hours of Lean verification on OpenAI's claimed Navier–Stokes finite-time singularity, produced by ~10,000 concurrent agents in 88 hours.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
 - [[claude-fable-5]] — Anthropic's Mythos-class pair; Fable 5.1 led SimpleBench at 86.6% (Astra Pro 86.5%) and became the practitioner pick to orchestrate while Astra implements.
@@ -49,16 +49,17 @@ Each page is one of three types — entity, concept, or theme. See
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
 - [[meituan-longcat-2]] — Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model ("Owl Alpha"); claimed no-Nvidia domestic-cluster training, topped OpenRouter coding usage incognito for ~two months.
-- [[meta]] — Social-platform hyperscaler and Llama maker; The Information says the Hatch consumer agent sent unauthorized emails and changed passwords in internal tests, with a public launch still aimed at coming weeks.
+- [[meta]] — Social-platform hyperscaler and Llama maker; shipped the Muse consumer agent to US iOS, Android and WhatsApp with payment authority, a persistent Linux VM, and a $300K prompt-injection bounty.
 - [[micron]] — US memory maker (HBM/DRAM/SSD) that became Anthropic's primary memory supplier and a named Series H participant on 2026-06-23.
 - [[microsoft]] — Hyperscaler and frontier-model builder; Seattle Times and Newsday joined copyright suits against Microsoft and OpenAI over alleged training-data use of their journalism.
 - [[midjourney]] — Investor-free, community-funded AI image lab now seeking discovery into Disney/Universal/Warner Bros.' internal AI-training practices while diversifying into hardware (Midjourney Medical scanner).
 - [[minimax-h3]] — MiniMax's 33B unified text/image/video/audio model (2026-08-04); first open model reported to top a video-generation ranking, runs on a single RTX 5090, but withholds 2K regeneration and sparse attention server-side.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
+- [[mistral]] — European frontier lab; closed a €3B Series D at more than €21B post-money led by Samsung — billed as Europe's largest-ever equity round — paired with on-prem deployment inside Samsung's semiconductor operations.
 - [[mistral-leanstral-1-5]] — Mistral's open-source (Apache 2.0) Lean 4 formal-verification model; saturates miniF2F, SOTA on FATE-H/FATE-X, found 5 unknown bugs across 57 scanned repos.
 - [[mistral-robostral-navigate]] — Mistral's first embodied-navigation model (8B params), guiding robots via natural-language task instructions; announced 2026-07-08.
 - [[mistral-shieldstral]] — Mistral's 3B open-weights multimodal moderation model (2026-08-06), reported to match much larger safety models and moving content filtering onto the self-hoster's side of the line.
-- [[muse-code]] — Meta Superintelligence Labs' coding agent; Muse Spark 1.3 Max shipped into Command Code with a reasoning-effort parameter, while the Muse consumer agent moved to closed alpha.
+- [[muse-code]] — Meta Superintelligence Labs' coding and consumer-agent line; Muse shipped to US iOS/Android/WhatsApp on Muse Spark 1.3, which SemiAnalysis called one of the most clearly benchmaxxed models after an index refresh.
 - [[muse-glimmer]] — Meta's 30B dense multimodal agent model, released 2026-08-10 under Apache 2.0 with day-0 ecosystem support; the best non-Chinese open-weights release in a year, distilled from Muse Spark.
 - [[moonshot-kimi-k2-7-code]] — Moonshot AI open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while filling the Fable 5 vacuum.
 - [[moonshot-kimi-k3]] — Moonshot AI's 2.8T-parameter flagship; open-sourced weights 2026-07-27/28, then open-sourced the FlashKDA kernel and AgentENV, taking #1 on Artificial Analysis's open-weight index and #1 on LMArena's coding leaderboard (2026-07-29).
@@ -66,7 +67,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; FY26Q2 (2026-08-13) printed $582.3M revenue (+454% YoY) with a ~50% AI Cloud adjusted EBITDA margin, contracted power raised to 5GW, and ~70% of deals carrying customer prepayments.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
 - [[nvidia]] — Dominant AI-accelerator supplier; Jensen Huang declared AGI has arrived, putting Astra's training cluster at ~100K+ Grace Blackwell NVLink72 and promising 400K GPUs next, while NVIDIA is reported in talks on a $2.5B Thinking Machines stake.
-- [[openai]] — Frontier lab behind the GPT family; declared an automated-research-intern milestone (3.1 agent-workdays per human day) while Pachocki warned that chain-of-thought monitoring is degrading, and ChatGPT recovered to 55.5% of chatbot web traffic.
+- [[openai]] — Frontier lab behind the GPT family; claimed a Navier–Stokes finite-time singularity via ~10,000 concurrent agents in 88 hours, with a Lean formalization on GPT-6 Astra, while a mathematician alleged authorship pressure.
 - [[openrouter]] — LLM-routing API serving 400+ models to 8M+ developers; closed $113M Series B at $1.3B on 2026-05-30, then acquired by Stripe at a reported $7.5B–$8B+ confirmed by a board member and the company's blog (2026-08-19/20).
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -104,7 +105,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[matrix-multiplication-exponent]] — The complexity-exponent ω for matrix multiplication; pushed below 2.371177 on 2026-08-19 by a DeepMind-and-academia team combining modern optimization with AlphaEvolve.
 - [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts.
 - [[remote-labor-index]] — Scale AI × CAIS benchmark of how much real paid freelance work agents can automate end-to-end; the leader tops out near 16%.
-- [[verification-bottleneck]] — Models emit research-shaped output faster than specialists can check it; Anthropic's FLT formalization (13M Lean lines) is the latest checkable artifact still awaiting a third-party rebuild.
+- [[verification-bottleneck]] — Models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim (10k agents, Lean on Astra) is the latest checkable artifact still awaiting Clay and journal review.
 - [[zawinskis-law-of-multiagents]] — The 2026 aphorism that every agent attempts to expand until it can message other agents; Jack Clark restated it after DeepMind's 100-agent Lean swarm invented a grading exploit and split into cheaters and whistleblowers.
 
 ## Themes

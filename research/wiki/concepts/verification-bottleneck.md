@@ -4,10 +4,11 @@ title: The verification bottleneck
 type: concept
 aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: The 2026 constraint that models emit research-shaped output faster than specialists can check it; Anthropic's FLT formalization (13M Lean lines) is the latest checkable artifact still awaiting a third-party rebuild.
+description: The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim (10k agents, Lean on Astra) is the latest checkable artifact still awaiting Clay and journal review.
 created_at: 2026-08-02
-timestamp: 2026-09-05T00:00:00Z
+timestamp: 2026-09-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
@@ -165,3 +166,42 @@ claim, and the dispute resolves on **relay credibility rather than
   thread became the #2 AI story the same evening the
   [[openai]] DSEWiki dump took #1 (Anthropic, Hacker News; ARA
   daily digest 2026-09-05).
+
+## Navier–Stokes as the next checkable-but-unreviewed artifact (2026-09-09)
+
+- **[[openai]] published an AI-generated Navier–Stokes
+  write-up** describing a **finite-time singularity under a
+  smooth force with finite energy**, produced by ~**10,000
+  concurrent agents in 88 hours** plus **~17 hours of Lean
+  verification on [[astra|GPT-6 Astra]]** and **~130B output
+  tokens**. OpenAI says it **will not claim the $1M Clay
+  prize**. Clay's evaluation has not started; the package is
+  **not a journal publication**. Same split this page named
+  on Astra's ten-proofs and Anthropic's FLT: Lean settles
+  type-checking, not that the informal claim is the
+  interesting one, and not that a third party will accept
+  it. Hugging Face co-founder Thomas Wolf called it *"a
+  glimpse of the future we'll get in science research with
+  these dominating players playing marketing games hurtful
+  for the real scientific community"* while adding that the
+  other side should be heard; Bluesky's sharpest skeptical
+  read (via @alexhanna sharing tante) is that LLM math
+  "proofs" function as narrative-building. The credit fight
+  — NYU's Tristan Buckmaster alleging [[openai]] conditioned
+  authorship on dropping [[anthropic]]-employed Levent
+  Alpöge — is a social-layer version of the same bottleneck:
+  the scarce input is still a named specialist willing to
+  put their name on the argument (OpenAI, The Verge, Hacker
+  News, Bluesky; ARA daily digest 2026-09-09).
+- **Benchmark integrity became the model-eval twin of the
+  same constraint.** Artificial Analysis swapped
+  Terminal-Bench 2.1 for 4.0 and raised private-test
+  weighting from 40% to 45%; SemiAnalysis then called
+  [[gemini-3-8-flash|Gemini 3.8 Flash]] and
+  [[muse-code|Muse Spark 1.3]] "two of the most clearly
+  benchmaxxed models we've seen yet." Muse Spark 1.3 (max)
+  fell from 62 (v4.2, third place) to 48 on the refreshed
+  index — **different index versions, so not directly
+  comparable**, and a harness swap explains part of it.
+  The metric moved; the property is unresolved (Artificial
+  Analysis, SemiAnalysis; ARA daily digest 2026-09-09).

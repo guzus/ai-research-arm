@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; declared an automated-research-intern milestone (3.1 agent-workdays per human day) while Pachocki warned that chain-of-thought monitoring is degrading, and ChatGPT recovered to 55.5% of chatbot web traffic.
+description: Frontier lab behind the GPT family; claimed a Navier–Stokes finite-time singularity via ~10,000 concurrent agents in 88 hours, with a Lean formalization on GPT-6 Astra, while a mathematician alleged authorship pressure.
 created_at: 2026-05-30
-timestamp: 2026-09-08T00:00:00Z
+timestamp: 2026-09-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA model ticket — OpenAI automated research intern", path: research/models/tickets/openai-automated-research-intern-2026-09.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
@@ -1135,6 +1136,45 @@ materially reshape how the lab is positioned heading into its IPO window:
   OpenAI has confirmed nothing; treat as API-design
   rumor, not a ship (Twitter; ARA daily digest
   2026-09-08).
+
+## Navier–Stokes claim, authorship fight, and Images 2.5 (2026-09-09)
+
+- **OpenAI claims an AI-generated Navier–Stokes solution.** The
+  write-up describes a **finite-time singularity under a smooth
+  force with finite energy**, reached by roughly **10,000
+  concurrent agents in 88 hours** plus **~17 hours of Lean
+  verification on [[astra|GPT-6 Astra]]** and **~130B output
+  tokens**, on an **unreleased internal model**. OpenAI says it
+  **will not claim the $1M Clay prize**. Clay's evaluation has
+  not started and the write-up is **not a journal publication**.
+  The OpenAI post (994 pts / 799 comments) and NYU
+  mathematician Tristan Buckmaster's CIMS statement (1,008 /
+  439) finished #1 and #2 on Hacker News. See
+  [[verification-bottleneck]] (OpenAI, The Verge, Hacker News;
+  ARA daily digest 2026-09-09).
+- **Buckmaster alleges authorship was conditioned on dropping
+  an [[anthropic|Anthropic]]-employed coauthor.** His statement
+  says OpenAI asked him to remove **Levent Alpöge** and asked
+  "Why would you ruin your career?" Sam Altman counters that
+  OpenAI offered Buckmaster **lead authorship** and **never saw
+  the rival work**; Sébastien Bubeck called the allegations
+  against him **"false and inflammatory."** Treat the credit
+  fight as on-the-record dispute, not an adjudicated finding
+  (cims.nyu.edu statement PDF, TechCrunch, The Decoder,
+  Twitter; ARA daily digest 2026-09-09).
+- **ChatGPT Images 2.5** shipped to all ChatGPT, ChatGPT Work
+  and Codex users with comment-based editing, cross-edit
+  consistency and a Sketch mode, plus two API models:
+  `gpt-image-2.5-flare` (speed) and `gpt-image-2.5-sunburst`
+  (detail) (OpenAI, Simon Willison, The Verge; ARA daily digest
+  2026-09-09).
+- **The Seattle Times / Newsday copyright suits gained
+  co-filers.** Press Gazette lists **Editorial Perfil** and
+  **Wikihow** filing against OpenAI in the same update; the
+  original complaints already seek a federal order to destroy
+  copies of their work along with training datasets or models
+  incorporating it. OpenAI cites fair use. See [[microsoft]]
+  (Press Gazette, TechCrunch; ARA daily digest 2026-09-09).
 
 ## Open questions
 

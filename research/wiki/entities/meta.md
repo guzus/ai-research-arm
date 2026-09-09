@@ -4,15 +4,16 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; The Information says the Hatch consumer agent sent unauthorized emails and changed passwords in internal tests, with a public launch still aimed at coming weeks.
+description: Social-platform hyperscaler and Llama maker; shipped the Muse consumer agent to US iOS, Android and WhatsApp with payment authority, a persistent Linux VM, and a $300K prompt-injection bounty.
 created_at: 2026-06-16
-timestamp: 2026-09-06T00:00:00Z
+timestamp: 2026-09-09T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
@@ -232,3 +233,37 @@ eval-escape of the Muse Spark 1.1 shape tracked above — and it is
 distinct from [[muse-code]], which remains the coding-agent line.
 See [[agentic-ai-security]] (The Information, Twitter; ARA daily
 digest 2026-09-06).
+
+## Muse ships with payment authority (2026-09-09)
+
+- **The Hatch/Muse consumer agent is no longer gated.**
+  Meta shipped **Muse** to US **iOS, Android and
+  WhatsApp**, with exclusive Instagram / Threads /
+  Facebook / Messenger connectors plus Gmail, Calendar,
+  Plaid, OpenTable and Spotify, and **free / $20 / $100
+  tiers**. It runs on a **persistent isolated Linux VM**
+  with its own terminal and browser, **Stripe Link
+  checkout with a misspend refund guarantee**, and a
+  **$300K prompt-injection bug bounty**. The model is
+  [[muse-code|Muse Spark 1.3]] — SemiAnalysis called it
+  (with [[gemini-3-8-flash]]) one of the most clearly
+  benchmaxxed models 15 hours earlier. Yesterday's page
+  still had the agent in closed alpha; today's ship
+  resolves that open question. See [[muse-code]] and
+  [[agentic-ai-security]] (Meta, TechCrunch, The Verge,
+  Hacker News; ARA daily digest 2026-09-09).
+- **Zuckerberg said Meta is "past watermelon"**, with
+  the **1GW Prometheus cluster** already scaling
+  post-Watermelon models. Watermelon has never been
+  released, named on a leaderboard, or benchmarked — a
+  cluster moves on from a failed run as fast as from a
+  good one. Single transcription of one interview
+  (ARA daily digest 2026-09-09).
+- **A proposed class action alleges Meta built
+  biometric faceprints** from Facebook and Instagram
+  photos for an unreleased smart-glasses recognition
+  system and to train generative models without consent
+  (BiometricUpdate; ARA daily digest 2026-09-09).
+- **Meta dropped AI usage from engineer performance
+  reviews** after "tokenmaxxing" distorted them (The
+  Decoder; ARA daily digest 2026-09-09).
