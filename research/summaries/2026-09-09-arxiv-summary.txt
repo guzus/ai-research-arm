@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-09
+
+TOP 5 PAPERS:
+• MoE HP scaling — 1,800 runs / 20T tokens; activation ratio is its own LR and batch-size axis
+• ExecCritic — bad tests drop SWE-bench; post-trained Test+Repair Qwen hits 72.6%
+• API vs chatbot — API scores +3.4pp; ChatGPT surface gap exceeds GPT 5.3→5.4
+• Silent Revision — 67% of material safety-framework changes go undisclosed
+• SyncWorld — visual calibration turns world models into zero-shot simulators (Du, Gan)
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
