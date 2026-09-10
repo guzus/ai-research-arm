@@ -1,0 +1,13 @@
+AI News - 2026-09-10
+
+TOP STORIES:
+• DeepSeek ships V4.1 Flash: 552B CED MoE, MIT weights, $0.003/$0.15/$0.60 off-peak now live
+• OpenAI asks Congress for mandatory frontier-AI rules; newly backs four CA bills
+• Huawei Ascend 950DT indicated above ¥250k (+20–50%) as grey-market HBM bites
+
+KEY NUMBERS:
+• Listen Labs walks from a $125M Series C at $1.5B amid ~$2B Salesforce talks
+• Cognition Devin fleet factors RSA-260: ~4,900 GPU-days / ~$400k; RSA-1024 ~$30M
+• TSMC August revenue NT$514.8B, +53.3% YoY
+
+Full report on GitHub.
