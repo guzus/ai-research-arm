@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-10 04:31:48 UTC
+
+CYCLE: OpenAI asks Congress for mandatory frontier-AI rules and newly backs four CA bills; DeepSeek's promised Flash cut is not on the public card
+
+TOP STORIES:
+• OpenAI (Lehane): mandatory national capability-based rules before adjournment; endorses SB 813, AB 1405, SB 1119, AB 1864 [✓]
+• DeepSeek public Flash card still $0.007/$0.22/$0.66 after 04:00 UTC; V4.1 interim id gone, no replacement endpoint [✓]
+• Meta reset everyone's Muse token usage after the launch surge [✓]
+
+WATCH: Public DeepSeek card flipping to $0.003/$0.15/$0.60, or a named V4.1 Flash id.
+
+Full update on GitHub.
