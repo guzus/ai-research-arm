@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC: ALIBABA HARVESTED 151M CLAUDE EXCHANGES; MOONSHOT AND DEEPSEEK RELAYED CUSTOMERS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2098097512544444447",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI LAUNCHES CHATGPT FOR FINANCIAL SERVICES WITH MORGAN STANLEY AND EVERCORE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2098118191029624911",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI TO PAUSE NEW $200 CHATGPT PRO SIGNUPS TO PROTECT ASTRA CAPACITY",
+    "source": "@thsottiaux",
+    "url": "https://x.com/jxnlco/status/2098129044810187000",
+    "category": "infra"
+  },
+  {
+    "headline": "GPT-LIVE-1 HITS THE API AT $0.05/MIN WITH FULL-DUPLEX VOICE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2098100519600554330",
+    "category": "model"
+  },
+  {
+    "headline": "CHATGPT WORK SHIPS DATA AGENT FOR REDSHIFT, BIGQUERY, SNOWFLAKE, DATABRICKS",
+    "source": "@ChatGPT",
+    "url": "https://x.com/jxnlco/status/2098097888878379425",
+    "category": "business"
+  }
+]
