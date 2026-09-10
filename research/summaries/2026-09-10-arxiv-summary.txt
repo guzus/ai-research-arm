@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-10
+
+TOP 5 PAPERS:
+• 320B MoE refusal — one direction, 41–89pp; 74% of the effect is joint-only
+• Looking Glass — a prediction lives in 2–16 components (~1–3% of the model)
+• Programmable World Model — explicit state + video renderer; 94/98% CombatStateBench
+• TRACE — sim-oracle RL: Qwen-35B-A3B 0.757 FullAttr@1 beats Claude Opus 5
+• IdeaAMBIG — agents find 9.6% of implementation gaps; given the defect, 80.6%
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
