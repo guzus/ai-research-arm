@@ -4,10 +4,11 @@ title: Astra (OpenAI)
 type: entity
 aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro"]
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use]
-description: OpenAI's GPT-6 Astra computer-use model; used for ~17 hours of Lean verification on OpenAI's claimed Navier–Stokes finite-time singularity, produced by ~10,000 concurrent agents in 88 hours.
+description: OpenAI's GPT-6 Astra computer-use model; first-party business write-up positioned it for work as Voice Mode added Astra (Pro-only) and daily caps, while Raschka read it as looped recurrent depth.
 created_at: 2026-08-02
-timestamp: 2026-09-09T00:00:00Z
+timestamp: 2026-09-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
@@ -371,3 +372,27 @@ multiple agents on a single problem for **hours or days**. See [[gpt-6]].
   specialist adjudication of either math package
   (cims.nyu.edu, TechCrunch, The Decoder; ARA daily
   digest 2026-09-09).
+
+## Positioned for work; Voice Mode; Raschka on looping (2026-09-10)
+
+- **[[openai]] positioned GPT-6 Astra for work** in a
+  first-party business write-up of reasoning, computer
+  use and design judgment. The Codex lead said Astra
+  demand is unprecedented and that new Pro signups
+  might pause; the signup path was still open at
+  digest close (OpenAI, Twitter; ARA daily digest
+  2026-09-10).
+- **ChatGPT Voice Mode added Astra and Sol.** Astra is
+  limited to Pro; new daily caps are **3 hours on Plus
+  and 15 hours on the $100 Pro tier**. CFO Sarah Friar
+  put free usage at **~7 turns/day versus about 11×
+  that on Pro** (Twitter; ARA daily digest 2026-09-10).
+- **Sebastian Raschka read Astra as looped**: recurrent
+  depth is weight-shared extra layers, not a substitute
+  for chain-of-thought. He cites Jakub Pachocki that
+  CoT monitorability is "fragile and unfortunately
+  trending in a negative direction" for reasons not
+  contingent on architecture — the same monitorability
+  decay this page already tracked on 2026-09-03/08
+  (Ahead of AI, HN 307 pts; ARA daily digest
+  2026-09-10).

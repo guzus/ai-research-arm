@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Anthropic's 14.8 GW / $517B book is still behind OpenAI's $750B through 2030, while Lake Mariner's June fire showed how thinly campus accountability is spread.
+description: The historically large compute buildout; Google committed €13 billion in Finland with a 22-year Fortum nuclear PPA, while Massachusetts became the third US state in as many months to restrict large data-center builds.
 created_at: 2026-05-24
-timestamp: 2026-09-08T00:00:00Z
+timestamp: 2026-09-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA model ticket — Malaysia Huawei sovereign AI", path: research/models/tickets/malaysia-huawei-sovereign-ai-2026-09.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
@@ -1067,3 +1068,36 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   per dollar than Blackwell B200/B300** on an Official
   Preview stack. See [[google]] (SemiAnalysis, Sept 7;
   ARA daily digest 2026-09-08).
+
+## Google's Finnish envelope and a third-state siting rule (2026-09-10)
+
+- **[[google]] committed €13 billion in Finland**, its
+  largest single European investment — a **2027–2028
+  capex envelope** for Hamina, Kajaani, Muhos and
+  Vaala, not energized megawatts. A **22-year Fortum
+  PPA** is revenue certainty for a Loviisa
+  life-extension that employs about **580 people** and
+  supplies **~10% of Finnish electricity**. Pair with
+  the 2026-09-08 Lake Mariner accountability picture:
+  this is contracted power and campus spend, still
+  not a GW print (Google Cloud, Reuters; ARA daily
+  digest 2026-09-10).
+- **Massachusetts required sites above 25 MW peak to
+  cover 100% of demand with clean generation**,
+  pausing a just-opened sales-tax exemption — the
+  **third US state in as many months** after Texas
+  audits and New York's 50 MW pause. See
+  [[federal-ai-policy]] (TechCrunch; ARA daily digest
+  2026-09-10).
+- **Enflame priced a $912 million STAR IPO** — 43
+  million shares at 142.18 yuan, valuing the
+  Tencent-backed chipmaker at about **$9.12B** ahead
+  of a September 11 debut. Tencent will hold
+  **17.95%** and was **83.79% of 2025 revenue**
+  (Reuters; ARA daily digest 2026-09-10).
+- **Epoch put [[openai]] at 1.74 million H100e** as
+  the end-2025 median in a new chip-users ledger —
+  **17× in two years**, still the largest of the five
+  US labs it tracks. A ~2.7M "today" figure
+  circulating with the tweet is a chart readout, not
+  a CSV row (Epoch AI; ARA daily digest 2026-09-10).

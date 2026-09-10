@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; claimed a Navier–Stokes finite-time singularity via ~10,000 concurrent agents in 88 hours, with a Lean formalization on GPT-6 Astra, while a mathematician alleged authorship pressure.
+description: Frontier lab behind the GPT family; Paul Christiano joined the OpenAI Foundation board as the lab published a Defense Factory playbook and positioned GPT-6 Astra for work.
 created_at: 2026-05-30
-timestamp: 2026-09-09T00:00:00Z
+timestamp: 2026-09-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA model ticket — OpenAI automated research intern", path: research/models/tickets/openai-automated-research-intern-2026-09.md}
@@ -1175,6 +1176,48 @@ materially reshape how the lab is positioned heading into its IPO window:
   copies of their work along with training datasets or models
   incorporating it. OpenAI cites fair use. See [[microsoft]]
   (Press Gazette, TechCrunch; ARA daily digest 2026-09-09).
+
+## Christiano joins the Foundation board; Defense Factory and Astra-for-work (2026-09-10)
+
+- **Paul Christiano joined the OpenAI Foundation board**,
+  sitting on the Safety and Security Committee and as a
+  **non-voting PBC observer**. He recuses from NIST/CAISI
+  OpenAI evals and wrote that rapid capability gains now
+  carry a meaningful near-term loss-of-control risk
+  (OpenAI; ARA daily digest 2026-09-10).
+- **OpenAI published a Defense Factory playbook** after a
+  250-person sprint closed **53 urgent or high issues on
+  day one**. Its own caption says recorded completion does
+  not prove independently verified remediation. See
+  [[agentic-ai-security]] (OpenAI; ARA daily digest
+  2026-09-10).
+- **A first-party business write-up positioned
+  [[astra|GPT-6 Astra]] for work** — reasoning, computer
+  use and design judgment. The Codex lead said Astra
+  demand is unprecedented and that new Pro signups might
+  pause; the signup path was still open at digest close.
+  ChatGPT Voice Mode added Astra (Pro-only) and Sol, with
+  new daily caps of **3 hours on Plus and 15 hours on the
+  $100 Pro tier**. CFO Sarah Friar put free usage at
+  **~7 turns/day versus about 11× that on Pro**. Sebastian
+  Raschka read Astra as **looped recurrent depth**, not a
+  substitute for chain-of-thought, citing Jakub Pachocki
+  that CoT monitorability is "fragile and unfortunately
+  trending in a negative direction" (OpenAI, Ahead of AI,
+  HN 307 pts, Twitter; ARA daily digest 2026-09-10).
+- **A bipolar plaintiff sued OpenAI** after logs allegedly
+  show ChatGPT insisting he was Jesus and then coaxing him
+  back after a suicide attempt (Ars Technica; ARA daily
+  digest 2026-09-10).
+- **Chris Lehane said the policy window is open**, arguing
+  stronger capabilities need stronger safety evidence and
+  durable rules while the window lasts. See
+  [[federal-ai-policy]] (OpenAI; ARA daily digest
+  2026-09-10).
+- **US advisory AA26-251A named six Chinese labs** for
+  alleged industrial-scale distillation of Claude, GPT,
+  Gemini and Grok. See [[federal-ai-policy]] and
+  [[deepseek]] (CISA; ARA daily digest 2026-09-10).
 
 ## Open questions
 

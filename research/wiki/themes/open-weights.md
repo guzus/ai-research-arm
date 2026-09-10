@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash gains force — now including Z.ai's downloadable GLM-5.3 flagship (2026-08-29, the day's top HN AI thread) and Tencent's Hunyuan Hy4 preview (770B/49B-active, weights promised), after Meta's Apache-2.0 Muse Glimmer return, Alibaba's first Max-class Qwen, and Vercel gateway data putting open tokens at 62%.
 created_at: 2026-06-14
-timestamp: 2026-08-29T00:00:00Z
+timestamp: 2026-09-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
@@ -478,6 +479,16 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   gap [[zhipu-glm-5-3]] just closed. Fold onto the existing
   [[tencent-hunyuan-hy3]] family rather than minting a Hy4 page
   until weights land (X; ARA daily digest 2026-08-29).
+
+- **[[harvey]] named Harvey Tenet as its first in-house
+  model, post-trained from open-weight
+  [[moonshot-kimi-k3|Kimi K3]] (2026-09-10).** A $15.5B
+  legal-AI company training on a Chinese open-weight
+  flagship is a vertical-product data point for this
+  theme, not just another download. The same digest
+  named Moonshot in CISA advisory AA26-251A; see
+  [[federal-ai-policy]] (Harvey, TechCrunch, CISA; ARA
+  daily digest 2026-09-10).
 
 ## Open questions
 

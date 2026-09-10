@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; OpenAI and Google are reported opposing Massachusetts AI safety rules that Anthropic supports, the same day OpenAI's chief scientist asked for international coordination.
+description: US federal and state AI governance; CISA/NSA/FBI advisory AA26-251A named six Chinese labs for alleged industrial-scale distillation and told US providers to silently degrade suspected traffic.
 created_at: 2026-06-03
-timestamp: 2026-09-07T00:00:00Z
+timestamp: 2026-09-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
@@ -799,6 +800,40 @@ footing for the first time in the cycle.
   that. Nobody has put that question to OpenAI on the record.
   See [[openai]] (OpenAI, The Information, Twitter; ARA daily
   digest 2026-09-07).
+
+## AA26-251A names six labs; Massachusetts restricts 25 MW sites (2026-09-10)
+
+- **Joint advisory AA26-251A from NSA, CISA and FBI
+  named six Chinese labs** — [[deepseek]], Moonshot,
+  [[alibaba]], MiniMax, StepFun and Z.AI — alleging
+  industrial-scale distillation of Claude, GPT, Gemini
+  and Grok since late 2024 via API proxies and shared
+  premium subscriptions. The recommended defense is to
+  **"subtly alter responses" and "avoid informing"
+  suspected distillers**. Detection fingerprints —
+  24/7 max-throughput new accounts, cache-optimized
+  traffic — also match a legitimate enterprise agent
+  fleet. Beijing called the charge unfounded smearing.
+  This is the day's statute-shaped action: it names
+  legal entities and tells US providers how to respond
+  without notice (CISA, China MFA, China Daily, Ars
+  Technica; ARA daily digest 2026-09-10).
+- **Massachusetts required clean power for sites above
+  25 MW peak**, pausing a just-opened sales-tax
+  exemption and directing communities to avoid NDAs —
+  the **third US state in as many months** after Texas
+  audits and New York's 50 MW pause. Leading the
+  Future, a super PAC funded by Marc Andreessen, Ben
+  Horowitz and Greg Brockman, is already buying
+  midterm ads. This is a siting rule, not the
+  2026-09-07 reported safety-rules fight between
+  [[openai]] / [[google]] and [[anthropic]]. See
+  [[ai-capex]] (TechCrunch; ARA daily digest
+  2026-09-10).
+- **[[openai]]'s Chris Lehane said the policy window is
+  open**, arguing stronger capabilities need stronger
+  safety evidence and durable rules while the window
+  lasts (OpenAI; ARA daily digest 2026-09-10).
 
 ## Open questions
 

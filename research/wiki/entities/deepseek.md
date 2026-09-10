@@ -4,10 +4,11 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou Chinese frontier lab; Bloomberg says it planned a Huawei inference cluster of at least 160,000 Ascend 950DT chips for its Inner Mongolia campus, while still training on Nvidia.
+description: Hangzhou Chinese frontier lab; named in CISA/NSA/FBI advisory AA26-251A as one of six alleged industrial distillers, cut Flash cache-hit prices 60% off-peak, and tapped CITIC for a STAR listing.
 created_at: 2026-06-04
-timestamp: 2026-09-05T00:00:00Z
+timestamp: 2026-09-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
@@ -234,6 +235,37 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   both still single-source until a principal speaks. See
   [[ai-capex]] (Bloomberg, The Decoder, Twitter; ARA daily
   digest 2026-09-05).
+
+## Named in AA26-251A; Flash cache-hit cut; CITIC STAR talks (2026-09-10)
+
+- **US agencies named DeepSeek among six Chinese labs**
+  in joint advisory **AA26-251A** (NSA, CISA, FBI),
+  alleging industrial-scale distillation of Claude, GPT,
+  Gemini and Grok since late 2024 via API proxies and
+  shared premium subscriptions. The other named labs
+  are Moonshot, [[alibaba]], MiniMax, StepFun and Z.AI.
+  Beijing called the charge unfounded smearing. The
+  recommended US-provider defense is to **silently
+  degrade suspected traffic**. See [[federal-ai-policy]]
+  (CISA, China Daily, Ars Technica; ARA daily digest
+  2026-09-10).
+- **[[deepseek-v4-flash|V4 Flash]] cache-hit prices
+  dropped 60% off-peak** to **$0.003 / $0.15 / $0.60 per
+  million tokens from 04:00 UTC on 2026-09-10**. V4 Pro
+  is unchanged, peak is still 2×, and the interim
+  `deepseek-v4.1-flash-expires-on-0910` tier was
+  scheduled to drop with the card (DeepSeek, The
+  Standard, HN 377 pts; ARA daily digest 2026-09-10).
+- **DeepSeek tapped CITIC for a STAR listing**, aiming
+  to start the process this year, two people told
+  Reuters. Neither raise size nor IPO valuation is set;
+  the **$75B figure in circulation is July's
+  private-round rumor, not a listing price**. FT figures
+  putting DeepSeek at ~$500M ARR against $1.6B of 2026
+  infrastructure spend reached the digest only as a
+  single-account X relay and were dropped from the
+  AI-news report; treat as unverified (Reuters; ARA
+  daily digest 2026-09-10).
 
 ## Open questions
 

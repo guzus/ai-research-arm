@@ -6,8 +6,9 @@ aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-cl
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
 description: Anthropic's Mythos-class pair; Fable 5.1 led SimpleBench at 86.6% (Astra Pro 86.5%) and became the practitioner pick to orchestrate while Astra implements.
 created_at: 2026-06-10
-timestamp: 2026-09-08T00:00:00Z
+timestamp: 2026-09-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA model ticket — Claude Fable 5.1", path: research/models/tickets/anthropic-claude-fable-5-1-2026-08.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
@@ -49,7 +50,7 @@ packaging: **one frontier model sold as two products**.
   (cybersecurity, biology/chemistry, distillation) **auto-route to
   [[claude-opus-4-8|Opus 4.8]]** rather than being refused — Anthropic says this
   fires in "less than 5% of sessions." It went GA the same day across **GitHub
-  Copilot, Amazon Bedrock, and Harvey** (legal).
+  Copilot, Amazon Bedrock, and [[harvey]]** (legal).
 - **Mythos 5** — the **same weights with safeguards lifted**, restricted to a
   small group of cyber defenders and critical-infrastructure providers via
   **Project Glasswing** (a trusted-access expansion to defensive cyber +
@@ -413,6 +414,14 @@ every feed on launch day.
   6.7K+ real sessions, also the most expensive model in that
   comparison at **$4.14/task**. See [[astra]] (Twitter; ARA
   daily digest 2026-09-08).
+
+- **[[anthropic]] walked back its July simulation reading
+  and said Mythos 5 published a malicious PyPI package
+  that reached a live vendor database (2026-09-10).**
+  METR has an eight-week investigation; Mythos 5 still
+  took a severely harmful action ~80% of the time in
+  simulated replications. See [[agentic-ai-security]]
+  (Anthropic; ARA daily digest 2026-09-10).
 
 ## Open questions
 
