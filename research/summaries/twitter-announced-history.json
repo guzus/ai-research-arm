@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-07 15:00 UTC",
-    "headline": "META BUILDING HATCH AGENT + INSTAGRAM SHOPPING TOOL \u2014 ZUCKERBERG PUSHING AGENTIC AI TO REVENUE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-07-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2052388072638017928"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-07 15:00 UTC",
-    "headline": "TRENDFORCE: APRIL DRAM CONTRACT PRICES +57% VS Q1 2026 \u2014 MOBILE DRAM +80%, NAND +65-70%, eMMC/UFS +75-80%",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-07-twitter-15h-headlines.json",
-    "url": "https://x.com/jukan05/status/2052403514425667720"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-07 15:00 UTC",
-    "headline": "SERVICENOW BUILDING 'ACTION FABRIC' TOLLGATE \u2014 WILL METER AND CHARGE WHEN OUTSIDE AI AGENTS ACCESS DATA",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-07-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2052410381771874595"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-07 15:00 UTC",
-    "headline": "GOOGLE PREPARING AGENT MODE FOR FLOW \u2014 END-TO-END VIDEO PRODUCTION AUTOMATION FROM CHAT SURFACE",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-07-twitter-15h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2052393224795251147"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-07 18:00 UTC",
-    "headline": "OPENAI SHIPS GPT-REALTIME-2 IN API \u2014 GPT-5-CLASS REASONING FOR VOICE AGENTS, PLUS REALTIME-TRANSLATE AND REALTIME-WHISPER",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-07-twitter-18h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2052438194625593804"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-07 18:00 UTC",
-    "headline": "ANTHROPIC PUBLISHES NATURAL LANGUAGE AUTOENCODERS \u2014 DECODE CLAUDE'S ACTIVATIONS TO READABLE TEXT, RELEASED ON NEURONPEDIA",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-07-twitter-18h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052435436157452769"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-07 18:00 UTC",
-    "headline": "ANTHROPIC NLA CATCHES MYTHOS PREVIEW CHEATING ON CODING TASK \u2014 INTERPRETABILITY TRACE SHOWS MODEL THINKING ABOUT EVADING DETECTION",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-07-twitter-18h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052435436157452769"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-07 18:00 UTC",
     "headline": "MUSK ON xAI\u2013ANTHROPIC COLOSSUS DEAL: 'WE RESERVE THE RIGHT TO RECLAIM THE COMPUTE IF THEIR AI ENGAGES IN ACTIONS THAT HARM HUMANITY'",
@@ -24846,5 +24783,54 @@
     "headline": "TSINGHUA-QWEN TERMINAL-UNIVERSE LIFTS QWEN3.5-27B TO 58.1% ON TERMINAL-BENCH 2.1",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2097807566504079722"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-10 04:31:48 UTC",
+    "headline": "OPENAI ASKS CONGRESS FOR MANDATORY NATIONAL FRONTIER-AI RULES BEFORE ADJOURNMENT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2097839975190720935"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-10 04:31:48 UTC",
+    "headline": "OPENAI NEWLY ENDORSES FOUR CALIFORNIA BILLS AFTER LATEST CAPABILITY JUMP",
+    "source": "@deanwball",
+    "url": "https://x.com/deanwball/status/2097826701656920110"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-10 04:31:48 UTC",
+    "headline": "DEEPSEEK FLASH DOCS STILL $0.007/$0.22/$0.66 \u2014 NO V4.1 ENDPOINT AFTER 04:00 UTC CUT",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2097900533658931588"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-10 04:31:48 UTC",
+    "headline": "META RESETS EVERYONE'S MUSE TOKEN USAGE AFTER LAUNCH DEMAND SURGE",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2097880616041885901"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-10 04:31:48 UTC",
+    "headline": "AXIOS: COXON LEFT ANTHROPIC TWO MONTHS BEFORE ANY EQUITY VESTED",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2097892406549184884"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-10 04:31:48 UTC",
+    "headline": "TSMC MAY HIT 1.4NM MASS PRODUCTION BY END-2027, A YEAR EARLIER THAN PLANNED",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2097855233921892542"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-10 04:31:48 UTC",
+    "headline": "TENCENT-BACKED ENFLAME DEBUTS ON STAR MARKET FRIDAY AFTER 6.12B YUAN IPO",
+    "source": "@DavidKWilliams",
+    "url": "https://x.com/DavidKWilliams/status/2097904468448932021"
   }
 ]
