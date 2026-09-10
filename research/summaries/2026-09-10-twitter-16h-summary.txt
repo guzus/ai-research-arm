@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-10 16:19:47 UTC
+
+CYCLE: DOJ probes Nvidia-Groq license; Cognition ships SWE-2
+
+TOP STORIES:
+• DOJ investigating whether Nvidia structured the Groq license-and-hire to skip merger review [✓]
+• Cognition SWE-2: Kimi K3 post-train at 50.0% FrontierCode 1.1, within 1pt of Fable 5.1 [✓]
+• CUDA 13.4 adds Windows-on-Arm ahead of October RTX Spark PCs [✓]
+
+WATCH: DOJ complaint/fine on Groq; independent SWE-2 bake-off outside Devin
+
+Full update on GitHub.
