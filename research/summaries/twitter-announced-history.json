@@ -2,51 +2,6 @@
   {
     "backfilled": true,
     "category": "model",
-    "delivered_at": "2026-05-07 21:00 UTC",
-    "headline": "GPT-REALTIME-2 SCORES 96.6% ON BIG BENCH AUDIO SPEECH REASONING; #1 CONVERSATIONAL DYNAMICS \u2014 $1.15/HR IN, $4.61/HR OUT",
-    "source": "@ArtificialAnlys",
-    "source_file": "research/summaries/2026-05-07-twitter-21h-headlines.json",
-    "url": "https://x.com/ArtificialAnlys/status/2052486470469140777"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-08 01:00 UTC",
-    "headline": "OPENAI SHIPS GPT-5.5-CYBER TO VETTED DEFENDERS VIA TRUSTED ACCESS FOR CYBER \u2014 MIRRORS ANTHROPIC MYTHOS GATING 8 DAYS AFTER ALTMAN CALLED IT FEAR MARKETING",
-    "source": "@fouadmatin",
-    "source_file": "research/summaries/2026-05-08-twitter-01h-headlines.json",
-    "url": "https://x.com/fouadmatin/status/2052507037674737812"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-08 01:00 UTC",
-    "headline": "AISI TESTING REPORTEDLY SHOWS GPT-5.5 APPROACHING MYTHOS-LEVEL CYBER CAPABILITIES \u2014 12-HOUR REVERSE ENGINEERING TASKS COMPLETED IN 11 MINUTES",
-    "source": "@samsabin923",
-    "source_file": "research/summaries/2026-05-08-twitter-01h-headlines.json",
-    "url": "https://x.com/samsabin923/status/2052517610101891097"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-08 01:00 UTC",
-    "headline": "EMOLLICK ENDORSES MYTHOS \u2014 'NOT MARKETING HYPE'; FIREFOX APRIL BUG-FIX METRIC MULTI-SOURCE VALIDATED, OPEN-MODEL PARITY FORECAST 8 MONTHS",
-    "source": "@emollick",
-    "source_file": "research/summaries/2026-05-08-twitter-01h-headlines.json",
-    "url": "https://x.com/emollick/status/2052519946651947216"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-08 01:00 UTC",
-    "headline": "XAI GROK COMPUTER GA FOR SUPERGROK HEAVY \u2014 FULL FILESYSTEM + CLI ACCESS, CODEBASE REFACTOR, GROK IMAGINE FILE WRITES",
-    "source": "@XFreeze",
-    "source_file": "research/summaries/2026-05-08-twitter-01h-headlines.json",
-    "url": "https://x.com/XFreeze/status/2052485807672316152"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
     "delivered_at": "2026-05-08 01:00 UTC",
     "headline": "TESTINGCATALOG SCOOP \u2014 GROK BUILD CODING DESKTOP APP PREPARING MACOS/WINDOWS/LINUX RELEASE WITH PLANNING MODE, PLUGINS, SKILLS, MCPS, GIT TREE",
     "source": "@testingcatalog",
@@ -24812,5 +24767,40 @@
     "headline": "COHERE SHIPS NORTH SMALL TRANSLATE OPEN WEIGHTS FOR 50+ LANGUAGES",
     "source": "@cohere",
     "url": "https://x.com/cohere/status/2098081558087270736"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-10 20:47:32 UTC",
+    "headline": "ANTHROPIC: ALIBABA HARVESTED 151M CLAUDE EXCHANGES; MOONSHOT AND DEEPSEEK RELAYED CUSTOMERS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2098097512544444447"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-10 20:47:32 UTC",
+    "headline": "OPENAI LAUNCHES CHATGPT FOR FINANCIAL SERVICES WITH MORGAN STANLEY AND EVERCORE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2098118191029624911"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-10 20:47:32 UTC",
+    "headline": "OPENAI TO PAUSE NEW $200 CHATGPT PRO SIGNUPS TO PROTECT ASTRA CAPACITY",
+    "source": "@thsottiaux",
+    "url": "https://x.com/jxnlco/status/2098129044810187000"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-10 20:47:32 UTC",
+    "headline": "GPT-LIVE-1 HITS THE API AT $0.05/MIN WITH FULL-DUPLEX VOICE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2098100519600554330"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-10 20:47:32 UTC",
+    "headline": "CHATGPT WORK SHIPS DATA AGENT FOR REDSHIFT, BIGQUERY, SNOWFLAKE, DATABRICKS",
+    "source": "@ChatGPT",
+    "url": "https://x.com/jxnlco/status/2098097888878379425"
   }
 ]
