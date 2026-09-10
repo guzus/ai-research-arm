@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; SemiAnalysis published the first third-party Ironwood TPUv7 inference numbers, claiming up to 50% better performance per dollar than Blackwell B200/B300.
+description: Hyperscaler behind Gemini; committed €13 billion in Finland — its largest single European investment — for 2027–2028 data centers plus a 22-year Fortum PPA to keep Loviisa nuclear running through 2050.
 created_at: 2026-07-17
-timestamp: 2026-09-08T00:00:00Z
+timestamp: 2026-09-10T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
@@ -350,11 +351,31 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   [[nvidia|Blackwell]]**, publishing the first third-party
   inference numbers for **TPUv7** and claiming **up to 50%
   better performance per dollar than B200/B300** on an
-  Official Preview stack. This is an independent cost
+  Official   Preview stack. This is an independent cost
   print, not a Google launch note, and it sits next to
   Fluidstack's $18B valuation as a Google-chip test bed
   already logged on [[ai-capex]] (SemiAnalysis, Sept 7;
   ARA daily digest 2026-09-08).
+
+## €13 billion in Finland and a 22-year nuclear PPA (2026-09-10)
+
+- **Google committed €13 billion in Finland**, its
+  largest single European investment, as a **two-year
+  capex envelope for 2027–2028** data centers at
+  **Hamina, Kajaani, Muhos and Vaala** — not energized
+  megawatts. A **22-year Fortum PPA** is meant to keep
+  the **Loviisa nuclear plant running through 2050**;
+  that plant employs about **580 people** and supplies
+  **~10% of Finnish electricity**. See [[ai-capex]]
+  (Google Cloud, Reuters; ARA daily digest 2026-09-10).
+- **Five agentic Workspace actions** were announced the
+  same day, including Chat-to-deck, Drive-native
+  spreadsheet build, and Docs-to-branded-deck conversion
+  (Twitter; ARA daily digest 2026-09-10).
+- **Gemini is one of four families named in CISA
+  advisory AA26-251A** as alleged distillation targets
+  since late 2024. See [[federal-ai-policy]] (CISA; ARA
+  daily digest 2026-09-10).
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open 
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
 description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps "possibly pointing to distillation."
 created_at: 2026-07-17
-timestamp: 2026-08-04T00:00:00Z
+timestamp: 2026-09-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
@@ -229,6 +230,16 @@ covering it.
   single-source, no visible filing, no company response, and the report carries
   its own strongest objection (a $3B IPO is hard to square with $3.5B just
   taken privately). See [[ai-capex]] (ARA daily digest 2026-08-04).
+
+- **[[harvey]] named Harvey Tenet as its first in-house
+  model, post-trained from open-weight Kimi K3
+  (2026-09-10).** A $15.5B legal-AI company using K3 as
+  the base — not a Claude reseller default — is the
+  first named vertical product this page can attach to
+  the open weights. Moonshot is also one of six labs
+  named in CISA advisory AA26-251A; see
+  [[federal-ai-policy]] (Harvey, TechCrunch, CISA; ARA
+  daily digest 2026-09-10).
 
 ## Open questions
 
