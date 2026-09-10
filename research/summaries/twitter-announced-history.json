@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-07 18:00 UTC",
-    "headline": "MUSK ON xAI\u2013ANTHROPIC COLOSSUS DEAL: 'WE RESERVE THE RIGHT TO RECLAIM THE COMPUTE IF THEIR AI ENGAGES IN ACTIONS THAT HARM HUMANITY'",
-    "source": "@simonw",
-    "source_file": "research/summaries/2026-05-07-twitter-18h-headlines.json",
-    "url": "https://x.com/simonw/status/2052438764207878431"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-07 18:00 UTC",
-    "headline": "OPENAI\u2013BROADCOM 10GW CHIP DEAL HITS FINANCING SNAG \u2014 $18 BILLION HINGES ON MICROSOFT, BROADCOM UNDERESTIMATED MICROSOFT'S LEVERAGE",
-    "source": "@anissagardizy8",
-    "source_file": "research/summaries/2026-05-07-twitter-18h-headlines.json",
-    "url": "https://x.com/anissagardizy8/status/2052452880649760844"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-07 18:00 UTC",
-    "headline": "PERPLEXITY LAUNCHES PERSONAL COMPUTER AS NATIVE MAC APP TO ALL USERS \u2014 RUNS LOCALLY, ACROSS FILES + APPS + WEB",
-    "source": "@perplexity_ai",
-    "source_file": "research/summaries/2026-05-07-twitter-18h-headlines.json",
-    "url": "https://x.com/AravSrinivas/status/2052450997927317556"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-07 18:00 UTC",
-    "headline": "SCALE AI SWE ATLAS REFACTORING LEADERBOARD \u2014 CLAUDE CODE WITH OPUS 4.7 #1, CODEX WITH GPT-5.5 #2",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-07-twitter-18h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2052422412516339887"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-07 21:00 UTC",
-    "headline": "NVIDIA-IREN STRIKE $2.1B STRATEGIC PARTNERSHIP \u2014 5GW DSX-ALIGNED AI INFRASTRUCTURE, $3.4B AI CLOUD CONTRACT, IREN +27% AH",
-    "source": "@ACInvestorBlog",
-    "source_file": "research/summaries/2026-05-07-twitter-21h-headlines.json",
-    "url": "https://x.com/ACInvestorBlog/status/2052500041894355167"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-07 21:00 UTC",
     "headline": "NVIDIA GRANTED FIVE-YEAR OPTION TO ACQUIRE 30M IREN SHARES AT $70 \u2014 UP TO $2.1B AT FULL EXERCISE",
@@ -24832,5 +24787,40 @@
     "headline": "TENCENT-BACKED ENFLAME DEBUTS ON STAR MARKET FRIDAY AFTER 6.12B YUAN IPO",
     "source": "@DavidKWilliams",
     "url": "https://x.com/DavidKWilliams/status/2097904468448932021"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-10 11:10:29 UTC",
+    "headline": "DEEPSEEK SHIPS V4.1 FLASH \u2014 552B MOE, OPEN WEIGHTS, NATIVE VISION, 1M CONTEXT",
+    "source": "@deepseek_ai",
+    "url": "https://x.com/deepseek_ai/status/2097930608790167907"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-10 11:10:29 UTC",
+    "headline": "DEEPSEEK FLASH CARD NOW $0.003/$0.15/$0.60 OFF-PEAK \u2014 V4 PRO ROUTES TO FLASH SEPT 14",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2097962333767102665"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-10 11:10:29 UTC",
+    "headline": "REUTERS: HUAWEI ASCEND 950DT JUMPS ABOVE 250,000 YUAN ON GREY-MARKET HBM",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2097917661804159158"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-10 11:10:29 UTC",
+    "headline": "TSMC AUGUST REVENUE HITS RECORD NT$514.8B, UP 53.3% YEAR ON YEAR",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2097921040144093335"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-10 11:10:29 UTC",
+    "headline": "MASSACHUSETTS TO REQUIRE CLEAN POWER OR RATEPAYER FUND FOR NEW 25MW+ DATA CENTERS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2097903440706101573"
   }
 ]
