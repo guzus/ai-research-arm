@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-07 21:00 UTC",
-    "headline": "NVIDIA GRANTED FIVE-YEAR OPTION TO ACQUIRE 30M IREN SHARES AT $70 \u2014 UP TO $2.1B AT FULL EXERCISE",
-    "source": "@jermseesghosts",
-    "source_file": "research/summaries/2026-05-07-twitter-21h-headlines.json",
-    "url": "https://x.com/jermseesghosts/status/2052499207555051537"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-07 21:00 UTC",
-    "headline": "OPENAI SHIPS CODEX CHROME EXTENSION \u2014 PARALLEL-TAB BACKGROUND AUTOMATION ON MACOS AND WINDOWS",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-07-twitter-21h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2052480800004956323"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-07 21:00 UTC",
-    "headline": "ANTHROPIC: FIREFOX TEAM FIXED MORE SECURITY BUGS IN APRIL THAN PRIOR 15 MONTHS COMBINED \u2014 WITH CLAUDE MYTHOS PREVIEW",
-    "source": "@alexalbert__",
-    "source_file": "research/summaries/2026-05-07-twitter-21h-headlines.json",
-    "url": "https://x.com/alexalbert__/status/2052468573516513762"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-07 21:00 UTC",
-    "headline": "ANTHROPIC DONATES PETRI ALIGNMENT TOOL TO NEW MERIDIAN LABS NON-PROFIT \u2014 V3.0 SHIPS TODAY",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-07-twitter-21h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052494460966019137"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-07 21:00 UTC",
-    "headline": "ANTHROPIC OPENS HACKERONE SECURITY BUG BOUNTY TO THE PUBLIC \u2014 PREVIOUSLY PRIVATE PROGRAM",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-07-twitter-21h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052466175540629965"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-07 21:00 UTC",
     "headline": "GPT-REALTIME-2 SCORES 96.6% ON BIG BENCH AUDIO SPEECH REASONING; #1 CONVERSATIONAL DYNAMICS \u2014 $1.15/HR IN, $4.61/HR OUT",
@@ -24822,5 +24777,40 @@
     "headline": "MASSACHUSETTS TO REQUIRE CLEAN POWER OR RATEPAYER FUND FOR NEW 25MW+ DATA CENTERS",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2097903440706101573"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-10 16:19:47 UTC",
+    "headline": "DOJ PROBES NVIDIA GROQ LICENSE DEAL AS POSSIBLE ANTITRUST DODGE",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2098046327154258390"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-10 16:19:47 UTC",
+    "headline": "COGNITION SWE-2 HITS 50% FRONTIERCODE 1.1 \u2014 WITHIN 1PT OF FABLE 5.1, 64% CHEAPER",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2098074342382780791"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-10 16:19:47 UTC",
+    "headline": "CUDA 13.4 ADDS WINDOWS ON ARM AHEAD OF OCTOBER RTX SPARK PCS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2098022437237788932"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-10 16:19:47 UTC",
+    "headline": "HUGGING FACE STANDS UP OPEN ALIGNMENT TEAM AFTER OPENAI INCIDENT",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2098080470235762702"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-10 16:19:47 UTC",
+    "headline": "COHERE SHIPS NORTH SMALL TRANSLATE OPEN WEIGHTS FOR 50+ LANGUAGES",
+    "source": "@cohere",
+    "url": "https://x.com/cohere/status/2098081558087270736"
   }
 ]
