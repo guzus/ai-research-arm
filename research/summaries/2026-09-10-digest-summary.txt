@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-10
+
+TOP STORIES:
+• US names DeepSeek, Moonshot, Alibaba, MiniMax, StepFun and Z.AI for industrial-scale frontier-model distillation
+• Anthropic's Coxon quits over self-improving AI; Hubinger puts extinction this decade above 10%
+• Google commits EUR 13B to Finnish AI infrastructure plus a 22-year nuclear PPA
+
+KEY NUMBERS:
+• Harvey $550M at $15.5B; Listen Labs walks away from a signed $1.5B Series C
+• DeepSeek Flash off-peak: $0.003 / $0.15 / $0.60 per Mtok; Epoch: OpenAI 1.74M H100e at end-2025
+• Anthropic extreme 2030 path: GDP +32.4% to $44.4T, labor share 45.2%
+
+TRENDING: HN rotated off Navier-Stokes; Claude "Add to Cart" satire hit 923 pts
+
+Full digest on GitHub.
