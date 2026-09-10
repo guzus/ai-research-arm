@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-10 11:10:29 UTC
+
+CYCLE: DeepSeek ships V4.1 Flash open weights; Chinese AI chips reprice on HBM
+
+TOP STORIES:
+• DeepSeek V4.1 Flash: 552B CED MoE, MIT weights, $0.003/$0.15/$0.60 off-peak card now live [✓]
+• Reuters: Huawei Ascend 950DT indicated above 250,000 yuan (+20–50%) on grey-market HBM [⚠]
+• TSMC August revenue hits record NT$514.8B, +53.3% YoY [✓]
+
+WATCH: Independent V4.1 Flash bake-offs; Sept 14 Pro-to-Flash routing
+
+Full update on GitHub.
