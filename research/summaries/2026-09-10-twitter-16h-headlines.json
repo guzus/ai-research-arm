@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "DOJ PROBES NVIDIA GROQ LICENSE DEAL AS POSSIBLE ANTITRUST DODGE",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2098046327154258390",
+    "category": "breaking"
+  },
+  {
+    "headline": "COGNITION SWE-2 HITS 50% FRONTIERCODE 1.1 — WITHIN 1PT OF FABLE 5.1, 64% CHEAPER",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2098074342382780791",
+    "category": "model"
+  },
+  {
+    "headline": "CUDA 13.4 ADDS WINDOWS ON ARM AHEAD OF OCTOBER RTX SPARK PCS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2098022437237788932",
+    "category": "infra"
+  },
+  {
+    "headline": "HUGGING FACE STANDS UP OPEN ALIGNMENT TEAM AFTER OPENAI INCIDENT",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2098080470235762702",
+    "category": "opensource"
+  },
+  {
+    "headline": "COHERE SHIPS NORTH SMALL TRANSLATE OPEN WEIGHTS FOR 50+ LANGUAGES",
+    "source": "@cohere",
+    "url": "https://x.com/cohere/status/2098081558087270736",
+    "category": "opensource"
+  }
+]
