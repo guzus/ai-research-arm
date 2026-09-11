@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-08 04:00 UTC",
-    "headline": "GOOGLE GEMINI 3.1 FLASH-LITE GA \u2014 $0.25 INPUT / $1.50 OUTPUT PER MILLION TOKENS, HALF GEMINI 3 FLASH PRICING, 1M CONTEXT, MULTIMODAL",
-    "source": "@GoogleAIStudio",
-    "source_file": "research/summaries/2026-05-08-twitter-04h-headlines.json",
-    "url": "https://x.com/GoogleAIStudio/status/2052453828272812310"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-08 04:00 UTC",
-    "headline": "XAI SHIPS GROK VOICE THINK FAST 1.0 FOR CUSTOMER SUPPORT \u2014 VOICE AGENT FOR MULTI-STEP TROUBLESHOOTING + HIGH-VOLUME TOOL CALLS",
-    "source": "@xai",
-    "source_file": "research/summaries/2026-05-08-twitter-04h-headlines.json",
-    "url": "https://x.com/xai/status/2052529102280880234"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-08 04:00 UTC",
-    "headline": "EMOLLICK: PROFESSIONS WITH GUILDS (AMA, BAR) WILL GET PROTECTIVE AI POLICY; CODERS AND CONSULTANTS HAVE NO EQUIVALENT \u2014 WHITE-COLLAR PUSHBACK COMING",
-    "source": "@emollick",
-    "source_file": "research/summaries/2026-05-08-twitter-04h-headlines.json",
-    "url": "https://x.com/emollick/status/2052600102724751399"
-  },
-  {
-    "backfilled": true,
     "category": "opensource",
     "delivered_at": "2026-05-08 04:00 UTC",
     "headline": "VLLM MAINTAINERS SHIP DEEPSEEK V4 DAY-0 SUPPORT PR OVER WEEKEND \u2014 SEMIANALYSIS: \"SPEED IS THE MOAT\"",
@@ -24792,5 +24765,26 @@
     "headline": "SEMIANALYSIS: GB300 NVL72 BACKPLANE 13X PERF/$ VS HOPPER ON AGENTIC INFERENCE",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2098238630015705267"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-11 11:11:02 UTC",
+    "headline": "WIRED: OPENAI ASKED CONGRESS IF COORDINATED FRONTIER SLOWDOWN WOULD BE LEGAL",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2098336357470892199"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-11 11:11:02 UTC",
+    "headline": "CURSORBENCH 4.0 LIVE: FABLE 5.1 MAX 51.8%; MUSE SPARK 1.3 MAX 41.6% AT $2.64/TASK",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2098265572928622916"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-11 11:11:02 UTC",
+    "headline": "GPT-5.3-CODEX-SPARK BEING RETIRED; BANNER SAYS TIME TO MAKE ROOM FOR THE FUTURE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2098360349862789481"
   }
 ]
