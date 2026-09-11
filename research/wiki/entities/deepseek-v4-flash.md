@@ -6,8 +6,9 @@ aliases: ["V4-Flash", "V4-Flash-0731", "DeepSeek-V4-Flash", "DeepSeek V4-Flash-0
 tags: [frontier-model, open-weights, chinese-llm, moe, agentic-coding, mit-license]
 description: DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.
 created_at: 2026-08-01
-timestamp: 2026-08-22T00:00:00Z
+timestamp: 2026-09-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
@@ -195,3 +196,17 @@ prices that assume enormous served volume.
   V4-Flash-Vision-Exp**, DeepSeek's first image-capable model, but the "exp"
   experimental suffix and its silent open-weights posture keep the question open
   for the GA line.
+
+## Successor: V4.1 Flash ships as a new artifact (2026-09-11)
+
+[[deepseek]] shipped **[[deepseek-v4-1-flash|V4.1 Flash]]** — a
+**552B MIT-licensed multimodal MoE** with a new causal
+encoder–decoder stack, not a re-post-train of this 284B/13B
+model. The vision-deferred-to-4.1 question above is answered
+by a successor, not by this SKU. Artificial Analysis scored
+the new Flash at **40**, four points above V4 Pro 0813 and
+below this page's recorded V4-Flash-0731 score of **50**;
+the indexes are not assumed comparable across weeks. The
+API id `deepseek-flash` and the 2026-09-14 Pro-to-Flash
+route live on the successor page (DeepSeek, Artificial
+Analysis; ARA daily digest 2026-09-11).

@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; alignment lead Evan Hubinger put personal extinction risk this decade above 10% after researcher Jacob Coxon quit over self-improvement, and the lab walked back its July simulation claim.
+description: AI safety lab behind Claude; published distillation volume tables printing 151 million Alibaba exchanges and accusing Moonshot and DeepSeek of silently relaying customer prompts to Opus.
 created_at: 2026-05-24
-timestamp: 2026-09-10T00:00:00Z
+timestamp: 2026-09-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
@@ -1551,3 +1552,26 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   distillation of Claude, GPT, Gemini and Grok since late
   2024. See [[federal-ai-policy]] (CISA, China MFA; ARA
   daily digest 2026-09-10).
+
+## Distillation volume tables and a silent-relay charge (2026-09-11)
+
+- **Anthropic quantified Chinese Claude distillation**,
+  printing **151 million Alibaba exchanges** and covering
+  December 2025–August 2026 misuse across seven harm
+  areas. [[alibaba]] is the largest campaign it will
+  print. The tables are the statute-shaped follow-on to
+  yesterday's **AA26-251A** naming (Anthropic, TechCrunch;
+  ARA daily digest 2026-09-11).
+- **Moonshot and [[deepseek]] are accused of serving
+  Claude to their own users without saying so** —
+  silently relaying customer prompts to
+  [[claude-opus-5|Opus]]. The charge is about those
+  labs' customers, including, Anthropic writes, a
+  **Russian defense-agency credential** and **PRC police
+  case-management traffic**. No named-lab technical
+  rebuttal cleared the local-source bar. The same
+  morning DeepSeek shipped
+  [[deepseek-v4-1-flash|V4.1 Flash]]; the MIT drop
+  and the relay charge are not the same fact. See
+  [[moonshot-kimi-k3]] and [[federal-ai-policy]]
+  (Anthropic; ARA daily digest 2026-09-11).
