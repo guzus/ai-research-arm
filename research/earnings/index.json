@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 14,
+  "count": 15,
   "events": [
+    {
+      "file": "2026-09-10-ORCL-FY27Q1.md",
+      "date": "2026-09-10",
+      "ticker": "ORCL",
+      "period": "FY27Q1",
+      "issuer": "Oracle Corporation",
+      "form": "8-K",
+      "accession": "0001193125-26-387905",
+      "transcript": false
+    },
     {
       "file": "2026-09-02-AVGO-FY26Q3.md",
       "date": "2026-09-02",
