@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "THE INFORMATION: INSTINCT SHOPS $1B FOLLOW-ON THAT COULD VALUE THE ASSISTANT AT $10B+",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2098418636947923125",
+    "category": "business"
+  },
+  {
+    "headline": "LEANSTRAL 1.5 + KIMI K3 HIT 82.61% ON ARXIVLEAN VS GPT-6 ASTRA 65.22% AT 10M TOKENS",
+    "source": "@j_dekoninck",
+    "url": "https://x.com/j_dekoninck/status/2098384615501152602",
+    "category": "research"
+  },
+  {
+    "headline": "DEEPSEEK V4.1 FLASH TOPS LIVEBENCH AGENTIC CODING AT 77.3; #5 OVERALL AT 81.1",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2098426024958562335",
+    "category": "model"
+  },
+  {
+    "headline": "DEEPMIND SHIPS LOVE, RENDERED — POSE-CONTROL RECONSTRUCTION OF AN UNFILMED MEETING",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2098417966647808219",
+    "category": "research"
+  },
+  {
+    "headline": "HUGGING FACE OPENS HUTTER PRIZE AGENT SWARM FOR ENWIK8 COMPRESSION",
+    "source": "@mervenoyann",
+    "url": "https://x.com/mervenoyann/status/2098396300785967129",
+    "category": "opensource"
+  },
+  {
+    "headline": "THE INFORMATION: 300 SPACEX ENGINEERS JOIN DATA-CENTER BUILD AS MANAGEMENT OVERHAULS SITES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2098396282410692688",
+    "category": "infra"
+  }
+]
