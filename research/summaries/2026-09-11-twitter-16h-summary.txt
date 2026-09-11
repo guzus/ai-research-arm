@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-11 16:23:49 UTC
+
+CYCLE: Instinct shops a $1B follow-on at ~$10B; Leanstral+K3 hit 82.61% on ArXivLean
+
+TOP STORIES:
+• TI: Instinct looking to raise $1B after a capacity crunch; ~$10B mark is indicated, not closed [⚠]
+• Leanstral 1.5 + Kimi K3 82.61% on ArXivLean vs GPT-6 Astra 65.22% at ~10M vs 215k tokens [✓]
+• LiveBench: V4.1 Flash #5 overall (81.1), #1 agentic coding (77.3) — four Python items [⚠]
+
+WATCH: Named Instinct lead/term sheet, or Grok 4.7 actually shipping on Sept 12
+
+Full update on GitHub.
