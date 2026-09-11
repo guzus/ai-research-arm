@@ -2,51 +2,6 @@
   {
     "backfilled": true,
     "category": "model",
-    "delivered_at": "2026-05-08 01:00 UTC",
-    "headline": "TESTINGCATALOG SCOOP \u2014 GROK BUILD CODING DESKTOP APP PREPARING MACOS/WINDOWS/LINUX RELEASE WITH PLANNING MODE, PLUGINS, SKILLS, MCPS, GIT TREE",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-08-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2052532305990672670"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-08 01:00 UTC",
-    "headline": "SK HYNIX SAYS PRODUCTION CAPACITY 'ESSENTIALLY ZERO' \u2014 BIG TECH OFFERING TO FUND EUV TOOLS AND DEDICATED MEMORY LINES; YONGIN PHASE 1 TARGETED",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-08-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2052529725927756104"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-08 01:00 UTC",
-    "headline": "WHITE HOUSE OFFICIAL VIA POLITICO \u2014 AI-REGULATION HAWKS 'A MINORITY OF THE BUNCH'; ADMINISTRATION PURSUING PARTNERSHIP NOT REGULATION",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-08-twitter-01h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2052541921185485214"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-08 04:00 UTC",
-    "headline": "SAM ALTMAN ENDORSES GPT-5.5-CYBER ROLLOUT \u2014 \"IMPORTANT TO START WORK ON THIS QUICKLY,\" 9 DAYS POST \"FEAR MARKETING\" CRITIQUE OF ANTHROPIC MYTHOS",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-08-twitter-04h-headlines.json",
-    "url": "https://x.com/sama/status/2052558319940944256"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-08 04:00 UTC",
-    "headline": "WIRED REVEALS GOOGLE EMAIL CHAIN UNCOVERED IN MUSK V. ALTMAN TRIAL \u2014 GOOGLE WAS \"SKEPTICAL OF OPENAI BUT FEARED PUSHING IT TOWARD AMAZON\"",
-    "source": "@WIRED",
-    "source_file": "research/summaries/2026-05-08-twitter-04h-headlines.json",
-    "url": "https://x.com/WIRED/status/2052565165703360887"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
     "delivered_at": "2026-05-08 04:00 UTC",
     "headline": "GOOGLE GEMINI 3.1 FLASH-LITE GA \u2014 $0.25 INPUT / $1.50 OUTPUT PER MILLION TOKENS, HALF GEMINI 3 FLASH PRICING, 1M CONTEXT, MULTIMODAL",
     "source": "@GoogleAIStudio",
@@ -24802,5 +24757,40 @@
     "headline": "CHATGPT WORK SHIPS DATA AGENT FOR REDSHIFT, BIGQUERY, SNOWFLAKE, DATABRICKS",
     "source": "@ChatGPT",
     "url": "https://x.com/jxnlco/status/2098097888878379425"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-11 04:29:42 UTC",
+    "headline": "ALTMAN TELLS STAFF OPENAI MAY PACE FRONTIER DEVELOPMENT AND WANTS OTHER LABS TO JOIN",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2098215863073792135"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-11 04:29:42 UTC",
+    "headline": "SAKANA SHIPS FUGU MAX AT $2/$6 AND ULTRA V2; CHARTOGRAPHY 48.3 WITHOUT ASTRA/FABLE",
+    "source": "@SakanaAILabs",
+    "url": "https://x.com/SakanaAILabs/status/2098233826816205275"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-11 04:29:42 UTC",
+    "headline": "WSJ: PENTAGON IN TALKS ON $5B LOAN TO AI INFRA STARTUP FLUIDSTACK",
+    "source": "@staunovo",
+    "url": "https://x.com/staunovo/status/2098266707370393623"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-11 04:29:42 UTC",
+    "headline": "VALS: GPT-6 ASTRA FIRST TO REACH MINECRAFT NETHER FORTRESS IN LIVE EVAL",
+    "source": "@ValsAI",
+    "url": "https://x.com/ValsAI/status/2098193079178322196"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-11 04:29:42 UTC",
+    "headline": "SEMIANALYSIS: GB300 NVL72 BACKPLANE 13X PERF/$ VS HOPPER ON AGENTIC INFERENCE",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2098238630015705267"
   }
 ]
