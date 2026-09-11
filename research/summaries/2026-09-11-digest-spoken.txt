@@ -1,0 +1,10 @@
+Speaker 1: Friday, September eleventh, twenty twenty-six.
+Speaker 2: [high_energy] DeepSeek shipped V four point one Flash, an MIT-licensed five hundred fifty-two billion mixture-of-experts model, with a live off-peak card at zero point zero zero three dollars, fifteen cents, and sixty cents.
+Speaker 1: On the policy front, Anthropic says Alibaba logged [emphasis] one hundred fifty-one million [/emphasis] Claude exchanges, while Moonshot and DeepSeek silently relayed customer prompts.
+Speaker 2: That's the first time we've seen that volume of leaked traffic called out in public.
+Speaker 1: OpenAI launched ChatGPT for Financial Services and will pause new [emphasis] two hundred dollar [/emphasis] Pro signups.
+Speaker 2: Worth noting that Oracle printed first-quarter GAAP earnings of one dollar fifty-six, up fifty-five percent, and guided cloud revenue up [emphasis] sixty-four to seventy percent [/emphasis] in constant currency.
+Speaker 1: Some quick numbers: DeepSeek's Flash sits around forty on the A A Index, with a first-party DeepSWE of seventy-four point two.
+Speaker 2: Cognition's SWE two scored fifty even on FrontierCode versus Fable five point one at fifty point nine, and Huawei's nine fifty D T lists above two hundred fifty thousand yen.
+Speaker 1: Hacker News closed on Andreas Thom asking whether OpenAI trained on unpublished math, [dramatic_pause] five hundred twenty-one points and five hundred thirty-five comments.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
