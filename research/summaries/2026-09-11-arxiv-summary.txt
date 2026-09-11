@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-11
+
+TOP 5 PAPERS:
+• T1 — 122B MoE terminal agent: 64.0% TB2.1; 27.9% LHT beats GPT-5.4
+• MoE + repeated data — sparse models overfit faster; 4× vs dense 8×
+• SenseNova-U1.5 — 8B-MoT encoder/VAE-free unified; native 4K + OPD
+• SpecGuard — speculative-decode accept-rate is a free backdoor detector
+• Looped Flows — local denoising recurrence; 58.8% ARC-AGI-1, 12.2% AGI-2
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
