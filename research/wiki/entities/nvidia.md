@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: Dominant AI-accelerator supplier; Jensen Huang declared AGI has arrived, putting Astra's training cluster at ~100K+ Grace Blackwell NVLink72 and promising 400K GPUs next, while NVIDIA is reported in talks on a $2.5B Thinking Machines stake.
+description: Dominant AI-accelerator supplier; the DOJ asked whether the December Groq license-and-hire was built to skip a merger filing, while Jensen Huang forecast about 70% growth next year.
 created_at: 2026-06-05
-timestamp: 2026-09-07T00:00:00Z
+timestamp: 2026-09-11T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
@@ -464,4 +465,33 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   reported investor (up to **$10B**) while Anthropic buys
   capacity. See [[ai-capex]] (The Information via Twitter; ARA
   daily digest 2026-09-07).
+
+## DOJ probes the Groq license; Huang forecasts another year of plenty (2026-09-11)
+
+- **The DOJ issued a formal information request** on the
+  December [[groq]] package — a non-exclusive
+  license-and-hire that moved inference-chip IP and
+  founder Jonathan Ross **without an HSR filing**.
+  Reuters puts the package at **$17B**; Bloomberg at
+  **$20B**. The question is whether the structure was
+  built to skip the merger filing a straight
+  acquisition would have required. Forcing an unwind
+  is described as unlikely; a **civil penalty** is the
+  nearer risk. NVIDIA called the story *"the American
+  system working as designed."* See
+  [[model-specific-silicon]] (NYT, Reuters, Bloomberg;
+  ARA daily digest 2026-09-11).
+- **Jensen Huang told TechCrunch NVIDIA should grow
+  about 70% next year** and denied that its customer
+  deals are circular. Treat the growth line as a
+  **founder forecast, not a filed guide** (TechCrunch;
+  ARA daily digest 2026-09-11).
+- **NVIDIA and [[palantir]] teamed on supply chains**,
+  starting on NVIDIA's own million-part operation,
+  with Nemotron models in Foundry and cuOpt on
+  scenario planning. CUDA Toolkit **13.4** added
+  Windows-on-Arm plus a preview Rubin compute
+  capability **107** ahead of RTX Spark PCs dated to
+  October (The Decoder, NVIDIA; ARA daily digest
+  2026-09-11).
 

@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; Paul Christiano joined the OpenAI Foundation board as the lab published a Defense Factory playbook and positioned GPT-6 Astra for work.
+description: Frontier lab behind the GPT family; paused new Pro signups after Astra demand, launched ChatGPT for Financial Services, and faced a Navier–Stokes training-data dispute that topped Hacker News.
 created_at: 2026-05-30
-timestamp: 2026-09-10T00:00:00Z
+timestamp: 2026-09-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
@@ -1218,6 +1219,65 @@ materially reshape how the lab is positioned heading into its IPO window:
   alleged industrial-scale distillation of Claude, GPT,
   Gemini and Grok. See [[federal-ai-policy]] and
   [[deepseek]] (CISA; ARA daily digest 2026-09-10).
+
+## Pro pause, Financial Services, and a Navier–Stokes honesty fight (2026-09-11)
+
+- **OpenAI will pause new Pro signups**, dropping
+  yesterday's "might" after [[astra]] demand. The freeze
+  is scoped to the **$200 tier** so existing users keep
+  Astra. The verb is still *"going to pause,"* and a
+  closed checkout was not shown at the 00:00 UTC close
+  (TechCrunch, Twitter; ARA daily digest 2026-09-11).
+- **ChatGPT for Financial Services launched** the same
+  afternoon, pairing Astra with Daloopa, PitchBook,
+  LSEG, Crunchbase and Quartr. **Morgan Stanley** and
+  **Evercore** are design partners. No price, seat
+  count, or claim that either firm has put it into
+  production (OpenAI, Reuters; ARA daily digest
+  2026-09-11).
+- **GPT-Live-1 entered the API** as a full-duplex
+  speech layer at **$0.05/min** that can delegate
+  reasoning to Astra. OpenAI's Full Duplex Bench print
+  is **80.1 vs 45.4** for GPT-Realtime-2.1. Epoch said
+  Astra **saturated FrontierMath Tier 4**, solving the
+  last problem in a set that opened at 5% on 2025-07-11
+  (OpenAI, The Decoder, Epoch AI; ARA daily digest
+  2026-09-11).
+- **Andreas Thom of TU Dresden called OpenAI "plainly
+  dishonest"** after Mark Sellke answered *"that did
+  not happen"* about ChatGPT chats on the expander
+  matching problem. Thom now reads that line as
+  covering only direct access, once the Navier–Stokes
+  note admitted **de-identified product data cannot be
+  ruled out**. He opted out of "Improve the model for
+  everyone" on **2026-06-29**; the toggle is
+  unauditable from outside. The thread closed as both
+  the **#1 AI story and the most-commented HN item
+  (521 pts / 535 comments)**. Ethan Mollick put the
+  Navier–Stokes run at **130 billion output tokens**.
+  See [[verification-bottleneck]] and [[astra]]
+  (Hacker News, Bluesky; ARA daily digest 2026-09-11).
+- **OpenAI asked Congress to act before adjournment**
+  and newly endorsed four California bills on Newsom's
+  desk — **SB 813, AB 1405, SB 1119 and AB 1864** —
+  *"after reconsidering in light of the recent jump in
+  capabilities."* No named Senate or House vehicle is
+  attached. OpenAI and GSA also expanded government
+  access: **$0 license fees, 50% off usage**, and
+  expanded cyber-defense support. See
+  [[california-ai-regulation]] and
+  [[federal-ai-policy]] (OpenAI; ARA daily digest
+  2026-09-11).
+- **Two product surfaces shipped the same day:** a
+  ChatGPT Work Data agent that queries approved
+  warehouses (Redshift, BigQuery, Snowflake,
+  Databricks, MongoDB, ClickHouse, Datadog) via
+  `@Data`, and documented **Agents API** — a managed
+  Codex harness where OpenAI owns sessions,
+  orchestration and recovery. The worked example uses
+  `gpt-6-astra` and up to four concurrent subagents;
+  **US data residency only; not ZDR-eligible**
+  (OpenAI, HN; ARA daily digest 2026-09-11).
 
 ## Open questions
 

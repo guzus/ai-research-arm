@@ -4,10 +4,11 @@ title: Groq
 type: entity
 aliases: [Groq, "Groq Inc.", "@GroqInc", "Jonathan Ross"]
 tags: [inference, ai-chips, accelerator, model-specific-silicon]
-description: AI-inference-chip startup that raised $350M at a $3.5B valuation (2026-08-18), roughly half its September 2025 mark, after NVIDIA licensed its LPU architecture and absorbed founder Jonathan Ross; its Groq 3 LPX racks — the first shipping product of the Nvidia–Groq deal — entered full production with Nebius as launch cloud (2026-08-25).
+description: AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.
 created_at: 2026-08-18
-timestamp: 2026-08-25T00:00:00Z
+timestamp: 2026-09-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
 ---
@@ -58,3 +59,20 @@ offering.
   licensing-vs-acquisition ambiguity this page flagged at the August raise now
   has a shipping artifact attached to it (@GroqInc, @nvidianewsroom; ARA daily
   digest 2026-08-25). See [[model-specific-silicon]] and [[nebius]].
+
+## DOJ information request on the December package (2026-09-11)
+
+- **The licensing-vs-acquisition ambiguity is now a
+  formal antitrust question.** The DOJ issued an
+  information request asking whether
+  [[nvidia|NVIDIA]]'s December non-exclusive
+  license-and-hire — which moved LPU IP and founder
+  **Jonathan Ross** without an HSR filing — was built
+  to skip the merger filing a straight acquisition
+  would have required. Reuters puts the package at
+  **$17B**; Bloomberg at **$20B**. Forcing an unwind
+  is described as unlikely; a civil penalty is the
+  nearer risk. NVIDIA called the story *"the American
+  system working as designed."* See
+  [[federal-ai-policy]] (NYT, Reuters, Bloomberg; ARA
+  daily digest 2026-09-11).

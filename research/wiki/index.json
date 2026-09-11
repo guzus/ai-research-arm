@@ -479,11 +479,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; alignment lead Evan Hubinger put personal extinction risk this decade above 10% after researcher Jacob Coxon quit over self-improvement, and the lab walked back its July simulation claim.",
-      "description": "AI safety lab behind Claude; alignment lead Evan Hubinger put personal extinction risk this decade above 10% after researcher Jacob Coxon quit over self-improvement, and the lab walked back its July simulation claim.",
+      "summary": "AI safety lab behind Claude; published distillation volume tables printing 151 million Alibaba exchanges and accusing Moonshot and DeepSeek of silently relaying customer prompts to Opus.",
+      "description": "AI safety lab behind Claude; published distillation volume tables printing 151 million Alibaba exchanges and accusing Moonshot and DeepSeek of silently relaying customer prompts to Opus.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-10",
-      "timestamp": "2026-09-10T00:00:00Z",
+      "updated_at": "2026-09-11",
+      "timestamp": "2026-09-11T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -508,6 +508,7 @@
         "cognition-ai",
         "cursor",
         "deepseek",
+        "deepseek-v4-1-flash",
         "dynamic-workflows",
         "etched",
         "eu-ai-regulation",
@@ -559,6 +560,7 @@
         "cognition-ai",
         "cursor",
         "deepseek",
+        "deepseek-v4-1-flash",
         "dynamic-workflows",
         "eu-ai-regulation",
         "evo-genome-models",
@@ -1124,6 +1126,7 @@
         "claude-fable-5",
         "claude-opus-4-8",
         "deepseek",
+        "deepseek-v4-1-flash",
         "gemini-3-8-flash",
         "google",
         "meta",
@@ -1377,11 +1380,11 @@
         "foundation-models",
         "commercialization"
       ],
-      "summary": "Hangzhou Chinese frontier lab; named in CISA/NSA/FBI advisory AA26-251A as one of six alleged industrial distillers, cut Flash cache-hit prices 60% off-peak, and tapped CITIC for a STAR listing.",
-      "description": "Hangzhou Chinese frontier lab; named in CISA/NSA/FBI advisory AA26-251A as one of six alleged industrial distillers, cut Flash cache-hit prices 60% off-peak, and tapped CITIC for a STAR listing.",
+      "summary": "Hangzhou Chinese frontier lab; shipped MIT-licensed V4.1 Flash (552B multimodal MoE) and was accused by Anthropic of silently relaying customer prompts to Opus, a day after CISA named it.",
+      "description": "Hangzhou Chinese frontier lab; shipped MIT-licensed V4.1 Flash (552B multimodal MoE) and was accused by Anthropic of silently relaying customer prompts to Opus, a day after CISA named it.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-09-10",
-      "timestamp": "2026-09-10T00:00:00Z",
+      "updated_at": "2026-09-11",
+      "timestamp": "2026-09-11T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -1398,6 +1401,7 @@
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
+        "deepseek-v4-1-flash",
         "deepseek-v4-flash",
         "federal-ai-policy",
         "gemma-4",
@@ -1415,6 +1419,7 @@
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "deepseek-v4-1-flash",
         "deepseek-v4-flash",
         "federal-ai-policy",
         "gemma-4",
@@ -1445,6 +1450,46 @@
       }
     },
     {
+      "slug": "deepseek-v4-1-flash",
+      "title": "DeepSeek V4.1 Flash",
+      "type": "entity",
+      "tags": [
+        "frontier-model",
+        "open-weights",
+        "chinese-llm",
+        "moe",
+        "multimodal",
+        "mit-license"
+      ],
+      "summary": "DeepSeek's 552B MIT-licensed multimodal MoE with a causal encoder–decoder stack; weights, tech report and the $0.003/$0.15/$0.60 off-peak card shipped together on 2026-09-11, scoring 40 on Artificial Analysis.",
+      "description": "DeepSeek's 552B MIT-licensed multimodal MoE with a causal encoder–decoder stack; weights, tech report and the $0.003/$0.15/$0.60 off-peak card shipped together on 2026-09-11, scoring 40 on Artificial Analysis.",
+      "created_at": "2026-09-11",
+      "updated_at": "2026-09-11",
+      "timestamp": "2026-09-11T00:00:00Z",
+      "file": "entities/deepseek-v4-1-flash.md",
+      "aliases": [
+        "DeepSeek V4.1 Flash",
+        "V4.1 Flash",
+        "DeepSeek-V4.1-Flash",
+        "deepseek-flash"
+      ],
+      "outbound": [
+        "anthropic",
+        "claude-opus-5",
+        "deepseek",
+        "deepseek-v4-flash",
+        "federal-ai-policy",
+        "moonshot-kimi-k3",
+        "open-weights"
+      ],
+      "inbound": [
+        "anthropic",
+        "deepseek",
+        "deepseek-v4-flash",
+        "open-weights"
+      ]
+    },
+    {
       "slug": "deepseek-v4-flash",
       "title": "DeepSeek V4-Flash-0731",
       "type": "entity",
@@ -1459,8 +1504,8 @@
       "summary": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.",
       "description": "DeepSeek's 284B-total / 13B-active MoE model with 1M context — API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis and relayed as undercutting Claude Fable 5 by 105× on cost per task.",
       "created_at": "2026-08-01",
-      "updated_at": "2026-08-22",
-      "timestamp": "2026-08-22T00:00:00Z",
+      "updated_at": "2026-09-11",
+      "timestamp": "2026-09-11T00:00:00Z",
       "file": "entities/deepseek-v4-flash.md",
       "aliases": [
         "V4-Flash",
@@ -1472,6 +1517,7 @@
         "ai-capex",
         "claude-fable-5",
         "deepseek",
+        "deepseek-v4-1-flash",
         "federal-ai-policy",
         "gemini-3-6-flash",
         "gpt-5-6",
@@ -1484,6 +1530,7 @@
       "inbound": [
         "astra",
         "deepseek",
+        "deepseek-v4-1-flash",
         "eu-ai-regulation",
         "gpt-5-6",
         "moonshot-kimi-k3",
@@ -1832,11 +1879,13 @@
         "claude-science",
         "claude-sonnet-5",
         "deepseek",
+        "deepseek-v4-1-flash",
         "deepseek-v4-flash",
         "eu-ai-regulation",
         "evo-genome-models",
         "google",
         "gpt-5-6",
+        "groq",
         "john-jumper",
         "lifescibench",
         "meituan-longcat-2",
@@ -2458,11 +2507,11 @@
         "accelerator",
         "model-specific-silicon"
       ],
-      "summary": "AI-inference-chip startup that raised $350M at a $3.5B valuation (2026-08-18), roughly half its September 2025 mark, after NVIDIA licensed its LPU architecture and absorbed founder Jonathan Ross; its Groq 3 LPX racks — the first shipping product of the Nvidia–Groq deal — entered full production with Nebius as launch cloud (2026-08-25).",
-      "description": "AI-inference-chip startup that raised $350M at a $3.5B valuation (2026-08-18), roughly half its September 2025 mark, after NVIDIA licensed its LPU architecture and absorbed founder Jonathan Ross; its Groq 3 LPX racks — the first shipping product of the Nvidia–Groq deal — entered full production with Nebius as launch cloud (2026-08-25).",
+      "summary": "AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.",
+      "description": "AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.",
       "created_at": "2026-08-18",
-      "updated_at": "2026-08-25",
-      "timestamp": "2026-08-25T00:00:00Z",
+      "updated_at": "2026-09-11",
+      "timestamp": "2026-09-11T00:00:00Z",
       "file": "entities/groq.md",
       "aliases": [
         "Groq",
@@ -2472,6 +2521,7 @@
       ],
       "outbound": [
         "amd",
+        "federal-ai-policy",
         "model-specific-silicon",
         "nebius",
         "nvidia",
@@ -3375,6 +3425,7 @@
         "anthropic",
         "claude-opus-5",
         "deepseek",
+        "deepseek-v4-1-flash",
         "deepseek-v4-flash",
         "federal-ai-policy",
         "gemini-3-5-pro",
@@ -3679,11 +3730,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "Dominant AI-accelerator supplier; Jensen Huang declared AGI has arrived, putting Astra's training cluster at ~100K+ Grace Blackwell NVLink72 and promising 400K GPUs next, while NVIDIA is reported in talks on a $2.5B Thinking Machines stake.",
-      "description": "Dominant AI-accelerator supplier; Jensen Huang declared AGI has arrived, putting Astra's training cluster at ~100K+ Grace Blackwell NVLink72 and promising 400K GPUs next, while NVIDIA is reported in talks on a $2.5B Thinking Machines stake.",
+      "summary": "Dominant AI-accelerator supplier; the DOJ asked whether the December Groq license-and-hire was built to skip a merger filing, while Jensen Huang forecast about 70% growth next year.",
+      "description": "Dominant AI-accelerator supplier; the DOJ asked whether the December Groq license-and-hire was built to skip a merger filing, while Jensen Huang forecast about 70% growth next year.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-09-07",
-      "timestamp": "2026-09-07T00:00:00Z",
+      "updated_at": "2026-09-11",
+      "timestamp": "2026-09-11T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -3719,6 +3770,7 @@
         "neocloud",
         "open-weights",
         "openai",
+        "palantir",
         "perplexity",
         "poolside",
         "safe-superintelligence",
@@ -3823,11 +3875,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash gains force — now including Z.ai's downloadable GLM-5.3 flagship (2026-08-29, the day's top HN AI thread) and Tencent's Hunyuan Hy4 preview (770B/49B-active, weights promised), after Meta's Apache-2.0 Muse Glimmer return, Alibaba's first Max-class Qwen, and Vercel gateway data putting open tokens at 62%.",
-      "description": "The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash gains force — now including Z.ai's downloadable GLM-5.3 flagship (2026-08-29, the day's top HN AI thread) and Tencent's Hunyuan Hy4 preview (770B/49B-active, weights promised), after Meta's Apache-2.0 Muse Glimmer return, Alibaba's first Max-class Qwen, and Vercel gateway data putting open tokens at 62%.",
+      "summary": "The 2026 storyline of open-weight models closing on frontier capability; DeepSeek's MIT-licensed V4.1 Flash (552B multimodal MoE) shipped 2026-09-11 and took the day's largest Hacker News thread.",
+      "description": "The 2026 storyline of open-weight models closing on frontier capability; DeepSeek's MIT-licensed V4.1 Flash (552B multimodal MoE) shipped 2026-09-11 and took the day's largest Hacker News thread.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-09-10",
-      "timestamp": "2026-09-10T00:00:00Z",
+      "updated_at": "2026-09-11",
+      "timestamp": "2026-09-11T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -3845,6 +3897,7 @@
         "claude-opus-4-8",
         "claude-sonnet-5",
         "deepseek",
+        "deepseek-v4-1-flash",
         "deepseek-v4-flash",
         "federal-ai-policy",
         "gemma-4",
@@ -3882,6 +3935,7 @@
         "claude-fable-5",
         "claude-sonnet-5",
         "deepseek",
+        "deepseek-v4-1-flash",
         "deepseek-v4-flash",
         "eu-ai-regulation",
         "federal-ai-policy",
@@ -3935,11 +3989,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; Paul Christiano joined the OpenAI Foundation board as the lab published a Defense Factory playbook and positioned GPT-6 Astra for work.",
-      "description": "Frontier lab behind the GPT family; Paul Christiano joined the OpenAI Foundation board as the lab published a Defense Factory playbook and positioned GPT-6 Astra for work.",
+      "summary": "Frontier lab behind the GPT family; paused new Pro signups after Astra demand, launched ChatGPT for Financial Services, and faced a Navier–Stokes training-data dispute that topped Hacker News.",
+      "description": "Frontier lab behind the GPT family; paused new Pro signups after Astra demand, launched ChatGPT for Financial Services, and faced a Navier–Stokes training-data dispute that topped Hacker News.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-10",
-      "timestamp": "2026-09-10T00:00:00Z",
+      "updated_at": "2026-09-11",
+      "timestamp": "2026-09-11T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4195,7 +4249,8 @@
         "openai"
       ],
       "inbound": [
-        "ai-capex"
+        "ai-capex",
+        "nvidia"
       ],
       "market": {
         "ticker": "PLTR",
@@ -4898,11 +4953,11 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim (10k agents, Lean on Astra) is the latest checkable artifact still awaiting Clay and journal review.",
-      "description": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim (10k agents, Lean on Astra) is the latest checkable artifact still awaiting Clay and journal review.",
+      "summary": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim is now also a training-data honesty fight after Andreas Thom called the lab \"plainly dishonest.\"",
+      "description": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim is now also a training-data honesty fight after Andreas Thom called the lab \"plainly dishonest.\"",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-09",
-      "timestamp": "2026-09-09T00:00:00Z",
+      "updated_at": "2026-09-11",
+      "timestamp": "2026-09-11T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -5344,8 +5399,12 @@
     "deepseek ai": "deepseek",
     "deepseek v4 pro": "deepseek",
     "deepseek v4-flash-0731": "deepseek-v4-flash",
+    "deepseek v4.1 flash": "deepseek-v4-1-flash",
+    "deepseek-flash": "deepseek-v4-1-flash",
     "deepseek-v4": "deepseek",
+    "deepseek-v4-1-flash": "deepseek-v4-1-flash",
     "deepseek-v4-flash": "deepseek-v4-flash",
+    "deepseek-v4.1-flash": "deepseek-v4-1-flash",
     "dell": "dell",
     "dell inc.": "dell",
     "dell technologies": "dell",
@@ -5706,6 +5765,7 @@
     "unitree robotics co.": "unitree",
     "v4-flash": "deepseek-v4-flash",
     "v4-flash-0731": "deepseek-v4-flash",
+    "v4.1 flash": "deepseek-v4-1-flash",
     "verification bottleneck": "verification-bottleneck",
     "verification-bottleneck": "verification-bottleneck",
     "volta": "volta-infra",
@@ -5737,6 +5797,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-09-11",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-11 digest (no model tickets with updated_at today or yesterday). Created 1 (deepseek-v4-1-flash — 552B MIT-licensed multimodal MoE, CED stack, AA 40, live $0.003/$0.15/$0.60 card). Updated 8 (deepseek — V4.1 Flash ship + Anthropic silent-relay charge; deepseek-v4-flash — successor note; anthropic — 151M Alibaba distillation tables + Moonshot/DeepSeek Opus relay; openai — Pro pause + Financial Services + GPT-Live-1 + Thom/Sellke NS fight + CA bills; nvidia — DOJ Groq RFI + Huang 70% forecast; groq — same RFI on the December license-and-hire; verification-bottleneck — Thom \"plainly dishonest\" + unauditable opt-out; open-weights — V4.1 Flash MIT drop). Skipped for budget: Cognition SWE-2, Microsoft 38 GW, Oracle FY27Q1, Muse iOS #2, Huawei Ascend markup, federal-ai-policy / california-ai-regulation / ai-capex / alibaba / moonshot-kimi-k3 increments, Maven Robotics, Pocket FM, Enflame debut, Together AI preemptible, arXiv highlights."
+    },
     {
       "date": "2026-09-10",
       "op": "ingest",
@@ -5831,11 +5896,6 @@
       "date": "2026-08-20",
       "op": "ingest",
       "summary": "Ingested the 2026-08-20 digest + 2026-08-19-updated model tickets (protein binders, cerebras cs-4, GLM-5.3, qwen3.8-27b, etched funding, claude code /design, claude fable 5.1, anthropic IPO, openai RL-pause). Created 3 (fractile — Bloomberg-confirmed Anthropic inference-chip supplier, first named-outlet confirmation that Anthropic buys startup silicon, in talks >6× its May valuation; unitree — Shanghai debut +629%, the first mainland humanoid-robot listing pricing the category near $54B on 73.6% research/education revenue; ornith-1-5 — MIT open 9B/35B/397B family claiming Opus 4.8-class scores from self-writing-RL training, every number self-reported with no independent eval and an amplification-cluster caveat), updated 9 (openrouter — Stripe acquisition first-party confirmed by a board member and company blog at $7.5B–$8B+ with a 4.5-quadrillion-token run-rate claim; anthropic — Claude-designed protein binders (14/15 targets, 26.8% across 1,320 designs) with the orchestration-rather-than-design rebuttal, Fractile chip supply, and supervoting shares for co-founders ahead of a possible September IPO; openai — Q2 $6.7B revenue (+18%) against a widening $12.3B operating loss, Private Safety Processing preview for enterprise, ChatGPT for Teens going global, ads to 31 EU countries; qwen-3-8-max — 27B sibling consolidating as the cycle's dominant open-weights release with Unsloth Dynamic V3 GGUFs and Mollick disputing placement; google — revenue-linked equity warrant on Marvell ($206.58 strike, 240 tranches vs $500M custom-silicon purchases), MRVL +13%; federal-ai-policy — White House formally asks labs for voluntary 30-day pre-release model testing, labs still unsure which models qualify or how open weights are treated; open-weights — Ornith-1.5 family ship + the self-improving-agents fragility paper pairing + Lambert's recipe-is-the-Linux-analogue frame; sk-hynix — KRW 40T buyback-and-cancellation, the largest in Korean corporate history, funded from KRW 69T net cash; zhipu-glm-5-3 — post-training-depth thesis hardened, weights release delayed and the 743B-vs-753B base discrepancy unresolved; matrix-multiplication-exponent — reciprocal link from google fixed, delivering its first inbound link)."
-    },
-    {
-      "date": "2026-08-19",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-19 digest (model tickets carried nothing newer than 2026-07-31, so the digest was the sole input). Created 2 (zhipu-glm-5-3 — GLM-5.3's first independent scoring at 60 on the AA Intelligence Index, tied with Kimi K3, agentic Elo 1524→1770 behind only Claude Opus 5, MIT weights still a promise; matrix-multiplication-exponent — a DeepMind-and-academia team using modern optimization + AlphaEvolve lower ω below 2.371177), updated 6 (openai — paused frontier RL training for two weeks over \"various degrees of misalignment,\" \"security now gates the schedule,\" plus ChatGPT for Teens/CodeAI and a national-security oversight initiative; anthropic — pre-IPO machinery: oversubscribed $10B+ revolver and a founder voting share class, plus degraded performance across all model tiers; etched — $700M at a $21B valuation (doubling in ~a month) with the first Sohu rack shipped to lead investor Jane Street in a closed loop; xai — Grok 4.6 reported top of MedAgentBench (~95.9% pass@1) with Grok 4.7 \"coming soon,\" and skeptics noting vendor-adjacent leaderboard placements; qwen-3-8-max — Qwen3.8-27B as the week's most contested model (Willison's 52 on AA, a reproduced hour-long 40k-token failure, and Unsloth GGUF passing 2.7M downloads); zhipu-glm-5-2 — cross-linked to its GLM-5.3 successor)."
     }
   ]
 }

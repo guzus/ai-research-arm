@@ -4,10 +4,11 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou Chinese frontier lab; named in CISA/NSA/FBI advisory AA26-251A as one of six alleged industrial distillers, cut Flash cache-hit prices 60% off-peak, and tapped CITIC for a STAR listing.
+description: Hangzhou Chinese frontier lab; shipped MIT-licensed V4.1 Flash (552B multimodal MoE) and was accused by Anthropic of silently relaying customer prompts to Opus, a day after CISA named it.
 created_at: 2026-06-04
-timestamp: 2026-09-10T00:00:00Z
+timestamp: 2026-09-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
@@ -266,6 +267,33 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   single-account X relay and were dropped from the
   AI-news report; treat as unverified (Reuters; ARA
   daily digest 2026-09-10).
+
+## V4.1 Flash ships; Anthropic adds a silent-relay charge (2026-09-11)
+
+- **[[deepseek-v4-1-flash|V4.1 Flash]] is the day's
+  weight drop** — a **552B MIT-licensed multimodal
+  MoE** with a new causal encoder–decoder stack,
+  weights + tech report + the live **$0.003 / $0.15 /
+  $0.60** off-peak card at 06:10 UTC. Artificial
+  Analysis's first independent composite is **40**,
+  four points above V4 Pro 0813. The API id is
+  `deepseek-flash`; `deepseek-v4-pro` is scheduled to
+  route here and bill at Flash rates on **2026-09-14**.
+  Hacker News peaked at **836 points / 462 comments**.
+  See [[open-weights]] (DeepSeek, Hugging Face,
+  Artificial Analysis, HN; ARA daily digest
+  2026-09-11).
+- **[[anthropic]] accused DeepSeek and Moonshot of
+  silently relaying their own customers' prompts to
+  Opus**, one day after CISA named the same labs in
+  **AA26-251A**. The charge is about those labs'
+  customers, not only alleged distillation of Claude;
+  Anthropic's volume tables print **151 million
+  Alibaba exchanges** as the largest campaign it will
+  name. No named-lab technical rebuttal cleared the
+  local-source bar. See [[federal-ai-policy]]
+  (Anthropic, TechCrunch; ARA daily digest
+  2026-09-11).
 
 ## Open questions
 

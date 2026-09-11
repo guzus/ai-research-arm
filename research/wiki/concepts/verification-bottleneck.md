@@ -4,10 +4,11 @@ title: The verification bottleneck
 type: concept
 aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim (10k agents, Lean on Astra) is the latest checkable artifact still awaiting Clay and journal review.
+description: The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim is now also a training-data honesty fight after Andreas Thom called the lab "plainly dishonest."
 created_at: 2026-08-02
-timestamp: 2026-09-09T00:00:00Z
+timestamp: 2026-09-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
@@ -205,3 +206,33 @@ claim, and the dispute resolves on **relay credibility rather than
   comparable**, and a harness swap explains part of it.
   The metric moved; the property is unresolved (Artificial
   Analysis, SemiAnalysis; ARA daily digest 2026-09-09).
+
+## The scarce input is now also an honesty fight (2026-09-11)
+
+- **Andreas Thom of TU Dresden called [[openai]]
+  "plainly dishonest"** after Mark Sellke answered
+  *"Regarding your conversations with ChatGPT: that
+  did not happen"* about months of ChatGPT discussion
+  of the expander matching problem and Kun–Thom
+  extensions. Thom now reads that sentence as
+  answering only direct access, once OpenAI's
+  Navier–Stokes note admitted it **"cannot rule out
+  that de-identified data derived from their usage of
+  our products helped improve our models."** He opted
+  out of "Improve the model for everyone" on
+  **2026-06-29**; the toggle is unauditable from
+  outside. The thread closed as both the **#1 AI
+  story and the most-commented Hacker News item (521
+  pts / 535 comments)**, sitting over John D. Cook's
+  same-evening reminder that the overlooked fact is
+  the Lean 4 formalization shipped with the paper.
+  Ethan Mollick put the run at **130 billion output
+  tokens** and wrote that *"however much compute we
+  have, it is increasingly likely that we are going
+  to need more compute."* See [[astra]] (Hacker News,
+  Bluesky; ARA daily digest 2026-09-11).
+- **Hodge-conjecture and Birch–Swinnerton-Dyer
+  "confirmations" remained rumor.** Clay still lists
+  both as open; treat "Aeon" as an unofficial name
+  until [[openai]] uses it (ARA daily digest
+  2026-09-11).

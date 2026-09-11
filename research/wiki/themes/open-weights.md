@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability while a decentralization backlash gains force — now including Z.ai's downloadable GLM-5.3 flagship (2026-08-29, the day's top HN AI thread) and Tencent's Hunyuan Hy4 preview (770B/49B-active, weights promised), after Meta's Apache-2.0 Muse Glimmer return, Alibaba's first Max-class Qwen, and Vercel gateway data putting open tokens at 62%.
+description: The 2026 storyline of open-weight models closing on frontier capability; DeepSeek's MIT-licensed V4.1 Flash (552B multimodal MoE) shipped 2026-09-11 and took the day's largest Hacker News thread.
 created_at: 2026-06-14
-timestamp: 2026-09-10T00:00:00Z
+timestamp: 2026-09-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
@@ -489,6 +490,22 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   named Moonshot in CISA advisory AA26-251A; see
   [[federal-ai-policy]] (Harvey, TechCrunch, CISA; ARA
   daily digest 2026-09-10).
+
+- **[[deepseek-v4-1-flash|DeepSeek V4.1 Flash]]
+  shipped MIT-licensed weights (2026-09-11)** — a
+  **552B multimodal MoE** with a new causal
+  encoder–decoder stack, the day's official weights +
+  paper + live card. Artificial Analysis's first
+  independent composite is **40**, four points above
+  V4 Pro; Vals ranked it the top open-weight model
+  over [[moonshot-kimi-k3|Kimi K3]]. Hacker News
+  peaked at **836 points / 462 comments**. The same
+  morning [[anthropic]] accused [[deepseek]] of
+  silently relaying customer prompts to Opus; the
+  MIT drop and the distillation charge are not the
+  same fact. See [[federal-ai-policy]] (DeepSeek,
+  Artificial Analysis, Vals AI, HN; ARA daily digest
+  2026-09-11).
 
 ## Open questions
 
