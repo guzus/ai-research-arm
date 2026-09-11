@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-11
+
+TOP STORIES:
+• DeepSeek ships MIT-licensed V4.1 Flash (552B MoE) with the live $0.003/$0.15/$0.60 off-peak card
+• Anthropic: Alibaba 151M Claude exchanges; Moonshot and DeepSeek silently relayed customer prompts
+• OpenAI launches ChatGPT for Financial Services and will pause new $200 Pro signups
+
+KEY NUMBERS:
+• Oracle Q1 GAAP EPS $1.56 (+55%); cloud revenue guided +64-70% CC
+• DeepSeek V4.1 Flash: AA Index 40 (estimate); first-party DeepSWE 74.2
+• Cognition SWE-2: FrontierCode 50.0 vs Fable 5.1 50.9; Huawei 950DT >¥250k
+
+TRENDING: HN closed on Andreas Thom asking whether OpenAI trained on unpublished math (521/535)
+
+Full digest on GitHub.
