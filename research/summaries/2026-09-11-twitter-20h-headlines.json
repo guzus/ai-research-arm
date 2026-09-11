@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "25 FIELDS MEDALISTS PUBLISH LETTER: AI LABS' PROBLEM-SOLVING RACE MISALIGNED WITH MATHEMATICS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2098493108224950438",
+    "category": "research"
+  },
+  {
+    "headline": "ELON: GROK 4.7 NEEDS A FEW MORE DAYS — RL STILL GIVES UP ON HARD TASKS",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2098462085973741960",
+    "category": "model"
+  },
+  {
+    "headline": "CLAUDE CODE SHIPS PLUGIN EVAL — SCORE A SKILL WITH AND WITHOUT THE PLUGIN",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2098500999656923145",
+    "category": "model"
+  },
+  {
+    "headline": "META PUTS MUSE SPARK 1.3 MAX ON CONTRIBUTOR TIER FOR MUSE CODE PLANS FROM $5",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2098502637163565533",
+    "category": "model"
+  },
+  {
+    "headline": "SEMIANALYSIS: NVIDIA VLLM RUNS DEEPSEEK V4.1 FLASH DAY 0 ON 6 SKUS; AMD IMAGE UNPUBLISHED",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2098501866401218813",
+    "category": "infra"
+  }
+]
