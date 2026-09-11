@@ -1,13 +1,13 @@
 AI News - 2026-09-11
 
 TOP STORIES:
-• OpenAI Agents API public beta: Codex harness, no extra fee, token-only billing
-• OpenAI–GSA: $0 seat / 50% off usage for US governments through Dec 2028
-• Jensen Huang: Nvidia can grow ~70% next year; one NVLink system lists at $8.5M
+• 25 Fields Medalists: labs racing famous problems invert mathematics
+• Vinyals + Dean found Discovery Loop; RSI coming, no explosion
+• Suno admits YouTube training scrape via yt-dlp in a court filing
 
 KEY NUMBERS:
-• Adobe Q3: $6.76B revenue (+13%), 1B+ monthly active users
-• Oracle FY27Q1: GAAP EPS $1.56 (+55%); cloud guided +64–70% CC
-• Slack Surfaces live-data in October; d-Matrix Raptor on NVLink Fusion
+• Moonshot targets $2B year-end run-rate; ~300B K3 tokens/day
+• T1 122B MoE: 64.0% Terminal-Bench 2.1 (from 43.8%)
+• NM Supreme Court: $5k fine for ChatGPT-fabricated murder-appeal brief
 
 Full report on GitHub.
