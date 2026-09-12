@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-08 15:00 UTC",
-    "headline": "INFORMATION: ANTHROPIC SERVER CRUNCH BECOMING XAI FINANCIAL LIFELINE \u2014 ENTIRE COLOSSUS MEMPHIS FACILITY HANDED OVER",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-08-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2052742848466797029"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-08 15:00 UTC",
-    "headline": "ANTHROPIC $200B GOOGLE COMMITMENT EQUALS ~40% OF ALPHABET CLOUD-REVENUE BACKLOG OVER 5 YEARS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-08-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2052735382802866503"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-08 15:00 UTC",
-    "headline": "DEEPSEEK V4.1 TO ADD IMAGE AND AUDIO PROCESSING PLUS BETTER MCP SUPPORT \u2014 JUNE SHIP",
-    "source": "@jingyanghk",
-    "source_file": "research/summaries/2026-05-08-twitter-15h-headlines.json",
-    "url": "https://x.com/jingyanghk/status/2052748735780999498"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-08 15:00 UTC",
     "headline": "JING YANG: DEEPSEEK VALUATION CLIMBED $10B TO $20B TO $45B DURING FUNDRAISE; INVESTORS FLAG COMMERCIAL-PATH RISK",
@@ -24746,5 +24719,26 @@
     "headline": "V4.1 FLASH HITS 0.50 DENSE ROOFLINE ON KERNELBENCH-CUDA NSA, FOURTH BEHIND FABLE 5.1",
     "source": "@elliotarledge",
     "url": "https://x.com/elliotarledge/status/2098577337407484408"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-12 10:38:40 UTC",
+    "headline": "BI: JEFF DEAN'S DISCOVERY LOOP SEEKS ~$50B VALUATION, UP FROM $10B LAST MONTH",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2098701998380011580"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-12 10:38:40 UTC",
+    "headline": "REUTERS: UAE REDESIGNING 5GW AI CAMPUS INTO HARDENED NETWORK AFTER IRAN STRIKES",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2098687158693331378"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-12 10:38:40 UTC",
+    "headline": "GROK IMAGINE VIDEOGEN ADDS 6-15 SECOND DURATION CONTROL",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2098660379828363581"
   }
 ]
