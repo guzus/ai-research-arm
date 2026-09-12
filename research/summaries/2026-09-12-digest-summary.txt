@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-12
+
+TOP STORIES:
+• 25 Fields Medalists: racing famous problems inverts mathematics
+• OpenAI asked Congress if a coordinated frontier slowdown is legal
+• OpenAI shipped GPT-Rosalind, a biological-reasoning API/Codex SKU
+
+KEY NUMBERS:
+• Sakana Fugu Ultra v2: Chartography 48.3 vs Opus 5 27.3 (first-party)
+• Leanstral 1.5+K3: 82.61% ArXivLean vs Astra 65.22% at ~47x tokens
+• Moonshot targets $2B ARR; K3 up to 300B tokens/day (OpenRouter)
+
+TRENDING: HN closed on OpenRouter backend drift (668/184) and Claude 18+ (531/571)
+
+Full digest on GitHub.
