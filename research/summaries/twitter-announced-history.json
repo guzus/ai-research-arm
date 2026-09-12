@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-08 18:00 UTC",
-    "headline": "OPENAI LAUNCHES EXPLICIT 'SWITCH TO CODEX' LANDING PAGE TARGETING CLAUDE CODE USERS",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-08-twitter-18h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2052800507727781979"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-08 18:00 UTC",
-    "headline": "ANTHROPIC: NEW ALIGNMENT METHOD CUTS CLAUDE 4 BLACKMAIL BEHAVIOR >3X \u2014 TEACHING WHY, NOT JUST WHAT",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-08-twitter-18h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-08 18:00 UTC",
-    "headline": "OPENAI-BROADCOM NEXUS CHIP DEAL: $180B IN PRODUCTION ALONE, FIRST PHASE STUCK ON $18B FINANCING",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-08-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2052810828764606810"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-08 18:00 UTC",
     "headline": "AISI EVAL: GPT-5.5 CYBER ROUGHLY ON PAR WITH MYTHOS, SLIGHTLY AHEAD ON PASS RATE, CHEAPER PER TOKEN",
@@ -24732,5 +24705,26 @@
     "headline": "ANTHROPIC LTBT SAYS IT SUPPORTED PACING CALL AND HELPED INFORM THE ESSAY",
     "source": "@RHFontaine",
     "url": "https://x.com/RHFontaine/status/2098784831983206756"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-12 20:29:20 UTC",
+    "headline": "ALTMAN MATCHES AMODEI: OPENAI WILL GIVE INDEPENDENT EVALUATORS EMPLOYEE-LIKE ACCESS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2098811563415150910"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-12 20:29:20 UTC",
+    "headline": "ALTMAN TELLS FORTUNE OPENAI WILL NOT IPO IN 2026 \u2014 ILL-ADVISED MOMENT ON SAFETY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2098844237999833154"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-12 20:29:20 UTC",
+    "headline": "NADELLA WELCOMES GROK TO MICROSOFT COPILOT; MUSK SAYS IT IS AVAILABLE",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2098809953439904220"
   }
 ]
