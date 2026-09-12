@@ -2,12 +2,14 @@
 slug: xai
 title: xAI
 type: entity
-aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot"]
+aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot", "Grok 4.7"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; Grok 4.6 reached general chat availability across web, iOS and Android on 2026-08-29 after first shipping inside Grok Build and Cursor, with the full Fast/Expert/Heavy/Build mode picker moved onto 4.6 — the same week OpenAI cut Cursor's contracted OpenAI-model access.
+description: Elon Musk's frontier lab behind Grok; Musk delayed Grok 4.7 again, writing that RL may have penalized response length too hard so the model still quits early on tasks it can already do.
 created_at: 2026-06-08
-timestamp: 2026-08-29T00:00:00Z
+timestamp: 2026-09-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
+  - {title: "ARA model ticket — Grok 4.7", path: research/models/tickets/xai-grok-4-7-2026-09.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
@@ -250,6 +252,20 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   which makes Grok (already in Cursor) and [[anthropic|Claude]] the
   remaining first-party frontier options on that IDE (X; ARA daily
   digest 2026-08-29). See [[cursor]].
+
+- **Musk delayed Grok 4.7 again (2026-09-12).** He wrote
+  that **RL may have penalized response length too hard**,
+  so the model **still quits early on tasks it can already
+  do** and "isn't yet sufficiently rigorous in checking
+  its work." **"A few more days" is not a date.** The
+  circulating **2.1T parameter claim has no xAI post
+  behind it**. Grok 4.7 did not appear on Musk's ~Sept
+  11–12 window. This is the same rumored point release
+  the model ticket has tracked since 2026-09-06 as
+  `rumored` / unverified — the delay is now first-party
+  from Musk, the ship is not (Elon Musk; ARA daily digest
+  2026-09-12). Distinct from the rumoured 2T SpaceX-data
+  next-generation Grok this page already tracks.
 
 ## Open questions
 

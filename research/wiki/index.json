@@ -824,11 +824,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover, and now marking OpenAI's reversal on SB 53 from opposition to asking for it to be strengthened (2026-08-23).",
-      "description": "The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover, and now marking OpenAI's reversal on SB 53 from opposition to asking for it to be strengthened (2026-08-23).",
+      "summary": "Sacramento as the operative US AI regulator on the consumer-facing axis; Newsom signed AB 1709, blocking algorithmic recommendations, infinite scroll, and autoplay for users under 16 without parental consent, plus a chatbot-disclosure rule.",
+      "description": "Sacramento as the operative US AI regulator on the consumer-facing axis; Newsom signed AB 1709, blocking algorithmic recommendations, infinite scroll, and autoplay for users under 16 without parental consent, plus a chatbot-disclosure rule.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-08-23",
-      "timestamp": "2026-08-23T00:00:00Z",
+      "updated_at": "2026-09-12",
+      "timestamp": "2026-09-12T00:00:00Z",
       "file": "themes/california-ai-regulation.md",
       "aliases": [
         "California AI regulation",
@@ -840,7 +840,8 @@
         "A 9317",
         "SB 942",
         "AB 853",
-        "California AI Transparency Act"
+        "California AI Transparency Act",
+        "AB 1709"
       ],
       "outbound": [
         "ai-capex",
@@ -848,6 +849,7 @@
         "eu-ai-regulation",
         "federal-ai-policy",
         "google",
+        "meta",
         "openai",
         "seedance-2-5"
       ],
@@ -1135,6 +1137,7 @@
         "muse-code",
         "ox-alpha",
         "qwen-3-8-max",
+        "sakana-ai",
         "verification-bottleneck",
         "xai",
         "zhipu-glm-5-3"
@@ -1429,6 +1432,7 @@
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openai",
+        "openrouter",
         "prometheus",
         "qwen-3-8-max",
         "soofi-s-30b-a3b",
@@ -1535,6 +1539,7 @@
         "gpt-5-6",
         "moonshot-kimi-k3",
         "open-weights",
+        "openrouter",
         "ornith-1-5",
         "ox-alpha",
         "qwen-3-8-max",
@@ -1602,11 +1607,11 @@
         "automated-science",
         "google-alumni"
       ],
-      "summary": "Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le on leaving Google, automating large-scale experimentation for ML research and engineering, with Google as founding investor and Cloud partner.",
-      "description": "Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le on leaving Google, automating large-scale experimentation for ML research and engineering, with Google as founding investor and Cloud partner.",
+      "summary": "Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Vinyals said AI can 10× some research tasks but will not trigger a sudden intelligence explosion because taste and evaluation remain bottlenecks.",
+      "description": "Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Vinyals said AI can 10× some research tasks but will not trigger a sudden intelligence explosion because taste and evaluation remain bottlenecks.",
       "created_at": "2026-08-06",
-      "updated_at": "2026-08-06",
-      "timestamp": "2026-08-06T00:00:00Z",
+      "updated_at": "2026-09-12",
+      "timestamp": "2026-09-12T00:00:00Z",
       "file": "entities/discovery-loop.md",
       "aliases": [
         "Discovery Loop PBC"
@@ -1618,7 +1623,8 @@
       ],
       "inbound": [
         "evo-genome-models",
-        "google"
+        "google",
+        "verification-bottleneck"
       ]
     },
     {
@@ -1826,11 +1832,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal and state AI governance; CISA/NSA/FBI advisory AA26-251A named six Chinese labs for alleged industrial-scale distillation and told US providers to silently degrade suspected traffic.",
-      "description": "US federal and state AI governance; CISA/NSA/FBI advisory AA26-251A named six Chinese labs for alleged industrial-scale distillation and told US providers to silently degrade suspected traffic.",
+      "summary": "US federal and state AI governance; OpenAI asked Congress whether an industry-wide frontier slowdown would be an output-restriction under the Sherman Act, while the July CATSR safe-harbor bill remains in House Judiciary.",
+      "description": "US federal and state AI governance; OpenAI asked Congress whether an industry-wide frontier slowdown would be an output-restriction under the Sherman Act, while the July CATSR safe-harbor bill remains in House Judiciary.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-10",
-      "timestamp": "2026-09-10T00:00:00Z",
+      "updated_at": "2026-09-12",
+      "timestamp": "2026-09-12T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1840,7 +1846,8 @@
         "30-day pre-release access",
         "CAISI MOU",
         "remote-access chip rule",
-        "RIN 0694-AJ90"
+        "RIN 0694-AJ90",
+        "CATSR"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2868,6 +2875,7 @@
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "california-ai-regulation",
         "claude-sonnet-5",
         "eu-ai-regulation",
         "federal-ai-policy",
@@ -3807,6 +3815,7 @@
         "perplexity",
         "poolside",
         "safe-superintelligence",
+        "sakana-ai",
         "salesforce",
         "sk-hynix",
         "spacex",
@@ -3989,17 +3998,19 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; paused new Pro signups after Astra demand, launched ChatGPT for Financial Services, and faced a Navier–Stokes training-data dispute that topped Hacker News.",
-      "description": "Frontier lab behind the GPT family; paused new Pro signups after Astra demand, launched ChatGPT for Financial Services, and faced a Navier–Stokes training-data dispute that topped Hacker News.",
+      "summary": "Frontier lab behind the GPT family; asked Congress whether an industry-wide frontier slowdown would violate the Sherman Act, shipped GPT-Rosalind to the API, and documented one billion users.",
+      "description": "Frontier lab behind the GPT family; asked Congress whether an industry-wide frontier slowdown would violate the Sherman Act, shipped GPT-Rosalind to the API, and documented one billion users.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-11",
-      "timestamp": "2026-09-11T00:00:00Z",
+      "updated_at": "2026-09-12",
+      "timestamp": "2026-09-12T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
         "OpenAI OpCo",
         "@OpenAI",
-        "OpenAI Inc."
+        "OpenAI Inc.",
+        "GPT-Rosalind",
+        "Rosalind Biodefense"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4101,11 +4112,11 @@
         "infrastructure",
         "capital-markets"
       ],
-      "summary": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and is being acquired by Stripe — confirmed by an OpenRouter board member and the company's own blog at a reported $7.5B–$8B+ (2026-08-19/20).",
-      "description": "LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and is being acquired by Stripe — confirmed by an OpenRouter board member and the company's own blog at a reported $7.5B–$8B+ (2026-08-19/20).",
+      "summary": "LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.",
+      "description": "LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.",
       "created_at": "2026-06-01",
-      "updated_at": "2026-08-20",
-      "timestamp": "2026-08-20T00:00:00Z",
+      "updated_at": "2026-09-12",
+      "timestamp": "2026-09-12T00:00:00Z",
       "file": "entities/openrouter.md",
       "aliases": [
         "OpenRouter",
@@ -4117,11 +4128,14 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "deepseek",
+        "deepseek-v4-flash",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
         "open-weights",
         "openai",
         "sakana-ai",
+        "verification-bottleneck",
         "zhipu-glm-5-2"
       ],
       "inbound": [
@@ -4138,6 +4152,7 @@
         "perplexity",
         "sakana-ai",
         "thinking-machines",
+        "verification-bottleneck",
         "zhipu-glm-5-2"
       ],
       "translations": {
@@ -4491,11 +4506,11 @@
         "ab-mcts",
         "orchestration"
       ],
-      "summary": "Tokyo-based AI lab whose multi-model-orchestration thesis ships as Marlin (an autonomous \"Ultra Deep Research\" agent) and Sakana Fugu (an LLM-as-router that calls a swappable pool of frontier models) — a non-US entrant pitching orchestration as a workaround to the Fable 5 export freeze.",
-      "description": "Tokyo-based AI lab whose multi-model-orchestration thesis ships as Marlin (an autonomous \"Ultra Deep Research\" agent) and Sakana Fugu (an LLM-as-router that calls a swappable pool of frontier models) — a non-US entrant pitching orchestration as a workaround to the Fable 5 export freeze.",
+      "summary": "Tokyo lab whose multi-model-orchestration thesis now ships as Fugu Max ($2/$6, NVIDIA Nemotron in the pool) and Ultra v2, which posts first-party Chartography 48.3 versus Opus 5 at 27.3 with Astra and Fable excluded.",
+      "description": "Tokyo lab whose multi-model-orchestration thesis now ships as Fugu Max ($2/$6, NVIDIA Nemotron in the pool) and Ultra v2, which posts first-party Chartography 48.3 versus Opus 5 at 27.3 with Astra and Fable excluded.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-07-27",
-      "timestamp": "2026-07-27T00:00:00Z",
+      "updated_at": "2026-09-12",
+      "timestamp": "2026-09-12T00:00:00Z",
       "file": "entities/sakana-ai.md",
       "aliases": [
         "Sakana AI",
@@ -4505,13 +4520,17 @@
         "Sakana Fugu",
         "Fugu",
         "Fugu Ultra",
-        "Fugu-Ultra v1.1"
+        "Fugu-Ultra v1.1",
+        "Fugu Max",
+        "Fugu Ultra v2"
       ],
       "outbound": [
         "agentic-ai-security",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-opus-5",
         "dynamic-workflows",
+        "nvidia",
         "open-weights",
         "openai",
         "openrouter"
@@ -4953,16 +4972,18 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim is now also a training-data honesty fight after Andreas Thom called the lab \"plainly dishonest.\"",
-      "description": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim is now also a training-data honesty fight after Andreas Thom called the lab \"plainly dishonest.\"",
+      "summary": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; 25 living Fields Medalists published A Severe Misalignment of AI in Mathematics against racing famous problems as leaderboard items.",
+      "description": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; 25 living Fields Medalists published A Severe Misalignment of AI in Mathematics against racing famous problems as leaderboard items.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-11",
-      "timestamp": "2026-09-11T00:00:00Z",
+      "updated_at": "2026-09-12",
+      "timestamp": "2026-09-12T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
         "agent-reviewed",
-        "evaluation validity gap"
+        "evaluation validity gap",
+        "Fields Medalists letter",
+        "A Severe Misalignment of AI in Mathematics"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4972,11 +4993,13 @@
         "claude-opus-5",
         "claude-science",
         "deepseek-v4-flash",
+        "discovery-loop",
         "gemini-3-8-flash",
         "lifescibench",
         "mistral-leanstral-1-5",
         "muse-code",
         "openai",
+        "openrouter",
         "remote-labor-index"
       ],
       "inbound": [
@@ -4994,6 +5017,7 @@
         "muse-code",
         "nvidia",
         "openai",
+        "openrouter",
         "ox-alpha",
         "seedance-2-5"
       ]
@@ -5043,11 +5067,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; Grok 4.6 reached general chat availability across web, iOS and Android on 2026-08-29 after first shipping inside Grok Build and Cursor, with the full Fast/Expert/Heavy/Build mode picker moved onto 4.6 — the same week OpenAI cut Cursor's contracted OpenAI-model access.",
-      "description": "Elon Musk's frontier lab behind Grok; Grok 4.6 reached general chat availability across web, iOS and Android on 2026-08-29 after first shipping inside Grok Build and Cursor, with the full Fast/Expert/Heavy/Build mode picker moved onto 4.6 — the same week OpenAI cut Cursor's contracted OpenAI-model access.",
+      "summary": "Elon Musk's frontier lab behind Grok; Musk delayed Grok 4.7 again, writing that RL may have penalized response length too hard so the model still quits early on tasks it can already do.",
+      "description": "Elon Musk's frontier lab behind Grok; Musk delayed Grok 4.7 again, writing that RL may have penalized response length too hard so the model still quits early on tasks it can already do.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-08-29",
-      "timestamp": "2026-08-29T00:00:00Z",
+      "updated_at": "2026-09-12",
+      "timestamp": "2026-09-12T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -5057,7 +5081,8 @@
         "Colossus",
         "Colossus 1",
         "Grok 4.6",
-        "Grok Bot"
+        "Grok Bot",
+        "Grok 4.7"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -5295,8 +5320,10 @@
     "@spacex": "spacex",
     "@xai": "xai",
     "a 9317": "california-ai-regulation",
+    "a severe misalignment of ai in mathematics": "verification-bottleneck",
     "ab 1159": "california-ai-regulation",
     "ab 1609": "california-ai-regulation",
+    "ab 1709": "california-ai-regulation",
     "ab 853": "california-ai-regulation",
     "advanced micro devices": "amd",
     "age": "artificial-general-engineer",
@@ -5358,6 +5385,7 @@
     "california ai transparency act": "california-ai-regulation",
     "california transparency in frontier ai act": "california-ai-regulation",
     "california-ai-regulation": "california-ai-regulation",
+    "catsr": "federal-ai-policy",
     "chai bio": "chai-discovery",
     "chai discovery": "chai-discovery",
     "chai-1": "chai-discovery",
@@ -5433,6 +5461,7 @@
     "federal ai executive order": "federal-ai-policy",
     "federal ai policy": "federal-ai-policy",
     "federal-ai-policy": "federal-ai-policy",
+    "fields medalists letter": "verification-bottleneck",
     "figure": "figure-ai",
     "figure 03": "figure-ai",
     "figure 4": "figure-ai",
@@ -5447,7 +5476,9 @@
     "fractile": "fractile",
     "fractile systems": "fractile",
     "fugu": "sakana-ai",
+    "fugu max": "sakana-ai",
     "fugu ultra": "sakana-ai",
+    "fugu ultra v2": "sakana-ai",
     "fugu-ultra v1.1": "sakana-ai",
     "fusion api": "openrouter",
     "gemini 3.2 flash": "gemini-3-5-flash",
@@ -5509,10 +5540,12 @@
     "gpt-6 astra pro": "astra",
     "gpt-6-astra": "astra",
     "gpt-astra": "astra",
+    "gpt-rosalind": "openai",
     "gpu-as-a-service": "neocloud",
     "gpuaas": "neocloud",
     "grok": "xai",
     "grok 4.6": "xai",
+    "grok 4.7": "xai",
     "grok bot": "xai",
     "groq": "groq",
     "groq inc.": "groq",
@@ -5704,6 +5737,7 @@
     "rli": "remote-labor-index",
     "robostral": "mistral-robostral-navigate",
     "robostral navigate": "mistral-robostral-navigate",
+    "rosalind biodefense": "openai",
     "sacramento ai policy": "california-ai-regulation",
     "safe superintelligence inc": "safe-superintelligence",
     "safe superintelligence inc.": "safe-superintelligence",
@@ -5798,6 +5832,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-09-12",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-12 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (openai — Sherman Act slowdown ask + GPT-Rosalind API SKU + 1B users + MAISI/Tsimerman; verification-bottleneck — 25 Fields Medalists' A Severe Misalignment of AI in Mathematics; sakana-ai — Fugu Max $2/$6 + Ultra v2 first-party Chartography 48.3 vs Opus 5 27.3; federal-ai-policy — Sherman/CATSR + Garry Tan distillation comment; discovery-loop — Vinyals no-explosion / taste-and-evaluation claim; openrouter — silent backend fan-out, V4 Flash 90% vs 75% GPQA; california-ai-regulation — AB 1709 signed; xai — Musk delayed Grok 4.7 again). Skipped for budget: Moonshot $2B ARR target, Instinct $10B indication, Mecka $500M, Nscale/Fidji Simo, Fluidstack Pentagon talks, Oracle FY27Q1, Muse Spark 1.3 Max contributor, Leanstral/ArXivLean, LiveBench V4.1 Flash, CursorBench 4.0, YuE2, SenseNova-U1.5, arXiv highlights."
+    },
+    {
       "date": "2026-09-11",
       "op": "ingest",
       "summary": "Ingested the 2026-09-11 digest (no model tickets with updated_at today or yesterday). Created 1 (deepseek-v4-1-flash — 552B MIT-licensed multimodal MoE, CED stack, AA 40, live $0.003/$0.15/$0.60 card). Updated 8 (deepseek — V4.1 Flash ship + Anthropic silent-relay charge; deepseek-v4-flash — successor note; anthropic — 151M Alibaba distillation tables + Moonshot/DeepSeek Opus relay; openai — Pro pause + Financial Services + GPT-Live-1 + Thom/Sellke NS fight + CA bills; nvidia — DOJ Groq RFI + Huang 70% forecast; groq — same RFI on the December license-and-hire; verification-bottleneck — Thom \"plainly dishonest\" + unauditable opt-out; open-weights — V4.1 Flash MIT drop). Skipped for budget: Cognition SWE-2, Microsoft 38 GW, Oracle FY27Q1, Muse iOS #2, Huawei Ascend markup, federal-ai-policy / california-ai-regulation / ai-capex / alibaba / moonshot-kimi-k3 increments, Maven Robotics, Pocket FM, Enflame debut, Together AI preemptible, arXiv highlights."
@@ -5891,11 +5930,6 @@
       "date": "2026-08-21",
       "op": "ingest",
       "summary": "Ingested the 2026-08-21 digest (a full model-synthesis run; model timeline recorded no ticket changes on 2026-08-20, so the digest was the sole major input). Created 1 (poolside — AI-software company whose model-development technology NVIDIA licensed for $6B alongside a $1B investment at a $12B pre-money valuation, structured to avoid a reviewable change of control). Updated 8 (nvidia — the Poolside licence/investment; anthropic — IPO prospectus preparation (public filing reported as early as end-August, confidential S-1 in June) + computer use/browser tool/Skills API/Files API to GA on the Claude Platform; xai — Grok 4.6 model-card diff restating four evals and deleting the Vals Index, wider Grok Build rollout and a Grok 4.6 (High) Agentic Index tie with Claude Opus 5; zhipu-glm-5-3 — a fourth independent frontier placement, near Fable 5 on Terminal-Bench 3.0 + ZCode v3.8.1 load-shifting; ai-capex — Texas halting ALL datacenter energization approvals against a ~474 GW ERCOT queue + Pennsylvania GRID EO, Alibaba's AI-capex-signature quarter, Micron's $250B+ US memory commitment, and Meta's hundreds-of-millions Azure AI spend; micron — $250B+ US advanced-memory manufacturing/R&D trailed; alibaba — the reported quarter (AI Cloud +45%, negative FCF); microsoft — Meta's Azure AI spend; meta — the same Azure spend + a competing multi-model API). Also cross-linked poolside ↔ nvidia and updated index.md."
-    },
-    {
-      "date": "2026-08-20",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-20 digest + 2026-08-19-updated model tickets (protein binders, cerebras cs-4, GLM-5.3, qwen3.8-27b, etched funding, claude code /design, claude fable 5.1, anthropic IPO, openai RL-pause). Created 3 (fractile — Bloomberg-confirmed Anthropic inference-chip supplier, first named-outlet confirmation that Anthropic buys startup silicon, in talks >6× its May valuation; unitree — Shanghai debut +629%, the first mainland humanoid-robot listing pricing the category near $54B on 73.6% research/education revenue; ornith-1-5 — MIT open 9B/35B/397B family claiming Opus 4.8-class scores from self-writing-RL training, every number self-reported with no independent eval and an amplification-cluster caveat), updated 9 (openrouter — Stripe acquisition first-party confirmed by a board member and company blog at $7.5B–$8B+ with a 4.5-quadrillion-token run-rate claim; anthropic — Claude-designed protein binders (14/15 targets, 26.8% across 1,320 designs) with the orchestration-rather-than-design rebuttal, Fractile chip supply, and supervoting shares for co-founders ahead of a possible September IPO; openai — Q2 $6.7B revenue (+18%) against a widening $12.3B operating loss, Private Safety Processing preview for enterprise, ChatGPT for Teens going global, ads to 31 EU countries; qwen-3-8-max — 27B sibling consolidating as the cycle's dominant open-weights release with Unsloth Dynamic V3 GGUFs and Mollick disputing placement; google — revenue-linked equity warrant on Marvell ($206.58 strike, 240 tranches vs $500M custom-silicon purchases), MRVL +13%; federal-ai-policy — White House formally asks labs for voluntary 30-day pre-release model testing, labs still unsure which models qualify or how open weights are treated; open-weights — Ornith-1.5 family ship + the self-improving-agents fragility paper pairing + Lambert's recipe-is-the-Linux-analogue frame; sk-hynix — KRW 40T buyback-and-cancellation, the largest in Korean corporate history, funded from KRW 69T net cash; zhipu-glm-5-3 — post-training-depth thesis hardened, weights release delayed and the 743B-vs-753B base discrepancy unresolved; matrix-multiplication-exponent — reciprocal link from google fixed, delivering its first inbound link)."
     }
   ]
 }

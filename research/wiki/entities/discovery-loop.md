@@ -4,10 +4,11 @@ title: Discovery Loop
 type: entity
 aliases: ["Discovery Loop PBC"]
 tags: [ai-research-lab, public-benefit-corporation, automated-science, google-alumni]
-description: Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le on leaving Google, automating large-scale experimentation for ML research and engineering, with Google as founding investor and Cloud partner.
+description: Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Vinyals said AI can 10× some research tasks but will not trigger a sudden intelligence explosion because taste and evaluation remain bottlenecks.
 created_at: 2026-08-06
-timestamp: 2026-08-06T00:00:00Z
+timestamp: 2026-09-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
 ---
 
@@ -43,6 +44,21 @@ departure is a spin-out rather than a defection.
   [[verification-bottleneck]]. A company whose product *is* experiment volume
   inherits that problem as its core design question rather than as an
   afterthought.
+
+- **Vinyals restated the no-explosion thesis on the
+  record (2026-09-12).** Days after leaving DeepMind, Oriol
+  Vinyals said AI can **10× some research tasks** but
+  **will not trigger a sudden intelligence explosion**
+  because **taste and evaluation remain bottlenecks**.
+  Nathan Lambert pointed at a no-explosion RSI
+  counter-brief the same afternoon. The founding claim
+  this page named on 2026-08-06 — experiment throughput
+  as the binding constraint — now has an explicit
+  anti-explosion clause from a named founder, and it
+  lands the same day 25 Fields Medalists published the
+  math-as-leaderboard letter tracked on
+  [[verification-bottleneck]] (The Decoder; ARA daily
+  digest 2026-09-12).
 
 ## Open questions
 

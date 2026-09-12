@@ -2,12 +2,13 @@
 slug: verification-bottleneck
 title: The verification bottleneck
 type: concept
-aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap"]
+aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: The 2026 constraint that models emit research-shaped output faster than specialists can check it; OpenAI's Navier–Stokes claim is now also a training-data honesty fight after Andreas Thom called the lab "plainly dishonest."
+description: The 2026 constraint that models emit research-shaped output faster than specialists can check it; 25 living Fields Medalists published A Severe Misalignment of AI in Mathematics against racing famous problems as leaderboard items.
 created_at: 2026-08-02
-timestamp: 2026-09-11T00:00:00Z
+timestamp: 2026-09-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
@@ -236,3 +237,38 @@ claim, and the dispute resolves on **relay credibility rather than
   both as open; treat "Aeon" as an unofficial name
   until [[openai]] uses it (ARA daily digest
   2026-09-11).
+
+## The first medalist bloc on the math-as-leaderboard fight (2026-09-12)
+
+- **25 living Fields Medalists published *A Severe
+  Misalignment of AI in Mathematics***, signed by Tao,
+  Scholze, Villani, and 2026 medalist Yu Deng, plus **842
+  endorsers by evening**. The authors say labs announce
+  solves without writeups, method isolation, or citation,
+  and that this **breaks the human transmission chain**.
+  The letter **never names [[openai]], [[astra]], or
+  Navier–Stokes**; Clay still lists Riemann and P versus
+  NP as open. A viral recap that OpenAI offered a
+  mathematician credit if he dropped an [[anthropic]]
+  coauthor is **not in the mathandai.org text**. The
+  declaration closed as HN's #3 story (**471 pts / 535
+  comments**), sitting under the [[openrouter]]
+  post-mortem and the Claude 18+ age-gate fight. Ethan
+  Mollick wrote that the math fight is "a consequence of
+  the jagged frontier, and a precursor of what is to come
+  in other professions." Thomas Wolf compressed the
+  letter as "1 bit of signal while killing the 99 other
+  bits of conceptual understanding." This is the first
+  medalist bloc on this week's contested
+  Millennium-problem and Navier–Stokes arc — the
+  specialist class this page named as the scarce input
+  now speaking as a bloc (mathandai.org, TechCrunch,
+  Hacker News, Bluesky; ARA daily digest 2026-09-12).
+- **Oriol Vinyals made the same no-explosion claim the
+  same afternoon**, founding [[discovery-loop]] days
+  after leaving DeepMind and saying AI can 10× some
+  research tasks but will not trigger a sudden
+  intelligence explosion because **taste and evaluation
+  remain bottlenecks** — this page's constraint restated
+  as a lab thesis (The Decoder; ARA daily digest
+  2026-09-12).

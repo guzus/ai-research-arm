@@ -2,12 +2,13 @@
 slug: sakana-ai
 title: Sakana AI
 type: entity
-aliases: ["Sakana AI", Sakana, Marlin, "Sakana Marlin", "Sakana Fugu", Fugu, "Fugu Ultra", "Fugu-Ultra v1.1"]
+aliases: ["Sakana AI", Sakana, Marlin, "Sakana Marlin", "Sakana Fugu", Fugu, "Fugu Ultra", "Fugu-Ultra v1.1", "Fugu Max", "Fugu Ultra v2"]
 tags: [ai-lab, japan, deep-research, agents, ab-mcts, orchestration]
-description: Tokyo-based AI lab whose multi-model-orchestration thesis ships as Marlin (an autonomous "Ultra Deep Research" agent) and Sakana Fugu (an LLM-as-router that calls a swappable pool of frontier models) — a non-US entrant pitching orchestration as a workaround to the Fable 5 export freeze.
+description: Tokyo lab whose multi-model-orchestration thesis now ships as Fugu Max ($2/$6, NVIDIA Nemotron in the pool) and Ultra v2, which posts first-party Chartography 48.3 versus Opus 5 at 27.3 with Astra and Fable excluded.
 created_at: 2026-06-16
-timestamp: 2026-07-27T00:00:00Z
+timestamp: 2026-09-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
   - {title: "ARA model ticket — Sakana Fugu", path: research/models/tickets/sakana-fugu-2026-06.md}
@@ -66,6 +67,24 @@ the increasingly crowded "deep research" agent category.
   ([[open-weights]]) from a standalone API into direct compatibility with
   the incumbent agentic-coding tool it competes with (ARA digest
   2026-07-27).
+
+- **Fugu Max and Ultra v2 split the stack (2026-09-12).** Sakana
+  shipped one orchestration layer as two SKUs: a cheaper Pareto
+  **Max** at **$2 input / $6 output per million tokens** that
+  adds [[nvidia|NVIDIA]]'s Nemotron family to the pool, and a
+  sovereignty-pitched **Ultra v2** that **excludes Fable 5 / 5.1
+  and GPT-6 Astra**. Ultra v2's training cutoff is
+  **2026-08-28**. Sakana claims Ultra v2 is best or joint-best
+  on five of eight hard benches; the first-party table includes
+  **DeepSWE 74.3** and **Chartography 48.3 versus
+  [[claude-opus-5|Opus 5]] at 27.3 and [[claude-fable-5|Fable
+  5]] at 29.5**. The Chartography gap is **Sakana's harness,
+  not an independent bake-off**. This is still an orchestrator,
+  not a new frontier base — the same distinction this page
+  named at the June Fugu ship, now with a cheap SKU and an
+  explicit Astra/Fable exclusion (Sakana, NVIDIA Japan; ARA
+  daily digest 2026-09-12). See [[openrouter]] and
+  [[open-weights]].
 
 ## Open questions
 

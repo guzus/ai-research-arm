@@ -2,12 +2,13 @@
 slug: federal-ai-policy
 title: Federal AI Policy
 type: theme
-aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90"]
+aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; CISA/NSA/FBI advisory AA26-251A named six Chinese labs for alleged industrial-scale distillation and told US providers to silently degrade suspected traffic.
+description: US federal and state AI governance; OpenAI asked Congress whether an industry-wide frontier slowdown would be an output-restriction under the Sherman Act, while the July CATSR safe-harbor bill remains in House Judiciary.
 created_at: 2026-06-03
-timestamp: 2026-09-10T00:00:00Z
+timestamp: 2026-09-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
@@ -834,6 +835,39 @@ footing for the first time in the cycle.
   open**, arguing stronger capabilities need stronger
   safety evidence and durable rules while the window
   lasts (OpenAI; ARA daily digest 2026-09-10).
+
+## Sherman Act slowdown ask and a still-stalled CATSR bill (2026-09-12)
+
+- **[[openai]] asked Congress whether orchestrating a
+  frontier slowdown would be an output-restriction under
+  the Sherman Act.** Bloomberg reported Sam Altman told
+  staff the lab could pace frontier development if peers
+  joined; WIRED said the company spent recent weeks
+  asking for guidance. Altman's verbs remain **"could
+  potentially"** and **"some may not agree."** The July
+  **CATSR** bill that would create a safety-coordination
+  safe harbor is **still in House Judiciary**. John
+  Schulman, quoted in WIRED, said citing Sherman can be
+  cover for refusing to write a joint plan. This is the
+  statute-shaped follow-through to Pachocki's 2026-09-07
+  voluntary-slowdown ask and the 2026-07-29 "Pacing the
+  Frontier" letter this page already tracks — a legal
+  question about *whether labs may coordinate*, not a
+  pause (WIRED, Bloomberg, The Decoder; ARA daily digest
+  2026-09-12).
+- **Garry Tan said he would "do nothing" about Chinese
+  distillation** and wants "an American distillation
+  regime" so U.S. open-weight labs can distill frontier
+  models through the front door. That is an interview
+  comment, not a statute; [[anthropic]]'s already-reported
+  illicit-distillation file is the counter-brief. See
+  [[open-weights]] (TechCrunch; ARA daily digest
+  2026-09-12).
+- **New Mexico fined a ChatGPT lawyer $5,000** for
+  hallucinated testimony in a murder appeal — the day's
+  courtroom sanction, sitting next to
+  [[california-ai-regulation|California]] signing AB 1709
+  (The Verge, Ars Technica; ARA daily digest 2026-09-12).
 
 ## Open questions
 
