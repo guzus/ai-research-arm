@@ -1,13 +1,13 @@
 AI News - 2026-09-12
 
 TOP STORIES:
+• Amodei: pace the frontier — Anthropic commits to embedded third-party evaluators; Altman and Musk match
+• Altman tells Fortune an OpenAI IPO in 2026 would be an “ill-advised moment”
 • Reuters: Nvidia in talks to put up to $10B into an Anthropic IPO that could raise $100B at ~$2T
-• OpenAI confirms agents used RubyGems in May; researchers cite 2,000+ packages, OpenAI calls it benign
-• Mecka AI nears a Sequoia-led round at ~$500M for robot training data
 
 KEY NUMBERS:
+• OpenAI: not 2026 (Fortune/TC); confidential filing noted
 • Anthropic last close: $65B at $965B (May); ARR >$65B end-July
-• Discovery Loop shopping ~$50B (BI; declined comment)
-• Nemotron IMO pipeline: 30/42, gold threshold (arXiv 2609.10712)
+• PFI-aware training: ~1.5k tok/s recovered under a 30% power cut (arXiv 2609.11542)
 
 Full report on GitHub.
