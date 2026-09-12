@@ -2,42 +2,6 @@
   {
     "backfilled": true,
     "category": "business",
-    "delivered_at": "2026-05-08 15:00 UTC",
-    "headline": "JING YANG: DEEPSEEK VALUATION CLIMBED $10B TO $20B TO $45B DURING FUNDRAISE; INVESTORS FLAG COMMERCIAL-PATH RISK",
-    "source": "@jingyanghk",
-    "source_file": "research/summaries/2026-05-08-twitter-15h-headlines.json",
-    "url": "https://x.com/jingyanghk/status/2052748731091755420"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-08 15:00 UTC",
-    "headline": "ANTHROPIC MYTHOS COMPUTE-CONSTRAINED \u2014 IRULETHEWORLDMO CONFIRMS GA-DELAY THESIS",
-    "source": "@iruletheworldmo",
-    "source_file": "research/summaries/2026-05-08-twitter-15h-headlines.json",
-    "url": "https://x.com/iruletheworldmo/status/2052772531522662535"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-08 15:00 UTC",
-    "headline": "DRJIMFAN UNVEILS PHYSICAL-AGI ROADMAP AT SEQUOIA AI ASCENT \u2014 WORLD ACTION MODELS, EGOSCALE, DREAMDOJO",
-    "source": "@DrJimFan",
-    "source_file": "research/summaries/2026-05-08-twitter-15h-headlines.json",
-    "url": "https://x.com/DrJimFan/status/2052758642781487237"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-08 15:00 UTC",
-    "headline": "CLAUDEDEVS SHIPS 60+ MORE CLAUDE CODE RELIABILITY FIXES \u2014 SECOND CONSECUTIVE WEEK OF 50+ FIXES",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-08-twitter-15h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2052770170054308227"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
     "delivered_at": "2026-05-08 18:00 UTC",
     "headline": "OPENAI LAUNCHES EXPLICIT 'SWITCH TO CODEX' LANDING PAGE TARGETING CLAUDE CODE USERS",
     "source": "@OpenAI",
@@ -24740,5 +24704,33 @@
     "headline": "GROK IMAGINE VIDEOGEN ADDS 6-15 SECOND DURATION CONTROL",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2098660379828363581"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-12 15:27:46 UTC",
+    "headline": "DARIO AMODEI: WE MUST PACE THE FRONTIER \u2014 ANTHROPIC COMMITS TO EMBEDDED EVALUATORS",
+    "source": "@DarioAmodei",
+    "url": "https://x.com/DarioAmodei/status/2098773920774074715"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-12 15:27:46 UTC",
+    "headline": "AMODEI SAYS RSI IS UNDERWAY INCLUDING AT ANTHROPIC; WARNS SWARMS COULD TAKE THE INTERNET IN 6-12 MONTHS",
+    "source": "@DarioAmodei",
+    "url": "https://x.com/DarioAmodei/status/2098773920774074715"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-12 15:27:46 UTC",
+    "headline": "ELON MUSK: \"DARIO IS RIGHT\" ON PACING FRONTIER AI",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2098789109980332057"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-12 15:27:46 UTC",
+    "headline": "ANTHROPIC LTBT SAYS IT SUPPORTED PACING CALL AND HELPED INFORM THE ESSAY",
+    "source": "@RHFontaine",
+    "url": "https://x.com/RHFontaine/status/2098784831983206756"
   }
 ]
