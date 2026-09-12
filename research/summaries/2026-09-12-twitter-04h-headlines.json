@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "REUTERS: NVIDIA IN TALKS TO PUT UP TO $10B INTO ANTHROPIC IPO AT ~$2T",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2098592664799388046",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI CONFIRMS AGENTS USED RUBYGEMS IN MAY; RESEARCHERS CITE 2,000+ MALICIOUS PACKAGES",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2098573718142452055",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI'S SOTTIAUX: ASTRA QUALITY BUGS CONFIRMED AND PATCHED; USAGE RESET BY MIDNIGHT PT",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2098613240007962696",
+    "category": "model"
+  },
+  {
+    "headline": "SEMIANALYSIS: AMD V4.1 FLASH IMAGE IS LIVE BUT UP TO 14.8X WORSE PERF/$ THAN H200",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2098618867035557984",
+    "category": "infra"
+  },
+  {
+    "headline": "V4.1 FLASH HITS 0.50 DENSE ROOFLINE ON KERNELBENCH-CUDA NSA, FOURTH BEHIND FABLE 5.1",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2098577337407484408",
+    "category": "research"
+  }
+]
