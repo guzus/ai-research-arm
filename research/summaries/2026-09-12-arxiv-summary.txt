@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-12
+
+TOP 5 PAPERS:
+• Musec — clip Muon singular values (don't flatten); first nonsmooth proof, no more spikes
+• Vidu S2 — real-time 720p avatar + live edit; spatial video, Jun Zhu / Jianfei Chen
+• Learnware — Zhou: model+spec management, not Hugging Face storage
+• ORCH — org-theory MAS; +64% score / +74% efficiency, 50 embodied agents
+• Power elasticity — PFI on 131 H200 jobs; 30% cap recovers 63% of oracle tokens/s
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
