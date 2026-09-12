@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-08 12:00 UTC",
-    "headline": "DEEPSEEK V4.1 TO SHIP JUNE 2026 ALONGSIDE ACCELERATED COMMERCIALIZATION PUSH",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-08-twitter-12h-headlines.json",
-    "url": "https://x.com/jukan05/status/2052717401633079761"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-08 12:00 UTC",
-    "headline": "BAIDU CHIP UNIT KUNLUNXIN EYES US$14.7B VALUATION IN HONG KONG IPO \u2014 UP 7X FROM JANUARY $2B FRAMING",
-    "source": "@FirstSquawk",
-    "source_file": "research/summaries/2026-05-08-twitter-12h-headlines.json",
-    "url": "https://x.com/FirstSquawk/status/2052683172979281935"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-08 12:00 UTC",
-    "headline": "KUNLUNXIN DUAL-LISTING ON SHANGHAI STAR BOARD + HONG KONG; BAIDU RETAINS 58% STAKE",
-    "source": "@Techmeme",
-    "source_file": "research/summaries/2026-05-08-twitter-12h-headlines.json",
-    "url": "https://x.com/Techmeme/status/2052631098589618670"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-08 12:00 UTC",
-    "headline": "BERNSTEIN REITERATES OUTPERFORM ON IREN WITH $100 PT POST $2.1B NVIDIA INVESTMENT OPTION + $3.4B 5-YEAR CLOUD CONTRACT",
-    "source": "@Tickerwire",
-    "source_file": "research/summaries/2026-05-08-twitter-12h-headlines.json",
-    "url": "https://x.com/Tickerwire/status/2052730727612268724"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-08 12:00 UTC",
-    "headline": "ANTHROPIC CORP-HANDLE SILENT 15.7 HOURS ON FT $1 TRILLION VALUATION REPORT",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-08-twitter-12h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052494460966019137"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-08 15:00 UTC",
     "headline": "INFORMATION: ANTHROPIC SERVER CRUNCH BECOMING XAI FINANCIAL LIFELINE \u2014 ENTIRE COLOSSUS MEMPHIS FACILITY HANDED OVER",
@@ -24756,5 +24711,40 @@
     "headline": "GROK BOT ROLLING OUT ON GROK WEB FOR HEAVY USERS \u2014 NO OFFICIAL XAI POST",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2098533001403515368"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-12 04:26:42 UTC",
+    "headline": "REUTERS: NVIDIA IN TALKS TO PUT UP TO $10B INTO ANTHROPIC IPO AT ~$2T",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2098592664799388046"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-12 04:26:42 UTC",
+    "headline": "OPENAI CONFIRMS AGENTS USED RUBYGEMS IN MAY; RESEARCHERS CITE 2,000+ MALICIOUS PACKAGES",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2098573718142452055"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-12 04:26:42 UTC",
+    "headline": "OPENAI'S SOTTIAUX: ASTRA QUALITY BUGS CONFIRMED AND PATCHED; USAGE RESET BY MIDNIGHT PT",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2098613240007962696"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-12 04:26:42 UTC",
+    "headline": "SEMIANALYSIS: AMD V4.1 FLASH IMAGE IS LIVE BUT UP TO 14.8X WORSE PERF/$ THAN H200",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2098618867035557984"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-12 04:26:42 UTC",
+    "headline": "V4.1 FLASH HITS 0.50 DENSE ROOFLINE ON KERNELBENCH-CUDA NSA, FOURTH BEHIND FABLE 5.1",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2098577337407484408"
   }
 ]
