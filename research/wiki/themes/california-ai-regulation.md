@@ -2,12 +2,13 @@
 slug: california-ai-regulation
 title: California AI Regulation
 type: theme
-aliases: ["California AI regulation", "California AI bills", "Sacramento AI policy", "California Transparency in Frontier AI Act", "AB 1609", "AB 1159", "A 9317", "SB 942", "AB 853", "California AI Transparency Act"]
+aliases: ["California AI regulation", "California AI bills", "Sacramento AI policy", "California Transparency in Frontier AI Act", "AB 1609", "AB 1159", "A 9317", "SB 942", "AB 853", "California AI Transparency Act", "AB 1709"]
 tags: [policy, regulation, california, ai-governance, frontier-ai]
-description: The 2026 storyline of California acting as the operative US AI regulator while the federal AI executive order remains pulled — anchored by the Transparency in Frontier AI Act and a ~30-bill package that cleared the May 29 chamber-of-origin crossover, and now marking OpenAI's reversal on SB 53 from opposition to asking for it to be strengthened (2026-08-23).
+description: Sacramento as the operative US AI regulator on the consumer-facing axis; Newsom signed AB 1709, blocking algorithmic recommendations, infinite scroll, and autoplay for users under 16 without parental consent, plus a chatbot-disclosure rule.
 created_at: 2026-05-30
-timestamp: 2026-08-23T00:00:00Z
+timestamp: 2026-09-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-06-30", path: research/digest/2026-06-30-digest.md}
@@ -108,6 +109,22 @@ a California legislature carrying a **~30-bill AI package** through the
   the consumer-facing disclosure package (AB 1609, SB 942) and the frontier
   safety track separate, a lab's regulatory position is no longer a fixed
   stance but a moving, negotiation-shaped one (ARA daily digest 2026-08-23).
+
+- **Newsom signed AB 1709 (2026-09-12).** The bill blocks
+  **algorithmic recommendations, infinite scroll, and
+  autoplay for users under 16 without parental consent**,
+  plus a **chatbot-disclosure rule** that makers must tell
+  young users they are not talking to a human. This is
+  the first signed youth-UX statute from the ~30-bill
+  package this page has tracked since May — a product-UX
+  duty on consumer surfaces, not a frontier-model safety
+  bill. It lands the same week [[openai]] newly endorsed
+  four other California bills on Newsom's desk (SB 813,
+  AB 1405, SB 1119, AB 1864) and the same day [[meta]]
+  said it will change AI suggestions after a viral video
+  showed the chatbot posing invasive questions about a
+  woman's young daughters. See [[federal-ai-policy]]
+  (The Verge; ARA daily digest 2026-09-12).
 
 ## Open questions
 

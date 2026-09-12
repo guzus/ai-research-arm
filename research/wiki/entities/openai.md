@@ -2,12 +2,13 @@
 slug: openai
 title: OpenAI
 type: entity
-aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc."]
+aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; paused new Pro signups after Astra demand, launched ChatGPT for Financial Services, and faced a Navier–Stokes training-data dispute that topped Hacker News.
+description: Frontier lab behind the GPT family; asked Congress whether an industry-wide frontier slowdown would violate the Sherman Act, shipped GPT-Rosalind to the API, and documented one billion users.
 created_at: 2026-05-30
-timestamp: 2026-09-11T00:00:00Z
+timestamp: 2026-09-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
@@ -1278,6 +1279,58 @@ materially reshape how the lab is positioned heading into its IPO window:
   `gpt-6-astra` and up to four concurrent subagents;
   **US data residency only; not ZDR-eligible**
   (OpenAI, HN; ARA daily digest 2026-09-11).
+
+## Sherman Act slowdown ask, GPT-Rosalind in the API, and one billion users (2026-09-12)
+
+- **OpenAI asked Congress whether orchestrating a frontier
+  slowdown would violate the Sherman Act.** Bloomberg reported
+  Sam Altman told staff the lab **could pace frontier
+  development if peers joined**; WIRED said the company spent
+  recent weeks asking whether an industry-wide pause would be
+  an **output-restriction**. Altman's staff-meeting verbs remain
+  **"could potentially"** and **"some may not agree."** The July
+  **CATSR** bill that would create a safety-coordination safe
+  harbor is still in House Judiciary. John Schulman, quoted in
+  WIRED, said citing Sherman can be cover for refusing to write
+  a joint plan. This is the statute-shaped follow-through to
+  Pachocki's 2026-09-07 voluntary-slowdown ask — a legal
+  question, not a pause. See [[federal-ai-policy]] (Bloomberg,
+  WIRED, The Decoder; ARA daily digest 2026-09-12).
+- **GPT-Rosalind shipped to the API and Codex** at 20:29 UTC
+  as a **biological-reasoning SKU** — connect papers, weigh
+  evidence for a target, and plan the next experiment. Jason
+  Liu said he will help on the product. **No model card,
+  parameter count, price, or docs URL** accompanied the
+  launch; the digest flags that it may be **[[astra|Astra]]
+  plus retrieval**. This is a public vertical SKU of the
+  previously gated Rosalind Biodefense / trusted-access line
+  this page has tracked since 2026-05-29, not a named
+  frontier base (OpenAI Developers; ARA daily digest
+  2026-09-12).
+- **A Habitat storage post documented one billion users**
+  and said the stack now serves **22 million requests per
+  second**. Treat the user figure as OpenAI's own count
+  (OpenAI; ARA daily digest 2026-09-12).
+- **Jacob Tsimerman is founding MAISI**, a Bay Area institute
+  aiming at cryptographic-style safety proofs, and joining
+  OpenAI's safety team. Planned start is **January 2027**
+  with **10–30 mathematicians** (The Decoder / NYT; ARA
+  daily digest 2026-09-12).
+- **New Mexico fined a ChatGPT lawyer $5,000.** The court
+  held Stephen Aarons in contempt after a murder-appeal
+  brief invented witnesses and fake police testimony.
+  Aarons told Reuters he "didn't know that AI could
+  hallucinate facts." A courtroom sanction, not a new
+  statute (The Verge, Ars Technica; ARA daily digest
+  2026-09-12).
+- **25 living Fields Medalists published *A Severe
+  Misalignment of AI in Mathematics*** the same day,
+  arguing that racing famous problems as leaderboard items
+  inverts the point of the field. The letter never names
+  OpenAI, Astra, or Navier–Stokes; Clay still lists
+  Riemann and P versus NP as open. See
+  [[verification-bottleneck]] (mathandai.org, TechCrunch;
+  ARA daily digest 2026-09-12).
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: OpenRouter
 type: entity
 aliases: ["OpenRouter", "openrouter.ai", "@OpenRouterAI", "OpenRouter Fusion", "Fusion API"]
 tags: [llm-router, inference, infrastructure, capital-markets]
-description: LLM-routing API serving 400+ models to 8M+ developers; closed a $113M Series B at $1.3B post-money on 2026-05-30, surfaced Fusion API, and is being acquired by Stripe — confirmed by an OpenRouter board member and the company's own blog at a reported $7.5B–$8B+ (2026-08-19/20).
+description: LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.
 created_at: 2026-06-01
-timestamp: 2026-08-20T00:00:00Z
+timestamp: 2026-09-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
@@ -118,3 +119,25 @@ OpenRouter monetizes from the demand side.
 - **Fusion quality.** Does blending improve answer quality enough to justify
   latency and attribution complexity, or is it mostly a way to sell model
   optionality when the underlying leaderboard is unstable?
+
+## Silent backend fan-out is now a measured quality gap (2026-09-12)
+
+- **Mo Moustafa's post-mortem from ~6M of 18M iMessage
+  turns** became both the **#1 AI story and the #1 story
+  on the entire Hacker News front page** (668 pts / 184
+  comments). The load-bearing finding: `deepseek/deepseek-v4-flash`
+  **fans out to ~20 hosts**, and first-party
+  [[deepseek-v4-flash|DeepSeek V4 Flash 0731]] posts
+  **90% GPQA / 81% TAU-Bench Airline** while
+  DigitalOcean's copy is **75% / 58%**. Simon Willison
+  amplified the ops lesson: the same model id can hit
+  hosts with different serving stacks, settings, and even
+  missing vision. Litelm (HN 75) is a ~2,900-line LiteLLM
+  trim for callers who want less proxy. This is the
+  routing-layer quality problem this page's Fusion API
+  thesis never priced: **vendor-neutral routing is not
+  vendor-equivalent serving** (Simon Willison, Hacker
+  News; ARA daily digest 2026-09-12). See [[deepseek]]
+  and [[sakana-ai]]. The same HN slate closed with the
+  25 Fields Medalists' math letter as #3 — see
+  [[verification-bottleneck]].
