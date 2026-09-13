@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-08 21:00 UTC",
-    "headline": "DEEPMIND AI CO-MATHEMATICIAN HITS 48% ON FRONTIERMATH TIER 4 \u2014 GEMINI 3.1 PRO BASE SCORES 19% ALONE, ENTIRE JUMP FROM AGENTIC SCAFFOLD",
-    "source": "@pushmeet",
-    "source_file": "research/summaries/2026-05-08-twitter-21h-headlines.json",
-    "url": "https://x.com/pushmeet/status/2052812585804685322"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-08 21:00 UTC",
-    "headline": "ISOMORPHIC LABS RAISING $2B+; THRIVE CAPITAL LEADS, ALPHABET PARTICIPATING \u2014 DEEPMIND DRUG-DISCOVERY SPINOUT",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-08-twitter-21h-headlines.json",
-    "url": "https://x.com/RebeccaTorrenc5/status/2052822964266041656"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-08 21:00 UTC",
-    "headline": "BLOOMBERG: TRUMP AI EXECUTIVE ORDER WILL NOT REQUIRE GOVERNMENT APPROVAL FOR FRONTIER MODEL RELEASES",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-08-twitter-21h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2052850430217277812"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-08 21:00 UTC",
     "headline": "GROK ADDS CONNECTORS FOR EMAIL, CALENDAR, SLIDES, NOTION ACROSS ALL TIERS \u2014 MUSK QT 'GROK UPGRADES' AT 4,983L/704RT",
@@ -24712,5 +24685,26 @@
     "headline": "NCP-ARCHPREVIEW MATCHES OLMO-3-7B PRETRAIN LOSS ON 51.3% OF TOKENS",
     "source": "@mark_k",
     "url": "https://x.com/mark_k/status/2099098442131726770"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-13 16:10:29 UTC",
+    "headline": "TRUMP IN IRELAND: WHOEVER WINS AI WINS \u2014 EXTINCTION TALK IS 'NEGATIVE FORCES'",
+    "source": "@FoxNews",
+    "url": "https://x.com/FoxNews/status/2099128502897250603"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-13 16:10:29 UTC",
+    "headline": "JOHNSON: CONGRESS WON'T LEAD AN EMERGENCY AI LAW; RESIST A MORATORIUM",
+    "source": "@Aaron_Harme",
+    "url": "https://x.com/Aaron_Harme/status/2099168739195294075"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-13 16:10:29 UTC",
+    "headline": "JEFFRIES: ACT URGENTLY TO SLOW AI \u2014 TUESDAY CAUCUS IS A HIGH PRIORITY",
+    "source": "@Aaron_Harme",
+    "url": "https://x.com/Aaron_Harme/status/2099168739195294075"
   }
 ]
