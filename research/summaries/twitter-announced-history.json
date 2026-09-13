@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-08 21:00 UTC",
-    "headline": "GROK ADDS CONNECTORS FOR EMAIL, CALENDAR, SLIDES, NOTION ACROSS ALL TIERS \u2014 MUSK QT 'GROK UPGRADES' AT 4,983L/704RT",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-08-twitter-21h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2052856431611941200"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-09 01:00 UTC",
-    "headline": "METR: ANTHROPIC MYTHOS HITS UPPER LIMIT OF MEASUREMENT \u2014 50%-TIME-HORIZON \u226516 HOURS, >2X NEXT-BEST ON 80% BENCHMARK",
-    "source": "@METR_Evals",
-    "source_file": "research/summaries/2026-05-09-twitter-01h-headlines.json",
-    "url": "https://x.com/METR_Evals/status/2052896621760004602"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-09 01:00 UTC",
-    "headline": "METR DISSENTS ON ANTHROPIC FEB-2026 RISK REPORT \u2014 \"WITHOUT EXTERNAL EVIDENCE WE'D LIKELY DISAGREE\" ON VERY-LOW-RISK CONCLUSION",
-    "source": "@METR_Evals",
-    "source_file": "research/summaries/2026-05-09-twitter-01h-headlines.json",
-    "url": "https://x.com/METR_Evals/status/2052912201657418023"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-09 01:00 UTC",
-    "headline": "WSJ: APPLE-INTEL REACH PRELIMINARY CHIP-MANUFACTURING DEAL AFTER 1+ YEAR OF TALKS \u2014 TRUMP ADMINISTRATION PUSHED FOR PARTNERSHIP",
-    "source": "@BagEndMarket",
-    "source_file": "research/summaries/2026-05-09-twitter-01h-headlines.json",
-    "url": "https://x.com/BagEndMarket/status/2052798754936225868"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-09 01:00 UTC",
     "headline": "MUSK VISITS INTEL FAB IN OREGON \u2014 \"LOOKING FORWARD TO A GREAT PARTNERSHIP WITH SPACEX & TESLA\"",
@@ -24706,5 +24670,33 @@
     "headline": "JEFFRIES: ACT URGENTLY TO SLOW AI \u2014 TUESDAY CAUCUS IS A HIGH PRIORITY",
     "source": "@Aaron_Harme",
     "url": "https://x.com/Aaron_Harme/status/2099168739195294075"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-13 20:43:00 UTC",
+    "headline": "NADELLA WELCOMES EMBEDDED EVALUATORS AND DELIBERATE PACING \u2014 MAI CODE OF CONDUCT TOMORROW",
+    "source": "@satyanadella",
+    "url": "https://x.com/satyanadella/status/2099220712024408084"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-13 20:43:00 UTC",
+    "headline": "THE INFORMATION: OPENAI, ANTHROPIC, GOOGLE WERE TALKING AN INDUSTRY SAFETY BODY BEFORE AMODEI'S ESSAY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2099226546213138739"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-13 20:43:00 UTC",
+    "headline": "AMODEI ON CBS: JOINT GOVERNANCE BY DEMOCRATIC GOVERNMENTS, NOT A HANDOVER TO ONE STATE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2099211348865658940"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-13 20:43:00 UTC",
+    "headline": "SEMIANALYSIS: 4-HI HBM WINS INFERENCE COST \u2014 RUBIN ULTRA DROPS TO 192GB FROM 288GB",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2099203133079429136"
   }
 ]
