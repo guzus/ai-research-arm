@@ -1,0 +1,13 @@
+AI News - 2026-09-13
+
+TOP STORIES:
+• Obama: AI in private hands “can be dangerous”; urges a House framework if Democrats win Nov. 3
+• Hassabis: Amodei’s pacing “direction is correct”; points to DeepMind’s standards-body idea
+• Wang: Meta Superintelligence Labs is raising its alignment share; alignment can gate scaling
+
+KEY NUMBERS:
+• NCP-ArchPreview 8.9B / 5.73T: OLMo-3-7B loss at 51.3% of tokens; +2.45 macro / +5.99 GSM8K
+• Sacks (03:14 UTC): no antitrust waiver, no METR mandate — pace yourselves
+• Sunday arXiv: CS.AI and CS.LG skipped the weekend (0 new listings)
+
+Full report on GitHub.
