@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; published distillation volume tables printing 151 million Alibaba exchanges and accusing Moonshot and DeepSeek of silently relaying customer prompts to Opus.
+description: AI safety lab behind Claude; Amodei published We Must Pace the Frontier, committing to embedded third-party evaluators, as Reuters said the lab is seeking a ~$100B IPO at around $2T.
 created_at: 2026-05-24
-timestamp: 2026-09-11T00:00:00Z
+timestamp: 2026-09-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
@@ -1575,3 +1576,53 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   and the relay charge are not the same fact. See
   [[moonshot-kimi-k3]] and [[federal-ai-policy]]
   (Anthropic; ARA daily digest 2026-09-11).
+
+## Amodei's pacing essay and an indicated $100B IPO (2026-09-13)
+
+- **Dario Amodei published *We Must Pace the Frontier***,
+  arguing recursive self-improvement has been advancing
+  since roughly this summer — including at Anthropic —
+  and that a more capable swarm could take over the
+  internet in **6–12 months**. Pacing is **not a halt**:
+  the lab unilaterally commits now to **METR-like
+  embedded evaluators** with desks, badges, and a right
+  to publish without editorial control, and asks
+  governments to force peers to match. The package also
+  asks for an **antitrust waiver** so labs can set
+  capability checkpoints, plus **four global tiers** from
+  bioterror-use bans up to a SALT-style RSI speed limit.
+  The July **CATSR** safe-harbor bill that would create
+  that waiver is still in House Judiciary. See
+  [[federal-ai-policy]] (darioamodei.com, Anthropic,
+  TechCrunch, The Verge; ARA daily digest 2026-09-13).
+- **Sam Altman quote-tweeted the essay** — "I agree with
+  Dario that we need to pace the frontier" and "we will
+  do the same" — and Elon Musk wrote **"Dario is
+  right."** Neither post is a named evaluator contract,
+  a start date, or a publish-without-edits clause;
+  [[openai]]'s official account did not repeat Altman's
+  tweet. Cohere's Aidan Gomez called the package a
+  **cartel** the same hour. Matching tweets are not a
+  pact: no lab paused a run, and China is not in the
+  room. See [[openai]] (Sam Altman, Elon Musk, Aidan
+  Gomez; ARA daily digest 2026-09-13).
+- **Reuters said Anthropic is seeking as much as $100
+  billion at around $2 trillion**, with [[nvidia]] in
+  talks to put up to **$10 billion** into a raise timed
+  before the November midterms. Both companies are
+  silent. The same Reuters piece restates the last
+  closed raise as **$65 billion in May at $965
+  billion** and company-stated ARR **above $65 billion
+  by end-July**. Treat "in talks" as indicated; no S-1
+  or bookrunner is in the local set, and the $10
+  billion can still be the November 2025 compute
+  partnership restated. The **$2T** figure has been
+  circulating for weeks without a filing. See
+  [[nvidia]] and [[ai-capex]] (Reuters; ARA daily
+  digest 2026-09-13).
+- **The same-day RSI claim sits against
+  [[discovery-loop]] shopping a ~$50 billion raise.**
+  Vinyals' same-week no-explosion / taste-and-evaluation
+  thesis is the counter-brief; neither number is a
+  closed round (Business Insider, Reuters; ARA daily
+  digest 2026-09-13).

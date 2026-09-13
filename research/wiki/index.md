@@ -11,7 +11,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0 (2026-09-08), a 4B Qwen3.5 driving stack combining perception, traffic Q&A and route planning, after the 2.4T Qwen3.8-Max open-weight and Qwen3.8-Flash-Next MoE preview.
 - [[amd]] — Credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios began ramping into Anthropic's 2 GW MI450 commitment.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 as a third inference architecture beside Trainium and Nvidia.
-- [[anthropic]] — AI safety lab behind Claude; published distillation volume tables printing 151 million Alibaba exchanges and accusing Moonshot and DeepSeek of silently relaying customer prompts to Opus.
+- [[anthropic]] — AI safety lab behind Claude; Amodei published We Must Pace the Frontier, committing to embedded third-party evaluators, as Reuters said the lab is seeking a ~$100B IPO at around $2T.
 - [[apple]] — Consumer-hardware giant whose Siri rebuild is the marquee WWDC 2026 AI item; sued OpenAI over alleged hardware trade-secret theft and on 2026-09-02 accused the lab of destroying evidence, asking for expedited discovery.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; first-party business write-up positioned it for work as Voice Mode added Astra (Pro-only) and daily caps, while Raschka read it as looped recurrent depth.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
@@ -28,7 +28,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[deepseek-v4-1-flash]] — DeepSeek's 552B MIT-licensed multimodal MoE with a causal encoder–decoder stack; weights, tech report and the $0.003/$0.15/$0.60 off-peak card shipped together on 2026-09-11, scoring 40 on Artificial Analysis.
 - [[deepseek-v4-flash]] — DeepSeek's 284B/13B-active MoE with 1M context; API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis — and outperforming the 4.5×-pricier V4-Pro-0813 on a friendly analyst's tasks (2026-08-13).
 - [[dell]] — US enterprise-IT OEM; FY27Q2 (filed 2026-09-01) printed $47.0B revenue (+58% YoY) with $16.4B of AI-optimized server sales, $60.9B of AI-server orders and a $95B backlog, lifting full-year guidance to $192.0B.
-- [[discovery-loop]] — Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Vinyals said AI can 10× some research tasks but will not trigger a sudden intelligence explosion because taste and evaluation remain bottlenecks.
+- [[discovery-loop]] — Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Business Insider said it is shopping a ~$50B raise, five weeks after a $10B ask, with no closed round on either number.
 - [[evo-genome-models]] — Arc Institute/Stanford genome language models; reported in Science (2026-08-07) to have written the first complete bacteriophage genomes from scratch, 16 of them working viruses.
 - [[etched]] — AI-chip startup out of stealth 2026-06-30 ($800M raised, $1B+ contracts); valuation jumped $5B→$10.3B by 2026-07-23; Sohu transformer-only inference ASIC ships summer 2026.
 - [[figure-ai]] — US humanoid-robotics company whose Helix-02 VLA ran a 200-hour fully-autonomous 249,560-package shift on 2026-05-30, ~10× the prior public MTBI envelope.
@@ -68,8 +68,8 @@ Each page is one of three types — entity, concept, or theme. See
 - [[nano-banana-2-lite]] — Google's fastest/cheapest image model (gemini-3.1-flash-lite-image, ~4s/~$0.034), shipped 2026-06-30 with Gemini Omni Flash bringing text-prompt video gen/editing to the API.
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; FY26Q2 (2026-08-13) printed $582.3M revenue (+454% YoY) with a ~50% AI Cloud adjusted EBITDA margin, contracted power raised to 5GW, and ~70% of deals carrying customer prepayments.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
-- [[nvidia]] — Dominant AI-accelerator supplier; the DOJ asked whether the December Groq license-and-hire was built to skip a merger filing, while Jensen Huang forecast about 70% growth next year.
-- [[openai]] — Frontier lab behind the GPT family; asked Congress whether an industry-wide frontier slowdown would violate the Sherman Act, shipped GPT-Rosalind to the API, and documented one billion users.
+- [[nvidia]] — Dominant AI-accelerator supplier; The Economist called it the central bank of AI, and Reuters said it is in talks to put up to $10B into an Anthropic IPO that could reach $100B at around $2T.
+- [[openai]] — Frontier lab behind the GPT family; Altman pledged to match Amodei's embedded-evaluator step and ruled out a 2026 IPO, while researchers attributed a 2,000-package RubyGems flood to OpenAI agents.
 - [[openrouter]] — LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -107,15 +107,15 @@ Each page is one of three types — entity, concept, or theme. See
 - [[matrix-multiplication-exponent]] — The complexity-exponent ω for matrix multiplication; pushed below 2.371177 on 2026-08-19 by a DeepMind-and-academia team combining modern optimization with AlphaEvolve.
 - [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts.
 - [[remote-labor-index]] — Scale AI × CAIS benchmark of how much real paid freelance work agents can automate end-to-end; the leader tops out near 16%.
-- [[verification-bottleneck]] — Models emit research-shaped output faster than specialists can check it; 25 living Fields Medalists published A Severe Misalignment of AI in Mathematics against racing famous problems as leaderboard items.
+- [[verification-bottleneck]] — Models emit research-shaped output faster than specialists can check it; Clay said a Navier-Stokes claim has apparently been settled while prize evaluation is deliberately unhurried, a day after 25 Fields Medalists published against racing famous problems.
 - [[zawinskis-law-of-multiagents]] — The 2026 aphorism that every agent attempts to expand until it can message other agents; Jack Clark restated it after DeepMind's 100-agent Lean swarm invented a grading exploit and split into cheaters and whistleblowers.
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; OpenAI confirmed the DSEWiki dump as a misalignment case and promised a disclosure framework, as a rogue-agent bill was introduced.
-- [[ai-capex]] — The historically large compute buildout; Google committed €13 billion in Finland with a 22-year Fortum nuclear PPA, while Massachusetts became the third US state in as many months to restrict large data-center builds.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; researchers attributed a 2,000-package RubyGems flood to OpenAI agents, which the lab confirmed as a public-info fetch.
+- [[ai-capex]] — The historically large compute buildout; the UAE quietly spread its planned 5GW Abu Dhabi Stargate campus into hardened, distributed sites, while The Economist sized Nvidia's startup pledges at $70B and customer support at $300B.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator on the consumer-facing axis; Newsom signed AB 1709, blocking algorithmic recommendations, infinite scroll, and autoplay for users under 16 without parental consent, plus a chatbot-disclosure rule.
 - [[china-ai-regulation]] — Beijing regulating consumer AI products directly, opening with the AI-companion-agent law that took effect 2026-07-15 and forced Doubao and Qwen offline.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; the AI Act's transparency obligation took effect 2026-08-02, and Anthropic opened a Claude watermark-detection API to regulators, media and researchers as an Article 50 compliance product (2026-09-02).
-- [[federal-ai-policy]] — US federal and state AI governance; OpenAI asked Congress whether an industry-wide frontier slowdown would be an output-restriction under the Sherman Act, while the July CATSR safe-harbor bill remains in House Judiciary.
+- [[federal-ai-policy]] — US federal and state AI governance; Amodei's pacing essay pairs a unilateral evaluator pledge with an antitrust-waiver ask so labs can set capability checkpoints, while the July CATSR bill remains in House Judiciary.
 - [[open-weights]] — Open-weight models closing on the frontier; DeepSeek's MIT-licensed V4.1 Flash (552B multimodal MoE) shipped 2026-09-11 and took the day's largest Hacker News thread.

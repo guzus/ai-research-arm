@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Google committed €13 billion in Finland with a 22-year Fortum nuclear PPA, while Massachusetts became the third US state in as many months to restrict large data-center builds.
+description: The historically large compute buildout; the UAE quietly spread its planned 5GW Abu Dhabi Stargate campus into hardened, distributed sites, while The Economist sized Nvidia's startup pledges at $70B and customer support at $300B.
 created_at: 2026-05-24
-timestamp: 2026-09-10T00:00:00Z
+timestamp: 2026-09-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA model ticket — Malaysia Huawei sovereign AI", path: research/models/tickets/malaysia-huawei-sovereign-ai-2026-09.md}
@@ -1101,3 +1102,44 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   US labs it tracks. A ~2.7M "today" figure
   circulating with the tweet is a chart readout, not
   a CSV row (Epoch AI; ARA daily digest 2026-09-10).
+
+## UAE Stargate hardens; Nvidia as "central bank"; data-center air-pollution count (2026-09-13)
+
+- **The UAE quietly revised its planned 5GW Abu Dhabi
+  Stargate campus**, spreading the original
+  **10-square-mile / 26 km²** site into hardened,
+  distributed facilities with air defenses and some
+  underground builds after Iranian strikes damaged
+  Gulf AWS sites. First phase is still **Stargate
+  UAE**, a **$30 billion 1 GW** cluster with **200 MW
+  due this year**. G42 is on the record that work is
+  progressing as planned. Named partners: G42,
+  [[openai]], [[nvidia]], Oracle, Cisco, SoftBank.
+  Hardened, not cancelled (Reuters; ARA daily digest
+  2026-09-13).
+- **The Economist called [[nvidia]] the central bank
+  of AI**, citing about **$5.4 trillion** of market
+  value, more than **$70 billion** of startup pledges,
+  and **$300 billion** of customer support over three
+  years, plus a **$500 billion** Apollo / BlackRock /
+  KKR mobilisation that is a headline ambition, not
+  committed cash. CFO Colette Kress said labs where
+  NVIDIA expects to use its balance sheet could be
+  roughly a **quarter of next year's business**.
+  Pair with Reuters' indicated **up to $10 billion**
+  NVIDIA stake in an [[anthropic]] raise that could
+  reach **$100 billion at around $2 trillion** — both
+  companies silent; the $10 billion can still be the
+  November 2025 compute partnership restated (The
+  Economist, Reuters, HN; ARA daily digest
+  2026-09-13).
+- **Former EPA officials counted 30 federal actions**
+  since January 2025 that they say raise health risks
+  from the data-center buildout; **17 mention AI or
+  target data centers**. A UC Riverside / Caltech /
+  RIT study cited in the piece puts associated air
+  pollution at up to **1,300 premature deaths** and
+  more than **$20 billion by 2028**. EPA said it has
+  returned to the "best reading" of the Clean Air
+  Act. See [[federal-ai-policy]] (The Verge; ARA
+  daily digest 2026-09-13).

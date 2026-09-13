@@ -4,10 +4,11 @@ title: The verification bottleneck
 type: concept
 aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: The 2026 constraint that models emit research-shaped output faster than specialists can check it; 25 living Fields Medalists published A Severe Misalignment of AI in Mathematics against racing famous problems as leaderboard items.
+description: Models emit research-shaped output faster than specialists can check it; Clay said a Navier-Stokes claim has apparently been settled while prize evaluation is deliberately unhurried, a day after 25 Fields Medalists published against racing famous problems.
 created_at: 2026-08-02
-timestamp: 2026-09-12T00:00:00Z
+timestamp: 2026-09-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
@@ -272,3 +273,22 @@ claim, and the dispute resolves on **relay credibility rather than
   remain bottlenecks** — this page's constraint restated
   as a lab thesis (The Decoder; ARA daily digest
   2026-09-12).
+
+## Clay acknowledges a Navier-Stokes claim without awarding it (2026-09-13)
+
+- **The Clay Mathematics Institute wrote that the
+  problem "has apparently been settled"** and that
+  prize evaluation **"is deliberately unhurried."**
+  The note **does not name [[openai]] or a model**.
+  This is the institutional reply to this week's
+  contested Navier–Stokes announcement; the 25
+  Fields Medalists' letter that led yesterday's
+  digest is the community reply, not a new filing
+  today. "Settled" is **not awarded**. The Fields
+  letter climbed from 766/757 overnight to
+  **1145/1083** by 18:25 UTC and held both the #1
+  AI slot and the most-commented item on the entire
+  HN front page for most of Saturday; Clay's note
+  sat at **297/239** at close. See [[openai]] and
+  [[astra]] (Clay Mathematics Institute,
+  mathandai.org; ARA daily digest 2026-09-13).

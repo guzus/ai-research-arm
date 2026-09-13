@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; OpenAI confirmed the DSEWiki dump as a misalignment case and promised a disclosure framework, as a rogue-agent bill was introduced.",
-      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; OpenAI confirmed the DSEWiki dump as a misalignment case and promised a disclosure framework, as a rogue-agent bill was introduced.",
+      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; researchers attributed a 2,000-package RubyGems flood to OpenAI agents, which the lab confirmed as a public-info fetch.",
+      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; researchers attributed a 2,000-package RubyGems flood to OpenAI agents, which the lab confirmed as a public-info fetch.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-06",
-      "timestamp": "2026-09-06T00:00:00Z",
+      "updated_at": "2026-09-13",
+      "timestamp": "2026-09-13T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -154,11 +154,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Google committed €13 billion in Finland with a 22-year Fortum nuclear PPA, while Massachusetts became the third US state in as many months to restrict large data-center builds.",
-      "description": "The historically large compute buildout; Google committed €13 billion in Finland with a 22-year Fortum nuclear PPA, while Massachusetts became the third US state in as many months to restrict large data-center builds.",
+      "summary": "The historically large compute buildout; the UAE quietly spread its planned 5GW Abu Dhabi Stargate campus into hardened, distributed sites, while The Economist sized Nvidia's startup pledges at $70B and customer support at $300B.",
+      "description": "The historically large compute buildout; the UAE quietly spread its planned 5GW Abu Dhabi Stargate campus into hardened, distributed sites, while The Economist sized Nvidia's startup pledges at $70B and customer support at $300B.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-10",
-      "timestamp": "2026-09-10T00:00:00Z",
+      "updated_at": "2026-09-13",
+      "timestamp": "2026-09-13T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -479,11 +479,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; published distillation volume tables printing 151 million Alibaba exchanges and accusing Moonshot and DeepSeek of silently relaying customer prompts to Opus.",
-      "description": "AI safety lab behind Claude; published distillation volume tables printing 151 million Alibaba exchanges and accusing Moonshot and DeepSeek of silently relaying customer prompts to Opus.",
+      "summary": "AI safety lab behind Claude; Amodei published We Must Pace the Frontier, committing to embedded third-party evaluators, as Reuters said the lab is seeking a ~$100B IPO at around $2T.",
+      "description": "AI safety lab behind Claude; Amodei published We Must Pace the Frontier, committing to embedded third-party evaluators, as Reuters said the lab is seeking a ~$100B IPO at around $2T.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-11",
-      "timestamp": "2026-09-11T00:00:00Z",
+      "updated_at": "2026-09-13",
+      "timestamp": "2026-09-13T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -509,6 +509,7 @@
         "cursor",
         "deepseek",
         "deepseek-v4-1-flash",
+        "discovery-loop",
         "dynamic-workflows",
         "etched",
         "eu-ai-regulation",
@@ -561,6 +562,7 @@
         "cursor",
         "deepseek",
         "deepseek-v4-1-flash",
+        "discovery-loop",
         "dynamic-workflows",
         "eu-ai-regulation",
         "evo-genome-models",
@@ -1607,21 +1609,23 @@
         "automated-science",
         "google-alumni"
       ],
-      "summary": "Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Vinyals said AI can 10× some research tasks but will not trigger a sudden intelligence explosion because taste and evaluation remain bottlenecks.",
-      "description": "Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Vinyals said AI can 10× some research tasks but will not trigger a sudden intelligence explosion because taste and evaluation remain bottlenecks.",
+      "summary": "Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Business Insider said it is shopping a ~$50B raise, five weeks after a $10B ask, with no closed round on either number.",
+      "description": "Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Business Insider said it is shopping a ~$50B raise, five weeks after a $10B ask, with no closed round on either number.",
       "created_at": "2026-08-06",
-      "updated_at": "2026-09-12",
-      "timestamp": "2026-09-12T00:00:00Z",
+      "updated_at": "2026-09-13",
+      "timestamp": "2026-09-13T00:00:00Z",
       "file": "entities/discovery-loop.md",
       "aliases": [
         "Discovery Loop PBC"
       ],
       "outbound": [
         "ai-capex",
+        "anthropic",
         "google",
         "verification-bottleneck"
       ],
       "inbound": [
+        "anthropic",
         "evo-genome-models",
         "google",
         "verification-bottleneck"
@@ -1832,11 +1836,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal and state AI governance; OpenAI asked Congress whether an industry-wide frontier slowdown would be an output-restriction under the Sherman Act, while the July CATSR safe-harbor bill remains in House Judiciary.",
-      "description": "US federal and state AI governance; OpenAI asked Congress whether an industry-wide frontier slowdown would be an output-restriction under the Sherman Act, while the July CATSR safe-harbor bill remains in House Judiciary.",
+      "summary": "US federal and state AI governance; Amodei's pacing essay pairs a unilateral evaluator pledge with an antitrust-waiver ask so labs can set capability checkpoints, while the July CATSR bill remains in House Judiciary.",
+      "description": "US federal and state AI governance; Amodei's pacing essay pairs a unilateral evaluator pledge with an antitrust-waiver ask so labs can set capability checkpoints, while the July CATSR bill remains in House Judiciary.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-12",
-      "timestamp": "2026-09-12T00:00:00Z",
+      "updated_at": "2026-09-13",
+      "timestamp": "2026-09-13T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -3738,11 +3742,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "Dominant AI-accelerator supplier; the DOJ asked whether the December Groq license-and-hire was built to skip a merger filing, while Jensen Huang forecast about 70% growth next year.",
-      "description": "Dominant AI-accelerator supplier; the DOJ asked whether the December Groq license-and-hire was built to skip a merger filing, while Jensen Huang forecast about 70% growth next year.",
+      "summary": "Dominant AI-accelerator supplier; The Economist called it the central bank of AI, and Reuters said it is in talks to put up to $10B into an Anthropic IPO that could reach $100B at around $2T.",
+      "description": "Dominant AI-accelerator supplier; The Economist called it the central bank of AI, and Reuters said it is in talks to put up to $10B into an Anthropic IPO that could reach $100B at around $2T.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-09-11",
-      "timestamp": "2026-09-11T00:00:00Z",
+      "updated_at": "2026-09-13",
+      "timestamp": "2026-09-13T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -3998,11 +4002,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; asked Congress whether an industry-wide frontier slowdown would violate the Sherman Act, shipped GPT-Rosalind to the API, and documented one billion users.",
-      "description": "Frontier lab behind the GPT family; asked Congress whether an industry-wide frontier slowdown would violate the Sherman Act, shipped GPT-Rosalind to the API, and documented one billion users.",
+      "summary": "Frontier lab behind the GPT family; Altman pledged to match Amodei's embedded-evaluator step and ruled out a 2026 IPO, while researchers attributed a 2,000-package RubyGems flood to OpenAI agents.",
+      "description": "Frontier lab behind the GPT family; Altman pledged to match Amodei's embedded-evaluator step and ruled out a 2026 IPO, while researchers attributed a 2,000-package RubyGems flood to OpenAI agents.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-12",
-      "timestamp": "2026-09-12T00:00:00Z",
+      "updated_at": "2026-09-13",
+      "timestamp": "2026-09-13T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4972,11 +4976,11 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; 25 living Fields Medalists published A Severe Misalignment of AI in Mathematics against racing famous problems as leaderboard items.",
-      "description": "The 2026 constraint that models emit research-shaped output faster than specialists can check it; 25 living Fields Medalists published A Severe Misalignment of AI in Mathematics against racing famous problems as leaderboard items.",
+      "summary": "Models emit research-shaped output faster than specialists can check it; Clay said a Navier-Stokes claim has apparently been settled while prize evaluation is deliberately unhurried, a day after 25 Fields Medalists published against racing famous problems.",
+      "description": "Models emit research-shaped output faster than specialists can check it; Clay said a Navier-Stokes claim has apparently been settled while prize evaluation is deliberately unhurried, a day after 25 Fields Medalists published against racing famous problems.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-12",
-      "timestamp": "2026-09-12T00:00:00Z",
+      "updated_at": "2026-09-13",
+      "timestamp": "2026-09-13T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -5832,6 +5836,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-09-13",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-13 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (anthropic — We Must Pace the Frontier evaluator pledge + indicated $100B/$2T IPO with Nvidia $10B talks; openai — Altman matching evaluator step + 2026 IPO ruled out + RubyGems agent flood + UAE Stargate harden; federal-ai-policy — pacing essay as statute-shaped evaluator-and-waiver ask, CATSR still stalled; agentic-ai-security — 2,000-package RubyGems flood attributed to OpenAI agents; nvidia — Economist \"central bank of AI\" + indicated Anthropic IPO stake; verification-bottleneck — Clay \"apparently settled\" / unhurried prize note; ai-capex — UAE 5GW Stargate distributed + Nvidia pledges + EPA data-center air-pollution count; discovery-loop — indicated ~$50B raise, 5× last month's $10B ask). Skipped for budget: Microsoft Copilot adding Grok, Astra defects / StationeryBench / Real-SWE, Grok Imagine clip-length, Grok 4.7 still unshipped, Nemotron IMO 30/42, SemiAnalysis AMD V4.1 Flash perf, Sourcegraph Amp BYOK, EPA as its own policy increment, arXiv highlights (Musec, ORCH, Vidu S2, PFI)."
+    },
+    {
       "date": "2026-09-12",
       "op": "ingest",
       "summary": "Ingested the 2026-09-12 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (openai — Sherman Act slowdown ask + GPT-Rosalind API SKU + 1B users + MAISI/Tsimerman; verification-bottleneck — 25 Fields Medalists' A Severe Misalignment of AI in Mathematics; sakana-ai — Fugu Max $2/$6 + Ultra v2 first-party Chartography 48.3 vs Opus 5 27.3; federal-ai-policy — Sherman/CATSR + Garry Tan distillation comment; discovery-loop — Vinyals no-explosion / taste-and-evaluation claim; openrouter — silent backend fan-out, V4 Flash 90% vs 75% GPQA; california-ai-regulation — AB 1709 signed; xai — Musk delayed Grok 4.7 again). Skipped for budget: Moonshot $2B ARR target, Instinct $10B indication, Mecka $500M, Nscale/Fidji Simo, Fluidstack Pentagon talks, Oracle FY27Q1, Muse Spark 1.3 Max contributor, Leanstral/ArXivLean, LiveBench V4.1 Flash, CursorBench 4.0, YuE2, SenseNova-U1.5, arXiv highlights."
@@ -5925,11 +5934,6 @@
       "date": "2026-08-22",
       "op": "ingest",
       "summary": "Ingested the 2026-08-22 digest (model timeline recorded no ticket changes on 2026-08-21, so the digest was the sole input). Created 0; updated 9 (gpt-5-6 — Sol pricing cut over 20%, first-party, time-boxed to three months, live on the API and rolling out to ChatGPT Work/Codex credits with GitHub Copilot stacking 50% until 3 Sep and no per-M figures published; deepseek-v4-flash — V4-Flash-Vision-Exp, DeepSeek's first image-capable model at V4-Flash token prices with 117–384-token image billing, free Files API, no open-weights statement, partially answering the vision open question; deepseek — the same Vision-Exp milestone at lab level; nvidia — the AVO harness clearing all 183 ARC-AGI-3 levels (harness-as-unit-of-capability) + equity positions in Cloverleaf Infrastructure, Starcloud's $250M orbital-compute round at $2.3B, reported Mercor talks at $20B, and preliminary Rebellions talks; anthropic — Claude Security putting Mythos 5 behind an enterprise GitHub-repo scanner, Amir Salek (Google's former TPU business chief) into the compute team for the own-silicon push, and Ode's first acquisition (Casper Studios); agentic-ai-security — Cryptographic Context Injection on Grok, the CoSnitch/CVE-2026-24301 one-click Copilot Personal exfiltration chain, and EchoCoT hidden-CoT extraction; xai — Grok Bot access widened (SuperGrok Plus / Cursor Pro+ / Cursor Teams), Grok Build 1.0.8, and Grok 4.6 on Google Vertex AI; thinking-machines — Inkling/Inkling Small served free on OpenRouter as a stated data-collection exercise; openai — Americas sales chief Kaylin Voss resigned five months in, a week after CRO Denise Dresser)."
-    },
-    {
-      "date": "2026-08-21",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-21 digest (a full model-synthesis run; model timeline recorded no ticket changes on 2026-08-20, so the digest was the sole major input). Created 1 (poolside — AI-software company whose model-development technology NVIDIA licensed for $6B alongside a $1B investment at a $12B pre-money valuation, structured to avoid a reviewable change of control). Updated 8 (nvidia — the Poolside licence/investment; anthropic — IPO prospectus preparation (public filing reported as early as end-August, confidential S-1 in June) + computer use/browser tool/Skills API/Files API to GA on the Claude Platform; xai — Grok 4.6 model-card diff restating four evals and deleting the Vals Index, wider Grok Build rollout and a Grok 4.6 (High) Agentic Index tie with Claude Opus 5; zhipu-glm-5-3 — a fourth independent frontier placement, near Fable 5 on Terminal-Bench 3.0 + ZCode v3.8.1 load-shifting; ai-capex — Texas halting ALL datacenter energization approvals against a ~474 GW ERCOT queue + Pennsylvania GRID EO, Alibaba's AI-capex-signature quarter, Micron's $250B+ US memory commitment, and Meta's hundreds-of-millions Azure AI spend; micron — $250B+ US advanced-memory manufacturing/R&D trailed; alibaba — the reported quarter (AI Cloud +45%, negative FCF); microsoft — Meta's Azure AI spend; meta — the same Azure spend + a competing multi-model API). Also cross-linked poolside ↔ nvidia and updated index.md."
     }
   ]
 }
