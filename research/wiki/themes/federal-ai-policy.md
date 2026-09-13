@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; OpenAI asked Congress whether an industry-wide frontier slowdown would be an output-restriction under the Sherman Act, while the July CATSR safe-harbor bill remains in House Judiciary.
+description: US federal and state AI governance; Amodei's pacing essay pairs a unilateral evaluator pledge with an antitrust-waiver ask so labs can set capability checkpoints, while the July CATSR bill remains in House Judiciary.
 created_at: 2026-06-03
-timestamp: 2026-09-12T00:00:00Z
+timestamp: 2026-09-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
@@ -868,6 +869,41 @@ footing for the first time in the cycle.
   courtroom sanction, sitting next to
   [[california-ai-regulation|California]] signing AB 1709
   (The Verge, Ars Technica; ARA daily digest 2026-09-12).
+
+## Amodei's pacing essay makes the evaluator-and-waiver ask concrete (2026-09-13)
+
+- **[[anthropic]]'s *We Must Pace the Frontier* is the
+  day's statute-shaped story.** Amodei says recursive
+  self-improvement has been advancing since roughly this
+  summer and that a more capable swarm could take over
+  the internet in **6–12 months**. The lab unilaterally
+  commits to **METR-like embedded evaluators** (desks,
+  badges, publish-without-edits) and asks governments to
+  force peers to match. The essay pairs that pledge with
+  an **antitrust-waiver ask** so labs can set capability
+  checkpoints, plus **four global tiers** from
+  bioterror-use bans up to a SALT-style RSI speed limit.
+  The July **CATSR** bill that would create that waiver
+  is **still in House Judiciary** — the same stalled
+  instrument this page recorded yesterday against
+  [[openai]]'s Sherman Act question (darioamodei.com,
+  WIRED context; ARA daily digest 2026-09-13).
+- **Altman and Musk matching Amodei is not a pact.**
+  Altman pledged "employee-like" evaluator access with
+  no named team, start date, or publish-without-edits
+  clause; Musk wrote four words. No lab paused a run,
+  China is not in the room, and Cohere's Aidan Gomez
+  called the package a **cartel** the same hour. This
+  is the first same-day three-lab public alignment on
+  pacing since the 2026-07-29 "Pacing the Frontier"
+  letter — still a tweet stack, not a coordination
+  agreement. See [[openai]] (Sam Altman, Elon Musk,
+  Aidan Gomez; ARA daily digest 2026-09-13).
+- **The essay closed as HN's #1 AI story** (**453 pts /
+  627 comments**), jumping from 103/125 at 15:34 UTC.
+  Commenters split between "desks and badges now" and
+  Gomez's cartel read. That is salience, not a vote
+  (Hacker News; ARA daily digest 2026-09-13).
 
 ## Open questions
 

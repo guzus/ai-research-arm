@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: Dominant AI-accelerator supplier; the DOJ asked whether the December Groq license-and-hire was built to skip a merger filing, while Jensen Huang forecast about 70% growth next year.
+description: Dominant AI-accelerator supplier; The Economist called it the central bank of AI, and Reuters said it is in talks to put up to $10B into an Anthropic IPO that could reach $100B at around $2T.
 created_at: 2026-06-05
-timestamp: 2026-09-11T00:00:00Z
+timestamp: 2026-09-13T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
@@ -494,4 +495,39 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   capability **107** ahead of RTX Spark PCs dated to
   October (The Decoder, NVIDIA; ARA daily digest
   2026-09-11).
+
+## The Economist's "central bank" frame and an indicated Anthropic IPO stake (2026-09-13)
+
+- **The Economist called NVIDIA the central bank of
+  AI**, citing about **$5.4 trillion** of market value,
+  more than **$70 billion** of startup pledges, and
+  **$300 billion** of customer support over three
+  years, plus a **$500 billion** Apollo / BlackRock /
+  KKR mobilisation that is a **headline ambition, not
+  committed cash**. CFO Colette Kress said labs where
+  NVIDIA expects to use its **balance sheet** could be
+  roughly a **quarter of next year's business**. The
+  HN evening money story landed at **312/214**. This
+  is the named-outlet restatement of the circularity
+  this page has tracked since the ~$500B syndicate
+  (The Economist, HN; ARA daily digest 2026-09-13).
+- **Reuters said NVIDIA is in talks to put up to $10
+  billion** into an [[anthropic]] raise that could
+  reach **$100 billion at around $2 trillion**. Both
+  companies are silent. The $10 billion can still be
+  the November 2025 compute partnership restated, or
+  the same "up to $10B" investor slot this page
+  already recorded against Anthropic's 14.8 GW book
+  on 2026-09-07. Treat "in talks" as indicated. See
+  [[anthropic]] and [[ai-capex]] (Reuters; ARA daily
+  digest 2026-09-13).
+- **UAE Stargate is being hardened, not cancelled.**
+  NVIDIA is a named partner (with G42, [[openai]],
+  Oracle, Cisco, SoftBank) on a first-phase **$30
+  billion 1 GW** cluster whose original
+  **10-square-mile / 5GW** Abu Dhabi site is being
+  spread into hardened, distributed facilities. G42
+  says the first **200 MW** is still due this year.
+  See [[ai-capex]] (Reuters; ARA daily digest
+  2026-09-13).
 

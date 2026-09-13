@@ -4,10 +4,11 @@ title: Discovery Loop
 type: entity
 aliases: ["Discovery Loop PBC"]
 tags: [ai-research-lab, public-benefit-corporation, automated-science, google-alumni]
-description: Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Vinyals said AI can 10× some research tasks but will not trigger a sudden intelligence explosion because taste and evaluation remain bottlenecks.
+description: Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Business Insider said it is shopping a ~$50B raise, five weeks after a $10B ask, with no closed round on either number.
 created_at: 2026-08-06
-timestamp: 2026-09-12T00:00:00Z
+timestamp: 2026-09-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-08-06", path: research/digest/2026-08-06-digest.md}
 ---
@@ -59,6 +60,21 @@ departure is a spin-out rather than a defection.
   math-as-leaderboard letter tracked on
   [[verification-bottleneck]] (The Decoder; ARA daily
   digest 2026-09-12).
+
+- **Business Insider said Discovery Loop is shopping
+  a ~$50 billion raise (2026-09-13)**, five weeks
+  after the same desk had a **$10 billion** ask — a
+  **5×** mark-up with **no closed round on either
+  number**. Dean, Ghemawat, Le, and Vinyals have not
+  confirmed. [[google|Alphabet]] remains a founding
+  investor and cloud partner. Treat $50 billion as
+  **indicated**. The financing talk lands against
+  Vinyals' same-week no-explosion / taste-and-evaluation
+  claim and Amodei's same-day RSI-is-starting essay
+  on [[anthropic]] — the lab whose product *is*
+  experiment volume is now being priced as if that
+  volume is a $50B company (Business Insider,
+  Reuters; ARA daily digest 2026-09-13).
 
 ## Open questions
 
