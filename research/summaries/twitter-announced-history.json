@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-08 18:00 UTC",
-    "headline": "INTEL REACHES AGREEMENT TO MANUFACTURE CHIPS FOR APPLE DEVICES",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-08-twitter-18h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2052794379388272979"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-08 21:00 UTC",
-    "headline": "JAN LEIKE STEPS AWAY FROM RUNNING ALIGNMENT AT ANTHROPIC \u2014 ETHAN PEREZ + SAM PRICE TAKE OVER, LEIKE STARTS NEW RESEARCH PROJECT",
-    "source": "@janleike",
-    "source_file": "research/summaries/2026-05-08-twitter-21h-headlines.json",
-    "url": "https://x.com/janleike/status/2052807760291733505"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-08 21:00 UTC",
-    "headline": "OPENAI ADMITS ACCIDENTAL COT GRADING AFFECTED GPT-5.4 THINKING, GPT-5.1-5.4 INSTANT, GPT-5.3/5.4 MINI; GPT-5.5 UNAFFECTED",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-08-twitter-21h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2052845764507062349"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-08 21:00 UTC",
-    "headline": "OPENAI CITES REDWOOD, APOLLO, METR ON COT GRADING DISCLOSURE \u2014 REDWOOD POST CONFIRMS PRE-PUBLICATION REVIEW, NOT INDEPENDENT AUDIT",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-08-twitter-21h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2052845768567066907"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-08 21:00 UTC",
     "headline": "DEEPMIND AI CO-MATHEMATICIAN HITS 48% ON FRONTIERMATH TIER 4 \u2014 GEMINI 3.1 PRO BASE SCORES 19% ALONE, ENTIRE JUMP FROM AGENTIC SCAFFOLD",
@@ -24720,5 +24684,33 @@
     "headline": "UCLA MATH CIRCLE PAPER CREDITS OPUS 5 AND GPT SOL 5.6 ON LORENTZIAN BOUNDED RATIOS",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2098951653282263169"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-13 11:41:55 UTC",
+    "headline": "META'S WANG: ALIGNMENT CAN GATE FRONTIER SCALING AS MSL RAISES ITS SHARE",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2099015997525291211"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-13 11:41:55 UTC",
+    "headline": "NYT: OBAMA SAYS AI IN PRIVATE HANDS CAN BE DANGEROUS, URGES 2028 AND HOUSE AGENDA",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2099064116518305976"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-13 11:41:55 UTC",
+    "headline": "HASSABIS: AMODEI'S PACING DIRECTION IS CORRECT, POINTS TO FRONTIER STANDARDS BODY",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2098909516582490602"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-13 11:41:55 UTC",
+    "headline": "NCP-ARCHPREVIEW MATCHES OLMO-3-7B PRETRAIN LOSS ON 51.3% OF TOKENS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2099098442131726770"
   }
 ]
