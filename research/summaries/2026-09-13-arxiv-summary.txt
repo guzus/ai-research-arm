@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-13
+
+TOP 5 PAPERS:
+• NCP-ArchPreview — latent-space LM (NCP+NTP), 8.9B/5.73T; OLMo-3-7B loss at 51% tokens
+• IMO Gold recipe — Nemotron 3 Ultra NL proofs, 30/42 IMO 2026; open ckpts+data+bench
+• PD power control — B200 disagg serving +20.4% tokens/J vs Max-Q +8.6%; 32% 3-day save
+• Mr.LHDR — 12-hop multimodal deep-research bench; best system 43% OA / 34% SA
+• Diffusion VLM routing — train-free trajectory control; EMNLP 2026 Findings
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
