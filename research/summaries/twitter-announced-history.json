@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 06:00 UTC",
-    "headline": "DEEPSEEK RAISING $7B AT $50B VALUATION \u2014 CHINA'S LARGEST-EVER AI FUNDING ROUND",
-    "source": "@rohanpaul_ai",
-    "source_file": "research/summaries/2026-05-09-twitter-06h-headlines.json",
-    "url": "https://x.com/rohanpaul_ai/status/2052901878728659037"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 06:00 UTC",
-    "headline": "DEEPSEEK FOUNDER LIANG WENFENG PERSONALLY INVESTS $3B / 40% OF ROUND, RETAINS 90% OWNERSHIP",
-    "source": "@rohanpaul_ai",
-    "source_file": "research/summaries/2026-05-09-twitter-06h-headlines.json",
-    "url": "https://x.com/rohanpaul_ai/status/2052901878728659037"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-09 06:00 UTC",
-    "headline": "LITELLM CVE-2026-42208 HITS CISA KEV \u2014 PRE-AUTH SQLI LEAKS STORED OPENAI/ANTHROPIC API KEYS",
-    "source": "@ThreatLevelAI",
-    "source_file": "research/summaries/2026-05-09-twitter-06h-headlines.json",
-    "url": "https://x.com/ThreatLevelAI/status/2053000454640902371"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-09 06:00 UTC",
-    "headline": "ANTHROPIC COMPUTE STACK NOW 5 PROVIDERS \u2014 GOOGLE $200B, SPACEXAI COLOSSUS, AWS TRAINIUM 2, COREWEAVE, AKAMAI EDGE",
-    "source": "@deepanshusharmx",
-    "source_file": "research/summaries/2026-05-09-twitter-06h-headlines.json",
-    "url": "https://x.com/deepanshusharmx/status/2052974238777348320"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-09 06:00 UTC",
-    "headline": "TENCENT OPEN-SOURCES CUBE SANDBOX \u2014 MICROVM RUNTIME FOR AI AGENTS, 60MS COLD START, 25-50X FASTER",
-    "source": "@kiruwaaaaaa",
-    "source_file": "research/summaries/2026-05-09-twitter-06h-headlines.json",
-    "url": "https://x.com/kiruwaaaaaa/status/2053002455965655282"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-09 09:00 UTC",
-    "headline": "BYTEDANCE HIKES 2025 AI INFRASTRUCTURE CAPEX 25% TO \u00a5200B (~$28B) ON MEMORY CHIP COST SURGE \u2014 SCMP",
-    "source": "@INFOFLOWfx",
-    "source_file": "research/summaries/2026-05-09-twitter-09h-headlines.json",
-    "url": "https://x.com/INFOFLOWfx/status/2053027831869735024"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-09 09:00 UTC",
     "headline": "ELON MUSK REPLIES TO ANTHROPIC BLACKMAIL RESEARCH: \"SO IT WAS YUD'S FAULT? MAYBE ME TOO\"",
@@ -24672,5 +24618,47 @@
     "headline": "AWS DECEPTION BENCHMARK: ALL 12 CODE-SCANNING MODELS MISLABEL SAFE CODE 41-99% OF THE TIME",
     "source": "@softonic",
     "url": "https://x.com/softonic/status/2099475308978061461"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-14 19:49:15 UTC",
+    "headline": "TRUMP CALLS AI RISK A \"HOAX\" AND A \"SICK CONSPIRACY\" \u2014 NO US SLOWDOWN, NO PAUSE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2099506546476728736"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-14 19:49:15 UTC",
+    "headline": "PALANTIR, NVIDIA AND BOOZ ALLEN RESTRICT ANTHROPIC'S FABLE FOR SENSITIVE WORK OVER DATA RETENTION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2099505985740058711"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-14 19:49:15 UTC",
+    "headline": "VANCE: FRONTIER LABS BEGGING TO BE REGULATED \"FEELS LIKE A BIT OF A TROJAN HORSE\"",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2099549395880657217"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-14 19:49:15 UTC",
+    "headline": "MICROSOFT PUBLISHES DRAFT HUMANIST AI CODE OF CONDUCT \u2014 20 PRINCIPLES, NO ENFORCEMENT",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2099500454912606325"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-14 19:49:15 UTC",
+    "headline": "PERPLEXITY PUTS LOCAL PORTABLE COMPUTER ON WINDOWS RTX GPUS WITH 24GB VRAM OR MORE",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2099520789221376213"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-14 19:49:15 UTC",
+    "headline": "BOLT FORGE RUNS OPEN-WEIGHTS ONLY \u2014 GLM 5.3 DEFAULT, 92.2 VS 101.0 FOR CLAUDE OPUS 5",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2099535055475368071"
   }
 ]
