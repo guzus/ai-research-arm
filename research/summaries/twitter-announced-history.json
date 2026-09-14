@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-09 04:00 UTC",
-    "headline": "DEMIS HASSABIS PERSONALLY AMPLIFIES AI CO-MATHEMATICIAN LAUNCH 7H AFTER PUSHMEET PRIMARY",
-    "source": "@demishassabis",
-    "source_file": "research/summaries/2026-05-09-twitter-04h-headlines.json",
-    "url": "https://x.com/demishassabis/status/2052921911726747768"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-09 04:00 UTC",
-    "headline": "MIRAE ASSET: XAI COLOSSUS 1 RAN AT JUST 11% MFU VS META/GOOGLE 40%+ \u2014 HETEROGENEOUS H100/H200/GB200 STRAGGLER EFFECT FORCED LEASE TO ANTHROPIC",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-09-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2052957921563316619"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 04:00 UTC",
-    "headline": "MIRAE: ANTHROPIC LEASE GENERATES $5-6B/YR FOR XAI AT $2.60/GPU-HOUR \u2014 ALMOST PERFECTLY HEDGES $6B ANNUALIZED LOSS AHEAD OF $1.75T SPACEXAI IPO IN JUNE",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-09-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2052953133262000238"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 04:00 UTC",
-    "headline": "MIRAE: ANTHROPIC CONVERTS $5B COMPUTE SPEND INTO EXPECTED $15B INFERENCE-DRIVEN ARR; CUMULATIVE COMMITTED CAPACITY NOW 14.8GW VS OPENAI'S 30GW 2030 TARGET",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-09-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2052953133262000238"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-09 04:00 UTC",
-    "headline": "SGLANG + RADIXARK SHIP 4X ISO-INTERACTIVITY THROUGHPUT IMPROVEMENT FOR DEEPSEEK V4 INFERENCE ON GB300",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-09-twitter-04h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2052916556972065271"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 06:00 UTC",
-    "headline": "ANTHROPIC SIGNS $1.8B SEVEN-YEAR CLOUD DEAL WITH AKAMAI \u2014 AKAMAI'S LARGEST EVER; $AKAM +20%",
-    "source": "@faststocknewss",
-    "source_file": "research/summaries/2026-05-09-twitter-06h-headlines.json",
-    "url": "https://x.com/faststocknewss/status/2052812182270951679"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 06:00 UTC",
-    "headline": "DARIO AMODEI: ANTHROPIC HIT 80X Q1 2026 ANNUALIZED REVENUE GROWTH VS INTERNAL 10X PLAN",
-    "source": "@battista212",
-    "source_file": "research/summaries/2026-05-09-twitter-06h-headlines.json",
-    "url": "https://x.com/faststocknewss/status/2052812182270951679"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-09 06:00 UTC",
     "headline": "DEEPSEEK RAISING $7B AT $50B VALUATION \u2014 CHINA'S LARGEST-EVER AI FUNDING ROUND",
@@ -24686,5 +24623,54 @@
     "headline": "AMODEI ON CBS: PACING DOES NOT MEAN ANTHROPIC STOPS RELEASING MORE ADVANCED MODELS",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2099352591926980634"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-14 12:35:52 UTC",
+    "headline": "AI SELLOFF GOES GLOBAL ON PACING CALLS \u2014 SOFTBANK -13.2%, KIOXIA -9.8%, ASM INTERNATIONAL -10%",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2099421635153448985"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-14 12:35:52 UTC",
+    "headline": "SEMIS UNDERPERFORM S&P BY 4.7 POINTS PREMARKET \u2014 SOXX -5.4% AS META +2.1%, ALPHABET +1.4%",
+    "source": "@DV_Memetics",
+    "url": "https://x.com/DV_Memetics/status/2099477275041247573"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-14 12:35:52 UTC",
+    "headline": "CHINA REJECTS AI SLOWDOWN \u2014 GLOBAL TIMES CALLS IT A 'SILENT AI COLD WAR,' FOREIGN MINISTRY BACKS REFUSAL",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2099457575234179254"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-14 12:35:52 UTC",
+    "headline": "ANTHROPIC COURTS INVESTORS AT $2 TRILLION VALUATION WHILE AMODEI CAMPAIGNS TO SLOW THE FRONTIER",
+    "source": "@ashleycapoot",
+    "url": "https://x.com/ashleycapoot/status/2099475677149876588"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-14 12:35:52 UTC",
+    "headline": "SENATE WEIGHS STATUTORY DUTY OF CARE FOR AI FIRMS PLUS AUTHORITY TO BLOCK UNSAFE MODEL RELEASES",
+    "source": "@DV_Memetics",
+    "url": "https://x.com/DV_Memetics/status/2099477275041247573"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-14 12:35:52 UTC",
+    "headline": "SAKANA AI SHIPS PC-ALM \u2014 LOCAL-LEARNING ALTERNATIVE TO BACKPROP TRAINS 1,000-LAYER NETWORKS",
+    "source": "@hardmaru",
+    "url": "https://x.com/hardmaru/status/2099470099136606525"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-14 12:35:52 UTC",
+    "headline": "AWS DECEPTION BENCHMARK: ALL 12 CODE-SCANNING MODELS MISLABEL SAFE CODE 41-99% OF THE TIME",
+    "source": "@softonic",
+    "url": "https://x.com/softonic/status/2099475308978061461"
   }
 ]
