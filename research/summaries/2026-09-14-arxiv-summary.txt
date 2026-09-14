@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-14
+
+TOP 5 PAPERS:
+• Occamy-1.0 — open Qwen3.6-35B-A3B co-work agent at the cost–performance Pareto knee; weights+data
+• Physics eval audit — expert re-grade: GPT-5.6-Sol HLE-Phys 47→79%, CMT 61→87%; benches near-saturated
+• Byte vs token distill — Zettlemoyer/Lewis: EOT-1B beats Token-1B asymptotically; 6× more data-efficient
+• SQD serving — subquadratic disagg: +53% tokens/J GLM 5.2, +31% Nemotron 3 Ultra, +56% Gemma 4 31B
+• K-Bench — unlearning certificates fail as agents; TOFU/MUSE miss 22–86% leaks via tools/CoT/memory
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
