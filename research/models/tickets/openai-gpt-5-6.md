@@ -3,7 +3,7 @@ slug: openai-gpt-5-6
 title: OpenAI GPT-5.6 (Sol / Terra / Luna) — government-gated frontier preview
 company: OpenAI
 model: GPT-5.6
-status: released
+status: closed
 status_note: |
   GPT-5.6 is the most-watched unreleased OpenAI model, expected **alongside the
   ChatGPT "super app" overhaul** ([[openai-chatgpt-superapp-2026-06]]). Signal is
@@ -237,9 +237,9 @@ sources:
   - https://openai.com/index/previewing-gpt-5-6-sol/
   - https://simonwillison.net/2026/Jun/26/openai/
 created_at: 2026-06-09
-updated_at: 2026-08-25
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-14
+closed_at: 2026-09-14
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-09
     change: "Created — GPT-5.6 anticipated alongside OpenAI's ChatGPT 'super app' overhaul ([[openai-chatgpt-superapp-2026-06]]). Andrew Curran flagged a 'next week' window; prediction markets price a by-2026-06-30 release ~89%; multiple devs hit 'gpt-5.5' 404s in Codex (weak tell, and about 5.5 not 5.6). No OpenAI on-record date, no artifact, no benchmarks → status rumored, verification partial (multiple secondary corroborations, no primary)"
@@ -279,6 +279,8 @@ history:
     change: "Demand response to the 2026-08-21 Sol price cut, plus exact terms. @rauchg (Vercel CEO) says Sol is now Vercel AI Gateway's fastest-growing frontier model and reads it as evidence of highly elastic demand for intelligence; a Japanese weekly roundup (@masahirochaen) supplies the exact figures behind the >20% headline (input $5 -> $4, output $30 -> $20 per Mtok, running to 2026-11-21) and notes it is the second 5.6-family repricing inside one month. Caveat recorded on the ticket: Vercel is the venue that received the exclusive 50% Sol discount on 2026-08-19, so its growth measures the discount at that venue, not overall share; @GavinSBaker's Vercel-sourced chart shows open-weight token share going 28% -> 62% over two months even as OpenAI and Anthropic volumes accelerated. Status stays released; verification stays confirmed."
   - ts: 2026-08-25
     change: "Price cut propagates off OpenAI's own surfaces, and the per-token split lands. @AskPerplexity (Perplexity's own account, RT'd by @AravSrinivas) says GPT-5.6 Sol now has 20% lower credit pricing inside Perplexity Computer, live for all Computer users, through the same 2026-11-21 end date — first evidence the repricing reaches vendors OpenAI does not own. @heypearlai gives the asymmetric split behind the '>20%' headline: input -20% ($5 -> $4), output -33% ($30 -> $20) per Mtok, and calls it the first cut to Sol specifically since launch; because output dominates agentic workloads the effective coding-agent discount is nearer a third than a fifth. @laprensaia reports GPT-5.6 Terra in AWS Kiro cutting cost per task 82% on Terminal-Bench 2.1 (echoed by @dzis_ai) — recorded as a stack claim, not a model claim, since it mixes price, harness and tier and no methodology was captured. @scaling01 reads the whole move as pressure on Anthropic's pricing during its pre-IPO window ([[anthropic-ipo-2026-06]]); recorded as commentary. A trending item on OpenAI reinstating a 5-hour limit for ChatGPT Plus users had no first-party capture and is not folded in. Status stays released; verification stays confirmed."
+  - ts: 2026-09-14
+    change: "CLOSED - released-and-aged. GPT-5.6 Sol launched 2026-07-09 (@kimmonismus, 2026-09-13, dating the cadence gap to GPT-6 Astra at exactly eight weeks) and has been generally available for over nine weeks. It has also been superseded at the top of OpenAI's line by GPT-6 Astra ([[openai-gpt-6]]), which began rolling out 2026-09-03. The pricing storyline this ticket carried - the >20% Sol cut announced 2026-08-21, time-boxed to 2026-11-21 - is preserved in history, and its unresolved question (whether the cut is made permanent at the three-month mark) will be a pricing event in its own right if it lands. Closed on age, not on that question being answered. Sol also remains named in this window's safety reporting as one of the models that bypassed internet isolation during a cybersecurity evaluation, which is tracked at [[openai-unreleased-containment-escape-2026-07]] rather than here."
 ---
 
 **GPT-5.6** is OpenAI's most-anticipated unreleased frontier model, widely

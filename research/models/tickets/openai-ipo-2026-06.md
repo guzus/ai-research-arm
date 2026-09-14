@@ -35,7 +35,7 @@ status_note: |
   reaction). Pairs with the same day's GPT-5.6 federal-stagger story
   ([[openai-gpt-5-6]]) as compounding near-term monetization constraints on
   frontier AI.
-expected: "NYT reports (2026-06-26) OpenAI leaning toward delaying IPO to 2027 from Q3/Q4 2026, Altman holding for $1T valuation (~$13B 2025 revenue, ~$2B/mo now, hoping to ~triple this year); no OpenAI confirmation. Public S-1 with detailed financials to follow per SEC review cadence; possible debut as early as September 2026 (media inference) or slipping to 2027 per the NYT lean. SoftBank -12–13%, Nikkei -4%, KOSPI circuit breaker on the report"
+expected: "Altman has now ruled out a 2026 IPO on the record, citing unfinished safety, alignment and government/industry-coordination work — consistent with this ticket's recorded 2027 lean. Pending: any 2027 timing guidance, and whether the stated safety rationale or the valuation target is the operative constraint."
 labels:
   - openai
   - ipo
@@ -50,6 +50,8 @@ sources:
   - "@kimmonismus"
   - "@NikkeiAsia"
   - "@AndrewCurran_"
+  - https://x.com/kimmonismus/status/2099139034052182360
+  - https://x.com/NewsOrbitUS/status/2099477211178819687
 polymarket:
   - event_slug: openai-ipo-by
     market_id: "656312"
@@ -62,7 +64,7 @@ polymarket:
     question: "OpenAI $1T+ valuation in 2026?"
     outcome: "In 2026"
 created_at: 2026-06-09
-updated_at: 2026-07-13
+updated_at: 2026-09-14
 closed_at: null
 closed_reason: null
 history:
@@ -72,6 +74,8 @@ history:
     change: "NYT reported OpenAI is leaning toward delaying its IPO to 2027 (from Q3/Q4 2026), with Altman pushing advisers for a $1T valuation and rejecting lower offers; advisers warned retail appetite may not hold after SpaceX's volatile post-IPO trading (ATH $201.80→$154.54, -23%; [[spacex-ipo-2026-06]]). Financials per NYT: ~$13B 2025 revenue, ~$2B/mo now, hoping to ~triple this year; bankers/lawyers hired for Q3/Q4 2026; prior private valuation ~$852B (Mar 2026). Severe market reaction: SoftBank -12–13% (~$65B OpenAI exposure), ¥5.6T erased, Nikkei -4%, KOSPI circuit breaker (-5.81%). Single-sourced to NYT ('people familiar'), no OpenAI confirmation/denial — the delay could be negotiating posture (bridge financing) rather than a fixed decision. The filing stays confirmed; the 2027 lean + $1T ask is NYT-reported → status confirmed, verification confirmed (credible outlet + observable market reaction). Pairs with the GPT-5.6 federal-stagger story ([[openai-gpt-5-6]]) as compounding near-term monetization constraints. Sources: @kimmonismus (NYT relay), @NikkeiAsia, @AndrewCurran_."
   - ts: 2026-07-13
     change: "Linked Polymarket odds (metadata-only, no status change): 'Will OpenAI IPO by December 31 2026?' (event openai-ipo-by, market 656312, ~22% Yes at link time) and 'OpenAI $1T+ valuation in 2026?' (event openai-1t-valuation-in-2026, market 1294378, ~58% Yes) — the two markets price exactly this ticket's open questions (IPO timing after the NYT 2027-lean report, and the $1T ask Altman is reportedly holding out for). IDs read from the gamma API."
+  - ts: 2026-09-14
+    change: "Altman rules out a 2026 IPO on the record, which resolves this ticket's main open question in the direction it already leaned. @kimmonismus (2026-09-13 14:12 UTC), relaying a Fortune interview: 'He told Fortune that OpenAI will not go public in 2026 and has discussed pauses at new capability levels to allow more progress on safety and alignment.' Corroborated by two independent aggregators the next day: @NewsOrbitUS (2026-09-14 12:35 UTC) 'Sam Altman said OpenAI will not hold an IPO in 2026, arguing that going public now would be \"ill-advised\" because the company still has major work to do on AI safety, alignment, and coordination with governments and the industry', and @ZanistaAI 'Altman rules out a 2026 IPO, citing unfinished AI safety work.' This confirms the NYT-reported 2027 lean this ticket recorded on 2026-06-26. Two things worth separating and NOT merging: the stated reason is safety readiness, and it arrives in the same 24 hours as Altman's pacing post ([[anthropic-pace-the-frontier-2026-09]]), so the rationale is consistent with his public position — but this ticket previously recorded Altman holding out for a $1T valuation, and no source in this window says which constraint is actually binding. The competitive contrast is now sharp: OpenAI shelves its listing on safety grounds in the same week Anthropic is reported meeting investors toward an October debut at ~$2T ([[anthropic-ipo-2026-06]]). Status stays confirmed; no 2027 date was given."
 ---
 
 OpenAI **confirmed on record, via its own newsroom**, that it has

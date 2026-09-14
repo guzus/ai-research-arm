@@ -3,7 +3,7 @@ slug: anthropic-claude-watermarking-2026-08
 title: Report that Anthropic will watermark everything Claude writes
 company: Anthropic
 model: Claude
-status: rumored
+status: closed
 status_note: |
   **@every (2026-08-24, relayed by its CEO @danshipper):** "**Anthropic is
   going to watermark everything Claude writes. You will not be able to see
@@ -54,12 +54,14 @@ verification: unverified
 sources:
   - "@danshipper"
 created_at: 2026-08-25
-updated_at: 2026-08-25
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-14
+closed_at: 2026-09-14
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-08-25
     change: "Created — @every, relayed by its CEO @danshipper (2026-08-24), reports Anthropic will watermark everything Claude writes, invisible to readers and to existing AI detectors; the captured post is truncated, so only that much of the claim is on record. Status rumored, verification unverified: Every is a named publication carrying its own reporting, which beats an anonymous leak, but there is no Anthropic statement, docs change, engineering post or second outlet, and @AnthropicAI/@ClaudeDevs posted about other shipping work in the same window without addressing it. Ticket pre-records the testable implications of the claim — a keyed sampling-time watermark would be first-party provenance rather than public detection, would be paraphrase-fragile, and would interact with the ZDR-preference storyline and the pre-IPO window ([[anthropic-ipo-2026-06]]) — so that whatever ships can be checked against them."
+  - ts: 2026-09-14
+    change: "CLOSED - stale-rumor-unverified. Opened 2026-08-25 on a single unverified claim and has had no corroborating signal in the 20 cycles since, including the 2026-09-13..09-14 window, which was dense with Anthropic coverage (the 'We Must Pace the Frontier' essay, IPO financials, a published threat report, and a safety-evaluation disclosure) and still contained nothing on watermarking. Anthropic's own threat reporting in this window discussed misuse without reference to any watermarking mechanism. Closed on the >=15-cycle staleness trigger, not on disproof: if a watermarking artifact appears it opens as a new ticket. History preserved."
 ---
 
 Every reports that **Anthropic will watermark everything Claude writes**,

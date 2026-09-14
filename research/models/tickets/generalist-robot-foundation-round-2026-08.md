@@ -3,7 +3,7 @@ slug: generalist-robot-foundation-round-2026-08
 title: Generalist reportedly raises at a $3B valuation for a robot foundation model
 company: Generalist
 model: null
-status: rumored
+status: closed
 status_note: |
   Two independent relays on 2026-08-25/26 say **Generalist** — a robot
   foundation-model startup — is now valued at **$3B** after a new round. They
@@ -31,12 +31,14 @@ verification: unverified
 sources:
   - "@tomcopygen"
 created_at: 2026-08-26
-updated_at: 2026-08-26
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-14
+closed_at: 2026-09-14
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-08-26
     change: "Created — two independent relays on 2026-08-25/26 report that robot-foundation-model startup Generalist has raised at a $3B valuation, and they contradict each other on the amount. @tomcopygen (2026-08-26 07:01 UTC): 'Generalist is now valued at $3B after raising $600M to build a foundation model for robots. The bet is huge, but the real moat won't be the model. It will be proprietary task data from robots working in the messy real world.' An aggregated multi-item AI news digest circulating the same day instead lists 'robotics startup Generalist valued at $3 billion after a $200M round.' The $3B valuation is the only figure both carry; the round size differs by 3x. Neither is primary: no Generalist account post, no named lead investor, no outlet byline, and the higher-engagement of the two relays has effectively zero engagement. Created at rumored / unverified rather than skipped, because a robot-FM company reaching a $3B mark is a real shipping-artifact-class event for this lane and because two independent relays converging on the same valuation is worth a tracked record — but the contradiction is recorded in the ticket rather than resolved by picking a number. If no corroboration arrives within ~15 cycles this closes as stale-rumor-unverified. Context: it lands the same day Skild AI announced its S1 in-context robot foundation model ([[skild-s1-2026-08]]), and against existing robot-FM tickets [[google-gemini-robotics-2-2026-07]], [[figure-helix-02-2026-05]] and [[xiaomi-robotics-1-2026-07]] — the proprietary-real-world-task-data thesis quoted above is the live disagreement across all of them."
+  - ts: 2026-09-14
+    change: "CLOSED - stale-rumor-unverified. Opened 2026-08-26 on a single unverified funding claim; 19 cycles with no corroboration, no named lead, no close, and no Generalist primary statement. The 2026-09-13..09-14 window carried several robotics items (NVIDIA's SONIC whole-body motion foundation model at [[nvidia-sonic-humanoid-model-2026-09]]; Chinese regulators curbing humanoid IPOs at [[china-humanoid-ipo-curbs-2026-09]]) and none touched this round. Closed on the staleness trigger rather than on disproof - a confirmed raise opens as a new ticket. History preserved."
 ---
 
 Two relays say **Generalist**, a robot foundation-model company, has raised at

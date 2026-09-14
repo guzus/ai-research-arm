@@ -64,8 +64,9 @@ sources:
   - "@shashj"
   - "@theinformation"
   - "@AndrewCurran_"
+  - https://x.com/AndrewCurran_/status/2099173166828720526
 created_at: 2026-06-03
-updated_at: 2026-07-29
+updated_at: 2026-09-14
 closed_at: null
 closed_reason: null
 history:
@@ -81,6 +82,8 @@ history:
     change: "The Information reports the voluntary pre-release review framework nearing completion with firmer mechanics: up to 30 days pre-release federal access, NSA + CAISI named as reviewing bodies, OpenAI/Anthropic/Google already negotiating and have seen a draft. Cross-link OpenAI's Washington preview this week ([[openai-gpt-6]]) as a possible instance of this mechanism. Status stays confirmed; verification stays confirmed for the underlying order."
   - ts: 2026-07-29
     change: "Scope-of-review debate + rival alignment. The Information (@leomschwartz, Jul 28 21:54 UTC): 'There are still concerns from smaller companies that they might be frozen out of this process. That it will only be written with the top three companies in mind' — i.e. the 'covered frontier model' threshold may be calibrated to capture only OpenAI/Anthropic/Google-scale labs. Separately, The Information reports OpenAI and Anthropic — 'archrivals' elsewhere — are 'aligning on two policy goals: broader government reviews of advanced models and tighter scrutiny of Chinese open-source AI,' explicitly wanting the same capability threshold imposed on Meta and xAI rather than just themselves (WesRoth analysis piece, consistent with the 06-26 entry's 'Meta is the lone holdout' finding). Status stays confirmed; verification stays confirmed."
+  - ts: 2026-09-14
+    change: "The administration publicly rejects a slowdown, while Senate negotiators are reported to be considering the opposite. PRESIDENT TRUMP, asked whether the AI industry should slow down or be more regulated (@AndrewCurran_, 2026-09-13 16:27 UTC, ~1.6K likes): 'I think you have a lot of negative forces that are bringing it up that shouldn't be bringing it up, and they're bringing up things that won't happen. But whoever wins with AI wins.' Corroborated by an FT-attributed relay (@kimmonismus): 'Donald Trump has rejected calls for an AI slowdown after tech bosses and Democrats urged tighter regulation of the industry over rising fears that the technology poses an existential threat.' White House AI czar David Sacks replied to Amodei directly, but ONLY truncated retweet text was captured ('Dario has written that we need to \"pace the frontier,\" and Sam has agreed. People may be surprised by my response: go ahead…') — his full position is explicitly NOT recorded here, because the visible fragment is ambiguous between agreement and sarcasm. CONGRESS, pointing the other way (Reuters via @DV_Memetics, 2026-09-14 12:36 UTC): 'Senate negotiators are considering a duty of care for AI companies and authority to block unsafe model releases' — single aggregator, no link, recorded as a claim to watch rather than a legislative fact, but directly relevant to this ticket because an authority to block releases is the enforcement mechanism this EO's 'covered frontier model' review framework lacks. Meanwhile @sama publicly asked for the opposite of a patchwork: 'We welcome a federal framework that sets consistent safety requirements for frontier AI.' Status stays confirmed. Full context of the industry debate at [[anthropic-pace-the-frontier-2026-09]]."
 ---
 
 On **2026-06-02**, President Trump signed an executive order creating a

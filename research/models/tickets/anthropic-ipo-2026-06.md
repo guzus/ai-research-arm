@@ -72,7 +72,7 @@ status_note: |
   named source and is not adopted here. @rohanpaul_ai (2026-09-07) relays David
   Sacks arguing an Anthropic IPO would enlarge the funding base behind AI-doom
   advocacy — commentary, not a fact about the offering.
-expected: "Bankers are telling potential investors (2026-08-22, @AndrewCurran_) it may raise >$100B at a ~$2T valuation \u2014 the largest IPO of all time \u2014 with the latest rumors pointing to a September listing. Anthropic is now reported (2026-08-25) to be preparing to tell investors its total addressable market exceeds $30T, above the $26.5T SpaceX claimed in May as the largest actionable market in human history. Investor-relayed figures as of 2026-08-17: ~$65B ARR at end-July, ~$11.5B 2Q26 revenue, >40% of ARR indirect. All of it pending an actual public S-1 or on-record confirmation"
+expected: "Reported: seeking up to $100B at a ~$2T valuation, with reports now pointing to an October listing and NVIDIA weighing an anchor stake of up to $10B. Financial claims on the record via FT/The Information: profitable for a second consecutive quarter, >80% gross margin before distribution-partner revenue share and training cost. Pending: an actual S-1, confirmation of the NVIDIA anchor, and reconciliation with the $517B compute commitments reported the same week."
 labels:
   - corporate-action
   - ipo
@@ -99,6 +99,9 @@ sources:
   - https://x.com/GavinSBaker/status/2096257640884027500
   - "@aleabitoreddit"
   - "@rohanpaul_ai"
+  - https://x.com/jukan05/status/2099267844185964889
+  - https://x.com/ns123abc/status/2099305545672933420
+  - "@DV_Memetics"
 polymarket:
   - event_slug: anthropic-ipo-by
     market_id: "2413330"
@@ -106,7 +109,7 @@ polymarket:
     question: "Anthropic IPO by Dec 31, 2026?"
     outcome: "Dec 31 2026"
 created_at: 2026-06-02
-updated_at: 2026-09-07
+updated_at: 2026-09-14
 closed_at: null
 closed_reason: null
 history:
@@ -126,6 +129,8 @@ history:
     change: "Anthropic's own pre-IPO TAM number goes public: more than $30 trillion. @Polymarket (2026-08-25 16:09 UTC, ~1.17K engagement): 'JUST IN: Anthropic is reportedly expected to tell investors its total addressable market exceeds $30,000,000,000,000.00.' @AndrewCurran_ (16:18 UTC, ~719 engagement) supplies the scale comparison: 'Anthropic estimates their TAM at $30 trillion! This would be far in excess of the total addressable market opportunity of $26.5 trillion estimated by SpaceX in May, that at the time they called the largest actionable market in human history.' @scaling01 posted the underlying breakdown slide ('Anthropic defining their TAM'), and a market-side relay (@drop_grl) pairs the figure with the ~$2T target valuation this ticket already carries, against SpaceX's $1.77T. What this actually is matters: a number Anthropic is REPORTED to be preparing to tell investors - a pitch-deck denominator, not a filed disclosure. No public S-1 has appeared, no Anthropic account has posted it, and a TAM that large is a claim about the size of the addressable labour-and-software market rather than a revenue projection, so it constrains almost nothing about near-term financials. It is consistent in direction with the September-listing and ~$2T rumors already recorded. Status stays confirmed and verification stays confirmed for the confidential filing itself, which is separately sourced; the TAM figure specifically is report-grade and flagged as such."
   - ts: 2026-09-07
     change: "Diligence detail and an ARR accounting question. The Information (2026-09-05, repeated 09-06) reports potential IPO investors are pressing Anthropic for disclosure beyond standard financial statements — specifically revenue per token and revenue per gigawatt of compute — and that what Anthropic discloses could set a benchmark for OpenAI and other AI companies; no AI company currently publishes those units. Recorded as speculation and labelled as such by its author: @GavinSBaker (2026-09-05) argues Anthropic shifted gross -> net ARR accounting and stripped Meta and Chinese distillation revenue from its $65B ARR figure, pre-positioning for Meta turning them off post-listing ('pure speculation'). Not adopted: @aleabitoreddit's 2026-09-06 relay of $2T-next-month chatter (no named source), and David Sacks' commentary via @rohanpaul_ai that an Anthropic IPO would enlarge the AI-doom funding base. Status and verification unchanged."
+  - ts: 2026-09-14
+    change: "Financials, timing and an anchor investor all move in one window — and a contradiction lands next to them. FINANCIALS (FT via @jukan05, 2026-09-13 22:40/22:43 UTC): 'ANTHROPIC HAS TOLD INVESTORS IT EXPECTS TO POST A PROFIT FOR TWO CONSECUTIVE QUARTERS' and 'Anthropic's gross margins are above 80% before accounting for revenue shared with distribution partners, including Amazon, and the cost of training its models.' Restated by @ns123abc (2026-09-14 01:13 UTC) as profitable for a second straight quarter ahead of a $2T IPO, with investors said to predict $120B ARR by Christmas and ~$360B by end-2027 — those ARR figures are third-hand investor talk and are NOT adopted here. @kimmonismus supplies the comparison and its caveat: OpenAI reported 33% in 2025, Microsoft Cloud 66% in FY2026, 'Different periods and definitions, so not directly comparable.' SIZE/TIMING/ANCHOR (Reuters via @DV_Memetics, @ZanistaAI, 2026-09-14 12:35/12:36 UTC): seeking up to $100B at a $2T valuation, reports pointing to an October listing, and NVIDIA weighing an anchor investment of up to $10B. CONFIRMED-ADJACENT: CNBC's @ashleycapoot (12:29 UTC) reports Anthropic meeting prospective investors 'ahead of its potentially historic market debut' while Amodei pushes for an AI slowdown, framing it as 'a tough balancing act'. THE CONTRADICTION, recorded not buried: The Information the same window reports compute commitments of up to $517B against $180B guided to investors through 2029 — now tracked at [[anthropic-compute-commitments-2026-09]]. An 80% gross margin that excludes training cost and forward capex commitments is not inconsistent with that, but it is the other half of the same question, and the in-window critique made exactly this point (@iamgingertrash: 'The S1 only shows you 3 & 4'). No S-1 has been captured; the only mention of one is an unlinked assertion inside that critique, so an S-1 is NOT treated as existing. Status and verification unchanged at confirmed — this is dense press reporting, not a filing. See also [[anthropic-pace-the-frontier-2026-09]] for the slowdown argument being made mid-process."
 ---
 
 Anthropic **confidentially filed an S-1 registration statement with

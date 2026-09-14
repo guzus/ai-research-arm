@@ -3,7 +3,7 @@ slug: cursor-origin-launch-2026-08
 title: Cursor Origin — code-hosting platform launches in beta
 company: Anysphere (Cursor) / SpaceX
 model: null
-status: released
+status: closed
 status_note: |
   **Cursor Origin**, a code-hosting platform "deeply integrated with
   Cursor," began rolling out in **beta** on 2026-08-17 (@testingcatalog,
@@ -35,12 +35,14 @@ sources:
   - "@rauchg"
   - "@mark_k"
 created_at: 2026-08-19
-updated_at: 2026-08-19
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-14
+closed_at: 2026-09-14
+closed_reason: released-and-aged
 history:
   - ts: 2026-08-19
     change: "Created — Cursor Origin, a code-hosting platform deeply integrated with Cursor, started rolling out in beta on 2026-08-17 (@testingcatalog 17:30 UTC; @mark_k relaying the launch post). Corroborated from the counterparty side by Vercel CEO @rauchg, who confirmed hosting repos in Origin and deploying to Vercel works end to end. Status released (beta is publicly rolling out); verification confirmed (launch post plus an independent CEO-level firsthand confirmation). Ships under SpaceX-owned Anysphere ([[spacex-cursor-acquisition-2026-06]])."
+  - ts: 2026-09-14
+    change: "CLOSED - released-and-aged. Cursor Origin began its public beta rollout on 2026-08-17 and has been available for four weeks. The open items recorded at creation (general availability, pricing, migration tooling, repo-level agent integration) are product-roadmap questions rather than release-event questions, and none of them moved in this window; the only adjacent Cursor signal was an unrelated single-source 'Cursor Projects (beta)' sighting (@RayFernando1337, 2026-09-13), which is a different artifact and does not belong to this ticket. History preserved."
 ---
 
 **Cursor Origin** is Anysphere's own **code-hosting platform**, rolled out

@@ -3,7 +3,7 @@ slug: gemini-3-7-flash-2026-08
 title: Gemini 3.7 Flash — Google's fastest-growing model launch to date
 company: Google / DeepMind
 model: Gemini 3.7 Flash
-status: released
+status: closed
 status_note: |
   **Gemini 3.7 Flash is shipped and in wide use.** Two Google primaries
   confirmed adoption in-window: **@sundarpichai** (relayed via
@@ -47,12 +47,14 @@ sources:
   - "@testingcatalog"
   - "@kimmonismus"
 created_at: 2026-08-23
-updated_at: 2026-08-23
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-14
+closed_at: 2026-09-14
+closed_reason: released-and-aged
 history:
   - ts: 2026-08-23
     change: "Created — Gemini 3.7 Flash is shipped and, per two Google primaries, the company's fastest-growing model launch to date: @sundarpichai ('smashed previous Gemini growth records in its first week, making it our fastest growing model yet', relayed by @demishassabis 2026-08-22) and @OfficialLoganK ('our fastest growing model launch to date', 2026-08-22 03:39 UTC, ~3,500 likes). Status released / verification confirmed on the two primary accounts describing a completed launch with a measured first week. No model card, pricing, context window, or benchmarks were in this window — both primaries are adoption claims, not spec disclosures. Adjacent context: Gemini 3.1 Flash Live took #1 on Artificial Analysis' Speech Agent Arena (@_philschmid), and a Students tab shipped on Gemini web (@testingcatalog)."
+  - ts: 2026-09-14
+    change: "CLOSED - released-and-aged. Both Google primaries this ticket rests on described a COMPLETED first week as of 2026-08-22 (@sundarpichai: 'smashed previous Gemini growth records in its first week'; @OfficialLoganK: 'our fastest growing model launch to date'), which places the launch on or before 2026-08-15 - four weeks elapsed. It has since been succeeded in the same tier by Gemini 3.8 Flash ([[gemini-3-8-flash-2026-09]]), which shipped 2026-09-02 and which @demishassabis framed as 'another upgrade in under a month' relative to this model. The evidence gaps named at creation (model card, pricing, context window, published benchmarks) were never filled in-window and are recorded as unfilled rather than resolved."
 ---
 
 Google's Flash tier is where its volume lives, so "fastest growing model

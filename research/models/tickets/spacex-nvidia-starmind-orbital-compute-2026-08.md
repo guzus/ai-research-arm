@@ -55,13 +55,16 @@ sources:
   - "@BharatFactsIN"
   - "@JenH7820"
   - "@efecollinsevb"
+  - https://x.com/BitsWattsDesk/status/2099474695775199427
 created_at: 2026-08-25
-updated_at: 2026-08-25
+updated_at: 2026-09-14
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-25
     change: "Created — @elonmusk announced (2026-08-24) that SpaceX, in partnership with NVIDIA, has designed a space-optimized Vera Rubin NVL72 for launch to orbit in Q4 2027 with significant scale in 2028. Relays (@ns123abc, @BharatFactsIN, @JenH7820) add the Starmind branding, 72 Rubin GPUs + 36 Vera CPUs per SpaceX-designed rack, solar power with Starlink laser downlink, up to 1M satellites planned, 'we are exclusive to NVIDIA,' and Grok ground compute scaling 2GW to ~10GW; the same simplified rack is said to deploy terrestrially too. Status confirmed — on-record from a named principal with a named partner, product, date and configuration. Verification partial — no NVIDIA or SpaceX first-party page captured, and the 1M-satellite and 10GW figures are stated intent, not committed builds."
+  - ts: 2026-09-14
+    change: "Hardware specification restated with numbers, from an aggregator rather than a new primary. @BitsWattsDesk (2026-09-14 12:25 UTC): 'Elon Musk says SpaceX and NVIDIA($NVDA) have designed a space-optimized Vera Rubin NVL72 system for launch in Q4 2027, with \"significant scale\" targeted for 2028'; 'NVIDIA says the first-generation STARMIND satellite is based on an optimized Vera Rubin NVL72 system: 72 Rubin GPUs and 36 Vera CPUs'; 'The compute payload is rated at up to 250 kW peak and 175 kW average.' The 72-GPU/36-CPU configuration and the 250 kW peak / 175 kW average power envelope are NEW to this ticket and are exactly the engineering detail its expected-field asked for. Sourcing is weak and stated as such: a zero-engagement account self-declaring its sources as 'SpaceX STARMIND; NVIDIA, 24 August 2026; Elon Musk, 24 August 2026; Morgan Stanley Research, Exhibit 4; Nikkei xTECH, 2 September 2026' — i.e. a restatement of the 2026-08-24 announcement this ticket already records, not independent new reporting, and no NVIDIA or SpaceX first-party post was captured. Verification therefore stays partial and the numbers are recorded as vendor-attributed. The thermal objection raised in the same window remains unanswered by any source: 'Every watt used by the GPUs becomes heat that must leave through a radiator, and every square metre of solar array and cooling surface becomes mass that must survive launch and remain controlled in orbit' — a 175 kW average payload makes that the binding constraint, not the compute. Status stays confirmed."
 ---
 
 SpaceX and NVIDIA say they have co-designed a **space-optimized Vera Rubin
