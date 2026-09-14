@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "When METR last scored the corpus, in December 2025, eight of the twelve published frontier safety frameworks contained commitments to halt development — including OpenAI's own, which has said so since December 2023.",
+      "contradicting_url": "https://metr.org/common-elements",
+      "contradicting_quote": "DATE December 16, 2025 ... This December 2025 version contains references to some developers' updated frontier AI safety policies. ... Anthropic's Responsible Scaling Policy, v2.2 ... Google DeepMind's Frontier Safety Framework, Version 3.0",
+      "severity": "high",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "No published framework, and no statute in any jurisdiction, conditions the initiation of a frontier training run on a safety justification.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Over the eight months before Altman's September remarks, three of the four leading Western labs removed or weakened development-stage commitments — and the independent raters logged it.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

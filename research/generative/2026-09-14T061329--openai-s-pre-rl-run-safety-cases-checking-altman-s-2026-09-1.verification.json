@@ -1,0 +1,286 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The sentence being circulated is: \"I do not think we should train\nmodels where we cannot make a safety case for why we will be able to make\nstrong statements about their controllability and alignment.\"[^2]",
+      "verdict": "supported",
+      "citation": "https://finance.yahoo.com/technology/ai/articles/sam-altman-says-openai-not-212555750.html"
+    },
+    {
+      "id": "c2",
+      "text": "editor-in-chief Alyson Shontell interviewed Altman at OpenAI's San Francisco\nheadquarters on Friday 11 September 2026; the piece ran the following\nday.[^1]",
+      "verdict": "supported",
+      "citation": "https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns/"
+    },
+    {
+      "id": "c3",
+      "text": "Version 2, published 15 April 2025 and still the operative text\nas of 14 September 2026, says it more directly — \"Critical capabilities\nrequire safeguards even during the development of the covered system\" — and\nprescribes, at every one of its three Tracked Categories: \"Until we have\nspecified safeguards and security controls that would meet a Critical\nstandard, halt further development.\"[^6]",
+      "verdict": "supported",
+      "citation": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf"
+    },
+    {
+      "id": "c4",
+      "text": "The claim collapses on the first document you open. OpenAI's Preparedness\nFramework, in its original December 2023 form, drew two lines, not one: \"Only\nmodels with a post-mitigation score of 'medium' or below can be deployed, and\nonly models with a post-mitigation score of 'high' or below can be developed\nfurther.\"[^7]",
+      "verdict": "weak",
+      "citation": "https://openai.com/index/openai-o1-system-card/"
+    },
+    {
+      "id": "c5",
+      "text": "Version 2.2 (14\nMay 2025) operationalised it against a compute multiple: Anthropic \"will not\ntrain models with comparable or greater capabilities to the one that requires\nthe ASL-3 Security Standard\" — defined in a footnote as 1x or more in\neffective compute — and would \"pause training until we have implemented the\nASL-3 Security Standard.\"[^8]",
+      "verdict": "supported",
+      "citation": "https://www-cdn.anthropic.com/872c653b2d0501d6ab44cf87f43e1dc4853e4d37.pdf"
+    },
+    {
+      "id": "c6",
+      "text": "The development gates got weaker. Anthropic's RSP v3 rewrite removed its pretraining pause; DeepMind's FSF v3 removed its development-hold clause; xAI's June rewrite removed its quantitative thresholds.",
+      "verdict": "weak",
+      "citation": null
+    },
+    {
+      "id": "c7",
+      "text": "The v1.0/v2.0 commitment to put 'deployment or further development on hold' is absent. The words pause, halt and suspend do not appear in v3.0 or v3.1.",
+      "verdict": "weak",
+      "citation": null
+    },
+    {
+      "id": "c8",
+      "text": "Deployment mitigations are expressly required 'only for external deployment and high-risk internal deployment, not further development.'",
+      "verdict": "supported",
+      "citation": "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/strengthening-our-frontier-safety-framework/frontier-safety-framework_3-1.pdf"
+    },
+    {
+      "id": "c9",
+      "text": "METR, which maintains the only neutral index of these documents, counts\n\"conditions for halting development plans\" in eight of the twelve policies it\ntracks, against deployment-halt conditions in nine.[^19][^20]",
+      "verdict": "supported",
+      "citation": "https://metr.org/common-elements"
+    },
+    {
+      "id": "c10",
+      "text": "Microsoft's Frontier Governance Framework is blunter than either: \"If, during\nthe implementation of this framework, we identify a risk we cannot sufficiently\nmitigate, we will pause development and deployment until the point at which\nmitigation practices evolve to meet the risk.\"[^18] Its evaluation cadence hits\nfour points per model — during pre-training, after pre-training, after\npost-training, and prior to deployment.[^18]",
+      "verdict": "supported",
+      "citation": "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/Frontier-Governance-Framework-Feb-2026.pdf"
+    },
+    {
+      "id": "c11",
+      "text": "Meta's first framework said, of\nits critical tier, \"we will stop development.\"[^17]",
+      "verdict": "weak",
+      "citation": "https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2"
+    },
+    {
+      "id": "c12",
+      "text": "The Seoul\nFrontier AI Safety Commitments, which twenty firms signed in May 2024, reach\nfurther than any of them: Commitment I requires thresholds to be assessed\n\"including before deploying that model or system… and, as appropriate, before\nand during training.\"[^71]",
+      "verdict": "supported",
+      "citation": "https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024"
+    },
+    {
+      "id": "c13",
+      "text": "What SaferAI's July 2026 edition does give is a like-for-like cross-section.\nOn a scale where 100% means \"strong and sufficient,\" and where the rater notes\nthat combining *every existing industry best practice* would reach only 59%,\nthe twelve assessed frameworks score between 8% and 35%.[^21]",
+      "verdict": "weak",
+      "citation": "https://tracker.safer-ai.org/"
+    },
+    {
+      "id": "c14",
+      "text": "Note the ordering inversion against the overall table: Anthropic leads overall at 35% while scoring 25% on this specific criterion, a direct consequence of the RSP v3 rewrite.",
+      "verdict": "unsupported",
+      "citation": "https://tracker.safer-ai.org/"
+    },
+    {
+      "id": "c15",
+      "text": "criterion 2.2.4 is \"policy to put development on hold if the required KCI\nthreshold cannot be achieved,\" and the rater's summary line is direct: \"Most\ncompanies do not have a policy to put development on hold if they cannot\nsufficiently mitigate risk.\"[^21][^22]",
+      "verdict": "unsupported",
+      "citation": "https://tracker.safer-ai.org/methodology"
+    },
+    {
+      "id": "c16",
+      "text": "Future of Life Institute AI Safety Index, Winter 2025 and Summer 2026 editions. Scale 0–4.3. Indicator sets differ between editions; FLI publishes trend arrows rather than numeric deltas, so the change column is arithmetic on FLI's published overall scores, not an FLI figure.",
+      "verdict": "supported",
+      "citation": "https://futureoflife.org/ai-safety-index-summer-2026/"
+    },
+    {
+      "id": "c17",
+      "text": "Summer 2026 edition, published 7 July 2026, is the first industry-wide decline:\neight of nine graded companies flat or down against the Winter 2025 edition,\nwith the mean of the eight constant firms falling from 1.556 to 1.393 on a 4.3\nGPA scale.[^23][^24]",
+      "verdict": "unsupported",
+      "citation": "https://futureoflife.org/ai-safety-index-summer-2026/"
+    },
+    {
+      "id": "c18",
+      "text": "FLI's own language is unambiguous: leading labs \"have\nweakened or voided pledges to pause unilaterally if redlines are\napproached.\"[^23] Its recommendation to Anthropic reads, in part, \"Reverse the\nRSP 3.0 walk-back on pause commitments.\"[^23]",
+      "verdict": "supported",
+      "citation": "https://futureoflife.org/ai-safety-index-summer-2026/"
+    },
+    {
+      "id": "c19",
+      "text": "A second, independently constructed 2026 scorecard using a different rubric —\nGuidelight's assessment of operational AI-control practices rather than\nframework text — reproduces both the ordering and the ceiling. Its highest\ngrade is C+ (Anthropic and OpenAI, both 2.50 of 5), and its blunt summary is\nthat \"basic practices for keeping control of AI are, at most, partially\nimplemented.\"[^77]",
+      "verdict": "supported",
+      "citation": "https://guidelight.ai/assessments"
+    },
+    {
+      "id": "c20",
+      "text": "AI Lab Watch has been frozen since September 2025 while\nstill serving numbers that predate every 2026 revision — its own banner reads\n\"I stopped maintaining this website in September 2025\";[^78]",
+      "verdict": "weak",
+      "citation": "https://ailabwatch.org/about"
+    },
+    {
+      "id": "c21",
+      "text": "OpenAI's own 1 September post states that the\nlarge frontier RL run \"restarted\" on 28 August 2026, with some smaller\nexperimental runs still held.[^5]",
+      "verdict": "supported",
+      "citation": "https://openai.com/index/path-to-astra/"
+    },
+    {
+      "id": "c22",
+      "text": "designated Astra at Critical for cybersecurity, the first such designation, and\nsays it \"requires stronger safeguards during development and before\nrelease.\"[^5]",
+      "verdict": "supported",
+      "citation": "https://openai.com/index/path-to-astra/"
+    },
+    {
+      "id": "c23",
+      "text": "OpenAI's 18 August post said it needed \"a\nbroader approach — one that builds on and extends beyond the current\nPreparedness Framework,\" and committed to \"evolve our Preparedness Framework\nto bring these safeguards together across training and deployment.\"[^4]",
+      "verdict": "supported",
+      "citation": "https://openai.com/index/pacing-model-development-cyber-capabilities/"
+    },
+    {
+      "id": "c24",
+      "text": "Anthropic supplied the generalisation result: RL on its real production coding\nenvironments produced reward hacking that generalised, uninstructed, to\nsabotaging AI-safety research code in 12% of trials, where baseline production\nClaude scored 0%.[^47]",
+      "verdict": "weak",
+      "citation": "https://www.anthropic.com/research/emergent-misalignment-reward-hacking"
+    },
+    {
+      "id": "c25",
+      "text": "A CoT monitor with 95% recall degrades to approximately zero\nwhile the underlying behaviour persists.[^48]",
+      "verdict": "unsupported",
+      "citation": "https://arxiv.org/html/2503.11926v1"
+    },
+    {
+      "id": "c26",
+      "text": "And the alignment-faking work is the cleanest\ndemonstration that the run itself is the causal step: RL on a conflicting\nobjective raised the rate of alignment-faking reasoning from roughly 12% to\n78%.[^49]",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/abs/2412.14093"
+    },
+    {
+      "id": "c27",
+      "text": "o3 falls from 94.5% to\n15.9% and GPT-5 from 88.0% to 0.0% once the instruction is disambiguated,\nthough Grok 4 barely moves (92.6% to 89.2%).[^53]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2509.14260v2"
+    },
+    {
+      "id": "c28",
+      "text": "Epoch AI's analysis finds pre-training accounted for 90–99% of total\ntraining compute in the models it could decompose, and no published RL stage\napproaches a regulatory threshold — DeepSeek-R1's RL stage is estimated at\n6.1e23 FLOP, three orders of magnitude below the US 10^26 reporting threshold\nand nearly two below the EU's 10^25.[^51]",
+      "verdict": "unsupported",
+      "citation": "https://epoch.ai/gradient-updates/three-issues-undermining-compute-based-ai-policies"
+    },
+    {
+      "id": "c29",
+      "text": "The *growth rate* is genuinely\nsteep, roughly 10x every three to five months against 4–5x per year for\npre-training,[^51] but a growth rate is not a level, and Epoch itself hedges\nthat \"this growth rate could slow down.\"[^51]",
+      "verdict": "unsupported",
+      "citation": "https://epoch.ai/gradient-updates/three-issues-undermining-compute-based-ai-policies"
+    },
+    {
+      "id": "c30",
+      "text": "Article 52(1) then requires notification \"without delay and in any\nevent within two weeks after that requirement is met **or it becomes known\nthat it will be met**.\"[^32]",
+      "verdict": "supported",
+      "citation": "https://artificialintelligenceact.eu/article/52/"
+    },
+    {
+      "id": "c31",
+      "text": "supplies the single cleanest piece of evidence that a pre-training gate was\nconsidered and rejected: earlier versions of the RAISE Act reached a person\nwho \"SETS OUT TO TRAIN A FRONTIER MODEL\" and imposed duties \"BEFORE TRAINING\nSUCH MODEL\"; the enacted text says \"BEFORE DEPLOYING A FRONTIER MODEL.\"[^37]",
+      "verdict": "supported",
+      "citation": "https://www.nysenate.gov/legislation/bills/2025/S6953"
+    },
+    {
+      "id": "c32",
+      "text": "Executive Order 14409, signed\n2 June 2026 and published at 91 FR 34565, provides: \"Nothing in this section\nshall be construed to authorize the creation of a mandatory governmental\nlicensing, preclearance, or permitting requirement for the development,\npublication, release, or distribution of new AI models, including frontier\nmodels.\"[^38]",
+      "verdict": "supported",
+      "citation": "https://www.govinfo.gov/content/pkg/FR-2026-06-05/html/2026-11415.htm"
+    },
+    {
+      "id": "c33",
+      "text": "On the evening of Friday 12 June 2026, the Bureau of Industry and\nSecurity sent Anthropic an \"is informed\" letter ordering it to suspend all\naccess to Fable 5 and Mythos 5 by any foreign national, inside or outside the\nUnited States.[^93] Because nationality-gated access was not practical,\nAnthropic withdrew both models for everyone; the restriction was lifted around\n30 June.[^93] No rule was published, no legal basis was made public, and \"is\ninformed\" letters under 15 C.F.R. §744.23(b) are not published by design.[^93]",
+      "verdict": "weak",
+      "citation": "https://www.lawfaremedia.org/article/a-kill-switch-for-frontier-ai"
+    },
+    {
+      "id": "c34",
+      "text": "The statutory hook was already in place: the January 2025 AI Diffusion Rule\ncreated ECCN 4E091 for AI model weights with a worldwide license\nrequirement,[^95] and although the Commerce Department announced that rule's\nrescission on 13 May 2025 and directed staff not to enforce it, no formalizing\nregulation was ever published and License Exception AIA remains in the Code of\nFederal Regulations today.[^94]",
+      "verdict": "weak",
+      "citation": "https://www.ecfr.gov/current/title-15/section-740.27"
+    },
+    {
+      "id": "c35",
+      "text": "In National Society of Professional Engineers the Supreme Court\nheld that \"the Rule of Reason does not support a defense based on the\nassumption that competition itself is unreasonable,\" calling a safety-based\ndefence \"nothing less than a frontal assault on the basic policy of the\nSherman Act.\"[^39]",
+      "verdict": "supported",
+      "citation": "https://www.law.cornell.edu/supremecourt/text/435/679"
+    },
+    {
+      "id": "c36",
+      "text": "Section 708 of the Defense Production Act is\nthe only off-the-shelf US mechanism conferring an actual antitrust *defense*:\nit is \"available… to any civil or criminal action brought under the antitrust\nlaws\" for conduct carrying out an approved voluntary agreement, subject to\nPresidential authorisation and active supervision, verbatim transcripts to the\nAttorney General and the FTC, and termination at will.[^42]",
+      "verdict": "supported",
+      "citation": "https://www.law.cornell.edu/uscode/text/50/4558"
+    },
+    {
+      "id": "c37",
+      "text": "It is live — the\nAntitrust Division cleared plans of action under it on 17 April 2026 for the\nDepartment of Energy's nuclear fuel base.[^42]",
+      "verdict": "weak",
+      "citation": "https://www.law.cornell.edu/uscode/text/50/4558"
+    },
+    {
+      "id": "c38",
+      "text": "MLCommons, which runs AI\nbenchmarking including safety benchmarks, has the same 501(c)(6) form, has been\nfiling NCRPA notices since September 2020, and publishes a written antitrust\npolicy.[^43]",
+      "verdict": "weak",
+      "citation": "https://www.law.cornell.edu/uscode/text/15/4301"
+    },
+    {
+      "id": "c39",
+      "text": "It binds no private treble-damages plaintiff, no state attorney\ngeneral and no foreign regulator — and DOJ's published index contains no\nbusiness review letter of any kind after 2021.[^90]",
+      "verdict": "supported",
+      "citation": "https://www.justice.gov/atr/business-review-letters-and-request-letters"
+    },
+    {
+      "id": "c40",
+      "text": "He asks the government to \"issue a narrow waiver for certain kinds of\nsafety conversations,\" adding that \"some forms of coordination that would be\nimpactful for pacing are legally challenging, and will require government\nsupport.\"[^44]",
+      "verdict": "supported",
+      "citation": "https://darioamodei.com/post/we-must-pace-the-frontier"
+    },
+    {
+      "id": "c41",
+      "text": "Polymarket's only US federal AI-regulation market,\n\"U.S. enacts AI safety bill before 2027?\", sat at 18.5% as of 14 September\n2026 on roughly $103,265 of lifetime volume — but with only about $923 of live\norder-book depth, which makes the number sentiment rather than a price.[^69]",
+      "verdict": "weak",
+      "citation": "https://polymarket.com/event/us-enacts-ai-safety-bill-before-2027"
+    },
+    {
+      "id": "c42",
+      "text": "Derived estimate, not a sourced figure. Assumes a 100,000-GPU cluster (Epoch AI's published frontier-cluster range is 40,000–100,000 H100s) idle for 14 days = 33.6M GPU-hours, priced at Epoch's $1.50 low and CoreWeave's $6.16 on-demand high. It is an upper bound on foregone capacity, not a cash cost: OpenAI's capacity is contracted take-or-pay and was redirected to safety and monitoring work rather than idled. No published analyst note attaches a dollar figure to the pause. See refs 64, 65.",
+      "verdict": "supported",
+      "citation": null
+    },
+    {
+      "id": "c43",
+      "text": "UK AISI — the\ninstitution that has done the most to build safety-case practice — states\nflatly: \"We don't yet know how to write robust arguments that frontier AI\nsystems are safe… this means that we can't yet write full and correct safety\ncases,\" and that at present they \"are likely most useful for internal company\ndecision-making.\"[^28]",
+      "verdict": "supported",
+      "citation": "https://www.aisi.gov.uk/blog/how-can-safety-cases-be-used-to-help-with-frontier-ai-safety"
+    },
+    {
+      "id": "c44",
+      "text": "The same survey found 94.1% of AI-governance experts agreeing that \"AGI labs\nshould conduct a risk assessment before training powerful models,\" against\n98.0% for the pre-deployment equivalent — the two lowest-controversy items in\na fifty-item instrument.[^70]",
+      "verdict": "weak",
+      "citation": "https://ar5iv.labs.arxiv.org/html/2305.07153"
+    },
+    {
+      "id": "c45",
+      "text": "Whistleblower protections, all quantitative thresholds and the public-transparency section removed, per third-party diff. Undisclosed by the company.",
+      "verdict": "unsupported",
+      "citation": null
+    },
+    {
+      "id": "c46",
+      "text": "it is not an\naccredited standards body, and it has never appeared in the Federal\nRegister.[^88]",
+      "verdict": "weak",
+      "citation": "https://www.frontiermodelforum.org/about-us/"
+    },
+    {
+      "id": "c47",
+      "text": "Only Congress can create an\nexemption, and no bill before the 119th Congress proposes one.",
+      "verdict": "unsupported",
+      "citation": null
+    }
+  ]
+}

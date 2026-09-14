@@ -1,5 +1,5 @@
 {
-  "article_count": 81,
+  "article_count": 82,
   "articles": [
     {
       "claim_count": 18,
@@ -793,6 +793,14 @@
       "stem": "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide",
       "tags": [],
       "title": "AlphaGenome Atlas scored 9 billion variants. It was trained on how rare they are."
+    },
+    {
+      "claim_count": 50,
+      "created_at": "2026-09-14T06:13:29Z",
+      "slug": "openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "stem": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "tags": [],
+      "title": "The gate that was never there — and the ones that were quietly removed"
     }
   ],
   "by_host": {
@@ -874,7 +882,8 @@
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c23"
     ],
     "ai-act-service-desk.ec.europa.eu": [
-      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c41"
+      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c41",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c20"
     ],
     "ai-gateway.vercel.sh": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c03",
@@ -908,7 +917,8 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c16",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c18",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c20",
-      "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c39"
+      "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c39",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c50"
     ],
     "aibase.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c13"
@@ -919,7 +929,8 @@
     "aisi.gov.uk": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c21",
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c22",
-      "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c23"
+      "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c23",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c25"
     ],
     "aitoolsbee.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
@@ -931,6 +942,9 @@
     "alibabacloud.com": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c28",
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c3"
+    ],
+    "alignment.anthropic.com": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c30"
     ],
     "aljazeera.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c31"
@@ -1053,7 +1067,10 @@
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c14",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c6",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c16",
-      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c25"
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c25",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c29",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c40",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c6"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -1124,6 +1141,9 @@
     "aptible.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c21"
     ],
+    "ar5iv.labs.arxiv.org": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c27"
+    ],
     "ara.guzus.xyz": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c12",
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c20"
@@ -1185,7 +1205,8 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c41",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c11",
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c19",
-      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c28"
+      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c28",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c20"
     ],
     "arxiv.org": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c10",
@@ -1395,7 +1416,14 @@
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6",
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c7",
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c8",
-      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c9"
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c9",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c24",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c26",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c28",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c31",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c34",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c35",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c44"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -1736,6 +1764,9 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c5",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c6"
     ],
+    "cdn-dynmedia-1.microsoft.com": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c9"
+    ],
     "cdn.arstechnica.net": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c19",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c20"
@@ -1749,7 +1780,11 @@
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c33",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c14",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c16",
-      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c48"
+      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c48",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c4"
+    ],
+    "cdn.sanity.io": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c6"
     ],
     "censys.com": [
       "2026-08-04T171206--comfyui-company#c29"
@@ -2191,7 +2226,8 @@
     "darioamodei.com": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c9",
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c24",
-      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c8"
+      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c8",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c39"
     ],
     "darpa.mil": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c19"
@@ -2644,7 +2680,9 @@
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c22",
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c35",
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c10",
-      "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c28"
+      "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c28",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c32",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c33"
     ],
     "epochai.substack.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c35"
@@ -2741,7 +2779,8 @@
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c3",
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c33",
       "2026-07-31T051841--situational-awareness-lp-collapse#c24",
-      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c27"
+      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c27",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c41"
     ],
     "federalreserve.gov": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c42"
@@ -2836,7 +2875,8 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c15",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c16",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5",
-      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c8"
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c8",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1"
     ],
     "find-and-update.company-information.service.gov.uk": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c16"
@@ -2925,7 +2965,9 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c25",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c37",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c3",
-      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c7"
+      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c7",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2"
     ],
     "fortunebusinessinsights.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
@@ -2943,6 +2985,10 @@
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c51",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c52",
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c14"
+    ],
+    "futureoflife.org": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c14",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c15"
     ],
     "futurism.com": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c26",
@@ -3089,7 +3135,8 @@
     ],
     "gov.uk": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c14",
-      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c33"
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c33",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c48"
     ],
     "govconwire.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c12"
@@ -3101,7 +3148,8 @@
       "2026-06-22T052035--zhipu-ai-glm#c11",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c31",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c26",
-      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c27"
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c27",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c23"
     ],
     "grandviewresearch.com": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c21"
@@ -3161,7 +3209,8 @@
     ],
     "helpnetsecurity.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c17",
-      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c28"
+      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c28",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c16"
     ],
     "hhmi.org": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c38"
@@ -3313,7 +3362,8 @@
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c4",
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c19",
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c20",
-      "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c9"
+      "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c9",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c19"
     ],
     "inc.com": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c4"
@@ -3524,6 +3574,9 @@
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c4",
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c5"
     ],
+    "knightcolumbia.org": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c43"
+    ],
     "koreaherald.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c4",
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c5",
@@ -3584,7 +3637,11 @@
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c22",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c23",
-      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c13"
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c13",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c37",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c38",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c41",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c42"
     ],
     "law.justia.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c17",
@@ -3610,6 +3667,9 @@
     ],
     "legifrance.gouv.fr": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c26"
+    ],
+    "leginfo.legislature.ca.gov": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c21"
     ],
     "leidendeclaration.ai": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c40"
@@ -3748,6 +3808,9 @@
     "merck.com": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c12"
     ],
+    "metaculus.com": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c45"
+    ],
     "metr.org": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c19",
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c22",
@@ -3758,7 +3821,10 @@
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c11",
       "2026-07-31T051841--situational-awareness-lp-collapse#c28",
       "2026-07-31T051841--situational-awareness-lp-collapse#c29",
-      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c14"
+      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c14",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c10",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c11",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c48"
     ],
     "mevwatch.info": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c17"
@@ -4040,6 +4106,9 @@
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c3",
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c27"
     ],
+    "nysenate.gov": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c22"
+    ],
     "nytimes.com": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c15"
     ],
@@ -4101,7 +4170,12 @@
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-14",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-2",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-5",
-      "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-6"
+      "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-6",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c16",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c17",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c18",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c19",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c3"
     ],
     "opencompute.org": [
       "2026-05-27T035557--800-vdc-architecture#c9"
@@ -4314,7 +4388,8 @@
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c22"
     ],
     "polymarket.com": [
-      "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c13"
+      "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c13",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c46"
     ],
     "ponemon.dtex.ai": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c32"
@@ -4445,7 +4520,8 @@
     "rand.org": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c17",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c23",
-      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c30"
+      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c30",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c36"
     ],
     "raport.valisluureamet.ee": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c43"
@@ -4847,6 +4923,9 @@
     "socket.dev": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c35"
     ],
+    "sources.news": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2"
+    ],
     "specifications.freedesktop.org": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c8"
     ],
@@ -4940,7 +5019,8 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c22",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c23",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c4",
-      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5"
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c47"
     ],
     "stocktitan.net": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c9",
@@ -4973,7 +5053,9 @@
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c4",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c5",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c6",
-      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c7"
+      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c7",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c7",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c8"
     ],
     "storagereview.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c23"
@@ -5329,6 +5411,9 @@
     "theteardown.co": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c22"
     ],
+    "theverge.com": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c49"
+    ],
     "ti.com": [
       "2026-05-27T035557--800-vdc-architecture#c16"
     ],
@@ -5376,6 +5461,11 @@
     ],
     "tori.finance": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c15"
+    ],
+    "tracker.safer-ai.org": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c11",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c12",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c13"
     ],
     "tracxn.com": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c26",
@@ -5649,7 +5739,8 @@
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c6",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c7",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c8",
-      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9"
+      "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c5"
     ],
     "x-stocks.app": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c17"
@@ -5945,6 +6036,9 @@
     "https://adaptyvbio.substack.com/p/protein-design-competition-results": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c9"
     ],
+    "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-51": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c20"
+    ],
     "https://ai-act-service-desk.ec.europa.eu/en/faq": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c41"
     ],
@@ -5992,7 +6086,8 @@
     ],
     "https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c18",
-      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c20"
+      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c20",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c50"
     ],
     "https://aitoolsbee.com/news/cuda-compatible-ai-chip-bytedance-5-6b-backs-huawei-950pr": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
@@ -6000,6 +6095,9 @@
     "https://alia.public.lu/wp-content/uploads/2026/06/European-Commission_Code-of-Practice-on-Transparency-of-AI-Generated-Content.pdf": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c7",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c8"
+    ],
+    "https://alignment.anthropic.com/2026/reward-seeker": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c30"
     ],
     "https://allwork.space/2026/03/moodys-signals-rethink-of-cre-risk-exposure-as-off-book-ai-data-center-leases-top-662b": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c17"
@@ -6126,6 +6224,9 @@
     "https://app.usd.ai/chip": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c4"
     ],
+    "https://ar5iv.labs.arxiv.org/html/2305.07153": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c27"
+    ],
     "https://ara.guzus.xyz/research/generative/2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c12"
     ],
@@ -6244,6 +6345,9 @@
     "https://artificialintelligenceact.eu/article/51": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c40"
     ],
+    "https://artificialintelligenceact.eu/article/52": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c20"
+    ],
     "https://artificialintelligenceact.eu/article/53": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c40"
     ],
@@ -6359,6 +6463,9 @@
     "https://arxiv.org/abs/2406.19314": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c16"
     ],
+    "https://arxiv.org/abs/2407.05694": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c44"
+    ],
     "https://arxiv.org/abs/2407.12404": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c39"
     ],
@@ -6389,6 +6496,9 @@
     ],
     "https://arxiv.org/abs/2411.15114": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c37"
+    ],
+    "https://arxiv.org/abs/2412.14093": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c31"
     ],
     "https://arxiv.org/abs/2412.19437": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c25",
@@ -6616,11 +6726,20 @@
     "https://arxiv.org/abs/2608.21964": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c22"
     ],
+    "https://arxiv.org/html/2303.11341v2": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c34"
+    ],
     "https://arxiv.org/html/2306.07951v4": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c21"
     ],
+    "https://arxiv.org/html/2307.03718v4": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c26"
+    ],
     "https://arxiv.org/html/2402.16786v2": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c25"
+    ],
+    "https://arxiv.org/html/2405.10799v2": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c35"
     ],
     "https://arxiv.org/html/2405.18870v2": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c45"
@@ -6644,11 +6763,17 @@
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c8",
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c9"
     ],
+    "https://arxiv.org/html/2410.21572v1": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c24"
+    ],
     "https://arxiv.org/html/2411.10053v1": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c13"
     ],
     "https://arxiv.org/html/2502.07776v1": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c10"
+    ],
+    "https://arxiv.org/html/2503.11926v1": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c28"
     ],
     "https://arxiv.org/html/2503.18156v3": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c30"
@@ -7048,6 +7173,9 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c5",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c6"
     ],
+    "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/Frontier-Governance-Framework-Feb-2026.pdf": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c9"
+    ],
     "https://cdn.arstechnica.net/wp-content/uploads/2026/07/Bartz-v-Anthropic-Order-Approving-Settlement-7-20-26.pdf": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c19",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c20"
@@ -7062,12 +7190,16 @@
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c23"
     ],
     "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf": [
-      "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c33"
+      "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c33",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c4"
     ],
     "https://cdn.openai.com/pdf/ten-proofs-oai.pdf": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c14",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c16",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c48"
+    ],
+    "https://cdn.sanity.io/files/4zrzovbb/website/0bacdc8440ea96e62a8766d99ebe1d4eea6d5f3a.pdf": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c6"
     ],
     "https://censys.com/blog/comfyui-servers-cryptomining-proxy-botnet": [
       "2026-08-04T171206--comfyui-company#c29"
@@ -7282,6 +7414,9 @@
     ],
     "https://darioamodei.com/post/on-deepseek-and-export-controls": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c24"
+    ],
+    "https://darioamodei.com/post/we-must-pace-the-frontier": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c39"
     ],
     "https://dart.deloitte.com/USDART/home/codification/broad-transactions/asc820-10/roadmap-fair-value-measurements-disclosures/chapter-9-initial-measurement/9-3-model-calibration": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c43"
@@ -7723,7 +7858,8 @@
     "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c1",
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c11",
-      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c4"
+      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c4",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c33"
     ],
     "https://epoch.ai/data-insights/ai-chip-component-cost-shares": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c35"
@@ -7760,6 +7896,9 @@
     ],
     "https://epoch.ai/gradient-updates/moe-vs-dense-models-inference": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c22"
+    ],
+    "https://epoch.ai/gradient-updates/three-issues-undermining-compute-based-ai-policies": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c32"
     ],
     "https://epoch.ai/models/claude-opus-5": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c4"
@@ -8000,6 +8139,9 @@
     "https://finance.yahoo.com/technology/ai/articles/nebius-coreweave-iren-tumble-meta-162444225.html": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c2"
     ],
+    "https://finance.yahoo.com/technology/ai/articles/sam-altman-says-openai-not-212555750.html": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1"
+    ],
     "https://finance.yahoo.com/technology/ai/articles/stripe-talks-acquire-openrouter-potential-215104525.html": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c4"
     ],
@@ -8102,6 +8244,17 @@
     "https://fortune.com/2026/09/08/google-deepmind-ai-predictions-9-billion-mutation-human-genome": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c3",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c7"
+    ],
+    "https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2"
+    ],
+    "https://futureoflife.org/ai-safety-index-summer-2026": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c14",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c15"
+    ],
+    "https://futureoflife.org/ai-safety-index-winter-2025": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c14"
     ],
     "https://futurism.com/ai-researcher-declines-1-billion-offer-meta-mark-zuckerberg": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c26"
@@ -8619,6 +8772,9 @@
     "https://kingy.ai/blog/claude-opus-5-specs-benchmarks-pricing": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c3"
     ],
+    "https://knightcolumbia.org/content/ai-as-normal-technology": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c43"
+    ],
     "https://kr-asia.com/minimaxs-arr-tops-usd-150-million-as-it-pivots-toward-an-ai-platform-model": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c26"
     ],
@@ -8664,6 +8820,9 @@
     ],
     "https://leanprover-community.github.io/mathlib_stats.html": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c35"
+    ],
+    "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c21"
     ],
     "https://leidendeclaration.ai": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c40"
@@ -8772,6 +8931,14 @@
     ],
     "https://metr.org/blog/2026-1-29-time-horizon-1-1": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c28"
+    ],
+    "https://metr.org/common-elements": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c10",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c11"
+    ],
+    "https://metr.org/fsp": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c11",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c48"
     ],
     "https://metr.org/notes/2026-01-22-time-horizon-limitations": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c14"
@@ -9073,6 +9240,17 @@
     ],
     "https://openai.com/index/openai-broadcom-jalapeno-inference-chip": [
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-14"
+    ],
+    "https://openai.com/index/openai-o1-system-card": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c3"
+    ],
+    "https://openai.com/index/pacing-model-development-cyber-capabilities": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c16",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c19"
+    ],
+    "https://openai.com/index/path-to-astra": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c17",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c18"
     ],
     "https://openai.com/index/safety-alignment-long-horizon-models": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c28"
@@ -9388,6 +9566,9 @@
     ],
     "https://polymarket.com/event/ai-bubble-burst-by": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c13"
+    ],
+    "https://polymarket.com/event/us-enacts-ai-safety-bill-before-2027": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c46"
     ],
     "https://ponemon.dtex.ai": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c32"
@@ -9776,6 +9957,9 @@
     "https://socket.dev/blog/unauthorized-ai-agent-execution-code-published-to-openvsx-in-aqua-trivy-vs-code-extension": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c35"
     ],
+    "https://sources.news/p/sam-altman-on-openais-next-model": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2"
+    ],
     "https://specifications.freedesktop.org/secret-service/latest/ch03.html": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c8"
     ],
@@ -9869,7 +10053,8 @@
     "https://stockanalysis.com/stocks/googl/history": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c10",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c13",
-      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c9"
+      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c9",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c47"
     ],
     "https://stockanalysis.com/stocks/gtlb": [
       "2026-08-04T171206--comfyui-company#c32"
@@ -9884,14 +10069,16 @@
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c12"
     ],
     "https://stockanalysis.com/stocks/msft/history": [
-      "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c20"
+      "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c20",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c47"
     ],
     "https://stockanalysis.com/stocks/nvda/history": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c13",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c20",
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c21",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c4",
-      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5"
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c47"
     ],
     "https://stockanalysis.com/stocks/nvda/statistics": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c22",
@@ -9938,6 +10125,16 @@
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c5",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c6",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c7"
+    ],
+    "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/introducing-the-frontier-safety-framework/fsf-technical-report.pdf": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c7"
+    ],
+    "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/strengthening-our-frontier-safety-framework/frontier-safety-framework_3-1.pdf": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c7",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c8"
+    ],
+    "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/updating-the-frontier-safety-framework/Frontier%20Safety%20Framework%202.0.pdf": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c7"
     ],
     "https://stripe.com/newsroom/news/openrouter-and-stripe": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c34"
@@ -10330,6 +10527,14 @@
     "https://tokeninsight.com/en/news/optimism-announced-the-law-of-chains-to-provide-guiding-principle-for-superchain": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c3"
     ],
+    "https://tracker.safer-ai.org": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c11",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c12",
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c13"
+    ],
+    "https://tracker.safer-ai.org/methodology": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c13"
+    ],
     "https://tracxn.com/d/companies/cocoindex/__3uzEhPrOAu9NdwACSSElc-Mw0dsZE4HPDnvFE0co8kg": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c15"
     ],
@@ -10499,6 +10704,9 @@
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c8",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9"
     ],
+    "https://www-cdn.anthropic.com/872c653b2d0501d6ab44cf87f43e1dc4853e4d37.pdf": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c5"
+    ],
     "https://www-cdn.anthropic.com/c5fbac3f0b1280a933ebd26d3cb8bb9f5bdeaf48/Claude%20Opus%205%20System%20Card.pdf": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c19"
     ],
@@ -10550,6 +10758,9 @@
     ],
     "https://www.ainvest.com/news/nvidia-h20-resurgence-pivot-china-ai-trade-catalyst-market-recovery-2507": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c5"
+    ],
+    "https://www.aisi.gov.uk/blog/how-can-safety-cases-be-used-to-help-with-frontier-ai-safety": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c25"
     ],
     "https://www.aisi.gov.uk/blog/how-fast-is-autonomous-ai-cyber-capability-advancing": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c21"
@@ -10680,6 +10891,9 @@
     "https://www.anthropic.com/news/google-broadcom-partnership-compute": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c13"
     ],
+    "https://www.anthropic.com/news/improving-alignment-security-efforts": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c40"
+    ],
     "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c17"
     ],
@@ -10723,6 +10937,12 @@
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c11",
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c12",
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c7"
+    ],
+    "https://www.anthropic.com/research/emergent-misalignment-reward-hacking": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c29"
+    ],
+    "https://www.anthropic.com/rsp-updates": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c6"
     ],
     "https://www.anthropiccopyrightsettlement.com/claim-form": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -11763,6 +11983,9 @@
     "https://www.federalregister.gov/documents/2026/06/10/2026-11571/notice-of-availability-of-designation-of-chinese-military-companies": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c27"
     ],
+    "https://www.federalregister.gov/documents/full_text/text/2026/04/23/2026-07900.txt": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c41"
+    ],
     "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250129a.htm": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c42"
     ],
@@ -11977,6 +12200,9 @@
     "https://www.gov.uk/cma-cases/microsoft-slash-inflection-ai-inquiry": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c14"
     ],
+    "https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c48"
+    ],
     "https://www.gov.uk/government/publications/report-and-impact-assessment-on-copyright-and-artificial-intelligence/report-on-copyright-and-artificial-intelligence": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c33"
     ],
@@ -11991,6 +12217,9 @@
     ],
     "https://www.govinfo.gov/content/pkg/FR-2025-01-16/html/2025-00704.htm": [
       "2026-06-22T052035--zhipu-ai-glm#c11"
+    ],
+    "https://www.govinfo.gov/content/pkg/FR-2026-06-05/html/2026-11415.htm": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c23"
     ],
     "https://www.govinfo.gov/content/pkg/FR-2026-08-21/html/2026-17183.htm": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c27"
@@ -12044,6 +12273,9 @@
     ],
     "https://www.helpnetsecurity.com/2026/04/16/eu-ai-act-logging-requirements": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c28"
+    ],
+    "https://www.helpnetsecurity.com/2026/08/19/openai-model-safety-updates": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c16"
     ],
     "https://www.hhmi.org/hhmi-david-baker-wins-2024-nobel-chemistry": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c38"
@@ -12111,6 +12343,9 @@
     ],
     "https://www.implicator.ai/moonshot-denies-distilling-fable-and-credits-k3-gains-to-its-own-architecture": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c9"
+    ],
+    "https://www.implicator.ai/openai-safety-framework-frontier-training-paused": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c19"
     ],
     "https://www.inc.com/sam-blum/bootstrapped-to-1-billion-surge-ai-ceo-edwin-chen-on-how-he-did-it/91207937": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c4"
@@ -12306,6 +12541,15 @@
     "https://www.law.com/therecorder/2025/01/27/linkedin-suit-says-millions-of-profiles-scraped-by-singapore-firms-fake-accounts": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c4"
     ],
+    "https://www.law.cornell.edu/supremecourt/text/435/679": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c37"
+    ],
+    "https://www.law.cornell.edu/supremecourt/text/493/411": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c38"
+    ],
+    "https://www.law.cornell.edu/uscode/text/15/4301": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c42"
+    ],
     "https://www.law.cornell.edu/uscode/text/17/412": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c13"
     ],
@@ -12320,6 +12564,9 @@
     ],
     "https://www.law.cornell.edu/uscode/text/26/48D": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30"
+    ],
+    "https://www.law.cornell.edu/uscode/text/50/4558": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c41"
     ],
     "https://www.law.cornell.edu/uscode/text/7/6c": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c23"
@@ -12409,6 +12656,12 @@
     ],
     "https://www.merck.com/news/merck-expands-innovative-internal-generative-ai-solutions-helping-to-deliver-medicines-to-patients-faster": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c12"
+    ],
+    "https://www.metaculus.com/questions/17110/us-or-ca-license-to-train-ai-before-2026": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c45"
+    ],
+    "https://www.metaculus.com/questions/21270/labs-pausing-large-training-runs": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c45"
     ],
     "https://www.mevwatch.info": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c17"
@@ -12599,6 +12852,9 @@
     "https://www.nvidia.com/en-us/data-center/h100": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c30"
     ],
+    "https://www.nysenate.gov/legislation/bills/2025/S6953": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c22"
+    ],
     "https://www.nytimes.com/2024/09/27/technology/openai-chatgpt-investors-funding.html": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c15"
     ],
@@ -12716,6 +12972,9 @@
     "https://www.rand.org/pubs/perspectives/PEA4886-1.html": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c23",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c30"
+    ],
+    "https://www.rand.org/pubs/research_reports/RRA2849-1.html": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c36"
     ],
     "https://www.rastanger.com/news/quarterly-redemptions-exceed-fundraising-for-the-first-time-in-non-listed-bdc-market": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c25"
@@ -13390,6 +13649,9 @@
     ],
     "https://www.thestreet.com/technology/nvidia-micron-competitor-kimi-k3-ai-model-beijing-china": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c18"
+    ],
+    "https://www.theverge.com/ai-artificial-intelligence/980817/openai-disbands-preparedness-team": [
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c49"
     ],
     "https://www.ti.com/about-ti/newsroom/news-releases/2026/2026-03-16-ti-unveils-complete-800-vdc-power-architecture-for-future-generation-ai-data-centers-with-nvidia.html": [
       "2026-05-27T035557--800-vdc-architecture#c16"
@@ -14149,7 +14411,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2403,
+  "claim_count": 2453,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -71961,9 +72223,1202 @@
         "https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome"
       ],
       "type": "comparison"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-09-12",
+      "claim": "Sam Altman told Fortune on 2026-09-11 (published 2026-09-12) that OpenAI should not train models where it cannot make a safety case about controllability and alignment.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com",
+        "fortune.com"
+      ],
+      "id": "c1",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/technology/ai/articles/sam-altman-says-openai-not-212555750.html",
+        "https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-09-14",
+      "claim": "METR's cross-framework survey identifies commitments to halt model development in 8 of 12 tracked frontier safety policies.",
+      "confidence": "medium",
+      "hosts": [
+        "metr.org"
+      ],
+      "id": "c10",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://metr.org/common-elements"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-09-14",
+      "claim": "No published frontier safety framework conditions the initiation of a training run on anything; every trigger requires evaluating a model that already exists.",
+      "confidence": "medium",
+      "hosts": [
+        "metr.org",
+        "tracker.safer-ai.org"
+      ],
+      "id": "c11",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c11",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://metr.org/common-elements",
+        "https://metr.org/fsp",
+        "https://tracker.safer-ai.org"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-07-31",
+      "claim": "SaferAI's July 2026 ratings score all twelve assessed frontier safety frameworks between 8% and 35%, with Anthropic highest at 35% and Cohere lowest at 8%.",
+      "confidence": "high",
+      "hosts": [
+        "tracker.safer-ai.org"
+      ],
+      "id": "c12",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c12",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://tracker.safer-ai.org"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-07-31",
+      "claim": "SaferAI scores the criterion 'policy to put development on hold' at 10% for Google DeepMind, 25% for Anthropic, 50% for OpenAI and 50% for Meta.",
+      "confidence": "medium",
+      "hosts": [
+        "tracker.safer-ai.org"
+      ],
+      "id": "c13",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://tracker.safer-ai.org/methodology",
+        "https://tracker.safer-ai.org"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-07-07",
+      "claim": "The Future of Life Institute AI Safety Index fell for 8 of 9 companies between its Winter 2025 and Summer 2026 editions, with xAI dropping from 1.17 to 0.65 and DeepSeek from 1.02 to 0.47.",
+      "confidence": "high",
+      "hosts": [
+        "futureoflife.org"
+      ],
+      "id": "c14",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://futureoflife.org/ai-safety-index-summer-2026",
+        "https://futureoflife.org/ai-safety-index-winter-2025"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-07-07",
+      "claim": "FLI's Summer 2026 index states that leading labs have weakened or voided pledges to pause unilaterally if redlines are approached.",
+      "confidence": "high",
+      "hosts": [
+        "futureoflife.org"
+      ],
+      "id": "c15",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://futureoflife.org/ai-safety-index-summer-2026"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-08-18",
+      "claim": "OpenAI announced on 2026-08-18 a two-week pause in reinforcement learning training on models intended for deployment, with its largest planned frontier RL run on hold.",
+      "confidence": "high",
+      "hosts": [
+        "helpnetsecurity.com",
+        "openai.com"
+      ],
+      "id": "c16",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://openai.com/index/pacing-model-development-cyber-capabilities",
+        "https://www.helpnetsecurity.com/2026/08/19/openai-model-safety-updates"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-09-01",
+      "claim": "OpenAI restarted the large frontier RL run on 2026-08-28, so the pause was over before the mid-September commentary about it.",
+      "confidence": "medium",
+      "hosts": [
+        "openai.com"
+      ],
+      "id": "c17",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c17",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://openai.com/index/path-to-astra"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-09-01",
+      "claim": "OpenAI designated Astra as meeting the Critical cybersecurity capability threshold under its Preparedness Framework, the first such designation.",
+      "confidence": "high",
+      "hosts": [
+        "openai.com"
+      ],
+      "id": "c18",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://openai.com/index/path-to-astra"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-08-18",
+      "claim": "OpenAI estimates its expanded monitoring costs roughly 20% of the inference compute being monitored, a self-reported figure whose denominator is undisclosed.",
+      "confidence": "high",
+      "hosts": [
+        "implicator.ai",
+        "openai.com"
+      ],
+      "id": "c19",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://openai.com/index/pacing-model-development-cyber-capabilities",
+        "https://www.implicator.ai/openai-safety-framework-frontier-training-paused"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-09-14",
+      "claim": "No verbatim Altman statement on 2026-09-14 that existing frontier safety frameworks 'only gate deployment' could be located in any primary source.",
+      "confidence": "medium",
+      "hosts": [
+        "fortune.com",
+        "sources.news"
+      ],
+      "id": "c2",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns",
+        "https://sources.news/p/sam-altman-on-openais-next-model"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2025-08-02",
+      "claim": "The EU AI Act Article 52(1) notification duty attaches within two weeks after the 10^25 FLOP requirement is met or it becomes known that it will be met — an anticipatory disclosure trigger, not an approval gate.",
+      "confidence": "high",
+      "hosts": [
+        "ai-act-service-desk.ec.europa.eu",
+        "artificialintelligenceact.eu"
+      ],
+      "id": "c20",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c20",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://artificialintelligenceact.eu/article/52",
+        "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-51"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-01-01",
+      "claim": "California SB 53 defines a frontier developer as a person who has trained, or initiated the training of, a frontier model, but its only timing obligation is publication before or concurrently with deployment.",
+      "confidence": "high",
+      "hosts": [
+        "leginfo.legislature.ca.gov"
+      ],
+      "id": "c21",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c21",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2025-12-19",
+      "claim": "New York's RAISE Act contained a pre-training trigger in earlier versions that was removed before enactment and replaced with a deployment trigger.",
+      "confidence": "medium",
+      "hosts": [
+        "nysenate.gov"
+      ],
+      "id": "c22",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c22",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.nysenate.gov/legislation/bills/2025/S6953"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-06-05",
+      "claim": "Executive Order 14409 section 3(c) states that nothing in that section authorizes creation of a mandatory governmental licensing, preclearance, or permitting requirement for the development, publication, release or distribution of new AI models.",
+      "confidence": "high",
+      "hosts": [
+        "govinfo.gov"
+      ],
+      "id": "c23",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c23",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.govinfo.gov/content/pkg/FR-2026-06-05/html/2026-11415.htm"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2024-10-28",
+      "claim": "Buhl et al. explicitly scope safety cases to deployment and note only in passing that they may also inform development decisions such as whether to begin a training run.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c24",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c24",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2410.21572v1"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2025-02-10",
+      "claim": "UK AISI states that it is not yet known how to write robust arguments that frontier AI systems are safe, so full and correct safety cases cannot yet be written.",
+      "confidence": "high",
+      "hosts": [
+        "aisi.gov.uk"
+      ],
+      "id": "c25",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c25",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.aisi.gov.uk/blog/how-can-safety-cases-be-used-to-help-with-frontier-ai-safety"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2023-07-06",
+      "claim": "Anderljung et al. proposed in 2023 that licensing for frontier AI could be required at development as well as deployment, including risk assessments ahead of beginning a new training run.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c26",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2307.03718v4"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2023-05-11",
+      "claim": "A 2023 expert survey found 94.1% agreement that AGI labs should conduct a risk assessment before training powerful models, against 98.0% for pre-deployment risk assessment.",
+      "confidence": "high",
+      "hosts": [
+        "ar5iv.labs.arxiv.org"
+      ],
+      "id": "c27",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c27",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://ar5iv.labs.arxiv.org/html/2305.07153"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2025-03-14",
+      "claim": "OpenAI researchers found that optimising chain-of-thought against a monitor caused the monitor's recall to fall to near zero while the agent continued to reward hack at a significant rate.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c28",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c28",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2503.11926v1"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2025-11-21",
+      "claim": "Anthropic reported that RL on real production coding environments produced reward hacking that generalised without instruction to sabotaging AI-safety research code in 12% of trials.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c29",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c29",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/emergent-misalignment-reward-hacking"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2023-12-18",
+      "claim": "OpenAI's Preparedness Framework v1 (Dec 2023) gated further development, not only deployment: only models with a post-mitigation score of high or below could be developed further.",
+      "confidence": "high",
+      "hosts": [
+        "openai.com"
+      ],
+      "id": "c3",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://openai.com/index/openai-o1-system-card"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-08-01",
+      "claim": "A 2026 Anthropic follow-up on an Opus-class model RL-trained on 80 previously-production environments found no evidence of self-preservation, research sabotage, or beyond-episode reward seeking.",
+      "confidence": "medium",
+      "hosts": [
+        "alignment.anthropic.com"
+      ],
+      "id": "c30",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c30",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://alignment.anthropic.com/2026/reward-seeker"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2024-12-18",
+      "claim": "Running RL on a conflicting objective raised Claude 3 Opus's rate of alignment-faking reasoning from about 12% to 78%.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c31",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c31",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2412.14093"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2025-09-11",
+      "claim": "Epoch AI estimates that pre-training accounted for 90-99% of total training compute in the models it analysed, and no published RL stage approaches a 10^26 FLOP regulatory threshold; DeepSeek-R1's RL stage was about 6.1e23 FLOP.",
+      "confidence": "medium",
+      "hosts": [
+        "epoch.ai"
+      ],
+      "id": "c32",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c32",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://epoch.ai/gradient-updates/three-issues-undermining-compute-based-ai-policies"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2025-01-13",
+      "claim": "Epoch AI estimates the amortized hardware and energy cost of a frontier final training run has grown about 2.4x per year since 2016.",
+      "confidence": "high",
+      "hosts": [
+        "epoch.ai"
+      ],
+      "id": "c33",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c33",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2023-05-30",
+      "claim": "Yonadav Shavit's compute-monitoring proposal concedes there is no straightforward way to determine whether an ML chip is running a neural network training job, and that many chips already sold lack the required hardware security features.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c34",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c34",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2303.11341v2"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2024-08-06",
+      "claim": "Heim and Koessler argue training compute can be calculated before a model is deployed and even before it is trained, and can be verified by compute providers without infringing developer confidentiality.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c35",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c35",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2405.10799v2"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2024-06-01",
+      "claim": "RAND's Securing AI Model Weights report defines five security levels SL1-SL5 against 38 attack vectors, and states explicitly that the security levels are not meant to be used as a standard.",
+      "confidence": "medium",
+      "hosts": [
+        "rand.org"
+      ],
+      "id": "c36",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c36",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.rand.org/pubs/research_reports/RRA2849-1.html"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "1978-04-25",
+      "claim": "The Supreme Court held in National Society of Professional Engineers that the Rule of Reason does not support a defense based on the assumption that competition itself is unreasonable, rejecting a safety justification for a competitive restraint.",
+      "confidence": "high",
+      "hosts": [
+        "law.cornell.edu"
+      ],
+      "id": "c37",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c37",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.law.cornell.edu/supremecourt/text/435/679"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "1990-01-22",
+      "claim": "In FTC v. Superior Court Trial Lawyers Association the Supreme Court held that social justifications proffered for a restraint of trade do not make it any less unlawful.",
+      "confidence": "high",
+      "hosts": [
+        "law.cornell.edu"
+      ],
+      "id": "c38",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c38",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.law.cornell.edu/supremecourt/text/493/411"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-09-12",
+      "claim": "Dario Amodei's September 2026 essay asks the US government to mediate or enable pacing discussions for antitrust reasons, and offers capability checkpoints and training-compute limits only as hypothetical schemes.",
+      "confidence": "medium",
+      "hosts": [
+        "darioamodei.com"
+      ],
+      "id": "c39",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c39",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://darioamodei.com/post/we-must-pace-the-frontier"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2025-04-15",
+      "claim": "OpenAI Preparedness Framework v2 states that Critical capabilities require safeguards even during the development of the covered system, and prescribes halting further development until safeguards meeting a Critical standard are specified.",
+      "confidence": "high",
+      "hosts": [
+        "cdn.openai.com"
+      ],
+      "id": "c4",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-08-31",
+      "claim": "Anthropic stated on 2026-08-31 that the world would benefit if the industry adopted a lawful, verifiable, effective mechanism for coordinated pacing, without using the word antitrust.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c40",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c40",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/improving-alignment-security-efforts"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-04-23",
+      "claim": "Section 708 of the Defense Production Act provides an express antitrust defense for conduct taken to carry out an approved voluntary agreement, and DOJ operated it as recently as April 2026 for Department of Energy nuclear fuel plans.",
+      "confidence": "medium",
+      "hosts": [
+        "federalregister.gov",
+        "law.cornell.edu"
+      ],
+      "id": "c41",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c41",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.law.cornell.edu/uscode/text/50/4558",
+        "https://www.federalregister.gov/documents/full_text/text/2026/04/23/2026-07900.txt"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2004-01-01",
+      "claim": "The National Cooperative Research and Production Act expressly excludes from its protection conduct restricting the parties' own production, which forecloses it as a route for a pacing agreement.",
+      "confidence": "medium",
+      "hosts": [
+        "law.cornell.edu"
+      ],
+      "id": "c42",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c42",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.law.cornell.edu/uscode/text/15/4301"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2025-04-15",
+      "claim": "Narayanan and Kapoor argue that the primary defenses against misuse must be located downstream of models, while carving out transparency requirements as a legitimate development-stage intervention.",
+      "confidence": "high",
+      "hosts": [
+        "knightcolumbia.org"
+      ],
+      "id": "c43",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c43",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://knightcolumbia.org/content/ai-as-normal-technology"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2024-07-30",
+      "claim": "Sara Hooker argues that FLOP says nothing about the end performance of a model, only about the number of operations applied to the data, undermining compute thresholds as a governance trigger.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c44",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c44",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2407.05694"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-09-14",
+      "claim": "Metaculus questions on whether the US or California would require licenses to train large AI models before 2026, and on whether a leading lab would pause all training runs above a certain size for safety before 2026, both resolved No in January 2026 and have no open successor.",
+      "confidence": "medium",
+      "hosts": [
+        "metaculus.com"
+      ],
+      "id": "c45",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c45",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://www.metaculus.com/questions/17110/us-or-ca-license-to-train-ai-before-2026",
+        "https://www.metaculus.com/questions/21270/labs-pausing-large-training-runs"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-09-14",
+      "claim": "Polymarket's 'U.S. enacts AI safety bill before 2027?' market traded at 18.5% with about $103,265 of cumulative volume but only about $923 of live order-book depth.",
+      "confidence": "medium",
+      "hosts": [
+        "polymarket.com"
+      ],
+      "id": "c46",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c46",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://polymarket.com/event/us-enacts-ai-safety-bill-before-2027"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-09-11",
+      "claim": "AI-linked equities did not reprice on the safety-slowdown news: NVDA fell 2.34% on 2026-08-18 while MSFT rose 0.27% and GOOGL rose 0.06%, and on 2026-09-11 all three were flat to higher.",
+      "confidence": "medium",
+      "hosts": [
+        "stockanalysis.com"
+      ],
+      "id": "c47",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c47",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data",
+        "market-data",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://stockanalysis.com/stocks/nvda/history",
+        "https://stockanalysis.com/stocks/msft/history",
+        "https://stockanalysis.com/stocks/googl/history"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-09-14",
+      "claim": "The Seoul Frontier AI Safety Commitments reach before and during training in Commitment I, and 12 of 20 signatories published a qualifying framework.",
+      "confidence": "medium",
+      "hosts": [
+        "gov.uk",
+        "metr.org"
+      ],
+      "id": "c48",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c48",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024",
+        "https://metr.org/fsp"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-08-18",
+      "claim": "The Financial Times reported in August 2026 that OpenAI disbanded its preparedness team at the end of July, and OpenAI denied only that the team was disbanded.",
+      "confidence": "medium",
+      "hosts": [
+        "theverge.com"
+      ],
+      "id": "c49",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c49",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.theverge.com/ai-artificial-intelligence/980817/openai-disbands-preparedness-team"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2025-05-14",
+      "claim": "Anthropic's RSP v2.2 section 6.2 committed to pausing pretraining of models at 1x or more effective compute of a model requiring the ASL-3 Security Standard until that standard was implemented.",
+      "confidence": "high",
+      "hosts": [
+        "www-cdn.anthropic.com"
+      ],
+      "id": "c5",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www-cdn.anthropic.com/872c653b2d0501d6ab44cf87f43e1dc4853e4d37.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-04-07",
+      "claim": "Meta's Advanced AI Scaling Framework v2.0 changed the Critical threshold disposition from Stop development to Develop with Mitigations, while adding a defined internal-deployment assessment commitment.",
+      "confidence": "medium",
+      "hosts": [
+        "ai.meta.com"
+      ],
+      "id": "c50",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c50",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-07-08",
+      "claim": "Anthropic replaced the RSP with a comprehensive rewrite as v3.0 effective 2026-02-24, and the current v3.4 (effective 2026-07-08) contains no capability-triggered training pause, no ASL-4 standard, no weight-deletion clause and no effective-compute evaluation cadence.",
+      "confidence": "medium",
+      "hosts": [
+        "anthropic.com",
+        "cdn.sanity.io"
+      ],
+      "id": "c6",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c6",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/rsp-updates",
+        "https://cdn.sanity.io/files/4zrzovbb/website/0bacdc8440ea96e62a8766d99ebe1d4eea6d5f3a.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-04-17",
+      "claim": "Google DeepMind's Frontier Safety Framework v1.0 and v2.0 contained a commitment to put further development on hold; v3.0 (2025-09-22) and v3.1 (2026-04-17) do not.",
+      "confidence": "medium",
+      "hosts": [
+        "storage.googleapis.com"
+      ],
+      "id": "c7",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c7",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/introducing-the-frontier-safety-framework/fsf-technical-report.pdf",
+        "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/updating-the-frontier-safety-framework/Frontier%20Safety%20Framework%202.0.pdf",
+        "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/strengthening-our-frontier-safety-framework/frontier-safety-framework_3-1.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-04-17",
+      "claim": "Google DeepMind FSF v3.1 expressly exempts further development from the deployment-mitigation requirement in its risk-acceptance tiers.",
+      "confidence": "medium",
+      "hosts": [
+        "storage.googleapis.com"
+      ],
+      "id": "c8",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/strengthening-our-frontier-safety-framework/frontier-safety-framework_3-1.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+      "article_created_at": "2026-09-14T06:13:29Z",
+      "article_title": "The gate that was never there — and the ones that were quietly removed",
+      "as_of": "2026-02-01",
+      "claim": "Microsoft's Frontier Governance Framework commits to pausing development and deployment if a risk cannot be sufficiently mitigated, and assesses models during pre-training, after pre-training, after post-training and prior to deployment.",
+      "confidence": "medium",
+      "hosts": [
+        "cdn-dynmedia-1.microsoft.com"
+      ],
+      "id": "c9",
+      "key": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/Frontier-Governance-Framework-Feb-2026.pdf"
+      ],
+      "type": "regulatory"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1179,
+  "reusable_count": 1209,
   "schema_version": 1
 }
