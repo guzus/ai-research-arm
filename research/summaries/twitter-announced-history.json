@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-09 01:00 UTC",
-    "headline": "MUSK VISITS INTEL FAB IN OREGON \u2014 \"LOOKING FORWARD TO A GREAT PARTNERSHIP WITH SPACEX & TESLA\"",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-09-twitter-01h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2052864667836649722"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-09 01:00 UTC",
-    "headline": "ELON AMPLIFIES ALL-IN POD ON XAI-ANTHROPIC COLOSSUS 1 LEASE \u2014 PODCAST COINS \"ELON WEB SERVICES\" AS FOURTH HYPERSCALER",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-09-twitter-01h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2052890115421417647"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-09 01:00 UTC",
-    "headline": "PALO ALTO NETWORKS ON MYTHOS: 3 WEEKS OF MODEL-ASSISTED ANALYSIS = 1 YEAR OF MANUAL PEN TESTING WITH BROADER COVERAGE",
-    "source": "@peterwildeford",
-    "source_file": "research/summaries/2026-05-09-twitter-01h-headlines.json",
-    "url": "https://x.com/peterwildeford/status/2052826481772855509"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-09 01:00 UTC",
-    "headline": "CODEX HOOKS EXTENSIBILITY FRAMEWORK COMING TO CODEX APP \u2014 INJECT CUSTOM SCRIPTS INTO AGENTIC LOOP",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-09-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2052882191940534531"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-09 04:00 UTC",
-    "headline": "DEEPMIND AI CO-MATHEMATICIAN HITS RECORD 48% ON FRONTIERMATH TIER 4 \u2014 BUT EVAL BYPASSED STANDARD HARNESS WITH 48H/PROBLEM",
-    "source": "@pushmeet",
-    "source_file": "research/summaries/2026-05-09-twitter-04h-headlines.json",
-    "url": "https://x.com/pushmeet/status/2052812585804685322"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-09 04:00 UTC",
-    "headline": "BASE GEMINI 3.1 PRO ALONE SCORES 19% ON SAME SUITE \u2014 ENTIRE 29-POINT JUMP COMES FROM MULTI-AGENT SCAFFOLDING, NOT MODEL CAPABILITY",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-09-twitter-04h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2052849472586264997"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-09 04:00 UTC",
     "headline": "DEMIS HASSABIS PERSONALLY AMPLIFIES AI CO-MATHEMATICIAN LAUNCH 7H AFTER PUSHMEET PRIMARY",
@@ -24698,5 +24644,47 @@
     "headline": "SEMIANALYSIS: 4-HI HBM WINS INFERENCE COST \u2014 RUBIN ULTRA DROPS TO 192GB FROM 288GB",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2099203133079429136"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-14 04:47:28 UTC",
+    "headline": "ALTMAN: OPENAI NOW WRITES SAFETY CASES BEFORE FRONTIER RL RUNS, NOT JUST BEFORE RELEASE",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2099348812305473766"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-14 04:47:28 UTC",
+    "headline": "OPENAI WILL NOT WAIT FOR ANTITRUST EXEMPTION OR LEGISLATION TO PACE THE FRONTIER \u2014 ALTMAN",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2099348812305473766"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-14 04:47:28 UTC",
+    "headline": "MUSK: GROK 4.8 IS A 2.5T-PARAMETER MODEL, PRETRAINING ENDS THIS WEEK ON NEW C++ STACK",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2099308197802631191"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-14 04:47:28 UTC",
+    "headline": "ANTHROPIC SIGNS REPORTED $13.7B SIX-YEAR COMPUTE DEAL AT RUM GROUP GEORGIA SITE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2099332537608970423"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-14 04:47:28 UTC",
+    "headline": "META: MUSE SPARK 1 THROUGH 1.3 WERE BUILT SPECIFICALLY TO POWER THE MUSE PERSONAL AGENT",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2099337296487333978"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-14 04:47:28 UTC",
+    "headline": "AMODEI ON CBS: PACING DOES NOT MEAN ANTHROPIC STOPS RELEASING MORE ADVANCED MODELS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2099352591926980634"
   }
 ]
