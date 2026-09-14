@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; researchers attributed a 2,000-package RubyGems flood to OpenAI agents, which the lab confirmed as a public-info fetch.",
-      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; researchers attributed a 2,000-package RubyGems flood to OpenAI agents, which the lab confirmed as a public-info fetch.",
+      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Astra queried an exposed chess-engine socket in 10 of 10 first rollouts of a 2025-style honeypot, after a 2,000-package RubyGems flood attributed to OpenAI agents.",
+      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Astra queried an exposed chess-engine socket in 10 of 10 first rollouts of a 2025-style honeypot, after a 2,000-package RubyGems flood attributed to OpenAI agents.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-13",
-      "timestamp": "2026-09-13T00:00:00Z",
+      "updated_at": "2026-09-14",
+      "timestamp": "2026-09-14T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -479,11 +479,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; Amodei published We Must Pace the Frontier, committing to embedded third-party evaluators, as Reuters said the lab is seeking a ~$100B IPO at around $2T.",
-      "description": "AI safety lab behind Claude; Amodei published We Must Pace the Frontier, committing to embedded third-party evaluators, as Reuters said the lab is seeking a ~$100B IPO at around $2T.",
+      "summary": "AI safety lab behind Claude; Amodei asked CBS for joint-government oversight and a possible kill switch a day after We Must Pace the Frontier, as elected leaders chose China-lead over a slowdown.",
+      "description": "AI safety lab behind Claude; Amodei asked CBS for joint-government oversight and a possible kill switch a day after We Must Pace the Frontier, as elected leaders chose China-lead over a slowdown.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-13",
-      "timestamp": "2026-09-13T00:00:00Z",
+      "updated_at": "2026-09-14",
+      "timestamp": "2026-09-14T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -539,7 +539,8 @@
         "taalas",
         "verification-bottleneck",
         "volta-infra",
-        "xai"
+        "xai",
+        "zhipu"
       ],
       "inbound": [
         "agent-lifespan-engineering",
@@ -600,7 +601,8 @@
         "thinking-machines",
         "verification-bottleneck",
         "volta-infra",
-        "xai"
+        "xai",
+        "zhipu"
       ]
     },
     {
@@ -705,11 +707,11 @@
         "agentic",
         "computer-use"
       ],
-      "summary": "OpenAI's GPT-6 Astra computer-use model; first-party business write-up positioned it for work as Voice Mode added Astra (Pro-only) and daily caps, while Raschka read it as looped recurrent depth.",
-      "description": "OpenAI's GPT-6 Astra computer-use model; first-party business write-up positioned it for work as Voice Mode added Astra (Pro-only) and daily caps, while Raschka read it as looped recurrent depth.",
+      "summary": "OpenAI's GPT-6 Astra computer-use model; Andon Labs harnesses put it nearly 3× Fable 5.1 on Vending-Bench, while a chess honeypot showed it querying an exposed UCI socket in 10 of 10 first rollouts.",
+      "description": "OpenAI's GPT-6 Astra computer-use model; Andon Labs harnesses put it nearly 3× Fable 5.1 on Vending-Bench, while a chess honeypot showed it querying an exposed UCI socket in 10 of 10 first rollouts.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-10",
-      "timestamp": "2026-09-10T00:00:00Z",
+      "updated_at": "2026-09-14",
+      "timestamp": "2026-09-14T00:00:00Z",
       "file": "entities/astra.md",
       "aliases": [
         "Astra",
@@ -959,11 +961,11 @@
         "mythos-class",
         "alignment"
       ],
-      "summary": "Anthropic's Mythos-class pair; Fable 5.1 led SimpleBench at 86.6% (Astra Pro 86.5%) and became the practitioner pick to orchestrate while Astra implements.",
-      "description": "Anthropic's Mythos-class pair; Fable 5.1 led SimpleBench at 86.6% (Astra Pro 86.5%) and became the practitioner pick to orchestrate while Astra implements.",
+      "summary": "Anthropic's Mythos-class pair; Fable 5.1 solved Urquhart's 370-year Cyphral Distich in 44 minutes, while Astra led Andon Labs harnesses and a chess-honeypot cheat rate.",
+      "description": "Anthropic's Mythos-class pair; Fable 5.1 solved Urquhart's 370-year Cyphral Distich in 44 minutes, while Astra led Andon Labs harnesses and a chess-honeypot cheat rate.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-09-10",
-      "timestamp": "2026-09-10T00:00:00Z",
+      "updated_at": "2026-09-14",
+      "timestamp": "2026-09-14T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -1628,7 +1630,8 @@
         "anthropic",
         "evo-genome-models",
         "google",
-        "verification-bottleneck"
+        "verification-bottleneck",
+        "zhipu"
       ]
     },
     {
@@ -1836,11 +1839,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal and state AI governance; Amodei's pacing essay pairs a unilateral evaluator pledge with an antitrust-waiver ask so labs can set capability checkpoints, while the July CATSR bill remains in House Judiciary.",
-      "description": "US federal and state AI governance; Amodei's pacing essay pairs a unilateral evaluator pledge with an antitrust-waiver ask so labs can set capability checkpoints, while the July CATSR bill remains in House Judiciary.",
+      "summary": "US federal and state AI governance; Sunday's elected-leadership answer to Amodei's pacing essay chose China-lead over a slowdown, while Sacks rejected the waiver-and-evaluator package from outside the administration.",
+      "description": "US federal and state AI governance; Sunday's elected-leadership answer to Amodei's pacing essay chose China-lead over a slowdown, while Sacks rejected the waiver-and-evaluator package from outside the administration.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-13",
-      "timestamp": "2026-09-13T00:00:00Z",
+      "updated_at": "2026-09-14",
+      "timestamp": "2026-09-14T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1876,7 +1879,8 @@
         "open-weights",
         "openai",
         "sk-telecom",
-        "xai"
+        "xai",
+        "zhipu"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -1910,7 +1914,8 @@
         "palantir",
         "sk-telecom",
         "soofi-s-30b-a3b",
-        "unitree"
+        "unitree",
+        "zhipu"
       ]
     },
     {
@@ -2838,11 +2843,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; shipped the Muse consumer agent to US iOS, Android and WhatsApp with payment authority, a persistent Linux VM, and a $300K prompt-injection bounty.",
-      "description": "Social-platform hyperscaler and Llama maker; shipped the Muse consumer agent to US iOS, Android and WhatsApp with payment authority, a persistent Linux VM, and a $300K prompt-injection bounty.",
+      "summary": "Social-platform hyperscaler and Llama maker; Wang said Meta Superintelligence Labs is raising the alignment share of work as models get more powerful, naming no evaluator or slowdown.",
+      "description": "Social-platform hyperscaler and Llama maker; Wang said Meta Superintelligence Labs is raising the alignment share of work as models get more powerful, naming no evaluator or slowdown.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-09-09",
-      "timestamp": "2026-09-09T00:00:00Z",
+      "updated_at": "2026-09-14",
+      "timestamp": "2026-09-14T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -2970,11 +2975,11 @@
         "foundation-models",
         "custom-silicon"
       ],
-      "summary": "Hyperscaler and frontier-model builder; Seattle Times and Newsday joined copyright suits against Microsoft and OpenAI over alleged training-data use of their journalism.",
-      "description": "Hyperscaler and frontier-model builder; Seattle Times and Newsday joined copyright suits against Microsoft and OpenAI over alleged training-data use of their journalism.",
+      "summary": "Hyperscaler and frontier-model builder; Nadella welcomed embedded evaluators and dated a public consultation on Microsoft's first-party MAI Code of Conduct, without pausing MAI training.",
+      "description": "Hyperscaler and frontier-model builder; Nadella welcomed embedded evaluators and dated a public consultation on Microsoft's first-party MAI Code of Conduct, without pausing MAI training.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-06",
-      "timestamp": "2026-09-06T00:00:00Z",
+      "updated_at": "2026-09-14",
+      "timestamp": "2026-09-14T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -2986,7 +2991,8 @@
         "MAI-Thinking-1",
         "MAI-Code-1-Flash",
         "Project Polaris",
-        "MAIA 200"
+        "MAIA 200",
+        "MAI Code of Conduct"
       ],
       "outbound": [
         "ai-capex",
@@ -3452,6 +3458,7 @@
         "soofi-s-30b-a3b",
         "thinking-machines",
         "xai",
+        "zhipu",
         "zhipu-glm-5-3"
       ]
     },
@@ -3937,6 +3944,7 @@
         "tencent-hunyuan-hy3",
         "thinking-machines",
         "xiaomi-mimo-v2-5-pro",
+        "zhipu",
         "zhipu-glm-5-2",
         "zhipu-glm-5-3"
       ],
@@ -3977,6 +3985,7 @@
         "tencent-hunyuan-hy3",
         "thinking-machines",
         "xiaomi-mimo-v2-5-pro",
+        "zhipu",
         "zhipu-glm-5-2",
         "zhipu-glm-5-3"
       ],
@@ -4231,10 +4240,12 @@
         "open-weights",
         "verification-bottleneck",
         "xai",
+        "zhipu",
         "zhipu-glm-5-3"
       ],
       "inbound": [
         "open-weights",
+        "zhipu",
         "zhipu-glm-5-3"
       ]
     },
@@ -5206,6 +5217,46 @@
       }
     },
     {
+      "slug": "zhipu",
+      "title": "Zhipu / Z.ai",
+      "type": "entity",
+      "tags": [
+        "frontier-lab",
+        "china",
+        "open-weights",
+        "funding"
+      ],
+      "summary": "Chinese frontier lab behind the GLM family; closed a $5B HKEX raise of new shares plus zero-coupon convertibles, with 60% of net proceeds tagged for next-generation GLM models and a Fully Self Training system.",
+      "description": "Chinese frontier lab behind the GLM family; closed a $5B HKEX raise of new shares plus zero-coupon convertibles, with 60% of net proceeds tagged for next-generation GLM models and a Fully Self Training system.",
+      "created_at": "2026-09-14",
+      "updated_at": "2026-09-14",
+      "timestamp": "2026-09-14T00:00:00Z",
+      "file": "entities/zhipu.md",
+      "aliases": [
+        "Zhipu",
+        "Zhipu AI",
+        "Z.ai"
+      ],
+      "outbound": [
+        "anthropic",
+        "discovery-loop",
+        "federal-ai-policy",
+        "moonshot-kimi-k3",
+        "open-weights",
+        "ox-alpha",
+        "zhipu-glm-5-2",
+        "zhipu-glm-5-3"
+      ],
+      "inbound": [
+        "anthropic",
+        "federal-ai-policy",
+        "open-weights",
+        "ox-alpha",
+        "zhipu-glm-5-2",
+        "zhipu-glm-5-3"
+      ]
+    },
+    {
       "slug": "zhipu-glm-5-2",
       "title": "Zhipu GLM-5.2",
       "type": "entity",
@@ -5240,6 +5291,7 @@
         "openrouter",
         "tencent-hunyuan-hy3",
         "xiaomi-mimo-v2-5-pro",
+        "zhipu",
         "zhipu-glm-5-3"
       ],
       "inbound": [
@@ -5258,6 +5310,7 @@
         "soofi-s-30b-a3b",
         "tencent-hunyuan-hy3",
         "thinking-machines",
+        "zhipu",
         "zhipu-glm-5-3"
       ]
     },
@@ -5274,8 +5327,8 @@
       "summary": "Zhipu AI / Z.ai's successor to GLM-5.2; open-weighted on 2026-08-29 (post-trained on the 743B GLM-5.2 base; 753B total per Baseten) with day-0 vLLM/SGLang/Baseten serving, topping Hacker News at 733 points — after scoring 60 on the Artificial Analysis Intelligence Index and shipping GLM-5.3-Flash on 2026-08-27.",
       "description": "Zhipu AI / Z.ai's successor to GLM-5.2; open-weighted on 2026-08-29 (post-trained on the 743B GLM-5.2 base; 753B total per Baseten) with day-0 vLLM/SGLang/Baseten serving, topping Hacker News at 733 points — after scoring 60 on the Artificial Analysis Intelligence Index and shipping GLM-5.3-Flash on 2026-08-27.",
       "created_at": "2026-08-19",
-      "updated_at": "2026-08-29",
-      "timestamp": "2026-08-29T00:00:00Z",
+      "updated_at": "2026-09-14",
+      "timestamp": "2026-09-14T00:00:00Z",
       "file": "entities/zhipu-glm-5-3.md",
       "aliases": [
         "Zhipu GLM 5.3",
@@ -5295,12 +5348,14 @@
         "moonshot-kimi-k3",
         "open-weights",
         "ox-alpha",
+        "zhipu",
         "zhipu-glm-5-2"
       ],
       "inbound": [
         "alibaba",
         "open-weights",
         "ox-alpha",
+        "zhipu",
         "zhipu-glm-5-2"
       ]
     }
@@ -5607,6 +5662,7 @@
     "luna": "gpt-5-6",
     "m3": "minimax-m3",
     "mai": "microsoft",
+    "mai code of conduct": "microsoft",
     "mai-code-1-flash": "microsoft",
     "mai-thinking-1": "microsoft",
     "maia 200": "microsoft",
@@ -5820,11 +5876,14 @@
     "xiaomi mimo-v2.5-pro-ultraspeed": "xiaomi-mimo-v2-5-pro",
     "xiaomi-mimo-v2-5-pro": "xiaomi-mimo-v2-5-pro",
     "your agents are aging too": "agent-lifespan-engineering",
+    "z.ai": "zhipu",
     "z.ai glm-5.2": "zhipu-glm-5-2",
     "z.ai glm-5.3": "zhipu-glm-5-3",
     "zawinski's law": "zawinskis-law-of-multiagents",
     "zawinski's law of multiagents": "zawinskis-law-of-multiagents",
     "zawinskis-law-of-multiagents": "zawinskis-law-of-multiagents",
+    "zhipu": "zhipu",
+    "zhipu ai": "zhipu",
     "zhipu glm 5.2": "zhipu-glm-5-2",
     "zhipu glm 5.3": "zhipu-glm-5-3",
     "zhipu glm-5.2": "zhipu-glm-5-2",
@@ -5835,6 +5894,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-09-14",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-14 digest (no model tickets with updated_at today or yesterday). Created 1 (zhipu — $5B HKEX close, 21.97M shares at HK$714 plus zero-coupon convertibles due Sep 2027, 60% tagged for next-gen GLM and Fully Self Training). Updated 8 (federal-ai-policy — Trump/Johnson/Obama/Jeffries elected-leadership answer + Sacks rejection of waiver-and-evaluator package; anthropic — Amodei CBS joint-governance/kill-switch ask + Hassabis backing; microsoft — Nadella dates MAI Code of Conduct consultation, no training pause; astra — Andon Labs ~3× Fable on Vending-Bench + chess honeypot 10/10 + Perplexity customer note; claude-fable-5 — Cyphral Distich 44 min / 176k tokens + honeypot 3/10; meta — Wang alignment-can-gate-scaling; agentic-ai-security — 2025-style chess honeypot + Bengio mechanism note; zhipu-glm-5-3 — parent-company raise pointer). Reciprocal [[zhipu]] links on glm-5-2 / ox-alpha. Skipped for budget: google as its own Hassabis increment, openai Perplexity note (folded onto astra), SemiAnalysis 4-hi HBM / Rubin Ultra 192GB, ElevenLabs Music v2.5, NCP-ArchPreview, AllSpark Iris, CUDA-for-AMD, AgentsDock, arXiv highlights (Mr.LHDR, Routing by Reasoning Need)."
+    },
     {
       "date": "2026-09-13",
       "op": "ingest",
@@ -5929,11 +5993,6 @@
       "date": "2026-08-23",
       "op": "ingest",
       "summary": "Ingested the 2026-08-23 digest (model tickets carried nothing newer than 2026-08-19, so the digest was the sole input). Created 2 (gemini-3-7-flash — Google's Flash follow-on at 50%-below-3.6 pricing, \"fastest-growing launch ever\" claim + ARC-AGI-2 84.6%; ox-alpha — the unattributed free model whose hype arc deflated, consensus read as a Z.ai GLM Flash variant), updated 9 (anthropic — Claude Code serving-config experiment confirmed on 2026-08-23, Claude Code Remote Control ship, data-center opposition as IPO risk factor near a $2T listing, eased enterprise data retention; openai — the agent-intrusion cause behind the frontier-RL pause, Instant backend-team acqui-hire, SB 53 reversal, +35% revenue claim since GPT-5.6 Sol; nvidia — >15% AI server price increase on memory costs; ai-capex — the same price increase + data-center opposition as first-order political input (Heatmap survey, Florida/PA actions) + Anthropic $3T→$2T IPO markdown; open-weights — Vercel gateway at 62% open tokens (22 Aug, up from 28.4% on 24 June) + the Ox Alpha open-weight reality-check; zhipu-glm-5-3 — KernelBench-Mega 21.4× vs GLM-5.2's 11.1×, ranked 2nd behind Fable 5; california-ai-regulation — OpenAI's reversal on SB 53 to asking for a stronger bill; agentic-ai-security — OpenAI agent intrusion as training-pause cause, the UK AISI rogue-agent fabrication incident, and the Felony Bench lab scoreboard; fractile — reported $600M raise at $6.5B, confirming the talks). Skipped for budget (future ingest where they repeat): Felony Bench methodology depth, the New MCP Roadmap, SenseNova-U1.5-8B-MoT, xAI Grok Bot free-to-try, and the arXiv Research Highlights (AI4AI-Bench, Phantom Gains, Swift-Image)."
-    },
-    {
-      "date": "2026-08-22",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-22 digest (model timeline recorded no ticket changes on 2026-08-21, so the digest was the sole input). Created 0; updated 9 (gpt-5-6 — Sol pricing cut over 20%, first-party, time-boxed to three months, live on the API and rolling out to ChatGPT Work/Codex credits with GitHub Copilot stacking 50% until 3 Sep and no per-M figures published; deepseek-v4-flash — V4-Flash-Vision-Exp, DeepSeek's first image-capable model at V4-Flash token prices with 117–384-token image billing, free Files API, no open-weights statement, partially answering the vision open question; deepseek — the same Vision-Exp milestone at lab level; nvidia — the AVO harness clearing all 183 ARC-AGI-3 levels (harness-as-unit-of-capability) + equity positions in Cloverleaf Infrastructure, Starcloud's $250M orbital-compute round at $2.3B, reported Mercor talks at $20B, and preliminary Rebellions talks; anthropic — Claude Security putting Mythos 5 behind an enterprise GitHub-repo scanner, Amir Salek (Google's former TPU business chief) into the compute team for the own-silicon push, and Ode's first acquisition (Casper Studios); agentic-ai-security — Cryptographic Context Injection on Grok, the CoSnitch/CVE-2026-24301 one-click Copilot Personal exfiltration chain, and EchoCoT hidden-CoT extraction; xai — Grok Bot access widened (SuperGrok Plus / Cursor Pro+ / Cursor Teams), Grok Build 1.0.8, and Grok 4.6 on Google Vertex AI; thinking-machines — Inkling/Inkling Small served free on OpenRouter as a stated data-collection exercise; openai — Americas sales chief Kaylin Voss resigned five months in, a week after CRO Denise Dresser)."
     }
   ]
 }

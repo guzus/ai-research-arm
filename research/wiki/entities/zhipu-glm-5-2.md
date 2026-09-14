@@ -24,7 +24,7 @@ sources:
   - {title: "ARA daily digest 2026-06-14", path: research/digest/2026-06-14-digest.md}
 ---
 
-Zhipu GLM-5.2 is the cycle's marquee Chinese open-weight flagship. Per the
+[[zhipu|Zhipu]] GLM-5.2 is the cycle's marquee Chinese open-weight flagship. Per the
 ARA model ticket, it is already deployed in the GLM Coding Plan, with API access
 and **MIT-licensed open weights** promised within about a week of the
 2026-06-15 launch announcement. Reported specs include **1M-token context** and

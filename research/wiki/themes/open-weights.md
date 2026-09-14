@@ -516,7 +516,8 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   closing the gap on coding/agentic tasks; do they close it on the frontier
   cyber/bio capabilities that got [[claude-fable-5|Fable 5]] banned, and what
   happens to export-control logic if they do?
-- **China as the open-weights default.** [[zhipu-glm-5-2|GLM 5.2]],
+- **China as the open-weights default.** [[zhipu]]'s
+  [[zhipu-glm-5-2|GLM 5.2]],
   [[moonshot-kimi-k2-7-code|Kimi]], [[deepseek]], [[minimax-m3]], Qwen, and
   [[xiaomi-mimo-v2-5-pro|MiMo]] — the open-weights frontier is increasingly
   Chinese, with [[meta]]'s Llama the main Western counterweight. Does that

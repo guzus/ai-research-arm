@@ -2,17 +2,18 @@
 slug: microsoft
 title: Microsoft
 type: entity
-aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200"]
+aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "MAI Code of Conduct"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; Seattle Times and Newsday joined copyright suits against Microsoft and OpenAI over alleged training-data use of their journalism.
+description: Hyperscaler and frontier-model builder; Nadella welcomed embedded evaluators and dated a public consultation on Microsoft's first-party MAI Code of Conduct, without pausing MAI training.
 created_at: 2026-06-03
-timestamp: 2026-09-06T00:00:00Z
+timestamp: 2026-09-14T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -162,6 +163,21 @@ new RSS story after the 2026-09-05 20:37 UTC close besides Simon
 Willison’s Astra note. No new court order or first-party rebuttal
 appears in local files (TechCrunch; ARA daily digest 2026-09-06).
 See [[openai]] and [[federal-ai-policy]].
+
+## Nadella dates the MAI Code of Conduct (2026-09-14)
+
+Satya Nadella welcomed [[anthropic]]'s embedded-evaluator
+direction, writing that superintelligence is not worth
+pursuing unless it helps humanity and stays under human
+control, and pairing that with "deliberate pacing."
+Microsoft will publish its first-party **MAI Code of
+Conduct** "tomorrow for public consultation" — Monday
+2026-09-15 on the digest clock. He did **not** pause
+MAI training or name a METR team. Watch whether the
+text names evaluators, publish-rights, or a release
+gate, versus a product-ethics PDF. See
+[[federal-ai-policy]] (Satya Nadella; ARA daily digest
+2026-09-14).
 
 ## Open questions
 
