@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ALTMAN: OPENAI NOW WRITES SAFETY CASES BEFORE FRONTIER RL RUNS, NOT JUST BEFORE RELEASE",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2099348812305473766",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI WILL NOT WAIT FOR ANTITRUST EXEMPTION OR LEGISLATION TO PACE THE FRONTIER — ALTMAN",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2099348812305473766",
+    "category": "policy"
+  },
+  {
+    "headline": "MUSK: GROK 4.8 IS A 2.5T-PARAMETER MODEL, PRETRAINING ENDS THIS WEEK ON NEW C++ STACK",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2099308197802631191",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC COMPUTE DEALS REACH $517B VERSUS $180B GUIDED TO INVESTORS THROUGH 2029",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2099211531502092672",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC SIGNS REPORTED $13.7B SIX-YEAR COMPUTE DEAL AT RUM GROUP GEORGIA SITE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2099332537608970423",
+    "category": "infra"
+  },
+  {
+    "headline": "META: MUSE SPARK 1 THROUGH 1.3 WERE BUILT SPECIFICALLY TO POWER THE MUSE PERSONAL AGENT",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2099337296487333978",
+    "category": "model"
+  },
+  {
+    "headline": "AMODEI ON CBS: PACING DOES NOT MEAN ANTHROPIC STOPS RELEASING MORE ADVANCED MODELS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2099352591926980634",
+    "category": "policy"
+  }
+]

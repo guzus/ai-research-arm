@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-14 04:47:28 UTC
+
+CYCLE: OpenAI moves its safety gate to before the training run; Musk sizes Grok 4.8; Anthropic's compute bill outruns its guidance.
+
+TOP STORIES:
+• Altman: OpenAI now writes safety cases before frontier RL runs, and won't wait for an antitrust waiver [✓]
+• Musk says Grok 4.8 is 2.5T params on a new C++ stack, pretraining ends this week then RL [⚠]
+• Anthropic compute commitments hit ~$517B vs $180B told investors; new $13.7B Georgia deal reported [⚠]
+
+WATCH: An OpenAI document defining the pre-RL-run safety case — with or without a named external auditor.
+
+Full update on GitHub.
