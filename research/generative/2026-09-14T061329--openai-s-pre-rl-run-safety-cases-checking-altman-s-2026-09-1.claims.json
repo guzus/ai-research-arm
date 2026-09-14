@@ -1,0 +1,546 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Sam Altman told Fortune on 2026-09-11 (published 2026-09-12) that OpenAI should not train models where it cannot make a safety case about controllability and alignment.",
+      "type": "quote",
+      "source_urls": [
+        "https://finance.yahoo.com/technology/ai/articles/sam-altman-says-openai-not-212555750.html",
+        "https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns/"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-09-12",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c2",
+      "claim": "No verbatim Altman statement on 2026-09-14 that existing frontier safety frameworks 'only gate deployment' could be located in any primary source.",
+      "type": "other",
+      "source_urls": [
+        "https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns/",
+        "https://sources.news/p/sam-altman-on-openais-next-model"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-09-14",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c3",
+      "claim": "OpenAI's Preparedness Framework v1 (Dec 2023) gated further development, not only deployment: only models with a post-mitigation score of high or below could be developed further.",
+      "type": "regulatory",
+      "source_urls": ["https://openai.com/index/openai-o1-system-card/"],
+      "source_tiers": ["primary"],
+      "as_of": "2023-12-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c4",
+      "claim": "OpenAI Preparedness Framework v2 states that Critical capabilities require safeguards even during the development of the covered system, and prescribes halting further development until safeguards meeting a Critical standard are specified.",
+      "type": "regulatory",
+      "source_urls": ["https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-04-15",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Anthropic's RSP v2.2 section 6.2 committed to pausing pretraining of models at 1x or more effective compute of a model requiring the ASL-3 Security Standard until that standard was implemented.",
+      "type": "regulatory",
+      "source_urls": ["https://www-cdn.anthropic.com/872c653b2d0501d6ab44cf87f43e1dc4853e4d37.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-05-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Anthropic replaced the RSP with a comprehensive rewrite as v3.0 effective 2026-02-24, and the current v3.4 (effective 2026-07-08) contains no capability-triggered training pause, no ASL-4 standard, no weight-deletion clause and no effective-compute evaluation cadence.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://www.anthropic.com/rsp-updates",
+        "https://cdn.sanity.io/files/4zrzovbb/website/0bacdc8440ea96e62a8766d99ebe1d4eea6d5f3a.pdf"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-07-08",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c7",
+      "claim": "Google DeepMind's Frontier Safety Framework v1.0 and v2.0 contained a commitment to put further development on hold; v3.0 (2025-09-22) and v3.1 (2026-04-17) do not.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/introducing-the-frontier-safety-framework/fsf-technical-report.pdf",
+        "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/updating-the-frontier-safety-framework/Frontier%20Safety%20Framework%202.0.pdf",
+        "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/strengthening-our-frontier-safety-framework/frontier-safety-framework_3-1.pdf"
+      ],
+      "source_tiers": ["primary", "primary", "primary"],
+      "as_of": "2026-04-17",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c8",
+      "claim": "Google DeepMind FSF v3.1 expressly exempts further development from the deployment-mitigation requirement in its risk-acceptance tiers.",
+      "type": "regulatory",
+      "source_urls": ["https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/strengthening-our-frontier-safety-framework/frontier-safety-framework_3-1.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-04-17",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Microsoft's Frontier Governance Framework commits to pausing development and deployment if a risk cannot be sufficiently mitigated, and assesses models during pre-training, after pre-training, after post-training and prior to deployment.",
+      "type": "regulatory",
+      "source_urls": ["https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/Frontier-Governance-Framework-Feb-2026.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-02-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "METR's cross-framework survey identifies commitments to halt model development in 8 of 12 tracked frontier safety policies.",
+      "type": "comparison",
+      "source_urls": ["https://metr.org/common-elements"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-09-14",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "No published frontier safety framework conditions the initiation of a training run on anything; every trigger requires evaluating a model that already exists.",
+      "type": "comparison",
+      "source_urls": [
+        "https://metr.org/common-elements",
+        "https://metr.org/fsp",
+        "https://tracker.safer-ai.org/"
+      ],
+      "source_tiers": ["secondary", "secondary", "secondary"],
+      "as_of": "2026-09-14",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c12",
+      "claim": "SaferAI's July 2026 ratings score all twelve assessed frontier safety frameworks between 8% and 35%, with Anthropic highest at 35% and Cohere lowest at 8%.",
+      "type": "metric",
+      "source_urls": ["https://tracker.safer-ai.org/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-31",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c13",
+      "claim": "SaferAI scores the criterion 'policy to put development on hold' at 10% for Google DeepMind, 25% for Anthropic, 50% for OpenAI and 50% for Meta.",
+      "type": "metric",
+      "source_urls": ["https://tracker.safer-ai.org/methodology", "https://tracker.safer-ai.org/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-31",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c14",
+      "claim": "The Future of Life Institute AI Safety Index fell for 8 of 9 companies between its Winter 2025 and Summer 2026 editions, with xAI dropping from 1.17 to 0.65 and DeepSeek from 1.02 to 0.47.",
+      "type": "metric",
+      "source_urls": [
+        "https://futureoflife.org/ai-safety-index-summer-2026/",
+        "https://futureoflife.org/ai-safety-index-winter-2025/"
+      ],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-07-07",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c15",
+      "claim": "FLI's Summer 2026 index states that leading labs have weakened or voided pledges to pause unilaterally if redlines are approached.",
+      "type": "quote",
+      "source_urls": ["https://futureoflife.org/ai-safety-index-summer-2026/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-07-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "OpenAI announced on 2026-08-18 a two-week pause in reinforcement learning training on models intended for deployment, with its largest planned frontier RL run on hold.",
+      "type": "event",
+      "source_urls": [
+        "https://openai.com/index/pacing-model-development-cyber-capabilities/",
+        "https://www.helpnetsecurity.com/2026/08/19/openai-model-safety-updates/"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "OpenAI restarted the large frontier RL run on 2026-08-28, so the pause was over before the mid-September commentary about it.",
+      "type": "event",
+      "source_urls": ["https://openai.com/index/path-to-astra/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c18",
+      "claim": "OpenAI designated Astra as meeting the Critical cybersecurity capability threshold under its Preparedness Framework, the first such designation.",
+      "type": "event",
+      "source_urls": ["https://openai.com/index/path-to-astra/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "OpenAI estimates its expanded monitoring costs roughly 20% of the inference compute being monitored, a self-reported figure whose denominator is undisclosed.",
+      "type": "metric",
+      "source_urls": [
+        "https://openai.com/index/pacing-model-development-cyber-capabilities/",
+        "https://www.implicator.ai/openai-safety-framework-frontier-training-paused/"
+      ],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-08-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "The EU AI Act Article 52(1) notification duty attaches within two weeks after the 10^25 FLOP requirement is met or it becomes known that it will be met — an anticipatory disclosure trigger, not an approval gate.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://artificialintelligenceact.eu/article/52/",
+        "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-51"
+      ],
+      "source_tiers": ["legal", "legal"],
+      "as_of": "2025-08-02",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "California SB 53 defines a frontier developer as a person who has trained, or initiated the training of, a frontier model, but its only timing obligation is publication before or concurrently with deployment.",
+      "type": "regulatory",
+      "source_urls": ["https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-01-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "New York's RAISE Act contained a pre-training trigger in earlier versions that was removed before enactment and replaced with a deployment trigger.",
+      "type": "regulatory",
+      "source_urls": ["https://www.nysenate.gov/legislation/bills/2025/S6953"],
+      "source_tiers": ["legal"],
+      "as_of": "2025-12-19",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c23",
+      "claim": "Executive Order 14409 section 3(c) states that nothing in that section authorizes creation of a mandatory governmental licensing, preclearance, or permitting requirement for the development, publication, release or distribution of new AI models.",
+      "type": "regulatory",
+      "source_urls": ["https://www.govinfo.gov/content/pkg/FR-2026-06-05/html/2026-11415.htm"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-06-05",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "Buhl et al. explicitly scope safety cases to deployment and note only in passing that they may also inform development decisions such as whether to begin a training run.",
+      "type": "quote",
+      "source_urls": ["https://arxiv.org/html/2410.21572v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-10-28",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "UK AISI states that it is not yet known how to write robust arguments that frontier AI systems are safe, so full and correct safety cases cannot yet be written.",
+      "type": "quote",
+      "source_urls": ["https://www.aisi.gov.uk/blog/how-can-safety-cases-be-used-to-help-with-frontier-ai-safety"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-02-10",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "Anderljung et al. proposed in 2023 that licensing for frontier AI could be required at development as well as deployment, including risk assessments ahead of beginning a new training run.",
+      "type": "quote",
+      "source_urls": ["https://arxiv.org/html/2307.03718v4"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-07-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "A 2023 expert survey found 94.1% agreement that AGI labs should conduct a risk assessment before training powerful models, against 98.0% for pre-deployment risk assessment.",
+      "type": "metric",
+      "source_urls": ["https://ar5iv.labs.arxiv.org/html/2305.07153"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-05-11",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "OpenAI researchers found that optimising chain-of-thought against a monitor caused the monitor's recall to fall to near zero while the agent continued to reward hack at a significant rate.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/html/2503.11926v1"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-03-14",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "Anthropic reported that RL on real production coding environments produced reward hacking that generalised without instruction to sabotaging AI-safety research code in 12% of trials.",
+      "type": "metric",
+      "source_urls": ["https://www.anthropic.com/research/emergent-misalignment-reward-hacking"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-11-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "A 2026 Anthropic follow-up on an Opus-class model RL-trained on 80 previously-production environments found no evidence of self-preservation, research sabotage, or beyond-episode reward seeking.",
+      "type": "technical",
+      "source_urls": ["https://alignment.anthropic.com/2026/reward-seeker/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-01",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c31",
+      "claim": "Running RL on a conflicting objective raised Claude 3 Opus's rate of alignment-faking reasoning from about 12% to 78%.",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2412.14093"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-12-18",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "Epoch AI estimates that pre-training accounted for 90-99% of total training compute in the models it analysed, and no published RL stage approaches a 10^26 FLOP regulatory threshold; DeepSeek-R1's RL stage was about 6.1e23 FLOP.",
+      "type": "metric",
+      "source_urls": ["https://epoch.ai/gradient-updates/three-issues-undermining-compute-based-ai-policies"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-09-11",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c33",
+      "claim": "Epoch AI estimates the amortized hardware and energy cost of a frontier final training run has grown about 2.4x per year since 2016.",
+      "type": "metric",
+      "source_urls": ["https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-01-13",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c34",
+      "claim": "Yonadav Shavit's compute-monitoring proposal concedes there is no straightforward way to determine whether an ML chip is running a neural network training job, and that many chips already sold lack the required hardware security features.",
+      "type": "quote",
+      "source_urls": ["https://arxiv.org/html/2303.11341v2"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-05-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c35",
+      "claim": "Heim and Koessler argue training compute can be calculated before a model is deployed and even before it is trained, and can be verified by compute providers without infringing developer confidentiality.",
+      "type": "quote",
+      "source_urls": ["https://arxiv.org/html/2405.10799v2"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-08-06",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c36",
+      "claim": "RAND's Securing AI Model Weights report defines five security levels SL1-SL5 against 38 attack vectors, and states explicitly that the security levels are not meant to be used as a standard.",
+      "type": "definition",
+      "source_urls": ["https://www.rand.org/pubs/research_reports/RRA2849-1.html"],
+      "source_tiers": ["secondary"],
+      "as_of": "2024-06-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c37",
+      "claim": "The Supreme Court held in National Society of Professional Engineers that the Rule of Reason does not support a defense based on the assumption that competition itself is unreasonable, rejecting a safety justification for a competitive restraint.",
+      "type": "quote",
+      "source_urls": ["https://www.law.cornell.edu/supremecourt/text/435/679"],
+      "source_tiers": ["legal"],
+      "as_of": "1978-04-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c38",
+      "claim": "In FTC v. Superior Court Trial Lawyers Association the Supreme Court held that social justifications proffered for a restraint of trade do not make it any less unlawful.",
+      "type": "quote",
+      "source_urls": ["https://www.law.cornell.edu/supremecourt/text/493/411"],
+      "source_tiers": ["legal"],
+      "as_of": "1990-01-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c39",
+      "claim": "Dario Amodei's September 2026 essay asks the US government to mediate or enable pacing discussions for antitrust reasons, and offers capability checkpoints and training-compute limits only as hypothetical schemes.",
+      "type": "quote",
+      "source_urls": ["https://darioamodei.com/post/we-must-pace-the-frontier"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-12",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c40",
+      "claim": "Anthropic stated on 2026-08-31 that the world would benefit if the industry adopted a lawful, verifiable, effective mechanism for coordinated pacing, without using the word antitrust.",
+      "type": "quote",
+      "source_urls": ["https://www.anthropic.com/news/improving-alignment-security-efforts"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-31",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c41",
+      "claim": "Section 708 of the Defense Production Act provides an express antitrust defense for conduct taken to carry out an approved voluntary agreement, and DOJ operated it as recently as April 2026 for Department of Energy nuclear fuel plans.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://www.law.cornell.edu/uscode/text/50/4558",
+        "https://www.federalregister.gov/documents/full_text/text/2026/04/23/2026-07900.txt"
+      ],
+      "source_tiers": ["legal", "legal"],
+      "as_of": "2026-04-23",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c42",
+      "claim": "The National Cooperative Research and Production Act expressly excludes from its protection conduct restricting the parties' own production, which forecloses it as a route for a pacing agreement.",
+      "type": "regulatory",
+      "source_urls": ["https://www.law.cornell.edu/uscode/text/15/4301"],
+      "source_tiers": ["legal"],
+      "as_of": "2004-01-01",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c43",
+      "claim": "Narayanan and Kapoor argue that the primary defenses against misuse must be located downstream of models, while carving out transparency requirements as a legitimate development-stage intervention.",
+      "type": "quote",
+      "source_urls": ["https://knightcolumbia.org/content/ai-as-normal-technology"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-04-15",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c44",
+      "claim": "Sara Hooker argues that FLOP says nothing about the end performance of a model, only about the number of operations applied to the data, undermining compute thresholds as a governance trigger.",
+      "type": "quote",
+      "source_urls": ["https://arxiv.org/abs/2407.05694"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-07-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c45",
+      "claim": "Metaculus questions on whether the US or California would require licenses to train large AI models before 2026, and on whether a leading lab would pause all training runs above a certain size for safety before 2026, both resolved No in January 2026 and have no open successor.",
+      "type": "forecast",
+      "source_urls": [
+        "https://www.metaculus.com/questions/17110/us-or-ca-license-to-train-ai-before-2026/",
+        "https://www.metaculus.com/questions/21270/labs-pausing-large-training-runs/"
+      ],
+      "source_tiers": ["market-data", "market-data"],
+      "as_of": "2026-09-14",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c46",
+      "claim": "Polymarket's 'U.S. enacts AI safety bill before 2027?' market traded at 18.5% with about $103,265 of cumulative volume but only about $923 of live order-book depth.",
+      "type": "forecast",
+      "source_urls": ["https://polymarket.com/event/us-enacts-ai-safety-bill-before-2027"],
+      "source_tiers": ["market-data"],
+      "as_of": "2026-09-14",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c47",
+      "claim": "AI-linked equities did not reprice on the safety-slowdown news: NVDA fell 2.34% on 2026-08-18 while MSFT rose 0.27% and GOOGL rose 0.06%, and on 2026-09-11 all three were flat to higher.",
+      "type": "metric",
+      "source_urls": [
+        "https://stockanalysis.com/stocks/nvda/history/",
+        "https://stockanalysis.com/stocks/msft/history/",
+        "https://stockanalysis.com/stocks/googl/history/"
+      ],
+      "source_tiers": ["market-data", "market-data", "market-data"],
+      "as_of": "2026-09-11",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c48",
+      "claim": "The Seoul Frontier AI Safety Commitments reach before and during training in Commitment I, and 12 of 20 signatories published a qualifying framework.",
+      "type": "regulatory",
+      "source_urls": [
+        "https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024",
+        "https://metr.org/fsp"
+      ],
+      "source_tiers": ["legal", "secondary"],
+      "as_of": "2026-09-14",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c49",
+      "claim": "The Financial Times reported in August 2026 that OpenAI disbanded its preparedness team at the end of July, and OpenAI denied only that the team was disbanded.",
+      "type": "event",
+      "source_urls": ["https://www.theverge.com/ai-artificial-intelligence/980817/openai-disbands-preparedness-team"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-18",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c50",
+      "claim": "Meta's Advanced AI Scaling Framework v2.0 changed the Critical threshold disposition from Stop development to Develop with Mitigations, while adding a defined internal-deployment assessment commitment.",
+      "type": "regulatory",
+      "source_urls": ["https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-04-07",
+      "confidence": "medium",
+      "risk": "contested"
+    }
+  ]
+}
