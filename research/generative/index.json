@@ -2837,6 +2837,22 @@
     "created_at": "2026-09-14T06:13:29Z",
     "source": "workflow_dispatch",
     "prompt": "OpenAI's pre-RL-run safety cases: checking Altman's 2026-09-14 claim that existing frontier frameworks only gate deployment",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-09-14T064036--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "처음부터 없던 관문 — 그리고 조용히 걷어낸 관문들",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-09-14T06:40:36Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
+        "tags": [],
+        "translated_at": "2026-09-14T06:40:36Z",
+        "source_file": "research/generative/2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1.ara.md",
+        "source_sha256": "d80c3f13412b7db3bbd7d5e50258e238bd0ea7026a48beaa32025c6520575397"
+      }
+    }
   }
 ]
