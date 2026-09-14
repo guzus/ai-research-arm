@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-09 09:00 UTC",
-    "headline": "ELON MUSK REPLIES TO ANTHROPIC BLACKMAIL RESEARCH: \"SO IT WAS YUD'S FAULT? MAYBE ME TOO\"",
-    "source": "@tszzl",
-    "source_file": "research/summaries/2026-05-09-twitter-09h-headlines.json",
-    "url": "https://x.com/tszzl/status/2053019857734819903"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-09 09:00 UTC",
-    "headline": "BAIDU ERNIE 5.1 PREVIEW LANDS RANK 4 ON SEARCH ARENA \u2014 #1 IN CHINA",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-09-twitter-09h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2053023775956824376"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-09 09:00 UTC",
-    "headline": "MYTHOS-VS-GEMINI 3.1 PRO ACCURACY GAP WIDENS AT 80% SUCCESS RATE \u2014 KIMMONISMUS PROJECTS NEXT MODEL HITS 8-HOUR WORKDAY HORIZON",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-09-twitter-09h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2053027027796521059"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 09:00 UTC",
-    "headline": "ANTHROPICAI CORP-CHANNEL ~16H DARK \u2014 NO RESPONSE TO METR MYTHOS, AKAMAI $1.8B DEAL, 80X GROWTH, OR ELON \"YUD'S FAULT\" REPLY",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-09-twitter-09h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052787437"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-09 12:00 UTC",
-    "headline": "BAIDU ERNIE 5.1 SHIPS \u2014 CLAIMS ~6% PRETRAINING COST VS COMPARABLE MODELS, 99.6 AIME26 WITH TOOLS, #4 SEARCH ARENA",
-    "source": "@Baidu_Inc",
-    "source_file": "research/summaries/2026-05-09-twitter-12h-headlines.json",
-    "url": "https://x.com/Baidu_Inc/status/2053009538769735774"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-09 12:00 UTC",
-    "headline": "ERNIE 5.1 ARCHITECTURE \u2014 MULTI-DIMENSIONAL ELASTIC PRE-TRAINING + DECOUPLED ASYNC RL; PARAMS COMPRESSED TO ~1/3, ACTIVE ~1/2",
-    "source": "@ErnieforDevs",
-    "source_file": "research/summaries/2026-05-09-twitter-12h-headlines.json",
-    "url": "https://x.com/ErnieforDevs/status/2052961073423405256"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-09 12:00 UTC",
     "headline": "FIRST LOOK: GROK BUILD CLI BY xAI \u2014 TERMINAL-NATIVE CLAUDE CODE COMPETITOR DEMOED, NO @xai CORP-CHANNEL SHIP YET",
@@ -24660,5 +24606,47 @@
     "headline": "BOLT FORGE RUNS OPEN-WEIGHTS ONLY \u2014 GLM 5.3 DEFAULT, 92.2 VS 101.0 FOR CLAUDE OPUS 5",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2099535055475368071"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-14 23:50:29 UTC",
+    "headline": "ANTHROPIC, OPENAI AND GOOGLE DISCUSSED AN INDUSTRY STANDARDS BODY BEHIND CLOSED DOORS THIS PAST WEEK",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2099628680150483231"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-14 23:50:29 UTC",
+    "headline": "ALTMAN TELLS STAFF LABS MAY HAVE TO BUILD MODEL-AUDITING ORG THEMSELVES WITHOUT US GOVERNMENT SUPPORT",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2099589047307903404"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-14 23:50:29 UTC",
+    "headline": "JENSEN HUANG CO-SIGNS TRUMP'S NO-SLOWDOWN LINE LIVE ON STAGE AT ALL IN SUMMIT: \"THAT'S RIGHT, SIR\"",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2099587263911076188"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-14 23:50:29 UTC",
+    "headline": "OPENAI CAPABILITIES RESEARCHER: SITUATIONAL AWARENESS IS A \"TICKING TIME BOMB\", ALIGNMENT EVALS NO LONGER DISCRIMINATE",
+    "source": "@AISafetyMemes",
+    "url": "https://x.com/AISafetyMemes/status/2099642842318815233"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-14 23:50:29 UTC",
+    "headline": "WSJ: OPENAI BUYS CAMERA STARTUP GLASS IMAGING FOR OVER $300M, FOUNDED BY APPLE PORTRAIT MODE LEADS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2099607669288128946"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-14 23:50:29 UTC",
+    "headline": "PALANTIR WITHHOLDS FABLE UNTIL ZERO-RETENTION IS IRREVOCABLE; CAUSE IS ANTHROPIC'S JUNE 30-DAY SAFETY LOGS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2099592517037727854"
   }
 ]
