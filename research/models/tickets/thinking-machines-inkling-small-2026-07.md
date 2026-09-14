@@ -3,7 +3,7 @@ slug: thinking-machines-inkling-small-2026-07
 title: Thinking Machines ships Inkling-Small, a quarter-size open-weight sibling to Inkling
 company: Thinking Machines
 model: Inkling-Small
-status: released
+status: closed
 status_note: |
   @thinkymachines (official, primary): "Today, we are releasing
   Inkling-Small. Inkling-Small achieves comparable performance to Inkling
@@ -28,14 +28,16 @@ sources:
   - "@OpenRouter"
   - "@soumithchintala"
 created_at: 2026-07-31
-updated_at: 2026-08-23
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-14
+closed_at: 2026-09-14
+closed_reason: released-and-aged
 history:
   - ts: 2026-07-31
     change: "Created — Thinking Machines released Inkling-Small (276B-total/12B-active MoE), claimed comparable performance to the full Inkling (975B-total/41B-active, [[thinking-machines-inkling]]) at a quarter of the size, full weights made available. Official @thinkymachines primary + Hugging Face RT, corroborated by @kimmonismus, @testingcatalog, @AndrewCurran_ → status released, verification confirmed. Treated as a distinct shipping artifact from the original Inkling ticket rather than an update, since it is a separately-launched, differently-sized sibling model with its own release event."
   - ts: 2026-08-23
     change: "Distribution widens and the motive is stated outright. @OpenRouter (2026-08-21, relayed by @soumithchintala): 'Inkling and Inkling Small are now served directly by @thinkymachines on OpenRouter, free to use inside agentic harnesses.' @thinkymachines' own account gives the reason in the same window: 'We want to improve Inkling's agentic performance. To help us understand its real-world behavior, we are making it available...' — i.e. free serving as behavioral data collection, which is the same trade Meta made explicit with its Muse Spark contributor tier ([[meta-hatch-muse-spark-2026-06]]) the same day. Served directly by the lab rather than a third-party host, so latency and quality are the lab's own. Status stays released; verification stays confirmed (lab-primary post). Pending: whether free access is time-boxed, and any published agentic benchmarks from the collected data."
+  - ts: 2026-09-14
+    change: "CLOSED - released-and-aged. Inkling-Small released 2026-07-31 with full weights, and by 2026-08-21 was served directly by Thinking Machines on OpenRouter, free inside agentic harnesses. Six weeks past release with no new version, pricing change or withdrawal in signal, it is settled coverage. The questions that remain (whether free access is time-boxed, published results from the collected agentic data, pricing when it ends) belong to Thinking Machines' commercial roadmap rather than to this release event, and the lab's next capital event is tracked separately at [[thinking-machines-round-2026-09]]. History preserved."
 ---
 
 **Thinking Machines** released **Inkling-Small**, a smaller open-weight

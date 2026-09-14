@@ -3,7 +3,7 @@ slug: anthropic-claude-code-design-2026-08
 title: Claude Code /design — artboard design workflow ships as a research preview
 company: Anthropic
 model: null
-status: released
+status: closed
 status_note: |
   Anthropic shipped a **`/design` skill in Claude Code (research preview)**
   on **2026-08-17**, announced by **@ClaudeDevs** (21:57 UTC): "Claude Code
@@ -35,12 +35,14 @@ sources:
   - "@testingcatalog"
   - "@kimmonismus"
 created_at: 2026-08-19
-updated_at: 2026-08-19
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-14
+closed_at: 2026-09-14
+closed_reason: released-and-aged
 history:
   - ts: 2026-08-19
     change: "Created — Anthropic shipped a /design skill in Claude Code as a research preview on 2026-08-17 (@ClaudeDevs 21:57 UTC), bringing Claude Design's artboard workflow into the CLI and Desktop on top of artifacts; available on Pro, Max, Team and Enterprise. Corroborated by @testingcatalog the same evening. Logged alongside the same week's Claude surface expansion (Cowork on mobile for all paid plans, Gmail send + Drive management via updated Google connectors, Claude Code CLI 2x less CPU at p99, Claude Desktop ~2x faster startup) and the separately-spotted, unshipped Hub Mode / /hub sub-agent task board. Status released; verification confirmed (Anthropic's own developer account)."
+  - ts: 2026-09-14
+    change: "CLOSED - released-and-aged. The /design skill shipped as a research preview on 2026-08-17 and has been publicly available for four weeks; it is now normal Claude Code surface coverage rather than a tracked release event. Nothing in the 2026-09-13..09-14 signal contradicts the shipped state or reopens the named open questions (exit from research preview, whether the spotted Hub Mode / /hub task board ships). History preserved; a future research-preview exit or Hub Mode launch gets a successor ticket rather than a reopen."
 ---
 
 Anthropic put **design generation inside Claude Code**. The `/design`

@@ -40,7 +40,7 @@ status_note: |
   23:59 UTC that **Kelsey Peterson** — the Apple AI engineer who
   introduced the never-launched 2024 Siri revamp on stage at WWDC —
   just started at OpenAI, eight days before WWDC 2026.
-expected: "iOS/iPadOS/macOS 27 developer betas live (2026-06-08); consumer Siri AI GA expected with the autumn 2026 public releases; blocked in EU + China at launch. homeOS/HomePad autumn 2026; AI Glasses late 2027, Vision Air 2029 per Gurman"
+expected: "Claimed to have begun rolling out 2026-09-14 as an English beta on iPhone 15 Pro and newer with daily usage limits and no EU launch on day one — NOT corroborated by any Apple primary in this cycle (the @Apple fetch returned empty). Pending: an Apple announcement or a credible hands-on confirming GA, and the China/EU availability position."
 labels:
   - rumored
   - apple
@@ -59,8 +59,9 @@ sources:
   - https://www.theverge.com/tech/944245/apple-wwdc-2026-ai-siri-gemini
   - https://techcrunch.com/2026/06/06/what-to-expect-from-wwdc-2026-siris-highly-anticipated-revamp-and-apple-intelligence-updates/
   - https://www.apple.com/newsroom/
+  - https://x.com/dongwukeji/status/2099476014967460250
 created_at: 2026-06-01
-updated_at: 2026-06-09
+updated_at: 2026-09-14
 closed_at: null
 closed_reason: null
 history:
@@ -72,6 +73,8 @@ history:
     change: "Keynote day (WWDC 2026, 1pm PT today). Pre-keynote preview relay (Gurman PowerOn newsletter, via @dlimeng192048 08:01 UTC) restates the architecture and adds detail: Apple to launch a **standalone AI-assistant app** capable of competing with ChatGPT (chatbot-style interaction + generative AI image editing), with Siri's underlying technical stack reportedly **replaced by Google's Gemini model on Google Cloud infrastructure**; iOS 27 / macOS 27 / watchOS 27 / visionOS 27 unveiled simultaneously; framed as Apple's largest-ever Siri/AI update and **Tim Cook's last major product unveiling before retirement**. Org backdrop: the internal AI team once nicknamed 'AIMLess', a 2025 crisis meeting after Apple Intelligence 1.0 failed, Mike Rockwell now over Siri, Craig Federighi over AI strategy, Amar Subramanya leading model research, John Giannandrea departed this year. Still **pre-stage** — no on-record Apple confirmation yet; status stays rumored / partial pending the actual keynote later today, which will confirm (→ confirmed/released) or contradict (→ closed:disproved + successor) the Gemini routing detail"
   - ts: 2026-06-09
     change: "KEYNOTE OUTCOME — rumored → confirmed, partial → confirmed. WWDC 2026 (2026-06-08, Tim Cook's final keynote as CEO) shipped **Siri AI**: a standalone conversational assistant (on-device personal context, real-time screen awareness, multi-step cross-app actions, Dynamic Island 'Search or Ask'). Apple **confirmed the Gemini backend on stage** via a **three-tier routing** stack — Tier 1 on-device Apple models, Tier 2 Private Cloud Compute, **Tier 3 a custom ~1.2T-param Gemini on Nvidia Blackwell B200s on Google Cloud** — vindicating the distilled-Gemini + cloud-routing reporting (though the 'cloud' tier is Google Cloud + Nvidia, with PCC retained as Tier 2). iOS/iPadOS/macOS 27 dev betas dropped immediately; **iOS 27 Extensions** make Claude/ChatGPT/Gemini/Grok user-selectable default assistants (first time Claude is a built-in iPhone option). Also: homeOS + HomePad (7-inch hub, A18, autumn 2026), Photos Extend/Enhance/Reframe, a free on-device Foundation Models API for devs, 'Liquid Glass' UI. **Siri AI reportedly geofenced out of the EU (DMA) and China at launch.** The '$1B/yr to Google' and '1.2T params' figures were NOT stated on stage (Gurman pre-reporting) → remain leak-only. Cook → executive chairman 2026-09-01, John Ternus succeeds as CEO. Reception 'underwhelmed' ('bought time, not independence'). Status confirmed; consumer GA expected with the autumn public releases (→ released then)"
+  - ts: 2026-09-14
+    change: "iOS 27 with Siri AI is CLAIMED to be rolling out, on sourcing too weak to advance the ticket. @dongwukeji (2026-09-14 12:31 UTC): 'iOS 27 begins rolling out today. The headline is Siri AI: a dedicated app, on-screen awareness, personal context from mail and messages, and actions across apps. It ships as an English beta on iPhone 15 Pro and newer, with daily usage limits and no EU launch on day one', citing 'Apple / The Verge / MacRumors' with no URL. The detail matches this ticket's recorded expectations (autumn 2026 consumer GA, EU blocked at launch), which is exactly why it needs care rather than less: the tweet is an advertisement for a domain the author is selling to anyone 'shipping around Siri AI or any OS-level agent', so the poster has a direct incentive for the OS-agent narrative to look imminent. Weak second mention (@ZanistaAI premarket note): 'Foldable iPhone Duo and rebuilt Siri lead the rollout; early demand signals remain mixed.' DECISIVE ABSENCE: the @Apple account fetch returned EMPTY this cycle, so no Apple primary exists in the signal at all, and no firsthand user report was captured. Status and verification therefore stay at confirmed rather than advancing to released — an 'English beta' with daily usage limits would in any case be a gated rollout, not general availability. Recorded so that the claim is on the record with its date, and falsifiable next cycle."
 ---
 
 **Apple's WWDC 2026 Siri rebuild** has now been previewed across two

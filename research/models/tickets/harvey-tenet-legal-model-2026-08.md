@@ -3,7 +3,7 @@ slug: harvey-tenet-legal-model-2026-08
 title: Harvey unveils "Tenet", a legal foundation model post-trained on Moonshot's Kimi K3
 company: Harvey / Moonshot AI
 model: Harvey Tenet
-status: in-testing
+status: closed
 status_note: |
   **Harvey** — the legal-AI company valued at **~$11B**, backed by
   OpenAI, Sequoia and a16z — is reported to have unveiled **Harvey
@@ -47,12 +47,14 @@ sources:
   - "@Chlowcr9"
   - https://x.com/Chlowcr9/status/2091784824411598893
 created_at: 2026-08-24
-updated_at: 2026-08-24
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-14
+closed_at: 2026-09-14
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-08-24
     change: "Created — Harvey (legal AI, ~$11B, backed by OpenAI/Sequoia/a16z) reportedly unveiled Harvey Tenet, its first in-house foundation model, post-trained from Moonshot's open-weight Kimi K3 on specialized legal data: ~2 months, ~150 B300 GPUs, claimed to beat GPT-5.6 on complex legal tasks at sharply lower inference cost; same relay says AT&T is evaluating Kimi K3 and DeepSeek internally, with DoorDash and Airbnb making similar choices (@Chlowcr9 2026-08-24 07:09 UTC). Status in-testing — a described trained-and-benchmarked artifact, not a tease. Verification unverified — a single secondary relay, no Harvey post, no model card, no benchmark table, no Moonshot acknowledgement; every figure rests on that one account. Significance if true is the dependency direction: an OpenAI-funded US vertical building on a Chinese open-weight base rather than its investor's closed API."
+  - ts: 2026-09-14
+    change: "CLOSED - stale-rumor-unverified. Opened 2026-08-24 at in-testing on unverified sourcing and has gone 21 cycles without corroboration from either named party. The one adjacent in-window datapoint cuts against the ticket's premise rather than supporting it: Harvey appears in this cycle's signal only as a third-party connector inside Google's Gemini Enterprise for Legal ([[google-gemini-enterprise-industry-2026-08]]) and as the owner of a legal-agent benchmark that Meta's Muse Spark 1.3 Max placed #2 on - i.e. as an application layer buying and being measured against frontier models, with no sign of a Harvey-trained model of its own. Closed on the staleness trigger; a confirmed Tenet artifact opens as a new ticket. History preserved."
 ---
 
 **Harvey**, the legal-AI company most closely identified with building on
