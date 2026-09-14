@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; Amodei published We Must Pace the Frontier, committing to embedded third-party evaluators, as Reuters said the lab is seeking a ~$100B IPO at around $2T.
+description: AI safety lab behind Claude; Amodei asked CBS for joint-government oversight and a possible kill switch a day after We Must Pace the Frontier, as elected leaders chose China-lead over a slowdown.
 created_at: 2026-05-24
-timestamp: 2026-09-13T00:00:00Z
+timestamp: 2026-09-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
@@ -1548,7 +1549,7 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   staff saying the same thing in public (Anthropic; ARA
   daily digest 2026-09-10).
 - **US agencies named six Chinese labs** — [[deepseek]],
-  Moonshot, [[alibaba]], MiniMax, StepFun and Z.AI — in
+  Moonshot, [[alibaba]], MiniMax, StepFun and [[zhipu|Z.AI]] — in
   joint advisory **AA26-251A**, alleging industrial-scale
   distillation of Claude, GPT, Gemini and Grok since late
   2024. See [[federal-ai-policy]] (CISA, China MFA; ARA
@@ -1626,3 +1627,34 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   thesis is the counter-brief; neither number is a
   closed round (Business Insider, Reuters; ARA daily
   digest 2026-09-13).
+
+## CBS interview and the elected-leadership pushback (2026-09-14)
+
+- **Amodei asked for joint governance on CBS**, saying
+  he would accept "the right combination of
+  governments," not a handover to one state, and that
+  "an AI kill switch could be a good idea." He rejected
+  a complete ban and called China the "toughest
+  dilemma" for a speed limit; pacing is "a warning sign
+  that we need to slow down," not a shutdown. That is
+  the on-record follow-through to yesterday's *We Must
+  Pace the Frontier* essay, still not a statute. See
+  [[federal-ai-policy]] (CBS News, Reuters; ARA daily
+  digest 2026-09-14).
+- **Hassabis backed the pacing direction** — "points
+  towards the right path," details still open — and
+  pointed back to DeepMind's July FINRA-style
+  standards body. That is not desks, badges, or a
+  training pause. See [[google]] (Demis Hassabis, The
+  Decoder; ARA daily digest 2026-09-14).
+- **Sacks attacked the package from outside the
+  administration**, rejecting the antitrust-waiver and
+  METR-mandate ask as capture or an election-season
+  psyop and telling labs to self-pace. Trump, Johnson,
+  Jeffries, and Obama supplied the elected-leadership
+  answer the same day: China-lead over a slowdown, no
+  emergency session, AI on Tuesday's House caucus, and
+  a public framework if Democrats win November 3. None
+  of those is the CATSR waiver. See
+  [[federal-ai-policy]] (David Sacks, Reuters, The
+  Verge; ARA daily digest 2026-09-14).

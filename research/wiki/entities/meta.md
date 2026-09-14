@@ -4,15 +4,16 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; shipped the Muse consumer agent to US iOS, Android and WhatsApp with payment authority, a persistent Linux VM, and a $300K prompt-injection bounty.
+description: Social-platform hyperscaler and Llama maker; Wang said Meta Superintelligence Labs is raising the alignment share of work as models get more powerful, naming no evaluator or slowdown.
 created_at: 2026-06-16
-timestamp: 2026-09-09T00:00:00Z
+timestamp: 2026-09-14T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
@@ -267,3 +268,15 @@ digest 2026-09-06).
 - **Meta dropped AI usage from engineer performance
   reviews** after "tokenmaxxing" distorted them (The
   Decoder; ARA daily digest 2026-09-09).
+
+## Wang says alignment can gate scaling (2026-09-14)
+
+Alexandr Wang wrote that **Meta Superintelligence Labs
+is raising the share of work that goes into alignment
+as models get more powerful.** He named no budget,
+evaluator, or slowdown. That is a lab-posture sentence
+against [[anthropic]]'s desks-and-badges pledge and
+Sunday's elected-leadership answer on
+[[federal-ai-policy]], not a training pause. See
+[[muse-code]] (Alexandr Wang; ARA daily digest
+2026-09-14).

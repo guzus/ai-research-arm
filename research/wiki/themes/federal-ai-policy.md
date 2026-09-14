@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; Amodei's pacing essay pairs a unilateral evaluator pledge with an antitrust-waiver ask so labs can set capability checkpoints, while the July CATSR bill remains in House Judiciary.
+description: US federal and state AI governance; Sunday's elected-leadership answer to Amodei's pacing essay chose China-lead over a slowdown, while Sacks rejected the waiver-and-evaluator package from outside the administration.
 created_at: 2026-06-03
-timestamp: 2026-09-13T00:00:00Z
+timestamp: 2026-09-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
@@ -807,7 +808,7 @@ footing for the first time in the cycle.
 
 - **Joint advisory AA26-251A from NSA, CISA and FBI
   named six Chinese labs** — [[deepseek]], Moonshot,
-  [[alibaba]], MiniMax, StepFun and Z.AI — alleging
+  [[alibaba]], MiniMax, StepFun and [[zhipu|Z.AI]] — alleging
   industrial-scale distillation of Claude, GPT, Gemini
   and Grok since late 2024 via API proxies and shared
   premium subscriptions. The recommended defense is to
@@ -904,6 +905,67 @@ footing for the first time in the cycle.
   Commenters split between "desks and badges now" and
   Gomez's cartel read. That is salience, not a vote
   (Hacker News; ARA daily digest 2026-09-13).
+
+## Sunday's elected-leadership answer to the pacing essay (2026-09-14)
+
+- **Trump chose China-lead over a slowdown.** Answering
+  a slowdown-or-regulate question at Trump International
+  Golf Links in Doonbeg, he said the United States is
+  leading China and "whoever wins AI wins," then called
+  extinction talk the work of "very negative forces"
+  while still leaving room for "guardrails." That is a
+  campaign-trail line, not a statute, a METR mandate, or
+  the CATSR waiver (Reuters, The Verge, Fox News; ARA
+  daily digest 2026-09-14).
+- **Johnson refused an emergency AI law**, telling CNN
+  an emergency session would "lose the race to China"
+  and that labs still carry the safety load. Hakeem
+  Jeffries said Democrats should "act urgently" to slow
+  development and put AI on Tuesday's closed-door
+  caucus. Barack Obama urged Jeffries toward a public
+  House framework if Democrats win on November 3,
+  warning that AI "moving very fast in private
+  hands… can be dangerous"; Jeffries later said the
+  former president "is correct that decisive action must
+  be taken." That is still a hearing series, not a bill
+  (The Verge, Axios, The Hill, Reuters, TechCrunch; ARA
+  daily digest 2026-09-14).
+- **David Sacks rejected the waiver-and-evaluator
+  package from outside the administration.** He left
+  the White House AI post in August, so this is not an
+  administration line. He said [[openai]] and
+  [[anthropic]] already have a "duopoly on frontier
+  intelligence" and do not need an antitrust waiver or
+  a METR cop; if they do not actually pace, "we'll know
+  this was just another bid for regulatory capture —
+  or an election-season psyop." No sitting White House
+  account restated or walked back the line (David
+  Sacks; ARA daily digest 2026-09-14).
+- **Amodei's CBS interview is the on-record governance
+  ask**: joint oversight by "the right combination of
+  governments," a possible kill switch, no complete
+  ban, China as the "toughest dilemma" for a speed
+  limit, and pacing as "a warning sign that we need to
+  slow down," not a shutdown. See [[anthropic]] (CBS
+  News, Reuters; ARA daily digest 2026-09-14).
+- **Lab answers split.** [[microsoft|Satya Nadella]]
+  welcomed embedded evaluators and dated a public
+  consultation on Microsoft's first-party MAI Code of
+  Conduct for Monday, without pausing MAI training or
+  naming a METR team. Demis Hassabis said the essay
+  "points towards the right path" with details still
+  open, pointing back to DeepMind's July FINRA-style
+  standards body — not desks, badges, or a training
+  pause. See [[google]]. [[meta|Alexandr Wang]] said
+  Meta Superintelligence Labs is raising the share of
+  work that goes into alignment as models get more
+  powerful, naming no budget, evaluator, or slowdown.
+  The Information reported [[openai]], [[anthropic]],
+  and Google were already discussing an industry-led
+  standards body before Saturday's essay; no lab
+  confirmed the exclusive (Satya Nadella, Demis
+  Hassabis, Alexandr Wang, The Information; ARA daily
+  digest 2026-09-14).
 
 ## Open questions
 

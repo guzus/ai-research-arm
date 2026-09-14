@@ -6,8 +6,9 @@ aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3", "GLM-5.3-Flash"
 tags: [open-weights, china, agentic, frontier-model]
 description: Zhipu AI / Z.ai's successor to GLM-5.2; open-weighted on 2026-08-29 (post-trained on the 743B GLM-5.2 base; 753B total per Baseten) with day-0 vLLM/SGLang/Baseten serving, topping Hacker News at 733 points — after scoring 60 on the Artificial Analysis Intelligence Index and shipping GLM-5.3-Flash on 2026-08-27.
 created_at: 2026-08-19
-timestamp: 2026-08-29T00:00:00Z
+timestamp: 2026-09-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA model ticket — Zhipu GLM-5.3 family", path: research/models/tickets/zhipu-glm-5-3-2026-08.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
@@ -17,7 +18,7 @@ sources:
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
 ---
 
-Zhipu AI / Z.ai's **GLM-5.3** is the follow-on to [[zhipu-glm-5-2]] — the same
+[[zhipu|Zhipu AI / Z.ai]]'s **GLM-5.3** is the follow-on to [[zhipu-glm-5-2]] — the same
 **753B-total / 40B-active** MoE architecture with **1M-token context** as its
 predecessor, but carrying the cycle's headline **agentic** gain. Its scoring is
 distinct from the model itself: **Artificial Analysis published the first
@@ -128,3 +129,14 @@ open-weight agentic development.
   with effectively no guardrails** — the open-weights counterpart to
   the [[agentic-ai-security]] story this cycle has been tracking on
   gated frontier models (Bluesky; ARA daily digest 2026-08-29).
+
+## Parent-company $5B HKEX close (2026-09-14)
+
+[[zhipu|Z.ai]] closed a **$5 billion** Hong Kong raise — about
+**$2 billion** of new shares at **HK$714** plus **$3 billion** of
+zero-coupon convertibles due September 2027 — with **60%** of net
+proceeds tagged for next-generation GLM models and a Fully Self
+Training system. That is use-of-proceeds language, not a
+demonstrated takeoff, and it is a company fact, not a new
+GLM-5.3 SKU. See [[zhipu]] (Reuters; ARA daily digest
+2026-09-14).

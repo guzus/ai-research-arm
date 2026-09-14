@@ -122,7 +122,7 @@ attribution and then deflates on the first controlled measurements.
   (824 points / 414 comments), and effectively makes the Ox Alpha arc a
   **family launch** rather than a single flagship: the unattributed flash-class
   model resolves to a Z.ai GLM variant (TechCrunch; ARA daily digest
-  2026-08-27). See [[open-weights]] and [[zhipu-glm-5-3]].
+  2026-08-27). See [[zhipu]], [[open-weights]] and [[zhipu-glm-5-3]].
 - **The deflation story now reads as a launch mechanic, not a riddle.** The
   hype-then-deflation arc this page documented in detail — the retracted 80% → a
   "realistic" 60-61%, the mid-pack benchmark footprints, the free window dating

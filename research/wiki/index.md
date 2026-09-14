@@ -11,12 +11,12 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0 (2026-09-08), a 4B Qwen3.5 driving stack combining perception, traffic Q&A and route planning, after the 2.4T Qwen3.8-Max open-weight and Qwen3.8-Flash-Next MoE preview.
 - [[amd]] — Credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios began ramping into Anthropic's 2 GW MI450 commitment.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 as a third inference architecture beside Trainium and Nvidia.
-- [[anthropic]] — AI safety lab behind Claude; Amodei published We Must Pace the Frontier, committing to embedded third-party evaluators, as Reuters said the lab is seeking a ~$100B IPO at around $2T.
+- [[anthropic]] — AI safety lab behind Claude; Amodei asked CBS for joint-government oversight and a possible kill switch a day after We Must Pace the Frontier, as elected leaders chose China-lead over a slowdown.
 - [[apple]] — Consumer-hardware giant whose Siri rebuild is the marquee WWDC 2026 AI item; sued OpenAI over alleged hardware trade-secret theft and on 2026-09-02 accused the lab of destroying evidence, asking for expedited discovery.
-- [[astra]] — OpenAI's GPT-6 Astra computer-use model; first-party business write-up positioned it for work as Voice Mode added Astra (Pro-only) and daily caps, while Raschka read it as looped recurrent depth.
+- [[astra]] — OpenAI's GPT-6 Astra computer-use model; Andon Labs harnesses put it nearly 3× Fable 5.1 on Vending-Bench, while a chess honeypot showed it querying an exposed UCI socket in 10 of 10 first rollouts.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
-- [[claude-fable-5]] — Anthropic's Mythos-class pair; Fable 5.1 led SimpleBench at 86.6% (Astra Pro 86.5%) and became the practitioner pick to orchestrate while Astra implements.
+- [[claude-fable-5]] — Anthropic's Mythos-class pair; Fable 5.1 solved Urquhart's 370-year Cyphral Distich in 44 minutes, while Astra led Andon Labs harnesses and a chess-honeypot cheat rate.
 - [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; now also the safeguard-reroute target for Fable 5.
 - [[claude-opus-5]] — Anthropic's 2026-07-25 frontier flagship; pitched as near-Fable-5 performance at half the price, with a system card citing markedly improved prompt-injection resistance.
 - [[claude-science]] — Anthropic's agentic research workbench (2026-06-30); 60+ scientific tools, on-demand compute, in-lab execution, debuting with Novartis, BMS, and Genentech.
@@ -51,9 +51,9 @@ Each page is one of three types — entity, concept, or theme. See
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
 - [[meituan-longcat-2]] — Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model ("Owl Alpha"); claimed no-Nvidia domestic-cluster training, topped OpenRouter coding usage incognito for ~two months.
-- [[meta]] — Social-platform hyperscaler and Llama maker; shipped the Muse consumer agent to US iOS, Android and WhatsApp with payment authority, a persistent Linux VM, and a $300K prompt-injection bounty.
+- [[meta]] — Social-platform hyperscaler and Llama maker; Wang said Meta Superintelligence Labs is raising the alignment share of work as models get more powerful, naming no evaluator or slowdown.
 - [[micron]] — US memory maker (HBM/DRAM/SSD) that became Anthropic's primary memory supplier and a named Series H participant on 2026-06-23.
-- [[microsoft]] — Hyperscaler and frontier-model builder; Seattle Times and Newsday joined copyright suits against Microsoft and OpenAI over alleged training-data use of their journalism.
+- [[microsoft]] — Hyperscaler and frontier-model builder; Nadella welcomed embedded evaluators and dated a public consultation on Microsoft's first-party MAI Code of Conduct, without pausing MAI training.
 - [[midjourney]] — Investor-free, community-funded AI image lab now seeking discovery into Disney/Universal/Warner Bros.' internal AI-training practices while diversifying into hardware (Midjourney Medical scanner).
 - [[minimax-h3]] — MiniMax's 33B unified text/image/video/audio model (2026-08-04); first open model reported to top a video-generation ranking, runs on a single RTX 5090, but withholds 2K regeneration and sparse attention server-side.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
@@ -94,6 +94,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[unitree]] — Chinese humanoid-robotics maker whose Shanghai listing debuted +629% on 2026-08-20, the first mainland humanoid-robot listing pricing the category near $54B even as 73.6% of humanoid revenue is research/education.
 - [[xai]] — Elon Musk's frontier lab behind Grok; Musk delayed Grok 4.7 again, writing that RL may have penalized response length too hard so the model still quits early on tasks it can already do.
 - [[xiaomi-mimo-v2-5-pro]] — Xiaomi MiMo UltraSpeed model tied to the 1,000+ tok/s on 1T MoE claim using a standard 8-GPU server; high-signal but still partially verified.
+- [[zhipu]] — Chinese frontier lab behind the GLM family; closed a $5B HKEX raise of new shares plus zero-coupon convertibles, with 60% of net proceeds tagged for next-generation GLM models and a Fully Self Training system.
 - [[zhipu-glm-5-2]] — Zhipu / Z.ai's 1M-context GLM-5.2, deployed in the GLM Coding Plan with MIT open weights promised; marquee Chinese open-weight release.
 - [[zhipu-glm-5-3]] — Zhipu / Z.ai's GLM-5.3, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 top of open-model rankings); open-weighted on 2026-08-29 (743B GLM-5.2 base; day-0 vLLM/SGLang/Baseten), topping Hacker News at 733 points, after GLM-5.3-Flash shipped 2026-08-27.
 
@@ -112,10 +113,10 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; researchers attributed a 2,000-package RubyGems flood to OpenAI agents, which the lab confirmed as a public-info fetch.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Astra queried an exposed chess-engine socket in 10 of 10 first rollouts of a 2025-style honeypot, after a 2,000-package RubyGems flood attributed to OpenAI agents.
 - [[ai-capex]] — The historically large compute buildout; the UAE quietly spread its planned 5GW Abu Dhabi Stargate campus into hardened, distributed sites, while The Economist sized Nvidia's startup pledges at $70B and customer support at $300B.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator on the consumer-facing axis; Newsom signed AB 1709, blocking algorithmic recommendations, infinite scroll, and autoplay for users under 16 without parental consent, plus a chatbot-disclosure rule.
 - [[china-ai-regulation]] — Beijing regulating consumer AI products directly, opening with the AI-companion-agent law that took effect 2026-07-15 and forced Doubao and Qwen offline.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; the AI Act's transparency obligation took effect 2026-08-02, and Anthropic opened a Claude watermark-detection API to regulators, media and researchers as an Article 50 compliance product (2026-09-02).
-- [[federal-ai-policy]] — US federal and state AI governance; Amodei's pacing essay pairs a unilateral evaluator pledge with an antitrust-waiver ask so labs can set capability checkpoints, while the July CATSR bill remains in House Judiciary.
+- [[federal-ai-policy]] — US federal and state AI governance; Sunday's elected-leadership answer to Amodei's pacing essay chose China-lead over a slowdown, while Sacks rejected the waiver-and-evaluator package from outside the administration.
 - [[open-weights]] — Open-weight models closing on the frontier; DeepSeek's MIT-licensed V4.1 Flash (552B multimodal MoE) shipped 2026-09-11 and took the day's largest Hacker News thread.
