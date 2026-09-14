@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "TRUMP CALLS AI RISK A \"HOAX\" AND A \"SICK CONSPIRACY\" — NO US SLOWDOWN, NO PAUSE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2099506546476728736",
+    "category": "policy"
+  },
+  {
+    "headline": "PALANTIR, NVIDIA AND BOOZ ALLEN RESTRICT ANTHROPIC'S FABLE FOR SENSITIVE WORK OVER DATA RETENTION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2099505985740058711",
+    "category": "business"
+  },
+  {
+    "headline": "VANCE: FRONTIER LABS BEGGING TO BE REGULATED \"FEELS LIKE A BIT OF A TROJAN HORSE\"",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2099549395880657217",
+    "category": "policy"
+  },
+  {
+    "headline": "MICROSOFT PUBLISHES DRAFT HUMANIST AI CODE OF CONDUCT — 20 PRINCIPLES, NO ENFORCEMENT",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2099500454912606325",
+    "category": "policy"
+  },
+  {
+    "headline": "ALTMAN: OPENAI \"NOT RUSHING\" IPO, NONE IN 2026 — NOW \"AN ILL-ADVISED MOMENT\"",
+    "source": "@FoxBusiness",
+    "url": "https://x.com/FoxBusiness/status/2099586110762459423",
+    "category": "business"
+  },
+  {
+    "headline": "PERPLEXITY PUTS LOCAL PORTABLE COMPUTER ON WINDOWS RTX GPUS WITH 24GB VRAM OR MORE",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2099520789221376213",
+    "category": "model"
+  },
+  {
+    "headline": "BOLT FORGE RUNS OPEN-WEIGHTS ONLY — GLM 5.3 DEFAULT, 92.2 VS 101.0 FOR CLAUDE OPUS 5",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2099535055475368071",
+    "category": "opensource"
+  }
+]
