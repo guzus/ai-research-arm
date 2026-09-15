@@ -1,0 +1,13 @@
+AI News - 2026-09-15
+
+TOP STORIES:
+• Trump called AI-risk talk a “hoax” on speaker at All-In; Huang: “We’re not going to let that happen, sir”
+• Microsoft published a 37-page Humanist AI Code of Conduct — no audit, no release gate
+• OpenAI bought Glass Imaging for $300M+ (WSJ); Salesforce shipped Nemotron-based Koa
+
+KEY NUMBERS:
+• Temporal: $550M Series E at $12.55B
+• Superhuman acquired Fathom (400K+ MAU)
+• Mozilla: closed frontier buys ~4 months at ~5× per-task cost
+
+Full report on GitHub.
