@@ -1,0 +1,12 @@
+Speaker 1: Tuesday, September fifteenth, twenty twenty-six.
+Speaker 2: [high_energy] Trump called the AI risk case a hoax, and Jensen Huang co-signed the no-slowdown line right there on stage at the All In Summit.
+Speaker 1: On the policy front, Altman moved OpenAI's safety gate to before frontier reinforcement learning runs, and quietly dropped the antitrust exemption ask.
+Speaker 2: And OpenAI, Anthropic and Google are talking about standing up their own auditing standards body, without United States government support.
+Speaker 1: That is the industry writing its own rulebook while Washington argues about whether there is anything to write rules about.
+Speaker 1: Some quick numbers. Anthropic's compute commitments now sit at [emphasis] five hundred seventeen billion dollars [/emphasis], against one hundred eighty billion guided.
+Speaker 2: Against guidance. [dramatic_pause] And they are courting a [emphasis] two trillion dollar [/emphasis] valuation on top of it.
+Speaker 1: Markets did not love it. SoftBank down thirteen point two percent, the semiconductor index down five point four percent premarket, against the broad market off just zero point seven percent. Meta was the outlier, up two point one percent.
+Speaker 2: Worth noting that Grok four point eight finishes pretraining this week at two point five trillion parameters.
+Speaker 1: On the deal side, OpenAI bought Glass Imaging for more than three hundred million dollars, and Temporal raised five hundred fifty million.
+Speaker 2: And the story everyone actually read, Fable five point one cracked a three hundred seventy year old cipher. One thousand one hundred twenty four points, top of the board.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
