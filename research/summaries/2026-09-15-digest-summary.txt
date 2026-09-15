@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-09-15
+
+TOP STORIES:
+• Trump called the AI risk case a "HOAX"; Jensen Huang co-signed the no-slowdown line on stage at the All In Summit
+• Altman moved OpenAI's safety gate before frontier RL runs, dropping the antitrust-exemption ask
+• OpenAI, Anthropic and Google discussed building their own auditing standards body, without US govt support
+
+KEY NUMBERS:
+• Anthropic compute commitments $517B vs $180B guided; courting a $2T valuation
+• SoftBank -13.2%, SOXX -5.4% premarket vs SPY -0.7%; Meta +2.1%
+• Grok 4.8: 2.5T params, pretraining ends this week
+• OpenAI bought Glass Imaging for $300M+; Temporal raised $550M
+
+TRENDING: Fable 5.1 cracking a 370-year-old cipher led HN (1,124 pts)
+
+Full digest on GitHub.
