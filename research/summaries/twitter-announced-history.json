@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-09 15:00 UTC",
-    "headline": "ANTHROPIC TAKES 220,000 GPUS / 300 MW AT XAI'S COLOSSUS 1; PREVIOUS UTILIZATION 11% VS META/GOOGLE 40%+",
-    "source": "@aneesmerchant",
-    "source_file": "research/summaries/2026-05-09-twitter-15h-headlines.json",
-    "url": "https://x.com/xai/status/2052060350770515978"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-09 15:00 UTC",
-    "headline": "STEIPETE SHIPS PEEKABOO 3.0 \u2014 ACTION-FIRST MACOS COMPUTER USE WITH UNIFIED SCREENSHOT + UI DETECTION",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-05-09-twitter-15h-headlines.json",
-    "url": "https://x.com/steipete/status/2053114837698249190"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-09 15:00 UTC",
-    "headline": "MICROSOFT RELEASES PHI-GROUND-ANY ON HUGGING FACE \u2014 4B VISION MODEL HITS SOTA ON SCREENSPOT-PRO AND UI-VISION",
-    "source": "@HuggingPapers",
-    "source_file": "research/summaries/2026-05-09-twitter-15h-headlines.json",
-    "url": "https://x.com/HuggingPapers/status/2052997156810670301"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 15:00 UTC",
-    "headline": "CORE AUTOMATION (FOUNDED BY EX-OPENAI'S JERRY TWOREK) TARGETS $4B VALUATION 6 WEEKS AFTER $100M AT $1B SEED",
-    "source": "@WesRoth",
-    "source_file": "research/summaries/2026-05-09-twitter-15h-headlines.json",
-    "url": "https://x.com/WesRoth/status/2053127857556140067"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-09 18:00 UTC",
-    "headline": "SAM ALTMAN PUBLICLY CROWDSOURCES NEXT-MODEL PRIORITIES \u2014 4.7K REPLIES, ROADMAP-MATCH CONFIRMED 13 MIN LATER",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-09-twitter-18h-headlines.json",
-    "url": "https://x.com/sama/status/2053151542916894775"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-09 18:00 UTC",
     "headline": "MARK K LEAKS GOOGLE I/O LINEUP \u2014 VEO 4, NANO BANANA NEXT ON ARENA, GEMINI 3.2 FLASH, GEMINI 3.5 PRO",
@@ -24636,5 +24591,40 @@
     "headline": "HUANG: $400B OF AI VENTURE FUNDING IN SIX MONTHS, 80% OF RECIPIENTS RUNNING OPEN MODELS",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2099683967482155212"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-15 11:37:19 UTC",
+    "headline": "HUANG CALLS FRONTIER LABS' 10% EXTINCTION ESTIMATE \"MADE UP\" AND \"IRRESPONSIBLE\" ON ALL-IN STAGE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2099774738600280151"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-15 11:37:19 UTC",
+    "headline": "META'S LECUN AMPLIFIES ANTHROPIC \"GRIFT MACHINE\" POSTS, INCLUDING CALL FOR CONGRESSIONAL FINANCE PROBE",
+    "source": "@ylecun",
+    "url": "https://x.com/ylecun/status/2099802752591306960"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-15 11:37:19 UTC",
+    "headline": "SAMSUNG TAYLOR FAB HITS ~30% UTILIZATION MONTHS EARLY \u2014 TESLA AI5 NAMED AS TRIGGER, SECOND FAB EYED BY YEAR-END",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2099785420343242934"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-15 11:37:19 UTC",
+    "headline": "GEMINI 3.8 LIVE AND LIVE EXTENDED THINKING SLUGS SURFACE ON GCP QUOTA PAGE \u2014 NOT YET PUBLIC",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2099779875687055790"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-15 11:37:19 UTC",
+    "headline": "SAMSUNG DUAL-SOURCES CUSTOM HBM BASE DIES TO TSMC ALONGSIDE ITS OWN FOUNDRY",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2099770851516428455"
   }
 ]
