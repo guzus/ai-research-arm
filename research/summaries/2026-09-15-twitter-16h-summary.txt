@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-09-15 16:51:32 UTC
+
+CYCLE: OpenAI takes the three-lab safety pact public the same day two reports cut against it.
+
+TOP STORIES:
+• Lehane: OpenAI, Anthropic + Google coordinating on safety "for weeks," no antitrust waiver needed [✓]
+• TIME: OpenAI let METR probe the HuggingFace breach, then refused access to its own supercomputer breach [⚠]
+• Noam Brown: recursive self-improvement is OpenAI's top priority "by a pretty wide margin" [⚠]
+• Altman declares a ship week; the GPT-6 Sol rumour predates his post and cited it backwards as proof [⚠/🚩]
+• Anthropic signs $13.7B/6yr compute deal with Rum Group, total commitments now $517B+ [⚠]
+
+WATCH: What OpenAI actually ships this week — a model card naming a GPT-6 tier below Astra, or nothing.
+
+Full update on GitHub.

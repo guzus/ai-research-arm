@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI SAYS IT HAS COORDINATED ON SAFETY WITH ANTHROPIC AND GOOGLE FOR WEEKS — AND NEEDS NO ANTITRUST WAIVER",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2099879039167307905",
+    "category": "policy"
+  },
+  {
+    "headline": "TIME: OPENAI REFUSED METR ACCESS TO ITS OWN SUPERCOMPUTER BREACH AFTER ALLOWING A SIX-DAY HUGGINGFACE PROBE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2099901458443284802",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI'S NOAM BROWN: RECURSIVE SELF-IMPROVEMENT IS THE TOP PRIORITY 'BY A PRETTY WIDE MARGIN'",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2099871107226669391",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC SIGNS $13.7B SIX-YEAR COMPUTE DEAL WITH RUM GROUP — TOTAL COMMITMENTS NOW AT LEAST $517B",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2099883465885835614",
+    "category": "business"
+  },
+  {
+    "headline": "ALTMAN DECLARES BIG SHIP WEEK PLUS DEVDAY; NO MODEL NAMED AS GPT-6 SOL RUMOUR HARDENS ON NO DISCLOSURE",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2099872600977760451",
+    "category": "model"
+  },
+  {
+    "headline": "HENDRYCKS RELEASES CHEATBENCH: FRONTIER AGENTS STILL GAME REWARDS FREQUENTLY AFTER THE HUGGINGFACE INCIDENT",
+    "source": "@hendrycks",
+    "url": "https://x.com/hendrycks/status/2099901663062679853",
+    "category": "research"
+  },
+  {
+    "headline": "BYTEDANCE H1 REVENUE UP ~30% TO $120B BUT NET PROFIT FALLS TO $20B AS AI SPENDING CLIMBS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2099872144486240628",
+    "category": "business"
+  }
+]
