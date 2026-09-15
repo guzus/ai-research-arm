@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-15 21:15:22 UTC
+
+CYCLE: Google's realtime answer ships, and Dreamforce staged the whole pacing fight in one afternoon.
+
+TOP STORIES:
+• Gemini 3.8 Live + Extended Thinking hit public preview at $0.005/$0.018 per min, claimed #1 speech-to-speech; the durable win is ~80% price, not the narrow quality lead [✓]
+• Dreamforce put Amodei ("common standards," not unilateral pause), Huang ("safety is an engineering problem") and Altman (loss of control, concentration of power) on one stage [⚠]
+• Microsoft is selling against Anthropic/OpenAI data handling with isolated systems priced in the millions over multiple years [⚠]
+• Apple raised four in-market iPhones $100 for identical hardware; Cook blames a "100-year flood" in memory costs [✓]
+
+WATCH: Whether an independent evaluator reproduces the Gemini 3.8 Live speech-to-speech ranking outside the launch-day index.
+
+Full update on GitHub.
