@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-15
+
+TOP 5 PAPERS:
+• ZGCM-1 — open 7B from scratch; matches Qwen3-235B-A22B / GLM-5.1 on math+agentic search; 4.2× pretrain
+• Agent test-time Elo — Zettlemoyer/Dimakis: agents beat iid sampling then stall; parallel +264 Elo @ 100M tok
+• Stellar Colosseum — Woodruff/Mirrokni harness: new FOCS/JMLR results; TCS-Bench 71%; CF 218/222
+• Lightning Weave — Song Han: compose specialists; Qwen3.5-4B HMMT 59→64, LCB 42→54, fewer tokens
+• Plan injection — Ilyas: CoT monitor evasion 25–33%; extra monitor compute can cut detection 50%
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
