@@ -2,17 +2,18 @@
 slug: microsoft
 title: Microsoft
 type: entity
-aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "MAI Code of Conduct"]
+aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "MAI Code of Conduct", "Humanist AI Code of Conduct"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; Nadella welcomed embedded evaluators and dated a public consultation on Microsoft's first-party MAI Code of Conduct, without pausing MAI training.
+description: Hyperscaler and frontier-model builder; published a 37-page Humanist AI Code of Conduct with 20 principles, no audit, no release gate, and no signatories.
 created_at: 2026-06-03
-timestamp: 2026-09-14T00:00:00Z
+timestamp: 2026-09-15T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
@@ -177,7 +178,22 @@ MAI training or name a METR team. Watch whether the
 text names evaluators, publish-rights, or a release
 gate, versus a product-ethics PDF. See
 [[federal-ai-policy]] (Satya Nadella; ARA daily digest
-2026-09-14).
+  2026-09-14).
+
+## The Humanist AI Code of Conduct publishes (2026-09-15)
+
+Microsoft published the draft **Humanist AI Code of
+Conduct** Nadella dated yesterday: **37 pages**,
+**20 principles**, including that AI "must not
+pursue independent goals," "must stay within its
+authorized scope," and that "safety takes priority
+over task completion." It carries **no audit, no
+release gate and no signatories**. The Verge
+reported it; this is a product-ethics PDF, not the
+METR-style evaluator package [[anthropic]] asked
+for, and not a training pause. See
+[[federal-ai-policy]] (@testingcatalog, The Verge;
+ARA daily digest 2026-09-15).
 
 ## Open questions
 

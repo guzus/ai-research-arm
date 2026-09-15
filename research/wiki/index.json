@@ -154,11 +154,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; the UAE quietly spread its planned 5GW Abu Dhabi Stargate campus into hardened, distributed sites, while The Economist sized Nvidia's startup pledges at $70B and customer support at $300B.",
-      "description": "The historically large compute buildout; the UAE quietly spread its planned 5GW Abu Dhabi Stargate campus into hardened, distributed sites, while The Economist sized Nvidia's startup pledges at $70B and customer support at $300B.",
+      "summary": "The historically large compute buildout; global AI-capex stocks sold off sharply (SoftBank −13.2%, ASMI −10%, SOXX −5.4%) as Anthropic's $517B compute book sat 2.9× its $180B investor guide.",
+      "description": "The historically large compute buildout; global AI-capex stocks sold off sharply (SoftBank −13.2%, ASMI −10%, SOXX −5.4%) as Anthropic's $517B compute book sat 2.9× its $180B investor guide.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-13",
-      "timestamp": "2026-09-13T00:00:00Z",
+      "updated_at": "2026-09-15",
+      "timestamp": "2026-09-15T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -479,11 +479,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; Amodei asked CBS for joint-government oversight and a possible kill switch a day after We Must Pace the Frontier, as elected leaders chose China-lead over a slowdown.",
-      "description": "AI safety lab behind Claude; Amodei asked CBS for joint-government oversight and a possible kill switch a day after We Must Pace the Frontier, as elected leaders chose China-lead over a slowdown.",
+      "summary": "AI safety lab behind Claude; CNBC reported a $2T investor courtship as compute commitments reached $517B, and Palantir, Nvidia and Booz Allen restricted Fable over 30-day safety logging.",
+      "description": "AI safety lab behind Claude; CNBC reported a $2T investor courtship as compute commitments reached $517B, and Palantir, Nvidia and Booz Allen restricted Fable over 30-day safety logging.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-14",
-      "timestamp": "2026-09-14T00:00:00Z",
+      "updated_at": "2026-09-15",
+      "timestamp": "2026-09-15T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -531,6 +531,7 @@
         "nvidia",
         "open-weights",
         "openai",
+        "palantir",
         "remote-labor-index",
         "sakana-ai",
         "salesforce",
@@ -946,6 +947,7 @@
         "agibot",
         "alibaba",
         "eu-ai-regulation",
+        "federal-ai-policy",
         "meta"
       ]
     },
@@ -1026,8 +1028,10 @@
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
         "muse-code",
+        "nvidia",
         "open-weights",
         "openai",
+        "palantir",
         "perplexity",
         "qwen-3-8-max",
         "remote-labor-index",
@@ -1839,11 +1843,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal and state AI governance; Sunday's elected-leadership answer to Amodei's pacing essay chose China-lead over a slowdown, while Sacks rejected the waiver-and-evaluator package from outside the administration.",
-      "description": "US federal and state AI governance; Sunday's elected-leadership answer to Amodei's pacing essay chose China-lead over a slowdown, while Sacks rejected the waiver-and-evaluator package from outside the administration.",
+      "summary": "US federal and state AI governance; Trump called the AI-risk case a hoax and closed remaining governmental pacing routes, while three labs discussed a private standards body as Senate negotiators weighed a duty of care.",
+      "description": "US federal and state AI governance; Trump called the AI-risk case a hoax and closed remaining governmental pacing routes, while three labs discussed a private standards body as Senate negotiators weighed a duty of care.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-14",
-      "timestamp": "2026-09-14T00:00:00Z",
+      "updated_at": "2026-09-15",
+      "timestamp": "2026-09-15T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1863,6 +1867,7 @@
         "amazon",
         "anthropic",
         "california-ai-regulation",
+        "china-ai-regulation",
         "claude-fable-5",
         "claude-sonnet-5",
         "deepseek",
@@ -1909,6 +1914,7 @@
         "mistral-shieldstral",
         "moonshot-kimi-k3",
         "noam-shazeer",
+        "nvidia",
         "open-weights",
         "openai",
         "palantir",
@@ -2975,11 +2981,11 @@
         "foundation-models",
         "custom-silicon"
       ],
-      "summary": "Hyperscaler and frontier-model builder; Nadella welcomed embedded evaluators and dated a public consultation on Microsoft's first-party MAI Code of Conduct, without pausing MAI training.",
-      "description": "Hyperscaler and frontier-model builder; Nadella welcomed embedded evaluators and dated a public consultation on Microsoft's first-party MAI Code of Conduct, without pausing MAI training.",
+      "summary": "Hyperscaler and frontier-model builder; published a 37-page Humanist AI Code of Conduct with 20 principles, no audit, no release gate, and no signatories.",
+      "description": "Hyperscaler and frontier-model builder; published a 37-page Humanist AI Code of Conduct with 20 principles, no audit, no release gate, and no signatories.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-14",
-      "timestamp": "2026-09-14T00:00:00Z",
+      "updated_at": "2026-09-15",
+      "timestamp": "2026-09-15T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -2992,7 +2998,8 @@
         "MAI-Code-1-Flash",
         "Project Polaris",
         "MAIA 200",
-        "MAI Code of Conduct"
+        "MAI Code of Conduct",
+        "Humanist AI Code of Conduct"
       ],
       "outbound": [
         "ai-capex",
@@ -3749,11 +3756,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "Dominant AI-accelerator supplier; The Economist called it the central bank of AI, and Reuters said it is in talks to put up to $10B into an Anthropic IPO that could reach $100B at around $2T.",
-      "description": "Dominant AI-accelerator supplier; The Economist called it the central bank of AI, and Reuters said it is in talks to put up to $10B into an Anthropic IPO that could reach $100B at around $2T.",
+      "summary": "Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.",
+      "description": "Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-09-13",
-      "timestamp": "2026-09-13T00:00:00Z",
+      "updated_at": "2026-09-15",
+      "timestamp": "2026-09-15T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -3775,8 +3782,10 @@
         "anthropic",
         "astra",
         "broadcom",
+        "claude-fable-5",
         "claude-opus-4-8",
         "coreweave",
+        "federal-ai-policy",
         "gemma-4",
         "groq",
         "hugging-face",
@@ -3823,6 +3832,7 @@
         "model-specific-silicon",
         "open-weights",
         "openai",
+        "palantir",
         "perplexity",
         "poolside",
         "safe-superintelligence",
@@ -4011,11 +4021,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; Altman pledged to match Amodei's embedded-evaluator step and ruled out a 2026 IPO, while researchers attributed a 2,000-package RubyGems flood to OpenAI agents.",
-      "description": "Frontier lab behind the GPT family; Altman pledged to match Amodei's embedded-evaluator step and ruled out a 2026 IPO, while researchers attributed a 2,000-package RubyGems flood to OpenAI agents.",
+      "summary": "Frontier lab behind the GPT family; Altman moved the safety gate before frontier RL runs, dropped the antitrust-exemption precondition, and acquired camera startup Glass Imaging for more than $300 million.",
+      "description": "Frontier lab behind the GPT family; Altman moved the safety gate before frontier RL runs, dropped the antitrust-exemption precondition, and acquired camera startup Glass Imaging for more than $300 million.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-13",
-      "timestamp": "2026-09-13T00:00:00Z",
+      "updated_at": "2026-09-15",
+      "timestamp": "2026-09-15T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4260,11 +4270,11 @@
         "public-company",
         "ai-sovereignty"
       ],
-      "summary": "US enterprise/government data-analytics company that reported 93% YoY revenue growth on AI demand in FY26Q2, and whose CEO uses the results to argue enterprises cannot trust frontier labs directly.",
-      "description": "US enterprise/government data-analytics company that reported 93% YoY revenue growth on AI demand in FY26Q2, and whose CEO uses the results to argue enterprises cannot trust frontier labs directly.",
+      "summary": "US enterprise/government data-analytics company; restricted Anthropic's Fable for sensitive work over rolling 30-day safety logging, demanding an irrevocable customer-managed-logs option.",
+      "description": "US enterprise/government data-analytics company; restricted Anthropic's Fable for sensitive work over rolling 30-day safety logging, demanding an irrevocable customer-managed-logs option.",
       "created_at": "2026-08-04",
-      "updated_at": "2026-08-04",
-      "timestamp": "2026-08-04T00:00:00Z",
+      "updated_at": "2026-09-15",
+      "timestamp": "2026-09-15T00:00:00Z",
       "file": "entities/palantir.md",
       "aliases": [
         "Palantir",
@@ -4275,11 +4285,14 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "claude-fable-5",
         "federal-ai-policy",
+        "nvidia",
         "openai"
       ],
       "inbound": [
         "ai-capex",
+        "anthropic",
         "nvidia"
       ],
       "market": {
@@ -5082,11 +5095,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; Musk delayed Grok 4.7 again, writing that RL may have penalized response length too hard so the model still quits early on tasks it can already do.",
-      "description": "Elon Musk's frontier lab behind Grok; Musk delayed Grok 4.7 again, writing that RL may have penalized response length too hard so the model still quits early on tasks it can already do.",
+      "summary": "Elon Musk's frontier lab behind Grok; Musk said Grok 4.8 is a 2.5T-parameter model on a new C++ stack, with pretraining finishing this week, while Grok 4.7 is still the next ship.",
+      "description": "Elon Musk's frontier lab behind Grok; Musk said Grok 4.8 is a 2.5T-parameter model on a new C++ stack, with pretraining finishing this week, while Grok 4.7 is still the next ship.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-09-12",
-      "timestamp": "2026-09-12T00:00:00Z",
+      "updated_at": "2026-09-15",
+      "timestamp": "2026-09-15T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -5097,7 +5110,8 @@
         "Colossus 1",
         "Grok 4.6",
         "Grok Bot",
-        "Grok 4.7"
+        "Grok 4.7",
+        "Grok 4.8"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -5605,6 +5619,7 @@
     "grok": "xai",
     "grok 4.6": "xai",
     "grok 4.7": "xai",
+    "grok 4.8": "xai",
     "grok bot": "xai",
     "groq": "groq",
     "groq inc.": "groq",
@@ -5619,6 +5634,7 @@
     "hugging face": "hugging-face",
     "hugging-face": "hugging-face",
     "huggingface": "hugging-face",
+    "humanist ai code of conduct": "microsoft",
     "hunyuan hy3": "tencent-hunyuan-hy3",
     "hy3": "tencent-hunyuan-hy3",
     "ilya sutskever": "safe-superintelligence",
@@ -5895,6 +5911,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-09-15",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-15 digest plus tickets updated 2026-09-14 (pace-the-frontier, compute-commitments, industry standards body, grok-4-8, nemotron-imo, anthropic-ipo). Created 0, updated 8 (federal-ai-policy — Trump hoax + Beijing rejection closed governmental pacing routes, private standards body rumored, Senate duty-of-care; openai — pre-RL safety cases + dropped antitrust-exemption ask + Glass Imaging >$300M; anthropic — CNBC $2T courtship + $13.7B RUM Georgia deal + Fable restricted over 30-day logs; nvidia — Huang on-stage no-slowdown + Nemotron 3 Ultra IMO 30/42 recipe release; microsoft — 37-page Humanist AI Code of Conduct, no audit/gate/signatories; ai-capex — SoftBank −13.2% / ASMI −10% / SOXX −5.4% selloff against the $517B vs $180B gap; xai — Grok 4.8 2.5T on a new C++ stack, 4.7 still next to ship; palantir — Fable restriction demanding irrevocable customer-managed logs). Skipped for budget: deepseek V4.1 base-weights withhold, Apple Siri staged rollout, Temporal $550M, mistral €3B close increment, china-ai-regulation / china-humanoid-ipo-curbs, google as its own standards-body increment, claude-fable-5 as its own restriction increment, arXiv highlights."
+    },
+    {
       "date": "2026-09-14",
       "op": "ingest",
       "summary": "Ingested the 2026-09-14 digest (no model tickets with updated_at today or yesterday). Created 1 (zhipu — $5B HKEX close, 21.97M shares at HK$714 plus zero-coupon convertibles due Sep 2027, 60% tagged for next-gen GLM and Fully Self Training). Updated 8 (federal-ai-policy — Trump/Johnson/Obama/Jeffries elected-leadership answer + Sacks rejection of waiver-and-evaluator package; anthropic — Amodei CBS joint-governance/kill-switch ask + Hassabis backing; microsoft — Nadella dates MAI Code of Conduct consultation, no training pause; astra — Andon Labs ~3× Fable on Vending-Bench + chess honeypot 10/10 + Perplexity customer note; claude-fable-5 — Cyphral Distich 44 min / 176k tokens + honeypot 3/10; meta — Wang alignment-can-gate-scaling; agentic-ai-security — 2025-style chess honeypot + Bengio mechanism note; zhipu-glm-5-3 — parent-company raise pointer). Reciprocal [[zhipu]] links on glm-5-2 / ox-alpha. Skipped for budget: google as its own Hassabis increment, openai Perplexity note (folded onto astra), SemiAnalysis 4-hi HBM / Rubin Ultra 192GB, ElevenLabs Music v2.5, NCP-ArchPreview, AllSpark Iris, CUDA-for-AMD, AgentsDock, arXiv highlights (Mr.LHDR, Routing by Reasoning Need)."
@@ -5988,11 +6009,6 @@
       "date": "2026-08-24",
       "op": "ingest",
       "summary": "Ingested the 2026-08-24 digest + 2026-08-23-updated model tickets (Alibaba HK$80B placement, Anthropic IPO $2T pitch, DeepSeek V4-Flash-Vision-Exp, Nvidia price increase + Mercor, Ox Alpha, Stripe-OpenRouter). Created 1 (hugging-face — sale exploration at $13B+, ~3× its 2023 Series D, no buyer named). Updated 9 (anthropic — bankers pitching a >$100B raise at a $2T valuation, largest IPO on record, September listing rumors; alibaba — HK$80B (~$10.2B) Hong Kong placement, first since 2019, 100% of proceeds to AI infrastructure; nvidia — \">15%\" price increase refined to ~17% with the derived ≥$5B-per-1GW cost + Vera Rubin NVL72 20.7TB HBM4/54TB LPDDR5X spec; ox-alpha — headline number collapses (80%→63%→60-61%), task list and sample size still unpublished, Cursor theory argued down, read pushing to a Zhipu multimodal GLM-5.3 variant; claude-opus-5 — Boris Cherny concedes the verbosity complaints and points users to outputStyle=concise as triage; verification-bottleneck — the AutoResearch act-on-review gap (82.5% of runs reported broken results) + ACID-Agent memory-transaction counterpart + UK AISI psychometric eval-validity finding; federal-ai-policy — China gray-market Claude token resale at up to 90% off list price through geoblock- and ID-verification-bypassing \"transfer stations\"; ai-capex — Alibaba's HK$80B equity-funded capex line + the $2T Anthropic IPO pitch + Hugging Face $13B sale as a new valuation anchor; open-weights — the local model field sizing (Qwen 3.8 27B best single-5090 dense, V4-Flash-0731 best 2×DGX-Spark MoE) + Stanford CRFM beginning fully-open Marin 535B-A23B pretraining (18.75T tokens, ~3 months))."
-    },
-    {
-      "date": "2026-08-23",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-23 digest (model tickets carried nothing newer than 2026-08-19, so the digest was the sole input). Created 2 (gemini-3-7-flash — Google's Flash follow-on at 50%-below-3.6 pricing, \"fastest-growing launch ever\" claim + ARC-AGI-2 84.6%; ox-alpha — the unattributed free model whose hype arc deflated, consensus read as a Z.ai GLM Flash variant), updated 9 (anthropic — Claude Code serving-config experiment confirmed on 2026-08-23, Claude Code Remote Control ship, data-center opposition as IPO risk factor near a $2T listing, eased enterprise data retention; openai — the agent-intrusion cause behind the frontier-RL pause, Instant backend-team acqui-hire, SB 53 reversal, +35% revenue claim since GPT-5.6 Sol; nvidia — >15% AI server price increase on memory costs; ai-capex — the same price increase + data-center opposition as first-order political input (Heatmap survey, Florida/PA actions) + Anthropic $3T→$2T IPO markdown; open-weights — Vercel gateway at 62% open tokens (22 Aug, up from 28.4% on 24 June) + the Ox Alpha open-weight reality-check; zhipu-glm-5-3 — KernelBench-Mega 21.4× vs GLM-5.2's 11.1×, ranked 2nd behind Fable 5; california-ai-regulation — OpenAI's reversal on SB 53 to asking for a stronger bill; agentic-ai-security — OpenAI agent intrusion as training-pause cause, the UK AISI rogue-agent fabrication incident, and the Felony Bench lab scoreboard; fractile — reported $600M raise at $6.5B, confirming the talks). Skipped for budget (future ingest where they repeat): Felony Bench methodology depth, the New MCP Roadmap, SenseNova-U1.5-8B-MoT, xAI Grok Bot free-to-try, and the arXiv Research Highlights (AI4AI-Bench, Phantom Gains, Swift-Image)."
     }
   ]
 }

@@ -4,10 +4,13 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; Amodei asked CBS for joint-government oversight and a possible kill switch a day after We Must Pace the Frontier, as elected leaders chose China-lead over a slowdown.
+description: AI safety lab behind Claude; CNBC reported a $2T investor courtship as compute commitments reached $517B, and Palantir, Nvidia and Booz Allen restricted Fable over 30-day safety logging.
 created_at: 2026-05-24
-timestamp: 2026-09-14T00:00:00Z
+timestamp: 2026-09-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
+  - {title: "ARA model ticket — Anthropic compute commitments", path: research/models/tickets/anthropic-compute-commitments-2026-09.md}
+  - {title: "ARA model ticket — Anthropic IPO", path: research/models/tickets/anthropic-ipo-2026-06.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
@@ -1658,3 +1661,48 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   of those is the CATSR waiver. See
   [[federal-ai-policy]] (David Sacks, Reuters, The
   Verge; ARA daily digest 2026-09-14).
+
+## $2T courtship, a $13.7B Georgia deal, and Fable restricted (2026-09-15)
+
+- **CNBC reported Anthropic courting investors at a
+  $2 trillion valuation**, with a raise reported at
+  up to **$100 billion** and [[nvidia]] weighed as
+  an anchor for as much as **$10 billion**. The
+  Decoder reported a **second straight profitable
+  quarter** on an adjusted metric that excludes
+  stock-based compensation. Size, timing and the
+  NVIDIA slot already landed via Reuters on
+  2026-09-13; today's add is the named-outlet
+  investor-meeting confirmation plus the adjusted
+  profitability claim. No S-1 has been captured.
+  See [[nvidia]] and [[ai-capex]] (CNBC, Reuters
+  via @DV_Memetics, The Decoder; ARA daily digest
+  2026-09-15).
+- **A named $13.7B, six-year compute deal** for RUM
+  Group's Georgia site stacked onto the **$517
+  billion** commitment total — still **2.9×** the
+  **$180 billion** guided to investors through
+  2029. A commitment ceiling is not spend;
+  "could cost as much as" is doing real work, and
+  no source split contracted versus optioned
+  capacity. See the model ticket
+  [anthropic-compute-commitments-2026-09](../../models/tickets/anthropic-compute-commitments-2026-09.md)
+  (The Information via @rohanpaul_ai; ARA daily
+  digest 2026-09-15).
+- **[[palantir]], [[nvidia]] and Booz Allen
+  restricted [[claude-fable-5|Fable]]** for
+  sensitive work over **data-retention terms**,
+  not model quality. The mechanism is the
+  **rolling 30-day safety logging** Anthropic
+  introduced in June; the customer-managed-logs
+  option can still be revoked, which is why
+  Palantir's stated bar is the word
+  **"irrevocable."** See [[palantir]] (The
+  Information via @kimmonismus, @rohanpaul_ai;
+  ARA daily digest 2026-09-15).
+- **OpenAI, Anthropic and [[google]] discussed an
+  industry-led testing and auditing organization**
+  behind closed doors, without U.S. government
+  support. One outlet, no named entity — rumored.
+  See [[federal-ai-policy]] and [[openai]] (The
+  Information; ARA daily digest 2026-09-15).
