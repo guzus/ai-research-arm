@@ -29,7 +29,7 @@ wiki. Public outputs deploy continuously to
 ## Today's Front Page
 
 <!-- FRONT_PAGE_START -->
-![Today's Front Page](research/front-page/2026-09-14-front-page.png)
+![Today's Front Page](research/front-page/2026-09-15-front-page.png)
 <!-- FRONT_PAGE_END -->
 
 > 🗞️ Rendered after each successful daily digest — deterministic SVG→PNG, no
