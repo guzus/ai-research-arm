@@ -4,10 +4,13 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; Sunday's elected-leadership answer to Amodei's pacing essay chose China-lead over a slowdown, while Sacks rejected the waiver-and-evaluator package from outside the administration.
+description: US federal and state AI governance; Trump called the AI-risk case a hoax and closed remaining governmental pacing routes, while three labs discussed a private standards body as Senate negotiators weighed a duty of care.
 created_at: 2026-06-03
-timestamp: 2026-09-14T00:00:00Z
+timestamp: 2026-09-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
+  - {title: "ARA model ticket — industry frontier-safety standards body", path: research/models/tickets/industry-frontier-safety-standards-body-2026-09.md}
+  - {title: "ARA model ticket — Amodei We Must Pace the Frontier", path: research/models/tickets/anthropic-pace-the-frontier-2026-09.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
@@ -966,6 +969,86 @@ footing for the first time in the cycle.
   confirmed the exclusive (Satya Nadella, Demis
   Hassabis, Alexandr Wang, The Information; ARA daily
   digest 2026-09-14).
+
+## Every governmental pacing route closed; labs talk a private body (2026-09-15)
+
+- **Trump called the AI-risk case a hoax.** Two Truth
+  Social posts and an All In Summit appearance ruled
+  out any slowdown: "There is a SICK conspiracy going
+  on against AI and Data Centers, and the only one
+  that is happy about it is China," closing
+  "Conspiracy Theorists, Treasonists, Traitors, and
+  Leakers, BEWARE." Vice President Vance separately
+  called frontier labs asking to be regulated "a bit
+  of a Trojan horse." [[nvidia|Jensen Huang]] answered
+  Trump live: "That's right, we're not going to let
+  that happen sir." David Sacks claimed [[anthropic]]
+  and [[openai]] have models in the lab "about two
+  generations ahead of everyone else." This is
+  campaign-and-stage rhetoric, not a statute — but it
+  is the elected-executive close-out of Amodei's
+  pacing ask (Truth Social via @AndrewCurran_,
+  @rohanpaul_ai, TechCrunch; ARA daily digest
+  2026-09-15).
+- **Beijing rejected the proposal outright.** The
+  state-backed Global Times called it a "silent AI
+  Cold War" that is "hypocritical and short-sighted."
+  The Foreign Ministry made the same refusal in
+  softer terms, warning that "fearmongering,
+  confrontation and vicious competition will only
+  disrupt the process of global AI governance." See
+  [[china-ai-regulation]] (Global Times/Reuters,
+  MOFA/AP; ARA daily digest 2026-09-15).
+- **Every governmental route closed inside roughly 72
+  hours** — Sacks refusing the antitrust exemption,
+  Beijing's Foreign Ministry and Global Times
+  rejecting the framing, and the President calling
+  the premise a hoax — leaving only voluntary
+  lab-level commitments and the private standards
+  body below (ARA daily digest 2026-09-15).
+- **Three labs discussed a private standards body.**
+  The Information reported [[openai]], [[anthropic]]
+  and [[google]] have been meeting since July —
+  before Amodei's essay — to design shared
+  frontier-safety standards through an industry-led
+  testing and auditing organization, "without U.S.
+  government support." Altman told staff he backs an
+  external testing-and-auditing organization and that
+  the labs may have to build it themselves. Status
+  stays **rumored**: one outlet, no named entity,
+  charter, membership list, or on-record company
+  confirmation that a body exists. Cohere's Aidan
+  Gomez already published the counter-brief —
+  "evidenced standards, not a cartel." See the model
+  ticket
+  [industry-frontier-safety-standards-body-2026-09](../../models/tickets/industry-frontier-safety-standards-body-2026-09.md)
+  (The Information via @leomschwartz; ARA daily
+  digest 2026-09-15).
+- **The Senate is moving the opposite way.** Reuters
+  reported negotiators weighing a **statutory duty of
+  care** for AI companies plus **authority to block
+  unsafe model releases** — a binding release gate
+  materially stronger than the voluntary framework
+  the labs propose, and one that does not need
+  presidential assent to advance. No bill number is
+  attached (Reuters via @DV_Memetics; ARA daily
+  digest 2026-09-15).
+- **Lina Khan argued no new statute is needed**,
+  saying dangerous AI releases can already trigger
+  liability under existing consumer-protection and
+  competition law — a different enforcement path
+  from the federal framework Altman is asking for
+  (@rohanpaul_ai; ARA daily digest 2026-09-15).
+- **A cross-spectrum coalition formed outside both
+  parties' leadership**, with Axios reporting Bernie
+  Sanders, Steve Bannon and former Anthropic
+  researcher Jacob Coxon aligning around human
+  control over AI (Axios via @kimmonismus; ARA daily
+  digest 2026-09-15).
+- **[[microsoft]] published its Humanist AI Code of
+  Conduct** — 37 pages, 20 principles, no audit, no
+  release gate, no signatories. See [[microsoft]]
+  (The Verge; ARA daily digest 2026-09-15).
 
 ## Open questions
 

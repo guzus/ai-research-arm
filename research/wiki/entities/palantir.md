@@ -4,15 +4,16 @@ title: Palantir Technologies
 type: entity
 aliases: ["Palantir", "PLTR", "Palantir Technologies Inc.", "Alex Karp"]
 tags: [enterprise-ai, government, earnings, public-company, ai-sovereignty]
-description: US enterprise/government data-analytics company that reported 93% YoY revenue growth on AI demand in FY26Q2, and whose CEO uses the results to argue enterprises cannot trust frontier labs directly.
+description: US enterprise/government data-analytics company; restricted Anthropic's Fable for sensitive work over rolling 30-day safety logging, demanding an irrevocable customer-managed-logs option.
 created_at: 2026-08-04
-timestamp: 2026-08-04T00:00:00Z
+timestamp: 2026-09-15T00:00:00Z
 market:
   ticker: PLTR
   exchange: NASDAQ
   symbol: NASDAQ:PLTR
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "Palantir FY26Q2 8-K (accession 0001321655-26-000039), EX-99.1 press release", url: "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000039/a2026q2ex991pressrelease.htm", date: 2026-08-03}
 ---
@@ -54,6 +55,22 @@ the 2026-08-04 digest cycle.
   frontier labs a voluntary pre-release model submission framework (see
   [[federal-ai-policy]]). Data control as a product and data control as a
   regulatory question surfaced in the same 24 hours.
+
+## Fable restricted over 30-day safety logging (2026-09-15)
+
+Palantir, [[nvidia]] and Booz Allen
+**restricted [[anthropic]]'s [[claude-fable-5|Fable]]**
+for sensitive work over **data-retention terms**,
+not model quality. The mechanism is the rolling
+**30-day safety logging** Anthropic introduced in
+June; the customer-managed-logs option can still
+be revoked, which is why Palantir's stated bar is
+the word **"irrevocable."** This is the first
+named-customer enforcement of the "don't trust the
+labs" thesis this page opened on — a procurement
+bar, not a benchmark result (The Information via
+@kimmonismus, @rohanpaul_ai; ARA daily digest
+2026-09-15).
 
 ## Open questions
 

@@ -2,12 +2,14 @@
 slug: xai
 title: xAI
 type: entity
-aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot", "Grok 4.7"]
+aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot", "Grok 4.7", "Grok 4.8"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; Musk delayed Grok 4.7 again, writing that RL may have penalized response length too hard so the model still quits early on tasks it can already do.
+description: Elon Musk's frontier lab behind Grok; Musk said Grok 4.8 is a 2.5T-parameter model on a new C++ stack, with pretraining finishing this week, while Grok 4.7 is still the next ship.
 created_at: 2026-06-08
-timestamp: 2026-09-12T00:00:00Z
+timestamp: 2026-09-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
+  - {title: "ARA model ticket — Grok 4.8", path: research/models/tickets/xai-grok-4-8-2026-09.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA model ticket — Grok 4.7", path: research/models/tickets/xai-grok-4-7-2026-09.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
@@ -266,6 +268,25 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   from Musk, the ship is not (Elon Musk; ARA daily digest
   2026-09-12). Distinct from the rumoured 2T SpaceX-data
   next-generation Grok this page already tracks.
+
+- **Musk said Grok 4.8 is a 2.5-trillion-parameter
+  model** trained on xAI's new C++ software stack,
+  with pretraining finishing this week and RL
+  starting immediately after (2026-09-15). He does
+  not say whether 2.5T is total or active
+  parameters, which for an MoE model makes the
+  figure hard to read as capability; the number
+  also lands below the 10T that had been
+  circulating. Status is **in-testing**: a
+  company-stated training run, nothing shipped —
+  no weights, API id, benchmark, pricing, or
+  date. **Grok 4.7 remains the next ship**
+  despite being the quieter story. Five accounts
+  carried the 4.8 claim; all five trace to one
+  Musk reply. See the model ticket
+  [xai-grok-4-8-2026-09](../../models/tickets/xai-grok-4-8-2026-09.md)
+  (@elonmusk, @scaling01, @testingcatalog; ARA
+  daily digest 2026-09-15).
 
 ## Open questions
 

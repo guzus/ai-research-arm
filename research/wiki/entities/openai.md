@@ -4,10 +4,13 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; Altman pledged to match Amodei's embedded-evaluator step and ruled out a 2026 IPO, while researchers attributed a 2,000-package RubyGems flood to OpenAI agents.
+description: Frontier lab behind the GPT family; Altman moved the safety gate before frontier RL runs, dropped the antitrust-exemption precondition, and acquired camera startup Glass Imaging for more than $300 million.
 created_at: 2026-05-30
-timestamp: 2026-09-13T00:00:00Z
+timestamp: 2026-09-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
+  - {title: "ARA model ticket — industry frontier-safety standards body", path: research/models/tickets/industry-frontier-safety-standards-body-2026-09.md}
+  - {title: "ARA model ticket — OpenAI IPO", path: research/models/tickets/openai-ipo-2026-06.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
@@ -1382,6 +1385,59 @@ materially reshape how the lab is positioned heading into its IPO window:
   G42, OpenAI, [[nvidia]], Oracle, Cisco, SoftBank.
   See [[ai-capex]] (Reuters; ARA daily digest
   2026-09-13).
+
+## Safety cases before RL, Glass Imaging, and a private standards body (2026-09-15)
+
+- **Altman moved the safety gate before training
+  runs.** He disclosed that OpenAI now writes
+  **explicit safety cases ahead of frontier RL runs
+  expected to raise capability** — a checkpoint on
+  training, not only deployment — and dropped the
+  **antitrust-exemption precondition** Amodei's camp
+  had asked Washington for: "we do not believe we
+  need to wait for an anti-trust exemption or
+  legislation to begin the work." Prior Responsible
+  Scaling Policies and Preparedness Frameworks
+  "focused primarily on the deployment of completed
+  models, not what happens during their development
+  process." This is the one concrete process change
+  in the pacing week; no delayed model was
+  announced. See [[federal-ai-policy]] and
+  [[anthropic]] (@sama, The Decoder; ARA daily
+  digest 2026-09-15).
+- **OpenAI acquired camera startup Glass Imaging**,
+  reported by WSJ at **more than $300 million**.
+  Founded in 2019 by ex-Apple engineers Ziv Attar
+  and Tom Bishop (Portrait Mode), its neural ISP
+  reverses lens aberrations and sensor noise on RAW
+  data. Its role inside OpenAI is undisclosed (WSJ
+  via @rohanpaul_ai, TechCrunch; ARA daily digest
+  2026-09-15).
+- **Altman told staff he backs an external
+  testing-and-auditing organization**, and The
+  Information reported OpenAI, [[anthropic]] and
+  [[google]] have been discussing exactly that
+  behind closed doors since July. One outlet, no
+  named entity — rumored, not confirmed. See
+  [[federal-ai-policy]] (The Information; ARA daily
+  digest 2026-09-15).
+- **Two OpenAI researchers published incompatible
+  risk models the same evening.** Dan Selsam argued
+  situational awareness is "a ticking time bomb"
+  because proxy alignment metrics "will go up like
+  every other benchmark" and honeypots fail once
+  models know they are being tricked. @tszzl argued
+  "the vast majority of risks are from the creation
+  of the model and not from its deployment." There
+  is no single OpenAI position to report. The
+  Selsam wording reached this window through one
+  relaying account (ARA daily digest 2026-09-15).
+- **Fox Business restated the 2026 IPO ruling-out**
+  already on this page from Fortune (2026-09-13):
+  "not rushing," "an ill-advised moment." The
+  same claim circulated that morning through
+  unsourced aggregators before the byline appeared
+  (@FoxBusiness; ARA daily digest 2026-09-15).
 
 ## Open questions
 

@@ -4,10 +4,12 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; the UAE quietly spread its planned 5GW Abu Dhabi Stargate campus into hardened, distributed sites, while The Economist sized Nvidia's startup pledges at $70B and customer support at $300B.
+description: The historically large compute buildout; global AI-capex stocks sold off sharply (SoftBank −13.2%, ASMI −10%, SOXX −5.4%) as Anthropic's $517B compute book sat 2.9× its $180B investor guide.
 created_at: 2026-05-24
-timestamp: 2026-09-13T00:00:00Z
+timestamp: 2026-09-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
+  - {title: "ARA model ticket — Anthropic compute commitments", path: research/models/tickets/anthropic-compute-commitments-2026-09.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
@@ -1143,3 +1145,35 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   returned to the "best reading" of the Clean Air
   Act. See [[federal-ai-policy]] (The Verge; ARA
   daily digest 2026-09-13).
+
+## A pacing-week selloff against a $517B commitment book (2026-09-15)
+
+- **Global AI-capex stocks sold off sharply** as
+  the pacing debate closed every governmental
+  route. SoftBank fell as much as **13.2%**, ASM
+  International more than **10%**, and SOXX
+  **−5.4%** premarket against SPY **−0.7%** —
+  while Meta (**+2.1%**) and Alphabet (**+1.4%**)
+  traded up. Asian names in the same window
+  included Kioxia **−9.8%**, SK Hynix **−5.3%**,
+  Samsung **−3.7%**, TSMC **−1.2%**, and ASML
+  **−6.2%**. Recorded as market reaction, not as
+  evidence about the policy. See
+  [[federal-ai-policy]] (Reuters/AP/CNBC via
+  @mark_k, @DV_Memetics; ARA daily digest
+  2026-09-15).
+- **[[anthropic]]'s $517 billion compute ceiling**
+  gained a named component: a **$13.7 billion,
+  six-year** deal for RUM Group's Georgia site,
+  still **2.9×** the **$180 billion** guided to
+  investors through 2029. "Could cost as much as"
+  is load-bearing; no source split contracted
+  versus optioned capacity. The same window
+  showed investors a second adjusted-profitable
+  quarter and a **$2 trillion** CNBC courtship.
+  Those two claims are reconcilable — gross
+  margin excludes training cost; commitments are
+  future obligations — and they are the two
+  halves of the same prospectus question. See
+  [[anthropic]] (The Information, CNBC; ARA
+  daily digest 2026-09-15).

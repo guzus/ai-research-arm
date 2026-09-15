@@ -4,15 +4,17 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: Dominant AI-accelerator supplier; The Economist called it the central bank of AI, and Reuters said it is in talks to put up to $10B into an Anthropic IPO that could reach $100B at around $2T.
+description: Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.
 created_at: 2026-06-05
-timestamp: 2026-09-13T00:00:00Z
+timestamp: 2026-09-15T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
+  - {title: "ARA model ticket — Nemotron 3 Ultra IMO", path: research/models/tickets/nvidia-nemotron-3-ultra-imo-2026-09.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
@@ -530,4 +532,42 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   says the first **200 MW** is still due this year.
   See [[ai-capex]] (Reuters; ARA daily digest
   2026-09-13).
+
+## Huang on stage, Nemotron IMO gold, and a Fable restriction (2026-09-15)
+
+- **Huang co-signed the no-slowdown line on stage.**
+  At the All In Summit he answered Trump live:
+  "That's right, we're not going to let that
+  happen sir." That is the silicon-vendor
+  counterpart to the elected-executive close-out
+  of Amodei's pacing ask. See
+  [[federal-ai-policy]] (@AndrewCurran_,
+  TechCrunch; ARA daily digest 2026-09-15).
+- **Nemotron 3 Ultra scored 30/42 at the 2026
+  IMO** — gold-medal territory — using
+  **natural-language proofs only**: no theorem
+  prover, no tools, no internet. NVIDIA released
+  the specialist checkpoints, training data,
+  training and inference code, the submitted
+  solutions, and a **new 200-problem
+  olympiad-level benchmark**. Verification stays
+  **partial**: no first-party post, model card,
+  repo URL or licence was captured in-window;
+  the enumerated artifact list is the claim.
+  See [[open-weights]] and
+  [[verification-bottleneck]] (model ticket
+  `nvidia-nemotron-3-ultra-imo-2026-09`; ARA
+  daily digest 2026-09-15).
+- **NVIDIA joined [[palantir]] and Booz Allen in
+  restricting [[anthropic]]'s
+  [[claude-fable-5|Fable]]** for sensitive work
+  over rolling 30-day safety logging, not model
+  quality. See [[palantir]] (The Information;
+  ARA daily digest 2026-09-15).
+- **CNBC restated NVIDIA as a possible $10
+  billion anchor** on an [[anthropic]] raise at
+  around **$2 trillion** — the same "in talks"
+  slot this page recorded on 2026-09-13. Treat
+  as indicated, not closed (CNBC; ARA daily
+  digest 2026-09-15).
 
