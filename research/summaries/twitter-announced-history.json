@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-09 12:00 UTC",
-    "headline": "FIRST LOOK: GROK BUILD CLI BY xAI \u2014 TERMINAL-NATIVE CLAUDE CODE COMPETITOR DEMOED, NO @xai CORP-CHANNEL SHIP YET",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-05-09-twitter-12h-headlines.json",
-    "url": "https://x.com/mark_k/status/2053074711089696945"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 12:00 UTC",
-    "headline": "CHINA-AI 24H TRIFECTA \u2014 DEEPSEEK $7B RAISE + BYTEDANCE \u00a5200B CAPEX + BAIDU ERNIE 5.1 6%-COST CLAIM",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-09-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2053088091716366389"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 12:00 UTC",
-    "headline": "ANTHROPICAI CORP-CHANNEL ~19H DARK \u2014 NO ACK OF METR MYTHOS, AKAMAI $1.8B, 80X GROWTH, OR ERNIE 5.1 / GROK BUILD CLI",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-09-twitter-12h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 15:00 UTC",
-    "headline": "THE INFORMATION: XAI'S COLOSSUS 1 LEASE TO ANTHROPIC RAISES QUESTION OF WHETHER GROK CAN STILL COMPETE AT FRONTIER",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-09-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053120312196108796"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-09 15:00 UTC",
-    "headline": "OPENAI-BROADCOM $18B CHIP DEAL HITS FINANCING SNAG \u2014 MEMO: 'CAN'T REQUIRE MICROSOFT TO BUY 40% OF CHIPS'",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-09-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053112980254937494"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-09 15:00 UTC",
-    "headline": "DEEPSEEK SEEKING UP TO $7.35B \u2014 LARGEST EVER CHINESE AI ROUND, SHIFTING FROM PURE RESEARCH TO COMMERCIALIZATION",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-09-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053097732793884992"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-09 15:00 UTC",
     "headline": "ANTHROPIC TAKES 220,000 GPUS / 300 MW AT XAI'S COLOSSUS 1; PREVIOUS UTILIZATION 11% VS META/GOOGLE 40%+",
@@ -24648,5 +24594,47 @@
     "headline": "PALANTIR WITHHOLDS FABLE UNTIL ZERO-RETENTION IS IRREVOCABLE; CAUSE IS ANTHROPIC'S JUNE 30-DAY SAFETY LOGS",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2099592517037727854"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-15 04:46:06 UTC",
+    "headline": "MUSK PROPOSES RIVAL LABS RED-TEAM EACH OTHER'S UNRELEASED MODELS, SAYS \"DARIO IS RIGHT\" ON AI DANGER",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2099714967113015716"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-15 04:46:06 UTC",
+    "headline": "DRAM MODULE MAKERS TOLD 2027 ALLOCATIONS COULD FALL TO HALF OF 2026; UPSTREAM SOLD OUT INTO 2029",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2099674926697545849"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-15 04:46:06 UTC",
+    "headline": "SAMSUNG SEEKS ADDITIONAL 7-10% MOBILE DRAM AND NAND PRICE HIKE FROM APPLE AND CHINESE HANDSET MAKERS",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2099691355882823791"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-15 04:46:06 UTC",
+    "headline": "SEMIANALYSIS: GPT-6 ASTRA \"BASICALLY CONFIRMED\" ON LOOP TRANSFORMERS \u2014 DEPTH, NOT PARAMETER COUNT",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2099679686758400144"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-15 04:46:06 UTC",
+    "headline": "GOOGLE DEEPMIND AGI-SAFETY RESEARCHER RESIGNS, SAYS AI \"HAS THE POTENTIAL TO KILL US ALL\"",
+    "source": "@bilalchughtai_",
+    "url": "https://x.com/bilalchughtai_/status/2099592489023734085"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-15 04:46:06 UTC",
+    "headline": "HUANG: $400B OF AI VENTURE FUNDING IN SIX MONTHS, 80% OF RECIPIENTS RUNNING OPEN MODELS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2099683967482155212"
   }
 ]
