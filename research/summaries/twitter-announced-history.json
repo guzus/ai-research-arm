@@ -2,60 +2,6 @@
   {
     "backfilled": true,
     "category": "infra",
-    "delivered_at": "2026-05-10 15:00 UTC",
-    "headline": "JUKAN05 / MIRAE THESIS GOES GLOBAL \u2014 XAI MFU JUST 11% VS META/GOOGLE 40%+; COLOSSUS 1 LEASE = $5\u20136B/YR HEDGES XAI'S $6B ANNUAL LOSS",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-10-twitter-15h-headlines.json",
-    "url": "https://x.com/jukan05/status/2052957921563316619"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-10 15:00 UTC",
-    "headline": "CEREBRAS WAFER-SCALE CHIP 58X LARGER THAN NVIDIA B200, 2,625X MORE MEMORY BANDWIDTH \u2014 REVENUE +76% YOY TO $510M AHEAD OF IPO",
-    "source": "@TradeLogic",
-    "source_file": "research/summaries/2026-05-10-twitter-15h-headlines.json",
-    "url": "https://x.com/TradeLogic/status/2053471379228598467"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-10 18:00 UTC",
-    "headline": "SEMIANALYSIS: AMD ROCm 75X FASTER ON DEEPSEEK V4 IN 14 DAYS \u2014 NEEDS ONLY 5X MORE TO CATCH SINGLE-NODE B200",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-10-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2053520440589451720"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-10 18:00 UTC",
-    "headline": "FRONTIER-LAB SILENCE GRADUATES: ANTHROPIC 48H DARK / OPENAI 46H / SAMA 23H \u2014 NO RESPONSE TO METR, COLOSSUS, OR AMD CATCH-UP",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-10-twitter-18h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052522497485570560"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-10 18:00 UTC",
-    "headline": "ANDREW CURRAN ON MYTHOS: CYBER CAPABILITIES WERE NEVER TRAINED \u2014 \"COMPLETELY EMERGENT\" \u2014 LANDS ABOVE AI 2027 TRENDLINE",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-10-twitter-18h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2053520532549808390"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-10 18:00 UTC",
-    "headline": "THE INFORMATION: PE FIRMS PITCH AI AS NEXT OFFSHORING \u2014 MILKEN EXECS COMPARE OPENAI/ANTHROPIC TO 2000s OUTSOURCING BOOM",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-10-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053512903374811372"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
     "delivered_at": "2026-05-10 18:00 UTC",
     "headline": "SEMIANALYSIS NAMES AMD ENGINEERS HAISHAW, THOMAS, ROANER, ANUSHELANGOVAN FOR ROCm KERNEL-FUSION 75X SPRINT",
     "source": "@SemiAnalysis_",
@@ -24562,5 +24508,47 @@
     "headline": "ANTHROPIC, OPENAI AND GOOGLE QUIETLY EXPLORED JOINT STANDARDS FOR AI TESTING AND AUDITING",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2100208141942063333"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-16 21:13:48 UTC",
+    "headline": "UNION ALPHA STEALTH MODEL GOES LIVE FREE ON OPENROUTER \u2014 262K CONTEXT, PROVIDER UNNAMED",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2100272203535188239"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-16 21:13:48 UTC",
+    "headline": "POLITICO POLL: 63% OF AMERICANS SEE AT LEAST MODERATE RISK AI DESTROYS HUMANITY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2100283449085210723"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-16 21:13:48 UTC",
+    "headline": "CLAUDE DOCS, SLIDES AND DESIGN NOW RUN INSIDE CLAUDE CODE",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2100270861555228770"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-16 21:13:48 UTC",
+    "headline": "VERCEL: JEV 18X FASTER THAN GPT LUNA ON SAFETY REVIEW \u2014 COMING TO AI GATEWAY",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2100307962262872105"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-16 21:13:48 UTC",
+    "headline": "YALE-LED AUDIT: 238 OF 250 PHYSICS BENCHMARK FAILURES WERE BAD QUESTIONS, NOT MODELS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2100320168597753947"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-16 21:13:48 UTC",
+    "headline": "META SHIPS MUSE CODE NATIVE ON WINDOWS \u2014 POWERSHELL-FLUENT, NO WSL REQUIRED",
+    "source": "@AIatMeta",
+    "url": "https://x.com/AIatMeta/status/2100269717768331579"
   }
 ]
