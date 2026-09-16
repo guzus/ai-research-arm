@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-16
+
+TOP 5 PAPERS:
+• LimiX-2 — CMN tabular FM; beats TabArena/TALENT/BCCO; attention recovers causal skeletons
+• ScienceBuddy — recursive-in-recursive RSI: inner harness, outer model RL; released workspace
+• SWE-bench converged — top two both 396/500; McNemar separates 0/29 adjacent Verified pairs
+• Belief-state ICL — Adam Shai: HMM beliefs linearly decodable (R² 0.83–0.99); patching holds
+• Fuse social reasoning — Google: user mediation compounds error; 21k sim examples released
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
