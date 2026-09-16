@@ -6,13 +6,14 @@ aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy"]
 tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
 description: Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 and naming a third inference architecture beside Trainium and Nvidia.
 created_at: 2026-06-14
-timestamp: 2026-09-09T00:00:00Z
+timestamp: 2026-09-16T00:00:00Z
 market:
   ticker: AMZN
   exchange: NASDAQ
   symbol: NASDAQ:AMZN
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
   - {title: "ARA daily digest 2026-07-30", path: research/digest/2026-07-30-digest.md}
@@ -102,6 +103,16 @@ largest investee banned.
   alongside **Trainium** and [[nvidia|Nvidia]]. See
   [[ai-capex]] (market relays; ARA daily digest
   2026-09-09).
+
+## Ninth Circuit vacates the Perplexity CFAA injunction (2026-09-16)
+
+In *Amazon v. Perplexity*, the Ninth Circuit vacated
+Amazon's injunction: the user accessed Amazon's
+computers "with the help of" [[perplexity]]'s AI
+agent, and the CFAA "contemplates access by a
+person," not a tool. Narrow and fact-specific —
+contract and tort claims remain live. See
+[[federal-ai-policy]] (ARA daily digest 2026-09-16).
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; Trump called the AI-risk case a hoax and closed remaining governmental pacing routes, while three labs discussed a private standards body as Senate negotiators weighed a duty of care.
+description: US federal and state AI governance; OpenAI confirmed weeks of safety coordination with Anthropic and Google as the three discussed a private standards body, while Huang called safety an engineering problem and the Ninth Circuit held that the CFAA covers persons, not agents.
 created_at: 2026-06-03
-timestamp: 2026-09-15T00:00:00Z
+timestamp: 2026-09-16T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA model ticket — industry frontier-safety standards body", path: research/models/tickets/industry-frontier-safety-standards-body-2026-09.md}
   - {title: "ARA model ticket — Amodei We Must Pace the Frontier", path: research/models/tickets/anthropic-pace-the-frontier-2026-09.md}
@@ -1049,6 +1050,62 @@ footing for the first time in the cycle.
   Conduct** — 37 pages, 20 principles, no audit, no
   release gate, no signatories. See [[microsoft]]
   (The Verge; ARA daily digest 2026-09-15).
+
+## Coordination confirmed, Dreamforce split, and a CFAA circuit opinion (2026-09-16)
+
+- **[[openai]] confirmed weeks of safety coordination
+  with [[anthropic]] and [[google]].** Chris Lehane
+  said no antitrust waiver is needed. The Information
+  published within the same quarter-hour that the
+  three have discussed creating their own model
+  testing and auditing standards body — yesterday's
+  rumor now paired with an on-record confirmation
+  that the work is already underway (TechCrunch, The
+  Information; ARA daily digest 2026-09-16).
+- **Amodei, Huang and Altman split on pacing at
+  Dreamforce.** Amodei reframed slow-down as
+  coordinated common standards; [[nvidia|Huang]]
+  answered that "safety is an engineering problem"
+  and called the 10% human-extinction estimate "made
+  up" and publishing it "irresponsible"; Altman
+  closed on loss of control and concentration of
+  power. Twitter relay of keynotes, not transcripts
+  (ARA daily digest 2026-09-16).
+- **Pushback on the labs' own slowdown proposal
+  hardened.** Cohere's Aidan Gomez called it "a
+  cartel by another name"; the White House opposes
+  it; three separate unsourced motive allegations
+  aimed at the pacing camp circulated on X in 24
+  hours without a document attached to any of them
+  (ARA daily digest 2026-09-16).
+- **Lina Khan's existing-law argument gained a
+  named precedent.** She cited product-liability,
+  consumer-protection and unfair-competition law
+  plus the 1934 *FTC v. R.F. Keppel* line:
+  competition that compels firms to "descend to a
+  practice which they are under a powerful moral
+  compulsion not to adopt" is unfair whether or not
+  it is criminal. Expands yesterday's shorter Khan
+  note (The Register; ARA daily digest 2026-09-16).
+- **The Ninth Circuit issued the first circuit
+  opinion on agentic AI under the CFAA.** In
+  *Amazon v. Perplexity*, the court vacated the
+  injunction: "it was the user who 'accessed'
+  Amazon's computers, with the help of
+  [[perplexity|Perplexity]]'s AI agent," and the
+  CFAA "contemplates access by a person," not a
+  tool, "however advanced it is." Narrow and
+  fact-specific — contract and tort claims are
+  still live below. See [[amazon]] and
+  [[agentic-ai-security]] (ARA daily digest
+  2026-09-16).
+- **Bernie Sanders and Steve Bannon are both
+  scheduled for the Future of Life Institute's
+  Pro-Human Assembly**, with Bannon already an
+  endorser of the Pro-Human AI Declaration — a
+  venue for yesterday's cross-spectrum coalition
+  (Reuters via Twitter; ARA daily digest
+  2026-09-16).
 
 ## Open questions
 

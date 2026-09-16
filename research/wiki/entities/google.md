@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; committed €13 billion in Finland — its largest single European investment — for 2027–2028 data centers plus a 22-year Fortum PPA to keep Loviisa nuclear running through 2050.
+description: Hyperscaler behind Gemini; shipped Gemini 3.8 Live as the top speech-to-speech slot at about $0.84/hour, and is the cloud half of Apple's rebuilt Siri AI.
 created_at: 2026-07-17
-timestamp: 2026-09-10T00:00:00Z
+timestamp: 2026-09-16T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
@@ -38,7 +39,7 @@ sources:
 
 **Google** is the hyperscaler and frontier-model builder behind the
 **Gemini** family ([[gemini-3-5-flash]], [[gemini-3-6-flash]],
-[[gemini-3-7-flash]], [[gemini-3-8-flash]], [[gemini-3-5-pro]],
+[[gemini-3-7-flash]], [[gemini-3-8-flash]], [[gemini-3-8-live]], [[gemini-3-5-pro]],
 [[gemini-spark]], [[gemma-4]], [[nano-banana-2-lite]]). While its individual model releases
 have been tracked on their own pages, this page covers Google as a company:
 the regulatory and product-strategy threads that don't attach to a single
@@ -376,6 +377,35 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   advisory AA26-251A** as alleged distillation targets
   since late 2024. See [[federal-ai-policy]] (CISA; ARA
   daily digest 2026-09-10).
+
+## Gemini 3.8 Live, Siri's backend, and confirmed safety coordination (2026-09-16)
+
+- **[[gemini-3-8-live|Gemini 3.8 Live]] shipped in public
+  preview** with Extended Thinking — Google's
+  speech-to-speech pair, not a Flash upgrade. Vendor
+  claim is **#1 on Artificial Analysis S2S at 82.6**
+  at **$0.005/$0.018 per minute (~$0.84/hour)**,
+  taking the slot from [[openai]]'s GPT-Live 1 at
+  roughly **80% lower measured cost**. The price
+  gap is the durable fact; the quality lead is
+  narrow and first-party. See [[gemini-3-8-live]]
+  (Google blog, The Decoder, HN 230 pts; ARA daily
+  digest 2026-09-16).
+- **[[apple]] shipped rebuilt Siri AI on Gemini**,
+  partly on-device and partly through Private Cloud
+  Compute. Early testers praise multi-step requests
+  and screen context but report hallucinations; it
+  is **unavailable in the EU** for now. This
+  resolves the WWDC partner-and-distill open
+  question on [[apple]] toward "yes, Gemini" (The
+  Decoder; ARA daily digest 2026-09-16).
+- **[[openai]] confirmed weeks of safety
+  coordination with Anthropic and Google**, and
+  The Information reported the three have discussed
+  their own testing-and-auditing standards body.
+  Chris Lehane said no antitrust waiver is needed.
+  See [[federal-ai-policy]] (TechCrunch, The
+  Information; ARA daily digest 2026-09-16).
 
 ## Open questions
 

@@ -4,15 +4,16 @@ title: Apple
 type: entity
 aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC]
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
-description: Consumer-hardware giant whose Siri rebuild is the marquee WWDC 2026 AI item; sued OpenAI over alleged hardware trade-secret theft and on 2026-09-02 accused the lab of destroying evidence, asking for expedited discovery.
+description: Consumer-hardware giant that shipped a rebuilt Siri AI on Google's Gemini, partly on-device and partly through Private Cloud Compute; raised four in-market iPhones $100 on identical hardware as DRAM allocations tightened.
 created_at: 2026-06-08
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-16T00:00:00Z
 market:
   ticker: AAPL
   exchange: NASDAQ
   symbol: NASDAQ:AAPL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
@@ -195,6 +196,30 @@ not announced.
   hearing before Judge Davila — a spoliation claim, if it sticks, is a
   different remedy track from the underlying trade-secret allegations
   (The Verge; ARA daily digest 2026-09-02).
+
+## Siri AI ships on Gemini; DRAM shows up as a $100 iPhone hike (2026-09-16)
+
+- **Apple shipped rebuilt "Siri AI" on [[google|Google]]'s
+  Gemini**, partly on-device and partly through
+  **Private Cloud Compute**. Early testers praise
+  multi-step requests and screen context but report
+  hallucinations; it is **unavailable in the EU** for
+  now. This answers the WWDC open question — the
+  partner-and-distill stack did ship as Gemini — while
+  leaving the privacy-brand tension (PCC name, Gemini
+  cloud half) live (The Decoder; ARA daily digest
+  2026-09-16).
+- **Apple raised four in-market iPhones $100** on
+  identical hardware and doubled the 512GB→1TB
+  upgrade to **$400**, as module makers were told
+  **2027 DRAM allocations could land at 50% or less
+  of 2026 volumes** and Samsung renegotiated mobile
+  DRAM and NAND with Apple and Chinese handset makers
+  for another **7–10%**. Consumer-visible memory
+  squeeze; every source is talking its own book. See
+  [[ai-capex]] (Digitimes/Korean trade press and
+  SemiAnalysis, via Twitter; ARA daily digest
+  2026-09-16).
 
 ## Open questions
 
