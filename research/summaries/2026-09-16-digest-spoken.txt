@@ -1,0 +1,13 @@
+Speaker 1: Wednesday, September sixteenth, twenty twenty-six.
+Speaker 2: [high_energy] Google just shipped Gemini three point eight Live at eighty-four cents an hour, and it takes the top speech-to-speech slot away from GPT Live one.
+Speaker 1: Half a cent a minute coming in, under two cents a minute going out, and a score of [emphasis] eighty-two point six [/emphasis] on the speech-to-speech board.
+Speaker 2: That is roughly eighty percent cheaper than GPT Live one for the better model, which is the part that should make everyone nervous.
+Speaker 1: On the pacing debate, Amodei, Huang and Altman split publicly at Dreamforce over how fast this should all move.
+Speaker 2: And OpenAI confirmed weeks of safety conversations with Anthropic and Google, so the rivals are talking behind the scenes even while they disagree on stage.
+Speaker 1: Some quick numbers on compute. Anthropic added a thirteen point seven billion dollar deal with Rum Group.
+Speaker 2: [dramatic_pause] That puts their total commitments past [emphasis] five hundred seventeen billion dollars [/emphasis].
+Speaker 1: On the supply side, memory makers are warning that twenty twenty-seven DRAM allocations could be cut in half, with upstream capacity sold out into twenty twenty-nine.
+Speaker 2: Worth noting that Apple quietly raised four in-market iPhones by one hundred dollars each on identical hardware, which tells you where those component costs are landing.
+Speaker 1: And in trending, a local bird-classifier e-ink frame called Fugleramme hit number one on all of Hacker News with one thousand one hundred eighty-seven points.
+Speaker 2: A hobby project running entirely on-device beating every funding headline of the day. That is a nice note to end on.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
