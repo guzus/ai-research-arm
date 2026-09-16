@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-16 11:24:16 UTC
+
+CYCLE: Dreamforce becomes the pacing fight's main stage; memory and browser distribution both move.
+
+TOP STORIES:
+• Altman says an unreleased post-Astra internal model "can do things that the best mathematicians in the world cannot" — while OpenAI's CFO and VP of compute strategy both argue for more compute [⚠]
+• SK hynix and Intel reported in talks to make memory chips in the US, the first supply-side answer to the 2027 DRAM allocation cuts [⚠]
+• Mistral signs Mozilla to power Firefox's AI assistant — the last major browser not owned by a frontier-model company [✓]
+
+WATCH: Whether OpenAI names or benchmarks the post-Astra model at DevDay — third-party math evaluation is the only thing that upgrades the claim from stage assertion to fact.
+
+Full update on GitHub.
