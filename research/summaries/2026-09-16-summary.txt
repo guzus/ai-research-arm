@@ -1,16 +1,16 @@
 AI News - 2026-09-16
 
 TOP STORIES:
-• OpenAI's Lehane confirms OpenAI/Anthropic/Google coordinating on AI safety
-• Jensen Huang at Dreamforce: "We don't need any new laws" on AI regulation
-• Google ships Gemini 3.8 Live, undercuts GPT-Live-1 on price, tops leaderboard
-• Gates Foundation commits $1B/2yrs to AI-for-good (health, education, ag)
-• Agility Robotics' Digit 5 humanoid works safety-cage-free; Nvidia's Halos partner
+• von der Leyen SOTEU: agent escapes are a "glimpse"; invites frontier labs to pace talks
+• Anthropic merges Claude Chat + Cowork; adds Docs/Slides (Pro/Max first)
+• Google Home MCP: agents can control Nest (US Premium Advanced, $20/mo)
+• Mistral now powers Firefox Smart Window in France and North America
+• Profound $180M Series D at $1.8B; Hang Ten adds $53M seed ($85M total)
 
 KEY NUMBERS:
-• Gemini 3.8 Live: $0.005/min in vs GPT-Live-1's $0.05/min
-• Gates: $1B AI pledge (of ~$200B total before 2045)
-• Digit 5: $300M+ orders, deliveries early 2027
-• Alexa+ India: free for Prime, ₹2,000/mo otherwise
+• Profound: $1.8B valuation, 1,000+ enterprise customers
+• Hang Ten: $85M seed; AIUC: $40M Series A ($55M total)
+• DarwinX: WebArena 43.5% → 93% without changing model weights
+• CoSQ: TruthfulQA wrong-commit 13.1% → 8.9%
 
 Full report on GitHub.
