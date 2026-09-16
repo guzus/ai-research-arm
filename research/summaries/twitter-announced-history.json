@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-10 09:00 UTC",
-    "headline": "AMI LABS CLOSED $3.5B PRE-MONEY EUROPEAN SEED ON MAR 10 \u2014 BEZOS, NVIDIA, SAMSUNG, TOYOTA ALL IN; NYU PAPER DROPPED 3 DAYS LATER",
-    "source": "@aakashgupta",
-    "source_file": "research/summaries/2026-05-10-twitter-09h-headlines.json",
-    "url": "https://x.com/aakashgupta/status/2052977133073690820"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-10 09:00 UTC",
-    "headline": "ANTHROPIC CORP CHANNEL DARK 39H 50M, OPENAI 37H 23M, SAMA 14H 24M \u2014 5TH CONSECUTIVE CYCLE OF ESCALATING SILENCE",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-10-twitter-09h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-10 09:00 UTC",
-    "headline": "STEIPETE TEACHES CODEX TO LOOK FOR SOCIAL SIGNALS WHEN REVIEWING PRS \u2014 DEV-EXPERIENCE PRIMARY ON AGENTIC PR REVIEW",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-05-10-twitter-09h-headlines.json",
-    "url": "https://x.com/steipete/status/2053374981824798751"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-10 15:00 UTC",
-    "headline": "THE INFORMATION EXCLUSIVE \u2014 CURSOR STAFFERS ALREADY INSIDE XAI OFFICES AS LAYOFFS AND EXITS MOUNT",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-10-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053490340238164364"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-10 15:00 UTC",
-    "headline": "CEREBRAS $CBRS PRICES IPO THURSDAY MAY 14 AT ~$26B VALUATION, RAISING UP TO $3.5B \u2014 LARGEST US IPO OF 2026",
-    "source": "@wliang",
-    "source_file": "research/summaries/2026-05-10-twitter-15h-headlines.json",
-    "url": "https://x.com/wliang/status/2053266663110578553"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-10 15:00 UTC",
-    "headline": "OPENAI CODEX MOBILE SPOTTED \u2014 IN-APP TEXT: 'USE CHATGPT APP ON YOUR PHONE TO KEEP WORKING WITH CODEX'",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-10-twitter-15h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2053464448451449200"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-10 15:00 UTC",
-    "headline": "THE INFORMATION \u2014 DEEPSEEK RACING TO COMMERCIALIZE, RAISING BILLIONS TO PROVE IT'S A REAL BUSINESS NOT JUST A RESEARCH LAB",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-10-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053475281810186423"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-10 15:00 UTC",
     "headline": "JUKAN05 / MIRAE THESIS GOES GLOBAL \u2014 XAI MFU JUST 11% VS META/GOOGLE 40%+; COLOSSUS 1 LEASE = $5\u20136B/YR HEDGES XAI'S $6B ANNUAL LOSS",
@@ -24576,5 +24513,54 @@
     "headline": "APODEX SHIPS 1.1 PLUS APACHE-2.0 FRONTIERAGENT AND 35B OPEN-WEIGHT MINI",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2100158494531838100"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-16 16:45:54 UTC",
+    "headline": "ANTHROPIC OPENROUTER SHARE VS OPENAI COLLAPSES FROM 80% TO 50% SINCE JUNE",
+    "source": "@GavinSBaker",
+    "url": "https://x.com/GavinSBaker/status/2100240010695827959"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-16 16:45:54 UTC",
+    "headline": "GOOGLE DEEPMIND LAUNCHES DEEPMIND INSTITUTE \u2014 SHANE LEGG: WE ARE 'NOW APPROACHING AGI'",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2100230524383981702"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-16 16:45:54 UTC",
+    "headline": "COHERE SIGNS DEFINITIVE AGREEMENT FOR GERMANY'S ALEPH ALPHA \u2014 1,000+ STAFF, NO TERMS DISCLOSED",
+    "source": "@cohere",
+    "url": "https://x.com/cohere/status/2100226507188650175"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-16 16:45:54 UTC",
+    "headline": "ANTHROPIC MERGES COWORK INTO CLAUDE \u2014 ADDS CLAUDE DOCS, SLIDES AND DESIGN FOR PRO AND MAX",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2100259864345809277"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-16 16:45:54 UTC",
+    "headline": "APPLE WEIGHS AI SERVER RETURN ON OWN M8 ULTRA SILICON, IN NVIDIA NETWORKING TALKS \u2014 2029 WINDOW",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2100230768115020175"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-16 16:45:54 UTC",
+    "headline": "ANTHROPIC SIGNS FIRST AUSTRALIAN DATA CENTER DEAL \u2014 2.16 GW NEAR BRISBANE, ONLINE FROM 2027",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2100235552918262060"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-16 16:45:54 UTC",
+    "headline": "ANTHROPIC, OPENAI AND GOOGLE QUIETLY EXPLORED JOINT STANDARDS FOR AI TESTING AND AUDITING",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2100208141942063333"
   }
 ]
