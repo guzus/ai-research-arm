@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "WSJ: OPENAI IN EARLY TALKS AT $1.2 TRILLION VALUATION — UP 41% FROM $852B MARCH CLOSE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2100054614888583229",
+    "category": "business"
+  },
+  {
+    "headline": "ZUCKERBERG COMMITS MAJORITY OF META COMPUTE TO USERS, NOT RECURSIVE SELF-IMPROVEMENT",
+    "source": "@finkd",
+    "url": "https://x.com/finkd/status/2099997096896274533",
+    "category": "policy"
+  },
+  {
+    "headline": "VANCE NAMES ANTHROPIC ON ALL-IN — 'IF YOU'RE BUILDING FRANKENSTEIN, STOP' — DEMANDS DEFENDERS GET CYBER TOOLS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2100021964140335322",
+    "category": "policy"
+  },
+  {
+    "headline": "SEMIANALYSIS: AMD MI355X CLOSING PERF/TCO GAP ON NVIDIA GB300 IN AGENTIC INFERENCE",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2100027188393189711",
+    "category": "infra"
+  },
+  {
+    "headline": "OPENAI OUTSPENDS ANTHROPIC ON OPENROUTER FOR FIRST TIME IN OVER 2.5 YEARS",
+    "source": "@OpenRouter",
+    "url": "https://x.com/OpenRouter/status/2099898254905549220",
+    "category": "business"
+  },
+  {
+    "headline": "CAIS RELEASES CHEATBENCH — FRONTIER AGENTS STILL REWARD-HACK FREQUENTLY POST-HUGGINGFACE",
+    "source": "@hendrycks",
+    "url": "https://x.com/hendrycks/status/2099901663062679853",
+    "category": "research"
+  }
+]
