@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-10 04:00 UTC",
-    "headline": "OPENAI ROON: 'WORRYING THAT MODELS HAVE CONVERGED ON SIMILAR BELIEFS \u2014 NEOBUDDHIST NEOLIBS, INCLUDING GROK AND CHINESE MODELS'",
-    "source": "@tszzl",
-    "source_file": "research/summaries/2026-05-10-twitter-04h-headlines.json",
-    "url": "https://x.com/tszzl/status/2053236293371674693"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-10 04:00 UTC",
-    "headline": "VIRAL 'LEWORLDMODEL JUST DROPPED \u2014 LECUN WAS RIGHT' FRAMING IS RETROACTIVE \u2014 JEPA-FROM-PIXELS PAPER WAS RELEASED MARCH 13, ~2 MONTHS OLD",
-    "source": "@aakashgupta",
-    "source_file": "research/summaries/2026-05-10-twitter-04h-headlines.json",
-    "url": "https://x.com/aakashgupta/status/2052977133073690820"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-10 07:00 UTC",
-    "headline": "SINGAPORE FOREIGN MINISTER VIVIAN BALAKRISHNAN TO KEYNOTE AIE SINGAPORE \u2014 SITTING CABINET MEMBER PUBLISHED CLAUDE-CODE PERSONAL AI STACK ON GITHUB",
-    "source": "@agrimsingh",
-    "source_file": "research/summaries/2026-05-10-twitter-07h-headlines.json",
-    "url": "https://x.com/agrimsingh/status/2053366862248026480"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-10 07:00 UTC",
-    "headline": "AI ENGINEER SINGAPORE LINEUP NOW INCLUDES UK CHIEF AI OFFICER AND SINGAPORE CABINET MINISTER \u2014 GOVT-AI ENGAGEMENT BROADENS",
-    "source": "@swyx",
-    "source_file": "research/summaries/2026-05-10-twitter-07h-headlines.json",
-    "url": "https://x.com/swyx/status/2053370687931498603"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-10 07:00 UTC",
-    "headline": "ANTHROPICAI CORP CHANNEL DARK 37H+ \u2014 STILL NO RESPONSE TO THE INFORMATION'S 40H-OLD COLOSSUS 1 GROK-COMPETITIVE-FAILURE FRAMING",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-10-twitter-07h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-10 07:00 UTC",
-    "headline": "OPENAI CORP CHANNEL DARK 34.8H \u2014 LAST PRIMARY WAS COT-GRADING SAFETY THREAD FROM FRIDAY",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-10-twitter-07h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2052845764507062349"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-10 09:00 UTC",
-    "headline": "YANN LECUN AMPLIFIES AMI LABS LEWORLDMODEL THESIS \u2014 JEPA-FROM-PIXELS AT 15M PARAMS, SINGLE GPU, 48X FASTER PLANNING",
-    "source": "@ylecun",
-    "source_file": "research/summaries/2026-05-10-twitter-09h-headlines.json",
-    "url": "https://x.com/ylecun/status/2053388440759144718"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-10 09:00 UTC",
     "headline": "AMI LABS CLOSED $3.5B PRE-MONEY EUROPEAN SEED ON MAR 10 \u2014 BEZOS, NVIDIA, SAMSUNG, TOYOTA ALL IN; NYU PAPER DROPPED 3 DAYS LATER",
@@ -24590,5 +24527,54 @@
     "headline": "OPENAI OUTSPENDS ANTHROPIC ON OPENROUTER FOR FIRST TIME IN OVER 2.5 YEARS",
     "source": "@OpenRouter",
     "url": "https://x.com/OpenRouter/status/2099898254905549220"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-16 11:24:16 UTC",
+    "headline": "ALTMAN: UNRELEASED POST-ASTRA MODEL CAN DO THINGS THE WORLD'S BEST MATHEMATICIANS CANNOT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2100144714251198466"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-16 11:24:16 UTC",
+    "headline": "SK HYNIX AND INTEL IN TALKS TO MAKE MEMORY CHIPS IN THE US",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2100096769116049875"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-16 11:24:16 UTC",
+    "headline": "MISTRAL SIGNS MOZILLA \u2014 FIREFOX AI ASSISTANT TO RUN ON MISTRAL MODELS",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2100153489787633694"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-16 11:24:16 UTC",
+    "headline": "OPENAI CFO AND COMPUTE CHIEF BOTH PUSH FOR MORE COMPUTE DAYS AFTER ALTMAN'S PACING PLEDGE",
+    "source": "@GavinSBaker",
+    "url": "https://x.com/GavinSBaker/status/2100179389975580968"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-16 11:24:16 UTC",
+    "headline": "OPENAI AT 13% OF ENTERPRISE AI SPEND VS ANTHROPIC AT 8%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2100106466552336584"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-16 11:24:16 UTC",
+    "headline": "ALTMAN WARNS OPEN-SOURCE MODELS THAT CAN DO SERIOUS DAMAGE ARE NOT FAR AWAY",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2100147034565271740"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-16 11:24:16 UTC",
+    "headline": "APODEX SHIPS 1.1 PLUS APACHE-2.0 FRONTIERAGENT AND 35B OPEN-WEIGHT MINI",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2100158494531838100"
   }
 ]
