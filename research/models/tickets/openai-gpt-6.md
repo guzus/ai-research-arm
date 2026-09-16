@@ -68,7 +68,31 @@ status_note: |
   10T+ rumors, @teortaxesTex argues <350B active — and The Information's
   "recurrent depth / looped transformer" architecture claim was publicly pushed
   back on by @rasbt. Only the release is confirmed.
-expected: "RELEASED. GA across ChatGPT Plus/Pro/Business/Enterprise, the OpenAI API and AWS as of 2026-09-04. Open: the rest of the GPT-6 family (Sol/Terra/Luna per @mark_k), unconfirmed; parameter count and the 'looped transformer' architecture claim remain unverified rumor."
+
+  **2026-09-16 — the second family member surfaces. GPT-6 Sol, sighted, not
+  announced.** @AndrewCurran_ (2026-09-15 15:21 UTC), flatly: "GPT-6 Sol is
+  incoming." @yota0x_ (2026-09-16 10:57 UTC) supplies the artifact detail:
+  "GPT-6 Sol just appeared in **OpenAI's API and Arena system tests**… no
+  official announcement yet," claiming it produced **28K tokens in ~3 minutes
+  against Astra's 19 minutes on the same task (~6x faster)**, positioned
+  "below Astra but above GPT-5.6 Sol." This is the first concrete artifact
+  for any GPT-6 family member beyond Astra, and it matches the naming
+  @mark_k relayed on 2026-09-06 (Sol/Terra/Luna to follow) — the first
+  independent support that relay has received.
+
+  **The speed claim is publicly contested in the same window.**
+  @paul010318 separates signal from assumption: @sama's teaser ("big 🚢 this
+  week and then for devday", 2026-09-15 14:46 UTC) named no model and no
+  date, a knowledge-cutoff probe returned inconsistent answers across
+  instances, and "the recent buzz… hinges on unverified signals — not
+  shipped capabilities." So the *sighting* is the evidence; the 6x figure is
+  one account's single-task measurement and is **not adopted here**.
+
+  **Positioning, recorded as inference and not fact:** a fast/cheap tier
+  below the flagship rather than a successor to it — the same shape as the
+  Flash/Live split Google shipped this week
+  ([[google-gemini-3-8-live-2026-09]]) — with DevDay the venue in frame.
+expected: "RELEASED (Astra). GA across ChatGPT Plus/Pro/Business/Enterprise, the OpenAI API and AWS as of 2026-09-04. Open: GPT-6 Sol, now SIGHTED in API/Arena system tests but not announced — watch for an OpenAI post, model card or pricing; Terra and Luna still unsupported by anything but one relay; parameter count and the 'looped transformer' architecture claim remain unverified rumor."
 labels:
   - openai
   - frontier-model
@@ -93,8 +117,11 @@ sources:
   - "@WesRoth"
   - https://x.com/kimmonismus/status/2099045668241457529
   - "@simonw"
+  - https://x.com/AndrewCurran_/status/2099881354494361835
+  - https://x.com/yota0x_/status/2100177184262398146
+  - "@paul010318"
 created_at: 2026-07-27
-updated_at: 2026-09-14
+updated_at: 2026-09-16
 closed_at: null
 closed_reason: null
 history:
@@ -110,6 +137,8 @@ history:
     change: "RELEASED. OpenAI announced GPT-6 Astra 2026-09-03 19:32 UTC and completed the public rollout 2026-09-04: GA to all Pro/Enterprise/Business Premium in ChatGPT Work and Codex plus the OpenAI API and AWS (OpenAI 20:13 UTC), then to all Plus and Business users (@sama 22:52 UTC); @sama apologised for the 'messy rollout'. OpenAI claims SOTA for computer use, browsing, software engineering, cybersecurity, science and professional work, with state-of-the-art results on Agents' Last Exam, AutomationBench and ScreenSpot Pro, and calls it 'our most aligned model'. Pre-launch on 2026-09-01 OpenAI disclosed that Astra reaches the Critical cybersecurity threshold under its Preparedness Framework. Third-party placement: #1 on Code Arena WebDev at 1,797, +35 over Claude Fable 5.1 and +180 over GPT-5.6 Sol (@WesRoth 2026-09-07). Status in-testing -> released; verification stays confirmed and now covers the release itself, not just Astra's existence. Recorded as rumor, NOT confirmed: @mark_k says GPT-6 is a model family with Sol/Terra/Luna still to come; Jensen Huang says Astra trained on ~100K Grace Blackwell NVL72 with 400K GPUs next at Stargate Texas and that 'AGI has arrived'; parameter count is disputed (@scaling01 6-8T total vs @teortaxesTex <350B active) and The Information's looped-transformer architecture claim was publicly disputed by @rasbt. The separate @synthwavedd 'Bel' pretrain scoop remains uncorroborated."
   - ts: 2026-09-14
     change: "Cadence, a size correction, and the first post-launch quality complaints. CADENCE (@kimmonismus, 2026-09-13 08:01 UTC, ~2.5K likes): 'GPT-5.6 Sol launched on July 9. GPT-6 Astra began rolling out on September 3. Exactly eight weeks apart' — which dates the predecessor's launch and is the basis on which [[openai-gpt-5-6]] was closed released-and-aged this cycle. He adds a forward worry rather than a fact: that the slowdown push may make Astra 'the last release to follow its predecessor so quickly.' SIZE (@scaling01, 2026-09-14 02:16 UTC, ~2.3K likes): 'Astra is much smaller than I thought / looped transformers are going to eat the world' — relevant because this ticket carries the looped-transformer architecture claim as unverified; a well-followed account revising DOWNWARD is weak evidence for the architecture and none at all for a parameter count. @teortaxesTex, same window, is blunt that the surrounding numbers are invented: 'neither Astra nor Fable are \"10T\". stop soyfacing over speculative model sizes, they're very tenuously related to capability now.' No parameter count is adopted here. QUALITY COMPLAINTS (@deoriginalme, 2026-09-14 12:35 UTC): 'Users are already reporting a noticeable drop in GPT-6 Astra's performance just a week after its launch' — single unsourced roundup account, recorded as a claim to watch, NOT as a measured regression. CAPABILITY, firsthand and better-sourced (@simonw, 2026-09-13 00:19 UTC): ChatGPT Work and GPT-6 Astra on a 'Max' tier produced a 5K/10K circular running route from an address using OSM data, returned through a 'visualize' skill as an HTML fragment using D3 — which independently attests a 'Max' reasoning tier in the product UI. Standing assessment from @emollick (2026-09-13): 'GPT-6 Astra and Fable 5.1 are already enough for transformative impact in large sections of the economy. They can reliably do weeks worth of human work when properly guided & harnessed.' Status stays released."
+  - ts: 2026-09-16
+    change: "GPT-6 SOL SURFACES AS AN ARTIFACT — the first family member beyond Astra with anything concrete behind it. @AndrewCurran_ (2026-09-15 15:21 UTC): 'GPT-6 Sol is incoming.' @yota0x_ (2026-09-16 10:57 UTC) supplies the artifact: 'GPT-6 Sol just appeared in OpenAI's API and Arena system tests… no official announcement yet', claiming 28K tokens in roughly 3 minutes against Astra's 19 minutes on the same task (~6x faster) and positioning it 'below Astra but above GPT-5.6 Sol'. This is the first independent support for @mark_k's 2026-09-06 relay that GPT-6 is a family with Sol/Terra/Luna to follow, and it is why this stays on THIS ticket: the expected: field has carried the rest of the family as the named open item since 2026-09-07, so Sol is in declared scope rather than a new artifact — it gets its own ticket only if it launches as a separately-priced product. THE SPEED CLAIM IS NOT ADOPTED. @paul010318 published the contra the same morning, separating what changed from what is assumed: @sama's 2026-09-15 14:46 UTC teaser ('big ship this week and then for devday') named no model and no date; a knowledge-cutoff probe returned 'Claude Opus 4.7' on one instance and '4.1' on another, so instance-level probing is not evidence; and 'the recent buzz around a potential GPT-6 Sol release hinges on unverified signals — not shipped capabilities.' The SIGHTING is the evidence; the 6x figure is one account's single-task measurement with no methodology and is recorded as a claim only. Ticket status stays RELEASED (Astra shipped 2026-09-03/04) — Sol does not move it, because a system-test sighting of a sibling is not a release. Recorded as inference and not fact: Sol positioned below the flagship reads as a fast/cheap tier rather than a successor, the same shape as the Flash/Live split Google shipped this week ([[google-gemini-3-8-live-2026-09]]), with DevDay the venue in frame."
 ---
 
 **GPT-6** is the presumed name for OpenAI's next flagship model

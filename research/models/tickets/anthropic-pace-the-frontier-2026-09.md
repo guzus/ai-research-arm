@@ -72,6 +72,75 @@ status_note: |
   construction ([[industry-frontier-safety-standards-body-2026-09]]) and the
   conflict-of-interest question raised by Amodei making this argument mid-IPO
   ([[anthropic-ipo-2026-06]]).
+
+  **2026-09-16 — Meta answers, and it answers "each lab, alone."** The two
+  holdouts responded, both first-party. **Mark Zuckerberg** (@finkd, RT'd by
+  @AIatMeta): "Every lab has the responsibility and incentive to move at the
+  pace required to train its models safely, **and the ability to take its own
+  actions to ensure that happens**… trust and alignment are quickly becoming
+  the most important capabilities that will differentiate agents and models."
+  **Alexandr Wang** (Meta Superintelligence Labs) set out a three-point
+  position: businesses will only use aligned agents so labs face market
+  discipline; every lab should have a governance framework including
+  **external evaluators and independent oversight of launch safety criteria**;
+  and labs operate inside democratic institutions that impose liability. That
+  is agreement on *outcome* with rejection of *coordination* — the unilateral
+  answer to the coordinated one.
+
+  **The first cited instance of an actually-held release, and it is
+  retrospective.** Wang, in-window: "Meta delayed shipping Muse for several
+  months to focus on safety and security. **We didn't call for everyone else
+  to do this before we would.**" This ticket's stated falsifier is "some lab
+  announces a model it held back, and says why." Meta claims one — months, for
+  safety — and it corroborates from the company side The Information's earlier
+  reporting of Hatch's unauthorized-action problems
+  ([[meta-hatch-muse-spark-2026-06]]). It is a claim about the past made in a
+  debate about the future, so it is logged, not treated as proof the norm
+  works.
+
+  **Nadella took it to a non-industry venue**, appearing on the All-In Summit
+  under the framing "The AI Doomer Slowdown / Common Sense AI Guardrails /
+  What 'Slowdown' Means for New AI Products."
+
+  **Political capture, in both directions, inside 48 hours.** **Barack Obama**
+  endorsed it: "I was encouraged this week to see the leaders of the frontier
+  labs agree on the need for them to slow down the pace of AI development…
+  a good and necessary first step," while explicitly refusing both the
+  accelerationist and doomer labels. Against that, @rynorhn named the failure
+  mode precisely: "the second AI safety becomes attached to politicians and
+  political tribes, half the country is going to oppose it simply because the
+  other half supports it." With Trump already on the opposite side, this is
+  the partisan split forming in real time.
+
+  **China escalated from rejection to attribution of motive.** A China Daily
+  editorial named **Altman, Musk and Amodei** and argued the sudden alignment
+  "looks less like a new concern for humanity and more like a bid to protect
+  profits and slow Chinese competitors." Separately, People's Daily pushed
+  back on the NSA/CISA/FBI advisory accusing Chinese firms of
+  "industrial-scale" distillation — and, as @kyleichan (a credible China
+  analyst) observes, **Beijing never denies the distillation; it argues it is
+  standard industry practice**. That is a substantive concession worth more
+  than the editorial.
+
+  **A commercial cost is now being attributed to pacing.** Ramp card data
+  relayed in-window puts **OpenAI at ~13% of enterprise AI spend against
+  Anthropic's ~8%**, with the relays explicitly attributing part of the gap to
+  "Anthropic's decision to slow its frontier development." Recorded as
+  a third-party attribution, not as a measured causal effect — enterprise
+  share moved for at least one other obvious reason in this window, the GPT-6
+  Astra launch ([[openai-gpt-6]]).
+
+  **Backlash intensified and turned financial.** @kevinnbass published an
+  "audit of Anthropic's finances" calling for a **Congressional
+  investigation**, arguing METR is financially dependent on Anthropic equity
+  and therefore compromised as the "third-party evaluator" Amodei proposes.
+  Unverified single-source advocacy, logged because the conflict-of-interest
+  attack has now moved from timing (the IPO) to the evaluation
+  infrastructure itself — which is the same institution Wang's point 2 relies
+  on.
+
+  **Still unchanged: no lab has announced a forward-looking delayed release.**
+  Meta's is retrospective. The falsifier stands.
 expected: "Open-ended. Watch for: an actual paced/delayed release at any lab; the industry standards body formalizing; whether Senate negotiators act on the reported duty-of-care and block-unsafe-release authority; and whether OpenAI's pre-RL safety cases get published in any form."
 labels:
   - policy
@@ -90,13 +159,23 @@ sources:
   - "@testingcatalog"
   - "@kimmonismus"
   - "@mark_k"
+  - https://x.com/finkd/status/2099997096896274533
+  - https://x.com/alexandr_wang/status/2100011173278290347
+  - https://x.com/BarackObama/status/2099642023922036982
+  - "@theallinpod"
+  - "@kyleichan"
+  - "@v_shakthi"
+  - "@rynorhn"
+  - "@kevinnbass"
 created_at: 2026-09-14
-updated_at: 2026-09-14
+updated_at: 2026-09-16
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-14
     change: "Created — CONFIRMED. Dario Amodei published 'We Must Pace the Frontier', arguing frontier development should be deliberately slowed so alignment and monitoring can keep up, and over 2026-09-13..09-14 it drew on-record responses from most parties who would have to act on it. Amodei bounded the claim himself on CBS Sunday Morning: asked whether Anthropic would stop releasing more advanced models, 'It doesn't mean that. What it means is that we need to make sure that every generation of models that we release is properly tested'; on governance he floated 'some kind of oversight, some kind of joint governance' by 'a combination of democratically elected governments'. @sama (2026-09-14 04:05 UTC, ~11K likes) agreed and disclosed a process change: prior Responsible Scaling Policies and Preparedness Frameworks 'focused primarily on the deployment of completed models, not what happens during their development process', and 'at OpenAI we now formulate explicit safety cases in advance of frontier reinforcement learning runs we expect to significantly increase capability'; he also welcomed 'a federal framework that sets consistent safety requirements for frontier AI' and defined pacing as 'not stopping'. Satya Nadella and @demishassabis both aligned with pacing (via @testingcatalog). Dissent: President Trump rejected a slowdown ('whoever wins with AI wins'); White House AI czar David Sacks replied to Amodei directly, but only truncated RT text was captured so his position is NOT recorded; Cohere published 'AI needs evidenced standards, not a cartel' (@aidangomez); China rejected it via Global Times/Reuters ('silent AI Cold War', 'hypocritical and short-sighted') and the Foreign Ministry via AP ('Fearmongering, confrontation and vicious competition will only disrupt the process of global AI governance'). Market reaction recorded but not treated as evidence: SoftBank -13.2%, Kioxia -9.8%, SK Hynix -5.3%, Samsung -3.7%, TSMC -1.2%, ASML -6.2%, ASMI -10%+. Status confirmed / verification confirmed on multiple first-party accounts and verbatim broadcast quotes. Distinct from the July employee petition [[industry-pace-ai-development-petition-2026-07]], which this escalates from staff-signature to CEO-and-government level. No lab announced an actually delayed model — that is the falsifier this ticket exists to hold."
+  - ts: 2026-09-16
+    change: "META ANSWERS UNILATERALLY; the debate acquires a political axis, a commercial cost, and its first cited held release. Status stays confirmed. (1) META, both first-party. @finkd (RT'd by @AIatMeta 2026-09-15 23:01 UTC): 'Every lab has the responsibility and incentive to move at the pace required to train its models safely, and the ability to take its own actions to ensure that happens', adding that 'trust and alignment are quickly becoming the most important capabilities that will differentiate agents and models' — agreement on the outcome, rejection of coordination. @alexandr_wang (2026-09-15 23:57 UTC) set out three points: aligned agents win on the market so labs are already incentivized; every lab should have a governance framework across training and deployment including external evaluators and independent oversight of launch safety criteria; and labs operate inside democratic institutions that impose liability. (2) FIRST CITED HELD RELEASE, and it is retrospective: Wang, in-window — 'Meta delayed shipping Muse for several months to focus on safety and security. We didn't call for everyone else to do this before we would.' This ticket's falsifier is a lab announcing a model it held back and saying why; Meta claims one, months long, and it corroborates from the company side The Information's earlier reporting of Hatch's unauthorized-action problems ([[meta-hatch-muse-spark-2026-06]]). Logged as a past-tense claim inside a forward-looking debate, NOT as proof the norm works — no lab has announced a FORWARD-looking delay and the falsifier stands. (3) POLITICAL CAPTURE, both directions, inside 48h. @BarackObama (2026-09-14 23:30 UTC) endorsed it — 'I was encouraged this week to see the leaders of the frontier labs agree on the need for them to slow down the pace of AI development… a good and necessary first step' — while refusing both the accelerationist and doomer labels. @rynorhn named the resulting failure mode: 'the second AI safety becomes attached to politicians and political tribes, half the country is going to oppose it simply because the other half supports it.' With Trump already opposed (2026-09-14 entry), the partisan split is forming. Satya Nadella took the argument to a non-industry venue, appearing on the All-In Summit under the framing 'The AI Doomer Slowdown / Common Sense AI Guardrails' (@theallinpod 2026-09-15). (4) CHINA ESCALATED FROM REJECTION TO MOTIVE. A China Daily editorial named Altman, Musk and Amodei and argued the sudden alignment 'looks less like a new concern for humanity and more like a bid to protect profits and slow Chinese competitors' (@v_shakthi relay, 2026-09-16). Separately People's Daily rebutted the NSA/CISA/FBI advisory on 'industrial-scale' distillation as 'politicizing technology issues, an old tactic of US hegemony'; @kyleichan's observation is the substantive part — 'Beijing never denies doing distillation and instead argues it's a common industry practice.' (5) COMMERCIAL COST NOW ATTRIBUTED. Ramp data relayed in-window puts OpenAI at ~13% of enterprise AI spend versus Anthropic's ~8%, with relays attributing part of the gap to Anthropic slowing frontier development. Recorded as third-party attribution, NOT a measured causal effect — the GPT-6 Astra launch ([[openai-gpt-6]]) is an obvious confound in the same window. (6) BACKLASH MOVED TO THE EVALUATION INFRASTRUCTURE. @kevinnbass published an 'audit of Anthropic's finances' calling for a Congressional investigation and arguing METR is financially dependent on Anthropic equity and therefore compromised as the third-party evaluator Amodei proposes. Unverified single-source advocacy; logged because the conflict-of-interest attack has moved from timing (the IPO, [[anthropic-ipo-2026-06]]) to the institution Wang's own point 2 depends on. The coordination itself was separately confirmed on the record this cycle — see [[industry-frontier-safety-standards-body-2026-09]]."
 ---
 
 The useful question is not whether the essay is right. It is whether anything

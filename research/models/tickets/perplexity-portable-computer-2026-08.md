@@ -25,7 +25,27 @@ status_note: |
   Jensen Huang gifted the team a **DGX Station** after an early demo — which is
   the commercial relationship the separately-reported NVIDIA investment
   ([[nvidia-perplexity-investment-2026-08]]) would formalise.
-expected: "Shipped 2026-08-25 for NVIDIA DGX Spark, first version on a Qwen-post-trained PPLX 27B. Pending: the benchmark behind the 82.6%/85.4% 'real knowledge work' figures named and independently run, availability beyond DGX Spark (DGX Station, and the Apple-silicon class of hardware announced the same day), Nemotron 3.5 Lightning support, and whether the cloud-escalation path preserves the no-cloud-dependency claim in practice"
+  **2026-09-16 — first OEM pre-install, and it is NOT the local runtime.**
+  @perplexity_ai (2026-09-15 15:02 UTC): "Perplexity **Computer** will now come
+  pre-installed on **HP ZBook Ultra G3a**. Use Computer to run complex
+  multi-step work from a simple interface. Computer agents are grounded in
+  accurate deep research and connected to hundreds of tools, now including
+  **Autodesk**." Read the product name carefully: this is *Perplexity
+  Computer*, the cloud product, shipping on an OEM workstation — **not**
+  *Portable Computer*, the fully-local DGX Spark runtime this ticket tracks.
+  It is logged here because this ticket's own `expected` names "availability
+  beyond DGX Spark" as the open question, and an OEM pre-install is the
+  commercial answer to it arriving on the cloud side first. Do not read it as
+  local-runtime distribution.
+
+  **Second-order signal on the same axis:** @AravSrinivas disclosed
+  (2026-09-15 20:16 UTC) that Perplexity built **CobbleDB**, an in-house
+  DynamoDB replacement, with "two engineers and hundreds of persistent
+  Computer agents over two months", claiming up to **$100M/year** in savings.
+  First-party, unaudited, and a claim about the agent harness rather than
+  about the local runtime — recorded as the strongest in-house usage datapoint
+  for Computer to date, not as a benchmark.
+expected: "Shipped 2026-08-25 for NVIDIA DGX Spark, first version on a Qwen-post-trained PPLX 27B. Pending: the benchmark behind the 82.6%/85.4% 'real knowledge work' figures named and independently run, LOCAL-runtime availability beyond DGX Spark (DGX Station and Apple-silicon-class hardware) — note the first OEM pre-install (HP ZBook Ultra G3a, 2026-09-15) is the CLOUD Computer product, not this one — Nemotron 3.5 Lightning support, and whether the cloud-escalation path preserves the no-cloud-dependency claim in practice"
 labels:
   - agents
   - local-inference
@@ -38,13 +58,17 @@ sources:
   - "@AravSrinivas"
   - "@nvidia"
   - "@NaderLikeLadder"
+  - https://x.com/perplexity_ai/status/2099876468872638717
+  - https://x.com/AravSrinivas/status/2099957318935028173
 created_at: 2026-08-26
-updated_at: 2026-08-26
+updated_at: 2026-09-16
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-26
     change: "Created — Perplexity shipped Portable Computer on 2026-08-25 (@perplexity_ai 15:10 UTC, ~4.3K engagement): 'a fully local version of Perplexity Computer, where the entire runtime: orchestrator LLM, subagent LLM, agent harness all run on your local hardware. No cloud dependency.' Launching for NVIDIA DGX Spark. Its research post (18:43 UTC) publishes numbers: with an on-device 27B model the harness scores 82.6% on 'real knowledge work', beating the open-source harnesses Pi and Hermes, and its own post-trained PPLX 27B reaches 85.4%. @AravSrinivas gives the thesis — 'In a compute and power-constrained world, a good chunk of agentic inference needs to move to local hardware. A drastic version of that is a fully local agent runtime' — and the architecture constraint: co-design of model and harness, first version post-trained on top of Qwen, with Nemotron 3.5 Lightning intended next, and an orchestrator that can escalate to a cloud frontier model with user permission. NVIDIA's own account promoted it ('one-click local inference setup and an optimized agentic experience for DGX Spark'), NVIDIARTXSpark congratulated the launch, and @AravSrinivas says Jensen Huang gifted the team a DGX Station after seeing an early demo — the same commercial relationship that the separately-reported NVIDIA investment talks would formalise ([[nvidia-perplexity-investment-2026-08]]). @NaderLikeLadder supplies the honest framing of why now: 'Local AI hit an inflection point with frontier open source models like GLM 5.2, Deepseek v4 flash, and Nemotron + hardware powerful enough to run them ... The current bottleneck is the know-how to set up inference and get meaningful performance out of it' — i.e. the product is packaging, not a capability breakthrough. Status released (available today, named hardware target, first-party launch); verification confirmed on Perplexity's and NVIDIA's own accounts. What is NOT established: the '82.6% on real knowledge work' benchmark is unnamed and vendor-run, the Pi/Hermes comparison is Perplexity scoring its competitors, and the cloud-escalation path is in tension with the headline 'no cloud dependency' claim. Lands the same day Apple announced 512GB/1.2TB/s local-inference hardware ([[apple-m5-ultra-mac-studio-2026-08]]), with practitioners immediately arguing DGX Spark just lost its price/performance case."
+  - ts: 2026-09-16
+    change: "First OEM pre-install lands — on the CLOUD product, not this one. @perplexity_ai (2026-09-15 15:02 UTC): 'Perplexity Computer will now come pre-installed on HP ZBook Ultra G3a. Use Computer to run complex multi-step work from a simple interface. Computer agents are grounded in accurate deep research and connected to hundreds of tools, now including Autodesk.' Logged here because this ticket's expected: field names 'availability beyond DGX Spark' as the open question and an OEM workstation pre-install is the first commercial answer on that axis — but the product named is Perplexity COMPUTER, the cloud product, NOT Portable Computer, the fully-local DGX Spark runtime this ticket tracks. Deliberately not read as local-runtime distribution, and the local-availability question stays open. Autodesk tool integration is new and is a vertical-workstation signal consistent with the HP ZBook target. SECOND-ORDER, same window: @AravSrinivas (2026-09-15 20:16 UTC) disclosed that Perplexity built CobbleDB, an in-house DynamoDB replacement serving web content for search, with 'two engineers and hundreds of persistent Computer agents over two months', claiming savings of 'up to a hundred million dollars yearly'; @perplexity_ai published the research. First-party and unaudited, and a claim about the agent harness rather than the local runtime — recorded as the strongest in-house usage datapoint for Computer to date, not as a benchmark and not as evidence for the 82.6%/85.4% figures, which remain vendor-run and unnamed. Status stays released; verification stays confirmed."
 ---
 
 **Portable Computer** is Perplexity's local-first agent runtime, launched
