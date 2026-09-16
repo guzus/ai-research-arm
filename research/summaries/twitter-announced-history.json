@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-10 04:00 UTC",
-    "headline": "FRONTIER-LAB SILENCE: ANTHROPIC ~34.6H DARK, OPENAI ~32.1H DARK, XAI ~32H DARK, SAMA SILENT IN-CYCLE \u2014 NO RESPONSE TO TI COLOSSUS-1 FRAMING",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-10-twitter-04h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-10 04:00 UTC",
-    "headline": "VIRAL 3.5K-LIKE CHINESE-LANGUAGE 'TSMC ARIZONA SECRETLY FAILED (52% YIELD)' THESIS DEBUNKED IN-WINDOW BY ANALYST JUKAN05 \u2014 'COMPLETE BULLSHIT'",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-10-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2053260925260755429"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-10 04:00 UTC",
-    "headline": "TSMC AZ COUNTER-DATA: $165B+ INVESTMENTS (NOT $40B), 92%+ 4NM YIELDS LATE 2025, AZ FAB ALREADY PROFITABLE \u2014 KUMAMOTO COMPARISON IS MATURE-NODE-VS-LEADING-EDGE",
-    "source": "@thesisfinder",
-    "source_file": "research/summaries/2026-05-10-twitter-04h-headlines.json",
-    "url": "https://x.com/thesisfinder/status/2053146252628611366"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-10 04:00 UTC",
-    "headline": "OPENAI DEV-EXPERIENCE LEAD JXNLCO DISCLOSES 'BUILDING CODEX FOR OSS' WORK IN 60K-FOLLOWERS INTRO \u2014 FIRST CORP-INTERNAL OSS-CODEX MENTION IN-WINDOW",
-    "source": "@jxnlco",
-    "source_file": "research/summaries/2026-05-10-twitter-04h-headlines.json",
-    "url": "https://x.com/jxnlco/status/2053273726687608842"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-10 04:00 UTC",
-    "headline": "RAMP MAR-2026 SPEND DATA: ANTHROPIC = 'SCALING LEADER', OPENAI = 'INCUMBENT AT RISK', GRANOLA = 'RISING CHALLENGER' \u2014 3RD-PARTY VALIDATION OF 80X NARRATIVE",
-    "source": "@deedydas",
-    "source_file": "research/summaries/2026-05-10-twitter-04h-headlines.json",
-    "url": "https://x.com/deedydas/status/2053303865269952513"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-10 04:00 UTC",
     "headline": "OPENAI ROON: 'WORRYING THAT MODELS HAVE CONVERGED ON SIMILAR BELIEFS \u2014 NEOBUDDHIST NEOLIBS, INCLUDING GROK AND CHINESE MODELS'",
@@ -24600,5 +24555,40 @@
     "headline": "SEMIANALYSIS MAPS 300+ US DATACENTER MORATORIUMS \u2014 ONLY 1,525MW ACTUALLY SLIPS, 2.3GW NATIONWIDE",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2099966076196880544"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-16 04:42:36 UTC",
+    "headline": "WSJ: OPENAI IN EARLY TALKS AT $1.2 TRILLION VALUATION \u2014 UP 41% FROM $852B MARCH CLOSE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2100054614888583229"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-16 04:42:36 UTC",
+    "headline": "ZUCKERBERG COMMITS MAJORITY OF META COMPUTE TO USERS, NOT RECURSIVE SELF-IMPROVEMENT",
+    "source": "@finkd",
+    "url": "https://x.com/finkd/status/2099997096896274533"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-16 04:42:36 UTC",
+    "headline": "VANCE NAMES ANTHROPIC ON ALL-IN \u2014 'IF YOU'RE BUILDING FRANKENSTEIN, STOP' \u2014 DEMANDS DEFENDERS GET CYBER TOOLS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2100021964140335322"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-16 04:42:36 UTC",
+    "headline": "SEMIANALYSIS: AMD MI355X CLOSING PERF/TCO GAP ON NVIDIA GB300 IN AGENTIC INFERENCE",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2100027188393189711"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-16 04:42:36 UTC",
+    "headline": "OPENAI OUTSPENDS ANTHROPIC ON OPENROUTER FOR FIRST TIME IN OVER 2.5 YEARS",
+    "source": "@OpenRouter",
+    "url": "https://x.com/OpenRouter/status/2099898254905549220"
   }
 ]
