@@ -3,8 +3,22 @@ slug: alibaba-qwen-3-8-27b-2026-08
 title: Qwen3.8-27B — dense open-weight model running frontier-adjacent agentic work on consumer hardware
 company: Alibaba
 model: Qwen3.8-27B
-status: released
+status: closed
 status_note: |
+  **CLOSED 2026-09-16 — released-and-aged.** Qwen3.8-27B shipped in the
+  2026-08-17/18 window, ~30 days ago, and has passed into normal coverage: the
+  only signal in this cycle is routine practitioner chatter ("Qwen 27b still
+  the (cheap) local goat", @LottoLabs 2026-09-16), not a release event. This
+  ticket's own transition trigger — "≥4 weeks past release with the debate
+  settled → closed: released-and-aged" — is met. **The two things left
+  unresolved stay unresolved and are preserved here, not silently dropped:**
+  no primary Qwen/Alibaba model card or launch post was ever captured, and
+  the ~51 Artificial Analysis Agentic Index placement was never published by
+  Artificial Analysis itself, so @emollick's hands-on dissent was never
+  adjudicated. `verification` stays `partial` for exactly that reason.
+  Successors (Qwen 3.9 / Qwen 4 class) get new tickets; this one is not
+  reopened.
+
   **Qwen3.8-27B is out and is the dominant open-weights story of the
   cycle.** Evidence in the 2026-08-17→19 window is ecosystem-level rather
   than announcement-level: the Unsloth GGUF build is **#2 trending on
@@ -42,7 +56,7 @@ labels:
   - china
   - local-inference
   - agentic
-  - released
+  - closed
 verification: partial
 sources:
   - "@UnslothAI"
@@ -54,12 +68,14 @@ sources:
   - "@Hikari_07_jp"
   - "@huggingface"
 created_at: 2026-08-19
-updated_at: 2026-08-19
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-16
+closed_at: 2026-09-16
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-08-19
     change: "Created — Qwen3.8-27B is shipped and is the cycle's dominant open-weights release. Unsloth GGUF #2 trending on Hugging Face at ~2.7M downloads (@UnslothAI 2026-08-18); reported ~51 on the Artificial Analysis Agentic Index, ahead of GLM 5.2 and DeepSeek V4 Pro 0813 (@TheAhmadOsman); runs on ~$2-3K hardware (RTX 5090; DGX Station at 2,713 tok/s aggregate per @alecqfong); DFlash 2 hits 70 tok/s for it on an M5 Max MacBook Pro. @kimmonismus: the DeepSeek moment for open source. Counter-evidence logged from @emollick, who says hands-on it is obviously not near the larger models on complex agentic tasks. A refusal-removed MLX build (2/4/6/8-bit, 262K context) also trended, with its own uploader warning it answers malware/fraud/weapons prompts — tracked here as a derivative of the same weights. Status released; verification partial (no primary Qwen/Alibaba post or neutral benchmark-org publication captured in-window)."
+  - ts: 2026-09-16
+    change: "CLOSED — released-and-aged. Qwen3.8-27B shipped in the 2026-08-17/18 window, roughly 30 days ago, which satisfies this ticket's own stated trigger ('>=4 weeks past release with the debate settled -> closed: released-and-aged'). The only signal in this cycle is routine practitioner chatter — @LottoLabs (2026-09-16 01:27 UTC), 'Qwen 27b still the (cheap) local goat' — which is normal coverage of a shipped model, not a release event. TWO THINGS ARE CLOSED UNRESOLVED and are recorded rather than dropped: (1) no primary Qwen or Alibaba model card or launch post was ever captured, so the entire release remained visible only through its ecosystem, and verification stays partial rather than advancing; (2) the headline ~51 Artificial Analysis Agentic Index placement was never published by Artificial Analysis itself, so @emollick's firsthand dissent — that hands-on it is 'immediately absolutely and obviously nowhere near as good as the other models listed here for agentic tasks' — was never adjudicated against the leaderboard claim. Anyone citing the agentic-index number later should cite the dissent with it. Successor models (Qwen 3.9 / Qwen 4 class) get NEW tickets; this one is not reopened. The Max tier remains separate at [[alibaba-qwen-3-8-max-2026-07]]."
 ---
 
 **Qwen3.8-27B** is the open-weights event of the cycle, and the thing that
