@@ -1,0 +1,16 @@
+AI News - 2026-09-16
+
+TOP STORIES:
+• OpenAI's Lehane confirms OpenAI/Anthropic/Google coordinating on AI safety
+• Jensen Huang at Dreamforce: "We don't need any new laws" on AI regulation
+• Google ships Gemini 3.8 Live, undercuts GPT-Live-1 on price, tops leaderboard
+• Gates Foundation commits $1B/2yrs to AI-for-good (health, education, ag)
+• Agility Robotics' Digit 5 humanoid works safety-cage-free; Nvidia's Halos partner
+
+KEY NUMBERS:
+• Gemini 3.8 Live: $0.005/min in vs GPT-Live-1's $0.05/min
+• Gates: $1B AI pledge (of ~$200B total before 2045)
+• Digit 5: $300M+ orders, deliveries early 2027
+• Alexa+ India: free for Prime, ₹2,000/mo otherwise
+
+Full report on GitHub.
