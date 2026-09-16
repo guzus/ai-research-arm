@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "UNION ALPHA STEALTH MODEL GOES LIVE FREE ON OPENROUTER — 262K CONTEXT, PROVIDER UNNAMED",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2100272203535188239",
+    "category": "model"
+  },
+  {
+    "headline": "POLITICO POLL: 63% OF AMERICANS SEE AT LEAST MODERATE RISK AI DESTROYS HUMANITY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2100283449085210723",
+    "category": "policy"
+  },
+  {
+    "headline": "CLAUDE DOCS, SLIDES AND DESIGN NOW RUN INSIDE CLAUDE CODE",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2100270861555228770",
+    "category": "model"
+  },
+  {
+    "headline": "VERCEL: JEV 18X FASTER THAN GPT LUNA ON SAFETY REVIEW — COMING TO AI GATEWAY",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2100307962262872105",
+    "category": "model"
+  },
+  {
+    "headline": "YALE-LED AUDIT: 238 OF 250 PHYSICS BENCHMARK FAILURES WERE BAD QUESTIONS, NOT MODELS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2100320168597753947",
+    "category": "research"
+  },
+  {
+    "headline": "META SHIPS MUSE CODE NATIVE ON WINDOWS — POWERSHELL-FLUENT, NO WSL REQUIRED",
+    "source": "@AIatMeta",
+    "url": "https://x.com/AIatMeta/status/2100269717768331579",
+    "category": "opensource"
+  }
+]
