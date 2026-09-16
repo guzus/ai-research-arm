@@ -2,17 +2,18 @@
 slug: meta
 title: Meta
 type: entity
-aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch"]
+aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; Wang said Meta Superintelligence Labs is raising the alignment share of work as models get more powerful, naming no evaluator or slowdown.
+description: Social-platform hyperscaler and Llama maker; launched Meta One subscription bundles pairing Facebook, Instagram and WhatsApp premium features with expanded AI-tool access, after shipping Muse with payment authority.
 created_at: 2026-06-16
-timestamp: 2026-09-14T00:00:00Z
+timestamp: 2026-09-16T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
@@ -280,3 +281,15 @@ Sunday's elected-leadership answer on
 [[federal-ai-policy]], not a training pause. See
 [[muse-code]] (Alexandr Wang; ARA daily digest
 2026-09-14).
+
+## Meta One prices the AI tier (2026-09-16)
+
+**Meta launched Meta One subscription bundles
+globally**, pairing premium features across
+Facebook, Instagram and WhatsApp with expanded
+access to Meta's AI tools. It follows the Muse
+launch ([[muse-code]]) and puts an explicit
+price on the AI tier — the distribution-as-moat
+thesis on this page now has a paid bundle, not
+only a free assistant surface (The Verge,
+TechCrunch; ARA daily digest 2026-09-16).

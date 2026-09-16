@@ -6,8 +6,9 @@ aliases: ["Gemini 3.8 Flash", "Gemini 3.8 Flash Cyber", "3.8 Flash Cyber"]
 tags: [model-release, google-deepmind, flash-tier, ai-security]
 description: Google's third Flash SKU in six weeks, shipped 2026-09-03 at the same $0.75/$3.75 intro price as 3.7 through year-end, plus a gated 3.8 Flash Cyber defender model via Fairwind.
 created_at: 2026-09-03
-timestamp: 2026-09-03T00:00:00Z
+timestamp: 2026-09-16T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
 ---
 
@@ -56,6 +57,10 @@ of the July [[gemini-3-6-flash|3.5 Flash Cyber]].
 - **Hacker News' runaway thread** on 3.8 Flash and 3.8 Flash Cyber held
   **748 points / 449 comments** by 22:40 UTC (ARA daily digest
   2026-09-03).
+- **Sibling, not successor: [[gemini-3-8-live]] shipped 2026-09-16.**
+  Live is the speech-to-speech pair; Flash remains the cheap
+  text/agent workhorse. Do not merge the SKUs (ARA daily digest
+  2026-09-16).
 
 ## Open questions
 

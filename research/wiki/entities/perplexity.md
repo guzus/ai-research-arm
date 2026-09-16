@@ -4,10 +4,11 @@ title: Perplexity
 type: entity
 aliases: ["Perplexity AI", "Perplexity Computer"]
 tags: [search, agents, ai-application, funding]
-description: AI search-and-agent company; Perplexity Computer now runs GPT-6 Astra and Claude Fable for Pro and Max subscribers, after a reported NVIDIA investment talk at $30B+ and a $750M revenue run.
+description: AI search-and-agent company; the Ninth Circuit vacated Amazon's CFAA injunction against its shopping agent, holding the statute covers persons not tools, after Perplexity Computer opened Astra and Fable seats.
 created_at: 2026-08-25
-timestamp: 2026-09-06T00:00:00Z
+timestamp: 2026-09-16T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
@@ -83,3 +84,14 @@ and Max subscribers (03:39–03:41 UTC). **Comet was not listed as
 live** in that cycle. This is the seat opening promised on the
 Astra launch day, not a new product. See [[astra]] (Twitter; ARA
 daily digest 2026-09-06).
+
+## Ninth Circuit: the CFAA covers persons, not agents (2026-09-16)
+
+The Ninth Circuit issued the **first circuit opinion on agentic AI
+under the CFAA**. In *Amazon v. Perplexity*, the court vacated the
+injunction: "it was the user who 'accessed' [[amazon]]'s computers,
+with the help of Perplexity's AI agent," and the CFAA "contemplates
+access by a person," not a tool, "however advanced it is." Narrow
+and fact-specific — contract and tort claims are still live below.
+See [[federal-ai-policy]] and [[agentic-ai-security]] (ARA daily
+digest 2026-09-16).

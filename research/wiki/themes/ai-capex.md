@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; global AI-capex stocks sold off sharply (SoftBank −13.2%, ASMI −10%, SOXX −5.4%) as Anthropic's $517B compute book sat 2.9× its $180B investor guide.
+description: The historically large compute buildout; 2027 DRAM allocations were reported at half of 2026 volumes with Apple raising four iPhones $100 on identical hardware, after a pacing-week selloff against Anthropic's $517B compute book.
 created_at: 2026-05-24
-timestamp: 2026-09-15T00:00:00Z
+timestamp: 2026-09-16T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA model ticket — Anthropic compute commitments", path: research/models/tickets/anthropic-compute-commitments-2026-09.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
@@ -1177,3 +1178,46 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   halves of the same prospectus question. See
   [[anthropic]] (The Information, CNBC; ARA
   daily digest 2026-09-15).
+
+## DRAM allocations halve; the squeeze reaches the iPhone (2026-09-16)
+
+- **Module makers were told 2027 DRAM allocations
+  could land at 50% or less of 2026 volumes**, with
+  upstream capacity reportedly sold out into
+  **2028–2029**. Samsung is renegotiating mobile
+  DRAM and NAND with [[apple]] and Chinese handset
+  makers for another **7–10%**. Apple raised four
+  in-market iPhones **$100** on identical hardware
+  and doubled the 512GB→1TB upgrade to **$400**.
+  Every source here is talking its own book — but
+  order books extending to 2029 against capacity
+  that does not exist until late 2027 is a
+  commitment structure, not a forecast. See
+  [[apple]] and [[micron]] (Digitimes/Korean trade
+  press and SemiAnalysis, via Twitter; ARA daily
+  digest 2026-09-16).
+- **ByteDance's first-half revenue rose ~30% to
+  $120B while net profit fell to $20B**, with AI
+  spending named as the cause — a rare published
+  case of frontier-scale capex compressing an
+  incumbent's margin rather than a startup's
+  runway (The Information; ARA daily digest
+  2026-09-16).
+- **Cost pressure on [[anthropic]] runs from both
+  ends**: enterprises are being quoted millions
+  for isolated deployments at [[microsoft]], while
+  developers are reported pairing Claude Code with
+  cheaper rival models at ~97% of the quality for
+  ~60% less. Palantir's Fable restriction over
+  30-day logs already sits on [[palantir]] (The
+  Information via Twitter; ARA daily digest
+  2026-09-16).
+- **AI and data centers poll badly everywhere.**
+  NYT/Siena midterm polling found both broadly
+  unpopular; TechCrunch reported data-center
+  backlash reaching a Philadelphia neighborhood
+  already marked by a defunct oil refinery, and
+  projected US data centers could consume more
+  natural gas than Germany and Japan combined by
+  **2035**. See [[federal-ai-policy]] (The Verge,
+  TechCrunch; ARA daily digest 2026-09-16).

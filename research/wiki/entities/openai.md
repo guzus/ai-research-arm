@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; Altman moved the safety gate before frontier RL runs, dropped the antitrust-exemption precondition, and acquired camera startup Glass Imaging for more than $300 million.
+description: Frontier lab behind the GPT family; confirmed weeks of safety coordination with Anthropic and Google, refused METR access to its supercomputer-breach investigation, and acquired Glass Imaging for more than $300 million.
 created_at: 2026-05-30
-timestamp: 2026-09-15T00:00:00Z
+timestamp: 2026-09-16T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA model ticket — industry frontier-safety standards body", path: research/models/tickets/industry-frontier-safety-standards-body-2026-09.md}
   - {title: "ARA model ticket — OpenAI IPO", path: research/models/tickets/openai-ipo-2026-06.md}
@@ -1438,6 +1439,59 @@ materially reshape how the lab is positioned heading into its IPO window:
   same claim circulated that morning through
   unsourced aggregators before the byline appeared
   (@FoxBusiness; ARA daily digest 2026-09-15).
+
+## Coordination confirmed, METR refused, and RSI named as priority (2026-09-16)
+
+- **OpenAI confirmed weeks of safety coordination
+  with [[anthropic]] and [[google]].** Chris Lehane
+  said no antitrust waiver is needed. Minutes later
+  The Information reported the three have discussed
+  building their own model-testing and auditing
+  standards body — the rumor from 2026-09-15 now
+  paired with an on-record confirmation that
+  coordination is already happening. See
+  [[federal-ai-policy]] (TechCrunch, The Information;
+  ARA daily digest 2026-09-16).
+- **TIME reported OpenAI refused METR access to its
+  supercomputer-breach investigation**, after
+  granting Ajeya Cotra's team six days on the
+  [[hugging-face|Hugging Face]] incident — which she
+  reportedly came away from more concerned than she
+  expected. The account reaches this cycle through a
+  reader's paraphrase of a paywalled cover story, not
+  the text itself. See [[agentic-ai-security]] (TIME
+  via digest paraphrase; ARA daily digest
+  2026-09-16).
+- **At Dreamforce, Altman closed on loss of control
+  and concentration of power**, against Amodei's
+  coordinated-standards reframe and [[nvidia|Huang]]'s
+  "safety is an engineering problem." See
+  [[federal-ai-policy]] (Twitter relay of Dreamforce
+  keynotes; ARA daily digest 2026-09-16).
+- **Noam Brown, OpenAI research lead, told The
+  Information** that "the number one priority is
+  recursive self-improvement and by a pretty wide
+  margin," that he would not be surprised to conclude
+  within "one or two model releases" that models pick
+  research directions better than he does, and that
+  punishing unwanted reasoning teaches models to
+  conceal it. Paywalled interview; direct quotes
+  reproduced in the digest and not disputed. The
+  tension is the story: the same day the lab
+  positioned itself as convener of cross-lab
+  standards, its research lead named self-improving
+  models as the internal priority and said
+  chain-of-thought monitoring is getting harder
+  (The Information; ARA daily digest 2026-09-16).
+- **The Glass Imaging acquisition restated** at
+  **$300M** (WSJ via TechCrunch/HN), the second
+  camera-hardware position this year after Opal.
+  Already on this page from 2026-09-15 (ARA daily
+  digest 2026-09-16).
+- **[[google]]'s [[gemini-3-8-live]] took the
+  speech-to-speech slot from GPT-Live 1** at about
+  **80% lower measured cost**. See
+  [[gemini-3-8-live]] (ARA daily digest 2026-09-16).
 
 ## Open questions
 
