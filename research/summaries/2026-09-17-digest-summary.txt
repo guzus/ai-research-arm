@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-17
+
+TOP STORIES:
+• OpenAI in early talks for a $1.2T round, a 41% markup from March's $852B close
+• Anthropic merges chat, Cowork, Docs and Slides into one Claude
+• Zuckerberg pledges most Meta compute to users, not recursive self-improvement
+
+KEY NUMBERS:
+• OpenAI Q2: $6.7B revenue (+18%), operating margins declining
+• Politico: 63% see at least moderate extinction risk; 48% favor a pause
+• OpenRouter: Anthropic share vs OpenAI fell 80%→50% since June
+
+TRENDING: Fugleramme, a local bird-classifier e-ink frame, held #1 on all of HN at 2,039 points
+
+Full digest on GitHub.
