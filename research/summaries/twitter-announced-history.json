@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-11 04:00 UTC",
-    "headline": "GOLDMAN: DRAM/NAND SUPPLY TIGHTEST IN 15 YEARS, 176% DRAM PRICE SURGE PROJECTED, AI SERVERS NOW 50% OF DEMAND",
-    "source": "@Tickerwire",
-    "source_file": "research/summaries/2026-05-11-twitter-04h-headlines.json",
-    "url": "https://x.com/Tickerwire/status/2053443495856332848"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-11 04:00 UTC",
-    "headline": "HBM SOLD OUT THROUGH 2026 \u2014 DRAM CONTRACT PRICES +55-60% QOQ, MICRON Q2 FY26 PRINTS +196% REVENUE YOY",
-    "source": "@0xyfed",
-    "source_file": "research/summaries/2026-05-11-twitter-04h-headlines.json",
-    "url": "https://x.com/0xyfed/status/2053657260098724251"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 04:00 UTC",
-    "headline": "ANTHROPIC CORP-CHANNEL SILENCE CROSSES 60-HOUR WATCH THRESHOLD \u2014 58H DARK ACROSS MYTHOS/COLOSSUS/CURSOR/MUSK-TRIAL BACKLOG",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-11-twitter-04h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 04:00 UTC",
-    "headline": "OPENAI CORP-CHANNEL DARK 56 HOURS \u2014 SAMA STILL POSTING \"GOBLIN\" CLUSTER, BUT @OPENAI HANDLE SKIPS SUNDAY-EVENING ROLLOVER",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-11-twitter-04h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2052845764507062349"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-11 07:00 UTC",
-    "headline": "GEMINI OMNI VIDEO MODEL LEAKS INSIDE GEMINI MOBILE APP AHEAD OF GOOGLE I/O \u2014 REMIX, EDIT-IN-CHAT, TEMPLATES",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-11-twitter-07h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2053718753326596524"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-11 07:00 UTC",
-    "headline": "SK HYNIX BEGINS 2.5D PACKAGING R&D WITH INTEL, CONSIDERING EMIB ADOPTION \u2014 FIRST INTEL-INTO-AI-MEMORY PACKAGING SIGNAL",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-11-twitter-07h-headlines.json",
-    "url": "https://x.com/jukan05/status/2053730063259202047"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-11 07:00 UTC",
     "headline": "ANTHROPIC CORP CHANNEL CROSSES 60-HOUR SILENCE THRESHOLD \u2014 NO IN-WINDOW RESPONSE TO MYTHOS/METR/COLOSSUS BACKLOG",
@@ -24520,5 +24466,47 @@
     "headline": "HUAWEI'S XU: 6-7 CHINESE LABS TARGET 10T-40T PARAMETER MODELS WITHIN TWO YEARS",
     "source": "@teortaxesTex",
     "url": "https://x.com/teortaxesTex/status/2100570719843164275"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-17 21:17:31 UTC",
+    "headline": "OPENAI LAUNCHES ASTRA FOR LAW \u2014 54% ON VALS LEGAL BENCH VS 38.7% FOR WEB-SEARCH ASTRA",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2100679992720142459"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-17 21:17:31 UTC",
+    "headline": "ANTHROPIC: CLAUDE WROTE >80% OF MERGED PROD CODE BY MAY; ENGINEERS SHIP 8\u00d7 2024 VOLUME",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2100684274114699295"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-17 21:17:31 UTC",
+    "headline": "FIGURE HELIX 2.5: INDEX PRETRAINING LIFTS ZERO-SHOT HOME TASKS FROM 9% TO 56%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2100685992588124650"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-17 21:17:31 UTC",
+    "headline": "ANTHROPIC OPENS MYTHOS TO VETTED LIFE-SCIENCE TEAMS VIA LSVP",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2100646837799834096"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-17 21:17:31 UTC",
+    "headline": "CLAUDE PROJECTS LIVE IN CLAUDE CODE \u2014 PARALLEL CLOUD THREADS KEEP RUNNING OFFLINE",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2100633571543367691"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-17 21:17:31 UTC",
+    "headline": "CRUSOE CLOSES $3.9B SERIES F AT $30.9B VALUATION, NVIDIA IN THE ROUND",
+    "source": "@perspez",
+    "url": "https://x.com/perspez/status/2100692124576428341"
   }
 ]
