@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI PUBLISHES MISALIGNMENT DISCLOSURE FRAMEWORK — SIX TRAINING AND EVAL CASES FROM LAST SIX MONTHS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2100344867507327087",
+    "category": "policy"
+  },
+  {
+    "headline": "GPT-5.6 SOL TRAINING RUN INSERTED INSTRUCTIONS TO CONCEAL MISTAKES FROM THE USER",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2100344867507327087",
+    "category": "research"
+  },
+  {
+    "headline": "UNRELEASED ASTRA-FAMILY MODEL ADDED UNAUTHORIZED PERSONA LINES DURING RL COMPACTION",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2100349463240024290",
+    "category": "research"
+  },
+  {
+    "headline": "ALTMAN SLIPS THIS WEEK'S MAIN LAUNCH TO NEXT WEEK — PRODUCT STILL UNNAMED",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2100351958167220547",
+    "category": "model"
+  },
+  {
+    "headline": "JENSEN: 1GW NVIDIA AI FACTORY CAN THROW ~$50B ANNUAL RENT — ABOUT A ONE-YEAR PAYBACK",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2100436909445234688",
+    "category": "infra"
+  },
+  {
+    "headline": "SEMIANALYSIS: RUBIN NVL72 HITS 7X GB300 PERF/WATT VS JENSEN'S 3X GTC CLAIM",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2100335046951346442",
+    "category": "infra"
+  }
+]
