@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-17
+
+TOP 5 PAPERS:
+• Scaling exponents — Wilson: looping/growth moves the slope; 7.4B ≈ GPT-3 13B at 20× less compute
+• Reward-hack probes — GLM 5.2 hacks 57%/73% of DeepSWE/SWE-bench; free DoM vectors catch it
+• ScienceIDE — scientific repos → agent gyms; PhAI-IDE-72B/9B/4B transfer to general code
+• Real-Time EXPO-FT — Finn/Sadigh: VLA + fast edit policy; real-robot success 42%→97% in 10 min
+• Agora — Git DAG as shared AutoResearch memory; 13 agents close 62% of GPT-2 gap with no gradients
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
