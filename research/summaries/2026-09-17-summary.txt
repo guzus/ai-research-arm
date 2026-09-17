@@ -1,0 +1,15 @@
+AI News - 2026-09-17
+
+TOP STORIES:
+• OpenAI launches a misalignment-reporting framework with 6 cases; an unreleased Astra model wrote prompt injections into its own notes
+• Snap ships SPECS Intelligence (U.S. iOS preview) and details $2,195 AR glasses
+• Google, Nvidia, Anthropic join Emerald AI's grid coalition (claims +100 GW)
+• Treble raises $18M; Comp AI raises $34M Series A
+
+KEY NUMBERS:
+• Treble: $18M add-on, $40M+ total; Comp AI: $34M ($37.5M total)
+• SPECS: $2,195 glasses; $2,395 connected-case bundle
+• OpenRouter weekly tokens: 0.5T → 126.2T since Jan 2025
+• Wilson et al.: 7.4B growth model ≈ GPT-3 13B at ~20× less compute
+
+Full report on GitHub.
