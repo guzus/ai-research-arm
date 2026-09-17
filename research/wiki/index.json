@@ -484,16 +484,17 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; CNBC reported a $2T investor courtship as compute commitments reached $517B, and Palantir, Nvidia and Booz Allen restricted Fable over 30-day safety logging.",
-      "description": "AI safety lab behind Claude; CNBC reported a $2T investor courtship as compute commitments reached $517B, and Palantir, Nvidia and Booz Allen restricted Fable over 30-day safety logging.",
+      "summary": "AI safety lab behind Claude; merged chat and Cowork into one Claude with Docs, Slides and Design, as Reuters reported a first Australian data-center campus near Brisbane.",
+      "description": "AI safety lab behind Claude; merged chat and Cowork into one Claude with Docs, Slides and Design, as Reuters reported a first Australian data-center campus near Brisbane.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-15",
-      "timestamp": "2026-09-15T00:00:00Z",
+      "updated_at": "2026-09-17",
+      "timestamp": "2026-09-17T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
         "Anthropic PBC",
-        "@AnthropicAI"
+        "@AnthropicAI",
+        "One Claude"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -536,6 +537,7 @@
         "nvidia",
         "open-weights",
         "openai",
+        "openrouter",
         "palantir",
         "remote-labor-index",
         "sakana-ai",
@@ -622,11 +624,11 @@
         "siri",
         "wwdc"
       ],
-      "summary": "Consumer-hardware giant that shipped a rebuilt Siri AI on Google's Gemini, partly on-device and partly through Private Cloud Compute; raised four in-market iPhones $100 on identical hardware as DRAM allocations tightened.",
-      "description": "Consumer-hardware giant that shipped a rebuilt Siri AI on Google's Gemini, partly on-device and partly through Private Cloud Compute; raised four in-market iPhones $100 on identical hardware as DRAM allocations tightened.",
+      "summary": "Consumer-hardware giant planning M8 Ultra AI servers — two- or four-chip enterprise inference boxes, no launch before 2029 — after shipping rebuilt Siri AI on Gemini.",
+      "description": "Consumer-hardware giant planning M8 Ultra AI servers — two- or four-chip enterprise inference boxes, no launch before 2029 — after shipping rebuilt Siri AI on Gemini.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-09-16",
-      "timestamp": "2026-09-16T00:00:00Z",
+      "updated_at": "2026-09-17",
+      "timestamp": "2026-09-17T00:00:00Z",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -634,12 +636,14 @@
         "Siri",
         "Apple Intelligence",
         "Private Cloud Compute",
-        "PCC"
+        "PCC",
+        "M8 Ultra"
       ],
       "outbound": [
         "ai-capex",
         "anthropic",
         "etched",
+        "eu-ai-regulation",
         "federal-ai-policy",
         "fractile",
         "gemini-3-5-flash",
@@ -755,6 +759,7 @@
         "agentic-ai-security",
         "anthropic",
         "claude-fable-5",
+        "federal-ai-policy",
         "gemini-3-8-flash",
         "google",
         "gpt-6",
@@ -1749,11 +1754,11 @@
         "copyright",
         "transparency"
       ],
-      "summary": "The 2026 storyline of Europe regulating AI by binding statute; the AI Act's transparency obligation took effect 2026-08-02, and Anthropic opened a Claude watermark-detection API to regulators, media and researchers as an Article 50 compliance product (2026-09-02).",
-      "description": "The 2026 storyline of Europe regulating AI by binding statute; the AI Act's transparency obligation took effect 2026-08-02, and Anthropic opened a Claude watermark-detection API to regulators, media and researchers as an Article 50 compliance product (2026-09-02).",
+      "summary": "Europe regulating AI by binding statute; von der Leyen adopted \"pace the frontier\" in her State of the Union and invited labs to talks, without a new statute or signed pact.",
+      "description": "Europe regulating AI by binding statute; von der Leyen adopted \"pace the frontier\" in her State of the Union and invited labs to talks, without a new statute or signed pact.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-02",
-      "timestamp": "2026-09-02T00:00:00Z",
+      "updated_at": "2026-09-17",
+      "timestamp": "2026-09-17T00:00:00Z",
       "file": "themes/eu-ai-regulation.md",
       "aliases": [
         "EU AI Act",
@@ -1769,9 +1774,11 @@
         "deepseek-v4-flash",
         "federal-ai-policy",
         "google",
+        "hugging-face",
         "meta",
         "microsoft",
         "midjourney",
+        "mistral",
         "open-weights",
         "openai",
         "seedance-2-5",
@@ -1779,11 +1786,13 @@
       ],
       "inbound": [
         "anthropic",
+        "apple",
         "california-ai-regulation",
         "china-ai-regulation",
         "federal-ai-policy",
         "google",
         "minimax-h3",
+        "mistral",
         "mistral-shieldstral",
         "seedance-2-5"
       ],
@@ -1851,11 +1860,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal and state AI governance; OpenAI confirmed weeks of safety coordination with Anthropic and Google as the three discussed a private standards body, while Huang called safety an engineering problem and the Ninth Circuit held that the CFAA covers persons, not agents.",
-      "description": "US federal and state AI governance; OpenAI confirmed weeks of safety coordination with Anthropic and Google as the three discussed a private standards body, while Huang called safety an engineering problem and the Ninth Circuit held that the CFAA covers persons, not agents.",
+      "summary": "US federal and state AI governance; a Politico/Public First poll found 63% of U.S. adults see at least moderate extinction risk, while embedded evaluators still lack checkpoint access.",
+      "description": "US federal and state AI governance; a Politico/Public First poll found 63% of U.S. adults see at least moderate extinction risk, while embedded evaluators still lack checkpoint access.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-16",
-      "timestamp": "2026-09-16T00:00:00Z",
+      "updated_at": "2026-09-17",
+      "timestamp": "2026-09-17T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1874,6 +1883,7 @@
         "alibaba",
         "amazon",
         "anthropic",
+        "astra",
         "california-ai-regulation",
         "china-ai-regulation",
         "claude-fable-5",
@@ -2377,11 +2387,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; shipped Gemini 3.8 Live as the top speech-to-speech slot at about $0.84/hour, and is the cloud half of Apple's rebuilt Siri AI.",
-      "description": "Hyperscaler behind Gemini; shipped Gemini 3.8 Live as the top speech-to-speech slot at about $0.84/hour, and is the cloud half of Apple's rebuilt Siri AI.",
+      "summary": "Hyperscaler behind Gemini; opened Home to third-party agents via MCP and launched a DeepMind Institute forum as Hassabis, Legg and Manyika said AGI is approaching.",
+      "description": "Hyperscaler behind Gemini; opened Home to third-party agents via MCP and launched a DeepMind Institute forum as Hassabis, Legg and Manyika said AGI is approaching.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-09-16",
-      "timestamp": "2026-09-16T00:00:00Z",
+      "updated_at": "2026-09-17",
+      "timestamp": "2026-09-17T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2398,7 +2408,9 @@
         "WeatherNext",
         "Ironwood",
         "TPUv7",
-        "TPU v7"
+        "TPU v7",
+        "Google Home MCP",
+        "DeepMind Institute"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2675,6 +2687,7 @@
         "agentic-ai-security",
         "ai-capex",
         "astra",
+        "eu-ai-regulation",
         "federal-ai-policy",
         "gpt-6",
         "nvidia",
@@ -2897,11 +2910,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; launched Meta One subscription bundles pairing Facebook, Instagram and WhatsApp premium features with expanded AI-tool access, after shipping Muse with payment authority.",
-      "description": "Social-platform hyperscaler and Llama maker; launched Meta One subscription bundles pairing Facebook, Instagram and WhatsApp premium features with expanded AI-tool access, after shipping Muse with payment authority.",
+      "summary": "Social-platform hyperscaler and Llama maker; Zuckerberg pledged most compute to serving users rather than RSI, citing the Muse delay as unilateral safety work.",
+      "description": "Social-platform hyperscaler and Llama maker; Zuckerberg pledged most compute to serving users rather than RSI, citing the Muse delay as unilateral safety work.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-09-16",
-      "timestamp": "2026-09-16T00:00:00Z",
+      "updated_at": "2026-09-17",
+      "timestamp": "2026-09-17T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -3209,18 +3222,20 @@
         "foundation-models",
         "funding"
       ],
-      "summary": "European frontier lab; closed a €3B Series D at more than €21B post-money led by Samsung — billed as Europe's largest-ever equity round — paired with on-prem deployment inside Samsung's semiconductor operations.",
-      "description": "European frontier lab; closed a €3B Series D at more than €21B post-money led by Samsung — billed as Europe's largest-ever equity round — paired with on-prem deployment inside Samsung's semiconductor operations.",
+      "summary": "European frontier lab; partnered with Mozilla on Firefox Smart Window, a privacy-preserving browser assistant with zero data retention, after a €3B Series D.",
+      "description": "European frontier lab; partnered with Mozilla on Firefox Smart Window, a privacy-preserving browser assistant with zero data retention, after a €3B Series D.",
       "created_at": "2026-09-09",
-      "updated_at": "2026-09-09",
-      "timestamp": "2026-09-09T00:00:00Z",
+      "updated_at": "2026-09-17",
+      "timestamp": "2026-09-17T00:00:00Z",
       "file": "entities/mistral.md",
       "aliases": [
         "Mistral",
-        "Mistral AI"
+        "Mistral AI",
+        "Firefox Smart Window"
       ],
       "outbound": [
         "ai-capex",
+        "eu-ai-regulation",
         "mistral-leanstral-1-5",
         "mistral-robostral-navigate",
         "mistral-shieldstral",
@@ -3230,6 +3245,7 @@
         "salesforce"
       ],
       "inbound": [
+        "eu-ai-regulation",
         "mistral-leanstral-1-5",
         "mistral-robostral-navigate",
         "mistral-shieldstral"
@@ -4070,11 +4086,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; confirmed weeks of safety coordination with Anthropic and Google, refused METR access to its supercomputer-breach investigation, and acquired Glass Imaging for more than $300 million.",
-      "description": "Frontier lab behind the GPT family; confirmed weeks of safety coordination with Anthropic and Google, refused METR access to its supercomputer-breach investigation, and acquired Glass Imaging for more than $300 million.",
+      "summary": "Frontier lab behind the GPT family; in early talks for a $1.2T raise six months after an $852B close, published a first-party misalignment-reporting framework, and still has no announced GPT-6 Sol.",
+      "description": "Frontier lab behind the GPT family; in early talks for a $1.2T raise six months after an $852B close, published a first-party misalignment-reporting framework, and still has no announced GPT-6 Sol.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-16",
-      "timestamp": "2026-09-16T00:00:00Z",
+      "updated_at": "2026-09-17",
+      "timestamp": "2026-09-17T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4110,6 +4126,7 @@
         "neocloud",
         "noam-shazeer",
         "nvidia",
+        "openrouter",
         "salesforce",
         "spacex",
         "verification-bottleneck",
@@ -4214,6 +4231,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "anthropic",
         "cursor",
         "deepseek",
         "fireworks-ai",
@@ -4223,6 +4241,7 @@
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
         "open-weights",
+        "openai",
         "perplexity",
         "sakana-ai",
         "thinking-machines",
@@ -5554,6 +5573,7 @@
     "cursor": "cursor",
     "cursor ai": "cursor",
     "cursor origin": "cursor",
+    "deepmind institute": "google",
     "deepseek": "deepseek",
     "deepseek ai": "deepseek",
     "deepseek v4 pro": "deepseek",
@@ -5599,6 +5619,7 @@
     "figure ai": "figure-ai",
     "figure robotics": "figure-ai",
     "figure-ai": "figure-ai",
+    "firefox smart window": "mistral",
     "fireworks": "fireworks-ai",
     "fireworks ai inc.": "fireworks-ai",
     "fireworks-ai": "fireworks-ai",
@@ -5658,6 +5679,7 @@
     "google ai studio": "google",
     "google deepmind": "google",
     "google gemini spark": "gemini-spark",
+    "google home mcp": "google",
     "google pics": "google",
     "gpt 5.6": "gpt-5-6",
     "gpt 6": "gpt-6",
@@ -5738,6 +5760,7 @@
     "longcat-2.0": "meituan-longcat-2",
     "luna": "gpt-5-6",
     "m3": "minimax-m3",
+    "m8 ultra": "apple",
     "mai": "microsoft",
     "mai code of conduct": "microsoft",
     "mai-code-1-flash": "microsoft",
@@ -5818,6 +5841,7 @@
     "nvda": "nvidia",
     "nvidia": "nvidia",
     "omega": "matrix-multiplication-exponent",
+    "one claude": "anthropic",
     "open frontier intelligence": "moonshot-kimi-k3",
     "open source ai": "open-weights",
     "open weights": "open-weights",
@@ -5973,6 +5997,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-09-17",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-17 digest plus tickets updated 2026-09-16 (openai-raise-1p2t, openai-gpt-6 Sol sighting, anthropic-pace-the-frontier, mistral-mozilla, factory-ai, periodic-labs-neon). Created 0. Updated 8 (openai — $1.2T talks + misalignment-reporting framework + Altman post-Astra mathematician claim + ads products + OpenRouter share slope; anthropic — One Claude / Docs / Slides / Design + reported 2.16 GW Brisbane campus + router-share slide; meta — Zuckerberg compute-against-RSI + retrospective Muse delay + Muse Code Windows; eu-ai-regulation — von der Leyen SOTEU \"pace the frontier\" invitation, no new statute; google — Home MCP early access + DeepMind Institute AGI essays; apple — reported M8 Ultra AI servers (no launch before 2029) + Reference Image provenance; federal-ai-policy — Politico/Public First 63% extinction-risk poll + evaluator independence + Vance / Sanders-Bannon; mistral — Firefox Smart Window beta, zero data retention). Skipped for budget: Cohere/Aleph Alpha, Factory $200M, Periodic Labs Neon, Union Alpha, GPT-6 Sol as its own gpt-6 increment, muse-code as its own Windows increment, microsoft Suleyman increment, ai-capex / agentic-ai-security increments, arXiv highlights."
+    },
+    {
       "date": "2026-09-16",
       "op": "ingest",
       "summary": "Ingested the 2026-09-16 digest (no model tickets with updated_at today or yesterday; nearest ticket updates are 2026-09-14). Created 1 (gemini-3-8-live — speech-to-speech pair in public preview, AA S2S 82.6 at ~$0.84/hour, ~80% cheaper than GPT-Live 1). Updated 10 (google — 3.8 Live + Siri backend + confirmed safety coordination; openai — coordination confirmed + METR refused + Dreamforce + Noam Brown RSI priority; federal-ai-policy — confirmed coordination + Dreamforce split + Ninth Circuit CFAA + Khan Keppel; apple — Siri AI ships on Gemini + $100 iPhone DRAM hike; ai-capex — 2027 DRAM allocations ~50% + Apple consumer prices + ByteDance margin compression; agentic-ai-security — METR refusal + Irregular CTF harness + CoT plan-injection paper; meta — Meta One subscription bundles; gemini-3-8-flash — sibling note pointing at Live; perplexity — Ninth Circuit CFAA win; amazon — same CFAA opinion from the plaintiff side). Skipped for budget: Jev/TypeSafe, TabPFN-3.5, Salesforce Koa, ZGCM-1, anthropic as its own Dreamforce increment, microsoft isolated-deployments increment, perplexity/amazon as their own CFAA pages, Gates $1B, robotics/world-model claims, arXiv highlights."
@@ -6066,11 +6095,6 @@
       "date": "2026-08-26",
       "op": "ingest",
       "summary": "Ingested the 2026-08-26 digest — a full model-synthesis run (model tickets carried nothing newer than 2026-08-25, so the digest was the sole live input). Created 0, updated 12 (openai — Jalapeño Hot Chips results beating GB200/GB300 (1.5–1.9× work-per-watt, 1.7–3.6× lower latency) with SemiAnalysis claiming clearance of Vera Rubin NVL72 per-MW + GPT-Astra named in the same post + Alabama AG subpoena over the Hugging Face eval escape + the 5-hour rate limit restored for Plus; astra — GPT-Astra's first on-record public use (Codex + GPT-Astra bringing 3 open-weight models to high performance in 2 months, kernels 1.5–1.8× faster) + alias added; apple — M6 first-2nm part (32GB/170GB/s) vs the quad-die M5 Ultra flagship (36 CPU/80 GPU, 512GB at 1.2TB/s, ships October) + M5 Max + exo clustering featured, dominating HN at 806 pts; anthropic — WSJ >$30T TAM pitch against SpaceX's $28.5T on cited ~$11.6B quarterly revenue; agentic-ai-security — Alabama's consumer-protection theory on an internal unreleased-model eval + ChatGPT trusted-contact-invite phishing abusing OpenAI's own mail system; ox-alpha — day six unclaimed with contradictory consumption figures (11.6T/26T/16.6T), first per-kernel KernelBench read (7.17% roofline bitonic behind Opus 5, last on sparse attention), attribution pointing at Zhipu/Z.ai on capacity grounds; hugging-face — revenue jumps 50% to >$150M annualized against the $13B ask (~85–87×); perplexity — NVIDIA co-launches the all-local Portable Computer agent stack on DGX Spark + a gifted DGX Station; ai-capex — SEC subpoenas Goldman/JPMorgan/Citi/BofA over Situational Awareness fund leverage, Ajinomoto ABF film rationed to AI customers, Jalapeño per-MW challenge; qwen-3-8-max — Qwen4 architecture preview countdown naming DeepSeek's Engram + Qwen3.8-Flash-Next teaser (125B/6B active) + Thomson Reuters building its own Qwen model; alibaba — the same Qwen4/Flash-Next teaser from the company side; nvidia — the Jalapeño per-MW threat + Groq 3 LPX \"4× Cerebras\" frame requiring 64 accelerators vs one/two for Cerebras + Cerebras CS-4). Skipped for budget (future ingest where they repeat): Apple's Mac-mini follow-through, Apodex 1.1, IBM Granite 4.2/Speech, Skild AI S1, Stability AI $76M, Gatik Series D, Meta Hatch/Watermelon, Grok Voice Think Fast 2.0, OmniAssistBench/SWE-bench Science and the paper cluster."
-    },
-    {
-      "date": "2026-08-25",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-25 digest + 2026-08-24-updated model tickets (Alibaba placement priced, Perplexity investment talks, Poolside licence, GPT-5.6 repricing, Ox Alpha day 4, Harvey Tenet, Xiaomi Xring O100). Created 1 (perplexity — Nvidia equity talks >$30B, Perplexity Computer revenue run). Updated 9 (nvidia — orbital AI datacenter with SpaceX (Vera Rubin NVL72, Q4 2027), the ~17% price increase hardening to an $8M Rubin NVL72 rack on two named outlets, Perplexity talks, Groq 3 LPX full production, Rubin Ultra 192GB HBM4 spec, Rebellions move + smuggling indictment; anthropic — full-lineup outage (Mythos 5/Fable 5/Opus 5/Opus 4.8 across app, API, Claude Code, Cowork) + FT revenue picture ($65bn July, 6,000 $100k+ customers, Q3 profitable, Fable 5 at 6% of tokens) + marshmallow/melon checkpoints; ai-capex — 75% US data-center opposition as bipartisan posture, NVIDIA $500B package gated on GPU bankability, SemiAnalysis ~$3T capex/$7T debt, Starcloud's orbital round, Alibaba placement as first equity-verdict, UBS/Broadcom TPU crossover, SoftBank ¥1T bond; spacex — orbital DC with Nvidia + The Information naming the Cursor deal at $60B with Musk's \"Grok has fallen behind\" admission; alibaba — placement priced at HK$112.70 (8.4% discount), shares ~10% lower, 75% YoY profit drop; ox-alpha — day four unclaimed, lemans 52/63, Context Arena 8-needle board, two opposite cyber evals; verification-bottleneck — mathematician credits Claude with an S^6 complex-structure claim (open since 1948), unverified with a bad base rate; groq — Groq 3 LPX racks to full production on Nebius as launch cloud; broadcom — UBS cuts FY2027 AI revenue ~$5B to ~$130B on a lower Google TPU forecast)."
     }
   ]
 }

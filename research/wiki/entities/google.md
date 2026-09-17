@@ -2,17 +2,18 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7"]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; shipped Gemini 3.8 Live as the top speech-to-speech slot at about $0.84/hour, and is the cloud half of Apple's rebuilt Siri AI.
+description: Hyperscaler behind Gemini; opened Home to third-party agents via MCP and launched a DeepMind Institute forum as Hassabis, Legg and Manyika said AGI is approaching.
 created_at: 2026-07-17
-timestamp: 2026-09-16T00:00:00Z
+timestamp: 2026-09-17T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
@@ -406,6 +407,30 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   Chris Lehane said no antitrust waiver is needed.
   See [[federal-ai-policy]] (TechCrunch, The
   Information; ARA daily digest 2026-09-16).
+
+## Home MCP and a DeepMind Institute AGI forum (2026-09-17)
+
+- **Google opened Home to third-party agents** via an
+  early-access **Home MCP server** that can control
+  Nest/Matter devices, read camera summaries and
+  query event history. Named clients: Claude,
+  ChatGPT, OpenClaw, Hermes, Antigravity. Rollout
+  starts for **U.S. Google Home Premium Advanced**
+  subscribers at **$20/month**; Google would not say
+  when other tiers or markets get it. This is the
+  first time a major consumer smart-home stack has
+  opened itself to third-party agents over MCP. See
+  [[agentic-ai-security]] (TechCrunch, The Verge;
+  ARA daily digest 2026-09-17).
+- **Hassabis, Shane Legg and James Manyika launched
+  the DeepMind Institute**, a publishing forum with
+  four essays on chain-of-thought transparency,
+  economic policy, utopianism and frontier testing.
+  Legg wrote the field is **"now approaching" AGI**
+  while still failing basic tasks, with those gaps
+  "expected to be closed soon." Position paper, not
+  a capability demonstration (DeepMind, The Decoder,
+  HN; ARA daily digest 2026-09-17).
 
 ## Open questions
 

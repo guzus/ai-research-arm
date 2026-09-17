@@ -2,17 +2,18 @@
 slug: apple
 title: Apple
 type: entity
-aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC]
+aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC, "M8 Ultra"]
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
-description: Consumer-hardware giant that shipped a rebuilt Siri AI on Google's Gemini, partly on-device and partly through Private Cloud Compute; raised four in-market iPhones $100 on identical hardware as DRAM allocations tightened.
+description: Consumer-hardware giant planning M8 Ultra AI servers — two- or four-chip enterprise inference boxes, no launch before 2029 — after shipping rebuilt Siri AI on Gemini.
 created_at: 2026-06-08
-timestamp: 2026-09-16T00:00:00Z
+timestamp: 2026-09-17T00:00:00Z
 market:
   ticker: AAPL
   exchange: NASDAQ
   symbol: NASDAQ:AAPL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
@@ -220,6 +221,32 @@ not announced.
   [[ai-capex]] (Digitimes/Korean trade press and
   SemiAnalysis, via Twitter; ARA daily digest
   2026-09-16).
+
+## M8 Ultra AI servers, still years out (2026-09-17)
+
+- **The Information reported Apple is planning M8
+  Ultra AI servers** — two- or four-chip enterprise
+  inference boxes, a possible [[nvidia|Nvidia]]
+  NVLink Fusion pairing, and **no launch before
+  2029**. Apple retired Xserve in 2011; the project
+  can still be scrapped. Single-source via Ars
+  Technica / The Decoder / The Verge. If it ships,
+  it would put Apple on the *building* side of
+  [[ai-capex]] for the first time, against the
+  partner-and-distill posture this page has tracked
+  since WWDC. Treat as a reported plan, not a
+  product (The Information via Ars Technica, The
+  Decoder, The Verge; ARA daily digest 2026-09-17).
+- **Apple Reference Image** — an opt-in iPhone 18
+  Pro mode that hardware-signs the digital negative
+  before the OS sees the pixels, then develops it
+  in Private Cloud Compute. Capture time is a pair
+  of cryptographic bounds, not the device clock;
+  final signature is **RSA-3072 + ML-DSA-87**. This
+  is a named product on the photo-provenance thread
+  [[eu-ai-regulation]] logged as an iOS 27 rumor on
+  2026-08-12 (HN, 341 pts; ARA daily digest
+  2026-09-17).
 
 ## Open questions
 

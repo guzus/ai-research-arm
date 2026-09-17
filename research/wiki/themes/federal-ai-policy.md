@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; OpenAI confirmed weeks of safety coordination with Anthropic and Google as the three discussed a private standards body, while Huang called safety an engineering problem and the Ninth Circuit held that the CFAA covers persons, not agents.
+description: US federal and state AI governance; a Politico/Public First poll found 63% of U.S. adults see at least moderate extinction risk, while embedded evaluators still lack checkpoint access.
 created_at: 2026-06-03
-timestamp: 2026-09-16T00:00:00Z
+timestamp: 2026-09-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA model ticket — industry frontier-safety standards body", path: research/models/tickets/industry-frontier-safety-standards-body-2026-09.md}
@@ -1106,6 +1107,58 @@ footing for the first time in the cycle.
   venue for yesterday's cross-spectrum coalition
   (Reuters via Twitter; ARA daily digest
   2026-09-16).
+
+## A majority-fear poll, evaluator independence, and a Brussels echo (2026-09-17)
+
+- **Politico/Public First surveyed 2,064 U.S. adults
+  (Sept 13–15, MoE ~±2.2):** **63%** see at least
+  moderate extinction risk (**26%** moderate,
+  **20%** significant, **17%** almost certain);
+  **48%** favor pausing more-advanced development
+  against **31%** who want it to continue. About
+  **60–61% of Trump voters** land in the "at least
+  moderate" bucket. "Nearly two-thirds say AI will
+  destroy humanity" collapses a three-rung scale;
+  the **17% "almost certain"** is the only rung that
+  matches that headline (Politico, The Hill; ARA
+  daily digest 2026-09-17).
+- **Sanders and Bannon both called for brakes** at
+  FLI's Pro-Human Assembly — the venue this page
+  logged as scheduled yesterday. Sanders wants a
+  data-center freeze and a Trump–Xi ban on
+  superintelligent AI; Bannon wants an executive
+  order. [[openai]]'s Chris Lehane told a FRONTIER
+  Act sponsor the company "can support" a federal
+  independent-verification mandate (The Decoder
+  citing NYT/Politico; ARA daily digest
+  2026-09-17).
+- **JD Vance told All-In** that labs building
+  "Frankenstein" should stop, and that companies
+  desperate for defenses against [[anthropic]]'s
+  newest cyber capability are "being denied access
+  to it." Public podcast segment; no named vendor
+  has corroborated a refusal, and Anthropic has not
+  answered (Twitter; ARA daily digest 2026-09-17).
+- **Embedded-evaluator independence is the live
+  fight.** Apollo, FAR.AI and Palisade told
+  TechCrunch they need checkpoints, reward
+  environments, transcripts and publish-without-edits.
+  [[openai]] gave METR and Redwood "roughly a week"
+  on [[hugging-face|Hugging Face]] and both said they
+  could not draw confident conclusions; Apollo got
+  **three days** on [[astra|GPT-6 Astra]]. [[meta]],
+  [[xai]] and [[google|DeepMind]] have not committed.
+  [[openai]]'s new first-party misalignment-reporting
+  framework does not substitute for that access. See
+  [[agentic-ai-security]] and [[openai]] (TechCrunch;
+  ARA daily digest 2026-09-17).
+- **Von der Leyen adopted "pace the frontier"** in
+  her State of the Union and invited labs to talks
+  — the first time the Commission president has used
+  the industry's pacing vocabulary on the record.
+  No new statute or signed pact. See
+  [[eu-ai-regulation]] (European Commission, The
+  Decoder; ARA daily digest 2026-09-17).
 
 ## Open questions
 

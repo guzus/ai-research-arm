@@ -4,10 +4,12 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; confirmed weeks of safety coordination with Anthropic and Google, refused METR access to its supercomputer-breach investigation, and acquired Glass Imaging for more than $300 million.
+description: Frontier lab behind the GPT family; in early talks for a $1.2T raise six months after an $852B close, published a first-party misalignment-reporting framework, and still has no announced GPT-6 Sol.
 created_at: 2026-05-30
-timestamp: 2026-09-16T00:00:00Z
+timestamp: 2026-09-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
+  - {title: "ARA model ticket — OpenAI $1.2T raise talks", path: research/models/tickets/openai-raise-1p2t-2026-09.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA model ticket — industry frontier-safety standards body", path: research/models/tickets/industry-frontier-safety-standards-body-2026-09.md}
@@ -1492,6 +1494,68 @@ materially reshape how the lab is positioned heading into its IPO window:
   speech-to-speech slot from GPT-Live 1** at about
   **80% lower measured cost**. See
   [[gemini-3-8-live]] (ARA daily digest 2026-09-16).
+
+## $1.2T talks, a misalignment framework, and a post-Astra claim (2026-09-17)
+
+- **The Wall Street Journal reported early discussions
+  for a new private raise at $1.2 trillion**, a
+  roughly **41% markup** from the **$852B** March
+  close on **$122B of committed capital**. The same
+  report puts **more than 1B active users**, **Q2
+  revenue at $6.7B (+18%)**, an **IPO expected in
+  2027**, and **operating margins moving the wrong
+  way**. "Early discussions" is the operative phrase
+  — no amount, lead investor, or OpenAI comment
+  appeared. Treat **$1.2T as a negotiating anchor**,
+  not a priced round. A private close at that mark
+  would be a reason to delay the listing already
+  ruled out for 2026. See [[ai-capex]] (WSJ via
+  Twitter; ARA daily digest 2026-09-17 and model
+  ticket openai-raise-1p2t-2026-09).
+- **OpenAI published a first-party misalignment
+  reporting framework** — a process for tracking,
+  investigating and disclosing unexpected model
+  behavior — plus **six reports**. It is the
+  disclosure instrument promised after the DSEWiki
+  confirmation on 2026-09-06. It landed in the same
+  window as TechCrunch's follow that **embedded
+  evaluators still lack checkpoint access, interview
+  rights and publish-without-edits**; OpenAI gave
+  METR and Redwood "roughly a week" on
+  [[hugging-face|Hugging Face]] and both said they
+  could not draw confident conclusions; Apollo got
+  **three days** on [[astra|GPT-6 Astra]]. A
+  first-party process is not independent access.
+  See [[agentic-ai-security]] and
+  [[federal-ai-policy]] (OpenAI, TechCrunch; ARA
+  daily digest 2026-09-17).
+- **At Dreamforce, Altman claimed an unreleased
+  internal model past [[astra|GPT-6 Astra]] "can do
+  things that the best mathematicians in the world
+  cannot."** He did not name it. Hours later the
+  CFO and VP of compute strategy were both quoted
+  arguing for **more compute, not less**. [[gpt-6]]
+  remains a family with Astra shipped; **GPT-6 Sol
+  is a sighting, not a launch** — logged in the
+  API and Arena system tests, still without an
+  OpenAI post, model card or price. See [[gpt-6]]
+  and [[verification-bottleneck]] (Dreamforce via
+  Twitter; ARA daily digest 2026-09-17).
+- **OpenAI shipped advertising products** —
+  Sponsored Agents, marketer tools, and
+  HubSpot/Shopify integrations — plus a ChatGPT
+  Work analytics pitch tying usage to business
+  value. This is the productization of the ads
+  run-rate already on this page from 2026-09-02
+  (OpenAI; ARA daily digest 2026-09-17).
+- **Gavin Baker read [[openrouter|OpenRouter]]'s
+  own series:** OpenAI went from **20% to 50%** of
+  combined OpenAI-plus-[[anthropic]] spend since
+  June. That is developer-router spend, not
+  enterprise contracts; the enterprise companion
+  figure circulating the same day was OpenAI
+  **~13% vs Anthropic ~8%** (Twitter; ARA daily
+  digest 2026-09-17).
 
 ## Open questions
 
