@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "Z.AI: GLM-5.3 INFRA AGENT TRIPLED FLASH THROUGHPUT ON 100K CHINESE CHIPS IN <2 WEEKS",
+    "source": "@Zai_org",
+    "url": "https://x.com/Zai_org/status/2100481236364079277",
+    "category": "infra"
+  },
+  {
+    "headline": "THE INFORMATION: OPENAI CLOSE TO HODGE CONJECTURE, ANOTHER MILLENNIUM PRIZE PROBLEM",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2100600809553559577",
+    "category": "research"
+  },
+  {
+    "headline": "PALANTIR WON'T SHIP FABLE UNTIL ANTHROPIC OFFERS IRREVOCABLE ZERO-DATA-RETENTION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2100578038551290200",
+    "category": "business"
+  },
+  {
+    "headline": "SEMIANALYSIS: AGENTIC WORKLOADS NOW EXCEED 70% OF INFERENCE TRAFFIC",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2100600804038099217",
+    "category": "infra"
+  },
+  {
+    "headline": "HUAWEI'S XU: 6-7 CHINESE LABS TARGET 10T-40T PARAMETER MODELS WITHIN TWO YEARS",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2100570719843164275",
+    "category": "infra"
+  }
+]
