@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-17 21:17:31 UTC
+
+CYCLE: OpenAI ships Astra for Law; Anthropic opens its RSI books; Figure posts Helix 2.5 numbers.
+
+TOP STORIES:
+• OpenAI Astra for Law: 54% on Vals legal bench vs 38.7% web-search Astra [✓]
+• Anthropic: Claude wrote >80% of merged prod code by May; engineers 8× 2024 [✓]
+• Figure Helix 2.5: Index pretraining lifts zero-shot home tasks 9% → 56% [⚠]
+• Claude Projects in Claude Code: parallel cloud threads keep running offline [✓]
+
+WATCH: Whether OpenAI or Google publish comparable internal RSI metrics.
+
+Full update on GitHub.
