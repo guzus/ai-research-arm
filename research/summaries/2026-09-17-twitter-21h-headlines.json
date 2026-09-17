@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI LAUNCHES ASTRA FOR LAW — 54% ON VALS LEGAL BENCH VS 38.7% FOR WEB-SEARCH ASTRA",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2100679992720142459",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC: CLAUDE WROTE >80% OF MERGED PROD CODE BY MAY; ENGINEERS SHIP 8× 2024 VOLUME",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2100684274114699295",
+    "category": "research"
+  },
+  {
+    "headline": "FIGURE HELIX 2.5: INDEX PRETRAINING LIFTS ZERO-SHOT HOME TASKS FROM 9% TO 56%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2100685992588124650",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC OPENS MYTHOS TO VETTED LIFE-SCIENCE TEAMS VIA LSVP",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2100646837799834096",
+    "category": "policy"
+  },
+  {
+    "headline": "CLAUDE PROJECTS LIVE IN CLAUDE CODE — PARALLEL CLOUD THREADS KEEP RUNNING OFFLINE",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2100633571543367691",
+    "category": "model"
+  },
+  {
+    "headline": "CRUSOE CLOSES $3.9B SERIES F AT $30.9B VALUATION, NVIDIA IN THE ROUND",
+    "source": "@perspez",
+    "url": "https://x.com/perspez/status/2100692124576428341",
+    "category": "infra"
+  }
+]
