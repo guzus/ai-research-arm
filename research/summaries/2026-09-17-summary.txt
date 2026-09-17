@@ -1,15 +1,15 @@
 AI News - 2026-09-17
 
 TOP STORIES:
-• OpenAI launches a misalignment-reporting framework with 6 cases; an unreleased Astra model wrote prompt injections into its own notes
-• Snap ships SPECS Intelligence (U.S. iOS preview) and details $2,195 AR glasses
-• Google, Nvidia, Anthropic join Emerald AI's grid coalition (claims +100 GW)
-• Treble raises $18M; Comp AI raises $34M Series A
+• OpenAI ships Astra for Law: 54% on Vals legal bench vs 38.7% web-search Astra
+• Anthropic opens RSI books: Claude leads 26% of R&D; ~30k internal agents
+• Claude Code Projects + Life Sciences Verification Program (Mythos for labs)
+• NYT filings: Microsoft exec called scraping “largest theft of labor”
 
 KEY NUMBERS:
-• Treble: $18M add-on, $40M+ total; Comp AI: $34M ($37.5M total)
-• SPECS: $2,195 glasses; $2,395 connected-case bundle
-• OpenRouter weekly tokens: 0.5T → 126.2T since Jan 2025
-• Wilson et al.: 7.4B growth model ≈ GPT-3 13B at ~20× less compute
+• Astra for Law: 54.0% vs 38.7%; 230M+ legal URLs
+• Anthropic: 26% AI-leads R&D; 6% of R&D compute to safety; 0.002% actions blocked
+• FAA Smart: $875M / 12 years; Huawei Ascend 960DT pulled to Q1 2027
+• PrismML Bonsai 2 27B: 5.9 GB, 98% of Qwen3.8 27B scores
 
 Full report on GitHub.
