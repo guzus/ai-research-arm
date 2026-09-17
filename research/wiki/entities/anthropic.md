@@ -2,12 +2,13 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; CNBC reported a $2T investor courtship as compute commitments reached $517B, and Palantir, Nvidia and Booz Allen restricted Fable over 30-day safety logging.
+description: AI safety lab behind Claude; merged chat and Cowork into one Claude with Docs, Slides and Design, as Reuters reported a first Australian data-center campus near Brisbane.
 created_at: 2026-05-24
-timestamp: 2026-09-15T00:00:00Z
+timestamp: 2026-09-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA model ticket — Anthropic compute commitments", path: research/models/tickets/anthropic-compute-commitments-2026-09.md}
   - {title: "ARA model ticket — Anthropic IPO", path: research/models/tickets/anthropic-ipo-2026-06.md}
@@ -1706,3 +1707,48 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   support. One outlet, no named entity — rumored.
   See [[federal-ai-policy]] and [[openai]] (The
   Information; ARA daily digest 2026-09-15).
+
+## One Claude, a Brisbane campus, and a router-share slide (2026-09-17)
+
+- **Anthropic merged chat and Cowork into one Claude**
+  that routes a quick answer versus a workflow, and
+  shipped **Claude Docs, Slides and Design** in the
+  same thread. **Pro and Max get it first** on web,
+  desktop and mobile; existing Cowork history carries
+  over, and the same artifacts now run inside Claude
+  Code on the working tree. Persistence claim: hand
+  over a noon report, close the laptop, check from a
+  phone. Treat **background execution as unverified**
+  until someone shows server-side continuation rather
+  than a sleeping local session. This is a **surface
+  merge, not a weight drop**. See
+  [[dynamic-workflows]] (TechCrunch, The Verge,
+  @ClaudeDevs; ARA daily digest 2026-09-17).
+- **Reuters reported Anthropic's first Australian
+  data-center deal** — a campus near Brisbane with
+  **2.16 GW** of capacity, beginning to come online
+  in **2027**. **No Anthropic confirmation** in this
+  window. Stack it onto the **$517B / 14.8 GW**
+  commitment book already on this page, not as a
+  separately verified contract. See [[ai-capex]]
+  (Twitter relay of Reuters; ARA daily digest
+  2026-09-17).
+- **[[openrouter|OpenRouter]] share is now a slope.**
+  Gavin Baker read the platform's own series:
+  [[openai]] went from **20% to 50%** of combined
+  OpenAI-plus-Anthropic spend since June, so
+  Anthropic fell from **80% to 50%**. Developer-router
+  spend, not enterprise contracts; the enterprise
+  companion figure the same day was OpenAI **~13% vs
+  Anthropic ~8%**. The Information separately reports
+  that pacing talk is making some customers more wary
+  of buying — single-source, talking its own book
+  (Twitter; ARA daily digest 2026-09-17).
+- **Mustafa Suleyman's model-welfare warning** landed
+  the same afternoon One Claude shipped and became
+  the second-most-commented AI thread on HN. It is a
+  direct critique of Claude's constitution and of the
+  Opus 3 "retirement interview." The named
+  alternative is [[microsoft]]'s Humanist AI Code of
+  Conduct. See [[microsoft]] (HN; ARA daily digest
+  2026-09-17).

@@ -4,10 +4,12 @@ title: European AI regulation
 type: theme
 aliases: ["EU AI Act", "EU AI regulation", "European AI Act", "AI Act"]
 tags: [regulation, eu, ai-act, copyright, transparency]
-description: The 2026 storyline of Europe regulating AI by binding statute; the AI Act's transparency obligation took effect 2026-08-02, and Anthropic opened a Claude watermark-detection API to regulators, media and researchers as an Article 50 compliance product (2026-09-02).
+description: Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
 created_at: 2026-08-02
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-09-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
+  - {title: "ARA model ticket — Amodei We Must Pace the Frontier", path: research/models/tickets/anthropic-pace-the-frontier-2026-09.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
@@ -103,6 +105,33 @@ training and output.
   confirmed a public text-detection API was coming. Detector error rates
   remain unpublished (The Decoder; ARA daily digest 2026-09-02). See
   [[anthropic]].
+
+- **Von der Leyen invited labs to talks after her 16
+  September State of the Union** called
+  [[hugging-face|Hugging Face]]-style agent escapes
+  "a mere glimpse" of what frontier models will
+  enable, and said CEOs now want to **"pace the
+  frontier."** She pledged to team up with Canada
+  and the UK on evaluation and early warning, and
+  said Europe still needs to "massively boost"
+  compute. This is the first time the Commission
+  president has adopted the industry's pacing
+  vocabulary on the record. **What does not survive
+  is a new statute or a signed lab pact.** French
+  finance minister Roland Lescure said U.S.
+  slow-down calls are a ploy to protect a lead, and
+  that France and Europe should ignore them and
+  accelerate. See [[federal-ai-policy]] and
+  [[anthropic]] (European Commission, The Decoder;
+  ARA daily digest 2026-09-17).
+- **[[mistral]] shipped Firefox Smart Window** in
+  beta in France and North America with Mozilla,
+  advertising zero data retention. It is a
+  distribution event, not a statute, but it is the
+  first privacy-branded browser assistant from a
+  European lab after the Act's transparency duty
+  attached (Mistral, Mozilla, HN; ARA daily digest
+  2026-09-17).
 
 ## Open questions
 

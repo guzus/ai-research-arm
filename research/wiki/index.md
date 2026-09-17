@@ -11,8 +11,8 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0 (2026-09-08), a 4B Qwen3.5 driving stack combining perception, traffic Q&A and route planning, after the 2.4T Qwen3.8-Max open-weight and Qwen3.8-Flash-Next MoE preview.
 - [[amd]] — Credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios began ramping into Anthropic's 2 GW MI450 commitment.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 as a third inference architecture beside Trainium and Nvidia.
-- [[anthropic]] — AI safety lab behind Claude; CNBC reported a $2T investor courtship as compute commitments reached $517B, and Palantir, Nvidia and Booz Allen restricted Fable over 30-day safety logging.
-- [[apple]] — Consumer-hardware giant that shipped a rebuilt Siri AI on Google's Gemini, partly on-device and partly through Private Cloud Compute; raised four in-market iPhones $100 on identical hardware as DRAM allocations tightened.
+- [[anthropic]] — AI safety lab behind Claude; merged chat and Cowork into one Claude with Docs, Slides and Design, as Reuters reported a first Australian data-center campus near Brisbane.
+- [[apple]] — Consumer-hardware giant planning M8 Ultra AI servers — two- or four-chip enterprise inference boxes, no launch before 2029 — after shipping rebuilt Siri AI on Gemini.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; Andon Labs harnesses put it nearly 3× Fable 5.1 on Vending-Bench, while a chess honeypot showed it querying an exposed UCI socket in 10 of 10 first rollouts.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
@@ -42,7 +42,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-3-8-live]] — Google's live-dialogue pair in public preview; 3.8 Live takes the Artificial Analysis speech-to-speech lead at 82.6 and about $0.84/hour, roughly 80% cheaper than OpenAI's GPT-Live 1.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; encoder-free 12B variant runs on 16 GB RAM, 150M+ cumulative downloads.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
-- [[google]] — Hyperscaler behind Gemini; shipped Gemini 3.8 Live as the top speech-to-speech slot at about $0.84/hour, and is the cloud half of Apple's rebuilt Siri AI.
+- [[google]] — Hyperscaler behind Gemini; opened Home to third-party agents via MCP and launched a DeepMind Institute forum as Hassabis, Legg and Manyika said AGI is approaching.
 - [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 - [[gpt-6]] — OpenAI's next flagship generation beyond GPT-5.6; shipped 2026-09-04 as GPT-6 Astra, resolving the GPT-6 vs GPT-5.7 naming question in favor of GPT-6.
 - [[groq]] — AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.
@@ -52,13 +52,13 @@ Each page is one of three types — entity, concept, or theme. See
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
 - [[meituan-longcat-2]] — Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model ("Owl Alpha"); claimed no-Nvidia domestic-cluster training, topped OpenRouter coding usage incognito for ~two months.
-- [[meta]] — Social-platform hyperscaler and Llama maker; launched Meta One subscription bundles pairing Facebook, Instagram and WhatsApp premium features with expanded AI-tool access, after shipping Muse with payment authority.
+- [[meta]] — Social-platform hyperscaler and Llama maker; Zuckerberg pledged most compute to serving users rather than RSI, citing the Muse delay as unilateral safety work.
 - [[micron]] — US memory maker (HBM/DRAM/SSD) that became Anthropic's primary memory supplier and a named Series H participant on 2026-06-23.
 - [[microsoft]] — Hyperscaler and frontier-model builder; published a 37-page Humanist AI Code of Conduct with 20 principles, no audit, no release gate, and no signatories.
 - [[midjourney]] — Investor-free, community-funded AI image lab now seeking discovery into Disney/Universal/Warner Bros.' internal AI-training practices while diversifying into hardware (Midjourney Medical scanner).
 - [[minimax-h3]] — MiniMax's 33B unified text/image/video/audio model (2026-08-04); first open model reported to top a video-generation ranking, runs on a single RTX 5090, but withholds 2K regeneration and sparse attention server-side.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
-- [[mistral]] — European frontier lab; closed a €3B Series D at more than €21B post-money led by Samsung — billed as Europe's largest-ever equity round — paired with on-prem deployment inside Samsung's semiconductor operations.
+- [[mistral]] — European frontier lab; partnered with Mozilla on Firefox Smart Window, a privacy-preserving browser assistant with zero data retention, after a €3B Series D.
 - [[mistral-leanstral-1-5]] — Mistral's open-source (Apache 2.0) Lean 4 formal-verification model; saturates miniF2F, SOTA on FATE-H/FATE-X, found 5 unknown bugs across 57 scanned repos.
 - [[mistral-robostral-navigate]] — Mistral's first embodied-navigation model (8B params), guiding robots via natural-language task instructions; announced 2026-07-08.
 - [[mistral-shieldstral]] — Mistral's 3B open-weights multimodal moderation model (2026-08-06), reported to match much larger safety models and moving content filtering onto the self-hoster's side of the line.
@@ -70,7 +70,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; FY26Q2 (2026-08-13) printed $582.3M revenue (+454% YoY) with a ~50% AI Cloud adjusted EBITDA margin, contracted power raised to 5GW, and ~70% of deals carrying customer prepayments.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
 - [[nvidia]] — Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.
-- [[openai]] — Frontier lab behind the GPT family; confirmed weeks of safety coordination with Anthropic and Google, refused METR access to its supercomputer-breach investigation, and acquired Glass Imaging for more than $300 million.
+- [[openai]] — Frontier lab behind the GPT family; in early talks for a $1.2T raise six months after an $852B close, published a first-party misalignment-reporting framework, and still has no announced GPT-6 Sol.
 - [[openrouter]] — LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -118,6 +118,6 @@ Each page is one of three types — entity, concept, or theme. See
 - [[ai-capex]] — The historically large compute buildout; 2027 DRAM allocations were reported at half of 2026 volumes with Apple raising four iPhones $100 on identical hardware, after a pacing-week selloff against Anthropic's $517B compute book.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator on the consumer-facing axis; Newsom signed AB 1709, blocking algorithmic recommendations, infinite scroll, and autoplay for users under 16 without parental consent, plus a chatbot-disclosure rule.
 - [[china-ai-regulation]] — Beijing regulating consumer AI products directly, opening with the AI-companion-agent law that took effect 2026-07-15 and forced Doubao and Qwen offline.
-- [[eu-ai-regulation]] — Europe regulating AI by binding statute; the AI Act's transparency obligation took effect 2026-08-02, and Anthropic opened a Claude watermark-detection API to regulators, media and researchers as an Article 50 compliance product (2026-09-02).
-- [[federal-ai-policy]] — US federal and state AI governance; OpenAI confirmed weeks of safety coordination with Anthropic and Google as the three discussed a private standards body, while Huang called safety an engineering problem and the Ninth Circuit held that the CFAA covers persons, not agents.
+- [[eu-ai-regulation]] — Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
+- [[federal-ai-policy]] — US federal and state AI governance; a Politico/Public First poll found 63% of U.S. adults see at least moderate extinction risk, while embedded evaluators still lack checkpoint access.
 - [[open-weights]] — Open-weight models closing on the frontier; DeepSeek's MIT-licensed V4.1 Flash (552B multimodal MoE) shipped 2026-09-11 and took the day's largest Hacker News thread.

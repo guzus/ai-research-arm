@@ -2,12 +2,14 @@
 slug: mistral
 title: Mistral AI
 type: entity
-aliases: ["Mistral", "Mistral AI"]
+aliases: ["Mistral", "Mistral AI", "Firefox Smart Window"]
 tags: [frontier-lab, europe, open-weights, foundation-models, funding]
-description: European frontier lab; closed a €3B Series D at more than €21B post-money led by Samsung — billed as Europe's largest-ever equity round — paired with on-prem deployment inside Samsung's semiconductor operations.
+description: European frontier lab; partnered with Mozilla on Firefox Smart Window, a privacy-preserving browser assistant with zero data retention, after a €3B Series D.
 created_at: 2026-09-09
-timestamp: 2026-09-09T00:00:00Z
+timestamp: 2026-09-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
+  - {title: "ARA model ticket — Mistral × Mozilla partnership", path: research/models/tickets/mistral-mozilla-partnership-2026-09.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
 ---
 
@@ -49,3 +51,24 @@ page is the company; those pages stay the shipping artifacts.
 - **How much of the €21B+ is cash vs. strategic-investor
   optionality?** ASML / Nvidia / Samsung sitting in the same round
   is a supply-chain syndicate as much as a growth round.
+
+## Firefox Smart Window on Mistral (2026-09-17)
+
+- **Mozilla shipped Firefox Smart Window in beta in
+  France and North America**, with the UK and
+  Germany later this year. Mozilla says
+  conversations are not saved on its servers by
+  default; Mistral agrees to **zero data
+  retention**. Firefox is the last major browser not
+  owned by a frontier lab, but it is still
+  **low-single-digit share**, and **neither party
+  named the models or an on-device split**. The
+  partnership itself was announced first-party on
+  2026-09-16; today's digest supplies the product
+  name and the geography. Commenters treated the
+  assistant as a **provider slot, not a new model**
+  — it became the #2 HN story at **509 points**
+  after Jev exited. See [[eu-ai-regulation]]
+  (Mistral, Mozilla, HN; ARA daily digest
+  2026-09-17 and model ticket
+  mistral-mozilla-partnership-2026-09).

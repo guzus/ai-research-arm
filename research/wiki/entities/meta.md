@@ -4,15 +4,17 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; launched Meta One subscription bundles pairing Facebook, Instagram and WhatsApp premium features with expanded AI-tool access, after shipping Muse with payment authority.
+description: Social-platform hyperscaler and Llama maker; Zuckerberg pledged most compute to serving users rather than RSI, citing the Muse delay as unilateral safety work.
 created_at: 2026-06-16
-timestamp: 2026-09-16T00:00:00Z
+timestamp: 2026-09-17T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
+  - {title: "ARA model ticket — Amodei We Must Pace the Frontier", path: research/models/tickets/anthropic-pace-the-frontier-2026-09.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
@@ -293,3 +295,35 @@ price on the AI tier — the distribution-as-moat
 thesis on this page now has a paid bundle, not
 only a free assistant surface (The Verge,
 TechCrunch; ARA daily digest 2026-09-16).
+
+## Zuckerberg commits compute against RSI (2026-09-17)
+
+- **Zuckerberg pledged "the significant majority" of
+  Meta's compute to serving users rather than
+  recursive self-improvement.** He argued users will
+  not adopt misaligned agents, liability already
+  disciplines labs, and independent evaluators are a
+  practice others can copy. The position is agreement
+  on *outcome* with rejection of *coordination* — the
+  unilateral answer to [[anthropic]]'s "pace the
+  frontier" essay. See [[federal-ai-policy]]
+  (Zuckerberg, Alexandr Wang; ARA daily digest
+  2026-09-17).
+- **Wang cited the first held release, and it is
+  retrospective.** Meta delayed shipping Muse for
+  months "without calling for everyone else to do
+  this before we would." That is a past-tense
+  safety hold used as an argument about the future,
+  not a forward-looking delay. It corroborates from
+  the company side The Information's earlier Hatch
+  unauthorized-action reporting. The pacing
+  ticket's falsifier — a lab announcing a model it
+  is holding *now* — still stands. See [[muse-code]]
+  (Alexandr Wang; ARA daily digest 2026-09-17 and
+  model ticket anthropic-pace-the-frontier-2026-09).
+- **[[muse-code|Muse Code]] shipped a PowerShell-fluent,
+  sandboxed-by-default native Windows build, no
+  WSL.** Muse invite codes also went out: **1B
+  tokens each** for inviter and invitee, **US only**
+  (@AIatMeta, @alexandr_wang; ARA daily digest
+  2026-09-17).
