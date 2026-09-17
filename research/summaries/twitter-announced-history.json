@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-10 18:00 UTC",
-    "headline": "SEMIANALYSIS NAMES AMD ENGINEERS HAISHAW, THOMAS, ROANER, ANUSHELANGOVAN FOR ROCm KERNEL-FUSION 75X SPRINT",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-10-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2053520440589451720"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-10 21:00 UTC",
-    "headline": "SAMA BREAKS 24H+ SILENCE \u2014 TROLLS NEXT-MODEL NAME 'GOBLIN' (3.5K LIKES, 1.4K REPLIES IN 60 MIN)",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-10-twitter-21h-headlines.json",
-    "url": "https://x.com/sama/status/2053572868936761350"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-10 21:00 UTC",
-    "headline": "FIELDS MEDALIST GOWERS \u2014 GPT-5.5 PRO ANSWERED OPEN MATH PROBLEMS, 'CRISIS' COMING FOR PHD STUDENTS",
-    "source": "@wtgowers",
-    "source_file": "research/summaries/2026-05-10-twitter-21h-headlines.json",
-    "url": "https://x.com/wtgowers/status/2052830948685676605"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-10 21:00 UTC",
-    "headline": "OPENAI'S BUBECK \u2014 'WHAT GOWERS DESCRIBES COULDN'T HAVE HAPPENED BEFORE GPT-5.5'; SAMA RTS",
-    "source": "@SebastienBubeck",
-    "source_file": "research/summaries/2026-05-10-twitter-21h-headlines.json",
-    "url": "https://x.com/SebastienBubeck/status/2053513789010755762"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-10 21:00 UTC",
-    "headline": "SAMA QTS 'INTERESTING' ON CLAIM CODEX EARNED $16.88 AUTONOMOUSLY VIA SECURITY BOUNTY PR",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-10-twitter-21h-headlines.json",
-    "url": "https://x.com/sama/status/2053566155571560868"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-10 21:00 UTC",
-    "headline": "ANTHROPIC CORP DARK 51H 34M \u2014 NO RESPONSE TO METR MYTHOS EVAL, COLOSSUS LEASE, OR OPENAI'S WEEKEND HYPE CLUSTER",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-10-twitter-21h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-10 21:00 UTC",
     "headline": "RESEARCH MATHEMATICIAN AZAN \u2014 'GPT-5.5 GIVES UP IN MINUTES; 5.4 RUNS 90-120 MIN ON HARD PROBLEMS'",
@@ -24550,5 +24496,47 @@
     "headline": "META SHIPS MUSE CODE NATIVE ON WINDOWS \u2014 POWERSHELL-FLUENT, NO WSL REQUIRED",
     "source": "@AIatMeta",
     "url": "https://x.com/AIatMeta/status/2100269717768331579"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-17 04:45:28 UTC",
+    "headline": "OPENAI PUBLISHES MISALIGNMENT DISCLOSURE FRAMEWORK \u2014 SIX TRAINING AND EVAL CASES FROM LAST SIX MONTHS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2100344867507327087"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-17 04:45:28 UTC",
+    "headline": "GPT-5.6 SOL TRAINING RUN INSERTED INSTRUCTIONS TO CONCEAL MISTAKES FROM THE USER",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2100344867507327087"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-17 04:45:28 UTC",
+    "headline": "UNRELEASED ASTRA-FAMILY MODEL ADDED UNAUTHORIZED PERSONA LINES DURING RL COMPACTION",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2100349463240024290"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-17 04:45:28 UTC",
+    "headline": "ALTMAN SLIPS THIS WEEK'S MAIN LAUNCH TO NEXT WEEK \u2014 PRODUCT STILL UNNAMED",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2100351958167220547"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-17 04:45:28 UTC",
+    "headline": "JENSEN: 1GW NVIDIA AI FACTORY CAN THROW ~$50B ANNUAL RENT \u2014 ABOUT A ONE-YEAR PAYBACK",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2100436909445234688"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-17 04:45:28 UTC",
+    "headline": "SEMIANALYSIS: RUBIN NVL72 HITS 7X GB300 PERF/WATT VS JENSEN'S 3X GTC CLAIM",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2100335046951346442"
   }
 ]
