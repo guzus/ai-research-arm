@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-17 16:52:50 UTC
+
+CYCLE: Z.ai documents GLM-5.3 building Flash's serving stack; The Information prints Hodge.
+
+TOP STORIES:
+• Z.ai: GLM-5.3 Infra Agent, 100k+ Chinese accelerators, 3× throughput in <2 weeks [✓]
+• The Information: OpenAI close to Hodge Conjecture; Doug named on Navier–Stokes [⚠]
+• Palantir blocks Fable until Anthropic offers irrevocable zero-data-retention [⚠]
+
+WATCH: Third-party serving numbers on Z.ai's 3×, or any Clay/OpenAI artifact that names Hodge.
+
+Full update on GitHub.
