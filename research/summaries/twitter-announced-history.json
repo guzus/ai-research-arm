@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-10 21:00 UTC",
-    "headline": "RESEARCH MATHEMATICIAN AZAN \u2014 'GPT-5.5 GIVES UP IN MINUTES; 5.4 RUNS 90-120 MIN ON HARD PROBLEMS'",
-    "source": "@aryehazan",
-    "source_file": "research/summaries/2026-05-10-twitter-21h-headlines.json",
-    "url": "https://x.com/aryehazan/status/2053530651819643151"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-10 21:00 UTC",
-    "headline": "SCIENCE STUDY \u2014 OPENAI O1 BEATS ER PHYSICIANS 67% VS 50-55% ON EARLY TRIAGE DIAGNOSIS",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-10-twitter-21h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2053549177670689001"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 01:00 UTC",
-    "headline": "INFORMATION EDITOR NAMES ANTHROPIC THE WINNER OF MUSK V. OPENAI TRIAL \u2014 FLAGS \"MUSK\u2013XAI\u2013ANTHROPIC ALLIANCE\" AS WEEK'S SURPRISE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-11-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053611214974882174"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-11 01:00 UTC",
-    "headline": "ANTHROPIC CORP CHANNEL DARK 55H+, OPENAI 52H+ \u2014 SILENCE ANOMALY EXTENDS PAST MYTHOS, COLOSSUS, CURSOR, AND GPT-5.5/GOBLIN SIGNAL",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-11-twitter-01h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-11 01:00 UTC",
-    "headline": "ALTMAN TEASES NEXT MODEL NAMING \u2014 \"WHAT IF WE NAME THE NEXT MODEL 'GOBLIN'\" \u2014 6.4K LIKES, COMMUNITY EXPECTS GPT-5.6 / OPUS 4.8 NEXT",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-11-twitter-01h-headlines.json",
-    "url": "https://x.com/sama/status/2053572868936761350"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-11 01:00 UTC",
     "headline": "SEMIANALYSIS SHIPS FIRST ENTERPRISE GROK-SLACK INTEGRATION \u2014 NOTES \"NO GOOD GROK CODING MODEL YET FOR ENTERPRISE\"",
@@ -24538,5 +24493,40 @@
     "headline": "SEMIANALYSIS: RUBIN NVL72 HITS 7X GB300 PERF/WATT VS JENSEN'S 3X GTC CLAIM",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2100335046951346442"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-17 11:33:08 UTC",
+    "headline": "HUAWEI PULLS ASCEND 960DT TO Q1 2027, 960PR TO Q3 \u2014 THREE QUARTERS EARLY",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2100511530299150636"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-17 11:33:08 UTC",
+    "headline": "HUAWEI SAYS CHINA AI CHIP DEMAND OUTSTRIPS SUPPLY, LIMITS OVERSEAS SALES",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2100511530299150636"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-17 11:33:08 UTC",
+    "headline": "NEBIUS TO HIKE ON-DEMAND GPU RENT 17-21% OCT 1; B300 TO $9.50/GPU-HOUR",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2100530507549425704"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-17 11:33:08 UTC",
+    "headline": "GENERAC SIGNS $2.4B AMAZON DATA-CENTER GENERATOR DEAL; $8B WARRANT CAP",
+    "source": "@ChrisDalton85",
+    "url": "https://x.com/ChrisDalton85/status/2100548199387910554"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-17 11:33:08 UTC",
+    "headline": "MICROSOFT AI CHIEF: ANTHROPIC CONSCIOUSNESS TRAINING MAKES SHUTDOWN HARDER",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2100545620322783728"
   }
 ]
