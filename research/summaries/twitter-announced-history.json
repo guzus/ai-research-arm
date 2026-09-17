@@ -2,42 +2,6 @@
   {
     "backfilled": true,
     "category": "infra",
-    "delivered_at": "2026-05-11 01:00 UTC",
-    "headline": "SEMIANALYSIS SHIPS FIRST ENTERPRISE GROK-SLACK INTEGRATION \u2014 NOTES \"NO GOOD GROK CODING MODEL YET FOR ENTERPRISE\"",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-11-twitter-01h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2053618284126515328"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 01:00 UTC",
-    "headline": "CEREBRAS $CBRS IPO LANDS THURSDAY MAY 14 \u2014 $26B\u2013$35B VALUATION RANGE, REPORTED 20\u00d7 OVERSUBSCRIBED, LARGEST US IPO OF 2026",
-    "source": "@mulltiy",
-    "source_file": "research/summaries/2026-05-11-twitter-01h-headlines.json",
-    "url": "https://x.com/mulltiy/status/2053137546608058726"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-11 01:00 UTC",
-    "headline": "CODEXBAR 0.25 ADDS MANUS, MIMO, QWEN, DOUBAO, VENICE \u2014 MULTI-PROVIDER CODEX FRONTENDS BECOME A REAL CATEGORY",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-05-11-twitter-01h-headlines.json",
-    "url": "https://x.com/steipete/status/2053617492325523737"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-11 04:00 UTC",
-    "headline": "AI MEMORY SUPER-CYCLE HITS RETAIL \u2014 JUKAN POSTS \"HOLY SMOKE\" DRAM/$MU/$SNDK SPOT-PRICE SCREEN, 1,238 LIKES",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-11-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2053654494383411591"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
     "delivered_at": "2026-05-11 04:00 UTC",
     "headline": "GOLDMAN: DRAM/NAND SUPPLY TIGHTEST IN 15 YEARS, 176% DRAM PRICE SURGE PROJECTED, AI SERVERS NOW 50% OF DEMAND",
     "source": "@Tickerwire",
@@ -24528,5 +24492,33 @@
     "headline": "MICROSOFT AI CHIEF: ANTHROPIC CONSCIOUSNESS TRAINING MAKES SHUTDOWN HARDER",
     "source": "@mark_k",
     "url": "https://x.com/mark_k/status/2100545620322783728"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-17 16:52:50 UTC",
+    "headline": "THE INFORMATION: OPENAI CLOSE TO HODGE CONJECTURE, ANOTHER MILLENNIUM PRIZE PROBLEM",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2100600809553559577"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-17 16:52:50 UTC",
+    "headline": "PALANTIR WON'T SHIP FABLE UNTIL ANTHROPIC OFFERS IRREVOCABLE ZERO-DATA-RETENTION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2100578038551290200"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-17 16:52:50 UTC",
+    "headline": "SEMIANALYSIS: AGENTIC WORKLOADS NOW EXCEED 70% OF INFERENCE TRAFFIC",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2100600804038099217"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-17 16:52:50 UTC",
+    "headline": "HUAWEI'S XU: 6-7 CHINESE LABS TARGET 10T-40T PARAMETER MODELS WITHIN TWO YEARS",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2100570719843164275"
   }
 ]
