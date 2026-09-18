@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-18 20:50:37 UTC
+
+CYCLE: Anthropic and Accenture each pledge $1B for embedded eval; CNN says an AI intel note nearly triggered a China-ship intercept; Claude Code reads AGENTS.md.
+
+TOP STORIES:
+• Anthropic and Accenture each expect to invest ≥$1B over 5 years in embedded frontier eval [✓]
+• CNN: SOCOM analyst's AI-assisted report nearly triggered intercept of a Chinese ship [⚠]
+• Claude Code 2.1.277 falls back to AGENTS.md when CLAUDE.md is absent [✓]
+• xAI ships Grok Voice Transcribe 2.0 at unchanged $0.10/$0.20 STT pricing [✓]
+
+WATCH: First Faculty/Accenture access memo, or a Pentagon/SOCOM on-record reply to CNN.
+
+Full update on GitHub.

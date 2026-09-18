@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "ANTHROPIC AND ACCENTURE EACH PLEDGE $1B OVER 5 YEARS FOR EMBEDDED FRONTIER EVAL",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2101039819870937247",
+    "category": "policy"
+  },
+  {
+    "headline": "CNN: AI CHATBOT INTEL REPORT NEARLY TRIGGERED US INTERCEPT OF A CHINESE SHIP",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2101021606390689920",
+    "category": "breaking"
+  },
+  {
+    "headline": "CLAUDE CODE 2.1.277 READS AGENTS.MD WHEN CLAUDE.MD IS MISSING",
+    "source": "@trq212",
+    "url": "https://x.com/trq212/status/2101009392611278961",
+    "category": "opensource"
+  },
+  {
+    "headline": "XAI SHIPS GROK VOICE TRANSCRIBE 2.0; STT PRICE STAYS $0.10/$0.20 PER HOUR",
+    "source": "@SpaceXAI",
+    "url": "https://x.com/SpaceXAI/status/2101005248311726387",
+    "category": "model"
+  },
+  {
+    "headline": "EPOCH MARKS FIRST FRONTIERMATH OPEN-PROBLEMS MAJOR ADVANCE VIA GPT-6 ASTRA",
+    "source": "@EpochAIResearch",
+    "url": "https://x.com/EpochAIResearch/status/2100986494873989227",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI: CHROME EXTENSIONS NOW RUN IN CHATGPT DESKTOP IN-APP BROWSER",
+    "source": "@JamesZmSun",
+    "url": "https://x.com/JamesZmSun/status/2100995281097769216",
+    "category": "model"
+  }
+]
