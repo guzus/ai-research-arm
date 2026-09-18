@@ -1,0 +1,15 @@
+AI News - 2026-09-18
+
+TOP STORIES:
+• Crusoe $3.9B Series F at $30.9B for data centers and modular “AI factories”
+• Figure Helix 2.5: 9%→56% zero-shot household success across 30 unseen homes
+• Anthropic: Claude authors >80% of merged prod lines; 4× biomolecular kernels
+• WSJ: Hacktron used Claude Opus 5 to open a PoC PR in OpenAI’s monorepo
+• 42 Royal Society fellows warn existential AI risk is “real and urgent”
+
+KEY NUMBERS:
+• Crusoe: $3.9B / $30.9B; Raindrop Series A to $50M total (CRV)
+• Helix 2.5: 56% vs 9%; Qwen3.8-Omni-Flash 1M ctx, WildClawBench-MM 71.0
+• Anthropic: 8× code/engineer/day vs 2024; Fast-mode ~4.1× on 13 structure models
+
+Full report on GitHub.
