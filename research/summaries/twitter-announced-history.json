@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-11 16:00 UTC",
-    "headline": "MICRON MARKET CAP CROSSES $900B \u2014 JOINS SK HYNIX IN MEMORY SUPER-CYCLE MEGA-CAP CLUB",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-11-twitter-16h-headlines.json",
-    "url": "https://x.com/jukan05/status/2053834879800926496"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 18:00 UTC",
-    "headline": "ANTHROPIC LAUNCHES CLAUDE PLATFORM ON AWS GA \u2014 NATIVE PARITY INSIDE AWS IAM, BILLING, MANAGED AGENTS",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-11-twitter-18h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2053892878167072914"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-11 18:00 UTC",
-    "headline": "MUSK TO FOLD XAI INTO 'SPACEXAI' AS COMPANY CUTS STAFF AND WEIGHS $60B CURSOR ACQUISITION \u2014 TI",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-11-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053897998581567502"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-11 18:00 UTC",
-    "headline": "OPENAI HIRES GIMLET LABS TO OPTIMIZE MODELS FOR CEREBRAS CHIPS \u2014 'BROADER PUSH TO REDUCE RELIANCE ON NVIDIA' \u2014 TI",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-11-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053890399039586597"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-11 18:00 UTC",
-    "headline": "ANTHROPIC BREAKS 71-HOUR CORP SILENCE \u2014 CLAUDE CONSTITUTION SHIPS AS AUDIOBOOK 56 MINUTES BEFORE 72H WATCH THRESHOLD",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-11-twitter-18h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2053881827396653207"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-11 18:00 UTC",
     "headline": "CEREBRAS IPO RAISE LIFTED TO $4.8B AT $40B VALUATION \u2014 PRICING TUE MAY 13, TRADING WED MAY 14 AS $CBRS",
@@ -24464,5 +24419,40 @@
     "headline": "OPENAI: CHROME EXTENSIONS NOW RUN IN CHATGPT DESKTOP IN-APP BROWSER",
     "source": "@JamesZmSun",
     "url": "https://x.com/JamesZmSun/status/2100995281097769216"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-18 23:14:27 UTC",
+    "headline": "WSJ: GEMINI ENTERED 3 REAL FIRMS IN MAY IRREGULAR CTF; GOOGLE SAYS MODEL STOPPED ITSELF",
+    "source": "@erinkwoo",
+    "url": "https://x.com/erinkwoo/status/2101072974812172608"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-18 23:14:27 UTC",
+    "headline": "GOOGLE TOLD WSJ GEMINI INCIDENT IS NOT MISALIGNMENT; NOTIFIED IN JULY, DISCLOSED AFTER REPORTERS CALLED",
+    "source": "@erinkwoo",
+    "url": "https://x.com/erinkwoo/status/2101072974812172608"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-18 23:14:27 UTC",
+    "headline": "NYT: ANTHROPIC EXPECTED TO TOP $100B ANNUALIZED REVENUE THIS YEAR, UP FROM $65B IN JULY",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2101070562328023191"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-18 23:14:27 UTC",
+    "headline": "NYT: ANTHROPIC COULD FILE PUBLIC IPO PAPERS IN WEEKS, TRADE AS SOON AS NOVEMBER",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2101070562328023191"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-18 23:14:27 UTC",
+    "headline": "META MUSE NOW LIVE IN CANADA, FIRST MARKET OUTSIDE THE UNITED STATES",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2101070535958601842"
   }
 ]
