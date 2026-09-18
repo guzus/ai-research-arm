@@ -6,13 +6,14 @@ aliases: [CoreWeave, CRWV, "CoreWeave, Inc."]
 tags: [neocloud, gpu-cloud, ai-infrastructure, take-or-pay]
 description: NASDAQ-listed GPU-as-a-service neocloud with a ~$104B contracted backlog and revenue up 112% Y/Y to $2.58B in FY26Q2 (filed 2026-08-11), with revenue concentrated in Microsoft, OpenAI, and Meta — and ~$5.7B of cash burned in the quarter per The Information.
 created_at: 2026-05-24
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 market:
   ticker: CRWV
   exchange: NASDAQ
   symbol: NASDAQ:CRWV
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
@@ -68,5 +69,8 @@ counterweight to the backlog growth (ARA daily digest 2026-08-13).
   of owned power on-balance-sheet was rejected by CORZ shareholders 91.5%–8.5%.
   Can CoreWeave secure power without owning it?
 - **Read-through to peers.** How much of CoreWeave's debt-financed,
-  concentration-heavy structure also describes [[nebius]] and other independent
-  neoclouds?
+  concentration-heavy structure also describes [[nebius]], [[crusoe]]
+  and other independent neoclouds? [[crusoe]]'s 2026-09-18
+  **$3.9B / $30.9B** Series F is the private-market
+  counterpart to this page's public RPO print; Crusoe
+  cites $140B+ contracted value without a filed split.

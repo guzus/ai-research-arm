@@ -6,13 +6,14 @@ aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "N
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.
 created_at: 2026-06-05
-timestamp: 2026-09-15T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA model ticket — Nemotron 3 Ultra IMO", path: research/models/tickets/nvidia-nemotron-3-ultra-imo-2026-09.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
@@ -570,4 +571,21 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   slot this page recorded on 2026-09-13. Treat
   as indicated, not closed (CNBC; ARA daily
   digest 2026-09-15).
+
+## Crusoe round, a 1 GW factory price, and Rubin perf/watt (2026-09-18)
+
+- **NVIDIA participated in [[crusoe]]'s $3.9B
+  Series F at $30.9B**, alongside Founders Fund
+  and QIA. Same supplier-as-investor pattern
+  this page already tracks on other neoclouds.
+  See [[crusoe]] and [[ai-capex]] (Reuters,
+  TechCrunch; ARA daily digest 2026-09-18).
+- **Jensen on CNBC** put a 1 GW Nvidia factory
+  at **$50–60B to build** and about **$50B a
+  year in rent**, and named safety-eval
+  clusters as a third compute pillar. Vendor
+  math; SemiAnalysis separately says Rubin
+  NVL72 tests at **7× GB300 perf/watt** against
+  Jensen's GTC claim of **3×** (Twitter; ARA
+  daily digest 2026-09-18).
 

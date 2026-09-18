@@ -4,10 +4,11 @@ title: Harvey
 type: entity
 aliases: [Harvey, "Harvey AI", "Harvey Tenet"]
 tags: [legal-ai, funding, enterprise-ai, vertical]
-description: Legal-AI company that raised $550 million at $15.5B (2026-09-10), nearly doubling its March mark; Harvey Tenet is its first in-house model, post-trained from open-weight Kimi K3.
+description: Legal-AI company that raised $550 million at $15.5B (2026-09-10); OpenAI's Astra for Law now sits on the same vertical with a 54% Vals score that is not a Harvey bake-off.
 created_at: 2026-09-10
-timestamp: 2026-09-10T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
 ---
 
@@ -49,3 +50,19 @@ training in-house on an open-weight Chinese flagship.
 - **Does $15.5B price legal AI as a frontier-adjacent
   vertical**, or as a professional-services multiple
   that will not travel to other agent startups?
+
+## Astra for Law arrives as a lab SKU, not a Harvey bake-off (2026-09-18)
+
+[[openai]] shipped **[[astra|Astra for Law]]**, a
+GPT-6 Astra configuration with a
+**230-million-URL** U.S. legal index that scored
+**54.0%** on Vals' private Legal Research Bench
+versus **38.7%** for web-search Astra. The digest
+is explicit that the lift is against OpenAI's own
+web-search baseline, **not Harvey or Claude for
+Legal**. 54% remains a failing grade on a
+vendor-chosen private set. Harvey's $15.5B mark
+and Tenet model are unchanged; the new fact is
+that a frontier lab now sells a named legal SKU
+into the same buyer set (OpenAI, HN; ARA daily
+digest 2026-09-18).

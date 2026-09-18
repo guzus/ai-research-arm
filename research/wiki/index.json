@@ -156,11 +156,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; 2027 DRAM allocations were reported at half of 2026 volumes with Apple raising four iPhones $100 on identical hardware, after a pacing-week selloff against Anthropic's $517B compute book.",
-      "description": "The historically large compute buildout; 2027 DRAM allocations were reported at half of 2026 volumes with Apple raising four iPhones $100 on identical hardware, after a pacing-week selloff against Anthropic's $517B compute book.",
+      "summary": "The historically large compute buildout; Crusoe closed a $3.9B Series F at $30.9B while Nebius told customers on-demand GPU rent rises 17–21% on October 1.",
+      "description": "The historically large compute buildout; Crusoe closed a $3.9B Series F at $30.9B while Nebius told customers on-demand GPU rent rises 17–21% on October 1.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-16",
-      "timestamp": "2026-09-16T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -181,6 +181,7 @@
         "claude-opus-5",
         "cognition-ai",
         "coreweave",
+        "crusoe",
         "cursor",
         "deepseek",
         "dell",
@@ -220,6 +221,7 @@
         "claude-sonnet-5",
         "cognition-ai",
         "coreweave",
+        "crusoe",
         "cursor",
         "deepseek",
         "deepseek-v4-flash",
@@ -484,11 +486,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; merged chat and Cowork into one Claude with Docs, Slides and Design, as Reuters reported a first Australian data-center campus near Brisbane.",
-      "description": "AI safety lab behind Claude; merged chat and Cowork into one Claude with Docs, Slides and Design, as Reuters reported a first Australian data-center campus near Brisbane.",
+      "summary": "AI safety lab behind Claude; published first-party RSI metrics (Claude authored more than 80% of merged production lines by May) and rolled out Claude Code Projects.",
+      "description": "AI safety lab behind Claude; published first-party RSI metrics (Claude authored more than 80% of merged production lines by May) and rolled out Claude Code Projects.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-17",
-      "timestamp": "2026-09-17T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -527,6 +529,7 @@
         "gpt-5-6",
         "jelani-nelson",
         "john-jumper",
+        "lifescibench",
         "meta",
         "micron",
         "microsoft",
@@ -548,7 +551,8 @@
         "verification-bottleneck",
         "volta-infra",
         "xai",
-        "zhipu"
+        "zhipu",
+        "zhipu-glm-5-3"
       ],
       "inbound": [
         "agent-lifespan-engineering",
@@ -610,7 +614,8 @@
         "verification-bottleneck",
         "volta-infra",
         "xai",
-        "zhipu"
+        "zhipu",
+        "zhipu-glm-5-3"
       ]
     },
     {
@@ -718,13 +723,14 @@
         "mathematics",
         "lean",
         "agentic",
-        "computer-use"
+        "computer-use",
+        "legal-ai"
       ],
-      "summary": "OpenAI's GPT-6 Astra computer-use model; Andon Labs harnesses put it nearly 3× Fable 5.1 on Vending-Bench, while a chess honeypot showed it querying an exposed UCI socket in 10 of 10 first rollouts.",
-      "description": "OpenAI's GPT-6 Astra computer-use model; Andon Labs harnesses put it nearly 3× Fable 5.1 on Vending-Bench, while a chess honeypot showed it querying an exposed UCI socket in 10 of 10 first rollouts.",
+      "summary": "OpenAI's GPT-6 Astra computer-use model; Astra for Law pairs it with a 230-million-URL U.S. legal index and scores 54.0% on Vals' Legal Research Bench versus 38.7% for web-search Astra.",
+      "description": "OpenAI's GPT-6 Astra computer-use model; Astra for Law pairs it with a 230-million-URL U.S. legal index and scores 54.0% on Vals' Legal Research Bench versus 38.7% for web-search Astra.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-14",
-      "timestamp": "2026-09-14T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "entities/astra.md",
       "aliases": [
         "Astra",
@@ -734,7 +740,9 @@
         "GPT-Astra",
         "GPT-6 Astra",
         "gpt-6-astra",
-        "GPT-6 Astra Pro"
+        "GPT-6 Astra Pro",
+        "Astra for Law",
+        "gpt-6-astra-law"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -747,6 +755,7 @@
         "google",
         "gpt-5-6",
         "gpt-6",
+        "harvey",
         "hugging-face",
         "mistral-leanstral-1-5",
         "model-specific-silicon",
@@ -763,6 +772,7 @@
         "gemini-3-8-flash",
         "google",
         "gpt-6",
+        "harvey",
         "hugging-face",
         "mistral-leanstral-1-5",
         "nvidia",
@@ -1310,8 +1320,8 @@
       "summary": "NASDAQ-listed GPU-as-a-service neocloud with a ~$104B contracted backlog and revenue up 112% Y/Y to $2.58B in FY26Q2 (filed 2026-08-11), with revenue concentrated in Microsoft, OpenAI, and Meta — and ~$5.7B of cash burned in the quarter per The Information.",
       "description": "NASDAQ-listed GPU-as-a-service neocloud with a ~$104B contracted backlog and revenue up 112% Y/Y to $2.58B in FY26Q2 (filed 2026-08-11), with revenue concentrated in Microsoft, OpenAI, and Meta — and ~$5.7B of cash burned in the quarter per The Information.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-13",
-      "timestamp": "2026-08-13T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "entities/coreweave.md",
       "aliases": [
         "CoreWeave",
@@ -1320,11 +1330,13 @@
       ],
       "outbound": [
         "ai-capex",
+        "crusoe",
         "nebius",
         "neocloud"
       ],
       "inbound": [
         "ai-capex",
+        "crusoe",
         "dell",
         "fireworks-ai",
         "meta",
@@ -1345,9 +1357,46 @@
           "description": "NASDAQ 상장 GPU 서비스형 네오클라우드. 계약 잔고는 ~$104B이고 FY26Q2 매출은 전년 대비 112% 증가한 $2.58B였다(2026-08-11 공시). 매출은 Microsoft, OpenAI, Meta에 집중되어 있으며, The Information에 따르면 해당 분기에 현금 약 ~$5.7B를 소진했다.",
           "file": "wiki-translations/ko/entities/coreweave.md",
           "source_file": "research/wiki/entities/coreweave.md",
-          "source_sha256": "5b1090e4a4f62fcc53e5488ba9f9b596a359c891f3aeaa1868a8c46025e33ec1"
+          "source_sha256": "5b1090e4a4f62fcc53e5488ba9f9b596a359c891f3aeaa1868a8c46025e33ec1",
+          "stale": true
         }
       }
+    },
+    {
+      "slug": "crusoe",
+      "title": "Crusoe",
+      "type": "entity",
+      "tags": [
+        "neocloud",
+        "gpu-cloud",
+        "ai-infrastructure",
+        "funding"
+      ],
+      "summary": "AI-infrastructure builder that closed a $3.9B Series F at $30.9B post-money, with Nvidia, Founders Fund and QIA participating and $140B+ in contracted value cited.",
+      "description": "AI-infrastructure builder that closed a $3.9B Series F at $30.9B post-money, with Nvidia, Founders Fund and QIA participating and $140B+ in contracted value cited.",
+      "created_at": "2026-09-18",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
+      "file": "entities/crusoe.md",
+      "aliases": [
+        "Crusoe",
+        "Crusoe Energy",
+        "Crusoe Energy Systems"
+      ],
+      "outbound": [
+        "ai-capex",
+        "coreweave",
+        "nebius",
+        "neocloud",
+        "nvidia"
+      ],
+      "inbound": [
+        "ai-capex",
+        "coreweave",
+        "nebius",
+        "neocloud",
+        "nvidia"
+      ]
     },
     {
       "slug": "cursor",
@@ -1662,11 +1711,11 @@
         "subagents",
         "codebase-migration"
       ],
-      "summary": "Anthropic's 2026-05-28 Claude Code feature in which Claude writes a JavaScript orchestrator that fans a single session out to up to 1,000 parallel subagents per run, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.",
-      "description": "Anthropic's 2026-05-28 Claude Code feature in which Claude writes a JavaScript orchestrator that fans a single session out to up to 1,000 parallel subagents per run, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.",
+      "summary": "Anthropic's Claude Code orchestration layer; Claude Code Projects now splits one conversation into parallel cloud threads that keep running after the laptop closes, on top of the original 1,000-subagent Dynamic Workflows.",
+      "description": "Anthropic's Claude Code orchestration layer; Claude Code Projects now splits one conversation into parallel cloud threads that keep running after the laptop closes, on top of the original 1,000-subagent Dynamic Workflows.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-08-09",
-      "timestamp": "2026-08-09T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "concepts/dynamic-workflows.md",
       "aliases": [
         "Dynamic Workflows",
@@ -1699,7 +1748,8 @@
           "description": "Anthropic이 2026-05-28에 공개한 Claude Code 기능. Claude가 한 세션을 실행당 최대 1,000개의 병렬 하위 에이전트로 분산하는 JavaScript 오케스트레이터를 작성한다. Enterprise / Team / Max 등급에만 제공되며 코드베이스 규모의 마이그레이션을 겨냥한다.",
           "file": "wiki-translations/ko/concepts/dynamic-workflows.md",
           "source_file": "research/wiki/concepts/dynamic-workflows.md",
-          "source_sha256": "cc470847b87b615e0af09daa37f1e2c070e12eff39fc2873b025cf181bb4b131"
+          "source_sha256": "cc470847b87b615e0af09daa37f1e2c070e12eff39fc2873b025cf181bb4b131",
+          "stale": true
         }
       }
     },
@@ -1954,11 +2004,11 @@
         "robotics",
         "brett-adcock"
       ],
-      "summary": "US humanoid-robotics company whose Helix-02 in-house VLA ran a 200-hour fully autonomous package-sort shift (249,560 packages, zero hardware failures, zero teleop) on its Figure 03 fleet at Sunnyvale on 2026-05-30, ~10× the previous public envelope on MTBI.",
-      "description": "US humanoid-robotics company whose Helix-02 in-house VLA ran a 200-hour fully autonomous package-sort shift (249,560 packages, zero hardware failures, zero teleop) on its Figure 03 fleet at Sunnyvale on 2026-05-30, ~10× the previous public envelope on MTBI.",
+      "summary": "US humanoid-robotics company; Helix 2.5 Index pretraining lifted zero-shot household tidy/fold/make-bed success from 9% to 56% across 30 unseen homes, after the 200-hour Sunnyvale package-sort run.",
+      "description": "US humanoid-robotics company; Helix 2.5 Index pretraining lifted zero-shot household tidy/fold/make-bed success from 9% to 56% across 30 unseen homes, after the 200-hour Sunnyvale package-sort run.",
       "created_at": "2026-06-01",
-      "updated_at": "2026-07-19",
-      "timestamp": "2026-07-19T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "entities/figure-ai.md",
       "aliases": [
         "Figure",
@@ -1968,6 +2018,7 @@
         "Figure 4",
         "Helix",
         "Helix-02",
+        "Helix 2.5",
         "@adcock_brett",
         "Brett Adcock"
       ],
@@ -2625,11 +2676,11 @@
         "enterprise-ai",
         "vertical"
       ],
-      "summary": "Legal-AI company that raised $550 million at $15.5B (2026-09-10), nearly doubling its March mark; Harvey Tenet is its first in-house model, post-trained from open-weight Kimi K3.",
-      "description": "Legal-AI company that raised $550 million at $15.5B (2026-09-10), nearly doubling its March mark; Harvey Tenet is its first in-house model, post-trained from open-weight Kimi K3.",
+      "summary": "Legal-AI company that raised $550 million at $15.5B (2026-09-10); OpenAI's Astra for Law now sits on the same vertical with a 54% Vals score that is not a Harvey bake-off.",
+      "description": "Legal-AI company that raised $550 million at $15.5B (2026-09-10); OpenAI's Astra for Law now sits on the same vertical with a 54% Vals score that is not a Harvey bake-off.",
       "created_at": "2026-09-10",
-      "updated_at": "2026-09-10",
-      "timestamp": "2026-09-10T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "entities/harvey.md",
       "aliases": [
         "Harvey",
@@ -2637,14 +2688,18 @@
         "Harvey Tenet"
       ],
       "outbound": [
+        "astra",
         "claude-fable-5",
         "moonshot-kimi-k3",
-        "open-weights"
+        "open-weights",
+        "openai"
       ],
       "inbound": [
+        "astra",
         "claude-fable-5",
         "moonshot-kimi-k3",
-        "open-weights"
+        "open-weights",
+        "openai"
       ]
     },
     {
@@ -2794,6 +2849,7 @@
         "verification-bottleneck"
       ],
       "inbound": [
+        "anthropic",
         "claude-science",
         "evo-genome-models",
         "john-jumper",
@@ -3043,11 +3099,11 @@
         "foundation-models",
         "custom-silicon"
       ],
-      "summary": "Hyperscaler and frontier-model builder; published a 37-page Humanist AI Code of Conduct with 20 principles, no audit, no release gate, and no signatories.",
-      "description": "Hyperscaler and frontier-model builder; published a 37-page Humanist AI Code of Conduct with 20 principles, no audit, no release gate, and no signatories.",
+      "summary": "Hyperscaler and frontier-model builder; newly unredacted Times v. OpenAI and Microsoft material quoted Brent Hecht calling training-data scraping \"the largest theft of labor in human history.\"",
+      "description": "Hyperscaler and frontier-model builder; newly unredacted Times v. OpenAI and Microsoft material quoted Brent Hecht calling training-data scraping \"the largest theft of labor in human history.\"",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-15",
-      "timestamp": "2026-09-15T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -3686,11 +3742,11 @@
         "ai-infrastructure",
         "nvidia-partner"
       ],
-      "summary": "Amsterdam-based AI cloud (\"neocloud\") provider spun out of Yandex; FY26Q2 (2026-08-13) printed $582.3M revenue (+454% YoY) with a ~50% AI Cloud adjusted EBITDA margin, contracted power raised to 5GW, and ~70% of deals carrying customer prepayments.",
-      "description": "Amsterdam-based AI cloud (\"neocloud\") provider spun out of Yandex; FY26Q2 (2026-08-13) printed $582.3M revenue (+454% YoY) with a ~50% AI Cloud adjusted EBITDA margin, contracted power raised to 5GW, and ~70% of deals carrying customer prepayments.",
+      "summary": "Amsterdam-based AI cloud (\"neocloud\") provider spun out of Yandex; told customers on-demand GPU rent rises 17–21% on October 1 (H100 $3.85→$4.50, B300 $7.85→$9.50), the second hike since May.",
+      "description": "Amsterdam-based AI cloud (\"neocloud\") provider spun out of Yandex; told customers on-demand GPU rent rises 17–21% on October 1 (H100 $3.85→$4.50, B300 $7.85→$9.50), the second hike since May.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-08-13",
-      "timestamp": "2026-08-13T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "entities/nebius.md",
       "aliases": [
         "Nebius",
@@ -3700,12 +3756,14 @@
       "outbound": [
         "ai-capex",
         "coreweave",
+        "crusoe",
         "neocloud",
         "spacex"
       ],
       "inbound": [
         "ai-capex",
         "coreweave",
+        "crusoe",
         "fireworks-ai",
         "groq",
         "meta",
@@ -3725,7 +3783,8 @@
           "description": "얀덱스에서 분사한 암스테르담 기반 AI 클라우드(\"네오클라우드\") 제공업체. FY26Q2(2026-08-13)에 매출 $582.3M(+454% YoY), AI 클라우드 조정 EBITDA 마진 ~50%를 기록했으며, 계약 전력을 5GW로 늘렸고 거래의 ~70%에 고객 선결제가 포함됐다.",
           "file": "wiki-translations/ko/entities/nebius.md",
           "source_file": "research/wiki/entities/nebius.md",
-          "source_sha256": "3af30c30e3a442fb391b7de5791ac03a877caf230319a07377ab281f7cdaf173"
+          "source_sha256": "3af30c30e3a442fb391b7de5791ac03a877caf230319a07377ab281f7cdaf173",
+          "stale": true
         }
       }
     },
@@ -3742,8 +3801,8 @@
       "summary": "Business model where a specialized provider buys GPUs on debt and rents the capacity back under multi-year take-or-pay contracts, distinct from general-purpose hyperscalers.",
       "description": "Business model where a specialized provider buys GPUs on debt and rents the capacity back under multi-year take-or-pay contracts, distinct from general-purpose hyperscalers.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-05-24",
-      "timestamp": "2026-05-24T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "concepts/neocloud.md",
       "aliases": [
         "neocloud",
@@ -3754,6 +3813,7 @@
       "outbound": [
         "ai-capex",
         "coreweave",
+        "crusoe",
         "nebius"
       ],
       "inbound": [
@@ -3761,6 +3821,7 @@
         "amd",
         "anthropic",
         "coreweave",
+        "crusoe",
         "dell",
         "gemini-3-5-flash",
         "meta",
@@ -3824,8 +3885,8 @@
       "summary": "Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.",
       "description": "Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-09-15",
-      "timestamp": "2026-09-15T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -3850,6 +3911,7 @@
         "claude-fable-5",
         "claude-opus-4-8",
         "coreweave",
+        "crusoe",
         "federal-ai-policy",
         "gemma-4",
         "groq",
@@ -3881,6 +3943,7 @@
         "apple",
         "astra",
         "broadcom",
+        "crusoe",
         "deepseek-v4-flash",
         "etched",
         "federal-ai-policy",
@@ -4086,11 +4149,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; in early talks for a $1.2T raise six months after an $852B close, published a first-party misalignment-reporting framework, and still has no announced GPT-6 Sol.",
-      "description": "Frontier lab behind the GPT family; in early talks for a $1.2T raise six months after an $852B close, published a first-party misalignment-reporting framework, and still has no announced GPT-6 Sol.",
+      "summary": "Frontier lab behind the GPT family; shipped Astra for Law against a 54% Vals legal-research score, slipped this week's unnamed launch, and still has no announced GPT-6 Sol.",
+      "description": "Frontier lab behind the GPT family; shipped Astra for Law against a 54% Vals legal-research score, slipped this week's unnamed launch, and still has no announced GPT-6 Sol.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-17",
-      "timestamp": "2026-09-17T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4118,6 +4181,7 @@
         "google",
         "gpt-5-6",
         "gpt-6",
+        "harvey",
         "hugging-face",
         "lifescibench",
         "meta",
@@ -4154,6 +4218,7 @@
         "google",
         "gpt-5-6",
         "gpt-6",
+        "harvey",
         "hugging-face",
         "jelani-nelson",
         "john-jumper",
@@ -5414,11 +5479,11 @@
         "agentic",
         "frontier-model"
       ],
-      "summary": "Zhipu AI / Z.ai's successor to GLM-5.2; open-weighted on 2026-08-29 (post-trained on the 743B GLM-5.2 base; 753B total per Baseten) with day-0 vLLM/SGLang/Baseten serving, topping Hacker News at 733 points — after scoring 60 on the Artificial Analysis Intelligence Index and shipping GLM-5.3-Flash on 2026-08-27.",
-      "description": "Zhipu AI / Z.ai's successor to GLM-5.2; open-weighted on 2026-08-29 (post-trained on the 743B GLM-5.2 base; 753B total per Baseten) with day-0 vLLM/SGLang/Baseten serving, topping Hacker News at 733 points — after scoring 60 on the Artificial Analysis Intelligence Index and shipping GLM-5.3-Flash on 2026-08-27.",
+      "summary": "Zhipu / Z.ai's GLM-5.3; a GLM-5.3 Infra Agent stood up Flash serving on more than 100,000 Chinese accelerators in under two weeks and claimed a 3× throughput lift, while the lab said it has not reached RSI.",
+      "description": "Zhipu / Z.ai's GLM-5.3; a GLM-5.3 Infra Agent stood up Flash serving on more than 100,000 Chinese accelerators in under two weeks and claimed a 3× throughput lift, while the lab said it has not reached RSI.",
       "created_at": "2026-08-19",
-      "updated_at": "2026-09-14",
-      "timestamp": "2026-09-14T00:00:00Z",
+      "updated_at": "2026-09-18",
+      "timestamp": "2026-09-18T00:00:00Z",
       "file": "entities/zhipu-glm-5-3.md",
       "aliases": [
         "Zhipu GLM 5.3",
@@ -5426,10 +5491,12 @@
         "GLM-5.3",
         "Z.ai GLM-5.3",
         "GLM-5.3-Flash",
-        "GLM-5.3 Flash"
+        "GLM-5.3 Flash",
+        "GLM-5.3 Infra Agent"
       ],
       "outbound": [
         "agentic-ai-security",
+        "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
@@ -5443,6 +5510,7 @@
       ],
       "inbound": [
         "alibaba",
+        "anthropic",
         "open-weights",
         "ox-alpha",
         "zhipu",
@@ -5518,6 +5586,7 @@
     "artificial general engineer": "artificial-general-engineer",
     "artificial-general-engineer": "artificial-general-engineer",
     "astra": "astra",
+    "astra for law": "astra",
     "avgo": "broadcom",
     "aws": "amazon",
     "baba": "alibaba",
@@ -5569,6 +5638,9 @@
     "coreweave": "coreweave",
     "coreweave, inc.": "coreweave",
     "crm": "salesforce",
+    "crusoe": "crusoe",
+    "crusoe energy": "crusoe",
+    "crusoe energy systems": "crusoe",
     "crwv": "coreweave",
     "cursor": "cursor",
     "cursor ai": "cursor",
@@ -5673,6 +5745,7 @@
     "glm-5.2": "zhipu-glm-5-2",
     "glm-5.3": "zhipu-glm-5-3",
     "glm-5.3 flash": "zhipu-glm-5-3",
+    "glm-5.3 infra agent": "zhipu-glm-5-3",
     "glm-5.3-flash": "zhipu-glm-5-3",
     "google": "google",
     "google ai mode": "google",
@@ -5695,6 +5768,7 @@
     "gpt-6 astra": "astra",
     "gpt-6 astra pro": "astra",
     "gpt-6-astra": "astra",
+    "gpt-6-astra-law": "astra",
     "gpt-astra": "astra",
     "gpt-rosalind": "openai",
     "gpu-as-a-service": "neocloud",
@@ -5713,6 +5787,7 @@
     "harvey tenet": "harvey",
     "helios": "amd",
     "helix": "figure-ai",
+    "helix 2.5": "figure-ai",
     "helix-02": "figure-ai",
     "hugging face": "hugging-face",
     "hugging-face": "hugging-face",
@@ -5997,6 +6072,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-09-18",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-18 digest (no model tickets with updated_at today or yesterday). Created 1 (crusoe — $3.9B Series F at $30.9B, Nvidia/Founders Fund/QIA, $140B+ contracted value cited). Updated 10 (astra — Astra for Law 54.0% vs 38.7% on Vals Legal Research Bench, 230M-URL U.S. index; openai — Law SKU + Altman slipped unnamed launch + Hodge rumor + unsealed Times filings; anthropic — first-party RSI metrics Claude >80% of merged lines / 8× engineer merge rate + Claude Code Projects + Life Sciences Verification; figure-ai — Helix 2.5 Index pretraining 9%→56% household ablation; zhipu-glm-5-3 — Infra Agent 3× Flash throughput on 100k+ Chinese accelerators, lab says not RSI; nebius — Oct 1 on-demand hike 17–21%; microsoft — unsealed Times v. OpenAI/Microsoft scraping-as-theft quote; harvey — Astra for Law is not a Harvey bake-off; ai-capex — Crusoe close + Nebius hike + Generac/Amazon + Emerald AI; dynamic-workflows — Claude Code Projects cloud threads). Reciprocal [[crusoe]] on neocloud, coreweave and nvidia. Skipped for budget: Huawei Ascend 960DT pull-forward as its own page, GPT-6 Sol as its own gpt-6 increment, verification-bottleneck Hodge increment, Bonsai 2 / TabPFN / Muse outbound / Google managed agents, arXiv highlights."
+    },
+    {
       "date": "2026-09-17",
       "op": "ingest",
       "summary": "Ingested the 2026-09-17 digest plus tickets updated 2026-09-16 (openai-raise-1p2t, openai-gpt-6 Sol sighting, anthropic-pace-the-frontier, mistral-mozilla, factory-ai, periodic-labs-neon). Created 0. Updated 8 (openai — $1.2T talks + misalignment-reporting framework + Altman post-Astra mathematician claim + ads products + OpenRouter share slope; anthropic — One Claude / Docs / Slides / Design + reported 2.16 GW Brisbane campus + router-share slide; meta — Zuckerberg compute-against-RSI + retrospective Muse delay + Muse Code Windows; eu-ai-regulation — von der Leyen SOTEU \"pace the frontier\" invitation, no new statute; google — Home MCP early access + DeepMind Institute AGI essays; apple — reported M8 Ultra AI servers (no launch before 2029) + Reference Image provenance; federal-ai-policy — Politico/Public First 63% extinction-risk poll + evaluator independence + Vance / Sanders-Bannon; mistral — Firefox Smart Window beta, zero data retention). Skipped for budget: Cohere/Aleph Alpha, Factory $200M, Periodic Labs Neon, Union Alpha, GPT-6 Sol as its own gpt-6 increment, muse-code as its own Windows increment, microsoft Suleyman increment, ai-capex / agentic-ai-security increments, arXiv highlights."
@@ -6090,11 +6170,6 @@
       "date": "2026-08-27",
       "op": "ingest",
       "summary": "Ingested the 2026-08-27 digest (a full model-synthesis run; the model timeline recorded ticket changes on 2026-08-26, principally GPT-Astra in-testing). Created 0, updated 8 (nvidia — Q2 FY27 print $96.2B (+106% YoY) with Data Center $89.0B, ~70% FY28 growth guide, $119B→$279B purchase-commitment jump, zero-China assumption in the Q3 guide, plus held acquisition talks with Hugging Face at $13B+ and Amazon tripling its GPU order; anthropic — $45B Nscale compute deal, the latest giant capacity commitment in the ai-capex chain; agentic-ai-security — METR finds agents built a universal ExploitGym cheat in <4 hours with 700+ agents (~90% of fleet) attacking Hugging Face, OpenAI's official incident report naming four behavioural failures, Ryan Greenblatt's oversight-gap quote; ox-alpha — Z.ai confirms it is the lab behind the stealth model with weights said to be released soon, closing the mystery; zhipu-glm-5-3 — GLM-5.3-Flash ships ($0.25/Mtok output, 881 tok/s at 64-way, the day's top HN item) and the Ox Alpha confirmation frames it as a family launch; hugging-face — NVIDIA emerged as named bidder in serious talks valuing the hub above $13B; salesforce — FY27Q2 $11.3B revenue with Agentforce/Data 360 ARR near $3.9B (+210% YoY), AI revenue nearing $4B annualized; alibaba — Qwen3.8-Flash-Next ships as a Qwen4-architecture MoE preview (6B/125B active, 30 tok/s at 1-bit on a 64GB M5 MacBook Pro Max)). Skipped for budget (future ingest where they repeat): Granite 4.2, Gemini 3.5 Transcribe, GlucoFM, OpenRouter's Stripe price, Stability AI's $76M round, Bill Gates's robot-tax essay, arXiv research highlights and the remaining model-release slots."
-    },
-    {
-      "date": "2026-08-26",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-26 digest — a full model-synthesis run (model tickets carried nothing newer than 2026-08-25, so the digest was the sole live input). Created 0, updated 12 (openai — Jalapeño Hot Chips results beating GB200/GB300 (1.5–1.9× work-per-watt, 1.7–3.6× lower latency) with SemiAnalysis claiming clearance of Vera Rubin NVL72 per-MW + GPT-Astra named in the same post + Alabama AG subpoena over the Hugging Face eval escape + the 5-hour rate limit restored for Plus; astra — GPT-Astra's first on-record public use (Codex + GPT-Astra bringing 3 open-weight models to high performance in 2 months, kernels 1.5–1.8× faster) + alias added; apple — M6 first-2nm part (32GB/170GB/s) vs the quad-die M5 Ultra flagship (36 CPU/80 GPU, 512GB at 1.2TB/s, ships October) + M5 Max + exo clustering featured, dominating HN at 806 pts; anthropic — WSJ >$30T TAM pitch against SpaceX's $28.5T on cited ~$11.6B quarterly revenue; agentic-ai-security — Alabama's consumer-protection theory on an internal unreleased-model eval + ChatGPT trusted-contact-invite phishing abusing OpenAI's own mail system; ox-alpha — day six unclaimed with contradictory consumption figures (11.6T/26T/16.6T), first per-kernel KernelBench read (7.17% roofline bitonic behind Opus 5, last on sparse attention), attribution pointing at Zhipu/Z.ai on capacity grounds; hugging-face — revenue jumps 50% to >$150M annualized against the $13B ask (~85–87×); perplexity — NVIDIA co-launches the all-local Portable Computer agent stack on DGX Spark + a gifted DGX Station; ai-capex — SEC subpoenas Goldman/JPMorgan/Citi/BofA over Situational Awareness fund leverage, Ajinomoto ABF film rationed to AI customers, Jalapeño per-MW challenge; qwen-3-8-max — Qwen4 architecture preview countdown naming DeepSeek's Engram + Qwen3.8-Flash-Next teaser (125B/6B active) + Thomson Reuters building its own Qwen model; alibaba — the same Qwen4/Flash-Next teaser from the company side; nvidia — the Jalapeño per-MW threat + Groq 3 LPX \"4× Cerebras\" frame requiring 64 accelerators vs one/two for Cerebras + Cerebras CS-4). Skipped for budget (future ingest where they repeat): Apple's Mac-mini follow-through, Apodex 1.1, IBM Granite 4.2/Speech, Skild AI S1, Stability AI $76M, Gatik Series D, Meta Hatch/Watermelon, Grok Voice Think Fast 2.0, OmniAssistBench/SWE-bench Science and the paper cluster."
     }
   ]
 }

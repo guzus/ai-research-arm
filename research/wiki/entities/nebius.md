@@ -4,15 +4,16 @@ title: Nebius Group
 type: entity
 aliases: [Nebius, NBIS, "Nebius Group N.V."]
 tags: [neocloud, gpu-cloud, ai-infrastructure, nvidia-partner]
-description: Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; FY26Q2 (2026-08-13) printed $582.3M revenue (+454% YoY) with a ~50% AI Cloud adjusted EBITDA margin, contracted power raised to 5GW, and ~70% of deals carrying customer prepayments.
+description: Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; told customers on-demand GPU rent rises 17–21% on October 1 (H100 $3.85→$4.50, B300 $7.85→$9.50), the second hike since May.
 created_at: 2026-05-24
-timestamp: 2026-08-13T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 market:
   ticker: NBIS
   exchange: NASDAQ
   symbol: NASDAQ:NBIS
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
@@ -75,3 +76,16 @@ that NVIDIA's "demand has gone parabolic" Q1 FY27 print is meant to confirm
   neocloud thesis needs against the reflection-deal skepticism above. The
   print was the day's cleanest neocloud economics data point (ARA digest
   2026-08-13).
+
+- **On-demand GPU rent rises 17–21% on October 1
+  (2026-09-18).** Customer notices — not an IR
+  release — put H100 at **$3.85 → $4.50** and
+  B300 at **$7.85 → $9.50**, the **second hike
+  since May**. Reserved SKUs are unchecked. This
+  is a price-card move on the same take-or-pay
+  capacity the FY26Q2 print said it could sell
+  out through 2027, and it lands the same day
+  [[crusoe]] closed a $3.9B Series F at $30.9B.
+  See [[neocloud]], [[coreweave]] and
+  [[ai-capex]] (Twitter; ARA daily digest
+  2026-09-18).
