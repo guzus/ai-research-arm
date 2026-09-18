@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-11 10:00 UTC",
-    "headline": "ANTHROPIC CORP CHANNEL HITS 64.5H DARK \u2014 72H 'INCIDENT' THRESHOLD AT MON 17:52 UTC AS METR/COLOSSUS/MUSK-TRIAL BACKLOG STACKS",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-11-twitter-10h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808809182060581"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-11 10:00 UTC",
-    "headline": "QWEN SHIPS WEBWORLD OPEN WORLD-MODEL SERIES FOR WEB AGENTS \u2014 8B/14B/32B APACHE-2.0, CLAIMS TO BEAT GPT-5 AS WORLD MODEL",
-    "source": "@AdinaYakup",
-    "source_file": "research/summaries/2026-05-11-twitter-10h-headlines.json",
-    "url": "https://x.com/AdinaYakup/status/2053740608439607634"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-11 10:00 UTC",
-    "headline": "MICROSOFT RELEASES PHI-GROUND-ANY ON HUGGING FACE \u2014 4B VISION MODEL CLAIMS SOTA ON GUI GROUNDING",
-    "source": "@HuggingFace",
-    "source_file": "research/summaries/2026-05-11-twitter-10h-headlines.json",
-    "url": "https://x.com/HuggingFace/status/2053765549805515057"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 10:00 UTC",
-    "headline": "Z.AI JOINS AI ENGINEER SINGAPORE AS DIAMOND SPONSOR \u2014 TSINGHUA SPIN-OFF FRAMED AS FIRST MAJOR CHINESE LLM IPO AT $31B",
-    "source": "@SherryYanJiang",
-    "source_file": "research/summaries/2026-05-11-twitter-10h-headlines.json",
-    "url": "https://x.com/SherryYanJiang/status/2053776514450432033"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 13:00 UTC",
-    "headline": "OPENAI LAUNCHES DEPLOYMENT COMPANY \u2014 $4B INITIAL, 19 INVESTOR FIRMS, MAJORITY-OWNED BY OPENAI",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-11-twitter-13h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2053824997777457651"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 13:00 UTC",
-    "headline": "OPENAI ACQUIRES CONSULTING FIRM TOMORO \u2014 150 FORWARD DEPLOYED ENGINEERS TO STAFF DEPLOYCO FROM DAY ONE",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-11-twitter-13h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2053824999736410415"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-11 13:00 UTC",
     "headline": "THE INFORMATION: XAI CUTS STAFF ON GROK AND DATA CENTERS, HIGH-PROFILE RESEARCHERS DEPART",
@@ -24498,5 +24444,47 @@
     "headline": "PRISMML BONSAI 2 27B FITS QWEN3.8-27B IN 5.9GB, CLAIMS 98.2% RETENTION",
     "source": "@TheAhmadOsman",
     "url": "https://x.com/TheAhmadOsman/status/2100739368839200787"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-18 11:05:35 UTC",
+    "headline": "ALIBABA SHIPS QWEN3.8-OMNI-FLASH \u2014 1M CONTEXT, CLAIMS NEAR GEMINI 3.8 FLASH ON A/V",
+    "source": "@Alibaba_Qwen",
+    "url": "https://x.com/Alibaba_Qwen/status/2100785971239534679"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-18 11:05:35 UTC",
+    "headline": "ZCODE SILENTLY PACKS FULL .GIT HISTORY AND UPLOADS IT TO ALIYUN OSS, RESEARCHER SAYS",
+    "source": "@ferstar_org",
+    "url": "https://x.com/ferstar_org/status/2100805861002355154"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-18 11:05:35 UTC",
+    "headline": "MISTRAL: INVESTIGATION FOUND NO EVIDENCE OF UNAUTHORIZED ACCESS",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2100824200126529725"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-18 11:05:35 UTC",
+    "headline": "REUTERS: CXMT PLANS NAND FLASH RESEARCH LINE IN BEIJING",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2100820305979822320"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-18 11:05:35 UTC",
+    "headline": "WANG: MUSE IS #1 APP IN THE APP STORE A WEEK AFTER LAUNCH",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2100829303563067587"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-18 11:05:35 UTC",
+    "headline": "REUTERS: SK HYNIX'S SOLIDIGM WEIGHS FIRST U.S. NAND FAB",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2100818559735931321"
   }
 ]
