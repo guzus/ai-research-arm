@@ -35,7 +35,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-09-18T18:33:06Z",
+  "generated_at": "2026-09-18T23:22:21Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -194,7 +194,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.12,"0.6":0.12,"0.7":0.12,"0.8":0.12,"0.9":0.12,"0.95":3.75},"pareto":7,"plotted":104,"ts":"2026-09-17T23:34:46Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.12,"0.6":0.12,"0.7":0.12,"0.8":0.12,"0.9":0.12,"0.95":3.75},"pareto":7,"plotted":104,"ts":"2026-09-18T08:21:33Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.12,"0.6":0.12,"0.7":0.12,"0.8":0.12,"0.9":0.12,"0.95":3.75},"pareto":7,"plotted":104,"ts":"2026-09-18T13:40:24Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.12,"0.6":0.12,"0.7":0.12,"0.8":0.12,"0.9":0.12,"0.95":3.75},"pareto":8,"plotted":104,"ts":"2026-09-18T18:33:06Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.12,"0.6":0.12,"0.7":0.12,"0.8":0.12,"0.9":0.12,"0.95":3.75},"pareto":8,"plotted":104,"ts":"2026-09-18T18:33:06Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.12,"0.6":0.12,"0.7":0.12,"0.8":0.12,"0.9":0.12,"0.95":3.75},"pareto":8,"plotted":104,"ts":"2026-09-18T23:22:21Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -387,7 +388,7 @@
         {
           "key": "kimik3",
           "name": "Kimi K3",
-          "output_usd_per_mtok": 10.95,
+          "output_usd_per_mtok": 10.92,
           "pareto": false,
           "score": 0.39,
           "stderr": 0.04902071300001973,
@@ -1190,7 +1191,7 @@
         {
           "key": "kimik3",
           "name": "Kimi K3",
-          "output_usd_per_mtok": 10.95,
+          "output_usd_per_mtok": 10.92,
           "pareto": false,
           "score": 0.721830985915493,
           "stderr": 0.026636607935112643,
@@ -2166,7 +2167,7 @@
         {
           "key": "kimik3",
           "name": "Kimi K3",
-          "output_usd_per_mtok": 10.95,
+          "output_usd_per_mtok": 10.92,
           "pareto": false,
           "score": 0.9722222222222222,
           "stderr": 0.011158359139033182,
@@ -3077,7 +3078,7 @@
         {
           "key": "kimik3",
           "name": "Kimi K3",
-          "output_usd_per_mtok": 10.95,
+          "output_usd_per_mtok": 10.92,
           "pareto": false,
           "score": 0.506,
           "stderr": 0.015818160898606836,
@@ -3490,13 +3491,13 @@
         }
       ]
     },
-    "as_of": "2026-09-18T18:33:06Z",
+    "as_of": "2026-09-18T23:22:21Z",
     "counts": {
       "pareto": 8,
       "plotted": 104,
-      "priced": 334,
+      "priced": 335,
       "scored": 181,
-      "unscored": 230
+      "unscored": 231
     },
     "models": [
       {
@@ -3747,14 +3748,14 @@
         "vendor": "openai"
       },
       {
-        "blended_usd_per_mtok": 4.3125,
+        "blended_usd_per_mtok": 4.1925,
         "context_length": 1048576,
         "epoch_model": "Kimi K3",
-        "input_usd_per_mtok": 2.1,
+        "input_usd_per_mtok": 1.95,
         "key": "kimik3",
         "name": "Kimi K3",
         "openrouter_id": "moonshotai/kimi-k3",
-        "output_usd_per_mtok": 10.95,
+        "output_usd_per_mtok": 10.92,
         "pareto": false,
         "price_variant": null,
         "runs": 3,
@@ -5499,10 +5500,10 @@
         "vendor": "meta-llama"
       },
       {
-        "input_usd_per_mtok": 0.04928,
+        "input_usd_per_mtok": 0.04844,
         "key": "deepseekv4flash0423",
         "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.09856,
+        "output_usd_per_mtok": 0.09688,
         "vendor": "deepseek"
       },
       {
@@ -5576,10 +5577,10 @@
         "vendor": "cohere"
       },
       {
-        "input_usd_per_mtok": 0.055,
+        "input_usd_per_mtok": 0.05236,
         "key": "deepseekv4flashlatest",
         "name": "DeepSeek V4 Flash Latest",
-        "output_usd_per_mtok": 0.165,
+        "output_usd_per_mtok": 0.15708,
         "vendor": "~deepseek"
       },
       {
@@ -5884,13 +5885,6 @@
         "vendor": "qwen"
       },
       {
-        "input_usd_per_mtok": 0.14,
-        "key": "deepseekflashlatest",
-        "name": "DeepSeek Flash Latest",
-        "output_usd_per_mtok": 0.42,
-        "vendor": "~deepseek"
-      },
-      {
         "input_usd_per_mtok": 0.08,
         "key": "nemotron3super",
         "name": "Nemotron 3 Super",
@@ -5912,6 +5906,13 @@
         "vendor": "qwen"
       },
       {
+        "input_usd_per_mtok": 0.075,
+        "key": "ternarybonsai227b",
+        "name": "Ternary Bonsai 2 27B",
+        "output_usd_per_mtok": 0.5,
+        "vendor": "prism-ml"
+      },
+      {
         "input_usd_per_mtok": 0.3,
         "key": "cydonia24bv4.1",
         "name": "Cydonia 24B V4.1",
@@ -5924,6 +5925,13 @@
         "name": "Qwen3 VL 30B A3B Instruct",
         "output_usd_per_mtok": 0.52,
         "vendor": "qwen"
+      },
+      {
+        "input_usd_per_mtok": 0.135,
+        "key": "deepseekflashlatest",
+        "name": "DeepSeek Flash Latest",
+        "output_usd_per_mtok": 0.54,
+        "vendor": "~deepseek"
       },
       {
         "input_usd_per_mtok": 0.351,
@@ -6584,10 +6592,10 @@
         "vendor": "qwen"
       },
       {
-        "input_usd_per_mtok": 0.8988,
+        "input_usd_per_mtok": 0.8918,
         "key": "glmlatest",
         "name": "GLM Latest",
-        "output_usd_per_mtok": 2.8248,
+        "output_usd_per_mtok": 2.8028,
         "vendor": "~z-ai"
       },
       {
@@ -6906,10 +6914,10 @@
         "vendor": "cohere"
       },
       {
-        "input_usd_per_mtok": 2.1,
+        "input_usd_per_mtok": 1.95,
         "key": "kimilatest",
         "name": "Kimi Latest",
-        "output_usd_per_mtok": 10.95,
+        "output_usd_per_mtok": 10.92,
         "vendor": "~moonshotai"
       },
       {
