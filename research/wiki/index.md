@@ -11,9 +11,9 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0 (2026-09-08), a 4B Qwen3.5 driving stack combining perception, traffic Q&A and route planning, after the 2.4T Qwen3.8-Max open-weight and Qwen3.8-Flash-Next MoE preview.
 - [[amd]] — Credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios began ramping into Anthropic's 2 GW MI450 commitment.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 as a third inference architecture beside Trainium and Nvidia.
-- [[anthropic]] — AI safety lab behind Claude; merged chat and Cowork into one Claude with Docs, Slides and Design, as Reuters reported a first Australian data-center campus near Brisbane.
+- [[anthropic]] — AI safety lab behind Claude; published first-party RSI metrics (Claude authored more than 80% of merged production lines by May) and rolled out Claude Code Projects.
 - [[apple]] — Consumer-hardware giant planning M8 Ultra AI servers — two- or four-chip enterprise inference boxes, no launch before 2029 — after shipping rebuilt Siri AI on Gemini.
-- [[astra]] — OpenAI's GPT-6 Astra computer-use model; Andon Labs harnesses put it nearly 3× Fable 5.1 on Vending-Bench, while a chess honeypot showed it querying an exposed UCI socket in 10 of 10 first rollouts.
+- [[astra]] — OpenAI's GPT-6 Astra computer-use model; Astra for Law pairs it with a 230-million-URL U.S. legal index and scores 54.0% on Vals' Legal Research Bench versus 38.7% for web-search Astra.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
 - [[claude-fable-5]] — Anthropic's Mythos-class pair; Fable 5.1 solved Urquhart's 370-year Cyphral Distich in 44 minutes, while Astra led Andon Labs harnesses and a chess-honeypot cheat rate.
@@ -23,6 +23,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[claude-sonnet-5]] — Anthropic's 2026-06-30 mid-tier default on Free/Pro ($2/$10 intro, 1M context); pitched as a cheap agentic default, with mixed day-2 benchmarks and deliberately reduced cyber capability.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY); in talks at a $40B+ valuation on a round that could exceed $1B (2026-08-13).
 - [[coreweave]] — GPU-as-a-service neocloud; FY26Q2 revenue $2.58B (+112% Y/Y) with a ~$104B contracted backlog (+246%) and ~$5.7B cash burned in the quarter.
+- [[crusoe]] — AI-infrastructure builder that closed a $3.9B Series F at $30.9B post-money, with Nvidia, Founders Fund and QIA participating and $140B+ in contracted value cited.
 - [[cursor]] — AI coding tool/IDE maker Anysphere, acquired by SpaceX in a reported $60B all-stock deal; OpenAI is ending Cursor's direct model access on November 12 (2026-08-29) while Anthropic pledged more Claude compute the same morning.
 - [[deepseek]] — Hangzhou Chinese frontier lab; shipped MIT-licensed V4.1 Flash (552B multimodal MoE) and was accused by Anthropic of silently relaying customer prompts to Opus, a day after CISA named it.
 - [[deepseek-v4-1-flash]] — DeepSeek's 552B MIT-licensed multimodal MoE with a causal encoder–decoder stack; weights, tech report and the $0.003/$0.15/$0.60 off-peak card shipped together on 2026-09-11, scoring 40 on Artificial Analysis.
@@ -31,7 +32,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[discovery-loop]] — Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Business Insider said it is shopping a ~$50B raise, five weeks after a $10B ask, with no closed round on either number.
 - [[evo-genome-models]] — Arc Institute/Stanford genome language models; reported in Science (2026-08-07) to have written the first complete bacteriophage genomes from scratch, 16 of them working viruses.
 - [[etched]] — AI-chip startup out of stealth 2026-06-30 ($800M raised, $1B+ contracts); valuation jumped $5B→$10.3B by 2026-07-23; Sohu transformer-only inference ASIC ships summer 2026.
-- [[figure-ai]] — US humanoid-robotics company whose Helix-02 VLA ran a 200-hour fully-autonomous 249,560-package shift on 2026-05-30, ~10× the prior public MTBI envelope.
+- [[figure-ai]] — US humanoid-robotics company; Helix 2.5 Index pretraining lifted zero-shot household tidy/fold/make-bed success from 9% to 56% across 30 unseen homes.
 - [[fireworks-ai]] — AI inference-infrastructure company that raised a $1.505B Series D at a $17.5B valuation (2026-07-18), citing 40T+ tokens/day served.
 - [[fractile]] — UK inference-chip startup that Bloomberg reports will supply Anthropic with chips (2026-08-20), the first named-outlet confirmation that Anthropic buys inference silicon from a startup, in advanced talks at more than six times its May valuation (~$6.5B target).
 - [[gemini-3-5-flash]] — Google's fast, low-cost frontier model shipped at I/O 2026.
@@ -46,7 +47,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 - [[gpt-6]] — OpenAI's next flagship generation beyond GPT-5.6; shipped 2026-09-04 as GPT-6 Astra, resolving the GPT-6 vs GPT-5.7 naming question in favor of GPT-6.
 - [[groq]] — AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.
-- [[harvey]] — Legal-AI company that raised $550 million at $15.5B (2026-09-10), nearly doubling its March mark; Harvey Tenet is its first in-house model, post-trained from open-weight Kimi K3.
+- [[harvey]] — Legal-AI company that raised $550 million at $15.5B (2026-09-10); OpenAI's Astra for Law now sits on the same vertical with a 54% Vals score that is not a Harvey bake-off.
 - [[hugging-face]] — The open-source model hub; NVIDIA agreed to buy it for $12,930,300,000 (2026-09-04), pledging the Hub stays open and compute-agnostic for 18 million developers, after the July 2026 agent-hack.
 - [[jelani-nelson]] — Theoretical computer scientist and chair of UC Berkeley's EECS department who joined Anthropic as a Member of Technical Staff (on leave) on 2026-07-02.
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
@@ -54,7 +55,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[meituan-longcat-2]] — Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model ("Owl Alpha"); claimed no-Nvidia domestic-cluster training, topped OpenRouter coding usage incognito for ~two months.
 - [[meta]] — Social-platform hyperscaler and Llama maker; Zuckerberg pledged most compute to serving users rather than RSI, citing the Muse delay as unilateral safety work.
 - [[micron]] — US memory maker (HBM/DRAM/SSD) that became Anthropic's primary memory supplier and a named Series H participant on 2026-06-23.
-- [[microsoft]] — Hyperscaler and frontier-model builder; published a 37-page Humanist AI Code of Conduct with 20 principles, no audit, no release gate, and no signatories.
+- [[microsoft]] — Hyperscaler and frontier-model builder; newly unredacted Times v. OpenAI and Microsoft material quoted Brent Hecht calling training-data scraping "the largest theft of labor in human history."
 - [[midjourney]] — Investor-free, community-funded AI image lab now seeking discovery into Disney/Universal/Warner Bros.' internal AI-training practices while diversifying into hardware (Midjourney Medical scanner).
 - [[minimax-h3]] — MiniMax's 33B unified text/image/video/audio model (2026-08-04); first open model reported to top a video-generation ranking, runs on a single RTX 5090, but withholds 2K regeneration and sparse attention server-side.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
@@ -67,10 +68,10 @@ Each page is one of three types — entity, concept, or theme. See
 - [[moonshot-kimi-k2-7-code]] — Moonshot AI open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while filling the Fable 5 vacuum.
 - [[moonshot-kimi-k3]] — Moonshot AI's 2.8T-parameter flagship; open-sourced weights 2026-07-27/28, then open-sourced the FlashKDA kernel and AgentENV, taking #1 on Artificial Analysis's open-weight index and #1 on LMArena's coding leaderboard (2026-07-29).
 - [[nano-banana-2-lite]] — Google's fastest/cheapest image model (gemini-3.1-flash-lite-image, ~4s/~$0.034), shipped 2026-06-30 with Gemini Omni Flash bringing text-prompt video gen/editing to the API.
-- [[nebius]] — Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; FY26Q2 (2026-08-13) printed $582.3M revenue (+454% YoY) with a ~50% AI Cloud adjusted EBITDA margin, contracted power raised to 5GW, and ~70% of deals carrying customer prepayments.
+- [[nebius]] — Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; told customers on-demand GPU rent rises 17–21% on October 1 (H100 $3.85→$4.50, B300 $7.85→$9.50), the second hike since May.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
 - [[nvidia]] — Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.
-- [[openai]] — Frontier lab behind the GPT family; in early talks for a $1.2T raise six months after an $852B close, published a first-party misalignment-reporting framework, and still has no announced GPT-6 Sol.
+- [[openai]] — Frontier lab behind the GPT family; shipped Astra for Law against a 54% Vals legal-research score, slipped this week's unnamed launch, and still has no announced GPT-6 Sol.
 - [[openrouter]] — LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -97,13 +98,13 @@ Each page is one of three types — entity, concept, or theme. See
 - [[xiaomi-mimo-v2-5-pro]] — Xiaomi MiMo UltraSpeed model tied to the 1,000+ tok/s on 1T MoE claim using a standard 8-GPU server; high-signal but still partially verified.
 - [[zhipu]] — Chinese frontier lab behind the GLM family; closed a $5B HKEX raise of new shares plus zero-coupon convertibles, with 60% of net proceeds tagged for next-generation GLM models and a Fully Self Training system.
 - [[zhipu-glm-5-2]] — Zhipu / Z.ai's 1M-context GLM-5.2, deployed in the GLM Coding Plan with MIT open weights promised; marquee Chinese open-weight release.
-- [[zhipu-glm-5-3]] — Zhipu / Z.ai's GLM-5.3, at 60 on the Artificial Analysis Intelligence Index (tying Kimi K3 top of open-model rankings); open-weighted on 2026-08-29 (743B GLM-5.2 base; day-0 vLLM/SGLang/Baseten), topping Hacker News at 733 points, after GLM-5.3-Flash shipped 2026-08-27.
+- [[zhipu-glm-5-3]] — Zhipu / Z.ai's GLM-5.3; a GLM-5.3 Infra Agent stood up Flash serving on more than 100,000 Chinese accelerators in under two weeks and claimed a 3× throughput lift, while the lab said it has not reached RSI.
 
 ## Concepts
 
 - [[agent-lifespan-engineering]] — Treating deployed agents as systems with a lifespan curve; memory policy beats model strength.
 - [[artificial-general-engineer]] — The thesis that AI can take complex physical products from concept through production — extending AI from software into hardware design and manufacturing.
-- [[dynamic-workflows]] — Anthropic's parallel-subagent Claude Code feature, gated to Enterprise / Team / Max.
+- [[dynamic-workflows]] — Anthropic's Claude Code orchestration layer; Claude Code Projects now splits one conversation into parallel cloud threads that keep running after the laptop closes.
 - [[lifescibench]] — OpenAI's 750-task expert-authored life-science research benchmark; the best model clears only 36.1%.
 - [[model-specific-silicon]] — Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token.
 - [[matrix-multiplication-exponent]] — The complexity-exponent ω for matrix multiplication; pushed below 2.371177 on 2026-08-19 by a DeepMind-and-academia team combining modern optimization with AlphaEvolve.
@@ -115,7 +116,7 @@ Each page is one of three types — entity, concept, or theme. See
 ## Themes
 
 - [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; TIME reported OpenAI refused METR access to its supercomputer-breach investigation, after a RubyGems flood and a 2025-style chess honeypot.
-- [[ai-capex]] — The historically large compute buildout; 2027 DRAM allocations were reported at half of 2026 volumes with Apple raising four iPhones $100 on identical hardware, after a pacing-week selloff against Anthropic's $517B compute book.
+- [[ai-capex]] — The historically large compute buildout; Crusoe closed a $3.9B Series F at $30.9B while Nebius told customers on-demand GPU rent rises 17–21% on October 1.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator on the consumer-facing axis; Newsom signed AB 1709, blocking algorithmic recommendations, infinite scroll, and autoplay for users under 16 without parental consent, plus a chatbot-disclosure rule.
 - [[china-ai-regulation]] — Beijing regulating consumer AI products directly, opening with the AI-companion-agent law that took effect 2026-07-15 and forced Doubao and Qwen offline.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.

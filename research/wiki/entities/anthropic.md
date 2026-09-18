@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; merged chat and Cowork into one Claude with Docs, Slides and Design, as Reuters reported a first Australian data-center campus near Brisbane.
+description: AI safety lab behind Claude; published first-party RSI metrics (Claude authored more than 80% of merged production lines by May) and rolled out Claude Code Projects.
 created_at: 2026-05-24
-timestamp: 2026-09-17T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA model ticket — Anthropic compute commitments", path: research/models/tickets/anthropic-compute-commitments-2026-09.md}
@@ -1752,3 +1753,75 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   alternative is [[microsoft]]'s Humanist AI Code of
   Conduct. See [[microsoft]] (HN; ARA daily digest
   2026-09-17).
+
+## First-party RSI metrics, Claude Code Projects, and a life-sciences gate (2026-09-18)
+
+- **Anthropic published first-party RSI metrics**
+  in two Institute posts the same day. "When AI
+  builds itself" says Claude-authored production
+  merges exceeded **80% of lines by May 2026**
+  and that typical Q2 engineers merged **8×** the
+  2024 daily rate. A companion snapshot puts
+  Claude **"leading" 26%** of internal AI R&D,
+  collaborating on more than **90%**, and running
+  **~30,000 concurrent internal agents**, with
+  **6%** of a July compute week tagged safety.
+  The same afternoon the lab closed: "We are not
+  there yet, and recursive self-improvement is
+  not inevitable." That sentence is the load-
+  bearing caveat — first-party coding-volume
+  numbers are not a takeoff claim. [[zhipu|Z.ai]]
+  closed its Infra Agent post on the same
+  sentence from the other side of the compute
+  split. See [[zhipu-glm-5-3]] (Anthropic
+  Institute; ARA daily digest 2026-09-18).
+- **Claude Code Projects rolled out** as a single
+  conversation that splits itself into parallel
+  cloud threads, shares memory and keeps running
+  after the laptop closes. It is **beta for
+  select Pro and Max users who already run cloud
+  sessions**; existing Project users are
+  waitlisted so migrations stay clean. Ethan
+  Mollick described an orchestrator that stood
+  up **eighteen specialist threads** and ran for
+  a day. This is **orchestration on top of
+  yesterday's Chat/Cowork merge**, not a weight
+  drop — and it answers the "background
+  execution as unverified" question this page
+  left on 2026-09-17: the persistence claim is
+  now first-party **server-side**. Cost at
+  Pro/Max rate limits is unchecked. See
+  [[dynamic-workflows]] (The Verge, @ClaudeDevs;
+  ARA daily digest 2026-09-18).
+- **Life Sciences Verification Program** gives
+  vetted teams [[claude-fable-5|Mythos 5.1]],
+  [[claude-opus-5|Opus 5]] and
+  [[claude-sonnet-5|Sonnet 5]] with more
+  permissive biology classifiers. High-risk Use
+  grants remove remaining life-science blocks on
+  a per-project, six-month cadence; Mythos
+  high-risk stays limited to a small
+  U.S.-government-vetted set. Named early users:
+  Xaira Therapeutics, Edison Scientific,
+  Manifold Bio. Adjacent to
+  [[claude-science]] and [[lifescibench]], not a
+  new workbench (Anthropic; ARA daily digest
+  2026-09-18).
+- **The Information's $13.7B, six-year Rum Group
+  compute deal** (formerly Rumble) recirculated
+  on top of the **$517B** book already on this
+  page from 2026-09-15. Single-source; no
+  Anthropic confirmation in this window. See
+  [[ai-capex]] (Twitter; ARA daily digest
+  2026-09-18).
+- **Mustafa Suleyman**, in an Axios essay and
+  Reuters interview, said Anthropic is
+  deliberately training Claude on consciousness,
+  welfare and moral-patient language from its
+  January constitution, and that this "epistemic
+  hall of mirrors" could make a future system
+  harder to shut down. Same critique this page
+  logged yesterday from the HN thread; today's
+  files attach first-party interview sourcing.
+  See [[microsoft]] (The Verge, Twitter; ARA
+  daily digest 2026-09-18).

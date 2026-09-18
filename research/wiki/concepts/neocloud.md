@@ -6,8 +6,9 @@ aliases: [neocloud, "neo-cloud", "GPU-as-a-service", GPUaaS]
 tags: [ai-infrastructure, gpu-cloud, business-model, take-or-pay]
 description: Business model where a specialized provider buys GPUs on debt and rents the capacity back under multi-year take-or-pay contracts, distinct from general-purpose hyperscalers.
 created_at: 2026-05-24
-timestamp: 2026-05-24T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
 ---
@@ -18,7 +19,9 @@ hyperscalers (AWS, Azure, GCP). The defining mechanics: acquire NVIDIA (or, in
 the hyperscaler-JV variant, TPU) capacity financed largely by debt, sign
 multi-year **take-or-pay** contracts with a small set of anchor tenants, and
 underwrite the debt against that forward contract book. [[coreweave]] and
-[[nebius]] are the canonical public examples.
+[[nebius]] are the canonical public examples;
+[[crusoe]] is now a private peer after a $3.9B
+Series F at $30.9B (2026-09-18).
 
 ## Why it matters
 The neocloud model is the load-bearing structure of the current [[ai-capex]]
@@ -44,3 +47,14 @@ demand-side mirror of the same take-or-pay logic.
   rental price?
 - **Power, not just chips.** Increasingly the binding constraint is megawatts, not
   GPUs. Who controls owned power versus leases it?
+
+## Crusoe prices in; Nebius hikes the card (2026-09-18)
+
+[[crusoe]] closed a **$3.9B Series F at $30.9B**,
+citing **$140B+ in contracted value** — the
+largest private neocloud mark of the window,
+still without a public RPO split. The same day
+[[nebius]] told customers on-demand GPU rent
+rises **17–21% on October 1**. See [[ai-capex]]
+(Reuters, TechCrunch, Twitter; ARA daily digest
+2026-09-18).

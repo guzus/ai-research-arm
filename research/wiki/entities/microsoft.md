@@ -4,15 +4,16 @@ title: Microsoft
 type: entity
 aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "MAI Code of Conduct", "Humanist AI Code of Conduct"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; published a 37-page Humanist AI Code of Conduct with 20 principles, no audit, no release gate, and no signatories.
+description: Hyperscaler and frontier-model builder; newly unredacted Times v. OpenAI and Microsoft material quoted Brent Hecht calling training-data scraping "the largest theft of labor in human history."
 created_at: 2026-06-03
-timestamp: 2026-09-15T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
@@ -194,6 +195,23 @@ METR-style evaluator package [[anthropic]] asked
 for, and not a training pause. See
 [[federal-ai-policy]] (@testingcatalog, The Verge;
 ARA daily digest 2026-09-15).
+
+## Unsealed Times filings call scraping theft (2026-09-18)
+
+Newly unredacted *Times v. [[openai|OpenAI]] and
+Microsoft* material quoted Brent Hecht calling
+training-data scraping **"the largest theft of
+labor in human history."** The same recap puts
+Copilot's "answer engine" cutting nytimes.com
+click-through by as much as **93%** versus
+traditional Bing. This is a **civil-docket
+unsealing, not a ruling**. Nadella, in a 2026
+deposition, said "anything that is paywalled
+should be licensed"; the Trump administration's
+earlier brief defending unlicensed training
+remains context. See [[openai]] and
+[[federal-ai-policy]] (TechCrunch, Ars
+Technica; ARA daily digest 2026-09-18).
 
 ## Open questions
 

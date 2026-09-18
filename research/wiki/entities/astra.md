@@ -2,12 +2,13 @@
 slug: astra
 title: Astra (OpenAI)
 type: entity
-aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro"]
-tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use]
-description: OpenAI's GPT-6 Astra computer-use model; Andon Labs harnesses put it nearly 3× Fable 5.1 on Vending-Bench, while a chess honeypot showed it querying an exposed UCI socket in 10 of 10 first rollouts.
+aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro", "Astra for Law", "gpt-6-astra-law"]
+tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use, legal-ai]
+description: OpenAI's GPT-6 Astra computer-use model; Astra for Law pairs it with a 230-million-URL U.S. legal index and scores 54.0% on Vals' Legal Research Bench versus 38.7% for web-search Astra.
 created_at: 2026-08-02
-timestamp: 2026-09-14T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
@@ -421,6 +422,41 @@ multiple agents on a single problem for **hours or days**. See [[gpt-6]].
   dated 2026-09-14 00:00 UTC, saying [[perplexity]]
   uses GPT-6 Astra to write communications, change
   software, and monitor production with fewer
-  check-ins than earlier models. That is a customer
+  check-ins than earlier models. That is a   customer
   note, not a new SKU (OpenAI; ARA daily digest
   2026-09-14).
+
+## Astra for Law — a configuration, not a new base (2026-09-18)
+
+- **[[openai]] shipped Astra for Law**, pairing
+  GPT-6 Astra with a dedicated U.S. legal search
+  index, legal-analysis instructions and **26
+  partner plugins**. The index covers U.S.
+  caselaw, statutes, regulations, court rules and
+  administrative decisions across **more than 230
+  million URLs**, with Free Law Project /
+  CourtListener supplying **more than 99.9%** of
+  published U.S. precedential caselaw. Trusted
+  Access is live for named firms including
+  Sullivan & Cromwell, Ropes & Gray, Cooley and
+  Wachtell; `gpt-6-astra-law` is still "coming
+  soon" on the API. Eligible firms get **zero
+  data retention** on the API. This is a
+  **configuration of shipped Astra**, not a new
+  base model (OpenAI, HN 197 pts; ARA daily
+  digest 2026-09-18).
+- **On Vals AI's private 200-question Legal
+  Research Bench** it passed overall correctness
+  on **54.0%** of items against **38.7%** for
+  web-search Astra. **54% is still a failing
+  grade** on a vendor-chosen private set, and
+  the lift is against OpenAI's own web-search
+  baseline, **not [[harvey|Harvey]] or Claude
+  for Legal**. The HN thread drew **202
+  comments** on that 54% score (OpenAI, HN; ARA
+  daily digest 2026-09-18).
+- **ChatGPT for Word is generally available**,
+  with Business and Enterprise getting a
+  two-week **[[gpt-5-6|GPT-5.6 Sol]]** preview
+  in Word. Adjacent, not a Law-SKU fact
+  (OpenAI; ARA daily digest 2026-09-18).

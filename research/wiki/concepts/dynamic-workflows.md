@@ -4,10 +4,11 @@ title: Dynamic Workflows
 type: concept
 aliases: ["Dynamic Workflows", "Claude Code Dynamic Workflows", "parallel subagents"]
 tags: [agentic, claude-code, anthropic, subagents, codebase-migration]
-description: Anthropic's 2026-05-28 Claude Code feature in which Claude writes a JavaScript orchestrator that fans a single session out to up to 1,000 parallel subagents per run, gated to Enterprise / Team / Max tiers and aimed at codebase-scale migrations.
+description: Anthropic's Claude Code orchestration layer; Claude Code Projects now splits one conversation into parallel cloud threads that keep running after the laptop closes, on top of the original 1,000-subagent Dynamic Workflows.
 created_at: 2026-05-29
-timestamp: 2026-08-09T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
   - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
   - {title: "ARA daily digest 2026-05-29", path: research/digest/2026-05-29-digest.md}
@@ -59,6 +60,22 @@ tiers.
   classifier default is a direct answer to this page's blast-radius open
   question — see [[agentic-ai-security]] (Latent.Space AINews; ARA daily digest
   2026-08-09).
+
+## Claude Code Projects — cloud threads, shared memory (2026-09-18)
+
+[[anthropic]] rolled out **Claude Code Projects**: a single
+conversation that splits itself into parallel **cloud**
+threads, shares memory and keeps running after the laptop
+closes. It is **beta for select Pro and Max users who
+already run cloud sessions**; existing Project users are
+waitlisted. Ethan Mollick described an orchestrator that
+stood up **eighteen specialist threads** and ran for a
+day. This is orchestration on top of the 2026-09-17
+Chat/Cowork merge, not a weight drop — and it moves the
+persistence claim from a sleeping local session to
+**first-party server-side**. Cost at Pro/Max rate limits
+is unchecked. See [[anthropic]] (The Verge, @ClaudeDevs;
+ARA daily digest 2026-09-18).
 
 ## Open questions
 - **Blast radius.** Hundreds of parallel subagents on a real codebase create

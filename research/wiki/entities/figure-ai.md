@@ -2,12 +2,13 @@
 slug: figure-ai
 title: Figure AI
 type: entity
-aliases: [Figure, "Figure AI", "Figure Robotics", "Figure 03", "Figure 4", "Helix", "Helix-02", "@adcock_brett", "Brett Adcock"]
+aliases: [Figure, "Figure AI", "Figure Robotics", "Figure 03", "Figure 4", "Helix", "Helix-02", "Helix 2.5", "@adcock_brett", "Brett Adcock"]
 tags: [humanoid-robotics, vla, robotics, brett-adcock]
-description: US humanoid-robotics company whose Helix-02 in-house VLA ran a 200-hour fully autonomous package-sort shift (249,560 packages, zero hardware failures, zero teleop) on its Figure 03 fleet at Sunnyvale on 2026-05-30, ~10× the previous public envelope on MTBI.
+description: US humanoid-robotics company; Helix 2.5 Index pretraining lifted zero-shot household tidy/fold/make-bed success from 9% to 56% across 30 unseen homes, after the 200-hour Sunnyvale package-sort run.
 created_at: 2026-06-01
-timestamp: 2026-07-19T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
   - {title: "Humanoids Daily — Figure 200-hour Helix-02 marathon", date: 2026-05-30}
@@ -58,15 +59,45 @@ Figure competes on the humanoid axis with Chinese entrant [[agibot]],
 which showcased its A3 Ultra humanoid and three other embodied-AI
 products at WAIC 2026 (2026-07-19) as part of a global export push.
 
+## Helix 2.5 — Index pretraining and a household ablation (2026-09-18)
+
+- **Figure claimed the first zero-shot whole-body
+  humanoid eval at this scope:** tidying,
+  towel-folding and bed-making in **30 unseen Bay
+  Area homes** with no data collected there.
+  Holding task data and architecture fixed,
+  **Index pretraining alone** moved full-task
+  success from **9% to 56%** — a 6× lift. Figure
+  also published an **8× pretraining-data scaling
+  sweep** on action-prediction loss and restated
+  a **$3.5B Helix compute commitment**. **56% is
+  still a vendor-graded research result**, not a
+  product that can be left alone, and there is
+  **no third-party rerun**. This is a Helix 2.5
+  policy update, not a new robot SKU (Figure;
+  ARA daily digest 2026-09-18).
+- **Why it matters next to the Sunnyvale run.**
+  The 200-hour package-sort marathon proved MTBI
+  on one warehouse workflow. The household
+  ablation is the first published test of
+  whether the same VLA stack generalizes to
+  unstructured homes with no on-site data —
+  exactly the open question this page has
+  carried since June. 56% is a research
+  checkpoint, not a procurement envelope.
+  See [[agibot]] and [[ai-capex]].
+
 ## Open questions
 
 - **Generalization.** The 249,560-package run was a single workflow
-  (package sort) in a single facility. Does Helix-02 hold its MTBI when
-  the fleet is dropped into a third-party 3PL or a manufacturing line
-  with different object distributions and edge cases?
+  (package sort) in a single facility. The 2026-09-18 household
+  ablation moves the question from warehouse MTBI to homes, but
+  56% full-task success is still vendor-graded and not a product
+  that can be left alone.
 - **Figure 4 timing.** "BotQ-scale procurement" implies a 2026–27 ramp.
   When does Figure 4 ship at production volume, and to which customer?
 - **No frontier-lab dependency — at what cost?** Helix-02 is Figure-internal,
   but the company is far smaller than [[anthropic]] / [[openai]] on training
   compute. Is supply-chain independence sustainable as VLA training-FLOPS
-  requirements grow?
+  requirements grow? The restated **$3.5B Helix compute commitment**
+  is the first dollar figure attached to that question.

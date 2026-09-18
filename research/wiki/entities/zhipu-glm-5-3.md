@@ -2,12 +2,13 @@
 slug: zhipu-glm-5-3
 title: Zhipu GLM-5.3
 type: entity
-aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3", "GLM-5.3-Flash", "GLM-5.3 Flash"]
+aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3", "GLM-5.3-Flash", "GLM-5.3 Flash", "GLM-5.3 Infra Agent"]
 tags: [open-weights, china, agentic, frontier-model]
-description: Zhipu AI / Z.ai's successor to GLM-5.2; open-weighted on 2026-08-29 (post-trained on the 743B GLM-5.2 base; 753B total per Baseten) with day-0 vLLM/SGLang/Baseten serving, topping Hacker News at 733 points — after scoring 60 on the Artificial Analysis Intelligence Index and shipping GLM-5.3-Flash on 2026-08-27.
+description: Zhipu / Z.ai's GLM-5.3; a GLM-5.3 Infra Agent stood up Flash serving on more than 100,000 Chinese accelerators in under two weeks and claimed a 3× throughput lift, while the lab said it has not reached RSI.
 created_at: 2026-08-19
-timestamp: 2026-09-14T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA model ticket — Zhipu GLM-5.3 family", path: research/models/tickets/zhipu-glm-5-3-2026-08.md}
@@ -140,3 +141,31 @@ Training system. That is use-of-proceeds language, not a
 demonstrated takeoff, and it is a company fact, not a new
 GLM-5.3 SKU. See [[zhipu]] (Reuters; ARA daily digest
 2026-09-14).
+
+## Infra Agent — serving-stack work, not a new checkpoint (2026-09-18)
+
+- **[[zhipu|Z.ai]] said a GLM-5.3 Infra Agent**
+  stood up production inference for
+  **GLM-5.3-Flash on more than 100,000 Chinese
+  accelerators in under two weeks**, claiming a
+  **3× end-to-end throughput** lift versus the
+  lab's own first-run baseline on new Chinese
+  silicon, plus "cost comparable to mainstream
+  Nvidia GPUs" that is **not an independent
+  bake-off**. This is serving-stack work, not a
+  new weight drop. The "Toward Recursive
+  Self-Improvement" post climbed **162 → 350
+  points** and **254 comments**, becoming the #1
+  AI story and the most-commented item on all of
+  HN after the morning cluster left. The lab's
+  own closer is that it **has not reached
+  recursive self-improvement**; humans still set
+  objectives, boundaries and risk — the same
+  sentence [[anthropic]] published the same
+  afternoon. See [[open-weights]] (Z.ai, HN 350
+  pts; ARA daily digest 2026-09-18).
+- **[[ox-alpha]] retrospective:** more than **62
+  trillion tokens in six days**. That is a
+  first-party training-volume restatement, not a
+  new Ox Alpha ship (Z.ai; ARA daily digest
+  2026-09-18).

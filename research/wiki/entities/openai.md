@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; in early talks for a $1.2T raise six months after an $852B close, published a first-party misalignment-reporting framework, and still has no announced GPT-6 Sol.
+description: Frontier lab behind the GPT family; shipped Astra for Law against a 54% Vals legal-research score, slipped this week's unnamed launch, and still has no announced GPT-6 Sol.
 created_at: 2026-05-30
-timestamp: 2026-09-17T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA model ticket — OpenAI $1.2T raise talks", path: research/models/tickets/openai-raise-1p2t-2026-09.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
@@ -1556,6 +1557,51 @@ materially reshape how the lab is positioned heading into its IPO window:
   figure circulating the same day was OpenAI
   **~13% vs Anthropic ~8%** (Twitter; ARA daily
   digest 2026-09-17).
+
+## Astra for Law, a slipped launch, and an unsealed NYT filing (2026-09-18)
+
+- **[[astra|Astra for Law]] shipped** as a
+  GPT-6 Astra configuration with a
+  **230-million-URL** U.S. legal index and a
+  **54.0% vs 38.7%** lift on Vals' private Legal
+  Research Bench versus web-search Astra. The
+  54% score is still a failing grade on a
+  vendor-chosen set, and the comparison is not
+  against [[harvey|Harvey]]. Model-side detail
+  lives on [[astra]] (OpenAI, HN; ARA daily
+  digest 2026-09-18).
+- **Altman slipped this week's main launch**,
+  quoting his own September 15 "big ship this
+  week" post and saying the artifact will land
+  next week instead. He did not name it;
+  community inference is GPT-6 Sol or Codex
+  Bot, which remains unverified. [[gpt-6]]
+  stays a family with Astra shipped and Sol
+  still a sighting (Altman; ARA daily digest
+  2026-09-18).
+- **The Information printed a Hodge rumor**,
+  saying OpenAI is close to the Hodge
+  Conjecture according to one unnamed person
+  and that a next-pretrain variant codenamed
+  Doug was used on the earlier Navier–Stokes
+  writeup. Clay still lists Hodge as open;
+  treat the news as the headline, not the
+  proof. See [[verification-bottleneck]]
+  (The Information, The Decoder; ARA daily
+  digest 2026-09-18).
+- **Newly unredacted *Times v. OpenAI and
+  [[microsoft|Microsoft]]* material** quoted
+  Brent Hecht calling training-data scraping
+  "the largest theft of labor in human
+  history." The same recap puts Copilot's
+  "answer engine" cutting nytimes.com
+  click-through by as much as **93%** versus
+  traditional Bing. This is a civil-docket
+  unsealing, not a ruling. Nadella, in a 2026
+  deposition, said "anything that is paywalled
+  should be licensed." See [[microsoft]]
+  (TechCrunch, Ars Technica; ARA daily digest
+  2026-09-18).
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; 2027 DRAM allocations were reported at half of 2026 volumes with Apple raising four iPhones $100 on identical hardware, after a pacing-week selloff against Anthropic's $517B compute book.
+description: The historically large compute buildout; Crusoe closed a $3.9B Series F at $30.9B while Nebius told customers on-demand GPU rent rises 17–21% on October 1.
 created_at: 2026-05-24
-timestamp: 2026-09-16T00:00:00Z
+timestamp: 2026-09-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA model ticket — Anthropic compute commitments", path: research/models/tickets/anthropic-compute-commitments-2026-09.md}
@@ -1221,3 +1222,48 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   natural gas than Germany and Japan combined by
   **2035**. See [[federal-ai-policy]] (The Verge,
   TechCrunch; ARA daily digest 2026-09-16).
+
+## Crusoe's $3.9B close and a second Nebius hike (2026-09-18)
+
+- **[[crusoe]] closed a $3.9B Series F at $30.9B
+  post-money**, co-led by Atreides, Mubadala
+  Capital and Valor Equity Partners, with
+  [[nvidia]], Founders Fund and QIA
+  participating. The company cites **$140B+ in
+  contracted value**. This is the
+  infrastructure print of the cycle and the
+  first closed Crusoe figure large enough to
+  mint a page; treat contracted-value as
+  vendor math until an IR disclosure lands
+  (Reuters, TechCrunch; ARA daily digest
+  2026-09-18).
+- **[[nebius]] told customers on-demand GPU
+  rent rises 17–21% on October 1** — H100
+  **$3.85 → $4.50**, B300 **$7.85 → $9.50** —
+  the second hike since May. Customer notices,
+  not an IR release; reserved SKUs unchecked.
+  See [[neocloud]] (Twitter; ARA daily digest
+  2026-09-18).
+- **Generac signed [[amazon|Amazon]] for backup
+  generators:** initial deliveries about
+  **$2.4B in 2027–2028**, plus a warrant for
+  up to **1.69M shares at $200.93** vesting
+  against purchases up to **$8B through 2033**.
+  A power-side print, not a GPU one (Reuters
+  via Twitter; ARA daily digest 2026-09-18).
+- **[[google]], [[nvidia]] and [[anthropic]]
+  joined Emerald AI's energy-management
+  alliance**, which says demand-response
+  software could connect an extra **100 GW**
+  of data centers to the grid. Named
+  utilities: AES, Constellation, National
+  Grid, NRG. **No signed interconnection**
+  (TechCrunch; ARA daily digest 2026-09-18).
+- **Jensen on CNBC** put a 1 GW Nvidia factory
+  at **$50–60B to build** and about **$50B a
+  year in rent**, and named safety-eval
+  clusters as a third compute pillar. Vendor
+  math; SemiAnalysis separately says Rubin
+  NVL72 tests at **7× GB300 perf/watt**
+  against Jensen's GTC claim of **3×**
+  (Twitter; ARA daily digest 2026-09-18).
