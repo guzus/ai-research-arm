@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-11 16:00 UTC",
-    "headline": "GEMINI OMNI LEAK HARDENS \u2014 TESTINGCATALOG NAMES WATERMARK REMOVAL, OBJECT REPLACEMENT, IN-CHAT VIDEO EDIT AHEAD OF GOOGLE I/O",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-11-twitter-16h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2053857806374064496"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 16:00 UTC",
-    "headline": "THEINFORMATION: CORE AUTOMATION SEEKING $4B VALUATION \u2014 EX-OPENAI TWOREK STARTUP, 6 WEEKS OLD, NVIDIA AMONG EARLY BACKERS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-11-twitter-16h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053837714131165610"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 16:00 UTC",
-    "headline": "THEINFORMATION: KUAISHOU PLANNING KLING AI VIDEO SPINOFF AHEAD OF 2027 IPO",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-11-twitter-16h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053845120722559319"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 16:00 UTC",
-    "headline": "THEINFORMATION: AI LIFTS PROFITS VIA SLOWER HIRING BUT TOKEN, CHIP, MODEL COSTS RISING FAST \u2014 Q1 EARNINGS TENSION",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-11-twitter-16h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053860221609508996"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-11 16:00 UTC",
-    "headline": "ANTHROPICAI 70H 17M DARK \u2014 72H SILENCE THRESHOLD 1H 43M AWAY AT 17:52 UTC; JACKCLARKSF BREAKS WITH POLICY POST",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-11-twitter-16h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-11 16:00 UTC",
-    "headline": "UK INFERENCE-CHIP STARTUP FRACTILE AI IN TALKS TO RAISE $200M AT $1B VALUATION",
-    "source": "@ElectronicsNews",
-    "source_file": "research/summaries/2026-05-11-twitter-16h-headlines.json",
-    "url": "https://x.com/ElectronicsNews/status/2053869065802858569"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-11 16:00 UTC",
     "headline": "MICRON MARKET CAP CROSSES $900B \u2014 JOINS SK HYNIX IN MEMORY SUPER-CYCLE MEGA-CAP CLUB",
@@ -24476,5 +24422,47 @@
     "headline": "WSJ: U.S. AND CHINA AGREE AI NEEDS GUARDRAILS AHEAD OF TRUMP-XI SEPT. 24",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2100936647907090705"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-18 20:50:37 UTC",
+    "headline": "ANTHROPIC AND ACCENTURE EACH PLEDGE $1B OVER 5 YEARS FOR EMBEDDED FRONTIER EVAL",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2101039819870937247"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-18 20:50:37 UTC",
+    "headline": "CNN: AI CHATBOT INTEL REPORT NEARLY TRIGGERED US INTERCEPT OF A CHINESE SHIP",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2101021606390689920"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-18 20:50:37 UTC",
+    "headline": "CLAUDE CODE 2.1.277 READS AGENTS.MD WHEN CLAUDE.MD IS MISSING",
+    "source": "@trq212",
+    "url": "https://x.com/trq212/status/2101009392611278961"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-18 20:50:37 UTC",
+    "headline": "XAI SHIPS GROK VOICE TRANSCRIBE 2.0; STT PRICE STAYS $0.10/$0.20 PER HOUR",
+    "source": "@SpaceXAI",
+    "url": "https://x.com/SpaceXAI/status/2101005248311726387"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-18 20:50:37 UTC",
+    "headline": "EPOCH MARKS FIRST FRONTIERMATH OPEN-PROBLEMS MAJOR ADVANCE VIA GPT-6 ASTRA",
+    "source": "@EpochAIResearch",
+    "url": "https://x.com/EpochAIResearch/status/2100986494873989227"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-18 20:50:37 UTC",
+    "headline": "OPENAI: CHROME EXTENSIONS NOW RUN IN CHATGPT DESKTOP IN-APP BROWSER",
+    "source": "@JamesZmSun",
+    "url": "https://x.com/JamesZmSun/status/2100995281097769216"
   }
 ]
