@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 13:00 UTC",
-    "headline": "THE INFORMATION: XAI CUTS STAFF ON GROK AND DATA CENTERS, HIGH-PROFILE RESEARCHERS DEPART",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-11-twitter-13h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053822528469016769"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-11 13:00 UTC",
-    "headline": "ANTHROPIC RELUCTANT TO GIVE EU ACCESS TO MYTHOS MODEL \u2014 OPENAI ALREADY BIDDING CYBER MODEL IN EU TALKS",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-11-twitter-13h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2053812049730568468"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-11 13:00 UTC",
-    "headline": "ANTHROPICAI SILENCE HITS 67H AS OPENAI BREAKS WITH MAJOR LAUNCH \u2014 72H INCIDENT THRESHOLD HOURS AWAY",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-11-twitter-13h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 13:00 UTC",
-    "headline": "SIERRA RAISES $950M LED BY TIGER GLOBAL AND GV AT $15B+ VALUATION \u2014 40% OF FORTUNE 50 NOW CUSTOMERS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-11-twitter-13h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053824256715170214"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-11 13:00 UTC",
-    "headline": "SK HYNIX MARKET CAP CROSSES $900 BILLION ON HBM SUPER-CYCLE",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-11-twitter-13h-headlines.json",
-    "url": "https://x.com/jukan05/status/2053796170968019348"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-11 16:00 UTC",
     "headline": "GEMINI OMNI LEAK HARDENS \u2014 TESTINGCATALOG NAMES WATERMARK REMOVAL, OBJECT REPLACEMENT, IN-CHAT VIDEO EDIT AHEAD OF GOOGLE I/O",
@@ -24486,5 +24441,40 @@
     "headline": "REUTERS: SK HYNIX'S SOLIDIGM WEIGHS FIRST U.S. NAND FAB",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2100818559735931321"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-18 16:19:25 UTC",
+    "headline": "ANTHROPIC CONFIRMS BAY AREA WET LAB \u2014 WANTS CLAUDE TO DIRECT LAB ROBOTS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2100909694759936384"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-18 16:19:25 UTC",
+    "headline": "NYT: ANTHROPIC TOLD INVESTORS ~5GW COMPUTE BY YEAR-END, ~10GW BY END-2027",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2100950968615711214"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-18 16:19:25 UTC",
+    "headline": "TSINGHUA'S NAIVE AI HITS $1.42B; TENCENT-BACKED OPEN-WEIGHT LLM DUE THIS MONTH",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2100921364588683656"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-18 16:19:25 UTC",
+    "headline": "NVIDIA AGORA: 13 AGENTS, 12 DAYS, 1,703 GIT COMMITS CLOSE 62% OF GPT-2 GAP",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2100979608820519042"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-18 16:19:25 UTC",
+    "headline": "WSJ: U.S. AND CHINA AGREE AI NEEDS GUARDRAILS AHEAD OF TRUMP-XI SEPT. 24",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2100936647907090705"
   }
 ]
