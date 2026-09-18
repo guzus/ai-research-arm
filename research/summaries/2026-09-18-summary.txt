@@ -1,15 +1,15 @@
 AI News - 2026-09-18
 
 TOP STORIES:
-• Crusoe $3.9B Series F at $30.9B for data centers and modular “AI factories”
-• Figure Helix 2.5: 9%→56% zero-shot household success across 30 unseen homes
-• Anthropic: Claude authors >80% of merged prod lines; 4× biomolecular kernels
-• WSJ: Hacktron used Claude Opus 5 to open a PoC PR in OpenAI’s monorepo
-• 42 Royal Society fellows warn existential AI risk is “real and urgent”
+• Newsom EO: 2-month panel on AI kill switch, on-site auditors, loss-of-control reporting
+• Anthropic’s first embedded evaluator is Accenture/Faculty; ≥$1B each over 5 years
+• Virginia EO 22: data-center NDA ban, >25 MW local approval, new AI Task Force
+• Meta Muse ships on Mac; Disney names ex-Character.AI CEO Anand first CTO
+• Crusoe $3.9B Series F at $30.9B; Manus in talks for $500M at $4B
 
 KEY NUMBERS:
-• Crusoe: $3.9B / $30.9B; Raindrop Series A to $50M total (CRV)
-• Helix 2.5: 56% vs 9%; Qwen3.8-Omni-Flash 1M ctx, WildClawBench-MM 71.0
-• Anthropic: 8× code/engineer/day vs 2024; Fast-mode ~4.1× on 13 structure models
+• Accenture/Faculty: ≥$1B / 5 years each; Crusoe $3.9B / $30.9B
+• Helix 2.5: 56% vs 9% zero-shot; Qwen3.8-Omni-Flash 1M ctx
+• FARSIGHT: 80% of 15 trading-agent schemes fail robustness; 100% have security holes
 
 Full report on GitHub.
