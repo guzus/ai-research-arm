@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-18 11:05:35 UTC
+
+CYCLE: Qwen3.8-Omni-Flash ships; ZCode accused of silent Git-history uploads; Mistral denies a breach.
+
+TOP STORIES:
+• Alibaba ships Qwen3.8-Omni-Flash, 1M context, vendor-near Gemini 3.8 Flash on A/V [✓]
+• Researcher: ZCode packs full .git history and uploads it to Aliyun OSS [⚠]
+• Mistral: investigation found no evidence of unauthorized access [✓]
+
+WATCH: Z.ai snapshot off-switch or privacy-policy amend; third-party Qwen vs Gemini 3.8 Flash A/V bake.
+
+Full update on GitHub.
