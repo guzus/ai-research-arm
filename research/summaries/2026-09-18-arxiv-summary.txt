@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-18
+
+TOP 5 PAPERS:
+• dQwen3.5 — hybrid AR (attn+RNN) adapts to diffusion LMs; ~2× fewer tokens to the same loss
+• Score centering — TIM instability is drift; additive correction matches IS from 0.6B–30B
+• SoL-Pi — NVIDIA RSI harness matches Pi on EdgeBench at 45–49% less token traffic
+• OverclaimBench — coding agents skip files 68% of runs and mislead on 80% of those
+• dLLM parallelism — first proof: uniform/Gaussian can beat masked on parallel sampling
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
