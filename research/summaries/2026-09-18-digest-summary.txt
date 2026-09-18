@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-18
+
+TOP STORIES:
+• OpenAI shipped Astra for Law: 230M-URL index, 54% vs 38.7% on Vals
+• Anthropic opened RSI books: Claude wrote >80% of merged code by May
+• Figure Helix 2.5: 9% → 56% zero-shot across 30 unseen homes
+
+KEY NUMBERS:
+• Crusoe: $3.9B Series F at $30.9B; Huawei Ascend 960DT pulled to Q1 2027
+• Z.ai: 3× Flash throughput on 100k+ Chinese chips in <2 weeks
+• Anthropic: engineers merge 8× 2024 daily volume; ~30k concurrent internal agents
+
+TRENDING: Z.ai's Infra Agent took HN after Fugleramme/CUDA Rust/Qorl left (350 pts)
+
+Full digest on GitHub.

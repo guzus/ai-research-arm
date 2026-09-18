@@ -1,0 +1,9 @@
+Speaker 1: Friday, September eighteenth, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI shipped Astra for Law overnight, a two hundred thirty million URL legal index that scores [emphasis] fifty-four percent [/emphasis] on Vals against a thirty-eight point seven percent prior bar.
+Speaker 1: Anthropic opened the RSI books, and Claude had written more than [emphasis] eighty percent [/emphasis] of merged code by May.
+Speaker 2: Worth noting that their engineers now merge eight times the twenty twenty-four daily volume, with about thirty thousand concurrent internal agents.
+Speaker 1: On the robotics front, Figure's Helix two point five jumped from nine percent to fifty-six percent zero-shot across thirty unseen homes.
+Speaker 2: [dramatic_pause] That's the first time we've seen a household robot close that gap that fast.
+Speaker 1: Some quick numbers. Crusoe closed a three point nine billion dollar Series F at [emphasis] thirty point nine billion dollars [/emphasis], and Huawei pulled the Ascend nine sixty D T into the first quarter of twenty twenty-seven.
+Speaker 2: [high_energy] Z.ai, meanwhile, tripled Flash throughput on more than one hundred thousand Chinese chips in less than two weeks, and its Infra Agent ran away after Fugleramme, CUDA Rust, and Qorl left.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
