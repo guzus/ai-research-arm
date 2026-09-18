@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 07:00 UTC",
-    "headline": "ANTHROPIC CORP CHANNEL CROSSES 60-HOUR SILENCE THRESHOLD \u2014 NO IN-WINDOW RESPONSE TO MYTHOS/METR/COLOSSUS BACKLOG",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-11-twitter-07h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2052808787514228772"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-11 07:00 UTC",
-    "headline": "KOREA MEMORY EXPORT PRICES GO VERTICAL \u2014 DRAM +35%, FLASH +47%, SSDS +140% IN ONE MONTH (UNVERIFIED MAGNITUDE)",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-11-twitter-07h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2053739253331292454"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-11 07:00 UTC",
-    "headline": "OLLAMA 'BLEEDING LLAMA' FLAW LETS REMOTE ATTACKERS LEAK AI SERVER MEMORY INCLUDING API KEYS AND PROMPTS",
-    "source": "@TechNadu",
-    "source_file": "research/summaries/2026-05-11-twitter-07h-headlines.json",
-    "url": "https://x.com/TechNadu/status/2053739648669954500"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 10:00 UTC",
-    "headline": "CEREBRAS LIFTS IPO BAND SECOND TIME IN 72H TO $150-$160 \u2014 TARGETS $40B VALUATION, $4.8B RAISE, 20X OVERSUBSCRIBED",
-    "source": "@dnystedt",
-    "source_file": "research/summaries/2026-05-11-twitter-10h-headlines.json",
-    "url": "https://x.com/dnystedt/status/2053610951749017887"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-11 10:00 UTC",
-    "headline": "CODEX 'ULTRA-FAST' MODE SPOTTED IN GITHUB DIFF \u2014 ATTRIBUTED TO CEREBRAS-POWERED 500-2,000 TPS TIER",
-    "source": "@BennettBuhner",
-    "source_file": "research/summaries/2026-05-11-twitter-10h-headlines.json",
-    "url": "https://x.com/BennettBuhner/status/2053756809370910923"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-05-11 10:00 UTC",
     "headline": "ANTHROPIC CORP CHANNEL HITS 64.5H DARK \u2014 72H 'INCIDENT' THRESHOLD AT MON 17:52 UTC AS METR/COLOSSUS/MUSK-TRIAL BACKLOG STACKS",
@@ -24508,5 +24463,40 @@
     "headline": "CRUSOE CLOSES $3.9B SERIES F AT $30.9B VALUATION, NVIDIA IN THE ROUND",
     "source": "@perspez",
     "url": "https://x.com/perspez/status/2100692124576428341"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-18 04:34:19 UTC",
+    "headline": "WSJ: HACKTRON USED OPUS 5 TO OPEN A PR IN OPENAI'S INTERNAL MONOREPO",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2100773011855134828"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-18 04:34:19 UTC",
+    "headline": "ANTHROPIC: CLAUDE SPED UP 30+ BIO MODELS ~4X, OPEN-SOURCES FLASHPAIRFORMER",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2100701581109072332"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-18 04:34:19 UTC",
+    "headline": "META SHIPS STANDALONE MUSE FOR MAC WITH COMPUTER USE \u2014 STILL US-ONLY",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2100714048329580957"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-18 04:34:19 UTC",
+    "headline": "ELON: GROK BOT NOW HAS A VOICE",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2100698004210475317"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-18 04:34:19 UTC",
+    "headline": "PRISMML BONSAI 2 27B FITS QWEN3.8-27B IN 5.9GB, CLAIMS 98.2% RETENTION",
+    "source": "@TheAhmadOsman",
+    "url": "https://x.com/TheAhmadOsman/status/2100739368839200787"
   }
 ]
