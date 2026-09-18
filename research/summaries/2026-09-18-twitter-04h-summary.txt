@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-18 04:34:19 UTC
+
+CYCLE: WSJ: researchers used Opus 5 to reach OpenAI's monorepo; Anthropic open-sources 4x bio kernels; Muse ships on Mac.
+
+TOP STORIES:
+• WSJ/Hacktron: Opus 5 chained a forum+SSO bug to an OpenAI employee Codex PR [✓]
+• Anthropic: Claude sped up 30+ biomolecular models ~4x; code open-sourced [✓]
+• Meta ships Muse for Mac with computer use, still US-only [✓]
+
+WATCH: OpenAI security note on the Community-token fix, or a third-party 4.1× bio-kernel bake.
+
+Full update on GitHub.
