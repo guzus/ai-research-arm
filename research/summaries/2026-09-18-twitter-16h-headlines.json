@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC CONFIRMS BAY AREA WET LAB — WANTS CLAUDE TO DIRECT LAB ROBOTS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2100909694759936384",
+    "category": "breaking"
+  },
+  {
+    "headline": "NYT: ANTHROPIC TOLD INVESTORS ~5GW COMPUTE BY YEAR-END, ~10GW BY END-2027",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2100950968615711214",
+    "category": "infra"
+  },
+  {
+    "headline": "TSINGHUA'S NAIVE AI HITS $1.42B; TENCENT-BACKED OPEN-WEIGHT LLM DUE THIS MONTH",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2100921364588683656",
+    "category": "model"
+  },
+  {
+    "headline": "NVIDIA AGORA: 13 AGENTS, 12 DAYS, 1,703 GIT COMMITS CLOSE 62% OF GPT-2 GAP",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2100979608820519042",
+    "category": "research"
+  },
+  {
+    "headline": "WSJ: U.S. AND CHINA AGREE AI NEEDS GUARDRAILS AHEAD OF TRUMP-XI SEPT. 24",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2100936647907090705",
+    "category": "policy"
+  }
+]

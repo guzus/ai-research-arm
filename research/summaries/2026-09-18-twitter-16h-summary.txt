@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-18 16:19:25 UTC
+
+CYCLE: Anthropic confirms a Bay Area wet lab and, per NYT, a 5GW year-end compute target; Tsinghua's Naive AI prints $1.42B.
+
+TOP STORIES:
+• Reuters: Anthropic wet lab confirmed; Claude directing lab robots is "early innings" [✓]
+• NYT: Anthropic told investors ~5GW by year-end, ~10GW by end-2027 [⚠]
+• Tsinghua's Naive AI, Tencent-backed, $1.42B; first open-weight LLM due this month [⚠]
+
+WATCH: Anthropic naming BSL/size or a first wet-lab protocol; Naive AI weights.
+
+Full update on GitHub.
