@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-11 21:00 UTC",
-    "headline": "JOHN SCHULMAN CONFIRMS THINKY 'FULL-DUPLEX MULTIMODAL MODELS' \u2014 SEE-AND-HEAR CONTINUOUS, RESPOND IN REAL-TIME",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-11-twitter-21h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2053941584383877377"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-11 21:00 UTC",
-    "headline": "THE INFORMATION: CEREBRAS EXPECTED TO GO PUBLIC AT $35B VALUATION, BELOW PRIOR $40B CHATTER, PRICING WEDNESDAY",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-11-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2053935701339595208"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-11 21:00 UTC",
-    "headline": "JUKAN05: TESLA AI6 TSMC ALLOCATION TO TRANSFER ENTIRELY TO INTEL FOUNDRY UNDER TRUMP-ADMIN PRESSURE",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-11-twitter-21h-headlines.json",
-    "url": "https://x.com/jukan05/status/2053923807040328073"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-11 21:00 UTC",
     "headline": "CLAUDE CODE SHIPS PARALLEL-AGENT 'AGENT VIEW' \u2014 DISPATCH MANY SKILLS AT ONCE, PEEK AND REPLY UX",
@@ -24446,5 +24419,26 @@
     "headline": "VERCEL PUTS JEV ON AI GATEWAY FREE UNTIL SEPT 25 AFTER FASTEST-EVER ADOPTION",
     "source": "@rauchg",
     "url": "https://x.com/rauchg/status/2101116978677285241"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-19 20:33:16 UTC",
+    "headline": "TRUMP SAYS HE IS FORMING AN AI FORCE AND WILL NAME AN AI CZAR",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2101368015128596877"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-19 20:33:16 UTC",
+    "headline": "OPENAI PRODUCT LEAD: DELAYED SHIP STILL COMING TUESDAY; USAGE RESET SIGNALED",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2101356018265452945"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-19 20:33:16 UTC",
+    "headline": "TRUMP POLL ASKS TO RENAME AI SUPERIOR, EXTREME, OR SUPREME INTELLIGENCE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2101336562420289666"
   }
 ]
