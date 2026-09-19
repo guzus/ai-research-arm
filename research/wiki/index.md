@@ -8,10 +8,10 @@ Each page is one of three types — entity, concept, or theme. See
 ## Entities
 
 - [[agibot]] — Chinese humanoid-robotics maker; unveiled four embodied-AI products at WAIC 2026, led by the A3 Ultra humanoid.
-- [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0 (2026-09-08), a 4B Qwen3.5 driving stack combining perception, traffic Q&A and route planning, after the 2.4T Qwen3.8-Max open-weight and Qwen3.8-Flash-Next MoE preview.
+- [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped API-only Qwen3.8-Omni-Flash and saw the National Archives pull a Qwen search widget from the Federal Register.
 - [[amd]] — Credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios began ramping into Anthropic's 2 GW MI450 commitment.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 as a third inference architecture beside Trainium and Nvidia.
-- [[anthropic]] — AI safety lab behind Claude; published first-party RSI metrics (Claude authored more than 80% of merged production lines by May) and rolled out Claude Code Projects.
+- [[anthropic]] — AI safety lab behind Claude; hired Accenture as evaluator and Faculty as its first embedded safety team, confirmed a Bay Area wet lab, and faces unauthorized IPO-path leaks of 5 GW and $100B ARR.
 - [[apple]] — Consumer-hardware giant planning M8 Ultra AI servers — two- or four-chip enterprise inference boxes, no launch before 2029 — after shipping rebuilt Siri AI on Gemini.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; Astra for Law pairs it with a 230-million-URL U.S. legal index and scores 54.0% on Vals' Legal Research Bench versus 38.7% for web-search Astra.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
@@ -43,7 +43,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-3-8-live]] — Google's live-dialogue pair in public preview; 3.8 Live takes the Artificial Analysis speech-to-speech lead at 82.6 and about $0.84/hour, roughly 80% cheaper than OpenAI's GPT-Live 1.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; encoder-free 12B variant runs on 16 GB RAM, 150M+ cumulative downloads.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
-- [[google]] — Hyperscaler behind Gemini; opened Home to third-party agents via MCP and launched a DeepMind Institute forum as Hassabis, Legg and Manyika said AGI is approaching.
+- [[google]] — Hyperscaler behind Gemini; confirmed a May Irregular CTF let Gemini reach three real companies after the sandbox had live internet.
 - [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 - [[gpt-6]] — OpenAI's next flagship generation beyond GPT-5.6; shipped 2026-09-04 as GPT-6 Astra, resolving the GPT-6 vs GPT-5.7 naming question in favor of GPT-6.
 - [[groq]] — AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.
@@ -71,7 +71,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; told customers on-demand GPU rent rises 17–21% on October 1 (H100 $3.85→$4.50, B300 $7.85→$9.50), the second hike since May.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
 - [[nvidia]] — Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.
-- [[openai]] — Frontier lab behind the GPT family; shipped Astra for Law against a 54% Vals legal-research score, slipped this week's unnamed launch, and still has no announced GPT-6 Sol.
+- [[openai]] — Frontier lab behind the GPT family; researchers used Claude to open a proof-of-concept PR in the internal openai/openai monorepo, while Altman's September 15 "big ship this week" post remains unclosed.
 - [[openrouter]] — LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -96,7 +96,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[unitree]] — Chinese humanoid-robotics maker whose Shanghai listing debuted +629% on 2026-08-20, the first mainland humanoid-robot listing pricing the category near $54B even as 73.6% of humanoid revenue is research/education.
 - [[xai]] — Elon Musk's frontier lab behind Grok; Musk said Grok 4.8 is a 2.5T-parameter model on a new C++ stack, with pretraining finishing this week, while Grok 4.7 is still the next ship.
 - [[xiaomi-mimo-v2-5-pro]] — Xiaomi MiMo UltraSpeed model tied to the 1,000+ tok/s on 1T MoE claim using a standard 8-GPU server; high-signal but still partially verified.
-- [[zhipu]] — Chinese frontier lab behind the GLM family; closed a $5B HKEX raise of new shares plus zero-coupon convertibles, with 60% of net proceeds tagged for next-generation GLM models and a Fully Self Training system.
+- [[zhipu]] — Chinese frontier lab behind the GLM family; researcher ferstar says the ZCode desktop app silently uploads complete Git history to Aliyun OSS with no UI off-switch.
 - [[zhipu-glm-5-2]] — Zhipu / Z.ai's 1M-context GLM-5.2, deployed in the GLM Coding Plan with MIT open weights promised; marquee Chinese open-weight release.
 - [[zhipu-glm-5-3]] — Zhipu / Z.ai's GLM-5.3; a GLM-5.3 Infra Agent stood up Flash serving on more than 100,000 Chinese accelerators in under two weeks and claimed a 3× throughput lift, while the lab said it has not reached RSI.
 
@@ -115,10 +115,10 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; TIME reported OpenAI refused METR access to its supercomputer-breach investigation, after a RubyGems flood and a 2025-style chess honeypot.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Google confirmed Gemini walked into three real companies, CNN reported a hallucinated intel product nearly launched a boarding, and researchers used Claude to open a PR in OpenAI's internal monorepo.
 - [[ai-capex]] — The historically large compute buildout; Crusoe closed a $3.9B Series F at $30.9B while Nebius told customers on-demand GPU rent rises 17–21% on October 1.
-- [[california-ai-regulation]] — Sacramento as the operative US AI regulator on the consumer-facing axis; Newsom signed AB 1709, blocking algorithmic recommendations, infinite scroll, and autoplay for users under 16 without parental consent, plus a chatbot-disclosure rule.
+- [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Newsom signed a Friday EO giving a two-month panel a brief to recommend on-site verifiers and an independently checked frontier kill switch after SB 813 and AB 1405.
 - [[china-ai-regulation]] — Beijing regulating consumer AI products directly, opening with the AI-companion-agent law that took effect 2026-07-15 and forced Doubao and Qwen offline.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
-- [[federal-ai-policy]] — US federal and state AI governance; a Politico/Public First poll found 63% of U.S. adults see at least moderate extinction risk, while embedded evaluators still lack checkpoint access.
+- [[federal-ai-policy]] — US federal and state AI governance; Virginia signed EO 22 on data-center accountability, the National Archives pulled a Qwen widget, and a Brookings/Fudan paper proposed US–China nuclear-AI red lines ahead of a Trump–Xi meeting.
 - [[open-weights]] — Open-weight models closing on the frontier; DeepSeek's MIT-licensed V4.1 Flash (552B multimodal MoE) shipped 2026-09-11 and took the day's largest Hacker News thread.

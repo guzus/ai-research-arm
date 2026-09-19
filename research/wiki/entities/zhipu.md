@@ -2,12 +2,13 @@
 slug: zhipu
 title: Zhipu / Z.ai
 type: entity
-aliases: [Zhipu, "Zhipu AI", "Z.ai"]
+aliases: [Zhipu, "Zhipu AI", "Z.ai", ZCode]
 tags: [frontier-lab, china, open-weights, funding]
-description: Chinese frontier lab behind the GLM family; closed a $5B HKEX raise of new shares plus zero-coupon convertibles, with 60% of net proceeds tagged for next-generation GLM models and a Fully Self Training system.
+description: Chinese frontier lab behind the GLM family; researcher ferstar says the ZCode desktop app silently uploads complete Git history to Aliyun OSS with no UI off-switch.
 created_at: 2026-09-14
-timestamp: 2026-09-14T00:00:00Z
+timestamp: 2026-09-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
 ---
 
@@ -43,6 +44,25 @@ of Claude, GPT, Gemini and Grok. See [[federal-ai-policy]] and
   financing still sitting on [[anthropic]] (~$100B IPO) and
   [[discovery-loop]] (~$50B ask). Closed terms beat shopped
   numbers.
+
+- **ZCode silently uploaded Git history
+  (2026-09-19).** Researcher ferstar says the
+  logged-in desktop app packs the whole
+  workspace — complete `.git` history, LFS,
+  reflogs — encrypts it with a server-held key,
+  and PostObjects the ciphertext to Aliyun OSS
+  with **no UI off-switch**. One capture was
+  **313 MB from a 345 MB repo** (86.6% `.git`).
+  `chattr +i` / `chflags uchg` on
+  `~/.zcode/v2/checkpoints` stopped recapture in
+  his writeup; chat and tools kept working. Z.ai
+  had not replied in this window. This is a
+  **collection-behavior claim against the
+  shipping IDE**, not a GLM weight drop — the
+  same "wrap the agent, don't trust it" pattern
+  [[agentic-ai-security]] logged for Grok Build
+  on 2026-07-14. See [[zhipu-glm-5-3]] (ferstar,
+  HN 236 pts; ARA daily digest 2026-09-19).
 
 ## Open questions
 

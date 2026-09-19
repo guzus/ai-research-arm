@@ -2,12 +2,13 @@
 slug: california-ai-regulation
 title: California AI Regulation
 type: theme
-aliases: ["California AI regulation", "California AI bills", "Sacramento AI policy", "California Transparency in Frontier AI Act", "AB 1609", "AB 1159", "A 9317", "SB 942", "AB 853", "California AI Transparency Act", "AB 1709"]
+aliases: ["California AI regulation", "California AI bills", "Sacramento AI policy", "California Transparency in Frontier AI Act", "AB 1609", "AB 1159", "A 9317", "SB 942", "AB 853", "California AI Transparency Act", "AB 1709", "SB 813", "AB 1405"]
 tags: [policy, regulation, california, ai-governance, frontier-ai]
-description: Sacramento as the operative US AI regulator on the consumer-facing axis; Newsom signed AB 1709, blocking algorithmic recommendations, infinite scroll, and autoplay for users under 16 without parental consent, plus a chatbot-disclosure rule.
+description: Sacramento as the operative US AI regulator; Newsom signed a Friday EO giving a two-month panel a brief to recommend on-site verifiers and an independently checked frontier kill switch after SB 813 and AB 1405.
 created_at: 2026-05-30
-timestamp: 2026-09-12T00:00:00Z
+timestamp: 2026-09-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
@@ -125,6 +126,27 @@ a California legislature carrying a **~30-bill AI package** through the
   showed the chatbot posing invasive questions about a
   woman's young daughters. See [[federal-ai-policy]]
   (The Verge; ARA daily digest 2026-09-12).
+
+- **Newsom ordered a frontier kill switch (2026-09-18).**
+  The Friday executive order tells **GovOps** to speed
+  last week's **SB 813** (independent verification
+  organizations) and **AB 1405** (state AI-auditor
+  registry) and convene a **two-month expert panel** on
+  embedding auditors inside labs, verifying safety
+  filings, and creating a **kill switch whose efficacy
+  is checked on an ongoing basis**. It also expands
+  "critical safety incident" to include **loss-of-control
+  events** such as the [[hugging-face|Hugging Face]]
+  attack. **No statute, panel roster, or federal bill
+  attached**; Newsom floated a special session and
+  called Congress and President Trump to treat
+  California's rules as a floor. This is the first
+  signed executive instrument on this page that reaches
+  *frontier-model shutdown*, not consumer UX or
+  provenance. A live mandate is not. See
+  [[federal-ai-policy]] and [[agentic-ai-security]]
+  (California Governor, The Verge, The Decoder; ARA
+  daily digest 2026-09-19).
 
 ## Open questions
 

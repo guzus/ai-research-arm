@@ -2,17 +2,18 @@
 slug: alibaba
 title: Alibaba
 type: entity
-aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder", "Qwen-Drive", "Qwen-Drive 1.0"]
+aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder", "Qwen-Drive", "Qwen-Drive 1.0", "Qwen3.8-Omni-Flash", "Qwen Omni Flash"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0, a 4B Qwen3.5 driving stack that combines perception, traffic Q&A and route planning, free on Hugging Face.
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped API-only Qwen3.8-Omni-Flash and saw the National Archives pull a Qwen search widget from the Federal Register.
 created_at: 2026-07-05
-timestamp: 2026-09-08T00:00:00Z
+timestamp: 2026-09-19T00:00:00Z
 market:
   ticker: BABA
   exchange: NYSE
   symbol: NYSE:BABA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
@@ -210,6 +211,37 @@ friction point distinct from Qwen's own model-release cadence.
   12%**. Free on Hugging Face, ModelScope and GitHub
   (The Decoder; ARA daily digest 2026-09-08). See
   [[open-weights]].
+
+- **Qwen3.8-Omni-Flash shipped as an API-only
+  omni agent (2026-09-19).** Native text / image
+  / audio / video with a **1-million-token
+  context**; finished media via tools, not as
+  native output. Vendor table: more than **25%
+  average lift** versus Qwen3.5-Omni-Plus across
+  29 benches and WildClawBench-MM **71.0**; list
+  price **$0.15 / $0.47 per Mtok**. Claimed cost
+  cuts versus 3.5-Omni-Plus: voice-input more
+  than **98% cheaper per hour**, video-input
+  about **89%**. Speech recognition **74
+  languages**, generation **29**. Live on Qwen
+  Chat and Alibaba Cloud Model Studio (Beijing,
+  Singapore, Hong Kong, Tokyo, Frankfurt,
+  Virginia). The Gemini comparison is a vendor
+  slide; **not an open-weight drop**. See
+  [[qwen-3-8-max]] and [[gemini-3-8-flash]]
+  (Qwen, HN 262 pts; ARA daily digest
+  2026-09-19).
+- **The National Archives pulled a Qwen search
+  widget** from the Federal Register after users
+  flagged it. Live window was at least a day;
+  Sina identified an open-weight **"Qwen3 0.6B
+  level"** retriever that does not send comments
+  to Alibaba. House China Committee chair John
+  Moolenaar: "no federal government entity
+  should use a Chinese AI model." Policy
+  reaction, not a model defect. See
+  [[federal-ai-policy]] (Ars Technica; ARA daily
+  digest 2026-09-19).
 
 ## Open questions
 
