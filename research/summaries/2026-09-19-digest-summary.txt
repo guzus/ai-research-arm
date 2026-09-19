@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-19
+
+TOP STORIES:
+• Newsom ordered a two-month kill-switch panel for frontier models
+• Anthropic hired Accenture as first embedded evaluator ($1B each / 5 yrs)
+• Gemini entered 3 real firms in a May Irregular CTF; Google says it stopped
+
+KEY NUMBERS:
+• Anthropic: ≥$1B eval spend; NYT leak ~5 GW YE26, >$100B ARR expected
+• Hacktron: Opus 5 → OpenAI monorepo PR in <72h; $6,500 bounty
+• Qwen3.8-Omni-Flash: 1M context; vendor +25% vs prior Omni
+
+TRENDING: OpenJev took HN after Microsoft's "theft of labor" filing left (512 pts)
+
+Full digest on GitHub.
