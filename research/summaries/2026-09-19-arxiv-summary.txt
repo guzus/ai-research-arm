@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-19
+
+TOP 5 PAPERS:
+• Alignment midtraining — 110B/1B-token stress test: a sliver of competing SFT erases AMT
+• Local SAE sparsity — unsupervised safety detection; 1% OOD calibration, 1–2% of neurons
+• SwitchSD — copy-intent probes (AUC>0.99) beat EAGLE3 by up to 15% throughput
+• COLT 2015 rates — Õ(1/T) Euclidean-Lipschitz over ℓ1-ball; smaller set DOES help
+• VLM frequency filter — verbose prompts broaden attention spectra; −70–81% drift
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
