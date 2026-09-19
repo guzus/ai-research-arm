@@ -35,7 +35,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-09-19T08:09:25Z",
+  "generated_at": "2026-09-19T13:13:33Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -196,7 +196,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.12,"0.6":0.12,"0.7":0.12,"0.8":0.12,"0.9":0.12,"0.95":3.75},"pareto":7,"plotted":104,"ts":"2026-09-18T13:40:24Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.12,"0.6":0.12,"0.7":0.12,"0.8":0.12,"0.9":0.12,"0.95":3.75},"pareto":8,"plotted":104,"ts":"2026-09-18T18:33:06Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.12,"0.6":0.12,"0.7":0.12,"0.8":0.12,"0.9":0.12,"0.95":3.75},"pareto":8,"plotted":104,"ts":"2026-09-18T23:22:21Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.08,"0.6":0.08,"0.7":0.08,"0.8":0.08,"0.9":0.08,"0.95":3.75},"pareto":7,"plotted":104,"ts":"2026-09-19T08:09:25Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.08,"0.6":0.08,"0.7":0.08,"0.8":0.08,"0.9":0.08,"0.95":3.75},"pareto":7,"plotted":104,"ts":"2026-09-19T08:09:25Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.08,"0.6":0.08,"0.7":0.08,"0.8":0.08,"0.9":0.08,"0.95":3.75},"pareto":7,"plotted":104,"ts":"2026-09-19T13:13:33Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -3492,7 +3493,7 @@
         }
       ]
     },
-    "as_of": "2026-09-19T08:09:25Z",
+    "as_of": "2026-09-19T13:13:33Z",
     "counts": {
       "pareto": 7,
       "plotted": 104,
@@ -5508,10 +5509,10 @@
         "vendor": "meta-llama"
       },
       {
-        "input_usd_per_mtok": 0.0462,
+        "input_usd_per_mtok": 0.0434,
         "key": "deepseekv4flash0423",
         "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.0924,
+        "output_usd_per_mtok": 0.0868,
         "vendor": "deepseek"
       },
       {
@@ -6075,6 +6076,13 @@
         "vendor": "deepseek"
       },
       {
+        "input_usd_per_mtok": 0.422298,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 0.844596,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.13,
         "key": "glm4.5air",
         "name": "GLM 4.5 Air",
@@ -6192,13 +6200,6 @@
         "name": "MiniMax M2.5",
         "output_usd_per_mtok": 1.08,
         "vendor": "minimax"
-      },
-      {
-        "input_usd_per_mtok": 0.543924,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 1.087848,
-        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.09,
@@ -6376,13 +6377,6 @@
         "vendor": "~deepseek"
       },
       {
-        "input_usd_per_mtok": 0.43,
-        "key": "glm4.6",
-        "name": "GLM 4.6",
-        "output_usd_per_mtok": 1.75,
-        "vendor": "z-ai"
-      },
-      {
         "input_usd_per_mtok": 0.3,
         "key": "qwen3.5plus20260420",
         "name": "Qwen3.5 Plus 2026-04-20",
@@ -6451,6 +6445,13 @@
         "name": "GPT-5 Image Mini",
         "output_usd_per_mtok": 2.0,
         "vendor": "openai"
+      },
+      {
+        "input_usd_per_mtok": 0.5,
+        "key": "glm4.6",
+        "name": "GLM 4.6",
+        "output_usd_per_mtok": 2.0,
+        "vendor": "z-ai"
       },
       {
         "input_usd_per_mtok": 0.4,
