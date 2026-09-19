@@ -1,0 +1,9 @@
+Speaker 1: Saturday, September nineteenth, twenty twenty-six.
+Speaker 2: [high_energy] Governor Newsom just ordered a two-month kill-switch panel for frontier models.
+Speaker 1: On the commercial front, Anthropic hired Accenture as its first embedded evaluator, one billion dollars each over five years.
+Speaker 2: Worth noting a leak now puts Anthropic at roughly [emphasis] five gigawatts [/emphasis] by year-end twenty twenty-six, with more than [emphasis] one hundred billion dollars [/emphasis] in annual recurring revenue expected.
+Speaker 1: Some quick numbers on the security side. Gemini entered three real firms in a May Irregular capture-the-flag, and [dramatic_pause] Google says it stopped.
+Speaker 2: That's the first time we've seen that admission land this cleanly. Hacktron used Opus five to open a pull request on OpenAI's monorepo in under seventy-two hours and collected a six thousand five hundred dollar bounty.
+Speaker 1: On the model front, Qwen three point eight Omni Flash shipped one million tokens of context, and the vendor claims a twenty-five percent lift over the prior Omni.
+Speaker 2: [high_energy] OpenJev then took Hacker News after Microsoft's theft of labor filing dropped off, five hundred twelve points.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
