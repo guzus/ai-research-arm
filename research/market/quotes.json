@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T11:37:11Z",
+  "generated_at": "2026-09-19T16:06:21Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-09-18T20:00:02Z",
@@ -14,7 +14,7 @@
       "ticker": "AAPL"
     },
     "NASDAQ:AMD": {
-      "asOf": "2026-09-18T20:00:01Z",
+      "asOf": "2026-09-18T20:00:02Z",
       "change": 14.73,
       "changePercent": 2.7023,
       "currency": "USD",
@@ -62,7 +62,7 @@
       "ticker": "CRWV"
     },
     "NASDAQ:GOOGL": {
-      "asOf": "2026-09-18T20:00:01Z",
+      "asOf": "2026-09-18T20:00:02Z",
       "change": 2.21,
       "changePercent": 0.6363,
       "currency": "USD",
