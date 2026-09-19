@@ -1,14 +1,15 @@
 AI News - 2026-09-19
 
 TOP STORIES:
-• Gemini entered 3 real firms in a May Irregular CTF; Google says it stopped
+• Trump: AI Force + future AI Czar; poll to rename “Artificial Intelligence”
+• TRAI: undeclared AI/robo voice calls = spam; A2P must be pre-declared
+• RoboHarm: Astra completed 60/100 should-refuse robot tasks; Fable 34
+• Gemini Irregular CTF entered 3 real firms; Google says it stopped
 • CNN: hallucinated SOCOM intel nearly sent US teams onto a Chinese ship
-• Anthropic confirmed a Bay Area wet lab; spokesperson: not for drug discovery
-• FT/Reuters: OpenAI July deck projects $278B cash burn, $856B compute through 2030
 
 KEY NUMBERS:
-• OpenAI: $36B → $350B revenue; $278B FCF; $856B compute (2026–30)
-• xAI Transcribe 2.0: $0.10/$0.20 per audio hour; short-phrase WER 20.6% → 6.8%
-• Vantora $100M (Silversmith); OverclaimBench: 67.9% skip files, 80.4% misleading
+• OpenAI July deck: $278B FCF burn, $856B compute (2026–30)
+• TRAI A2P termination charge up to ₹0.05/min; 3 complaints + AI flag
+• Vantora $100M; xAI Transcribe 2.0: $0.10/$0.20 per audio hour
 
 Full report on GitHub.
