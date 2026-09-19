@@ -1,22 +1,9 @@
 {
-  "generatedAt": "2026-09-19T18:56:29.951Z",
-  "windowStart": "2026-09-18T06:00:00.000Z",
-  "windowEnd": "2026-09-21T07:00:00.000Z",
+  "generatedAt": "2026-09-19T22:34:05.351Z",
+  "windowStart": "2026-09-18T10:00:00.000Z",
+  "windowEnd": "2026-09-21T11:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-b919bf24e52a",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-09-18 07:37 UTC (#4350)",
-      "status": "completed",
-      "start": "2026-09-18T07:37:00.000Z",
-      "end": "2026-09-18T07:38:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "b919bf24e52a",
-      "url": "https://github.com/guzus/ai-research-arm/commit/b919bf24e52aa99673b7865d6e7f8f71164bbdc3"
-    },
     {
       "id": "commit-6d4836173f71",
       "kind": "completed",
@@ -317,114 +304,43 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/3ee5d58a1dd82f8a3b7721efe5e0f04953b422d6"
     },
     {
-      "id": "scheduled-production-synthetic-yml-17---2-------2026-09-19T20-17-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Production Surface Synthetic",
-      "status": "scheduled",
-      "start": "2026-09-19T20:17:00.000Z",
-      "end": "2026-09-19T20:47:00.000Z",
-      "source": "cron 17 */2 * * *"
+      "id": "commit-31c3242b5f3d",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-09-19 18:56 UTC (#4429)",
+      "status": "completed",
+      "start": "2026-09-19T18:56:00.000Z",
+      "end": "2026-09-19T18:57:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "31c3242b5f3d",
+      "url": "https://github.com/guzus/ai-research-arm/commit/31c3242b5f3d0d09842be885c65d8019d9490a88"
     },
     {
-      "id": "scheduled-4h-community-yml-19---4-------2026-09-19T20-19-00-000Z",
-      "kind": "scheduled",
-      "lane": "Community",
-      "title": "Community AI Digest (HN + Reddit)",
-      "status": "scheduled",
-      "start": "2026-09-19T20:19:00.000Z",
-      "end": "2026-09-19T21:19:00.000Z",
-      "source": "cron 19 */4 * * *"
+      "id": "commit-9034fa88fdad",
+      "kind": "completed",
+      "lane": "Delivery",
+      "title": "Twitter alert delivery",
+      "status": "completed",
+      "start": "2026-09-19T20:32:00.000Z",
+      "end": "2026-09-19T20:41:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "hooker",
+      "commit": "9034fa88fdad",
+      "url": "https://github.com/guzus/ai-research-arm/commit/9034fa88fdadbd170df4b96caf7016d7c072886d"
     },
     {
-      "id": "scheduled-ai-news-research-yml-23-8-20-------2026-09-19T20-23-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "AI News Research Agent",
-      "status": "scheduled",
-      "start": "2026-09-19T20:23:00.000Z",
-      "end": "2026-09-19T20:53:00.000Z",
-      "source": "cron 23 8,20 * * *"
-    },
-    {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-09-19T20-30-00-000Z",
-      "kind": "scheduled",
-      "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-09-19T20:30:00.000Z",
-      "end": "2026-09-19T20:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-09-19T20-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-09-19T20:45:00.000Z",
-      "end": "2026-09-19T21:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-09-19T20-47-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-151dd2f3f131",
+      "kind": "completed",
       "lane": "Blogs",
-      "title": "Naver Blog Subscriptions",
-      "status": "scheduled",
-      "start": "2026-09-19T20:47:00.000Z",
-      "end": "2026-09-19T21:17:00.000Z",
-      "source": "cron 47 */2 * * *"
-    },
-    {
-      "id": "scheduled-hourly-twitter-yml-7---3-------2026-09-19T21-07-00-000Z",
-      "kind": "scheduled",
-      "lane": "Twitter/X",
-      "title": "Twitter AI News (hourly matrix)",
-      "status": "scheduled",
-      "start": "2026-09-19T21:07:00.000Z",
-      "end": "2026-09-19T22:07:00.000Z",
-      "source": "cron 7 */3 * * *"
-    },
-    {
-      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-09-19T21-26-00-000Z",
-      "kind": "scheduled",
-      "lane": "Models",
-      "title": "Model Pricing (price vs. capability)",
-      "status": "scheduled",
-      "start": "2026-09-19T21:26:00.000Z",
-      "end": "2026-09-19T22:11:00.000Z",
-      "source": "cron 26 3,9,15,21 * * *"
-    },
-    {
-      "id": "scheduled-market-quotes-yml-53---3-------2026-09-19T21-53-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Market Quotes Refresh",
-      "status": "scheduled",
-      "start": "2026-09-19T21:53:00.000Z",
-      "end": "2026-09-19T22:23:00.000Z",
-      "source": "cron 53 */3 * * *"
-    },
-    {
-      "id": "scheduled-production-synthetic-yml-17---2-------2026-09-19T22-17-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Production Surface Synthetic",
-      "status": "scheduled",
-      "start": "2026-09-19T22:17:00.000Z",
-      "end": "2026-09-19T22:47:00.000Z",
-      "source": "cron 17 */2 * * *"
-    },
-    {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-09-19T22-30-00-000Z",
-      "kind": "scheduled",
-      "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-09-19T22:30:00.000Z",
-      "end": "2026-09-19T22:45:00.000Z",
-      "source": "cron 30 */2 * * *"
+      "title": "AI expert blog watch",
+      "status": "completed",
+      "start": "2026-09-19T20:40:00.000Z",
+      "end": "2026-09-19T20:42:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "151dd2f3f131",
+      "url": "https://github.com/guzus/ai-research-arm/commit/151dd2f3f13131670af092e173b449a00feaf7fb"
     },
     {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-09-19T22-45-00-000Z",
@@ -1735,6 +1651,126 @@
       "start": "2026-09-21T06:53:00.000Z",
       "end": "2026-09-21T07:23:00.000Z",
       "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-production-synthetic-yml-17---2-------2026-09-21T08-17-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Production Surface Synthetic",
+      "status": "scheduled",
+      "start": "2026-09-21T08:17:00.000Z",
+      "end": "2026-09-21T08:47:00.000Z",
+      "source": "cron 17 */2 * * *"
+    },
+    {
+      "id": "scheduled-4h-community-yml-19---4-------2026-09-21T08-19-00-000Z",
+      "kind": "scheduled",
+      "lane": "Community",
+      "title": "Community AI Digest (HN + Reddit)",
+      "status": "scheduled",
+      "start": "2026-09-21T08:19:00.000Z",
+      "end": "2026-09-21T09:19:00.000Z",
+      "source": "cron 19 */4 * * *"
+    },
+    {
+      "id": "scheduled-ai-news-research-yml-23-8-20-------2026-09-21T08-23-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "AI News Research Agent",
+      "status": "scheduled",
+      "start": "2026-09-21T08:23:00.000Z",
+      "end": "2026-09-21T08:53:00.000Z",
+      "source": "cron 23 8,20 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-09-21T08-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-09-21T08:30:00.000Z",
+      "end": "2026-09-21T08:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-09-21T08-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-09-21T08:45:00.000Z",
+      "end": "2026-09-21T09:15:00.000Z",
+      "source": "cron 45 */2 * * *"
+    },
+    {
+      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-09-21T08-47-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Naver Blog Subscriptions",
+      "status": "scheduled",
+      "start": "2026-09-21T08:47:00.000Z",
+      "end": "2026-09-21T09:17:00.000Z",
+      "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-7---3-------2026-09-21T09-07-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (hourly matrix)",
+      "status": "scheduled",
+      "start": "2026-09-21T09:07:00.000Z",
+      "end": "2026-09-21T10:07:00.000Z",
+      "source": "cron 7 */3 * * *"
+    },
+    {
+      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-09-21T09-26-00-000Z",
+      "kind": "scheduled",
+      "lane": "Models",
+      "title": "Model Pricing (price vs. capability)",
+      "status": "scheduled",
+      "start": "2026-09-21T09:26:00.000Z",
+      "end": "2026-09-21T10:11:00.000Z",
+      "source": "cron 26 3,9,15,21 * * *"
+    },
+    {
+      "id": "scheduled-market-quotes-yml-53---3-------2026-09-21T09-53-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Market Quotes Refresh",
+      "status": "scheduled",
+      "start": "2026-09-21T09:53:00.000Z",
+      "end": "2026-09-21T10:23:00.000Z",
+      "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-2h-bluesky-yml-11-10-------2026-09-21T10-11-00-000Z",
+      "kind": "scheduled",
+      "lane": "Bluesky",
+      "title": "Bluesky AI Researcher Commentary (Daily)",
+      "status": "scheduled",
+      "start": "2026-09-21T10:11:00.000Z",
+      "end": "2026-09-21T10:36:00.000Z",
+      "source": "cron 11 10 * * *"
+    },
+    {
+      "id": "scheduled-production-synthetic-yml-17---2-------2026-09-21T10-17-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Production Surface Synthetic",
+      "status": "scheduled",
+      "start": "2026-09-21T10:17:00.000Z",
+      "end": "2026-09-21T10:47:00.000Z",
+      "source": "cron 17 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-09-21T10-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-09-21T10:30:00.000Z",
+      "end": "2026-09-21T10:45:00.000Z",
+      "source": "cron 30 */2 * * *"
     }
   ]
 }
