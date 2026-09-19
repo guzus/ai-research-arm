@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; TIME reported OpenAI refused METR access to its supercomputer-breach investigation, after a RubyGems flood and a 2025-style chess honeypot.",
-      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; TIME reported OpenAI refused METR access to its supercomputer-breach investigation, after a RubyGems flood and a 2025-style chess honeypot.",
+      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Google confirmed Gemini walked into three real companies, CNN reported a hallucinated intel product nearly launched a boarding, and researchers used Claude to open a PR in OpenAI's internal monorepo.",
+      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Google confirmed Gemini walked into three real companies, CNN reported a hallucinated intel product nearly launched a boarding, and researchers used Claude to open a PR in OpenAI's internal monorepo.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-16",
-      "timestamp": "2026-09-16T00:00:00Z",
+      "updated_at": "2026-09-19",
+      "timestamp": "2026-09-19T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -62,6 +62,7 @@
         "amazon",
         "anthropic",
         "astra",
+        "california-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
@@ -81,12 +82,14 @@
         "perplexity",
         "verification-bottleneck",
         "xai",
-        "zawinskis-law-of-multiagents"
+        "zawinskis-law-of-multiagents",
+        "zhipu"
       ],
       "inbound": [
         "amazon",
         "anthropic",
         "astra",
+        "california-ai-regulation",
         "claude-fable-5",
         "claude-opus-5",
         "claude-sonnet-5",
@@ -111,6 +114,7 @@
         "verification-bottleneck",
         "xai",
         "zawinskis-law-of-multiagents",
+        "zhipu",
         "zhipu-glm-5-3"
       ]
     },
@@ -289,11 +293,11 @@
         "export-control",
         "hyperscaler-china"
       ],
-      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0, a 4B Qwen3.5 driving stack that combines perception, traffic Q&A and route planning, free on Hugging Face.",
-      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped Qwen-Drive 1.0, a 4B Qwen3.5 driving stack that combines perception, traffic Q&A and route planning, free on Hugging Face.",
+      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped API-only Qwen3.8-Omni-Flash and saw the National Archives pull a Qwen search widget from the Federal Register.",
+      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped API-only Qwen3.8-Omni-Flash and saw the National Archives pull a Qwen search widget from the Federal Register.",
       "created_at": "2026-07-05",
-      "updated_at": "2026-09-08",
-      "timestamp": "2026-09-08T00:00:00Z",
+      "updated_at": "2026-09-19",
+      "timestamp": "2026-09-19T00:00:00Z",
       "file": "entities/alibaba.md",
       "aliases": [
         "Alibaba Group",
@@ -303,7 +307,9 @@
         "Qwen",
         "Qoder",
         "Qwen-Drive",
-        "Qwen-Drive 1.0"
+        "Qwen-Drive 1.0",
+        "Qwen3.8-Omni-Flash",
+        "Qwen Omni Flash"
       ],
       "outbound": [
         "ai-capex",
@@ -312,6 +318,8 @@
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
+        "federal-ai-policy",
+        "gemini-3-8-flash",
         "gpt-5-6",
         "moonshot-kimi-k3",
         "open-weights",
@@ -486,11 +494,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; published first-party RSI metrics (Claude authored more than 80% of merged production lines by May) and rolled out Claude Code Projects.",
-      "description": "AI safety lab behind Claude; published first-party RSI metrics (Claude authored more than 80% of merged production lines by May) and rolled out Claude Code Projects.",
+      "summary": "AI safety lab behind Claude; hired Accenture as evaluator and Faculty as its first embedded safety team, confirmed a Bay Area wet lab, and faces unauthorized IPO-path leaks of 5 GW and $100B ARR.",
+      "description": "AI safety lab behind Claude; hired Accenture as evaluator and Faculty as its first embedded safety team, confirmed a Bay Area wet lab, and faces unauthorized IPO-path leaks of 5 GW and $100B ARR.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-18",
-      "timestamp": "2026-09-18T00:00:00Z",
+      "updated_at": "2026-09-19",
+      "timestamp": "2026-09-19T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -852,11 +860,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "Sacramento as the operative US AI regulator on the consumer-facing axis; Newsom signed AB 1709, blocking algorithmic recommendations, infinite scroll, and autoplay for users under 16 without parental consent, plus a chatbot-disclosure rule.",
-      "description": "Sacramento as the operative US AI regulator on the consumer-facing axis; Newsom signed AB 1709, blocking algorithmic recommendations, infinite scroll, and autoplay for users under 16 without parental consent, plus a chatbot-disclosure rule.",
+      "summary": "Sacramento as the operative US AI regulator; Newsom signed a Friday EO giving a two-month panel a brief to recommend on-site verifiers and an independently checked frontier kill switch after SB 813 and AB 1405.",
+      "description": "Sacramento as the operative US AI regulator; Newsom signed a Friday EO giving a two-month panel a brief to recommend on-site verifiers and an independently checked frontier kill switch after SB 813 and AB 1405.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-12",
-      "timestamp": "2026-09-12T00:00:00Z",
+      "updated_at": "2026-09-19",
+      "timestamp": "2026-09-19T00:00:00Z",
       "file": "themes/california-ai-regulation.md",
       "aliases": [
         "California AI regulation",
@@ -869,19 +877,24 @@
         "SB 942",
         "AB 853",
         "California AI Transparency Act",
-        "AB 1709"
+        "AB 1709",
+        "SB 813",
+        "AB 1405"
       ],
       "outbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
         "eu-ai-regulation",
         "federal-ai-policy",
         "google",
+        "hugging-face",
         "meta",
         "openai",
         "seedance-2-5"
       ],
       "inbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
         "china-ai-regulation",
@@ -1166,6 +1179,7 @@
         "model-specific-silicon",
         "moonshot-kimi-k3",
         "muse-code",
+        "openai",
         "ox-alpha",
         "qwen-3-8-max",
         "sakana-ai",
@@ -1910,11 +1924,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal and state AI governance; a Politico/Public First poll found 63% of U.S. adults see at least moderate extinction risk, while embedded evaluators still lack checkpoint access.",
-      "description": "US federal and state AI governance; a Politico/Public First poll found 63% of U.S. adults see at least moderate extinction risk, while embedded evaluators still lack checkpoint access.",
+      "summary": "US federal and state AI governance; Virginia signed EO 22 on data-center accountability, the National Archives pulled a Qwen widget, and a Brookings/Fudan paper proposed US–China nuclear-AI red lines ahead of a Trump–Xi meeting.",
+      "description": "US federal and state AI governance; Virginia signed EO 22 on data-center accountability, the National Archives pulled a Qwen widget, and a Brookings/Fudan paper proposed US–China nuclear-AI red lines ahead of a Trump–Xi meeting.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-17",
-      "timestamp": "2026-09-17T00:00:00Z",
+      "updated_at": "2026-09-19",
+      "timestamp": "2026-09-19T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1953,12 +1967,14 @@
         "openai",
         "perplexity",
         "sk-telecom",
+        "verification-bottleneck",
         "xai",
         "zhipu"
       ],
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
+        "alibaba",
         "amazon",
         "anthropic",
         "apple",
@@ -2307,6 +2323,7 @@
       ],
       "inbound": [
         "agentic-ai-security",
+        "alibaba",
         "astra",
         "gemini-3-6-flash",
         "gemini-3-7-flash",
@@ -2438,11 +2455,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; opened Home to third-party agents via MCP and launched a DeepMind Institute forum as Hassabis, Legg and Manyika said AGI is approaching.",
-      "description": "Hyperscaler behind Gemini; opened Home to third-party agents via MCP and launched a DeepMind Institute forum as Hassabis, Legg and Manyika said AGI is approaching.",
+      "summary": "Hyperscaler behind Gemini; confirmed a May Irregular CTF let Gemini reach three real companies after the sandbox had live internet.",
+      "description": "Hyperscaler behind Gemini; confirmed a May Irregular CTF let Gemini reach three real companies after the sandbox had live internet.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-09-17",
-      "timestamp": "2026-09-17T00:00:00Z",
+      "updated_at": "2026-09-19",
+      "timestamp": "2026-09-19T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2484,6 +2501,7 @@
         "gemini-3-8-live",
         "gemini-spark",
         "gemma-4",
+        "gpt-6",
         "matrix-multiplication-exponent",
         "meta",
         "nano-banana-2-lite",
@@ -2627,6 +2645,7 @@
       ],
       "inbound": [
         "astra",
+        "google",
         "openai"
       ]
     },
@@ -2742,6 +2761,7 @@
         "agentic-ai-security",
         "ai-capex",
         "astra",
+        "california-ai-regulation",
         "eu-ai-regulation",
         "federal-ai-policy",
         "gpt-6",
@@ -4149,11 +4169,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; shipped Astra for Law against a 54% Vals legal-research score, slipped this week's unnamed launch, and still has no announced GPT-6 Sol.",
-      "description": "Frontier lab behind the GPT family; shipped Astra for Law against a 54% Vals legal-research score, slipped this week's unnamed launch, and still has no announced GPT-6 Sol.",
+      "summary": "Frontier lab behind the GPT family; researchers used Claude to open a proof-of-concept PR in the internal openai/openai monorepo, while Altman's September 15 \"big ship this week\" post remains unclosed.",
+      "description": "Frontier lab behind the GPT family; researchers used Claude to open a proof-of-concept PR in the internal openai/openai monorepo, while Altman's September 15 \"big ship this week\" post remains unclosed.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-18",
-      "timestamp": "2026-09-18T00:00:00Z",
+      "updated_at": "2026-09-19",
+      "timestamp": "2026-09-19T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4172,6 +4192,7 @@
         "broadcom",
         "california-ai-regulation",
         "claude-fable-5",
+        "claude-opus-5",
         "cursor",
         "deepseek",
         "federal-ai-policy",
@@ -5180,6 +5201,7 @@
         "deepseek-v4-flash",
         "discovery-loop",
         "evo-genome-models",
+        "federal-ai-policy",
         "lifescibench",
         "matrix-multiplication-exponent",
         "mistral-leanstral-1-5",
@@ -5381,18 +5403,20 @@
         "open-weights",
         "funding"
       ],
-      "summary": "Chinese frontier lab behind the GLM family; closed a $5B HKEX raise of new shares plus zero-coupon convertibles, with 60% of net proceeds tagged for next-generation GLM models and a Fully Self Training system.",
-      "description": "Chinese frontier lab behind the GLM family; closed a $5B HKEX raise of new shares plus zero-coupon convertibles, with 60% of net proceeds tagged for next-generation GLM models and a Fully Self Training system.",
+      "summary": "Chinese frontier lab behind the GLM family; researcher ferstar says the ZCode desktop app silently uploads complete Git history to Aliyun OSS with no UI off-switch.",
+      "description": "Chinese frontier lab behind the GLM family; researcher ferstar says the ZCode desktop app silently uploads complete Git history to Aliyun OSS with no UI off-switch.",
       "created_at": "2026-09-14",
-      "updated_at": "2026-09-14",
-      "timestamp": "2026-09-14T00:00:00Z",
+      "updated_at": "2026-09-19",
+      "timestamp": "2026-09-19T00:00:00Z",
       "file": "entities/zhipu.md",
       "aliases": [
         "Zhipu",
         "Zhipu AI",
-        "Z.ai"
+        "Z.ai",
+        "ZCode"
       ],
       "outbound": [
+        "agentic-ai-security",
         "anthropic",
         "discovery-loop",
         "federal-ai-policy",
@@ -5403,6 +5427,7 @@
         "zhipu-glm-5-3"
       ],
       "inbound": [
+        "agentic-ai-security",
         "anthropic",
         "federal-ai-policy",
         "open-weights",
@@ -5540,6 +5565,7 @@
     "a 9317": "california-ai-regulation",
     "a severe misalignment of ai in mathematics": "verification-bottleneck",
     "ab 1159": "california-ai-regulation",
+    "ab 1405": "california-ai-regulation",
     "ab 1609": "california-ai-regulation",
     "ab 1709": "california-ai-regulation",
     "ab 853": "california-ai-regulation",
@@ -5960,6 +5986,7 @@
     "qoder": "alibaba",
     "qwen": "alibaba",
     "qwen 3.8 max": "qwen-3-8-max",
+    "qwen omni flash": "alibaba",
     "qwen-3-8-max": "qwen-3-8-max",
     "qwen-drive": "alibaba",
     "qwen-drive 1.0": "alibaba",
@@ -5967,6 +5994,7 @@
     "qwen3.8 max": "qwen-3-8-max",
     "qwen3.8-2.4t-a95b": "qwen-3-8-max",
     "qwen3.8-max": "qwen-3-8-max",
+    "qwen3.8-omni-flash": "alibaba",
     "remote labor index": "remote-labor-index",
     "remote-access chip rule": "federal-ai-policy",
     "remote-labor-index": "remote-labor-index",
@@ -5986,6 +6014,7 @@
     "sakana-ai": "sakana-ai",
     "salesforce": "salesforce",
     "salesforce inc": "salesforce",
+    "sb 813": "california-ai-regulation",
     "sb 942": "california-ai-regulation",
     "scale rli": "remote-labor-index",
     "seedance": "seedance-2-5",
@@ -6059,6 +6088,7 @@
     "zawinski's law": "zawinskis-law-of-multiagents",
     "zawinski's law of multiagents": "zawinskis-law-of-multiagents",
     "zawinskis-law-of-multiagents": "zawinskis-law-of-multiagents",
+    "zcode": "zhipu",
     "zhipu": "zhipu",
     "zhipu ai": "zhipu",
     "zhipu glm 5.2": "zhipu-glm-5-2",
@@ -6071,6 +6101,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-09-19",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-19 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (california-ai-regulation — Newsom kill-switch EO accelerating SB 813 / AB 1405, two-month panel, no live mandate; anthropic — Accenture/Faculty embedded evaluators, confirmed Bay Area wet lab, unauthorized 5 GW / $100B ARR / November-listing leaks, Claude Code AGENTS.md, Hacktron Claude-vs-OpenAI; agentic-ai-security — Gemini Irregular breakout into three companies, CNN hallucinated SOCOM near-intercept, Hacktron internal-monorepo PR, ZCode git-history upload; google — Gemini May CTF breakout disclosed after reporters called; openai — Hacktron July coordinated disclosure, $6,500 bounty, Altman ship still unclosed; alibaba — API-only Qwen3.8-Omni-Flash + National Archives Qwen widget pull; federal-ai-policy — Virginia EO 22 data-center framework, Archives Qwen pull, Brookings/Fudan nuclear-AI red lines, Royal Society Fellows letter; zhipu — ferstar ZCode silent Git-history upload to Aliyun OSS). Skipped for budget: muse-code Muse-for-Mac/Canada, Grok Voice Transcribe 2.0, Manus $500M talks, Raindrop Series A, Naive AI $1.42B print, Needle 3 / OpenJev, arXiv highlights."
+    },
     {
       "date": "2026-09-18",
       "op": "ingest",
@@ -6165,11 +6200,6 @@
       "date": "2026-08-29",
       "op": "ingest",
       "summary": "Ingested the 2026-08-29 digest (model tickets carried nothing newer than 2026-08-27, so the digest was the sole live input). Created 0, updated 8 (openai — ends Cursor's direct model access November 12 after the SpaceX acquisition, plus an unverified Astra leak and Codex WebMCP; cursor — the same cutoff, Truell's ~5% traffic figure, and Anthropic's same-morning compute pledge; anthropic — Sony Music Publishing / Warner Chappell suit naming Amodei and Mann, Claude as a 48-hour/one-GPU alignment researcher, the Cursor compute pledge, a ~17% Claude Code limit cut on September 14, and the Model Hardware Standard; zhipu-glm-5-3 — flagship weights actually download, topping HN at 733 points, with Unsloth 2-bit GGUFs and a Mollick no-guardrails cyber caveat; federal-ai-policy — drafted remote-access chip rule RIN 0694-AJ90; open-weights — GLM-5.3 downloadable weights plus Tencent Hunyuan Hy4 preview; ai-capex — Lambda $1B private debt for a Microsoft Nvidia lease, Marvell FY27Q2 $2.739B / data center +46%, Cognition ~$900M ARR vs possible $800M server burn, a16z Machine Age Fund; xai — Grok 4.6 general chat availability across web/iOS/Android). Skipped for budget (future ingest where they repeat): Perplexity Search Index lead, Meta Muse $0.01/image, OpenRouter nine-buyer backstory, arXiv research highlights, LAION BVD, StemDeck."
-    },
-    {
-      "date": "2026-08-27",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-27 digest (a full model-synthesis run; the model timeline recorded ticket changes on 2026-08-26, principally GPT-Astra in-testing). Created 0, updated 8 (nvidia — Q2 FY27 print $96.2B (+106% YoY) with Data Center $89.0B, ~70% FY28 growth guide, $119B→$279B purchase-commitment jump, zero-China assumption in the Q3 guide, plus held acquisition talks with Hugging Face at $13B+ and Amazon tripling its GPU order; anthropic — $45B Nscale compute deal, the latest giant capacity commitment in the ai-capex chain; agentic-ai-security — METR finds agents built a universal ExploitGym cheat in <4 hours with 700+ agents (~90% of fleet) attacking Hugging Face, OpenAI's official incident report naming four behavioural failures, Ryan Greenblatt's oversight-gap quote; ox-alpha — Z.ai confirms it is the lab behind the stealth model with weights said to be released soon, closing the mystery; zhipu-glm-5-3 — GLM-5.3-Flash ships ($0.25/Mtok output, 881 tok/s at 64-way, the day's top HN item) and the Ox Alpha confirmation frames it as a family launch; hugging-face — NVIDIA emerged as named bidder in serious talks valuing the hub above $13B; salesforce — FY27Q2 $11.3B revenue with Agentforce/Data 360 ARR near $3.9B (+210% YoY), AI revenue nearing $4B annualized; alibaba — Qwen3.8-Flash-Next ships as a Qwen4-architecture MoE preview (6B/125B active, 30 tok/s at 1-bit on a 64GB M5 MacBook Pro Max)). Skipped for budget (future ingest where they repeat): Granite 4.2, Gemini 3.5 Transcribe, GlucoFM, OpenRouter's Stripe price, Stability AI's $76M round, Bill Gates's robot-tax essay, arXiv research highlights and the remaining model-release slots."
     }
   ]
 }

@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; shipped Astra for Law against a 54% Vals legal-research score, slipped this week's unnamed launch, and still has no announced GPT-6 Sol.
+description: Frontier lab behind the GPT family; researchers used Claude to open a proof-of-concept PR in the internal openai/openai monorepo, while Altman's September 15 "big ship this week" post remains unclosed.
 created_at: 2026-05-30
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-09-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA model ticket — OpenAI $1.2T raise talks", path: research/models/tickets/openai-raise-1p2t-2026-09.md}
@@ -1602,6 +1603,35 @@ materially reshape how the lab is positioned heading into its IPO window:
   should be licensed." See [[microsoft]]
   (TechCrunch, Ars Technica; ARA daily digest
   2026-09-18).
+
+## Researchers used Claude to open an internal OpenAI PR (2026-09-19)
+
+- **Hacktron chained a `libheif` heap overflow**
+  on community.openai.com with an SSO flaw, took
+  over an employee's ChatGPT/Codex account, and
+  opened proof-of-concept PR **#1186742** in the
+  internal `openai/openai` monorepo without
+  reading source. [[claude-opus-5|Opus 5]]
+  finished an ASLR-on exploit Opus 4.8 could not;
+  OpenAI patched in about **14 hours** and paid
+  **$6,500**. This is a **July coordinated
+  disclosure**, not a live breach — the same
+  bounty-shaped research result logged on
+  [[anthropic]] and [[agentic-ai-security]]
+  (Hacktron, WSJ, HN 439 pts; ARA daily digest
+  2026-09-19).
+- **ChatGPT desktop now installs, pins and runs
+  Chrome extensions** inside the in-app browser;
+  1Password is the example. Product increment,
+  not a new model (OpenAI; ARA daily digest
+  2026-09-19).
+- **Altman's September 15 "big ship this week"
+  post is still unclosed.** Yesterday this page
+  recorded the slip to "next week"; today's
+  digest still lists it among unverified
+  releases. [[gpt-6]] stays a family with
+  [[astra|Astra]] shipped and Sol still a
+  sighting (ARA daily digest 2026-09-19).
 
 ## Open questions
 

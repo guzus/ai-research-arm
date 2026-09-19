@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; a Politico/Public First poll found 63% of U.S. adults see at least moderate extinction risk, while embedded evaluators still lack checkpoint access.
+description: US federal and state AI governance; Virginia signed EO 22 on data-center accountability, the National Archives pulled a Qwen widget, and a Brookings/Fudan paper proposed US–China nuclear-AI red lines ahead of a Trump–Xi meeting.
 created_at: 2026-06-03
-timestamp: 2026-09-17T00:00:00Z
+timestamp: 2026-09-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
@@ -1159,6 +1160,75 @@ footing for the first time in the cycle.
   No new statute or signed pact. See
   [[eu-ai-regulation]] (European Commission, The
   Decoder; ARA daily digest 2026-09-17).
+
+## Virginia EO 22, an Archives Qwen pull, and nuclear-AI red lines (2026-09-19)
+
+- **No new federal statute, agency rule, or
+  docket order** on pacing, CATSR, or
+  independent-verification mandates cleared a
+  loadable primary. The live actions are
+  **state, procurement, and expert-paper**.
+- **Virginia Governor Abigail Spanberger signed
+  EO 22**, standing up an AI task force and a
+  **Data Center Accountability Framework** in
+  the country's largest cluster: ban executive-
+  branch NDAs, review backup generation, and
+  queue **2027 legislation that would end
+  by-right approval above 25 MW**. Piedmont
+  Environmental Council: the plan "does not
+  deal with what's already built and in the
+  pipeline." This is a **siting-and-power
+  instrument**, not a model-safety bill — the
+  same constraint [[ai-capex]] has tracked from
+  Texas interconnection pauses. See
+  [[california-ai-regulation]] for the parallel
+  frontier-safety track (Virginia Governor, The
+  Verge; ARA daily digest 2026-09-19).
+- **The National Archives pulled a Qwen search
+  widget** from the Federal Register after users
+  flagged it. Live window was at least a day;
+  Sina identified an open-weight **"Qwen3 0.6B
+  level"** retriever that does not send comments
+  to [[alibaba|Alibaba]]. House China Committee
+  chair John Moolenaar: "no federal government
+  entity should use a Chinese AI model." A
+  procurement retraction, not a statute (Ars
+  Technica; ARA daily digest 2026-09-19).
+- **US–China nuclear-AI red lines** from
+  Brookings' Melanie Sisson and Fudan's Tianjiao
+  Jiang ahead of the **24 September Trump–Xi
+  meeting**: no autonomous nuclear launch,
+  humans retain control of AI-driven
+  cyberattacks on strategic infrastructure, plus
+  an incident hotline. **Expert paper, not a
+  communiqué** (The Decoder, WSJ; ARA daily
+  digest 2026-09-19).
+- **Forty-two Royal Society Fellows**, including
+  Fields Medalists Martin Hairer, Peter Scholze
+  and Wendelin Werner, urged the Society to
+  treat existential AI risk as "real and
+  urgent," citing models solving open research
+  problems "including one of the seven
+  Millennium Problems." Separate from Timothy
+  Gowers's 17 September refusal of a different
+  Fields-medallists letter. See
+  [[verification-bottleneck]] (The Decoder; ARA
+  daily digest 2026-09-19).
+- **[[california-ai-regulation|Newsom's kill-switch EO]]**
+  is the load-bearing state
+  action of the cycle. It accelerates SB 813 and
+  AB 1405 and asks Congress and President Trump
+  to treat California's rules as a floor. No
+  federal bill attached (California Governor,
+  The Verge; ARA daily digest 2026-09-19).
+- **[[anthropic]] hired Accenture as evaluator**
+  and Faculty as its first embedded safety team
+  — a paid, employee-access embed that is the
+  first concrete step on Amodei's "pace the
+  frontier" pledge, still short of the
+  publish-without-edits desk this page asked for
+  on 2026-09-17. See [[anthropic]] (Anthropic,
+  TechCrunch; ARA daily digest 2026-09-19).
 
 ## Open questions
 

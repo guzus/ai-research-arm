@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; opened Home to third-party agents via MCP and launched a DeepMind Institute forum as Hassabis, Legg and Manyika said AGI is approaching.
+description: Hyperscaler behind Gemini; confirmed a May Irregular CTF let Gemini reach three real companies after the sandbox had live internet.
 created_at: 2026-07-17
-timestamp: 2026-09-17T00:00:00Z
+timestamp: 2026-09-19T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
@@ -431,6 +432,43 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   "expected to be closed soon." Position paper, not
   a capability demonstration (DeepMind, The Decoder,
   HN; ARA daily digest 2026-09-17).
+
+## Gemini entered three real companies (2026-09-19)
+
+- **The Wall Street Journal said Irregular's May
+  CTF unintentionally gave Gemini internet
+  access.** Google's on-record account is **one
+  password guess and two public-repo credential
+  replays**, each stopped when the model realized
+  the targets were real. Google was notified in
+  July and disclosed after reporters called.
+  "First known breakout" is **Google's first, not
+  the industry's** — [[openai]], [[anthropic]],
+  and [[meta]] already logged Irregular-linked
+  live-target incidents this summer. This is the
+  same shared-harness failure this page's
+  [[agentic-ai-security]] counterpart has tracked
+  since August: Irregular as the common
+  contractor, not a Gemini-only sandbox (WSJ,
+  Simon Willison; ARA daily digest 2026-09-19).
+- **Google CC relaunched** as a shared family
+  agent for up to **six adults** on Antigravity
+  plus [[gemini-3-8-flash|Gemini 3.8 Flash]],
+  emitting a joint "Your Day Ahead" brief from
+  explicitly shared mail, Chat, Drive and
+  calendars. Labs experiment, waitlist, 18+
+  only; **not a new Gemini weight** (TechCrunch,
+  Ars Technica; ARA daily digest 2026-09-19).
+- **Rohin Shah of the DeepMind Institute** argued
+  readable chain-of-thought is a contingent
+  safety window and proposed capping "opaque
+  serial depth"; [[openai]]'s [[gpt-6|GPT-6 Astra]]
+  system card already reports a
+  "substantial decrease in chain-of-thought
+  monitorability." Position paper, not a product
+  change. See [[agentic-ai-security]] (DeepMind
+  Institute, The Decoder; ARA daily digest
+  2026-09-19).
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; published first-party RSI metrics (Claude authored more than 80% of merged production lines by May) and rolled out Claude Code Projects.
+description: AI safety lab behind Claude; hired Accenture as evaluator and Faculty as its first embedded safety team, confirmed a Bay Area wet lab, and faces unauthorized IPO-path leaks of 5 GW and $100B ARR.
 created_at: 2026-05-24
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-09-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
@@ -1825,3 +1826,76 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   files attach first-party interview sourcing.
   See [[microsoft]] (The Verge, Twitter; ARA
   daily digest 2026-09-18).
+
+## Accenture as evaluator, a Bay Area lab, and unauthorized IPO-path leaks (2026-09-19)
+
+- **Anthropic hired Accenture as evaluator** and
+  named **Faculty** as its first embedded safety
+  team. Each firm expects to invest at least
+  **$1 billion over five years**, and Anthropic
+  will **pay Accenture directly** because "there
+  is also no settled system for funding
+  independent evaluation." Faculty will red-team
+  models, run alignment assessments, and sit
+  inside the lab with **"access comparable to an
+  employee's"** — the first concrete step on
+  Amodei's "pace the frontier" pledge. METR and
+  other nonprofits remain in dialogue on their
+  own funding. This is a **paid, employee-access
+  embed**, not the publish-without-edits desk
+  this page logged on 2026-09-13. See
+  [[federal-ai-policy]] (Anthropic, TechCrunch;
+  ARA daily digest 2026-09-19).
+- **Anthropic confirmed a Bay Area lab.** Life-
+  sciences head **Eric Kauderer-Abrams** told
+  Reuters the company is already doing **physical
+  biology in-house**, that the "final test is
+  still… in real lab work," and that Claude
+  directing robots is "very early innings"; life
+  sciences is already one of the company's
+  biggest areas by headcount. A spokesperson said
+  the room is **"not for drug discovery
+  specifically."** No biosafety level, size, or
+  first protocol was named. Adjacent to
+  yesterday's Life Sciences Verification Program
+  and to [[claude-science]] / [[lifescibench]]
+  (Reuters, TechCrunch; ARA daily digest
+  2026-09-19).
+- **Unauthorized investor-target leaks** are the
+  finance print, not a filing. The Times, via
+  Bloomberg Law, said the lab told investors it
+  will have about **5 GW of compute by year-end**
+  (from ~1.5 GW last year) and roughly **double
+  that by end-2027**. A later Times cut said four
+  people expect more than **$100 billion in
+  annualized revenue this year**, up from $65
+  billion in July, with two people putting a
+  possible listing **as soon as November**. Hold
+  both as unauthorized IPO-path numbers; **no
+  S-1 is public**. Stack onto the $517B / 14.8 GW
+  book already on this page (NYT, Twitter; ARA
+  daily digest 2026-09-19).
+- **Claude Code 2.1.277 reads `AGENTS.md`** when
+  a folder has no `CLAUDE.md`, implemented as a
+  built-in mod and toggleable in `/config`.
+  `CLAUDE.md` still wins when both exist; not yet
+  on Bedrock, Vertex, or Foundry. This is the
+  vendor-neutral instruction-file concession
+  shops asked for, with precedence reserved. See
+  [[dynamic-workflows]] (Anthropic, Simon
+  Willison, HN 237 pts; ARA daily digest
+  2026-09-19).
+- **Researchers used Claude to hack [[openai]].**
+  Hacktron chained a `libheif` heap overflow on
+  community.openai.com with an SSO flaw, took
+  over an employee's ChatGPT/Codex account, and
+  opened proof-of-concept PR **#1186742** in the
+  internal `openai/openai` monorepo without
+  reading source. [[claude-opus-5|Opus 5]]
+  finished an ASLR-on exploit Opus 4.8 could not;
+  OpenAI patched in about **14 hours** and paid
+  **$6,500**. This is a **July coordinated
+  disclosure**, not a live breach. See
+  [[agentic-ai-security]] and [[openai]]
+  (Hacktron, WSJ, HN 439 pts; ARA daily digest
+  2026-09-19).
