@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-20 15:58:45 UTC
+
+CYCLE: Qwen-Image-2.1 open weights; BofA says hyperscalers signed 1Q27 DRAM ASPs above 4Q26.
+
+TOP STORIES:
+• Qwen open-weights Image-2.1 (7B DiT, unified gen+edit, day-0 Diffusers/Comfy) [✓]
+• BofA Woo: 3Q DRAM ASPs +20–30%; hyperscalers signed 1Q27 above 4Q26 [⚠]
+• TI: OpenAI July ARR topped $40B; skill-injection flaw in four coding agents [⚠]
+
+WATCH: Independent Image-2.1 arena scores; a producer line on 1Q27 DRAM ASPs.
+
+Full update on GitHub.
