@@ -160,11 +160,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Crusoe closed a $3.9B Series F at $30.9B while Nebius told customers on-demand GPU rent rises 17–21% on October 1.",
-      "description": "The historically large compute buildout; Crusoe closed a $3.9B Series F at $30.9B while Nebius told customers on-demand GPU rent rises 17–21% on October 1.",
+      "summary": "The historically large compute buildout; an FT-leaked OpenAI July deck projects $278B negative FCF and about $856B of infrastructure spend through 2030.",
+      "description": "The historically large compute buildout; an FT-leaked OpenAI July deck projects $278B negative FCF and about $856B of infrastructure spend through 2030.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-18",
-      "timestamp": "2026-09-18T00:00:00Z",
+      "updated_at": "2026-09-20",
+      "timestamp": "2026-09-20T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -494,11 +494,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; hired Accenture as evaluator and Faculty as its first embedded safety team, confirmed a Bay Area wet lab, and faces unauthorized IPO-path leaks of 5 GW and $100B ARR.",
-      "description": "AI safety lab behind Claude; hired Accenture as evaluator and Faculty as its first embedded safety team, confirmed a Bay Area wet lab, and faces unauthorized IPO-path leaks of 5 GW and $100B ARR.",
+      "summary": "AI safety lab behind Claude; first-named defendant in Buist v. Anthropic PBC, with Reuters citing a pre-IPO model still in safety eval and a listing that could slip past the midterms.",
+      "description": "AI safety lab behind Claude; first-named defendant in Buist v. Anthropic PBC, with Reuters citing a pre-IPO model still in safety eval and a listing that could slip past the midterms.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-19",
-      "timestamp": "2026-09-19T00:00:00Z",
+      "updated_at": "2026-09-20",
+      "timestamp": "2026-09-20T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -1057,6 +1057,7 @@
         "gemini-3-8-flash",
         "gpt-5-6",
         "harvey",
+        "jev",
         "john-jumper",
         "meta",
         "micron",
@@ -1423,11 +1424,11 @@
         "agentic-coding",
         "capital-markets"
       ],
-      "summary": "AI coding tool / IDE maker Anysphere, acquired by SpaceX in a reported $60B all-stock deal; OpenAI is ending Cursor's direct model access on November 12 (2026-08-29) while Anthropic pledged more Claude compute the same morning, and Cursor's CEO says OpenAI models were only about 5% of traffic.",
-      "description": "AI coding tool / IDE maker Anysphere, acquired by SpaceX in a reported $60B all-stock deal; OpenAI is ending Cursor's direct model access on November 12 (2026-08-29) while Anthropic pledged more Claude compute the same morning, and Cursor's CEO says OpenAI models were only about 5% of traffic.",
+      "summary": "AI coding tool / IDE maker Anysphere; SpaceXAI is a named defendant in Buist v. Anthropic PBC, after the reported $60B SpaceX deal and OpenAI's November 12 model-access cutoff.",
+      "description": "AI coding tool / IDE maker Anysphere; SpaceXAI is a named defendant in Buist v. Anthropic PBC, after the reported $60B SpaceX deal and OpenAI's November 12 model-access cutoff.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-08-29",
-      "timestamp": "2026-08-29T00:00:00Z",
+      "updated_at": "2026-09-20",
+      "timestamp": "2026-09-20T00:00:00Z",
       "file": "entities/cursor.md",
       "aliases": [
         "Cursor",
@@ -1442,6 +1443,8 @@
         "ai-capex",
         "anthropic",
         "claude-sonnet-5",
+        "federal-ai-policy",
+        "google",
         "openai",
         "openrouter",
         "spacex",
@@ -1450,6 +1453,8 @@
       "inbound": [
         "ai-capex",
         "anthropic",
+        "federal-ai-policy",
+        "google",
         "muse-code",
         "openai",
         "spacex",
@@ -1510,6 +1515,7 @@
         "deepseek-v4-flash",
         "federal-ai-policy",
         "gemma-4",
+        "jev",
         "meituan-longcat-2",
         "microsoft",
         "minimax-m3",
@@ -1924,11 +1930,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal and state AI governance; Virginia signed EO 22 on data-center accountability, the National Archives pulled a Qwen widget, and a Brookings/Fudan paper proposed US–China nuclear-AI red lines ahead of a Trump–Xi meeting.",
-      "description": "US federal and state AI governance; Virginia signed EO 22 on data-center accountability, the National Archives pulled a Qwen widget, and a Brookings/Fudan paper proposed US–China nuclear-AI red lines ahead of a Trump–Xi meeting.",
+      "summary": "US federal and state AI governance; Trump posted an AI Force / unnamed czar with no EO, and four subscribers sued the labs in ND Cal. over the 12 September pacing endorsements.",
+      "description": "US federal and state AI governance; Trump posted an AI Force / unnamed czar with no EO, and four subscribers sued the labs in ND Cal. over the 12 September pacing endorsements.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-19",
-      "timestamp": "2026-09-19T00:00:00Z",
+      "updated_at": "2026-09-20",
+      "timestamp": "2026-09-20T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1939,7 +1945,9 @@
         "CAISI MOU",
         "remote-access chip rule",
         "RIN 0694-AJ90",
-        "CATSR"
+        "CATSR",
+        "AI Force",
+        "Buist v. Anthropic"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -1952,6 +1960,7 @@
         "china-ai-regulation",
         "claude-fable-5",
         "claude-sonnet-5",
+        "cursor",
         "deepseek",
         "eu-ai-regulation",
         "google",
@@ -1983,6 +1992,7 @@
         "claude-fable-5",
         "claude-science",
         "claude-sonnet-5",
+        "cursor",
         "deepseek",
         "deepseek-v4-1-flash",
         "deepseek-v4-flash",
@@ -2455,11 +2465,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; confirmed a May Irregular CTF let Gemini reach three real companies after the sandbox had live internet.",
-      "description": "Hyperscaler behind Gemini; confirmed a May Irregular CTF let Gemini reach three real companies after the sandbox had live internet.",
+      "summary": "Hyperscaler behind Gemini; named with Anthropic, OpenAI and SpaceXAI in Buist v. Anthropic PBC, a subscriber Sherman Act suit over the 12 September pacing endorsements.",
+      "description": "Hyperscaler behind Gemini; named with Anthropic, OpenAI and SpaceXAI in Buist v. Anthropic PBC, a subscriber Sherman Act suit over the 12 September pacing endorsements.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-09-19",
-      "timestamp": "2026-09-19T00:00:00Z",
+      "updated_at": "2026-09-20",
+      "timestamp": "2026-09-20T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2489,6 +2499,7 @@
         "astra",
         "broadcom",
         "claude-opus-5",
+        "cursor",
         "discovery-loop",
         "eu-ai-regulation",
         "federal-ai-policy",
@@ -2517,6 +2528,7 @@
         "astra",
         "broadcom",
         "california-ai-regulation",
+        "cursor",
         "discovery-loop",
         "eu-ai-regulation",
         "federal-ai-policy",
@@ -2592,6 +2604,7 @@
         "federal-ai-policy",
         "gemini-3-8-flash",
         "gpt-6",
+        "jev",
         "model-specific-silicon",
         "moonshot-kimi-k3",
         "muse-code",
@@ -2798,6 +2811,43 @@
       ],
       "inbound": [
         "anthropic"
+      ]
+    },
+    {
+      "slug": "jev",
+      "title": "Jev (TypeSafe)",
+      "type": "entity",
+      "tags": [
+        "decision-model",
+        "classifier",
+        "open-weights",
+        "system-one",
+        "structured-output"
+      ],
+      "summary": "TypeSafe's non-autoregressive decision model; Laya's year-old Apache-2.0 clones outclimbed it on HN while Jev took about 13% of paid Vercel Gateway teams in 24 hours.",
+      "description": "TypeSafe's non-autoregressive decision model; Laya's year-old Apache-2.0 clones outclimbed it on HN while Jev took about 13% of paid Vercel Gateway teams in 24 hours.",
+      "created_at": "2026-09-20",
+      "updated_at": "2026-09-20",
+      "timestamp": "2026-09-20T00:00:00Z",
+      "file": "entities/jev.md",
+      "aliases": [
+        "Jev",
+        "TypeSafe Jev",
+        "TypeSafe",
+        "OpenJev",
+        "JevBench",
+        "RLCD"
+      ],
+      "outbound": [
+        "claude-fable-5",
+        "deepseek",
+        "gpt-5-6",
+        "open-weights",
+        "openai",
+        "zhipu"
+      ],
+      "inbound": [
+        "open-weights"
       ]
     },
     {
@@ -4053,11 +4103,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on frontier capability; DeepSeek's MIT-licensed V4.1 Flash (552B multimodal MoE) shipped 2026-09-11 and took the day's largest Hacker News thread.",
-      "description": "The 2026 storyline of open-weight models closing on frontier capability; DeepSeek's MIT-licensed V4.1 Flash (552B multimodal MoE) shipped 2026-09-11 and took the day's largest Hacker News thread.",
+      "summary": "The 2026 storyline of open-weight models closing on frontier capability; Laya's year-old Apache-2.0 Jev clones outclimbed TypeSafe's closed decision model on Hacker News.",
+      "description": "The 2026 storyline of open-weight models closing on frontier capability; Laya's year-old Apache-2.0 Jev clones outclimbed TypeSafe's closed decision model on Hacker News.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-09-11",
-      "timestamp": "2026-09-11T00:00:00Z",
+      "updated_at": "2026-09-20",
+      "timestamp": "2026-09-20T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -4081,6 +4131,7 @@
         "gemma-4",
         "gpt-5-6",
         "harvey",
+        "jev",
         "meituan-longcat-2",
         "meta",
         "microsoft",
@@ -4120,6 +4171,7 @@
         "federal-ai-policy",
         "harvey",
         "hugging-face",
+        "jev",
         "meituan-longcat-2",
         "meta",
         "microsoft",
@@ -4169,11 +4221,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; researchers used Claude to open a proof-of-concept PR in the internal openai/openai monorepo, while Altman's September 15 \"big ship this week\" post remains unclosed.",
-      "description": "Frontier lab behind the GPT family; researchers used Claude to open a proof-of-concept PR in the internal openai/openai monorepo, while Altman's September 15 \"big ship this week\" post remains unclosed.",
+      "summary": "Frontier lab behind the GPT family; an FT-leaked July deck projects $278B negative FCF through 2030, and the lab is a defendant in the Buist pacing suit.",
+      "description": "Frontier lab behind the GPT family; an FT-leaked July deck projects $278B negative FCF through 2030, and the lab is a defendant in the Buist pacing suit.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-19",
-      "timestamp": "2026-09-19T00:00:00Z",
+      "updated_at": "2026-09-20",
+      "timestamp": "2026-09-20T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4242,6 +4294,7 @@
         "harvey",
         "hugging-face",
         "jelani-nelson",
+        "jev",
         "john-jumper",
         "lifescibench",
         "meta",
@@ -5430,6 +5483,7 @@
         "agentic-ai-security",
         "anthropic",
         "federal-ai-policy",
+        "jev",
         "open-weights",
         "ox-alpha",
         "zhipu-glm-5-2",
@@ -5586,6 +5640,7 @@
     "ai capex": "ai-capex",
     "ai capex supercycle": "ai-capex",
     "ai companion law": "china-ai-regulation",
+    "ai force": "federal-ai-policy",
     "ai infrastructure buildout": "ai-capex",
     "ai mode": "meta",
     "ai supply-chain security": "agentic-ai-security",
@@ -5621,6 +5676,7 @@
     "broadcom": "broadcom",
     "broadcom custom asics": "broadcom",
     "broadcom inc.": "broadcom",
+    "buist v. anthropic": "federal-ai-policy",
     "bytedance seed": "seedance-2-5",
     "bytedance seedance": "seedance-2-5",
     "byteplus": "seedance-2-5",
@@ -5832,6 +5888,8 @@
     "jelani nelson": "jelani-nelson",
     "jelani-nelson": "jelani-nelson",
     "jensen huang": "nvidia",
+    "jev": "jev",
+    "jevbench": "jev",
     "john jumper": "john-jumper",
     "john-jumper": "john-jumper",
     "jonathan ross": "groq",
@@ -5955,6 +6013,7 @@
     "openai opco": "openai",
     "openai's next flagship": "gpt-6",
     "openai/ten-proofs": "astra",
+    "openjev": "jev",
     "openrouter": "openrouter",
     "openrouter fusion": "openrouter",
     "openrouter.ai": "openrouter",
@@ -5999,6 +6058,7 @@
     "remote-access chip rule": "federal-ai-policy",
     "remote-labor-index": "remote-labor-index",
     "rin 0694-aj90": "federal-ai-policy",
+    "rlcd": "jev",
     "rli": "remote-labor-index",
     "robostral": "mistral-robostral-navigate",
     "robostral navigate": "mistral-robostral-navigate",
@@ -6060,6 +6120,8 @@
     "tpu v7": "google",
     "tpuv7": "google",
     "trump ai executive order": "federal-ai-policy",
+    "typesafe": "jev",
+    "typesafe jev": "jev",
     "unitree": "unitree",
     "unitree robotics": "unitree",
     "unitree robotics co.": "unitree",
@@ -6101,6 +6163,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-09-20",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-20 digest (no model tickets with updated_at today or yesterday). Created 1 (jev — TypeSafe's non-autoregressive decision model; Laya clones + 13% Vercel Gateway share). Updated 7 (federal-ai-policy — Trump AI Force / unnamed czar with no EO + Buist v. Anthropic PBC + Bessent–He; anthropic — first-named Buist defendant + Reuters pre-IPO model still in eval + listing may slip past midterms; openai — FT July deck $278B negative FCF / $856B infra through 2030 + Buist defendant + Tuesday ship still unclosed; google — named in Buist; cursor — SpaceXAI named in Buist; ai-capex — same FT deck as the finance print; open-weights — Laya/Von/CUA-S1 Jev-clone wave). Skipped for budget: astra/claude-fable-5 RoboHarm leftover, muse-code connectors, Step 5 Preview, TRAI spam amendment, Vals positioning, Vantora $100M, Flock buyouts, arXiv highlights."
+    },
     {
       "date": "2026-09-19",
       "op": "ingest",
@@ -6195,11 +6262,6 @@
       "date": "2026-09-02",
       "op": "ingest",
       "summary": "Ingested the 2026-09-02 digest (no model tickets with updated_at today or yesterday; nearest ticket updates are 2026-08-30). Created 0, updated 9 (claude-fable-5 — Fable 5.1 / Mythos 5.1 ships, up to 45% cheaper agentic work, 52.6% Terminal-Bench-Science vs 24.7% Fable 5 / 29.0% Opus 5; astra — Path to Astra, first Critical-cyber threshold under the Preparedness Framework, delayed after the Hugging Face incident, no launch date; dell — FY27Q2 $47.0B revenue, $16.4B AI-server sales, $60.9B orders, $95B backlog, FY27 guide $192.0B; anthropic — the Fable 5.1 launch plus the Claude watermark-detection API opened to regulators/media/researchers; openai — Astra delay, ChatGPT Health Epic read-only import, Ads $1B ARR reported, Apple spoliation claim, Codex desktop LibreOffice cache; apple — spoliation allegation and expedited-discovery ask in the OpenAI trade-secrets fight; agentic-ai-security — Astra as the first named Critical-cyber model, delay attributed to the Hugging Face agent-swarm; eu-ai-regulation — watermark API as the first outsider-facing Article 50 compliance product; hugging-face — the July incident cited as the cause of the Astra delay). Skipped for budget (future ingest where they repeat): AfterQuery $3.2B YC unicorn (reported), Google Pics, AIR $50M, Gemini Flash agent video analysis, Runway Solaris, World Labs Atlas, Nvidia DLSS 5, Fal H3 Max Live, Ai2 BenchMIRT, arXiv research highlights."
-    },
-    {
-      "date": "2026-08-29",
-      "op": "ingest",
-      "summary": "Ingested the 2026-08-29 digest (model tickets carried nothing newer than 2026-08-27, so the digest was the sole live input). Created 0, updated 8 (openai — ends Cursor's direct model access November 12 after the SpaceX acquisition, plus an unverified Astra leak and Codex WebMCP; cursor — the same cutoff, Truell's ~5% traffic figure, and Anthropic's same-morning compute pledge; anthropic — Sony Music Publishing / Warner Chappell suit naming Amodei and Mann, Claude as a 48-hour/one-GPU alignment researcher, the Cursor compute pledge, a ~17% Claude Code limit cut on September 14, and the Model Hardware Standard; zhipu-glm-5-3 — flagship weights actually download, topping HN at 733 points, with Unsloth 2-bit GGUFs and a Mollick no-guardrails cyber caveat; federal-ai-policy — drafted remote-access chip rule RIN 0694-AJ90; open-weights — GLM-5.3 downloadable weights plus Tencent Hunyuan Hy4 preview; ai-capex — Lambda $1B private debt for a Microsoft Nvidia lease, Marvell FY27Q2 $2.739B / data center +46%, Cognition ~$900M ARR vs possible $800M server burn, a16z Machine Age Fund; xai — Grok 4.6 general chat availability across web/iOS/Android). Skipped for budget (future ingest where they repeat): Perplexity Search Index lead, Meta Muse $0.01/image, OpenRouter nine-buyer backstory, arXiv research highlights, LAION BVD, StemDeck."
     }
   ]
 }

@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability; DeepSeek's MIT-licensed V4.1 Flash (552B multimodal MoE) shipped 2026-09-11 and took the day's largest Hacker News thread.
+description: The 2026 storyline of open-weight models closing on frontier capability; Laya's year-old Apache-2.0 Jev clones outclimbed TypeSafe's closed decision model on Hacker News.
 created_at: 2026-06-14
-timestamp: 2026-09-11T00:00:00Z
+timestamp: 2026-09-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
@@ -506,6 +507,22 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   same fact. See [[federal-ai-policy]] (DeepSeek,
   Artificial Analysis, Vals AI, HN; ARA daily digest
   2026-09-11).
+
+- **[[jev]] clones took Hacker News
+  (2026-09-20).** Laya's year-old Apache-2.0
+  ModernBERT decision models climbed to
+  **991 points**, and TypeSafe's closed Jev
+  reached about **13% of paid Vercel AI
+  Gateway teams in 24 hours** while open
+  models took **78.4%** of token volume.
+  Latent Space counted **six Jev clones in
+  two days**. This is a classifier-shaped
+  open-weight wave, not another 500B MoE
+  flagship — the serving-cost story this
+  theme already tracks, now on
+  non-autoregressive decisions. See [[jev]]
+  (HN, Latent Space, Vercel; ARA daily
+  digest 2026-09-20).
 
 ## Open questions
 

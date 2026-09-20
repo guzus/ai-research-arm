@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; confirmed a May Irregular CTF let Gemini reach three real companies after the sandbox had live internet.
+description: Hyperscaler behind Gemini; named with Anthropic, OpenAI and SpaceXAI in Buist v. Anthropic PBC, a subscriber Sherman Act suit over the 12 September pacing endorsements.
 created_at: 2026-07-17
-timestamp: 2026-09-19T00:00:00Z
+timestamp: 2026-09-20T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
@@ -469,6 +470,24 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   change. See [[agentic-ai-security]] (DeepMind
   Institute, The Decoder; ARA daily digest
   2026-09-19).
+
+## Named in Buist v. Anthropic PBC (2026-09-20)
+
+- **Google is a named defendant** with
+  [[anthropic]], [[openai]] and
+  [[cursor|SpaceXAI]] in *Buist v. Anthropic
+  PBC* (`3:26-cv-10693`). Four subscribers
+  asked ND Cal. for an injunction and
+  Clayton Act treble damages, treating the
+  12 September public endorsements of
+  Amodei's slowdown essay as a Sherman Act
+  output restriction. Google did not
+  comment; no private term sheet is cited.
+  This is the first filed case on the
+  three-lab safety-coordination thread this
+  page logged on 2026-09-16. See
+  [[federal-ai-policy]] (The Hill, Bloomberg
+  Law; ARA daily digest 2026-09-20).
 
 ## Open questions
 
