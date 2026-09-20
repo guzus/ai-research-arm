@@ -2,12 +2,12 @@ AI News - 2026-09-20
 
 TOP STORIES:
 • Subscribers sued Anthropic, OpenAI, SpaceXAI, Google over 12 Sep pacing talk (Buist, ND Cal.)
-• Weis posted RSA-896 factors; says Claude assisted on 19 Sep (not 2048-bit bank RSA)
-• StepFun shipped a first-party Step 5 Preview docs row (1M ctx; AA: 600B, $1/$2.70)
+• Alibaba open-weighted Qwen-Image-2.1 (7B DiT, RGBA, 10 refs; research license)
+• Huang on CBS: “0% chance” AI ends the world; Amodei/Altman slowdown “not grounded in science”
 
 KEY NUMBERS:
-• Auto Mode / Codex Guardian: 79% injection → arbitrary bash (2609.19587)
+• Step 5 Preview first-party: 600B/27B MoE, 1M ctx; open weights dated 15 Oct
+• Weis RSA-896 factors (Claude-assisted); not 2048-bit bank RSA
 • Samsung HBM4/4E: industry says ≥2× next year; glass-carrier clean 20k→50k/mo
-• Jev-as-judge: $0.00035/call; 500/500 binary match in LangChain’s narrow test
 
 Full report on GitHub.
