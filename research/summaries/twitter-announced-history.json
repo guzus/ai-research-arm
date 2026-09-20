@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-12 01:00 UTC",
-    "headline": "NPM ATTACK ABUSES GITHUB ACTIONS OIDC TO REPUBLISH MALICIOUS PACKAGES UNDER LEGITIMATE MAINTAINER IDENTITIES \u2014 NOVEL VECTOR",
-    "source": "@AikidoSecurity",
-    "source_file": "research/summaries/2026-05-12-twitter-01h-headlines.json",
-    "url": "https://x.com/AikidoSecurity/status/2053974705795989906"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-12 01:00 UTC",
-    "headline": "ALTMAN SOFT-CONFIRMS OPENAI SUPERAPP: 'WOULD YOU CALL IT A SUPERAPP?' AND 'NEW CHATGPT MODEL, PERSONALITY, PERSONALIZATION FEELS LIKE A NEW THING'",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-12-twitter-01h-headlines.json",
-    "url": "https://x.com/sama/status/2053971387308745046"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-12 01:00 UTC",
-    "headline": "SWYX ON THINKING MACHINES: 'BRUTALLY FRAMEMOGGED GDM AND OAI \u2014 EVERYONE'S DEFINITION OF REALTIME JUST GOT A MASSIVE UPGRADE'",
-    "source": "@swyx",
-    "source_file": "research/summaries/2026-05-12-twitter-01h-headlines.json",
-    "url": "https://x.com/swyx/status/2053960011748098462"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-12 01:00 UTC",
     "headline": "SK GROUP CHAIRMAN: 'IF WE DON'T INCREASE MEMORY SUPPLY, CUSTOMERS WILL FIND WAYS TO USE LESS MEMORY' \u2014 JUKAN05 CALLS 80% HBM MARGINS UNSUSTAINABLE",
@@ -24434,5 +24407,26 @@
     "headline": "CXMT SAYS FIFTH-GEN DRAM PLATFORM HITS MASS PRODUCTION AT 11.95NM",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2101525280968053096"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-20 11:14:27 UTC",
+    "headline": "STEPFUN LAUNCHES STEP 5 PREVIEW \u2014 600B/27B MOE, API LIVE, OPEN WEIGHTS OCT 15",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2101591464916451666"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-20 11:14:27 UTC",
+    "headline": "SAMSUNG TO AT LEAST DOUBLE HBM4 AND HBM4E OUTPUT NEXT YEAR, SEDAILY SAYS",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2101578323050500376"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-20 11:14:27 UTC",
+    "headline": "DRUCKENMILLER SET FOR FIRST SOUTH KOREA VISIT \u2014 SAMSUNG, SK HYNIX, DOOSAN",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2101572635067048176"
   }
 ]
