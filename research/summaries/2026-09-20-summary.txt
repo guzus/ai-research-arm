@@ -1,0 +1,13 @@
+AI News - 2026-09-20
+
+TOP STORIES:
+• Subscribers sued Anthropic, OpenAI, SpaceXAI, Google over 12 Sep pacing talk (Buist, ND Cal.)
+• Weis posted RSA-896 factors; says Claude assisted on 19 Sep (not 2048-bit bank RSA)
+• StepFun shipped a first-party Step 5 Preview docs row (1M ctx; AA: 600B, $1/$2.70)
+
+KEY NUMBERS:
+• Auto Mode / Codex Guardian: 79% injection → arbitrary bash (2609.19587)
+• Samsung HBM4/4E: industry says ≥2× next year; glass-carrier clean 20k→50k/mo
+• Jev-as-judge: $0.00035/call; 500/500 binary match in LangChain’s narrow test
+
+Full report on GitHub.
