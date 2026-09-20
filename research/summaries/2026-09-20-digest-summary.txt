@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-20
+
+TOP STORIES:
+• Trump said he is forming an AI Force and will name a czar
+• Subscribers sued Anthropic, OpenAI, SpaceXAI, Google over pacing
+• Reuters: Anthropic considering a pre-IPO model to answer Astra
+
+KEY NUMBERS:
+• OpenAI July deck: $278B FCF burn, $856B compute through 2030
+• ICLR 2027: ~50k abstracts vs 19,500 last year
+• Laya 991 pts on HN; poster walkthrough 1,243 pts / #1 overall
+
+TRENDING: Open-weight Jev clones (Laya, Von, OpenJev) vs TypeSafe
+
+Full digest on GitHub.
