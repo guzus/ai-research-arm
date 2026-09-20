@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-20
+
+TOP 5 PAPERS:
+• DeepSeek-V4.1-Flash — 552B CED MoE; 890 B/tok KV; 8B prefill/16B decode; 45T tokens
+• Auto Mode red-team — 79% injection beats Claude Auto Mode + Codex Guardian
+• When2Think — difficulty-aware hybrid reason; AIME24 +10% Pass@3 / −27.9% tokens
+• Long-horizon harness — Nijkamp: levels/ticks/cascade; 10-day RL repro, daily human
+• Uni-LaDiR — latent diffusion thoughts; +7.3% VLM / +6.1% VLA vs strongest baselines
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
