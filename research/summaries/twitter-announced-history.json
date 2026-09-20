@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-12 01:00 UTC",
-    "headline": "SK GROUP CHAIRMAN: 'IF WE DON'T INCREASE MEMORY SUPPLY, CUSTOMERS WILL FIND WAYS TO USE LESS MEMORY' \u2014 JUKAN05 CALLS 80% HBM MARGINS UNSUSTAINABLE",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-12-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2053962711206449539"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-12 01:00 UTC",
-    "headline": "ANTHROPIC PREPARING CLAUDE MOBILE APP FOR LONG-HORIZON AGENT GOALS \u2014 PARALLEL-AGENT VIEW SHIPS IN CLAUDE CODE CLI",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-12-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2053989783211270621"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 04:00 UTC",
-    "headline": "SUTSKEVER TESTIFIES UNDER OATH: $7B OPENAI STAKE \u2014 SECOND NEW BILLIONAIRE EXPOSED IN MUSK V ALTMAN TRIAL AFTER BROCKMAN'S ~$30B",
-    "source": "@unusual_whales",
-    "source_file": "research/summaries/2026-05-12-twitter-04h-headlines.json",
-    "url": "https://x.com/unusual_whales/status/2053972921903649259"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 04:00 UTC",
-    "headline": "SUTSKEVER CONFIRMS UNDER OATH: OPENAI BOARD ASKED DARIO TO MERGE ANTHROPIC AND TAKE OVER AS CEO AFTER ALTMAN FIRING IN NOV 2023",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-12-twitter-04h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2054015119286505812"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-12 04:00 UTC",
-    "headline": "REUTERS: SUTSKEVER VALUES OPENAI STAKE AT ~$7B WHILE TESTIFYING IN MUSK V OPENAI CASE",
-    "source": "@ReutersLegal",
-    "source_file": "research/summaries/2026-05-12-twitter-04h-headlines.json",
-    "url": "https://x.com/ReutersLegal/status/2053929402333884624"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-12 04:00 UTC",
     "headline": "FRONTIERMATH TIER 4 AUTHOR KEN ONO: 'AI HAS NOW SOLVED' MY TIER 4 PROBLEMS \u2014 'HUMAN EVALUATION IS REACHING ITS LIMIT'",
@@ -24428,5 +24383,40 @@
     "headline": "DRUCKENMILLER SET FOR FIRST SOUTH KOREA VISIT \u2014 SAMSUNG, SK HYNIX, DOOSAN",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2101572635067048176"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-20 15:58:45 UTC",
+    "headline": "QWEN OPENS QWEN-IMAGE-2.1 WEIGHTS \u2014 7B DIT, UNIFIED GEN+EDIT, DAY-0 DIFFUSERS AND COMFY",
+    "source": "@Alibaba_Qwen",
+    "url": "https://x.com/Alibaba_Qwen/status/2101659302792679789"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-20 15:58:45 UTC",
+    "headline": "BOFA'S SIMON WOO: 3Q DRAM ASPS UP 20-30%; HYPERSCALERS LOCK 1Q27 PRICES ABOVE 4Q26",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2101655940038565898"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-20 15:58:45 UTC",
+    "headline": "THE INFORMATION: OPENAI ANNUALIZED REVENUE TOPPED $40 BILLION IN JULY",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2101665191104532645"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-20 15:58:45 UTC",
+    "headline": "THE INFORMATION: FLAW IN FOUR AI CODING AGENTS COULD INJECT CODE INTO DOWNLOADED SKILLS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2101672773215039962"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-20 15:58:45 UTC",
+    "headline": "AMP CAN PUSH AND DEPLOY TO VERCEL WITHOUT A PAID AMP COMMITTER SEAT",
+    "source": "@sqs",
+    "url": "https://x.com/sqs/status/2101629101484495221"
   }
 ]
