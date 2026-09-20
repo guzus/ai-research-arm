@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; hired Accenture as evaluator and Faculty as its first embedded safety team, confirmed a Bay Area wet lab, and faces unauthorized IPO-path leaks of 5 GW and $100B ARR.
+description: AI safety lab behind Claude; first-named defendant in Buist v. Anthropic PBC, with Reuters citing a pre-IPO model still in safety eval and a listing that could slip past the midterms.
 created_at: 2026-05-24
-timestamp: 2026-09-19T00:00:00Z
+timestamp: 2026-09-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
@@ -1899,3 +1900,39 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   [[agentic-ai-security]] and [[openai]]
   (Hacktron, WSJ, HN 439 pts; ARA daily digest
   2026-09-19).
+
+## Named first in Buist; a pre-IPO model still in eval (2026-09-20)
+
+- **Anthropic is the caption defendant in
+  *Buist v. Anthropic PBC*.** Four subscribers
+  asked ND Cal. (`3:26-cv-10693`) for an
+  injunction and Clayton Act treble damages
+  against Anthropic, [[openai]],
+  [[cursor|SpaceXAI]] and [[google]], treating
+  the 12 September public endorsements of
+  Amodei's slowdown essay as a Sherman Act
+  output restriction. The complaint does not
+  challenge unilateral safety testing; the
+  lab did not comment, and no private term
+  sheet is cited. This is the first filed
+  case on the pacing coordination this page
+  has tracked since the 2026-09-13 essay.
+  See [[federal-ai-policy]] (The Hill,
+  Bloomberg Law; ARA daily digest
+  2026-09-20).
+- **Reuters cited three people on a pre-IPO
+  model** meant to answer [[astra|GPT-6
+  Astra]], still in safety evaluation, after
+  Ramp put Astra at about **13%** of tracked
+  enterprise spend versus about **8%** for
+  [[claude-fable-5|Claude Fable]]. Two people
+  said the listing could slip **past the 3
+  November midterms**. Anthropic declined to
+  comment; Reuters is singular ("a new AI
+  model"). Stealth 5.2 SKUs and "you are
+  already on it" remain unverified. Hold
+  both the model and the slip as
+  unauthorized IPO-path leaks stacked on
+  yesterday's 5 GW / $100B ARR / November
+  prints; **no S-1 is public** (Reuters; ARA
+  daily digest 2026-09-20).

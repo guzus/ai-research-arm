@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Crusoe closed a $3.9B Series F at $30.9B while Nebius told customers on-demand GPU rent rises 17–21% on October 1.
+description: The historically large compute buildout; an FT-leaked OpenAI July deck projects $278B negative FCF and about $856B of infrastructure spend through 2030.
 created_at: 2026-05-24
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-09-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
@@ -1267,3 +1268,34 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   NVL72 tests at **7× GB300 perf/watt**
   against Jensen's GTC claim of **3×**
   (Twitter; ARA daily digest 2026-09-18).
+
+## OpenAI's July burn deck is the finance print (2026-09-20)
+
+- **The FT reprinted a July [[openai]]
+  compute-deal deck** projecting **$278
+  billion** of negative free cash flow and
+  about **$856 billion** of infrastructure
+  spend through 2030, against **$36 billion**
+  of 2026 revenue rising to **$350 billion**
+  in 2030 (~$840 billion cumulative) and the
+  March **$122 billion** raise exhausted by
+  2028. Bloomberg confirmed the
+  presentation; Reuters reprinted it Friday
+  night. OpenAI was not reached after hours.
+  Hold it as a **two-month-old unauthorized
+  sales deck, not booked results and not an
+  S-1**. The pair to watch is the same
+  window's [[anthropic]] IPO-path leaks
+  (5 GW / $100B ARR / midterm slip): two
+  labs' unfundable-from-revenue books,
+  one leaked from a customer-facing slide
+  (FT, Reuters; ARA daily digest
+  2026-09-20).
+- **Aging out, not restated as today's
+  news:** [[crusoe]]'s $3.9B Series F and
+  [[nebius]]'s October 1 on-demand hike
+  remain the last closed infrastructure
+  prints. Vantora's $100 million first
+  outside capital is a physical-AI
+  startup round, not a GPU-cloud close
+  (ARA daily digest 2026-09-20).

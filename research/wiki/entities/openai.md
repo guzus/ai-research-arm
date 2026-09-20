@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; researchers used Claude to open a proof-of-concept PR in the internal openai/openai monorepo, while Altman's September 15 "big ship this week" post remains unclosed.
+description: Frontier lab behind the GPT family; an FT-leaked July deck projects $278B negative FCF through 2030, and the lab is a defendant in the Buist pacing suit.
 created_at: 2026-05-30
-timestamp: 2026-09-19T00:00:00Z
+timestamp: 2026-09-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
@@ -1629,9 +1630,46 @@ materially reshape how the lab is positioned heading into its IPO window:
   post is still unclosed.** Yesterday this page
   recorded the slip to "next week"; today's
   digest still lists it among unverified
-  releases. [[gpt-6]] stays a family with
+  releases.   [[gpt-6]] stays a family with
   [[astra|Astra]] shipped and Sol still a
   sighting (ARA daily digest 2026-09-19).
+
+## An FT burn deck, a pacing defendant, and Tuesday still unclosed (2026-09-20)
+
+- **The FT leaked a July compute-deal deck**
+  projecting **$278 billion** of negative
+  free cash flow and about **$856 billion**
+  of infrastructure spend through 2030,
+  against **$36 billion** of 2026 revenue
+  rising to **$350 billion** in 2030 (~$840
+  billion cumulative) and the March **$122
+  billion** raise exhausted by 2028.
+  Bloomberg confirmed the presentation;
+  Reuters reprinted it at 22:42 UTC Friday.
+  OpenAI was not reached after hours. Hold
+  it as a **two-month-old sales deck, not
+  booked results** — unauthorized, not an
+  S-1. See [[ai-capex]] (FT, Reuters; ARA
+  daily digest 2026-09-20).
+- **OpenAI is a named defendant** in *Buist
+  v. Anthropic PBC* (`3:26-cv-10693`), the
+  subscriber Sherman Act suit that treats
+  the 12 September tweet-and-essay sequence
+  as a horizontal output restriction. The
+  lab did not comment. This is the filed
+  counterpart to the Sherman Act question
+  this page logged on 2026-09-12. See
+  [[federal-ai-policy]] and [[anthropic]]
+  (The Hill, Bloomberg Law; ARA daily digest
+  2026-09-20).
+- **Codex / ChatGPT Work lead Thibault
+  Sottiaux** told users the week's promised
+  ship is "still coming on Tuesday" and
+  answered a banked-usage demand with "OK
+  fine." No SKU, changelog, or @OpenAI
+  post; Altman's 15 September "big ship
+  this week" remains unclosed for a fifth
+  digest day (ARA daily digest 2026-09-20).
 
 ## Open questions
 

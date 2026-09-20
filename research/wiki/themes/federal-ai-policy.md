@@ -2,12 +2,13 @@
 slug: federal-ai-policy
 title: Federal AI Policy
 type: theme
-aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR"]
+aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; Virginia signed EO 22 on data-center accountability, the National Archives pulled a Qwen widget, and a Brookings/Fudan paper proposed US–China nuclear-AI red lines ahead of a Trump–Xi meeting.
+description: US federal and state AI governance; Trump posted an AI Force / unnamed czar with no EO, and four subscribers sued the labs in ND Cal. over the 12 September pacing endorsements.
 created_at: 2026-06-03
-timestamp: 2026-09-19T00:00:00Z
+timestamp: 2026-09-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
@@ -1229,6 +1230,61 @@ footing for the first time in the cycle.
   publish-without-edits desk this page asked for
   on 2026-09-17. See [[anthropic]] (Anthropic,
   TechCrunch; ARA daily digest 2026-09-19).
+
+## An AI Force post, a live pacing suit, and Bessent–He (2026-09-20)
+
+- **Trump announced an AI Force.** A Saturday
+  Truth Social post said he is forming the
+  office "much like I did Space Force," will
+  name a high-IQ czar "in the near future,"
+  and will not "hinder or stifle" the
+  industry, with misuse left to existing
+  criminal and civil law. **No executive
+  order, budget line, or named person**
+  attached; David Sacks left the prior
+  AI-and-crypto slot in March. The same
+  morning's rename poll (Superior / Extreme /
+  Supreme Intelligence) showed **6,307 votes**
+  with a day left. Implementation is still a
+  social-media line (TechCrunch, Twitter; ARA
+  daily digest 2026-09-20).
+- **Subscribers sued four labs over pacing.**
+  Charles Buist, Nick Spetsas, Cheyenne Hunt
+  and Christine Bullock asked ND Cal. for an
+  injunction and Clayton Act treble damages
+  against [[anthropic]], [[openai]],
+  [[cursor|SpaceXAI]] and [[google]]
+  (`3:26-cv-10693`), treating the 12 September
+  tweet-and-essay sequence as a horizontal
+  output restriction. The complaint does not
+  challenge unilateral safety testing; the
+  four labs did not comment, and no private
+  term sheet is cited. Parallel public speech
+  is not a cartel; a motion to dismiss for
+  failure to plead concerted action is the
+  obvious next filing. This converts last
+  week's WIRED antitrust-exemption ask into
+  live litigation. See [[anthropic]] and
+  [[openai]] (The Hill, Bloomberg Law; ARA
+  daily digest 2026-09-20).
+- **Bessent will meet He on AI.** Reuters said
+  Treasury Secretary Scott Bessent and
+  Chinese Vice Premier He Lifeng are set for
+  **10:30 a.m. ET Sunday** at JPMorgan's
+  Manhattan headquarters, with AI security on
+  the list ahead of Thursday's Trump–Xi
+  meetings. JPMorgan is the venue only; no
+  agenda paper or joint statement exists yet.
+  Yesterday's Brookings/Fudan nuclear-AI red
+  lines remain an expert paper, not a
+  communiqué (Reuters; ARA daily digest
+  2026-09-20).
+- **No new federal statute, CATSR docket, or
+  independent-verification mandate** cleared a
+  loadable primary. Newsom's kill-switch EO
+  and Virginia EO 22 remain Friday's state
+  actions. See [[california-ai-regulation]]
+  (ARA daily digest 2026-09-20).
 
 ## Open questions
 

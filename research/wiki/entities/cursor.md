@@ -4,10 +4,11 @@ title: Cursor (Anysphere)
 type: entity
 aliases: [Cursor, Anysphere, "@cursor_ai", "Cursor AI", "SpaceXAI", "Cursor Origin", "Origin"]
 tags: [ai-coding, ide, acquisition, agentic-coding, capital-markets]
-description: AI coding tool / IDE maker Anysphere, acquired by SpaceX in a reported $60B all-stock deal; OpenAI is ending Cursor's direct model access on November 12 (2026-08-29) while Anthropic pledged more Claude compute the same morning, and Cursor's CEO says OpenAI models were only about 5% of traffic.
+description: AI coding tool / IDE maker Anysphere; SpaceXAI is a named defendant in Buist v. Anthropic PBC, after the reported $60B SpaceX deal and OpenAI's November 12 model-access cutoff.
 created_at: 2026-06-17
-timestamp: 2026-08-29T00:00:00Z
+timestamp: 2026-09-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
@@ -95,6 +96,26 @@ the cycle's largest AI-coding M&A: a **$60B all-stock acquisition by
   product-architecture reading of a coding tool losing a frontier
   provider (Bluesky; ARA daily digest 2026-08-29). See [[xai]]
   (Grok 4.6 already lives in Cursor) and [[openrouter]].
+
+## SpaceXAI named in the Buist pacing suit (2026-09-20)
+
+- **SpaceXAI is a named defendant** with
+  [[anthropic]], [[openai]] and [[google]]
+  in *Buist v. Anthropic PBC*
+  (`3:26-cv-10693`). Four subscribers asked
+  ND Cal. for an injunction and Clayton Act
+  treble damages, treating the 12 September
+  tweet-and-essay sequence as a horizontal
+  output restriction. The complaint does
+  not challenge unilateral safety testing;
+  the four labs did not comment. This is
+  the first time the SpaceXAI brand this
+  page recorded as a captive from-scratch
+  model (2026-06-17) appears as a
+  litigation defendant next to the three
+  frontier labs. See [[federal-ai-policy]]
+  (The Hill, Bloomberg Law; ARA daily
+  digest 2026-09-20).
 
 ## Open questions
 
