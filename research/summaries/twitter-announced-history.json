@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-11 21:00 UTC",
-    "headline": "CLAUDE CODE SHIPS PARALLEL-AGENT 'AGENT VIEW' \u2014 DISPATCH MANY SKILLS AT ONCE, PEEK AND REPLY UX",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-11-twitter-21h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2053944194386051128"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-12 01:00 UTC",
-    "headline": "MINI SHAI-HULUD WORM HITS TANSTACK NPM \u2014 42 PACKAGES, 84 MALICIOUS VERSIONS IN 6 MINUTES, 12M+ WEEKLY DOWNLOADS EXPOSED",
-    "source": "@IntCyberDigest",
-    "source_file": "research/summaries/2026-05-12-twitter-01h-headlines.json",
-    "url": "https://x.com/IntCyberDigest/status/2053983157628596484"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-12 01:00 UTC",
-    "headline": "MISTRAL AI NPM PACKAGES CONFIRMED COMPROMISED IN MINI SHAI-HULUD CAMPAIGN \u2014 SOCKET SECURITY",
-    "source": "@SocketSecurity",
-    "source_file": "research/summaries/2026-05-12-twitter-01h-headlines.json",
-    "url": "https://x.com/SocketSecurity/status/2053973242545668373"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-05-12 01:00 UTC",
     "headline": "NPM ATTACK ABUSES GITHUB ACTIONS OIDC TO REPUBLISH MALICIOUS PACKAGES UNDER LEGITIMATE MAINTAINER IDENTITIES \u2014 NOVEL VECTOR",
@@ -24440,5 +24413,26 @@
     "headline": "TRUMP POLL ASKS TO RENAME AI SUPERIOR, EXTREME, OR SUPREME INTELLIGENCE",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2101336562420289666"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-20 04:47:31 UTC",
+    "headline": "RSA-896 FACTORED \u2014 WEIS POSTS PRIMES, SAYS CLAUDE ASSISTED ON SEPT 19",
+    "source": "@sweis",
+    "url": "https://x.com/sweis/status/2101484464807596264"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-20 04:47:31 UTC",
+    "headline": "ELON: EACH SAT 250KW WITH SPACEX-DESIGNED VERA RUBIN NVL72 AND ~10TB LINKS",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2101466638939832365"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-20 04:47:31 UTC",
+    "headline": "CXMT SAYS FIFTH-GEN DRAM PLATFORM HITS MASS PRODUCTION AT 11.95NM",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2101525280968053096"
   }
 ]
