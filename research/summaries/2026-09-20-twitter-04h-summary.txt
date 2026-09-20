@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-20 04:47:31 UTC
+
+CYCLE: RSA-896 factored with Claude assist; Elon puts 250 kW and an NVL72 on each sat.
+
+TOP STORIES:
+• RSA-896 factors check; Weis says Claude helped. Not bank RSA. [✓/⚠]
+• Elon: 250 kW, SpaceX-designed NVL72, ~10 Tb links per sat — not 25 GW or an FCC grant [✓]
+• CXMT fifth-gen DRAM in mass production (LPDDR5X, 11.95 nm) [✓]
+
+WATCH: GNFS writeup for RSA-896, or Flight 14 showing whether V3 birds carry an NVL72.
+
+Full update on GitHub.
