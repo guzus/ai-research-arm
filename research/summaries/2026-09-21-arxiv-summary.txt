@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-21
+
+TOP 5 PAPERS:
+• MintAct — unified 2/4/8B visual agent; 48.9 OSWorld-Verified SOTA at size
+• RecreationWorld — Qwen hybrid CUA bench; GPT-6 Astra 58.1%, 2.8% full programmatic
+• CodeMidas — 5,545 RL tasks from source only; MiMo-V2.5 DeepSWE +11.7%
+• Nemotron VoiceChat — open full-duplex S2S + tools; 100% interrupt takeover
+• Softmax primitives — abstention fades with scale; noise filtering grows; both best
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
