@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-12 07:00 UTC",
-    "headline": "TEAMPCP WORM PLANTS PERSISTENCE HOOKS IN .CLAUDE/SETTINGS.JSON AND .VSCODE/TASKS.JSON \u2014 AI CODING AGENTS NOW WEAPONIZED SURFACE",
-    "source": "@ThatbV",
-    "source_file": "research/summaries/2026-05-12-twitter-07h-headlines.json",
-    "url": "https://x.com/ThatbV/status/2054077830590267732"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 07:00 UTC",
-    "headline": "OPENAI CODEX LEAD SOTTIAUX MAKES \"SUPER APP\" FRAMING OFFICIAL \u2014 OPENAI FORUM TALK SCHEDULED WED MAY 13",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-05-12-twitter-07h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2054013690786230510"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-12 07:00 UTC",
-    "headline": "CLAUDE CODE 2.1.139 SHIPS /GOAL COMMAND \u2014 OPENAI CODEX LEAD TAUNTS \"CLAUDE IS NOW COPYING CODEX\"",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-05-12-twitter-07h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2054082531432210765"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-12 07:00 UTC",
-    "headline": "NADELLA CALLS OPENAI BOARD'S 2023 ATTEMPT TO OUST ALTMAN \"AMATEUR CITY\" IN MUSK V OPENAI TRIAL TESTIMONY",
-    "source": "@evanepstein",
-    "source_file": "research/summaries/2026-05-12-twitter-07h-headlines.json",
-    "url": "https://x.com/evanepstein/status/2054038788096319804"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-12 07:00 UTC",
-    "headline": "NADELLA PRODUCES 2016 EMAIL OF MUSK PERSONALLY THANKING MICROSOFT FOR OPENAI SUPPORT \u2014 STATUTE-OF-LIMITATIONS DEFENSE EVIDENCE",
-    "source": "@namd1nh",
-    "source_file": "research/summaries/2026-05-12-twitter-07h-headlines.json",
-    "url": "https://x.com/namd1nh/status/2054037139424518484"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 10:00 UTC",
-    "headline": "CEREBRAS IPO UPSIZED TO $4.8B \u2014 $150-$160/SHARE, 30M SHARES, 20\u00d7 OVERSUBSCRIBED, PRICES MAY 13 AT ~$50B IMPLIED VALUATION",
-    "source": "@EricSun1998",
-    "source_file": "research/summaries/2026-05-12-twitter-10h-headlines.json",
-    "url": "https://x.com/EricSun1998/status/2054078862112370612"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-12 10:00 UTC",
     "headline": "CEREBRAS NOW POSITIONED AS BIGGEST GLOBAL IPO OF 2026 \u2014 VALUATION TARGET +37% AFTER PRICE-RANGE LIFT FROM $115-$125",
@@ -24408,5 +24354,47 @@
     "headline": "REP. RO KHANNA CALLS ON FACE THE NATION FOR FEDERAL AI AGENCY MODELED ON NUCLEAR AND AVIATION REGULATORS",
     "source": "@RoKhannaTracker",
     "url": "https://x.com/RoKhannaTracker/status/2101895901807837664"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-21 12:40:28 UTC",
+    "headline": "HUANG: \"0% CHANCE\" AI ENDS HUMANITY BY 2030; CALLS EXTINCTION RHETORIC UNSCIENTIFIC, CITES \"ULTERIOR REASONS\"",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2101946435763642740"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-21 12:40:28 UTC",
+    "headline": "HUANG FLATLY REJECTS AMODEI'S PUSH TO BAN US TECH SALES TO CHINA \u2014 COMPETE GLOBALLY, DON'T VACATE THE MARKET",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2101918161029455923"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-21 12:40:28 UTC",
+    "headline": "GROK 4.7 BRIEFLY WENT LIVE ON OPENCODE ZEN, THEN VANISHED \u2014 XAI RELEASE SEEN IMMINENT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2101968369486266410"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-21 12:40:28 UTC",
+    "headline": "4B FROGNANO HITS 61.5% ON SWE-BENCH VERIFIED WITH NO FRONTIER DISTILLATION; TOOL-INTERFACE SWAP ALONE TOOK BASE 8.3% TO 37.2%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2101957605354557806"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-21 12:40:28 UTC",
+    "headline": "BLOOMBERG: LOCAL OPPOSITION DISRUPTED 45 US DATA-CENTER PROJECTS WORTH $68B IN Q2, DOWN FROM RECORD 75 AND ~$130B IN Q1",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2101915064572035085"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-21 12:40:28 UTC",
+    "headline": "ENTIRE ARXIV CORPUS \u2014 3,148,796 PAPERS, EVERY VERSION \u2014 PUBLISHED AS A HUGGINGFACE DATASET",
+    "source": "@LottoLabs",
+    "url": "https://x.com/LottoLabs/status/2101938178865447076"
   }
 ]
