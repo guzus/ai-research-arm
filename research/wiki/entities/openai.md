@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; an FT-leaked July deck projects $278B negative FCF through 2030, and the lab is a defendant in the Buist pacing suit.
+description: Frontier lab behind the GPT family; The Information said July ARR topped $40B, while a ChatGPT __obi cookie write-up and an Altman UNSC briefing landed the same Sunday.
 created_at: 2026-05-30
-timestamp: 2026-09-20T00:00:00Z
+timestamp: 2026-09-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
@@ -1670,6 +1671,54 @@ materially reshape how the lab is positioned heading into its IPO window:
   post; Altman's 15 September "big ship
   this week" remains unclosed for a fifth
   digest day (ARA daily digest 2026-09-20).
+
+## A cookie sync, a $40B ARR tweet, and an UNSC date (2026-09-21)
+
+- **Gergely Buchodi reproduced a ChatGPT
+  `__obi` advertiser-pixel join** that
+  travels on third-party requests even when
+  marketing is off. Two phone captures: **936
+  advertiser pixels across 1,029 hostnames**;
+  a **SameSite=None `__obi` cookie on
+  `.openai.com`**; analytics-yes / marketing-no
+  still issued the sync. Limits he keeps:
+  Chrome for Android only; ~1 in 5 sessions;
+  he did not observe the server-side join.
+  The write-up closed Sunday as Hacker News'
+  most-commented remaining AI story
+  (**484/273**). Product-telemetry fact, not
+  a model ship (Buchodi, HN; ARA daily digest
+  2026-09-21).
+- **The Information said OpenAI's annualized
+  revenue topped $40 billion in July** — a
+  July run-rate above the FT leaked-deck
+  **$36 billion** this-year line logged
+  yesterday — while flagging compute spend
+  and price cuts ahead of the next private
+  raise. Twitter-only in this window; no
+  loadable article body. Hold it as a
+  single-masthead run-rate, not a booked
+  quarter. See [[ai-capex]] (The Information
+  via Twitter; ARA daily digest 2026-09-21).
+- **Altman will brief the UN Security Council
+  in person next Wednesday** at an open
+  meeting on AI and international security,
+  with France's Jean-Noël Barrot in the
+  chair. OpenAI said remarks will cover
+  coordination and shared safety standards;
+  [[anthropic]] presence was still
+  unconfirmed at publication. France's
+  concept note, seen by Reuters, frames
+  misuse and "loss of control." The Council's
+  first AI meeting was 2023. See
+  [[federal-ai-policy]] (Reuters, HN; ARA
+  daily digest 2026-09-21).
+- **The Tuesday ship is still unverified.**
+  Altman's 15 September "big ship this week"
+  remains pointed at **Tuesday 22 September**.
+  Do not treat GPT-6-Sol / Kimi K3.1 YouTube
+  titles as first-party ships (ARA daily
+  digest 2026-09-21).
 
 ## Open questions
 

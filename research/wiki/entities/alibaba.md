@@ -4,15 +4,16 @@ title: Alibaba
 type: entity
 aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder", "Qwen-Drive", "Qwen-Drive 1.0", "Qwen3.8-Omni-Flash", "Qwen Omni Flash"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped API-only Qwen3.8-Omni-Flash and saw the National Archives pull a Qwen search widget from the Federal Register.
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 created_at: 2026-07-05
-timestamp: 2026-09-19T00:00:00Z
+timestamp: 2026-09-21T00:00:00Z
 market:
   ticker: BABA
   exchange: NYSE
   symbol: NYSE:BABA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
@@ -242,6 +243,24 @@ friction point distinct from Qwen's own model-release cadence.
   reaction, not a model defect. See
   [[federal-ai-policy]] (Ars Technica; ARA daily
   digest 2026-09-19).
+
+- **[[qwen-image-2-1|Qwen-Image-2.1]] shipped
+  inspectable open weights (2026-09-20).** A
+  unified **7B / 32-layer** visual DiT with a
+  **Qwen3-VL 8B** encoder, **64-channel RGBA
+  VAE**, native 2K, up to ten references, and
+  day-0 Diffusers / ComfyUI / vLLM-Omni /
+  SGLang hooks. The Qwen Research License is
+  **non-commercial** — a step back from earlier
+  Apache Qwen-Image. Qwen's own sheet puts
+  Image-2.1 at **60.28** versus Nano Banana 2.0
+  at **59.82**, still under GPT Image 2.5 at
+  **67.01**; treat the weights and runtimes as
+  the news, not a closed-frontier knockout.
+  Distinct from the July Qwen-Image-3.0 drop
+  above. See [[qwen-image-2-1]] and
+  [[open-weights]] (Alibaba Qwen, The Decoder,
+  HN 426/145; ARA daily digest 2026-09-21).
 
 ## Open questions
 

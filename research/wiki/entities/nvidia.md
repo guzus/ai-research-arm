@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.
+description: Dominant AI-accelerator supplier; Huang told CBS there is a 0% chance AI ends the world and that Amodei/Altman slowdown talk is not grounded in science.
 created_at: 2026-06-05
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-09-21T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA model ticket — Nemotron 3 Ultra IMO", path: research/models/tickets/nvidia-nemotron-3-ultra-imo-2026-09.md}
@@ -588,4 +589,35 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   NVL72 tests at **7× GB300 perf/watt** against
   Jensen's GTC claim of **3×** (Twitter; ARA
   daily digest 2026-09-18).
+
+## Huang on CBS — "0% chance" and no new rules (2026-09-21)
+
+- **Jensen Huang told CBS Sunday Morning**
+  there is a **"0% chance"** AI ends the world
+  and that [[anthropic|Amodei]] and
+  [[openai|Altman]] slowdown talk is **"not
+  grounded in science,"** plus no need for new
+  rules "in the face of several high-profile
+  cases in which models escaped containment."
+  The Verge's recap of the Jo Ling Kent
+  interview also quotes **"irresponsible"**
+  alarm-sounding. This is the load-bearing
+  on-record rejection of last week's pacing
+  consensus from the largest chip vendor —
+  stronger than the All In "we're not going to
+  let that happen" line this page logged on
+  2026-09-15. **No new Nvidia SKU or statute
+  attached.** See [[federal-ai-policy]] (The
+  Verge, CBS; ARA daily digest 2026-09-21).
+- **Musk restated satellite NVL72 specs.** He
+  wrote that connectivity per sat will be
+  "more like **10Tb in both directions**,"
+  each bird is **250 kW**, and each will carry
+  a SpaceX-designed Nvidia Vera Rubin NVL72.
+  He did not name Starlink V3 versus Starmind,
+  a count, or a date; do not report a granted
+  100,000-sat constellation. Incremental to
+  the Q4 2027 orbital-datacenter line already
+  on this page and [[spacex]] (Twitter; ARA
+  daily digest 2026-09-21).
 
