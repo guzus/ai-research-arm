@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ACCENTURE JUMPS UP TO 7% PREMARKET ON ANTHROPIC SAFETY-EVALUATION PACT — TERMS ARE $1B EACH, NOT A $1B CONTRACT",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2101039819870937247",
+    "category": "business"
+  },
+  {
+    "headline": "HUANG: \"0% CHANCE\" AI ENDS HUMANITY BY 2030; CALLS EXTINCTION RHETORIC UNSCIENTIFIC, CITES \"ULTERIOR REASONS\"",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2101946435763642740",
+    "category": "policy"
+  },
+  {
+    "headline": "HUANG FLATLY REJECTS AMODEI'S PUSH TO BAN US TECH SALES TO CHINA — COMPETE GLOBALLY, DON'T VACATE THE MARKET",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2101918161029455923",
+    "category": "policy"
+  },
+  {
+    "headline": "GROK 4.7 BRIEFLY WENT LIVE ON OPENCODE ZEN, THEN VANISHED — XAI RELEASE SEEN IMMINENT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2101968369486266410",
+    "category": "model"
+  },
+  {
+    "headline": "4B FROGNANO HITS 61.5% ON SWE-BENCH VERIFIED WITH NO FRONTIER DISTILLATION; TOOL-INTERFACE SWAP ALONE TOOK BASE 8.3% TO 37.2%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2101957605354557806",
+    "category": "research"
+  },
+  {
+    "headline": "BLOOMBERG: LOCAL OPPOSITION DISRUPTED 45 US DATA-CENTER PROJECTS WORTH $68B IN Q2, DOWN FROM RECORD 75 AND ~$130B IN Q1",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2101915064572035085",
+    "category": "infra"
+  },
+  {
+    "headline": "ENTIRE ARXIV CORPUS — 3,148,796 PAPERS, EVERY VERSION — PUBLISHED AS A HUGGINGFACE DATASET",
+    "source": "@LottoLabs",
+    "url": "https://x.com/LottoLabs/status/2101938178865447076",
+    "category": "opensource"
+  }
+]
