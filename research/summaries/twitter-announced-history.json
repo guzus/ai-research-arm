@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 10:00 UTC",
-    "headline": "CEREBRAS NOW POSITIONED AS BIGGEST GLOBAL IPO OF 2026 \u2014 VALUATION TARGET +37% AFTER PRICE-RANGE LIFT FROM $115-$125",
-    "source": "@RealNickMugalli",
-    "source_file": "research/summaries/2026-05-12-twitter-10h-headlines.json",
-    "url": "https://x.com/RealNickMugalli/status/2053855651055919353"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-12 10:00 UTC",
-    "headline": "GEMINI OMNI VIDEO MODEL LEAK PROPAGATES \u2014 CHALKBOARD MATH PROOF DEMO BECOMES THE 'NANO BANANA MOMENT FOR VIDEO' AHEAD OF GOOGLE I/O",
-    "source": "@chetaslua",
-    "source_file": "research/summaries/2026-05-12-twitter-10h-headlines.json",
-    "url": "https://x.com/chetaslua/status/2053824398503678108"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 10:00 UTC",
-    "headline": "OPENAI CODEX EXTENDS FREE PLANS AND CREDITS TO OSS TEAMS HIT BY TEAMPCP MINI SHAI-HULUD ATTACK",
-    "source": "@jxnlco",
-    "source_file": "research/summaries/2026-05-12-twitter-10h-headlines.json",
-    "url": "https://x.com/jxnlco/status/2054095220397228413"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-12 10:00 UTC",
-    "headline": "MISTRAL CORP-CHANNEL SILENT FOR 13TH DAY DESPITE NPM AND PYPI MISTRALAI 2.4.6 COMPROMISES \u2014 VENDOR DISCLOSURE-NORM ABERRATION",
-    "source": "@MistralAI",
-    "source_file": "research/summaries/2026-05-12-twitter-10h-headlines.json",
-    "url": "https://x.com/MistralAI/status/2049988769928056852"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 10:00 UTC",
-    "headline": "HYPERLIQUID PRE-IPO TRADERS PRICE CEREBRAS AT $80B MARKET CAP \u2014 60% PREMIUM OVER FORMAL $50B BAND",
-    "source": "@HODL4PORSCHE",
-    "source_file": "research/summaries/2026-05-12-twitter-10h-headlines.json",
-    "url": "https://x.com/HODL4PORSCHE/status/2054088738015457554"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-12 12:00 UTC",
-    "headline": "ALTMAN TAKES THE STAND TUESDAY IN MUSK V OPENAI \u2014 CLOSINGS THURSDAY, JURY DELIBERATIONS BEGIN MONDAY MAY 18",
-    "source": "@sanarsh11",
-    "source_file": "research/summaries/2026-05-12-twitter-12h-headlines.json",
-    "url": "https://x.com/sanarsh11/status/2054173031044624762"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-12 12:00 UTC",
-    "headline": "SUTSKEVER CROSS REVEALS 2018 EMAIL CALLING MUSK 'MOST OVERWHELMINGLY COMPETENT PERSON IN THE WORLD' \u2014 STAKE NOW $7B",
-    "source": "@gailalfaratx",
-    "source_file": "research/summaries/2026-05-12-twitter-12h-headlines.json",
-    "url": "https://x.com/gailalfaratx/status/2054054481105453088"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-12 12:00 UTC",
     "headline": "TEAMPCP COMPROMISES CHECKMARX JENKINS AST PLUGIN V2026.5.09 USING STOLEN TRIVY/KICS CREDENTIALS",
@@ -24396,5 +24333,54 @@
     "headline": "ENTIRE ARXIV CORPUS \u2014 3,148,796 PAPERS, EVERY VERSION \u2014 PUBLISHED AS A HUGGINGFACE DATASET",
     "source": "@LottoLabs",
     "url": "https://x.com/LottoLabs/status/2101938178865447076"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-21 19:57:17 UTC",
+    "headline": "XAI SHIPS GROK 4.7 AT UNCHANGED $2/$6 \u2014 TERMINAL-BENCH 4.0 JUMPS 20.3% TO 38.0%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102107446852592045"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-21 19:57:17 UTC",
+    "headline": "MUSK: GROK 4.7 PLACES XAI THIRD FOR AGENTIC CODING, BEHIND ANTHROPIC AND OPENAI",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2102082011233931762"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-21 19:57:17 UTC",
+    "headline": "OPENAI FORMS INDEPENDENT MATH ADVISORY GROUP \u2014 REMIT EXCLUDES ADVISING ON RESEARCH PACE",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2102093145051943229"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-21 19:57:17 UTC",
+    "headline": "OPENAI ASKS US TO LEAD RSI STANDARDS, TRACK SHARE OF LAB RESEARCH RUN AUTONOMOUSLY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2102095417571967293"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-21 19:57:17 UTC",
+    "headline": "TRUMP: WILL NOT STIFLE AI GROWTH, DOJ TO REIN IT IN ONLY IF NEEDED",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2102069470814765288"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-21 19:57:17 UTC",
+    "headline": "META MUSE ADDS AGENTIC CHECKOUT VIA SHOP PAY ACROSS ALL SHOPIFY STORES",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2102092011021217911"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-21 19:57:17 UTC",
+    "headline": "OPENAI AND ANTHROPIC NEARED BINDING PACT TO STRESS-TEST EACH OTHER'S MODELS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102047727655723485"
   }
 ]
