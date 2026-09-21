@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; Trump posted an AI Force / unnamed czar with no EO, and four subscribers sued the labs in ND Cal. over the 12 September pacing endorsements.
+description: US federal and state AI governance; Huang's CBS interview rejected last week's pacing consensus, Politico reconstructed the June Fable fight, and Altman will brief the UNSC.
 created_at: 2026-06-03
-timestamp: 2026-09-20T00:00:00Z
+timestamp: 2026-09-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
@@ -815,7 +816,7 @@ footing for the first time in the cycle.
 
 - **Joint advisory AA26-251A from NSA, CISA and FBI
   named six Chinese labs** — [[deepseek]], Moonshot,
-  [[alibaba]], MiniMax, StepFun and [[zhipu|Z.AI]] — alleging
+  [[alibaba]], MiniMax, [[step-5-preview|StepFun]] and [[zhipu|Z.AI]] — alleging
   industrial-scale distillation of Claude, GPT, Gemini
   and Grok since late 2024 via API proxies and shared
   premium subscriptions. The recommended defense is to
@@ -1285,6 +1286,76 @@ footing for the first time in the cycle.
   and Virginia EO 22 remain Friday's state
   actions. See [[california-ai-regulation]]
   (ARA daily digest 2026-09-20).
+
+## Huang on CBS, a June Fable reconstruction, and an UNSC date (2026-09-21)
+
+- **[[nvidia|Huang]]'s CBS Sunday Morning
+  interview** is the load-bearing on-record
+  rejection of last week's pacing consensus
+  from the largest chip vendor: **"0%
+  chance"** of ending the world,
+  **"irresponsible"** alarm-sounding, last
+  week's pacing talk **"not grounded in
+  science,"** and no need for new rules "in
+  the face of several high-profile cases in
+  which models escaped containment." No new
+  SKU or statute. Stronger than the All In
+  co-sign this page logged on 2026-09-15.
+  See [[nvidia]] (The Verge, CBS; ARA daily
+  digest 2026-09-21).
+- **Politico reconstructed the June Fable
+  fight.** A 20 September magazine tick-tock
+  of the June export-control standoff says
+  Wiles, Walters, and Scharf walked Trump
+  toward Commerce/BIS authority after a
+  White House deadline passed, and a person
+  familiar with the talks said Trump
+  remarked, "I want to send them to jail."
+  Commerce and Treasury declined to comment.
+  **This is a reconstruction of June, not a
+  new order.** Implementation stays a
+  magazine reconstruction; no new EO or BIS
+  action landed with it. See
+  [[claude-fable-5]] and [[anthropic]]
+  (Politico, Twitter; ARA daily digest
+  2026-09-21).
+- **[[openai|Altman]] will appear in person
+  next Wednesday** at an open UN Security
+  Council meeting on AI and international
+  security, France's Jean-Noël Barrot in the
+  chair. OpenAI said remarks will cover
+  coordination and shared safety standards;
+  [[anthropic]] presence was still
+  unconfirmed. France's concept note, seen
+  by Reuters, frames misuse and "loss of
+  control." The Council's first AI meeting
+  was 2023. Dated for UNGA week; not a
+  statute (Reuters, HN; ARA daily digest
+  2026-09-21).
+- **The Buist pacing complaint
+  (`3:26-cv-10693`, N.D. Cal.)** is still
+  the live lawsuit. No lab motion or
+  first-party statement landed. Parallel
+  public speech is not a cartel; a motion
+  to dismiss remains the obvious next
+  filing. Trump's AI Force / czar posts
+  remain Saturday's social-media line: no
+  EO, budget, or named person. Reuters'
+  Bessent–He item is still the 19 September
+  scheduling note; no joint statement
+  loaded after Sunday's 10:30 a.m. ET slot
+  (ARA daily digest 2026-09-21).
+- **No new federal statute, CATSR docket, or
+  independent-verification mandate** cleared
+  a loadable primary. Newsom's kill-switch
+  EO, Virginia EO 22, and TRAI's Third
+  Amendment remain Friday/Saturday actions.
+  Dead Neurons argued the existential-risk
+  roadshow is a regulatory-capture hustle
+  and located Amodei's 12 September essay as
+  an explicit antitrust-waiver ask — essay,
+  not a filing (HN; ARA daily digest
+  2026-09-21).
 
 ## Open questions
 

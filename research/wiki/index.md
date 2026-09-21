@@ -8,7 +8,7 @@ Each page is one of three types — entity, concept, or theme. See
 ## Entities
 
 - [[agibot]] — Chinese humanoid-robotics maker; unveiled four embodied-AI products at WAIC 2026, led by the A3 Ultra humanoid.
-- [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped API-only Qwen3.8-Omni-Flash and saw the National Archives pull a Qwen search widget from the Federal Register.
+- [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios began ramping into Anthropic's 2 GW MI450 commitment.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 as a third inference architecture beside Trainium and Nvidia.
 - [[anthropic]] — AI safety lab behind Claude; first-named defendant in Buist v. Anthropic PBC, with Reuters citing a pre-IPO model still in safety eval and a listing that could slip past the midterms.
@@ -71,8 +71,8 @@ Each page is one of three types — entity, concept, or theme. See
 - [[nano-banana-2-lite]] — Google's fastest/cheapest image model (gemini-3.1-flash-lite-image, ~4s/~$0.034), shipped 2026-06-30 with Gemini Omni Flash bringing text-prompt video gen/editing to the API.
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; told customers on-demand GPU rent rises 17–21% on October 1 (H100 $3.85→$4.50, B300 $7.85→$9.50), the second hike since May.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
-- [[nvidia]] — Dominant AI-accelerator supplier; Huang co-signed Trump's no-slowdown line at All In, and Nemotron 3 Ultra posted an IMO gold-equivalent 30/42 with the recipe released.
-- [[openai]] — Frontier lab behind the GPT family; an FT-leaked July deck projects $278B negative FCF through 2030, and the lab is a defendant in the Buist pacing suit.
+- [[nvidia]] — Dominant AI-accelerator supplier; Huang told CBS there is a 0% chance AI ends the world and that Amodei/Altman slowdown talk is not grounded in science.
+- [[openai]] — Frontier lab behind the GPT family; The Information said July ARR topped $40B, while a ChatGPT __obi cookie write-up and an Altman UNSC briefing landed the same Sunday.
 - [[openrouter]] — LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -82,6 +82,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[prometheus]] — Jeff Bezos's industrial-AI startup building an "artificial general engineer"; $12B Series B at ~$41B on 2026-06-11, industrial AI's first megaround.
 - [[poolside]] — AI-software company whose model-development technology NVIDIA licensed for $6B alongside a $1B investment at a $12B pre-money valuation (2026-08-21), structured to avoid a reviewable change of control.
 - [[qwen-3-8-max]] — Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open — alongside the contested 27B sibling (Qwen3.8-27B).
+- [[qwen-image-2-1]] — Alibaba's inspectable 7B single-stream visual DiT with a Qwen3-VL 8B encoder; native RGBA and 2K, day-0 Diffusers/ComfyUI hooks, under a non-commercial Qwen Research License.
 - [[sakana-ai]] — Tokyo lab whose multi-model-orchestration thesis now ships as Fugu Max ($2/$6, NVIDIA Nemotron in the pool) and Ultra v2, which posts first-party Chartography 48.3 versus Opus 5 at 27.3 with Astra and Fable excluded.
 - [[safe-superintelligence]] — Ilya Sutskever's stealth AI-safety lab; NVIDIA reportedly invested ~$5B (2026-07-28) at a $32B post-money valuation alongside a compute partnership.
 - [[salesforce]] — Enterprise-CRM giant betting on agentic AI (Agentforce); bought AI customer-service platform Fin for $3.6B (2026-06-15) and reported FY27Q2 revenue of $11.3B with Agentforce/Data 360 ARR near $3.9B, up 210%+ YoY (2026-08-26).
@@ -90,6 +91,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[sk-telecom]] — South Korea's largest carrier and ~$100M Anthropic investor; named 2026-06-21 as the Project Glasswing partner whose Mythos 5 access helped trigger the Fable 5 export suspension.
 - [[soofi-s-30b-a3b]] — Deutsche Telekom-backed sovereign open German/English MoE model (~27T tokens); claimed strongest fully-open model on combined EN+DE benchmarks, released 2026-07-13.
 - [[spacex]] — Record IPO (Nasdaq: SPCX, debuted 2026-06-12 at $135/share, ~$1.77T valuation) anchoring the 2026 AI-financing issuance wave.
+- [[step-5-preview]] — StepFun's first-party 600B / 27B-active MoE with 1M context and vision; live in Studio and the API at $1.00 / $2.70 per Mtok, with open weights dated 15 October.
 - [[tencent-hunyuan-hy3]] — Tencent Hunyuan's 295B open-weight MoE model under Apache 2.0, reported new open SOTA on the MCP-Atlas benchmark, released 2026-07-06.
 - [[taalas]] — Inference-chip startup hardwiring a single model into silicon; acquired by AMD on 2026-08-07 with no disclosed terms, the second model-specific-silicon deal of the cycle after Nvidia–Groq.
 - [[volta-infra]] — Months-old neocloud founded by ex-Brookfield executives; reported ~$10B Anthropic compute counterparty, colocated with Bitdeer behind a $1.3B letter of credit, unconfirmed by any principal.
@@ -99,7 +101,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[xiaomi-mimo-v2-5-pro]] — Xiaomi MiMo UltraSpeed model tied to the 1,000+ tok/s on 1T MoE claim using a standard 8-GPU server; high-signal but still partially verified.
 - [[zhipu]] — Chinese frontier lab behind the GLM family; researcher ferstar says the ZCode desktop app silently uploads complete Git history to Aliyun OSS with no UI off-switch.
 - [[zhipu-glm-5-2]] — Zhipu / Z.ai's 1M-context GLM-5.2, deployed in the GLM Coding Plan with MIT open weights promised; marquee Chinese open-weight release.
-- [[zhipu-glm-5-3]] — Zhipu / Z.ai's GLM-5.3; a GLM-5.3 Infra Agent stood up Flash serving on more than 100,000 Chinese accelerators in under two weeks and claimed a 3× throughput lift, while the lab said it has not reached RSI.
+- [[zhipu-glm-5-3]] — Zhipu / Z.ai's GLM-5.3; GLM-5.3 FlashX is live in Hermes Agent via OpenRouter at $0.37/$1.25 per Mtok (320B / 18B active, 1M context).
 
 ## Concepts
 
@@ -121,5 +123,5 @@ Each page is one of three types — entity, concept, or theme. See
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Newsom signed a Friday EO giving a two-month panel a brief to recommend on-site verifiers and an independently checked frontier kill switch after SB 813 and AB 1405.
 - [[china-ai-regulation]] — Beijing regulating consumer AI products directly, opening with the AI-companion-agent law that took effect 2026-07-15 and forced Doubao and Qwen offline.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
-- [[federal-ai-policy]] — US federal and state AI governance; Trump posted an AI Force / unnamed czar with no EO, and four subscribers sued the labs in ND Cal. over the 12 September pacing endorsements.
-- [[open-weights]] — Open-weight models closing on the frontier; Laya's year-old Apache-2.0 Jev clones outclimbed TypeSafe's closed decision model on Hacker News.
+- [[federal-ai-policy]] — US federal and state AI governance; Huang's CBS interview rejected last week's pacing consensus, Politico reconstructed the June Fable fight, and Altman will brief the UNSC.
+- [[open-weights]] — Open-weight models closing on the frontier; Alibaba's Qwen-Image-2.1 shipped inspectable weights under a non-commercial Qwen Research License.

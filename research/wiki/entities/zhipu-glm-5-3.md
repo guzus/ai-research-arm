@@ -2,12 +2,13 @@
 slug: zhipu-glm-5-3
 title: Zhipu GLM-5.3
 type: entity
-aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3", "GLM-5.3-Flash", "GLM-5.3 Flash", "GLM-5.3 Infra Agent"]
+aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3", "GLM-5.3-Flash", "GLM-5.3 Flash", "GLM-5.3 Infra Agent", "GLM-5.3-FlashX", "GLM-5.3 FlashX", "z-ai/glm-5.3-flashx"]
 tags: [open-weights, china, agentic, frontier-model]
-description: Zhipu / Z.ai's GLM-5.3; a GLM-5.3 Infra Agent stood up Flash serving on more than 100,000 Chinese accelerators in under two weeks and claimed a 3× throughput lift, while the lab said it has not reached RSI.
+description: Zhipu / Z.ai's GLM-5.3; GLM-5.3 FlashX is live in Hermes Agent via OpenRouter at $0.37/$1.25 per Mtok (320B / 18B active, 1M context).
 created_at: 2026-08-19
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-09-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
@@ -169,3 +170,22 @@ GLM-5.3 SKU. See [[zhipu]] (Reuters; ARA daily digest
   first-party training-volume restatement, not a
   new Ox Alpha ship (Z.ai; ARA daily digest
   2026-09-18).
+
+## FlashX hooks into Hermes Agent (2026-09-21)
+
+- **Teknium said `z-ai/glm-5.3-flashx` is
+  selectable** via the Nous Portal and
+  [[openrouter|OpenRouter]], **1,048,576-token
+  context**. OpenRouter lists the SKU as
+  released **18 September** at **$0.37 / $1.25
+  per Mtok** with a **320B / 18B active**
+  split — Friday's model, Sunday's Hermes
+  hook. This is a serving/SKU increment on
+  the Flash line, not a new checkpoint or
+  a weights drop. See [[openrouter]] (Teknium,
+  OpenRouter; ARA daily digest 2026-09-21).
+- **[[step-5-preview|Step 5 Preview]]'s vendor
+  DeepSWE v1.1 High row** puts GLM-5.3 Max at
+  **66.9** against Step 5's **67.7**. First-party
+  StepFun exhibit, not an independent bake-off
+  (StepFun; ARA daily digest 2026-09-21).
