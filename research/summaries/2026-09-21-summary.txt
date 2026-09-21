@@ -1,16 +1,17 @@
 AI News - 2026-09-21
 
 TOP STORIES:
-• SoftBank borrowing $11B+ in junk bonds to fund OpenAI stake payments (FT via The Decoder)
-• US/China agree AI security-incident notification channel ahead of Trump-Xi summit
-• Amazon blocks Meta's AI shopping agent Muse over identification/data concerns
-• Google launches $899 "Googlebook" laptop line built around Gemini, ships Oct 4
-• Google open-sources EnvHarness for adaptive agent training (Apache 2.0)
+• xAI launches Grok 4.7 cheap, but benchmarks trail Claude Fable 5.1/GPT-6
+• UN panel: "no assurance humans will keep control" over AI agents (Bengio)
+• US/China agree AI incident notification channel ahead of Trump-Xi summit
+• SoftBank borrowing $11B+ in junk bonds for OpenAI stake payments
+• Meta's Muse outpaces ChatGPT's early mobile launch; Amazon still blocks it
+• OpenAI forms math advisory group, claims 100+ open problems solved
 
 KEY NUMBERS:
-• $11B+ SoftBank junk bonds ($10B USD + €1B)
-• $899 Googlebook; ~50M K-12 Chromebooks targeted for Gemini
-• $25M Corridor seed (Bain Capital Ventures)
-• 56% hallucination cut from new LLM memory-trust controller (arXiv:2609.22043)
+• Grok 4.7: $2/$6 per Mtok; scores 46 vs Claude/GPT-6's 53
+• $11B+ SoftBank bonds; $899 Googlebook laptop
+• Muse: 2.8M installs, 642K US DAU vs ChatGPT's 231K (12 days)
+• $25M Corridor seed; $1M Tabby pre-seed
 
 Full report on GitHub.
