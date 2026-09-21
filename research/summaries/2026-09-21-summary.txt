@@ -1,0 +1,16 @@
+AI News - 2026-09-21
+
+TOP STORIES:
+• SoftBank borrowing $11B+ in junk bonds to fund OpenAI stake payments (FT via The Decoder)
+• US/China agree AI security-incident notification channel ahead of Trump-Xi summit
+• Amazon blocks Meta's AI shopping agent Muse over identification/data concerns
+• Google launches $899 "Googlebook" laptop line built around Gemini, ships Oct 4
+• Google open-sources EnvHarness for adaptive agent training (Apache 2.0)
+
+KEY NUMBERS:
+• $11B+ SoftBank junk bonds ($10B USD + €1B)
+• $899 Googlebook; ~50M K-12 Chromebooks targeted for Gemini
+• $25M Corridor seed (Bain Capital Ventures)
+• 56% hallucination cut from new LLM memory-trust controller (arXiv:2609.22043)
+
+Full report on GitHub.
