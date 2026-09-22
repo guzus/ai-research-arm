@@ -1,0 +1,404 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "MiMo-V2.6-Pro scores 46 on Artificial Analysis Intelligence Index v4.3.2, the top open-weights model on that index.",
+      "type": "metric",
+      "source_urls": ["https://artificialanalysis.ai/models/mimo-v2-6-pro"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c2",
+      "claim": "Artificial Analysis spent $206.66 in total to evaluate MiMo-V2.6-Pro on the Intelligence Index, which it reports as $0.13 per Index task.",
+      "type": "metric",
+      "source_urls": ["https://artificialanalysis.ai/models/mimo-v2-6-pro"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c3",
+      "claim": "Grok 4.7 (xhigh) also scores 46 on Index v4.3.2, at $3.74 per Index task and $4,967.35 for the full run.",
+      "type": "metric",
+      "source_urls": ["https://artificialanalysis.ai/models/grok-4-7", "https://artificialanalysis.ai/models/comparisons/mimo-v2-6-pro-vs-grok-4-7"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c4",
+      "claim": "Index v4.3.2 is a weighted average of ten evaluations across four categories: Agents 30%, Coding 20%, General 30%, Scientific Reasoning 20%.",
+      "type": "technical",
+      "source_urls": ["https://artificialanalysis.ai/methodology/intelligence-benchmarking"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Artificial Analysis estimates a 95% confidence interval for the Intelligence Index of less than plus or minus 1%, derived from more than ten repeats on certain models.",
+      "type": "technical",
+      "source_urls": ["https://artificialanalysis.ai/methodology/intelligence-benchmarking"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Five of the ten Index constituents, carrying 55% of total weight, are run exactly once per model; only GDP.pdf and CritPt are run five times.",
+      "type": "technical",
+      "source_urls": ["https://artificialanalysis.ai/methodology/intelligence-benchmarking"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c7",
+      "claim": "Grok 4.6 was reported at 61 on the Artificial Analysis Intelligence Index on 12 August 2026 and is reported at 44 today, with no change to the model.",
+      "type": "comparison",
+      "source_urls": ["https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis", "https://artificialanalysis.ai/models/grok-4-6"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c8",
+      "claim": "Artificial Analysis reported Grok 4.6 at $0.84 per Index task in August 2026 and $1.86 per Index task in September 2026 on an unchanged $2/$6 per million token rate card.",
+      "type": "comparison",
+      "source_urls": ["https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis", "https://artificialanalysis.ai/models/grok-4-6"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "On AA-Omniscience, the Index's factuality constituent, MiMo-V2.6-Pro scores 8 and Grok 4.7 scores 32 despite an identical composite of 46.",
+      "type": "comparison",
+      "source_urls": ["https://artificialanalysis.ai/models/comparisons/mimo-v2-6-pro-vs-grok-4-7"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "On AA-LCR v1.1 MiMo scores 86% against Grok 4.7's 77%; on Terminal-Bench 4.0, 35% against 26%; on HLE, 49% against 43%; on CritPt, 27% against 18%.",
+      "type": "comparison",
+      "source_urls": ["https://artificialanalysis.ai/models/comparisons/mimo-v2-6-pro-vs-grok-4-7"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c11",
+      "claim": "On AA-Briefcase v1.1 Grok 4.7 scores 1657 Elo against MiMo's 1522, on GDPval-AA 1695 against 1673, and on AutomationBench-AA 66% against 59%.",
+      "type": "comparison",
+      "source_urls": ["https://artificialanalysis.ai/models/comparisons/mimo-v2-6-pro-vs-grok-4-7"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c12",
+      "claim": "Artificial Analysis lists exactly one API provider for MiMo-V2.6-Pro, Xiaomi's own first-party endpoint.",
+      "type": "market-structure",
+      "source_urls": ["https://artificialanalysis.ai/models/mimo-v2-6-pro", "https://openrouter.ai/api/v1/models/xiaomi/mimo-v2.6-pro/endpoints"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c13",
+      "claim": "Xiaomi prices MiMo-V2.6-Pro at $0.435 per million input tokens and $0.87 per million output tokens, and the same checkpoint sold as MiMo-V2.6-Pro-UltraSpeed at $4.35 and $8.70, exactly ten times higher.",
+      "type": "metric",
+      "source_urls": ["https://openrouter.ai/api/v1/models/xiaomi/mimo-v2.6-pro/endpoints", "https://mimo.mi.com/models/en-US/mimo-v2.6-pro-ultraspeed"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c14",
+      "claim": "Xiaomi's stated $2.62M for MiMo-V2.6-Pro covers the Live RL stage only: 30 steps and roughly 750,000 trajectories in under six days, with no pretraining cost disclosed.",
+      "type": "metric",
+      "source_urls": ["https://mimo.mi.com/docs/en-US/news/latest/v2-6"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Xiaomi acknowledges that behind the six-day run lie half a year of foundational research accumulation and engineering trial and error, which the dollar figure does not cost.",
+      "type": "quote",
+      "source_urls": ["https://mimo.mi.com/docs/en-US/news/latest/v2-6"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "DeepSeek-V3's $5.576M figure covers 2.788M H800 GPU-hours at an assumed $2 per GPU-hour and explicitly excludes prior research and ablation experiments.",
+      "type": "quote",
+      "source_urls": ["https://arxiv.org/html/2412.19437v2"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-12-26",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "Xiaomi's FY2025 group R&D expense was RMB 33.13 billion on revenue of RMB 457.29 billion, with cumulative 2026-2030 R&D guided above RMB 200 billion.",
+      "type": "metric",
+      "source_urls": ["https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-03-24",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "On Xiaomi's own model card MiMo-V2.6-Pro beats Claude Opus 5 on Terminal-Bench 2.1 (89.9 vs 89.1) but loses to it by 14.1 points on Terminal-Bench 4.0 (34.9 vs 49.0).",
+      "type": "comparison",
+      "source_urls": ["https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-21",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c19",
+      "claim": "Terminal-Bench 4.0 is a 66-task set released 26 August 2026 that deliberately removed tasks that were saturated, refusal-prone or publicly solved.",
+      "type": "technical",
+      "source_urls": ["https://www.tbench.ai/news/terminal-bench-4-0"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-26",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c20",
+      "claim": "Xiaomi announced 7,000-plus high-quality RL task environments alongside the release, but the task corpus itself was not published; only the harness and recipes are open.",
+      "type": "event",
+      "source_urls": ["https://mimo.mi.com/docs/en-US/news/latest/v2-6", "https://www.latent.space/p/ainews-xiaomi-mimo-v26-pro-1t-a42b"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-09-23",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c21",
+      "claim": "The MiMo-V2.6-Pro model card discloses a Multi-Prefix Multi-Teacher On-Policy Distillation stage without naming the teacher models.",
+      "type": "technical",
+      "source_urls": ["https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-21",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c22",
+      "claim": "Two days after release, MiMo-V2.6-Pro's only non-Artificial-Analysis third-party score is an Arena AutoEval proxy of 1628 on Code Arena, explicitly unranked with zero human votes.",
+      "type": "market-structure",
+      "source_urls": ["https://arena.ai/leaderboard/code", "https://arena.ai/blog/autoeval-scores"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "Vals.ai has no MiMo-V2.6-Pro evaluation; its model URL returns HTTP 404 while it evaluated Grok 4.7 on release day.",
+      "type": "market-structure",
+      "source_urls": ["https://www.vals.ai/home"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "MiMo-V2.5-Pro's 26 and MiMo-V2.6-Pro's 46 are both current v4.3.2 measurements, so the 20-point generational gap is not a naive cross-version artifact.",
+      "type": "comparison",
+      "source_urls": ["https://artificialanalysis.ai/models/comparisons/mimo-v2-5-pro-vs-mimo-v2-6-pro"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c25",
+      "claim": "Artificial Analysis shipped Index v4.2 on 4 September 2026, v4.3 on 7 September and v4.3.2 on 19 September, two days before both MiMo-V2.6-Pro and Grok 4.7 launched.",
+      "type": "event",
+      "source_urls": ["https://artificialanalysis.ai/changelog"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "Evaluations with private questions or answers account for 45% of Index v4.3 weighting, up from 40% in v4.2 and roughly 20% in v4.1.",
+      "type": "technical",
+      "source_urls": ["https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-3", "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-2"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "Epoch AI audited a random sample of 48 Humanity's Last Exam questions and found 22 (46%) had substantial accuracy-altering errors, designating the benchmark Flawed.",
+      "type": "technical",
+      "source_urls": ["https://epoch.ai/benchmarks/hle/review"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-11",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c28",
+      "claim": "Miller (2024) shows a new evaluation needs roughly 969 questions to detect a three-point difference at 80% power, and that clustered standard errors can be over three times larger than naive ones.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2411.00640"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-11-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "A confirmatory factor analysis of 591 LLMs across 12 tests finds a dominant general factor with average loading 0.81 explaining 65.6% of benchmark variance and mean inter-test correlation 0.73.",
+      "type": "technical",
+      "source_urls": ["https://arxiv.org/abs/2310.11616"],
+      "source_tiers": ["academic"],
+      "as_of": "2023-10-17",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c30",
+      "claim": "DeepSeek disclosed a 545% cost-profit margin for V3/R1 inference over one 24-hour window: $87,072 of daily H800 cost against $562,027 of theoretical revenue, while stating actual revenue was substantially lower.",
+      "type": "metric",
+      "source_urls": ["https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-03-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "Z.AI's HKEX interim filing reports its gross profit margin rising from -0.4% for the six months to 30 June 2025 to 24.6% for the six months to 30 June 2026, with average API selling price up about 101%.",
+      "type": "metric",
+      "source_urls": ["https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083101539.pdf"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-31",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c32",
+      "claim": "MiMo-V2.6-Pro is a 1.02-trillion-parameter sparse mixture of experts with 42 billion active parameters, 384 routed experts of which 8 activate, 70 layers of which 60 use 128-token sliding-window attention, and a 1M-token context.",
+      "type": "technical",
+      "source_urls": ["https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-21",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c33",
+      "claim": "Menlo Ventures estimates Chinese open-source models account for about 1% of enterprise LLM API usage, with open source overall at 11%.",
+      "type": "metric",
+      "source_urls": ["https://menlovc.com/perspective/2025-mid-year-llm-market-update/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-07-31",
+      "confidence": "low",
+      "risk": "contested"
+    },
+    {
+      "id": "c34",
+      "claim": "NVIDIA's FY2026 Form 10-K states the company was effectively foreclosed from competing in China's data center computing market as of the end of fiscal year 2026.",
+      "type": "regulatory",
+      "source_urls": ["https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"],
+      "source_tiers": ["legal"],
+      "as_of": "2026-02-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c35",
+      "claim": "Epoch AI estimates Huawei will produce less than 4% as much AI compute as NVIDIA in 2026, with HBM the binding constraint.",
+      "type": "forecast",
+      "source_urls": ["https://epoch.ai/publications/huaweis-roadmap-to-2031"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-09-04",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c36",
+      "claim": "The Index v4.3.2 task inventory totals roughly 9,750 single-pass tasks, so $206.66 divided by tasks actually executed is about $0.021, not the $0.13 weighted unit Artificial Analysis publishes.",
+      "type": "comparison",
+      "source_urls": ["https://artificialanalysis.ai/methodology/intelligence-benchmarking", "https://artificialanalysis.ai/models/mimo-v2-6-pro"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c37",
+      "claim": "MiMo-V2.6-Pro generated 140M output tokens on the Index run and Grok 4.7 (xhigh) generated 240M, with Grok using approximately 81k output tokens per Index task against Grok 4.6's 36k.",
+      "type": "comparison",
+      "source_urls": ["https://artificialanalysis.ai/models/mimo-v2-6-pro", "https://artificialanalysis.ai/articles/benchmarking-grok-4-7"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c38",
+      "claim": "Artificial Analysis independently evaluated Reflection-70B in September 2024 and could not reproduce its claimed benchmark results even with private API access.",
+      "type": "event",
+      "source_urls": ["https://venturebeat.com/ai/new-open-source-ai-leader-reflection-70bs-performance-questioned-accused-of-fraud"],
+      "source_tiers": ["secondary"],
+      "as_of": "2024-09-09",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c39",
+      "claim": "Meta's Llama 4 Maverick advertised an LMArena Elo of 1417 from an experimental chat version; the unmodified public weights ranked 32nd when LMArena scored them on 11 April 2025.",
+      "type": "event",
+      "source_urls": ["https://techcrunch.com/2025/04/11/metas-vanilla-maverick-ai-model-ranks-below-rivals-on-a-popular-chat-benchmark"],
+      "source_tiers": ["secondary"],
+      "as_of": "2025-04-11",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c40",
+      "claim": "The GSM1k study found contamination gaps are family-specific: Yi-6B-Chat fell 8.0 points and phi-2 6.3 points, while gpt-4o moved -0.2 and claude-3-opus +2.2.",
+      "type": "technical",
+      "source_urls": ["https://ar5iv.labs.arxiv.org/html/2405.00332"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-05-01",
+      "confidence": "high",
+      "risk": "stable"
+    }
+  ]
+}

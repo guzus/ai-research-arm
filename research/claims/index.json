@@ -1,5 +1,5 @@
 {
-  "article_count": 82,
+  "article_count": 83,
   "articles": [
     {
       "claim_count": 18,
@@ -801,6 +801,14 @@
       "stem": "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1",
       "tags": [],
       "title": "The gate that was never there — and the ones that were quietly removed"
+    },
+    {
+      "claim_count": 40,
+      "created_at": "2026-09-22T18:13:09Z",
+      "slug": "xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "stem": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "tags": [],
+      "title": "A 46 is not evidence that two models are the same"
     }
   ],
   "by_host": {
@@ -1142,7 +1150,8 @@
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c21"
     ],
     "ar5iv.labs.arxiv.org": [
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c27"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c27",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c40"
     ],
     "ara.guzus.xyz": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c12",
@@ -1155,7 +1164,8 @@
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c12",
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c6",
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c8",
-      "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c9"
+      "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c9",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c22"
     ],
     "arrington.house.gov": [
       "2026-05-27T035557--800-vdc-architecture#c28"
@@ -1195,7 +1205,24 @@
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c13",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c14",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c15",
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c40"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c40",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c1",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c10",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c11",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c12",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c2",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c24",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c25",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c26",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c3",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c36",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c37",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c4",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c5",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c6",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c7",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c8",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c9"
     ],
     "artificialintelligenceact.eu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c30",
@@ -1423,7 +1450,10 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c31",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c34",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c35",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c44"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c44",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c16",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c28",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c29"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -2682,7 +2712,9 @@
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c10",
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c28",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c32",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c33"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c33",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c27",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c35"
     ],
     "epochai.substack.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c35"
@@ -3088,7 +3120,8 @@
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c30",
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c8",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c28",
-      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c3"
+      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c3",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c30"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -3295,7 +3328,10 @@
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c38",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c4",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c5",
-      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6"
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c18",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c21",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c32"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
@@ -3479,6 +3515,9 @@
     "ir.crowdstrike.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c25"
     ],
+    "ir.mi.com": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c17"
+    ],
     "ir.theice.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C5"
     ],
@@ -3620,7 +3659,8 @@
     "latent.space": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c18",
       "2026-08-04T171206--comfyui-company#c48",
-      "2026-08-04T171206--comfyui-company#c5"
+      "2026-08-04T171206--comfyui-company#c5",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c20"
     ],
     "latepost.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c34"
@@ -3803,7 +3843,8 @@
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c15"
     ],
     "menlovc.com": [
-      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c54"
+      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c54",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c33"
     ],
     "merck.com": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c12"
@@ -3848,6 +3889,12 @@
     ],
     "millerchevalier.com": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c17"
+    ],
+    "mimo.mi.com": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c13",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c14",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c15",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c20"
     ],
     "minimax.io": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c1",
@@ -4202,7 +4249,9 @@
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c38",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c5",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c9",
-      "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-1"
+      "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-1",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c12",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c13"
     ],
     "opensearch.org": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c4"
@@ -4823,7 +4872,8 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c18",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c19",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c30",
-      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c31"
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c31",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c34"
     ],
     "securitycompass.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
@@ -5119,7 +5169,8 @@
     ],
     "tbench.ai": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10",
-      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c11"
+      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c11",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c19"
     ],
     "tech.slashdot.org": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c11"
@@ -5190,7 +5241,8 @@
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-13",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c22",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c26",
-      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c38"
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c38",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c39"
     ],
     "techflowpost.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20"
@@ -5587,7 +5639,8 @@
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c6"
     ],
     "vals.ai": [
-      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c8"
+      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c8",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c23"
     ],
     "valueaddvc.com": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c9",
@@ -5616,7 +5669,8 @@
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c6",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c05",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c06",
-      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c17"
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c17",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c38"
     ],
     "veracode.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c26"
@@ -5741,6 +5795,9 @@
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c8",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c5"
+    ],
+    "www1.hkexnews.hk": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c31"
     ],
     "x-stocks.app": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c17"
@@ -6227,6 +6284,9 @@
     "https://ar5iv.labs.arxiv.org/html/2305.07153": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c27"
     ],
+    "https://ar5iv.labs.arxiv.org/html/2405.00332": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c40"
+    ],
     "https://ara.guzus.xyz/research/generative/2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c12"
     ],
@@ -6235,6 +6295,9 @@
     ],
     "https://architectpartners.com/q2-2026-crypto-ma-and-financing-report": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22"
+    ],
+    "https://arena.ai/blog/autoeval-scores": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c22"
     ],
     "https://arena.ai/blog/leaderboard-changelog": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c8"
@@ -6246,7 +6309,8 @@
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c9"
     ],
     "https://arena.ai/leaderboard/code": [
-      "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c6"
+      "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c6",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c22"
     ],
     "https://arrington.house.gov/uploadedfiles/final_oracle_oai_data_center_fact_sheet_092225b.pdf": [
       "2026-05-27T035557--800-vdc-architecture#c28"
@@ -6255,6 +6319,15 @@
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c14",
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c28",
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c28"
+    ],
+    "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-2": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c26"
+    ],
+    "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-3": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c26"
+    ],
+    "https://artificialanalysis.ai/articles/benchmarking-grok-4-7": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c37"
     ],
     "https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model": [
       "2026-06-22T052035--zhipu-ai-glm#c9"
@@ -6268,12 +6341,25 @@
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c5",
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c11"
     ],
+    "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c7",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c8"
+    ],
     "https://artificialanalysis.ai/articles/kimi-k2-thinking-everything-you-need-to-know": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c21"
+    ],
+    "https://artificialanalysis.ai/changelog": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c25"
     ],
     "https://artificialanalysis.ai/leaderboards/models": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c1",
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c2"
+    ],
+    "https://artificialanalysis.ai/methodology/intelligence-benchmarking": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c36",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c4",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c5",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c6"
     ],
     "https://artificialanalysis.ai/models": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10"
@@ -6284,6 +6370,15 @@
     "https://artificialanalysis.ai/models/comparisons/glm-5-2-vs-deepseek-v4-pro": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c19"
     ],
+    "https://artificialanalysis.ai/models/comparisons/mimo-v2-5-pro-vs-mimo-v2-6-pro": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c24"
+    ],
+    "https://artificialanalysis.ai/models/comparisons/mimo-v2-6-pro-vs-grok-4-7": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c10",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c11",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c3",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c9"
+    ],
     "https://artificialanalysis.ai/models/glm-5-2": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c7",
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c11"
@@ -6291,12 +6386,26 @@
     "https://artificialanalysis.ai/models/gpt-5-5": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c7"
     ],
+    "https://artificialanalysis.ai/models/grok-4-6": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c7",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c8"
+    ],
+    "https://artificialanalysis.ai/models/grok-4-7": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c3"
+    ],
     "https://artificialanalysis.ai/models/kimi-k2-7-code": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c19"
     ],
     "https://artificialanalysis.ai/models/kimi-k3": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c10",
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c11"
+    ],
+    "https://artificialanalysis.ai/models/mimo-v2-6-pro": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c1",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c12",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c2",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c36",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c37"
     ],
     "https://artificialanalysis.ai/models/nvidia-nemotron-3-ultra-550b-a55b/providers": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c9"
@@ -6429,6 +6538,9 @@
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c17",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c27"
     ],
+    "https://arxiv.org/abs/2310.11616": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c29"
+    ],
     "https://arxiv.org/abs/2311.04378": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c19"
     ],
@@ -6490,6 +6602,9 @@
     "https://arxiv.org/abs/2410.06992": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c11",
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c15"
+    ],
+    "https://arxiv.org/abs/2411.00640": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c28"
     ],
     "https://arxiv.org/abs/2411.11192": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c10"
@@ -6768,6 +6883,9 @@
     ],
     "https://arxiv.org/html/2411.10053v1": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c13"
+    ],
+    "https://arxiv.org/html/2412.19437v2": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c16"
     ],
     "https://arxiv.org/html/2502.07776v1": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c10"
@@ -7852,6 +7970,9 @@
     "https://enterprisedna.co/resources/news/salesforce-300m-anthropic-tokens-engineer-hiring-freeze-2026": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c22"
     ],
+    "https://epoch.ai/benchmarks/hle/review": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c27"
+    ],
     "https://epoch.ai/blog/can-ai-scaling-continue-through-2030": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c27"
     ],
@@ -7902,6 +8023,9 @@
     ],
     "https://epoch.ai/models/claude-opus-5": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c4"
+    ],
+    "https://epoch.ai/publications/huaweis-roadmap-to-2031": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c35"
     ],
     "https://epoch.ai/publications/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c27"
@@ -8364,7 +8488,8 @@
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15"
     ],
     "https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md": [
-      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c20"
+      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c20",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c30"
     ],
     "https://github.com/ethanfel/ComfyUI-MiniMaxH3-Contex-Loop": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c31"
@@ -8525,6 +8650,11 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c21",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c37",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c7"
+    ],
+    "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c18",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c21",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c32"
     ],
     "https://huggingface.co/api/models/Qwen/Qwen3.6-27B": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c7"
@@ -8732,6 +8862,9 @@
     "https://ir.crowdstrike.com/news-releases/news-release-details/2026-crowdstrike-global-threat-report-ai-accelerates-adversaries": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c25"
     ],
+    "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c17"
+    ],
     "https://ir.theice.com/press/news-details/2026/ICE-and-Ornn-to-Launch-GPU-Compute-Futures-Contracts/default.aspx": [
       "2026-06-24T160453--test-ornn-com-codex-2#C5"
     ],
@@ -8909,6 +9042,9 @@
     "https://medium.com/hightop/hightop-sunset-ripe-sunrise-b2559ff9a7e4": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c7"
     ],
+    "https://menlovc.com/perspective/2025-mid-year-llm-market-update": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c33"
+    ],
     "https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c54"
     ],
@@ -8951,6 +9087,14 @@
     ],
     "https://microsoft.ai/news/introducing-mai-cyber-1-flash-inside-mdash": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c16"
+    ],
+    "https://mimo.mi.com/docs/en-US/news/latest/v2-6": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c14",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c15",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c20"
+    ],
+    "https://mimo.mi.com/models/en-US/mimo-v2.6-pro-ultraspeed": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c13"
     ],
     "https://mistral.ai/news/mistral-large": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c25"
@@ -9283,6 +9427,10 @@
     "https://openrouter.ai/api/v1/models/openai/gpt-5.6-sol-20260709/endpoints": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c04",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c07"
+    ],
+    "https://openrouter.ai/api/v1/models/xiaomi/mimo-v2.6-pro/endpoints": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c12",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c13"
     ],
     "https://openrouter.ai/apps/hermes-agent": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c17"
@@ -10217,6 +10365,9 @@
     "https://techcrunch.com/2025/03/24/a16z-and-benchmark-backed-11x-has-been-claiming-customers-it-doesnt-have": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c27"
     ],
+    "https://techcrunch.com/2025/04/11/metas-vanilla-maverick-ai-model-ranks-below-rivals-on-a-popular-chat-benchmark": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c39"
+    ],
     "https://techcrunch.com/2025/04/12/openai-co-founder-ilya-sutskevers-safe-superintelligence-reportedly-valued-at-32b": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c3"
     ],
@@ -10623,6 +10774,9 @@
     "https://venturebeat.com/2026/07/30/ai-price-wars-openai-cuts-gpt-5-6-luna-prices-by-80-as-model-competition-shifts-toward-cost": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c05",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c06"
+    ],
+    "https://venturebeat.com/ai/new-open-source-ai-leader-reflection-70bs-performance-questioned-accused-of-fraud": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c38"
     ],
     "https://venturebeat.com/ai/y-combinators-hottest-startup-origami-agents-secures-2m-seed-round-to-supercharge-sales-teams-with-ai": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c17"
@@ -12525,6 +12679,9 @@
     "https://www.latent.space/p/ainews-glm-52-the-top-frontend-coding": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c18"
     ],
+    "https://www.latent.space/p/ainews-xiaomi-mimo-v26-pro-1t-a42b": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c20"
+    ],
     "https://www.latent.space/p/comfyui": [
       "2026-08-04T171206--comfyui-company#c48",
       "2026-08-04T171206--comfyui-company#c5"
@@ -13161,7 +13318,8 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c31"
     ],
     "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm": [
-      "2026-06-24T160453--test-ornn-com-codex-2#C10"
+      "2026-06-24T160453--test-ornn-com-codex-2#C10",
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c34"
     ],
     "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/q1fy27cfocommentary.htm": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c7"
@@ -13459,6 +13617,9 @@
     "https://www.tbench.ai/leaderboard/terminal-bench/2.1": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c11"
+    ],
+    "https://www.tbench.ai/news/terminal-bench-4-0": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c19"
     ],
     "https://www.techflowpost.com/en-US/article/31730": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20"
@@ -13822,6 +13983,9 @@
     "https://www.vals.ai/benchmarks/swebench": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c8"
     ],
+    "https://www.vals.ai/home": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c23"
+    ],
     "https://www.valuespectrum.com/corporate_news/1399869-sans-research-the-cybersecurity-talent-shortage-narrative-is-wrong-the-real-crisis-is-skills-and-ai-just-rewrote-the-list": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c28"
     ],
@@ -13936,6 +14100,9 @@
     ],
     "https://www.youtube.com/watch?v=oYs_qtuk2Pg": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c5"
+    ],
+    "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083101539.pdf": [
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c31"
     ],
     "https://x-stocks.app": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c17"
@@ -14411,7 +14578,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2453,
+  "claim_count": 2493,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -73416,9 +73583,952 @@
         "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/Frontier-Governance-Framework-Feb-2026.pdf"
       ],
       "type": "regulatory"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "MiMo-V2.6-Pro scores 46 on Artificial Analysis Intelligence Index v4.3.2, the top open-weights model on that index.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c1",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c1",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/mimo-v2-6-pro"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "On AA-LCR v1.1 MiMo scores 86% against Grok 4.7's 77%; on Terminal-Bench 4.0, 35% against 26%; on HLE, 49% against 43%; on CritPt, 27% against 18%.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c10",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/comparisons/mimo-v2-6-pro-vs-grok-4-7"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "On AA-Briefcase v1.1 Grok 4.7 scores 1657 Elo against MiMo's 1522, on GDPval-AA 1695 against 1673, and on AutomationBench-AA 66% against 59%.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c11",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/comparisons/mimo-v2-6-pro-vs-grok-4-7"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Artificial Analysis lists exactly one API provider for MiMo-V2.6-Pro, Xiaomi's own first-party endpoint.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai",
+        "openrouter.ai"
+      ],
+      "id": "c12",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c12",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+        "https://openrouter.ai/api/v1/models/xiaomi/mimo-v2.6-pro/endpoints"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Xiaomi prices MiMo-V2.6-Pro at $0.435 per million input tokens and $0.87 per million output tokens, and the same checkpoint sold as MiMo-V2.6-Pro-UltraSpeed at $4.35 and $8.70, exactly ten times higher.",
+      "confidence": "high",
+      "hosts": [
+        "mimo.mi.com",
+        "openrouter.ai"
+      ],
+      "id": "c13",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://openrouter.ai/api/v1/models/xiaomi/mimo-v2.6-pro/endpoints",
+        "https://mimo.mi.com/models/en-US/mimo-v2.6-pro-ultraspeed"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-22",
+      "claim": "Xiaomi's stated $2.62M for MiMo-V2.6-Pro covers the Live RL stage only: 30 steps and roughly 750,000 trajectories in under six days, with no pretraining cost disclosed.",
+      "confidence": "high",
+      "hosts": [
+        "mimo.mi.com"
+      ],
+      "id": "c14",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://mimo.mi.com/docs/en-US/news/latest/v2-6"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-22",
+      "claim": "Xiaomi acknowledges that behind the six-day run lie half a year of foundational research accumulation and engineering trial and error, which the dollar figure does not cost.",
+      "confidence": "high",
+      "hosts": [
+        "mimo.mi.com"
+      ],
+      "id": "c15",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://mimo.mi.com/docs/en-US/news/latest/v2-6"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2024-12-26",
+      "claim": "DeepSeek-V3's $5.576M figure covers 2.788M H800 GPU-hours at an assumed $2 per GPU-hour and explicitly excludes prior research and ablation experiments.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c16",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2412.19437v2"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-03-24",
+      "claim": "Xiaomi's FY2025 group R&D expense was RMB 33.13 billion on revenue of RMB 457.29 billion, with cumulative 2026-2030 R&D guided above RMB 200 billion.",
+      "confidence": "medium",
+      "hosts": [
+        "ir.mi.com"
+      ],
+      "id": "c17",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-21",
+      "claim": "On Xiaomi's own model card MiMo-V2.6-Pro beats Claude Opus 5 on Terminal-Bench 2.1 (89.9 vs 89.1) but loses to it by 14.1 points on Terminal-Bench 4.0 (34.9 vs 49.0).",
+      "confidence": "medium",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c18",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c18",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-08-26",
+      "claim": "Terminal-Bench 4.0 is a 66-task set released 26 August 2026 that deliberately removed tasks that were saturated, refusal-prone or publicly solved.",
+      "confidence": "medium",
+      "hosts": [
+        "tbench.ai"
+      ],
+      "id": "c19",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.tbench.ai/news/terminal-bench-4-0"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Artificial Analysis spent $206.66 in total to evaluate MiMo-V2.6-Pro on the Intelligence Index, which it reports as $0.13 per Index task.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c2",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/mimo-v2-6-pro"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Xiaomi announced 7,000-plus high-quality RL task environments alongside the release, but the task corpus itself was not published; only the harness and recipes are open.",
+      "confidence": "medium",
+      "hosts": [
+        "latent.space",
+        "mimo.mi.com"
+      ],
+      "id": "c20",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c20",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://mimo.mi.com/docs/en-US/news/latest/v2-6",
+        "https://www.latent.space/p/ainews-xiaomi-mimo-v26-pro-1t-a42b"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-21",
+      "claim": "The MiMo-V2.6-Pro model card discloses a Multi-Prefix Multi-Teacher On-Policy Distillation stage without naming the teacher models.",
+      "confidence": "medium",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c21",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c21",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Two days after release, MiMo-V2.6-Pro's only non-Artificial-Analysis third-party score is an Arena AutoEval proxy of 1628 on Code Arena, explicitly unranked with zero human votes.",
+      "confidence": "medium",
+      "hosts": [
+        "arena.ai"
+      ],
+      "id": "c22",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c22",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arena.ai/leaderboard/code",
+        "https://arena.ai/blog/autoeval-scores"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Vals.ai has no MiMo-V2.6-Pro evaluation; its model URL returns HTTP 404 while it evaluated Grok 4.7 on release day.",
+      "confidence": "medium",
+      "hosts": [
+        "vals.ai"
+      ],
+      "id": "c23",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c23",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.vals.ai/home"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "MiMo-V2.5-Pro's 26 and MiMo-V2.6-Pro's 46 are both current v4.3.2 measurements, so the 20-point generational gap is not a naive cross-version artifact.",
+      "confidence": "medium",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c24",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c24",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/comparisons/mimo-v2-5-pro-vs-mimo-v2-6-pro"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Artificial Analysis shipped Index v4.2 on 4 September 2026, v4.3 on 7 September and v4.3.2 on 19 September, two days before both MiMo-V2.6-Pro and Grok 4.7 launched.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c25",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c25",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/changelog"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-07",
+      "claim": "Evaluations with private questions or answers account for 45% of Index v4.3 weighting, up from 40% in v4.2 and roughly 20% in v4.1.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c26",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-3",
+        "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-2"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-08-11",
+      "claim": "Epoch AI audited a random sample of 48 Humanity's Last Exam questions and found 22 (46%) had substantial accuracy-altering errors, designating the benchmark Flawed.",
+      "confidence": "high",
+      "hosts": [
+        "epoch.ai"
+      ],
+      "id": "c27",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c27",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://epoch.ai/benchmarks/hle/review"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2024-11-01",
+      "claim": "Miller (2024) shows a new evaluation needs roughly 969 questions to detect a three-point difference at 80% power, and that clustered standard errors can be over three times larger than naive ones.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c28",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c28",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2411.00640"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2023-10-17",
+      "claim": "A confirmatory factor analysis of 591 LLMs across 12 tests finds a dominant general factor with average loading 0.81 explaining 65.6% of benchmark variance and mean inter-test correlation 0.73.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c29",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c29",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2310.11616"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Grok 4.7 (xhigh) also scores 46 on Index v4.3.2, at $3.74 per Index task and $4,967.35 for the full run.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c3",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/grok-4-7",
+        "https://artificialanalysis.ai/models/comparisons/mimo-v2-6-pro-vs-grok-4-7"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2025-03-01",
+      "claim": "DeepSeek disclosed a 545% cost-profit margin for V3/R1 inference over one 24-hour window: $87,072 of daily H800 cost against $562,027 of theoretical revenue, while stating actual revenue was substantially lower.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c30",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c30",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-08-31",
+      "claim": "Z.AI's HKEX interim filing reports its gross profit margin rising from -0.4% for the six months to 30 June 2025 to 24.6% for the six months to 30 June 2026, with average API selling price up about 101%.",
+      "confidence": "medium",
+      "hosts": [
+        "www1.hkexnews.hk"
+      ],
+      "id": "c31",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c31",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083101539.pdf"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-21",
+      "claim": "MiMo-V2.6-Pro is a 1.02-trillion-parameter sparse mixture of experts with 42 billion active parameters, 384 routed experts of which 8 activate, 70 layers of which 60 use 128-token sliding-window attention, and a 1M-token context.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c32",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c32",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2025-07-31",
+      "claim": "Menlo Ventures estimates Chinese open-source models account for about 1% of enterprise LLM API usage, with open source overall at 11%.",
+      "confidence": "low",
+      "hosts": [
+        "menlovc.com"
+      ],
+      "id": "c33",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c33",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://menlovc.com/perspective/2025-mid-year-llm-market-update"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-02-25",
+      "claim": "NVIDIA's FY2026 Form 10-K states the company was effectively foreclosed from competing in China's data center computing market as of the end of fiscal year 2026.",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c34",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c34",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-04",
+      "claim": "Epoch AI estimates Huawei will produce less than 4% as much AI compute as NVIDIA in 2026, with HBM the binding constraint.",
+      "confidence": "medium",
+      "hosts": [
+        "epoch.ai"
+      ],
+      "id": "c35",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c35",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://epoch.ai/publications/huaweis-roadmap-to-2031"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "The Index v4.3.2 task inventory totals roughly 9,750 single-pass tasks, so $206.66 divided by tasks actually executed is about $0.021, not the $0.13 weighted unit Artificial Analysis publishes.",
+      "confidence": "medium",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c36",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c36",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+        "https://artificialanalysis.ai/models/mimo-v2-6-pro"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "MiMo-V2.6-Pro generated 140M output tokens on the Index run and Grok 4.7 (xhigh) generated 240M, with Grok using approximately 81k output tokens per Index task against Grok 4.6's 36k.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c37",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c37",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+        "https://artificialanalysis.ai/articles/benchmarking-grok-4-7"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2024-09-09",
+      "claim": "Artificial Analysis independently evaluated Reflection-70B in September 2024 and could not reproduce its claimed benchmark results even with private API access.",
+      "confidence": "medium",
+      "hosts": [
+        "venturebeat.com"
+      ],
+      "id": "c38",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c38",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://venturebeat.com/ai/new-open-source-ai-leader-reflection-70bs-performance-questioned-accused-of-fraud"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2025-04-11",
+      "claim": "Meta's Llama 4 Maverick advertised an LMArena Elo of 1417 from an experimental chat version; the unmodified public weights ranked 32nd when LMArena scored them on 11 April 2025.",
+      "confidence": "high",
+      "hosts": [
+        "techcrunch.com"
+      ],
+      "id": "c39",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c39",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://techcrunch.com/2025/04/11/metas-vanilla-maverick-ai-model-ranks-below-rivals-on-a-popular-chat-benchmark"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Index v4.3.2 is a weighted average of ten evaluations across four categories: Agents 30%, Coding 20%, General 30%, Scientific Reasoning 20%.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c4",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/methodology/intelligence-benchmarking"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2024-05-01",
+      "claim": "The GSM1k study found contamination gaps are family-specific: Yi-6B-Chat fell 8.0 points and phi-2 6.3 points, while gpt-4o moved -0.2 and claude-3-opus +2.2.",
+      "confidence": "high",
+      "hosts": [
+        "ar5iv.labs.arxiv.org"
+      ],
+      "id": "c40",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c40",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://ar5iv.labs.arxiv.org/html/2405.00332"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Artificial Analysis estimates a 95% confidence interval for the Intelligence Index of less than plus or minus 1%, derived from more than ten repeats on certain models.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c5",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/methodology/intelligence-benchmarking"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Five of the ten Index constituents, carrying 55% of total weight, are run exactly once per model; only GDP.pdf and CritPt are run five times.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c6",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/methodology/intelligence-benchmarking"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Grok 4.6 was reported at 61 on the Artificial Analysis Intelligence Index on 12 August 2026 and is reported at 44 today, with no change to the model.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c7",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c7",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis",
+        "https://artificialanalysis.ai/models/grok-4-6"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "Artificial Analysis reported Grok 4.6 at $0.84 per Index task in August 2026 and $1.86 per Index task in September 2026 on an unchanged $2/$6 per million token rate card.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c8",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c8",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis",
+        "https://artificialanalysis.ai/models/grok-4-6"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+      "article_created_at": "2026-09-22T18:13:09Z",
+      "article_title": "A 46 is not evidence that two models are the same",
+      "as_of": "2026-09-23",
+      "claim": "On AA-Omniscience, the Index's factuality constituent, MiMo-V2.6-Pro scores 8 and Grok 4.7 scores 32 despite an identical composite of 46.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c9",
+      "key": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/comparisons/mimo-v2-6-pro-vs-grok-4-7"
+      ],
+      "type": "comparison"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1209,
+  "reusable_count": 1227,
   "schema_version": 1
 }
