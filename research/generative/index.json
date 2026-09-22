@@ -2865,6 +2865,22 @@
     "created_at": "2026-09-22T18:13:09Z",
     "source": "workflow_dispatch",
     "prompt": "Xiaomi's MiMo-V2.6-Pro scored 46 on the AA Intelligence Index at $0.13 a task, tying Grok 4.7: what that composite does not settle",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-09-22T183839--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "46은 두 모델이 같다는 증거가 아니다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-09-22T18:38:39Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
+        "tags": [],
+        "translated_at": "2026-09-22T18:38:39Z",
+        "source_file": "research/generative/2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde.ara.md",
+        "source_sha256": "1829d8ad1b525c597a547f5a00ba89f7103a37f41f0daa48b6e328b4db4882e5"
+      }
+    }
   }
 ]
