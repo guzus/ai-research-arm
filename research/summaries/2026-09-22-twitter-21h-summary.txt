@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-09-22 21:13:35 UTC
+
+CYCLE: Both labs shipped; independent benchmarks say the gain was price, not capability.
+
+TOP STORIES:
+• OpenAI shipped GPT-6 Sol ($2/$10) and Luna ($0.10/$0.50) at half price; Artificial Analysis measures capability level with GPT-5.6, Sol down ~100 Elo on GDPval-AA [✓]
+• CAIS Remote Labor Index: GPT-6 Astra automates 20.8% of randomly chosen remote projects, vs 2.5% last October [⚠]
+• Opus 5.5 takes #1 on AA Intelligence Index at 58, but cost per task is flat — it burns 1.6x Opus 5's output tokens [✓]
+• Opus 5.5 system card: more reasoning effort made injection compliance worse; model wrote its own "spontaneous prompt injections" [✓]
+• China's regulator probing DeepSeek and Moonshot over an Anthropic data-routing allegation [⚠]
+
+WATCH: An Opus 5.5 cost-per-task figure at default/medium effort — the only setting Anthropic's 40%-cheaper claim can be tested on.
+
+Full update on GitHub.

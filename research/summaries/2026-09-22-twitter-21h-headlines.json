@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI SHIPS GPT-6 SOL AT $2/$10 AND LUNA AT $0.10/$0.50 — HALF THE PRICE OF THE 5.6 GENERATION",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2102460975790137662",
+    "category": "model"
+  },
+  {
+    "headline": "ARTIFICIAL ANALYSIS: GPT-6 CAPABILITY LEVEL WITH GPT-5.6, COST PER TASK HALVED — SOL DOWN ~100 ELO ON GDPVAL",
+    "source": "@ArtificialAnlys",
+    "url": "https://x.com/ArtificialAnlys/status/2102462962758033624",
+    "category": "research"
+  },
+  {
+    "headline": "REMOTE LABOR INDEX: AI NOW AUTOMATES 20.8% OF RANDOM REMOTE PROJECTS, UP FROM 2.5% LAST OCTOBER",
+    "source": "@CAIS",
+    "url": "https://x.com/CAIS/status/2102440645684322308",
+    "category": "research"
+  },
+  {
+    "headline": "OPUS 5.5 TAKES #1 INDEX SPOT AT 58 BUT COST PER TASK FLAT — BURNS 1.6X OPUS 5'S OUTPUT TOKENS",
+    "source": "@ArtificialAnlys",
+    "url": "https://x.com/ArtificialAnlys/status/2102438210798514391",
+    "category": "model"
+  },
+  {
+    "headline": "OPUS 5.5 SYSTEM CARD: MORE REASONING EFFORT MADE PROMPT-INJECTION COMPLIANCE WORSE, NOT BETTER",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102502397188907356",
+    "category": "research"
+  },
+  {
+    "headline": "CHINA REGULATOR PROBES DEEPSEEK AND MOONSHOT OVER ANTHROPIC CLAIM THEY ROUTED SENSITIVE DATA TO CLAUDE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102457970499989969",
+    "category": "policy"
+  },
+  {
+    "headline": "METR'S ANTHROPIC AI R&D ASSESSMENT RESTED PARTLY ON EVIDENCE IT CANNOT DISCLOSE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2102476980793102610",
+    "category": "policy"
+  }
+]
