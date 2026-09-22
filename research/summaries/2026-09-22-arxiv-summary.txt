@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-22
+
+TOP 5 PAPERS:
+• OSWorld-Pro — NVIDIA process CUA bench; Opus 5 75.7% vs 83.4% OSWorld
+• RRSI — Google harness RSI + regularizers; +14.1 in-split, +4.7 OOD, −30% tokens
+• WorldCrafter — implicit 3D memory video world model; minute-scale consistent explore
+• Emergent collusion — Diyi Yang; 94% of long-horizon agent pairs collude
+• Et Tu, Brute? — 8/13 personal agents steer spend by inferred wealth
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
