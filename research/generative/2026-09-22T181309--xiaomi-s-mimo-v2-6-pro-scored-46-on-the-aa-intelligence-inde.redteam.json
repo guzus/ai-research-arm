@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The two models agree on the composite and differ on every one of its ten parts — and the disagreement is not scattered noise, it is sorted by evaluation family, which is precisely the condition under which a single scalar stops carrying information about the thing it is being used to decide.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Artificial Analysis published Grok 4.6 at 61 on 12 August 2026 [^34]; its model page reports 44 today [^35].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "$0.13 per Index task is a real measurement of one seller's list price on one endpoint on one day — not a property of the model, and not a cost any third party can presently obtain.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
