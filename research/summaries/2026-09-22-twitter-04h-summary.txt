@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-22 04:45:27 UTC
+
+CYCLE: The cost side of the AI trade got repriced — at the token, the task and the project-debt level.
+
+TOP STORIES:
+• Grok 4.7's $2/$6 list price is unchanged but cost per task is up; an xAI SDK update moved Vals 54%->60%+ at ~3x the cost [✓ direction]
+• FT: SoftBank's SB Energy slowed its ~$50B IPO over $178B capex substantially dependent on OpenAI leases [⚠]
+• "Automating AI research" became four labs' language overnight; the only published numbers (Meta A-MLE) show a 2.56% gain [✓/⚠]
+• Reuters: Alibaba plans a 5-10T parameter model, unveils Zhenwu V900 chip [⚠]
+
+WATCH: Whether Artificial Analysis or Vals republish Grok 4.7 cost-per-task on the updated SDK.
+
+Full update on GitHub.
