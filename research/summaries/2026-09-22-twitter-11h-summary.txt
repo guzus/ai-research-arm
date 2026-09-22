@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-22 11:28:04 UTC
+
+CYCLE: Alibaba lands the full AI stack at Apsara; Grok 4.7 sentiment breaks down.
+
+TOP STORIES:
+• Alibaba announces Qwen 4 Max/Plus/Flash/27B + Zhenwu V900 chip + >20GW cloud by 2032; the 5-10T figure is Qwen 4.5/5, not Qwen 4 ✓
+• MiMo-V2.6-Pro hands-on: 95 on CyberGym with no offensive-security refusals, $0.435/M in, $0.87/M out ⚠
+• Grok 4.7 verdict reversal: 30-80% worse token efficiency than 4.6, >2x real-world cost, above Astra ⚠
+• Samsung weighs a new 2nm line; Q3 HBM4 revenue guided to more than triple QoQ ⚠
+
+WATCH: Whether OpenAI actually ships GPT-6-Sol today.
+
+Full update on GitHub.

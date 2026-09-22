@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ALIBABA ANNOUNCES QWEN 4 MAX/PLUS/FLASH/27B, ZHENWU V900 CHIP, AND >20GW CLOUD CAPACITY TARGET BY 2032",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2102324410468245529",
+    "category": "model"
+  },
+  {
+    "headline": "ALIBABA MOVES 5-10 TRILLION PARAMETER SCALE TO QWEN 4.5 AND QWEN 5 — NOT QWEN 4, WHICH IS ALREADY TRAINING",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2102289339233309028",
+    "category": "model"
+  },
+  {
+    "headline": "XIAOMI MIMO-V2.6-PRO SCORES 95 ON CYBERGYM AND DOES NOT REFUSE OFFENSIVE-SECURITY PROMPTS, AT $0.435/MTOK INPUT",
+    "source": "@deedydas",
+    "url": "https://x.com/deedydas/status/2102293684767412393",
+    "category": "opensource"
+  },
+  {
+    "headline": "GROK 4.7 IS 30-80% LESS TOKEN-EFFICIENT THAN 4.6 AND COSTS OVER 2X IN REAL USE, LEAD INDEPENDENT TESTER SAYS",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2102259624313549130",
+    "category": "model"
+  },
+  {
+    "headline": "SAMSUNG WEIGHS NEW 2NM LINE AS Q3 HBM4 REVENUE SEEN MORE THAN TRIPLING QUARTER ON QUARTER",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2102285095336096033",
+    "category": "infra"
+  },
+  {
+    "headline": "ACCELEVATION TARGETS $5.37B VALUATION IN NASDAQ IPO, RAISING UP TO $720M AT $20-24 PER SHARE",
+    "source": "@PiQMarkets",
+    "url": "https://x.com/PiQMarkets/status/2102358657182888210",
+    "category": "business"
+  },
+  {
+    "headline": "COGNEX TO ACQUIRE INTEL SPINOUT REALSENSE FOR $500M CASH, CLOSING Q4 2026",
+    "source": "@USCorpFilings",
+    "url": "https://x.com/USCorpFilings/status/2102356180295373107",
+    "category": "business"
+  }
+]
