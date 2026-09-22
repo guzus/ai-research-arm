@@ -1,0 +1,15 @@
+AI News - 2026-09-22
+
+TOP STORIES:
+• Nscale files for NYSE IPO at $35B valuation, $3B raise target; Microsoft + Anthropic supply deals are ~85% of its $103B+ contract book
+• Xiaomi launches open-weight MiMo-V2.6-Pro/Flash (top open-model benchmark); Anthropic separately accuses Xiaomi of "illegal distillation" via Claude
+• Anthropic building a physical biology lab where Claude guides robots through drug-discovery experiments
+• NVIDIA's OSWorld-Pro benchmark: Claude Opus 5 scores 75.7% (vs 83.4% on original OSWorld) under harder process-level grading
+• Update: OpenAI's math model training ran ~1 month from Aug 28; also claims it solved the Hodge conjecture
+
+KEY NUMBERS:
+• Nscale: $35B IPO valuation, $3B raise, $1.02B net loss (H1 2026)
+• MiMo-V2.6-Pro: 1.02T params, $0.435/$0.87 per Mtok, Intelligence Index 46
+• XYEval paper: agent accuracy drops up to 46.7% when users suggest bad solutions
+
+Full report on GitHub.
