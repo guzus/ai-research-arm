@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "GROK 4.7 COST PER TASK UP DESPITE UNCHANGED $2/$6 LIST — VALS 54% TO 60% AFTER SDK FIX, AT ~3X THE BILL",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2102228456717348911",
+    "category": "model"
+  },
+  {
+    "headline": "FT: SOFTBANK'S SB ENERGY SLOWS ~$50B IPO — $178B CAPEX, NO OPERATING DATA CENTERS, SUBSTANTIALLY DEPENDENT ON OPENAI",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102248926464078144",
+    "category": "business"
+  },
+  {
+    "headline": "REUTERS: ALIBABA PLANS 5T-10T PARAMETER AI MODEL, UNVEILS NEW ZHENWU V900 CHIP",
+    "source": "@ReutersAsia",
+    "url": "https://x.com/ReutersAsia/status/2102257862927892777",
+    "category": "breaking"
+  },
+  {
+    "headline": "META SHIPS A-MLE AGENT ON ADS RANKING — 68% VS 8% FOR GENERIC LLM, 2.56% CUT IN OFFLINE REGRESSION ERROR",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102196680665788479",
+    "category": "research"
+  },
+  {
+    "headline": "QWEN EXPLORING RECURSIVE SELF-IMPROVEMENT; SCALE AI REPORTS RSI BENCHMARK PROGRESS",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2102244275652034739",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC STATUS PAGE: MYTHOS 5.1, FABLE 5.1, OPUS 5 DOWN — APP, API, CLAUDE CODE PARTIAL OUTAGE",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2102213816159179075",
+    "category": "infra"
+  },
+  {
+    "headline": "US PROPOSES AI INCIDENT-ALERT CHANNEL TO BEIJING FROM SEPT 20 TALKS — CHINA READOUT STOPS SHORT OF ACCEPTING",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102254209597157548",
+    "category": "policy"
+  }
+]
