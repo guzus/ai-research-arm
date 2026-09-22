@@ -4,10 +4,11 @@ title: Muse Code (Muse Spark 1.3)
 type: entity
 aliases: ["Muse Code", "Muse Spark 1.2", "Muse Spark 1.3", "Meta Muse Code", "Muse Spark max", "Muse Spark 1.3 max", "Muse agent", "Meta Muse"]
 tags: [coding-agent, meta, terminal-agent, benchmarks, pricing, consumer-agent]
-description: Meta Superintelligence Labs' coding and consumer-agent line; Muse shipped to US iOS/Android/WhatsApp on Muse Spark 1.3, which SemiAnalysis called one of the most clearly benchmaxxed models after an index refresh.
+description: Meta Superintelligence Labs' coding and consumer-agent line; Amazon blocked Muse from shopping the same day Shopify opened Shop Pay, and a ClickFix 0-day was disclosed against the assistant.
 created_at: 2026-08-06
-timestamp: 2026-09-09T00:00:00Z
+timestamp: 2026-09-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
@@ -148,3 +149,36 @@ as one product; the maker is tracked on [[meta]] and the earlier
   comparable**, and a harness swap explains part of
   it. See [[verification-bottleneck]] (SemiAnalysis,
   Artificial Analysis; ARA daily digest 2026-09-09).
+
+## Amazon blocked Muse; a ClickFix 0-day; Shop Pay opened (2026-09-22)
+
+- **[[amazon]] blocked Muse from Amazon.com.**
+  A Sunday popup told users that an
+  unauthorized AI agent violates Amazon's
+  Conditions of Use, and that Muse does not
+  identify itself and captures credentials.
+  The same day [[meta]] and Shopify announced
+  the inverse: Muse can now complete Shop Pay
+  checkout across Shopify stores. Two opposite
+  platform postures on agentic commerce in
+  one cycle. This is the deployed-consumer
+  counterpart to the Ninth Circuit CFAA
+  opinion this wiki logged on [[perplexity]]
+  and [[amazon]] (2026-09-16) — Amazon lost
+  that injunction against a shopping agent,
+  then blocked this one as a terms-of-use
+  matter (The Verge, TechCrunch, The Decoder,
+  GeekWire; ARA daily digest 2026-09-22).
+- **A ClickFix-class 0-day was disclosed in
+  the Muse assistant.** Locally run apps and
+  terminal commands can take complete control
+  of the agent. It lands against Zuckerberg's
+  explicit privacy and security pitch for the
+  product. See [[agentic-ai-security]] (Ars
+  Technica; ARA daily digest 2026-09-22).
+- **Appfigures said Muse is outpacing
+  ChatGPT's early mobile launch** on US/Canada
+  downloads and DAUs over the same post-launch
+  window. Adoption print, not a capability
+  print (TechCrunch; ARA daily digest
+  2026-09-22).

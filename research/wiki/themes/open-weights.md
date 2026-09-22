@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on the frontier; Alibaba's Qwen-Image-2.1 shipped inspectable weights under a non-commercial Qwen Research License.
+description: The 2026 storyline of open-weight models closing on the frontier; Xiaomi's MiMo-V2.6-Pro scored 46 on the AA Intelligence Index at $0.13/task, matching Grok 4.7.
 created_at: 2026-06-14
-timestamp: 2026-09-21T00:00:00Z
+timestamp: 2026-09-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
@@ -565,6 +566,25 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   not a lab-run mirror (HN; ARA daily digest
   2026-09-21).
 
+- **[[xiaomi-mimo-v2-6|Xiaomi MiMo-V2.6-Pro]]
+  matched [[xai|Grok 4.7]] on the
+  Intelligence Index (2026-09-21).** The
+  open-weight **1.02T / 42B-active MoE**
+  scored **46** at **$0.13 per index task**
+  — the same composite xAI's flagship
+  posted at **$2/$6 per Mtok**, a 20-point
+  jump from [[xiaomi-mimo-v2-5-pro|MiMo-
+  V2.5-Pro]]'s **26**. Distillation remains
+  an open counter-hypothesis; treat the
+  match as index-level. The same cycle
+  kept [[qwen-image-2-1]] in circulation
+  (696/188 on HN) and shipped Jared
+  Palmer's Apache-2.0 **Kev** decision-
+  model family on frozen Qwen3.5 bases —
+  see [[jev]] (Artificial Analysis, The
+  Decoder, HN; ARA daily digest
+  2026-09-22).
+
 ## Open questions
 
 - **Does "open-weight" survive component-withholding?** If the ranked artifact
@@ -577,7 +597,8 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
 - **China as the open-weights default.** [[zhipu]]'s
   [[zhipu-glm-5-2|GLM 5.2]],
   [[moonshot-kimi-k2-7-code|Kimi]], [[deepseek]], [[minimax-m3]], Qwen, and
-  [[xiaomi-mimo-v2-5-pro|MiMo]] — the open-weights frontier is increasingly
+  [[xiaomi-mimo-v2-5-pro|MiMo]] and
+  [[xiaomi-mimo-v2-6|MiMo-V2.6]] — the open-weights frontier is increasingly
   Chinese, with [[meta]]'s Llama the main Western counterweight. Does that
   reframe the open-vs-closed debate as a US-vs-China one?
 - **Infrastructure single points of failure.** If "HuggingFace is a US single
