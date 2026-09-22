@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-12 12:00 UTC",
-    "headline": "TEAMPCP COMPROMISES CHECKMARX JENKINS AST PLUGIN V2026.5.09 USING STOLEN TRIVY/KICS CREDENTIALS",
-    "source": "@NuruTechHub",
-    "source_file": "research/summaries/2026-05-12-twitter-12h-headlines.json",
-    "url": "https://x.com/NuruTechHub/status/2054064335958290640"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-12 12:00 UTC",
-    "headline": "MINI SHAI-HULUD V3 NOW LINKED TO TANSTACK, UIPATH, MISTRAL AI, OPENSEARCH, GUARDRAILS AI, AND CHECKMARX",
-    "source": "@cybertzar",
-    "source_file": "research/summaries/2026-05-12-twitter-12h-headlines.json",
-    "url": "https://x.com/cybertzar/status/2054163425312260450"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 12:00 UTC",
-    "headline": "CEREBRAS UPSIZES IPO TO $4.8B AT $150-$160 / 30M SHARES / 20X OVERSUBSCRIBED \u2014 PRICES WEDNESDAY MAY 13",
-    "source": "@AfricaisHOME2",
-    "source_file": "research/summaries/2026-05-12-twitter-12h-headlines.json",
-    "url": "https://x.com/AfricaisHOME2/status/2054138657687089399"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 12:00 UTC",
-    "headline": "POLYMARKET LISTS NEW CONTRACT \u2014 OPENAI TO ANNOUNCE AI EARBUDS THIS YEAR AT 51%",
-    "source": "@Polymarket",
-    "source_file": "research/summaries/2026-05-12-twitter-12h-headlines.json",
-    "url": "https://x.com/Polymarket/status/2054175062471676180"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-12 12:00 UTC",
-    "headline": "MISTRAL CORP-CHANNEL HITS 12 CONSECUTIVE DAYS OF SILENCE AFTER NPM, PYPI, AND CHECKMARX-CHAIN COMPROMISES",
-    "source": "@MistralAI",
-    "source_file": "research/summaries/2026-05-12-twitter-12h-headlines.json",
-    "url": "https://x.com/MistralAI/status/2049988769928056852"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 15:00 UTC",
-    "headline": "ISOMORPHIC LABS RAISES $2.1B SERIES B \u2014 THRIVE CAPITAL LEADS, UK SOVEREIGN AI FUND DEBUTS AS AI INVESTOR",
-    "source": "@demishassabis",
-    "source_file": "research/summaries/2026-05-12-twitter-15h-headlines.json",
-    "url": "https://x.com/demishassabis/status/2054197462101889277"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 15:00 UTC",
-    "headline": "OPENAI-MICROSOFT REVENUE SHARE CAPPED AT $38B \u2014 SAVES OPENAI ~$97B VS OLD STRUCTURE, CLEARS IPO PATH",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-12-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054203036323516443"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-12 15:00 UTC",
     "headline": "CEREBRAS IPO PRICES THIS WEEK \u2014 OPENAI'S $20B COMPUTE COMMITMENT YIELDS ~11% STAKE, $5B+ WINDFALL",
@@ -24382,5 +24319,54 @@
     "headline": "OPENAI AND ANTHROPIC NEARED BINDING PACT TO STRESS-TEST EACH OTHER'S MODELS",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2102047727655723485"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-22 00:02:43 UTC",
+    "headline": "XIAOMI MIMO-V2.6-PRO DEBUTS AT 46 ON ARTIFICIAL ANALYSIS INDEX \u2014 TIES GROK 4.7 AT $0.13 PER TASK",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2102154984598950128"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-22 00:02:43 UTC",
+    "headline": "AMD TOPS $1 TRILLION MARKET CAP FOR FIRST TIME, RECORD INTRADAY $613.92",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2102151261282033944"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-22 00:02:43 UTC",
+    "headline": "NASDAQ CLOSES AT RECORD 27,122.09 (+2.26%) \u2014 SOX +4.3%, INTEL +12.2%, ARM +17%",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2102153257510752500"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-22 00:02:43 UTC",
+    "headline": "THE INFORMATION: OPENAI HAS 'LARGELY AUTOMATED' TRAINING OF NEW EXPERIMENTAL MODELS, EMPLOYEE SAYS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2102168154973614087"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-22 00:02:43 UTC",
+    "headline": "META MUSE GETS SHOP PAY CHECKOUT ACROSS SHOPIFY STORES \u2014 AMAZON BLOCKS MUSE AGENTS SAME DAY",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2102159389104775633"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-22 00:02:43 UTC",
+    "headline": "US AND CHINA DISCUSSED 'AI DIALOGUE' TO TIP EACH OTHER OFF ON NATIONAL-SECURITY-LEVEL AI INCIDENTS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102149772651930110"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-22 00:02:43 UTC",
+    "headline": "EU PROPOSES DATA-CENTRE ENERGY AND WATER RATING LABELS FROM 2027 FOR SITES OVER 500 KW",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102179406940938620"
   }
 ]
