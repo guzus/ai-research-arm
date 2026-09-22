@@ -2,69 +2,6 @@
   {
     "backfilled": true,
     "category": "model",
-    "delivered_at": "2026-05-12 18:00 UTC",
-    "headline": "GOOGLE LAUNCHES GEMINI INTELLIGENCE AT ANDROID SHOW \u2014 BROWSER USE IN CHROME, CUSTOM GEN UI, PIXEL + GALAXY SUMMER ROLLOUT",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-12-twitter-18h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2054262760018264413"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-12 18:00 UTC",
-    "headline": "GOOGLE DEEPMIND REIMAGINES THE MOUSE POINTER \u2014 FIRST AI-NATIVE INTERFACE UPDATE SINCE ENGELBART 1968",
-    "source": "@GoogleDeepMind",
-    "source_file": "research/summaries/2026-05-12-twitter-18h-headlines.json",
-    "url": "https://x.com/GoogleDeepMind/status/2054254610725241131"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 18:00 UTC",
-    "headline": "ANTHROPIC VOIDS ALL UNAUTHORIZED SECONDARY SHARE TRANSFERS \u2014 SPVs, FORGE, HIIVE, TOKENIZED ALL NULLIFIED",
-    "source": "@PFHub_io",
-    "source_file": "research/summaries/2026-05-12-twitter-18h-headlines.json",
-    "url": "https://x.com/PFHub_io/status/2054132177898053632"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 18:00 UTC",
-    "headline": "PRESTOCKS ANTHROPIC TOKEN CRASHES 34% \u2014 $1.6T IMPLIED TOKENIZED CAP-TABLE WIPED OUT IN SESSION",
-    "source": "@tokenmetricsinc",
-    "source_file": "research/summaries/2026-05-12-twitter-18h-headlines.json",
-    "url": "https://x.com/tokenmetricsinc/status/2054254653988069454"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-12 18:00 UTC",
-    "headline": "CLAUDE OPUS 4.7 FAST MODE SHIPS ACROSS CURSOR / v0 / WARP / WINDSURF \u2014 ~2.5\u00d7 OUTPUT SPEED, DEFAULT THURSDAY",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-12-twitter-18h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2054272988378095627"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 21:00 UTC",
-    "headline": "ANTHROPIC IN TALKS TO RAISE $30B AT $900B+ VALUATION \u2014 IPO CONSIDERATION AS SOON AS OCTOBER, PER BLOOMBERG",
-    "source": "@shortsqueeznews",
-    "source_file": "research/summaries/2026-05-12-twitter-21h-headlines.json",
-    "url": "https://x.com/shortsqueeznews/status/2054310396568207444"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-12 21:00 UTC",
-    "headline": "ALTMAN UNDER CROSS: 2023 SENATE TESTIMONY 'I HAVE NO EQUITY IN OPENAI' CONFRONTED \u2014 DECLINES TO NOTIFY SENATE",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-12-twitter-21h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2054281572010877423"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
     "delivered_at": "2026-05-12 21:00 UTC",
     "headline": "CURSOR: CLAUDE OPUS 4.7 FAST MODE IS 2.5X SPEED AT 6X COST \u2014 'FOR MOST TASKS, WE RECOMMEND STANDARD SPEED'",
     "source": "@cursor_ai",
@@ -24354,5 +24291,54 @@
     "headline": "US PROPOSES AI INCIDENT-ALERT CHANNEL TO BEIJING FROM SEPT 20 TALKS \u2014 CHINA READOUT STOPS SHORT OF ACCEPTING",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2102254209597157548"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-22 11:28:04 UTC",
+    "headline": "ALIBABA ANNOUNCES QWEN 4 MAX/PLUS/FLASH/27B, ZHENWU V900 CHIP, AND >20GW CLOUD CAPACITY TARGET BY 2032",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2102324410468245529"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-22 11:28:04 UTC",
+    "headline": "ALIBABA MOVES 5-10 TRILLION PARAMETER SCALE TO QWEN 4.5 AND QWEN 5 \u2014 NOT QWEN 4, WHICH IS ALREADY TRAINING",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2102289339233309028"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-22 11:28:04 UTC",
+    "headline": "XIAOMI MIMO-V2.6-PRO SCORES 95 ON CYBERGYM AND DOES NOT REFUSE OFFENSIVE-SECURITY PROMPTS, AT $0.435/MTOK INPUT",
+    "source": "@deedydas",
+    "url": "https://x.com/deedydas/status/2102293684767412393"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-22 11:28:04 UTC",
+    "headline": "GROK 4.7 IS 30-80% LESS TOKEN-EFFICIENT THAN 4.6 AND COSTS OVER 2X IN REAL USE, LEAD INDEPENDENT TESTER SAYS",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2102259624313549130"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-22 11:28:04 UTC",
+    "headline": "SAMSUNG WEIGHS NEW 2NM LINE AS Q3 HBM4 REVENUE SEEN MORE THAN TRIPLING QUARTER ON QUARTER",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2102285095336096033"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-22 11:28:04 UTC",
+    "headline": "ACCELEVATION TARGETS $5.37B VALUATION IN NASDAQ IPO, RAISING UP TO $720M AT $20-24 PER SHARE",
+    "source": "@PiQMarkets",
+    "url": "https://x.com/PiQMarkets/status/2102358657182888210"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-22 11:28:04 UTC",
+    "headline": "COGNEX TO ACQUIRE INTEL SPINOUT REALSENSE FOR $500M CASH, CLOSING Q4 2026",
+    "source": "@USCorpFilings",
+    "url": "https://x.com/USCorpFilings/status/2102356180295373107"
   }
 ]
