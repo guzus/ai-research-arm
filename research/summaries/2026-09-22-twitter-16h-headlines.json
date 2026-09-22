@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ANTHROPIC SHIPS CLAUDE OPUS 5.5 — API PRICE CUT TO $4/$20 PER MTOK FROM $5/$25",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2102435703535939725",
+    "category": "model"
+  },
+  {
+    "headline": "OPUS 5.5 POSTS 66.4% ON TERMINAL-BENCH 4.0 VS OPUS 5 AT 52.3%, GPT-6 ASTRA AT 57.9%",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2102438800836489554",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI REASSIGNED 25% OF PRODUCTION ENGINEERING TO SECURITY AFTER AGENT-SWARM HACK",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102394606696431878",
+    "category": "breaking"
+  },
+  {
+    "headline": "DEEPSEEK SEEKING 50B YUAN ($7.5B) AT 500B YUAN VALUATION, BETTING ON HUAWEI CHIPS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102412715469812164",
+    "category": "business"
+  },
+  {
+    "headline": "TRUMP AT UN: US DOCUMENTS TO SAY 'SUPER INTELLIGENCE', REJECTS GLOBALIST AI CONTROL",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2102418047411843484",
+    "category": "policy"
+  },
+  {
+    "headline": "META MUSE AGENT GAINS CHECKOUT ACROSS PAYPAL'S GLOBAL MERCHANT NETWORK",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2102418455622508722",
+    "category": "business"
+  },
+  {
+    "headline": "GROK BOT LAUNCHES IN TESLA VEHICLES FOR SUPERGROK HEAVY SUBSCRIBERS",
+    "source": "@Tesla",
+    "url": "https://x.com/Tesla/status/2102431173314273633",
+    "category": "infra"
+  }
+]
