@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 15:00 UTC",
-    "headline": "CEREBRAS IPO PRICES THIS WEEK \u2014 OPENAI'S $20B COMPUTE COMMITMENT YIELDS ~11% STAKE, $5B+ WINDFALL",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-12-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054215276384719277"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 15:00 UTC",
-    "headline": "ISOMORPHIC LABS BOARD STACK: ALPHABET, GV, MGX, TEMASEK, CAPITALG, UK SOVEREIGN AI FUND IN $2.1B ROUND",
-    "source": "@IsomorphicLabs",
-    "source_file": "research/summaries/2026-05-12-twitter-15h-headlines.json",
-    "url": "https://x.com/IsomorphicLabs/status/2054189884034678895"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 15:00 UTC",
-    "headline": "MICROSOFT KEEPS OPENAI IP RIGHTS ONLY UNTIL $38B CAP \u2014 POST-CAP, OPENAI FREE TO PARTNER AMAZON, GOOGLE",
-    "source": "@aaronpholmes",
-    "source_file": "research/summaries/2026-05-12-twitter-15h-headlines.json",
-    "url": "https://x.com/aaronpholmes/status/2054156460825735453"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-12 15:00 UTC",
-    "headline": "HUGGING FACE HUB CROSSES 1,000,000 PUBLIC DATASETS \u2014 PETABYTES OF OPEN AI DATA NOW HOSTED",
-    "source": "@HuggingFace",
-    "source_file": "research/summaries/2026-05-12-twitter-15h-headlines.json",
-    "url": "https://x.com/HuggingFace/status/2054221604729553210"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-12 15:00 UTC",
-    "headline": "ALTMAN COURTROOM TESTIMONY SLIPS \u2014 GAIL ALFAR REVISES TO 'ANY DAY NOW' AS BOARD CHAIR TAYLOR STILL ON STAND",
-    "source": "@gailalfaratx",
-    "source_file": "research/summaries/2026-05-12-twitter-15h-headlines.json",
-    "url": "https://x.com/gailalfaratx/status/2054154903291892051"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-12 18:00 UTC",
-    "headline": "ALTMAN TAKES THE STAND DAY 10 OF MUSK v OPENAI \u2014 MOLO OPENS CROSS: \"SHOULD THE JURY BELIEVE YOUR TESTIMONY?\"",
-    "source": "@muskonomy",
-    "source_file": "research/summaries/2026-05-12-twitter-18h-headlines.json",
-    "url": "https://x.com/muskonomy/status/2054252875319574613"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-12 18:00 UTC",
-    "headline": "MOLO CONFRONTS ALTMAN WITH 2017 SUTSKEVER EMAIL: \"WHY IS THE CEO TITLE SO IMPORTANT TO YOU?\"",
-    "source": "@michelletomkim",
-    "source_file": "research/summaries/2026-05-12-twitter-18h-headlines.json",
-    "url": "https://x.com/michelletomkim/status/2054278077680070707"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-12 18:00 UTC",
     "headline": "GOOGLE LAUNCHES GEMINI INTELLIGENCE AT ANDROID SHOW \u2014 BROWSER USE IN CHROME, CUSTOM GEN UI, PIXEL + GALAXY SUMMER ROLLOUT",
@@ -24368,5 +24305,54 @@
     "headline": "EU PROPOSES DATA-CENTRE ENERGY AND WATER RATING LABELS FROM 2027 FOR SITES OVER 500 KW",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2102179406940938620"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-22 04:45:27 UTC",
+    "headline": "GROK 4.7 COST PER TASK UP DESPITE UNCHANGED $2/$6 LIST \u2014 VALS 54% TO 60% AFTER SDK FIX, AT ~3X THE BILL",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2102228456717348911"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-22 04:45:27 UTC",
+    "headline": "FT: SOFTBANK'S SB ENERGY SLOWS ~$50B IPO \u2014 $178B CAPEX, NO OPERATING DATA CENTERS, SUBSTANTIALLY DEPENDENT ON OPENAI",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102248926464078144"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-22 04:45:27 UTC",
+    "headline": "REUTERS: ALIBABA PLANS 5T-10T PARAMETER AI MODEL, UNVEILS NEW ZHENWU V900 CHIP",
+    "source": "@ReutersAsia",
+    "url": "https://x.com/ReutersAsia/status/2102257862927892777"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-22 04:45:27 UTC",
+    "headline": "META SHIPS A-MLE AGENT ON ADS RANKING \u2014 68% VS 8% FOR GENERIC LLM, 2.56% CUT IN OFFLINE REGRESSION ERROR",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102196680665788479"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-22 04:45:27 UTC",
+    "headline": "QWEN EXPLORING RECURSIVE SELF-IMPROVEMENT; SCALE AI REPORTS RSI BENCHMARK PROGRESS",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2102244275652034739"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-22 04:45:27 UTC",
+    "headline": "ANTHROPIC STATUS PAGE: MYTHOS 5.1, FABLE 5.1, OPUS 5 DOWN \u2014 APP, API, CLAUDE CODE PARTIAL OUTAGE",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2102213816159179075"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-22 04:45:27 UTC",
+    "headline": "US PROPOSES AI INCIDENT-ALERT CHANNEL TO BEIJING FROM SEPT 20 TALKS \u2014 CHINA READOUT STOPS SHORT OF ACCEPTING",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102254209597157548"
   }
 ]
