@@ -2,69 +2,6 @@
   {
     "backfilled": true,
     "category": "model",
-    "delivered_at": "2026-05-12 21:00 UTC",
-    "headline": "CURSOR: CLAUDE OPUS 4.7 FAST MODE IS 2.5X SPEED AT 6X COST \u2014 'FOR MOST TASKS, WE RECOMMEND STANDARD SPEED'",
-    "source": "@cursor_ai",
-    "source_file": "research/summaries/2026-05-12-twitter-21h-headlines.json",
-    "url": "https://x.com/cursor_ai/status/2054274305345618163"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-12 21:00 UTC",
-    "headline": "MUSK PLEDGES FULL OPEN-SOURCING OF X RECOMMENDATION ALGORITHM + THIRD-PARTY AUDIT",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-12-twitter-21h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2054297431551136198"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-12 21:00 UTC",
-    "headline": "MICROSOFT HAS RECOUPED 2.3X ITS OPENAI INVESTMENT \u2014 $30B REVENUE VS $13B INVESTED",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-12-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054308315371393526"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-12 21:00 UTC",
-    "headline": "FOXCONN CPO ALL-OPTICAL SWITCH-RACK SHIPMENTS TO NVIDIA REVISED 5X HIGHER \u2014 50,000+ UNITS 2026-2027",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-12-twitter-21h-headlines.json",
-    "url": "https://x.com/jukan05/status/2054289519411896455"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-12 21:00 UTC",
-    "headline": "MOLO CONSOLIDATES 7-WITNESS 'HISTORY OF LYING' STACK AGAINST ALTMAN \u2014 SUTSKEVER, MURATI, BOTH AMODEIS, YOON, TONER, MCCAULEY",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-12-twitter-21h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2054295002046709859"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-13 01:00 UTC",
-    "headline": "ANTHROPIC LEASES SPACEX COLOSSUS 1 \u2014 220K GPUS, 300 MW, $3-4B/YR TO SPACEX AHEAD OF IPO",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-13-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054260384127693178"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-13 01:00 UTC",
-    "headline": "ALTMAN HELION STAKE WORTH ~$1.65B PER PERJURY FILING \u2014 ORIGINAL BOARD REJECTED DEAL, NEW BOARD APPROVED",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-13-twitter-01h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2054368416413196369"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
     "delivered_at": "2026-05-13 01:00 UTC",
     "headline": "GOOGLE UNVEILS GOOGLEBOOK \u2014 FIRST LAPTOP DESIGNED FOR GEMINI INTELLIGENCE; MAGIC POINTER PUTS AI IN THE CURSOR",
     "source": "@demishassabis",
@@ -24340,5 +24277,54 @@
     "headline": "COGNEX TO ACQUIRE INTEL SPINOUT REALSENSE FOR $500M CASH, CLOSING Q4 2026",
     "source": "@USCorpFilings",
     "url": "https://x.com/USCorpFilings/status/2102356180295373107"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-22 16:50:38 UTC",
+    "headline": "ANTHROPIC SHIPS CLAUDE OPUS 5.5 \u2014 API PRICE CUT TO $4/$20 PER MTOK FROM $5/$25",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2102435703535939725"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-22 16:50:38 UTC",
+    "headline": "OPUS 5.5 POSTS 66.4% ON TERMINAL-BENCH 4.0 VS OPUS 5 AT 52.3%, GPT-6 ASTRA AT 57.9%",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2102438800836489554"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-22 16:50:38 UTC",
+    "headline": "OPENAI REASSIGNED 25% OF PRODUCTION ENGINEERING TO SECURITY AFTER AGENT-SWARM HACK",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102394606696431878"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-22 16:50:38 UTC",
+    "headline": "DEEPSEEK SEEKING 50B YUAN ($7.5B) AT 500B YUAN VALUATION, BETTING ON HUAWEI CHIPS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102412715469812164"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-22 16:50:38 UTC",
+    "headline": "TRUMP AT UN: US DOCUMENTS TO SAY 'SUPER INTELLIGENCE', REJECTS GLOBALIST AI CONTROL",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2102418047411843484"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-22 16:50:38 UTC",
+    "headline": "META MUSE AGENT GAINS CHECKOUT ACROSS PAYPAL'S GLOBAL MERCHANT NETWORK",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2102418455622508722"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-22 16:50:38 UTC",
+    "headline": "GROK BOT LAUNCHES IN TESLA VEHICLES FOR SUPERGROK HEAVY SUBSCRIBERS",
+    "source": "@Tesla",
+    "url": "https://x.com/Tesla/status/2102431173314273633"
   }
 ]
