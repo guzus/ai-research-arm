@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; first-named defendant in Buist v. Anthropic PBC, with Reuters citing a pre-IPO model still in safety eval and a listing that could slip past the midterms.
+description: AI safety lab behind Claude; reported IPO slip from October to November 2026 to show Q3 results, against a ~$2T valuation discussion and $1.25B/month infrastructure costs.
 created_at: 2026-05-24
-timestamp: 2026-09-20T00:00:00Z
+timestamp: 2026-09-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
@@ -1936,3 +1937,22 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   yesterday's 5 GW / $100B ARR / November
   prints; **no S-1 is public** (Reuters; ARA
   daily digest 2026-09-20).
+
+## Reported IPO slip to November to show Q3 (2026-09-22)
+
+- **The Decoder said Anthropic is postponing
+  its IPO from October to November 2026** to
+  show Q3 results. Investors are discussing
+  a **~$2T valuation** against
+  **$1.25B/month infrastructure costs**. It
+  follows [[openai]]'s own delay. This is
+  still a reported slip, not an S-1; it
+  hardens the 2026-09-19/20 unauthorized
+  November prints into a named October→
+  November move with a Q3-results reason.
+  SoftBank's same-week plan to borrow more
+  than **$11B in junk bonds** to fund
+  another payment on its OpenAI stake is
+  the rival-lab financing print, not an
+  Anthropic raise (The Decoder; ARA daily
+  digest 2026-09-22).

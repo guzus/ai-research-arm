@@ -4,10 +4,11 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot", "Grok 4.7", "Grok 4.8"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; Musk said Grok 4.8 is a 2.5T-parameter model on a new C++ stack, with pretraining finishing this week, while Grok 4.7 is still the next ship.
+description: Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.
 created_at: 2026-06-08
-timestamp: 2026-09-15T00:00:00Z
+timestamp: 2026-09-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA model ticket — Grok 4.8", path: research/models/tickets/xai-grok-4-8-2026-09.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
@@ -280,13 +281,38 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
   circulating. Status is **in-testing**: a
   company-stated training run, nothing shipped —
   no weights, API id, benchmark, pricing, or
-  date. **Grok 4.7 remains the next ship**
-  despite being the quieter story. Five accounts
-  carried the 4.8 claim; all five trace to one
-  Musk reply. See the model ticket
+  date. **Grok 4.7 was then still the next
+  ship** and has since landed (2026-09-21
+  below). Five accounts carried the 4.8 claim;
+  all five trace to one Musk reply. See the
+  model ticket
   [xai-grok-4-8-2026-09](../../models/tickets/xai-grok-4-8-2026-09.md)
   (@elonmusk, @scaling01, @testingcatalog; ARA
   daily digest 2026-09-15).
+
+- **Grok 4.7 shipped (2026-09-21).** Same list
+  price and served speed as Grok 4.6
+  (**$2/$6 per Mtok**), plus a fast variant at
+  twice the output speed and twice the price.
+  Vendor table: CursorBench 4.0 **46.3%**,
+  DeepSWE v1.1 **71.0%** high-effort, EEBench
+  **64.0%**, AA Briefcase v1.1 **1,657**,
+  Terminal-Bench 4.0 **38.0%**, Harvey Legal
+  Agent **19.6%**. The Decoder's independent
+  read is less flattering than xAI's: **46**
+  on the AA Intelligence Index against **53**
+  for [[claude-fable-5|Claude Fable 5.1]] and
+  [[gpt-6|GPT-6]], with a wider gap on agentic
+  coding. Cheap is the selling point. The same
+  cycle [[xiaomi-mimo-v2-6|Xiaomi MiMo-V2.6-Pro]]
+  posted the **same 46** as open weights at
+  **$0.13 per index task**. Hacker News closed
+  on Grok 4.7 as the **#1 AI story** (379
+  points / 321 comments), with the thread
+  centering on "the $2/$6 bill is the product"
+  against Fable 5.1 still leading CursorBench
+  (xAI, The Decoder, HN; ARA daily digest
+  2026-09-22). See [[harvey]].
 
 ## Open questions
 

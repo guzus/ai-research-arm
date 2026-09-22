@@ -4,10 +4,11 @@ title: Xiaomi MiMo-v2.5-Pro-UltraSpeed
 type: entity
 aliases: ["Xiaomi MiMo-v2.5-Pro-UltraSpeed", "MiMo-v2.5-Pro-UltraSpeed", "MiMo v2.5 Pro UltraSpeed", "Xiaomi MiMo"]
 tags: [open-weights, china, moe, inference-throughput, efficiency]
-description: Xiaomi's MiMo-v2.5-Pro-UltraSpeed claim of 1,000+ tokens/sec on a 1T-parameter MoE using a standard 8-GPU server; a high-signal but still partially verified inference-efficiency story.
+description: Xiaomi's MiMo-v2.5-Pro-UltraSpeed 1,000+ tok/s claim; superseded as the capability flagship by open-weight MiMo-V2.6-Pro (AA 46) on 2026-09-21.
 created_at: 2026-06-17
-timestamp: 2026-06-17T00:00:00Z
+timestamp: 2026-09-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA model ticket — Xiaomi MiMo-v2.5-Pro-UltraSpeed", path: research/models/tickets/xiaomi-mimo-v2-5-pro.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "ARA daily digest 2026-06-10", path: research/digest/2026-06-10-digest.md}
@@ -44,6 +45,10 @@ independent reproduction.
 - **What is the real workload?** Throughput claims can hide batch size, context
   length, speculative-acceptance rate, quality loss, and memory pressure. Which
   of those makes the number less useful for agentic coding or deep research?
-- **Does Xiaomi stay in the open lane?** MiMo Code and MiMo-v2.5-Pro suggest
-  sustained open-leaning releases. The strategic question is whether Xiaomi
-  becomes a durable Chinese open-model supplier or a periodic community spike.
+- **Does Xiaomi stay in the open lane?** Partially answered:
+  [[xiaomi-mimo-v2-6|MiMo-V2.6-Pro]] shipped open weights
+  scored at **46** on Artificial Analysis (up from this
+  page's **26**), matching [[xai|Grok 4.7]] at **$0.13 per
+  index task**. The UltraSpeed serving claim on this page
+  is still the unresolved throughput story; V2.6 is the
+  capability successor (ARA daily digest 2026-09-22).

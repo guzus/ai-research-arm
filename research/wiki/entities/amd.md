@@ -4,15 +4,16 @@ title: AMD
 type: entity
 aliases: [AMD, "Advanced Micro Devices", "Lisa Su", Instinct, "MI450", Helios, EPYC]
 tags: [semiconductors, ai-accelerator, gpu, earnings, public-listing, m-and-a]
-description: The credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios ramped into Anthropic's 2 GW MI450 commitment, and it bought model-specific-silicon startup Taalas on 2026-08-07.
+description: Credible second-source AI accelerator vendor; crossed $1T market cap on 2026-09-21 after an intraday record $613.92, becoming the fourth trillion-dollar US chipmaker.
 created_at: 2026-08-05
-timestamp: 2026-08-07T00:00:00Z
+timestamp: 2026-09-22T00:00:00Z
 market:
   ticker: AMD
   exchange: NASDAQ
   symbol: NASDAQ:AMD
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "AMD FY26Q2 earnings (SEC 8-K EX-99.1, accession 0000002488-26-000121)", path: research/earnings/2026-08-04-AMD-FY26Q2.md, date: 2026-08-04}
@@ -76,6 +77,25 @@ buy when they want to stop being single-sourced.
   It landed the same day [[anthropic]] confirmed an in-house silicon team and
   [[etched]] was repriced at $10B, making custom inference silicon the day's
   dominant infrastructure theme.
+
+- **AMD crossed $1 trillion (2026-09-21).** The
+  stock rose as much as **9–10%** to an
+  **intraday record $613.92**, joining
+  [[nvidia]], [[broadcom]] and [[micron]] as
+  the **fourth trillion-dollar US chipmaker**.
+  The Nasdaq closed at a record **27,122.09**;
+  the semiconductor index was up about
+  **4.3%**, with Intel **+12.2%** and Arm
+  **+17%**. Korean semiconductor exports for
+  **1–20 September** hit roughly **$34.12B**,
+  **+259.4% YoY** and a record for the period —
+  the demand signal from the supply end, not
+  just the tape. This is a market-cap event,
+  not a new product or earnings print; it sits
+  on the FY26Q2 data-center doubling and the
+  [[anthropic]] 2 GW MI450 commitment already
+  on this page (@jukan05, @SemiAnalysis_; ARA
+  daily digest 2026-09-22). See [[ai-capex]].
 
 ## Open questions
 

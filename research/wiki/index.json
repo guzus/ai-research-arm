@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Google confirmed Gemini walked into three real companies, CNN reported a hallucinated intel product nearly launched a boarding, and researchers used Claude to open a PR in OpenAI's internal monorepo.",
-      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Google confirmed Gemini walked into three real companies, CNN reported a hallucinated intel product nearly launched a boarding, and researchers used Claude to open a PR in OpenAI's internal monorepo.",
+      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; a UN science panel's first Hugging Face assessment warned humans may lose agent control, as Amazon blocked Meta's Muse over a ClickFix 0-day.",
+      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; a UN science panel's first Hugging Face assessment warned humans may lose agent control, as Amazon blocked Meta's Muse over a ClickFix 0-day.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-19",
-      "timestamp": "2026-09-19T00:00:00Z",
+      "updated_at": "2026-09-22",
+      "timestamp": "2026-09-22T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -77,6 +77,7 @@
         "liquid-ai",
         "meta",
         "moonshot-kimi-k3",
+        "muse-code",
         "open-weights",
         "openai",
         "perplexity",
@@ -334,6 +335,7 @@
         "deepseek",
         "federal-ai-policy",
         "gemini-3-6-flash",
+        "jev",
         "moonshot-kimi-k3",
         "open-weights",
         "qwen-3-8-max",
@@ -369,11 +371,11 @@
         "ai-infrastructure",
         "bedrock"
       ],
-      "summary": "Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 and naming a third inference architecture beside Trainium and Nvidia.",
-      "description": "Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 and naming a third inference architecture beside Trainium and Nvidia.",
+      "summary": "Hyperscaler and Anthropic's largest investor; blocked Meta's Muse shopping agent as a terms-of-use violation the same day Shopify opened Shop Pay to that agent.",
+      "description": "Hyperscaler and Anthropic's largest investor; blocked Meta's Muse shopping agent as a terms-of-use violation the same day Shopify opened Shop Pay to that agent.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-09-16",
-      "timestamp": "2026-09-16T00:00:00Z",
+      "updated_at": "2026-09-22",
+      "timestamp": "2026-09-22T00:00:00Z",
       "file": "entities/amazon.md",
       "aliases": [
         "Amazon",
@@ -388,6 +390,7 @@
         "anthropic",
         "claude-fable-5",
         "federal-ai-policy",
+        "muse-code",
         "nvidia",
         "perplexity"
       ],
@@ -397,6 +400,7 @@
         "anthropic",
         "claude-fable-5",
         "federal-ai-policy",
+        "muse-code",
         "nvidia",
         "perplexity"
       ],
@@ -430,11 +434,11 @@
         "public-listing",
         "m-and-a"
       ],
-      "summary": "The credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios ramped into Anthropic's 2 GW MI450 commitment, and it bought model-specific-silicon startup Taalas on 2026-08-07.",
-      "description": "The credible second-source AI accelerator vendor; FY26Q2 data center revenue doubled to $6.7B (+107% YoY) as Helios ramped into Anthropic's 2 GW MI450 commitment, and it bought model-specific-silicon startup Taalas on 2026-08-07.",
+      "summary": "Credible second-source AI accelerator vendor; crossed $1T market cap on 2026-09-21 after an intraday record $613.92, becoming the fourth trillion-dollar US chipmaker.",
+      "description": "Credible second-source AI accelerator vendor; crossed $1T market cap on 2026-09-21 after an intraday record $613.92, becoming the fourth trillion-dollar US chipmaker.",
       "created_at": "2026-08-05",
-      "updated_at": "2026-08-07",
-      "timestamp": "2026-08-07T00:00:00Z",
+      "updated_at": "2026-09-22",
+      "timestamp": "2026-09-22T00:00:00Z",
       "file": "entities/amd.md",
       "aliases": [
         "AMD",
@@ -448,6 +452,7 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "broadcom",
         "etched",
         "micron",
         "microsoft",
@@ -482,7 +487,8 @@
           "description": "신뢰할 만한 대안 공급원 AI 가속기 업체. Helios가 Anthropic의 2 GW MI450 약정을 향해 증산되는 가운데 FY26Q2 데이터센터 매출은 $6.7B로 두 배(+107% YoY)가 됐고, 2026-08-07에는 모델 특화 실리콘 스타트업 Taalas를 인수했다.",
           "file": "wiki-translations/ko/entities/amd.md",
           "source_file": "research/wiki/entities/amd.md",
-          "source_sha256": "49396fb33cf2a268c319551ca454efdb6e6b26437d3e0f1f313f5aef08c76686"
+          "source_sha256": "49396fb33cf2a268c319551ca454efdb6e6b26437d3e0f1f313f5aef08c76686",
+          "stale": true
         }
       }
     },
@@ -496,11 +502,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; first-named defendant in Buist v. Anthropic PBC, with Reuters citing a pre-IPO model still in safety eval and a listing that could slip past the midterms.",
-      "description": "AI safety lab behind Claude; first-named defendant in Buist v. Anthropic PBC, with Reuters citing a pre-IPO model still in safety eval and a listing that could slip past the midterms.",
+      "summary": "AI safety lab behind Claude; reported IPO slip from October to November 2026 to show Q3 results, against a ~$2T valuation discussion and $1.25B/month infrastructure costs.",
+      "description": "AI safety lab behind Claude; reported IPO slip from October to November 2026 to show Q3 results, against a ~$2T valuation discussion and $1.25B/month infrastructure costs.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-20",
-      "timestamp": "2026-09-20T00:00:00Z",
+      "updated_at": "2026-09-22",
+      "timestamp": "2026-09-22T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -835,6 +841,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "amd",
         "anthropic",
         "etched",
         "google",
@@ -862,11 +869,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "Sacramento as the operative US AI regulator; Newsom signed a Friday EO giving a two-month panel a brief to recommend on-site verifiers and an independently checked frontier kill switch after SB 813 and AB 1405.",
-      "description": "Sacramento as the operative US AI regulator; Newsom signed a Friday EO giving a two-month panel a brief to recommend on-site verifiers and an independently checked frontier kill switch after SB 813 and AB 1405.",
+      "summary": "Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.",
+      "description": "Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-19",
-      "timestamp": "2026-09-19T00:00:00Z",
+      "updated_at": "2026-09-22",
+      "timestamp": "2026-09-22T00:00:00Z",
       "file": "themes/california-ai-regulation.md",
       "aliases": [
         "California AI regulation",
@@ -2664,7 +2671,9 @@
         "astra",
         "google",
         "openai",
-        "step-5-preview"
+        "step-5-preview",
+        "xai",
+        "xiaomi-mimo-v2-6"
       ]
     },
     {
@@ -2736,7 +2745,8 @@
         "claude-fable-5",
         "moonshot-kimi-k3",
         "open-weights",
-        "openai"
+        "openai",
+        "xai"
       ]
     },
     {
@@ -2829,11 +2839,11 @@
         "system-one",
         "structured-output"
       ],
-      "summary": "TypeSafe's non-autoregressive decision model; Laya's year-old Apache-2.0 clones outclimbed it on HN while Jev took about 13% of paid Vercel Gateway teams in 24 hours.",
-      "description": "TypeSafe's non-autoregressive decision model; Laya's year-old Apache-2.0 clones outclimbed it on HN while Jev took about 13% of paid Vercel Gateway teams in 24 hours.",
+      "summary": "TypeSafe's non-autoregressive decision model; Jared Palmer's Apache-2.0 Kev-0.8B/4B/9B family shipped the same noul/choice/score API and took four of the week's top HN slots.",
+      "description": "TypeSafe's non-autoregressive decision model; Jared Palmer's Apache-2.0 Kev-0.8B/4B/9B family shipped the same noul/choice/score API and took four of the week's top HN slots.",
       "created_at": "2026-09-20",
-      "updated_at": "2026-09-20",
-      "timestamp": "2026-09-20T00:00:00Z",
+      "updated_at": "2026-09-22",
+      "timestamp": "2026-09-22T00:00:00Z",
       "file": "entities/jev.md",
       "aliases": [
         "Jev",
@@ -2844,6 +2854,7 @@
         "RLCD"
       ],
       "outbound": [
+        "alibaba",
         "claude-fable-5",
         "deepseek",
         "gpt-5-6",
@@ -3678,11 +3689,11 @@
         "pricing",
         "consumer-agent"
       ],
-      "summary": "Meta Superintelligence Labs' coding and consumer-agent line; Muse shipped to US iOS/Android/WhatsApp on Muse Spark 1.3, which SemiAnalysis called one of the most clearly benchmaxxed models after an index refresh.",
-      "description": "Meta Superintelligence Labs' coding and consumer-agent line; Muse shipped to US iOS/Android/WhatsApp on Muse Spark 1.3, which SemiAnalysis called one of the most clearly benchmaxxed models after an index refresh.",
+      "summary": "Meta Superintelligence Labs' coding and consumer-agent line; Amazon blocked Muse from shopping the same day Shopify opened Shop Pay, and a ClickFix 0-day was disclosed against the assistant.",
+      "description": "Meta Superintelligence Labs' coding and consumer-agent line; Amazon blocked Muse from shopping the same day Shopify opened Shop Pay, and a ClickFix 0-day was disclosed against the assistant.",
       "created_at": "2026-08-06",
-      "updated_at": "2026-09-09",
-      "timestamp": "2026-09-09T00:00:00Z",
+      "updated_at": "2026-09-22",
+      "timestamp": "2026-09-22T00:00:00Z",
       "file": "entities/muse-code.md",
       "aliases": [
         "Muse Code",
@@ -3696,6 +3707,7 @@
       ],
       "outbound": [
         "agentic-ai-security",
+        "amazon",
         "claude-fable-5",
         "claude-opus-5",
         "cognition-ai",
@@ -3706,9 +3718,12 @@
         "meta",
         "muse-glimmer",
         "open-weights",
+        "perplexity",
         "verification-bottleneck"
       ],
       "inbound": [
+        "agentic-ai-security",
+        "amazon",
         "claude-fable-5",
         "gemini-3-8-flash",
         "meta",
@@ -4111,11 +4126,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on the frontier; Alibaba's Qwen-Image-2.1 shipped inspectable weights under a non-commercial Qwen Research License.",
-      "description": "The 2026 storyline of open-weight models closing on the frontier; Alibaba's Qwen-Image-2.1 shipped inspectable weights under a non-commercial Qwen Research License.",
+      "summary": "The 2026 storyline of open-weight models closing on the frontier; Xiaomi's MiMo-V2.6-Pro scored 46 on the AA Intelligence Index at $0.13/task, matching Grok 4.7.",
+      "description": "The 2026 storyline of open-weight models closing on the frontier; Xiaomi's MiMo-V2.6-Pro scored 46 on the AA Intelligence Index at $0.13/task, matching Grok 4.7.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-09-21",
-      "timestamp": "2026-09-21T00:00:00Z",
+      "updated_at": "2026-09-22",
+      "timestamp": "2026-09-22T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -4162,7 +4177,9 @@
         "step-5-preview",
         "tencent-hunyuan-hy3",
         "thinking-machines",
+        "xai",
         "xiaomi-mimo-v2-5-pro",
+        "xiaomi-mimo-v2-6",
         "zhipu",
         "zhipu-glm-5-2",
         "zhipu-glm-5-3"
@@ -4207,6 +4224,7 @@
         "tencent-hunyuan-hy3",
         "thinking-machines",
         "xiaomi-mimo-v2-5-pro",
+        "xiaomi-mimo-v2-6",
         "zhipu",
         "zhipu-glm-5-2",
         "zhipu-glm-5-3"
@@ -4561,6 +4579,7 @@
         "amazon",
         "astra",
         "federal-ai-policy",
+        "muse-code",
         "nvidia"
       ]
     },
@@ -5394,11 +5413,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; Musk said Grok 4.8 is a 2.5T-parameter model on a new C++ stack, with pretraining finishing this week, while Grok 4.7 is still the next ship.",
-      "description": "Elon Musk's frontier lab behind Grok; Musk said Grok 4.8 is a 2.5T-parameter model on a new C++ stack, with pretraining finishing this week, while Grok 4.7 is still the next ship.",
+      "summary": "Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.",
+      "description": "Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-09-15",
-      "timestamp": "2026-09-15T00:00:00Z",
+      "updated_at": "2026-09-22",
+      "timestamp": "2026-09-22T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -5421,10 +5440,13 @@
         "cursor",
         "dynamic-workflows",
         "gpt-5-6",
+        "gpt-6",
+        "harvey",
         "midjourney",
         "moonshot-kimi-k3",
         "openai",
-        "spacex"
+        "spacex",
+        "xiaomi-mimo-v2-6"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -5433,11 +5455,14 @@
         "cursor",
         "eu-ai-regulation",
         "federal-ai-policy",
+        "open-weights",
         "openai",
         "ox-alpha",
         "seedance-2-5",
         "spacex",
-        "volta-infra"
+        "volta-infra",
+        "xiaomi-mimo-v2-5-pro",
+        "xiaomi-mimo-v2-6"
       ],
       "translations": {
         "ko": {
@@ -5462,11 +5487,11 @@
         "inference-throughput",
         "efficiency"
       ],
-      "summary": "Xiaomi's MiMo-v2.5-Pro-UltraSpeed claim of 1,000+ tokens/sec on a 1T-parameter MoE using a standard 8-GPU server; a high-signal but still partially verified inference-efficiency story.",
-      "description": "Xiaomi's MiMo-v2.5-Pro-UltraSpeed claim of 1,000+ tokens/sec on a 1T-parameter MoE using a standard 8-GPU server; a high-signal but still partially verified inference-efficiency story.",
+      "summary": "Xiaomi's MiMo-v2.5-Pro-UltraSpeed 1,000+ tok/s claim; superseded as the capability flagship by open-weight MiMo-V2.6-Pro (AA 46) on 2026-09-21.",
+      "description": "Xiaomi's MiMo-v2.5-Pro-UltraSpeed 1,000+ tok/s claim; superseded as the capability flagship by open-weight MiMo-V2.6-Pro (AA 46) on 2026-09-21.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-06-17",
-      "timestamp": "2026-06-17T00:00:00Z",
+      "updated_at": "2026-09-22",
+      "timestamp": "2026-09-22T00:00:00Z",
       "file": "entities/xiaomi-mimo-v2-5-pro.md",
       "aliases": [
         "Xiaomi MiMo-v2.5-Pro-UltraSpeed",
@@ -5476,11 +5501,51 @@
       ],
       "outbound": [
         "nvidia",
-        "open-weights"
+        "open-weights",
+        "xai",
+        "xiaomi-mimo-v2-6"
       ],
       "inbound": [
         "open-weights",
+        "xiaomi-mimo-v2-6",
         "zhipu-glm-5-2"
+      ]
+    },
+    {
+      "slug": "xiaomi-mimo-v2-6",
+      "title": "Xiaomi MiMo-V2.6",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "china",
+        "moe",
+        "xiaomi",
+        "intelligence-index"
+      ],
+      "summary": "Xiaomi's open-weight 1.02T/42B-active MoE; MiMo-V2.6-Pro scored 46 on Artificial Analysis' Intelligence Index at $0.13 per index task, matching Grok 4.7.",
+      "description": "Xiaomi's open-weight 1.02T/42B-active MoE; MiMo-V2.6-Pro scored 46 on Artificial Analysis' Intelligence Index at $0.13 per index task, matching Grok 4.7.",
+      "created_at": "2026-09-22",
+      "updated_at": "2026-09-22",
+      "timestamp": "2026-09-22T00:00:00Z",
+      "file": "entities/xiaomi-mimo-v2-6.md",
+      "aliases": [
+        "MiMo-V2.6",
+        "MiMo-V2.6-Pro",
+        "MiMo-V2.6-Flash",
+        "Xiaomi MiMo-V2.6",
+        "Xiaomi MiMo V2.6",
+        "MiMo V2.6"
+      ],
+      "outbound": [
+        "gpt-6",
+        "open-weights",
+        "xai",
+        "xiaomi-mimo-v2-5-pro"
+      ],
+      "inbound": [
+        "open-weights",
+        "xai",
+        "xiaomi-mimo-v2-5-pro"
       ]
     },
     {
@@ -6039,7 +6104,11 @@
     "midjourney inc.": "midjourney",
     "midjourney medical": "midjourney",
     "mimo v2.5 pro ultraspeed": "xiaomi-mimo-v2-5-pro",
+    "mimo v2.6": "xiaomi-mimo-v2-6",
     "mimo-v2.5-pro-ultraspeed": "xiaomi-mimo-v2-5-pro",
+    "mimo-v2.6": "xiaomi-mimo-v2-6",
+    "mimo-v2.6-flash": "xiaomi-mimo-v2-6",
+    "mimo-v2.6-pro": "xiaomi-mimo-v2-6",
     "minimax": "minimax-m3",
     "minimax h3": "minimax-h3",
     "minimax m3": "minimax-m3",
@@ -6241,8 +6310,11 @@
     "x.ai": "xai",
     "xai": "xai",
     "xiaomi mimo": "xiaomi-mimo-v2-5-pro",
+    "xiaomi mimo v2.6": "xiaomi-mimo-v2-6",
     "xiaomi mimo-v2.5-pro-ultraspeed": "xiaomi-mimo-v2-5-pro",
+    "xiaomi mimo-v2.6": "xiaomi-mimo-v2-6",
     "xiaomi-mimo-v2-5-pro": "xiaomi-mimo-v2-5-pro",
+    "xiaomi-mimo-v2-6": "xiaomi-mimo-v2-6",
     "your agents are aging too": "agent-lifespan-engineering",
     "z-ai/glm-5.3-flashx": "zhipu-glm-5-3",
     "z.ai": "zhipu",
@@ -6264,6 +6336,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-09-22",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-22 digest (model tickets unchanged — 285 tickets, no updated_at today or yesterday). Created 1 (xiaomi-mimo-v2-6 — 1.02T/42B-active open MoE, AA 46 at $0.13/task matching Grok 4.7). Updated 10 (xiaomi-mimo-v2-5-pro — successor pointer; xai — Grok 4.7 ship at $2/$6, AA 46 vs Fable/GPT-6 at 53; amd — $1T market cap, $613.92 intraday; muse-code — Amazon block + ClickFix 0-day + Shop Pay; amazon — same Muse block from the retailer side; agentic-ai-security — UN Hugging Face assessment + Muse 0-day; jev — Kev-0.8B/4B/9B + Jev-as-a-judge; california-ai-regulation — seven data-center energy/water bills; anthropic — IPO slip Oct→Nov to show Q3; open-weights — MiMo-V2.6 index-level Grok match). Skipped for budget: SoftBank $11B junk bonds as its own openai increment, US–China AI dialogue / Trump AI Force leftovers, Google AX / Googlebook, Qwen-Image-2.1 HN rerun, EU data-centre labels, Apple Siri settlement claims, MintAct / RecreationWorld / CodeMidas / Nemotron VoiceChat, Heretic / Pirate Face leftovers."
+    },
     {
       "date": "2026-09-21",
       "op": "ingest",
@@ -6358,11 +6435,6 @@
       "date": "2026-09-03",
       "op": "ingest",
       "summary": "Ingested the 2026-09-03 digest (no model tickets with updated_at today or yesterday). Created 1 (gemini-3-8-flash — third Flash SKU in six weeks at $0.75/$3.75 through year-end, plus gated 3.8 Flash Cyber via Fairwind). Updated 11 (google — 3.8 Flash ship + Fairwind Cyber + MrBeast partnership; agentic-ai-security — 3.8 Flash Cyber gated + Astra CoT-monitorability; gemini-3-7-flash — successor note, 3.8 ~40% more expensive per task; gemini-3-6-flash — 3.8 Flash Cyber is a new SKU, not a July Cyber upgrade; openai — DOJ fair-use SOI, 30 more shooting lawsuits, Astra recurrent-depth argument, ChatGPT Mil; astra — recurrent depth / Pachocki 2×-of-GPT-4 quote, Thursday launch chatter retracted; broadcom — FY26Q3 $16.7B AI chip sales, Q4 AI guided to $21.7B; muse-code — Muse Spark 1.3 at the same $1.25/$4.25 list, AA xhigh 61 / gated max 62; meta — Spark 1.3 pointer; federal-ai-policy — DOJ SOI, Pentagon ChatGPT Mil / Grok for Government, NYC classroom ban, Lutnick \"We trust Anthropic\"; ai-capex — Broadcom print paired with Dell's $95B backlog). Skipped for budget: Wonderful $550M/$5B Series C, HiddenLayer $100M, Palo Alto/Console, Adobe/Rilo, Qwen3.8-Max-0902, Grok 4.7 window, World Labs Atlas, FrontierSWE v2 as its own concept, Mistral default training, Perplexity Lily."
-    },
-    {
-      "date": "2026-09-02",
-      "op": "ingest",
-      "summary": "Second pass on the 2026-09-02 digest leftovers. Created 0, updated 4 (google — Pics Workspace design suite, Flash agent video analysis, Kavukcuoglu \"below the frontier\" quote, reported Hollywood catalog talks, AlgorithmWatch DSA Overviews study; gemini-3-7-flash — agent-based video analysis, claimed up to 88% fewer tokens; gemini-3-6-flash — same video path on 3.6 Flash and 3.5 Flash-Lite; ai-capex — Dell FY27Q2 $95B backlog / $60.9B orders as the enterprise-OEM demand print, plus relayed McKinsey State of AI 2026 27%→40% agent-scaling figure). Skipped (reported or one-off): AfterQuery $3.2B unicorn, AIR $50M, Runway Solaris, World Labs Atlas, Nvidia DLSS 5, Fal H3 Max Live, Ai2 BenchMIRT, arXiv research highlights."
     }
   ]
 }

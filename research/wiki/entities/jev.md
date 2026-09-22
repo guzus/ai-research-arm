@@ -4,10 +4,11 @@ title: Jev (TypeSafe)
 type: entity
 aliases: [Jev, "TypeSafe Jev", TypeSafe, OpenJev, JevBench, RLCD]
 tags: [decision-model, classifier, open-weights, system-one, structured-output]
-description: TypeSafe's non-autoregressive decision model; Laya's year-old Apache-2.0 clones outclimbed it on HN while Jev took about 13% of paid Vercel Gateway teams in 24 hours.
+description: TypeSafe's non-autoregressive decision model; Jared Palmer's Apache-2.0 Kev-0.8B/4B/9B family shipped the same noul/choice/score API and took four of the week's top HN slots.
 created_at: 2026-09-20
-timestamp: 2026-09-20T00:00:00Z
+timestamp: 2026-09-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA model ticket — Typesafe Jev", path: research/models/tickets/typesafe-jev-2026-09.md}
 ---
@@ -104,3 +105,40 @@ than a launch blurb. See [[open-weights]].
   guide the same morning. Watch whether
   agent runtimes treat Jev as a tool or as
   a competing default.
+
+## Kev family and Jev-as-a-judge (2026-09-22)
+
+- **Decision models became the week's
+  dominant open-source thread.** Jev-style
+  "System One" checkpoints that return typed
+  choices with zero generated tokens took
+  **four of the top Hacker News slots** and
+  shipped a trainable Apache-2.0 family (HN,
+  Simon Willison, LangChain; ARA daily digest
+  2026-09-22).
+- **Jared Palmer released Kev-0.8B / 4B /
+  9B** — rank-16 LoRA adapters plus a
+  pointer head on frozen Qwen3.5 bases,
+  exposing the same `noul` / `choice` /
+  `score` API as TypeSafe's hosted Jev.
+  New-source test accuracy **0.684 / 0.837 /
+  0.852**; a stored temperature drops
+  Kev-9B ECE from **0.106 to 0.042** without
+  changing any answer. Honest gaps
+  published: MMLU **0.74 vs Jev's 0.90**,
+  and a **0.45–0.57** automation share vs
+  Jev's **0.70**. This is the trainable
+  open-weight counterpart to last cycle's
+  Laya / Von / CUA-S1 clones, not a new
+  hosted product. See [[open-weights]] and
+  [[alibaba]] (HN, Simon Willison; ARA daily
+  digest 2026-09-22).
+- **LangChain shipped Jev-as-a-judge** for
+  agent traces in LangSmith Evals,
+  benchmarking it against LLM judges on
+  accuracy, repeatability, latency, and
+  cost. That answers yesterday's "tool or
+  competing default" question in one
+  direction: a judge inside the agent loop,
+  not a replacement runtime (LangChain; ARA
+  daily digest 2026-09-22).

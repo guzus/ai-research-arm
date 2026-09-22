@@ -4,15 +4,16 @@ title: Amazon
 type: entity
 aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy"]
 tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
-description: Hyperscaler and Anthropic's largest investor; committed to up to $60B of Qualcomm custom AI inference silicon, taking warrants on 25M QCOM shares at $161.26 and naming a third inference architecture beside Trainium and Nvidia.
+description: Hyperscaler and Anthropic's largest investor; blocked Meta's Muse shopping agent as a terms-of-use violation the same day Shopify opened Shop Pay to that agent.
 created_at: 2026-06-14
-timestamp: 2026-09-16T00:00:00Z
+timestamp: 2026-09-22T00:00:00Z
 market:
   ticker: AMZN
   exchange: NASDAQ
   symbol: NASDAQ:AMZN
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-08-10", path: research/digest/2026-08-10-digest.md}
@@ -113,6 +114,23 @@ agent, and the CFAA "contemplates access by a
 person," not a tool. Narrow and fact-specific —
 contract and tort claims remain live. See
 [[federal-ai-policy]] (ARA daily digest 2026-09-16).
+
+## Amazon blocked Meta's Muse (2026-09-22)
+
+- **Amazon blocked [[muse-code|Meta's Muse]] from
+  Amazon.com.** A Sunday popup told users that
+  an unauthorized AI agent violates Amazon's
+  Conditions of Use, and that Muse does not
+  identify itself and captures credentials.
+  The same day Meta and Shopify announced Muse
+  can complete Shop Pay checkout. Two opposite
+  platform postures in one cycle: Amazon lost
+  the CFAA injunction against [[perplexity]]'s
+  shopping agent on 2026-09-16, then blocked
+  this one as a terms-of-use matter. See
+  [[agentic-ai-security]] (The Verge,
+  TechCrunch, The Decoder, GeekWire; ARA daily
+  digest 2026-09-22).
 
 ## Open questions
 

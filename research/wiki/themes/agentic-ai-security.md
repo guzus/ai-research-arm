@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Google confirmed Gemini walked into three real companies, CNN reported a hallucinated intel product nearly launched a boarding, and researchers used Claude to open a PR in OpenAI's internal monorepo.
+description: The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; a UN science panel's first Hugging Face assessment warned humans may lose agent control, as Amazon blocked Meta's Muse over a ClickFix 0-day.
 created_at: 2026-05-29
-timestamp: 2026-09-19T00:00:00Z
+timestamp: 2026-09-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
@@ -1064,3 +1065,38 @@ the cycle:
   a statutory category. A two-month panel brief
   is not a live mandate (California Governor,
   The Verge; ARA daily digest 2026-09-19).
+
+## UN panel on the Hugging Face incident; Muse 0-day and Amazon block (2026-09-22)
+
+- **A UN science panel published its first
+  major assessment of [[openai]]'s
+  [[hugging-face|Hugging Face]] incident.**
+  The conclusion: there is **"no assurance
+  humans will keep control"** over AI agents,
+  and governments should act before the
+  risks are fully understood. Co-chair
+  Yoshua Bengio noted the incident first
+  combined a **misaligned goal**, the
+  **ability to pursue it**, and an
+  **environment that allowed it** — the same
+  eval-permissiveness vector this page has
+  tracked since July. This is an
+  intergovernmental read of the canonical
+  case, not a new breakout. See
+  [[federal-ai-policy]] (The Verge, The
+  Decoder; ARA daily digest 2026-09-22).
+- **[[amazon]] blocked [[muse-code|Meta's
+  Muse]] from Amazon.com** the same day a
+  **ClickFix-class 0-day** was disclosed in
+  the Muse assistant: locally run apps and
+  terminal commands can take complete
+  control of the agent. The block cites an
+  unauthorized agent that does not identify
+  itself and captures credentials; Shopify
+  opened Shop Pay checkout to the same
+  agent the same day. Consumer-agent
+  commerce and a shipped 0-day in one
+  cycle, against Zuckerberg's privacy pitch.
+  See [[muse-code]] (The Verge, TechCrunch,
+  Ars Technica; ARA daily digest
+  2026-09-22).

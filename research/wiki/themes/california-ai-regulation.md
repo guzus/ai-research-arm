@@ -4,10 +4,11 @@ title: California AI Regulation
 type: theme
 aliases: ["California AI regulation", "California AI bills", "Sacramento AI policy", "California Transparency in Frontier AI Act", "AB 1609", "AB 1159", "A 9317", "SB 942", "AB 853", "California AI Transparency Act", "AB 1709", "SB 813", "AB 1405"]
 tags: [policy, regulation, california, ai-governance, frontier-ai]
-description: Sacramento as the operative US AI regulator; Newsom signed a Friday EO giving a two-month panel a brief to recommend on-site verifiers and an independently checked frontier kill switch after SB 813 and AB 1405.
+description: Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.
 created_at: 2026-05-30
-timestamp: 2026-09-19T00:00:00Z
+timestamp: 2026-09-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-08-23", path: research/digest/2026-08-23-digest.md}
@@ -148,6 +149,22 @@ a California legislature carrying a **~30-bill AI package** through the
   (California Governor, The Verge, The Decoder; ARA
   daily digest 2026-09-19).
 
+- **Newsom signed seven AI data-center bills
+  (2026-09-21).** The package creates a new
+  **CPUC data-center rate class** and makes
+  operators pay for **grid and water
+  upgrades**. Proposed sites must now
+  disclose **water use, efficiency, and
+  drought plans**. This is the first signed
+  infrastructure-cost statute on this page —
+  the capex-feedback open question below is
+  no longer empty. It is a siting and
+  utility-cost duty, not a frontier-model
+  safety bill, and it sits next to last
+  week's kill-switch EO rather than replacing
+  it. See [[ai-capex]] (The Verge; ARA daily
+  digest 2026-09-22).
+
 ## Open questions
 
 - **Is watermark/C2PA provenance robust enough to carry a statutory duty?** If
@@ -167,7 +184,11 @@ a California legislature carrying a **~30-bill AI package** through the
 - **Companion-chatbot scope.** A 9317's warning requirement implicates
   conversational products well outside the "frontier model" frame.
   Where does "companion" end and "assistant" begin?
-- **Capex feedback.** [[ai-capex]]'s neocloud lane and Ohio's data-center
-  tax-break suspension suggest political pressure on AI infrastructure is
-  no longer contained to Sacramento. Does California's package include any
-  power-cost or data-center provisions in the second chamber?
+- **Capex feedback.** Partially answered on
+  2026-09-21: the seven signed bills create a
+  CPUC data-center rate class and shift grid
+  and water upgrade costs onto operators.
+  Remaining question is whether those charges
+  slow proposed sites or just raise the
+  all-in rent that [[ai-capex]] already
+  prices.
