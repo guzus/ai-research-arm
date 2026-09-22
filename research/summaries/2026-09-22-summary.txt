@@ -1,15 +1,15 @@
 AI News - 2026-09-22
 
 TOP STORIES:
-• Nscale files for NYSE IPO at $35B valuation, $3B raise target; Microsoft + Anthropic supply deals are ~85% of its $103B+ contract book
-• Xiaomi launches open-weight MiMo-V2.6-Pro/Flash (top open-model benchmark); Anthropic separately accuses Xiaomi of "illegal distillation" via Claude
-• Anthropic building a physical biology lab where Claude guides robots through drug-discovery experiments
-• NVIDIA's OSWorld-Pro benchmark: Claude Opus 5 scores 75.7% (vs 83.4% on original OSWorld) under harder process-level grading
-• Update: OpenAI's math model training ran ~1 month from Aug 28; also claims it solved the Hodge conjecture
+• Anthropic releases Claude Opus 5.5: 60% cheaper than Opus 5, beats Fable 5.1 on agentic benchmarks
+• OpenAI releases GPT-6 Sol & Luna at ~50% lower prices, but modest performance gains
+• Nscale files NYSE IPO at $35B valuation; Microsoft + Anthropic deals are ~85% of its $103B contract book
+• Snorkel AI raises $350M Series E at $3.5B valuation (18x revenue growth in 12 months)
+• Meta admits Muse was "heavily inspired" by OpenClaw; Xiaomi's MiMo-V2.6 tops open-weight benchmarks amid Anthropic distillation dispute
 
 KEY NUMBERS:
-• Nscale: $35B IPO valuation, $3B raise, $1.02B net loss (H1 2026)
-• MiMo-V2.6-Pro: 1.02T params, $0.435/$0.87 per Mtok, Intelligence Index 46
-• XYEval paper: agent accuracy drops up to 46.7% when users suggest bad solutions
+• Opus 5.5: $4/$20 per Mtok. GPT-6 Sol: $2/$10, Luna: $0.10/$0.50 per Mtok
+• Snorkel AI: $375M ARR
+• Nscale: $35B IPO target, $1.02B net loss (H1 2026)
 
 Full report on GitHub.
