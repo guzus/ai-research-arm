@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-09-22
+
+TOP STORIES:
+• Xiaomi's open-weights MiMo-V2.6 matched Grok 4.7 on the AA Intelligence Index, at a fraction of the cost per task
+• AMD became the fourth trillion-dollar US chipmaker on a record Nasdaq close
+• UN science panel: "no assurance humans will keep control" over AI agents
+• Amazon blocked Meta's Muse agent the same day Shopify opened Shop Pay to it
+
+KEY NUMBERS:
+• MiMo-V2.6-Pro: 46 on AA index at $0.13/task (1.02T total / 42B active)
+• Grok 4.7: also 46, unchanged $2/$6 per Mtok
+• AMD intraday record $613.92; Nasdaq 27,122.09 (+2.26%); SOX +4.3%
+• US near-daily AI use: 8% (Mar) -> 19% (Aug)
+
+TRENDING: Jev-style "decision models" took over HN, alongside Grok 4.7 (379 pts/321 comments)
+
+Full digest on GitHub.
