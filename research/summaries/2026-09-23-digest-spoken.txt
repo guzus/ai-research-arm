@@ -1,0 +1,13 @@
+Speaker 1: Wednesday, September twenty-third, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic launched Claude Opus five point five today, and it takes the top spot on the AA Intelligence Index at fifty-eight.
+Speaker 1: Pricing is [emphasis] four dollars in, twenty dollars out per million tokens [/emphasis], a twenty percent cut off the list.
+Speaker 2: Worth noting that the model also emits about one point six times the output tokens, so cost per task lands right back where it started.
+Speaker 1: OpenAI moved the same day, shipping GPT six Sol and Luna at roughly half the old price.
+Speaker 2: But independent evals say the capability is flat, not improved. [dramatic_pause] Sol is down about one hundred Elo on GDPval AA.
+Speaker 1: Some quick numbers on that tier. Sol runs two dollars in, ten dollars out. Luna comes in at ten cents in, fifty cents out, half of what five point six cost.
+Speaker 2: So the story of the day is cheaper tokens, not smarter ones. Two labs, same trade.
+Speaker 1: On the funding front, Snorkel AI closed a [emphasis] three hundred fifty million dollar [/emphasis] Series E, tripling its valuation to three and a half billion.
+Speaker 2: And a Pentagon review reportedly blames overreliance on AI targeting, specifically Palantir's Maven, for the Minab school strike.
+Speaker 1: That one will shape the procurement conversation for months.
+Speaker 2: Meanwhile the developer crowd voted with its clicks. Opus five point five hit number one on Hacker News with one thousand thirty-two points and seven hundred forty-five comments, Sol and Luna right behind at number two.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
