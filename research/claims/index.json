@@ -1,5 +1,5 @@
 {
-  "article_count": 83,
+  "article_count": 84,
   "articles": [
     {
       "claim_count": 18,
@@ -809,6 +809,14 @@
       "stem": "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde",
       "tags": [],
       "title": "A 46 is not evidence that two models are the same"
+    },
+    {
+      "claim_count": 36,
+      "created_at": "2026-09-23T05:45:49Z",
+      "slug": "anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "stem": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "tags": [],
+      "title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve"
     }
   ],
   "by_host": {
@@ -1078,7 +1086,12 @@
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c25",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c29",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c40",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c6"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c6",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c1",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c20",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c28",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c30",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c33"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -1160,6 +1173,9 @@
     "architectpartners.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22"
     ],
+    "arcprize.org": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c34"
+    ],
     "arena.ai": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c12",
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c6",
@@ -1222,7 +1238,11 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c6",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c7",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c8",
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c9"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c9",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c15",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c5",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c6",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c7"
     ],
     "artificialintelligenceact.eu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c30",
@@ -1907,7 +1927,10 @@
     ],
     "claude.com": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c17",
-      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c19"
+      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c19",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c13",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c14",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c36"
     ],
     "clinicalgenome.org": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c40"
@@ -2236,7 +2259,10 @@
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c7",
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c8",
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c9",
-      "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c17"
+      "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c17",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c11",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c12",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c9"
     ],
     "cybernews.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c11"
@@ -2408,7 +2434,8 @@
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c01",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c05",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c20",
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c32"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c32",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c35"
     ],
     "developers.uniswap.org": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c1",
@@ -2714,7 +2741,9 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c32",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c33",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c27",
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c35"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c35",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c26",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c27"
     ],
     "epochai.substack.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c35"
@@ -3121,7 +3150,8 @@
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c8",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c28",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c3",
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c30"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c30",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c31"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -3756,6 +3786,10 @@
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c10",
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c21"
     ],
+    "lovable.dev": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c17",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c18"
+    ],
     "lw.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c34"
     ],
@@ -4372,7 +4406,18 @@
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c28",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c7",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c17",
-      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c18"
+      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c18",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c16",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c2",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c21",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c23",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c24",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c25",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c28",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c29",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c3",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c32",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c4"
     ],
     "platform.minimax.io": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c7",
@@ -4972,6 +5017,9 @@
     ],
     "socket.dev": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c35"
+    ],
+    "sonarsource.com": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c19"
     ],
     "sources.news": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2"
@@ -5640,7 +5688,8 @@
     ],
     "vals.ai": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c8",
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c23"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c23",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c22"
     ],
     "valueaddvc.com": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c9",
@@ -6296,6 +6345,9 @@
     "https://architectpartners.com/q2-2026-crypto-ma-and-financing-report": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22"
     ],
+    "https://arcprize.org/results/anthropic-claude-opus-5-5": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c34"
+    ],
     "https://arena.ai/blog/autoeval-scores": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c22"
     ],
@@ -6328,6 +6380,9 @@
     ],
     "https://artificialanalysis.ai/articles/benchmarking-grok-4-7": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c37"
+    ],
+    "https://artificialanalysis.ai/articles/claude-opus-5-5": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c15"
     ],
     "https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model": [
       "2026-06-22T052035--zhipu-ai-glm#c9"
@@ -6366,6 +6421,16 @@
     ],
     "https://artificialanalysis.ai/models/claude-opus-4-8": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c7"
+    ],
+    "https://artificialanalysis.ai/models/claude-opus-5-5": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c5"
+    ],
+    "https://artificialanalysis.ai/models/claude-opus-5-high": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c6"
+    ],
+    "https://artificialanalysis.ai/models/comparisons/claude-opus-5-5-vs-claude-opus-5": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c15",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c5"
     ],
     "https://artificialanalysis.ai/models/comparisons/glm-5-2-vs-deepseek-v4-pro": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c19"
@@ -6417,6 +6482,9 @@
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c19",
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c2",
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c12"
+    ],
+    "https://artificialanalysis.ai/models/releases/claude-opus-5-5": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c7"
     ],
     "https://artificialanalysis.ai/video/leaderboard/image-to-video": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c10",
@@ -7344,6 +7412,11 @@
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c17",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c19"
     ],
+    "https://claude.com/blog/what-a-task-costs-on-opus-5-5": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c13",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c14",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c36"
+    ],
     "https://clinicalgenome.org/working-groups/sequence-variant-interpretation": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c40"
     ],
@@ -7513,7 +7586,12 @@
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c17"
     ],
     "https://cursor.com/cursorbench": [
-      "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c20"
+      "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c20",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c11",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c9"
+    ],
+    "https://cursor.com/docs/models/claude-opus-5-5": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c12"
     ],
     "https://cybernews.com/ai-news/us-accuses-china-moonshot-fable-distillation": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c11"
@@ -7655,7 +7733,8 @@
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6"
     ],
     "https://developers.openai.com/api/docs/changelog": [
-      "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c05"
+      "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c05",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c35"
     ],
     "https://developers.openai.com/api/docs/deprecations": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c32"
@@ -8026,6 +8105,10 @@
     ],
     "https://epoch.ai/publications/huaweis-roadmap-to-2031": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c35"
+    ],
+    "https://epoch.ai/publications/the-plunging-price-of-thought": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c26",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c27"
     ],
     "https://epoch.ai/publications/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c27"
@@ -8467,6 +8550,9 @@
     ],
     "https://github.com/ainatersol/Vesuvius-InkDetection": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15"
+    ],
+    "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c31"
     ],
     "https://github.com/banodoco": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c38"
@@ -8984,6 +9070,10 @@
     ],
     "https://lmsys.org/blog/2025-05-05-large-scale-ep": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c21"
+    ],
+    "https://lovable.dev/blog/opus-5-5-now-in-lovable": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c17",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c18"
     ],
     "https://m.bjnews.com.cn/detail/1733626668168427.html": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c25"
@@ -9585,7 +9675,12 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c3"
     ],
     "https://platform.claude.com/docs/en/about-claude/pricing": [
-      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6"
+      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c2",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c28",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c29",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c3",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c32"
     ],
     "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c17"
@@ -9594,14 +9689,26 @@
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c18"
     ],
     "https://platform.claude.com/docs/en/build-with-claude/effort": [
-      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c2"
+      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c2",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c23",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c4"
     ],
     "https://platform.claude.com/docs/en/build-with-claude/prompt-caching": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c28",
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c7"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c7",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c24"
     ],
     "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback": [
-      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c14"
+      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c14",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c21"
+    ],
+    "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c23",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c24",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c25"
+    ],
+    "https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c16"
     ],
     "https://platform.minimax.io/docs/guides/local-deploy-h3": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c20"
@@ -11008,7 +11115,9 @@
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c6"
     ],
     "https://www.anthropic.com/news/claude-opus-4-5": [
-      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c25"
+      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c25",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c28",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c30"
     ],
     "https://www.anthropic.com/news/claude-opus-5": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c1",
@@ -11016,6 +11125,11 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c18",
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c20",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c3"
+    ],
+    "https://www.anthropic.com/news/claude-opus-5-5": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c1",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c20",
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c33"
     ],
     "https://www.anthropic.com/news/claude-sonnet-4-6": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c9"
@@ -13512,6 +13626,9 @@
     "https://www.snowflake.com/en/news/press-releases/snowflake-reports-financial-results-for-the-fourth-quarter-and-full-year-of-fiscal-2026": [
       "2026-07-20T050016--databricks-mid-2026#c22"
     ],
+    "https://www.sonarsource.com/blog/claude-opus-5-5-an-evaluation": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c19"
+    ],
     "https://www.spheron.network/blog/deploy-glm-5-2-gpu-cloud": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c17"
     ],
@@ -13985,6 +14102,9 @@
     ],
     "https://www.vals.ai/home": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c23"
+    ],
+    "https://www.vals.ai/models/anthropic_claude-opus-5-5": [
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c22"
     ],
     "https://www.valuespectrum.com/corporate_news/1399869-sans-research-the-cybersecurity-talent-shortage-narrative-is-wrong-the-real-crisis-is-skills-and-ai-just-rewrote-the-list": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c28"
@@ -14578,7 +14698,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2493,
+  "claim_count": 2529,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -74526,9 +74646,836 @@
         "https://artificialanalysis.ai/models/comparisons/mimo-v2-6-pro-vs-grok-4-7"
       ],
       "type": "comparison"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Anthropic's Opus 5.5 launch post states: \"Our tests show that at default settings it will cost 40% less than Opus 5 on typical workloads.\"",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c1",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/claude-opus-5-5"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "At the Max effort setting Cursor's own tweet cites for its 57.8% score, Cursor's published leaderboard shows Opus 5.5 costing 12.4% more per task than Opus 5, not 40% less.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "c10",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c10",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Cursor's CursorBench leaderboard states cost per task is computed by applying each model's published per-million-token pricing across input, cache read, cache write and output to the tokens used on each task.",
+      "confidence": "high",
+      "hosts": [
+        "cursor.com"
+      ],
+      "id": "c11",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://cursor.com/cursorbench"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Cursor's own model documentation claims only that Opus 5.5 \"costs 20% less than Opus 5 per token\" — the 40% per-task figure appears only in its launch-day X post.",
+      "confidence": "medium",
+      "hosts": [
+        "cursor.com"
+      ],
+      "id": "c12",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c12",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://cursor.com/docs/models/claude-opus-5-5"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Anthropic's own cost-engineering blog post prices an identical session on both models holding token counts fixed and finds it \"costs about 31% less\" — a price-only effect, not 40%.",
+      "confidence": "high",
+      "hosts": [
+        "claude.com"
+      ],
+      "id": "c13",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://claude.com/blog/what-a-task-costs-on-opus-5-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Anthropic's cost blog states a 2.8M-input-token task costs $11.20 uncached, $1.62 at a 90% cache hit rate and about $0.99 at 96%, and that on Opus 5.5 a cached read costs 5% of a fresh input token while an output token costs 100 times a cache read.",
+      "confidence": "high",
+      "hosts": [
+        "claude.com"
+      ],
+      "id": "c14",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://claude.com/blog/what-a-task-costs-on-opus-5-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Artificial Analysis measured Opus 5.5 at max effort emitting about 119k output tokens per task versus Opus 5's 73k — roughly 1.6x — and 260M versus 140M output tokens across the full index.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c15",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c15",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/articles/claude-opus-5-5",
+        "https://artificialanalysis.ai/models/comparisons/claude-opus-5-5-vs-claude-opus-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Anthropic's docs state that at the same effort setting Opus 5.5 tends to think more per turn than Opus 5, most of all at xhigh and max.",
+      "confidence": "high",
+      "hosts": [
+        "platform.claude.com"
+      ],
+      "id": "c16",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Lovable published a matched-effort comparison at low, medium and high showing Opus 5.5 using 26-57% fewer steps per task and 21-59% fewer input tokens, with every difference significant at the 95% level.",
+      "confidence": "medium",
+      "hosts": [
+        "lovable.dev"
+      ],
+      "id": "c17",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c17",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://lovable.dev/blog/opus-5-5-now-in-lovable"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Lovable measured output tokens falling 37-64% on iterative code fixing and verification but staying close to Opus 5's on 0-to-1 app building, indicating savings come from fewer search and verify loops rather than terser writing.",
+      "confidence": "medium",
+      "hosts": [
+        "lovable.dev"
+      ],
+      "id": "c18",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c18",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://lovable.dev/blog/opus-5-5-now-in-lovable"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "SonarSource measured output tokens falling 40% from 21.71M to 12.96M across 4,444 Java coding tasks, with pass rate slightly down from 88.6% to 87.68%.",
+      "confidence": "medium",
+      "hosts": [
+        "sonarsource.com"
+      ],
+      "id": "c19",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c19",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sonarsource.com/blog/claude-opus-5-5-an-evaluation"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-23",
+      "claim": "Claude Opus 5.5 lists at $4/MTok input and $20/MTok output, versus Opus 5's $5 and $25 — a 20% cut on both.",
+      "confidence": "high",
+      "hosts": [
+        "platform.claude.com"
+      ],
+      "id": "c2",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/about-claude/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Anthropic states Opus 5.5 was evaluated with production safeguards enabled, that intervening safeguards routed cybersecurity tasks to Opus 4.8 and biology and frontier-LLM tasks to Opus 5, and that this likely reduces Opus 5.5's measured benchmark performance.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c20",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c20",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/claude-opus-5-5"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-23",
+      "claim": "Anthropic's refusals-and-fallback documentation defines five refusal categories (cyber, bio, frontier_llm, reasoning_extraction, general_harms) and states the routing is applied server-side and is not published per model on the Models API.",
+      "confidence": "high",
+      "hosts": [
+        "platform.claude.com"
+      ],
+      "id": "c21",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c21",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Vals AI ran Opus 5.5 with Opus 5 and Opus 4.8 as server-side fallbacks and reported that scoring fallback-assisted tasks as failures moves SRE Bench from 33.59% to 5.34%, with 217 of 262 tasks fallback-assisted.",
+      "confidence": "medium",
+      "hosts": [
+        "vals.ai"
+      ],
+      "id": "c22",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c22",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.vals.ai/models/anthropic_claude-opus-5-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-23",
+      "claim": "Anthropic's docs state that changing top-level effort between requests invalidates the prompt cache, and that a per-message effort change preserves it on Opus 5.5, Opus 5, Fable 5.1 and Mythos 5.1 under a beta header.",
+      "confidence": "high",
+      "hosts": [
+        "platform.claude.com"
+      ],
+      "id": "c23",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c23",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/build-with-claude/effort",
+        "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-23",
+      "claim": "The Anthropic Messages API returns input_tokens, output_tokens, cache_creation_input_tokens, cache_read_input_tokens and output_tokens_details.thinking_tokens, with total input equal to cache reads plus cache creation plus input_tokens, making a cost comparison independently auditable.",
+      "confidence": "high",
+      "hosts": [
+        "platform.claude.com"
+      ],
+      "id": "c24",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c24",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+        "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-23",
+      "claim": "Anthropic's docs state billed output tokens do not match visible token counts because callers are billed for the full thinking process, not the visible thinking content.",
+      "confidence": "high",
+      "hosts": [
+        "platform.claude.com"
+      ],
+      "id": "c25",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c25",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Epoch AI measured the cost of a fixed level of AI performance falling an average of about 47% per quarter, roughly 13x per year, across five benchmarks since 2023.",
+      "confidence": "high",
+      "hosts": [
+        "epoch.ai"
+      ],
+      "id": "c26",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://epoch.ai/publications/the-plunging-price-of-thought"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Epoch AI found cost falls 66% per quarter for performance that has just debuted as state of the art, and 32% per quarter two years later.",
+      "confidence": "high",
+      "hosts": [
+        "epoch.ai"
+      ],
+      "id": "c27",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c27",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://epoch.ai/publications/the-plunging-price-of-thought"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Anthropic's Opus-line list price history is $15/$75 at Claude 3 Opus in March 2024, unchanged through Opus 4.1, $5/$25 from Opus 4.5 in November 2025 through Opus 5, and $4/$20 at Opus 5.5.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com",
+        "platform.claude.com"
+      ],
+      "id": "c28",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c28",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/about-claude/pricing",
+        "https://www.anthropic.com/news/claude-opus-4-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-23",
+      "claim": "Anthropic's pricing docs state that Claude 4.7 and later models use a newer tokenizer that produces approximately 30% more tokens for the same text.",
+      "confidence": "high",
+      "hosts": [
+        "platform.claude.com"
+      ],
+      "id": "c29",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c29",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/about-claude/pricing"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-23",
+      "claim": "Opus 5.5 cache reads cost $0.20/MTok versus Opus 5's $0.50 — a 60% cut, achieved by a model-specific 0.05x multiplier on base input price instead of the standard 0.1x.",
+      "confidence": "high",
+      "hosts": [
+        "platform.claude.com"
+      ],
+      "id": "c3",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/about-claude/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2025-11-24",
+      "claim": "Anthropic ran the same rhetorical structure at Opus 4.5 in November 2025, pairing a token-price cut with a claim that at medium effort the model matched Sonnet 4.5's best SWE-bench Verified score using 76% fewer output tokens.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c30",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c30",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/claude-opus-4-5"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Claude Code version 2.1.280 added Opus 5.5 and changed the default model on Pro and Team Standard plans from Sonnet to Opus, and a stored /effort level no longer carries over to newly released models.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c31",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c31",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-23",
+      "claim": "Anthropic's pricing docs state that specifying US-only inference through the inference_geo parameter incurs a 1.1x multiplier on all token pricing categories, and that regional and multi-region endpoints carry a 10% premium over global endpoints.",
+      "confidence": "high",
+      "hosts": [
+        "platform.claude.com"
+      ],
+      "id": "c32",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c32",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/about-claude/pricing"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Anthropic's launch page states that unless otherwise noted all Claude Opus 5.5 benchmark results use adaptive thinking at max effort, while the 40% cost claim is scoped to default settings.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c33",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c33",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/claude-opus-5-5"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "ARC Prize measured Opus 5.5 scoring non-monotonically across effort on ARC-AGI-2, peaking at high effort (93.3%) rather than max (91.7%).",
+      "confidence": "medium",
+      "hosts": [
+        "arcprize.org"
+      ],
+      "id": "c34",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c34",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://arcprize.org/results/anthropic-claude-opus-5-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "GPT-6 Sol was published at $2/MTok input and $10/MTok output with $0.20 cached input roughly 100 minutes after Anthropic's Opus 5.5 announcement on 2026-09-22.",
+      "confidence": "medium",
+      "hosts": [
+        "developers.openai.com"
+      ],
+      "id": "c35",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c35",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://developers.openai.com/api/docs/changelog"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Anthropic's cost blog states cache-dominated sessions save up to 60% on input while short prompts with long answers save up to 20%.",
+      "confidence": "medium",
+      "hosts": [
+        "claude.com"
+      ],
+      "id": "c36",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c36",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://claude.com/blog/what-a-task-costs-on-opus-5-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-23",
+      "claim": "Claude Opus 5.5's API default effort is `medium`, while Claude Opus 5 and earlier Opus models default to `high`, so a request omitting `effort` runs one level lower than it did on Opus 5.",
+      "confidence": "high",
+      "hosts": [
+        "platform.claude.com"
+      ],
+      "id": "c4",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/build-with-claude/effort"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Artificial Analysis measured Opus 5.5 at max effort at $5.98 per Intelligence Index task versus Opus 5 at max at $5.86 — cost roughly flat, up 2.0%.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c5",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/claude-opus-5-5",
+        "https://artificialanalysis.ai/models/comparisons/claude-opus-5-5-vs-claude-opus-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Artificial Analysis measured Opus 5 at high effort (its default) at $3.61 per Intelligence Index task, index score 48, 81M output tokens, $4,331.68 to run the full index.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c6",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/claude-opus-5-high"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Artificial Analysis publishes an Opus 5.5 cost-per-task ladder of $0.55 (low), $1.34 (medium), $1.82 (high), $3.46 (xhigh), $5.98 (max), with index scores 42, 51, 54, 56, 58.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c7",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/releases/claude-opus-5-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Comparing each model at its own default effort on Artificial Analysis data, Opus 5.5 medium ($1.34) versus Opus 5 high ($3.61) is a 62.9% cost reduction — more than Anthropic's 40% claim.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "c8",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+      "article_created_at": "2026-09-23T05:45:49Z",
+      "article_title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve",
+      "as_of": "2026-09-22",
+      "claim": "Cursor's public CursorBench 4.0 leaderboard lists Opus 5.5 Max at 57.8% and $13.43 per task versus Opus 5 Max at 46.6% and $11.95 per task.",
+      "confidence": "high",
+      "hosts": [
+        "cursor.com"
+      ],
+      "id": "c9",
+      "key": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://cursor.com/cursorbench"
+      ],
+      "type": "metric"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1227,
+  "reusable_count": 1247,
   "schema_version": 1
 }

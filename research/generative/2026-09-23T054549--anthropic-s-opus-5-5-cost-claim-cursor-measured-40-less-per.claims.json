@@ -1,0 +1,399 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Anthropic's Opus 5.5 launch post states: \"Our tests show that at default settings it will cost 40% less than Opus 5 on typical workloads.\"",
+      "type": "quote",
+      "source_urls": ["https://www.anthropic.com/news/claude-opus-5-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Claude Opus 5.5 lists at $4/MTok input and $20/MTok output, versus Opus 5's $5 and $25 — a 20% cut on both.",
+      "type": "metric",
+      "source_urls": ["https://platform.claude.com/docs/en/about-claude/pricing"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c3",
+      "claim": "Opus 5.5 cache reads cost $0.20/MTok versus Opus 5's $0.50 — a 60% cut, achieved by a model-specific 0.05x multiplier on base input price instead of the standard 0.1x.",
+      "type": "metric",
+      "source_urls": ["https://platform.claude.com/docs/en/about-claude/pricing"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c4",
+      "claim": "Claude Opus 5.5's API default effort is `medium`, while Claude Opus 5 and earlier Opus models default to `high`, so a request omitting `effort` runs one level lower than it did on Opus 5.",
+      "type": "technical",
+      "source_urls": ["https://platform.claude.com/docs/en/build-with-claude/effort"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c5",
+      "claim": "Artificial Analysis measured Opus 5.5 at max effort at $5.98 per Intelligence Index task versus Opus 5 at max at $5.86 — cost roughly flat, up 2.0%.",
+      "type": "metric",
+      "source_urls": [
+        "https://artificialanalysis.ai/models/claude-opus-5-5",
+        "https://artificialanalysis.ai/models/comparisons/claude-opus-5-5-vs-claude-opus-5"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c6",
+      "claim": "Artificial Analysis measured Opus 5 at high effort (its default) at $3.61 per Intelligence Index task, index score 48, 81M output tokens, $4,331.68 to run the full index.",
+      "type": "metric",
+      "source_urls": ["https://artificialanalysis.ai/models/claude-opus-5-high"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c7",
+      "claim": "Artificial Analysis publishes an Opus 5.5 cost-per-task ladder of $0.55 (low), $1.34 (medium), $1.82 (high), $3.46 (xhigh), $5.98 (max), with index scores 42, 51, 54, 56, 58.",
+      "type": "metric",
+      "source_urls": ["https://artificialanalysis.ai/models/releases/claude-opus-5-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c8",
+      "claim": "Comparing each model at its own default effort on Artificial Analysis data, Opus 5.5 medium ($1.34) versus Opus 5 high ($3.61) is a 62.9% cost reduction — more than Anthropic's 40% claim.",
+      "type": "derived",
+      "inputs": [
+        {"ref": "c7", "name": "opus_5_5_medium", "value": 1.34, "unit": "USD per task"},
+        {"ref": "c6", "name": "opus_5_high", "value": 3.61, "unit": "USD per task"}
+      ],
+      "formula": "(1 - opus_5_5_medium / opus_5_high) * 100",
+      "result": 62.88088642659279,
+      "unit": "percent",
+      "assumptions": [
+        "Both figures are Artificial Analysis Intelligence Index v4.3.2 cost-per-task measurements, so they share a workload and a pricing method.",
+        "Medium is treated as Opus 5.5's API default and high as Opus 5's, per Anthropic's effort documentation.",
+        "List prices are used throughout; no negotiated or committed-spend discount is modelled."
+      ],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "Cursor's public CursorBench 4.0 leaderboard lists Opus 5.5 Max at 57.8% and $13.43 per task versus Opus 5 Max at 46.6% and $11.95 per task.",
+      "type": "metric",
+      "source_urls": ["https://cursor.com/cursorbench"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c10",
+      "claim": "At the Max effort setting Cursor's own tweet cites for its 57.8% score, Cursor's published leaderboard shows Opus 5.5 costing 12.4% more per task than Opus 5, not 40% less.",
+      "type": "derived",
+      "inputs": [
+        {"ref": "c9", "name": "opus_5_5_max", "value": 13.43, "unit": "USD per task"},
+        {"ref": "c9", "name": "opus_5_max", "value": 11.95, "unit": "USD per task"}
+      ],
+      "formula": "(opus_5_5_max / opus_5_max - 1) * 100",
+      "result": 12.384937238493716,
+      "unit": "percent",
+      "assumptions": [
+        "Both figures are CursorBench 4.0 average-cost-per-task rows measured at Max effort on the same task set.",
+        "Cursor computes cost by applying each model's published per-million-token pricing across input, cache read, cache write and output, so the two rows are priced on the same basis.",
+        "Cursor's own variance disclaimer applies; the underlying task count and trials per task are unpublished."
+      ],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c11",
+      "claim": "Cursor's CursorBench leaderboard states cost per task is computed by applying each model's published per-million-token pricing across input, cache read, cache write and output to the tokens used on each task.",
+      "type": "technical",
+      "source_urls": ["https://cursor.com/cursorbench"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Cursor's own model documentation claims only that Opus 5.5 \"costs 20% less than Opus 5 per token\" — the 40% per-task figure appears only in its launch-day X post.",
+      "type": "comparison",
+      "source_urls": ["https://cursor.com/docs/models/claude-opus-5-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c13",
+      "claim": "Anthropic's own cost-engineering blog post prices an identical session on both models holding token counts fixed and finds it \"costs about 31% less\" — a price-only effect, not 40%.",
+      "type": "metric",
+      "source_urls": ["https://claude.com/blog/what-a-task-costs-on-opus-5-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "Anthropic's cost blog states a 2.8M-input-token task costs $11.20 uncached, $1.62 at a 90% cache hit rate and about $0.99 at 96%, and that on Opus 5.5 a cached read costs 5% of a fresh input token while an output token costs 100 times a cache read.",
+      "type": "metric",
+      "source_urls": ["https://claude.com/blog/what-a-task-costs-on-opus-5-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c15",
+      "claim": "Artificial Analysis measured Opus 5.5 at max effort emitting about 119k output tokens per task versus Opus 5's 73k — roughly 1.6x — and 260M versus 140M output tokens across the full index.",
+      "type": "metric",
+      "source_urls": [
+        "https://artificialanalysis.ai/articles/claude-opus-5-5",
+        "https://artificialanalysis.ai/models/comparisons/claude-opus-5-5-vs-claude-opus-5"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c16",
+      "claim": "Anthropic's docs state that at the same effort setting Opus 5.5 tends to think more per turn than Opus 5, most of all at xhigh and max.",
+      "type": "technical",
+      "source_urls": ["https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "Lovable published a matched-effort comparison at low, medium and high showing Opus 5.5 using 26-57% fewer steps per task and 21-59% fewer input tokens, with every difference significant at the 95% level.",
+      "type": "metric",
+      "source_urls": ["https://lovable.dev/blog/opus-5-5-now-in-lovable"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c18",
+      "claim": "Lovable measured output tokens falling 37-64% on iterative code fixing and verification but staying close to Opus 5's on 0-to-1 app building, indicating savings come from fewer search and verify loops rather than terser writing.",
+      "type": "causal",
+      "source_urls": ["https://lovable.dev/blog/opus-5-5-now-in-lovable"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c19",
+      "claim": "SonarSource measured output tokens falling 40% from 21.71M to 12.96M across 4,444 Java coding tasks, with pass rate slightly down from 88.6% to 87.68%.",
+      "type": "metric",
+      "source_urls": ["https://www.sonarsource.com/blog/claude-opus-5-5-an-evaluation/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c20",
+      "claim": "Anthropic states Opus 5.5 was evaluated with production safeguards enabled, that intervening safeguards routed cybersecurity tasks to Opus 4.8 and biology and frontier-LLM tasks to Opus 5, and that this likely reduces Opus 5.5's measured benchmark performance.",
+      "type": "quote",
+      "source_urls": ["https://www.anthropic.com/news/claude-opus-5-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c21",
+      "claim": "Anthropic's refusals-and-fallback documentation defines five refusal categories (cyber, bio, frontier_llm, reasoning_extraction, general_harms) and states the routing is applied server-side and is not published per model on the Models API.",
+      "type": "technical",
+      "source_urls": ["https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c22",
+      "claim": "Vals AI ran Opus 5.5 with Opus 5 and Opus 4.8 as server-side fallbacks and reported that scoring fallback-assisted tasks as failures moves SRE Bench from 33.59% to 5.34%, with 217 of 262 tasks fallback-assisted.",
+      "type": "metric",
+      "source_urls": ["https://www.vals.ai/models/anthropic_claude-opus-5-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c23",
+      "claim": "Anthropic's docs state that changing top-level effort between requests invalidates the prompt cache, and that a per-message effort change preserves it on Opus 5.5, Opus 5, Fable 5.1 and Mythos 5.1 under a beta header.",
+      "type": "technical",
+      "source_urls": [
+        "https://platform.claude.com/docs/en/build-with-claude/effort",
+        "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c24",
+      "claim": "The Anthropic Messages API returns input_tokens, output_tokens, cache_creation_input_tokens, cache_read_input_tokens and output_tokens_details.thinking_tokens, with total input equal to cache reads plus cache creation plus input_tokens, making a cost comparison independently auditable.",
+      "type": "technical",
+      "source_urls": [
+        "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+        "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c25",
+      "claim": "Anthropic's docs state billed output tokens do not match visible token counts because callers are billed for the full thinking process, not the visible thinking content.",
+      "type": "quote",
+      "source_urls": ["https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c26",
+      "claim": "Epoch AI measured the cost of a fixed level of AI performance falling an average of about 47% per quarter, roughly 13x per year, across five benchmarks since 2023.",
+      "type": "metric",
+      "source_urls": ["https://epoch.ai/publications/the-plunging-price-of-thought"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c27",
+      "claim": "Epoch AI found cost falls 66% per quarter for performance that has just debuted as state of the art, and 32% per quarter two years later.",
+      "type": "metric",
+      "source_urls": ["https://epoch.ai/publications/the-plunging-price-of-thought"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c28",
+      "claim": "Anthropic's Opus-line list price history is $15/$75 at Claude 3 Opus in March 2024, unchanged through Opus 4.1, $5/$25 from Opus 4.5 in November 2025 through Opus 5, and $4/$20 at Opus 5.5.",
+      "type": "metric",
+      "source_urls": [
+        "https://platform.claude.com/docs/en/about-claude/pricing",
+        "https://www.anthropic.com/news/claude-opus-4-5"
+      ],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c29",
+      "claim": "Anthropic's pricing docs state that Claude 4.7 and later models use a newer tokenizer that produces approximately 30% more tokens for the same text.",
+      "type": "technical",
+      "source_urls": ["https://platform.claude.com/docs/en/about-claude/pricing"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c30",
+      "claim": "Anthropic ran the same rhetorical structure at Opus 4.5 in November 2025, pairing a token-price cut with a claim that at medium effort the model matched Sonnet 4.5's best SWE-bench Verified score using 76% fewer output tokens.",
+      "type": "comparison",
+      "source_urls": ["https://www.anthropic.com/news/claude-opus-4-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-11-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c31",
+      "claim": "Claude Code version 2.1.280 added Opus 5.5 and changed the default model on Pro and Team Standard plans from Sonnet to Opus, and a stored /effort level no longer carries over to newly released models.",
+      "type": "event",
+      "source_urls": ["https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c32",
+      "claim": "Anthropic's pricing docs state that specifying US-only inference through the inference_geo parameter incurs a 1.1x multiplier on all token pricing categories, and that regional and multi-region endpoints carry a 10% premium over global endpoints.",
+      "type": "technical",
+      "source_urls": ["https://platform.claude.com/docs/en/about-claude/pricing"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c33",
+      "claim": "Anthropic's launch page states that unless otherwise noted all Claude Opus 5.5 benchmark results use adaptive thinking at max effort, while the 40% cost claim is scoped to default settings.",
+      "type": "quote",
+      "source_urls": ["https://www.anthropic.com/news/claude-opus-5-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c34",
+      "claim": "ARC Prize measured Opus 5.5 scoring non-monotonically across effort on ARC-AGI-2, peaking at high effort (93.3%) rather than max (91.7%).",
+      "type": "metric",
+      "source_urls": ["https://arcprize.org/results/anthropic-claude-opus-5-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c35",
+      "claim": "GPT-6 Sol was published at $2/MTok input and $10/MTok output with $0.20 cached input roughly 100 minutes after Anthropic's Opus 5.5 announcement on 2026-09-22.",
+      "type": "market-structure",
+      "source_urls": ["https://developers.openai.com/api/docs/changelog"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c36",
+      "claim": "Anthropic's cost blog states cache-dominated sessions save up to 60% on input while short prompts with long answers save up to 20%.",
+      "type": "metric",
+      "source_urls": ["https://claude.com/blog/what-a-task-costs-on-opus-5-5"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-22",
+      "confidence": "medium",
+      "risk": "stable"
+    }
+  ]
+}
