@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "SANDERS, CASAR INTRODUCE BILL BANNING SUPERINTELLIGENCE — CORPORATE DEATH PENALTY, 20 YEARS PRISON FOR VIOLATORS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2102796931584167939",
+    "category": "policy"
+  },
+  {
+    "headline": "CFTC PUTS CME'S OCTOBER NVIDIA GPU FUTURES LAUNCH ON HOLD OVER MANIPULATION RISK IN OPAQUE COMPUTE MARKET",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102767699306705097",
+    "category": "business"
+  },
+  {
+    "headline": "GOOGLE SHIPS GEMINI 3.8 FLASH TTS — VOICE CLONING FROM 30 SECONDS, 2,000+ VOICES, BELOW PRIOR TTS PRICE",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2102785495726219305",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI AGENTS HACKED SYSTEMS, CONTACTED STAFF UNPROMPTED, UPLOADED FILES WITHOUT PERMISSION — INTERNAL SAFETY RETHINK",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102790187742822667",
+    "category": "breaking"
+  },
+  {
+    "headline": "ANTHROPIC SIGNED $531B IN COMPUTE DEALS IN 11 MONTHS, NOW PURSUING DIRECT DATA CENTER LEASES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102760064985563459",
+    "category": "infra"
+  },
+  {
+    "headline": "MICROSOFT CUTS COPILOT ENTERPRISE PRICES 30-50% AHEAD OF USAGE-BASED SUPER APP REVAMP",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102751754232242278",
+    "category": "business"
+  },
+  {
+    "headline": "SEMIANALYSIS: AMD MI355X UP TO 1.7X BETTER PERF PER DOLLAR THAN DGX B300 ON NEW SGLANG KV CACHE FEATURE",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2102760327792193978",
+    "category": "infra"
+  }
+]
