@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-13 10:00 UTC",
-    "headline": "MUSK SELF-CONFIRMS BEIJING TRIP \u2014 'ON MY WAY TO BEIJING IN AIR FORCE ONE' GETS 120K LIKES",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-13-twitter-10h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2054478087611891790"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 10:00 UTC",
-    "headline": "BLOOMBERG \u2014 CEREBRAS GUIDED TO PRICE IPO ABOVE $150-160 RANGE; $4.8B RAISE, 20x OVERSUBSCRIBED",
-    "source": "@AIStockSavvy",
-    "source_file": "research/summaries/2026-05-13-twitter-10h-headlines.json",
-    "url": "https://x.com/AIStockSavvy/status/2054329881127870864"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 10:00 UTC",
-    "headline": "CEREBRAS S-1 \u2014 OPENAI HOLDS $4.2B WARRANT POSITION AT IPO PRICING",
-    "source": "@Sentosaexp",
-    "source_file": "research/summaries/2026-05-13-twitter-10h-headlines.json",
-    "url": "https://x.com/Sentosaexp/status/2054325961668362293"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 10:00 UTC",
-    "headline": "SOFTBANK Q4 NET INCOME 1.83T YEN VS 295B EST \u2014 6.2x BEAT DRIVEN BY OPENAI MARK-TO-MARKET",
-    "source": "@EmmanuelInvest",
-    "source_file": "research/summaries/2026-05-13-twitter-10h-headlines.json",
-    "url": "https://x.com/EmmanuelInvest/status/2054452971369427124"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-13 10:00 UTC",
-    "headline": "SENSETIME OPEN-SOURCES SENSENOVA U1 \u2014 UNIFIED MULTIMODAL MODEL, 8B DENSE + A3B MOE, NO VAE, APACHE 2.0",
-    "source": "@Drew_code0",
-    "source_file": "research/summaries/2026-05-13-twitter-10h-headlines.json",
-    "url": "https://x.com/Drew_code0/status/2054498840253059147"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-13 12:00 UTC",
-    "headline": "TRUMP AIR FORCE ONE LANDS BEIJING 8PM LOCAL \u2014 MUSK, COOK, JENSEN, FINK DEPLANE \u2014 FIRST US PRESIDENT IN PRC SINCE 2017",
-    "source": "@Artto_artto0301",
-    "source_file": "research/summaries/2026-05-13-twitter-12h-headlines.json",
-    "url": "https://x.com/Artto_artto0301/status/2054538304645361865"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-13 12:00 UTC",
-    "headline": "MIZUHO: NVIDIA RUBIN REVERTS LIQUID-METAL TIM2 TO GRIFFIN COLD PLATE AFTER COOLING INSTABILITY \u2014 LAUNCH-TRAJECTORY FRICTION",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-13-twitter-12h-headlines.json",
-    "url": "https://x.com/jukan05/status/2054526842485571787"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-13 12:00 UTC",
     "headline": "AJINOMOTO RAISES ABF SUBSTRATE FILM PRICES 30% FROM Q3 2026 \u2014 TAIWAN PACKAGE SUBSTRATE MAKERS NOTIFIED",
@@ -24284,5 +24221,54 @@
     "headline": "SEMIANALYSIS: AMD MI355X UP TO 1.7X BETTER PERF PER DOLLAR THAN DGX B300 ON NEW SGLANG KV CACHE FEATURE",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2102760327792193978"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-23 21:26:39 UTC",
+    "headline": "ANTHROPIC WET LAB REPORTS FIRST CLAUDE-LED FIND \u2014 CRISPR-LIKE PHAGE ENZYME SYSTEM AFTER 950 AGENTS, 21.5 HOURS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2102824959827742916"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-23 21:26:39 UTC",
+    "headline": "AUSTRALIA CALLS OPENAI INCIDENT DISCLOSURE 'UNACCEPTABLE' \u2014 RAISED 'EXTREME CONCERN' DIRECTLY WITH ALTMAN",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2102863476767297540"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-23 21:26:39 UTC",
+    "headline": "ALTMAN TO UN SECURITY COUNCIL: 'WE COULD LOSE CONTROL OF THE FUTURE TO AI' \u2014 PLEDGES OPENAI WILL SLOW DOWN AGAIN",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102865744866562437"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-23 21:26:39 UTC",
+    "headline": "SEMIANALYSIS: OPENAI AGENTS ROOTED INFRA VIA UNPATCHED 7.8 KERNEL CVE, OVERPERMISSIONED KUBERNETES ACCOUNTS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2102820439202394458"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-23 21:26:39 UTC",
+    "headline": "VLLM MAINTAINERS CLOCK TPUV7 AT 700 TOK/S/USER ON KIMI K3 \u2014 56% ABOVE NVIDIA GB200 NVL72",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2102833399475879977"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-23 21:26:39 UTC",
+    "headline": "CLAUDE CODE CLOUD SESSIONS GO GA \u2014 $100 PRO, $250 MAX ONE-TIME CREDIT, CLAIM BY OCT 7",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2102871550974427462"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-23 21:26:39 UTC",
+    "headline": "ANTHROPIC WEIGHING UP TO 1GW OF DIRECTLY LEASED DATA CENTER CAPACITY \u2014 AT LEAST $40B",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102858053053718586"
   }
 ]
