@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-23 11:25:56 UTC
+
+CYCLE: China targets the last un-substituted layer of its AI stack, and the cost-of-intelligence curve gets a number.
+
+TOP STORIES:
+• China's SASAC is surveying Broadcom switches across state data centres, weighing curbs on up to 90% of state-backed deployments (FT) [⚠]
+• Epoch AI: cost to hit a fixed benchmark score falls ~47%/quarter — 725x on GPQA Diamond from o3 to GPT-5.6 Luna [⚠]
+• Unreleased Free/Prototype/Accelerate app-hosting tiers surface on the OpenAI Platform, Accelerate "starting at $50" [⚠]
+• Opus 5.5 becomes a shipped default (AINews, Perplexity Standard); KernelBench author discloses a double-process contamination caveat [✓]
+
+WATCH: Any Broadcom or SASAC statement putting the switch review on the record, or a second outlet matching the 90% figure.
+
+Full update on GitHub.
