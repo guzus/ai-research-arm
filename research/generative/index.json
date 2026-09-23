@@ -2893,6 +2893,22 @@
     "created_at": "2026-09-23T05:45:49Z",
     "source": "workflow_dispatch",
     "prompt": "Anthropic's Opus 5.5 cost claim: Cursor measured 40% less per task, Artificial Analysis measured it flat",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-09-23T055651--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "앤트로픽은 40%이라고 했고, Cursor는 40%이라고 했으며, Artificial Analysis는 제로라고 했다 — 셋 모두 같은 곡선을 측정했다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-09-23T05:56:51Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
+        "tags": [],
+        "translated_at": "2026-09-23T05:56:51Z",
+        "source_file": "research/generative/2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per.ara.md",
+        "source_sha256": "069d8879e76b944fa9b62cedcf4e3b8e06ac64cdd6865a6faa2c113365ec088a"
+      }
+    }
   }
 ]
