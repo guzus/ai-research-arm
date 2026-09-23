@@ -1,0 +1,15 @@
+AI News - 2026-09-23
+
+TOP STORIES:
+• Ema raises $77M Series B ($140M total) as AI agents cut into enterprise SaaS
+• Qualcomm to acquire PickNik Robotics, keeps MoveIt open-source
+• OpenAI hires Patreon co-founder Sam Yam to lead new Creator Product division
+• Alibaba's Qwen-Audio 3.1 cuts AI audio pricing up to 95%
+• New arXiv paper: AI research agent self-improved over 8 days, cut reward-hacking rate 55%→32%
+
+KEY NUMBERS:
+• Ema: $77M raise, 50+ enterprise customers, $150M+ bookings, 180% NDR
+• Qwen-Audio 3.1: ASR pricing down up to 95%, TTS ~70%, real-time ~85%
+• AIDE² paper: 7 self-improvements over 8-day autonomous run
+
+Full report on GitHub.
