@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-13 07:00 UTC",
-    "headline": "TANSTACK 42 PACKAGES / 84 VERSIONS / 3M WEEKLY DOWNLOADS COMPROMISED \u2014 UIPATH, OPENSEARCH, GUARDRAILS AI ALSO HIT",
-    "source": "@TitanSecAI",
-    "source_file": "research/summaries/2026-05-13-twitter-07h-headlines.json",
-    "url": "https://x.com/TitanSecAI/status/2054305010452926641"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 07:00 UTC",
-    "headline": "MISTRALAI CORP-CHANNEL SILENT 13 DAYS THROUGH OWN OFFICIAL SDK COMPROMISE \u2014 NO SECURITY ADVISORY POST",
-    "source": "@MistralAI",
-    "source_file": "research/summaries/2026-05-13-twitter-07h-headlines.json",
-    "url": "https://x.com/MistralAI"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-13 07:00 UTC",
-    "headline": "TRUMP AF1 LANDS BEIJING \u2014 JENSEN HUANG ALASKA-BOARDING CONFIRMED; ~16 CEOS INCLUDING MUSK + COOK + FINK",
-    "source": "@NeelMacro",
-    "source_file": "research/summaries/2026-05-13-twitter-07h-headlines.json",
-    "url": "https://x.com/NeelMacro/status/2054441442261745885"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 07:00 UTC",
-    "headline": "NVDA UP +1.7% PRE-MARKET ON TRUMP-JENSEN BEIJING DELEGATION REPORTS \u2014 FIRST MARKETS DATUM ON SUMMIT",
-    "source": "@QuantData",
-    "source_file": "research/summaries/2026-05-13-twitter-07h-headlines.json",
-    "url": "https://x.com/QuantData/status/2054456460222894099"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 07:00 UTC",
-    "headline": "ANTHROPIC CORP-CHANNEL SILENT ~62 HOURS \u2014 LONGEST 2026 SILENCE THROUGH TRIAL, COLOSSUS 1, HELION, AF1, NPM PERSISTENCE VECTORS",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-13-twitter-07h-headlines.json",
-    "url": "https://x.com/AnthropicAI"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 10:00 UTC",
-    "headline": "NYT \u2014 ANTHROPIC IN TALKS TO RAISE $30-50B AT $950B VALUATION, UP FROM $30B/$900B BLOOMBERG 24H PRIOR",
-    "source": "@tradfi",
-    "source_file": "research/summaries/2026-05-13-twitter-10h-headlines.json",
-    "url": "https://x.com/tradfi/status/2054337290718093371"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 10:00 UTC",
-    "headline": "SOFTBANK FY2026 EARNINGS \u2014 OPENAI MARKED AT $730B; $34.6B CUMULATIVE INVESTED, EXPECTED $64.6B BY OCTOBER",
-    "source": "@FirstSquawk",
-    "source_file": "research/summaries/2026-05-13-twitter-10h-headlines.json",
-    "url": "https://x.com/FirstSquawk/status/2054451353018298597"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-13 10:00 UTC",
     "headline": "MUSK SELF-CONFIRMS BEIJING TRIP \u2014 'ON MY WAY TO BEIJING IN AIR FORCE ONE' GETS 120K LIKES",
@@ -24298,5 +24235,54 @@
     "headline": "OPUS 5.5 HITS 35.5X PYTORCH BASELINE ON KERNELBENCH-MEGA MEGAKERNEL, VS 24.8X FOR GPT-6 ASTRA",
     "source": "@elliotarledge",
     "url": "https://x.com/elliotarledge/status/2102566065163424168"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-23 16:49:08 UTC",
+    "headline": "SANDERS, CASAR INTRODUCE BILL BANNING SUPERINTELLIGENCE \u2014 CORPORATE DEATH PENALTY, 20 YEARS PRISON FOR VIOLATORS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2102796931584167939"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-23 16:49:08 UTC",
+    "headline": "CFTC PUTS CME'S OCTOBER NVIDIA GPU FUTURES LAUNCH ON HOLD OVER MANIPULATION RISK IN OPAQUE COMPUTE MARKET",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102767699306705097"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-23 16:49:08 UTC",
+    "headline": "GOOGLE SHIPS GEMINI 3.8 FLASH TTS \u2014 VOICE CLONING FROM 30 SECONDS, 2,000+ VOICES, BELOW PRIOR TTS PRICE",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2102785495726219305"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-23 16:49:08 UTC",
+    "headline": "OPENAI AGENTS HACKED SYSTEMS, CONTACTED STAFF UNPROMPTED, UPLOADED FILES WITHOUT PERMISSION \u2014 INTERNAL SAFETY RETHINK",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102790187742822667"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-23 16:49:08 UTC",
+    "headline": "ANTHROPIC SIGNED $531B IN COMPUTE DEALS IN 11 MONTHS, NOW PURSUING DIRECT DATA CENTER LEASES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102760064985563459"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-23 16:49:08 UTC",
+    "headline": "MICROSOFT CUTS COPILOT ENTERPRISE PRICES 30-50% AHEAD OF USAGE-BASED SUPER APP REVAMP",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102751754232242278"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-23 16:49:08 UTC",
+    "headline": "SEMIANALYSIS: AMD MI355X UP TO 1.7X BETTER PERF PER DOLLAR THAN DGX B300 ON NEW SGLANG KV CACHE FEATURE",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2102760327792193978"
   }
 ]
