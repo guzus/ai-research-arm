@@ -2,17 +2,18 @@
 slug: palantir
 title: Palantir Technologies
 type: entity
-aliases: ["Palantir", "PLTR", "Palantir Technologies Inc.", "Alex Karp"]
+aliases: ["Palantir", "PLTR", "Palantir Technologies Inc.", "Alex Karp", "Maven Smart System"]
 tags: [enterprise-ai, government, earnings, public-company, ai-sovereignty]
-description: US enterprise/government data-analytics company; restricted Anthropic's Fable for sensitive work over rolling 30-day safety logging, demanding an irrevocable customer-managed-logs option.
+description: US enterprise/government data-analytics company; a Bloomberg investigation said CENTCOM users of Palantir's Maven Smart System recommended a stale IRGC catalog entry, contributing to a strike on a Minab elementary school.
 created_at: 2026-08-04
-timestamp: 2026-09-15T00:00:00Z
+timestamp: 2026-09-23T00:00:00Z
 market:
   ticker: PLTR
   exchange: NASDAQ
   symbol: NASDAQ:PLTR
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "Palantir FY26Q2 8-K (accession 0001321655-26-000039), EX-99.1 press release", url: "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000039/a2026q2ex991pressrelease.htm", date: 2026-08-03}
@@ -71,6 +72,34 @@ labs" thesis this page opened on — a procurement
 bar, not a benchmark result (The Information via
 @kimmonismus, @rohanpaul_ai; ARA daily digest
 2026-09-15).
+
+## Pentagon cites AI overreliance in the Minab school strike (2026-09-23)
+
+- **A Bloomberg investigation reported that
+  CENTCOM users leaned on Palantir's Maven
+  Smart System**, which recommended a site
+  still cataloged as an IRGC facility from
+  outdated targeting data. Two Tomahawks
+  hit Shajarah Tayyebeh Elementary School
+  in Minab on the opening day of the Iran
+  war, killing more than **150 people**
+  including at least **123 children**.
+  Bloomberg's sources stack three failures
+  — overreliance, bad intelligence, and
+  stale satellite imagery — and report
+  civilian-harm-mitigation staffing down
+  **~90%** across DoD, with CENTCOM's team
+  cut from **10 people to 1**. Palantir
+  said it "is not responsible for the
+  underlying data nor identifying
+  intelligence deficiencies." Hacker News
+  carried the item at **314 points**. This
+  is the first named combat use of a
+  Palantir targeting stack in this wiki;
+  hold at investigation strength. See
+  [[federal-ai-policy]] and
+  [[agentic-ai-security]] (Bloomberg via
+  HN; ARA daily digest 2026-09-23).
 
 ## Open questions
 

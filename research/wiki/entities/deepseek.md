@@ -4,10 +4,11 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou Chinese frontier lab; shipped MIT-licensed V4.1 Flash (552B multimodal MoE) and was accused by Anthropic of silently relaying customer prompts to Opus, a day after CISA named it.
+description: Hangzhou Chinese frontier lab; China's internet regulator opened a reported probe after Anthropic alleged DeepSeek and Moonshot routed data to Claude, and The Information said DeepSeek is seeking 50B yuan at a 500B yuan valuation.
 created_at: 2026-06-04
-timestamp: 2026-09-11T00:00:00Z
+timestamp: 2026-09-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-05", path: research/digest/2026-09-05-digest.md}
@@ -294,6 +295,37 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   local-source bar. See [[federal-ai-policy]]
   (Anthropic, TechCrunch; ARA daily digest
   2026-09-11).
+
+## Reported China probe and a 50B-yuan raise rumor (2026-09-23)
+
+- **China's internet regulator opened a
+  reported probe into DeepSeek and
+  [[moonshot-kimi-k3|Moonshot]]**, examining
+  whether Chinese military, police and
+  state-owned corporate data was routed to
+  Claude in the US. The trigger is the
+  [[anthropic]] silent-relay allegation this
+  page logged on 2026-09-11. Hold at
+  reported strength: The Information is
+  singular, Anthropic is an interested
+  party that has made similar accusations
+  before, and no regulator notice or
+  company statement has surfaced. See
+  [[china-ai-regulation]] (The Information;
+  ARA daily digest 2026-09-23).
+- **The Information said DeepSeek is
+  seeking 50B yuan (~$7.5B) at a 500B
+  yuan valuation** to expand compute,
+  tying the expansion to a Huawei chip
+  bet. Single-source, round numbers, no
+  filing or named investor — and a
+  China-hardware analyst notes a prior
+  DeepSeek attempt on that hardware
+  failed. Stack it on the 2026-09-10
+  CITIC STAR item and the June ~$7.4B /
+  $50B+ rumor; none of those prints is a
+  closed round (The Information via
+  Twitter; ARA daily digest 2026-09-23).
 
 ## Open questions
 

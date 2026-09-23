@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; reported IPO slip from October to November 2026 to show Q3 results, against a ~$2T valuation discussion and $1.25B/month infrastructure costs.
+description: AI safety lab behind Claude; launched Claude Opus 5.5 at $4/$20 per MTok (AA Index 58) and alleged DeepSeek/Moonshot routed data to Claude, triggering a reported China probe.
 created_at: 2026-05-24
-timestamp: 2026-09-22T00:00:00Z
+timestamp: 2026-09-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
@@ -1956,3 +1957,49 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   the rival-lab financing print, not an
   Anthropic raise (The Decoder; ARA daily
   digest 2026-09-22).
+
+## Claude Opus 5.5 ships; a China probe follows the relay charge (2026-09-23)
+
+- **[[claude-opus-5-5|Claude Opus 5.5]] launched
+  at $4 / $20 per MTok** — **20% under
+  [[claude-opus-5|Opus 5]]** — with cache
+  reads at **$0.20** and output more than
+  **30% faster**. Artificial Analysis put it
+  first on the Intelligence Index at **58**,
+  the highest score it has measured. Vendor
+  table: **66.4% Terminal-Bench 4.0**, **1846
+  GDPval-AA v2.1**, ahead of Fable 5.1, Opus
+  5 and [[gpt-6|GPT-6 Astra]]. AA found cost
+  per task **level with Opus 5** because the
+  new model burns **~119k** output tokens per
+  index task against **~73k**. Hacker News
+  **#1 at 1,032 / 745**. Sonnet 5.5 and
+  Haiku 5.5 are promised "in the coming
+  weeks." [[openai]] shipped GPT-6 Sol and
+  Luna about five hours later. Model
+  substance is on [[claude-opus-5-5]]
+  (Anthropic, TechCrunch, The Verge, HN;
+  ARA daily digest 2026-09-23).
+- **China's internet regulator opened a
+  reported probe into [[deepseek|DeepSeek]]
+  and [[moonshot-kimi-k3|Moonshot]]** after
+  Anthropic alleged the two labs routed
+  sensitive user data to Claude without
+  customers' knowledge — the same silent-
+  relay charge this page logged on
+  2026-09-11. The digest holds it at
+  reported strength: single-source (The
+  Information), an interested accuser, no
+  regulator notice or company statement.
+  See [[china-ai-regulation]] (The
+  Information; ARA daily digest
+  2026-09-23).
+- **Nscale's IPO filing** puts roughly
+  **85% of a $103B contract book** in
+  [[microsoft]] (**$43.8B** through 2033)
+  and Anthropic (**$44.6B**, cancellable).
+  The British [[neocloud]] is targeting a
+  **$35B** NYSE listing and a **$3B**
+  raise. Concentration print, not a new
+  Anthropic commitment (TechCrunch; ARA
+  daily digest 2026-09-23).

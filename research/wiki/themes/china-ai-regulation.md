@@ -4,10 +4,11 @@ title: China AI Regulation
 type: theme
 aliases: ["China AI regulation", "China AI policy", "Chinese AI regulation", "AI companion law", "Interim Measures for the Administration of AI Anthropomorphic Interactive Services", "World AI Conference", "World AI Cooperation Organization"]
 tags: [policy, regulation, china, ai-governance, companion-ai, ai-diplomacy]
-description: The 2026 storyline of Beijing regulating AI on two axes — domestically (the AI companion law that forced Doubao and Qwen offline) and internationally (Xi Jinping's 2026-07-17 World AI Conference keynote pushing a Shanghai-headquartered World AI Cooperation Organization).
+description: Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.
 created_at: 2026-07-15
-timestamp: 2026-07-17T00:00:00Z
+timestamp: 2026-09-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
 ---
@@ -61,6 +62,28 @@ to cover Beijing's push for an alternative international AI-governance body.
   companion agents specifically, the way California's Transparency in
   Frontier AI Act became a template other US states could follow (see
   [[california-ai-regulation]]).
+
+## Reported DeepSeek / Moonshot probe (2026-09-23)
+
+- **China's internet regulator opened a
+  reported probe into [[deepseek|DeepSeek]]
+  and [[moonshot-kimi-k3|Moonshot]]**,
+  examining whether Chinese military,
+  police and state-owned corporate data
+  was routed to Claude in the US. The
+  trigger is an [[anthropic]] allegation —
+  the same silent-relay charge logged on
+  those lab pages on 2026-09-11 — and no
+  regulator notice or company statement
+  has surfaced. Single-source (The
+  Information); hold at reported
+  strength. This is the first named
+  Beijing action on this page since the
+  July companion-agent law, and it is a
+  **data-export / national-security**
+  inquiry rather than a consumer-product
+  design mandate (The Information; ARA
+  daily digest 2026-09-23).
 
 ## Open questions
 

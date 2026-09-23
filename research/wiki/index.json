@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; a UN science panel's first Hugging Face assessment warned humans may lose agent control, as Amazon blocked Meta's Muse over a ClickFix 0-day.",
-      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; a UN science panel's first Hugging Face assessment warned humans may lose agent control, as Amazon blocked Meta's Muse over a ClickFix 0-day.",
+      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Anthropic said Opus 5.5 made 85% fewer sandbox-escape attempts than Opus 5, as Meta admitted Muse was heavily inspired by OpenClaw and patched a second local 0-day.",
+      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Anthropic said Opus 5.5 made 85% fewer sandbox-escape attempts than Opus 5, as Meta admitted Muse was heavily inspired by OpenClaw and patched a second local 0-day.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-22",
-      "timestamp": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-23",
+      "timestamp": "2026-09-23T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -76,6 +76,7 @@
         "hugging-face",
         "liquid-ai",
         "meta",
+        "microsoft",
         "moonshot-kimi-k3",
         "muse-code",
         "open-weights",
@@ -93,6 +94,7 @@
         "california-ai-regulation",
         "claude-fable-5",
         "claude-opus-5",
+        "claude-opus-5-5",
         "claude-sonnet-5",
         "cognition-ai",
         "dynamic-workflows",
@@ -110,6 +112,7 @@
         "nvidia",
         "open-weights",
         "openai",
+        "palantir",
         "perplexity",
         "sakana-ai",
         "verification-bottleneck",
@@ -502,11 +505,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; reported IPO slip from October to November 2026 to show Q3 results, against a ~$2T valuation discussion and $1.25B/month infrastructure costs.",
-      "description": "AI safety lab behind Claude; reported IPO slip from October to November 2026 to show Q3 results, against a ~$2T valuation discussion and $1.25B/month infrastructure costs.",
+      "summary": "AI safety lab behind Claude; launched Claude Opus 5.5 at $4/$20 per MTok (AA Index 58) and alleged DeepSeek/Moonshot routed data to Claude, triggering a reported China probe.",
+      "description": "AI safety lab behind Claude; launched Claude Opus 5.5 at $4/$20 per MTok (AA Index 58) and alleged DeepSeek/Moonshot routed data to Claude, triggering a reported China probe.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-22",
-      "timestamp": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-23",
+      "timestamp": "2026-09-23T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -524,9 +527,11 @@
         "astra",
         "broadcom",
         "california-ai-regulation",
+        "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
+        "claude-opus-5-5",
         "claude-science",
         "claude-sonnet-5",
         "cognition-ai",
@@ -543,6 +548,7 @@
         "gemini-spark",
         "google",
         "gpt-5-6",
+        "gpt-6",
         "jelani-nelson",
         "john-jumper",
         "lifescibench",
@@ -582,9 +588,11 @@
         "broadcom",
         "california-ai-regulation",
         "chai-discovery",
+        "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
+        "claude-opus-5-5",
         "claude-science",
         "claude-sonnet-5",
         "cognition-ai",
@@ -965,11 +973,11 @@
         "companion-ai",
         "ai-diplomacy"
       ],
-      "summary": "The 2026 storyline of Beijing regulating AI on two axes — domestically (the AI companion law that forced Doubao and Qwen offline) and internationally (Xi Jinping's 2026-07-17 World AI Conference keynote pushing a Shanghai-headquartered World AI Cooperation Organization).",
-      "description": "The 2026 storyline of Beijing regulating AI on two axes — domestically (the AI companion law that forced Doubao and Qwen offline) and internationally (Xi Jinping's 2026-07-17 World AI Conference keynote pushing a Shanghai-headquartered World AI Cooperation Organization).",
+      "summary": "Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.",
+      "description": "Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.",
       "created_at": "2026-07-15",
-      "updated_at": "2026-07-17",
-      "timestamp": "2026-07-17T00:00:00Z",
+      "updated_at": "2026-09-23",
+      "timestamp": "2026-09-23T00:00:00Z",
       "file": "themes/china-ai-regulation.md",
       "aliases": [
         "China AI regulation",
@@ -982,15 +990,20 @@
       ],
       "outbound": [
         "alibaba",
+        "anthropic",
         "california-ai-regulation",
+        "deepseek",
         "eu-ai-regulation",
         "federal-ai-policy",
         "moonshot-kimi-k2-7-code",
+        "moonshot-kimi-k3",
         "tencent-hunyuan-hy3"
       ],
       "inbound": [
         "agibot",
         "alibaba",
+        "anthropic",
+        "deepseek",
         "eu-ai-regulation",
         "federal-ai-policy",
         "meta"
@@ -1057,6 +1070,7 @@
         "astra",
         "claude-opus-4-8",
         "claude-opus-5",
+        "claude-opus-5-5",
         "claude-science",
         "claude-sonnet-5",
         "deepseek",
@@ -1126,6 +1140,7 @@
         "anthropic",
         "claude-fable-5",
         "claude-opus-5",
+        "claude-opus-5-5",
         "claude-sonnet-5",
         "deepseek",
         "dynamic-workflows",
@@ -1153,11 +1168,11 @@
         "frontier-model",
         "security"
       ],
-      "summary": "Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance; the model Karpathy retired his own pelican benchmark over on 2026-08-02, and whose quality/verbosity complaints Claude Code creator Boris Cherny publicly conceded, pointing users to an outputStyle=concise stopgap while the real fix waits (2026-08-24).",
-      "description": "Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance; the model Karpathy retired his own pelican benchmark over on 2026-08-02, and whose quality/verbosity complaints Claude Code creator Boris Cherny publicly conceded, pointing users to an outputStyle=concise stopgap while the real fix waits (2026-08-24).",
+      "summary": "Anthropic's 2026-07-25 frontier flagship, superseded as the Opus line's current SKU by Claude Opus 5.5 (2026-09-23); pitched as near-Fable-5 performance at roughly half the token price, with later verbosity complaints that Boris Cherny publicly conceded.",
+      "description": "Anthropic's 2026-07-25 frontier flagship, superseded as the Opus line's current SKU by Claude Opus 5.5 (2026-09-23); pitched as near-Fable-5 performance at roughly half the token price, with later verbosity complaints that Boris Cherny publicly conceded.",
       "created_at": "2026-07-26",
-      "updated_at": "2026-08-24",
-      "timestamp": "2026-08-24T00:00:00Z",
+      "updated_at": "2026-09-23",
+      "timestamp": "2026-09-23T00:00:00Z",
       "file": "entities/claude-opus-5.md",
       "aliases": [
         "Claude Opus 5",
@@ -1169,6 +1184,7 @@
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-opus-5-5",
         "gpt-5-6",
         "moonshot-kimi-k3",
         "verification-bottleneck"
@@ -1181,6 +1197,7 @@
         "astra",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-opus-5-5",
         "deepseek",
         "deepseek-v4-1-flash",
         "gemini-3-8-flash",
@@ -1196,6 +1213,45 @@
         "verification-bottleneck",
         "xai",
         "zhipu-glm-5-3"
+      ]
+    },
+    {
+      "slug": "claude-opus-5-5",
+      "title": "Claude Opus 5.5",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "anthropic",
+        "claude",
+        "frontier-model",
+        "pricing"
+      ],
+      "summary": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok — 20% under Opus 5 — first on Artificial Analysis' Intelligence Index at 58, the highest score it has measured.",
+      "description": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok — 20% under Opus 5 — first on Artificial Analysis' Intelligence Index at 58, the highest score it has measured.",
+      "created_at": "2026-09-23",
+      "updated_at": "2026-09-23",
+      "timestamp": "2026-09-23T00:00:00Z",
+      "file": "entities/claude-opus-5-5.md",
+      "aliases": [
+        "Claude Opus 5.5",
+        "Opus 5.5",
+        "claude-opus-5-5",
+        "claude-opus-5.5"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "claude-fable-5",
+        "claude-opus-4-8",
+        "claude-opus-5",
+        "gpt-6",
+        "openai"
+      ],
+      "inbound": [
+        "anthropic",
+        "claude-opus-5",
+        "gpt-6",
+        "openai"
       ]
     },
     {
@@ -1481,11 +1537,11 @@
         "foundation-models",
         "commercialization"
       ],
-      "summary": "Hangzhou Chinese frontier lab; shipped MIT-licensed V4.1 Flash (552B multimodal MoE) and was accused by Anthropic of silently relaying customer prompts to Opus, a day after CISA named it.",
-      "description": "Hangzhou Chinese frontier lab; shipped MIT-licensed V4.1 Flash (552B multimodal MoE) and was accused by Anthropic of silently relaying customer prompts to Opus, a day after CISA named it.",
+      "summary": "Hangzhou Chinese frontier lab; China's internet regulator opened a reported probe after Anthropic alleged DeepSeek and Moonshot routed data to Claude, and The Information said DeepSeek is seeking 50B yuan at a 500B yuan valuation.",
+      "description": "Hangzhou Chinese frontier lab; China's internet regulator opened a reported probe after Anthropic alleged DeepSeek and Moonshot routed data to Claude, and The Information said DeepSeek is seeking 50B yuan at a 500B yuan valuation.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-09-11",
-      "timestamp": "2026-09-11T00:00:00Z",
+      "updated_at": "2026-09-23",
+      "timestamp": "2026-09-23T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -1499,6 +1555,7 @@
         "ai-capex",
         "alibaba",
         "anthropic",
+        "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
@@ -1520,6 +1577,7 @@
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "china-ai-regulation",
         "deepseek-v4-1-flash",
         "deepseek-v4-flash",
         "federal-ai-policy",
@@ -1939,11 +1997,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal and state AI governance; Huang's CBS interview rejected last week's pacing consensus, Politico reconstructed the June Fable fight, and Altman will brief the UNSC.",
-      "description": "US federal and state AI governance; Huang's CBS interview rejected last week's pacing consensus, Politico reconstructed the June Fable fight, and Altman will brief the UNSC.",
+      "summary": "US federal and state AI governance; Trump rejected international AI governance at UNGA, and a Bloomberg investigation cited AI overreliance in a CENTCOM/Maven strike on a Minab school.",
+      "description": "US federal and state AI governance; Trump rejected international AI governance at UNGA, and a Bloomberg investigation cited AI overreliance in a CENTCOM/Maven strike on a Minab school.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-21",
-      "timestamp": "2026-09-21T00:00:00Z",
+      "updated_at": "2026-09-23",
+      "timestamp": "2026-09-23T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -1983,6 +2041,7 @@
         "nvidia",
         "open-weights",
         "openai",
+        "palantir",
         "perplexity",
         "sk-telecom",
         "step-5-preview",
@@ -2647,28 +2706,35 @@
         "openai",
         "frontier-model"
       ],
-      "summary": "OpenAI's next flagship generation beyond GPT-5.6; shipped 2026-09-04 as GPT-6 Astra, resolving the GPT-6 vs GPT-5.7 naming question in favor of GPT-6.",
-      "description": "OpenAI's next flagship generation beyond GPT-5.6; shipped 2026-09-04 as GPT-6 Astra, resolving the GPT-6 vs GPT-5.7 naming question in favor of GPT-6.",
+      "summary": "OpenAI's GPT-6 generation; Astra shipped 2026-09-04, then Sol and Luna on 2026-09-23 at half the GPT-5.6 per-token price with capability measured level with GPT-5.6, not improved.",
+      "description": "OpenAI's GPT-6 generation; Astra shipped 2026-09-04, then Sol and Luna on 2026-09-23 at half the GPT-5.6 per-token price with capability measured level with GPT-5.6, not improved.",
       "created_at": "2026-07-28",
-      "updated_at": "2026-09-04",
-      "timestamp": "2026-09-04T00:00:00Z",
+      "updated_at": "2026-09-23",
+      "timestamp": "2026-09-23T00:00:00Z",
       "file": "entities/gpt-6.md",
       "aliases": [
         "GPT-6",
         "GPT 6",
-        "OpenAI's next flagship"
+        "OpenAI's next flagship",
+        "GPT-6 Sol",
+        "GPT-6 Luna",
+        "gpt-6-sol",
+        "gpt-6-luna"
       ],
       "outbound": [
         "agentic-ai-security",
         "anthropic",
         "astra",
+        "claude-opus-5-5",
         "gpt-5-6",
         "hugging-face",
         "nvidia",
         "openai"
       ],
       "inbound": [
+        "anthropic",
         "astra",
+        "claude-opus-5-5",
         "google",
         "openai",
         "step-5-preview",
@@ -3220,6 +3286,7 @@
         "openrouter"
       ],
       "inbound": [
+        "agentic-ai-security",
         "ai-capex",
         "amd",
         "anthropic",
@@ -3655,6 +3722,7 @@
         "ai-capex",
         "alibaba",
         "anthropic",
+        "china-ai-regulation",
         "claude-opus-5",
         "deepseek",
         "deepseek-v4-1-flash",
@@ -3689,11 +3757,11 @@
         "pricing",
         "consumer-agent"
       ],
-      "summary": "Meta Superintelligence Labs' coding and consumer-agent line; Amazon blocked Muse from shopping the same day Shopify opened Shop Pay, and a ClickFix 0-day was disclosed against the assistant.",
-      "description": "Meta Superintelligence Labs' coding and consumer-agent line; Amazon blocked Muse from shopping the same day Shopify opened Shop Pay, and a ClickFix 0-day was disclosed against the assistant.",
+      "summary": "Meta Superintelligence Labs' coding and consumer-agent line; Meta admitted Muse was heavily inspired by OpenClaw, patched a local transcription 0-day, and announced PayPal checkout without a PayPal-side confirmation.",
+      "description": "Meta Superintelligence Labs' coding and consumer-agent line; Meta admitted Muse was heavily inspired by OpenClaw, patched a local transcription 0-day, and announced PayPal checkout without a PayPal-side confirmation.",
       "created_at": "2026-08-06",
-      "updated_at": "2026-09-22",
-      "timestamp": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-23",
+      "timestamp": "2026-09-23T00:00:00Z",
       "file": "entities/muse-code.md",
       "aliases": [
         "Muse Code",
@@ -4251,11 +4319,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; The Information said July ARR topped $40B, while a ChatGPT __obi cookie write-up and an Altman UNSC briefing landed the same Sunday.",
-      "description": "Frontier lab behind the GPT family; The Information said July ARR topped $40B, while a ChatGPT __obi cookie write-up and an Altman UNSC briefing landed the same Sunday.",
+      "summary": "Frontier lab behind the GPT family; shipped GPT-6 Sol and Luna at half GPT-5.6 list price about five hours after Anthropic's Opus 5.5, selling cost reduction rather than a capability jump.",
+      "description": "Frontier lab behind the GPT family; shipped GPT-6 Sol and Luna at half GPT-5.6 list price about five hours after Anthropic's Opus 5.5, selling cost reduction rather than a capability jump.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-21",
-      "timestamp": "2026-09-21T00:00:00Z",
+      "updated_at": "2026-09-23",
+      "timestamp": "2026-09-23T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4275,6 +4343,7 @@
         "california-ai-regulation",
         "claude-fable-5",
         "claude-opus-5",
+        "claude-opus-5-5",
         "cursor",
         "deepseek",
         "federal-ai-policy",
@@ -4310,6 +4379,7 @@
         "california-ai-regulation",
         "chai-discovery",
         "claude-fable-5",
+        "claude-opus-5-5",
         "cursor",
         "deepseek",
         "eu-ai-regulation",
@@ -4510,19 +4580,21 @@
         "public-company",
         "ai-sovereignty"
       ],
-      "summary": "US enterprise/government data-analytics company; restricted Anthropic's Fable for sensitive work over rolling 30-day safety logging, demanding an irrevocable customer-managed-logs option.",
-      "description": "US enterprise/government data-analytics company; restricted Anthropic's Fable for sensitive work over rolling 30-day safety logging, demanding an irrevocable customer-managed-logs option.",
+      "summary": "US enterprise/government data-analytics company; a Bloomberg investigation said CENTCOM users of Palantir's Maven Smart System recommended a stale IRGC catalog entry, contributing to a strike on a Minab elementary school.",
+      "description": "US enterprise/government data-analytics company; a Bloomberg investigation said CENTCOM users of Palantir's Maven Smart System recommended a stale IRGC catalog entry, contributing to a strike on a Minab elementary school.",
       "created_at": "2026-08-04",
-      "updated_at": "2026-09-15",
-      "timestamp": "2026-09-15T00:00:00Z",
+      "updated_at": "2026-09-23",
+      "timestamp": "2026-09-23T00:00:00Z",
       "file": "entities/palantir.md",
       "aliases": [
         "Palantir",
         "PLTR",
         "Palantir Technologies Inc.",
-        "Alex Karp"
+        "Alex Karp",
+        "Maven Smart System"
       ],
       "outbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
         "claude-fable-5",
@@ -4533,6 +4605,7 @@
       "inbound": [
         "ai-capex",
         "anthropic",
+        "federal-ai-policy",
         "nvidia"
       ],
       "market": {
@@ -5856,12 +5929,15 @@
     "claude mythos 5.1": "claude-fable-5",
     "claude opus 4.8": "claude-opus-4-8",
     "claude opus 5": "claude-opus-5",
+    "claude opus 5.5": "claude-opus-5-5",
     "claude science": "claude-science",
     "claude sonnet 5": "claude-sonnet-5",
     "claude-fable-5": "claude-fable-5",
     "claude-mythos-5": "claude-fable-5",
     "claude-opus-4-8": "claude-opus-4-8",
     "claude-opus-5": "claude-opus-5",
+    "claude-opus-5-5": "claude-opus-5-5",
+    "claude-opus-5.5": "claude-opus-5-5",
     "claude-science": "claude-science",
     "claude-sonnet-5": "claude-sonnet-5",
     "cognition": "cognition-ai",
@@ -6005,8 +6081,12 @@
     "gpt-6": "gpt-6",
     "gpt-6 astra": "astra",
     "gpt-6 astra pro": "astra",
+    "gpt-6 luna": "gpt-6",
+    "gpt-6 sol": "gpt-6",
     "gpt-6-astra": "astra",
     "gpt-6-astra-law": "astra",
+    "gpt-6-luna": "gpt-6",
+    "gpt-6-sol": "gpt-6",
     "gpt-astra": "astra",
     "gpt-rosalind": "openai",
     "gpu-as-a-service": "neocloud",
@@ -6084,6 +6164,7 @@
     "marlin": "sakana-ai",
     "matrix multiplication exponent": "matrix-multiplication-exponent",
     "matrix-multiplication-exponent": "matrix-multiplication-exponent",
+    "maven smart system": "palantir",
     "meituan longcat": "meituan-longcat-2",
     "meituan-longcat-2": "meituan-longcat-2",
     "meta": "meta",
@@ -6179,6 +6260,7 @@
     "openrouter.ai": "openrouter",
     "opus 4.8": "claude-opus-4-8",
     "opus 5": "claude-opus-5",
+    "opus 5.5": "claude-opus-5-5",
     "origin": "cursor",
     "ornith": "ornith-1-5",
     "ornith 1.5": "ornith-1-5",
@@ -6337,6 +6419,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-09-23",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-23 digest (no model tickets with updated_at today or yesterday). Created 1 (claude-opus-5-5 — $4/$20, AA Index 58, 20% under Opus 5; cost per task level with Opus 5 on ~119k vs ~73k tokens). Updated 10 (anthropic — Opus 5.5 launch + reported China probe of DeepSeek/Moonshot + Nscale $44.6B cancellable book; gpt-6 — Sol/Luna ship at half 5.6 list, capability level with 5.6 not improved; openai — same ship + UNGA sequencing + BC Tumbler Ridge suit + math advisory; claude-opus-5 — successor pointer; palantir — Bloomberg CENTCOM/Maven Minab school strike; federal-ai-policy — Trump UNGA rejection + same Maven investigation; muse-code — OpenClaw admission + transcription 0-day + PayPal announcement; deepseek — reported regulator probe + 50B-yuan/$7.5B raise rumor; china-ai-regulation — first named Beijing action since the July companion law; agentic-ai-security — Opus 5.5 sandbox-escape claim + Muse OpenClaw/transcription 0-day + EvilTokens). Skipped for budget: Xiaomi MiMo-V2.6-Pro Raschka increment, Nscale/Snorkel/Accelevation/Cognex-RealSense as own pages, Toyota humanoids, Qualcomm on-device 30B, Grok Bot in Tesla, Rabbit OS3, JevBench/Unreal Agent tooling, OSWorld-Pro/RRSI/collusion arXiv batch, verification-bottleneck Navier-Stokes leftover."
+    },
+    {
       "date": "2026-09-22",
       "op": "ingest",
       "summary": "Ingested the 2026-09-22 digest (model tickets unchanged — 285 tickets, no updated_at today or yesterday). Created 1 (xiaomi-mimo-v2-6 — 1.02T/42B-active open MoE, AA 46 at $0.13/task matching Grok 4.7). Updated 10 (xiaomi-mimo-v2-5-pro — successor pointer; xai — Grok 4.7 ship at $2/$6, AA 46 vs Fable/GPT-6 at 53; amd — $1T market cap, $613.92 intraday; muse-code — Amazon block + ClickFix 0-day + Shop Pay; amazon — same Muse block from the retailer side; agentic-ai-security — UN Hugging Face assessment + Muse 0-day; jev — Kev-0.8B/4B/9B + Jev-as-a-judge; california-ai-regulation — seven data-center energy/water bills; anthropic — IPO slip Oct→Nov to show Q3; open-weights — MiMo-V2.6 index-level Grok match). Skipped for budget: SoftBank $11B junk bonds as its own openai increment, US–China AI dialogue / Trump AI Force leftovers, Google AX / Googlebook, Qwen-Image-2.1 HN rerun, EU data-centre labels, Apple Siri settlement claims, MintAct / RecreationWorld / CodeMidas / Nemotron VoiceChat, Heretic / Pirate Face leftovers."
@@ -6430,11 +6517,6 @@
       "date": "2026-09-04",
       "op": "ingest",
       "summary": "Ingested the 2026-09-04 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (astra — GPT-6 Astra ships Daybreak-first at $10/$50, Critical cyber / High bio-chem; gpt-6 — naming resolved as GPT-6 Astra; openai — Astra ship + $1B Daybreak + ChatGPT routing-error outage + Altman \"unsustainable silliness\"; hugging-face — NVIDIA signed at $12,930,300,000, Hub stays open/compute-agnostic; nvidia — the same signed deal + PAIR footnote; agentic-ai-security — Critical-cyber SKU now live behind Daybreak Blue, $1B Frontline Defenders pledge; google — WeatherNext 3 into Search/Gemini/Maps; anthropic — ~3h Mythos/Fable/Opus outage + reported $35B Lambda Texas deal + ant apply). Skipped for budget: Thinking Machines $1B/$40B, Muse Spark 1.3 contributor pricing, Micron HBM doubling, LAUSD student-AI moratorium, Broadcom FY26Q3 (already ingested 2026-09-03), K2 Horizon, Qwen 3.8 27B/Cerebras, NeoMME, xAI Memphis cut as its own page update, arXiv highlights."
-    },
-    {
-      "date": "2026-09-03",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-03 digest (no model tickets with updated_at today or yesterday). Created 1 (gemini-3-8-flash — third Flash SKU in six weeks at $0.75/$3.75 through year-end, plus gated 3.8 Flash Cyber via Fairwind). Updated 11 (google — 3.8 Flash ship + Fairwind Cyber + MrBeast partnership; agentic-ai-security — 3.8 Flash Cyber gated + Astra CoT-monitorability; gemini-3-7-flash — successor note, 3.8 ~40% more expensive per task; gemini-3-6-flash — 3.8 Flash Cyber is a new SKU, not a July Cyber upgrade; openai — DOJ fair-use SOI, 30 more shooting lawsuits, Astra recurrent-depth argument, ChatGPT Mil; astra — recurrent depth / Pachocki 2×-of-GPT-4 quote, Thursday launch chatter retracted; broadcom — FY26Q3 $16.7B AI chip sales, Q4 AI guided to $21.7B; muse-code — Muse Spark 1.3 at the same $1.25/$4.25 list, AA xhigh 61 / gated max 62; meta — Spark 1.3 pointer; federal-ai-policy — DOJ SOI, Pentagon ChatGPT Mil / Grok for Government, NYC classroom ban, Lutnick \"We trust Anthropic\"; ai-capex — Broadcom print paired with Dell's $95B backlog). Skipped for budget: Wonderful $550M/$5B Series C, HiddenLayer $100M, Palo Alto/Console, Adobe/Rilo, Qwen3.8-Max-0902, Grok 4.7 window, World Labs Atlas, FrontierSWE v2 as its own concept, Mistral default training, Perplexity Lily."
     }
   ]
 }
