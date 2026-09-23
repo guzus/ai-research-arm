@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-23
+
+TOP STORIES:
+• Anthropic launched Claude Opus 5.5 at $4/$20 per MTok, first on AA Intelligence Index at 58
+• OpenAI shipped GPT-6 Sol and Luna at half price - independent evals say capability is flat, not improved
+• Pentagon review reportedly blames AI overreliance (Palantir Maven) for the Minab school strike
+
+KEY NUMBERS:
+• Opus 5.5: 20% list price cut, but 1.6x output tokens - cost per task unchanged
+• Sol $2/$10, Luna $0.10/$0.50 (50% off 5.6 pricing); Sol down ~100 Elo on GDPval-AA
+• Snorkel AI raised $350M Series E, valuation tripled to $3.5B
+
+TRENDING: Opus 5.5 hit #1 on Hacker News (1,032 points, 745 comments), with Sol/Luna at #2
+
+Full digest on GitHub.
