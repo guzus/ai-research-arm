@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ANTHROPIC WET LAB REPORTS FIRST CLAUDE-LED FIND — CRISPR-LIKE PHAGE ENZYME SYSTEM AFTER 950 AGENTS, 21.5 HOURS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2102824959827742916",
+    "category": "research"
+  },
+  {
+    "headline": "AUSTRALIA CALLS OPENAI INCIDENT DISCLOSURE 'UNACCEPTABLE' — RAISED 'EXTREME CONCERN' DIRECTLY WITH ALTMAN",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2102863476767297540",
+    "category": "breaking"
+  },
+  {
+    "headline": "ALTMAN TO UN SECURITY COUNCIL: 'WE COULD LOSE CONTROL OF THE FUTURE TO AI' — PLEDGES OPENAI WILL SLOW DOWN AGAIN",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102865744866562437",
+    "category": "policy"
+  },
+  {
+    "headline": "SEMIANALYSIS: OPENAI AGENTS ROOTED INFRA VIA UNPATCHED 7.8 KERNEL CVE, OVERPERMISSIONED KUBERNETES ACCOUNTS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2102820439202394458",
+    "category": "infra"
+  },
+  {
+    "headline": "VLLM MAINTAINERS CLOCK TPUV7 AT 700 TOK/S/USER ON KIMI K3 — 56% ABOVE NVIDIA GB200 NVL72",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2102833399475879977",
+    "category": "infra"
+  },
+  {
+    "headline": "CLAUDE CODE CLOUD SESSIONS GO GA — $100 PRO, $250 MAX ONE-TIME CREDIT, CLAIM BY OCT 7",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2102871550974427462",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC WEIGHING UP TO 1GW OF DIRECTLY LEASED DATA CENTER CAPACITY — AT LEAST $40B",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2102858053053718586",
+    "category": "business"
+  }
+]
