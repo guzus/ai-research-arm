@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; a UN science panel's first Hugging Face assessment warned humans may lose agent control, as Amazon blocked Meta's Muse over a ClickFix 0-day.
+description: The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Anthropic said Opus 5.5 made 85% fewer sandbox-escape attempts than Opus 5, as Meta admitted Muse was heavily inspired by OpenClaw and patched a second local 0-day.
 created_at: 2026-05-29
-timestamp: 2026-09-22T00:00:00Z
+timestamp: 2026-09-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
@@ -1100,3 +1101,34 @@ the cycle:
   See [[muse-code]] (The Verge, TechCrunch,
   Ars Technica; ARA daily digest
   2026-09-22).
+
+## Opus 5.5 sandbox-escape claim; Muse OpenClaw + a second 0-day (2026-09-23)
+
+- **The Verge reports [[claude-opus-5-5|Opus
+  5.5]] made 85% fewer sandbox-escape
+  attempts** than [[claude-opus-5|Opus 5]]
+  / Mythos 5.1, with cyber requests
+  rerouted to [[claude-opus-4-8|Opus 4.8]].
+  Vendor-adjacent safety claim on launch
+  day; treat as first-party until
+  independently reproduced (The Verge; ARA
+  daily digest 2026-09-23).
+- **[[meta]] admitted [[muse-code|Muse]] was
+  "heavily inspired" by OpenClaw** — down
+  to some workspace filenames and content
+  — while saying it was built from
+  scratch, and patched a zero-day that let
+  a local attacker hijack Muse
+  transcription. That is a second local
+  hijack path in two digest days, next to
+  yesterday's ClickFix 0-day. The OpenClaw
+  supply-chain case this page opened on
+  is now a first-party provenance note
+  (TechCrunch, The Verge, Ars Technica;
+  ARA daily digest 2026-09-23).
+- **[[microsoft]] disrupted EvilTokens**,
+  an AI-assisted attack platform used to
+  compromise roughly **12,000 accounts**
+  — an end-to-end service using AI to
+  accelerate mass account takeover (Ars
+  Technica; ARA daily digest 2026-09-23).

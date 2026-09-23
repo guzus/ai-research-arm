@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; The Information said July ARR topped $40B, while a ChatGPT __obi cookie write-up and an Altman UNSC briefing landed the same Sunday.
+description: Frontier lab behind the GPT family; shipped GPT-6 Sol and Luna at half GPT-5.6 list price about five hours after Anthropic's Opus 5.5, selling cost reduction rather than a capability jump.
 created_at: 2026-05-30
-timestamp: 2026-09-21T00:00:00Z
+timestamp: 2026-09-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
@@ -1719,6 +1720,55 @@ materially reshape how the lab is positioned heading into its IPO window:
   Do not treat GPT-6-Sol / Kimi K3.1 YouTube
   titles as first-party ships (ARA daily
   digest 2026-09-21).
+
+## GPT-6 Sol and Luna ship; UNGA, a BC suit, and a math advisory (2026-09-23)
+
+- **[[gpt-6|GPT-6 Sol and Luna]] shipped**
+  (`gpt-6-sol` / `gpt-6-luna`) at half the
+  per-token price of their [[gpt-5-6|5.6]]
+  predecessors — **$2 / $10** and **$0.10 /
+  $0.50** — about five hours after
+  [[anthropic]] took the morning with
+  [[claude-opus-5-5|Opus 5.5]]. Trained with
+  "similar methods" to [[astra|GPT-6 Astra]].
+  Rollout is ChatGPT Work and Codex for
+  Plus/Pro/Business/Enterprise/Edu; Luna
+  is in the desktop app for Free and Go.
+  A **90% cached-input discount** is named
+  as new. The models are **not yet in
+  Chat**. Hacker News **#2 at 993 / 535**.
+  Independent measurement found **capability
+  level with GPT-5.6, not improved**. Family
+  substance is on [[gpt-6]] (OpenAI,
+  TechCrunch, The Decoder, Artificial
+  Analysis, HN; ARA daily digest
+  2026-09-23).
+- **Trump rejected international AI
+  governance at UNGA** fifteen minutes
+  after OpenAI published a standards
+  proposal arguing the US should lead on
+  measurement and oversight of recursive
+  self-improvement. Sequencing is the
+  fact; whether any EO or OMB memo
+  implements the "super intelligence"
+  terminology change is still open. See
+  [[federal-ai-policy]] (The Verge, The
+  Decoder; ARA daily digest 2026-09-23).
+- **British Columbia sued OpenAI** over
+  the Tumbler Ridge shooting, seeking
+  funds for a new school and access to
+  the shooter's ChatGPT logs (Ars
+  Technica; ARA daily digest 2026-09-23).
+- **OpenAI convened an advisory group of
+  elite mathematicians** after an internal
+  model reportedly resolved 100+ long-
+  standing open problems. Researchers
+  told The Verge it is a reasonable first
+  step with unanswered remit and process
+  questions; research pace is explicitly
+  excluded from the group's mandate. See
+  [[verification-bottleneck]] (The Verge;
+  ARA daily digest 2026-09-23).
 
 ## Open questions
 

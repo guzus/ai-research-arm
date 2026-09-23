@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; Huang's CBS interview rejected last week's pacing consensus, Politico reconstructed the June Fable fight, and Altman will brief the UNSC.
+description: US federal and state AI governance; Trump rejected international AI governance at UNGA, and a Bloomberg investigation cited AI overreliance in a CENTCOM/Maven strike on a Minab school.
 created_at: 2026-06-03
-timestamp: 2026-09-21T00:00:00Z
+timestamp: 2026-09-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
@@ -1356,6 +1357,46 @@ footing for the first time in the cycle.
   an explicit antitrust-waiver ask — essay,
   not a filing (HN; ARA daily digest
   2026-09-21).
+
+## UNGA rejection and a CENTCOM/Maven investigation (2026-09-23)
+
+- **Trump rejected international AI
+  governance at the UN General Assembly**,
+  saying the US "rejects any scheme for
+  globalist control" of AI and that all
+  US government documents will henceforth
+  use "super intelligence" instead of
+  "artificial intelligence." The
+  sequencing matters: [[openai]] published
+  a standards proposal — arguing the US
+  should lead on measurement and oversight
+  of recursive self-improvement — fifteen
+  minutes earlier. Whether any executive
+  order or OMB memo actually implements
+  the terminology change is still open
+  (The Verge, The Decoder; ARA daily
+  digest 2026-09-23).
+- **A Pentagon review reportedly found AI
+  overreliance contributed to the Minab
+  school strike.** Per Bloomberg, two
+  Tomahawks hit Shajarah Tayyebeh
+  Elementary School on the opening day of
+  the Iran war, killing more than **150
+  people** including at least **123
+  children**, after [[palantir]]'s Maven
+  Smart System recommended a site still
+  cataloged as an IRGC facility from
+  outdated data. Sources stack
+  overreliance, bad intelligence, and
+  stale satellite imagery, and report
+  civilian-harm-mitigation staffing down
+  **~90%** across DoD (CENTCOM **10 → 1**).
+  Palantir said it is not responsible for
+  the underlying data. Investigation
+  strength, not a completed inquiry. See
+  [[palantir]] and [[agentic-ai-security]]
+  (Bloomberg via HN; ARA daily digest
+  2026-09-23).
 
 ## Open questions
 

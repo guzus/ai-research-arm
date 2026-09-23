@@ -2,12 +2,13 @@
 slug: gpt-6
 title: GPT-6
 type: entity
-aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship"]
+aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna", "gpt-6-sol", "gpt-6-luna"]
 tags: [model-release, openai, frontier-model]
-description: OpenAI's next flagship generation beyond GPT-5.6; shipped 2026-09-04 as GPT-6 Astra, resolving the GPT-6 vs GPT-5.7 naming question in favor of GPT-6.
+description: OpenAI's GPT-6 generation; Astra shipped 2026-09-04, then Sol and Luna on 2026-09-23 at half the GPT-5.6 per-token price with capability measured level with GPT-5.6, not improved.
 created_at: 2026-07-28
-timestamp: 2026-09-04T00:00:00Z
+timestamp: 2026-09-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
   - {title: "ARA daily digest 2026-07-28", path: research/digest/2026-07-28-digest.md}
@@ -79,3 +80,45 @@ substance.
   numbers, the Daybreak $1B pledge, and the Critical/High ratings are
   on [[astra]] (OpenAI, The Verge, The Decoder; ARA daily digest
   2026-09-04).
+
+## GPT-6 Sol and Luna (2026-09-23)
+
+- **The Sol / Luna pair shipped** about five
+  hours after [[anthropic]]'s
+  [[claude-opus-5-5|Opus 5.5]], cutting API
+  prices **50%** against [[gpt-5-6|GPT-5.6]]
+  promotional pricing. List is **$2 / $10**
+  (Sol) and **$0.10 / $0.50** (Luna). They
+  were trained with "similar methods" to
+  [[astra]]. Rollout is ChatGPT Work and
+  Codex for Plus/Pro/Business/Enterprise/Edu;
+  Luna is in the desktop app for Free and
+  Go. A **90% cached-input discount** is
+  named as new. **Not yet in Chat.** Hacker
+  News **#2 at 993 points / 535 comments**
+  (OpenAI, TechCrunch, HN; ARA daily digest
+  2026-09-23).
+- **Independent measurement found no
+  capability jump.** Artificial Analysis
+  put Sol **level with GPT-5.6**. Sol's
+  cost per index task falls from **$1.99 to
+  $1.06** and Luna's from **$0.18 to $0.07**
+  — entirely from the price cut, since both
+  use slightly *more* output tokens. Sol's
+  Coding Agent Index is up **2 points**
+  (Terminal-Bench 4.0 **43% vs 37%**).
+  Measured regressions are on GDPval-AA
+  v2.1 (Sol down **~100 Elo**, Luna **~75**)
+  with incomplete deliverables as the
+  failure mode. Sol's AA-Omniscience
+  hallucination rate falls **92% → 60%**,
+  largely by declining more questions
+  (Artificial Analysis, The Decoder; ARA
+  daily digest 2026-09-23).
+- **The frontier race became a price war.**
+  Both this pair and Opus 5.5 sold cost
+  reduction rather than a capability jump,
+  and both showed list price is no longer
+  a proxy for what a model costs to run
+  (Ars Technica, Simon Willison, Artificial
+  Analysis; ARA daily digest 2026-09-23).

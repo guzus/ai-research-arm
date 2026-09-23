@@ -4,10 +4,11 @@ title: Muse Code (Muse Spark 1.3)
 type: entity
 aliases: ["Muse Code", "Muse Spark 1.2", "Muse Spark 1.3", "Meta Muse Code", "Muse Spark max", "Muse Spark 1.3 max", "Muse agent", "Meta Muse"]
 tags: [coding-agent, meta, terminal-agent, benchmarks, pricing, consumer-agent]
-description: Meta Superintelligence Labs' coding and consumer-agent line; Amazon blocked Muse from shopping the same day Shopify opened Shop Pay, and a ClickFix 0-day was disclosed against the assistant.
+description: Meta Superintelligence Labs' coding and consumer-agent line; Meta admitted Muse was heavily inspired by OpenClaw, patched a local transcription 0-day, and announced PayPal checkout without a PayPal-side confirmation.
 created_at: 2026-08-06
-timestamp: 2026-09-22T00:00:00Z
+timestamp: 2026-09-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
@@ -182,3 +183,35 @@ as one product; the maker is tracked on [[meta]] and the earlier
   window. Adoption print, not a capability
   print (TechCrunch; ARA daily digest
   2026-09-22).
+
+## OpenClaw admission, a transcription 0-day, and a PayPal announcement (2026-09-23)
+
+- **[[meta]] admitted Muse was "heavily
+  inspired" by OpenClaw**, conceding the
+  resemblance is not a coincidence — down
+  to some workspace filenames and content
+  — while saying it was built from
+  scratch. The OpenClaw supply-chain
+  story this wiki tracks on
+  [[agentic-ai-security]] is now a
+  first-party provenance note on the
+  product, not only a community
+  post-mortem (TechCrunch, The Verge, Ars
+  Technica; ARA daily digest 2026-09-23).
+- **Meta patched a zero-day that let a
+  local attacker hijack Muse
+  transcription.** Distinct from
+  yesterday's ClickFix-class 0-day
+  against the assistant. Two local
+  hijack paths in two digest days. See
+  [[agentic-ai-security]] (TechCrunch,
+  The Verge, Ars Technica; ARA daily
+  digest 2026-09-23).
+- **Alexandr Wang announced checkout
+  across all PayPal merchants worldwide**,
+  days after Shopify opened Shop Pay and
+  [[amazon]] blocked the agent. No
+  PayPal-side confirmation or date
+  exists yet — announcement strength
+  only (Twitter/@alexandr_wang; ARA
+  daily digest 2026-09-23).

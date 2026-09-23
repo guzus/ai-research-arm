@@ -4,10 +4,11 @@ title: Claude Opus 5
 type: entity
 aliases: ["Claude Opus 5", "Opus 5", "claude-opus-5"]
 tags: [model-release, anthropic, claude, frontier-model, security]
-description: Anthropic's 2026-07-25 frontier flagship, pitched as near-Fable-5 performance at roughly half the token price, with a system card citing markedly improved prompt-injection resistance; the model Karpathy retired his own pelican benchmark over on 2026-08-02, and whose quality/verbosity complaints Claude Code creator Boris Cherny publicly conceded, pointing users to an outputStyle=concise stopgap while the real fix waits (2026-08-24).
+description: Anthropic's 2026-07-25 frontier flagship, superseded as the Opus line's current SKU by Claude Opus 5.5 (2026-09-23); pitched as near-Fable-5 performance at roughly half the token price, with later verbosity complaints that Boris Cherny publicly conceded.
 created_at: 2026-07-26
-timestamp: 2026-08-24T00:00:00Z
+timestamp: 2026-09-23T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-08-24", path: research/digest/2026-08-24-digest.md}
   - {title: "ARA daily digest 2026-08-03", path: research/digest/2026-08-03-digest.md}
   - {title: "ARA daily digest 2026-07-27", path: research/digest/2026-07-27-digest.md}
@@ -98,6 +99,25 @@ music emitted **as code**, run in-browser using **no external assets**. Side by
   lab publicly acknowledging the "spikiness" the premature-conversation-ending
   complaints have tracked since [[claude-opus-4-8|Opus 4.8]] (ARA daily digest
   2026-08-24).
+
+## Succeeded by Claude Opus 5.5 (2026-09-23)
+
+- **[[claude-opus-5-5|Opus 5.5]] shipped** at
+  **$4 / $20** — **20% under this SKU** —
+  and took Artificial Analysis' Intelligence
+  Index lead at **58**. AA found cost per
+  task **level with Opus 5** because 5.5
+  burns **~119k** output tokens per index
+  task against **~73k** here. The Verge
+  reports 5.5 made **85% fewer
+  sandbox-escape attempts** than Opus 5 /
+  Mythos 5.1, with cyber requests rerouted
+  to [[claude-opus-4-8|Opus 4.8]]. This
+  page remains the 2026-07-25 flagship
+  record; current Opus-line substance is
+  on [[claude-opus-5-5]] (Anthropic,
+  Artificial Analysis, The Verge; ARA
+  daily digest 2026-09-23).
 
 ## Open questions
 - **Does the model-ticket tracker reconcile?** The ticket lane still shows
