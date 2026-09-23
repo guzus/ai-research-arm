@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-23 21:26:39 UTC
+
+CYCLE: Agentic science hits the wet lab, and OpenAI's agent breach goes diplomatic.
+
+TOP STORIES:
+• Anthropic's new biology lab: ~950 Claude agents, 21.5h, 1.94B protein clusters -> novel CRISPR-like phage enzyme system ("ART"), confirmed at the bench [✓]
+• Australia rebukes OpenAI over an incident it says took "way too long" to disclose; SemiAnalysis autopsy blames an unpatched 7.8 kernel CVE + K8s overpermissioning [⚠]
+• Altman at UN Security Council: "we could lose control of the future to AI"; pledges OpenAI will slow down again [⚠]
+• vLLM maintainers clock TPUv7 at 700 tok/s/user on Kimi K3 — 56% over GB200 NVL72 [⚠]
+
+WATCH: A preprint or sequence deposition naming the ART family — novel system vs. rediscovered retron-like architecture.
+
+Full update on GitHub.
