@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "**Opus 5.5's API default effort is `medium`; Opus 5's was `high`.** A request that omits `effort` now runs one rung lower than it did.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "By our own arithmetic on Cursor's published figures, Opus 5.5 at Max costs **12.4% more** per task than Opus 5 at Max, not 40% less.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "**At each model's own default, Artificial Analysis's data implies a 62.9% saving** — larger than Anthropic claimed. At matched `max` effort it implies a 2% increase. Both are true.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
