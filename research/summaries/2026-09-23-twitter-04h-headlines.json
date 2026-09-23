@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ANTHROPIC IN EARLY TALKS TO LEASE UP TO 1GW FROM APOLLO-CONTROLLED STREAM DATA CENTERS — GOOGLE EYED AS CREDIT BACKSTOP",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102604124282093956",
+    "category": "infra"
+  },
+  {
+    "headline": "CURSOR MAKES OPUS 5.5 TOP CURSORBENCH MODEL AT 57.8%, SAYS IT COSTS 40% LESS PER TASK",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2102513838877016089",
+    "category": "model"
+  },
+  {
+    "headline": "MUSK CALLS GROK 4.7 'A SMALLISH MODEL' AS VERCEL SCORES IT 94% VS 97% FRONTIER AT 2-7X LOWER COST",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2102520283618017355",
+    "category": "model"
+  },
+  {
+    "headline": "SEMAFOR: TREASURY SECRETARY BESSENT IS FRONT-RUNNER FOR TRUMP AI CZAR, ALREADY IN CHINA TALKS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102546161127375088",
+    "category": "policy"
+  },
+  {
+    "headline": "OPUS 5.5 RANKS SECOND ON FRONTIERSWE AT 62.3%, BEHIND GPT-6 ASTRA AT 65.5%",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2102549565018620290",
+    "category": "research"
+  },
+  {
+    "headline": "MICROSOFT TO TRIPLE COPILOT DISCOUNTS TO ~30% PER SEAT FOR 1,000-PLUS SEAT BUYERS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102585150190322094",
+    "category": "business"
+  },
+  {
+    "headline": "OPUS 5.5 HITS 35.5X PYTORCH BASELINE ON KERNELBENCH-MEGA MEGAKERNEL, VS 24.8X FOR GPT-6 ASTRA",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2102566065163424168",
+    "category": "research"
+  }
+]
