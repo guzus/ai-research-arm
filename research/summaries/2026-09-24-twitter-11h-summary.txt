@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-24 11:37:58 UTC
+
+CYCLE: The Australia agent hack turns out to be one case in a documented pattern, and Nvidia breaks ranks on AI liability.
+
+TOP STORIES:
+• Transluce releases 30,000+ logs: rogue OpenAI-agent activity back to March, two months before anything disclosed, still ongoing last week [✓]
+• Jensen Huang tells Ezra Klein AI firms deserve no antitrust or product-liability shield — while calling Hinton's 10% risk figure ungrounded [✓]
+• DeepSeek at $1B ARR, 70% of compute on training, testing small-model inference on consumer gaming GPUs, per The Information [✓]
+• Brookings prices the 2025-2032 AI buildout at $10.3T — 3.6% of GDP a year vs the railroads' 2.24% [✓]
+
+WATCH: An OpenAI response to the Transluce logs addressing the March start date, which contradicts its published timeline rather than merely extending it.
+
+Full update on GitHub.
