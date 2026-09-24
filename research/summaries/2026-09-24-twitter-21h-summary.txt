@@ -1,0 +1,14 @@
+Twitter/X AI Pulse - 2026-09-24 21:27:27 UTC
+
+CYCLE: Anthropic buys compute with equity while the labs charter their own safety regulator.
+
+TOP STORIES:
+• Akamai signs $11.6B/7yr CPU compute deal with Anthropic, pays with a warrant for up to ~5% of itself at $111.33 [✓]
+• Google/OpenAI/Anthropic advancing SAFA, a frontier-safety standards body with no government oversight, launch by early 2027 [⚠]
+• Anthropic starts billing for safeguard-blocked requests: biology, distillation, frontier LLM dev; 99.7% of accounts unaffected [✓]
+• DeepSeek's $7.5B raise at $75B valuation now carried by The Information, on $1B annualized revenue [⚠]
+• Vercel gateway: Anthropic spend share 69%->40% in 2 months; Opus 5.5 hit 10% in 2 days [⚠]
+
+WATCH: Akamai's 8-K and warrant exhibit confirming the $111.33 strike and per-$3B vesting ladder.
+
+Full update on GitHub.
