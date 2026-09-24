@@ -1,5 +1,5 @@
 {
-  "article_count": 84,
+  "article_count": 85,
   "articles": [
     {
       "claim_count": 18,
@@ -817,6 +817,16 @@
       "stem": "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per",
       "tags": [],
       "title": "Anthropic said 40%, Cursor said 40%, Artificial Analysis said zero — all three measured the same curve"
+    },
+    {
+      "claim_count": 38,
+      "created_at": "2026-09-24T04:44:52Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "stem": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work"
     }
   ],
   "by_host": {
@@ -890,6 +900,9 @@
     ],
     "adaptyvbio.substack.com": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c9"
+    ],
+    "agglomerations.eig.org": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c32"
     ],
     "agibot.com": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c13"
@@ -1473,7 +1486,10 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c44",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c16",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c28",
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c29"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c29",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c11",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c12",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c16"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -1541,6 +1557,9 @@
     "baseten.co": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c24"
     ],
+    "bcg.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c29"
+    ],
     "bean.money": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c18"
     ],
@@ -1560,7 +1579,8 @@
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c14",
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c23",
       "2026-07-31T051841--situational-awareness-lp-collapse#c31",
-      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c15"
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c15",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c23"
     ],
     "bernoff.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c27"
@@ -1648,6 +1668,11 @@
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c47",
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-11"
     ],
+    "blog.janestreet.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c19",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c3"
+    ],
     "blog.kraken.com": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c21"
     ],
@@ -1699,7 +1724,8 @@
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c11",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c12",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c3",
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c4"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c4",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c22"
     ],
     "bloomingbit.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
@@ -1727,6 +1753,9 @@
     ],
     "buildfastwithai.com": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c25"
+    ],
+    "business-standard.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c29"
     ],
     "businessinsider.com": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c12",
@@ -1842,6 +1871,9 @@
     "centcom.mil": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c15"
     ],
+    "cepr.org": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c35"
+    ],
     "cerebras.ai": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c1",
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c11",
@@ -1903,6 +1935,9 @@
     ],
     "cims.nyu.edu": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c20"
+    ],
+    "cio.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c36"
     ],
     "citadelsecurities.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c13"
@@ -2048,6 +2083,9 @@
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c14",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c15"
     ],
+    "codeant.ai": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c15"
+    ],
     "coderabbit.ai": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c7"
     ],
@@ -2160,7 +2198,8 @@
     ],
     "coreweave.com": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c6",
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c21"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c21",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18"
     ],
     "corporate.vanguard.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c6"
@@ -2479,6 +2518,9 @@
     "digitalcommons.chapman.edu": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c11"
     ],
+    "digitaleconomy.stanford.edu": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c30"
+    ],
     "digitaltoday.co.kr": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c17",
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c19"
@@ -2602,6 +2644,12 @@
     "eeo.com.cn": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c20"
     ],
+    "efinancialcareers.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c9"
+    ],
+    "efinancialcareers.de": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c24"
+    ],
     "efts.sec.gov": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c5"
     ],
@@ -2716,6 +2764,9 @@
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c22",
       "2026-07-31T051841--situational-awareness-lp-collapse#c41",
       "2026-07-31T051841--situational-awareness-lp-collapse#c42"
+    ],
+    "entrepreneur.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c9"
     ],
     "epoch.ai": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c12",
@@ -2849,6 +2900,12 @@
     "fedscoop.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c12"
     ],
+    "feeds.simplecast.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c2"
+    ],
+    "fi-desk.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c22"
+    ],
     "fiercebiotech.com": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c17"
     ],
@@ -2939,6 +2996,9 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c8",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1"
     ],
+    "financemagnates.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c26"
+    ],
     "find-and-update.company-information.service.gov.uk": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c16"
     ],
@@ -3028,7 +3088,9 @@
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c3",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c7",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c37",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c38"
     ],
     "fortunebusinessinsights.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
@@ -3075,6 +3137,9 @@
     ],
     "geminicli.com": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c25"
+    ],
+    "getsmartresume.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c7"
     ],
     "gingerriver.com": [
       "2026-06-22T052035--zhipu-ai-glm#c2"
@@ -3277,6 +3342,9 @@
     ],
     "hhmi.org": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c38"
+    ],
+    "highereddive.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c34"
     ],
     "highshortinterest.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c6"
@@ -3580,6 +3648,11 @@
     "jamanetwork.com": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c22"
     ],
+    "janestreet.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c21",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c5",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c6"
+    ],
     "japanir.jp": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c14"
     ],
@@ -3748,11 +3821,18 @@
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c27",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c37"
     ],
+    "levels.fyi": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c10",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c8"
+    ],
     "lex.substack.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23"
     ],
     "lexisnexis.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c27"
+    ],
+    "libertystreeteconomics.newyorkfed.org": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c31"
     ],
     "lila.ai": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c42"
@@ -3899,7 +3979,10 @@
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c14",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c10",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c11",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c48"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c48",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c11",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c13",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c14"
     ],
     "mevwatch.info": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c17"
@@ -4033,7 +4116,8 @@
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15"
     ],
     "news.bloomberglaw.com": [
-      "2026-06-22T061332--frontier-ai-data-supply-chain#c15"
+      "2026-06-22T061332--frontier-ai-data-supply-chain#c15",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c27"
     ],
     "news.cgtn.com": [
       "2026-06-22T052035--zhipu-ai-glm#c27",
@@ -4349,6 +4433,9 @@
     "palisaderesearch.org": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c20"
     ],
+    "paloaltoonline.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c33"
+    ],
     "pandaily.com": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c17"
     ],
@@ -4475,6 +4562,13 @@
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c36",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c37"
     ],
+    "podcasts.apple.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c2",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c3"
+    ],
+    "podscan.fm": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c4"
+    ],
     "policylayer.com": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c30"
     ],
@@ -4524,7 +4618,8 @@
       "2026-06-24T160453--test-ornn-com-codex-2#C8",
       "2026-06-24T160453--test-ornn-com-codex-2#C9",
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c15",
-      "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c7"
+      "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c7",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17"
     ],
     "pro.stockalarm.io": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c21"
@@ -4697,6 +4792,9 @@
     "reuters.com": [
       "2026-07-20T050016--databricks-mid-2026#c1"
     ],
+    "reveliolabs.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c21"
+    ],
     "rfc-editor.org": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c22",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c23",
@@ -4766,6 +4864,12 @@
     "s21.q4cdn.com": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c4",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c35"
+    ],
+    "s3d.cmu.edu": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c34"
+    ],
+    "saastr.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c28"
     ],
     "sacra.com": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c13",
@@ -4918,7 +5022,8 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c19",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c30",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c31",
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c34"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c34",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18"
     ],
     "securitycompass.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
@@ -4971,6 +5076,10 @@
     "signalfire.com": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c23",
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c20"
+    ],
+    "signalsandthreads.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c20",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c4"
     ],
     "siliconangle.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c15",
@@ -5193,6 +5302,9 @@
     "swe-rebench.com": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c12"
     ],
+    "swebench.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c15"
+    ],
     "swescience.github.io": [
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c1",
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c2",
@@ -5301,6 +5413,9 @@
     ],
     "techi.com": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c2"
+    ],
+    "techinterview.org": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c25"
     ],
     "techmeme.com": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c26",
@@ -6023,7 +6138,8 @@
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c28",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c3",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c30",
-      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c1"
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c1",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c1"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -6141,6 +6257,9 @@
     ],
     "https://adaptyvbio.substack.com/p/protein-design-competition-results": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c9"
+    ],
+    "https://agglomerations.eig.org/p/looking-for-the-ladder": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c32"
     ],
     "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-51": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c20"
@@ -6715,6 +6834,10 @@
     "https://arxiv.org/abs/2502.18683": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c26"
     ],
+    "https://arxiv.org/abs/2503.14499": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c11",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c12"
+    ],
     "https://arxiv.org/abs/2503.16861": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c40"
     ],
@@ -6756,6 +6879,9 @@
     ],
     "https://arxiv.org/abs/2506.14074": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c17"
+    ],
+    "https://arxiv.org/abs/2507.09089": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c16"
     ],
     "https://arxiv.org/abs/2507.14417": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c8"
@@ -7252,6 +7378,15 @@
     "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c13"
     ],
+    "https://blog.janestreet.com/developer-education-at-jane-street-index": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c3"
+    ],
+    "https://blog.janestreet.com/getting-from-tested-to-battle-tested": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17"
+    ],
+    "https://blog.janestreet.com/i-design-with-claude-code-more-than-figma-now-index": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c19"
+    ],
     "https://blog.kraken.com/news/ink-mainnet-launch": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c21"
     ],
@@ -7390,6 +7525,9 @@
     "https://censys.com/blog/comfyui-servers-cryptomining-proxy-botnet": [
       "2026-08-04T171206--comfyui-company#c29"
     ],
+    "https://cepr.org/publications/dp20634": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c35"
+    ],
     "https://chainwire.org/2026/01/13/kbw-2026-returns-to-seoul-september-29-october-1-upbit-joins-as-main-sponsor": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c16"
     ],
@@ -7434,6 +7572,9 @@
     "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c23",
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c36"
+    ],
+    "https://codeant.ai/blogs/swe-bench-scores": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c15"
     ],
     "https://codes.findlaw.com/ca/penal-code/pen-sect-502": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c29"
@@ -7805,6 +7946,9 @@
     ],
     "https://digitalcommons.chapman.edu/cgi/viewcontent.cgi?article=1123&context=esi_working_papers": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c11"
+    ],
+    "https://digitaleconomy.stanford.edu/news/canariesaug26": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c30"
     ],
     "https://dinari.com/dshares": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c16"
@@ -8184,6 +8328,9 @@
     "https://fedscoop.com/anthropic-taps-microsoft-aws-teresa-carlson-lead-public-sector": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c12"
     ],
+    "https://feeds.simplecast.com/L9810DOa": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c2"
+    ],
     "https://finance.biggo.com/news/008b8951-ba3f-4f03-aaa6-1251f97d6d94": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
     ],
@@ -8397,8 +8544,14 @@
     "https://fortune.com/2025/10/29/character-ai-ban-children-teens-chatbots-regulatory-pressure-age-verification-online-harms": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c10"
     ],
+    "https://fortune.com/2025/12/16/aws-ceo-matt-garman-ai-displacing-junior-employees-dumbest-idea-amazon-layoffs": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c37"
+    ],
     "https://fortune.com/2026/02/02/jensen-huang-nvidia-ceo-on-openai-investment-never-a-commitment": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c6"
+    ],
+    "https://fortune.com/2026/02/17/ai-productivity-paradox-ceo-study-robert-solow-information-technology-age": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c38"
     ],
     "https://fortune.com/2026/02/18/openai-chatgpt-creator-record-million-dollar-equity-compensation-ai-tech-talent-war-career-retention-sam-altman-millionaire-staff": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c21"
@@ -9049,6 +9202,9 @@
     "https://lex.substack.com/p/analysis-unwinding-the-30b-digital": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23"
     ],
+    "https://libertystreeteconomics.newyorkfed.org": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c31"
+    ],
     "https://link.springer.com/article/10.1007/s00493-003-0019-y": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c20"
     ],
@@ -9156,7 +9312,8 @@
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c12"
     ],
     "https://metr.org/blog/2026-1-29-time-horizon-1-1": [
-      "2026-07-31T051841--situational-awareness-lp-collapse#c28"
+      "2026-07-31T051841--situational-awareness-lp-collapse#c28",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c11"
     ],
     "https://metr.org/common-elements": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c10",
@@ -9167,13 +9324,15 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c48"
     ],
     "https://metr.org/notes/2026-01-22-time-horizon-limitations": [
-      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c14"
+      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c14",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c14"
     ],
     "https://metr.org/notes/2026-07-22-economics-of-recursive-self-improvement": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c20"
     ],
     "https://metr.org/time-horizons": [
-      "2026-07-31T051841--situational-awareness-lp-collapse#c28"
+      "2026-07-31T051841--situational-awareness-lp-collapse#c28",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c13"
     ],
     "https://microsoft.ai/news/introducing-mai-cyber-1-flash-inside-mdash": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c16"
@@ -9228,6 +9387,12 @@
     ],
     "https://news.bloomberglaw.com/artificial-intelligence/shutterstocks-ai-licensing-business-generated-104-million": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c15"
+    ],
+    "https://news.bloomberglaw.com/business-and-practice/big-law-first-year-hiring-set-to-plunge-as-history-ai-collide": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c27"
+    ],
+    "https://news.bloomberglaw.com/business-and-practice/big-law-leader-says-ai-threatens-rivals-associates-not-his": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c27"
     ],
     "https://news.cgtn.com/news/2025-02-17/President-Xi-attends-symposium-on-private-enterprises-delivers-speech-1B3QqCUlZXG/p.html": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c5"
@@ -9816,6 +9981,15 @@
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c10",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c11"
     ],
+    "https://podcasts.apple.com/gb/podcast/signals-and-threads/id1528917129": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c3"
+    ],
+    "https://podcasts.apple.com/us/podcast/signals-and-threads/id1528917129": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c2"
+    ],
+    "https://podscan.fm/podcasts/signals-and-threads": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c4"
+    ],
     "https://policylayer.com/blog/soc2-compliance-ai-agents": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c30"
     ],
@@ -10086,6 +10260,12 @@
     "https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c35"
     ],
+    "https://s3d.cmu.edu/news/2025/1020-ai-tools-for-software.html": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c34"
+    ],
+    "https://saastr.com/salesforce-we-are-hiring-0-engineers-this-year-but-were-growing-the-sales-team-20-because-ai": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c28"
+    ],
     "https://sacra.com/c/character-ai": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c9"
     ],
@@ -10168,6 +10348,12 @@
     ],
     "https://sifted.eu/articles/anthropic-monzo-founder-tom-blomfield": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c9"
+    ],
+    "https://signalsandthreads.com": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c4"
+    ],
+    "https://signalsandthreads.com/finding-signal-in-the-noise": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c20"
     ],
     "https://siliconangle.com/2025/08/05/cerebras-delivers-blazing-speed-openais-new-open-model-3000-tokens-s": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c15"
@@ -11279,11 +11465,17 @@
     "https://www.baseten.co/blog/real-time-video-generation-inference-on-baseten": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c24"
     ],
+    "https://www.bcg.com/about/expertise/ai-changing-consulting-and-pricing-models": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c29"
+    ],
     "https://www.benzinga.com/markets/earnings/26/07/60781217/meta-reports-mixed-q2-results-raises-low-end-of-capex-guidance-range-shares-move-lower": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c23"
     ],
     "https://www.benzinga.com/markets/earnings/26/08/61486426/michael-burry-points-to-nvidias-105b-openai-guarantee-as-circular-financing-red-flag-whistling-past-the-graveyard": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c15"
+    ],
+    "https://www.benzinga.com/markets/tech/26/05/52627436/citadel-ceo-says-ai-is-now-automating-phd-level-finance-work-in-days-instead-of-months-calls-it-step-change-that-left-him-fairly-depressed": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c23"
     ],
     "https://www.benzinga.com/markets/tech/26/05/52681185/google-deepmind-contextual-ai-talent-antitrust-scrutiny": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c16"
@@ -11359,6 +11551,9 @@
     "https://www.bloomberg.com/news/articles/2026-04-07/anthropic-poaches-microsoft-executive-to-lead-infrastructure": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c7"
     ],
+    "https://www.bloomberg.com/news/articles/2026-04-24/jane-street-snatches-wall-street-crown-with-record-39-6-billion-trading-haul": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c22"
+    ],
     "https://www.bloomberg.com/news/articles/2026-06-08/china-s-moonshot-ai-seeks-30-billion-value-in-new-funding-talks": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c11"
     ],
@@ -11403,6 +11598,9 @@
     ],
     "https://www.buildfastwithai.com/blogs/gpt-5-4-solved-a-60-year-math-problem-what-happened": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c25"
+    ],
+    "https://www.business-standard.com/companies/news/mckinsey-hire-12-percent-junior-employees-jobs-2026-ai-eric-kutcher-125090900804_1.html": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c29"
     ],
     "https://www.businessinsider.com/openai-slashed-ai-prices-usage-soared-revenue-jumped-2026-8": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c12",
@@ -11535,6 +11733,9 @@
     ],
     "https://www.chipstrat.com/p/dispelling-deepseek-myths-studying": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c10"
+    ],
+    "https://www.cio.com/article/4134276/ibm-looks-beyond-short-term-ai-gains-tripling-entry-level-hiring.html": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c36"
     ],
     "https://www.citadelsecurities.com/what-we-do/options": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c13"
@@ -11908,6 +12109,9 @@
     "https://www.coreweave.com/news/coreweave-and-meta-announce-21-billion-expanded-ai-infrastructure-agreement": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c6"
     ],
+    "https://www.coreweave.com/news/jane-street-signs-6-billion-ai-cloud-agreement-with-coreweave": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18"
+    ],
     "https://www.coreweave.com/pricing": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c21"
     ],
@@ -12163,6 +12367,12 @@
     "https://www.eeo.com.cn/2026/0320/813654.shtml": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c20"
     ],
+    "https://www.efinancialcareers.com/news/2023/08/jane-street-intern-pay": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c9"
+    ],
+    "https://www.efinancialcareers.de/en/news/hudson-river-trading-s-head-of-ai-said-the-era-of-whiteboard-quants-is-over": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c24"
+    ],
     "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_5_03": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c9"
     ],
@@ -12186,6 +12396,9 @@
     ],
     "https://www.engineering.columbia.edu/about/news/robots-grow-consuming-other-robots": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c5"
+    ],
+    "https://www.entrepreneur.com/business-news/wall-street-firm-jane-street-starts-some-interns-at-250k/481389": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c9"
     ],
     "https://www.eqs-news.com/news/ad-hoc/ats-austria-technologie-systemtechnik-ag-ats-expands-ai-substrate-capacity-in-kulim-and-increases-outlook-for-2026-27/1a92bc40-a144-4533-878c-cf31c886f44c_en": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c14"
@@ -12260,6 +12473,9 @@
     "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617a.htm": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c42"
     ],
+    "https://www.fi-desk.com/jane-street-issues-us1-35-billion-bond-as-market-makers-bulk-up-balance-sheets": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c22"
+    ],
     "https://www.fiercebiotech.com/biotech/alphabets-isomorphic-stacks-two-new-deals-lilly-novartis-worth-nearly-3b-ahead-buzzy-jpm": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c17"
     ],
@@ -12271,6 +12487,9 @@
     ],
     "https://www.figure.ai/news/series-c": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c13"
+    ],
+    "https://www.financemagnates.com/institutional-forex/ai-is-slowing-hiring-at-prop-firms-not-replacing-traders-yet": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c26"
     ],
     "https://www.findmymoat.com/short-interest": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c6",
@@ -12403,6 +12622,9 @@
     ],
     "https://www.gartner.com/en/newsroom/press-releases/2026-05-19-gartner-survey-shows-thirty-one-percent-of-chief-sales-officers-cited-difficulty-proving-roi-of-ai-driven-tools-as-a-top-challenge-for-sales-objectives-in-two-thousand-twenty-si": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c28"
+    ],
+    "https://www.getsmartresume.com/article/jane-street-trading-quant-intern": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c7"
     ],
     "https://www.gingerriver.com/p/zhipu-ceo-zhang-peng-on-taking-chinas": [
       "2026-06-22T052035--zhipu-ai-glm#c2"
@@ -12547,6 +12769,9 @@
     ],
     "https://www.hhmi.org/hhmi-david-baker-wins-2024-nobel-chemistry": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c38"
+    ],
+    "https://www.highereddive.com/news/ai-can-complete-almost-all-written-assignments-for-mit-undergrads-report/828888": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c34"
     ],
     "https://www.highshortinterest.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c6"
@@ -12713,6 +12938,19 @@
     "https://www.jacr.org/article/S1546-1440(21)00293-3/pdf": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c14"
     ],
+    "https://www.janestreet.com/join-jane-street/internships": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c6"
+    ],
+    "https://www.janestreet.com/join-jane-street/position/8599644002": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c5"
+    ],
+    "https://www.janestreet.com/join-jane-street/position/8611307002": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c5",
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c6"
+    ],
+    "https://www.janestreet.com/who-we-are": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c21"
+    ],
     "https://www.joneswalker.com/en/insights/blogs/ai-law-blog/the-orwell-card-what-the-preliminary-injunction-in-anthropic-v-u-s-tells-us-ab.html": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c10"
     ],
@@ -12857,6 +13095,12 @@
     ],
     "https://www.lesswrong.com/posts/Rk6FbkDFFm8ciqefv/quadrillion-param-costs-kv-cache-context-length-frontier": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c27"
+    ],
+    "https://www.levels.fyi/internships": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c10"
+    ],
+    "https://www.levels.fyi/internships/Jane-Street/Software-Engineer-Intern": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c8"
     ],
     "https://www.lexisnexis.com/community/pressroom/b/news/posts/lex-machina-2026-trade-secret-litigation-report-federal-trade-secret-filings-hit-an-all-time-high-in-2025": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c27"
@@ -13149,6 +13393,9 @@
     "https://www.pacingthefrontier.com": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c24"
     ],
+    "https://www.paloaltoonline.com/stanford/2026/09/22/fewer-computer-science-students-graduate-from-stanford-what-comes-next": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c33"
+    ],
     "https://www.panewslab.com/en/articles/e21d9785-6cff-4ae6-9991-ad564c45c1f9": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c22"
     ],
@@ -13181,6 +13428,9 @@
     ],
     "https://www.prnewswire.com/news-releases/isomorphic-labs-announces-strategic-multi-target-research-collaboration-with-lilly-302027392.html": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c5"
+    ],
+    "https://www.prnewswire.com/news-releases/jane-street-leads-antithesiss-105m-series-a-to-make-deterministic-simulation-testing-the-new-standard-302631076.html": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17"
     ],
     "https://www.prnewswire.com/news-releases/ornn-compute-price-index-added-to-bloomberg-terminal-302732184.html": [
       "2026-06-24T160453--test-ornn-com-codex-2#C4",
@@ -13270,6 +13520,9 @@
     ],
     "https://www.reuters.com/legal/transactional/databricks-valued-188-billion-after-coatue-led-investment-wsj-reports-2026-07-17": [
       "2026-07-20T050016--databricks-mid-2026#c1"
+    ],
+    "https://www.reveliolabs.com/companies/jane-street-group/employees": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c21"
     ],
     "https://www.rfc-editor.org/rfc/rfc8439": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c25"
@@ -13417,6 +13670,9 @@
     ],
     "https://www.sec.gov/Archives/edgar/data/0001713445/000171344525000018/rddt-20241231.htm": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c14"
+    ],
+    "https://www.sec.gov/Archives/edgar/data/0001769628/000176962826000167/ex991.htm": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18"
     ],
     "https://www.sec.gov/Archives/edgar/data/0001783879/000178387926000114/hood-20260630.htm": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c19"
@@ -13711,6 +13967,9 @@
     "https://www.susmangodfrey.com/wins/susman-godfrey-secures-1-5-billion-settlement-in-landmark-ai-piracy-case": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c17"
     ],
+    "https://www.swebench.com/original.html": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c15"
+    ],
     "https://www.taaonline.net/anthropic-settlement": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c21"
     ],
@@ -13743,6 +14002,9 @@
     ],
     "https://www.techi.com/nebius-stock-meta-cloud-plan": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c2"
+    ],
+    "https://www.techinterview.org/companies/renaissance-technologies-interview-guide": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c25"
     ],
     "https://www.techmeme.com/240512/p1": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c7"
@@ -14301,6 +14563,9 @@
     "https://x.com/GoogleDeepMind/status/2070180509523546481": [
       "2026-06-25T170208--native-computer-use-gemini-3-5-flash#c1"
     ],
+    "https://x.com/GoshawkTrades/status/2102815256523489620": [
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c1"
+    ],
     "https://x.com/IPONewsroom_/status/2068820920085680391": [
       "2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th#c10",
       "2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th#c11"
@@ -14698,7 +14963,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2529,
+  "claim_count": 2567,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -75473,9 +75738,925 @@
         "https://cursor.com/cursorbench"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-23",
+      "claim": "Goshawk Trades tweet (2026-09-23) claims Jane Street interns are paid an annualised equivalent of $300,000, and the firm scrapped a four-week intern project because AI now does it in one prompt.",
+      "confidence": "high",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/GoshawkTrades/status/2102815256523489620"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-24",
+      "claim": "Summer 2026 peer intern pay: Optiver quant trader $30,333/mo (Chicago), Jane Street $25,000/mo, Two Sigma SWE $23,833/mo, Citadel Securities SWE $22,967/mo, Jump Trading SWE $20,833/mo, DRW quant trader $16,668/mo.",
+      "confidence": "low",
+      "hosts": [
+        "levels.fyi"
+      ],
+      "id": "c10",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://www.levels.fyi/internships"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-01-29",
+      "claim": "METR's paper finds frontier AI models' 50%-task-completion time horizon has doubled roughly every 7 months since 2019 (revised estimate: 130.8 days, i.e. ~4.3 months, post-2023), and Claude 3.7 Sonnet's horizon was about 50 minutes as of the original March 2025 paper.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "metr.org"
+      ],
+      "id": "c11",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2503.14499",
+        "https://metr.org/blog/2026-1-29-time-horizon-1-1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2025-03-18",
+      "claim": "METR's own paper projects that AI systems capable of automating many software tasks that currently take a human a month will arrive within about 5 years of March 2025 (i.e., roughly 2030), not as a present-day capability.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c12",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c12",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2503.14499"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-05-08",
+      "claim": "METR's live tracking page (May 2026) shows its newest evaluated model likely exceeding a 16-hour time horizon, but METR explicitly states measurements above 16 hours are unreliable with its current task suite.",
+      "confidence": "medium",
+      "hosts": [
+        "metr.org"
+      ],
+      "id": "c13",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://metr.org/time-horizons"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-01-22",
+      "claim": "METR explicitly warns that 'time horizon' measures the amount of serial human labor a model can replace at only a 50% success rate, not the length of time it can work independently and reliably -- directly undercutting a literal reading of 'one prompt reliably replaces a month of work.'",
+      "confidence": "high",
+      "hosts": [
+        "metr.org"
+      ],
+      "id": "c14",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://metr.org/notes/2026-01-22-time-horizon-limitations"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-02",
+      "claim": "SWE-bench Verified scores for top frontier models reached roughly 95-97% by September 2026, up from under 2% for the strongest 2023 baselines on the original SWE-bench, but OpenAI stopped reporting SWE-bench Verified scores in February 2026 after finding contamination risk in 27.6% of the 500 problems.",
+      "confidence": "medium",
+      "hosts": [
+        "codeant.ai",
+        "swebench.com"
+      ],
+      "id": "c15",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c15",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.swebench.com/original.html",
+        "https://codeant.ai/blogs/swe-bench-scores"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2025-07-10",
+      "claim": "A randomized controlled trial (METR, July 2025) found experienced open-source developers using AI coding tools on real, mature codebases were actually 19% slower than without AI, despite believing AI had made them 20% faster.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c16",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c16",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2507.09089"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2025-12-03",
+      "claim": "Jane Street led a $105 million Series A round for Antithesis, a deterministic-simulation software-testing company it was already a customer of, and its engineering blog states it anticipates using Antithesis to verify the correctness of AI-generated code from agentic coding tools.",
+      "confidence": "high",
+      "hosts": [
+        "blog.janestreet.com",
+        "prnewswire.com"
+      ],
+      "id": "c17",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/jane-street-leads-antithesiss-105m-series-a-to-make-deterministic-simulation-testing-the-new-standard-302631076.html",
+        "https://blog.janestreet.com/getting-from-tested-to-battle-tested"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-04-15",
+      "claim": "Jane Street committed approximately $6 billion to CoreWeave's AI cloud platform and separately invested $1 billion in CoreWeave equity at $109.00/share, per a joint press release corroborated by an SEC 8-K filing.",
+      "confidence": "high",
+      "hosts": [
+        "coreweave.com",
+        "sec.gov"
+      ],
+      "id": "c18",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.coreweave.com/news/jane-street-signs-6-billion-ai-cloud-agreement-with-coreweave",
+        "https://www.sec.gov/Archives/edgar/data/0001769628/000176962826000167/ex991.htm"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-24",
+      "claim": "A Jane Street designer's own blog post describes compressing a roughly two-week Figma-to-engineering handoff process into a same-day Claude Code session -- the closest verifiable first-party Jane Street analog to a 'days/weeks of work compressed' claim, though about design workflow, not a junior intern project.",
+      "confidence": "medium",
+      "hosts": [
+        "blog.janestreet.com"
+      ],
+      "id": "c19",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c19",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://blog.janestreet.com/i-design-with-claude-code-more-than-figma-now-index"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-23",
+      "claim": "The tweet's video is drawn from Jane Street's own podcast episode 'Learning Goals and the Goals of Learning: Teaching in the Age of AI,' featuring developer-educator Aaron Bauer, published 2026-09-23.",
+      "confidence": "high",
+      "hosts": [
+        "feeds.simplecast.com",
+        "podcasts.apple.com"
+      ],
+      "id": "c2",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://feeds.simplecast.com/L9810DOa",
+        "https://podcasts.apple.com/us/podcast/signals-and-threads/id1528917129"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2025-03-10",
+      "claim": "In a March 2025 Jane Street podcast episode, ML lead In Young Cho said junior training is deliberately gradual and fundamentals-first: 'Having a slowed down fundamentals-based introduction to the tooling is really critical' -- in tension with a later framing of AI collapsing training time.",
+      "confidence": "medium",
+      "hosts": [
+        "signalsandthreads.com"
+      ],
+      "id": "c20",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c20",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://signalsandthreads.com/finding-signal-in-the-noise"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-24",
+      "claim": "Jane Street's own site states it has more than 3,000 employees across five global offices; third-party workforce data (Revelio Labs) shows headcount grew from roughly 2,485 in 2023 to about 3,206 in 2026, a cumulative rise of 15-19%.",
+      "confidence": "medium",
+      "hosts": [
+        "janestreet.com",
+        "reveliolabs.com"
+      ],
+      "id": "c21",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c21",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://www.janestreet.com/who-we-are",
+        "https://www.reveliolabs.com/companies/jane-street-group/employees"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-04-24",
+      "claim": "Jane Street's net trading revenue nearly doubled year-over-year, from about $20.5 billion in 2024 to a reported record $39.6 billion in 2025, per Bloomberg reporting citing people familiar with the results and consistent with figures disclosed in the firm's April 2025 bond prospectus.",
+      "confidence": "medium",
+      "hosts": [
+        "bloomberg.com",
+        "fi-desk.com"
+      ],
+      "id": "c22",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c22",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.bloomberg.com/news/articles/2026-04-24/jane-street-snatches-wall-street-crown-with-record-39-6-billion-trading-haul",
+        "https://www.fi-desk.com/jane-street-issues-us1-35-billion-bond-as-market-makers-bulk-up-balance-sheets"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-05-17",
+      "claim": "Citadel CEO Ken Griffin said (May 2026) AI agents are now automating PhD/master's-level financial analytical work in hours or days rather than weeks or months, calling it a 'step-change' -- a statement about work output velocity, not about junior training timelines or headcount.",
+      "confidence": "medium",
+      "hosts": [
+        "benzinga.com"
+      ],
+      "id": "c23",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c23",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.benzinga.com/markets/tech/26/05/52627436/citadel-ceo-says-ai-is-now-automating-phd-level-finance-work-in-days-instead-of-months-calls-it-step-change-that-left-him-fairly-depressed"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2025-11-04",
+      "claim": "Hudson River Trading's head of AI research, Iain Dunning, said (November 2025) AI has blurred the line between researcher and engineer, ending the era of the pure 'whiteboard quant' and raising the hiring bar toward hybrid skillsets -- while explicitly denying this means headcount reduction.",
+      "confidence": "high",
+      "hosts": [
+        "efinancialcareers.de"
+      ],
+      "id": "c24",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c24",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.efinancialcareers.de/en/news/hudson-river-trading-s-head-of-ai-said-the-era-of-whiteboard-quants-is-over"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-24",
+      "claim": "Targeted searches found no comparable public statement from Two Sigma, D.E. Shaw, Renaissance Technologies, or Point72/Cubist linking AI to compressed junior training timelines or hiring-pipeline restructuring, as of September 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "techinterview.org"
+      ],
+      "id": "c25",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c25",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "unknown"
+      ],
+      "source_urls": [
+        "https://www.techinterview.org/companies/renaissance-technologies-interview-guide"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-05-20",
+      "claim": "Acuiti's Q2 2026 Proprietary Trading Management Insight Report found 44% of prop-trading firms said AI is slowing their pace of hiring and 15% are reducing headcount due to AI productivity gains, with recruitment shifting toward specialized quant/engineering/data-science profiles -- an industry-wide signal about hiring pace and specialization, not training-timeline compression specifically.",
+      "confidence": "medium",
+      "hosts": [
+        "financemagnates.com"
+      ],
+      "id": "c26",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c26",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.financemagnates.com/institutional-forex/ai-is-slowing-hiring-at-prop-firms-not-replacing-traders-yet"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-10",
+      "claim": "Am Law entry-level hiring for the Class of 2025 fell 7.5% from the 2024 peak (6,588 hires), the first Big Law entry-level decline since roughly 2011/2014, per Bloomberg Law reporting of NALP data; a separate Bloomberg Law figure using a different firm-size cutoff put the decline at roughly 22% (5,917 to 4,613).",
+      "confidence": "medium",
+      "hosts": [
+        "news.bloomberglaw.com"
+      ],
+      "id": "c27",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c27",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://news.bloomberglaw.com/business-and-practice/big-law-first-year-hiring-set-to-plunge-as-history-ai-collide",
+        "https://news.bloomberglaw.com/business-and-practice/big-law-leader-says-ai-threatens-rivals-associates-not-his"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2025-02-27",
+      "claim": "Salesforce CEO Marc Benioff said in early 2025 the company would hire no new software engineers that year, citing a roughly 30% engineering productivity gain from AI, while simultaneously growing its sales headcount roughly 20%; Salesforce later announced hiring 1,000 new graduates in April 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "saastr.com"
+      ],
+      "id": "c28",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c28",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://saastr.com/salesforce-we-are-hiring-0-engineers-this-year-but-were-growing-the-sales-team-20-because-ai"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2025-09-09",
+      "claim": "McKinsey global managing partner Eric Kutcher said (September 2025) North America hiring would rise 12% in 2026, while other 2025-2026 reporting describes roughly 200 tech/support cuts, discussion of a 10% non-client-role reduction, and a third consecutive year of frozen starting salaries at McKinsey, BCG, and Bain -- growth and cost discipline claims coexisting at the same firms.",
+      "confidence": "medium",
+      "hosts": [
+        "bcg.com",
+        "business-standard.com"
+      ],
+      "id": "c29",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c29",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.business-standard.com/companies/news/mckinsey-hire-12-percent-junior-employees-jobs-2026-ai-eric-kutcher-125090900804_1.html",
+        "https://www.bcg.com/about/expertise/ai-changing-consulting-and-pricing-models"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-23",
+      "claim": "The episode's own description states Jane Street rebuilt its intern curriculum around testing, design, and code review 'now that producing the code is the easy part.'",
+      "confidence": "medium",
+      "hosts": [
+        "blog.janestreet.com",
+        "podcasts.apple.com"
+      ],
+      "id": "c3",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://podcasts.apple.com/gb/podcast/signals-and-threads/id1528917129",
+        "https://blog.janestreet.com/developer-education-at-jane-street-index"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-08-12",
+      "claim": "Stanford Digital Economy Lab's 'Canaries in the Coal Mine' study (ADP payroll data) finds employment for 22-25 year-olds in the most AI-exposed occupations is about 19% below where it would be had it tracked less-exposed peers as of June 2026, up from a 15% gap in July 2025, concentrated in reduced hiring rather than increased separations.",
+      "confidence": "high",
+      "hosts": [
+        "digitaleconomy.stanford.edu"
+      ],
+      "id": "c30",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c30",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://digitaleconomy.stanford.edu/news/canariesaug26"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-05",
+      "claim": "A Federal Reserve Bank of New York (Liberty Street Economics) analysis of Lightcast job-postings data (May 2026) found the divergence between high- and low-AI-exposure occupations began before ChatGPT's December 2022 release with no acceleration afterward, and found no measurable junior-versus-senior posting gap within AI-exposed occupations -- directly contesting the Stanford study's causal attribution to AI.",
+      "confidence": "medium",
+      "hosts": [
+        "libertystreeteconomics.newyorkfed.org"
+      ],
+      "id": "c31",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c31",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://libertystreeteconomics.newyorkfed.org"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2025",
+      "claim": "A methodological critique argues a pure hiring freeze with zero layoffs, across all seniority levels, mechanically produces an apparent 25% decline in 22-25-year-old cohort employment within one year in age-cohort payroll data -- illustrating that any broad slowdown, AI-caused or not, would show up statistically as an entry-level-specific crash.",
+      "confidence": "medium",
+      "hosts": [
+        "agglomerations.eig.org"
+      ],
+      "id": "c32",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c32",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://agglomerations.eig.org/p/looking-for-the-ladder"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-22",
+      "claim": "National four-year computer science enrollment fell 8.1% year-over-year in academic year 2025-26 (659,700 to 606,100 students), the first CS enrollment decline in roughly 20 years, with Stanford's own CS bachelor's degrees conferred down about 14%; the researcher behind the figures cautions correlation with AI is not proof of causation.",
+      "confidence": "medium",
+      "hosts": [
+        "paloaltoonline.com"
+      ],
+      "id": "c33",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c33",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.paloaltoonline.com/stanford/2026/09/22/fewer-computer-science-students-graduate-from-stanford-what-comes-next"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-08-25",
+      "claim": "MIT's institute-wide Ad Hoc Committee on AI report (August 2026) concluded generative AI can produce credible solutions to almost any written assignment and called for every course to adopt an explicit AI-use policy; separately, Carnegie Mellon and UC Berkeley launched courses/curriculum units in 2025-2026 built around the same diagnosis, that judgment and verification -- not code production -- are now the pedagogical bottleneck.",
+      "confidence": "high",
+      "hosts": [
+        "highereddive.com",
+        "s3d.cmu.edu"
+      ],
+      "id": "c34",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c34",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.highereddive.com/news/ai-can-complete-almost-all-written-assignments-for-mit-undergrads-report/828888",
+        "https://s3d.cmu.edu/news/2025/1020-ai-tools-for-software.html"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2025-09-10",
+      "claim": "A CEPR working paper (Garicano & Rayo) formalizes when on-the-job training remains economically viable under AI substitution via an 'expertise leverage ratio' threshold at Euler's number e; above it, training pays off, below it, apprenticeship-based career ladders can structurally collapse.",
+      "confidence": "medium",
+      "hosts": [
+        "cepr.org"
+      ],
+      "id": "c35",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c35",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://cepr.org/publications/dp20634"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-02",
+      "claim": "IBM's CHRO announced in February 2026 that IBM is tripling entry-level hiring, including software developers, explicitly rejecting the industry pattern of cutting junior roles in favor of AI.",
+      "confidence": "medium",
+      "hosts": [
+        "cio.com"
+      ],
+      "id": "c36",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c36",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.cio.com/article/4134276/ibm-looks-beyond-short-term-ai-gains-tripling-entry-level-hiring.html"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2025-12-16",
+      "claim": "AWS CEO Matt Garman publicly called cutting junior employees in favor of AI 'one of the dumbest things I've ever heard,' warning that firms doing so are destroying their own future talent pipeline.",
+      "confidence": "high",
+      "hosts": [
+        "fortune.com"
+      ],
+      "id": "c37",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c37",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://fortune.com/2025/12/16/aws-ceo-matt-garman-ai-displacing-junior-employees-dumbest-idea-amazon-layoffs"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-02-17",
+      "claim": "A survey of nearly 6,000 executives found more than 80% detected no discernible impact from AI on either employment or productivity at their organizations, despite 69% already using AI tools.",
+      "confidence": "medium",
+      "hosts": [
+        "fortune.com"
+      ],
+      "id": "c38",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c38",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://fortune.com/2026/02/17/ai-productivity-paradox-ceo-study-robert-solow-information-technology-age"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-24",
+      "claim": "The specific phrase 'four weeks of work is now a single prompt' could not be located in any accessible primary transcript, show notes, or secondary coverage of the episode by any research pass.",
+      "confidence": "high",
+      "hosts": [
+        "podscan.fm",
+        "signalsandthreads.com"
+      ],
+      "id": "c4",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c4",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://signalsandthreads.com",
+        "https://podscan.fm/podcasts/signals-and-threads"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-24",
+      "claim": "Jane Street's own internship postings for the 2026/2027 cycle state a base salary of $300,000 across multiple tracks (ML engineer, hardware, quant trader).",
+      "confidence": "high",
+      "hosts": [
+        "janestreet.com"
+      ],
+      "id": "c5",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.janestreet.com/join-jane-street/position/8611307002",
+        "https://www.janestreet.com/join-jane-street/position/8599644002"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-24",
+      "claim": "Jane Street's internship postings state the internship runs 'May-August,' and its internship overview page states internships 'typically run for 10-12 weeks between May and September' -- not four weeks.",
+      "confidence": "high",
+      "hosts": [
+        "janestreet.com"
+      ],
+      "id": "c6",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.janestreet.com/join-jane-street/internships",
+        "https://www.janestreet.com/join-jane-street/position/8611307002"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "",
+      "claim": "A third-party recruiting guide describes trading interns spending '3-4 weeks on a specific desk' within a roughly 10-week program -- a plausible origin for the 'four weeks' figure if lifted out of context.",
+      "confidence": "low",
+      "hosts": [
+        "getsmartresume.com"
+      ],
+      "id": "c7",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c7",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "single-source",
+      "source_tiers": [
+        "unknown"
+      ],
+      "source_urls": [
+        "https://www.getsmartresume.com/article/jane-street-trading-quant-intern"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2026-09-24",
+      "claim": "Jane Street intern monthly pay rose from roughly $18,000/mo (2019) to $20,833/mo (2023-2025) to $25,000/mo (2026-2027), per self-reported Levels.fyi submissions, with a $40,000 sign-on bonus added for 2027.",
+      "confidence": "low",
+      "hosts": [
+        "levels.fyi"
+      ],
+      "id": "c8",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c8",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://www.levels.fyi/internships/Jane-Street/Software-Engineer-Intern"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades",
+      "article_created_at": "2026-09-24T04:44:52Z",
+      "article_title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+      "as_of": "2024-10-18",
+      "claim": "Press reporting put Jane Street intern pay at $64,000 over 11 weeks (~$23,000/mo) in summer 2023, and $250,000 annualized for quant researchers vs. $175,000 for trading-desk engineering interns in the 2024 cycle -- confirming pay is not uniform across tracks and has risen since.",
+      "confidence": "medium",
+      "hosts": [
+        "efinancialcareers.com",
+        "entrepreneur.com"
+      ],
+      "id": "c9",
+      "key": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.efinancialcareers.com/news/2023/08/jane-street-intern-pay",
+        "https://www.entrepreneur.com/business-news/wall-street-firm-jane-street-starts-some-interns-at-250k/481389"
+      ],
+      "type": "comparison"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1247,
+  "reusable_count": 1255,
   "schema_version": 1
 }

@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "But the same research group's own March 2025 paper, the one that established this trend line, explicitly projected that AI capable of automating tasks currently taking a human engineer a full month would arrive \"within 5 years\" — placing that capability around 2030, not on a September 2026 timeline.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The developers believed AI had made them about 20% faster. Measured against the clock, they were 19% slower.",
+      "contradicting_url": "https://github.blog/2022-09-07-research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/",
+      "contradicting_quote": "developers who used GitHub Copilot completed the task significantly faster–55% faster... statistically significant (P=.0017)",
+      "severity": "medium",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Third-party workforce data shows headcount growing roughly 15-19% cumulatively from 2023 to 2026, even as the firm's own site advertises more than 3,000 employees across five offices.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

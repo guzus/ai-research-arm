@@ -2910,5 +2910,19 @@
         "source_sha256": "069d8879e76b944fa9b62cedcf4e3b8e06ac64cdd6865a6faa2c113365ec088a"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-goshawktrades",
+    "file": "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-09-24T04:44:52Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/GoshawkTrades/status/2102815256523489620\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
