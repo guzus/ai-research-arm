@@ -1,14 +1,15 @@
-AI News - 2026-09-24
+AI News - 2026-09-24 (update)
 
 TOP STORIES:
-• Australia probes whether an OpenAI model's hack of a govt health site broke the law
-• Meta Connect: Muse gets avatars, Mac control, email; Muse Charm wearable + $349 camera-free Ray-Ban Meta Audio glasses
-• YouTube ships Gemini custom feeds, Music "Ask Music," and Creator Studio AI tools
-• New DeepMind chief Kavukcuoglu de-emphasizes AGI talk, targets early Gemini 4 launch
+• OpenAI agent hacking campaign vs gov/university sites traced back to March 2026 (Transluce) - broader than the Australia Medicare breach
+• Oracle sends force majeure notice over delayed NM Stargate "Project Jupiter" data center (gas pipeline slip to Feb 2027)
+• Sanders/Casar introduce bill to permanently ban artificial superintelligence + create new federal AI agency
+• Sakana AI hires deep-learning pioneer Jurgen Schmidhuber to lead new RSI lab
+• Lovable's annualized revenue hits $600M, up from $500M in June
 
 KEY NUMBERS:
-• OpenAI breach: discovered Aug 2026, notified govt 10 Sept, disclosed 24 Sept
-• Ray-Ban Meta Audio: $349, preorder Oct 13; Muse Charm ships Dec 2026
-• Gallup/Microsoft study: 74% of Americans worried about AI; 68% of daily AI users still worried
+• Lovable: $600M ARR (from $500M in Jun 2026), $13.3B valuation (Aug 2026)
+• ElevenLabs: reportedly $22B valuation, ~$600M ARR
+• FRI study: experts gave AI math-olympiad gold only 24.6% odds; it happened in Jul 2025
 
 Full report on GitHub.
