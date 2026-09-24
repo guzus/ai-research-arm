@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 15:00 UTC",
-    "headline": "BLOOMBERG: ARM AND SOFTBANK TRIED TO ACQUIRE CEREBRAS WEEKS BEFORE IPO; OFFER REJECTED",
-    "source": "@business",
-    "source_file": "research/summaries/2026-05-13-twitter-15h-headlines.json",
-    "url": "https://x.com/business/status/2054587489713639845"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-13 15:00 UTC",
-    "headline": "ANTHROPIC GRANTS MYTHOS ACCESS TO MUFG, SUMITOMO MITSUI, MIZUHO \u2014 JFSA / BOJ TASK FORCE FRAMEWORK",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-13-twitter-15h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2054561200017666495"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-13 15:00 UTC",
-    "headline": "MIZUHO: APPLE-INTEL DECEMBER 2025 FOUNDRY DEAL \u2014 M7 ON 18A-P (2027), SMARTPHONE CHIP ON 14A (2028)",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-13-twitter-15h-headlines.json",
-    "url": "https://x.com/jukan05/status/2054564780732498342"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 15:00 UTC",
-    "headline": "INFORMATION: OPENAI-MICROSOFT REV-SHARE CAP AT $38B THROUGH 2030 \u2014 SAVES OPENAI ~$97B IF GROWTH TARGETS HIT",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-13-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054554784389022173"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 18:00 UTC",
-    "headline": "ANTHROPIC SPLITS CLAUDE CODE PROGRAMMATIC USAGE INTO SEPARATE MONTHLY CREDIT \u2014 AGENT SDK, CLAUDE -P, GITHUB ACTIONS, CONDUCTOR ALL MOVE JUNE 15",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-13-twitter-18h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2054610152817619388"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 18:00 UTC",
-    "headline": "ALTMAN BREAKS 91-HOUR SILENCE: 2 MONTHS OF FREE CODEX FOR ANY COMPANY SWITCHING IN NEXT 30 DAYS",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-13-twitter-18h-headlines.json",
-    "url": "https://x.com/sama/status/2054626219858293128"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 18:00 UTC",
-    "headline": "OPENAI TAUNTS ANTHROPIC 41 MINUTES AFTER CLAUDE CODE PRICING CHANGE: 'ANOTHER REASON TO SWITCH TO CODEX'",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-13-twitter-18h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2054620621255192719"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-13 18:00 UTC",
     "headline": "UK AISI: FRONTIER AI CYBER-TASK DOUBLING TIME NOW 4 MONTHS WITH MYTHOS \u2014 MYTHOS PREVIEW COMPLETES ALL 8H+ TASKS 100%",
@@ -24256,5 +24193,54 @@
     "headline": "META UNVEILS VR GLASSES AT $1,299 WITH AI-NATIVE OS DRIVEN BY EYE, GESTURE AND VOICE",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2102908929378291780"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-24 11:37:58 UTC",
+    "headline": "TRANSLUCE RELEASES 30,000 LOGS \u2014 ROGUE OPENAI AGENT ACTIVITY DATED TO MARCH, TWO MONTHS BEFORE ANY DISCLOSURE, STILL ONGOING",
+    "source": "@TransluceAI",
+    "url": "https://x.com/TransluceAI/status/2102951665569825189"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-24 11:37:58 UTC",
+    "headline": "NVIDIA'S HUANG: NO ANTITRUST OR PRODUCT-LIABILITY SHIELD FOR AI COMPANIES \u2014 CALLS HINTON'S 10% RISK FIGURE UNGROUNDED",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103043812335722602"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-24 11:37:58 UTC",
+    "headline": "DEEPSEEK ARR HITS $1B; 70% OF COMPUTE ON TRAINING, SMALL-MODEL INFERENCE TESTED ON CONSUMER GAMING GPUS",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2103010622019699076"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-24 11:37:58 UTC",
+    "headline": "BROOKINGS: AI BUILDOUT TO HIT $10.3T BY 2032 \u2014 3.6% OF GDP A YEAR VS RAILROADS' 2.24%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103052205549076722"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-24 11:37:58 UTC",
+    "headline": "SIMILARWEB: META'S MUSE STILL UNDER 1M DAILY USERS AND ALREADY STRAINING TO SERVE THEM",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2103074636330303633"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-24 11:37:58 UTC",
+    "headline": "LEAKED WHITE HOUSE MEMO CALLS ANTHROPIC'S AMODEI AN EFFECTIVE ALTRUISM FOUNDER, SAYS EA BUILT THE AI-DOOM PIPELINE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103064378459525545"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-24 11:37:58 UTC",
+    "headline": "GNOME CONTRIBUTOR PROPOSES BLANKET LLM BAN ON ALL PROJECT CONTRIBUTIONS AND INFRASTRUCTURE",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2103046129898094818"
   }
 ]
