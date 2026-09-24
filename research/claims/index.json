@@ -1,5 +1,5 @@
 {
-  "article_count": 85,
+  "article_count": 86,
   "articles": [
     {
       "claim_count": 18,
@@ -827,6 +827,16 @@
         "twitter-seed"
       ],
       "title": "The Four-Week Prompt: What Jane Street's Cancelled Intern Project Actually Proves About AI and Junior Work"
+    },
+    {
+      "claim_count": 24,
+      "created_at": "2026-09-24T20:52:27Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "stem": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched"
     }
   ],
   "by_host": {
@@ -1489,7 +1499,25 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c29",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c11",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c12",
-      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c16"
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c16",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c1",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c10",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c13",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c14",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c16",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c17",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c18",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c19",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c2",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c20",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c23",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c3",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c4",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c5",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c6",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c7",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c8",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c9"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -2112,7 +2140,8 @@
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c12",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c13",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14",
-      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c8"
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c8",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c11"
     ],
     "coingecko.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c3",
@@ -2476,6 +2505,9 @@
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c32",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c35"
     ],
+    "developers.tron.network": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c14"
+    ],
     "developers.uniswap.org": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c1",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c2",
@@ -2574,6 +2606,9 @@
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c24",
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c6",
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c7"
+    ],
+    "docs.jito.wtf": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c10"
     ],
     "docs.kernel.org": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c18"
@@ -3095,6 +3130,9 @@
     "fortunebusinessinsights.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
     ],
+    "forum.marinade.finance": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c12"
+    ],
     "fredgao.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c1",
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c2"
@@ -3216,7 +3254,10 @@
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c28",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c3",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c30",
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c31"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c31",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c15",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c19",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c24"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -4034,6 +4075,9 @@
     ],
     "modlabupenn.org": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c17"
+    ],
+    "monad.xyz": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c18"
     ],
     "money.finance.sina.com.cn": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c34"
@@ -5023,7 +5067,8 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c30",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c31",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c34",
-      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18"
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c22"
     ],
     "securitycompass.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
@@ -5931,7 +5976,9 @@
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c40"
     ],
     "writings.flashbots.net": [
-      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c11"
+      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c11",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c21",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c24"
     ],
     "wsj.com": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c13",
@@ -6740,6 +6787,9 @@
     "https://arxiv.org/abs/2404.01413": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c18"
     ],
+    "https://arxiv.org/abs/2405.00138": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c16"
+    ],
     "https://arxiv.org/abs/2405.20748": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c20"
     ],
@@ -6929,6 +6979,9 @@
     "https://arxiv.org/abs/2512.09882": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c9"
     ],
+    "https://arxiv.org/abs/2512.17602": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c20"
+    ],
     "https://arxiv.org/abs/2512.23236": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c5"
     ],
@@ -7034,6 +7087,10 @@
     ],
     "https://arxiv.org/abs/2608.21964": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c22"
+    ],
+    "https://arxiv.org/abs/2609.28115": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c1",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c19"
     ],
     "https://arxiv.org/html/2303.11341v2": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c34"
@@ -7186,6 +7243,23 @@
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c5",
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6",
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c7"
+    ],
+    "https://arxiv.org/html/2609.28115": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c1",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c10",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c13",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c14",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c17",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c18",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c2",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c23",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c3",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c4",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c5",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c6",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c7",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c8",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c9"
     ],
     "https://arxiv.org/pdf/1509.07466": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c19"
@@ -7895,6 +7969,9 @@
     "https://developers.openai.com/api/docs/pricing": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6"
     ],
+    "https://developers.tron.network/docs/concensus": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c14"
+    ],
     "https://developers.uniswap.org/docs/liquidity/liquidity-launchpad/concepts/cca": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c1",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c3"
@@ -7986,6 +8063,9 @@
     ],
     "https://docs.giwa.io/giwa-chain/en/get-started/connect-to-giwa": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c6"
+    ],
+    "https://docs.jito.wtf/lowlatencytxnsend": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c10"
     ],
     "https://docs.kernel.org/process/coding-assistants.html": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c18"
@@ -8609,6 +8689,9 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2"
     ],
+    "https://forum.marinade.finance/t/mip-9-blocklisting-malicious-validators-from-stake-auction-marketplace-to-combat-sandwich-attacks/1716": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c12"
+    ],
     "https://futureoflife.org/ai-safety-index-summer-2026": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c14",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c15"
@@ -8733,11 +8816,18 @@
     "https://github.com/ethanfel/ComfyUI-MiniMaxH3-Contex-Loop": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c31"
     ],
+    "https://github.com/ethereum-optimism/op-geth/pull/118": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c15"
+    ],
+    "https://github.com/ethereum-optimism/op-geth/pull/122": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c15"
+    ],
     "https://github.com/evilsocket/audit": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c16"
     ],
     "https://github.com/flashbots/suave-geth": [
-      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c10"
+      "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c10",
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c24"
     ],
     "https://github.com/gnosis/ido-contracts": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c31"
@@ -8761,6 +8851,9 @@
     ],
     "https://github.com/leanprover/lean4/issues/14576": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c33"
+    ],
+    "https://github.com/liobaheimbach/No-Place-to-Hide-An-Analysis-on-Protected-Order-Flow-Sandwich-Attacks": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c19"
     ],
     "https://github.com/onyx-dot-app/onyx": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c20"
@@ -11126,8 +11219,14 @@
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c23",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c40"
     ],
+    "https://writings.flashbots.net/2m-protect-users": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c21"
+    ],
     "https://writings.flashbots.net/migrating-to-buildernet": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c11"
+    ],
+    "https://writings.flashbots.net/the-future-of-mev-is-suave": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c24"
     ],
     "https://wtvbam.com/2026/06/26/openai-defers-public-rollout-of-gpt-5-6-as-us-seeks-early-access-to-frontier-ai-models": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c2"
@@ -11999,6 +12098,9 @@
     ],
     "https://www.coderabbit.ai/blog/opus-5-model-review": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c7"
+    ],
+    "https://www.coindesk.com/business/2024/03/08/solana-client-developer-jito-announces-end-of-mempool-function": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c11"
     ],
     "https://www.coindesk.com/daybook-us/2026/07/21/bitcoin-rally-has-broad-based-support-as-institutions-whales-options-traders-pile-in": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c27"
@@ -13221,6 +13323,9 @@
     "https://www.modlabupenn.org/wp-content/uploads/2017/10/spinos2017vttdesign.pdf": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c17"
     ],
+    "https://www.monad.xyz/announcements/introducing-monad-foundation": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c18"
+    ],
     "https://www.mordorintelligence.com/industry-reports/sales-intelligence-market": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c24"
     ],
@@ -13822,6 +13927,9 @@
     "https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c15"
     ],
+    "https://www.sec.gov/newsroom/press-releases/2020-321": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c22"
+    ],
     "https://www.sec.gov/newsroom/press-releases/2022-70": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c20"
     ],
@@ -13839,6 +13947,9 @@
     ],
     "https://www.sec.gov/newsroom/speeches-statements/staff-statement-regarding-broker-dealer-registration-certain-user-interfaces-utilized-prepare-staff-statement-regarding-broker-dealer-registration-certain-user-interfaces-utilized": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c5"
+    ],
+    "https://www.sec.gov/rules-regulations/2025/06/order-competition-rule": [
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c22"
     ],
     "https://www.securitycompass.com/blog/from-human-copilot-agent-what-changes-for-appsec-governance": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
@@ -14963,7 +15074,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2567,
+  "claim_count": 2591,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -76654,9 +76765,582 @@
         "https://www.entrepreneur.com/business-news/wall-street-firm-jane-street-starts-some-interns-at-250k/481389"
       ],
       "type": "comparison"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "\"No Place to Hide\" finds $346M+ net attacker profit and 28M+ sandwich attacks against protected order flow across 6 chains, Jul 2023-Jun 2026",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c1",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic",
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2609.28115",
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "Axiom sets jitodontfront on 98.5% of its 21.5M sandwiched Solana victim transactions, but only 16.5% of those sandwiches carried a Jito tip",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "docs.jito.wtf"
+      ],
+      "id": "c10",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115",
+        "https://docs.jito.wtf/lowlatencytxnsend"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2024-03-08",
+      "claim": "Jito suspended its Block Engine mempool (\"MempoolStream\") on 2024-03-08, citing sandwich-attack risk it could not otherwise engineer around",
+      "confidence": "high",
+      "hosts": [
+        "coindesk.com"
+      ],
+      "id": "c11",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.coindesk.com/business/2024/03/08/solana-client-developer-jito-announces-end-of-mempool-function"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2025-02-07",
+      "claim": "Marinade DAO's MIP.9 (2025-02-07) blocklisted 73 validators (~1.27M SOL, ~15.3% of relevant stake) from its Stake Auction Marketplace for repeated sandwiching",
+      "confidence": "high",
+      "hosts": [
+        "forum.marinade.finance"
+      ],
+      "id": "c12",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://forum.marinade.finance/t/mip-9-blocklisting-malicious-validators-from-stake-auction-marketplace-to-combat-sandwich-attacks/1716"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "Post-intervention on Solana, elevated-leader exposure share fell to ~2%, but ~20,000 sandwiches/day persist, 96% now cross-block",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c13",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c13",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "Tron's official documentation describes FCFS/FIFO mempool ordering with no reference to front-running or MEV; the 98% front-running-prevention figure traces only to an informal Justin Sun statement, not to Tron's own docs",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org",
+        "developers.tron.network"
+      ],
+      "id": "c14",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c14",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "academic"
+      ],
+      "source_urls": [
+        "https://developers.tron.network/docs/concensus",
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2023-09-01",
+      "claim": "Base op-geth PR #118 (2023-08-22, disables pending-tx filters/subscriptions) was reverted on 2023-09-01; PR #122 (2023-08-23) separately disabled the local txpool for sequencer-fronting RPC nodes",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c15",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/ethereum-optimism/op-geth/pull/118",
+        "https://github.com/ethereum-optimism/op-geth/pull/122"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2024-05",
+      "claim": "A separate 2024 academic study (arXiv:2405.00138) independently found no sandwiching activity on popular rollups, attributing it to the absence of a public pending-tx mempool",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c16",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2405.00138"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "Monad mainnet launched 2025-11-24, giving the paper's study under one year of Monad data vs. Solana's history since March 2020",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c17",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "Author affiliations: Heimbach (Category Labs, which builds Monad), Solmaz (ETH Zurich), Öz (Flashbots, operates MEV-Share), Torres (INESC-ID/IST Lisbon)",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "monad.xyz"
+      ],
+      "id": "c18",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115",
+        "https://www.monad.xyz/announcements/introducing-monad-foundation"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-25",
+      "claim": "The paper is an arXiv-only preprint as of research date, with no conference/journal acceptance found, and a companion GitHub repo with a single commit and zero stars/forks",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org",
+        "github.com"
+      ],
+      "id": "c19",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c19",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "academic",
+        "unknown"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2609.28115",
+        "https://github.com/liobaheimbach/No-Place-to-Hide-An-Analysis-on-Protected-Order-Flow-Sandwich-Attacks"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "Solana: 28,042,725 sandwiches by 8,631 entities, $383.4M gross / $345.2M net profit",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c2",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2025-12",
+      "claim": "\"Sandwiched and Silent\" (arXiv:2512.17602) independently found 2,932 private Ethereum sandwich attacks in Nov-Dec 2024, $293,785.95 attacker profit, using a different, looser detection heuristic than the 2026 paper",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c20",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c20",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2512.17602"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2024-10",
+      "claim": "Flashbots reports private mempools carry roughly half of all Ethereum gas, a share that has nearly doubled since early 2024",
+      "confidence": "medium",
+      "hosts": [
+        "writings.flashbots.net"
+      ],
+      "id": "c21",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c21",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://writings.flashbots.net/2m-protect-users"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2025-06-12",
+      "claim": "SEC found Robinhood violated best-execution duty via PFOF, quantifying $34.1M customer harm and imposing a $65M penalty (2020-12-17); SEC's 2022 order-competition-rule proposal to reform PFOF was withdrawn 2025-06-12 without being finalized",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c22",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c22",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/newsroom/press-releases/2020-321",
+        "https://www.sec.gov/rules-regulations/2025/06/order-competition-rule"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-25",
+      "claim": "Estimated Solana sandwich-profit-to-DEX-volume ratio is ~1.2-1.4 bps (2024-25); Ethereum's ratio is ~0.004 bps (2024) — a ~25-370x gap; both figures are this article's own approximate synthesis from secondary volume estimates, not the paper's own stated ratio",
+      "confidence": "low",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c23",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c23",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2025-05-12",
+      "claim": "Flashbots' SUAVE client repository (suave-geth) was archived (made read-only) on 2025-05-12, years after being pitched as removing centralized actors from block-building",
+      "confidence": "high",
+      "hosts": [
+        "github.com",
+        "writings.flashbots.net"
+      ],
+      "id": "c24",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c24",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/flashbots/suave-geth",
+        "https://writings.flashbots.net/the-future-of-mev-is-suave"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "Ethereum: 30,607 sandwiches by 7 bots, $622,358 gross / $254,566 net; top 2 bots = 78.0% of attacks; all 7 bots likely one entity",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c3",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "Tron: 38,567 sandwiches by 12 bots (4 entities), $901,069 gross / $642,542 net; 2 bots = 77.0% of attacks; 9 of 12 bots share one funding wallet",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c4",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c4",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "Base: 1,889 sandwiches by 4 bots (3 groups), $3,031 gross / $2,416 net",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c5",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c5",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "Arbitrum and Monad show zero persistent sandwich attackers under the paper's H1/H2/H3 methodology",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c6",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c6",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "Ethereum protected sandwiches have median 58 transactions between front leg and victim, 131 between victim and back leg, vs ~1 for public-mempool sandwiches",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c7",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c7",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "66.8% of attributed Ethereum victims appear in at least one OFA hint dataset; 70.4% appear jointly in MEV-Share and MEVBlocker (\"double-hashing\" correlation); 62.2% appear in the Blink whitelisted-searcher dataset",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c8",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c8",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach",
+      "article_created_at": "2026-09-24T20:52:27Z",
+      "article_title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+      "as_of": "2026-09-23",
+      "claim": "9,297 reorged Ethereum blocks exposed 56,730 previously-private swaps; 2,875 were subsequently sandwiched; only 65.9% of stale block bodies were recovered",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c9",
+      "key": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c9",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2609.28115"
+      ],
+      "type": "metric"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1255,
+  "reusable_count": 1263,
   "schema_version": 1
 }

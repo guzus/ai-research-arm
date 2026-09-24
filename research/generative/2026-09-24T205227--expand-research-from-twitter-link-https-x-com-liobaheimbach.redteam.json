@@ -1,0 +1,19 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Solana alone contributes 28,042,725 of the roughly 28.1 million detected sandwiches and $345.2M of the $346M+ net total — north of 99.7% of both counts[^2].",
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Bytecode and deployment analysis indicates all 7 sandwiching bots are very likely operated by a single entity[^2], with just two of those bots responsible for 78.0% of every attack[^2].",
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The 98%-prevention figure that circulates around Tron did not come from that documentation at all; it traces to an informal statement by founder Justin Sun, and the paper quotes it directly before rebutting it: the twelve identified bots land 38,567 sandwiches with per-entity success rates between 74% and 96%.[^2]",
+      "no_contradiction_found": true
+    }
+  ]
+}

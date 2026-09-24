@@ -2942,5 +2942,19 @@
         "source_sha256": "adaf8720fe2a129c247e2fd531343876132fd55fe59f9c5e2d04270c913590d9"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-liobaheimbach",
+    "file": "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-09-24T20:52:27Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/liobaheimbach/status/2103147621166497914\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
