@@ -2,12 +2,13 @@
 slug: federal-ai-policy
 title: Federal AI Policy
 type: theme
-aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic"]
+aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal and state AI governance; Trump rejected international AI governance at UNGA, and a Bloomberg investigation cited AI overreliance in a CENTCOM/Maven strike on a Minab school.
+description: US federal AI governance; the Sanders/Casar Ban Artificial Superintelligence Act paired an ASI ban with an Advanced AI pause the same day the White House directed federal documents to say "super intelligence."
 created_at: 2026-06-03
-timestamp: 2026-09-23T00:00:00Z
+timestamp: 2026-09-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
@@ -1397,6 +1398,79 @@ footing for the first time in the cycle.
   [[palantir]] and [[agentic-ai-security]]
   (Bloomberg via HN; ARA daily digest
   2026-09-23).
+
+## Sanders ASI ban, UNSC, and Australia's escalation (2026-09-24)
+
+- **The Sanders/Casar Ban Artificial
+  Superintelligence Act** landed the same
+  day the White House directed US federal
+  documents to rename the field "super
+  intelligence" — yesterday's UNGA
+  terminology note, now paired with a
+  bill proposing to ban the thing under
+  its new official name. Four separable
+  provisions: ban any AI that "exceeds
+  human cognitive performance and
+  capabilities across most domains";
+  pause "Advanced AI development" until
+  a new federal AI body exists and has
+  published model-review rules; create a
+  cabinet-level Department of Artificial
+  Intelligence; and impose a corporate
+  death penalty or up to 20 years in
+  prison. No Republican co-sponsor had
+  surfaced as of the 16:00 UTC cycle.
+  The enforceable clause is the
+  open-ended pause — the ASI ban
+  triggers on a capability threshold no
+  agency currently has a method to
+  adjudicate (The Verge, Twitter; ARA
+  daily digest 2026-09-24).
+- **[[openai|Altman]] and
+  [[anthropic|Amodei]] addressed the UN
+  Security Council** on AI risk. Altman
+  named recursive self-improvement as
+  the specific concern and said OpenAI
+  has "unilaterally slowed down in the
+  past" and "will do so in the future."
+  OSTP director Michael Kratsios and
+  [[hugging-face|Hugging Face]]'s
+  Clément Delangue also spoke, two days
+  after Trump rejected international AI
+  governance from the UN podium. Quote
+  from one handle transcribing the
+  feed; the UN transcript would fix the
+  wording. See [[openai]] (Twitter; ARA
+  daily digest 2026-09-24).
+- **Australia escalated over the OpenAI
+  Medicare-portal incident.** Beyond the
+  access itself, an official said they
+  raised "Australia's extreme concern"
+  directly with Altman and called both
+  the three-month delay and the manner
+  of notification unacceptable.
+  Response so far: a PM&C-led task
+  force spanning the National Cyber
+  Security Coordinator, the Office of
+  AI, ASD, the Australian AI Safety
+  Institute and Services Australia; a
+  referral to Parliament's Joint Select
+  Committee on AI; and advice being
+  sought on whether offences were
+  committed. See [[openai]] and
+  [[agentic-ai-security]] (Sydney
+  Morning Herald, HN; ARA daily digest
+  2026-09-24).
+- **Semafor named Treasury Secretary
+  Scott Bessent the front-runner for AI
+  czar**, the post Trump said on 9
+  September he would create alongside
+  an "AI Force." Bessent held talks
+  this week with Chinese Vice Premier
+  He Lifeng. The post is unfilled and
+  there is no White House confirmation
+  (Semafor, single-source; ARA daily
+  digest 2026-09-24).
 
 ## Open questions
 

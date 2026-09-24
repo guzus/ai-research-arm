@@ -2,17 +2,18 @@
 slug: meta
 title: Meta
 type: entity
-aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One"]
+aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; Zuckerberg pledged most compute to serving users rather than RSI, citing the Muse delay as unilateral safety work.
+description: Social-platform hyperscaler and Llama maker; Zuckerberg debuted camera-free smart glasses at Connect and briefly showed a standalone Muse Charm.
 created_at: 2026-06-16
-timestamp: 2026-09-17T00:00:00Z
+timestamp: 2026-09-24T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA model ticket — Amodei We Must Pace the Frontier", path: research/models/tickets/anthropic-pace-the-frontier-2026-09.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
@@ -327,3 +328,25 @@ TechCrunch; ARA daily digest 2026-09-16).
   tokens each** for inviter and invitee, **US only**
   (@AIatMeta, @alexandr_wang; ARA daily digest
   2026-09-17).
+
+## Connect: camera-free glasses and Muse Charm (2026-09-24)
+
+- **Zuckerberg's Connect keynote added
+  camera-free frames** pitched at up to
+  **12 hours** of battery, briefly showed
+  a standalone **Muse Charm** device on a
+  lanyard, and said [[muse-code|Muse]] is
+  coming to the glasses with its own
+  email addresses and video chat. This
+  is a hardware-distribution move for
+  the consumer agent this page has
+  tracked since Hatch and the Muse GA
+  — putting Muse on a face and a
+  pendant, not only a phone or desktop.
+  The biometric-glasses class action
+  logged on 2026-09-09 is a live
+  backdrop: camera-free frames dodge
+  one complaint axis without answering
+  the faceprint claim (TechCrunch, The
+  Verge, The Decoder; ARA daily digest
+  2026-09-24).

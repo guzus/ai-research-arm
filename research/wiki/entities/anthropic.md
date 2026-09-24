@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; launched Claude Opus 5.5 at $4/$20 per MTok (AA Index 58) and alleged DeepSeek/Moonshot routed data to Claude, triggering a reported China probe.
+description: AI safety lab behind Claude; its biology lab published the first Claude-found enzyme family (ART) after a ~950-agent search, as Amodei addressed the UN Security Council.
 created_at: 2026-05-24
-timestamp: 2026-09-23T00:00:00Z
+timestamp: 2026-09-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
@@ -2003,3 +2004,77 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   raise. Concentration print, not a new
   Anthropic commitment (TechCrunch; ARA
   daily digest 2026-09-23).
+
+## First wet-lab enzyme, UNSC remarks, and a 1 GW lease talk (2026-09-24)
+
+- **Anthropic's biology lab published its
+  first wet-lab result.** Roughly **950
+  Claude agents** searched **1.94B protein
+  clusters** for about **21.5 hours**
+  (~215.6M tokens), recovered **198,290
+  reverse-transcriptase clusters**, and
+  flagged one sitting next to a tandem
+  repeat array. Bench work confirmed the
+  system produces short RNAs. Anthropic
+  named the family **ART** and released a
+  preprint; function is still unknown.
+  The lab likens the array structurally
+  — not functionally — to CRISPR. Feng
+  Zhang (MIT/Broad) called it
+  "genuinely intriguing and merits
+  further investigation." Critics noted
+  Anthropic's own text says scientists
+  review every hypothesis and run all
+  lab work. This is the first confirmed
+  wet-lab output from the
+  [[claude-science]] workbench, not a
+  protein-binder-on-paper result. HN
+  **389 / 406**, the most-commented item
+  on the evening front page (Anthropic,
+  The Verge, TechCrunch, HN; ARA daily
+  digest 2026-09-24).
+- **Amodei addressed the UN Security
+  Council** the same day [[openai|Altman]]
+  named recursive self-improvement as
+  the specific concern. The session also
+  heard OSTP director Michael Kratsios
+  and [[hugging-face|Hugging Face]]'s
+  Clément Delangue, two days after Trump
+  rejected international AI governance
+  from the UN podium. See
+  [[federal-ai-policy]] (Twitter,
+  single-handle transcription of the
+  feed; ARA daily digest 2026-09-24).
+- **The Information said Anthropic is
+  negotiating up to 1 GW of directly
+  leased capacity** with Apollo-controlled
+  Stream Data Centers, with [[google]]
+  discussed as a credit backstop and the
+  halls potentially filled with
+  Google/Broadcom TPUs. The same item
+  puts the requirement at at least
+  **$40B** and Anthropic's compute
+  commitments at **$531B** over eleven
+  months. Early talks; no party on the
+  record. See [[ai-capex]] (The
+  Information via Twitter; ARA daily
+  digest 2026-09-24).
+- **Claude Code cloud sessions left
+  research preview** and went generally
+  available with one-time credits
+  (**$100** Pro / **$250** Max, claimable
+  via `/claim-credit` until 7 October).
+  A separate HN thread (**435 / 242**)
+  held that Claude Code reads
+  `AGENTS.md` only when telemetry is
+  on — the loader is a built-in plugin
+  gated on a remote feature flag that
+  defaults off — so
+  `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1`
+  or `DISABLE_TELEMETRY=1` silently
+  skips a local `AGENTS.md`. The
+  `[fixed]` in the HN title is an
+  editorial edit, not a retraction.
+  See [[dynamic-workflows]] and
+  [[agentic-ai-security]] (ARA daily
+  digest 2026-09-24).
