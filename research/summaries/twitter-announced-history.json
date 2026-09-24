@@ -2,60 +2,6 @@
   {
     "backfilled": true,
     "category": "business",
-    "delivered_at": "2026-05-13 21:00 UTC",
-    "headline": "ANTHROPIC OVERTAKES OPENAI IN RAMP BUSINESS-ADOPTION FOR FIRST TIME \u2014 34.4% VS 32.3%",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-13-twitter-21h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2054632325531558319"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 21:00 UTC",
-    "headline": "CEREBRAS PRE-MARKET ON BULLPEN AT ~$295/SHARE \u2014 60% PREMIUM TO $185 IPO PRICE",
-    "source": "@BullpenFi",
-    "source_file": "research/summaries/2026-05-13-twitter-21h-headlines.json",
-    "url": "https://x.com/BullpenFi/status/2054683130878304266"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-13 21:00 UTC",
-    "headline": "VERCEL AI GATEWAY: GOOGLE KING OF PRODUCTION SCALE, ANTHROPIC DOMINATES CODING & SPEND, OPENAI GROWING FAST SINCE GPT-5.4",
-    "source": "@rauchg",
-    "source_file": "research/summaries/2026-05-13-twitter-21h-headlines.json",
-    "url": "https://x.com/rauchg/status/2054683691380486316"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-13 21:00 UTC",
-    "headline": "GEMINI 3 FLASH LEADS ACROSS AI MODELS IN TOKEN USAGE \u2014 VERCEL AI GATEWAY VIA BUSINESS INSIDER",
-    "source": "@rauchg",
-    "source_file": "research/summaries/2026-05-13-twitter-21h-headlines.json",
-    "url": "https://x.com/rauchg/status/2054678529383219476"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 21:00 UTC",
-    "headline": "ANTHROPIC ARR REACHES $44B \u2014 SURPASSING OPENAI PER AGGREGATOR ESTIMATES (\u26a0 SINGLE-SOURCE)",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-13-twitter-21h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2054634191455408173"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-14 01:00 UTC",
-    "headline": "THEO ESCALATES \u2014 CLAUDE CODE SDK RATE-LIMIT CUT NOW '40X', CALLS ANTHROPIC STATEMENTS 'A LIE ON A TIMER'",
-    "source": "@theo",
-    "source_file": "research/summaries/2026-05-14-twitter-01h-headlines.json",
-    "url": "https://x.com/theo/status/2054731856248283318"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
     "delivered_at": "2026-05-14 01:00 UTC",
     "headline": "CONDUCTOR DISCLOSES ANTHROPIC PROGRAMMATIC CREDIT CAP \u2014 $200/MO ON MAX SUBSCRIPTION, THEN API COSTS",
     "source": "@charlieholtz",
@@ -24230,5 +24176,47 @@
     "headline": "UK REGULATOR PROPOSES CHATGPT AND PERPLEXITY CHOICE SCREEN ON ANDROID AND CHROME SETUP",
     "source": "@mark_k",
     "url": "https://x.com/mark_k/status/2103106161159389194"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-24 21:27:27 UTC",
+    "headline": "AKAMAI SIGNS $11.6B SEVEN-YEAR CPU COMPUTE DEAL WITH ANTHROPIC, ISSUES WARRANT FOR UP TO 5% OF ITSELF",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2103232350348001701"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-24 21:27:27 UTC",
+    "headline": "GOOGLE, OPENAI, ANTHROPIC ADVANCING 'SAFA' FRONTIER-SAFETY STANDARDS BODY WITH NO GOVERNMENT OVERSIGHT",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2103175156088606918"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-24 21:27:27 UTC",
+    "headline": "ANTHROPIC TO CHARGE FOR SAFEGUARD-BLOCKED REQUESTS IN BIOLOGY, DISTILLATION AND FRONTIER LLM CATEGORIES",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2103170368794185758"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-24 21:27:27 UTC",
+    "headline": "DEEPSEEK PREPARING $7.5B RAISE AT $75B VALUATION ON $1B ANNUALIZED REVENUE \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2103182752027664854"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-24 21:27:27 UTC",
+    "headline": "ANTHROPIC SHARE OF VERCEL AI GATEWAY SPEND FALLS 69% TO 40% IN TWO MONTHS; OPENAI NOW LEADS ON TOKENS",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2103216656747262419"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-24 21:27:27 UTC",
+    "headline": "PICHAI CONFIRMS PROJECT SUNCATCHER TPUs FLY ON SPACEX TRANSPORTER-18; LASER-LINK PAIR SET FOR 2027",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2103213024668721308"
   }
 ]
