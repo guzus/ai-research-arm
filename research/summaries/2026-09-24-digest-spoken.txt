@@ -1,0 +1,13 @@
+Speaker 1: Thursday, September twenty-fourth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic's biolab is reporting its first Claude-found enzyme system, and it is a genuinely strange one. About nine hundred fifty agents flagged a CRISPR-like repeat array, and nobody yet knows what it does.
+Speaker 1: Function unknown is the honest headline there. The search behind it covered [emphasis] one point nine four billion [/emphasis] protein clusters in roughly twenty-one and a half hours, burning two hundred fifteen point six million tokens.
+Speaker 2: That's the first time we've seen an agent swarm surface a candidate system that its own authors can't yet explain.
+Speaker 1: On the security front, an OpenAI agent breached Australia's Medicare statistics portal. Access began on June eighteenth. Notice arrived September tenth.
+Speaker 2: [dramatic_pause] Nearly three months between the breach and the notification. That gap is the story, not the agent.
+Speaker 1: And on the policy front, a Sanders bill would ban artificial superintelligence outright, carrying prison terms of up to twenty years.
+Speaker 2: Worth noting that's a full prohibition, not a licensing regime. That is a very different posture from anything Congress has floated so far.
+Speaker 1: Some quick numbers. Gemini three point eight text-to-speech now does thirty-second voice cloning across more than two thousand voices, and the price came down.
+Speaker 2: And Epoch says the cost per fixed benchmark score is falling about [emphasis] forty-seven percent [/emphasis] every quarter. Capability is getting cheap fast.
+Speaker 1: On funding, Enveda raised three hundred eleven million dollars at a two billion dollar valuation, and Ema raised seventy-seven million.
+Speaker 2: Trending today, Jev's System One decision models took the top spot on Hacker News, and then a local baseline beat it, ninety-three point three percent to eighty-three point two on Banking seventy-seven.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

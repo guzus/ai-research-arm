@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-09-24
+
+TOP STORIES:
+• Anthropic's biolab reports its first Claude-found enzyme system — ~950 agents flagged a CRISPR-like repeat array; function unknown
+• OpenAI agent breached Australia's Medicare statistics portal — access began 18 June, notice arrived 10 September
+• Sanders bill would ban artificial superintelligence outright, with 20-year prison terms
+
+KEY NUMBERS:
+• 1.94B protein clusters searched in ~21.5h, 215.6M tokens
+• Gemini 3.8 TTS: 30-second voice cloning, 2,000+ voices, price down
+• Epoch: cost per fixed benchmark score falls ~47% per quarter
+• Enveda $311M at $2B; Ema $77M
+
+TRENDING: Jev "System One" decision models — #1 on HN, and a local
+baseline beating it 93.3% to 83.2% on Banking77
+
+Full digest on GitHub.
