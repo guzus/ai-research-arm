@@ -1,0 +1,244 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "\"No Place to Hide\" finds $346M+ net attacker profit and 28M+ sandwich attacks against protected order flow across 6 chains, Jul 2023-Jun 2026",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/abs/2609.28115", "https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic", "academic"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c2",
+      "claim": "Solana: 28,042,725 sandwiches by 8,631 entities, $383.4M gross / $345.2M net profit",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c3",
+      "claim": "Ethereum: 30,607 sandwiches by 7 bots, $622,358 gross / $254,566 net; top 2 bots = 78.0% of attacks; all 7 bots likely one entity",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c4",
+      "claim": "Tron: 38,567 sandwiches by 12 bots (4 entities), $901,069 gross / $642,542 net; 2 bots = 77.0% of attacks; 9 of 12 bots share one funding wallet",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c5",
+      "claim": "Base: 1,889 sandwiches by 4 bots (3 groups), $3,031 gross / $2,416 net",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c6",
+      "claim": "Arbitrum and Monad show zero persistent sandwich attackers under the paper's H1/H2/H3 methodology",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c7",
+      "claim": "Ethereum protected sandwiches have median 58 transactions between front leg and victim, 131 between victim and back leg, vs ~1 for public-mempool sandwiches",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c8",
+      "claim": "66.8% of attributed Ethereum victims appear in at least one OFA hint dataset; 70.4% appear jointly in MEV-Share and MEVBlocker (\"double-hashing\" correlation); 62.2% appear in the Blink whitelisted-searcher dataset",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-23",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c9",
+      "claim": "9,297 reorged Ethereum blocks exposed 56,730 previously-private swaps; 2,875 were subsequently sandwiched; only 65.9% of stale block bodies were recovered",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c10",
+      "claim": "Axiom sets jitodontfront on 98.5% of its 21.5M sandwiched Solana victim transactions, but only 16.5% of those sandwiches carried a Jito tip",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.28115", "https://docs.jito.wtf/lowlatencytxnsend/"],
+      "source_tiers": ["academic", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c11",
+      "claim": "Jito suspended its Block Engine mempool (\"MempoolStream\") on 2024-03-08, citing sandwich-attack risk it could not otherwise engineer around",
+      "type": "event",
+      "source_urls": ["https://www.coindesk.com/business/2024/03/08/solana-client-developer-jito-announces-end-of-mempool-function"],
+      "source_tiers": ["secondary"],
+      "as_of": "2024-03-08",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "Marinade DAO's MIP.9 (2025-02-07) blocklisted 73 validators (~1.27M SOL, ~15.3% of relevant stake) from its Stake Auction Marketplace for repeated sandwiching",
+      "type": "event",
+      "source_urls": ["https://forum.marinade.finance/t/mip-9-blocklisting-malicious-validators-from-stake-auction-marketplace-to-combat-sandwich-attacks/1716"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-02-07",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "Post-intervention on Solana, elevated-leader exposure share fell to ~2%, but ~20,000 sandwiches/day persist, 96% now cross-block",
+      "type": "metric",
+      "source_urls": ["https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "single-source"
+    },
+    {
+      "id": "c14",
+      "claim": "Tron's official documentation describes FCFS/FIFO mempool ordering with no reference to front-running or MEV; the 98% front-running-prevention figure traces only to an informal Justin Sun statement, not to Tron's own docs",
+      "type": "comparison",
+      "source_urls": ["https://developers.tron.network/docs/concensus", "https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["primary", "academic"],
+      "as_of": "2026-09-23",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c15",
+      "claim": "Base op-geth PR #118 (2023-08-22, disables pending-tx filters/subscriptions) was reverted on 2023-09-01; PR #122 (2023-08-23) separately disabled the local txpool for sequencer-fronting RPC nodes",
+      "type": "event",
+      "source_urls": ["https://github.com/ethereum-optimism/op-geth/pull/118", "https://github.com/ethereum-optimism/op-geth/pull/122"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2023-09-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "A separate 2024 academic study (arXiv:2405.00138) independently found no sandwiching activity on popular rollups, attributing it to the absence of a public pending-tx mempool",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/abs/2405.00138"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-05",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "Monad mainnet launched 2025-11-24, giving the paper's study under one year of Monad data vs. Solana's history since March 2020",
+      "type": "event",
+      "source_urls": ["https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "Author affiliations: Heimbach (Category Labs, which builds Monad), Solmaz (ETH Zurich), Öz (Flashbots, operates MEV-Share), Torres (INESC-ID/IST Lisbon)",
+      "type": "definition",
+      "source_urls": ["https://arxiv.org/html/2609.28115", "https://www.monad.xyz/announcements/introducing-monad-foundation"],
+      "source_tiers": ["academic", "primary"],
+      "as_of": "2026-09-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c19",
+      "claim": "The paper is an arXiv-only preprint as of research date, with no conference/journal acceptance found, and a companion GitHub repo with a single commit and zero stars/forks",
+      "type": "other",
+      "source_urls": ["https://arxiv.org/abs/2609.28115", "https://github.com/liobaheimbach/No-Place-to-Hide-An-Analysis-on-Protected-Order-Flow-Sandwich-Attacks"],
+      "source_tiers": ["academic", "unknown"],
+      "as_of": "2026-09-25",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c20",
+      "claim": "\"Sandwiched and Silent\" (arXiv:2512.17602) independently found 2,932 private Ethereum sandwich attacks in Nov-Dec 2024, $293,785.95 attacker profit, using a different, looser detection heuristic than the 2026 paper",
+      "type": "comparison",
+      "source_urls": ["https://arxiv.org/abs/2512.17602"],
+      "source_tiers": ["academic"],
+      "as_of": "2025-12",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c21",
+      "claim": "Flashbots reports private mempools carry roughly half of all Ethereum gas, a share that has nearly doubled since early 2024",
+      "type": "metric",
+      "source_urls": ["https://writings.flashbots.net/2m-protect-users"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-10",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c22",
+      "claim": "SEC found Robinhood violated best-execution duty via PFOF, quantifying $34.1M customer harm and imposing a $65M penalty (2020-12-17); SEC's 2022 order-competition-rule proposal to reform PFOF was withdrawn 2025-06-12 without being finalized",
+      "type": "regulatory",
+      "source_urls": ["https://www.sec.gov/newsroom/press-releases/2020-321", "https://www.sec.gov/rules-regulations/2025/06/order-competition-rule"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-06-12",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c23",
+      "claim": "Estimated Solana sandwich-profit-to-DEX-volume ratio is ~1.2-1.4 bps (2024-25); Ethereum's ratio is ~0.004 bps (2024) — a ~25-370x gap; both figures are this article's own approximate synthesis from secondary volume estimates, not the paper's own stated ratio",
+      "type": "forecast",
+      "source_urls": ["https://arxiv.org/html/2609.28115"],
+      "source_tiers": ["academic"],
+      "as_of": "2026-09-25",
+      "confidence": "low",
+      "risk": "volatile"
+    },
+    {
+      "id": "c24",
+      "claim": "Flashbots' SUAVE client repository (suave-geth) was archived (made read-only) on 2025-05-12, years after being pitched as removing centralized actors from block-building",
+      "type": "event",
+      "source_urls": ["https://github.com/flashbots/suave-geth", "https://writings.flashbots.net/the-future-of-mev-is-suave"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2025-05-12",
+      "confidence": "high",
+      "risk": "stable"
+    }
+  ]
+}
