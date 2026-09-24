@@ -3,7 +3,7 @@ slug: gemini-3-5-transcribe-2026-08
 title: Gemini 3.5 Transcribe — Google speech-to-text model with streaming and post-processing
 company: Google / DeepMind
 model: Gemini 3.5 Transcribe
-status: released
+status: closed
 status_note: |
   **Shipped 2026-08-26 and available the same day.** Announced in parallel
   by **@GoogleAI**, **@GoogleDeepMind**, **@OfficialLoganK** (Gemini API
@@ -70,12 +70,14 @@ sources:
   - "@demishassabis"
   - "@testingcatalog"
 created_at: 2026-08-27
-updated_at: 2026-08-27
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-24
+closed_at: 2026-09-24
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-08-27
     change: "Created — Google shipped Gemini 3.5 Transcribe on 2026-08-26, announced in parallel by @GoogleAI, @GoogleDeepMind, @OfficialLoganK, @_philschmid and @sundarpichai (RT'd by @demishassabis), and available the same day. Capabilities per @OfficialLoganK: smart transcription, function calling, lower WER, custom vocabulary, multi-speaker identification, 85+ languages, realtime streaming. First-party numbers per @_philschmid: 2.6% WER non-streaming, 4.0% streaming, 70% reduction in final-transcription time versus Chirp 3, automatic removal of disfluencies and correct handling of alphanumeric tokens like postal codes and IDs. Two model ids ship — gemini-3.5-transcribe-live for sub-second bidirectional streaming via the Gemini Live API, and gemini-3.5-transcribe for recorded processing via the Interactions API. Day-one distribution per @GoogleAI and @testingcatalog: Gemini app on macOS, Gboard on Android, Google AI Studio, the Gemini API, Antigravity and the Gemini Enterprise Agent Platform in public preview, with Chrome and Gemini Enterprise for Customer Experience announced as coming; @OfficialLoganK says it already powers many Google product experiences. Status released, verification confirmed on multiple first-party institutional accounts. Explicitly NOT established: every quality claim is Google-published on unstated test sets, with no neutral evaluation and no third-party firsthand report in-window. Earns a ticket in this lane because function calling plus sub-second streaming makes it an agent-interface component rather than dictation — the same surface as [[gemini-omni-api-2026-06]]."
+  - ts: 2026-09-24
+    change: "Closed — released-and-aged. Gemini 3.5 Transcribe shipped 2026-08-26; 28 days public and now one component of a complete, actively-shipping Google audio stack rather than a standalone event. The rest of that stack is tracked live: [[google-gemini-3-8-live-2026-09]] (full-duplex live audio), [[google-gemini-3-8-flash-tts-2026-09]] (speech synthesis, shipped 2026-09-23) and [[google-lyria-3-5-2026-07]] (music). A Gemini 3.8 Transcribe would open a successor ticket."
 ---
 
 **Gemini 3.5 Transcribe** is Google's new speech-to-text model, announced

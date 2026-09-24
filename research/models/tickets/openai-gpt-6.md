@@ -92,7 +92,44 @@ status_note: |
   below the flagship rather than a successor to it — the same shape as the
   Flash/Live split Google shipped this week
   ([[google-gemini-3-8-live-2026-09]]) — with DevDay the venue in frame.
-expected: "RELEASED (Astra). GA across ChatGPT Plus/Pro/Business/Enterprise, the OpenAI API and AWS as of 2026-09-04. Open: GPT-6 Sol, now SIGHTED in API/Arena system tests but not announced — watch for an OpenAI post, model card or pricing; Terra and Luna still unsupported by anything but one relay; parameter count and the 'looped transformer' architecture claim remain unverified rumor."
+
+  **2026-09-22 — SOL AND LUNA SHIP. The family is now three named, released
+  models.** @OpenAI, 18:12 UTC: "Please welcome GPT-6 Sol and GPT-6 Luna to the
+  GPT-6 universe. GPT-6 Sol and Luna build on the advances behind GPT-6 Astra,
+  bringing much of its strengths into faster and more affordable models to
+  support work at scale. We've also made caching and inference more efficient,
+  and we're passing the savings directly to you: **50% lower API prices for Sol
+  and Luna compared with GPT-5.6 promotional pricing**." Availability the same
+  day: ChatGPT Work and Codex for Plus/Pro/Business/Enterprise/Edu, both in the
+  API, and Luna in the desktop app for Free and Go users. @sama: "big
+  improvements on intelligence, alignment, work output, coding, computer use…
+  half the price per token, and even less per task."
+
+  This resolves the ticket's longest-standing open item. The
+  Sol/Terra/Luna family relay (@mark_k, 2026-09-06) is now **two-thirds
+  confirmed by OpenAI itself** — Terra remains unshipped and unnamed in any
+  company post. The 2026-09-16 sighting was correct; the 6x speed figure
+  attached to it was never adopted here and is still unverified.
+
+  **Reception is genuinely split, and that is the honest record.** For:
+  @simonw calls Luna "half the price of 5.6 Luna, which was already an
+  astonishingly cheap model" and his favourite for product features;
+  @AravSrinivas says Sol "outperforms Opus 5 at one-fifth the price" on
+  Perplexity's WANDR evals and made it the Light-effort orchestrator;
+  @danshipper made Sol his Codex daily driver. Against: @mark_k (2026-09-23)
+  reports reactions "very mixed… in benchmarks and real-world coding, it seems
+  nowhere close to Astra or Opus 5.5, despite OpenAI's claims. Is it just a
+  souped-up Terra model after all?"; @davis7 calls both "good, but kinda
+  boring." @rauchg's Next.js eval has Sol at 97%, tied with Opus 5.5 and Fable
+  5.1.
+
+  **2026-09-23 — ChatGPT Voice rebuilt on the family.** @OpenAI, 17:12 UTC:
+  Voice can now use plugins (email, calendar, Slack), is "powered by GPT-6
+  Astra, Sol, and Luna", and works in ChatGPT Work on web and mobile; rolling
+  out globally that day. This is the first product surface to route across all
+  three family members by tier, which is what the fast/cheap-tier inference
+  recorded above predicted.
+expected: "RELEASED — Astra (2026-09-03/04), Sol and Luna (2026-09-22), all GA in ChatGPT and the API. Open: TERRA, the one family member @mark_k's relay named that OpenAI has still never mentioned; parameter count and the 'looped transformer' architecture claim remain unverified rumor; DevDay releases trailed by relays are untracked here until announced."
 labels:
   - openai
   - frontier-model
@@ -120,8 +157,17 @@ sources:
   - https://x.com/AndrewCurran_/status/2099881354494361835
   - https://x.com/yota0x_/status/2100177184262398146
   - "@paul010318"
+  - https://x.com/OpenAI/status/2102460975790137662
+  - https://x.com/OpenAI/status/2102460995180663204
+  - https://x.com/OpenAI/status/2102808325742322002
+  - https://x.com/sama/status/2102464672519815512
+  - https://x.com/simonw/status/2102546103984079131
+  - https://x.com/AravSrinivas/status/2102474729127022799
+  - https://x.com/rauchg/status/2102519097770885231
+  - https://x.com/mark_k/status/2102801097320693948
+  - https://x.com/davis7/status/2102973164494139663
 created_at: 2026-07-27
-updated_at: 2026-09-16
+updated_at: 2026-09-24
 closed_at: null
 closed_reason: null
 history:
@@ -139,6 +185,8 @@ history:
     change: "Cadence, a size correction, and the first post-launch quality complaints. CADENCE (@kimmonismus, 2026-09-13 08:01 UTC, ~2.5K likes): 'GPT-5.6 Sol launched on July 9. GPT-6 Astra began rolling out on September 3. Exactly eight weeks apart' — which dates the predecessor's launch and is the basis on which [[openai-gpt-5-6]] was closed released-and-aged this cycle. He adds a forward worry rather than a fact: that the slowdown push may make Astra 'the last release to follow its predecessor so quickly.' SIZE (@scaling01, 2026-09-14 02:16 UTC, ~2.3K likes): 'Astra is much smaller than I thought / looped transformers are going to eat the world' — relevant because this ticket carries the looped-transformer architecture claim as unverified; a well-followed account revising DOWNWARD is weak evidence for the architecture and none at all for a parameter count. @teortaxesTex, same window, is blunt that the surrounding numbers are invented: 'neither Astra nor Fable are \"10T\". stop soyfacing over speculative model sizes, they're very tenuously related to capability now.' No parameter count is adopted here. QUALITY COMPLAINTS (@deoriginalme, 2026-09-14 12:35 UTC): 'Users are already reporting a noticeable drop in GPT-6 Astra's performance just a week after its launch' — single unsourced roundup account, recorded as a claim to watch, NOT as a measured regression. CAPABILITY, firsthand and better-sourced (@simonw, 2026-09-13 00:19 UTC): ChatGPT Work and GPT-6 Astra on a 'Max' tier produced a 5K/10K circular running route from an address using OSM data, returned through a 'visualize' skill as an HTML fragment using D3 — which independently attests a 'Max' reasoning tier in the product UI. Standing assessment from @emollick (2026-09-13): 'GPT-6 Astra and Fable 5.1 are already enough for transformative impact in large sections of the economy. They can reliably do weeks worth of human work when properly guided & harnessed.' Status stays released."
   - ts: 2026-09-16
     change: "GPT-6 SOL SURFACES AS AN ARTIFACT — the first family member beyond Astra with anything concrete behind it. @AndrewCurran_ (2026-09-15 15:21 UTC): 'GPT-6 Sol is incoming.' @yota0x_ (2026-09-16 10:57 UTC) supplies the artifact: 'GPT-6 Sol just appeared in OpenAI's API and Arena system tests… no official announcement yet', claiming 28K tokens in roughly 3 minutes against Astra's 19 minutes on the same task (~6x faster) and positioning it 'below Astra but above GPT-5.6 Sol'. This is the first independent support for @mark_k's 2026-09-06 relay that GPT-6 is a family with Sol/Terra/Luna to follow, and it is why this stays on THIS ticket: the expected: field has carried the rest of the family as the named open item since 2026-09-07, so Sol is in declared scope rather than a new artifact — it gets its own ticket only if it launches as a separately-priced product. THE SPEED CLAIM IS NOT ADOPTED. @paul010318 published the contra the same morning, separating what changed from what is assumed: @sama's 2026-09-15 14:46 UTC teaser ('big ship this week and then for devday') named no model and no date; a knowledge-cutoff probe returned 'Claude Opus 4.7' on one instance and '4.1' on another, so instance-level probing is not evidence; and 'the recent buzz around a potential GPT-6 Sol release hinges on unverified signals — not shipped capabilities.' The SIGHTING is the evidence; the 6x figure is one account's single-task measurement with no methodology and is recorded as a claim only. Ticket status stays RELEASED (Astra shipped 2026-09-03/04) — Sol does not move it, because a system-test sighting of a sibling is not a release. Recorded as inference and not fact: Sol positioned below the flagship reads as a fast/cheap tier rather than a successor, the same shape as the Flash/Live split Google shipped this week ([[google-gemini-3-8-live-2026-09]]), with DevDay the venue in frame."
+  - ts: 2026-09-24
+    change: "SOL AND LUNA SHIPPED — the ticket's longest-standing open item resolves, and the 2026-09-16 sighting is vindicated. @OpenAI, 2026-09-22 18:12 UTC: 'Please welcome GPT-6 Sol and GPT-6 Luna to the GPT-6 universe… faster and more affordable models to support work at scale… 50% lower API prices for Sol and Luna compared with GPT-5.6 promotional pricing.' Rolled out the same day in ChatGPT Work and Codex for Plus/Pro/Business/Enterprise/Edu, both in the API, Luna in the desktop app for Free and Go. @sama: improvements on intelligence, alignment, work output, coding and computer use, 'half the price per token, and even less per task.' The @mark_k Sol/Terra/Luna family relay of 2026-09-06 is now two-thirds confirmed by OpenAI itself; TERRA has still never been named in an OpenAI post and becomes the ticket's remaining open item. The ~6x speed claim from the 2026-09-16 sighting was never adopted here and is still unverified. Then 2026-09-23 17:12 UTC, @OpenAI rebuilt ChatGPT Voice on the family: plugins for email/calendar/Slack, 'powered by GPT-6 Astra, Sol, and Luna', live in ChatGPT Work on web and mobile, rolling out globally — the first product surface routing across all three tiers, which is what this ticket's recorded fast/cheap-tier inference predicted. Status stays RELEASED (it was already released on Astra); verification stays confirmed. Reception logged split rather than smoothed: @simonw (Luna 'astonishingly cheap', his pick for product features), @AravSrinivas (Sol beats Opus 5 at one-fifth the price on Perplexity WANDR evals, now the Light-effort orchestrator) and @danshipper (Sol his Codex daily driver) on one side; @mark_k on 2026-09-23 reporting reactions 'very mixed… nowhere close to Astra or Opus 5.5, despite OpenAI's claims. Is it just a souped-up Terra model after all?' and @davis7 calling them 'good, but kinda boring' on the other. @rauchg's Next.js eval puts Sol at 97%, tied with Opus 5.5 ([[anthropic-opus-5-5-2026-09]]) and Fable 5.1. Both launched within 90 minutes of Opus 5.5 on 2026-09-22."
 ---
 
 **GPT-6** is the presumed name for OpenAI's next flagship model

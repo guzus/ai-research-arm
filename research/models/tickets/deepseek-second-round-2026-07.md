@@ -40,8 +40,11 @@ sources:
   - https://x.com/AShmueil/status/2077392771615187099
   - "@guo_lin99725"
   - https://x.com/rohanpaul_ai/status/2081212716224778680
+  - https://x.com/jukan05/status/2103010622019699076
+  - https://x.com/rohanpaul_ai/status/2103056580128497793
+  - https://x.com/jukan05/status/2103009658839638487
 created_at: 2026-07-16
-updated_at: 2026-07-26
+updated_at: 2026-09-24
 closed_at: null
 closed_reason: null
 history:
@@ -49,6 +52,8 @@ history:
     change: "Created — Bloomberg (via @haricinews, 2026-07-15 14:00 UTC) reports DeepSeek preparing a second, distinct funding round of up to $7.4B targeting overseas (Middle East) dollar capital, aiming to file IPO paperwork this year or early next year for a mainland China STAR Market listing by 2027. @AShmueil independently put the target valuation at ~$74B (up from ~$66.6B post-money in the first round, [[deepseek-funding-round-2026-05]]); @guo_lin99725 independently cited '50B yuan at 500B yuan valuation,' consistent in magnitude → status confirmed (multi-source convergence), verification partial (no DeepSeek primary). The Information's separate 'tenfold valuation increase' claim could not be reconciled with Bloomberg's ~10-15% figure — flagged as unreconciled, not added to the headline figure."
   - ts: 2026-07-26
     change: "@rohanpaul_ai reports the second round has been paused before investors signed new agreements, still targeting the ~$74B valuation reported 2026-07-16. Single-relay coverage in this window; status stays confirmed (underlying round is real, per the 2026-07-16 multi-source convergence) but status_note/expected updated to reflect the pause."
+  - ts: 2026-09-24
+    change: "FIRST REVENUE FIGURE, and a compute disclosure that bears on the raise. @jukan05, 2026-09-24, citing The Information: DeepSeek's ARR has reached $1 billion; the company allocates 70% of compute to training and 30% to inference; and it is running inference for its smaller models on NVIDIA gaming GPUs to free training capacity amid the shortage. @rohanpaul_ai quotes the same reporting more cautiously — '[Liang] told investors that DeepSeek's internal tests show its smaller models can run well on graphics chips designed for gaming' — i.e. a pitch to investors about test results, not a confirmed production deployment, and that weaker reading is the one adopted here. Recorded on this ticket rather than a new one because both items are material to the round it tracks: $1B ARR is the first public revenue anchor for a ~$71-74B ask, and the 70/30 split plus gaming-GPU substitution is a direct answer to the compute-constraint objection an investor would raise. Status stays confirmed, verification stays partial — single outlet via two relays, no DeepSeek statement, and no update on whether the paused round has resumed. Unverified adjacent claim, not adopted: @jukan05's suggestion that this explains RTX 5090 retail scarcity. Compare [[deepseek-huawei-ascend-950dt-2026-09]] for the domestic-silicon leg of the same compute problem, and note the concurrent regulatory exposure at [[china-deepseek-moonshot-data-probe-2026-09]]."
 ---
 
 **DeepSeek** is preparing a **second, distinct funding round** — up to

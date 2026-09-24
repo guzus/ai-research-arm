@@ -39,8 +39,12 @@ sources:
   - "@scaling01"
   - "@morganlinton"
   - "@mycomradio"
+  - https://x.com/troyluhman/status/2102839041737867638
+  - https://x.com/eric_luhman1/status/2102838938016862448
+  - https://x.com/mark_k/status/2103082138417700890
+  - https://x.com/elonmusk/status/2102839221593710678
 created_at: 2026-06-18
-updated_at: 2026-07-21
+updated_at: 2026-09-24
 closed_at: null
 closed_reason: null
 history:
@@ -50,6 +54,8 @@ history:
     change: "Named + specs firmed: Cursor is shipping Composer 3 — a 1.5T-param model trained from scratch on xAI's Colossus (100K+ NVIDIA GPUs, Memphis), Cursor's first fully self-built model (no third-party base), ships 'within weeks' (@mycomradio relay). The 1.5T/100k+-GPU/Colossus/ships-in-Cursor shape matches the Compile unveil, so Composer 3 is the apparent name of the jointly-trained model; 'Cursor's first fully self-built model' disambiguates it from xAI Grok 4.3 (resolving the prior conflation risk toward Composer 3 = the Cursor-branded jointly-trained model). Title/model field updated to Composer 3 (slug unchanged). Still no official model card (evals) or firm ship date; specs single-relayed → status stays in-testing, verification stays partial."
   - ts: 2026-07-21
     change: "Leak (@mark_k, quoting @LuminaXspace): a leaked Cursor checkpoint shows Composer 3 being tested under the internal codename 'Vega,' with fast/medium/high/xhigh reasoning tiers and six internal variants — suggesting public release may be imminent. Single-source leak, no official Cursor confirmation or ship date yet → status stays in-testing, verification stays partial."
+  - ts: 2026-09-24
+    change: "TALENT SIGNAL, no change to the model's status. Two senior ex-OpenAI researchers announced on 2026-09-23 that they have joined the Cursor/SpaceXAI effort, self-reported and therefore primary: @troyluhman ('excited to be starting a new role at Cursor/SpaceXAI! I will be working on long term research with @ellev3n11 and the amazing team here') and @eric_luhman1 ('excited to join the amazing team at @SpaceXAI'). @mark_k identifies them as the Luhman brothers, two former OpenAI engineers who worked on Sora — that attribution is a relay read, not self-stated, and is recorded as such. @elonmusk posted 'SpaceXAI' the same hour. Status stays IN-TESTING and verification stays partial: hiring is not shipping, and this ticket's open item is unchanged — Composer 3 still has no official Cursor model card, no evals, and no firm ship date, roughly two months after being described as shipping 'within weeks'. Logged because the hires are on LONG-TERM RESEARCH rather than the Composer 3 launch, which is weak evidence that the joint effort is being staffed as a durable lab rather than a one-model collaboration. Video-generation provenance is worth noting against [[katzenberg-ai-video-startup-2026-09]], which tracks a different ex-Sora departure."
 ---
 
 At Cursor's **Compile** event on **2026-06-16**, CEO **Michael Truell**
