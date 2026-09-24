@@ -2955,6 +2955,24 @@
     "prompt": "Seed Twitter/X URL: https://x.com/liobaheimbach/status/2103147621166497914\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-09-24T210123--expand-research-from-twitter-link-https-x-com-liobaheimbach.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "「숨을 곳이 없다」: '보호된' 암호화폐 거래가 여전히 샌드위치 당하는 이유",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-09-24T21:01:23Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-liobaheimbach",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-09-24T21:01:23Z",
+        "source_file": "research/generative/2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach.ara.md",
+        "source_sha256": "a8bcc202422dbae592e22784901d60a2226d9ec26d8192a75dbc0826940280f0"
+      }
+    }
   }
 ]
