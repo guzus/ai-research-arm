@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-24
+
+TOP 5 PAPERS:
+• InternW0 — Shanghai AI Lab physical world model; 7.2k h; MoT video+action; MOF + pipetting
+• Hunyuan-A13B — Tencent 80B-A13B MoE; 20T tokens; dual-mode CoT
+• KITE — StepFun; KV-invariant expansion; 67B SST cheaper than 63B classic
+• JAZ — Khattab + Solar-Lezama; minimal invoke beats MemGPT (+8%) and ACE (+4%)
+• CAVEAT — CUA incentive steering: 78.6→17.3 user-optimal; harness +55pp
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
