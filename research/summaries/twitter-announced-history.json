@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-13 12:00 UTC",
-    "headline": "AJINOMOTO RAISES ABF SUBSTRATE FILM PRICES 30% FROM Q3 2026 \u2014 TAIWAN PACKAGE SUBSTRATE MAKERS NOTIFIED",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-13-twitter-12h-headlines.json",
-    "url": "https://x.com/jukan05/status/2054528522593739180"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-13 12:00 UTC",
-    "headline": "MUSK 'ON MY WAY TO BEIJING IN AIR FORCE ONE' POST HITS 18.6K RT / 303K LIKES \u2014 TOP NON-MEME AI-RELEVANT ENGAGEMENT OF 2026",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-13-twitter-12h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2054478087611891790"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 12:00 UTC",
-    "headline": "KIMMONISMUS: 'WE LIVE IN AN AI IVORY TOWER \u2014 MAJORITY DON'T USE AI AS INTENSIVELY AS WE DO' \u2014 NOT A FINANCIAL BUBBLE",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-13-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2054521650402464186"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 12:00 UTC",
-    "headline": "ANTHROPIC CORP SILENT 68 HOURS THROUGH NYT $950B ROUND UPSIZE, COLOSSUS 1 DEAL, MINI SHAI-HULUD .CLAUDE/SETTINGS.JSON VECTOR",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-13-twitter-12h-headlines.json",
-    "url": "https://x.com/AnthropicAI"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-13 15:00 UTC",
-    "headline": "UK AISI: FRONTIER CYBER-TASK DOUBLING TIME ACCELERATING; NEW MYTHOS PREVIEW CHECKPOINT EXCEEDS PRIOR TREND",
-    "source": "@AISecurityInst",
-    "source_file": "research/summaries/2026-05-13-twitter-15h-headlines.json",
-    "url": "https://x.com/AISecurityInst/status/2054589758043496567"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 15:00 UTC",
-    "headline": "RAMP AI INDEX: ANTHROPIC PASSES OPENAI IN BUSINESS ADOPTION FOR THE FIRST TIME \u2014 34.4% VS 32.3% IN APRIL",
-    "source": "@arakharazian",
-    "source_file": "research/summaries/2026-05-13-twitter-15h-headlines.json",
-    "url": "https://x.com/arakharazian/status/2054563750548492549"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 15:00 UTC",
-    "headline": "INFORMATION EXCLUSIVE: ANTHROPIC IN ADVANCED TALKS TO ACQUIRE STAINLESS FOR AT LEAST $300M",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-13-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054569912656384446"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-13 15:00 UTC",
     "headline": "BLOOMBERG: ARM AND SOFTBANK TRIED TO ACQUIRE CEREBRAS WEEKS BEFORE IPO; OFFER REJECTED",
@@ -24270,5 +24207,54 @@
     "headline": "ANTHROPIC WEIGHING UP TO 1GW OF DIRECTLY LEASED DATA CENTER CAPACITY \u2014 AT LEAST $40B",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2102858053053718586"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-24 04:45:57 UTC",
+    "headline": "AUSTRALIA SAYS OPENAI AGENTS REACHED MEDICARE SYSTEMS IN JUNE \u2014 GOVERNMENT TOLD ONLY LAST WEEK",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2102889026634039358"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-24 04:45:57 UTC",
+    "headline": "OPENAI ALLEGED TO HAVE KNOWN IN AUGUST, OMITTED AUSTRALIA BREACH FROM SEPTEMBER TRANSPARENCY REPORT",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2102916123574604117"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-24 04:45:57 UTC",
+    "headline": "META SHIPS MUSE CHARM \u2014 FINGERPRINT KEYCHAIN AI DEVICE, 2-INCH OLED, 5G, DECEMBER, NO PRICE",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2102925117911388450"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-24 04:45:57 UTC",
+    "headline": "META TO KEEP MUSE FREE, TAKE COMMISSION ON TRANSACTIONS THE ASSISTANT COMPLETES",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2102898487075516780"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-24 04:45:57 UTC",
+    "headline": "GOOGLE DEEPMIND CTO: GEMINI 4 IN POST-TRAINING, RELEASE TARGETED MUCH EARLIER THAN YEAR-END",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102965226937434614"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-24 04:45:57 UTC",
+    "headline": "SANDERS-CASAR BILL WOULD PAUSE ANY MODEL TRAINED ABOVE 10^25 OPERATIONS \u2014 BELOW TODAY'S FRONTIER",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2102893393189949910"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-24 04:45:57 UTC",
+    "headline": "META UNVEILS VR GLASSES AT $1,299 WITH AI-NATIVE OS DRIVEN BY EYE, GESTURE AND VOICE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2102908929378291780"
   }
 ]
