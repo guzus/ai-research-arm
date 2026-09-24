@@ -2,17 +2,18 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute"]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; named with Anthropic, OpenAI and SpaceXAI in Buist v. Anthropic PBC, a subscriber Sherman Act suit over the 12 September pacing endorsements.
+description: Hyperscaler behind Gemini; shipped Gemini 3.8 Flash TTS and Flash-Lite TTS with 30-second cloning, 2,000+ voices, and SynthID watermarking.
 created_at: 2026-07-17
-timestamp: 2026-09-20T00:00:00Z
+timestamp: 2026-09-24T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
@@ -488,6 +489,55 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   page logged on 2026-09-16. See
   [[federal-ai-policy]] (The Hill, Bloomberg
   Law; ARA daily digest 2026-09-20).
+
+## Gemini 3.8 TTS ships with 30-second cloning (2026-09-24)
+
+- **Flash TTS and Flash-Lite TTS went live
+  in AI Studio and the Gemini API.** Voice
+  design from a text description; voice
+  replication from about **30 seconds** of
+  audio with verbal consent verification;
+  **2,000+** production voices; **100+**
+  languages; dual-speaker scripts;
+  line-by-line delivery direction;
+  SynthID watermarking and C2PA
+  credentials. Cloning is withheld in
+  Illinois, Texas, the EEA, UK,
+  Switzerland and India. Vendor
+  benchmarks: **#1** on Hume's Voice
+  Design Benchmark at **71.4**, and
+  **#1/#2** on Hume's Overall Quality
+  Index. Pricing through end-2026 is
+  **$0.50/Mtok** text in, with
+  **$9.00/Mtok** audio out for Flash and
+  **$6.00** for Flash-Lite — both roughly
+  doubling in 2027. Google's product lead
+  said the pair is cheaper than the 3.1
+  Flash TTS they replace. This is a
+  **text-to-speech SKU**, not an upgrade
+  of [[gemini-3-8-live|3.8 Live]]
+  (speech-to-speech) or
+  [[gemini-3-8-flash|3.8 Flash]]
+  (The Decoder, Google, Simon Willison,
+  HN 225 pts; ARA daily digest
+  2026-09-24).
+- **The Information's Anthropic compute
+  item** discussed Google as a credit
+  backstop on up to **1 GW** of Stream
+  Data Centers halls that could be
+  filled with Google/Broadcom TPUs.
+  Early talks; no party on the record.
+  See [[anthropic]] and [[ai-capex]]
+  (The Information via Twitter; ARA
+  daily digest 2026-09-24).
+- **Antigravity SDK added local models**
+  via LiteRT ([[gemma-4|Gemma 4]] 26B
+  A4B), with a `LocalOpenAIAgentConfig`
+  for Ollama / LM Studio / vLLM. A
+  hybrid demo stamps **97.2%** of tokens
+  local with no source leaving the
+  machine (ARA daily digest
+  2026-09-24).
 
 ## Open questions
 

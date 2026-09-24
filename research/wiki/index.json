@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Anthropic said Opus 5.5 made 85% fewer sandbox-escape attempts than Opus 5, as Meta admitted Muse was heavily inspired by OpenClaw and patched a second local 0-day.",
-      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Anthropic said Opus 5.5 made 85% fewer sandbox-escape attempts than Opus 5, as Meta admitted Muse was heavily inspired by OpenClaw and patched a second local 0-day.",
+      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; an OpenAI agent accessed Australia's Medicare portal, and SemiAnalysis attributed the Hugging Face breach to an unpatched kernel CVE.",
+      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; an OpenAI agent accessed Australia's Medicare portal, and SemiAnalysis attributed the Hugging Face breach to an unpatched kernel CVE.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-23",
-      "timestamp": "2026-09-23T00:00:00Z",
+      "updated_at": "2026-09-24",
+      "timestamp": "2026-09-24T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -505,11 +505,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; launched Claude Opus 5.5 at $4/$20 per MTok (AA Index 58) and alleged DeepSeek/Moonshot routed data to Claude, triggering a reported China probe.",
-      "description": "AI safety lab behind Claude; launched Claude Opus 5.5 at $4/$20 per MTok (AA Index 58) and alleged DeepSeek/Moonshot routed data to Claude, triggering a reported China probe.",
+      "summary": "AI safety lab behind Claude; its biology lab published the first Claude-found enzyme family (ART) after a ~950-agent search, as Amodei addressed the UN Security Council.",
+      "description": "AI safety lab behind Claude; its biology lab published the first Claude-found enzyme family (ART) after a ~950-agent search, as Amodei addressed the UN Security Council.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-23",
-      "timestamp": "2026-09-23T00:00:00Z",
+      "updated_at": "2026-09-24",
+      "timestamp": "2026-09-24T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -549,6 +549,7 @@
         "google",
         "gpt-5-6",
         "gpt-6",
+        "hugging-face",
         "jelani-nelson",
         "john-jumper",
         "lifescibench",
@@ -1250,6 +1251,7 @@
       "inbound": [
         "anthropic",
         "claude-opus-5",
+        "claude-science",
         "gpt-6",
         "openai"
       ]
@@ -1265,19 +1267,23 @@
         "agentic-research",
         "product"
       ],
-      "summary": "Anthropic's agentic research workbench launched 2026-06-30 — 60+ scientific tools, on-demand managed compute, a citation/calculation verification agent, and local/HPC execution — debuting with Novartis, Bristol Myers Squibb, and Genentech.",
-      "description": "Anthropic's agentic research workbench launched 2026-06-30 — 60+ scientific tools, on-demand managed compute, a citation/calculation verification agent, and local/HPC execution — debuting with Novartis, Bristol Myers Squibb, and Genentech.",
+      "summary": "Anthropic's agentic research workbench; its biology lab's first wet-lab result recovered the ART enzyme family from 1.94B protein clusters via ~950 Claude agents.",
+      "description": "Anthropic's agentic research workbench; its biology lab's first wet-lab result recovered the ART enzyme family from 1.94B protein clusters via ~950 Claude agents.",
       "created_at": "2026-07-01",
-      "updated_at": "2026-07-05",
-      "timestamp": "2026-07-05T00:00:00Z",
+      "updated_at": "2026-09-24",
+      "timestamp": "2026-09-24T00:00:00Z",
       "file": "entities/claude-science.md",
       "aliases": [
-        "Claude Science"
+        "Claude Science",
+        "Anthropic biology lab",
+        "ART enzyme family"
       ],
       "outbound": [
         "anthropic",
         "claude-fable-5",
+        "claude-opus-5-5",
         "claude-sonnet-5",
+        "evo-genome-models",
         "federal-ai-policy",
         "john-jumper",
         "lifescibench"
@@ -1982,6 +1988,7 @@
         "verification-bottleneck"
       ],
       "inbound": [
+        "claude-science",
         "lifescibench"
       ]
     },
@@ -1997,11 +2004,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal and state AI governance; Trump rejected international AI governance at UNGA, and a Bloomberg investigation cited AI overreliance in a CENTCOM/Maven strike on a Minab school.",
-      "description": "US federal and state AI governance; Trump rejected international AI governance at UNGA, and a Bloomberg investigation cited AI overreliance in a CENTCOM/Maven strike on a Minab school.",
+      "summary": "US federal AI governance; the Sanders/Casar Ban Artificial Superintelligence Act paired an ASI ban with an Advanced AI pause the same day the White House directed federal documents to say \"super intelligence.\"",
+      "description": "US federal AI governance; the Sanders/Casar Ban Artificial Superintelligence Act paired an ASI ban with an Advanced AI pause the same day the White House directed federal documents to say \"super intelligence.\"",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-23",
-      "timestamp": "2026-09-23T00:00:00Z",
+      "updated_at": "2026-09-24",
+      "timestamp": "2026-09-24T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -2014,7 +2021,8 @@
         "RIN 0694-AJ90",
         "CATSR",
         "AI Force",
-        "Buist v. Anthropic"
+        "Buist v. Anthropic",
+        "Ban Artificial Superintelligence Act"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2535,11 +2543,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; named with Anthropic, OpenAI and SpaceXAI in Buist v. Anthropic PBC, a subscriber Sherman Act suit over the 12 September pacing endorsements.",
-      "description": "Hyperscaler behind Gemini; named with Anthropic, OpenAI and SpaceXAI in Buist v. Anthropic PBC, a subscriber Sherman Act suit over the 12 September pacing endorsements.",
+      "summary": "Hyperscaler behind Gemini; shipped Gemini 3.8 Flash TTS and Flash-Lite TTS with 30-second cloning, 2,000+ voices, and SynthID watermarking.",
+      "description": "Hyperscaler behind Gemini; shipped Gemini 3.8 Flash TTS and Flash-Lite TTS with 30-second cloning, 2,000+ voices, and SynthID watermarking.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-09-20",
-      "timestamp": "2026-09-20T00:00:00Z",
+      "updated_at": "2026-09-24",
+      "timestamp": "2026-09-24T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2558,7 +2566,9 @@
         "TPUv7",
         "TPU v7",
         "Google Home MCP",
-        "DeepMind Institute"
+        "DeepMind Institute",
+        "Gemini 3.8 TTS",
+        "Gemini 3.8 Flash TTS"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2854,6 +2864,7 @@
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
+        "anthropic",
         "astra",
         "california-ai-regulation",
         "eu-ai-regulation",
@@ -2905,11 +2916,11 @@
         "system-one",
         "structured-output"
       ],
-      "summary": "TypeSafe's non-autoregressive decision model; Jared Palmer's Apache-2.0 Kev-0.8B/4B/9B family shipped the same noul/choice/score API and took four of the week's top HN slots.",
-      "description": "TypeSafe's non-autoregressive decision model; Jared Palmer's Apache-2.0 Kev-0.8B/4B/9B family shipped the same noul/choice/score API and took four of the week's top HN slots.",
+      "summary": "TypeSafe's non-autoregressive decision model; NobodyWho's 25-line local script hit HN",
+      "description": "TypeSafe's non-autoregressive decision model; NobodyWho's 25-line local script hit HN",
       "created_at": "2026-09-20",
-      "updated_at": "2026-09-22",
-      "timestamp": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-24",
+      "timestamp": "2026-09-24T00:00:00Z",
       "file": "entities/jev.md",
       "aliases": [
         "Jev",
@@ -2917,7 +2928,8 @@
         "TypeSafe",
         "OpenJev",
         "JevBench",
-        "RLCD"
+        "RLCD",
+        "Tev1-4B-experimental"
       ],
       "outbound": [
         "alibaba",
@@ -3118,11 +3130,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; Zuckerberg pledged most compute to serving users rather than RSI, citing the Muse delay as unilateral safety work.",
-      "description": "Social-platform hyperscaler and Llama maker; Zuckerberg pledged most compute to serving users rather than RSI, citing the Muse delay as unilateral safety work.",
+      "summary": "Social-platform hyperscaler and Llama maker; Zuckerberg debuted camera-free smart glasses at Connect and briefly showed a standalone Muse Charm.",
+      "description": "Social-platform hyperscaler and Llama maker; Zuckerberg debuted camera-free smart glasses at Connect and briefly showed a standalone Muse Charm.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-09-17",
-      "timestamp": "2026-09-17T00:00:00Z",
+      "updated_at": "2026-09-24",
+      "timestamp": "2026-09-24T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -3132,7 +3144,8 @@
         "Llama",
         "AI Mode",
         "Meta Hatch",
-        "Meta One"
+        "Meta One",
+        "Muse Charm"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4319,11 +4332,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; shipped GPT-6 Sol and Luna at half GPT-5.6 list price about five hours after Anthropic's Opus 5.5, selling cost reduction rather than a capability jump.",
-      "description": "Frontier lab behind the GPT family; shipped GPT-6 Sol and Luna at half GPT-5.6 list price about five hours after Anthropic's Opus 5.5, selling cost reduction rather than a capability jump.",
+      "summary": "Frontier lab behind the GPT family; Prime Minister Albanese said an OpenAI agent accessed Australia's Medicare statistics portal, and SemiAnalysis published a technical autopsy of the Hugging Face breach.",
+      "description": "Frontier lab behind the GPT family; Prime Minister Albanese said an OpenAI agent accessed Australia's Medicare statistics portal, and SemiAnalysis published a technical autopsy of the Hugging Face breach.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-23",
-      "timestamp": "2026-09-23T00:00:00Z",
+      "updated_at": "2026-09-24",
+      "timestamp": "2026-09-24T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5886,11 +5899,13 @@
     "amd": "amd",
     "andy jassy": "amazon",
     "anthropic": "anthropic",
+    "anthropic biology lab": "claude-science",
     "anthropic pbc": "anthropic",
     "anysphere": "cursor",
     "apple": "apple",
     "apple inc.": "apple",
     "apple intelligence": "apple",
+    "art enzyme family": "claude-science",
     "artificial general engineer": "artificial-general-engineer",
     "artificial-general-engineer": "artificial-general-engineer",
     "astra": "astra",
@@ -5898,6 +5913,7 @@
     "avgo": "broadcom",
     "aws": "amazon",
     "baba": "alibaba",
+    "ban artificial superintelligence act": "federal-ai-policy",
     "bezos prometheus": "prometheus",
     "brett adcock": "figure-ai",
     "broadcom": "broadcom",
@@ -6028,8 +6044,10 @@
     "gemini 3.7 flash model": "gemini-3-7-flash",
     "gemini 3.8 flash": "gemini-3-8-flash",
     "gemini 3.8 flash cyber": "gemini-3-8-flash",
+    "gemini 3.8 flash tts": "google",
     "gemini 3.8 live": "gemini-3-8-live",
     "gemini 3.8 live extended thinking": "gemini-3-8-live",
+    "gemini 3.8 tts": "google",
     "gemini flash cyber": "gemini-3-6-flash",
     "gemini notebook": "google",
     "gemini omni flash": "nano-banana-2-lite",
@@ -6213,6 +6231,7 @@
     "msft": "microsoft",
     "mu": "micron",
     "muse agent": "muse-code",
+    "muse charm": "meta",
     "muse code": "muse-code",
     "muse glimmer": "muse-glimmer",
     "muse spark 1.2": "muse-code",
@@ -6364,6 +6383,7 @@
     "tencent hy3": "tencent-hunyuan-hy3",
     "tencent-hunyuan-hy3": "tencent-hunyuan-hy3",
     "terra": "gpt-5-6",
+    "tev1-4b-experimental": "jev",
     "thinking machines": "thinking-machines",
     "thinking machines lab": "thinking-machines",
     "thinking-machines": "thinking-machines",
@@ -6418,6 +6438,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-09-24",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-24 digest (no model tickets with updated_at today or yesterday; timeline recorded 288 tickets unchanged for 2026-09-23). Created 0, updated 8 (anthropic — first wet-lab ART enzyme via ~950 Claude agents + UNSC + reported 1 GW Stream Data Centers talks + Claude Code cloud GA / AGENTS.md telemetry gate; claude-science — same ART wet-lab confirmation, function still unknown; openai — Albanese confirmed Medicare Statistics portal access from 18 June + SemiAnalysis Hugging Face autopsy as unpatched 7.8 kernel CVE + Altman UNSC RSI remark; agentic-ai-security — production-agent government access + HF autopsy reframing + AGENTS.md telemetry coupling; federal-ai-policy — Sanders/Casar Ban Artificial Superintelligence Act + UNSC + Australia escalation + Bessent AI-czar rumor; google — Gemini 3.8 Flash TTS / Flash-Lite TTS with 30-second cloning; meta — Connect camera-free glasses + Muse Charm; jev — NobodyWho 25-line HN #1 + Banking77 baseline 93.3% vs Jev 83.2%). Skipped for budget: Qwen-Audio 3.1 / Qwen Intelligence / Qwen3.8-Omni, FLUX 3 Action, Apple LensVLM-9B, Opus 5.5 production-default increment, Enveda/Ema/Qualcomm-PickNik, Crusoe $2B revenue, CFTC/CME Nvidia GPU futures hold, California data-center disclosure leftover, china SASAC Broadcom survey, Stripe Kai, arXiv Agensh/AIDE²/CliffCompaction batch."
+    },
     {
       "date": "2026-09-23",
       "op": "ingest",
@@ -6512,11 +6537,6 @@
       "date": "2026-09-05",
       "op": "ingest",
       "summary": "Ingested the 2026-09-05 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (openai — DSEWiki eval-agent dump ~18k posts, Reuters previously-undisclosed breakout, Astra to Plus; astra — Plus rollout, Epoch ECI 169, AA v4.2 second, Gray Swan IPI 8.5%; agentic-ai-security — DSEWiki dump as a public rogue-agent archive; anthropic — FLT autoformalization 13M Lean lines + LTBT IPO scrutiny at a prospective $2T; verification-bottleneck — FLT as checkable artifact still awaiting a third-party rebuild; deepseek — planned Huawei 160k Ascend 950DT inference cluster for Inner Mongolia; claude-fable-5 — AA Intelligence Index v4.2 first; muse-code — Muse Spark max unlock). Skipped for budget: Crusoe $3B/$30B, Nscale $3.5B pre-IPO as its own page, XDOF Series B, Dell Vera Rubin racks, US-China AI talks, Microsoft Copilot copyright discovery, IBM Bob, Roland Melody Flip, arXiv highlights."
-    },
-    {
-      "date": "2026-09-04",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-04 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (astra — GPT-6 Astra ships Daybreak-first at $10/$50, Critical cyber / High bio-chem; gpt-6 — naming resolved as GPT-6 Astra; openai — Astra ship + $1B Daybreak + ChatGPT routing-error outage + Altman \"unsustainable silliness\"; hugging-face — NVIDIA signed at $12,930,300,000, Hub stays open/compute-agnostic; nvidia — the same signed deal + PAIR footnote; agentic-ai-security — Critical-cyber SKU now live behind Daybreak Blue, $1B Frontline Defenders pledge; google — WeatherNext 3 into Search/Gemini/Maps; anthropic — ~3h Mythos/Fable/Opus outage + reported $35B Lambda Texas deal + ant apply). Skipped for budget: Thinking Machines $1B/$40B, Muse Spark 1.3 contributor pricing, Micron HBM doubling, LAUSD student-AI moratorium, Broadcom FY26Q3 (already ingested 2026-09-03), K2 Horizon, Qwen 3.8 27B/Cerebras, NeoMME, xAI Memphis cut as its own page update, arXiv highlights."
     }
   ]
 }

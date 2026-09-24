@@ -2,12 +2,13 @@
 slug: jev
 title: Jev (TypeSafe)
 type: entity
-aliases: [Jev, "TypeSafe Jev", TypeSafe, OpenJev, JevBench, RLCD]
+aliases: [Jev, "TypeSafe Jev", TypeSafe, OpenJev, JevBench, RLCD, "Tev1-4B-experimental"]
 tags: [decision-model, classifier, open-weights, system-one, structured-output]
-description: TypeSafe's non-autoregressive decision model; Jared Palmer's Apache-2.0 Kev-0.8B/4B/9B family shipped the same noul/choice/score API and took four of the week's top HN slots.
+description: TypeSafe's non-autoregressive decision model; NobodyWho's 25-line local script hit HN #1, then a Banking77 baseline (93.3% vs Jev 83.2%) argued the category is not new tech.
 created_at: 2026-09-20
-timestamp: 2026-09-22T00:00:00Z
+timestamp: 2026-09-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA model ticket — Typesafe Jev", path: research/models/tickets/typesafe-jev-2026-09.md}
@@ -142,3 +143,37 @@ than a launch blurb. See [[open-weights]].
   direction: a judge inside the agent loop,
   not a replacement runtime (LangChain; ARA
   daily digest 2026-09-22).
+
+## 25-line local Jev, a $17 fine-tune, and the baseline pushback (2026-09-24)
+
+- **NobodyWho's 25-line `uv` script**
+  reads next-token logits off
+  `Qwen3-0.6B-GGUF` for a three-way
+  email classification and climbed to
+  **608 / 192** and **#1** on the entire
+  Hacker News front page after Opus 5.5
+  and GPT-6 Sol/Luna aged off. Together
+  AI published "train your own Jev for
+  $17" (`Tev1-4B-experimental`);
+  LangChain shipped a harness guide.
+  This is the week's genuine grassroots
+  story — a local reimplementation, not
+  a new hosted SKU. See [[alibaba]]
+  (HN, Together AI, LangChain; ARA
+  daily digest 2026-09-24).
+- **The pushback arrived with it.**
+  r/LocalLLaMA's "Jev isn't new tech"
+  measured Banking77 at **93.3%** for a
+  BGE-small + logistic-regression
+  baseline versus Jev's **83.2%**, and
+  argued "can't hallucinate" means
+  schema validity, not wrong-class
+  immunity. `ickma2311/jev-baselines-eval`
+  is the skeptical comparison repo.
+  That hardens yesterday's open
+  question: if a classical classifier
+  beats hosted Jev on a standard
+  intent set, the moat is the typed
+  API and distribution, not a new
+  decision-model science (r/LocalLLaMA;
+  ARA daily digest 2026-09-24).

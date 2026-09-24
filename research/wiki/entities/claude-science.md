@@ -2,12 +2,13 @@
 slug: claude-science
 title: Claude Science
 type: entity
-aliases: ["Claude Science"]
+aliases: ["Claude Science", "Anthropic biology lab", "ART enzyme family"]
 tags: [anthropic, claude, ai-for-science, agentic-research, product]
-description: Anthropic's agentic research workbench launched 2026-06-30 — 60+ scientific tools, on-demand managed compute, a citation/calculation verification agent, and local/HPC execution — debuting with Novartis, Bristol Myers Squibb, and Genentech.
+description: Anthropic's agentic research workbench; its biology lab's first wet-lab result recovered the ART enzyme family from 1.94B protein clusters via ~950 Claude agents.
 created_at: 2026-07-01
-timestamp: 2026-07-05T00:00:00Z
+timestamp: 2026-09-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
@@ -56,10 +57,50 @@ Review calls it Anthropic's "newest flagship product" (ARA digest 2026-07-01).
   timeline — the coverage volume is growing faster than the primary-source
   detail behind it (ARA digest 2026-07-05).
 
+## First wet-lab result — the ART enzyme family (2026-09-24)
+
+- **The workbench produced a confirmed wet-lab
+  finding.** [[anthropic]]'s biology lab ran
+  roughly **950 Claude agents** across
+  **1.94B protein clusters** for about
+  **21.5 hours** (~215.6M tokens). The swarm
+  recovered **198,290 reverse-transcriptase
+  clusters** and surfaced one sitting next
+  to a tandem repeat array. Bench work
+  confirmed the system produces short RNAs.
+  Anthropic named the family **ART** and
+  released a preprint; **function is still
+  unknown**. The lab likens the array
+  structurally — not functionally — to
+  CRISPR. Feng Zhang (MIT/Broad) called the
+  finding "genuinely intriguing and merits
+  further investigation." Critics noted
+  Anthropic's own text says scientists
+  review every hypothesis and run all lab
+  work — so this is agent-assisted
+  discovery, not autonomous wet-lab
+  science. HN **389 / 406**. Read against
+  the August protein-binder designs and
+  [[evo-genome-models|Evo]]'s working
+  phages: ART is the first named enzyme
+  family from this workbench that left
+  the computer and entered a bench
+  protocol (Anthropic, The Verge,
+  TechCrunch, HN; ARA daily digest
+  2026-09-24).
+
 ## Open questions
-- **Does the workbench beat a benchmark?** GeneBench-Pro and LifeSciBench
-  measure research judgment; whether a tool-rich agentic environment translates
-  into real scientific throughput at the debut labs is unproven.
-- **How much runs on which model?** The launch pairs with
-  [[claude-sonnet-5|Sonnet 5]]; the model tier powering the 60+ tools and
-  on-demand compute is not detailed in-window.
+- **Does the workbench beat a benchmark?** GeneBench-Pro and
+  [[lifescibench|LifeSciBench]] measure research judgment;
+  ART is a wet-lab confirmation of a search hit, not a
+  scored suite result, and function remains unknown.
+- **How much runs on which model?** The launch paired with
+  [[claude-sonnet-5|Sonnet 5]]; the ART search's model tier
+  is not named in-window. [[claude-opus-5-5|Opus 5.5]]
+  shipped the day before the digest cycle.
+- **What does ART do?** The preprint flags a CRISPR-like
+  repeat beside an unusual phage reverse transcriptase;
+  no function is claimed. Until one is shown, the
+  scientific payload is "agents can surface a
+  structurally unusual cluster that survives bench
+  confirmation," not a new enzyme mechanism.
