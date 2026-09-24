@@ -3,7 +3,7 @@ slug: anthropic-cowork-browser-2026-08
 title: Claude Cowork gets a built-in browser in the desktop app
 company: Anthropic
 model: null
-status: released
+status: closed
 status_note: |
   **@claudeai, first-party:** "**Claude now has its own built-in browser in
   Cowork.** When your task involves a website, **a browser opens in
@@ -64,12 +64,14 @@ sources:
   - https://x.com/testingcatalog/status/2092867859034640790
   - "@danshipper"
 created_at: 2026-08-27
-updated_at: 2026-08-27
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-24
+closed_at: 2026-09-24
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-08-27
     change: "Created — Anthropic shipped a built-in browser inside Claude Cowork. First-party @claudeai: 'Claude now has its own built-in browser in Cowork. When your task involves a website, a browser opens in Cowork's side panel, and Claude navigates, fills forms, and finishes the job.' Rollout terms per @testingcatalog (2026-08-27 06:52 UTC): rolling out over the coming week to Pro, Max and Team plans in the Claude desktop app on macOS, Windows and Linux (in beta); the same account had reported it as a pre-release find days earlier and now confirms 'Now it's official.' Status released rather than confirmed because it is actively shipping to named paid tiers on named platforms, with the caveat that Linux is beta and the rollout is staged. Verification confirmed on the first-party account plus an independent tracker that had also caught the pre-release artifact. Earns a model-lane ticket because computer-use is a live competitive axis already tracked on the model side at [[gemini-3-5-flash-computer-use-2026-06]], [[google-gemini-spark-computer-use-2026-08]] and [[openai-chatgpt-superapp-2026-06]]; what ships here is the surface, and the side-panel design is a supervision property rather than a convenience — the user watches the agent browse in the same window. @testingcatalog reads it as super-app consolidation ('A new Super App is rising'), adjacent to [[perplexity-portable-computer-2026-08]]. NOT established and notably unasked in public in-window: the browser engine, the sandboxing and credential model, whether it shares session state with the user's real browser, and how prompt injection from page content is handled — all material for an agent that fills forms."
+  - ts: 2026-09-24
+    change: "Closed — released-and-aged. Anthropic shipped the built-in browser in Claude Cowork on 2026-08-27; 28 days public, now ordinary product surface. Subsequent Claude Code and Cowork shipping is being tracked on its own tickets rather than accreting here — see [[anthropic-cloud-sessions-ga-2026-09]] for cloud sessions leaving research preview and local Projects threads, both announced 2026-09-23."
 ---
 
 **Claude Cowork now has a browser inside it.** When a task needs the web,

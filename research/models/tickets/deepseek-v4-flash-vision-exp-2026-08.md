@@ -3,7 +3,7 @@ slug: deepseek-v4-flash-vision-exp-2026-08
 title: DeepSeek-V4-Flash-Vision-Exp lands on the DeepSeek API platform
 company: DeepSeek
 model: DeepSeek-V4-Flash-Vision-Exp
-status: released
+status: closed
 status_note: |
   **@testingcatalog** (2026-08-21 09:49 UTC): "DeepSeek-V4-Flash-Vision-Exp
   multimodal model is now available on the DeepSeek API Platform. It
@@ -64,14 +64,16 @@ sources:
   - "@teortaxesTex"
   - "@MaxForAI"
 created_at: 2026-08-23
-updated_at: 2026-08-24
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-24
+closed_at: 2026-09-24
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-08-23
     change: "Created — DeepSeek-V4-Flash-Vision-Exp went live on the DeepSeek API platform (@testingcatalog, 2026-08-21 09:49 UTC): multimodal, mixed text+image input across Chat Completions/Messages/Responses, claimed close to Opus 4.8 and matching DeepSeek-V4-Flash on text. Pre-signalled by the exact model string appearing in DeepSeek Harness code with native image-request adaptation (@MaxForAI via @goodhunt) hours earlier. Independently exercised the next day by @teortaxesTex, who used it as the reference point for scoring Ox Alpha ('nominally the same as V4-Flash-Vision-exp, an okay current gen Flash'). Successor to the closed [[deepseek-v4-vision-2026-06]], whose closure note left API and open-weights reach explicitly unresolved — this is that half landing, under a distinct model name. Status released; verification partial (no @deepseek_ai primary post or model card, capability figure originates with the announcement relay, open weights unaddressed)."
   - ts: 2026-08-24
     change: "Trade-press pickup and third-party hosting, no new evidence. Aggregator coverage frames it as DeepSeek launching a vision model \"it says\" rivals Opus 4.8, pointing at a DeepSeek blog post — the framing preserves that the comparison is DeepSeek's own claim, not an independent eval, and the blog was not reachable from this run. The model is also now advertised free on third-party inference platforms (a TRON-ecosystem host, alongside Tencent Hy3), which widens reach but is promotional rather than evidential. Status stays released; verification stays partial — still no published multimodal benchmark, pricing, or open-weights statement."
+  - ts: 2026-09-24
+    change: "Closed — released-and-aged. DeepSeek-V4-Flash-Vision-Exp went live on the DeepSeek API platform on 2026-08-21 and the ticket last moved 2026-08-24; 31 days with no new signal. DeepSeek's line has moved on — V4.1 / V4.1 Flash shipped since ([[deepseek-v4-1-2026-09]]) — so the experimental vision build is superseded in practice even though no single event contradicted it. Closed as aged rather than superseded-by, because V4.1 is a generational successor rather than a direct replacement for this specific experimental artifact."
 ---
 
 The June ticket ([[deepseek-v4-vision-2026-06]]) closed with a specific

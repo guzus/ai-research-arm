@@ -3,7 +3,7 @@ slug: alibaba-wan-3-0-2026-08
 title: Wan 3.0 video model surfaces in the wild, priced on third-party hosts
 company: Alibaba (Tongyi Wan line)
 model: Wan 3.0
-status: released
+status: closed
 status_note: |
   **Two independent kinds of evidence appeared inside 24h.**
 
@@ -47,12 +47,14 @@ sources:
   - "@Flovaai"
   - "@0xm4sud"
 created_at: 2026-08-25
-updated_at: 2026-08-25
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-24
+closed_at: 2026-09-24
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-08-25
     change: "Created — Wan 3.0 appeared with two independent kinds of evidence in one window: @mark_k (2026-08-24 09:07 UTC) posted a 30-second single-take generation and called it a challenger to Seedance 2.5, and @Flovaai / @Hailey4AI announced FlovaAI is serving Wan 3.0 live at $0.013/sec for 480p with audio-video sync. Status released — a commercial host serving it at a posted price makes it publicly available. Verification partial and the gap is named: no Alibaba/Tongyi first-party post, model card, weights link or benchmark was captured, so the Alibaba attribution is inferred from the Wan line's provenance rather than established in-window. Resolution ceiling, duration limits, licence and open-weights status are all unknown; the 'new king of video models' framing is one tester's read of one clip and is not recorded as a ranking. Directly competitive with [[bytedance-seedance-2-5-2026-07]]."
+  - ts: 2026-09-24
+    change: "Closed — released-and-aged. Wan 3.0 surfaced in the wild and was priced on third-party hosts as of 2026-08-25; 30 days with no further lifecycle movement and nothing in this cycle's signal. The ticket's open item at creation — whether Alibaba would formalise the release — never resolved either way, and that non-resolution is recorded rather than papered over: this closes as aged, not as confirmed-complete. An official Wan 3.0 launch or a Wan 3.1 opens a successor."
 ---
 
 **Wan 3.0** is being served commercially and generating 30-second

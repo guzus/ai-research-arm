@@ -3,7 +3,7 @@ slug: google-gemini-enterprise-industry-2026-08
 title: Gemini Enterprise for Legal and Financial Services — first industry verticals
 company: Google / DeepMind
 model: Gemini (Gemini Enterprise)
-status: released
+status: closed
 status_note: |
   Announced 2026-08-25 (@ThomasOrTK 15:13 UTC): "Today, we're introducing
   **industry-specific solutions on Gemini Enterprise**, starting with **Gemini
@@ -37,12 +37,14 @@ sources:
   - "@ThomasOrTK"
   - "@rohanpaul_ai"
 created_at: 2026-08-26
-updated_at: 2026-08-26
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-24
+closed_at: 2026-09-24
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-08-26
     change: "Created — Google introduced the first industry verticals on Gemini Enterprise on 2026-08-25. @ThomasOrTK (15:13 UTC), posting in the first person for the product: 'Today, we're introducing industry-specific solutions on Gemini Enterprise, starting with Gemini Enterprise for Legal and Financial Services, with more industries to come. Gemini Enterprise for Legal is designed for law firms and in-house legal teams to help find and synthesize information, and navigate complex matters more efficiently. It has four capabilities.' @rohanpaul_ai (2026-08-26 01:01 UTC) supplies the integration detail: Legal connects directly to Workspace, Microsoft 365, Docusign, RelativityOne, HighQ, Harvey and Legora; secure MCP connectors inherit existing permissions from iManage, NetDocuments and Everlaw; reusable legal skills learn firm playbooks, citation rules and house style; and the agents are said to carry work through contract review, regulatory scanning, legal research, DSAR fulfillment, redaction and drafting. Two things make this a timeline event rather than an enterprise-marketing item. First, permission-inheriting MCP connectors into document-management systems (iManage, NetDocuments, Everlaw) is the concrete answer to the enterprise objection that has blocked agentic deployment in regulated professions — the agent sees exactly what the user is already cleared to see, rather than needing a new trust boundary. Second, Google shipping connectors to Harvey and Legora is a deliberate choice to be the substrate under the legal-AI startups rather than only their competitor; Harvey has its own frontier-model effort on this lane ([[harvey-tenet-legal-model-2026-08]]). One aggregated news digest the same day frames it competitively — 'Google presents AI agents for finance and law, chasing the competition' — which is a fair read given Microsoft Copilot's enterprise position. Status released on a first-person product announcement using present-tense 'we're introducing'; verification confirmed on that post plus an independent relay carrying the same integration list. Not established: pricing, rollout timing, named launch customers, whether general availability or a phased rollout, and whether the Harvey/Legora connectors are reciprocal partnerships."
+  - ts: 2026-09-24
+    change: "Closed — released-and-aged. Gemini Enterprise's first industry verticals (Legal and Financial Services) launched 2026-08-25; 29 days with no lifecycle movement. Gemini Enterprise continues to appear in Google's rollout notes as a distribution channel — the 3.8 Flash TTS launch lists it as 'coming soon' ([[google-gemini-3-8-flash-tts-2026-09]]) — but as a channel, not as this shipping artifact. Additional verticals would open a successor ticket."
 ---
 
 Google introduced **industry-specific solutions on Gemini Enterprise** on

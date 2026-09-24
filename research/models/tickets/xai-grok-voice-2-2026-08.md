@@ -3,7 +3,7 @@ slug: xai-grok-voice-2-2026-08
 title: Grok Voice Think Fast 2.0 tops the Artificial Analysis speech-to-speech index, deployed at Starlink scale
 company: SpaceX / xAI
 model: Grok Voice Think Fast 2.0
-status: released
+status: closed
 status_note: |
   **Two first-party claims from @SpaceXAI on 2026-08-24, both amplified by
   @elonmusk:**
@@ -54,12 +54,14 @@ sources:
   - "@elonmusk"
   - "@mark_k"
 created_at: 2026-08-25
-updated_at: 2026-08-25
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-24
+closed_at: 2026-09-24
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-08-25
     change: "Created — @SpaceXAI announced (2026-08-24, both amplified by @elonmusk) that Grok Voice Think Fast 2.0 is #1 on the Artificial Analysis Speech-to-Speech Index, an index measuring reasoning over heard speech, resolving real customer issues and completing tasks with agent tools; and separately that Starlink uses Grok Voice to resolve 15,000+ inbound support and sales calls a day, diagnosing hardware issues, shipping replacements and fulfilling 3,000+ orders a week across voice and chat. Status released — a named versioned model on a production workload at disclosed volume. Verification partial — all figures are vendor-supplied, the index page was not captured, 'resolve' is undefined between full handling and triage, and no pricing or external API availability was stated. Same-day @mark_k reports new Grok Imagine image-editing tools (colour-palette presets, in-app crop) from @SpaceXAI, recorded here as adjacent product motion rather than a separate ticket."
+  - ts: 2026-09-24
+    change: "Closed — released-and-aged. Grok Voice Think Fast 2.0 was announced on 2026-08-24 topping the Artificial Analysis speech-to-speech index and deployed at Starlink scale; 30 days with no lifecycle movement. xAI's active model signal has moved to the text line — Grok 4.7 shipped 2026-09-21 ([[xai-grok-4-7-2026-09]]) with Grok 4.8 in training ([[xai-grok-4-8-2026-09]]). A Grok Voice 3 or a displaced index ranking opens a successor."
 ---
 
 xAI/SpaceX say **Grok Voice Think Fast 2.0** leads the Artificial Analysis

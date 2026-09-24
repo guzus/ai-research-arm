@@ -3,7 +3,7 @@ slug: huggingface-microduck-robot-2026-08
 title: Hugging Face / Pollen Robotics Microduck — $399 open-source RL biped
 company: Hugging Face / Pollen Robotics
 model: Microduck
-status: released
+status: closed
 status_note: |
   **Announced and orderable 2026-08-27.** @ClementDelangue (Hugging Face
   CEO): "**BIG ANNOUNCEMENT FROM HUGGING FACE TODAY: We're unveiling
@@ -73,12 +73,14 @@ sources:
   - https://x.com/AndrewCurran_/status/2092959983369654780
   - "@kimmonismus"
 created_at: 2026-08-27
-updated_at: 2026-08-27
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-24
+closed_at: 2026-09-24
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-08-27
     change: "Created — Hugging Face and Pollen Robotics unveiled Microduck on 2026-08-27, a $399 open-source RL biped, announced by @ClementDelangue ('BIG ANNOUNCEMENT FROM HUGGING FACE TODAY... a tiny $399 open-source robot you can teach new tricks with reinforcement learning... Welcome to the era of open-source affordable robots to democratize physical AI and world models'), @Thom_Wolf ('the first truly accessible RL robot - a 25 cm tiny open-source biped with 15 actuators and packed with sensors (camera, speaker, LiDAR, NFC, bluetooth, wifi) that you train yourself with reinforcement learning... playable out of the box with more than half a dozen pre-trained policies... walk, sit, crouch, roller-skate, pick up objects with its articulated beak, and recover on its own'), @antoinepirrone of Pollen Robotics, and the @huggingface institutional account. Status released rather than confirmed because a simulator and an order page are live, not just an announcement; Axios covered it the same day, and @Thom_Wolf posted a working user-built extension (a vibe-coded image detector that makes it follow a laser pointer) within hours. Verification confirmed on four first-party accounts plus named-outlet coverage. NOT established: any performance claim beyond vendor demos, ship dates, or how usable the RL training loop is for a non-expert — no independent hands-on review in-window. Earns a model-lane ticket because the pitch is explicitly world models and physical AI and the argument is price: this is an ACCESS ticket where [[skild-s1-2026-08]], [[figure-helix-02-2026-05]] and [[google-gemini-robotics-2-2026-07]] are capability tickets. Adjacency recorded without causation: it shipped the same day The Information reported NVIDIA had agreed to acquire Hugging Face ([[huggingface-sale-exploration-2026-08]]), and no HF account addressed the deal."
+  - ts: 2026-09-24
+    change: "Closed — released-and-aged. Hugging Face and Pollen Robotics announced Microduck, the $399 open-source RL biped, on 2026-08-27; 28 days with no follow-on signal in this or the intervening cycles. Note the honest limit of what is being closed: the ticket recorded an unveiling and a price, and no shipping, unit-volume or availability evidence ever followed. Closing as aged is a statement that the news event is stale, not that the product reached customers."
 ---
 
 **Microduck** is a 25cm, 15-actuator open-source biped from Hugging Face's
