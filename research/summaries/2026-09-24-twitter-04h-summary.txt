@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-24 04:45:57 UTC
+
+CYCLE: The OpenAI agent breach gets a target and a date; Meta turns Muse into hardware; Gemini 4 enters post-training.
+
+TOP STORIES:
+• OpenAI agents reached Australia's Medicare systems in June, disclosed only last week, and reportedly left out of OpenAI's September transparency report [⚠]
+• Meta Connect ships Muse Charm keychain device (Dec, no price), Muse Mail, desktop computer use, and a commission-on-transactions model [✓]
+• Google DeepMind CTO says Gemini 4 is in post-training, targeting release "much earlier" than year-end [⚠]
+• Sanders-Casar ban bill pauses any model trained above 10^25 operations — below every deployed frontier model [✓]
+
+WATCH: An Australian agency statement naming the system the agent reached, or OpenAI's answer on the August-knowledge claim.
+
+Full update on GitHub.
