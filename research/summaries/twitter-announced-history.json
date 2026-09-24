@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-13 18:00 UTC",
-    "headline": "UK AISI: FRONTIER AI CYBER-TASK DOUBLING TIME NOW 4 MONTHS WITH MYTHOS \u2014 MYTHOS PREVIEW COMPLETES ALL 8H+ TASKS 100%",
-    "source": "@AISecurityInst",
-    "source_file": "research/summaries/2026-05-13-twitter-18h-headlines.json",
-    "url": "https://x.com/AISecurityInst/status/2054589758043496567"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 18:00 UTC",
-    "headline": "ANDURIL CLOSES $5B AT $61B VALUATION \u2014 DOUBLES IN ~9 MONTHS; THRIVE + A16Z LEAD; IPO 'IN THE NEXT YEAR' FLOATED",
-    "source": "@etnshow",
-    "source_file": "research/summaries/2026-05-13-twitter-18h-headlines.json",
-    "url": "https://x.com/etnshow/status/2054515028410028361"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 18:00 UTC",
-    "headline": "QWEN EX-LEAD JUNYANG LIN RAISING SEVERAL HUNDRED MILLION AT $2B PRE-PRODUCT \u2014 UNPRECEDENTED CHINA AI-LAB MARK",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-13-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054615187957666218"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-13 18:00 UTC",
-    "headline": "DDR4 PRICES IN CHINA'S HUAQIANGBEI JUMP 20% AHEAD OF SAMSUNG MAY-21 STRIKE \u2014 DOWNSTREAM TIGHTNESS NOW VISIBLE",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-13-twitter-18h-headlines.json",
-    "url": "https://x.com/jukan05/status/2054623591749099947"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 21:00 UTC",
-    "headline": "CEREBRAS PRICES IPO AT $185 \u2014 60% ABOVE INITIAL RANGE, 20-25\u00d7 OVERSUBSCRIBED, $5.55B RAISED, ~$49-56B FDV \u2014 LARGEST 2026 IPO",
-    "source": "@StockMKTNewz",
-    "source_file": "research/summaries/2026-05-13-twitter-21h-headlines.json",
-    "url": "https://x.com/StockMKTNewz/status/2054677097737179357"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-13 21:00 UTC",
-    "headline": "CLAUDE CODE WEEKLY LIMITS +50% THROUGH JULY 13 \u2014 ANTHROPIC COUNTER-STRIKES SAMA CODEX BOUNTY 54 MINUTES LATER",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-13-twitter-21h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2054634392128159779"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-13 21:00 UTC",
     "headline": "ANTHROPIC OVERTAKES OPENAI IN RAMP BUSINESS-ADOPTION FOR FIRST TIME \u2014 34.4% VS 32.3%",
@@ -24242,5 +24188,47 @@
     "headline": "GNOME CONTRIBUTOR PROPOSES BLANKET LLM BAN ON ALL PROJECT CONTRIBUTIONS AND INFRASTRUCTURE",
     "source": "@mark_k",
     "url": "https://x.com/mark_k/status/2103046129898094818"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-24 17:03:54 UTC",
+    "headline": "ORACLE SENDS FORCE MAJEURE NOTICE ON NEW MEXICO STARGATE SITE \u2014 THEN SAYS PROJECT JUPITER IS ON SCHEDULE",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2103139052363133062"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-24 17:03:54 UTC",
+    "headline": "GOOGLE BOOKS OCT 1 FALCON 9 SLOT FOR SUNCATCHER \u2014 FOUR TRILLIUM TPUS TO ORBIT ON TRANSPORTER-18",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2103163493021343847"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-24 17:03:54 UTC",
+    "headline": "META MUSE LANDS IN DEVELOPER TOOLS \u2014 REPLIT APP BUILDING LIVE, GITHUB PARTNERSHIP ANNOUNCED SAME HOUR",
+    "source": "@amasad",
+    "url": "https://x.com/amasad/status/2103129037011120525"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-24 17:03:54 UTC",
+    "headline": "MUSE HITS 2.8M DOWNLOADS IN TWO WEEKS, TOPS US AND CANADA APP CHARTS \u2014 BUT DAILY ACTIVES STILL UNDER 1M",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2103085143493689666"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-24 17:03:54 UTC",
+    "headline": "SCHMIDHUBER JOINS SAKANA AI AS CHIEF SCIENTIFIC ADVISOR, TAKING OVER TOKYO RECURSIVE SELF-IMPROVEMENT LAB",
+    "source": "@hardmaru",
+    "url": "https://x.com/hardmaru/status/2103151519428448405"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-24 17:03:54 UTC",
+    "headline": "UK REGULATOR PROPOSES CHATGPT AND PERPLEXITY CHOICE SCREEN ON ANDROID AND CHROME SETUP",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2103106161159389194"
   }
 ]
