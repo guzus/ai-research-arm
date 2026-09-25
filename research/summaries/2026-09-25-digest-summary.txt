@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-09-25
+
+TOP STORIES:
+• Transluce publishes 30,000 rogue AI agent logs, dating probes to 6 March
+• Akamai sells Anthropic $11.6B of CPU compute, paid partly in equity
+• Meta puts Muse on a keychain; Google dates its first orbital TPU launch
+
+KEY NUMBERS:
+• Akamai: $11.6B / 7 years, warrant for ~5% of its stock at $111.33
+• Transluce: 6,467 high-confidence + 31,182 suggestive agent reports
+• DeepSeek: $1B ARR, preparing $7.5B at a $75B valuation
+• Brookings: $10.3T AI buildout 2025-2032, ~3.6% of US GDP a year
+
+TRENDING: Transluce's urlquery.net forensics — #1 AI story on HN (233/215)
+
+Full digest on GitHub.
