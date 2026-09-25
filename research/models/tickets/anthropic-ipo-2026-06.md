@@ -5,6 +5,33 @@ company: Anthropic
 model: null
 status: confirmed
 status_note: |
+  **2026-09-24 — reported founder-control structure ahead of the
+  listing.** Per The Information, relayed by @kimmonismus (23:26 UTC): Anthropic
+  plans to give its **seven co-founders majority voting control**, via a
+  **Palantir-style share structure** granting them **50.1% of voting power on
+  most corporate matters**, conditional on **at least three founders retaining a
+  minimum number of shares**. The new shares would add voting power **without
+  additional economic ownership**. Dario Amodei is reported to own around **2%**
+  of Anthropic.
+
+  **The 2% figure is the one that makes the structure legible.** A founder with
+  ~2% economic ownership cannot control a company through equity, so control has
+  to be engineered separately or given up at listing. This is the mechanism for
+  keeping it — the same problem Palantir solved the same way.
+
+  **Recorded as reported, not confirmed.** One outlet, one relay, a *proposed*
+  structure, pre-filing. No S-1 is public. If the actual filing carries this, it
+  will be legible in the charter documents; until then "plans to" is doing the
+  work.
+
+  **Why it belongs on the IPO ticket rather than its own.** It is a term of this
+  listing, not a separate corporate event. It also bears directly on the
+  governance questions already stacked on this file — the Long-Term Benefit Trust
+  ([[anthropic-bernanke-ltbt-2026-07]]) and the pacing position
+  ([[anthropic-pace-the-frontier-2026-09]]): a lab arguing for self-restraint
+  while locking founder control ahead of a listing is either consistent or
+  convenient depending on how the charter reads.
+
   Anthropic **confidentially filed an S-1** with the SEC on
   **2026-06-01**, kicking off the US IPO process roughly one month
   after closing its $65B Series H at a $965B post-money valuation
@@ -72,7 +99,7 @@ status_note: |
   named source and is not adopted here. @rohanpaul_ai (2026-09-07) relays David
   Sacks arguing an Anthropic IPO would enlarge the funding base behind AI-doom
   advocacy — commentary, not a fact about the offering.
-expected: "Reported: seeking up to $100B at a ~$2T valuation, with reports now pointing to an October listing and NVIDIA weighing an anchor stake of up to $10B. Financial claims on the record via FT/The Information: profitable for a second consecutive quarter, >80% gross margin before distribution-partner revenue share and training cost. Pending: an actual S-1, confirmation of the NVIDIA anchor, and reconciliation with the $517B compute commitments reported the same week."
+expected: "Reported: seeking up to $100B at a ~$2T valuation, with reports pointing to an October listing and NVIDIA weighing an anchor stake of up to $10B. Newly reported 2026-09-24: a proposed Palantir-style dual-class structure giving the seven co-founders 50.1% of voting power without additional economic ownership, conditional on three founders holding a share minimum, against Dario Amodei's reported ~2% economic stake. Financial claims on the record via FT/The Information: profitable for a second consecutive quarter, >80% gross margin before distribution-partner revenue share and training cost. Pending: an actual S-1, confirmation of the NVIDIA anchor, confirmation of the voting structure in charter documents, and reconciliation with the $517B compute commitments — now including the $11.6B Akamai deal ([[anthropic-akamai-compute-2026-09]])."
 labels:
   - corporate-action
   - ipo
@@ -102,6 +129,7 @@ sources:
   - https://x.com/jukan05/status/2099267844185964889
   - https://x.com/ns123abc/status/2099305545672933420
   - "@DV_Memetics"
+  - https://x.com/kimmonismus/status/2103264718160859531
 polymarket:
   - event_slug: anthropic-ipo-by
     market_id: "2413330"
@@ -109,7 +137,7 @@ polymarket:
     question: "Anthropic IPO by Dec 31, 2026?"
     outcome: "Dec 31 2026"
 created_at: 2026-06-02
-updated_at: 2026-09-14
+updated_at: 2026-09-25
 closed_at: null
 closed_reason: null
 history:
@@ -131,6 +159,10 @@ history:
     change: "Diligence detail and an ARR accounting question. The Information (2026-09-05, repeated 09-06) reports potential IPO investors are pressing Anthropic for disclosure beyond standard financial statements — specifically revenue per token and revenue per gigawatt of compute — and that what Anthropic discloses could set a benchmark for OpenAI and other AI companies; no AI company currently publishes those units. Recorded as speculation and labelled as such by its author: @GavinSBaker (2026-09-05) argues Anthropic shifted gross -> net ARR accounting and stripped Meta and Chinese distillation revenue from its $65B ARR figure, pre-positioning for Meta turning them off post-listing ('pure speculation'). Not adopted: @aleabitoreddit's 2026-09-06 relay of $2T-next-month chatter (no named source), and David Sacks' commentary via @rohanpaul_ai that an Anthropic IPO would enlarge the AI-doom funding base. Status and verification unchanged."
   - ts: 2026-09-14
     change: "Financials, timing and an anchor investor all move in one window — and a contradiction lands next to them. FINANCIALS (FT via @jukan05, 2026-09-13 22:40/22:43 UTC): 'ANTHROPIC HAS TOLD INVESTORS IT EXPECTS TO POST A PROFIT FOR TWO CONSECUTIVE QUARTERS' and 'Anthropic's gross margins are above 80% before accounting for revenue shared with distribution partners, including Amazon, and the cost of training its models.' Restated by @ns123abc (2026-09-14 01:13 UTC) as profitable for a second straight quarter ahead of a $2T IPO, with investors said to predict $120B ARR by Christmas and ~$360B by end-2027 — those ARR figures are third-hand investor talk and are NOT adopted here. @kimmonismus supplies the comparison and its caveat: OpenAI reported 33% in 2025, Microsoft Cloud 66% in FY2026, 'Different periods and definitions, so not directly comparable.' SIZE/TIMING/ANCHOR (Reuters via @DV_Memetics, @ZanistaAI, 2026-09-14 12:35/12:36 UTC): seeking up to $100B at a $2T valuation, reports pointing to an October listing, and NVIDIA weighing an anchor investment of up to $10B. CONFIRMED-ADJACENT: CNBC's @ashleycapoot (12:29 UTC) reports Anthropic meeting prospective investors 'ahead of its potentially historic market debut' while Amodei pushes for an AI slowdown, framing it as 'a tough balancing act'. THE CONTRADICTION, recorded not buried: The Information the same window reports compute commitments of up to $517B against $180B guided to investors through 2029 — now tracked at [[anthropic-compute-commitments-2026-09]]. An 80% gross margin that excludes training cost and forward capex commitments is not inconsistent with that, but it is the other half of the same question, and the in-window critique made exactly this point (@iamgingertrash: 'The S1 only shows you 3 & 4'). No S-1 has been captured; the only mention of one is an unlinked assertion inside that critique, so an S-1 is NOT treated as existing. Status and verification unchanged at confirmed — this is dense press reporting, not a filing. See also [[anthropic-pace-the-frontier-2026-09]] for the slowdown argument being made mid-process."
+  - ts: 2026-09-25
+    change: "Confirmed, unchanged. New reported term of the listing: The Information reports Anthropic plans to give its seven co-founders majority voting control via a Palantir-style share structure carrying 50.1% of voting power on most corporate matters, conditional on at least three founders retaining a minimum shareholding, with the new shares adding voting power and NO additional economic ownership; Dario Amodei is reported to hold around 2% of the company (relayed by @kimmonismus, 2026-09-24 23:26 UTC, ~359 likes). The ~2% figure is what makes the structure legible: a founder at that economic level cannot hold control through equity, so control is either engineered separately or surrendered at listing, and this is the mechanism for keeping it. Recorded as REPORTED, not confirmed — one outlet, one relay, a proposed structure, no public S-1; the charter documents are where it becomes checkable. Kept on this ticket rather than spun out because it is a term of this listing, not a separate corporate event, and it interacts directly with governance already tracked here: the Long-Term Benefit Trust ([[anthropic-bernanke-ltbt-2026-07]]) and the self-restraint position in [[anthropic-pace-the-frontier-2026-09]]. Expected also updated to fold in the new $11.6B Akamai commitment ([[anthropic-akamai-compute-2026-09]]) as part of the pre-IPO commitment reconciliation."
+  - ts: 2026-09-25
+    change: "Bookkeeping — citation added for the 2026-09-25 entry: @kimmonismus relaying The Information on the proposed Palantir-style dual-class structure giving the seven co-founders 50.1% voting power without additional economic ownership, against Dario Amodei's reported ~2% stake. No status, verification or content change."
 ---
 
 Anthropic **confidentially filed an S-1 registration statement with

@@ -5,6 +5,29 @@ company: Anthropic / Alibaba
 model: null
 status: confirmed
 status_note: |
+  **2026-09-24 — a countermeasure ships, naming distillation
+  explicitly.** @ClaudeDevs announced Anthropic is resuming charging for requests
+  its safeguards block before Claude responds, in three categories: **biology,
+  distillation attacks, and frontier LLM development**, citing "coordinated
+  attacks on our systems in recent weeks". Full detail at
+  [[anthropic-billable-safeguard-blocks-2026-09]].
+
+  **Recorded here because it is the first shipped product response to the attack
+  class this ticket tracks**, 66 days after the last entry. It does not name
+  Alibaba and is not evidence about Alibaba; it is evidence that Anthropic
+  regards distillation probing as an active, ongoing cost rather than a closed
+  2026-06 incident.
+
+  **The regulatory picture moved in the opposite direction in the same window.**
+  China's internet regulator is now probing DeepSeek and Moonshot over user data
+  allegedly routed to Claude ([[china-deepseek-moonshot-data-probe-2026-09]]),
+  which is Beijing investigating the Chinese side of the same traffic pattern
+  Anthropic complained about.
+
+  **No movement on this ticket's own open items:** Alibaba has still not
+  responded publicly, and nothing in-window addresses the Hagerty-Kim amendment
+  or Qwen's next release.
+
   Anthropic sent a letter to multiple **US senators and White House officials**
   accusing **Alibaba-linked operators** of running the largest documented
   adversarial distillation campaign against a US AI lab — **~25,000 fraudulent
@@ -46,8 +69,9 @@ sources:
   - "@loong_of"
   - "@poezhao0605"
   - "@BiteyeHQ"
+  - https://x.com/ClaudeDevs/status/2103170368794185758
 created_at: 2026-06-26
-updated_at: 2026-07-21
+updated_at: 2026-09-25
 closed_at: null
 closed_reason: null
 history:
@@ -63,6 +87,10 @@ history:
     change: "TechCrunch adds outlet corroboration of the ban itself (Alibaba classified Claude Code 'high-risk software,' effective July 10), now converging with the prior Reuters/Yicai/The Paper reporting. Separately, a viral thread (@AseemShrey) offered a granular Unicode-apostrophe steganography theory for the April proxy/timezone mechanism (4 rotating near-identical apostrophe characters encoding matches against a '147 Chinese-domain' list) — but a direct Hacker News Algolia API query found the thread's cited '1,891-point' top comment does not exist; the real HN submission of the underlying (real, already-tracked) Schmalbach blog post has 9 points and 4 comments. The granular Unicode mechanism and '147 domains' figure should be treated as one blogger's unverified reverse-engineering, not confirmed fact — the underlying 'hidden proxy/timezone check existed and was rolled back' fact remains Anthropic-confirmed per the 07-04 entry. Status stays confirmed; verification stays confirmed."
   - ts: 2026-07-21
     change: "Viral single-tweet claim (@mark_k): a user reports Opus 4.8 self-identified as 'Qwen' when asked who it was, reigniting distillation-in-the-other-direction speculation (Anthropic distilling from Qwen, rather than the reverse this ticket otherwise tracks). No reproduction, no Anthropic response, and self-identification claims from LLMs are notoriously unreliable (models frequently misstate their own identity) — treated as unverified color, not a fact. Core ticket facts (the Senate letter, the Alibaba ban, the mechanism timeline) are unchanged. Status stays confirmed; verification stays confirmed for the underlying documented facts, this specific claim remains unverified."
+  - ts: 2026-09-25
+    change: "Confirmed, unchanged; first refresh in 66 days. A shipped countermeasure now names this attack class directly: @ClaudeDevs announced on 2026-09-24 17:11 UTC that Anthropic is resuming charging for requests blocked by its safeguards before Claude responds, limited to biology, DISTILLATION ATTACKS, and frontier LLM development, citing 'coordinated attacks on our systems in recent weeks' — tracked in full at [[anthropic-billable-safeguard-blocks-2026-09]]. Recorded on this ticket because it is the first shipped product response to the attack class the ticket exists for, and because it establishes that Anthropic treats distillation probing as an ongoing operational cost rather than a closed 2026-06 incident. Stated precisely: the announcement does not name Alibaba and is NOT evidence about Alibaba. Regulatory movement in the same window ran the other way — China's internet regulator is probing DeepSeek and Moonshot over user data allegedly routed to Claude ([[china-deepseek-moonshot-data-probe-2026-09]]), i.e. Beijing investigating the Chinese side of the same traffic pattern. This ticket's own open items are unmoved: Alibaba has still made no public response, and nothing in-window touches the Hagerty-Kim amendment or Qwen's next release."
+  - ts: 2026-09-25
+    change: "Bookkeeping — citation added for the 2026-09-25 entry: @ClaudeDevs announcing that Anthropic is resuming charging for safeguard-blocked requests in three categories, one of which is distillation attacks, citing coordinated attacks in recent weeks. No status, verification or content change."
 ---
 
 Anthropic sent a **letter to multiple US senators and White House officials**

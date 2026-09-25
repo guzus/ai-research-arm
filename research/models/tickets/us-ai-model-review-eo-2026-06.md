@@ -5,6 +5,36 @@ company: US Government / White House
 model: null
 status: confirmed
 status_note: |
+  **2026-09-24 — the review policy is now being used to gate ALLIED
+  access, not just domestic release.** @SophiaCai99 (16:46 UTC, with
+  @JoeBambridge1): "**The White House has asked OpenAI and Anthropic not to share
+  their AI models with the U.K. government's testing agency until the models have
+  gone through U.S. testing.** 'Because they're American companies and this has
+  been our policy with every new frontier model that comes out,' the senior admin
+  official told me. WH wants this sequence: **U.S. review -> secure U.S. systems
+  -> share models with U.S. partners**. Anthropic appears to have complied but
+  OpenAI has not said if it will."
+
+  **This is a material extension of the EO's scope as recorded here.** The order
+  this ticket tracks established a *voluntary* 30-day domestic pre-release review.
+  Sequencing a close ally's safety institute behind US testing is an export-ish
+  control on evaluation access, and the official's framing — "this has been our
+  policy with every new frontier model" — asserts it is already established
+  practice rather than new.
+
+  **Differential compliance is the detail to hold onto.** Anthropic appears to
+  have complied; OpenAI has not said. A "voluntary" regime that two labs answer
+  differently is the point at which voluntariness becomes measurable.
+
+  **And the administration is not speaking with one voice.** The same day,
+  Treasury Secretary Scott Bessent warned against letting "these large labs have
+  regulatory capture because that will stop innovation" and argued for more US
+  open-source models as a counter to Chinese distillation (relayed @rohanpaul_ai).
+  That sits awkwardly beside a policy whose practical effect is to route frontier
+  evaluation through a small number of US labs and US agencies — and directly
+  against the labs' own reported plan for a standards body operating *without*
+  government oversight ([[industry-frontier-safety-standards-body-2026-09]]).
+
   President Trump signed an executive order on **2026-06-02 (Tuesday)**
   establishing a **voluntary** framework for government review of frontier
   AI models before public release. Under it, AI developers engage the
@@ -47,7 +77,7 @@ status_note: |
   this week ([[openai-gpt-6]]), which may be an instance of exactly this
   mechanism. Status stays `confirmed`; verification stays `confirmed` for
   the underlying order.
-expected: "AI cybersecurity clearinghouse stand-up within 30 days (~by early July 2026, Treasury-coordinated); 'covered frontier model' criteria + trusted-partner list TBD, with smaller companies voicing concern the threshold will be written around only the top three labs. First named application 2026-06-26: voluntary review used to ask OpenAI to stagger GPT-5.6 ([[openai-gpt-5-6]]) with customer-by-customer approval; OpenAI and Anthropic are reportedly aligned on wanting the same threshold applied to Meta and xAI"
+expected: "Newly reported 2026-09-24: the White House has asked OpenAI and Anthropic to withhold models from the UK government's testing agency until US testing completes, asserting a US-review -> secure-US-systems -> allied-sharing sequence as established policy; Anthropic appears to have complied, OpenAI has not said. Open: whether any of this is written down or purely informal; whether OpenAI complies; UK AISI's response; the still-undefined 'covered frontier model' criteria and trusted-partner list; and how this squares with the labs' reported plan for a standards body without government oversight ([[industry-frontier-safety-standards-body-2026-09]]) and with Treasury's own anti-regulatory-capture line."
 labels:
   - regulation
   - executive-order
@@ -65,8 +95,10 @@ sources:
   - "@theinformation"
   - "@AndrewCurran_"
   - https://x.com/AndrewCurran_/status/2099173166828720526
+  - https://x.com/SophiaCai99/status/2103164054927720727
+  - https://x.com/rohanpaul_ai/status/2103197763886616831
 created_at: 2026-06-03
-updated_at: 2026-09-14
+updated_at: 2026-09-25
 closed_at: null
 closed_reason: null
 history:
@@ -84,6 +116,10 @@ history:
     change: "Scope-of-review debate + rival alignment. The Information (@leomschwartz, Jul 28 21:54 UTC): 'There are still concerns from smaller companies that they might be frozen out of this process. That it will only be written with the top three companies in mind' — i.e. the 'covered frontier model' threshold may be calibrated to capture only OpenAI/Anthropic/Google-scale labs. Separately, The Information reports OpenAI and Anthropic — 'archrivals' elsewhere — are 'aligning on two policy goals: broader government reviews of advanced models and tighter scrutiny of Chinese open-source AI,' explicitly wanting the same capability threshold imposed on Meta and xAI rather than just themselves (WesRoth analysis piece, consistent with the 06-26 entry's 'Meta is the lone holdout' finding). Status stays confirmed; verification stays confirmed."
   - ts: 2026-09-14
     change: "The administration publicly rejects a slowdown, while Senate negotiators are reported to be considering the opposite. PRESIDENT TRUMP, asked whether the AI industry should slow down or be more regulated (@AndrewCurran_, 2026-09-13 16:27 UTC, ~1.6K likes): 'I think you have a lot of negative forces that are bringing it up that shouldn't be bringing it up, and they're bringing up things that won't happen. But whoever wins with AI wins.' Corroborated by an FT-attributed relay (@kimmonismus): 'Donald Trump has rejected calls for an AI slowdown after tech bosses and Democrats urged tighter regulation of the industry over rising fears that the technology poses an existential threat.' White House AI czar David Sacks replied to Amodei directly, but ONLY truncated retweet text was captured ('Dario has written that we need to \"pace the frontier,\" and Sam has agreed. People may be surprised by my response: go ahead…') — his full position is explicitly NOT recorded here, because the visible fragment is ambiguous between agreement and sarcasm. CONGRESS, pointing the other way (Reuters via @DV_Memetics, 2026-09-14 12:36 UTC): 'Senate negotiators are considering a duty of care for AI companies and authority to block unsafe model releases' — single aggregator, no link, recorded as a claim to watch rather than a legislative fact, but directly relevant to this ticket because an authority to block releases is the enforcement mechanism this EO's 'covered frontier model' review framework lacks. Meanwhile @sama publicly asked for the opposite of a patchwork: 'We welcome a federal framework that sets consistent safety requirements for frontier AI.' Status stays confirmed. Full context of the industry debate at [[anthropic-pace-the-frontier-2026-09]]."
+  - ts: 2026-09-25
+    change: "Confirmed, unchanged — but scope extended materially. @SophiaCai99, with @JoeBambridge1 (2026-09-24 16:46 UTC, ~433 likes), reports the White House has asked OpenAI and Anthropic NOT to share their models with the UK government's testing agency until the models have completed US testing, with a senior administration official saying 'because they're American companies and this has been our policy with every new frontier model that comes out' and describing the intended sequence as US review -> secure US systems -> share with US partners. Anthropic appears to have complied; OpenAI has not said whether it will. This extends the artifact this ticket tracks from a voluntary 30-day DOMESTIC pre-release review to a gate on allied evaluation access, which is closer to an export control on model access than to a safety review — and the official frames it as established practice, not a new measure. The differential compliance is recorded as the most informative detail: a voluntary regime that two labs answer differently is where voluntariness becomes measurable. Recorded alongside an in-window contradiction inside the administration: Treasury Secretary Scott Bessent warned the same day against large labs achieving regulatory capture and argued for more US open-source models (relayed @rohanpaul_ai, 18:59 UTC), which sits badly beside a policy that routes frontier evaluation through a handful of US labs and agencies. Cross-linked to [[industry-frontier-safety-standards-body-2026-09]], whose reported design — a standards regime WITHOUT government oversight — points the opposite way from a White House asserting sequencing authority over the same labs' models."
+  - ts: 2026-09-25
+    change: "Bookkeeping — citations added for the 2026-09-25 entry: @SophiaCai99 with @JoeBambridge1 (the White House asking OpenAI and Anthropic to withhold models from the UK testing agency until US testing completes; Anthropic appears to have complied, OpenAI unstated) and @rohanpaul_ai (Treasury Secretary Bessent's contrary regulatory-capture line the same day). No status, verification or content change."
 ---
 
 On **2026-06-02**, President Trump signed an executive order creating a
