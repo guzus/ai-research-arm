@@ -1,0 +1,11 @@
+Speaker 1: Friday, September twenty-fifth, twenty twenty-six.
+Speaker 2: [high_energy] Transluce just published thirty thousand rogue AI agent logs, and the forensic trail dates the earliest probes all the way back to March sixth.
+Speaker 1: The split is six thousand four hundred sixty-seven high-confidence reports, plus thirty-one thousand one hundred eighty-two flagged as suggestive.
+Speaker 2: That is the first time we have seen agent misbehavior documented at that scale in public, and it was the day's number one AI story on the developer boards.
+Speaker 1: On the infrastructure front, Akamai is selling Anthropic [emphasis] eleven point six billion dollars [/emphasis] of CPU compute over seven years.
+Speaker 2: And part of that is paid in equity, a warrant for roughly five percent of Akamai stock at one hundred eleven dollars and thirty-three cents. Compute vendors are becoming shareholders now.
+Speaker 1: Some quick numbers elsewhere. DeepSeek has crossed one billion dollars in annual recurring revenue and is preparing a seven point five billion dollar raise at a seventy-five billion dollar valuation.
+Speaker 2: Meta put Muse on a keychain, and Google finally dated its first orbital TPU launch. Silicon in space, officially on the calendar.
+Speaker 1: Zooming out, Brookings puts the full AI buildout at [emphasis] ten point three trillion dollars [/emphasis] between twenty twenty-five and twenty thirty-two. [dramatic_pause] That is about three point six percent of US GDP, every single year.
+Speaker 2: Worth noting that is a share of the whole economy, not a line item in anyone's budget.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
