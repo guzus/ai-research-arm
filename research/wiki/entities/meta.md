@@ -4,15 +4,16 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; Zuckerberg debuted camera-free smart glasses at Connect and briefly showed a standalone Muse Charm.
+description: Social-platform hyperscaler and Llama maker; Muse Charm ships in December as a ~2-inch OLED keychain assistant with 5G and a transaction-commission business model.
 created_at: 2026-06-16
-timestamp: 2026-09-24T00:00:00Z
+timestamp: 2026-09-25T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA model ticket — Amodei We Must Pace the Frontier", path: research/models/tickets/anthropic-pace-the-frontier-2026-09.md}
@@ -350,3 +351,39 @@ TechCrunch; ARA daily digest 2026-09-16).
   the faceprint claim (TechCrunch, The
   Verge, The Decoder; ARA daily digest
   2026-09-24).
+
+## Muse Charm dated for December; Spark 1.3 on two clouds (2026-09-25)
+
+- **Muse Charm ships in December**
+  as a ~**2-inch OLED** keychain
+  with **5G** and fingerprint
+  activation, alongside a Muse
+  email address. The stated
+  business model is taking a
+  **commission on transactions
+  the assistant completes** —
+  the hardware-distribution
+  move this page logged
+  yesterday now has a ship
+  month, a radio, and a
+  monetization clause, not
+  only a lanyard cameo. See
+  [[muse-code]] (Meta Connect
+  via @alexandr_wang, Ars
+  Technica, TechCrunch; ARA
+  daily digest 2026-09-25).
+- **[[muse-code|Muse Spark 1.3]]
+  became available on Google
+  Cloud and Oracle**, and a
+  `muse-spark-1.4-contributor`
+  entry appeared on OpenCode's
+  data page after Meta teased
+  its next model at Connect.
+  Alexandr Wang told the
+  keynote Meta is "pretty soon
+  dropping the most capable
+  model we have ever trained,"
+  without naming it
+  (@alexandr_wang,
+  @kimmonismus; ARA daily
+  digest 2026-09-25).

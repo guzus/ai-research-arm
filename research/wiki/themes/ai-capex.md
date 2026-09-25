@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; an FT-leaked OpenAI July deck projects $278B negative FCF and about $856B of infrastructure spend through 2030.
+description: The historically large compute buildout; Akamai sold Anthropic $11.6B of CPU compute over seven years, while Oracle filed force majeure on the New Mexico Stargate site.
 created_at: 2026-05-24
-timestamp: 2026-09-20T00:00:00Z
+timestamp: 2026-09-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
@@ -1299,3 +1300,65 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   outside capital is a physical-AI
   startup round, not a GPU-cloud close
   (ARA daily digest 2026-09-20).
+
+## Akamai's $11.6B CPU book; Oracle force majeure on Stargate NM (2026-09-25)
+
+- **Akamai sold [[anthropic]] $11.6
+  billion of CPU compute** over seven
+  years on Akamai Cloud — explicitly
+  not GPUs — with a path to roughly
+  **$20B**. Anthropic receives a
+  warrant for **7.7M shares** (~5% of
+  Akamai) at **$111.33**, vesting
+  against purchases. Akamai will
+  spend about **$5.5B** of capex to
+  service it and raised 2026 capex
+  guidance by about **$1.7B** to
+  pre-purchase supply-chain
+  components including memory. This
+  is a CPU-only take-or-pay print
+  next to the 2026-09-24 reported
+  1 GW / $40B Stream Data Centers
+  talks, and it is the first named
+  Akamai–Anthropic commitment on
+  this page (GlobeNewswire relays;
+  ARA daily digest 2026-09-25).
+- **Oracle filed force majeure on
+  the New Mexico Stargate site**,
+  seeking protection from cost
+  increases on Project Jupiter
+  and, per the same Reuters
+  report, payment protection if
+  the site misses a **2028**
+  opening. Within hours Oracle
+  publicly said Jupiter "remains
+  on our planned schedule" — the
+  first open gap between a
+  Stargate contractor's
+  contractual filings and its
+  public guidance. See [[openai]]
+  (Reuters via relays, TechCrunch;
+  ARA daily digest 2026-09-25).
+- **[[google]] dated Project
+  Suncatcher**: a fridge-sized
+  prototype with **four Trillium
+  TPUs** on [[spacex|SpaceX]]
+  Transporter-18 around **1
+  October**, first-party from
+  Sundar Pichai. Dated hardware,
+  not a paper study (blog.google,
+  Ars Technica; ARA daily digest
+  2026-09-25).
+- **Brookings put 2025–2032
+  data-center and AI
+  infrastructure investment at
+  $10.3 trillion**, about **3.6%
+  of US GDP annually** — against
+  2.24% for railroads, 1.13% for
+  highways and 1.1% for telecom
+  and fiber. That is a projection
+  of announced intent measured
+  against realized history, so
+  the comparison is weaker than
+  the headline (Brookings; ARA
+  daily digest 2026-09-25).

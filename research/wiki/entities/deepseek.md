@@ -4,10 +4,12 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou Chinese frontier lab; China's internet regulator opened a reported probe after Anthropic alleged DeepSeek and Moonshot routed data to Claude, and The Information said DeepSeek is seeking 50B yuan at a 500B yuan valuation.
+description: Hangzhou Chinese frontier lab; The Information put annualized revenue at $1B and a $7.5B raise at a $75B valuation, with 70% of compute on training.
 created_at: 2026-06-04
-timestamp: 2026-09-23T00:00:00Z
+timestamp: 2026-09-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
+  - {title: "ARA model ticket — DeepSeek second funding round", path: research/models/tickets/deepseek-second-round-2026-07.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
@@ -323,9 +325,42 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   DeepSeek attempt on that hardware
   failed. Stack it on the 2026-09-10
   CITIC STAR item and the June ~$7.4B /
-  $50B+ rumor; none of those prints is a
+  $50B+ rumor;   none of those prints is a
   closed round (The Information via
   Twitter; ARA daily digest 2026-09-23).
+
+## First public ARR figure; the raise restated at $75B (2026-09-25)
+
+- **The Information put DeepSeek's
+  annualized revenue at $1 billion**
+  and said the lab is preparing to
+  raise **$7.5B at a $75B
+  valuation** — a **75×** multiple
+  with no named lead investor.
+  The same reporting puts **70%**
+  of DeepSeek's compute on
+  training, and says Liang Wenfeng
+  told investors internal tests
+  show smaller models running well
+  on gaming GPUs. Treat the
+  gaming-GPU line as a pitch
+  about test results, not a
+  confirmed production
+  deployment. This is the first
+  public revenue anchor on a
+  raise this page has tracked
+  since June (~$7.4B / $50B+) and
+  restated on 2026-09-23 as 50B
+  yuan / 500B yuan; the dollar
+  figures and the $1B ARR are
+  new, the closed-round status
+  is not. Still single-outlet,
+  no DeepSeek statement, no
+  filing. See [[open-weights]]
+  (The Information via
+  @theinformation; ARA daily
+  digest 2026-09-25 and model
+  ticket deepseek-second-round-2026-07).
 
 ## Open questions
 

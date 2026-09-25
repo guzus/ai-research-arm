@@ -2,12 +2,13 @@
 slug: federal-ai-policy
 title: Federal AI Policy
 type: theme
-aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act"]
+aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; the Sanders/Casar Ban Artificial Superintelligence Act paired an ASI ban with an Advanced AI pause the same day the White House directed federal documents to say "super intelligence."
+description: US federal AI governance; The Information named the three-lab private regulator SAFA, and the Sanders/Casar pause threshold sits at 10^25 operations.
 created_at: 2026-06-03
-timestamp: 2026-09-24T00:00:00Z
+timestamp: 2026-09-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
@@ -1471,6 +1472,80 @@ footing for the first time in the cycle.
   there is no White House confirmation
   (Semafor, single-source; ARA daily
   digest 2026-09-24).
+
+## SAFA named; the Sanders pause sits at 10^25 ops (2026-09-25)
+
+- **The Information named the private
+  three-lab safety body SAFA**
+  (Standards Authority for Frontier
+  AI). [[google]], [[openai]] and
+  [[anthropic]] are advancing it to
+  set model testing, audit and
+  incident-reporting rules, targeted
+  for year-end or early 2027. It
+  would operate without government
+  oversight, and none of the three
+  has named SAFA on the record. This
+  is the named-entity increment on
+  the 2026-09-15 "labs talk a
+  private body" item and the
+  2026-09-16 Lehane confirmation
+  that the three have been
+  coordinating on safety for weeks.
+  The body itself is still
+  single-source; what is confirmed
+  is coordination, not a charter
+  (The Information; ARA daily
+  digest 2026-09-25).
+- **The Sanders–Casar pause
+  threshold is 10^25 operations** —
+  a line essentially every deployed
+  frontier model already sits
+  above. The bill would pause
+  training and deployment of
+  "advanced AI" until a new
+  Department of Artificial
+  Intelligence writes safety
+  rules, prohibit "superintelligence
+  precursor" capabilities
+  (including unauthorized hacking),
+  require confirmed
+  superintelligence to be
+  destroyed, and impose asset/IP
+  forfeiture plus up to 20 years
+  for individuals. No Republican
+  co-sponsor has surfaced. The
+  bill itself landed yesterday;
+  today's increment is the
+  numerical threshold and the
+  precursor/destruction clauses
+  (The Verge; ARA daily digest
+  2026-09-25).
+- **SAFA surfaced the same week
+  the White House is reported to
+  be moving to cut off the UK AI
+  Safety Institute**, and as
+  Treasury Secretary Scott Bessent
+  argued publicly that "we can't
+  let these large labs have
+  regulatory capture." All
+  single-source. Bessent was
+  named the AI-czar front-runner
+  yesterday; today's quote is
+  the capture objection aimed at
+  the same three-lab room that
+  would write SAFA's rules (ARA
+  daily digest 2026-09-25).
+- **The UK competition regulator
+  is proposing [[google]] offer
+  ChatGPT and [[perplexity]] as
+  search options** on Android and
+  Chrome via a first-setup choice
+  screen plus an annual prompt,
+  with assistants required to
+  credit the sources behind their
+  answers. See [[eu-ai-regulation]]
+  (ARA daily digest 2026-09-25).
 
 ## Open questions
 
