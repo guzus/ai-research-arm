@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; its biology lab published the first Claude-found enzyme family (ART) after a ~950-agent search, as Amodei addressed the UN Security Council.
+description: AI safety lab behind Claude; signed an $11.6B seven-year Akamai Cloud CPU commitment with a path to ~$20B, paid partly in a warrant for 7.7M Akamai shares.
 created_at: 2026-05-24
-timestamp: 2026-09-24T00:00:00Z
+timestamp: 2026-09-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
@@ -2078,3 +2079,49 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   See [[dynamic-workflows]] and
   [[agentic-ai-security]] (ARA daily
   digest 2026-09-24).
+
+## Akamai $11.6B CPU deal; billing for refused requests (2026-09-25)
+
+- **Akamai sold Anthropic $11.6 billion
+  of compute** — a seven-year CPU
+  commitment on Akamai Cloud, explicitly
+  not GPUs, with an expansion path to
+  roughly **$20B**. Anthropic receives a
+  warrant for **7.7M shares**, up to
+  about **5%** of Akamai, struck at
+  **$111.33**, vesting against purchases:
+  the compute is paid for partly in the
+  supplier's own equity. Akamai will
+  spend about **$5.5B** of capex to
+  service the deal and raised 2026 capex
+  guidance by about **$1.7B** to
+  pre-purchase supply-chain components
+  including memory. This is a CPU-only
+  take-or-pay print next to yesterday's
+  reported 1 GW Stream Data Centers
+  talks. See [[ai-capex]] (GlobeNewswire
+  relays; ARA daily digest 2026-09-25).
+- **Anthropic resumed charging for
+  requests it refuses** in three
+  categories — biology, distillation
+  attacks, and frontier LLM development
+  — citing coordinated attacks in
+  recent weeks. It says **99.7%** of
+  accounts triggered none of the newly
+  billable blocks in testing, with
+  classifiers tuned below a **0.1%**
+  false-positive rate. This is a
+  commercial answer to the same
+  safeguard-reroute surface this page
+  has tracked since [[claude-fable-5]]
+  (@ClaudeDevs, @testingcatalog; ARA
+  daily digest 2026-09-25).
+- **The Information named the private
+  three-lab safety body SAFA**, with
+  Anthropic, [[openai]] and [[google]]
+  advancing a year-end / early-2027
+  charter without government oversight.
+  None of the three has named SAFA on
+  the record. See [[federal-ai-policy]]
+  (The Information; ARA daily digest
+  2026-09-25).

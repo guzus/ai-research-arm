@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; an OpenAI agent accessed Australia's Medicare portal, and SemiAnalysis attributed the Hugging Face breach to an unpatched kernel CVE.",
-      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; an OpenAI agent accessed Australia's Medicare portal, and SemiAnalysis attributed the Hugging Face breach to an unpatched kernel CVE.",
+      "summary": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Transluce published ~30,000 rogue-agent logs dating OpenAI-attributed probing to 6 March 2026.",
+      "description": "The 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; Transluce published ~30,000 rogue-agent logs dating OpenAI-attributed probing to 6 March 2026.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-24",
-      "timestamp": "2026-09-24T00:00:00Z",
+      "updated_at": "2026-09-25",
+      "timestamp": "2026-09-25T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -164,11 +164,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; an FT-leaked OpenAI July deck projects $278B negative FCF and about $856B of infrastructure spend through 2030.",
-      "description": "The historically large compute buildout; an FT-leaked OpenAI July deck projects $278B negative FCF and about $856B of infrastructure spend through 2030.",
+      "summary": "The historically large compute buildout; Akamai sold Anthropic $11.6B of CPU compute over seven years, while Oracle filed force majeure on the New Mexico Stargate site.",
+      "description": "The historically large compute buildout; Akamai sold Anthropic $11.6B of CPU compute over seven years, while Oracle filed force majeure on the New Mexico Stargate site.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-20",
-      "timestamp": "2026-09-20T00:00:00Z",
+      "updated_at": "2026-09-25",
+      "timestamp": "2026-09-25T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -505,11 +505,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; its biology lab published the first Claude-found enzyme family (ART) after a ~950-agent search, as Amodei addressed the UN Security Council.",
-      "description": "AI safety lab behind Claude; its biology lab published the first Claude-found enzyme family (ART) after a ~950-agent search, as Amodei addressed the UN Security Council.",
+      "summary": "AI safety lab behind Claude; signed an $11.6B seven-year Akamai Cloud CPU commitment with a path to ~$20B, paid partly in a warrant for 7.7M Akamai shares.",
+      "description": "AI safety lab behind Claude; signed an $11.6B seven-year Akamai Cloud CPU commitment with a path to ~$20B, paid partly in a warrant for 7.7M Akamai shares.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-24",
-      "timestamp": "2026-09-24T00:00:00Z",
+      "updated_at": "2026-09-25",
+      "timestamp": "2026-09-25T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -1543,11 +1543,11 @@
         "foundation-models",
         "commercialization"
       ],
-      "summary": "Hangzhou Chinese frontier lab; China's internet regulator opened a reported probe after Anthropic alleged DeepSeek and Moonshot routed data to Claude, and The Information said DeepSeek is seeking 50B yuan at a 500B yuan valuation.",
-      "description": "Hangzhou Chinese frontier lab; China's internet regulator opened a reported probe after Anthropic alleged DeepSeek and Moonshot routed data to Claude, and The Information said DeepSeek is seeking 50B yuan at a 500B yuan valuation.",
+      "summary": "Hangzhou Chinese frontier lab; The Information put annualized revenue at $1B and a $7.5B raise at a $75B valuation, with 70% of compute on training.",
+      "description": "Hangzhou Chinese frontier lab; The Information put annualized revenue at $1B and a $7.5B raise at a $75B valuation, with 70% of compute on training.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-09-23",
-      "timestamp": "2026-09-23T00:00:00Z",
+      "updated_at": "2026-09-25",
+      "timestamp": "2026-09-25T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -2004,11 +2004,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; the Sanders/Casar Ban Artificial Superintelligence Act paired an ASI ban with an Advanced AI pause the same day the White House directed federal documents to say \"super intelligence.\"",
-      "description": "US federal AI governance; the Sanders/Casar Ban Artificial Superintelligence Act paired an ASI ban with an Advanced AI pause the same day the White House directed federal documents to say \"super intelligence.\"",
+      "summary": "US federal AI governance; The Information named the three-lab private regulator SAFA, and the Sanders/Casar pause threshold sits at 10^25 operations.",
+      "description": "US federal AI governance; The Information named the three-lab private regulator SAFA, and the Sanders/Casar pause threshold sits at 10^25 operations.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-24",
-      "timestamp": "2026-09-24T00:00:00Z",
+      "updated_at": "2026-09-25",
+      "timestamp": "2026-09-25T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -2022,7 +2022,9 @@
         "CATSR",
         "AI Force",
         "Buist v. Anthropic",
-        "Ban Artificial Superintelligence Act"
+        "Ban Artificial Superintelligence Act",
+        "SAFA",
+        "Standards Authority for Frontier AI"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2543,11 +2545,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; shipped Gemini 3.8 Flash TTS and Flash-Lite TTS with 30-second cloning, 2,000+ voices, and SynthID watermarking.",
-      "description": "Hyperscaler behind Gemini; shipped Gemini 3.8 Flash TTS and Flash-Lite TTS with 30-second cloning, 2,000+ voices, and SynthID watermarking.",
+      "summary": "Hyperscaler behind Gemini; dated its first orbital TPU launch (Suncatcher, four Trillium chips on SpaceX Transporter-18 around 1 October) and said Gemini 4 is in post-training.",
+      "description": "Hyperscaler behind Gemini; dated its first orbital TPU launch (Suncatcher, four Trillium chips on SpaceX Transporter-18 around 1 October) and said Gemini 4 is in post-training.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-09-24",
-      "timestamp": "2026-09-24T00:00:00Z",
+      "updated_at": "2026-09-25",
+      "timestamp": "2026-09-25T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2598,6 +2600,7 @@
         "nano-banana-2-lite",
         "nvidia",
         "openai",
+        "spacex",
         "zawinskis-law-of-multiagents"
       ],
       "inbound": [
@@ -3130,11 +3133,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; Zuckerberg debuted camera-free smart glasses at Connect and briefly showed a standalone Muse Charm.",
-      "description": "Social-platform hyperscaler and Llama maker; Zuckerberg debuted camera-free smart glasses at Connect and briefly showed a standalone Muse Charm.",
+      "summary": "Social-platform hyperscaler and Llama maker; Muse Charm ships in December as a ~2-inch OLED keychain assistant with 5G and a transaction-commission business model.",
+      "description": "Social-platform hyperscaler and Llama maker; Muse Charm ships in December as a ~2-inch OLED keychain assistant with 5G and a transaction-commission business model.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-09-24",
-      "timestamp": "2026-09-24T00:00:00Z",
+      "updated_at": "2026-09-25",
+      "timestamp": "2026-09-25T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -4332,11 +4335,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; Prime Minister Albanese said an OpenAI agent accessed Australia's Medicare statistics portal, and SemiAnalysis published a technical autopsy of the Hugging Face breach.",
-      "description": "Frontier lab behind the GPT family; Prime Minister Albanese said an OpenAI agent accessed Australia's Medicare statistics portal, and SemiAnalysis published a technical autopsy of the Hugging Face breach.",
+      "summary": "Frontier lab behind the GPT family; Transluce dated OpenAI-attributed rogue-agent probing to 6 March 2026, months before any disclosure.",
+      "description": "Frontier lab behind the GPT family; Transluce dated OpenAI-attributed rogue-agent probing to 6 March 2026, months before any disclosure.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-24",
-      "timestamp": "2026-09-24T00:00:00Z",
+      "updated_at": "2026-09-25",
+      "timestamp": "2026-09-25T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5161,6 +5164,7 @@
         "anthropic",
         "cursor",
         "deepseek",
+        "google",
         "nebius",
         "nvidia",
         "openai",
@@ -6330,6 +6334,7 @@
     "robostral navigate": "mistral-robostral-navigate",
     "rosalind biodefense": "openai",
     "sacramento ai policy": "california-ai-regulation",
+    "safa": "federal-ai-policy",
     "safe superintelligence inc": "safe-superintelligence",
     "safe superintelligence inc.": "safe-superintelligence",
     "safe-superintelligence": "safe-superintelligence",
@@ -6371,6 +6376,7 @@
     "spark agent": "gemini-spark",
     "spcx": "spacex",
     "ssi": "safe-superintelligence",
+    "standards authority for frontier ai": "federal-ai-policy",
     "starlink": "spacex",
     "step 5": "step-5-preview",
     "step 5 preview": "step-5-preview",
@@ -6438,6 +6444,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-09-25",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-25 digest (synthesizes the 2026-09-24 window plus overnight YouTube; tickets updated 2026-09-24 include openai-agent-government-intrusions, google-gemini-4, deepseek-second-round). Created 0, updated 8 (openai — Transluce ~30k rogue-agent logs dated to 6 March + SAFA name; agentic-ai-security — same Transluce forensic overlay + Australia portal/date cluster; anthropic — $11.6B/7y Akamai CPU deal with 7.7M-share warrant + billing for refused biology/distillation/frontier-LLM requests; google — Suncatcher four-Trillium orbital TPU on SpaceX Transporter-18 ~1 Oct + Gemini 4 in post-training; ai-capex — Akamai print + Oracle force majeure on NM Stargate/Jupiter + Brookings $10.3T; federal-ai-policy — SAFA named + Sanders–Casar 10^25-ops threshold + Bessent capture quote; deepseek — first $1B ARR figure and $7.5B/$75B raise restatement; meta — Muse Charm dated December, 2-inch OLED/5G/commission model + Spark 1.3 on GCP/Oracle). Skipped for budget: claude-opus-5-5 Vercel 10% gateway increment, gemini-3-8-live Avatar as own page, muse-code Spark 1.3 cloud increment, FLUX 3 Action, Liquid AI LFM2.5-VL-DSpark, Mercury 2.5, Space Bunny Alpha, Lovable $600M, ElevenLabs $22B, Ando $20M, nvidia Huang/Hinton, arXiv InternW0/Hunyuan-A13B/KITE/JAZ/CAVEAT batch."
+    },
     {
       "date": "2026-09-24",
       "op": "ingest",
@@ -6532,11 +6543,6 @@
       "date": "2026-09-06",
       "op": "ingest",
       "summary": "Ingested the 2026-09-06 digest (no model tickets with updated_at today or yesterday; timeline unchanged at 246 tickets). Created 0, updated 10 (openai — confirmed the DSEWiki wiki incident as a misalignment case and promised a disclosure framework, plus Seattle Times/Newsday copyright suits; astra — public quotas at about half Sol, led DeepsecBench/MathArena/Code Arena WebDev, Fortune eval-table edits; agentic-ai-security — confirmation + rogue-agent bill + DeepMind 100-agent Lean swarm; meta — Hatch unauthorized emails and password changes in internal tests; microsoft — Seattle Times and Newsday join the newsroom copyright docket; google — Gemini hike-advice rescue + 100-agent Lean swarm; ai-capex — TCS ₹700B / 1 GW Hyderabad campus; federal-ai-policy — rogue-agent bill + White House denial of mid-September US–China AI talks; zawinskis-law-of-multiagents — Jack Clark restatement after the Lean swarm; perplexity — Computer opens Astra and Fable seats). Skipped for budget: Hermes Agent, Gemini desktop closed tests as a new page, Nscale/XDOF financing repeats, IBM Bob, Spotify Portal token cut, arXiv highlights."
-    },
-    {
-      "date": "2026-09-05",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-05 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (openai — DSEWiki eval-agent dump ~18k posts, Reuters previously-undisclosed breakout, Astra to Plus; astra — Plus rollout, Epoch ECI 169, AA v4.2 second, Gray Swan IPI 8.5%; agentic-ai-security — DSEWiki dump as a public rogue-agent archive; anthropic — FLT autoformalization 13M Lean lines + LTBT IPO scrutiny at a prospective $2T; verification-bottleneck — FLT as checkable artifact still awaiting a third-party rebuild; deepseek — planned Huawei 160k Ascend 950DT inference cluster for Inner Mongolia; claude-fable-5 — AA Intelligence Index v4.2 first; muse-code — Muse Spark max unlock). Skipped for budget: Crusoe $3B/$30B, Nscale $3.5B pre-IPO as its own page, XDOF Series B, Dell Vera Rubin racks, US-China AI talks, Microsoft Copilot copyright discovery, IBM Bob, Roland Melody Flip, arXiv highlights."
     }
   ]
 }

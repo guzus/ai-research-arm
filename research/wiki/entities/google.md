@@ -4,15 +4,17 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; shipped Gemini 3.8 Flash TTS and Flash-Lite TTS with 30-second cloning, 2,000+ voices, and SynthID watermarking.
+description: Hyperscaler behind Gemini; dated its first orbital TPU launch (Suncatcher, four Trillium chips on SpaceX Transporter-18 around 1 October) and said Gemini 4 is in post-training.
 created_at: 2026-07-17
-timestamp: 2026-09-24T00:00:00Z
+timestamp: 2026-09-25T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
+  - {title: "ARA model ticket — Gemini 4 post-training", path: research/models/tickets/google-gemini-4-2026-09.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
@@ -538,6 +540,65 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   local with no source leaving the
   machine (ARA daily digest
   2026-09-24).
+
+## Suncatcher dated; Gemini 4 enters post-training (2026-09-25)
+
+- **Google dated its first orbital TPU
+  launch.** Project Suncatcher puts a
+  fridge-sized prototype carrying **four
+  Trillium TPUs** on [[spacex|SpaceX]]'s
+  Transporter-18 rideshare around **1
+  October**, confirmed first-party by
+  Sundar Pichai. HN comment climb was
+  the evening's largest (**31/58 →
+  82/140**) on Google's own facts page.
+  This is a dated hardware ship, not a
+  paper study — the first named
+  Google/SpaceX orbital-compute
+  artifact on this page. See
+  [[ai-capex]] and [[spacex]]
+  (blog.google, Ars Technica,
+  @demishassabis; ARA daily digest
+  2026-09-25).
+- **Gemini 4 is in post-training** per
+  DeepMind CTO Koray Kavukcuoglu,
+  telling The Information the model
+  has finished training and that he
+  hopes to release an early
+  post-training version "much earlier"
+  than year-end, with rapid iteration
+  after. No date, checkpoint or
+  benchmark is attached, and Google
+  has published nothing — treat as
+  stated intention, single-source
+  interview. A July Gemini-4 rumor
+  ticket was closed as stale; this
+  one has a named principal and a
+  falsifiable stage claim. See
+  [[gemini-3-8-flash]] for the 3.8
+  harvest this would sit on top of
+  (@rohanpaul_ai, @kimmonismus; ARA
+  daily digest 2026-09-25 and model
+  ticket google-gemini-4-2026-09).
+- **Gemini 3.8 Live Avatar** shipped
+  as an animated persona that
+  lip-syncs and changes expression
+  in real time, enterprise-only for
+  now. Distinct from
+  [[gemini-3-8-live|3.8 Live]]
+  speech-to-speech and yesterday's
+  3.8 TTS pair (The Verge; ARA daily
+  digest 2026-09-25).
+- **The Information named the private
+  three-lab safety body SAFA**, with
+  Google, [[openai]] and [[anthropic]]
+  advancing a year-end / early-2027
+  charter without government
+  oversight. None of the three has
+  named SAFA on the record. See
+  [[federal-ai-policy]] (The
+  Information; ARA daily digest
+  2026-09-25).
 
 ## Open questions
 
