@@ -5,6 +5,29 @@ company: Meta
 model: Muse Spark
 status: released
 status_note: |
+  **2026-09-24 — Muse Spark 1.3 lands on third-party clouds.**
+  @alexandr_wang (primary): "for the developers in the back: muse spark 1.3 is
+  now available on @googlecloud and @Oracle!" @jhaveri gives the precise version:
+  "Muse Spark 1.3 is now available through @Oracle and **in private preview** on
+  @googlecloud, **our new preferred cloud platform partners**."
+
+  The two posts disagree on the Google Cloud tier — "available" vs "private
+  preview" — and the more specific one is taken as correct: **Oracle GA, Google
+  Cloud private preview**. Both are Meta employees; this is not corroboration
+  from independent directions, it is one announcement stated twice with different
+  precision.
+
+  **"Preferred cloud platform partners" is the substantive phrase.** Meta
+  distributing its flagship model through Oracle and Google Cloud is a
+  distribution strategy for a company that operates its own enormous fleet and is
+  separately building Meta Compute to rent out excess capacity
+  ([[meta-compute-2026-07]]). Selling through rivals' clouds while renting out
+  your own is a two-sided position worth watching.
+
+  **Adjacent, tracked separately:** a `muse-spark-1.4-contributor` id has
+  appeared on OpenCode's registry — see [[meta-muse-spark-1-4-2026-09]]. This
+  ticket continues to track the 1.3 line and the Hatch consumer agent.
+
   **Muse Spark corroborated as a real Meta model in private testing.** WSJ
   reporting (relayed 2026-06-05) says Meta has repeatedly delayed the
   **Muse Spark developer API** — no firm public date as of 2026-06-02,
@@ -116,7 +139,7 @@ status_note: |
   next-generation foundation model is a distinct shipping artifact from the
   Muse Spark 1.x line.
 
-expected: "BOTH LEGS SHIPPED. Muse Spark 1.3 / 1.3 max released (Muse Code + Meta Model API); the consumer Muse agent is out of closed alpha and in broad public use, with Meta One reported at $7.99/$19.99 as the consumer price. Still pending: Muse Spark open weights and the 'bigger models' teased at launch; Watermelon, the next foundation model, with Meta Connect Sept 23-24 as the venue in frame (sell-side expectation, not a Meta statement); and a CheatBench row for the reward-hacking claim."
+expected: "BOTH LEGS SHIPPED. Muse Spark 1.3 / 1.3 max released and now distributed beyond Meta — GA on Oracle and private preview on Google Cloud, named as Meta's 'preferred cloud platform partners' (2026-09-24). The consumer Muse agent is in broad public use with Meta One reported at $7.99/$19.99. Still pending: Muse Spark open weights and the 'bigger models' teased at launch; Watermelon, the next foundation model; a CheatBench row for the reward-hacking claim; and whether the Connect 2026 'next major model' tease refers to 1.4 ([[meta-muse-spark-1-4-2026-09]]) or to something larger."
 labels:
   - consumer-agent
   - pricing
@@ -156,8 +179,10 @@ sources:
   - https://x.com/alexandr_wang/status/2103012868191047997
   - https://x.com/jukan05/status/2103005414485082594
   - https://x.com/PebbySandhu/status/2103084185296519575
+  - https://x.com/alexandr_wang/status/2103216490292150334
+  - https://x.com/jhaveri/status/2103185039618146392
 created_at: 2026-06-04
-updated_at: 2026-09-24
+updated_at: 2026-09-25
 closed_at: null
 closed_reason: null
 history:
@@ -185,6 +210,10 @@ history:
     change: "THE AGENT LEG SHIPPED — the last unresolved half of this ticket closes. Status stays released (the model line was already there); what changes is that the consumer agent is no longer invite-gated. EVIDENCE IS DISTRIBUTION-SHAPED, not announcement-shaped, which is the point: the window is full of unaffiliated ordinary users describing completed real-world tasks, something a closed alpha cannot produce. @alexandr_wang (2026-09-15 20:58 UTC): 'muse saved people $9,649.71 across 100 different stories… we are working hard to expand access and get it everywhere!' Firsthand third-party accounts: @raunaqbn had the agent navigate an Xfinity phone tree to a human, hit an SMS verification it could not read, and patch him in live, locking $85.30/mo for five years (~$5,118); @Trace_Cohen connected it to Chase via Plaid and it surfaced a recurring Adobe charge billing a stranger's account that Chase had never flagged; @_coenen and @ryanmcadams, both previously skeptical, posted 'fast easy just works' reactions. Also in-window: MUSEBOOK teased, a Muse Code contributor-tier limit increase with a usage reset for all subs, and Wang crediting Nat Friedman with assembling and running the team. PRICING ANSWERED, and not at the number this ticket has carried since June: a daily AI digest sourced to TechCrunch reports Meta One bundling app extras plus more AI image and video at $7.99/mo and $19.99 Premium, limits undisclosed (@FadyEid 2026-09-16). If that is the monetization surface, the up-to-$199.99/mo Hatch ceiling recorded 2026-08-26 is nowhere near where Meta landed. Third-party relay of a paywalled outlet → recorded, not adopted as final pricing. CAPABILITY CLAIM AND ITS COUNTERWEIGHT, same window: Wang says 'muse spark 1.3 is the best frontier model at NOT cheating / reward hacking' — first-party, no published methodology; @hendrycks released CheatBench the same day, a neutral reward-gaming evaluation across math, coding, knowledge work and visual tasks, reporting that 'frontier agents still cheat frequently', with no captured per-model row for Muse Spark 1.3. Wang's claim stays UNVERIFIED until a CheatBench row exists. WATERMELON GETS A VENUE AND AN INSTITUTIONAL SOURCE: Citi, reiterating Buy and an $800 PT on META ahead of Meta Connect Sept 23-24, expects Muse updates — noting Muse app downloads have exceeded Instagram and Facebook on several days — and flags 'a potential launch of Meta's next foundation model, internally codenamed Watermelon' (@wallstengine 2026-09-16). Third independent carry of the codename on this ticket (Business Insider 2026-07-03, aggregator 2026-08-26, Citi now) and the first with a named venue and date window, but it is sell-side expectation rather than a Meta statement, so the model: field is unchanged. IF WATERMELON LAUNCHES AS A NAMED ARTIFACT AT CONNECT IT GETS ITS OWN TICKET — a next-generation foundation model is a distinct shipping artifact from the Muse Spark 1.x line. Cross-reference: Wang's 'Meta delayed shipping Muse for several months to focus on safety and security. We didn't call for everyone else to do this before we would' is logged on [[anthropic-pace-the-frontier-2026-09]] as that ticket's first cited held release."
   - ts: 2026-09-24
     change: "TRACTION AND COMMERCE. @mark_k, citing Reuters (2026-09-24): Muse has reached 2.8 million downloads in two weeks and overtaken ChatGPT as the top free app in the US and Canada; Meta shares rose nearly 13% on the week and Shopify gained 11% after agreeing to handle Muse checkouts, while Booking and TripAdvisor fell more than 6% and Charles Schwab nearly 5%. @alexandr_wang (Meta CAIO) confirmed Spotify and Box partnerships directly on 2026-09-24. Status stays RELEASED and verification stays confirmed — this is adoption and commercial evidence on an already-shipped product, not a lifecycle move. Two counterweights recorded rather than dropped: @jukan05 (2026-09-24) reports Muse 'hasn't even reached a million users yet, and it's already struggling to serve them', which sits awkwardly beside the 2.8M download figure and is the difference between installs and actives; and the sympathetic-stock moves are a market narrative about disintermediation, not evidence that Muse takes any of that revenue — @PebbySandhu's read that the market is asking whether Muse makes a business more valuable or less necessary is the more careful framing. The checkout deal is the load-bearing item: an agent that completes transactions rather than recommending them is a different product category, and it is what the Booking/TripAdvisor/Schwab moves are pricing. Meta Connect hardware announced the same week is tracked separately at [[meta-connect-2026-09]]."
+  - ts: 2026-09-25
+    change: "Released, unchanged. Distribution expanded beyond Meta for the first time: @alexandr_wang announced on 2026-09-24 20:14 UTC (~409 likes) that 'muse spark 1.3 is now available on @googlecloud and @Oracle', and @jhaveri stated the tiers precisely — GA through Oracle, PRIVATE PREVIEW on Google Cloud — and named both as Meta's 'new preferred cloud platform partners'. Where the two Meta posts disagree on the Google Cloud tier, the more specific one is taken as correct and recorded as such; they are the same announcement at two precisions, not independent corroboration. Strategically noted: Meta is distributing its flagship model through two rival clouds while simultaneously building Meta Compute to rent out its own excess capacity ([[meta-compute-2026-07]]), which is a two-sided position. Also recorded: this ticket does NOT absorb the new 'muse-spark-1.4-contributor' registry sighting, which is tracked as its own artifact at [[meta-muse-spark-1-4-2026-09]]; this ticket remains the 1.3 line plus the Hatch consumer agent, and the Connect 2026 'next major model' tease ([[meta-connect-2026-09]]) stays open here because nothing yet links it to 1.4 rather than to Watermelon."
+  - ts: 2026-09-25
+    change: "Bookkeeping — citations added for the 2026-09-25 entry: @alexandr_wang (Muse Spark 1.3 now available on Google Cloud and Oracle) and @jhaveri (the precise tiers — GA through Oracle, private preview on Google Cloud — and the 'preferred cloud platform partners' framing). No status, verification or content change."
 ---
 
 **The Information** (relayed on 2026-06-04, 02:25 UTC) reports that Meta is
