@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ANTHROPIC SEEKS 50.1% VOTING CONTROL FOR SEVEN CO-FOUNDERS IN PALANTIR-STYLE PRE-IPO STRUCTURE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2103264718160859531",
+    "category": "business"
+  },
+  {
+    "headline": "AMODEI HOLDS ROUGHLY 2% OF ANTHROPIC ECONOMICALLY — NEW SHARES ADD VOTES WITHOUT OWNERSHIP",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103266407987417449",
+    "category": "business"
+  },
+  {
+    "headline": "MUSK GUIDES SPACEXAI TO 660,000 GB300 GPUS IN 90 DAYS, 1.44 MILLION TOTAL BY YEAR-END",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103342528435245532",
+    "category": "infra"
+  },
+  {
+    "headline": "GPT-6 ASTRA CLAIMED FIRST LLM-AGENT NETHACK ASCENSION — 37,140 TURNS, SELF-BUILT HARNESS",
+    "source": "@emollick",
+    "url": "https://x.com/emollick/status/2103308028552343946",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI $500 CHATGPT PRO MAX TIER SPOTTED IN DEVELOPMENT, CEREBRAS NAMED AS LIKELY ENGINE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2103238785278312463",
+    "category": "breaking"
+  },
+  {
+    "headline": "MOODY'S PUTS TOP FIVE HYPERSCALERS AT $2.8 TRILLION IN FUTURE COMMITMENTS, UP FROM $350B IN 2023",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103255744388956441",
+    "category": "infra"
+  },
+  {
+    "headline": "AMD MI355X HITS 470 TOKENS/SEC ON GLM 5.3 FP8 — OVER 40% FASTER THAN GB300 ON TRT-LLM FP4",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2103267188278698055",
+    "category": "infra"
+  }
+]
