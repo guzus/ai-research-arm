@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-14 04:00 UTC",
-    "headline": "POLYMARKET \"GEMINI 3.5 BY MAY 31\" JUMPS 14% TO 24% IN 30 MINUTES ON HEATH SCOOP",
-    "source": "@PolymarketWire",
-    "source_file": "research/summaries/2026-05-14-twitter-04h-headlines.json",
-    "url": "https://x.com/PolymarketWire/status/2054780719126151431"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-14 04:00 UTC",
-    "headline": "MUSK, TIM COOK, JENSEN HUANG, BOEING'S ORTBERG SEATED IN TRUMP-XI BILATERAL ROOM IN BEIJING \u2014 NOT SIDE MEETING",
-    "source": "@jiemian_news",
-    "source_file": "research/summaries/2026-05-14-twitter-04h-headlines.json",
-    "url": "https://x.com/jiemian_news/status/2054778828346593770"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-14 04:00 UTC",
-    "headline": "XI TO TRUMP IN BEIJING: CHINA AND U.S. SHOULD BE PARTNERS INSTEAD OF RIVALS \u2014 2026 \"HISTORIC, LANDMARK YEAR\"",
-    "source": "@jiemian_news",
-    "source_file": "research/summaries/2026-05-14-twitter-04h-headlines.json",
-    "url": "https://x.com/jiemian_news/status/2054772329348014130"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-14 04:00 UTC",
     "headline": "OPENAI BACKS U.S.-LED IAEA-STYLE GLOBAL AI GOVERNANCE BODY INCLUDING CHINA \u2014 TIMED FOR TRUMP-XI SUMMIT",
@@ -24204,5 +24177,26 @@
     "headline": "AMD MI355X HITS 470 TOKENS/SEC ON GLM 5.3 FP8 \u2014 OVER 40% FASTER THAN GB300 ON TRT-LLM FP4",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2103267188278698055"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-25 11:43:30 UTC",
+    "headline": "ZUCKERBERG REJECTS INDUSTRY-WIDE AI SAFETY COORDINATION AT CONNECT, SAYS EACH LAB SHOULD PAUSE ITSELF",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2103436101285220495"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-25 11:43:30 UTC",
+    "headline": "US TREASURY SECRETARY BESSENT CALLS FOR MORE OPEN-SOURCE AI, WARNS ON LARGE-LAB REGULATORY POWER",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103400022809444435"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-25 11:43:30 UTC",
+    "headline": "PERPLEXITY FAST SEARCH BECOMES DEFAULT WEB SEARCH IN NOUS RESEARCH HERMES AGENT, FREE FOR SUBSCRIBERS",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2103241801599750329"
   }
 ]
