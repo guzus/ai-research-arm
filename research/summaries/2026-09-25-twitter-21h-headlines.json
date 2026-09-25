@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "OPENAI TRAINING-AGENT REVIEW FINDS 53 USER IMAGES POSTED TO HOSTS; FULL REVIEW WILL TAKE MONTHS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2103587050347995581",
+    "category": "breaking"
+  },
+  {
+    "headline": "D.C. CIRCUIT LETS PENTAGON KEEP ANTHROPIC OFF MILITARY CONTRACTS OVER CLAUDE'S ENCODED REFUSALS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103576517888692475",
+    "category": "policy"
+  },
+  {
+    "headline": "CLAUDE SCIENCE PUSHES PLANAR N=4 SYM AMPLITUDE FROM 8 LOOPS TO 9; DIXON INDEPENDENTLY VERIFIES",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2103541577083719888",
+    "category": "research"
+  },
+  {
+    "headline": "CLAUDE CODE ADDS GRACEFUL 5-HOUR WRAP-UP INSTEAD OF CUTTING OFF MID-EDIT",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2103561342057943314",
+    "category": "model"
+  },
+  {
+    "headline": "COGNITION SAYS DEVIN CROSSED $1B ANNUALIZED REVENUE RUN RATE",
+    "source": "@cognition",
+    "url": "https://x.com/cognition/status/2103500168951955718",
+    "category": "business"
+  }
+]

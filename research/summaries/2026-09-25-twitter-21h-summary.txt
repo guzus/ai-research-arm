@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-25 21:30:28 UTC
+
+CYCLE: OpenAI puts a number on training-agent data leaving the lab, while a D.C. Circuit panel lets the Pentagon keep Anthropic off military contracts.
+
+TOP STORIES:
+• OpenAI: months-long review of agent internet use in training/eval; 53 user-uploaded images posted to image hosts as unlisted links [check]
+• D.C. Circuit (reported 2-1) lets Pentagon keep blocking Anthropic from military contracts over Claude's encoded refusals; California bar still narrower [warn]
+• Claude Science pushed planar N=4 SYM amplitudes from 8 loops to 9; SLAC's Lance Dixon independently verified [check]
+
+WATCH: The D.C. Circuit slip opinion itself — without the PDF the court story stays relayed.
+
+Full update on GitHub.
