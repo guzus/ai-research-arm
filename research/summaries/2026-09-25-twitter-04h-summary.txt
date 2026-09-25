@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-25 04:47:42 UTC
+
+CYCLE: Anthropic locks founder control before an IPO; Musk's compute math meets a power wall.
+
+TOP STORIES:
+• Anthropic reportedly seeks 50.1% voting power for its 7 co-founders in a Palantir-style pre-IPO structure; Amodei owns ~2% economically [⚠]
+• SpaceXAI guidance: 660k GB300s in 90 days, 1.44M GPUs by year-end — implies ~1.2GW, so power is the real constraint [⚠]
+• GPT-6 Astra claimed first LLM-agent NetHack ascension (37,140 turns) — but it built and patched its own harness [🚩]
+• Unreleased $500 ChatGPT "Pro Max" tier spotted, Cerebras named as likely engine, DevDay a week out [⚠]
+
+WATCH: Any Anthropic statement or filing on the 50.1% founder voting structure, and whether it supplements or supersedes the Long-Term Benefit Trust.
+
+Full update on GitHub.
