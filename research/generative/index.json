@@ -2987,6 +2987,24 @@
     "prompt": "Seed Twitter/X URL: https://x.com/ethena/status/2103439484113346986\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-09-25T150648--expand-research-from-twitter-link-https-x-com-ethena-status.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "이더나의 $150조 달러 베팅: USDe의 토큰화 주식 진출이 실제로 사는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-09-25T15:06:48Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-ethena-status",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-09-25T15:06:48Z",
+        "source_file": "research/generative/2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status.ara.md",
+        "source_sha256": "cb63321e7363718c6388ae4f6e680550e973c3be8fa4437d20c72b31da4a3592"
+      }
+    }
   }
 ]
