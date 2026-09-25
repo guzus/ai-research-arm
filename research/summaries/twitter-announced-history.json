@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-14 07:00 UTC",
-    "headline": "ANTHROPIC PASSES OPENAI IN BUSINESS ADOPTION FIRST TIME \u2014 34.4% VS 32.3% IN APRIL (RAMP)",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-14-twitter-07h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2054582686698848294"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-14 12:00 UTC",
-    "headline": "MICROSOFT IN TALKS TO ACQUIRE DIFFUSION-LLM LAB INCEPTION \u2014 REUTERS SAYS >$1B ASK, SPACEX ALSO COURTING",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-14-twitter-12h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2054863887200047340"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-14 12:00 UTC",
-    "headline": "GOOGLE I/O LEAK CASCADE GROWS: 'GEMINI 3.2 FLASH' RUMORED AT 92% OF GPT-5.5 CODING, 15-20X CHEAPER \u2014 UNVERIFIED",
-    "source": "@bindureddy",
-    "source_file": "research/summaries/2026-05-14-twitter-12h-headlines.json",
-    "url": "https://x.com/bindureddy/status/2054767771418861964"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-14 12:00 UTC",
-    "headline": "ELON'S 'XAI VOICE CLONING NOW LIVE' RT IS A 13-DAY-OLD RE-AMPLIFICATION \u2014 ORIGINAL @XAI POST DATED MAY 1",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-14-twitter-12h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2054885432635310538"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-14 15:00 UTC",
-    "headline": "CEREBRAS PRICES IPO AT $185/SHARE, RAISES $5.55B AT ~$56.4B VALUATION \u2014 LARGEST US IPO OF 2026",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-14-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054948731099689317"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-14 15:00 UTC",
     "headline": "CEREBRAS $CBRS INDICATED TO OPEN NEAR 2X IPO PRICE, IMPLYING ~$100B+ EQUITY VALUE; OPENAI IS ANCHOR CUSTOMER",
@@ -24184,5 +24139,40 @@
     "headline": "TRUMP CONFIRMS SCOTT BESSENT WILL NOT BE SUPERINTELLIGENCE CZAR \u2014 POST STILL OPEN",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2103529364923269212"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-25 21:30:28 UTC",
+    "headline": "OPENAI TRAINING-AGENT REVIEW FINDS 53 USER IMAGES POSTED TO HOSTS; FULL REVIEW WILL TAKE MONTHS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2103587050347995581"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-25 21:30:28 UTC",
+    "headline": "D.C. CIRCUIT LETS PENTAGON KEEP ANTHROPIC OFF MILITARY CONTRACTS OVER CLAUDE'S ENCODED REFUSALS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103576517888692475"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-25 21:30:28 UTC",
+    "headline": "CLAUDE SCIENCE PUSHES PLANAR N=4 SYM AMPLITUDE FROM 8 LOOPS TO 9; DIXON INDEPENDENTLY VERIFIES",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2103541577083719888"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-25 21:30:28 UTC",
+    "headline": "CLAUDE CODE ADDS GRACEFUL 5-HOUR WRAP-UP INSTEAD OF CUTTING OFF MID-EDIT",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2103561342057943314"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-25 21:30:28 UTC",
+    "headline": "COGNITION SAYS DEVIN CROSSED $1B ANNUALIZED REVENUE RUN RATE",
+    "source": "@cognition",
+    "url": "https://x.com/cognition/status/2103500168951955718"
   }
 ]
