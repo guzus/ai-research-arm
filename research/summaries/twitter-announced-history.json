@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-14 01:00 UTC",
-    "headline": "CONDUCTOR DISCLOSES ANTHROPIC PROGRAMMATIC CREDIT CAP \u2014 $200/MO ON MAX SUBSCRIPTION, THEN API COSTS",
-    "source": "@charlieholtz",
-    "source_file": "research/summaries/2026-05-14-twitter-01h-headlines.json",
-    "url": "https://x.com/charlieholtz/status/2054695769916264638"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-14 01:00 UTC",
-    "headline": "APPLE INTERNAL TEAM REDESIGNING APP STORE AS 'AGENT STORE' WHILE BLOCKING REPLIT / ANYTHING VIBE-CODING APPS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-14-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054690367983722562"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-14 01:00 UTC",
-    "headline": "ANTHROPIC GLASSWING LEAD: 'COMPUTE HAS NEVER BEEN A LIMITER' \u2014 DIRECTLY CONTRADICTS COLOSSUS 1 SUPPLY-SIDE FRAMING",
-    "source": "@logangraham",
-    "source_file": "research/summaries/2026-05-14-twitter-01h-headlines.json",
-    "url": "https://x.com/logangraham/status/2054613618168082935"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-14 01:00 UTC",
-    "headline": "UK AISI: CLAUDE MYTHOS PREVIEW FIRST MODEL TO SOLVE 'COOLING TOWER' END-TO-END CYBER RANGE",
-    "source": "@bcherny",
-    "source_file": "research/summaries/2026-05-14-twitter-01h-headlines.json",
-    "url": "https://x.com/bcherny/status/2054617810253615147"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-14 01:00 UTC",
-    "headline": "SEMIANALYSIS DEFENDS OPUS 4.7 FAST MODE PRICING AS PARETO-FRONTIER-CORRECT \u2014 '2.5X SPEED AT 6X COST' IS NOT ARBITRARY",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-14-twitter-01h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2054713648489132310"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-14 01:00 UTC",
-    "headline": "FTV CAPITAL'S BERNSTEIN: AI BOOM MAY BE 'FALSE POSITIVE' \u2014 SUBSIDIZED EARLY-ADOPTION DEMAND COULD GO AWAY",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-14-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054713485599121552"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-14 04:00 UTC",
-    "headline": "VERGE SOURCES: GOOGLE TO UNVEIL NEW GEMINI AT I/O TUESDAY MAY 19 \u2014 \"ON PAR WITH GPT-5.5 BUT SHORT OF MYTHOS\"",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-14-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2054751022749278651"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-14 04:00 UTC",
     "headline": "POLYMARKET \"GEMINI 3.5 BY MAY 31\" JUMPS 14% TO 24% IN 30 MINUTES ON HEATH SCOOP",
@@ -24218,5 +24155,54 @@
     "headline": "PICHAI CONFIRMS PROJECT SUNCATCHER TPUs FLY ON SPACEX TRANSPORTER-18; LASER-LINK PAIR SET FOR 2027",
     "source": "@demishassabis",
     "url": "https://x.com/demishassabis/status/2103213024668721308"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-25 04:47:42 UTC",
+    "headline": "ANTHROPIC SEEKS 50.1% VOTING CONTROL FOR SEVEN CO-FOUNDERS IN PALANTIR-STYLE PRE-IPO STRUCTURE",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2103264718160859531"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-25 04:47:42 UTC",
+    "headline": "AMODEI HOLDS ROUGHLY 2% OF ANTHROPIC ECONOMICALLY \u2014 NEW SHARES ADD VOTES WITHOUT OWNERSHIP",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103266407987417449"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-25 04:47:42 UTC",
+    "headline": "MUSK GUIDES SPACEXAI TO 660,000 GB300 GPUS IN 90 DAYS, 1.44 MILLION TOTAL BY YEAR-END",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103342528435245532"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-25 04:47:42 UTC",
+    "headline": "GPT-6 ASTRA CLAIMED FIRST LLM-AGENT NETHACK ASCENSION \u2014 37,140 TURNS, SELF-BUILT HARNESS",
+    "source": "@emollick",
+    "url": "https://x.com/emollick/status/2103308028552343946"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-25 04:47:42 UTC",
+    "headline": "OPENAI $500 CHATGPT PRO MAX TIER SPOTTED IN DEVELOPMENT, CEREBRAS NAMED AS LIKELY ENGINE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2103238785278312463"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-25 04:47:42 UTC",
+    "headline": "MOODY'S PUTS TOP FIVE HYPERSCALERS AT $2.8 TRILLION IN FUTURE COMMITMENTS, UP FROM $350B IN 2023",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103255744388956441"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-25 04:47:42 UTC",
+    "headline": "AMD MI355X HITS 470 TOKENS/SEC ON GLM 5.3 FP8 \u2014 OVER 40% FASTER THAN GB300 ON TRT-LLM FP4",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2103267188278698055"
   }
 ]
