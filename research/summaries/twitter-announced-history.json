@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-14 04:00 UTC",
-    "headline": "OPENAI BACKS U.S.-LED IAEA-STYLE GLOBAL AI GOVERNANCE BODY INCLUDING CHINA \u2014 TIMED FOR TRUMP-XI SUMMIT",
-    "source": "@firstpost",
-    "source_file": "research/summaries/2026-05-14-twitter-04h-headlines.json",
-    "url": "https://x.com/firstpost/status/2054777252802679073"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-14 04:00 UTC",
-    "headline": "GALLUP: 71% OF AMERICANS NOW OPPOSE LOCAL DATACENTER CONSTRUCTION \u2014 TOPS ALL-TIME-HIGH ANTI-NUCLEAR-PLANT OPPOSITION",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-14-twitter-04h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2054747948110753817"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-14 04:00 UTC",
-    "headline": "HCLTECH TO LEAD $300M SARVAM AI ROUND AT $1.5B VALUATION WITH $150M BET \u2014 FIRST INDIAN AI UNICORN",
-    "source": "@chandrarsrikant",
-    "source_file": "research/summaries/2026-05-14-twitter-04h-headlines.json",
-    "url": "https://x.com/chandrarsrikant/status/2054776802552447393"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-14 07:00 UTC",
-    "headline": "US CLEARS ~10 CHINESE FIRMS \u2014 ALIBABA, TENCENT, BYTEDANCE, JD \u2014 TO BUY NVIDIA H200s, UP TO 75K CHIPS EACH",
-    "source": "@dnystedt",
-    "source_file": "research/summaries/2026-05-14-twitter-07h-headlines.json",
-    "url": "https://x.com/dnystedt/status/2054811340267733033"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-14 07:00 UTC",
-    "headline": "H200 CHINA APPROVALS LAND BUT ZERO CHIPS SHIPPED \u2014 BEIJING URGING FIRMS TO HOLD OFF, PUSH HUAWEI",
-    "source": "@fbermingham",
-    "source_file": "research/summaries/2026-05-14-twitter-07h-headlines.json",
-    "url": "https://x.com/fbermingham/status/2054818536141279625"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-14 07:00 UTC",
-    "headline": "GALLUP: 70% OF AMERICANS OPPOSE A DATACENTER NEARBY \u2014 MORE THAN OPPOSE A NUCLEAR PLANT",
-    "source": "@washingtonpost",
-    "source_file": "research/summaries/2026-05-14-twitter-07h-headlines.json",
-    "url": "https://x.com/washingtonpost/status/2054607684054253901"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-14 07:00 UTC",
-    "headline": "EX-QWEN TECH LEAD JUNYANG LIN RAISING FOR NEW AI LAB AT ~$2B VALUATION \u2014 PRE-PRODUCT",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-14-twitter-07h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054645118758433089"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-14 07:00 UTC",
     "headline": "ANTHROPIC PASSES OPENAI IN BUSINESS ADOPTION FIRST TIME \u2014 34.4% VS 32.3% IN APRIL (RAMP)",
@@ -24198,5 +24135,54 @@
     "headline": "PERPLEXITY FAST SEARCH BECOMES DEFAULT WEB SEARCH IN NOUS RESEARCH HERMES AGENT, FREE FOR SUBSCRIBERS",
     "source": "@AravSrinivas",
     "url": "https://x.com/AravSrinivas/status/2103241801599750329"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-25 17:04:27 UTC",
+    "headline": "MICROSOFT REBUILDS COPILOT \u2014 FLAGSHIP AUTOPILOT AGENT RUNS ON OPEN-SOURCE OPENCLAW, MAINTAINER CONFIRMS",
+    "source": "@steipete",
+    "url": "https://x.com/steipete/status/2103491173927272531"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-25 17:04:27 UTC",
+    "headline": "HUGGING FACE CO-FOUNDER: COMMERCIAL APIS REFUSED TO ANALYZE PAYLOADS FROM HF'S OWN BREACH",
+    "source": "@Thom_Wolf",
+    "url": "https://x.com/Thom_Wolf/status/2103510481033998417"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-25 17:04:27 UTC",
+    "headline": "SEMIANALYSIS: B200 GIGAWATT CLEARS UP TO $15B ANNUAL PROFIT SERVING DEEPSEEK V4.1 FLASH",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2103500468655690203"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-25 17:04:27 UTC",
+    "headline": "GOLDMAN: HYPERSCALER AI CAPEX UP OVER 50% TO $1.2 TRILLION IN 2027, $1.4 TRILLION IN 2028",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103503133377016186"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-25 17:04:27 UTC",
+    "headline": "OPUS 5.5 SCORES 31.2% ON WEIRDML V3 VS FABLE 5.1 AT 26.0% \u2014 STILL TRAILS GPT-6 ASTRA",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2103471245543260661"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-25 17:04:27 UTC",
+    "headline": "SK HYNIX UNIT SOLIDIGM WEIGHS 2027 US IPO \u2014 ~$15B RAISE AT UP TO $150B VALUATION",
+    "source": "@IPONewsroom_",
+    "url": "https://x.com/IPONewsroom_/status/2103528350459535648"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-25 17:04:27 UTC",
+    "headline": "TRUMP CONFIRMS SCOTT BESSENT WILL NOT BE SUPERINTELLIGENCE CZAR \u2014 POST STILL OPEN",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2103529364923269212"
   }
 ]
