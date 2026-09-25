@@ -1,0 +1,136 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Ethena is not adding $150 trillion of collateral capacity. It is adding access to roughly $2.9 billion of qualifying equity-perpetual open interest on Binance and OKX combined.",
+      "verdict": "weak",
+      "citation": "https://www.theblock.co/news/deals/2026-09-25-ethena-expands-usde-backing-strategy-into-bstocks-and-equity-perpetuals-on-binance-416367"
+    },
+    {
+      "id": "c2",
+      "text": "USDe printed $0.65 on Binance's own orderbook on October 10-11, 2025, while staying near $1 on Curve.",
+      "verdict": "supported",
+      "citation": "https://www.coindesk.com/markets/2025/10/13/no-ethena-s-usde-didn-t-de-peg"
+    },
+    {
+      "id": "c3",
+      "text": "Bybit's price moved too, to around $0.92, during the October 2025 dislocation.",
+      "verdict": "supported",
+      "citation": "https://www.coindesk.com/markets/2025/10/13/no-ethena-s-usde-didn-t-de-peg"
+    },
+    {
+      "id": "c4",
+      "text": "Curve (deep liquidity) held near $1.00, within under 100bps, during the October 2025 dislocation.",
+      "verdict": "supported",
+      "citation": "https://www.coindesk.com/markets/2025/10/13/no-ethena-s-usde-didn-t-de-peg"
+    },
+    {
+      "id": "c5",
+      "text": "BaFin fined Ethena's EU entity EUR 600,000, forced a wind-down, and found 'serious deficiencies in the business organisation of Ethena GmbH.'",
+      "verdict": "supported",
+      "citation": "https://www.bafin.de/SharedDocs/Veroeffentlichungen/EN/Verbrauchermitteilung/weitere/2025/meldung_2025_04_15_Ethena_GmbH_en.html"
+    },
+    {
+      "id": "c6",
+      "text": "BaFin found 'sufficient grounds to suspect' that sUSDe constitutes an unregistered security offered without a required prospectus.",
+      "verdict": "supported",
+      "citation": "https://www.bafin.de/SharedDocs/Veroeffentlichungen/EN/Verbrauchermitteilung/weitere/2025/meldung_2025_06_03_sUSDe_en.html"
+    },
+    {
+      "id": "c7",
+      "text": "The GENIUS Act defines a payment stablecoin by design-for-payment and fixed-redemption obligation, and separately bars payment-stablecoin issuers from paying holders interest or yield solely for holding the coin.",
+      "verdict": "supported",
+      "citation": "https://www.congress.gov/119/plaws/publ27/PLAW-119publ27.htm"
+    },
+    {
+      "id": "c8",
+      "text": "The Reserve Fund held approximately $62 million ($41.98M USDtb plus $20.02M USDtb-USDC) against USDe supply, a 1.061% ratio, modeled as about 9x a 24-hour unwind-stress requirement.",
+      "verdict": "supported",
+      "citation": "https://gov.ethenafoundation.com/t/reserve-fund-march-2026-update/775"
+    },
+    {
+      "id": "c9",
+      "text": "Over the trailing three years, ETH perpetual funding was net negative on 17.5% of days and BTC on 15.9%, with combined net revenue negative on 8.84% of days; longest negative streak 13 days vs. 176-day longest positive streak.",
+      "verdict": "supported",
+      "citation": "https://docs.ethena.fi/protocol-overview/risks/funding-risk"
+    },
+    {
+      "id": "c10",
+      "text": "Ethena partnered with Anchorage Digital Bank to launch USDtb, described as offering 'a clear pathway to becoming compliant,' leaving USDe outside that compliance claim.",
+      "verdict": "supported",
+      "citation": "https://www.anchorage.com/insights/anchorage-digital-partners-with-ethena-labs-to-launch-first-genius-compliant-federally-regulated-stablecoin"
+    },
+    {
+      "id": "c11",
+      "text": "An equity perpetual market must clear at least $25 million of one-sided open interest (14-day average) and post 30 days of funding history to qualify; Binance qualified $2.14B OI, OKX $585M, Bybit $0, Kraken $9.3M.",
+      "verdict": "supported",
+      "citation": "https://gov.ethenafoundation.com/t/a-framework-for-the-tokenized-equity-basis-trade/832"
+    },
+    {
+      "id": "c12",
+      "text": "Total stablecoin market capitalization stood at roughly $305 billion, with USDT and USDC together holding about 72% of it.",
+      "verdict": "unsupported",
+      "citation": "https://reap.global/blog/stablecoin-statistics-2026"
+    },
+    {
+      "id": "c13",
+      "text": "Ethena Pay advertises up to 6% dollar savings and 4-10% cashback paid in AVAX.",
+      "verdict": "unsupported",
+      "citation": "https://pay.ethena.fi/faq"
+    },
+    {
+      "id": "c14",
+      "text": "Ethena Pay's FAQ classifies the Daily Boost as 'a discretionary promotional incentive: it is not interest, not yield, not a deposit,' and it automatically zeroes out once base yield covers the tier rate.",
+      "verdict": "supported",
+      "citation": "https://pay.ethena.fi/faq"
+    },
+    {
+      "id": "c15",
+      "text": "A governance vote (17.8 million ENA voting) approved routing 5-20% of gross protocol revenue to ENA buybacks once USDe's 14-day average supply crosses tiered thresholds from $7.5 billion up to $20 billion.",
+      "verdict": "supported",
+      "citation": "https://gov.ethenafoundation.com/t/ena-fee-switch-activation/830"
+    },
+    {
+      "id": "c16",
+      "text": "Ethena's Q1 2026 retained profit was only about $614,000, corroborated independently by DeFiLlama's roughly $2.89 million annualized revenue estimate against approximately $275 million in annualized fees.",
+      "verdict": "weak",
+      "citation": "https://www.techflowpost.com/en-US/article/34112"
+    },
+    {
+      "id": "c17",
+      "text": "US SEC staff issued a joint statement in January 2026 affirming that tokenized securities remain fully subject to federal securities law 'irrespective of technological form.'",
+      "verdict": "weak",
+      "citation": "https://www.sec.gov/newsroom/speeches-statements/corp-fin-statement-tokenized-securities-012826-statement-tokenized-securities"
+    },
+    {
+      "id": "c18",
+      "text": "USDe's total supply fell from a peak of roughly $14.8 billion in October 2025 to about $4.9 billion by September 2026.",
+      "verdict": "supported",
+      "citation": "https://www.tradingview.com/news/cointelegraph:4bc2a9faa094b:0-ethena-s-usde-loses-8-3b-since-october-crash-amid-loss-of-confidence/"
+    },
+    {
+      "id": "c19",
+      "text": "Resolv's USR suffered an approximately $80 million unauthorized mint via a compromised key on March 22, 2026.",
+      "verdict": "supported",
+      "citation": "https://www.coindesk.com/markets/2026/03/23/resolv-stablecoin-drops-70-after-usd80-million-exploit-after-attacker-mints-usr"
+    },
+    {
+      "id": "c20",
+      "text": "OKX's CEO holds that Binance's own USDe yield-promotion campaign caused the October 10 crash; Dragonfly's Haseeb Qureshi countered that BTC bottomed roughly 30 minutes before USDe's price gap opened on Binance.",
+      "verdict": "supported",
+      "citation": "https://finance.yahoo.com/news/okx-ceo-binance-usde-yield-151104149.html"
+    },
+    {
+      "id": "c21",
+      "text": "Ethena's October 12, 2025 disclosure, attested by Chaos Labs, Chainlink, LlamaRisk, and Harris & Trotter, reported the protocol overcollateralized by approximately $66 million and having processed roughly $2 billion in redemptions within 24 hours without interruption.",
+      "verdict": "weak",
+      "citation": "https://coinfomania.com/ethena-usde-oracle-design-october-2025/"
+    },
+    {
+      "id": "c22",
+      "text": "bStock holders 'have no proprietary interest in the backing shares' and holding bStocks as trade collateral is 'unsecured credit exposure to a Binance affiliate' (BTech Holdings).",
+      "verdict": "supported",
+      "citation": "https://gov.ethenafoundation.com/t/a-framework-for-the-tokenized-equity-basis-trade/832"
+    }
+  ]
+}

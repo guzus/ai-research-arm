@@ -2974,5 +2974,19 @@
         "source_sha256": "a8bcc202422dbae592e22784901d60a2226d9ec26d8192a75dbc0826940280f0"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-ethena-status",
+    "file": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+    "model": "claude-sonnet-5",
+    "created_at": "2026-09-25T14:51:49Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/ethena/status/2103439484113346986\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

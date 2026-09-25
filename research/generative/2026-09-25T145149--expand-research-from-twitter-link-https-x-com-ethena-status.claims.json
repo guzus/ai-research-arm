@@ -1,0 +1,243 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Ethena announced on 2026-09-25 that it is expanding USDe's backing strategy into Binance bStocks (tokenized equities) hedged with equity perpetual futures, framing this as expanding addressable collateral from $2.5T of crypto to $150T+ of real-world assets.",
+      "type": "event",
+      "source_urls": ["https://x.com/ethena/status/2103439484113346986", "https://www.theblock.co/news/deals/2026-09-25-ethena-expands-usde-backing-strategy-into-bstocks-and-equity-perpetuals-on-binance-416367"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-09-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "Ethena's own Risk Committee framework requires an equity perpetual market to clear $25M+ one-sided open interest (14-day average) and 30 days of funding history before it is eligible for the basis trade; as of 2026-08-26 only Binance (17 of 67 pairs, ~$2.14B OI) and OKX (3 pairs, ~$585M OI) had any qualifying markets, while Bybit and Kraken qualified zero.",
+      "type": "market-structure",
+      "source_urls": ["https://gov.ethenafoundation.com/t/a-framework-for-the-tokenized-equity-basis-trade/832"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-08-26",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c3",
+      "claim": "Binance's bStocks are issued by BTech Holdings Limited and marketed as 1:1 backed by underlying shares, but Ethena's own Risk Committee states holders have no proprietary interest in the backing shares and that holding bStocks as collateral is unsecured credit exposure to a Binance affiliate, with no multisig or timelock on the token's shared upgrade key.",
+      "type": "market-structure",
+      "source_urls": ["https://www.binance.com/en/academy/articles/what-are-bstocks-a-guide-to-tokenized-stocks-on-binance", "https://gov.ethenafoundation.com/t/a-framework-for-the-tokenized-equity-basis-trade/832"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-08-28",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c4",
+      "claim": "Binance's equity perpetual open interest exceeded $2.9B as of the September 2026 announcement, growing at a roughly 105% compound monthly rate through 2026, with equity basis averaging 3.56% annualized over the prior six months.",
+      "type": "metric",
+      "source_urls": ["https://www.theblock.co/news/deals/2026-09-25-ethena-expands-usde-backing-strategy-into-bstocks-and-equity-perpetuals-on-binance-416367"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-09-25",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c5",
+      "claim": "USDe launched publicly in February 2024, founded by Guy Young, backed by a delta-neutral position of staked/spot crypto collateral (ETH, BTC, and since diversified assets) hedged with equal-notional short perpetual/futures positions on centralized exchanges, with collateral held by off-exchange settlement custodians (Copper, Ceffu, Fireblocks) that can be delegated to exchanges without transferring beneficial title.",
+      "type": "definition",
+      "source_urls": ["https://docs.ethena.fi/backing-custody-and-security/overview", "https://cryptoslate.com/companies/ethena-labs/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "Ethena's own 3-year retrospective shows ETH perpetual funding was net negative on 17.5% of days and BTC on 15.9% of days individually, with combined-revenue (funding plus staking yield) negative on 8.84% of days; the longest observed negative streak was 13 days versus a 176-day longest positive streak.",
+      "type": "metric",
+      "source_urls": ["https://docs.ethena.fi/protocol-overview/risks/funding-risk"],
+      "source_tiers": ["primary"],
+      "as_of": "2026",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c7",
+      "claim": "Ethena's Reserve Fund, designed to absorb negative net revenue so sUSDe stakers never receive negative yield, held approximately $62M against roughly $5.8B USDe supply (a 1.061% ratio) as of end-March 2026; independent analysis (Hindenrank) separately estimated roughly $73M / 1.7% of supply by mid-2026, with modeled depletion in about 52 days under a bearish stress scenario.",
+      "type": "metric",
+      "source_urls": ["https://gov.ethenafoundation.com/t/reserve-fund-march-2026-update/775"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-03-31",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c8",
+      "claim": "sUSDe's historical APY has ranged from a 35.2% all-time high near the Q1 2024 bull peak to a 4.1% all-time low in August 2024 (compressing from 19% to 4% in 11 days), with a 90-day trailing average of roughly 9.4-11.8% as of an April 2026 snapshot, and a supply-side Aave rate of approximately 4.7-4.8% as of September 2026.",
+      "type": "metric",
+      "source_urls": ["https://eco.com/support/en/articles/14798653-susde-explained-ethena-s-yield-bearing-stablecoin", "https://aavescan.com/rates/ethena-susde"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-09-25",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c9",
+      "claim": "During the October 10-11, 2025 crypto market crash, USDe's traded price fell to approximately $0.65 on Binance's own orderbook and to approximately $0.92 on Bybit, while deviations on Curve stayed under roughly 100 basis points; Ethena's founder attributed the dislocation to Binance's own internal oracle sourcing from a thin, illiquid orderbook rather than to any impairment of USDe's collateral.",
+      "type": "event",
+      "source_urls": ["https://www.coindesk.com/markets/2025/10/13/no-ethena-s-usde-didn-t-de-peg", "https://thecurrencyanalytics.com/altcoins/usde-price-slip-not-a-true-depeg-says-ethena-founder-urges-external-oracles-204599"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2025-10-11",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c10",
+      "claim": "Ethena's October 12, 2025 attested disclosure reported the protocol overcollateralized by approximately $66M and having processed approximately $2B in redemptions within 24 hours without interruption during the crash.",
+      "type": "event",
+      "source_urls": ["https://coinfomania.com/ethena-usde-oracle-design-october-2025/"],
+      "source_tiers": ["primary"],
+      "as_of": "2025-10-12",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c11",
+      "claim": "Following the October 2025 event, Aave manually hardcoded USDe/sUSDe oracle pricing to USDT to prevent cascading liquidations, an intervention criticized by the Bank Policy Institute as shifting risk to lenders rather than eliminating it; USDe's total supply subsequently fell from a peak of approximately $14.8B (October 2025) to roughly $4.9B by September 2026, an approximately $8-10B contraction described by one research firm as a 'sharp loss of confidence.'",
+      "type": "event",
+      "source_urls": ["https://bpi.com/stablecoin-risks-some-warning-bells/", "https://www.tradingview.com/news/cointelegraph:4bc2a9faa094b:0-ethena-s-usde-loses-8-3b-since-october-crash-amid-loss-of-confidence/"],
+      "source_tiers": ["opinion", "secondary"],
+      "as_of": "2026-09-20",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c12",
+      "claim": "Ethena Pay, a self-custodial neobank app on Avalanche launched September 1, 2026, advertises up to 6% dollar savings (Pro/VIP tiers) and 4-10% AVAX-denominated card cashback, but its own FAQ/terms classify the 'Daily Boost' top-up as a discretionary, revocable promotion (not interest or a deposit) that automatically zeroes out once base USDe yield already covers the tier rate.",
+      "type": "definition",
+      "source_urls": ["https://pay.ethena.fi/faq"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-01",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c13",
+      "claim": "Ethena's basis-trade carry compressed roughly 61% in about five weeks, from approximately 18% in late July 2026 to approximately 7% by August 26, 2026, with Ethena's own August 27, 2026 governance proposal benchmarking backing yield at 4.6% -- below the 5-6% savings rates advertised by Ethena Pay.",
+      "type": "metric",
+      "source_urls": ["https://alearesearch.substack.com/p/ethenas-stablecoin-economics-give"],
+      "source_tiers": ["secondary"],
+      "as_of": "2026-08-27",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c14",
+      "claim": "ENA rose approximately 5.3% same-day (to $0.1574) and roughly 14% over several days around the September 1, 2026 Ethena Pay launch, though the move overlapped with a separate September 2, 2026 fee-switch governance vote and remained about 89% below ENA's all-time high.",
+      "type": "metric",
+      "source_urls": ["https://coinmarketcap.com/top-stories/6a9cca3698f4795d490fd4c1/", "https://bitcoinethereumnews.com/finance/ethena-jumps-7-following-launch-of-avalanche-powered-neobank/"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-09-03",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c15",
+      "claim": "The US GENIUS Act (signed into law July 18, 2025) defines a 'payment stablecoin' functionally -- by payment/settlement use and a fixed-value redemption obligation -- and bars payment-stablecoin issuers from paying holders interest or yield solely for holding the coin; Ethena has not attempted to bring USDe itself into GENIUS-style compliance, instead partnering with Anchorage Digital Bank to launch a separate token, USDtb, described as its 'clear pathway to becoming compliant.'",
+      "type": "regulatory",
+      "source_urls": ["https://www.congress.gov/119/plaws/publ27/PLAW-119publ27.htm", "https://www.anchorage.com/insights/anchorage-digital-partners-with-ethena-labs-to-launch-first-genius-compliant-federally-regulated-stablecoin"],
+      "source_tiers": ["legal", "secondary"],
+      "as_of": "2025-07-24",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c16",
+      "claim": "Germany's BaFin brought MiCAR's first-ever enforcement action against Ethena GmbH in 2025 -- freezing reserves and banning public USDe sales, then imposing a EUR600,000 coercive fine and ordering wind-up after Ethena withdrew its EU authorization application -- and separately found sufficient grounds to suspect that sUSDe constitutes an unregistered security offered without a required prospectus.",
+      "type": "regulatory",
+      "source_urls": ["https://www.bafin.de/SharedDocs/Veroeffentlichungen/EN/Verbrauchermitteilung/weitere/2025/meldung_2025_04_15_Ethena_GmbH_en.html", "https://www.bafin.de/SharedDocs/Veroeffentlichungen/EN/Verbrauchermitteilung/weitere/2025/meldung_2025_06_03_sUSDe_en.html"],
+      "source_tiers": ["legal", "legal"],
+      "as_of": "2025-06-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "ENA's circulating supply is approximately 10.1B of a 15B maximum supply, with a market capitalization of roughly $2.1-2.5B as of September 25, 2026; ENA fell from roughly $0.56-0.70 in August-September 2025 to a 2026 low near $0.07 (March-June 2026) before recovering to roughly $0.21-0.25 by late September 2026.",
+      "type": "metric",
+      "source_urls": ["https://www.coingecko.com/en/coins/ethena", "https://www.coinlore.com/coin/ethena/historical-data"],
+      "source_tiers": ["market-data", "market-data"],
+      "as_of": "2026-09-25",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c18",
+      "claim": "Ethena's ENA fee switch, approved by a near-unanimous but low-turnout governance vote (17.8M ENA voting, about 0.18% of circulating supply) around September 3-8, 2026, would direct 5-20% of gross protocol revenue (95% of that slice to open-market ENA buybacks) once USDe's 14-day average supply crosses tiered thresholds from $7.5B to $20B; as of September 20, 2026, USDe supply of approximately $4.75B remained about 37% below the $7.5B floor needed to trigger even the lowest 5% tier.",
+      "type": "market-structure",
+      "source_urls": ["https://gov.ethenafoundation.com/t/ena-fee-switch-activation/830", "https://www.techflowpost.com/en-US/article/34112"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-09-20",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c19",
+      "claim": "Ethena's cumulative gross protocol revenue since launch is approximately $1.04B ($284M trailing-12-months), but the protocol's actual retained profit (as opposed to revenue passed through to USDe/sUSDe holders as yield) was only about $614,000 in Q1 2026, down from about $10.18M in Q3 2025 -- a figure corroborated independently by DeFiLlama's roughly $2.89M annualized revenue estimate against roughly $275M in annualized fees.",
+      "type": "metric",
+      "source_urls": ["https://www.techflowpost.com/en-US/article/34112", "https://www.kucoin.com/news/flash/ethena-revenue-falls-32-in-q1-2026-amid-declining-tvl-and-user-activity"],
+      "source_tiers": ["secondary", "secondary"],
+      "as_of": "2026-09-20",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c20",
+      "claim": "At the lowest fee-switch tier (5% of trailing gross revenue, 95% of that slice to buybacks), holding revenue flat at $284M/yr implies roughly $13.49M/yr in ENA buybacks.",
+      "type": "derived",
+      "inputs": [
+        {"ref": "c19", "name": "trailing_12mo_revenue", "value": 284000000, "unit": "USD"}
+      ],
+      "formula": "trailing_12mo_revenue * 0.05 * 0.95",
+      "result": 13490000,
+      "unit": "USD",
+      "assumptions": [
+        "Trailing-12-month gross protocol revenue of $284M holds flat going forward",
+        "5% is the lowest fee-switch tier, activated once USDe's 14-day average supply reaches $7.5B",
+        "95% of the diverted revenue slice is allocated to open-market ENA buybacks per the governance proposal"
+      ],
+      "as_of": "2026-09-20",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c21",
+      "claim": "As of September 25, 2026, USDe (~$4.90B market cap) ranks fourth among stablecoins behind USDT (~$183.7B), USDC (~$76.2B), and USDS (~$6.6B), and narrowly ahead of DAI (~$4.79B) and USD1/World Liberty Financial (~$4.4B); total stablecoin market capitalization was approximately $305B, with USDT and USDC together holding roughly 72% of the total.",
+      "type": "market-structure",
+      "source_urls": ["https://stablecoins.llama.fi/stablecoins", "https://reap.global/blog/stablecoin-statistics-2026"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-09-25",
+      "confidence": "high",
+      "risk": "volatile"
+    },
+    {
+      "id": "c22",
+      "claim": "Rival delta-neutral synthetic-dollar tokens include Resolv's USR (mechanism near-identical to USDe; suffered an approximately $80M unauthorized-mint exploit on March 22, 2026) and Falcon Finance's USDf (~$1.2B market cap; overcollateralized minting but an explicitly Ethena-mirrored delta-neutral yield engine), while Usual's USD0 and Ondo's USDY are backed by tokenized US Treasuries -- a genuinely different, non-basis-trade mechanism.",
+      "type": "comparison",
+      "source_urls": ["https://www.coindesk.com/markets/2026/03/23/resolv-stablecoin-drops-70-after-usd80-million-exploit-after-attacker-mints-usr", "https://coinmarketcap.com/currencies/falcon-finance/", "https://app.rwa.xyz/assets/USD0"],
+      "source_tiers": ["secondary", "primary", "primary"],
+      "as_of": "2026-09-25",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c23",
+      "claim": "Ethena's crypto basis trade, the original core of USDe's backing, has been diversified down to a small share of total backing over 2026 as the protocol rotated into RWA, DeFi lending, and now equity-perpetual exposure -- a shift that a Bitwise executive characterized in 2024 as taking a pre-existing, non-proprietary cash-and-carry trade and 'tokeniz[ing] and issu[ing] units of it,' rather than a structurally novel or defensible mechanism.",
+      "type": "comparison",
+      "source_urls": ["https://fortune.com/crypto/2024/04/19/ethena-labs-stablecoin-synthetic-dollar-tether-circle"],
+      "source_tiers": ["opinion"],
+      "as_of": "2024-04-19",
+      "confidence": "medium",
+      "risk": "contested"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "article_count": 86,
+  "article_count": 87,
   "articles": [
     {
       "claim_count": 18,
@@ -837,6 +837,16 @@
         "twitter-seed"
       ],
       "title": "\"No Place to Hide\": Why \"Protected\" Crypto Trades Still Get Sandwiched"
+    },
+    {
+      "claim_count": 23,
+      "created_at": "2026-09-25T14:51:49Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-ethena-status",
+      "stem": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys"
     }
   ],
   "by_host": {
@@ -877,6 +887,9 @@
     "a16zcrypto.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C6",
       "2026-06-24T160453--test-ornn-com-codex-2#C7"
+    ],
+    "aavescan.com": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8"
     ],
     "abhs.in": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
@@ -974,6 +987,9 @@
     "aitoolsbee.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
     ],
+    "alearesearch.substack.com": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c13"
+    ],
     "alia.public.lu": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c7",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c8"
@@ -1022,6 +1038,9 @@
     ],
     "amtonline.org": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c23"
+    ],
+    "anchorage.com": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c15"
     ],
     "andrew.ooo": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c10"
@@ -1178,6 +1197,9 @@
     ],
     "app.hedgeye.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c14"
+    ],
+    "app.rwa.xyz": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c22"
     ],
     "app.usd.ai": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c4"
@@ -1562,6 +1584,9 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c16",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c17"
     ],
+    "bafin.de": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c16"
+    ],
     "bain.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c22"
     ],
@@ -1617,7 +1642,8 @@
       "2026-08-04T171206--comfyui-company#c20"
     ],
     "binance.com": [
-      "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c17"
+      "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c17",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c3"
     ],
     "biometricupdate.com": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c20"
@@ -1633,6 +1659,9 @@
     ],
     "bisnow.com": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c15"
+    ],
+    "bitcoinethereumnews.com": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c14"
     ],
     "bitcoinfoundation.org": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15"
@@ -1757,6 +1786,9 @@
     ],
     "bloomingbit.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
+    ],
+    "bpi.com": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c11"
     ],
     "bravenewcoin.com": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c18"
@@ -2141,7 +2173,12 @@
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c13",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c8",
-      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c11"
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c11",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c22",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c9"
+    ],
+    "coinfomania.com": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c10"
     ],
     "coingecko.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c3",
@@ -2150,14 +2187,20 @@
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c11",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c18",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c19",
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c17"
     ],
     "coinlaw.io": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c29"
     ],
+    "coinlore.com": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c17"
+    ],
     "coinmarketcap.com": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c11",
-      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c9"
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c9",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c14",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c22"
     ],
     "coinmetrics.substack.com": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c2",
@@ -2208,7 +2251,8 @@
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c22",
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c27",
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c26",
-      "2026-08-20T152813--unitree-star-market-ipo-debut#c22"
+      "2026-08-20T152813--unitree-star-market-ipo-debut#c22",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c15"
     ],
     "consumerreports.org": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c30"
@@ -2286,7 +2330,8 @@
     ],
     "cryptoslate.com": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c13",
-      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c18"
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c18",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c5"
     ],
     "cryptotimes.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c23",
@@ -2595,6 +2640,10 @@
       "2026-08-04T171206--comfyui-company#c15",
       "2026-08-04T171206--comfyui-company#c46"
     ],
+    "docs.ethena.fi": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c5",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c6"
+    ],
     "docs.fcc.gov": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c11"
     ],
@@ -2665,6 +2714,9 @@
     ],
     "ecmweb.com": [
       "2026-05-27T035557--800-vdc-architecture#c35"
+    ],
+    "eco.com": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8"
     ],
     "economicshelp.org": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c8"
@@ -3125,7 +3177,8 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c37",
-      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c38"
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c38",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c23"
     ],
     "fortunebusinessinsights.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
@@ -3301,6 +3354,12 @@
     ],
     "gosearch.ai": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c21"
+    ],
+    "gov.ethenafoundation.com": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c18",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c2",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c3",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c7"
     ],
     "gov.uk": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c14",
@@ -3782,7 +3841,8 @@
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c22",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29",
-      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15"
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c19"
     ],
     "kvcache.ai": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c26"
@@ -4500,6 +4560,9 @@
     "paulgraham.com": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c30"
     ],
+    "pay.ethena.fi": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c12"
+    ],
     "pdf.dfcfw.com": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c35"
     ],
@@ -4796,6 +4859,9 @@
     ],
     "rdworldonline.com": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c18"
+    ],
+    "reap.global": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c21"
     ],
     "recodechinaai.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c17"
@@ -5204,6 +5270,9 @@
     "ssi.inc": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c5"
     ],
+    "stablecoins.llama.fi": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c21"
+    ],
     "stablewatch.io": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c4"
     ],
@@ -5450,7 +5519,9 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c39"
     ],
     "techflowpost.com": [
-      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20"
+      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c18",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c19"
     ],
     "techfundingnews.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c9",
@@ -5568,13 +5639,18 @@
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c10",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c17",
-      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4"
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c4"
     ],
     "thechinaacademy.org": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c1"
     ],
     "thecoinrepublic.com": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c2"
+    ],
+    "thecurrencyanalytics.com": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c9"
     ],
     "thedebrief.org": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c24",
@@ -5739,6 +5815,9 @@
     ],
     "tradingsim.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c14"
+    ],
+    "tradingview.com": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c11"
     ],
     "trajectory.ai": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c1",
@@ -6186,7 +6265,8 @@
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c3",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c30",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c1",
-      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c1"
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c1",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -6278,6 +6358,9 @@
       "2026-06-24T160453--test-ornn-com-codex-2#C6",
       "2026-06-24T160453--test-ornn-com-codex-2#C7"
     ],
+    "https://aavescan.com/rates/ethena-susde": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8"
+    ],
     "https://abit.ee/en/processors/huawei-atlas-350-ascend-950pr-ai-accelerator-nvidia-h20-fp4-hbm-china-ai-chips-en": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c17"
     ],
@@ -6363,6 +6446,9 @@
     ],
     "https://aitoolsbee.com/news/cuda-compatible-ai-chip-bytedance-5-6b-backs-huawei-950pr": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
+    ],
+    "https://alearesearch.substack.com/p/ethenas-stablecoin-economics-give": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c13"
     ],
     "https://alia.public.lu/wp-content/uploads/2026/06/European-Commission_Code-of-Practice-on-Transparency-of-AI-Generated-Content.pdf": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c7",
@@ -6492,6 +6578,9 @@
     ],
     "https://app.hedgeye.com/insights/185196-goldman-s-high-beta-momentum-basket-on-track-for-worst-monthly-perform?type=macro": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c14"
+    ],
+    "https://app.rwa.xyz/assets/USD0": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c22"
     ],
     "https://app.usd.ai/chip": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c4"
@@ -7371,6 +7460,9 @@
     "https://bfl.ai/blog/24-08-01-bfl": [
       "2026-08-04T171206--comfyui-company#c20"
     ],
+    "https://bitcoinethereumnews.com/finance/ethena-jumps-7-following-launch-of-avalanche-powered-neobank": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c14"
+    ],
     "https://bitcoinfoundation.org/news/analysis/what-is-cashcat-crypto-why-robinhoods-memecoin-is-exploding": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15"
     ],
@@ -7510,6 +7602,9 @@
     ],
     "https://bloomingbit.io/en/feed/news/101415": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
+    ],
+    "https://bpi.com/stablecoin-risks-some-warning-bells": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c11"
     ],
     "https://bravenewcoin.com/insights/blast-chain-in-2025-from-2-7b-tvl-to-near-collapse-in-under-two-years": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c18"
@@ -7665,14 +7760,23 @@
     "https://coincentral.com/upbit-operator-dunamu-taps-optimism-foundation-to-build-giwa-chain": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c5"
     ],
+    "https://coinfomania.com/ethena-usde-oracle-design-october-2025": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c10"
+    ],
     "https://coinlaw.io/uniswap-statistics": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c29"
     ],
     "https://coinmarketcap.com/academy/article/what-is-yield-farming": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c9"
     ],
+    "https://coinmarketcap.com/currencies/falcon-finance": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c22"
+    ],
     "https://coinmarketcap.com/currencies/usd-ai": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c11"
+    ],
+    "https://coinmarketcap.com/top-stories/6a9cca3698f4795d490fd4c1": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c14"
     ],
     "https://coinmetrics.substack.com/p/state-of-the-network-issue-356": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c2",
@@ -7772,6 +7876,9 @@
     ],
     "https://cryptoslate.com/blast-network-tvl-plummets-65-losing-2-billion-in-24-hours-post-mainnet-launch": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c18"
+    ],
+    "https://cryptoslate.com/companies/ethena-labs": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c5"
     ],
     "https://cryptoslate.com/south-korea-blocks-17-overseas-crypto-exchange-apps-in-registration-crackdown": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c13"
@@ -8050,6 +8157,12 @@
     "https://docs.comfy.org/tutorials/partner-nodes/pricing": [
       "2026-08-04T171206--comfyui-company#c15"
     ],
+    "https://docs.ethena.fi/backing-custody-and-security/overview": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c5"
+    ],
+    "https://docs.ethena.fi/protocol-overview/risks/funding-risk": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c6"
+    ],
     "https://docs.fcc.gov/public/attachments/DA-26-786A1.txt": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c11"
     ],
@@ -8136,6 +8249,9 @@
     ],
     "https://dronelife.com/2025/12/22/fcc-adds-foreign-made-drones-and-components-to-covered-list-citing-national-security-risks": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c16"
+    ],
+    "https://eco.com/support/en/articles/14798653-susde-explained-ethena-s-yield-bearing-stablecoin": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8"
     ],
     "https://edgen.dev.edgen.tech/news/post/marvell-grants-google-7-warrant-in-122-billion-custom-chip-deal": [
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-15",
@@ -8689,6 +8805,9 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2"
     ],
+    "https://fortune.com/crypto/2024/04/19/ethena-labs-stablecoin-synthetic-dollar-tether-circle": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c23"
+    ],
     "https://forum.marinade.finance/t/mip-9-blocklisting-malicious-validators-from-stake-auction-marketplace-to-combat-sandwich-attacks/1716": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c12"
     ],
@@ -8921,6 +9040,16 @@
     ],
     "https://gmteight.com/flash/detail/1509423": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c29"
+    ],
+    "https://gov.ethenafoundation.com/t/a-framework-for-the-tokenized-equity-basis-trade/832": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c2",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c3"
+    ],
+    "https://gov.ethenafoundation.com/t/ena-fee-switch-activation/830": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c18"
+    ],
+    "https://gov.ethenafoundation.com/t/reserve-fund-march-2026-update/775": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c7"
     ],
     "https://governmentcontractsnavigator.com/2026/07/22/dow-updates-section-1260h-list-expanding-compliance-obligations-for-government-contractors": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c27"
@@ -9898,6 +10027,9 @@
     "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6538918": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c48"
     ],
+    "https://pay.ethena.fi/faq": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c12"
+    ],
     "https://people.math.harvard.edu/~alpoge/papers/my%20thesis.pdf": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c9"
     ],
@@ -10268,6 +10400,9 @@
     "https://rdi.berkeley.edu/blog/exploitgym": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
     ],
+    "https://reap.global/blog/stablecoin-statistics-2026": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c21"
+    ],
     "https://redmondmag.com/articles/2026/04/07/anthropic-names-former-microsoft-azure-ai-executive-eric-boyd-as-infrastructure-chief.aspx": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c7"
     ],
@@ -10514,6 +10649,9 @@
     ],
     "https://ssi.inc": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c5"
+    ],
+    "https://stablecoins.llama.fi/stablecoins": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c21"
     ],
     "https://startupfortune.com/anthropics-silence-on-nvidias-open-weights-letter-is-the-most-revealing-thing-about-it": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c15"
@@ -10965,6 +11103,9 @@
     "https://thechinaacademy.org/interview-with-deepseek-founder-were-done-following-its-time-to-lead": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c1"
     ],
+    "https://thecurrencyanalytics.com/altcoins/usde-price-slip-not-a-true-depeg-says-ethena-founder-urges-external-oracles-204599": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c9"
+    ],
     "https://thedebrief.org/darpa-funded-tech-unleashes-robots-that-feed-on-robots-to-heal-grow-and-evolve": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c24",
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c25"
@@ -11344,6 +11485,9 @@
     "https://www.amtonline.org/article/the-hype-cycle-for-robotics": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c23"
     ],
+    "https://www.anchorage.com/insights/anchorage-digital-partners-with-ethena-labs-to-launch-first-genius-compliant-federally-regulated-stablecoin": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c15"
+    ],
     "https://www.anthropic.com/constitution": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c30"
     ],
@@ -11542,6 +11686,12 @@
     "https://www.axios.com/2026/08/05/google-deepmind-demis-hassabis-ai": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c7"
     ],
+    "https://www.bafin.de/SharedDocs/Veroeffentlichungen/EN/Verbrauchermitteilung/weitere/2025/meldung_2025_04_15_Ethena_GmbH_en.html": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c16"
+    ],
+    "https://www.bafin.de/SharedDocs/Veroeffentlichungen/EN/Verbrauchermitteilung/weitere/2025/meldung_2025_06_03_sUSDe_en.html": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c16"
+    ],
     "https://www.bain.com/about/media-center/press-releases/20252/$2-trillion-in-new-revenue-needed-to-fund-ais-scaling-trend---bain--companys-6th-annual-global-technology-report": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c22"
     ],
@@ -11585,6 +11735,9 @@
     ],
     "https://www.benzinga.com/markets/tech/26/07/60808802/microsofts-15-billion-capex-cut-isnt-a-cut-at-all": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c31"
+    ],
+    "https://www.binance.com/en/academy/articles/what-are-bstocks-a-guide-to-tokenized-stocks-on-binance": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c3"
     ],
     "https://www.binance.com/en/blog/ecosystem/binance-labs-to-invest-in-seven-projects-from-the-mvb-accelerator-program-coled-by-bnb-chain-9156786679786782462": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c17"
@@ -12105,6 +12258,12 @@
     "https://www.coindesk.com/daybook-us/2026/07/21/bitcoin-rally-has-broad-based-support-as-institutions-whales-options-traders-pile-in": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c27"
     ],
+    "https://www.coindesk.com/markets/2025/10/13/no-ethena-s-usde-didn-t-de-peg": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c9"
+    ],
+    "https://www.coindesk.com/markets/2026/03/23/resolv-stablecoin-drops-70-after-usd80-million-exploit-after-attacker-mints-usr": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c22"
+    ],
     "https://www.coindesk.com/markets/2026/08/24/ethereum-lending-app-term-finance-loses-usd8-5-million-after-attacker-buys-voting-power": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c2"
     ],
@@ -12136,6 +12295,9 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c18",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c19"
     ],
+    "https://www.coingecko.com/en/coins/ethena": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c17"
+    ],
     "https://www.coingecko.com/en/coins/pons": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29"
     ],
@@ -12151,6 +12313,9 @@
     ],
     "https://www.coingecko.com/research/publications/decentralized-crypto-exchanges-market-share": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c5"
+    ],
+    "https://www.coinlore.com/coin/ethena/historical-data": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c17"
     ],
     "https://www.coinspeaker.com/total-value-locked-defi-20b": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c9"
@@ -12174,6 +12339,9 @@
     ],
     "https://www.congress.gov/119/meeting/house/119488/witnesses/HHRG-119-IF16-Wstate-RobbinsM-20260722.pdf": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c22"
+    ],
+    "https://www.congress.gov/119/plaws/publ27/PLAW-119publ27.htm": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c15"
     ],
     "https://www.congress.gov/bill/119th-congress/house-bill/4142/text": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c28",
@@ -13116,6 +13284,9 @@
     ],
     "https://www.kucoin.com/news/flash/cashcat-surges-3-759-to-200m-market-cap-on-robinhood-chain-growth": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15"
+    ],
+    "https://www.kucoin.com/news/flash/ethena-revenue-falls-32-in-q1-2026-amid-declining-tvl-and-user-activity": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c19"
     ],
     "https://www.kucoin.com/news/flash/minimax-restricts-h3-license-in-u-s-eu-uk-and-south-korea-due-to-hollywood-copyright-lawsuit": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15"
@@ -14111,6 +14282,10 @@
     "https://www.techflowpost.com/en-US/article/31730": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20"
     ],
+    "https://www.techflowpost.com/en-US/article/34112": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c18",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c19"
+    ],
     "https://www.techi.com/nebius-stock-meta-cloud-plan": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c2"
     ],
@@ -14202,6 +14377,10 @@
     ],
     "https://www.theblock.co/news/business/2026-07-01-robinhood-chain-goes-live-mainnet-alongside-24-7-tokenized-stocks-lighter-perps-planned-crypto-agentic-trading-406918": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c19"
+    ],
+    "https://www.theblock.co/news/deals/2026-09-25-ethena-expands-usde-backing-strategy-into-bstocks-and-equity-perpetuals-on-binance-416367": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1",
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c4"
     ],
     "https://www.theblock.co/news/defi/2026-08-03-dexs-capture-record-spot-crypto-trading-as-cex-volumes-sink-410476": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c4"
@@ -14363,6 +14542,9 @@
     ],
     "https://www.tradingsim.com/blog/the-gme-gamestop-short-squeeze-explained": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c14"
+    ],
+    "https://www.tradingview.com/news/cointelegraph:4bc2a9faa094b:0-ethena-s-usde-loses-8-3b-since-october-crash-amid-loss-of-confidence": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c11"
     ],
     "https://www.trendforce.com/news/2023/08/14/news-silicon-wafer-long-term-contracts-unstable-major-foundry-seeks-price-cut-from-japanese-suppliers": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c40"
@@ -14863,6 +15045,9 @@
     "https://x.com/elonmusk/status/2087584127042408907": [
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c3"
     ],
+    "https://x.com/ethena/status/2103439484113346986": [
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1"
+    ],
     "https://x.com/fal/status/2092710681577504975": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c9"
     ],
@@ -15074,7 +15259,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2591,
+  "claim_count": 2614,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -77338,9 +77523,576 @@
         "https://arxiv.org/html/2609.28115"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-25",
+      "claim": "Ethena announced on 2026-09-25 that it is expanding USDe's backing strategy into Binance bStocks (tokenized equities) hedged with equity perpetual futures, framing this as expanding addressable collateral from $2.5T of crypto to $150T+ of real-world assets.",
+      "confidence": "high",
+      "hosts": [
+        "theblock.co",
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://x.com/ethena/status/2103439484113346986",
+        "https://www.theblock.co/news/deals/2026-09-25-ethena-expands-usde-backing-strategy-into-bstocks-and-equity-perpetuals-on-binance-416367"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2025-10-12",
+      "claim": "Ethena's October 12, 2025 attested disclosure reported the protocol overcollateralized by approximately $66M and having processed approximately $2B in redemptions within 24 hours without interruption during the crash.",
+      "confidence": "medium",
+      "hosts": [
+        "coinfomania.com"
+      ],
+      "id": "c10",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://coinfomania.com/ethena-usde-oracle-design-october-2025"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-20",
+      "claim": "Following the October 2025 event, Aave manually hardcoded USDe/sUSDe oracle pricing to USDT to prevent cascading liquidations, an intervention criticized by the Bank Policy Institute as shifting risk to lenders rather than eliminating it; USDe's total supply subsequently fell from a peak of approximately $14.8B (October 2025) to roughly $4.9B by September 2026, an approximately $8-10B contraction described by one research firm as a 'sharp loss of confidence.'",
+      "confidence": "medium",
+      "hosts": [
+        "bpi.com",
+        "tradingview.com"
+      ],
+      "id": "c11",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c11",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "opinion",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://bpi.com/stablecoin-risks-some-warning-bells",
+        "https://www.tradingview.com/news/cointelegraph:4bc2a9faa094b:0-ethena-s-usde-loses-8-3b-since-october-crash-amid-loss-of-confidence"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-01",
+      "claim": "Ethena Pay, a self-custodial neobank app on Avalanche launched September 1, 2026, advertises up to 6% dollar savings (Pro/VIP tiers) and 4-10% AVAX-denominated card cashback, but its own FAQ/terms classify the 'Daily Boost' top-up as a discretionary, revocable promotion (not interest or a deposit) that automatically zeroes out once base USDe yield already covers the tier rate.",
+      "confidence": "high",
+      "hosts": [
+        "pay.ethena.fi"
+      ],
+      "id": "c12",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://pay.ethena.fi/faq"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-08-27",
+      "claim": "Ethena's basis-trade carry compressed roughly 61% in about five weeks, from approximately 18% in late July 2026 to approximately 7% by August 26, 2026, with Ethena's own August 27, 2026 governance proposal benchmarking backing yield at 4.6% -- below the 5-6% savings rates advertised by Ethena Pay.",
+      "confidence": "medium",
+      "hosts": [
+        "alearesearch.substack.com"
+      ],
+      "id": "c13",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://alearesearch.substack.com/p/ethenas-stablecoin-economics-give"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-03",
+      "claim": "ENA rose approximately 5.3% same-day (to $0.1574) and roughly 14% over several days around the September 1, 2026 Ethena Pay launch, though the move overlapped with a separate September 2, 2026 fee-switch governance vote and remained about 89% below ENA's all-time high.",
+      "confidence": "medium",
+      "hosts": [
+        "bitcoinethereumnews.com",
+        "coinmarketcap.com"
+      ],
+      "id": "c14",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://coinmarketcap.com/top-stories/6a9cca3698f4795d490fd4c1",
+        "https://bitcoinethereumnews.com/finance/ethena-jumps-7-following-launch-of-avalanche-powered-neobank"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2025-07-24",
+      "claim": "The US GENIUS Act (signed into law July 18, 2025) defines a 'payment stablecoin' functionally -- by payment/settlement use and a fixed-value redemption obligation -- and bars payment-stablecoin issuers from paying holders interest or yield solely for holding the coin; Ethena has not attempted to bring USDe itself into GENIUS-style compliance, instead partnering with Anchorage Digital Bank to launch a separate token, USDtb, described as its 'clear pathway to becoming compliant.'",
+      "confidence": "high",
+      "hosts": [
+        "anchorage.com",
+        "congress.gov"
+      ],
+      "id": "c15",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.congress.gov/119/plaws/publ27/PLAW-119publ27.htm",
+        "https://www.anchorage.com/insights/anchorage-digital-partners-with-ethena-labs-to-launch-first-genius-compliant-federally-regulated-stablecoin"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2025-06-25",
+      "claim": "Germany's BaFin brought MiCAR's first-ever enforcement action against Ethena GmbH in 2025 -- freezing reserves and banning public USDe sales, then imposing a EUR600,000 coercive fine and ordering wind-up after Ethena withdrew its EU authorization application -- and separately found sufficient grounds to suspect that sUSDe constitutes an unregistered security offered without a required prospectus.",
+      "confidence": "high",
+      "hosts": [
+        "bafin.de"
+      ],
+      "id": "c16",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.bafin.de/SharedDocs/Veroeffentlichungen/EN/Verbrauchermitteilung/weitere/2025/meldung_2025_04_15_Ethena_GmbH_en.html",
+        "https://www.bafin.de/SharedDocs/Veroeffentlichungen/EN/Verbrauchermitteilung/weitere/2025/meldung_2025_06_03_sUSDe_en.html"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-25",
+      "claim": "ENA's circulating supply is approximately 10.1B of a 15B maximum supply, with a market capitalization of roughly $2.1-2.5B as of September 25, 2026; ENA fell from roughly $0.56-0.70 in August-September 2025 to a 2026 low near $0.07 (March-June 2026) before recovering to roughly $0.21-0.25 by late September 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "coingecko.com",
+        "coinlore.com"
+      ],
+      "id": "c17",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c17",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://www.coingecko.com/en/coins/ethena",
+        "https://www.coinlore.com/coin/ethena/historical-data"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-20",
+      "claim": "Ethena's ENA fee switch, approved by a near-unanimous but low-turnout governance vote (17.8M ENA voting, about 0.18% of circulating supply) around September 3-8, 2026, would direct 5-20% of gross protocol revenue (95% of that slice to open-market ENA buybacks) once USDe's 14-day average supply crosses tiered thresholds from $7.5B to $20B; as of September 20, 2026, USDe supply of approximately $4.75B remained about 37% below the $7.5B floor needed to trigger even the lowest 5% tier.",
+      "confidence": "medium",
+      "hosts": [
+        "gov.ethenafoundation.com",
+        "techflowpost.com"
+      ],
+      "id": "c18",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://gov.ethenafoundation.com/t/ena-fee-switch-activation/830",
+        "https://www.techflowpost.com/en-US/article/34112"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-20",
+      "claim": "Ethena's cumulative gross protocol revenue since launch is approximately $1.04B ($284M trailing-12-months), but the protocol's actual retained profit (as opposed to revenue passed through to USDe/sUSDe holders as yield) was only about $614,000 in Q1 2026, down from about $10.18M in Q3 2025 -- a figure corroborated independently by DeFiLlama's roughly $2.89M annualized revenue estimate against roughly $275M in annualized fees.",
+      "confidence": "medium",
+      "hosts": [
+        "kucoin.com",
+        "techflowpost.com"
+      ],
+      "id": "c19",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c19",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.techflowpost.com/en-US/article/34112",
+        "https://www.kucoin.com/news/flash/ethena-revenue-falls-32-in-q1-2026-amid-declining-tvl-and-user-activity"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-08-26",
+      "claim": "Ethena's own Risk Committee framework requires an equity perpetual market to clear $25M+ one-sided open interest (14-day average) and 30 days of funding history before it is eligible for the basis trade; as of 2026-08-26 only Binance (17 of 67 pairs, ~$2.14B OI) and OKX (3 pairs, ~$585M OI) had any qualifying markets, while Bybit and Kraken qualified zero.",
+      "confidence": "high",
+      "hosts": [
+        "gov.ethenafoundation.com"
+      ],
+      "id": "c2",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://gov.ethenafoundation.com/t/a-framework-for-the-tokenized-equity-basis-trade/832"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-20",
+      "claim": "At the lowest fee-switch tier (5% of trailing gross revenue, 95% of that slice to buybacks), holding revenue flat at $284M/yr implies roughly $13.49M/yr in ENA buybacks.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "c20",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c20",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-25",
+      "claim": "As of September 25, 2026, USDe (~$4.90B market cap) ranks fourth among stablecoins behind USDT (~$183.7B), USDC (~$76.2B), and USDS (~$6.6B), and narrowly ahead of DAI (~$4.79B) and USD1/World Liberty Financial (~$4.4B); total stablecoin market capitalization was approximately $305B, with USDT and USDC together holding roughly 72% of the total.",
+      "confidence": "high",
+      "hosts": [
+        "reap.global",
+        "stablecoins.llama.fi"
+      ],
+      "id": "c21",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c21",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://stablecoins.llama.fi/stablecoins",
+        "https://reap.global/blog/stablecoin-statistics-2026"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-25",
+      "claim": "Rival delta-neutral synthetic-dollar tokens include Resolv's USR (mechanism near-identical to USDe; suffered an approximately $80M unauthorized-mint exploit on March 22, 2026) and Falcon Finance's USDf (~$1.2B market cap; overcollateralized minting but an explicitly Ethena-mirrored delta-neutral yield engine), while Usual's USD0 and Ondo's USDY are backed by tokenized US Treasuries -- a genuinely different, non-basis-trade mechanism.",
+      "confidence": "medium",
+      "hosts": [
+        "app.rwa.xyz",
+        "coindesk.com",
+        "coinmarketcap.com"
+      ],
+      "id": "c22",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c22",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.coindesk.com/markets/2026/03/23/resolv-stablecoin-drops-70-after-usd80-million-exploit-after-attacker-mints-usr",
+        "https://coinmarketcap.com/currencies/falcon-finance",
+        "https://app.rwa.xyz/assets/USD0"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2024-04-19",
+      "claim": "Ethena's crypto basis trade, the original core of USDe's backing, has been diversified down to a small share of total backing over 2026 as the protocol rotated into RWA, DeFi lending, and now equity-perpetual exposure -- a shift that a Bitwise executive characterized in 2024 as taking a pre-existing, non-proprietary cash-and-carry trade and 'tokeniz[ing] and issu[ing] units of it,' rather than a structurally novel or defensible mechanism.",
+      "confidence": "medium",
+      "hosts": [
+        "fortune.com"
+      ],
+      "id": "c23",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c23",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://fortune.com/crypto/2024/04/19/ethena-labs-stablecoin-synthetic-dollar-tether-circle"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-08-28",
+      "claim": "Binance's bStocks are issued by BTech Holdings Limited and marketed as 1:1 backed by underlying shares, but Ethena's own Risk Committee states holders have no proprietary interest in the backing shares and that holding bStocks as collateral is unsecured credit exposure to a Binance affiliate, with no multisig or timelock on the token's shared upgrade key.",
+      "confidence": "high",
+      "hosts": [
+        "binance.com",
+        "gov.ethenafoundation.com"
+      ],
+      "id": "c3",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c3",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.binance.com/en/academy/articles/what-are-bstocks-a-guide-to-tokenized-stocks-on-binance",
+        "https://gov.ethenafoundation.com/t/a-framework-for-the-tokenized-equity-basis-trade/832"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-25",
+      "claim": "Binance's equity perpetual open interest exceeded $2.9B as of the September 2026 announcement, growing at a roughly 105% compound monthly rate through 2026, with equity basis averaging 3.56% annualized over the prior six months.",
+      "confidence": "medium",
+      "hosts": [
+        "theblock.co"
+      ],
+      "id": "c4",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.theblock.co/news/deals/2026-09-25-ethena-expands-usde-backing-strategy-into-bstocks-and-equity-perpetuals-on-binance-416367"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "",
+      "claim": "USDe launched publicly in February 2024, founded by Guy Young, backed by a delta-neutral position of staked/spot crypto collateral (ETH, BTC, and since diversified assets) hedged with equal-notional short perpetual/futures positions on centralized exchanges, with collateral held by off-exchange settlement custodians (Copper, Ceffu, Fireblocks) that can be delegated to exchanges without transferring beneficial title.",
+      "confidence": "high",
+      "hosts": [
+        "cryptoslate.com",
+        "docs.ethena.fi"
+      ],
+      "id": "c5",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c5",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://docs.ethena.fi/backing-custody-and-security/overview",
+        "https://cryptoslate.com/companies/ethena-labs"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026",
+      "claim": "Ethena's own 3-year retrospective shows ETH perpetual funding was net negative on 17.5% of days and BTC on 15.9% of days individually, with combined-revenue (funding plus staking yield) negative on 8.84% of days; the longest observed negative streak was 13 days versus a 176-day longest positive streak.",
+      "confidence": "medium",
+      "hosts": [
+        "docs.ethena.fi"
+      ],
+      "id": "c6",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c6",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.ethena.fi/protocol-overview/risks/funding-risk"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-03-31",
+      "claim": "Ethena's Reserve Fund, designed to absorb negative net revenue so sUSDe stakers never receive negative yield, held approximately $62M against roughly $5.8B USDe supply (a 1.061% ratio) as of end-March 2026; independent analysis (Hindenrank) separately estimated roughly $73M / 1.7% of supply by mid-2026, with modeled depletion in about 52 days under a bearish stress scenario.",
+      "confidence": "medium",
+      "hosts": [
+        "gov.ethenafoundation.com"
+      ],
+      "id": "c7",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://gov.ethenafoundation.com/t/reserve-fund-march-2026-update/775"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2026-09-25",
+      "claim": "sUSDe's historical APY has ranged from a 35.2% all-time high near the Q1 2024 bull peak to a 4.1% all-time low in August 2024 (compressing from 19% to 4% in 11 days), with a 90-day trailing average of roughly 9.4-11.8% as of an April 2026 snapshot, and a supply-side Aave rate of approximately 4.7-4.8% as of September 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "aavescan.com",
+        "eco.com"
+      ],
+      "id": "c8",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://eco.com/support/en/articles/14798653-susde-explained-ethena-s-yield-bearing-stablecoin",
+        "https://aavescan.com/rates/ethena-susde"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status",
+      "article_created_at": "2026-09-25T14:51:49Z",
+      "article_title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys",
+      "as_of": "2025-10-11",
+      "claim": "During the October 10-11, 2025 crypto market crash, USDe's traded price fell to approximately $0.65 on Binance's own orderbook and to approximately $0.92 on Bybit, while deviations on Curve stayed under roughly 100 basis points; Ethena's founder attributed the dislocation to Binance's own internal oracle sourcing from a thin, illiquid orderbook rather than to any impairment of USDe's collateral.",
+      "confidence": "high",
+      "hosts": [
+        "coindesk.com",
+        "thecurrencyanalytics.com"
+      ],
+      "id": "c9",
+      "key": "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c9",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.coindesk.com/markets/2025/10/13/no-ethena-s-usde-didn-t-de-peg",
+        "https://thecurrencyanalytics.com/altcoins/usde-price-slip-not-a-true-depeg-says-ethena-founder-urges-external-oracles-204599"
+      ],
+      "type": "event"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1263,
+  "reusable_count": 1267,
   "schema_version": 1
 }

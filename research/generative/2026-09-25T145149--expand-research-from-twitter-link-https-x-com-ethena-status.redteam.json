@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Ethena is not adding $150 trillion of collateral capacity. It is adding access to roughly $2.9 billion of qualifying equity-perpetual open interest on Binance and OKX combined — the actual ceiling its own risk framework sets.",
+      "contradicting_url": "https://coinpedia.org/news/ethena-news-usde-backing-faces-a-major-shift-toward-equity-perpetuals/",
+      "contradicting_quote": "Ethena estimates that applying a 2.5% perpetual-open-interest penetration to equities could imply roughly $4 trillion in potential equity perpetual open interest — nearly 40 times larger than crypto's previous peak.",
+      "severity": "medium",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Guy Young publicly rejected the \"depeg\" framing, attributing the gap to Binance's own internal oracle sourcing prices from a thin, illiquid orderbook — compounded by deposit/withdrawal friction on Binance that prevented arbitrageurs from closing the gap — rather than to any impairment of USDe's actual collateral.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "A German regulator, not a crypto critic, has already tested the \"USDe escapes stablecoin rules\" thesis: BaFin fined Ethena's EU entity, forced a wind-down, and found grounds to suspect sUSDe is an unregistered security.",
+      "contradicting_url": "https://www.law.georgetown.edu/international-law-journal/blog/geniusact/",
+      "contradicting_quote": "most comparable to the U.S. stablecoins targeted in the GENIUS Act",
+      "severity": "medium",
+      "no_contradiction_found": false
+    }
+  ]
+}
