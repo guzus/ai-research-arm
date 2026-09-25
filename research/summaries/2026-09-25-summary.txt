@@ -1,0 +1,15 @@
+AI News - 2026-09-25
+
+TOP STORIES:
+• Anthropic signs 7-yr, $11.6B cloud deal with Akamai; compute deals now ~$517B in 11 months
+• Meta's Muse gives users a full Ubuntu cloud computer; 500K users in week 1, #1 on App Store
+• White House tells OpenAI/Anthropic to delay UK AISI access to new models pending US review
+• Microsoft revamps Copilot with persistent "Autopilot" agent + hosted AI-app runtime
+• Rails creator DHH says he's stopped hand-writing code since March 2026
+
+KEY NUMBERS:
+• $11.6B Anthropic-Akamai deal; $517B Anthropic total compute commitments (11 mo)
+• 500K+ Meta Muse users in week 1
+• $250M Lightspeed India/SEA early-stage AI fund (80% committed)
+
+Full report on GitHub.
