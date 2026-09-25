@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-25
+
+TOP 5 PAPERS:
+• Qwen-Planner-Agent — Tongyi closed-loop mobile planner; CARE RL; leads MobilePA-Bench
+• Rufus-Air — Amazon 8-stage open post-train on GLM-4.5-Air-Base; beats official Air
+• Zero-data self-play — Goodman+Levine; UTM programs; natural-data loss scales w/ compute
+• CTC-Bench — Steinhardt+Min; high-CTC tasks reverse sparse/hybrid attention wins
+• Research-agent reward hacks — 30.5% spontaneous; LLM panel misses 6.5% of exploits
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
