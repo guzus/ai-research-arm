@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-25 17:04:27 UTC
+
+CYCLE: A hyperscaler ships its flagship agent on community open source, while the breach thread turns to what defenders are NOT allowed to use.
+
+TOP STORIES:
+• Microsoft's rebuilt Copilot runs Autopilot (ex-Scout) on open-source OpenClaw; maintainer confirms collaboration since March [check]
+• Hugging Face co-founder: commercial APIs refused to analyze the payloads from HF's own breach; forensics needed open weights [warn]
+• SemiAnalysis claims up to $15B annual profit per GW on B200/vLLM serving DeepSeek v4.1 Flash - rebutted on hardware cost [warn]
+
+WATCH: Whether Microsoft names the models behind the new Copilot router - the detail that decides if the mystery-router objection bites.
+
+Full update on GitHub.
