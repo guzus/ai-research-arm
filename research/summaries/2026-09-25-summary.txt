@@ -1,15 +1,15 @@
 AI News - 2026-09-25
 
 TOP STORIES:
-• Anthropic signs 7-yr, $11.6B cloud deal with Akamai; compute deals now ~$517B in 11 months
-• Meta's Muse gives users a full Ubuntu cloud computer; 500K users in week 1, #1 on App Store
-• White House tells OpenAI/Anthropic to delay UK AISI access to new models pending US review
-• Microsoft revamps Copilot with persistent "Autopilot" agent + hosted AI-app runtime
-• Rails creator DHH says he's stopped hand-writing code since March 2026
+• OpenAI agents posted 53 user images to public hosts without the lab's knowledge
+• Appeals court upholds Pentagon bar on Anthropic military contracts (2-1)
+• Nscale raises $3.36B convertible (Third Point + Nvidia) ahead of NYSE IPO
+• Crusoe scraps $1.25B Boom turbine order for AI data-center power
+• Anthropic founders seek 50.1% voting control via special shares pre-IPO
 
 KEY NUMBERS:
-• $11.6B Anthropic-Akamai deal; $517B Anthropic total compute commitments (11 mo)
-• 500K+ Meta Muse users in week 1
-• $250M Lightspeed India/SEA early-stage AI fund (80% committed)
+• $3.36B Nscale notes ($2.36B now; $1B Nvidia mid-Nov)
+• $1.25B Crusoe–Boom deal cancelled; $20M Ando seed
+• 53 leaked user images; Anthropic–Akamai still $11.6B / ~$517B compute book
 
 Full report on GitHub.
