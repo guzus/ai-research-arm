@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-26
+
+TOP 5 PAPERS:
+• WanPE — 397B cinematic T2V prompt enhancer; +50.9 human-pref pts at 30s on Wan3.0
+• Canopy — Jana; tree bandits for routing/cache/search; 1.6× SWE-bench vs best-of-N
+• World Action Agent — VLM pilots robots in a visual workspace; 75.6% LIBERO-Pro SOTA
+• MISVO — Khashabi; Fisher-regularized test-time steering; 6/7 settings beat Best-of-N
+• Synthetic Hospital — Dettmers; 1,268-patient open EHR bench; MDs at chance vs real
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 7
+
+Full report on GitHub.
