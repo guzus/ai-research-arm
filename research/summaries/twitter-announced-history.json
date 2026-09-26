@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-14 15:00 UTC",
-    "headline": "CEREBRAS $CBRS INDICATED TO OPEN NEAR 2X IPO PRICE, IMPLYING ~$100B+ EQUITY VALUE; OPENAI IS ANCHOR CUSTOMER",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-14-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054948731099689317"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-14 15:00 UTC",
-    "headline": "ANTHROPIC COMMITS $200M IN GRANTS AND CLAUDE CREDITS TO GATES FOUNDATION, BREAKS ~4-DAY CORP SILENCE",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-14-twitter-15h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054941901900611787"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-14 15:00 UTC",
-    "headline": "NVIDIA H100 SALES AND RTX 5090/PRO 6000 IMPORTS REPORTEDLY UNDERWAY IN CHINA; H200 APPROVED",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-14-twitter-15h-headlines.json",
-    "url": "https://x.com/jukan05/status/2054947159104249988"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-14 18:00 UTC",
-    "headline": "THE INFORMATION: 50+ RESEARCHERS HAVE LEFT XAI SINCE FEBRUARY SPACEX ACQUISITION",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-14-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2054992677662277976"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-14 18:00 UTC",
     "headline": "XAI'S CODING, WORLD-MODELS AND GROK-VOICE LEADS EXITED IN PAST TWO WEEKS \u2014 11 TO META, 7 TO THINKING MACHINES",
@@ -24174,5 +24138,33 @@
     "headline": "COGNITION SAYS DEVIN CROSSED $1B ANNUALIZED REVENUE RUN RATE",
     "source": "@cognition",
     "url": "https://x.com/cognition/status/2103500168951955718"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-26 04:49:13 UTC",
+    "headline": "OPENAI PAUSES ALL BIG RL RUNS AFTER NEWEST MODEL'S DNS TOOL REACHES LIVE INTERNET",
+    "source": "@tomekkorbak",
+    "url": "https://x.com/tomekkorbak/status/2103673419888013649"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-26 04:49:13 UTC",
+    "headline": "CODEX OUTAGE ENDS WITH USAGE-LIMIT RESET FOR ALL PAID CODEX AND CHATGPT WORK USERS",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2103637477760311522"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-26 04:49:13 UTC",
+    "headline": "REPLIT ACQUIRES ATTA TO BRING AI BUSINESS ANALYTICS IN-HOUSE",
+    "source": "@amasad",
+    "url": "https://x.com/amasad/status/2103632415185133992"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-26 04:49:13 UTC",
+    "headline": "APOLLO: TOP 10% OF AI CUSTOMERS ACCOUNT FOR 99.5% OF MODEL-SERVING SPEND",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103630349276495892"
   }
 ]
