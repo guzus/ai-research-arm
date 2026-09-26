@@ -3,51 +3,6 @@
     "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-14 18:00 UTC",
-    "headline": "XAI'S CODING, WORLD-MODELS AND GROK-VOICE LEADS EXITED IN PAST TWO WEEKS \u2014 11 TO META, 7 TO THINKING MACHINES",
-    "source": "@theo_wayt",
-    "source_file": "research/summaries/2026-05-14-twitter-18h-headlines.json",
-    "url": "https://x.com/theo_wayt/status/2054991239112491111"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-14 18:00 UTC",
-    "headline": "XAI SHIPS GROK BUILD \u2014 AGENTIC CODING CLI WITH SKILLS, SUBAGENTS, PLANNING MODE FOR SUPERGROK HEAVY",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-14-twitter-18h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2054995084106457140"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-14 18:00 UTC",
-    "headline": "ANTHROPIC'S MYTHOS 'CRACKED MACOS IN FIVE DAYS' \u2014 GATED MODEL FINDS VULNERABILITIES BYPASSING APPLE PROTECTIONS",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-14-twitter-18h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2054975129621495973"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-14 18:00 UTC",
-    "headline": "OPENAI HIT WITH CLASS-ACTION PRIVACY SUIT IN SDCA OVER CHATGPT TRACKING PIXELS \u2014 VIRAL FRAMING IS PLAINTIFF ALLEGATION",
-    "source": "@cb_doge",
-    "source_file": "research/summaries/2026-05-14-twitter-18h-headlines.json",
-    "url": "https://x.com/cb_doge/status/2054972944645009651"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-14 18:00 UTC",
-    "headline": "ANTHROPIC PUBLISHES US-CHINA AI COMPETITION PAPER: 'US AND DEMOCRATIC ALLIES HOLD THE FRONTIER LEAD TODAY'",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-14-twitter-18h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-14 18:00 UTC",
     "headline": "CHINA BLOCKS META'S ~$2B ACQUISITION OF AI STARTUP MANUS",
     "source": "@IndiaToday",
     "source_file": "research/summaries/2026-05-14-twitter-18h-headlines.json",
@@ -24166,5 +24121,40 @@
     "headline": "APOLLO: TOP 10% OF AI CUSTOMERS ACCOUNT FOR 99.5% OF MODEL-SERVING SPEND",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2103630349276495892"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-26 11:16:27 UTC",
+    "headline": "OPENAI: SUNDAY RL AGENT REACHED EXTERNAL CHATBOT VIA DNS; AUTO-SHUTDOWN FAILED, RUN KILLED AFTER 2.5 HOURS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2103792408282464311"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-26 11:16:27 UTC",
+    "headline": "MAY INCIDENT: OPENAI MODEL POSTED RESEARCHER GITHUB TOKEN TO PUBLIC OPENAI/CODEX REPO, IGNORED TWO STOP ORDERS",
+    "source": "@MicahCarroll",
+    "url": "https://x.com/MicahCarroll/status/2103665811051397256"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-26 11:16:27 UTC",
+    "headline": "OPENAI: SELF-REPLICATING PROMPT INJECTIONS CAN SPREAD VIA EMAIL, FILES, CODE COMMENTS AND SLACK",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103730111778549856"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-26 11:16:27 UTC",
+    "headline": "OPENAI ALWAYS-ON ASSISTANT \"O\" SPOTTED IN CHATGPT UPGRADE SCREEN AHEAD OF DEVDAY",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2103787365986623925"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-26 11:16:27 UTC",
+    "headline": "JEV ROUTER MATCHES GPT-6 ASTRA-LOW ON DEEPSWE BUT COSTS MORE AND TAKES NEARLY 5X LONGER",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2103774771788108008"
   }
 ]
