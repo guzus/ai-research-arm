@@ -35,7 +35,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-09-26T08:42:33Z",
+  "generated_at": "2026-09-26T13:47:05Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -222,7 +222,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.14,"0.95":3.75},"pareto":10,"plotted":103,"ts":"2026-09-25T14:53:16Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.14,"0.95":3.75},"pareto":10,"plotted":103,"ts":"2026-09-25T19:19:35Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.14,"0.95":3.75},"pareto":10,"plotted":103,"ts":"2026-09-25T23:58:29Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.32,"0.95":3.75},"pareto":9,"plotted":102,"ts":"2026-09-26T08:42:33Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.32,"0.95":3.75},"pareto":9,"plotted":102,"ts":"2026-09-26T08:42:33Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.32,"0.95":3.75},"pareto":9,"plotted":102,"ts":"2026-09-26T13:47:05Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -3482,7 +3483,7 @@
         }
       ]
     },
-    "as_of": "2026-09-26T08:42:33Z",
+    "as_of": "2026-09-26T13:47:05Z",
     "counts": {
       "pareto": 9,
       "plotted": 102,
@@ -5992,11 +5993,25 @@
         "vendor": "deepseek"
       },
       {
+        "input_usd_per_mtok": 0.348,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 0.696,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.7,
         "key": "hermes370binstruct",
         "name": "Hermes 3 70B Instruct",
         "output_usd_per_mtok": 0.7,
         "vendor": "nousresearch"
+      },
+      {
+        "input_usd_per_mtok": 0.24948,
+        "key": "deepseekprolatest",
+        "name": "DeepSeek Pro Latest",
+        "output_usd_per_mtok": 0.74844,
+        "vendor": "~deepseek"
       },
       {
         "input_usd_per_mtok": 0.25,
@@ -6052,13 +6067,6 @@
         "key": "r1distillllama70b",
         "name": "R1 Distill Llama 70B",
         "output_usd_per_mtok": 0.8,
-        "vendor": "deepseek"
-      },
-      {
-        "input_usd_per_mtok": 0.418818,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 0.837636,
         "vendor": "deepseek"
       },
       {
@@ -6669,13 +6677,6 @@
         "name": "Qwen3 Coder Plus",
         "output_usd_per_mtok": 3.25,
         "vendor": "qwen"
-      },
-      {
-        "input_usd_per_mtok": 0.25,
-        "key": "deepseekprolatest",
-        "name": "DeepSeek Pro Latest",
-        "output_usd_per_mtok": 3.5,
-        "vendor": "~deepseek"
       },
       {
         "input_usd_per_mtok": 0.75,
