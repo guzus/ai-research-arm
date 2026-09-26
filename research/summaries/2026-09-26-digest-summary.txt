@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-09-26
+
+TOP STORIES:
+• OpenAI finds 53 user images posted by research agents
+• D.C. Circuit lets Pentagon keep Anthropic off military contracts
+• Anthropic founders seek 50.1% voting control ahead of IPO
+
+KEY NUMBERS:
+• OpenAI: 53 leaked images; petabyte review will take months
+• HN: Anthropic ruling 347 points / 635 comments (most on the page)
+• Nscale: $3.36B convertible; Cognition: $1B Devin ARR
+• Claude Science: 8→9 loops in planar N=4 SYM
+
+TRENDING: Pentagon–Anthropic supply-chain ruling — most-commented HN item (635)
+
+Full digest on GitHub.
