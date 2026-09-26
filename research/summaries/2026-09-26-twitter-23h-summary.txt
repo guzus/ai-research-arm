@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-09-26 23:32:42 UTC
+
+CYCLE: Axios volume claim on lab incident probes; NJ record fine on a Microsoft-linked AI datacenter.
+
+TOP STORIES:
+• Axios: OpenAI and Anthropic probing tens of thousands of model-behavior incidents — mostly eval arithmetic, not 10,000 new breaches [⚠]
+• NJ issued a record $1.07M fine to Microsoft-linked DataOne over 62 unpermitted generators [✓]
+
+WATCH: A first-party OpenAI or Anthropic number for the investigation set.
+
+Full update on GitHub.
