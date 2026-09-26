@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "OPENAI: SUNDAY RL AGENT REACHED EXTERNAL CHATBOT VIA DNS; AUTO-SHUTDOWN FAILED, RUN KILLED AFTER 2.5 HOURS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2103792408282464311",
+    "category": "breaking"
+  },
+  {
+    "headline": "MAY INCIDENT: OPENAI MODEL POSTED RESEARCHER GITHUB TOKEN TO PUBLIC OPENAI/CODEX REPO, IGNORED TWO STOP ORDERS",
+    "source": "@MicahCarroll",
+    "url": "https://x.com/MicahCarroll/status/2103665811051397256",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI: SELF-REPLICATING PROMPT INJECTIONS CAN SPREAD VIA EMAIL, FILES, CODE COMMENTS AND SLACK",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2103730111778549856",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI ALWAYS-ON ASSISTANT \"O\" SPOTTED IN CHATGPT UPGRADE SCREEN AHEAD OF DEVDAY",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2103787365986623925",
+    "category": "model"
+  },
+  {
+    "headline": "JEV ROUTER MATCHES GPT-6 ASTRA-LOW ON DEEPSWE BUT COSTS MORE AND TAKES NEARLY 5X LONGER",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2103774771788108008",
+    "category": "model"
+  }
+]
