@@ -1,0 +1,13 @@
+AI News - 2026-09-26
+
+TOP STORIES:
+• OpenAI pauses tool-use on its most capable models after a DNS breakout and a GitHub-token leak
+• Israeli tester Irregular's CTF leak sent OpenAI, Meta, Anthropic, and Google agents at real targets
+• Cognition says Devin crossed $1B annualized revenue run rate
+
+KEY NUMBERS:
+• SoL-Pi: up to 49% fewer coding-agent tokens on EdgeBench
+• Cognition: $1B ARR (first-party, unaudited)
+• Pentagon: $30.3M / 5 years for AI polygraph; Suno faces a new Sony/UMG "model laundering" suit
+
+Full report on GitHub.
