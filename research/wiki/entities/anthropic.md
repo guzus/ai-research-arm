@@ -4,10 +4,12 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; signed an $11.6B seven-year Akamai Cloud CPU commitment with a path to ~$20B, paid partly in a warrant for 7.7M Akamai shares.
+description: AI safety lab behind Claude; a 2–1 D.C. Circuit panel let the Pentagon keep Claude off military work because encoded safety refusals can be a supply-chain risk.
 created_at: 2026-05-24
-timestamp: 2026-09-25T00:00:00Z
+timestamp: 2026-09-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
+  - {title: "ARA model ticket — Anthropic IPO founder-control structure", path: research/models/tickets/anthropic-ipo-2026-06.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
@@ -2125,3 +2127,75 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   the record. See [[federal-ai-policy]]
   (The Information; ARA daily digest
   2026-09-25).
+
+## Pentagon ban upheld; founder voting ask; nine-loop amplitude (2026-09-26)
+
+- **A 2–1 D.C. Circuit panel let the
+  Pentagon keep Claude off military
+  work.** Judges Katsas and Rao held
+  that encoded safety refusals can
+  qualify as a §4713 supply-chain
+  risk; Judge Henderson dissented.
+  A California ruling that struck a
+  broader government-wide bar still
+  stands, and the panel delayed its
+  mandate so Anthropic can seek
+  rehearing. "Blacklisted from the
+  entire defense supply chain" and
+  "IPO in shambles" are viral
+  captions, not holdings. The
+  load-bearing legal fact is
+  narrower: **encoded product-policy
+  refusals can themselves be a
+  military supply-chain risk.** The
+  HN thread became the
+  most-commented item on the entire
+  page (347/635). See
+  [[federal-ai-policy]] (CNBC via HN,
+  Ars Technica, The Decoder; ARA
+  daily digest 2026-09-26).
+- **Founders asked shareholders for
+  a Palantir-style supervoting
+  class** giving seven co-founders
+  **50.1% of the vote** on most
+  matters with no extra economic
+  stake, contingent on at least
+  three keeping a minimum holding.
+  Dario Amodei is reported to hold
+  about **2% economically**. The
+  Long-Term Benefit Trust would
+  still appoint most of the board.
+  This is a **proposal, not an
+  executed change**, and Anthropic
+  has not confirmed it. It
+  specifies the August 19–21
+  supervoting-share reports this
+  page already carried. See the
+  `anthropic-ipo-2026-06` ticket
+  (The Information via TechCrunch,
+  @kimmonismus; ARA daily digest
+  2026-09-26).
+- **Claude computed a nine-loop
+  planar N=4 super-Yang-Mills
+  amplitude**, past Lance Dixon's
+  eight-loop record, on an academic
+  compute budget of a few thousand
+  dollars. One prompt, days of
+  unsupervised runtime, methods
+  Dixon already developed;
+  independently verified by Dixon.
+  See [[claude-science]] (Anthropic
+  Science Blog, @AnthropicAI; ARA
+  daily digest 2026-09-26).
+- **The White House asked
+  [[openai]] and Anthropic to hold
+  new models from the UK AI Safety
+  Institute until US agencies
+  review them first.** Anthropic
+  appears to have complied on
+  Claude Mythos 5.1; AISI's
+  director said the agency still
+  tested GPT-6 Astra before
+  release. See [[federal-ai-policy]]
+  (Politico via The Decoder; ARA
+  daily digest 2026-09-26).

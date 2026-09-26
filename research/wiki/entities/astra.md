@@ -6,8 +6,9 @@ aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use, legal-ai]
 description: OpenAI's GPT-6 Astra computer-use model; Astra for Law pairs it with a 230-million-URL U.S. legal index and scores 54.0% on Vals' Legal Research Bench versus 38.7% for web-search Astra.
 created_at: 2026-08-02
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-09-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
@@ -460,3 +461,19 @@ multiple agents on a single problem for **hours or days**. See [[gpt-6]].
   two-week **[[gpt-5-6|GPT-5.6 Sol]]** preview
   in Word. Adjacent, not a Law-SKU fact
   (OpenAI; ARA daily digest 2026-09-18).
+
+## Two Enigma recoveries (2026-09-26)
+
+Astra and [[claude-opus-5-5|Opus]] recovered
+plaintext from two previously unbroken
+wartime Enigma messages in Frode
+Weierud's Crypto Cellar archive.
+Weierud validated both; seven unbroken
+messages remain, and Astra's logs
+mention a "private collection" he
+cannot confirm. Historical
+cryptanalysis with an independent
+validator, not a capability-misuse
+incident. See [[claude-science]]
+(TechCrunch; ARA daily digest
+2026-09-26).

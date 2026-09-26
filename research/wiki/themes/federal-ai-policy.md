@@ -4,10 +4,12 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; The Information named the three-lab private regulator SAFA, and the Sanders/Casar pause threshold sits at 10^25 operations.
+description: US federal AI governance; a 2–1 D.C. Circuit panel held that encoded safety refusals can be a military supply-chain risk, while the White House asked labs to hold models from UK AISI until US review.
 created_at: 2026-06-03
-timestamp: 2026-09-25T00:00:00Z
+timestamp: 2026-09-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
+  - {title: "ARA model ticket — US AI model-review EO / UK AISI sequencing", path: research/models/tickets/us-ai-model-review-eo-2026-06.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
@@ -1546,6 +1548,80 @@ footing for the first time in the cycle.
   credit the sources behind their
   answers. See [[eu-ai-regulation]]
   (ARA daily digest 2026-09-25).
+
+## Pentagon §4713 holding; UK AISI sequenced behind US review (2026-09-26)
+
+- **A 2–1 D.C. Circuit panel let
+  the Pentagon keep [[anthropic|Claude]]
+  off military work.** Judges
+  Katsas and Rao held that
+  encoded safety refusals can
+  qualify as a §4713
+  supply-chain risk; Judge
+  Henderson dissented. A
+  California ruling that struck
+  a broader government-wide bar
+  still stands, and the panel
+  delayed its mandate so
+  Anthropic can seek rehearing.
+  The holding is the day's
+  load-bearing legal fact:
+  encoded product-policy
+  refusals can themselves be a
+  military supply-chain risk.
+  "Blacklisted from the entire
+  defense supply chain" and
+  "IPO in shambles" are viral
+  captions, not holdings. The
+  HN thread (347/635) was the
+  most-commented item on the
+  entire page. See [[anthropic]]
+  and [[agentic-ai-security]]
+  (CNBC, Ars Technica, The
+  Decoder; ARA daily digest
+  2026-09-26).
+- **The White House asked
+  [[openai]] and [[anthropic]]
+  to hold new models from the
+  UK AI Safety Institute until
+  US agencies review them
+  first.** A senior official
+  framed the sequence as
+  established policy: US
+  review → secure US systems →
+  share with partners.
+  Anthropic appears to have
+  complied on Claude Mythos
+  5.1; AISI's director said
+  the agency still tested
+  GPT-6 Astra before release.
+  OpenAI has not said whether
+  it will comply. This extends
+  the June voluntary 30-day
+  domestic review into
+  allied-eval sequencing —
+  yesterday's "cut off UK
+  AISI" rumor now has a
+  named ask and a
+  differential-compliance
+  split. See the
+  `us-ai-model-review-eo-2026-06`
+  ticket (Politico via The
+  Decoder; ARA daily digest
+  2026-09-26).
+- **President Trump confirmed
+  Scott Bessent will not be
+  Superintelligence Czar**,
+  leaving the post open ahead
+  of a reported 29 September
+  White House meeting with
+  tech CEOs. Yesterday's
+  Semafor front-runner item
+  is closed; the czar seat
+  this page has tracked since
+  2026-09-20 remains unfilled
+  (ARA daily digest
+  2026-09-26).
 
 ## Open questions
 
