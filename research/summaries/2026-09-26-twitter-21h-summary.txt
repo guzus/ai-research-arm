@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-26 21:03:07 UTC
+
+CYCLE: Codex/ChatGPT usage resets finished propagating; Hex-Rays shipped an official IDA MCP server.
+
+TOP STORIES:
+• OpenAI usage-limit resets after Friday's Codex outage have all propagated [✓]
+• Hex-Rays released an official IDA MCP Server for LLM agents [✓]
+• Ande has more than $52M from Lightspeed and Redpoint for entertainment agents [⚠]
+
+WATCH: 2026-09-29 DevDay — whether "o" is named, and whether Ultrafast / Pro Max ship.
+
+Full update on GitHub.
