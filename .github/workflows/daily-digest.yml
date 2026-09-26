@@ -720,8 +720,9 @@ jobs:
             - Pronounce proper nouns naturally; leave names like Hunyuan, Bubeck,
               DeepSeek as written.
 
-            STEP 2b — INLINE AUDIO TAGS for podcast-style prosody. The TTS engine
-            downstream is Gemini 3.1 Flash TTS, which honors these inline. Use
+            STEP 2b — INLINE AUDIO TAGS for podcast-style prosody. The TTS step
+            downstream (Gemini 3.8 Flash TTS) translates these into per-turn
+            delivery styles and pauses before synthesis. Use
             them SPARINGLY (3 to 6 total per briefing) on the highest-impact moments:
             - `[high_energy]` once or twice — usually on Speaker 2's lead-story
               line or a major reveal.
@@ -742,32 +743,32 @@ jobs:
             git add research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
             git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA two-host Claude rewrite)" || echo "No changes"
 
-      - name: Generate audio digest with Gemini 3.1 Flash TTS
+      - name: Generate audio digest with Gemini 3.8 Flash TTS
         if: success() && steps.digest-publication.outputs.editorial == 'true'
         continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DATE: ${{ steps.date.outputs.date }}
         run: |
-          # Replaces Deepgram Aura-2 with Gemini 3.1 Flash TTS Preview. Why:
-          # Gemini honors inline audio tags ([high_energy], [emphasis]X[/emphasis],
-          # [dramatic_pause]) that the Sonnet rewrite step now emits — true
-          # podcast-style prosody control vs Deepgram's fixed-personality voices.
+          # Gemini 3.8 Flash TTS (stable) via the Interactions API. vs 3.1:
+          # - Input is a VERBATIM transcript: "Speaker N:" prefixes and
+          #   [square-bracket] tags would be read aloud. So we parse the
+          #   Sonnet script into per-turn content parts, each annotated with
+          #   speech_metadata {speaker, style}, and translate the tags:
+          #     [high_energy]          -> turn style "high energy, excited"
+          #     [emphasis]X[/emphasis] -> tags stripped, style asks to stress the figure
+          #     [dramatic_pause]       -> <short pause> (3.8 point-in-time vocal event)
+          # - Returns WAV (audio/wav, 24kHz mono s16) at steps[].content[].data,
+          #   not headerless PCM — ffmpeg reads it without format hints.
           #
-          # Voice: Kore (firm, female, podcast-fit). Other tested options:
-          #   Charon (deep, informative, masculine), Puck (energetic, masculine).
-          # Returns base64 PCM (audio/l16; rate=24000; channels=1) — convert via
-          # ffmpeg to 48 kbps mono MP3 to match the rest of the pipeline.
-          #
-          # Symbol normalization still runs as a safety net for anything the LLM
-          # might have left in (× & smart quotes etc.) — but NOT touching the
-          # square-bracket audio tags, which Gemini needs intact.
+          # Voices: Speaker 1 = Charon (deep, informative anchor),
+          # Speaker 2 = Puck (energetic, conversational co-host).
 
           SPOKEN_FILE="research/summaries/${DATE}-digest-spoken.txt"
           SUMMARY_FILE="research/summaries/${DATE}-digest-summary.txt"
           AUDIO_DIR="research/audio"
           AUDIO_FILE="${AUDIO_DIR}/${DATE}-digest.mp3"
-          PCM_FILE="/tmp/gemini-${DATE}.pcm"
+          WAV_FILE="/tmp/gemini-${DATE}.wav"
 
           if [ -z "${GEMINI_API_KEY}" ]; then
             echo "GEMINI_API_KEY not configured — skipping audio generation"
@@ -784,10 +785,10 @@ jobs:
 
           if [ -f "$SPOKEN_FILE" ]; then
             INPUT_FILE="$SPOKEN_FILE"
-            echo "Using ARA spoken script (with inline Gemini audio tags) as TTS input"
+            echo "Using ARA spoken script (two-host, audio tags translated) as TTS input"
           elif [ -f "$SUMMARY_FILE" ]; then
             INPUT_FILE="$SUMMARY_FILE"
-            echo "Spoken script missing — falling back to raw summary (no audio tags)"
+            echo "Spoken script missing — falling back to raw summary (all lines as Speaker 1)"
           else
             echo "No input text available — skipping audio generation"
             exit 0
@@ -795,8 +796,8 @@ jobs:
 
           mkdir -p "$AUDIO_DIR"
 
-          # Safety-net normalization. Same as before but PRESERVES square-bracket
-          # audio tags ([high_energy], [emphasis], [/emphasis], [dramatic_pause]).
+          # Safety-net normalization for symbols the LLM might have left in.
+          # Square-bracket tags are preserved here; the jq below translates them.
           NORMALIZED=$(sed -E '
             s/×/ times /g
             s/&/ and /g
@@ -811,55 +812,82 @@ jobs:
             s/\xE2\x80\x9D/"/g
           ' "$INPUT_FILE")
 
-          # Two-host config: Speaker 1 = Charon (deep, informative anchor),
-          # Speaker 2 = Puck (energetic, conversational co-host). The Sonnet
-          # rewrite step labels every line "Speaker 1:" / "Speaker 2:" so Gemini
-          # routes each line to the right voice. Audio tags work in either
-          # single- or multi-speaker mode.
-          BODY=$(jq -n --arg text "$NORMALIZED" '{
-            contents: [{parts: [{text: $text}]}],
-            generationConfig: {
-              responseModalities: ["AUDIO"],
-              speechConfig: {
-                multiSpeakerVoiceConfig: {
-                  speakerVoiceConfigs: [
-                    {speaker: "Speaker 1", voiceConfig: {prebuiltVoiceConfig: {voiceName: "Charon"}}},
-                    {speaker: "Speaker 2", voiceConfig: {prebuiltVoiceConfig: {voiceName: "Puck"}}}
-                  ]
+          # One content part per non-empty line. Unprefixed lines (raw-summary
+          # fallback) go to Speaker 1. Summary bullet/header lines are fine as
+          # anchor narration.
+          BODY=$(printf '%s' "$NORMALIZED" | jq -Rs '
+            split("\n")
+            | map(select(test("\\S")))
+            | map(if test("^\\s*Speaker [12]:")
+                  then {speaker: capture("^\\s*(?<s>Speaker [12]):").s,
+                        text: sub("^\\s*Speaker [12]:"; "")}
+                  else {speaker: "Speaker 1", text: .} end)
+            | map(.energetic = (.text | test("\\[high_energy\\]"))
+                  | .emphasis = (.text | test("\\[emphasis\\]"))
+                  | .text |= (gsub("\\[high_energy\\]"; "")
+                              | gsub("\\[/?emphasis\\]"; "")
+                              | gsub("\\[dramatic_pause\\]"; " <short pause> ")
+                              | gsub("\\s+"; " ") | sub("^ "; "") | sub(" $"; "")))
+            | map(select(.text != ""))
+            | {
+                model: "gemini-3.8-flash-tts",
+                input: [{
+                  type: "user_input",
+                  content: map({
+                    type: "text",
+                    text: .text,
+                    annotations: [{
+                      type: "speech_metadata",
+                      speaker: .speaker,
+                      style: ((if .energetic then "high energy, excited"
+                               elif .speaker == "Speaker 1" then "confident, informative news anchor"
+                               else "energetic, conversational podcast co-host" end)
+                              + (if .emphasis then "; stress the key figure" else "" end))
+                    }]
+                  })
+                }],
+                response_format: {type: "audio"},
+                generation_config: {
+                  speech_config: {
+                    mode: "conversational",
+                    speakers: [
+                      {speaker: "Speaker 1", voice: "Charon"},
+                      {speaker: "Speaker 2", voice: "Puck"}
+                    ]
+                  }
                 }
-              }
-            }
-          }')
+              }')
 
           HTTP=$(curl -sS -w "%{http_code}" -o /tmp/gemini-resp.json \
-            -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-tts-preview:generateContent?key=${GEMINI_API_KEY}" \
+            -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+            -H "x-goog-api-key: ${GEMINI_API_KEY}" \
             -H "Content-Type: application/json" \
             -d "$BODY")
 
           if [ "$HTTP" != "200" ]; then
             echo "Gemini TTS returned HTTP $HTTP — error body:"
-            cat /tmp/gemini-resp.json | head -50
+            head -50 /tmp/gemini-resp.json
             exit 0
           fi
 
-          # Extract base64 PCM payload
-          B64=$(jq -r '.candidates[0].content.parts[0].inlineData.data // ""' /tmp/gemini-resp.json)
+          # Extract base64 WAV payload (first audio content part)
+          B64=$(jq -r '[.steps[]?.content[]? | select(.data != null) | .data][0] // ""' /tmp/gemini-resp.json)
           if [ -z "$B64" ]; then
             echo "Gemini returned no audio data — response:"
-            jq 'del(.candidates[0].content.parts[0].inlineData.data)' /tmp/gemini-resp.json | head -40
+            jq 'del(.steps[]?.content[]?.data)' /tmp/gemini-resp.json | head -40
             exit 0
           fi
 
-          echo "$B64" | base64 --decode > "$PCM_FILE"
-          PCM_SIZE=$(wc -c < "$PCM_FILE")
-          echo "Decoded ${PCM_SIZE} bytes of PCM (24kHz mono 16-bit)"
+          echo "$B64" | base64 --decode > "$WAV_FILE"
+          WAV_SIZE=$(wc -c < "$WAV_FILE")
+          echo "Decoded ${WAV_SIZE} bytes of WAV (24kHz mono 16-bit)"
 
-          # PCM (s16le, 24kHz, mono) → MP3 48kbps mono
+          # WAV → MP3 48kbps mono
           ffmpeg -hide_banner -loglevel error -y \
-            -f s16le -ar 24000 -ac 1 -i "$PCM_FILE" \
+            -i "$WAV_FILE" \
             -codec:a libmp3lame -b:a 48k -ac 1 \
             "$AUDIO_FILE"
-          rm -f "$PCM_FILE"
+          rm -f "$WAV_FILE"
 
           if [ ! -s "$AUDIO_FILE" ]; then
             echo "ffmpeg produced empty mp3 — bailing"
