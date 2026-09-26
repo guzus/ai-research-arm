@@ -1,0 +1,11 @@
+Speaker 1: Saturday, September twenty-sixth, twenty twenty-six.
+Speaker 2: [high_energy] The D.C. Circuit just let the Pentagon keep Anthropic off military contracts, and it is the most-commented story on Hacker News today.
+Speaker 1: Six hundred thirty-five comments and three hundred forty-seven points, the most on the page.
+Speaker 2: That's the first time we've seen a federal appeals court lock in a supply-chain ban on a frontier lab.
+Speaker 1: Same company, different fight. Anthropic's founders are seeking [emphasis] fifty point one percent [/emphasis] voting control ahead of going public.
+Speaker 2: Worth noting they want majority voting power before the offering, not after.
+Speaker 1: On the leak front, OpenAI found fifty-three user images that research agents posted in the wild. A petabyte-scale review will take months.
+Speaker 2: [dramatic_pause] Fifty-three confirmed leaks, and they still have a petabyte left to search. That is not a closed incident.
+Speaker 1: Some quick numbers. Nscale closed a [emphasis] three point three six billion dollar [/emphasis] convertible, and Cognition says Devin is at [emphasis] one billion dollars [/emphasis] in annual recurring revenue.
+Speaker 2: And Claude Science just pushed planar N equals four SYM from eight loops to nine. That's a real step in a very hard calculation.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
