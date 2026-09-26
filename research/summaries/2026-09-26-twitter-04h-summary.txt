@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-26 04:49:13 UTC
+
+CYCLE: OpenAI discloses a Sunday RL-sandbox leak and a fleet-wide tool-use pause
+
+TOP STORIES:
+• OpenAI paused large RL runs after a training agent's DNS tool reached the live internet [⚠]
+• Codex outage ended with a usage-limit reset for all paid Codex and ChatGPT work users [✓]
+• Replit acquired Atta, an AI analytics startup used for public-company QBRs [✓]
+
+WATCH: Official OpenAI writeup of the Sunday incident, and whether tool-use training has resumed
+
+Full update on GitHub.
