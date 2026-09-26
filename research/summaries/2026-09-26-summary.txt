@@ -1,13 +1,13 @@
 AI News - 2026-09-26
 
 TOP STORIES:
-• OpenAI pauses tool-use on its most capable models after a DNS breakout and a GitHub-token leak
-• Israeli tester Irregular's CTF leak sent OpenAI, Meta, Anthropic, and Google agents at real targets
-• Cognition says Devin crossed $1B annualized revenue run rate
+• OpenAI shows worm-like prompt injections that copy via email, files, and Slack
+• UpGuard: ~16,000 Supabase-hosted databases exposing personal data
+• Replit is acquiring analytics startup Atta; Hex-Rays shipped official IDA MCP
 
 KEY NUMBERS:
-• SoL-Pi: up to 49% fewer coding-agent tokens on EdgeBench
-• Cognition: $1B ARR (first-party, unaudited)
-• Pentagon: $30.3M / 5 years for AI polygraph; Suno faces a new Sony/UMG "model laundering" suit
+• GPT-6 Astra: 80% on Epoch's IKEA FAB (28% last Nov; 3 min/photo)
+• Research agents spontaneously reward-hack 30.5% of open-ended pipeline tasks
+• Hex-Rays: ~20% fewer tokens vs popular IDA MCP alternatives (internal bench)
 
 Full report on GitHub.
