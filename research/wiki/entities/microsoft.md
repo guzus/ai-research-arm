@@ -4,15 +4,16 @@ title: Microsoft
 type: entity
 aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "MAI Code of Conduct", "Humanist AI Code of Conduct"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; newly unredacted Times v. OpenAI and Microsoft material quoted Brent Hecht calling training-data scraping "the largest theft of labor in human history."
+description: Hyperscaler and frontier-model builder; rebuilt Copilot around OpenClaw with Home, Code and Autopilot modes, moving Autopilot and Code to usage-based billing.
 created_at: 2026-06-03
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-09-26T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
@@ -211,7 +212,35 @@ should be licensed"; the Trump administration's
 earlier brief defending unlicensed training
 remains context. See [[openai]] and
 [[federal-ai-policy]] (TechCrunch, Ars
-Technica; ARA daily digest 2026-09-18).
+  Technica; ARA daily digest 2026-09-18).
+
+## Copilot rebuilt around OpenClaw (2026-09-26)
+
+Microsoft shipped a Copilot rebuild
+around **OpenClaw** — Home, Code and
+Autopilot modes — with the persistent
+agent confirmed by OpenClaw's
+maintainer Peter Steinberger as a
+March-onward collaboration.
+Autopilot and Code move to
+usage-based billing, and relays add
+30–50% enterprise discounts to win
+seats. This is the first named
+hyperscaler productization of the
+same OpenClaw stack [[muse-code|Meta
+Muse]] admitted it was "heavily
+inspired" by on 2026-09-23, and the
+same stack this wiki's
+[[agentic-ai-security]] page opened
+on as the canonical 2026
+supply-chain post-mortem. Steinberger
+says Microsoft has been hardening
+upstream since March; the digest
+does not print a first-party
+Microsoft architecture note beyond
+The Verge's ship report (The Verge,
+@steipete, The Decoder, VentureBeat;
+ARA daily digest 2026-09-26).
 
 ## Open questions
 

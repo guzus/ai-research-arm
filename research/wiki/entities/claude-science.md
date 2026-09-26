@@ -4,10 +4,11 @@ title: Claude Science
 type: entity
 aliases: ["Claude Science", "Anthropic biology lab", "ART enzyme family"]
 tags: [anthropic, claude, ai-for-science, agentic-research, product]
-description: Anthropic's agentic research workbench; its biology lab's first wet-lab result recovered the ART enzyme family from 1.94B protein clusters via ~950 Claude agents.
+description: Anthropic's agentic research workbench; Claude computed a nine-loop planar N=4 super-Yang-Mills amplitude past Lance Dixon's eight-loop record on a few-thousand-dollar academic budget.
 created_at: 2026-07-01
-timestamp: 2026-09-24T00:00:00Z
+timestamp: 2026-09-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
   - {title: "ARA daily digest 2026-07-04", path: research/digest/2026-07-04-digest.md}
@@ -88,6 +89,46 @@ Review calls it Anthropic's "newest flagship product" (ARA digest 2026-07-01).
   protocol (Anthropic, The Verge,
   TechCrunch, HN; ARA daily digest
   2026-09-24).
+
+## Nine-loop amplitude; two Enigma recoveries (2026-09-26)
+
+- **Claude computed a nine-loop
+  planar N=4 super-Yang-Mills
+  amplitude**, pushing past Lance
+  Dixon's eight-loop record on an
+  academic compute budget of a few
+  thousand dollars. One prompt,
+  days of unsupervised runtime,
+  methods Dixon already developed;
+  Dixon independently verified it.
+  The digest calls this the
+  week's cleanest "frontier
+  calculation." It is a
+  computation result on a
+  known-method stack, not a new
+  wet-lab finding like ART, and
+  it ran on
+  [[claude-opus-5-5|Opus 5.5]]
+  / Claude Science rather than a
+  named biology swarm. See
+  [[anthropic]] (Anthropic
+  Science Blog, @AnthropicAI;
+  ARA daily digest 2026-09-26).
+- **[[astra|Astra]] and Opus broke
+  two Enigma messages**, recovering
+  plaintext from previously
+  unbroken wartime traffic in
+  Frode Weierud's Crypto Cellar
+  archive. Weierud validated
+  both; seven unbroken messages
+  remain, and Astra's logs
+  mention a "private collection"
+  he cannot confirm. This is
+  historical cryptanalysis with
+  an independent validator, not
+  a capability-misuse incident
+  (TechCrunch; ARA daily digest
+  2026-09-26).
 
 ## Open questions
 - **Does the workbench beat a benchmark?** GeneBench-Pro and
