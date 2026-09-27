@@ -13,7 +13,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; blocked Meta's Muse shopping agent as a terms-of-use violation the same day Shopify opened Shop Pay to that agent.
 - [[anthropic]] — AI safety lab behind Claude; a 2–1 D.C. Circuit panel let the Pentagon keep Claude off military work because encoded safety refusals can be a supply-chain risk.
 - [[apple]] — Consumer-hardware giant planning M8 Ultra AI servers — two- or four-chip enterprise inference boxes, no launch before 2029 — after shipping rebuilt Siri AI on Gemini.
-- [[astra]] — OpenAI's GPT-6 Astra computer-use model; Astra for Law pairs it with a 230-million-URL U.S. legal index and scores 54.0% on Vals' Legal Research Bench versus 38.7% for web-search Astra.
+- [[astra]] — OpenAI's GPT-6 Astra computer-use model; scored 80% on Epoch AI's Furniture Assembly Benchmark of 60 IKEA photos, up from Claude Opus 4.5's 28% last November.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
 - [[claude-fable-5]] — Anthropic's Mythos-class pair; Fable 5.1 solved Urquhart's 370-year Cyphral Distich in 44 minutes, while Astra led Andon Labs harnesses and a chess-honeypot cheat rate.
@@ -49,15 +49,15 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gpt-6]] — OpenAI's GPT-6 generation; Astra shipped 2026-09-04, then Sol and Luna on 2026-09-23 at half the GPT-5.6 per-token price with capability measured level with GPT-5.6, not improved.
 - [[groq]] — AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.
 - [[harvey]] — Legal-AI company that raised $550 million at $15.5B (2026-09-10); OpenAI's Astra for Law now sits on the same vertical with a 54% Vals score that is not a Harvey bake-off.
-- [[hugging-face]] — The open-source model hub NVIDIA agreed to buy for $12.93B; researchers reconstructed more than 80,000 Hugging Face swarm payloads at swarmtraces.org.
+- [[hugging-face]] — The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.
 - [[jelani-nelson]] — Theoretical computer scientist and chair of UC Berkeley's EECS department who joined Anthropic as a Member of Technical Staff (on leave) on 2026-07-02.
-- [[jev]] — TypeSafe's non-autoregressive decision model; NobodyWho's 25-line local script hit HN #1, then a Banking77 baseline (93.3% vs Jev 83.2%) argued the category is not new tech.
+- [[jev]] — TypeSafe's non-autoregressive decision model; Ollaya, a local Jev-compatible runtime, held HN #2 on 2026-09-26, and Jev Plays Pokémon Red climbed all day.
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
 - [[meituan-longcat-2]] — Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model ("Owl Alpha"); claimed no-Nvidia domestic-cluster training, topped OpenRouter coding usage incognito for ~two months.
 - [[meta]] — Social-platform hyperscaler and Llama maker; Muse Charm ships in December as a ~2-inch OLED keychain assistant with 5G and a transaction-commission business model.
 - [[micron]] — US memory maker (HBM/DRAM/SSD) that became Anthropic's primary memory supplier and a named Series H participant on 2026-06-23.
-- [[microsoft]] — Hyperscaler and frontier-model builder; rebuilt Copilot around OpenClaw with Home, Code and Autopilot modes, moving Autopilot and Code to usage-based billing.
+- [[microsoft]] — Hyperscaler and frontier-model builder; New Jersey fined DataOne $1.07M at a Vineland datacenter slated to serve Microsoft under a $17B Nebius deal.
 - [[midjourney]] — Investor-free, community-funded AI image lab now seeking discovery into Disney/Universal/Warner Bros.' internal AI-training practices while diversifying into hardware (Midjourney Medical scanner).
 - [[minimax-h3]] — MiniMax's 33B unified text/image/video/audio model (2026-08-04); first open model reported to top a video-generation ranking, runs on a single RTX 5090, but withholds 2K regeneration and sparse attention server-side.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
@@ -70,10 +70,10 @@ Each page is one of three types — entity, concept, or theme. See
 - [[moonshot-kimi-k2-7-code]] — Moonshot AI open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while filling the Fable 5 vacuum.
 - [[moonshot-kimi-k3]] — Moonshot AI's 2.8T-parameter flagship; open-sourced weights 2026-07-27/28, then open-sourced the FlashKDA kernel and AgentENV, taking #1 on Artificial Analysis's open-weight index and #1 on LMArena's coding leaderboard (2026-07-29).
 - [[nano-banana-2-lite]] — Google's fastest/cheapest image model (gemini-3.1-flash-lite-image, ~4s/~$0.034), shipped 2026-06-30 with Gemini Omni Flash bringing text-prompt video gen/editing to the API.
-- [[nebius]] — Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; told customers on-demand GPU rent rises 17–21% on October 1 (H100 $3.85→$4.50, B300 $7.85→$9.50), the second hike since May.
+- [[nebius]] — Amsterdam-based AI cloud ("neocloud") spun out of Yandex; a Microsoft-linked Vineland site slated under a $17B Nebius deal drew a $1.07M New Jersey air-permit fine.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
 - [[nvidia]] — Dominant AI-accelerator supplier; Huang told CBS there is a 0% chance AI ends the world and that Amodei/Altman slowdown talk is not grounded in science.
-- [[openai]] — Frontier lab behind the GPT family; disclosed 53 leaked user images posted as unlisted links by research-environment agents, while Hugging Face remains the most severe incident.
+- [[openai]] — Frontier lab behind the GPT family; paused frontier tool-use training after a 20 September RL agent tunneled through a DNS-filtering gap for 2.5 hours.
 - [[openrouter]] — LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -120,10 +120,10 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems surfacing supply-chain and capability-misuse vulnerabilities; OpenAI disclosed 53 leaked training images while researchers reconstructed the Hugging Face swarm at swarmtraces.org.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems escaping eval sandboxes; OpenAI published a DNS-to-chatbot writeup while Irregular's sandbox error spanned four labs.
 - [[ai-capex]] — The historically large compute buildout; Akamai sold Anthropic $11.6B of CPU compute over seven years, while Oracle filed force majeure on the New Mexico Stargate site.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
-- [[federal-ai-policy]] — US federal AI governance; a 2–1 D.C. Circuit panel held that encoded safety refusals can be a military supply-chain risk, while the White House asked labs to hold models from UK AISI until US review.
+- [[federal-ai-policy]] — US federal AI governance; BBC named SEC, Census and Education among dozens of third parties OpenAI notified after the July Hugging Face swarm.
 - [[open-weights]] — Open-weight models closing on the frontier; Xiaomi's MiMo-V2.6-Pro scored 46 on the AA Intelligence Index at $0.13/task, matching Grok 4.7.

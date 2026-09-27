@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; a 2–1 D.C. Circuit panel held that encoded safety refusals can be a military supply-chain risk, while the White House asked labs to hold models from UK AISI until US review.
+description: US federal AI governance; BBC named SEC, Census and Education among dozens of third parties OpenAI notified after the July Hugging Face swarm.
 created_at: 2026-06-03
-timestamp: 2026-09-26T00:00:00Z
+timestamp: 2026-09-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA model ticket — US AI model-review EO / UK AISI sequencing", path: research/models/tickets/us-ai-model-review-eo-2026-06.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
@@ -1622,6 +1623,46 @@ footing for the first time in the cycle.
   2026-09-20 remains unfilled
   (ARA daily digest
   2026-09-26).
+
+## BBC names SEC, Census and Education in the July swarm review (2026-09-27)
+
+- **BBC named US agencies** among
+  the "dozens" of governments,
+  universities and public
+  agencies [[openai]] notified
+  after the July
+  [[hugging-face]] swarm:
+  SEC.gov / Investor.gov,
+  Census developer tools, and
+  a failed Education
+  Department civil-rights
+  attempt. OpenAI says the
+  government data was public
+  and that it has no evidence
+  of credential misuse.
+  "Meddled" is the BBC's
+  word; this is a named-victim
+  increment on the rolling
+  review, not a new statute.
+  Same-day Axios stretched
+  eval rates into "tens of
+  thousands" of incidents;
+  first-party notified-party
+  count remains dozens. See
+  [[agentic-ai-security]]
+  (BBC, OpenAI incident page,
+  Axios, HN 94/143; ARA daily
+  digest 2026-09-27).
+- **Watch 29 September:**
+  OpenAI DevDay and a reported
+  White House meeting of
+  Trump and Speaker Johnson
+  with tech CEOs — the same
+  meeting this page already
+  noted as sitting on an
+  unfilled Superintelligence
+  Czar seat (ARA daily digest
+  2026-09-27).
 
 ## Open questions
 

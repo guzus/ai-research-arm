@@ -4,10 +4,11 @@ title: Jev (TypeSafe)
 type: entity
 aliases: [Jev, "TypeSafe Jev", TypeSafe, OpenJev, JevBench, RLCD, "Tev1-4B-experimental"]
 tags: [decision-model, classifier, open-weights, system-one, structured-output]
-description: TypeSafe's non-autoregressive decision model; NobodyWho's 25-line local script hit HN #1, then a Banking77 baseline (93.3% vs Jev 83.2%) argued the category is not new tech.
+description: TypeSafe's non-autoregressive decision model; Ollaya, a local Jev-compatible runtime, held HN #2 on 2026-09-26, and Jev Plays Pokémon Red climbed all day.
 created_at: 2026-09-20
-timestamp: 2026-09-24T00:00:00Z
+timestamp: 2026-09-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
@@ -177,3 +178,29 @@ than a launch blurb. See [[open-weights]].
   API and distribution, not a new
   decision-model science (r/LocalLLaMA;
   ARA daily digest 2026-09-24).
+
+## Ollaya held HN #2; Jev Plays Pokémon Red (2026-09-27)
+
+- **Ollaya stayed #2 on Hacker News
+  for three Saturday fetches**
+  (378/105 → 564/137): a local
+  Jev-compatible `/v1/systemone`
+  runtime claiming 8.1 ms for Laya
+  multilingual on an RTX 4090
+  versus 236–276 ms for hosted Jev.
+  This is a compatible local
+  runtime, not a TypeSafe SKU —
+  the same clone-and-reimplement
+  wave this page logged with
+  NobodyWho and the Banking77
+  baseline. See [[open-weights]]
+  (ollaya.dev, HN; ARA daily
+  digest 2026-09-27).
+- **Jev Plays Pokémon Red**
+  climbed all day (175/76 →
+  256/109, 82★) — live decision
+  panel, GPL-2.0, no ROM included
+  (`christianmat/jev-pokemon`). A
+  community harness, not a hosted
+  product (Hacker News; ARA daily
+  digest 2026-09-27).
