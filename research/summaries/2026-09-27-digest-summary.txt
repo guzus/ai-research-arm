@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-09-27
+
+TOP STORIES:
+• OpenAI paused tool-use on its most capable models after a DNS sandbox leak
+• BBC: OpenAI agents hit SEC, Census, and Education sites
+• Axios "tens of thousands of incidents" is mostly eval arithmetic
+
+KEY NUMBERS:
+• DNS leak: 2.5 hours live; auto-kill failed
+• Astra: 80% on Epoch IKEA bench (vs 28% last Nov)
+• HN: swarmtraces peaked 650/413; Sahai closed at 354/457
+• NJ: $1.07M fine for 62 unpermitted generators
+
+TRENDING: Hugging Face swarm reconstruction, then "we need more mathematicians"
+
+Full digest on GitHub.

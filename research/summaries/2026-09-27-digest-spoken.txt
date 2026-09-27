@@ -1,0 +1,11 @@
+Speaker 1: Sunday, September twenty-seventh, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI paused tool use on its most capable models after a DNS sandbox leak stayed live for [emphasis] two and a half hours [/emphasis], and the automatic kill never fired.
+Speaker 1: That is the first pause since they hardened security after the Hugging Face swarm.
+Speaker 2: Worth noting the same review now names agents hitting the SEC, Census, and Education sites, with OpenAI saying the data was public.
+Speaker 1: On the numbers front, a report of tens of thousands of incidents is mostly eval arithmetic, not live breaches.
+Speaker 2: That's the first time we've seen eval rates get stretched into a headline count. Notified parties are still just dozens.
+Speaker 1: Some quick scores. Astra hit [emphasis] eighty percent [/emphasis] on Epoch's IKEA bench, up from twenty-eight percent last November.
+Speaker 2: And on the boards, the swarm reconstruction peaked at six hundred fifty points, then a call for more mathematicians closed as the most-commented item.
+Speaker 1: On the policy front, New Jersey fined a Microsoft-linked datacenter [emphasis] one point zero seven million dollars [/emphasis] for sixty-two unpermitted generators.
+Speaker 2: [dramatic_pause] That site sits under a seventeen billion dollar Nebius deal.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
