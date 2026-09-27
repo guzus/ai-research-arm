@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-27 21:17:21 UTC
+
+CYCLE: Naive AI ships 309B MIT-licensed N0.5-Flash; Apollo flags agentic deposit sweep.
+
+TOP STORIES:
+• Naive-N0.5-Flash: 309B MoE / 15.5B active, MIT weights, $0.10/$0.40/$0.01 API card [✓]
+• Apollo's Slok: Muse-class agents sweeping 0.1% cash to 3.3–5% could drain cheap deposits [✓]
+• Wang: Muse official early access via in-app ask; Instagram profile sticker live [✓]
+
+WATCH: Independent SWE/Terminal-Bench on N0.5-Flash, and a pool report that the Amodei dinner happened.
+
+Full update on GitHub.
