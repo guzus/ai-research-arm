@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-14 18:00 UTC",
-    "headline": "CHINA BLOCKS META'S ~$2B ACQUISITION OF AI STARTUP MANUS",
-    "source": "@IndiaToday",
-    "source_file": "research/summaries/2026-05-14-twitter-18h-headlines.json",
-    "url": "https://x.com/IndiaToday/status/2054993104789442779"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-14 21:00 UTC",
-    "headline": "OPENAI SHIPS CODEX INSIDE THE CHATGPT MOBILE APP \u2014 REMOTE-CONTROL AGENTIC CODING FROM YOUR PHONE",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-14-twitter-21h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2055016850849993072"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-14 21:00 UTC",
-    "headline": "CODEX MOBILE ROLLING OUT TODAY ON IOS AND ANDROID IN ALL SUPPORTED REGIONS \u2014 SAM ALTMAN CONFIRMS",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-14-twitter-21h-headlines.json",
-    "url": "https://x.com/sama/status/2055034461591588916"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-14 21:00 UTC",
     "headline": "XAI PUSHES GROK BUILD CLI INTO OPEN BETA \u2014 SKILLS, SUBAGENTS, PLUGINS, PLANNING MODE FOR GROK HEAVY",
@@ -24156,5 +24129,26 @@
     "headline": "JEV ROUTER MATCHES GPT-6 ASTRA-LOW ON DEEPSWE BUT COSTS MORE AND TAKES NEARLY 5X LONGER",
     "source": "@theo",
     "url": "https://x.com/theo/status/2103774771788108008"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-09-27 21:17:21 UTC",
+    "headline": "NAIVE AI SHIPS NAIVE-N0.5-FLASH: 309B MOE, MIT WEIGHTS, $0.10/$0.40/$0.01 API CARD",
+    "source": "@naiveailab",
+    "url": "https://x.com/naiveailab/status/2104247060186951725"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-27 21:17:21 UTC",
+    "headline": "APOLLO'S SLOK: AGENT CASH-SWEEPS FROM 0.1% CHECKING TO 3.3-5% COULD DRAIN BANK DEPOSITS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2104291953127092489"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-27 21:17:21 UTC",
+    "headline": "WANG: ASK MUSE FOR OFFICIAL EARLY ACCESS; INSTAGRAM PROFILE STICKER NOW LIVE",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2104275336154194089"
   }
 ]
