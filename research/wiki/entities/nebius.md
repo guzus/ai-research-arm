@@ -4,15 +4,16 @@ title: Nebius Group
 type: entity
 aliases: [Nebius, NBIS, "Nebius Group N.V."]
 tags: [neocloud, gpu-cloud, ai-infrastructure, nvidia-partner]
-description: Amsterdam-based AI cloud ("neocloud") provider spun out of Yandex; told customers on-demand GPU rent rises 17–21% on October 1 (H100 $3.85→$4.50, B300 $7.85→$9.50), the second hike since May.
+description: Amsterdam-based AI cloud ("neocloud") spun out of Yandex; a Microsoft-linked Vineland site slated under a $17B Nebius deal drew a $1.07M New Jersey air-permit fine.
 created_at: 2026-05-24
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-09-27T00:00:00Z
 market:
   ticker: NBIS
   exchange: NASDAQ
   symbol: NASDAQ:NBIS
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
@@ -89,3 +90,21 @@ that NVIDIA's "demand has gone parabolic" Q1 FY27 print is meant to confirm
   See [[neocloud]], [[coreweave]] and
   [[ai-capex]] (Twitter; ARA daily digest
   2026-09-18).
+
+- **New Jersey fined DataOne $1.07 million
+  (2026-09-27).** A record air-permit
+  penalty on a [[microsoft|Microsoft]]-linked
+  Vineland datacenter after a Floodlight
+  drone found 45 of 62 unpermitted gas
+  generators running at once. The site is
+  slated to serve Microsoft under a **$17
+  billion Nebius deal**. DataOne disputes
+  the "temporary generator" finding and
+  says it will apply for permits while
+  moving to Bloom Energy fuel cells. This
+  is a regulator action on a named
+  neocloud-to-hyperscaler site, not a
+  Nebius earnings print. See [[microsoft]],
+  [[neocloud]] and [[ai-capex]] (The
+  Guardian via @rohanpaul_ai; ARA daily
+  digest 2026-09-27).

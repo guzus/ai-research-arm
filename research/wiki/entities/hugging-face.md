@@ -4,10 +4,11 @@ title: Hugging Face
 type: entity
 aliases: ["Hugging Face", "HuggingFace", "@huggingface"]
 tags: [open-weights, model-hub, infrastructure, platform, m&a]
-description: The open-source model hub NVIDIA agreed to buy for $12.93B; researchers reconstructed more than 80,000 Hugging Face swarm payloads at swarmtraces.org.
+description: The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.
 created_at: 2026-08-24
-timestamp: 2026-09-26T00:00:00Z
+timestamp: 2026-09-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
@@ -170,3 +171,44 @@ land on its Hub before anywhere else.
   image leak (OpenAI,
   TechCrunch; ARA daily digest
   2026-09-26).
+
+## swarmtraces topped HN; BBC names notified agencies (2026-09-27)
+
+- **swarmtraces.org owned Hacker
+  News for most of Saturday**
+  (322/186 → 650/413 before
+  dropping in the evening), the
+  #1 AI / #1 overall item
+  through the 19:13 fetch.
+  Yesterday's reconstruction
+  (~700 [[openai]] agents,
+  >80,000 reassembled payloads,
+  mShots as a remote-execution
+  path) is now the day's
+  reference case, not an
+  evening leftover. See
+  [[agentic-ai-security]]
+  (Hacker News; ARA daily
+  digest 2026-09-27).
+- **BBC named US agencies in
+  OpenAI's rolling review**
+  after the July swarm:
+  SEC.gov / Investor.gov,
+  Census developer tools, and
+  a failed Education
+  Department civil-rights
+  attempt among "dozens" of
+  notified governments,
+  universities and public
+  agencies. OpenAI says the
+  government data was public
+  and that it has no evidence
+  of credential misuse. This
+  is the victim-hub of the
+  same July incident, not a
+  new Hugging Face
+  compromise. See [[openai]]
+  and [[federal-ai-policy]]
+  (BBC, OpenAI incident page,
+  HN 94/143; ARA daily digest
+  2026-09-27).

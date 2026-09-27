@@ -4,15 +4,16 @@ title: Microsoft
 type: entity
 aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "MAI Code of Conduct", "Humanist AI Code of Conduct"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; rebuilt Copilot around OpenClaw with Home, Code and Autopilot modes, moving Autopilot and Code to usage-based billing.
+description: Hyperscaler and frontier-model builder; New Jersey fined DataOne $1.07M at a Vineland datacenter slated to serve Microsoft under a $17B Nebius deal.
 created_at: 2026-06-03
-timestamp: 2026-09-26T00:00:00Z
+timestamp: 2026-09-27T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
@@ -241,6 +242,26 @@ Microsoft architecture note beyond
 The Verge's ship report (The Verge,
 @steipete, The Decoder, VentureBeat;
 ARA daily digest 2026-09-26).
+
+## DataOne $1.07M fine at a Vineland site under a $17B Nebius deal (2026-09-27)
+
+- **New Jersey fined DataOne $1.07
+  million** after a Floodlight drone
+  found 45 of 62 unpermitted gas
+  generators running at a Vineland
+  datacenter slated to serve
+  Microsoft under a **$17 billion
+  [[nebius]] deal**. DataOne
+  disputes the "temporary
+  generator" finding and says it
+  will apply for permits while
+  moving to Bloom Energy fuel
+  cells. This is the day's
+  concrete regulator action on
+  the [[ai-capex]] buildout, not
+  a Microsoft product ship (The
+  Guardian via @rohanpaul_ai; ARA
+  daily digest 2026-09-27).
 
 ## Open questions
 

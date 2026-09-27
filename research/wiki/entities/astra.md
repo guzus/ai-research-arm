@@ -4,10 +4,11 @@ title: Astra (OpenAI)
 type: entity
 aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro", "Astra for Law", "gpt-6-astra-law"]
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use, legal-ai]
-description: OpenAI's GPT-6 Astra computer-use model; Astra for Law pairs it with a 230-million-URL U.S. legal index and scores 54.0% on Vals' Legal Research Bench versus 38.7% for web-search Astra.
+description: OpenAI's GPT-6 Astra computer-use model; scored 80% on Epoch AI's Furniture Assembly Benchmark of 60 IKEA photos, up from Claude Opus 4.5's 28% last November.
 created_at: 2026-08-02
-timestamp: 2026-09-26T00:00:00Z
+timestamp: 2026-09-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
@@ -477,3 +478,29 @@ validator, not a capability-misuse
 incident. See [[claude-science]]
 (TechCrunch; ARA daily digest
 2026-09-26).
+
+## Epoch Furniture Assembly Benchmark — 80% on IKEA photos (2026-09-27)
+
+- **Astra scored 80%** on Epoch
+  AI's Furniture Assembly
+  Benchmark: 60 photos from three
+  IKEA builds, official PDF plus
+  zoom and a Python interpreter,
+  spotting a botched assembly.
+  [[claude-fable-5|Claude Fable
+  5.1]] is at 70% and
+  [[claude-opus-5|Opus 5]] at 61%;
+  Claude Opus 4.5 scored 28% last
+  November. Astra's median is
+  three minutes per photo — the
+  fastest Epoch measured, still
+  too slow for live guidance.
+  Chinese open-weight models
+  trail the closed frontier by at
+  least seven months on this
+  bench. Epoch dated the report
+  23 September; Saturday's item
+  is The Decoder's first write-up.
+  See [[openai]] and [[gpt-6]]
+  (The Decoder, Epoch AI; ARA
+  daily digest 2026-09-27).
