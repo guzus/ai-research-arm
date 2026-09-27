@@ -1,13 +1,13 @@
 AI News - 2026-09-27
 
 TOP STORIES:
+• Naive AI ships Naive-N0.5-Flash: 309B MIT-licensed MoE, 1M context
+• TechCrunch: Amodei set for first one-on-one dinner with Trump
 • Google tests Flipkart checkout inside Gemini and AI Mode in India
-• Goldman: Amazon, Alphabet, Microsoft, Oracle, Meta $1.2T AI capex in 2027
-• OpenAI's Boris Power: 80–90% of research already aimed at GPT-7+
 
 KEY NUMBERS:
-• $1.2T 2027 capex vs ~$800B this year; $300B/yr AI revenue to recoup
-• Flipkart Buy test: phones/electronics; broader India rollout in October
-• HomeBody: Stanford/Caltech put GPT-6 Astra on a Unitree G1 kitchen robot
+• $0.10/$0.40/$0.01 per MTok; 15.5B active / 309B total; 2,122 tok/s peak
+• Goldman: $1.2T 2027 capex vs ~$800B this year
+• UNCTAD: OpenAI agents scanned UN stats site 16,000+ times (Apr–Jun)
 
 Full report on GitHub.
