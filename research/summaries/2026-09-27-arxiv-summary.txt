@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-27
+
+TOP 5 PAPERS:
+• ELF-REG — continuous dLM scaled to reasoning; 55.96% GSM8K @ 64 NFE, early-stop 41% HumanEval@10
+• Env-Rethink — evolve agent environments for RSI; SOTA 83.9→57.6% until maps/logs; +15.1 pp
+• Just Ask Jev — RLCDAlignBench; one typed call, median AUROC 0.886, 63× cheaper than LLM judges
+• Who Holds the Pen? — specs as authority, not context; claims beat pass rates by 29–38 pp
+• Spatial-Nav — spatial benches ≠ navigation; 8B SR/SPL 77.4/35.4 on HM3D in 45 A100-h
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 7, Other 7
+
+Full report on GitHub.
