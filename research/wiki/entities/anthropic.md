@@ -2,12 +2,13 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; a 2–1 D.C. Circuit panel let the Pentagon keep Claude off military work because encoded safety refusals can be a supply-chain risk.
+description: AI safety lab behind Claude; Trump invited Amodei to a first one-on-one dinner after Amodei missed the Sep 24 Trump–Xi state dinner.
 created_at: 2026-05-24
-timestamp: 2026-09-26T00:00:00Z
+timestamp: 2026-09-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA model ticket — Anthropic IPO founder-control structure", path: research/models/tickets/anthropic-ipo-2026-06.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
@@ -2199,3 +2200,44 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   release. See [[federal-ai-policy]]
   (Politico via The Decoder; ARA
   daily digest 2026-09-26).
+
+## Trump invited Amodei to a first 1:1 (2026-09-28)
+
+- **President Trump invited Dario
+  Amodei to dinner**, billed as
+  their first one-on-one after
+  months of safety-versus-
+  acceleration tension and
+  Amodei's empty seat at the
+  **24 September** Trump–Xi
+  state dinner. Axios broke the
+  Sunday-night schedule;
+  TechCrunch confirmed it with
+  a source familiar with
+  Amodei's plans. This window
+  has **no fetched White House
+  or Anthropic statement that
+  the meal happened**, and no
+  pool report that it finished.
+  A White House official is
+  quoted saying there will be
+  no slowdown on "Super
+  Intelligence" — treat that as
+  an unnamed-official quote,
+  not a new executive order.
+  See [[federal-ai-policy]]
+  (TechCrunch, Axios via
+  @kimmonismus; ARA daily
+  digest 2026-09-28).
+- **Decoder, citing WSJ, said
+  some of the company's
+  longest-serving staff are
+  considering buying remote US
+  land** "if AI goes awry." The
+  WSJ original timed out in
+  this window — no named
+  employees, acreage, states,
+  or closed purchases. Hold as
+  a single-relay consideration,
+  not a land buy (The Decoder;
+  ARA daily digest 2026-09-28).

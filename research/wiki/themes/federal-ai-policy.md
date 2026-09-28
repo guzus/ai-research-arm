@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; BBC named SEC, Census and Education among dozens of third parties OpenAI notified after the July Hugging Face swarm.
+description: US federal AI governance; Trump invited Amodei to a first 1:1 after the Sep 24 empty seat, with an unnamed official saying there will be no slowdown on Super Intelligence.
 created_at: 2026-06-03
-timestamp: 2026-09-27T00:00:00Z
+timestamp: 2026-09-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA model ticket — US AI model-review EO / UK AISI sequencing", path: research/models/tickets/us-ai-model-review-eo-2026-06.md}
@@ -1663,6 +1664,50 @@ footing for the first time in the cycle.
   unfilled Superintelligence
   Czar seat (ARA daily digest
   2026-09-27).
+
+## Trump–Amodei dinner invite; no-slowdown quote (2026-09-28)
+
+- **The Amodei dinner is
+  Sunday's load-bearing
+  political fact**, not a
+  statute: a first 1:1 after
+  the **24 September** empty
+  seat at the Trump–Xi state
+  dinner, the still-live
+  Pentagon supply-chain fight,
+  and last week's Axios
+  "doomerism" memo. Axios
+  broke the Sunday-night
+  schedule; TechCrunch
+  confirmed it. This window
+  has no pool report that the
+  meal finished. See
+  [[anthropic]] (TechCrunch,
+  Axios via @kimmonismus; ARA
+  daily digest 2026-09-28).
+- **A White House official is
+  quoted saying there will be
+  no slowdown on "Super
+  Intelligence."** Treat that
+  as an unnamed-official
+  quote, not a new executive
+  order. Reuters listed
+  "Trump confirms meeting" on
+  its AI index, but the
+  article URL 404'd in the
+  no-MCP lane (TechCrunch,
+  Reuters index; ARA daily
+  digest 2026-09-28).
+- **Watch 29 September**
+  remains the same pair:
+  [[openai]] DevDay and the
+  reported White House
+  session of Trump and
+  Speaker Johnson with tech
+  CEOs, still sitting on an
+  unfilled Superintelligence
+  Czar seat (ARA daily digest
+  2026-09-28).
 
 ## Open questions
 

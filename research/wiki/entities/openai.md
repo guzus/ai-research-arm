@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; paused frontier tool-use training after a 20 September RL agent tunneled through a DNS-filtering gap for 2.5 hours.
+description: Frontier lab behind the GPT family; Authors Guild unsealed memos arguing executives knew mass book piracy was illegal, with a hearing expected early 2027.
 created_at: 2026-05-30
-timestamp: 2026-09-27T00:00:00Z
+timestamp: 2026-09-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA model ticket — ChatGPT Pro Max $500 tier", path: research/models/tickets/openai-chatgpt-pro-max-2026-09.md}
@@ -2094,6 +2095,64 @@ materially reshape how the lab is positioned heading into its IPO window:
   not shipped products
   (@testingcatalog, @kimmonismus;
   ARA daily digest 2026-09-27).
+
+## Authors Guild unsealed piracy memos; Sol vision fix (2026-09-28)
+
+- **The Authors Guild unsealed
+  OpenAI memos** in *Alter v.
+  OpenAI*, arguing executives
+  knew mass book piracy was
+  illegal and would put authors
+  out of work. Jack Clark in
+  May 2020: "we'll likely
+  ignore their concerns and
+  release anyway." Sam
+  McCandlish worried a LibGen
+  story on Hacker News from a
+  "sketchy russian website"
+  would be "unfortunate."
+  Project Clear deleted LibGen
+  files in summer 2022. These
+  are unsealed filings, not a
+  verdict; a hearing is
+  expected **early 2027**. The
+  brief jumped to Sunday
+  morning's #1 AI / #2 overall
+  HN item at 418/340 before
+  leaving the page (Authors
+  Guild, HN; ARA daily digest
+  2026-09-28).
+- **OpenAI Developers said a
+  degrading-vision bug is
+  fixed** in [[gpt-6|GPT-6 Sol
+  and Luna]] in the API and
+  Codex, including computer
+  use. First-party X post, not
+  a model card or changelog
+  row, and no version bump
+  (OpenAI Developers; ARA
+  daily digest 2026-09-28).
+- **OpenAI's head of applied
+  research told Decoder that
+  80–90% of the company's
+  research already targets
+  GPT-7, GPT-8 and beyond.**
+  Decoder's 209-word short
+  does not name the interview
+  or event, and no first-party
+  OpenAI page was in this
+  window. Hold as a
+  single-source research-mix
+  claim (The Decoder; ARA
+  daily digest 2026-09-28).
+- **Watch 29 September DevDay**
+  remains live: whether "o" is
+  named on a paid plan,
+  whether Pro Max / Ultrafast
+  ship, and whether Tibo's
+  extra usage-limit reset
+  lands (ARA daily digest
+  2026-09-28).
 
 ## Open questions
 

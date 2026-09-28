@@ -6,8 +6,9 @@ aliases: ["Hugging Face", "HuggingFace", "@huggingface"]
 tags: [open-weights, model-hub, infrastructure, platform, m&a]
 description: The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.
 created_at: 2026-08-24
-timestamp: 2026-09-27T00:00:00Z
+timestamp: 2026-09-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
@@ -212,3 +213,12 @@ land on its Hub before anywhere else.
   (BBC, OpenAI incident page,
   HN 94/143; ARA daily digest
   2026-09-27).
+- **[[naive-ai|Naive AI]] dropped
+  MIT N0.5-Flash weights** on the
+  hub the same Sunday (309B /
+  15.5B-active MoE). Downloads
+  were still near zero hours
+  after the drop. A hosting
+  increment, not a hub incident
+  (Naive AI, Hugging Face; ARA
+  daily digest 2026-09-28).

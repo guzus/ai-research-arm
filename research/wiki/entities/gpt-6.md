@@ -6,8 +6,9 @@ aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna",
 tags: [model-release, openai, frontier-model]
 description: OpenAI's GPT-6 generation; Astra shipped 2026-09-04, then Sol and Luna on 2026-09-23 at half the GPT-5.6 per-token price with capability measured level with GPT-5.6, not improved.
 created_at: 2026-07-28
-timestamp: 2026-09-23T00:00:00Z
+timestamp: 2026-09-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
   - {title: "ARA daily digest 2026-08-02", path: research/digest/2026-08-02-digest.md}
@@ -122,3 +123,17 @@ substance.
   a proxy for what a model costs to run
   (Ars Technica, Simon Willison, Artificial
   Analysis; ARA daily digest 2026-09-23).
+
+## Sol / Luna image-understanding fix (2026-09-28)
+
+- **[[openai|OpenAI]] Developers said a
+  degrading-vision bug is fixed** in GPT-6
+  Sol and Luna in the API and Codex,
+  including computer use. First-party X
+  post, not a model card or changelog row,
+  and no version bump. Decoder also relayed
+  that 80–90% of OpenAI research already
+  targets GPT-7 / GPT-8 — single-source,
+  no named interview; see [[openai]]
+  (OpenAI Developers, The Decoder; ARA
+  daily digest 2026-09-28).

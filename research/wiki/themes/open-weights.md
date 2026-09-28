@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on the frontier; Xiaomi's MiMo-V2.6-Pro scored 46 on the AA Intelligence Index at $0.13/task, matching Grok 4.7.
+description: The 2026 storyline of open-weight models closing on the frontier; Naive AI shipped MIT-licensed N0.5-Flash (309B / 15.5B active) continued-pretrained on Xiaomi's MiMo-V2.5.
 created_at: 2026-06-14
-timestamp: 2026-09-22T00:00:00Z
+timestamp: 2026-09-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
@@ -581,9 +582,30 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   (696/188 on HN) and shipped Jared
   Palmer's Apache-2.0 **Kev** decision-
   model family on frozen Qwen3.5 bases —
-  see [[jev]] (Artificial Analysis, The
+  see   [[jev]] (Artificial Analysis, The
   Decoder, HN; ARA daily digest
   2026-09-22).
+
+## Naive N0.5-Flash: MIT continued-pretrain on MiMo-V2.5 (2026-09-28)
+
+- **[[naive-ai|Naive AI]] shipped
+  N0.5-Flash**, a 309B / 15.5B-active
+  MIT MoE with native 1M context,
+  continued-pretrained on
+  [[xiaomi-mimo-v2-5-pro|MiMo-V2.5]]
+  after an attention swap (3.25T
+  tokens). Weights are on Hugging
+  Face; source is promised 12
+  October; a $0.10 / $0.40 / $0.01
+  API card is not a confirmed live
+  endpoint. Lab WorldArena-1 Track 1
+  77.43 vs a prior published 73.64
+  is a vendor chart. Same-Sunday
+  [[fireworks-ai|Ember-1]] is the
+  closed counterpart — a Kimi K3
+  specialist with no weights
+  (Naive AI, Hugging Face; ARA daily
+  digest 2026-09-28).
 
 ## Open questions
 
