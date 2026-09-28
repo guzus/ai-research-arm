@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 01:00 UTC",
-    "headline": "XAI CO-FOUNDER IGOR BABUSCHKIN IN TALKS TO RAISE UP TO $1B AT $5B VALUATION FOR NEW AI RESEARCH STARTUP \u2014 FORBES",
-    "source": "@Techmeme",
-    "source_file": "research/summaries/2026-05-15-twitter-01h-headlines.json",
-    "url": "https://x.com/Techmeme/status/2055089731520847885"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 01:00 UTC",
-    "headline": "ANTHROPIC COMMITS $200M IN GRANTS, CLAUDE CREDITS AND SUPPORT TO GATES FOUNDATION GLOBAL-DEVELOPMENT PROGRAMS",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-15-twitter-01h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054941901900611787"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 04:00 UTC",
-    "headline": "CEREBRAS $CBRS DAY 1 CLOSES +68% AT $311.07 \u2014 LARGEST US TECH IPO SINCE UBER 2019",
-    "source": "@Trace_Cohen",
-    "source_file": "research/summaries/2026-05-15-twitter-04h-headlines.json",
-    "url": "https://x.com/Trace_Cohen/status/2055102574638858603"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 04:00 UTC",
-    "headline": "OPENAI HOLDS S-1-DISCLOSED CEREBRAS WARRANT WORTH ~$10B AT DAY 1 CLOSE \u2014 CUSTOMER IS THE SHAREHOLDER",
-    "source": "@TheGeorgePu",
-    "source_file": "research/summaries/2026-05-15-twitter-04h-headlines.json",
-    "url": "https://x.com/TheGeorgePu/status/2055144728568426585"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-15 04:00 UTC",
-    "headline": "BLOOMBERG: OPENAI LAWYERS WITH OUTSIDE FIRM PREPARING BREACH-OF-CONTRACT NOTICE AGAINST APPLE",
-    "source": "@faststocknewss",
-    "source_file": "research/summaries/2026-05-15-twitter-04h-headlines.json",
-    "url": "https://x.com/faststocknewss/status/2054967486895018011"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 04:00 UTC",
-    "headline": "APPLE iOS 27 TO OPEN SIRI TO CLAUDE AND GEMINI \u2014 WWDC REVEAL JUNE 8",
-    "source": "@wallstengine",
-    "source_file": "research/summaries/2026-05-15-twitter-04h-headlines.json",
-    "url": "https://x.com/wallstengine/status/2054996761413145051"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-15 04:00 UTC",
-    "headline": "ANTHROPIC CLAUDE API + CLAUDE CODE OUTAGE RESOLVED \u2014 STATUS PAGE NOW ALL SYSTEMS OPERATIONAL, NO RCA",
-    "source": "status.claude.com",
-    "source_file": "research/summaries/2026-05-15-twitter-04h-headlines.json",
-    "url": "https://status.claude.com"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-15 04:00 UTC",
     "headline": "ANTHROPIC SIGNS $1.8B COMPUTE DEAL WITH AKAMAI \u2014 ASIA SUPPLY-CHAIN ROUNDUP",
@@ -24136,5 +24073,54 @@
     "headline": "OPENAI-BACKED RED QUEEN BIO GOES PUBLIC IN WSJ ON AI-DESIGNED COUNTERMEASURES FOR NATURAL AND ENGINEERED VIRUSES",
     "source": "@hannu",
     "url": "https://x.com/hannu/status/2104399423317102805"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-28 13:44:11 UTC",
+    "headline": "NVIDIA LAUNCHES OPEN AGENT SAFETY PLATFORM WITH 100+ PARTNERS \u2014 OPENAI ABSENT FROM LINEUP",
+    "source": "@JensenHuang",
+    "url": "https://x.com/JensenHuang/status/2104499465055023424"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-28 13:44:11 UTC",
+    "headline": "META LAUNCHES ENTERPRISE PLATFORM, HIRES MONGODB CEO CJ DESAI EFFECTIVE IMMEDIATELY; MDB -14-20% PREMARKET",
+    "source": "@TradeWarriors99",
+    "url": "https://x.com/TradeWarriors99/status/2104567565460631892"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-28 13:44:11 UTC",
+    "headline": "AGENT STARTUP INSTINCT RAISES $1B SERIES C AT $10B \u2014 SEQUOIA, BENCHMARK, COATUE",
+    "source": "@HIT",
+    "url": "https://x.com/HIT/status/2104566997228847156"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-28 13:44:11 UTC",
+    "headline": "NVIDIA SAYS ANTHROPIC HAS CONTRACTED 2.6GW OF AI INFRASTRUCTURE SHIPPING THROUGH 2028",
+    "source": "@ClaudiaGadelha_",
+    "url": "https://x.com/ClaudiaGadelha_/status/2104567630484930816"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-28 13:44:11 UTC",
+    "headline": "AUSTRALIA SENATE SUMMONS ALTMAN AND AMODEI TO CANBERRA THURSDAY OVER OPENAI AGENT PORTAL BREACH",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2104465759619715116"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-28 13:44:11 UTC",
+    "headline": "TESLA LIFTS OPTIMUS OUTPUT TENFOLD TO SEVERAL HUNDRED ROBOTS A WEEK, HAND AND SUPPLIER ISSUES PERSIST",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2104564303256834396"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-28 13:44:11 UTC",
+    "headline": "SAMSUNG ELECTRO-MECHANICS TO INVEST $4.4B IN FC-BGA PACKAGE SUBSTRATE CAPACITY",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2104496290692526548"
   }
 ]
