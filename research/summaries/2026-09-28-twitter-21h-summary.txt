@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-28 21:12:16 UTC
+
+CYCLE: Anthropic counter-launches Sonnet 5.5 hours before OpenAI DevDay; AMD buys Fei-Fei Li's World Labs for $8.2B.
+
+TOP STORIES:
+• Claude Sonnet 5.5 ships: Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, $2/$10 per Mtok unchanged, 30% faster and up to 30% less per task [✓]
+• AMD to acquire World Labs for ~$8.2B all-stock; Fei-Fei Li becomes EVP/chief scientist under Lisa Su, close by end-2026 [✓]
+• Pachocki, Hinton, Bengio and Jack Clark co-sign a paper asking regulators to compel disclosure of how automated labs' own R&D already is [⚠]
+
+WATCH: OpenAI DevDay on 2026-09-29 — 20+ launches teased and Altman says "we have found a new thing"; whether any is a price answer to Sonnet 5.5's per-task economics.
+
+Full update on GitHub.
