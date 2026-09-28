@@ -1,0 +1,17 @@
+AI News - 2026-09-28
+
+TOP STORIES:
+• Meta hires MongoDB CEO CJ Desai to launch "Meta Enterprise Platform" for business AI
+• Instinct raises $1B Series C at $10B valuation (4x jump in a month)
+• Nvidia authorizes $150B more in buybacks, launches Open Agent Safety Platform
+• ElevenLabs ships v4/v4 Turbo speech models (90 languages, 10s voice cloning)
+• Hcompany open-sources Holo4 computer-use agent models
+
+KEY NUMBERS:
+• Instinct: $1B raised, $10B valuation
+• Modulate: $25M raise, voice-intelligence platform
+• Outmarket: $34.5M Series B, $335M valuation (AI insurance automation)
+• Nvidia: $150B buyback increase, $235B total authorized
+• ElevenLabs: $600M+ ARR, $22B valuation
+
+Full report on GitHub.
