@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "ANTHROPIC SHIPS CLAUDE SONNET 5.5 — TERMINAL-BENCH 4.0 JUMPS TO 70.6% FROM 10.3%, TOKEN PRICE UNCHANGED AT $2/$10",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2104641318555353400",
+    "category": "model"
+  },
+  {
+    "headline": "AMD TO BUY FEI-FEI LI'S WORLD LABS FOR ~$8.2B ALL-STOCK; LI NAMED EVP AND CHIEF SCIENTIST UNDER LISA SU",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2104668302182396326",
+    "category": "business"
+  },
+  {
+    "headline": "PACHOCKI, HINTON, BENGIO AND JACK CLARK CO-SIGN PAPER URGING MANDATORY DISCLOSURE OF LABS' INTERNAL AI R&D AUTOMATION",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2104605126589870529",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI TEASES 20+ DEVDAY LAUNCHES FOR SEPT 29; ALTMAN SAYS 'WE HAVE FOUND A NEW THING'",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2104661956879913457",
+    "category": "breaking"
+  },
+  {
+    "headline": "THE INFORMATION: FAL REVENUE DOUBLES TO $800M ANNUALIZED, EYES $15B ROUND; FIREWORKS AI COULD TARGET $30B",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2104632290743615999",
+    "category": "business"
+  },
+  {
+    "headline": "BIG FIVE HYPERSCALERS NOW CARRY $2.8 TRILLION IN OFF-BALANCE-SHEET AI INFRASTRUCTURE COMMITMENTS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2104662474834206928",
+    "category": "infra"
+  },
+  {
+    "headline": "NEW PREPRINT: CODING AGENTS INCLUDING CLAUDE CODE AND CODEX CAN MODIFY THEIR OWN EXECUTION TRACES",
+    "source": "@giffmana",
+    "url": "https://x.com/giffmana/status/2104637486312104236",
+    "category": "research"
+  }
+]
