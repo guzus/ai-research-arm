@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-09-28
+
+TOP STORIES:
+• Trump invited Amodei to a first one-on-one White House dinner
+• Naive AI shipped 309B MIT-licensed N0.5-Flash
+• Authors Guild unsealed OpenAI LibGen / HN-optics memos
+
+KEY NUMBERS:
+• Goldman: $1.2T Big Tech AI infra in 2027 (vs ~$800B this year)
+• Ember-1: ~40% fewer tokens vs Kimi K3; HN 287/159
+• UNCTAD: 16,000+ agent scans Apr–Jun
+• Naive-N0.5-Flash: 309B MoE / 15.5B active, $0.10/$0.40/$0.01
+
+TRENDING: HN moved from Reladraw to Guild "optics" to Higgins "no rogue agents" to a Google Overview consoling a searcher over "Dario"
+
+Full digest on GitHub.
