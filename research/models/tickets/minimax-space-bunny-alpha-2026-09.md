@@ -49,13 +49,16 @@ verification: unverified
 sources:
   - https://x.com/mark_k/status/2103170218134491535
   - https://x.com/mhdfaran/status/2103450338548498615
+  - https://x.com/TeddyinMedia/status/2104582694260609264
 created_at: 2026-09-25
-updated_at: 2026-09-25
+updated_at: 2026-09-28
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-25
     change: "Created — IN-TESTING / unverified. An anonymous model, 'Space Bunny Alpha', appeared on OpenRouter free to use, with a 1M-token context window, image and video input, and a fast-strong-coding pitch (@mark_k, 2026-09-24 17:10 UTC); community fingerprinting points at a MiniMax M3.1 preview but no vendor has confirmed. Independent hands-on the next morning: @mhdfaran ran it in OpenCode against a FastAPI repo with three planted failure modes it was not told the location of, and it went 3 failing to 6 passing tests in ~83 seconds across two files, adding two edge-case tests unprompted — recorded as evidence the endpoint is genuinely serving, not as a capability measurement. Status in-testing because a real, publicly callable artifact exists; verification unverified because the vendor is unnamed and the MiniMax attribution is community inference only. Slug deliberately names the observable stealth handle rather than the guessed model id, because slugs are immutable and the fingerprint may be wrong. Not a reopening of the closed [[minimax-m3]] ticket — that release stands; this is a putative successor checkpoint tracked as its own artifact. The anonymous-alpha-then-reveal pattern has precedent in this repo: [[stealth-ox-alpha-model-2026-08]] tracked the Ox Alpha slot that [[zhipu-glm-5-3-2026-08]] later confirmed as GLM-5.3-Flash."
+  - ts: 2026-09-28
+    change: "Still live, still free, still unattributed four days on — and the persistence is the only new fact. @TeddyinMedia (2026-09-28 14:43 UTC) inventories it from the outside: 'Nobody knows who is behind it. What we do know: 1M token context, text + image + video input, adjustable reasoning, strong coding capabilities, tool calling, $0 input and output', available free through OpenRouter. That confirms the endpoint is still serving, still at zero price, and confirms the modality set this ticket recorded on 2026-09-25 (images AND video in, adjustable reasoning) from an independent account. It adds NOTHING on attribution: the MiniMax M3.1 read remains community fingerprinting with no vendor claim, which is why the slug and title are named for the stealth handle. Status stays in-testing, verification stays unverified. The useful negative: a lab running a free 1M-context multimodal endpoint for four-plus days without claiming it is paying real inference costs for evaluation data, which is consistent with the reveal-later pattern seen at [[zhipu-glm-5-3-2026-08]] and argues the reveal is coming rather than that the model is abandoned."
 ---
 
 The useful discipline here is to track the thing that exists, not the thing

@@ -71,8 +71,11 @@ sources:
   - https://x.com/theinformation/status/2103129866375659543
   - https://x.com/mark_k/status/2103125879903629571
   - https://x.com/theinformation/status/2103220914347188282
+  - https://x.com/theinformation/status/2104217001925251455
+  - https://x.com/mark_k/status/2104479951952986469
+  - https://x.com/JustLingonberry/status/2104431004337479933
 created_at: 2026-09-24
-updated_at: 2026-09-25
+updated_at: 2026-09-28
 closed_at: null
 closed_reason: null
 history:
@@ -82,6 +85,8 @@ history:
     change: "Stage advanced within in-testing; status unchanged. DeepMind chief Koray Kavukcuoglu, speaking at The Information's AI Agenda Live on 2026-09-24, said Gemini 4 is in post-training / refinement and could arrive 'well before year-end', adding the new detail that the team is excited enough by the results to release an EARLY VERSION and keep improving it quickly (@theinformation 14:30 UTC; @mark_k relay 14:14 UTC, ~509 likes, quoting 'much earlier' than end of year). This is a stronger source class than the previous entry's relay — a named executive of the building lab, on the record, at a public conference — and it moves the reported stage from 'pre-training finishing / early post-training' to 'refinement with a staged early release planned'. Status deliberately HELD at in-testing rather than advanced to confirmed: there is still no date, model card, benchmark, spec or access path, and a stated intention to ship early is a disposition rather than an artifact. Separately recorded as build-process context, not as evidence about Gemini 4: Kavukcuoglu said in the same session that DeepMind now trusts AI agents to autonomously run parts of the training process — conducting experiments, analysing results, proposing hypotheses under human supervision — and that this was not true six months ago (@theinformation 20:31 UTC). Competitive frame: Gemini 4 will land after roughly a year without a new Google flagship, into a market where GPT-6 Astra ([[openai-gpt-6]]) and Claude Opus 5.5 ([[anthropic-opus-5-5-2026-09]]) are already shipped and benchmarked head-to-head."
   - ts: 2026-09-25
     change: "Bookkeeping — citations added for the 2026-09-25 entry: @theinformation (Kavukcuoglu, Gemini 4 in post-training, could arrive well before year-end), @mark_k (relay: refinement stage, release 'much earlier' than year-end, team willing to ship an early version), @theinformation (same session: DeepMind now lets agents autonomously run parts of the training process under human supervision). No status, verification or content change."
+  - ts: 2026-09-28
+    change: "Two developments, one of which this ticket explicitly REFUSES to treat as evidence. (1) @theinformation, on its own handle (2026-09-27 14:30 UTC), restates the stage claim directly rather than through a relay: 'Google is preparing to release Gemini 4 as it works to close the gap with Anthropic and OpenAI. DeepMind chief Koray Kavukcuoglu said the model is in post-training and could arrive well before year-end.' Same substance as the 2026-09-24 entry, now in the outlet's own voice — a sourcing upgrade, not a new fact, so status stays in-testing and verification stays partial. (2) UNADOPTED: 'leaked Gemini 4 Pro benchmarks' circulated widely on 2026-09-28 claiming Gemini 4 Pro 'absolutely destroys' Astra and Opus 5.5 (@JustLingonberry, amplified by @mark_k as 'Huge if true', and by others as timed to spoil OpenAI DevDay). NO benchmark table, harness, provenance or verifiable artifact reached this desk — only screenshots and reaction. Unsourced leaked scores are the single most gamed artifact class in this space and are recorded here solely so a later real benchmark is not confused with them. @iruletheworldmo takes the opposite position the same day ('gemini 4 will be far off sota'), which is equally unsourced and is logged for symmetry. Nothing changes: no date, no model card, no spec, no access path."
 ---
 
 The July ticket died of exactly one thing: nobody in a position to know would
