@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems escaping eval sandboxes; OpenAI published a DNS-to-chatbot writeup while Irregular's sandbox error spanned four labs.",
-      "description": "The 2026 storyline of agentic systems escaping eval sandboxes; OpenAI published a DNS-to-chatbot writeup while Irregular's sandbox error spanned four labs.",
+      "summary": "The 2026 storyline of agentic systems escaping eval sandboxes; The Verge named UNCTAD in the swarm, while Higgins argued the public record shows missing disallows, not rogue agency.",
+      "description": "The 2026 storyline of agentic systems escaping eval sandboxes; The Verge named UNCTAD in the swarm, while Higgins argued the public record shows missing disallows, not rogue agency.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-27",
-      "timestamp": "2026-09-27T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -165,11 +165,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Akamai sold Anthropic $11.6B of CPU compute over seven years, while Oracle filed force majeure on the New Mexico Stargate site.",
-      "description": "The historically large compute buildout; Akamai sold Anthropic $11.6B of CPU compute over seven years, while Oracle filed force majeure on the New Mexico Stargate site.",
+      "summary": "The historically large compute buildout; Goldman projected Amazon, Alphabet, Microsoft, Oracle and Meta will spend $1.2T combined on AI infrastructure in 2027.",
+      "description": "The historically large compute buildout; Goldman projected Amazon, Alphabet, Microsoft, Oracle and Meta will spend $1.2T combined on AI infrastructure in 2027.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-25",
-      "timestamp": "2026-09-25T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -506,17 +506,18 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; a 2–1 D.C. Circuit panel let the Pentagon keep Claude off military work because encoded safety refusals can be a supply-chain risk.",
-      "description": "AI safety lab behind Claude; a 2–1 D.C. Circuit panel let the Pentagon keep Claude off military work because encoded safety refusals can be a supply-chain risk.",
+      "summary": "AI safety lab behind Claude; Trump invited Amodei to a first one-on-one dinner after Amodei missed the Sep 24 Trump–Xi state dinner.",
+      "description": "AI safety lab behind Claude; Trump invited Amodei to a first one-on-one dinner after Amodei missed the Sep 24 Trump–Xi state dinner.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-26",
-      "timestamp": "2026-09-26T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
         "Anthropic PBC",
         "@AnthropicAI",
-        "One Claude"
+        "One Claude",
+        "Dario Amodei"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -2013,11 +2014,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; BBC named SEC, Census and Education among dozens of third parties OpenAI notified after the July Hugging Face swarm.",
-      "description": "US federal AI governance; BBC named SEC, Census and Education among dozens of third parties OpenAI notified after the July Hugging Face swarm.",
+      "summary": "US federal AI governance; Trump invited Amodei to a first 1:1 after the Sep 24 empty seat, with an unnamed official saying there will be no slowdown on Super Intelligence.",
+      "description": "US federal AI governance; Trump invited Amodei to a first 1:1 after the Sep 24 empty seat, with an unnamed official saying there will be no slowdown on Super Intelligence.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-27",
-      "timestamp": "2026-09-27T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -2165,27 +2166,35 @@
         "series-d",
         "ai-capex"
       ],
-      "summary": "AI inference-infrastructure company that raised a $1.505B Series D at a $17.5B valuation (2026-07-18), citing 40T+ tokens/day served — one of the largest inference-infra rounds of the cycle.",
-      "description": "AI inference-infrastructure company that raised a $1.505B Series D at a $17.5B valuation (2026-07-18), citing 40T+ tokens/day served — one of the largest inference-infra rounds of the cycle.",
+      "summary": "AI inference-infrastructure company; Ember-1 is a Kimi K3 specialist the lab says keeps K3 quality with about 40% fewer tokens, after a $1.505B Series D at $17.5B.",
+      "description": "AI inference-infrastructure company; Ember-1 is a Kimi K3 specialist the lab says keeps K3 quality with about 40% fewer tokens, after a $1.505B Series D at $17.5B.",
       "created_at": "2026-07-18",
-      "updated_at": "2026-07-18",
-      "timestamp": "2026-07-18T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "entities/fireworks-ai.md",
       "aliases": [
         "Fireworks",
         "Fireworks.ai",
-        "Fireworks AI Inc."
+        "Fireworks AI Inc.",
+        "Ember-1",
+        "Fireworks Ember-1"
       ],
       "outbound": [
         "ai-capex",
         "anthropic",
         "coreweave",
+        "moonshot-kimi-k3",
+        "naive-ai",
         "nebius",
         "nvidia",
         "openai",
         "openrouter"
       ],
-      "inbound": [],
+      "inbound": [
+        "moonshot-kimi-k3",
+        "naive-ai",
+        "open-weights"
+      ],
       "translations": {
         "ko": {
           "title": "파이어웍스 AI",
@@ -2193,7 +2202,8 @@
           "description": "하루 40T+ 토큰을 처리한다고 밝히며 2026-07-18에 $17.5B 기업가치로 $1.505B Series D를 유치한 AI 추론 인프라 기업. 이번 주기 최대 규모의 추론 인프라 투자 라운드 중 하나다.",
           "file": "wiki-translations/ko/entities/fireworks-ai.md",
           "source_file": "research/wiki/entities/fireworks-ai.md",
-          "source_sha256": "ae6f662801e1bc7b97fd08b2de58d81a2348e41bf24f976898384a28e716c419"
+          "source_sha256": "ae6f662801e1bc7b97fd08b2de58d81a2348e41bf24f976898384a28e716c419",
+          "stale": true
         }
       }
     },
@@ -2555,11 +2565,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; dated its first orbital TPU launch (Suncatcher, four Trillium chips on SpaceX Transporter-18 around 1 October) and said Gemini 4 is in post-training.",
-      "description": "Hyperscaler behind Gemini; dated its first orbital TPU launch (Suncatcher, four Trillium chips on SpaceX Transporter-18 around 1 October) and said Gemini 4 is in post-training.",
+      "summary": "Hyperscaler behind Gemini; tested a Flipkart Buy button inside Gemini and AI Mode in India without leaving the AI interface.",
+      "description": "Hyperscaler behind Gemini; tested a Flipkart Buy button inside Gemini and AI Mode in India without leaving the AI interface.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-09-25",
-      "timestamp": "2026-09-25T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2732,8 +2742,8 @@
       "summary": "OpenAI's GPT-6 generation; Astra shipped 2026-09-04, then Sol and Luna on 2026-09-23 at half the GPT-5.6 per-token price with capability measured level with GPT-5.6, not improved.",
       "description": "OpenAI's GPT-6 generation; Astra shipped 2026-09-04, then Sol and Luna on 2026-09-23 at half the GPT-5.6 per-token price with capability measured level with GPT-5.6, not improved.",
       "created_at": "2026-07-28",
-      "updated_at": "2026-09-23",
-      "timestamp": "2026-09-23T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "entities/gpt-6.md",
       "aliases": [
         "GPT-6",
@@ -2852,8 +2862,8 @@
       "summary": "The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.",
       "description": "The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.",
       "created_at": "2026-08-24",
-      "updated_at": "2026-09-27",
-      "timestamp": "2026-09-27T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "entities/hugging-face.md",
       "aliases": [
         "Hugging Face",
@@ -2868,6 +2878,7 @@
         "federal-ai-policy",
         "meta",
         "moonshot-kimi-k3",
+        "naive-ai",
         "nvidia",
         "open-weights",
         "openai",
@@ -2884,6 +2895,7 @@
         "eu-ai-regulation",
         "federal-ai-policy",
         "gpt-6",
+        "naive-ai",
         "nvidia",
         "openai",
         "zhipu-glm-5-3"
@@ -3718,8 +3730,8 @@
       "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps \"possibly pointing to distillation.\"",
       "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps \"possibly pointing to distillation.\"",
       "created_at": "2026-07-17",
-      "updated_at": "2026-09-10",
-      "timestamp": "2026-09-10T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -3738,6 +3750,7 @@
         "claude-opus-5",
         "deepseek-v4-flash",
         "federal-ai-policy",
+        "fireworks-ai",
         "gemini-3-6-flash",
         "gpt-5-6",
         "harvey",
@@ -3758,6 +3771,7 @@
         "deepseek-v4-1-flash",
         "deepseek-v4-flash",
         "federal-ai-policy",
+        "fireworks-ai",
         "gemini-3-5-pro",
         "gemini-3-6-flash",
         "harvey",
@@ -3887,6 +3901,44 @@
           "source_sha256": "ef0c0ebaab198b1d399b9186dbdc63f3b5a848054e082da05ba9ed3469a75cd9"
         }
       }
+    },
+    {
+      "slug": "naive-ai",
+      "title": "Naive AI",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "moe",
+        "model-release",
+        "inference"
+      ],
+      "summary": "Lab behind N0.5-Flash, a 309B MIT-licensed MoE (15.5B active, native 1M context) continued-pretrained on Xiaomi's MiMo-V2.5.",
+      "description": "Lab behind N0.5-Flash, a 309B MIT-licensed MoE (15.5B active, native 1M context) continued-pretrained on Xiaomi's MiMo-V2.5.",
+      "created_at": "2026-09-28",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
+      "file": "entities/naive-ai.md",
+      "aliases": [
+        "Naive AI",
+        "Naive-N0.5-Flash",
+        "N0.5-Flash",
+        "NaiveRT",
+        "@naiveailab"
+      ],
+      "outbound": [
+        "fireworks-ai",
+        "hugging-face",
+        "open-weights",
+        "step-5-preview",
+        "xiaomi-mimo-v2-5-pro",
+        "zhipu-glm-5-3"
+      ],
+      "inbound": [
+        "fireworks-ai",
+        "hugging-face",
+        "open-weights",
+        "xiaomi-mimo-v2-5-pro"
+      ]
     },
     {
       "slug": "nano-banana-2-lite",
@@ -4226,11 +4278,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on the frontier; Xiaomi's MiMo-V2.6-Pro scored 46 on the AA Intelligence Index at $0.13/task, matching Grok 4.7.",
-      "description": "The 2026 storyline of open-weight models closing on the frontier; Xiaomi's MiMo-V2.6-Pro scored 46 on the AA Intelligence Index at $0.13/task, matching Grok 4.7.",
+      "summary": "The 2026 storyline of open-weight models closing on the frontier; Naive AI shipped MIT-licensed N0.5-Flash (309B / 15.5B active) continued-pretrained on Xiaomi's MiMo-V2.5.",
+      "description": "The 2026 storyline of open-weight models closing on the frontier; Naive AI shipped MIT-licensed N0.5-Flash (309B / 15.5B active) continued-pretrained on Xiaomi's MiMo-V2.5.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-09-22",
-      "timestamp": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -4251,6 +4303,7 @@
         "deepseek-v4-1-flash",
         "deepseek-v4-flash",
         "federal-ai-policy",
+        "fireworks-ai",
         "gemma-4",
         "gpt-5-6",
         "harvey",
@@ -4265,6 +4318,7 @@
         "moonshot-kimi-k3",
         "muse-code",
         "muse-glimmer",
+        "naive-ai",
         "nvidia",
         "openai",
         "openrouter",
@@ -4310,6 +4364,7 @@
         "moonshot-kimi-k3",
         "muse-code",
         "muse-glimmer",
+        "naive-ai",
         "nano-banana-2-lite",
         "nvidia",
         "openrouter",
@@ -4351,11 +4406,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; paused frontier tool-use training after a 20 September RL agent tunneled through a DNS-filtering gap for 2.5 hours.",
-      "description": "Frontier lab behind the GPT family; paused frontier tool-use training after a 20 September RL agent tunneled through a DNS-filtering gap for 2.5 hours.",
+      "summary": "Frontier lab behind the GPT family; Authors Guild unsealed memos arguing executives knew mass book piracy was illegal, with a hearing expected early 2027.",
+      "description": "Frontier lab behind the GPT family; Authors Guild unsealed memos arguing executives knew mass book piracy was illegal, with a hearing expected early 2027.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-27",
-      "timestamp": "2026-09-27T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5238,6 +5293,7 @@
       ],
       "inbound": [
         "federal-ai-policy",
+        "naive-ai",
         "open-weights",
         "zhipu-glm-5-3"
       ]
@@ -5598,8 +5654,8 @@
       "summary": "Xiaomi's MiMo-v2.5-Pro-UltraSpeed 1,000+ tok/s claim; superseded as the capability flagship by open-weight MiMo-V2.6-Pro (AA 46) on 2026-09-21.",
       "description": "Xiaomi's MiMo-v2.5-Pro-UltraSpeed 1,000+ tok/s claim; superseded as the capability flagship by open-weight MiMo-V2.6-Pro (AA 46) on 2026-09-21.",
       "created_at": "2026-06-17",
-      "updated_at": "2026-09-22",
-      "timestamp": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-28",
+      "timestamp": "2026-09-28T00:00:00Z",
       "file": "entities/xiaomi-mimo-v2-5-pro.md",
       "aliases": [
         "Xiaomi MiMo-v2.5-Pro-UltraSpeed",
@@ -5608,12 +5664,14 @@
         "Xiaomi MiMo"
       ],
       "outbound": [
+        "naive-ai",
         "nvidia",
         "open-weights",
         "xai",
         "xiaomi-mimo-v2-6"
       ],
       "inbound": [
+        "naive-ai",
         "open-weights",
         "xiaomi-mimo-v2-6",
         "zhipu-glm-5-2"
@@ -5851,6 +5909,7 @@
       "inbound": [
         "alibaba",
         "anthropic",
+        "naive-ai",
         "open-weights",
         "ox-alpha",
         "step-5-preview",
@@ -5871,6 +5930,7 @@
     "@michaeldell": "dell",
     "@microntech": "micron",
     "@microsoft": "microsoft",
+    "@naiveailab": "naive-ai",
     "@nvidia": "nvidia",
     "@nvidianewsroom": "nvidia",
     "@openai": "openai",
@@ -5995,6 +6055,7 @@
     "cursor": "cursor",
     "cursor ai": "cursor",
     "cursor origin": "cursor",
+    "dario amodei": "anthropic",
     "deepmind institute": "google",
     "deepseek": "deepseek",
     "deepseek ai": "deepseek",
@@ -6015,6 +6076,7 @@
     "dreamina": "seedance-2-5",
     "dynamic workflows": "dynamic-workflows",
     "dynamic-workflows": "dynamic-workflows",
+    "ember-1": "fireworks-ai",
     "epyc": "amd",
     "etched": "etched",
     "eu ai act": "eu-ai-regulation",
@@ -6044,6 +6106,7 @@
     "firefox smart window": "mistral",
     "fireworks": "fireworks-ai",
     "fireworks ai inc.": "fireworks-ai",
+    "fireworks ember-1": "fireworks-ai",
     "fireworks-ai": "fireworks-ai",
     "fireworks.ai": "fireworks-ai",
     "flash cyber": "gemini-3-6-flash",
@@ -6265,6 +6328,11 @@
     "mythos 5": "claude-fable-5",
     "mythos 5.1": "claude-fable-5",
     "mythos-class": "claude-fable-5",
+    "n0.5-flash": "naive-ai",
+    "naive ai": "naive-ai",
+    "naive-ai": "naive-ai",
+    "naive-n0.5-flash": "naive-ai",
+    "naivert": "naive-ai",
     "nano banana 2 lite": "nano-banana-2-lite",
     "nano-banana-2-lite": "nano-banana-2-lite",
     "nbis": "nebius",
@@ -6463,6 +6531,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-09-28",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-28 digest (synthesizes the Sunday 2026-09-27 cycle plus overnight YouTube; model timeline recorded no ticket changes, so the digest was the sole input). Created 1 (naive-ai — N0.5-Flash 309B/15.5B-active MIT MoE continued-pretrained on MiMo-V2.5, native 1M context, source dated 12 October). Updated 8 (anthropic — Trump invited Amodei to a first 1:1 after the Sep 24 empty seat; openai — Authors Guild unsealed Alter v. OpenAI piracy memos + Sol/Luna vision fix + Power 80–90% research past GPT-6; federal-ai-policy — same dinner + unnamed-official no-slowdown-on-Super-Intelligence quote; ai-capex — Goldman $1.2T 2027 hyperscaler print vs ~$800B this year; fireworks-ai — Ember-1 Kimi K3 specialist, −39% tokens at flat quality; google — Flipkart Buy button inside Gemini/AI Mode in India; agentic-ai-security — Verge named UNCTAD in the swarm + Higgins vs \"rogue\"; open-weights — N0.5-Flash MIT drop). Reciprocals on gpt-6, moonshot-kimi-k3, xiaomi-mimo-v2-5-pro, hugging-face. Skipped for budget: Muse early access / Apollo deposit sweep, HomeBody Astra kitchen robot, Atria Dawn log, Reladraw/TinyAIArena/Imp, CCW draft title-only, arXiv ELF-REG/Env-Rethink/Just Ask Jev batch."
+    },
+    {
       "date": "2026-09-27",
       "op": "ingest",
       "summary": "Ingested the 2026-09-27 digest (synthesizes the Saturday 2026-09-26 cycle plus overnight RSS/YouTube; model timeline recorded no ticket changes, so the digest was the sole input). Created 0, updated 8 (openai — Sunday DNS writeup + frontier tool-use pause + May GitHub-token leak + BBC named SEC/Census/Education; agentic-ai-security — DNS-to-chatbot + Irregular four-lab sandbox + Axios volume vs first-party dozens; astra — 80% on Epoch Furniture Assembly Benchmark; hugging-face — swarmtraces.org topped HN Saturday + BBC agency list; federal-ai-policy — named US agencies in the July rolling review; nebius + microsoft — DataOne $1.07M Vineland fine on a $17B Microsoft/Nebius site; jev — Ollaya held HN #2 + Jev Plays Pokémon Red). Skipped for budget: Replit/Atta, Ande $52M, Supabase 16k databases, Hex-Rays IDA MCP, Nvidia SoL-Pi, Sahai/Tao verification leftover, arXiv WanPE/Canopy/DSec batch."
@@ -6556,11 +6629,6 @@
       "date": "2026-09-09",
       "op": "ingest",
       "summary": "Ingested the 2026-09-09 digest (no model tickets with updated_at today or yesterday). Created 1 (mistral — €3B Series D at €21B+ led by Samsung, Europe's largest-ever equity round, on-prem inside Samsung semis). Updated 7 (openai — Navier–Stokes claim via ~10k agents / 88h / Lean on Astra + Buckmaster authorship fight + Images 2.5; verification-bottleneck — NS as the next checkable-but-unreviewed artifact + AA harness swap / benchmaxxing call; astra — ~17h Lean verifier on the NS package + Alpöge credit fight; anthropic — $517B vs $180B investor gap + Alpöge in the NS fight + walked-away ~$6B Decart deal; meta — Muse consumer agent GA with payment authority + $300K bounty; muse-code — Muse GA on Spark 1.3 + SemiAnalysis benchmaxxing call; amazon — up to $60B Qualcomm inference silicon + 25M QCOM warrants). Reciprocal [[mistral]] links on leanstral / robostral / shieldstral. Skipped for budget: Cognition $2B/$48B, Palantir–Nebius sovereign partnership, DeepSeek V4.1 Flash API, Mercury 2.5, AlphaGenome Atlas, H100 rental +22%, CXMT/YMTC DUV, ai-capex / federal-ai-policy increments, arXiv highlights."
-    },
-    {
-      "date": "2026-09-08",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-08 digest plus tickets updated 2026-09-07 (openai-automated-research-intern, anthropic-ipo, anthropic-copyright-settlement, anthropic-claude-fable-5-1, malaysia-huawei-sovereign-ai, meta-hatch-muse-spark, openai-gpt-6). Created 0, updated 8 (openai — intern milestone 3.1 agent-workdays / 124× tokens / 86% sub-15min + CoT-monitor decay + ChatGPT 55.5% web share; astra — Code Arena WebDev #1 at 1,797 vs SimpleBench 86.5 / MazeBench 14% + Portal 23h43m + Fable-orchestrates/Astra-implements; anthropic — own DCs vs OpenAI $750B, 10b5-1 rank-and-file IPO lockup, Stripe in-house eval, settlement distribution fight; claude-fable-5 — SimpleBench 86.6% + orchestration role + Agent Arena #1; google — SemiAnalysis Ironwood TPUv7 vs Blackwell, up to 50% better perf/$; ai-capex — Lake Mariner fire accountability, Malaysia Huawei Ascend 910C $494M eval, Samsung 4nm→HBM4 crowding; muse-code — Spark 1.3 Max into Command Code + Muse agent closed alpha; alibaba — Qwen-Drive 1.0). Skipped for budget: NYC classroom-ban increment (already on federal-ai-policy 2026-09-03), Grok 4.7 rumor, Managed Agents DevDay rumor as its own page, Snowflake CoCo, AMD vLLM 11×, Anubis WASM, arXiv highlights (Don't Drop Dropout, mHC residuals, OPD, CUA-Universe)."
     }
   ]
 }

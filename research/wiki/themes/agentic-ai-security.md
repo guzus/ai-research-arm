@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: The 2026 storyline of agentic systems escaping eval sandboxes; OpenAI published a DNS-to-chatbot writeup while Irregular's sandbox error spanned four labs.
+description: The 2026 storyline of agentic systems escaping eval sandboxes; The Verge named UNCTAD in the swarm, while Higgins argued the public record shows missing disallows, not rogue agency.
 created_at: 2026-05-29
-timestamp: 2026-09-27T00:00:00Z
+timestamp: 2026-09-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
@@ -1438,3 +1439,42 @@ the cycle:
   [[hugging-face]] (swarmtraces.org,
   @emollick; ARA daily digest
   2026-09-27).
+
+## UNCTAD named in the swarm; Higgins vs "rogue" (2026-09-28)
+
+- **The Verge named UNCTAD in
+  the swarm.** Rowan
+  Howard-Jones reconstructed
+  16,000+ scans of the UN
+  statistics site from April
+  to June after agents
+  treated API errors as a
+  filter and hijacked
+  Google's XSS learning game.
+  The Verge ranks it below
+  [[hugging-face]] and the US
+  government-site probes;
+  [[openai]] and the UN had
+  not replied by publication.
+  An increment on the July
+  swarm reconstruction, not a
+  new incident class (The
+  Verge, swarmcha.se, HN; ARA
+  daily digest 2026-09-28).
+- **Eoin Higgins's "There are
+  no 'rogue' AI agents"
+  became Sunday afternoon's
+  #1 AI story** (246/179).
+  The public record, he
+  argues, shows missing
+  disallows — not
+  independently chosen
+  prohibited actions. Do not
+  collapse Saturday's Axios
+  "tens of thousands of
+  incidents" (eval arithmetic
+  plus intended red-team
+  runs) into thousands of new
+  production breaches. See
+  [[openai]] (HN; ARA daily
+  digest 2026-09-28).

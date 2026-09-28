@@ -6,8 +6,9 @@ aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open 
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
 description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps "possibly pointing to distillation."
 created_at: 2026-07-17
-timestamp: 2026-09-10T00:00:00Z
+timestamp: 2026-09-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
@@ -240,6 +241,18 @@ covering it.
   named in CISA advisory AA26-251A; see
   [[federal-ai-policy]] (Harvey, TechCrunch, CISA; ARA
   daily digest 2026-09-10).
+
+- **[[fireworks-ai|Fireworks Ember-1]] is a
+  closed K3 specialist (2026-09-28).** The lab
+  says K3 sometimes spends >90% of generated
+  tokens on internal reasoning; Ember-1's live
+  A/B cut output tokens 39% (−71.3% reasoning)
+  at 0.753 vs 0.751 quality, beside base K3 at
+  the same $3 / $0.30 / $15 card. Weights are
+  not released. Vendor benches vs K3-max are
+  mixed (Terminal Bench 2.1 up, SWE-bench
+  Verified down). See [[fireworks-ai]]
+  (Fireworks, HN; ARA daily digest 2026-09-28).
 
 ## Open questions
 

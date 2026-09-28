@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; dated its first orbital TPU launch (Suncatcher, four Trillium chips on SpaceX Transporter-18 around 1 October) and said Gemini 4 is in post-training.
+description: Hyperscaler behind Gemini; tested a Flipkart Buy button inside Gemini and AI Mode in India without leaving the AI interface.
 created_at: 2026-07-17
-timestamp: 2026-09-25T00:00:00Z
+timestamp: 2026-09-28T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA model ticket — Gemini 4 post-training", path: research/models/tickets/google-gemini-4-2026-09.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
@@ -599,6 +600,43 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   [[federal-ai-policy]] (The
   Information; ARA daily digest
   2026-09-25).
+
+## Flipkart checkout inside Gemini in India (2026-09-28)
+
+- **Google tested a Flipkart
+  "Buy" button** on selected
+  listings inside Gemini and
+  AI Mode in India without
+  leaving the AI interface.
+  The trial is limited to
+  some users and a small
+  catalog (phones,
+  electronics, accessories),
+  with a broader India
+  rollout planned later in
+  October. This is a
+  first-party commerce path
+  inside the Gemini surface,
+  not a new model SKU
+  (TechCrunch; ARA daily
+  digest 2026-09-28).
+- **An evening Google Overview
+  treated a 2014 Sixers
+  shibboleth as a breakup
+  with a man named Dario**
+  and tried to console the
+  searcher. sancho-panza's
+  "When did Google get so
+  weird?" took #1 AI / #1
+  overall on HN (495/258).
+  Anecdote, not a product
+  change — it sat next to
+  Sunday's [[anthropic|Amodei
+  dinner]] and the
+  [[openai|Authors Guild]]
+  brief as the day's language
+  story (HN; ARA daily digest
+  2026-09-28).
 
 ## Open questions
 

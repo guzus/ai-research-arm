@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Akamai sold Anthropic $11.6B of CPU compute over seven years, while Oracle filed force majeure on the New Mexico Stargate site.
+description: The historically large compute buildout; Goldman projected Amazon, Alphabet, Microsoft, Oracle and Meta will spend $1.2T combined on AI infrastructure in 2027.
 created_at: 2026-05-24
-timestamp: 2026-09-25T00:00:00Z
+timestamp: 2026-09-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
@@ -1362,3 +1363,38 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   the comparison is weaker than
   the headline (Brookings; ARA
   daily digest 2026-09-25).
+
+## Goldman $1.2T 2027 hyperscaler print (2026-09-28)
+
+- **Goldman projected $1.2
+  trillion** of 2027 AI
+  infrastructure spend by
+  [[amazon|Amazon]],
+  [[google|Alphabet]],
+  [[microsoft]], Oracle and
+  [[meta]] combined — more
+  than 50% above this year's
+  ~$800B, versus Wall Street
+  consensus of $1.1T. Growth
+  is slowing: ~100% in 2026,
+  54% in 2027, 12% in 2028.
+  Recouping would take about
+  **$300B a year** in AI
+  revenue. Spend now exceeds
+  operating cash, implying
+  more debt; power, labor and
+  HBM are the brake. Decoder
+  calls it the biggest
+  investment cycle versus GDP
+  since 19th-century
+  railroads. Bloomberg's
+  original page was not
+  fetched here — figures are
+  as Decoder reported them,
+  and a 25 September Twitter
+  desk already circulated the
+  same ladder. This is a
+  projection, not a financing
+  close (The Decoder citing
+  Bloomberg/Goldman; ARA
+  daily digest 2026-09-28).

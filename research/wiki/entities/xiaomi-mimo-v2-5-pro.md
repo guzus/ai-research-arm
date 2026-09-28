@@ -6,8 +6,9 @@ aliases: ["Xiaomi MiMo-v2.5-Pro-UltraSpeed", "MiMo-v2.5-Pro-UltraSpeed", "MiMo v
 tags: [open-weights, china, moe, inference-throughput, efficiency]
 description: Xiaomi's MiMo-v2.5-Pro-UltraSpeed 1,000+ tok/s claim; superseded as the capability flagship by open-weight MiMo-V2.6-Pro (AA 46) on 2026-09-21.
 created_at: 2026-06-17
-timestamp: 2026-09-22T00:00:00Z
+timestamp: 2026-09-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA model ticket — Xiaomi MiMo-v2.5-Pro-UltraSpeed", path: research/models/tickets/xiaomi-mimo-v2-5-pro.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
@@ -52,3 +53,10 @@ independent reproduction.
   index task**. The UltraSpeed serving claim on this page
   is still the unresolved throughput story; V2.6 is the
   capability successor (ARA daily digest 2026-09-22).
+- **[[naive-ai|Naive AI]] continued-pretrained
+  N0.5-Flash on MiMo-V2.5** after an attention
+  swap (3.25T tokens), then released MIT weights.
+  This page is the declared base, not the new
+  capability flagship — V2.6 remains the Xiaomi
+  successor (Naive AI, Hugging Face; ARA daily
+  digest 2026-09-28).
