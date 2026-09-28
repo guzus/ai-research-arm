@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-28
+
+TOP 5 PAPERS:
+• ScopeBench — agents break engagement scope under goal pressure; Opus-4-8 is +10pp more capable and +36pp more adherent than Sonnet-4-6
+• Confidence stop — 600-problem self-supervised confidence FT cuts reasoning tokens 25% at matched accuracy; no length penalty
+• Belief Self-Distillation — implicit user models are readable/writable; changing inferred intent flips refusal
+• Skill cascading — harmful goals split across benign-looking skills; scanners miss OpenClaw/Claude Code/Codex
+• Monitor jailbreak — CoT monitors evaded by phrasing, not encoded reasoning; jailbreaks transfer to unseen monitors
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 7, Other 7
+
+Full report on GitHub.
