@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-15 04:00 UTC",
-    "headline": "ANTHROPIC SIGNS $1.8B COMPUTE DEAL WITH AKAMAI \u2014 ASIA SUPPLY-CHAIN ROUNDUP",
-    "source": "@tengyanAI",
-    "source_file": "research/summaries/2026-05-15-twitter-04h-headlines.json",
-    "url": "https://x.com/tengyanAI/status/2055144737011888187"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 07:00 UTC",
-    "headline": "ANTHROPIC SIGNS TERM SHEET FOR $30B ROUND AT $900B PRE-MONEY \u2014 GREENOAKS, SEQUOIA, ALTIMETER, DRAGONEER CO-LEADING AT ~$2B EACH (FT)",
-    "source": "@GeorgeNHammond",
-    "source_file": "research/summaries/2026-05-15-twitter-07h-headlines.json",
-    "url": "https://x.com/GeorgeNHammond/status/2055090944245211523"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-15 07:00 UTC",
-    "headline": "BESSENT ON CNBC: 'THE TWO AI SUPERPOWERS ARE GOING TO START TALKING' \u2014 US-CHINA TO SET UP PROTOCOL ON NON-STATE-ACTOR MODEL ACCESS",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-15-twitter-07h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2055130198778245188"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 07:00 UTC",
-    "headline": "BABUSCHKIN'S XAI-COFOUNDER SPINOUT NAMED 'RIVER AI' \u2014 RAISING UP TO $1B AT UP TO $5B VALUATION",
-    "source": "@MTSlive",
-    "source_file": "research/summaries/2026-05-15-twitter-07h-headlines.json",
-    "url": "https://x.com/MTSlive/status/2055145185546494338"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 07:00 UTC",
-    "headline": "ARK / CATHIE WOOD BOUGHT 105,616 $CBRS SHARES ON IPO DAY 1 \u2014 DAY 2 OPEN AT 13:30 UTC IS THE READ",
-    "source": "@StockMKTNewz",
-    "source_file": "research/summaries/2026-05-15-twitter-07h-headlines.json",
-    "url": "https://x.com/StockMKTNewz/status/2055078027835412764"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-15 07:00 UTC",
-    "headline": "GEMINI SPARK LEAK: 'AGENT MODE / CHAT MODE' SPLIT AHEAD OF GOOGLE I/O MAY 19 \u2014 POLYMARKET 85% ON GEMINI 3.5 BY JUNE 30",
-    "source": "@chetaslua",
-    "source_file": "research/summaries/2026-05-15-twitter-07h-headlines.json",
-    "url": "https://x.com/chetaslua/status/2055179136910708877"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-15 07:00 UTC",
-    "headline": "TRUMP-XI JOINT STATEMENT: THREE IRAN CLAUSES, ZERO TAIWAN CLAUSES \u2014 IRAN 'SHOULD NEVER HAVE NUCLEAR WEAPONS'",
-    "source": "@InsiderGeo",
-    "source_file": "research/summaries/2026-05-15-twitter-07h-headlines.json",
-    "url": "https://x.com/InsiderGeo/status/2055027060465103210"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-15 09:00 UTC",
     "headline": "GOOGLE \"GEMINI SPARK\" LEAKS IN WEB APP \u2014 SKILLS-CREATION FLOW, ALWAYS-ON AGENT, 4 DAYS BEFORE I/O",
@@ -24122,5 +24059,54 @@
     "headline": "SAMSUNG ELECTRO-MECHANICS TO INVEST $4.4B IN FC-BGA PACKAGE SUBSTRATE CAPACITY",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2104496290692526548"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-28 21:12:16 UTC",
+    "headline": "ANTHROPIC SHIPS CLAUDE SONNET 5.5 \u2014 TERMINAL-BENCH 4.0 JUMPS TO 70.6% FROM 10.3%, TOKEN PRICE UNCHANGED AT $2/$10",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2104641318555353400"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-28 21:12:16 UTC",
+    "headline": "AMD TO BUY FEI-FEI LI'S WORLD LABS FOR ~$8.2B ALL-STOCK; LI NAMED EVP AND CHIEF SCIENTIST UNDER LISA SU",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2104668302182396326"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-28 21:12:16 UTC",
+    "headline": "PACHOCKI, HINTON, BENGIO AND JACK CLARK CO-SIGN PAPER URGING MANDATORY DISCLOSURE OF LABS' INTERNAL AI R&D AUTOMATION",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2104605126589870529"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-28 21:12:16 UTC",
+    "headline": "OPENAI TEASES 20+ DEVDAY LAUNCHES FOR SEPT 29; ALTMAN SAYS 'WE HAVE FOUND A NEW THING'",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2104661956879913457"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-28 21:12:16 UTC",
+    "headline": "THE INFORMATION: FAL REVENUE DOUBLES TO $800M ANNUALIZED, EYES $15B ROUND; FIREWORKS AI COULD TARGET $30B",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2104632290743615999"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-28 21:12:16 UTC",
+    "headline": "BIG FIVE HYPERSCALERS NOW CARRY $2.8 TRILLION IN OFF-BALANCE-SHEET AI INFRASTRUCTURE COMMITMENTS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2104662474834206928"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-28 21:12:16 UTC",
+    "headline": "NEW PREPRINT: CODING AGENTS INCLUDING CLAUDE CODE AND CODEX CAN MODIFY THEIR OWN EXECUTION TRACES",
+    "source": "@giffmana",
+    "url": "https://x.com/giffmana/status/2104637486312104236"
   }
 ]
