@@ -130,6 +130,7 @@ sources:
   - https://x.com/ns123abc/status/2099305545672933420
   - "@DV_Memetics"
   - https://x.com/kimmonismus/status/2103264718160859531
+  - https://x.com/theinformation/status/2104209501435941359
 polymarket:
   - event_slug: anthropic-ipo-by
     market_id: "2413330"
@@ -137,7 +138,7 @@ polymarket:
     question: "Anthropic IPO by Dec 31, 2026?"
     outcome: "Dec 31 2026"
 created_at: 2026-06-02
-updated_at: 2026-09-25
+updated_at: 2026-09-28
 closed_at: null
 closed_reason: null
 history:
@@ -163,6 +164,8 @@ history:
     change: "Confirmed, unchanged. New reported term of the listing: The Information reports Anthropic plans to give its seven co-founders majority voting control via a Palantir-style share structure carrying 50.1% of voting power on most corporate matters, conditional on at least three founders retaining a minimum shareholding, with the new shares adding voting power and NO additional economic ownership; Dario Amodei is reported to hold around 2% of the company (relayed by @kimmonismus, 2026-09-24 23:26 UTC, ~359 likes). The ~2% figure is what makes the structure legible: a founder at that economic level cannot hold control through equity, so control is either engineered separately or surrendered at listing, and this is the mechanism for keeping it. Recorded as REPORTED, not confirmed — one outlet, one relay, a proposed structure, no public S-1; the charter documents are where it becomes checkable. Kept on this ticket rather than spun out because it is a term of this listing, not a separate corporate event, and it interacts directly with governance already tracked here: the Long-Term Benefit Trust ([[anthropic-bernanke-ltbt-2026-07]]) and the self-restraint position in [[anthropic-pace-the-frontier-2026-09]]. Expected also updated to fold in the new $11.6B Akamai commitment ([[anthropic-akamai-compute-2026-09]]) as part of the pre-IPO commitment reconciliation."
   - ts: 2026-09-25
     change: "Bookkeeping — citation added for the 2026-09-25 entry: @kimmonismus relaying The Information on the proposed Palantir-style dual-class structure giving the seven co-founders 50.1% voting power without additional economic ownership, against Dario Amodei's reported ~2% stake. No status, verification or content change."
+  - ts: 2026-09-28
+    change: "Sourcing upgrade on the founder-control structure, no new facts. @theinformation posted the claim on its own handle (2026-09-27 14:00 UTC): 'Anthropic is asking shareholders to give its seven co-founders a combined 50.1% of voting power ahead of its IPO. The Palantir-style structure could preserve founder control despite their relatively small ownership stakes.' The 2026-09-24 entry recorded exactly this via @kimmonismus relaying the same outlet; it now sits in the outlet's own voice, which removes the relay from the chain but does not make it primary. One detail is sharper in this version: the structure requires a SHAREHOLDER VOTE ('is asking shareholders'), which is a checkable corporate action with a record date rather than a plan. Status and verification unchanged — no S-1 is public and no charter document has been seen. Deliberately not treated as corroboration: the same outlet restating its own reporting is one source, not two."
 ---
 
 Anthropic **confidentially filed an S-1 registration statement with

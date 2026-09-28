@@ -3,7 +3,7 @@ slug: anthropic-sonnet-5-5-2026-09
 title: Claude Sonnet 5.5 — reported stealth testing at 1M context, $2/$10 per MTok
 company: Anthropic
 model: Claude Sonnet 5.5 (reported)
-status: rumored
+status: in-testing
 status_note: |
   Single relay source. @kimmonismus, 2026-09-24 04:05 UTC: "Here we go: Sonnet
   5.5 already being stealth tested. The model has a 1M-token context window and
@@ -26,23 +26,27 @@ status_note: |
   Treat the $2/$10 figure as the least reliable part. It is exactly GPT-6 Sol's
   competitive slot, which makes it both plausible and the sort of number a
   relay account would infer rather than observe.
-expected: "TBD — no Anthropic statement. Family precedent (Opus 5.5 shipped 2026-09-22 as the family opener) suggests weeks, not months, but nothing in signal dates it."
+expected: "Reported imminent. A `claude-sonnet-5-5` tag was reportedly spotted by 2026-09-28 (@testingcatalog), and @kimmonismus relays a leaker date of on-or-before 2026-09-28 11:00 PT. Still no Anthropic statement, model card, API id or pricing. If the date passes without a launch, that is a second failed timing call on this ticket."
 labels:
   - anthropic
   - frontier-model
   - rumored
   - claude-5-5-family
-verification: unverified
+verification: partial
 sources:
   - https://x.com/kimmonismus/status/2102972781495566455
   - https://x.com/arankomatsuzaki/status/2102445494735982603
+  - https://x.com/testingcatalog/status/2104493424472674634
+  - https://x.com/kimmonismus/status/2104547347287900337
 created_at: 2026-09-24
-updated_at: 2026-09-24
+updated_at: 2026-09-28
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-24
     change: "Created — RUMORED. @kimmonismus reported on 2026-09-24 04:05 UTC that Claude Sonnet 5.5 is already being stealth tested, with a 1M-token context window, 128K max output, and pricing of $2 input / $10 output per MTok, reading it as a direct response to GPT-6 Sol. Against it: single relay source, no Anthropic post, no model card, no API id, no benchmark, no independent corroboration in this cycle's signal — status rumored, verification unverified. For it: Anthropic's own Opus 5.5 launch (2026-09-22) described it as \"the first model in our new Claude 5.5 family\" ([[anthropic-opus-5-5-2026-09]]), so a Sonnet 5.5 is a named slot in a family Anthropic has publicly opened rather than an invented model, and the quoted 1M/128K shape matches Fable 5.1's reported specs. The $2/$10 figure is flagged as the weakest element: it lands exactly on GPT-6 Sol's price point, which is equally consistent with observation and with inference. Close trigger set: if no corroboration appears within ~15 cycles, close as stale-rumor-unverified."
+  - ts: 2026-09-28
+    change: "Lifecycle advanced on a MODEL-ID ARTIFACT, not on a better rumour. @testingcatalog's 2026-09-28 daily brief reports under Anthropic: 'claude-sonnet-5-5 tag reportedly spotted. Nothing official, pricing unknown.' A model tag is the same evidence class this set treats as in-testing elsewhere (a registry/console string is an artifact, a tease is not), so status rumored -> in-testing. Verification unverified -> partial: two independent secondary accounts now carry it rather than one relay. Second, separable datapoint: @kimmonismus (12:22 UTC) 'Looks like Sonnet-5.5 could be released today!', citing @lyraxana's dated call of '<= 2026-09-28 11:00 PT' and vouching for that leaker's reliability. Recorded as a dated prediction so it can be scored, NOT as evidence — this ticket's own 2026-09-24 entry warns that specific numbers from relay accounts have been wrong on this set before, and the $2/$10 pricing claim is still uncorroborated. What is still absent: any Anthropic post, model card, API id, benchmark, or firsthand output. Note also a low-quality aggregator (@apimasteratai) listing Sonnet 5.5 alongside 'Claude Haiku 5.5' for October; the Haiku leg has no artifact and gets no ticket, though @theo's observation that the last Haiku release is nearly a year old is the reason it keeps being guessed."
 ---
 
 This ticket exists to hold a specific prediction accountable, not to assert that

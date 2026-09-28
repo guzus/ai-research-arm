@@ -40,19 +40,24 @@ labels:
   - pricing
   - leak
   - unreleased
-verification: unverified
+verification: partial
 sources:
   - https://x.com/testingcatalog/status/2103234677842559034
   - https://x.com/testingcatalog/status/2103238785278312463
   - https://x.com/testingcatalog/status/2103259620592542102
   - https://x.com/testingcatalog/status/2103371709281632423
+  - https://x.com/TokenGremlin/status/2103974482217976138
+  - https://x.com/testingcatalog/status/2103824776905028038
+  - https://x.com/AM09_21/status/2104567237428629560
 created_at: 2026-09-25
-updated_at: 2026-09-25
+updated_at: 2026-09-28
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-25
     change: "Created — IN-TESTING / unverified. @testingcatalog surfaced a 'ChatGPT Pro Max' plan in development on 2026-09-24 across three posts: the plan exists (21:26 UTC), it is priced at $500/mo with $600 shown inclusive of VAT (21:42 UTC, ~2,037 likes), and its description differs from ChatGPT Pro only by 'Fastest Work and Codex', with Cerebras 'likely' behind the fast path (23:05 UTC, ~1,603 likes); their 2026-09-25 daily brief repeats all three and pins DevDay to Sept 29. Status in-testing rather than rumored because a concrete product artifact exists — a plan entry with a price and a description string — not merely a tease. Verification unverified because it is ONE outlet reading one app surface, with no OpenAI statement. The Cerebras attribution is explicitly the outlet's own inference and is recorded as such; OpenAI's Jalapeno inference ASIC ([[openai-jalapeno-chip-2026-06]]) fits the same 'Fastest' string equally well. Recorded against [[anthropic-opus-5-5-2026-09]] as the competitive frame: OpenAI appears to be testing a 5x-of-Pro premium tier in the same week Anthropic cut Opus pricing ~40% and shipped limits users describe as effectively unlimited."
+  - ts: 2026-09-28
+    change: "Two independent product-surface changes now point the same way, and one of them is a REGRESSION in disclosure rather than a feature. (1) @TokenGremlin (2026-09-26 22:26 UTC): OpenAI removed the '5x, 10x, 20x' usage multipliers from the plan-upgrade UI, replacing them with 'More usage than Plus' — 'I really hate this kind of vague wording, and I hope they reconsider it before this goes public around DevDay.' Amplified critically by @ns123abc. That matters for this ticket specifically: the leaked Pro Max description differs from Pro only by 'Fastest Work and Codex' and says nothing about limits, and a vendor that has just deleted its numeric limit disclosures is a vendor about to sell a tier whose limits cannot be compared. (2) @testingcatalog (2026-09-26 12:31 UTC): a Speed selector with Fast / Standard / Ultrafast modes is coming to the Responses API Playground after DevDay, expanding the previously partner-only Ultrafast model. An inference-speed product line existing at the API layer is direct support for reading 'Fastest' in the Pro Max string as a serving-speed tier rather than a capability tier — which is what this ticket already inferred and can now point at something for. Verification unverified -> partial: the plan string, the multiplier removal and the Ultrafast selector are three separate observed surfaces from two independent accounts. Status stays in-testing; still no OpenAI announcement, final price, limit disclosure or confirmation of the Cerebras inference (which remains @testingcatalog's own hedge). DevDay is 2026-09-29 and @AM09_21 lists ChatGPT Pro Max ($500), 'o' and Aeon as the strongest leaks going in."
 ---
 
 A $500 tier is a pricing experiment, and its interesting feature is that the

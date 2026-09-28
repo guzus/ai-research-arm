@@ -45,8 +45,9 @@ sources:
   - "@gsleg"
   - "@huggingface"
   - https://x.com/huggingface/status/2081718698608402818
+  - https://x.com/nvidia/status/2104567031110533431
 created_at: 2026-07-27
-updated_at: 2026-07-28
+updated_at: 2026-09-28
 closed_at: null
 closed_reason: null
 history:
@@ -54,6 +55,8 @@ history:
     change: "Created — NVIDIA reported leading a new 'Open Secure AI Alliance,' a 30+ company coalition building/sharing open AI security tooling, explicitly motivated by the OpenAI x Hugging Face containment incident (see [[openai-unreleased-containment-escape-2026-07]]). Multiple independent accounts report consistent specifics, but no primary NVIDIA account/blog captured in this window → status confirmed (real, multi-source reported event), verification partial."
   - ts: 2026-07-28
     change: "Official @huggingface confirmation plus founding roster: Microsoft, SpaceXAI, IBM, CrowdStrike, Cloudflare, Hugging Face, Palantir, Databricks, Dell, Linux Foundation, and dozens more. NVIDIA also released NOOA, an open agent-harness framework for testing/tracing/auditing agents. OpenAI notably absent from the roster (unverified single-source claim it declined to join). Verification advances partial → confirmed."
+  - ts: 2026-09-28
+    change: "CROSS-LINK, no change to this ticket's own facts. On 2026-09-28 NVIDIA launched the Open Agent Safety Platform — OpenShell (Apache-2.0 agent sandboxing runtime) plus Sentry (BlueField-4 out-of-band monitoring and millisecond quarantine) — with 'over 100 industry partners', tracked at [[nvidia-open-agent-safety-platform-2026-09]]. Logged here because it is the productised continuation of this alliance's thesis and because two details rhyme exactly: the founding roster recorded on 2026-07-28 (Microsoft, SpaceXAI, IBM, CrowdStrike, Cloudflare, Hugging Face, Palantir, Databricks, Dell, Linux Foundation) overlaps the new partner set, and OpenAI is absent from BOTH — which upgrades that absence from a possible scheduling artifact to a pattern. The new platform also supersedes NOOA's role as the agent-harness governance layer this ticket recorded. Kept as a SEPARATE ticket rather than folded in: this tracks a multi-company coalition, that tracks an NVIDIA product launch with its own named components and event. Status and verification unchanged; no new information about the alliance itself was captured in-window."
 ---
 
 **NVIDIA** is reported to be leading a new industry coalition, the
