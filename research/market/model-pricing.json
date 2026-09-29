@@ -8,18 +8,18 @@
     "FrontierMath-Erdos": 5,
     "FrontierMath-Tier-4-2025-07-01-Private": 55,
     "FrontierMath-Tier-4-2025-07-01-Public": 36,
-    "FrontierMath-Tier-4-v2-Private": 57,
-    "FrontierMath-Tiers-1-3-v2-Private": 75,
-    "Furniture Assembly": 27,
-    "GPQA diamond": 191,
+    "FrontierMath-Tier-4-v2-Private": 59,
+    "FrontierMath-Tiers-1-3-v2-Private": 77,
+    "Furniture Assembly": 28,
+    "GPQA diamond": 193,
     "MATH level 5": 88,
-    "MirrorCode": 8,
-    "Mystery Game Puzzles": 67,
+    "MirrorCode": 9,
+    "Mystery Game Puzzles": 69,
     "OEIS Open": 3,
     "OEIS Open Lite": 5,
-    "OTIS Mock AIME 2024-2025": 173,
+    "OTIS Mock AIME 2024-2025": 175,
     "SWE-Bench verified": 32,
-    "SimpleQA Verified": 71
+    "SimpleQA Verified": 73
   },
   "blend_input_ratio": 3.0,
   "capability_attribution": "Epoch AI, 'AI Benchmarking Hub', https://epoch.ai/data/ai-benchmarking-dashboard \u2014 used under a Creative Commons Attribution license.",
@@ -35,7 +35,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-09-29T09:58:00Z",
+  "generated_at": "2026-09-29T20:08:21Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -232,7 +232,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.32,"0.95":3.75},"pareto":9,"plotted":102,"ts":"2026-09-28T09:57:20Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.32,"0.95":3.75},"pareto":9,"plotted":102,"ts":"2026-09-28T21:23:23Z"},
     {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.32,"0.95":3.75},"pareto":8,"plotted":102,"ts":"2026-09-29T01:03:16Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.32,"0.95":3.75},"pareto":8,"plotted":102,"ts":"2026-09-29T09:58:00Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.32,"0.95":3.75},"pareto":8,"plotted":102,"ts":"2026-09-29T09:58:00Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9577020202020202,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.32,"0.95":3.75},"pareto":10,"plotted":104,"ts":"2026-09-29T20:08:21Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -333,6 +334,15 @@
           "vendor": "openai"
         },
         {
+          "key": "deepseekv4pro0813",
+          "name": "DeepSeek V4 Pro 0813",
+          "output_usd_per_mtok": 3.49,
+          "pareto": true,
+          "score": 0.47,
+          "stderr": 0.05016135580465918,
+          "vendor": "deepseek"
+        },
+        {
           "key": "gemini3.7flash",
           "name": "Gemini 3.7 Flash",
           "output_usd_per_mtok": 3.75,
@@ -340,15 +350,6 @@
           "score": 0.47,
           "stderr": 0.05016135580465918,
           "vendor": "google"
-        },
-        {
-          "key": "deepseekv4pro0813",
-          "name": "DeepSeek V4 Pro 0813",
-          "output_usd_per_mtok": 4.2,
-          "pareto": false,
-          "score": 0.47,
-          "stderr": 0.05016135580465918,
-          "vendor": "deepseek"
         },
         {
           "key": "claudefable5.1",
@@ -648,6 +649,15 @@
           "vendor": "moonshotai"
         },
         {
+          "key": "glm5.2",
+          "name": "GLM 5.2",
+          "output_usd_per_mtok": 3.99,
+          "pareto": false,
+          "score": 0.21,
+          "stderr": 0.040936018074033236,
+          "vendor": "z-ai"
+        },
+        {
           "key": "inkling",
           "name": "Inkling",
           "output_usd_per_mtok": 4.05,
@@ -659,15 +669,6 @@
         {
           "key": "glm5.3",
           "name": "GLM 5.3",
-          "output_usd_per_mtok": 4.4,
-          "pareto": false,
-          "score": 0.21,
-          "stderr": 0.040936018074033236,
-          "vendor": "z-ai"
-        },
-        {
-          "key": "glm5.2",
-          "name": "GLM 5.2",
           "output_usd_per_mtok": 4.4,
           "pareto": false,
           "score": 0.21,
@@ -713,7 +714,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 4.4,
+          "output_usd_per_mtok": 3.0316,
           "pareto": false,
           "score": 0.19,
           "stderr": 0.039427724440366255,
@@ -902,7 +903,7 @@
         {
           "key": "qwen330ba3b",
           "name": "Qwen3 30B A3B",
-          "output_usd_per_mtok": 0.52,
+          "output_usd_per_mtok": 0.5,
           "pareto": false,
           "score": 0.08,
           "stderr": 0.027265992434429075,
@@ -1100,6 +1101,15 @@
           "vendor": "openai"
         },
         {
+          "key": "claudeopus5.5",
+          "name": "Claude Opus 5.5",
+          "output_usd_per_mtok": 20.0,
+          "pareto": true,
+          "score": 0.9122807017543859,
+          "stderr": 0.016786209858442095,
+          "vendor": "anthropic"
+        },
+        {
           "key": "claudefable5.1",
           "name": "Claude Fable 5.1",
           "output_usd_per_mtok": 50.0,
@@ -1116,6 +1126,15 @@
           "score": 0.8912280701754386,
           "stderr": 0.018475392571140503,
           "vendor": "openai"
+        },
+        {
+          "key": "claudesonnet5.5",
+          "name": "Claude Sonnet 5.5",
+          "output_usd_per_mtok": 10.0,
+          "pareto": false,
+          "score": 0.887719298245614,
+          "stderr": 0.018734030360524248,
+          "vendor": "anthropic"
         },
         {
           "key": "gpt5.5pro",
@@ -1309,7 +1328,7 @@
         {
           "key": "deepseekv4pro0813",
           "name": "DeepSeek V4 Pro 0813",
-          "output_usd_per_mtok": 4.2,
+          "output_usd_per_mtok": 3.49,
           "pareto": false,
           "score": 0.6456140350877193,
           "stderr": 0.028383475205435625,
@@ -1336,7 +1355,7 @@
         {
           "key": "glm5.2",
           "name": "GLM 5.2",
-          "output_usd_per_mtok": 4.4,
+          "output_usd_per_mtok": 3.99,
           "pareto": false,
           "score": 0.592057761732852,
           "stderr": 0.029581952519606228,
@@ -1471,7 +1490,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 4.4,
+          "output_usd_per_mtok": 3.0316,
           "pareto": false,
           "score": 0.3684210526315789,
           "stderr": 0.028623772537150215,
@@ -2022,6 +2041,15 @@
           "vendor": "qwen"
         },
         {
+          "key": "claudesonnet5.5",
+          "name": "Claude Sonnet 5.5",
+          "output_usd_per_mtok": 10.0,
+          "pareto": false,
+          "score": 1.0,
+          "stderr": 0.0,
+          "vendor": "anthropic"
+        },
+        {
           "key": "gpt5.6sol",
           "name": "GPT-5.6 Sol",
           "output_usd_per_mtok": 10.0,
@@ -2029,6 +2057,15 @@
           "score": 1.0,
           "stderr": 0.0,
           "vendor": "openai"
+        },
+        {
+          "key": "claudeopus5.5",
+          "name": "Claude Opus 5.5",
+          "output_usd_per_mtok": 20.0,
+          "pareto": false,
+          "score": 1.0,
+          "stderr": 0.0,
+          "vendor": "anthropic"
         },
         {
           "key": "gpt5.5",
@@ -2123,8 +2160,8 @@
         {
           "key": "deepseekv4pro0813",
           "name": "DeepSeek V4 Pro 0813",
-          "output_usd_per_mtok": 4.2,
-          "pareto": false,
+          "output_usd_per_mtok": 3.49,
+          "pareto": true,
           "score": 0.9861111111111112,
           "stderr": 0.00990980650017605,
           "vendor": "deepseek"
@@ -2303,7 +2340,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 4.4,
+          "output_usd_per_mtok": 3.0316,
           "pareto": false,
           "score": 0.9333333333333333,
           "stderr": 0.03760507165451774,
@@ -2474,7 +2511,7 @@
         {
           "key": "glm5.2",
           "name": "GLM 5.2",
-          "output_usd_per_mtok": 4.4,
+          "output_usd_per_mtok": 3.99,
           "pareto": false,
           "score": 0.8638888888888889,
           "stderr": 0.04219779330510574,
@@ -2672,7 +2709,7 @@
         {
           "key": "qwen330ba3b",
           "name": "Qwen3 30B A3B",
-          "output_usd_per_mtok": 0.52,
+          "output_usd_per_mtok": 0.5,
           "pareto": false,
           "score": 0.7027777777777777,
           "stderr": 0.060418480757624834,
@@ -2942,6 +2979,15 @@
           "vendor": "openai"
         },
         {
+          "key": "claudeopus5.5",
+          "name": "Claude Opus 5.5",
+          "output_usd_per_mtok": 20.0,
+          "pareto": true,
+          "score": 0.722,
+          "stderr": 0.014174516461485273,
+          "vendor": "anthropic"
+        },
+        {
           "key": "claudefable5.1",
           "name": "Claude Fable 5.1",
           "output_usd_per_mtok": 50.0,
@@ -3061,8 +3107,8 @@
         {
           "key": "deepseekv4pro0813",
           "name": "DeepSeek V4 Pro 0813",
-          "output_usd_per_mtok": 4.2,
-          "pareto": false,
+          "output_usd_per_mtok": 3.49,
+          "pareto": true,
           "score": 0.5290581162324649,
           "stderr": 0.015808394665706597,
           "vendor": "deepseek"
@@ -3155,6 +3201,15 @@
           "pareto": false,
           "score": 0.47,
           "stderr": 0.015790799515836722,
+          "vendor": "anthropic"
+        },
+        {
+          "key": "claudesonnet5.5",
+          "name": "Claude Sonnet 5.5",
+          "output_usd_per_mtok": 10.0,
+          "pareto": false,
+          "score": 0.465,
+          "stderr": 0.015780495050030086,
           "vendor": "anthropic"
         },
         {
@@ -3295,7 +3350,7 @@
         {
           "key": "glm5.2",
           "name": "GLM 5.2",
-          "output_usd_per_mtok": 4.4,
+          "output_usd_per_mtok": 3.99,
           "pareto": false,
           "score": 0.342,
           "stderr": 0.015008706182121802,
@@ -3304,7 +3359,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 4.4,
+          "output_usd_per_mtok": 3.0316,
           "pareto": false,
           "score": 0.34,
           "stderr": 0.014987482264363972,
@@ -3492,12 +3547,12 @@
         }
       ]
     },
-    "as_of": "2026-09-29T09:58:00Z",
+    "as_of": "2026-09-29T20:08:21Z",
     "counts": {
-      "pareto": 8,
-      "plotted": 102,
-      "priced": 352,
-      "scored": 181,
+      "pareto": 10,
+      "plotted": 104,
+      "priced": 354,
+      "scored": 183,
       "unscored": 250
     },
     "models": [
@@ -3519,6 +3574,25 @@
         "stderr": 0.013696812097020311,
         "variants_seen": 2,
         "vendor": "openai"
+      },
+      {
+        "blended_usd_per_mtok": 4.0,
+        "context_length": 1000000,
+        "epoch_model": "Claude Sonnet 5.5",
+        "input_usd_per_mtok": 2.0,
+        "key": "claudesonnet5.5",
+        "name": "Claude Sonnet 5.5",
+        "openrouter_id": "anthropic/claude-sonnet-5.5",
+        "output_usd_per_mtok": 10.0,
+        "pareto": true,
+        "price_variant": null,
+        "runs": 1,
+        "score": 0.9558080808080808,
+        "score_as_of": "2026-09-28",
+        "score_variant": "claude-sonnet-5-5_max",
+        "stderr": 0.013710320714521202,
+        "variants_seen": 2,
+        "vendor": "anthropic"
       },
       {
         "blended_usd_per_mtok": 1.5,
@@ -3806,14 +3880,14 @@
         "vendor": "qwen"
       },
       {
-        "blended_usd_per_mtok": 1.3925,
+        "blended_usd_per_mtok": 1.208025,
         "context_length": 1048576,
         "epoch_model": "GLM-5.2",
-        "input_usd_per_mtok": 0.39,
+        "input_usd_per_mtok": 0.2807,
         "key": "glm5.2",
         "name": "GLM 5.2",
         "openrouter_id": "z-ai/glm-5.2",
-        "output_usd_per_mtok": 4.4,
+        "output_usd_per_mtok": 3.99,
         "pareto": false,
         "price_variant": null,
         "runs": 3,
@@ -3825,15 +3899,15 @@
         "vendor": "z-ai"
       },
       {
-        "blended_usd_per_mtok": 1.41,
+        "blended_usd_per_mtok": 1.168675,
         "context_length": 1048576,
         "epoch_model": "DeepSeek V4 Pro 0813",
-        "input_usd_per_mtok": 0.48,
+        "input_usd_per_mtok": 0.3949,
         "key": "deepseekv4pro0813",
         "name": "DeepSeek V4 Pro 0813",
         "openrouter_id": "deepseek/deepseek-v4-pro-0813",
-        "output_usd_per_mtok": 4.2,
-        "pareto": false,
+        "output_usd_per_mtok": 3.49,
+        "pareto": true,
         "price_variant": null,
         "runs": 1,
         "score": 0.9166666666666666,
@@ -3996,6 +4070,25 @@
         "vendor": "moonshotai"
       },
       {
+        "blended_usd_per_mtok": 8.0,
+        "context_length": 1000000,
+        "epoch_model": "Claude Opus 5.5",
+        "input_usd_per_mtok": 4.0,
+        "key": "claudeopus5.5",
+        "name": "Claude Opus 5.5",
+        "openrouter_id": "anthropic/claude-opus-5.5",
+        "output_usd_per_mtok": 20.0,
+        "pareto": false,
+        "price_variant": null,
+        "runs": 1,
+        "score": 0.9059343434343434,
+        "score_as_of": "2026-09-22",
+        "score_variant": "claude-opus-5-5_max",
+        "stderr": 0.019434397190192135,
+        "variants_seen": 2,
+        "vendor": "anthropic"
+      },
+      {
         "blended_usd_per_mtok": 4.0,
         "context_length": 1000000,
         "epoch_model": "Claude Sonnet 5",
@@ -4072,14 +4165,14 @@
         "vendor": "anthropic"
       },
       {
-        "blended_usd_per_mtok": 2.15,
+        "blended_usd_per_mtok": 1.48135,
         "context_length": 204800,
         "epoch_model": "GLM-5.1",
-        "input_usd_per_mtok": 1.4,
+        "input_usd_per_mtok": 0.9646,
         "key": "glm5.1",
         "name": "GLM 5.1",
         "openrouter_id": "z-ai/glm-5.1",
-        "output_usd_per_mtok": 4.4,
+        "output_usd_per_mtok": 3.0316,
         "pareto": false,
         "price_variant": null,
         "runs": 1,
@@ -4908,14 +5001,14 @@
         "vendor": "anthropic"
       },
       {
-        "blended_usd_per_mtok": 0.2275,
+        "blended_usd_per_mtok": 0.215,
         "context_length": 131072,
         "epoch_model": "Qwen3-30B-A3B (Jul 2025)",
-        "input_usd_per_mtok": 0.13,
+        "input_usd_per_mtok": 0.12,
         "key": "qwen330ba3b",
         "name": "Qwen3 30B A3B",
         "openrouter_id": "qwen/qwen3-30b-a3b",
-        "output_usd_per_mtok": 0.52,
+        "output_usd_per_mtok": 0.5,
         "pareto": false,
         "price_variant": null,
         "runs": 4,
@@ -5547,6 +5640,13 @@
         "vendor": "cohere"
       },
       {
+        "input_usd_per_mtok": 0.0763,
+        "key": "deepseekv4flash0423",
+        "name": "DeepSeek V4 Flash 0423",
+        "output_usd_per_mtok": 0.1526,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.06,
         "key": "nemotron3.5lightning",
         "name": "Nemotron 3.5 Lightning",
@@ -5702,13 +5802,6 @@
       },
       {
         "input_usd_per_mtok": 0.14,
-        "key": "deepseekv4flash0423",
-        "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.28,
-        "vendor": "deepseek"
-      },
-      {
-        "input_usd_per_mtok": 0.14,
         "key": "mimov2.5",
         "name": "MiMo-V2.5",
         "output_usd_per_mtok": 0.28,
@@ -5776,6 +5869,13 @@
         "name": "Llama 3.3 70B Instruct",
         "output_usd_per_mtok": 0.32,
         "vendor": "meta-llama"
+      },
+      {
+        "input_usd_per_mtok": 0.0825,
+        "key": "hy3",
+        "name": "Hy3",
+        "output_usd_per_mtok": 0.33,
+        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.05,
@@ -5923,13 +6023,6 @@
         "name": "Cydonia 24B V4.1",
         "output_usd_per_mtok": 0.5,
         "vendor": "thedrummer"
-      },
-      {
-        "input_usd_per_mtok": 0.132,
-        "key": "hy3",
-        "name": "Hy3",
-        "output_usd_per_mtok": 0.528,
-        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.351,
@@ -6408,6 +6501,13 @@
         "vendor": "z-ai"
       },
       {
+        "input_usd_per_mtok": 0.924462,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 1.848924,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.21,
         "key": "qwen3vl235ba22binstruct",
         "name": "Qwen3 VL 235B A22B Instruct",
@@ -6420,13 +6520,6 @@
         "name": "Morph V3 Large",
         "output_usd_per_mtok": 1.9,
         "vendor": "morph"
-      },
-      {
-        "input_usd_per_mtok": 0.95526,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 1.91052,
-        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 1.0,
@@ -6695,7 +6788,7 @@
         "vendor": "qwen"
       },
       {
-        "input_usd_per_mtok": 0.19,
+        "input_usd_per_mtok": 0.15,
         "key": "glmlatest",
         "name": "GLM Latest",
         "output_usd_per_mtok": 4.0,
@@ -6758,7 +6851,7 @@
         "vendor": "meta"
       },
       {
-        "input_usd_per_mtok": 0.0528,
+        "input_usd_per_mtok": 0.0249,
         "key": "qwen3.827b",
         "name": "Qwen3.8 27B",
         "output_usd_per_mtok": 4.4,
@@ -6913,10 +7006,17 @@
       },
       {
         "input_usd_per_mtok": 2.0,
-        "key": "claudesonnet5.5",
-        "name": "Claude Sonnet 5.5",
+        "key": "gpt6.1solpro",
+        "name": "GPT-6.1 Sol Pro",
         "output_usd_per_mtok": 10.0,
-        "vendor": "anthropic"
+        "vendor": "openai"
+      },
+      {
+        "input_usd_per_mtok": 2.0,
+        "key": "gpt6.1sol",
+        "name": "GPT-6.1 Sol",
+        "output_usd_per_mtok": 10.0,
+        "vendor": "openai"
       },
       {
         "input_usd_per_mtok": 2.0,
@@ -6938,13 +7038,6 @@
         "name": "GPT Sol Latest",
         "output_usd_per_mtok": 10.0,
         "vendor": "~openai"
-      },
-      {
-        "input_usd_per_mtok": 0.4,
-        "key": "kimilatest",
-        "name": "Kimi Latest",
-        "output_usd_per_mtok": 10.0,
-        "vendor": "~moonshotai"
       },
       {
         "input_usd_per_mtok": 2.0,
@@ -6987,6 +7080,13 @@
         "name": "Gemini 2.5 Pro Preview 06-05",
         "output_usd_per_mtok": 10.0,
         "vendor": "google"
+      },
+      {
+        "input_usd_per_mtok": 0.3,
+        "key": "kimilatest",
+        "name": "Kimi Latest",
+        "output_usd_per_mtok": 10.696,
+        "vendor": "~moonshotai"
       },
       {
         "input_usd_per_mtok": 4.0,
@@ -7092,13 +7192,6 @@
         "name": "Sonar Pro",
         "output_usd_per_mtok": 15.0,
         "vendor": "perplexity"
-      },
-      {
-        "input_usd_per_mtok": 4.0,
-        "key": "claudeopus5.5",
-        "name": "Claude Opus 5.5",
-        "output_usd_per_mtok": 20.0,
-        "vendor": "anthropic"
       },
       {
         "input_usd_per_mtok": 4.0,
