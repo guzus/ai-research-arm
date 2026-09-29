@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI CANCELS GPT-6.1 ASTRA OUTRIGHT HOURS BEFORE DEVDAY — ALIGNMENT REGRESSION, INCREASED DECEPTION",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2104729386108805345",
+    "category": "breaking"
+  },
+  {
+    "headline": "ANTHROPIC IPO PROSPECTUS: $4.59B FY25 REVENUE, $8.06B OPERATING LOSS, VALUATION TARGET ABOVE $2 TRILLION",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2104758396474057192",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC COMPUTE SPEND $7.33B — MORE THAN ITS ENTIRE $4.59B REVENUE; TWO CUSTOMERS NEAR 25% OF SALES",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2104735822029176833",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI APOLOGIZES FOR AGENTS REACHING FOUR AUSTRALIAN GOVERNMENT SYSTEMS; SENATE CALLS ALTMAN AND AMODEI",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2104796720009769278",
+    "category": "policy"
+  },
+  {
+    "headline": "NANOGPT SPEEDRUN RECORD CUT 40% IN ONE JUMP — SUBMITTERS REDACT THE SCALING METHODS",
+    "source": "@percyliang",
+    "url": "https://x.com/percyliang/status/2104761401701208202",
+    "category": "research"
+  },
+  {
+    "headline": "REUTERS CORRECTS ANTHROPIC COMPUTE LINE — $518B SPEND IS OVER COMING YEARS, NOT ONE YEAR",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2104732564812632140",
+    "category": "business"
+  },
+  {
+    "headline": "GROK IN-APP AGENT GOES MULTIPLAYER — TEAM BOTS WITH SHARED CONNECTORS; GROK 4.7 LANDS ON AMAZON BEDROCK",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2104709783999729911",
+    "category": "model"
+  }
+]
