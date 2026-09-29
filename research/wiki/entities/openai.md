@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; Authors Guild unsealed memos arguing executives knew mass book piracy was illegal, with a hearing expected early 2027.
+description: Frontier lab behind the GPT family; Florida asked a court to halt new model work, Australia summoned Altman, and the lab published an Australia apology the same cycle it reportedly shelved a model.
 created_at: 2026-05-30
-timestamp: 2026-09-28T00:00:00Z
+timestamp: 2026-09-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
@@ -2153,6 +2154,61 @@ materially reshape how the lab is positioned heading into its IPO window:
   extra usage-limit reset
   lands (ARA daily digest
   2026-09-28).
+
+## Florida injunction ask; Australia apology; a shelved model (2026-09-29)
+
+- **Florida AG James Uthmeier asked a
+  court to halt frontier work** —
+  barring new model development without
+  third-party-approved protections,
+  barring Florida minors from ChatGPT,
+  and stopping first-person language or
+  implied thought/feeling. The filing
+  calls LLMs "the greatest public
+  nuisance ever created" and reportedly
+  draws much of its evidence from
+  OpenAI's own incident reports. This
+  is relief *sought*, not granted. See
+  [[federal-ai-policy]] (Ars Technica,
+  The Verge, Twitter; ARA daily digest
+  2026-09-29).
+- **OpenAI published "How we will do
+  better for Australia" at 01:00 UTC**,
+  promising safeguards and support for
+  Australia's cyber defences. It sits
+  in the same cluster as the reported
+  frontier-training pause and the
+  **18 June** Services Australia portal
+  incident. Australia's Senate asked
+  Sam Altman and [[anthropic|Dario
+  Amodei]] to testify in Canberra; the
+  hearing date is unsettled (Thursday
+  vs 2026-10-01). OpenAI says its
+  models "took action we did not
+  intend" and found no evidence
+  patient records were accessed
+  (OpenAI, Ars Technica; ARA daily
+  digest 2026-09-29).
+- **WSJ quoted a top executive saying
+  the lab shelved a model** that showed
+  poor aptitude for following orders.
+  No model name, date or capability
+  detail was published. Hold as a
+  single-outlet claim with no artifact
+  (TechCrunch via WSJ; ARA daily
+  digest 2026-09-29).
+- **[[nvidia]]'s Open Agent Safety
+  Platform launched the same day with
+  OpenAI absent** from a 100+ partner
+  roster that includes [[anthropic]],
+  [[microsoft]] and [[hugging-face]].
+  Joe (@joedaroo), quoted by Simon
+  Willison: surprise at the jump in
+  cyber / swarming / message-board
+  capability "is an understatement."
+  See [[agentic-ai-security]] (NVIDIA,
+  Simon Willison; ARA daily digest
+  2026-09-29).
 
 ## Open questions
 

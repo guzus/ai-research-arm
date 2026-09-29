@@ -4,15 +4,16 @@ title: AMD
 type: entity
 aliases: [AMD, "Advanced Micro Devices", "Lisa Su", Instinct, "MI450", Helios, EPYC]
 tags: [semiconductors, ai-accelerator, gpu, earnings, public-listing, m-and-a]
-description: Credible second-source AI accelerator vendor; crossed $1T market cap on 2026-09-21 after an intraday record $613.92, becoming the fourth trillion-dollar US chipmaker.
+description: Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist, after crossing $1T on 2026-09-21.
 created_at: 2026-08-05
-timestamp: 2026-09-22T00:00:00Z
+timestamp: 2026-09-29T00:00:00Z
 market:
   ticker: AMD
   exchange: NASDAQ
   symbol: NASDAQ:AMD
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
@@ -97,6 +98,23 @@ buy when they want to stop being single-sourced.
   on this page (@jukan05, @SemiAnalysis_; ARA
   daily digest 2026-09-22). See [[ai-capex]].
 
+- **AMD will acquire World Labs for $8.2
+  billion (2026-09-28).** All-stock deal that
+  installs **Fei-Fei Li** as executive vice
+  president and chief scientist reporting to
+  Lisa Su. Co-founders Justin Johnson and Ben
+  Mildenhall stay with the team; close is
+  expected by end of 2026 subject to
+  regulatory approval. This is a world-model
+  / spatial-intelligence lab, not another
+  accelerator asset — a different bet from
+  the [[taalas]] model-specific-silicon
+  purchase on 2026-08-07. No first-party
+  AMD 8-K was in the digest window; terms
+  come from TechCrunch, The Verge and the
+  World Labs blog (ARA daily digest
+  2026-09-29).
+
 ## Open questions
 
 - **What did AMD actually pay, and does Taalas ship inside Instinct or beside
@@ -112,3 +130,6 @@ buy when they want to stop being single-sourced.
 - **Why does a doubling data center segment sell off 9%?** The gap between the
   print and the reaction is the market pricing durability rather than growth,
   the same question [[ai-capex]] tracks.
+- **Does World Labs close, and as what product?** End-2026 close is still
+  subject to regulators. The page does not treat Fei-Fei Li's title as a
+  shipped spatial stack inside Instinct or Helios.

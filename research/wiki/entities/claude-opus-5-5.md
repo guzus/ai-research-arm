@@ -4,10 +4,11 @@ title: Claude Opus 5.5
 type: entity
 aliases: ["Claude Opus 5.5", "Opus 5.5", "claude-opus-5-5", "claude-opus-5.5"]
 tags: [model-release, anthropic, claude, frontier-model, pricing]
-description: Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok — 20% under Opus 5 — first on Artificial Analysis' Intelligence Index at 58, the highest score it has measured.
+description: Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.
 created_at: 2026-09-23
-timestamp: 2026-09-23T00:00:00Z
+timestamp: 2026-09-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
 ---
 
@@ -60,5 +61,16 @@ Verge, HN; ARA daily digest 2026-09-23).
 - **Is Index 58 a durable lead** once Sol/Luna and the next
   Fable cut are on the same harness, or a launch-week
   snapshot?
-- **When do Sonnet 5.5 and Haiku 5.5 actually ship?** The
-  "coming weeks" line is a promise, not a date.
+- **When do Sonnet 5.5 and Haiku 5.5 actually ship?**
+  [[claude-sonnet-5-5|Sonnet 5.5]] shipped 2026-09-28, five days
+  after this page. Haiku 5.5 is still "coming weeks."
+
+## Sonnet 5.5 fills the family slot (2026-09-28)
+
+[[claude-sonnet-5-5|Claude Sonnet 5.5]] shipped as the second Claude
+5.5 SKU at unchanged **$2 / $10**. Anthropic's own table puts it
+**ahead of this model on Terminal-Bench 4.0** (70.6% vs 66.4%) and
+roughly level on GDPval-AA v2.1 (1844 vs 1846), while still trailing
+on FrontierCode, CursorBench, HLE-with-tools and OSWorld 2.1. The
+launch-week "coming weeks" promise on this page is now half-closed;
+Haiku remains open. See [[anthropic]] (ARA daily digest 2026-09-29).
