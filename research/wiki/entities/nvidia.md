@@ -2,17 +2,19 @@
 slug: nvidia
 title: NVIDIA
 type: entity
-aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra"]
+aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra", OpenShell, "NVIDIA Sentry", "Open Agent Safety Platform", "BlueField-4"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: Dominant AI-accelerator supplier; Huang told CBS there is a 0% chance AI ends the world and that Amodei/Altman slowdown talk is not grounded in science.
+description: Dominant AI-accelerator supplier; launched the Open Agent Safety Platform on 2026-09-28 — Apache-2.0 OpenShell plus BlueField-4 Sentry — with 100+ partners and OpenAI absent.
 created_at: 2026-06-05
-timestamp: 2026-09-21T00:00:00Z
+timestamp: 2026-09-29T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
+  - {title: "ARA model ticket — NVIDIA Open Agent Safety Platform", path: research/models/tickets/nvidia-open-agent-safety-platform-2026-09.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
@@ -620,4 +622,46 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   the Q4 2027 orbital-datacenter line already
   on this page and [[spacex]] (Twitter; ARA
   daily digest 2026-09-21).
+
+## Open Agent Safety Platform — OpenShell + Sentry (2026-09-28)
+
+- **NVIDIA launched an agent-containment
+  platform** pairing **OpenShell**, an
+  Apache-2.0 runtime that sandboxes file,
+  network, tool and credential access, with
+  **Sentry**, a BlueField-4 reference design
+  that sits on the node's only route to the
+  model and claims millisecond quarantine.
+  Jensen Huang and @nvidia announced it
+  first-party. Justin Boitano said it could
+  have blocked [[openai]]'s July
+  [[hugging-face|Hugging Face]] incident
+  (>17,000 agents over days). That
+  millisecond figure and the "could have
+  blocked" line are vendor claims with no
+  independent test in-window. See
+  [[agentic-ai-security]] (NVIDIA newsroom,
+  CNBC, The Verge, The Decoder; ARA daily
+  digest 2026-09-29 and ticket
+  `nvidia-open-agent-safety-platform-2026-09`).
+- **More than 100 partners** are named;
+  [[anthropic]], [[microsoft]] and
+  [[hugging-face]] are in the announced
+  lineup. **[[openai]] is absent** — the
+  same absence this page recorded on the
+  July Open Secure AI Alliance roster.
+  NVIDIA's material describes an
+  architectural integration with Claude
+  Managed Agents, not a disclosed hardware
+  order. HN's most contested new thread
+  read the platform as "sold as security,
+  ships as DRM" (**avaer**) and as
+  regulatory capture (**joshstrange**)
+  (CNBC, Twitter, HN; ARA daily digest
+  2026-09-29).
+- **The board authorized $150B in
+  additional buybacks**, bringing remaining
+  authorization to **$235B**. Same-day
+  backdrop, not a product fact (ARA daily
+  digest 2026-09-29).
 

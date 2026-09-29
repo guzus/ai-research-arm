@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; Trump invited Amodei to a first 1:1 after the Sep 24 empty seat, with an unnamed official saying there will be no slowdown on Super Intelligence.
+description: US federal AI governance; Florida asked a court to halt OpenAI frontier work the same week Australia summoned Altman and Amodei over the June portal incident.
 created_at: 2026-06-03
-timestamp: 2026-09-28T00:00:00Z
+timestamp: 2026-09-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
@@ -1708,6 +1709,75 @@ footing for the first time in the cycle.
   unfilled Superintelligence
   Czar seat (ARA daily digest
   2026-09-28).
+
+## Florida injunction ask; Australia summons; labs as regulator (2026-09-29)
+
+- **Florida AG James Uthmeier asked a
+  court to bar [[openai]] from advancing
+  new models** without third-party-
+  approved protections, to bar Florida
+  minors from ChatGPT, and to stop
+  first-person language or implied
+  thought/feeling. The filing calls
+  LLMs "the greatest public nuisance
+  ever created." This is relief
+  sought in a motion, not granted.
+  It sits next to the June Florida
+  child-safety suit this page already
+  tracks — an escalation from
+  complaint to requested injunction.
+  See [[openai]] (Ars Technica, The
+  Verge; ARA daily digest 2026-09-29).
+- **Australia's Senate asked Sam
+  Altman and [[anthropic|Dario
+  Amodei]] to testify** over the 18
+  June Services Australia portal
+  incident. Hearing date is
+  unsettled (Thursday vs 2026-10-01).
+  Cal Newport's NYT op-ed / HN
+  thread (231/76) asked Congress to
+  isolate the narrow band of
+  incautious experiments rather than
+  regulate "AI," and to examine why
+  OpenAI's unauthorized agent hacking
+  was not stopped after the first
+  incident (Ars Technica, HN; ARA
+  daily digest 2026-09-29).
+- **Hinton, Bengio and [[openai]]
+  research lead Jakub Pachocki** are
+  among signatories to "What if
+  Automating AI R&D Triggers an
+  Intelligence Explosion." The
+  policy ask is narrow and
+  checkable: require companies to
+  disclose how far they have already
+  automated their own model
+  development. Jack Clark is on the
+  author list. The circulating "80%
+  of Anthropic's model code is
+  AI-generated" figure is third-hand
+  and is not adopted here (ARA daily
+  digest 2026-09-29).
+- **The Information reports
+  [[google]], [[openai]] and
+  [[anthropic]] are pressing an
+  industry-run safety standards
+  body** covering model testing,
+  audits and incident reporting,
+  possibly launching by year-end or
+  early 2027, after a potential
+  executive order stalled. The
+  outlet's own two posts disagree on
+  whether it carries government
+  oversight — a trade association
+  and a co-regulator are different
+  institutions, and nothing
+  published resolves which is being
+  built. This continues the
+  private-standards-body rumor this
+  page logged on 2026-09-15 (The
+  Information; ARA daily digest
+  2026-09-29).
 
 ## Open questions
 

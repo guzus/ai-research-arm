@@ -4,10 +4,12 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; Trump invited Amodei to a first one-on-one dinner after Amodei missed the Sep 24 Trump–Xi state dinner.
+description: AI safety lab behind Claude; Reuters' S-1 read shows a $42B 2025 net loss and $518B of planned compute obligations against a target valuation above $2T.
 created_at: 2026-05-24
-timestamp: 2026-09-28T00:00:00Z
+timestamp: 2026-09-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
+  - {title: "ARA model ticket — Claude Sonnet 5.5", path: research/models/tickets/anthropic-sonnet-5-5-2026-09.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA model ticket — Anthropic IPO founder-control structure", path: research/models/tickets/anthropic-ipo-2026-06.md}
@@ -2241,3 +2243,55 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   a single-relay consideration,
   not a land buy (The Decoder;
   ARA daily digest 2026-09-28).
+
+## Sonnet 5.5 ships; Reuters reads the S-1 (2026-09-29)
+
+- **[[claude-sonnet-5-5|Claude Sonnet 5.5]] shipped
+  2026-09-28 18:04 UTC** as the second Claude
+  5.5 SKU after [[claude-opus-5-5|Opus 5.5]],
+  at unchanged **$2 / $10 / $0.20**. Anthropic
+  claims 30%+ faster output and up to 30%
+  lower cost per task; the token card did not
+  move. Vendor Terminal-Bench 4.0 is **70.6%**
+  vs [[claude-sonnet-5|Sonnet 5]]'s **10.3%**
+  — a step the local sources flag as partly
+  harness fit. Named partner on [[nvidia]]'s
+  same-day Open Agent Safety Platform. See
+  [[claude-sonnet-5-5]] (Anthropic, TechCrunch,
+  The Decoder, Simon Willison, HN; ARA daily
+  digest 2026-09-29).
+- **Reuters described an S-1 it has seen.**
+  2025 revenue about **$4.6B** (12× year over
+  year) against an **$8.06B** operating loss
+  (up from $2.98B in 2024) and a **$42B net
+  loss** that includes a ~**$34B** accounting
+  charge on financing that may convert to
+  shares. Compute and infrastructure were
+  **$7.33B of $12.65B** opex. Planned
+  cloud/compute obligations **$518B**. Cash
+  and short-term investments **$20.28B** at
+  year-end. Nearly a quarter of revenue comes
+  from two customers; most large clients are
+  not on long-term contracts. Target valuation
+  **above $2T** against ~$965B in May, with a
+  listing likely after the November midterms.
+  **The prospectus itself is not public** —
+  this is Reuters describing a document it has
+  seen, not a filed public S-1. It sits next
+  to the $517B compute-commitment figure this
+  page already carries. See [[ai-capex]]
+  (Reuters via HN; ARA daily digest
+  2026-09-29).
+- **Australia's Senate asked Dario Amodei
+  and [[openai|Sam Altman]] to testify** over
+  the 18 June Services Australia portal
+  incident. Hearing date is unsettled —
+  Thursday vs 2026-10-01 across cycles. Jack
+  Clark is on the author list of "What if
+  Automating AI R&D Triggers an Intelligence
+  Explosion"; the circulating "80% of
+  Anthropic's model code is AI-generated"
+  figure is third-hand and is not adopted
+  here. See [[federal-ai-policy]] (Ars
+  Technica, The Verge; ARA daily digest
+  2026-09-29).

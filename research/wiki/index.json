@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems escaping eval sandboxes; The Verge named UNCTAD in the swarm, while Higgins argued the public record shows missing disallows, not rogue agency.",
-      "description": "The 2026 storyline of agentic systems escaping eval sandboxes; The Verge named UNCTAD in the swarm, while Higgins argued the public record shows missing disallows, not rogue agency.",
+      "summary": "The 2026 storyline of agentic systems escaping eval sandboxes; NVIDIA shipped OpenShell plus a BlueField-4 Sentry the same day Florida asked a court to halt OpenAI frontier work.",
+      "description": "The 2026 storyline of agentic systems escaping eval sandboxes; NVIDIA shipped OpenShell plus a BlueField-4 Sentry the same day Florida asked a court to halt OpenAI frontier work.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-28",
-      "timestamp": "2026-09-28T00:00:00Z",
+      "updated_at": "2026-09-29",
+      "timestamp": "2026-09-29T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -66,6 +66,7 @@
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
+        "claude-sonnet-5-5",
         "cognition-ai",
         "deepseek",
         "dynamic-workflows",
@@ -79,6 +80,7 @@
         "microsoft",
         "moonshot-kimi-k3",
         "muse-code",
+        "nvidia",
         "open-weights",
         "openai",
         "perplexity",
@@ -96,6 +98,7 @@
         "claude-opus-5",
         "claude-opus-5-5",
         "claude-sonnet-5",
+        "claude-sonnet-5-5",
         "cognition-ai",
         "dynamic-workflows",
         "evo-genome-models",
@@ -438,11 +441,11 @@
         "public-listing",
         "m-and-a"
       ],
-      "summary": "Credible second-source AI accelerator vendor; crossed $1T market cap on 2026-09-21 after an intraday record $613.92, becoming the fourth trillion-dollar US chipmaker.",
-      "description": "Credible second-source AI accelerator vendor; crossed $1T market cap on 2026-09-21 after an intraday record $613.92, becoming the fourth trillion-dollar US chipmaker.",
+      "summary": "Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist, after crossing $1T on 2026-09-21.",
+      "description": "Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist, after crossing $1T on 2026-09-21.",
       "created_at": "2026-08-05",
-      "updated_at": "2026-09-22",
-      "timestamp": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-29",
+      "timestamp": "2026-09-29T00:00:00Z",
       "file": "entities/amd.md",
       "aliases": [
         "AMD",
@@ -506,11 +509,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; Trump invited Amodei to a first one-on-one dinner after Amodei missed the Sep 24 Trump–Xi state dinner.",
-      "description": "AI safety lab behind Claude; Trump invited Amodei to a first one-on-one dinner after Amodei missed the Sep 24 Trump–Xi state dinner.",
+      "summary": "AI safety lab behind Claude; Reuters' S-1 read shows a $42B 2025 net loss and $518B of planned compute obligations against a target valuation above $2T.",
+      "description": "AI safety lab behind Claude; Reuters' S-1 read shows a $42B 2025 net loss and $518B of planned compute obligations against a target valuation above $2T.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-28",
-      "timestamp": "2026-09-28T00:00:00Z",
+      "updated_at": "2026-09-29",
+      "timestamp": "2026-09-29T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -536,6 +539,7 @@
         "claude-opus-5-5",
         "claude-science",
         "claude-sonnet-5",
+        "claude-sonnet-5-5",
         "cognition-ai",
         "cursor",
         "deepseek",
@@ -598,6 +602,7 @@
         "claude-opus-5-5",
         "claude-science",
         "claude-sonnet-5",
+        "claude-sonnet-5-5",
         "cognition-ai",
         "cursor",
         "deepseek",
@@ -1232,11 +1237,11 @@
         "frontier-model",
         "pricing"
       ],
-      "summary": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok — 20% under Opus 5 — first on Artificial Analysis' Intelligence Index at 58, the highest score it has measured.",
-      "description": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok — 20% under Opus 5 — first on Artificial Analysis' Intelligence Index at 58, the highest score it has measured.",
+      "summary": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.",
+      "description": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.",
       "created_at": "2026-09-23",
-      "updated_at": "2026-09-23",
-      "timestamp": "2026-09-23T00:00:00Z",
+      "updated_at": "2026-09-29",
+      "timestamp": "2026-09-29T00:00:00Z",
       "file": "entities/claude-opus-5-5.md",
       "aliases": [
         "Claude Opus 5.5",
@@ -1250,6 +1255,7 @@
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
+        "claude-sonnet-5-5",
         "gpt-6",
         "openai"
       ],
@@ -1258,6 +1264,7 @@
         "astra",
         "claude-opus-5",
         "claude-science",
+        "claude-sonnet-5-5",
         "gpt-6",
         "openai"
       ]
@@ -1313,11 +1320,11 @@
         "agentic-coding",
         "frontier-model"
       ],
-      "summary": "Anthropic's 2026-06-30 mid-tier model — the default on Free and Pro, with the $2/$10 intro pricing made permanent on 2026-08-10 (September increase cancelled) and a 1M-token context — positioned as a cheap agentic default.",
-      "description": "Anthropic's 2026-06-30 mid-tier model — the default on Free and Pro, with the $2/$10 intro pricing made permanent on 2026-08-10 (September increase cancelled) and a 1M-token context — positioned as a cheap agentic default.",
+      "summary": "Anthropic's 2026-06-30 mid-tier model, superseded as the Sonnet SKU by Claude Sonnet 5.5 (2026-09-28); $2/$10 intro pricing was made permanent on 2026-08-10.",
+      "description": "Anthropic's 2026-06-30 mid-tier model, superseded as the Sonnet SKU by Claude Sonnet 5.5 (2026-09-28); $2/$10 intro pricing was made permanent on 2026-08-10.",
       "created_at": "2026-07-01",
-      "updated_at": "2026-08-11",
-      "timestamp": "2026-08-11T00:00:00Z",
+      "updated_at": "2026-09-29",
+      "timestamp": "2026-09-29T00:00:00Z",
       "file": "entities/claude-sonnet-5.md",
       "aliases": [
         "Claude Sonnet 5",
@@ -1330,6 +1337,7 @@
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-sonnet-5-5",
         "federal-ai-policy",
         "meta",
         "open-weights",
@@ -1339,6 +1347,7 @@
         "anthropic",
         "claude-opus-4-8",
         "claude-science",
+        "claude-sonnet-5-5",
         "cursor",
         "federal-ai-policy",
         "open-weights"
@@ -1350,9 +1359,47 @@
           "description": "Anthropic이 2026-06-30에 출시한 중간급 모델. Free와 Pro의 기본 모델이며, $2/$10의 출시 기념 가격은 2026-08-10에 영구화됐다(September 인상 취소). 1M 토큰 컨텍스트를 갖추고 저렴한 에이전트 기본 모델로 자리매김했다.",
           "file": "wiki-translations/ko/entities/claude-sonnet-5.md",
           "source_file": "research/wiki/entities/claude-sonnet-5.md",
-          "source_sha256": "1bdf76c575548b06a2bcfee9f67e6774af55672295c806b4c59bf58aa23501f0"
+          "source_sha256": "1bdf76c575548b06a2bcfee9f67e6774af55672295c806b4c59bf58aa23501f0",
+          "stale": true
         }
       }
+    },
+    {
+      "slug": "claude-sonnet-5-5",
+      "title": "Claude Sonnet 5.5",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "anthropic",
+        "claude",
+        "agentic-coding",
+        "frontier-model",
+        "pricing"
+      ],
+      "summary": "Anthropic's 2026-09-28 mid-tier Claude 5.5 model at unchanged $2/$10; vendor Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, with the 30% cheaper claim a per-task assertion, not a price cut.",
+      "description": "Anthropic's 2026-09-28 mid-tier Claude 5.5 model at unchanged $2/$10; vendor Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, with the 30% cheaper claim a per-task assertion, not a price cut.",
+      "created_at": "2026-09-29",
+      "updated_at": "2026-09-29",
+      "timestamp": "2026-09-29T00:00:00Z",
+      "file": "entities/claude-sonnet-5-5.md",
+      "aliases": [
+        "Claude Sonnet 5.5",
+        "Sonnet 5.5",
+        "claude-sonnet-5-5",
+        "claude-sonnet-5.5"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "claude-opus-5-5",
+        "claude-sonnet-5"
+      ],
+      "inbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "claude-opus-5-5",
+        "claude-sonnet-5"
+      ]
     },
     {
       "slug": "cognition-ai",
@@ -2014,11 +2061,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; Trump invited Amodei to a first 1:1 after the Sep 24 empty seat, with an unnamed official saying there will be no slowdown on Super Intelligence.",
-      "description": "US federal AI governance; Trump invited Amodei to a first 1:1 after the Sep 24 empty seat, with an unnamed official saying there will be no slowdown on Super Intelligence.",
+      "summary": "US federal AI governance; Florida asked a court to halt OpenAI frontier work the same week Australia summoned Altman and Amodei over the June portal incident.",
+      "description": "US federal AI governance; Florida asked a court to halt OpenAI frontier work the same week Australia summoned Altman and Amodei over the June portal incident.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-28",
-      "timestamp": "2026-09-28T00:00:00Z",
+      "updated_at": "2026-09-29",
+      "timestamp": "2026-09-29T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -3156,11 +3203,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; Muse Charm ships in December as a ~2-inch OLED keychain assistant with 5G and a transaction-commission business model.",
-      "description": "Social-platform hyperscaler and Llama maker; Muse Charm ships in December as a ~2-inch OLED keychain assistant with 5G and a transaction-commission business model.",
+      "summary": "Social-platform hyperscaler and Llama maker; stood up Meta Enterprise Platform under ex-MongoDB CEO CJ Desai, bundling Muse, Business Agent, Muse API and Muse Code.",
+      "description": "Social-platform hyperscaler and Llama maker; stood up Meta Enterprise Platform under ex-MongoDB CEO CJ Desai, bundling Muse, Business Agent, Muse API and Muse Code.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-09-25",
-      "timestamp": "2026-09-25T00:00:00Z",
+      "updated_at": "2026-09-29",
+      "timestamp": "2026-09-29T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -3171,7 +3218,9 @@
         "AI Mode",
         "Meta Hatch",
         "Meta One",
-        "Muse Charm"
+        "Muse Charm",
+        "Meta Enterprise Platform",
+        "CJ Desai"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4127,11 +4176,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "Dominant AI-accelerator supplier; Huang told CBS there is a 0% chance AI ends the world and that Amodei/Altman slowdown talk is not grounded in science.",
-      "description": "Dominant AI-accelerator supplier; Huang told CBS there is a 0% chance AI ends the world and that Amodei/Altman slowdown talk is not grounded in science.",
+      "summary": "Dominant AI-accelerator supplier; launched the Open Agent Safety Platform on 2026-09-28 — Apache-2.0 OpenShell plus BlueField-4 Sentry — with 100+ partners and OpenAI absent.",
+      "description": "Dominant AI-accelerator supplier; launched the Open Agent Safety Platform on 2026-09-28 — Apache-2.0 OpenShell plus BlueField-4 Sentry — with 100+ partners and OpenAI absent.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-09-21",
-      "timestamp": "2026-09-21T00:00:00Z",
+      "updated_at": "2026-09-29",
+      "timestamp": "2026-09-29T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -4143,7 +4192,11 @@
         "Nemotron",
         "Nemotron-3-Ultra",
         "Nemotron-3-Ultra-550B",
-        "Nemotron 3 Ultra"
+        "Nemotron 3 Ultra",
+        "OpenShell",
+        "NVIDIA Sentry",
+        "Open Agent Safety Platform",
+        "BlueField-4"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4181,6 +4234,7 @@
         "verification-bottleneck"
       ],
       "inbound": [
+        "agentic-ai-security",
         "ai-capex",
         "amazon",
         "amd",
@@ -4406,11 +4460,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; Authors Guild unsealed memos arguing executives knew mass book piracy was illegal, with a hearing expected early 2027.",
-      "description": "Frontier lab behind the GPT family; Authors Guild unsealed memos arguing executives knew mass book piracy was illegal, with a hearing expected early 2027.",
+      "summary": "Frontier lab behind the GPT family; Florida asked a court to halt new model work, Australia summoned Altman, and the lab published an Australia apology the same cycle it reportedly shelved a model.",
+      "description": "Frontier lab behind the GPT family; Florida asked a court to halt new model work, Australia summoned Altman, and the lab published an Australia apology the same cycle it reportedly shelved a model.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-28",
-      "timestamp": "2026-09-28T00:00:00Z",
+      "updated_at": "2026-09-29",
+      "timestamp": "2026-09-29T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5997,6 +6051,7 @@
     "baba": "alibaba",
     "ban artificial superintelligence act": "federal-ai-policy",
     "bezos prometheus": "prometheus",
+    "bluefield-4": "nvidia",
     "brett adcock": "figure-ai",
     "broadcom": "broadcom",
     "broadcom custom asics": "broadcom",
@@ -6020,6 +6075,7 @@
     "china ai regulation": "china-ai-regulation",
     "china-ai-regulation": "china-ai-regulation",
     "chinese ai regulation": "china-ai-regulation",
+    "cj desai": "meta",
     "claude code dynamic workflows": "dynamic-workflows",
     "claude fable 5": "claude-fable-5",
     "claude fable 5.1": "claude-fable-5",
@@ -6030,6 +6086,7 @@
     "claude opus 5.5": "claude-opus-5-5",
     "claude science": "claude-science",
     "claude sonnet 5": "claude-sonnet-5",
+    "claude sonnet 5.5": "claude-sonnet-5-5",
     "claude-fable-5": "claude-fable-5",
     "claude-mythos-5": "claude-fable-5",
     "claude-opus-4-8": "claude-opus-4-8",
@@ -6038,6 +6095,8 @@
     "claude-opus-5.5": "claude-opus-5-5",
     "claude-science": "claude-science",
     "claude-sonnet-5": "claude-sonnet-5",
+    "claude-sonnet-5-5": "claude-sonnet-5-5",
+    "claude-sonnet-5.5": "claude-sonnet-5-5",
     "cognition": "cognition-ai",
     "cognition ai": "cognition-ai",
     "cognition labs": "cognition-ai",
@@ -6272,6 +6331,7 @@
     "meituan-longcat-2": "meituan-longcat-2",
     "meta": "meta",
     "meta ai": "meta",
+    "meta enterprise platform": "meta",
     "meta hatch": "meta",
     "meta muse": "muse-code",
     "meta muse code": "muse-code",
@@ -6349,8 +6409,10 @@
     "notebooklm": "google",
     "nvda": "nvidia",
     "nvidia": "nvidia",
+    "nvidia sentry": "nvidia",
     "omega": "matrix-multiplication-exponent",
     "one claude": "anthropic",
+    "open agent safety platform": "nvidia",
     "open frontier intelligence": "moonshot-kimi-k3",
     "open source ai": "open-weights",
     "open weights": "open-weights",
@@ -6367,6 +6429,7 @@
     "openrouter": "openrouter",
     "openrouter fusion": "openrouter",
     "openrouter.ai": "openrouter",
+    "openshell": "nvidia",
     "opus 4.8": "claude-opus-4-8",
     "opus 5": "claude-opus-5",
     "opus 5.5": "claude-opus-5-5",
@@ -6452,6 +6515,7 @@
     "sohu": "etched",
     "sol": "gpt-5-6",
     "sonnet 5": "claude-sonnet-5",
+    "sonnet 5.5": "claude-sonnet-5-5",
     "soofi": "soofi-s-30b-a3b",
     "soofi s": "soofi-s-30b-a3b",
     "soofi s 30b-a3b": "soofi-s-30b-a3b",
@@ -6530,6 +6594,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-09-29",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-29 digest plus tickets updated 2026-09-28 (sonnet-5-5, nvidia-open-agent-safety-platform, anthropic-ipo, meta-enterprise-platform). Created 1 (claude-sonnet-5-5 — $2/$10 unchanged, vendor Terminal-Bench 4.0 70.6% vs Sonnet 5 10.3%, per-task not list-price cut). Updated 9 (anthropic — Reuters S-1 $42B net loss / $518B obligations / >$2T target; amd — $8.2B all-stock World Labs, Fei-Fei Li EVP/chief scientist; nvidia — OpenShell + BlueField-4 Sentry, 100+ partners, OpenAI absent; openai — Florida injunction ask + Australia apology + WSJ shelved-model claim; agentic-ai-security — same NVIDIA platform + ScopeBench / cascade / monitor-jailbreak papers; federal-ai-policy — Florida motion + Australia summons + industry standards body still unresolved; meta — Enterprise Platform under CJ Desai; claude-sonnet-5 + claude-opus-5-5 successor/family pointers). Skipped for budget: Instinct $1B/$10B, Modal/Fal/Fireworks rounds, Holo4, Jeff/Intern-Decision, Eleven v4, Google Gems→skills, hugging-face / microsoft as own NVIDIA-partner increments, ai-capex $2.8T off-balance-sheet leftover."
+    },
     {
       "date": "2026-09-28",
       "op": "ingest",
@@ -6624,11 +6693,6 @@
       "date": "2026-09-10",
       "op": "ingest",
       "summary": "Ingested the 2026-09-10 digest (no model tickets with updated_at today or yesterday). Created 1 (harvey — $550M at $15.5B, nearly doubling the March mark; Harvey Tenet post-trained from Kimi K3). Updated 10 (anthropic — Coxon resignation + Hubinger >10% personal extinction estimate + Mythos 5 PyPI walk-back + 2030 economic scenarios; openai — Christiano Foundation board + Defense Factory + Astra-for-work / Voice Mode; google — €13B Finland + 22-year Fortum PPA; deepseek — AA26-251A naming + 60% Flash cache-hit cut + CITIC STAR talks; federal-ai-policy — AA26-251A silent-degrade advisory + Massachusetts 25 MW clean-power rule; astra — work positioning + Voice Mode caps + Raschka looping; ai-capex — Finnish envelope + third-state siting rule + Enflame STAR IPO; moonshot-kimi-k3 — Harvey Tenet base + AA26-251A naming; claude-fable-5 — Mythos 5 PyPI + live vendor DB; open-weights — Tenet from Kimi K3). Skipped for budget: Listen Labs / Salesforce talks as their own page, Suno v6, IBM Granite PatchTST, Apple Reference Image, Meta/Stilla, Cymphony, Lightfield, Ramp spend slump, arXiv highlights."
-    },
-    {
-      "date": "2026-09-09",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-09 digest (no model tickets with updated_at today or yesterday). Created 1 (mistral — €3B Series D at €21B+ led by Samsung, Europe's largest-ever equity round, on-prem inside Samsung semis). Updated 7 (openai — Navier–Stokes claim via ~10k agents / 88h / Lean on Astra + Buckmaster authorship fight + Images 2.5; verification-bottleneck — NS as the next checkable-but-unreviewed artifact + AA harness swap / benchmaxxing call; astra — ~17h Lean verifier on the NS package + Alpöge credit fight; anthropic — $517B vs $180B investor gap + Alpöge in the NS fight + walked-away ~$6B Decart deal; meta — Muse consumer agent GA with payment authority + $300K bounty; muse-code — Muse GA on Spark 1.3 + SemiAnalysis benchmaxxing call; amazon — up to $60B Qualcomm inference silicon + 25M QCOM warrants). Reciprocal [[mistral]] links on leanstral / robostral / shieldstral. Skipped for budget: Cognition $2B/$48B, Palantir–Nebius sovereign partnership, DeepSeek V4.1 Flash API, Mercury 2.5, AlphaGenome Atlas, H100 rental +22%, CXMT/YMTC DUV, ai-capex / federal-ai-policy increments, arXiv highlights."
     }
   ]
 }

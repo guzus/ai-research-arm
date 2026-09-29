@@ -2,17 +2,19 @@
 slug: meta
 title: Meta
 type: entity
-aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm"]
+aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm", "Meta Enterprise Platform", "CJ Desai"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; Muse Charm ships in December as a ~2-inch OLED keychain assistant with 5G and a transaction-commission business model.
+description: Social-platform hyperscaler and Llama maker; stood up Meta Enterprise Platform under ex-MongoDB CEO CJ Desai, bundling Muse, Business Agent, Muse API and Muse Code.
 created_at: 2026-06-16
-timestamp: 2026-09-25T00:00:00Z
+timestamp: 2026-09-29T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
+  - {title: "ARA model ticket — Meta Enterprise Platform", path: research/models/tickets/meta-enterprise-platform-2026-09.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
@@ -387,3 +389,37 @@ TechCrunch; ARA daily digest 2026-09-16).
   (@alexandr_wang,
   @kimmonismus; ARA daily
   digest 2026-09-25).
+
+## Meta Enterprise Platform under CJ Desai (2026-09-28)
+
+- **Zuckerberg announced Meta
+  Enterprise Platform** as "the next
+  major pillar of our business,"
+  naming MongoDB CEO **Chirantan
+  "CJ" Desai** as Chief Enterprise
+  Platform Officer reporting to him.
+  The pillar bundles [[muse-code|Muse]],
+  Meta Business Agent, Muse API and
+  Muse Code — a sales motion around
+  the consumer-agent line this page
+  already tracks, not a new model.
+  No pricing, GA date, SKU or
+  customer list was in-window.
+  Status is an org and a leader, not
+  a shipped enterprise product
+  (@finkd, TechCrunch, The Decoder;
+  ARA daily digest 2026-09-29 and
+  ticket `meta-enterprise-platform-2026-09`).
+- **MongoDB named Dev Ittycheria
+  interim CEO** and reaffirmed
+  guidance; **$MDB fell roughly
+  14–20%** while $META was off about
+  1.3%. A sitting public-company CEO
+  leaving effective immediately is
+  the load-bearing signal of intent.
+  The commerce-funnel thesis
+  (Business Agent → WhatsApp /
+  Instagram → transaction fee) is
+  commentary, not a Meta pricing
+  sheet (TechCrunch, Twitter; ARA
+  daily digest 2026-09-29).

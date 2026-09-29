@@ -4,10 +4,11 @@ title: Claude Sonnet 5
 type: entity
 aliases: ["Claude Sonnet 5", "Sonnet 5", "claude-sonnet-5"]
 tags: [model-release, anthropic, claude, agentic-coding, frontier-model]
-description: Anthropic's 2026-06-30 mid-tier model — the default on Free and Pro, with the $2/$10 intro pricing made permanent on 2026-08-10 (September increase cancelled) and a 1M-token context — positioned as a cheap agentic default.
+description: Anthropic's 2026-06-30 mid-tier model, superseded as the Sonnet SKU by Claude Sonnet 5.5 (2026-09-28); $2/$10 intro pricing was made permanent on 2026-08-10.
 created_at: 2026-07-01
-timestamp: 2026-08-11T00:00:00Z
+timestamp: 2026-09-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
   - {title: "ARA daily digest 2026-07-02", path: research/digest/2026-07-02-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
@@ -72,3 +73,12 @@ Anthropic's own tiering ahead of its planned IPO. The tokenizer-tax and
 cost-per-task questions above are now the standing cost argument, since the
 price step that was supposed to claw some margin back has been cancelled (ARA
 daily digest 2026-08-11).
+
+## Superseded by Sonnet 5.5 (2026-09-28)
+
+[[claude-sonnet-5-5|Claude Sonnet 5.5]] shipped 2026-09-28 at the same
+**$2 / $10 / $0.20** card and is now the claude.ai free-tier default. This page
+stays the record of the 2026-06-30 SKU — including the tokenizer-tax and
+cost-per-task arguments above, which the successor restates as a per-task
+saving rather than a price cut. See [[anthropic]] (ARA daily digest
+2026-09-29).
