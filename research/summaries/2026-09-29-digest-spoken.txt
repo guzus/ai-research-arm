@@ -1,0 +1,13 @@
+Speaker 1: Tuesday, September twenty-ninth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic shipped Claude Sonnet five point five, and the headline is the price, it holds at two dollars in, ten dollars out per million tokens, while running up to thirty percent cheaper per task.
+Speaker 1: The benchmark jump is the part worth staring at. On Terminal Bench four point zero, Sonnet five point five scores [emphasis] seventy point six percent [/emphasis], against Sonnet five's ten point three.
+Speaker 2: That is not an increment, that is a different class of agentic coding model.
+Speaker 1: On the silicon side, AMD is buying Fei-Fei Li's World Labs for [emphasis] eight point two billion dollars [/emphasis] in stock, and Li joins as executive vice president and chief scientist.
+Speaker 2: Worth noting that buys AMD a world-model research bench and one of the most recognizable names in the field, in a single move.
+Speaker 1: Nvidia, meanwhile, launched OpenShell plus its Sentry agent containment stack, with more than one hundred partners signed on.
+Speaker 2: And one very loud absence, OpenAI is not on that list. [dramatic_pause] Agent security standards are becoming the next place these companies refuse to share a table.
+Speaker 1: Some quick numbers from the filings. Reuters reports Anthropic's S-one at four point six billion dollars of twenty twenty-five revenue, a forty-two billion dollar net loss, and [emphasis] five hundred eighteen billion dollars [/emphasis] in compute obligations, against a valuation target above two trillion.
+Speaker 2: And Instinct raised a one billion dollar Series C at a ten billion dollar valuation, four times higher in a single month, still invite only.
+Speaker 1: Trending on Hacker News, the number one post is a viral essay about Google's AI Overview reading a routine search as a breakup, eighteen hundred thirty-six points and more than a thousand comments.
+Speaker 2: A small hallucination, but it is the kind people actually feel.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
