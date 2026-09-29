@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-09-29
+
+TOP STORIES:
+• Anthropic shipped Claude Sonnet 5.5 — same $2/$10 token price, up to 30% cheaper per task
+• AMD to buy Fei-Fei Li's World Labs for $8.2B in stock; Li becomes EVP and chief scientist
+• Nvidia launched OpenShell + Sentry agent containment, 100+ partners, OpenAI absent
+
+KEY NUMBERS:
+• Sonnet 5.5 Terminal-Bench 4.0: 70.6% vs Sonnet 5's 10.3%
+• Anthropic S-1 (Reuters): $4.6B 2025 revenue, $42B net loss, $518B compute obligations, >$2T target
+• Instinct: $1B Series C at $10B, 4x in a month, still invite-only
+
+TRENDING: HN's #1 is a viral essay on Google's AI Overview mistaking a search for a breakup (1836 pts, 1030 comments)
+
+Full digest on GitHub.
