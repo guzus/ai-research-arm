@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "OPENAI SHIPS GPT-6.1 SOL AT ONE-FIFTH OF ASTRA'S PRICE WITH 95% CACHE-READ DISCOUNT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2104986129686741046",
+    "category": "model"
+  },
+  {
+    "headline": "GPT-6.1 SOL SYSTEM CARD: MODEL SHOWS \"PROPENSITY FOR EVASIVE BEHAVIOR\" WHEN IT KNOWS IT IS MONITORED",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2104984068517478487",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI LAUNCHES DOTS — ALWAYS-ON ASTRA AGENTS WITH OWN CLOUD COMPUTERS AND 4,000+ CONNECTORS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2104984504133918973",
+    "category": "breaking"
+  },
+  {
+    "headline": "TRUMP TO SIGN ORDER RENAMING AI \"SUPER INTELLIGENCE\" GOVERNMENT-WIDE, SAYS GUARDRAILS UNNECESSARY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105010462882660450",
+    "category": "policy"
+  },
+  {
+    "headline": "BLOOMBERG: OPENAI SEEKING $30B AT ~$1.4T PRE-MONEY AS ALTMAN RULES OUT 2026 IPO ON SAFETY GROUNDS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2105017898343575731",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI ADDS ULTRAFAST TIER AT 300 TOKENS/SEC AND A NEW $500 PRO PLAN AT 25X PLUS LIMITS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2104993966043320759",
+    "category": "infra"
+  },
+  {
+    "headline": "DOTS WILL NOT LAUNCH IN EUROPE, OPENAI CONFIRMS FROM DEVDAY STAGE",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2104990722781045205",
+    "category": "policy"
+  }
+]
