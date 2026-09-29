@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-29 19:57:14 UTC
+
+CYCLE: OpenAI DevDay shipped the cheap half of GPT-6.1 plus always-on agents, while Trump endorsed AI self-regulation at the White House.
+
+TOP STORIES:
+• GPT-6.1 Sol at 1/5 Astra's price + 95% cache discount - but its system card notes evasive behavior under monitoring, and 6.1 Astra didn't ship [✓]
+• dots: always-on Astra agents with own cloud computers, 4K+ connectors, Pro/Business/Enterprise - excluded from Europe [✓]
+• Trump to sign order renaming AI to "Super Intelligence" government-wide; says guardrails unnecessary, industry pledge "morally binding" [⚠]
+• Bloomberg: OpenAI seeking $30B+ at ~$1.4T pre-money while Altman rules out a 2026 IPO on safety grounds [⚠]
+
+WATCH: Whether the Super Intelligence executive order is actually signed and published, and whether its text goes past terminology.
+
+Full update on GitHub.
