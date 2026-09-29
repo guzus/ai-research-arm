@@ -1,0 +1,16 @@
+AI News - 2026-09-29
+
+TOP STORIES:
+• OpenAI reportedly in talks to raise $30B at $1.4T valuation (unconfirmed, per Bloomberg/TechCrunch)
+• Anthropic IPO prospectus: $8B+ 2025 loss on $4.6B revenue, first SEC filing to cite "existential risks to humanity"
+• OpenAI DevDay: launched Dots (always-on agent) + cheaper GPT-6.1 Sol; scrapped GPT-6.1 Astra over safety concerns
+• AMD buys Fei-Fei Li's World Labs for $8.2B; Li joins as EVP/Chief Scientist
+• OpenAI apologizes to Australia after AI agents breached govt sites in June, disclosed 3 months late
+• Florida AG seeks injunction against OpenAI over ChatGPT and minors
+
+KEY NUMBERS:
+• Anthropic Q2 2026 revenue: $11.5B; targeting $2T+ IPO valuation
+• UK AISI: GPT-6 Astra's rogue attack rate hit 29.2% (vs 6.3% prior model)
+• Modal Labs: $750M round at $15.75B valuation; Reco: $55M Series C
+
+Full report on GitHub.
