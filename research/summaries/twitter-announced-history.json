@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 15:00 UTC",
-    "headline": "OPENAI'S COMPUTE-TO-EQUITY STAKES IN COREWEAVE + CEREBRAS WORTH ~$2.6B COMBINED \u2014 INFORMATION",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-15-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055294663636963502"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 15:00 UTC",
-    "headline": "EXCLUSIVE \u2014 MICROSOFT HAS MADE ~$30B FROM OPENAI-RELATED BUSINESS, NOT COUNTING PAPER STAKE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-15-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055309763345293709"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-15 15:00 UTC",
-    "headline": "GEMINI SPARK BETA LEAK \u2014 TWO-TAB CHAT/AGENT UI, MAY SHARE INFO WITH THIRD PARTIES; I/O IN 4 DAYS",
-    "source": "@IUAEDINA",
-    "source_file": "research/summaries/2026-05-15-twitter-15h-headlines.json",
-    "url": "https://x.com/IUAEDINA/status/2055298675879092542"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 15:00 UTC",
-    "headline": "ANTHROPIC PRICING-POWER PIECE \u2014 CUSTOMERS ABSORBING UNPREDICTABLE AI BILLS, MANY PAYING ANYWAY",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-15-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055286834033267045"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 15:00 UTC",
-    "headline": "MODAL IN TALKS AT ~$4.5B VALUATION, $300M ANNUALIZED REVENUE AS AI AGENTS DRIVE GPU SANDBOX DEMAND",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-15-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055272069022044355"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-15 15:00 UTC",
-    "headline": "VIRAL CLAUDE CODE \"/GOAL\" COMMAND IS A COMMUNITY SKILL, NOT AN ANTHROPIC BUILT-IN \u2014 DEBUNK",
-    "source": "@LupacescuEuard",
-    "source_file": "research/summaries/2026-05-15-twitter-15h-headlines.json",
-    "url": "https://x.com/LupacescuEuard/status/2055003964345667802"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 15:00 UTC",
-    "headline": "ANTHROPIC CORP CHANNEL SILENT ~22H THROUGH FT $30B/$900B SCOOP + INFORMATION PRICING-POWER PIECE",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-15-twitter-15h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-15 18:00 UTC",
     "headline": "OPENAI LAUNCHES PERSONAL FINANCE IN CHATGPT PRO \u2014 PLAID BANK CONNECT, GPT-5.5 GROUNDED ON REAL TRANSACTIONS, FINANCIAL MEMORIES",
@@ -24080,5 +24017,54 @@
     "headline": "TSMC SCOUTING SIX ADDITIONAL ADVANCED FABS IN TEXAS, INVESTMENT MAY EXCEED ARIZONA PROGRAM",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2104821869690163581"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-29 19:57:14 UTC",
+    "headline": "OPENAI SHIPS GPT-6.1 SOL AT ONE-FIFTH OF ASTRA'S PRICE WITH 95% CACHE-READ DISCOUNT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2104986129686741046"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-29 19:57:14 UTC",
+    "headline": "GPT-6.1 SOL SYSTEM CARD: MODEL SHOWS \"PROPENSITY FOR EVASIVE BEHAVIOR\" WHEN IT KNOWS IT IS MONITORED",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2104984068517478487"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-29 19:57:14 UTC",
+    "headline": "OPENAI LAUNCHES DOTS \u2014 ALWAYS-ON ASTRA AGENTS WITH OWN CLOUD COMPUTERS AND 4,000+ CONNECTORS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2104984504133918973"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-29 19:57:14 UTC",
+    "headline": "TRUMP TO SIGN ORDER RENAMING AI \"SUPER INTELLIGENCE\" GOVERNMENT-WIDE, SAYS GUARDRAILS UNNECESSARY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105010462882660450"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-29 19:57:14 UTC",
+    "headline": "BLOOMBERG: OPENAI SEEKING $30B AT ~$1.4T PRE-MONEY AS ALTMAN RULES OUT 2026 IPO ON SAFETY GROUNDS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2105017898343575731"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-29 19:57:14 UTC",
+    "headline": "OPENAI ADDS ULTRAFAST TIER AT 300 TOKENS/SEC AND A NEW $500 PRO PLAN AT 25X PLUS LIMITS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2104993966043320759"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-29 19:57:14 UTC",
+    "headline": "DOTS WILL NOT LAUNCH IN EUROPE, OPENAI CONFIRMS FROM DEVDAY STAGE",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2104990722781045205"
   }
 ]
