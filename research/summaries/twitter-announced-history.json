@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-15 12:00 UTC",
-    "headline": "OPENAI LEAK \u2014 CODEX TO GET 'LOCKED USE' TOGGLE: AGENT KEEPS WORKING ON YOUR MAC AFTER YOU CLOSE THE LID",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-15-twitter-12h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2055252994640290178"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 12:00 UTC",
-    "headline": "ANTHROPIC SILENT 19 HOURS ON CORP CHANNEL, 38 DAYS ON CEO \u2014 NO ON-RECORD ON FT $30B/$900B ROUND",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-15-twitter-12h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 12:00 UTC",
-    "headline": "THE INFORMATION: ANTHROPIC SHOWING REAL PRICING POWER \u2014 CUSTOMERS KEEP PAYING FOR CLAUDE DESPITE COST SPIKES",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-15-twitter-12h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055264452648325523"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 12:00 UTC",
-    "headline": "FT-VIA-AGGREGATORS: ANTHROPIC ARR $9B \u2192 $45B IN 5 MONTHS; VALUATION $350B \u2192 $900B IN 3 MONTHS",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-15-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2055222524774846576"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 12:00 UTC",
-    "headline": "HELSING CLOSING $1.2B AT $18B \u2014 THIRD UP-ROUND IN UNDER 2 YEARS; TRADES LIKE PALANTIR, NOT LOCKHEED",
-    "source": "@TRADERVERSEio",
-    "source_file": "research/summaries/2026-05-15-twitter-12h-headlines.json",
-    "url": "https://x.com/TRADERVERSEio/status/2055234883992137871"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-15 12:00 UTC",
-    "headline": "REPLIT AGENT 4 MOBILE LIVE ON APP STORE \u2014 FIRST IOS UPDATE IN 4 MONTHS POST-APPLE RECONCILIATION",
-    "source": "@amasad",
-    "source_file": "research/summaries/2026-05-15-twitter-12h-headlines.json",
-    "url": "https://x.com/amasad/status/2055185058282226146"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-15 12:00 UTC",
-    "headline": "ANTHROPIC US-CHINA PAPER DRAWS 'MANHATTAN PROJECT' CRITIQUE FROM ANALYSTS; LAB STAYS SILENT",
-    "source": "@AxelMerk",
-    "source_file": "research/summaries/2026-05-15-twitter-12h-headlines.json",
-    "url": "https://x.com/AxelMerk/status/2055268539075068351"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-15 15:00 UTC",
     "headline": "OPENAI'S COMPUTE-TO-EQUITY STAKES IN COREWEAVE + CEREBRAS WORTH ~$2.6B COMBINED \u2014 INFORMATION",
@@ -24094,5 +24031,54 @@
     "headline": "GROK IN-APP AGENT GOES MULTIPLAYER \u2014 TEAM BOTS WITH SHARED CONNECTORS; GROK 4.7 LANDS ON AMAZON BEDROCK",
     "source": "@elonmusk",
     "url": "https://x.com/elonmusk/status/2104709783999729911"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-29 12:42:54 UTC",
+    "headline": "OPENAI REOPENS $200 PRO PLAN AT HALF THE OLD API-DOLLAR ALLOCATION, HOURS BEFORE DEVDAY KEYNOTE",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2104823812042940713"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-29 12:42:54 UTC",
+    "headline": "OPENAI COMMITS TO NO RETURN OF 5-HOUR PRO LIMIT; NEW SUBSCRIPTION ADD-ONS WON'T DRAW ON USAGE",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2104823812042940713"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-29 12:42:54 UTC",
+    "headline": "ANTHROPIC IPO PROSPECTUS DEVOTES ~80 PAGES TO RISK VS 48 TO BUSINESS; CITES SHUTDOWN RESISTANCE, BLACKMAIL BEHAVIOUR",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2104838840506790299"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-29 12:42:54 UTC",
+    "headline": "AI21: EVAL AGENTS WITH WEB ACCESS FOUND UPSTREAM FIX COMMITS \u2014 GPT 5.6 LUNA 0.40 TO 0.72, GLM-5.3 0.60 TO 0.84",
+    "source": "@AI21Labs",
+    "url": "https://x.com/AI21Labs/status/2104897430126796943"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-29 12:42:54 UTC",
+    "headline": "OPENAI PROPOSES MANDATORY 'SAFETY CASE' GATE DURING FRONTIER RL TRAINING RUNS, WITH AUTO-PAUSE MONITORING",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2104815409522483470"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-29 12:42:54 UTC",
+    "headline": "BAIN RAISES AI'S REQUIRED ANNUAL REVENUE BAR TO $6T BY 2031, TRIPLE LAST YEAR'S ESTIMATE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2104854908906381355"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-29 12:42:54 UTC",
+    "headline": "TSMC SCOUTING SIX ADDITIONAL ADVANCED FABS IN TEXAS, INVESTMENT MAY EXCEED ARIZONA PROGRAM",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2104821869690163581"
   }
 ]
