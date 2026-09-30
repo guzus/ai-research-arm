@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-30 22:10:20 UTC
+
+CYCLE: Google re-enters the frontier race; OpenAI names Moonshot-linked distillers
+
+TOP STORIES:
+• Google launches Gemini 4 Argon: 1M-token output, $2/$10 intro pricing, gated to Fairwind cyber defenders first [✓]
+• OpenAI is the publisher of the Moonshot-linked distillation disclosure: 16K extraction attempts from 4K+ users in two days [⚠]
+• OpenAI + Synopsys announce GPT-Synopsys, a model trained to drive chip-design EDA tools [✓]
+
+WATCH: A dated paid-API launch and first independent evals of Gemini 4 Argon
+
+Full update on GitHub.
