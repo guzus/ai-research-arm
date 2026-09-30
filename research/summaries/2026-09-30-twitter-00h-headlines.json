@@ -1,0 +1,44 @@
+[
+  {
+    "headline": "SIX LABS SIGN WHITE HOUSE ACCORD ON SUPER INTELLIGENCE — GOOGLE, META, ANTHROPIC, OPENAI, XAI, NVIDIA; VOLUNTARY, NO ENFORCEMENT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105037016794902727",
+    "category": "policy"
+  },
+  {
+    "headline": "ANTHROPIC: OPEN-WEIGHTS GLM-5.3 BUILT WORKING BROWSER EXPLOITS IN 50 OF 410 TRIES — CLAUDE MYTHOS PREVIEW MANAGED 56",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2105052186401267864",
+    "category": "research"
+  },
+  {
+    "headline": "TRUMP SIGNS 'INAUGURATING THE ERA OF SUPER INTELLIGENCE' — TERMINOLOGY ONLY; EXISTING CONTRACTS AND REGULATIONS EXEMPT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105077973594562836",
+    "category": "policy"
+  },
+  {
+    "headline": "SEMIANALYSIS: OPENAI ULTRAFAST TIER RUNS ON LOW-BATCH NVIDIA GPUS, NOT CEREBRAS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2105055045959995719",
+    "category": "infra"
+  },
+  {
+    "headline": "GPT-6.1 SOL BENCHMARK GAP IS HARNESS-DEPENDENT — SCORES JUMP UNDER CODEX VS MINI-SWE-AGENT",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2105063015712465094",
+    "category": "model"
+  },
+  {
+    "headline": "ROBINHOOD BRINGS IN-APP AI TRADING AGENTS TO US CUSTOMERS — 150,000 AGENTIC ACCOUNTS OPENED SINCE MAY",
+    "source": "@tenet_research",
+    "url": "https://x.com/tenet_research/status/2105087100861473172",
+    "category": "business"
+  },
+  {
+    "headline": "MUSK CLAIMS GROK 4.7 NOW RANKS FIRST ON ARTIFICIAL ANALYSIS CYBER INDEX",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2105088792139014331",
+    "category": "model"
+  }
+]

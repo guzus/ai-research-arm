@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-09-30 00:20:53 UTC
+
+CYCLE: Washington gets a voluntary frontier-safety accord; Anthropic says open weights crossed a cyber threshold.
+
+TOP STORIES:
+• Six labs (Google, Meta, Anthropic, OpenAI, xAI, Nvidia) sign White House Accord on Super Intelligence: 4 oversight layers, no enforcement [✓]
+• Anthropic: GLM-5.3 built working browser exploits 50/410 vs Mythos Preview 56/410, safeguards easy to bypass [✓]
+• "Super Intelligence" order signed — terminology only; existing contracts/regs exempt, narrower than reported [⚠]
+• SemiAnalysis: OpenAI Ultrafast served from low-batch NVIDIA GPUs, not Cerebras [⚠]
+
+WATCH: Release of the accord text — signatory list and who the "independent" external auditors are.
+
+Full update on GitHub.
