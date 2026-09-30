@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-16 04:00 UTC",
-    "headline": "CODEX GPT-5.5 FIX POST TRIPLES TO 4,022 LIKES IN 3 HOURS \u2014 SAMA STILL SILENT 10 HOURS AFTER 'USER GOT USED TO MAGIC' FRAMING DEBUNKED",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-05-16-twitter-04h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2055446089957036402"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-16 04:00 UTC",
-    "headline": "SINGAPORE FOREIGN MINISTER VIVIAN BALAKRISHNAN OPENS AI ENGINEER SG AS NANOCLAW PRACTITIONER \u2014 'YOU CANNOT GOVERN A TECHNOLOGY YOU HAVE ONLY BEEN BRIEFED ON'",
-    "source": "@xiao_zcloak",
-    "source_file": "research/summaries/2026-05-16-twitter-04h-headlines.json",
-    "url": "https://x.com/xiao_zcloak/status/2055461165921427496"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 04:00 UTC",
-    "headline": "OPENAI CODEX ENG LEAD THSOTTIAUX DROPS ROADMAP HINTS IN SINGAPORE KEYNOTE ALONGSIDE GAVRIEL COHEN \u2014 SAME STAGE AS SINGAPORE FM",
-    "source": "@swyx",
-    "source_file": "research/summaries/2026-05-16-twitter-04h-headlines.json",
-    "url": "https://x.com/swyx/status/2055467498888118647"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-16 04:00 UTC",
-    "headline": "SINGAPORE HEAD OF AI GOVTECH ESTIMATES 1.3 BILLION AGENTS IN COUNTRY IN 2 YEARS, BUILDING NATIONAL MCP GATEWAY",
-    "source": "@swyx",
-    "source_file": "research/summaries/2026-05-16-twitter-04h-headlines.json",
-    "url": "https://x.com/swyx/status/2055470634331750588"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-16 04:00 UTC",
     "headline": "ANTHROPIC CORP CHANNEL HITS ~34 HOURS SILENT \u2014 DARIO ~38 DAYS \u2014 CLAUDEDEVS 'HAPPY FRIDAY' RESET NOW 24,162 LIKES / 1,120 RT, ANTHROPIC'S MOST-ENGAGED POST OF THE MONTH",
@@ -24028,5 +23992,33 @@
     "headline": "COHERE SHIPS EMBED 5 PRO AND FAST \u2014 SHARED SPACE FOR MULTIMODAL, MULTILINGUAL, FINANCIAL RETRIEVAL",
     "source": "@cohere",
     "url": "https://x.com/cohere/status/2105285142394896435"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-30 22:10:20 UTC",
+    "headline": "GOOGLE LAUNCHES GEMINI 4 ARGON \u2014 1M-TOKEN OUTPUT, $2/$10 INTRO PRICING, CYBER DEFENDERS GET IT FIRST",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2105388084154056939"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-30 22:10:20 UTC",
+    "headline": "OPENAI TIES MOONSHOT-LINKED OPERATORS TO 16,000 HIDDEN-REASONING EXTRACTION ATTEMPTS FROM 4,000+ USERS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2105375343544619127"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-30 22:10:20 UTC",
+    "headline": "OPENAI AND SYNOPSYS SIGN MULTI-YEAR DEAL TO BUILD GPT-SYNOPSYS CHIP-DESIGN MODEL",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105368300889034905"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-30 22:10:20 UTC",
+    "headline": "HEGSETH NAMES MUSK, LUCKEY, GINGRICH TO CO-LEAD PENTAGON 'PROJECT MERIDIAN' ON AUTONOMOUS WEAPONS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105410230234603765"
   }
 ]
