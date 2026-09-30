@@ -206,8 +206,14 @@ in the workflow prompt verbatim.
 On each daily run, for each candidate event surfaced in the last 24h of
 signal:
 
-1. **List existing tickets** by reading `research/models/tickets/*.md`.
-   Build a map of `{ company, model, status }` → slug.
+1. **List existing tickets** from the host-prepared inventory produced by
+   `scripts/prepare_model_timeline_inputs.py` (or parse ticket frontmatter
+   directly during a manual run). The inventory includes every active and
+   closed ticket, its original path, and latest history date without copying
+   its full narrative. Build a map of `{ company, model, status }` → slug.
+   Read the original full ticket before changing it. Closure review must
+   establish the actual release date from history; `updated_at` is not a
+   release timestamp.
 
 2. **Match the candidate** against existing tickets. The agent must
    answer: "Is this signal about the same *shipping artifact* as an
@@ -289,3 +295,25 @@ success, exit 1 on any failure with line numbers and reasons.
 The CRUD agent must re-run the validator at the end of every daily run.
 If it fails, the agent fixes the offending ticket in-place and re-runs.
 The workflow commits only when validator is clean.
+
+## Scheduled working set and execution budget
+
+The workflow fetches into a unique run directory and prepares a manifest plus
+paged JSONL inputs before the author starts. Signal groups retain every distinct
+original payload, including author, timestamps, full text, links, quoted/reposted
+content, and media. Each variant records its raw file and array index. Only groups
+whose timestamps are all known and older than the explicit UTC 24-hour cutoff are
+excluded. Unknown/future dates remain visible for review; original files remain
+available. No candidate ranking, truncation, or candidate-count cap is applied.
+
+The author reads every listed page, uses original tickets only for matched updates
+and closure review, and batches related edits rather than rebuilding input parsers
+or performing a separate tool call for each field. The author targets completion of
+edits by turn 75, budgeting the final 25 turns for validation, the daily diff, and
+the commit within the existing 100-turn ceiling (the limit itself does not reserve
+turns). JSONL pages should be read with `Bash(cat <exact page path>)` to avoid
+Read's per-line truncation; unusually large records require targeted `jq` reads.
+The trusted host checks ticket schema and requires a committed exact-date daily
+diff before publishing; partial ticket commits alone do not satisfy completion. A failed
+or unfinished author publishes nothing and leaves the previous valid artifacts in
+place; it cannot turn a failure into a fresh “no change” daily diff.
