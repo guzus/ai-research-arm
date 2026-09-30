@@ -33,6 +33,10 @@ class ModelTimelineWorkflowTest(unittest.TestCase):
     def test_each_run_reads_only_its_own_fetches(self) -> None:
         with tempfile.TemporaryDirectory(prefix="model input ") as temp:
             root = Path(temp)
+            workspace = root / "workspace"
+            workspace.mkdir()
+            (workspace / ".gitignore").write_text((ROOT / ".gitignore").read_text())
+            subprocess.run(["git", "init", "-q"], cwd=workspace, check=True)
             output = root / "outputs"
             stale = root / "all.json"
             stale.write_text('[{"text":"unrelated hourly-twitter input"}]')
@@ -40,21 +44,25 @@ class ModelTimelineWorkflowTest(unittest.TestCase):
             birdy = root / "birdy"
             birdy.write_text('#!/bin/sh\nprintf \'[{"text":"fresh model signal"}]\\n\'\n')
             birdy.chmod(0o755)
-            env = {"RUNNER_TEMP": str(root), "GITHUB_OUTPUT": str(output),
+            env = {"RUNNER_TEMP": str(root / "runner-temp"),
+                   "GITHUB_WORKSPACE": str(workspace), "GITHUB_OUTPUT": str(output),
                    "PATH": str(root) + os.pathsep + os.environ["PATH"]}
             directories = []
             for _ in range(2):
-                result = self.run_step("Prepare model signal directory", env, root)
+                result = self.run_step("Prepare model signal directory", env, workspace)
                 self.assertEqual(result.returncode, 0, result.stderr)
                 directory = Path(output.read_text().splitlines()[-1].split("=", 1)[1])
                 directories.append(directory)
+                # Bash's semantic working-directory boundary is the checkout,
+                # not RUNNER_TEMP (Read being able to open a file is insufficient).
+                self.assertEqual(directory.parent, workspace / ".model-timeline-inputs")
                 self.assertEqual(list(directory.iterdir()), [])
                 for name in ("Fetch tweets from company accounts", "Fetch tweets from key execs",
                              "Search for model release tweets"):
                     step = self.steps[name]
                     self.assertEqual(step["env"]["MODEL_SIGNAL_DIR"],
                                      "${{ steps.model-signal.outputs.directory }}")
-                    result = self.run_step(name, {**env, "MODEL_SIGNAL_DIR": str(directory)}, root)
+                    result = self.run_step(name, {**env, "MODEL_SIGNAL_DIR": str(directory)}, workspace)
                     self.assertEqual(result.returncode, 0, result.stderr)
                 files = list(directory.glob("*.json"))
                 self.assertEqual(len(files), 24)
@@ -63,6 +71,17 @@ class ModelTimelineWorkflowTest(unittest.TestCase):
             self.assertNotEqual(*directories)
             self.assertEqual(json.loads(stale.read_text())[0]["text"],
                              "unrelated hourly-twitter input")
+            # Even broad staging must never include runtime source material.
+            subprocess.run(["git", "add", "-A"], cwd=workspace, check=True)
+            staged = subprocess.run(["git", "diff", "--cached", "--name-only"],
+                                    cwd=workspace, check=True, text=True, capture_output=True)
+            self.assertEqual(staged.stdout.splitlines(), [".gitignore"])
+            result = self.run_step("Clean model signal directory",
+                                   {**env, "MODEL_SIGNAL_DIR": str(directories[0])}, workspace)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertFalse(directories[0].exists())
+            self.assertEqual(len(list(directories[1].glob("*.json"))), 24)
+            self.assertTrue(stale.exists())
             prompt = self.steps["CRUD model tickets via Claude"]["with"]["prompt"]
             self.assertIn("${{ steps.model-signal.outputs.directory }}/*.json", prompt)
             self.assertIn("${{ steps.model-signal.outputs.directory }}/prepared/manifest.json", prompt)
@@ -72,6 +91,37 @@ class ModelTimelineWorkflowTest(unittest.TestCase):
             self.assertIn("reserve the final 25 turns", prompt)
             self.assertIn("--max-turns 100", self.steps["CRUD model tickets via Claude"]["with"]["claude-args"])
             self.assertIn("--as-of \"$AS_OF\"", self.steps["Prepare model working set"]["run"])
+
+    def test_cleanup_rejects_paths_outside_its_run_scope(self) -> None:
+        cleanup = self.steps["Clean model signal directory"]
+        self.assertEqual(cleanup["if"], "always() && steps.model-signal.outcome == 'success'")
+        self.assertEqual(cleanup["env"]["MODEL_SIGNAL_DIR"],
+                         "${{ steps.model-signal.outputs.directory }}")
+        with tempfile.TemporaryDirectory() as temp:
+            workspace = Path(temp)
+            input_root = workspace / ".model-timeline-inputs"
+            input_root.mkdir()
+            sentinel = input_root / "keep.json"
+            sentinel.write_text("must survive cleanup")
+            env = {"GITHUB_WORKSPACE": str(workspace),
+                   "GITHUB_OUTPUT": str(workspace / "outputs")}
+            for unexpected in (workspace, input_root, sentinel,
+                               input_root / "run.other" / "nested", Path(temp + "-outside")):
+                with self.subTest(path=unexpected):
+                    result = self.run_step("Clean model signal directory",
+                                           {**env, "MODEL_SIGNAL_DIR": str(unexpected)}, workspace)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertEqual(sentinel.read_text(), "must survive cleanup")
+            # A pre-existing symlink cannot redirect preparation or cleanup
+            # to another directory on the persistent self-hosted runner.
+            input_root.rename(workspace / "elsewhere")
+            input_root.symlink_to(workspace / "elsewhere", target_is_directory=True)
+            result = self.run_step("Prepare model signal directory", env, workspace)
+            self.assertNotEqual(result.returncode, 0)
+            result = self.run_step("Clean model signal directory",
+                                   {**env, "MODEL_SIGNAL_DIR": str(input_root / "run.other")}, workspace)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertEqual(sentinel.read_text(), "must survive cleanup")
 
     def test_failed_author_cannot_become_a_no_change_publication(self) -> None:
         with tempfile.TemporaryDirectory() as temp:

@@ -64,10 +64,18 @@ jobs:
       # read previously pulled hourly-twitter's all.json (119 accounts) into
       # this lane and exhausted the agent's turn budget. Only this run's
       # dedicated fetches belong in the model-ticket input contract.
+      # Keep inputs under the checkout: Claude's Bash permission checks reject
+      # cat/jq outside its working directories even when Read can access them.
       - name: Prepare model signal directory
         id: model-signal
         run: |
-          signal_dir="$(mktemp -d "${RUNNER_TEMP}/model-timeline.XXXXXX")"
+          input_root="${GITHUB_WORKSPACE}/.model-timeline-inputs"
+          if [ -L "$input_root" ]; then
+            echo "::error::Model input root must not be a symlink."
+            exit 1
+          fi
+          mkdir -p "$input_root"
+          signal_dir="$(mktemp -d "${input_root}/run.XXXXXX")"
           echo "directory=${signal_dir}" >> "$GITHUB_OUTPUT"
 
       - name: Fetch tweets from company accounts
@@ -401,3 +409,15 @@ jobs:
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+
+      - name: Clean model signal directory
+        if: always() && steps.model-signal.outcome == 'success'
+        env:
+          MODEL_SIGNAL_DIR: ${{ steps.model-signal.outputs.directory }}
+        run: |
+          input_root="${GITHUB_WORKSPACE}/.model-timeline-inputs"
+          if [[ -L "$input_root" || "$(dirname -- "$MODEL_SIGNAL_DIR")" != "$input_root" || "$(basename -- "$MODEL_SIGNAL_DIR")" != run.* ]]; then
+            echo "::error::Refusing to clean an unexpected model input directory."
+            exit 1
+          fi
+          rm -rf -- "$MODEL_SIGNAL_DIR"
