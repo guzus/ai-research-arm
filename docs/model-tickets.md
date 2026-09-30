@@ -298,8 +298,12 @@ The workflow commits only when validator is clean.
 
 ## Scheduled working set and execution budget
 
-The workflow fetches into a unique run directory and prepares a manifest plus
-paged JSONL inputs before the author starts. Signal groups retain every distinct
+The workflow fetches into a unique run directory under the checkout's ignored
+`.model-timeline-inputs/` and prepares a manifest plus paged JSONL inputs before
+the author starts. Raw and prepared inputs must remain inside the checkout so
+Claude's Bash permission checks allow `cat` and `jq`; readable runner temp files
+are not necessarily permitted Bash inputs. An always-run cleanup removes only
+the current run's directory. Signal groups retain every distinct
 original payload, including author, timestamps, full text, links, quoted/reposted
 content, and media. Each variant records its raw file and array index. Only groups
 whose timestamps are all known and older than the explicit UTC 24-hour cutoff are
