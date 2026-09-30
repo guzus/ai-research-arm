@@ -2,60 +2,6 @@
   {
     "backfilled": true,
     "category": "breaking",
-    "delivered_at": "2026-05-16 01:00 UTC",
-    "headline": "ALTMAN'S \"USER GOT USED TO THE MAGIC\" GPT-5.5 FRAMING SUPERSEDED 6H LATER BY CODEX TEAM'S SERVER-SIDE FIX",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-16-twitter-01h-headlines.json",
-    "url": "https://x.com/sama/status/2055356452286640630"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-16 01:00 UTC",
-    "headline": "NVIDIA CONFIRMS NEMOTRON 3 ULTRA (~500B) PRETRAINED NATIVELY IN NVFP4 4-BIT; SUPER 120B/25T TOKENS ALSO NVFP4",
-    "source": "@ctnzr",
-    "source_file": "research/summaries/2026-05-16-twitter-01h-headlines.json",
-    "url": "https://x.com/ctnzr/status/2055393135971492034"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 01:00 UTC",
-    "headline": "ANTHROPIC CORP CHANNEL CROSSES 30 HOURS SILENT THROUGH FT $30B ROUND, CODEX FIX, TOKENMAXXING; DARIO 38 DAYS DARK",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-16-twitter-01h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 01:00 UTC",
-    "headline": "CLAUDEDEVS \"HAPPY FRIDAY\" RATE-LIMIT RESET CROSSES 20K LIKES / 1K RT \u2014 ANTHROPIC'S MOST-ENGAGED POST OF THE WEEK",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-16-twitter-01h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2055347539923308703"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-16 01:00 UTC",
-    "headline": "SEMIANALYSIS PUBLISHES DEEP-DIVE ON DEEPSEEK V4 MEGAMOE \u2014 1,400-LINE FUSED CUDA KERNEL FOR ENTIRE MoE FORWARD PASS",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-16-twitter-01h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2055423177841353184"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-16 01:00 UTC",
-    "headline": "TESTINGCATALOG: OPENAI WORKING ON \"LOCKED USE\" SETTING FOR CODEX \u2014 LET CODEX RUN ON YOUR MAC WHILE IT IS LOCKED",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-16-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2055438359594447330"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
     "delivered_at": "2026-05-16 04:00 UTC",
     "headline": "CODEX GPT-5.5 FIX POST TRIPLES TO 4,022 LIKES IN 3 HOURS \u2014 SAMA STILL SILENT 10 HOURS AFTER 'USER GOT USED TO MAGIC' FRAMING DEBUNKED",
     "source": "@thsottiaux",
@@ -24040,5 +23986,47 @@
     "headline": "SEMIANALYSIS: ICLR 2027 SUBMISSION IDS EXCEED 62K \u2014 MORE THAN ALL PRIOR YEARS COMBINED",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2105130561530421342"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-30 17:58:15 UTC",
+    "headline": "REUTERS: FTC OPENING PROBE INTO ANTHROPIC, OPENAI AND METR; PLANS TO COMPEL EXECUTIVE TESTIMONY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105316112061599997"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-30 17:58:15 UTC",
+    "headline": "ANTHROPIC: ROBOTS CAN DO 74% OF US PHYSICAL JOB TASKS \u2014 COST-COMPETITIVE FOR ONLY 0.3% OF WORK",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105337302830776361"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-09-30 17:58:15 UTC",
+    "headline": "SECURITY POST TIES JULY-ONWARD PROTECTED-REASONING DISTILLATION CAMPAIGN TO MOONSHOT-LINKED OPERATORS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105347815539085452"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-30 17:58:15 UTC",
+    "headline": "ANTHROPIC PAGE: CLAUDE FOR GOVERNMENT DESKTOP NOW GENERALLY AVAILABLE IN FEDRAMP HIGH",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105352661881295269"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-30 17:58:15 UTC",
+    "headline": "JENSEN HUANG CONFIRMS NVIDIA SIGNED WHITE HOUSE ACCORD \u2014 CONTROLS, EXTERNAL EVAL, BOARD OVERSIGHT",
+    "source": "@JensenHuang",
+    "url": "https://x.com/JensenHuang/status/2105348324484342238"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-30 17:58:15 UTC",
+    "headline": "COHERE SHIPS EMBED 5 PRO AND FAST \u2014 SHARED SPACE FOR MULTIMODAL, MULTILINGUAL, FINANCIAL RETRIEVAL",
+    "source": "@cohere",
+    "url": "https://x.com/cohere/status/2105285142394896435"
   }
 ]
