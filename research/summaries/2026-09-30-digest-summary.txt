@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-09-30
+
+TOP STORIES:
+• Six frontier labs signed a voluntary White House superintelligence accord - four oversight layers, no enforcement
+• Anthropic says open-weights GLM-5.3 crossed a cyber-offense threshold on browser exploits
+• OpenAI shipped GPT-6.1 Sol at a fifth of Astra's price, plus always-on Dots agents
+
+KEY NUMBERS:
+• GLM-5.3: 50/410 working exploits vs Claude Mythos Preview's 56; 4% vs 6% control-flow hijacks
+• GPT-6.1 Sol: $2 / $0.10 / $10 per Mtok input / cached / output
+• Anthropic S-1: $4.6B revenue, $8.06B operating loss, $518B compute obligations, >$2T target
+• ChatGPT: 1.2B weekly users, ~$70B annualized revenue
+
+TRENDING: HN's #1 is GPT-6.1 Sol (741 pts, 679 comments), with Dots second at 441/336
+
+Full digest on GitHub.
