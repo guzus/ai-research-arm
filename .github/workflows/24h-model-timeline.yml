@@ -51,23 +51,33 @@ jobs:
       - name: Install birdy
         uses: ./.github/actions/install-birdy
 
+      # The runner and /tmp/bird persist across lanes. A broad /tmp/bird/*.json
+      # read previously pulled hourly-twitter's all.json (119 accounts) into
+      # this lane and exhausted the agent's turn budget. Only this run's
+      # dedicated fetches belong in the model-ticket input contract.
+      - name: Prepare model signal directory
+        id: model-signal
+        run: |
+          signal_dir="$(mktemp -d "${RUNNER_TEMP}/model-timeline.XXXXXX")"
+          echo "directory=${signal_dir}" >> "$GITHUB_OUTPUT"
+
       - name: Fetch tweets from company accounts
         env:
+          MODEL_SIGNAL_DIR: ${{ steps.model-signal.outputs.directory }}
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
-          mkdir -p /tmp/bird
-
           # Company accounts
           companies="OpenAI AnthropicAI GoogleDeepMind GoogleAI MistralAI MetaAI xai NVIDIAAIDev awscloud Apple CohereAI Azure"
 
           for handle in $companies; do
             echo "Fetching @${handle}..."
-            birdy user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+            birdy user-tweets "@${handle}" -n 20 --json --plain > "${MODEL_SIGNAL_DIR}/${handle}.json" 2>/dev/null || echo "[]" > "${MODEL_SIGNAL_DIR}/${handle}.json"
           done
 
       - name: Fetch tweets from key execs
         env:
+          MODEL_SIGNAL_DIR: ${{ steps.model-signal.outputs.directory }}
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
@@ -76,25 +86,26 @@ jobs:
 
           for handle in $execs; do
             echo "Fetching @${handle}..."
-            birdy user-tweets "@${handle}" -n 20 --json --plain > "/tmp/bird/${handle}.json" 2>/dev/null || echo "[]" > "/tmp/bird/${handle}.json"
+            birdy user-tweets "@${handle}" -n 20 --json --plain > "${MODEL_SIGNAL_DIR}/${handle}.json" 2>/dev/null || echo "[]" > "${MODEL_SIGNAL_DIR}/${handle}.json"
           done
 
       - name: Search for model release tweets
         env:
+          MODEL_SIGNAL_DIR: ${{ steps.model-signal.outputs.directory }}
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
           CT0: ${{ secrets.BIRD_CT0 }}
         run: |
           # Model release announcements
-          birdy search "new model release OR model launch OR new AI model OR foundation model release" -n 50 --json --plain > /tmp/bird/search-model-release.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-release.json
+          birdy search "new model release OR model launch OR new AI model OR foundation model release" -n 50 --json --plain > "${MODEL_SIGNAL_DIR}/search-model-release.json" 2>/dev/null || echo "[]" > "${MODEL_SIGNAL_DIR}/search-model-release.json"
 
           # Specific model names
-          birdy search "GPT-5 OR GPT-4.5 OR Claude 4 OR Gemini 2.5 OR Llama 4 OR Grok 3" -n 40 --json --plain > /tmp/bird/search-model-names.json 2>/dev/null || echo "[]" > /tmp/bird/search-model-names.json
+          birdy search "GPT-5 OR GPT-4.5 OR Claude 4 OR Gemini 2.5 OR Llama 4 OR Grok 3" -n 40 --json --plain > "${MODEL_SIGNAL_DIR}/search-model-names.json" 2>/dev/null || echo "[]" > "${MODEL_SIGNAL_DIR}/search-model-names.json"
 
           # Roadmaps and timelines
-          birdy search "model roadmap OR upcoming model OR model release date OR model announcement" -n 30 --json --plain > /tmp/bird/search-roadmap.json 2>/dev/null || echo "[]" > /tmp/bird/search-roadmap.json
+          birdy search "model roadmap OR upcoming model OR model release date OR model announcement" -n 30 --json --plain > "${MODEL_SIGNAL_DIR}/search-roadmap.json" 2>/dev/null || echo "[]" > "${MODEL_SIGNAL_DIR}/search-roadmap.json"
 
           # Benchmarks and SOTA
-          birdy search "AI model benchmark OR SOTA OR state of the art new model" -n 20 --json --plain > /tmp/bird/search-benchmark.json 2>/dev/null || echo "[]" > /tmp/bird/search-benchmark.json
+          birdy search "AI model benchmark OR SOTA OR state of the art new model" -n 20 --json --plain > "${MODEL_SIGNAL_DIR}/search-benchmark.json" 2>/dev/null || echo "[]" > "${MODEL_SIGNAL_DIR}/search-benchmark.json"
 
       # CRUD agent — maintains the persistent set of tickets at
       # research/models/tickets/<slug>.md instead of regenerating a
@@ -166,7 +177,7 @@ jobs:
               TIMESTAMP:       ${{ steps.datetime.outputs.timestamp }}
               SCHEMA / CONTRACT:  docs/model-tickets.md
               TICKETS DIR:        research/models/tickets/
-              RAW SIGNAL:         /tmp/bird/*.json
+              RAW SIGNAL:         ${{ steps.model-signal.outputs.directory }}/*.json
               VALIDATOR:          scripts/check_model_tickets.py
               DAILY-DIFF TARGET:  research/models/${{ steps.datetime.outputs.date }}-timeline.md
 
@@ -185,8 +196,10 @@ jobs:
               whose `status == closed` are read-only — do not modify them.
 
             STEP 2 — INGEST RAW SIGNAL.
-              The bird CLI dropped JSON files at /tmp/bird/*.json. Read
-              them. The data is messy and partly redundant; that's
+              Read only the JSON files in the RAW SIGNAL directory above.
+              It contains this run's dedicated company, exec, and model-search
+              fetches. Do not read /tmp/bird or other lanes' cached inputs.
+              The data is messy and partly redundant; that's
               expected. Use the source URLs and quoted evidence already
               present in the JSON; if a specific source URL is available, you
               may use `curl` to corroborate that URL. Do not use WebSearch.
@@ -287,58 +300,22 @@ jobs:
               - Do not write outside research/models/tickets/ and the
                 single daily-diff file in research/models/.
 
-      - name: Deterministic model timeline fallback
-        id: model-fallback
-        if: steps.crud.outcome == 'failure'
-        env:
-          BASE_SHA: ${{ steps.model-output-base.outputs.sha }}
-          DATE: ${{ steps.datetime.outputs.date }}
-          TIMESTAMP: ${{ steps.datetime.outputs.timestamp }}
-        run: |
-          set -euo pipefail
-          if ! git diff --quiet "${BASE_SHA}..HEAD" -- research/models/; then
-            echo "Claude committed model output despite a failed step; skipping deterministic fallback."
-            exit 0
-          fi
-
-          echo "::warning::Model-ticket Claude CRUD produced no model output; writing deterministic no-change daily diff."
-          uv run python scripts/check_model_tickets.py
-
-          count=$(find research/models/tickets -maxdepth 1 -type f -name '*.md' | wc -l | tr -d '[:space:]')
-          cat > "research/models/${DATE}-timeline.md" <<EOF
-          # Model Timeline — Diff for ${DATE}
-          *Generated ${TIMESTAMP}*
-
-          ## No change today (${count})
-          _${count} tickets unchanged_
-          EOF
-
-          git add "research/models/${DATE}-timeline.md"
-          git commit -m "Model tickets deterministic fallback ${TIMESTAMP}" || echo "No deterministic model changes"
-
-      # Propagate the agent step's outcome to job.status. With
-      # continue-on-error: true on the agent step, a timeout/error
-      # would otherwise resolve to step.conclusion=success and
-      # hooker-telemetry would report a green run. exit 1 here lets
-      # later `if: always()` steps (telemetry) still fire while flipping
-      # job.status to failure when it should be.
+      # A failed author cannot prove "no change today". Keep the last valid
+      # publication and fail closed (data/artifact-slos.json), including when
+      # the author left partial edits or commits before reaching its limit.
       - name: Inspect Claude outcome
         if: always()
         env:
           OUTCOME: ${{ steps.crud.outcome }}
-          FALLBACK_OUTCOME: ${{ steps.model-fallback.outcome }}
         run: |
-          if [ "$OUTCOME" = "failure" ] && [ "$FALLBACK_OUTCOME" != "success" ]; then
-            echo "::error::Model-ticket Claude CRUD step failed (timeout, model error, or missing output); failing the job so telemetry reports honestly."
+          if [ "$OUTCOME" != "success" ]; then
+            echo "::error::Model-ticket author did not complete (${OUTCOME}); preserving the prior publication. Partial output will not be published."
             exit 1
-          fi
-          if [ "$OUTCOME" = "failure" ]; then
-            echo "Model-ticket Claude CRUD step failed, but deterministic fallback succeeded."
-            exit 0
           fi
           echo "Model-ticket Claude CRUD step succeeded."
 
       - name: Require model output
+        if: success() && steps.crud.outcome == 'success'
         uses: ./.github/actions/require-output
         with:
           base-sha: ${{ steps.model-output-base.outputs.sha }}
@@ -355,6 +332,7 @@ jobs:
       # See .github/actions/safe-push/action.yml.
       - name: Push changes
         id: push
+        if: success() && steps.crud.outcome == 'success'
         uses: ./.github/actions/safe-push
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

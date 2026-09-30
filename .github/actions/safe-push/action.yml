@@ -181,6 +181,32 @@ runs:
           grep -Eiq 'GH013|Repository rule violations|Changes must be made through a pull request|protected branch' "$log_path"
         }
 
+        push_fallback_branch() {
+          local pr_branch="$1" push_attempt push_log
+          push_log="$(mktemp)"
+          # GitHub can fail the generated-branch push with HTTP 5xx after
+          # rejecting main with GH013. Retry that same ref without force;
+          # auth, ruleset, and non-fast-forward failures still fail closed.
+          for ((push_attempt=1; push_attempt<=MAX_ATTEMPTS; push_attempt++)); do
+            if git_auth push origin "HEAD:refs/heads/${pr_branch}" >"$push_log" 2>&1; then
+              cat "$push_log"
+              rm -f "$push_log"
+              return 0
+            fi
+            cat "$push_log"
+            if ! grep -Eiq 'Internal Server Error|Bad Gateway|Service Unavailable|Gateway Timeout|requested URL returned error: 50[0-4]|HTTP (50[0-4])|Connection timed out|Connection reset by peer|Could not resolve host' "$push_log" \
+                || [ "$push_attempt" -eq "$MAX_ATTEMPTS" ]; then
+              rm -f "$push_log"
+              echo "::error::Failed to publish fallback branch ${pr_branch}."
+              return 1
+            fi
+            echo "Transient fallback branch push failure (${push_attempt}/${MAX_ATTEMPTS}); retrying the same ref."
+            sleep "$((push_attempt * 2))"
+          done
+          rm -f "$push_log"
+          return 1
+        }
+
         sanitize_branch_part() {
           printf '%s' "$1" \
             | tr '[:upper:]' '[:lower:]' \
@@ -229,8 +255,7 @@ runs:
             "$(git rev-parse HEAD)")"
 
           echo "Direct push to ${BRANCH} is blocked by repository rules; publishing fallback PR branch ${pr_branch}."
-          if ! git_auth push origin "HEAD:refs/heads/${pr_branch}"; then
-            echo "::error::Failed to publish fallback branch ${pr_branch}."
+          if ! push_fallback_branch "$pr_branch"; then
             return 1
           fi
 

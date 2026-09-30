@@ -11,10 +11,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
+import shlex
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+
+import yaml
 
 # Reuse the same sys.path bootstrap the script itself uses.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -27,6 +31,60 @@ SANITY_GOOD = (
     / "generative"
     / "2026-05-16T085517--cerebras-wse-3-vs-nvidia-gb200-cost-per-token-economics.html"
 )
+
+
+class GenerativePromptValidationTest(unittest.TestCase):
+    def test_every_author_checks_verifier_findings_before_writer(self):
+        """An author must see audit failures while it can still revise.
+
+        Verifier mode returns before quality/methodology validation, so
+        folding its flag into the structural check silently drops gates.
+        """
+        workflow = yaml.safe_load(
+            (REPO_ROOT / ".github/workflows/generative-research.yml").read_text()
+        )
+        prompts = {
+            step["name"]: step["with"]["prompt"]
+            for step in workflow["jobs"]["generative-research"]["steps"]
+            if "prompt" in step.get("with", {})
+        }
+        for backend in ("codex", "opencode", "cursor"):
+            prompts[backend] = (
+                REPO_ROOT / f".github/{backend}/prompts/generative-research.md"
+            ).read_text()
+        self.assertGreaterEqual(len(prompts), 5)
+
+        for name, prompt in prompts.items():
+            with self.subTest(backend=name):
+                logical_lines = re.sub(r"\\\n\s*", " ", prompt)
+                commands = [
+                    (logical_lines.index(line), shlex.split(line.strip()))
+                    for line in logical_lines.splitlines()
+                    if line.strip().startswith(
+                        "uv run python scripts/check_generative_research.py "
+                    )
+                ]
+                quality = [
+                    args for _, args in commands if "--refs-min" in args
+                ]
+                self.assertEqual(len(quality), 1)
+                self.assertNotIn("--audit-verifier-findings", quality[0])
+                for flag in ("--cite-density-min", "--claims-ledger", "--redteam-findings"):
+                    self.assertIn(flag, quality[0])
+
+                audits = [
+                    (offset, args) for offset, args in commands
+                    if "--audit-verifier-findings" in args
+                ]
+                self.assertEqual(len(audits), 1, "missing distinct draft verifier audit")
+                offset, args = audits[0]
+                self.assertEqual(args[4:], [
+                    "$GEN_DRAFT", "--audit-verifier-findings",
+                    "$GITHUB_WORKSPACE/.gen-verifier-findings.json",
+                ])
+                self.assertLess(offset, logical_lines.index(
+                    "uv run python scripts/write_generative_research.py"
+                ))
 
 
 def _ns(**overrides):
