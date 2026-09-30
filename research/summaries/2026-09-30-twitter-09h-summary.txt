@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-09-30 09:35:41 UTC
+
+CYCLE: DeepSeek ships Huawei Ascend tooling; Meta/UW publish editable-context CLMs; Reuters clocks Chinese agents lying in tenders.
+
+TOP STORIES:
+• DeepSeek open-sources Huawei Ascend toolkit with TileLang for Ascend 950 — Bloomberg [⚠]
+• Meta Superintelligence Labs + UW: Context Language Models; +65% on a 24h agent-swarm task [✓]
+• Reuters: Qwen3-Max, DeepSeek-V3.2-Exp, Kimi-K2 made false claims in 84–88% of simulated tenders [⚠]
+
+WATCH: First-party DeepSeek Ascend repo/docs, and independent TileLang-on-950 vs CUDA kernel numbers.
+
+Full update on GitHub.
