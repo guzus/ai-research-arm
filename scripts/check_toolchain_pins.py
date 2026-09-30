@@ -9,6 +9,8 @@ import re
 import sys
 from pathlib import Path
 
+from install_agent_bun import validate_pins as validate_bun_pins
+
 
 ROOT = Path(__file__).resolve().parents[1]
 PIN_FILE = ROOT / "data" / "toolchain-pins.json"
@@ -32,6 +34,7 @@ def render(data: dict) -> str:
         f"| Node agent base | `{data['container_images']['node_22_bookworm_slim']}` | OCI index digest |",
         f"| uv copy image | `{data['container_images']['uv_0_9_7']}` | OCI index digest |",
         f"| Birdy | `{data['birdy']['version']}` | SHA-256 per OS/architecture |",
+        f"| Claude-action Bun | `{data['agent_bun']['version']}` | SHA-256 per Linux architecture; isolated runner-temp install |",
         f"| Cursor Agent | `{data['cursor_agent']['version']}` | SHA-256 per Linux architecture |",
         f"| OpenCode | `{npm['opencode-ai']['version']}` | `{npm['opencode-ai']['integrity']}` |",
         f"| Pi coding agent | `{npm['@mariozechner/pi-coding-agent']['version']}` | `{npm['@mariozechner/pi-coding-agent']['integrity']}` |",
@@ -45,6 +48,8 @@ def render(data: dict) -> str:
         "3. Run `uv run python scripts/check_toolchain_pins.py`, the backend container tests, and the relevant canary before merging.",
         "4. Review the generated diff here; do not accept a version-only update without a new integrity value.",
         "",
+        "The shared `agent-run` action passes its verified Bun executable to every Claude-compatible invocation, including fallbacks. Keep its version aligned with the pinned Claude action's Bun requirement. This avoids overwriting the self-hosted runner's shared `~/.bun/bin/bun`; direct Claude workflow calls still use the upstream install path.",
+        "",
         "Codex remains pinned but host-executed. Containerization is intentionally deferred until its refreshed ChatGPT auth cache and writer-owned import/commit boundary can be preserved; wrapping only the CLI while mounting the writable host checkout would not reduce the trust boundary.",
         "",
     ]
@@ -53,6 +58,10 @@ def render(data: dict) -> str:
 
 def validate(data: dict) -> list[str]:
     errors: list[str] = []
+    try:
+        validate_bun_pins(data.get("agent_bun", {}))
+    except ValueError as error:
+        errors.append(str(error))
     files = {
         "birdy": ROOT / ".github/actions/install-birdy/action.yml",
         "pi": ROOT / ".github/actions/run-pi-container/action.yml",
