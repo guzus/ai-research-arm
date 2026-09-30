@@ -4,10 +4,11 @@ title: Zhipu GLM-5.3
 type: entity
 aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3", "GLM-5.3-Flash", "GLM-5.3 Flash", "GLM-5.3 Infra Agent", "GLM-5.3-FlashX", "GLM-5.3 FlashX", "z-ai/glm-5.3-flashx"]
 tags: [open-weights, china, agentic, frontier-model]
-description: Zhipu / Z.ai's GLM-5.3; GLM-5.3 FlashX is live in Hermes Agent via OpenRouter at $0.37/$1.25 per Mtok (320B / 18B active, 1M context).
+description: Zhipu / Z.ai's freely downloadable GLM-5.3; Anthropic's Frontier Red Team says it built working browser exploits in 50 of 410 ExploitBench attempts, vs Claude Mythos Preview's 56.
 created_at: 2026-08-19
-timestamp: 2026-09-21T00:00:00Z
+timestamp: 2026-09-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
@@ -189,3 +190,50 @@ GLM-5.3 SKU. See [[zhipu]] (Reuters; ARA daily digest
   **66.9** against Step 5's **67.7**. First-party
   StepFun exhibit, not an independent bake-off
   (StepFun; ARA daily digest 2026-09-21).
+
+## ExploitBench — a cyber threshold, not a ceiling (2026-09-30)
+
+- **[[anthropic|Anthropic]]'s Frontier
+  Red Team says freely downloadable
+  GLM-5.3 built working browser
+  exploits in 50 of 410 ExploitBench
+  attempts** against
+  [[claude-fable-5|Claude Mythos
+  Preview]]'s 56, and achieved full
+  control-flow hijacks in **4%** of
+  trials versus **6%**.
+  [[claude-opus-4-8|Opus 4.6]] and
+  [[zhipu-glm-5-2|GLM-5.2]] score
+  zero on the same evals. This is
+  the first numbered open-weights
+  crossing of the offensive-cyber
+  line Mollick flagged on this page
+  on 2026-08-29. See
+  [[agentic-ai-security]] and
+  [[open-weights]] (Anthropic
+  Frontier Red Team via Simon
+  Willison, Twitter; ARA daily
+  digest 2026-09-30).
+- **The counter is inside the data.**
+  [[moonshot-kimi-k3|Kimi K3]] and
+  [[deepseek-v4-1-flash|DeepSeek
+  V4.1 Flash]] score near zero
+  despite being recent, large,
+  strong models — if raw coding
+  ability drove exploit-writing
+  they should register something.
+  Anthropic's own 64–100%
+  "engagement with malicious
+  requests under bypass
+  conditions" figure, and the fact
+  that Mythos Preview still beat
+  GLM-5.3 on both metrics, support
+  reading the bench as elicited
+  willingness as much as
+  capability. Anthropic sells a
+  closed model and benefits from
+  open weights looking dangerous;
+  the distinction it is drawing is
+  safeguards, not ceiling (Ethan
+  Mollick via Twitter; ARA daily
+  digest 2026-09-30).

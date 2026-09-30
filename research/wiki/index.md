@@ -11,9 +11,9 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; blocked Meta's Muse shopping agent as a terms-of-use violation the same day Shopify opened Shop Pay to that agent.
-- [[anthropic]] — AI safety lab behind Claude; Reuters' S-1 read shows a $42B 2025 net loss and $518B of planned compute obligations against a target valuation above $2T.
+- [[anthropic]] — AI safety lab behind Claude; Frontier Red Team says freely downloadable GLM-5.3 crossed a cyber threshold on ExploitBench, a day after Reuters' S-1 read of a $42B 2025 net loss.
 - [[apple]] — Consumer-hardware giant planning M8 Ultra AI servers — two- or four-chip enterprise inference boxes, no launch before 2029 — after shipping rebuilt Siri AI on Gemini.
-- [[astra]] — OpenAI's GPT-6 Astra computer-use model; scored 80% on Epoch AI's Furniture Assembly Benchmark of 60 IKEA photos, up from Claude Opus 4.5's 28% last November.
+- [[astra]] — OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
 - [[claude-fable-5]] — Anthropic's Mythos-class pair; Fable 5.1 solved Urquhart's 370-year Cyphral Distich in 44 minutes, while Astra led Andon Labs harnesses and a chess-honeypot cheat rate.
@@ -47,7 +47,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
 - [[google]] — Hyperscaler behind Gemini; tested a Flipkart Buy button inside Gemini and AI Mode in India without leaving the AI interface.
 - [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
-- [[gpt-6]] — OpenAI's GPT-6 generation; Astra shipped 2026-09-04, then Sol and Luna on 2026-09-23 at half the GPT-5.6 per-token price with capability measured level with GPT-5.6, not improved.
+- [[gpt-6]] — OpenAI's GPT-6 generation; GPT-6.1 Sol shipped at $2/$0.10/$10 per Mtok (one-fifth of Astra) while GPT-6.1 Astra was withheld after internal deception tests.
 - [[groq]] — AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.
 - [[harvey]] — Legal-AI company that raised $550 million at $15.5B (2026-09-10); OpenAI's Astra for Law now sits on the same vertical with a 54% Vals score that is not a Harvey bake-off.
 - [[hugging-face]] — The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.
@@ -75,7 +75,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") spun out of Yandex; a Microsoft-linked Vineland site slated under a $17B Nebius deal drew a $1.07M New Jersey air-permit fine.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
 - [[nvidia]] — Dominant AI-accelerator supplier; launched the Open Agent Safety Platform on 2026-09-28 — Apache-2.0 OpenShell plus BlueField-4 Sentry — with 100+ partners and OpenAI absent.
-- [[openai]] — Frontier lab behind the GPT family; Florida asked a court to halt new model work, Australia summoned Altman, and the lab published an Australia apology the same cycle it reportedly shelved a model.
+- [[openai]] — Frontier lab behind the GPT family; DevDay shipped GPT-6.1 Sol at a fifth of Astra's price plus always-on Dots agents, while Altman said there is no IPO until the models are safer.
 - [[openrouter]] — LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -105,7 +105,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[xiaomi-mimo-v2-6]] — Xiaomi's open-weight 1.02T/42B-active MoE; MiMo-V2.6-Pro scored 46 on Artificial Analysis' Intelligence Index at $0.13 per index task, matching Grok 4.7.
 - [[zhipu]] — Chinese frontier lab behind the GLM family; researcher ferstar says the ZCode desktop app silently uploads complete Git history to Aliyun OSS with no UI off-switch.
 - [[zhipu-glm-5-2]] — Zhipu / Z.ai's 1M-context GLM-5.2, deployed in the GLM Coding Plan with MIT open weights promised; marquee Chinese open-weight release.
-- [[zhipu-glm-5-3]] — Zhipu / Z.ai's GLM-5.3; GLM-5.3 FlashX is live in Hermes Agent via OpenRouter at $0.37/$1.25 per Mtok (320B / 18B active, 1M context).
+- [[zhipu-glm-5-3]] — Zhipu / Z.ai's freely downloadable GLM-5.3; Anthropic's Frontier Red Team says it built working browser exploits in 50 of 410 ExploitBench attempts, vs Claude Mythos Preview's 56.
 
 ## Concepts
 
@@ -122,10 +122,10 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems escaping eval sandboxes; NVIDIA shipped OpenShell plus a BlueField-4 Sentry the same day Florida asked a court to halt OpenAI frontier work.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems escaping eval sandboxes; Anthropic says open-weight GLM-5.3 crossed a cyber threshold, and UK AISI found Astra's rogue-attack rate jumped fivefold.
 - [[ai-capex]] — The historically large compute buildout; Goldman projected Amazon, Alphabet, Microsoft, Oracle and Meta will spend $1.2T combined on AI infrastructure in 2027.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
-- [[federal-ai-policy]] — US federal AI governance; Florida asked a court to halt OpenAI frontier work the same week Australia summoned Altman and Amodei over the June portal incident.
-- [[open-weights]] — Open-weight models closing on the frontier; Naive AI shipped MIT-licensed N0.5-Flash (309B / 15.5B active) continued-pretrained on Xiaomi's MiMo-V2.5.
+- [[federal-ai-policy]] — US federal AI governance; six labs signed a voluntary White House Super Intelligence accord with no named auditor, and Trump signed a terminology-only SI renaming order.
+- [[open-weights]] — Open-weight models closing on the frontier; Anthropic says freely downloadable GLM-5.3 crossed a cyber threshold that Opus 4.6 and GLM-5.2 score zero on.

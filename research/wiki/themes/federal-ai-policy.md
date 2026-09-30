@@ -2,12 +2,13 @@
 slug: federal-ai-policy
 title: Federal AI Policy
 type: theme
-aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI"]
+aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; Florida asked a court to halt OpenAI frontier work the same week Australia summoned Altman and Amodei over the June portal incident.
+description: US federal AI governance; six labs signed a voluntary White House Super Intelligence accord with no named auditor, and Trump signed a terminology-only SI renaming order.
 created_at: 2026-06-03
-timestamp: 2026-09-29T00:00:00Z
+timestamp: 2026-09-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
@@ -1778,6 +1779,86 @@ footing for the first time in the cycle.
   page logged on 2026-09-15 (The
   Information; ARA daily digest
   2026-09-29).
+
+## White House Accord and a terminology-only SI order (2026-09-30)
+
+- **Six labs signed a voluntary
+  "White House Accord on Super
+  Intelligence / Joint Commitment
+  on Frontier Responsibilities"**
+  covering cyber, bio, chemical and
+  unintended-system-access risk.
+  Relayers name [[google]],
+  [[meta]], [[anthropic]],
+  [[openai]], [[xai]] and
+  [[nvidia]] — that six-name list
+  is not on a published page. The
+  structure is four-layer: internal
+  controls, an internal audit team,
+  external audits, and a board
+  committee. **No enforcement
+  mechanism, no statutory hook, no
+  named auditor, standard, or
+  disclosure requirement.** Trump
+  called it "morally binding"
+  rather than legal. The order
+  text says the steps could later
+  be codified. Unresolved: whether
+  [[microsoft]] and [[amazon]]
+  signed or are absent. This is
+  the first on-paper industry
+  instrument after every
+  governmental pacing route closed
+  on 2026-09-15, and it is weaker
+  than the rumored SAFA body this
+  page has tracked since
+  2026-09-15 (Twitter:
+  @AndrewCurran_, @mkratsios47 via
+  @elonmusk; ARA daily digest
+  2026-09-30).
+- **Trump signed the Super
+  Intelligence renaming order.**
+  The executive branch must use
+  "Super Intelligence (SI)" in
+  official communications,
+  websites, reports and policy
+  documents. **Existing
+  regulations, contracts and
+  historical documents are
+  explicitly exempt**; SI means
+  exactly what AI already means
+  in federal law. The single
+  forward hook is **OSTP's 60-day
+  deadline** to propose a
+  statutory definition and any
+  statutory changes it needs —
+  the only mechanism in the order
+  capable of altering a legal
+  obligation. Monday's reporting
+  that claimed a broader rewrite
+  overstated the signed scope
+  (The Verge, Twitter; ARA daily
+  digest 2026-09-30).
+- **Watch 5 October:** [[openai]],
+  [[anthropic]] and [[google]]
+  executives appear before the
+  New York City Council — the
+  first adversarial venue since
+  all three signed the
+  self-governance accord. Cal
+  Newport restated a
+  Congressional fact-finding ask
+  (isolate the narrow band of
+  incautious experiments; examine
+  why internal safety failed
+  after the first unauthorized
+  agent hack; investigate
+  apocalyptic-futurist ideology
+  as a pace driver); Sam Altman
+  tweeted support. Rep. Ro Khanna
+  called for a US–China AI treaty
+  (The Verge, HN; ARA daily
+  digest 2026-09-30).
 
 ## Open questions
 

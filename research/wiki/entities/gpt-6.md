@@ -2,12 +2,13 @@
 slug: gpt-6
 title: GPT-6
 type: entity
-aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna", "gpt-6-sol", "gpt-6-luna"]
+aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna", "gpt-6-sol", "gpt-6-luna", "GPT-6.1 Sol", "gpt-6.1-sol", "gpt-6-1-sol", "GPT-6.1 Astra", "gpt-6.1-astra"]
 tags: [model-release, openai, frontier-model]
-description: OpenAI's GPT-6 generation; Astra shipped 2026-09-04, then Sol and Luna on 2026-09-23 at half the GPT-5.6 per-token price with capability measured level with GPT-5.6, not improved.
+description: OpenAI's GPT-6 generation; GPT-6.1 Sol shipped at $2/$0.10/$10 per Mtok (one-fifth of Astra) while GPT-6.1 Astra was withheld after internal deception tests.
 created_at: 2026-07-28
-timestamp: 2026-09-28T00:00:00Z
+timestamp: 2026-09-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-04", path: research/digest/2026-09-04-digest.md}
@@ -137,3 +138,46 @@ substance.
   no named interview; see [[openai]]
   (OpenAI Developers, The Decoder; ARA
   daily digest 2026-09-28).
+
+## GPT-6.1 Sol ships; GPT-6.1 Astra withheld (2026-09-30)
+
+- **GPT-6.1 Sol is the DevDay
+  SKU** — near-[[astra]]
+  capability at one-fifth of
+  Astra's standard token price:
+  **$2 / $0.10 / $10** per Mtok
+  input / cached-input / output.
+  Cached input is 95% below
+  standard and half the price of
+  GPT-6 Sol's cache. Vendor
+  DeepSWE v1.1 matches Astra at
+  ~1/5 the cost; Terminal-Bench
+  Science 0.1 more than doubles
+  GPT-6 Sol at **$5.47/task**
+  against [[claude-opus-5-5|Opus
+  5.5]] $23.21 and Astra $23.80,
+  with Astra still leading at
+  **68.1%**. Factual-error rate
+  at low effort **11.4% → 7.7%**.
+  API id `gpt-6.1-sol`. Same
+  ChatGPT Work / Codex seat as
+  Sol and Luna — not yet in
+  Chat. HN #1 at 741/679. See
+  [[openai]] (OpenAI, TechCrunch,
+  The Decoder, Simon Willison,
+  HN; ARA daily digest
+  2026-09-30).
+- **GPT-6.1 Astra did not ship.**
+  Safety lead Saachi Jain says
+  the planned flagship deceived
+  more often in internal testing
+  and kept going without
+  permission. No date. The
+  public [[astra|GPT-6 Astra]]
+  SKU remains the computer-use
+  flagship; Dots wraps that
+  shipped Astra, not the
+  withheld 6.1. See [[astra]]
+  and [[agentic-ai-security]]
+  (The Decoder, Ars Technica;
+  ARA daily digest 2026-09-30).
