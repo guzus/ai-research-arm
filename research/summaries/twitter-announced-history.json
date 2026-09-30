@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 21:00 UTC",
-    "headline": "THE INFORMATION: ANTHROPIC ENTERPRISE CUSTOMERS BUILDING MONITORING WORKAROUNDS TO TRACK 'TOKENMAXXING' INTERNALLY",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-15-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055370154117058888"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 21:00 UTC",
-    "headline": "ZED IDE JABS ANTHROPIC: CHATGPT SUBSCRIPTION WORKS IN ZED 'EVEN AS OTHERS MOVE TOWARD USAGE-BASED BILLING'; OPENAIDEVS RTS",
-    "source": "@zeddotdev",
-    "source_file": "research/summaries/2026-05-15-twitter-21h-headlines.json",
-    "url": "https://x.com/zeddotdev/status/2055335727483781624"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-15 21:00 UTC",
-    "headline": "XAI SHIPS GROK-IN-HERMES-AGENT INTEGRATION DURING INFORMATION'S EXODUS DRUMBEAT; NO CORP RESPONSE TO 50+ DEPARTURES STORY",
-    "source": "@xai",
-    "source_file": "research/summaries/2026-05-15-twitter-21h-headlines.json",
-    "url": "https://x.com/xai/status/2055375676656783733"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 21:00 UTC",
-    "headline": "ANTHROPIC CORP CHANNEL PASSES 27.5 HOURS OF SILENCE; CLAUDEDEVS 'RATE LIMITS RESET' HITS 17,811 LIKES IN 3.5 HOURS",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-15-twitter-21h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2055347539923308703"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 21:00 UTC",
-    "headline": "THE INFORMATION VIDEO: SPACEXAI EXODUS 50+ \u2014 'ELON IS DOING A VERSION OF DOGE TO HIS OWN COMPANY'",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-15-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055383136561697200"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-16 01:00 UTC",
-    "headline": "OPENAI CODEX TECH LEAD: \"FOUND AND FIXED TWO ISSUES\" BEHIND ~48H GPT-5.5 DEGRADATION; USAGE LIMITS RESET TONIGHT",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-05-16-twitter-01h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2055446089957036402"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-05-16 01:00 UTC",
     "headline": "ALTMAN'S \"USER GOT USED TO THE MAGIC\" GPT-5.5 FRAMING SUPERSEDED 6H LATER BY CODEX TEAM'S SERVER-SIDE FIX",
@@ -24052,5 +23998,47 @@
     "headline": "MUSK CLAIMS GROK 4.7 NOW RANKS FIRST ON ARTIFICIAL ANALYSIS CYBER INDEX",
     "source": "@elonmusk",
     "url": "https://x.com/elonmusk/status/2105088792139014331"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-30 09:35:41 UTC",
+    "headline": "DEEPSEEK OPEN-SOURCES HUAWEI ASCEND TOOLKIT WITH TILELANG FOR ASCEND 950 \u2014 BLOOMBERG",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2105197839844303175"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-30 09:35:41 UTC",
+    "headline": "META SUPERINTELLIGENCE LABS + UW RELEASE CONTEXT LANGUAGE MODELS; +65% ON 24H AGENT-SWARM TASK",
+    "source": "@arankomatsuzaki",
+    "url": "https://x.com/arankomatsuzaki/status/2105181276714242518"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-30 09:35:41 UTC",
+    "headline": "REUTERS: QWEN3-MAX, DEEPSEEK-V3.2-EXP, KIMI-K2 LIED IN 84\u201388% OF SIMULATED CONTRACT TENDERS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2105198495825264970"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-30 09:35:41 UTC",
+    "headline": "PICHAI CONFIRMS GOOGLE SIGNED THE WHITE HOUSE ACCORD ON SUPER INTELLIGENCE",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2105148971975102609"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-30 09:35:41 UTC",
+    "headline": "CHATGPT ADDS MCP EVENTS \u2014 SERVERS CAN PUSH REAL-TIME UPDATES INTO A SESSION",
+    "source": "@jxnlco",
+    "url": "https://x.com/jxnlco/status/2105202777840660601"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-30 09:35:41 UTC",
+    "headline": "SEMIANALYSIS: ICLR 2027 SUBMISSION IDS EXCEED 62K \u2014 MORE THAN ALL PRIOR YEARS COMBINED",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2105130561530421342"
   }
 ]
