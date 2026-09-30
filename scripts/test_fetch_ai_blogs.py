@@ -71,6 +71,50 @@ class FeedParserTest(unittest.TestCase):
         self.assertEqual(items[0].url, "https://example.com/posts/open-models")
         self.assertEqual(items[0].published_label, "2026-05-25 09:30 UTC")
 
+    def test_parse_declaration_after_leading_xml_whitespace(self):
+        # Menlo's WordPress feed starts with a newline before its declaration.
+        # Cover the same defect after a UTF-8 byte-order mark too.
+        feeds = (
+            '<rss><channel><item><title>Café agents</title>'
+            '<link>https://example.com/post</link></item></channel></rss>',
+            '<feed xmlns="http://www.w3.org/2005/Atom"><entry>'
+            '<title>Café agents</title><link href="https://example.com/post" />'
+            '</entry></feed>',
+        )
+        for feed in feeds:
+            body = ('<?xml version="1.0" encoding="UTF-8"?>' + feed).encode("utf-8")
+            for bom in (b"", b"\xef\xbb\xbf"):
+                for whitespace in (b"\n", b" \t\r\n"):
+                    with self.subTest(feed=feed[:5], bom=bom, whitespace=whitespace):
+                        items = blogs.parse_feed(SOURCE, bom + whitespace + body)
+                        self.assertEqual([item.title for item in items], ["Café agents"])
+
+    def test_parse_preserves_declared_encodings_and_byte_order_marks(self):
+        # Keep parsing bytes: decoding everything as UTF-8 would corrupt both
+        # a repaired Latin-1 feed and otherwise-valid UTF-16 feeds.
+        for codec, declaration, prefix in (
+            ("utf-8-sig", "UTF-8", ""),
+            ("iso-8859-1", "ISO-8859-1", "\n"),
+            ("utf-16", "UTF-16", ""),
+            ("utf-16-le", "UTF-16", ""),
+            ("utf-16-be", "UTF-16", ""),
+        ):
+            with self.subTest(codec=codec):
+                body = (
+                    f'{prefix}<?xml version="1.0" encoding="{declaration}"?>'
+                    '<rss><channel><item><title>Café agents</title>'
+                    '<link>https://example.com/post</link></item></channel></rss>'
+                ).encode(codec)
+                items = blogs.parse_feed(SOURCE, body)
+                self.assertEqual([item.title for item in items], ["Café agents"])
+
+    def test_non_xml_whitespace_before_declaration_still_fails(self):
+        body = b'<?xml version="1.0"?><rss><channel /></rss>'
+        for prefix in (b"upstream warning\n", b"<!-- comment -->", b"\v", b"\f"):
+            with self.subTest(prefix=prefix):
+                with self.assertRaises(ET.ParseError):
+                    blogs.parse_feed(SOURCE, prefix + body)
+
     def test_target_window_uses_utc_date(self):
         item = blogs.FeedItem(
             source=SOURCE,

@@ -265,6 +265,12 @@ def find_link(entry: ET.Element, *, atom: bool, base_url: str) -> str:
 
 
 def parse_feed(source: Source, body: bytes) -> list[FeedItem]:
+    # Some publishers (including Menlo) emit a blank line before the XML
+    # declaration. Repair only XML whitespace there, preserving any UTF-8
+    # BOM and the raw bytes so ElementTree still honors declared encodings.
+    body = re.sub(
+        rb"\A(\xef\xbb\xbf)?[ \t\r\n]+(?=<\?xml[ \t\r\n])", rb"\1", body, count=1
+    )
     root = ET.fromstring(body)
     atom = root.tag.endswith("feed")
     entries: Iterable[ET.Element]
