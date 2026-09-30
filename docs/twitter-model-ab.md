@@ -6,7 +6,7 @@ capability from harness/rescue effects:
 
 | Leg | Lane (SSOT) | Provider route | Served model |
 |---|---|---|---|
-| `claude` | `twitter-ab-claude` | native Claude via `agent-run` | whatever `fallback.native_model` serves in production — `claude-opus-5` since 2026-08-01 (`claude-sonnet-5` before it). The metrics step reads the id from the SSOT, so the leg follows production instead of pinning a literal. |
+| `claude` | `twitter-ab-claude` | native Claude via `agent-run` | whatever `fallback.native_model` serves in production — `claude-opus-5-5` since 2026-09-30 (Opus 5 from 2026-08-01; Sonnet 5 before that). The metrics step reads the id from the SSOT, so the leg follows production instead of pinning a literal. |
 | `zai-glm-5p3` | `twitter-ab-zai` | Z.ai Coding Plan via `agent-run` | `glm-5.3` |
 
 Outputs land under `research/eval/twitter-ab/`:
@@ -110,7 +110,7 @@ invalidates the eval. The workflow enforces it structurally:
   `twitter-ab-judge-swapped` are native Claude with the agent-run
   `native-model: claude-opus-4-8` override (that is what the `--model
   opus` alias resolves to for these two steps only) — a different model
-  from the production `fallback.native_model` (`claude-opus-5`) the claude
+  from the production `fallback.native_model` (`claude-opus-5-5`) the claude
   leg ran on. Tools are `Read,Write` only.
 - Rubric (1–10 integers per brief): coverage, faithfulness (spot-checked
   against a pretty-printed copy of the shared snapshot), headline
@@ -174,9 +174,10 @@ when the eval week ends**; `workflow_dispatch` stays.
 
 ## Cost per run (estimate)
 
-- `claude` leg: one Sonnet-5 agent run over a large snapshot, ≤40 turns —
-  observed production twitter cycles land roughly **$1–4**; the actual
-  number is recorded per run in `metrics.json → legs.claude.agent.total_cost_usd`.
+- `claude` leg: one production-model agent run over a large snapshot, ≤40 turns.
+  Historical Sonnet-5 cycles were roughly **$1–4**; that is not an Opus 5.5
+  estimate. Use `metrics.json → legs.claude.agent.total_cost_usd` for the
+  observed per-run amount.
 - `zai-glm-5p3` leg: covered by the Z.ai Coding Plan subscription —
   **no marginal API cost** (the transcript's cost field, if any, is
   recorded as-is).

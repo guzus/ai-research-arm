@@ -22,7 +22,7 @@ name: Generative Research
 # workflow still flows. Dispatch with fireworks_fallback=none for strict
 # backend-comparison runs that must fail instead of substituting Claude.
 # Fallback runs record honest provenance: the writer records model
-# claude-sonnet-5, and the tags gain fireworks-fallback,requested-<backend>.
+# claude-sonnet-5-5, and the tags gain fireworks-fallback,requested-<backend>.
 #
 # The Python writer commits internally; this workflow only pushes.
 #
@@ -447,7 +447,7 @@ jobs:
           set -euo pipefail
           model=""
           if [ "$USED_FALLBACK" = "true" ]; then
-            model="claude-sonnet-5"
+            model="claude-sonnet-5-5"
           elif [ "$RESOLVED_PROVIDER" = "claude" ]; then
             model="$RESOLVED_MODEL"
           fi
@@ -591,7 +591,7 @@ jobs:
         run: |
           set -euo pipefail
           # When the fallback engaged, the Claude path's writer records
-          # model claude-sonnet-5; these tags additionally record what was
+          # model claude-sonnet-5-5; these tags additionally record what was
           # REQUESTED so a fallback article can never masquerade as a
           # Fireworks-authored one in index.json / on the dashboard.
           if [ "${FALLBACK_USED:-false}" = "true" ]; then
@@ -626,8 +626,8 @@ jobs:
       # ---- Claude backend ---------------------------------------------------
       # OAuth-authenticated against native Anthropic. The writer records
       # --model from the native-model resolver (the actual served model).
-      # Normal Claude runs remain claude-sonnet-5; explicit fable-5 runs use
-      # claude-fable-5 and explicit opus-5 runs use claude-opus-5. Pinning
+      # Normal Claude runs remain claude-sonnet-5-5; explicit fable-5 runs use
+      # claude-fable-5 and explicit opus-5-5 runs use claude-opus-5-5. Pinning
       # The resolved model is passed literally to Claude Code and also pins
       # every alias/subagent slot so no nested agent can drift. This lane is
       # gated on the EFFECTIVE
@@ -641,7 +641,7 @@ jobs:
         uses: ./.github/actions/setup-claude-sandbox
 
       - name: Run Generative Research (Claude, attempt 1)
-        if: contains(fromJSON('["claude","fable-5","opus-5"]'), steps.effective.outputs.backend)
+        if: contains(fromJSON('["claude","fable-5","opus-5-5"]'), steps.effective.outputs.backend)
         id: gen-claude
         continue-on-error: true
         timeout-minutes: 90
@@ -665,7 +665,7 @@ jobs:
           CT0: ${{ secrets.BIRD_CT0 }}
           # BACKEND_MATRIX_DEFAULT_MODEL documents the unchanged default for
           # the static routing checker; the runtime pin is resolved above.
-          BACKEND_MATRIX_DEFAULT_MODEL: claude-sonnet-5
+          BACKEND_MATRIX_DEFAULT_MODEL: claude-sonnet-5-5
           ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ steps.native-model.outputs.model }}
           ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ steps.native-model.outputs.model }}
           ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ steps.native-model.outputs.model }}
@@ -1790,12 +1790,12 @@ jobs:
       # steps within the same job) and finishes the draft instead of
       # restarting research from scratch. This recovery retry covers the two
       # lanes that bill against the same OAuth subscription as the default
-      # (claude, opus-5) — for them a second session costs no more than the
+      # (claude, opus-5-5) — for them a second session costs no more than the
       # first would have. Premium fable-5 dispatches are deliberately excluded:
       # they get exactly one model-action attempt and fail the artifact gate
       # instead of spending on a second session.
       - name: Inspect Claude attempt 1
-        if: contains(fromJSON('["claude","opus-5"]'), steps.effective.outputs.backend)
+        if: contains(fromJSON('["claude","opus-5-5"]'), steps.effective.outputs.backend)
         id: claude-attempt-1
         env:
           PRE_SHA: ${{ steps.pre.outputs.sha }}
@@ -3487,7 +3487,7 @@ jobs:
       # output that pinned the served model, and roll back before any push if
       # they differ.
       - name: Verify pinned model provenance
-        if: (contains(fromJSON('["fable-5","opus-5"]'), steps.effective.outputs.backend) || steps.backend.outputs.adapter == 'opencode' || steps.backend.outputs.adapter == 'cursor') && steps.outfile.outputs.has_file == 'true'
+        if: (contains(fromJSON('["fable-5","opus-5-5"]'), steps.effective.outputs.backend) || steps.backend.outputs.adapter == 'opencode' || steps.backend.outputs.adapter == 'cursor') && steps.outfile.outputs.has_file == 'true'
         env:
           FILE: ${{ steps.outfile.outputs.file }}
           BACKEND: ${{ steps.effective.outputs.backend }}
@@ -4027,7 +4027,7 @@ jobs:
       # even if every tool call failed and the writer produced no commit. Keep
       # the workflow contract tied to the article artifact, not session exit.
       - name: Fail Claude run without article
-        if: always() && contains(fromJSON('["claude","fable-5","opus-5"]'), steps.effective.outputs.backend) && steps.outfile.outputs.has_file != 'true'
+        if: always() && contains(fromJSON('["claude","fable-5","opus-5-5"]'), steps.effective.outputs.backend) && steps.outfile.outputs.has_file != 'true'
         env:
           EXECUTION_FILE_1: ${{ steps.gen-claude.outputs.execution_file }}
           EXECUTION_FILE_2: ${{ steps.gen-claude-retry.outputs.execution_file }}

@@ -475,7 +475,7 @@ def observe_workflow(wf_path: Path) -> Observation:
     obs.has_dispatch_fireworks_fallback = "fireworks_fallback" in dispatch_inputs
     backend_options = ((dispatch_inputs.get("backend") or {}).get("options") or [])
     obs.has_fable_dispatch = "fable-5" in backend_options
-    obs.has_opus_dispatch = "opus-5" in backend_options
+    obs.has_opus_dispatch = "opus-5-5" in backend_options
     step_id_to_lane: dict[str, str] = {}
 
     for job in (wf.get("jobs") or {}).values():
@@ -1246,9 +1246,9 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
                          "Anthropic (native)", "`claude-fable-5`",
                          "`CLAUDE_CODE_OAUTH_TOKEN`", "hard fail (no model-action retry)"])
         if obs.has_opus_dispatch:
-            rows.append(["(dispatch path) backend=opus-5", f"`{wf_name}`",
+            rows.append(["(dispatch path) backend=opus-5-5", f"`{wf_name}`",
                          "Claude Code · claude-code-action (explicit model selector)",
-                         "Anthropic (native)", "`claude-opus-5`",
+                         "Anthropic (native)", "`claude-opus-5-5`",
                          "`CLAUDE_CODE_OAUTH_TOKEN`",
                          "hard fail (one recovery retry, same as `claude`)"])
         if obs.cursor and any(not step.lane for step in obs.cursor_steps):

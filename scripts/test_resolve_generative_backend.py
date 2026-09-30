@@ -26,6 +26,20 @@ class GenerativeBackendResolverTests(unittest.TestCase):
             resolve(self.data, "muse-1.3").selector,
         )
 
+    def test_claude_55_migration_preserves_existing_dispatches(self):
+        for alias in ("default", "opus-5-5", "opus-5.5", "opus55", "claude-opus-5-5",
+                      "opus-5", "opus5", "claude-opus-5"):
+            with self.subTest(alias=alias):
+                selected = resolve(self.data, alias)
+                self.assertEqual("opus-5-5", selected.selector)
+                self.assertEqual("claude-opus-5-5", selected.model)
+                self.assertEqual("claude-opus-5-5", selected.provenance_model)
+        for alias in ("claude", "claude-sonnet-5", "claude-sonnet-5-5", "claude-opus-4-8"):
+            with self.subTest(alias=alias):
+                selected = resolve(self.data, alias)
+                self.assertEqual("claude", selected.selector)
+                self.assertEqual("claude-sonnet-5-5", selected.provenance_model)
+
     def test_model_ref_splits_only_at_provider_and_preserves_nested_model(self):
         data = copy.deepcopy(self.data)
         data["backends"]["opencode-openrouter-example"] = {

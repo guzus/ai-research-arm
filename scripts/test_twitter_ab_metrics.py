@@ -219,6 +219,12 @@ class ExecutionParsingTest(unittest.TestCase):
 
 
 class ScrubTest(unittest.TestCase):
+    def test_claude_55_model_ids_leave_no_version_hint(self):
+        text = "claude-opus-5-5 / claude-sonnet-5-5 / claude-opus-5"
+        scrubbed, hits = ab.scrub_text(text)
+        self.assertEqual("[redacted] / [redacted] / [redacted]", scrubbed)
+        self.assertEqual(3, hits)
+
     def test_model_strings_scrubbed_outside_urls(self):
         text = (
             "Claude and GLM-5.3 disagree; Anthropic said so at "

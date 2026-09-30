@@ -45,31 +45,35 @@
       "generative": {
         "exposed": true,
         "selector": "claude",
-        "aliases": ["claude-opus-4-8", "claude-sonnet-5"],
-        "provenance_model": "claude-sonnet-5",
+        "aliases": ["claude-opus-4-8", "claude-sonnet-5", "claude-sonnet-5-5"],
+        "provenance_model": "claude-sonnet-5-5",
         "protocol": "native-claude",
         "preflight_path": "harness"
       },
       "notes": "Native Anthropic through claude-code-action OAuth; the served model is fallback.native_model (the --model opus alias resolves to it; agent-run's native-model input overrides it per call \u2014 hourly-twitter exposes that as the native_model dispatch input). The preflight is AUTH-ONLY: 401/403 = unavailable; HTTP 429 is UP because a healthy OAuth token answers the raw 1-token ping 429 unconditionally (2026-08-30..09-06: classifying it as down ran the whole fleet on Cursor for a week). A real throttle is detected AFTER the agent step \u2014 dead-start = is_error, <=1 turn, $0 (scripts/classify_claude_execution.py) \u2014 and agent-run then re-runs the selector with --exclude-backend claude over the SAME chain: ordinary non-strict lanes continue to the global Z.ai secondary; compatibility-tested local content lanes replace that chain with their explicit isolated Cursor fallback. A Claude failure after real work is never retried elsewhere."
     },
-    "claude-opus-5": {
+    "claude-opus-5-5": {
       "adapter": "dispatch-default",
       "provider": "claude",
-      "model": "claude-opus-5",
-      "display_name": "Claude Opus 5",
+      "model": "claude-opus-5-5",
+      "display_name": "Claude Opus 5.5",
       "aliases": [
+        "opus-5-5",
+        "opus-5.5",
+        "opus55",
         "opus-5",
-        "opus5"
+        "opus5",
+        "claude-opus-5"
       ],
       "production_eligible": true,
       "generative": {
         "exposed": true,
-        "selector": "opus-5",
-        "provenance_model": "claude-opus-5",
+        "selector": "opus-5-5",
+        "provenance_model": "claude-opus-5-5",
         "protocol": "native-claude",
         "preflight_path": "harness"
       },
-      "notes": "Native Anthropic on the default dispatch generative lane and explicit opus-5 selector. It is deliberately absent from fallback.chain: a fallback should be the cheap reliable path."
+      "notes": "Native Anthropic on the default dispatch generative lane and explicit opus-5-5 selector (legacy opus-5/opus5/claude-opus-5 selectors remain aliases). It is deliberately absent from fallback.chain: a fallback should be the cheap reliable path."
     },
     "claude-fable-5": {
       "adapter": "dispatch-default",
@@ -266,7 +270,7 @@
       "claude",
       "zai-glm-5p3"
     ],
-    "native_model": "claude-opus-5",
+    "native_model": "claude-opus-5-5",
     "notes": "ORDERED fallback chain, applied to non-strict agent-run lanes that do not declare a lane.fallback_chain override. Native Claude leads and serves `native_model`; Z.ai GLM-5.3 is the global secondary. Cross-adapter fallbacks are never inferred globally: only lanes with an explicit compatibility-tested fallback_chain may enter an isolated adapter, and that lane chain replaces rather than extends the global chain. The Claude probe is auth-only (401/403 down; 429, 400, 5xx and network faults stay UP \u2014 429 is the steady-state answer for a live OAuth token). The chain is walked twice at most: pre-agent on a probe failure, and post-agent with --exclude-backend claude when the Claude step dead-starts (is_error, <=1 turn, $0). Strict lanes never walk either chain."
   },
   "lanes": {
@@ -418,7 +422,7 @@
       "pinned": true,
       "pinned_provider": "claude",
       "strict": true,
-      "notes": "A/B eval blinded judge, pass 1. Native Claude with the workflow's native-model override to claude-opus-4-8 so the judge is a true non-contestant on a different model from the production fallback.native_model (claude-opus-5) leg A runs on."
+      "notes": "A/B eval blinded judge, pass 1. Native Claude with the workflow's native-model override to claude-opus-4-8 so the judge is a true non-contestant on a different model from the production fallback.native_model (claude-opus-5-5) leg A runs on."
     },
     "twitter-ab-judge-swapped": {
       "workflow": "twitter-model-ab.yml",
@@ -448,13 +452,13 @@
     "generative-research-default": {
       "workflow": "generative-research.yml",
       "harness": "dispatch-default",
-      "backend": "claude-opus-5",
-      "notes": "Default backend when neither the dispatch input nor an issue-label form specifies one. Runtime-resolved by the workflow's backend-resolution step. Claude Opus 5 is the premium native Anthropic generative route; consumers are manual dispatch with no backend input, gen-research-labelled issues, and hourly-twitter.yml's auto-research dispatch (throttled to <=2 per rolling 24h). The workflow pins the literal model ID and verifies committed article provenance before pushing. Explicit Sonnet Claude, Codex, Fireworks, OpenCode, Cursor, and evaluation selectors remain available."
+      "backend": "claude-opus-5-5",
+      "notes": "Default backend when neither the dispatch input nor an issue-label form specifies one. Runtime-resolved by the workflow's backend-resolution step. Claude Opus 5.5 is the premium native Anthropic generative route; consumers are manual dispatch with no backend input, gen-research-labelled issues, and hourly-twitter.yml's auto-research dispatch (throttled to <=2 per rolling 24h). The workflow pins the literal model ID and verifies committed article provenance before pushing. Explicit Sonnet Claude, Codex, Fireworks, OpenCode, Cursor, and evaluation selectors remain available."
     },
     "generative-research-claude": {
       "workflow": "generative-research.yml",
       "harness": "claude-code-action",
-      "model": "claude-sonnet-5",
+      "model": "claude-sonnet-5-5",
       "notes": "Model served on the backend=claude path (env-pinned in the workflow). MIRROR: CI enforces equality."
     },
     "ai-news-research": {
@@ -465,37 +469,37 @@
         "cursor-grok-4p6-fast"
       ],
       "fallback_mode": "editorial",
-      "notes": "Twice-daily broad news sweep without external MCP search keys. Native Claude remains Sonnet 5 via the workflow override; the prompt uses a portable curl/WebFetch discovery contract so the lane-local Cursor editorial fallback can preserve the same exact output paths."
+      "notes": "Twice-daily broad news sweep without external MCP search keys. Native Claude remains Sonnet 5.5 via the workflow override; the prompt uses a portable curl/WebFetch discovery contract so the lane-local Cursor editorial fallback can preserve the same exact output paths."
     },
     "ai-news-research-mcp": {
       "workflow": "ai-news-research.yml",
       "harness": "claude-code-action",
-      "model": "claude-sonnet-5",
+      "model": "claude-sonnet-5-5",
       "strict": true,
-      "notes": "Twice-daily broad news sweep with configured Exa/Perplexity MCP search. It remains pinned to native Claude Sonnet 5 because the isolated Cursor adapter intentionally denies MCP tools; the lane fails honestly rather than silently changing its search contract. MIRROR: CI enforces equality."
+      "notes": "Twice-daily broad news sweep with configured Exa/Perplexity MCP search. It remains pinned to native Claude Sonnet 5.5 because the isolated Cursor adapter intentionally denies MCP tools; the lane fails honestly rather than silently changing its search contract. MIRROR: CI enforces equality."
     },
     "research-issue": {
       "workflow": "research-issue.yml",
       "harness": "claude-code-action",
-      "model": "claude-sonnet-5",
+      "model": "claude-sonnet-5-5",
       "notes": "Issue-labeled deep research (MCP and no-MCP variants). MIRROR: CI enforces equality."
     },
     "daily-improve": {
       "workflow": "daily-improve.yml",
       "harness": "claude-code-action",
-      "model": "claude-sonnet-5",
+      "model": "claude-sonnet-5-5",
       "notes": "Daily methodology-improvement PR agent. MIRROR: CI enforces equality."
     },
     "claude-interactive": {
       "workflow": "claude.yml",
       "harness": "claude-code-action",
-      "model": "claude-sonnet-5",
+      "model": "claude-sonnet-5-5",
       "notes": "@claude mentions in issues/PRs. MIRROR: CI enforces equality."
     },
     "claude-code-review": {
       "workflow": "claude-code-review.yml",
       "harness": "claude-code-action",
-      "model": "claude-sonnet-5",
+      "model": "claude-sonnet-5-5",
       "notes": "Automated PR review. MIRROR: CI enforces equality."
     },
     "claude-canary": {
@@ -508,7 +512,7 @@
     "twitter-account-explorer": {
       "workflow": "twitter-account-explorer.yml",
       "harness": "claude-code-action",
-      "model": "claude-sonnet-5",
+      "model": "claude-sonnet-5-5",
       "notes": "Weekly account-curation PR agent. MIRROR: CI enforces equality."
     }
   }

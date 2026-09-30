@@ -2,8 +2,8 @@ name: Twitter Model A/B Eval
 
 # Head-to-head model evaluation on the REAL Twitter-summary workload:
 #   leg "claude"      → lane twitter-ab-claude (native Claude on whatever
-#                       fallback.native_model serves in production — claude-opus-5
-#                       since 2026-08-01, claude-sonnet-5 before it)
+#                       fallback.native_model serves in production — claude-opus-5-5
+#                       since 2026-09-30, Opus 5 from 2026-08-01)
 #   leg "zai-glm-5p3" → lane twitter-ab-zai    (GLM-5.3 via Z.ai Coding Plan)
 #
 # Cardinal rule: PARITY. Both legs get the SAME byte-identical input
@@ -610,7 +610,7 @@ jobs:
       # ── Blinded judge, pass 1 ───────────────────────────────────────
       # True non-contestant judge: the lane is native Claude and the
       # native-model override remaps the `--model opus` alias to
-      # claude-opus-4-8 (NOT the claude-sonnet-5 the claude leg ran on).
+      # claude-opus-4-8 (distinct from the production model served by the claude leg).
       # Read-only toolset plus one Write for the verdict.
       - name: Judge briefs (pass 1)
         id: judge1

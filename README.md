@@ -174,14 +174,14 @@ flowchart LR
         CUR["🖱️ Cursor CLI<br/><i>agent</i>"]
         OAI["🤖 OpenAI Codex CLI<br/><i>ChatGPT auth</i>"]
     end
-    lanes0 -->|"claude-opus-5"| ANT
-    strict0 -->|"claude-opus-5"| ANT
+    lanes0 -->|"claude-opus-5-5"| ANT
+    strict0 -->|"claude-opus-5-5"| ANT
     strict1 -->|"cursor-grok-4.6-high-fast"| CUR
     strict2 -->|"deepseek-v4-flash"| FW
     strict3 -->|"glm-5.3"| ZAI
-    gendef -->|"claude-opus-5"| ANT
+    gendef -->|"claude-opus-5-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
-    native -->|"claude-sonnet-5"| ANT
+    native -->|"claude-sonnet-5-5"| ANT
     gendef -.->|"backend=codex"| OAI
     gendef -.->|"backend=opencode-deepseek-v4-flash · backend=opencode-muse-spark-1p3-contributor"| OC
     gendef -.->|"backend=cursor-grok-4p6-fast"| CUR
@@ -278,7 +278,7 @@ a `topic`. The agent researches primary sources, writes in the
 [ARA DSL](ARA_DSL.md) (a validated component language — see
 [Component catalog](COMPONENTS.md)), and publishes through a single writer
 path that re-validates everything before commit. The SSOT generative default is
-native Claude Opus 5; explicit selectors also expose Codex, OpenCode DeepSeek
+native Claude Opus 5.5; explicit selectors also expose Codex, OpenCode DeepSeek
 and Meta Muse Spark 1.3 Contributor, Cursor, and Fireworks routes. Muse is
 region-limited and requires explicit consent to Contributor model-improvement
 data collection, so it is not a production editorial default. Separately, the five scheduled editorial lanes

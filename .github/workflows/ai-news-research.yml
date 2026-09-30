@@ -114,7 +114,7 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           claude_args: |
-            --model claude-sonnet-5 --mcp-config /tmp/mcp-config.json
+            --model claude-sonnet-5-5 --mcp-config /tmp/mcp-config.json
             --allowedTools "Read,Write,Edit,Bash(git:*),mcp__exa__*,mcp__perplexity__*"
           prompt: |
             You are an AI news research agent. Find BREAKING NEWS and RECENT ANNOUNCEMENTS only.
@@ -190,7 +190,7 @@ jobs:
         uses: ./.github/actions/agent-run
         with:
           lane: ai-news-research
-          native-model: claude-sonnet-5
+          native-model: claude-sonnet-5-5
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}

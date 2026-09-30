@@ -175,7 +175,7 @@ subject), appended-fact follow-ups, running-counter progressions. Separating
 those is a *semantic* judgment, so one agent-run model step adjudicates exactly
 that band — and only that band — as a final gate on the send path. It runs on
 SSOT lane `twitter-judge` with `--model opus`, which `agent-run` remaps to the
-global `fallback.native_model` (`claude-opus-5` since 2026-08-01) — NOT Haiku,
+global `fallback.native_model` (`claude-opus-5-5` since 2026-09-30; Opus 5 from 2026-08-01) — NOT Haiku,
 which this doc claimed until 2026-08-01. Read `data/agent-backends.json` for
 the current model rather than trusting a literal here.
 
