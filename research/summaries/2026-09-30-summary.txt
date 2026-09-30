@@ -1,14 +1,15 @@
 AI News - 2026-09-30
 
 TOP STORIES:
-• Trump, Zuckerberg, Musk, Huang, Brockman sign "morally binding" AI code of conduct
-• Anthropic: open-weight GLM-5.3 nearly matches Mythos Preview at exploit building
-• OpenAI: ChatGPT at 1.2B weekly users; DevDay adds Ultrafast tier, Decisions API
-• Deepseek + Huawei open-source Ascend chip tooling
+• Google launches Gemini 4 Argon (cyber-defender preview first)
+• FTC preparing probe of OpenAI, Anthropic, METR
+• Trump, tech CEOs sign "morally binding" AI code of conduct
+• Anthropic: open GLM-5.3 nearly matches Mythos at exploits
+• OpenAI + Synopsys build chip-design model
 
 KEY NUMBERS:
-• ChatGPT 1.2B weekly users, ~$70B run rate
-• GLM-5.3 exploit chain cost $20.40
-• Restate $20M Series A (Singular)
+• ElevenLabs $22B valuation ($300M tender)
+• Flow Engineering $50M at $750M
+• ChatGPT 1.2B weekly users
 
 Full report on GitHub.
