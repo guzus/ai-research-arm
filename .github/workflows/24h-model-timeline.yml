@@ -13,6 +13,12 @@ concurrency:
 jobs:
   model-timeline:
     runs-on: [self-hosted, Linux]
+    # uv's managed Python lives under HOME, which the Claude sandbox denies.
+    # Use the same sandbox-readable interpreter for host sync and agent runs;
+    # an explicit request overrides .python-version (the project supports 3.10+).
+    env:
+      UV_PYTHON: /usr/bin/python3
+      UV_PYTHON_DOWNLOADS: never
     permissions:
       contents: write
       pull-requests: write
@@ -42,6 +48,8 @@ jobs:
         uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           enable-cache: true
+          # The agent must also be able to write uv's cache while HOME is masked.
+          cache-local-path: ${{ github.workspace }}/.uv-cache
 
       - name: Install Python dependencies
         run: uv sync --frozen
