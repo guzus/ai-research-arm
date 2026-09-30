@@ -1,69 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-15 18:00 UTC",
-    "headline": "OPENAI LAUNCHES PERSONAL FINANCE IN CHATGPT PRO \u2014 PLAID BANK CONNECT, GPT-5.5 GROUNDED ON REAL TRANSACTIONS, FINANCIAL MEMORIES",
-    "source": "@ChatGPTapp",
-    "source_file": "research/summaries/2026-05-15-twitter-18h-headlines.json",
-    "url": "https://x.com/ChatGPTapp/status/2055317612687675545"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 18:00 UTC",
-    "headline": "OPENAI REORG \u2014 BROCKMAN OFFICIALLY TAKES OVER ALL PRODUCTS, FOLDING CHATGPT, CODEX, AND API INTO ONE CORE TEAM",
-    "source": "@ZeffMax",
-    "source_file": "research/summaries/2026-05-15-twitter-18h-headlines.json",
-    "url": "https://x.com/ZeffMax/status/2055335888591433852"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 18:00 UTC",
-    "headline": "THE INFORMATION EXCLUSIVE \u2014 50+ XAI RESEARCHERS GONE SINCE SPACEX TAKEOVER, ALL CO-FOUNDERS BESIDES MUSK HAVE EXITED",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-15-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055355043939758472"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 18:00 UTC",
-    "headline": "THE INFORMATION EXCLUSIVE \u2014 OPENAI MAKING BILLIONS BY TURNING SUPPLIER PURCHASE COMMITMENTS INTO EQUITY",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-15-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055347537784009190"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 18:00 UTC",
-    "headline": "ANTHROPIC CORP CHANNEL PASSES 24H SILENCE \u2014 CLAUDEDEVS RESETS 5H AND WEEKLY RATE LIMITS, FIRST DEV-SIDE GESTURE IN THE BACKLASH",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-15-twitter-18h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2055347539923308703"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-15 18:00 UTC",
-    "headline": "TRUMP ON AIR FORCE ONE \u2014 US AND CHINA TALKED ABOUT POSSIBLY WORKING TOGETHER FOR AI GUARDRAILS",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-15-twitter-18h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2055352900956946940"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-15 21:00 UTC",
-    "headline": "CEREBRAS $CBRS DAY-2 CLOSES ~$278, DOWN 10.6% FROM $311.07 DAY-1 CLOSE; DAVIDSON CALLS WAFER-SCALE CHIP 'NICHE-Y'",
-    "source": "@hiperwire",
-    "source_file": "research/summaries/2026-05-15-twitter-21h-headlines.json",
-    "url": "https://x.com/hiperwire/status/2055396053965226078"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-15 21:00 UTC",
     "headline": "THE INFORMATION: ANTHROPIC ENTERPRISE CUSTOMERS BUILDING MONITORING WORKAROUNDS TO TRACK 'TOKENMAXXING' INTERNALLY",
@@ -24066,5 +24003,54 @@
     "headline": "DOTS WILL NOT LAUNCH IN EUROPE, OPENAI CONFIRMS FROM DEVDAY STAGE",
     "source": "@mark_k",
     "url": "https://x.com/mark_k/status/2104990722781045205"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-30 00:20:53 UTC",
+    "headline": "SIX LABS SIGN WHITE HOUSE ACCORD ON SUPER INTELLIGENCE \u2014 GOOGLE, META, ANTHROPIC, OPENAI, XAI, NVIDIA; VOLUNTARY, NO ENFORCEMENT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105037016794902727"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-09-30 00:20:53 UTC",
+    "headline": "ANTHROPIC: OPEN-WEIGHTS GLM-5.3 BUILT WORKING BROWSER EXPLOITS IN 50 OF 410 TRIES \u2014 CLAUDE MYTHOS PREVIEW MANAGED 56",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2105052186401267864"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-09-30 00:20:53 UTC",
+    "headline": "TRUMP SIGNS 'INAUGURATING THE ERA OF SUPER INTELLIGENCE' \u2014 TERMINOLOGY ONLY; EXISTING CONTRACTS AND REGULATIONS EXEMPT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105077973594562836"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-09-30 00:20:53 UTC",
+    "headline": "SEMIANALYSIS: OPENAI ULTRAFAST TIER RUNS ON LOW-BATCH NVIDIA GPUS, NOT CEREBRAS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2105055045959995719"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-30 00:20:53 UTC",
+    "headline": "GPT-6.1 SOL BENCHMARK GAP IS HARNESS-DEPENDENT \u2014 SCORES JUMP UNDER CODEX VS MINI-SWE-AGENT",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2105063015712465094"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-09-30 00:20:53 UTC",
+    "headline": "ROBINHOOD BRINGS IN-APP AI TRADING AGENTS TO US CUSTOMERS \u2014 150,000 AGENTIC ACCOUNTS OPENED SINCE MAY",
+    "source": "@tenet_research",
+    "url": "https://x.com/tenet_research/status/2105087100861473172"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-09-30 00:20:53 UTC",
+    "headline": "MUSK CLAIMS GROK 4.7 NOW RANKS FIRST ON ARTIFICIAL ANALYSIS CYBER INDEX",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2105088792139014331"
   }
 ]
