@@ -3,7 +3,7 @@ slug: google-lyria-3-5-2026-07
 title: Google DeepMind ships Lyria 3.5, integrated into Google Flow Music
 company: Google / DeepMind
 model: Lyria 3.5
-status: released
+status: closed
 status_note: |
   @GoogleLabs (official): "@GoogleDeepMind just released Lyria 3.5, and
   we've plugged it directly into @GoogleFlowMusic" — Google's music
@@ -35,14 +35,16 @@ sources:
   - "@demishassabis"
   - "@GoogleAI"
 created_at: 2026-07-31
-updated_at: 2026-09-07
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-30
+closed_at: 2026-09-30
+closed_reason: released-and-aged
 history:
   - ts: 2026-07-31
     change: "Created — Google DeepMind released Lyria 3.5, its music-generation model, now integrated into Google Flow Music (covers, lip-sync video) with a new dedicated iOS app. Official @GoogleLabs primary + @GoogleDeepMind RT, corroborated by @testingcatalog → status released, verification confirmed."
   - ts: 2026-09-07
     change: "Consumer rollout completed. Lyria 3.5 became available in the Gemini app, Google AI Studio and the Gemini API on 2026-09-04 (@GeminiApp / @GoogleAIStudio, retweeted by @demishassabis 2026-09-05), and appears in Google's own weekly shipping recap next to Gemini 3.8 Flash. Reported capability: full-length songs with verses/choruses/bridges, 44.1 kHz stereo, improved vocal expression and arrangement (@WesRoth 2026-09-07). Explicitly NOT closed as released-and-aged this cycle: the four-week clock restarts on this broad-availability step, which is three days old."
+  - ts: 2026-09-30
+    change: "CLOSED — released-and-aged. Lyria 3.5 released publicly on 2026-07-31 into Google Flow Music with a dedicated iOS app (@GoogleLabs primary, @GoogleDeepMind RT), two months before this closure, and its consumer rollout completed on 2026-09-04 across the Gemini app, AI Studio and the Gemini API. Both the initial ship and the full distribution are done, it appeared in Google's own weekly shipping recap, and no further signal has arrived since 2026-09-07. A Lyria 4 or a material capability change would be a new artifact and a new ticket. History preserved."
 ---
 
 **Google DeepMind** released **Lyria 3.5**, the next generation of its

@@ -3,7 +3,7 @@ slug: meta-muse-voice-transcribe-2026-09
 title: Muse Voice Transcribe — Meta Superintelligence Labs' first real-time audio perception model
 company: Meta (Meta Superintelligence Labs)
 model: Muse Voice Transcribe
-status: released
+status: closed
 status_note: |
   Announced and shipped 2026-09-01 by @AIatMeta and @alexandr_wang as "the
   first real-time audio perception model from Meta Superintelligence Labs."
@@ -35,12 +35,14 @@ sources:
   - https://x.com/AIatMeta/status/2094839236016976028
   - "@alexandr_wang"
 created_at: 2026-09-07
-updated_at: 2026-09-07
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-30
+closed_at: 2026-09-30
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-07
     change: "Created — RELEASED. @AIatMeta introduced Muse Voice Transcribe on 2026-09-01 17:26 UTC as the first real-time audio perception model from Meta Superintelligence Labs, rolled out the same day by @alexandr_wang. Claimed: real-time streaming ASR, diarization with 20+ speakers, endpointing, multilingual with seamless code-switching, and accuracy gains from language/keyword/context biasing. Meta claims first place on Artificial Analysis' streaming speech-to-text leaderboard and, with adaptive delay, the pareto frontier on the speed-accuracy trade-off measured by time to final transcription. Status released and verification confirmed on Meta's own announcement; the benchmark placement is Meta's claim and is not independently reproduced in this cycle's signal. Tracked separately from [[meta-hatch-muse-spark-2026-06]] because it is a distinct artifact on a distinct modality."
+  - ts: 2026-09-30
+    change: "CLOSED — released-and-aged. Muse Voice Transcribe released publicly on 2026-09-01, four weeks and one day before this closure, and nothing has landed on it since 2026-09-07. The items left open were follow-on detail rather than release risk — pricing and API surface, whether it joins the Meta Model API alongside Muse Spark, and independent reproduction of the Artificial Analysis streaming-STT placement — and none is a lifecycle question about this artifact. If it appears in the Meta Model API that is a distribution event worth a fresh ticket. History preserved."
 ---
 
 Meta opened a seven-day release run with this: a perception model rather than a

@@ -46,13 +46,17 @@ sources:
   - "@meredithmazz"
   - "@rohanpaul_ai"
   - "@hnshah"
+  - https://x.com/stretchcloud/status/2105148884917891192
+  - https://x.com/philipkiely/status/2105000178709360963
 created_at: 2026-08-23
-updated_at: 2026-08-23
+updated_at: 2026-09-30
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-23
     change: "Created — The Information reported Stripe is acquiring OpenRouter (2026-08-22), a day after reporting Stripe was 'eyeing a $7-7.5B deal' (2026-08-21). On-record editorial skepticism about the price from @mvpeers ('a crazy price… you can pay with stock') and a strategic read from @meredithmazz ('Stripe wants to get in early on the next big potential marketplace'). Status confirmed on the outlet's move from 'eyeing' to 'is acquiring'; verification partial — no Stripe or OpenRouter primary post, no terms, no close date. Context in the same window: OpenRouter agent traffic up ~14x since February with >85% of agent tokens arriving as cached-prefix reuse (@rohanpaul_ai), and OpenRouter serving as the launch surface for Ox Alpha, Meta Muse Spark 1.2 and Thinking Machines Inkling."
+  - ts: 2026-09-30
+    change: "A price, a revenue figure, and a strategic problem that landed the same week as the deal. @stretchcloud (2026-09-30 04:13 UTC) states '$7 billion is what Stripe is reportedly paying for OpenRouter' — the low end of The Information's 2026-08-21 '$7-7.5B eyeing' range, now given as the actual number, still reported rather than confirmed and with no Stripe or OpenRouter primary post in this cycle either. More useful is the first business detail this ticket has carried: OpenRouter takes a 5% commission on flow and was at '$160 million annualized as of last month'. At $7B that is roughly 44x annualized revenue, which lets the earlier @mvpeers scepticism ('a crazy price') be argued numerically instead of rhetorically. THE STRATEGIC RISK IS THE NEW PART. The same post argues the number 'landed the same week OpenAI made the decision a lot less necessary for its own enterprise customers': per @philipkiely of Baseten (2026-09-29 18:22 UTC, company-primary), 'Enterprise teams can now use open models like GLM-5.3 Flash and Kimi K3 natively in Codex and count spend against their OpenAI commit.' If model routing becomes a free feature inside the frontier labs' own coding agents, billed against commitments enterprises have already signed, then what Stripe is buying is a toll booth on a road one of the destinations is now paving itself — tracked at [[baseten-openai-open-models-2026-09]]. Recorded as an argument about the asset's durability, not as evidence about the deal. Status stays confirmed, verification stays partial: still no primary statement from either party, and no regulatory filing or close date."
 ---
 
 Stripe buying OpenRouter is a payments company buying a **metering and
