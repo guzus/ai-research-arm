@@ -1,0 +1,14 @@
+AI News - 2026-09-30
+
+TOP STORIES:
+• Trump, Zuckerberg, Musk, Huang, Brockman sign "morally binding" AI code of conduct
+• Anthropic: open-weight GLM-5.3 nearly matches Mythos Preview at exploit building
+• OpenAI: ChatGPT at 1.2B weekly users; DevDay adds Ultrafast tier, Decisions API
+• Deepseek + Huawei open-source Ascend chip tooling
+
+KEY NUMBERS:
+• ChatGPT 1.2B weekly users, ~$70B run rate
+• GLM-5.3 exploit chain cost $20.40
+• Restate $20M Series A (Singular)
+
+Full report on GitHub.
