@@ -3597,12 +3597,12 @@ function twitterAbLaneMeta(lane: string, dateStr: string): TwitterAbLaneMeta | u
   return TWITTER_AB_LANE_META[lane];
 }
 // The primary tier's model is resolved at run time by agent-run
-// (native Claude → Z.ai GLM; data/agent-backends.json fallback.chain), so
-// label the chain, not one model.
+// (native Claude → Cursor Grok; data/agent-backends.json twitter-primary
+// fallback_chain). This is current routing, not historical author provenance.
 const TWITTER_AB_PRIMARY_META = {
   label: 'Primary lane',
-  model: 'agent-run chain: claude-opus-5-5 → glm-5.3 · Z.ai',
-  harness: 'Claude Code',
+  model: 'Current route: claude-opus-5-5 → Grok 4.6 Fast · Cursor',
+  harness: 'Claude Code / Cursor CLI',
 };
 
 async function ensureTwitterAbIndex(signal?: AbortSignal): Promise<TwitterAbIndex> {
