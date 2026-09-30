@@ -1,0 +1,70 @@
+name: Native Claude Model Canary
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: Native model to verify before production rollout
+        type: choice
+        required: true
+        default: claude-opus-5-5
+        options:
+          - claude-opus-5-5
+          - claude-sonnet-5-5
+
+concurrency:
+  group: claude-native-canary-${{ inputs.model }}
+  cancel-in-progress: false
+
+jobs:
+  canary:
+    # Compatibility CI stays off the persistent production runner.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Prepare unpredictable read-only fixture
+        run: |
+          python3 - <<'PY'
+          import secrets
+          from pathlib import Path
+          Path(".tmp-claude-canary.txt").write_text(secrets.token_hex(16) + "\n")
+          PY
+
+      - name: Verify native model through the production harness
+        id: probe
+        uses: ./.github/actions/agent-run
+        with:
+          lane: claude-canary
+          native-model: ${{ inputs.model }}
+          fireworks-fallback: none
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          claude-args: >-
+            --model opus --max-turns 4 --tools Read --allowedTools Read
+            --strict-mcp-config --mcp-config '{"mcpServers":{}}'
+          prompt: |
+            This is a read-only compatibility probe, not a repository task.
+            Use the Read tool to read .tmp-claude-canary.txt exactly once.
+            Reply with only the exact text from that file. Do nothing else.
+
+      - name: Require served model and successful Read round trip
+        env:
+          EXECUTION_FILE: ${{ steps.probe.outputs.execution-file }}
+          EXPECTED_MODEL: ${{ inputs.model }}
+        run: |
+          python3 scripts/check_claude_canary.py "$EXECUTION_FILE" \
+            --model "$EXPECTED_MODEL" --fixture .tmp-claude-canary.txt
+          git diff --exit-code
+          git diff --cached --exit-code
+
+      - name: Remove fixture
+        if: always()
+        run: rm -f .tmp-claude-canary.txt
