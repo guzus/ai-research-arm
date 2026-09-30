@@ -8,6 +8,7 @@ __pycache__/
 /build/
 /dist/
 .venv/
+.uv-cache/
 venv/
 env/
 
