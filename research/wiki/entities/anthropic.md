@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; Reuters' S-1 read shows a $42B 2025 net loss and $518B of planned compute obligations against a target valuation above $2T.
+description: AI safety lab behind Claude; Frontier Red Team says freely downloadable GLM-5.3 crossed a cyber threshold on ExploitBench, a day after Reuters' S-1 read of a $42B 2025 net loss.
 created_at: 2026-05-24
-timestamp: 2026-09-29T00:00:00Z
+timestamp: 2026-09-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA model ticket — Claude Sonnet 5.5", path: research/models/tickets/anthropic-sonnet-5-5-2026-09.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
@@ -2295,3 +2296,64 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   here. See [[federal-ai-policy]] (Ars
   Technica, The Verge; ARA daily digest
   2026-09-29).
+
+## GLM-5.3 crosses a cyber threshold; S-1 names existential risk (2026-09-30)
+
+- **Anthropic's Frontier Red Team
+  says freely downloadable
+  [[zhipu-glm-5-3|GLM-5.3]]
+  crossed a cyber threshold.**
+  The model built working
+  browser exploits in **50 of
+  410** ExploitBench attempts
+  against [[claude-fable-5|Claude
+  Mythos Preview]]'s **56**, and
+  achieved full control-flow
+  hijacks in **4%** of trials
+  versus **6%** — where
+  [[claude-opus-4-8|Opus 4.6]]
+  and [[zhipu-glm-5-2|GLM-5.2]]
+  score zero. Anthropic's own
+  64–100% "engagement with
+  malicious requests under
+  bypass conditions" figure
+  supports reading the bench as
+  elicited willingness as much
+  as ceiling: Mythos Preview
+  still beat GLM-5.3 on both
+  metrics, and
+  [[moonshot-kimi-k3|Kimi K3]]
+  and
+  [[deepseek-v4-1-flash|DeepSeek
+  V4.1 Flash]] score near zero
+  despite being recent, large,
+  strong models. Ethan Mollick
+  flagged the conflict —
+  Anthropic sells a closed model
+  — and the open-weights
+  implication. See
+  [[agentic-ai-security]] and
+  [[open-weights]] (Anthropic
+  Frontier Red Team via Simon
+  Willison, Twitter; ARA daily
+  digest 2026-09-30).
+- **The leaked S-1 now names
+  "existential risks to
+  humanity" as an investor risk
+  factor**, on top of
+  yesterday's Reuters numbers
+  ($4.6B 2025 revenue, $8.06B
+  operating loss, $42B net loss,
+  $518B planned compute
+  obligations, listing likely
+  after the November midterms
+  at above $2T). Decoder places
+  Anthropic on a similar ~$70B
+  run-rate to [[openai]].
+  Anthropic signed the White
+  House Accord the same cycle.
+  See [[federal-ai-policy]] and
+  [[ai-capex]] (Reuters, Ars
+  Technica, The Decoder, The
+  Verge; ARA daily digest
+  2026-09-30).

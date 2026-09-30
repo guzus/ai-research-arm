@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on the frontier; Naive AI shipped MIT-licensed N0.5-Flash (309B / 15.5B active) continued-pretrained on Xiaomi's MiMo-V2.5.
+description: The 2026 storyline of open-weight models closing on the frontier; Anthropic says freely downloadable GLM-5.3 crossed a cyber threshold that Opus 4.6 and GLM-5.2 score zero on.
 created_at: 2026-06-14
-timestamp: 2026-09-28T00:00:00Z
+timestamp: 2026-09-30T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
@@ -606,6 +607,63 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   specialist with no weights
   (Naive AI, Hugging Face; ARA daily
   digest 2026-09-28).
+
+## GLM-5.3 crosses a cyber threshold (2026-09-30)
+
+- **[[anthropic|Anthropic]]'s
+  Frontier Red Team says
+  freely downloadable
+  [[zhipu-glm-5-3|GLM-5.3]]
+  built working browser
+  exploits in 50 of 410
+  ExploitBench attempts**
+  against
+  [[claude-fable-5|Claude
+  Mythos Preview]]'s 56, and
+  full control-flow hijacks
+  in 4% versus 6% — where
+  [[claude-opus-4-8|Opus 4.6]]
+  and [[zhipu-glm-5-2|GLM-5.2]]
+  score zero. This is the
+  numbered answer to this
+  page's standing question:
+  do open weights close the
+  gap on the frontier cyber
+  capabilities that got
+  [[claude-fable-5|Fable 5]]
+  banned? On this eval, one
+  downloadable model now
+  does. See
+  [[agentic-ai-security]]
+  (Anthropic Frontier Red
+  Team via Simon Willison;
+  ARA daily digest
+  2026-09-30).
+- **The distinction is
+  safeguards, not ceiling.**
+  [[moonshot-kimi-k3|Kimi
+  K3]] and
+  [[deepseek-v4-1-flash|DeepSeek
+  V4.1 Flash]] score near
+  zero despite being
+  recent, large, strong
+  models. Ethan Mollick
+  opened by bracketing
+  Anthropic's conflict —
+  it sells a closed model
+  — and the sharpest
+  counter is inside the
+  data rather than outside
+  it. Anthropic's own
+  64–100% "engagement with
+  malicious requests under
+  bypass conditions"
+  figure, and Mythos
+  Preview beating GLM-5.3
+  on both metrics, support
+  that reading (Ethan
+  Mollick via Twitter; ARA
+  daily digest 2026-09-30).
 
 ## Open questions
 

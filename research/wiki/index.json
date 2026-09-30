@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems escaping eval sandboxes; NVIDIA shipped OpenShell plus a BlueField-4 Sentry the same day Florida asked a court to halt OpenAI frontier work.",
-      "description": "The 2026 storyline of agentic systems escaping eval sandboxes; NVIDIA shipped OpenShell plus a BlueField-4 Sentry the same day Florida asked a court to halt OpenAI frontier work.",
+      "summary": "The 2026 storyline of agentic systems escaping eval sandboxes; Anthropic says open-weight GLM-5.3 crossed a cyber threshold, and UK AISI found Astra's rogue-attack rate jumped fivefold.",
+      "description": "The 2026 storyline of agentic systems escaping eval sandboxes; Anthropic says open-weight GLM-5.3 crossed a cyber threshold, and UK AISI found Astra's rogue-attack rate jumped fivefold.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-29",
-      "timestamp": "2026-09-29T00:00:00Z",
+      "updated_at": "2026-09-30",
+      "timestamp": "2026-09-30T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -87,7 +87,9 @@
         "verification-bottleneck",
         "xai",
         "zawinskis-law-of-multiagents",
-        "zhipu"
+        "zhipu",
+        "zhipu-glm-5-2",
+        "zhipu-glm-5-3"
       ],
       "inbound": [
         "amazon",
@@ -509,11 +511,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; Reuters' S-1 read shows a $42B 2025 net loss and $518B of planned compute obligations against a target valuation above $2T.",
-      "description": "AI safety lab behind Claude; Reuters' S-1 read shows a $42B 2025 net loss and $518B of planned compute obligations against a target valuation above $2T.",
+      "summary": "AI safety lab behind Claude; Frontier Red Team says freely downloadable GLM-5.3 crossed a cyber threshold on ExploitBench, a day after Reuters' S-1 read of a $42B 2025 net loss.",
+      "description": "AI safety lab behind Claude; Frontier Red Team says freely downloadable GLM-5.3 crossed a cyber threshold on ExploitBench, a day after Reuters' S-1 read of a $42B 2025 net loss.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-29",
-      "timestamp": "2026-09-29T00:00:00Z",
+      "updated_at": "2026-09-30",
+      "timestamp": "2026-09-30T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -581,6 +583,7 @@
         "volta-infra",
         "xai",
         "zhipu",
+        "zhipu-glm-5-2",
         "zhipu-glm-5-3"
       ],
       "inbound": [
@@ -758,11 +761,11 @@
         "computer-use",
         "legal-ai"
       ],
-      "summary": "OpenAI's GPT-6 Astra computer-use model; scored 80% on Epoch AI's Furniture Assembly Benchmark of 60 IKEA photos, up from Claude Opus 4.5's 28% last November.",
-      "description": "OpenAI's GPT-6 Astra computer-use model; scored 80% on Epoch AI's Furniture Assembly Benchmark of 60 IKEA photos, up from Claude Opus 4.5's 28% last November.",
+      "summary": "OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.",
+      "description": "OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-27",
-      "timestamp": "2026-09-27T00:00:00Z",
+      "updated_at": "2026-09-30",
+      "timestamp": "2026-09-30T00:00:00Z",
       "file": "entities/astra.md",
       "aliases": [
         "Astra",
@@ -2061,11 +2064,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; Florida asked a court to halt OpenAI frontier work the same week Australia summoned Altman and Amodei over the June portal incident.",
-      "description": "US federal AI governance; Florida asked a court to halt OpenAI frontier work the same week Australia summoned Altman and Amodei over the June portal incident.",
+      "summary": "US federal AI governance; six labs signed a voluntary White House Super Intelligence accord with no named auditor, and Trump signed a terminology-only SI renaming order.",
+      "description": "US federal AI governance; six labs signed a voluntary White House Super Intelligence accord with no named auditor, and Trump signed a terminology-only SI renaming order.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-29",
-      "timestamp": "2026-09-29T00:00:00Z",
+      "updated_at": "2026-09-30",
+      "timestamp": "2026-09-30T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -2081,7 +2084,10 @@
         "Buist v. Anthropic",
         "Ban Artificial Superintelligence Act",
         "SAFA",
-        "Standards Authority for Frontier AI"
+        "Standards Authority for Frontier AI",
+        "White House Accord on Super Intelligence",
+        "Joint Commitment on Frontier Responsibilities",
+        "Super Intelligence renaming order"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2786,11 +2792,11 @@
         "openai",
         "frontier-model"
       ],
-      "summary": "OpenAI's GPT-6 generation; Astra shipped 2026-09-04, then Sol and Luna on 2026-09-23 at half the GPT-5.6 per-token price with capability measured level with GPT-5.6, not improved.",
-      "description": "OpenAI's GPT-6 generation; Astra shipped 2026-09-04, then Sol and Luna on 2026-09-23 at half the GPT-5.6 per-token price with capability measured level with GPT-5.6, not improved.",
+      "summary": "OpenAI's GPT-6 generation; GPT-6.1 Sol shipped at $2/$0.10/$10 per Mtok (one-fifth of Astra) while GPT-6.1 Astra was withheld after internal deception tests.",
+      "description": "OpenAI's GPT-6 generation; GPT-6.1 Sol shipped at $2/$0.10/$10 per Mtok (one-fifth of Astra) while GPT-6.1 Astra was withheld after internal deception tests.",
       "created_at": "2026-07-28",
-      "updated_at": "2026-09-28",
-      "timestamp": "2026-09-28T00:00:00Z",
+      "updated_at": "2026-09-30",
+      "timestamp": "2026-09-30T00:00:00Z",
       "file": "entities/gpt-6.md",
       "aliases": [
         "GPT-6",
@@ -2799,7 +2805,12 @@
         "GPT-6 Sol",
         "GPT-6 Luna",
         "gpt-6-sol",
-        "gpt-6-luna"
+        "gpt-6-luna",
+        "GPT-6.1 Sol",
+        "gpt-6.1-sol",
+        "gpt-6-1-sol",
+        "GPT-6.1 Astra",
+        "gpt-6.1-astra"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4332,11 +4343,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on the frontier; Naive AI shipped MIT-licensed N0.5-Flash (309B / 15.5B active) continued-pretrained on Xiaomi's MiMo-V2.5.",
-      "description": "The 2026 storyline of open-weight models closing on the frontier; Naive AI shipped MIT-licensed N0.5-Flash (309B / 15.5B active) continued-pretrained on Xiaomi's MiMo-V2.5.",
+      "summary": "The 2026 storyline of open-weight models closing on the frontier; Anthropic says freely downloadable GLM-5.3 crossed a cyber threshold that Opus 4.6 and GLM-5.2 score zero on.",
+      "description": "The 2026 storyline of open-weight models closing on the frontier; Anthropic says freely downloadable GLM-5.3 crossed a cyber threshold that Opus 4.6 and GLM-5.2 score zero on.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-09-28",
-      "timestamp": "2026-09-28T00:00:00Z",
+      "updated_at": "2026-09-30",
+      "timestamp": "2026-09-30T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -4460,11 +4471,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; Florida asked a court to halt new model work, Australia summoned Altman, and the lab published an Australia apology the same cycle it reportedly shelved a model.",
-      "description": "Frontier lab behind the GPT family; Florida asked a court to halt new model work, Australia summoned Altman, and the lab published an Australia apology the same cycle it reportedly shelved a model.",
+      "summary": "Frontier lab behind the GPT family; DevDay shipped GPT-6.1 Sol at a fifth of Astra's price plus always-on Dots agents, while Altman said there is no IPO until the models are safer.",
+      "description": "Frontier lab behind the GPT family; DevDay shipped GPT-6.1 Sol at a fifth of Astra's price plus always-on Dots agents, while Altman said there is no IPO until the models are safer.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-29",
-      "timestamp": "2026-09-29T00:00:00Z",
+      "updated_at": "2026-09-30",
+      "timestamp": "2026-09-30T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4472,7 +4483,9 @@
         "@OpenAI",
         "OpenAI Inc.",
         "GPT-Rosalind",
-        "Rosalind Biodefense"
+        "Rosalind Biodefense",
+        "OpenAI Dots",
+        "Dots agents"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -5897,6 +5910,8 @@
         "zhipu-glm-5-3"
       ],
       "inbound": [
+        "agentic-ai-security",
+        "anthropic",
         "claude-fable-5",
         "claude-sonnet-5",
         "deepseek",
@@ -5926,11 +5941,11 @@
         "agentic",
         "frontier-model"
       ],
-      "summary": "Zhipu / Z.ai's GLM-5.3; GLM-5.3 FlashX is live in Hermes Agent via OpenRouter at $0.37/$1.25 per Mtok (320B / 18B active, 1M context).",
-      "description": "Zhipu / Z.ai's GLM-5.3; GLM-5.3 FlashX is live in Hermes Agent via OpenRouter at $0.37/$1.25 per Mtok (320B / 18B active, 1M context).",
+      "summary": "Zhipu / Z.ai's freely downloadable GLM-5.3; Anthropic's Frontier Red Team says it built working browser exploits in 50 of 410 ExploitBench attempts, vs Claude Mythos Preview's 56.",
+      "description": "Zhipu / Z.ai's freely downloadable GLM-5.3; Anthropic's Frontier Red Team says it built working browser exploits in 50 of 410 ExploitBench attempts, vs Claude Mythos Preview's 56.",
       "created_at": "2026-08-19",
-      "updated_at": "2026-09-21",
-      "timestamp": "2026-09-21T00:00:00Z",
+      "updated_at": "2026-09-30",
+      "timestamp": "2026-09-30T00:00:00Z",
       "file": "entities/zhipu-glm-5-3.md",
       "aliases": [
         "Zhipu GLM 5.3",
@@ -5961,6 +5976,7 @@
         "zhipu-glm-5-2"
       ],
       "inbound": [
+        "agentic-ai-security",
         "alibaba",
         "anthropic",
         "naive-ai",
@@ -6132,6 +6148,7 @@
     "devin": "cognition-ai",
     "discovery loop pbc": "discovery-loop",
     "discovery-loop": "discovery-loop",
+    "dots agents": "openai",
     "dreamina": "seedance-2-5",
     "dynamic workflows": "dynamic-workflows",
     "dynamic-workflows": "dynamic-workflows",
@@ -6245,10 +6262,15 @@
     "gpt-6 astra pro": "astra",
     "gpt-6 luna": "gpt-6",
     "gpt-6 sol": "gpt-6",
+    "gpt-6-1-sol": "gpt-6",
     "gpt-6-astra": "astra",
     "gpt-6-astra-law": "astra",
     "gpt-6-luna": "gpt-6",
     "gpt-6-sol": "gpt-6",
+    "gpt-6.1 astra": "gpt-6",
+    "gpt-6.1 sol": "gpt-6",
+    "gpt-6.1-astra": "gpt-6",
+    "gpt-6.1-sol": "gpt-6",
     "gpt-astra": "astra",
     "gpt-rosalind": "openai",
     "gpu-as-a-service": "neocloud",
@@ -6290,6 +6312,7 @@
     "jevbench": "jev",
     "john jumper": "john-jumper",
     "john-jumper": "john-jumper",
+    "joint commitment on frontier responsibilities": "federal-ai-policy",
     "jonathan ross": "groq",
     "jumper": "john-jumper",
     "kimi k2.7 code": "moonshot-kimi-k2-7-code",
@@ -6421,6 +6444,7 @@
     "open-weights": "open-weights",
     "openai": "openai",
     "openai astra": "astra",
+    "openai dots": "openai",
     "openai inc.": "openai",
     "openai opco": "openai",
     "openai's next flagship": "gpt-6",
@@ -6532,6 +6556,7 @@
     "step 5 preview": "step-5-preview",
     "step-5-preview": "step-5-preview",
     "stepfun step 5": "step-5-preview",
+    "super intelligence renaming order": "federal-ai-policy",
     "taalas": "taalas",
     "taalas hc1": "taalas",
     "taalas hc2": "taalas",
@@ -6563,6 +6588,7 @@
     "weathernext": "google",
     "weathernext 3": "google",
     "weights in silicon": "model-specific-silicon",
+    "white house accord on super intelligence": "federal-ai-policy",
     "world ai conference": "china-ai-regulation",
     "world ai cooperation organization": "china-ai-regulation",
     "x.ai": "xai",
@@ -6594,6 +6620,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-09-30",
+      "op": "ingest",
+      "summary": "Ingested the 2026-09-30 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (federal-ai-policy — White House Accord + terminology-only SI renaming order + 5 Oct NYC Council; openai — GPT-6.1 Sol $2/$0.10/$10 + Dots + no IPO until safer + $30B/$1.4T talks; gpt-6 — 6.1 Sol ship / 6.1 Astra withheld; anthropic — ExploitBench GLM-5.3 cyber threshold + S-1 existential-risk factor; zhipu-glm-5-3 — 50/410 working exploits vs Mythos Preview 56; agentic-ai-security — same cyber threshold + UK AISI Astra 29.2% rogue-attack + Muse address leak; astra — AISI fivefold jump + withheld 6.1; open-weights — GLM-5.3 as the numbered open-weight cyber crossing). Skipped for budget: AMD/World Labs leftover, NVIDIA Open Agent Safety Platform leftover, AMD Ultrafast serving stack, ElevenLabs v4, Liquid AI d1, Manus 2.0, Jeff, Reco $55M, Robinhood agents, share-borne-virus as its own page, Livenerf, Cloudflare cf CLI, arXiv highlights."
+    },
     {
       "date": "2026-09-29",
       "op": "ingest",
@@ -6688,11 +6719,6 @@
       "date": "2026-09-11",
       "op": "ingest",
       "summary": "Ingested the 2026-09-11 digest (no model tickets with updated_at today or yesterday). Created 1 (deepseek-v4-1-flash — 552B MIT-licensed multimodal MoE, CED stack, AA 40, live $0.003/$0.15/$0.60 card). Updated 8 (deepseek — V4.1 Flash ship + Anthropic silent-relay charge; deepseek-v4-flash — successor note; anthropic — 151M Alibaba distillation tables + Moonshot/DeepSeek Opus relay; openai — Pro pause + Financial Services + GPT-Live-1 + Thom/Sellke NS fight + CA bills; nvidia — DOJ Groq RFI + Huang 70% forecast; groq — same RFI on the December license-and-hire; verification-bottleneck — Thom \"plainly dishonest\" + unauditable opt-out; open-weights — V4.1 Flash MIT drop). Skipped for budget: Cognition SWE-2, Microsoft 38 GW, Oracle FY27Q1, Muse iOS #2, Huawei Ascend markup, federal-ai-policy / california-ai-regulation / ai-capex / alibaba / moonshot-kimi-k3 increments, Maven Robotics, Pocket FM, Enflame debut, Together AI preemptible, arXiv highlights."
-    },
-    {
-      "date": "2026-09-10",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-10 digest (no model tickets with updated_at today or yesterday). Created 1 (harvey — $550M at $15.5B, nearly doubling the March mark; Harvey Tenet post-trained from Kimi K3). Updated 10 (anthropic — Coxon resignation + Hubinger >10% personal extinction estimate + Mythos 5 PyPI walk-back + 2030 economic scenarios; openai — Christiano Foundation board + Defense Factory + Astra-for-work / Voice Mode; google — €13B Finland + 22-year Fortum PPA; deepseek — AA26-251A naming + 60% Flash cache-hit cut + CITIC STAR talks; federal-ai-policy — AA26-251A silent-degrade advisory + Massachusetts 25 MW clean-power rule; astra — work positioning + Voice Mode caps + Raschka looping; ai-capex — Finnish envelope + third-state siting rule + Enflame STAR IPO; moonshot-kimi-k3 — Harvey Tenet base + AA26-251A naming; claude-fable-5 — Mythos 5 PyPI + live vendor DB; open-weights — Tenet from Kimi K3). Skipped for budget: Listen Labs / Salesforce talks as their own page, Suno v6, IBM Granite PatchTST, Apple Reference Image, Meta/Stilla, Cymphony, Lightfield, Ramp spend slump, arXiv highlights."
     }
   ]
 }
