@@ -722,7 +722,7 @@ class RoutingInvariants(unittest.TestCase):
         self.assertIn('--model "$GEN_MODEL"', workflow)
         # Fable gets exactly one model-action attempt: the recovery retry is
         # gated on the subscription-billed lanes only, and fable-5 is not one.
-        retry_gate = ("if: contains(fromJSON('[\"claude\",\"opus-5\"]'), "
+        retry_gate = ("if: contains(fromJSON('[\"claude\",\"opus-5-5\"]'), "
                       "steps.effective.outputs.backend)\n        id: claude-attempt-1")
         self.assertIn(retry_gate, workflow)
         self.assertNotIn("fable-5\"]'), steps.effective.outputs.backend)\n        id: claude-attempt-1",
@@ -733,25 +733,25 @@ class RoutingInvariants(unittest.TestCase):
         # Fable is never reachable without asking for it by name.
         self.assertNotEqual(self.lanes["generative-research-default"]["backend"], "fable-5")
 
-    def test_gen_research_opus_5_is_explicit_and_provenance_checked(self):
+    def test_gen_research_opus_5_5_is_explicit_and_provenance_checked(self):
         workflow = (REPO_ROOT / ".github" / "workflows" /
                     "generative-research.yml").read_text(encoding="utf-8")
         selected = resolve_generative(load_generative_config(LANES_FILE), "opus5")
-        self.assertEqual("opus-5", selected.selector)
+        self.assertEqual("opus-5-5", selected.selector)
         # Served model is pinned from the single resolver output, so an
-        # opus-5-labelled article can never be authored by Sonnet.
-        self.assertEqual("claude-opus-5", selected.provenance_model)
+        # opus-5-5-labelled article can never be authored by Sonnet.
+        self.assertEqual("claude-opus-5-5", selected.provenance_model)
         # Runs on the shared native-Claude model step, and its committed
         # index row is provenance-verified before the push.
-        self.assertIn('contains(fromJSON(\'["claude","fable-5","opus-5"]\'), '
+        self.assertIn('contains(fromJSON(\'["claude","fable-5","opus-5-5"]\'), '
                       'steps.effective.outputs.backend)', workflow)
         self.assertIn("EXPECTED_MODEL: ${{ steps.backend.outputs.provenance_model }}", workflow)
-        # Opus 5 is the SSOT default: manual dispatch with no backend input,
+        # Opus 5.5 is the SSOT default: manual dispatch with no backend input,
         # gen-research issues, and hourly-twitter's auto-research all inherit
         # it. The workflow must keep resolving that default at runtime rather
         # than hard-coding a backend of its own.
         self.assertEqual(self.lanes["generative-research-default"]["backend"],
-                         "claude-opus-5")
+                         "claude-opus-5-5")
         self.assertIn("generative-research-default",
                       self.obs["generative-research.yml"].resolver_lanes)
         # The Fireworks-unavailable fallback is deliberately NOT the default:
@@ -800,7 +800,7 @@ class RoutingInvariants(unittest.TestCase):
                 expected = "backend=default" if event_name == "workflow_dispatch" else "backend=default"
                 self.assertIn(expected, output.read().decode("utf-8"))
         self.assertEqual(
-            "opus-5",
+            "opus-5-5",
             resolve_generative(load_generative_config(LANES_FILE), "default").selector,
         )
 
@@ -3319,7 +3319,7 @@ class RoutingInvariants(unittest.TestCase):
         ai_news = [ln for ln in matrix.splitlines()
                    if ln.startswith("| ai-news-research ")]
         self.assertEqual(1, len(ai_news), matrix)
-        self.assertIn("claude-sonnet-5", ai_news[0])
+        self.assertIn("claude-sonnet-5-5", ai_news[0])
         self.assertIn("native-model` override", ai_news[0])
 
     def test_readme_diagram_generated_and_deterministic(self):
@@ -3328,7 +3328,7 @@ class RoutingInvariants(unittest.TestCase):
         _, diagram2 = build_generated_blocks()
         self.assertEqual(diagram1, diagram2)
         self.assertIn("flowchart LR", diagram1)
-        self.assertIn("claude-sonnet-5", diagram1)
+        self.assertIn("claude-sonnet-5-5", diagram1)
         self.assertIn("fallback chain: `claude`", diagram1)
         self.assertIn("zai-canary", diagram1)
 

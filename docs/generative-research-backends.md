@@ -9,9 +9,9 @@ research pipeline:
 | Dispatch value | Served model | Auth path | Notes |
 |---|---|---|---|
 | `glm-5p2` | `GLM 5.2` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Opt-in Fireworks route. Routes through `accounts/fireworks/models/glm-5p2` and records `glm-5p2` in article metadata. Uses the same retry, quality-gate, verifier, methodology-artifact, and safe-push path as `deepseek-v4-flash`. |
-| `claude` | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit native Anthropic Claude Code path and default fallback when a Fireworks backend is unavailable. The workflow pins `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-sonnet-5`, so the Claude Code `opus` alias resolves to Sonnet 5 for this lane. |
+| `claude` | `claude-sonnet-5-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit native Anthropic Claude Code path and default fallback when a Fireworks backend is unavailable. The workflow pins `ANTHROPIC_DEFAULT_OPUS_MODEL=claude-sonnet-5-5`, so the Claude Code `opus` alias resolves to Sonnet 5.5 for this lane. |
 | `fable-5` | `claude-fable-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Explicit premium native Anthropic path for deliberate one-off runs. It is never the default or a fallback target, and it gets one model-action attempt rather than Claude's automatic recovery retry. The workflow passes the literal model ID to Claude Code and resolves every alias/subagent pin plus article metadata from `claude-fable-5`, preventing a Fable-labeled article from silently running on Sonnet. |
-| `opus-5` | `claude-opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | **The default** (SSOT lane `generative-research-default`) for manual no-backend dispatches, `gen-research` issues, and throttled Twitter auto-research. Premium native Anthropic route. It is not the Fireworks-unavailable fallback target. The workflow pins the literal model ID across every alias/subagent slot and article metadata, and verifies the committed `index.json` row records `claude-opus-5` before pushing. Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
+| `opus-5-5` | `claude-opus-5-5` | `CLAUDE_CODE_OAUTH_TOKEN` | **The default** (SSOT lane `generative-research-default`) for manual no-backend dispatches, `gen-research` issues, and throttled Twitter auto-research. Premium native Anthropic route. It is not the Fireworks-unavailable fallback target. The workflow pins the literal model ID across every alias/subagent slot and article metadata, and verifies the committed `index.json` row records `claude-opus-5-5` before pushing. Selectors: `opus-5-5`, `opus-5.5`, `opus55`, `claude-opus-5-5`. Legacy `opus-5`, `opus5`, and `claude-opus-5` dispatches resolve to the same 5.5 model. |
 | `codex` | Codex CLI default model for ChatGPT auth | `CODEX_AUTH_JSON` seeded into file-backed `auth.json` | Optional Codex backend using ChatGPT-managed Codex auth rather than OpenAI API billing. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
 | `opencode-deepseek-v4-flash` | `deepseek-v4-flash` (1M context, the 2026-07-31 build) via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription), read directly from env by opencode's built-in `opencode-go` provider. Moonshot serves Kimi only and is not a fallback. | Explicit isolated comparison backend; the production editorial route now prioritizes the separate `opencode-glm-5p3-flash` profile. No interactive login or auth-file seeding. Strict: preflight failure fails rather than substituting another author. Article metadata records `deepseek-v4-flash`. Validate with `opencode-deepseek-canary.yml`. |
 | `opencode-muse-spark-1p3-contributor` | Meta Muse Spark 1.3 Contributor via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription) | Explicit isolated backend using `opencode-go/muse-spark-1.3-contributor` and the provider's OpenAI Responses transport. Region-limited. Requires explicit OpenCode workspace consent because prompts and outputs may be used for model improvement. Strict: never substitutes another author. Article metadata records `muse-spark-1.3-contributor`. It is not a production editorial route. |
@@ -476,7 +476,7 @@ to restore the strict behavior (fail instead of substituting Claude) for
 backend-comparison runs. Fallback runs are honest about provenance: a
 `::warning` annotation records the reroute, the hooker telemetry payload
 carries `backend` (effective) + `requested_backend` + `used_fallback`, and the
-published article records `model claude-opus-4-8` with tags
+published article records `model claude-sonnet-5-5` with tags
 `fireworks-fallback,requested-<backend>` in `research/generative/index.json` —
 a fallback article never masquerades as a Fireworks one. Transient statuses
 such as a lone `429` still proceed to the existing Fireworks retry path. The
@@ -541,9 +541,9 @@ gh workflow run generative-research.yml \
 
 gh workflow run generative-research.yml \
   -f topic="$TOPIC" \
-  -f slug="qa-opus-5-power-bottlenecks" \
-  -f backend=opus-5 \
-  -f tags="qa,comparison,opus-5"
+  -f slug="qa-opus-5-5-power-bottlenecks" \
+  -f backend=opus-5-5 \
+  -f tags="qa,comparison,opus-5-5"
 ```
 
 Each run executes the same writer contract, ARA DSL validation,
@@ -571,13 +571,13 @@ The expected difference is the model backend:
   Draft recovery is limited to the
   workflow's run-scoped `$GEN_DRAFT` path, so a self-hosted runner cannot
   reuse stale `/tmp/gen-research*.ara.md` content from another backend or run.
-- Claude: native Anthropic endpoint, `claude-sonnet-5` metadata in
+- Claude: native Anthropic endpoint, `claude-sonnet-5-5` metadata in
   `research/generative/index.json`.
 - Fable 5: native Anthropic endpoint, `claude-fable-5` metadata in
   `research/generative/index.json`. This opt-in selector does not change the
   normal `claude` or default routes, and it does not enter the Claude
   model-action retry path.
-- Opus 5: native Anthropic endpoint, `claude-opus-5` metadata in
+- Opus 5.5: native Anthropic endpoint, `claude-opus-5-5` metadata in
   `research/generative/index.json`. This is what a no-`backend` dispatch
   resolves to, and it DOES use the Claude recovery retry (same subscription
   billing as `claude`). Both explicit-model selectors share one provenance gate: the

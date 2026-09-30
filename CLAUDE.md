@@ -182,7 +182,7 @@ commit contracts: `require-output` proves every expected pathspec changed
 agent may commit), and `require-diff-scope` proves the committed diff since
 the pre-agent SHA stays inside those paths. PR/review/on-demand Claude
 workflows may still call the action directly; when they do, pass the model
-through `claude_args` (`"--model claude-sonnet-5"`) — never as a separate
+through `claude_args` (`"--model claude-sonnet-5-5"`) — never as a separate
 `model:` input.
 
 **Most editorial lanes fail CLOSED — only the digest self-heals.** RSS,
@@ -329,21 +329,36 @@ false `deploy-stale` alerts. Do not "fix" any of these omissions.
 | `production-synthetic.yml` | every 2h `:17` + manual dispatch | GitHub-hosted external checks for canonical routes, discovery files, real 404s, response headers, and Cloudflare's browser/search/AI-crawler user-agent policy; alerts through Hooker/Telegram on any contract failure. |
 | `claude.yml` | `@claude` mention in issue/PR/review | Interactive Claude-Code agent |
 | `claude-code-review.yml` | PR opened/synced | Automated Claude code review |
-| `twitter-model-ab.yml` | manual dispatch | Same-input, parity-locked model A/B eval (leg A = the production `fallback.native_model`, `claude-opus-5` since 2026-08-01, vs GLM-5.3 via Z.ai — leg `zai-glm-5p3`; results dated before 2026-09-06 requested `glm-5.2`) on the Twitter-summary workload with a blinded position-swapped Opus judge → `research/eval/twitter-ab/`. Its temporary daily evaluation schedule was retired after the evaluation window. Contract: [`docs/twitter-model-ab.md`](docs/twitter-model-ab.md). |
+| `twitter-model-ab.yml` | manual dispatch | Same-input, parity-locked model A/B eval (leg A = the production `fallback.native_model`, `claude-opus-5-5` since 2026-09-30 (Opus 5 from 2026-08-01), vs GLM-5.3 via Z.ai — leg `zai-glm-5p3`; results dated before 2026-09-06 requested `glm-5.2`) on the Twitter-summary workload with a blinded position-swapped Opus judge → `research/eval/twitter-ab/`. Its temporary daily evaluation schedule was retired after the evaluation window. Contract: [`docs/twitter-model-ab.md`](docs/twitter-model-ab.md). |
 
 **Model convention:** scheduled workflows pass `--model opus`, but
 `agent-run` remaps that alias to whatever the resolved backend serves —
 the Fireworks or Z.ai profile model, or `native-model` (default
-**`claude-opus-5`** since 2026-08-01 — was `claude-sonnet-5`) on the
+**`claude-opus-5-5`** since 2026-09-30; previously Opus 5 since 2026-08-01) on the
 native path. A caller can preserve a cheaper native model while retaining a
 lane-compatible fallback by setting `native-model` (no-MCP AI news pins Sonnet
-5 this way). Direct Claude workflows are NOT covered by that default:
+5.5 this way). Direct Claude workflows are NOT covered by that default:
 the mirror lanes (`claude.yml`, `claude-code-review.yml`,
 the MCP variant of `ai-news-research.yml`, `daily-improve.yml`, `research-issue.yml`,
-`twitter-account-explorer.yml`) still pin `--model claude-sonnet-5`
+`twitter-account-explorer.yml`) still pin `--model claude-sonnet-5-5`
 literally via `claude_args`, and the README diagram's `native` node is
 where that split is visible. Read the workflow file rather than assuming
 one provider everywhere.
+
+The Claude action is pinned to **v1.0.237 / Claude Code 2.1.285**.
+Opus 5.5 requires CLI ≥2.1.280 and Sonnet 5.5 requires ≥2.1.284
+([Anthropic model configuration](https://code.claude.com/docs/en/model-config)).
+Both keep the CLI's default effort (medium); no explicit effort override is
+introduced. Before changing native model routing, use the manual, strict
+read-only canary with the existing OAuth credential:
+
+```bash
+gh workflow run claude-native-canary.yml -f model=claude-opus-5-5
+gh workflow run claude-native-canary.yml -f model=claude-sonnet-5-5
+```
+
+The canary checks served model identity and a Read-tool round trip without
+publishing. The auth-only preflight cannot prove model availability.
 
 ## Backends
 
@@ -365,7 +380,7 @@ derivable from the SSOT.
 
 | Backend | When | Auth | Notes |
 |---|---|---|---|
-| **Claude** | Default for remaining `agent-run` production lanes; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic, model **`claude-opus-5`** through `fallback.native_model`. Leads the agent-run fallback chain. Host-checkout agent-run is not a compatible isolated editorial adapter, so the five routed editorial lanes cannot select this profile today. |
+| **Claude** | Default for remaining `agent-run` production lanes; `generative-research backend=claude` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic, model **`claude-opus-5-5`** through `fallback.native_model`. Leads the agent-run fallback chain. Host-checkout agent-run is not a compatible isolated editorial adapter, so the five routed editorial lanes cannot select this profile today. |
 | **GLM 5.3 (via Z.ai Coding Plan)** | Second link in the fallback chain; `agent-run backend=zai-glm-5p3`; default manual `hourly-twitter.yml` backend; `zai-claude-code-canary.yml` | `ZAI_API_KEY` | Anthropic-compatible Claude Code endpoint `https://api.z.ai/api/anthropic`, model `glm-5.3`, `CLAUDE_CODE_AUTO_COMPACT_WINDOW=1000000`. Bumped from `glm-5.2` on 2026-09-06: the Coding Plan serves exactly GLM-5.3 and GLM-5.3-Flash and was already routing `glm-5.2` requests to 5.3 upstream, so the rename makes the label match what answers. Use the plain id — `glm-5.3-flash` 404s on the Anthropic-compat proxy, and the earlier `glm-5.2[1m]` suffix was rejected as `Unknown Model` (canary run `28751367808`) — keep the endpoint-valid id unless a raw probe proves otherwise; the canary's `model` dispatch input exists to run that probe before touching the SSOT. Because it shares the harness and sandbox but not the credential, **the canary is the fastest way to tell a dead Claude token from a broken runner**. Selectors: `zai-glm-5p3`, `zai-glm-5.3`, `zai-glm53`, `zai`; legacy `zai-glm-5p2`, `zai-glm-5.2`, `zai-glm52` stay resolvable as aliases (pinned by `test_select_backend.py`) because external dispatches use them. Output dirs (`research/twitter-zai/`, lane key `twitter-zai`) are unchanged — same convention as `twitter-opencode-kimi`. |
 | **GLM 5.2 (via Fireworks)** | `generative-research backend=glm-5p2` | `FIREWORKS_API_KEY` | Model `accounts/fireworks/models/glm-5p2`. Selectors: `fireworks-glm-5p2`, `glm-5p2`, `glm`. In `generative-research.yml` the workflow-level `fireworks_fallback` input falls back to native Claude by default. |
 | **DeepSeek V4 Flash (via Fireworks)** | Low-cost/comparison: `generative-research backend=deepseek-v4-flash`; `hourly-twitter.yml` DeepSeek tiers | `FIREWORKS_API_KEY` | Endpoint `https://api.fireworks.ai/inference` (base URL omits `/v1`; the client appends `/v1/messages`), model `accounts/fireworks/models/deepseek-v4-flash`. Overrides `ANTHROPIC_BASE_URL`/`AUTH_TOKEN`/`MODEL` so the Claude action transparently calls Fireworks. The direct DeepSeek API is retired (billing). Scheduled DeepSeek lanes are STRICT comparison tiers that never fall back. |
@@ -373,7 +388,7 @@ derivable from the SSOT.
 | **DeepSeek V4 Flash (via opencode)** | Explicit `generative-research` and `hourly-twitter` selector; and `opencode-deepseek-canary.yml` | `OPENCODE_API_KEY` (Go plan) | Retained comparison/diagnostic profile pinned to `opencode-go/deepseek-v4-flash` — the **2026-07-31** release. 1M ctx, $0.07/$0.14 per Mtok on the $10/mo Go plan (caps $12/5h, $30/wk, $60/mo). It is no longer the production editorial priority. Moonshot serves Kimi only and is not a fallback. |
 | **Meta Muse Spark 1.3 Contributor (via OpenCode)** | Explicit `generative-research backend=opencode-muse-spark-1p3-contributor`; opt-in OpenCode canary probe | `OPENCODE_API_KEY` (Go plan) | Official ref `opencode-go/muse-spark-1.3-contributor`. Uses OpenAI Responses transport, is region-limited, and requires workspace consent to Contributor model-improvement data collection. It is intentionally absent from production editorial routes; the writer records the exact bare model id. |
 | **Grok 4.6 Fast (via Cursor CLI)** | Both strict editorial routes during the OpenCode incident; lane-local standby for compatible local digest/Twitter/no-MCP AI-news; explicit generative/Twitter selector; canary; translation | `CURSOR_API_KEY` | Official Cursor Agent CLI (`agent`) inside `run-cursor-container`, same isolation contract as OpenCode. Model **`cursor-grok-4.6-high-fast`**. Nested sandbox disabled (container is the boundary). Never on global `fallback.chain`: only named lane-local chains may cross into Cursor, and exact path/mode contracts apply. MCP AI-news is excluded because Cursor policy denies MCP. Validate with `cursor-cli-canary.yml`. |
-| **Opus 5 (native)** | **The `generative-research` default** plus explicit `generative-research` `backend=opus-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic on **`claude-opus-5`**. Not the Fireworks-unavailable fallback target. The resolved model pins `--model`, every `ANTHROPIC_DEFAULT_*` alias, and `CLAUDE_CODE_SUBAGENT_MODEL`; a pre-push gate verifies provenance. Selectors: `opus-5`, `opus5`, `claude-opus-5`. |
+| **Opus 5.5 (native)** | **The `generative-research` default** plus explicit `generative-research` `backend=opus-5-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic on **`claude-opus-5-5`**. Not the Fireworks-unavailable fallback target. The resolved model pins `--model`, every `ANTHROPIC_DEFAULT_*` alias, and `CLAUDE_CODE_SUBAGENT_MODEL`; a pre-push gate verifies provenance. Selectors: `opus-5-5`, `opus-5.5`, `opus55`, `claude-opus-5-5`. Legacy `opus-5`, `opus5`, and `claude-opus-5` dispatches resolve to the same 5.5 model. |
 | **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage bills against the ChatGPT/Codex subscription, not the API. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p7`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
 | **Local Oracle (GPT-5.5 Pro)** | `scripts/run_generative_research_oracle.py` | Local `../oracle` checkout (browser engine by default) | Runs entirely on the developer machine; outputs go through the same `check_generative_research.py` → `write_generative_research.py` contract. Source metadata: `local-oracle`. |

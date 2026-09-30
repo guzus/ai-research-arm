@@ -80,7 +80,7 @@ on:
         description: >-
           Claude tier only — native Anthropic model id served by the
           `--model opus` alias for this run (e.g. claude-fable-5-1,
-          claude-opus-5). Empty = the SSOT fallback.native_model. Rejected
+          claude-opus-5-5). Empty = the SSOT fallback.native_model. Rejected
           for any other backend so a requested model is never silently
           ignored. Premium models bill the shared subscription window —
           use for deliberate one-off comparisons, not as a standing default.

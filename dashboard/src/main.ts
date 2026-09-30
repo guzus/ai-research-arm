@@ -3601,7 +3601,7 @@ function twitterAbLaneMeta(lane: string, dateStr: string): TwitterAbLaneMeta | u
 // label the chain, not one model.
 const TWITTER_AB_PRIMARY_META = {
   label: 'Primary lane',
-  model: 'agent-run chain: claude-opus-5 → glm-5.3 · Z.ai',
+  model: 'agent-run chain: claude-opus-5-5 → glm-5.3 · Z.ai',
   harness: 'Claude Code',
 };
 

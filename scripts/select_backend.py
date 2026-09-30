@@ -165,7 +165,7 @@ def probe_claude(model: str) -> tuple[bool, str]:
     if not token:
         return False, "CLAUDE_CODE_OAUTH_TOKEN is not configured"
     try:
-        status, body = request_oauth_preflight(token, model or "claude-sonnet-5")
+        status, body = request_oauth_preflight(token, model or "claude-sonnet-5-5")
     except Exception as exc:  # noqa: BLE001 - a probe must not crash selection
         # Fail OPEN: a transient network fault is not evidence the
         # credential is dead, and rerouting the fleet on a blip is worse
