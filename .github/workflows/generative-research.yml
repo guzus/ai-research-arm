@@ -1681,7 +1681,28 @@ jobs:
                         --qsanity \
                         --strict-shape
 
-                 c. Exit 0 → proceed to step 8. Soft warnings printed
+                 c. Run the verifier audit as a SEPARATE command so
+                    its audit-only mode cannot skip the quality and
+                    methodology checks above:
+
+                      uv run python scripts/check_generative_research.py \
+                        "$GEN_DRAFT" \
+                        --audit-verifier-findings "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+
+                    If it fails, revise only the flagged claims and
+                    rerun BOTH checks. Demote the WHOLE unsupported
+                    sentence with `==unverified: ...==`, including
+                    every repeated occurrence, or remove it; marking
+                    only a number leaves the rest of the claim live.
+                    A supported replacement must also pass the audit.
+                    Keep the verifier findings unchanged — do not
+                    relabel verdicts or delete entries to make it pass.
+                    These targeted repairs finish step 7's bounded
+                    revision; do not restart or expand the research.
+                    Missing or malformed findings are blocking errors.
+
+                 d. BOTH commands must exit 0 before step 8 or the
+                    writer. Soft warnings printed
                     on stderr are advisory — read them and consider
                     whether the flagged section would read better
                     with a viz, but they don't block. qsanity warnings
@@ -1713,7 +1734,7 @@ jobs:
                       - refs too few → run more research waves; you
                         need at least 20 distinct source URLs in
                         the :::references block
-                 d. This loop is cheap — token cost is just reading
+                 e. This loop is cheap — token cost is just reading
                     short error messages. Lean on it instead of
                     self-validating against the rule list in prose.
 
@@ -3155,7 +3176,28 @@ jobs:
                         --qsanity \
                         --strict-shape
 
-                 c. Exit 0 → proceed to step 8. Soft warnings printed
+                 c. Run the verifier audit as a SEPARATE command so
+                    its audit-only mode cannot skip the quality and
+                    methodology checks above:
+
+                      uv run python scripts/check_generative_research.py \
+                        "$GEN_DRAFT" \
+                        --audit-verifier-findings "$GITHUB_WORKSPACE/.gen-verifier-findings.json"
+
+                    If it fails, revise only the flagged claims and
+                    rerun BOTH checks. Demote the WHOLE unsupported
+                    sentence with `==unverified: ...==`, including
+                    every repeated occurrence, or remove it; marking
+                    only a number leaves the rest of the claim live.
+                    A supported replacement must also pass the audit.
+                    Keep the verifier findings unchanged — do not
+                    relabel verdicts or delete entries to make it pass.
+                    These targeted repairs finish step 7's bounded
+                    revision; do not restart or expand the research.
+                    Missing or malformed findings are blocking errors.
+
+                 d. BOTH commands must exit 0 before step 8 or the
+                    writer. Soft warnings printed
                     on stderr are advisory — read them and consider
                     whether the flagged section would read better
                     with a viz, but they don't block. qsanity warnings
@@ -3187,7 +3229,7 @@ jobs:
                       - refs too few → run more research waves; you
                         need at least 20 distinct source URLs in
                         the :::references block
-                 d. This loop is cheap — token cost is just reading
+                 e. This loop is cheap — token cost is just reading
                     short error messages. Lean on it instead of
                     self-validating against the rule list in prose.
 
