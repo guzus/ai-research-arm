@@ -1,0 +1,11 @@
+Speaker 1: Wednesday, September thirtieth, twenty twenty-six.
+Speaker 2: [high_energy] Six frontier labs just signed a voluntary White House superintelligence accord, four separate oversight layers, and not one line of enforcement behind any of them.
+Speaker 1: Voluntary is the word doing all the work there. Meanwhile Anthropic says the open-weights model G L M five point three crossed a cyber-offense threshold on browser exploits.
+Speaker 2: And the numbers are close enough to matter, fifty working exploits out of four hundred ten, against fifty-six for Claude Mythos Preview. Four percent control-flow hijacks versus six percent.
+Speaker 1: That gap is narrow, and those weights are open. On the product front, OpenAI shipped GPT six point one Sol at a fifth of Astra's price, plus always-on Dots agents.
+Speaker 2: Two dollars per million input tokens, ten cents cached, ten dollars out. [dramatic_pause] That is frontier capability at commodity pricing.
+Speaker 1: Some quick numbers from the Anthropic S-one filing. Four point six billion dollars in revenue, an eight point zero six billion dollar operating loss, and [emphasis] five hundred eighteen billion dollars [/emphasis] in compute obligations.
+Speaker 2: Against a target valuation north of [emphasis] two trillion dollars [/emphasis]. Worth noting that ChatGPT is now at one point two billion weekly users and roughly seventy billion dollars annualized.
+Speaker 1: Developers are voting the same way. Sol sits at number one on Hacker News with seven hundred forty-one points and six hundred seventy-nine comments, Dots right behind it at four hundred forty-one.
+Speaker 2: A pricing cut and an agent launch beating a superintelligence treaty on the front page. That tells you where attention actually is.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
