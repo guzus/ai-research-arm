@@ -188,6 +188,15 @@ runs:
       if: steps.select.outputs.adapter == 'agent-run'
       uses: ./.github/actions/setup-claude-sandbox
 
+    # setup-bun inside Claude's action writes ~/.bun/bin/bun, shared by all
+    # self-hosted jobs. Installing over a running binary can fail with ETXTBSY.
+    # Keep the upstream action's exact version in a verified per-invocation path.
+    - name: Install isolated Claude Bun
+      id: bun
+      if: steps.select.outputs.adapter == 'agent-run'
+      shell: bash
+      run: python3 scripts/install_agent_bun.py --github-output "$GITHUB_OUTPUT"
+
     # Cross-adapter fallback is opt-in per lane in the routing SSOT. The
     # isolated child receives the exact caller prompt and output path contract,
     # and imports only one validated commit back into the host checkout.
@@ -234,6 +243,7 @@ runs:
         ARA_AGENT_BACKEND: claude
         ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.native-model }}
       with:
+        path_to_bun_executable: ${{ steps.bun.outputs.bun-path }}
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         claude_args: ${{ inputs.claude-args }}
         prompt: ${{ inputs.prompt }}
@@ -249,6 +259,7 @@ runs:
         ARA_AGENT_BACKEND: claude
         ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.native-model }}
       with:
+        path_to_bun_executable: ${{ steps.bun.outputs.bun-path }}
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         allowed_bots: ${{ inputs.allowed-bots }}
         claude_args: ${{ inputs.claude-args }}
@@ -431,6 +442,7 @@ runs:
         ARA_AGENT_BACKEND: ${{ steps.reselect.outputs.backend }}
         ARA_AGENT_MODEL_ID: ${{ steps.reselect.outputs.model-id }}
       with:
+        path_to_bun_executable: ${{ steps.bun.outputs.bun-path }}
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         claude_args: ${{ inputs.claude-args }}
         prompt: ${{ inputs.prompt }}
@@ -453,6 +465,7 @@ runs:
         ARA_AGENT_BACKEND: ${{ steps.reselect.outputs.backend }}
         ARA_AGENT_MODEL_ID: ${{ steps.reselect.outputs.model-id }}
       with:
+        path_to_bun_executable: ${{ steps.bun.outputs.bun-path }}
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         allowed_bots: ${{ inputs.allowed-bots }}
         claude_args: ${{ inputs.claude-args }}
@@ -475,6 +488,7 @@ runs:
         ARA_AGENT_BACKEND: ${{ steps.select.outputs.backend }}
         ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.model-id }}
       with:
+        path_to_bun_executable: ${{ steps.bun.outputs.bun-path }}
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         claude_args: ${{ inputs.claude-args }}
         prompt: ${{ inputs.prompt }}
@@ -496,6 +510,7 @@ runs:
         ARA_AGENT_BACKEND: ${{ steps.select.outputs.backend }}
         ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.model-id }}
       with:
+        path_to_bun_executable: ${{ steps.bun.outputs.bun-path }}
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         allowed_bots: ${{ inputs.allowed-bots }}
         claude_args: ${{ inputs.claude-args }}
@@ -519,6 +534,7 @@ runs:
         ARA_AGENT_BACKEND: ${{ steps.select.outputs.backend }}
         ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.model-id }}
       with:
+        path_to_bun_executable: ${{ steps.bun.outputs.bun-path }}
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         claude_args: ${{ inputs.claude-args }}
         prompt: ${{ inputs.prompt }}
@@ -541,6 +557,7 @@ runs:
         ARA_AGENT_BACKEND: ${{ steps.select.outputs.backend }}
         ARA_AGENT_MODEL_ID: ${{ steps.select.outputs.model-id }}
       with:
+        path_to_bun_executable: ${{ steps.bun.outputs.bun-path }}
         claude_code_oauth_token: ${{ inputs.claude-code-oauth-token }}
         allowed_bots: ${{ inputs.allowed-bots }}
         claude_args: ${{ inputs.claude-args }}

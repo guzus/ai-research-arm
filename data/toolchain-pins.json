@@ -22,6 +22,13 @@
       "linux_arm64": "9c3a71712c28e9cb6ea5d09c9b2ace91c21af318277930bf358dd05165840121"
     }
   },
+  "agent_bun": {
+    "version": "1.3.14",
+    "sha256": {
+      "linux_x64": "951ee2aee855f08595aeec6225226a298d3fea83a3dcd6465c09cbccdf7e848f",
+      "linux_aarch64": "a27ffb63a8310375836e0d6f668ae17fa8d8d18b88c37c821c65331973a19a3b"
+    }
+  },
   "cursor_agent": {
     "version": "2026.08.25-3e8eec8",
     "sha256": {
