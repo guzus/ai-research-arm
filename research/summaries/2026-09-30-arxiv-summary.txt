@@ -1,0 +1,12 @@
+arXiv Papers - 2026-09-30
+
+TOP 5 PAPERS:
+• Thinking Before Thinking — Meta FAIR meta-reasoning harness; GPT-5.5 71.5% vs Codex 58% on ProgramBench
+• Hidden Reasoning Must Leak — hard covert CoT always leaves a footprint; a 1-layer Transformer can encrypt it
+• LIFT — teacher-forced latent feedback at pretrain; tiny model beats 8×-data Transformers on state tracking
+• Data-mixture scaling laws — auxiliary data raises the exponent only when spectra and sample sizes interlock
+• S³ Spectral Null-Space Swap — training-free; −27.4% tokens and +1.0 acc vs full Thinking models
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 6, Other 6
+
+Full report on GitHub.
