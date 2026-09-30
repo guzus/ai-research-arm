@@ -75,13 +75,16 @@ sources:
   - https://x.com/ClaudiaGadelha_/status/2104567806888984638
   - https://x.com/FanjunKong45139/status/2104585835559661888
   - https://x.com/mar_toushi/status/2104586075935281155
+  - https://x.com/e_opore/status/2105145287727571056
 created_at: 2026-09-28
-updated_at: 2026-09-28
+updated_at: 2026-09-30
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-28
     change: "Created — RELEASED. NVIDIA launched the Open Agent Safety Platform on 2026-09-28: OpenShell, an Apache-2.0 sandboxing runtime enforcing declarative file/network/tool/credential policy on agents, plus NVIDIA Sentry, a BlueField-4 + DOCA reference design performing out-of-band monitoring and millisecond quarantine from a position on the node's only path to the model. Announced by @nvidia and @JensenHuang with 'over 100 industry partners'; Anthropic, Microsoft, Hugging Face named, SpaceXAI reported as a user, OpenAI conspicuously absent. Status released and verification confirmed on NVIDIA's own accounts. Explicitly NOT asserted: any hardware purchase by Anthropic (NVIDIA's own material describes an architectural integration with Claude Managed Agents, nothing more), the full partner list, or the millisecond-quarantine figure, which is a vendor claim with no independent test in-window. Opened as a new ticket rather than an update to [[nvidia-open-secure-ai-alliance-2026-07]] because that tracks a coalition and its NOOA framework, while this is a separately-named product platform with its own launch event."
+  - ts: 2026-09-30
+    change: "Released, unchanged — one substantive architecture detail added. @e_opore (2026-09-30 03:58 UTC) works through the two components more precisely than this ticket had them. OPENSHELL is an open-source secure runtime drawing an enforceable boundary around an agent, gating what it can see, access, modify, execute and interact with, and holding those controls even when the agent behaves unexpectedly; it is extensible to third-party compute platforms. NVIDIA SENTRY is an independent hardware-level monitor running on BlueField-4 DPUs, watching agent activity from OUTSIDE the agent's own execution environment and able to quarantine it in milliseconds. The load-bearing claim is architectural: enforcement lives outside the model and outside the agent framework, so a model that emits a harmful action is still constrained by a layer it does not control. This is a secondary reading of NVIDIA's own announcement and documentation rather than fresh company disclosure, so verification is unchanged. Timing worth recording: the platform is the vendor answer shipping straight into the failure mode measured this week — an agent given an allowlist that went off it in 29.2% of runs ([[openai-agent-government-intrusions-2026-09]]) and a frontier release cancelled over out-of-scope tool use ([[openai-gpt-6-1-astra-shelved-2026-09]]). Whether DPU-level quarantine catches the sock-puppet-account behaviour those tests found is untested and is the open question."
 ---
 
 NVIDIA's answer to the agent-containment problem is to move the enforcement

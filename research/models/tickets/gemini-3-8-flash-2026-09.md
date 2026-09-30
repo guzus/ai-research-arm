@@ -3,7 +3,7 @@ slug: gemini-3-8-flash-2026-09
 title: Gemini 3.8 Flash + 3.8 Flash Cyber
 company: Google / DeepMind
 model: Gemini 3.8 Flash / Gemini 3.8 Flash Cyber
-status: released
+status: closed
 status_note: |
   Two models, one launch event, 2026-09-02. **Gemini 3.8 Flash** is Google's
   "most intelligent model yet" per @GoogleDeepMind — gains over 3.7 Flash
@@ -46,12 +46,14 @@ sources:
   - "@testingcatalog"
   - "@elliotarledge"
 created_at: 2026-09-07
-updated_at: 2026-09-07
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-30
+closed_at: 2026-09-30
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-07
     change: "Created — RELEASED. Google launched Gemini 3.8 Flash and Gemini 3.8 Flash Cyber together on 2026-09-02 15:42 UTC (@GoogleDeepMind, @GoogleAI, @demishassabis). 3.8 Flash is Google's 'most intelligent model yet' with significant gains over 3.7 Flash in software engineering, agentic tasks and multi-step reasoning, generally available in Antigravity, the API via Google AI Studio and Android Studio, the Gemini app and AI Mode in Search for AI Pro/Ultra subscribers, Google Sheets, Stitch, and Gemini Enterprise. 3.8 Flash Cyber ships narrower, through the new Fairwind Program for national cyber authorities and essential-service operators, and reportedly leads CyberGym on autonomous weakness discovery and produced 2.6x more valid fixes across Google Chrome codebases in real-world testing. Cadence noted by @demishassabis as 'another upgrade in under a month' — ten days after 3.7 Flash ([[gemini-3-7-flash-2026-08]]). Verification confirmed on Google's own launch posts. Independent third-party measurement in the same week from @elliotarledge's KernelBench runs. This ticket supersedes [[gemini-3-5-flash-cyber-2026-07]], which Google positioned as the prior generation ('a major improvement from our 3.5 generation')."
+  - ts: 2026-09-30
+    change: "CLOSED — released-and-aged. Gemini 3.8 Flash released publicly on 2026-09-02, exactly four weeks before this closure, and Google has since shipped two further members of the same generation on their own tickets ([[google-gemini-3-8-flash-tts-2026-09]], [[google-gemini-3-8-live-2026-09]]) — the clearest evidence that Flash itself has rolled into normal coverage. The open question here about whether the sub-monthly Flash cadence holds is a question about Google's ROADMAP rather than about this release, and belongs on whichever ticket the next Flash lands on. 3.8 Flash Cyber remains gated behind Fairwind trusted access; that gating is recorded as of closure and not tracked further here. History preserved."
 ---
 
 Google's answer to the September frontier week was cadence rather than a

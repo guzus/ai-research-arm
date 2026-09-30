@@ -3,7 +3,7 @@ slug: meta-hatch-muse-spark-2026-06
 title: Meta "Hatch" consumer AI agent + Muse Spark model — reported up to $199.99/mo tier
 company: Meta
 model: Muse Spark
-status: released
+status: closed
 status_note: |
   **2026-09-24 — Muse Spark 1.3 lands on third-party clouds.**
   @alexandr_wang (primary): "for the developers in the back: muse spark 1.3 is
@@ -182,9 +182,9 @@ sources:
   - https://x.com/alexandr_wang/status/2103216490292150334
   - https://x.com/jhaveri/status/2103185039618146392
 created_at: 2026-06-04
-updated_at: 2026-09-25
-closed_at: null
-closed_reason: null
+updated_at: 2026-09-30
+closed_at: 2026-09-30
+closed_reason: released-and-aged
 history:
   - ts: 2026-06-04
     change: "Created — The Information (relayed @JGidel4 02:25 UTC) reports Meta weighing up to $199.99/mo for 'Hatch', a consumer AI-agent (consumer OpenClaw) that builds tools/automations from prompts, with a 'Hatch Plus' premium tier; reportedly developed with Claude but expected to run on Meta's own Muse Spark model at launch. Single-source, no Meta primary → rumored / unverified"
@@ -214,6 +214,8 @@ history:
     change: "Released, unchanged. Distribution expanded beyond Meta for the first time: @alexandr_wang announced on 2026-09-24 20:14 UTC (~409 likes) that 'muse spark 1.3 is now available on @googlecloud and @Oracle', and @jhaveri stated the tiers precisely — GA through Oracle, PRIVATE PREVIEW on Google Cloud — and named both as Meta's 'new preferred cloud platform partners'. Where the two Meta posts disagree on the Google Cloud tier, the more specific one is taken as correct and recorded as such; they are the same announcement at two precisions, not independent corroboration. Strategically noted: Meta is distributing its flagship model through two rival clouds while simultaneously building Meta Compute to rent out its own excess capacity ([[meta-compute-2026-07]]), which is a two-sided position. Also recorded: this ticket does NOT absorb the new 'muse-spark-1.4-contributor' registry sighting, which is tracked as its own artifact at [[meta-muse-spark-1-4-2026-09]]; this ticket remains the 1.3 line plus the Hatch consumer agent, and the Connect 2026 'next major model' tease ([[meta-connect-2026-09]]) stays open here because nothing yet links it to 1.4 rather than to Watermelon."
   - ts: 2026-09-25
     change: "Bookkeeping — citations added for the 2026-09-25 entry: @alexandr_wang (Muse Spark 1.3 now available on Google Cloud and Oracle) and @jhaveri (the precise tiers — GA through Oracle, private preview on Google Cloud — and the 'preferred cloud platform partners' framing). No status, verification or content change."
+  - ts: 2026-09-30
+    change: "CLOSED — released-and-aged. Both legs of this ticket shipped and then aged: Muse Spark 1.3 / 1.3 max released and distributed well beyond Meta — GA on Oracle and private preview on Google Cloud, named as Meta's 'preferred cloud platform partners' on 2026-09-24 — and the consumer Muse surface is live. The release is months old and the distribution question that kept this open has been answered. Forward Muse Spark model signal belongs on [[meta-muse-spark-1-4-2026-09]], which already tracks the next version; related shipped Meta artifacts keep their own tickets ([[meta-muse-voice-transcribe-2026-09]], [[meta-aira-3-2026-09]], [[meta-enterprise-platform-2026-09]]). History preserved."
 ---
 
 **The Information** (relayed on 2026-06-04, 02:25 UTC) reports that Meta is

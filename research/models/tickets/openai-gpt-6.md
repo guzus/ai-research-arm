@@ -157,7 +157,7 @@ status_note: |
   out globally that day. This is the first product surface to route across all
   three family members by tier, which is what the fast/cheap-tier inference
   recorded above predicted.
-expected: "RELEASED — Astra (2026-09-03/04), Sol and Luna (2026-09-22), all GA in ChatGPT and the API. Astra leads Terminal-Bench-Science 0.1 at 63%. Open: TERRA, still never named by OpenAI; GPT-6 Sol still not selectable in ChatGPT Chat, with a Chat/Work merge predicted for DevDay 2026-09-29; the $500 ChatGPT Pro Max tier spotted in development ([[openai-chatgpt-pro-max-2026-09]]); parameter count and the 'looped transformer' claim still unverified rumor."
+expected: "RELEASED — Astra (2026-09-03/04), Sol and Luna (2026-09-22), all GA in ChatGPT and the API. DevDay 2026-09-29 shipped around the Chat/Work question (Space, Dots, Codex Cloud) rather than merging the two, and Astra is now the engine under Dots. The 6.1 generation has split off: [[openai-gpt-6-1-sol-2026-09]] shipped, [[openai-gpt-6-1-astra-shelved-2026-09]] was cancelled. Open: TERRA, still never named by OpenAI; GPT-6 Cyber, teased at DevDay with no date; parameter count and the 'looped transformer' claim still unverified rumor."
 labels:
   - openai
   - frontier-model
@@ -199,8 +199,10 @@ sources:
   - https://x.com/rauchg/status/2103216656747262419
   - https://x.com/mark_k/status/2103088794144580072
   - https://x.com/shneural/status/2103151003272962130
+  - https://x.com/OpenAI/status/2104986129686741046
+  - https://x.com/insanekrishnaa/status/2105147666850304017
 created_at: 2026-07-27
-updated_at: 2026-09-25
+updated_at: 2026-09-30
 closed_at: null
 closed_reason: null
 history:
@@ -224,6 +226,8 @@ history:
     change: "Released, unchanged. FIRST head-to-head benchmark against the new Anthropic flagship: @ArtificialAnlys launched Terminal-Bench-Science 0.1 on 2026-09-24 23:30 UTC and GPT-6 Astra (max) tops it at 63%, one point ahead of Claude Opus 5.5 (xhigh) at 62% — 70 expert-curated tasks over life, physical, mathematical, engineering and earth sciences, built with Stanford and the terminal-bench team. @emollick additionally reports Astra ascending NetHack on its third attempt, a long-horizon result of a different character than a benchmark row. Commercial corroboration: @rauchg's Vercel AI Gateway data (2026-09-24) shows OpenAI spend share 10% -> 24% over two months while Anthropic fell 69% -> 40%, OpenAI now leading on token count and holding 62% of image generations. The distribution gap flagged in the previous update persists — @mark_k notes GPT-6 Sol is selectable in Codex and ChatGPT Work but still NOT in ChatGPT Chat, and predicts a Chat/Work merge announcement at DevDay 2026-09-29; recorded as his prediction, not reporting. Counter-signal recorded in the same window and deliberately kept separate from the benchmark result: several developers report Astra losing badly on taste-sensitive generative work (@shneural, identical motion-graphics prompts, 'GPT is honestly terrible here', ~3,519 likes; @scaling01 inferring Astra is smaller than assumed) — consistent first-hand impression, not a measurement. Cross-linked to the new [[openai-chatgpt-pro-max-2026-09]] $500 tier leak, whose only described delta is speed, not capability."
   - ts: 2026-09-25
     change: "Bookkeeping — citations added for the 2026-09-25 entry: @ArtificialAnlys (Terminal-Bench-Science 0.1, Astra max 63% first), @emollick (Astra beats NetHack on its third try), @rauchg (OpenAI spend share 10%->24%, token-count lead, 62% of image generations), @mark_k (GPT-6 Sol still not selectable in ChatGPT Chat; predicted Chat/Work merge at DevDay), @shneural (identical motion-graphics prompt, Astra judged far worse than Opus 5.5). No status, verification or content change."
+  - ts: 2026-09-30
+    change: "Released, unchanged — but the generation moved past this ticket and BOTH successors get their own files. At DevDay on 2026-09-29 OpenAI shipped GPT-6.1 Sol as a separately-priced API product ([[openai-gpt-6-1-sol-2026-09]]) and, the day before, cancelled the GPT-6.1 Astra release outright after internal safety tests ([[openai-gpt-6-1-astra-shelved-2026-09]]). Both are split out per this ticket's own dedup rule — a family member gets its own ticket when it launches as a separately-priced product — and because a cancelled release is a different class of artifact from a shipped one. What lands ON this ticket: (1) GPT-6 ASTRA IS NOW THE ENGINE UNDER OPENAI'S AGENT PRODUCT. Dots, the always-on agents announced at DevDay, run on Astra ([[openai-dots-agents-2026-09]]) — the first time an Astra-powered product has been sold as the headline instead of the model. (2) The Decisions API announced the same day runs on GPT-6 LUNA ([[openai-decisions-api-2026-09]]), the first dedicated product surface for the cheap tier and consistent with the fast/cheap-tier inference this ticket recorded on 2026-09-16. (3) ULTRAFAST is now a real priced serving tier for Astra (about 300 tokens/sec, up to ~8x generation speed at roughly 6x price), which retires the speculative half of [[openai-chatgpt-pro-max-2026-09]]. (4) THE CHAT/WORK MERGE @mark_k PREDICTED FOR DEVDAY DID NOT HAPPEN in the form predicted: no recap in this cycle's signal describes a Chat/Work unification, and the Japanese and Chinese DevDay roundups both note GPT-6.1 Sol shipping in ChatGPT Work, Codex and the API but not in ordinary Chat — so the distribution gap this ticket has carried since 2026-09-25 persists into a second generation instead of closing. Scored as a failed prediction. (5) GPT-6 CYBER was teased for a future release alongside consumer hardware before year-end; relay-grade, no OpenAI post captured, no ticket opened. Status stays released, verification stays confirmed."
 ---
 
 **GPT-6** is the presumed name for OpenAI's next flagship model
