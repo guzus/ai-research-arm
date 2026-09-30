@@ -11,7 +11,7 @@
     "astral-sh/setup-uv": {"version": "v10.0.1", "sha": "20cfd1bf945f4377ade1205e4dbc17946fc9a30d"},
     "oven-sh/setup-bun": {"version": "v2", "sha": "0c5077e51419868618aeaa5fe8019c62421857d6"},
     "raven-actions/actionlint": {"version": "v2", "sha": "3d39aea434753780c3b3d4a1a31c854b4dbf49d7"},
-    "anthropics/claude-code-action": {"version": "v1.0.216", "sha": "d75b94d5ad426cb8546e6628b6f5f19b84e5cce1"}
+    "anthropics/claude-code-action": {"version": "v1.0.237", "sha": "fd1c128679612beff4ca259c78021c506e8aa7a7"}
   },
   "birdy": {
     "version": "v1.2.2",

@@ -156,7 +156,7 @@ requires credential and contained-runner plumbing.
 flowchart LR
     subgraph runtime["⚙️ Runtime-routed lanes — lane: → data/agent-backends.json"]
         lanes0["ai-news-research · digest-audio-script · digest-synthesis<br/>digest-synthesis-fallback · model-timeline · twitter-autoresearch<br/>twitter-judge · twitter-primary · twitter-primary-repair<br/><i>9 lanes</i>"]
-        strict0["🔒 twitter-ab-claude · twitter-ab-judge · twitter-ab-judge-swapped<br/><i>strict — never falls back</i>"]
+        strict0["🔒 claude-canary · twitter-ab-claude · twitter-ab-judge<br/>twitter-ab-judge-swapped<br/><i>strict — never falls back</i>"]
         strict1["🔒 arxiv · bluesky · community<br/>generative-research-ko · rss · wiki-ingest<br/><i>strict — never falls back</i>"]
         strict2["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
         strict3["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]

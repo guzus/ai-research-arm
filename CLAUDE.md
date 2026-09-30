@@ -151,9 +151,10 @@ stale user-level settings explicitly rather than assume a fresh container.
 (The old Cloud Run pools are paused rollback infrastructure, not the
 production path.)
 
-`ubuntu-latest` is reserved for two cases: **CI** (`ci.yml` — PRs can change
+`ubuntu-latest` is reserved for **CI** (`ci.yml` — PRs can change
 build scripts, tests, and workflow files, which must not execute on the
-self-hosted host) and **watchdogs** (a watchdog running on the runners it
+self-hosted host), manual read-only native model compatibility canaries
+(`claude-native-canary.yml`), and **watchdogs** (a watchdog running on the runners it
 watches is useless). `liveness-check.yml` runs a job on *each* tier, because
 no single tier survives both failure modes — a GitHub-hosted billing block
 vs. a self-hosted outage — so whichever is alive still alerts.

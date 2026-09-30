@@ -498,6 +498,13 @@
       "model": "claude-sonnet-5",
       "notes": "Automated PR review. MIRROR: CI enforces equality."
     },
+    "claude-canary": {
+      "workflow": "claude-native-canary.yml",
+      "harness": "agent-run",
+      "backend": "claude",
+      "strict": true,
+      "notes": "Manual read-only native model compatibility probe on a disposable GitHub-hosted runner. Explicit model choice, no fallback or publication; validates served model and a Read-tool round trip before rollout."
+    },
     "twitter-account-explorer": {
       "workflow": "twitter-account-explorer.yml",
       "harness": "claude-code-action",

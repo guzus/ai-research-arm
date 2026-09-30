@@ -92,6 +92,7 @@ Reading notes:
 | ai-news-research-mcp | `ai-news-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | arxiv (route:research-editorial-secondary) | `daily-arxiv.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | bluesky (route:research-editorial) | `2h-bluesky.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
+| claude-canary | `claude-native-canary.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `${{ inputs.model }}` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
 | claude-code-review | `claude-code-review.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | claude-interactive | `claude.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | community (route:research-editorial) | `4h-community.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
@@ -152,7 +153,7 @@ Reading notes:
 - `model-pricing.yml`
 - `production-synthetic.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p3`; native path serves `claude-opus-5`. 32 SSOT lanes (+14 dispatch execution paths) across 34 workflows; 14 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p3`; native path serves `claude-opus-5`. 33 SSOT lanes (+14 dispatch execution paths) across 35 workflows; 14 workflows run no model._
 
 _Explicit lane fallback overrides (replace, never extend, the global chain): `ai-news-research`: `cursor-grok-4p6-fast`; `digest-audio-script`: `cursor-grok-4p6-fast`; `digest-synthesis-fallback`: `cursor-grok-4p6-fast`; `twitter-primary`: `cursor-grok-4p6-fast`; `twitter-primary-repair`: `cursor-grok-4p6-fast`._
 
