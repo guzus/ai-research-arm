@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 15,
+  "count": 16,
   "events": [
+    {
+      "file": "2026-09-30-MU-FY26Q4.md",
+      "date": "2026-09-30",
+      "ticker": "MU",
+      "period": "FY26Q4",
+      "issuer": "Micron Technology, Inc.",
+      "form": "8-K",
+      "accession": "0000723125-26-000018",
+      "transcript": false
+    },
     {
       "file": "2026-09-10-ORCL-FY27Q1.md",
       "date": "2026-09-10",
