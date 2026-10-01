@@ -1,0 +1,204 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "DeepMind published SynthID Bio in Nature on 2026-09-30, a family of methods for watermarking AI-generated protein sequences and predicted structures to establish provenance.",
+      "type": "event",
+      "source_urls": ["https://www.nature.com/articles/s41586-026-10965-y", "https://deepmind.google/blog/introducing-synthid-bio/"],
+      "source_tiers": ["primary", "primary"],
+      "as_of": "2026-09-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c2",
+      "claim": "The sequence watermark applies SynthID-Text's tournament-based token-selection to ProteinMPNN's per-residue logits, biasing amino-acid choice during decoding rather than editing the sequence afterward.",
+      "type": "technical",
+      "source_urls": ["https://github.com/google-deepmind/synthidbio"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c3",
+      "claim": "Detection computes a mean g-value per sequence: an unwatermarked baseline sits near 0.50 (~0.5037), a non-distortionary setting rises to ~0.589, and a stronger distortionary setting reaches ~0.890 in the released example tests.",
+      "type": "metric",
+      "source_urls": ["https://github.com/google-deepmind/synthidbio"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c4",
+      "claim": "Watermarked binders were wet-lab tested against three targets (VEGF-A, SARS-CoV-2 spike RBD, PD-L1) and matched unwatermarked designs on hit rate, binding affinity and sequence diversity, but the parity is stated qualitatively with no numbers in public material.",
+      "type": "comparison",
+      "source_urls": ["https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synthid-bio/", "https://oodaloop.com/briefs/technology/google-deepmind-develops-synthid-bio-to-watermark-ai-designed-proteins-and-strengthen-biosecurity/"],
+      "source_tiers": ["primary", "opinion"],
+      "as_of": "2026-09-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c5",
+      "claim": "DeepMind explicitly frames SynthID Bio as a proof of concept and lists resistance to deliberate tampering as an unsolved challenge.",
+      "type": "quote",
+      "source_urls": ["https://deepmind.google/blog/introducing-synthid-bio/", "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-09-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c6",
+      "claim": "The structure watermark is baked into AlphaFold 3 weights so predicted coordinates carry a detectable signature regardless of who runs the model, with DeepMind claiming near-perfect detectability robust to digital noise and minor coordinate changes.",
+      "type": "technical",
+      "source_urls": ["https://deepmind.google/blog/introducing-synthid-bio/", "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-09-30",
+      "confidence": "medium",
+      "risk": "single-source"
+    },
+    {
+      "id": "c7",
+      "claim": "A protein-sequence watermark must hide its signal in functionally neutral positions to avoid impairing function, but those same neutral positions are exactly what an adversary can freely mutate to strip it.",
+      "type": "causal",
+      "source_urls": ["https://github.com/google-deepmind/synthidbio", "https://fourweekmba.com/ai-synthid-bio-protein-watermark/"],
+      "source_tiers": ["primary", "opinion"],
+      "as_of": "2026-09-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c8",
+      "claim": "SynthID-Text, the text analogue, is a statistical watermark whose detection strengthens with length and degrades under paraphrase, confirming that short, low-entropy channels carry weaker signal.",
+      "type": "technical",
+      "source_urls": ["https://www.nature.com/articles/s41586-024-08025-4"],
+      "source_tiers": ["academic"],
+      "as_of": "2024-10-23",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c9",
+      "claim": "A watermark proves AI-origin, which is orthogonal to hazard; DNA-synthesis screening today matches ordered sequences by homology against lists of sequences of concern, detecting resemblance to known hazards, not provenance.",
+      "type": "technical",
+      "source_urls": ["https://cset.georgetown.edu/article/breaking-down-the-biden-ai-eo-screening-dna-synthesis-and-biorisk/", "https://deepmind.google/blog/introducing-synthid-bio/"],
+      "source_tiers": ["secondary", "primary"],
+      "as_of": "2026-09-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c10",
+      "claim": "Executive Order 14110 (2023-10-30) makes procurement from screening-compliant providers a condition of federal research funding rather than a universal mandate, so it does not reach actors who take no federal funds.",
+      "type": "regulatory",
+      "source_urls": ["https://cset.georgetown.edu/article/breaking-down-the-biden-ai-eo-screening-dna-synthesis-and-biorisk/", "https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence"],
+      "source_tiers": ["secondary", "legal"],
+      "as_of": "2023-10-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c11",
+      "claim": "List-based screening is acknowledged in US policy analysis to be incomplete and evadable by capable actors through minor sequence modification.",
+      "type": "regulatory",
+      "source_urls": ["https://cset.georgetown.edu/article/breaking-down-the-biden-ai-eo-screening-dna-synthesis-and-biorisk/"],
+      "source_tiers": ["secondary"],
+      "as_of": "2023-11-16",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c12",
+      "claim": "As a screening signal the watermark functions as a whitelist, not a detector: an absent watermark is uninformative because a natural sequence, an unwatermarked model's output, and a stripped sequence look identical to a screener.",
+      "type": "causal",
+      "source_urls": ["https://fourweekmba.com/ai-synthid-bio-protein-watermark/"],
+      "source_tiers": ["opinion"],
+      "as_of": "2026-09-30",
+      "confidence": "high",
+      "risk": "contested"
+    },
+    {
+      "id": "c13",
+      "claim": "The watermark only binds outputs of models that embed it; open-weight protein design tools and adversaries simply produce unmarked sequences, so a detection mandate fails while a provenance (fast-track) mandate can still work.",
+      "type": "causal",
+      "source_urls": ["https://fourweekmba.com/ai-synthid-bio-protein-watermark/", "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark/"],
+      "source_tiers": ["opinion", "secondary"],
+      "as_of": "2026-09-30",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c14",
+      "claim": "The operationally credible near-term use is positive provenance: letting synthesis providers fast-track orders proven to come from a trusted, safeguarded model, as described by a Twist Bioscience reviewer.",
+      "type": "forecast",
+      "source_urls": ["https://deepmind.google/blog/introducing-synthid-bio/", "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark/"],
+      "source_tiers": ["primary", "secondary"],
+      "as_of": "2026-09-30",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c15",
+      "claim": "No DNA-synthesis provider had announced adoption or integration at publication; SynthID Bio is open-sourced research code and weights, not a commercial or deployed screening product.",
+      "type": "market-structure",
+      "source_urls": ["https://fourweekmba.com/ai-synthid-bio-protein-watermark/", "https://cryptobriefing.com/synthid-bio-watermarking-ai-proteins/"],
+      "source_tiers": ["opinion", "opinion"],
+      "as_of": "2026-09-30",
+      "confidence": "medium",
+      "risk": "volatile"
+    },
+    {
+      "id": "c16",
+      "claim": "The canonical dual-use precedent, Urbina et al. (2022), inverted a drug-discovery model's toxicity objective to generate roughly 40,000 candidate harmful molecules in under six hours.",
+      "type": "metric",
+      "source_urls": ["https://www.nature.com/articles/s42256-022-00465-9"],
+      "source_tiers": ["academic"],
+      "as_of": "2022-03-07",
+      "confidence": "medium",
+      "risk": "stable"
+    },
+    {
+      "id": "c17",
+      "claim": "A 2024 RAND red-team of 45 participants found no statistically significant difference in the viability of attack plans produced with versus without current large language models, tempering the urgency premise behind watermark mandates.",
+      "type": "metric",
+      "source_urls": ["https://www.rand.org/pubs/research_reports/RRA2977-2.html"],
+      "source_tiers": ["primary"],
+      "as_of": "2024-01-25",
+      "confidence": "high",
+      "risk": "stable"
+    },
+    {
+      "id": "c18",
+      "claim": "The lowest-friction near-term application is database integrity: keeping self-identifying AI proteins out of or labeled within PDB, UniProt and GenBank, where mislabeling is usually accidental so robustness to deliberate tampering is not the bar.",
+      "type": "forecast",
+      "source_urls": ["https://deepmind.google/blog/introducing-synthid-bio/", "https://fourweekmba.com/ai-synthid-bio-protein-watermark/"],
+      "source_tiers": ["primary", "opinion"],
+      "as_of": "2026-09-30",
+      "confidence": "medium",
+      "risk": "contested"
+    },
+    {
+      "id": "c19",
+      "claim": "The method was extended beyond proteins to a bacteriophage genome designed with the Evo 2 model, reported to remain functional in early bacterial-culture tests, but weakly sourced and unquantified.",
+      "type": "event",
+      "source_urls": ["https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synthid-bio/"],
+      "source_tiers": ["primary"],
+      "as_of": "2026-09-30",
+      "confidence": "low",
+      "risk": "single-source"
+    },
+    {
+      "id": "c20",
+      "claim": "A detectability figure in the paper covers only binders that pass a g-value threshold at a 0.1% false-positive rate, implying a selection effect where the true-positive rate is not guaranteed to be 100% across all designs.",
+      "type": "metric",
+      "source_urls": ["https://fourweekmba.com/ai-synthid-bio-protein-watermark/", "https://www.nature.com/articles/s41586-026-10965-y"],
+      "source_tiers": ["opinion", "primary"],
+      "as_of": "2026-09-30",
+      "confidence": "low",
+      "risk": "contested"
+    }
+  ]
+}

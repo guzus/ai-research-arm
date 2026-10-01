@@ -1,0 +1,106 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "SynthID Bio is a watermark for the outputs of generative biology models",
+      "verdict": "supported",
+      "citation": "https://www.nature.com/articles/s41586-026-10965-y"
+    },
+    {
+      "id": "c2",
+      "text": "The sequence watermark is not a tag appended to a protein; it is a bias applied",
+      "verdict": "supported",
+      "citation": "https://github.com/google-deepmind/synthidbio"
+    },
+    {
+      "id": "c3",
+      "text": "In the repository's own example tests, the baseline is ~0.50, a",
+      "verdict": "supported",
+      "citation": "https://github.com/google-deepmind/synthidbio"
+    },
+    {
+      "id": "c5",
+      "text": "DeepMind lists making the watermark",
+      "verdict": "supported",
+      "citation": "https://deepmind.google/blog/introducing-synthid-bio/"
+    },
+    {
+      "id": "c6",
+      "text": "the mark is baked into AlphaFold 3's weights and claimed to be",
+      "verdict": "supported",
+      "citation": "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark/"
+    },
+    {
+      "id": "c7",
+      "text": "the watermark must place its signal in positions where the amino-acid choice is functionally neutral",
+      "verdict": "supported",
+      "citation": "https://github.com/google-deepmind/synthidbio"
+    },
+    {
+      "id": "c8",
+      "text": "SynthID-Text, published in Nature in 2024, is the same tournament-sampling idea",
+      "verdict": "supported",
+      "citation": "https://www.nature.com/articles/s41586-024-08025-4"
+    },
+    {
+      "id": "c9",
+      "text": "Provenance and hazard are orthogonal axes.",
+      "verdict": "supported",
+      "citation": "https://cset.georgetown.edu/article/breaking-down-the-biden-ai-eo-screening-dna-synthesis-and-biorisk/"
+    },
+    {
+      "id": "c10",
+      "text": "Executive Order 14110 (30 October 2023) does not mandate screening universally",
+      "verdict": "supported",
+      "citation": "https://cset.georgetown.edu/article/breaking-down-the-biden-ai-eo-screening-dna-synthesis-and-biorisk/"
+    },
+    {
+      "id": "c11",
+      "text": "this list-based approach",
+      "verdict": "supported",
+      "citation": "https://cset.georgetown.edu/article/breaking-down-the-biden-ai-eo-screening-dna-synthesis-and-biorisk/"
+    },
+    {
+      "id": "c12",
+      "text": "could be natural, could come from an unwatermarked model, or could have been stripped",
+      "verdict": "supported",
+      "citation": "https://fourweekmba.com/ai-synthid-bio-protein-watermark/"
+    },
+    {
+      "id": "c13",
+      "text": "an adversary is, by definition, someone who tampers",
+      "verdict": "supported",
+      "citation": "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark/"
+    },
+    {
+      "id": "c14",
+      "text": "A Twist Bioscience reviewer describes the benefit as letting providers",
+      "verdict": "supported",
+      "citation": "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark/"
+    },
+    {
+      "id": "c16",
+      "text": "Urbina et al. in 2022, generated roughly 40,000 candidate toxic molecules in under six hours",
+      "verdict": "supported",
+      "citation": "https://www.nature.com/articles/s42256-022-00465-9"
+    },
+    {
+      "id": "c17",
+      "text": "a 2024 RAND red-team of 45 participants found",
+      "verdict": "supported",
+      "citation": "https://www.rand.org/pubs/research_reports/RRA2977-2.html"
+    },
+    {
+      "id": "c19",
+      "text": "The Evo 2 genome extension — a watermarked bacteriophage reported functional in early culture tests",
+      "verdict": "weak",
+      "citation": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synthid-bio/"
+    },
+    {
+      "id": "c20",
+      "text": "it covers only binders that pass the g-value threshold at a 0.1% false-positive rate",
+      "verdict": "weak",
+      "citation": "https://fourweekmba.com/ai-synthid-bio-protein-watermark/"
+    }
+  ]
+}

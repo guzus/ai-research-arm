@@ -3006,5 +3006,17 @@
         "source_sha256": "cb63321e7363718c6388ae4f6e680550e973c3be8fa4437d20c72b31da4a3592"
       }
     }
+  },
+  {
+    "slug": "synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+    "file": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+    "model": "claude-opus-5-5",
+    "created_at": "2026-10-01T13:37:47Z",
+    "source": "workflow_dispatch",
+    "prompt": "SynthID Bio: can DeepMind's protein-sequence watermark survive removal and become a real DNA-synthesis screening control?",
+    "tags": []
   }
 ]
