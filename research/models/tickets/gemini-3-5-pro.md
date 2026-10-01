@@ -3,7 +3,7 @@ slug: gemini-3-5-pro
 title: Gemini 3.5 Pro — Google I/O 2026 follow-on
 company: Google / DeepMind
 model: Gemini 3.5 Pro
-status: confirmed
+status: closed
 status_note: |
   Officially confirmed at Google I/O 2026 (2026-05-19) as "coming next
   month," announced alongside the Gemini 3.5 Flash GA as the Pro tier of
@@ -70,9 +70,9 @@ polymarket:
     question: "New Gemini reasoning flagship released by Jul 31, 2026?"
     outcome: "Jul 31 2026"
 created_at: 2026-05-20
-updated_at: 2026-07-13
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-01
+closed_at: 2026-10-01
+closed_reason: superseded-by:google-gemini-4-2026-09
 history:
   - ts: 2026-05-20
     change: "Created — Google confirmed at I/O 2026 (official @GoogleDeepMind) that Gemini 3.5 Pro ships next month, the Pro tier of the 3.5 family unveiled with 3.5 Flash; reported in internal use already"
@@ -90,6 +90,8 @@ history:
     change: "Rumor cluster directly rebutted: a Japanese-language post traces the '2M context / July 17' figures to leak-articles citing each other (not Google's blog), and notes Google's own Vertex AI catalog doesn't list a 'Gemini 3.5 Pro' entry (only 3.1 Pro / 3 Pro Image / 2.5 Pro) — while a same-day account still restates the 2M/July-17 claim as fact. Confirms the unverified flag; no primary Google source has surfaced. Status stays confirmed; verification stays confirmed; retrain/date/context cluster stays unverified."
   - ts: 2026-07-13
     change: "Linked Polymarket odds (metadata-only, no status change): 'Will a new Gemini flagship be released by July 31, 2026?' (event new-gemini-reasoning-flagship-released-by, market 2744113, ~79% Yes at link time). IDs read from the gamma API; the market's resolution text requires a next-generation reasoning-focused Gemini flagship, which is exactly what this ticket tracks."
+  - ts: 2026-10-01
+    change: "CLOSED — superseded-by:google-gemini-4-2026-09. Google announced Gemini 4 Argon on 2026-09-30 as its new frontier model, and launch coverage states Gemini 3.5 Pro missed its window and was shelved: @FundaAI ('Gemini 3.5 Pro had missed its launch window and been shelved'), @notlikeryo_ ('Gemini 3.5 Pro is officially not happening'), @weijinnnnnn ('cancelling Gemini 3.5 Pro'). The I/O 2026 'next month' commitment never produced an artifact in 4.5 months. The Polymarket mapping is kept per contract. Successor: [[google-gemini-4-2026-09]]."
 ---
 
 At Google I/O 2026, Google revealed the **Gemini 3.5** family. The first

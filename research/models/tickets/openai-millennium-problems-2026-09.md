@@ -46,13 +46,17 @@ sources:
   - https://x.com/AndrewCurran_/status/2099999310490603856
   - https://x.com/AndrewCurran_/status/2100005852564611151
   - https://x.com/scottnarmstrong/status/2099960311801696580
+  - https://x.com/tszzl/status/2105653494564655539
+  - https://x.com/deredleritt3r/status/2105650560355693040
 created_at: 2026-09-16
-updated_at: 2026-09-16
+updated_at: 2026-10-01
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-16
     change: "Created — CONFIRMED (the claim), verification partial (the mathematics). OpenAI president Greg Brockman said on the record, '…We have significant progress on another one of these Millennium problems' (clipped by @Hangsiin 2026-09-15 21:01 UTC; independently relayed by @AndrewCurran_ 2026-09-15 23:10 UTC, who framed it as 'more confirmation… this time from Greg Brockman', implying a prior NYT-sourced statement). Status confirmed that OpenAI is making the claim; the claim itself is unverifiable — no problem named, no paper, no formalization, no referee, and 'significant progress' is undefined. TWO INDEPENDENT ACCOUNTS OF A DELIBERATE HOLD, both secondhand: @AndrewCurran_ relays Scott Aaronson writing that he has heard AI companies reached solutions to longstanding open problems in theoretical computer science and 'are now sitting on multiple major announcements because of the Navier-Stokes firestorm'; @scottnarmstrong says OpenAI has 'been sitting on \"hundreds\" of proofs of results, I was told' since at least the ICM, and argues that if they tell the NY Times they have a major advance they should publish, noting they 'can write a 450k lean formalization and a 160-page paper of a millennium problem in a few days'. Armstrong's stated concern — that 'your distance to the labs in the social graph determines how much you know' — is logged as the durable issue: this is a disclosure-practice artifact, not a mathematics result. Related same-cycle AI-mathematics signal, tracked elsewhere: [[anthropic-fermat-lean-proof-2026-09]] and [[google-gemini-deepthink-mathematica-2026-09]]. Same-window @captain_sude claim that Astra proved an unconditional conjecture for multiples of 4 is recorded as context, not evaluated. @tszzl (OpenAI) argued in-window that 'labs sitting on solutions to important problems must reveal them quickly' — an employee taking the opposite side of the hold."
+  - ts: 2026-10-01
+    change: "Context, status unchanged. OpenAI staffer @tszzl (2026-10-01 11:21 UTC, quoted by @deredleritt3r) restates that 'openai says they have an internal model that has solved 100s of open problems in mathematics and in general represents unprecedented mathematical skill' — a broader capability claim about an unreleased internal model than the Millennium-problem progress this ticket tracks. Still no named problem, preprint or formalization; verification stays partial."
 ---
 
 OpenAI's president said the company has **significant progress on another
