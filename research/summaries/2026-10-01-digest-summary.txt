@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-10-01
+
+TOP STORIES:
+• Google unveils Gemini 4 Argon, gated to cyber defenders first
+• Reuters: FTC plans probe of Anthropic, OpenAI and METR
+• OpenAI ties reasoning-distillation campaign to Moonshot-linked users
+
+KEY NUMBERS:
+• Argon: 1M-token output, $2/$10 per Mtok intro ($4/$20 after)
+• Micron Q4 revenue $54.2B (vs $11.3B a year ago)
+• Robots can do 74% of physical tasks, cost-competitive on 0.3%
+
+TRENDING: Pi harness reverses on MCP (HN #1, 545 pts)
+
+Full digest on GitHub.
