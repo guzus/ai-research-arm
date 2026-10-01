@@ -3017,6 +3017,22 @@
     "created_at": "2026-10-01T13:37:47Z",
     "source": "workflow_dispatch",
     "prompt": "SynthID Bio: can DeepMind's protein-sequence watermark survive removal and become a real DNA-synthesis screening control?",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-10-01T135340--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "SynthID Bio: AI 단백질을 위한 출처 워터마크, 아직은 스크리닝 통제 수단이 아니다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-10-01T13:53:40Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+        "tags": [],
+        "translated_at": "2026-10-01T13:53:40Z",
+        "source_file": "research/generative/2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv.ara.md",
+        "source_sha256": "7126230d6c0119262820215ee77e6ab16c327aa579278483298180d230e82e6f"
+      }
+    }
   }
 ]
