@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-01
+
+TOP 5 PAPERS:
+• Loop Scaling Laws — first joint recurrence+sparsity law; looped MoE matches a ~2× larger MoE at matched compute
+• How Much Is an AI Token Worth — 27.5% of FineWeb tokens are AI-generated; signed-value scaling law from 800 models
+• Physis-Lang — self-evolving physical language; Cosmos3-Nano + Physis-Lang beats Veo 3.1
+• How Much of a Harness Does a Strong Agent Need — elaborate MLE harnesses add nothing over a minimal coding agent
+• Cogentic — multi-agent proof harness; novel expert-verified results on 5 open problems
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 6, Other 6
+
+Full report on GitHub.
