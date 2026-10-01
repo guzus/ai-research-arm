@@ -107,6 +107,7 @@
         "federal-ai-policy",
         "gemini-3-6-flash",
         "gemini-3-8-flash",
+        "gemini-4-argon",
         "google",
         "gpt-5-6",
         "gpt-6",
@@ -409,6 +410,7 @@
         "anthropic",
         "claude-fable-5",
         "federal-ai-policy",
+        "google",
         "muse-code",
         "nvidia",
         "perplexity"
@@ -511,11 +513,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; Frontier Red Team says freely downloadable GLM-5.3 crossed a cyber threshold on ExploitBench, a day after Reuters' S-1 read of a $42B 2025 net loss.",
-      "description": "AI safety lab behind Claude; Frontier Red Team says freely downloadable GLM-5.3 crossed a cyber threshold on ExploitBench, a day after Reuters' S-1 read of a $42B 2025 net loss.",
+      "summary": "AI safety lab behind Claude; a new economics paper says robots can do 74% of physical tasks but are cost-competitive on only 0.3% of work today.",
+      "description": "AI safety lab behind Claude; a new economics paper says robots can do 74% of physical tasks but are cost-competitive on only 0.3% of work today.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-30",
-      "timestamp": "2026-09-30T00:00:00Z",
+      "updated_at": "2026-10-01",
+      "timestamp": "2026-10-01T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -764,8 +766,8 @@
       "summary": "OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.",
       "description": "OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-30",
-      "timestamp": "2026-09-30T00:00:00Z",
+      "updated_at": "2026-10-01",
+      "timestamp": "2026-10-01T00:00:00Z",
       "file": "entities/astra.md",
       "aliases": [
         "Astra",
@@ -789,6 +791,7 @@
         "cognition-ai",
         "deepseek-v4-flash",
         "gemini-3-8-flash",
+        "gemini-4-argon",
         "google",
         "gpt-5-6",
         "gpt-6",
@@ -805,9 +808,11 @@
         "agentic-ai-security",
         "anthropic",
         "claude-fable-5",
+        "claude-opus-5-5",
         "claude-science",
         "federal-ai-policy",
         "gemini-3-8-flash",
+        "gemini-4-argon",
         "google",
         "gpt-6",
         "harvey",
@@ -1020,7 +1025,9 @@
         "deepseek",
         "eu-ai-regulation",
         "federal-ai-policy",
-        "meta"
+        "meta",
+        "moonshot-kimi-k3",
+        "openai"
       ]
     },
     {
@@ -1092,6 +1099,7 @@
         "federal-ai-policy",
         "gemini-3-5-flash",
         "gemini-3-8-flash",
+        "gemini-4-argon",
         "gpt-5-6",
         "harvey",
         "jev",
@@ -1243,8 +1251,8 @@
       "summary": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.",
       "description": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.",
       "created_at": "2026-09-23",
-      "updated_at": "2026-09-29",
-      "timestamp": "2026-09-29T00:00:00Z",
+      "updated_at": "2026-10-01",
+      "timestamp": "2026-10-01T00:00:00Z",
       "file": "entities/claude-opus-5-5.md",
       "aliases": [
         "Claude Opus 5.5",
@@ -1255,10 +1263,13 @@
       "outbound": [
         "agentic-ai-security",
         "anthropic",
+        "astra",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
         "claude-sonnet-5-5",
+        "gemini-4-argon",
+        "google",
         "gpt-6",
         "openai"
       ],
@@ -1268,6 +1279,8 @@
         "claude-opus-5",
         "claude-science",
         "claude-sonnet-5-5",
+        "gemini-4-argon",
+        "google",
         "gpt-6",
         "openai"
       ]
@@ -2064,11 +2077,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; six labs signed a voluntary White House Super Intelligence accord with no named auditor, and Trump signed a terminology-only SI renaming order.",
-      "description": "US federal AI governance; six labs signed a voluntary White House Super Intelligence accord with no named auditor, and Trump signed a terminology-only SI renaming order.",
+      "summary": "US federal AI governance; Reuters says the FTC will probe Anthropic, OpenAI and METR, while Pichai and Huang confirmed they signed the voluntary White House accord.",
+      "description": "US federal AI governance; Reuters says the FTC will probe Anthropic, OpenAI and METR, while Pichai and Huang confirmed they signed the voluntary White House accord.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-30",
-      "timestamp": "2026-09-30T00:00:00Z",
+      "updated_at": "2026-10-01",
+      "timestamp": "2026-10-01T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -2140,6 +2153,7 @@
         "deepseek-v4-flash",
         "eu-ai-regulation",
         "evo-genome-models",
+        "gemini-4-argon",
         "google",
         "gpt-5-6",
         "groq",
@@ -2462,8 +2476,8 @@
       "summary": "Google's third Flash SKU in six weeks, shipped 2026-09-03 at the same $0.75/$3.75 intro price as 3.7 through year-end, plus a gated 3.8 Flash Cyber defender model via Fairwind.",
       "description": "Google's third Flash SKU in six weeks, shipped 2026-09-03 at the same $0.75/$3.75 intro price as 3.7 through year-end, plus a gated 3.8 Flash Cyber defender model via Fairwind.",
       "created_at": "2026-09-03",
-      "updated_at": "2026-09-16",
-      "timestamp": "2026-09-16T00:00:00Z",
+      "updated_at": "2026-10-01",
+      "timestamp": "2026-10-01T00:00:00Z",
       "file": "entities/gemini-3-8-flash.md",
       "aliases": [
         "Gemini 3.8 Flash",
@@ -2479,6 +2493,7 @@
         "gemini-3-6-flash",
         "gemini-3-7-flash",
         "gemini-3-8-live",
+        "gemini-4-argon",
         "google",
         "gpt-5-6",
         "muse-code",
@@ -2491,6 +2506,7 @@
         "gemini-3-6-flash",
         "gemini-3-7-flash",
         "gemini-3-8-live",
+        "gemini-4-argon",
         "google",
         "meta",
         "muse-code",
@@ -2526,8 +2542,52 @@
       ],
       "inbound": [
         "gemini-3-8-flash",
+        "gemini-4-argon",
         "google",
         "openai"
+      ]
+    },
+    {
+      "slug": "gemini-4-argon",
+      "title": "Gemini 4 Argon",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "google-deepmind",
+        "frontier-model",
+        "fairwind",
+        "cyber-defense",
+        "pricing"
+      ],
+      "summary": "Google's first frontier model in over seven months; gated to government and trusted cyber defenders via Fairwind, with a 1M-token output limit and $2/$10 intro pricing that later doubles.",
+      "description": "Google's first frontier model in over seven months; gated to government and trusted cyber defenders via Fairwind, with a 1M-token output limit and $2/$10 intro pricing that later doubles.",
+      "created_at": "2026-10-01",
+      "updated_at": "2026-10-01",
+      "timestamp": "2026-10-01T00:00:00Z",
+      "file": "entities/gemini-4-argon.md",
+      "aliases": [
+        "Gemini 4 Argon",
+        "Gemini 4",
+        "gemini-4",
+        "4 Argon"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "astra",
+        "claude-fable-5",
+        "claude-opus-5-5",
+        "federal-ai-policy",
+        "gemini-3-8-flash",
+        "gemini-3-8-live",
+        "google",
+        "gpt-6",
+        "harvey"
+      ],
+      "inbound": [
+        "astra",
+        "claude-opus-5-5",
+        "gemini-3-8-flash",
+        "google"
       ]
     },
     {
@@ -2618,11 +2678,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; tested a Flipkart Buy button inside Gemini and AI Mode in India without leaving the AI interface.",
-      "description": "Hyperscaler behind Gemini; tested a Flipkart Buy button inside Gemini and AI Mode in India without leaving the AI interface.",
+      "summary": "Hyperscaler behind Gemini; Gemini 4 Argon shipped first to government and cyber defenders via Fairwind, with paid API promised without a date.",
+      "description": "Hyperscaler behind Gemini; Gemini 4 Argon shipped first to government and cyber defenders via Fairwind, with paid API promised without a date.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-09-28",
-      "timestamp": "2026-09-28T00:00:00Z",
+      "updated_at": "2026-10-01",
+      "timestamp": "2026-10-01T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2649,11 +2709,13 @@
         "agentic-ai-security",
         "agibot",
         "ai-capex",
+        "amazon",
         "anthropic",
         "apple",
         "astra",
         "broadcom",
         "claude-opus-5",
+        "claude-opus-5-5",
         "cursor",
         "discovery-loop",
         "eu-ai-regulation",
@@ -2665,11 +2727,13 @@
         "gemini-3-7-flash",
         "gemini-3-8-flash",
         "gemini-3-8-live",
+        "gemini-4-argon",
         "gemini-spark",
         "gemma-4",
         "gpt-6",
         "matrix-multiplication-exponent",
         "meta",
+        "microsoft",
         "nano-banana-2-lite",
         "nvidia",
         "openai",
@@ -2684,6 +2748,7 @@
         "astra",
         "broadcom",
         "california-ai-regulation",
+        "claude-opus-5-5",
         "cursor",
         "discovery-loop",
         "eu-ai-regulation",
@@ -2693,6 +2758,7 @@
         "gemini-3-7-flash",
         "gemini-3-8-flash",
         "gemini-3-8-live",
+        "gemini-4-argon",
         "matrix-multiplication-exponent",
         "openai",
         "seedance-2-5",
@@ -2826,6 +2892,7 @@
         "anthropic",
         "astra",
         "claude-opus-5-5",
+        "gemini-4-argon",
         "google",
         "openai",
         "step-5-preview",
@@ -2900,6 +2967,7 @@
       "inbound": [
         "astra",
         "claude-fable-5",
+        "gemini-4-argon",
         "moonshot-kimi-k3",
         "open-weights",
         "openai",
@@ -3303,11 +3371,11 @@
         "supply-chain",
         "anthropic"
       ],
-      "summary": "US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round — and trailed a $250B+ US advanced-memory manufacturing and R&D commitment (2026-08-21).",
-      "description": "US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round — and trailed a $250B+ US advanced-memory manufacturing and R&D commitment (2026-08-21).",
+      "summary": "US memory maker (HBM/DRAM/SSD); FY26Q4 printed $54.23B revenue and $37.70B GAAP net income, with full-year revenue $133.19B.",
+      "description": "US memory maker (HBM/DRAM/SSD); FY26Q4 printed $54.23B revenue and $37.70B GAAP net income, with full-year revenue $133.19B.",
       "created_at": "2026-06-23",
-      "updated_at": "2026-08-21",
-      "timestamp": "2026-08-21T00:00:00Z",
+      "updated_at": "2026-10-01",
+      "timestamp": "2026-10-01T00:00:00Z",
       "file": "entities/micron.md",
       "aliases": [
         "Micron",
@@ -3394,6 +3462,7 @@
         "deepseek",
         "eu-ai-regulation",
         "federal-ai-policy",
+        "google",
         "meta",
         "minimax-m3",
         "nebius",
@@ -3787,11 +3856,11 @@
         "frontier-model",
         "agentic-product"
       ],
-      "summary": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps \"possibly pointing to distillation.\"",
-      "description": "Moonshot AI's 2.8T-parameter flagship (\"Open Frontier Intelligence\"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps \"possibly pointing to distillation.\"",
+      "summary": "Moonshot AI's 2.8T-parameter flagship; OpenAI said a core cluster of hidden-reasoning extraction attempts came from individuals associated with the Kimi developer.",
+      "description": "Moonshot AI's 2.8T-parameter flagship; OpenAI said a core cluster of hidden-reasoning extraction attempts came from individuals associated with the Kimi developer.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-09-28",
-      "timestamp": "2026-09-28T00:00:00Z",
+      "updated_at": "2026-10-01",
+      "timestamp": "2026-10-01T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -3799,12 +3868,15 @@
         "Moonshot Kimi K3",
         "Moonshot AI Kimi K3",
         "Open Frontier Intelligence",
-        "Kimi Work"
+        "Kimi Work",
+        "Moonshot",
+        "Moonshot AI"
       ],
       "outbound": [
         "ai-capex",
         "alibaba",
         "anthropic",
+        "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
@@ -3816,6 +3888,7 @@
         "harvey",
         "moonshot-kimi-k2-7-code",
         "open-weights",
+        "openai",
         "qwen-3-8-max",
         "thinking-machines",
         "zhipu-glm-5-2"
@@ -3839,6 +3912,7 @@
         "model-specific-silicon",
         "muse-glimmer",
         "open-weights",
+        "openai",
         "ox-alpha",
         "qwen-3-8-max",
         "soofi-s-30b-a3b",
@@ -4471,11 +4545,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; DevDay shipped GPT-6.1 Sol at a fifth of Astra's price plus always-on Dots agents, while Altman said there is no IPO until the models are safer.",
-      "description": "Frontier lab behind the GPT family; DevDay shipped GPT-6.1 Sol at a fifth of Astra's price plus always-on Dots agents, while Altman said there is no IPO until the models are safer.",
+      "summary": "Frontier lab behind the GPT family; published a Moonshot-linked distillation disclosure (16k attempts) the same cycle Reuters said the FTC would probe it and METR.",
+      "description": "Frontier lab behind the GPT family; published a Moonshot-linked distillation disclosure (16k attempts) the same cycle Reuters said the FTC would probe it and METR.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-09-30",
-      "timestamp": "2026-09-30T00:00:00Z",
+      "updated_at": "2026-10-01",
+      "timestamp": "2026-10-01T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4485,7 +4559,8 @@
         "GPT-Rosalind",
         "Rosalind Biodefense",
         "OpenAI Dots",
-        "Dots agents"
+        "Dots agents",
+        "GPT-Synopsys"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4495,6 +4570,7 @@
         "astra",
         "broadcom",
         "california-ai-regulation",
+        "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-5",
         "claude-opus-5-5",
@@ -4514,6 +4590,7 @@
         "meta",
         "microsoft",
         "model-specific-silicon",
+        "moonshot-kimi-k3",
         "neocloud",
         "noam-shazeer",
         "nvidia",
@@ -4560,6 +4637,7 @@
         "mistral-leanstral-1-5",
         "model-specific-silicon",
         "moonshot-kimi-k2-7-code",
+        "moonshot-kimi-k3",
         "noam-shazeer",
         "nvidia",
         "open-weights",
@@ -5992,6 +6070,7 @@
     "3.8 flash cyber": "gemini-3-8-flash",
     "3.8 live extended thinking": "gemini-3-8-live",
     "30-day pre-release access": "federal-ai-policy",
+    "4 argon": "gemini-4-argon",
     "@adcock_brett": "figure-ai",
     "@anthropicai": "anthropic",
     "@cursor_ai": "cursor",
@@ -6209,6 +6288,8 @@
     "gemini 3.8 live": "gemini-3-8-live",
     "gemini 3.8 live extended thinking": "gemini-3-8-live",
     "gemini 3.8 tts": "google",
+    "gemini 4": "gemini-4-argon",
+    "gemini 4 argon": "gemini-4-argon",
     "gemini flash cyber": "gemini-3-6-flash",
     "gemini notebook": "google",
     "gemini omni flash": "nano-banana-2-lite",
@@ -6224,6 +6305,8 @@
     "gemini-3-8-flash": "gemini-3-8-flash",
     "gemini-3-8-live": "gemini-3-8-live",
     "gemini-3.1-flash-lite-image": "nano-banana-2-lite",
+    "gemini-4": "gemini-4-argon",
+    "gemini-4-argon": "gemini-4-argon",
     "gemini-spark": "gemini-spark",
     "gemma": "gemma-4",
     "gemma 4": "gemma-4",
@@ -6273,6 +6356,7 @@
     "gpt-6.1-sol": "gpt-6",
     "gpt-astra": "astra",
     "gpt-rosalind": "openai",
+    "gpt-synopsys": "openai",
     "gpu-as-a-service": "neocloud",
     "gpuaas": "neocloud",
     "grok": "xai",
@@ -6390,6 +6474,8 @@
     "model-specific asic": "model-specific-silicon",
     "model-specific chip": "model-specific-silicon",
     "model-specific-silicon": "model-specific-silicon",
+    "moonshot": "moonshot-kimi-k3",
+    "moonshot ai": "moonshot-kimi-k3",
     "moonshot ai kimi k2.7 code": "moonshot-kimi-k2-7-code",
     "moonshot ai kimi k3": "moonshot-kimi-k3",
     "moonshot kimi k2.7 code": "moonshot-kimi-k2-7-code",
@@ -6621,6 +6707,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-10-01",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-01 digest plus tickets updated 2026-09-30 (whitehouse-superintelligence-accord, senate-ai-risk-management-act). Created 1 (gemini-4-argon — Fairwind-gated frontier SKU, 1M-token output, $2/$10 intro then $4/$20, AA Index 53 tying Astra). Updated 9 (google — Argon ship + Pichai first-hand accord signature + ~100 publisher payouts; openai — Moonshot-linked 16k-attempt distillation file + GPT-Synopsys + reported FTC probe; anthropic — robots paper 74%/0.3% + FTC + Claude for Government Desktop GA; federal-ai-policy — Pichai/Huang first-hand + Verge Joint Commitment text + Reuters FTC/METR + unnumbered Senate bill; micron — FY26Q4 $54.23B / $37.70B GAAP NI / FY $133.19B; moonshot-kimi-k3 — OpenAI distillation attribution to Kimi-associated individuals; gemini-3-8-flash — Fairwind now also gates Argon; astra + claude-opus-5-5 — Decoder/AA Argon comparison). Skipped for budget: DeepSeek Ascend tooling, Reddit RSS shutdown, ElevenLabs $22B tender, Flow Engineering $750M, Restate $20M, Inworld/Ultravox, Meta $3.9B experiment classification, Cohere Embed 5 / Ideogram 4.5 / StepAudio 3, Cursor grok-4.8 rumor, Project Meridian as its own page, arXiv highlights."
+    },
+    {
       "date": "2026-09-30",
       "op": "ingest",
       "summary": "Ingested the 2026-09-30 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (federal-ai-policy — White House Accord + terminology-only SI renaming order + 5 Oct NYC Council; openai — GPT-6.1 Sol $2/$0.10/$10 + Dots + no IPO until safer + $30B/$1.4T talks; gpt-6 — 6.1 Sol ship / 6.1 Astra withheld; anthropic — ExploitBench GLM-5.3 cyber threshold + S-1 existential-risk factor; zhipu-glm-5-3 — 50/410 working exploits vs Mythos Preview 56; agentic-ai-security — same cyber threshold + UK AISI Astra 29.2% rogue-attack + Muse address leak; astra — AISI fivefold jump + withheld 6.1; open-weights — GLM-5.3 as the numbered open-weight cyber crossing). Skipped for budget: AMD/World Labs leftover, NVIDIA Open Agent Safety Platform leftover, AMD Ultrafast serving stack, ElevenLabs v4, Liquid AI d1, Manus 2.0, Jeff, Reco $55M, Robinhood agents, share-borne-virus as its own page, Livenerf, Cloudflare cf CLI, arXiv highlights."
@@ -6714,11 +6805,6 @@
       "date": "2026-09-12",
       "op": "ingest",
       "summary": "Ingested the 2026-09-12 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (openai — Sherman Act slowdown ask + GPT-Rosalind API SKU + 1B users + MAISI/Tsimerman; verification-bottleneck — 25 Fields Medalists' A Severe Misalignment of AI in Mathematics; sakana-ai — Fugu Max $2/$6 + Ultra v2 first-party Chartography 48.3 vs Opus 5 27.3; federal-ai-policy — Sherman/CATSR + Garry Tan distillation comment; discovery-loop — Vinyals no-explosion / taste-and-evaluation claim; openrouter — silent backend fan-out, V4 Flash 90% vs 75% GPQA; california-ai-regulation — AB 1709 signed; xai — Musk delayed Grok 4.7 again). Skipped for budget: Moonshot $2B ARR target, Instinct $10B indication, Mecka $500M, Nscale/Fidji Simo, Fluidstack Pentagon talks, Oracle FY27Q1, Muse Spark 1.3 Max contributor, Leanstral/ArXivLean, LiveBench V4.1 Flash, CursorBench 4.0, YuE2, SenseNova-U1.5, arXiv highlights."
-    },
-    {
-      "date": "2026-09-11",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-11 digest (no model tickets with updated_at today or yesterday). Created 1 (deepseek-v4-1-flash — 552B MIT-licensed multimodal MoE, CED stack, AA 40, live $0.003/$0.15/$0.60 card). Updated 8 (deepseek — V4.1 Flash ship + Anthropic silent-relay charge; deepseek-v4-flash — successor note; anthropic — 151M Alibaba distillation tables + Moonshot/DeepSeek Opus relay; openai — Pro pause + Financial Services + GPT-Live-1 + Thom/Sellke NS fight + CA bills; nvidia — DOJ Groq RFI + Huang 70% forecast; groq — same RFI on the December license-and-hire; verification-bottleneck — Thom \"plainly dishonest\" + unauditable opt-out; open-weights — V4.1 Flash MIT drop). Skipped for budget: Cognition SWE-2, Microsoft 38 GW, Oracle FY27Q1, Muse iOS #2, Huawei Ascend markup, federal-ai-policy / california-ai-regulation / ai-capex / alibaba / moonshot-kimi-k3 increments, Maven Robotics, Pocket FM, Enflame debut, Together AI preemptible, arXiv highlights."
     }
   ]
 }

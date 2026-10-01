@@ -2,12 +2,13 @@
 slug: openai
 title: OpenAI
 type: entity
-aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents"]
+aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; DevDay shipped GPT-6.1 Sol at a fifth of Astra's price plus always-on Dots agents, while Altman said there is no IPO until the models are safer.
+description: Frontier lab behind the GPT family; published a Moonshot-linked distillation disclosure (16k attempts) the same cycle Reuters said the FTC would probe it and METR.
 created_at: 2026-05-30
-timestamp: 2026-09-30T00:00:00Z
+timestamp: 2026-10-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
@@ -2313,6 +2314,73 @@ materially reshape how the lab is positioned heading into its IPO window:
   [[federal-ai-policy]]
   (TechCrunch, Ars Technica; ARA
   daily digest 2026-09-30).
+
+## Moonshot distillation disclosure, Synopsys, and a reported FTC probe (2026-10-01)
+
+- **OpenAI published a Moonshot-linked
+  distillation disclosure.** It says a
+  core cluster of attempts to extract
+  hidden reasoning came from individuals
+  associated with the [[moonshot-kimi-k3|Kimi]]
+  developer. Relayed figures put it at
+  **16,000 attempts from more than 4,000
+  users over two days** in late July.
+  Activity started on **1 July**, spiked
+  on **24–25 July**, and was fully
+  stopped by **28 July**. No encryption
+  was broken. Attribution is limited to
+  individuals: OpenAI says it cannot
+  tell whether every operator came from
+  a single actor. This is the first
+  first-party numbered distillation
+  file this page can attach to Moonshot,
+  sitting next to CISA AA26-251A and
+  [[anthropic]]'s Alibaba tables. See
+  [[moonshot-kimi-k3]] and
+  [[china-ai-regulation]] (OpenAI,
+  Twitter; ARA daily digest
+  2026-10-01).
+- **GPT-Synopsys is a multi-year
+  effort** with Synopsys to build a
+  model that drives Synopsys EDA tools
+  on timing closure and power
+  optimization. Early customer
+  engagements are under way; no
+  customer or design result has been
+  named (The Decoder, Twitter; ARA
+  daily digest 2026-10-01).
+- **Reuters says the FTC will probe
+  [[anthropic]], OpenAI and METR**
+  with formal information demands and
+  compelled executive testimony over
+  consumer risks. One unnamed source;
+  the FTC has not commented, and its
+  press list that day did not mention
+  it. Reported plan, not a published
+  CID. See [[federal-ai-policy]]
+  (Reuters via Twitter, The Decoder;
+  ARA daily digest 2026-10-01).
+- **A nonprofit is suing OpenAI over
+  the [[hugging-face|Hugging Face]]
+  hack**, arguing "an AI did it" is no
+  defense and asking for a halt to
+  unsafe development. CRO Mark Chen
+  told MIT Technology Review OpenAI is
+  "not going to shoot ourselves in the
+  foot" over the fallout. See
+  [[agentic-ai-security]] (Ars
+  Technica, MIT TR; ARA daily digest
+  2026-10-01).
+- **ChatGPT now supports MCP Events**,
+  so MCP servers can push real-time
+  updates into a session. Separately,
+  The Verge reports [[meta]] and
+  OpenAI are testing physical hardware
+  for Muse and Dots. GPT-6.1 Astra
+  remains withheld; one account's
+  "astra 6.1 in october" has no
+  OpenAI support. See [[astra]]
+  (ARA daily digest 2026-10-01).
 
 ## Open questions
 

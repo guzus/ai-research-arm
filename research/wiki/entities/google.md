@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; tested a Flipkart Buy button inside Gemini and AI Mode in India without leaving the AI interface.
+description: Hyperscaler behind Gemini; Gemini 4 Argon shipped first to government and cyber defenders via Fairwind, with paid API promised without a date.
 created_at: 2026-07-17
-timestamp: 2026-09-28T00:00:00Z
+timestamp: 2026-10-01T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA model ticket — Gemini 4 post-training", path: research/models/tickets/google-gemini-4-2026-09.md}
@@ -45,7 +46,7 @@ sources:
 ---
 
 **Google** is the hyperscaler and frontier-model builder behind the
-**Gemini** family ([[gemini-3-5-flash]], [[gemini-3-6-flash]],
+**Gemini** family ([[gemini-4-argon]], [[gemini-3-5-flash]], [[gemini-3-6-flash]],
 [[gemini-3-7-flash]], [[gemini-3-8-flash]], [[gemini-3-8-live]], [[gemini-3-5-pro]],
 [[gemini-spark]], [[gemma-4]], [[nano-banana-2-lite]]). While its individual model releases
 have been tracked on their own pages, this page covers Google as a company:
@@ -637,6 +638,48 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   brief as the day's language
   story (HN; ARA daily digest
   2026-09-28).
+
+## Gemini 4 Argon ships behind Fairwind (2026-10-01)
+
+- **[[gemini-4-argon|Gemini 4 Argon]] is the first
+  Google frontier model in over seven months.**
+  It ships first to government and trusted cyber
+  defenders via Fairwind — the same program that
+  already gated [[gemini-3-8-flash|3.8 Flash
+  Cyber]]. Hassabis said the rollout starts
+  there; paid API and AI Ultra are "as soon as
+  possible," with no date. Consumer Gemini-app
+  users still see **3.6**. Output limit is **1M
+  tokens** (up from 64K); intro card **$2/$10
+  per Mtok**, later **$4/$20**; cached input
+  **95% off**. Vendor charts claim DeepSWE v1.1
+  **77.9%** and a Vals / Harvey Legal sweep;
+  The Decoder matches it to [[astra]] and
+  trails [[claude-opus-5-5|Opus 5.5]], with
+  more than 2× Astra's tokens per task.
+  Artificial Analysis, as relayed, scores
+  Intelligence Index **53**, tying Astra. See
+  [[gemini-4-argon]] (Google DeepMind, The
+  Verge, The Decoder, HN 381 pts; ARA daily
+  digest 2026-10-01).
+- **Pichai posted that he signed the White
+  House Accord** — first-hand confirmation
+  of a signature this page's 2026-09-16
+  coordination thread and [[federal-ai-policy]]
+  already tracked. [[nvidia|Huang]] posted
+  the same. The Verge published the full
+  "morally binding" Joint Commitment;
+  [[microsoft]] and [[amazon]] remain unnamed
+  (Twitter, The Verge, Ars Technica; ARA
+  daily digest 2026-10-01).
+- **Google is paying about 100 publishers
+  for AI answers**, but some report payouts
+  under **0.1%** of their ad revenue. This
+  is the first numbered publisher-payment
+  print on this page; it does not resolve
+  the AI-Overviews / DMA thread above (The
+  Information via Ars Technica, The Decoder;
+  ARA daily digest 2026-10-01).
 
 ## Open questions
 

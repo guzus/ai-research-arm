@@ -4,10 +4,13 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; six labs signed a voluntary White House Super Intelligence accord with no named auditor, and Trump signed a terminology-only SI renaming order.
+description: US federal AI governance; Reuters says the FTC will probe Anthropic, OpenAI and METR, while Pichai and Huang confirmed they signed the voluntary White House accord.
 created_at: 2026-06-03
-timestamp: 2026-09-30T00:00:00Z
+timestamp: 2026-10-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
+  - {title: "ARA model ticket — White House Super Intelligence accord", path: research/models/tickets/whitehouse-superintelligence-accord-2026-09.md}
+  - {title: "ARA model ticket — Senate AI Risk Management and Security Act", path: research/models/tickets/senate-ai-risk-management-act-2026-09.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
@@ -1855,10 +1858,98 @@ footing for the first time in the cycle.
   agent hack; investigate
   apocalyptic-futurist ideology
   as a pace driver); Sam Altman
-  tweeted support. Rep. Ro Khanna
+  tweeted support. Rep. Ro   Khanna
   called for a US–China AI treaty
   (The Verge, HN; ARA daily
   digest 2026-09-30).
+
+## First-hand accord signatures, a reported FTC probe, and an unnumbered Senate bill (2026-10-01)
+
+- **Sundar Pichai and Jensen
+  Huang both posted that they
+  signed the White House
+  Accord.** That upgrades
+  yesterday's six-name relay
+  list with two first-hand
+  confirmations. The Verge
+  published the full text of
+  the "morally binding" Joint
+  Commitment. [[microsoft]]
+  and [[amazon]] remain
+  unnamed. See [[google]] and
+  [[nvidia]] (Twitter, The
+  Verge, Ars Technica; ARA
+  daily digest 2026-10-01 and
+  ticket
+  whitehouse-superintelligence-accord-2026-09).
+- **Reuters says the FTC will
+  probe [[anthropic]],
+  [[openai]] and METR** —
+  formal information demands
+  and compelled executive
+  testimony over consumer
+  risks, under unfair or
+  deceptive practices
+  authority. One unnamed
+  source; the FTC has not
+  commented, and its press
+  list that day did not
+  mention it. Reported plan,
+  not a published CID. METR's
+  inclusion puts the evaluator
+  the labs use for their own
+  incident reviews under
+  scrutiny too. Watch for a
+  public Civil Investigative
+  Demand or an on-record
+  statement from any party
+  (Reuters via Twitter, The
+  Decoder; ARA daily digest
+  2026-10-01).
+- **The Senate AI Risk
+  Management and Security Act
+  (Warner/Schatz/Kim, still
+  unnumbered)** proposes an AI
+  Safety Board, early
+  government model access,
+  testing standards, required
+  safety plans and mandatory
+  incident reporting. Schatz
+  ties it to the
+  [[hugging-face|Hugging Face]]
+  agent escape. Blumenthal and
+  Warren are separately
+  pressing Treasury on the
+  voluntary testing regime.
+  Verification is partial:
+  named sponsors and a
+  documented thread, no bill
+  text or Congress.gov record
+  in today's files. See ticket
+  senate-ai-risk-management-act-2026-09
+  (ARA daily digest 2026-10-01).
+- **America.gov launched** as
+  the official US AI front
+  door, answering only from
+  government sites (a claimed
+  29,000 of them), with no ads
+  and no stored conversations.
+  Pete Hegseth announced
+  "Project Meridian," co-led
+  by Elon Musk, Palmer Luckey
+  and Newt Gingrich, on
+  autonomous weapons — no
+  charter or budget has
+  surfaced. A rumor that Jay
+  Clayton will be named White
+  House "SI Czar" this week
+  has no White House source.
+  **Watch 5 October** remains
+  [[openai]], [[anthropic]]
+  and [[google]] executives
+  before the New York City
+  Council (ARA daily digest
+  2026-10-01).
 
 ## Open questions
 
