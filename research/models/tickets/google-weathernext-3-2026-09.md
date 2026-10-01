@@ -3,7 +3,7 @@ slug: google-weathernext-3-2026-09
 title: WeatherNext 3 — Google DeepMind's global weather model, live in Search, Gemini and Maps
 company: Google / DeepMind (with Google Research)
 model: WeatherNext 3
-status: released
+status: closed
 status_note: |
   Announced 2026-09-03 by @GoogleDeepMind and @GoogleAI. WeatherNext 3 learns
   directly from real-world, real-time observations rather than running a
@@ -35,12 +35,14 @@ sources:
   - https://x.com/GoogleAI/status/2095544944190788064
   - "@demishassabis"
 created_at: 2026-09-07
-updated_at: 2026-09-07
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-01
+closed_at: 2026-10-01
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-07
     change: "Created — RELEASED. @GoogleDeepMind and @GoogleAI announced WeatherNext 3 on 2026-09-03 15:03 UTC, developed with Google Research. The model learns directly from real-world real-time observations instead of running a traditional physics simulation; Google claims prediction up to 5x sharper than WeatherNext 2 and up to a 50% reduction in global precipitation forecast error, with the largest improvements in historically under-served regions — precipitation being the specific failure mode Google names for prior global models (blurry estimates, missed severe-storm boundaries). Shipped the same day into Google Search, the Gemini app, Google Maps and the Google Maps Platform Weather API, with real-time data for developers and researchers via BigQuery, Earth Engine and GCS. Status released, verification confirmed on Google's own announcement; the accuracy claims are Google's and are not independently verified against operational NWP baselines in this cycle's signal. Same release train as [[gemini-3-8-flash-2026-09]] and [[google-lyria-3-5-2026-07]]."
+  - ts: 2026-10-01
+    change: "CLOSED — released-and-aged. Released 2026-09-03 (per this ticket's 2026-09-07 creation entry: announced by @GoogleDeepMind/@GoogleAI and shipped into Search, Gemini, Maps and the Maps Platform Weather API); 28 days have elapsed with no further lifecycle movement. Rolled into normal coverage."
 ---
 
 This is the quietest of Google's three September releases and probably the one
