@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-16 06:00 UTC",
-    "headline": "SINGAPORE FOREIGN MINISTER VIVIAN BALAKRISHNAN POSTS ON-RECORD \"BUILT A PERSONAL AI AGENT\" ARTICLE AFTER AI ENGINEER KEYNOTE",
-    "source": "@VivianBala",
-    "source_file": "research/summaries/2026-05-16-twitter-06h-headlines.json",
-    "url": "https://x.com/VivianBala/status/2055520455981924826"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 06:00 UTC",
-    "headline": "ANTHROPIC HAPPY-FRIDAY RATE-LIMIT RESET CROSSES 25K LIKES / 1,174 RT \u2014 MOST-ENGAGED ANTHROPIC POST OF THE WEEK",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-16-twitter-06h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2055347539923308703"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 06:00 UTC",
-    "headline": "ANTHROPIC CORP CHANNEL SILENT 37 HOURS \u2014 DARIO AMODEI 38 DAYS NO X POST INTO GOOGLE I/O WEEK",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-16-twitter-06h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-16 06:00 UTC",
-    "headline": "ELON MUSK ENDORSES GROK CLI x VERCEL PLUGIN \u2014 RT OF RAUCHG \"GROK CLOUD DEPLOYMENT SUPERPOWERS\"",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-16-twitter-06h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2055530618759573769"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 10:00 UTC",
-    "headline": "OPENAI CODEX TECH LEAD PERSONALLY ENDORSES ZED INTEGRATION \u2014 \"CODEX\ud83e\udef8\ud83e\udef7ZED\" QUOTE-TWEETS THE POST CONTRASTING ANTHROPIC METERED PIVOT",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-05-16-twitter-10h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2055545756069802151"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-16 10:00 UTC",
     "headline": "CODEX GPT-5.5 FIX CONFIRMED STABLE \u2014 @THSOTTIAUX FOLLOW-UP GROWS 65L\u2192447L IN 3.25H; @SAMA STILL SILENT 15H40M ON SUPERSEDED FRAMING",
@@ -24012,5 +23967,40 @@
     "headline": "CALIFORNIA BANS WORKPLACE AI EMOTION TRACKING AND AI-ONLY FIRING AS NEWSOM SIGNS AI BILL PACKAGE",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2105503788995879098"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-01 13:03:12 UTC",
+    "headline": "GOOGLE DEEPMIND LAUNCHES SYNTHID BIO \u2014 WATERMARKS EMBEDDED DIRECTLY IN AI-DESIGNED PROTEIN SEQUENCES",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2105624656170643854"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-01 13:03:12 UTC",
+    "headline": "FT: OPENAI AGENTS ACCESSED DATA ON 55 WEBSITES INCLUDING CDC, SEC AND IEA USING HARD-TO-TRACE METHODS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2105599887098167655"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-01 13:03:12 UTC",
+    "headline": "META MUSE TOPS 3M WEEKLY, 1M DAILY USERS \u2014 THE INFORMATION",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2105609710577627521"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-01 13:03:12 UTC",
+    "headline": "ANTHROPIC REFUSES EXTRA DISCOUNTS ONCE ENTERPRISE TOKEN COMMITMENTS RUN OUT; OPENAI COURTS THOSE CUSTOMERS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2105643979458887963"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-01 13:03:12 UTC",
+    "headline": "ELEVENLABS VALUED AT $22B IN $300M EMPLOYEE TENDER, DOUBLE FEBRUARY MARK",
+    "source": "@ZainAkrams",
+    "url": "https://x.com/ZainAkrams/status/2105644272695570733"
   }
 ]
