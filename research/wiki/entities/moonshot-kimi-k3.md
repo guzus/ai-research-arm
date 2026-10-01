@@ -2,12 +2,13 @@
 slug: moonshot-kimi-k3
 title: Moonshot AI Kimi K3
 type: entity
-aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open Frontier Intelligence", "Kimi Work"]
+aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open Frontier Intelligence", "Kimi Work", Moonshot, "Moonshot AI"]
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
-description: Moonshot AI's 2.8T-parameter flagship ("Open Frontier Intelligence"); fully open-sourced its weights on Hugging Face 2026-07-27/28, dominating Hacker News, even as independent tests flagged cyber/math gaps "possibly pointing to distillation."
+description: Moonshot AI's 2.8T-parameter flagship; OpenAI said a core cluster of hidden-reasoning extraction attempts came from individuals associated with the Kimi developer.
 created_at: 2026-07-17
-timestamp: 2026-09-28T00:00:00Z
+timestamp: 2026-10-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
@@ -254,6 +255,24 @@ covering it.
   Verified down). See [[fireworks-ai]]
   (Fireworks, HN; ARA daily digest 2026-09-28).
 
+- **[[openai]] published a Moonshot-linked distillation
+  disclosure (2026-10-01).** It says a core cluster of
+  attempts to extract hidden reasoning came from
+  individuals associated with the Kimi developer.
+  Relayed figures: **16,000 attempts from more than
+  4,000 users over two days** in late July, starting
+  **1 July**, spiking **24–25 July**, fully stopped by
+  **28 July**. No encryption was broken. OpenAI cannot
+  tell whether every operator came from a single actor.
+  This is a first-party numbered file on the
+  distillation-from-frontier claim this page has
+  carried as an open question since the July
+  cyber/math-gap finding — still an attribution to
+  *individuals associated with* the lab, not a finding
+  that Moonshot directed the campaign. See [[openai]]
+  and [[china-ai-regulation]] (OpenAI, Twitter; ARA
+  daily digest 2026-10-01).
+
 ## Open questions
 
 - **Does Kimi Work differentiate from other agentic coding/work products?**
@@ -265,8 +284,12 @@ covering it.
   finding is the first data point.
 - **Is the distillation-from-Fable claim more credible now?** The
   2026-07-28 cyber/math gap finding revives a claim independent experts had
-  pushed back on 2026-07-23/25 — worth tracking whether a rigorous technical
-  analysis (not social-media sourcing) lands either way.
+  pushed back on 2026-07-23/25. OpenAI's 2026-10-01 disclosure is a
+  first-party numbered file on hidden-reasoning extraction, not a
+  technical proof that K3 was distilled from Fable or GPT weights.
+- **Does OpenAI's 16,000-attempt cluster resolve to a single actor?**
+  The lab itself says it cannot tell. Watch for a Moonshot first-party
+  response, a CID, or a CISA follow-up to AA26-251A.
 - **Is the US-China frontier gap narrowing or widening?** Competing framings
   (Bloomberg "two-to-three months" vs. @scaling01's ECI "4.4–5.3 months,
   widening") disagree on both the number and the direction — no neutral

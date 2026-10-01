@@ -6,8 +6,9 @@ aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use, legal-ai]
 description: OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
 created_at: 2026-08-02
-timestamp: 2026-09-30T00:00:00Z
+timestamp: 2026-10-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
@@ -544,3 +545,21 @@ incident. See [[claude-science]]
   [[gpt-6]] (The Decoder, Ars
   Technica; ARA daily digest
   2026-09-30).
+
+## Gemini 4 Argon as an independent peer (2026-10-01)
+
+- **[[gemini-4-argon|Gemini 4 Argon]] is the first
+  Google frontier SKU scored against this
+  model.** The Decoder's testing matches
+  Argon to Astra and has it trailing
+  [[claude-opus-5-5|Opus 5.5]], while
+  burning more than twice as many tokens
+  per task as Astra. Artificial Analysis,
+  as relayed, scores Intelligence Index
+  **53**, tying Astra; on AA-Omniscience
+  Argon hallucinates far less (**15% vs
+  51%**) but also answers correctly less
+  often (**50% vs 63%**). Argon is still
+  Fairwind-gated; this is not a public
+  bake-off. See [[google]] (The Decoder,
+  Twitter; ARA daily digest 2026-10-01).

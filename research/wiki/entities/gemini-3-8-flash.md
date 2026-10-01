@@ -6,8 +6,9 @@ aliases: ["Gemini 3.8 Flash", "Gemini 3.8 Flash Cyber", "3.8 Flash Cyber"]
 tags: [model-release, google-deepmind, flash-tier, ai-security]
 description: Google's third Flash SKU in six weeks, shipped 2026-09-03 at the same $0.75/$3.75 intro price as 3.7 through year-end, plus a gated 3.8 Flash Cyber defender model via Fairwind.
 created_at: 2026-09-03
-timestamp: 2026-09-16T00:00:00Z
+timestamp: 2026-10-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
 ---
@@ -61,6 +62,16 @@ of the July [[gemini-3-6-flash|3.5 Flash Cyber]].
   Live is the speech-to-speech pair; Flash remains the cheap
   text/agent workhorse. Do not merge the SKUs (ARA daily digest
   2026-09-16).
+- **Fairwind now also gates [[gemini-4-argon|Gemini 4 Argon]]
+  (2026-10-01).** The defender program is no longer only a
+  Flash-Cyber holding pen: Google's first new-generation
+  frontier model in seven months shipped to the same government
+  and trusted-cyber cohort before any paid API date. That
+  answers this page's "durable access model vs temporary
+  holding pen" question in the durable direction, at least for
+  the generation flagship. Do not merge the SKUs — 3.8 Flash
+  Cyber remains the cheap defender cut; Argon is the frontier
+  weight (ARA daily digest 2026-10-01).
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: ["Claude Opus 5.5", "Opus 5.5", "claude-opus-5-5", "claude-opus-5.5"]
 tags: [model-release, anthropic, claude, frontier-model, pricing]
 description: Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.
 created_at: 2026-09-23
-timestamp: 2026-09-29T00:00:00Z
+timestamp: 2026-10-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
 ---
@@ -74,3 +75,14 @@ roughly level on GDPval-AA v2.1 (1844 vs 1846), while still trailing
 on FrontierCode, CursorBench, HLE-with-tools and OSWorld 2.1. The
 launch-week "coming weeks" promise on this page is now half-closed;
 Haiku remains open. See [[anthropic]] (ARA daily digest 2026-09-29).
+
+## Gemini 4 Argon trails on an independent read (2026-10-01)
+
+The Decoder's testing of [[gemini-4-argon|Gemini 4 Argon]] has
+it matching [[astra|GPT-6 Astra]] and trailing this model, while
+burning more than twice as many tokens per task as Astra.
+Google's own table claims a Harvey Legal Agent lead over
+[[claude-fable-5|Fable 5.1]] (19.6% vs 6.7%); that is a
+first-party number, not a head-to-head with Opus 5.5. Argon is
+still Fairwind-gated. See [[google]] (The Decoder; ARA daily
+digest 2026-10-01).

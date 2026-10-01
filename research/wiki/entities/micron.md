@@ -4,15 +4,16 @@ title: Micron Technology
 type: entity
 aliases: [Micron, "Micron Technology", MU, "@MicronTech"]
 tags: [memory, hbm, dram, ai-infrastructure, supply-chain, anthropic]
-description: US memory-chip maker (HBM/DRAM/SSD) that on 2026-06-23 became Anthropic's primary memory supplier under a multi-year supply + co-design pact and participated in Anthropic's Series H — the first named investor in that round — and trailed a $250B+ US advanced-memory manufacturing and R&D commitment (2026-08-21).
+description: US memory maker (HBM/DRAM/SSD); FY26Q4 printed $54.23B revenue and $37.70B GAAP net income, with full-year revenue $133.19B.
 created_at: 2026-06-23
-timestamp: 2026-08-21T00:00:00Z
+timestamp: 2026-10-01T00:00:00Z
 market:
   ticker: MU
   exchange: NASDAQ
   symbol: NASDAQ:MU
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-08-21", path: research/digest/2026-08-21-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
   - {title: "ARA daily digest 2026-06-23", path: research/digest/2026-06-23-digest.md}
@@ -57,6 +58,19 @@ both track (ARA digest 2026-07-12).
   [[ai-capex]] buildout, paralleling the [[sk-hynix]] capacity expansion and a
   further datapoint on the HBM/DRAM crunch this page and [[ai-capex]] track (ARA
   daily digest 2026-08-21).
+- **FY26Q4 print (8-K, filed 2026-09-30).** Quarterly revenue was
+  **$54.23B**, against **$41.46B** the prior quarter and **$11.32B** a year
+  earlier — nearly five times the year-earlier quarter. GAAP net income was
+  **$37.70B** ($32.87/diluted share) and non-GAAP **$38.40B** ($33.42).
+  Full-year revenue was **$133.19B** versus **$37.38B**, with GAAP net
+  income of **$84.97B**. CEO Sanjay Mehrotra said he expects "an even
+  stronger fiscal 2027" and that "AI is becoming Super Intelligence (SI),
+  and memory enhances this intelligence and the competitiveness of our
+  customers' platforms." No first-party call transcript was available.
+  This is the hardest memory-side [[ai-capex]] number of the cycle, and
+  it lands on the same page that already named Micron as
+  [[anthropic]]'s primary HBM/DRAM/SSD supplier (SEC 8-K EX-99.1; ARA
+  daily digest 2026-10-01).
 
 ## Open questions
 

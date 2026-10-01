@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; Frontier Red Team says freely downloadable GLM-5.3 crossed a cyber threshold on ExploitBench, a day after Reuters' S-1 read of a $42B 2025 net loss.
+description: AI safety lab behind Claude; a new economics paper says robots can do 74% of physical tasks but are cost-competitive on only 0.3% of work today.
 created_at: 2026-05-24
-timestamp: 2026-09-30T00:00:00Z
+timestamp: 2026-10-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA model ticket — Claude Sonnet 5.5", path: research/models/tickets/anthropic-sonnet-5-5-2026-09.md}
@@ -2357,3 +2358,56 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   Technica, The Decoder, The
   Verge; ARA daily digest
   2026-09-30).
+
+## Robots paper, a reported FTC probe, and Claude for Government Desktop (2026-10-01)
+
+- **Anthropic's economics paper
+  *Can we predict the jobs robots
+  will do?* (30 September 2026)
+  says robots can do 74% of
+  physical tasks** but are
+  cost-competitive with people
+  for only **0.3%** of work
+  today. Robots and LLMs
+  together "expose all but
+  one-fifth of employment." On
+  past price-decline trends,
+  cost-competitiveness reaches
+  **10% only in about 40
+  years**. Exposure measures
+  what is technically possible,
+  not what is cheaper than a
+  person — a capability map,
+  not a layoff forecast. The
+  74% figure is Claude scoring
+  O*NET tasks, not a survey of
+  real factory floors. See
+  [[remote-labor-index]]
+  (Anthropic, Twitter; ARA
+  daily digest 2026-10-01).
+- **Reuters says the FTC will
+  probe Anthropic, [[openai]]
+  and METR** with formal
+  information demands and
+  compelled executive testimony
+  over consumer risks. One
+  unnamed source; the FTC has
+  not commented. METR's
+  inclusion matters because it
+  puts the evaluator the labs
+  use for their own incident
+  reviews under scrutiny too.
+  See [[federal-ai-policy]]
+  (Reuters via Twitter, The
+  Decoder; ARA daily digest
+  2026-10-01).
+- **Claude for Government
+  Desktop is generally
+  available** in a FedRAMP High
+  environment, per Anthropic's
+  government page. The lab also
+  launched a Claude developer
+  hub with engineering deep
+  dives and Claude Code / API
+  guides (ARA daily digest
+  2026-10-01).
