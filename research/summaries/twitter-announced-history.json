@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-16 10:00 UTC",
-    "headline": "CODEX GPT-5.5 FIX CONFIRMED STABLE \u2014 @THSOTTIAUX FOLLOW-UP GROWS 65L\u2192447L IN 3.25H; @SAMA STILL SILENT 15H40M ON SUPERSEDED FRAMING",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-05-16-twitter-10h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2055540700092211404"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-16 10:00 UTC",
-    "headline": "CLAUDE MYTHOS / APPLE M5 EXPLOIT STORY UPGRADED \u2014 @KIMMONISMUS POSTS 219L IN-WINDOW SUMMARY OF CALIF/DECRYPT KERNEL EXPLOIT CLAIM",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-16-twitter-10h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2055571960260645125"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-16 10:00 UTC",
-    "headline": "OPENCLAW BEATS HERMES AGENT 2.75\u00d7 ON M5 MAX + QWEN 35B \u2014 @STEIPETE CELEBRATES 12M01S VS 33M01S RUNTIME ON GITHUB STARS BENCHMARK",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-05-16-twitter-10h-headlines.json",
-    "url": "https://x.com/steipete/status/2055570810513850777"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 10:00 UTC",
-    "headline": "ANTHROPIC CORP SILENT ~40H6M / DARIO ~38D 16H \u2014 APPROACHING MONDAY US-AM CONVERGE-OR-DECAY DECISION POINT ON SILENCE-AS-STANCE READ",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-16-twitter-10h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 12:00 UTC",
-    "headline": "OPENAI SIGNS FIRST NATIONAL DEAL WITH MALTA \u2014 FREE CHATGPT PLUS FOR ALL CITIZENS AFTER 'AI FOR ALL' COURSE",
-    "source": "@FirstSquawk",
-    "source_file": "research/summaries/2026-05-16-twitter-12h-headlines.json",
-    "url": "https://x.com/FirstSquawk/status/2055623298214691132"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-16 12:00 UTC",
-    "headline": "OPENAI / MALTA DEAL GATED VIA NATIONAL e-ID, OPEN TO MALTESE-ABROAD; @OPENAI / @SAMA CORP-SILENT ON 'WORLD'S FIRST' WIRE",
-    "source": "@cgtnafrica",
-    "source_file": "research/summaries/2026-05-16-twitter-12h-headlines.json",
-    "url": "https://x.com/cgtnafrica/status/2055624666190872598"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-16 12:00 UTC",
     "headline": "ANTHROPIC MYTHOS / APPLE M5 / MIE BYPASS STORY COMPOUNDS \u2014 @KIMMONISMUS POST AT 502L / 23RT, +2.3\u00d7 IN 2H",
@@ -24002,5 +23948,47 @@
     "headline": "ELEVENLABS VALUED AT $22B IN $300M EMPLOYEE TENDER, DOUBLE FEBRUARY MARK",
     "source": "@ZainAkrams",
     "url": "https://x.com/ZainAkrams/status/2105644272695570733"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-01 20:19:01 UTC",
+    "headline": "ANTHROPIC OPENS CLAUDE CODE TO MODS \u2014 TYPESCRIPT HOOKS CAN REWRITE BEHAVIOUR AND UI",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2105721434807083061"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-01 20:19:01 UTC",
+    "headline": "OPENAI CONFIRMS THREE SAFETY-TEAM DEPARTURES OVER LEAKS TO OUTSIDE SAFETY GROUP \u2014 WSJ",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105696043841253611"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-01 20:19:01 UTC",
+    "headline": "CALIFORNIA AG BONTA SERVES INVESTIGATIVE SUBPOENA ON OPENAI OVER CYBERSECURITY INCIDENTS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2105712858101436692"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-01 20:19:01 UTC",
+    "headline": "TRUMP RULES OUT NATIONALIZING OPENAI, ANTHROPIC; SAYS US MIGHT TAKE INTEL-STYLE EQUITY STAKES",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2105693155853205594"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-01 20:19:01 UTC",
+    "headline": "SOFTBANK, NVIDIA WIRE FINAL $10B EACH TO OPENAI; ANCHORS DELIVER $110B OF $122B ROUND",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2105727955888746708"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-01 20:19:01 UTC",
+    "headline": "JUDGE MEHTA DISMISSES CHEGG, PENSKE ANTITRUST SUITS OVER GOOGLE AI OVERVIEWS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2105729728179277841"
   }
 ]
