@@ -1,5 +1,5 @@
 {
-  "article_count": 87,
+  "article_count": 88,
   "articles": [
     {
       "claim_count": 18,
@@ -847,6 +847,14 @@
         "twitter-seed"
       ],
       "title": "Ethena's $150 Trillion Bet: What USDe's Push Into Tokenized Equities Actually Buys"
+    },
+    {
+      "claim_count": 20,
+      "created_at": "2026-10-01T13:37:47Z",
+      "slug": "synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "stem": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "tags": [],
+      "title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control"
     }
   ],
   "by_host": {
@@ -1723,7 +1731,9 @@
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c3",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c4",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c47",
-      "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-11"
+      "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-11",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c19",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c4"
     ],
     "blog.janestreet.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17",
@@ -2319,7 +2329,8 @@
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c17",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c19",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c20",
-      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c10"
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c10",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c15"
     ],
     "cryptopolitan.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30"
@@ -2341,6 +2352,11 @@
     ],
     "cs.stanford.edu": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c12"
+    ],
+    "cset.georgetown.edu": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c10",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c11",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c9"
     ],
     "csis.org": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c2",
@@ -2489,7 +2505,13 @@
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c19",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c25",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c30",
-      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c9"
+      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c9",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c1",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c14",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c18",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c5",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c6",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c9"
     ],
     "deepquarry.substack.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c24"
@@ -2979,7 +3001,8 @@
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c33",
       "2026-07-31T051841--situational-awareness-lp-collapse#c24",
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c27",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c41"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c41",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c10"
     ],
     "federalreserve.gov": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c42"
@@ -3186,6 +3209,14 @@
     "forum.marinade.finance": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c12"
     ],
+    "fourweekmba.com": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c12",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c13",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c15",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c18",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c20",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7"
+    ],
     "fredgao.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c1",
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c2"
@@ -3310,7 +3341,10 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c31",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c15",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c19",
-      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c24"
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c24",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c2",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c3",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -3438,7 +3472,11 @@
     "helpnetsecurity.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c17",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c28",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c16"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c16",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c13",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c14",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c5",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c6"
     ],
     "hhmi.org": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c38"
@@ -4185,7 +4223,11 @@
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c32",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c5",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c7",
-      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c18"
+      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c18",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c1",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c16",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c20",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c8"
     ],
     "navercorp.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c15"
@@ -4397,7 +4439,8 @@
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c17"
     ],
     "oodaloop.com": [
-      "2026-08-04T171206--comfyui-company#c34"
+      "2026-08-04T171206--comfyui-company#c34",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c4"
     ],
     "openadapt.ai": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c26"
@@ -4817,7 +4860,8 @@
       "2026-05-25T053654--ai-adoption-in-bio-industry#c17",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c23",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c30",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c36"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c36",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c17"
     ],
     "raport.valisluureamet.ee": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c43"
@@ -7535,6 +7579,10 @@
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash": [
       "2026-06-25T170208--native-computer-use-gemini-3-5-flash#c20"
     ],
+    "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synthid-bio": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c19",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c4"
+    ],
     "https://blog.google/innovation-and-ai/products/google-deepmind-isomorphic-alphafold-3-ai-model": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c20"
     ],
@@ -7865,6 +7913,9 @@
     "https://cryptobriefing.com/nvidia-implied-move-lowest-volatility-two-years": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c10"
     ],
+    "https://cryptobriefing.com/synthid-bio-watermarking-ai-proteins": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c15"
+    ],
     "https://cryptobriefing.com/uniswap-v4-dominates-robinhood-chain-tokenized-stocks": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c20"
     ],
@@ -7885,6 +7936,11 @@
     ],
     "https://cs.stanford.edu/~nfliu/papers/lost-in-the-middle.arxiv2023.pdf": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c12"
+    ],
+    "https://cset.georgetown.edu/article/breaking-down-the-biden-ai-eo-screening-dna-synthesis-and-biorisk": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c10",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c11",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c9"
     ],
     "https://cua.ai/docs/how-to-guides/driver/use-computer-history": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c2",
@@ -7978,6 +8034,14 @@
     ],
     "https://deepmind.google/blog/how-alphachip-transformed-computer-chip-design": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c14"
+    ],
+    "https://deepmind.google/blog/introducing-synthid-bio": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c1",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c14",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c18",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c5",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c6",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c9"
     ],
     "https://deepmind.google/blog/millions-of-new-materials-discovered-with-deep-learning": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c31"
@@ -8811,6 +8875,14 @@
     "https://forum.marinade.finance/t/mip-9-blocklisting-malicious-validators-from-stake-auction-marketplace-to-combat-sandwich-attacks/1716": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c12"
     ],
+    "https://fourweekmba.com/ai-synthid-bio-protein-watermark": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c12",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c13",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c15",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c18",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c20",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7"
+    ],
     "https://futureoflife.org/ai-safety-index-summer-2026": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c14",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c15"
@@ -8955,6 +9027,11 @@
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c5",
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c7",
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c8"
+    ],
+    "https://github.com/google-deepmind/synthidbio": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c2",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c3",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7"
     ],
     "https://github.com/huggingface/datasets/issues/6400": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c9"
@@ -9799,6 +9876,9 @@
     ],
     "https://ofox.ai/blog/glm-5-2-self-host-vllm-hardware-cost-2026": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c17"
+    ],
+    "https://oodaloop.com/briefs/technology/google-deepmind-develops-synthid-bio-to-watermark-ai-designed-proteins-and-strengthen-biosecurity": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c4"
     ],
     "https://oodaloop.com/briefs/technology/why-ai-start-up-hugging-face-turned-down-a-500mn-nvidia-deal": [
       "2026-08-04T171206--comfyui-company#c34"
@@ -12722,6 +12802,9 @@
     "https://www.federalregister.gov/documents/2019/08/13/2019-17201/federal-acquisition-regulation-prohibition-on-contracting-for-certain-telecommunications-and-video": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c3"
     ],
+    "https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c10"
+    ],
     "https://www.federalregister.gov/documents/2025/01/16/2025-00704/addition-of-entities-to-and-revision-of-entry-on-the-entity-list": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c33"
     ],
@@ -13036,6 +13119,12 @@
     ],
     "https://www.helpnetsecurity.com/2026/08/19/openai-model-safety-updates": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c16"
+    ],
+    "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c13",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c14",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c5",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c6"
     ],
     "https://www.hhmi.org/hhmi-david-baker-wins-2024-nobel-chemistry": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c38"
@@ -13543,14 +13632,24 @@
       "2026-06-22T061332--frontier-ai-data-supply-chain#c18",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c32"
     ],
+    "https://www.nature.com/articles/s41586-024-08025-4": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c8"
+    ],
     "https://www.nature.com/articles/s41586-025-09422-z": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c19"
     ],
     "https://www.nature.com/articles/s41586-025-09833-y": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c21"
     ],
+    "https://www.nature.com/articles/s41586-026-10965-y": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c1",
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c20"
+    ],
     "https://www.nature.com/articles/s41591-025-03743-2": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c6"
+    ],
+    "https://www.nature.com/articles/s42256-022-00465-9": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c16"
     ],
     "https://www.navercorp.com/en/media/pressReleasesDetail?seq=10034270": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c15"
@@ -13772,6 +13871,9 @@
     ],
     "https://www.rand.org/pubs/research_reports/RRA2849-1.html": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c36"
+    ],
+    "https://www.rand.org/pubs/research_reports/RRA2977-2.html": [
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c17"
     ],
     "https://www.rastanger.com/news/quarterly-redemptions-exceed-fundraising-for-the-first-time-in-non-listed-bdc-market": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c25"
@@ -15259,7 +15361,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2614,
+  "claim_count": 2634,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -78090,9 +78192,505 @@
         "https://thecurrencyanalytics.com/altcoins/usde-price-slip-not-a-true-depeg-says-ethena-founder-urges-external-oracles-204599"
       ],
       "type": "event"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "DeepMind published SynthID Bio in Nature on 2026-09-30, a family of methods for watermarking AI-generated protein sequences and predicted structures to establish provenance.",
+      "confidence": "high",
+      "hosts": [
+        "deepmind.google",
+        "nature.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.nature.com/articles/s41586-026-10965-y",
+        "https://deepmind.google/blog/introducing-synthid-bio"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2023-10-30",
+      "claim": "Executive Order 14110 (2023-10-30) makes procurement from screening-compliant providers a condition of federal research funding rather than a universal mandate, so it does not reach actors who take no federal funds.",
+      "confidence": "high",
+      "hosts": [
+        "cset.georgetown.edu",
+        "federalregister.gov"
+      ],
+      "id": "c10",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "legal"
+      ],
+      "source_urls": [
+        "https://cset.georgetown.edu/article/breaking-down-the-biden-ai-eo-screening-dna-synthesis-and-biorisk",
+        "https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2023-11-16",
+      "claim": "List-based screening is acknowledged in US policy analysis to be incomplete and evadable by capable actors through minor sequence modification.",
+      "confidence": "high",
+      "hosts": [
+        "cset.georgetown.edu"
+      ],
+      "id": "c11",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://cset.georgetown.edu/article/breaking-down-the-biden-ai-eo-screening-dna-synthesis-and-biorisk"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "As a screening signal the watermark functions as a whitelist, not a detector: an absent watermark is uninformative because a natural sequence, an unwatermarked model's output, and a stripped sequence look identical to a screener.",
+      "confidence": "high",
+      "hosts": [
+        "fourweekmba.com"
+      ],
+      "id": "c12",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c12",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://fourweekmba.com/ai-synthid-bio-protein-watermark"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "The watermark only binds outputs of models that embed it; open-weight protein design tools and adversaries simply produce unmarked sequences, so a detection mandate fails while a provenance (fast-track) mandate can still work.",
+      "confidence": "high",
+      "hosts": [
+        "fourweekmba.com",
+        "helpnetsecurity.com"
+      ],
+      "id": "c13",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "opinion",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://fourweekmba.com/ai-synthid-bio-protein-watermark",
+        "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "The operationally credible near-term use is positive provenance: letting synthesis providers fast-track orders proven to come from a trusted, safeguarded model, as described by a Twist Bioscience reviewer.",
+      "confidence": "medium",
+      "hosts": [
+        "deepmind.google",
+        "helpnetsecurity.com"
+      ],
+      "id": "c14",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c14",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://deepmind.google/blog/introducing-synthid-bio",
+        "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "No DNA-synthesis provider had announced adoption or integration at publication; SynthID Bio is open-sourced research code and weights, not a commercial or deployed screening product.",
+      "confidence": "medium",
+      "hosts": [
+        "cryptobriefing.com",
+        "fourweekmba.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c15",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "opinion",
+        "opinion"
+      ],
+      "source_urls": [
+        "https://fourweekmba.com/ai-synthid-bio-protein-watermark",
+        "https://cryptobriefing.com/synthid-bio-watermarking-ai-proteins"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2022-03-07",
+      "claim": "The canonical dual-use precedent, Urbina et al. (2022), inverted a drug-discovery model's toxicity objective to generate roughly 40,000 candidate harmful molecules in under six hours.",
+      "confidence": "medium",
+      "hosts": [
+        "nature.com"
+      ],
+      "id": "c16",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://www.nature.com/articles/s42256-022-00465-9"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2024-01-25",
+      "claim": "A 2024 RAND red-team of 45 participants found no statistically significant difference in the viability of attack plans produced with versus without current large language models, tempering the urgency premise behind watermark mandates.",
+      "confidence": "high",
+      "hosts": [
+        "rand.org"
+      ],
+      "id": "c17",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.rand.org/pubs/research_reports/RRA2977-2.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "The lowest-friction near-term application is database integrity: keeping self-identifying AI proteins out of or labeled within PDB, UniProt and GenBank, where mislabeling is usually accidental so robustness to deliberate tampering is not the bar.",
+      "confidence": "medium",
+      "hosts": [
+        "deepmind.google",
+        "fourweekmba.com"
+      ],
+      "id": "c18",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c18",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "opinion"
+      ],
+      "source_urls": [
+        "https://deepmind.google/blog/introducing-synthid-bio",
+        "https://fourweekmba.com/ai-synthid-bio-protein-watermark"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "The method was extended beyond proteins to a bacteriophage genome designed with the Evo 2 model, reported to remain functional in early bacterial-culture tests, but weakly sourced and unquantified.",
+      "confidence": "low",
+      "hosts": [
+        "blog.google"
+      ],
+      "id": "c19",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c19",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synthid-bio"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "The sequence watermark applies SynthID-Text's tournament-based token-selection to ProteinMPNN's per-residue logits, biasing amino-acid choice during decoding rather than editing the sequence afterward.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/google-deepmind/synthidbio"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "A detectability figure in the paper covers only binders that pass a g-value threshold at a 0.1% false-positive rate, implying a selection effect where the true-positive rate is not guaranteed to be 100% across all designs.",
+      "confidence": "low",
+      "hosts": [
+        "fourweekmba.com",
+        "nature.com"
+      ],
+      "id": "c20",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c20",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "opinion",
+        "primary"
+      ],
+      "source_urls": [
+        "https://fourweekmba.com/ai-synthid-bio-protein-watermark",
+        "https://www.nature.com/articles/s41586-026-10965-y"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "Detection computes a mean g-value per sequence: an unwatermarked baseline sits near 0.50 (~0.5037), a non-distortionary setting rises to ~0.589, and a stronger distortionary setting reaches ~0.890 in the released example tests.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/google-deepmind/synthidbio"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "Watermarked binders were wet-lab tested against three targets (VEGF-A, SARS-CoV-2 spike RBD, PD-L1) and matched unwatermarked designs on hit rate, binding affinity and sequence diversity, but the parity is stated qualitatively with no numbers in public material.",
+      "confidence": "medium",
+      "hosts": [
+        "blog.google",
+        "oodaloop.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c4",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "opinion"
+      ],
+      "source_urls": [
+        "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synthid-bio",
+        "https://oodaloop.com/briefs/technology/google-deepmind-develops-synthid-bio-to-watermark-ai-designed-proteins-and-strengthen-biosecurity"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "DeepMind explicitly frames SynthID Bio as a proof of concept and lists resistance to deliberate tampering as an unsolved challenge.",
+      "confidence": "high",
+      "hosts": [
+        "deepmind.google",
+        "helpnetsecurity.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://deepmind.google/blog/introducing-synthid-bio",
+        "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "The structure watermark is baked into AlphaFold 3 weights so predicted coordinates carry a detectable signature regardless of who runs the model, with DeepMind claiming near-perfect detectability robust to digital noise and minor coordinate changes.",
+      "confidence": "medium",
+      "hosts": [
+        "deepmind.google",
+        "helpnetsecurity.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c6",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://deepmind.google/blog/introducing-synthid-bio",
+        "https://www.helpnetsecurity.com/2026/10/01/synthid-bio-watermark"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "A protein-sequence watermark must hide its signal in functionally neutral positions to avoid impairing function, but those same neutral positions are exactly what an adversary can freely mutate to strip it.",
+      "confidence": "high",
+      "hosts": [
+        "fourweekmba.com",
+        "github.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "opinion"
+      ],
+      "source_urls": [
+        "https://github.com/google-deepmind/synthidbio",
+        "https://fourweekmba.com/ai-synthid-bio-protein-watermark"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2024-10-23",
+      "claim": "SynthID-Text, the text analogue, is a statistical watermark whose detection strengthens with length and degrades under paraphrase, confirming that short, low-entropy channels carry weaker signal.",
+      "confidence": "high",
+      "hosts": [
+        "nature.com"
+      ],
+      "id": "c8",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://www.nature.com/articles/s41586-024-08025-4"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
+      "article_created_at": "2026-10-01T13:37:47Z",
+      "article_title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control",
+      "as_of": "2026-09-30",
+      "claim": "A watermark proves AI-origin, which is orthogonal to hazard; DNA-synthesis screening today matches ordered sequences by homology against lists of sequences of concern, detecting resemblance to known hazards, not provenance.",
+      "confidence": "high",
+      "hosts": [
+        "cset.georgetown.edu",
+        "deepmind.google"
+      ],
+      "id": "c9",
+      "key": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://cset.georgetown.edu/article/breaking-down-the-biden-ai-eo-screening-dna-synthesis-and-biorisk",
+        "https://deepmind.google/blog/introducing-synthid-bio"
+      ],
+      "type": "technical"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1267,
+  "reusable_count": 1278,
   "schema_version": 1
 }

@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "DeepMind lists making the watermark \"more robust against deliberate tampering\" as a key open challenge, and the current mark can be scrubbed by a determined actor.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "A watermark proves AI-origin, which is orthogonal to hazard; DNA-synthesis screening matches sequences by homology against known hazards, not provenance.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "As a screening signal the watermark is a whitelist, not a detector: an absent watermark is uninformative because natural, unwatermarked-model, and stripped sequences look identical.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
