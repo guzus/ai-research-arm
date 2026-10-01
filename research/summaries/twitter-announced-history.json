@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 04:00 UTC",
-    "headline": "ANTHROPIC CORP CHANNEL HITS ~34 HOURS SILENT \u2014 DARIO ~38 DAYS \u2014 CLAUDEDEVS 'HAPPY FRIDAY' RESET NOW 24,162 LIKES / 1,120 RT, ANTHROPIC'S MOST-ENGAGED POST OF THE MONTH",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-16-twitter-04h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2055347539923308703"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-16 04:00 UTC",
-    "headline": "VERCEL CEO RAUCHG CONFIRMS GROK CLI PLUGINS/SKILLS NOW INTEROPERATE WITH VERCEL DEPLOY",
-    "source": "@rauchg",
-    "source_file": "research/summaries/2026-05-16-twitter-04h-headlines.json",
-    "url": "https://x.com/rauchg/status/2055491454307582454"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-16 06:00 UTC",
-    "headline": "CODEX GPT-5.5 FIX CONFIRMED STABLE \u2014 THSOTTIAUX POSTS \"CONFIRMED STABLE AND RECOVERED\" SIX HOURS AFTER FRIDAY-NIGHT FIX",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-05-16-twitter-06h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2055540700092211404"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 06:00 UTC",
-    "headline": "SAM ALTMAN STILL PUBLICLY SILENT ON CODEX FIX \u2014 \"USER GOT USED TO THE MAGIC\" FRAMING SUPERSEDED 12 HOURS, NO WALK-BACK",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-16-twitter-06h-headlines.json",
-    "url": "https://x.com/sama/status/2055356452286640630"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-16 06:00 UTC",
     "headline": "SINGAPORE FOREIGN MINISTER VIVIAN BALAKRISHNAN POSTS ON-RECORD \"BUILT A PERSONAL AI AGENT\" ARTICLE AFTER AI ENGINEER KEYNOTE",
@@ -24020,5 +23984,33 @@
     "headline": "HEGSETH NAMES MUSK, LUCKEY, GINGRICH TO CO-LEAD PENTAGON 'PROJECT MERIDIAN' ON AUTONOMOUS WEAPONS",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2105410230234603765"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-01 05:42:16 UTC",
+    "headline": "FT: ORACLE TO RENT ~100,000 AI CHIPS TO TENCENT IN $7B, FIVE-YEAR SOUTHEAST ASIA DEAL",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2105498127189107048"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-01 05:42:16 UTC",
+    "headline": "SALESFORCE TO BUY AI CUSTOMER-RESEARCH STARTUP LISTEN LABS FOR ABOUT $2B \u2014 AXIOS",
+    "source": "@Techmeme",
+    "url": "https://x.com/Techmeme/status/2105532153530577048"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-01 05:42:16 UTC",
+    "headline": "META MUSE PASSES 5M DOWNLOADS, 12 DAYS AT #1 ON US APP STORE \u2014 SENSOR TOWER",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2105473128621318596"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-01 05:42:16 UTC",
+    "headline": "CALIFORNIA BANS WORKPLACE AI EMOTION TRACKING AND AI-ONLY FIRING AS NEWSOM SIGNS AI BILL PACKAGE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2105503788995879098"
   }
 ]
