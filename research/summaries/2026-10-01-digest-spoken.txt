@@ -1,0 +1,14 @@
+Speaker 1: Thursday, October first, twenty twenty-six.
+Speaker 2: [high_energy] Google just unveiled Gemini four Argon, and the twist is that cyber defenders get it first, before anyone else.
+Speaker 1: And the specs are big. It can output up to [emphasis] one million tokens [/emphasis] in a single response.
+Speaker 2: Intro pricing is two dollars per million input tokens and ten dollars per million output, rising to four and twenty dollars after the launch window.
+Speaker 1: On the policy front, Reuters reports the FTC plans to probe Anthropic, OpenAI, and the evaluation group METR.
+Speaker 2: Worth noting that's the labs and one of their safety evaluators under the same microscope.
+Speaker 1: Meanwhile, OpenAI says a reasoning distillation campaign against its models traces back to users linked to Moonshot.
+Speaker 2: So the fight over who gets to learn from whose model is now being named out loud.
+Speaker 1: Some quick numbers. Micron posted fourth-quarter revenue of [emphasis] fifty-four point two billion dollars [/emphasis], up from eleven point three billion a year ago.
+Speaker 2: That's nearly five times in a single year, and memory is clearly riding the AI wave.
+Speaker 1: A new estimate says robots can technically do seventy-four percent of physical tasks.
+Speaker 2: [dramatic_pause] But they're cost-competitive on just [emphasis] zero point three percent [/emphasis] of them, so capability is not the same as economics.
+Speaker 1: And trending on Hacker News, the Pi harness reversed course on MCP, taking the top spot with five hundred forty-five points.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
