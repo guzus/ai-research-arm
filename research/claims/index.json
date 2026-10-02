@@ -1,5 +1,5 @@
 {
-  "article_count": 89,
+  "article_count": 90,
   "articles": [
     {
       "claim_count": 18,
@@ -863,6 +863,14 @@
       "stem": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
       "tags": [],
       "title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment"
+    },
+    {
+      "claim_count": 20,
+      "created_at": "2026-10-02T18:25:27Z",
+      "slug": "google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "stem": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "tags": [],
+      "title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute"
     }
   ],
   "by_host": {
@@ -1561,7 +1569,12 @@
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c6",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c7",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c8",
-      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c9"
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c9",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c4",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c5",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c6",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c7",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c8"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -1633,7 +1646,8 @@
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c24"
     ],
     "bcg.com": [
-      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c29"
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c29",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c11"
     ],
     "bean.money": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c18"
@@ -1753,7 +1767,9 @@
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c47",
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-11",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c19",
-      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c4"
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c4",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c1",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c3"
     ],
     "blog.janestreet.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17",
@@ -1787,7 +1803,8 @@
       "2026-05-27T035557--800-vdc-architecture#c47",
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c23",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c13",
-      "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c1"
+      "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c1",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c14"
     ],
     "bloomberg.com": [
       "2026-05-27T035557--800-vdc-architecture#c43",
@@ -2795,7 +2812,8 @@
     ],
     "eia.gov": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c9",
-      "2026-07-31T051841--situational-awareness-lp-collapse#c34"
+      "2026-07-31T051841--situational-awareness-lp-collapse#c34",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c12"
     ],
     "elastic.co": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c4"
@@ -2875,7 +2893,8 @@
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c9"
     ],
     "engadget.com": [
-      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c13"
+      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c13",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c2"
     ],
     "engineering.columbia.edu": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c5"
@@ -2934,7 +2953,8 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c27",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c35",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c26",
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c27"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c27",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c9"
     ],
     "epochai.substack.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c35"
@@ -3179,7 +3199,8 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c11",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c22",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c28",
-      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c29"
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c29",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c13"
     ],
     "forbes.com": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c23",
@@ -3247,6 +3268,9 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c18",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c20",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7"
+    ],
+    "foxbusiness.com": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c19"
     ],
     "fredgao.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c1",
@@ -3729,7 +3753,8 @@
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c7",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c8",
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c15",
-      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c29"
+      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c29",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c18"
     ],
     "investor.atmeta.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C12",
@@ -4368,7 +4393,8 @@
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-4",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-5",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-7",
-      "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-9"
+      "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-9",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c10"
     ],
     "newslink.mba.org": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c15"
@@ -4481,6 +4507,9 @@
     "oodaloop.com": [
       "2026-08-04T171206--comfyui-company#c34",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c4"
+    ],
+    "opb.org": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c2"
     ],
     "openadapt.ai": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c26"
@@ -4969,6 +4998,10 @@
     "research": [
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c19"
     ],
+    "research.google": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c4",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c6"
+    ],
     "research.meta.ai": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c1",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c2",
@@ -5079,6 +5112,9 @@
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c6",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c30"
     ],
+    "saemobilus.sae.org": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c20"
+    ],
     "saga-s.co.jp": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c32"
     ],
@@ -5098,6 +5134,9 @@
     "sas-globalwafers.com": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c25",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c29"
+    ],
+    "satellitetoday.com": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c1"
     ],
     "sbseminar.wordpress.com": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c16",
@@ -5363,6 +5402,12 @@
     "star.sse.com.cn": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c5"
     ],
+    "starcloud.com": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c14"
+    ],
+    "starpath.global": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c17"
+    ],
     "startupfortune.com": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c15",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c15"
@@ -5601,7 +5646,8 @@
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c26",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c38",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c39",
-      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c12"
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c12",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c16"
     ],
     "techflowpost.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20",
@@ -6367,6 +6413,9 @@
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c38",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c39"
     ],
+    "xinhuanet.com": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c15"
+    ],
     "xlab.tencent.com": [
       "2026-08-04T171206--comfyui-company#c30"
     ],
@@ -6416,6 +6465,9 @@
     ],
     "http://www.china.org.cn/world/Off_the_Wire/2026-07/18/content_118605887.shtml": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c18"
+    ],
+    "http://www.xinhuanet.com/tech/20250515/a4f002a57a304012865013110319f42d/c.html": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c15"
     ],
     "https://13f.info/manager/0002045724-situational-awareness-lp": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c2"
@@ -7358,6 +7410,13 @@
     "https://arxiv.org/html/2511.03334": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c36"
     ],
+    "https://arxiv.org/html/2511.19468": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c4",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c5",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c6",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c7",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c8"
+    ],
     "https://arxiv.org/html/2602.02132v1": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c14"
     ],
@@ -7642,8 +7701,17 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c19",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c4"
     ],
+    "https://blog.google/innovation-and-ai/models-and-research/google-research/google-project-suncatcher-facts": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c3"
+    ],
+    "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-prototype": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c1"
+    ],
     "https://blog.google/innovation-and-ai/products/google-deepmind-isomorphic-alphafold-3-ai-model": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c20"
+    ],
+    "https://blog.google/innovation-and-ai/technology/research/google-project-suncatcher": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c3"
     ],
     "https://blog.google/technology/ai/april-ai-update": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c47"
@@ -7703,6 +7771,9 @@
     ],
     "https://blogs.nvidia.com/blog/microsoft-nvidia-anthropic-announce-partnership": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c13"
+    ],
+    "https://blogs.nvidia.com/blog/starcloud": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c14"
     ],
     "https://blogs.nvidia.com/blog/world-governments-summit": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c23"
@@ -8543,7 +8614,8 @@
     ],
     "https://epoch.ai/data-insights/ai-datacenter-cost-breakdown": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c12",
-      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c10"
+      "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c10",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c9"
     ],
     "https://epoch.ai/data-insights/b200-cost-breakdown": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c21",
@@ -9883,6 +9955,9 @@
     "https://newsletter.semianalysis.com/p/the-great-gpu-shortage-rental-capacity": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c11"
     ],
+    "https://newsletter.semianalysis.com/p/to-boldly-go-the-case-for-space-datacenters": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c10"
+    ],
     "https://newsletter.semianalysis.com/p/tpuv7-google-takes-a-swing-at-the": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c10"
     ],
@@ -10587,6 +10662,10 @@
     "https://replicate.com/docs/guides/extend/comfyui": [
       "2026-08-04T171206--comfyui-company#c39"
     ],
+    "https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c4",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c6"
+    ],
     "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c1",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c2",
@@ -10700,6 +10779,9 @@
     ],
     "https://sacra.com/c/surge-ai": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c23"
+    ],
+    "https://saemobilus.sae.org/papers/space-station-heat-rejection-subsystem-radiator-assembly-design-development-951651": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c20"
     ],
     "https://salestechstar.com/sales-engagement/oomnitza-survey-reveals-over-a-quarter-of-enterprises-lose-more-than-10-of-their-technology-assets-when-offboarding-workers": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c28"
@@ -10824,6 +10906,9 @@
     ],
     "https://stablecoins.llama.fi/stablecoins": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c21"
+    ],
+    "https://starpath.global/news/starlink-satellites-now-dodging-collisions-almost-weekly-as-maneuvers-triple-in-a-year": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c17"
     ],
     "https://startupfortune.com/anthropics-silence-on-nvidias-open-weights-letter-is-the-most-revealing-thing-about-it": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c15"
@@ -11192,6 +11277,9 @@
     ],
     "https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c26"
+    ],
+    "https://techcrunch.com/2026/08/21/starcloud-raises-200-million-for-orbital-data-centers-as-launch-options-dry-up": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c16"
     ],
     "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show": [
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-1",
@@ -11898,6 +11986,9 @@
     ],
     "https://www.bcg.com/about/expertise/ai-changing-consulting-and-pricing-models": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c29"
+    ],
+    "https://www.bcg.com/publications/2026/space-based-data-centers-cost-outlook": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c11"
     ],
     "https://www.benzinga.com/markets/earnings/26/07/60781217/meta-reports-mixed-q2-results-raises-low-end-of-capex-guidance-range-shares-move-lower": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c23"
@@ -12825,6 +12916,9 @@
     "https://www.efinancialcareers.de/en/news/hudson-river-trading-s-head-of-ai-said-the-era-of-whiteboard-quants-is-over": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c24"
     ],
+    "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c12"
+    ],
     "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_5_03": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c9"
     ],
@@ -12845,6 +12939,9 @@
     ],
     "https://www.engadget.com/2231446/meta-ai-model-hacked-third-party-irregular": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c13"
+    ],
+    "https://www.engadget.com/2267975/google-is-sending-a-teensy-tiny-ai-data-center-to-space": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c2"
     ],
     "https://www.engineering.columbia.edu/about/news/robots-grow-consuming-other-robots": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c5"
@@ -12969,6 +13066,9 @@
     "https://www.fool.com/earnings/call-transcripts/2026/01/28/tesla-tsla-q4-2025-earnings-call-transcript": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c12"
     ],
+    "https://www.fool.com/earnings/call-transcripts/2026/03/19/planet-labs-pl-q4-2026-earnings-call-transcript": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c13"
+    ],
     "https://www.fool.com/earnings/call-transcripts/2026/05/03/vicor-vicr-q1-2026-earnings-transcript": [
       "2026-05-27T035557--800-vdc-architecture#c17"
     ],
@@ -13043,6 +13143,9 @@
     ],
     "https://www.fortunebusinessinsights.com/ai-inference-market-113705": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
+    ],
+    "https://www.foxbusiness.com/technology/altman-calls-musks-space-data-center-plans-ridiculous-current-ai-computing-needs": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c19"
     ],
     "https://www.fredgao.com/p/deepseeks-liang-wenfeng-breaks-his": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c1",
@@ -13359,7 +13462,8 @@
     ],
     "https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c23",
-      "2026-07-31T051841--situational-awareness-lp-collapse#c32"
+      "2026-07-31T051841--situational-awareness-lp-collapse#c32",
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c18"
     ],
     "https://www.investing.com/news/transcripts/earnings-call-transcript-globalwafers-posts-strong-q2-2026-growth-as-novara-fire-clouds-outlook-93CH-4833281": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c6",
@@ -13850,6 +13954,9 @@
     "https://www.nytimes.com/2024/09/27/technology/openai-chatgpt-investors-funding.html": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c15"
     ],
+    "https://www.opb.org/article/2026/10/01/google-launches-project-suncatcher-a-step-towards-ai-data-centers-in-space": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c2"
+    ],
     "https://www.opencompute.org/documents/ocp-specification-diablo-400-v0p5p2-2025-05-30-pdf": [
       "2026-05-27T035557--800-vdc-architecture#c9"
     ],
@@ -14044,6 +14151,9 @@
     ],
     "https://www.sas-globalwafers.com/en/gwc_news_en_20260505": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c29"
+    ],
+    "https://www.satellitetoday.com/launch/2026/10/01/the-first-mission-milestones-onboard-spacexs-transporter-18-rideshare-launch": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c1"
     ],
     "https://www.schott.com/en-gb/products/glass-panels-p1001142/technical-details": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c30"
@@ -14382,6 +14492,9 @@
     ],
     "https://www.stablewatch.io/analytics/assets/sUSDai-USD.AI": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c4"
+    ],
+    "https://www.starcloud.com/starcloud-1": [
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c14"
     ],
     "https://www.statmuse.com/money/ask/nvda+stock+price+on+august+28+2025": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c6"
@@ -15466,7 +15579,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2649,
+  "claim_count": 2669,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -79158,9 +79271,486 @@
         "https://aiweekly.co/alerts/the-information-typesafe-in-talks-to-raise-1b-at-10b-valuation-days-after-40m"
       ],
       "type": "event"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-10-01",
+      "claim": "Google's Suncatcher prototype launched on SpaceX Transporter-18, built with Planet, and Google confirmed contact and that it is operating as expected.",
+      "confidence": "high",
+      "hosts": [
+        "blog.google",
+        "satellitetoday.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-prototype",
+        "https://www.satellitetoday.com/launch/2026/10/01/the-first-mission-milestones-onboard-spacexs-transporter-18-rideshare-launch"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-06-03",
+      "claim": "SemiAnalysis estimates space B300 TCO at $10.91/hr/GPU versus $2.49 on the ground after availability adjustments, roughly 4.4x.",
+      "confidence": "medium",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c10",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c10",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/to-boldly-go-the-case-for-space-datacenters"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-08-27",
+      "claim": "BCG estimates 20-year TCO of $660-750M per MW in space versus $230-300M on the ground, with GPUs about half and launch about one fifth of TCO.",
+      "confidence": "medium",
+      "hosts": [
+        "bcg.com"
+      ],
+      "id": "c11",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c11",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://www.bcg.com/publications/2026/space-based-data-centers-cost-outlook"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-09-24",
+      "claim": "US utility-scale solar capacity factor was 24.4% in 2025 (preliminary).",
+      "confidence": "high",
+      "hosts": [
+        "eia.gov"
+      ],
+      "id": "c12",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-03-19",
+      "claim": "Planet records the Suncatcher partnership as contra R&D expense, not revenue.",
+      "confidence": "high",
+      "hosts": [
+        "fool.com"
+      ],
+      "id": "c13",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.fool.com/earnings/call-transcripts/2026/03/19/planet-labs-pl-q4-2026-earnings-call-transcript"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2025-12-10",
+      "claim": "Starcloud-1 carried an Nvidia H100, launched in November 2025, and trained NanoGPT in orbit.",
+      "confidence": "high",
+      "hosts": [
+        "blogs.nvidia.com",
+        "starcloud.com"
+      ],
+      "id": "c14",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.starcloud.com/starcloud-1",
+        "https://blogs.nvidia.com/blog/starcloud"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2025-05-15",
+      "claim": "China's Three-Body Computing Constellation launched 12 computing satellites on 14 May 2025.",
+      "confidence": "high",
+      "hosts": [
+        "xinhuanet.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "http://www.xinhuanet.com/tech/20250515/a4f002a57a304012865013110319f42d/c.html"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-08-21",
+      "claim": "Starcloud raised a $250M extension at a $2.3B valuation and plans two 8 kW Starcloud-2 satellites in 2027.",
+      "confidence": "high",
+      "hosts": [
+        "techcrunch.com"
+      ],
+      "id": "c16",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c16",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://techcrunch.com/2026/08/21/starcloud-raises-200-million-for-orbital-data-centers-as-launch-options-dry-up"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-07-15",
+      "claim": "Starlink collision-avoidance manoeuvres reached 207,152 in Dec 2025-May 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "starpath.global"
+      ],
+      "id": "c17",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c17",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://starpath.global/news/starlink-satellites-now-dodging-collisions-almost-weekly-as-maneuvers-triple-in-a-year"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-07-22",
+      "claim": "Alphabet guided 2026 capex to $195-205B.",
+      "confidence": "high",
+      "hosts": [
+        "investing.com"
+      ],
+      "id": "c18",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-02-23",
+      "claim": "Sam Altman called putting data centers in space 'ridiculous' in the current landscape.",
+      "confidence": "high",
+      "hosts": [
+        "foxbusiness.com"
+      ],
+      "id": "c19",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.foxbusiness.com/technology/altman-calls-musks-space-data-center-plans-ridiculous-current-ai-computing-needs"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-10-01",
+      "claim": "The prototype carries four TPUs on roughly 1 kW of solar power and runs Gemma in about 15-minute windows because of heat limits.",
+      "confidence": "medium",
+      "hosts": [
+        "engadget.com",
+        "opb.org"
+      ],
+      "id": "c2",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.opb.org/article/2026/10/01/google-launches-project-suncatcher-a-step-towards-ai-data-centers-in-space",
+        "https://www.engadget.com/2267975/google-is-sending-a-teensy-tiny-ai-data-center-to-space"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "",
+      "claim": "The ISS heat rejection subsystem uses six radiator arrays to reject 70 kW.",
+      "confidence": "high",
+      "hosts": [
+        "saemobilus.sae.org"
+      ],
+      "id": "c20",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c20",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://saemobilus.sae.org/papers/space-station-heat-rejection-subsystem-radiator-assembly-design-development-951651"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-09-24",
+      "claim": "Google plans two satellites in 2027 to test inter-satellite laser links; the November 2025 plan was two prototypes by early 2027.",
+      "confidence": "high",
+      "hosts": [
+        "blog.google"
+      ],
+      "id": "c3",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://blog.google/innovation-and-ai/models-and-research/google-research/google-project-suncatcher-facts",
+        "https://blog.google/innovation-and-ai/technology/research/google-project-suncatcher"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-06-17",
+      "claim": "Trillium HBM showed irregularities after 2 krad(Si), versus an expected shielded five-year dose of 750 rad(Si), with no hard failures up to 15 krad(Si) on a single chip.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "research.google"
+      ],
+      "id": "c4",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2511.19468",
+        "https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-06-17",
+      "claim": "Beam tests measured HBM uncorrectable errors at about one per 44 rad (203 events), extrapolated to about 1 failure per 3 million inferences.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c5",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c5",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2511.19468"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2025-11-04",
+      "claim": "The illustrative design is an 81-satellite cluster of 1 km radius at 650 km altitude with neighbours oscillating 100-200 m apart.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "research.google"
+      ],
+      "id": "c6",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2511.19468",
+        "https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2025-11-04",
+      "claim": "A bench demonstrator achieved 800 Gbps each way (1.6 Tbps total) across a short free-space path; the design requires on the order of 10 Tbps per link.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c7",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2511.19468"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-06-17",
+      "claim": "Launched power costs $14,700/kW/yr at $3,600/kg, falling to $810/kW/yr at $200/kg, versus $570-3,000/kW/yr terrestrial power spend.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c8",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c8",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2511.19468"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+      "article_created_at": "2026-10-02T18:25:27Z",
+      "article_title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+      "as_of": "2026-05-14",
+      "claim": "A typical 1 GW AI datacenter annualizes to about $8.5B/yr, with servers $5B/yr or 60% of the total.",
+      "confidence": "medium",
+      "hosts": [
+        "epoch.ai"
+      ],
+      "id": "c9",
+      "key": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://epoch.ai/data-insights/ai-datacenter-cost-breakdown"
+      ],
+      "type": "metric"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1281,
+  "reusable_count": 1290,
   "schema_version": 1
 }

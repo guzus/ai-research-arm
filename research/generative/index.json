@@ -3062,5 +3062,17 @@
         "source_sha256": "9002f6f23742020905150d5dfd7fb95b12242d1e1bd24ecff9fc5850f8049212"
       }
     }
+  },
+  {
+    "slug": "google-project-suncatcher-s-tpu-prototype-satellite-reaches",
+    "file": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute",
+    "model": "claude-opus-5-5",
+    "created_at": "2026-10-02T18:25:27Z",
+    "source": "workflow_dispatch",
+    "prompt": "Google Project Suncatcher's TPU prototype satellite reaches orbit: what one test flight can and cannot settle about space-based AI compute",
+    "tags": []
   }
 ]
