@@ -3045,6 +3045,22 @@
     "created_at": "2026-10-02T01:05:05Z",
     "source": "workflow_dispatch",
     "prompt": "Decision models commoditize in a week: Perplexity pplx-decider-27b at $0.04/M, Cloudflare Clef, JEV-27B-VL vs OpenAI's Decisions API",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-10-02T011930--decision-models-commoditize-in-a-week-perplexity-pplx-decide.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "의사결정 모델이 일주일 만에 범용화됐다 — 다만 범용화된 것은 판단이 아니라 래퍼였다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-10-02T01:19:30Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+        "tags": [],
+        "translated_at": "2026-10-02T01:19:30Z",
+        "source_file": "research/generative/2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide.ara.md",
+        "source_sha256": "9002f6f23742020905150d5dfd7fb95b12242d1e1bd24ecff9fc5850f8049212"
+      }
+    }
   }
 ]
