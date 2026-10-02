@@ -43,7 +43,7 @@ status_note: |
   (2026-09-24, ~30.7K likes) landed in the same window. Different programs,
   different silicon, same thesis; SpaceX is Google's launch provider here, not
   its partner.
-expected: "Launch on SpaceX Transporter-18, reported for 2026-10-01. Open: whether the launch happens on schedule, any published telemetry on TPU survivability in orbit, and whether the 80-satellite constellation and soccer-field-scale custom satellite are ever confirmed by Google rather than by press reporting."
+expected: "Launched 2026-10-01 on SpaceX Transporter-18 carrying four TPUs; contact reported. Open: published telemetry on TPU survivability (single-event-upset rate, thermal profile) over the coming weeks, and whether the 80-satellite constellation and soccer-field-scale custom satellite are ever confirmed by Google rather than by press reporting."
 labels:
   - google
   - tpu
@@ -57,13 +57,17 @@ sources:
   - https://x.com/AndrewCurran_/status/2103163493021343847
   - https://x.com/kimmonismus/status/2103382749507948554
   - "@demishassabis"
+  - https://x.com/demishassabis/status/2105829161440804963
+  - https://x.com/shanaka86/status/2106003203020267659
 created_at: 2026-09-25
-updated_at: 2026-09-25
+updated_at: 2026-10-02
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-25
     change: "Created — CONFIRMED. Google announced Project Suncatcher on 2026-09-24 through two primary accounts: @Google ('We're sending TPUs to space (yes, really)... launching a satellite to evaluate if and how Google Tensor Processing Units hold up in orbit', ~2,845 likes) and @sundarpichai ('Project Suncatcher is hitching a ride aboard @SpaceX's Transporter-18 mission, testing a prototype satellite built in partnership with @planet', ~9,744 likes), with @demishassabis relaying. Status confirmed and verification confirmed: two named primary accounts, one of them the CEO. Deliberately NOT recorded as an orbital datacenter — the confirmed artifact is one rideshare prototype testing TPU survivability under launch, radiation and vacuum-thermal stress, and Google's own 'evaluate if and how ... one day' phrasing concedes that. The constellation figures (80+ networked satellites in formation, a custom satellite the length of a soccer field, an October 1 Falcon 9 date) come from an NYT report relayed by @AndrewCurran_ and are held at reporting strength, not announcement strength. Motivation recorded from @kimmonismus's summary of Google's claim: power, grid connection and datacenter construction are the binding constraints, and orbital solar can be up to 8x more productive than terrestrial; cooling, launch economics and downlink bandwidth are the unaddressed terms. Cross-linked to [[spacex-nvidia-starmind-orbital-compute-2026-08]] as a separate program sharing the thesis — SpaceX is the launch provider here, not a Google partner."
+  - ts: 2026-10-02
+    change: "LAUNCHED on schedule. @Google (retweeted by @demishassabis, 2026-10-02 01:16 UTC): 'Today, in partnership with @planet, we launched a prototype satellite carrying four TPUs into orbit on @Sp[aceX]…' — first primary statement of the payload size (four TPUs). @shanaka86 (2026-10-02) adds that the spacecraft reached orbit on Transporter-18 on 2026-10-01, that Google confirmed contact, and that it will collect radiation/thermal/spaceflight-stress data on the chips over the coming weeks; the contact claim is relay-strength until a Google post states it. The NYT-reported constellation figures (80+ satellites, soccer-field-scale custom satellite) remain unconfirmed by Google. Status stays confirmed — this is a research mission, not a product that can become 'released'; the next meaningful update is published TPU survivability telemetry."
 ---
 
 The interesting thing about Suncatcher is what Google chose to test first.

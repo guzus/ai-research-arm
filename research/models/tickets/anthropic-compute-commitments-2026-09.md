@@ -73,8 +73,9 @@ sources:
   - https://x.com/rohanpaul_ai/status/2099332537608970423
   - https://x.com/aleabitoreddit/status/2103232350348001701
   - https://x.com/mark_k/status/2103421891914367471
+  - https://x.com/khalidtasi11/status/2106003542490181662
 created_at: 2026-09-14
-updated_at: 2026-09-25
+updated_at: 2026-10-02
 closed_at: null
 closed_reason: null
 history:
@@ -84,6 +85,8 @@ history:
     change: "Confirmed, unchanged. New commitment reported onto the stack: $11.6B to Akamai over seven years, possibly expanding to ~$20B, with warrants giving Anthropic up to 5% of Akamai (@aleabitoreddit 2026-09-24 21:17 UTC; @mark_k 2026-09-25 09:50 UTC). Tracked in full at [[anthropic-akamai-compute-2026-09]] and recorded here only for its effect on this ticket's reconciliation question. Two specific complications added. First, the Akamai capacity is explicitly CPU, not accelerator — the serving, orchestration, sandboxing and evaluation layer around the models — and it is unknown whether $11.6B of CPU sits inside the $517B tally this ticket tracks or is additive to it; that ambiguity is precisely what makes an externally-reported commitment headline hard to audit. Second, a commitment partly settled through equity-linked instruments such as warrants is not directly comparable to a cash purchase obligation, and both counterparties will describe the same dollars in their own disclosures. Governance context from the same window: Anthropic is reported to be structuring founder voting control ahead of the listing ([[anthropic-ipo-2026-06]]), which means the S-1 that would resolve the commitment accounting is the same filing that carries the control structure."
   - ts: 2026-09-25
     change: "Bookkeeping — citations added for the 2026-09-25 entry: @aleabitoreddit and @mark_k on the $11.6B / seven-year Akamai CPU commitment, its possible ~$20B expansion, and the warrants for up to 5% of Akamai. No status, verification or content change."
+  - ts: 2026-10-02
+    change: "Unadopted lead, logged for later reconciliation. An Arabic-language market-news roundup (@khalidtasi11, 2026-10-02 12:49 UTC) lists two items: 'Broadcom raises $60B to finance chip purchases for Anthropic' and 'Broadcom provides $42B in financing to Anthropic to lease chips'. No outlet is named, no Broadcom or Anthropic statement was captured, and the two figures are not reconciled with each other. If accurate, this would be a vendor-financing component of the up-to-$517B commitment stack this ticket tracks, and the second accelerator-vendor financing structure after [[anthropic-google-datacenter-financing-2026-07]]. Verification stays partial; nothing in status_note changes until a primary or named outlet confirms it."
 ---
 
 Two numbers were reported about Anthropic in the same 24 hours, and they point
