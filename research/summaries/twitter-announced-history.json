@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-16 12:00 UTC",
-    "headline": "ANTHROPIC MYTHOS / APPLE M5 / MIE BYPASS STORY COMPOUNDS \u2014 @KIMMONISMUS POST AT 502L / 23RT, +2.3\u00d7 IN 2H",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-16-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2055571960260645125"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-16 12:00 UTC",
-    "headline": "TIER-1 SECURITY PRESS STILL SILENT ON CALIF / M5 / MYTHOS 45+ HRS PAST DECRYPT PRIMARY \u2014 ANTHROPIC ~42H CORP-SILENT",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-16-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2055571960260645125"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-16 12:00 UTC",
-    "headline": "@THSOTTIAUX CODEX FIX POST AT 6,578L / 457RT; 'CONFIRMED STABLE AND RECOVERED' AT 583L; @SAMA ~18H SILENT ON THE FIX",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-05-16-twitter-12h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2055446089957036402"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 12:00 UTC",
-    "headline": "ANTHROPIC CORP ~42H SILENT, DARIO ~38D 18H SILENT \u2014 @CLAUDEDEVS HAPPY FRIDAY RESET AT 27,197L / 1,237RT PLATEAUING",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-16-twitter-12h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2055347539923308703"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-16 12:00 UTC",
     "headline": "NOMURA: VALUE DRAM ON A PER BASIS \u2014 SAMSUNG ELEC TARGET KRW 590K, SK HYNIX KRW 4M ON DURABLE AI-FLEET HBM DEMAND",
@@ -23990,5 +23954,33 @@
     "headline": "JUDGE MEHTA DISMISSES CHEGG, PENSKE ANTITRUST SUITS OVER GOOGLE AI OVERVIEWS",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2105729728179277841"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-02 00:42:18 UTC",
+    "headline": "PERPLEXITY OPEN-SOURCES PPLX-DECIDER-27B DECISION MODEL; DECISIONS API AT $0.04/M INPUT TOKENS, FREE OUTPUT",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2105774153903268288"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-02 00:42:18 UTC",
+    "headline": "CLOUDFLARE RELEASES FIRST HOMEGROWN MODELS: CLEF AND CLEF-FLASH DECISION MODELS UNDER APACHE 2.0",
+    "source": "@steipete",
+    "url": "https://x.com/steipete/status/2105778011635400949"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-02 00:42:18 UTC",
+    "headline": "ARTIFICIAL ANALYSIS: GEMINI 4 ARGON TIES GPT-6 ASTRA ON INTELLIGENCE INDEX AT 60% OF COST PER TASK",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2105803651864285301"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-02 00:42:18 UTC",
+    "headline": "BLACK FOREST LABS ANNOUNCES FLUX 3 IMAGE WITH 4K EDITING; OPEN WEIGHTS PROMISED IN COMING WEEKS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2105797384785502626"
   }
 ]
