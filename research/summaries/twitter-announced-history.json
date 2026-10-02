@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 15:00 UTC",
-    "headline": "THE INFORMATION EXCLUSIVE: APPLE WEIGHING HOW AGENTS FIT INSIDE ITS MOST LUCRATIVE SOFTWARE BUSINESS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-16-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055664631834677363"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 15:00 UTC",
-    "headline": "THE INFORMATION: WALL STREET VALUES CEREBRAS AT RICHER SALES MULTIPLE THAN NVIDIA",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-16-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055672138925846877"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 15:00 UTC",
-    "headline": "FORMER APPLE IPHONE ENG MATT ROGERS: 'EVENTUALLY OPENAI IS GOING TO NEED TO BUILD THE PHONE' \u2014 IVE TO SHIP AN ANDROID DEVICE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-16-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055657143223628002"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 15:00 UTC",
-    "headline": "MODAL VALUATION COULD JUMP 80% IN MONTHS ON AI AGENT INFRA DEMAND",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-16-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055634440596967464"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-16 15:00 UTC",
-    "headline": "SAM ALTMAN 21 HOURS SILENT SINCE CODEX TECH LEAD'S OWN-TEAM FIX SUPERSEDED HIS 'USER GOT USED TO THE MAGIC' FRAMING",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-16-twitter-15h-headlines.json",
-    "url": "https://x.com/sama/status/2055356452286640630"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-16 18:00 UTC",
     "headline": "CODEX TECH LEAD DELIVERS PROMISED RATE-LIMIT RESET ACROSS ALL PAID PLANS \u2014 GPT-5.5 DEGRADATION LOOP CLOSES",
@@ -23976,5 +23931,40 @@
     "headline": "LUMENTUM CEO: CAN SUPPLY ONLY 30% OF LASER DEMAND AS CO-PACKAGED OPTICS RAMP; BALANCE NOT UNTIL 2029-30",
     "source": "@aleabitoreddit",
     "url": "https://x.com/aleabitoreddit/status/2105943565918703696"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-02 17:49:43 UTC",
+    "headline": "GOOGLE LAUNCHES PROJECT SUNCATCHER TPU SATELLITE INTO ORBIT ON SPACEX TRANSPORTER-18 WITH PLANET",
+    "source": "@GoogleAI",
+    "url": "https://x.com/GoogleAI/status/2106049984164463069"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-02 17:49:43 UTC",
+    "headline": "NVIDIA RAISES 128GB DGX SPARK TO $6,949.99; NEW 64GB MODEL AT $4,999 FROM SIX OEMS ON OCT 23",
+    "source": "@RayFernando1337",
+    "url": "https://x.com/RayFernando1337/status/2106058438728089720"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-02 17:49:43 UTC",
+    "headline": "INVESTORS PUSH BACK ON ANTHROPIC IPO PRICE: SOME WANT ~$1.5T VALUATION, NOT $2T \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2106028961096417685"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-02 17:49:43 UTC",
+    "headline": "HUGGING FACE OPEN-SOURCES MULTI-HARNESS AGENT RL RECIPE; LFM2.5-2.6B RISES FROM 42% TO 54%",
+    "source": "@huggingface",
+    "url": "https://x.com/huggingface/status/2106034221005312448"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-02 17:49:43 UTC",
+    "headline": "NVIDIA HITS FIRST RECORD HIGH SINCE MAY, ~$5.7 TRILLION MARKET VALUE \u2014 BLOOMBERG",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2106032058325721288"
   }
 ]
