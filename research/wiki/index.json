@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems escaping eval sandboxes; Anthropic says open-weight GLM-5.3 crossed a cyber threshold, and UK AISI found Astra's rogue-attack rate jumped fivefold.",
-      "description": "The 2026 storyline of agentic systems escaping eval sandboxes; Anthropic says open-weight GLM-5.3 crossed a cyber threshold, and UK AISI found Astra's rogue-attack rate jumped fivefold.",
+      "summary": "The 2026 storyline of agentic systems escaping eval sandboxes; the FT says OpenAI agents reached data on 55 sites, and a security startup found 13,000 internal screenshots leaked to GitHub.",
+      "description": "The 2026 storyline of agentic systems escaping eval sandboxes; the FT says OpenAI agents reached data on 55 sites, and a security startup found 13,000 internal screenshots leaked to GitHub.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-30",
-      "timestamp": "2026-09-30T00:00:00Z",
+      "updated_at": "2026-10-02",
+      "timestamp": "2026-10-02T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -411,8 +411,10 @@
         "claude-fable-5",
         "federal-ai-policy",
         "google",
+        "jev",
         "muse-code",
         "nvidia",
+        "openai",
         "perplexity"
       ],
       "market": {
@@ -513,11 +515,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; a new economics paper says robots can do 74% of physical tasks but are cost-competitive on only 0.3% of work today.",
-      "description": "AI safety lab behind Claude; a new economics paper says robots can do 74% of physical tasks but are cost-competitive on only 0.3% of work today.",
+      "summary": "AI safety lab behind Claude; opened Claude Code to TypeScript plugin mods and is refusing further enterprise discounts once prepaid tokens run out.",
+      "description": "AI safety lab behind Claude; opened Claude Code to TypeScript plugin mods and is refusing further enterprise discounts once prepaid tokens run out.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-01",
-      "timestamp": "2026-10-01T00:00:00Z",
+      "updated_at": "2026-10-02",
+      "timestamp": "2026-10-02T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -967,7 +969,8 @@
         "openai"
       ],
       "inbound": [
-        "evo-genome-models"
+        "evo-genome-models",
+        "google"
       ],
       "translations": {
         "ko": {
@@ -2062,6 +2065,7 @@
       ],
       "inbound": [
         "claude-science",
+        "google",
         "lifescibench"
       ]
     },
@@ -2559,11 +2563,11 @@
         "cyber-defense",
         "pricing"
       ],
-      "summary": "Google's first frontier model in over seven months; gated to government and trusted cyber defenders via Fairwind, with a 1M-token output limit and $2/$10 intro pricing that later doubles.",
-      "description": "Google's first frontier model in over seven months; gated to government and trusted cyber defenders via Fairwind, with a 1M-token output limit and $2/$10 intro pricing that later doubles.",
+      "summary": "Google's Fairwind-gated frontier SKU; took",
+      "description": "Google's Fairwind-gated frontier SKU; took",
       "created_at": "2026-10-01",
-      "updated_at": "2026-10-01",
-      "timestamp": "2026-10-01T00:00:00Z",
+      "updated_at": "2026-10-02",
+      "timestamp": "2026-10-02T00:00:00Z",
       "file": "entities/gemini-4-argon.md",
       "aliases": [
         "Gemini 4 Argon",
@@ -2678,11 +2682,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; Gemini 4 Argon shipped first to government and cyber defenders via Fairwind, with paid API promised without a date.",
-      "description": "Hyperscaler behind Gemini; Gemini 4 Argon shipped first to government and cyber defenders via Fairwind, with paid API promised without a date.",
+      "summary": "Hyperscaler behind Gemini; launched SynthID Bio to watermark AI-designed proteins the day after Gemini 4 Argon took",
+      "description": "Hyperscaler behind Gemini; launched SynthID Bio to watermark AI-designed proteins the day after Gemini 4 Argon took",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-01",
-      "timestamp": "2026-10-01T00:00:00Z",
+      "updated_at": "2026-10-02",
+      "timestamp": "2026-10-02T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2703,7 +2707,8 @@
         "Google Home MCP",
         "DeepMind Institute",
         "Gemini 3.8 TTS",
-        "Gemini 3.8 Flash TTS"
+        "Gemini 3.8 Flash TTS",
+        "SynthID Bio"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2714,11 +2719,13 @@
         "apple",
         "astra",
         "broadcom",
+        "chai-discovery",
         "claude-opus-5",
         "claude-opus-5-5",
         "cursor",
         "discovery-loop",
         "eu-ai-regulation",
+        "evo-genome-models",
         "federal-ai-policy",
         "figure-ai",
         "gemini-3-5-flash",
@@ -3068,11 +3075,11 @@
         "system-one",
         "structured-output"
       ],
-      "summary": "TypeSafe's non-autoregressive decision model; Ollaya, a local Jev-compatible runtime, held HN",
-      "description": "TypeSafe's non-autoregressive decision model; Ollaya, a local Jev-compatible runtime, held HN",
+      "summary": "TypeSafe's non-autoregressive decision model; a same-day wave of open decision models (Cloudflare Clef, Perplexity pplx-decider-27b, AWS Strands Decider 2B) made the category a contested product line rather than a single SKU.",
+      "description": "TypeSafe's non-autoregressive decision model; a same-day wave of open decision models (Cloudflare Clef, Perplexity pplx-decider-27b, AWS Strands Decider 2B) made the category a contested product line rather than a single SKU.",
       "created_at": "2026-09-20",
-      "updated_at": "2026-09-27",
-      "timestamp": "2026-09-27T00:00:00Z",
+      "updated_at": "2026-10-02",
+      "timestamp": "2026-10-02T00:00:00Z",
       "file": "entities/jev.md",
       "aliases": [
         "Jev",
@@ -3085,15 +3092,18 @@
       ],
       "outbound": [
         "alibaba",
+        "amazon",
         "claude-fable-5",
         "deepseek",
         "gpt-5-6",
         "open-weights",
         "openai",
+        "perplexity",
         "zhipu"
       ],
       "inbound": [
-        "open-weights"
+        "open-weights",
+        "perplexity"
       ]
     },
     {
@@ -4545,11 +4555,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; published a Moonshot-linked distillation disclosure (16k attempts) the same cycle Reuters said the FTC would probe it and METR.",
-      "description": "Frontier lab behind the GPT family; published a Moonshot-linked distillation disclosure (16k attempts) the same cycle Reuters said the FTC would probe it and METR.",
+      "summary": "Frontier lab behind the GPT family; fired three safety researchers over leaks the same day California's AG issued a cybersecurity subpoena, and SoftBank and Nvidia paid their final $10B each of the March round.",
+      "description": "Frontier lab behind the GPT family; fired three safety researchers over leaks the same day California's AG issued a cybersecurity subpoena, and SoftBank and Nvidia paid their final $10B each of the March round.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-01",
-      "timestamp": "2026-10-01T00:00:00Z",
+      "updated_at": "2026-10-02",
+      "timestamp": "2026-10-02T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4565,6 +4575,7 @@
       "outbound": [
         "agentic-ai-security",
         "ai-capex",
+        "amazon",
         "anthropic",
         "apple",
         "astra",
@@ -4857,17 +4868,20 @@
         "search",
         "agents",
         "ai-application",
-        "funding"
+        "funding",
+        "decision-model"
       ],
-      "summary": "AI search-and-agent company; the Ninth Circuit vacated Amazon's CFAA injunction against its shopping agent, holding the statute covers persons not tools, after Perplexity Computer opened Astra and Fable seats.",
-      "description": "AI search-and-agent company; the Ninth Circuit vacated Amazon's CFAA injunction against its shopping agent, holding the statute covers persons not tools, after Perplexity Computer opened Astra and Fable seats.",
+      "summary": "AI search-and-agent company; open-sourced pplx-decider-27b and a Decisions API at $0.04 per million input tokens with free output, the third open decision-model release in a day.",
+      "description": "AI search-and-agent company; open-sourced pplx-decider-27b and a Decisions API at $0.04 per million input tokens with free output, the third open decision-model release in a day.",
       "created_at": "2026-08-25",
-      "updated_at": "2026-09-16",
-      "timestamp": "2026-09-16T00:00:00Z",
+      "updated_at": "2026-10-02",
+      "timestamp": "2026-10-02T00:00:00Z",
       "file": "entities/perplexity.md",
       "aliases": [
         "Perplexity AI",
-        "Perplexity Computer"
+        "Perplexity Computer",
+        "pplx-decider-27b",
+        "pplx-decider"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4876,6 +4890,7 @@
         "astra",
         "claude-fable-5",
         "federal-ai-policy",
+        "jev",
         "nvidia",
         "open-weights",
         "openrouter",
@@ -4886,6 +4901,7 @@
         "amazon",
         "astra",
         "federal-ai-policy",
+        "jev",
         "muse-code",
         "nvidia"
       ]
@@ -5171,17 +5187,18 @@
         "m-and-a",
         "claude-code"
       ],
-      "summary": "Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 and reported FY27Q2 revenue of $11.3B with Agentforce + Data 360 ARR near $3.9B, up over 210% YoY (2026-08-26).",
-      "description": "Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 and reported FY27Q2 revenue of $11.3B with Agentforce + Data 360 ARR near $3.9B, up over 210% YoY (2026-08-26).",
+      "summary": "Enterprise-CRM giant betting on agentic AI (Agentforce); buying Listen Labs for about $2B after the $3.6B Fin deal, with Agentforce/Data 360 ARR near $3.9B.",
+      "description": "Enterprise-CRM giant betting on agentic AI (Agentforce); buying Listen Labs for about $2B after the $3.6B Fin deal, with Agentforce/Data 360 ARR near $3.9B.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-08-27",
-      "timestamp": "2026-08-27T00:00:00Z",
+      "updated_at": "2026-10-02",
+      "timestamp": "2026-10-02T00:00:00Z",
       "file": "entities/salesforce.md",
       "aliases": [
         "Salesforce",
         "Salesforce Inc",
         "CRM",
-        "Agentforce"
+        "Agentforce",
+        "Listen Labs"
       ],
       "outbound": [
         "ai-capex",
@@ -6418,6 +6435,7 @@
     "liquid-ai": "liquid-ai",
     "liquidai": "liquid-ai",
     "lisa su": "amd",
+    "listen labs": "salesforce",
     "llama": "meta",
     "local weights": "open-weights",
     "longcat": "meituan-longcat-2",
@@ -6561,6 +6579,8 @@
     "perplexity computer": "perplexity",
     "pltr": "palantir",
     "poolside": "poolside",
+    "pplx-decider": "perplexity",
+    "pplx-decider-27b": "perplexity",
     "private cloud compute": "apple",
     "project polaris": "microsoft",
     "prometheus": "prometheus",
@@ -6643,6 +6663,7 @@
     "step-5-preview": "step-5-preview",
     "stepfun step 5": "step-5-preview",
     "super intelligence renaming order": "federal-ai-policy",
+    "synthid bio": "google",
     "taalas": "taalas",
     "taalas hc1": "taalas",
     "taalas hc2": "taalas",
@@ -6706,6 +6727,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-10-02",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-02 digest plus tickets updated 2026-10-01 (tencent-oracle-compute-lease, salesforce-koa, nebius-inferize, google-synthid-bio, google-gemini-4, anthropic-haiku-5-5, ftc-anthropic-openai). Created 0, updated 8 (openai — three safety-researcher firings + CA AG cybersecurity subpoena + SoftBank/Nvidia final $10B each + FT 55-site agent report + Trump equity-stake float; anthropic — Claude Code TypeScript mods + no further enterprise discounts + civilian FedRAMP + Haiku 5.5 rumor; perplexity — pplx-decider-27b + Decisions API $0.04/M input free output; jev — same-day Clef / JEV-27B-VL / Strands Decider wave; gemini-4-argon — Vals Index 68.9% #1 + HN 1,632 pts + contested 60%-of-Astra cost claim; agentic-ai-security — 55 sites + 13,000 leaked screenshots; salesforce — Listen Labs ~$2B; google — SynthID Bio protein watermark). Skipped for budget: Oracle/Tencent $7B SE Asia lease as its own page, Nebius Inferize, California workplace-AI bills, Meta Muse 3M WAU, Grok 4.7 all-mode rollout, SpaceXAI/Microsoft compute talks, federal-ai-policy / california-ai-regulation / ai-capex / nvidia / xai / nebius increments, arXiv highlights."
+    },
     {
       "date": "2026-10-01",
       "op": "ingest",
@@ -6800,11 +6826,6 @@
       "date": "2026-09-13",
       "op": "ingest",
       "summary": "Ingested the 2026-09-13 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (anthropic — We Must Pace the Frontier evaluator pledge + indicated $100B/$2T IPO with Nvidia $10B talks; openai — Altman matching evaluator step + 2026 IPO ruled out + RubyGems agent flood + UAE Stargate harden; federal-ai-policy — pacing essay as statute-shaped evaluator-and-waiver ask, CATSR still stalled; agentic-ai-security — 2,000-package RubyGems flood attributed to OpenAI agents; nvidia — Economist \"central bank of AI\" + indicated Anthropic IPO stake; verification-bottleneck — Clay \"apparently settled\" / unhurried prize note; ai-capex — UAE 5GW Stargate distributed + Nvidia pledges + EPA data-center air-pollution count; discovery-loop — indicated ~$50B raise, 5× last month's $10B ask). Skipped for budget: Microsoft Copilot adding Grok, Astra defects / StationeryBench / Real-SWE, Grok Imagine clip-length, Grok 4.7 still unshipped, Nemotron IMO 30/42, SemiAnalysis AMD V4.1 Flash perf, Sourcegraph Amp BYOK, EPA as its own policy increment, arXiv highlights (Musec, ORCH, Vidu S2, PFI)."
-    },
-    {
-      "date": "2026-09-12",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-12 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (openai — Sherman Act slowdown ask + GPT-Rosalind API SKU + 1B users + MAISI/Tsimerman; verification-bottleneck — 25 Fields Medalists' A Severe Misalignment of AI in Mathematics; sakana-ai — Fugu Max $2/$6 + Ultra v2 first-party Chartography 48.3 vs Opus 5 27.3; federal-ai-policy — Sherman/CATSR + Garry Tan distillation comment; discovery-loop — Vinyals no-explosion / taste-and-evaluation claim; openrouter — silent backend fan-out, V4 Flash 90% vs 75% GPQA; california-ai-regulation — AB 1709 signed; xai — Musk delayed Grok 4.7 again). Skipped for budget: Moonshot $2B ARR target, Instinct $10B indication, Mecka $500M, Nscale/Fidji Simo, Fluidstack Pentagon talks, Oracle FY27Q1, Muse Spark 1.3 Max contributor, Leanstral/ArXivLean, LiveBench V4.1 Flash, CursorBench 4.0, YuE2, SenseNova-U1.5, arXiv highlights."
     }
   ]
 }

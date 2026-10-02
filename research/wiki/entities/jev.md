@@ -4,10 +4,11 @@ title: Jev (TypeSafe)
 type: entity
 aliases: [Jev, "TypeSafe Jev", TypeSafe, OpenJev, JevBench, RLCD, "Tev1-4B-experimental"]
 tags: [decision-model, classifier, open-weights, system-one, structured-output]
-description: TypeSafe's non-autoregressive decision model; Ollaya, a local Jev-compatible runtime, held HN #2 on 2026-09-26, and Jev Plays Pokémon Red climbed all day.
+description: TypeSafe's non-autoregressive decision model; a same-day wave of open decision models (Cloudflare Clef, Perplexity pplx-decider-27b, AWS Strands Decider 2B) made the category a contested product line rather than a single SKU.
 created_at: 2026-09-20
-timestamp: 2026-09-27T00:00:00Z
+timestamp: 2026-10-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
@@ -204,3 +205,46 @@ than a launch blurb. See [[open-weights]].
   community harness, not a hosted
   product (Hacker News; ARA daily
   digest 2026-09-27).
+
+## Same-day decision-model wave (2026-10-02)
+
+- **Four labs shipped decision
+  SKUs in one day.**
+  [[perplexity]]'s
+  pplx-decider-27b plus a
+  Decisions API at $0.04/M
+  input with free output;
+  Cloudflare Clef / Clef-flash
+  (Apache-2.0, built on
+  Qwen3.8-27B and Qwen3.5-9B
+  with rank-256 LoRA and 64k
+  context; Clef adds a vision
+  encoder, Jev is text-only);
+  AutoTrust's JEV-27B-VL; and
+  [[amazon|AWS]] Strands
+  Decider 2B. Cloudflare's own
+  figures put median latency
+  at **209 ms and 39 ms
+  versus Jev's 524 ms**. All
+  quality claims are
+  self-reported. See
+  [[alibaba]] and
+  [[open-weights]] (Cloudflare
+  blog, Twitter, TechCrunch,
+  HN 334 pts; ARA daily
+  digest 2026-10-02).
+- **HN skepticism hardened
+  the category question.**
+  Commenters called "decision
+  model" a rebrand of
+  discriminative classifiers
+  and "free output" "almost
+  lying by omission." One
+  priced Jev at **$12.60
+  versus Clef at $72 per
+  million 300-token
+  decisions**. That is a
+  commenter's arithmetic, not
+  a billed rate card (Hacker
+  News; ARA daily digest
+  2026-10-02).

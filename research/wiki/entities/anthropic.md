@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; a new economics paper says robots can do 74% of physical tasks but are cost-competitive on only 0.3% of work today.
+description: AI safety lab behind Claude; opened Claude Code to TypeScript plugin mods and is refusing further enterprise discounts once prepaid tokens run out.
 created_at: 2026-05-24
-timestamp: 2026-10-01T00:00:00Z
+timestamp: 2026-10-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
@@ -2411,3 +2412,61 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   dives and Claude Code / API
   guides (ARA daily digest
   2026-10-01).
+
+## Claude Code mods, no further discounts, civilian FedRAMP (2026-10-02)
+
+- **Anthropic opened Claude
+  Code to mods.** TypeScript
+  hooks shipped inside plugins
+  can now change behaviour,
+  draw custom UI and replace
+  built-in features. Anthropic
+  says it built `/diff` and
+  AGENTS.md support this way.
+  Sample mods are going into
+  the Claude Code Playground
+  repo. Nothing yet describes
+  a review or sandbox model
+  for marketplace mods. See
+  [[dynamic-workflows]]
+  (@ClaudeDevs, @trq212,
+  @testingcatalog; ARA daily
+  digest 2026-10-02).
+- **Anthropic is refusing
+  further discounts** once
+  enterprise customers use up
+  prepaid tokens, while
+  [[openai]] takes a more
+  flexible line to compete for
+  those accounts (The
+  Information; ARA daily
+  digest 2026-10-02).
+- **Claude for Government
+  reached civilian agencies**
+  with FedRAMP High and
+  department spending caps.
+  The Pentagon still lists
+  Anthropic as a supply-chain
+  risk. See
+  [[federal-ai-policy]] (The
+  Decoder; ARA daily digest
+  2026-10-02).
+- **Rumors only:** some users
+  report queries routed to an
+  unreleased Claude Fable 5.5,
+  and a single source says
+  Claude Haiku 5.5 is coming
+  "in the coming weeks."
+  Anthropic has confirmed
+  neither. See
+  [[claude-fable-5]] (ARA
+  daily digest 2026-10-02).
+- **Trump told TIME the
+  government "might" take
+  equity stakes** in OpenAI
+  and Anthropic. No mechanism
+  or term sheet. See
+  [[openai]] and
+  [[federal-ai-policy]] (TIME
+  via Twitter; ARA daily
+  digest 2026-10-02).

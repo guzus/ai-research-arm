@@ -4,10 +4,11 @@ title: Gemini 4 Argon
 type: entity
 aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon"]
 tags: [model-release, google-deepmind, frontier-model, fairwind, cyber-defense, pricing]
-description: Google's first frontier model in over seven months; gated to government and trusted cyber defenders via Fairwind, with a 1M-token output limit and $2/$10 intro pricing that later doubles.
+description: Google's Fairwind-gated frontier SKU; took #1 on the Vals Index at 68.9% and was the day's top HN story, with cost-per-task claims still conflicting.
 created_at: 2026-10-01
-timestamp: 2026-10-01T00:00:00Z
+timestamp: 2026-10-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA model ticket — Gemini 4 post-training", path: research/models/tickets/google-gemini-4-2026-09.md}
 ---
@@ -76,3 +77,20 @@ ARA daily digest 2026-10-01).
   intro card is not the cheap task price.
 - **Is Fairwind a durable access model** for a more-permissive cyber
   flagship, or a temporary holding pen until a public SKU ships?
+
+## Vals #1 and a contested cheap-task claim (2026-10-02)
+
+- **Argon finished the day as HN's #1 story** at **1,632 points /
+  1,110 comments**. The debate centred on the gated release and
+  whether the **$2/$10 introductory price** is "an accounting
+  trick." See [[google]] (Hacker News; ARA daily digest
+  2026-10-02).
+- **Vals Index #1 at 68.9%** is now the day's independent
+  placement, not only a launch-day relay. Artificial Analysis
+  says Argon **ties [[astra|GPT-6 Astra]] on the Intelligence
+  Index at 60% of the cost per task**; Demis Hassabis amplified
+  that result. This **conflicts with The Decoder's earlier
+  finding** that Argon burns more than twice as many tokens per
+  task as Astra. Treat the cost comparisons as provisional until
+  paid API access opens (Vals AI, Artificial Analysis, The
+  Decoder; ARA daily digest 2026-10-02).
