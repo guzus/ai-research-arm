@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-10-02 17:49:43 UTC
+
+CYCLE: Google's TPU satellite reaches orbit; local-AI hardware gets pricier
+
+TOP STORIES:
+• Google's Project Suncatcher TPU prototype satellite launched on SpaceX Transporter-18 with Planet [✓]
+• Nvidia lifts 128GB DGX Spark to $6,949.99; new 64GB model at $4,999 ships Oct 23 [⚠]
+• Hugging Face open multi-harness RL recipe: LFM2.5-2.6B 42%→54% [✓]
+• The Information: some investors want Anthropic nearer $1.5T than $2T [⚠]
+
+WATCH: First Suncatcher TPU telemetry from Google or Planet.
+
+Full update on GitHub.
