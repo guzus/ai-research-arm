@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "On it, Jev 1.13 ranks first among Jev-class systems[^31].",
+      "contradicting_url": "https://benchmarkheaven.com/jev-models",
+      "contradicting_quote": "Capability Score 1 · official #3 (Jev 1.13.0); Cygnet: \"Capability Score 3 · official #1\"; official score \"weighs all four axes\"",
+      "severity": "medium",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "OpenAI has published no Decisions API price[^8].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The pricing story reads as a race to the bottom, but nobody undercut Jev.",
+      "contradicting_url": "https://www.marktechpost.com/2026/09/29/liquid-ai-releases-d1-a-decision-model-that-returns-calibrated-probabilities-with-zero-output-tokens/",
+      "contradicting_quote": "Deployable now through the Liquid API as `d1:free`; no self-hosted weights. ... `d1:free` tier; paid rates not published",
+      "severity": "medium",
+      "no_contradiction_found": false
+    }
+  ]
+}

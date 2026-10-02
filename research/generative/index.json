@@ -3034,5 +3034,17 @@
         "source_sha256": "7126230d6c0119262820215ee77e6ab16c327aa579278483298180d230e82e6f"
       }
     }
+  },
+  {
+    "slug": "decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+    "file": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+    "model": "claude-opus-5-5",
+    "created_at": "2026-10-02T01:05:05Z",
+    "source": "workflow_dispatch",
+    "prompt": "Decision models commoditize in a week: Perplexity pplx-decider-27b at $0.04/M, Cloudflare Clef, JEV-27B-VL vs OpenAI's Decisions API",
+    "tags": []
   }
 ]

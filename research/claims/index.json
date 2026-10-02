@@ -1,5 +1,5 @@
 {
-  "article_count": 88,
+  "article_count": 89,
   "articles": [
     {
       "claim_count": 18,
@@ -855,6 +855,14 @@
       "stem": "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv",
       "tags": [],
       "title": "SynthID Bio: a provenance watermark for AI proteins, not yet a screening control"
+    },
+    {
+      "claim_count": 15,
+      "created_at": "2026-10-02T01:05:05Z",
+      "slug": "decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "stem": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "tags": [],
+      "title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment"
     }
   ],
   "by_host": {
@@ -995,6 +1003,9 @@
     "aitoolsbee.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
     ],
+    "aiweekly.co": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c9"
+    ],
     "alearesearch.substack.com": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c13"
     ],
@@ -1020,6 +1031,9 @@
     ],
     "alphagenomedocs.com": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c28"
+    ],
+    "alphasignal.ai": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4"
     ],
     "alphaspread.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c16"
@@ -1634,6 +1648,9 @@
     "benchlm.ai": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c15"
     ],
+    "benchmarkheaven.com": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c7"
+    ],
     "benzinga.com": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c16",
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c13",
@@ -1695,6 +1712,9 @@
     ],
     "blog.character.ai": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c8"
+    ],
+    "blog.cloudflare.com": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c5"
     ],
     "blog.comfy.org": [
       "2026-08-04T171206--comfyui-company#c1",
@@ -2562,6 +2582,9 @@
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c8",
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c9"
     ],
+    "developers.cloudflare.com": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c3"
+    ],
     "developers.openai.com": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c3",
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6",
@@ -2570,7 +2593,9 @@
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c05",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c20",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c32",
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c35"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c35",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c14",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4"
     ],
     "developers.tron.network": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c14"
@@ -2688,6 +2713,9 @@
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c2",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c25"
     ],
+    "docs.perplexity.ai": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2"
+    ],
     "docs.ripe.finance": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c5"
     ],
@@ -2699,6 +2727,9 @@
     ],
     "docs.tori.finance": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c10"
+    ],
+    "docs.typesafe.ai": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c1"
     ],
     "docs.usd.ai": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c12"
@@ -3344,7 +3375,10 @@
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c24",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c2",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c3",
-      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7"
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c13",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c15",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -3567,7 +3601,10 @@
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c18",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c21",
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c32"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c32",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c5",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c6",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
@@ -4199,6 +4236,9 @@
     ],
     "morphllm.com": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c17"
+    ],
+    "motherduck.com": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c11"
     ],
     "msn.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c10"
@@ -5560,7 +5600,8 @@
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c22",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c26",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c38",
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c39"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c39",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c12"
     ],
     "techflowpost.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20",
@@ -5663,7 +5704,9 @@
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c45",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-11",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-3",
-      "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-6"
+      "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-6",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c10",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4"
     ],
     "theairankings.com": [
       "2026-06-22T052035--zhipu-ai-glm#c26"
@@ -5916,6 +5959,9 @@
     ],
     "twitterscore.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c25"
+    ],
+    "typesafe.ai": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c1"
     ],
     "uber.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c40"
@@ -6310,7 +6356,8 @@
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c30",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c1",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c1",
-      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1"
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -6491,6 +6538,9 @@
     "https://aitoolsbee.com/news/cuda-compatible-ai-chip-bytedance-5-6b-backs-huawei-950pr": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
     ],
+    "https://aiweekly.co/alerts/the-information-typesafe-in-talks-to-raise-1b-at-10b-valuation-days-after-40m": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c9"
+    ],
     "https://alearesearch.substack.com/p/ethenas-stablecoin-economics-give": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c13"
     ],
@@ -6506,6 +6556,9 @@
     ],
     "https://alphafold.ebi.ac.uk": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c8"
+    ],
+    "https://alphasignal.ai/news/openai-s-decisions-api-gives-developers-a-constrained-gpt-6-luna-router": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4"
     ],
     "https://alpo.ge": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c9"
@@ -7498,6 +7551,9 @@
     "https://benchlm.ai/models/kimi-3": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c15"
     ],
+    "https://benchmarkheaven.com/jev-models": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c7"
+    ],
     "https://bernoff.com/blog/why-i-took-the-2500-check-to-license-my-book-for-ai": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c27"
     ],
@@ -7524,6 +7580,9 @@
     ],
     "https://blog.character.ai/breaking-news-our-open-source-models-are-a-lot-of-fun": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c8"
+    ],
+    "https://blog.cloudflare.com/clef-decision-models": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c5"
     ],
     "https://blog.comfy.org/p/comfy-mcp-turn-your-agent-into-a": [
       "2026-08-04T171206--comfyui-company#c25"
@@ -8118,6 +8177,9 @@
     "https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6"
     ],
+    "https://developers.cloudflare.com/workers-ai/platform/pricing": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c3"
+    ],
     "https://developers.openai.com/api/docs/changelog": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c05",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c35"
@@ -8138,7 +8200,9 @@
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c3"
     ],
     "https://developers.openai.com/api/docs/pricing": [
-      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6"
+      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c14",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4"
     ],
     "https://developers.tron.network/docs/concensus": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c14"
@@ -8253,6 +8317,9 @@
     "https://docs.nvidia.com/gpudirect-storage/api-reference-guide/index.html": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c2"
     ],
+    "https://docs.perplexity.ai/docs/getting-started/pricing": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2"
+    ],
     "https://docs.ripe.finance/resources/audits": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c5"
     ],
@@ -8274,6 +8341,9 @@
     ],
     "https://docs.tori.finance/resources/institutional": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c10"
+    ],
+    "https://docs.typesafe.ai/models.md": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c1"
     ],
     "https://docs.usd.ai/governance/chip": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c12"
@@ -9033,6 +9103,9 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c3",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7"
     ],
+    "https://github.com/guzus/ai-research-arm/blob/main/research/market/gpu-spot.json": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c15"
+    ],
     "https://github.com/huggingface/datasets/issues/6400": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c9"
     ],
@@ -9071,8 +9144,14 @@
     "https://github.com/pgvector/pgvector": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c6"
     ],
+    "https://github.com/punitarani/mimic/pull/48": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c13"
+    ],
     "https://github.com/seitanism/ComfyUI-H3-Motion-Context-MultiRef": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c31"
+    ],
+    "https://github.com/sinanuozdemir/decision-index": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8"
     ],
     "https://github.com/swe-bench/SWE-bench/pull/471": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c13"
@@ -9207,6 +9286,9 @@
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c16",
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c17"
     ],
+    "https://huggingface.co/autotrust/JEV-27B-VL": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c5"
+    ],
     "https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c29"
     ],
@@ -9269,6 +9351,13 @@
     ],
     "https://huggingface.co/papers/2609.02749": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6"
+    ],
+    "https://huggingface.co/perplexity-ai/pplx-decider-v1-27b": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c5",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c6"
+    ],
+    "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/main/README.md": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8"
     ],
     "https://huggingface.co/zai-org/GLM-4.5": [
       "2026-06-22T052035--zhipu-ai-glm#c5"
@@ -9671,6 +9760,9 @@
     ],
     "https://money.usnews.com/investing/news/articles/2026-08-27/nvidia-pauses-revenue-sharing-deals-with-ai-cloud-companies-wsj-reports": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c32"
+    ],
+    "https://motherduck.com/blog/motherduck-supports-jev": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c11"
     ],
     "https://natlawreview.com/article/fcc-adds-foreign-produced-advanced-robotic-devices-covered-list-five-things-know": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c11"
@@ -11108,6 +11200,9 @@
     "https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c22"
     ],
+    "https://techcrunch.com/2026/10/01/amazon-releases-its-own-jev-clone-as-decision-models-flood-the-web": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c12"
+    ],
     "https://techfundingnews.com/ipo-bound-databricks-reportedly-eyes-175b-valuation-after-hitting-5-4b-revenue-run-rate": [
       "2026-07-20T050016--databricks-mid-2026#c14"
     ],
@@ -11162,6 +11257,10 @@
     ],
     "https://the-decoder.com/openai-claims-responsibility-for-the-hugging-face-hack-after-its-own-models-escaped-a-test-sandbox": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c36"
+    ],
+    "https://the-decoder.com/openai-expands-codex-and-its-api-at-devday-with-security-scans-a-decisions-api-and-ultrafast": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c10",
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4"
     ],
     "https://the-decoder.com/openais-first-custom-chip-jalapeno-reportedly-beats-nvidias-blackwell-and-rubin-in-inference-benchmarks": [
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-11",
@@ -11331,6 +11430,9 @@
     ],
     "https://twitterscore.io/twitter/layerggofficial": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c25"
+    ],
+    "https://typesafe.ai": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c1"
     ],
     "https://udn.com/news/story/7333/9667541": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c29"
@@ -14903,6 +15005,9 @@
     "https://x.com/AnthropicAI/status/2065597531644743999": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c11"
     ],
+    "https://x.com/AravSrinivas/status/2105774153903268288": [
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2"
+    ],
     "https://x.com/ArtificialAnlys/status/1945989223330549768": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c38"
     ],
@@ -15361,7 +15466,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2634,
+  "claim_count": 2649,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -78688,9 +78793,374 @@
         "https://deepmind.google/blog/introducing-synthid-bio"
       ],
       "type": "technical"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-10-02",
+      "claim": "Jev 1.13 is priced at $0.042 per million input tokens with output tokens free, text-only input.",
+      "confidence": "high",
+      "hosts": [
+        "docs.typesafe.ai",
+        "typesafe.ai"
+      ],
+      "id": "c1",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c1",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.typesafe.ai/models.md",
+        "https://typesafe.ai"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-09-29",
+      "claim": "OpenAI's slide claims ~150 ms for the Decisions API vs ~1.6 s for a standard GPT-6 Luna call.",
+      "confidence": "medium",
+      "hosts": [
+        "the-decoder.com"
+      ],
+      "id": "c10",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://the-decoder.com/openai-expands-codex-and-its-api-at-devday-with-security-scans-a-decisions-api-and-ultrafast"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-09-21",
+      "claim": "MotherDuck measured Jev at 89% accuracy in 40 s for $0.50 vs GPT-5.6-terra at 88% in 31m59s for $37.58 on 100k AG News rows.",
+      "confidence": "medium",
+      "hosts": [
+        "motherduck.com"
+      ],
+      "id": "c11",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c11",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://motherduck.com/blog/motherduck-supports-jev"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-10-01",
+      "claim": "AWS released Strands Decider 2B, an open-source Jev-inspired decision model built on Qwen3.5-2B.",
+      "confidence": "high",
+      "hosts": [
+        "techcrunch.com"
+      ],
+      "id": "c12",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://techcrunch.com/2026/10/01/amazon-releases-its-own-jev-clone-as-decision-models-flood-the-web"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-10-01",
+      "claim": "Mimic E8 found pplx-decider costs 8.7x Jev per prediction on batches despite a lower list rate, with challengers statistically level with Jev.",
+      "confidence": "low",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c13",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c13",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://github.com/punitarani/mimic/pull/48"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-10-02",
+      "claim": "GPT-6 Luna is listed at $0.10 per million input and $0.50 per million output tokens; no Decisions API row exists.",
+      "confidence": "high",
+      "hosts": [
+        "developers.openai.com"
+      ],
+      "id": "c14",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://developers.openai.com/api/docs/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-10-01",
+      "claim": "Vast.ai median H100 SXM spot price was about $2.33 per GPU-hour on 2026-10-01.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c15",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://github.com/guzus/ai-research-arm/blob/main/research/market/gpu-spot.json"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-10-02",
+      "claim": "Perplexity's pplx-decider-v1-27b Decisions API costs $0.04 per million input tokens, output free, no per-request fee.",
+      "confidence": "high",
+      "hosts": [
+        "docs.perplexity.ai",
+        "x.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "https://x.com/AravSrinivas/status/2105774153903268288"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-10-02",
+      "claim": "Cloudflare Workers AI prices Clef at $0.240 and Clef-flash at $0.090 per million input tokens.",
+      "confidence": "high",
+      "hosts": [
+        "developers.cloudflare.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://developers.cloudflare.com/workers-ai/platform/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-10-02",
+      "claim": "OpenAI's Decisions API runs on a version of GPT-6 Luna, launched as a limited preview with no published price.",
+      "confidence": "medium",
+      "hosts": [
+        "alphasignal.ai",
+        "developers.openai.com",
+        "the-decoder.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://the-decoder.com/openai-expands-codex-and-its-api-at-devday-with-security-scans-a-decisions-api-and-ultrafast",
+        "https://developers.openai.com/api/docs/pricing",
+        "https://alphasignal.ai/news/openai-s-decisions-api-gives-developers-a-constrained-gpt-6-luna-router"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-10-01",
+      "claim": "pplx-decider-v1-27b, Clef and JEV-27B-VL are all built on Qwen3.8-27B and released under Apache 2.0.",
+      "confidence": "high",
+      "hosts": [
+        "blog.cloudflare.com",
+        "huggingface.co"
+      ],
+      "id": "c5",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/perplexity-ai/pplx-decider-v1-27b",
+        "https://blog.cloudflare.com/clef-decision-models",
+        "https://huggingface.co/autotrust/JEV-27B-VL"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-10-01",
+      "claim": "Perplexity's model card reports 85.71% overall accuracy for pplx-decider vs 84.51% for Jev across 11 benchmarks, measured via Perplexity's API.",
+      "confidence": "medium",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c6",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c6",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/perplexity-ai/pplx-decider-v1-27b"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-10-02",
+      "claim": "On JevBench v1.5.4, Jev 1.13.0 ranks first among Jev-class systems with capability 80.0; GPT-6 Luna scores 95.9 at $0.11 per 1,000 decisions, 3.5x Jev's cost.",
+      "confidence": "medium",
+      "hosts": [
+        "benchmarkheaven.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://benchmarkheaven.com/jev-models"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-09-28",
+      "claim": "The Jev Decision Index is an unofficial, community-maintained Hugging Face Space not affiliated with TypeSafe, built from public benchmarks.",
+      "confidence": "high",
+      "hosts": [
+        "github.com",
+        "huggingface.co"
+      ],
+      "id": "c8",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/main/README.md",
+        "https://github.com/sinanuozdemir/decision-index"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide",
+      "article_created_at": "2026-10-02T01:05:05Z",
+      "article_title": "Decision models commoditized in a week — but what got commoditized was the wrapper, not the judgment",
+      "as_of": "2026-09-24",
+      "claim": "The Information reported Typesafe in talks to raise $1B+ at a $10B+ valuation, about 50x its $200M seed valuation.",
+      "confidence": "medium",
+      "hosts": [
+        "aiweekly.co"
+      ],
+      "id": "c9",
+      "key": "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c9",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://aiweekly.co/alerts/the-information-typesafe-in-talks-to-raise-1b-at-10b-valuation-days-after-40m"
+      ],
+      "type": "event"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1278,
+  "reusable_count": 1281,
   "schema_version": 1
 }
