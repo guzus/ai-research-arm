@@ -1,0 +1,11 @@
+Speaker 1: Friday, October second, twenty twenty-six.
+Speaker 2: [high_energy] Perplexity just open-sourced pplx-decider twenty-seven B, and decision models are suddenly close to free.
+Speaker 1: Their Decisions API is priced at [emphasis] four cents per million input tokens [/emphasis], which turns this kind of judgment call into a commodity.
+Speaker 2: That's why the decision-model wave is trending right alongside Gemini four Argon, which pulled more than sixteen hundred points on Hacker News.
+Speaker 1: On the safety front, OpenAI has fired three safety researchers, and California's attorney general has subpoenaed the company.
+Speaker 2: Worth noting the timing, because the money keeps flowing anyway, with [emphasis] one hundred ten billion dollars [/emphasis] of OpenAI's one hundred twenty-two billion dollar round already delivered.
+Speaker 1: In Washington, President Trump floated taking Intel-style government stakes in both OpenAI and Anthropic.
+Speaker 2: And [dramatic_pause] Anthropic is opening Claude Code to plugin mods, a real opening for outside developers.
+Speaker 1: One more number, Oracle reportedly agreed to lease one hundred thousand chips to Tencent in a deal worth about [emphasis] seven billion dollars [/emphasis].
+Speaker 2: Cheap decision models, big government ambitions, and chips crossing borders, a busy Friday.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
