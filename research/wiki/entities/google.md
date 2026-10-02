@@ -2,17 +2,19 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS"]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; Gemini 4 Argon shipped first to government and cyber defenders via Fairwind, with paid API promised without a date.
+description: Hyperscaler behind Gemini; launched SynthID Bio to watermark AI-designed proteins the day after Gemini 4 Argon took #1 on the Vals Index.
 created_at: 2026-07-17
-timestamp: 2026-10-01T00:00:00Z
+timestamp: 2026-10-02T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
+  - {title: "ARA model ticket — SynthID Bio", path: research/models/tickets/google-synthid-bio-2026-09.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
@@ -681,7 +683,27 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   Information via Ars Technica, The Decoder;
   ARA daily digest 2026-10-01).
 
-## Open questions
+## SynthID Bio and Argon's first full public day (2026-10-02)
+
+- **DeepMind launched SynthID Bio** for AI-designed proteins: a
+  watermark embedded in protein sequences and in AlphaFold 3
+  structures. DeepMind says detection on structures exceeds
+  **99.8% at a 0.1% false-positive rate**, and that watermarked
+  proteins were synthesised and still bound their intended
+  targets. It is a proof of concept; resistance to deliberate
+  removal remains open. Tools are released on an open basis for
+  research use. See [[evo-genome-models]] and [[chai-discovery]]
+  (Google DeepMind, Ars Technica; ARA daily digest 2026-10-02;
+  model ticket `google-synthid-bio-2026-09`).
+- **[[gemini-4-argon]] took #1 on the Vals Index at 68.9%** and
+  finished as HN's #1 story (1,632 / 1,110). Artificial Analysis
+  says it ties [[astra|GPT-6 Astra]] on the Intelligence Index
+  at 60% of the cost per task; Hassabis amplified that. The
+  Decoder's earlier >2× token-burn finding still conflicts. A
+  judge dismissed the AI Overviews antitrust suits from Chegg
+  and Penske Media — an expectation of search traffic "is not
+  an agreement" (The Verge, Ars Technica; ARA daily digest
+  2026-10-02).
 
 - **Does "generate onto authoritative data" survive as a product category?**
   The Google Earth feature was killed in a day because detectors could not

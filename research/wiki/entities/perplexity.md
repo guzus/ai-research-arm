@@ -2,12 +2,13 @@
 slug: perplexity
 title: Perplexity
 type: entity
-aliases: ["Perplexity AI", "Perplexity Computer"]
-tags: [search, agents, ai-application, funding]
-description: AI search-and-agent company; the Ninth Circuit vacated Amazon's CFAA injunction against its shopping agent, holding the statute covers persons not tools, after Perplexity Computer opened Astra and Fable seats.
+aliases: ["Perplexity AI", "Perplexity Computer", "pplx-decider-27b", "pplx-decider"]
+tags: [search, agents, ai-application, funding, decision-model]
+description: AI search-and-agent company; open-sourced pplx-decider-27b and a Decisions API at $0.04 per million input tokens with free output, the third open decision-model release in a day.
 created_at: 2026-08-25
-timestamp: 2026-09-16T00:00:00Z
+timestamp: 2026-10-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
   - {title: "ARA daily digest 2026-08-26", path: research/digest/2026-08-26-digest.md}
@@ -95,3 +96,20 @@ access by a person," not a tool, "however advanced it is." Narrow
 and fact-specific — contract and tort claims are still live below.
 See [[federal-ai-policy]] and [[agentic-ai-security]] (ARA daily
 digest 2026-09-16).
+
+## pplx-decider-27b and the Decisions API (2026-10-02)
+
+- **Perplexity open-sourced pplx-decider-27b** and shipped a
+  Decisions API at **$0.04 per million input tokens with free
+  output**. It was the third open decision-model release in a day,
+  after Cloudflare's Apache-2.0 Clef / Clef-flash and AutoTrust's
+  JEV-27B-VL; [[amazon|AWS]] also released Strands Decider 2B. All
+  quality claims so far are self-reported. See [[jev]] and
+  [[open-weights]] (Twitter, TechCrunch, HN 334 pts; ARA daily
+  digest 2026-10-02).
+- **HN priced the "free output" claim as omission.** Commenters
+  called "decision model" a rebrand of discriminative classifiers,
+  and one priced Jev at **$12.60 versus Clef at $72 per million
+  300-token decisions**. Treat the wave as a product-category
+  contest, not a verified quality ranking (Hacker News; ARA daily
+  digest 2026-10-02).

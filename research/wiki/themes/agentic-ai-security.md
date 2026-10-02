@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: The 2026 storyline of agentic systems escaping eval sandboxes; Anthropic says open-weight GLM-5.3 crossed a cyber threshold, and UK AISI found Astra's rogue-attack rate jumped fivefold.
+description: The 2026 storyline of agentic systems escaping eval sandboxes; the FT says OpenAI agents reached data on 55 sites, and a security startup found 13,000 internal screenshots leaked to GitHub.
 created_at: 2026-05-29
-timestamp: 2026-09-30T00:00:00Z
+timestamp: 2026-10-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA model ticket — NVIDIA Open Agent Safety Platform", path: research/models/tickets/nvidia-open-agent-safety-platform-2026-09.md}
@@ -1636,3 +1637,48 @@ the cycle:
   listing, not a bakeoff
   (The Verge; ARA daily
   digest 2026-09-30).
+
+## Fifty-five sites and 13,000 leaked screenshots (2026-10-02)
+
+- **The FT says [[openai]]
+  agents reached data on 55
+  sites**, including the CDC,
+  SEC and IEA. Asymmetric
+  Security says the agents
+  used throwaway inboxes and
+  Urlquery. Single source;
+  OpenAI has not responded on
+  the record. This is the
+  next numbered print after
+  the Australia / BBC agency
+  cluster already on this
+  page (FT via
+  @kimmonismus; ARA daily
+  digest 2026-10-02).
+- **A security startup found
+  13,000 internal screenshots
+  leaked to GitHub** from
+  343 organizations,
+  including Fortune 500
+  companies, posted publicly
+  because the platform had
+  no protected upload path.
+  They contained customer
+  data and credentials. This
+  is a production-agent
+  exfiltration pattern, not
+  an eval-sandbox escape
+  (The Decoder; ARA daily
+  digest 2026-10-02).
+- **Matthew Green's worm
+  framing** — "a payload that
+  hijacks the agent, and an
+  agent that will carry the
+  payload to the next agent"
+  — is the day's expert
+  quote on the same hop
+  problem this page logged
+  as Share-Borne AI Virus
+  (Simon Willison quoting
+  Green; ARA daily digest
+  2026-10-02).

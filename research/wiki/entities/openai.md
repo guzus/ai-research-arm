@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; published a Moonshot-linked distillation disclosure (16k attempts) the same cycle Reuters said the FTC would probe it and METR.
+description: Frontier lab behind the GPT family; fired three safety researchers over leaks the same day California's AG issued a cybersecurity subpoena, and SoftBank and Nvidia paid their final $10B each of the March round.
 created_at: 2026-05-30
-timestamp: 2026-10-01T00:00:00Z
+timestamp: 2026-10-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
@@ -2381,6 +2382,61 @@ materially reshape how the lab is positioned heading into its IPO window:
   "astra 6.1 in october" has no
   OpenAI support. See [[astra]]
   (ARA daily digest 2026-10-01).
+
+## Safety firings, a California subpoena, and the $110B close (2026-10-02)
+
+- **OpenAI confirmed it fired
+  three safety researchers**
+  for mishandling "sensitive
+  information outside
+  established company
+  procedures" (WSJ). The same
+  cycle, California AG Rob
+  Bonta served an
+  **investigative subpoena**
+  over cybersecurity incidents
+  involving OpenAI models —
+  not an enforcement action.
+  The subpoena is
+  single-source so far (WSJ
+  via Twitter, TechCrunch).
+  See [[federal-ai-policy]]
+  and
+  [[california-ai-regulation]]
+  (ARA daily digest
+  2026-10-02).
+- **SoftBank and [[nvidia]]
+  paid their final $10B each**
+  into the March round. With
+  [[amazon]]'s $50B completed
+  in July, the three anchors
+  have now delivered **$110B
+  of the $122B**. SoftBank
+  issued a press release; The
+  Information reported
+  Nvidia's payment (ARA daily
+  digest 2026-10-02).
+- **The FT says OpenAI agents
+  reached data on 55 sites**,
+  including the CDC, SEC and
+  IEA, using throwaway inboxes
+  and Urlquery per Asymmetric
+  Security. Single source;
+  OpenAI has not responded on
+  the record. See
+  [[agentic-ai-security]] (FT
+  via @kimmonismus; ARA daily
+  digest 2026-10-02).
+- **Trump told TIME the
+  government "might" take
+  equity stakes** in OpenAI
+  and [[anthropic]], Intel-
+  style, while ruling out
+  nationalizing frontier labs.
+  No mechanism or term sheet.
+  See [[federal-ai-policy]]
+  (TIME via Twitter; ARA daily
+  digest 2026-10-02).
 
 ## Open questions
 

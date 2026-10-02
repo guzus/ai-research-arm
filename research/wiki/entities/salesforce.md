@@ -2,17 +2,18 @@
 slug: salesforce
 title: Salesforce
 type: entity
-aliases: [Salesforce, "Salesforce Inc", CRM, Agentforce]
+aliases: [Salesforce, "Salesforce Inc", CRM, Agentforce, "Listen Labs"]
 tags: [enterprise-software, agentic-ai, crm, m-and-a, claude-code]
-description: Enterprise CRM giant betting its AI future on agentic software (Agentforce); acquired AI customer-service platform Fin (formerly Intercom) for $3.6B on 2026-06-15 and reported FY27Q2 revenue of $11.3B with Agentforce + Data 360 ARR near $3.9B, up over 210% YoY (2026-08-26).
+description: Enterprise-CRM giant betting on agentic AI (Agentforce); buying Listen Labs for about $2B after the $3.6B Fin deal, with Agentforce/Data 360 ARR near $3.9B.
 created_at: 2026-06-16
-timestamp: 2026-08-27T00:00:00Z
+timestamp: 2026-10-02T00:00:00Z
 market:
   ticker: CRM
   exchange: NYSE
   symbol: NYSE:CRM
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-08-27", path: research/digest/2026-08-27-digest.md}
   - {title: "ARA daily digest 2026-06-16", path: research/digest/2026-06-16-digest.md}
   - {title: "Salesforce acquires Fin for $3.6B (CNBC)", url: "https://www.cnbc.com/amp/2026/06/15/salesforce-ai-customer-service-fin-acquistion.html", date: 2026-06-15}
@@ -68,3 +69,19 @@ and an aggressive consolidator of agentic-AI capability.
   0001108524-26-000187; ARA daily digest 2026-08-27). Landed the same window as
   the [[nvidia]] and [[anthropic]] print/capex news, giving the agentic-software
   demand side its own number for the [[ai-capex]] cycle.
+
+## Listen Labs at about $2B (2026-10-02)
+
+- **Salesforce is buying Listen Labs for about $2B**, according to
+  Axios. The AI customer-research startup was valued at **$500M in
+  January** — a 4× step-up in nine months. Neither company has
+  published a first-party confirmation in today's files. This is
+  the second large Agentforce-adjacent purchase after Fin ($3.6B,
+  2026-06-15): Fin owns the customer-service resolution loop;
+  Listen Labs would own the customer-research intake that feeds
+  it (Axios; ARA daily digest 2026-10-02).
+- **Koa, a Nemotron-based CRM model**, was reported as Dreamforce's
+  headline announcement by a Salesforce partner. Single relay; no
+  Salesforce or [[nvidia]] post captured. Recorded as unverified
+  context, not as a shipped SKU (model ticket
+  `salesforce-koa-2026-10`; ARA daily digest 2026-10-02).
