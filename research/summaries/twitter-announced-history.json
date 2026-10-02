@@ -3,51 +3,6 @@
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-16 18:00 UTC",
-    "headline": "CODEX TECH LEAD DELIVERS PROMISED RATE-LIMIT RESET ACROSS ALL PAID PLANS \u2014 GPT-5.5 DEGRADATION LOOP CLOSES",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-05-16-twitter-18h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2055707616605835333"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 18:00 UTC",
-    "headline": "SEMIANALYSIS: ANTHROPIC MAY HAVE BUILT INTO INNOVATOR'S DILEMMA WITH CLAUDE CLI FOCUS",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-16-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2055695091973365824"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 18:00 UTC",
-    "headline": "THE INFORMATION: OPENAI'S APPLE PARTNERSHIP SOURS \u2014 OPENAI HIRING FROM APPLE HARDWARE RANKS, FRUSTRATED WITH APPLE INTELLIGENCE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-16-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055709916329889830"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 18:00 UTC",
-    "headline": "THE INFORMATION: ANTHROPIC FLEXES PRICING POWER \u2014 CUSTOMERS WILLINGLY EAT COST AS REVENUE SURGES",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-16-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055702329886736540"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-16 18:00 UTC",
-    "headline": "TESTINGCATALOG LEAK: OPENAI BUILDING 'CODEX NETWORK' \u2014 ONE INSTALL TO CONTROL MAC MINIS, WORK DESKTOPS, OLD PCs",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-16-twitter-18h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2055708109343994335"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-16 18:00 UTC",
     "headline": "BROCKMAN PERSONALLY ENDORSES CODEX-VIA-CHATGPT-MOBILE: 'SUCH A FREEING EXPERIENCE'",
     "source": "@gdb",
     "source_file": "research/summaries/2026-05-16-twitter-18h-headlines.json",
@@ -23966,5 +23921,40 @@
     "headline": "NVIDIA HITS FIRST RECORD HIGH SINCE MAY, ~$5.7 TRILLION MARKET VALUE \u2014 BLOOMBERG",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2106032058325721288"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-02 22:07:25 UTC",
+    "headline": "META PUBLISHES SIX PAPERS ON OPEN MATH PROBLEMS WORKED WITH MUSE SPARK VIA STANDARD CHAT",
+    "source": "@AIatMeta",
+    "url": "https://x.com/AIatMeta/status/2106099776035152231"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-02 22:07:25 UTC",
+    "headline": "CNN: TRUMP EXPECTED TO NAME DNI JAY CLAYTON WHITE HOUSE AI CZAR",
+    "source": "@Hadas_Gold",
+    "url": "https://x.com/Hadas_Gold/status/2106027057377615919"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-02 22:07:25 UTC",
+    "headline": "BIS: 55.2% OF AI COMPANY FUNDING COMES FROM OTHER AI COMPANIES",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2106117138020970501"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-02 22:07:25 UTC",
+    "headline": "CHINESE TOKEN RESELLERS GIVING LABS UNAUTHORIZED CLAUDE ACCESS FOR DISTILLATION \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2106104462242717743"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-02 22:07:25 UTC",
+    "headline": "META OPEN-SOURCES MUSE GADGETS ESP32 FIRMWARE AND LINUX SDK UNDER APACHE 2.0",
+    "source": "@alexandr_wang",
+    "url": "https://x.com/alexandr_wang/status/2106113742266089526"
   }
 ]
