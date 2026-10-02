@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-16 12:00 UTC",
-    "headline": "NOMURA: VALUE DRAM ON A PER BASIS \u2014 SAMSUNG ELEC TARGET KRW 590K, SK HYNIX KRW 4M ON DURABLE AI-FLEET HBM DEMAND",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-16-twitter-12h-headlines.json",
-    "url": "https://x.com/jukan05/status/2055606275074199603"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-16 15:00 UTC",
-    "headline": "REUTERS CONFIRMS OPENAI-MALTA DEAL \u2014 FIRST NATIONAL CHATGPT PLUS PARTNERSHIP, ALL CITIZENS GET 1 YEAR FREE",
-    "source": "@Reuters",
-    "source_file": "research/summaries/2026-05-16-twitter-15h-headlines.json",
-    "url": "https://www.reuters.com/business/openai-seals-deal-malta-give-all-maltese-access-chatgpt-plus-2026-05-16/"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-16 15:00 UTC",
-    "headline": "AI LEAKER: GPT-5.6 DROPS NEXT WEEK, 'HUGE LEAP' \u2014 RUMOR LANDS DIRECTLY INTO GOOGLE I/O WINDOW",
-    "source": "@iruletheworldmo",
-    "source_file": "research/summaries/2026-05-16-twitter-15h-headlines.json",
-    "url": "https://x.com/iruletheworldmo/status/2055646412432347428"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-16 15:00 UTC",
     "headline": "THE INFORMATION EXCLUSIVE: APPLE WEIGHING HOW AGENTS FIT INSIDE ITS MOST LUCRATIVE SOFTWARE BUSINESS",
@@ -23982,5 +23955,26 @@
     "headline": "BLACK FOREST LABS ANNOUNCES FLUX 3 IMAGE WITH 4K EDITING; OPEN WEIGHTS PROMISED IN COMING WEEKS",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2105797384785502626"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-02 09:39:17 UTC",
+    "headline": "ANTHROPIC INVITES INSTITUTIONAL INVESTORS TO OCT 14 SESSION; ~$2T IPO COULD TRADE BEFORE THANKSGIVING \u2014 BLOOMBERG",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2105921530211508488"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-02 09:39:17 UTC",
+    "headline": "SAMSUNG REPORTEDLY QUOTING HBM4 AT MID-TO-HIGH $4 PER GIGABIT, OVER 3X HBM3E",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2105907093291299105"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-02 09:39:17 UTC",
+    "headline": "LUMENTUM CEO: CAN SUPPLY ONLY 30% OF LASER DEMAND AS CO-PACKAGED OPTICS RAMP; BALANCE NOT UNTIL 2029-30",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2105943565918703696"
   }
 ]
