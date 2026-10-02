@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-10-02
+
+TOP STORIES:
+• Perplexity open-sources pplx-decider-27b; decision models go near-free
+• OpenAI fires 3 safety researchers; California AG subpoenas OpenAI
+• Anthropic opens Claude Code to plugin "mods"
+• Trump floats Intel-style stakes in OpenAI, Anthropic
+
+KEY NUMBERS:
+• $0.04/M input tokens: Perplexity Decisions API
+• $110B of OpenAI's $122B round delivered
+• ~$7B: reported Oracle-Tencent chip lease (100K chips)
+
+TRENDING: Gemini 4 Argon (HN 1,632 pts) and the decision-model wave
+
+Full digest on GitHub.
