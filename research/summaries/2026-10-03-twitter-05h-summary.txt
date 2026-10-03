@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-10-03 05:09:41 UTC
+
+CYCLE: Quiet window: chip-design and evaluation-method items, no major release
+
+QUICK HITS:
+• SemiAnalysis: Nvidia Feynman custom HBM cuts memory controller/PHY die share from ~16% (Rubin) to ~4% [⚠]
+• ExploitBench scores swing heavily by agent harness; GLM-5.3 Flash beats Mythos Preview with enough compute [⚠]
+• xAI ships experimental TypeScript SDK [⚠]
+• Culpium: TSMC in talks to join Musk's Terafab [🚩]
+
+WATCH: Full text of the new OpenAI misalignment disclosures
+
+Full update on GitHub.
