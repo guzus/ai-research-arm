@@ -1,5 +1,5 @@
 {
-  "article_count": 90,
+  "article_count": 91,
   "articles": [
     {
       "claim_count": 18,
@@ -871,6 +871,14 @@
       "stem": "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches",
       "tags": [],
       "title": "Suncatcher reaches orbit: what one four-TPU satellite can and cannot settle about space-based AI compute"
+    },
+    {
+      "claim_count": 25,
+      "created_at": "2026-10-03T21:39:14Z",
+      "slug": "aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "stem": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "tags": [],
+      "title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models"
     }
   ],
   "by_host": {
@@ -1016,6 +1024,17 @@
     ],
     "alearesearch.substack.com": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c13"
+    ],
+    "aleph-alpha.com": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c10",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c19",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c21",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c22",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c3",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c5",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c6",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c8",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c9"
     ],
     "alia.public.lu": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c7",
@@ -1328,7 +1347,9 @@
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c11",
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c19",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c28",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c20"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c20",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c15",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c16"
     ],
     "arxiv.org": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c10",
@@ -1574,7 +1595,8 @@
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c5",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c6",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c7",
-      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c8"
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c8",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c18"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -2003,6 +2025,9 @@
     ],
     "chainwire.org": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c16"
+    ],
+    "chat.z.ai": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c14"
     ],
     "chatgptiseatingtheworld.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c12",
@@ -2646,7 +2671,8 @@
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c31",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c4",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c5",
-      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c6"
+      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c6",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c25"
     ],
     "digitalapplied.com": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c15",
@@ -3628,7 +3654,18 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c32",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c5",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c6",
-      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8"
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c1",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c10",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c11",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c12",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c13",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c16",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c2",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c23",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c4",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c6",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c7"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
@@ -4429,7 +4466,8 @@
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c42",
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c4",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c27",
-      "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c8"
+      "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c8",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c17"
     ],
     "nngroup.com": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c36"
@@ -5754,6 +5792,9 @@
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c10",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4"
     ],
+    "the-decoder.de": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c20"
+    ],
     "theairankings.com": [
       "2026-06-22T052035--zhipu-ai-glm#c26"
     ],
@@ -5984,6 +6025,9 @@
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c27",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c24",
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-16"
+    ],
+    "trendingtopics.eu": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c24"
     ],
     "trilogyai.substack.com": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c8"
@@ -6596,6 +6640,27 @@
     "https://alearesearch.substack.com/p/ethenas-stablecoin-economics-give": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c13"
     ],
+    "https://aleph-alpha.com/downloads/Kolibri_1_-_Sufficiently_Detailed_Summary.pdf": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c3"
+    ],
+    "https://aleph-alpha.com/downloads/tech-report.pdf": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c6"
+    ],
+    "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c10",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c21",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c5"
+    ],
+    "https://aleph-alpha.com/en/blog/through-the-valley-of-tears-cold-starting-german-reasoning-in-llms": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c22"
+    ],
+    "https://aleph-alpha.com/en/blog/training-on-the-party-line": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c8",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c9"
+    ],
+    "https://aleph-alpha.com/en/news/cohere-agreement-transatlantic-sovereign-ai": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c19"
+    ],
     "https://alia.public.lu/wp-content/uploads/2026/06/European-Commission_Code-of-Practice-on-Transparency-of-AI-Generated-Content.pdf": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c7",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c8"
@@ -6924,13 +6989,15 @@
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c19"
     ],
     "https://artificialintelligenceact.eu/article/51": [
-      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c40"
+      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c40",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c16"
     ],
     "https://artificialintelligenceact.eu/article/52": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c20"
     ],
     "https://artificialintelligenceact.eu/article/53": [
-      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c40"
+      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c40",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c15"
     ],
     "https://artificialintelligenceact.eu/article/99": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c11"
@@ -7173,6 +7240,9 @@
     ],
     "https://arxiv.org/abs/2507.14417": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c8"
+    ],
+    "https://arxiv.org/abs/2507.14805": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c18"
     ],
     "https://arxiv.org/abs/2507.20534": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c2",
@@ -7878,6 +7948,9 @@
     "https://chainwire.org/2026/01/13/kbw-2026-returns-to-seoul-september-29-october-1-upbit-joins-as-main-sponsor": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c16"
     ],
+    "https://chat.z.ai/legal-agreement/terms-of-service": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c14"
+    ],
     "https://chatgptiseatingtheworld.com/wp-content/uploads/2025/07/Class-Certification-Order-on-pirated-books-class-Bartz-v.-Anthropic-July-17-20250-.pdf": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c12"
     ],
@@ -8319,7 +8392,8 @@
     ],
     "https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c42",
-      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c6"
+      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c6",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c25"
     ],
     "https://digital-strategy.ec.europa.eu/en/policies/enforcement-ai-act": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c25"
@@ -9310,6 +9384,16 @@
     "https://help.aliyun.com/zh/functioncompute/fc/quick-start-comfyui": [
       "2026-08-04T171206--comfyui-company#c37"
     ],
+    "https://huggingface.co/Aleph-Alpha/Kolibri-1": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c1",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c10",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c16",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c2",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c23",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c4",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c6",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c7"
+    ],
     "https://huggingface.co/Inner-Reflections/Wan2.1_VACE_Phantom": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c37"
     ],
@@ -9382,6 +9466,12 @@
     "https://huggingface.co/datasets/Anthropic/claude-protein-binder-design": [
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c15"
     ],
+    "https://huggingface.co/datasets/nvidia/Nemotron-CC-v2.1": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c11"
+    ],
+    "https://huggingface.co/datasets/nvidia/Nemotron-Post-Training-Dataset-v1": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c12"
+    ],
     "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c21"
     ],
@@ -9417,6 +9507,9 @@
     ],
     "https://huggingface.co/models?search=abliterated": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c19"
+    ],
+    "https://huggingface.co/moonshotai/Kimi-K2.6/blob/main/LICENSE": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c13"
     ],
     "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6"
@@ -11363,6 +11456,9 @@
     ],
     "https://the-decoder.com/zhipu-ais-glm-5-2-closes-in-on-closed-source-leaders-in-coding-marathons": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c12"
+    ],
+    "https://the-decoder.de/deutsches-ki-start-up-aleph-alpha-differenziert-500-millionen-investitionspaket-aus": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c20"
     ],
     "https://theairankings.com/zhipu": [
       "2026-06-22T052035--zhipu-ai-glm#c26"
@@ -13915,7 +14011,8 @@
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c8"
     ],
     "https://www.nist.gov/news-events/news/2025/09/caisi-evaluation-deepseek-ai-models-finds-shortcomings-and-risks": [
-      "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c42"
+      "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c42",
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c17"
     ],
     "https://www.nist.gov/news-events/news/2026/05/nine-candidates-advance-third-round-additional-digital-signatures-pqc": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c4"
@@ -14925,6 +15022,9 @@
     "https://www.trendforce.com/price/dram/dram_spot": [
       "2026-07-13T181948--cxmt#c12"
     ],
+    "https://www.trendingtopics.eu/aleph-alpha-kolibri-open-weight": [
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c24"
+    ],
     "https://www.trmlabs.com/resources/blog/breaking-federal-judge-overturns-all-criminal-convictions-in-mango-markets-case-against-avraham-eisenberg": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c8"
     ],
@@ -15579,7 +15679,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2669,
+  "claim_count": 2694,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -79748,9 +79848,593 @@
         "https://epoch.ai/data-insights/ai-datacenter-cost-breakdown"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "Kolibri-1 has 78,103,074,560 total and 3,457,573,120 active parameters, 384 routed experts with top-6 routing plus one shared expert, and 50 layers.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c1",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "Kolibri scores 75.5 overall EN and 70.8 overall DE on Aleph Alpha's harness versus 80.2 and 79.9 for dense Qwen3.8 27B.",
+      "confidence": "high",
+      "hosts": [
+        "aleph-alpha.com",
+        "huggingface.co"
+      ],
+      "id": "c10",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c10",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/Aleph-Alpha/Kolibri-1",
+        "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2025-12-15",
+      "claim": "Nemotron-CC-v2.1 contains about 2,448.5B synthetic tokens out of 2,544.8B generated with Qwen3-30B-A3B.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c11",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/datasets/nvidia/Nemotron-CC-v2.1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2025-08-01",
+      "claim": "Nemotron-Post-Training-Dataset-v1 has 24,602,969 of 25,659,642 rows generated by DeepSeek-R1-0528 and 1,056,673 by Qwen3-235B-A22B.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c12",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/datasets/nvidia/Nemotron-Post-Training-Dataset-v1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-04",
+      "claim": "Kimi-K2.6's modified MIT license requires prominent display of 'Kimi K2.6' for commercial products above 100M monthly active users or $20M monthly revenue.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c13",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://huggingface.co/moonshotai/Kimi-K2.6/blob/main/LICENSE"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-04-14",
+      "claim": "Z.ai's terms of service bar using its models or model-generated content to train external models without authorization.",
+      "confidence": "high",
+      "hosts": [
+        "chat.z.ai"
+      ],
+      "id": "c14",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://chat.z.ai/legal-agreement/terms-of-service"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2024-06-13",
+      "claim": "AI Act Article 53(2) exempts open-source GPAI models from technical documentation duties but not from the copyright policy and the public training-content summary.",
+      "confidence": "high",
+      "hosts": [
+        "artificialintelligenceact.eu"
+      ],
+      "id": "c15",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://artificialintelligenceact.eu/article/53"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "The AI Act presumes systemic risk above 10^25 training FLOPs; Kolibri's 6.4e23 is 6.4 percent of that threshold.",
+      "confidence": "high",
+      "hosts": [
+        "artificialintelligenceact.eu",
+        "huggingface.co"
+      ],
+      "id": "c16",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "primary"
+      ],
+      "source_urls": [
+        "https://artificialintelligenceact.eu/article/51",
+        "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2025-09-30",
+      "claim": "NIST CAISI found DeepSeek models echoed four times as many inaccurate and misleading CCP narratives as U.S. reference models.",
+      "confidence": "high",
+      "hosts": [
+        "nist.gov"
+      ],
+      "id": "c17",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.nist.gov/news-events/news/2025/09/caisi-evaluation-deepseek-ai-models-finds-shortcomings-and-risks"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2025-07-20",
+      "claim": "The subliminal-learning paper did not observe trait transmission when teacher and student had different base models.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c18",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2507.14805"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-09-16",
+      "claim": "Cohere and Aleph Alpha signed a definitive business combination agreement on 2026-09-16, with the combined company operating as Cohere and the deal subject to regulatory approval.",
+      "confidence": "high",
+      "hosts": [
+        "aleph-alpha.com"
+      ],
+      "id": "c19",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c19",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aleph-alpha.com/en/news/cohere-agreement-transatlantic-sovereign-ai"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "Kolibri-1 weights are released under Apache 2.0, with rights applying only to the weights and configuration files and not to code, architecture, parameter settings or training methods.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c2",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2024-06-27",
+      "claim": "Aleph Alpha's 2023 'more than $500M' round broke down into EUR 110M equity, EUR 300M research funding and EUR 60M order commitments.",
+      "confidence": "medium",
+      "hosts": [
+        "the-decoder.de"
+      ],
+      "id": "c20",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c20",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://the-decoder.de/deutsches-ki-start-up-aleph-alpha-differenziert-500-millionen-investitionspaket-aus"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "Aleph Alpha says a 123B variant handled only 3 concurrent 256k-token queries on two H100s, while the 78B handles 18 and decodes 28% faster.",
+      "confidence": "medium",
+      "hosts": [
+        "aleph-alpha.com"
+      ],
+      "id": "c21",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c21",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-09-24",
+      "claim": "Aleph Alpha's German reasoning SFT pipeline used several unnamed open-source teacher models; a reasoning prefill kept 97% of traces German versus 67% with a system prompt.",
+      "confidence": "high",
+      "hosts": [
+        "aleph-alpha.com"
+      ],
+      "id": "c22",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c22",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aleph-alpha.com/en/blog/through-the-valley-of-tears-cold-starting-german-reasoning-in-llms"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "Kolibri's model card recommends serving at or below 262,144 tokens; 1,048,576 is reached by extrapolation.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c23",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c23",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "Kolibri's comparators date from spring 2026 and exclude GLM-5.3, Kimi K3, Qwen3.8 MoE and MiMo-V2.6-Pro.",
+      "confidence": "medium",
+      "hosts": [
+        "trendingtopics.eu"
+      ],
+      "id": "c24",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c24",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.trendingtopics.eu/aleph-alpha-kolibri-open-weight"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-07-31",
+      "claim": "Aleph Alpha is listed as a signatory of the EU General-Purpose AI Code of Practice; Zhipu, Moonshot and Alibaba are not.",
+      "confidence": "high",
+      "hosts": [
+        "digital-strategy.ec.europa.eu"
+      ],
+      "id": "c25",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c25",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "Kolibri's EU AI Act public training-content summary lists Gemma-4-26B-A4B, Qwen3-32B, Qwen3.8-27B, Mistral-Nemo-12B, GLM-5.3, GLM-5.2-fp8 and Kimi-K2.6 as models used to generate synthetic training data.",
+      "confidence": "high",
+      "hosts": [
+        "aleph-alpha.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aleph-alpha.com/downloads/Kolibri_1_-_Sufficiently_Detailed_Summary.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "The model card states Kolibri's training data contains material generated with Chinese language models known to carry political bias, and that data was filtered for such bias.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c4",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "For SFT Aleph Alpha generated 174B tokens of synthetic data inside a 268B-token SFT mix.",
+      "confidence": "high",
+      "hosts": [
+        "aleph-alpha.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "English Common Crawl was rephrased with Gemma-4-26B-A4B, German web data with Mistral-NeMo-12B, and Qwen3-32B served as an LLM judge for quality-classifier labels.",
+      "confidence": "high",
+      "hosts": [
+        "aleph-alpha.com",
+        "huggingface.co"
+      ],
+      "id": "c6",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/Aleph-Alpha/Kolibri-1",
+        "https://aleph-alpha.com/downloads/tech-report.pdf"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-10-03",
+      "claim": "Pre-training used 768 NVIDIA B200 GPUs for 21 days; total compute 6.4e23 FLOPs and about 950 MWh.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c7",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/Aleph-Alpha/Kolibri-1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-09-28",
+      "claim": "Aleph Alpha's benchmark of 967 politically sensitive prompts found six Chinese models answered only 17 to 41 percent of prompts in a balanced way.",
+      "confidence": "medium",
+      "hosts": [
+        "aleph-alpha.com"
+      ],
+      "id": "c8",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c8",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aleph-alpha.com/en/blog/training-on-the-party-line"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+      "article_created_at": "2026-10-03T21:39:14Z",
+      "article_title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models",
+      "as_of": "2026-09-28",
+      "claim": "Nemotron Cascade 2, with roughly 3.5k of 9.3M SFT chat rows carrying CCP talking points, was flagged on 17 percent of prompts.",
+      "confidence": "medium",
+      "hosts": [
+        "aleph-alpha.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c9",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aleph-alpha.com/en/blog/training-on-the-party-line"
+      ],
+      "type": "metric"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1290,
+  "reusable_count": 1307,
   "schema_version": 1
 }
