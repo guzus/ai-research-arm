@@ -3085,6 +3085,22 @@
     "created_at": "2026-10-03T21:39:14Z",
     "source": "workflow_dispatch",
     "prompt": "Aleph Alpha Kolibri: a 78B/3.46B-active Apache-2.0 MoE, and what GLM/Qwen-generated fine-tuning data means for European sovereign AI",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-10-03T215719--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "콜리브리의 빌린 목소리: 중국 모델이 일부 가르친 주권적 유럽 MoE",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-10-03T21:57:19Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
+        "tags": [],
+        "translated_at": "2026-10-03T21:57:19Z",
+        "source_file": "research/generative/2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh.ara.md",
+        "source_sha256": "e5ff6fa2069f7bff8d028fb6847ae035dda3dc5e8174bfd4b9f74a1859ad2b48"
+      }
+    }
   }
 ]
