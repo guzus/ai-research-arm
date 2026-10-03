@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-10-03
+
+TOP STORIES:
+• Anthropic sets 14 Oct investor session; IPO at $1.5-2T eyed before Thanksgiving
+• Google's Suncatcher TPU satellite reaches orbit
+• Trump expected to name DNI Jay Clayton AI czar
+• Apple tightens macOS Full Disk Access over AI agents
+
+KEY NUMBERS:
+• DGX Spark 128GB now $6,949.99; new 64GB at $4,999
+• Samsung HBM4 ask ~$4.5/Gb, 3x HBM3E
+• Nvidia record close ~$5.7T
+• BIS: 55.2% of AI-company funding comes from other AI firms
+
+TRENDING: Harnesses as product: Pi 1.0 (1.5K HN pts), DeepSeek Harness Desktop, FLUX 3 Image
+
+Full digest on GitHub.
