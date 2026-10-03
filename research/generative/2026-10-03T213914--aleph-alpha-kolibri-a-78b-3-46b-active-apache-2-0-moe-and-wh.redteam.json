@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The EU AI Act summary, section 2.5, lists GLM-5.3, GLM-5.2-fp8, Kimi-K2.6 and Qwen3.8-27B as generator models but attaches no purpose to any of them [^3].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Meanwhile, the launch post says Aleph Alpha \"generated a total of 174B tokens worth of synthetic data\" for SFT inside a 268B-token mix [^2].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Its 967-prompt, 56-topic benchmark, judged by GPT-OSS-120B, found \"six Chinese models answered only 17 to 41 percent of prompts in a balanced way\" [^5].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
