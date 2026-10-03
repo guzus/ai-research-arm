@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-03
+
+TOP 5 PAPERS:
+• Sharpening Tax — RL post-training buys pass@1 by killing pass@K coverage
+• Same Reward, Different Skills — RLVR can raise VLM scores without ever looking
+• Kimi K2.7 Code RL — 1T/32B LoRA transfers across 6 agent coding benches
+• RPG — frozen skill library: 28.6% → 95% sim, 30/30 real
+• GUI-HARVEST — evolve the GUI harness, not the backbone; GPT-5 +13.9
+
+CATEGORIES: NLP 7, CV/Multimodal 8, Agents & Reasoning 8, Safety 6, Other 6
+
+Full report on GitHub.
