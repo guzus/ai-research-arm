@@ -1,0 +1,12 @@
+Speaker 1: Saturday, October third, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic has set an investor session for October fourteenth, and the IPO talk is now a valuation of [emphasis] one point five to two trillion dollars [/emphasis], possibly before Thanksgiving.
+Speaker 1: That would put it among the biggest listings ever. Meanwhile, Google's Suncatcher TPU satellite has reached orbit.
+Speaker 2: Worth noting that's actual AI compute in space, not a slide deck anymore.
+Speaker 1: On the policy front, President Trump is expected to name Director of National Intelligence Jay Clayton as AI czar.
+Speaker 2: And Apple is tightening macOS Full Disk Access because of AI agents, so expect your agent to ask permission a lot more often.
+Speaker 1: Some quick numbers. The one hundred twenty-eight gigabyte DGX Spark now costs six thousand nine hundred fifty dollars, and a new sixty-four gigabyte model comes in at about five thousand.
+Speaker 2: Samsung is reportedly asking about four and a half dollars per gigabit for HBM4, which is [emphasis] three times [/emphasis] the price of HBM3E.
+Speaker 1: Nvidia posted a record close near five point seven trillion dollars.
+Speaker 2: And the Bank for International Settlements says [dramatic_pause] [emphasis] fifty-five percent [/emphasis] of AI-company funding comes from other AI firms.
+Speaker 1: Trending today, harnesses as products, with Pi one point oh, DeepSeek Harness Desktop, and FLUX three Image.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
