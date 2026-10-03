@@ -3,42 +3,6 @@
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-16 21:00 UTC",
-    "headline": "@STEIPETE: 'DESLOP YOUR CLAUDE CODE IF YOU HAVEN'T YET SWITCHED TO CODEX' \u2014 DEV-TOOLS PRINCIPAL FLIPS OPENLY ANTI-CLAUDE-CODE",
-    "source": "@steipete",
-    "source_file": "research/summaries/2026-05-16-twitter-21h-headlines.json",
-    "url": "https://x.com/steipete/status/2055747016727167035"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 21:00 UTC",
-    "headline": "THE INFORMATION: 'CLAUDE DOESN'T PROVIDE TELEMETRY DATA MANY SOFTWARE VENDORS OFFER BY DEFAULT' \u2014 THIRD ANTHROPIC-CRITICAL PIECE IN 26H",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-16-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055732524026822773"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-16 21:00 UTC",
-    "headline": "SEMIANALYSIS: AMD UPSTREAM CONTRIBUTION ACCEPTED INTO NVIDIA DYNAMO AIPERF \u2014 ONE OF FIRST AMD COMMITS INTO NVIDIA REPO, RARE GPU-VENDOR COOPERATION",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-16-twitter-21h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2055746972523336120"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-16 21:00 UTC",
-    "headline": "ANTHROPIC CORP SILENCE EXTENDS TO 51H+ THROUGH 3 INFORMATION CRITIQUES, SEMIANALYSIS CLI ATTACK, CODEX MINDSHARE SHIFT; DARIO X-SILENT 39 DAYS",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-16-twitter-21h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-16 21:00 UTC",
     "headline": "TESTINGCATALOG: HERMES AGENT NOW USES X PREMIUM+ FOR GROK + X SEARCH TOOL \u2014 'OPENAI VS XAI ONCE AGAIN' IN AGENT-FRAMEWORK BATTLE",
     "source": "@testingcatalog",
     "source_file": "research/summaries/2026-05-16-twitter-21h-headlines.json",
@@ -23948,5 +23912,33 @@
     "headline": "SPACEXAI WEIGHS $100/MONTH ULTRA PLAN BUNDLING X, GROK, CURSOR AND GROK BOT \u2014 BLOOMBERG",
     "source": "@mark_k",
     "url": "https://x.com/mark_k/status/2106291603623006325"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-03 16:10:23 UTC",
+    "headline": "OPENAI SAFETY LEAD DAVID ROBINSON CONFIRMS RESIGNATION IN ATLANTIC ESSAY: 'TIME FOR TRIAL AND ERROR IS OVER'",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2106393025887003125"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-03 16:10:23 UTC",
+    "headline": "VERCEL SANDBOX BOUNTY UNCOVERS KVM ZERO-DAY \u2014 FULL GUEST-TO-HOST VM ESCAPE",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2106402024804020657"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-03 16:10:23 UTC",
+    "headline": "ALEPH ALPHA RELEASES KOLIBRI: 78B MOE, 3.46B ACTIVE, 1M CONTEXT, APACHE 2.0",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2106403475999412602"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-03 16:10:23 UTC",
+    "headline": "AMD PASSES 90% PARITY ON UPSTREAM VLLM GATING TESTS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2106414027064693164"
   }
 ]
