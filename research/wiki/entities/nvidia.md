@@ -2,17 +2,18 @@
 slug: nvidia
 title: NVIDIA
 type: entity
-aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra", OpenShell, "NVIDIA Sentry", "Open Agent Safety Platform", "BlueField-4"]
+aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra", OpenShell, "NVIDIA Sentry", "Open Agent Safety Platform", "BlueField-4", "DGX Spark"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: Dominant AI-accelerator supplier; launched the Open Agent Safety Platform on 2026-09-28 — Apache-2.0 OpenShell plus BlueField-4 Sentry — with 100+ partners and OpenAI absent.
+description: Dominant AI-accelerator supplier; closed at a record ~$5.7T, repriced DGX Spark (128GB $6,949.99 / 64GB $4,999), and faces a $300M China-chip smuggling arrest.
 created_at: 2026-06-05
-timestamp: 2026-09-29T00:00:00Z
+timestamp: 2026-10-03T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA model ticket — NVIDIA Open Agent Safety Platform", path: research/models/tickets/nvidia-open-agent-safety-platform-2026-09.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
@@ -664,4 +665,37 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   authorization to **$235B**. Same-day
   backdrop, not a product fact (ARA daily
   digest 2026-09-29).
+
+## Record close, DGX Spark reprice, and a $300M smuggling arrest (2026-10-03)
+
+- **Nvidia closed at a record ~$5.7T**
+  market value — its first record close
+  since May and a rebound of almost 25%
+  from the late-July low. It follows
+  Monday's **$150B** increase to the
+  buyback authorisation already logged
+  on this page (Bloomberg via Twitter;
+  ARA daily digest 2026-10-03).
+- **DGX Spark was repriced.** The 128GB
+  model now lists at **$6,949.99**, and
+  a 64GB version at **$4,999** ships
+  from Acer, ASUS, Dell, Gigabyte, HP
+  and MSI on **23 October**. Three
+  accounts report matching figures;
+  today's snapshot contains no Nvidia
+  post. Memory costs are the likeliest
+  cause. See [[ai-capex]] and [[dell]]
+  (Twitter; ARA daily digest
+  2026-10-03).
+- **US prosecutors accused a tech CEO
+  of moving $300M of Nvidia chips into
+  China.** Separately, Bloomberg traced
+  a Chinese local-government leasing
+  company that financed 32 Asustek
+  servers built on export-restricted
+  B300s; Nvidia says it will
+  investigate. See
+  [[federal-ai-policy]] (Ars Technica,
+  Bloomberg via Twitter; ARA daily
+  digest 2026-10-03).
 

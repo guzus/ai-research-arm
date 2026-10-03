@@ -2,12 +2,13 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; opened Claude Code to TypeScript plugin mods and is refusing further enterprise discounts once prepaid tokens run out.
+description: AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while The Information cites ~$1.5T as closer to fair value.
 created_at: 2026-05-24
-timestamp: 2026-10-02T00:00:00Z
+timestamp: 2026-10-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
@@ -2470,3 +2471,50 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   [[federal-ai-policy]] (TIME
   via Twitter; ARA daily
   digest 2026-10-02).
+
+## 14 October investor Q&A; distillation shells; Olah and the Pope (2026-10-03)
+
+- **Bloomberg reports Anthropic invited
+  institutional investors** to question
+  executives on **14 October**. That
+  could lead to a roadshow as soon as
+  the week of **9 November** and
+  trading before Thanksgiving at
+  **$1.8–2T**. Anthropic has not
+  confirmed. The Information says some
+  Wall Street investors think
+  **~$1.5T** is closer to fair value.
+  Under SEC rules a public S-1 would
+  have to appear at least 15 days
+  before the roadshow, so by late
+  October if those dates hold. See
+  [[ai-capex]] and
+  [[federal-ai-policy]] (Bloomberg and
+  The Information via Twitter, Newcomer;
+  ARA daily digest 2026-10-03).
+- **Chinese resellers sell unauthorised
+  Claude access for distillation.** The
+  Information reports thousands of
+  token resellers give AI labs Claude
+  access to distill from, and that
+  Anthropic's crackdown is pushing them
+  into shell companies. It follows the
+  28 September change that keeps
+  [[claude-sonnet-5-5|Sonnet 5.5]]
+  thinking inside the organisation that
+  generated it. See [[open-weights]]
+  and [[china-ai-regulation]] (The
+  Information; ARA daily digest
+  2026-10-03).
+- **The NYT reports Chris Olah proposed
+  pulling out** of the May launch of
+  Pope Leo XIV's AI encyclical because
+  it rejected machine consciousness,
+  then attended and lobbied the Pope's
+  advisers. Critics argue that treating
+  AI as a moral patient could shield
+  the company from liability. Single-
+  outlet reconstruction; Anthropic has
+  not confirmed the walk-out proposal
+  (NYT via Twitter, The Decoder; ARA
+  daily digest 2026-10-03).

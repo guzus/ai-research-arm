@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Goldman projected Amazon, Alphabet, Microsoft, Oracle and Meta will spend $1.2T combined on AI infrastructure in 2027.
+description: The historically large compute buildout; investors are getting choosier after ~$55B of AI high-yield bonds this year, and a BIS report says 55.2% of AI fundraising comes from other AI companies.
 created_at: 2026-05-24
-timestamp: 2026-09-28T00:00:00Z
+timestamp: 2026-10-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
@@ -1398,3 +1399,56 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   close (The Decoder citing
   Bloomberg/Goldman; ARA
   daily digest 2026-09-28).
+
+## Credit gets selective; 55.2% of AI raise is circular (2026-10-03)
+
+- **AI credit is getting selective.**
+  AI-related borrowers have sold about
+  **$55B** of high-yield bonds this
+  year, and investors are becoming
+  choosier about data-centre projects.
+  The Information also says Nscale's
+  **$103B** backlog rests on unbuilt
+  data centres and [[nvidia|Nvidia]]
+  chips it has not yet secured
+  (@theinformation; ARA daily digest
+  2026-10-03).
+- **A BIS report on circular
+  financing** says **55.2%** of the
+  money AI companies raise comes from
+  other AI companies. Only **16.1%**
+  of AI-to-AI deals involve firms that
+  also trade with each other, but
+  those deals carry **46.4%** of the
+  money (Twitter; ARA daily digest
+  2026-10-03).
+- **Suncatcher is now in orbit** —
+  [[google]] confirmed contact on the
+  four-TPU Planet prototype launched
+  on [[spacex|SpaceX]] Transporter-18.
+  That is still a survivability test,
+  not orbital capacity. See [[google]]
+  (ARA daily digest 2026-10-03).
+- **Korean media report Samsung quoting
+  HBM4 at ~$4.5/Gb** to major
+  customers, more than three times
+  HBM3E's roughly $1.50/Gb. It is a
+  negotiating position, not a settled
+  contract price. See [[sk-hynix]] and
+  [[micron]] (Twitter citing Korean
+  press; ARA daily digest 2026-10-03).
+- **Lumentum's CEO says the company can
+  supply only 30% of laser demand**;
+  co-packaged and near-packaged optics
+  arriving in 2027 will push demand
+  past supply until 2029–2030 (Global
+  Photonics Economic Forum via Twitter;
+  ARA daily digest 2026-10-03).
+- **[[amazon|AWS]] CEO Matt Garman
+  warned communities** that blocking
+  data centres risks "irreparable
+  harm," against a $1B community-
+  response plan that is itself drawing
+  backlash. [[nvidia]] closed at a
+  record ~$5.7T the same window (ARA
+  daily digest 2026-10-03).
