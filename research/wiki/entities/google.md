@@ -2,17 +2,19 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio"]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "Project Suncatcher", Suncatcher]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; launched SynthID Bio to watermark AI-designed proteins the day after Gemini 4 Argon took #1 on the Vals Index.
+description: Hyperscaler behind Gemini; confirmed its Project Suncatcher TPU prototype, built with Planet, reached orbit on SpaceX Transporter-18 and made contact.
 created_at: 2026-07-17
-timestamp: 2026-10-02T00:00:00Z
+timestamp: 2026-10-03T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
+  - {title: "ARA model ticket — Project Suncatcher TPU satellite", path: research/models/tickets/google-suncatcher-tpu-satellite-2026-09.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA model ticket — SynthID Bio", path: research/models/tickets/google-synthid-bio-2026-09.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
@@ -704,6 +706,37 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   and Penske Media — an expectation of search traffic "is not
   an agreement" (The Verge, Ars Technica; ARA daily digest
   2026-10-02).
+
+## Suncatcher reaches orbit (2026-10-03)
+
+- **Google confirmed the Project Suncatcher prototype
+  launched** with Planet on [[spacex|SpaceX]]'s
+  Transporter-18 and has made contact. The 2026-09-25
+  dated-launch entry on this page is now a completed
+  rideshare: four TPUs in orbit to measure launch stress,
+  radiation and thermal extremes. Google calls it the first
+  step of a moonshot, not a data centre. The ticket stays
+  at *confirmed* — a research mission, not a product.
+  Watch published telemetry (single-event-upset rate,
+  thermal profile, downlink budget), not constellation
+  concept art. The NYT-reported 80-satellite flock and
+  soccer-field-scale craft remain unconfirmed by Google.
+  See [[ai-capex]] and [[spacex]] (@GoogleAI, Google
+  Research blog, HN; ARA daily digest 2026-10-03 and
+  ticket `google-suncatcher-tpu-satellite-2026-09`).
+- **The Information restates that Google pays about 100
+  publishers** in proportion to their content's contribution
+  to AI Overviews, AI Mode and Gemini. Some say the
+  payments come to under **0.1% of their ad revenue** —
+  the first percentage attached to the 2026-10-01
+  numbered-publisher print (The Information; ARA daily
+  digest 2026-10-03).
+- **An unreleased Gemini Desktop sandbox option** on Mac
+  would let Gemini read and delete files anywhere on the
+  machine and drive Mail, Safari and Messages without
+  per-action approval. Hidden setting, not shipped. See
+  [[apple]] and [[agentic-ai-security]] (@testingcatalog;
+  ARA daily digest 2026-10-03).
 
 - **Does "generate onto authoritative data" survive as a product category?**
   The Google Earth feature was killed in a day because detectors could not

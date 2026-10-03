@@ -94,6 +94,7 @@
       "inbound": [
         "amazon",
         "anthropic",
+        "apple",
         "astra",
         "california-ai-regulation",
         "claude-fable-5",
@@ -171,11 +172,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Goldman projected Amazon, Alphabet, Microsoft, Oracle and Meta will spend $1.2T combined on AI infrastructure in 2027.",
-      "description": "The historically large compute buildout; Goldman projected Amazon, Alphabet, Microsoft, Oracle and Meta will spend $1.2T combined on AI infrastructure in 2027.",
+      "summary": "The historically large compute buildout; investors are getting choosier after ~$55B of AI high-yield bonds this year, and a BIS report says 55.2% of AI fundraising comes from other AI companies.",
+      "description": "The historically large compute buildout; investors are getting choosier after ~$55B of AI high-yield bonds this year, and a BIS report says 55.2% of AI fundraising comes from other AI companies.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-28",
-      "timestamp": "2026-09-28T00:00:00Z",
+      "updated_at": "2026-10-03",
+      "timestamp": "2026-10-03T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -381,23 +382,25 @@
         "ai-infrastructure",
         "bedrock"
       ],
-      "summary": "Hyperscaler and Anthropic's largest investor; blocked Meta's Muse shopping agent as a terms-of-use violation the same day Shopify opened Shop Pay to that agent.",
-      "description": "Hyperscaler and Anthropic's largest investor; blocked Meta's Muse shopping agent as a terms-of-use violation the same day Shopify opened Shop Pay to that agent.",
+      "summary": "Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman warned communities that blocking AI data centres risks irreparable harm to the US economy and national security.",
+      "description": "Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman warned communities that blocking AI data centres risks irreparable harm to the US economy and national security.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-09-22",
-      "timestamp": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-10-03",
+      "timestamp": "2026-10-03T00:00:00Z",
       "file": "entities/amazon.md",
       "aliases": [
         "Amazon",
         "Amazon.com",
         "AWS",
         "Amazon Web Services",
-        "Andy Jassy"
+        "Andy Jassy",
+        "Matt Garman"
       ],
       "outbound": [
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "california-ai-regulation",
         "claude-fable-5",
         "federal-ai-policy",
         "muse-code",
@@ -515,18 +518,19 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; opened Claude Code to TypeScript plugin mods and is refusing further enterprise discounts once prepaid tokens run out.",
-      "description": "AI safety lab behind Claude; opened Claude Code to TypeScript plugin mods and is refusing further enterprise discounts once prepaid tokens run out.",
+      "summary": "AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while The Information cites ~$1.5T as closer to fair value.",
+      "description": "AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while The Information cites ~$1.5T as closer to fair value.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-02",
-      "timestamp": "2026-10-02T00:00:00Z",
+      "updated_at": "2026-10-03",
+      "timestamp": "2026-10-03T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
         "Anthropic PBC",
         "@AnthropicAI",
         "One Claude",
-        "Dario Amodei"
+        "Dario Amodei",
+        "Chris Olah"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -668,11 +672,11 @@
         "siri",
         "wwdc"
       ],
-      "summary": "Consumer-hardware giant planning M8 Ultra AI servers — two- or four-chip enterprise inference boxes, no launch before 2029 — after shipping rebuilt Siri AI on Gemini.",
-      "description": "Consumer-hardware giant planning M8 Ultra AI servers — two- or four-chip enterprise inference boxes, no launch before 2029 — after shipping rebuilt Siri AI on Gemini.",
+      "summary": "Consumer-hardware giant tightening macOS Full Disk Access for AI agents, saying they substantially raise the risk of broad access to files, messages, mail and browsing history.",
+      "description": "Consumer-hardware giant tightening macOS Full Disk Access for AI agents, saying they substantially raise the risk of broad access to files, messages, mail and browsing history.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-09-17",
-      "timestamp": "2026-09-17T00:00:00Z",
+      "updated_at": "2026-10-03",
+      "timestamp": "2026-10-03T00:00:00Z",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -681,9 +685,11 @@
         "Apple Intelligence",
         "Private Cloud Compute",
         "PCC",
-        "M8 Ultra"
+        "M8 Ultra",
+        "macOS Full Disk Access"
       ],
       "outbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
         "etched",
@@ -693,6 +699,8 @@
         "gemini-3-5-flash",
         "google",
         "liquid-ai",
+        "meta",
+        "muse-code",
         "nvidia",
         "openai"
       ],
@@ -934,6 +942,7 @@
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
+        "amazon",
         "anthropic",
         "china-ai-regulation",
         "eu-ai-regulation",
@@ -1827,7 +1836,8 @@
       ],
       "inbound": [
         "ai-capex",
-        "broadcom"
+        "broadcom",
+        "nvidia"
       ],
       "market": {
         "ticker": "DELL",
@@ -2081,11 +2091,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; Reuters says the FTC will probe Anthropic, OpenAI and METR, while Pichai and Huang confirmed they signed the voluntary White House accord.",
-      "description": "US federal AI governance; Reuters says the FTC will probe Anthropic, OpenAI and METR, while Pichai and Huang confirmed they signed the voluntary White House accord.",
+      "summary": "US federal AI governance; CNN says Trump is expected to name DNI Jay Clayton AI czar while he keeps the intelligence role, moving the post into the national-security portfolio David Sacks left in March.",
+      "description": "US federal AI governance; CNN says Trump is expected to name DNI Jay Clayton AI czar while he keeps the intelligence role, moving the post into the national-security portfolio David Sacks left in March.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-10-01",
-      "timestamp": "2026-10-01T00:00:00Z",
+      "updated_at": "2026-10-03",
+      "timestamp": "2026-10-03T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -2104,7 +2114,8 @@
         "Standards Authority for Frontier AI",
         "White House Accord on Super Intelligence",
         "Joint Commitment on Frontier Responsibilities",
-        "Super Intelligence renaming order"
+        "Super Intelligence renaming order",
+        "Jay Clayton"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2682,11 +2693,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; launched SynthID Bio to watermark AI-designed proteins the day after Gemini 4 Argon took",
-      "description": "Hyperscaler behind Gemini; launched SynthID Bio to watermark AI-designed proteins the day after Gemini 4 Argon took",
+      "summary": "Hyperscaler behind Gemini; confirmed its Project Suncatcher TPU prototype, built with Planet, reached orbit on SpaceX Transporter-18 and made contact.",
+      "description": "Hyperscaler behind Gemini; confirmed its Project Suncatcher TPU prototype, built with Planet, reached orbit on SpaceX Transporter-18 and made contact.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-02",
-      "timestamp": "2026-10-02T00:00:00Z",
+      "updated_at": "2026-10-03",
+      "timestamp": "2026-10-03T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2708,7 +2719,9 @@
         "DeepMind Institute",
         "Gemini 3.8 TTS",
         "Gemini 3.8 Flash TTS",
-        "SynthID Bio"
+        "SynthID Bio",
+        "Project Suncatcher",
+        "Suncatcher"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -3292,11 +3305,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; stood up Meta Enterprise Platform under ex-MongoDB CEO CJ Desai, bundling Muse, Business Agent, Muse API and Muse Code.",
-      "description": "Social-platform hyperscaler and Llama maker; stood up Meta Enterprise Platform under ex-MongoDB CEO CJ Desai, bundling Muse, Business Agent, Muse API and Muse Code.",
+      "summary": "Social-platform hyperscaler and Llama maker; published six Muse Spark mathematics papers and Muse Gadgets hardware SDK, plus a 5,000-unit Muse Home Link giveaway.",
+      "description": "Social-platform hyperscaler and Llama maker; published six Muse Spark mathematics papers and Muse Gadgets hardware SDK, plus a 5,000-unit Muse Home Link giveaway.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-09-29",
-      "timestamp": "2026-09-29T00:00:00Z",
+      "updated_at": "2026-10-03",
+      "timestamp": "2026-10-03T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -3309,7 +3322,8 @@
         "Meta One",
         "Muse Charm",
         "Meta Enterprise Platform",
-        "CJ Desai"
+        "CJ Desai",
+        "Muse Gadgets"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -3331,12 +3345,14 @@
         "nvidia",
         "open-weights",
         "openai",
-        "openrouter"
+        "openrouter",
+        "verification-bottleneck"
       ],
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "apple",
         "california-ai-regulation",
         "claude-sonnet-5",
         "eu-ai-regulation",
@@ -3980,6 +3996,7 @@
       "inbound": [
         "agentic-ai-security",
         "amazon",
+        "apple",
         "claude-fable-5",
         "gemini-3-8-flash",
         "meta",
@@ -4271,11 +4288,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "Dominant AI-accelerator supplier; launched the Open Agent Safety Platform on 2026-09-28 — Apache-2.0 OpenShell plus BlueField-4 Sentry — with 100+ partners and OpenAI absent.",
-      "description": "Dominant AI-accelerator supplier; launched the Open Agent Safety Platform on 2026-09-28 — Apache-2.0 OpenShell plus BlueField-4 Sentry — with 100+ partners and OpenAI absent.",
+      "summary": "Dominant AI-accelerator supplier; closed at a record ~$5.7T, repriced DGX Spark (128GB $6,949.99 / 64GB $4,999), and faces a $300M China-chip smuggling arrest.",
+      "description": "Dominant AI-accelerator supplier; closed at a record ~$5.7T, repriced DGX Spark (128GB $6,949.99 / 64GB $4,999), and faces a $300M China-chip smuggling arrest.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-09-29",
-      "timestamp": "2026-09-29T00:00:00Z",
+      "updated_at": "2026-10-03",
+      "timestamp": "2026-10-03T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -4291,7 +4308,8 @@
         "OpenShell",
         "NVIDIA Sentry",
         "Open Agent Safety Platform",
-        "BlueField-4"
+        "BlueField-4",
+        "DGX Spark"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4305,6 +4323,7 @@
         "claude-opus-4-8",
         "coreweave",
         "crusoe",
+        "dell",
         "federal-ai-policy",
         "gemma-4",
         "groq",
@@ -5685,6 +5704,7 @@
         "federal-ai-policy",
         "lifescibench",
         "matrix-multiplication-exponent",
+        "meta",
         "mistral-leanstral-1-5",
         "muse-code",
         "nvidia",
@@ -6187,6 +6207,7 @@
     "china ai regulation": "china-ai-regulation",
     "china-ai-regulation": "china-ai-regulation",
     "chinese ai regulation": "china-ai-regulation",
+    "chris olah": "anthropic",
     "cj desai": "meta",
     "claude code dynamic workflows": "dynamic-workflows",
     "claude fable 5": "claude-fable-5",
@@ -6242,6 +6263,7 @@
     "dell inc.": "dell",
     "dell technologies": "dell",
     "devin": "cognition-ai",
+    "dgx spark": "nvidia",
     "discovery loop pbc": "discovery-loop",
     "discovery-loop": "discovery-loop",
     "dots agents": "openai",
@@ -6406,6 +6428,7 @@
     "instinct": "amd",
     "interim measures for the administration of ai anthropomorphic interactive services": "china-ai-regulation",
     "ironwood": "google",
+    "jay clayton": "federal-ai-policy",
     "jelani nelson": "jelani-nelson",
     "jelani-nelson": "jelani-nelson",
     "jensen huang": "nvidia",
@@ -6443,6 +6466,7 @@
     "luna": "gpt-5-6",
     "m3": "minimax-m3",
     "m8 ultra": "apple",
+    "macos full disk access": "apple",
     "mai": "microsoft",
     "mai code of conduct": "microsoft",
     "mai-code-1-flash": "microsoft",
@@ -6451,6 +6475,7 @@
     "marlin": "sakana-ai",
     "matrix multiplication exponent": "matrix-multiplication-exponent",
     "matrix-multiplication-exponent": "matrix-multiplication-exponent",
+    "matt garman": "amazon",
     "maven smart system": "palantir",
     "meituan longcat": "meituan-longcat-2",
     "meituan-longcat-2": "meituan-longcat-2",
@@ -6505,6 +6530,7 @@
     "muse agent": "muse-code",
     "muse charm": "meta",
     "muse code": "muse-code",
+    "muse gadgets": "meta",
     "muse glimmer": "muse-glimmer",
     "muse spark 1.2": "muse-code",
     "muse spark 1.3": "muse-code",
@@ -6583,6 +6609,7 @@
     "pplx-decider-27b": "perplexity",
     "private cloud compute": "apple",
     "project polaris": "microsoft",
+    "project suncatcher": "google",
     "prometheus": "prometheus",
     "prometheus ai": "prometheus",
     "promoting advanced ai innovation and security": "federal-ai-policy",
@@ -6662,6 +6689,7 @@
     "step 5 preview": "step-5-preview",
     "step-5-preview": "step-5-preview",
     "stepfun step 5": "step-5-preview",
+    "suncatcher": "google",
     "super intelligence renaming order": "federal-ai-policy",
     "synthid bio": "google",
     "taalas": "taalas",
@@ -6727,6 +6755,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-10-03",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-03 digest plus tickets updated 2026-10-02 (google-suncatcher, google-gemini-4, anthropic-compute-commitments, anthropic-claude-fable-5-5, openai-gpt-6-1-sol). Created 0, updated 8 (anthropic — 14 Oct investor Q&A / $1.8–2T vs ~$1.5T + Claude distillation shells + Olah/Pope encyclical; google — Suncatcher four-TPU prototype in orbit on Transporter-18 + contact + publisher 0.1% note; federal-ai-policy — CNN Jay Clayton AI-czar expectation + Meridian first meeting + $300M chip-smuggling arrest; meta — six Muse Spark math papers + Muse Gadgets / 5,000 Home Link; nvidia — record ~$5.7T + DGX Spark reprice + B300 leasing trail; apple — macOS Full Disk Access tightened over agents; amazon — Garman data-centre backlash post + $1B community plan; ai-capex — $55B HY bonds + BIS 55.2% circular raise + Samsung HBM4 ~$4.5/Gb + Lumentum 30% laser supply). Skipped for budget: FLUX 3 Image / Black Forest Labs, Muse Gadgets as its own page, Pi 1.0 / harness-as-product, Sites in ChatGPT, MiniMax M3.1 Flash, Perplexity Lily, figure-ai F.02 decommission, gemini-4-argon HN leftover, muse-code / agentic-ai-security / openai increments, arXiv highlights."
+    },
     {
       "date": "2026-10-02",
       "op": "ingest",
@@ -6821,11 +6854,6 @@
       "date": "2026-09-14",
       "op": "ingest",
       "summary": "Ingested the 2026-09-14 digest (no model tickets with updated_at today or yesterday). Created 1 (zhipu — $5B HKEX close, 21.97M shares at HK$714 plus zero-coupon convertibles due Sep 2027, 60% tagged for next-gen GLM and Fully Self Training). Updated 8 (federal-ai-policy — Trump/Johnson/Obama/Jeffries elected-leadership answer + Sacks rejection of waiver-and-evaluator package; anthropic — Amodei CBS joint-governance/kill-switch ask + Hassabis backing; microsoft — Nadella dates MAI Code of Conduct consultation, no training pause; astra — Andon Labs ~3× Fable on Vending-Bench + chess honeypot 10/10 + Perplexity customer note; claude-fable-5 — Cyphral Distich 44 min / 176k tokens + honeypot 3/10; meta — Wang alignment-can-gate-scaling; agentic-ai-security — 2025-style chess honeypot + Bengio mechanism note; zhipu-glm-5-3 — parent-company raise pointer). Reciprocal [[zhipu]] links on glm-5-2 / ox-alpha. Skipped for budget: google as its own Hassabis increment, openai Perplexity note (folded onto astra), SemiAnalysis 4-hi HBM / Rubin Ultra 192GB, ElevenLabs Music v2.5, NCP-ArchPreview, AllSpark Iris, CUDA-for-AMD, AgentsDock, arXiv highlights (Mr.LHDR, Routing by Reasoning Need)."
-    },
-    {
-      "date": "2026-09-13",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-13 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (anthropic — We Must Pace the Frontier evaluator pledge + indicated $100B/$2T IPO with Nvidia $10B talks; openai — Altman matching evaluator step + 2026 IPO ruled out + RubyGems agent flood + UAE Stargate harden; federal-ai-policy — pacing essay as statute-shaped evaluator-and-waiver ask, CATSR still stalled; agentic-ai-security — 2,000-package RubyGems flood attributed to OpenAI agents; nvidia — Economist \"central bank of AI\" + indicated Anthropic IPO stake; verification-bottleneck — Clay \"apparently settled\" / unhurried prize note; ai-capex — UAE 5GW Stargate distributed + Nvidia pledges + EPA data-center air-pollution count; discovery-loop — indicated ~$50B raise, 5× last month's $10B ask). Skipped for budget: Microsoft Copilot adding Grok, Astra defects / StationeryBench / Real-SWE, Grok Imagine clip-length, Grok 4.7 still unshipped, Nemotron IMO 30/42, SemiAnalysis AMD V4.1 Flash perf, Sourcegraph Amp BYOK, EPA as its own policy increment, arXiv highlights (Musec, ORCH, Vidu S2, PFI)."
     }
   ]
 }

@@ -2,17 +2,18 @@
 slug: meta
 title: Meta
 type: entity
-aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm", "Meta Enterprise Platform", "CJ Desai"]
+aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm", "Meta Enterprise Platform", "CJ Desai", "Muse Gadgets"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; stood up Meta Enterprise Platform under ex-MongoDB CEO CJ Desai, bundling Muse, Business Agent, Muse API and Muse Code.
+description: Social-platform hyperscaler and Llama maker; published six Muse Spark mathematics papers and Muse Gadgets hardware SDK, plus a 5,000-unit Muse Home Link giveaway.
 created_at: 2026-06-16
-timestamp: 2026-09-29T00:00:00Z
+timestamp: 2026-10-03T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA model ticket — Meta Enterprise Platform", path: research/models/tickets/meta-enterprise-platform-2026-09.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
@@ -423,3 +424,38 @@ TechCrunch; ARA daily digest 2026-09-16).
   commentary, not a Meta pricing
   sheet (TechCrunch, Twitter; ARA
   daily digest 2026-09-29).
+
+## Six Muse Spark math papers; Muse Gadgets ships (2026-10-03)
+
+- **Meta published six Muse Spark
+  mathematics papers.** Mathematicians
+  used Muse Spark 1.1 and 1.2 through
+  the ordinary meta.ai chat to make
+  progress on open problems, including
+  a counterexample in non-associative
+  algebra. Each paper marks which
+  passages humans or the AI mainly
+  drafted. A second review group is
+  named. The announcement is
+  first-party only — no outside expert
+  assessment yet, and none of the
+  papers was on arXiv at snapshot
+  time. See [[muse-code]] and
+  [[verification-bottleneck]]
+  (@AIatMeta; ARA daily digest
+  2026-10-03).
+- **Muse Gadgets** is Apache-2.0 ESP32
+  firmware plus a Linux/Raspberry Pi
+  SDK for building hardware that
+  [[muse-code|Muse]] controls. Meta
+  is also making **5,000 Muse Home
+  Link** plug-in devices, free to US
+  Muse subscribers (one each) and
+  shipping "in a few weeks"
+  (@alexandr_wang, The Verge,
+  gadgets.muse.ai; ARA daily digest
+  2026-10-03).
+- **Meta is letting go of the Virtue
+  AI safety staff** it hired in June
+  (Semafor; ARA daily digest
+  2026-10-03).

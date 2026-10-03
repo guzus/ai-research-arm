@@ -2,17 +2,18 @@
 slug: amazon
 title: Amazon
 type: entity
-aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy"]
+aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy", "Matt Garman"]
 tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
-description: Hyperscaler and Anthropic's largest investor; blocked Meta's Muse shopping agent as a terms-of-use violation the same day Shopify opened Shop Pay to that agent.
+description: Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman warned communities that blocking AI data centres risks irreparable harm to the US economy and national security.
 created_at: 2026-06-14
-timestamp: 2026-09-22T00:00:00Z
+timestamp: 2026-10-03T00:00:00Z
 market:
   ticker: AMZN
   exchange: NASDAQ
   symbol: NASDAQ:AMZN
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
@@ -131,6 +132,20 @@ contract and tort claims remain live. See
   [[agentic-ai-security]] (The Verge,
   TechCrunch, The Decoder, GeekWire; ARA daily
   digest 2026-09-22).
+
+## Garman warns communities against blocking data centres (2026-10-03)
+
+- **In a 3,000-word blog post, AWS CEO
+  Matt Garman argues** that opposing AI
+  data centres risks "irreparable harm"
+  to the US economy and national
+  security. Amazon's **$1B** plan to
+  answer the backlash is drawing
+  backlash of its own; critics welcomed
+  its end to NDAs. See [[ai-capex]] and
+  [[california-ai-regulation]] (The
+  Verge, Ars Technica; ARA daily digest
+  2026-10-03).
 
 ## Open questions
 

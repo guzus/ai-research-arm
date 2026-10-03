@@ -2,17 +2,18 @@
 slug: apple
 title: Apple
 type: entity
-aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC, "M8 Ultra"]
+aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC, "M8 Ultra", "macOS Full Disk Access"]
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
-description: Consumer-hardware giant planning M8 Ultra AI servers — two- or four-chip enterprise inference boxes, no launch before 2029 — after shipping rebuilt Siri AI on Gemini.
+description: Consumer-hardware giant tightening macOS Full Disk Access for AI agents, saying they substantially raise the risk of broad access to files, messages, mail and browsing history.
 created_at: 2026-06-08
-timestamp: 2026-09-17T00:00:00Z
+timestamp: 2026-10-03T00:00:00Z
 market:
   ticker: AAPL
   exchange: NASDAQ
   symbol: NASDAQ:AAPL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
@@ -247,6 +248,20 @@ not announced.
   [[eu-ai-regulation]] logged as an iOS 27 rumor on
   2026-08-12 (HN, 341 pts; ARA daily digest
   2026-09-17).
+
+## Full Disk Access tightened over AI agents (2026-10-03)
+
+- **Apple says AI agents "substantially"
+  raise the risk** of broad access to
+  files, messages, mail and browsing
+  history, so apps holding macOS Full
+  Disk Access now need clearer user
+  intent. [[meta]] says Full Disk Access
+  is not what lets [[muse-code|Muse]]
+  read messages; Apple disagrees. See
+  [[agentic-ai-security]] and [[google]]
+  (TechCrunch, The Verge, Ars Technica;
+  ARA daily digest 2026-10-03).
 
 ## Open questions
 

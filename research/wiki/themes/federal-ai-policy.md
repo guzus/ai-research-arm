@@ -2,12 +2,13 @@
 slug: federal-ai-policy
 title: Federal AI Policy
 type: theme
-aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order"]
+aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; Reuters says the FTC will probe Anthropic, OpenAI and METR, while Pichai and Huang confirmed they signed the voluntary White House accord.
+description: US federal AI governance; CNN says Trump is expected to name DNI Jay Clayton AI czar while he keeps the intelligence role, moving the post into the national-security portfolio David Sacks left in March.
 created_at: 2026-06-03
-timestamp: 2026-10-01T00:00:00Z
+timestamp: 2026-10-03T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA model ticket — White House Super Intelligence accord", path: research/models/tickets/whitehouse-superintelligence-accord-2026-09.md}
   - {title: "ARA model ticket — Senate AI Risk Management and Security Act", path: research/models/tickets/senate-ai-risk-management-act-2026-09.md}
@@ -1950,6 +1951,56 @@ footing for the first time in the cycle.
   before the New York City
   Council (ARA daily digest
   2026-10-01).
+
+## CNN names Jay Clayton as expected AI czar (2026-10-03)
+
+- **CNN reports Trump is expected to
+  name Jay Clayton AI czar.** The
+  Director of National Intelligence
+  would take over the White House AI
+  post while keeping his intelligence
+  role. That would move AI policy
+  into the national-security
+  portfolio **David Sacks left in
+  March** — the first major AI
+  appointment since the 29 September
+  White House Accord on Super
+  Intelligence. Clayton has called
+  superintelligence "a national
+  security issue" and opposes a
+  pause. **No White House
+  announcement had appeared by
+  22:00 UTC.** The 2026-10-01 rumor
+  on this page is now a named-outlet
+  expectation, still not an
+  appointment. Single source (CNN
+  via @Hadas_Gold; ARA daily digest
+  2026-10-03).
+- **Project Meridian held its first
+  meeting.** The Department of War
+  future-warfare and autonomous-
+  weapons effort Hegseth said Musk,
+  Luckey and Gingrich would co-lead
+  still has no public charter or
+  budget (@AndrewCurran_; ARA daily
+  digest 2026-10-03).
+- **A $300M Nvidia-chip smuggling
+  arrest** and a Bloomberg trail of
+  a Chinese local-government leasing
+  company that financed 32 Asustek
+  servers on export-restricted B300s
+  keep diversion in the headlines.
+  [[nvidia]] says it will
+  investigate. See [[ai-capex]]
+  (Ars Technica, Bloomberg via
+  Twitter; ARA daily digest
+  2026-10-03).
+- **Thomas Lind**, a key architect
+  of the administration's AI
+  framework executive order, joined
+  [[openai]]'s national-security
+  team this week (@leomschwartz;
+  ARA daily digest 2026-10-03).
 
 ## Open questions
 
