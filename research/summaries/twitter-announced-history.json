@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-16 21:00 UTC",
-    "headline": "TESTINGCATALOG: HERMES AGENT NOW USES X PREMIUM+ FOR GROK + X SEARCH TOOL \u2014 'OPENAI VS XAI ONCE AGAIN' IN AGENT-FRAMEWORK BATTLE",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-16-twitter-21h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2055755847448297495"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-17 01:00 UTC",
-    "headline": "ANTHROPIC'S \"TOO DANGEROUS\" CLAUDE MYTHOS APPEARS AS `-CLAUDE-MYTHOS` FILTER TAG IN GOOGLE CLOUD CONSOLE",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-17-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2055765220123939272"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-17 01:00 UTC",
-    "headline": "KIMMONISMUS: \"I CANNOT THINK OF ANY SCENARIO ANTHROPIC RELEASES MYTHOS\" \u2014 TIES GCP LEAK TO M5-BREAK CAPABILITY CYCLE",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-17-twitter-01h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2055767238636933494"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-17 01:00 UTC",
-    "headline": "GEMINI 3.2 FLASH-LITE-LIVE TRACES SPOTTED IN GCP CONSOLE ~52 HOURS BEFORE GOOGLE I/O 2026-05-19",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-17-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2055794741782929617"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-17 01:00 UTC",
     "headline": "KEN GRIFFIN: AI TOOLKIT \"PROFOUNDLY MORE POWERFUL THAN NINE MONTHS AGO\" \u2014 PHD-FINANCE WORK NOW DONE IN HOURS AT CITADEL",
@@ -23940,5 +23904,33 @@
     "headline": "AMD PASSES 90% PARITY ON UPSTREAM VLLM GATING TESTS",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2106414027064693164"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-03 21:08:59 UTC",
+    "headline": "VERCEL HITS $600M ANNUALIZED REVENUE, UP 148% \u2014 CODING AGENTS NOW ~HALF OF NEW BUSINESS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2106451724663714294"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-03 21:08:59 UTC",
+    "headline": "GOOGLE REPORTEDLY PULLS GEMINI PRO MODELS FROM AI PLUS PLAN STARTING OCT 9",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2106464316182479324"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-03 21:08:59 UTC",
+    "headline": "ALEPH ALPHA'S 'SOVEREIGN' KOLIBRI FINE-TUNED ON GLM AND QWEN-GENERATED DATA, SAYS MOLLICK",
+    "source": "@emollick",
+    "url": "https://x.com/emollick/status/2106487816460910912"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-03 21:08:59 UTC",
+    "headline": "TREASURY'S BESSENT: AI CEOS WARNING OF LOSS OF CONTROL 'SHOULD SLOW DOWN' THEMSELVES",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2106434302632411610"
   }
 ]
