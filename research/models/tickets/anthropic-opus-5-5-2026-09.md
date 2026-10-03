@@ -93,8 +93,10 @@ sources:
   - https://x.com/rauchg/status/2103216656747262419
   - https://x.com/skalskip92/status/2103124154765484505
   - https://x.com/theo/status/2103274408567881948
+  - https://x.com/Claudeupdates11/status/2106304522880455029
+  - https://x.com/Klonzu/status/2106341362995970417
 created_at: 2026-09-24
-updated_at: 2026-09-25
+updated_at: 2026-10-03
 closed_at: null
 closed_reason: null
 history:
@@ -104,6 +106,8 @@ history:
     change: "Released and GA, unchanged. First independent measurements, 48h after ship, all third-party: SimpleBench 88.4%, the highest score on that board (@AiBattle_, 2026-09-24 17:16 UTC, ~671 likes); Terminal-Bench-Science 0.1 at 62% with xhigh, SECOND behind GPT-6 Astra (max) at 63% on @ArtificialAnlys's newly launched leaderboard (2026-09-24 23:30 UTC, ~743 likes) — 70 expert-curated tasks across five scientific domains built with Stanford and the terminal-bench team, and a one-point gap there is not a ranking; and up to 10% of ALL spend on the Vercel AI Gateway within two days (@rauchg, 2026-09-24, ~733 likes). The gateway data is recorded with its context rather than as a win: Anthropic's overall share fell 69% -> 40% over two months while OpenAI rose 10% -> 24% and Kimi K3 plus DeepSeek absorbed roughly half of Anthropic's loss, so Opus 5.5 is a sharp recovery inside a declining share. Vision: @skalskip92 reports Opus 5.5 beating Fable 5.1 (high) by +11.84pp detection and +12.80pp reasoning at ~60% lower estimated cost, and GPT-6 Sol (high) by +11.00pp extraction and +7.95pp reasoning, while still losing to GPT-6 Astra — single evaluator, own harness, recorded as one data point. Operationally important and reproducible: xhigh outperforms max, because max imposes a reasoning-effort MINIMUM and blocks the model from spending less on easy sub-tasks (@theo, 2026-09-25); Anthropic's own leaderboard entry used xhigh. Same knob-semantics trap as [[anthropic-claude-code-effort-mapping-2026-08]]. Finally, multiple independent developers (@theo with a 13-hour continuous goal, @davis7, @kimmonismus) report usage limits that feel effectively unlimited — logged as consistent first-hand report only; Anthropic has published no limit change."
   - ts: 2026-09-25
     change: "Bookkeeping — citations added for the 2026-09-25 entry: @AiBattle_ (SimpleBench 88.4%), @ArtificialAnlys (Terminal-Bench-Science 0.1 leaderboard launch), @rauchg (Vercel AI Gateway spend shares), @skalskip92 (vision deltas vs Fable 5.1 and GPT-6 Sol), @theo (xhigh outperforms max because max sets a reasoning-effort floor). No status, verification or content change."
+  - ts: 2026-10-03
+    change: "Distribution update, status unchanged (released). Claude Opus 5.5 and Sonnet 5.5 are now selectable inside Google's Antigravity IDE (@Claudeupdates11, 2026-10-03 08:45 UTC; widely re-shared, e.g. @JimmyOgb12, @bangbuilds). @Klonzu quotes the in-product notice in full: 'Opus 5.5 and Sonnet 5.5 are available on paid Pro and Ultra plans. Third-party model access will no longer be available on your current plan starting on November 2, 2026' — i.e. Claude access in Antigravity moves behind Google AI Pro/Ultra, and older third-party entries (Claude Opus 4.6, GPT-OSS) are flagged in the picker. Recorded as a notice relayed via screenshots/quotes, not a Google blog post. Significance: Google is using Anthropic's flagship as an upgrade lever in its own Gemini-first IDE days after announcing Gemini 4 Argon ([[google-gemini-4-2026-09]]), which the same posts say is 'coming soon' to Antigravity."
 ---
 
 Anthropic shipped Claude Opus 5.5 on 2026-09-22, and the framing matters more
