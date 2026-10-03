@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "OPENAI SAFETY LEAD DAVID ROBINSON CONFIRMS RESIGNATION IN ATLANTIC ESSAY: 'TIME FOR TRIAL AND ERROR IS OVER'",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2106393025887003125",
+    "category": "breaking"
+  },
+  {
+    "headline": "VERCEL SANDBOX BOUNTY UNCOVERS KVM ZERO-DAY — FULL GUEST-TO-HOST VM ESCAPE",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2106402024804020657",
+    "category": "infra"
+  },
+  {
+    "headline": "ALEPH ALPHA RELEASES KOLIBRI: 78B MOE, 3.46B ACTIVE, 1M CONTEXT, APACHE 2.0",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2106403475999412602",
+    "category": "opensource"
+  },
+  {
+    "headline": "AMD PASSES 90% PARITY ON UPSTREAM VLLM GATING TESTS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2106414027064693164",
+    "category": "infra"
+  }
+]

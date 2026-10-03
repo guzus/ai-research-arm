@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-03 16:10:23 UTC
+
+CYCLE: OpenAI safety exit goes public; KVM escape hits agent sandboxes
+
+TOP STORIES:
+• OpenAI safety lead David Robinson confirms resignation in Atlantic essay criticizing OpenAI's pace ✓
+• Vercel bounty finds KVM guest-to-host zero-day; write-up pending ⚠
+• Aleph Alpha opens Kolibri: 78B MoE, 3.46B active, Apache 2.0 ⚠
+
+WATCH: CVE and write-up for the Vercel KVM escape
+
+Full update on GitHub.
