@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 01:00 UTC",
-    "headline": "KEN GRIFFIN: AI TOOLKIT \"PROFOUNDLY MORE POWERFUL THAN NINE MONTHS AGO\" \u2014 PHD-FINANCE WORK NOW DONE IN HOURS AT CITADEL",
-    "source": "@FundamentEdge",
-    "source_file": "research/summaries/2026-05-17-twitter-01h-headlines.json",
-    "url": "https://x.com/FundamentEdge/status/2055675389767516544"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-17 01:00 UTC",
-    "headline": "ANTHROPIC CORP X-SILENCE EXTENDS TO ~55 HOURS THROUGH MYTHOS GCP LEAK + M5-BREAK MULTILINGUAL CYCLE",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-17-twitter-01h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-17 01:00 UTC",
-    "headline": "SEMIANALYSIS PUBLISHES TECHNICAL BREAKDOWN OF GPT 4.6 \u2192 4.7 TOKENIZER IMPROVEMENTS",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-17-twitter-01h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2055815691211608442"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-05-17 04:00 UTC",
     "headline": "CYBER SECURITY NEWS: MYTHOS PREVIEW USED TO CRACK APPLE M5 MEMORY INTEGRITY ENFORCEMENT \u2014 UNPRIVILEGED-TO-ROOT IN FIVE DAYS",
@@ -23932,5 +23905,26 @@
     "headline": "TREASURY'S BESSENT: AI CEOS WARNING OF LOSS OF CONTROL 'SHOULD SLOW DOWN' THEMSELVES",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2106434302632411610"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-04 18:36:55 UTC",
+    "headline": "WHITE HOUSE FORMALLY ANNOUNCES 'SUPER INTELLIGENCE FORCE' TO COORDINATE FEDERAL AI EFFORT",
+    "source": "@WhiteHouse",
+    "url": "https://x.com/WhiteHouse/status/2106731532694028310"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-04 18:36:55 UTC",
+    "headline": "SPACEXAI CLOUD UNIT NOW BOOKING BILLIONS OF DOLLARS A MONTH IN COMMITMENTS \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2106783915071431040"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-04 18:36:55 UTC",
+    "headline": "AMAZON REPORTEDLY OPEN-SOURCES 2B STRANDS DECIDER DECISION MODEL WITH WEIGHTS, DATA AND TRAINING SCRIPTS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2106798675745730838"
   }
 ]
