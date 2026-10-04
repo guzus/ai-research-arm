@@ -6,8 +6,9 @@ aliases: ["Mistral", "Mistral AI", "Firefox Smart Window"]
 tags: [frontier-lab, europe, open-weights, foundation-models, funding]
 description: European frontier lab; partnered with Mozilla on Firefox Smart Window, a privacy-preserving browser assistant with zero data retention, after a €3B Series D.
 created_at: 2026-09-09
-timestamp: 2026-09-17T00:00:00Z
+timestamp: 2026-10-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA model ticket — Mistral × Mozilla partnership", path: research/models/tickets/mistral-mozilla-partnership-2026-09.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
@@ -72,3 +73,15 @@ page is the company; those pages stay the shipping artifacts.
   (Mistral, Mozilla, HN; ARA daily digest
   2026-09-17 and model ticket
   mistral-mozilla-partnership-2026-09).
+
+## Aleph Alpha returns to training (2026-10-04)
+
+[[aleph-alpha|Aleph Alpha]] shipped Kolibri-1
+(78.1B / 3.46B-active, Apache 2.0, validated to
+1M context), a European open-weight return to
+training from a lab that had pivoted to
+enterprise tooling. It is a peer observation
+on the same sovereign-deployment buyer Mistral
+has been chasing, not a bake-off. See
+[[open-weights]] and [[soofi-s-30b-a3b]] (ARA
+daily digest 2026-10-04).

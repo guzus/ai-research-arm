@@ -6,8 +6,9 @@ aliases: ["Soofi S", "Soofi S 30B-A3B", "Soofi"]
 tags: [model-release, open-weights, sovereign-ai, germany, mixture-of-experts]
 description: Deutsche Telekom-backed sovereign open German/English MoE foundation model trained on ~27T tokens, claimed strongest fully-open model on combined English+German benchmarks.
 created_at: 2026-07-13
-timestamp: 2026-07-17T00:00:00Z
+timestamp: 2026-10-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA daily digest 2026-07-13", path: research/digest/2026-07-13-digest.md}
 ---
@@ -60,3 +61,14 @@ after its 2026-07-13 release, discussed as a non-US/China open-model
 contender the same cycle [[moonshot-kimi-k3|Kimi K3]] dominated the
 front page — early evidence the release is sustaining community interest
 past its launch-day cycle rather than fading immediately.
+
+## Aleph Alpha Kolibri-1 as a German-tilt peer (2026-10-04)
+
+[[aleph-alpha|Aleph Alpha]]'s Kolibri-1 (about
+21.3% German in the mix, Apache 2.0) is a later
+European open-weight increment on the same
+EN+DE axis this page opened, from a named
+training lab rather than a telecom-backed
+sovereign demo. It does not settle Soofi's
+combined-benchmark claim. See [[open-weights]]
+and [[mistral]] (ARA daily digest 2026-10-04).

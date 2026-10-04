@@ -6,8 +6,9 @@ aliases: ["EU AI Act", "EU AI regulation", "European AI Act", "AI Act"]
 tags: [regulation, eu, ai-act, copyright, transparency]
 description: Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
 created_at: 2026-08-02
-timestamp: 2026-09-17T00:00:00Z
+timestamp: 2026-10-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA model ticket — Amodei We Must Pace the Frontier", path: research/models/tickets/anthropic-pace-the-frontier-2026-09.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
@@ -132,6 +133,13 @@ training and output.
   European lab after the Act's transparency duty
   attached (Mistral, Mozilla, HN; ARA daily digest
   2026-09-17).
+- **[[aleph-alpha|Aleph Alpha]] shipped Kolibri-1**
+  (Apache 2.0, 21.3% German mix) as a European
+  training-lab return, not a regulatory event.
+  It sits next to [[mistral]] as a
+  sovereign-deployment artifact under the same
+  Act transparency duty (ARA daily digest
+  2026-10-04).
 
 ## Open questions
 
