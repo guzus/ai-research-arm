@@ -6,8 +6,9 @@ aliases: ["Claude Sonnet 5.5", "Sonnet 5.5", "claude-sonnet-5-5", "claude-sonnet
 tags: [model-release, anthropic, claude, agentic-coding, frontier-model, pricing]
 description: Anthropic's 2026-09-28 mid-tier Claude 5.5 model at unchanged $2/$10; vendor Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, with the 30% cheaper claim a per-task assertion, not a price cut.
 created_at: 2026-09-29
-timestamp: 2026-09-29T00:00:00Z
+timestamp: 2026-10-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA model ticket — Claude Sonnet 5.5", path: research/models/tickets/anthropic-sonnet-5-5-2026-09.md}
 ---
@@ -54,3 +55,23 @@ still "coming weeks" (Anthropic, TechCrunch, The Decoder, Simon Willison, HN
   [[claude-opus-5-5]] already hit.
 - **When does Haiku 5.5 actually ship?** Still a "coming weeks" line, not a
   date.
+
+## Antigravity and Microsoft 365 Copilot (2026-10-04)
+
+- **Google Antigravity now lists Sonnet 5.5
+  alongside [[claude-opus-5-5|Opus 5.5]]** on paid
+  Pro/Ultra plans, with third-party model access
+  ending on the current plan on **2026-11-02**
+  (@Claudeupdates11, @Klonzu; ARA daily digest
+  2026-10-04).
+- **[[microsoft|Microsoft 365 Copilot]] adds Sonnet
+  5.5 and [[gpt-6|GPT-6.1 Sol]]** as selectable
+  models in Word, Excel, PowerPoint and Copilot
+  Studio, rolling out progressively; Claude
+  requires admin enablement. Being resold inside
+  both Google's and Microsoft's surfaces is
+  circumstantial confirmation the model is GA
+  under an official API id, but Anthropic still
+  has not published a launch post in this desk's
+  fetch (@shirochange_ai; ARA daily digest
+  2026-10-04).

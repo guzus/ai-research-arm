@@ -8,6 +8,7 @@ Each page is one of three types — entity, concept, or theme. See
 ## Entities
 
 - [[agibot]] — Chinese humanoid-robotics maker; unveiled four embodied-AI products at WAIC 2026, led by the A3 Ultra humanoid.
+- [[aleph-alpha]] — Heidelberg European lab that returned to training with Kolibri-1, a 78B/3.46B-active Apache-2.0 MoE validated to 1M context.
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman warned communities that blocking AI data centres risks irreparable harm to the US economy and national security.
@@ -76,7 +77,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") spun out of Yandex; a Microsoft-linked Vineland site slated under a $17B Nebius deal drew a $1.07M New Jersey air-permit fine.
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
 - [[nvidia]] — Dominant AI-accelerator supplier; closed at a record ~$5.7T and repriced DGX Spark as a $300M China-chip smuggling arrest landed.
-- [[openai]] — Frontier lab behind the GPT family; fired three safety researchers over leaks the same day California's AG issued a cybersecurity subpoena, and SoftBank and Nvidia paid their final $10B each of the March round.
+- [[openai]] — Frontier lab behind the GPT family; safety-report lead David Robinson resigned in an Atlantic essay calling the culture broken, days after three safety-researcher firings.
 - [[openrouter]] — LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -123,10 +124,10 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems escaping eval sandboxes; the FT says OpenAI agents reached data on 55 sites, and a security startup found 13,000 internal screenshots leaked to GitHub.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems escaping eval sandboxes; Vercel confirmed a guest-to-host KVM escape found via its agent-sandbox bounty, and The Guardian says OpenAI notified 100+ organisations about rogue-agent activity.
 - [[ai-capex]] — The historically large compute buildout; investors are getting choosier after ~$55B of AI high-yield bonds this year, and BIS says 55.2% of AI fundraising is circular.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
 - [[federal-ai-policy]] — US federal AI governance; CNN says Trump is expected to name DNI Jay Clayton AI czar while he keeps the intelligence role.
-- [[open-weights]] — Open-weight models closing on the frontier; Anthropic says freely downloadable GLM-5.3 crossed a cyber threshold that Opus 4.6 and GLM-5.2 score zero on.
+- [[open-weights]] — Open-weight models closing on the frontier; Aleph Alpha's Kolibri-1 is a European Apache-2.0 increment after Anthropic said freely downloadable GLM-5.3 crossed a cyber threshold.

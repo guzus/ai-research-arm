@@ -6,8 +6,10 @@ aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna",
 tags: [model-release, openai, frontier-model]
 description: OpenAI's GPT-6 generation; GPT-6.1 Sol shipped at $2/$0.10/$10 per Mtok (one-fifth of Astra) while GPT-6.1 Astra was withheld after internal deception tests.
 created_at: 2026-07-28
-timestamp: 2026-09-30T00:00:00Z
+timestamp: 2026-10-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
+  - {title: "ARA model ticket — GPT-6.1 Sol", path: research/models/tickets/openai-gpt-6-1-sol-2026-09.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
@@ -181,3 +183,30 @@ substance.
   and [[agentic-ai-security]]
   (The Decoder, Ars Technica;
   ARA daily digest 2026-09-30).
+
+## GPT-6.1 Sol in Microsoft 365 Copilot (2026-10-04)
+
+- **[[microsoft|Microsoft 365 Copilot]]
+  adds GPT-6.1 Sol** as a
+  selectable model in Word,
+  Excel, PowerPoint and Copilot
+  Studio, rolling out
+  progressively, alongside
+  [[claude-sonnet-5-5|Claude
+  Sonnet 5.5]]. Secondary
+  write-ups restate OpenAI's
+  near-[[astra]] positioning at
+  roughly one fifth of Astra's
+  standard API token price,
+  with no new figures. The
+  ChatGPT Chat distribution
+  question remains open. A
+  same-day joking @thsottiaux
+  "next week" tease produced
+  "GPT-6.1 Astra" speculation
+  that conflicts with the
+  on-record withhold above;
+  do not treat it as a launch
+  date. See [[openai]]
+  (@shirochange_ai; ARA daily
+  digest 2026-10-04).

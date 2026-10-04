@@ -4,10 +4,12 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on the frontier; Anthropic says freely downloadable GLM-5.3 crossed a cyber threshold that Opus 4.6 and GLM-5.2 score zero on.
+description: The 2026 storyline of open-weight models closing on the frontier; Aleph Alpha's Kolibri-1 is a European Apache-2.0 increment after Anthropic said freely downloadable GLM-5.3 crossed a cyber threshold.
 created_at: 2026-06-14
-timestamp: 2026-09-30T00:00:00Z
+timestamp: 2026-10-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
+  - {title: "ARA model ticket — Aleph Alpha Kolibri-1", path: research/models/tickets/aleph-alpha-kolibri-1-2026-10.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
@@ -663,7 +665,31 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   on both metrics, support
   that reading (Ethan
   Mollick via Twitter; ARA
-  daily digest 2026-09-30).
+  daily   digest 2026-09-30).
+
+## Aleph Alpha Kolibri-1 (2026-10-04)
+
+- **[[aleph-alpha|Aleph Alpha]] shipped
+  Kolibri-1** — **78.1B total /
+  3.46B active**, Apache 2.0, context
+  trained to 262K and validated to 1M
+  tokens — and it led Hacker News at
+  **470 / 282**. The mix is about
+  **62.5% English, 21.3% German, 14%
+  code**. Ethan Mollick says it was
+  fine-tuned on [[zhipu|GLM]]- and
+  [[alibaba|Qwen]]-generated data.
+  This is a European first-party
+  Apache drop from a lab that had
+  publicly left training, not a
+  Chinese-frontier close. HN praised
+  German documents and low
+  hallucination, and questioned
+  general competitiveness. See
+  [[mistral]] and
+  [[soofi-s-30b-a3b]] (Aleph Alpha,
+  HN, @emollick; ARA daily digest
+  2026-10-04).
 
 ## Open questions
 

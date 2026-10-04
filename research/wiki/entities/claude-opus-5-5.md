@@ -6,8 +6,10 @@ aliases: ["Claude Opus 5.5", "Opus 5.5", "claude-opus-5-5", "claude-opus-5.5"]
 tags: [model-release, anthropic, claude, frontier-model, pricing]
 description: Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.
 created_at: 2026-09-23
-timestamp: 2026-10-01T00:00:00Z
+timestamp: 2026-10-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
+  - {title: "ARA model ticket — Claude Opus 5.5", path: research/models/tickets/anthropic-opus-5-5-2026-09.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
@@ -86,3 +88,23 @@ Google's own table claims a Harvey Legal Agent lead over
 first-party number, not a head-to-head with Opus 5.5. Argon is
 still Fairwind-gated. See [[google]] (The Decoder; ARA daily
 digest 2026-10-01).
+
+## Antigravity seat and T3 Code share (2026-10-04)
+
+- **Opus 5.5 and [[claude-sonnet-5-5|Sonnet 5.5]]
+  are now selectable in Google Antigravity** on
+  paid Pro and Ultra plans. The in-product notice
+  says third-party model access on the current
+  plan ends **2 November 2026**. Relayed via
+  screenshots, not a Google blog post. See
+  [[google]] and [[anthropic]] (@Claudeupdates11,
+  @Klonzu; ARA daily digest 2026-10-04).
+- **Theo says Opus 5.5 is the first model to take
+  more than 50% of prompts in T3 Code.** These
+  are self-selected client numbers, not market
+  share. Anthropic's "Getting the most out of
+  Opus 5.5" guide reached HN (126 points): define
+  what "done" looks like, drop "think step by
+  step," and keep task lists in files so they
+  survive compaction (@theo, claude.dev, HN; ARA
+  daily digest 2026-10-04).

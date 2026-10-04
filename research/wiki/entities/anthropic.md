@@ -6,8 +6,9 @@ aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amode
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while The Information cites ~$1.5T as closer to fair value.
 created_at: 2026-05-24
-timestamp: 2026-10-03T00:00:00Z
+timestamp: 2026-10-04T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
@@ -2518,3 +2519,32 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   not confirmed the walk-out proposal
   (NYT via Twitter, The Decoder; ARA
   daily digest 2026-10-03).
+
+## Enterprise discount hard line; Antigravity seats (2026-10-04)
+
+- **The Information reports Anthropic is
+  holding a hard line on enterprise
+  discounts** after customers exhaust
+  purchased tokens, while [[openai]]
+  offers more flexible terms to win
+  those accounts. This is the
+  commercial counterpart of the same
+  day's Robinson resignation at
+  OpenAI — one lab pricing for
+  retention, the other for share (The
+  Information; ARA daily digest
+  2026-10-04).
+- **[[claude-opus-5-5|Opus 5.5]] and
+  [[claude-sonnet-5-5|Sonnet 5.5]] are
+  now in Google Antigravity** on paid
+  Pro/Ultra plans, with third-party
+  access on the current plan ending
+  **2 November 2026**. Sonnet 5.5 is
+  also selectable in
+  [[microsoft|Microsoft 365 Copilot]]
+  alongside [[gpt-6|GPT-6.1 Sol]].
+  Anthropic's "Getting the most out of
+  Opus 5.5" guide reached HN (126
+  points). See [[google]]
+  (@Claudeupdates11, claude.dev, HN;
+  ARA daily digest 2026-10-04).
