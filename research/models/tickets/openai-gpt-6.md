@@ -3,7 +3,7 @@ slug: openai-gpt-6
 title: "GPT-6 Astra — OpenAI flagship, publicly released 2026-09-03"
 company: OpenAI
 model: GPT-6
-status: released
+status: closed
 status_note: |
   **2026-09-25 — first head-to-head benchmark against Opus 5.5, and a
   share shift that is real.** @ArtificialAnlys launched the Terminal-Bench-Science
@@ -202,9 +202,9 @@ sources:
   - https://x.com/OpenAI/status/2104986129686741046
   - https://x.com/insanekrishnaa/status/2105147666850304017
 created_at: 2026-07-27
-updated_at: 2026-09-30
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-04
+closed_at: 2026-10-04
+closed_reason: released-and-aged
 history:
   - ts: 2026-07-27
     change: "Created — OpenAI already confirmed an unnamed pre-release model 'even more capable than GPT-5.6 Sol' was involved in the ExploitGym/Hugging Face incident (see [[openai-unreleased-containment-escape-2026-07]]), widely inferred as GPT-6 but not officially named. Separately, Bloomberg/Axios (via @kimmonismus) report Sam Altman heading to Washington the week of 2026-07-27 to preview OpenAI's 'most powerful AI yet'/a new model family to US officials. No OpenAI on-record name or specs → status rumored, verification partial."
@@ -228,6 +228,8 @@ history:
     change: "Bookkeeping — citations added for the 2026-09-25 entry: @ArtificialAnlys (Terminal-Bench-Science 0.1, Astra max 63% first), @emollick (Astra beats NetHack on its third try), @rauchg (OpenAI spend share 10%->24%, token-count lead, 62% of image generations), @mark_k (GPT-6 Sol still not selectable in ChatGPT Chat; predicted Chat/Work merge at DevDay), @shneural (identical motion-graphics prompt, Astra judged far worse than Opus 5.5). No status, verification or content change."
   - ts: 2026-09-30
     change: "Released, unchanged — but the generation moved past this ticket and BOTH successors get their own files. At DevDay on 2026-09-29 OpenAI shipped GPT-6.1 Sol as a separately-priced API product ([[openai-gpt-6-1-sol-2026-09]]) and, the day before, cancelled the GPT-6.1 Astra release outright after internal safety tests ([[openai-gpt-6-1-astra-shelved-2026-09]]). Both are split out per this ticket's own dedup rule — a family member gets its own ticket when it launches as a separately-priced product — and because a cancelled release is a different class of artifact from a shipped one. What lands ON this ticket: (1) GPT-6 ASTRA IS NOW THE ENGINE UNDER OPENAI'S AGENT PRODUCT. Dots, the always-on agents announced at DevDay, run on Astra ([[openai-dots-agents-2026-09]]) — the first time an Astra-powered product has been sold as the headline instead of the model. (2) The Decisions API announced the same day runs on GPT-6 LUNA ([[openai-decisions-api-2026-09]]), the first dedicated product surface for the cheap tier and consistent with the fast/cheap-tier inference this ticket recorded on 2026-09-16. (3) ULTRAFAST is now a real priced serving tier for Astra (about 300 tokens/sec, up to ~8x generation speed at roughly 6x price), which retires the speculative half of [[openai-chatgpt-pro-max-2026-09]]. (4) THE CHAT/WORK MERGE @mark_k PREDICTED FOR DEVDAY DID NOT HAPPEN in the form predicted: no recap in this cycle's signal describes a Chat/Work unification, and the Japanese and Chinese DevDay roundups both note GPT-6.1 Sol shipping in ChatGPT Work, Codex and the API but not in ordinary Chat — so the distribution gap this ticket has carried since 2026-09-25 persists into a second generation instead of closing. Scored as a failed prediction. (5) GPT-6 CYBER was teased for a future release alongside consumer hardware before year-end; relay-grade, no OpenAI post captured, no ticket opened. Status stays released, verification stays confirmed."
+  - ts: 2026-10-04
+    change: "CLOSED — released-and-aged. GPT-6 Astra was announced 2026-09-03 and public rollout completed 2026-09-04 (see the 2026-09-07 entry), 30+ days before today, past the 4-week threshold. Its successors are tracked separately: [[openai-gpt-6-1-sol-2026-09]] (released), [[openai-gpt-6-1-astra-shelved-2026-09]] (cancelled) and [[openai-next-week-release-2026-10]] (teaser). Astra itself remains the engine under [[openai-dots-agents-2026-09]] and the Ultrafast tier in Pro 500 ([[openai-chatgpt-pro-max-2026-09]])."
 ---
 
 **GPT-6** is the presumed name for OpenAI's next flagship model
