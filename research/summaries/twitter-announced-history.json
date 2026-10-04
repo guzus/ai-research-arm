@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-17 04:00 UTC",
-    "headline": "CYBER SECURITY NEWS: MYTHOS PREVIEW USED TO CRACK APPLE M5 MEMORY INTEGRITY ENFORCEMENT \u2014 UNPRIVILEGED-TO-ROOT IN FIVE DAYS",
-    "source": "@The_Cyber_News",
-    "source_file": "research/summaries/2026-05-17-twitter-04h-headlines.json",
-    "url": "https://x.com/The_Cyber_News/status/2055844038801338855"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-17 04:00 UTC",
-    "headline": "CARNEGIE MELLON V8 BENCHMARK: CLAUDE MYTHOS HITS FULL CODE-EXEC ON 21/41 V8 BUGS AT $36K \u2014 ~10-12X GPT-5.5 COST",
-    "source": "@codervibe__",
-    "source_file": "research/summaries/2026-05-17-twitter-04h-headlines.json",
-    "url": "https://x.com/codervibe__/status/2055857797758124083"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-17 04:00 UTC",
-    "headline": "DEMIS HASSABIS RTs LOGAN KILPATRICK: ANTIGRAVITY TEAM HAS BEEN COOKING \u2014 FIRST DEEPMIND-PRINCIPAL TEASE 52H BEFORE I/O",
-    "source": "@demishassabis",
-    "source_file": "research/summaries/2026-05-17-twitter-04h-headlines.json",
-    "url": "https://x.com/demishassabis/status/2055841459526307961"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 04:00 UTC",
-    "headline": "ANTHROPIC CORP ACCOUNT NOW ~58.5H SILENT THROUGH MYTHOS GCP LEAK, M5/V8 CAPABILITY CYCLE, AND CYBER-SECURITY-NEWS PICKUP",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-17-twitter-04h-headlines.json",
-    "url": "https://x.com/AnthropicAI"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-17 04:00 UTC",
     "headline": "OPENAI CORP STILL SILENT ON MALTA SOVEREIGN DEAL ~12H AFTER BLOG \u2014 TECHMEME AND 10+ AGGREGATORS RUN STORY WITHOUT CORP ACK",
@@ -23926,5 +23890,33 @@
     "headline": "AMAZON REPORTEDLY OPEN-SOURCES 2B STRANDS DECIDER DECISION MODEL WITH WEIGHTS, DATA AND TRAINING SCRIPTS",
     "source": "@mark_k",
     "url": "https://x.com/mark_k/status/2106798675745730838"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-04 23:56:00 UTC",
+    "headline": "AXIOS: REFLECTION AI NEAR OPEN-WEIGHT MODEL RELEASE; PAYING $150M A MONTH FOR COLOSSUS COMPUTE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2106846163534241912"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-04 23:56:00 UTC",
+    "headline": "OPENAI CODEX TEAM REPORTEDLY PLEDGES A USAGE RESET OR UPDATE EVERY DAY FOR 28 DAYS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2106854194116518315"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-04 23:56:00 UTC",
+    "headline": "ALTMAN TO POLITICO: WORLD SHOULD ACCEPT 'SOME BAD THINGS HAPPENING' FOR AI'S BENEFITS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2106867194068082769"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-04 23:56:00 UTC",
+    "headline": "GOOGLE PAYS ~100 PUBLISHERS FOR AI OVERVIEWS CONTENT; SOME SAY UNDER 0.1% OF AD REVENUE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2106844309282582982"
   }
 ]
