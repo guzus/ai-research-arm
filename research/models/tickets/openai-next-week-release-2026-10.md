@@ -30,13 +30,16 @@ sources:
   - https://x.com/mrfanduu/status/2106269781703975084
   - https://x.com/Codexresets_/status/2106334302728225110
   - https://x.com/letdarky/status/2106312616897352056
+  - https://x.com/ravikiran_dev7/status/2106723853649281231
 created_at: 2026-10-03
-updated_at: 2026-10-03
+updated_at: 2026-10-04
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-10-03
     change: "Created — RUMORED / unverified. OpenAI's @thsottiaux replied 'You don't know what we're releasing next week' (2026-10-03 05:38 UTC), with no artifact named. Same-day speculation attaches it to GPT-6.1 Astra (@Codexresets_ — inconsistent with the on-record cancellation tracked at [[openai-gpt-6-1-astra-shelved-2026-09]]), to an 'Astra Minor' -> 'Astra Lite' rename spotted in a screenshot (@mrfanduu, amplified by @letdarky), and, in separate chatter, to a 'GPT-6 Bel' (codename previously scooped for OpenAI's next pretrain, see [[openai-gpt-6]]). Opened as a placeholder so the eventual release can be matched against what was claimed beforehand; no candidate is adopted."
+  - ts: 2026-10-04
+    change: "Still unnamed; no OpenAI artifact in-window. The 'Astra next week' reading recirculates (@ravikiran_dev7, 2026-10-04 12:31 UTC: 'Next week is now the rumored window … OpenAI has not confirmed a new Astra launch date'), still unsourced and still in tension with the on-record cancellation at [[openai-gpt-6-1-astra-shelved-2026-09]]. The same post says OpenAI 'is rolling out Ultrafast this week' — Ultrafast already shipped at DevDay inside Pro 500 ([[openai-chatgpt-pro-max-2026-09]]; @btibor91: up to 8x faster token generation in Codex), so a broader Ultrafast rollout is a plausible, low-drama candidate for the teaser. Status stays rumored / unverified."
 ---
 
 A staffer saying "you don't know what we're releasing next week" is a real
