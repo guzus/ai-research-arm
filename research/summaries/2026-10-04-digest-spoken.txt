@@ -1,0 +1,11 @@
+Speaker 1: Sunday, October fourth, twenty twenty-six.
+Speaker 2: [high_energy] Big one out of OpenAI today, safety lead David Robinson has quit, and he says the company's culture is broken.
+Speaker 1: That's a pointed exit, and it lands on a safety team that's already been under a lot of scrutiny.
+Speaker 2: Over in open weights, Aleph Alpha released Kolibri, a seventy-eight billion parameter mixture of experts with just three point four six billion active, under Apache two point zero.
+Speaker 1: And it caught on fast, [emphasis] four hundred seventy points [/emphasis] and two hundred eighty-two comments, making it the number one AI story on Hacker News.
+Speaker 2: Worth noting that a lot of that conversation is about sovereign open-weight models, which is clearly the trend of the day.
+Speaker 1: On the security front, a Vercel sandbox bounty turned up a KVM zero-day that lets a guest break out to the host.
+Speaker 2: And Vercel's business is booming anyway, [emphasis] six hundred million dollars [/emphasis] in annualized revenue, up one hundred forty-eight percent year over year.
+Speaker 1: Some quick hardware news, Elon Musk confirmed early talks between TSMC and Terafab.
+Speaker 2: And one more number, Opus five point five now handles [emphasis] more than half [/emphasis] of all prompts on T3 Code.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

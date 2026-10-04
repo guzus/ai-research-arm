@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-10-04
+
+TOP STORIES:
+• OpenAI safety lead David Robinson quits, says culture is "broken"
+• Aleph Alpha releases Kolibri: 78B/3.46B-active Apache-2.0 MoE
+• Vercel sandbox bounty finds KVM guest-to-host zero-day
+• Musk confirms early TSMC-Terafab talks
+
+KEY NUMBERS:
+• Vercel: $600M annualized revenue, +148% YoY
+• Kolibri: 470 pts / 282 comments, #1 AI story on HN
+• Opus 5.5: >50% of T3 Code prompts
+
+TRENDING: Kolibri and "sovereign" open-weight models on HN
+
+Full digest on GitHub.
