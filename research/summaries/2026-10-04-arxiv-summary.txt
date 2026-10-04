@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-04
+
+TOP 5 PAPERS:
+• ActiveSaddler — harness curriculum co-evolves; +4.4 GAIA2, +7.5 TB2.0
+• Random-reward RL — same 3.5% acc, then 8.5% vs 55% under identical RL
+• CARM — cancel-aware off-policy mask; +3.13 AIME mean@16, +2.88 code
+• Where-OPD — spatial privileged teacher; +3.23 real perception from synth
+• PoS belief states — explicit world+task belief beats history memory
+
+CATEGORIES: NLP 7, CV/Multimodal 8, Agents & Reasoning 8, Safety 6, Other 6
+
+Full report on GitHub.
