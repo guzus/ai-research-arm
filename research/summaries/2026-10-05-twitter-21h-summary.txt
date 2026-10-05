@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-05 21:58:09 UTC
+
+CYCLE: Big customers cut Claude spend, a US open-weight model, and a subscription-value fight
+
+TOP STORIES:
+• The Information: Meta and Microsoft push staff off Claude toward in-house tools; Microsoft reportedly cut expected Anthropic spend by more than a third [⚠]
+• Reflection AI announces Beam, a 501B/23B-active open MoE; Apache 2.0 weights due this month [✓]
+• SemiAnalysis: Anthropic plans give 5x+ the API-equivalent value of OpenAI's at the same price [⚠]
+
+WATCH: Beam weights on Hugging Face and independent Terminal Bench reruns
+
+Full update on GitHub.

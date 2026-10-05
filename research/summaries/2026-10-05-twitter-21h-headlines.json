@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "META, MICROSOFT PUSH EMPLOYEES OFF ANTHROPIC'S CLAUDE TOWARD IN-HOUSE AI TOOLS AS COSTS CLIMB — THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2107195387551375435",
+    "category": "business"
+  },
+  {
+    "headline": "REFLECTION AI UNVEILS BEAM: 501B-PARAMETER OPEN MOE, 23B ACTIVE, APACHE 2.0 WEIGHTS DUE THIS MONTH",
+    "source": "@reflection_ai",
+    "url": "https://x.com/NaderLikeLadder/status/2107196427420283226",
+    "category": "opensource"
+  },
+  {
+    "headline": "SEMIANALYSIS: ANTHROPIC SUBSCRIPTIONS DELIVER 5X+ API-EQUIVALENT VALUE OF OPENAI PLANS AT SAME PRICE",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2107204965710053510",
+    "category": "business"
+  },
+  {
+    "headline": "OPENAI BEGINS INVISIBLE TEXT WATERMARKING OF CHATGPT AND CODEX OUTPUT IN EU UNDER AI ACT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2107164650249101695",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI MAKES GPT-6 ASTRA AND GPT-6.1 SOL ~50% FASTER BY DEFAULT ON SUBSCRIPTIONS",
+    "source": "@thsottiaux",
+    "url": "https://x.com/jxnlco/status/2107181061721747906",
+    "category": "model"
+  }
+]
