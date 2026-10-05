@@ -1,5 +1,5 @@
 {
-  "article_count": 91,
+  "article_count": 92,
   "articles": [
     {
       "claim_count": 18,
@@ -879,6 +879,14 @@
       "stem": "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh",
       "tags": [],
       "title": "Kolibri's borrowed voice: a sovereign European MoE taught partly by Chinese models"
+    },
+    {
+      "claim_count": 47,
+      "created_at": "2026-10-05T22:28:32Z",
+      "slug": "reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "stem": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "tags": [],
+      "title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity"
     }
   ],
   "by_host": {
@@ -895,7 +903,8 @@
     "247wallst.com": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c19",
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c30",
-      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c27"
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c27",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c31"
     ],
     "3dincites.com": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c17"
@@ -1200,7 +1209,8 @@
       "2026-08-04T171206--comfyui-company#c13"
     ],
     "api.fxtwitter.com": [
-      "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c16"
+      "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c16",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c33"
     ],
     "api.github.com": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c6",
@@ -1258,7 +1268,9 @@
     ],
     "ar5iv.labs.arxiv.org": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c27",
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c40"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c40",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c12",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c30"
     ],
     "ara.guzus.xyz": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c12",
@@ -1336,7 +1348,10 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c15",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c5",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c6",
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c7"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c7",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c15",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c7",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c8"
     ],
     "artificialintelligenceact.eu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c30",
@@ -1596,7 +1611,10 @@
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c6",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c7",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c8",
-      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c18"
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c18",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c10",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c27",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c7"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -2622,7 +2640,9 @@
       "2026-05-27T035557--800-vdc-architecture#c6",
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6",
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c8",
-      "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c9"
+      "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c9",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c11",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c9"
     ],
     "developers.cloudflare.com": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c3"
@@ -2672,7 +2692,8 @@
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c4",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c5",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c6",
-      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c25"
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c25",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c13"
     ],
     "digitalapplied.com": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c15",
@@ -2784,7 +2805,8 @@
       "2026-06-22T052035--zhipu-ai-glm#c20",
       "2026-06-22T052035--zhipu-ai-glm#c6",
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6",
-      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c9"
+      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c9",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c28"
     ],
     "doi.org": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c1",
@@ -3181,7 +3203,8 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c16",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c8",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c20"
     ],
     "financemagnates.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c26"
@@ -3343,6 +3366,9 @@
     ],
     "getsmartresume.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c7"
+    ],
+    "gigazine.net": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c26"
     ],
     "gingerriver.com": [
       "2026-06-22T052035--zhipu-ai-glm#c2"
@@ -3665,7 +3691,13 @@
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c23",
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c4",
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c6",
-      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c7"
+      "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c7",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c14",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c15",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c17",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c18",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c29",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c32"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
@@ -3791,7 +3823,8 @@
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c8",
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c15",
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c29",
-      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c18"
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c18",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c22"
     ],
     "investor.atmeta.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C12",
@@ -4365,7 +4398,8 @@
     ],
     "news.bloomberglaw.com": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c15",
-      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c27"
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c27",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c21"
     ],
     "news.cgtn.com": [
       "2026-06-22T052035--zhipu-ai-glm#c27",
@@ -4503,7 +4537,8 @@
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c30"
     ],
     "nvidia.com": [
-      "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c30"
+      "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c30",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c9"
     ],
     "nvidianews.nvidia.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c1",
@@ -5019,6 +5054,19 @@
     ],
     "redmondmag.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c7"
+    ],
+    "reflection.ai": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c1",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c14",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c19",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c2",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c22",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c24",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c25",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c3",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c4",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c5",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c6"
     ],
     "reinsurancene.ws": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c15"
@@ -5685,7 +5733,10 @@
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c38",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c39",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c12",
-      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c16"
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c16",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c1",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c23",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c24"
     ],
     "techflowpost.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20",
@@ -5790,7 +5841,8 @@
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-3",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-6",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c10",
-      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4"
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c16"
     ],
     "the-decoder.de": [
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c20"
@@ -6447,7 +6499,8 @@
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c1",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c1",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1",
-      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2"
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c26"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -6515,6 +6568,9 @@
     ],
     "https://13f.info/manager/0002045724-situational-awareness-lp": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c2"
+    ],
+    "https://247wallst.com/cards/tech-did-the-heavy-lifting-again-the-nasdaq-s-1-06-gain-ne-gspc-market-bell-01m46tkf2f7w10vn47cy4b9tyt": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c31"
     ],
     "https://247wallst.com/investing/2026/07/17/amd-falls-5-intel-drops-4-nvidia-slides-3-before-recovering-as-rotation-hits-semiconductor-stocks": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c19",
@@ -6732,6 +6788,9 @@
     "https://api.comfy.org/nodes": [
       "2026-08-04T171206--comfyui-company#c13"
     ],
+    "https://api.fxtwitter.com/ArtificialAnlys/status/2072022576394821859": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c33"
+    ],
     "https://api.fxtwitter.com/Daveeemor": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c16"
     ],
@@ -6799,11 +6858,17 @@
     "https://app.usd.ai/chip": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c4"
     ],
+    "https://ar5iv.labs.arxiv.org/html/2001.08361": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c30"
+    ],
     "https://ar5iv.labs.arxiv.org/html/2305.07153": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c27"
     ],
     "https://ar5iv.labs.arxiv.org/html/2405.00332": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c40"
+    ],
+    "https://ar5iv.labs.arxiv.org/html/2407.21783": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c12"
     ],
     "https://ara.guzus.xyz/research/generative/2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c12"
@@ -6863,7 +6928,10 @@
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c15",
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c4",
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c5",
-      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c11"
+      "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c11",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c15",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c7",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c8"
     ],
     "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c7",
@@ -7444,7 +7512,8 @@
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c13"
     ],
     "https://arxiv.org/html/2412.19437v2": [
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c16"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c16",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c10"
     ],
     "https://arxiv.org/html/2502.07776v1": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c10"
@@ -7490,11 +7559,17 @@
     "https://arxiv.org/html/2602.02132v1": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c14"
     ],
+    "https://arxiv.org/html/2602.15763v1": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c7"
+    ],
     "https://arxiv.org/html/2603.03410v2": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c16"
     ],
     "https://arxiv.org/html/2603.13372v1": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c7"
+    ],
+    "https://arxiv.org/html/2604.07190": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c27"
     ],
     "https://arxiv.org/html/2605.00932": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c22"
@@ -8309,6 +8384,9 @@
     "https://developer.nvidia.com/blog/extract-more-kernel-performance-with-nvidia-compileiq-auto-tuning": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c9"
     ],
+    "https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c9"
+    ],
     "https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories": [
       "2026-05-27T035557--800-vdc-architecture#c1",
       "2026-05-27T035557--800-vdc-architecture#c19",
@@ -8320,6 +8398,9 @@
     ],
     "https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6"
+    ],
+    "https://developer.nvidia.com/blog/setting-a-world-record-for-moe-pre-training-on-nvidia-gb300-nvl72": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c11"
     ],
     "https://developers.cloudflare.com/workers-ai/platform/pricing": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c3"
@@ -8366,6 +8447,9 @@
     ],
     "https://dig.watch/updates/ncsc-ai-vulnerabilities-guidance": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c39"
+    ],
+    "https://digital-strategy.ec.europa.eu/en/faqs/general-purpose-ai-models-ai-act-questions-answers": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c13"
     ],
     "https://digital-strategy.ec.europa.eu/en/faqs/signing-code-practice-transparency-ai-generated-content": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c14"
@@ -8506,7 +8590,8 @@
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c9"
     ],
     "https://docs.z.ai/guides/overview/pricing": [
-      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6"
+      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c28"
     ],
     "https://doi.org/10.1016/j.drudis.2024.104009": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c7"
@@ -8972,6 +9057,9 @@
     "https://finance.yahoo.com/technology/ai/articles/sam-altman-says-openai-not-212555750.html": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1"
     ],
+    "https://finance.yahoo.com/technology/ai/articles/spacex-inks-compute-deal-reflection-165129019.html": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c20"
+    ],
     "https://finance.yahoo.com/technology/ai/articles/stripe-talks-acquire-openrouter-potential-215104525.html": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c4"
     ],
@@ -9128,6 +9216,9 @@
     ],
     "https://geminicli.com/docs/cli/model-routing": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c25"
+    ],
+    "https://gigazine.net/gsc_news/en/20260429-swe-bench-verified": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c26"
     ],
     "https://gist.github.com/nassimkhatiba-ai/d3da24d5b1a9287a7dcaf460c4e6d98d": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-12"
@@ -9394,6 +9485,9 @@
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c6",
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c7"
     ],
+    "https://huggingface.co/Aleph-Alpha/Kolibri-1-BF16": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c32"
+    ],
     "https://huggingface.co/Inner-Reflections/Wan2.1_VACE_Phantom": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c37"
     ],
@@ -9475,6 +9569,9 @@
     "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c21"
     ],
+    "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c18"
+    ],
     "https://huggingface.co/fal/AuraFlow-v0.3": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c38"
     ],
@@ -9511,6 +9608,9 @@
     "https://huggingface.co/moonshotai/Kimi-K2.6/blob/main/LICENSE": [
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c13"
     ],
+    "https://huggingface.co/moonshotai/Kimi-K3": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c17"
+    ],
     "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6"
     ],
@@ -9533,7 +9633,10 @@
     "https://huggingface.co/zai-org/GLM-5.2": [
       "2026-06-22T052035--zhipu-ai-glm#c9",
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c17",
-      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c2"
+      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c2",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c14",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c15",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c29"
     ],
     "https://huggingface.co/zai-org/GLM-5.2/blob/main/LICENSE": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c20"
@@ -9949,6 +10052,9 @@
     ],
     "https://news.bloomberglaw.com/business-and-practice/big-law-leader-says-ai-threatens-rivals-associates-not-his": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c27"
+    ],
+    "https://news.bloomberglaw.com/ip-law/nebius-to-sell-1-billion-in-ai-capacity-to-startup-reflection": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c21"
     ],
     "https://news.cgtn.com/news/2025-02-17/President-Xi-attends-symposium-on-private-enterprises-delivers-speech-1B3QqCUlZXG/p.html": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c5"
@@ -10746,6 +10852,23 @@
     "https://redmondmag.com/articles/2026/04/07/anthropic-names-former-microsoft-azure-ai-executive-eric-boyd-as-infrastructure-chief.aspx": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c7"
     ],
+    "https://reflection.ai/blog/building-frontier-open-intelligencence": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c22"
+    ],
+    "https://reflection.ai/blog/introducing-beam": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c1",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c14",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c19",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c2",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c25",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c3",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c4",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c5",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c6"
+    ],
+    "https://reflection.ai/newsroom": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c24"
+    ],
     "https://relay.link": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c19"
     ],
@@ -11290,6 +11413,9 @@
     "https://techcrunch.com/2025/10/06/sam-altman-says-chatgpt-has-hit-800m-weekly-active-users": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c24"
     ],
+    "https://techcrunch.com/2025/10/09/reflection-raises-2b-to-be-americas-open-frontier-ai-lab-challenging-deepseek": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c23"
+    ],
     "https://techcrunch.com/2025/10/27/mercor-quintuples-valuation-to-10b-with-350m-series-c": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c6",
       "2026-06-22T061332--frontier-ai-data-supply-chain#c8"
@@ -11384,6 +11510,10 @@
     "https://techcrunch.com/2026/10/01/amazon-releases-its-own-jev-clone-as-decision-models-flood-the-web": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c12"
     ],
+    "https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c1",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c24"
+    ],
     "https://techfundingnews.com/ipo-bound-databricks-reportedly-eyes-175b-valuation-after-hitting-5-4b-revenue-run-rate": [
       "2026-07-20T050016--databricks-mid-2026#c14"
     ],
@@ -11419,7 +11549,8 @@
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c19"
     ],
     "https://the-decoder.com/alibabas-open-weight-qwen3-8-max-takes-on-long-horizon-ai-tasks-with-2-4-trillion-parameters": [
-      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c15"
+      "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c15",
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c16"
     ],
     "https://the-decoder.com/anthropics-claude-opus-5-costs-well-below-fable-5-while-matching-or-beating-it-across-most-benchmarks": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c4"
@@ -13547,6 +13678,9 @@
     "https://www.investing.com/news/stock-market-news/nvidia-to-invest-5-billion-in-ilya-sutskevers-ai-startup-source-says-4814862": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c1"
     ],
+    "https://www.investing.com/news/stock-market-news/nvidiabacked-reflection-ai-raises-2-billion-in-funding-boosts-valuation-to-8-billion-4279981": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c22"
+    ],
     "https://www.investing.com/news/stock-market-news/openai-ai-hacking-test-supports-cybersecurity-outlook-wedbush-says-4804601": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c38"
     ],
@@ -14041,6 +14175,9 @@
     ],
     "https://www.nudgesecurity.com/post/employee-offboarding-by-the-numbers": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c30"
+    ],
+    "https://www.nvidia.com/en-us/data-center/gb300-nvl72": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c9"
     ],
     "https://www.nvidia.com/en-us/data-center/h100": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c30"
@@ -15317,6 +15454,9 @@
     "https://x.com/OpenAI/status/2092300851482108064": [
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-13"
     ],
+    "https://x.com/OpenAIDevs/status/2026002219909427270": [
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c26"
+    ],
     "https://x.com/OpenRouter/status/2090544970923184269": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-1"
     ],
@@ -15679,7 +15819,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2694,
+  "claim_count": 2741,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -80432,9 +80572,1030 @@
         "https://aleph-alpha.com/en/blog/training-on-the-party-line"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Beam is a sparse mixture-of-experts model with 501B total and 23B active parameters across 52 layers, text-only.",
+      "confidence": "high",
+      "hosts": [
+        "reflection.ai",
+        "techcrunch.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://reflection.ai/blog/introducing-beam",
+        "https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2024-12-27",
+      "claim": "DeepSeek-V3 (37B active) was pretrained on 14.8T tokens using 2,664K H800 GPU-hours.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c10",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2412.19437v2"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-07-21",
+      "claim": "NVIDIA reported Megatron Core reaching 1,648 TFLOPS per GPU pretraining DeepSeek-V3 671B on GB300 NVL72.",
+      "confidence": "high",
+      "hosts": [
+        "developer.nvidia.com"
+      ],
+      "id": "c11",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c11",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://developer.nvidia.com/blog/setting-a-world-record-for-moe-pre-training-on-nvidia-gb300-nvl72"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2024-07-23",
+      "claim": "Llama 3 405B training achieved 38-43% BF16 model FLOPs utilization and used 3.8e25 FLOPs.",
+      "confidence": "high",
+      "hosts": [
+        "ar5iv.labs.arxiv.org"
+      ],
+      "id": "c12",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://ar5iv.labs.arxiv.org/html/2407.21783"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2025-07-01",
+      "claim": "The EU AI Act presumes systemic risk for general-purpose AI models whose cumulative training compute exceeds 10^25 FLOPs.",
+      "confidence": "high",
+      "hosts": [
+        "digital-strategy.ec.europa.eu"
+      ],
+      "id": "c13",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://digital-strategy.ec.europa.eu/en/faqs/general-purpose-ai-models-ai-act-questions-answers"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "In Reflection's table Beam scores 36.2 on HLE (no tools) versus 40.5 for GLM-5.2, and trails GLM-5.2 on AIME 2026, GPQA Diamond and CritPt.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co",
+        "reflection.ai"
+      ],
+      "id": "c14",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c14",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://reflection.ai/blog/introducing-beam",
+        "https://huggingface.co/zai-org/GLM-5.2"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-06-16",
+      "claim": "Z.ai's GLM-5.2 card reports Terminal Bench 2.1 (Terminus-2) at 81.0 and DeepSWE at 46.2, while Artificial Analysis measured Terminal Bench 2.1 at 78%.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai",
+        "huggingface.co"
+      ],
+      "id": "c15",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c15",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/zai-org/GLM-5.2",
+        "https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-08-03",
+      "claim": "Qwen 3.8-Max is a 2.4T-total, 95B-active mixture-of-experts model.",
+      "confidence": "medium",
+      "hosts": [
+        "the-decoder.com"
+      ],
+      "id": "c16",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c16",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://the-decoder.com/alibabas-open-weight-qwen3-8-max-takes-on-long-horizon-ai-tasks-with-2-4-trillion-parameters"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-07-27",
+      "claim": "Kimi K3 has 2.8T total and 104B activated parameters.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c17",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/moonshotai/Kimi-K3"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-06",
+      "claim": "DeepSeek V4.1 Flash activates 8B parameters per token during prefill and 16B during decode.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c18",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "In Reflection's own table DeepSeek V4.1 Flash beats Beam on HLE (39.1 vs 36.2), Terminal Bench 2.1 (90.6 vs 80.1) and DeepSWE (74.2 vs 44.4).",
+      "confidence": "high",
+      "hosts": [
+        "reflection.ai"
+      ],
+      "id": "c19",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c19",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://reflection.ai/blog/introducing-beam"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Beam was pretrained on 23.8 trillion tokens.",
+      "confidence": "high",
+      "hosts": [
+        "reflection.ai"
+      ],
+      "id": "c2",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://reflection.ai/blog/introducing-beam"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-06-23",
+      "claim": "Reflection's SpaceX compute deal pays $150M per month from July 2026 through 2029 for up to $6.3B of GB300 capacity at Colossus 2, and either side can exit with 90 days' notice after the first three months.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com"
+      ],
+      "id": "c20",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c20",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/technology/ai/articles/spacex-inks-compute-deal-reflection-165129019.html"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-07-14",
+      "claim": "Nebius agreed to sell Reflection more than $1B of GB300 capacity through 2029.",
+      "confidence": "medium",
+      "hosts": [
+        "news.bloomberglaw.com"
+      ],
+      "id": "c21",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c21",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://news.bloomberglaw.com/ip-law/nebius-to-sell-1-billion-in-ai-capacity-to-startup-reflection"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2025-10-09",
+      "claim": "Reflection raised $2B at an $8B valuation in October 2025; Reuters corrected its story to remove Nvidia as a lead investor.",
+      "confidence": "high",
+      "hosts": [
+        "investing.com",
+        "reflection.ai"
+      ],
+      "id": "c22",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c22",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.investing.com/news/stock-market-news/nvidiabacked-reflection-ai-raises-2-billion-in-funding-boosts-valuation-to-8-billion-4279981",
+        "https://reflection.ai/blog/building-frontier-open-intelligencence"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2025-10-09",
+      "claim": "In October 2025 Reflection said it was aiming to release its first frontier model early the next year.",
+      "confidence": "high",
+      "hosts": [
+        "techcrunch.com"
+      ],
+      "id": "c23",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c23",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://techcrunch.com/2025/10/09/reflection-raises-2b-to-be-americas-open-frontier-ai-lab-challenging-deepseek"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Reflection has raised roughly $4.7B per PitchBook and its last round valued it at $25B pre-money; its performance claims have not been independently verified.",
+      "confidence": "high",
+      "hosts": [
+        "reflection.ai",
+        "techcrunch.com"
+      ],
+      "id": "c24",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c24",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost",
+        "https://reflection.ai/newsroom"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Reflection will release Beam's weights under Apache 2.0, with technical report and model card, later in October 2026; the model is in final red-teaming with waitlisted early access.",
+      "confidence": "high",
+      "hosts": [
+        "reflection.ai"
+      ],
+      "id": "c25",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c25",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://reflection.ai/blog/introducing-beam"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-02-23",
+      "claim": "OpenAI stopped reporting SWE-bench Verified in February 2026, citing flawed tests and contamination, and recommended SWE-bench Pro.",
+      "confidence": "medium",
+      "hosts": [
+        "gigazine.net",
+        "x.com"
+      ],
+      "id": "c26",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://x.com/OpenAIDevs/status/2026002219909427270",
+        "https://gigazine.net/gsc_news/en/20260429-swe-bench-verified"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-03-31",
+      "claim": "Chinese open models reached 1.15B cumulative Hugging Face downloads versus 723M for US models by March 2026.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c27",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c27",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2604.07190"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-06",
+      "claim": "Z.ai lists GLM-5.2 at $1.40 per 1M input tokens and $4.40 per 1M output tokens.",
+      "confidence": "high",
+      "hosts": [
+        "docs.z.ai"
+      ],
+      "id": "c28",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c28",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-06-16",
+      "claim": "GLM-5.2's IndexShare reuses one sparse-attention indexer across every four layers, which Z.ai says cuts per-token FLOPs 2.9x at 1M context.",
+      "confidence": "medium",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c29",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c29",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/zai-org/GLM-5.2"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Beam was pretrained end-to-end in under four weeks on a cluster of 6,144 NVIDIA GB300 NVL72 GPUs, with goodput reaching 92.3% towards the end.",
+      "confidence": "high",
+      "hosts": [
+        "reflection.ai"
+      ],
+      "id": "c3",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://reflection.ai/blog/introducing-beam"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2020-01-23",
+      "claim": "Kaplan et al. give per-token forward compute as 2N plus a context-dependent attention term 2 n_layer n_ctx d_attn.",
+      "confidence": "high",
+      "hosts": [
+        "ar5iv.labs.arxiv.org"
+      ],
+      "id": "c30",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c30",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://ar5iv.labs.arxiv.org/html/2001.08361"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Artificial Analysis said early indicators suggest Beam will be one of the most token-efficient open models it has seen for its level of intelligence, without publishing scores.",
+      "confidence": "low",
+      "hosts": [
+        "247wallst.com"
+      ],
+      "id": "c31",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c31",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://247wallst.com/cards/tech-did-the-heavy-lifting-again-the-nasdaq-s-1-06-gain-ne-gspc-market-bell-01m46tkf2f7w10vn47cy4b9tyt"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-03",
+      "claim": "Aleph Alpha's Kolibri-1 was pretrained on 768 B200 GPUs for 21 days (392k GPU-hours) with 6.4e23 total FLOPs.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c32",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c32",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/Aleph-Alpha/Kolibri-1-BF16"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-06-30",
+      "claim": "Artificial Analysis called GLM-5.2 the most verbose of the leading models, using about 141M output tokens to run its Intelligence Index, about 1.8x the average.",
+      "confidence": "medium",
+      "hosts": [
+        "api.fxtwitter.com"
+      ],
+      "id": "c33",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c33",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api.fxtwitter.com/ArtificialAnlys/status/2072022576394821859"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Beam's high-compute RL run generated over 100 million rollouts on 10.5K NVIDIA GB300 GPUs over 4 weeks.",
+      "confidence": "high",
+      "hosts": [
+        "reflection.ai"
+      ],
+      "id": "c4",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c4",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://reflection.ai/blog/introducing-beam"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Reflection claims Beam achieves scores comparable to GLM-5.2 on advanced reasoning benchmarks while using 3-4x less inference compute.",
+      "confidence": "high",
+      "hosts": [
+        "reflection.ai"
+      ],
+      "id": "c5",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://reflection.ai/blog/introducing-beam"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Reflection estimates inference FLOPs as 2 x active parameter count x mean generated tokens per attempt over DeepSWE, HLE and Terminal Bench 2.1, excluding prefill, context-dependent attention and serving overhead.",
+      "confidence": "high",
+      "hosts": [
+        "reflection.ai"
+      ],
+      "id": "c6",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://reflection.ai/blog/introducing-beam"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-06-16",
+      "claim": "GLM-5.2 has 744B total and 40B active parameters.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai",
+        "arxiv.org"
+      ],
+      "id": "c7",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "academic"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index",
+        "https://arxiv.org/html/2602.15763v1"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-06-16",
+      "claim": "GLM-5.2 uses 43k output tokens per Artificial Analysis Intelligence Index task, of which 37k is reasoning, up from 26k for GLM-5.1.",
+      "confidence": "high",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c8",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c8",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-06",
+      "claim": "A GB300 NVL72 rack of 72 GPUs is rated 360 PFLOPS FP16/BF16 with sparsity, implying 2.5 PFLOPS dense BF16 per GPU.",
+      "confidence": "high",
+      "hosts": [
+        "developer.nvidia.com",
+        "nvidia.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.nvidia.com/en-us/data-center/gb300-nvl72",
+        "https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Beam's pretraining compute under the 6ND approximation is about 3.28e24 FLOPs.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "For a 4x compute advantage, GLM-5.2 must generate 2.3x Beam's tokens per attempt.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d10",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "6,144 GPUs is 85.33 NVL72 racks, not a whole number of racks.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d11",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Beam's 6ND pretraining compute is about 0.33x the EU AI Act 1e25 systemic-risk threshold.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d12",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Per token, DeepSeek V4.1 Flash's decode-active compute is 0.70x Beam's.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d13",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Qwen 3.8-Max's active parameters are 4.13x Beam's.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d14",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "6,144 GPUs for 28 days is at most 4,128,768 GPU-hours of pretraining.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "If the full cluster ran 28 days, Beam's pretraining delivered about 221 TFLOPS per GPU.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "That throughput is about 8.8% of a GB300's dense BF16 peak.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2024-12-27",
+      "claim": "DeepSeek-V3's pretraining delivered about 343 TFLOPS per H800 under the same 6ND convention.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "At NVIDIA's 1,648 TFLOPS-per-GPU GB300 record, 6,144 GPUs would complete Beam's 6ND pretraining compute in about 3.75 days.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d6",
+      "reusable": false,
+      "reuse_block": "low-confidence",
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "Beam's RL run used about 7.06M GPU-hours, 1.71x the pretraining GPU budget.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d7",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "GLM-5.2's active parameters are 1.74x Beam's.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d8",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+      "article_created_at": "2026-10-05T22:28:32Z",
+      "article_title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity",
+      "as_of": "2026-10-05",
+      "claim": "For a 3x compute advantage under Reflection's formula, GLM-5.2 must generate 1.725x Beam's tokens per attempt.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d9",
+      "key": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#d9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1307,
+  "reusable_count": 1334,
   "schema_version": 1
 }
