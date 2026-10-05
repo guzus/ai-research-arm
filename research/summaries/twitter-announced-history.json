@@ -2,51 +2,6 @@
   {
     "backfilled": true,
     "category": "business",
-    "delivered_at": "2026-05-17 04:00 UTC",
-    "headline": "OPENAI CORP STILL SILENT ON MALTA SOVEREIGN DEAL ~12H AFTER BLOG \u2014 TECHMEME AND 10+ AGGREGATORS RUN STORY WITHOUT CORP ACK",
-    "source": "@Techmeme",
-    "source_file": "research/summaries/2026-05-17-twitter-04h-headlines.json",
-    "url": "https://x.com/Techmeme/status/2055852380445712567"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-17 04:00 UTC",
-    "headline": "CODEX TEAM SOLICITS PUBLIC FRUSTRATIONS PRE-NEXT-MODEL \u2014 JASON LIU: 'HELP US IMPROVE THE NEXT MODEL' (267L/9RT)",
-    "source": "@jxnlco",
-    "source_file": "research/summaries/2026-05-17-twitter-04h-headlines.json",
-    "url": "https://x.com/jxnlco/status/2055839784711446551"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-17 04:00 UTC",
-    "headline": "JENSEN AT STANFORD CS153: 'I WOULD LIKE TO BE AT LOW MFU ALL THE TIME' \u2014 OVERPROVISION FLOPS, NETWORKING, MEMORY",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-17-twitter-04h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2055835722783830311"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-17 09:00 UTC",
-    "headline": "MUSK CONFIRMS GROK V9 \u2014 1.5T PARAMS, 3X CURRENT GROK, CURSOR CODING DATA IN MID-TRAINING, 3-4 WEEKS TO RELEASE",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-17-twitter-09h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2055914584373141906"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-17 09:00 UTC",
-    "headline": "XAI POSITIONS GROK V9 AS CLAUDE CODE / CODEX RIVAL \u2014 BLACKWELL-CLASS BASE MODEL, SFT AND RL STILL PENDING BEFORE SHIP",
-    "source": "@techedgedaily",
-    "source_file": "research/summaries/2026-05-17-twitter-09h-headlines.json",
-    "url": "https://x.com/techedgedaily/status/2055916204024635652"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
     "delivered_at": "2026-05-17 09:00 UTC",
     "headline": "XAI / NOUS RESEARCH \u2014 HERMES AGENT NOW ACCEPTS X PREMIUM SUBSCRIPTIONS, GETS X POST SEARCH; ELON AMPLIFIES",
     "source": "@elonmusk",
@@ -23918,5 +23873,40 @@
     "headline": "GOOGLE PAYS ~100 PUBLISHERS FOR AI OVERVIEWS CONTENT; SOME SAY UNDER 0.1% OF AD REVENUE",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2106844309282582982"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-05 21:58:09 UTC",
+    "headline": "META, MICROSOFT PUSH EMPLOYEES OFF ANTHROPIC'S CLAUDE TOWARD IN-HOUSE AI TOOLS AS COSTS CLIMB \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2107195387551375435"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-05 21:58:09 UTC",
+    "headline": "REFLECTION AI UNVEILS BEAM: 501B-PARAMETER OPEN MOE, 23B ACTIVE, APACHE 2.0 WEIGHTS DUE THIS MONTH",
+    "source": "@reflection_ai",
+    "url": "https://x.com/NaderLikeLadder/status/2107196427420283226"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-05 21:58:09 UTC",
+    "headline": "SEMIANALYSIS: ANTHROPIC SUBSCRIPTIONS DELIVER 5X+ API-EQUIVALENT VALUE OF OPENAI PLANS AT SAME PRICE",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2107204965710053510"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-05 21:58:09 UTC",
+    "headline": "OPENAI BEGINS INVISIBLE TEXT WATERMARKING OF CHATGPT AND CODEX OUTPUT IN EU UNDER AI ACT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2107164650249101695"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-05 21:58:09 UTC",
+    "headline": "OPENAI MAKES GPT-6 ASTRA AND GPT-6.1 SOL ~50% FASTER BY DEFAULT ON SUBSCRIPTIONS",
+    "source": "@thsottiaux",
+    "url": "https://x.com/jxnlco/status/2107181061721747906"
   }
 ]
