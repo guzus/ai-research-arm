@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Delivering 3.28e24 FLOPs in that time works out to **about 221 TFLOPS per GPU**, or about 8.8% of dense BF16 peak.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Artificial Analysis lists GLM-5.2 at 744B total and 40B active parameters [^3], consistent with the GLM-5 technical report's \"744B parameter model (40B active parameters)\" [^14].",
+      "contradicting_url": "https://recipes.vllm.ai/zai-org/GLM-5.2",
+      "contradicting_quote": "frontier-scale MoE language model (~743B total parameters, 39B active)",
+      "severity": "low",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "On the four 'advanced reasoning' benchmarks in Reflection's table, Beam trails GLM-5.2 on all four, by 4.3 points on HLE [^1,4].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
