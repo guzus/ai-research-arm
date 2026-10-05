@@ -4,15 +4,17 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "Project Suncatcher", Suncatcher]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; confirmed its Project Suncatcher TPU prototype, built with Planet, reached orbit on SpaceX Transporter-18 and made contact.
+description: Hyperscaler behind Gemini; from 9 October free Gemini-app users get only 3.5 Flash-Lite, AI Plus loses Pro, and AI Pro gains Deep Think.
 created_at: 2026-07-17
-timestamp: 2026-10-03T00:00:00Z
+timestamp: 2026-10-05T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
+  - {title: "ARA model ticket — Gemini app tier changes", path: research/models/tickets/google-gemini-app-tier-changes-2026-10.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA model ticket — Project Suncatcher TPU satellite", path: research/models/tickets/google-suncatcher-tpu-satellite-2026-09.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
@@ -737,6 +739,38 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   per-action approval. Hidden setting, not shipped. See
   [[apple]] and [[agentic-ai-security]] (@testingcatalog;
   ARA daily digest 2026-10-03).
+
+## Free users drop to Flash-Lite; the bug-bounty queue freezes (2026-10-05)
+
+- **From 9 October the free Gemini app
+  serves only [[gemini-3-6-flash|Gemini
+  3.5 Flash-Lite]].** It loses 3.6 Flash
+  and 3.1 Pro. The **$4.99 AI Plus**
+  tier loses Pro on a per-account date
+  Google emails; **AI Pro ($19.99)**
+  gains Deep Think, which had been
+  reserved for the $99.99 and $199.99
+  tiers. Disclosed on a support page,
+  not announced. The support page
+  itself was not captured, so
+  verification is partial. This is a
+  capability cut for the largest user
+  group and a mid-tier upgrade in the
+  same move — the likely reason is
+  serving cost after
+  [[gemini-4-argon|Gemini 4 Argon]]'s
+  gated rollout. API free-tier quotas
+  are unchecked (The Decoder,
+  9to5Google via @FadyEid, @codvynn;
+  ARA daily digest 2026-10-05 and
+  ticket `google-gemini-app-tier-changes-2026-10`).
+- **Google froze its open-source bug
+  bounty program**, citing a
+  "significant rise" in AI-generated
+  submissions. Latest sign that
+  AI-written reports are swamping
+  bounty triage (TechCrunch; ARA
+  daily digest 2026-10-05).
 
 - **Does "generate onto authoritative data" survive as a product category?**
   The Google Earth feature was killed in a day because detectors could not

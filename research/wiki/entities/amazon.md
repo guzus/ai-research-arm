@@ -4,15 +4,16 @@ title: Amazon
 type: entity
 aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy", "Matt Garman"]
 tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
-description: Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman warned communities that blocking AI data centres risks irreparable harm to the US economy and national security.
+description: Hyperscaler and Anthropic's largest investor; AWS dropped data-center NDAs with government agencies as more than 100 local moratoriums and a New York permit freeze hit siting.
 created_at: 2026-06-14
-timestamp: 2026-10-03T00:00:00Z
+timestamp: 2026-10-05T00:00:00Z
 market:
   ticker: AMZN
   exchange: NASDAQ
   symbol: NASDAQ:AMZN
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
@@ -146,6 +147,35 @@ contract and tort claims remain live. See
   [[california-ai-regulation]] (The
   Verge, Ars Technica; ARA daily digest
   2026-10-03).
+
+## AWS drops data-center NDAs with agencies (2026-10-05)
+
+- **Garman announced Amazon is dropping
+  data-center NDAs with government
+  agencies.** The 2026-10-03 note that
+  critics welcomed an end to NDAs is
+  now a first-party policy change,
+  timed as more than **100 local
+  moratoriums** are reportedly under
+  consideration and **New York
+  imposes a one-year permit
+  moratorium**. See [[ai-capex]],
+  [[california-ai-regulation]] and
+  [[federal-ai-policy]] (TechCrunch;
+  ARA daily digest 2026-10-05).
+- **Amazon is reported to have
+  open-sourced Strands Decider 2B**,
+  a "decision model" with weights,
+  data and training scripts public
+  and about **153 ms** median latency
+  on an M3 MacBook. It joins
+  Cloudflare's Clef and
+  [[perplexity|Perplexity]]'s
+  pplx-decider in the category
+  already tracked on [[jev]].
+  Amazon's own release post was not
+  captured (@mark_k; ARA daily
+  digest 2026-10-05).
 
 ## Open questions
 
