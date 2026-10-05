@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-05
+
+TOP 5 PAPERS:
+• RSR — rewrite harness wins as general traces; TB2 57→74.2, TB4 1.5→9.1
+• Mesh Learning — RLVR late collapse is strategy death; +13.4pp Qwen
+• Sigma — first 3B/8B continuous diffusion LM; steerable ODE latents
+• RSI harness — task+harness co-evolve; 27B hits 62.5% APEX on 10K math
+• Text-centric Omni — text post-train +25.8% geo-mean, 57% fewer GPU-h
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 6, Other 8
+
+Full report on GitHub.
