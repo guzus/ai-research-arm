@@ -1,0 +1,11 @@
+Speaker 1: Monday, October fifth, twenty twenty-six.
+Speaker 2: [high_energy] The White House has launched what it's calling a Super Intelligence Force, and Director of National Intelligence Jay Clayton is reportedly set to lead it.
+Speaker 1: That puts superintelligence squarely inside the national security apparatus. Meanwhile, at OpenAI, safety lead David Robinson has quit, and he's calling the company's culture broken.
+Speaker 2: That's a pointed exit, and it lands right as the frontier race heats up. Reflection AI is reportedly close to shipping an open-weight model, and it's paying [emphasis] one hundred fifty million dollars a month [/emphasis] for Colossus compute.
+Speaker 1: Some quick numbers. Nebius is reportedly paying up to one hundred fifty million dollars for Inferize, a startup with just seventeen people.
+Speaker 2: Out of Europe, Aleph Alpha released Kolibri-1, seventy-eight point one billion parameters with three point four six billion active, under an Apache two point zero license.
+Speaker 1: And on ARC-AGI-3, the top reported Kaggle score jumped from seven percent to [emphasis] fifty-six percent [/emphasis].
+Speaker 2: That's a massive leap on a benchmark built to resist exactly that kind of progress.
+Speaker 1: Trending on Hacker News, with five hundred forty-four points, Qwen three point eight Flash Next.
+Speaker 2: A one hundred twenty-five billion parameter model running on a single RTX forty ninety at [dramatic_pause] [emphasis] one hundred tokens per second [/emphasis].
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
