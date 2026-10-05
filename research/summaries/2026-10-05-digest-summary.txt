@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-10-05
+
+TOP STORIES:
+• White House launches "Super Intelligence Force"; DNI Jay Clayton reportedly to lead it
+• OpenAI safety lead David Robinson quits, calls culture "broken"
+• Reflection AI nears open-weight model; pays $150M/mo for Colossus compute
+
+KEY NUMBERS:
+• Up to $150M: Nebius's reported price for 17-person Inferize
+• 78.1B / 3.46B active: Aleph Alpha Kolibri-1, Apache 2.0
+• 7% -> 56%: reported top ARC-AGI-3 Kaggle score jump
+
+TRENDING: Qwen 3.8 Flash Next (125B) on one RTX 4090 at 100 tok/s (544 pts on HN)
+
+Full digest on GitHub.
