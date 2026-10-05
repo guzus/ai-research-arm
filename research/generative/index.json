@@ -3113,6 +3113,22 @@
     "created_at": "2026-10-05T22:28:32Z",
     "source": "workflow_dispatch",
     "prompt": "Reflection AI's Beam: a 501B/23B-active Apache-2.0 MoE, its GB300 compute disclosure, and whether the 3-4x efficiency claim holds",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-10-05T230039--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Reflection의 Beam, 검증하다: GPU 공개는 실재하고, 3–4×은 대체로 GLM-5.2의 장황함에서 나온다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-10-05T23:00:39Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
+        "tags": [],
+        "translated_at": "2026-10-05T23:00:39Z",
+        "source_file": "research/generative/2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb.ara.md",
+        "source_sha256": "c10db62f046ea20fdf61cc4a54ea07e0a6f787849632af964a8ad37c06da44b9"
+      }
+    }
   }
 ]
