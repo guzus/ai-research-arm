@@ -424,11 +424,11 @@
         "ai-infrastructure",
         "bedrock"
       ],
-      "summary": "Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman warned communities that blocking AI data centres risks irreparable harm to the US economy and national security.",
-      "description": "Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman warned communities that blocking AI data centres risks irreparable harm to the US economy and national security.",
+      "summary": "Hyperscaler and Anthropic's largest investor; AWS dropped data-center NDAs with government agencies as more than 100 local moratoriums and a New York permit freeze hit siting.",
+      "description": "Hyperscaler and Anthropic's largest investor; AWS dropped data-center NDAs with government agencies as more than 100 local moratoriums and a New York permit freeze hit siting.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-03",
-      "timestamp": "2026-10-03T00:00:00Z",
+      "updated_at": "2026-10-05",
+      "timestamp": "2026-10-05T00:00:00Z",
       "file": "entities/amazon.md",
       "aliases": [
         "Amazon",
@@ -445,6 +445,7 @@
         "california-ai-regulation",
         "claude-fable-5",
         "federal-ai-policy",
+        "jev",
         "muse-code",
         "nvidia",
         "perplexity"
@@ -560,11 +561,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while The Information cites ~$1.5T as closer to fair value.",
-      "description": "AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while The Information cites ~$1.5T as closer to fair value.",
+      "summary": "AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while a single relay says it is committing $100M to train 10,000 Frontier Deployed Engineers.",
+      "description": "AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while a single relay says it is committing $100M to train 10,000 Frontier Deployed Engineers.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-04",
-      "timestamp": "2026-10-04T00:00:00Z",
+      "updated_at": "2026-10-05",
+      "timestamp": "2026-10-05T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -572,7 +573,8 @@
         "@AnthropicAI",
         "One Claude",
         "Dario Amodei",
-        "Chris Olah"
+        "Chris Olah",
+        "Frontier Deployed Engineers"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -2138,11 +2140,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; CNN says Trump is expected to name DNI Jay Clayton AI czar while he keeps the intelligence role, moving the post into the national-security portfolio David Sacks left in March.",
-      "description": "US federal AI governance; CNN says Trump is expected to name DNI Jay Clayton AI czar while he keeps the intelligence role, moving the post into the national-security portfolio David Sacks left in March.",
+      "summary": "US federal AI governance; the White House launched the Super Intelligence Force, with WSJ and The Decoder saying DNI Jay Clayton will lead it, but no charter, budget, or named membership yet.",
+      "description": "US federal AI governance; the White House launched the Super Intelligence Force, with WSJ and The Decoder saying DNI Jay Clayton will lead it, but no charter, budget, or named membership yet.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-10-03",
-      "timestamp": "2026-10-03T00:00:00Z",
+      "updated_at": "2026-10-05",
+      "timestamp": "2026-10-05T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -2155,6 +2157,8 @@
         "RIN 0694-AJ90",
         "CATSR",
         "AI Force",
+        "Super Intelligence Force",
+        "SIF",
         "Buist v. Anthropic",
         "Ban Artificial Superintelligence Act",
         "SAFA",
@@ -2460,11 +2464,11 @@
         "flash-tier",
         "ai-security"
       ],
-      "summary": "Google's 2026-07-21 triple Flash-tier release — Gemini 3.6 Flash, 3.5 Flash-Lite, and Flash \"Cyber\" — later gained agent-based video analysis on 3.6 Flash and 3.5 Flash-Lite (2026-09-02), claimed to cut video-token use by up to 88 percent.",
-      "description": "Google's 2026-07-21 triple Flash-tier release — Gemini 3.6 Flash, 3.5 Flash-Lite, and Flash \"Cyber\" — later gained agent-based video analysis on 3.6 Flash and 3.5 Flash-Lite (2026-09-02), claimed to cut video-token use by up to 88 percent.",
+      "summary": "Google's 2026-07-21 Flash-tier trio; from 9 October 3.5 Flash-Lite is the only model on the free Gemini app, after 3.6 Flash and 3.1 Pro are removed from that tier.",
+      "description": "Google's 2026-07-21 Flash-tier trio; from 9 October 3.5 Flash-Lite is the only model on the free Gemini app, after 3.6 Flash and 3.1 Pro are removed from that tier.",
       "created_at": "2026-07-22",
-      "updated_at": "2026-09-03",
-      "timestamp": "2026-09-03T00:00:00Z",
+      "updated_at": "2026-10-05",
+      "timestamp": "2026-10-05T00:00:00Z",
       "file": "entities/gemini-3-6-flash.md",
       "aliases": [
         "Gemini 3.6 Flash",
@@ -2480,6 +2484,7 @@
         "gemini-3-5-pro",
         "gemini-3-7-flash",
         "gemini-3-8-flash",
+        "gemini-4-argon",
         "google",
         "moonshot-kimi-k3"
       ],
@@ -2488,6 +2493,7 @@
         "gemini-3-5-flash",
         "gemini-3-7-flash",
         "gemini-3-8-flash",
+        "gemini-4-argon",
         "google",
         "moonshot-kimi-k3",
         "muse-code"
@@ -2624,8 +2630,8 @@
       "summary": "Google's Fairwind-gated frontier SKU; took",
       "description": "Google's Fairwind-gated frontier SKU; took",
       "created_at": "2026-10-01",
-      "updated_at": "2026-10-02",
-      "timestamp": "2026-10-02T00:00:00Z",
+      "updated_at": "2026-10-05",
+      "timestamp": "2026-10-05T00:00:00Z",
       "file": "entities/gemini-4-argon.md",
       "aliases": [
         "Gemini 4 Argon",
@@ -2639,6 +2645,7 @@
         "claude-fable-5",
         "claude-opus-5-5",
         "federal-ai-policy",
+        "gemini-3-6-flash",
         "gemini-3-8-flash",
         "gemini-3-8-live",
         "google",
@@ -2648,6 +2655,7 @@
       "inbound": [
         "astra",
         "claude-opus-5-5",
+        "gemini-3-6-flash",
         "gemini-3-8-flash",
         "google"
       ]
@@ -2740,11 +2748,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; confirmed its Project Suncatcher TPU prototype, built with Planet, reached orbit on SpaceX Transporter-18 and made contact.",
-      "description": "Hyperscaler behind Gemini; confirmed its Project Suncatcher TPU prototype, built with Planet, reached orbit on SpaceX Transporter-18 and made contact.",
+      "summary": "Hyperscaler behind Gemini; from 9 October free Gemini-app users get only 3.5 Flash-Lite, AI Plus loses Pro, and AI Pro gains Deep Think.",
+      "description": "Hyperscaler behind Gemini; from 9 October free Gemini-app users get only 3.5 Flash-Lite, AI Plus loses Pro, and AI Pro gains Deep Think.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-03",
-      "timestamp": "2026-10-03T00:00:00Z",
+      "updated_at": "2026-10-05",
+      "timestamp": "2026-10-05T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -3164,6 +3172,7 @@
         "zhipu"
       ],
       "inbound": [
+        "amazon",
         "open-weights",
         "perplexity"
       ]
@@ -4202,16 +4211,17 @@
         "ai-infrastructure",
         "nvidia-partner"
       ],
-      "summary": "Amsterdam-based AI cloud (\"neocloud\") spun out of Yandex; a Microsoft-linked Vineland site slated under a $17B Nebius deal drew a $1.07M New Jersey air-permit fine.",
-      "description": "Amsterdam-based AI cloud (\"neocloud\") spun out of Yandex; a Microsoft-linked Vineland site slated under a $17B Nebius deal drew a $1.07M New Jersey air-permit fine.",
+      "summary": "Amsterdam-based AI cloud (\"neocloud\") spun out of Yandex; Token Factory acquired Inferize to cut GPU cold-start times, after a $1B Reflection AI compute book and a $17B Microsoft-linked Vineland site.",
+      "description": "Amsterdam-based AI cloud (\"neocloud\") spun out of Yandex; Token Factory acquired Inferize to cut GPU cold-start times, after a $1B Reflection AI compute book and a $17B Microsoft-linked Vineland site.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-27",
-      "timestamp": "2026-09-27T00:00:00Z",
+      "updated_at": "2026-10-05",
+      "timestamp": "2026-10-05T00:00:00Z",
       "file": "entities/nebius.md",
       "aliases": [
         "Nebius",
         "NBIS",
-        "Nebius Group N.V."
+        "Nebius Group N.V.",
+        "Inferize"
       ],
       "outbound": [
         "ai-capex",
@@ -4219,7 +4229,9 @@
         "crusoe",
         "microsoft",
         "neocloud",
-        "spacex"
+        "open-weights",
+        "spacex",
+        "xai"
       ],
       "inbound": [
         "ai-capex",
@@ -4230,7 +4242,8 @@
         "meta",
         "microsoft",
         "neocloud",
-        "nvidia"
+        "nvidia",
+        "xai"
       ],
       "market": {
         "ticker": "NBIS",
@@ -4593,6 +4606,7 @@
         "muse-glimmer",
         "naive-ai",
         "nano-banana-2-lite",
+        "nebius",
         "nvidia",
         "openrouter",
         "ornith-1-5",
@@ -4605,6 +4619,7 @@
         "step-5-preview",
         "tencent-hunyuan-hy3",
         "thinking-machines",
+        "xai",
         "xiaomi-mimo-v2-5-pro",
         "xiaomi-mimo-v2-6",
         "zhipu",
@@ -4636,8 +4651,8 @@
       "summary": "Frontier lab behind the GPT family; safety-report lead David Robinson resigned in an Atlantic essay calling the culture broken, days after three safety-researcher firings.",
       "description": "Frontier lab behind the GPT family; safety-report lead David Robinson resigned in an Atlantic essay calling the culture broken, days after three safety-researcher firings.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-04",
-      "timestamp": "2026-10-04T00:00:00Z",
+      "updated_at": "2026-10-05",
+      "timestamp": "2026-10-05T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5826,8 +5841,8 @@
       "summary": "Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.",
       "description": "Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-09-22",
-      "timestamp": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-10-05",
+      "timestamp": "2026-10-05T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -5854,6 +5869,8 @@
         "harvey",
         "midjourney",
         "moonshot-kimi-k3",
+        "nebius",
+        "open-weights",
         "openai",
         "spacex",
         "xiaomi-mimo-v2-6"
@@ -5865,6 +5882,7 @@
         "cursor",
         "eu-ai-regulation",
         "federal-ai-policy",
+        "nebius",
         "open-weights",
         "openai",
         "ox-alpha",
@@ -6376,6 +6394,7 @@
     "flash cyber": "gemini-3-6-flash",
     "fractile": "fractile",
     "fractile systems": "fractile",
+    "frontier deployed engineers": "anthropic",
     "fugu": "sakana-ai",
     "fugu max": "sakana-ai",
     "fugu ultra": "sakana-ai",
@@ -6493,6 +6512,7 @@
     "ilya sutskever": "safe-superintelligence",
     "ilya sutskever's lab": "safe-superintelligence",
     "industrial ai": "artificial-general-engineer",
+    "inferize": "nebius",
     "inkling": "thinking-machines",
     "inkling-small": "thinking-machines",
     "instinct": "amd",
@@ -6732,6 +6752,7 @@
     "seedance-2-5": "seedance-2-5",
     "shazeer": "noam-shazeer",
     "shieldstral": "mistral-shieldstral",
+    "sif": "federal-ai-policy",
     "siri": "apple",
     "sk hynix": "sk-hynix",
     "sk hynix inc.": "sk-hynix",
@@ -6763,6 +6784,7 @@
     "step-5-preview": "step-5-preview",
     "stepfun step 5": "step-5-preview",
     "suncatcher": "google",
+    "super intelligence force": "federal-ai-policy",
     "super intelligence renaming order": "federal-ai-policy",
     "synthid bio": "google",
     "taalas": "taalas",
@@ -6828,6 +6850,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-10-05",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-05 digest plus tickets updated 2026-10-04 (openai-safety-staff-departures, google-gemini-app-tier-changes, nebius-inferize, anthropic-frontier-deployed-engineers, ftc-anthropic-openai, anthropic-pace-the-frontier). Created 0, updated 9 (federal-ai-policy — White House Super Intelligence Force launched, Clayton to lead per WSJ/Decoder, still no charter or budget; openai — Robinson essay 711 HN comments + Altman Politico \"accept some bad things\" + reported Codex 28-day resets; google — free Gemini app to 3.5 Flash-Lite from 9 Oct, AI Plus loses Pro, AI Pro gains Deep Think + bug-bounty freeze; gemini-3-6-flash — Flash-Lite becomes the free-app default; gemini-4-argon — free-app cut as the serving-cost counterpart of the gated rollout; nebius — Inferize tuck-in for GPU cold-start + Reflection $150M/month Colossus on top of the $1B book; anthropic — voice-data opt-in + $100M FDE residency relay; xai — same Reflection Colossus bill as a named tenant print; amazon — first-party drop of data-center NDAs with agencies + reported Strands Decider 2B). Skipped for budget: Reflection AI as its own page, Runway Praxis-1, Meta Watermelon, Fable 5.5 / GPT-6.1 rumors, Grok 4.7 AA Cyber claim, SpaceXAI cloud-arm revenue, Kolibri leftover, Qwen 3.8 Flash Next local runtime, US $85B construction figure (unlinked), arXiv holdovers."
+    },
     {
       "date": "2026-10-04",
       "op": "ingest",
@@ -6922,11 +6949,6 @@
       "date": "2026-09-16",
       "op": "ingest",
       "summary": "Ingested the 2026-09-16 digest (no model tickets with updated_at today or yesterday; nearest ticket updates are 2026-09-14). Created 1 (gemini-3-8-live — speech-to-speech pair in public preview, AA S2S 82.6 at ~$0.84/hour, ~80% cheaper than GPT-Live 1). Updated 10 (google — 3.8 Live + Siri backend + confirmed safety coordination; openai — coordination confirmed + METR refused + Dreamforce + Noam Brown RSI priority; federal-ai-policy — confirmed coordination + Dreamforce split + Ninth Circuit CFAA + Khan Keppel; apple — Siri AI ships on Gemini + $100 iPhone DRAM hike; ai-capex — 2027 DRAM allocations ~50% + Apple consumer prices + ByteDance margin compression; agentic-ai-security — METR refusal + Irregular CTF harness + CoT plan-injection paper; meta — Meta One subscription bundles; gemini-3-8-flash — sibling note pointing at Live; perplexity — Ninth Circuit CFAA win; amazon — same CFAA opinion from the plaintiff side). Skipped for budget: Jev/TypeSafe, TabPFN-3.5, Salesforce Koa, ZGCM-1, anthropic as its own Dreamforce increment, microsoft isolated-deployments increment, perplexity/amazon as their own CFAA pages, Gates $1B, robotics/world-model claims, arXiv highlights."
-    },
-    {
-      "date": "2026-09-15",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-15 digest plus tickets updated 2026-09-14 (pace-the-frontier, compute-commitments, industry standards body, grok-4-8, nemotron-imo, anthropic-ipo). Created 0, updated 8 (federal-ai-policy — Trump hoax + Beijing rejection closed governmental pacing routes, private standards body rumored, Senate duty-of-care; openai — pre-RL safety cases + dropped antitrust-exemption ask + Glass Imaging >$300M; anthropic — CNBC $2T courtship + $13.7B RUM Georgia deal + Fable restricted over 30-day logs; nvidia — Huang on-stage no-slowdown + Nemotron 3 Ultra IMO 30/42 recipe release; microsoft — 37-page Humanist AI Code of Conduct, no audit/gate/signatories; ai-capex — SoftBank −13.2% / ASMI −10% / SOXX −5.4% selloff against the $517B vs $180B gap; xai — Grok 4.8 2.5T on a new C++ stack, 4.7 still next to ship; palantir — Fable restriction demanding irrevocable customer-managed logs). Skipped for budget: deepseek V4.1 base-weights withhold, Apple Siri staged rollout, Temporal $550M, mistral €3B close increment, china-ai-regulation / china-humanoid-ipo-curbs, google as its own standards-body increment, claude-fable-5 as its own restriction increment, arXiv highlights."
     }
   ]
 }

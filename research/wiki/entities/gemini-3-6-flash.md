@@ -4,10 +4,12 @@ title: Gemini 3.6 Flash, 3.5 Flash-Lite & Flash Cyber
 type: entity
 aliases: ["Gemini 3.6 Flash", "Gemini 3.5 Flash-Lite", "Gemini 3.5 Flash Cyber", "Flash Cyber", "Gemini Flash Cyber"]
 tags: [model-release, google-deepmind, flash-tier, ai-security]
-description: Google's 2026-07-21 triple Flash-tier release — Gemini 3.6 Flash, 3.5 Flash-Lite, and Flash "Cyber" — later gained agent-based video analysis on 3.6 Flash and 3.5 Flash-Lite (2026-09-02), claimed to cut video-token use by up to 88 percent.
+description: Google's 2026-07-21 Flash-tier trio; from 9 October 3.5 Flash-Lite is the only model on the free Gemini app, after 3.6 Flash and 3.1 Pro are removed from that tier.
 created_at: 2026-07-22
-timestamp: 2026-09-03T00:00:00Z
+timestamp: 2026-10-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
+  - {title: "ARA model ticket — Gemini app tier changes", path: research/models/tickets/google-gemini-app-tier-changes-2026-10.md}
   - {title: "ARA daily digest 2026-09-03", path: research/digest/2026-09-03-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "ARA daily digest 2026-07-22", path: research/digest/2026-07-22-digest.md}
@@ -68,3 +70,13 @@ on [[gemini-3-8-flash]] (Google DeepMind; ARA daily digest
 - **When does Gemini 3.5 Pro actually ship**, and does the reported Gemini 4
   training effort mean Pro is being effectively skipped or folded into the
   next major version? See [[gemini-3-5-pro]] for the dedicated tracking page.
+
+## Flash-Lite becomes the free-app default (2026-10-05)
+
+From **2026-10-09**, the free Gemini app serves only **3.5 Flash-Lite**,
+dropping **3.6 Flash** and 3.1 Pro. That turns the cheapest SKU on this
+page into the default consumer model, and it was disclosed on a support
+page rather than announced. [[google]]'s $4.99 AI Plus tier also loses
+Pro; AI Pro ($19.99) gains Deep Think. See [[google]] and
+[[gemini-4-argon]] (The Decoder, 9to5Google; ARA daily digest
+2026-10-05 and ticket `google-gemini-app-tier-changes-2026-10`).

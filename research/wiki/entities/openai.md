@@ -6,8 +6,9 @@ aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Ro
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
 description: Frontier lab behind the GPT family; safety-report lead David Robinson resigned in an Atlantic essay calling the culture broken, days after three safety-researcher firings.
 created_at: 2026-05-30
-timestamp: 2026-10-04T00:00:00Z
+timestamp: 2026-10-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA model ticket — OpenAI next-week release tease", path: research/models/tickets/openai-next-week-release-2026-10.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
@@ -2495,6 +2496,48 @@ materially reshape how the lab is positioned heading into its IPO window:
   6.1 Astra withhold on [[gpt-6]]
   (The Information; ARA daily digest
   2026-10-04).
+
+## Robinson's essay dominates HN; Altman asks the world to accept harm (2026-10-05)
+
+- **Robinson's Atlantic essay became
+  the day's most-discussed AI item
+  on Hacker News** (430 points / 711
+  comments; a second thread 711
+  comments). The 2026-10-04
+  resignation on this page is now
+  the weekend's public argument,
+  not only a personnel note.
+  TechCrunch, The Verge and The
+  Decoder carried it again (Hacker
+  News; ARA daily digest
+  2026-10-05).
+- **Altman told Politico the world
+  should "accept some bad things"**
+  as the price of AI's benefits —
+  the same day the White House
+  launched the Super Intelligence
+  Force and Robinson's essay
+  circulated. That is an on-record
+  framing opposite Robinson's
+  "trial and error guarantees
+  failures at growing scale." See
+  [[federal-ai-policy]] (Politico
+  via @AndrewCurran_; ARA daily
+  digest 2026-10-05).
+- **Codex is reported to pledge 28
+  days of resets** — a usage-limit
+  reset or a meaningful update
+  every day, relayed across about
+  6.7K posts. The original OpenAI
+  post was not captured.
+  Commentators read it as a
+  retention move after post-DevDay
+  limit cuts pushed users toward
+  [[claude-opus-5-5|Claude Opus
+  5.5]]. Treat as a secondary
+  relay, not a first-party card
+  (@mark_k, @kimmonismus; ARA
+  daily digest 2026-10-05).
 
 ## Open questions
 

@@ -2,12 +2,13 @@
 slug: federal-ai-policy
 title: Federal AI Policy
 type: theme
-aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton"]
+aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; CNN says Trump is expected to name DNI Jay Clayton AI czar while he keeps the intelligence role, moving the post into the national-security portfolio David Sacks left in March.
+description: US federal AI governance; the White House launched the Super Intelligence Force, with WSJ and The Decoder saying DNI Jay Clayton will lead it, but no charter, budget, or named membership yet.
 created_at: 2026-06-03
-timestamp: 2026-10-03T00:00:00Z
+timestamp: 2026-10-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA model ticket — White House Super Intelligence accord", path: research/models/tickets/whitehouse-superintelligence-accord-2026-09.md}
@@ -2002,6 +2003,45 @@ footing for the first time in the cycle.
   team this week (@leomschwartz;
   ARA daily digest 2026-10-03).
 
+## The Super Intelligence Force launches without a charter (2026-10-05)
+
+- **The White House formally created
+  the Super Intelligence Force.** The
+  official @WhiteHouse account posted
+  Trump's statement creating the SIF
+  so "America continues to lead the
+  World in Super Intelligence,"
+  confirming the WSJ report that the
+  planned "AI Force" had been renamed.
+  The Decoder says it reports to the
+  president and will coordinate with
+  AI firms and critical-infrastructure
+  operators, and that "superintelligence"
+  is simply Trump's word for AI. The
+  WSJ says the mandate includes
+  "preventing overregulation and
+  regulatory capture." Per the WSJ and
+  The Decoder, DNI **Jay Clayton will
+  lead it** — the 2026-10-03 CNN
+  expectation on this page is now a
+  named-outlet leadership claim
+  attached to a live body. **The
+  statement itself names no officials
+  and gives no budget or charter.**
+  There is still no executive order.
+  The open question is whether the SIF
+  sits on top of the existing OSTP/NSC
+  AI roles. Also still pending: the
+  FTC probe of rogue agents across
+  labs, and the reported rejection of
+  [[anthropic|Amodei]]'s antitrust
+  waiver to coordinate on frontier
+  pace. See [[openai]] (Twitter
+  @WhiteHouse, WSJ via
+  @AndrewCurran_, TechCrunch, The
+  Decoder; ARA daily digest
+  2026-10-05).
+
 ## Open questions
 
 - **Is the new voluntary framework additive to the June 2 executive order, or a
@@ -2020,3 +2060,7 @@ footing for the first time in the cycle.
   draft is relayed, not published; screening-on-shipment is a different
   instrument from a use ban, and the gray-market token path already
   shows how access controls leak.
+- **Where does the Super Intelligence Force sit?** Branding and a
+  named-outlet Clayton claim are live; an executive order, budget, and
+  membership are not. Does it overlay OSTP/NSC AI roles, replace the
+  vacant Sacks czar seat, or remain a press-office label?

@@ -2,12 +2,14 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while The Information cites ~$1.5T as closer to fair value.
+description: AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while a single relay says it is committing $100M to train 10,000 Frontier Deployed Engineers.
 created_at: 2026-05-24
-timestamp: 2026-10-04T00:00:00Z
+timestamp: 2026-10-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
+  - {title: "ARA model ticket — Frontier Deployed Engineers", path: research/models/tickets/anthropic-frontier-deployed-engineers-2026-10.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
@@ -2548,3 +2550,40 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   points). See [[google]]
   (@Claudeupdates11, claude.dev, HN;
   ARA daily digest 2026-10-04).
+
+## Voice-data opt-in and a $100M FDE residency (2026-10-05)
+
+- **A new in-app Claude prompt asks
+  users to opt in** so Anthropic can
+  use voice-chat audio to improve its
+  models. Recruitment for 15-minute
+  Anthropic Interviewer voice sessions
+  has widened. Neither points to a
+  confirmed realtime-voice product
+  (@testingcatalog; ARA daily digest
+  2026-10-05).
+- **A single relay says Anthropic
+  committed $100M** to train 10,000
+  "Frontier Deployed Engineers" by
+  the end of 2027. The program is
+  modeled on a medical residency:
+  a multi-day simulated enterprise
+  deployment, a Resident Engineer
+  badge, a 12-week in-company
+  Claude project, then an FDE
+  badge. First cohorts reportedly
+  include Accenture, Bain,
+  Capgemini, Commonwealth Bank of
+  Australia, Deloitte, McKinsey,
+  Morgan Stanley and Novo Nordisk.
+  Entry is by nomination; first
+  badges are not expected until
+  early 2027. The Anthropic post
+  itself was not captured. Treat
+  the numbers as targets. This is
+  a go-to-market channel in the
+  pre-IPO window, not a model
+  release. See [[federal-ai-policy]]
+  (@shawnchauhan1; ARA daily
+  digest 2026-10-05 and ticket
+  `anthropic-frontier-deployed-engineers-2026-10`).

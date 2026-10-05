@@ -6,8 +6,10 @@ aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon"]
 tags: [model-release, google-deepmind, frontier-model, fairwind, cyber-defense, pricing]
 description: Google's Fairwind-gated frontier SKU; took #1 on the Vals Index at 68.9% and was the day's top HN story, with cost-per-task claims still conflicting.
 created_at: 2026-10-01
-timestamp: 2026-10-02T00:00:00Z
+timestamp: 2026-10-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
+  - {title: "ARA model ticket — Gemini app tier changes", path: research/models/tickets/google-gemini-app-tier-changes-2026-10.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA model ticket — Gemini 4 post-training", path: research/models/tickets/google-gemini-4-2026-09.md}
@@ -94,3 +96,13 @@ ARA daily digest 2026-10-01).
   task as Astra. Treat the cost comparisons as provisional until
   paid API access opens (Vals AI, Artificial Analysis, The
   Decoder; ARA daily digest 2026-10-02).
+
+## Free-app cut as a serving-cost counterpart (2026-10-05)
+
+The same window that left Argon gated behind Fairwind, [[google]]
+cut the free Gemini app to
+[[gemini-3-6-flash|3.5 Flash-Lite]] from 9 October. The ticket
+reads that as capacity coming from somewhere after a gated
+frontier rollout — a consumer-tier cut, not an Argon price
+change. See [[google]] (The Decoder; ARA daily digest
+2026-10-05 and ticket `google-gemini-app-tier-changes-2026-10`).
