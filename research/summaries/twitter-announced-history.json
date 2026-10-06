@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-17 09:00 UTC",
-    "headline": "SEMIANALYSIS PREVIEWS MLSYS 2026 (MAY 18-22) \u2014 CORE ATTENTION DISAGGREGATION, MOE EXPERT BALANCING AS CONFERENCE HIGH-SIGNAL OUTPUTS",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-17-twitter-09h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2055845794020757678"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 12:00 UTC",
-    "headline": "CXMT PRINTS 1Q26: $7.46B REVENUE +719% YoY, $4.85B NET PROFIT, 95%+ FAB UTILIZATION \u2014 CHINA DRAM HITS MICRON-COMPARABLE SCALE",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-17-twitter-12h-headlines.json",
-    "url": "https://x.com/jukan05/status/2055950752720523324"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 12:00 UTC",
-    "headline": "CXMT 1H26 GUIDANCE: $16.15-17.62B REVENUE, $9.69-11.01B NET PROFIT \u2014 IMPLIED FULL-YEAR ~$33B AT CURRENT PACE",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-17-twitter-12h-headlines.json",
-    "url": "https://x.com/jukan05/status/2055951991004958965"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-17 12:00 UTC",
     "headline": "SUleyman: AI TO AUTOMATE MOST WHITE-COLLAR WORK IN 12-18 MONTHS \u2014 FORTUNE RE-SYNDICATES MICROSOFT AI CEO'S FT INTERVIEW",
@@ -23900,5 +23873,26 @@
     "headline": "WIKIMEDIA: OPENAI-LINKED AGENTS MAY HAVE HELPED KNOCK WIKIDATA QUERY SERVICE PARTIALLY OFFLINE \u2014 REUTERS",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2107315632199152099"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-06 15:52:31 UTC",
+    "headline": "MISTRAL LAUNCHES LARGE 4 'LE CHONK' \u2014 1T PARAMS, 49B ACTIVE, MULTIMODAL; OPEN WEIGHTS DUE END OF OCTOBER",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2107457414387622310"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-06 15:52:31 UTC",
+    "headline": "OPENAI MAKES CODEX AUTO-REVIEW FREE FOR ALL CHATGPT-SIGNED-IN USERS",
+    "source": "@thsottiaux",
+    "url": "https://x.com/jxnlco/status/2107478913907818920"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-06 15:52:31 UTC",
+    "headline": "AMAZON AGI RELEASES ADAPTIVELY LOOPED DIFFUSION LANGUAGE MODELS, REPORTS WINS OVER DIFFUSION AND AR BASELINES",
+    "source": "@arankomatsuzaki",
+    "url": "https://x.com/arankomatsuzaki/status/2107473674211328010"
   }
 ]
