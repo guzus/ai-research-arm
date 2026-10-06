@@ -4,15 +4,16 @@ title: Microsoft
 type: entity
 aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "MAI Code of Conduct", "Humanist AI Code of Conduct"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; New Jersey fined DataOne $1.07M at a Vineland datacenter slated to serve Microsoft under a $17B Nebius deal.
+description: Hyperscaler and frontier-model builder; The Information says it cut expected internal Anthropic spend by more than a third as it pushes staff onto its own coding tools.
 created_at: 2026-06-03
-timestamp: 2026-09-27T00:00:00Z
+timestamp: 2026-10-06T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
@@ -262,6 +263,32 @@ ARA daily digest 2026-09-26).
   a Microsoft product ship (The
   Guardian via @rohanpaul_ai; ARA
   daily digest 2026-09-27).
+
+## Internal Anthropic spend cut (2026-10-06)
+
+- **The Information reports that
+  Microsoft cut its expected
+  internal [[anthropic]] spend by
+  more than a third** and is
+  pushing staff to its own coding
+  tools. The same cycle [[meta]]'s
+  Claude Code users fell from
+  ~60K to ~30K. The Decoder adds
+  that Microsoft cut its cloud
+  division's per-employee monthly
+  Claude budget from **$100,000
+  to $10,000** — that figure
+  first circulated in an
+  unverified viral post. Treat
+  the $100k→$10k print as
+  unverified; the directional
+  cut is the load-bearing claim.
+  This is the Copilot /
+  OpenClaw rebuild on this page
+  showing up as a vendor-spend
+  decision, not a new SKU (The
+  Information, The Decoder; ARA
+  daily digest 2026-10-06).
 
 ## Open questions
 

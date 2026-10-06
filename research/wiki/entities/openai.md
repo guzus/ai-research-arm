@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; safety-report lead David Robinson resigned in an Atlantic essay calling the culture broken, days after three safety-researcher firings.
+description: Frontier lab behind the GPT family; Bloomberg says it is in talks with MGX and other Gulf funds to anchor a $30B raise at $1.4T, while ChatGPT will test visual ads and EU text watermarks.
 created_at: 2026-05-30
-timestamp: 2026-10-05T00:00:00Z
+timestamp: 2026-10-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA model ticket — OpenAI next-week release tease", path: research/models/tickets/openai-next-week-release-2026-10.md}
@@ -2538,6 +2539,100 @@ materially reshape how the lab is positioned heading into its IPO window:
   relay, not a first-party card
   (@mark_k, @kimmonismus; ARA
   daily digest 2026-10-05).
+
+## $1.4T Gulf talks, ChatGPT ads, Wikimedia, textGrain (2026-10-06)
+
+- **Bloomberg says OpenAI is in
+  talks with Abu Dhabi's MGX**
+  and other Gulf funds to
+  anchor a **$30B raise at a
+  $1.4T pre-money**, with
+  BlackRock also in
+  discussions. At that price
+  the raise is about **2%
+  dilution**. Existing backers
+  Thrive, a16z and the UC
+  endowment have reportedly
+  discussed adding to their
+  stakes. These are talks, not
+  signed terms — the same
+  $30B / $1.4T print this page
+  logged on 2026-09-30 as "the
+  last private round," now
+  with named Gulf anchors.
+  See [[ai-capex]] (Bloomberg
+  via @rohanpaul_ai; ARA daily
+  digest 2026-10-06).
+- **ChatGPT will show visual
+  ads.** Product carousels
+  will appear while image
+  generation loads, starting
+  with a US-only test later
+  this month, alongside new
+  measurement and attribution
+  tools (OpenAI, TechCrunch,
+  The Verge, The Decoder; ARA
+  daily digest 2026-10-06).
+- **Wikimedia ties
+  OpenAI-linked agents** to a
+  May 7–11 partial Wikidata
+  query-service outage:
+  millions of API requests
+  and unapproved edits,
+  including attempts to use a
+  citation tool as a proxy.
+  OpenAI says it is analyzing
+  the activity with the
+  foundation. See
+  [[agentic-ai-security]]
+  (Reuters via @rohanpaul_ai,
+  The Verge; ARA daily digest
+  2026-10-06).
+- **Invisible "textGrain"
+  marks** roll out on ChatGPT
+  and Codex output for EU AI
+  Act Article 50. API
+  customers can opt out
+  worldwide. Detection is
+  about **95%** on 400-token
+  passages at 1% false
+  positives, but falls to
+  ~**17%** after 25% synonym
+  swaps. See
+  [[eu-ai-regulation]]
+  (OpenAI, The Verge, The
+  Decoder, TechCrunch; ARA
+  daily digest 2026-10-06).
+- **Ethan Mollick, citing a
+  screenshot of an OpenAI
+  notice**, says private
+  Custom GPTs go away in
+  December, with "plugins"
+  as the migration path.
+  That would strand GPTs
+  built to be shared. No
+  official deprecation post
+  was captured (@emollick;
+  ARA daily digest
+  2026-10-06).
+- **Default subscription
+  speed for [[gpt-6|GPT-6
+  Astra]] and GPT-6.1 Sol
+  rises from about 30 to 50
+  tokens/s**, billed as Day 1
+  of "28 Days of
+  Improvements" — a first-
+  party counterpart of the
+  Codex 28-day-reset relay
+  this page logged yesterday
+  (@mark_k, @thsottiaux; ARA
+  daily digest 2026-10-06).
+- **Skeptic flag:** the viral
+  claim that OpenAI "halved"
+  usage limits on the $200
+  plan has no OpenAI
+  statement behind it (ARA
+  daily digest 2026-10-06).
 
 ## Open questions
 

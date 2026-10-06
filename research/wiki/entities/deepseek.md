@@ -4,10 +4,11 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou Chinese frontier lab; The Information put annualized revenue at $1B and a $7.5B raise at a $75B valuation, with 70% of compute on training.
+description: Hangzhou Chinese frontier lab; Bloomberg says it is close to a ≥$12B raise at ~$71B to fund a 160,000-chip Huawei Ascend cluster ahead of an early-2027 IPO.
 created_at: 2026-06-04
-timestamp: 2026-09-25T00:00:00Z
+timestamp: 2026-10-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA model ticket — DeepSeek second funding round", path: research/models/tickets/deepseek-second-round-2026-07.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
@@ -362,12 +363,46 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   digest 2026-09-25 and model
   ticket deepseek-second-round-2026-07).
 
+## Bloomberg ≥$12B / ~$71B print; Ascend cluster (2026-10-06)
+
+- **Bloomberg reports DeepSeek is
+  close to raising at least 80B
+  yuan (about $12B)** — well
+  above its ~50B-yuan target —
+  at a valuation of about 500B
+  yuan (~$71B). The money would
+  fund a **160,000-chip Huawei
+  Ascend cluster** ahead of a
+  planned **early-2027 IPO**.
+  Tencent and CATL are again
+  among the biggest backers, and
+  signed term sheets could take
+  the round to nearly 100B yuan.
+  The round has **not closed**.
+  This is a new size and a named
+  use of proceeds on the same
+  raise this page logged on
+  2026-09-23 as 50B yuan / 500B
+  yuan and restated on
+  2026-09-25 as $7.5B / $75B.
+  Still a single-outlet cluster
+  (Bloomberg via @rohanpaul_ai,
+  @jukan05, @Nusodinkelmi);
+  @teortaxesTex notes even this
+  much money covers only part of
+  the "high hundreds of
+  megawatts" DeepSeek needs,
+  because the binding constraint
+  is Ascend supply and power.
+  See [[ai-capex]] and
+  [[open-weights]] (ARA daily
+  digest 2026-10-06).
+
 ## Open questions
 
 - **Does the round close at the reported size/valuation?** Reported-closed at
-  ~$7.4B / $50B+ (The Information, 2026-06-18), now framed as the largest in
-  Chinese AI history — but still no DeepSeek primary statement or filing, and
-  the official @deepseek_ai account has been silent since May 22.
+  ~$7.4B / $50B+ (The Information, 2026-06-18); Bloomberg now prints a
+  still-open ≥$12B / ~$71B follow-on with no DeepSeek primary or filing.
 - **What does outside capital do to the open-weights posture?** Tencent/CATL
   involvement and a commercialization mandate could pull DeepSeek toward more
   gated or monetized releases over time.
