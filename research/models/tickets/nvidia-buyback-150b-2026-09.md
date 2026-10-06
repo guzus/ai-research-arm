@@ -5,6 +5,14 @@ company: NVIDIA
 model: null
 status: rumored
 status_note: |
+  **2026-10-06 — a second, independent digest repeats it.** Polish-language market
+  roundup @ooooooookke (2026-10-06 13:23 UTC), on Monday 2026-10-05: "Nvidia with a
+  new record, close to $6T market cap. Plus a $150B share buyback and an upgrade from
+  Morgan Stanley." Still no outlet named, no 8-K or NVIDIA release captured, and
+  still no answer to whether $150B is a new authorization. Verification moves to
+  partial (two unrelated secondary mentions); status stays rumored until a primary
+  disclosure is in hand.
+
   **One aggregated digest, one sentence.** @pawel7's 2026-09-29 global-news
   roundup: "**Nvidia's Massive Buyback**: Amidst protests over AI data center
   expansion, Nvidia announced a historic $150 billion stock buyback, signaling
@@ -42,16 +50,19 @@ labels:
   - buyback
   - rumor
   - unverified
-verification: unverified
+verification: partial
 sources:
   - https://x.com/pawel7/status/2105144119056048149
+  - https://x.com/ooooooookke/status/2107461667407757816
 created_at: 2026-09-30
-updated_at: 2026-09-30
+updated_at: 2026-10-06
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-30
     change: "Created — RUMORED / unverified. @pawel7's 2026-09-29 global-news digest reports that NVIDIA 'announced a historic $150 billion stock buyback', framed as occurring amid protests over AI datacenter expansion and read by the compiler as a signal of continued profitability despite regulatory and social scrutiny. That is the whole evidence base: one aggregated summary, no named outlet for this item, no filing, no NVIDIA statement, and no second mention across the 131 retained signal groups. Status rumored and verification unverified — buyback authorizations of this scale are disclosed in earnings releases or 8-Ks and are among the most widely covered corporate events, so single-digest sourcing is the anomaly here rather than the number. Recorded explicitly as NOT established: the protest framing, which no other item in this cycle's signal supports. TRACKED BECAUSE CAPITAL-RETURN SCALE IS A DEMAND SIGNAL. NVIDIA is currently extending financing and equity across its own customer base — [[nvidia-openai-ohio-datacenter-financing-2026-07]], [[nvidia-ssi-investment-2026-07]], [[nvidia-poolside-license-2026-08]], a reported anchor stake of up to $10B in the Anthropic IPO ([[anthropic-ipo-2026-06]]), plus the TPU-financing backstop dynamic at [[google-tpu-financing-backstops-2026-07]] — while also raising server prices ([[nvidia-server-price-increase-2026-08]]). Returning $150B to shareholders while underwriting customers' ability to buy is two claims about the same cash, and the tension is worth holding open rather than resolving from a headline. FIRST CHECK ON ANY CORROBORATION: whether $150B is a NEW authorization or a cumulative/remaining figure — headlines conflate the two routinely, and the distinction changes the signal entirely. Same-week Anthropic disclosure for scale contrast: a $42B loss and $518B in compute commitments."
+  - ts: 2026-10-06
+    change: "Rumored, unchanged; verification unverified -> partial. A second, unrelated aggregated digest — Polish-language market roundup @ooooooookke (2026-10-06 13:23 UTC) — lists for Monday 2026-10-05: NVIDIA at a record close to a $6T market cap, 'plus a $150B share buyback' and a Morgan Stanley upgrade. Two independent secondary mentions now exist, which is the partial threshold, but neither names an outlet and no NVIDIA press release or 8-K was captured, so status stays rumored. The open question recorded at creation is unchanged: whether $150B is a new authorization or a cumulative/remaining figure. Stale-rumor clock reset by this corroboration."
 ---
 
 Two numbers from the same week, if both are real: Anthropic discloses a $42 billion
