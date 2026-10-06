@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-17 12:00 UTC",
-    "headline": "SUleyman: AI TO AUTOMATE MOST WHITE-COLLAR WORK IN 12-18 MONTHS \u2014 FORTUNE RE-SYNDICATES MICROSOFT AI CEO'S FT INTERVIEW",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-17-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2055952702908355012"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-17 12:00 UTC",
-    "headline": "ELON: GROK BUILD IMPROVING LIKE LIGHTNING \u2014 SOFT-AMPLIFIES PRIOR V9 1.5T ANNOUNCEMENT, 10K+ LIKES IN 2H",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-17-twitter-12h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2055965456146821584"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 12:00 UTC",
-    "headline": "ANTHROPIC CORP SILENCE HITS ~66.5H \u2014 NO RESPONSE TO MYTHOS GCP LEAK, M5/V8, CMU BENCHMARK, GROK V9, CXMT 1Q26",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-17-twitter-12h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 12:00 UTC",
-    "headline": "MALLABY: OPENAI 50/50 ODDS OF RUNNING OUT OF CASH BY NEXT SUMMER \u2014 AS ANTHROPIC NEARS $30B AT $900B VALUATION",
-    "source": "@MarketMoodMeter",
-    "source_file": "research/summaries/2026-05-17-twitter-12h-headlines.json",
-    "url": "https://x.com/MarketMoodMeter/status/2055979324587606388"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-17 18:00 UTC",
     "headline": "THE INFORMATION RE-SYNDICATES: 50+ xAI ENGINEERS GONE SINCE SPACEX ACQUISITION, ALL CO-FOUNDERS BESIDES MUSK DEPARTED",
@@ -23894,5 +23858,33 @@
     "headline": "AMAZON AGI RELEASES ADAPTIVELY LOOPED DIFFUSION LANGUAGE MODELS, REPORTS WINS OVER DIFFUSION AND AR BASELINES",
     "source": "@arankomatsuzaki",
     "url": "https://x.com/arankomatsuzaki/status/2107473674211328010"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-06 22:36:26 UTC",
+    "headline": "OPENAI RELEASES HUNDREDS OF NEW MATH RESULTS FROM UNRELEASED INTERNAL FRONTIER MODEL",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2107596713791767021"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-06 22:36:26 UTC",
+    "headline": "ANTHROPIC OPENS CLAUDE MYTHOS 5.1 TO VERIFIED SECURITY PROS, ADDS OFFENSIVE PEN-TEST TIERS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2107546569654636883"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-06 22:36:26 UTC",
+    "headline": "GOOGLE SHIPS NANO BANANA 2.1 IMAGE MODEL AT $0.034 PER IMAGE, ~4X CHEAPER THAN PRIOR PRO",
+    "source": "@_philschmid",
+    "url": "https://x.com/_philschmid/status/2107502894685749672"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-06 22:36:26 UTC",
+    "headline": "GOOGLE OPEN-SOURCES EMBEDDINGGEMMA 2, MULTIMODAL EMBEDDINGS UNDER APACHE 2.0",
+    "source": "@_philschmid",
+    "url": "https://x.com/_philschmid/status/2107539841101758856"
   }
 ]
