@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-10-06
+
+TOP STORIES:
+• DeepSeek nears $12B+ raise for Huawei Ascend cluster, IPO eyed 2027
+• OpenAI courts UAE's MGX for $30B round at $1.4T valuation
+• Reflection unveils Beam, 501B/23B-active open model (weights later this month)
+
+KEY NUMBERS:
+• $413.7B of Anthropic's $518B compute plan reportedly non-cancellable
+• Meta Claude Code users ~60K -> ~30K (The Information)
+• 77% of Americans want AI slowed or stopped (Quinnipiac)
+
+TRENDING: Anthropic reporting a Claude "diary" threat to police (HN 529 pts / 451 comments)
+
+Full digest on GitHub.

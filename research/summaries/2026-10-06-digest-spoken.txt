@@ -1,0 +1,11 @@
+Speaker 1: Tuesday, October sixth, twenty twenty-six.
+Speaker 2: [high_energy] DeepSeek is reportedly close to raising more than [emphasis] twelve billion dollars [/emphasis], and the money is going into a Huawei Ascend compute cluster, with an IPO eyed for twenty twenty-seven.
+Speaker 1: That is a big bet on domestic Chinese chips. Meanwhile, OpenAI is courting the UAE's MGX for a thirty billion dollar round.
+Speaker 2: At a valuation of [emphasis] one point four trillion dollars [/emphasis], which would put it in a league almost nobody has reached.
+Speaker 1: On the open model front, Reflection unveiled Beam, a five hundred one billion parameter model with twenty-three billion active.
+Speaker 2: And the weights are promised later this month, so open-source builders will want to keep an eye on that one.
+Speaker 1: Some quick numbers. Roughly four hundred thirteen point seven billion dollars of Anthropic's five hundred eighteen billion dollar compute plan is reportedly non-cancellable.
+Speaker 2: Worth noting that's a serious long-term commitment. And inside Meta, Claude Code users reportedly dropped from about sixty thousand to about thirty thousand.
+Speaker 1: On public sentiment, a new Quinnipiac poll finds [emphasis] seventy-seven percent [/emphasis] of Americans want AI development slowed or stopped.
+Speaker 2: And the trending debate online, [dramatic_pause] Anthropic reporting a threat found in a Claude diary to police, with hundreds of comments weighing in on privacy and safety.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
