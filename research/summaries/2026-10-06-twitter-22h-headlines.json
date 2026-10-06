@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "OPENAI RELEASES HUNDREDS OF NEW MATH RESULTS FROM UNRELEASED INTERNAL FRONTIER MODEL",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2107596713791767021",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC OPENS CLAUDE MYTHOS 5.1 TO VERIFIED SECURITY PROS, ADDS OFFENSIVE PEN-TEST TIERS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2107546569654636883",
+    "category": "model"
+  },
+  {
+    "headline": "GOOGLE SHIPS NANO BANANA 2.1 IMAGE MODEL AT $0.034 PER IMAGE, ~4X CHEAPER THAN PRIOR PRO",
+    "source": "@_philschmid",
+    "url": "https://x.com/_philschmid/status/2107502894685749672",
+    "category": "model"
+  },
+  {
+    "headline": "GOOGLE OPEN-SOURCES EMBEDDINGGEMMA 2, MULTIMODAL EMBEDDINGS UNDER APACHE 2.0",
+    "source": "@_philschmid",
+    "url": "https://x.com/_philschmid/status/2107539841101758856",
+    "category": "opensource"
+  }
+]
