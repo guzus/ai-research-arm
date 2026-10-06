@@ -1,12 +1,14 @@
 AI News - 2026-10-06
 
 TOP STORIES:
-• OpenAI to watermark ChatGPT/Codex text in the EU (EU AI Act)
-• Reflection AI debuts Beam: 501B MoE open-weight model, 1M context
-• OpenAI launching visual ads beside image generations (US, later in Oct)
+• Mistral Large 4: 1T-param model, open weights due in ~3 weeks
+• OpenAI to watermark ChatGPT/Codex text in EU; visual ads coming
+• Reflection debuts Beam, 501B open-weight MoE
+• HackerRank's Chakra AI interviewer goes GA
 
 KEY NUMBERS:
-• Ghost raises $11M seed (a16z) for $3,499 local-AI computer
-• Beam: 23B active params, 23.8T training tokens
+• Mistral trained on 4,000 Nvidia GPUs
+• Ghost $11M seed; Instinct $10B valuation
+• Chakra: 500K+ beta interviews
 
 Full report on GitHub.
