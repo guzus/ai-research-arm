@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 09:00 UTC",
-    "headline": "XAI / NOUS RESEARCH \u2014 HERMES AGENT NOW ACCEPTS X PREMIUM SUBSCRIPTIONS, GETS X POST SEARCH; ELON AMPLIFIES",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-17-twitter-09h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2055909693768515828"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 09:00 UTC",
-    "headline": "ANTHROPIC CORP SILENCE EXTENDS TO ~63.5 HOURS THROUGH US-CHINA PAPER PROPAGATION, MYTHOS CURL BUG, GROK V9 COMPETITIVE EVENT",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-17-twitter-09h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 09:00 UTC",
-    "headline": "OPENAI MALTA CHATGPT PLUS PARTNERSHIP BLOG ~17.5H UNACKNOWLEDGED ON CORP SOCIAL \u2014 MONDAY US CASH OPEN REMAINS LIKELY ROLLOUT WINDOW",
-    "source": "@iruletheworldmo",
-    "source_file": "research/summaries/2026-05-17-twitter-09h-headlines.json",
-    "url": "https://x.com/iruletheworldmo/status/2055807812389462282"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-17 09:00 UTC",
-    "headline": "JUKAN05 \u2014 SAMSUNG DEVELOPING MOBILE HBM PACKAGING (EXTREME-AR CU PILLARS + FOWLP); ON-DEVICE AGENTIC PHONES NEED MOBILE HBM",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-17-twitter-09h-headlines.json",
-    "url": "https://x.com/jukan05/status/2055940737091665928"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-17 09:00 UTC",
     "headline": "SEMIANALYSIS PREVIEWS MLSYS 2026 (MAY 18-22) \u2014 CORE ATTENTION DISAGGREGATION, MOE EXPERT BALANCING AS CONFERENCE HIGH-SIGNAL OUTPUTS",
@@ -23908,5 +23872,33 @@
     "headline": "OPENAI MAKES GPT-6 ASTRA AND GPT-6.1 SOL ~50% FASTER BY DEFAULT ON SUBSCRIPTIONS",
     "source": "@thsottiaux",
     "url": "https://x.com/jxnlco/status/2107181061721747906"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-06 06:58:08 UTC",
+    "headline": "DEEPSEEK NEARS $12B+ RAISE, ABOVE ~$7B TARGET; TENCENT, CATL BACK; IPO EYED EARLY 2027 \u2014 BLOOMBERG",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2107361452428611741"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-06 06:58:08 UTC",
+    "headline": "OPENAI IN TALKS WITH MGX, UAE FUNDS TO ANCHOR $30B ROUND AT $1.4T PRE-MONEY VALUATION \u2014 BLOOMBERG",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2107339096976965868"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-06 06:58:08 UTC",
+    "headline": "FUND PROSPECTUS: $413.7B OF ANTHROPIC'S $518B COMPUTE COMMITMENTS OWED EVEN IF IDLE; BROADCOM TPU LEASES $161.2B",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2107346890648076595"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-06 06:58:08 UTC",
+    "headline": "WIKIMEDIA: OPENAI-LINKED AGENTS MAY HAVE HELPED KNOCK WIKIDATA QUERY SERVICE PARTIALLY OFFLINE \u2014 REUTERS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2107315632199152099"
   }
 ]
