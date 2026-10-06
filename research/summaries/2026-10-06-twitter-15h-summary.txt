@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-06 15:52:31 UTC
+
+CYCLE: Mistral goes trillion-scale; Codex and Amazon AGI ship smaller updates
+
+TOP STORIES:
+• Mistral Large 4 "Le Chonk": 1T params / 49B active, multimodal; API today, open weights end of Oct [✓ release / ⚠ benchmarks]
+• OpenAI makes Codex Auto-review free for ChatGPT sign-ins [⚠]
+• Amazon AGI's looped diffusion LM beats diffusion and AR baselines on average [⚠]
+
+WATCH: Mistral Large 4 tech report, plus the license for the end-of-October weights
+
+Full update on GitHub.
