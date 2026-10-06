@@ -1,14 +1,13 @@
 AI News - 2026-10-06
 
 TOP STORIES:
-• Mistral Large 4: 1T-param model, open weights due in ~3 weeks
-• OpenAI to watermark ChatGPT/Codex text in EU; visual ads coming
-• Reflection debuts Beam, 501B open-weight MoE
-• HackerRank's Chakra AI interviewer goes GA
+• Lambda to raise up to $4B at $14.5B pre-money ahead of 2027 IPO; Anthropic's $35B deal drives backlog
+• Anthropic gives startups a free year of Claude Team + $1,000 credits
+• Mistral Large 4 (1T params) debuts; open weights in ~3 weeks
+• OpenAI to watermark ChatGPT text in the EU; visual ads coming
+• Google pauses OSS bug bounty over invalid AI submissions
 
 KEY NUMBERS:
-• Mistral trained on 4,000 Nvidia GPUs
-• Ghost $11M seed; Instinct $10B valuation
-• Chakra: 500K+ beta interviews
+• $4B Lambda round; $25M Melius; $11M Ghost seed
 
 Full report on GitHub.
