@@ -74,8 +74,9 @@ sources:
   - https://x.com/aleabitoreddit/status/2103232350348001701
   - https://x.com/mark_k/status/2103421891914367471
   - https://x.com/khalidtasi11/status/2106003542490181662
+  - https://x.com/ooooooookke/status/2107461667407757816
 created_at: 2026-09-14
-updated_at: 2026-10-02
+updated_at: 2026-10-06
 closed_at: null
 closed_reason: null
 history:
@@ -87,6 +88,8 @@ history:
     change: "Bookkeeping — citations added for the 2026-09-25 entry: @aleabitoreddit and @mark_k on the $11.6B / seven-year Akamai CPU commitment, its possible ~$20B expansion, and the warrants for up to 5% of Akamai. No status, verification or content change."
   - ts: 2026-10-02
     change: "Unadopted lead, logged for later reconciliation. An Arabic-language market-news roundup (@khalidtasi11, 2026-10-02 12:49 UTC) lists two items: 'Broadcom raises $60B to finance chip purchases for Anthropic' and 'Broadcom provides $42B in financing to Anthropic to lease chips'. No outlet is named, no Broadcom or Anthropic statement was captured, and the two figures are not reconciled with each other. If accurate, this would be a vendor-financing component of the up-to-$517B commitment stack this ticket tracks, and the second accelerator-vendor financing structure after [[anthropic-google-datacenter-financing-2026-07]]. Verification stays partial; nothing in status_note changes until a primary or named outlet confirms it."
+  - ts: 2026-10-06
+    change: "Confirmed, unchanged; verification stays partial. Second, independent mention of the 2026-10-02 unadopted lead: Polish-language market roundup @ooooooookke (2026-10-06 13:23 UTC) lists 'Wall Street raised a record $60B to finance chips for Broadcom and Anthropic'. Two unrelated digests now carry the $60B figure, but neither names an outlet, no Broadcom or Anthropic statement was captured, and the earlier $42B lease-financing figure remains unreconciled. Still logged as a lead rather than adopted into status_note; if a named outlet confirms it, this becomes the vendor-financing component of the commitment stack and the second such structure after [[anthropic-google-datacenter-financing-2026-07]]."
 ---
 
 Two numbers were reported about Anthropic in the same 24 hours, and they point
