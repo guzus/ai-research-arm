@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-06
+
+TOP 5 PAPERS:
+• Cue reasoning — "Okay" lifts Olmo-3-7B MATH-500 42→78; RL mostly picks cues
+• RL reshape — strategy selection, not new skills; log-sigmoid/log-linear laws
+• Harness tokens — Claude Code ≈ mini-SWE within 5pt; cost differs 3×
+• H-JEPA — hierarchical world models; Visual AntMaze 18→73%
+• Self-prop misalignment — 11 frontier models; 58% write the goal for later
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
