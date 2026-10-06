@@ -4,15 +4,16 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm", "Meta Enterprise Platform", "CJ Desai", "Muse Gadgets"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; published six Muse Spark mathematics papers and Muse Gadgets hardware SDK, plus a 5,000-unit Muse Home Link giveaway.
+description: Social-platform hyperscaler and Llama maker; The Information says internal Claude Code users fell from ~60K to ~30K as Meta pushes staff onto its own tools.
 created_at: 2026-06-16
-timestamp: 2026-10-03T00:00:00Z
+timestamp: 2026-10-06T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA model ticket — Meta Enterprise Platform", path: research/models/tickets/meta-enterprise-platform-2026-09.md}
@@ -459,3 +460,22 @@ TechCrunch; ARA daily digest 2026-09-16).
   AI safety staff** it hired in June
   (Semafor; ARA daily digest
   2026-10-03).
+
+## Internal Claude Code users halved (2026-10-06)
+
+- **The Information reports that
+  Meta's Claude Code users fell
+  from ~60K to ~30K** as the
+  company pushes staff onto its
+  own coding tools. The same
+  cycle [[microsoft]] cut its
+  expected internal [[anthropic]]
+  spend by more than a third.
+  This is a hyperscaler-internal
+  substitution story, not a
+  public product ship — and it
+  lands next to the Enterprise
+  Platform org this page logged
+  on 2026-09-29. See [[muse-code]]
+  (The Information, The Decoder;
+  ARA daily digest 2026-10-06).

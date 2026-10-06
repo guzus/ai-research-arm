@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on the frontier; Aleph Alpha's Kolibri-1 is a European Apache-2.0 increment after Anthropic said freely downloadable GLM-5.3 crossed a cyber threshold.
+description: The 2026 storyline of open-weight models closing on the frontier; Reflection AI unveiled Beam, a 501B/23B-active sparse MoE with Apache 2.0 weights promised later this month.
 created_at: 2026-06-14
-timestamp: 2026-10-04T00:00:00Z
+timestamp: 2026-10-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA model ticket — Aleph Alpha Kolibri-1", path: research/models/tickets/aleph-alpha-kolibri-1-2026-10.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
@@ -690,6 +691,33 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   [[soofi-s-30b-a3b]] (Aleph Alpha,
   HN, @emollick; ARA daily digest
   2026-10-04).
+
+## Reflection Beam preview (2026-10-06)
+
+- **[[reflection-ai]] unveiled
+  Beam**, a **501B / 23B-active**
+  sparse MoE pretrained on
+  **23.8T tokens** on GB300s.
+  Apache 2.0 weights are
+  promised "later this month,"
+  so this is a preview, not a
+  weight drop. Company-reported
+  SWE-Bench Verified **80.9**
+  and Terminal Bench v2.1
+  **80.1** sit behind
+  [[deepseek-v4-1-flash|DeepSeek
+  V4.1 Flash]] (**90.6**) and
+  [[moonshot-kimi-k3|Kimi K3]]
+  (**88.3**) on Terminal Bench.
+  "Strongest Western open
+  model" is the defensible
+  framing. HN's top comment
+  demanded the weights. See
+  [[aleph-alpha]] for the other
+  Western Apache increment this
+  week (Reflection, TechCrunch,
+  HN; ARA daily digest
+  2026-10-06).
 
 ## Open questions
 

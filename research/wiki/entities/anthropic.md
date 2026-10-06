@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while a single relay says it is committing $100M to train 10,000 Frontier Deployed Engineers.
+description: AI safety lab behind Claude; a prospectus relay says $413.7B of a $518B compute plan is non-cancellable, and TechSpot says Claude's safety systems referred a user's diary entry to police.
 created_at: 2026-05-24
-timestamp: 2026-10-05T00:00:00Z
+timestamp: 2026-10-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA model ticket — Frontier Deployed Engineers", path: research/models/tickets/anthropic-frontier-deployed-engineers-2026-10.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
@@ -2587,3 +2588,99 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   (@shawnchauhan1; ARA daily
   digest 2026-10-05 and ticket
   `anthropic-frontier-deployed-engineers-2026-10`).
+
+## $413.7B non-cancellable compute; Claude diary referral (2026-10-06)
+
+- **A prospectus from two funds
+  that hold Anthropic stock
+  reportedly shows $413.7B of
+  the lab's $518B compute plan
+  is owed whether or not the
+  capacity is used** — about
+  **$41B a year**.
+  [[broadcom|Broadcom]]'s
+  **$161.2B** in TPU leases is
+  the largest block; [[google]]
+  and [[amazon]] are reportedly
+  owed **$221B** regardless of
+  use. The $518B headline is
+  the same Reuters S-1 figure
+  this page logged on
+  2026-09-29; the new content
+  is the non-cancellable split
+  and the named suppliers.
+  A Founder LLC holding one
+  Class F share would control
+  **50.1%** of votes on key
+  matters after an IPO — the
+  same founder-control ask
+  logged on 2026-09-26. The
+  figures come from one
+  summarizer and should be
+  treated as provisional until
+  the EDGAR filing is read
+  directly. See [[ai-capex]]
+  (@rohanpaul_ai; ARA daily
+  digest 2026-10-06).
+- **TechSpot reports that a
+  Florida woman now faces a
+  felony threat charge** after
+  Claude's safety systems
+  flagged a planned attack in
+  a user's "diary" entry and a
+  human reviewer referred it
+  under Anthropic's emergency-
+  disclosure rule. It was HN's
+  top AI story (**529 points /
+  451 comments**). The thread
+  argued over whether typing
+  into Claude counts as a
+  threat "another person may
+  view" under Florida law, and
+  over users who treat
+  chatbots as private
+  confidants (TechSpot, Hacker
+  News; ARA daily digest
+  2026-10-06).
+- **The Information reports
+  that [[meta]]'s Claude Code
+  users fell from ~60K to
+  ~30K** and that
+  [[microsoft]] cut its
+  expected internal Anthropic
+  spend by more than a third.
+  Both companies are pushing
+  staff to their own coding
+  tools. The Decoder adds that
+  Microsoft cut its cloud
+  division's per-employee
+  monthly Claude budget from
+  **$100,000 to $10,000** —
+  that figure first circulated
+  in an unverified viral post.
+  SemiAnalysis says Anthropic
+  subscriptions give more than
+  **5×** the API-equivalent
+  value of [[openai]]'s (about
+  2.5× on raw tokens). See
+  [[meta]] and [[microsoft]]
+  (The Information, The
+  Decoder; ARA daily digest
+  2026-10-06).
+- **Cowork inference and the
+  VM now run in a per-session
+  cloud sandbox**, so work
+  continues with the laptop
+  closed or from a phone —
+  the next step on the Chat /
+  Cowork merge this page
+  already tracks. See
+  [[dynamic-workflows]] (Felix
+  Rieseberg via Simon
+  Willison; ARA daily digest
+  2026-10-06).
+- **The rumored 6 October date
+  for Claude Fable 5.5 still
+  has no artifact** behind it
+  in the local sources (ARA
+  daily digest 2026-10-06).

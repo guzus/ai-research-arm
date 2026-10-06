@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; investors are getting choosier after ~$55B of AI high-yield bonds this year, and a BIS report says 55.2% of AI fundraising comes from other AI companies.
+description: The historically large compute buildout; this cycle's capital cluster is DeepSeek's ≥$12B / ~$71B Bloomberg print, OpenAI's $30B / $1.4T Gulf talks, and Anthropic's $413.7B non-cancellable compute relay.
 created_at: 2026-05-24
-timestamp: 2026-10-03T00:00:00Z
+timestamp: 2026-10-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
@@ -1452,3 +1453,54 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   backlash. [[nvidia]] closed at a
   record ~$5.7T the same window (ARA
   daily digest 2026-10-03).
+
+## Funding cluster: DeepSeek, OpenAI, Anthropic (2026-10-06)
+
+- **Capital raising dominated the
+  cycle**, and each of the three
+  biggest prints traces to a
+  single Bloomberg report or an
+  investor-filing relay. See
+  [[deepseek]], [[openai]] and
+  [[anthropic]] (ARA daily digest
+  2026-10-06).
+- **[[deepseek]] is close to a
+  ≥$12B raise at ~$71B** to fund
+  a 160,000-chip Huawei Ascend
+  cluster ahead of an early-2027
+  IPO. The round has not closed
+  (Bloomberg via Twitter; ARA
+  daily digest 2026-10-06).
+- **[[openai]] is in talks with
+  MGX and other Gulf funds** to
+  anchor a $30B raise at $1.4T
+  pre-money — about 2% dilution.
+  Talks, not signed terms
+  (Bloomberg via @rohanpaul_ai;
+  ARA daily digest 2026-10-06).
+- **A prospectus relay says
+  $413.7B of [[anthropic]]'s
+  $518B compute plan is
+  non-cancellable**, about $41B
+  a year, with [[broadcom]]
+  TPU leases the largest block
+  at $161.2B. Provisional until
+  the EDGAR filing is read
+  (@rohanpaul_ai; ARA daily
+  digest 2026-10-06).
+- **[[nvidia]] is reportedly
+  swapping rental guarantees
+  for a cut of cloud revenue**
+  after preferred clouds such
+  as [[nebius]] refused to give
+  up profit share. Its 10-Q
+  lists **$36B** in AI cloud
+  commitments (The Information;
+  ARA daily digest 2026-10-06).
+- **[[reflection-ai]] unveiled
+  Beam** against an already-
+  large compute book ($1B
+  Nebius plus a reported
+  $150M/month Colossus bill).
+  See [[open-weights]] (ARA
+  daily digest 2026-10-06).

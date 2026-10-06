@@ -6,13 +6,14 @@ aliases: [Nebius, NBIS, "Nebius Group N.V.", Inferize]
 tags: [neocloud, gpu-cloud, ai-infrastructure, nvidia-partner]
 description: Amsterdam-based AI cloud ("neocloud") spun out of Yandex; Token Factory acquired Inferize to cut GPU cold-start times, after a $1B Reflection AI compute book and a $17B Microsoft-linked Vineland site.
 created_at: 2026-05-24
-timestamp: 2026-10-05T00:00:00Z
+timestamp: 2026-10-06T00:00:00Z
 market:
   ticker: NBIS
   exchange: NASDAQ
   symbol: NASDAQ:NBIS
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA model ticket — Nebius acquires Inferize", path: research/models/tickets/nebius-inferize-acquisition-2026-10.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
@@ -131,13 +132,15 @@ that NVIDIA's "demand has gone parabolic" Q1 FY27 print is meant to confirm
   competing on utilisation of
   open-weight inference, not raw GPU
   count. Same window, Axios says
-  Reflection AI has paid **$150M a
+  [[reflection-ai]] has paid **$150M a
   month since July** for compute on
   [[xai|xAI]]'s Colossus, **on top of**
   the $1B Nebius deal already on this
-  page — still no size, benchmarks, or
-  date for Reflection's promised
-  open-weight model. See [[xai]],
+  page. The next day Reflection named
+  the model **Beam** (501B / 23B
+  active) and promised Apache 2.0
+  weights later this month — still a
+  preview. See [[xai]],
   [[neocloud]] and [[open-weights]]
   (@demian_ai, @Israel, Axios via
   @AndrewCurran_; ARA daily digest

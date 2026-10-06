@@ -6,8 +6,9 @@ aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok B
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
 description: Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.
 created_at: 2026-06-08
-timestamp: 2026-10-05T00:00:00Z
+timestamp: 2026-10-06T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
@@ -317,18 +318,19 @@ capacity (co-located with [[spacex]]) to the very labs it competes with.
 
 ## Reflection AI's $150M-a-month Colossus bill (2026-10-05)
 
-Axios reports Reflection AI has paid
+Axios reports [[reflection-ai]] has paid
 **$150M a month since July** for
 compute on Colossus, **on top of**
 its **$1B [[nebius|Nebius]] deal**.
 That is the landlord business on
 this page printing a second named
 tenant besides [[anthropic]] and
-Google. No size, benchmarks, or
-date have been disclosed for the
-open-weight model Axios says
-Reflection is aiming at Chinese
-rivals. A fan-account claim that
+Google. The next day Reflection
+named the model **Beam** (501B /
+23B active) and promised Apache
+2.0 weights later this month —
+still a preview, not a weight
+drop. A fan-account claim that
 Grok 4.7 leads the AA
 Cyber Index, amplified by Musk,
 has no published Artificial
@@ -336,7 +338,7 @@ Analysis score — leave it
 unverified. See [[nebius]] and
 [[open-weights]] (Axios via
 @AndrewCurran_; ARA daily digest
-2026-10-05).
+2026-10-05 and 2026-10-06).
 
 ## Open questions
 

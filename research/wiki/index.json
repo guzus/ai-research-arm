@@ -172,11 +172,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; investors are getting choosier after ~$55B of AI high-yield bonds this year, and a BIS report says 55.2% of AI fundraising comes from other AI companies.",
-      "description": "The historically large compute buildout; investors are getting choosier after ~$55B of AI high-yield bonds this year, and a BIS report says 55.2% of AI fundraising comes from other AI companies.",
+      "summary": "The historically large compute buildout; this cycle's capital cluster is DeepSeek's ≥$12B / ~$71B Bloomberg print, OpenAI's $30B / $1.4T Gulf talks, and Anthropic's $413.7B non-cancellable compute relay.",
+      "description": "The historically large compute buildout; this cycle's capital cluster is DeepSeek's ≥$12B / ~$71B Bloomberg print, OpenAI's $30B / $1.4T Gulf talks, and Anthropic's $413.7B non-cancellable compute relay.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-03",
-      "timestamp": "2026-10-03T00:00:00Z",
+      "updated_at": "2026-10-06",
+      "timestamp": "2026-10-06T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -214,10 +214,12 @@
         "nebius",
         "neocloud",
         "nvidia",
+        "open-weights",
         "openai",
         "openrouter",
         "palantir",
         "prometheus",
+        "reflection-ai",
         "sk-hynix",
         "spacex",
         "thinking-machines",
@@ -267,6 +269,7 @@
         "palantir",
         "perplexity",
         "prometheus",
+        "reflection-ai",
         "remote-labor-index",
         "salesforce",
         "sk-hynix",
@@ -561,11 +564,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while a single relay says it is committing $100M to train 10,000 Frontier Deployed Engineers.",
-      "description": "AI safety lab behind Claude; Bloomberg reports a 14 October investor Q&A that could lead to a pre-Thanksgiving listing at $1.8–2T, while a single relay says it is committing $100M to train 10,000 Frontier Deployed Engineers.",
+      "summary": "AI safety lab behind Claude; a prospectus relay says $413.7B of a $518B compute plan is non-cancellable, and TechSpot says Claude's safety systems referred a user's diary entry to police.",
+      "description": "AI safety lab behind Claude; a prospectus relay says $413.7B of a $518B compute plan is non-cancellable, and TechSpot says Claude's safety systems referred a user's diary entry to police.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-05",
-      "timestamp": "2026-10-05T00:00:00Z",
+      "updated_at": "2026-10-06",
+      "timestamp": "2026-10-06T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -1674,11 +1677,11 @@
         "foundation-models",
         "commercialization"
       ],
-      "summary": "Hangzhou Chinese frontier lab; The Information put annualized revenue at $1B and a $7.5B raise at a $75B valuation, with 70% of compute on training.",
-      "description": "Hangzhou Chinese frontier lab; The Information put annualized revenue at $1B and a $7.5B raise at a $75B valuation, with 70% of compute on training.",
+      "summary": "Hangzhou Chinese frontier lab; Bloomberg says it is close to a ≥$12B raise at ~$71B to fund a 160,000-chip Huawei Ascend cluster ahead of an early-2027 IPO.",
+      "description": "Hangzhou Chinese frontier lab; Bloomberg says it is close to a ≥$12B raise at ~$71B to fund a 160,000-chip Huawei Ascend cluster ahead of an early-2027 IPO.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-09-25",
-      "timestamp": "2026-09-25T00:00:00Z",
+      "updated_at": "2026-10-06",
+      "timestamp": "2026-10-06T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -2072,6 +2075,7 @@
         "minimax-h3",
         "mistral",
         "mistral-shieldstral",
+        "openai",
         "seedance-2-5"
       ],
       "translations": {
@@ -3363,11 +3367,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; published six Muse Spark mathematics papers and Muse Gadgets hardware SDK, plus a 5,000-unit Muse Home Link giveaway.",
-      "description": "Social-platform hyperscaler and Llama maker; published six Muse Spark mathematics papers and Muse Gadgets hardware SDK, plus a 5,000-unit Muse Home Link giveaway.",
+      "summary": "Social-platform hyperscaler and Llama maker; The Information says internal Claude Code users fell from ~60K to ~30K as Meta pushes staff onto its own tools.",
+      "description": "Social-platform hyperscaler and Llama maker; The Information says internal Claude Code users fell from ~60K to ~30K as Meta pushes staff onto its own tools.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-10-03",
-      "timestamp": "2026-10-03T00:00:00Z",
+      "updated_at": "2026-10-06",
+      "timestamp": "2026-10-06T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -3502,11 +3506,11 @@
         "foundation-models",
         "custom-silicon"
       ],
-      "summary": "Hyperscaler and frontier-model builder; New Jersey fined DataOne $1.07M at a Vineland datacenter slated to serve Microsoft under a $17B Nebius deal.",
-      "description": "Hyperscaler and frontier-model builder; New Jersey fined DataOne $1.07M at a Vineland datacenter slated to serve Microsoft under a $17B Nebius deal.",
+      "summary": "Hyperscaler and frontier-model builder; The Information says it cut expected internal Anthropic spend by more than a third as it pushes staff onto its own coding tools.",
+      "description": "Hyperscaler and frontier-model builder; The Information says it cut expected internal Anthropic spend by more than a third as it pushes staff onto its own coding tools.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-09-27",
-      "timestamp": "2026-09-27T00:00:00Z",
+      "updated_at": "2026-10-06",
+      "timestamp": "2026-10-06T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -4006,6 +4010,7 @@
         "openai",
         "ox-alpha",
         "qwen-3-8-max",
+        "reflection-ai",
         "soofi-s-30b-a3b",
         "step-5-preview",
         "thinking-machines",
@@ -4214,8 +4219,8 @@
       "summary": "Amsterdam-based AI cloud (\"neocloud\") spun out of Yandex; Token Factory acquired Inferize to cut GPU cold-start times, after a $1B Reflection AI compute book and a $17B Microsoft-linked Vineland site.",
       "description": "Amsterdam-based AI cloud (\"neocloud\") spun out of Yandex; Token Factory acquired Inferize to cut GPU cold-start times, after a $1B Reflection AI compute book and a $17B Microsoft-linked Vineland site.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-05",
-      "timestamp": "2026-10-05T00:00:00Z",
+      "updated_at": "2026-10-06",
+      "timestamp": "2026-10-06T00:00:00Z",
       "file": "entities/nebius.md",
       "aliases": [
         "Nebius",
@@ -4230,6 +4235,7 @@
         "microsoft",
         "neocloud",
         "open-weights",
+        "reflection-ai",
         "spacex",
         "xai"
       ],
@@ -4243,6 +4249,7 @@
         "microsoft",
         "neocloud",
         "nvidia",
+        "reflection-ai",
         "xai"
       ],
       "market": {
@@ -4445,6 +4452,7 @@
         "palantir",
         "perplexity",
         "poolside",
+        "reflection-ai",
         "safe-superintelligence",
         "sakana-ai",
         "salesforce",
@@ -4515,11 +4523,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on the frontier; Aleph Alpha's Kolibri-1 is a European Apache-2.0 increment after Anthropic said freely downloadable GLM-5.3 crossed a cyber threshold.",
-      "description": "The 2026 storyline of open-weight models closing on the frontier; Aleph Alpha's Kolibri-1 is a European Apache-2.0 increment after Anthropic said freely downloadable GLM-5.3 crossed a cyber threshold.",
+      "summary": "The 2026 storyline of open-weight models closing on the frontier; Reflection AI unveiled Beam, a 501B/23B-active sparse MoE with Apache 2.0 weights promised later this month.",
+      "description": "The 2026 storyline of open-weight models closing on the frontier; Reflection AI unveiled Beam, a 501B/23B-active sparse MoE with Apache 2.0 weights promised later this month.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-04",
-      "timestamp": "2026-10-04T00:00:00Z",
+      "updated_at": "2026-10-06",
+      "timestamp": "2026-10-06T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -4565,6 +4573,7 @@
         "ox-alpha",
         "qwen-3-8-max",
         "qwen-image-2-1",
+        "reflection-ai",
         "sakana-ai",
         "soofi-s-30b-a3b",
         "step-5-preview",
@@ -4579,6 +4588,7 @@
       ],
       "inbound": [
         "agentic-ai-security",
+        "ai-capex",
         "aleph-alpha",
         "alibaba",
         "amd",
@@ -4614,6 +4624,7 @@
         "perplexity",
         "qwen-3-8-max",
         "qwen-image-2-1",
+        "reflection-ai",
         "sakana-ai",
         "soofi-s-30b-a3b",
         "step-5-preview",
@@ -4648,11 +4659,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; safety-report lead David Robinson resigned in an Atlantic essay calling the culture broken, days after three safety-researcher firings.",
-      "description": "Frontier lab behind the GPT family; safety-report lead David Robinson resigned in an Atlantic essay calling the culture broken, days after three safety-researcher firings.",
+      "summary": "Frontier lab behind the GPT family; Bloomberg says it is in talks with MGX and other Gulf funds to anchor a $30B raise at $1.4T, while ChatGPT will test visual ads and EU text watermarks.",
+      "description": "Frontier lab behind the GPT family; Bloomberg says it is in talks with MGX and other Gulf funds to anchor a $30B raise at $1.4T, while ChatGPT will test visual ads and EU text watermarks.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-05",
-      "timestamp": "2026-10-05T00:00:00Z",
+      "updated_at": "2026-10-06",
+      "timestamp": "2026-10-06T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4682,6 +4693,7 @@
         "crusoe",
         "cursor",
         "deepseek",
+        "eu-ai-regulation",
         "federal-ai-policy",
         "gemini-3-8-flash",
         "gemini-3-8-live",
@@ -5153,6 +5165,46 @@
         "alibaba",
         "nano-banana-2-lite",
         "open-weights"
+      ]
+    },
+    {
+      "slug": "reflection-ai",
+      "title": "Reflection AI",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "moe",
+        "us-lab",
+        "nvidia-backed",
+        "model-release"
+      ],
+      "summary": "US open-weights lab that unveiled Beam, a 501B/23B-active sparse MoE pretrained on 23.8T tokens, with Apache 2.0 weights promised later this month.",
+      "description": "US open-weights lab that unveiled Beam, a 501B/23B-active sparse MoE pretrained on 23.8T tokens, with Apache 2.0 weights promised later this month.",
+      "created_at": "2026-10-06",
+      "updated_at": "2026-10-06",
+      "timestamp": "2026-10-06T00:00:00Z",
+      "file": "entities/reflection-ai.md",
+      "aliases": [
+        "Reflection AI",
+        "Reflection",
+        "Beam",
+        "Reflection Beam",
+        "Misha Laskin"
+      ],
+      "outbound": [
+        "ai-capex",
+        "moonshot-kimi-k3",
+        "nebius",
+        "nvidia",
+        "open-weights",
+        "xai",
+        "zhipu-glm-5-2"
+      ],
+      "inbound": [
+        "ai-capex",
+        "nebius",
+        "open-weights",
+        "xai"
       ]
     },
     {
@@ -5841,8 +5893,8 @@
       "summary": "Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.",
       "description": "Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-10-05",
-      "timestamp": "2026-10-05T00:00:00Z",
+      "updated_at": "2026-10-06",
+      "timestamp": "2026-10-06T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -5872,6 +5924,7 @@
         "nebius",
         "open-weights",
         "openai",
+        "reflection-ai",
         "spacex",
         "xiaomi-mimo-v2-6"
       ],
@@ -5886,6 +5939,7 @@
         "open-weights",
         "openai",
         "ox-alpha",
+        "reflection-ai",
         "seedance-2-5",
         "spacex",
         "volta-infra",
@@ -6122,6 +6176,7 @@
         "openrouter",
         "ornith-1-5",
         "qwen-3-8-max",
+        "reflection-ai",
         "soofi-s-30b-a3b",
         "tencent-hunyuan-hy3",
         "thinking-machines",
@@ -6269,6 +6324,7 @@
     "aws": "amazon",
     "baba": "alibaba",
     "ban artificial superintelligence act": "federal-ai-policy",
+    "beam": "reflection-ai",
     "bezos prometheus": "prometheus",
     "bluefield-4": "nvidia",
     "brett adcock": "figure-ai",
@@ -6602,6 +6658,7 @@
     "minimax-h3": "minimax-h3",
     "minimax-m3": "minimax-m3",
     "mira murati": "thinking-machines",
+    "misha laskin": "reflection-ai",
     "mistral": "mistral",
     "mistral ai": "mistral",
     "mistral-leanstral-1-5": "mistral-leanstral-1-5",
@@ -6723,6 +6780,10 @@
     "qwen3.8-2.4t-a95b": "qwen-3-8-max",
     "qwen3.8-max": "qwen-3-8-max",
     "qwen3.8-omni-flash": "alibaba",
+    "reflection": "reflection-ai",
+    "reflection ai": "reflection-ai",
+    "reflection beam": "reflection-ai",
+    "reflection-ai": "reflection-ai",
     "remote labor index": "remote-labor-index",
     "remote-access chip rule": "federal-ai-policy",
     "remote-labor-index": "remote-labor-index",
@@ -6851,6 +6912,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-10-06",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-06 digest plus tickets updated 2026-10-05 (reflection-open-weight-model, aleph-alpha-kolibri-1). Created 1 (reflection-ai — Beam 501B/23B-active sparse MoE, Apache 2.0 weights promised later this month). Updated 9 (deepseek — Bloomberg ≥$12B / ~$71B, 160k Ascend, early-2027 IPO; openai — MGX $30B/$1.4T talks + ChatGPT ads + Wikimedia agents + textGrain + Custom GPT deprecation relay; anthropic — $413.7B non-cancellable of $518B + Claude diary police referral + Meta/MS pullback + Cowork cloud; meta — Claude Code users 60K→30K; microsoft — expected Anthropic spend cut >1/3; ai-capex — same funding cluster + Nvidia revenue-share swap; open-weights — Beam preview; nebius + xai — Beam name on the existing Colossus/Nebius book). Reciprocals on those pages. Skipped for budget: Reka Rho-1, Falcon-Emirati, Yandex Sona, Google Superprojects, gpt-6 / nvidia / eu-ai-regulation / agentic-ai-security / dynamic-workflows as own increments, Quinnipiac poll, Norway AI glasses, MCP trust flaw, Epoch spend, arXiv highlights."
+    },
+    {
       "date": "2026-10-05",
       "op": "ingest",
       "summary": "Ingested the 2026-10-05 digest plus tickets updated 2026-10-04 (openai-safety-staff-departures, google-gemini-app-tier-changes, nebius-inferize, anthropic-frontier-deployed-engineers, ftc-anthropic-openai, anthropic-pace-the-frontier). Created 0, updated 9 (federal-ai-policy — White House Super Intelligence Force launched, Clayton to lead per WSJ/Decoder, still no charter or budget; openai — Robinson essay 711 HN comments + Altman Politico \"accept some bad things\" + reported Codex 28-day resets; google — free Gemini app to 3.5 Flash-Lite from 9 Oct, AI Plus loses Pro, AI Pro gains Deep Think + bug-bounty freeze; gemini-3-6-flash — Flash-Lite becomes the free-app default; gemini-4-argon — free-app cut as the serving-cost counterpart of the gated rollout; nebius — Inferize tuck-in for GPU cold-start + Reflection $150M/month Colossus on top of the $1B book; anthropic — voice-data opt-in + $100M FDE residency relay; xai — same Reflection Colossus bill as a named tenant print; amazon — first-party drop of data-center NDAs with agencies + reported Strands Decider 2B). Skipped for budget: Reflection AI as its own page, Runway Praxis-1, Meta Watermelon, Fable 5.5 / GPT-6.1 rumors, Grok 4.7 AA Cyber claim, SpaceXAI cloud-arm revenue, Kolibri leftover, Qwen 3.8 Flash Next local runtime, US $85B construction figure (unlinked), arXiv holdovers."
@@ -6944,11 +7010,6 @@
       "date": "2026-09-17",
       "op": "ingest",
       "summary": "Ingested the 2026-09-17 digest plus tickets updated 2026-09-16 (openai-raise-1p2t, openai-gpt-6 Sol sighting, anthropic-pace-the-frontier, mistral-mozilla, factory-ai, periodic-labs-neon). Created 0. Updated 8 (openai — $1.2T talks + misalignment-reporting framework + Altman post-Astra mathematician claim + ads products + OpenRouter share slope; anthropic — One Claude / Docs / Slides / Design + reported 2.16 GW Brisbane campus + router-share slide; meta — Zuckerberg compute-against-RSI + retrospective Muse delay + Muse Code Windows; eu-ai-regulation — von der Leyen SOTEU \"pace the frontier\" invitation, no new statute; google — Home MCP early access + DeepMind Institute AGI essays; apple — reported M8 Ultra AI servers (no launch before 2029) + Reference Image provenance; federal-ai-policy — Politico/Public First 63% extinction-risk poll + evaluator independence + Vance / Sanders-Bannon; mistral — Firefox Smart Window beta, zero data retention). Skipped for budget: Cohere/Aleph Alpha, Factory $200M, Periodic Labs Neon, Union Alpha, GPT-6 Sol as its own gpt-6 increment, muse-code as its own Windows increment, microsoft Suleyman increment, ai-capex / agentic-ai-security increments, arXiv highlights."
-    },
-    {
-      "date": "2026-09-16",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-16 digest (no model tickets with updated_at today or yesterday; nearest ticket updates are 2026-09-14). Created 1 (gemini-3-8-live — speech-to-speech pair in public preview, AA S2S 82.6 at ~$0.84/hour, ~80% cheaper than GPT-Live 1). Updated 10 (google — 3.8 Live + Siri backend + confirmed safety coordination; openai — coordination confirmed + METR refused + Dreamforce + Noam Brown RSI priority; federal-ai-policy — confirmed coordination + Dreamforce split + Ninth Circuit CFAA + Khan Keppel; apple — Siri AI ships on Gemini + $100 iPhone DRAM hike; ai-capex — 2027 DRAM allocations ~50% + Apple consumer prices + ByteDance margin compression; agentic-ai-security — METR refusal + Irregular CTF harness + CoT plan-injection paper; meta — Meta One subscription bundles; gemini-3-8-flash — sibling note pointing at Live; perplexity — Ninth Circuit CFAA win; amazon — same CFAA opinion from the plaintiff side). Skipped for budget: Jev/TypeSafe, TabPFN-3.5, Salesforce Koa, ZGCM-1, anthropic as its own Dreamforce increment, microsoft isolated-deployments increment, perplexity/amazon as their own CFAA pages, Gates $1B, robotics/world-model claims, arXiv highlights."
     }
   ]
 }
