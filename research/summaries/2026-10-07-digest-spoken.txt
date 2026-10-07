@@ -1,0 +1,11 @@
+Speaker 1: Wednesday, October seventh, twenty twenty-six.
+Speaker 2: [high_energy] Mistral just launched Large four, nicknamed Le Chonk, with [emphasis] one trillion parameters [/emphasis] and forty-nine billion active, and open weights are due by the end of October.
+Speaker 1: Hacker News loved it, over fifteen hundred points, and pricing lands at one dollar thirty-six per million input tokens and four dollars eighteen per million output.
+Speaker 2: Meanwhile OpenAI posted seven hundred twenty-two math manuscripts produced by an unreleased internal model, covering three hundred seventy-two result families drawn from roughly four thousand problems.
+Speaker 1: Which raises the trending question of the day, who actually vets AI-generated math, now that Erdosproblems dot com has frozen new proof claims.
+Speaker 2: Worth noting that's a real bottleneck, the proofs are arriving faster than humans can check them.
+Speaker 1: Over at Anthropic, Mythos five point one opens up to verified security professionals, with new offensive tiers added.
+Speaker 2: That's a notable shift, giving vetted defenders access to attack-side capabilities rather than locking them away.
+Speaker 1: Some quick numbers, Nano Banana two point one now costs about three point four cents per image, versus thirteen point four cents for the old Pro.
+Speaker 2: That's roughly a quarter of the price, and on the money side, Lambda is raising up to [emphasis] four billion dollars [/emphasis] at a [dramatic_pause] [emphasis] fourteen point five billion dollar [/emphasis] pre-money valuation.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
