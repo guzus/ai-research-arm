@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-07 20:34:03 UTC
+
+CYCLE: Haiku 5.5 ships at Luna prices; ChatGPT gets GPT-6 + Intelligent UI; Microsoft cuts internal model budgets
+
+TOP STORIES:
+• Anthropic ships Claude Haiku 5.5 at $0.10/$0.50 under 100K, ~75% cheaper than Haiku 4.5 [✓]
+• OpenAI rolls GPT-6 + Intelligent UI into ChatGPT — Sol paid, Luna Free/Go [✓]
+• The Information: Microsoft cuts cloud/AI team monthly model budgets from $100K to ~$10K [⚠]
+
+WATCH: Independent Haiku 5.5 Terminal-Bench / SWE-Bench vs Luna and Sonnet 5.5
+
+Full update on GitHub.
