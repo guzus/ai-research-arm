@@ -27,7 +27,7 @@ status_note: |
   FinWorkBench 67%, Harvey legal-agent 15% vs Kimi K3 13% / GPT-6 Astra 5%
   (@Daviswh). Covered by CNBC, WSJ and WIRED ("still in the race"); CEO Arthur
   Mensch previewed it in Abu Dhabi the same morning without naming benchmarks.
-expected: "API preview live 2026-10-06. Final version plus open weights before end of October (Oct 27 per secondary reports). Open: licence, independent benchmarks, pricing, and whether the final RL checkpoint differs materially from the preview."
+expected: "API preview live 2026-10-06 at a reported $1.36/$4.18 per 1M input/output tokens. Final version plus open weights before end of October (Oct 27 per secondary reports). Open: licence, independent benchmarks, and whether the final RL checkpoint differs materially from the preview."
 labels:
   - frontier-model
   - open-weights
@@ -47,13 +47,20 @@ sources:
   - https://x.com/WIRED/status/2107461283750580705
   - "@MistralAI"
   - "@GuillaumeLample"
+  - https://x.com/MistralAI/status/2107532329937723861
+  - https://x.com/MistralAI/status/2107532332253008234
+  - https://x.com/MistralAI/status/2107532335294067106
+  - https://x.com/HelloSurgeAI/status/2107506971775537222
+  - https://x.com/__newts/status/2107825562626748736
 created_at: 2026-10-06
-updated_at: 2026-10-06
+updated_at: 2026-10-07
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-10-06
     change: "Created — RELEASED / confirmed. @MistralAI announced Mistral Large 4 ('Le Chonk') on 2026-10-06 13:06 UTC: 1T total / 49B active parameters, natively multimodal, claimed best open-weights model from the US or Europe on aggregated benchmarks, SOTA on cyber defense, manufacturing and finance, ahead of closed frontier models on visual grounding, available to all via API today, open weights end of October. Co-founder @GuillaumeLample says it is a preview — the RL run is still in flight and a final version ships with weights before month-end — and self-reports 82% vulnerability reproduction/patching and 93% Cybench. Released because API access is open to all now; weights are not yet out. Secondary: 4,000 Grace Blackwell GPUs, 160+ languages, Oct 27 weights date, DeepSWE 62% / FinWorkBench 67% / Harvey legal 15%. Covered by CNBC, WSJ, WIRED. Mistral's first model release since April per @GenAISpotlight; follows the ~€3B round at [[mistral-funding-round-2026-06]]."
+  - ts: 2026-10-07
+    change: "Day-1 follow-through, status unchanged (released, preview). @MistralAI (2026-10-06 18:03 UTC) adds first-party cyber demos: a 19-challenge CTF speedrun with 18 solved, and an end-to-end malware reverse-engineering run that identified a Cobalt Strike sample, extracted IoCs/config and wrote a YARA rule in 12 minutes. @MistralAI RT'd @HelloSurgeAI: a blind Surge human code-review eval Mistral commissioned ranked Large 4 #1 among open-weight models and #2 overall, behind Opus 5. Secondary (@__newts): API priced at $1.36 / $4.18 per 1M input/output tokens, 61.7% DeepSWE v1.1, 28.3% Terminal-Bench 4.0, trained on 3,800 Grace Blackwell GPUs (vs 4,000 in an earlier relay — recorded, not reconciled), 1,600+ HN points; licence still unstated. Chinese-language relays (@jasonni_x, @nextaurame) highlight that on vulnerability reproduction-and-patching Opus 5.5 and GPT-6 Astra scored near 0 by refusing, versus Large 4's 82%."
 ---
 
 Mistral's first frontier-scale release in roughly six months, and its first model

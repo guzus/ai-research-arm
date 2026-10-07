@@ -32,7 +32,7 @@ labels:
   - frontier-model
   - rumored
   - claude-5-5-family
-verification: partial
+verification: confirmed
 sources:
   - https://x.com/kimmonismus/status/2102972781495566455
   - https://x.com/arankomatsuzaki/status/2102445494735982603
@@ -43,8 +43,9 @@ sources:
   - https://x.com/Claudeupdates11/status/2106304522880455029
   - https://x.com/Klonzu/status/2106341362995970417
   - https://x.com/shirochange_ai/status/2106350677404549482
+  - https://x.com/AnthropicAI/status/2107546569654636883
 created_at: 2026-09-24
-updated_at: 2026-10-03
+updated_at: 2026-10-07
 closed_at: null
 closed_reason: null
 history:
@@ -56,6 +57,8 @@ history:
     change: "SHIPPED, AND THE LEAK'S RISKIEST NUMBER WAS RIGHT. Two independent secondary sources now treat Sonnet 5.5 as a live, purchasable model. (1) @RouteMux (2026-09-30 04:13 UTC), a reseller publishing its own discount sheet, lists 'Claude Sonnet 5.5 and Opus 5.5 at 72% off' alongside GPT-6.1 Sol and prints the LIST prices it is discounting from: Sonnet 5.5 $2 / $10 per 1M tokens in/out, Opus 5.5 $4 / $20. A reseller quoting list price is a commercial artifact rather than a rumour — it cannot discount a model it cannot serve. (2) @azattelevision reports Sonnet 5.5 as released and 'nearing the performance levels of the flagship Opus while cutting costs in half'. Status in-testing -> released. THE FALSIFIER THIS TICKET SET ON 2026-09-24 HAS RESOLVED IN THE SOURCE'S FAVOUR: the body stated that if the model shipped at materially different numbers the $2/$10 claim was pattern-matching off GPT-6 Sol's slot, and if it shipped at those exact numbers 'the source had something'. It shipped at exactly $2/$10. That is a real update on @kimmonismus's access for this class of claim and is recorded rather than quietly dropped. Verification stays PARTIAL deliberately: no Anthropic announcement post, model card, official API id or benchmark appears anywhere in this cycle's fetch, so availability is attested by third parties selling it rather than by the vendor shipping it on the record. The context/output half of the leak (1M / 128K) is still uncorroborated, and the 2026-09-28 leaker date of on-or-before 11:00 PT that day cannot be scored from this signal — only that it is live by 2026-09-30. Competitive frame: it lands the same week OpenAI shipped GPT-6.1 Sol at the identical $2/$10 ([[openai-gpt-6-1-sol-2026-09]]) and raised its top consumer tier to $500 ([[openai-chatgpt-pro-max-2026-09]]) — the two labs are now priced identically at the mid tier and diverging sharply at the top."
   - ts: 2026-10-03
     change: "Distribution update, status unchanged (released), verification unchanged (partial — still no Anthropic announcement post in this desk's fetch). Two new surfaces in-window: (1) Google Antigravity now lists Sonnet 5.5 alongside Opus 5.5 on paid Pro/Ultra plans, with third-party model access ending on the current (unpaid) plan on 2026-11-02 per the in-product notice quoted by @Klonzu (@Claudeupdates11 08:45 UTC); (2) Microsoft 365 Copilot adds Claude Sonnet 5.5 (and GPT-6.1 Sol) as selectable models in Word, Excel, PowerPoint and Copilot Studio, rolling out progressively to Office apps, with Claude requiring admin enablement (@shirochange_ai relay, 2026-10-03 11:48 UTC). Being resold inside both Google's and Microsoft's productivity/IDE surfaces is strong circumstantial confirmation that the model is GA under an official API id, but the official id, model card and benchmark set remain unseen here."
+  - ts: 2026-10-07
+    change: "VERIFICATION partial -> confirmed. The gap this ticket carried since 2026-09-30 — no Anthropic post naming Sonnet 5.5 — closes: @AnthropicAI's own 2026-10-06 19:00 UTC announcement of the expanded Cyber Verification Program lists 'Claude Mythos 5.1, Opus 5.5, and Sonnet 5.5' as the models verified security professionals can access. That is a first-party naming of Sonnet 5.5 as a live model. Status unchanged (released). Still no Anthropic launch post, model card or pricing page in this desk's fetch; the $2/$10 pricing remains as reported."
 ---
 
 This ticket exists to hold a specific prediction accountable, not to assert that

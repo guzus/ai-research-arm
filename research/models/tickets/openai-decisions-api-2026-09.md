@@ -3,8 +3,14 @@ slug: openai-decisions-api-2026-09
 title: OpenAI Decisions API — GPT-6 Luna-backed choice endpoint in limited preview
 company: OpenAI
 model: GPT-6 Luna
-status: confirmed
+status: released
 status_note: |
+  **~2026-10-07 — public beta (secondary relay of OpenAI's Tibo).** Decisions
+  API opened to developers in public beta: GPT-6 Luna, up to ~10x faster than the
+  Responses API for selection tasks, text+image in, outputs as true/false
+  probability, a choice, or a numeric score; $0.10 per 1M input tokens, no output
+  charge. Original DevDay record below is retained.
+
   **Announced at DevDay, 2026-09-29, and it is a preview rather than a GA
   product.** The most precise account is @masahirochaen's, ranking it #5 of 25
   announcements: the Decisions API runs on **GPT-6 Luna**, is purpose-built for
@@ -35,7 +41,7 @@ status_note: |
   rather than around Astra. Note the inconsistency in signal: one recap attributes
   the endpoint to Luna, others do not name a model — the Luna attribution comes
   from the single most detailed recap and is recorded as such, not as confirmed.
-expected: "ANNOUNCED 2026-09-29, limited preview for selected customers with expansion said to be days away. Open: general availability, pricing (nothing in signal), the actual latency distribution rather than the 'few hundred milliseconds' claim, the maximum number of options per call, whether the Luna attribution is right, and whether accuracy on routing beats a constrained chat completion by enough to justify a second endpoint."
+expected: "PUBLIC BETA for developers since ~2026-10-07 (Day 2 of OpenAI's 28-day improvements series). Pricing reported at $0.10 per 1M input tokens, no output charge. Open: GA, a first-party docs/pricing page, measured latency, maximum options per call."
 labels:
   - openai
   - api
@@ -50,13 +56,16 @@ sources:
   - https://x.com/MagicPower21M/status/2105148814105710821
   - https://x.com/mickcodez/status/2105147895351771644
   - https://x.com/davidarngar/status/2105149492357976295
+  - https://x.com/AI_Levela/status/2107828005687181382
 created_at: 2026-09-30
-updated_at: 2026-09-30
+updated_at: 2026-10-07
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-30
     change: "Created — CONFIRMED / partial. OpenAI announced the Decisions API at DevDay on 2026-09-29. Per @masahirochaen's item #5 of 25, the most detailed account in signal: it runs on GPT-6 Luna, is specialised for selecting one option from a predefined set, returns in a few hundred milliseconds, takes text and image input, targets inquiry routing, classification and agent next-action selection, and is in limited preview for a subset of customers with expansion expected within days. @insanekrishnaa and @MagicPower21M describe the same product independently; @mickcodez attended DevDay and refers to 'the coming decision model', which supports the preview-not-GA reading. Status CONFIRMED (announced, multi-source) rather than released, because every account describes a gated preview rather than general availability. Verification partial: no OpenAI post in this cycle's fetch, no pricing, and the GPT-6 Luna attribution rests on one recap while others name no model — recorded as reported, not established. Treated as its own ticket rather than folded into the DevDay agent products because it is an API primitive for control flow, not an agent or a model: the value is a guaranteed response shape plus a latency budget small enough for a request path, both of which are infrastructure properties. Positioned by two independent recaps as a competitor to Jev ([[typesafe-jev-2026-09]]), one of them dismissively ('Jev clone'). It is also the first dedicated product surface for GPT-6 Luna, the cheap tier that shipped 2026-09-22 ([[openai-gpt-6]]), which is consistent with that ticket's recorded fast/cheap-tier inference. Several recaps flagged it as the most underrated item of the event despite ranking it low on measured attention — recorded as a judgement, not a measurement."
+  - ts: 2026-10-07
+    change: "CONFIRMED -> RELEASED (public beta for developers). Per a Japanese recap of OpenAI's Tibo (@thsottiaux) 'Day 2 of 28 days of improvements' post (@AI_Levela, 2026-10-07 13:38 UTC): the Decisions API is now in public beta for developers; it runs on GPT-6 Luna (the attribution this ticket held as single-source is now repeated), is up to ~10x faster than the standard Responses API for choosing models, tools or next actions, takes text and image input, returns three output kinds (true/false probability, a choice, a numeric score), and costs $0.10 per 1M input tokens with no output-token charge. OpenAI says it uses it internally to improve app experiences. Verification stays partial — secondary relay, no first-party post in this fetch."
 ---
 
 This is the smallest announcement of DevDay and the one most likely to end up
