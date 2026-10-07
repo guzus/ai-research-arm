@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-18 01:00 UTC",
-    "headline": "GOOGLE PM LEAD LOGAN KILPATRICK: 'THE MODEL IS THE PRODUCT' \u2014 33 HOURS BEFORE I/O 2026 KEYNOTE",
-    "source": "@OfficialLoganK",
-    "source_file": "research/summaries/2026-05-18-twitter-01h-headlines.json",
-    "url": "https://x.com/OfficialLoganK/status/2056107524802457887"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-18 01:00 UTC",
-    "headline": "JPM HIKES SAMSUNG, SK HYNIX TARGETS ON 'STRUCTURAL GROWTH FROM AI SERVER INVESTMENT' \u2014 LTA RE-RATING THESIS",
-    "source": "@Shrimp_a_Whales",
-    "source_file": "research/summaries/2026-05-18-twitter-01h-headlines.json",
-    "url": "https://x.com/Shrimp_a_Whales/status/2056181052012667018"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-18 01:00 UTC",
-    "headline": "JUKAN05: ABF SUBSTRATES EMERGE AS NEXT NVIDIA SUPPLY-CHAIN LOCKDOWN \u2014 TSMC COUPE MASS PRODUCTION 2H 2026",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-18-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2056146790488162706"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-18 01:00 UTC",
-    "headline": "THE INFORMATION: OPENAI-APPLE DEAL 'FAILED TO DELIVER MEANINGFUL GROWTH' \u2014 CHATGPT BURIED IN APPLE ECOSYSTEM",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-18-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation/status/2056102475631841327"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-18 01:00 UTC",
-    "headline": "ANTHROPIC CORP X-SILENCE HITS DAY-HIGH ~79H THROUGH 9-EVENT STACK INCLUDING NAMED-ENG-PM PROCUREMENT-GAP ASK",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-18-twitter-01h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-18 01:00 UTC",
-    "headline": "PALO ALTO NETWORKS COMPLETES KOI ACQUISITION \u2014 LAUNCHES 'AGENTIC ENDPOINT SECURITY' CATEGORY FOR AI AGENTS",
-    "source": "@CHItrader",
-    "source_file": "research/summaries/2026-05-18-twitter-01h-headlines.json",
-    "url": "https://x.com/CHItrader/status/2056180552785448968"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-18 04:00 UTC",
     "headline": "KOREAN COURT PARTIALLY GRANTS INJUNCTION AGAINST SAMSUNG UNION STRIKE \u2014 KOSPI REVERSES 4.68% LOSS, SAMSUNG +6.7%",
@@ -23870,5 +23816,47 @@
     "headline": "OPENAI CUTS API RATE-LIMIT TIERS TO THREE; TOP GROW TIER NOW REQUIRES $500 IN PAYMENTS",
     "source": "@OpenAIDevs",
     "url": "https://x.com/OpenAIDevs/status/2107539647392096384"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-07 20:34:03 UTC",
+    "headline": "ANTHROPIC LAUNCHES CLAUDE HAIKU 5.5 \u2014 ~75% CHEAPER THAN 4.5; $0.10/$0.50 PER MTOK UNDER 100K",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2107894208547983705"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-07 20:34:03 UTC",
+    "headline": "OPENAI ROLLS OUT GPT-6 WITH INTELLIGENT UI IN CHATGPT \u2014 SOL FOR PAID, LUNA FOR FREE AND GO",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2107894997538525580"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-07 20:34:03 UTC",
+    "headline": "THE INFORMATION: MICROSOFT CUTS CLOUD/AI MONTHLY MODEL BUDGETS FROM $100K TO ABOUT $10K",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2107896495605158122"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-07 20:34:03 UTC",
+    "headline": "MICROSOFT COPILOT TO SHIFT ROUTINE CODING FROM CLAUDE HAIKU 4.5 TO ON-DEVICE MAI-CODE-1.1-FLASH",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2107914219408736463"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-07 20:34:03 UTC",
+    "headline": "GOOGLE OPENS SYNTHID DETECTOR TO THE PUBLIC \u2014 CHECKS OPENAI, NVIDIA AND KAKAO WATERMARKS",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2107834249680499136"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-07 20:34:03 UTC",
+    "headline": "PERPLEXITY OPEN-SOURCES PPLX-EMBED-V2-LATE \u2014 9B AND 0.6B MULTIMODAL LATE-INTERACTION EMBEDDINGS",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2107871834205196784"
   }
 ]
