@@ -1,5 +1,5 @@
 {
-  "article_count": 92,
+  "article_count": 93,
   "articles": [
     {
       "claim_count": 18,
@@ -887,6 +887,14 @@
       "stem": "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb",
       "tags": [],
       "title": "Reflection's Beam, audited: the GPU disclosure is real, the 3–4× is mostly about GLM-5.2's verbosity"
+    },
+    {
+      "claim_count": 21,
+      "created_at": "2026-10-07T06:22:36Z",
+      "slug": "openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "stem": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "tags": [],
+      "title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks"
     }
   ],
   "by_host": {
@@ -973,6 +981,10 @@
     ],
     "agilityrobotics.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c23"
+    ],
+    "agmai.org": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c14",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c15"
     ],
     "ai-act-service-desk.ec.europa.eu": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c41",
@@ -1102,6 +1114,9 @@
     ],
     "andrew.ooo": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c10"
+    ],
+    "annals.math.princeton.edu": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c4"
     ],
     "announcements.asx.com.au": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c12"
@@ -1614,7 +1629,10 @@
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c18",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c10",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c27",
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c7"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c7",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c13",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c6",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c7"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -2823,6 +2841,9 @@
     "dronelife.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c16"
     ],
+    "dspace.mit.edu": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c5"
+    ],
     "dtcc.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c23",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c27"
@@ -3018,7 +3039,8 @@
     ],
     "erdosproblems.com": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c21",
-      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c22"
+      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c22",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c17"
     ],
     "esma.europa.eu": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c4"
@@ -3454,7 +3476,11 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c13",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c15",
-      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8"
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c1",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c12",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c18",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c2"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -3979,7 +4005,8 @@
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c35"
     ],
     "kingy.ai": [
-      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c3"
+      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c3",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c11"
     ],
     "kioxia.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c39",
@@ -4034,7 +4061,8 @@
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c18",
       "2026-08-04T171206--comfyui-company#c48",
       "2026-08-04T171206--comfyui-company#c5",
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c20"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c20",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c19"
     ],
     "latepost.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c34"
@@ -4719,6 +4747,9 @@
     "paddo.dev": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c3"
     ],
+    "pages.iai.uni-bonn.de": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c8"
+    ],
     "palisaderesearch.org": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c20"
     ],
@@ -5038,7 +5069,12 @@
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c13",
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c16",
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c17",
-      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c2"
+      "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c2",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c10",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c12",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c13",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c3",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c9"
     ],
     "rdi.berkeley.edu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
@@ -5148,6 +5184,9 @@
     "royalsociety.org": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c35"
     ],
+    "runtimewire.com": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c20"
+    ],
     "ryanoconnellfinance.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
     ],
@@ -5239,6 +5278,10 @@
     "science.org": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c9",
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c20"
+    ],
+    "scientificamerican.com": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c16",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c2"
     ],
     "scmp.com": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c18",
@@ -5660,6 +5703,9 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c11",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c19"
+    ],
+    "tech-insider.org": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c11"
     ],
     "tech.slashdot.org": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c11"
@@ -6634,6 +6680,12 @@
     "https://agglomerations.eig.org/p/looking-for-the-ladder": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c32"
     ],
+    "https://agmai.org/general-sep29": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c14"
+    ],
+    "https://agmai.org/statement-oct6": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c15"
+    ],
     "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-51": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c20"
     ],
@@ -6750,6 +6802,9 @@
     ],
     "https://andrew.ooo/answers/mcp-model-context-protocol-enterprise-adoption-july-2026": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c10"
+    ],
+    "https://annals.math.princeton.edu/2021/193-2/p04": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c4"
     ],
     "https://announcements.asx.com.au/asxpdf/20250226/pdf/06fyjdglv66466.pdf": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c12"
@@ -7089,6 +7144,9 @@
     "https://arxiv.org/abs/1901.02860": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c2"
     ],
+    "https://arxiv.org/abs/1902.10935": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c6"
+    ],
     "https://arxiv.org/abs/1904.03815": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c10"
     ],
@@ -7159,6 +7217,9 @@
     ],
     "https://arxiv.org/abs/2404.01413": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c18"
+    ],
+    "https://arxiv.org/abs/2404.16349": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c13"
     ],
     "https://arxiv.org/abs/2405.00138": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c16"
@@ -7263,6 +7324,9 @@
     ],
     "https://arxiv.org/abs/2503.16861": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c40"
+    ],
+    "https://arxiv.org/abs/2503.22848": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c7"
     ],
     "https://arxiv.org/abs/2504.01848": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c38"
@@ -8614,6 +8678,9 @@
     "https://dronelife.com/2025/12/22/fcc-adds-foreign-made-drones-and-components-to-covered-list-citing-national-security-risks": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c16"
     ],
+    "https://dspace.mit.edu/handle/1721.1/148869": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c5"
+    ],
     "https://eco.com/support/en/articles/14798653-susde-explained-ethena-s-yield-bearing-stablecoin": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8"
     ],
@@ -9352,6 +9419,9 @@
     "https://github.com/junkoda/kaggle_contrails_solution": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15"
     ],
+    "https://github.com/leanprover/comparator": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c18"
+    ],
     "https://github.com/leanprover/lean4/blob/master/src/Init/Core.lean": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c34"
     ],
@@ -9363,6 +9433,11 @@
     ],
     "https://github.com/onyx-dot-app/onyx": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c20"
+    ],
+    "https://github.com/openai/math": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c1",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c12",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c2"
     ],
     "https://github.com/openai/mle-bench": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c40",
@@ -9799,6 +9874,9 @@
     ],
     "https://kingy.ai/blog/claude-opus-5-specs-benchmarks-pricing": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c3"
+    ],
+    "https://kingy.ai/blog/openai-math-722-manuscripts-results-proofs-compute-costs": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c11"
     ],
     "https://knightcolumbia.org/content/ai-as-normal-technology": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c43"
@@ -10457,6 +10535,9 @@
     "https://paddo.dev/blog/kimi-k3-discount-ends": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c3"
     ],
+    "https://pages.iai.uni-bonn.de/schoenhage_arnold/topics.html": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c8"
+    ],
     "https://palisaderesearch.org/blog/shutdown-resistance": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c20"
     ],
@@ -10813,6 +10894,25 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c24",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c25"
     ],
+    "https://raw.githubusercontent.com/openai/math/main/lean/docs/003.md": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c12"
+    ],
+    "https://raw.githubusercontent.com/openai/math/main/lean/docs/107.md": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c13"
+    ],
+    "https://raw.githubusercontent.com/openai/math/main/lean/formalization.yaml": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c10",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c9"
+    ],
+    "https://raw.githubusercontent.com/openai/math/main/overview.tex": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c10"
+    ],
+    "https://raw.githubusercontent.com/openai/math/main/preprints/Integer-multiplication-below-n-log-n-September-23-2026/build/main.tex": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c3"
+    ],
+    "https://raw.githubusercontent.com/openai/math/main/preprints/Integer-multiplication-below-n-log-n-September-23-2026/build/sections/00-introduction.tex": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c3"
+    ],
     "https://raw.githubusercontent.com/openai/mle-bench/main/environment/instructions.txt": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c12"
     ],
@@ -10919,6 +11019,9 @@
     ],
     "https://royalsociety.org/people/john-jumper-37403": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c35"
+    ],
+    "https://runtimewire.com/article/openai-10000-ai-agents-navier-stokes-proof": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c20"
     ],
     "https://ryanoconnellfinance.com/short-selling": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
@@ -11316,6 +11419,9 @@
     ],
     "https://tapeboard.com/blog/glossary-what-is-the-finra-threshold-list": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
+    ],
+    "https://tech-insider.org/openai-722-math-manuscripts-unreleased-model-2026": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c11"
     ],
     "https://tech.slashdot.org/story/25/04/13/2226203/after-meta-cheating-allegations-unmodified-llama-4-maverick-model-tested---ranks-32": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c11"
@@ -13189,6 +13295,9 @@
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c21",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c22"
     ],
+    "https://www.erdosproblems.com/forum/thread/blog:9": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c17"
+    ],
     "https://www.esma.europa.eu/sites/default/files/2025-07/ESMA50-481369926-29744_Maximal_Extractable_Value_Implications_for_crypto_markets.pdf": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c4"
     ],
@@ -13829,6 +13938,9 @@
     "https://www.latent.space/p/ainews-glm-52-the-top-frontend-coding": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c18"
     ],
+    "https://www.latent.space/p/ainews-quasi-riemann-hypothesis-openai": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c19"
+    ],
     "https://www.latent.space/p/ainews-xiaomi-mimo-v26-pro-1t-a42b": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c20"
     ],
@@ -14397,6 +14509,10 @@
     ],
     "https://www.science.org/doi/10.1126/science.abn3943": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c20"
+    ],
+    "https://www.scientificamerican.com/article/openai-unleashes-hundreds-more-math-results-upon-a-field-already-in-shock": [
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c16",
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c2"
     ],
     "https://www.scmp.com/business/china-business/article/3339011/chinese-drug-makers-strike-record-us136-billion-out-licensing-deals-2025": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c18"
@@ -15819,7 +15935,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2741,
+  "claim_count": 2762,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -81593,9 +81709,502 @@
       "source_tiers": [],
       "source_urls": [],
       "type": "derived"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-06",
+      "claim": "The openai/math catalogue contains 722 manuscripts organized into 372 families.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/openai/math"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-07",
+      "claim": "Family 109 (integer multiplication below n log n) has no Lean documentation page and no formalization.yaml entry.",
+      "confidence": "medium",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c10",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/math/main/overview.tex",
+        "https://raw.githubusercontent.com/openai/math/main/lean/formalization.yaml"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-07",
+      "claim": "The '235 of 372 families with a Lean page and 162 fully formalized' figure is a third-party count that mixes families and papers.",
+      "confidence": "medium",
+      "hosts": [
+        "kingy.ai",
+        "tech-insider.org"
+      ],
+      "id": "c11",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c11",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://tech-insider.org/openai-722-math-manuscripts-unreleased-model-2026",
+        "https://kingy.ai/blog/openai-math-722-manuscripts-results-proofs-compute-costs"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-06",
+      "claim": "Family 003's Lean formalization proves a zero-free half-plane Re(s) > 7/8 for zeta and Dirichlet L-functions; the 11/12 writeup was human edited.",
+      "confidence": "high",
+      "hosts": [
+        "github.com",
+        "raw.githubusercontent.com"
+      ],
+      "id": "c12",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c12",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/math/main/lean/docs/003.md",
+        "https://github.com/openai/math"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-06",
+      "claim": "Family 107 claims omega <= 9/4 over C, below the 2024 published record of about 2.371339.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org",
+        "raw.githubusercontent.com"
+      ],
+      "id": "c13",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c13",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "academic"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/math/main/lean/docs/107.md",
+        "https://arxiv.org/abs/2404.16349"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-09-29",
+      "claim": "AGMAI's guidelines asked that repositories not be controlled by any AI lab and that model name, prompts and summarized chain of thought be published.",
+      "confidence": "high",
+      "hosts": [
+        "agmai.org"
+      ],
+      "id": "c14",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://agmai.org/general-sep29"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-06",
+      "claim": "AGMAI stated its involvement should not be interpreted as an endorsement of OpenAI's process.",
+      "confidence": "high",
+      "hosts": [
+        "agmai.org"
+      ],
+      "id": "c15",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://agmai.org/statement-oct6"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-06",
+      "claim": "An OpenAI spokesperson said almost every result came from a single prompt to a single agent and that OpenAI is not bound by the recommendations.",
+      "confidence": "medium",
+      "hosts": [
+        "scientificamerican.com"
+      ],
+      "id": "c16",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c16",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.scientificamerican.com/article/openai-unleashes-hundreds-more-math-results-upon-a-field-already-in-shock"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-06",
+      "claim": "Thomas Bloom froze new proof claims on erdosproblems.com on 6 October 2026, citing a flood of AI-generated proof announcements.",
+      "confidence": "high",
+      "hosts": [
+        "erdosproblems.com"
+      ],
+      "id": "c17",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.erdosproblems.com/forum/thread/blog:9"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-07",
+      "claim": "Comparator checks statement match, permitted axioms and kernel acceptance, but trusts the challenge file's definitions.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c18",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/leanprover/comparator"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-06",
+      "claim": "Latent Space headlined '90 of the top 500 open math problems' without a visible source for the 90.",
+      "confidence": "medium",
+      "hosts": [
+        "latent.space"
+      ],
+      "id": "c19",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c19",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://www.latent.space/p/ainews-quasi-riemann-hypothesis-openai"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-06",
+      "claim": "The model was posed approximately 4,000 problems; each result used on average three hours of ChatGPT Pro thinking compute.",
+      "confidence": "high",
+      "hosts": [
+        "github.com",
+        "scientificamerican.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://github.com/openai/math",
+        "https://www.scientificamerican.com/article/openai-unleashes-hundreds-more-math-results-upon-a-field-already-in-shock"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-09-08",
+      "claim": "The earlier Navier-Stokes claim used roughly 10,000 concurrent agents for about 88 hours.",
+      "confidence": "medium",
+      "hosts": [
+        "runtimewire.com"
+      ],
+      "id": "c20",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c20",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://runtimewire.com/article/openai-10000-ai-agents-navier-stokes-proof"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-09-23",
+      "claim": "The integer multiplication manuscript claims a deterministic O(n(lg n)^(1-kappa)) algorithm with kappa = 2^-182 on a fixed multitape Turing machine.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c3",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/math/main/preprints/Integer-multiplication-below-n-log-n-September-23-2026/build/main.tex",
+        "https://raw.githubusercontent.com/openai/math/main/preprints/Integer-multiplication-below-n-log-n-September-23-2026/build/sections/00-introduction.tex"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2021-03-03",
+      "claim": "Harvey and van der Hoeven proved O(n log n) integer multiplication on a multitape Turing machine (Annals of Mathematics 2021).",
+      "confidence": "high",
+      "hosts": [
+        "annals.math.princeton.edu"
+      ],
+      "id": "c4",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://annals.math.princeton.edu/2021/193-2/p04"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "1974-01-01",
+      "claim": "A proven Omega(n log n) lower bound exists only for on-line multitape Turing machine multiplication (Paterson-Fischer-Meyer 1974).",
+      "confidence": "medium",
+      "hosts": [
+        "dspace.mit.edu"
+      ],
+      "id": "c5",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://dspace.mit.edu/handle/1721.1/148869"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2019-02-28",
+      "claim": "The Omega(n lg n) lower bound for constant-degree Boolean multiplication circuits is conditional on the network coding conjecture.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c6",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/1902.10935"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2025-03-28",
+      "claim": "Harvey and van der Hoeven showed integer multiplication is at least as hard as bit-matrix transposition on Turing machines.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c7",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2503.22848"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "",
+      "claim": "Storage modification (pointer) machines multiply n-bit integers in linear time (Schonhage 1980).",
+      "confidence": "high",
+      "hosts": [
+        "pages.iai.uni-bonn.de"
+      ],
+      "id": "c8",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c8",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://pages.iai.uni-bonn.de/schoenhage_arnold/topics.html"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-06",
+      "claim": "The Lean manifest formalization.yaml lists 162 source papers and 185 declarations, with scope 'Partial progress.' and review status unchecked.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/math/main/lean/formalization.yaml"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+      "article_created_at": "2026-10-07T06:22:36Z",
+      "article_title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks",
+      "as_of": "2026-10-06",
+      "claim": "About 22% of the 722 manuscripts have a catalogued formalized main result (162 of 722).",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#d1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1334,
+  "reusable_count": 1346,
   "schema_version": 1
 }
