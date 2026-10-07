@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-10-07
+
+TOP STORIES:
+• Mistral launches Large 4 "Le Chonk": 1T params, 49B active, open weights due end of Oct
+• OpenAI posts 722 math manuscripts from an unreleased internal model
+• Anthropic opens Mythos 5.1 to verified security pros, adds offensive tiers
+
+KEY NUMBERS:
+• Mistral Large 4: 1,543 HN points; $1.36/$4.18 per Mtok
+• OpenAI math: 372 result families from ~4,000 problems
+• Nano Banana 2.1: $0.034/image vs $0.134 for old Pro
+• Lambda: up to $4B at $14.5B pre-money
+
+TRENDING: Who vets AI-generated math? Erdosproblems.com freezes proof claims
+
+Full digest on GitHub.
