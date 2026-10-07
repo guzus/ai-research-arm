@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-07
+
+TOP 5 PAPERS:
+• QF3 — first off-policy flow RL humanoid from scratch; 10× vs FPO++; zero-shot hardware
+• Recurrent Looped Transformer — parity 40→256 bits at 100%; Transformer at chance
+• AdvSim2Real — 4B web agent +33.6% vs unseen frontier injector
+• JEPA inverse dynamics — next-step loss can collapse the modes you need to control
+• BOTTLED — 48/60 agents worse than zero-shot; Opus 5 keeps 82% F1 at 657× cheaper
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
