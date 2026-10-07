@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: The 2026 storyline of open-weight models closing on the frontier; Reflection AI unveiled Beam, a 501B/23B-active sparse MoE with Apache 2.0 weights promised later this month.
+description: Open-weight models closing on the frontier; Mistral launched Large 4 (1T / 49B-active) with weights promised end of October, a day after Reflection previewed Beam.
 created_at: 2026-06-14
-timestamp: 2026-10-06T00:00:00Z
+timestamp: 2026-10-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA model ticket — Aleph Alpha Kolibri-1", path: research/models/tickets/aleph-alpha-kolibri-1-2026-10.md}
@@ -718,6 +719,45 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   week (Reflection, TechCrunch,
   HN; ARA daily digest
   2026-10-06).
+
+## Mistral Large 4 preview; EmbeddingGemma 2 (2026-10-07)
+
+- **[[mistral-large-4|Mistral
+  Large 4]] is the next
+  Western open-weight promise
+  after Beam.** It is a 1T /
+  49B-active multimodal MoE
+  on the API now, with
+  weights due end of October
+  and no license yet. Mistral
+  calls it the best open-
+  weights model from the US
+  or Europe — leaving Chinese
+  labs out of the frame.
+  Artificial Analysis places
+  it 6th among open-weight
+  models. The cyber pitch
+  (CyberGym-E2E 82% because
+  closed models refuse) is
+  the capability-side of the
+  debate Lambert says is
+  stuck in a lose-lose
+  framing. See [[mistral]]
+  and [[agentic-ai-security]]
+  (Mistral, Artificial
+  Analysis, Interconnects;
+  ARA daily digest
+  2026-10-07).
+- **[[google]]'s EmbeddingGemma
+  2** (740M down to 270M,
+  Apache 2.0, built on
+  [[gemma-4]]) is a smaller
+  open increment: an
+  embedder you can keep
+  after the hosted model
+  retires (Simon Willison,
+  MarkTechPost; ARA daily
+  digest 2026-10-07).
 
 ## Open questions
 

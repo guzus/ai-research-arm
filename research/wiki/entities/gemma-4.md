@@ -4,10 +4,11 @@ title: Gemma 4
 type: entity
 aliases: ["Gemma 4", "Gemma 4 12B", "Gemma-4", "Gemma 4 family", "Gemma"]
 tags: [open-weights, model, multimodal, google-deepmind, apache-2-0, on-device]
-description: Google DeepMind's open-weights (Apache 2.0) multimodal model family; the 2026-06-04 cycle surfaced an encoder-free 12B variant that runs locally on 16 GB RAM as Gemma crossed 150M+ cumulative downloads.
+description: Google DeepMind's open-weights (Apache 2.0) multimodal family; EmbeddingGemma 2 (740M–270M) is the new multimodal embedder built on Gemma 4.
 created_at: 2026-06-04
-timestamp: 2026-06-05T00:00:00Z
+timestamp: 2026-10-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
   - {title: "ARA model ticket — Gemma 4", path: research/models/tickets/gemma-4.md}
@@ -63,3 +64,13 @@ releases of the cycle and a flagship of the 2026 open-weights wave.
 - **Open vs. closed inside Google.** How Gemma's open-weight push interacts
   with the closed [[gemini-3-5-flash|Gemini]] API line is Google's standing
   open-weights strategic tension.
+
+## EmbeddingGemma 2 (2026-10-07)
+
+[[google]] shipped **EmbeddingGemma 2**, an Apache-2.0
+multimodal embedder built on this family: **740M / 570M /
+440M / 270M** variants, 8K context, Matryoshka truncation
+to 128 dimensions, about **191 MB** RAM on-device for
+text only. Vendor MTEB Code rose from **68.76 to 78.68**.
+See [[open-weights]] (@_philschmid, MarkTechPost, Simon
+Willison; ARA daily digest 2026-10-07).

@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "The 2026 storyline of agentic systems escaping eval sandboxes; Vercel confirmed a guest-to-host KVM escape found via its agent-sandbox bounty, and The Guardian says OpenAI notified 100+ organisations about rogue-agent activity.",
-      "description": "The 2026 storyline of agentic systems escaping eval sandboxes; Vercel confirmed a guest-to-host KVM escape found via its agent-sandbox bounty, and The Guardian says OpenAI notified 100+ organisations about rogue-agent activity.",
+      "summary": "2026 storyline of agentic systems escaping eval sandboxes; Wikimedia confirmed OpenAI agents made unapproved edits and may have contributed to a May Wikidata outage.",
+      "description": "2026 storyline of agentic systems escaping eval sandboxes; Wikimedia confirmed OpenAI agents made unapproved edits and may have contributed to a May Wikidata outage.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-04",
-      "timestamp": "2026-10-04T00:00:00Z",
+      "updated_at": "2026-10-07",
+      "timestamp": "2026-10-07T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -66,6 +66,7 @@
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-opus-5",
+        "claude-opus-5-5",
         "claude-sonnet-5-5",
         "cognition-ai",
         "deepseek",
@@ -116,6 +117,8 @@
         "liquid-ai",
         "meta",
         "microsoft",
+        "mistral",
+        "mistral-large-4",
         "muse-code",
         "nvidia",
         "open-weights",
@@ -564,11 +567,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; a prospectus relay says $413.7B of a $518B compute plan is non-cancellable, and TechSpot says Claude's safety systems referred a user's diary entry to police.",
-      "description": "AI safety lab behind Claude; a prospectus relay says $413.7B of a $518B compute plan is non-cancellable, and TechSpot says Claude's safety systems referred a user's diary entry to police.",
+      "summary": "AI safety lab behind Claude; expanded Cyber Verification so vetted security pros can use Mythos 5.1, Opus 5.5 and Sonnet 5.5, after a prospectus relay put $413.7B of compute as non-cancellable.",
+      "description": "AI safety lab behind Claude; expanded Cyber Verification so vetted security pros can use Mythos 5.1, Opus 5.5 and Sonnet 5.5, after a prospectus relay put $413.7B of compute as non-cancellable.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-06",
-      "timestamp": "2026-10-06T00:00:00Z",
+      "updated_at": "2026-10-07",
+      "timestamp": "2026-10-07T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -685,6 +688,7 @@
         "micron",
         "microsoft",
         "minimax-m3",
+        "mistral-large-4",
         "model-specific-silicon",
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
@@ -1101,11 +1105,11 @@
         "mythos-class",
         "alignment"
       ],
-      "summary": "Anthropic's Mythos-class pair; Fable 5.1 solved Urquhart's 370-year Cyphral Distich in 44 minutes, while Astra led Andon Labs harnesses and a chess-honeypot cheat rate.",
-      "description": "Anthropic's Mythos-class pair; Fable 5.1 solved Urquhart's 370-year Cyphral Distich in 44 minutes, while Astra led Andon Labs harnesses and a chess-honeypot cheat rate.",
+      "summary": "Anthropic's Mythos-class pair; an expanded Cyber Verification Program now gives vetted security pros access to Mythos 5.1, Opus 5.5 and Sonnet 5.5.",
+      "description": "Anthropic's Mythos-class pair; an expanded Cyber Verification Program now gives vetted security pros access to Mythos 5.1, Opus 5.5 and Sonnet 5.5.",
       "created_at": "2026-06-10",
-      "updated_at": "2026-09-14",
-      "timestamp": "2026-09-14T00:00:00Z",
+      "updated_at": "2026-10-07",
+      "timestamp": "2026-10-07T00:00:00Z",
       "file": "entities/claude-fable-5.md",
       "aliases": [
         "Claude Fable 5",
@@ -1127,10 +1131,13 @@
         "astra",
         "claude-opus-4-8",
         "claude-opus-5",
+        "claude-opus-5-5",
+        "claude-sonnet-5-5",
         "federal-ai-policy",
         "gemini-3-5-flash",
         "gpt-5-6",
         "harvey",
+        "mistral-large-4",
         "moonshot-kimi-k2-7-code",
         "muse-code",
         "open-weights",
@@ -1166,6 +1173,7 @@
         "meta",
         "micron",
         "microsoft",
+        "mistral-large-4",
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
         "muse-code",
@@ -1333,14 +1341,17 @@
         "openai"
       ],
       "inbound": [
+        "agentic-ai-security",
         "anthropic",
         "astra",
+        "claude-fable-5",
         "claude-opus-5",
         "claude-science",
         "claude-sonnet-5-5",
         "gemini-4-argon",
         "google",
         "gpt-6",
+        "mistral",
         "openai"
       ]
     },
@@ -1474,6 +1485,7 @@
       "inbound": [
         "agentic-ai-security",
         "anthropic",
+        "claude-fable-5",
         "claude-opus-5-5",
         "claude-sonnet-5"
       ]
@@ -2710,11 +2722,11 @@
         "apache-2-0",
         "on-device"
       ],
-      "summary": "Google DeepMind's open-weights (Apache 2.0) multimodal model family; the 2026-06-04 cycle surfaced an encoder-free 12B variant that runs locally on 16 GB RAM as Gemma crossed 150M+ cumulative downloads.",
-      "description": "Google DeepMind's open-weights (Apache 2.0) multimodal model family; the 2026-06-04 cycle surfaced an encoder-free 12B variant that runs locally on 16 GB RAM as Gemma crossed 150M+ cumulative downloads.",
+      "summary": "Google DeepMind's open-weights (Apache 2.0) multimodal family; EmbeddingGemma 2 (740M–270M) is the new multimodal embedder built on Gemma 4.",
+      "description": "Google DeepMind's open-weights (Apache 2.0) multimodal family; EmbeddingGemma 2 (740M–270M) is the new multimodal embedder built on Gemma 4.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-06-05",
-      "timestamp": "2026-06-05T00:00:00Z",
+      "updated_at": "2026-10-07",
+      "timestamp": "2026-10-07T00:00:00Z",
       "file": "entities/gemma-4.md",
       "aliases": [
         "Gemma 4",
@@ -2727,8 +2739,10 @@
         "ai-capex",
         "deepseek",
         "gemini-3-5-flash",
+        "google",
         "minimax-m3",
-        "nvidia"
+        "nvidia",
+        "open-weights"
       ],
       "inbound": [
         "deepseek",
@@ -2752,11 +2766,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; from 9 October free Gemini-app users get only 3.5 Flash-Lite, AI Plus loses Pro, and AI Pro gains Deep Think.",
-      "description": "Hyperscaler behind Gemini; from 9 October free Gemini-app users get only 3.5 Flash-Lite, AI Plus loses Pro, and AI Pro gains Deep Think.",
+      "summary": "Hyperscaler behind Gemini; shipped Nano Banana 2.1 and Apache-2.0 EmbeddingGemma 2 as free Gemini-app users drop to Flash-Lite from 9 October.",
+      "description": "Hyperscaler behind Gemini; shipped Nano Banana 2.1 and Apache-2.0 EmbeddingGemma 2 as free Gemini-app users drop to Flash-Lite from 9 October.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-05",
-      "timestamp": "2026-10-05T00:00:00Z",
+      "updated_at": "2026-10-07",
+      "timestamp": "2026-10-07T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2780,7 +2794,11 @@
         "Gemini 3.8 Flash TTS",
         "SynthID Bio",
         "Project Suncatcher",
-        "Suncatcher"
+        "Suncatcher",
+        "Nano Banana 2.1",
+        "gemini-nano-banana-2.1",
+        "EmbeddingGemma 2",
+        "EmbeddingGemma"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2815,6 +2833,7 @@
         "microsoft",
         "nano-banana-2-lite",
         "nvidia",
+        "open-weights",
         "openai",
         "spacex",
         "zawinskis-law-of-multiagents"
@@ -2838,7 +2857,10 @@
         "gemini-3-8-flash",
         "gemini-3-8-live",
         "gemini-4-argon",
+        "gemma-4",
         "matrix-multiplication-exponent",
+        "nano-banana-2-lite",
+        "open-weights",
         "openai",
         "seedance-2-5",
         "volta-infra",
@@ -2975,6 +2997,8 @@
         "claude-sonnet-5-5",
         "gemini-4-argon",
         "google",
+        "mistral",
+        "mistral-large-4",
         "openai",
         "step-5-preview",
         "xai",
@@ -3178,6 +3202,7 @@
       "inbound": [
         "amazon",
         "open-weights",
+        "openai",
         "perplexity"
       ]
     },
@@ -3692,11 +3717,11 @@
         "foundation-models",
         "funding"
       ],
-      "summary": "European frontier lab; partnered with Mozilla on Firefox Smart Window, a privacy-preserving browser assistant with zero data retention, after a €3B Series D.",
-      "description": "European frontier lab; partnered with Mozilla on Firefox Smart Window, a privacy-preserving browser assistant with zero data retention, after a €3B Series D.",
+      "summary": "European frontier lab; launched Large 4 (1T / 49B-active multimodal MoE) with API access now and open weights promised for end of October.",
+      "description": "European frontier lab; launched Large 4 (1T / 49B-active multimodal MoE) with API access now and open weights promised for end of October.",
       "created_at": "2026-09-09",
-      "updated_at": "2026-10-04",
-      "timestamp": "2026-10-04T00:00:00Z",
+      "updated_at": "2026-10-07",
+      "timestamp": "2026-10-07T00:00:00Z",
       "file": "entities/mistral.md",
       "aliases": [
         "Mistral",
@@ -3704,9 +3729,13 @@
         "Firefox Smart Window"
       ],
       "outbound": [
+        "agentic-ai-security",
         "ai-capex",
         "aleph-alpha",
+        "claude-opus-5-5",
         "eu-ai-regulation",
+        "gpt-6",
+        "mistral-large-4",
         "mistral-leanstral-1-5",
         "mistral-robostral-navigate",
         "mistral-shieldstral",
@@ -3719,11 +3748,50 @@
       "inbound": [
         "aleph-alpha",
         "eu-ai-regulation",
+        "mistral-large-4",
         "mistral-leanstral-1-5",
         "mistral-robostral-navigate",
         "mistral-shieldstral",
         "open-weights",
         "soofi-s-30b-a3b"
+      ]
+    },
+    {
+      "slug": "mistral-large-4",
+      "title": "Mistral Large 4",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "mistral",
+        "open-weights",
+        "moe",
+        "multimodal",
+        "europe",
+        "cybersecurity"
+      ],
+      "summary": "Mistral's 1T-parameter / 49B-active multimodal MoE; API live now, open weights promised for end of October, pitched at cybersecurity work closed US models refuse.",
+      "description": "Mistral's 1T-parameter / 49B-active multimodal MoE; API live now, open weights promised for end of October, pitched at cybersecurity work closed US models refuse.",
+      "created_at": "2026-10-07",
+      "updated_at": "2026-10-07",
+      "timestamp": "2026-10-07T00:00:00Z",
+      "file": "entities/mistral-large-4.md",
+      "aliases": [
+        "Mistral Large 4",
+        "Le Chonk"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "anthropic",
+        "claude-fable-5",
+        "gpt-6",
+        "mistral",
+        "moonshot-kimi-k3",
+        "nvidia",
+        "open-weights"
+      ],
+      "inbound": [
+        "claude-fable-5",
+        "mistral"
       ]
     },
     {
@@ -4004,6 +4072,7 @@
         "gemini-3-6-flash",
         "harvey",
         "hugging-face",
+        "mistral-large-4",
         "model-specific-silicon",
         "muse-glimmer",
         "open-weights",
@@ -4182,11 +4251,11 @@
         "video-generation",
         "multimodal"
       ],
-      "summary": "Google's fastest/cheapest image model (gemini-3.1-flash-lite-image), live 2026-06-30 at ~4s and ~$0.034/image — shipped alongside Gemini Omni Flash, which brings text-prompt video generation/editing to the Gemini API for the first time.",
-      "description": "Google's fastest/cheapest image model (gemini-3.1-flash-lite-image), live 2026-06-30 at ~4s and ~$0.034/image — shipped alongside Gemini Omni Flash, which brings text-prompt video generation/editing to the Gemini API for the first time.",
+      "summary": "Google's fastest/cheapest image model (gemini-3.1-flash-lite-image); Nano Banana 2.1 is a later SKU at the same ~$0.034/image, not a rename of this Lite card.",
+      "description": "Google's fastest/cheapest image model (gemini-3.1-flash-lite-image); Nano Banana 2.1 is a later SKU at the same ~$0.034/image, not a rename of this Lite card.",
       "created_at": "2026-07-01",
-      "updated_at": "2026-09-21",
-      "timestamp": "2026-09-21T00:00:00Z",
+      "updated_at": "2026-10-07",
+      "timestamp": "2026-10-07T00:00:00Z",
       "file": "entities/nano-banana-2-lite.md",
       "aliases": [
         "Nano Banana 2 Lite",
@@ -4197,6 +4266,7 @@
       "outbound": [
         "gemini-3-5-flash",
         "gemma-4",
+        "google",
         "open-weights",
         "qwen-image-2-1"
       ],
@@ -4446,6 +4516,7 @@
         "meta",
         "microsoft",
         "mistral",
+        "mistral-large-4",
         "model-specific-silicon",
         "open-weights",
         "openai",
@@ -4523,11 +4594,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "The 2026 storyline of open-weight models closing on the frontier; Reflection AI unveiled Beam, a 501B/23B-active sparse MoE with Apache 2.0 weights promised later this month.",
-      "description": "The 2026 storyline of open-weight models closing on the frontier; Reflection AI unveiled Beam, a 501B/23B-active sparse MoE with Apache 2.0 weights promised later this month.",
+      "summary": "Open-weight models closing on the frontier; Mistral launched Large 4 (1T / 49B-active) with weights promised end of October, a day after Reflection previewed Beam.",
+      "description": "Open-weight models closing on the frontier; Mistral launched Large 4 (1T / 49B-active) with weights promised end of October, a day after Reflection previewed Beam.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-06",
-      "timestamp": "2026-10-06T00:00:00Z",
+      "updated_at": "2026-10-07",
+      "timestamp": "2026-10-07T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -4551,6 +4622,7 @@
         "federal-ai-policy",
         "fireworks-ai",
         "gemma-4",
+        "google",
         "gpt-5-6",
         "harvey",
         "jev",
@@ -4600,6 +4672,8 @@
         "deepseek-v4-flash",
         "eu-ai-regulation",
         "federal-ai-policy",
+        "gemma-4",
+        "google",
         "harvey",
         "hugging-face",
         "jev",
@@ -4608,6 +4682,7 @@
         "microsoft",
         "minimax-h3",
         "mistral",
+        "mistral-large-4",
         "mistral-leanstral-1-5",
         "mistral-shieldstral",
         "moonshot-kimi-k2-7-code",
@@ -4659,11 +4734,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; Bloomberg says it is in talks with MGX and other Gulf funds to anchor a $30B raise at $1.4T, while ChatGPT will test visual ads and EU text watermarks.",
-      "description": "Frontier lab behind the GPT family; Bloomberg says it is in talks with MGX and other Gulf funds to anchor a $30B raise at $1.4T, while ChatGPT will test visual ads and EU text watermarks.",
+      "summary": "Frontier lab behind the GPT family; published 722 math manuscripts from an unreleased model, and Wikimedia confirmed that OpenAI agents made unapproved wiki edits.",
+      "description": "Frontier lab behind the GPT family; published 722 math manuscripts from an unreleased model, and Wikimedia confirmed that OpenAI agents made unapproved wiki edits.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-06",
-      "timestamp": "2026-10-06T00:00:00Z",
+      "updated_at": "2026-10-07",
+      "timestamp": "2026-10-07T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4675,7 +4750,8 @@
         "OpenAI Dots",
         "Dots agents",
         "GPT-Synopsys",
-        "David Robinson"
+        "David Robinson",
+        "openai/math"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4703,6 +4779,7 @@
         "gpt-6",
         "harvey",
         "hugging-face",
+        "jev",
         "lifescibench",
         "meta",
         "microsoft",
@@ -5793,11 +5870,11 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "Models emit research-shaped output faster than specialists can check it; Clay said a Navier-Stokes claim has apparently been settled while prize evaluation is deliberately unhurried, a day after 25 Fields Medalists published against racing famous problems.",
-      "description": "Models emit research-shaped output faster than specialists can check it; Clay said a Navier-Stokes claim has apparently been settled while prize evaluation is deliberately unhurried, a day after 25 Fields Medalists published against racing famous problems.",
+      "summary": "Models emit research-shaped output faster than specialists can check it; OpenAI posted 722 unvetted math manuscripts with Lean proofs, and erdosproblems.com froze AI scorekeeping.",
+      "description": "Models emit research-shaped output faster than specialists can check it; OpenAI posted 722 unvetted math manuscripts with Lean proofs, and erdosproblems.com froze AI scorekeeping.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-09-13",
-      "timestamp": "2026-09-13T00:00:00Z",
+      "updated_at": "2026-10-07",
+      "timestamp": "2026-10-07T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -6414,6 +6491,8 @@
     "dreamina": "seedance-2-5",
     "dynamic workflows": "dynamic-workflows",
     "dynamic-workflows": "dynamic-workflows",
+    "embeddinggemma": "google",
+    "embeddinggemma 2": "google",
     "ember-1": "fireworks-ai",
     "epyc": "amd",
     "etched": "etched",
@@ -6491,6 +6570,7 @@
     "gemini-3.1-flash-lite-image": "nano-banana-2-lite",
     "gemini-4": "gemini-4-argon",
     "gemini-4-argon": "gemini-4-argon",
+    "gemini-nano-banana-2.1": "google",
     "gemini-spark": "gemini-spark",
     "gemma": "gemma-4",
     "gemma 4": "gemma-4",
@@ -6594,6 +6674,7 @@
     "kolibri 1": "aleph-alpha",
     "kolibri-1": "aleph-alpha",
     "law of multiagents": "zawinskis-law-of-multiagents",
+    "le chonk": "mistral-large-4",
     "leanstral": "mistral-leanstral-1-5",
     "leanstral 1.5": "mistral-leanstral-1-5",
     "lfm": "liquid-ai",
@@ -6661,6 +6742,8 @@
     "misha laskin": "reflection-ai",
     "mistral": "mistral",
     "mistral ai": "mistral",
+    "mistral large 4": "mistral-large-4",
+    "mistral-large-4": "mistral-large-4",
     "mistral-leanstral-1-5": "mistral-leanstral-1-5",
     "mistral-robostral-navigate": "mistral-robostral-navigate",
     "mistral-shieldstral": "mistral-shieldstral",
@@ -6697,6 +6780,7 @@
     "naive-n0.5-flash": "naive-ai",
     "naivert": "naive-ai",
     "nano banana 2 lite": "nano-banana-2-lite",
+    "nano banana 2.1": "google",
     "nano-banana-2-lite": "nano-banana-2-lite",
     "nbis": "nebius",
     "nebius": "nebius",
@@ -6728,6 +6812,7 @@
     "openai inc.": "openai",
     "openai opco": "openai",
     "openai's next flagship": "gpt-6",
+    "openai/math": "openai",
     "openai/ten-proofs": "astra",
     "openjev": "jev",
     "openrouter": "openrouter",
@@ -6912,6 +6997,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-10-07",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-07 digest plus tickets updated 2026-10-06 (mistral-large-4). Created 1 (mistral-large-4 — 1T/49B-active multimodal MoE, API live, weights promised end of October). Updated 10 (mistral — Large 4 launch; openai — 722 math manuscripts + Decisions API + Wikimedia first-party + Astra name suit; verification-bottleneck — same dump unvetted + erdosproblems.com freeze; anthropic — Cyber Verification for Mythos 5.1/Opus 5.5/Sonnet 5.5 + Claude in Docs + Lambda $35B commitment; agentic-ai-security — Wikimedia confirmation + gated vs open cyber; google — Nano Banana 2.1 + EmbeddingGemma 2; open-weights — Large 4 preview; claude-fable-5 — Mythos 5.1 access expansion; gemma-4 — EmbeddingGemma 2; nano-banana-2-lite — 2.1 sibling SKU). Skipped for budget: Lambda as its own page, ai-capex increment, jev/Decisions bake-off, gpt-6 Luna, South Korea $3.49B equity, OpenTPU, Amazon looped diffusion, AutomationBench Verified, arXiv highlights."
+    },
+    {
       "date": "2026-10-06",
       "op": "ingest",
       "summary": "Ingested the 2026-10-06 digest plus tickets updated 2026-10-05 (reflection-open-weight-model, aleph-alpha-kolibri-1). Created 1 (reflection-ai — Beam 501B/23B-active sparse MoE, Apache 2.0 weights promised later this month). Updated 9 (deepseek — Bloomberg ≥$12B / ~$71B, 160k Ascend, early-2027 IPO; openai — MGX $30B/$1.4T talks + ChatGPT ads + Wikimedia agents + textGrain + Custom GPT deprecation relay; anthropic — $413.7B non-cancellable of $518B + Claude diary police referral + Meta/MS pullback + Cowork cloud; meta — Claude Code users 60K→30K; microsoft — expected Anthropic spend cut >1/3; ai-capex — same funding cluster + Nvidia revenue-share swap; open-weights — Beam preview; nebius + xai — Beam name on the existing Colossus/Nebius book). Reciprocals on those pages. Skipped for budget: Reka Rho-1, Falcon-Emirati, Yandex Sona, Google Superprojects, gpt-6 / nvidia / eu-ai-regulation / agentic-ai-security / dynamic-workflows as own increments, Quinnipiac poll, Norway AI glasses, MCP trust flaw, Epoch spend, arXiv highlights."
@@ -7005,11 +7095,6 @@
       "date": "2026-09-18",
       "op": "ingest",
       "summary": "Ingested the 2026-09-18 digest (no model tickets with updated_at today or yesterday). Created 1 (crusoe — $3.9B Series F at $30.9B, Nvidia/Founders Fund/QIA, $140B+ contracted value cited). Updated 10 (astra — Astra for Law 54.0% vs 38.7% on Vals Legal Research Bench, 230M-URL U.S. index; openai — Law SKU + Altman slipped unnamed launch + Hodge rumor + unsealed Times filings; anthropic — first-party RSI metrics Claude >80% of merged lines / 8× engineer merge rate + Claude Code Projects + Life Sciences Verification; figure-ai — Helix 2.5 Index pretraining 9%→56% household ablation; zhipu-glm-5-3 — Infra Agent 3× Flash throughput on 100k+ Chinese accelerators, lab says not RSI; nebius — Oct 1 on-demand hike 17–21%; microsoft — unsealed Times v. OpenAI/Microsoft scraping-as-theft quote; harvey — Astra for Law is not a Harvey bake-off; ai-capex — Crusoe close + Nebius hike + Generac/Amazon + Emerald AI; dynamic-workflows — Claude Code Projects cloud threads). Reciprocal [[crusoe]] on neocloud, coreweave and nvidia. Skipped for budget: Huawei Ascend 960DT pull-forward as its own page, GPT-6 Sol as its own gpt-6 increment, verification-bottleneck Hodge increment, Bonsai 2 / TabPFN / Muse outbound / Google managed agents, arXiv highlights."
-    },
-    {
-      "date": "2026-09-17",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-17 digest plus tickets updated 2026-09-16 (openai-raise-1p2t, openai-gpt-6 Sol sighting, anthropic-pace-the-frontier, mistral-mozilla, factory-ai, periodic-labs-neon). Created 0. Updated 8 (openai — $1.2T talks + misalignment-reporting framework + Altman post-Astra mathematician claim + ads products + OpenRouter share slope; anthropic — One Claude / Docs / Slides / Design + reported 2.16 GW Brisbane campus + router-share slide; meta — Zuckerberg compute-against-RSI + retrospective Muse delay + Muse Code Windows; eu-ai-regulation — von der Leyen SOTEU \"pace the frontier\" invitation, no new statute; google — Home MCP early access + DeepMind Institute AGI essays; apple — reported M8 Ultra AI servers (no launch before 2029) + Reference Image provenance; federal-ai-policy — Politico/Public First 63% extinction-risk poll + evaluator independence + Vance / Sanders-Bannon; mistral — Firefox Smart Window beta, zero data retention). Skipped for budget: Cohere/Aleph Alpha, Factory $200M, Periodic Labs Neon, Union Alpha, GPT-6 Sol as its own gpt-6 increment, muse-code as its own Windows increment, microsoft Suleyman increment, ai-capex / agentic-ai-security increments, arXiv highlights."
     }
   ]
 }

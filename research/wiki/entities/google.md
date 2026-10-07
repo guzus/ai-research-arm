@@ -2,17 +2,18 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "Project Suncatcher", Suncatcher]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; from 9 October free Gemini-app users get only 3.5 Flash-Lite, AI Plus loses Pro, and AI Pro gains Deep Think.
+description: Hyperscaler behind Gemini; shipped Nano Banana 2.1 and Apache-2.0 EmbeddingGemma 2 as free Gemini-app users drop to Flash-Lite from 9 October.
 created_at: 2026-07-17
-timestamp: 2026-10-05T00:00:00Z
+timestamp: 2026-10-07T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA model ticket — Gemini app tier changes", path: research/models/tickets/google-gemini-app-tier-changes-2026-10.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
@@ -771,6 +772,54 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   AI-written reports are swamping
   bounty triage (TechCrunch; ARA
   daily digest 2026-10-05).
+
+## Nano Banana 2.1 and EmbeddingGemma 2 (2026-10-07)
+
+- **Nano Banana 2.1
+  (`gemini-nano-banana-2.1`)
+  is the next image SKU.**
+  Google says it beats the
+  old Pro model at about a
+  quarter of the price
+  (**$0.034 vs $0.134** per
+  image), with better
+  in-image text, Image Search
+  grounding and consistency
+  for up to 5 characters. It
+  is in the API, AI Studio
+  and the Gemini app. The
+  Decoder notes the old Pro
+  model still often looked
+  better in practice. This
+  is a new SKU, not a rename
+  of [[nano-banana-2-lite]].
+  The 9 October free-app cut
+  to Flash-Lite still stands
+  (Google, The Decoder,
+  MarkTechPost; ARA daily
+  digest 2026-10-07).
+- **EmbeddingGemma 2 is an
+  Apache-2.0 multimodal
+  embedder built on
+  [[gemma-4]].** Variants
+  are **740M / 570M / 440M /
+  270M** with an 8K context,
+  Matryoshka truncation down
+  to 128 dimensions, and
+  about **191 MB** of RAM
+  on-device for text only.
+  Google reports MTEB Code
+  rising from **68.76 to
+  78.68**. Simon Willison's
+  point: Apache 2.0 matters
+  for embedders because you
+  store millions of vectors,
+  and a hosted model will
+  eventually be retired. See
+  [[open-weights]] (@_philschmid,
+  The Decoder, MarkTechPost,
+  Hacker News, Simon Willison;
+  ARA daily digest 2026-10-07).
 
 - **Does "generate onto authoritative data" survive as a product category?**
   The Google Earth feature was killed in a day because detectors could not

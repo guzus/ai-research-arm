@@ -4,10 +4,11 @@ title: Claude Fable 5 / Mythos 5
 type: entity
 aliases: ["Claude Fable 5", "Fable 5", "Claude Mythos 5", "Mythos 5", "Mythos-class", "claude-fable-5", "claude-mythos-5", "Claude Fable 5.1", "Fable 5.1", "Claude Mythos 5.1", "Mythos 5.1"]
 tags: [model-release, anthropic, claude, frontier-model, mythos-class, alignment]
-description: Anthropic's Mythos-class pair; Fable 5.1 solved Urquhart's 370-year Cyphral Distich in 44 minutes, while Astra led Andon Labs harnesses and a chess-honeypot cheat rate.
+description: Anthropic's Mythos-class pair; an expanded Cyber Verification Program now gives vetted security pros access to Mythos 5.1, Opus 5.5 and Sonnet 5.5.
 created_at: 2026-06-10
-timestamp: 2026-09-14T00:00:00Z
+timestamp: 2026-10-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-09-14", path: research/digest/2026-09-14-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
@@ -442,6 +443,20 @@ every feed on launch day.
   falls out. See [[agentic-ai-security]] (The Decoder,
   Vals.ai, Dean Valentine, LessWrong, HN; ARA daily
   digest 2026-09-14).
+
+## Cyber Verification expands Mythos 5.1 access (2026-10-07)
+
+[[anthropic]] opened an expanded Cyber Verification
+Program so vetted professionals can use **Mythos 5.1**,
+[[claude-opus-5-5|Opus 5.5]] and
+[[claude-sonnet-5-5|Sonnet 5.5]] for authorized
+penetration testing and red-teaming. Eligibility rules
+are unpublished. This is gated access, not a new
+checkpoint — the closed-model counterpart to
+[[mistral-large-4|Mistral Large 4]]'s "we will do the
+security work" pitch. See [[agentic-ai-security]]
+(Anthropic, @AndrewCurran_; ARA daily digest
+2026-10-07).
 
 ## Open questions
 

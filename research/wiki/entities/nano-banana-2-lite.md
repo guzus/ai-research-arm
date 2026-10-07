@@ -4,10 +4,11 @@ title: Nano Banana 2 Lite
 type: entity
 aliases: ["Nano Banana 2 Lite", "gemini-3.1-flash-lite-image", "gemini-3-1-flash-lite-image", "Gemini Omni Flash"]
 tags: [google, gemini, image-generation, video-generation, multimodal]
-description: Google's fastest/cheapest image model (gemini-3.1-flash-lite-image), live 2026-06-30 at ~4s and ~$0.034/image — shipped alongside Gemini Omni Flash, which brings text-prompt video generation/editing to the Gemini API for the first time.
+description: Google's fastest/cheapest image model (gemini-3.1-flash-lite-image); Nano Banana 2.1 is a later SKU at the same ~$0.034/image, not a rename of this Lite card.
 created_at: 2026-07-01
-timestamp: 2026-09-21T00:00:00Z
+timestamp: 2026-10-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "@testingcatalog / Ars Technica / The Decoder", date: 2026-06-30}
@@ -40,6 +41,13 @@ the Gemini API for the first time** (ARA digest 2026-07-01).
   Banana 2.0 rather than this Lite SKU. See
   [[qwen-image-2-1]] (Alibaba Qwen; ARA daily
   digest 2026-09-21).
+- **[[google]] shipped Nano Banana 2.1
+  (`gemini-nano-banana-2.1`) on 2026-10-06**,
+  still about **$0.034/image**, claiming it
+  beats the old Pro model at a quarter of
+  Pro's $0.134 price. That is a later SKU,
+  not this Lite card (The Decoder,
+  MarkTechPost; ARA daily digest 2026-10-07).
 
 ## Open questions
 - **Quality-vs-speed acceptance.** Whether the deliberate quality trade lands

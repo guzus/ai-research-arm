@@ -4,10 +4,12 @@ title: Mistral AI
 type: entity
 aliases: ["Mistral", "Mistral AI", "Firefox Smart Window"]
 tags: [frontier-lab, europe, open-weights, foundation-models, funding]
-description: European frontier lab; partnered with Mozilla on Firefox Smart Window, a privacy-preserving browser assistant with zero data retention, after a €3B Series D.
+description: European frontier lab; launched Large 4 (1T / 49B-active multimodal MoE) with API access now and open weights promised for end of October.
 created_at: 2026-09-09
-timestamp: 2026-10-04T00:00:00Z
+timestamp: 2026-10-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
+  - {title: "ARA model ticket — Mistral Large 4", path: research/models/tickets/mistral-large-4-2026-10.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA model ticket — Mistral × Mozilla partnership", path: research/models/tickets/mistral-mozilla-partnership-2026-09.md}
@@ -85,3 +87,31 @@ on the same sovereign-deployment buyer Mistral
 has been chasing, not a bake-off. See
 [[open-weights]] and [[soofi-s-30b-a3b]] (ARA
 daily digest 2026-10-04).
+
+## Large 4 ships as a trillion-parameter preview (2026-10-07)
+
+- **[[mistral-large-4|Mistral Large 4]]
+  ("Le Chonk") is live on the API**:
+  a natively multimodal MoE at **1T /
+  49B active** (blog) or **1.05T /
+  52B** plus a 1.6B vision encoder
+  and 1M context (docs). Open weights
+  are promised for the end of
+  October; Lample says the RL run is
+  still in flight. Launch prices are
+  **$1.36 / $4.18** per Mtok. Mistral
+  pitches it at cybersecurity work
+  that closed US models refuse
+  (CyberGym-E2E **82%**;
+  [[claude-opus-5-5|Opus 5.5]] and
+  [[gpt-6|GPT-6 Astra]] score near
+  zero because they refuse).
+  Artificial Analysis places it 6th
+  among open-weight models. It led
+  HN at **1,543 / 944**. This is the
+  first product the €3B Series D
+  paid for. See [[open-weights]] and
+  [[agentic-ai-security]] (Mistral,
+  TechCrunch, The Decoder, Hacker
+  News; ARA daily digest 2026-10-07
+  and ticket `mistral-large-4-2026-10`).

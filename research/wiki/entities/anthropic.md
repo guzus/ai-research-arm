@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; a prospectus relay says $413.7B of a $518B compute plan is non-cancellable, and TechSpot says Claude's safety systems referred a user's diary entry to police.
+description: AI safety lab behind Claude; expanded Cyber Verification so vetted security pros can use Mythos 5.1, Opus 5.5 and Sonnet 5.5, after a prospectus relay put $413.7B of compute as non-cancellable.
 created_at: 2026-05-24
-timestamp: 2026-10-06T00:00:00Z
+timestamp: 2026-10-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA model ticket — Frontier Deployed Engineers", path: research/models/tickets/anthropic-frontier-deployed-engineers-2026-10.md}
@@ -2684,3 +2685,52 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   has no artifact** behind it
   in the local sources (ARA
   daily digest 2026-10-06).
+
+## Cyber Verification opens Mythos 5.1; Claude in Docs (2026-10-07)
+
+- **An expanded Cyber
+  Verification Program gives
+  vetted professionals access
+  to [[claude-fable-5|Claude
+  Mythos 5.1]],
+  [[claude-opus-5-5|Opus 5.5]]
+  and [[claude-sonnet-5-5|Sonnet
+  5.5]].** New tiers cover
+  authorized penetration
+  testing and red-teaming.
+  Anthropic has not published
+  the eligibility rules. This
+  is the closed-model answer
+  to the same demand
+  [[mistral-large-4|Mistral
+  Large 4]] meets by refusing
+  fewer cyber tasks. See
+  [[agentic-ai-security]]
+  (Anthropic, @AndrewCurran_;
+  ARA daily digest 2026-10-07).
+- **Claude now works inside
+  [[google|Google]] Docs,
+  Sheets and Slides**, and
+  those file types also open
+  inside Claude. Separately,
+  Anthropic is offering
+  startups a free year of
+  Claude Team plus $1,000 in
+  API credits (@testingcatalog,
+  TechCrunch; ARA daily digest
+  2026-10-07).
+- **Lambda is raising up to
+  $4B at a $14.5B pre-money
+  valuation** ahead of a 2027
+  IPO, led by Coatue and
+  Blackstone. Its backlog grew
+  from $15B to $50B, largely
+  because of a **$35B
+  Anthropic commitment**.
+  Lambda raised $1B in debt
+  the week before. Treat as
+  TechCrunch-reported, not a
+  closed round. See
+  [[ai-capex]] and
+  [[neocloud]] (TechCrunch;
+  ARA daily digest 2026-10-07).
