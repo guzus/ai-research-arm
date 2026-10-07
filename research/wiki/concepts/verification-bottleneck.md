@@ -4,10 +4,11 @@ title: The verification bottleneck
 type: concept
 aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: Models emit research-shaped output faster than specialists can check it; Clay said a Navier-Stokes claim has apparently been settled while prize evaluation is deliberately unhurried, a day after 25 Fields Medalists published against racing famous problems.
+description: Models emit research-shaped output faster than specialists can check it; OpenAI posted 722 unvetted math manuscripts with Lean proofs, and erdosproblems.com froze AI scorekeeping.
 created_at: 2026-08-02
-timestamp: 2026-09-13T00:00:00Z
+timestamp: 2026-10-07T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
@@ -292,3 +293,47 @@ claim, and the dispute resolves on **relay credibility rather than
   sat at **297/239** at close. See [[openai]] and
   [[astra]] (Clay Mathematics Institute,
   mathandai.org; ARA daily digest 2026-09-13).
+
+## OpenAI's 722-preprint dump; Erdős site stops keeping score (2026-10-07)
+
+- **[[openai]] published 722 math
+  manuscripts from an unreleased
+  internal frontier model**, grouped
+  into 372 result families, from
+  about 4,000 problems at roughly
+  three hours of ChatGPT Pro thinking
+  compute per result. Papers and Lean
+  formalizations are on `openai/math`
+  under Apache 2.0. An Institute for
+  Advanced Study advisory group
+  advised the release. **No outside
+  mathematician has vetted the
+  results.** One HN commenter
+  estimated that about 80% of the
+  manuscripts they sampled were
+  formalized in Lean; another wrote
+  "seemingly none are vetted and
+  reviewed yet." The claim that the
+  model "proved the quasi-Riemann
+  hypothesis" is not in OpenAI's
+  post. This is the next checkable-
+  but-unreviewed artifact after the
+  Navier–Stokes / Fields-letter arc
+  already on this page (OpenAI, The
+  Verge, WIRED via @AndrewCurran_,
+  Hacker News; ARA daily digest
+  2026-10-07).
+- **Thomas Bloom froze new proof
+  claims and comments on
+  erdosproblems.com** and dropped
+  open/solved statuses and credit
+  language after counting **291**
+  proof claims. He says the site
+  should serve the human Erdős
+  community and not become a
+  scoreboard for AI priority claims.
+  That is a specialist venue
+  withdrawing the leaderboard this
+  concept named as the scarce input
+  (erdosproblems.com, Hacker News;
+  ARA daily digest 2026-10-07).
