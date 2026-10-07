@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "ANTHROPIC LAUNCHES CLAUDE HAIKU 5.5 — ~75% CHEAPER THAN 4.5; $0.10/$0.50 PER MTOK UNDER 100K",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2107894208547983705",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI ROLLS OUT GPT-6 WITH INTELLIGENT UI IN CHATGPT — SOL FOR PAID, LUNA FOR FREE AND GO",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2107894997538525580",
+    "category": "model"
+  },
+  {
+    "headline": "THE INFORMATION: MICROSOFT CUTS CLOUD/AI MONTHLY MODEL BUDGETS FROM $100K TO ABOUT $10K",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2107896495605158122",
+    "category": "business"
+  },
+  {
+    "headline": "MICROSOFT COPILOT TO SHIFT ROUTINE CODING FROM CLAUDE HAIKU 4.5 TO ON-DEVICE MAI-CODE-1.1-FLASH",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2107914219408736463",
+    "category": "model"
+  },
+  {
+    "headline": "GOOGLE OPENS SYNTHID DETECTOR TO THE PUBLIC — CHECKS OPENAI, NVIDIA AND KAKAO WATERMARKS",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2107834249680499136",
+    "category": "policy"
+  },
+  {
+    "headline": "PERPLEXITY OPEN-SOURCES PPLX-EMBED-V2-LATE — 9B AND 0.6B MULTIMODAL LATE-INTERACTION EMBEDDINGS",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2107871834205196784",
+    "category": "opensource"
+  }
+]
