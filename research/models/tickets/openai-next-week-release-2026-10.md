@@ -31,8 +31,9 @@ sources:
   - https://x.com/Codexresets_/status/2106334302728225110
   - https://x.com/letdarky/status/2106312616897352056
   - https://x.com/ravikiran_dev7/status/2106723853649281231
+  - https://x.com/AI_Levela/status/2107828005687181382
 created_at: 2026-10-03
-updated_at: 2026-10-04
+updated_at: 2026-10-07
 closed_at: null
 closed_reason: null
 history:
@@ -40,6 +41,8 @@ history:
     change: "Created — RUMORED / unverified. OpenAI's @thsottiaux replied 'You don't know what we're releasing next week' (2026-10-03 05:38 UTC), with no artifact named. Same-day speculation attaches it to GPT-6.1 Astra (@Codexresets_ — inconsistent with the on-record cancellation tracked at [[openai-gpt-6-1-astra-shelved-2026-09]]), to an 'Astra Minor' -> 'Astra Lite' rename spotted in a screenshot (@mrfanduu, amplified by @letdarky), and, in separate chatter, to a 'GPT-6 Bel' (codename previously scooped for OpenAI's next pretrain, see [[openai-gpt-6]]). Opened as a placeholder so the eventual release can be matched against what was claimed beforehand; no candidate is adopted."
   - ts: 2026-10-04
     change: "Still unnamed; no OpenAI artifact in-window. The 'Astra next week' reading recirculates (@ravikiran_dev7, 2026-10-04 12:31 UTC: 'Next week is now the rumored window … OpenAI has not confirmed a new Astra launch date'), still unsourced and still in tension with the on-record cancellation at [[openai-gpt-6-1-astra-shelved-2026-09]]. The same post says OpenAI 'is rolling out Ultrafast this week' — Ultrafast already shipped at DevDay inside Pro 500 ([[openai-chatgpt-pro-max-2026-09]]; @btibor91: up to 8x faster token generation in Codex), so a broader Ultrafast rollout is a plausible, low-drama candidate for the teaser. Status stays rumored / unverified."
+  - ts: 2026-10-07
+    change: "Partial resolution, and it is not a model. @thsottiaux is 'Tibo', and his teased week turns out to be a '28 days of improvements' series: a Japanese recap of his Day-2 post (@AI_Levela, 2026-10-07 13:38 UTC) lists auto-review ('Approve for me') no longer consuming plan quota, a simplified developer API (5 tiers to 3), a Meetings plugin saving transcripts/actions to ChatGPT Space, and the Decisions API going to public beta (update logged on [[openai-decisions-api-2026-09]]). Separately OpenAI published hundreds of math results from an unreleased internal model on 2026-10-06 ([[openai-math-results-release-2026-10]]). Neither is GPT-6.1 Astra, 'Astra Lite' or 'GPT-6 Bel'; none of the circulated model readings has materialised. Status stays rumored / unverified; the recap is a secondary relay and the series has 26 days left."
 ---
 
 A staffer saying "you don't know what we're releasing next week" is a real

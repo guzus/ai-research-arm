@@ -75,8 +75,9 @@ sources:
   - https://x.com/theinformation/status/2103182752027664854
   - https://x.com/vikasmalpani/status/2103450073632067816
   - https://x.com/TechBuzzChina/status/2103326150348943567
+  - https://x.com/BuiltByEstrada/status/2107826479329329455
 created_at: 2026-07-16
-updated_at: 2026-09-25
+updated_at: 2026-10-07
 closed_at: null
 closed_reason: null
 history:
@@ -90,6 +91,8 @@ history:
     change: "Confirmed, unchanged. Terms firm up and two relays disagree, which is recorded rather than averaged. @theinformation (own handle, 2026-09-24 18:00 UTC): 'DeepSeek's annualized revenue has reached $1 billion as the Chinese AI startup prepares to raise $7.5 billion at a $75 billion valuation.' A separate relay the next morning (@vikasmalpani, 2026-09-25) says ~$6.9B near a $69B valuation ahead of a Shanghai listing, and adds an 82.9% API gross margin over seven months. The ~8-9% spread between $7.5B/$75B and $6.9B/$69B is the signature of a round still being priced or of two readings of different tranches; both are above the $71-74B in the title, so direction is up and level is unsettled. The title is deliberately NOT rewritten — slugs and headline history are immutable, and the current numbers live in status_note and expected. The $1B annualized revenue figure, previously recorded from the investor pitch, is now stated by The Information in its own voice, giving it two independent statements. NEW and load-bearing for the valuation: @TechBuzzChina reports a DeepSeek paper with 130+ authors including Liang Wenfeng detailing DSec, the elastic compute sandbox platform behind its agent RL training — ~3 million sandboxes per day, peak concurrency over 380,000, creation above 5,000/sec, one production unit at ~160 CPU nodes / 30,000 cores / 250TB memory, a single training job pulling 32,000 sandboxes at once, and all RL training and evaluation from V3.2 through V4.1 run on it. That is the first public quantification of a frontier agentic lab's NON-ACCELERATOR compute footprint, and it should be read directly against [[anthropic-akamai-compute-2026-09]], where Anthropic contracted $11.6B of CPU capacity for the same layer in the same 24 hours."
   - ts: 2026-09-25
     change: "Bookkeeping — citations added for the 2026-09-25 entry: @theinformation ($1B annualized revenue, preparing to raise $7.5B at $75B), @vikasmalpani (the conflicting ~$6.9B near $69B figure, 82.9% API gross margin, Shanghai listing), @TechBuzzChina (the DSec paper — ~3M sandboxes/day, 380K+ peak concurrency, all RL training V3.2 through V4.1). No status, verification or content change."
+  - ts: 2026-10-07
+    change: "Round reportedly growing, single relay. @BuiltByEstrada's overnight roundup (2026-10-07 13:32 UTC): 'DeepSeek is close to raising at least $12 billion, with Tencent and battery maker CATL among the biggest checks.' That is well above the $7.5B at $75B (The Information, 2026-09-24) this ticket carries, and the first naming of Tencent and CATL as lead investors. No primary or second independent source in-window; size and valuation are not reconciled. Status stays confirmed (round is real per earlier multi-source reporting)."
 ---
 
 **DeepSeek** is preparing a **second, distinct funding round** — up to

@@ -5,6 +5,13 @@ company: Anthropic
 model: Mythos
 status: confirmed
 status_note: |
+  **2026-10-06 — Cyber Verification Program expanded (@AnthropicAI, first-party).**
+  Verified security professionals can now access Claude Mythos 5.1, Opus 5.5 and
+  Sonnet 5.5 "with safeguards designed for defensive work", and new tiers allow
+  "authorized offensive work, like penetration testing and red-teaming". The gate
+  moves from partner selection (Glasswing) to individual verification; it is
+  still a gate.
+
   **2026-06-09 RESOLUTION (two-tier launch):** Anthropic officially named and
   shipped the Mythos class. **Mythos 5** — the unrestricted flagship — goes only
   to **vetted defenders / governments** (Project Glasswing + an upcoming
@@ -63,7 +70,7 @@ status_note: |
   happened is that the gated line got a version bump on the same day its
   generally-available sibling shipped. Status stays `confirmed` (Mythos is an
   Anthropic-named artifact, now at 5.1); it does not advance to `released`.
-expected: "Mythos 5.1 exists and is named by Anthropic (2026-09-01), but is NOT generally available — it shares Fable 5.1's underlying model under different safeguards. No public-release date."
+expected: "Mythos 5.1 is named (2026-09-01) and, since 2026-10-06, reachable by verified security professionals through Anthropic's expanded Cyber Verification Program (defensive tiers plus new authorized-offensive tiers). Still NOT generally available; no public-release date."
 labels:
   - frontier-model
   - gated
@@ -89,8 +96,10 @@ sources:
   - https://x.com/MilksandMatcha/status/2094858716260729122
   - https://x.com/ppmmzzcn/status/2105147930357416042
   - https://x.com/attrc/status/2105033855547613482
+  - https://x.com/AnthropicAI/status/2107546569654636883
+  - https://x.com/TheInfoMachine/status/2107828162352533704
 created_at: 2026-04-12
-updated_at: 2026-09-30
+updated_at: 2026-10-07
 closed_at: null
 closed_reason: null
 history:
@@ -138,6 +147,8 @@ history:
     change: "Mythos 5.1 named by Anthropic, still not generally available. On 2026-09-01 Anthropic introduced Claude Mythos 5.1 alongside Claude Fable 5.1 (@claudeai, retweeted by @AnthropicAI): 'They're the world's most advanced models for coding and knowledge.' Per @MilksandMatcha's launch summary the two share the same underlying model with different safeguards, and only Fable 5.1 is generally available. The gated-preview pattern this ticket tracks therefore holds through a version bump: Mythos is now at 5.1 with no public release. Verification advances partial -> confirmed on Anthropic's own naming; status stays confirmed and deliberately does NOT advance to released. See [[anthropic-claude-fable-5-1-2026-08]]."
   - ts: 2026-09-30
     change: "FIRST PUBLISHED CAPABILITY NUMBER FOR MYTHOS PREVIEW, and it comes from an Anthropic safety publication rather than a leak. Per @ppmmzzcn (2026-09-30 04:09 UTC) summarising an Anthropic Frontier Red Team write-up: on 100 tasks randomly sampled from an internal BINARY EXPLOITATION benchmark, Claude Mythos Preview achieved full control-flow hijack in 6% of trials and GLM-5.3 in 4%. Two things are worth separating. (1) This is the first offensive-capability figure this ticket has carried for the gated preview, and it is low in absolute terms — 6% on full control-flow hijack is a long way from reliable exploitation — which is itself the informative part, because the preview's gating has been justified on capability grounds. (2) The comparison is the odd bit: an Anthropic red team publishing a head-to-head where a Chinese open-weights competitor lands within two points of its own unreleased frontier model. @attrc (2026-09-29 20:35 UTC, ~1,677 likes) reacted to the same publication with 'I am very confused why Anthropic wrote a blog post advertising for cybersecurity teams to switch to GLM!?!?', which is the sharpest available reading of how it lands regardless of intent. Recorded as REPORTED, not adopted: the numbers come via a Chinese aggregator account summarising the post rather than from the post itself, no benchmark methodology or task distribution is captured here, and 'randomly sampled 100 tasks' with no confidence interval on a 4-6% rate means the two models may not be distinguishable at all on this sample. Status and verification unchanged — a capability datapoint is not a release. What it does not change: Mythos remains a gated multi-cloud preview with no public release path in signal, and the export-control question stays at [[anthropic-fable-mythos-export-control-2026-06]]."
+  - ts: 2026-10-07
+    change: "Access widened again, first-party; still not public. @AnthropicAI (2026-10-06 19:00 UTC, ~5.1K likes): 'We're expanding our Cyber Verification Program to give security professionals broader access to our most capable models. Through this program, verified security professionals can access Claude Mythos 5.1, Opus 5.5, and Sonnet 5.5 with safeguards designed for defensive work. We're also opening up new tiers to allow for authorized offensive work, like penetration testing and red-teaming.' This is the first Anthropic-primary statement of a Mythos 5.1 access route outside Glasswing, and the first explicit sanction of offensive use (pentest/red-team) under a verification tier. Corroborated as an Oct 6 launch by the @TheInfoMachine digest. Status stays confirmed: access is verification-gated, not general availability."
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a
