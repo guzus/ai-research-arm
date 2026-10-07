@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 18:00 UTC",
-    "headline": "THE INFORMATION RE-SYNDICATES: 50+ xAI ENGINEERS GONE SINCE SPACEX ACQUISITION, ALL CO-FOUNDERS BESIDES MUSK DEPARTED",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-17-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2056079811898999243"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-17 18:00 UTC",
-    "headline": "ANDREW CURRAN: GROK V9 1.5T SHIPS IN JUNE \u2014 ELON ALSO HAS 6T AND 10T VARIANTS IN COLOSSUS 2 TRAINING",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-17-twitter-18h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2055993050094616735"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 18:00 UTC",
-    "headline": "SEMIANALYSIS: 96% OF OUR TOKEN BUDGET IS ANTHROPIC \u2014 PERPLEXITY COMPUTER ENTERPRISE SLACK 'SHOCKING BETTER THAN CLAUDE'",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-17-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2056060948893929803"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 18:00 UTC",
-    "headline": "THE INFORMATION: ANTHROPIC CUSTOMERS SAY AI TOOLS POWERFUL BUT MISSING TRANSPARENCY AND SERVICE GUARANTEES",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-17-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2056012568683462847"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-17 18:00 UTC",
     "headline": "VATICAN LAUNCHES INTERDICASTERIAL AI COMMISSION \u2014 POPE LEO XIV AI ENCYCLICAL PUBLISHES WITHIN TWO WEEKS",
@@ -23886,5 +23850,33 @@
     "headline": "GOOGLE OPEN-SOURCES EMBEDDINGGEMMA 2, MULTIMODAL EMBEDDINGS UNDER APACHE 2.0",
     "source": "@_philschmid",
     "url": "https://x.com/_philschmid/status/2107539841101758856"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-07 05:47:56 UTC",
+    "headline": "SPACEX IN TALKS FOR $40B NVIDIA-CHIP-BACKED DEBT, APOLLO LEADING \u2014 BLOOMBERG/FT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2107642406099386669"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-07 05:47:56 UTC",
+    "headline": "OPENAI MATH RELEASE INCLUDES CLAIMED INTEGER MULTIPLICATION FASTER THAN N LOG N \u2014 UNVETTED",
+    "source": "@AcerFur",
+    "url": "https://x.com/AcerFur/status/2107606747972309163"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-07 05:47:56 UTC",
+    "headline": "OPENAI DECISIONS API IN PUBLIC BETA, UP TO 10X FASTER THAN GPT-6 LUNA VIA RESPONSES API",
+    "source": "@OpenAIDevs",
+    "url": "https://x.com/OpenAIDevs/status/2107573382229188645"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-07 05:47:56 UTC",
+    "headline": "NANYA TO RAISE DRAM CONTRACT PRICES BY UP TO 20% \u2014 TAIWAN MEDIA",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2107665796499718407"
   }
 ]
