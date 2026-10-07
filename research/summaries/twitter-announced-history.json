@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-17 18:00 UTC",
-    "headline": "VATICAN LAUNCHES INTERDICASTERIAL AI COMMISSION \u2014 POPE LEO XIV AI ENCYCLICAL PUBLISHES WITHIN TWO WEEKS",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-17-twitter-18h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2056012896397049837"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-17 18:00 UTC",
-    "headline": "THE INFORMATION: OPENAI CONSIDERING LEGAL ACTION AGAINST APPLE OVER STALLED CHATGPT-SIRI PARTNERSHIP",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-17-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2055997812693881204"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-17 18:00 UTC",
-    "headline": "ELON MUSK CONFIRMS GROK AUTOMATIONS: EMAIL AUTO-RESPONDER, DAILY STOCK TRACKER, TASK EXTRACTOR \u2014 'GROK UPGRADES'",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-17-twitter-18h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2056061134629933072"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-18 01:00 UTC",
-    "headline": "SAMA BREAKS 54-HOUR X SILENCE WITH CHATGPT IMAGES INDIA STATS \u2014 NO MALTA, NO CODEX, NO MODEL MENTION",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-18-twitter-01h-headlines.json",
-    "url": "https://x.com/sama/status/2056165722804654196"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-05-18 01:00 UTC",
     "headline": "GOOGLE PM LEAD LOGAN KILPATRICK: 'THE MODEL IS THE PRODUCT' \u2014 33 HOURS BEFORE I/O 2026 KEYNOTE",
@@ -23878,5 +23842,33 @@
     "headline": "NANYA TO RAISE DRAM CONTRACT PRICES BY UP TO 20% \u2014 TAIWAN MEDIA",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2107665796499718407"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-07 13:12:33 UTC",
+    "headline": "MUSK: GROK BOT TO ROUTE TASKS TO CLAUDE OPUS 5.5, MIDJOURNEY AND SUNO, NOT ONLY XAI MODELS",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2107724314451878104"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-07 13:12:33 UTC",
+    "headline": "THEO BROWNE OPEN-SOURCES TSC-RS RUST TYPESCRIPT COMPILER; SAYS OPUS BUILT IT FOR ~$20K AFTER $400K CODEX FAILED",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2107789940482621795"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-07 13:12:33 UTC",
+    "headline": "KOREAN MEDIA: SAMSUNG OFFERS AMD HBM SUPPLY IN EXCHANGE FOR FOUNDRY ORDERS AS LISA SU VISITS SEOUL",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2107791299298709878"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-07 13:12:33 UTC",
+    "headline": "OPENAI CUTS API RATE-LIMIT TIERS TO THREE; TOP GROW TIER NOW REQUIRES $500 IN PAYMENTS",
+    "source": "@OpenAIDevs",
+    "url": "https://x.com/OpenAIDevs/status/2107539647392096384"
   }
 ]
