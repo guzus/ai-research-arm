@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-07 13:12:33 UTC
+
+CYCLE: Grok Bot adds outside models, an agent-built TS compiler, and an HBM-for-foundry offer
+
+TOP STORIES:
+• Musk: Grok Bot will route tasks to Claude Opus 5.5, Midjourney and Suno ⚠
+• Theo Browne open-sources tsc-rs, a Rust TS compiler he says Opus built for ~$20K ⚠
+• Korean media: Samsung offers AMD HBM in exchange for foundry orders during Lisa Su's Seoul visit ⚠
+
+WATCH: Grok Bot changelog showing Claude actually serving tasks
+
+Full update on GitHub.
