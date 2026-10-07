@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "Its abstract describes \"a deterministic algorithm that multiplies two n-bit integers in O(n(lg n)^(1−κ)) worst-case time, with κ = 2⁻¹⁸²\" [^2].", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c2", "claim_text": "No Lean formalization exists for family 109. `lean/docs/109.md` returns 404, and no entry in `formalization.yaml` covers integer multiplication [^9,15].", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c3", "claim_text": "It lists 162 source papers and 185 main-result declarations, on toolchain `leanprover/lean4:v4.34.1` [^9,14].", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true}
+  ]
+}
