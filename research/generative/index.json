@@ -3141,6 +3141,22 @@
     "created_at": "2026-10-07T06:22:36Z",
     "source": "workflow_dispatch",
     "prompt": "OpenAI's 722-manuscript math release: auditing the sub-n log n multiplication claim, Lean coverage, and what is actually new",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-10-07T064408--openai-s-722-manuscript-math-release-auditing-the-sub-n-log.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "OpenAI의 722편 원고: n log n보다 빠른 곱셈 주장은 실재하는, 검증되지 않은 수학이다 — 그리고 Lean 배지가 가리는 범위는 겉보기보다 작다",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-10-07T06:44:08Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
+        "tags": [],
+        "translated_at": "2026-10-07T06:44:08Z",
+        "source_file": "research/generative/2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log.ara.md",
+        "source_sha256": "2067c31ec6315a612bfe9d101a531de005d3adc77fe10902f8bfa31471895347"
+      }
+    }
   }
 ]
