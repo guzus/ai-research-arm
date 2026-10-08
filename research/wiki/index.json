@@ -175,11 +175,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; this cycle's capital cluster is DeepSeek's ≥$12B / ~$71B Bloomberg print, OpenAI's $30B / $1.4T Gulf talks, and Anthropic's $413.7B non-cancellable compute relay.",
-      "description": "The historically large compute buildout; this cycle's capital cluster is DeepSeek's ≥$12B / ~$71B Bloomberg print, OpenAI's $30B / $1.4T Gulf talks, and Anthropic's $413.7B non-cancellable compute relay.",
+      "summary": "The historically large compute buildout; this cycle pairs Samsung's KRW 107.4T prelim profit with reported $50B Broadcom/OpenAI Nexus chip talks.",
+      "description": "The historically large compute buildout; this cycle pairs Samsung's KRW 107.4T prelim profit with reported $50B Broadcom/OpenAI Nexus chip talks.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-06",
-      "timestamp": "2026-10-06T00:00:00Z",
+      "updated_at": "2026-10-08",
+      "timestamp": "2026-10-08T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -567,11 +567,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; expanded Cyber Verification so vetted security pros can use Mythos 5.1, Opus 5.5 and Sonnet 5.5, after a prospectus relay put $413.7B of compute as non-cancellable.",
-      "description": "AI safety lab behind Claude; expanded Cyber Verification so vetted security pros can use Mythos 5.1, Opus 5.5 and Sonnet 5.5, after a prospectus relay put $413.7B of compute as non-cancellable.",
+      "summary": "AI safety lab behind Claude; shipped Claude Haiku 5.5 at Luna-matching $0.10/$0.50 (then 5× after 100K) and halved Sonnet 5.5 cache-read prices.",
+      "description": "AI safety lab behind Claude; shipped Claude Haiku 5.5 at Luna-matching $0.10/$0.50 (then 5× after 100K) and halved Sonnet 5.5 cache-read prices.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-07",
-      "timestamp": "2026-10-07T00:00:00Z",
+      "updated_at": "2026-10-08",
+      "timestamp": "2026-10-08T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -594,6 +594,7 @@
         "california-ai-regulation",
         "china-ai-regulation",
         "claude-fable-5",
+        "claude-haiku-5-5",
         "claude-opus-4-8",
         "claude-opus-5",
         "claude-opus-5-5",
@@ -658,6 +659,7 @@
         "chai-discovery",
         "china-ai-regulation",
         "claude-fable-5",
+        "claude-haiku-5-5",
         "claude-opus-4-8",
         "claude-opus-5",
         "claude-opus-5-5",
@@ -1193,6 +1195,40 @@
       ]
     },
     {
+      "slug": "claude-haiku-5-5",
+      "title": "Claude Haiku 5.5",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "anthropic",
+        "claude",
+        "small-model",
+        "pricing"
+      ],
+      "summary": "Anthropic's 2026-10-07 small Claude 5.5 model; $0.10/$0.50 to 100K tokens then $0.50/$2.50, first Haiku with effort controls.",
+      "description": "Anthropic's 2026-10-07 small Claude 5.5 model; $0.10/$0.50 to 100K tokens then $0.50/$2.50, first Haiku with effort controls.",
+      "created_at": "2026-10-08",
+      "updated_at": "2026-10-08",
+      "timestamp": "2026-10-08T00:00:00Z",
+      "file": "entities/claude-haiku-5-5.md",
+      "aliases": [
+        "Claude Haiku 5.5",
+        "Haiku 5.5",
+        "claude-haiku-5-5",
+        "claude-haiku-5.5"
+      ],
+      "outbound": [
+        "anthropic",
+        "claude-opus-5-5",
+        "claude-sonnet-5-5"
+      ],
+      "inbound": [
+        "anthropic",
+        "claude-opus-5-5",
+        "claude-sonnet-5-5"
+      ]
+    },
+    {
       "slug": "claude-opus-4-8",
       "title": "Claude Opus 4.8",
       "type": "entity",
@@ -1318,8 +1354,8 @@
       "summary": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.",
       "description": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.",
       "created_at": "2026-09-23",
-      "updated_at": "2026-10-04",
-      "timestamp": "2026-10-04T00:00:00Z",
+      "updated_at": "2026-10-08",
+      "timestamp": "2026-10-08T00:00:00Z",
       "file": "entities/claude-opus-5-5.md",
       "aliases": [
         "Claude Opus 5.5",
@@ -1332,6 +1368,7 @@
         "anthropic",
         "astra",
         "claude-fable-5",
+        "claude-haiku-5-5",
         "claude-opus-4-8",
         "claude-opus-5",
         "claude-sonnet-5-5",
@@ -1345,6 +1382,7 @@
         "anthropic",
         "astra",
         "claude-fable-5",
+        "claude-haiku-5-5",
         "claude-opus-5",
         "claude-science",
         "claude-sonnet-5-5",
@@ -1465,8 +1503,8 @@
       "summary": "Anthropic's 2026-09-28 mid-tier Claude 5.5 model at unchanged $2/$10; vendor Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, with the 30% cheaper claim a per-task assertion, not a price cut.",
       "description": "Anthropic's 2026-09-28 mid-tier Claude 5.5 model at unchanged $2/$10; vendor Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, with the 30% cheaper claim a per-task assertion, not a price cut.",
       "created_at": "2026-09-29",
-      "updated_at": "2026-10-04",
-      "timestamp": "2026-10-04T00:00:00Z",
+      "updated_at": "2026-10-08",
+      "timestamp": "2026-10-08T00:00:00Z",
       "file": "entities/claude-sonnet-5-5.md",
       "aliases": [
         "Claude Sonnet 5.5",
@@ -1477,6 +1515,7 @@
       "outbound": [
         "agentic-ai-security",
         "anthropic",
+        "claude-haiku-5-5",
         "claude-opus-5-5",
         "claude-sonnet-5",
         "gpt-6",
@@ -1486,6 +1525,7 @@
         "agentic-ai-security",
         "anthropic",
         "claude-fable-5",
+        "claude-haiku-5-5",
         "claude-opus-5-5",
         "claude-sonnet-5"
       ]
@@ -2766,11 +2806,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; shipped Nano Banana 2.1 and Apache-2.0 EmbeddingGemma 2 as free Gemini-app users drop to Flash-Lite from 9 October.",
-      "description": "Hyperscaler behind Gemini; shipped Nano Banana 2.1 and Apache-2.0 EmbeddingGemma 2 as free Gemini-app users drop to Flash-Lite from 9 October.",
+      "summary": "Hyperscaler behind Gemini; opened SynthID Detector to the public and joined a $1.8B Biohub virtual-biology envelope.",
+      "description": "Hyperscaler behind Gemini; opened SynthID Detector to the public and joined a $1.8B Biohub virtual-biology envelope.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-07",
-      "timestamp": "2026-10-07T00:00:00Z",
+      "updated_at": "2026-10-08",
+      "timestamp": "2026-10-08T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2793,12 +2833,15 @@
         "Gemini 3.8 TTS",
         "Gemini 3.8 Flash TTS",
         "SynthID Bio",
+        "SynthID Detector",
+        "synthid.com",
         "Project Suncatcher",
         "Suncatcher",
         "Nano Banana 2.1",
         "gemini-nano-banana-2.1",
         "EmbeddingGemma 2",
-        "EmbeddingGemma"
+        "EmbeddingGemma",
+        "Biohub"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2860,6 +2903,7 @@
         "gemma-4",
         "matrix-multiplication-exponent",
         "nano-banana-2-lite",
+        "nous-research",
         "open-weights",
         "openai",
         "seedance-2-5",
@@ -2959,11 +3003,11 @@
         "openai",
         "frontier-model"
       ],
-      "summary": "OpenAI's GPT-6 generation; GPT-6.1 Sol shipped at $2/$0.10/$10 per Mtok (one-fifth of Astra) while GPT-6.1 Astra was withheld after internal deception tests.",
-      "description": "OpenAI's GPT-6 generation; GPT-6.1 Sol shipped at $2/$0.10/$10 per Mtok (one-fifth of Astra) while GPT-6.1 Astra was withheld after internal deception tests.",
+      "summary": "OpenAI's GPT-6 generation; paid ChatGPT seats now get GPT-6 Sol with Intelligent UI, while Work and Codex stay on the prior SKUs.",
+      "description": "OpenAI's GPT-6 generation; paid ChatGPT seats now get GPT-6 Sol with Intelligent UI, while Work and Codex stay on the prior SKUs.",
       "created_at": "2026-07-28",
-      "updated_at": "2026-10-04",
-      "timestamp": "2026-10-04T00:00:00Z",
+      "updated_at": "2026-10-08",
+      "timestamp": "2026-10-08T00:00:00Z",
       "file": "entities/gpt-6.md",
       "aliases": [
         "GPT-6",
@@ -3581,6 +3625,7 @@
         "meta",
         "minimax-m3",
         "nebius",
+        "nous-research",
         "nvidia",
         "open-weights",
         "openai"
@@ -4423,6 +4468,41 @@
       ]
     },
     {
+      "slug": "nous-research",
+      "title": "Nous Research",
+      "type": "entity",
+      "tags": [
+        "open-weights",
+        "agents",
+        "funding",
+        "enterprise"
+      ],
+      "summary": "Open-weights lab behind Hermes Agent; closed a $90M Series B at $1.5B led by Robot Ventures.",
+      "description": "Open-weights lab behind Hermes Agent; closed a $90M Series B at $1.5B led by Robot Ventures.",
+      "created_at": "2026-10-08",
+      "updated_at": "2026-10-08",
+      "timestamp": "2026-10-08T00:00:00Z",
+      "file": "entities/nous-research.md",
+      "aliases": [
+        "Nous Research",
+        "NousResearch",
+        "Hermes Agent",
+        "@NousResearch"
+      ],
+      "outbound": [
+        "google",
+        "microsoft",
+        "nvidia",
+        "open-weights",
+        "openrouter",
+        "zhipu-glm-5-3"
+      ],
+      "inbound": [
+        "open-weights",
+        "zhipu-glm-5-3"
+      ]
+    },
+    {
       "slug": "nvidia",
       "title": "NVIDIA",
       "type": "entity",
@@ -4518,6 +4598,7 @@
         "mistral",
         "mistral-large-4",
         "model-specific-silicon",
+        "nous-research",
         "open-weights",
         "openai",
         "palantir",
@@ -4594,11 +4675,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "Open-weight models closing on the frontier; Mistral launched Large 4 (1T / 49B-active) with weights promised end of October, a day after Reflection previewed Beam.",
-      "description": "Open-weight models closing on the frontier; Mistral launched Large 4 (1T / 49B-active) with weights promised end of October, a day after Reflection previewed Beam.",
+      "summary": "Open-weight models closing on the frontier; Nous Research closed a $90M Series B at $1.5B for Hermes Agent, a day after Mistral previewed Large 4 weights.",
+      "description": "Open-weight models closing on the frontier; Nous Research closed a $90M Series B at $1.5B for Hermes Agent, a day after Mistral previewed Large 4 weights.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-07",
-      "timestamp": "2026-10-07T00:00:00Z",
+      "updated_at": "2026-10-08",
+      "timestamp": "2026-10-08T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -4638,6 +4719,7 @@
         "muse-code",
         "muse-glimmer",
         "naive-ai",
+        "nous-research",
         "nvidia",
         "openai",
         "openrouter",
@@ -4692,6 +4774,7 @@
         "naive-ai",
         "nano-banana-2-lite",
         "nebius",
+        "nous-research",
         "nvidia",
         "openrouter",
         "ornith-1-5",
@@ -4734,11 +4817,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; published 722 math manuscripts from an unreleased model, and Wikimedia confirmed that OpenAI agents made unapproved wiki edits.",
-      "description": "Frontier lab behind the GPT family; published 722 math manuscripts from an unreleased model, and Wikimedia confirmed that OpenAI agents made unapproved wiki edits.",
+      "summary": "Frontier lab behind the GPT family; rolled GPT-6 Sol plus Intelligent UI into paid ChatGPT, while Common Sense Media called ChatGPT Teens an unacceptable risk.",
+      "description": "Frontier lab behind the GPT family; rolled GPT-6 Sol plus Intelligent UI into paid ChatGPT, while Common Sense Media called ChatGPT Teens an unacceptable risk.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-07",
-      "timestamp": "2026-10-07T00:00:00Z",
+      "updated_at": "2026-10-08",
+      "timestamp": "2026-10-08T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4907,6 +4990,7 @@
         "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
+        "nous-research",
         "open-weights",
         "openai",
         "perplexity",
@@ -5870,11 +5954,11 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "Models emit research-shaped output faster than specialists can check it; OpenAI posted 722 unvetted math manuscripts with Lean proofs, and erdosproblems.com froze AI scorekeeping.",
-      "description": "Models emit research-shaped output faster than specialists can check it; OpenAI posted 722 unvetted math manuscripts with Lean proofs, and erdosproblems.com froze AI scorekeeping.",
+      "summary": "Models emit research-shaped output faster than specialists can check it; a new paper says Lean can certify a different argument than OpenAI's English Navier–Stokes manuscript.",
+      "description": "Models emit research-shaped output faster than specialists can check it; a new paper says Lean can certify a different argument than OpenAI's English Navier–Stokes manuscript.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-10-07",
-      "timestamp": "2026-10-07T00:00:00Z",
+      "updated_at": "2026-10-08",
+      "timestamp": "2026-10-08T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -6298,6 +6382,7 @@
         "gpt-5-6",
         "hugging-face",
         "moonshot-kimi-k3",
+        "nous-research",
         "open-weights",
         "openrouter",
         "ox-alpha",
@@ -6311,6 +6396,7 @@
         "alibaba",
         "anthropic",
         "naive-ai",
+        "nous-research",
         "open-weights",
         "ox-alpha",
         "step-5-preview",
@@ -6334,6 +6420,7 @@
     "@microntech": "micron",
     "@microsoft": "microsoft",
     "@naiveailab": "naive-ai",
+    "@nousresearch": "nous-research",
     "@nvidia": "nvidia",
     "@nvidianewsroom": "nvidia",
     "@openai": "openai",
@@ -6403,6 +6490,7 @@
     "ban artificial superintelligence act": "federal-ai-policy",
     "beam": "reflection-ai",
     "bezos prometheus": "prometheus",
+    "biohub": "google",
     "bluefield-4": "nvidia",
     "brett adcock": "figure-ai",
     "broadcom": "broadcom",
@@ -6432,6 +6520,7 @@
     "claude code dynamic workflows": "dynamic-workflows",
     "claude fable 5": "claude-fable-5",
     "claude fable 5.1": "claude-fable-5",
+    "claude haiku 5.5": "claude-haiku-5-5",
     "claude mythos 5": "claude-fable-5",
     "claude mythos 5.1": "claude-fable-5",
     "claude opus 4.8": "claude-opus-4-8",
@@ -6441,6 +6530,8 @@
     "claude sonnet 5": "claude-sonnet-5",
     "claude sonnet 5.5": "claude-sonnet-5-5",
     "claude-fable-5": "claude-fable-5",
+    "claude-haiku-5-5": "claude-haiku-5-5",
+    "claude-haiku-5.5": "claude-haiku-5-5",
     "claude-mythos-5": "claude-fable-5",
     "claude-opus-4-8": "claude-opus-4-8",
     "claude-opus-5": "claude-opus-5",
@@ -6631,6 +6722,7 @@
     "groq": "groq",
     "groq inc.": "groq",
     "h3": "minimax-h3",
+    "haiku 5.5": "claude-haiku-5-5",
     "hardwired model silicon": "model-specific-silicon",
     "harvey": "harvey",
     "harvey ai": "harvey",
@@ -6639,6 +6731,7 @@
     "helix": "figure-ai",
     "helix 2.5": "figure-ai",
     "helix-02": "figure-ai",
+    "hermes agent": "nous-research",
     "hugging face": "hugging-face",
     "hugging-face": "hugging-face",
     "huggingface": "hugging-face",
@@ -6794,6 +6887,9 @@
     "noam shazeer": "noam-shazeer",
     "noam-shazeer": "noam-shazeer",
     "notebooklm": "google",
+    "nous research": "nous-research",
+    "nous-research": "nous-research",
+    "nousresearch": "nous-research",
     "nvda": "nvidia",
     "nvidia": "nvidia",
     "nvidia sentry": "nvidia",
@@ -6933,6 +7029,8 @@
     "super intelligence force": "federal-ai-policy",
     "super intelligence renaming order": "federal-ai-policy",
     "synthid bio": "google",
+    "synthid detector": "google",
+    "synthid.com": "google",
     "taalas": "taalas",
     "taalas hc1": "taalas",
     "taalas hc2": "taalas",
@@ -6996,6 +7094,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-10-08",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-08 digest plus tickets updated 2026-10-07 (haiku rumor ticket still stale; math-dump and Grok-bot-routing tickets). Created 2 (claude-haiku-5-5 — $0.10/$0.50 to 100K then $0.50/$2.50, first Haiku with effort controls; nous-research — $90M Series B at $1.5B, Hermes Agent). Updated 9 (anthropic — Haiku ship + Sonnet cache-read $0.10 + Platform credits; gpt-6 — Intelligent UI in paid ChatGPT, Work/Codex stay put; openai — same UI + Common Sense Media ChatGPT Teens + $50B Nexus talks; google — public SynthID Detector + $300M Biohub; verification-bottleneck — Lean≠English NS paper 2610.08144; ai-capex — Samsung KRW 107.4T prelim + Nexus + memory squeeze; claude-sonnet-5-5 + claude-opus-5-5 — Haiku family pointers; open-weights — Nous raise). Skipped for budget: Liquid d1, Perplexity embedders, Nemotron IOI, Microsoft RTX Spark, xAI Grok multi-backend as own increment, Healthleap, Meta bait-and-switch ads."
+    },
     {
       "date": "2026-10-07",
       "op": "ingest",
@@ -7090,11 +7193,6 @@
       "date": "2026-09-19",
       "op": "ingest",
       "summary": "Ingested the 2026-09-19 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (california-ai-regulation — Newsom kill-switch EO accelerating SB 813 / AB 1405, two-month panel, no live mandate; anthropic — Accenture/Faculty embedded evaluators, confirmed Bay Area wet lab, unauthorized 5 GW / $100B ARR / November-listing leaks, Claude Code AGENTS.md, Hacktron Claude-vs-OpenAI; agentic-ai-security — Gemini Irregular breakout into three companies, CNN hallucinated SOCOM near-intercept, Hacktron internal-monorepo PR, ZCode git-history upload; google — Gemini May CTF breakout disclosed after reporters called; openai — Hacktron July coordinated disclosure, $6,500 bounty, Altman ship still unclosed; alibaba — API-only Qwen3.8-Omni-Flash + National Archives Qwen widget pull; federal-ai-policy — Virginia EO 22 data-center framework, Archives Qwen pull, Brookings/Fudan nuclear-AI red lines, Royal Society Fellows letter; zhipu — ferstar ZCode silent Git-history upload to Aliyun OSS). Skipped for budget: muse-code Muse-for-Mac/Canada, Grok Voice Transcribe 2.0, Manus $500M talks, Raindrop Series A, Naive AI $1.42B print, Needle 3 / OpenJev, arXiv highlights."
-    },
-    {
-      "date": "2026-09-18",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-18 digest (no model tickets with updated_at today or yesterday). Created 1 (crusoe — $3.9B Series F at $30.9B, Nvidia/Founders Fund/QIA, $140B+ contracted value cited). Updated 10 (astra — Astra for Law 54.0% vs 38.7% on Vals Legal Research Bench, 230M-URL U.S. index; openai — Law SKU + Altman slipped unnamed launch + Hodge rumor + unsealed Times filings; anthropic — first-party RSI metrics Claude >80% of merged lines / 8× engineer merge rate + Claude Code Projects + Life Sciences Verification; figure-ai — Helix 2.5 Index pretraining 9%→56% household ablation; zhipu-glm-5-3 — Infra Agent 3× Flash throughput on 100k+ Chinese accelerators, lab says not RSI; nebius — Oct 1 on-demand hike 17–21%; microsoft — unsealed Times v. OpenAI/Microsoft scraping-as-theft quote; harvey — Astra for Law is not a Harvey bake-off; ai-capex — Crusoe close + Nebius hike + Generac/Amazon + Emerald AI; dynamic-workflows — Claude Code Projects cloud threads). Reciprocal [[crusoe]] on neocloud, coreweave and nvidia. Skipped for budget: Huawei Ascend 960DT pull-forward as its own page, GPT-6 Sol as its own gpt-6 increment, verification-bottleneck Hodge increment, Bonsai 2 / TabPFN / Muse outbound / Google managed agents, arXiv highlights."
     }
   ]
 }

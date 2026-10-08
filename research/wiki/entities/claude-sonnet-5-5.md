@@ -6,8 +6,9 @@ aliases: ["Claude Sonnet 5.5", "Sonnet 5.5", "claude-sonnet-5-5", "claude-sonnet
 tags: [model-release, anthropic, claude, agentic-coding, frontier-model, pricing]
 description: Anthropic's 2026-09-28 mid-tier Claude 5.5 model at unchanged $2/$10; vendor Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, with the 30% cheaper claim a per-task assertion, not a price cut.
 created_at: 2026-09-29
-timestamp: 2026-10-04T00:00:00Z
+timestamp: 2026-10-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA model ticket — Claude Sonnet 5.5", path: research/models/tickets/anthropic-sonnet-5-5-2026-09.md}
@@ -19,8 +20,9 @@ mid-tier model, the second SKU in the Claude 5.5 family after
 from [[claude-sonnet-5|Sonnet 5]] — **$2 / $10 / $0.20 per Mtok** input /
 output / cache-read. Anthropic claims **30%+ faster output** and **up to 30%
 lower cost per task** from fewer tokens and tool calls; the token card itself
-did not move. It is now the **claude.ai free-tier** default. Haiku 5.5 is
-still "coming weeks" (Anthropic, TechCrunch, The Decoder, Simon Willison, HN
+did not move. It is now the **claude.ai free-tier** default.
+[[claude-haiku-5-5|Haiku 5.5]] shipped
+2026-10-07 (Anthropic, TechCrunch, The Decoder, Simon Willison, HN
 539 pts; ARA daily digest 2026-09-29).
 
 ## Why it matters
@@ -53,8 +55,10 @@ still "coming weeks" (Anthropic, TechCrunch, The Decoder, Simon Willison, HN
 - **Does the per-task saving survive max/xhigh?** The cost claim and the
   scoreboard numbers may not be the same effort setting — the same trap
   [[claude-opus-5-5]] already hit.
-- **When does Haiku 5.5 actually ship?** Still a "coming weeks" line, not a
-  date.
+- **When does Haiku 5.5 actually ship?** Resolved
+  2026-10-07: see [[claude-haiku-5-5]]. On the
+  same day Anthropic halved this model's
+  cache-read price to **$0.10/MTok**.
 
 ## Antigravity and Microsoft 365 Copilot (2026-10-04)
 

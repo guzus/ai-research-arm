@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; expanded Cyber Verification so vetted security pros can use Mythos 5.1, Opus 5.5 and Sonnet 5.5, after a prospectus relay put $413.7B of compute as non-cancellable.
+description: AI safety lab behind Claude; shipped Claude Haiku 5.5 at Luna-matching $0.10/$0.50 (then 5× after 100K) and halved Sonnet 5.5 cache-read prices.
 created_at: 2026-05-24
-timestamp: 2026-10-07T00:00:00Z
+timestamp: 2026-10-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
@@ -2734,3 +2735,54 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   [[ai-capex]] and
   [[neocloud]] (TechCrunch;
   ARA daily digest 2026-10-07).
+
+## Haiku 5.5 ships; Sonnet cache-read cut (2026-10-08)
+
+- **[[claude-haiku-5-5|Claude Haiku
+  5.5]] is live** on Claude.ai,
+  Claude Code, AWS, Google Cloud,
+  and Microsoft Foundry as
+  `claude-haiku-5-5`. It is the
+  first Haiku with effort
+  controls. The card matches
+  [[gpt-6|GPT-6 Luna]] at
+  **$0.10 / $0.50** per million
+  tokens up to 100K, then jumps
+  to **$0.50 / $2.50**. Vendor
+  benches put it well ahead of
+  Luna on computer use and
+  terminals; Simon Willison
+  notes a fatter tokenizer
+  (~1.25× Haiku 4.5 tokens)
+  eats some of the headline
+  saving, and long prompts pay
+  5× the advertised rate. See
+  [[claude-haiku-5-5]]
+  (Anthropic, The Decoder,
+  Simon Willison, HN 468 /
+  220; ARA daily digest
+  2026-10-08).
+- **[[claude-sonnet-5-5|Sonnet
+  5.5]] cache-read prices were
+  halved to $0.10/MTok.**
+  Monthly Platform credits of
+  **$100 / $200 / $500** do not
+  roll over. Computer-use and
+  browser-use loops landed in
+  the Python and TypeScript
+  SDKs (Anthropic; ARA daily
+  digest 2026-10-08).
+- **Cyber Verification is still
+  the closed-model cyber path.**
+  Yesterday's expansion for
+  Mythos 5.1, Opus 5.5 and
+  Sonnet 5.5 stands; Decoder
+  says predecessor partners
+  found at least **129K**
+  confirmed vulns from April–
+  July 2026. Eligibility rules
+  remain unpublished. See
+  [[agentic-ai-security]] and
+  [[claude-fable-5]] (The
+  Decoder; ARA daily digest
+  2026-10-08).

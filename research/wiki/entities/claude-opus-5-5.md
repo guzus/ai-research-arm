@@ -6,8 +6,9 @@ aliases: ["Claude Opus 5.5", "Opus 5.5", "claude-opus-5-5", "claude-opus-5.5"]
 tags: [model-release, anthropic, claude, frontier-model, pricing]
 description: Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.
 created_at: 2026-09-23
-timestamp: 2026-10-04T00:00:00Z
+timestamp: 2026-10-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA model ticket — Claude Opus 5.5", path: research/models/tickets/anthropic-opus-5-5-2026-09.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
@@ -66,7 +67,8 @@ Verge, HN; ARA daily digest 2026-09-23).
   snapshot?
 - **When do Sonnet 5.5 and Haiku 5.5 actually ship?**
   [[claude-sonnet-5-5|Sonnet 5.5]] shipped 2026-09-28, five days
-  after this page. Haiku 5.5 is still "coming weeks."
+  after this page. [[claude-haiku-5-5|Haiku 5.5]] shipped
+  2026-10-07.
 
 ## Sonnet 5.5 fills the family slot (2026-09-28)
 
@@ -108,3 +110,13 @@ digest 2026-10-01).
   step," and keep task lists in files so they
   survive compaction (@theo, claude.dev, HN; ARA
   daily digest 2026-10-04).
+
+## Haiku 5.5 closes the family (2026-10-08)
+
+- **[[claude-haiku-5-5|Claude Haiku 5.5]]
+  shipped 2026-10-07**, completing the 5.5
+  trio. This page remains the $4/$20
+  flagship; Haiku is the cheap SKU at
+  **$0.10 / $0.50** to 100K tokens (then
+  5×). See [[anthropic]] (ARA daily digest
+  2026-10-08).

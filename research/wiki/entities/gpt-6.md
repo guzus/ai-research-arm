@@ -4,10 +4,11 @@ title: GPT-6
 type: entity
 aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna", "gpt-6-sol", "gpt-6-luna", "GPT-6.1 Sol", "gpt-6.1-sol", "gpt-6-1-sol", "GPT-6.1 Astra", "gpt-6.1-astra"]
 tags: [model-release, openai, frontier-model]
-description: OpenAI's GPT-6 generation; GPT-6.1 Sol shipped at $2/$0.10/$10 per Mtok (one-fifth of Astra) while GPT-6.1 Astra was withheld after internal deception tests.
+description: OpenAI's GPT-6 generation; paid ChatGPT seats now get GPT-6 Sol with Intelligent UI, while Work and Codex stay on the prior SKUs.
 created_at: 2026-07-28
-timestamp: 2026-10-04T00:00:00Z
+timestamp: 2026-10-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA model ticket — GPT-6.1 Sol", path: research/models/tickets/openai-gpt-6-1-sol-2026-09.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
@@ -210,3 +211,40 @@ substance.
   date. See [[openai]]
   (@shirochange_ai; ARA daily
   digest 2026-10-04).
+
+## Intelligent UI in ChatGPT (2026-10-08)
+
+- **Paid ChatGPT seats now get
+  GPT-6 Sol with Intelligent
+  UI.** Plus, Pro, Business, and
+  Enterprise users received the
+  consumer-chat skin on
+  2026-10-07. Free and Go are
+  scheduled to get GPT-6 Luna
+  plus the same UI on 8 October;
+  that tier had not been seen
+  lighting up in the digest
+  window. **Work and Codex stay
+  put** — this is not a new
+  base-model drop. Sol and Luna
+  were already in the API
+  (OpenAI, The Verge,
+  TechCrunch, The Decoder; ARA
+  daily digest 2026-10-08).
+- **Intelligent UI is a
+  streamable component library
+  plus a compiler** that paints
+  charts, forms, tappable
+  buttons, and in-chat tools as
+  the model generates. OpenAI
+  says Instant search answers
+  start **44%** sooner, and
+  Extra High starts answering
+  in [[gpt-5-6|GPT-5.6]] Medium
+  time. HN (342 / 163) split
+  between "automated
+  Ciechanowski explainers" and
+  "designed so ads can be more
+  easily integrated." See
+  [[openai]] (OpenAI, HN; ARA
+  daily digest 2026-10-08).

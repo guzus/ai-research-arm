@@ -4,10 +4,11 @@ title: The verification bottleneck
 type: concept
 aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: Models emit research-shaped output faster than specialists can check it; OpenAI posted 722 unvetted math manuscripts with Lean proofs, and erdosproblems.com froze AI scorekeeping.
+description: Models emit research-shaped output faster than specialists can check it; a new paper says Lean can certify a different argument than OpenAI's English Navier–Stokes manuscript.
 created_at: 2026-08-02
-timestamp: 2026-10-07T00:00:00Z
+timestamp: 2026-10-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
@@ -337,3 +338,50 @@ claim, and the dispute resolves on **relay credibility rather than
   concept named as the scarce input
   (erdosproblems.com, Hacker News;
   ARA daily digest 2026-10-07).
+
+## Lean does not certify the English proof (2026-10-08)
+
+- **Bastounis, Circelli, and Hansen
+  ([2610.08144](https://arxiv.org/abs/2610.08144))
+  argue that autoformalisation can
+  turn a wrong natural-language
+  proof into a correct Lean proof,
+  or a correct write-up into a
+  different argument.** Their
+  headline case is [[openai]]'s
+  announced Navier–Stokes blow-up:
+  the compiled Lean does not
+  correspond to the English
+  manuscript. HN (178 / 132) read
+  it as "the theorem may hold; the
+  manuscript is untrusted." That
+  is the sharpest formal statement
+  yet of this page's scarce-input
+  claim: a machine certificate is
+  not the same object as the
+  published argument. See
+  [[openai]] and [[astra]]
+  (arXiv:2610.08144, HN; ARA daily
+  digest 2026-10-08).
+- **The 722-manuscript dump took
+  Hacker News overnight (1,203 /
+  1,356).** Number theorists said a
+  real quasi-RH / no-Siegel-zeros
+  result "would likely be a Fields
+  Medal for a human"; others called
+  the dump tone-deaf. Claims that
+  the model proved quasi-RH or made
+  substantial progress on four of
+  seven Millennium Prize problems
+  still rest on family titles and
+  unnamed sources, not mathematician
+  sign-off. Scott Aaronson's
+  "Mathocalypse" field note puts
+  Unique Games among the 372
+  families and says the model
+  solved about **5%** of ~8,000
+  tried problems; Dana Moshkovitz
+  found the Unique Games manuscript
+  "impossible to read without AI
+  help" (HN, Aaronson; ARA daily
+  digest 2026-10-08).

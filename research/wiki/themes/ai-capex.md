@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; this cycle's capital cluster is DeepSeek's ≥$12B / ~$71B Bloomberg print, OpenAI's $30B / $1.4T Gulf talks, and Anthropic's $413.7B non-cancellable compute relay.
+description: The historically large compute buildout; this cycle pairs Samsung's KRW 107.4T prelim profit with reported $50B Broadcom/OpenAI Nexus chip talks.
 created_at: 2026-05-24
-timestamp: 2026-10-06T00:00:00Z
+timestamp: 2026-10-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
@@ -1504,3 +1505,52 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   $150M/month Colossus bill).
   See [[open-weights]] (ARA
   daily digest 2026-10-06).
+
+## Samsung prelim, Nexus chip talks, memory squeeze (2026-10-08)
+
+- **Samsung guided to a record
+  quarter:** about **KRW 107.4T
+  (~$80B)** of third-quarter
+  operating profit on **KRW 195T**
+  of sales — the first Korean
+  quarter above KRW 100T and about
+  eight times the year-ago print.
+  Consensus attributes it to AI
+  memory, but this is a two-line
+  prelim with no Device Solutions
+  split yet (Samsung Newsroom,
+  @jukan05, CNBC; ARA daily digest
+  2026-10-08).
+- **The Wall Street Journal says
+  [[broadcom]] is seeking $50B**
+  with Apollo and Blackstone in
+  early talks to finance
+  [[openai]]'s custom-chip program,
+  internally named Nexus, targeting
+  a close before year-end 2026.
+  Neither company has commented;
+  the figure may extend a book
+  Broadcom already stood up rather
+  than a brand-new raise.
+  Separately, Bloomberg/FT relays
+  describe a [[spacex]] chip-backed
+  SPV of about **$40B** ($10B bank
+  / $30B IG) led by Apollo, close
+  expected in 2027, collateralized
+  by [[nvidia]] chips. SpaceX,
+  Apollo, and Nvidia have not
+  confirmed (WSJ, Bloomberg/FT;
+  ARA daily digest 2026-10-08).
+- **Memory contracts are still
+  tightening behind the Samsung
+  print.** Nanya told customers
+  DRAM contracts would rise by up
+  to **20%**; Meritz expects some
+  [[apple]] mobile DRAM prices up
+  **50%** or more in 1Q27. Korean
+  media said Samsung offered
+  [[amd]] HBM in exchange for
+  foundry orders during Lisa Su's
+  Seoul visit; those terms rest on
+  one anonymous official (ARA
+  daily digest 2026-10-08).
