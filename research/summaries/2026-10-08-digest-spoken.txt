@@ -1,0 +1,11 @@
+Speaker 1: Thursday, October eighth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic just shipped Claude Haiku five point five at [emphasis] ten cents and fifty cents [/emphasis], matching GPT six Luna on price.
+Speaker 1: OSWorld jumped from fifteen point seven percent to [emphasis] seventy-two point four percent [/emphasis], and Terminal-Bench sits at thirty-nine point two percent versus Luna at sixteen point four.
+Speaker 2: That's the first time we've seen a cheap-tier Claude this close to the frontier on real computer use.
+Speaker 1: Meanwhile OpenAI rolled GPT six and Intelligent UI straight into ChatGPT.
+Speaker 2: Worth noting that Common Sense Media still rates ChatGPT for Teens an unacceptable risk, so the product launch and the safety grade are pulling apart.
+Speaker 1: Some quick numbers. Samsung's third-quarter operating profit hit one hundred seven point four trillion won, about [emphasis] eighty billion dollars [/emphasis].
+Speaker 2: Nous raised ninety million dollars at one point five billion, with Hermes sitting on about twenty-four million clones.
+Speaker 1: On the chip side, Broadcom and OpenAI are in unconfirmed talks on more than fifty billion dollars of chip debt.
+Speaker 2: The cheap-tier war is on, [dramatic_pause] and the other fight is who actually vets the math these models ship.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
