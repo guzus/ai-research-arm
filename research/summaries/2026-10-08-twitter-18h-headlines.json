@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "FT: OPENAI ARR NEARED $50B IN SEPTEMBER — $20B BELOW EARLIER $70B SIGNAL",
+    "source": "@FT",
+    "url": "https://x.com/FT/status/2108238721820614886",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC PLEDGES $150M OVER 3 YEARS TO GENESIS MISSION, CLAUDE TO 15+ FEDERAL AGENCIES",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2108226292235809081",
+    "category": "policy"
+  },
+  {
+    "headline": "FIRED OPENAI SAFETY RESEARCHERS ASK BOARD TO STOP WORK THAT HIDES MODEL REASONING",
+    "source": "@tomekkorbak",
+    "url": "https://x.com/tomekkorbak/status/2108266859397283953",
+    "category": "breaking"
+  },
+  {
+    "headline": "GOOGLE CLOUD UNVEILS GEMINI AGENT, A UNIVERSAL WORK AGENT THAT CAN ROUTE TO CLAUDE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2108201283777700103",
+    "category": "infra"
+  },
+  {
+    "headline": "ANTHROPIC BANS SUSTAINED ABUSE OF CLAUDE IN USAGE POLICY, EFFECTIVE NOV. 12",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2108244808494154089",
+    "category": "policy"
+  },
+  {
+    "headline": "GPT-6.1 SOL ULTRAFAST ROLLS OUT AT $12/$60 PER MTOK, UP TO 8X SOL STANDARD",
+    "source": "@OpenAIDevs",
+    "url": "https://x.com/OpenAIDevs/status/2108262812489531498",
+    "category": "model"
+  }
+]
