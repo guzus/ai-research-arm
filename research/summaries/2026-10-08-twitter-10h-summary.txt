@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-08 10:26:06 UTC
+
+CYCLE: CrowdStrike ties Korean bank breaches to ARTEX + frontier LLMs; Isomorphic talks $40B+; Aaronson flags crypto probes
+
+TOP STORIES:
+• CrowdStrike: unknown actor used ARTEX + DeepSeek/GLM-5.3/Grok 4.6/Claude Code against Korean banks [✓]
+• Bloomberg: Isomorphic Labs in early talks to raise at $40B+ valuation, possibly $50B [⚠]
+• Aaronson: AI companies discreetly testing whether internal models can break cryptography [⚠]
+
+WATCH: Named Korean victim banks, or a lab comment on the ARTEX campaign / crypto tests
+
+Full update on GitHub.
