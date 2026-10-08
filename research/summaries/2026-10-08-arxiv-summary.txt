@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-08
+
+TOP 5 PAPERS:
+• RoboJEPA — first scaling laws for multi-embodiment robot WMs; 8B JEPA; imagination error is a 2nd-order power law
+• Long-WAM — history helps only if AR-pretrained; 63.3→78.7%; 95% cup-stack vs 0/20 for π0.5
+• ExpDis — novelty bonuses break RLVR; decouple explorer from student; beats DAPO, better pass@k
+• EngramEdit — DeepSeek Engram as editable knowledge; ~perfect edits; 3× CoT multi-hop
+• Workhorse — Abbeel/Sreenath humanoid loco-manip from human video; 77% box-sort; survives 40 N·s pushes
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
