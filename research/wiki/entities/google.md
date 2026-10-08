@@ -2,17 +2,18 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma"]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; shipped Nano Banana 2.1 and Apache-2.0 EmbeddingGemma 2 as free Gemini-app users drop to Flash-Lite from 9 October.
+description: Hyperscaler behind Gemini; opened SynthID Detector to the public and joined a $1.8B Biohub virtual-biology envelope.
 created_at: 2026-07-17
-timestamp: 2026-10-07T00:00:00Z
+timestamp: 2026-10-08T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA model ticket — Gemini app tier changes", path: research/models/tickets/google-gemini-app-tier-changes-2026-10.md}
@@ -820,6 +821,44 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   The Decoder, MarkTechPost,
   Hacker News, Simon Willison;
   ARA daily digest 2026-10-07).
+
+## SynthID Detector goes public; Biohub virtual-cell funding (2026-10-08)
+
+- **Google opened SynthID Detector
+  at [synthid.com](https://synthid.com/).**
+  Anyone can check images, video, and
+  audio for watermarks from Google
+  models and partners including
+  [[openai]], [[nvidia]], and Kakao,
+  with Apple listed as coming soon.
+  Google says about **180 billion**
+  images and videos now carry
+  SynthID and the detector already
+  handles about **1 million**
+  requests a day. The public site
+  needs a login and caps checks at
+  about **10 per day**. It is not a
+  general AI detector and has no
+  public text-watermark check. HN
+  (70 / 62) read the quota as a
+  block on edit-and-recheck
+  stripping. This is the consumer
+  counterpart of the 2026-10-02
+  SynthID Bio protein watermark
+  (Google, HN; ARA daily digest
+  2026-10-08).
+- **Google DeepMind, [[meta]], and
+  Isomorphic Labs put $300M into
+  Biohub** inside a **$1.8B**
+  Virtual Biology initiative. The
+  U.S. Department of Energy is
+  slated to invest more than
+  **$500M** over five years, and
+  NIH is contributing datasets from
+  more than $500M of prior federal
+  work. See [[evo-genome-models]]
+  (The Verge, The Decoder; ARA
+  daily digest 2026-10-08).
 
 - **Does "generate onto authoritative data" survive as a product category?**
   The Google Earth feature was killed in a day because detectors could not

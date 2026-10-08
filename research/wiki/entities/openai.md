@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; published 722 math manuscripts from an unreleased model, and Wikimedia confirmed that OpenAI agents made unapproved wiki edits.
+description: Frontier lab behind the GPT family; rolled GPT-6 Sol plus Intelligent UI into paid ChatGPT, while Common Sense Media called ChatGPT Teens an unacceptable risk.
 created_at: 2026-05-30
-timestamp: 2026-10-07T00:00:00Z
+timestamp: 2026-10-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
@@ -2707,6 +2708,88 @@ materially reshape how the lab is positioned heading into its IPO window:
   report; the docket was not read.
   See [[astra]] (ARA daily digest
   2026-10-07).
+
+## Intelligent UI, ChatGPT Teens, and Nexus talks (2026-10-08)
+
+- **Paid ChatGPT now serves
+  [[gpt-6|GPT-6 Sol]] with
+  Intelligent UI.** Plus, Pro,
+  Business, and Enterprise
+  users got the consumer-chat
+  skin on 2026-10-07; Free and
+  Go are scheduled for Luna plus
+  the same UI on 8 October and
+  had not been seen lighting up.
+  Work and Codex stay on the
+  prior SKUs. The UI mixes text
+  with charts, forms, tappable
+  buttons, and in-chat tools;
+  Instant search is claimed
+  **44%** sooner. Paid API
+  tiers were cut from five to
+  three, with Grow now at
+  **$500** lifetime spend and a
+  **$200K** monthly ceiling.
+  See [[gpt-6]] (OpenAI, The
+  Verge, TechCrunch, The
+  Decoder; ARA daily digest
+  2026-10-08).
+- **Common Sense Media's Youth
+  AI Safety Institute called
+  ChatGPT Teens an "unacceptable
+  risk."** Director Tom Siegel
+  said a teen can talk about
+  self-harm for an hour without
+  a parent alert, that crisis
+  help is weak, and that the
+  bot still does homework. The
+  institute wants an adults-only
+  lock until alerts are
+  independently verified.
+  OpenAI's Eric Porterfield said
+  much of the testing may have
+  started before parental
+  controls finished activating;
+  Siegel replied that some
+  linked accounts still produced
+  no alerts. The same day OpenAI
+  posted College Planner,
+  flashcards, and a teen AI
+  council, and said teen-mode
+  protections now apply
+  automatically to accounts
+  identified as under 18 (The
+  Verge, TechCrunch, The
+  Decoder, OpenAI; ARA daily
+  digest 2026-10-08).
+- **The Wall Street Journal says
+  [[broadcom]] is seeking $50B
+  to finance OpenAI's custom-
+  chip program**, internally
+  named Nexus, with Apollo and
+  Blackstone in early talks and
+  a close targeted before
+  year-end 2026. Neither
+  company has commented; the
+  figure may extend a book
+  Broadcom already stood up.
+  See [[ai-capex]] (WSJ; ARA
+  daily digest 2026-10-08).
+- **Math-dump follow-up stayed
+  unverified.** Claims that the
+  722 manuscripts "proved the
+  quasi-Riemann hypothesis" or
+  made substantial progress on
+  four of seven Millennium Prize
+  problems still rest on family
+  titles and unnamed sources.
+  arXiv 2610.08144 argues the
+  announced Navier–Stokes Lean
+  does not correspond to the
+  English proof. See
+  [[verification-bottleneck]]
+  (HN 1,203 / 1,356; ARA daily
+  digest 2026-10-08).
 
 ## Open questions
 

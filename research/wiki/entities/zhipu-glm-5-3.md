@@ -175,16 +175,17 @@ GLM-5.3 SKU. See [[zhipu]] (Reuters; ARA daily digest
 ## FlashX hooks into Hermes Agent (2026-09-21)
 
 - **Teknium said `z-ai/glm-5.3-flashx` is
-  selectable** via the Nous Portal and
-  [[openrouter|OpenRouter]], **1,048,576-token
-  context**. OpenRouter lists the SKU as
-  released **18 September** at **$0.37 / $1.25
-  per Mtok** with a **320B / 18B active**
-  split — Friday's model, Sunday's Hermes
-  hook. This is a serving/SKU increment on
-  the Flash line, not a new checkpoint or
-  a weights drop. See [[openrouter]] (Teknium,
-  OpenRouter; ARA daily digest 2026-09-21).
+  selectable** via the [[nous-research|Nous]]
+  Portal and [[openrouter|OpenRouter]],
+  **1,048,576-token context**. OpenRouter
+  lists the SKU as released **18 September**
+  at **$0.37 / $1.25 per Mtok** with a
+  **320B / 18B active** split — Friday's
+  model, Sunday's Hermes hook. This is a
+  serving/SKU increment on the Flash line,
+  not a new checkpoint or a weights drop.
+  See [[openrouter]] (Teknium, OpenRouter;
+  ARA daily digest 2026-09-21).
 - **[[step-5-preview|Step 5 Preview]]'s vendor
   DeepSWE v1.1 High row** puts GLM-5.3 Max at
   **66.9** against Step 5's **67.7**. First-party

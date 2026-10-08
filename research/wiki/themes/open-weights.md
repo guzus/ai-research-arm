@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: Open-weight models closing on the frontier; Mistral launched Large 4 (1T / 49B-active) with weights promised end of October, a day after Reflection previewed Beam.
+description: Open-weight models closing on the frontier; Nous Research closed a $90M Series B at $1.5B for Hermes Agent, a day after Mistral previewed Large 4 weights.
 created_at: 2026-06-14
-timestamp: 2026-10-07T00:00:00Z
+timestamp: 2026-10-08T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
@@ -758,6 +759,22 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   retires (Simon Willison,
   MarkTechPost; ARA daily
   digest 2026-10-07).
+
+## Nous Research prices an open agent shop (2026-10-08)
+
+- **[[nous-research]] closed a $90M
+  Series B at $1.5B**, led by Robot
+  Ventures, with [[nvidia]], Samsung,
+  and [[microsoft]]'s M12 in. Hermes
+  Agent is the enterprise product;
+  the company claims ~2.5% of global
+  AI token usage and 24M+ clones.
+  Those usage figures are company /
+  Journal estimates. This is a
+  mid-tier open-agent valuation, not
+  a frontier-pretrain megaround
+  (TechCrunch, WSJ; ARA daily digest
+  2026-10-08).
 
 ## Open questions
 
