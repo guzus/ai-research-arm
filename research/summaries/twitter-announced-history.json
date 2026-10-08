@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-18 04:00 UTC",
-    "headline": "KOREAN COURT PARTIALLY GRANTS INJUNCTION AGAINST SAMSUNG UNION STRIKE \u2014 KOSPI REVERSES 4.68% LOSS, SAMSUNG +6.7%",
-    "source": "@YonhapNews",
-    "source_file": "research/summaries/2026-05-18-twitter-04h-headlines.json",
-    "url": "https://x.com/YonhapNews/status/2056207805498171639"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-18 04:00 UTC",
-    "headline": "SAMSUNG UNION FACES DAILY FINES FOR NON-COMPLIANCE WITH COURT ORDER \u2014 STRIKE NOW EFFECTIVELY BLOCKED",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-18-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2056195907750904096"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-18 04:00 UTC",
-    "headline": "ANTHROPIC ALEX ALBERT BREAKS 55H X-SILENCE \u2014 \"SHRINK YOUR SCAFFOLDING\" + \"MODEL AND HARNESS PLANNED TOGETHER\" FRAMING",
-    "source": "@alexalbert__",
-    "source_file": "research/summaries/2026-05-18-twitter-04h-headlines.json",
-    "url": "https://x.com/alexalbert__/status/2056183085989265578"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-18 04:00 UTC",
-    "headline": "GOOGLE LOGAN K PIVOTS BACK TO \"YEAR OF AGENTS AND AI CODING\" 6.5H AFTER \"MODEL IS THE PRODUCT\" SLOGAN",
-    "source": "@OfficialLoganK",
-    "source_file": "research/summaries/2026-05-18-twitter-04h-headlines.json",
-    "url": "https://x.com/OfficialLoganK/status/2056206893803356337"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-18 04:00 UTC",
-    "headline": "MIRAE ASSET RAISES SK HYNIX PRICE TARGET TO 360,000 KRW ON RELENTLESS HBM DEMAND \u2014 SECOND ASIAN-BROKER UPGRADE THIS CYCLE",
-    "source": "@todaystartupnws",
-    "source_file": "research/summaries/2026-05-18-twitter-04h-headlines.json",
-    "url": "https://x.com/todaystartupnws/status/2056228033640890573"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-18 04:00 UTC",
-    "headline": "OPENAI CORP 80.5H+ SILENT ON MALTA DEAL \u2014 SAMA INDIA-STATS POST GROWS 3.3X TO 5,009L/201RT ON MINIMAL-SUBSTANCE VEHICLE",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-18-twitter-04h-headlines.json",
-    "url": "https://x.com/sama/status/2056165722804654196"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-18 04:00 UTC",
     "headline": "ANTHROPIC CORP 82.5H+ SILENT \u2014 10-EVENT STACK NOW INCLUDES SAMSUNG-UNION RULING + ALBERT RT + LOGAN K PIVOT",
@@ -23858,5 +23804,47 @@
     "headline": "PERPLEXITY OPEN-SOURCES PPLX-EMBED-V2-LATE \u2014 9B AND 0.6B MULTIMODAL LATE-INTERACTION EMBEDDINGS",
     "source": "@AravSrinivas",
     "url": "https://x.com/AravSrinivas/status/2107871834205196784"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-08 00:56:15 UTC",
+    "headline": "WSJ: BROADCOM ARRANGING $50B+ FOR OPENAI CUSTOM CHIPS; APOLLO AND BLACKSTONE IN TALKS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2107996158115401800"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-08 00:56:15 UTC",
+    "headline": "SAMSUNG GUIDES Q3 OP AT KRW 107.4T (~$80B) \u2014 FIRST QUARTER ABOVE 100T ON AI MEMORY",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2107969052966891623"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-08 00:56:15 UTC",
+    "headline": "NOUS CONFIRMS $90M SERIES B AT $1.5B FOR HERMES; ROBOT VENTURES LEADS, NVIDIA IN",
+    "source": "@Teknium",
+    "url": "https://x.com/Teknium/status/2107963878982520982"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-08 00:56:15 UTC",
+    "headline": "GROK BOT CAN NOW SEARCH, READ AND MONITOR X",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2107979289501344137"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-08 00:56:15 UTC",
+    "headline": "LIQUID AI OPENS D1-3B AND D1-OMNI-600M WEIGHTS FOR ON-DEVICE MULTIMODAL DECISIONS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2107944584252948686"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-08 00:56:15 UTC",
+    "headline": "FOLLOW-UP TIGHTENS OPENAI INTEGER-MULTIPLICATION \u03ba TO 2^-59, A 2^123 GAIN VS ORIGINAL",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2107964854745403568"
   }
 ]
