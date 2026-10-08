@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-10-08
+
+TOP STORIES:
+• Anthropic ships Claude Haiku 5.5 at $0.10/$0.50, matching GPT-6 Luna
+• OpenAI rolls GPT-6 and Intelligent UI into ChatGPT
+• Common Sense Media rates ChatGPT for Teens an "unacceptable risk"
+
+KEY NUMBERS:
+• Haiku 5.5 OSWorld: 15.7% → 72.4%; Terminal-Bench 39.2% vs Luna 16.4%
+• Samsung Q3 OP: KRW 107.4T (~$80B)
+• Nous Series B: $90M at $1.5B; Hermes ~24M clones
+• Broadcom/OpenAI chip-debt talks: >$50B (WSJ, unconfirmed)
+
+TRENDING: Cheap-tier war (Haiku 5.5 vs GPT-6 Luna) and who vets AI math
+
+Full digest on GitHub.
