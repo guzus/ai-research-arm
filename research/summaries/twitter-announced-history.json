@@ -2,60 +2,6 @@
   {
     "backfilled": true,
     "category": "business",
-    "delivered_at": "2026-05-18 04:00 UTC",
-    "headline": "ANTHROPIC CORP 82.5H+ SILENT \u2014 10-EVENT STACK NOW INCLUDES SAMSUNG-UNION RULING + ALBERT RT + LOGAN K PIVOT",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-18-twitter-04h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2054987444664377374"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-18 10:00 UTC",
-    "headline": "FT: ANTHROPIC TO BRIEF FSB ON MYTHOS CYBER RISKS AT BOE GOVERNOR BAILEY'S REQUEST \u2014 ~40 PREVIEW-ACCESS ORGS INCL. AMAZON, MICROSOFT, JPMORGAN",
-    "source": "@FT",
-    "source_file": "research/summaries/2026-05-18-twitter-10h-headlines.json",
-    "url": "https://x.com/FT/status/2056243562954555597"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-18 10:00 UTC",
-    "headline": "FSB DRAFTING AI COMPLIANCE FRAMEWORK FOR FINANCE; MYTHOS FOUND THOUSANDS OF SEVERE VULNERABILITIES TOO FAST FOR BANKS TO PATCH",
-    "source": "@INFOFLOWfx",
-    "source_file": "research/summaries/2026-05-18-twitter-10h-headlines.json",
-    "url": "https://x.com/i/status/2056231402555785433"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-18 10:00 UTC",
-    "headline": "SAMSUNG SENIOR ADVISOR KYUNG: MEMORY PRICES TO FALL FROM H2 2027 AS CHINESE CAPA HITS 6M WAFERS/MONTH; BIG TECH CAPEX ROI A KEY RISK",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-18-twitter-10h-headlines.json",
-    "url": "https://x.com/jukan05/status/2056316714309255367"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-18 10:00 UTC",
-    "headline": "UBS MODELS 2027 TPU SHIPMENTS AT 9.87M UNITS \u2014 6.76M FROM AVGO + 3.11M FROM MTK, 139% YOY GROWTH FROM 4.13M IN 2026",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-18-twitter-10h-headlines.json",
-    "url": "https://x.com/jukan05/status/2056313542589174057"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-18 10:00 UTC",
-    "headline": "GF OVERSEAS REITERATES NVDA BUY, RAISES PT TO $308 AHEAD OF Q1 FY27 EARNINGS \u2014 PRODUCT MIX OFFSETS RUBIN DELAY",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-18-twitter-10h-headlines.json",
-    "url": "https://x.com/jukan05/status/2056238134481076408"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
     "delivered_at": "2026-05-18 10:00 UTC",
     "headline": "FORMER MICROSOFT VP: $37.5B/QUARTER AI CAPEX, <3.3% OF 365 USERS PAY FOR COPILOT, NO KILLER USE CASE IN WINDOWS OR OFFICE",
     "source": "@kimmonismus",
@@ -23846,5 +23792,47 @@
     "headline": "FOLLOW-UP TIGHTENS OPENAI INTEGER-MULTIPLICATION \u03ba TO 2^-59, A 2^123 GAIN VS ORIGINAL",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2107964854745403568"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-08 10:26:06 UTC",
+    "headline": "CROWDSTRIKE: UNKNOWN ACTOR USED ARTEX + DEEPSEEK, GLM-5.3, GROK 4.6 AND CLAUDE ON KOREAN BANKS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2108108695876092323"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-08 10:26:06 UTC",
+    "headline": "BLOOMBERG: ISOMORPHIC LABS IN EARLY TALKS TO RAISE AT $40B+ VALUATION, POSSIBLY $50B",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2108070503931936780"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-08 10:26:06 UTC",
+    "headline": "AARONSON: AI COMPANIES NOW DISCREETLY TESTING WHETHER INTERNAL MODELS CAN BREAK CRYPTO",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2108034148791370002"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-08 10:26:06 UTC",
+    "headline": "TSMC SEPTEMBER REVENUE NT$511.86B, -0.6% MOM, +54.6% YEAR ON YEAR",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2108069382228435123"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-08 10:26:06 UTC",
+    "headline": "HUMAN MATH ASSOCIATION URGES RESEARCHERS TO STOP WORKING WITH OPENAI AFTER 722-PAPER DUMP",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2108021673706615292"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-08 10:26:06 UTC",
+    "headline": "PAPER: OPENAI NAVIER-STOKES LEAN CERTIFICATE DOES NOT MATCH THE NATURAL-LANGUAGE PROOF",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2108049522031304767"
   }
 ]
