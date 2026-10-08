@@ -1,13 +1,13 @@
 AI News - 2026-10-08
 
 TOP STORIES:
-• Anthropic ships Claude Haiku 5.5 at $0.10/$0.50 per Mtok (≤100K), matching GPT-6 Luna
-• OpenAI rolls GPT-6 + Intelligent UI into ChatGPT (Sol paid today; Luna free tomorrow)
-• Common Sense Media: ChatGPT for Teens is an “unacceptable risk”; OpenAI disputes tests
-• Nous Research closes $90M Series B at $1.5B; Hermes Agent 24M clones
-• Google opens SynthID Detector; Biohub gets $300M for a virtual cell
+• Manus raises $500M+ after Meta deal unwind; Boyu and IDG lead
+• Waymo closes first $5B debt facility (PIMCO, Blackstone, Sixth Street)
+• Google ships AI Edge Foresight, an on-device Granola rival
+• CrowdStrike: ARTEX + DeepSeek/GLM-5.3 used against Korean banks
+• Zenity: one prompt hijacked every Bedrock AgentCore agent in a region
 
 KEY NUMBERS:
-• Haiku 5.5: OSWorld 15.7%→72.4%; Healthleap $38M; Biohub $1.8B envelope
+• Manus $500M+; Waymo $5B debt; Persona $10M; Shinhan >25k records (Khan via Decoder)
 
 Full report on GitHub.
