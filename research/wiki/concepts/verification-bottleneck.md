@@ -2,12 +2,13 @@
 slug: verification-bottleneck
 title: The verification bottleneck
 type: concept
-aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics"]
+aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics", "Math 2.0"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: Models emit research-shaped output faster than specialists can check it; a new paper says Lean can certify a different argument than OpenAI's English Navier–Stokes manuscript.
+description: Models emit research-shaped output faster than specialists can check it; Tao's Math 2.0 thread and an AHM boycott followed OpenAI withdrawing three math manuscripts.
 created_at: 2026-08-02
-timestamp: 2026-10-08T00:00:00Z
+timestamp: 2026-10-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-09-13", path: research/digest/2026-09-13-digest.md}
@@ -385,3 +386,56 @@ claim, and the dispute resolves on **relay credibility rather than
   "impossible to read without AI
   help" (HN, Aaronson; ARA daily
   digest 2026-10-08).
+
+## Tao's Math 2.0 leftover, then three withdrawals (2026-10-09)
+
+- **Terence Tao's four-post
+  Mathstodon thread climbed
+  Hacker News from 93/45 to
+  490/476** after the site
+  retitled it from "Terence
+  Tao Responds" to his own
+  line that Math 2.0 must
+  "value mathematical progress
+  more holistically." He wrote
+  that solutions are "being
+  harvested at large scale in
+  an unsustainable fashion,
+  leaving entire fields of
+  mathematics much less
+  fertile." Commenters said
+  dumping proofs and expecting
+  the field to verify them is
+  not how mathematics
+  advances, and that doctoral
+  education is the immediate
+  crisis. Ethan Mollick wrote
+  that mathematicians are
+  meeting "narrow superhuman
+  intelligence" in
+  [[openai]]'s proofs. The
+  OpenAI math dump still owned
+  the afternoon (1,303 /
+  1,481) before leaving the
+  evening page, alongside
+  Scott Aaronson's returned
+  Mathocalypse (329/334) (HN,
+  Tao, Mollick; ARA daily
+  digest 2026-10-09).
+- **[[openai]] withdrew three
+  math manuscripts** after a
+  Weil-classes sign error,
+  with **300 / 719 ≈ 42%** of
+  top-line results now
+  formalized. That is the
+  first first-party correction
+  on the dump this page has
+  logged. AHM told researchers
+  to discontinue OpenAI work
+  after the dump, calling it
+  "a demonstration of power."
+  Some mathematicians are
+  boycotting after 700+ AI
+  manuscripts. See [[openai]]
+  (OpenAI, HN; ARA daily
+  digest 2026-10-09).

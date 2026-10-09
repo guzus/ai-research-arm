@@ -2,12 +2,13 @@
 slug: openai
 title: OpenAI
 type: entity
-aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math"]
+aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; rolled GPT-6 Sol plus Intelligent UI into paid ChatGPT, while Common Sense Media called ChatGPT Teens an unacceptable risk.
+description: Frontier lab behind the GPT family; fired researchers published their letter, the FT recut September ARR toward $50B, and USA Today sued for more than $250M.
 created_at: 2026-05-30
-timestamp: 2026-10-08T00:00:00Z
+timestamp: 2026-10-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
@@ -2790,6 +2791,112 @@ materially reshape how the lab is positioned heading into its IPO window:
   [[verification-bottleneck]]
   (HN 1,203 / 1,356; ARA daily
   digest 2026-10-08).
+
+## Researchers' letter, $50B ARR recut, and USA Today (2026-10-09)
+
+- **The three safety researchers
+  fired on 1 October published
+  their letter.** Tomek Korbak,
+  Mikita Balesni, and Jasmine
+  Wang deny mishandling
+  sensitive information and say
+  the firings will chill
+  internal safety work and
+  OpenAI's work with METR. They
+  deny leaking The Information's
+  story on less-monitorable
+  architectures and say
+  Korbak's METR contact followed
+  norms being written in real
+  time. Wang wrote that OpenAI
+  cited access to an executive
+  inbox IT had assigned for
+  recruiting and failed to
+  revoke. OpenAI calls it a
+  pattern of misconduct
+  (TechCrunch, The Verge, WSJ,
+  @AndrewCurran_; ARA daily
+  digest 2026-10-09).
+- **The FT, via TechCrunch and
+  CNBC, says investors were told
+  September annualized revenue
+  was approaching $50B**, up
+  from about $30B in July. That
+  is about **$20B** below the
+  circulating **~$70B** figure
+  this page logged on
+  2026-09-30; the digest says
+  the higher number was an
+  investor gross-up that
+  included partner revenue to
+  match [[anthropic]], not a
+  company print that then
+  collapsed. OpenAI declined to
+  comment. [[nvidia]] −3%,
+  Oracle nearly −6%, and
+  [[coreweave]] nearly −8% on
+  the day. A 2026 IPO is still
+  talked about as early 2027
+  (FT, TechCrunch, CNBC, HN 312
+  / 200; ARA daily digest
+  2026-10-09).
+- **USA Today sued OpenAI.** The
+  publisher and owned local
+  papers allege "hundreds of
+  thousands" of articles were
+  used for training and ask for
+  more than **$250 million**.
+  The complaint joins suits from
+  the Times, The Intercept, Ziff
+  Davis, CBC, Britannica, and a
+  coalition of nearly 400 local
+  papers (USA Today; ARA daily
+  digest 2026-10-09).
+- **OpenAI banned two false-front
+  operations.** A Russia-origin
+  "Dark Clark" cluster is the
+  first Category 5 case in 30
+  influence operations since
+  early 2024; an Iran-origin
+  cluster ran seven fake
+  journalist personas. Both
+  landed content in mainstream
+  media, not only social posts.
+  See [[agentic-ai-security]]
+  (OpenAI; ARA daily digest
+  2026-10-09).
+- **OpenAI withdrew three math
+  manuscripts** after a Weil-
+  classes sign error, with
+  **300 / 719 ≈ 42%** of top-
+  line results now formalized.
+  AHM told researchers to
+  discontinue OpenAI work after
+  the dump, calling it "a
+  demonstration of power." See
+  [[verification-bottleneck]]
+  (OpenAI, HN; ARA daily digest
+  2026-10-09).
+- **[[gpt-6|GPT-6.1 Sol
+  Ultrafast]] started rolling
+  out** in the API, Codex, and
+  ChatGPT Work. OpenAI says it
+  is up to **8×** faster than
+  Sol Standard. Trackers put
+  the list price at **$12 /
+  $60** per million tokens, 6×
+  Sol's **$2 / $10**. See
+  [[gpt-6]] (OpenAI; ARA daily
+  digest 2026-10-09).
+- **OpenAI is listed for $200M
+  in token discounts plus
+  training** on the White House
+  **$2.4B Genesis** credit book.
+  Tools and credits, not cash
+  on a 10-Q. See
+  [[federal-ai-policy]] (White
+  House; ARA daily digest
+  2026-10-09).
 
 ## Open questions
 

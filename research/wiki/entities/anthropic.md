@@ -2,12 +2,13 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; shipped Claude Haiku 5.5 at Luna-matching $0.10/$0.50 (then 5× after 100K) and halved Sonnet 5.5 cache-read prices.
+description: AI safety lab behind Claude; launched a Cyber Mission (OSS Scanner plus CIDP) and named a three-year $150M Genesis credit pledge.
 created_at: 2026-05-24
-timestamp: 2026-10-08T00:00:00Z
+timestamp: 2026-10-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
@@ -2786,3 +2787,93 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   [[claude-fable-5]] (The
   Decoder; ARA daily digest
   2026-10-08).
+
+## Cyber Mission, workplace artifacts, and Genesis (2026-10-09)
+
+- **Anthropic launched a Cyber
+  Mission.** The first products
+  are a free, opt-in **OSS
+  Scanner** run by its strongest
+  models, including
+  [[claude-fable-5|Claude
+  Mythos]], and a **Critical
+  Infrastructure Defense
+  Program** with eleven security
+  and OT partners: Accenture,
+  Booz Allen, CrowdStrike,
+  Deloitte, Dragos, Hitachi,
+  Insane Cyber, Nozomi Networks,
+  Palo Alto Networks, PwC, and
+  Rockwell Automation. Reports
+  are raw model output with no
+  human triage. The scanner is
+  modeled on [[google|Google]]'s
+  OSS-Fuzz and writes a PoC plus
+  a suggested patch. Anthropic
+  says an internal check of 97
+  high/critical findings across
+  48 projects scored 85 as
+  CVD-ready; named early users
+  include PostgreSQL, OpenSSL,
+  wolfSSL, and HotCRP. This is
+  the public, untriaged
+  counterpart of yesterday's
+  closed Cyber Verification
+  path. See
+  [[agentic-ai-security]]
+  (Anthropic, The Verge,
+  @AnthropicAI; ARA daily digest
+  2026-10-09).
+- **Claude Dashboards and Motion
+  entered beta.** Dashboards
+  query a warehouse or CRM in
+  plain language and keep the
+  SQL visible; listed connectors
+  include Databricks, Snowflake,
+  Redshift, ClickHouse, and
+  Salesforce. Motion writes
+  short, editable code
+  animations and exports MP4s —
+  a code-animation artifact, not
+  a video model. Dashboards is
+  on paid plans; Motion is Team
+  and Enterprise, off by default
+  on Enterprise until an owner
+  enables it. Docs, Slides, and
+  Design left beta on every
+  plan, including Free;
+  Anthropic says users have made
+  more than **45 million** of
+  those artifacts since the
+  Sept. 16 beta (Anthropic; ARA
+  daily digest 2026-10-09).
+- **The 2026 Usage Policy takes
+  effect 12 November.** New or
+  rewritten bans cover deceptive
+  campaigns, voter deception and
+  impersonation, weapons
+  software including drone
+  guidance, non-consensual
+  surveillance, and sustained
+  purposeless cruelty toward
+  Claude. Ordinary frustration
+  and research stay allowed;
+  conversation-ending remains
+  the main enforcement path. A
+  circulating "being mean to
+  Claude gets you banned" read
+  overstates the TOS (Anthropic;
+  ARA daily digest 2026-10-09).
+- **Anthropic named a three-year
+  $150M slice** of the White
+  House **$2.4B Genesis**
+  science-tools and compute-
+  credit book. These are tools
+  and credits, not cash on a
+  10-Q. Only Anthropic has so
+  far named a three-year term on
+  its own page. See
+  [[federal-ai-policy]] and
+  [[google]] (White House,
+  Anthropic; ARA daily digest
+  2026-10-09).

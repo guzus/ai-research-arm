@@ -2,12 +2,13 @@
 slug: federal-ai-policy
 title: Federal AI Policy
 type: theme
-aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton"]
+aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; the White House launched the Super Intelligence Force, with WSJ and The Decoder saying DNI Jay Clayton will lead it, but no charter, budget, or named membership yet.
+description: US federal AI governance; a White House fact sheet listed $2.4B of Genesis science tools and compute credits from eleven firms.
 created_at: 2026-06-03
-timestamp: 2026-10-05T00:00:00Z
+timestamp: 2026-10-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
@@ -2041,6 +2042,43 @@ footing for the first time in the cycle.
   @AndrewCurran_, TechCrunch, The
   Decoder; ARA daily digest
   2026-10-05).
+
+## Genesis is now a published credit book (2026-10-09)
+
+- **A White House fact sheet
+  itemizes $2.4B of science
+  tools and compute credits**
+  from eleven firms. Demis
+  Hassabis confirmed
+  [[google]]'s **$150M**
+  slice. The sheet names
+  [[nvidia]] at **$1B** of
+  compute over five years,
+  [[amd]] at **$500M**,
+  [[openai]] at **$200M** in
+  token discounts plus
+  training, [[anthropic]] at
+  **$150M** over three years,
+  AMP at $100M, Emerald AI at
+  $100M, and **$50M** each
+  from [[amazon|AWS]],
+  Armada, [[crusoe]], and
+  [[micron]]. These are tools
+  and credits, **not cash on
+  a 10-Q**. Only Anthropic
+  has so far named a three-
+  year term on its own page.
+  The sheet also cites a
+  **$5B** federal Genesis
+  commitment from July.
+  Hassabis's post and the
+  fact sheet close
+  yesterday's unverified
+  Nvidia $1B / $2.4B relay
+  (White House,
+  @demishassabis, NVIDIA,
+  Anthropic; ARA daily digest
+  2026-10-09).
 
 ## Open questions
 

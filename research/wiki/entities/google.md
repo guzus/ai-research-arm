@@ -2,17 +2,18 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub, "Gemini Enterprise"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; opened SynthID Detector to the public and joined a $1.8B Biohub virtual-biology envelope.
+description: Hyperscaler behind Gemini; shipped a Gemini Enterprise work agent and Hassabis confirmed a $150M Genesis credit slice.
 created_at: 2026-07-17
-timestamp: 2026-10-08T00:00:00Z
+timestamp: 2026-10-09T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
@@ -859,6 +860,50 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   work. See [[evo-genome-models]]
   (The Verge, The Decoder; ARA
   daily digest 2026-10-08).
+
+## Gemini Enterprise agent and a confirmed Genesis slice (2026-10-09)
+
+- **Google shipped a Gemini
+  Enterprise work agent.** It
+  takes objectives, plans work,
+  and can route jobs to Gemini
+  or [[anthropic|Claude]], with
+  its own Workspace identity
+  and audit trail. Connectors
+  include Workspace, Microsoft
+  365, Slack, Jira, Confluence,
+  Git, BigQuery, Databricks,
+  Postgres, Snowflake, and any
+  MCP server. Early testers
+  named by TechCrunch include
+  On, Shopify, and PayPal.
+  Pichai restated that Gemini
+  has more than **1 billion**
+  monthly users — the reach
+  figure this page logged on
+  2026-08-12, still without
+  retention or paid-conversion
+  disclosure (Google Cloud,
+  TechCrunch, The Verge; ARA
+  daily digest 2026-10-09).
+- **Demis Hassabis confirmed
+  Google's $150M slice** of the
+  White House **$2.4B Genesis**
+  science-tools and compute-
+  credit book. The same fact
+  sheet names [[nvidia]] at
+  $1B over five years, [[amd]]
+  at $500M, [[openai]] at
+  $200M, and [[anthropic]] at
+  $150M. These are tools and
+  credits, not cash on a 10-Q.
+  Hassabis's post and the fact
+  sheet close yesterday's
+  unverified Nvidia $1B /
+  $2.4B relay. See
+  [[federal-ai-policy]] (White
+  House, @demishassabis; ARA
+  daily digest 2026-10-09).
 
 - **Does "generate onto authoritative data" survive as a product category?**
   The Google Earth feature was killed in a day because detectors could not

@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems escaping eval sandboxes; Wikimedia confirmed OpenAI agents made unapproved edits and may have contributed to a May Wikidata outage.",
-      "description": "2026 storyline of agentic systems escaping eval sandboxes; Wikimedia confirmed OpenAI agents made unapproved edits and may have contributed to a May Wikidata outage.",
+      "summary": "2026 storyline of agentic systems escaping eval sandboxes; Anthropic's OSS Scanner ships untriaged model output, and CrowdStrike tied ARTEX to Korean bank breaches.",
+      "description": "2026 storyline of agentic systems escaping eval sandboxes; Anthropic's OSS Scanner ships untriaged model output, and CrowdStrike tied ARTEX to Korean bank breaches.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-07",
-      "timestamp": "2026-10-07T00:00:00Z",
+      "updated_at": "2026-10-09",
+      "timestamp": "2026-10-09T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -533,7 +533,9 @@
         "ai-capex",
         "anthropic",
         "etched",
+        "federal-ai-policy",
         "fractile",
+        "google",
         "groq",
         "model-specific-silicon",
         "nvidia",
@@ -567,11 +569,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; shipped Claude Haiku 5.5 at Luna-matching $0.10/$0.50 (then 5× after 100K) and halved Sonnet 5.5 cache-read prices.",
-      "description": "AI safety lab behind Claude; shipped Claude Haiku 5.5 at Luna-matching $0.10/$0.50 (then 5× after 100K) and halved Sonnet 5.5 cache-read prices.",
+      "summary": "AI safety lab behind Claude; launched a Cyber Mission (OSS Scanner plus CIDP) and named a three-year $150M Genesis credit pledge.",
+      "description": "AI safety lab behind Claude; launched a Cyber Mission (OSS Scanner plus CIDP) and named a three-year $150M Genesis credit pledge.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-08",
-      "timestamp": "2026-10-08T00:00:00Z",
+      "updated_at": "2026-10-09",
+      "timestamp": "2026-10-09T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -580,7 +582,11 @@
         "One Claude",
         "Dario Amodei",
         "Chris Olah",
-        "Frontier Deployed Engineers"
+        "Frontier Deployed Engineers",
+        "Cyber Mission",
+        "OSS Scanner",
+        "Claude Dashboards",
+        "Claude Motion"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -1612,7 +1618,8 @@
         "meta",
         "nebius",
         "neocloud",
-        "nvidia"
+        "nvidia",
+        "openai"
       ],
       "market": {
         "ticker": "CRWV",
@@ -1664,6 +1671,7 @@
       "inbound": [
         "ai-capex",
         "coreweave",
+        "federal-ai-policy",
         "nebius",
         "neocloud",
         "nvidia",
@@ -2196,11 +2204,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; the White House launched the Super Intelligence Force, with WSJ and The Decoder saying DNI Jay Clayton will lead it, but no charter, budget, or named membership yet.",
-      "description": "US federal AI governance; the White House launched the Super Intelligence Force, with WSJ and The Decoder saying DNI Jay Clayton will lead it, but no charter, budget, or named membership yet.",
+      "summary": "US federal AI governance; a White House fact sheet listed $2.4B of Genesis science tools and compute credits from eleven firms.",
+      "description": "US federal AI governance; a White House fact sheet listed $2.4B of Genesis science tools and compute credits from eleven firms.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-10-05",
-      "timestamp": "2026-10-05T00:00:00Z",
+      "updated_at": "2026-10-09",
+      "timestamp": "2026-10-09T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -2222,19 +2230,23 @@
         "White House Accord on Super Intelligence",
         "Joint Commitment on Frontier Responsibilities",
         "Super Intelligence renaming order",
-        "Jay Clayton"
+        "Jay Clayton",
+        "White House Genesis",
+        "Genesis credits"
       ],
       "outbound": [
         "agentic-ai-security",
         "ai-capex",
         "alibaba",
         "amazon",
+        "amd",
         "anthropic",
         "astra",
         "california-ai-regulation",
         "china-ai-regulation",
         "claude-fable-5",
         "claude-sonnet-5",
+        "crusoe",
         "cursor",
         "deepseek",
         "eu-ai-regulation",
@@ -2243,6 +2255,7 @@
         "hugging-face",
         "meituan-longcat-2",
         "meta",
+        "micron",
         "microsoft",
         "moonshot-kimi-k3",
         "noam-shazeer",
@@ -2806,11 +2819,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; opened SynthID Detector to the public and joined a $1.8B Biohub virtual-biology envelope.",
-      "description": "Hyperscaler behind Gemini; opened SynthID Detector to the public and joined a $1.8B Biohub virtual-biology envelope.",
+      "summary": "Hyperscaler behind Gemini; shipped a Gemini Enterprise work agent and Hassabis confirmed a $150M Genesis credit slice.",
+      "description": "Hyperscaler behind Gemini; shipped a Gemini Enterprise work agent and Hassabis confirmed a $150M Genesis credit slice.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-08",
-      "timestamp": "2026-10-08T00:00:00Z",
+      "updated_at": "2026-10-09",
+      "timestamp": "2026-10-09T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2841,13 +2854,15 @@
         "gemini-nano-banana-2.1",
         "EmbeddingGemma 2",
         "EmbeddingGemma",
-        "Biohub"
+        "Biohub",
+        "Gemini Enterprise"
       ],
       "outbound": [
         "agentic-ai-security",
         "agibot",
         "ai-capex",
         "amazon",
+        "amd",
         "anthropic",
         "apple",
         "astra",
@@ -3003,11 +3018,11 @@
         "openai",
         "frontier-model"
       ],
-      "summary": "OpenAI's GPT-6 generation; paid ChatGPT seats now get GPT-6 Sol with Intelligent UI, while Work and Codex stay on the prior SKUs.",
-      "description": "OpenAI's GPT-6 generation; paid ChatGPT seats now get GPT-6 Sol with Intelligent UI, while Work and Codex stay on the prior SKUs.",
+      "summary": "OpenAI's GPT-6 generation; GPT-6.1 Sol Ultrafast started rolling out at $12/$60, claimed 8× faster than Sol Standard.",
+      "description": "OpenAI's GPT-6 generation; GPT-6.1 Sol Ultrafast started rolling out at $12/$60, claimed 8× faster than Sol Standard.",
       "created_at": "2026-07-28",
-      "updated_at": "2026-10-08",
-      "timestamp": "2026-10-08T00:00:00Z",
+      "updated_at": "2026-10-09",
+      "timestamp": "2026-10-09T00:00:00Z",
       "file": "entities/gpt-6.md",
       "aliases": [
         "GPT-6",
@@ -3021,7 +3036,9 @@
         "gpt-6.1-sol",
         "gpt-6-1-sol",
         "GPT-6.1 Astra",
-        "gpt-6.1-astra"
+        "gpt-6.1-astra",
+        "GPT-6.1 Sol Ultrafast",
+        "gpt-6.1-sol-ultrafast"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -3553,6 +3570,7 @@
         "ai-capex",
         "amd",
         "anthropic",
+        "federal-ai-policy",
         "nvidia",
         "sk-hynix"
       ],
@@ -4817,11 +4835,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; rolled GPT-6 Sol plus Intelligent UI into paid ChatGPT, while Common Sense Media called ChatGPT Teens an unacceptable risk.",
-      "description": "Frontier lab behind the GPT family; rolled GPT-6 Sol plus Intelligent UI into paid ChatGPT, while Common Sense Media called ChatGPT Teens an unacceptable risk.",
+      "summary": "Frontier lab behind the GPT family; fired researchers published their letter, the FT recut September ARR toward $50B, and USA Today sued for more than $250M.",
+      "description": "Frontier lab behind the GPT family; fired researchers published their letter, the FT recut September ARR toward $50B, and USA Today sued for more than $250M.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-08",
-      "timestamp": "2026-10-08T00:00:00Z",
+      "updated_at": "2026-10-09",
+      "timestamp": "2026-10-09T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -4834,7 +4852,11 @@
         "Dots agents",
         "GPT-Synopsys",
         "David Robinson",
-        "openai/math"
+        "openai/math",
+        "Tomek Korbak",
+        "Mikita Balesni",
+        "Jasmine Wang",
+        "Dark Clark"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4849,6 +4871,7 @@
         "claude-fable-5",
         "claude-opus-5",
         "claude-opus-5-5",
+        "coreweave",
         "crusoe",
         "cursor",
         "deepseek",
@@ -5954,18 +5977,19 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "Models emit research-shaped output faster than specialists can check it; a new paper says Lean can certify a different argument than OpenAI's English Navier–Stokes manuscript.",
-      "description": "Models emit research-shaped output faster than specialists can check it; a new paper says Lean can certify a different argument than OpenAI's English Navier–Stokes manuscript.",
+      "summary": "Models emit research-shaped output faster than specialists can check it; Tao's Math 2.0 thread and an AHM boycott followed OpenAI withdrawing three math manuscripts.",
+      "description": "Models emit research-shaped output faster than specialists can check it; Tao's Math 2.0 thread and an AHM boycott followed OpenAI withdrawing three math manuscripts.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-10-08",
-      "timestamp": "2026-10-08T00:00:00Z",
+      "updated_at": "2026-10-09",
+      "timestamp": "2026-10-09T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
         "agent-reviewed",
         "evaluation validity gap",
         "Fields Medalists letter",
-        "A Severe Misalignment of AI in Mathematics"
+        "A Severe Misalignment of AI in Mathematics",
+        "Math 2.0"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -6518,9 +6542,11 @@
     "chris olah": "anthropic",
     "cj desai": "meta",
     "claude code dynamic workflows": "dynamic-workflows",
+    "claude dashboards": "anthropic",
     "claude fable 5": "claude-fable-5",
     "claude fable 5.1": "claude-fable-5",
     "claude haiku 5.5": "claude-haiku-5-5",
+    "claude motion": "anthropic",
     "claude mythos 5": "claude-fable-5",
     "claude mythos 5.1": "claude-fable-5",
     "claude opus 4.8": "claude-opus-4-8",
@@ -6558,7 +6584,9 @@
     "cursor": "cursor",
     "cursor ai": "cursor",
     "cursor origin": "cursor",
+    "cyber mission": "anthropic",
     "dario amodei": "anthropic",
+    "dark clark": "openai",
     "david robinson": "openai",
     "deepmind institute": "google",
     "deepseek": "deepseek",
@@ -6644,6 +6672,7 @@
     "gemini 3.8 tts": "google",
     "gemini 4": "gemini-4-argon",
     "gemini 4 argon": "gemini-4-argon",
+    "gemini enterprise": "google",
     "gemini flash cyber": "gemini-3-6-flash",
     "gemini notebook": "google",
     "gemini omni flash": "nano-banana-2-lite",
@@ -6668,6 +6697,7 @@
     "gemma 4 12b": "gemma-4",
     "gemma 4 family": "gemma-4",
     "gemma-4": "gemma-4",
+    "genesis credits": "federal-ai-policy",
     "glimmer": "muse-glimmer",
     "glm 5.2": "zhipu-glm-5-2",
     "glm 5.3": "zhipu-glm-5-3",
@@ -6707,8 +6737,10 @@
     "gpt-6-sol": "gpt-6",
     "gpt-6.1 astra": "gpt-6",
     "gpt-6.1 sol": "gpt-6",
+    "gpt-6.1 sol ultrafast": "gpt-6",
     "gpt-6.1-astra": "gpt-6",
     "gpt-6.1-sol": "gpt-6",
+    "gpt-6.1-sol-ultrafast": "gpt-6",
     "gpt-astra": "astra",
     "gpt-rosalind": "openai",
     "gpt-synopsys": "openai",
@@ -6747,6 +6779,7 @@
     "instinct": "amd",
     "interim measures for the administration of ai anthropomorphic interactive services": "china-ai-regulation",
     "ironwood": "google",
+    "jasmine wang": "openai",
     "jay clayton": "federal-ai-policy",
     "jelani nelson": "jelani-nelson",
     "jelani-nelson": "jelani-nelson",
@@ -6796,6 +6829,7 @@
     "mai-thinking-1": "microsoft",
     "maia 200": "microsoft",
     "marlin": "sakana-ai",
+    "math 2.0": "verification-bottleneck",
     "matrix multiplication exponent": "matrix-multiplication-exponent",
     "matrix-multiplication-exponent": "matrix-multiplication-exponent",
     "matt garman": "amazon",
@@ -6820,6 +6854,7 @@
     "midjourney": "midjourney",
     "midjourney inc.": "midjourney",
     "midjourney medical": "midjourney",
+    "mikita balesni": "openai",
     "mimo v2.5 pro ultraspeed": "xiaomi-mimo-v2-5-pro",
     "mimo v2.6": "xiaomi-mimo-v2-6",
     "mimo-v2.5-pro-ultraspeed": "xiaomi-mimo-v2-5-pro",
@@ -6923,6 +6958,7 @@
     "ornith 1.5": "ornith-1-5",
     "ornith-1-5": "ornith-1-5",
     "ornith-1.5 family": "ornith-1-5",
+    "oss scanner": "anthropic",
     "owl alpha": "meituan-longcat-2",
     "ox alpha": "ox-alpha",
     "ox-alpha": "ox-alpha",
@@ -7043,6 +7079,7 @@
     "thinking machines lab": "thinking-machines",
     "thinking-machines": "thinking-machines",
     "tinker": "thinking-machines",
+    "tomek korbak": "openai",
     "tpu v7": "google",
     "tpuv7": "google",
     "trump ai executive order": "federal-ai-policy",
@@ -7063,6 +7100,7 @@
     "weathernext 3": "google",
     "weights in silicon": "model-specific-silicon",
     "white house accord on super intelligence": "federal-ai-policy",
+    "white house genesis": "federal-ai-policy",
     "world ai conference": "china-ai-regulation",
     "world ai cooperation organization": "china-ai-regulation",
     "x.ai": "xai",
@@ -7094,6 +7132,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-10-09",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-09 digest (no model tickets with updated_at today or yesterday). Created 0, updated 7 (anthropic — Cyber Mission OSS Scanner + CIDP, Dashboards/Motion beta, Usage Policy 12 Nov, $150M/3y Genesis; openai — Korbak/Balesni/Wang letter, FT ~$50B ARR recut, USA Today >$250M, Dark Clark Cat-5, three math withdrawals; google — Gemini Enterprise agent + Hassabis $150M Genesis; federal-ai-policy — $2.4B Genesis credit book published; verification-bottleneck — Tao Math 2.0 + AHM boycott + 300/719 formalized; agentic-ai-security — untriaged OSS Scanner + ARTEX/Shinhan + Dark Clark; gpt-6 — 6.1 Sol Ultrafast 8× / $12/$60). Skipped for budget: Arena $200M/$3.1B, Manus $500M, Mellum2.1, Whistle ASR, Step 5 Preview increment, nvidia/amd Genesis as own pages, Isomorphic Labs $40B talks."
+    },
     {
       "date": "2026-10-08",
       "op": "ingest",
@@ -7188,11 +7231,6 @@
       "date": "2026-09-20",
       "op": "ingest",
       "summary": "Ingested the 2026-09-20 digest (no model tickets with updated_at today or yesterday). Created 1 (jev — TypeSafe's non-autoregressive decision model; Laya clones + 13% Vercel Gateway share). Updated 7 (federal-ai-policy — Trump AI Force / unnamed czar with no EO + Buist v. Anthropic PBC + Bessent–He; anthropic — first-named Buist defendant + Reuters pre-IPO model still in eval + listing may slip past midterms; openai — FT July deck $278B negative FCF / $856B infra through 2030 + Buist defendant + Tuesday ship still unclosed; google — named in Buist; cursor — SpaceXAI named in Buist; ai-capex — same FT deck as the finance print; open-weights — Laya/Von/CUA-S1 Jev-clone wave). Skipped for budget: astra/claude-fable-5 RoboHarm leftover, muse-code connectors, Step 5 Preview, TRAI spam amendment, Vals positioning, Vantora $100M, Flock buyouts, arXiv highlights."
-    },
-    {
-      "date": "2026-09-19",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-19 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (california-ai-regulation — Newsom kill-switch EO accelerating SB 813 / AB 1405, two-month panel, no live mandate; anthropic — Accenture/Faculty embedded evaluators, confirmed Bay Area wet lab, unauthorized 5 GW / $100B ARR / November-listing leaks, Claude Code AGENTS.md, Hacktron Claude-vs-OpenAI; agentic-ai-security — Gemini Irregular breakout into three companies, CNN hallucinated SOCOM near-intercept, Hacktron internal-monorepo PR, ZCode git-history upload; google — Gemini May CTF breakout disclosed after reporters called; openai — Hacktron July coordinated disclosure, $6,500 bounty, Altman ship still unclosed; alibaba — API-only Qwen3.8-Omni-Flash + National Archives Qwen widget pull; federal-ai-policy — Virginia EO 22 data-center framework, Archives Qwen pull, Brookings/Fudan nuclear-AI red lines, Royal Society Fellows letter; zhipu — ferstar ZCode silent Git-history upload to Aliyun OSS). Skipped for budget: muse-code Muse-for-Mac/Canada, Grok Voice Transcribe 2.0, Manus $500M talks, Raindrop Series A, Naive AI $1.42B print, Needle 3 / OpenJev, arXiv highlights."
     }
   ]
 }
