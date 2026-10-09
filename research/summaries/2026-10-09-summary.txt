@@ -1,12 +1,14 @@
 AI News - 2026-10-09
 
 TOP STORIES:
-• Fired OpenAI safety researchers dispute misconduct claims; warn of METR chill
-• Anthropic launches Cyber Mission, CIDP, and free OSS Scanner (incl. Mythos)
-• Google ships Gemini Enterprise agent with its own workplace identity
-• Arena raises $200M at $3.1B; NVIDIA $1B and Anthropic $150M for Genesis
+• OpenAI: firings were a sensitive-info breach, not safety speech (CNBC)
+• Lumentum CEO: AI optics sold out through early 2029 (Bloomberg)
+• White House lists $2.4B Genesis credits; Hassabis confirms Google $150M
+• Sophos Daybreak: 96% faster threat probes; 52% of MDR cases automated
+• Friday arXiv: deception probes beat Opus 5.5 on SHADE-Arena (98.8% AUC)
 
 KEY NUMBERS:
-• Arena $200M / $3.1B; OpenAI ARR ~$50B (FT, not $70B); USA Today suit >$250M; Oracle 130K ChatGPT / 95K+ Codex users
+• Genesis: NVIDIA $1B, AMD $500M, OpenAI $200M, Anthropic/Google $150M
+• Sophos 38 min → 89 sec; Lumentum 70% unmet demand through 2027
 
 Full report on GitHub.
