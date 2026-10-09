@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-18 21:00 UTC",
-    "headline": "MUSK: 'ALTMAN & BROCKMAN DID IN FACT ENRICH THEMSELVES BY STEALING A CHARITY. THE ONLY QUESTION IS WHEN THEY DID IT'",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-18-twitter-21h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2056474896641782077"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-18 21:00 UTC",
-    "headline": "ALTMAN STILL SILENT ON VERDICT 3.5H AFTER PRODUCT-PIVOT TWEET; OPENAI CORP HITS 98 HOURS WITHOUT POSTING THROUGH VERDICT + APPEAL + MALTA",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-18-twitter-21h-headlines.json",
-    "url": "https://x.com/sama/status/2056435834333934051"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-18 21:00 UTC",
-    "headline": "ANTHROPIC DEFAULTS CLAUDE CODE FAST MODE TO OPUS 4.7 AT 2.5X SPEED AND HIGHER PER-TOKEN RATE \u2014 ANSWERS CURSOR COMPOSER 2.5 ON LATENCY, NOT COST",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-18-twitter-21h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2056454359685476491"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-18 21:00 UTC",
-    "headline": "SEMIANALYSIS: $21 IN TOKENS REPLACES 20-HOUR ANALYST TASK, 60-90X ROI ACROSS 9 INTERNAL WORKFLOWS \u2014 PRE-NVIDIA Q1 FY27 EARNINGS THESIS",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-18-twitter-21h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2056480113357729977"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-18 21:00 UTC",
-    "headline": "GOOGLE DEEPMIND CORP POSTS FIRST IN-WINDOW PRE-I/O HYPE TWEET 13H BEFORE KEYNOTE: 'THE STAGE IS SET. THE TECH IS READY.'",
-    "source": "@GoogleDeepMind",
-    "source_file": "research/summaries/2026-05-18-twitter-21h-headlines.json",
-    "url": "https://x.com/GoogleDeepMind/status/2056475403926028455"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-18 21:00 UTC",
-    "headline": "THE INFORMATION: SPACEX EYES $75B IPO, BLACKROCK CONSIDERING $10B STAKE \u2014 'BIGGEST IPO IN HISTORY BY AT LEAST A FACTOR OF TWO'",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-18-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2056484580819914990"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-19 01:00 UTC",
     "headline": "WSJ: GOOGLE + BLACKSTONE FORM AI NEOCLOUD JV \u2014 $5B BLACKSTONE EQUITY, 500 MW TPU CAPACITY ONLINE 2027",
@@ -23800,5 +23746,47 @@
     "headline": "STEPFUN STEP 5 PREVIEW HITS OPENROUTER AND NOUS PORTAL: 600B/27B AT $1/$2.70",
     "source": "@Teknium",
     "url": "https://x.com/Teknium/status/2108484016076919033"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-09 18:18:30 UTC",
+    "headline": "TYPESAFE CLOSES $870M SERIES A AT $7.5B; A16Z LEADS, CASADO JOINS BOARD",
+    "source": "@CompleteSkeptic",
+    "url": "https://x.com/CompleteSkeptic/status/2108594987177021737"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-09 18:18:30 UTC",
+    "headline": "CLAUDE MANAGED AGENTS DYNAMIC WORKFLOWS HIT PUBLIC BETA \u2014 UP TO 1,000 AGENTS PER RUN",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2108591328732856655"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-09 18:18:30 UTC",
+    "headline": "ENTERGY WARNED AMAZON IT WOULD KICK MISSISSIPPI DATA CENTERS OFF THE GRID AT PEAK",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2108618582108094849"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-09 18:18:30 UTC",
+    "headline": "CLAUDE CODE PROJECTS OPENS TO EVERY PRO AND MAX WAITLIST USER",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2108621476538781878"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-09 18:18:30 UTC",
+    "headline": "SEMIANALYSIS: RUBIN NVL72 IS 3.2\u00d7 GB300 IN PROFIT PER GIGAWATT ON VLLM",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2108604228440658369"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-09 18:18:30 UTC",
+    "headline": "GROK BOT CAN NOW PROVISION A CUSTOM @MAIL.GROKBOT.COM ADDRESS",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2108612939842511217"
   }
 ]
