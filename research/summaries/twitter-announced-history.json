@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-18 16:00 UTC",
-    "headline": "GOOGLE GTIG DISCLOSES FIRST KNOWN CRIMINAL AI-DEVELOPED ZERO-DAY EXPLOIT IN THE WILD \u2014 NOT GEMINI",
-    "source": "@tbuzzdaily",
-    "source_file": "research/summaries/2026-05-18-twitter-16h-headlines.json",
-    "url": "https://x.com/tbuzzdaily/status/2056374420461982048"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-18 16:00 UTC",
-    "headline": "RAPPLER CONFIRMS BOE GOVERNOR BAILEY PERSONALLY REQUESTED ANTHROPIC MYTHOS-TO-FSB BRIEFING",
-    "source": "@rapplerdotcom",
-    "source_file": "research/summaries/2026-05-18-twitter-16h-headlines.json",
-    "url": "https://x.com/rapplerdotcom/status/2056391110553944105"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-18 16:00 UTC",
-    "headline": "CLAUDEDEVS BREAKS 70H SILENCE WITH CLAUDE-CODE-AT-SCALE BLOG; ANTHROPIC CORP HOLDS 94H SILENCE",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-18-twitter-16h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2056403446056784288"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-18 18:00 UTC",
-    "headline": "MUSK v. OPENAI \u2014 JURY DISMISSES ALL THREE CORE CLAIMS AS TIME-BARRED IN ~2H; ALTMAN, BROCKMAN, MICROSOFT CLEARED; APPEAL PRESERVED",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-18-twitter-18h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2056436278682669112"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-18 18:00 UTC",
-    "headline": "SAMA BREAKS 71-HOUR SILENCE 8 MINUTES POST-VERDICT \u2014 POSTS ABOUT CHATGPT UPDATE, NOT THE TRIAL",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-18-twitter-18h-headlines.json",
-    "url": "https://x.com/sama/status/2056435834333934051"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-18 18:00 UTC",
     "headline": "ANTHROPIC CONFIRMS STAINLESS ACQUISITION \u2014 NOW OWNS SDK AND MCP TOOLING USED BY OPENAI, GOOGLE AND ANTHROPIC",
@@ -23822,5 +23777,40 @@
     "headline": "GPT-6.1 SOL ULTRAFAST ROLLS OUT AT $12/$60 PER MTOK, UP TO 8X SOL STANDARD",
     "source": "@OpenAIDevs",
     "url": "https://x.com/OpenAIDevs/status/2108262812489531498"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-09 01:10:18 UTC",
+    "headline": "ANTHROPIC LAUNCHES CYBER MISSION AND FREE OSS SCANNER ON MYTHOS-CLASS MODELS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2108302539498414208"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-09 01:10:18 UTC",
+    "headline": "CLAUDE DASHBOARDS AND MOTION ENTER BETA; DOCS, SLIDES, DESIGN EXIT BETA",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2108280696384934241"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-09 01:10:18 UTC",
+    "headline": "WHITE HOUSE LOCKS $2.4B GENESIS BOOK: NVIDIA $1B, AMD $500M, OPENAI $200M, GOOGLE $150M",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2108331042083872882"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-09 01:10:18 UTC",
+    "headline": "SONNET 5.5 CACHE READS CUT IN HALF TO $0.10 PER MILLION TOKENS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2108287358374482381"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-09 01:10:18 UTC",
+    "headline": "HERMES AGENT NOW LIVE AND FEATURED IN THE MICROSOFT STORE",
+    "source": "@NousResearch",
+    "url": "https://x.com/NousResearch/status/2108231536772596193"
   }
 ]
