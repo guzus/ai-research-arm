@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-10-09
+
+TOP STORIES:
+• Anthropic launches Cyber Mission: free OSS Scanner plus 11-partner OT defense
+• White House lists $2.4B Genesis credits; Nvidia $1B, Google and Anthropic $150M
+• Fired OpenAI safety researchers publish board letter, warn of METR chill
+
+KEY NUMBERS:
+• Genesis book: $2.4B (Nvidia $1B, AMD $500M, OpenAI $200M)
+• OpenAI ARR ~$50B (FT; ~$20B below circulating $70B)
+• Arena $200M Series B at $3.1B; USA Today suit >$250M
+• OSS Scanner: 85/97 high-severity findings CVD-ready
+
+TRENDING: Math 2.0 / OpenAI proof dump after 3 withdrawals
+
+Full digest on GitHub.
