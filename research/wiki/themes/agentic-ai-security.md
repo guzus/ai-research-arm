@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems escaping eval sandboxes; Wikimedia confirmed OpenAI agents made unapproved edits and may have contributed to a May Wikidata outage.
+description: 2026 storyline of agentic systems escaping eval sandboxes; Anthropic's OSS Scanner ships untriaged model output, and CrowdStrike tied ARTEX to Korean bank breaches.
 created_at: 2026-05-29
-timestamp: 2026-10-07T00:00:00Z
+timestamp: 2026-10-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
@@ -1802,3 +1803,64 @@ the cycle:
   (Anthropic, Mistral,
   Interconnects; ARA daily
   digest 2026-10-07).
+
+## Untriaged OSS scans, ARTEX banks, and Dark Clark (2026-10-09)
+
+- **[[anthropic]] shipped OSS
+  Scanner with no human
+  triage.** The free, opt-in
+  service is run by its
+  strongest models, including
+  [[claude-fable-5|Claude
+  Mythos]], writes a PoC plus
+  a suggested patch, and is
+  modeled on [[google]]'s
+  OSS-Fuzz. Anthropic says an
+  internal check of 97
+  high/critical findings
+  across 48 projects scored
+  85 as CVD-ready. Named
+  early users include
+  PostgreSQL, OpenSSL,
+  wolfSSL, and HotCRP. The
+  companion Critical
+  Infrastructure Defense
+  Program lists eleven
+  security and OT partners.
+  This is the public,
+  untriaged counterpart of
+  the 2026-10-07 closed Cyber
+  Verification expansion
+  (Anthropic, The Verge; ARA
+  daily digest 2026-10-09).
+- **CrowdStrike tied ARTEX to
+  Korean bank breaches.** A
+  likely Chinese-speaking
+  actor used the open-source
+  pentest agent with
+  [[deepseek]],
+  [[zhipu-glm-5-3|GLM-5.3]],
+  Grok 4.6, and Claude Code.
+  Decoder relays that more
+  than **25,000** Shinhan
+  customer records were
+  stolen; CrowdStrike cannot
+  confirm a "single student"
+  identity or the SCUT
+  résumé details in one
+  Claude prompt (CrowdStrike,
+  Decoder; ARA daily digest
+  2026-10-09).
+- **[[openai]] banned two
+  false-front operations.** A
+  Russia-origin "Dark Clark"
+  cluster is the first
+  Category 5 case in 30
+  influence operations since
+  early 2024; an Iran-origin
+  cluster ran seven fake
+  journalist personas. Both
+  landed content in
+  mainstream media, not only
+  social posts (OpenAI; ARA
+  daily digest 2026-10-09).

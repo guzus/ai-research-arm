@@ -2,12 +2,13 @@
 slug: gpt-6
 title: GPT-6
 type: entity
-aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna", "gpt-6-sol", "gpt-6-luna", "GPT-6.1 Sol", "gpt-6.1-sol", "gpt-6-1-sol", "GPT-6.1 Astra", "gpt-6.1-astra"]
+aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna", "gpt-6-sol", "gpt-6-luna", "GPT-6.1 Sol", "gpt-6.1-sol", "gpt-6-1-sol", "GPT-6.1 Astra", "gpt-6.1-astra", "GPT-6.1 Sol Ultrafast", "gpt-6.1-sol-ultrafast"]
 tags: [model-release, openai, frontier-model]
-description: OpenAI's GPT-6 generation; paid ChatGPT seats now get GPT-6 Sol with Intelligent UI, while Work and Codex stay on the prior SKUs.
+description: OpenAI's GPT-6 generation; GPT-6.1 Sol Ultrafast started rolling out at $12/$60, claimed 8× faster than Sol Standard.
 created_at: 2026-07-28
-timestamp: 2026-10-08T00:00:00Z
+timestamp: 2026-10-09T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA model ticket — GPT-6.1 Sol", path: research/models/tickets/openai-gpt-6-1-sol-2026-09.md}
@@ -248,3 +249,25 @@ substance.
   easily integrated." See
   [[openai]] (OpenAI, HN; ARA
   daily digest 2026-10-08).
+
+## GPT-6.1 Sol Ultrafast starts rolling out (2026-10-09)
+
+- **GPT-6.1 Sol Ultrafast
+  started rolling out** in
+  the API, Codex, and
+  ChatGPT Work. [[openai]]
+  says it is up to **8×**
+  faster than Sol Standard.
+  Trackers put the list
+  price at **$12 / $60** per
+  million tokens — **6×**
+  Sol's **$2 / $10**. The
+  2026-09-30 "coming soon"
+  note on this page is now a
+  live SKU. Work and Codex
+  get the speed tier; the
+  2026-10-08 Intelligent UI
+  ship into paid ChatGPT
+  still sits on the prior
+  Sol/Luna SKUs (OpenAI; ARA
+  daily digest 2026-10-09).
