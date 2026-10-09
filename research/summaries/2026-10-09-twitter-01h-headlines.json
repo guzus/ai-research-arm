@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC LAUNCHES CYBER MISSION AND FREE OSS SCANNER ON MYTHOS-CLASS MODELS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2108302539498414208",
+    "category": "breaking"
+  },
+  {
+    "headline": "CLAUDE DASHBOARDS AND MOTION ENTER BETA; DOCS, SLIDES, DESIGN EXIT BETA",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2108280696384934241",
+    "category": "infra"
+  },
+  {
+    "headline": "WHITE HOUSE LOCKS $2.4B GENESIS BOOK: NVIDIA $1B, AMD $500M, OPENAI $200M, GOOGLE $150M",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2108331042083872882",
+    "category": "policy"
+  },
+  {
+    "headline": "SONNET 5.5 CACHE READS CUT IN HALF TO $0.10 PER MILLION TOKENS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2108287358374482381",
+    "category": "model"
+  },
+  {
+    "headline": "HERMES AGENT NOW LIVE AND FEATURED IN THE MICROSOFT STORE",
+    "source": "@NousResearch",
+    "url": "https://x.com/NousResearch/status/2108231536772596193",
+    "category": "opensource"
+  }
+]
