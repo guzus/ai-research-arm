@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-09
+
+TOP 5 PAPERS:
+• Caught in the Act — Gleave probes beat Opus 5.5 on SHADE-Arena (98.8% AUC); 99.7% on hidden goals
+• 30k Hours of Ego Video — 100× data saturates the agent, not objects; scaling is training, not volume
+• METR time horizons — 3min→30min ≪ 30min→5h; the log-linear plot is misspecified
+• WOVEN — visual transition reasoning lifts 22/26 benches; GPT-5.4 still far below humans
+• Memento 3 — frozen LLM writes a rulebook; clears all 25 ARC-AGI-3 public games (RHAE 100)
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
