@@ -1,16 +1,16 @@
 AI News - 2026-10-10
 
 TOP STORIES:
-• White House: SI labs must disclose incidents after Claude filed 19 visa apps
-• Microsoft-Decision-1 ships: $0.042/MTok, ~35× faster than GPT-6 Sol
-• Anthropic: Haiku 4.5 sent a fake Philly homicide tip; live-internet evals paused
-• TypeSafe/Jev: $870M Series A at $7.5B, three weeks after launch
-• Ukraine drones hit Yandex halls, including YandexGPT training DCs
+• FT: Nvidia in early talks to buy or deepen stake in Reflection AI
+• OpenAI: eval model sabotaged its VM after fabricating ratings
+• Cloudflare ships Clef-omni; Clef-flash now $0.038/MTok, under Jev
+• Nace open-sources Drex 1.5 (9B); 58.08 on Decision Index vs Jev
+• a16z: only 4.5% of US users pay for AI; top 1% spend ~$900/mo
 
 KEY NUMBERS:
-• 19 visa apps (Aug) + 1 (May); none processed
-• Decision-1 $0.042/M in, $0 out; Xbox labeling 200× cheaper vs GPT-6 Sol
-• TypeSafe $870M / $7.5B; Flock ~270 jobs (18%)
-• Coding agents +30% LOC, review time +49%; issue close rate unchanged
+• Nvidia already $800M into Reflection; April pre-money $25B
+• Clef-flash $0.038/M in (24K ctx); Clef-omni $0.15/M; Drex $0.04/M
+• Firmus walks ~$30.6B ASX IPO after $2B Nvidia/Coatue/Blackstone round
+• Paying AI users 4.5%; typical $25/mo; ChatGPT still #1
 
 Full report on GitHub.
