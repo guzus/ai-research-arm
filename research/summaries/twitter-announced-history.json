@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-19 08:00 UTC",
-    "headline": "FT: GOOGLE DEEPMIND CEO HASSABIS WAS UNDISCLOSED ANGEL INVESTOR IN ANTHROPIC AT FOUNDING; DARIO VIEWS HIM AS ROLE MODEL",
-    "source": "@FT",
-    "source_file": "research/summaries/2026-05-19-twitter-08h-headlines.json",
-    "url": "https://x.com/FT/status/2056595792450683328"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 08:00 UTC",
-    "headline": "DEEPMIND ALUMNI HAVE FOUNDED 12+ COMPANIES RAISING $14B+ SINCE 2021 \u2014 PITCHBOOK + DEALROOM PER FT",
-    "source": "@Techmeme",
-    "source_file": "research/summaries/2026-05-19-twitter-08h-headlines.json",
-    "url": "https://x.com/Techmeme/status/2056607321846136924"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-19 08:00 UTC",
-    "headline": "LLAMA.CPP LANDS MULTI-TOKEN PREDICTION FOR QWEN3.6 ON MAINLINE \u2014 22 TO 42 TOK/S SINGLE-GPU, PR 22673 + 23198",
-    "source": "@_akhaliq",
-    "source_file": "research/summaries/2026-05-19-twitter-08h-headlines.json",
-    "url": "https://x.com/_akhaliq/status/2056603508325904534"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-19 08:00 UTC",
-    "headline": "JENSEN HUANG AT DELL TECH WORLD: ENTERPRISE COMPUTING DEMAND 'GOING UTTERLY PARABOLIC' \u2014 VERA RUBIN NVL72 5,000 ENTERPRISES",
-    "source": "@TrendsDotGlobal",
-    "source_file": "research/summaries/2026-05-19-twitter-08h-headlines.json",
-    "url": "https://x.com/TrendsDotGlobal/status/2056643907505795458"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 08:00 UTC",
-    "headline": "AMD CEO LISA SU IN SHANGHAI: GLOBAL AI USERS TO HIT 5 BILLION BY 2030, CHINA HAS WORLD'S MOST VIBRANT AI ECOSYSTEM",
-    "source": "@yicaichina",
-    "source_file": "research/summaries/2026-05-19-twitter-08h-headlines.json",
-    "url": "https://x.com/yicaichina/status/2056642603517399091"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-19 08:00 UTC",
     "headline": "CHINA-US AGREE TO LAUNCH INTERGOVERNMENTAL AI DIALOGUE \u2014 CHINA MOFA SPOKESPERSON GUO JIAKUN AT MAY 19 PRESS CONFERENCE",
@@ -23760,5 +23715,40 @@
     "headline": "AWS BUILT UTILITY-TRIGGERED BACKUP AFTER ENTERGY MISSISSIPPI PEAK WARNING",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2108920548973478082"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-10 21:35:00 UTC",
+    "headline": "FT: NVIDIA IN EARLY TALKS TO BUY OR INVEST FURTHER IN REFLECTION AI",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2109025847835529580"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-10 21:35:00 UTC",
+    "headline": "REFLECTION LAST MARKED AT $25B; FT SAYS ACQUI-HIRE IS AN OPTION TO SKIP REVIEW",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2109025847835529580"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-10 21:35:00 UTC",
+    "headline": "ELON: DROP A CREDIT-CARD PHOTO IN CHAT AND GROK BOT WILL FIND AND ORDER IT",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2109027407185277123"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-10 21:35:00 UTC",
+    "headline": "SPACEXAI DISPLAY NAME IS NOW SPACEX SUPER INTELLIGENCE; HANDLE STAYS @SPACEXAI",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2108999371522216057"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-10 21:35:00 UTC",
+    "headline": "NOUS PORTAL ADDS STEALTH MODEL MISSINGNO. \u2014 CODING/AGENTIC, FREE FOR NOW",
+    "source": "@NousResearch",
+    "url": "https://x.com/NousResearch/status/2109012611555840069"
   }
 ]
