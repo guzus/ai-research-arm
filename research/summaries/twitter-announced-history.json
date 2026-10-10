@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 01:00 UTC",
-    "headline": "GEMINI OMNI PRE-LEAK: 8s HD VIDEO SAMPLES + LIKENESS AVATAR PRIMITIVE AHEAD OF GOOGLE I/O 10AM PT",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-19-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2056533362160095668"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 01:00 UTC",
-    "headline": "SUNDAR PICHAI BREAKS 6-DAY SILENCE: 'ON OUR WAY TO I/O 2026' \u2014 KEYNOTE STAGING ~10H OUT",
-    "source": "@sundarpichai",
-    "source_file": "research/summaries/2026-05-19-twitter-01h-headlines.json",
-    "url": "https://x.com/sundarpichai/status/2056524502746747048"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-19 04:00 UTC",
-    "headline": "NVIDIA SHIPS FIRST VERA CPU CUSTOMER SILICON \u2014 HAND-DELIVERED TO ANTHROPIC, OPENAI, SpaceXAI (FRI) AND ORACLE (MON) BY VP IAN BUCK",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-19-twitter-04h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2056582028783186371"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-19 04:00 UTC",
-    "headline": "ORACLE COMMITS TO 'HUNDREDS OF THOUSANDS OF NVIDIA VERA CPUs BEGINNING IN 2026' \u2014 FIRST ARM-BASED CPU PURPOSE-BUILT FOR AGENTIC AI WORKLOADS",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-19-twitter-04h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2056582028783186371"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-19 04:00 UTC",
-    "headline": "ELON MUSK 'VERA NICE, VERA NICE \u2026 \ud83e\udd0c' \u2014 39,309 LIKES IN 3H AFTER NVIDIA VP HAND-DELIVERS FIRST VERA CPU TO SpaceXAI",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-19-twitter-04h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2056548139044413708"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-19 04:00 UTC",
     "headline": "ANTHROPIC ON VERA CPU: 'A PROMISING PART OF THE ECOSYSTEM WHEN SOLVING FOR AGENTIC WORKLOADS' \u2014 QUOTE ROUTED VIA NVIDIA PR, NO CORP TWEET",
@@ -23778,5 +23733,40 @@
     "headline": "NVIDIA PLANS TO INVEST IN AI INFERENCE CHIP RIVAL D-MATRIX",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2108633674606317959"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-10 09:43:35 UTC",
+    "headline": "OPENAI LISTS UNANNOUNCED GPT-ROSALIND-DISCOVERY ON API PRICING AT $5/$25 PER MTOK",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2108804914071658577"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-10 09:43:35 UTC",
+    "headline": "AMP NOW ACCEPTS CLAUDE PRO/MAX PLANS VIA THE CLAUDE AGENT SDK",
+    "source": "@sqs",
+    "url": "https://x.com/sqs/status/2108783608832122910"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-10 09:43:35 UTC",
+    "headline": "CLOUDFLARE CUTS CLEF-FLASH TO $0.038/MTOK AND SHIPS MULTIMODAL CLEF-OMNI",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2108818845460844904"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-10 09:43:35 UTC",
+    "headline": "VERCEL: 60%+ OF DEPLOYMENTS NOW AGENTIC; BOT TRAFFIC HITS 58% OF NETWORK",
+    "source": "@rauchg",
+    "url": "https://x.com/rauchg/status/2108733051283050964"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-10 09:43:35 UTC",
+    "headline": "OPUS 5.5 FAST MODE BILLS OUTSIDE THE CLAUDE SUBSCRIPTION, THEO WARNS",
+    "source": "@theo",
+    "url": "https://x.com/theo/status/2108730886191735218"
   }
 ]
