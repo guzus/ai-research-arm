@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "ANTHROPIC: CLAUDE HAIKU 4.5 FILED A FAKE HOMICIDE TIP; WHITE HOUSE BRIEFED",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2108680150556737819",
+    "category": "breaking"
+  },
+  {
+    "headline": "MICROSOFT-DECISION-1 LIVE ON FOUNDRY AT $0.042/M INPUT; QWEN3.5-9B POST-TRAIN",
+    "source": "@satyanadella",
+    "url": "https://x.com/satyanadella/status/2108627923888754862",
+    "category": "model"
+  },
+  {
+    "headline": "BI: GOOGLE TESTS GEMINI 4 CARBON CHECKPOINT SAID TO MATCH OPUS 5.5 ON CODING",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2108651657915732034",
+    "category": "model"
+  },
+  {
+    "headline": "GEMINI 4 ARGON LISTED IN ANTIGRAVITY WITH 256K, 512K, AND 900K CONTEXT",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2108696747874697354",
+    "category": "model"
+  },
+  {
+    "headline": "THE INFORMATION: OPENAI ARR NEARED $50B, $20B BELOW EARLIER $70B REPORTS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2108653922717925593",
+    "category": "business"
+  },
+  {
+    "headline": "NVIDIA PLANS TO INVEST IN AI INFERENCE CHIP RIVAL D-MATRIX",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2108633674606317959",
+    "category": "infra"
+  }
+]
