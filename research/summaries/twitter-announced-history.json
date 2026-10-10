@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-19 04:00 UTC",
-    "headline": "ANTHROPIC ON VERA CPU: 'A PROMISING PART OF THE ECOSYSTEM WHEN SOLVING FOR AGENTIC WORKLOADS' \u2014 QUOTE ROUTED VIA NVIDIA PR, NO CORP TWEET",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-19-twitter-04h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2056582028783186371"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 04:00 UTC",
-    "headline": "OPENAI CORP ~104H SILENT THROUGH VERDICT + APPEAL + GOOGLE-BLACKSTONE + NVIDIA VERA-CPU DELIVERY TO ITSELF",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-19-twitter-04h-headlines.json",
-    "url": "https://x.com/OpenAI/status/1922755663795736895"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 04:00 UTC",
-    "headline": "XAI GROK CREATIVE STACK: 3 NEW MODELS LIVE ON OPENROUTER \u2014 GROK IMAGINE IMAGE QUALITY PHOTOREAL GEN + 2 OTHERS",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-19-twitter-04h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2056556643813847459"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 04:00 UTC",
-    "headline": "HITACHI ANNOUNCES STRATEGIC PARTNERSHIP WITH ANTHROPIC \u2014 'LUMADA 3.0' THROUGH FRONTIER AI; RAILWAY + ELECTRIC INFRASTRUCTURE",
-    "source": "@phithetasigma",
-    "source_file": "research/summaries/2026-05-19-twitter-04h-headlines.json",
-    "url": "https://x.com/phithetasigma/status/2056562918970929193"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-05-19 08:00 UTC",
     "headline": "FT: GOOGLE DEEPMIND CEO HASSABIS WAS UNDISCLOSED ANGEL INVESTOR IN ANTHROPIC AT FOUNDING; DARIO VIEWS HIM AS ROLE MODEL",
@@ -23768,5 +23732,33 @@
     "headline": "OPUS 5.5 FAST MODE BILLS OUTSIDE THE CLAUDE SUBSCRIPTION, THEO WARNS",
     "source": "@theo",
     "url": "https://x.com/theo/status/2108730886191735218"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-10 17:18:23 UTC",
+    "headline": "NADELLA: TREAT FRONTIER MODELS AS INSIDER RISKS; SEPARATE INTELLIGENCE FROM AUTHORITY",
+    "source": "@satyanadella",
+    "url": "https://x.com/satyanadella/status/2108931348857827686"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-10 17:18:23 UTC",
+    "headline": "CLAUDE WEB SHOWS HIDDEN VOICE PREVIEW TAB; VOICE-DATA SHARING TOGGLE IS LIVE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2108940487658807525"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-10 17:18:23 UTC",
+    "headline": "OPUS 5.5 MAX TAKES IMAGE-TO-WEBDEV ARENA #1 AT 1749, 60% CHEAPER THAN GPT-6 ASTRA",
+    "source": "@arena",
+    "url": "https://x.com/arena/status/2108969676298657931"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-10 17:18:23 UTC",
+    "headline": "AWS BUILT UTILITY-TRIGGERED BACKUP AFTER ENTERGY MISSISSIPPI PEAK WARNING",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2108920548973478082"
   }
 ]
