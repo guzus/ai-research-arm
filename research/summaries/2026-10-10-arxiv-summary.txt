@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-10
+
+TOP 5 PAPERS:
+• MiMo-V2.6 — Xiaomi scales RL on batch, env, and grader compute; open RL stack
+• InfiLoop — loop-native residuals; 7M model still gains past 20k test-time steps
+• VioLA — human-latent humanoid policy; loco 100% vs GR00T 16.7 / π0 0
+• ARC — reasoning recipe, no new robot demos; π0.5 +82.2 pp on hardware
+• Who Verifies the Verifier — task score cannot certify a self-evolved grader
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
