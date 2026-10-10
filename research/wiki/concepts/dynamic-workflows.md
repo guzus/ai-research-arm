@@ -2,12 +2,13 @@
 slug: dynamic-workflows
 title: Dynamic Workflows
 type: concept
-aliases: ["Dynamic Workflows", "Claude Code Dynamic Workflows", "parallel subagents"]
+aliases: ["Dynamic Workflows", "Claude Code Dynamic Workflows", "parallel subagents", "Claude Managed Agents"]
 tags: [agentic, claude-code, anthropic, subagents, codebase-migration]
-description: Anthropic's Claude Code orchestration layer; Claude Code Projects now splits one conversation into parallel cloud threads that keep running after the laptop closes, on top of the original 1,000-subagent Dynamic Workflows.
+description: Anthropic's Claude Code orchestration layer; Managed Agents public beta runs up to 1,000 agents in phases without keeping Claude in the loop.
 created_at: 2026-05-29
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-10-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
   - {title: "AINews: Zawinski's Law of MultiAgents (Latent Space)", url: "https://www.latent.space/p/ainews-zawinskis-law-of-multiagents", date: 2026-08-08}
@@ -76,6 +77,44 @@ persistence claim from a sleeping local session to
 **first-party server-side**. Cost at Pro/Max rate limits
 is unchecked. See [[anthropic]] (The Verge, @ClaudeDevs;
 ARA daily digest 2026-09-18).
+
+## Managed Agents public beta (2026-10-10)
+
+- **Claude Managed Agents
+  entered public beta** as
+  type `multiagent_20261001`.
+  A lead agent writes a
+  program; the server runs up
+  to **1,000** agents in
+  phases without keeping
+  Claude in the loop. That is
+  the original 1,000-subagent
+  cap productized as a hosted
+  workflow, not a new weight
+  drop. Subagents (≤25 child
+  threads) stay the default.
+  Every agent burns tokens —
+  start scoped. See
+  [[anthropic]] (Anthropic
+  docs; ARA daily digest
+  2026-10-10).
+- **Decoder relays an
+  internal test** of 70
+  hidden bugs in a
+  116,000-line repo: a single
+  agent found 14–27, the
+  workflow consistently 66.
+  The same hour, every Pro
+  and Max user on the Claude
+  Code Projects waitlist was
+  admitted; Team and
+  Enterprise still wait. That
+  answers this page's
+  waitlist question for
+  individual paid seats, not
+  the enterprise tier
+  (Decoder; ARA daily digest
+  2026-10-10).
 
 ## Open questions
 - **Blast radius.** Hundreds of parallel subagents on a real codebase create

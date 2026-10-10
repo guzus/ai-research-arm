@@ -2,17 +2,18 @@
 slug: microsoft
 title: Microsoft
 type: entity
-aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "MAI Code of Conduct", "Humanist AI Code of Conduct"]
+aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "MAI Code of Conduct", "Humanist AI Code of Conduct", "Decision-1", "Microsoft-Decision-1"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; The Information says it cut expected internal Anthropic spend by more than a third as it pushes staff onto its own coding tools.
+description: Hyperscaler and frontier-model builder; shipped Decision-1, a Qwen3.5-9B post-train scorer at $0.042/MTok input with free output.
 created_at: 2026-06-03
-timestamp: 2026-10-06T00:00:00Z
+timestamp: 2026-10-10T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
@@ -289,6 +290,70 @@ ARA daily digest 2026-09-26).
   decision, not a new SKU (The
   Information, The Decoder; ARA
   daily digest 2026-10-06).
+
+## Decision-1 scorer (2026-10-10)
+
+- **Satya Nadella introduced
+  Decision-1**, a
+  [[alibaba|Qwen3.5-9B]]
+  post-train that returns a
+  calibrated choice for
+  routing and verification.
+  Foundry and OpenRouter list
+  it at **$0.042 per million
+  input tokens with output
+  free** — the same input list
+  [[jev]] footnoted at launch,
+  the day after TypeSafe's
+  priced round. A planned
+  rebase onto Microsoft AI and
+  [[openai]] models is stated,
+  not dated. See [[openrouter]]
+  (Microsoft, @satyanadella,
+  OpenRouter; ARA daily digest
+  2026-10-10).
+- **Every speed multiple is
+  Microsoft's own first-party
+  bake-off.** The lab ranks
+  Decision-1 first on a
+  36-benchmark, 150,000-question
+  holdout and claims **4.5×
+  Quyet-1.0-Large** and
+  **35× GPT-6 Sol**. Internal
+  Xbox Research quotes say it
+  labeled more than 10,000
+  items "over 14 times faster
+  and 200 times less expensive"
+  than GPT-6 Sol. Treat those
+  as marketing math until a
+  third-party bake-off. Output
+  tokens are free because the
+  output is a short score
+  (Microsoft; ARA daily digest
+  2026-10-10).
+- **MXC shipped the same
+  window.** Microsoft
+  eXecution Container is an
+  open SDK for untrusted model
+  output on Windows, Linux,
+  and macOS
+  (`github.com/microsoft/mxc`).
+  HN called harnesses "the new
+  JS framework of the LLM
+  era" (159 / 77). See
+  [[agentic-ai-security]]
+  (Microsoft, Hacker News; ARA
+  daily digest 2026-10-10).
+- **[[amazon]] said it will
+  stop using NDAs when it
+  negotiates data-center
+  deals with local
+  governments**, following a
+  similar Microsoft move.
+  Tracked on the Amazon page;
+  not a Microsoft product
+  change (TechCrunch; ARA
+  daily digest 2026-10-10).
 
 ## Open questions
 

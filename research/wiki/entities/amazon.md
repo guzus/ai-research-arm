@@ -4,15 +4,16 @@ title: Amazon
 type: entity
 aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy", "Matt Garman"]
 tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
-description: Hyperscaler and Anthropic's largest investor; AWS dropped data-center NDAs with government agencies as more than 100 local moratoriums and a New York permit freeze hit siting.
+description: Hyperscaler and Anthropic's largest investor; The Information says Entergy warned it would drop Amazon Mississippi halls off the grid at peak.
 created_at: 2026-06-14
-timestamp: 2026-10-05T00:00:00Z
+timestamp: 2026-10-10T00:00:00Z
 market:
   ticker: AMZN
   exchange: NASDAQ
   symbol: NASDAQ:AMZN
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
@@ -176,6 +177,40 @@ contract and tort claims remain live. See
   Amazon's own release post was not
   captured (@mark_k; ARA daily
   digest 2026-10-05).
+
+## Entergy peak drop-off warning (2026-10-10)
+
+- **The Information reports that
+  earlier this year Entergy, the
+  Mississippi utility, told Amazon
+  it would take Amazon halls off
+  the grid at peak** to protect
+  other customers, and that Amazon
+  then rewired how those sites
+  run. One utility, one state, one
+  exclusive; no filing or Amazon
+  comment is in this window. This
+  is a grid-operations constraint
+  on the [[ai-capex]] buildout,
+  not a new siting policy
+  (The Information; ARA daily
+  digest 2026-10-10).
+- **Amazon will also stop using
+  NDAs when it negotiates
+  data-center deals with local
+  governments**, following a
+  similar [[microsoft]] move.
+  TechCrunch frames it against
+  hundreds of proposed or enacted
+  moratoriums. The 2026-10-05
+  agency-NDA drop on this page
+  was the government-counterparty
+  version; today's note extends
+  the same posture to local
+  governments. Still a stated
+  policy change, not a named
+  site or filing (TechCrunch;
+  ARA daily digest 2026-10-10).
 
 ## Open questions
 

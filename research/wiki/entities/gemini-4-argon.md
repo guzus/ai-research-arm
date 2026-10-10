@@ -2,12 +2,13 @@
 slug: gemini-4-argon
 title: Gemini 4 Argon
 type: entity
-aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon"]
+aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon", "Gemini 4 Carbon", "Barium-B"]
 tags: [model-release, google-deepmind, frontier-model, fairwind, cyber-defense, pricing]
-description: Google's Fairwind-gated frontier SKU; took #1 on the Vals Index at 68.9% and was the day's top HN story, with cost-per-task claims still conflicting.
+description: Google's Fairwind-gated frontier SKU; Antigravity now lists 256K/512K/900K Argon tiers, and employees are testing a later Carbon checkpoint.
 created_at: 2026-10-01
-timestamp: 2026-10-05T00:00:00Z
+timestamp: 2026-10-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA model ticket — Gemini app tier changes", path: research/models/tickets/google-gemini-app-tier-changes-2026-10.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
@@ -106,3 +107,32 @@ reads that as capacity coming from somewhere after a gated
 frontier rollout — a consumer-tier cut, not an Argon price
 change. See [[google]] (The Decoder; ARA daily digest
 2026-10-05 and ticket `google-gemini-app-tier-changes-2026-10`).
+
+## Antigravity picker and Carbon leak (2026-10-10)
+
+- **Gemini 4 Argon appeared in
+  the Antigravity Insiders
+  picker** with **256K, 512K,
+  and 900K** context tiers.
+  Argon was already a named
+  Sept. 30 cybersecurity-partner
+  preview; tonight's new facts
+  are the picker strings, not
+  a public API open. See
+  [[google]] (ARA daily digest
+  2026-10-10).
+- **Business Insider says
+  employees are testing a later
+  Carbon checkpoint** that some
+  of them compare to
+  [[claude-opus-5-5|Claude Opus
+  5.5]] on coding. That
+  comparison is staff feel, not
+  a published bench. TestingCatalog
+  says BI names **Barium-B** as
+  the public Argon cut, which
+  implies Carbon is not what
+  outside users get first
+  (Business Insider,
+  TestingCatalog; ARA daily
+  digest 2026-10-10).

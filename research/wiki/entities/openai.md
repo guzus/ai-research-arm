@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; fired researchers published their letter, the FT recut September ARR toward $50B, and USA Today sued for more than $250M.
+description: Frontier lab behind the GPT family; research leaders said a thorough investigation found three fired safety researchers violated sensitive-information rules.
 created_at: 2026-05-30
-timestamp: 2026-10-09T00:00:00Z
+timestamp: 2026-10-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
@@ -2897,6 +2898,62 @@ materially reshape how the lab is positioned heading into its IPO window:
   [[federal-ai-policy]] (White
   House; ARA daily digest
   2026-10-09).
+
+## Friday rebuttal and Decisions API cousin (2026-10-10)
+
+- **Research leaders answered
+  Thursday's board letter.** A
+  Friday note says a "thorough
+  investigation" found Jasmine
+  Wang, Tomek Korbak, and
+  Mikita Balesni violated
+  sensitive-information rules
+  and that the inquiry
+  "uncovered a significant
+  breach of trust." The
+  alleged breach is still
+  undescribed. The company
+  says "these decisions were
+  not about raising safety
+  concerns or speaking out"
+  and restates "We have not
+  and do not terminate any of
+  our employees for raising
+  concerns." Motive stays
+  contested until someone
+  names the policy, the data,
+  or a contemporaneous
+  authorization. Third-party
+  safety-assessor contracts
+  are pledged "in the coming
+  weeks." HN climbed 144/69 →
+  271/175. See
+  [[agentic-ai-security]]
+  (OpenAI Newsroom, CNBC, The
+  Verge; ARA daily digest
+  2026-10-10).
+- **MarkTechPost restated the
+  Decisions API public beta**
+  as the OpenAI-side cousin of
+  [[jev]] and [[microsoft|Decision-1]]:
+  the [[gpt-6|GPT-6 Luna]] path
+  returns typed probabilities,
+  choices, and scores about
+  **10×** faster than Responses,
+  at **$0.10** per million
+  input tokens and no output
+  charge. That is a serving
+  path, not a new frontier
+  model. Decoder separately
+  says the company is seeking
+  at least **$30B** at a
+  **$1.4T** valuation on the
+  ~$50B annualized-revenue
+  figure this page logged
+  yesterday — still a briefing,
+  not a 10-Q (MarkTechPost,
+  Decoder, The Information;
+  ARA daily digest 2026-10-10).
 
 ## Open questions
 

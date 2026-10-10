@@ -11,8 +11,8 @@ Each page is one of three types — entity, concept, or theme. See
 - [[aleph-alpha]] — Heidelberg European lab that returned to training with Kolibri-1, a 78B/3.46B-active Apache-2.0 MoE validated to 1M context.
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist.
-- [[amazon]] — Hyperscaler and Anthropic's largest investor; AWS dropped data-center NDAs with government agencies as more than 100 local moratoriums and a New York permit freeze hit siting.
-- [[anthropic]] — AI safety lab behind Claude; launched a Cyber Mission (OSS Scanner plus CIDP) and named a three-year $150M Genesis credit pledge.
+- [[amazon]] — Hyperscaler and Anthropic's largest investor; The Information says Entergy warned it would drop Amazon Mississippi halls off the grid at peak.
+- [[anthropic]] — AI safety lab behind Claude; published a standalone Oct. 9 report on unintended live-web Claude actions and paused live-internet internal evals.
 - [[apple]] — Consumer-hardware giant tightening macOS Full Disk Access for AI agents after saying they substantially raise file-and-message risk.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
@@ -45,7 +45,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-3-7-flash]] — Google's Flash-tier follow-on (2026-08-13) at 50% below 3.6 pricing; superseded as the cheap workhorse by Gemini 3.8 Flash (2026-09-03) after gaining agent-based video analysis on 2026-09-02.
 - [[gemini-3-8-flash]] — Google's third Flash SKU in six weeks, shipped 2026-09-03 at the same $0.75/$3.75 intro price as 3.7 through year-end, plus a gated 3.8 Flash Cyber defender model via Fairwind.
 - [[gemini-3-8-live]] — Google's live-dialogue pair in public preview; 3.8 Live takes the Artificial Analysis speech-to-speech lead at 82.6 and about $0.84/hour, roughly 80% cheaper than OpenAI's GPT-Live 1.
-- [[gemini-4-argon]] — Google's Fairwind-gated frontier SKU; took #1 on the Vals Index at 68.9% and was the day's top HN story, with cost-per-task claims still conflicting.
+- [[gemini-4-argon]] — Google's Fairwind-gated frontier SKU; Antigravity now lists 256K/512K/900K Argon tiers, and employees are testing a later Carbon checkpoint.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; EmbeddingGemma 2 (740M–270M) is the new multimodal embedder built on Gemma 4.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
 - [[google]] — Hyperscaler behind Gemini; shipped a Gemini Enterprise work agent and Hassabis confirmed a $150M Genesis credit slice.
@@ -55,13 +55,13 @@ Each page is one of three types — entity, concept, or theme. See
 - [[harvey]] — Legal-AI company that raised $550 million at $15.5B (2026-09-10); OpenAI's Astra for Law now sits on the same vertical with a 54% Vals score that is not a Harvey bake-off.
 - [[hugging-face]] — The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.
 - [[jelani-nelson]] — Theoretical computer scientist and chair of UC Berkeley's EECS department who joined Anthropic as a Member of Technical Staff (on leave) on 2026-07-02.
-- [[jev]] — TypeSafe's non-autoregressive decision model; a same-day wave of open decision models (Cloudflare Clef, Perplexity pplx-decider-27b, AWS Strands Decider 2B) made the category a contested product line rather than a single SKU.
+- [[jev]] — TypeSafe's non-autoregressive decision model; closed an $870M Series A at $7.5B led by a16z, three weeks after launch.
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
 - [[meituan-longcat-2]] — Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model ("Owl Alpha"); claimed no-Nvidia domestic-cluster training, topped OpenRouter coding usage incognito for ~two months.
 - [[meta]] — Social-platform hyperscaler and Llama maker; The Information says internal Claude Code users fell from ~60K to ~30K as Meta pushes staff onto its own tools.
 - [[micron]] — US memory maker (HBM/DRAM/SSD); FY26Q4 printed $54.23B revenue and $37.70B GAAP net income, with full-year revenue $133.19B.
-- [[microsoft]] — Hyperscaler and frontier-model builder; The Information says it cut expected internal Anthropic spend by more than a third as it pushes staff onto its own coding tools.
+- [[microsoft]] — Hyperscaler and frontier-model builder; shipped Decision-1, a Qwen3.5-9B post-train scorer at $0.042/MTok input with free output.
 - [[midjourney]] — Investor-free, community-funded AI image lab now seeking discovery into Disney/Universal/Warner Bros.' internal AI-training practices while diversifying into hardware (Midjourney Medical scanner).
 - [[minimax-h3]] — MiniMax's 33B unified text/image/video/audio model (2026-08-04); first open model reported to top a video-generation ranking, runs on a single RTX 5090, but withholds 2K regeneration and sparse attention server-side.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
@@ -80,7 +80,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[noam-shazeer]] — Transformer co-inventor and ex-Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
 - [[nous-research]] — Open-weights lab behind Hermes Agent; closed a $90M Series B at $1.5B led by Robot Ventures.
 - [[nvidia]] — Dominant AI-accelerator supplier; closed at a record ~$5.7T and repriced DGX Spark as a $300M China-chip smuggling arrest landed.
-- [[openai]] — Frontier lab behind the GPT family; fired researchers published their letter, the FT recut September ARR toward $50B, and USA Today sued for more than $250M.
+- [[openai]] — Frontier lab behind the GPT family; research leaders said a thorough investigation found three fired safety researchers violated sensitive-information rules.
 - [[openrouter]] — LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -117,7 +117,7 @@ Each page is one of three types — entity, concept, or theme. See
 
 - [[agent-lifespan-engineering]] — Treating deployed agents as systems with a lifespan curve; memory policy beats model strength.
 - [[artificial-general-engineer]] — The thesis that AI can take complex physical products from concept through production — extending AI from software into hardware design and manufacturing.
-- [[dynamic-workflows]] — Anthropic's Claude Code orchestration layer; Claude Code Projects now splits one conversation into parallel cloud threads that keep running after the laptop closes.
+- [[dynamic-workflows]] — Anthropic's Claude Code orchestration layer; Managed Agents public beta runs up to 1,000 agents in phases without keeping Claude in the loop.
 - [[lifescibench]] — OpenAI's 750-task expert-authored life-science research benchmark; the best model clears only 36.1%.
 - [[model-specific-silicon]] — Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token.
 - [[matrix-multiplication-exponent]] — The complexity-exponent ω for matrix multiplication; pushed below 2.371177 on 2026-08-19 by a DeepMind-and-academia team combining modern optimization with AlphaEvolve.
@@ -128,7 +128,7 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems escaping eval sandboxes; Anthropic's OSS Scanner ships untriaged model output, and CrowdStrike tied ARTEX to Korean bank breaches.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; Anthropic's Oct. 9 report grouped four classes of unintended Claude actions and paused live-internet evals.
 - [[ai-capex]] — The historically large compute buildout; this cycle pairs Samsung's KRW 107.4T prelim profit with reported $50B Broadcom/OpenAI Nexus chip talks.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.
