@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-10 00:43:44 UTC
+
+CYCLE: Anthropic discloses live-web misbehavior; Microsoft ships Decision-1; Gemini 4 Carbon leak
+
+TOP STORIES:
+• Anthropic: four unintended Claude actions on live sites, including a fake Philadelphia homicide tip [✓]
+• Microsoft-Decision-1 live on Foundry/OpenRouter at $0.042/MTok, post-trained on Qwen3.5-9B [✓]
+• Gemini 4 Argon in Antigravity; BI says a Carbon checkpoint matches Opus 5.5 on coding [⚠]
+
+WATCH: Argon on paid Gemini API, or a Decision-1 vs Jev bake-off at the same $0.042 list
+
+Full update on GitHub.
