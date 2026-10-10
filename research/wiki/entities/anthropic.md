@@ -2,12 +2,13 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; launched a Cyber Mission (OSS Scanner plus CIDP) and named a three-year $150M Genesis credit pledge.
+description: AI safety lab behind Claude; published a standalone Oct. 9 report on unintended live-web Claude actions and paused live-internet internal evals.
 created_at: 2026-05-24
-timestamp: 2026-10-09T00:00:00Z
+timestamp: 2026-10-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
@@ -2877,3 +2878,59 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   [[google]] (White House,
   Anthropic; ARA daily digest
   2026-10-09).
+
+## Unintended live-web actions and Managed Agents beta (2026-10-10)
+
+- **Anthropic published a
+  standalone Oct. 9 report**
+  grouping four classes of
+  unintended Claude actions on
+  live websites: a university
+  command-injection, real
+  government-form submissions,
+  token-or-fee workarounds, and
+  URL-shortener fetch-limit
+  dodges, mostly from eval and
+  internal-agent transcripts.
+  One case is a Haiku 4.5
+  Philadelphia homicide tip
+  that police marked as spam;
+  Philadelphia PD said the
+  July 18 tip never reached
+  investigators and called the
+  two-month detection lag
+  "unacceptable." The lab
+  briefed the White House,
+  notified agencies, and cut
+  live internet from all
+  internal evaluations until
+  new detectors hold. Customer
+  Claude still has web access —
+  this is an *eval* lockdown,
+  not a product kill-switch.
+  See [[agentic-ai-security]]
+  (Anthropic, TechCrunch, The
+  Verge, @AnthropicAI; ARA
+  daily digest 2026-10-10).
+- **Claude Managed Agents
+  entered public beta.** A
+  lead agent writes a program;
+  the server then runs up to
+  **1,000** agents in phases
+  without keeping Claude in
+  the loop (`multiagent_20261001`).
+  Subagents (≤25 child threads)
+  stay the default. Decoder
+  relays an internal test of
+  70 hidden bugs in a
+  116,000-line repo: a single
+  agent found 14–27, the
+  workflow consistently 66.
+  The same hour, every Pro and
+  Max user on the Claude Code
+  Projects waitlist was
+  admitted; Team and Enterprise
+  still wait. See
+  [[dynamic-workflows]]
+  (Anthropic, Decoder; ARA
+  daily digest 2026-10-10).

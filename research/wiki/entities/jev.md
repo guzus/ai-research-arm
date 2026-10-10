@@ -2,12 +2,13 @@
 slug: jev
 title: Jev (TypeSafe)
 type: entity
-aliases: [Jev, "TypeSafe Jev", TypeSafe, OpenJev, JevBench, RLCD, "Tev1-4B-experimental"]
+aliases: [Jev, "TypeSafe Jev", TypeSafe, OpenJev, JevBench, RLCD, "Tev1-4B-experimental", "Diogo Almeida", "Sasha Sheng", "Erik Gafni"]
 tags: [decision-model, classifier, open-weights, system-one, structured-output]
-description: TypeSafe's non-autoregressive decision model; a same-day wave of open decision models (Cloudflare Clef, Perplexity pplx-decider-27b, AWS Strands Decider 2B) made the category a contested product line rather than a single SKU.
+description: TypeSafe's non-autoregressive decision model; closed an $870M Series A at $7.5B led by a16z, three weeks after launch.
 created_at: 2026-09-20
-timestamp: 2026-10-02T00:00:00Z
+timestamp: 2026-10-10T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
@@ -248,3 +249,50 @@ than a launch blurb. See [[open-weights]].
   a billed rate card (Hacker
   News; ARA daily digest
   2026-10-02).
+
+## $870M Series A at $7.5B (2026-10-10)
+
+- **TypeSafe closed an $870
+  million Series A at a $7.5B
+  valuation**, three weeks
+  after Jev launched. Andreessen
+  Horowitz led; Sequoia and
+  DCVC joined; Martin Casado
+  takes a board seat. The
+  company's own footnote is
+  "$870 million at a $7.5B
+  valuation." That mark is
+  below the $10B-plus figure
+  The Information said the
+  company was shopping in late
+  September. No customer is
+  named. Co-founders are Diogo
+  Almeida (ex-[[openai]]),
+  Sasha Sheng (ex-[[meta]]),
+  and Erik Gafni. HN's first
+  reaction was "what edge
+  justifies that"; denverllc
+  noted [[anthropic]]'s Series
+  A was $124M, so this is 7×
+  that (TypeSafe, TechCrunch,
+  Hacker News 149 / 124; ARA
+  daily digest 2026-10-10).
+- **Founder usage lines stay
+  unverified.** A tweet claimed
+  "trillions of tokens a day"
+  and "29.4% of the Fortune
+  500"; the post retreats to
+  "a third of the Fortune 500
+  are getting their Jev on."
+  Jev still emits Choice /
+  Score / Noul primitives
+  instead of text, at the
+  $0.042 / MTok input list
+  this page logged at launch.
+  The same day [[microsoft]]
+  shipped Decision-1 at that
+  same input price, and
+  [[openai]]'s Decisions API
+  remains the $0.10 cousin
+  (TypeSafe, Microsoft; ARA
+  daily digest 2026-10-10).
