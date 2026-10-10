@@ -143,7 +143,7 @@ jobs:
       - name: Run Deep Research (with MCP)
         if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
         id: research-mcp
-        uses: anthropics/claude-code-action@fd1c128679612beff4ca259c78021c506e8aa7a7 # v1.0.237
+        uses: anthropics/claude-code-action@ed670b4cf9de2a5a570d130d2f6197b9e543cd64 # v1.0.240
         with:
           # Security: NO env: block here. The Claude action injects every var
           # into the model's runtime environment; combined with any shell tool
@@ -262,7 +262,7 @@ jobs:
       - name: Run Deep Research (without MCP)
         if: steps.check-keys.outputs.has_exa != 'true' && steps.check-keys.outputs.has_perplexity != 'true'
         id: research-basic
-        uses: anthropics/claude-code-action@fd1c128679612beff4ca259c78021c506e8aa7a7 # v1.0.237
+        uses: anthropics/claude-code-action@ed670b4cf9de2a5a570d130d2f6197b9e543cd64 # v1.0.240
         with:
           # Security: NO env: block here. See notes on the MCP variant above —
           # issue content comes from /tmp/issue-input/{title,body}.txt to keep

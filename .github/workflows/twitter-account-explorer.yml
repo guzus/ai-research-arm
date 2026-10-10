@@ -73,7 +73,7 @@ jobs:
         uses: ./.github/actions/setup-claude-sandbox
 
       - name: Explore and curate account list
-        uses: anthropics/claude-code-action@fd1c128679612beff4ca259c78021c506e8aa7a7 # v1.0.237
+        uses: anthropics/claude-code-action@ed670b4cf9de2a5a570d130d2f6197b9e543cd64 # v1.0.240
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AUTH_TOKEN: ${{ secrets.BIRD_AUTH_TOKEN }}
