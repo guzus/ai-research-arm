@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-10-10 09:43:35 UTC
+
+CYCLE: Unannounced Rosalind-discovery SKU on OpenAI pricing; Amp takes Claude Pro/Max
+
+TOP STORIES:
+• OpenAI lists gpt-rosalind-discovery on API pricing at $5/$25 per 1M tokens [✓]
+• Sourcegraph Amp now accepts Claude Pro/Max via the Claude Agent SDK [✓]
+
+WATCH: OpenAI docs or changelog that define Rosalind-discovery vs research, and whether it is callable
+
+Full update on GitHub.
