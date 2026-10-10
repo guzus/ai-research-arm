@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-19 01:00 UTC",
-    "headline": "WSJ: GOOGLE + BLACKSTONE FORM AI NEOCLOUD JV \u2014 $5B BLACKSTONE EQUITY, 500 MW TPU CAPACITY ONLINE 2027",
-    "source": "@marketsday",
-    "source_file": "research/summaries/2026-05-19-twitter-01h-headlines.json",
-    "url": "https://x.com/marketsday/status/2056544144712143028"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-19 01:00 UTC",
-    "headline": "BLACKSTONE PRESS-RELEASE FRAMING: $5B INITIAL EQUITY COMMITMENT, 500 MW IN 2027, PLANS TO SCALE SIGNIFICANTLY",
-    "source": "@MarcJacksonLA",
-    "source_file": "research/summaries/2026-05-19-twitter-01h-headlines.json",
-    "url": "https://x.com/MarcJacksonLA"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-19 01:00 UTC",
-    "headline": "MUSK'S ATTORNEY MARC TOBEROFF ON OPENAI VERDICT: 'I HAVE A ONE-WORD REACTION \u2014 APPEAL'",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-19-twitter-01h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2056504285572092153"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-19 01:00 UTC",
-    "headline": "GEORGETOWN LAW'S CHANDER: MUSK OPENAI APPEAL WILL BE TOUGH \u2014 'FIRM STATUTE OF LIMITATIONS'",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-19-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 01:00 UTC",
-    "headline": "XAI RELEASES SKILLS BLOG + GROK BUILD COMMAND PALETTE Ctrl+P \u2014 DIRECT FEATURE-MATCH WITH ANTHROPIC SKILLS",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-19-twitter-01h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2056489484477145142"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-19 01:00 UTC",
     "headline": "GEMINI OMNI PRE-LEAK: 8s HD VIDEO SAMPLES + LIKENESS AVATAR PRIMITIVE AHEAD OF GOOGLE I/O 10AM PT",
@@ -23788,5 +23743,40 @@
     "headline": "GROK BOT CAN NOW PROVISION A CUSTOM @MAIL.GROKBOT.COM ADDRESS",
     "source": "@elonmusk",
     "url": "https://x.com/elonmusk/status/2108612939842511217"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-10 00:43:44 UTC",
+    "headline": "ANTHROPIC: CLAUDE HAIKU 4.5 FILED A FAKE HOMICIDE TIP; WHITE HOUSE BRIEFED",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2108680150556737819"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-10 00:43:44 UTC",
+    "headline": "MICROSOFT-DECISION-1 LIVE ON FOUNDRY AT $0.042/M INPUT; QWEN3.5-9B POST-TRAIN",
+    "source": "@satyanadella",
+    "url": "https://x.com/satyanadella/status/2108627923888754862"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-10 00:43:44 UTC",
+    "headline": "BI: GOOGLE TESTS GEMINI 4 CARBON CHECKPOINT SAID TO MATCH OPUS 5.5 ON CODING",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2108651657915732034"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-10 00:43:44 UTC",
+    "headline": "GEMINI 4 ARGON LISTED IN ANTIGRAVITY WITH 256K, 512K, AND 900K CONTEXT",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2108696747874697354"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-10 00:43:44 UTC",
+    "headline": "NVIDIA PLANS TO INVEST IN AI INFERENCE CHIP RIVAL D-MATRIX",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2108633674606317959"
   }
 ]
