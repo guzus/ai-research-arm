@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-11 12:40:33 UTC
+
+CYCLE: Claude nav shows Arborio/Iggy; Amazon and Meta papers on logging failed research runs
+
+TOP STORIES:
+• Anthropic testing Arborio and Iggy in Claude nav; Arborio looks like Health for web [⚠]
+• Amazon research-world-model paper: 2,600+ records, Spearman +0.27, 78% less Qwen3 regret [✓]
+• Meta GitSwarm: 79.4% vs 65.1% on ProgramBench when agents share a Git history [✓]
+
+WATCH: Arborio on claude.ai for US Pro/Max, or release notes that name Health on the web
+
+Full update on GitHub.

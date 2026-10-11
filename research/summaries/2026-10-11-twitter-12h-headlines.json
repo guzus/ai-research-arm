@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "ANTHROPIC TESTS ARBORIO AND IGGY IN CLAUDE NAV; ARBORIO POINTS AT HEALTH FOR WEB",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2109206986189410469",
+    "category": "model"
+  },
+  {
+    "headline": "AMAZON PAPER: RESEARCH WORLD MODEL RANKS EXPERIMENTS AFTER 2,600 RECORDS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2109243398628708619",
+    "category": "research"
+  },
+  {
+    "headline": "META GITSWARM: SHARED GIT MEMORY SCORES 79.4% ON PROGRAMBENCH VS 65.1%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2109230760020574281",
+    "category": "research"
+  },
+  {
+    "headline": "BAKER: B300 +38% AND B200 +10% SINCE MAY 31 SILICON DATA TOKEN-INDEX PEAK",
+    "source": "@GavinSBaker",
+    "url": "https://x.com/GavinSBaker/status/2109240032196174309",
+    "category": "infra"
+  }
+]
