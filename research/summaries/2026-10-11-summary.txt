@@ -1,0 +1,15 @@
+AI News - 2026-10-11
+
+TOP STORIES:
+• WIRED: HarperCollins, S&S, Hachette using Claude/ChatGPT for copy, covers, agent email
+• Apple reverse-acqui-hires Huxe podcast team; licenses IP (EC filing)
+• DistroKid confirms UMG-driven takedowns; artists say non-AI tracks swept
+• OrcaCyber Zero 1.5: gated 1M-ctx cyber model; vendor 100% Cybench
+• Sakana MLR catches 73.43% of planted core-claim errors vs 14.81% baseline
+
+KEY NUMBERS:
+• Apple/Huxe: team hire + non-exclusive IP license; no price
+• OrcaCyber: $3.00/$7.50 per 1M tokens; 95.8% on 24-task CVE-Bench
+• MLR: ~$0.47/review; 1,164 planted contradictions / 257 papers
+
+Full report on GitHub.
