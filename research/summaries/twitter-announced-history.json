@@ -2,42 +2,6 @@
   {
     "backfilled": true,
     "category": "business",
-    "delivered_at": "2026-05-19 10:00 UTC",
-    "headline": "OPENAI CORP ~110H SILENT \u2014 NO VERDICT / VERA-CPU / FT-HASSABIS / ANTHROPIC-LONDON ACKNOWLEDGMENT AS GOOGLE I/O OPENS",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-19-twitter-10h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2055016850849993072"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 13:00 UTC",
-    "headline": "ANTHROPIC-KPMG GLOBAL ALLIANCE \u2014 CLAUDE INSIDE DIGITAL GATEWAY FOR 276,000+ EMPLOYEES ACROSS 138 COUNTRIES; KPMG NAMED PE-PREFERRED PARTNER",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-19-twitter-13h-headlines.json",
-    "url": "https://www.anthropic.com/news/anthropic-kpmg"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 13:00 UTC",
-    "headline": "ANTHROPIC SHIPS SECOND BIG-4 STRATEGIC ALLIANCE IN 5 DAYS \u2014 PwC (MAY 14) \u2192 KPMG (MAY 19) \u2014 DAY-OF GOOGLE I/O 2026 KEYNOTE",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-19-twitter-13h-headlines.json",
-    "url": "https://www.anthropic.com/news"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 13:00 UTC",
-    "headline": "KPMG DIGITAL GATEWAY POWERED BY CLAUDE \u2014 COWORK + MANAGED AGENTS + CLAUDE CODE (KPMG BLAZE) ON AZURE; TAX/LEGAL CLIENT WORKFLOWS FIRST",
-    "source": "KPMG.com",
-    "source_file": "research/summaries/2026-05-19-twitter-13h-headlines.json",
-    "url": "https://kpmg.com/xx/en/media/press-releases/2026/05/kpmg-and-anthropic-sign-global-alliance-and-launch-digital-gateway-powered-by-claude.html"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
     "delivered_at": "2026-05-19 13:00 UTC",
     "headline": "ANTHROPIC NEWSROOM CADENCE \u2014 10 POSTS IN 22 DAYS (APR 27 \u2192 MAY 19): DISTRIBUTION + INFRA + PRODUCT CAMPAIGN THROUGH GOOGLE I/O WEEK",
     "source": "@AnthropicAI",
@@ -23734,5 +23698,33 @@
     "headline": "BAKER: B300 +38% AND B200 +10% SINCE MAY 31 SILICON DATA TOKEN-INDEX PEAK",
     "source": "@GavinSBaker",
     "url": "https://x.com/GavinSBaker/status/2109240032196174309"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-11 19:29:23 UTC",
+    "headline": "NBC: MATH COMMUNITY SPLIT ON OPENAI 370-PROBLEM DUMP \u2014 JEWELS IF VERIFIED, SLOP IF NOT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2109358434177180101"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-11 19:29:23 UTC",
+    "headline": "FIELDS MEDALIST DUMINIL-COPIN: OPENAI MATH DUMP ANNIHILATED MY RESEARCH FIELD",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2109354408060629015"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-11 19:29:23 UTC",
+    "headline": "NORTHWESTERN'S AUFFINGER: STUDENTS ASK WHETHER TO STAY IN MATH AFTER OPENAI FLOOD",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2109358434177180101"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-11 19:29:23 UTC",
+    "headline": "NOUS MAKES ANATOMY AN OFFICIAL OPTIONAL SKILL IN HERMES AGENT",
+    "source": "@Teknium",
+    "url": "https://x.com/Teknium/status/2109351160843035106"
   }
 ]
