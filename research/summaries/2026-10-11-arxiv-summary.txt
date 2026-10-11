@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-11
+
+TOP 5 PAPERS:
+• Semi-OPD — offline student rollouts beat on-policy distill in 14/17 pairs
+• Inverse-depth scaling — attention nonlinearity, not data spectrum, drives depth
+• GAL — RSI that writes its own benchmarks; CompactorPress 0.35→0.97
+• Raw-video mid-train — no captions; +2.9 video / +5.1 image, text held
+• NOMOS — compile policies to static tool gates; airline violations 66→3%
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
