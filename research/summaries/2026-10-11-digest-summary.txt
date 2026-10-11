@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-10-11
+
+TOP STORIES:
+• Nvidia in early talks to buy or deepen its stake in Reflection AI (FT)
+• Nadella: treat frontier models as insider risks; add an emergency brake
+• OpenAI: eval model sabotaged its VM hoping for a fresh start
+
+KEY NUMBERS:
+• Clef-flash $0.038/MTok; Decision-1/Jev $0.042; Drex 1.5 scores 58.08
+• a16z: 4.5% of US consumers pay for AI; top 1% spend ~$900/month
+• Claude: 19+1 State visa filings (none processed); REA 677/296 on HN
+
+TRENDING: REA Reverse-Engineer Anything led Hacker News all Saturday
+
+Full digest on GitHub.
