@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 10:00 UTC",
-    "headline": "GOOGLE AI STUDIO MOBILE APP APPEARS ON GOOGLE PLAY STORE FOR PRE-REGISTRATION HOURS BEFORE I/O KEYNOTE",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-19-twitter-10h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2056655400796434841"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 10:00 UTC",
-    "headline": "GEMINI ROLLING OUT NEW UI WITH THINKING-EFFORT SELECTOR + USAGE LIMITS TAB AHEAD OF I/O 2026",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-19-twitter-10h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2056653546918117464"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 10:00 UTC",
-    "headline": "ANTHROPIC DOUBLES CLAUDE DESIGN TOKEN LIMITS ACROSS EVERY PLAN \u2014 15,866 LIKES IN 14H",
-    "source": "@claudeai",
-    "source_file": "research/summaries/2026-05-19-twitter-10h-headlines.json",
-    "url": "https://x.com/claudeai/status/2056460045756309820"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 10:00 UTC",
-    "headline": "DEMIS HASSABIS 7-DAY SUBSTANTIVE SILENT THROUGH FT ANTHROPIC-ANGEL-INVESTOR DISCLOSURE \u2014 6.5H BEFORE GOOGLE I/O KEYNOTE SLOT",
-    "source": "@FT",
-    "source_file": "research/summaries/2026-05-19-twitter-10h-headlines.json",
-    "url": "https://x.com/FT/status/2056595792450683328"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-19 10:00 UTC",
     "headline": "OPENAI CORP ~110H SILENT \u2014 NO VERDICT / VERA-CPU / FT-HASSABIS / ANTHROPIC-LONDON ACKNOWLEDGMENT AS GOOGLE I/O OPENS",
@@ -23742,5 +23706,33 @@
     "headline": "THE INFORMATION: ELIYAN HAS A TAKEOVER BID, SEEKS $3B; ARM HELD EARLY TALKS, NO BID",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2109026212093857882"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-11 12:40:33 UTC",
+    "headline": "ANTHROPIC TESTS ARBORIO AND IGGY IN CLAUDE NAV; ARBORIO POINTS AT HEALTH FOR WEB",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2109206986189410469"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-11 12:40:33 UTC",
+    "headline": "AMAZON PAPER: RESEARCH WORLD MODEL RANKS EXPERIMENTS AFTER 2,600 RECORDS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2109243398628708619"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-11 12:40:33 UTC",
+    "headline": "META GITSWARM: SHARED GIT MEMORY SCORES 79.4% ON PROGRAMBENCH VS 65.1%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2109230760020574281"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-11 12:40:33 UTC",
+    "headline": "BAKER: B300 +38% AND B200 +10% SINCE MAY 31 SILICON DATA TOKEN-INDEX PEAK",
+    "source": "@GavinSBaker",
+    "url": "https://x.com/GavinSBaker/status/2109240032196174309"
   }
 ]
