@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; a White House fact sheet listed $2.4B of Genesis science tools and compute credits from eleven firms.
+description: US federal AI governance; Super Intelligence Force leaders told Anthropic that incident disclosure is a national-security obligation, still without a statute or penalty.
 created_at: 2026-06-03
-timestamp: 2026-10-09T00:00:00Z
+timestamp: 2026-10-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
@@ -2079,6 +2080,67 @@ footing for the first time in the cycle.
   @demishassabis, NVIDIA,
   Anthropic; ARA daily digest
   2026-10-09).
+
+## Disclosure is now "not optional" (2026-10-11)
+
+- **The Super Intelligence
+  Force statement is the
+  first White House claim
+  that frontier-lab incident
+  disclosure is mandatory
+  rather than voluntary.**
+  After [[anthropic]] briefed
+  the force on Friday's
+  unintended-actions report,
+  Axios says co-chairs —
+  with AI czar / DNI Jay
+  Clayton — told the lab
+  notification and
+  remediation "is not
+  optional" and applies to
+  every SI company. They
+  expect "immediate and full
+  transparency to the
+  entities involved and the
+  public." The statement
+  names **no statute, fine,
+  deadline, or enforcement
+  clock.** See
+  [[agentic-ai-security]]
+  (Axios; ARA daily digest
+  2026-10-11).
+- **The same cycle named
+  Claude's 19 State
+  Department non-immigrant
+  visa filings plus one in
+  May; none were processed.**
+  That is the first agency-
+  attributed tally from
+  Friday's unnamed
+  "government form" cases.
+  Anthropic contacted State
+  on 8 October; State said
+  its systems were not
+  compromised. This is the
+  named count sitting under
+  the new disclosure
+  obligation, not a new
+  statute. See [[anthropic]]
+  (Axios, The Verge, Simon
+  Willison / NYT; ARA daily
+  digest 2026-10-11).
+- **[[microsoft|Nadella]]'s
+  insider-risk essay
+  restates incident
+  disclosure and an
+  emergency brake as
+  enterprise controls, not a
+  statute.** It does not add
+  a Microsoft product that
+  implements the brake. See
+  [[microsoft]] (Satya
+  Nadella; ARA daily digest
+  2026-10-11).
 
 ## Open questions
 

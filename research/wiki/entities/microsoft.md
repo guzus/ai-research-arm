@@ -4,15 +4,16 @@ title: Microsoft
 type: entity
 aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "MAI Code of Conduct", "Humanist AI Code of Conduct", "Decision-1", "Microsoft-Decision-1"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; shipped Decision-1, a Qwen3.5-9B post-train scorer at $0.042/MTok input with free output.
+description: Hyperscaler and frontier-model builder; Nadella's Saturday essay argued agentic models are insider risks and asked for an emergency brake.
 created_at: 2026-06-03
-timestamp: 2026-10-10T00:00:00Z
+timestamp: 2026-10-11T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
@@ -354,6 +355,62 @@ ARA daily digest 2026-09-26).
   not a Microsoft product
   change (TechCrunch; ARA
   daily digest 2026-10-10).
+
+## Nadella called models insider risks (2026-10-11)
+
+- **Satya Nadella posted "Models
+  as Insider Risks in the Super
+  Intelligence Era"** at 14:43
+  UTC. The essay argues that
+  agentic systems now have
+  access and autonomy
+  traditional software never
+  did, so intelligence must
+  stay off the authority path.
+  Named requirements include
+  chain-of-thought
+  transparency, outside-the-
+  model permissions, an
+  emergency brake that can
+  pause an agent mid-task,
+  incident disclosure, and
+  model diversity so no model
+  verifies its own work. It
+  rejects unread Neuralese
+  and asks for tamper-proof
+  human-readable logs. Elon
+  Musk called the essay
+  "interesting." See
+  [[agentic-ai-security]]
+  (Satya Nadella, TechCrunch,
+  The Verge; ARA daily digest
+  2026-10-11).
+- **This is a CEO essay, not a
+  shipping Foundry or Entra
+  control.** Microsoft's MAI
+  Code of Conduct remains the
+  mid-September draft this
+  page logged on 2026-09-15.
+  The brake and disclosure
+  asks restated as enterprise
+  controls, not a statute.
+  See [[federal-ai-policy]]
+  (Satya Nadella; ARA daily
+  digest 2026-10-11).
+- **MarkTechPost and Decoder
+  restated Decision-1** as
+  the Oct. 9 Qwen3.5-9B
+  scorer at 83.5% average
+  across 36 benches and 85 ms
+  p50, still **$0.042 / MTok
+  in, output free**. Every
+  speed multiple remains
+  Microsoft's own bake-off
+  against [[jev]] at the same
+  list — leftover, not a new
+  SKU (MarkTechPost, Decoder;
+  ARA daily digest
+  2026-10-11).
 
 ## Open questions
 
