@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra", OpenShell, "NVIDIA Sentry", "Open Agent Safety Platform", "BlueField-4", "DGX Spark"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: Dominant AI-accelerator supplier; closed at a record ~$5.7T, repriced DGX Spark (128GB $6,949.99 / 64GB $4,999), and faces a $300M China-chip smuggling arrest.
+description: Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.
 created_at: 2026-06-05
-timestamp: 2026-10-03T00:00:00Z
+timestamp: 2026-10-11T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA model ticket — NVIDIA Open Agent Safety Platform", path: research/models/tickets/nvidia-open-agent-safety-platform-2026-09.md}
@@ -698,4 +699,49 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   [[federal-ai-policy]] (Ars Technica,
   Bloomberg via Twitter; ARA daily
   digest 2026-10-03).
+
+## Early talks on Reflection AI (2026-10-11)
+
+- **The Saturday FT exclusive says
+  NVIDIA opened talks on
+  [[reflection-ai|Reflection AI]]**,
+  the open-weight lab that named
+  Beam this week. Structures on
+  the table are a full takeover,
+  a larger equity check, more
+  chips, or a [[groq|Groq]]-style
+  acqui-hire — the last is the
+  structure most likely to skip a
+  long antitrust review. NVIDIA
+  already put **$800 million**
+  into the 2024 Laskin/Antonoglou
+  lab and is a large shareholder.
+  Reuters could not independently
+  verify; both companies were
+  silent after hours. **$25B is
+  April's raise mark, not a
+  bid** — flattening early talks
+  into a closing deal is the
+  day's skeptic flag. See
+  [[open-weights]] (Financial
+  Times, CNA/Reuters, Hacker
+  News; ARA daily digest
+  2026-10-11).
+- **Beam's promised Apache 2.0
+  weights later this month would
+  still matter if the talks
+  stall.** HN's first read split
+  "didn't they just invest"
+  versus "they want open models
+  so they are not stuck with two
+  customers." The thread closed
+  at **100/66**. This is the
+  same supplier-as-investor
+  pattern this page already
+  tracks on [[hugging-face]],
+  [[poolside]], and [[groq]] —
+  except here the target already
+  has a dated weight drop
+  (Financial Times, HN; ARA
+  daily digest 2026-10-11).
 

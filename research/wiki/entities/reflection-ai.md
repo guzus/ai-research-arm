@@ -4,10 +4,11 @@ title: Reflection AI
 type: entity
 aliases: ["Reflection AI", "Reflection", "Beam", "Reflection Beam", "Misha Laskin"]
 tags: [open-weights, moe, us-lab, nvidia-backed, model-release]
-description: US open-weights lab that unveiled Beam, a 501B/23B-active sparse MoE pretrained on 23.8T tokens, with Apache 2.0 weights promised later this month.
+description: US open-weights lab behind Beam; the FT says Nvidia opened early talks on a full buy, larger check, more chips, or a Groq-style acqui-hire.
 created_at: 2026-10-06
-timestamp: 2026-10-06T00:00:00Z
+timestamp: 2026-10-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA model ticket — Reflection open-weight model", path: research/models/tickets/reflection-open-weight-model-2026-10.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
@@ -103,3 +104,44 @@ and ticket
   Nebius book is reserved for
   Beam training versus later
   serving?**
+
+## Nvidia opened talks — early, unverified (2026-10-11)
+
+- **The Saturday FT exclusive
+  says [[nvidia]] is discussing
+  a full takeover, a larger
+  equity check, more chips, or
+  a [[groq|Groq]]-style
+  acqui-hire.** Talks are
+  early and can still collapse;
+  the acqui-hire is the
+  structure most likely to skip
+  a long antitrust review.
+  NVIDIA already put **$800
+  million** into the 2024
+  Laskin/Antonoglou lab.
+  Reuters could not
+  independently verify; both
+  companies were silent after
+  hours. **$25B is April's
+  pre-money, not a bid.** See
+  [[open-weights]] (Financial
+  Times, CNA/Reuters, Hacker
+  News; ARA daily digest
+  2026-10-11).
+- **Beam remains a 501B-total /
+  23B-active MoE** with Apache
+  2.0 weights promised later
+  this month. Those weights
+  would still matter if the
+  talks stall. HN entered at
+  42/21 and closed at
+  **100/66**, split between
+  "didn't they just invest"
+  and "they want open models
+  so they are not stuck with
+  two customers." This page's
+  dated weight-drop question
+  is unchanged (Financial
+  Times, HN; ARA daily digest
+  2026-10-11).

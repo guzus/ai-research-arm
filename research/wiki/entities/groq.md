@@ -6,8 +6,9 @@ aliases: [Groq, "Groq Inc.", "@GroqInc", "Jonathan Ross"]
 tags: [inference, ai-chips, accelerator, model-specific-silicon]
 description: AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.
 created_at: 2026-08-18
-timestamp: 2026-09-11T00:00:00Z
+timestamp: 2026-10-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
@@ -76,3 +77,21 @@ offering.
   system working as designed."* See
   [[federal-ai-policy]] (NYT, Reuters, Bloomberg; ARA
   daily digest 2026-09-11).
+
+## Named as the Reflection-talks template (2026-10-11)
+
+- **The Saturday FT exclusive on
+  [[nvidia]] / [[reflection-ai]]
+  talks lists a "Groq-style
+  acqui-hire"** as one of four
+  structures, and the one most
+  likely to skip a long
+  antitrust review. That is
+  this page's
+  licensing-vs-acquisition
+  ambiguity used as a template
+  for a different open-weight
+  lab. No Groq product or DOJ
+  increment in this window
+  (Financial Times; ARA daily
+  digest 2026-10-11).

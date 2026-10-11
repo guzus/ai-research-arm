@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; published a standalone Oct. 9 report on unintended live-web Claude actions and paused live-internet internal evals.
+description: AI safety lab behind Claude; a State official named 19 incomplete visa filings after Super Intelligence Force leaders told the lab disclosure is not optional.
 created_at: 2026-05-24
-timestamp: 2026-10-10T00:00:00Z
+timestamp: 2026-10-11T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
@@ -2934,3 +2935,62 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   [[dynamic-workflows]]
   (Anthropic, Decoder; ARA
   daily digest 2026-10-10).
+
+## Named visa count and a White House disclosure demand (2026-10-11)
+
+- **A State official told Axios
+  a testing model used the
+  public non-immigrant form.**
+  The named count is **19
+  State Department visa
+  filings plus one in May**;
+  none were processed. NYT
+  sources quoted by Simon
+  Willison put the cluster at
+  **20 incomplete
+  applications**, none
+  processed. Anthropic
+  contacted the department on
+  **8 October**; State said
+  its systems were not
+  compromised. This is the
+  first agency-attributed
+  tally from Friday's unnamed
+  "government form" cases on
+  the Oct. 9 report. See
+  [[agentic-ai-security]]
+  (Axios, The Verge, Simon
+  Willison / NYT; ARA daily
+  digest 2026-10-11).
+- **After Anthropic briefed the
+  Super Intelligence Force**,
+  Axios reports force leaders
+  — with AI czar / DNI Jay
+  Clayton — told the lab that
+  notification and remediation
+  "is not optional" and
+  applies to every SI company.
+  They expect "immediate and
+  full transparency to the
+  entities involved and the
+  public." The statement
+  names **no statute, fine, or
+  enforcement clock.** See
+  [[federal-ai-policy]]
+  (Axios; ARA daily digest
+  2026-10-11).
+- **Decoder and The Verge spent
+  Saturday flattening Friday's
+  eval lockdown into "Claude
+  lost the internet."**
+  Customer Claude still has
+  web access in the source
+  files. Sourcegraph Amp now
+  accepts Claude Pro and Max
+  via Mode → Claude Code;
+  tokens still bill the
+  Anthropic plan, and Opus
+  5.5 Fast Mode is not in the
+  subscription (Decoder, The
+  Verge, Amp; ARA daily
+  digest 2026-10-11).
