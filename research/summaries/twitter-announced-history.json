@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-19 08:00 UTC",
-    "headline": "CHINA-US AGREE TO LAUNCH INTERGOVERNMENTAL AI DIALOGUE \u2014 CHINA MOFA SPOKESPERSON GUO JIAKUN AT MAY 19 PRESS CONFERENCE",
-    "source": "@jiemian_news",
-    "source_file": "research/summaries/2026-05-19-twitter-08h-headlines.json",
-    "url": "https://x.com/jiemian_news/status/2056645439911251979"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 08:00 UTC",
-    "headline": "MISTRAL ACQUIRES VIENNA-BASED EMMI AI FOR UNDISCLOSED SUM TO BOOST INDUSTRIAL AI OFFERINGS IN EUROPE \u2014 REUTERS",
-    "source": "@Techmeme",
-    "source_file": "research/summaries/2026-05-19-twitter-08h-headlines.json",
-    "url": "https://x.com/Techmeme/status/2056643706644791745"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 10:00 UTC",
-    "headline": "ANTHROPIC SHIPS SELF-HOSTED SANDBOXES (BETA) + MCP TUNNELS (PREVIEW) FROM CODE WITH CLAUDE LONDON \u2014 9H BEFORE GOOGLE I/O KEYNOTE",
-    "source": "@claudeai",
-    "source_file": "research/summaries/2026-05-19-twitter-10h-headlines.json",
-    "url": "https://x.com/claudeai/status/2056645485696315581"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-19 10:00 UTC",
-    "headline": "AGENTS NOW RUN INSIDE ENTERPRISE VPC \u2014 CLOUDFLARE / DAYTONA / MODAL / VERCEL CONFIRMED AS ANTHROPIC MANAGED-SANDBOX PARTNERS",
-    "source": "@claudeai",
-    "source_file": "research/summaries/2026-05-19-twitter-10h-headlines.json",
-    "url": "https://x.com/claudeai/status/2056645491207655584"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-19 10:00 UTC",
     "headline": "GOOGLE AI STUDIO MOBILE APP APPEARS ON GOOGLE PLAY STORE FOR PRE-REGISTRATION HOURS BEFORE I/O KEYNOTE",
@@ -23750,5 +23714,33 @@
     "headline": "NOUS PORTAL ADDS STEALTH MODEL MISSINGNO. \u2014 CODING/AGENTIC, FREE FOR NOW",
     "source": "@NousResearch",
     "url": "https://x.com/NousResearch/status/2109012611555840069"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-11 05:37:21 UTC",
+    "headline": "WIRED: HARPERCOLLINS, S&S, HACHETTE USE CLAUDE AND CHATGPT FOR COPY, COVERS, REJECTIONS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2109154583138492672"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-11 05:37:21 UTC",
+    "headline": "S&S EXPLORED SKAN AI WORKFLOW MONITORING; CEO SAYS NO DECISION AFTER STAFF OPEN LETTER",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2109154583138492672"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-11 05:37:21 UTC",
+    "headline": "OPENROUTER RECONSTRUCTION: ~$29M WEEKLY SPEND, ~$1.5B ANNUALIZED; ANTHROPIC 36%",
+    "source": "@deedydas",
+    "url": "https://x.com/deedydas/status/2109118089438896576"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-11 05:37:21 UTC",
+    "headline": "THE INFORMATION: ELIYAN HAS A TAKEOVER BID, SEEKS $3B; ARM HELD EARLY TALKS, NO BID",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2109026212093857882"
   }
 ]
