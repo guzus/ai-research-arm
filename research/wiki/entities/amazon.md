@@ -4,15 +4,16 @@ title: Amazon
 type: entity
 aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy", "Matt Garman"]
 tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
-description: Hyperscaler and Anthropic's largest investor; The Information says Entergy warned it would drop Amazon Mississippi halls off the grid at peak.
+description: Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.
 created_at: 2026-06-14
-timestamp: 2026-10-10T00:00:00Z
+timestamp: 2026-10-12T00:00:00Z
 market:
   ticker: AMZN
   exchange: NASDAQ
   symbol: NASDAQ:AMZN
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
@@ -210,7 +211,38 @@ contract and tort claims remain live. See
   governments. Still a stated
   policy change, not a named
   site or filing (TechCrunch;
-  ARA daily digest 2026-10-10).
+  ARA daily   digest 2026-10-10).
+
+## Talks to buy Decart at about $7 billion (2026-10-12)
+
+- **The WSJ exclusive at ~20:26 UTC
+  was followed by Bloomberg at
+  20:46 and Reuters at 21:46**, all
+  describing talks to buy
+  [[decart]] at about **$7
+  billion**. That is roughly
+  **75%** above Decart's May mark
+  (~$4 billion after a $300 million
+  round, with [[nvidia]] on the cap
+  table) and **$1 billion** above
+  the [[anthropic]] bid that died
+  after diligence on **8
+  September**. Nothing is signed;
+  neither company has commented.
+  Consideration, exclusivity, and
+  whether Nvidia preferred rights
+  block a sale are not stated.
+  Treat $7 billion as the reported
+  number, not a closed multiple
+  (WSJ, Bloomberg, Reuters via X;
+  ARA daily digest 2026-10-12).
+- **A close would add a
+  chip-efficiency / world-model
+  stack** beside Trainium and the
+  reported Qualcomm inference book
+  already on this page. See
+  [[ai-capex]] (ARA daily digest
+  2026-10-12).
 
 ## Open questions
 

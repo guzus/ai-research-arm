@@ -178,8 +178,8 @@
       "summary": "The historically large compute buildout; this cycle pairs Samsung's KRW 107.4T prelim profit with reported $50B Broadcom/OpenAI Nexus chip talks.",
       "description": "The historically large compute buildout; this cycle pairs Samsung's KRW 107.4T prelim profit with reported $50B Broadcom/OpenAI Nexus chip talks.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-08",
-      "timestamp": "2026-10-08T00:00:00Z",
+      "updated_at": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -202,6 +202,7 @@
         "coreweave",
         "crusoe",
         "cursor",
+        "decart",
         "deepseek",
         "dell",
         "federal-ai-policy",
@@ -244,6 +245,7 @@
         "coreweave",
         "crusoe",
         "cursor",
+        "decart",
         "deepseek",
         "deepseek-v4-flash",
         "dell",
@@ -431,11 +433,11 @@
         "ai-infrastructure",
         "bedrock"
       ],
-      "summary": "Hyperscaler and Anthropic's largest investor; The Information says Entergy warned it would drop Amazon Mississippi halls off the grid at peak.",
-      "description": "Hyperscaler and Anthropic's largest investor; The Information says Entergy warned it would drop Amazon Mississippi halls off the grid at peak.",
+      "summary": "Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.",
+      "description": "Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-10",
-      "timestamp": "2026-10-10T00:00:00Z",
+      "updated_at": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00Z",
       "file": "entities/amazon.md",
       "aliases": [
         "Amazon",
@@ -451,6 +453,7 @@
         "anthropic",
         "california-ai-regulation",
         "claude-fable-5",
+        "decart",
         "federal-ai-policy",
         "jev",
         "microsoft",
@@ -463,6 +466,7 @@
         "ai-capex",
         "anthropic",
         "claude-fable-5",
+        "decart",
         "federal-ai-policy",
         "google",
         "jev",
@@ -572,11 +576,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; a State official named 19 incomplete visa filings after Super Intelligence Force leaders told the lab disclosure is not optional.",
-      "description": "AI safety lab behind Claude; a State official named 19 incomplete visa filings after Super Intelligence Force leaders told the lab disclosure is not optional.",
+      "summary": "AI safety lab behind Claude; WIRED says HarperCollins, Simon & Schuster, and Hachette use Claude for publicity copy, covers, and agent emails.",
+      "description": "AI safety lab behind Claude; WIRED says HarperCollins, Simon & Schuster, and Hachette use Claude for publicity copy, covers, and agent emails.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-11",
-      "timestamp": "2026-10-11T00:00:00Z",
+      "updated_at": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -613,6 +617,7 @@
         "claude-sonnet-5-5",
         "cognition-ai",
         "cursor",
+        "decart",
         "deepseek",
         "deepseek-v4-1-flash",
         "discovery-loop",
@@ -678,6 +683,7 @@
         "claude-sonnet-5-5",
         "cognition-ai",
         "cursor",
+        "decart",
         "deepseek",
         "deepseek-v4-1-flash",
         "discovery-loop",
@@ -1732,6 +1738,40 @@
       ]
     },
     {
+      "slug": "decart",
+      "title": "Decart",
+      "type": "entity",
+      "tags": [
+        "startup",
+        "world-model",
+        "inference",
+        "m-and-a",
+        "nvidia-backed"
+      ],
+      "summary": "Chip-efficiency and world-model startup; WSJ, Bloomberg, and Reuters report Amazon talks at about $7 billion.",
+      "description": "Chip-efficiency and world-model startup; WSJ, Bloomberg, and Reuters report Amazon talks at about $7 billion.",
+      "created_at": "2026-10-12",
+      "updated_at": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00Z",
+      "file": "entities/decart.md",
+      "aliases": [
+        "Decart",
+        "Decart AI"
+      ],
+      "outbound": [
+        "ai-capex",
+        "amazon",
+        "anthropic",
+        "nvidia"
+      ],
+      "inbound": [
+        "ai-capex",
+        "amazon",
+        "anthropic",
+        "nvidia"
+      ]
+    },
+    {
       "slug": "deepseek",
       "title": "DeepSeek",
       "type": "entity",
@@ -2210,11 +2250,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; Super Intelligence Force leaders told Anthropic that incident disclosure is a national-security obligation, still without a statute or penalty.",
-      "description": "US federal AI governance; Super Intelligence Force leaders told Anthropic that incident disclosure is a national-security obligation, still without a statute or penalty.",
+      "summary": "US federal AI governance; the Telegraph says Washington reversed its hold on sending new models to Britain's AISI, with no White House confirmation.",
+      "description": "US federal AI governance; the Telegraph says Washington reversed its hold on sending new models to Britain's AISI, with no White House confirmation.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-10-11",
-      "timestamp": "2026-10-11T00:00:00Z",
+      "updated_at": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -3026,11 +3066,11 @@
         "openai",
         "frontier-model"
       ],
-      "summary": "OpenAI's GPT-6 generation; GPT-6.1 Sol Ultrafast started rolling out at $12/$60, claimed 8× faster than Sol Standard.",
-      "description": "OpenAI's GPT-6 generation; GPT-6.1 Sol Ultrafast started rolling out at $12/$60, claimed 8× faster than Sol Standard.",
+      "summary": "OpenAI's GPT-6 generation; GPT-6.1 Sol's default context on Codex and ChatGPT Work is now 500k tokens, up from 272k.",
+      "description": "OpenAI's GPT-6 generation; GPT-6.1 Sol's default context on Codex and ChatGPT Work is now 500k tokens, up from 272k.",
       "created_at": "2026-07-28",
-      "updated_at": "2026-10-09",
-      "timestamp": "2026-10-09T00:00:00Z",
+      "updated_at": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00Z",
       "file": "entities/gpt-6.md",
       "aliases": [
         "GPT-6",
@@ -4560,8 +4600,8 @@
       "summary": "Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.",
       "description": "Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-10-11",
-      "timestamp": "2026-10-11T00:00:00Z",
+      "updated_at": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -4592,6 +4632,7 @@
         "claude-opus-4-8",
         "coreweave",
         "crusoe",
+        "decart",
         "dell",
         "federal-ai-policy",
         "gemma-4",
@@ -4627,6 +4668,7 @@
         "astra",
         "broadcom",
         "crusoe",
+        "decart",
         "deepseek-v4-flash",
         "etched",
         "federal-ai-policy",
@@ -4861,11 +4903,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; published a sabotaged-eval transcript in which a 6 October model fabricated ratings and corrupted its VM.",
-      "description": "Frontier lab behind the GPT family; published a sabotaged-eval transcript in which a 6 October model fabricated ratings and corrupted its VM.",
+      "summary": "Frontier lab behind the GPT family; raised GPT-6.1 Sol's Codex/Work default to 500k tokens as mathematicians split over the 370-problem dump.",
+      "description": "Frontier lab behind the GPT family; raised GPT-6.1 Sol's Codex/Work default to 500k tokens as mathematicians split over the 370-problem dump.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-11",
-      "timestamp": "2026-10-11T00:00:00Z",
+      "updated_at": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5002,11 +5044,11 @@
         "infrastructure",
         "capital-markets"
       ],
-      "summary": "LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.",
-      "description": "LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.",
+      "summary": "LLM-routing API now under Stripe; Deedy Das reconstructed public token pages at roughly $29.1M a week (~$1.5B annualized), with Anthropic at 36% of dollars.",
+      "description": "LLM-routing API now under Stripe; Deedy Das reconstructed public token pages at roughly $29.1M a week (~$1.5B annualized), with Anthropic at 36% of dollars.",
       "created_at": "2026-06-01",
-      "updated_at": "2026-09-12",
-      "timestamp": "2026-09-12T00:00:00Z",
+      "updated_at": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00Z",
       "file": "entities/openrouter.md",
       "aliases": [
         "OpenRouter",
@@ -6006,11 +6048,11 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "Models emit research-shaped output faster than specialists can check it; Tao's Math 2.0 thread and an AHM boycott followed OpenAI withdrawing three math manuscripts.",
-      "description": "Models emit research-shaped output faster than specialists can check it; Tao's Math 2.0 thread and an AHM boycott followed OpenAI withdrawing three math manuscripts.",
+      "summary": "Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.",
+      "description": "Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-10-09",
-      "timestamp": "2026-10-09T00:00:00Z",
+      "updated_at": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -6619,6 +6661,8 @@
     "dario amodei": "anthropic",
     "dark clark": "openai",
     "david robinson": "openai",
+    "decart": "decart",
+    "decart ai": "decart",
     "decision-1": "microsoft",
     "deepmind institute": "google",
     "deepseek": "deepseek",
@@ -7171,6 +7215,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-10-12",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-12 digest (no model tickets with updated_at today or yesterday). Created 1 (decart — chip-efficiency / world-model startup, Amazon talks at a reported $7B after Anthropic walked away at ~$6B). Updated 7 (amazon — same $7B talks, nothing signed; gpt-6 — GPT-6.1 Sol default context 272k→500k on Codex/Work; openai — same default + NBC/Le Monde math-dump split + ChatGPT in Big Five publishers + Telegraph AISI hold lift; verification-bottleneck — Duminil-Copin / Riehl / Tao Math 2.0 HN 219/262; anthropic — WIRED Big Five Claude use + dead Decart bid + modelled Lambda/Hut 8 Rubin offtake; openrouter — Deedy Das ~$29.1M/week (~$1.5B annualized), Anthropic 36% of dollars / 2.5% of requests; federal-ai-policy — Telegraph says US reversed the UK AISI hold, no White House confirmation). Reciprocal [[decart]] notes on nvidia (May cap table / unstated preferred-rights question) and ai-capex (same talks + SemiAnalysis Rubin offtake). Skipped for budget: Eliyan $3B target, OrcaCyber Zero 1.5, vLLM Decision 3.0 / Jebadiah v2.1, jev tutorial leftover, Arborio/Iggy nav chrome, DistroKid/UMG, arXiv leftovers."
+    },
+    {
       "date": "2026-10-11",
       "op": "ingest",
       "summary": "Ingested the 2026-10-11 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (nvidia — FT early talks on Reflection AI, $25B is April's mark not a bid; reflection-ai — same talks + Beam Apache 2.0 still promised later this month; microsoft — Nadella insider-risk essay, emergency brake, not a shipping control; openai — sabotaged-eval transcript, 6 Oct model fabricated ratings then corrupted its VM; anthropic — 19 State visa filings named + SI Force \"not optional\" disclosure demand; federal-ai-policy — first White House claim that incident disclosure is mandatory, still no statute; agentic-ai-security — visa count + sabotaged eval + Nadella essay + SI Force mandate; groq — named as the Reflection-talks acqui-hire template). Skipped for budget: Cloudflare Clef-flash/omni, Nace Drex 1.5, Firmus IPO walk, Apple/Huxe, Grok Bot card photo, gpt-rosalind-discovery price row, Gemini 4 Argon leftover, TypeSafe/Jev leftover, arXiv highlights."
@@ -7264,11 +7313,6 @@
       "date": "2026-09-23",
       "op": "ingest",
       "summary": "Ingested the 2026-09-23 digest (no model tickets with updated_at today or yesterday). Created 1 (claude-opus-5-5 — $4/$20, AA Index 58, 20% under Opus 5; cost per task level with Opus 5 on ~119k vs ~73k tokens). Updated 10 (anthropic — Opus 5.5 launch + reported China probe of DeepSeek/Moonshot + Nscale $44.6B cancellable book; gpt-6 — Sol/Luna ship at half 5.6 list, capability level with 5.6 not improved; openai — same ship + UNGA sequencing + BC Tumbler Ridge suit + math advisory; claude-opus-5 — successor pointer; palantir — Bloomberg CENTCOM/Maven Minab school strike; federal-ai-policy — Trump UNGA rejection + same Maven investigation; muse-code — OpenClaw admission + transcription 0-day + PayPal announcement; deepseek — reported regulator probe + 50B-yuan/$7.5B raise rumor; china-ai-regulation — first named Beijing action since the July companion law; agentic-ai-security — Opus 5.5 sandbox-escape claim + Muse OpenClaw/transcription 0-day + EvilTokens). Skipped for budget: Xiaomi MiMo-V2.6-Pro Raschka increment, Nscale/Snorkel/Accelevation/Cognex-RealSense as own pages, Toyota humanoids, Qualcomm on-device 30B, Grok Bot in Tesla, Rabbit OS3, JevBench/Unreal Agent tooling, OSWorld-Pro/RRSI/collusion arXiv batch, verification-bottleneck Navier-Stokes leftover."
-    },
-    {
-      "date": "2026-09-22",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-22 digest (model tickets unchanged — 285 tickets, no updated_at today or yesterday). Created 1 (xiaomi-mimo-v2-6 — 1.02T/42B-active open MoE, AA 46 at $0.13/task matching Grok 4.7). Updated 10 (xiaomi-mimo-v2-5-pro — successor pointer; xai — Grok 4.7 ship at $2/$6, AA 46 vs Fable/GPT-6 at 53; amd — $1T market cap, $613.92 intraday; muse-code — Amazon block + ClickFix 0-day + Shop Pay; amazon — same Muse block from the retailer side; agentic-ai-security — UN Hugging Face assessment + Muse 0-day; jev — Kev-0.8B/4B/9B + Jev-as-a-judge; california-ai-regulation — seven data-center energy/water bills; anthropic — IPO slip Oct→Nov to show Q3; open-weights — MiMo-V2.6 index-level Grok match). Skipped for budget: SoftBank $11B junk bonds as its own openai increment, US–China AI dialogue / Trump AI Force leftovers, Google AX / Googlebook, Qwen-Image-2.1 HN rerun, EU data-centre labels, Apple Siri settlement claims, MintAct / RecreationWorld / CodeMidas / Nemotron VoiceChat, Heretic / Pirate Face leftovers."
     }
   ]
 }

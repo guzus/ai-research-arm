@@ -4,10 +4,11 @@ title: The verification bottleneck
 type: concept
 aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics", "Math 2.0"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: Models emit research-shaped output faster than specialists can check it; Tao's Math 2.0 thread and an AHM boycott followed OpenAI withdrawing three math manuscripts.
+description: Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.
 created_at: 2026-08-02
-timestamp: 2026-10-09T00:00:00Z
+timestamp: 2026-10-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
@@ -439,3 +440,49 @@ claim, and the dispute resolves on **relay credibility rather than
   manuscripts. See [[openai]]
   (OpenAI, HN; ARA daily
   digest 2026-10-09).
+
+## Mathematicians split in public, on camera (2026-10-12)
+
+- **NBC ran the first
+  English-language TV-network
+  story** on the field's reaction
+  to [[openai]]'s 370-problem
+  dump. Some results could be
+  "jewels" if verified; some
+  students are asking whether to
+  stay in mathematics. Johns
+  Hopkins's Emily Riehl compared
+  the dump to a senior
+  mathematician taking a
+  student's thesis problem (NBC
+  News; ARA daily digest
+  2026-10-12).
+- **Le Monde quoted 2022 Fields
+  Medalist Hugo Duminil-Copin**
+  saying the release
+  "annihilated" his field. He
+  said **16** of the questions
+  that interested him were in
+  the set, and that he cried the
+  night of the release. AGMAI
+  repeated that its advisory
+  role is not "an endorsement of
+  the process" (Le Monde; ARA
+  daily digest 2026-10-12).
+- **Terence Tao's Math 2.0
+  slides became HN's
+  most-commented AI thread
+  (219 / 262)**, climbing from
+  60/39. Commenters fought over
+  the cancer-cocktail slide,
+  which Tao is revising with
+  Claude, and the "lighthouse"
+  warning that automated tools
+  can "sterilize the surrounding
+  field." Ethan Mollick put the
+  same constraint outside math:
+  "100x more PowerPoint or code
+  is not always progress — what
+  is?" See [[openai]] (The
+  Decoder, Hacker News, Bluesky;
+  ARA daily digest 2026-10-12).

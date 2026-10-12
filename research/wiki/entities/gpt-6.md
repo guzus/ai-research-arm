@@ -4,10 +4,11 @@ title: GPT-6
 type: entity
 aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna", "gpt-6-sol", "gpt-6-luna", "GPT-6.1 Sol", "gpt-6.1-sol", "gpt-6-1-sol", "GPT-6.1 Astra", "gpt-6.1-astra", "GPT-6.1 Sol Ultrafast", "gpt-6.1-sol-ultrafast"]
 tags: [model-release, openai, frontier-model]
-description: OpenAI's GPT-6 generation; GPT-6.1 Sol Ultrafast started rolling out at $12/$60, claimed 8× faster than Sol Standard.
+description: OpenAI's GPT-6 generation; GPT-6.1 Sol's default context on Codex and ChatGPT Work is now 500k tokens, up from 272k.
 created_at: 2026-07-28
-timestamp: 2026-10-09T00:00:00Z
+timestamp: 2026-10-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
@@ -271,3 +272,20 @@ substance.
   still sits on the prior
   Sol/Luna SKUs (OpenAI; ARA
   daily digest 2026-10-09).
+
+## GPT-6.1 Sol default context raised to 500k (2026-10-12)
+
+- **On Codex and ChatGPT Work the
+  default is now 500k tokens**, up
+  from **272k**, described as "the
+  new sweet spot for most of our
+  users" to cut compactions. This
+  is a serving default, not a new
+  model or a new window. The **1M
+  ceiling** and the user override
+  are unchanged. Consumer ChatGPT
+  and the general API are not in
+  scope, and [[openai]] published
+  no before/after compaction rates
+  (@thsottiaux, @testingcatalog;
+  ARA daily digest 2026-10-12).

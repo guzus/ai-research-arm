@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; Super Intelligence Force leaders told Anthropic that incident disclosure is a national-security obligation, still without a statute or penalty.
+description: US federal AI governance; the Telegraph says Washington reversed its hold on sending new models to Britain's AISI, with no White House confirmation.
 created_at: 2026-06-03
-timestamp: 2026-10-11T00:00:00Z
+timestamp: 2026-10-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
@@ -2141,6 +2142,30 @@ footing for the first time in the cycle.
   [[microsoft]] (Satya
   Nadella; ARA daily digest
   2026-10-11).
+
+## UK AISI channel reportedly reopened (2026-10-12)
+
+- **The Telegraph says Washington
+  reversed its block on sending
+  new models to Britain's AI
+  Security Institute** for
+  pre-release tests. [[openai]]
+  and [[anthropic]] models could
+  go back. This is single-outlet
+  reporting with no White House,
+  CAISI, or AISI confirmation.
+  If it holds, it relaxes the
+  2026-09-26 US-then-AISI
+  sequencing this page already
+  logged — a hold that had
+  parked new US frontier SKUs
+  behind domestic review before
+  they could reach AISI. Until a
+  first-party statement lands,
+  treat it as a reported
+  reversal, not a signed
+  channel (Telegraph; ARA daily
+  digest 2026-10-12).
 
 ## Open questions
 
