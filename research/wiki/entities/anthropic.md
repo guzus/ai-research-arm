@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; a State official named 19 incomplete visa filings after Super Intelligence Force leaders told the lab disclosure is not optional.
+description: AI safety lab behind Claude; WIRED says HarperCollins, Simon & Schuster, and Hachette use Claude for publicity copy, covers, and agent emails.
 created_at: 2026-05-24
-timestamp: 2026-10-11T00:00:00Z
+timestamp: 2026-10-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
@@ -1527,12 +1528,15 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   (cims.nyu.edu, TechCrunch, The Decoder; ARA daily
   digest 2026-09-09).
 - **Bloomberg confirms Anthropic walked away from a
-  ~$6B Decart acquisition** after due diligence.
+  ~$6B [[decart]] acquisition** after due diligence.
   Decart was valued near $4B months ago; the reported
   interest was in its **inference-optimization
   stack**, not its world models. Circulated unsourced
   overnight, now named-outlet (Bloomberg; ARA daily
-  digest 2026-09-09).
+  digest 2026-09-09). Sunday's wires put
+  [[amazon]] in talks at about **$7
+  billion**; see the 2026-10-12
+  section below.
 - **A proposed class action accuses Anthropic of
   misleading power users** on what top-tier
   subscription plans delivered (The Verge; ARA daily
@@ -2985,7 +2989,7 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   lost the internet."**
   Customer Claude still has
   web access in the source
-  files. Sourcegraph Amp now
+  files.   Sourcegraph Amp now
   accepts Claude Pro and Max
   via Mode → Claude Code;
   tokens still bill the
@@ -2994,3 +2998,59 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   subscription (Decoder, The
   Verge, Amp; ARA daily
   digest 2026-10-11).
+
+## Publishers, a dead Decart bid, and a modelled Rubin offtake (2026-10-12)
+
+- **WIRED's staff sources say
+  HarperCollins, Simon &
+  Schuster, and Hachette use
+  Claude** for publicity copy,
+  covers, agent emails, and
+  suspected rejection letters.
+  HarperCollins bought Claude
+  licenses "months ago" and also
+  licensed ChatGPT and Jasper.
+  Simon & Schuster says its
+  tools are optional;
+  HarperCollins did not comment;
+  Hachette denies creative use
+  on the record. Literary agents
+  are adding clauses that bar
+  running unpublished
+  manuscripts through LLMs, and
+  HarperCollins legal has told
+  editors not to paste full
+  manuscripts into open-loop
+  models. See [[openai]] (WIRED,
+  @AndrewCurran_; ARA daily
+  digest 2026-10-12).
+- **[[amazon]] is now in talks to
+  buy [[decart]] at about $7
+  billion**, a billion above the
+  bid this page logged on
+  2026-09-09. Anthropic walked
+  away after diligence on **8
+  September**. Nothing is signed
+  (WSJ, Bloomberg, Reuters; ARA
+  daily digest 2026-10-12).
+- **SemiAnalysis models
+  Anthropic's Lambda / Hut 8
+  Rubin offtake** at about
+  **$5.80 per GPU-hour** for
+  ~**350 MW** (~115K GPUs) in
+  **2028**. That is modelled TCO,
+  not a filing. See [[ai-capex]]
+  (SemiAnalysis; ARA daily
+  digest 2026-10-12).
+- **The Telegraph says the US
+  lifted its hold on sending new
+  models to Britain's AISI.**
+  Anthropic and [[openai]] models
+  could go back to pre-release
+  testing in Britain.
+  Single-outlet, with no White
+  House, CAISI, or AISI
+  confirmation. See
+  [[federal-ai-policy]]
+  (Telegraph; ARA daily digest
+  2026-10-12).

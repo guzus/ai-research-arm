@@ -6,13 +6,14 @@ aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "N
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.
 created_at: 2026-06-05
-timestamp: 2026-10-11T00:00:00Z
+timestamp: 2026-10-12T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
@@ -744,4 +745,21 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   has a dated weight drop
   (Financial Times, HN; ARA
   daily digest 2026-10-11).
+
+## Preferred rights on a reported Amazon–Decart sale (2026-10-12)
+
+- **NVIDIA sat on [[decart]]'s
+  May cap table** after a ~$300
+  million round at about $4
+  billion. Sunday's wires put
+  [[amazon]] in talks at about
+  **$7 billion**; the outlets do
+  not say whether Nvidia
+  preferred rights can block a
+  sale. That is an open
+  constraint, not a stated
+  veto. See [[decart]] and
+  [[ai-capex]] (WSJ, Bloomberg,
+  Reuters; ARA daily digest
+  2026-10-12).
 

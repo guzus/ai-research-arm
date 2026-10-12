@@ -4,10 +4,11 @@ title: OpenRouter
 type: entity
 aliases: ["OpenRouter", "openrouter.ai", "@OpenRouterAI", "OpenRouter Fusion", "Fusion API"]
 tags: [llm-router, inference, infrastructure, capital-markets]
-description: LLM-routing API now under Stripe; a post-mortem of ~6M iMessage turns showed the same model id can fan out to ~20 hosts with different serving stacks — DeepSeek V4 Flash 0731 at 90% GPQA first-party versus DigitalOcean's copy at 75%.
+description: LLM-routing API now under Stripe; Deedy Das reconstructed public token pages at roughly $29.1M a week (~$1.5B annualized), with Anthropic at 36% of dollars.
 created_at: 2026-06-01
-timestamp: 2026-09-12T00:00:00Z
+timestamp: 2026-10-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
@@ -141,3 +142,23 @@ OpenRouter monetizes from the demand side.
   and [[sakana-ai]]. The same HN slate closed with the
   25 Fields Medalists' math letter as #3 — see
   [[verification-bottleneck]].
+
+## Spend reconstructed at $1.5B annualized (2026-10-12)
+
+- **Deedy Das turned OpenRouter's
+  public token pages into roughly
+  $29.1 million a week**, about
+  **$1.5 billion** annualized.
+  [[anthropic]] is **36% of
+  dollars**. On OpenRouter's own
+  request board, Anthropic is only
+  **2.5% of requests**. Dollar
+  share and request share are
+  different objects: Anthropic
+  wins the expensive tokens, not
+  the volume. This is a
+  reconstruction from public
+  ranking pages, not an OpenRouter
+  or Stripe filing (@deedydas,
+  OpenRouter rankings; ARA daily
+  digest 2026-10-12).

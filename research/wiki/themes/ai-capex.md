@@ -6,8 +6,9 @@ aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastruct
 tags: [macro, ai-infrastructure, compute, capital-markets]
 description: The historically large compute buildout; this cycle pairs Samsung's KRW 107.4T prelim profit with reported $50B Broadcom/OpenAI Nexus chip talks.
 created_at: 2026-05-24
-timestamp: 2026-10-08T00:00:00Z
+timestamp: 2026-10-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
@@ -1554,3 +1555,31 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   Seoul visit; those terms rest on
   one anonymous official (ARA
   daily digest 2026-10-08).
+
+## Amazon–Decart talks and a modelled Anthropic offtake (2026-10-12)
+
+- **[[amazon]] is in talks to buy
+  [[decart]] at about $7
+  billion**, per WSJ, Bloomberg,
+  and Reuters. That is an M&A
+  print on a chip-efficiency /
+  world-model stack, not a new
+  hall. [[nvidia]] sits on the
+  May cap table; whether
+  preferred rights can block a
+  sale is unstated. Nothing is
+  signed. See [[decart]] (WSJ,
+  Bloomberg, Reuters; ARA daily
+  digest 2026-10-12).
+- **SemiAnalysis models
+  [[anthropic]]'s Lambda / Hut 8
+  Rubin offtake** at about
+  **$5.80 per GPU-hour** for
+  ~**350 MW** (~115K GPUs) in
+  **2028**. Modelled TCO, not a
+  filing. Gavin Baker separately
+  says B300 rental prices are up
+  **38%** since Silicon Data's
+  token index peaked on May 31
+  (SemiAnalysis; ARA daily
+  digest 2026-10-12).

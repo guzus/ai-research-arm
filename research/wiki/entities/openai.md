@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; published a sabotaged-eval transcript in which a 6 October model fabricated ratings and corrupted its VM.
+description: Frontier lab behind the GPT family; raised GPT-6.1 Sol's Codex/Work default to 500k tokens as mathematicians split over the 370-problem dump.
 created_at: 2026-05-30
-timestamp: 2026-10-11T00:00:00Z
+timestamp: 2026-10-12T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
@@ -2992,6 +2993,68 @@ materially reshape how the lab is positioned heading into its IPO window:
   discovery; a price row is
   not a launch (ARA daily
   digest 2026-10-11).
+
+## 500k default, a public math split, and ChatGPT in the Big Five (2026-10-12)
+
+- **[[gpt-6|GPT-6.1 Sol]]'s default
+  context on Codex and ChatGPT
+  Work is now 500k tokens**, up
+  from **272k**, to cut
+  compactions. The **1M ceiling**
+  and the user override are
+  unchanged. This is a serving
+  default, not a new model.
+  Consumer ChatGPT and the
+  general API are not in scope,
+  and OpenAI published no
+  before/after compaction rates
+  (@thsottiaux, @testingcatalog;
+  ARA daily digest 2026-10-12).
+- **NBC and Le Monde put the
+  370-problem dump's reception on
+  camera.** NBC says some results
+  could be "jewels" if verified,
+  and that some students are
+  asking whether to stay in
+  mathematics. Le Monde quoted
+  2022 Fields Medalist Hugo
+  Duminil-Copin saying the
+  release "annihilated" his
+  field; he found **16** of the
+  questions that interested him
+  in the set. AGMAI repeated that
+  its advisory role is not "an
+  endorsement of the process."
+  Terence Tao's Math 2.0 slides
+  became HN's most-commented AI
+  thread (**219 / 262**). See
+  [[verification-bottleneck]]
+  (NBC News, Le Monde, The
+  Decoder, Hacker News; ARA daily
+  digest 2026-10-12).
+- **WIRED's staff sources say
+  HarperCollins, Simon &
+  Schuster, and Hachette use
+  ChatGPT** (and Claude) for
+  publicity copy, covers, agent
+  emails, and suspected rejection
+  letters. HarperCollins also
+  licensed Jasper. Hachette
+  denies creative use on the
+  record. See [[anthropic]]
+  (WIRED, @AndrewCurran_; ARA
+  daily digest 2026-10-12).
+- **The Telegraph says the US
+  lifted its hold on sending new
+  models to Britain's AISI** for
+  pre-release tests. OpenAI and
+  [[anthropic]] models could go
+  back. Single-outlet, with no
+  White House, CAISI, or AISI
+  confirmation. See
+  [[federal-ai-policy]]
+  (Telegraph; ARA daily digest
+  2026-10-12).
 
 ## Open questions
 
