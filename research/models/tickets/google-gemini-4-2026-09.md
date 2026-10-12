@@ -5,6 +5,12 @@ company: Google / DeepMind
 model: Gemini 4
 status: confirmed
 status_note: |
+  **2026-10-12 — under UK AISI evaluation, not yet public.** UK AI Minister
+  Kanishka Narayan confirmed AISI is evaluating Gemini 4 Argon after the White
+  House restored UK pre-release access (digest relay, see
+  [[us-ai-model-review-eo-2026-06]]). Unadopted: a "Gemini 4 Carbon" checkpoint
+  reportedly in staff testing (@aipulseda1ly).
+
   **2026-09-30 — ANNOUNCED, primary, by every Google voice at once.** @GoogleDeepMind
   (20:03 UTC): "Introducing Gemini 4 Argon – our new frontier model … rolling out
   today to a set of trusted testers through our Fairwind Program." Same hour from
@@ -41,6 +47,9 @@ labels:
   - unreleased
 verification: confirmed
 sources:
+  - "https://x.com/daogangtang/status/2109668616409174301"
+  - "https://x.com/trywavecode/status/2109668964951642118"
+  - "https://x.com/aipulseda1ly/status/2109671637184340333"
   - https://x.com/kimmonismus/status/2102949590542741983
   - https://x.com/testingcatalog/status/2103015463089238076
   - https://x.com/theinformation/status/2103129866375659543
@@ -64,7 +73,7 @@ sources:
   - https://x.com/JoshTradeOption/status/2105999237280371171
   - https://x.com/Channeliam/status/2105999303156363390
 created_at: 2026-09-24
-updated_at: 2026-10-02
+updated_at: 2026-10-12
 closed_at: null
 closed_reason: null
 history:
@@ -80,6 +89,8 @@ history:
     change: "ANNOUNCED -> status confirmed (from in-testing), verification confirmed (from partial); title updated to the official name. Google announced Gemini 4 Argon on 2026-09-30 ~20:03 UTC across @GoogleDeepMind, @GoogleAI, @Google, @OfficialLoganK, @sundarpichai and @demishassabis: a frontier model for long-horizon coding, enterprise knowledge work and cyber defense, with a 1M-token output limit, rolling out first to government and trusted cyber defenders in the Fairwind Program, broader availability 'as soon as possible'. Introductory API price $2/$10 per MTok (@OfficialLoganK; reported $4/$20 standard per @FundaAI). Third-party placements the same evening: #1 Text Arena 1525 (@arena), #1 Vals Index 68.9% (@ValsAI), AA index 53 (level with GPT-6 Astra, below Opus 5.5 58) per @FundaAI. WSJ headline: Google rolls the model out gradually amid safety concerns. Held at confirmed rather than released because access is a partner list with no GA date. The 2026-09-28 'leaked Gemini 4 Pro benchmarks' entry remains unadopted; the official tables replace it. Companion change: [[gemini-3-5-pro]] closed as superseded-by this ticket."
   - ts: 2026-10-02
     change: "Confirmed, unchanged — first-day third-party placements and coverage; no GA date. @demishassabis retweeted (2026-10-01 23:34 UTC) @ArtificialAnlys: 'Google's new Gemini 4 Argon equals GPT-6 Astra on the Artificial Analysis Intelligence Index at 60% of the Cost per Ta[sk]' — consistent with the AA-index parity already recorded, now with a cost-per-task ratio attached (the RT text is truncated, so only the parity and the 60% figure are adopted). He also retweeted @andonlabs (19:04 UTC) claiming Argon 'understands the physical 3D world better than any other AI' and ranks #1 on a benchmark whose name is cut off in the captured text — logged as a vendor-amplified third-party claim, benchmark unidentified. Secondary coverage (@JoshTradeOption, @Channeliam, 2026-10-02) repeats a DeepSWE score of 77.9% attributed to Google and the $2/$10 introductory price, and restates that trusted cyber defenders are testing it before wider access. 77.9% would sit above GPT-6.1 Sol's reported 75.2% ([[openai-gpt-6-1-sol-2026-09]]); not yet seen in a Google primary in this desk's signal, so held as relay-strength. Status stays confirmed: access is still the Fairwind partner list."
+  - ts: 2026-10-12
+    change: "Confirmed, unchanged — external safety evaluation now on the record; still no public release. Per @daogangtang's 2026-10-12 digest, the White House restored UK AISI pre-release access to frontier models, and UK AI Minister Kanishka Narayan confirmed AISI is evaluating systems including Gemini 4 Argon (@trywavecode: 'Gemini 4 Argon is NOT dropping today … Google is still in the controlled-access phase'). Market chatter in-window (@aipulseda1ly) puts Polymarket odds of Argon going public by Friday at ~66%. The same post claims Google staff are testing a newer Gemini 4 checkpoint codenamed 'Carbon', described by one tester as feeling 'like Opus 5.5' for coding. That is a single unsourced relay and is logged, not adopted. Status stays confirmed: access is still the Fairwind partner list."
 ---
 
 The July ticket died of exactly one thing: nobody in a position to know would

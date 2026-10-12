@@ -5,6 +5,12 @@ company: US Government / White House
 model: null
 status: confirmed
 status_note: |
+  **2026-10-12 — UK sequencing pause reversed (digest relay).** The White House
+  restored UK AISI's pre-release access to OpenAI, Anthropic and Google DeepMind
+  models. The UK AI minister confirms AISI is evaluating Gemini 4 Argon. The
+  2026-09-24 "US review first, then allies" sequencing below is therefore
+  superseded for the UK; whether it persists for other partners is open.
+
   **2026-09-24 — the review policy is now being used to gate ALLIED
   access, not just domestic release.** @SophiaCai99 (16:46 UTC, with
   @JoeBambridge1): "**The White House has asked OpenAI and Anthropic not to share
@@ -86,6 +92,7 @@ labels:
   - cybersecurity
 verification: confirmed
 sources:
+  - "https://x.com/daogangtang/status/2109668616409174301"
   - https://www.npr.org/2026/06/02/nx-s1-5844347/ai-safety-trump-executive-order
   - https://www.cnbc.com/2026/06/02/trump-executive-order-ai.html
   - https://www.theregister.com/ai-and-ml/2026/06/02/trump-ai-executive-order-sets-30-day-frontier-model-review/5250322
@@ -98,7 +105,7 @@ sources:
   - https://x.com/SophiaCai99/status/2103164054927720727
   - https://x.com/rohanpaul_ai/status/2103197763886616831
 created_at: 2026-06-03
-updated_at: 2026-09-25
+updated_at: 2026-10-12
 closed_at: null
 closed_reason: null
 history:
@@ -120,6 +127,8 @@ history:
     change: "Confirmed, unchanged — but scope extended materially. @SophiaCai99, with @JoeBambridge1 (2026-09-24 16:46 UTC, ~433 likes), reports the White House has asked OpenAI and Anthropic NOT to share their models with the UK government's testing agency until the models have completed US testing, with a senior administration official saying 'because they're American companies and this has been our policy with every new frontier model that comes out' and describing the intended sequence as US review -> secure US systems -> share with US partners. Anthropic appears to have complied; OpenAI has not said whether it will. This extends the artifact this ticket tracks from a voluntary 30-day DOMESTIC pre-release review to a gate on allied evaluation access, which is closer to an export control on model access than to a safety review — and the official frames it as established practice, not a new measure. The differential compliance is recorded as the most informative detail: a voluntary regime that two labs answer differently is where voluntariness becomes measurable. Recorded alongside an in-window contradiction inside the administration: Treasury Secretary Scott Bessent warned the same day against large labs achieving regulatory capture and argued for more US open-source models (relayed @rohanpaul_ai, 18:59 UTC), which sits badly beside a policy that routes frontier evaluation through a handful of US labs and agencies. Cross-linked to [[industry-frontier-safety-standards-body-2026-09]], whose reported design — a standards regime WITHOUT government oversight — points the opposite way from a White House asserting sequencing authority over the same labs' models."
   - ts: 2026-09-25
     change: "Bookkeeping — citations added for the 2026-09-25 entry: @SophiaCai99 with @JoeBambridge1 (the White House asking OpenAI and Anthropic to withhold models from the UK testing agency until US testing completes; Anthropic appears to have complied, OpenAI unstated) and @rohanpaul_ai (Treasury Secretary Bessent's contrary regulatory-capture line the same day). No status, verification or content change."
+  - ts: 2026-10-12
+    change: "Confirmed, unchanged — the UK-sequencing extension recorded on 2026-09-25 has been REVERSED. Per @daogangtang's 2026-10-12 digest, the White House restored the UK AI Security Institute's pre-release access to frontier models from OpenAI, Anthropic and Google DeepMind, ending what the digest calls a short 'US-first sequencing pause'. UK AI Minister Kanishka Narayan confirmed AISI is evaluating systems including Gemini 4 Argon ([[google-gemini-4-2026-09]]). Single digest relay with an outlet link not resolved in this fetch. The reversal is recorded, but the underlying EO's status is unchanged."
 ---
 
 On **2026-06-02**, President Trump signed an executive order creating a

@@ -49,6 +49,7 @@ labels:
   - devday-2026
 verification: confirmed
 sources:
+  - "https://x.com/daogangtang/status/2109668616409174301"
   - https://x.com/OpenAI/status/2104986129686741046
   - https://x.com/masahirochaen/status/2105148096435061237
   - https://x.com/masahirochaen/status/2105147966889886057
@@ -61,7 +62,7 @@ sources:
   - https://x.com/defaiscope/status/2106003486672404691
   - https://x.com/shirochange_ai/status/2106350677404549482
 created_at: 2026-09-30
-updated_at: 2026-10-03
+updated_at: 2026-10-12
 closed_at: null
 closed_reason: null
 history:
@@ -71,6 +72,8 @@ history:
     change: "Released, unchanged — adoption and first independent agentic-eval placement. @sama (2026-10-01 15:56 UTC): '6.1 Sol was our fastest-growing model ever, and was a bit slow under load. Should be much better now!' — a CEO-primary adoption claim (no numbers) plus an admission of launch-week capacity strain, now stated as fixed. @defaiscope (2026-10-02) reports WeirdML v3 across the token budget: Sol (xhigh) finishes at 49% vs Astra (xhigh) 56% and Opus 5.5 53% (on 19M tokens vs Sol's 14M), with Sol at about $5/task and short of five runs on several tasks. That is the first third-party result in this desk's signal where Sol trails Astra materially, which tempers the DeepSWE 75.2% vs 74.1% headline: near-Astra on the vendor's benchmark, a clear step below at full budget on this one."
   - ts: 2026-10-03
     change: "Distribution update, status unchanged (released). Microsoft 365 Copilot adds GPT-6.1 Sol as a selectable model in Word, Excel, PowerPoint and Copilot Studio, rolling out progressively to Office apps, alongside Claude Sonnet 5.5 (@shirochange_ai relay, 2026-10-03 11:48 UTC). Secondary write-ups in-window (@sideJob_A_I, @FoundOnArdy) restate OpenAI's positioning — near-Astra on agentic coding, computer use and professional work at roughly one fifth of Astra's standard API token price — with no new figures. The ChatGPT Chat distribution question in `expected` remains open."
+  - ts: 2026-10-12
+    change: "Released, unchanged — default context raised. Per @daogangtang's 2026-10-12 digest, OpenAI raised GPT-6.1 Sol's default context window in Codex and ChatGPT Work to 500K tokens (from 272K); the model maximum remains ~1.05M. The stated intent is less context compaction on long agentic tasks. Single digest relay."
 ---
 
 The headline number is real and the comparison it uses is chosen carefully.

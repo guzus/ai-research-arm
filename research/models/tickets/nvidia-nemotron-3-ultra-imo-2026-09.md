@@ -3,7 +3,7 @@ slug: nvidia-nemotron-3-ultra-imo-2026-09
 title: Nemotron 3 Ultra — IMO gold-medal score with the full recipe open-released
 company: NVIDIA
 model: Nemotron 3 Ultra
-status: released
+status: closed
 status_note: |
   NVIDIA's **Nemotron 3 Ultra** system scored **30/42 at the 2026 International
   Mathematical Olympiad** — gold-medal territory — using **natural-language
@@ -43,12 +43,14 @@ sources:
   - https://x.com/mark_k/status/2099110580455924060
   - "@NVIDIAAI"
 created_at: 2026-09-14
-updated_at: 2026-09-14
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-12
+closed_at: 2026-10-12
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-14
     change: "Created — RELEASED. NVIDIA's Nemotron 3 Ultra scored 30/42 at the 2026 International Mathematical Olympiad — gold-medal level — using natural-language proofs only, with no formal theorem prover, external tools or internet access; three checkpoints generate, verify and refine candidate proofs before a high-compute stage selects the final answer (@mark_k, 2026-09-13 12:18 UTC). NVIDIA released the two specialist checkpoints, the training data, training and inference code, the submitted solutions, and a new 200-problem olympiad-level benchmark. Recorded as released rather than as a capability claim precisely because the evidence is an enumerated artifact list rather than a score image. Verification partial with the gap named: no NVIDIA first-party post, model card, repo link, licence or weights URL was captured in-window, so the entire record rests on one relay with modest engagement (~84 likes) — a case where reach is anti-correlated with artifact quality. Distinct from the closed [[nvidia-nemotron-openrouter-2026-06]]: that tracked a Nemotron distribution event, this is a math-reasoning system with its own checkpoints and benchmark. Deliberate contrast with [[anthropic-fermat-lean-proof-2026-09]], which used a formal prover where this one did not."
+  - ts: 2026-10-12
+    change: "Closed — released-and-aged. The checkpoint/data/code release was reported on 2026-09-13 (@mark_k), 29 days ago, and the ticket held released throughout. No NVIDIA first-party post or repo URL was ever captured, so verification closes at partial."
 ---
 
 The headline is the medal; the substance is the recipe.
