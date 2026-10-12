@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-10-12
+
+TOP STORIES:
+• Amazon in talks to buy Decart for ~$7B (WSJ)
+• OpenAI lifts GPT-6.1 Sol default context to 500k on Codex/Work
+• Mathematicians split on OpenAI's 370-problem math dump
+• WIRED: Big Five publishers quietly using Claude and ChatGPT
+
+KEY NUMBERS:
+• $7B Decart talks vs $4B May mark
+• 272k -> 500k Sol default context
+• ~$29M/week OpenRouter spend; Anthropic 36% of dollars
+
+TRENDING: Terence Tao's "Math 2.0" slides (HN 219 pts / 262 comments)
+
+Full digest on GitHub.
