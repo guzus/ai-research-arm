@@ -1,0 +1,11 @@
+Speaker 1: Monday, October twelfth, twenty twenty-six.
+Speaker 2: [high_energy] Amazon is reportedly in talks to buy Decart for around [emphasis] seven billion dollars [/emphasis], and that is nearly double the four billion dollar mark the startup carried back in May.
+Speaker 1: That is a steep markup in just a few months, and a sign of how much the big players will pay for AI talent and technology.
+Speaker 2: Over at OpenAI, GPT six point one Sol just got a much bigger default context window on Codex and Work, jumping from two hundred seventy-two thousand to [emphasis] five hundred thousand tokens [/emphasis].
+Speaker 1: OpenAI is also stirring debate in mathematics, after releasing a batch of three hundred seventy problems that has left mathematicians split on what it actually proves.
+Speaker 2: Worth noting that Terence Tao's Math two point oh slides are trending right alongside it, with two hundred nineteen points and two hundred sixty-two comments on Hacker News.
+Speaker 1: In the publishing world, a new report says the Big Five book publishers are quietly using Claude and ChatGPT behind the scenes.
+Speaker 2: Quietly being the key word, which says a lot about how the industry still feels about AI.
+Speaker 1: Some quick numbers on spend: OpenRouter is moving roughly twenty-nine million dollars a week.
+Speaker 2: And Anthropic takes [dramatic_pause] [emphasis] thirty-six percent [/emphasis] of those dollars.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
