@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-12 10:38:19 UTC
+
+CYCLE: Gen-AI traffic share and grid limits on AI data centers
+
+QUICK HITS:
+• Similarweb Sep: ChatGPT 56.4% of gen-AI web visits (4th straight gain), Gemini 25.0%, Claude 9.6% [✓]
+• The Information: Entergy to curtail AWS Mississippi data centers at peak times; AWS "Project Falcon" lets the utility switch them to backup power [⚠]
+• JetBrains SWE-TaskFlow: multi-turn SWE-Bench Pro doubles agent cost, no stable success change [⚠]
+
+WATCH: Entergy/AWS on the record about Falcon curtailment
+
+Full update on GitHub.
