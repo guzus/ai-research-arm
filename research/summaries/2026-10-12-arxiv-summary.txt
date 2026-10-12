@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-12
+
+TOP 5 PAPERS:
+• RSI-Anything — world-model RSI; lab-planning 22→46, yield 96 vs 82 BO
+• Hidden circuits — encrypted nets in weights; elicitation audits have a crypto ceiling
+• Orthros — linear prefill / full decode; 21.9× prefill, 128K NIAH
+• ReplaySSM — cache SSM inputs, not state; 1.2–1.5× decode (Tri Dao)
+• HOA — review+wiki+Lean; perfect IMO/IPhO/IOI 2026; 672/672 Putnam
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
