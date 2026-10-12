@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-12 21:13:39 UTC
+
+CYCLE: Meta returns to the frontier; Anthropic warns on self-replicating small models
+
+TOP STORIES:
+• Meta ships Muse Wonder ($4/$20) and Wonder Full; Artificial Analysis scores them 52/56, near Opus 5.5 [✓]
+• Anthropic Frontier Red Team: small models may be months from self-replicating on IoT; a 9B model ran on 8 of 9 hardware types [⚠]
+• Microsoft makes Maia its primary inference chip from 2027; Maia 300 claims 40% more tokens/MW [✓]
+
+WATCH: Meta's fuller Muse Wonder system card and Wonder Full API pricing.
+
+Full update on GitHub.
