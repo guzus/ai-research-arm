@@ -2,51 +2,6 @@
   {
     "backfilled": true,
     "category": "model",
-    "delivered_at": "2026-05-19 16:00 UTC",
-    "headline": "GOOGLE I/O 2026 KEYNOTE OPENS 17:00 UTC \u2014 10AM PT CONSUMER + 1:30PM PT DEVELOPER SPLIT FORMAT CONFIRMED",
-    "source": "@GoogleAI",
-    "source_file": "research/summaries/2026-05-19-twitter-16h-headlines.json",
-    "url": "https://x.com/GoogleAI/status/2056767575397462426"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 16:00 UTC",
-    "headline": "OPENAI WINS JURY VERDICT VS MUSK IN 2 HOURS \u2014 \"REMOVES ONE CLOUD OVER RESTRUCTURING AND POSSIBLE IPO\"",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-19-twitter-16h-headlines.json",
-    "url": "https://x.com/theinformation/status/2056744210313752766"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-19 16:00 UTC",
-    "headline": "NYSE ADDING COMPUTE FUTURES MARKET \u2014 TRADEABLE GPU/TPU-HOUR INSTRUMENT INCOMING",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-19-twitter-16h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2056764541070098449"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 16:00 UTC",
-    "headline": "ANALOG DEVICES IN ADVANCED TALKS TO BUY EMPOWER SEMICONDUCTOR FOR ~$1.5B \u2014 AI POWER-CHIP M&A",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-19-twitter-16h-headlines.json",
-    "url": "https://x.com/theinformation/status/2056767102510420009"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-19 16:00 UTC",
-    "headline": "CLOUDFLARE TESTS ANTHROPIC MYTHOS PREVIEW ON 50+ INTERNAL REPOS \u2014 CHAINS LOW-SEVERITY BUGS INTO WORKING EXPLOITS",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-19-twitter-16h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2056713453956682229"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
     "delivered_at": "2026-05-19 18:00 UTC",
     "headline": "GEMINI 3.5 FLASH LIVE GLOBALLY \u2014 INTELLIGENCE INDEX 55 BEATS CLAUDE SONNET 4.6 AND GROK 4.3, TOPS MMMU-PRO AT 84%",
     "source": "@GoogleDeepMind",
@@ -23718,5 +23673,40 @@
     "headline": "SAKANA MASS: QWEN3.6-27B GAINS 1.2-1.6X PER TOKEN AFTER TWO RSI CYCLES",
     "source": "@hardmaru",
     "url": "https://x.com/hardmaru/status/2109385496237678844"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-12 21:13:39 UTC",
+    "headline": "META LAUNCHES MUSE WONDER AND WONDER FULL; ARTIFICIAL ANALYSIS SCORES THEM 52 AND 56, WONDER PRICED AT $4/$20",
+    "source": "@AIatMeta",
+    "url": "https://x.com/AIatMeta/status/2109691148943999167"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-12 21:13:39 UTC",
+    "headline": "ANTHROPIC RED TEAM: SMALL MODELS MAY BE MONTHS FROM SELF-REPLICATING ON IOT DEVICES",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2109738666277150767"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-12 21:13:39 UTC",
+    "headline": "MICROSOFT TO MAKE MAIA CHIPS ITS PRIMARY INFERENCE SYSTEM FROM 2027; MAIA 300 CLAIMS 40% MORE TOKENS PER MW",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2109643277930795246"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-12 21:13:39 UTC",
+    "headline": "ARTIFICIAL ANALYSIS FRONTIERCODE 1.1: OPUS 5.5 LEADS AT 52%; GPT-6.1 SOL MATCHES FABLE 5.1 AT $0.81/TASK",
+    "source": "@ArtificialAnlys",
+    "url": "https://x.com/ArtificialAnlys/status/2109703511843979391"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-12 21:13:39 UTC",
+    "headline": "UK GIVEN ACCESS TO SAFETY-TEST LATEST AI MODELS, MINISTER SAYS",
+    "source": "@Reuters",
+    "url": "https://x.com/Reuters/status/2109753521453056393"
   }
 ]
