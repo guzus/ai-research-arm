@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 13:00 UTC",
-    "headline": "ANTHROPIC NEWSROOM CADENCE \u2014 10 POSTS IN 22 DAYS (APR 27 \u2192 MAY 19): DISTRIBUTION + INFRA + PRODUCT CAMPAIGN THROUGH GOOGLE I/O WEEK",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-19-twitter-13h-headlines.json",
-    "url": "https://www.anthropic.com/news"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 13:00 UTC",
-    "headline": "GOOGLE I/O 2026 KEYNOTE T-3.5H \u2014 SUNDAR 17:00 UTC OPEN; DEMIS SLOT W/ FT-HASSABIS-DISCLOSURE OVERLAY; GEMINI 3.X / VEO 4 / OMNI",
-    "source": "@GoogleDeepMind",
-    "source_file": "research/summaries/2026-05-19-twitter-13h-headlines.json",
-    "url": "https://blog.google/"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-19 16:00 UTC",
-    "headline": "ANDREJ KARPATHY JOINS ANTHROPIC \u2014 OPENAI CO-FOUNDER / EX-TESLA AI DIRECTOR RETURNS TO FRONTIER R&D",
-    "source": "@karpathy",
-    "source_file": "research/summaries/2026-05-19-twitter-16h-headlines.json",
-    "url": "https://x.com/karpathy/status/2056753169888334312"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-19 16:00 UTC",
-    "headline": "ANTHROPIC CONFIRMS KARPATHY HIRE IN 23 SECONDS \u2014 @CLAUDEDEVS: \"WELCOME TO THE TEAM, ANDREJ!\"",
-    "source": "@ClaudeDevs",
-    "source_file": "research/summaries/2026-05-19-twitter-16h-headlines.json",
-    "url": "https://x.com/ClaudeDevs/status/2056753265346564259"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-19 16:00 UTC",
     "headline": "GOOGLE I/O 2026 KEYNOTE OPENS 17:00 UTC \u2014 10AM PT CONSUMER + 1:30PM PT DEVELOPER SPLIT FORMAT CONFIRMED",
@@ -23726,5 +23690,33 @@
     "headline": "NOUS MAKES ANATOMY AN OFFICIAL OPTIONAL SKILL IN HERMES AGENT",
     "source": "@Teknium",
     "url": "https://x.com/Teknium/status/2109351160843035106"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-12 00:28:19 UTC",
+    "headline": "WSJ: AMAZON IN TALKS TO BUY DECART FOR ABOUT $7B AFTER ANTHROPIC WALKED AT $6B",
+    "source": "@Tradeview_",
+    "url": "https://x.com/Tradeview_/status/2109435025116578266"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-12 00:28:19 UTC",
+    "headline": "OPENAI RAISES GPT-6.1 SOL DEFAULT CONTEXT TO 500K ON CODEX AND CHATGPT WORK",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2109430343346581527"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-12 00:28:19 UTC",
+    "headline": "TELEGRAPH: US REVERSES HOLD ON PRE-RELEASE MODEL SHARING WITH UK AISI",
+    "source": "@sphinx_thesis",
+    "url": "https://x.com/sphinx_thesis/status/2109437688558555310"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-12 00:28:19 UTC",
+    "headline": "SAKANA MASS: QWEN3.6-27B GAINS 1.2-1.6X PER TOKEN AFTER TWO RSI CYCLES",
+    "source": "@hardmaru",
+    "url": "https://x.com/hardmaru/status/2109385496237678844"
   }
 ]
