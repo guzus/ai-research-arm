@@ -3,7 +3,7 @@ slug: meta-muse-spark-1-4-2026-09
 title: Muse Spark 1.4 — next Meta model appears as a registry entry on OpenCode
 company: Meta (Meta Superintelligence Labs)
 model: Muse Spark 1.4
-status: in-testing
+status: closed
 status_note: |
   **Registry artifact, 2026-09-24 21:00 UTC, single source.** @kimmonismus:
   "Meta teased its next major model as coming soon during the keynote. Now
@@ -43,12 +43,14 @@ verification: unverified
 sources:
   - https://x.com/kimmonismus/status/2103228052344021308
 created_at: 2026-09-25
-updated_at: 2026-09-25
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-12
+closed_at: 2026-10-12
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-09-25
     change: "Created — IN-TESTING / unverified. @kimmonismus reported on 2026-09-24 21:00 UTC (~571 likes) that the model id 'muse-spark-1.4-contributor' has appeared on OpenCode's data page, days after Meta teased its next major model at Connect 2026 ([[meta-connect-2026-09]]). Status in-testing because an exact model id on a provider registry is a concrete artifact of the same class as a console listing; verification unverified because it is one screenshot from one account with no Meta statement, and the link between Connect's tease and this specific string is inference, not evidence. The '-contributor' suffix is given weight: it matches the existing Muse Spark 1.3 Contributor profile shape (region-limited, OpenAI Responses transport, workspace consent to model-improvement data collection), which means a Contributor-tier id is an early-access channel rather than GA — so this is a staged-preview signal, not an imminent-launch signal. Created as a separate ticket from [[meta-hatch-muse-spark-2026-06]] because that ticket tracks the released 1.3 line and the Hatch consumer agent, and a new version number with its own registry entry is a distinct shipping artifact."
+  - ts: 2026-10-12
+    change: "Closed — stale-rumor-unverified. Opened 2026-09-25 on a single screenshot of the model id 'muse-spark-1.4-contributor' on OpenCode's data page. 17 days with no corroboration: no callable id, no Meta post, no second source. Meta's in-window teasing (2026-10-12) is for the separate Watermelon foundation model ([[meta-watermelon-2026-10]]), not this id. A future Muse Spark 1.4 sighting should open a successor ticket."
 ---
 
 A model id on a provider's data page is one of the higher-quality leaks

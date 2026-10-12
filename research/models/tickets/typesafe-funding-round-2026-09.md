@@ -1,10 +1,15 @@
 ---
 slug: typesafe-funding-round-2026-09
-title: Typesafe AI in talks to raise $1B+ at a valuation above $10B, two weeks after shipping Jev
+title: "Typesafe AI raises $870M Series A at $7.5B (a16z lead), three weeks after shipping Jev"
 company: Typesafe
 model: null
-status: rumored
+status: confirmed
 status_note: |
+  **2026-10-12 — ANNOUNCED (~2026-10-09, digest relay):** **$870M Series A at
+  $7.5B**, led by Andreessen Horowitz with Sequoia and DCVC. That is below the
+  $1B+/$10B+ talks figure The Information reported on 2026-09-27. The company
+  claims use at roughly one-third of the Fortune 500.
+
   **The Information's own handle, 2026-09-27 13:30 UTC:** "TypeSafe AI is talking
   with investors about raising **$1 billion or more** as enthusiasm builds around
   its **Jev** model and **potential valuations above $10 billion**."
@@ -36,7 +41,7 @@ status_note: |
   typed-decision model eats the substantial fraction of production LLM calls that
   are classification wearing a chat interface. If that is right, the multiple is
   about displacing token volume rather than about model quality.
-expected: "TBD — talks only. Watch for a named lead, confirmed size and valuation, a Typesafe statement, revenue disclosure, and a description of RLCD. The MotherDuck result is the kind of independent evidence that would make or break the thesis if reproduced on more tasks."
+expected: "Announced ~2026-10-09: $870M Series A at $7.5B (a16z lead; Sequoia, DCVC). Pending: Typesafe primary post, revenue disclosure, description of RLCD."
 labels:
   - funding
   - typesafe
@@ -45,15 +50,18 @@ labels:
   - rumor
 verification: partial
 sources:
+  - "https://x.com/daogangtang/status/2109668616409174301"
   - https://x.com/theinformation/status/2104201900723700068
   - https://x.com/gismmo/status/2104564789431410910
 created_at: 2026-09-28
-updated_at: 2026-09-28
+updated_at: 2026-10-12
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-28
     change: "Created — The Information (2026-09-27, own handle) reports Typesafe AI is in talks to raise $1B+ at a valuation above $10B on enthusiasm for its Jev model, twelve days after Jev shipped ([[typesafe-jev-2026-09]]). Status rumored, verification partial — one outlet, hedged language, no lead, terms or company statement. Tracked separately from the Jev release ticket because a funding round is a distinct shipping artifact. The non-fundraise datapoint is the useful one: @gismmo reports a MotherDuck benchmark putting Jev at 89% accuracy against 88% for GPT-5.6-terra on a classification task at a fraction of the cost — the first independent number on this model line, measured on the axis Typesafe actually claims. RLCD remains named and undescribed, and the 20-200x / 40-400x multipliers remain ranges against an unnamed baseline."
+  - ts: 2026-10-12
+    change: "RUMORED -> CONFIRMED; verification stays partial; title updated. Per @daogangtang's 2026-10-12 digest, TypeSafe AI announced (~2026-10-09) an $870M Series A at a $7.5B valuation led by Andreessen Horowitz with Sequoia and DCVC, up from a ~$200M seed. The company claims Jev is used at roughly one-third of the Fortune 500. The closed round came in BELOW the 2026-09-27 talks figure ($1B+ at $10B+). This ticket's original framing, a round priced off a launch, holds; the price was lower than reported. Verification stays partial: captured via one digest, no Typesafe post in fetch."
 ---
 
 Twelve days after its first product left stealth, Typesafe is reportedly being

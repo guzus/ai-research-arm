@@ -3,7 +3,7 @@ slug: deepseek-v4-1-2026-09
 title: DeepSeek V4.1 / V4.1 Flash — shipped, base weights withheld
 company: DeepSeek
 model: DeepSeek V4.1 / V4.1 Flash
-status: released
+status: closed
 status_note: |
   **DeepSeek V4.1 and V4.1 Flash are in third-party hands and being used**, but
   no DeepSeek announcement, model card or pricing page was captured in this
@@ -52,12 +52,14 @@ sources:
   - https://x.com/teortaxesTex/status/2099470167667249534
   - https://x.com/Hikari_07_jp/status/2099045700965392860
 created_at: 2026-09-14
-updated_at: 2026-09-14
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-12
+closed_at: 2026-10-12
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-14
     change: "Created — RELEASED. DeepSeek V4.1 and V4.1 Flash are in third-party hands with no DeepSeek announcement, model card or pricing captured in-window; the entire record is incidental operator usage, which is this lab's normal release shape. @Hikari_07_jp (2026-09-13 08:01 UTC) measured V4.1 Flash through the Commandcode GOAT reseller at 'TTFT of 4.2s, 204 tok/s' over a 3,201-step run — evidence of availability via a broker, not of a DeepSeek release event. @teortaxesTex ran V4.1 Flash autonomously on a Rust task (12:07 UTC) and assessed V4.1 against Terminal-Bench (10:20 UTC): 'The discourse on benchmaxxing due to higher relative rank on TB 2.1 vs TB 4.0 is funny. V4.1 is almost anti-benchmaxxed. They clearly do not care about benchmarks, or even about user experience.' The load-bearing negative fact, same source (12:17 UTC): 'A bit annoyed that DeepSeek didn't release the V4.1 base model' — no open base weights this generation, with his own counterpoint logged ('do you think you could even finetune it? … DeepSeeks might be the least finetuned bases historically'). Verification partial: no @deepseek_ai post, model card, first-party pricing, parameter count, context window or licence. Opened as a new ticket rather than an update to [[deepseek-v4-flash-vision-exp-2026-08]] because V4.1 is a distinct model name with its own weights-release posture."
+  - ts: 2026-10-12
+    change: "Closed — released-and-aged. V4.1 / V4.1 Flash were in production use via API and resellers by 2026-09-13 (per this ticket's own creation evidence), 29 days before today, and the ticket stayed in released state throughout. Today's signal treats V4.1 Flash as normal coverage: new platform listings, and a ByteDance Seed-led paper reporting up to ~40-point long-context retrieval swings from chunked KV-cache compression in V4/V4.1 (via @daogangtang). The Pro tier remains tracked separately at [[deepseek-v4-1-pro-2026-09]]. Verification stays partial; no DeepSeek primary post was ever captured."
 ---
 
 The interesting fact here is a non-release.

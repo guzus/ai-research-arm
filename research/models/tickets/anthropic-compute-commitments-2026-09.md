@@ -69,6 +69,7 @@ labels:
   - pre-ipo
 verification: partial
 sources:
+  - "https://x.com/techandmacro/status/2109656545927577992"
   - https://x.com/theinformation/status/2099211531502092672
   - https://x.com/rohanpaul_ai/status/2099332537608970423
   - https://x.com/aleabitoreddit/status/2103232350348001701
@@ -76,7 +77,7 @@ sources:
   - https://x.com/khalidtasi11/status/2106003542490181662
   - https://x.com/ooooooookke/status/2107461667407757816
 created_at: 2026-09-14
-updated_at: 2026-10-06
+updated_at: 2026-10-12
 closed_at: null
 closed_reason: null
 history:
@@ -90,6 +91,8 @@ history:
     change: "Unadopted lead, logged for later reconciliation. An Arabic-language market-news roundup (@khalidtasi11, 2026-10-02 12:49 UTC) lists two items: 'Broadcom raises $60B to finance chip purchases for Anthropic' and 'Broadcom provides $42B in financing to Anthropic to lease chips'. No outlet is named, no Broadcom or Anthropic statement was captured, and the two figures are not reconciled with each other. If accurate, this would be a vendor-financing component of the up-to-$517B commitment stack this ticket tracks, and the second accelerator-vendor financing structure after [[anthropic-google-datacenter-financing-2026-07]]. Verification stays partial; nothing in status_note changes until a primary or named outlet confirms it."
   - ts: 2026-10-06
     change: "Confirmed, unchanged; verification stays partial. Second, independent mention of the 2026-10-02 unadopted lead: Polish-language market roundup @ooooooookke (2026-10-06 13:23 UTC) lists 'Wall Street raised a record $60B to finance chips for Broadcom and Anthropic'. Two unrelated digests now carry the $60B figure, but neither names an outlet, no Broadcom or Anthropic statement was captured, and the earlier $42B lease-financing figure remains unreconciled. Still logged as a lead rather than adopted into status_note; if a named outlet confirms it, this becomes the vendor-financing component of the commitment stack and the second such structure after [[anthropic-google-datacenter-financing-2026-07]]."
+  - ts: 2026-10-12
+    change: "Confirmed, unchanged; verification stays partial. The Information reports (relayed by @techandmacro, 2026-10-12) an unannounced multiyear Anthropic cloud deal with IREN, a former bitcoin miner. The report puts it on top of roughly $530B of data-center leases across more than ten providers, slightly above the $517B figure this ticket tracks. Capacity is projected from 1.4 GW last year to more than 15 GW by 2028, with operators such as Hut 8, TeraWulf, IREN and Nscale ([[anthropic-nscale-compute-2026-08]]). Terms are undisclosed and neither side has announced. Logged as an outlet-reported addition to the commitment stack. The $530B vs $517B gap is not reconciled."
 ---
 
 Two numbers were reported about Anthropic in the same 24 hours, and they point
