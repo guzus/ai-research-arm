@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-10-13 16:55:45 UTC
+
+CYCLE: Gemini 4 Argon goes GA; Anthropic's merged code changes up 12x since May
+
+TOP STORIES:
+• Gemini 4 Argon now generally available in Gemini API, AI Studio, and Pro/Ultra Gemini app [✓]
+• Anthropic merges 30K+ changes/day (vs ~2.5K in May), replaced git with in-house Scion [⚠]
+
+WATCH: Anthropic's reported Oct 14 Q3 investor meeting and any official Fable 5.5 listing
+
+Full update on GitHub.
