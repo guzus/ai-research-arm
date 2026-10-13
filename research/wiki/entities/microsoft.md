@@ -2,17 +2,19 @@
 slug: microsoft
 title: Microsoft
 type: entity
-aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "MAI Code of Conduct", "Humanist AI Code of Conduct", "Decision-1", "Microsoft-Decision-1"]
+aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "Maia 300", "MAIA 300", "MAI Code of Conduct", "Humanist AI Code of Conduct", "Decision-1", "Microsoft-Decision-1"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; Nadella's Saturday essay argued agentic models are insider risks and asked for an emergency brake.
+description: Hyperscaler and frontier-model builder; from 2027 Maia accelerators become the primary inference system for Microsoft's own services at multi-gigawatt scale.
 created_at: 2026-06-03
-timestamp: 2026-10-11T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
+  - {title: "ARA model ticket — Microsoft Maia 300", path: research/models/tickets/microsoft-maia-300-2026-10.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
@@ -411,6 +413,33 @@ ARA daily digest 2026-09-26).
   SKU (MarkTechPost, Decoder;
   ARA daily digest
   2026-10-11).
+
+## Maia becomes the primary inference chip (2026-10-13)
+
+- **From calendar 2027, Maia accelerators become
+  the main inference system** for Microsoft's
+  own products and services at multi-gigawatt
+  scale. Nadella announced **Maia 300** as
+  delivering **40% more tokens per megawatt**
+  than leading GPU systems; Microsoft says a
+  rack holds **96 accelerators in 167 kW**
+  with **27.6 TB of HBM** and up to **7× Maia
+  200** rack-scale token throughput. Maia 200
+  is already deployed in the US, Europe, and
+  Australia. This is internal silicon — no
+  Azure customer SKU or independent
+  measurement. Unit-volume reports conflict
+  (300,000+ unsigned vs over 1 million). See
+  [[ai-capex]] and [[nvidia]] (The Verge, The
+  Decoder, @satyanadella, @Microsoft; ARA
+  daily digest 2026-10-13 and ticket
+  `microsoft-maia-300-2026-10`).
+- **Brad Smith said the UK should lead AI
+  regulation**, arguing milk and washing
+  machines face more oversight than AI
+  companies. Same-cycle commentary, not a
+  product change. See [[federal-ai-policy]]
+  (TechCrunch; ARA daily digest 2026-10-13).
 
 ## Open questions
 

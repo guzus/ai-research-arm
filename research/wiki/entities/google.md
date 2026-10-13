@@ -2,17 +2,19 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub, "Gemini Enterprise"]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub, "Gemini Enterprise", "AlphaProof Nexus", AlphaProof]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; shipped a Gemini Enterprise work agent and Hassabis confirmed a $150M Genesis credit slice.
+description: Hyperscaler behind Gemini; DeepMind's AlphaProof Nexus passed peer review in Science, resolving nine Erdős problems, two open for 56 years.
 created_at: 2026-07-17
-timestamp: 2026-10-09T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
+  - {title: "ARA model ticket — AlphaProof Nexus", path: research/models/tickets/google-deepmind-alphaproof-nexus-2026-10.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
@@ -904,6 +906,35 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   [[federal-ai-policy]] (White
   House, @demishassabis; ARA
   daily digest 2026-10-09).
+
+## AlphaProof Nexus passes peer review (2026-10-13)
+
+- **A *Science* paper reports DeepMind's
+  AlphaProof Nexus resolved nine Erdős
+  problems**, two of them open for **56
+  years**. The model-timeline ticket
+  adds **9 of 353** formalised open
+  Erdős problems and **44 of 492** OEIS
+  conjectures, by iterating LLM proof
+  generation against Lean, at a few
+  hundred dollars per problem in the
+  reported runs. Published **2026-10-08**;
+  no public system or API. The ticket's
+  verification is still **partial**
+  (single digest relay, no DeepMind
+  post or paper URL in-window). Lean
+  verification removes the grading
+  question; the open issue is novelty
+  — whether the problems were genuinely
+  open and not already resolved in
+  obscure literature. See
+  [[verification-bottleneck]] and
+  [[mistral-leanstral-1-5]] (The
+  Decoder; ARA daily digest 2026-10-13
+  and ticket
+  `google-deepmind-alphaproof-nexus-2026-10`).
+
+## Open questions
 
 - **Does "generate onto authoritative data" survive as a product category?**
   The Google Earth feature was killed in a day because detectors could not

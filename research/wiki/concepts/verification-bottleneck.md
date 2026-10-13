@@ -6,8 +6,9 @@ aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap"
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
 description: Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.
 created_at: 2026-08-02
-timestamp: 2026-10-12T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
@@ -486,3 +487,27 @@ claim, and the dispute resolves on **relay credibility rather than
   is?" See [[openai]] (The
   Decoder, Hacker News, Bluesky;
   ARA daily digest 2026-10-12).
+
+## Muse Wonder per-token vs per-task; AlphaProof peer review (2026-10-13)
+
+- **[[muse-wonder]] shows the same
+  bench-reading trap this page
+  tracks.** Meta's "60% cheaper
+  than Fable" holds per token;
+  Artificial Analysis prices
+  Wonder at **$4.52/task**
+  because it reads ~7.7M input
+  tokens. Marketing-page scores
+  are for Full, not Wonder. Dan
+  Shipper withdrew a run. See
+  [[meta]] (Artificial Analysis,
+  HN; ARA daily digest
+  2026-10-13).
+- **[[google|AlphaProof Nexus]]
+  is a different evidence class
+  from the 370-problem dump:**
+  a *Science* paper, Lean-checked,
+  nine Erdős problems. The open
+  issue is novelty, not grading
+  (The Decoder; ARA daily digest
+  2026-10-13).

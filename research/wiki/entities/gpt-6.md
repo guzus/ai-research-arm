@@ -6,8 +6,9 @@ aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna",
 tags: [model-release, openai, frontier-model]
 description: OpenAI's GPT-6 generation; GPT-6.1 Sol's default context on Codex and ChatGPT Work is now 500k tokens, up from 272k.
 created_at: 2026-07-28
-timestamp: 2026-10-12T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
@@ -289,3 +290,16 @@ substance.
   no before/after compaction rates
   (@thsottiaux, @testingcatalog;
   ARA daily digest 2026-10-12).
+
+## Muse Wonder per-task cost (2026-10-13)
+
+- **Artificial Analysis prices
+  [[muse-wonder]] at $4.52 per
+  task** versus **$0.72** for
+  GPT-6.1 Sol, because Wonder
+  reads ~7.7M input tokens per
+  task. Meta's "60% cheaper than
+  Fable" line is per-token only.
+  See [[verification-bottleneck]]
+  (Artificial Analysis; ARA daily
+  digest 2026-10-13).

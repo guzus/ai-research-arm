@@ -4,15 +4,16 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm", "Meta Enterprise Platform", "CJ Desai", "Muse Gadgets"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; The Information says internal Claude Code users fell from ~60K to ~30K as Meta pushes staff onto its own tools.
+description: Social-platform hyperscaler and Llama maker; shipped Muse Wonder and subscriber-only Wonder Full, independently scored 52 and 56 on Artificial Analysis versus Spark 1.3's 48.
 created_at: 2026-06-16
-timestamp: 2026-10-06T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
@@ -479,3 +480,23 @@ TechCrunch; ARA daily digest 2026-09-16).
   on 2026-09-29. See [[muse-code]]
   (The Information, The Decoder;
   ARA daily digest 2026-10-06).
+
+## Muse Wonder — Meta's first independently scored frontier pair (2026-10-13)
+
+- **[[muse-wonder|Muse Wonder]] and Wonder Full
+  shipped.** Wonder is on the Meta Model API
+  and [[muse-code]]; Full is limited to $50 /
+  $200 Muse Code subscribers. Artificial
+  Analysis scores them **52** and **56** on
+  the Intelligence Index, up from **48** for
+  Muse Spark 1.3. [[claude-opus-5-5|Opus 5.5]]
+  still leads AA's overall index. Meta's
+  headline bench wins remain first-party;
+  "Meta officially overtakes OpenAI" is the
+  day's skeptic flag. Nathan Lambert said
+  Meta "is back at the frontier" pending
+  independent evals. Detail on
+  [[muse-wonder]] (@AIatMeta, Artificial
+  Analysis, TechCrunch, The Verge, The
+  Decoder, HN 527/299; ARA daily digest
+  2026-10-13).

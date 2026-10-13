@@ -6,8 +6,9 @@ aliases: ["Claude Sonnet 5.5", "Sonnet 5.5", "claude-sonnet-5-5", "claude-sonnet
 tags: [model-release, anthropic, claude, agentic-coding, frontier-model, pricing]
 description: Anthropic's 2026-09-28 mid-tier Claude 5.5 model at unchanged $2/$10; vendor Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, with the 30% cheaper claim a per-task assertion, not a price cut.
 created_at: 2026-09-29
-timestamp: 2026-10-08T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
@@ -79,3 +80,14 @@ did not move. It is now the **claude.ai free-tier** default.
   has not published a launch post in this desk's
   fetch (@shirochange_ai; ARA daily digest
   2026-10-04).
+
+## Muse Wonder Full ties Claude Code on AA (2026-10-13)
+
+- **[[muse-wonder|Wonder Full]] scores 68
+  on Artificial Analysis's Coding Agents
+  Index**, tied with Claude Code on this
+  model and ahead of [[claude-opus-5-5|Opus
+  5.5]] (**66**). That is an AA coding
+  index, not this page's vendor
+  Terminal-Bench 4.0 70.6% claim (Artificial
+  Analysis; ARA daily digest 2026-10-13).

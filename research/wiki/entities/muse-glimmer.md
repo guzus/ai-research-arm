@@ -6,7 +6,7 @@ aliases: ["Muse Glimmer", "Meta Muse Glimmer", "Glimmer"]
 tags: [model-release, meta, open-weights, multimodal, agentic]
 description: Meta's 30B dense multimodal agent model, released 2026-08-10 under Apache 2.0 with day-0 transformers/llama.cpp/vLLM/SGLang/Ollama support; best of 12 of 24 benchmark rows, distilled from Muse Spark.
 created_at: 2026-08-11
-timestamp: 2026-08-11T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 sources:
   - {title: "ARA daily digest 2026-08-11", path: research/digest/2026-08-11-digest.md}
 ---
@@ -55,4 +55,7 @@ consumer GPU (~17GB in 4-bit), and won 12 of 24 benchmark rows.
 - **Does the 30B dense architecture scale up?** Distilled from Spark, Glimmer
   is a mid-tier agentic model; whether Meta's open lane extends to frontier
   scale (as [[moonshot-kimi-k3|Kimi K3]] and [[qwen-3-8-max|Qwen3.8]] do)
-  is unanswered.
+  is unanswered. The closed frontier
+  increment that followed is
+  [[muse-wonder]], not an open-weight
+  scale-up of this 30B distill.

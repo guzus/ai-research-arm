@@ -4,10 +4,11 @@ title: Muse Code (Muse Spark 1.3)
 type: entity
 aliases: ["Muse Code", "Muse Spark 1.2", "Muse Spark 1.3", "Meta Muse Code", "Muse Spark max", "Muse Spark 1.3 max", "Muse agent", "Meta Muse"]
 tags: [coding-agent, meta, terminal-agent, benchmarks, pricing, consumer-agent]
-description: Meta Superintelligence Labs' coding and consumer-agent line; Meta admitted Muse was heavily inspired by OpenClaw, patched a local transcription 0-day, and announced PayPal checkout without a PayPal-side confirmation.
+description: Meta Superintelligence Labs' coding and consumer-agent line; Muse Wonder is live in Muse Code and the Model API, with Wonder Full limited to $50/$200 subscribers.
 created_at: 2026-08-06
-timestamp: 2026-09-23T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-09", path: research/digest/2026-09-09-digest.md}
@@ -215,3 +216,25 @@ as one product; the maker is tracked on [[meta]] and the earlier
   exists yet — announcement strength
   only (Twitter/@alexandr_wang; ARA
   daily digest 2026-09-23).
+
+## Muse Wonder ships through Muse Code (2026-10-13)
+
+- **[[muse-wonder|Muse Wonder]] is live in Muse Code
+  and the Meta Model API**, with 1M context and
+  Active Memory / Active Focus. **Wonder Full** is
+  limited to Muse Code subscribers on the **$50
+  and $200** tiers and has no public per-token
+  price. Wonder lists at **$4/$20**. Artificial
+  Analysis scores Wonder **52** and Full **56**
+  on the Intelligence Index, up from Spark 1.3's
+  **48**. Detail and the per-task vs per-token
+  caveat live on [[muse-wonder]] (Artificial
+  Analysis, TechCrunch, The Verge, The Decoder,
+  HN 527/299; ARA daily digest 2026-10-13).
+- **Alexandr Wang confirmed a Muse Code
+  usage-limit bug**, with resets promised. Dan
+  Shipper withdrew a benchmark result after a
+  bad run. HN commenters noted the marketing
+  page's scores are for Full, not Wonder. See
+  [[verification-bottleneck]] (ARA daily digest
+  2026-10-13).

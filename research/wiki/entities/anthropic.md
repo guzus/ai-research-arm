@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; WIRED says HarperCollins, Simon & Schuster, and Hachette use Claude for publicity copy, covers, and agent emails.
+description: AI safety lab behind Claude; Frontier Red Team says a 9B model got inference running on 8 of 9 commercial hardware types and that small models may be months from IoT self-replication.
 created_at: 2026-05-24
-timestamp: 2026-10-12T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
@@ -3054,3 +3055,33 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   [[federal-ai-policy]]
   (Telegraph; ARA daily digest
   2026-10-12).
+
+## Near-term self-replication warning (2026-10-13)
+
+- **A Frontier Red Team post says a 9B
+  model got inference running on 8 of 9
+  commercial hardware types tested**, and
+  that small models "may be months away"
+  from self-replicating on IoT devices.
+  Anthropic says **no full rogue
+  replicator exists yet**. Three
+  scenarios: slow spread across insecure
+  compute, a cyber model breaching
+  datacenters, or a model scamming people
+  for compute credits. Getting inference
+  running is one step in that chain;
+  "months away" is a forecast. The digest
+  captured the post via relays
+  (@scaling01, @AndrewCurran_); the post
+  itself was not checked directly. See
+  [[agentic-ai-security]] (ARA daily
+  digest 2026-10-13).
+- **Reuters and The Decoder confirmed
+  the UK can again safety-test Anthropic,
+  [[google|Google DeepMind]], and
+  [[openai]] models before release**,
+  after Saturday's Telegraph report. The
+  Decoder credits diplomatic pressure
+  from AI Minister Kanishka Narayan. See
+  [[federal-ai-policy]] (Reuters, The
+  Decoder; ARA daily digest 2026-10-13).

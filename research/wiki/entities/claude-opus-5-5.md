@@ -6,8 +6,9 @@ aliases: ["Claude Opus 5.5", "Opus 5.5", "claude-opus-5-5", "claude-opus-5.5"]
 tags: [model-release, anthropic, claude, frontier-model, pricing]
 description: Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.
 created_at: 2026-09-23
-timestamp: 2026-10-08T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA model ticket — Claude Opus 5.5", path: research/models/tickets/anthropic-opus-5-5-2026-09.md}
@@ -120,3 +121,16 @@ digest 2026-10-01).
   **$0.10 / $0.50** to 100K tokens (then
   5×). See [[anthropic]] (ARA daily digest
   2026-10-08).
+
+## Muse Wonder Full on AA coding (2026-10-13)
+
+- **Artificial Analysis still has Opus 5.5
+  leading the overall Intelligence Index**
+  after [[meta]] shipped [[muse-wonder]].
+  Full scores **68** on AA's Coding Agents
+  Index, ahead of this model's **66**, and
+  Wonder's AA per-task cost is **$4.52**
+  versus **$5.98** here — cheaper per task
+  despite Meta's $4/$20 list matching this
+  card. See [[muse-wonder]] (Artificial
+  Analysis; ARA daily digest 2026-10-13).
