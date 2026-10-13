@@ -1,0 +1,12 @@
+Speaker 1: Tuesday, October thirteenth, twenty twenty-six.
+Speaker 2: [high_energy] Meta just dropped two new models, Muse Wonder and Muse Wonder Full, and Wonder Full is scoring [emphasis] fifty-six [/emphasis] on the Artificial Analysis Intelligence Index.
+Speaker 1: And the pricing on the base Wonder model is four dollars per million input tokens and twenty dollars per million output tokens.
+Speaker 2: The developer crowd noticed, too, the launch pulled five hundred twenty-seven points on Hacker News.
+Speaker 1: On the hardware front, Microsoft says its own Maia chip becomes its primary inference silicon starting in twenty twenty-seven.
+Speaker 2: Microsoft claims the Maia three hundred delivers [emphasis] forty percent more tokens per megawatt [/emphasis], which is a direct shot at its dependence on Nvidia.
+Speaker 1: Turning to safety, Anthropic's Red Team is warning that even small models are getting close to being able to replicate themselves.
+Speaker 2: [dramatic_pause] Small models, not just the frontier giants, and that is a very different threat picture.
+Speaker 1: On the policy side, the White House has restored the UK AI Security Institute's access to models before they are released.
+Speaker 2: Some quick market share, ChatGPT took [emphasis] fifty-six point four percent [/emphasis] of generative AI web visits in September, according to Similarweb.
+Speaker 1: And developers are pushing back on a background daemon in the Codex command line tool.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
