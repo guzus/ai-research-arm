@@ -3,7 +3,7 @@ slug: typesafe-jev-2026-09
 title: Typesafe releases Jev — a non-chat "system one" decision model with free output tokens
 company: Typesafe
 model: Jev
-status: released
+status: closed
 status_note: |
   **Founder announcement, 2026-09-15 18:17 UTC.** @CompleteSkeptic: "After
   co-inventing ChatGPT, I kept asking myself: why have superhuman chat models
@@ -41,12 +41,14 @@ sources:
   - https://x.com/SourceCodeplz/status/2100174636377883004
   - https://x.com/VisheshBaghell/status/2100190919186419992
 created_at: 2026-09-16
-updated_at: 2026-09-16
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-13
+closed_at: 2026-10-13
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-09-16
     change: "Created — RELEASED. Typesafe (@typesafeai) released Jev on 2026-09-15, announced by its founder (@CompleteSkeptic, 2026-09-15 18:17 UTC), who describes himself as a co-inventor of ChatGPT and says the company spent two years in stealth building a new training method, RLCD, plus 'a new type of frontier AI model… optimized for decisions', claiming 20-200x faster and 40-400x cheaper with output tokens free. @SourceCodeplz (2026-09-16) confirms the company as Typesafe, 'built by former OpenAI staff', linking the announcement. A third-party reader of the launch post (@VisheshBaghell, 2026-09-16) describes the product concretely: no chat and no free text, only typed structured decisions with calibrated probabilities against an output schema fixed in advance, $0.042 per million input tokens with output free, ~70ms per call. Verification partial: the release and pricing are corroborated by three independent accounts but there is no model card, no benchmark and no independent evaluation, and the speed/cost multipliers are ranges against an unnamed baseline. The viral third-party cost comparison against a $100/mo Claude Max subscription compares different units of work and is NOT adopted here. The substantive open question is RLCD, which was named but not described."
+  - ts: 2026-10-13
+    change: "Closed — released-and-aged. Jev was released on 2026-09-15 (@CompleteSkeptic). A passing 2026-10-13 mention of Jev's retrieval results is normal coverage, not a lifecycle change, per this ticket's history. As of today that is 28 days, which meets the ≥4-week threshold. No open lifecycle question remains on this artifact, and further coverage rolls into normal reporting."
 ---
 
 **Jev** is a deliberately non-conversational model: fixed output schema, typed

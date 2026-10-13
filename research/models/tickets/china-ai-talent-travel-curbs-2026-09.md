@@ -3,7 +3,7 @@ slug: china-ai-talent-travel-curbs-2026-09
 title: China reportedly restricts overseas travel for families of top AI and chip talent
 company: PRC (central authorities)
 model: null
-status: rumored
+status: closed
 status_note: |
   **Single item, 2026-09-28 13:43 UTC**, from @Polymarket's news feed: "JUST IN:
   China begins **restricting overseas travel for the spouses & children of top AI &
@@ -51,12 +51,14 @@ verification: unverified
 sources:
   - https://x.com/Polymarket/status/2104567749783781776
 created_at: 2026-09-28
-updated_at: 2026-09-28
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-13
+closed_at: 2026-10-13
+closed_reason: "stale-rumor-unverified"
 history:
   - ts: 2026-09-28
     change: "Created — @Polymarket's news feed (2026-09-28 13:43 UTC) reports China beginning to restrict overseas travel for spouses and children of top AI and chip talent, requiring CCP approval before departure. Status rumored, verification unverified, and the evidence is as thin as this set allows: one post, no named outlet, no ministry, no policy text, no definition of 'top talent', and no second source found under any search term in this cycle. Opened anyway because researcher mobility is the actual diffusion channel for frontier capability — tracked in both directions at [[openai-shazeer-hire-2026-06]], [[deepmind-zoph-hire-2026-08]] and [[anthropic-huang-sihao-hire-2026-09]] — so the claim needs to be on the board with its weakness stated rather than absent. Recorded with an explicit close-by-default disposition: corroborate with a named source or close as stale-rumor-unverified."
+  - ts: 2026-10-13
+    change: "Closed — stale-rumor-unverified. Verification never left unverified, and the last history entry is dated 2026-09-28, 15 daily cycles ago. Nothing in the 2026-10-13 signal corroborates the claim. A fresh primary-sourced signal should open a successor ticket that links back here, not reopen this one."
 ---
 
 This is the weakest ticket opened this cycle and it says so in its own

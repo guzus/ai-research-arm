@@ -3,7 +3,7 @@ slug: google-gemini-3-8-live-2026-09
 title: Gemini 3.8 Live and 3.8 Live Extended Thinking — Google's live-audio models, shipped
 company: Google / DeepMind
 model: Gemini 3.8 Live / Gemini 3.8 Live Extended Thinking
-status: released
+status: closed
 status_note: |
   **2026-09-24 — GA in Gemini Enterprise, with Live Avatar.**
   @GoogleCloudTech (primary, 16:19 UTC), retweeted by @GoogleDeepMind: "Gemini
@@ -74,9 +74,9 @@ sources:
   - https://x.com/GoogleCloudTech/status/2103157502988746877
   - https://x.com/testingcatalog/status/2103371709281632423
 created_at: 2026-09-16
-updated_at: 2026-09-25
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-13
+closed_at: 2026-10-13
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-09-16
     change: "Created — RELEASED. Google shipped Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking on 2026-09-15 (~17:05-17:23 UTC), announced simultaneously by @GoogleAI, @GoogleDeepMind, Gemini product lead @OfficialLoganK and DeepMind DevRel @_philschmid — four first-party accounts, so verification is confirmed on the release itself. 3.8 Live is the scale/cost tier (mid-sentence interruption handling, 97 languages with on-the-fly switching, visual context); 3.8 Live Extended Thinking adds background thinking and asynchronous tool calls issued while the model keeps talking. Distribution day one: Search Live (consumer), Gemini API public preview via AI Studio (developer), Gemini Enterprise private preview; Extended Thinking additionally in Gemini Live in the Gemini app, Workspace/Docs for AI Pro and Ultra, and Gmail and Keep for all Google AI subscribers, with named partner plugins for LiveKit, Pipecat, LangChain and Vercel. FIRST-PARTY CLAIMS, NOT INDEPENDENT BENCHMARKS: @_philschmid reports 82.6 and #1 on the Artificial Analysis Quality Index, 35.1 and #1 on agentic task completion (tau-banking), at $0.005/min input and $0.018/min output. A third-party daily AI digest (@FadyEid 2026-09-16) independently frames the pricing as $1.38/API hour versus $3.00 for OpenAI's GPT-Live-1, which is the competitive read. Separate artifact from [[gemini-3-8-flash-2026-09]] (text/Flash tier) and from [[gemini-3-5-transcribe-2026-08]] (transcription), and the direct rival of [[openai-gpt-live-1-api-2026-09]]."
@@ -84,6 +84,8 @@ history:
     change: "Released, unchanged; the preview->GA step landed on the enterprise surface. @GoogleCloudTech announced on 2026-09-24 16:19 UTC (~314 likes) that 'Gemini 3.8 Live with Live Avatar is now generally available in Gemini Enterprise', with video avatars, fluid dialogue and tool calling; retweeted by @GoogleDeepMind, making it primary twice over. @testingcatalog's 2026-09-25 daily brief adds 97 languages and async tool calls mid-conversation. This closes the 'GA out of preview' item this ticket opened with — but ONLY for Gemini Enterprise: the Gemini API path via AI Studio was in public preview at ship and nothing in-window says that changed, so the API is still recorded as preview and the expected field now distinguishes the two. Live Avatar is noted as a genuine capability addition rather than a distribution change — lip-synced video output moves 3.8 Live from live audio to live audio-visual — and is kept on this ticket rather than spun out because Google shipped it as a capability of 3.8 Live, not as a named model. The remaining open item is unchanged and unaddressed: no neutral organisation has published the Quality Index or tau-banking placements Google claimed at launch."
   - ts: 2026-09-25
     change: "Bookkeeping — citations added for the 2026-09-25 entry: @GoogleCloudTech (Gemini 3.8 Live with Live Avatar generally available in Gemini Enterprise; retweeted by @GoogleDeepMind) and @testingcatalog's daily brief (97 languages, async mid-conversation tool calls). No status, verification or content change."
+  - ts: 2026-10-13
+    change: "Closed — released-and-aged. Gemini 3.8 Live and Live Extended Thinking shipped on 2026-09-15 (four first-party Google accounts); the Gemini Enterprise GA followed on 2026-09-24, per this ticket's history. As of today that is 28 days, which meets the ≥4-week threshold. No open lifecycle question remains on this artifact, and further coverage rolls into normal reporting."
 ---
 
 Google shipped a **live-audio pair** on 2026-09-15, and the interesting half

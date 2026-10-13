@@ -3,7 +3,7 @@ slug: sk-hynix-japan-fab-2026-09
 title: SK hynix reportedly begins groundwork on a memory fab in Japan's Tohoku region
 company: SK Hynix
 model: null
-status: rumored
+status: closed
 status_note: |
   **Korean media exclusive, relayed 2026-09-28 02:55-02:56 UTC by @jukan05**
   (headline first, then the full translated piece): "SK hynix has **begun
@@ -56,12 +56,14 @@ sources:
   - https://x.com/jukan05/status/2104404925233188959
   - https://x.com/jukan05/status/2104404535267696859
 created_at: 2026-09-28
-updated_at: 2026-09-28
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-13
+closed_at: 2026-10-13
+closed_reason: "stale-rumor-unverified"
 history:
   - ts: 2026-09-28
     change: "Created — A Korean media exclusive relayed by @jukan05 (2026-09-28) reports SK hynix has begun foundation work on a memory fab in Japan's Tohoku region, citing unnamed industry sources, one month after the company publicly said nothing had been decided; standalone-vs-Kioxia-JV is explicitly unresolved, and the stated motive is the AI memory supply shortage. Status rumored, verification unverified — one outlet, unnamed sources, relayed twice by a single account, directly against the company's own recent position, with no statement, permit, land record, capex figure or timeline in-window; the piece hedges itself ('If true, the company moved at remarkable speed'). Logged because memory is the binding AI supply constraint this quarter — see [[nvidia-rubin-ultra-hbm-downgrade-2026-08]], [[nvidia-server-price-increase-2026-08]] — and because SK hynix already has two live corporate tickets at [[sk-hynix-nasdaq-ipo-2026-07]] and [[sk-hynix-intel-ohio-acquisition-2026-07]]."
+  - ts: 2026-10-13
+    change: "Closed — stale-rumor-unverified. Verification never left unverified, and the last history entry is dated 2026-09-28, 15 daily cycles ago. Nothing in the 2026-10-13 signal corroborates the claim. A fresh primary-sourced signal should open a successor ticket that links back here, not reopen this one."
 ---
 
 A month ago SK hynix said a Japanese memory fab was under review and nothing had
