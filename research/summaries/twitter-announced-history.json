@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 18:00 UTC",
-    "headline": "GEMINI SPARK \u2014 GOOGLE'S DEDICATED-VM PERSONAL AGENT CONNECTS TO USER'S FULL GOOGLE DATA, TRUSTED TESTERS THIS WEEK",
-    "source": "@OfficialLoganK",
-    "source_file": "research/summaries/2026-05-19-twitter-18h-headlines.json",
-    "url": "https://x.com/OfficialLoganK/status/2056791703349277101"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-19 18:00 UTC",
-    "headline": "GOOGLE AI ULTRA PRICING RESET \u2014 NEW $100/MONTH TIER LANDS, TOP TIER CUT FROM $250 TO $200",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-19-twitter-18h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2056792916526547215"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-19 18:00 UTC",
-    "headline": "GOOGLE SEARCH BOX REIMAGINED \u2014 GEMINI 3.5 FLASH NOW DEFAULT FOR AI MODE GLOBALLY, BIGGEST SEARCH UPGRADE IN 25 YEARS",
-    "source": "@OfficialLoganK",
-    "source_file": "research/summaries/2026-05-19-twitter-18h-headlines.json",
-    "url": "https://x.com/OfficialLoganK/status/2056802276124328352"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-19 18:00 UTC",
-    "headline": "AMD MI355 NOW 40% CHEAPER THAN NVIDIA B200 ON GLM5 ARCHITECTURE FOR SINGLE-NODE FP8 SERVING",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-19-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2056782305440452635"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-19 21:00 UTC",
     "headline": "OPENAI LAUNCHES GUARANTEED CAPACITY \u2014 COMPUTE FUTURES WITH 1-3 YEAR COMMITS FOR DISCOUNTED TOKENS",
@@ -23702,5 +23666,33 @@
     "headline": "AMD LANDS MEGAKERNEL DECODE IN UPSTREAM VLLM BEFORE CUDA SUPPORT EXISTS",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2109841575547211955"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-13 16:55:45 UTC",
+    "headline": "GOOGLE MAKES GEMINI 4 ARGON GENERALLY AVAILABLE IN GEMINI API, AI STUDIO AND PRO/ULTRA GEMINI APP",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2110039274922131792"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-13 16:55:45 UTC",
+    "headline": "ANTHROPIC: DAILY MERGED CODE CHANGES UP FROM 2,500 IN MAY TO 30,000+ IN SEPTEMBER; REPLACES GIT WITH IN-HOUSE SYSTEM",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2110047081414987957"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-13 16:55:45 UTC",
+    "headline": "ANTHROPIC REPORTEDLY TO SHOW Q3 FINANCIALS TO POTENTIAL INVESTORS OCT 14; IPO PLANS SAID ON TRACK",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2110027012970811751"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-13 16:55:45 UTC",
+    "headline": "WHITE HOUSE PLANS TO MOVE THREE SENIOR CAISSI AI-TESTING OFFICIALS FROM COMMERCE INTO WHITE HOUSE LINES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2110015232756060665"
   }
 ]
