@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-13 06:41:43 UTC
+
+CYCLE: AI-memory trade cracks in Seoul; SpaceXSI bundles Grok + Cursor + X
+
+TOP STORIES:
+• KOSPI down ~6-7%, SK Hynix ~-10%, Samsung ~-8% on CXMT DRAM claim, slowing DRAM prices and Hock Tan's "casino" remark [⚠]
+• SpaceXSI launches The X Subscription: Grok, Grok Bot, Cursor, X Premium in $8/$30/$100/$200 tiers [✓]
+• AMD lands megakernel decode in upstream vLLM ahead of CUDA, per SemiAnalysis [⚠]
+
+WATCH: Gemini 4 Argon rollout to Ultra subscribers (teased, not yet confirmed by Google)
+
+Full update on GitHub.
