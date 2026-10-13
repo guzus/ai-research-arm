@@ -3,7 +3,7 @@ slug: deepseek-v4-1-pro-2026-09
 title: DeepSeek V4.1 Pro — reportedly in early gray-scale testing
 company: DeepSeek
 model: DeepSeek V4.1 Pro
-status: in-testing
+status: closed
 status_note: |
   **Single Chinese-language source, 2026-09-28 02:56 UTC.** @zane_os: "Deepseek
   V4.1 Pro 正在早期灰度测试" — DeepSeek V4.1 Pro is in early gray-scale (staged
@@ -59,12 +59,14 @@ sources:
   - https://x.com/tianyi/status/2104413106990645683
   - https://x.com/teortaxesTex/status/2104419150781165828
 created_at: 2026-09-28
-updated_at: 2026-09-28
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-13
+closed_at: 2026-10-13
+closed_reason: "stale-rumor-unverified"
 history:
   - ts: 2026-09-28
     change: "Created — @zane_os (2026-09-28 02:56 UTC) reports DeepSeek V4.1 Pro in early gray-scale testing. Status in-testing on the staged-rollout artifact class; verification unverified, with the disconfirming context recorded in full: @teortaxesTex, the strongest China-desk reader in-window, told readers to 'ignore gray-scale testing evidence for your own sanity' and suspects a router may be serving Opus 5.5 for some queries, and @tianyi separately denied that anyone claimed V4.1 Pro would ship alongside the official DSH release. No DeepSeek post, model card, API id, pricing, benchmark or firsthand output. Opened as a new ticket rather than an update to [[deepseek-v4-1-2026-09]] because a Pro tier is a distinct model id with its own release event, on precedent from [[deepseek-v4-pro-price-cut-2026-05]]."
+  - ts: 2026-10-13
+    change: "Closed — stale-rumor-unverified. Verification never left unverified, and the last history entry is dated 2026-09-28, 15 daily cycles ago. Nothing in the 2026-10-13 signal corroborates the claim. A fresh primary-sourced signal should open a successor ticket that links back here, not reopen this one."
 ---
 
 One account reports a staged rollout. The most credible reader of Chinese AI

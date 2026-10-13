@@ -5,6 +5,12 @@ company: Google / DeepMind
 model: Gemini 4
 status: confirmed
 status_note: |
+  **2026-10-13 — launch-watch, no GA.** @OfficialLoganK posted just "Gemini"
+  (02:39 UTC). Business Insider Japan reports Google staff are testing a
+  next-gen "Carbon" that employees rate as comparable to Opus 5.5 (via
+  @hijiri_bcg). Replies describe a quotas-page sighting, but the underlying
+  artifact was not captured. The model is still gated to Fairwind partners.
+
   **2026-10-12 — under UK AISI evaluation, not yet public.** UK AI Minister
   Kanishka Narayan confirmed AISI is evaluating Gemini 4 Argon after the White
   House restored UK pre-release access (digest relay, see
@@ -72,8 +78,11 @@ sources:
   - https://x.com/demishassabis/status/2105735567027646518
   - https://x.com/JoshTradeOption/status/2105999237280371171
   - https://x.com/Channeliam/status/2105999303156363390
+  - "https://x.com/OfficialLoganK/status/2109836485981778260"
+  - "https://x.com/hijiri_bcg/status/2110010130972676229"
+  - "https://x.com/linlinkyyb/status/2110010050383364601"
 created_at: 2026-09-24
-updated_at: 2026-10-12
+updated_at: 2026-10-13
 closed_at: null
 closed_reason: null
 history:
@@ -91,6 +100,8 @@ history:
     change: "Confirmed, unchanged — first-day third-party placements and coverage; no GA date. @demishassabis retweeted (2026-10-01 23:34 UTC) @ArtificialAnlys: 'Google's new Gemini 4 Argon equals GPT-6 Astra on the Artificial Analysis Intelligence Index at 60% of the Cost per Ta[sk]' — consistent with the AA-index parity already recorded, now with a cost-per-task ratio attached (the RT text is truncated, so only the parity and the 60% figure are adopted). He also retweeted @andonlabs (19:04 UTC) claiming Argon 'understands the physical 3D world better than any other AI' and ranks #1 on a benchmark whose name is cut off in the captured text — logged as a vendor-amplified third-party claim, benchmark unidentified. Secondary coverage (@JoshTradeOption, @Channeliam, 2026-10-02) repeats a DeepSWE score of 77.9% attributed to Google and the $2/$10 introductory price, and restates that trusted cyber defenders are testing it before wider access. 77.9% would sit above GPT-6.1 Sol's reported 75.2% ([[openai-gpt-6-1-sol-2026-09]]); not yet seen in a Google primary in this desk's signal, so held as relay-strength. Status stays confirmed: access is still the Fairwind partner list."
   - ts: 2026-10-12
     change: "Confirmed, unchanged — external safety evaluation now on the record; still no public release. Per @daogangtang's 2026-10-12 digest, the White House restored UK AISI pre-release access to frontier models, and UK AI Minister Kanishka Narayan confirmed AISI is evaluating systems including Gemini 4 Argon (@trywavecode: 'Gemini 4 Argon is NOT dropping today … Google is still in the controlled-access phase'). Market chatter in-window (@aipulseda1ly) puts Polymarket odds of Argon going public by Friday at ~66%. The same post claims Google staff are testing a newer Gemini 4 checkpoint codenamed 'Carbon', described by one tester as feeling 'like Opus 5.5' for coding. That is a single unsourced relay and is logged, not adopted. Status stays confirmed: access is still the Fairwind partner list."
+  - ts: 2026-10-13
+    change: "Confirmed, unchanged — launch-watch chatter, no general availability. @OfficialLoganK posted the single word 'Gemini' (2026-10-13 02:39 UTC). Twelve hours later, replies still note that nothing has launched (@madhav1). Replies to a @testingcatalog post describe a model appearing on a Google quotas page with 'predecessor of an upcoming model' wording (@linlinkyyb, @harshit10sehgal). The underlying post is not in this signal, so this is logged, not adopted. Business Insider Japan (relayed by @hijiri_bcg) reports that Google staff are testing a next-generation Gemini codenamed 'Carbon' that employees rate as comparable to Opus 5.5. That is the outlet-level version of the single relay logged on 2026-10-12, but it is still not adopted as a separate artifact. A Polymarket market on Gemini 4.0 release timing is active (@SheikhSilicon). No mapping was added this cycle because this run could not reach the Polymarket API to read IDs. Status stays confirmed: access is still the Fairwind partner list."
 ---
 
 The July ticket died of exactly one thing: nobody in a position to know would

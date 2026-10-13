@@ -1,10 +1,21 @@
 ---
 slug: meta-watermelon-2026-10
-title: "Meta \"Watermelon\" — next foundation model, teased by Zuckerberg and Alexandr Wang (🍉)"
+title: "Meta Muse Wonder / Muse Wonder Full (codename \"Watermelon\") — Meta's frontier agent model, launched 2026-10-12"
 company: Meta (Meta Superintelligence Labs)
-model: Watermelon
-status: in-testing
+model: "Muse Wonder / Muse Wonder Full (codename Watermelon)"
+status: released
 status_note: |
+  **2026-10-13 — LAUNCHED as Muse Wonder / Muse Wonder Full (2026-10-12).**
+  @AIatMeta (2026-10-12 17:43 UTC) refers to "Muse Wonder models" as large models
+  "too big for many people to use, in addition to potential safety concerns", and
+  says open weights are coming for Muse Spark, not Wonder. Per the 12 October
+  announcement (relayed by @Skywalkerlyzv), Muse Wonder is available through the
+  Meta Model API and Muse Code. Muse Wonder Full is for Muse Code subscribers, and
+  the Muse app rollout is still to come. Headline features are Active Memory and
+  Active Focus. API pricing is about $4/$20 per MTok (@QQzlans relay).
+  The Watermelon → Muse Wonder mapping is inferred from same-day timing. No
+  Meta post in the signal states it.
+
   **2026-10-12 — leadership teases on their own handles.** @alexandr_wang: "vibes
   kinda good 🍉"; @finkd (Zuckerberg): "Muse ordered me 🍉 how thoughtful!".
   These read as internal-evaluation teases → `in-testing`. Still emoji-only, so no
@@ -26,13 +37,13 @@ status_note: |
   **Not the same artifact as Muse Spark 1.4** ([[meta-muse-spark-1-4-2026-09]]),
   which is a registry entry on the existing Muse Spark line. Watermelon is
   described as the next foundation model.
-expected: "No date. Leadership teasing internal results (2026-10-12). Watch for a Meta announcement, a model card, or a Muse product that names it."
+expected: "Launched 2026-10-12. Muse Wonder is on the Meta Model API and Muse Code; Muse Wonder Full is for Muse Code subscribers. Pending: the Muse app rollout and independent benchmark reproduction. Meta says no open weights for Wonder (only Muse Spark weights are coming)."
 labels:
   - meta
   - foundation-model
   - codename
-  - unreleased
-verification: partial
+  - released
+verification: confirmed
 sources:
   - "https://x.com/alexandr_wang/status/2109657401825861940"
   - "https://x.com/finkd/status/2109660829952176518"
@@ -40,8 +51,12 @@ sources:
   - "https://x.com/AILeaksAndNews/status/2109672357971320892"
   - https://x.com/TalkOnPointApp/status/2106710993308987756
   - https://x.com/clwkevin/status/2106720565214204016
+  - "https://x.com/QQzlans/status/2110011722144866694"
+  - "@AIatMeta"
+  - "https://x.com/Skywalkerlyzv/status/2110013977090789652"
+  - "https://x.com/anandragn/status/2110010080909201572"
 created_at: 2026-10-04
-updated_at: 2026-10-12
+updated_at: 2026-10-13
 closed_at: null
 closed_reason: null
 history:
@@ -49,6 +64,8 @@ history:
     change: "Created — RUMORED / partial. @TalkOnPointApp (2026-10-04) summarises Zuckerberg on the Sources podcast pointing to 'Watermelon' as an upcoming release after Muse Spark 1.3. The codename was previously carried by Business Insider (via @kimmonismus) and a Citi analyst note, tracked as pending on the closed [[meta-hatch-muse-spark-2026-06]], which is left untouched. It gets its own ticket now that the CEO reportedly names it. Advances to confirmed on a primary clip, transcript or Meta post."
   - ts: 2026-10-12
     change: "RUMORED -> IN-TESTING; verification stays partial. Meta's own leadership is now teasing the codename on their own handles. @alexandr_wang (MSL chief, 2026-10-12 14:48 UTC): 'vibes kinda good 🍉'. @finkd (Zuckerberg, 15:01 UTC): 'Muse ordered me 🍉 how thoughtful!'. @testingcatalog (~242 likes) reads it as a Watermelon tease and asks whether training is finalised. @AILeaksAndNews and @CaktusJxck carry it as Meta's upcoming frontier model. Advanced because the head of the building lab is describing evaluation 'vibes', which implies a model under internal evaluation. Verification stays partial: the posts are emoji teases that never name a model, and there is no date, card or benchmark."
+  - ts: 2026-10-13
+    change: "IN-TESTING -> RELEASED; verification partial -> confirmed; title and model updated, slug kept. Meta launched Muse Wonder and Muse Wonder Full on 2026-10-12, hours after the 🍉 teases recorded in the previous entry. @AIatMeta, on its own handle (2026-10-12 17:43 UTC, captured as a quote in @QQzlans's digest), calls 'Muse Wonder models' large models that are too big for many people to use and cites potential safety concerns. It says open weights are coming for Muse Spark, not Wonder. Per the 12 October announcement as relayed by @Skywalkerlyzv, Muse Wonder is available through the Meta Model API and Muse Code, Muse Wonder Full is for Muse Code subscribers, and the Muse app rollout is still ahead. The headline features are Active Memory (retrieving context across conversations) and Active Focus (continuing through blockers). @QQzlans relays API pricing of about $4/$20 per MTok. Early third-party reads conflict, and all of them reach us through relays, so none is adopted as a benchmark. Cline reportedly has it leading DeepSWE, BridgeBench puts it only slightly above Claude Haiku 5.5, and Theo ranks it alongside Opus 5.5. The codename mapping is an INFERENCE, not a Meta statement. Watermelon is the next foundation model that Wang and Zuckerberg teased on 2026-10-12 between 14:48 and 15:01 UTC, and Muse Wonder is the frontier model Meta shipped that day. No Meta post in this signal says 'Watermelon = Muse Wonder'. If Meta later contradicts the mapping, a successor ticket should carry Wonder. The status is released because developers can use the API; the consumer app is still pending."
 ---
 
 Watermelon has been a codename in analyst and press reporting since the summer,
@@ -63,3 +80,12 @@ podcast summary. A clip or transcript would make it `confirmed`.
 Muse Spark 1.4 ([[meta-muse-spark-1-4-2026-09]]) could be an interim release on
 the existing line. It should not be merged with this ticket unless Meta ships
 Watermelon under that version number.
+
+**2026-10-13 — it shipped.** Meta launched Muse Wonder on 2026-10-12, the
+same day its leadership posted the 🍉 teases. This is treated as the Watermelon
+release, because Meta shipped its next frontier model within hours of the
+teases. That is an inference: Meta has not said so in this signal. Wonder is
+API- and Muse Code-first, and Wonder Full is limited to subscribers. Meta
+explicitly does not plan open weights for Wonder. That breaks with the
+open-weight positioning Meta used to have, and fits the Muse Spark line staying
+the open tier.

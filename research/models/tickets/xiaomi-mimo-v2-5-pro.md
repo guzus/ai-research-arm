@@ -22,13 +22,16 @@ verification: partial
 sources:
   - "@Xiaomi"
   - "@ycombinator"
+  - "https://x.com/Rich79_Capital/status/2109997103804232004"
 created_at: 2026-06-09
-updated_at: 2026-06-09
+updated_at: 2026-10-13
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-06-09
     change: "Created — Xiaomi MiMo-v2.5-Pro-UltraSpeed claims 1,000+ tok/s on a 1T-parameter MoE using a standard 8-GPU server (no Cerebras/Groq), the day's top community AI story (419 pts on HN). Real model in the MiMo line + heavy community attention → status confirmed; the throughput headline is unverified independently → verification partial"
+  - ts: 2026-10-13
+    change: "Deprecation scheduled (reported); status unchanged. According to a @BAI_AGI migration notice relayed on 2026-10-13 (@Rich79_Capital, @urdav3), requests to the MiMo-V2.5-Pro model ID will auto-route to MiMo-V2.6-Pro starting 2026-10-14 18:00 SGT, and the legacy ID will return errors starting 2026-10-21 10:00 SGT. The successor line is tracked at [[xiaomi-mimo-v2-6-pro-2026-09]]. The notice does not mention the UltraSpeed variant this ticket was opened for. It is a provider notice, not a Xiaomi primary, so verification stays partial."
 ---
 
 **Xiaomi's MiMo-v2.5-Pro-UltraSpeed** was the cycle's **top community AI

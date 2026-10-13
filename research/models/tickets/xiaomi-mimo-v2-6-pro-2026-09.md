@@ -52,13 +52,17 @@ sources:
   - https://x.com/kimmonismus/status/2103137466467361275
   - https://x.com/Hikari_07_jp/status/2103242476962349314
   - https://x.com/Hikari_07_jp/status/2103088731645505988
+  - "https://x.com/urdav3/status/2110010973373538766"
+  - "https://x.com/Rich79_Capital/status/2109997103804232004"
 created_at: 2026-09-25
-updated_at: 2026-09-25
+updated_at: 2026-10-13
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-25
     change: "Created — RELEASED / partial. @kimmonismus reported on 2026-09-24 15:00 UTC (~470 likes) that Xiaomi's MiMo-V2.6-Pro now leads open-weight models on the Artificial Analysis Intelligence Index at 46 points, one behind GPT-5.6 Sol (max) at 47, at $0.13 vs $1.99 per Intelligence Index task weighted-average; handles text, images, video and audio at 1M context; API pricing unchanged from V2.5; weights under MIT, with training environments, RL code and a technical report said to accompany the release. Verification partial rather than unverified on the strength of INDEPENDENT corroboration of the artifact: @Hikari_07_jp published an abliterated 9B distilled from MiMo (2026-09-24 11:46 UTC) and then Q4_K_M and NVFP4 quantizations of MiMo-V2.6-Distill-Qwen-9B with measured throughput (2026-09-24 21:57 UTC) — a third party building derivatives is stronger evidence that open weights exist than a benchmark relay. Status released on that basis. The 15x cost-per-task gap is recorded but flagged: it is a derived weighted-average that mixes token price with reasoning verbosity, so it measures buyer economics, not capability. Distinct ticket from [[xiaomi-mimo-v2-5-pro]] (V2.5-Pro-UltraSpeed), which stays open; noted alongside [[zhipu-glm-5-3-2026-08]] as the second Chinese open-weight release in two months to land within a point of a Western closed flagship."
+  - ts: 2026-10-13
+    change: "Released, unchanged — V2.5 traffic is being moved onto V2.6. A migration notice from @BAI_AGI was relayed in-window by @urdav3, @Rich79_Capital and @Temitope_Fire. From 2026-10-14 18:00 SGT, requests using the legacy MiMo-V2.5-Pro and MiMo-V2.5 IDs will be routed to MiMo-V2.6-Pro and MiMo-V2.6-Flash and billed at the new models' rates. From 2026-10-21 10:00 SGT, the legacy IDs will return errors. The notice also names a MiMo-V2.6-Flash tier that this ticket had not recorded. Verification stays partial: the notice comes from a provider/community account, not a Xiaomi handle, and the relays come from a promotional cluster (#TRONEcoStar). One point is unresolved: 'billed at the new models' rates' does not fit easily with the 2026-09-24 report that V2.6 kept V2.5 API pricing."
 ---
 
 The score is not the interesting number. The license is.

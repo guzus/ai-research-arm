@@ -3,7 +3,7 @@ slug: periodic-labs-neon-2026-09
 title: Periodic Labs releases Neon — open-source materials-science model trained on 1,300 H200s
 company: Periodic Labs
 model: Neon
-status: released
+status: closed
 status_note: |
   **Announced by Periodic Labs co-founder Liam Fedus, 2026-09-15 16:20 UTC.**
   "We built high-throughput materials labs in Menlo Park to create a loop
@@ -42,12 +42,14 @@ sources:
   - https://x.com/LiamFedus/status/2099896055030501702
   - https://x.com/JeffDean/status/2099998119392161960
 created_at: 2026-09-16
-updated_at: 2026-09-16
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-13
+closed_at: 2026-10-13
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-09-16
     change: "Created — RELEASED. Periodic Labs co-founder @LiamFedus announced Neon on 2026-09-15 16:20 UTC (first-party, with linked blog posts): high-throughput materials labs in Menlo Park feed fresh experimental data into models that then choose the next experiment, and 'using only 1,300 H200s, plus months of our experimental data, we mid-trained and RL'd an open-source model to surpass GPT-6 Astra on our analysis benchmark.' @JeffDean congratulated the team publicly the same evening (2026-09-15 23:05 UTC), an outside-credibility signal though not an independent evaluation. Verification confirmed on the release; the CAPABILITY CLAIM IS SCOPED and recorded as such — it is Periodic Labs' own analysis benchmark, in materials science, against [[openai-gpt-6]], not a general-capability result, and no third party has reproduced it. The 1,300-H200 figure is the substantive part: if a small domain mid-train plus RL on privately-generated wet-lab data beats a frontier model in-domain, the scarce input is proprietary experimental data rather than compute. NOT captured in-window: licence, weights location, base model, parameter count, or the benchmark's construction. Adjacent open-science-model ticket: [[stanford-marin-535b-2026-08]]; adjacent AI-for-science tickets: [[anthropic-protein-binder-design-2026-08]], [[anthropic-fermat-lean-proof-2026-09]], [[google-weathernext-3-2026-09]]."
+  - ts: 2026-10-13
+    change: "Closed — released-and-aged. Neon was announced and released on 2026-09-15 (@LiamFedus), per this ticket's history. As of today that is 28 days, which meets the ≥4-week threshold. No open lifecycle question remains on this artifact, and further coverage rolls into normal reporting."
 ---
 
 **Neon** is an open-source materials-science model that Periodic Labs says
