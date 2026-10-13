@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-13
+
+TOP 5 PAPERS:
+• MagicBeanStalk — 88% of RLVR math is zero-advantage; recursive synth: gpt-oss-120b 61→70
+• EvoBelief — falsifiable world-model rules; ALFWorld +24–31; DiscoveryWorld 83% vs 0
+• ELR / Koi-4B — one checkpoint, no one-loop tax; AAII 18 at 1 loop, 29 at 4
+• Unsupervised MM reward — no human labels; 32B matches/beats GPT-4o
+• VEPA — verified evolving formal guardrails; LLM proposes, verifier accepts
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 7, Other 8
+
+Full report on GitHub.
