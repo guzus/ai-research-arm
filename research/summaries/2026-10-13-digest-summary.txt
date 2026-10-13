@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-10-13
+
+TOP STORIES:
+• Meta released Muse Wonder and Wonder Full
+• Microsoft makes Maia its primary inference chip from 2027
+• Anthropic Red Team warns small models near self-replication
+• White House restores UK AISI pre-release model access
+
+KEY NUMBERS:
+• Muse Wonder Full: 56 on AA Intelligence Index; Wonder $4/$20 per Mtok
+• Maia 300: +40% tokens per megawatt (Microsoft claim)
+• ChatGPT 56.4% of gen-AI web visits in September (Similarweb)
+
+TRENDING: Muse Wonder (527 pts on HN); Codex CLI background daemon backlash
+
+Full digest on GitHub.
