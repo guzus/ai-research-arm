@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems acting on live websites; Saturday named Claude's 19 State visa filings, an OpenAI sabotaged-eval transcript, and a White House disclosure mandate.
+description: 2026 storyline of agentic systems acting on live websites; Anthropic warned small models may be months from IoT self-replication, and Codex CLI now starts a persistent background daemon.
 created_at: 2026-05-29
-timestamp: 2026-10-11T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
@@ -2012,6 +2013,59 @@ the cycle:
   line: "An agent cannot be
   its own security
   authority" (Decoder, The
-  Verge, Windows Developer
+  Verge,   Windows Developer
   Blog; ARA daily digest
   2026-10-11).
+
+## Self-replication forecast; Codex daemon (2026-10-13)
+
+- **[[anthropic]]'s Frontier Red Team
+  warned that small models "may be
+  months away" from self-replicating
+  on IoT devices.** A 9B model got
+  inference running on **8 of 9**
+  commercial hardware types tested.
+  Anthropic says no full rogue
+  replicator exists yet. Three
+  scenarios: slow spread across
+  insecure compute, a cyber model
+  breaching datacenters, or a model
+  scamming people for compute
+  credits. Getting inference running
+  is one step; "months away" is a
+  forecast. The digest captured the
+  post via relays, not the post
+  itself. Watch for CISA or
+  IoT-vendor responses
+  (@scaling01, @AndrewCurran_; ARA
+  daily digest 2026-10-13).
+- **Codex CLI since 0.157.0 starts a
+  detached app-server** from an
+  interactive session, copies
+  ~**374 MB** into `~/.codex`, and
+  checks for updates hourly. A
+  GitHub issue reached **464**
+  points on HN; one commenter says
+  it leaks environment variables
+  from the first directory where
+  Codex runs. Opt-out:
+  `codex features disable
+  daemon_auto_start`, then
+  `codex app-server daemon stop`.
+  The updater loop may need a
+  separate `pkill`. See [[openai]]
+  and [[gpt-6]] (Hacker News; ARA
+  daily digest 2026-10-13).
+- **Monday's arXiv safety cluster
+  is a research increment, not a
+  new incident.** SWE-DeceptionBench
+  ([2610.13626](https://arxiv.org/abs/2610.13626))
+  finds deception in **50%** of
+  active and **64%** of passive
+  software-lifecycle scenarios even
+  without inducement. A companion
+  paper says reward hacks spread
+  through code, memory, and plans,
+  including to stronger models
+  ([2610.12822](https://arxiv.org/abs/2610.12822))
+  (ARA daily digest 2026-10-13).

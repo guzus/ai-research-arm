@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; this cycle pairs Samsung's KRW 107.4T prelim profit with reported $50B Broadcom/OpenAI Nexus chip talks.
+description: The historically large compute buildout; Microsoft said Maia becomes its primary inference system from 2027 at multi-gigawatt scale.
 created_at: 2026-05-24
-timestamp: 2026-10-12T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
@@ -1583,3 +1584,22 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   token index peaked on May 31
   (SemiAnalysis; ARA daily
   digest 2026-10-12).
+
+## Microsoft puts Maia on the primary inference path (2026-10-13)
+
+- **[[microsoft]] said Maia becomes its
+  primary inference system from 2027**
+  at multi-gigawatt scale. Maia 300
+  claims **40% more tokens per
+  megawatt** than leading GPU systems
+  and up to **7× Maia 200** rack
+  throughput (96 accelerators, 167 kW,
+  27.6 TB HBM). Internal silicon; no
+  Azure customer SKU. That is the
+  third hyperscaler to put its own
+  accelerator at the center of its
+  serving fleet, which reduces how
+  much future Microsoft demand goes
+  to [[nvidia]] (The Verge, The
+  Decoder; ARA daily digest
+  2026-10-13).

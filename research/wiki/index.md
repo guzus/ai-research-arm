@@ -12,7 +12,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.
-- [[anthropic]] — AI safety lab behind Claude; WIRED says HarperCollins, Simon & Schuster, and Hachette use Claude for publicity copy, covers, and agent emails.
+- [[anthropic]] — AI safety lab behind Claude; Frontier Red Team says a 9B model got inference running on 8 of 9 commercial hardware types and that small models may be months from IoT self-replication.
 - [[apple]] — Consumer-hardware giant tightening macOS Full Disk Access for AI agents after saying they substantially raise file-and-message risk.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
@@ -49,7 +49,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-4-argon]] — Google's Fairwind-gated frontier SKU; Antigravity now lists 256K/512K/900K Argon tiers, and employees are testing a later Carbon checkpoint.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; EmbeddingGemma 2 (740M–270M) is the new multimodal embedder built on Gemma 4.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
-- [[google]] — Hyperscaler behind Gemini; shipped a Gemini Enterprise work agent and Hassabis confirmed a $150M Genesis credit slice.
+- [[google]] — Hyperscaler behind Gemini; DeepMind's AlphaProof Nexus passed peer review in Science, resolving nine Erdős problems, two open for 56 years.
 - [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 - [[gpt-6]] — OpenAI's GPT-6 generation; GPT-6.1 Sol's default context on Codex and ChatGPT Work is now 500k tokens, up from 272k.
 - [[groq]] — AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.
@@ -60,9 +60,9 @@ Each page is one of three types — entity, concept, or theme. See
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
 - [[meituan-longcat-2]] — Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model ("Owl Alpha"); claimed no-Nvidia domestic-cluster training, topped OpenRouter coding usage incognito for ~two months.
-- [[meta]] — Social-platform hyperscaler and Llama maker; The Information says internal Claude Code users fell from ~60K to ~30K as Meta pushes staff onto its own tools.
+- [[meta]] — Social-platform hyperscaler and Llama maker; shipped Muse Wonder and subscriber-only Wonder Full, independently scored 52 and 56 on Artificial Analysis versus Spark 1.3's 48.
 - [[micron]] — US memory maker (HBM/DRAM/SSD); FY26Q4 printed $54.23B revenue and $37.70B GAAP net income, with full-year revenue $133.19B.
-- [[microsoft]] — Hyperscaler and frontier-model builder; Nadella's Saturday essay argued agentic models are insider risks and asked for an emergency brake.
+- [[microsoft]] — Hyperscaler and frontier-model builder; from 2027 Maia accelerators become the primary inference system for Microsoft's own services at multi-gigawatt scale.
 - [[midjourney]] — Investor-free, community-funded AI image lab now seeking discovery into Disney/Universal/Warner Bros.' internal AI-training practices while diversifying into hardware (Midjourney Medical scanner).
 - [[minimax-h3]] — MiniMax's 33B unified text/image/video/audio model (2026-08-04); first open model reported to top a video-generation ranking, runs on a single RTX 5090, but withholds 2K regeneration and sparse attention server-side.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
@@ -71,8 +71,9 @@ Each page is one of three types — entity, concept, or theme. See
 - [[mistral-leanstral-1-5]] — Mistral's open-source (Apache 2.0) Lean 4 formal-verification model; saturates miniF2F, SOTA on FATE-H/FATE-X, found 5 unknown bugs across 57 scanned repos.
 - [[mistral-robostral-navigate]] — Mistral's first embodied-navigation model (8B params), guiding robots via natural-language task instructions; announced 2026-07-08.
 - [[mistral-shieldstral]] — Mistral's 3B open-weights multimodal moderation model (2026-08-06), reported to match much larger safety models and moving content filtering onto the self-hoster's side of the line.
-- [[muse-code]] — Meta Superintelligence Labs' coding and consumer-agent line; Meta admitted Muse was heavily inspired by OpenClaw, patched a local transcription 0-day, and announced PayPal checkout without a PayPal-side confirmation.
+- [[muse-code]] — Meta Superintelligence Labs' coding and consumer-agent line; Muse Wonder is live in Muse Code and the Model API, with Wonder Full limited to $50/$200 subscribers.
 - [[muse-glimmer]] — Meta's 30B dense multimodal agent model, released 2026-08-10 under Apache 2.0 with day-0 ecosystem support; the best non-Chinese open-weights release in a year, distilled from Muse Spark.
+- [[muse-wonder]] — Meta's first independently scored frontier pair; Artificial Analysis puts Wonder at 52 and subscriber-only Full at 56 on its Intelligence Index, up from Muse Spark 1.3's 48.
 - [[moonshot-kimi-k2-7-code]] — Moonshot AI open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while filling the Fable 5 vacuum.
 - [[moonshot-kimi-k3]] — Moonshot AI's 2.8T-parameter flagship; OpenAI said a core cluster of hidden-reasoning extraction attempts came from individuals associated with the Kimi developer.
 - [[naive-ai]] — Lab behind N0.5-Flash, a 309B MIT-licensed MoE (15.5B active, native 1M context) continued-pretrained on Xiaomi's MiMo-V2.5.
@@ -129,10 +130,10 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; Saturday named Claude's 19 State visa filings, an OpenAI sabotaged-eval transcript, and a White House disclosure mandate.
-- [[ai-capex]] — The historically large compute buildout; this cycle pairs Samsung's KRW 107.4T prelim profit with reported $50B Broadcom/OpenAI Nexus chip talks.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; Anthropic warned small models may be months from IoT self-replication, and Codex CLI now starts a persistent background daemon.
+- [[ai-capex]] — The historically large compute buildout; Microsoft said Maia becomes its primary inference system from 2027 at multi-gigawatt scale.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
-- [[federal-ai-policy]] — US federal AI governance; the Telegraph says Washington reversed its hold on sending new models to Britain's AISI, with no White House confirmation.
+- [[federal-ai-policy]] — US federal AI governance; Reuters confirmed the White House restored UK AISI pre-release access to Anthropic, Google DeepMind, and OpenAI models.
 - [[open-weights]] — Open-weight models closing on the frontier; Nous Research closed a $90M Series B at $1.5B for Hermes Agent, a day after Mistral previewed Large 4 weights.

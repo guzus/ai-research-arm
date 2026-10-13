@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; the Telegraph says Washington reversed its hold on sending new models to Britain's AISI, with no White House confirmation.
+description: US federal AI governance; Reuters confirmed the White House restored UK AISI pre-release access to Anthropic, Google DeepMind, and OpenAI models.
 created_at: 2026-06-03
-timestamp: 2026-10-12T00:00:00Z
+timestamp: 2026-10-13T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
@@ -2166,6 +2167,41 @@ footing for the first time in the cycle.
   reversal, not a signed
   channel (Telegraph; ARA daily
   digest 2026-10-12).
+
+## UK AISI access confirmed restored (2026-10-13)
+
+- **Reuters and The Decoder confirmed
+  the UK can again safety-test
+  [[anthropic]], [[google|Google
+  DeepMind]], and [[openai]] models
+  before release.** A UK minister
+  told Reuters the government has
+  been given access again after the
+  September cutoff. The Decoder
+  credits diplomatic pressure from
+  AI Minister Kanishka Narayan.
+  Yesterday's Telegraph item on this
+  page is no longer single-outlet.
+  The model-review EO ticket now
+  treats the 2026-09-24
+  "US review first, then allies"
+  sequencing as superseded for the
+  UK; whether it persists for other
+  partners is open. @AndrewCurran_
+  separately reports in one line
+  that CAISI is moving into the
+  White House; there is no official
+  source yet. See [[anthropic]]
+  (Reuters, The Decoder; ARA daily
+  digest 2026-10-13 and ticket
+  `us-ai-model-review-eo-2026-06`).
+- **[[microsoft|Brad Smith]] said
+  the UK should lead AI
+  regulation**, arguing milk and
+  washing machines face more
+  oversight than AI companies
+  (TechCrunch; ARA daily digest
+  2026-10-13).
 
 ## Open questions
 
