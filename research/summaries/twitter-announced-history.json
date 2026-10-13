@@ -3,33 +3,6 @@
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-19 18:00 UTC",
-    "headline": "GEMINI 3.5 FLASH LIVE GLOBALLY \u2014 INTELLIGENCE INDEX 55 BEATS CLAUDE SONNET 4.6 AND GROK 4.3, TOPS MMMU-PRO AT 84%",
-    "source": "@GoogleDeepMind",
-    "source_file": "research/summaries/2026-05-19-twitter-18h-headlines.json",
-    "url": "https://x.com/GoogleDeepMind/status/2056787987774816525"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 18:00 UTC",
-    "headline": "GOOGLE TRIPLES FLASH PRICING \u2014 GEMINI 3.5 FLASH AT $1.50/$9 PER 1M TOKENS, 5.5\u00d7 MORE EXPENSIVE TO RUN THAN GEMINI 3 FLASH",
-    "source": "@ArtificialAnlys",
-    "source_file": "research/summaries/2026-05-19-twitter-18h-headlines.json",
-    "url": "https://x.com/ArtificialAnlys/status/2056795055512596817"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 18:00 UTC",
-    "headline": "GEMINI OMNI LAUNCHES \u2014 GOOGLE'S FIRST MULTIMODAL-IN / VIDEO-OUT WORLD MODEL SHIPS TO GEMINI APP, FLOW, YOUTUBE SHORTS",
-    "source": "@GoogleDeepMind",
-    "source_file": "research/summaries/2026-05-19-twitter-18h-headlines.json",
-    "url": "https://x.com/GoogleDeepMind/status/2056786446636212467"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-19 18:00 UTC",
     "headline": "GEMINI SPARK \u2014 GOOGLE'S DEDICATED-VM PERSONAL AGENT CONNECTS TO USER'S FULL GOOGLE DATA, TRUSTED TESTERS THIS WEEK",
     "source": "@OfficialLoganK",
     "source_file": "research/summaries/2026-05-19-twitter-18h-headlines.json",
@@ -23708,5 +23681,26 @@
     "headline": "UK GIVEN ACCESS TO SAFETY-TEST LATEST AI MODELS, MINISTER SAYS",
     "source": "@Reuters",
     "url": "https://x.com/Reuters/status/2109753521453056393"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-13 06:41:43 UTC",
+    "headline": "KOSPI PLUNGES ~7% AS SK HYNIX SINKS ~10%, SAMSUNG ~8% IN AI-MEMORY SELLOFF",
+    "source": "@scalethesis",
+    "url": "https://x.com/scalethesis/status/2109897008047956373"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-13 06:41:43 UTC",
+    "headline": "SPACEXSI LAUNCHES 'THE X SUBSCRIPTION' BUNDLING GROK, CURSOR AND X PREMIUM; TIERS $8 TO $200 A MONTH",
+    "source": "@SpaceXSI",
+    "url": "https://x.com/SpaceXSI/status/2109783335296008414"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-13 06:41:43 UTC",
+    "headline": "AMD LANDS MEGAKERNEL DECODE IN UPSTREAM VLLM BEFORE CUDA SUPPORT EXISTS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2109841575547211955"
   }
 ]
