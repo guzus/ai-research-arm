@@ -2,42 +2,6 @@
   {
     "backfilled": true,
     "category": "business",
-    "delivered_at": "2026-05-20 01:00 UTC",
-    "headline": "GOOGLE CALLS IT BIGGEST SEARCH-BOX UPGRADE IN 25 YEARS \u2014 GEMINI 3.5 FLASH NOW DEFAULT IN AI MODE, PLUS NEW 'SPARK' AGENT",
-    "source": "@OfficialLoganK",
-    "source_file": "research/summaries/2026-05-20-twitter-01h-headlines.json",
-    "url": "https://x.com/OfficialLoganK/status/2056802276124328352"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-20 01:00 UTC",
-    "headline": "GOOGLE SHIPS GEMINI OMNI \u2014 'CREATE ANYTHING FROM ANY INPUT' MODEL STARTING WITH VIDEO, LIVE FOR AI PLUS/PRO/ULTRA",
-    "source": "@OfficialLoganK",
-    "source_file": "research/summaries/2026-05-20-twitter-01h-headlines.json",
-    "url": "https://x.com/OfficialLoganK/status/2056787874260164628"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 01:00 UTC",
-    "headline": "INTEL AND QUALCOMM REPORTEDLY BOTH EYEING TENSTORRENT RISC-V AI CHIPS IN POTENTIAL $5B+ DEAL",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-20-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2056905041660031048"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-20 04:00 UTC",
-    "headline": "GITHUB BREACH: GROUP 'TEAMPCP' CLAIMS ~4,000 INTERNAL REPOS VIA POISONED VS CODE EXTENSION; KEYS ROTATED",
-    "source": "@shah_sheikh",
-    "source_file": "research/summaries/2026-05-20-twitter-04h-headlines.json",
-    "url": "https://x.com/shah_sheikh/status/2056953467336560825"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
     "delivered_at": "2026-05-20 04:00 UTC",
     "headline": "SPACEX RECORD IPO TURNS IMMINENT: PUBLIC S-1 THIS WEEK, $1.75-2T VALUATION, $75B RAISE, $SPCX TARGETED JUNE 12",
     "source": "@ns123abc",
@@ -23676,5 +23640,33 @@
     "headline": "NANYA: AI DRAM SHORTAGE LIKELY LASTS INTO EARLY 2028; FLAT BIT SHIPMENTS IN EARLY 2027",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2110181190271738015"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-14 11:42:55 UTC",
+    "headline": "ANTHROPIC OPENS SINGAPORE OFFICE, SIGNS AI SAFETY MOU WITH SINGAPORE GOVERNMENT",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2110289695888511368"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-14 11:42:55 UTC",
+    "headline": "REUTERS: ANTHROPIC NEARS DEAL WITH NTT DATA FOR 500 MW OSAKA DATA CENTER",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2110316124437086623"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-14 11:42:55 UTC",
+    "headline": "JUDGE ORDERS OPENAI TO HAND APPLE INTERVIEW FILES ON EX-APPLE HARDWARE RECRUITS WITHIN 14 DAYS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2110324532338893082"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-14 11:42:55 UTC",
+    "headline": "THE INFORMATION: OPENAI IN EARLY TALKS TO ACQUIRE SECURITY FIRM TRAIL OF BITS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2110308563750899813"
   }
 ]
