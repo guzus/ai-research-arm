@@ -1,5 +1,5 @@
 {
-  "article_count": 93,
+  "article_count": 94,
   "articles": [
     {
       "claim_count": 18,
@@ -895,6 +895,14 @@
       "stem": "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log",
       "tags": [],
       "title": "OpenAI's 722 manuscripts: the sub-n log n multiplication claim is real, unchecked mathematics — and the Lean badge covers less than it looks"
+    },
+    {
+      "claim_count": 19,
+      "created_at": "2026-10-14T17:34:27Z",
+      "slug": "xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "stem": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "tags": [],
+      "title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics"
     }
   ],
   "by_host": {
@@ -1206,7 +1214,8 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c20",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c28",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c30",
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c33"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c33",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c15"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -1271,6 +1280,10 @@
     ],
     "app.hedgeye.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c14"
+    ],
+    "app.opencve.io": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c5",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c6"
     ],
     "app.rwa.xyz": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c22"
@@ -1771,7 +1784,8 @@
     ],
     "bleepingcomputer.com": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c12",
-      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c6"
+      "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c6",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12"
     ],
     "blockonomi.com": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c16"
@@ -1827,7 +1841,8 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c19",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c4",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c1",
-      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c3"
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c3",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12"
     ],
     "blog.janestreet.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17",
@@ -1891,6 +1906,9 @@
     ],
     "bloomingbit.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
+    ],
+    "bls.gov": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c18"
     ],
     "bpi.com": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c11"
@@ -2101,6 +2119,10 @@
     "chipstrat.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c10"
     ],
+    "chromereleases.googleblog.com": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c5",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c6"
+    ],
     "cims.nyu.edu": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c20"
     ],
@@ -2149,7 +2171,8 @@
       "2026-05-27T035557--800-vdc-architecture#c48",
       "2026-05-27T035557--800-vdc-architecture#c9",
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c23",
-      "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c36"
+      "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c36",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c16"
     ],
     "cls.cn": [
       "2026-07-13T181948--cxmt#c5"
@@ -2637,7 +2660,8 @@
       "2026-05-27T035557--800-vdc-architecture#c15"
     ],
     "deploymentsafety.openai.com": [
-      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c25"
+      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c25",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c8"
     ],
     "designarena.ai": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c16"
@@ -2675,7 +2699,8 @@
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c32",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c35",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c14",
-      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4"
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7"
     ],
     "developers.tron.network": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c14"
@@ -3556,7 +3581,8 @@
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c33"
     ],
     "groups.google.com": [
-      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c8"
+      "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c8",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c14"
     ],
     "gsa.gov": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c12",
@@ -3574,6 +3600,9 @@
     ],
     "hackmd.io": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c37"
+    ],
+    "hacktron.ai": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c9"
     ],
     "hai.stanford.edu": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c3"
@@ -3612,7 +3641,8 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c13",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c14",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c5",
-      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c6"
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c6",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c13"
     ],
     "hhmi.org": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c38"
@@ -4048,7 +4078,8 @@
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c3"
     ],
     "labs.cloudsecurityalliance.org": [
-      "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c37"
+      "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c37",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c8"
     ],
     "labs.scale.com": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10",
@@ -4119,6 +4150,9 @@
     "lesswrong.com": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c27",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c37"
+    ],
+    "letsdatascience.com": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7"
     ],
     "levels.fyi": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c10",
@@ -5185,7 +5219,8 @@
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c35"
     ],
     "runtimewire.com": [
-      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c20"
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c20",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c9"
     ],
     "ryanoconnellfinance.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
@@ -5390,6 +5425,11 @@
     ],
     "securitycompass.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
+    ],
+    "securityweek.com": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c10",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c13",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c19"
     ],
     "sell.g2.com": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c25"
@@ -6550,7 +6590,12 @@
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
-      "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c38"
+      "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c38",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c1",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c17",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c2",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c3",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c4"
     ],
     "xenaproject.wordpress.com": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c38",
@@ -6582,6 +6627,9 @@
     "zapier.com": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c20",
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
+    ],
+    "zerodayinitiative.com": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c11"
     ]
   },
   "by_url": {
@@ -6906,6 +6954,12 @@
     ],
     "https://app.hedgeye.com/insights/185196-goldman-s-high-beta-momentum-basket-on-track-for-worst-monthly-perform?type=macro": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c14"
+    ],
+    "https://app.opencve.io/cve/CVE-2026-78952": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c6"
+    ],
+    "https://app.opencve.io/cve/CVE-2026-85045": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c5"
     ],
     "https://app.rwa.xyz/assets/USD0": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c22"
@@ -7837,6 +7891,9 @@
     "https://bitcoinworld.co.in/dunamu-pauses-upbit-d-conference-2026-kbw-sponsorship": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c16"
     ],
+    "https://bleepingcomputer.com/news/google/google-paid-171-million-for-vulnerability-reports-in-2025": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12"
+    ],
     "https://blockonomi.com/makerdao-emergency-5-million-dai-raised": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c16"
     ],
@@ -7921,6 +7978,12 @@
     ],
     "https://blog.google/innovation-and-ai/technology/research/google-project-suncatcher": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c3"
+    ],
+    "https://blog.google/security/vrp-2025-year-in-review": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12"
+    ],
+    "https://blog.google/security/vulnerability-reward-program-2024-in": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12"
     ],
     "https://blog.google/technology/ai/april-ai-update": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c47"
@@ -8099,6 +8162,12 @@
     "https://chinaselectcommittee.house.gov/media/press-releases/chairmen-moolenaar-garbarino-announce-joint-investigation-into-airbnb-anysphere-and-the-national-security-risks-posed-by-chinese-ai-models": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c28"
     ],
+    "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0256176589.html": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c6"
+    ],
+    "https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_01882797386.html": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c5"
+    ],
     "https://cims.nyu.edu/~regev/papers/cvpconp.pdf": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c20"
     ],
@@ -8127,6 +8196,9 @@
       "2026-05-27T035557--800-vdc-architecture#c10",
       "2026-05-27T035557--800-vdc-architecture#c48",
       "2026-05-27T035557--800-vdc-architecture#c9"
+    ],
+    "https://cloud.google.com/blog/topics/threat-intelligence/2025-zero-day-review": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c16"
     ],
     "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c23",
@@ -8439,6 +8511,9 @@
     "https://deploymentsafety.openai.com/gpt-5-6": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c25"
     ],
+    "https://deploymentsafety.openai.com/gpt-5-6/gpt-5-6.pdf": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c8"
+    ],
     "https://developer.meta.com/ai/resources/blog/build-with-muse-code": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c32"
     ],
@@ -8487,6 +8562,9 @@
     ],
     "https://developers.openai.com/api/docs/models/gpt-5.5": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c3"
+    ],
+    "https://developers.openai.com/api/docs/models/gpt-5.6-sol.md": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7"
     ],
     "https://developers.openai.com/api/docs/pricing": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6",
@@ -9525,6 +9603,9 @@
     "https://graphite.io/five-percent/research/ai-now-writes-as-many-online-articles-as-humans-do": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c33"
     ],
+    "https://groups.google.com/a/chromium.org/g/security-dev/c/q2r512CzLio": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c14"
+    ],
     "https://groups.google.com/g/exac_data_announcements/c/cdz1BNHe01w": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c8"
     ],
@@ -9896,6 +9977,9 @@
     "https://l2beat.com/layer2s/projects/robinhood": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c3"
     ],
+    "https://labs.cloudsecurityalliance.org/research/csa-research-note-frontier-ai-dual-use-cybersecurity-gpt56-2": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c8"
+    ],
     "https://labs.cloudsecurityalliance.org/research/csa-whitepaper-ai-velocity-gap-development-security-capacity": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c37"
     ],
@@ -9932,6 +10016,9 @@
     ],
     "https://leidendeclaration.ai": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c40"
+    ],
+    "https://letsdatascience.com/news/openai-cuts-gpt-56-sol-api-prices-fbfd85f3": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7"
     ],
     "https://lex.substack.com/p/analysis-unwinding-the-30b-digital": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23"
@@ -11019,6 +11106,9 @@
     ],
     "https://royalsociety.org/people/john-jumper-37403": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c35"
+    ],
+    "https://runtimewire.com/article/hacktron-chrome-exploit-benchmark-gpt-56-sol-ultra": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c9"
     ],
     "https://runtimewire.com/article/openai-10000-ai-agents-navier-stokes-proof": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c20"
@@ -12241,6 +12331,9 @@
     "https://www.anthropic.com/research/emergent-misalignment-reward-hacking": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c29"
     ],
+    "https://www.anthropic.com/research/mythos-preview": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c15"
+    ],
     "https://www.anthropic.com/rsp-updates": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c6"
     ],
@@ -12444,6 +12537,9 @@
     ],
     "https://www.bloomberg.com/news/articles/2026-08-16/stripe-nears-deal-to-buy-ai-firm-openrouter-for-over-7-billion": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c3"
+    ],
+    "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c18"
     ],
     "https://www.briefs.co/news/surging-borrowing-costs-signal-ai-debt-risks": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c18"
@@ -13630,6 +13726,9 @@
     "https://www.gurutrade.com/news/china-s-unitree-flags-us-sales-risk-ahead-of-shanghai-ipo-1785434047.html": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c12"
     ],
+    "https://www.hacktron.ai/blog/watching-gpt-55-sol-ultra-write-a-chrome-exploit-exploit-development-as-we-know-it-is-over": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c9"
+    ],
     "https://www.halborn.com/blog/post/explained-the-bonkdao-hack-july-2026": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c20"
     ],
@@ -13657,6 +13756,9 @@
     ],
     "https://www.helpnetsecurity.com/2026/04/16/eu-ai-act-logging-requirements": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c28"
+    ],
+    "https://www.helpnetsecurity.com/2026/05/05/google-vulnerability-reward-program-android-chrome-pixel": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c13"
     ],
     "https://www.helpnetsecurity.com/2026/08/19/openai-model-safety-updates": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c16"
@@ -14789,6 +14891,15 @@
     "https://www.securitycompass.com/blog/from-human-copilot-agent-what-changes-for-appsec-governance": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
     ],
+    "https://www.securityweek.com/chrome-sandbox-escape-earns-researcher-250000": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c19"
+    ],
+    "https://www.securityweek.com/company-offering-30-million-for-android-ios-browser-zero-day-exploits": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c10"
+    ],
+    "https://www.securityweek.com/google-adjusts-bug-bounties-chrome-payouts-drop-as-android-rewards-rise-amid-ai-surge": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c13"
+    ],
     "https://www.semafor.com/article/06/23/2026/deepmind-chief-demis-hassabis-says-googles-still-winning-ai-talent": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c46"
     ],
@@ -15446,6 +15557,9 @@
     "https://www.youtube.com/watch?v=oYs_qtuk2Pg": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c5"
     ],
+    "https://www.zerodayinitiative.com/Pwn2OwnBerlin2026Rules.html": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c11"
+    ],
     "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0831/2026083101539.pdf": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c31"
     ],
@@ -15914,6 +16028,18 @@
     "https://xbow.com/blog/we-ran-1060-autonomous-attacks": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34"
     ],
+    "https://xbow.com/blog/xbow-built-a-chrome-full-chain-exploit": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c1",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c2"
+    ],
+    "https://xbow.com/labs/research/zero-to-calc-in-six-days-inside-xbow-chrome-full-chain.md": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c2",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c3",
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c4"
+    ],
+    "https://xbow.com/news/xbow-raises-120m-to-scale": [
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c17"
+    ],
     "https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c38",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c39"
@@ -15935,7 +16061,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2762,
+  "claim_count": 2781,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -82202,9 +82328,471 @@
       "source_tiers": [],
       "source_urls": [],
       "type": "derived"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-10-13",
+      "claim": "Google awarded XBOW $250,000 for a Chrome full-chain exploit, described by XBOW as the first award under Google's 2026 rules.",
+      "confidence": "high",
+      "hosts": [
+        "xbow.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://xbow.com/blog/xbow-built-a-chrome-full-chain-exploit"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2024-04-08",
+      "claim": "Crowdfense offered $2-3 million for Chrome exploits leading to RCE and LPE in its 2024 acquisition program.",
+      "confidence": "medium",
+      "hosts": [
+        "securityweek.com"
+      ],
+      "id": "c10",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.securityweek.com/company-offering-30-million-for-android-ios-browser-zero-day-exploits"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-05-14",
+      "claim": "Pwn2Own Berlin 2026 paid $175,000 for a Chrome sandbox escape, $125,000 for Chrome plus Windows kernel EoP, and $75,000 renderer-only.",
+      "confidence": "high",
+      "hosts": [
+        "zerodayinitiative.com"
+      ],
+      "id": "c11",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.zerodayinitiative.com/Pwn2OwnBerlin2026Rules.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-03-31",
+      "claim": "Google's VRP paid a record $17.1M to 747 researchers in 2025, with Chrome VRP paying $3,716,750; 2024 Chrome VRP paid $3.4M for 337 valid bugs.",
+      "confidence": "high",
+      "hosts": [
+        "bleepingcomputer.com",
+        "blog.google"
+      ],
+      "id": "c12",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://blog.google/security/vrp-2025-year-in-review",
+        "https://bleepingcomputer.com/news/google/google-paid-171-million-for-vulnerability-reports-in-2025",
+        "https://blog.google/security/vulnerability-reward-program-2024-in"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-05-05",
+      "claim": "In its 2026 VRP revision Google cut the Chrome memory-safety base reward to $500, phased out RCE and arbitrary read/write bonuses citing AI-driven submissions, and kept full-chain rewards at up to $250,000.",
+      "confidence": "high",
+      "hosts": [
+        "helpnetsecurity.com",
+        "securityweek.com"
+      ],
+      "id": "c13",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.securityweek.com/google-adjusts-bug-bounties-chrome-payouts-drop-as-android-rewards-rise-amid-ai-surge",
+        "https://www.helpnetsecurity.com/2026/05/05/google-vulnerability-reward-program-android-chrome-pixel"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-07-15",
+      "claim": "Chrome Security said its reward changes reflect the volume of reports found and fixed with internal AI tooling and that Big Sleep now runs as a fully automated pipeline on V8.",
+      "confidence": "high",
+      "hosts": [
+        "groups.google.com"
+      ],
+      "id": "c14",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://groups.google.com/a/chromium.org/g/security-dev/c/q2r512CzLio"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-04-07",
+      "claim": "Anthropic reported a thousand Mythos Preview runs on OpenBSD cost under $20,000 and a Linux kernel n-day chain cost under $2,000.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c15",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/mythos-preview"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-03-06",
+      "claim": "GTIG tracked 90 zero-days exploited in the wild in 2025 (78 in 2024, 100 in 2023), with browsers under 10%.",
+      "confidence": "high",
+      "hosts": [
+        "cloud.google.com"
+      ],
+      "id": "c16",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://cloud.google.com/blog/topics/threat-intelligence/2025-zero-day-review"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-03-18",
+      "claim": "XBOW raised a $120M Series C at a valuation over $1 billion on March 18, 2026.",
+      "confidence": "high",
+      "hosts": [
+        "xbow.com"
+      ],
+      "id": "c17",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://xbow.com/news/xbow-raises-120m-to-scale"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2025-05-31",
+      "claim": "BLS median annual wage for information security analysts was $129,180 in May 2025.",
+      "confidence": "high",
+      "hosts": [
+        "bls.gov"
+      ],
+      "id": "c18",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2025-08-11",
+      "claim": "A Chrome Mojo sandbox escape (CVE-2025-4609) earned a $250,000 reward in 2025.",
+      "confidence": "high",
+      "hosts": [
+        "securityweek.com"
+      ],
+      "id": "c19",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.securityweek.com/chrome-sandbox-escape-earns-researcher-250000"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-10-13",
+      "claim": "XBOW reconstructed the six-day campaign's API charges from archived Codex logs at roughly $40,000.",
+      "confidence": "medium",
+      "hosts": [
+        "xbow.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://xbow.com/labs/research/zero-to-calc-in-six-days-inside-xbow-chrome-full-chain.md",
+        "https://xbow.com/blog/xbow-built-a-chrome-full-chain-exploit"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-10-13",
+      "claim": "The awarded chain was built between Sunday August 2 and Friday August 7, 2026, after a two-month first chain failed on a duplicate.",
+      "confidence": "high",
+      "hosts": [
+        "xbow.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://xbow.com/labs/research/zero-to-calc-in-six-days-inside-xbow-chrome-full-chain.md"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-10-13",
+      "claim": "Dolan-Gavitt estimates that pre-LLM a Chrome full chain took a team of four around 6-9 months.",
+      "confidence": "medium",
+      "hosts": [
+        "xbow.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c4",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://xbow.com/labs/research/zero-to-calc-in-six-days-inside-xbow-chrome-full-chain.md"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-09-03",
+      "claim": "Chrome Releases lists CVE-2026-85045 as a High-severity race condition in V8 reported by Brendan Dolan-Gavitt of XBOW on 2026-08-17, fixed in the 2026-09-03 stable update.",
+      "confidence": "high",
+      "hosts": [
+        "app.opencve.io",
+        "chromereleases.googleblog.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_01882797386.html",
+        "https://app.opencve.io/cve/CVE-2026-85045"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-08-25",
+      "claim": "Chrome Releases lists CVE-2026-78952 as a High-severity out-of-bounds write in Crashpad reported by Dolan-Gavitt on 2026-08-13, fixed in the 2026-08-25 stable update.",
+      "confidence": "high",
+      "hosts": [
+        "app.opencve.io",
+        "chromereleases.googleblog.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0256176589.html",
+        "https://app.opencve.io/cve/CVE-2026-78952"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-10-15",
+      "claim": "GPT-5.6 Sol's discounted API price is $4 input / $0.40 cached / $20 output per million tokens, down from $5/$30, available at least through November 21, 2026.",
+      "confidence": "high",
+      "hosts": [
+        "developers.openai.com",
+        "letsdatascience.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://developers.openai.com/api/docs/models/gpt-5.6-sol.md",
+        "https://letsdatascience.com/news/openai-cuts-gpt-56-sol-api-prices-fbfd85f3"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-07-09",
+      "claim": "OpenAI rates GPT-5.6 Sol High but not Critical for cybersecurity; in Chromium/Firefox testing it found bugs and primitives but did not autonomously produce a full chain.",
+      "confidence": "medium",
+      "hosts": [
+        "deploymentsafety.openai.com",
+        "labs.cloudsecurityalliance.org"
+      ],
+      "id": "c8",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://deploymentsafety.openai.com/gpt-5-6/gpt-5-6.pdf",
+        "https://labs.cloudsecurityalliance.org/research/csa-research-note-frontier-ai-dual-use-cybersecurity-gpt56-2"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
+      "article_created_at": "2026-10-14T17:34:27Z",
+      "article_title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics",
+      "as_of": "2026-07-14",
+      "claim": "Hacktron's GPT-5.6 Sol Ultra n-day V8 benchmark completed a chain for $1,596.89 of model compute over about 2.1 billion tokens.",
+      "confidence": "medium",
+      "hosts": [
+        "hacktron.ai",
+        "runtimewire.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c9",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.hacktron.ai/blog/watching-gpt-55-sol-ultra-write-a-chrome-exploit-exploit-development-as-we-know-it-is-over",
+        "https://runtimewire.com/article/hacktron-chrome-exploit-benchmark-gpt-56-sol-ultra"
+      ],
+      "type": "metric"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1346,
+  "reusable_count": 1356,
   "schema_version": 1
 }
