@@ -1,0 +1,12 @@
+Speaker 1: Wednesday, October fourteenth, twenty twenty-six.
+Speaker 2: [high_energy] Google just made Gemini four Argon generally available, across the API, the Gemini app, and Antigravity, and it's the top story on Hacker News with eight hundred ninety-nine points.
+Speaker 1: Not every early read is glowing, though. On Every's refactor benchmark, Argon scored twenty-one percent, against eighty-one to eighty-five percent for rival models.
+Speaker 2: Over at OpenAI, staff found a hidden recorder in the office, and the employee behind it was fired and then arrested by the FBI.
+Speaker 1: Markets had a rough day. Korean memory stocks crashed, with the KOSPI down around six to seven percent and SK Hynix off [emphasis] roughly ten percent [/emphasis].
+Speaker 2: And here's a wild engineering one. Anthropic replaced git after daily merges jumped [emphasis] twelve times [/emphasis], to thirty thousand a day.
+Speaker 1: In the deal world, Character AI filed for Chapter eleven, with Disney stepping in as the stalking-horse bidder.
+Speaker 2: [dramatic_pause] Disney, buying a chatbot company out of bankruptcy, that's a sentence I didn't expect to say this year.
+Speaker 1: Some quick numbers. X now has subscription tiers at eight, thirty, one hundred, and two hundred dollars a month.
+Speaker 2: And [emphasis] four hundred six researchers [/emphasis] are asking that cyber-capable AI systems be airgapped.
+Speaker 1: Also trending, a background daemon for the Codex CLI.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
