@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-10-14
+
+TOP STORIES:
+• Google made Gemini 4 Argon generally available (API, app, Antigravity)
+• OpenAI found a hidden office recorder; employee fired, FBI arrest
+• Korean memory stocks crashed: KOSPI ~-6-7%, SK Hynix ~-10%
+• Anthropic replaced git after merges rose 12x to 30K/day
+• Character.ai filed for Chapter 11; Disney is stalking-horse bidder
+
+KEY NUMBERS:
+• Argon: 21% on Every refactor bench vs 81-85% for rivals
+• X Subscription tiers: $8 / $30 / $100 / $200 a month
+• 406 researchers ask that cyber-capable AI be airgapped
+
+TRENDING: Gemini 4 Argon (HN 899 pts); Codex CLI background daemon
+
+Full digest on GitHub.
