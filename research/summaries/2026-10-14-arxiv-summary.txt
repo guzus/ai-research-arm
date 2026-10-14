@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-14
+
+TOP 5 PAPERS:
+• Tev — latent-world envs + dense progress; 27B matches GPT-6 Astra / Opus 5 on ALE-CM
+• Self-distillation — Yoon Kim: SDPO/OPSD gains are overfitting, not privileged info
+• HarnessTTT — Choi/Zou: learn the harness at test time; frozen 9B beats OpenEvolve
+• Virtual Head Attention — NeurIPS: 4× less KV than GQA-8, beats MLA on 30B-A3B
+• TacitVLA — Pavone/Xiao: reasoning VLA without waiting for the CoT; 3.4× faster
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 7, Other 8
+
+Full report on GitHub.
