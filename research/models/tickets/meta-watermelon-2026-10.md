@@ -5,6 +5,14 @@ company: Meta (Meta Superintelligence Labs)
 model: "Muse Wonder / Muse Wonder Full (codename Watermelon)"
 status: released
 status_note: |
+  **2026-10-14 — day-2 reception, no status change.** @alexandr_wang, quoted by
+  @gzzonkugood, concedes Meta "did not explicitly train our model on 3d demo
+  games … in retrospect we probably should've done a bit of that". That answers a
+  wave of unfavourable 3D-game comparisons with Opus 5.5. Relays repeat a 1M
+  context and ~$4/$20 API pricing (@XXKING). A DavidBorish write-up of Meta's
+  launch scorecard counts Muse Wonder top on 7 of 14 rows, Opus 5.5 on 6 and
+  GPT-6 Astra on 1. All of this is relay-strength.
+
   **2026-10-13 — LAUNCHED as Muse Wonder / Muse Wonder Full (2026-10-12).**
   @AIatMeta (2026-10-12 17:43 UTC) refers to "Muse Wonder models" as large models
   "too big for many people to use, in addition to potential safety concerns", and
@@ -55,8 +63,11 @@ sources:
   - "@AIatMeta"
   - "https://x.com/Skywalkerlyzv/status/2110013977090789652"
   - "https://x.com/anandragn/status/2110010080909201572"
+  - "https://x.com/gzzonkugood/status/2110341744319517111"
+  - "https://x.com/XXKING/status/2110341859457577386"
+  - "https://x.com/DavidBorish/status/2110341380983693323"
 created_at: 2026-10-04
-updated_at: 2026-10-13
+updated_at: 2026-10-14
 closed_at: null
 closed_reason: null
 history:
@@ -66,6 +77,8 @@ history:
     change: "RUMORED -> IN-TESTING; verification stays partial. Meta's own leadership is now teasing the codename on their own handles. @alexandr_wang (MSL chief, 2026-10-12 14:48 UTC): 'vibes kinda good 🍉'. @finkd (Zuckerberg, 15:01 UTC): 'Muse ordered me 🍉 how thoughtful!'. @testingcatalog (~242 likes) reads it as a Watermelon tease and asks whether training is finalised. @AILeaksAndNews and @CaktusJxck carry it as Meta's upcoming frontier model. Advanced because the head of the building lab is describing evaluation 'vibes', which implies a model under internal evaluation. Verification stays partial: the posts are emoji teases that never name a model, and there is no date, card or benchmark."
   - ts: 2026-10-13
     change: "IN-TESTING -> RELEASED; verification partial -> confirmed; title and model updated, slug kept. Meta launched Muse Wonder and Muse Wonder Full on 2026-10-12, hours after the 🍉 teases recorded in the previous entry. @AIatMeta, on its own handle (2026-10-12 17:43 UTC, captured as a quote in @QQzlans's digest), calls 'Muse Wonder models' large models that are too big for many people to use and cites potential safety concerns. It says open weights are coming for Muse Spark, not Wonder. Per the 12 October announcement as relayed by @Skywalkerlyzv, Muse Wonder is available through the Meta Model API and Muse Code, Muse Wonder Full is for Muse Code subscribers, and the Muse app rollout is still ahead. The headline features are Active Memory (retrieving context across conversations) and Active Focus (continuing through blockers). @QQzlans relays API pricing of about $4/$20 per MTok. Early third-party reads conflict, and all of them reach us through relays, so none is adopted as a benchmark. Cline reportedly has it leading DeepSWE, BridgeBench puts it only slightly above Claude Haiku 5.5, and Theo ranks it alongside Opus 5.5. The codename mapping is an INFERENCE, not a Meta statement. Watermelon is the next foundation model that Wang and Zuckerberg teased on 2026-10-12 between 14:48 and 15:01 UTC, and Muse Wonder is the frontier model Meta shipped that day. No Meta post in this signal says 'Watermelon = Muse Wonder'. If Meta later contradicts the mapping, a successor ticket should carry Wonder. The status is released because developers can use the API; the consumer app is still pending."
+  - ts: 2026-10-14
+    change: "Released, unchanged — day-2 reception. MSL chief @alexandr_wang, quoted by @gzzonkugood, answers criticism that Muse Wonder trails Opus 5.5 and GPT-6 Astra on 3D game demos: 'we did not explicitly train our model on 3d demo games … in retrospect we probably should've done a bit of that … please try muse wonder on your actual coding work!' A user A/B (@_MaxBlade, quoted by @Dainer_Jun) on a 3D game task reports $4.11 of API-equivalent spend for Muse against $99.43 for Opus, and judges Muse well behind on 3D. Relays repeat a 1M context and ~$4/$20 per MTok pricing (@XXKING). @DavidBorish's write-up of Meta's launch scorecard counts Muse Wonder top on 7 of 14 rows, Opus 5.5 on 6 and GPT-6 Astra on 1. These are relays and single user tests, so no benchmark is adopted. The Watermelon -> Muse Wonder codename mapping is still an inference, not a Meta statement."
 ---
 
 Watermelon has been a codename in analyst and press reporting since the summer,
