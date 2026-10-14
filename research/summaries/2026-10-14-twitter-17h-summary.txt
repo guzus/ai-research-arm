@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-14 17:03:24 UTC
+
+CYCLE: A reported Tencent agent fleet caught scraping Amap; OpenAI infra leadership change; two AI acqui-hires
+
+TOP STORIES:
+• Researchers say they found and messaged a Chinese AI agent fleet run from Tencent's eval team, scraping Alibaba's Amap [⚠]
+• Bloomberg: OpenAI infra chief Sachin Katti steps aside; compute CTO Uday Ruddarraju takes over [⚠]
+• Mistral acquires design studio New Material; Prime Intellect acquires Moondream [✓]
+
+WATCH: Whether Tencent or Alibaba confirms who ran the agent fleet
+
+Full update on GitHub.
