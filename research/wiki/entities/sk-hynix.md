@@ -4,10 +4,11 @@ title: SK Hynix
 type: entity
 aliases: ["SK hynix", "SK Hynix Inc.", "SKHynix"]
 tags: [hbm, memory, semiconductors, ipo, ai-infrastructure]
-description: South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company, and approved a KRW 40 trillion buyback-and-cancellation on 2026-08-19 — the largest cancellation ever by a Korean-listed company.
+description: South Korean HBM memory supplier; shares fell about 10% in a 2026-10-13 KOSPI selloff that traders blamed on CXMT and Broadcom comments.
 created_at: 2026-07-12
-timestamp: 2026-08-20T00:00:00Z
+timestamp: 2026-10-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
   - {title: "ARA daily digest 2026-07-12", path: research/digest/2026-07-12-digest.md}
@@ -53,6 +54,34 @@ specific, but no primary financial-press corroboration yet captured —
   that raised $26.5B in the Nasdaq listing less than six weeks earlier,
   and a counterweight to the July KOSPI selloff that erased nearly $600B
   of its value (Twitter; ARA daily digest 2026-08-20). See [[ai-capex]]
+
+## Tuesday's KOSPI crash, before the headlines (2026-10-14)
+
+- **Korean AI-memory stocks sold off
+  hard on Tuesday 2026-10-13.** The
+  digest's market accounts put the
+  KOSPI down about **6–7%**, SK
+  Hynix about **10%**, and Samsung
+  about **8%**. Traders blamed
+  **CXMT's 4F² DRAM claim** and
+  [[broadcom|Broadcom]] CEO Hock
+  Tan calling AI investors
+  gamblers, but the selling started
+  before either. These figures come
+  from market accounts, **not
+  exchange data**. The counter-view
+  in the same digest is a crowded
+  trade unwinding, not a broken
+  thesis: Samsung had just reported
+  a record ~**107 trillion won**
+  quarterly operating profit, and
+  DRAM contract-price growth is
+  described as slowing from ~**60%
+  to 10–15%** rather than reversing.
+  See [[ai-capex]] and [[micron]]
+  (@scalethesis, @EllisInvest,
+  @kaupr_io; ARA daily digest
+  2026-10-14).
 
 ## Open questions
 

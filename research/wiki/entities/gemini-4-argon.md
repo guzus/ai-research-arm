@@ -2,12 +2,13 @@
 slug: gemini-4-argon
 title: Gemini 4 Argon
 type: entity
-aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon", "Gemini 4 Carbon", "Barium-B"]
+aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon", "Gemini 4 Carbon", "Barium-B", "Argon for Robotics"]
 tags: [model-release, google-deepmind, frontier-model, fairwind, cyber-defense, pricing]
-description: Google's Fairwind-gated frontier SKU; Antigravity now lists 256K/512K/900K Argon tiers, and employees are testing a later Carbon checkpoint.
+description: Google's Gemini 4 flagship, now generally available on the paid API, AI Studio, Gemini app, Search AI Mode and Antigravity; independent coding benches split sharply.
 created_at: 2026-10-01
-timestamp: 2026-10-10T00:00:00Z
+timestamp: 2026-10-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA model ticket — Gemini app tier changes", path: research/models/tickets/google-gemini-app-tier-changes-2026-10.md}
@@ -70,16 +71,15 @@ ARA daily digest 2026-10-01).
 
 ## Open questions
 
-- **When does paid API / AI Ultra actually open?** "As soon as
-  possible" is a disposition, not a date — the same gap the September
-  post-training ticket refused to treat as a schedule.
-- **Does the DeepSWE 77.9% / Vals sweep hold** on an independent
-  harness once the model is public, or only on Google's launch table?
-- **Does the >2× token burn vs Astra persist**, or is it a gated-SKU
-  serving artifact that a later cut walks back? If it holds, the $2/$10
-  intro card is not the cheap task price.
-- **Is Fairwind a durable access model** for a more-permissive cyber
-  flagship, or a temporary holding pen until a public SKU ships?
+- **Does the DeepSWE 77.9% / Vals sweep hold** now that paid API
+  access is open, or only on Google's launch table? Every's 21%
+  refactoring score is the first public contradiction.
+- **Does the >2× token burn vs Astra persist** on the GA SKU? If
+  it holds, the $2/$10 intro card is not the cheap task price.
+- **Is the ~1.9-hour P50 / high eval-awareness read in the safety
+  report** real, or a screenshot that does not match the document?
+- **What is Argon for Robotics**, and is it a separate checkpoint
+  or a serving wrapper?
 
 ## Vals #1 and a contested cheap-task claim (2026-10-02)
 
@@ -136,3 +136,60 @@ change. See [[google]] (The Decoder; ARA daily digest
   (Business Insider,
   TestingCatalog; ARA daily
   digest 2026-10-10).
+
+## General availability (2026-10-14)
+
+- **Argon is now on the paid Gemini
+  API, AI Studio, the Gemini app
+  (Pro/Ultra), AI Mode in Search,
+  and Antigravity**, with up to
+  **1M output tokens**. Google
+  calls it the first major
+  flagship upgrade since Gemini
+  3 Pro, aimed at coding,
+  enterprise workflows, and cyber
+  defense. More than **100,000
+  Googlers** tested it. The
+  September preview's introductory
+  price remains **$2 / $10 per
+  Mtok**. There is also an
+  **Argon for Robotics** variant.
+  Simon Willison's `llm-gemini
+  0.35` already supports it. See
+  [[google]] (@GoogleDeepMind,
+  @OfficialLoganK, @_philschmid,
+  The Verge, Ars Technica; ARA
+  daily digest 2026-10-14).
+- **Independent coding reads
+  split.** Every's refactoring
+  benchmark scored Argon **21%**
+  against **81–85%** for
+  [[gpt-6|GPT-6 Astra]], Fable
+  5.1, and the Claude 5.5 models.
+  @theo calls it "a huge jump
+  for Gemini" and reports the
+  first perfect Skatebench-private
+  score, but also says it was
+  the only model above a **50%
+  false-claim rate** on his
+  codebase-analysis bench. Every
+  says Antigravity is "six months
+  to a year behind" Claude Code
+  and Codex. The launch led HN
+  at **899 points / 700
+  comments** (@danshipper, @theo,
+  Hacker News; ARA daily digest
+  2026-10-14).
+- **A single-source safety-report
+  read is not yet checked
+  against the report.** One
+  thread says the Argon safety
+  report shows much higher
+  evaluation awareness than
+  Gemini 3.1 Pro, a ~**1.9-hour
+  P50** agentic time horizon,
+  and repetitive looping. Those
+  figures are screenshots, not
+  a first-party table
+  (@scaling01; ARA daily digest
+  2026-10-14).

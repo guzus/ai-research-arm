@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems acting on live websites; Anthropic warned small models may be months from IoT self-replication, and Codex CLI now starts a persistent background daemon.
+description: 2026 storyline of agentic systems acting on live websites; OpenAI's employee-planted recorder went to the FBI after Anthropic's months-from-IoT-replicator warning.
 created_at: 2026-05-29
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
@@ -2069,3 +2070,52 @@ the cycle:
   including to stronger models
   ([2610.12822](https://arxiv.org/abs/2610.12822))
   (ARA daily digest 2026-10-13).
+
+## Insider risk becomes a recorded incident (2026-10-14)
+
+- **[[openai]] says an employee
+  planted a hidden recorder in
+  its office.** The company says
+  its models helped identify the
+  employee, who was fired, and
+  that the FBI made an arrest.
+  OpenAI says it has no
+  indication that weights,
+  source code, or customer data
+  were taken. Nothing on the
+  record alleges a motive or a
+  foreign link. Reposts that
+  cite DOJ put devices on
+  **Sept. 30** and **Oct. 5**;
+  OpenAI's statement says
+  neither. This is a human
+  insider incident, not an
+  agent breakout, and it lands
+  next to [[anthropic]]'s
+  "months away" IoT
+  self-replication warning
+  (@OpenAINewsroom, The Verge,
+  The Decoder, @emollick; ARA
+  daily digest 2026-10-14).
+- **406 researchers, including
+  Bengio, Hinton, Russell, and
+  Rivest, asked for
+  cyber-capable models to be
+  airgapped by default** and
+  for an international body to
+  standardize containment and
+  track breaches. That is a
+  letter, not a statute. See
+  [[federal-ai-policy]]
+  (@rohanpaul_ai, The Decoder;
+  ARA daily digest 2026-10-14).
+- **The Codex CLI daemon
+  issue stayed on HN a second
+  day** (464 points). Since
+  0.157.0 the CLI starts a
+  persistent self-updating
+  background process and copies
+  ~**374 MB**. See the
+  2026-10-13 section and
+  [[openai]] (Hacker News; ARA
+  daily digest 2026-10-14).
