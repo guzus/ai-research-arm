@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "The facts hold up. Google paid $250,000 for a three-bug Chrome chain that XBOW built from August 2–7, 2026, using `gpt-5.6-sol` agents. XBOW reconstructed about $40,000 of API charges from archived Codex logs [^1,2].", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c2", "claim_text": "XBOW's press release, and coverage that copied it, puts CVE-2026-85045 on the WebP bug [^3,32]. Google's release notes and the CVE record put CVE-2026-85045 on the **V8** race condition.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c3", "claim_text": "Dolan-Gavitt's pre-LLM baseline is a team of four for 6–9 months, roughly 24–36 researcher-months. The awarded sprint was one researcher plus agents for six days [^2].", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true}
+  ]
+}
