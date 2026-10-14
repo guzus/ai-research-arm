@@ -1,10 +1,25 @@
 ---
 slug: google-gemini-4-2026-09
-title: "Gemini 4 Argon — announced 2026-09-30, gated rollout to trusted cyber defenders via the Fairwind Program"
+title: "Gemini 4 Argon — announced 2026-09-30, rolled out globally 2026-10-13 (Gemini API paid tier, Gemini App Pro/Ultra, Antigravity Ultra)"
 company: Google / DeepMind
 model: Gemini 4
-status: confirmed
+status: released
 status_note: |
+  **2026-10-14 — RELEASED: global rollout on 2026-10-13.** @GoogleAI (16:07 UTC):
+  "Gemini 4 Argon is now rolling out globally." @OfficialLoganK (16:04 UTC): live
+  in the Gemini API, for Pro + Ultra subscribers in the Gemini App, and for Ultra
+  subscribers in Antigravity. Per @GoogleAI's availability post, developers get it
+  on the Gemini API **paid tier**, and Ultra subscribers also get it in AI Studio
+  and Android Studio. Enterprises get it in Gemini for business, the API and
+  Antigravity. Consumers get it in the Gemini App and in AI Mode in Search on Pro
+  or Ultra. Scientists can apply for free top-tier Antigravity access for 6 months
+  (10,000 slots per a DeepMind researcher RT'd by @demishassabis). Cyber defenders
+  can apply to the Fairwind Program for access without cyber guardrails. Logan:
+  "battle tested by over 100,000 people at Google over the last month." The
+  Antigravity SDK v0.1.22 now accepts the `gemini-4-argon` target but still
+  defaults to gemini-3.8-flash. The access path is paid or subscription-only, with
+  no free tier.
+
   **2026-10-13 — launch-watch, no GA.** @OfficialLoganK posted just "Gemini"
   (02:39 UTC). Business Insider Japan reports Google staff are testing a
   next-gen "Carbon" that employees rate as comparable to Opus 5.5 (via
@@ -45,12 +60,12 @@ status_note: |
   **Successor bookkeeping.** Coverage of the launch states Gemini 3.5 Pro was
   shelved and is not happening; [[gemini-3-5-pro]] is closed today as
   superseded by this ticket.
-expected: "Announced 2026-09-30; rolling out first to government and trusted cyber defenders in the Fairwind Program, with paid API customers and Google AI Ultra subscribers reported next. Broader developer/enterprise/consumer availability 'as soon as possible' — no public date. Moves to released when anyone can use it."
+expected: "Released 2026-10-13 (global rollout; paid API tier + Pro/Ultra subscriptions). Pending: free-tier availability, a cheaper/smaller Gemini 4 tier, and the reported 'Carbon' checkpoint. Closure as released-and-aged no earlier than 2026-11-10."
 labels:
   - google
   - deepmind
   - frontier-model
-  - unreleased
+  - released
 verification: confirmed
 sources:
   - "https://x.com/daogangtang/status/2109668616409174301"
@@ -81,8 +96,15 @@ sources:
   - "https://x.com/OfficialLoganK/status/2109836485981778260"
   - "https://x.com/hijiri_bcg/status/2110010130972676229"
   - "https://x.com/linlinkyyb/status/2110010050383364601"
+  - "https://x.com/GoogleAI/status/2110039860077527293"
+  - "https://x.com/GoogleAI/status/2110039868910735565"
+  - "https://x.com/OfficialLoganK/status/2110038940841545827"
+  - "https://x.com/demishassabis/status/2110052931110318464"
+  - "https://x.com/ntaylormullen/status/2110330405589008534"
+  - "https://x.com/elliscrosby/status/2110322418330083811"
+  - "https://x.com/JordanFrery/status/2110341416790683878"
 created_at: 2026-09-24
-updated_at: 2026-10-13
+updated_at: 2026-10-14
 closed_at: null
 closed_reason: null
 history:
@@ -102,6 +124,8 @@ history:
     change: "Confirmed, unchanged — external safety evaluation now on the record; still no public release. Per @daogangtang's 2026-10-12 digest, the White House restored UK AISI pre-release access to frontier models, and UK AI Minister Kanishka Narayan confirmed AISI is evaluating systems including Gemini 4 Argon (@trywavecode: 'Gemini 4 Argon is NOT dropping today … Google is still in the controlled-access phase'). Market chatter in-window (@aipulseda1ly) puts Polymarket odds of Argon going public by Friday at ~66%. The same post claims Google staff are testing a newer Gemini 4 checkpoint codenamed 'Carbon', described by one tester as feeling 'like Opus 5.5' for coding. That is a single unsourced relay and is logged, not adopted. Status stays confirmed: access is still the Fairwind partner list."
   - ts: 2026-10-13
     change: "Confirmed, unchanged — launch-watch chatter, no general availability. @OfficialLoganK posted the single word 'Gemini' (2026-10-13 02:39 UTC). Twelve hours later, replies still note that nothing has launched (@madhav1). Replies to a @testingcatalog post describe a model appearing on a Google quotas page with 'predecessor of an upcoming model' wording (@linlinkyyb, @harshit10sehgal). The underlying post is not in this signal, so this is logged, not adopted. Business Insider Japan (relayed by @hijiri_bcg) reports that Google staff are testing a next-generation Gemini codenamed 'Carbon' that employees rate as comparable to Opus 5.5. That is the outlet-level version of the single relay logged on 2026-10-12, but it is still not adopted as a separate artifact. A Polymarket market on Gemini 4.0 release timing is active (@SheikhSilicon). No mapping was added this cycle because this run could not reach the Polymarket API to read IDs. Status stays confirmed: access is still the Fairwind partner list."
+  - ts: 2026-10-14
+    change: "CONFIRMED -> RELEASED; verification stays confirmed; title updated. Google rolled Gemini 4 Argon out globally on 2026-10-13. @GoogleAI (16:07 UTC): 'Gemini 4 Argon is now rolling out globally.' @OfficialLoganK (16:04 UTC): available in the Gemini API, to Pro + Ultra subscribers in the Gemini App, and to Ultra subscribers in Antigravity, after more than 100,000 Google staff tested it over the last month and Fairwind/early-access customers used it for two weeks. @GoogleAI's availability post adds the paid API tier, AI Studio and Android Studio for Ultra subscribers, Gemini for business, AI Mode in Search for Pro/Ultra, a 6-month free top-tier Antigravity programme for scientists (applications), and Fairwind access without cyber guardrails for defenders. @demishassabis posted Argon demos on his own handle. The Antigravity SDK v0.1.22 adds `gemini-4-argon` targets (@ntaylormullen). Released because paying developers and Pro/Ultra subscribers can now use it without a partner list. There is still no free tier. Unadopted third-party observations: @elliscrosby notes the release-card scores are identical to the 2026-09-30 announcement, so the 14-day gap was not a new checkpoint. @JordanFrery relays a hallucination rate about 4x lower than Opus 5.5, which matches the low AA hallucination figure already logged. The 'Carbon' checkpoint chatter stays unadopted. No Polymarket mapping was added because this run could not reach the Polymarket API."
 ---
 
 The July ticket died of exactly one thing: nobody in a position to know would
@@ -137,3 +161,9 @@ is Gemini 4 **Argon**, announced 2026-09-30 by Google's own accounts, and the
 "early version" framing from the 2026-09-24 entry turned out to be literal: a
 gated rollout to cyber defenders first. The timing claim this ticket was opened
 to hold accountable resolved early, and the open question is now the GA date.
+
+**2026-10-14 update — general availability on 2026-10-13.** The partner-only
+phase lasted 13 days. Argon is now on the paid Gemini API and in Pro/Ultra
+consumer plans, and Google's own posts name every surface. The remaining gaps
+are a free tier and a cheaper Gemini 4 model. The ticket is now `released`. It
+is eligible for `released-and-aged` closure from 2026-11-10.
