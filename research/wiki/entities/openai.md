@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; raised GPT-6.1 Sol's Codex/Work default to 500k tokens as mathematicians split over the 370-problem dump.
+description: Frontier lab behind the GPT family; an employee-planted recorder led to a firing and an FBI arrest, with no indication weights or customer data were taken.
 created_at: 2026-05-30
-timestamp: 2026-10-12T00:00:00Z
+timestamp: 2026-10-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
@@ -3055,6 +3056,50 @@ materially reshape how the lab is positioned heading into its IPO window:
   [[federal-ai-policy]]
   (Telegraph; ARA daily digest
   2026-10-12).
+
+## Hidden recorder, a firing, and an FBI arrest (2026-10-14)
+
+- **OpenAI says it found a hidden
+  recorder in its office.** The
+  company says its models helped
+  trace the device to an
+  employee, who was fired, and
+  that the FBI made an arrest.
+  OpenAI says it has **no
+  indication that weights, source
+  code, or customer data were
+  taken**. Nothing on the record
+  alleges a motive or a foreign
+  link. Reposts that cite DOJ say
+  a first device was found
+  **Sept. 30** and a second on
+  **Oct. 5**; OpenAI's statement
+  says neither. Watch for an
+  unsealed complaint. See
+  [[agentic-ai-security]]
+  (@OpenAINewsroom, The Verge,
+  HN 335 points; ARA daily
+  digest 2026-10-14).
+- **The Information (paywalled)
+  reports OpenAI is racing to
+  fix safety issues before
+  shipping its next flagship**,
+  after halting a different
+  model. That is a rumor, not a
+  named SKU or date
+  (@theinformation; ARA daily
+  digest 2026-10-14).
+- **[[character-ai]] filed
+  Chapter 11.** Disney is the
+  stalking-horse bidder; the
+  platform shuts down if no
+  buyer emerges. That is the
+  remaining consumer product
+  after [[google]]'s 2024 team
+  deal and [[noam-shazeer]]'s
+  2026 move here (TechCrunch,
+  The Verge; ARA daily digest
+  2026-10-14).
 
 ## Open questions
 

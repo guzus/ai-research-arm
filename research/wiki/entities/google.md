@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub, "Gemini Enterprise", "AlphaProof Nexus", AlphaProof]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; DeepMind's AlphaProof Nexus passed peer review in Science, resolving nine Erdős problems, two open for 56 years.
+description: Hyperscaler behind Gemini; Gemini 4 Argon is now generally available after a Fairwind-gated preview.
 created_at: 2026-07-17
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-14T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA model ticket — AlphaProof Nexus", path: research/models/tickets/google-deepmind-alphaproof-nexus-2026-10.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
@@ -933,6 +934,49 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   Decoder; ARA daily digest 2026-10-13
   and ticket
   `google-deepmind-alphaproof-nexus-2026-10`).
+
+## Gemini 4 Argon goes generally available (2026-10-14)
+
+- **[[gemini-4-argon]] is now on the
+  paid Gemini API, AI Studio, the
+  Gemini app (Pro/Ultra), AI Mode
+  in Search, and Antigravity**,
+  with up to **1M output tokens**.
+  Google frames it as the first
+  major flagship upgrade since
+  Gemini 3 Pro. More than
+  **100,000 Googlers** tested it.
+  Introductory price stays **$2 /
+  $10 per Mtok**. Independent
+  coding benches split: Every
+  scored it **21%** on a
+  refactoring set against
+  **81–85%** for GPT-6 Astra,
+  Fable 5.1, and the Claude 5.5
+  models, while @theo reported a
+  first perfect Skatebench-private
+  score and a **>50%**
+  false-claim rate on
+  codebase analysis. The launch
+  led HN at **899 / 700**. See
+  [[gemini-4-argon]]
+  (@GoogleDeepMind,
+  @OfficialLoganK, @danshipper,
+  The Verge, Ars Technica; ARA
+  daily digest 2026-10-14).
+- **[[character-ai]] filed Chapter
+  11**, two years after Google
+  paid about **$2.7 billion**
+  for [[noam-shazeer]] and part
+  of the team. Disney is the
+  stalking-horse bidder; the
+  platform shuts down if no
+  buyer emerges. The 2024
+  acqui-hire bought the people,
+  not a durable consumer product
+  (TechCrunch, The Verge, The
+  Decoder; ARA daily digest
+  2026-10-14).
 
 ## Open questions
 

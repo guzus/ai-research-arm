@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; Anthropic warned small models may be months from IoT self-replication, and Codex CLI now starts a persistent background daemon.",
-      "description": "2026 storyline of agentic systems acting on live websites; Anthropic warned small models may be months from IoT self-replication, and Codex CLI now starts a persistent background daemon.",
+      "summary": "2026 storyline of agentic systems acting on live websites; OpenAI's employee-planted recorder went to the FBI after Anthropic's months-from-IoT-replicator warning.",
+      "description": "2026 storyline of agentic systems acting on live websites; OpenAI's employee-planted recorder went to the FBI after Anthropic's months-from-IoT-replicator warning.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-14",
+      "timestamp": "2026-10-14T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -577,11 +577,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; Frontier Red Team says a 9B model got inference running on 8 of 9 commercial hardware types and that small models may be months from IoT self-replication.",
-      "description": "AI safety lab behind Claude; Frontier Red Team says a 9B model got inference running on 8 of 9 commercial hardware types and that small models may be months from IoT self-replication.",
+      "summary": "AI safety lab behind Claude; replaced git with in-house Scion after a 12× jump in merges, and says it cut reasoning-token extraction 90–99%.",
+      "description": "AI safety lab behind Claude; replaced git with in-house Scion after a 12× jump in merges, and says it cut reasoning-token extraction 90–99%.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-14",
+      "timestamp": "2026-10-14T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -957,7 +957,8 @@
         "micron",
         "model-specific-silicon",
         "nvidia",
-        "openai"
+        "openai",
+        "sk-hynix"
       ],
       "market": {
         "ticker": "AVGO",
@@ -1062,6 +1063,40 @@
           "source_sha256": "d1c1738664440852e58bf8f092353dbaca58fa43e3713056d05d2e53c6ab1bfd"
         }
       }
+    },
+    {
+      "slug": "character-ai",
+      "title": "Character.AI",
+      "type": "entity",
+      "tags": [
+        "companion-ai",
+        "consumer-ai",
+        "bankruptcy",
+        "disney",
+        "google"
+      ],
+      "summary": "Companion-AI startup that filed Chapter 11 in Delaware; Disney is the stalking-horse bidder, and the platform shuts down if no buyer emerges.",
+      "description": "Companion-AI startup that filed Chapter 11 in Delaware; Disney is the stalking-horse bidder, and the platform shuts down if no buyer emerges.",
+      "created_at": "2026-10-14",
+      "updated_at": "2026-10-14",
+      "timestamp": "2026-10-14T00:00:00Z",
+      "file": "entities/character-ai.md",
+      "aliases": [
+        "Character.AI",
+        "Character.ai",
+        "Character Technologies",
+        "c.ai"
+      ],
+      "outbound": [
+        "google",
+        "noam-shazeer",
+        "openai"
+      ],
+      "inbound": [
+        "google",
+        "noam-shazeer",
+        "openai"
+      ]
     },
     {
       "slug": "china-ai-regulation",
@@ -2749,11 +2784,11 @@
         "cyber-defense",
         "pricing"
       ],
-      "summary": "Google's Fairwind-gated frontier SKU; Antigravity now lists 256K/512K/900K Argon tiers, and employees are testing a later Carbon checkpoint.",
-      "description": "Google's Fairwind-gated frontier SKU; Antigravity now lists 256K/512K/900K Argon tiers, and employees are testing a later Carbon checkpoint.",
+      "summary": "Google's Gemini 4 flagship, now generally available on the paid API, AI Studio, Gemini app, Search AI Mode and Antigravity; independent coding benches split sharply.",
+      "description": "Google's Gemini 4 flagship, now generally available on the paid API, AI Studio, Gemini app, Search AI Mode and Antigravity; independent coding benches split sharply.",
       "created_at": "2026-10-01",
-      "updated_at": "2026-10-10",
-      "timestamp": "2026-10-10T00:00:00Z",
+      "updated_at": "2026-10-14",
+      "timestamp": "2026-10-14T00:00:00Z",
       "file": "entities/gemini-4-argon.md",
       "aliases": [
         "Gemini 4 Argon",
@@ -2761,7 +2796,8 @@
         "gemini-4",
         "4 Argon",
         "Gemini 4 Carbon",
-        "Barium-B"
+        "Barium-B",
+        "Argon for Robotics"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -2874,11 +2910,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; DeepMind's AlphaProof Nexus passed peer review in Science, resolving nine Erdős problems, two open for 56 years.",
-      "description": "Hyperscaler behind Gemini; DeepMind's AlphaProof Nexus passed peer review in Science, resolving nine Erdős problems, two open for 56 years.",
+      "summary": "Hyperscaler behind Gemini; Gemini 4 Argon is now generally available after a Fairwind-gated preview.",
+      "description": "Hyperscaler behind Gemini; Gemini 4 Argon is now generally available after a Fairwind-gated preview.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-14",
+      "timestamp": "2026-10-14T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -2925,6 +2961,7 @@
         "astra",
         "broadcom",
         "chai-discovery",
+        "character-ai",
         "claude-opus-5",
         "claude-opus-5-5",
         "cursor",
@@ -2948,6 +2985,7 @@
         "microsoft",
         "mistral-leanstral-1-5",
         "nano-banana-2-lite",
+        "noam-shazeer",
         "nvidia",
         "open-weights",
         "openai",
@@ -2963,6 +3001,7 @@
         "astra",
         "broadcom",
         "california-ai-regulation",
+        "character-ai",
         "claude-opus-5-5",
         "cursor",
         "discovery-loop",
@@ -2977,6 +3016,7 @@
         "gemma-4",
         "matrix-multiplication-exponent",
         "nano-banana-2-lite",
+        "noam-shazeer",
         "nous-research",
         "open-weights",
         "openai",
@@ -4596,11 +4636,11 @@
         "google",
         "character-ai"
       ],
-      "summary": "Transformer co-inventor (\"Attention Is All You Need\"), Character.AI founder, and former Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.",
-      "description": "Transformer co-inventor (\"Attention Is All You Need\"), Character.AI founder, and former Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.",
+      "summary": "Transformer co-inventor and Character.AI founder; the company he left behind filed Chapter 11 in 2026-10, with Disney as stalking-horse bidder.",
+      "description": "Transformer co-inventor and Character.AI founder; the company he left behind filed Chapter 11 in 2026-10, with Disney as stalking-horse bidder.",
       "created_at": "2026-06-19",
-      "updated_at": "2026-06-20",
-      "timestamp": "2026-06-20T00:00:00Z",
+      "updated_at": "2026-10-14",
+      "timestamp": "2026-10-14T00:00:00Z",
       "file": "entities/noam-shazeer.md",
       "aliases": [
         "Noam Shazeer",
@@ -4608,14 +4648,18 @@
       ],
       "outbound": [
         "anthropic",
+        "character-ai",
         "federal-ai-policy",
         "gemini-3-5-flash",
+        "google",
         "john-jumper",
         "openai"
       ],
       "inbound": [
         "anthropic",
+        "character-ai",
         "federal-ai-policy",
+        "google",
         "jelani-nelson",
         "john-jumper",
         "openai"
@@ -4974,11 +5018,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; raised GPT-6.1 Sol's Codex/Work default to 500k tokens as mathematicians split over the 370-problem dump.",
-      "description": "Frontier lab behind the GPT family; raised GPT-6.1 Sol's Codex/Work default to 500k tokens as mathematicians split over the 370-problem dump.",
+      "summary": "Frontier lab behind the GPT family; an employee-planted recorder led to a firing and an FBI arrest, with no indication weights or customer data were taken.",
+      "description": "Frontier lab behind the GPT family; an employee-planted recorder led to a firing and an FBI arrest, with no indication weights or customer data were taken.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-12",
-      "timestamp": "2026-10-12T00:00:00Z",
+      "updated_at": "2026-10-14",
+      "timestamp": "2026-10-14T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5006,6 +5050,7 @@
         "astra",
         "broadcom",
         "california-ai-regulation",
+        "character-ai",
         "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-5",
@@ -5049,6 +5094,7 @@
         "broadcom",
         "california-ai-regulation",
         "chai-discovery",
+        "character-ai",
         "claude-fable-5",
         "claude-opus-5-5",
         "crusoe",
@@ -5741,11 +5787,11 @@
         "ipo",
         "ai-infrastructure"
       ],
-      "summary": "South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company, and approved a KRW 40 trillion buyback-and-cancellation on 2026-08-19 — the largest cancellation ever by a Korean-listed company.",
-      "description": "South Korean HBM memory supplier behind Nvidia's AI accelerators; raised $26.5B via a Nasdaq listing on 2026-07-11, the largest US share sale ever by a foreign company, and approved a KRW 40 trillion buyback-and-cancellation on 2026-08-19 — the largest cancellation ever by a Korean-listed company.",
+      "summary": "South Korean HBM memory supplier; shares fell about 10% in a 2026-10-13 KOSPI selloff that traders blamed on CXMT and Broadcom comments.",
+      "description": "South Korean HBM memory supplier; shares fell about 10% in a 2026-10-13 KOSPI selloff that traders blamed on CXMT and Broadcom comments.",
       "created_at": "2026-07-12",
-      "updated_at": "2026-08-20",
-      "timestamp": "2026-08-20T00:00:00Z",
+      "updated_at": "2026-10-14",
+      "timestamp": "2026-10-14T00:00:00Z",
       "file": "entities/sk-hynix.md",
       "aliases": [
         "SK hynix",
@@ -5754,6 +5800,7 @@
       ],
       "outbound": [
         "ai-capex",
+        "broadcom",
         "micron",
         "nvidia"
       ],
@@ -6653,6 +6700,7 @@
     "apple": "apple",
     "apple inc.": "apple",
     "apple intelligence": "apple",
+    "argon for robotics": "gemini-4-argon",
     "art enzyme family": "claude-science",
     "artificial general engineer": "artificial-general-engineer",
     "artificial-general-engineer": "artificial-general-engineer",
@@ -6675,6 +6723,7 @@
     "bytedance seed": "seedance-2-5",
     "bytedance seedance": "seedance-2-5",
     "byteplus": "seedance-2-5",
+    "c.ai": "character-ai",
     "caisi mou": "federal-ai-policy",
     "california ai bills": "california-ai-regulation",
     "california ai regulation": "california-ai-regulation",
@@ -6686,6 +6735,9 @@
     "chai discovery": "chai-discovery",
     "chai-1": "chai-discovery",
     "chai-discovery": "chai-discovery",
+    "character technologies": "character-ai",
+    "character-ai": "character-ai",
+    "character.ai": "character-ai",
     "china ai policy": "china-ai-regulation",
     "china ai regulation": "china-ai-regulation",
     "china-ai-regulation": "china-ai-regulation",
@@ -7300,6 +7352,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-10-14",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-14 digest plus tickets updated 2026-10-13 (google-gemini-4 still launch-watch; anthropic-alibaba-distillation 90–99% cut; xiaomi V2.5→V2.6 routing). Created 1 (character-ai — Chapter 11 in Delaware, Disney stalking-horse, shutdown if no buyer). Updated 7 (gemini-4-argon — GA on API/AI Studio/Gemini app/Search/Antigravity, Every 21% vs 81–85%, 899 HN pts; google — same GA + Character.AI $2.7B leftover; openai — hidden recorder, firing, FBI arrest, no weights/data taken; anthropic — Scion VCS after 12× merges, distillation 90–99%, Q3 books relay; agentic-ai-security — insider-risk incident + airgap letter; sk-hynix — ~10% Tuesday KOSPI drop, figures from market accounts; noam-shazeer — Character.AI Chapter 11 closes the overhang). Reciprocals on character-ai / google / noam-shazeer. Skipped for budget: GLM-Legal, SpaceXSI X Subscription / cursor, Xiaomi MiMo ID deprecation as its own page, CAISSI staff move, Fable 5.5 rumor, NVIDIA–Reflection leftover, Muse leftover, arXiv highlights."
+    },
+    {
       "date": "2026-10-13",
       "op": "ingest",
       "summary": "Ingested the 2026-10-13 digest plus tickets updated 2026-10-12 (microsoft-maia-300, google-deepmind-alphaproof-nexus, us-ai-model-review-eo). Created 1 (muse-wonder — Meta's first independently scored frontier pair, AA 52/56 vs Spark 1.3's 48). Updated 8 (muse-code — Wonder live in Muse Code/API, Full on $50/$200; meta — same ship + Lambert frontier read; microsoft — Maia primary inference from 2027, Maia 300 40% tok/MW; anthropic — 9B inference on 8/9 hardware + months-from-IoT-replicator forecast; agentic-ai-security — same warning + Codex CLI daemon; federal-ai-policy — Reuters confirms UK AISI access restored; google — AlphaProof Nexus Science paper, 9 Erdős / 44 OEIS; ai-capex — Maia as third-hyperscaler custom-silicon primary path). Reciprocals on muse-glimmer, claude-opus-5-5, claude-sonnet-5-5, gpt-6, verification-bottleneck. Skipped for budget: GLM-Legal, GLM-5.3-HighSpeed, Mistral Le Chonk, Codex as its own openai increment, Typesafe leftover, Amazon–Decart leftover, Entergy/AWS Falcon, Epic Games AI-first, arXiv highlights."
@@ -7393,11 +7450,6 @@
       "date": "2026-09-25",
       "op": "ingest",
       "summary": "Ingested the 2026-09-25 digest (synthesizes the 2026-09-24 window plus overnight YouTube; tickets updated 2026-09-24 include openai-agent-government-intrusions, google-gemini-4, deepseek-second-round). Created 0, updated 8 (openai — Transluce ~30k rogue-agent logs dated to 6 March + SAFA name; agentic-ai-security — same Transluce forensic overlay + Australia portal/date cluster; anthropic — $11.6B/7y Akamai CPU deal with 7.7M-share warrant + billing for refused biology/distillation/frontier-LLM requests; google — Suncatcher four-Trillium orbital TPU on SpaceX Transporter-18 ~1 Oct + Gemini 4 in post-training; ai-capex — Akamai print + Oracle force majeure on NM Stargate/Jupiter + Brookings $10.3T; federal-ai-policy — SAFA named + Sanders–Casar 10^25-ops threshold + Bessent capture quote; deepseek — first $1B ARR figure and $7.5B/$75B raise restatement; meta — Muse Charm dated December, 2-inch OLED/5G/commission model + Spark 1.3 on GCP/Oracle). Skipped for budget: claude-opus-5-5 Vercel 10% gateway increment, gemini-3-8-live Avatar as own page, muse-code Spark 1.3 cloud increment, FLUX 3 Action, Liquid AI LFM2.5-VL-DSpark, Mercury 2.5, Space Bunny Alpha, Lovable $600M, ElevenLabs $22B, Ando $20M, nvidia Huang/Hinton, arXiv InternW0/Hunyuan-A13B/KITE/JAZ/CAVEAT batch."
-    },
-    {
-      "date": "2026-09-24",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-24 digest (no model tickets with updated_at today or yesterday; timeline recorded 288 tickets unchanged for 2026-09-23). Created 0, updated 8 (anthropic — first wet-lab ART enzyme via ~950 Claude agents + UNSC + reported 1 GW Stream Data Centers talks + Claude Code cloud GA / AGENTS.md telemetry gate; claude-science — same ART wet-lab confirmation, function still unknown; openai — Albanese confirmed Medicare Statistics portal access from 18 June + SemiAnalysis Hugging Face autopsy as unpatched 7.8 kernel CVE + Altman UNSC RSI remark; agentic-ai-security — production-agent government access + HF autopsy reframing + AGENTS.md telemetry coupling; federal-ai-policy — Sanders/Casar Ban Artificial Superintelligence Act + UNSC + Australia escalation + Bessent AI-czar rumor; google — Gemini 3.8 Flash TTS / Flash-Lite TTS with 30-second cloning; meta — Connect camera-free glasses + Muse Charm; jev — NobodyWho 25-line HN #1 + Banking77 baseline 93.3% vs Jev 83.2%). Skipped for budget: Qwen-Audio 3.1 / Qwen Intelligence / Qwen3.8-Omni, FLUX 3 Action, Apple LensVLM-9B, Opus 5.5 production-default increment, Enveda/Ema/Qualcomm-PickNik, Crusoe $2B revenue, CFTC/CME Nvidia GPU futures hold, California data-center disclosure leftover, china SASAC Broadcom survey, Stripe Kai, arXiv Agensh/AIDE²/CliffCompaction batch."
     }
   ]
 }

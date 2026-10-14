@@ -4,10 +4,11 @@ title: Noam Shazeer
 type: entity
 aliases: ["Noam Shazeer", "Shazeer"]
 tags: [people, researcher, transformer, openai, google, character-ai]
-description: Transformer co-inventor ("Attention Is All You Need"), Character.AI founder, and former Google Gemini co-lead who left Google for OpenAI as Lead for Architecture Research on 2026-06-18.
+description: Transformer co-inventor and Character.AI founder; the company he left behind filed Chapter 11 in 2026-10, with Disney as stalking-horse bidder.
 created_at: 2026-06-19
-timestamp: 2026-06-20T00:00:00Z
+timestamp: 2026-10-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
   - {title: "CNBC — Google Gemini co-lead Noam Shazeer leaves for OpenAI", url: "https://www.cnbc.com/2026/06/18/google-gemini-co-lead-noam-shazeer-leaves-for-openai.html", date: 2026-06-18}
@@ -15,7 +16,7 @@ sources:
 ---
 
 **Noam Shazeer** is one of the eight co-authors of the 2017 "Attention Is All You
-Need" transformer paper, the founder of **Character.AI**, and — until June 2026 —
+Need" transformer paper, the founder of **[[character-ai|Character.AI]]**, and — until June 2026 —
 a Google **VP of Engineering** and **[[gemini-3-5-flash|Gemini]] co-lead**. On
 **2026-06-18** he **left Google for [[openai]]** as **Lead for Architecture
 Research**, the cycle's most significant frontier-talent move.
@@ -23,7 +24,7 @@ Research**, the cycle's most significant frontier-talent move.
 ## Why it matters
 
 - **A marquee defection at the worst moment for Google.** Google paid roughly
-  **$2.7B in August 2024** to bring Shazeer and part of his Character.AI team back
+  **$2.7B in August 2024** to bring Shazeer and part of his [[character-ai]] team back
   into DeepMind; his exit to [[openai]] **reverses that acqui-hire** and lands
   while Google scrambles to ship Gemini 3.5 Pro before a reported ~June 30 cliff.
   Sam Altman publicly welcomed the move (HN discussion, 155 pts), and on
@@ -48,3 +49,20 @@ Research**, the cycle's most significant frontier-talent move.
   mandate target the next architecture step beyond the GPT-5.x line?
 - **Character.AI overhang.** His move came via Google's Character.AI deal; what
   happens to that relationship and IP now that he is at a direct competitor?
+
+## Character.AI files Chapter 11 (2026-10-14)
+
+- **[[character-ai]] filed for Chapter 11 in
+  Delaware.** Disney is the stalking-horse
+  bidder in a court-run auction; the
+  platform shuts down if no buyer
+  emerges. The digest relays a ~**$20
+  million** bid for an IP license and
+  claims. That is the remaining
+  consumer product after [[google]]'s
+  2024 team deal and Shazeer's 2026
+  move to [[openai]] — a $2.7 billion
+  acqui-hire that did not leave a
+  standalone company (TechCrunch, The
+  Verge, The Decoder, Ars Technica;
+  ARA daily digest 2026-10-14).

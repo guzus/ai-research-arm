@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; Frontier Red Team says a 9B model got inference running on 8 of 9 commercial hardware types and that small models may be months from IoT self-replication.
+description: AI safety lab behind Claude; replaced git with in-house Scion after a 12× jump in merges, and says it cut reasoning-token extraction 90–99%.
 created_at: 2026-05-24
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-14T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
@@ -3085,3 +3086,56 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   from AI Minister Kanishka Narayan. See
   [[federal-ai-policy]] (Reuters, The
   Decoder; ARA daily digest 2026-10-13).
+
+## Scion, distillation cuts, and a Q3 look (2026-10-14)
+
+- **Anthropic replaced git after a
+  12× jump in merges.** The lab
+  says it went from about
+  **2,500** merged changes a day
+  in May to more than **30,000**
+  in September, then built an
+  in-house VCS named **Scion**
+  and moved its monorepo off git
+  in five months. The numbers are
+  self-reported. The post drew
+  **472** HN points (@AnthropicAI,
+  Simon Willison; ARA daily
+  digest 2026-10-14).
+- **Anthropic says it cut
+  reasoning-token extraction by
+  90–99%** and banned tens of
+  thousands of accounts tied to
+  industrial-scale distillation.
+  Relays link the campaign to
+  [[zhipu]] and
+  [[moonshot-kimi-k3|Moonshot]].
+  The first-party post, as
+  captured on the June
+  distillation ticket, is not
+  shown to name [[alibaba]].
+  Figures come from relays of
+  the 2026-10-12 post, not from
+  checked post text. See ticket
+  `anthropic-alibaba-distillation-2026-06`
+  (The Decoder, @AnthropicAI;
+  ARA daily digest 2026-10-14).
+- **A relayed report says
+  Anthropic opens its Q3 books
+  to investors on Oct. 14**,
+  with IPO plans said to be on
+  track. The original outlet is
+  not visible in the digest
+  (@AndrewCurran_; ARA daily
+  digest 2026-10-14).
+- **A config-string rumor of
+  Claude Fable 5.5** in
+  Azure/LiteLLM configs is a
+  name being prepared, not a
+  release date or a capability
+  claim. Neither Anthropic nor
+  [[microsoft]] has confirmed
+  it. See [[claude-fable-5]]
+  (@testingcatalog,
+  @kimmonismus; ARA daily
+  digest 2026-10-14).
