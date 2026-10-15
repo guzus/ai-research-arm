@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 10:00 UTC",
-    "headline": "ANTHROPIC SHIPS CLAUDE FOR SMALL BUSINESS \u2014 EMBEDS INTO QUICKBOOKS, HUBSPOT, CANVA, GOOGLE WORKSPACE",
-    "source": "@rohrasumeet",
-    "source_file": "research/summaries/2026-05-20-twitter-10h-headlines.json",
-    "url": "https://x.com/rohrasumeet/status/2056925398387024046"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 13:00 UTC",
-    "headline": "META BEGINS ~8,000 LAYOFFS (10% OF STAFF) \u2014 4 A.M. TERMINATION EMAILS CONFIRMED TODAY",
-    "source": "@FortuneIndia",
-    "source_file": "research/summaries/2026-05-20-twitter-13h-headlines.json",
-    "url": "https://x.com/FortuneIndia/status/2056991056408031545"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 13:00 UTC",
-    "headline": "VIRAL 'LEAKED AUDIO' SAYS ZUCKERBERG TOLD META STAFF TO TRAIN AI REPLACEMENTS \u2014 STILL UNVERIFIED",
-    "source": "@LayoffAI",
-    "source_file": "research/summaries/2026-05-20-twitter-13h-headlines.json",
-    "url": "https://x.com/LayoffAI/status/2056858309618282743"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 13:00 UTC",
-    "headline": "ANTHROPIC LANDS BRISTOL-MYERS SQUIBB \u2014 CLAUDE TO ROLL OUT TO 30,000+ EMPLOYEES",
-    "source": "@ftr_investors",
-    "source_file": "research/summaries/2026-05-20-twitter-13h-headlines.json",
-    "url": "https://x.com/ftr_investors/status/2057071625221124583"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-20 13:00 UTC",
     "headline": "NVIDIA REPORTS EARNINGS AFTER US CLOSE TODAY \u2014 STREET EYES ~$78.75B REVENUE, CHINA THE SWING FACTOR",
@@ -23650,5 +23614,33 @@
     "headline": "GOOGLE, OPENAI, ANTHROPIC EXPLORED OWN AI EVALUATION GROUP; WHITE HOUSE TO ADD 3 FEDERAL TESTING OFFICIALS",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2110445585480257798"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-15 04:27:08 UTC",
+    "headline": "ANTHROPIC Q3 REVENUE $16.8B, UP 45% Q/Q; ADJUSTED PROFIT AND POSITIVE FREE CASH FLOW AHEAD OF IPO",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2110498968082043327"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-15 04:27:08 UTC",
+    "headline": "ANTHROPIC TARGETS $110B ANNUALIZED REVENUE RUN RATE BY END OF 2026 \u2014 BLOOMBERG",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2110564228251763079"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-15 04:27:08 UTC",
+    "headline": "GOOGLE TPUV7 FP8 BEATS NVIDIA GB300 NVL72 FP4 BY 1.67X ON PERF PER DOLLAR IN SEMIANALYSIS AGENTX BENCHMARK",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2110560412907262343"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-15 04:27:08 UTC",
+    "headline": "ANT GROUP OPEN-SOURCES LING-3.1-FLASH: 560B TOTAL / 25B ACTIVE, 1M CONTEXT, MIT LICENSE",
+    "source": "@AntLingAGI",
+    "url": "https://x.com/AntLingAGI/status/2110390124743970952"
   }
 ]
