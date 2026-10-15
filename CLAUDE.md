@@ -429,7 +429,7 @@ analytical thread they carry most of the argument:
 ```bash
 /gen-research-tweet https://x.com/<handle>/status/<id>
 # or: gh workflow run generative-research.yml \
-#       -f twitter_url="https://x.com/<handle>/status/<id>" -f backend=claude
+#       -f twitter_url="https://x.com/<handle>/status/<id>"   # backend: registry default
 ```
 
 ## Output Locations

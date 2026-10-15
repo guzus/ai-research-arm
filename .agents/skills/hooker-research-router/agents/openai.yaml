@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hooker Research Router"
+  short_description: "Route Hooker logs to research."
+  default_prompt: "Use $hooker-research-router to read the last 7 days of Hooker logs, select required research topics that do not overlap existing research, and route the best topics to generative research."

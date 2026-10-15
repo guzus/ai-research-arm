@@ -37,6 +37,10 @@ Thumbs.db
 .agents/skills/*
 !.agents/skills/expand-llm-wiki/
 !.agents/skills/expand-llm-wiki/**
+!.agents/skills/gen-research-ko-backfill/
+!.agents/skills/gen-research-ko-backfill/**
+!.agents/skills/hooker-research-router/
+!.agents/skills/hooker-research-router/**
 .gstack/
 .claude/worktrees/
 # Per-developer Claude Code permission state — local to each contributor.
