@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "META RELEASES MUSE SPARK OPEN WEIGHTS — 816B-PARAM MOE, 42B ACTIVE, 1M CONTEXT, RUNS ON TWO MAC STUDIOS",
+    "source": "@AIatMeta",
+    "url": "https://x.com/AIatMeta/status/2110779754274292212",
+    "category": "opensource"
+  },
+  {
+    "headline": "ANTHROPIC GIVES METR EVALUATORS EMPLOYEE-LIKE ACCESS, NO VETO OVER PUBLISHED FINDINGS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2110784662071398807",
+    "category": "policy"
+  },
+  {
+    "headline": "MICROSOFT COMPLETES MAI-BASE-2 PRETRAINING ON 16K GB200S IN 38 DAYS; CLAIMS 4-12X EFFICIENCY OVER DEEPSEEK-V4-PRO-BASE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2110797298661744928",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC MAKES OPUS 5.5 FAST MODE GA AT $8/$40 PER MILLION TOKENS, UP TO 2.5X FASTER",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2110825294655562048",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI SHIPS GPT-LIVE-1.1 VOICE MODEL ACROSS CHATGPT, CODEX AND DOTS; API COMING SOON",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2110797830361436604",
+    "category": "model"
+  }
+]
