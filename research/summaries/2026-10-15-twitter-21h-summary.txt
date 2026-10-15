@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-10-15 21:17:11 UTC
+
+CYCLE: Meta's open-weight Muse Spark Open, METR inside Anthropic, Microsoft's MAI-Base-2
+
+TOP STORIES:
+• Meta releases Muse Spark Open (816B-A42B, 1M ctx, multimodal), tuned to run on 2 Mac Studios ✓
+• Anthropic gives a 6-person METR team employee-like access, with no veto over what they publish ✓
+• Microsoft finishes MAI-Base-2 pre-training: 16K GB200s, 38 days, claims 4-12x efficiency vs DeepSeek ⚠
+• Opus 5.5 fast mode is GA at $8/$40 per Mtok, now on Azure Foundry ⚠
+
+WATCH: Independent benchmarks for Muse Spark Open against GLM-5.3/DeepSeek-V4
+
+Full update on GitHub.
