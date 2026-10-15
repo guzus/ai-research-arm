@@ -1,0 +1,11 @@
+Speaker 1: Thursday, October fifteenth, twenty twenty-six.
+Speaker 2: [high_energy] Leading today, a complaint against OpenAI alleges an engineer used an internal AI agent to scout a room, which is being described as a bugging case.
+Speaker 1: That is a strange new category of workplace complaint, and it lands the same day as a big security win for AI.
+Speaker 2: Right, XBOW paired with GPT five point six Sol to win Google's [emphasis] two hundred fifty thousand dollar [/emphasis] full-chain Chrome bounty, on roughly forty thousand dollars of compute.
+Speaker 1: Turning to money, CoreWeave's twenty thirty-two bonds have fallen below eighty-five cents on the dollar, and banks are shopping AI data-center debt.
+Speaker 2: Those notes now yield around fifteen percent, even with a backlog of roughly [emphasis] one hundred four billion dollars [/emphasis], so the market is clearly nervous.
+Speaker 1: Anthropic, meanwhile, has opened a Singapore office, and a five hundred megawatt deal in Osaka is reported to be close.
+Speaker 2: Some quick numbers from voice, Grok Voice three point zero now ranks number one in speech-to-speech with a score of eighty-six point nine, at just eight cents a minute.
+Speaker 1: And trending on Hacker News, an eight hundred two point thread argues that so-called rogue agent reports are [dramatic_pause] really containment failures.
+Speaker 2: Worth noting, that framing puts the blame on the setup around the agent, not the agent itself.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
