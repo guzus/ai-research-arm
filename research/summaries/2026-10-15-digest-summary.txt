@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-10-15
+
+TOP STORIES:
+• OpenAI bugging complaint: engineer used an internal AI agent to scout the room
+• XBOW + GPT-5.6 Sol win Google's $250K full-chain Chrome bounty
+• CoreWeave 2032 bonds fall below 85 cents; banks shop AI data-center debt
+• Anthropic opens Singapore office; 500 MW Osaka deal reported near
+
+KEY NUMBERS:
+• ~$40K compute vs $250K Chrome payout
+• Grok Voice 3.0: #1 speech-to-speech (86.9) at $0.08/min
+• CoreWeave notes yield ~15%; ~$104B backlog
+
+TRENDING: HN's 802-point thread says AI "rogue agent" reports are really containment failures
+
+Full digest on GitHub.
