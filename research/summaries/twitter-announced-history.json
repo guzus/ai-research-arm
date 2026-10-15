@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 16:00 UTC",
-    "headline": "SEMIANALYSIS: ZUCKERBERG TELLS META STAFF TO EXPECT NO MORE COMPANY-WIDE LAYOFFS THIS YEAR",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-20-twitter-16h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2057123911003742679"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 16:00 UTC",
-    "headline": "SPACEX IPO DRAFT NAMES STARSHIP AS TOP GROWTH DRIVER AND TOP RISK; PUBLIC S-1 STILL UNFILED",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-20-twitter-16h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057114268013617510"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-20 16:00 UTC",
-    "headline": "GEMINI 3.5 FLASH RECEPTION SOURS \u2014 DEV TESTS PUT IT BELOW CURSOR'S COMPOSER 2 ON AGENTIC TASKS",
-    "source": "@thrishank007",
-    "source_file": "research/summaries/2026-05-20-twitter-16h-headlines.json",
-    "url": "https://x.com/thrishank007/status/2057133994878374130"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 19:00 UTC",
-    "headline": "OPENAI PREPARING TO FILE FOR IPO AS SOON AS FRIDAY, TARGETING SEPTEMBER LISTING NEAR $1 TRILLION \u2014 WSJ",
-    "source": "@WSJ",
-    "source_file": "research/summaries/2026-05-20-twitter-19h-headlines.json",
-    "url": "https://x.com/WSJ/status/2057135489040212227"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 19:00 UTC",
-    "headline": "THE INFORMATION: OPENAI EXPECTS REVENUE TO DOUBLE TO ~$30B BY END-2026, VALUATION COULD TOP $1T",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-20-twitter-19h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057173173104226318"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-20 19:00 UTC",
     "headline": "GOOGLE LAUNCHES GEMINI FOR SCIENCE \u2014 AGENTIC TOOLS WIRE 30+ LIFE-SCIENCE MODELS INTO ANTIGRAVITY",
@@ -23634,5 +23589,40 @@
     "headline": "COHERE ACQUIRES DEFENSIVE-CYBER AI STARTUP AISLE",
     "source": "@cohere",
     "url": "https://x.com/cohere/status/2110687133270688124"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-15 16:51:58 UTC",
+    "headline": "ARC PRIZE VERIFIES GEMINI 4 ARGON AT 97.5% ON ARC-AGI-3 WITH PROVIDER HARNESS, 49.8% ON STANDARD HARNESS",
+    "source": "@arcprize",
+    "url": "https://x.com/arcprize/status/2110768288523251762"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-15 16:51:58 UTC",
+    "headline": "GOODFIRE: MOST NEURONS IN MODELS UP TO TRILLIONS OF PARAMETERS ARE INTERPRETABLE, SAYS ZOOM IN CO-AUTHOR CAMMARATA",
+    "source": "@GoodfireAI",
+    "url": "https://x.com/GoodfireAI/status/2110758907895484731"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-15 16:51:58 UTC",
+    "headline": "NVIDIA RELEASES OPEN NEMOTRON 3.5 SUPER VL (120B, 12B ACTIVE) AND BOLT (74B, 9B ACTIVE) AHEAD OF GTC",
+    "source": "@NVIDIAAI",
+    "url": "https://x.com/NVIDIAAI/status/2110749836450713896"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-15 16:51:58 UTC",
+    "headline": "SIMONS FOUNDATION COMMITS $15M TO HELP MATHEMATICIANS BUILD ON AI RESULTS; OPENAI CONTRIBUTES $5M",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2110741355739963884"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-15 16:51:58 UTC",
+    "headline": "FT: ANTHROPIC TOLD INVESTORS DISTILLATION ACCOUNTED FOR 5-7% OF REVENUE",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2110721515130089787"
   }
 ]
