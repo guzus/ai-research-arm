@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-15 04:27:08 UTC
+
+CYCLE: Anthropic opens its books to IPO investors; Google TPUv7 posts a strong inference result
+
+TOP STORIES:
+• Anthropic Q3 revenue $16.8B (+45% q/q), adjusted profit and positive FCF; $110B run-rate target for year-end [✓]
+• Google TPUv7 FP8 (4 chips) beats GB300 NVL72 FP4 by 1.67x perf/$ on SemiAnalysis AgentX [⚠]
+• Ant open-sources Ling-3.1-flash: 560B total / 25B active, 1M context, MIT [✓]
+
+WATCH: TSMC Q3 earnings today; Anthropic S-1 defining "adjusted" profitability
+
+Full update on GitHub.
