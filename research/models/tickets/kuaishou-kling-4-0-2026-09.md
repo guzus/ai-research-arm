@@ -3,7 +3,7 @@ slug: kuaishou-kling-4-0-2026-09
 title: Kling 4.0 and Kling 4.0 Flash — reported video-model release
 company: Kuaishou
 model: Kling 4.0
-status: rumored
+status: closed
 status_note: |
   **One source, no primary.** @aiwithaly, 2026-09-30 04:14 UTC, with an attached
   15-second 4K sample video: "Kling 4.0 is pushing AI generated video toward a
@@ -42,12 +42,14 @@ verification: unverified
 sources:
   - https://x.com/aiwithaly/status/2105149374833832072
 created_at: 2026-09-30
-updated_at: 2026-09-30
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-15
+closed_at: 2026-10-15
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-09-30
     change: "Created — RUMORED / unverified. @aiwithaly (2026-09-30 04:14 UTC, with a 15-second 3840x1640 sample clip attached) reports Kling 4.0 improving movement quality, character performance and visual continuity, and states that 'Kling 4.0 Flash is now available'. That is the complete evidence base: one account, no Kuaishou or Kling official post, no pricing, no API id, no model card, no benchmark, and no second mention across the 131 retained signal groups in this cycle. Status rumored and verification unverified accordingly — an availability assertion from a single enthusiast account is not a release, and the attached video attests that a clip was rendered, not which checkpoint rendered it. The capability claims are the generic set every video-model release makes (motion, character consistency, temporal continuity) and are recorded without being adopted. The one detail with structural information in it is the 4.0 / 4.0 Flash PAIR: a flagship-plus-fast-tier split is the naming convention the whole field converged on during 2026, so the shape is consistent with a real product line rather than a fabrication. First Kling MODEL ticket in this set — [[kuaishou-kling-funding-2026-07]] tracks the company's capital raise only — so if 4.0 is confirmed this ticket should absorb subsequent 4.x signal rather than spawning siblings. Close trigger set: no corroboration within ~15 cycles closes this as stale-rumor-unverified."
+  - ts: 2026-10-15
+    change: "Closed — stale-rumor-unverified. Fifteen daily cycles since the single @aiwithaly post (2026-09-30) claiming Kling 4.0 Flash was available, with no Kuaishou/Kling official post, pricing, API id or second mention in any later cycle, including today's signal. Closed without prejudice; an official Kling 4.x release would open a successor that links here, and [[kuaishou-kling-funding-2026-07]] is unaffected."
 ---
 
 A video model is the hardest category to verify from social signal, because the
@@ -76,3 +78,5 @@ a status above `rumored`.
 Resolution should be fast. Kling is a commercial product with a pricing page and an
 active official account; a 4.0 release either shows up there within days or it did
 not happen the way this post says.
+
+**2026-10-15 — closed as stale-rumor-unverified.** Fifteen cycles passed with no corroboration of any kind.
