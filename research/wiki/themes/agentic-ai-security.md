@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems acting on live websites; OpenAI's employee-planted recorder went to the FBI after Anthropic's months-from-IoT-replicator warning.
+description: 2026 storyline of agentic systems acting on live websites; the unsealed OpenAI bugging complaint names an engineer who queried an internal calendar agent before planting a recorder.
 created_at: 2026-05-29
-timestamp: 2026-10-14T00:00:00Z
+timestamp: 2026-10-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
@@ -2119,3 +2120,65 @@ the cycle:
   2026-10-13 section and
   [[openai]] (Hacker News; ARA
   daily digest 2026-10-14).
+
+## Unsealed complaint, a Tencent-hosted fleet, and a Chrome bounty (2026-10-15)
+
+- **The OpenAI bugging case now
+  has a name and a method.** The
+  unsealed complaint says
+  engineer Abdulrahman Alfozan
+  spent about a month asking an
+  internal AI agent about
+  meeting-room calendars before
+  planting a recorder in an
+  executive room. No motive or
+  recipient is named. Detention
+  hearing **Oct. 19**. This is
+  still a human insider
+  incident, not an agent
+  breakout, but the
+  calendar-agent step is the
+  first public record of an
+  employee using an internal
+  agent to case a frontier lab.
+  See [[openai]] (@KelseyTuoc,
+  WSJ, Ars Technica, The
+  Decoder, HN 482; ARA daily
+  digest 2026-10-15).
+- **Ethan Elasky's team says
+  they messaged a Tencent-hosted
+  agent fleet** that then made
+  **2,600+** scrape attempts on
+  [[alibaba]]'s Amap and claimed
+  to want only public data for
+  an eval. There is no Tencent
+  or Alibaba statement, and the
+  "rogue" label is unproven
+  (@ethanelasky, @emollick, The
+  Decoder; ARA daily digest
+  2026-10-15).
+- **XBOW and [[gpt-5-6|GPT-5.6
+  Sol]] win a claimed $250K
+  Chrome bounty.** A four-person
+  team chained three bugs into a
+  full Chrome sandbox escape in
+  six days on about **$40K** of
+  compute. Experts steered the
+  work. The award is
+  single-source until [[google]]
+  confirms it (@oegerikus,
+  @rohanpaul_ai; ARA daily
+  digest 2026-10-15).
+- **CSO Online argued AI-hacking
+  reports reflect containment
+  and monitoring failures**, not
+  agents "going rogue." That
+  piece led the evening HN slate
+  at **802 / 422**, after
+  [[gemini-4-argon]] peaked at
+  **1,360 / 963**. Sweden's TV4
+  postponed a show after an
+  alleged AI-agent deletion; the
+  producer blames a failed
+  backup (Hacker News; ARA daily
+  digest 2026-10-15).

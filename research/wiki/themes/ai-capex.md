@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Microsoft said Maia becomes its primary inference system from 2027 at multi-gigawatt scale.
+description: The historically large compute buildout; CoreWeave's 2032 bonds fell into distress territory as banks reportedly try to offload $38B of Oracle-linked data-center debt.
 created_at: 2026-05-24
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
@@ -1603,3 +1604,46 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   to [[nvidia]] (The Verge, The
   Decoder; ARA daily digest
   2026-10-13).
+
+## CoreWeave bonds in distress; $38B Oracle-linked debt (2026-10-15)
+
+- **[[coreweave]]'s 9.625% 2032
+  notes dropped below 85 cents**,
+  with yields near **15%**, and
+  the shares fell as much as
+  **17%**. Bloomberg says Q2 net
+  interest expense (**$640M**)
+  exceeded the operating loss
+  (**$626M**). CoreWeave points
+  to a ~**$104B** backlog. Banks
+  are also reportedly trying to
+  offload **$38B** of
+  Oracle-linked data-center
+  construction debt. Oracle
+  bonds weakened alongside it. A
+  hot September CPI print the
+  same day muddies how much is
+  AI-specific (Bloomberg via
+  @rohanpaul_ai, HN 239; ARA
+  daily digest 2026-10-15).
+- **[[anthropic]] is near a
+  reported 500 MW Osaka
+  data-center deal with NTT
+  Data**; terms are reported,
+  not announced. Jensen Huang
+  pledged **$2B** for Europe and
+  **$250M** of compute for UK
+  safety labs, and [[nvidia]]
+  open-sourced Run:ai into the
+  DSX AI Factory Platform. Nanya
+  expects the AI-driven DRAM
+  shortage to last into early
+  **2028**. ASML's Q3 is
+  reported at ~**€11.7B** with
+  Q4 guided to **€14.2–15.2B**,
+  from secondhand market posts.
+  TSMC reports today
+  (@AnthropicAI, Reuters,
+  Nikkei, @NVIDIAAIInfra, The
+  Decoder; ARA daily digest
+  2026-10-15).

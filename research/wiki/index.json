@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; OpenAI's employee-planted recorder went to the FBI after Anthropic's months-from-IoT-replicator warning.",
-      "description": "2026 storyline of agentic systems acting on live websites; OpenAI's employee-planted recorder went to the FBI after Anthropic's months-from-IoT-replicator warning.",
+      "summary": "2026 storyline of agentic systems acting on live websites; the unsealed OpenAI bugging complaint names an engineer who queried an internal calendar agent before planting a recorder.",
+      "description": "2026 storyline of agentic systems acting on live websites; the unsealed OpenAI bugging complaint names an engineer who queried an internal calendar agent before planting a recorder.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-14",
-      "timestamp": "2026-10-14T00:00:00Z",
+      "updated_at": "2026-10-15",
+      "timestamp": "2026-10-15T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -59,6 +59,7 @@
         "agentic supply-chain"
       ],
       "outbound": [
+        "alibaba",
         "amazon",
         "anthropic",
         "astra",
@@ -73,6 +74,7 @@
         "dynamic-workflows",
         "federal-ai-policy",
         "gemini-3-8-flash",
+        "gemini-4-argon",
         "google",
         "gpt-5-6",
         "gpt-6",
@@ -176,11 +178,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Microsoft said Maia becomes its primary inference system from 2027 at multi-gigawatt scale.",
-      "description": "The historically large compute buildout; Microsoft said Maia becomes its primary inference system from 2027 at multi-gigawatt scale.",
+      "summary": "The historically large compute buildout; CoreWeave's 2032 bonds fell into distress territory as banks reportedly try to offload $38B of Oracle-linked data-center debt.",
+      "description": "The historically large compute buildout; CoreWeave's 2032 bonds fell into distress territory as banks reportedly try to offload $38B of Oracle-linked data-center debt.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-15",
+      "timestamp": "2026-10-15T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -390,6 +392,7 @@
         "zhipu-glm-5-3"
       ],
       "inbound": [
+        "agentic-ai-security",
         "ai-capex",
         "aleph-alpha",
         "anthropic",
@@ -577,11 +580,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; replaced git with in-house Scion after a 12× jump in merges, and says it cut reasoning-token extraction 90–99%.",
-      "description": "AI safety lab behind Claude; replaced git with in-house Scion after a 12× jump in merges, and says it cut reasoning-token extraction 90–99%.",
+      "summary": "AI safety lab behind Claude; opened a Singapore office and signed an AI-safety MOU, while Reuters reports a 500 MW Osaka deal with NTT Data.",
+      "description": "AI safety lab behind Claude; opened a Singapore office and signed an AI-safety MOU, while Reuters reports a 500 MW Osaka deal with NTT Data.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-14",
-      "timestamp": "2026-10-14T00:00:00Z",
+      "updated_at": "2026-10-15",
+      "timestamp": "2026-10-15T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -595,7 +598,9 @@
         "OSS Scanner",
         "Claude Dashboards",
         "Claude Motion",
-        "unintended Claude actions"
+        "unintended Claude actions",
+        "Anthropic Scion",
+        "Opaque Systems"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -743,11 +748,11 @@
         "siri",
         "wwdc"
       ],
-      "summary": "Consumer-hardware giant tightening macOS Full Disk Access for AI agents, saying they substantially raise the risk of broad access to files, messages, mail and browsing history.",
-      "description": "Consumer-hardware giant tightening macOS Full Disk Access for AI agents, saying they substantially raise the risk of broad access to files, messages, mail and browsing history.",
+      "summary": "Consumer-hardware giant; a judge ordered OpenAI to produce Apple interview files on ex-Apple hardware recruits, while OpenAI says an ex-employee took 100+ product-plan files to Apple.",
+      "description": "Consumer-hardware giant; a judge ordered OpenAI to produce Apple interview files on ex-Apple hardware recruits, while OpenAI says an ex-employee took 100+ product-plan files to Apple.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-10-03",
-      "timestamp": "2026-10-03T00:00:00Z",
+      "updated_at": "2026-10-15",
+      "timestamp": "2026-10-15T00:00:00Z",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -1075,11 +1080,11 @@
         "disney",
         "google"
       ],
-      "summary": "Companion-AI startup that filed Chapter 11 in Delaware; Disney is the stalking-horse bidder, and the platform shuts down if no buyer emerges.",
-      "description": "Companion-AI startup that filed Chapter 11 in Delaware; Disney is the stalking-horse bidder, and the platform shuts down if no buyer emerges.",
+      "summary": "Companion-AI startup in Chapter 11; Disney is the stalking-horse bidder, and 41 attorneys general moved to constrain user-data transfers in the sale.",
+      "description": "Companion-AI startup in Chapter 11; Disney is the stalking-horse bidder, and 41 attorneys general moved to constrain user-data transfers in the sale.",
       "created_at": "2026-10-14",
-      "updated_at": "2026-10-14",
-      "timestamp": "2026-10-14T00:00:00Z",
+      "updated_at": "2026-10-15",
+      "timestamp": "2026-10-15T00:00:00Z",
       "file": "entities/character-ai.md",
       "aliases": [
         "Character.AI",
@@ -1088,11 +1093,13 @@
         "c.ai"
       ],
       "outbound": [
+        "federal-ai-policy",
         "google",
         "noam-shazeer",
         "openai"
       ],
       "inbound": [
+        "federal-ai-policy",
         "google",
         "noam-shazeer",
         "openai"
@@ -1646,11 +1653,11 @@
         "ai-infrastructure",
         "take-or-pay"
       ],
-      "summary": "NASDAQ-listed GPU-as-a-service neocloud with a ~$104B contracted backlog and revenue up 112% Y/Y to $2.58B in FY26Q2 (filed 2026-08-11), with revenue concentrated in Microsoft, OpenAI, and Meta — and ~$5.7B of cash burned in the quarter per The Information.",
-      "description": "NASDAQ-listed GPU-as-a-service neocloud with a ~$104B contracted backlog and revenue up 112% Y/Y to $2.58B in FY26Q2 (filed 2026-08-11), with revenue concentrated in Microsoft, OpenAI, and Meta — and ~$5.7B of cash burned in the quarter per The Information.",
+      "summary": "GPU-as-a-service neocloud; 9.625% 2032 notes fell below 85 cents with yields near 15%, and shares dropped as much as 17%, against a ~$104B backlog.",
+      "description": "GPU-as-a-service neocloud; 9.625% 2032 notes fell below 85 cents with yields near 15%, and shares dropped as much as 17%, against a ~$104B backlog.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-09-18",
-      "timestamp": "2026-09-18T00:00:00Z",
+      "updated_at": "2026-10-15",
+      "timestamp": "2026-10-15T00:00:00Z",
       "file": "entities/coreweave.md",
       "aliases": [
         "CoreWeave",
@@ -2292,11 +2299,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; Reuters confirmed the White House restored UK AISI pre-release access to Anthropic, Google DeepMind, and OpenAI models.",
-      "description": "US federal AI governance; Reuters confirmed the White House restored UK AISI pre-release access to Anthropic, Google DeepMind, and OpenAI models.",
+      "summary": "US federal AI governance; labs explored a private eval group as eight states sued OpenAI over child safety and Anthropic sought a Pentagon-designation rehearing.",
+      "description": "US federal AI governance; labs explored a private eval group as eight states sued OpenAI over child safety and Anthropic sought a Pentagon-designation rehearing.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-15",
+      "timestamp": "2026-10-15T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -2331,6 +2338,7 @@
         "anthropic",
         "astra",
         "california-ai-regulation",
+        "character-ai",
         "china-ai-regulation",
         "claude-fable-5",
         "claude-sonnet-5",
@@ -2366,6 +2374,7 @@
         "anthropic",
         "apple",
         "california-ai-regulation",
+        "character-ai",
         "china-ai-regulation",
         "claude-fable-5",
         "claude-science",
@@ -2784,11 +2793,11 @@
         "cyber-defense",
         "pricing"
       ],
-      "summary": "Google's Gemini 4 flagship, now generally available on the paid API, AI Studio, Gemini app, Search AI Mode and Antigravity; independent coding benches split sharply.",
-      "description": "Google's Gemini 4 flagship, now generally available on the paid API, AI Studio, Gemini app, Search AI Mode and Antigravity; independent coding benches split sharply.",
+      "summary": "Google's Gemini 4 flagship, now generally available; day-two independent benches put it 3rd of 35 on KernelBench-Mega (27.0×) behind Opus 5.5 and Sonnet 5.5.",
+      "description": "Google's Gemini 4 flagship, now generally available; day-two independent benches put it 3rd of 35 on KernelBench-Mega (27.0×) behind Opus 5.5 and Sonnet 5.5.",
       "created_at": "2026-10-01",
-      "updated_at": "2026-10-14",
-      "timestamp": "2026-10-14T00:00:00Z",
+      "updated_at": "2026-10-15",
+      "timestamp": "2026-10-15T00:00:00Z",
       "file": "entities/gemini-4-argon.md",
       "aliases": [
         "Gemini 4 Argon",
@@ -2813,6 +2822,7 @@
         "harvey"
       ],
       "inbound": [
+        "agentic-ai-security",
         "astra",
         "claude-opus-5-5",
         "gemini-3-6-flash",
@@ -5018,11 +5028,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; an employee-planted recorder led to a firing and an FBI arrest, with no indication weights or customer data were taken.",
-      "description": "Frontier lab behind the GPT family; an employee-planted recorder led to a firing and an FBI arrest, with no indication weights or customer data were taken.",
+      "summary": "Frontier lab behind the GPT family; an unsealed complaint names engineer Abdulrahman Alfozan in the office-bugging case, with a detention hearing set for Oct 19.",
+      "description": "Frontier lab behind the GPT family; an unsealed complaint names engineer Abdulrahman Alfozan in the office-bugging case, with a detention hearing set for Oct 19.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-14",
-      "timestamp": "2026-10-14T00:00:00Z",
+      "updated_at": "2026-10-15",
+      "timestamp": "2026-10-15T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5039,7 +5049,10 @@
         "Tomek Korbak",
         "Mikita Balesni",
         "Jasmine Wang",
-        "Dark Clark"
+        "Dark Clark",
+        "Abdulrahman Alfozan",
+        "Sachin Katti",
+        "Uday Ruddarraju"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -6654,6 +6667,7 @@
     "ab 1609": "california-ai-regulation",
     "ab 1709": "california-ai-regulation",
     "ab 853": "california-ai-regulation",
+    "abdulrahman alfozan": "openai",
     "advanced micro devices": "amd",
     "age": "artificial-general-engineer",
     "agent half-life": "agent-lifespan-engineering",
@@ -6696,6 +6710,7 @@
     "anthropic": "anthropic",
     "anthropic biology lab": "claude-science",
     "anthropic pbc": "anthropic",
+    "anthropic scion": "anthropic",
     "anysphere": "cursor",
     "apple": "apple",
     "apple inc.": "apple",
@@ -7146,6 +7161,7 @@
     "nvidia sentry": "nvidia",
     "omega": "matrix-multiplication-exponent",
     "one claude": "anthropic",
+    "opaque systems": "anthropic",
     "open agent safety platform": "nvidia",
     "open frontier intelligence": "moonshot-kimi-k3",
     "open source ai": "open-weights",
@@ -7226,6 +7242,7 @@
     "robostral": "mistral-robostral-navigate",
     "robostral navigate": "mistral-robostral-navigate",
     "rosalind biodefense": "openai",
+    "sachin katti": "openai",
     "sacramento ai policy": "california-ai-regulation",
     "safa": "federal-ai-policy",
     "safe superintelligence inc": "safe-superintelligence",
@@ -7302,6 +7319,7 @@
     "trump ai executive order": "federal-ai-policy",
     "typesafe": "jev",
     "typesafe jev": "jev",
+    "uday ruddarraju": "openai",
     "unintended claude actions": "anthropic",
     "unitree": "unitree",
     "unitree robotics": "unitree",
@@ -7351,6 +7369,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-10-15",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-15 digest plus tickets updated 2026-10-14 (openai-office-recording-device, anthropic-singapore-office, anthropic-claude-fable-5-5 Azure catalog). Created 0. Updated 8 (openai — unsealed Alfozan complaint + Apple interview files + eight-state child-safety suit + Katti steps aside + Trail of Bits talks; anthropic — Singapore office/MOU + reported 500 MW Osaka/NTT + Opaque license + Pentagon rehearing + Scion/Mononoke; coreweave — 9.625% 2032 notes below 85¢, yields ~15%, shares −17%; agentic-ai-security — calendar-agent casing + Tencent-hosted fleet + claimed $250K Chrome bounty; ai-capex — same CoreWeave distress + $38B Oracle-linked DC debt; character-ai — 41 AGs on user-data transfers; gemini-4-argon — KernelBench-Mega 3rd/35 at 27.0×; federal-ai-policy — private eval-group exploration + eight-state suit + Pentagon rehearing). Reciprocal on apple. Skipped for budget: Grok Voice 3.0, Liquid LFM2.5-24B-A2B, NVIDIA Run:ai / $2B Europe, Mistral New Material, Prime Intellect/Moondream, Exa $100M ARR, Claude Code as own page, Fable 5.5 rumor as own page, arXiv Tev/HarnessTTT/TacitVLA."
+    },
     {
       "date": "2026-10-14",
       "op": "ingest",
@@ -7445,11 +7468,6 @@
       "date": "2026-09-26",
       "op": "ingest",
       "summary": "Ingested the 2026-09-26 digest (synthesizes the 2026-09-25 cycle plus overnight RSS/YouTube; tickets updated 2026-09-25 include openai-chatgpt-pro-max, anthropic-ipo founder-control, us-ai-model-review-eo UK AISI sequencing). Created 0, updated 9 (openai — 53 leaked training images + $500 Pro Max test + UK AISI hold; anthropic — D.C. Circuit Pentagon ban + 50.1% founder voting ask + nine-loop; agentic-ai-security — image leak + swarmtraces.org reconstruction + refusals as §4713 risk; hugging-face — 80k+ reassembled swarm payloads + Wolf forensics quote; federal-ai-policy — §4713 holding + US-then-AISI sequencing + Bessent not czar; microsoft — Copilot rebuilt around OpenClaw; claude-science — nine-loop N=4 amplitude + two Enigma recoveries; crusoe — cancelled $1.25B Boom Superpower order at Abilene; astra — reciprocal Enigma note). Skipped for budget: gemini-3-8-live Avatar GA, cognition-ai $1B ARR claim, jev/Ollaya, Nscale $3.36B convertible, TypeSafe/DensityAI raises, GPT-6 Astra NetHack leftover, muse-spark-1.4 / Space Bunny / Nano Banana 2.5 rumors, arXiv Qwen-Planner/Rufus-Air/CTC-Bench batch."
-    },
-    {
-      "date": "2026-09-25",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-25 digest (synthesizes the 2026-09-24 window plus overnight YouTube; tickets updated 2026-09-24 include openai-agent-government-intrusions, google-gemini-4, deepseek-second-round). Created 0, updated 8 (openai — Transluce ~30k rogue-agent logs dated to 6 March + SAFA name; agentic-ai-security — same Transluce forensic overlay + Australia portal/date cluster; anthropic — $11.6B/7y Akamai CPU deal with 7.7M-share warrant + billing for refused biology/distillation/frontier-LLM requests; google — Suncatcher four-Trillium orbital TPU on SpaceX Transporter-18 ~1 Oct + Gemini 4 in post-training; ai-capex — Akamai print + Oracle force majeure on NM Stargate/Jupiter + Brookings $10.3T; federal-ai-policy — SAFA named + Sanders–Casar 10^25-ops threshold + Bessent capture quote; deepseek — first $1B ARR figure and $7.5B/$75B raise restatement; meta — Muse Charm dated December, 2-inch OLED/5G/commission model + Spark 1.3 on GCP/Oracle). Skipped for budget: claude-opus-5-5 Vercel 10% gateway increment, gemini-3-8-live Avatar as own page, muse-code Spark 1.3 cloud increment, FLUX 3 Action, Liquid AI LFM2.5-VL-DSpark, Mercury 2.5, Space Bunny Alpha, Lovable $600M, ElevenLabs $22B, Ando $20M, nvidia Huang/Hinton, arXiv InternW0/Hunyuan-A13B/KITE/JAZ/CAVEAT batch."
     }
   ]
 }

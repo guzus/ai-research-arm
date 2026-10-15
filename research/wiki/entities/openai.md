@@ -2,12 +2,14 @@
 slug: openai
 title: OpenAI
 type: entity
-aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark"]
+aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; an employee-planted recorder led to a firing and an FBI arrest, with no indication weights or customer data were taken.
+description: Frontier lab behind the GPT family; an unsealed complaint names engineer Abdulrahman Alfozan in the office-bugging case, with a detention hearing set for Oct 19.
 created_at: 2026-05-30
-timestamp: 2026-10-14T00:00:00Z
+timestamp: 2026-10-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
+  - {title: "ARA model ticket — OpenAI office recording device", path: research/models/tickets/openai-office-recording-device-2026-10.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
@@ -3100,6 +3102,83 @@ materially reshape how the lab is positioned heading into its IPO window:
   2026 move here (TechCrunch,
   The Verge; ARA daily digest
   2026-10-14).
+
+## Unsealed complaint, Apple files, and eight-state suit (2026-10-15)
+
+- **The unsealed complaint names
+  engineer Abdulrahman Alfozan.**
+  Prosecutors say he spent about
+  a month asking an internal AI
+  agent about meeting-room
+  calendars before planting a
+  recorder in an executive room.
+  The charge names no motive or
+  recipient. A detention hearing
+  is set for **Oct. 19**. OpenAI
+  still says it has no indication
+  that weights, source code, or
+  customer data were taken. See
+  [[agentic-ai-security]]
+  (@KelseyTuoc, WSJ via
+  @rohanpaul_ai, Ars Technica,
+  The Decoder, HN 482 points;
+  ARA daily digest 2026-10-15
+  and ticket
+  `openai-office-recording-device-2026-10`).
+- **A judge ordered OpenAI to
+  hand [[apple]] interview files**
+  on ex-Apple hardware recruits
+  within 5 and 14 days, plus
+  forensic device images. OpenAI
+  countered that an ex-employee
+  took **100+** product-plan
+  files to Apple leadership
+  (TechCrunch, The Verge,
+  Bloomberg via @rohanpaul_ai;
+  ARA daily digest 2026-10-15).
+- **Eight states sued OpenAI
+  over child safety.** Iowa,
+  Kansas, Nebraska, West
+  Virginia, Arkansas, Arizona,
+  Idaho and Montana bring
+  consumer-protection claims
+  that OpenAI put profits over
+  safety. See
+  [[federal-ai-policy]] (The
+  Verge; ARA daily digest
+  2026-10-15).
+- **Infrastructure chief Sachin
+  Katti is stepping aside.**
+  Compute CTO Uday Ruddarraju
+  takes over the infrastructure
+  business; Katti stays as an
+  adviser (Bloomberg via
+  @rohanpaul_ai; ARA daily
+  digest 2026-10-15).
+- **The Information reports
+  OpenAI is in talks to buy
+  Trail of Bits.** The companies
+  already run "Patch the Planet"
+  together, which OpenAI says
+  found hundreds of bugs across
+  19 open-source projects.
+  Neither company has confirmed
+  a deal (@mark_k; ARA daily
+  digest 2026-10-15).
+- **The Information says the
+  next flagship reasons in
+  unreadable ways** — a
+  looped-transformer model that
+  needs alignment work before
+  release. Three fired safety
+  researchers are calling for
+  an industrywide monitorability
+  commitment. That is a rumor on
+  SKU and architecture, not a
+  named ship date (The
+  Information, The Decoder,
+  Understanding AI; ARA daily
+  digest 2026-10-15).
 
 ## Open questions
 
