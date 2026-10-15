@@ -301,8 +301,9 @@ jobs:
           echo "Disk before:"
           df -h / 2>&1 | tail -2
           sudo apt-get clean -y >/dev/null 2>&1 || true
-          sudo rm -rf /var/log/journal/* 2>/dev/null || true
-          sudo find /tmp -mindepth 1 -maxdepth 1 -mtime +1 -exec rm -rf {} + 2>/dev/null || true
+          # Host-wide logs and /tmp are not this job's to clear: journald keeps its
+          # own size cap on the host, and sweeping /tmp deleted other services'
+          # files (the host's tmux socket, 2026-10-11).
           # Old runner _diag logs (this is what crashed last time)
           sudo find /opt/actions-runner -name "_diag" -type d -exec sh -c 'find "$1" -name "*.log" -mtime +1 -delete' _ {} \; 2>/dev/null || true
           echo "Disk after:"
