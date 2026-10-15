@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-15
+
+TOP 5 PAPERS:
+• Into the Unknown — Neubig/Welleck: 135 open-science follow-ups; none pass, 114 fail integrity
+• GracefulRL — Salakhutdinov: RL rewards guessing; train models to fall back when success is out of reach
+• ActionOPD — Xinlei Chen: distill semantic actions, not tokens; black-box teacher, +3.3–6.9 pp OOD
+• Titan-Llama — Behrouz: Titans memory grafted onto Llama; QuALITY 24→41, 24% less decode mem
+• One Block Ahead — Ermon/Leskovec: training-free concurrent dLLM blocks; +42% tokens/forward
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 7, Other 8
+
+Full report on GitHub.
