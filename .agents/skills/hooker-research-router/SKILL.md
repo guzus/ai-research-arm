@@ -67,11 +67,13 @@ Use `--topics bookmarks,ara-bookmarks` when the user names specific topics.
 
 The planner compares candidates against:
 
-- `research/generative/index.json`
+- `research/generative/index.json` on `origin/main`, which it fetches first: the runner publishes straight to `main`, so a local checkout can miss recent articles. If the fetch or read fails, it warns and uses the working tree's copy.
 - `research/generative/*.ara.md`
 - `research/generative/*.html`
 - top-level `research/*-ai-news.md`
 - `research/issues/*-research.md`
+
+The file globs read the working tree. When the checkout is behind, `git pull --ff-only` on a clean `main` before planning brings those up to date too.
 
 Do not route candidates with a high lexical overlap score, same URL/slug, or same named entity + same core claim as existing research. If in doubt, skip or ask for a narrower angle.
 

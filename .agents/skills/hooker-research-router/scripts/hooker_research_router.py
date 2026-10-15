@@ -221,9 +221,25 @@ def tags(message: dict[str, Any]) -> list[str]:
     return []
 
 
+def published_index(repo: Path) -> Any:
+    # The runner publishes straight to main, so a local checkout can lag by
+    # several articles. Read the index from a freshly fetched origin/main, as
+    # gen-research-ko-backfill does; fall back to the working tree with a warning.
+    fetch = subprocess.run(["git", "fetch", "--quiet", "origin", "main"], cwd=repo, capture_output=True, text=True)
+    if fetch.returncode != 0:
+        print(f"WARN: git fetch origin main failed: {fetch.stderr.strip()}", file=sys.stderr)
+    show = subprocess.run(
+        ["git", "show", "origin/main:research/generative/index.json"], cwd=repo, capture_output=True, text=True
+    )
+    if show.returncode == 0:
+        return json.loads(show.stdout)
+    print("WARN: no origin/main index; deduping against the working tree's index.json", file=sys.stderr)
+    return load_json(repo / "research/generative/index.json")
+
+
 def existing_research(repo: Path) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
-    index = load_json(repo / "research/generative/index.json")
+    index = published_index(repo)
     if isinstance(index, list):
         for item in index:
             if isinstance(item, dict):
