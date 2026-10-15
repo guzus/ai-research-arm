@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-15 16:51:58 UTC
+
+CYCLE: Verified benchmarks, interpretability optimism, NVIDIA open models
+
+TOP STORIES:
+• ARC Prize verifies Gemini 4 Argon at 97.5% on ARC-AGI-3 with Google's own harness, 49.8% on the standard one [⚠]
+• Goodfire's Cammarata argues most neurons in frontier-scale models are legible; no paper or replication yet [⚠]
+• NVIDIA ships open Nemotron 3.5 Super VL (120B-A12B) and Bolt (74B-A9B, runs in 24GB) ahead of GTC [✓]
+
+WATCH: Independent interpretability researchers' responses to Goodfire's essay
+
+Full update on GitHub.
