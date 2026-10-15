@@ -1,5 +1,5 @@
 {
-  "article_count": 94,
+  "article_count": 95,
   "articles": [
     {
       "claim_count": 18,
@@ -903,6 +903,14 @@
       "stem": "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4",
       "tags": [],
       "title": "$40K of Tokens, a $250K Bounty, and Months Nobody Billed: What XBOW's Chrome Full Chain Says About AI Exploit Economics"
+    },
+    {
+      "claim_count": 43,
+      "created_at": "2026-10-15T11:52:50Z",
+      "slug": "anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "stem": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "tags": [],
+      "title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated"
     }
   ],
   "by_host": {
@@ -1215,7 +1223,9 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c28",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c30",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c33",
-      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c15"
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c15",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c12",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c25"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -1785,7 +1795,8 @@
     "bleepingcomputer.com": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c12",
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c6",
-      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12"
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c24"
     ],
     "blockonomi.com": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c16"
@@ -1940,6 +1951,9 @@
     "business-standard.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c29"
     ],
+    "businessday.co.za": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c10"
+    ],
     "businessinsider.com": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c12",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c13",
@@ -1984,7 +1998,10 @@
     "calcalistech.com": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c5",
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c7",
-      "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c22"
+      "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c22",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c1",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c25",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c3"
     ],
     "calendarial.com": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c44"
@@ -3102,7 +3119,8 @@
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c9"
     ],
     "euronews.com": [
-      "2026-06-22T101547--shazeer-google-openai-talent-moat#c10"
+      "2026-06-22T101547--shazeer-google-openai-talent-moat#c10",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c19"
     ],
     "eutils.ncbi.nlm.nih.gov": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c21"
@@ -3251,7 +3269,13 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c5",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c8",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1",
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c20"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c20",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c11",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c18",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c19",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c20",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c23",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c7"
     ],
     "financemagnates.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c26"
@@ -3349,7 +3373,9 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c37",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c38",
-      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c23"
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c23",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c15",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8"
     ],
     "fortunebusinessinsights.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
@@ -3591,6 +3617,9 @@
     "gtlaw.com": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c22",
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c19"
+    ],
+    "gulfnews.com": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c20"
     ],
     "gurufocus.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c17"
@@ -3880,7 +3909,9 @@
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c15",
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c29",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c18",
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c22"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c22",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c1",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c2"
     ],
     "investor.atmeta.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C12",
@@ -3944,6 +3975,9 @@
     ],
     "ir.theice.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C5"
+    ],
+    "irishtimes.com": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c6"
     ],
     "ironfinance.medium.com": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c17"
@@ -4023,6 +4057,9 @@
     ],
     "keg.cs.tsinghua.edu.cn": [
       "2026-06-22T052035--zhipu-ai-glm#c1"
+    ],
+    "khaleejtimes.com": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c14"
     ],
     "kili-technology.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c4"
@@ -4114,7 +4151,8 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c37",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c38",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c41",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c42"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c42",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c21"
     ],
     "law.justia.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c17",
@@ -4457,6 +4495,9 @@
     ],
     "news.aibase.com": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15"
+    ],
+    "news.bgov.com": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c13"
     ],
     "news.bloomberglaw.com": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c15",
@@ -5024,7 +5065,8 @@
       "2026-06-22T061332--frontier-ai-data-supply-chain#c22",
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c23",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c14",
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c6"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c6",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c16"
     ],
     "pypistats.org": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c14"
@@ -5421,7 +5463,8 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c31",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c34",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18",
-      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c22"
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c22",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c22"
     ],
     "securitycompass.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
@@ -5822,7 +5865,8 @@
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c16",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c1",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c23",
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c24"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c24",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c13"
     ],
     "techflowpost.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20",
@@ -5842,7 +5886,9 @@
     "techmeme.com": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c26",
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c7",
-      "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c19"
+      "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c19",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c5",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c6"
     ],
     "technode.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c25",
@@ -5928,7 +5974,10 @@
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-6",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c10",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4",
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c16"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c16",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c18",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c4",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c5"
     ],
     "the-decoder.de": [
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c20"
@@ -5963,6 +6012,9 @@
     ],
     "thecurrencyanalytics.com": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c9"
+    ],
+    "thedailyupside.com": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c17"
     ],
     "thedebrief.org": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c24",
@@ -6030,7 +6082,9 @@
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c19",
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c9",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c21",
-      "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c30"
+      "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c30",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c9"
     ],
     "thenota.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c13"
@@ -9179,11 +9233,25 @@
     "https://finance.yahoo.com/quote/VRT/history": [
       "2026-05-27T035557--800-vdc-architecture#c18"
     ],
+    "https://finance.yahoo.com/sectors/technology/articles/anthropic-nears-first-quarterly-profit-120712552.html": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c11"
+    ],
     "https://finance.yahoo.com/sectors/technology/articles/harvard-law-anthropic-sell-safety-193510988.html": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c19"
     ],
     "https://finance.yahoo.com/sectors/technology/articles/xai-burned-6-4b-last-222608682.html": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c11"
+    ],
+    "https://finance.yahoo.com/technology/ai/articles/anthropic-2-trillion-ipo-pitch-045117254.html": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c18",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c19",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c7"
+    ],
+    "https://finance.yahoo.com/technology/ai/articles/anthropic-hits-16-8b-revenue-234550826.html": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c23"
+    ],
+    "https://finance.yahoo.com/technology/ai/articles/anthropic-tops-100-billion-revenue-224001996.html": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c20"
     ],
     "https://finance.yahoo.com/technology/ai/articles/china-considers-tighter-export-controls-041139427.html": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c44"
@@ -9317,6 +9385,10 @@
     "https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c1",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2"
+    ],
+    "https://fortune.com/2026/09/29/anthropic-leaked-ipo-prospectus-losses-growth-ai-end-humanity": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c15",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8"
     ],
     "https://fortune.com/crypto/2024/04/19/ethena-labs-stablecoin-synthetic-dollar-tether-circle": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c23"
@@ -9608,6 +9680,9 @@
     ],
     "https://groups.google.com/g/exac_data_announcements/c/cdz1BNHe01w": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c8"
+    ],
+    "https://gulfnews.com/world/americas/anthropic-on-track-to-top-100-billion-revenue-pace-ahead-of-potential-ipo-1.500680887": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c20"
     ],
     "https://hackmd.io/SCfjYNHQTmuRl2adnFi2oA": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c37"
@@ -10208,6 +10283,9 @@
     ],
     "https://news.aibase.com/news/30090": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15"
+    ],
+    "https://news.bgov.com/financial-accounting/anthropic-revenue-run-rate-surpasses-65-billion-ahead-of-ipo": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c13"
     ],
     "https://news.bloomberglaw.com/artificial-intelligence/shutterstocks-ai-licensing-business-generated-104-million": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c15"
@@ -11691,7 +11769,8 @@
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c3"
     ],
     "https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b": [
-      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c26"
+      "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c26",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c13"
     ],
     "https://techcrunch.com/2026/08/21/starcloud-raises-200-million-for-orbital-data-centers-as-launch-options-dry-up": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c16"
@@ -11715,6 +11794,10 @@
     ],
     "https://techfundingnews.com/monzo-co-founder-tom-blomfield-takes-leave-from-y-combinator-to-join-anthropic": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c9"
+    ],
+    "https://techmeme.com/261014/p56": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c5",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c6"
     ],
     "https://technode.com/2022/01/05/byd-ev-2021-deliveries-up-232-year-on-year": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c25"
@@ -11750,6 +11833,11 @@
     ],
     "https://the-decoder.com/anthropics-claude-opus-5-costs-well-below-fable-5-while-matching-or-beating-it-across-most-benchmarks": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c4"
+    ],
+    "https://the-decoder.com/anthropics-q3-revenue-hits-16-8b-but-growth-slows-ahead-of-planned-november-ipo": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c18",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c4",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c5"
     ],
     "https://the-decoder.com/deepmind-dismantles-its-alphafold-team-as-key-authors-leave-for-anthropic": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c45"
@@ -11846,6 +11934,10 @@
     ],
     "https://thenewstack.io/gpt-5-6-serving-efficiency": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c2"
+    ],
+    "https://thenextweb.com/news/anthropic-ipo-prospectus-42bn-loss-518bn-compute": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c9"
     ],
     "https://thenextweb.com/news/google-44-billion-data-centre-lease-guarantees-tpu-anthropic": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c21"
@@ -12205,7 +12297,8 @@
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c8"
     ],
     "https://www.anthropic.com/news/anthropic-amazon-compute": [
-      "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c8"
+      "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c8",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c12"
     ],
     "https://www.anthropic.com/news/anthropic-and-the-department-of-defense-to-advance-responsible-ai-in-defense-operations": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c4"
@@ -12216,7 +12309,8 @@
     "https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c12",
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c14",
-      "2026-07-31T051841--situational-awareness-lp-collapse#c38"
+      "2026-07-31T051841--situational-awareness-lp-collapse#c38",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c12"
     ],
     "https://www.anthropic.com/news/anthropic-raises-series-e-at-usd61-5b-post-money-valuation": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c18"
@@ -12303,7 +12397,9 @@
       "2026-07-31T051841--situational-awareness-lp-collapse#c38",
       "2026-07-31T051841--situational-awareness-lp-collapse#c39",
       "2026-07-31T051841--situational-awareness-lp-collapse#c40",
-      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c29"
+      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c29",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c12",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c25"
     ],
     "https://www.anthropic.com/news/statement-comments-secretary-war": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c1",
@@ -12463,6 +12559,9 @@
     "https://www.bleeckerstreetresearch.com/research/shaz": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c8"
     ],
+    "https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-is-cutting-claude-codes-current-weekly-limits-by-17-percent": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c24"
+    ],
     "https://www.bleepingcomputer.com/news/legal/linkedin-sues-proapis-for-using-1m-fake-accounts-to-scrape-user-data": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c6"
     ],
@@ -12556,6 +12655,9 @@
     "https://www.business-standard.com/companies/news/mckinsey-hire-12-percent-junior-employees-jobs-2026-ai-eric-kutcher-125090900804_1.html": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c29"
     ],
+    "https://www.businessday.co.za/world/international-companies/2026-09-29-anthropic-plans-518bn-ai-infrastructure-spend-80-non-cancellable": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c10"
+    ],
     "https://www.businessinsider.com/openai-slashed-ai-prices-usage-soared-revenue-jumped-2026-8": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c12",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c13",
@@ -12609,6 +12711,11 @@
     "https://www.calcalistech.com/ctechnews/article/sy06wllflg": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c5",
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c7"
+    ],
+    "https://www.calcalistech.com/ctechnews/article/tgb6eqw4z": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c1",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c25",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c3"
     ],
     "https://www.calcalistech.com/ctechnews/article/z4lxiqbtw": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c22"
@@ -13409,6 +13516,9 @@
     "https://www.eurekalert.org/news-releases/773523": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c9"
     ],
+    "https://www.euronews.com/2026/10/15/anthropic-revenue-jumps-46-to-168bn-as-ai-firm-eyes-record-2-trillion-ipo-valuation": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c19"
+    ],
     "https://www.euronews.com/next/2025/05/22/us-judge-rejects-claims-made-in-teen-chatbot-death-lawsuit-that-ai-has-free-speech-rights": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c10"
     ],
@@ -13880,6 +13990,10 @@
     "https://www.investing.com/news/analyst-ratings/rosenblatt-reiterates-coreweave-stock-rating-amid-meta-cloud-reports-93CH-4771129": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c17"
     ],
+    "https://www.investing.com/news/stock-market-news/anthropics-q3-revenue-surges-45-to-nearly-17-billion-4950208": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c1",
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c2"
+    ],
     "https://www.investing.com/news/stock-market-news/hedge-funds-dumped-chip-stocks-for-a-fourth-week-as-ai-shares-sold-off-4776190": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c23"
     ],
@@ -13925,6 +14039,9 @@
     ],
     "https://www.iosco.org/library/pubdocs/pdf/ioscopd754.pdf": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c3"
+    ],
+    "https://www.irishtimes.com/business/2026/09/14/anthropic-tells-investors-it-will-be-profitable-for-second-straight-quarter": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c6"
     ],
     "https://www.irregular.com/publications": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c16"
@@ -13987,6 +14104,9 @@
     ],
     "https://www.kedglobal.com/tech,-media-telecom/newsView/ked202510310020": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c3"
+    ],
+    "https://www.khaleejtimes.com/business/anthropic-ipo-prospectus-lays-bare-deep-dependence-on-big-tech-partners": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c14"
     ],
     "https://www.kimi.com/blog/kimi-k3": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c1",
@@ -14061,6 +14181,9 @@
     ],
     "https://www.law.com/therecorder/2025/01/27/linkedin-suit-says-millions-of-profiles-scraped-by-singapore-firms-fake-accounts": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c4"
+    ],
+    "https://www.law.cornell.edu/cfr/text/17/229.10": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c21"
     ],
     "https://www.law.cornell.edu/supremecourt/text/435/679": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c37"
@@ -14502,6 +14625,9 @@
     "https://www.pymnts.com/news/artificial-intelligence/2025/chatbot-arena-raises-100-million-dollars-platform-compares-ai-models": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c22"
     ],
+    "https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-on-track-for-first-operating-profit-as-revenue-surges": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c16"
+    ],
     "https://www.pymnts.com/news/artificial-intelligence/2026/deepseek-considers-new-funding-round-after-raising-7-billion": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c23"
     ],
@@ -14855,6 +14981,9 @@
     "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=8-K&dateb=&owner=include&count=40": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c14"
     ],
+    "https://www.sec.gov/divisions/corpfin/guidance/nongaapinterp.htm": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c22"
+    ],
     "https://www.sec.gov/edgar/search": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c10"
     ],
@@ -15200,6 +15329,9 @@
     ],
     "https://www.thecoinrepublic.com/2026/08/23/crypto-scams-watch-term-labs-hit-by-8-5m-governance-exploit": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c2"
+    ],
+    "https://www.thedailyupside.com/technology/artificial-intelligence/whats-behind-anthropics-surprise-turn-to-profitability": [
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c17"
     ],
     "https://www.theglobeandmail.com/business/article-nvidia-michael-burry-memo-ai-bubble-fears": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c7"
@@ -16061,7 +16193,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2781,
+  "claim_count": 2824,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -82790,9 +82922,921 @@
         "https://runtimewire.com/article/hacktron-chrome-exploit-benchmark-gpt-56-sol-ultra"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Anthropic told investors Q3 2026 revenue was $16.8B, up from $11.6B in Q2 and $4.7B in Q1, per two investor-day attendees cited by Reuters.",
+      "confidence": "high",
+      "hosts": [
+        "calcalistech.com",
+        "investing.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c1",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.investing.com/news/stock-market-news/anthropics-q3-revenue-surges-45-to-nearly-17-billion-4950208",
+        "https://www.calcalistech.com/ctechnews/article/tgb6eqw4z"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-09-29",
+      "claim": "Anthropic disclosed at least $518B of compute and infrastructure obligations, about 80% non-cancellable, including about $161.2B of Broadcom-related equipment leases, $111.1B with Google, $110B with Amazon, up to $84.5B with SpaceXAI and $31.4B with Microsoft.",
+      "confidence": "high",
+      "hosts": [
+        "businessday.co.za"
+      ],
+      "id": "c10",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.businessday.co.za/world/international-companies/2026-09-29-anthropic-plans-518bn-ai-infrastructure-spend-80-non-cancellable"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-05-21",
+      "claim": "Anthropic pays SpaceX $1.25B per month until May 2029 for compute capacity, with discounted payments during the ramp.",
+      "confidence": "high",
+      "hosts": [
+        "finance.yahoo.com"
+      ],
+      "id": "c11",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/sectors/technology/articles/anthropic-nears-first-quarterly-profit-120712552.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-05-28",
+      "claim": "Anthropic stated run-rate revenue of $14B on 12 Feb 2026, over $30B in April 2026 and over $47B in early May 2026.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c12",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation",
+        "https://www.anthropic.com/news/anthropic-amazon-compute",
+        "https://www.anthropic.com/news/series-h"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-08-18",
+      "claim": "Anthropic's run-rate revenue surpassed $65B at the end of July 2026, per Bloomberg.",
+      "confidence": "high",
+      "hosts": [
+        "news.bgov.com",
+        "techcrunch.com"
+      ],
+      "id": "c13",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://news.bgov.com/financial-accounting/anthropic-revenue-run-rate-surpasses-65-billion-ahead-of-ipo",
+        "https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-09-30",
+      "claim": "Marketplace sales via Amazon and Google were $2.16B, 47% of 2025 revenue, booked gross, with about $351M of partner fees recorded in sales, marketing and partnerships expense.",
+      "confidence": "medium",
+      "hosts": [
+        "khaleejtimes.com"
+      ],
+      "id": "c14",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.khaleejtimes.com/business/anthropic-ipo-prospectus-lays-bare-deep-dependence-on-big-tech-partners"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-09-29",
+      "claim": "Two customers accounted for nearly one-quarter of Anthropic's 2025 revenue, per the draft prospectus as reported.",
+      "confidence": "high",
+      "hosts": [
+        "fortune.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://fortune.com/2026/09/29/anthropic-leaked-ipo-prospectus-losses-growth-ai-end-humanity"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-05-20",
+      "claim": "Anthropic's May 2026 projections showed a Q2 operating profit figure of $559M on $10.9B revenue that includes model training costs but excludes stock-based compensation.",
+      "confidence": "medium",
+      "hosts": [
+        "pymnts.com"
+      ],
+      "id": "c16",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c16",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-on-track-for-first-operating-profit-as-revenue-surges"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-05-22",
+      "claim": "Anthropic expected to spend 56 cents on compute per revenue dollar in Q2 2026, down from 71 cents in Q1, and told investors it likely won't be profitable for the whole year.",
+      "confidence": "medium",
+      "hosts": [
+        "thedailyupside.com"
+      ],
+      "id": "c17",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c17",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.thedailyupside.com/technology/artificial-intelligence/whats-behind-anthropics-surprise-turn-to-profitability"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Distillation accounted for 5 to 7 percent of Anthropic's revenue and was expected to decline.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com",
+        "the-decoder.com"
+      ],
+      "id": "c18",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://the-decoder.com/anthropics-q3-revenue-hits-16-8b-but-growth-slows-ahead-of-planned-november-ipo",
+        "https://finance.yahoo.com/technology/ai/articles/anthropic-2-trillion-ipo-pitch-045117254.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "SemiAnalysis estimated Anthropic's annualized revenue at about $74B, and Anthropic is reportedly expected to end 2026 below $100B.",
+      "confidence": "medium",
+      "hosts": [
+        "euronews.com",
+        "finance.yahoo.com"
+      ],
+      "id": "c19",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c19",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.euronews.com/2026/10/15/anthropic-revenue-jumps-46-to-168bn-as-ai-firm-eyes-record-2-trillion-ipo-valuation",
+        "https://finance.yahoo.com/technology/ai/articles/anthropic-2-trillion-ipo-pitch-045117254.html"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-14",
+      "claim": "Anthropic told the investor-day group it was profitable on an adjusted basis in the third quarter of 2026.",
+      "confidence": "high",
+      "hosts": [
+        "investing.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c2",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.investing.com/news/stock-market-news/anthropics-q3-revenue-surges-45-to-nearly-17-billion-4950208"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-09-19",
+      "claim": "The NYT reported Anthropic would exceed $100B in annualized revenue; Gulf News renders this as by end-2026 while an Axios relay says it is now pacing above $100B.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com",
+        "gulfnews.com"
+      ],
+      "id": "c20",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c20",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://gulfnews.com/world/americas/anthropic-on-track-to-top-100-billion-revenue-pace-ahead-of-potential-ipo-1.500680887",
+        "https://finance.yahoo.com/technology/ai/articles/anthropic-tops-100-billion-revenue-224001996.html"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "",
+      "claim": "Regulation S-K Item 10(e) requires the most directly comparable GAAP measure with equal or greater prominence and a reconciliation, and bars liquidity measures that exclude charges requiring cash settlement.",
+      "confidence": "high",
+      "hosts": [
+        "law.cornell.edu"
+      ],
+      "id": "c21",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c21",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.law.cornell.edu/cfr/text/17/229.10"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "",
+      "claim": "SEC C&DI 100.01 says excluding normal, recurring, cash operating expenses can make a non-GAAP measure misleading; C&DI 100.04 flags individually tailored accounting.",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c22",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c22",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/divisions/corpfin/guidance/nongaapinterp.htm"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Bloomberg reported Anthropic could start marketing shares the week of 9 November with trading before Thanksgiving.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com"
+      ],
+      "id": "c23",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c23",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/technology/ai/articles/anthropic-hits-16-8b-revenue-234550826.html"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-08-29",
+      "claim": "Claude Code weekly limits fell about 17% net from 14 September 2026 as a temporary 50% boost expired and standard limits rose 25%.",
+      "confidence": "high",
+      "hosts": [
+        "bleepingcomputer.com"
+      ],
+      "id": "c24",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c24",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-is-cutting-claude-codes-current-weekly-limits-by-17-percent"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Anthropic is seeking an IPO valuation of more than $2 trillion versus its $965B Series H post-money valuation.",
+      "confidence": "medium",
+      "hosts": [
+        "anthropic.com",
+        "calcalistech.com"
+      ],
+      "id": "c25",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c25",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.calcalistech.com/ctechnews/article/tgb6eqw4z",
+        "https://www.anthropic.com/news/series-h"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Reuters attributes the $110B year-end run rate to estimates by analysts who met executives, not to company guidance.",
+      "confidence": "high",
+      "hosts": [
+        "calcalistech.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c3",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.calcalistech.com/ctechnews/article/tgb6eqw4z"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Anthropic did not discuss its September annualized revenue rate or a full-year outlook at the investor presentation, per The Information.",
+      "confidence": "medium",
+      "hosts": [
+        "the-decoder.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c4",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://the-decoder.com/anthropics-q3-revenue-hits-16-8b-but-growth-slows-ahead-of-planned-november-ipo"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Anthropic's adjusted operating margin was about 11% (Bloomberg: 11%+ for Q3; The Information: 11% for the year through Q3), excluding stock-based compensation.",
+      "confidence": "medium",
+      "hosts": [
+        "techmeme.com",
+        "the-decoder.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://techmeme.com/261014/p56",
+        "https://the-decoder.com/anthropics-q3-revenue-hits-16-8b-but-growth-slows-ahead-of-planned-november-ipo"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Anthropic's adjusted gross margin was 85% in Q3 2026; its gross margin above 80% excludes training costs and revenue shared with distribution partners.",
+      "confidence": "medium",
+      "hosts": [
+        "irishtimes.com",
+        "techmeme.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://techmeme.com/261014/p56",
+        "https://www.irishtimes.com/business/2026/09/14/anthropic-tells-investors-it-will-be-profitable-for-second-straight-quarter"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Anthropic generated $1.70 in revenue for every dollar spent on compute in Q3 2026 and was cash-flow positive, per the FT.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/technology/ai/articles/anthropic-2-trillion-ipo-pitch-045117254.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-09-29",
+      "claim": "Per Reuters' reading of the draft prospectus, Anthropic's 2025 revenue was $4.59B, operating expenses $12.65B, compute and infrastructure $7.33B, and operating loss $8.06B (2024: $2.98B).",
+      "confidence": "high",
+      "hosts": [
+        "fortune.com",
+        "thenextweb.com"
+      ],
+      "id": "c8",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://thenextweb.com/news/anthropic-ipo-prospectus-42bn-loss-518bn-compute",
+        "https://fortune.com/2026/09/29/anthropic-leaked-ipo-prospectus-losses-growth-ai-end-humanity"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-09-29",
+      "claim": "Anthropic's 2025 net loss was about $42B, of which about $34B was a non-cash charge on financing that could convert into shares.",
+      "confidence": "high",
+      "hosts": [
+        "thenextweb.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://thenextweb.com/news/anthropic-ipo-prospectus-42bn-loss-518bn-compute"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Q3 2026 revenue of $16.8B annualizes to $67.2B.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "About $7.4B of Q3 compute sits outside cost of revenue if gross margin is 85%.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d10",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "An 11% margin on year-to-date revenue of $33.1B is about $3.6B.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d11",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "An 11% margin on Q3 revenue alone is about $1.85B.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d12",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2025-12-31",
+      "claim": "In 2025 Anthropic spent about $1.60 on compute per revenue dollar.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d13",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2025-12-31",
+      "claim": "Partner fees of $351M were about 7.6% of 2025 revenue.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d14",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "A full quarter of SpaceX payments is $3.75B, about 22% of Q3 revenue.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d15",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-09-29",
+      "claim": "About $414B of the $518B in commitments is non-cancellable, roughly $41B a year over a decade.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d16",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "On the reported $65B end-July pace, Q3's total implies about a $69B run rate at end-September.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d17",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "A $2T valuation is about 27x a $75B exit run rate.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d18",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Q3 2026 revenue grew about 45% quarter on quarter.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Q2 2026 revenue grew about 147% quarter on quarter.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "If September ran at a $100B pace, July and August averaged only about a $50.8B annualized pace.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Spreading Q3 revenue on a smooth 45%-per-quarter monthly curve gives a September run rate of about $75.7B.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Repeating Q3's 45% growth in Q4 gives a December exit run rate of about $110B.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Repeating Q3's growth implies Q4 2026 revenue of about $24.4B.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d7",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "Repeating Q3's growth implies 2026 recognized revenue of about $57.5B.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d8",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
+      "article_created_at": "2026-10-15T11:52:50Z",
+      "article_title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated",
+      "as_of": "2026-10-15",
+      "claim": "At $1.70 of revenue per compute dollar, Q3 compute spend was about $9.9B.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d9",
+      "key": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#d9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1356,
+  "reusable_count": 1382,
   "schema_version": 1
 }

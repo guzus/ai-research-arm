@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "$110B is not Anthropic guidance. Reuters attributes it to analysts' estimates and the WSJ to investors' expectations. Anthropic gave no September run rate and no full-year outlook.",
+      "contradicting_url": "https://huggingnews.com/earnings/anthropic-projects-110b-year-end-revenue-run-rate-and-85percent-gross-ma-6260b4e3",
+      "contradicting_quote": "Anthropic told institutional investors it expects to reach a $110 billion annual revenue run rate by the end of 2026",
+      "severity": "low",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "It says Q3 revenue \"rose to $16.8 billion from $11.6 billion in the second quarter and $4.7 billion in the first quarter\", according to two people who attended an investor day at Anthropic's San Francisco headquarters.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "\"Adjusted\" operating profit excludes stock-based compensation but, on the definition used in Anthropic's May projections, includes training costs.",
+      "contradicting_url": "https://enterprisedna.co/resources/ai-pulse/ai-pulse-2026-08-18-anthropic-posts-its-first-profitable-quarter-then-a-credibil",
+      "contradicting_quote": "The figure also leaves out stock compensation and the amortization of training compute",
+      "severity": "low",
+      "no_contradiction_found": false
+    }
+  ]
+}
