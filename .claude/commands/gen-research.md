@@ -50,9 +50,13 @@ the list and ask.
 
 ```bash
 jq -r '.lanes["generative-research-default"].backend' data/agent-backends.json
+# Selectable backends: selector, backend key, display name, aliases
 jq -r '.backends | to_entries[] | select(.value.generative.exposed == true)
-  | [.value.generative.selector, .key, .value.display_name] | @tsv' data/agent-backends.json
+  | [.value.generative.selector, .key, .value.display_name,
+     (((.value.aliases // []) + (.value.generative.aliases // [])) | join(","))] | @tsv' \
+  data/agent-backends.json
 
+DISPATCHED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"; echo "$DISPATCHED_AT"
 gh workflow run generative-research.yml \
   -f topic='<the exact topic the user gave>'
 ```
@@ -60,14 +64,21 @@ gh workflow run generative-research.yml \
 The shared `gen-research-dispatch` skill covers the same dispatch,
 including X status URLs (`twitter_url`) and finding the run.
 
-Then wait briefly for the run to register and surface its URL:
+If `gh workflow run` printed the run URL, use it. Otherwise find the run.
+Scheduled jobs dispatch this workflow too, some under the same account, so
+the newest run may not be yours: take the oldest one created at or after
+your dispatch time. If your shell does not keep variables between
+commands, set `DISPATCHED_AT` to the time printed above.
 
 ```bash
 sleep 5
-gh run list --workflow=generative-research.yml --limit 1 \
-  --json databaseId,status,url,createdAt,event \
-  --jq '.[0]'
+gh run list --workflow=generative-research.yml --event workflow_dispatch \
+  --user "$(gh api user --jq .login)" --limit 5 \
+  --json databaseId,status,url,createdAt \
+  --jq "[.[] | select(.createdAt >= \"$DISPATCHED_AT\")] | sort_by(.createdAt) | .[0]"
 ```
+
+If that prints `null`, wait a few seconds and list once more.
 
 Report to the user in one short message:
 
