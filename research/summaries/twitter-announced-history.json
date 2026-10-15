@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-20 19:00 UTC",
-    "headline": "GOOGLE LAUNCHES GEMINI FOR SCIENCE \u2014 AGENTIC TOOLS WIRE 30+ LIFE-SCIENCE MODELS INTO ANTIGRAVITY",
-    "source": "@GoogleAI",
-    "source_file": "research/summaries/2026-05-20-twitter-19h-headlines.json",
-    "url": "https://x.com/GoogleAI/status/2057161311617008061"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 19:00 UTC",
-    "headline": "THE INFORMATION: ANTHROPIC AND OPENAI NOW GENERATE 89% OF REVENUE ACROSS 34 TOP AI STARTUPS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-20-twitter-19h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057166984215720230"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-20 19:00 UTC",
-    "headline": "CURSOR COMPOSER 2.5 DRAWS DAY-2 RAVES AT ~1/20TH THE PRICE OF OPUS 4.7 ON CODING TASKS",
-    "source": "@GergelyOrosz",
-    "source_file": "research/summaries/2026-05-20-twitter-19h-headlines.json",
-    "url": "https://x.com/GergelyOrosz/status/2057140853156581815"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-20 19:00 UTC",
-    "headline": "NVIDIA REPORTS EARNINGS AFTER US CLOSE TODAY \u2014 CHINA-REVENUE COMMENTARY THE KEY SWING FACTOR",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-20-twitter-19h-headlines.json",
-    "url": "https://x.com/jukan05/status/2057128604253962465"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 21:00 UTC",
-    "headline": "NVIDIA Q1 REVENUE $81.6B UP 85% YoY, DATA CENTER $75.2B \u2014 BEATS TOP AND BOTTOM LINE",
-    "source": "@ReutersWorld",
-    "source_file": "research/summaries/2026-05-20-twitter-21h-headlines.json",
-    "url": "https://x.com/ReutersWorld/status/2057214880457838823"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-20 21:00 UTC",
     "headline": "NVIDIA GUIDES Q2 TO ~$91B, UNVEILS $80B BUYBACK \u2014 SHARES SLIP ~3% AFTER-HOURS DESPITE BEAT",
@@ -23624,5 +23579,40 @@
     "headline": "FT: ANTHROPIC TOLD INVESTORS DISTILLATION ACCOUNTED FOR 5-7% OF REVENUE",
     "source": "@simonw",
     "url": "https://x.com/simonw/status/2110721515130089787"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-15 21:17:11 UTC",
+    "headline": "META RELEASES MUSE SPARK OPEN WEIGHTS \u2014 816B-PARAM MOE, 42B ACTIVE, 1M CONTEXT, RUNS ON TWO MAC STUDIOS",
+    "source": "@AIatMeta",
+    "url": "https://x.com/AIatMeta/status/2110779754274292212"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-15 21:17:11 UTC",
+    "headline": "ANTHROPIC GIVES METR EVALUATORS EMPLOYEE-LIKE ACCESS, NO VETO OVER PUBLISHED FINDINGS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2110784662071398807"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-15 21:17:11 UTC",
+    "headline": "MICROSOFT COMPLETES MAI-BASE-2 PRETRAINING ON 16K GB200S IN 38 DAYS; CLAIMS 4-12X EFFICIENCY OVER DEEPSEEK-V4-PRO-BASE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2110797298661744928"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-15 21:17:11 UTC",
+    "headline": "ANTHROPIC MAKES OPUS 5.5 FAST MODE GA AT $8/$40 PER MILLION TOKENS, UP TO 2.5X FASTER",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2110825294655562048"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-15 21:17:11 UTC",
+    "headline": "OPENAI SHIPS GPT-LIVE-1.1 VOICE MODEL ACROSS CHATGPT, CODEX AND DOTS; API COMING SOON",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2110797830361436604"
   }
 ]
