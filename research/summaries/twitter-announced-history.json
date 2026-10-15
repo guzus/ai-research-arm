@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-20 13:00 UTC",
-    "headline": "NVIDIA REPORTS EARNINGS AFTER US CLOSE TODAY \u2014 STREET EYES ~$78.75B REVENUE, CHINA THE SWING FACTOR",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-20-twitter-13h-headlines.json",
-    "url": "https://x.com/jukan05/status/2057048299128164807"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 13:00 UTC",
-    "headline": "SPACEX PUBLIC S-1 STILL UNRELEASED \u2014 THE INFORMATION EXPECTS FILING AS SOON AS MAY 21, $SPCX EYES JUNE 12",
-    "source": "@ns123abc",
-    "source_file": "research/summaries/2026-05-20-twitter-13h-headlines.json",
-    "url": "https://x.com/ns123abc/status/2056913900159844357"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 16:00 UTC",
-    "headline": "INTUIT LAYS OFF 17% (~3,000 JOBS) TO REFOCUS ON AI; $INTU REPORTS AFTER THE CLOSE",
-    "source": "@Stocktwits",
-    "source_file": "research/summaries/2026-05-20-twitter-16h-headlines.json",
-    "url": "https://x.com/Stocktwits/status/2057133294563598778"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-20 16:00 UTC",
-    "headline": "COHERE SHIPS COMMAND A+ \u2014 ITS MOST POWERFUL MODEL, FULLY OPEN-SOURCE, TUNED FOR MINIMAL HARDWARE",
-    "source": "@cohere",
-    "source_file": "research/summaries/2026-05-20-twitter-16h-headlines.json",
-    "url": "https://x.com/cohere/status/2057120818551734589"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-20 16:00 UTC",
     "headline": "SEMIANALYSIS: ZUCKERBERG TELLS META STAFF TO EXPECT NO MORE COMPANY-WIDE LAYOFFS THIS YEAR",
@@ -23642,5 +23606,33 @@
     "headline": "ANT GROUP OPEN-SOURCES LING-3.1-FLASH: 560B TOTAL / 25B ACTIVE, 1M CONTEXT, MIT LICENSE",
     "source": "@AntLingAGI",
     "url": "https://x.com/AntLingAGI/status/2110390124743970952"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-15 11:19:06 UTC",
+    "headline": "EIGHT STATES SUE OPENAI IN STATE COURTS, ALLEGE CHATGPT UNSAFE FOR CHILDREN AND MISLED PARENTS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2110659816079413664"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-15 11:19:06 UTC",
+    "headline": "TSMC Q3 NET PROFIT +68.7%, GROSS MARGIN 66.4%; Q4 REVENUE GUIDED $52.3-54.3B AS AI DEMAND EXCEEDS SUPPLY",
+    "source": "@FiFrontierX",
+    "url": "https://x.com/FiFrontierX/status/2110691969320280405"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-15 11:19:06 UTC",
+    "headline": "MISTRAL AND CERN TEAM UP ON 'LARGE PHYSICS MODEL' TRAINED ON BILLIONS OF SIMULATED COLLISIONS",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2110684732103041474"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-15 11:19:06 UTC",
+    "headline": "COHERE ACQUIRES DEFENSIVE-CYBER AI STARTUP AISLE",
+    "source": "@cohere",
+    "url": "https://x.com/cohere/status/2110687133270688124"
   }
 ]
