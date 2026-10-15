@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ARC PRIZE VERIFIES GEMINI 4 ARGON AT 97.5% ON ARC-AGI-3 WITH PROVIDER HARNESS, 49.8% ON STANDARD HARNESS",
+    "source": "@arcprize",
+    "url": "https://x.com/arcprize/status/2110768288523251762",
+    "category": "model"
+  },
+  {
+    "headline": "GOODFIRE: MOST NEURONS IN MODELS UP TO TRILLIONS OF PARAMETERS ARE INTERPRETABLE, SAYS ZOOM IN CO-AUTHOR CAMMARATA",
+    "source": "@GoodfireAI",
+    "url": "https://x.com/GoodfireAI/status/2110758907895484731",
+    "category": "research"
+  },
+  {
+    "headline": "NVIDIA RELEASES OPEN NEMOTRON 3.5 SUPER VL (120B, 12B ACTIVE) AND BOLT (74B, 9B ACTIVE) AHEAD OF GTC",
+    "source": "@NVIDIAAI",
+    "url": "https://x.com/NVIDIAAI/status/2110749836450713896",
+    "category": "opensource"
+  },
+  {
+    "headline": "SIMONS FOUNDATION COMMITS $15M TO HELP MATHEMATICIANS BUILD ON AI RESULTS; OPENAI CONTRIBUTES $5M",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2110741355739963884",
+    "category": "research"
+  },
+  {
+    "headline": "FT: ANTHROPIC TOLD INVESTORS DISTILLATION ACCOUNTED FOR 5-7% OF REVENUE",
+    "source": "@simonw",
+    "url": "https://x.com/simonw/status/2110721515130089787",
+    "category": "business"
+  }
+]
